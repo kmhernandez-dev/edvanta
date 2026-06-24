@@ -1,0 +1,53 @@
+# ============================================================
+# docker-compose.yml — edvanta.co
+# Usado por Coolify (build_pack: dockercompose)
+#
+# Servicios:
+#   web — frontend React (nginx)
+#   api — backend Node/Express
+#
+# Postgres corre como servicio aparte en Coolify (no aquí).
+# Coolify inyecta la DATABASE_URL en `api` cuando enlaza el servicio
+# de Postgres en el mismo proyecto.
+# ============================================================
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: edvanta-web
+    restart: unless-stopped
+    ports:
+      - "80"
+    healthcheck:
+      test: ["CMD", "wget", "-q", "-O", "-", "http://127.0.0.1/"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile.api
+    container_name: edvanta-api
+    restart: unless-stopped
+    ports:
+      - "3000"
+    environment:
+      PORT: "3000"
+      CORS_ORIGINS: "https://edvanta.co,https://www.edvanta.co"
+      SITE_URL: "https://edvanta.co"
+      API_URL: "https://api.edvanta.co"
+      DATABASE_URL: "${DATABASE_URL}"
+      MP_ACCESS_TOKEN: "${MP_ACCESS_TOKEN}"
+      RESEND_API_KEY: "${RESEND_API_KEY}"
+      FROM_EMAIL: "${FROM_EMAIL}"
+      NOTIFY_EMAIL: "${NOTIFY_EMAIL}"
+      ADMIN_TOKEN: "${ADMIN_TOKEN}"
+    healthcheck:
+      test: ["CMD", "wget", "-q", "-O", "-", "http://127.0.0.1:3000/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+    depends_on: []
