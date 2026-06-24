@@ -5,6 +5,8 @@ FROM node:20-alpine AS builder
 
 WORKDIR /app
 
+# El contexto de build es la raíz del repo.
+# Copiamos solo los archivos necesarios para instalar y buildear.
 COPY package*.json ./
 RUN npm ci && npm cache clean --force
 
