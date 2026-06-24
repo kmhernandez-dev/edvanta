@@ -1,14 +1,19 @@
 # ============================================================
-# docker-compose.yml — edvanta.co
-# Usado por Coolify (build_pack: dockercompose)
+# docker-compose.yaml — edvanta.co
+# Para Coolify (build_pack: dockercompose)
 #
 # Servicios:
-#   web — frontend React (nginx)
+#   web — frontend React servido por nginx
+#         (también hace proxy_pass /api/* → api:3000)
 #   api — backend Node/Express
 #
+# En producción con Cloudflare + dominio edvanta.co:
+#   - edvanta.co y www.edvanta.co → web (puerto 80)
+#   - api.edvanta.co → web (puerto 80, con /api/* proxy al api)
+#     O directamente al api si Coolify expone el segundo puerto.
+#
 # Postgres corre como servicio aparte en Coolify (no aquí).
-# Coolify inyecta la DATABASE_URL en `api` cuando enlaza el servicio
-# de Postgres en el mismo proyecto.
+# Coolify inyecta DATABASE_URL cuando enlaza el servicio de Postgres.
 # ============================================================
 
 services:
@@ -25,6 +30,11 @@ services:
       interval: 30s
       timeout: 5s
       retries: 3
+    depends_on:
+      api:
+        condition: service_started
+    networks:
+      - edvanta-net
 
   api:
     build:
@@ -32,13 +42,15 @@ services:
       dockerfile: Dockerfile.api
     container_name: edvanta-api
     restart: unless-stopped
-    ports:
+    # El api no expone puertos al host: solo es accesible desde
+    # la red interna de docker-compose. El web hace proxy_pass.
+    expose:
       - "3000"
     environment:
       PORT: "3000"
       CORS_ORIGINS: "https://edvanta.co,https://www.edvanta.co"
       SITE_URL: "https://edvanta.co"
-      API_URL: "https://api.edvanta.co"
+      API_URL: "https://edvanta.co"
       DATABASE_URL: "${DATABASE_URL}"
       MP_ACCESS_TOKEN: "${MP_ACCESS_TOKEN}"
       RESEND_API_KEY: "${RESEND_API_KEY}"
@@ -50,4 +62,9 @@ services:
       interval: 30s
       timeout: 5s
       retries: 3
-    depends_on: []
+    networks:
+      - edvanta-net
+
+networks:
+  edvanta-net:
+    driver: bridge
