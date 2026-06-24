@@ -6,17 +6,19 @@ Plataforma web comercial y educativa para Karla Hernandez. Reune cursos recomend
 - **Feliz Sin Tiroides**: educacion para pacientes, ebooks, recursos gratis, servicios y comunidad de salud tiroidea.
 - **AtenFarmaClinic**: formacion y recursos para quimicos farmaceuticos clinicos.
 
-La aplicacion esta construida como una SPA con React, Vite y Tailwind CSS, desplegada en Netlify con funciones serverless para Mercado Pago y Resend.
+La aplicacion esta construida como SPA con React, Vite y Tailwind CSS, con un backend Node/Express + PostgreSQL, todo desplegado en **Coolify**.
+
+**Produccion:** [edvanta.co](https://edvanta.co) (frontend) + [api.edvanta.co](https://api.edvanta.co) (backend).
 
 ## Estado Del Proyecto
 
 - Frontend funcional con rutas publicas y carrito global.
 - Catalogos definidos en archivos locales dentro de `src/data`.
 - Imagenes profesionales en `public/img`.
-- Checkout con Mercado Pago mediante Netlify Functions.
+- Checkout con Mercado Pago via backend Express.
 - Captura de leads y envio de correos con Resend.
+- Log de ordenes en PostgreSQL.
 - Paginas legales basicas incluidas.
-- Sin base de datos.
 
 ## Stack
 
@@ -24,41 +26,56 @@ La aplicacion esta construida como una SPA con React, Vite y Tailwind CSS, despl
 - React Router 7
 - Vite 5
 - Tailwind CSS 3
-- Netlify Functions
+- Node 20 + Express 4
+- PostgreSQL (`pg`)
 - Mercado Pago SDK
 - Resend API via `fetch`
+- Coolify para deploy (Traefik como proxy reverso)
+- nginx para servir el frontend estatico
 
 ## Estructura
 
 ```text
 .
-|-- index.html
-|-- package.json
-|-- netlify.toml
-|-- public/
-|   `-- img/                  # Imagenes, mockups, portadas y fotos publicas
-|-- netlify/
-|   `-- functions/
-|       |-- create-preference.mjs
-|       |-- mp-webhook.mjs
-|       `-- lead-capture.mjs
+|-- api/
+|   |-- server.js               # Express app
+|   |-- db.js                   # Pool Postgres
+|   |-- Dockerfile              # Build del backend
+|   |-- lib/
+|   |   |-- catalog.js          # Precios server-side
+|   |   |-- free-guides.js
+|   |   |-- migrate.js          # Corre migrations al arrancar
+|   |   `-- resend.js
+|   |-- migrations/
+|   |   `-- 001_orders.sql
+|   `-- routes/
+|       |-- create-preference.js
+|       |-- mp-webhook.js
+|       |-- lead-capture.js
+|       `-- list-orders.js
 |-- src/
-|   |-- App.jsx               # Rutas principales
-|   |-- main.jsx              # Entrada React
-|   |-- index.css             # Tailwind + componentes base
+|   |-- App.jsx                 # Rutas principales
+|   |-- main.jsx
+|   |-- index.css               # Tailwind + componentes base
 |   |-- config/
-|   |   `-- links.js          # WhatsApp, Hotmart, correo, redes
+|   |   |-- api.js              # apiUrl() — usa VITE_API_URL
+|   |   `-- links.js            # WhatsApp, Hotmart, correo, redes
 |   |-- context/
-|   |   `-- CartContext.jsx   # Estado global del carrito
-|   |-- data/                 # Catalogos y contenido editable
-|   |-- pages/                # Paginas por marca
-|   |-- components/           # UI reusable
+|   |   `-- CartContext.jsx
+|   |-- data/                   # Catalogos
+|   |-- pages/
+|   |-- components/
 |   `-- utils/
-|       `-- format.js
-`-- PARA-HECTOR.md            # Notas tecnicas anteriores para despliegue
+|-- public/
+|   `-- img/                    # Imagenes estaticas
+|-- Dockerfile.web              # Build del frontend (multi-stage)
+|-- nginx.conf                  # SPA fallback
+|-- package.json
+|-- .env.example
+`-- PARA-HECTOR.md              # Notas tecnicas
 ```
 
-## Rutas
+## Rutas Del Frontend
 
 | Ruta | Descripcion |
 |---|---|
@@ -70,7 +87,19 @@ La aplicacion esta construida como una SPA con React, Vite y Tailwind CSS, despl
 | `/descargo-medico` | Descargo medico |
 | `/afiliados` | Aviso de afiliados |
 
+## Endpoints Del Backend
+
+| Método | Ruta | Descripción |
+|---|---|---|
+| `GET`  | `/health` | Healthcheck |
+| `POST` | `/api/create-preference` | Crear preferencia de Mercado Pago |
+| `POST` | `/api/mp-webhook` | Webhook de Mercado Pago (log + email) |
+| `POST` | `/api/lead-capture` | Captura de leads (recursos gratis) |
+| `GET`  | `/api/list-orders` | Admin: listar/buscar órdenes (requiere `ADMIN_TOKEN`) |
+
 ## Instalacion Local
+
+Frontend:
 
 ```bash
 npm install
@@ -83,13 +112,26 @@ Servidor local por defecto:
 http://localhost:5173
 ```
 
+Backend (requiere Postgres local):
+
+```bash
+cd api
+npm install
+DATABASE_URL=postgresql://postgres:postgres@localhost:5432/biblioteca_kh \
+  MP_ACCESS_TOKEN=TEST \
+  RESEND_API_KEY=TEST \
+  FROM_EMAIL=test@example.com \
+  ADMIN_TOKEN=local-dev \
+  node server.js
+```
+
 ## Build
 
 ```bash
 npm run build
 ```
 
-En Windows PowerShell, si `npm run build` falla por politica de ejecucion de scripts, usar:
+En Windows PowerShell, si `npm run build` falla por politica de ejecucion:
 
 ```bash
 npm.cmd run build
@@ -103,72 +145,102 @@ npm run preview
 
 ## Variables De Entorno
 
-Configurar en Netlify: **Site configuration -> Environment variables**.
+Configurar en **Coolify → Environment variables** del servicio correspondiente.
 
-| Variable | Requerida | Uso |
-|---|---:|---|
-| `MP_ACCESS_TOKEN` | Si | Token de Mercado Pago para crear preferencias y consultar pagos |
-| `RESEND_API_KEY` | Si | API key de Resend para correos |
-| `FROM_EMAIL` | Si | Remitente verificado en Resend |
-| `NOTIFY_EMAIL` | Recomendado | Correo que recibe nuevos leads |
-| `URL` | Netlify | URL del sitio, Netlify la inyecta en produccion |
+| Variable | Scope | Requerida | Uso |
+|---|---|---:|---|
+| `VITE_API_URL` | build | Si | URL del backend (default `https://api.edvanta.co`) |
+| `PORT` | api runtime | No | Puerto Express (default 3000) |
+| `CORS_ORIGINS` | api runtime | No | Orígenes permitidos (CSV) |
+| `SITE_URL` | api runtime | No | URL pública del frontend |
+| `API_URL` | api runtime | No | URL pública del backend (para webhook MP) |
+| `DATABASE_URL` | api runtime | Si | Inyectada por Coolify al enlazar Postgres |
+| `MP_ACCESS_TOKEN` | api runtime | Si | Token de Mercado Pago (producción) |
+| `RESEND_API_KEY` | api runtime | Si | API key de Resend |
+| `FROM_EMAIL` | api runtime | Si | Remitente verificado en Resend |
+| `NOTIFY_EMAIL` | api runtime | Recomendado | Correo donde llegan los leads |
+| `ADMIN_TOKEN` | api runtime | Recomendado | Token para `/api/list-orders` |
 
-No subir secretos al repositorio. Los archivos `.env` y `.env.local` ya estan ignorados.
+No subir secretos al repositorio. Los archivos `.env*` ya están ignorados.
 
-## Funciones Netlify
+## Log De Órdenes (PostgreSQL)
 
-### `create-preference.mjs`
+Cada pago aprobado por Mercado Pago se registra automáticamente en la tabla `orders` con:
 
-Crea la preferencia de Mercado Pago y devuelve `init_point` para redirigir al comprador.
+- `payment_id`, `status`, `status_detail`
+- `email`, `payer_id`
+- `items` (jsonb con id, name, has_download por producto)
+- `transaction_amount`, `currency_id`
+- `payment_method`, `payment_type`
+- `date_approved`, `date_created`, `logged_at`, `email_sent_at`
 
-Entrada esperada:
+Para consultarlo:
 
-```json
-{
-  "items": [
-    {
-      "id": "atencion-farmaceutica",
-      "name": "Kit de Atencion Farmaceutica Pro",
-      "price": 44900,
-      "qty": 1
-    }
-  ]
-}
+```bash
+# Listar las últimas 50 órdenes
+curl https://api.edvanta.co/api/list-orders \
+  -H "x-admin-token: $ADMIN_TOKEN"
+
+# Limitar resultados
+curl "https://api.edvanta.co/api/list-orders?limit=20" \
+  -H "x-admin-token: $ADMIN_TOKEN"
+
+# Buscar una orden por id de pago
+curl "https://api.edvanta.co/api/list-orders?payment_id=123456789" \
+  -H "x-admin-token: $ADMIN_TOKEN"
 ```
 
-Importante: antes de produccion fuerte, conviene que esta funcion recalcule precios desde una fuente confiable del servidor y no desde el navegador.
+También se puede pasar el token por query string (`?token=...`) si el cliente no soporta headers personalizados.
 
-### `mp-webhook.mjs`
+## Despliegue En Coolify
 
-Recibe notificaciones de Mercado Pago. Si el pago esta aprobado, busca los productos comprados en `metadata.product_ids` y envia links por correo.
+**Project:** `cursos` (uuid `pksk0s04cgssswgks0000sco`)
+**Environment:** `production` (uuid `swkko00wsswswgckg4ckw0ws`)
 
-Pendiente de produccion:
+### Servicios a crear
 
-- Reemplazar todos los `PEGA_AQUI_EL_LINK` por links reales.
-- Agregar idempotencia si se quiere evitar reenvio de correos ante reintentos.
-- Validar firma del webhook si se habilita secret de Mercado Pago.
+1. **Postgres** (tipo `standalone-postgresql`) — DB name `biblioteca_kh`.
+2. **api** — Docker image, `Dockerfile` desde `api/`. Dominio: `api.edvanta.co`.
+3. **web** — Docker image, `Dockerfile.web` desde raíz. Dominios: `edvanta.co` y `www.edvanta.co`.
 
-### `lead-capture.mjs`
+### Configurar DNS en Cloudflare
 
-Recibe nombre y correo desde el formulario de recursos gratis. Envia una notificacion interna y un correo al visitante.
+Los registros DNS deben apuntar a Coolify (Traefik los recoge automáticamente):
 
-Pendiente de produccion:
+| Tipo | Nombre | Destino |
+|---|---|---|
+| `A` | `@` | IP del servidor Coolify |
+| `A` | `www` | IP del servidor Coolify |
+| `A` | `api` | IP del servidor Coolify |
 
-- Completar `FREE_GUIDES` con links reales.
-- Usar dominio verificado en Resend para `FROM_EMAIL`.
+El proxy de Cloudflare (naranja) debe estar **activado** para que Traefik emita el certificado SSL automáticamente vía Let's Encrypt / ACME DNS-01.
+
+### Verificar `edvanta.co` en Resend
+
+Para enviar correos desde `hola@edvanta.co`:
+
+1. En [resend.com/domains](https://resend.com/domains), agregar `edvanta.co`.
+2. Copiar los registros SPF/DKIM que Resend muestra.
+3. Pegarlos en Cloudflare DNS como registros `TXT`.
+4. Esperar verificación (unos minutos).
+5. Setear `FROM_EMAIL=Biblioteca KH <hola@edvanta.co>` en el servicio `api` de Coolify.
 
 ## Donde Editar Contenido
 
 | Necesidad | Archivo |
 |---|---|
 | WhatsApp, correo, Hotmart, redes | `src/config/links.js` |
+| URL del backend (build-time) | `src/config/api.js` |
 | Productos y herramientas Biblioteca KH | `src/data/products.js` |
 | Cursos recomendados | `src/data/courses.js` |
 | Contenido Feliz Sin Tiroides | `src/data/fst.js` |
 | Cursos/productos AtenFarmaClinic | `src/data/atenfarma.js` |
 | Textos legales | `src/data/legal.js` |
-| Categorias | `src/data/categories.js` |
+| Categorías | `src/data/categories.js` |
 | Rutas formativas | `src/data/routes.js` |
+| Precios server-side | `api/lib/catalog.js` |
+| Links de descarga de ebooks | `api/routes/create-preference.js` (DOWNLOADS) |
+| Links de guías gratis | `api/lib/free-guides.js` |
 
 ## Imagenes
 
@@ -193,52 +265,32 @@ El carrito vive en `src/context/CartContext.jsx` y se persiste en `localStorage`
 Flujo:
 
 1. Usuario agrega un producto.
-2. `CartDrawer` envia el carrito a `/.netlify/functions/create-preference`.
-3. Netlify Function crea preferencia en Mercado Pago.
+2. `CartDrawer` envia el carrito a `apiUrl('/api/create-preference')`.
+3. Backend crea preferencia en Mercado Pago con precios del catálogo server-side.
 4. Usuario paga en Mercado Pago.
-5. Mercado Pago redirige al sitio y notifica a `mp-webhook`.
+5. Mercado Pago redirige al sitio y notifica al webhook.
 6. `PaymentStatus` muestra estado visual.
-7. `mp-webhook` envia links si el pago esta aprobado y los links estan configurados.
-
-## Despliegue En Netlify
-
-`netlify.toml` ya contiene:
-
-```toml
-[build]
-  command = "npm run build"
-  publish = "dist"
-  functions = "netlify/functions"
-```
-
-Tambien incluye redirect SPA:
-
-```toml
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-```
+7. Webhook guarda la orden en Postgres y envía links de descarga.
 
 ## Checklist Antes De Publicar
 
-- [ ] Confirmar dominio personalizado en Netlify.
-- [ ] Configurar `MP_ACCESS_TOKEN` de produccion.
-- [ ] Verificar dominio en Resend.
-- [ ] Configurar `FROM_EMAIL` con dominio verificado.
-- [ ] Completar links reales en `DOWNLOADS`.
-- [ ] Completar links reales en `FREE_GUIDES`.
+- [ ] Dominio `edvanta.co` apunta a Coolify vía Cloudflare.
+- [ ] Servicio Postgres provisionado y enlazado al servicio `api`.
+- [ ] `MP_ACCESS_TOKEN` de producción configurado.
+- [ ] `edvanta.co` verificado en Resend + DNS records en Cloudflare.
+- [ ] `FROM_EMAIL` usa el dominio verificado.
+- [ ] `ADMIN_TOKEN` generado (string aleatorio largo).
+- [ ] Completar links reales en `DOWNLOADS` (api/routes/create-preference.js).
+- [ ] Completar links reales en `FREE_GUIDES` (api/lib/free-guides.js).
 - [ ] Revisar `HOTMART_URL`, `LEAD_FORM_URL` e `INSTAGRAM_URL`.
 - [ ] Probar compra real de bajo monto.
-- [ ] Probar webhook de pago aprobado.
 - [ ] Confirmar que los correos llegan a comprador y a Karla.
 - [ ] Revisar textos legales y descargo medico.
 
 ## Notas Para Colaboradores
 
-- No subir `node_modules`, `dist`, `.netlify`, `.env` ni `.env.local`.
+- No subir `node_modules`, `dist`, `.env*`, `set-env.ps1` ni `opencode.json`.
 - No poner tokens, claves ni secretos en codigo.
 - Mantener el estilo visual profesional, educativo y sobrio.
 - Evitar emojis como elementos principales de UI; preferir imagenes, SVGs o iconos lineales.
 - Preservar las marcas y rutas existentes.
-

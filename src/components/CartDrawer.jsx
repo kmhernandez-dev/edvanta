@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useCart } from '../context/CartContext';
 import { formatPrice } from '../utils/format';
 import { waLink } from '../config/links';
+import { apiUrl } from '../config/api';
 
 export default function CartDrawer() {
   const { items, total, count, isOpen, closeCart, increment, decrement, removeItem, clearCart } = useCart();
@@ -13,7 +14,7 @@ export default function CartDrawer() {
     setPaying(true);
     setPayError('');
     try {
-      const res = await fetch('/.netlify/functions/create-preference', {
+      const res = await fetch(apiUrl('/api/create-preference'), {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
         body: JSON.stringify({ items }),

@@ -1,0 +1,15 @@
+# No enviar al contexto de Docker
+node_modules
+dist
+.git
+.gitignore
+.env
+.env.*
+*.md
+set-env.ps1
+.dockerignore
+Dockerfile.web.dockerignore
+.vscode
+.idea
+.DS_Store
+opencode.json

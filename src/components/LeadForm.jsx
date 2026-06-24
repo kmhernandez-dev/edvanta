@@ -1,8 +1,9 @@
 import { useState } from 'react';
+import { apiUrl } from '../config/api';
 
 /**
  * Formulario de captación de correos para los recursos gratis.
- * Envía los datos a la función /lead-capture (Resend).
+ * Envía los datos al endpoint /api/lead-capture (Resend).
  */
 export default function LeadForm({ buttonText = 'Quiero los recursos gratis' }) {
   const [name, setName]   = useState('');
@@ -15,7 +16,7 @@ export default function LeadForm({ buttonText = 'Quiero los recursos gratis' }) 
     setError('');
     setState('sending');
     try {
-      const res = await fetch('/.netlify/functions/lead-capture', {
+      const res = await fetch(apiUrl('/api/lead-capture'), {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
         body: JSON.stringify({ name, email }),
