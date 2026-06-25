@@ -10,6 +10,9 @@ WORKDIR /app
 COPY api/package*.json ./
 RUN npm ci --omit=dev && npm cache clean --force
 
+# wget viene preinstalado en node:alpine pero lo aseguramos.
+RUN apk add --no-cache wget
+
 COPY api/ ./
 
 ENV NODE_ENV=production
