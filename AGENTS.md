@@ -1,277 +1,202 @@
 # Agent Guide
 
-This file is the main context document for coding agents working on this repository. Read it before editing.
+Read this before editing. The owner asked not to delete existing project files or assets unless explicitly requested.
 
 ## Project Identity
 
-Commercial education platform for Karla Hernandez with three connected brands:
+This repository powers **Edvanta / Biblioteca Profesional KH**, a commercial education platform for Karla Hernandez.
 
-- **Biblioteca Profesional KH**: professional learning resources, free course discovery, editable templates, dashboards and career tools.
-- **Feliz Sin Tiroides**: thyroid-health education for patients, ebooks, free lead magnets and services.
-- **AtenFarmaClinic**: clinical pharmacy education and professional resources.
+Public brand areas:
 
-Business goal: sell digital resources and capture leads while presenting a professional academy-like experience.
+- **Biblioteca Profesional KH**: free course discovery, professional templates, dashboards, career and pharmacy/health resources.
+- **Feliz Sin Tiroides**: thyroid-health education, ebooks, free resources and services.
+- **AtenFarmaClinic**: clinical pharmacy education and resources.
 
-Production domain: **https://edvanta.co** (frontend) and **https://api.edvanta.co** (backend).
+Production target: `https://edvanta.co`.
 
-## High-Level Architecture
+## Current Architecture
 
-Two containers, both deployed in **Coolify** (project `cursos`):
+The current architecture is a Docker Compose stack in Coolify:
 
-```
-┌─────────────────────────────────────────────────────┐
-│            Frontend (React SPA)                    │
-│   - Vite build → static files                       │
-│   - Served by nginx                                │
-│   - https://edvanta.co                              │
-│   - Dockerfile: Dockerfile.web (multi-stage)        │
-└─────────────────────────────────────────────────────┘
-                        │
-                  fetch /api/*
-                        ▼
-┌─────────────────────────────────────────────────────┐
-│            Backend (Node 20 + Express)             │
-│   - Endpoints under /api/*                          │
-│   - Connects to Postgres for order log              │
-│   - Sends emails via Resend                         │
-│   - https://api.edvanta.co                          │
-│   - Dockerfile: api/Dockerfile                       │
-└─────────────────────────────────────────────────────┘
-                        │
-                  pg connection
-                        ▼
-┌─────────────────────────────────────────────────────┐
-│            Postgres (standalone)                    │
-│   - Database: biblioteca_kh                         │
-│   - Table: orders (log de pagos)                    │
-└─────────────────────────────────────────────────────┘
+```text
+Cloudflare
+  -> Coolify / Traefik
+    -> web container (nginx, port 80)
+      -> React static build
+      -> /api/* proxy to api:3000
+    -> api container (Node 20 + Express)
+      -> PostgreSQL
+      -> Mercado Pago
+      -> Resend
 ```
 
-### Repo layout
+Important: older docs mentioned `Dockerfile.web`, `api/Dockerfile`, Netlify functions and a separate public `api.edvanta.co`. The current repo uses:
 
-```
-.
-├── src/                  # React SPA (frontend)
-│   ├── App.jsx
-│   ├── components/
-│   ├── context/          # CartContext (localStorage)
-│   ├── data/             # Catalogos (products, fst, courses, etc.)
-│   ├── config/
-│   │   ├── api.js        # apiUrl() — usa VITE_API_URL
-│   │   └── links.js      # WhatsApp, email, redes
-│   └── pages/
-├── api/                  # Backend Node/Express
-│   ├── server.js         # Entry point
-│   ├── db.js             # Pool de Postgres
-│   ├── Dockerfile        # Imagen del backend
-│   ├── lib/
-│   │   ├── catalog.js    # Precios server-side (NO TOCAR precios sin sync)
-│   │   ├── free-guides.js# Links de recursos gratis
-│   │   ├── migrate.js    # Corre migrations/ al arrancar
-│   │   └── resend.js     # Helper emails
-│   ├── migrations/
-│   │   └── 001_orders.sql# Schema de la tabla orders
-│   └── routes/
-│       ├── create-preference.js
-│       ├── mp-webhook.js
-│       ├── lead-capture.js
-│       └── list-orders.js (admin, requiere ADMIN_TOKEN)
-├── public/img/           # Imagenes estaticas
-├── Dockerfile.web        # Build del frontend (multi-stage)
-├── nginx.conf            # Config nginx con SPA fallback
-├── .env.example          # Plantilla de variables
-├── package.json          # Solo el frontend
-└── .dockerignore         # Protege secretos del contexto Docker
-```
+- `Dockerfile` for frontend/nginx.
+- `Dockerfile.api` for backend.
+- `docker-compose.yaml` for Coolify.
+- `nginx.conf` to proxy `/api/*` to internal `api:3000`.
 
 ## Tech Stack
 
-- React 18 (Vite 5)
+- React 18
+- Vite 8
 - React Router 7
 - Tailwind CSS 3
-- Node 20 + Express 4
-- PostgreSQL (vía `pg`)
-- Mercado Pago SDK (`mercadopago`)
-- Resend API (vía `fetch`, sin SDK)
-- Coolify para deploy
-- GitHub Actions / Coolify git integration para CI/CD
+- Node 20
+- Express 4
+- PostgreSQL (`pg`)
+- Mercado Pago SDK
+- Resend API via `fetch`
+- Nginx
+- Docker Compose
+- Coolify
 
 ## Commands
 
-Install (frontend):
+Frontend:
 
 ```bash
 npm install
-```
-
-Dev local (frontend, hot-reload):
-
-```bash
-npm run dev
-```
-
-Build:
-
-```bash
-npm run build        # genera dist/
-```
-
-Si bloquea PowerShell:
-
-```bash
 npm.cmd run build
 ```
 
-Backend local (requiere Postgres corriendo):
+Backend syntax check:
 
 ```bash
 cd api
 npm install
-DATABASE_URL=postgresql://postgres:postgres@localhost:5432/biblioteca_kh \
-  MP_ACCESS_TOKEN=TEST \
-  RESEND_API_KEY=TEST \
-  FROM_EMAIL=test@example.com \
-  ADMIN_TOKEN=local-dev \
-  node server.js
+node --check server.js
 ```
+
+Windows note: use `npm.cmd` if PowerShell blocks `npm.ps1`.
+
+## Key Files
+
+| File | Purpose |
+|---|---|
+| `src/App.jsx` | Public frontend routes |
+| `src/config/api.js` | Builds API URLs; empty `VITE_API_URL` means relative `/api` |
+| `src/config/links.js` | WhatsApp, Hotmart, email and social links |
+| `src/context/CartContext.jsx` | Global cart and localStorage persistence |
+| `src/data/products.js` | Visible Biblioteca KH products |
+| `src/data/fst.js` | Feliz Sin Tiroides ebooks/content |
+| `src/data/atenfarma.js` | AtenFarmaClinic content |
+| `api/server.js` | Express app and health endpoints |
+| `api/lib/catalog.js` | Server-side product prices; source of truth for checkout |
+| `api/lib/free-guides.js` | Free guide URLs |
+| `api/lib/resend.js` | Email helper |
+| `api/routes/create-preference.js` | Mercado Pago preference creation and download map |
+| `api/routes/mp-webhook.js` | Payment confirmation, order log, download email |
+| `api/routes/lead-capture.js` | Lead capture endpoint |
+| `api/routes/list-orders.js` | Admin order listing with `ADMIN_TOKEN` |
+| `api/migrations/001_orders.sql` | PostgreSQL schema |
+| `Dockerfile` | Frontend/nginx image |
+| `Dockerfile.api` | Backend image |
+| `docker-compose.yaml` | Coolify stack |
+| `nginx.conf` | SPA fallback and API proxy |
 
 ## Routing
 
-- `/` → `BibliotecaHome`
-- `/feliz-sin-tiroides` → `FelizSinTiroides`
-- `/atenfarmaclinic` → `AtenFarmaClinic`
-- `/privacidad` → `LegalPage`
-- `/terminos` → `LegalPage`
-- `/descargo-medico` → `LegalPage`
-- `/afiliados` → `LegalPage`
-- `*` → `BibliotecaHome`
+Frontend:
 
-## Data Model Notes
+- `/`
+- `/feliz-sin-tiroides`
+- `/atenfarmaclinic`
+- `/privacidad`
+- `/terminos`
+- `/descargo-medico`
+- `/afiliados`
 
-Product records usually include:
+Backend:
 
-- `id`: stable product id, also used by cart and webhook metadata.
-- `name`: display name.
-- `category`: display category.
-- `price`: COP integer (visible to client).
-- `comparePrice`: previous price or `null`.
-- `image`: optional public image path.
-- `formats`: display text for file formats.
-- `badge`: optional label.
-- `description`, `forWhom`, `problem`: modal/product copy.
-- `items`: list of included resources.
-- `relatedCourses`: Edutin links.
-- `hotmartUrl`: optional external checkout URL.
-
-Do not change an `id` unless you also update:
-
-- `api/lib/catalog.js` (server-side price lookup).
-- `api/routes/create-preference.js` `DOWNLOADS` map.
-- Any UI references.
-- Any external delivery process.
+- `GET /health`
+- `GET /api/health`
+- `GET /api/health/db`
+- `POST /api/create-preference`
+- `POST /api/mp-webhook`
+- `POST /api/lead-capture`
+- `GET /api/list-orders`
 
 ## Payment Flow
 
-1. `CartContext` stores selected items in `localStorage` (key `bpkh_cart_v1`).
-2. `CartDrawer` posts items to `apiUrl('/api/create-preference')` (uses `VITE_API_URL`).
-3. `api/routes/create-preference.js` looks up each product id in `api/lib/catalog.js`. Any price sent from the browser is **ignored**.
-4. Mercado Pago redirects user back with status query params.
-5. `PaymentStatus.jsx` reads query params and shows success/pending/failure.
-6. Mercado Pago calls `api/routes/mp-webhook.js`.
-7. The webhook confirms payment status with Mercado Pago API.
-8. If approved, it logs the order to Postgres and sends download links with Resend.
-9. Karla can list/inspect orders via `GET /api/list-orders` using the `ADMIN_TOKEN`.
+1. User adds products to cart.
+2. `CartDrawer` posts to `apiUrl('/api/create-preference')`.
+3. Backend validates each `id` against `api/lib/catalog.js`.
+4. Browser-submitted prices are ignored.
+5. Backend creates Mercado Pago preference.
+6. Mercado Pago redirects buyer back to `SITE_URL`.
+7. Mercado Pago calls `/api/mp-webhook`.
+8. Webhook confirms payment with Mercado Pago API.
+9. Approved payment is upserted into PostgreSQL `orders`.
+10. If real download links exist, Resend emails them to the buyer.
+
+## Product Id Rule
+
+Product IDs are cross-system keys. Do not change a product `id` unless you also update:
+
+- `src/data/products.js` or `src/data/fst.js`
+- `api/lib/catalog.js`
+- `api/routes/create-preference.js` download map
+- Any external delivery/link process
 
 ## Environment Variables
 
-Never commit secrets. Two scopes:
+Frontend build-time:
 
-**Build-time (frontend, baked into the bundle):**
+- `VITE_API_URL`: optional. Prefer empty in Coolify so frontend uses `/api` relative.
 
-- `VITE_API_URL` — URL del backend (default `https://api.edvanta.co`).
+Backend runtime:
 
-**Runtime (backend container):**
+- `NODE_ENV`
+- `PORT`
+- `CORS_ORIGINS`
+- `SITE_URL`
+- `API_URL`
+- `DATABASE_URL`
+- `MP_ACCESS_TOKEN`
+- `RESEND_API_KEY`
+- `FROM_EMAIL`
+- `NOTIFY_EMAIL`
+- `ADMIN_TOKEN`
 
-- `PORT` (default 3000)
-- `CORS_ORIGINS` (default `https://edvanta.co,https://www.edvanta.co`)
-- `SITE_URL` (default `https://edvanta.co`)
-- `API_URL` (default `https://api.edvanta.co`)
-- `DATABASE_URL` — Coolify injects if you link Postgres service
-- `MP_ACCESS_TOKEN` — Mercado Pago Access Token (prod)
-- `RESEND_API_KEY` — Resend API key
-- `FROM_EMAIL` — verified sender in Resend (must use edvanta.co after verification)
-- `NOTIFY_EMAIL` — Karla's email for lead notifications
-- `ADMIN_TOKEN` — long random string for `/api/list-orders`
+Never commit real values.
 
-## Content Editing Rules
+## Deployment Notes
 
-- Prefer editing `src/data/*` for copy, prices and catalog changes.
-- Prefer editing `src/config/links.js` for external links.
-- Prefer editing `api/lib/catalog.js` for SERVER-SIDE prices (mirror of `src/data/*`).
-- Keep product ids stable across `src/data/*` and `api/lib/catalog.js`.
-- Keep prices as plain numbers in COP.
-- Add new public assets under `public/img`.
-- Reference public images as `/img/file-name.ext`.
-- Do not use large emoji blocks as primary visuals; use images or SVG line icons.
+Recommended Coolify setup:
 
-## Visual Direction
+- One Docker Compose application from repo root.
+- Compose file: `docker-compose.yaml`.
+- Public service: `web`, port `80`.
+- Domains on `web`: `edvanta.co`, `www.edvanta.co`.
+- `api` is internal only, exposed to `web` on Docker network as `api:3000`.
+- Cloudflare A records should point to the Coolify server IP.
 
-The desired look is:
+Health checks after deploy:
 
-- Professional online academy / Edutin-like polish.
-- Clean cards with real or generated professional imagery.
-- Navy, teal, white, and subtle accent colors.
-- Trustworthy healthcare/education tone.
-- Minimal clutter, clear CTAs, high legibility.
+```bash
+curl https://edvanta.co/health
+curl https://edvanta.co/api/health
+curl https://edvanta.co/api/health/db
+```
 
-Avoid:
+If these return 503, inspect Coolify service status, Traefik labels/domains, web/api logs, database connectivity and Cloudflare origin IP.
 
-- Emoji-heavy UI.
-- Placeholder links in visible CTAs.
-- Overly playful graphics for clinical/professional content.
-- Breaking responsive card grids.
+## Known Production Gaps
 
-## Files And Folders To Avoid Committing
-
-- `node_modules`
-- `dist`
-- `.env`, `.env.local`, `.env.*.local`
-- `set-env.ps1` (script local con tokens)
-- `opencode.json` (config del IDE local)
-- `.coolify`, `.netlify` (legacy)
-
-Already in `.gitignore`.
-
-## Coolify Setup (target state)
-
-Project: **cursos** (uuid `pksk0s04cgssswgks0000sco`)
-Environment: **production** (uuid `swkko00wsswswgckg4ckw0ws`)
-
-Services expected:
-
-1. **Postgres** (standalone-postgresql) — `biblioteca_kh`
-2. **api** (Dockerfile from `api/`) — domain `api.edvanta.co`
-3. **web** (Dockerfile.web from root) — domain `edvanta.co` + `www.edvanta.co`
-
-When linking Postgres → api in Coolify, the `DATABASE_URL` env var is auto-injected.
-
-## Production Gaps To Watch
-
-- `api/routes/create-preference.js` `DOWNLOADS` map still contains `'PEGA_AQUI_EL_LINK'` placeholders.
-- `api/lib/free-guides.js` `FREE_GUIDES` has empty `url` fields.
-- `src/config/links.js` may contain placeholder Hotmart/Form links.
+- `api/routes/create-preference.js` still has `PEGA_AQUI_EL_LINK` placeholders unless the owner has replaced them.
+- `api/lib/free-guides.js` may have empty URLs.
+- `src/config/links.js` may contain placeholder Hotmart/form/social links.
 - Mercado Pago webhook signature validation is not implemented.
-- Resend sender domain `edvanta.co` must be verified in Resend + DNS SPF/DKIM records.
+- Frontend `npm audit` reports Vite/esbuild dev-server advisory; plan a Vite upgrade and test.
 
-## Safe Editing Workflow
+## Editing Rules
 
-1. Inspect relevant files first.
-2. Make focused changes only.
-3. Do not delete original assets unless explicitly asked.
-4. Run `npm.cmd run build` to verify the frontend builds.
-5. Run `node --check <file.js>` on backend files you changed.
-6. Report changed files and any production risks.
-
-## User Preference
-
-The owner explicitly asked not to delete existing project files because that could damage the app. Preserve existing content and add non-destructive changes whenever possible.
+- Preserve existing files/assets.
+- Prefer data edits over component rewrites.
+- Keep UI professional, clean and academy-like.
+- Avoid emoji-heavy UI.
+- Run `npm.cmd run build` after frontend changes.
+- Run `node --check` for backend files changed.
+- Report remaining production risks clearly.

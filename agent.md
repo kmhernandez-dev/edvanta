@@ -4,27 +4,42 @@ Read `AGENTS.md` first. This file exists because some tools/users ask for `agent
 
 ## What This Repo Is
 
-React + Vite + Tailwind SPA for Karla Hernandez:
+Edvanta / Biblioteca Profesional KH is a React + Vite + Tailwind frontend with a Node/Express/PostgreSQL backend.
+
+Brands:
 
 - Biblioteca Profesional KH
 - Feliz Sin Tiroides
 - AtenFarmaClinic
 
-It sells digital resources, recommends courses, captures leads and integrates with Mercado Pago + Resend through Netlify Functions.
+It sells digital resources, recommends courses, captures leads, integrates with Mercado Pago, sends emails via Resend and logs approved orders in PostgreSQL.
 
 ## Run
 
 ```bash
 npm install
-npm run dev
 npm.cmd run build
+
+cd api
+npm install
+node --check server.js
 ```
 
-Use `npm.cmd run build` on Windows if PowerShell blocks `npm.ps1`.
+## Deploy Shape
+
+- Coolify Docker Compose stack.
+- `Dockerfile`: frontend/nginx.
+- `Dockerfile.api`: backend.
+- `docker-compose.yaml`: web + api.
+- `nginx.conf`: `/api/*` proxy to internal `api:3000`.
+- Public domain target: `https://edvanta.co`.
 
 ## Edit Content Here
 
 - Products: `src/data/products.js`
+- Server-side prices: `api/lib/catalog.js`
+- Paid download links: `api/routes/create-preference.js`
+- Free guide URLs: `api/lib/free-guides.js`
 - Feliz Sin Tiroides: `src/data/fst.js`
 - AtenFarmaClinic: `src/data/atenfarma.js`
 - Links: `src/config/links.js`
@@ -33,12 +48,13 @@ Use `npm.cmd run build` on Windows if PowerShell blocks `npm.ps1`.
 
 ## Do Not Delete
 
-Do not delete existing source files, data files, images, or config. Add changes safely and keep backups/old assets unless the user explicitly asks to remove them.
+Do not delete existing source files, data files, images, or config. Add changes safely and keep old assets unless the user explicitly asks to remove them.
 
 ## Production Warnings
 
-- Verify Mercado Pago prices server-side before serious sales.
-- Replace `PEGA_AQUI_EL_LINK` in `mp-webhook.mjs`.
-- Complete free guide URLs in `lead-capture.mjs`.
+- If `edvanta.co` returns 503, check Coolify/Traefik/Cloudflare/origin first.
+- Replace `PEGA_AQUI_EL_LINK` in `api/routes/create-preference.js`.
+- Complete free guide URLs in `api/lib/free-guides.js`.
+- Keep product ids synced between frontend data and `api/lib/catalog.js`.
 - Never commit `.env` or secrets.
 

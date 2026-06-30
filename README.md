@@ -1,50 +1,68 @@
-# Biblioteca Profesional KH
+# Edvanta / Biblioteca Profesional KH
 
-Plataforma web comercial y educativa para Karla Hernandez. Reune cursos recomendados, herramientas digitales, ebooks, servicios, captacion de leads y pagos online para tres marcas relacionadas:
+Plataforma web comercial y educativa para Karla Hernandez.
 
-- **Biblioteca Profesional KH**: cursos gratuitos tipo academia, herramientas editables y kits profesionales para farmacia, salud, calidad, datos y empleabilidad.
+Produccion objetivo:
+
+- Frontend: `https://edvanta.co`
+- API: servida por el mismo dominio mediante proxy relativo `/api/*`
+- Repositorio: `https://github.com/kmhernandez-dev/edvanta`
+
+La app combina tres marcas:
+
+- **Biblioteca Profesional KH**: cursos gratuitos, herramientas editables, kits profesionales y recursos para farmacia, salud, calidad, datos y empleabilidad.
 - **Feliz Sin Tiroides**: educacion para pacientes, ebooks, recursos gratis, servicios y comunidad de salud tiroidea.
 - **AtenFarmaClinic**: formacion y recursos para quimicos farmaceuticos clinicos.
 
-La aplicacion esta construida como SPA con React, Vite y Tailwind CSS, con un backend Node/Express + PostgreSQL, todo desplegado en **Coolify**.
+## Estado Tecnico
 
-**Produccion:** [edvanta.co](https://edvanta.co) (frontend) + [api.edvanta.co](https://api.edvanta.co) (backend).
-
-## Estado Del Proyecto
-
-- Frontend funcional con rutas publicas y carrito global.
-- Catalogos definidos en archivos locales dentro de `src/data`.
-- Imagenes profesionales en `public/img`.
-- Checkout con Mercado Pago via backend Express.
-- Captura de leads y envio de correos con Resend.
-- Log de ordenes en PostgreSQL.
-- Paginas legales basicas incluidas.
+- Frontend React/Vite/Tailwind funcionando.
+- Backend Node/Express con PostgreSQL.
+- Checkout Mercado Pago via backend.
+- Precios validados server-side en `api/lib/catalog.js`.
+- Captura de leads y correos via Resend.
+- Log de ordenes aprobadas en PostgreSQL.
+- Deploy objetivo en Coolify con `docker-compose.yaml`.
+- Nginx sirve la SPA y hace proxy `/api/*` hacia el backend interno.
 
 ## Stack
 
 - React 18
 - React Router 7
-- Vite 5
+- Vite 8
 - Tailwind CSS 3
 - Node 20 + Express 4
 - PostgreSQL (`pg`)
 - Mercado Pago SDK
 - Resend API via `fetch`
-- Coolify para deploy (Traefik como proxy reverso)
-- nginx para servir el frontend estatico
+- Docker Compose
+- Coolify + Traefik
+- Nginx
 
 ## Estructura
 
 ```text
 .
-|-- api/
-|   |-- server.js               # Express app
-|   |-- db.js                   # Pool Postgres
-|   |-- Dockerfile              # Build del backend
+|-- src/                         # Frontend React
+|   |-- App.jsx                  # Rutas publicas
+|   |-- main.jsx
+|   |-- index.css                # Tailwind + clases base
+|   |-- config/
+|   |   |-- api.js               # apiUrl(): /api relativo o VITE_API_URL
+|   |   `-- links.js             # WhatsApp, correo, Hotmart, redes
+|   |-- context/
+|   |   `-- CartContext.jsx      # Carrito global/localStorage
+|   |-- data/                    # Catalogos y contenido editable
+|   |-- pages/                   # Paginas por marca
+|   `-- components/              # UI reusable
+|-- api/                         # Backend Express
+|   |-- server.js
+|   |-- db.js
+|   |-- package.json
 |   |-- lib/
-|   |   |-- catalog.js          # Precios server-side
-|   |   |-- free-guides.js
-|   |   |-- migrate.js          # Corre migrations al arrancar
+|   |   |-- catalog.js           # Fuente de verdad de precios
+|   |   |-- free-guides.js       # Links de guias gratis
+|   |   |-- migrate.js
 |   |   `-- resend.js
 |   |-- migrations/
 |   |   `-- 001_orders.sql
@@ -53,51 +71,42 @@ La aplicacion esta construida como SPA con React, Vite y Tailwind CSS, con un ba
 |       |-- mp-webhook.js
 |       |-- lead-capture.js
 |       `-- list-orders.js
-|-- src/
-|   |-- App.jsx                 # Rutas principales
-|   |-- main.jsx
-|   |-- index.css               # Tailwind + componentes base
-|   |-- config/
-|   |   |-- api.js              # apiUrl() — usa VITE_API_URL
-|   |   `-- links.js            # WhatsApp, Hotmart, correo, redes
-|   |-- context/
-|   |   `-- CartContext.jsx
-|   |-- data/                   # Catalogos
-|   |-- pages/
-|   |-- components/
-|   `-- utils/
-|-- public/
-|   `-- img/                    # Imagenes estaticas
-|-- Dockerfile.web              # Build del frontend (multi-stage)
-|-- nginx.conf                  # SPA fallback
-|-- package.json
-|-- .env.example
-`-- PARA-HECTOR.md              # Notas tecnicas
+|-- public/img/                  # Imagenes estaticas
+|-- Dockerfile                   # Frontend + nginx
+|-- Dockerfile.api               # Backend Node/Express
+|-- docker-compose.yaml          # Stack web + api para Coolify
+|-- nginx.conf                   # SPA fallback + proxy /api
+|-- .env.example                 # Plantilla de variables
+|-- AGENTS.md
+|-- CLAUDE.md
+`-- PARA-HECTOR.md
 ```
 
-## Rutas Del Frontend
+## Rutas Frontend
 
-| Ruta | Descripcion |
+| Ruta | Pagina |
 |---|---|
 | `/` | Biblioteca Profesional KH |
-| `/feliz-sin-tiroides` | Marca para pacientes con salud tiroidea |
-| `/atenfarmaclinic` | Marca para atencion farmaceutica clinica |
+| `/feliz-sin-tiroides` | Feliz Sin Tiroides |
+| `/atenfarmaclinic` | AtenFarmaClinic |
 | `/privacidad` | Politica de privacidad |
 | `/terminos` | Terminos y condiciones |
 | `/descargo-medico` | Descargo medico |
 | `/afiliados` | Aviso de afiliados |
 
-## Endpoints Del Backend
+## Endpoints Backend
 
-| Método | Ruta | Descripción |
+| Metodo | Ruta | Uso |
 |---|---|---|
-| `GET`  | `/health` | Healthcheck |
-| `POST` | `/api/create-preference` | Crear preferencia de Mercado Pago |
-| `POST` | `/api/mp-webhook` | Webhook de Mercado Pago (log + email) |
-| `POST` | `/api/lead-capture` | Captura de leads (recursos gratis) |
-| `GET`  | `/api/list-orders` | Admin: listar/buscar órdenes (requiere `ADMIN_TOKEN`) |
+| `GET` | `/health` | Liveness |
+| `GET` | `/api/health` | Estado de servicio/configuracion |
+| `GET` | `/api/health/db` | Readiness de PostgreSQL |
+| `POST` | `/api/create-preference` | Crear preferencia Mercado Pago |
+| `POST` | `/api/mp-webhook` | Webhook Mercado Pago |
+| `POST` | `/api/lead-capture` | Captura de leads |
+| `GET` | `/api/list-orders` | Admin: listar ordenes con `ADMIN_TOKEN` |
 
-## Instalacion Local
+## Desarrollo Local
 
 Frontend:
 
@@ -106,13 +115,19 @@ npm install
 npm run dev
 ```
 
-Servidor local por defecto:
+Build frontend:
 
-```text
-http://localhost:5173
+```bash
+npm run build
 ```
 
-Backend (requiere Postgres local):
+En Windows PowerShell, si `npm run build` falla por politica de ejecucion:
+
+```bash
+npm.cmd run build
+```
+
+Backend local:
 
 ```bash
 cd api
@@ -125,172 +140,109 @@ DATABASE_URL=postgresql://postgres:postgres@localhost:5432/biblioteca_kh \
   node server.js
 ```
 
-## Build
-
-```bash
-npm run build
-```
-
-En Windows PowerShell, si `npm run build` falla por politica de ejecucion:
-
-```bash
-npm.cmd run build
-```
-
-Para revisar el build:
-
-```bash
-npm run preview
-```
-
 ## Variables De Entorno
 
-Configurar en **Coolify → Environment variables** del servicio correspondiente.
+Ver `.env.example`.
 
-| Variable | Scope | Requerida | Uso |
-|---|---|---:|---|
-| `VITE_API_URL` | build | Si | URL del backend (default `https://api.edvanta.co`) |
-| `PORT` | api runtime | No | Puerto Express (default 3000) |
-| `CORS_ORIGINS` | api runtime | No | Orígenes permitidos (CSV) |
-| `SITE_URL` | api runtime | No | URL pública del frontend |
-| `API_URL` | api runtime | No | URL pública del backend (para webhook MP) |
-| `DATABASE_URL` | api runtime | Si | Inyectada por Coolify al enlazar Postgres |
-| `MP_ACCESS_TOKEN` | api runtime | Si | Token de Mercado Pago (producción) |
-| `RESEND_API_KEY` | api runtime | Si | API key de Resend |
-| `FROM_EMAIL` | api runtime | Si | Remitente verificado en Resend |
-| `NOTIFY_EMAIL` | api runtime | Recomendado | Correo donde llegan los leads |
-| `ADMIN_TOKEN` | api runtime | Recomendado | Token para `/api/list-orders` |
+Frontend build-time:
 
-No subir secretos al repositorio. Los archivos `.env*` ya están ignorados.
+| Variable | Requerida | Nota |
+|---|---:|---|
+| `VITE_API_URL` | No | Recomendado dejar vacia en Coolify para usar `/api` relativo via nginx |
 
-## Log De Órdenes (PostgreSQL)
+Backend runtime:
 
-Cada pago aprobado por Mercado Pago se registra automáticamente en la tabla `orders` con:
+| Variable | Requerida | Uso |
+|---|---:|---|
+| `PORT` | No | Default `3000` |
+| `CORS_ORIGINS` | No | Default `https://edvanta.co,https://www.edvanta.co` |
+| `SITE_URL` | Recomendado | Back URLs de Mercado Pago |
+| `API_URL` | Recomendado | `notification_url` de Mercado Pago. Con proxy puede ser `https://edvanta.co` |
+| `DATABASE_URL` | Si | Conexion PostgreSQL |
+| `MP_ACCESS_TOKEN` | Si | Mercado Pago |
+| `RESEND_API_KEY` | Si | Resend |
+| `FROM_EMAIL` | Si | Remitente verificado |
+| `NOTIFY_EMAIL` | Recomendado | Lead notifications |
+| `ADMIN_TOKEN` | Si | Protege `/api/list-orders` |
 
-- `payment_id`, `status`, `status_detail`
-- `email`, `payer_id`
-- `items` (jsonb con id, name, has_download por producto)
-- `transaction_amount`, `currency_id`
-- `payment_method`, `payment_type`
-- `date_approved`, `date_created`, `logged_at`, `email_sent_at`
+Nunca subir secretos al repositorio.
 
-Para consultarlo:
+## Deploy Recomendado En Coolify
 
-```bash
-# Listar las últimas 50 órdenes
-curl https://api.edvanta.co/api/list-orders \
-  -H "x-admin-token: $ADMIN_TOKEN"
+Usar **un solo stack Docker Compose** desde la raiz:
 
-# Limitar resultados
-curl "https://api.edvanta.co/api/list-orders?limit=20" \
-  -H "x-admin-token: $ADMIN_TOKEN"
-
-# Buscar una orden por id de pago
-curl "https://api.edvanta.co/api/list-orders?payment_id=123456789" \
-  -H "x-admin-token: $ADMIN_TOKEN"
+```text
+docker-compose.yaml
 ```
 
-También se puede pasar el token por query string (`?token=...`) si el cliente no soporta headers personalizados.
+Servicios:
 
-## Despliegue En Coolify
+- `web`: usa `Dockerfile`, sirve React con nginx, expone puerto 80.
+- `api`: usa `Dockerfile.api`, escucha en `3000`, queda interno.
+- `web` hace proxy `/api/*` a `api:3000`.
 
-**Project:** `cursos` (uuid `pksk0s04cgssswgks0000sco`)
-**Environment:** `production` (uuid `swkko00wsswswgckg4ckw0ws`)
+Dominios:
 
-### Servicios a crear
+- Asignar `edvanta.co` y `www.edvanta.co` al servicio `web`.
+- No es necesario exponer `api.edvanta.co` si se usa proxy relativo.
 
-1. **Postgres** (tipo `standalone-postgresql`) — DB name `biblioteca_kh`.
-2. **api** — Docker image, `Dockerfile` desde `api/`. Dominio: `api.edvanta.co`.
-3. **web** — Docker image, `Dockerfile.web` desde raíz. Dominios: `edvanta.co` y `www.edvanta.co`.
+Health checks esperados:
 
-### Configurar DNS en Cloudflare
+```bash
+curl https://edvanta.co/health
+curl https://edvanta.co/api/health
+curl https://edvanta.co/api/health/db
+```
 
-Los registros DNS deben apuntar a Coolify (Traefik los recoge automáticamente):
+Todos deben responder `200` cuando Coolify, Traefik, Postgres y variables esten correctos.
 
-| Tipo | Nombre | Destino |
-|---|---|---|
-| `A` | `@` | IP del servidor Coolify |
-| `A` | `www` | IP del servidor Coolify |
-| `A` | `api` | IP del servidor Coolify |
+## Flujo De Pago
 
-El proxy de Cloudflare (naranja) debe estar **activado** para que Traefik emita el certificado SSL automáticamente vía Let's Encrypt / ACME DNS-01.
-
-### Verificar `edvanta.co` en Resend
-
-Para enviar correos desde `hola@edvanta.co`:
-
-1. En [resend.com/domains](https://resend.com/domains), agregar `edvanta.co`.
-2. Copiar los registros SPF/DKIM que Resend muestra.
-3. Pegarlos en Cloudflare DNS como registros `TXT`.
-4. Esperar verificación (unos minutos).
-5. Setear `FROM_EMAIL=Biblioteca KH <hola@edvanta.co>` en el servicio `api` de Coolify.
+1. El usuario agrega productos al carrito.
+2. `CartDrawer` llama `apiUrl('/api/create-preference')`.
+3. El backend ignora precios enviados por el navegador.
+4. El backend calcula precio desde `api/lib/catalog.js`.
+5. Mercado Pago procesa el pago.
+6. Mercado Pago llama `/api/mp-webhook`.
+7. El webhook confirma el pago con Mercado Pago.
+8. Si esta aprobado, registra la orden en PostgreSQL.
+9. Si hay links reales configurados, envia descargas por Resend.
 
 ## Donde Editar Contenido
 
 | Necesidad | Archivo |
 |---|---|
-| WhatsApp, correo, Hotmart, redes | `src/config/links.js` |
-| URL del backend (build-time) | `src/config/api.js` |
-| Productos y herramientas Biblioteca KH | `src/data/products.js` |
-| Cursos recomendados | `src/data/courses.js` |
-| Contenido Feliz Sin Tiroides | `src/data/fst.js` |
-| Cursos/productos AtenFarmaClinic | `src/data/atenfarma.js` |
-| Textos legales | `src/data/legal.js` |
-| Categorías | `src/data/categories.js` |
-| Rutas formativas | `src/data/routes.js` |
+| Productos visibles | `src/data/products.js` |
 | Precios server-side | `api/lib/catalog.js` |
-| Links de descarga de ebooks | `api/routes/create-preference.js` (DOWNLOADS) |
-| Links de guías gratis | `api/lib/free-guides.js` |
+| Ebooks/Feliz Sin Tiroides | `src/data/fst.js` |
+| Cursos AtenFarmaClinic | `src/data/atenfarma.js` |
+| Cursos recomendados | `src/data/courses.js` |
+| Links comerciales | `src/config/links.js` |
+| Links de descarga pagada | `api/routes/create-preference.js` |
+| Links de guias gratis | `api/lib/free-guides.js` |
+| Textos legales | `src/data/legal.js` |
 
-## Imagenes
+## Pendientes De Produccion
 
-Las imagenes publicas viven en:
+- Completar links reales en `DOWNLOADS` dentro de `api/routes/create-preference.js`.
+- Completar URLs de `FREE_GUIDES` en `api/lib/free-guides.js`.
+- Revisar placeholders de `HOTMART_URL`, `LEAD_FORM_URL` e `INSTAGRAM_URL` en `src/config/links.js`.
+- Verificar dominio `edvanta.co` en Resend y configurar SPF/DKIM en DNS.
+- Configurar `FROM_EMAIL=Biblioteca KH <hola@edvanta.co>`.
+- Confirmar `MP_ACCESS_TOKEN` de produccion.
+- Confirmar `DATABASE_URL` y migraciones.
+- Probar compra real de bajo monto.
+- Considerar validacion de firma del webhook de Mercado Pago.
+- Planear upgrade de Vite/esbuild por audit del dev server.
 
-```text
-public/img
-```
+## Diagnostico Rapido De 503
 
-Se referencian desde React usando rutas como:
+Si `edvanta.co` devuelve `503`:
 
-```jsx
-<img src="/img/herramienta-farmaceutica.jpg" alt="..." />
-```
-
-No mover ni renombrar imagenes sin actualizar las referencias en `src/data/*` o componentes.
-
-## Carrito Y Pagos
-
-El carrito vive en `src/context/CartContext.jsx` y se persiste en `localStorage` con la clave `bpkh_cart_v1`.
-
-Flujo:
-
-1. Usuario agrega un producto.
-2. `CartDrawer` envia el carrito a `apiUrl('/api/create-preference')`.
-3. Backend crea preferencia en Mercado Pago con precios del catálogo server-side.
-4. Usuario paga en Mercado Pago.
-5. Mercado Pago redirige al sitio y notifica al webhook.
-6. `PaymentStatus` muestra estado visual.
-7. Webhook guarda la orden en Postgres y envía links de descarga.
-
-## Checklist Antes De Publicar
-
-- [ ] Dominio `edvanta.co` apunta a Coolify vía Cloudflare.
-- [ ] Servicio Postgres provisionado y enlazado al servicio `api`.
-- [ ] `MP_ACCESS_TOKEN` de producción configurado.
-- [ ] `edvanta.co` verificado en Resend + DNS records en Cloudflare.
-- [ ] `FROM_EMAIL` usa el dominio verificado.
-- [ ] `ADMIN_TOKEN` generado (string aleatorio largo).
-- [ ] Completar links reales en `DOWNLOADS` (api/routes/create-preference.js).
-- [ ] Completar links reales en `FREE_GUIDES` (api/lib/free-guides.js).
-- [ ] Revisar `HOTMART_URL`, `LEAD_FORM_URL` e `INSTAGRAM_URL`.
-- [ ] Probar compra real de bajo monto.
-- [ ] Confirmar que los correos llegan a comprador y a Karla.
-- [ ] Revisar textos legales y descargo medico.
-
-## Notas Para Colaboradores
-
-- No subir `node_modules`, `dist`, `.env*`, `set-env.ps1` ni `opencode.json`.
-- No poner tokens, claves ni secretos en codigo.
-- Mantener el estilo visual profesional, educativo y sobrio.
-- Evitar emojis como elementos principales de UI; preferir imagenes, SVGs o iconos lineales.
-- Preservar las marcas y rutas existentes.
+1. Verificar que el stack de Coolify este corriendo.
+2. Revisar logs de `web` y `api`.
+3. Confirmar que el dominio esta asignado al servicio `web`, puerto 80.
+4. Confirmar que Cloudflare apunta a la IP correcta del servidor Coolify.
+5. Confirmar que Traefik ve el servicio.
+6. Confirmar que `DATABASE_URL`, `MP_ACCESS_TOKEN`, `RESEND_API_KEY`, `FROM_EMAIL` y `ADMIN_TOKEN` existen.
+7. Probar desde Coolify shell: `wget -q -O - http://api:3000/health`.

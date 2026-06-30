@@ -1,67 +1,70 @@
 # Claude Project Context
 
-This repository powers a React/Vite/Tailwind platform for Karla Hernandez. It has three public brand areas:
+Read `AGENTS.md` first. This file gives the short version for Claude.
+
+## Project
+
+Edvanta / Biblioteca Profesional KH is a React + Express + PostgreSQL platform for:
 
 - Biblioteca Profesional KH
 - Feliz Sin Tiroides
 - AtenFarmaClinic
 
-For full instructions, read `AGENTS.md`. This file provides Claude-specific operating context and guardrails.
+Production target: `https://edvanta.co`.
 
-## Main Goal
+## Architecture
 
-Maintain and improve a professional education/commercial website that:
+- Frontend: React 18, Vite, Tailwind, served by nginx.
+- Backend: Node 20 + Express in `api/`.
+- Database: PostgreSQL with `orders` table.
+- Payments: Mercado Pago through `api/routes/create-preference.js`.
+- Webhook: `api/routes/mp-webhook.js`.
+- Emails: Resend via `api/lib/resend.js`.
+- Deploy: Coolify Docker Compose using `docker-compose.yaml`.
+- Frontend image: `Dockerfile`.
+- Backend image: `Dockerfile.api`.
+- Nginx proxy: `/api/*` -> internal `api:3000`.
 
-- Recommends free online courses.
-- Sells digital kits, ebooks and professional resources.
-- Captures leads for free resources.
-- Uses Mercado Pago checkout.
-- Sends email notifications and download links through Resend.
-
-## Important Commands
+## Commands
 
 ```bash
 npm install
-npm run dev
 npm.cmd run build
+cd api
+npm install
+node --check server.js
 ```
 
-Use `npm.cmd run build` on Windows when PowerShell blocks `npm.ps1`.
-
-## Key Architecture
+## Important Files
 
 - `src/App.jsx`: routes.
-- `src/pages/*`: page-level brand experiences.
-- `src/components/*`: reusable UI.
-- `src/context/CartContext.jsx`: global cart.
-- `src/data/*`: editable business/content data.
-- `src/config/links.js`: commercial links and contact data.
-- `netlify/functions/*`: serverless payment/email integrations.
-- `public/img`: public visual assets.
+- `src/config/api.js`: API URL helper.
+- `src/context/CartContext.jsx`: cart.
+- `src/data/*`: public content/catalog data.
+- `api/lib/catalog.js`: server-side prices. Keep in sync with frontend products.
+- `api/lib/free-guides.js`: free guide URLs.
+- `api/routes/create-preference.js`: Mercado Pago preference + paid download map.
+- `api/routes/mp-webhook.js`: payment confirmation, DB log, download email.
+- `api/routes/list-orders.js`: admin order listing.
+- `api/migrations/001_orders.sql`: orders schema.
+- `docker-compose.yaml`: Coolify stack.
+- `nginx.conf`: SPA fallback and API proxy.
 
-## Behavior Rules
+## Rules
 
-- Do not delete existing files or assets without explicit user permission.
-- Preserve product ids unless updating all dependent systems.
-- Prefer data edits over component rewrites for catalog/content changes.
-- Keep the design professional, clean and academy-like.
-- Avoid emoji-heavy UI; prefer images and line icons.
-- Never expose or commit API keys.
-- Treat payment and health-related copy carefully.
+- Do not delete files/assets unless explicitly asked.
+- Do not commit secrets.
+- Keep product ids stable.
+- If changing visible prices, update `api/lib/catalog.js`.
+- Prefer editing `src/data/*` for content.
+- Keep UI professional and not emoji-heavy.
+- Run build after changes.
 
-## High-Risk Areas
+## Known Production Risks
 
-- `netlify/functions/create-preference.mjs`: currently receives item prices from the client. Production hardening should recalculate price server-side.
-- `netlify/functions/mp-webhook.mjs`: download links must be completed and idempotency/signature validation may be needed.
-- `netlify/functions/lead-capture.mjs`: free-guide URLs may still be empty.
-- `src/config/links.js`: may contain placeholder external links.
-
-## Recommended Response Style For Changes
-
-After editing, summarize:
-
-- Files changed.
-- What was added or improved.
-- Build/test result.
-- Any remaining production tasks.
+- `edvanta.co` returning 503 is likely Coolify/Cloudflare/origin routing, not frontend build.
+- Paid download links in `api/routes/create-preference.js` may still be placeholders.
+- Free guide URLs in `api/lib/free-guides.js` may still be empty.
+- Mercado Pago webhook signature validation is not implemented.
+- Frontend audit reports Vite/esbuild dev-server advisory; plan an upgrade.
 

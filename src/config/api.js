@@ -6,8 +6,9 @@
  *                                  o fallback a localhost)
  *  En producción (build de Coolify) → process.env.VITE_API_URL
  *
- *  VITE_API_URL se setea en build-time desde Coolify:
- *    https://api.edvanta.co
+ *  VITE_API_URL se puede setear en build-time desde Coolify.
+ *  Recomendado en produccion actual: dejarlo vacio para usar
+ *  rutas relativas /api/* servidas por nginx en edvanta.co.
  *
  *  En Coolify puedes dejarlo vacío si vas a usar un proxy
  *  reverso (Traefik) que enrute /api/* al contenedor backend.

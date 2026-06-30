@@ -76,7 +76,10 @@ export async function createPreferenceRoute(req, res) {
 
   // URL del sitio. Coolify la inyecta automáticamente; fallback al dominio.
   const siteUrl = process.env.SITE_URL || 'https://edvanta.co';
-  const apiUrl = process.env.API_URL || 'https://api.edvanta.co';
+  // En la arquitectura actual, nginx publica /api/* en el mismo dominio.
+  // Si API_URL no está definido, usamos SITE_URL para que el webhook apunte a:
+  // https://edvanta.co/api/mp-webhook
+  const apiUrl = process.env.API_URL || siteUrl;
 
   try {
     const client = new MercadoPagoConfig({ accessToken });
