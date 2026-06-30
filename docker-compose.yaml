@@ -1,41 +1,11 @@
-# ============================================================
-# docker-compose.yaml — edvanta.co
-# Para Coolify (build_pack: dockercompose)
-#
-# Servicios:
-#   web  — frontend React servido por nginx
-#          (también hace proxy_pass /api/* → api:3000)
-#   api  — backend Node/Express
-#
-# RED:
-#   - edvanta-net: red interna del stack para web ↔ api
-#   - coolify:    red externa de Coolify. Permite al api resolver
-#                 el hostname del servicio de Postgres
-#                 (jws80wkgkko084c4g08o0k4c) que corre como servicio
-#                 separado dentro del proyecto "cursos".
-#
-# Postgres (biblioteca_kh) es un servicio aparte de Coolify
-# y se enlaza automáticamente a esta red al vincularse al proyecto.
-#
-# DNS en Cloudflare:
-#   - edvanta.co y www.edvanta.co → este stack (Traefik enruta al puerto 80)
-# ============================================================
-
 services:
   web:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: edvanta-web
     restart: unless-stopped
-    ports:
+    expose:
       - "80"
-    healthcheck:
-      test: ["CMD", "wget", "-q", "-O", "-", "http://127.0.0.1/"]
-      interval: 30s
-      timeout: 5s
-      retries: 3
-      start_period: 20s
     depends_on:
       api:
         condition: service_started
@@ -47,16 +17,13 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.api
-    container_name: edvanta-api
     restart: unless-stopped
-    # Solo accesible desde la red interna (web hace proxy_pass).
-    # No exponemos el puerto al host.
     expose:
       - "3000"
     environment:
-      NODE_ENV: "production"
+      NODE_ENV: production
       PORT: "3000"
-      CORS_ORIGINS: "https://edvanta.co,https://www.edvanta.co"
+      CORS_ORIGINS: "http://edvanta.co,https://edvanta.co,http://www.edvanta.co,https://www.edvanta.co"
       SITE_URL: "https://edvanta.co"
       API_URL: "https://edvanta.co"
       DATABASE_URL: "${DATABASE_URL:?DATABASE_URL is required}"
@@ -65,12 +32,6 @@ services:
       FROM_EMAIL: "${FROM_EMAIL:?FROM_EMAIL is required}"
       NOTIFY_EMAIL: "${NOTIFY_EMAIL:-${FROM_EMAIL}}"
       ADMIN_TOKEN: "${ADMIN_TOKEN:?ADMIN_TOKEN is required}"
-    healthcheck:
-      test: ["CMD", "wget", "-q", "-O", "-", "http://127.0.0.1:3000/health"]
-      interval: 30s
-      timeout: 5s
-      retries: 3
-      start_period: 15s
     networks:
       - edvanta-net
       - coolify
@@ -78,9 +39,7 @@ services:
 networks:
   edvanta-net:
     driver: bridge
-  # Red externa de Coolify. El hostname del servicio Postgres
-  # (biblioteca_kh → jws80wkgkko084c4g08o0k4c) resuelve desde
-  # cualquier contenedor conectado a esta red.
+
   coolify:
     external: true
     name: coolify
