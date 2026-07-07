@@ -4,6 +4,7 @@ import BibliotecaHome   from './pages/BibliotecaHome';
 import FelizSinTiroides from './pages/FelizSinTiroides';
 import AtenFarmaClinic  from './pages/AtenFarmaClinic';
 import LegalPage        from './pages/LegalPage';
+import AdminOrders      from './pages/AdminOrders';
 
 import CartDrawer    from './components/CartDrawer';
 import CartToast     from './components/CartToast';
@@ -21,6 +22,9 @@ export default function App() {
 
         {/* Marca: AtenFarmaClinic (químicos farmacéuticos clínicos) */}
         <Route path="/atenfarmaclinic" element={<AtenFarmaClinic />} />
+
+        {/* Panel admin interno (oculto, ruta directa) */}
+        <Route path="/admin/orders" element={<AdminOrders />} />
 
         {/* Páginas legales */}
         <Route path="/privacidad"      element={<LegalPage doc="privacidad" />} />
