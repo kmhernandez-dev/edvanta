@@ -9,6 +9,8 @@
  * ============================================================
  */
 import { MercadoPagoConfig, Preference } from 'mercadopago';
+import { randomUUID } from 'node:crypto';
+import { query } from '../db.js';
 import { getServerProduct } from '../lib/catalog.js';
 
 const DOWNLOADS_PLACEHOLDER = 'PEGA_AQUI_EL_LINK';
@@ -84,6 +86,9 @@ export async function createPreferenceRoute(req, res) {
   try {
     const client = new MercadoPagoConfig({ accessToken });
     const preference = new Preference(client);
+    const externalReference = randomUUID();
+    const total = items.reduce((s, i) => s + i.unit_price * i.quantity, 0);
+    const currencyId = items[0]?.currency_id || 'COP';
 
     const result = await preference.create({
       body: {
@@ -94,16 +99,45 @@ export async function createPreferenceRoute(req, res) {
           pending: `${siteUrl}/?pago=pendiente`,
         },
         auto_return: 'approved',
+        external_reference: externalReference,
         statement_descriptor: 'BIBLIOTECA KH',
-        metadata: { product_ids: productIds },
+        metadata: { product_ids: productIds, external_reference: externalReference },
         notification_url: `${apiUrl}/api/mp-webhook`,
       },
     });
 
+    try {
+      await query(`
+        INSERT INTO orders (
+          preference_id, external_reference, status, status_detail,
+          items, transaction_amount, currency_id, date_created, logged_at
+        ) VALUES ($1,$2,$3,$4,$5::jsonb,$6,$7,NOW(),NOW())
+        ON CONFLICT (external_reference) DO UPDATE SET
+          preference_id       = COALESCE(EXCLUDED.preference_id, orders.preference_id),
+          status              = EXCLUDED.status,
+          status_detail       = EXCLUDED.status_detail,
+          items               = EXCLUDED.items,
+          transaction_amount  = EXCLUDED.transaction_amount,
+          currency_id         = EXCLUDED.currency_id,
+          updated_at          = NOW()
+      `, [
+        result.id || null,
+        externalReference,
+        'pending_checkout',
+        'preference_created',
+        JSON.stringify(items),
+        total,
+        currencyId,
+      ]);
+    } catch (e) {
+      console.error('[create-preference] Error guardando intento:', e.message);
+    }
+
     return res.json({
       init_point: result.init_point,
       id: result.id,
-      total: items.reduce((s, i) => s + i.unit_price * i.quantity, 0),
+      external_reference: externalReference,
+      total,
       items,
     });
   } catch (err) {
