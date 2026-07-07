@@ -23,6 +23,7 @@ export const ebooks = [
     cover: { image: '/img/port-coleccion.jpg', emoji: '🦋', gradient: 'from-teal-500 to-blush-400' },
     tag: 'Colección completa',
     hotmartUrl: 'https://go.hotmart.com/C99303085S?dp=1',
+    checkoutUrl: 'https://pay.hotmart.com/C99303085S',
     featured: true,
   },
   {
@@ -35,6 +36,7 @@ export const ebooks = [
     cover: { image: '/img/port-hipotiroidismo.jpg', emoji: '🍽️', gradient: 'from-teal-500 to-deepblue-700' },
     tag: 'Guía',
     hotmartUrl: 'https://go.hotmart.com/N100606654K?dp=1',
+    checkoutUrl: 'https://pay.hotmart.com/N100606654K',
   },
   {
     id: 'fst-dieta-antiinflamatoria',
@@ -46,6 +48,7 @@ export const ebooks = [
     cover: { image: '/img/port-nutricional.jpg', emoji: '🥗', gradient: 'from-blush-400 to-teal-500' },
     tag: 'Guía',
     hotmartUrl: 'https://go.hotmart.com/O103583638M?dp=1',
+    checkoutUrl: 'https://pay.hotmart.com/O103583638M',
   },
   {
     id: 'fst-comer-hipertiroidismo',
@@ -57,6 +60,7 @@ export const ebooks = [
     cover: { image: '/img/port-hipertiroidismo.jpg', emoji: '🍵', gradient: 'from-teal-600 to-blush-400' },
     tag: 'Guía',
     hotmartUrl: 'https://go.hotmart.com/V100880105F?dp=1',
+    checkoutUrl: 'https://pay.hotmart.com/V100880105F',
   },
   {
     id: 'fst-guia-ayunos',
@@ -68,6 +72,7 @@ export const ebooks = [
     cover: { image: '/img/port-ayunos.jpg', emoji: '⏳', gradient: 'from-deepblue-700 to-teal-600' },
     tag: 'Guía',
     hotmartUrl: 'https://go.hotmart.com/I103583345S?dp=1',
+    checkoutUrl: 'https://pay.hotmart.com/I103583345S',
   },
   {
     id: 'fst-yodoterapia',
@@ -79,6 +84,7 @@ export const ebooks = [
     cover: { image: '/img/port-yodoterapia.jpg', emoji: '⚛️', gradient: 'from-teal-600 to-deepblue-800' },
     tag: 'Guía',
     hotmartUrl: 'https://go.hotmart.com/P100879796W?dp=1',
+    checkoutUrl: 'https://pay.hotmart.com/P100879796W',
   },
   {
     id: 'fst-diario-hipotiroidismo',
@@ -90,6 +96,7 @@ export const ebooks = [
     cover: { image: '/img/port-diario-hipo.jpg', emoji: '📔', gradient: 'from-blush-400 to-deepblue-700' },
     tag: 'Diario',
     hotmartUrl: 'https://go.hotmart.com/B103582518G?dp=1',
+    checkoutUrl: 'https://pay.hotmart.com/B103582518G',
   },
   {
     id: 'fst-diario-hipertiroidismo',
@@ -156,6 +163,18 @@ export const ebooks = [
     cover: { image: '/img/port-jugosfuncionales.jpg', emoji: '🥤', gradient: 'from-blush-500 to-teal-600' },
     tag: 'Recetario',
     hotmartUrl: null,
+  },
+  {
+    id: 'fst-autocuidado',
+    name: 'Curso de Autocuidado de la Tiroides',
+    category: 'Curso · Feliz Sin Tiroides',
+    description: 'Un curso práctico para aprender a cuidarte día a día: hábitos, alimentación, adherencia y bienestar emocional con tu tiroides.',
+    price: 49900,
+    comparePrice: 79900,
+    cover: { image: '/img/port-portada.jpg', emoji: '🎓', gradient: 'from-teal-500 to-deepblue-700' },
+    tag: 'Curso',
+    hotmartUrl: 'https://go.hotmart.com/E104236731U?dp=1',
+    checkoutUrl: 'https://pay.hotmart.com/E104236731U',
   },
 ];
 
