@@ -12,8 +12,10 @@ export default function EbookCard({ ebook }) {
   return (
     <div className={`bg-white rounded-3xl border shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col ${ebook.featured ? 'border-teal-300 ring-1 ring-teal-200' : 'border-sand-100'}`}>
       {/* Cover */}
-      <div className={`relative aspect-[4/3] bg-gradient-to-br ${ebook.cover.gradient} flex items-center justify-center`}>
-        <span className="text-6xl drop-shadow-sm">{ebook.cover.emoji}</span>
+      <div className={`relative aspect-[3/4] flex items-center justify-center overflow-hidden ${ebook.cover.image ? 'bg-sand-100' : `bg-gradient-to-br ${ebook.cover.gradient}`}`}>
+        {ebook.cover.image
+          ? <img src={ebook.cover.image} alt={ebook.name} loading="lazy" className="w-full h-full object-cover" />
+          : <span className="text-6xl drop-shadow-sm">{ebook.cover.emoji}</span>}
         {ebook.featured && (
           <span className="absolute top-3 left-3 chip bg-white/90 text-teal-700 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
             ⭐ Más completo

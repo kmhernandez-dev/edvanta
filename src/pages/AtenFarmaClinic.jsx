@@ -38,7 +38,7 @@ export default function AtenFarmaClinic() {
       <header className="fixed top-0 inset-x-0 z-50 bg-white/95 backdrop-blur border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
           <Link to="/atenfarmaclinic" className="flex items-center gap-2">
-            <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-deepblue-800 to-teal-700 flex items-center justify-center text-lg">⚕️</div>
+            <img src="/img/port-logoatenfarmaclinic.jpg" alt="AtenFarmaClinic" className="w-9 h-9 rounded-xl object-contain bg-white" />
             <div>
               <p className="text-base font-bold text-deepblue-900 leading-none">AtenFarmaClinic</p>
               <p className="text-[10px] text-teal-600 font-medium leading-none mt-0.5">Atención farmacéutica clínica</p>

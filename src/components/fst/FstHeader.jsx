@@ -37,9 +37,7 @@ export default function FstHeader() {
 
           {/* Logo */}
           <a href="#fst-inicio" onClick={e => handleNav(e, '#fst-inicio')} className="flex items-center gap-2 shrink-0">
-            <div className="w-9 h-9 rounded-full bg-gradient-to-br from-teal-500 to-blush-400 flex items-center justify-center text-lg">
-              🦋
-            </div>
+            <img src="/img/port-logofelizsintiroides.jpg" alt="Feliz Sin Tiroides" className="w-9 h-9 rounded-full object-contain bg-white" />
             <div>
               <p className="font-serif text-base font-semibold text-deepblue-800 leading-none">Feliz Sin Tiroides<span className="text-teal-500">®</span></p>
               <p className="text-[10px] text-teal-600 font-medium leading-none mt-0.5">Salud tiroidea y metabólica</p>
