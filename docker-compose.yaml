@@ -18,6 +18,8 @@ services:
       context: .
       dockerfile: Dockerfile.api
     restart: unless-stopped
+    labels:
+      - "traefik.enable=false"
     environment:
       NODE_ENV: production
       PORT: "3000"
@@ -32,7 +34,6 @@ services:
       ADMIN_TOKEN: "${ADMIN_TOKEN:?ADMIN_TOKEN is required}"
     networks:
       - edvanta-net
-      - coolify
 
 networks:
   edvanta-net:
