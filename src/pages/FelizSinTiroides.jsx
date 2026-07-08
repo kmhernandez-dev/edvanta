@@ -5,6 +5,7 @@ import EbookCard from '../components/fst/EbookCard';
 import BrandSwitch from '../components/BrandSwitch';
 import LeadForm from '../components/LeadForm';
 import Icon from '../components/Icon';
+import ArticulosSection from '../components/ArticulosSection';
 import { ebooks, recursosGratis, servicios, enfermedades, cursosFST, tiendaAmazon, testimonios } from '../data/fst';
 import { waLink } from '../config/links';
 
@@ -289,6 +290,9 @@ export default function FelizSinTiroides() {
           </p>
         </div>
       </section>
+
+      {/* Artículos / blog */}
+      <ArticulosSection marca="fst" eyebrow="Blog · Salud tiroidea" title="Aprende sobre tu tiroides" dark />
 
       {/* Switch entre marcas */}
       <BrandSwitch current="fst" />

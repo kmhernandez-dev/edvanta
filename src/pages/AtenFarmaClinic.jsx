@@ -6,6 +6,7 @@ import ProductModal from '../components/ProductModal';
 import HotmartCard from '../components/fst/HotmartCard';
 import BrandSwitch from '../components/BrandSwitch';
 import Icon from '../components/Icon';
+import ArticulosSection from '../components/ArticulosSection';
 import { products } from '../data/products';
 import { productosAtenFarma } from '../data/atenfarma';
 import { waLink, EMAIL, LINKEDIN_URL } from '../config/links';
@@ -191,6 +192,8 @@ export default function AtenFarmaClinic() {
           </div>
         </div>
       </footer>
+
+      <ArticulosSection marca="atenfarma" eyebrow="Blog · Atención farmacéutica" title="Artículos para tu práctica clínica" />
 
       <BrandSwitch current="atenfarma" />
 
