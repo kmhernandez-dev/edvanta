@@ -18,7 +18,7 @@ export default function ProductModal({ product, onClose }) {
   if (!product) return null;
 
   const buyUrl = product.hotmartUrl || HOTMART_URL;
-  const waUrl  = waLink(`Hola Karla, me interesa el ${product.name}. ¿Puedes darme más información?`);
+  const waUrl  = waLink(`Hola, equipo Edvanta. Me interesa el ${product.name}. ¿Pueden darme más información?`);
   const discount = product.comparePrice
     ? Math.round((1 - product.price / product.comparePrice) * 100)
     : 0;

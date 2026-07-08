@@ -3,11 +3,13 @@ import { articulosPorMarca, gradientDe } from '../data/articulos';
 
 /**
  * Sección con las tarjetas de artículos de una marca.
- * marca: 'fst' | 'atenfarma' | 'biblioteca'
+ * marca: 'fst' | 'atenfarma' | 'biblioteca' | 'edvanta'
  */
 export default function ArticulosSection({ marca, eyebrow = 'Blog', title = 'Aprende con nuestros artículos', dark = false }) {
-  const arts = articulosPorMarca(marca);
-  if (!arts.length) return null;
+  const allArts = articulosPorMarca(marca);
+  const isEdvanta = marca === 'edvanta';
+  const arts = isEdvanta ? allArts.slice(0, 6) : allArts;
+  if (!allArts.length) return null;
 
   return (
     <section id="articulos" className={`py-16 md:py-20 ${dark ? 'bg-sand-50' : 'bg-white'}`}>
@@ -40,6 +42,12 @@ export default function ArticulosSection({ marca, eyebrow = 'Blog', title = 'Apr
             </Link>
           ))}
         </div>
+
+        {isEdvanta && allArts.length > arts.length && (
+          <div className="mt-8 text-center">
+            <Link to="/articulos" className="btn-secondary">Ver todos los artículos</Link>
+          </div>
+        )}
       </div>
     </section>
   );

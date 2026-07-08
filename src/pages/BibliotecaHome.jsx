@@ -6,14 +6,16 @@ import CourseCard    from '../components/CourseCard';
 import SearchFilters from '../components/SearchFilters';
 import HerramientaCard from '../components/HerramientaCard';
 import ProductModal  from '../components/ProductModal';
-import BrandSwitch   from '../components/BrandSwitch';
 import Footer        from '../components/Footer';
 import Icon          from '../components/Icon';
 import ArticulosSection from '../components/ArticulosSection';
+import FeaturedCoursesSection from '../components/FeaturedCoursesSection';
+import LearningRoutesSection from '../components/LearningRoutesSection';
+import LearningPathForm from '../components/LearningPathForm';
 
 import { products } from '../data/products';
 import { courses }  from '../data/courses';
-import { WHATSAPP_URL } from '../config/links';
+import { EDVANTA_WHATSAPP_URL } from '../config/links';
 
 function filterCourses(list, { search, category, profile }) {
   return list.filter(c => {
@@ -51,12 +53,16 @@ export default function BibliotecaHome() {
         onExploreProducts={() => scrollTo('herramientas')}
       />
 
+      <FeaturedCoursesSection />
+      <LearningRoutesSection />
+      <LearningPathForm />
+
       {/* ── 2. CURSOS GRATIS ───────────────────────────────────── */}
-      <section id="cursos" className="py-16 md:py-20 bg-white">
+      <section id="catalogo-cursos" className="py-16 md:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-10">
-            <p className="text-xs font-bold text-teal-600 uppercase tracking-widest mb-2">Edutin Academy · 100% gratis</p>
-            <h2 className="text-2xl md:text-3xl font-bold text-navy-950 mb-3">Aprende con cursos online gratuitos</h2>
+            <p className="text-xs font-bold text-teal-600 uppercase tracking-widest mb-2">Catálogo extendido</p>
+            <h2 className="text-2xl md:text-3xl font-bold text-navy-950 mb-3">Explora más cursos virtuales gratuitos</h2>
             <p className="text-base text-gray-500">Más de 6.000 cursos con certificado opcional. Busca por área o perfil profesional.</p>
           </div>
 
@@ -73,8 +79,8 @@ export default function BibliotecaHome() {
                 <div className="w-14 h-14 rounded-2xl bg-gray-100 flex items-center justify-center"><Icon name="book" className="w-7 h-7 text-gray-400" /></div>
                 <div>
                   <p className="font-semibold text-gray-700 mb-1">No encontramos resultados exactos.</p>
-                  <p className="text-sm text-gray-500 mb-4">Escríbeme por WhatsApp y te recomiendo una ruta.</p>
-                  <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="btn-teal text-sm px-6 py-2.5">Preguntar por WhatsApp</a>
+                  <p className="text-sm text-gray-500 mb-4">Escríbenos por WhatsApp y te recomendamos una ruta.</p>
+                  <a href={EDVANTA_WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="btn-teal text-sm px-6 py-2.5">Preguntar por WhatsApp</a>
                 </div>
               </div>
             ) : (
@@ -136,7 +142,7 @@ export default function BibliotecaHome() {
                 Empieza con cursos gratis y complementa con herramientas prácticas
               </h2>
               <div className="flex flex-col sm:flex-row gap-3 justify-center md:justify-start">
-                <button onClick={() => scrollTo('cursos')} className="btn-teal px-6 py-3 text-sm">Ver cursos gratis</button>
+                <button onClick={() => scrollTo('cursos')} className="btn-teal px-6 py-3 text-sm">Ver cursos recomendados</button>
                 <button onClick={() => scrollTo('herramientas')} className="inline-flex items-center justify-center px-6 py-3 bg-white/10 hover:bg-white/20 text-white text-sm font-semibold rounded-lg transition-colors">Ver herramientas</button>
               </div>
             </div>
@@ -146,9 +152,8 @@ export default function BibliotecaHome() {
         </div>
       </section>
 
-      <ArticulosSection marca="biblioteca" eyebrow="Blog · Calidad y gestión" title="Artículos de calidad y gestión" dark />
+      <ArticulosSection marca="edvanta" eyebrow="Artículos y rutas" title="Artículos y rutas de aprendizaje" dark />
 
-      <BrandSwitch current="biblioteca" />
       <Footer />
 
       {selectedProduct && (

@@ -6,6 +6,9 @@ import AtenFarmaClinic  from './pages/AtenFarmaClinic';
 import LegalPage        from './pages/LegalPage';
 import AdminOrders      from './pages/AdminOrders';
 import ArticuloPage     from './pages/ArticuloPage';
+import ArticulosIndex   from './pages/ArticulosIndex';
+import CursoPage        from './pages/CursoPage';
+import RutaProfesionalPage from './pages/RutaProfesionalPage';
 
 import CartDrawer    from './components/CartDrawer';
 import CartToast     from './components/CartToast';
@@ -15,7 +18,7 @@ export default function App() {
   return (
     <>
       <Routes>
-        {/* Marca principal: Biblioteca Profesional KH */}
+        {/* Marca principal: Edvanta */}
         <Route path="/" element={<BibliotecaHome />} />
 
         {/* Marca: Feliz Sin Tiroides (pacientes) */}
@@ -25,7 +28,12 @@ export default function App() {
         <Route path="/atenfarmaclinic" element={<AtenFarmaClinic />} />
 
         {/* Artículos / blog SEO */}
+        <Route path="/articulos" element={<ArticulosIndex />} />
         <Route path="/articulos/:slug" element={<ArticuloPage />} />
+
+        {/* Cursos y rutas profesionales Edvanta */}
+        <Route path="/cursos/:slug" element={<CursoPage />} />
+        <Route path="/rutas/:slug" element={<RutaProfesionalPage />} />
 
         {/* Panel admin interno (oculto, ruta directa) */}
         <Route path="/admin/orders" element={<AdminOrders />} />

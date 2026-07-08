@@ -3,11 +3,14 @@ import { Link, useParams, Navigate } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { getArticulo, gradientDe } from '../data/articulos';
+import { getFeaturedCourse } from '../data/featuredCourses';
+import AffiliateCourseButton from '../components/AffiliateCourseButton';
 
 const MARCA = {
   fst:        { to: '/feliz-sin-tiroides', name: 'Feliz Sin Tiroides', accent: 'text-teal-600' },
   atenfarma:  { to: '/atenfarmaclinic',    name: 'AtenFarmaClinic',    accent: 'text-deepblue-700' },
-  biblioteca: { to: '/',                   name: 'Biblioteca Profesional KH', accent: 'text-navy-800' },
+  biblioteca: { to: '/',                   name: 'Edvanta', accent: 'text-navy-800' },
+  edvanta:    { to: '/',                   name: 'Edvanta', accent: 'text-navy-800' },
 };
 
 // Crea o actualiza una etiqueta <meta>
@@ -57,11 +60,14 @@ export default function ArticuloPage() {
     setMeta('property', 'og:url', canonical);
     setMeta('property', 'og:image', `https://edvanta.co${art.image}`);
     setMeta('name', 'twitter:card', 'summary_large_image');
-    return () => { document.title = 'Biblioteca Profesional Karla Hernández'; };
+    return () => { document.title = 'Edvanta'; };
   }, [art]);
 
   if (!art) return <Navigate to="/" replace />;
   const marca = MARCA[art.marca] || MARCA.biblioteca;
+  const isFst = art.marca === 'fst';
+  const isEdvanta = art.marca === 'edvanta' || art.marca === 'biblioteca';
+  const relatedCourse = art.courseSlug ? getFeaturedCourse(art.courseSlug) : null;
 
   return (
     <div className="min-h-screen bg-white">
@@ -79,7 +85,7 @@ export default function ArticuloPage() {
           <p className="text-xs font-semibold uppercase tracking-widest text-white/80 mb-3">{art.category}</p>
           <h1 className="text-2xl md:text-4xl font-bold leading-tight mb-4">{art.title}</h1>
           <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-white/85">
-            <span>Karla Hernández · Química Farmacéutica</span>
+            <span>{isEdvanta ? 'Edvanta · Equipo editorial de Edvanta' : 'Karla Hernández · Química Farmacéutica'}</span>
             <span>·</span>
             <span>{art.readingTime} de lectura</span>
           </div>
@@ -96,10 +102,28 @@ export default function ArticuloPage() {
           </div>
         )}
 
+        {isEdvanta && relatedCourse && (
+          <div className="mt-10 rounded-lg border border-gray-200 bg-slate-50 p-5">
+            <div>
+              <p className="text-xs font-bold uppercase tracking-widest text-teal-600">Curso recomendado</p>
+              <h2 className="mt-2 text-xl font-bold text-navy-950">{relatedCourse.title}</h2>
+              <p className="mt-2 text-sm leading-relaxed text-gray-600">{relatedCourse.shortDescription}</p>
+              <div className="mt-4 flex flex-col gap-2 sm:flex-row">
+                <Link to={`/cursos/${relatedCourse.slug}`} className="btn-secondary text-sm">Ver página del curso</Link>
+                <AffiliateCourseButton course={relatedCourse} sourceSection="article_page" articleSlug={art.slug} className="text-sm">
+                  Ir a la plataforma
+                </AffiliateCourseButton>
+              </div>
+            </div>
+          </div>
+        )}
+
         {/* Descargo */}
         <div className="mt-12 p-4 bg-amber-50 border border-amber-200 rounded-xl">
           <p className="text-xs text-amber-800 leading-relaxed">
-            Este contenido es educativo e informativo y no reemplaza la consulta, diagnóstico ni tratamiento de un profesional de salud. No modifiques tu medicación sin indicación médica.
+            {isFst
+              ? 'Este contenido es educativo e informativo y no reemplaza la consulta, diagnóstico ni tratamiento de un profesional de salud. No modifiques tu medicación sin indicación médica.'
+              : 'Este contenido es educativo e informativo. Edvanta organiza rutas de aprendizaje y puede incluir enlaces afiliados a plataformas educativas externas. La certificación, disponibilidad y precios dependen de cada plataforma.'}
           </p>
         </div>
 

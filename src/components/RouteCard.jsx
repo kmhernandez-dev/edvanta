@@ -24,7 +24,7 @@ const colorStyles = {
 export default function RouteCard({ route, onViewPack }) {
   const s = colorStyles[route.color] || colorStyles.teal;
 
-  const waUrl = waLink(`Hola Karla, me interesa la ruta "${route.name}". ¿Puedes orientarme?`);
+  const waUrl = waLink(`Hola, equipo Edvanta. Me interesa la ruta "${route.name}". ¿Pueden orientarme?`);
 
   return (
     <div className={`card border-l-4 ${s.border} p-6 flex flex-col gap-4`}>

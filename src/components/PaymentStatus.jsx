@@ -5,19 +5,19 @@ import { waLink } from '../config/links';
 const CONFIG = {
   exitoso: {
     color: 'bg-teal-600',
-    icon: '✅',
+    icon: 'OK',
     title: '¡Pago aprobado!',
     text: 'Gracias por tu compra. Te contactaremos por WhatsApp para enviarte el acceso a tus recursos.',
   },
   pendiente: {
     color: 'bg-amber-500',
-    icon: '⏳',
+    icon: '...',
     title: 'Pago pendiente',
     text: 'Tu pago está en proceso de confirmación (puede tardar unos minutos según el medio de pago). Apenas se acredite, te enviamos tus recursos.',
   },
   fallido: {
     color: 'bg-red-500',
-    icon: '⚠️',
+    icon: '!',
     title: 'El pago fue rechazado',
     text: 'No se pudo procesar el pago. Puedes intentarlo de nuevo con otro medio de pago o escribirnos por WhatsApp.',
   },
@@ -76,7 +76,7 @@ export default function PaymentStatus() {
           )}
           <div className="flex flex-col gap-2">
             <a
-              href={waLink(`Hola Karla, acabo de realizar un pago${paymentId ? ` (N.º ${paymentId})` : ''}. Quiero confirmar mi pedido.`)}
+              href={waLink(`Hola, equipo Edvanta. Acabo de realizar un pago${paymentId ? ` (N.º ${paymentId})` : ''}. Quiero confirmar mi pedido.`)}
               target="_blank"
               rel="noopener noreferrer"
               className="btn-teal w-full text-sm"

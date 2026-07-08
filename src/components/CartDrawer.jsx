@@ -47,8 +47,8 @@ export default function CartDrawer() {
 
   // Build WhatsApp checkout message
   const checkoutMessage =
-    `Hola Karla 👋, quiero comprar estos recursos:\n\n` +
-    items.map(i => `• ${i.name}  (x${i.qty}) — ${formatPrice(i.price * i.qty)}`).join('\n') +
+    `Hola, equipo Edvanta. Quiero comprar estos recursos:\n\n` +
+    items.map(i => `- ${i.name} (x${i.qty}) - ${formatPrice(i.price * i.qty)}`).join('\n') +
     `\n\n*Total: ${formatPrice(total)}*\n\n¿Cómo continúo con el pago?`;
 
   return (
@@ -96,7 +96,11 @@ export default function CartDrawer() {
         {/* Body */}
         {items.length === 0 ? (
           <div className="flex-1 flex flex-col items-center justify-center gap-4 px-6 text-center">
-            <div className="w-20 h-20 rounded-3xl bg-gray-50 flex items-center justify-center text-4xl">🛒</div>
+            <div className="w-20 h-20 rounded-3xl bg-gray-50 flex items-center justify-center text-navy-800">
+              <svg className="w-9 h-9" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13 5.4 5M7 13l-2 2h13M9 20a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm8 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z" />
+              </svg>
+            </div>
             <div>
               <p className="font-semibold text-navy-950 mb-1">Tu carrito está vacío</p>
               <p className="text-sm text-gray-500">Agrega packs profesionales para empezar a organizar tu crecimiento.</p>
@@ -112,7 +116,9 @@ export default function CartDrawer() {
                 <div key={item.id} className="flex gap-3 p-3 rounded-xl border border-gray-100 bg-white hover:border-gray-200 transition-colors">
                   {/* Icon */}
                   <div className="w-11 h-11 rounded-lg bg-gradient-to-br from-navy-100 to-teal-100 flex items-center justify-center text-lg shrink-0">
-                    📦
+                    <svg className="w-5 h-5 text-navy-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M12 3 4 7.5v9L12 21l8-4.5v-9L12 3Zm0 0v18M4 7.5l8 4.5 8-4.5" />
+                    </svg>
                   </div>
                   {/* Info */}
                   <div className="flex-1 min-w-0">
@@ -222,7 +228,7 @@ export default function CartDrawer() {
               </a>
 
               <p className="text-[11px] text-gray-400 text-center leading-snug">
-                🔒 Pago seguro con Mercado Pago (tarjetas, PSE, Nequi y más). Productos digitales descargables.
+                Pago seguro con Mercado Pago (tarjetas, PSE, Nequi y más). Productos digitales descargables.
               </p>
             </div>
           </>

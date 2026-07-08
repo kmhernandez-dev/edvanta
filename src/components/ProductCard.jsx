@@ -19,7 +19,7 @@ export default function ProductCard({ product, onDetails }) {
     ? Math.round((1 - product.price / product.comparePrice) * 100)
     : 0;
 
-  const waUrl = waLink(`Hola Karla, me interesa el ${product.name}. ¿Puedes darme más información?`);
+  const waUrl = waLink(`Hola, equipo Edvanta. Me interesa el ${product.name}. ¿Pueden darme más información?`);
 
   return (
     <div className="card flex flex-col overflow-hidden group hover:-translate-y-1 hover:shadow-xl transition-all duration-300">

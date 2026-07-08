@@ -1,12 +1,14 @@
 import { useState, useEffect } from 'react';
-import { WHATSAPP_URL, BRAND_NAME } from '../config/links';
+import { EDVANTA_WHATSAPP_URL, EDVANTA_BRAND_NAME } from '../config/links';
 import { useCart } from '../context/CartContext';
 
 const navLinks = [
-  { label: 'Inicio',         href: '#inicio' },
-  { label: 'Cursos gratis',  href: '#cursos' },
-  { label: 'Herramientas',   href: '#herramientas' },
-  { label: 'Contacto',       href: '#contacto' },
+  { label: 'Inicio', href: '#inicio' },
+  { label: 'Cursos', href: '#cursos' },
+  { label: 'Rutas profesionales', href: '#rutas' },
+  { label: 'Artículos', href: '#articulos' },
+  { label: 'Recursos', href: '#recursos' },
+  { label: 'Acerca de Edvanta', href: '#contacto' },
 ];
 
 export default function Header() {
@@ -23,6 +25,10 @@ export default function Header() {
   const handleNav = (e, href) => {
     e.preventDefault();
     setMenuOpen(false);
+    if (window.location.pathname !== '/') {
+      window.location.href = `/${href}`;
+      return;
+    }
     document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
   };
 
@@ -34,11 +40,11 @@ export default function Header() {
           {/* Logo */}
           <a href="#inicio" onClick={e => handleNav(e, '#inicio')} className="flex items-center gap-2 shrink-0">
             <div className="w-8 h-8 rounded-lg bg-navy-900 flex items-center justify-center">
-              <span className="text-white text-xs font-bold">KH</span>
+              <span className="text-white text-xs font-bold">EV</span>
             </div>
             <div className="hidden sm:block">
-              <p className="text-sm font-bold text-navy-950 leading-none">{BRAND_NAME}</p>
-              <p className="text-[10px] text-teal-600 font-medium leading-none mt-0.5">Biblioteca Profesional</p>
+              <p className="text-sm font-bold text-navy-950 leading-none">{EDVANTA_BRAND_NAME}</p>
+              <p className="text-[10px] text-teal-600 font-medium leading-none mt-0.5">Educación profesional</p>
             </div>
           </a>
 
@@ -59,11 +65,11 @@ export default function Header() {
           {/* CTAs */}
           <div className="flex items-center gap-2">
             <a
-              href="#herramientas"
-              onClick={e => handleNav(e, '#herramientas')}
+              href="#recursos"
+              onClick={e => handleNav(e, '#recursos')}
               className="hidden sm:inline-flex btn-primary text-xs px-4 py-2"
             >
-              Ver herramientas
+              Solicitar ruta
             </a>
 
             {/* Cart button */}
@@ -120,8 +126,8 @@ export default function Header() {
               <a href="#herramientas" onClick={e => handleNav(e, '#herramientas')} className="btn-primary text-sm text-center">
                 Ver herramientas
               </a>
-              <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="btn-teal text-sm text-center">
-                Solicitar por WhatsApp
+              <a href={EDVANTA_WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="btn-teal text-sm text-center">
+                Hablar con Edvanta
               </a>
             </div>
           </nav>
