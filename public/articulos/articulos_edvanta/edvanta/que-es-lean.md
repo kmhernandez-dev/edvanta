@@ -1,5 +1,5 @@
 ---
-title: "Qu? es Lean y c?mo ayuda a mejorar procesos"
+title: "Qué es Lean y cómo ayuda a mejorar procesos"
 slug: "que-es-lean"
 category: "Lean"
 author: "Edvanta"
@@ -9,17 +9,17 @@ last_reviewed: "2026-07-08"
 related_course: "/cursos/lean"
 ---
 
-# Qu? es Lean y c?mo ayuda a mejorar procesos
+# Qué es Lean y cómo ayuda a mejorar procesos
 
-> Estado editorial: borrador estructurado. Este contenido est? listo para revisi?n, ampliaci?n con ejemplos y validaci?n SEO final antes de publicarse como art?culo definitivo.
+> Estado editorial: borrador estructurado. Este contenido está listo para revisión, ampliación con ejemplos y validación SEO final antes de publicarse como artículo definitivo.
 
-## Objetivo del art?culo
+## Objetivo del artículo
 
 Introducir Lean como una forma de mejorar procesos reduciendo actividades que no agregan valor.
 
 ## Resumen para el lector
 
-Este art?culo debe explicar el tema con lenguaje claro, ejemplos laborales y una ruta de aprendizaje accionable. La intenci?n no es prometer certificaciones ni empleo, sino orientar al lector sobre qu? aprender, c?mo practicar y qu? curso externo puede complementar su formaci?n.
+Este artículo debe explicar el tema con lenguaje claro, ejemplos laborales y una ruta de aprendizaje accionable. La intención no es prometer certificaciones ni empleo, sino orientar al lector sobre qué aprender, cómo practicar y qué curso recomendado puede complementar su formación.
 
 ## Conceptos clave a desarrollar
 
@@ -28,33 +28,33 @@ Este art?culo debe explicar el tema con lenguaje claro, ejemplos laborales y una
 - desperdicio
 - Kaizen
 
-## Para qui?n es ?til
+## Para quién es útil
 
 - Estudiantes que quieren explorar una ruta profesional.
-- T?cnicos o profesionales que necesitan actualizar habilidades aplicables al trabajo.
-- Emprendedores o equipos peque?os que desean ordenar procesos, datos o cumplimiento.
+- Técnicos o profesionales que necesitan actualizar habilidades aplicables al trabajo.
+- Emprendedores o equipos pequeños que desean ordenar procesos, datos o cumplimiento.
 
 ## Estructura recomendada
 
-1. Definici?n simple del concepto.
+1. Definición simple del concepto.
 2. Importancia en empresas, servicios o proyectos reales.
 3. Competencias que desarrolla el lector.
-4. Ejemplos de aplicaci?n pr?ctica.
+4. Ejemplos de aplicación práctica.
 5. Errores frecuentes al empezar.
 6. Ruta de aprendizaje sugerida.
-7. Enlace al curso relacionado y art?culos complementarios.
+7. Enlace al curso relacionado y artículos complementarios.
 
-## Ideas pr?cticas para incluir
+## Ideas prácticas para incluir
 
-- Un caso breve de aplicaci?n en una organizaci?n peque?a.
-- Una lista de verificaci?n para que el lector eval?e su nivel actual.
+- Un caso breve de aplicación en una organización pequeña.
+- Una lista de verificación para que el lector evalúe su nivel actual.
 - Un ejemplo de entregable: mapa, dashboard, plan, indicador, informe o matriz.
-- Una recomendaci?n de pr?ctica de 30 a 60 minutos.
+- Una recomendación de práctica de 30 a 60 minutos.
 
 ## Curso relacionado
 
-Puedes revisar la p?gina de Edvanta para este curso recomendado: [ver curso relacionado](/cursos/lean).
+Puedes revisar la página de Edvanta para este curso recomendado: [ver curso relacionado](/cursos/lean).
 
 ## Nota de transparencia
 
-Edvanta organiza rutas de aprendizaje y puede enlazar a plataformas educativas externas. El acceso al contenido acad?mico puede ser gratuito. La certificaci?n puede tener un costo opcional, determinado por la plataforma educativa. Edvanta no dicta, certifica ni controla las condiciones acad?micas de esos cursos externos.
+Edvanta organiza rutas de aprendizaje y puede enlazar a plataformas educativas. El acceso al contenido académico puede ser gratuito. La certificación puede tener un costo opcional, determinado por la plataforma educativa. Edvanta no dicta, certifica ni controla las condiciones académicas de esos cursos recomendados.

@@ -12,6 +12,7 @@ import ArticulosSection from '../components/ArticulosSection';
 import FeaturedCoursesSection from '../components/FeaturedCoursesSection';
 import LearningRoutesSection from '../components/LearningRoutesSection';
 import LearningPathForm from '../components/LearningPathForm';
+import BrandGatewaySection from '../components/BrandGatewaySection';
 
 import { products } from '../data/products';
 import { courses }  from '../data/courses';
@@ -53,6 +54,7 @@ export default function BibliotecaHome() {
         onExploreProducts={() => scrollTo('herramientas')}
       />
 
+      <BrandGatewaySection />
       <FeaturedCoursesSection />
       <LearningRoutesSection />
       <LearningPathForm />

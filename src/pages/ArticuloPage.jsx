@@ -111,7 +111,7 @@ export default function ArticuloPage() {
               <div className="mt-4 flex flex-col gap-2 sm:flex-row">
                 <Link to={`/cursos/${relatedCourse.slug}`} className="btn-secondary text-sm">Ver página del curso</Link>
                 <AffiliateCourseButton course={relatedCourse} sourceSection="article_page" articleSlug={art.slug} className="text-sm">
-                  Ir a la plataforma
+                  Inscribirme gratis
                 </AffiliateCourseButton>
               </div>
             </div>
@@ -123,7 +123,7 @@ export default function ArticuloPage() {
           <p className="text-xs text-amber-800 leading-relaxed">
             {isFst
               ? 'Este contenido es educativo e informativo y no reemplaza la consulta, diagnóstico ni tratamiento de un profesional de salud. No modifiques tu medicación sin indicación médica.'
-              : 'Este contenido es educativo e informativo. Edvanta organiza rutas de aprendizaje y puede incluir enlaces afiliados a plataformas educativas externas. La certificación, disponibilidad y precios dependen de cada plataforma.'}
+              : 'Este contenido es educativo e informativo. Edvanta organiza rutas de aprendizaje y puede incluir enlaces afiliados a plataformas educativas. La certificación, disponibilidad y precios dependen de cada plataforma.'}
           </p>
         </div>
 

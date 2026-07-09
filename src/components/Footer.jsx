@@ -108,7 +108,7 @@ export default function Footer() {
         <div className="border-t border-gray-200 pt-6 space-y-3">
           {/* Affiliate notice */}
           <p className="text-xs text-gray-400 leading-relaxed max-w-3xl">
-            Algunos enlaces pueden corresponder a cursos afiliados de plataformas educativas externas. La disponibilidad,
+            Algunos enlaces pueden corresponder a cursos afiliados de plataformas educativas. La disponibilidad,
             condiciones del certificado y precios pueden variar según la plataforma. Edvanta no dicta ni certifica esos cursos.
           </p>
           <p className="text-xs text-gray-400">

@@ -47,9 +47,9 @@ export const legalDocs = {
     title: 'Aviso de afiliados',
     updated: 'Última actualización: 2026',
     sections: [
-      { h: 'Enlaces de afiliado', p: 'Esta plataforma incluye enlaces de afiliado a cursos de Edutin Academy, productos de Amazon y otras plataformas externas.' },
+      { h: 'Enlaces de afiliado', p: 'Esta plataforma incluye enlaces de afiliado a cursos de Edutin Academy, productos de Amazon y otras plataformas educativas.' },
       { h: 'Cómo funcionan', p: 'Si haces clic en un enlace de afiliado y realizas una compra o registro, podemos recibir una comisión, sin ningún costo adicional para ti.' },
-      { h: 'Independencia', p: 'Las recomendaciones se hacen con criterio profesional y buscando aportar valor. La disponibilidad, condiciones, certificados y precios de los productos externos pueden variar según cada plataforma.' },
+      { h: 'Independencia', p: 'Las recomendaciones se hacen con criterio profesional y buscando aportar valor. La disponibilidad, condiciones, certificados y precios de los productos recomendados pueden variar según cada plataforma.' },
       { h: 'Transparencia', p: 'Creemos en la recomendación ética: solo enlazamos recursos que consideramos útiles para nuestra comunidad.' },
     ],
   },

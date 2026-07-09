@@ -1,47 +1,50 @@
 const stats = [
   { value: '+6.000', label: 'Cursos gratis' },
-  { value: '4', label: 'Herramientas pro' },
-  { value: '100%', label: 'Editables' },
+  { value: '4', label: 'Rutas clave' },
+  { value: '100%', label: 'Herramientas aplicables' },
 ];
 
 export default function Hero({ onExploreProducts, onExploreCourses }) {
   return (
-    <section id="inicio" className="relative pt-24 pb-14 md:pt-28 md:pb-16 bg-gradient-to-b from-slate-50 to-white overflow-hidden">
+    <section id="inicio" className="relative overflow-hidden bg-gradient-to-b from-slate-50 to-white pb-14 pt-24 md:pb-16 md:pt-28">
       <div className="absolute inset-0 bg-dots opacity-50" />
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid md:grid-cols-2 gap-10 lg:gap-14 items-center">
-          {/* Texto */}
+
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="grid items-center gap-10 lg:grid-cols-[0.92fr_1.08fr] lg:gap-14">
           <div className="text-center md:text-left">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-white border border-teal-200 rounded-full mb-6 shadow-sm">
-              <span className="w-2 h-2 rounded-full bg-teal-500" />
-              <span className="text-xs font-semibold text-teal-700">Cursos externos · Rutas claras · Certificación opcional</span>
+            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-teal-200 bg-white px-3 py-1.5 shadow-sm">
+              <span className="h-2 w-2 rounded-full bg-teal-500" />
+              <span className="text-xs font-semibold text-teal-700">
+                Cursos gratis · Herramientas listas · Rutas para crecer
+              </span>
             </div>
 
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-navy-950 leading-tight mb-5">
-              Edvanta
+            <p className="mb-3 text-xs font-bold uppercase tracking-[0.24em] text-gray-400">Edvanta</p>
+            <h1 className="mb-5 text-3xl font-bold leading-tight text-navy-950 sm:text-4xl md:text-5xl">
+              Cursos <span className="bg-gradient-to-r from-teal-600 to-teal-500 bg-clip-text text-transparent">GRATIS</span> y herramientas para crecer profesionalmente
             </h1>
 
-            <p className="text-base sm:text-lg text-gray-500 leading-relaxed mb-7 max-w-lg mx-auto md:mx-0">
-              Rutas de aprendizaje profesional para fortalecer competencias en calidad, datos, auditoría, sostenibilidad,
-              seguridad laboral y mejora de procesos.
+            <p className="mx-auto mb-7 max-w-lg text-base leading-relaxed text-gray-500 sm:text-lg md:mx-0">
+              Encuentra formación virtual, rutas inteligentes y recursos prácticos para aprender más rápido,
+              aplicar mejor y mostrar un perfil profesional más fuerte.
             </p>
 
-            <div className="flex flex-col sm:flex-row items-center md:items-start justify-center md:justify-start gap-3 mb-8">
-              <button onClick={onExploreCourses} className="btn-primary px-6 py-3 text-sm w-full sm:w-auto">
-                Ver cursos recomendados
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="mb-8 flex flex-col items-center justify-center gap-3 sm:flex-row md:items-start md:justify-start">
+              <button onClick={onExploreCourses} className="btn-primary w-full px-6 py-3 text-sm sm:w-auto">
+                Ver cursos gratis
+                <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
               </button>
-              <button onClick={onExploreProducts} className="btn-secondary px-6 py-3 text-sm w-full sm:w-auto">
-                Ver herramientas
+              <button onClick={onExploreProducts} className="btn-secondary w-full px-6 py-3 text-sm sm:w-auto">
+                Ver herramientas listas
               </button>
             </div>
 
-            <div className="flex items-center justify-center md:justify-start gap-6 sm:gap-8">
+            <div className="flex items-center justify-center gap-5 sm:gap-8 md:justify-start">
               {stats.map((s, i) => (
-                <div key={s.label} className="flex items-center gap-6 sm:gap-8">
-                  {i > 0 && <span className="w-px h-8 bg-gray-200" />}
+                <div key={s.label} className="flex items-center gap-5 sm:gap-8">
+                  {i > 0 && <span className="h-8 w-px bg-gray-200" />}
                   <div className="text-center md:text-left">
                     <p className="text-2xl font-extrabold text-navy-950">{s.value}</p>
                     <p className="text-xs text-gray-500">{s.label}</p>
@@ -51,7 +54,6 @@ export default function Hero({ onExploreProducts, onExploreCourses }) {
             </div>
           </div>
 
-          {/* Imagen */}
           <div className="relative">
             <img
               src="/img/hero-biblioteca.jpg"

@@ -54,7 +54,7 @@ export default function CursoPage() {
         isAccessibleForFree: true,
         provider: {
           '@type': 'Organization',
-          name: 'Plataforma educativa externa',
+          name: 'Plataforma educativa',
         },
         publisher: {
           '@type': 'Organization',
@@ -104,7 +104,7 @@ export default function CursoPage() {
 
                 <div className="mt-7 flex flex-col gap-3 sm:flex-row">
                   <AffiliateCourseButton course={course} sourceSection="course_page" className="px-6 py-3">
-                    Ir al curso
+                    Inscribirme gratis
                   </AffiliateCourseButton>
                   <Link to="/articulos" className="btn-secondary px-6 py-3">
                     Ver artículos relacionados
@@ -113,7 +113,7 @@ export default function CursoPage() {
               </div>
 
               <div className="overflow-hidden rounded-lg border border-gray-200 bg-white shadow-lg">
-                <CourseImage course={course} loading="eager" className="aspect-video w-full object-cover" />
+                <CourseImage course={course} variant="poster" loading="eager" className="mx-auto max-h-[720px] w-full object-cover" />
               </div>
             </div>
           </div>
@@ -133,7 +133,7 @@ export default function CursoPage() {
               <p className="mb-2 text-xs font-bold uppercase tracking-widest text-teal-600">Contenido orientativo</p>
               <h2 className="text-2xl font-bold text-navy-950 md:text-3xl">Qué deberías aprender</h2>
               <p className="mt-3 text-base leading-relaxed text-gray-500">
-                Edvanta no dicta ni certifica este curso. Esta página organiza los temas que conviene revisar antes de acceder a la plataforma educativa externa.
+                Edvanta organiza una ruta clara para que sepas qué aprender, cómo aplicarlo y qué habilidades puedes fortalecer con este curso.
               </p>
             </div>
             <div className="grid gap-3 sm:grid-cols-2">

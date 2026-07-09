@@ -109,7 +109,7 @@ export default function RutaProfesionalPage() {
               <p className="mb-2 text-xs font-bold uppercase tracking-widest text-teal-600">Competencias</p>
               <h2 className="text-2xl font-bold text-navy-950">Qué deberías poder demostrar</h2>
               <p className="mt-3 text-base leading-relaxed text-gray-500">
-                La ruta combina cursos externos y artículos de Edvanta para que construyas evidencia de aprendizaje.
+                La ruta combina cursos recomendados y artículos de Edvanta para que construyas evidencia de aprendizaje.
               </p>
             </div>
             <div className="grid gap-3 sm:grid-cols-2">

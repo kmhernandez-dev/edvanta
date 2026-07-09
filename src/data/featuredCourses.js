@@ -27,7 +27,7 @@ export const featuredCourses = [
     faqs: [
       {
         question: '¿Edvanta dicta o certifica este curso?',
-        answer: 'No. Edvanta organiza rutas y recomienda formación externa. El acceso académico y la certificación dependen de la plataforma educativa enlazada.',
+        answer: 'No. Edvanta organiza rutas y recomienda formación seleccionada. El acceso académico y la certificación dependen de la plataforma educativa enlazada.',
       },
       {
         question: '¿La certificación es obligatoria?',
@@ -69,7 +69,7 @@ export const featuredCourses = [
       },
       {
         question: '¿La certificación tiene costo?',
-        answer: 'Puede tenerlo. Edvanta no define el precio ni emite certificados; la plataforma educativa externa informa sus condiciones vigentes.',
+        answer: 'Puede tenerlo. Edvanta no define el precio ni emite certificados; la plataforma educativa informa sus condiciones vigentes.',
       },
     ],
     relatedArticleSlugs: ['que-es-power-bi-y-para-que-sirve', 'ruta-para-aprender-power-bi-desde-cero'],
@@ -94,7 +94,7 @@ export const featuredCourses = [
     description: 'La auditoría es una competencia transversal para validar procesos, evidencias y cumplimiento en sistemas de gestión, operaciones y servicios.',
     audience: [
       'Profesionales vinculados a calidad, HSEQ, operaciones o cumplimiento.',
-      'Personas que participan en auditorías internas o preparación de visitas externas.',
+      'Personas que participan en auditorías internas o preparación de visitas de auditoría.',
       'Estudiantes que quieren entender el rol del auditor en una organización.',
     ],
     skills: ['Planificación', 'Recolección de evidencias', 'Entrevistas', 'Redacción de hallazgos', 'Seguimiento de acciones'],
