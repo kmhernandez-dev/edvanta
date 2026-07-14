@@ -187,7 +187,7 @@ export default function AtenFarmaClinic() {
           </div>
           <div className="flex items-center gap-4 text-sm">
             <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" className="text-teal-600 hover:text-teal-700">LinkedIn</a>
-            <Link to="/" className="text-gray-500 hover:text-deepblue-900">Biblioteca KH</Link>
+            <Link to="/" className="text-gray-500 hover:text-deepblue-900">Edvanta</Link>
             <Link to="/feliz-sin-tiroides" className="text-gray-500 hover:text-deepblue-900">Feliz Sin Tiroides</Link>
           </div>
         </div>

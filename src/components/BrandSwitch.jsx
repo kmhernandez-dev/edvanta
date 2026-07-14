@@ -10,7 +10,7 @@ const BRANDS = [
     id: 'biblioteca',
     to: '/',
     icon: 'book',
-    name: 'Biblioteca Profesional KH',
+    name: 'Edvanta',
     desc: 'Packs, plantillas y rutas para profesionales',
     accent: 'from-navy-900 to-navy-800',
     ring: 'ring-navy-200',
@@ -40,7 +40,7 @@ export default function BrandSwitch({ current }) {
     <section className="py-12 bg-white border-y border-gray-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <p className="text-center text-xs font-bold text-gray-400 uppercase tracking-widest mb-6">
-          El ecosistema de Karla Hernández
+          El ecosistema Edvanta
         </p>
         <div className="grid sm:grid-cols-3 gap-4">
           {BRANDS.map(b => {

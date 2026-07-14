@@ -39,7 +39,7 @@ export default function FstFooter() {
               <a href="#fst-servicios" onClick={e => handleNav(e, '#fst-servicios')} className="block text-white/70 hover:text-white">Servicios</a>
               <a href="#fst-recursos" onClick={e => handleNav(e, '#fst-recursos')} className="block text-white/70 hover:text-white">Recursos gratis</a>
               <a href="#fst-tienda" onClick={e => handleNav(e, '#fst-tienda')} className="block text-white/70 hover:text-white">Tienda recomendada</a>
-              <Link to="/" className="block text-white/70 hover:text-white">Biblioteca Profesional KH</Link>
+              <Link to="/" className="block text-white/70 hover:text-white">Edvanta</Link>
             </nav>
           </div>
 

@@ -12,7 +12,7 @@ export const legalDocs = {
     title: 'Política de privacidad',
     updated: 'Última actualización: 2026',
     sections: [
-      { h: '1. Responsable del tratamiento', p: `Esta plataforma es operada por Karla Hernández (marcas Feliz Sin Tiroides®, AtenFarmaClinic y Biblioteca Profesional KH). Para cualquier consulta sobre tus datos puedes escribir a ${EMAIL}.` },
+      { h: '1. Responsable del tratamiento', p: `Esta plataforma es operada por Karla Hernández (marcas Edvanta, Feliz Sin Tiroides® y AtenFarmaClinic). Para cualquier consulta sobre tus datos puedes escribir a ${EMAIL}.` },
       { h: '2. Qué datos recopilamos', p: 'Recopilamos los datos que nos proporcionas voluntariamente al llenar formularios, suscribirte a recursos gratuitos o escribirnos por WhatsApp o correo: nombre, correo electrónico, teléfono y la información que decidas compartir.' },
       { h: '3. Para qué los usamos', p: 'Usamos tus datos para enviarte los recursos solicitados, responder tus consultas, gestionar tus compras y, si lo autorizas, enviarte contenido educativo y comercial. No vendemos tus datos a terceros.' },
       { h: '4. Pagos', p: 'Los pagos se procesan a través de Mercado Pago. Nosotros no almacenamos los datos de tu tarjeta; estos son gestionados directamente por la pasarela de pago bajo sus propias políticas de seguridad.' },

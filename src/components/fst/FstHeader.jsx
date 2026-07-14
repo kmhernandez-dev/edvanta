@@ -116,7 +116,7 @@ export default function FstHeader() {
               </a>
             ))}
             <Link to="/" className="block px-3 py-2.5 text-sm font-medium text-teal-700 hover:bg-sand-50 rounded-lg">
-              ← Biblioteca Profesional KH
+              ← Edvanta
             </Link>
           </nav>
         </div>
