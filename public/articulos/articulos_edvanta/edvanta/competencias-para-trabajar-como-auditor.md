@@ -27,8 +27,6 @@ robots: "index, follow"
 **Última actualización:** 14 de julio de 2026
 **Tiempo de lectura:** 10 minutos
 
-![Profesional revisando documentos y tomando notas durante una auditoría de procesos](/img/cursos/auditoria.webp)
-
 # Competencias para trabajar como auditor interno o de procesos
 
 Ser auditor no es solo conocer la norma. Es saber observar sin prejuzgar, preguntar sin intimidar, escuchar sin interrumpir y escribir sin ambigüedades. Las competencias de un auditor combinan conocimiento técnico con habilidades interpersonales que se desarrollan con práctica, no solo con estudio.

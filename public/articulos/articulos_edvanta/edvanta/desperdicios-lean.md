@@ -27,8 +27,6 @@ robots: "index, follow"
 **Última actualización:** 14 de julio de 2026
 **Tiempo de lectura:** 10 minutos
 
-![Diagrama de los 8 desperdicios Lean con ejemplos visuales de cada tipo](/img/cursos/lean.webp)
-
 # Desperdicios Lean: cómo identificarlos en un proceso
 
 Identificar desperdicios es la habilidad más práctica del pensamiento Lean. No necesitas un cinturón negro ni software especializado: necesitas entrenar el ojo para ver lo que siempre estuvo ahí pero nunca notaste. Este artículo te da las claves para reconocer cada tipo de desperdicio en cualquier proceso, con ejemplos de oficina, fábrica y servicios de salud.

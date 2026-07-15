@@ -27,8 +27,6 @@ robots: "index, follow"
 **Última actualización:** 14 de julio de 2026
 **Tiempo de lectura:** 12 minutos
 
-![Ruta de aprendizaje de Power BI con etapas progresivas desde datos hasta dashboards profesionales](/img/cursos/power-bi.webp)
-
 # Ruta para aprender Power BI desde cero
 
 Aprender Power BI sin un orden es como armar un rompecabezas sin ver la imagen de la caja: puedes pasar semanas encajando piezas sueltas sin avanzar. Esta ruta te da un orden lógico, desde lo más básico hasta tener un portafolio de dashboards que puedas mostrar.

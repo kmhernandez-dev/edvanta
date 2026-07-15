@@ -27,8 +27,6 @@ robots: "index, follow"
 **Última actualización:** 14 de julio de 2026
 **Tiempo de lectura:** 10 minutos
 
-![Planificación de proyecto con cronograma, recursos y objetivos en un tablero](/img/cursos/gestion-de-proyectos.webp)
-
 # Qué es la gestión de proyectos y cómo se aplica
 
 Un proyecto es un esfuerzo temporal que se emprende para crear un producto, servicio o resultado único. La gestión de proyectos es la aplicación de conocimientos, habilidades, herramientas y técnicas a las actividades del proyecto para cumplir sus requisitos. Dicho en simple: es el arte y la ciencia de convertir una idea en un resultado concreto, con un plazo, un presupuesto y un equipo definidos.

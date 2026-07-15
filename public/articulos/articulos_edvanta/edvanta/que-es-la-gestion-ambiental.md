@@ -27,8 +27,6 @@ robots: "index, follow"
 **Última actualización:** 14 de julio de 2026
 **Tiempo de lectura:** 10 minutos
 
-![Entorno natural y documentos de gestión ambiental representando sostenibilidad organizacional](/img/cursos/gestion-ambiental.webp)
-
 # Qué es la gestión ambiental en una organización
 
 La gestión ambiental es el conjunto de actividades coordinadas que una organización realiza para controlar sus impactos sobre el medio ambiente, cumplir requisitos legales y mejorar su desempeño ambiental de manera continua. No es solo sembrar árboles o reciclar papel: es integrar criterios ambientales en cada decisión operativa, desde la compra de materias primas hasta la disposición final de residuos.

@@ -27,8 +27,6 @@ robots: "index, follow"
 **Última actualización:** 14 de julio de 2026
 **Tiempo de lectura:** 11 minutos
 
-![Persona organizando documentos, procesos e indicadores como representación del inicio en gestión de calidad](/img/cursos/gestion-de-calidad.webp)
-
 # Cómo empezar en gestión de calidad: ruta inicial para principiantes
 
 Empezar en gestión de calidad puede parecer abrumador. Normas, auditorías, indicadores, no conformidades, acciones correctivas: el vocabulario solo ya intimida. Pero la calidad no es un idioma secreto ni una disciplina reservada para ingenieros industriales. Es una forma de pensar y trabajar que cualquier persona puede aprender, siempre que empiece por lo básico y avance con práctica.

@@ -27,8 +27,6 @@ robots: "index, follow"
 **Última actualización:** 14 de julio de 2026
 **Tiempo de lectura:** 11 minutos
 
-![Las cinco fases de DMAIC: Define, Measure, Analyze, Improve, Control representadas en un ciclo](/img/cursos/lean-six-sigma.webp)
-
 # Metodología DMAIC: define, mide, analiza, mejora y controla
 
 DMAIC es el método estructurado de Six Sigma para resolver problemas de proceso. Sus cinco fases —Define, Measure, Analyze, Improve, Control— guían al equipo desde la identificación del problema hasta la implementación de soluciones sostenibles, usando datos en cada paso para tomar decisiones basadas en evidencia, no en opiniones.

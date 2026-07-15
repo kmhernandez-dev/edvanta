@@ -27,8 +27,6 @@ robots: "index, follow"
 **Última actualización:** 14 de julio de 2026
 **Tiempo de lectura:** 10 minutos
 
-![Profesional de SST realizando inspección de seguridad con lista de verificación](/img/cursos/seguridad-y-salud-en-el-trabajo.webp)
-
 # Competencias profesionales en SST para fortalecer tu perfil
 
 Tener el título no basta. En seguridad y salud en el trabajo, lo que diferencia a un profesional competente de uno que solo cumple expedientes son las habilidades prácticas: saber inspeccionar sin ser superficial, investigar incidentes sin buscar culpables, comunicar riesgos sin generar pánico y medir resultados sin maquillar indicadores.

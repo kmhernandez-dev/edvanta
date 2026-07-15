@@ -27,8 +27,6 @@ robots: "index, follow"
 **Última actualización:** 14 de julio de 2026
 **Tiempo de lectura:** 10 minutos
 
-![Diagrama de flujo de valor con identificación de desperdicios y mejora continua](/img/cursos/lean.webp)
-
 # Qué es Lean y cómo ayuda a mejorar procesos
 
 Lean es una filosofía de gestión que busca maximizar el valor para el cliente eliminando todo lo que no lo agrega. Nació en Toyota después de la Segunda Guerra Mundial, cuando la empresa japonesa no podía competir con la producción en masa de Estados Unidos y tuvo que inventar una forma de hacer más con menos. Hoy, Lean se aplica en fábricas, hospitales, bancos, empresas de software, consultorios y cualquier lugar donde existan procesos que puedan mejorarse.

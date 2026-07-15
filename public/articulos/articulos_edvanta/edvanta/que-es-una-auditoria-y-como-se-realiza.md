@@ -27,8 +27,6 @@ robots: "index, follow"
 **Última actualización:** 14 de julio de 2026
 **Tiempo de lectura:** 11 minutos
 
-![Documentos, lista de verificación y evidencias sobre una mesa como representación de una auditoría](/img/cursos/auditoria.webp)
-
 # Qué es una auditoría y cómo se realiza paso a paso
 
 Una auditoría es un proceso sistemático, independiente y documentado para obtener evidencias y evaluarlas de manera objetiva con el fin de determinar el grado en que se cumplen los criterios de auditoría. Dicho en palabras simples: es una revisión estructurada para verificar que lo que una organización dice que hace realmente lo hace, y que funciona.

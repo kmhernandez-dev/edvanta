@@ -27,8 +27,6 @@ robots: "index, follow"
 **Última actualización:** 14 de julio de 2026
 **Tiempo de lectura:** 10 minutos
 
-![Diagrama de un sistema de gestión de calidad con enfoque por procesos, indicadores y mejora continua](/img/cursos/gestion-de-calidad.webp)
-
 # Qué es un sistema de gestión de calidad y por qué importa
 
 Un sistema de gestión de calidad (SGC) es la forma en que una organización organiza, controla y mejora sus procesos para entregar productos o servicios que cumplan requisitos de manera consistente. No es un departamento ni un conjunto de formatos guardados en una carpeta: es una estructura viva que conecta lo que la organización promete con lo que realmente entrega.

@@ -27,8 +27,6 @@ robots: "index, follow"
 **Última actualización:** 14 de julio de 2026
 **Tiempo de lectura:** 10 minutos
 
-![Persona iniciando la planificación de un proyecto con notas, cronograma y objetivos](/img/cursos/gestion-de-proyectos.webp)
-
 # Cómo iniciar en gestión de proyectos sin experiencia previa
 
 Nadie te va a dar un proyecto de un millón de dólares para que aprendas. Pero puedes empezar con lo que tienes a mano: un evento, una mejora en tu área, una iniciativa personal. La gestión de proyectos se aprende haciendo, y cuanto más pequeño el primer proyecto, más rápido el aprendizaje.

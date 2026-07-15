@@ -27,8 +27,6 @@ robots: "index, follow"
 **Última actualización:** 14 de julio de 2026
 **Tiempo de lectura:** 10 minutos
 
-![Diagrama de Lean Six Sigma combinando flujo de valor y análisis estadístico de procesos](/img/cursos/lean-six-sigma.webp)
-
 # Qué es Lean Six Sigma y cuándo conviene aprenderlo
 
 Lean Six Sigma es la combinación de dos metodologías de mejora de procesos: Lean, que elimina desperdicios y acelera el flujo, y Six Sigma, que reduce la variabilidad y los defectos usando datos y análisis estadístico. Juntas forman un enfoque potente para resolver problemas de proceso de manera estructurada, basada en evidencia y orientada a resultados medibles.

@@ -27,8 +27,6 @@ robots: "index, follow"
 **Última actualización:** 14 de julio de 2026
 **Tiempo de lectura:** 10 minutos
 
-![Elementos de protección personal y señalización de seguridad en el trabajo](/img/cursos/seguridad-y-salud-en-el-trabajo.webp)
-
 # Qué es seguridad y salud en el trabajo
 
 La seguridad y salud en el trabajo (SST) es la disciplina que busca prevenir lesiones, enfermedades y daños a la salud de los trabajadores, promoviendo condiciones laborales seguras y saludables. No es un conjunto de carteleras ni una charla anual: es una función sistemática que identifica peligros, evalúa riesgos, implementa controles y verifica que funcionen.

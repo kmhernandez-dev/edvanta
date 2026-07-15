@@ -27,8 +27,6 @@ robots: "index, follow"
 **Última actualización:** 14 de julio de 2026
 **Tiempo de lectura:** 10 minutos
 
-![Profesional de gestión ambiental revisando indicadores de sostenibilidad en una tableta](/img/cursos/gestion-ambiental.webp)
-
 # Salidas laborales en gestión ambiental y sostenibilidad
 
 La gestión ambiental dejó de ser un área marginal para convertirse en una función estratégica dentro de las organizaciones. Regulaciones más estrictas, presión de consumidores, criterios de inversión ESG y la urgencia del cambio climático están creando una demanda creciente de profesionales que sepan gestionar impactos ambientales, cumplir requisitos legales y mejorar el desempeño sostenible.

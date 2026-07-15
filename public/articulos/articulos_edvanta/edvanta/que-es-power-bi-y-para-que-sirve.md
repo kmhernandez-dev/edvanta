@@ -27,8 +27,6 @@ robots: "index, follow"
 **Última actualización:** 14 de julio de 2026
 **Tiempo de lectura:** 10 minutos
 
-![Dashboard de Power BI con gráficos, indicadores y visualizaciones de datos empresariales](/img/cursos/power-bi.webp)
-
 # Qué es Power BI y para qué sirve en el trabajo
 
 Power BI es una plataforma de Microsoft para conectar datos, transformarlos, modelarlos y convertirlos en informes visuales interactivos. En palabras simples: toma datos que están dispersos en Excel, bases de datos, sistemas de gestión o páginas web, los organiza y los presenta como dashboards que cualquier persona puede entender.
