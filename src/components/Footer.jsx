@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { EDVANTA_WHATSAPP_URL, EDVANTA_EMAIL, EDVANTA_LINKEDIN_URL, EDVANTA_BRAND_FULL } from '../config/links';
 
 const quickLinks = [
@@ -23,7 +24,7 @@ export default function Footer() {
   return (
     <footer id="contacto" className="bg-gray-50 border-t border-gray-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-10">
 
           {/* Brand */}
           <div>
@@ -70,6 +71,20 @@ export default function Footer() {
                   {l.label}
                 </a>
               ))}
+              <Link to="/articulos" className="block text-sm text-gray-600 hover:text-navy-900 transition-colors">
+                Blog
+              </Link>
+            </nav>
+          </div>
+
+          {/* Legal */}
+          <div>
+            <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4">Legal</p>
+            <nav className="space-y-2">
+              <Link to="/privacidad" className="block text-sm text-gray-600 hover:text-navy-900 transition-colors">Política de privacidad</Link>
+              <Link to="/terminos" className="block text-sm text-gray-600 hover:text-navy-900 transition-colors">Términos y condiciones</Link>
+              <Link to="/descargo-medico" className="block text-sm text-gray-600 hover:text-navy-900 transition-colors">Descargo médico</Link>
+              <Link to="/afiliados" className="block text-sm text-gray-600 hover:text-navy-900 transition-colors">Aviso de afiliados</Link>
             </nav>
           </div>
 

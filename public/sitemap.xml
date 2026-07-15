@@ -1,38 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://edvanta.co/</loc><lastmod>2026-07-08</lastmod><priority>1.0</priority></url>
-  <url><loc>https://edvanta.co/feliz-sin-tiroides</loc><lastmod>2026-07-08</lastmod><priority>0.8</priority></url>
-  <url><loc>https://edvanta.co/atenfarmaclinic</loc><lastmod>2026-07-08</lastmod><priority>0.7</priority></url>
-  <url><loc>https://edvanta.co/articulos</loc><lastmod>2026-07-08</lastmod><priority>0.9</priority></url>
-  <url><loc>https://edvanta.co/cursos/gestion-de-calidad</loc><lastmod>2026-07-08</lastmod><priority>0.9</priority></url>
-  <url><loc>https://edvanta.co/cursos/power-bi</loc><lastmod>2026-07-08</lastmod><priority>0.9</priority></url>
-  <url><loc>https://edvanta.co/cursos/auditoria</loc><lastmod>2026-07-08</lastmod><priority>0.9</priority></url>
-  <url><loc>https://edvanta.co/cursos/gestion-ambiental</loc><lastmod>2026-07-08</lastmod><priority>0.9</priority></url>
-  <url><loc>https://edvanta.co/cursos/seguridad-y-salud-en-el-trabajo</loc><lastmod>2026-07-08</lastmod><priority>0.9</priority></url>
-  <url><loc>https://edvanta.co/cursos/gestion-de-proyectos</loc><lastmod>2026-07-08</lastmod><priority>0.9</priority></url>
-  <url><loc>https://edvanta.co/cursos/lean</loc><lastmod>2026-07-08</lastmod><priority>0.8</priority></url>
-  <url><loc>https://edvanta.co/cursos/lean-six-sigma</loc><lastmod>2026-07-08</lastmod><priority>0.9</priority></url>
-  <url><loc>https://edvanta.co/rutas/calidad-y-auditoria</loc><lastmod>2026-07-08</lastmod><priority>0.8</priority></url>
-  <url><loc>https://edvanta.co/rutas/datos-y-power-bi</loc><lastmod>2026-07-08</lastmod><priority>0.8</priority></url>
-  <url><loc>https://edvanta.co/rutas/seguridad-ambiente-y-sostenibilidad</loc><lastmod>2026-07-08</lastmod><priority>0.8</priority></url>
-  <url><loc>https://edvanta.co/rutas/proyectos-y-mejora-de-procesos</loc><lastmod>2026-07-08</lastmod><priority>0.8</priority></url>
-  <url><loc>https://edvanta.co/articulos/que-es-un-sistema-de-gestion-de-calidad</loc><lastmod>2026-07-08</lastmod><priority>0.7</priority></url>
-  <url><loc>https://edvanta.co/articulos/como-empezar-en-gestion-de-calidad</loc><lastmod>2026-07-08</lastmod><priority>0.7</priority></url>
-  <url><loc>https://edvanta.co/articulos/que-es-power-bi-y-para-que-sirve</loc><lastmod>2026-07-08</lastmod><priority>0.7</priority></url>
-  <url><loc>https://edvanta.co/articulos/ruta-para-aprender-power-bi-desde-cero</loc><lastmod>2026-07-08</lastmod><priority>0.7</priority></url>
-  <url><loc>https://edvanta.co/articulos/que-es-una-auditoria-y-como-se-realiza</loc><lastmod>2026-07-08</lastmod><priority>0.7</priority></url>
-  <url><loc>https://edvanta.co/articulos/competencias-para-trabajar-como-auditor</loc><lastmod>2026-07-08</lastmod><priority>0.7</priority></url>
-  <url><loc>https://edvanta.co/articulos/que-es-la-gestion-ambiental</loc><lastmod>2026-07-08</lastmod><priority>0.7</priority></url>
-  <url><loc>https://edvanta.co/articulos/salidas-laborales-gestion-ambiental</loc><lastmod>2026-07-08</lastmod><priority>0.7</priority></url>
-  <url><loc>https://edvanta.co/articulos/que-es-seguridad-y-salud-en-el-trabajo</loc><lastmod>2026-07-08</lastmod><priority>0.7</priority></url>
-  <url><loc>https://edvanta.co/articulos/competencias-profesionales-en-sst</loc><lastmod>2026-07-08</lastmod><priority>0.7</priority></url>
-  <url><loc>https://edvanta.co/articulos/que-es-la-gestion-de-proyectos</loc><lastmod>2026-07-08</lastmod><priority>0.7</priority></url>
-  <url><loc>https://edvanta.co/articulos/como-iniciar-en-gestion-de-proyectos</loc><lastmod>2026-07-08</lastmod><priority>0.7</priority></url>
-  <url><loc>https://edvanta.co/articulos/que-es-lean</loc><lastmod>2026-07-08</lastmod><priority>0.7</priority></url>
-  <url><loc>https://edvanta.co/articulos/desperdicios-lean</loc><lastmod>2026-07-08</lastmod><priority>0.7</priority></url>
-  <url><loc>https://edvanta.co/articulos/que-es-lean-six-sigma</loc><lastmod>2026-07-08</lastmod><priority>0.7</priority></url>
-  <url><loc>https://edvanta.co/articulos/metodologia-dmaic</loc><lastmod>2026-07-08</lastmod><priority>0.7</priority></url>
-  <url><loc>https://edvanta.co/privacidad</loc><lastmod>2026-07-08</lastmod><priority>0.3</priority></url>
-  <url><loc>https://edvanta.co/terminos</loc><lastmod>2026-07-08</lastmod><priority>0.3</priority></url>
-  <url><loc>https://edvanta.co/afiliados</loc><lastmod>2026-07-08</lastmod><priority>0.3</priority></url>
+  <!-- Página principal -->
+  <url><loc>https://edvanta.co/</loc><lastmod>2026-07-15</lastmod><priority>1.0</priority></url>
+
+  <!-- Marcas -->
+  <url><loc>https://edvanta.co/feliz-sin-tiroides</loc><lastmod>2026-07-15</lastmod><priority>0.8</priority></url>
+  <url><loc>https://edvanta.co/atenfarmaclinic</loc><lastmod>2026-07-15</lastmod><priority>0.7</priority></url>
+
+  <!-- Enfermedades tiroideas (FST) -->
+  <url><loc>https://edvanta.co/enfermedades/hipotiroidismo</loc><lastmod>2026-07-15</lastmod><priority>0.8</priority></url>
+  <url><loc>https://edvanta.co/enfermedades/hipertiroidismo</loc><lastmod>2026-07-15</lastmod><priority>0.8</priority></url>
+  <url><loc>https://edvanta.co/enfermedades/hashimoto</loc><lastmod>2026-07-15</lastmod><priority>0.8</priority></url>
+  <url><loc>https://edvanta.co/enfermedades/nodulos-tiroideos</loc><lastmod>2026-07-15</lastmod><priority>0.8</priority></url>
+  <url><loc>https://edvanta.co/enfermedades/cancer-de-tiroides</loc><lastmod>2026-07-15</lastmod><priority>0.8</priority></url>
+  <url><loc>https://edvanta.co/enfermedades/vivir-sin-tiroides</loc><lastmod>2026-07-15</lastmod><priority>0.8</priority></url>
+  <url><loc>https://edvanta.co/enfermedades/salud-metabolica</loc><lastmod>2026-07-15</lastmod><priority>0.8</priority></url>
+  <url><loc>https://edvanta.co/levotiroxina</loc><lastmod>2026-07-15</lastmod><priority>0.8</priority></url>
+  <url><loc>https://edvanta.co/nutricion-tiroidea</loc><lastmod>2026-07-15</lastmod><priority>0.8</priority></url>
+
+  <!-- Artículos / blog -->
+  <url><loc>https://edvanta.co/articulos</loc><lastmod>2026-07-15</lastmod><priority>0.9</priority></url>
+  <url><loc>https://edvanta.co/articulos/que-es-un-sistema-de-gestion-de-calidad</loc><lastmod>2026-07-15</lastmod><priority>0.7</priority></url>
+  <url><loc>https://edvanta.co/articulos/como-empezar-en-gestion-de-calidad</loc><lastmod>2026-07-15</lastmod><priority>0.7</priority></url>
+  <url><loc>https://edvanta.co/articulos/que-es-power-bi-y-para-que-sirve</loc><lastmod>2026-07-15</lastmod><priority>0.7</priority></url>
+  <url><loc>https://edvanta.co/articulos/ruta-para-aprender-power-bi-desde-cero</loc><lastmod>2026-07-15</lastmod><priority>0.7</priority></url>
+  <url><loc>https://edvanta.co/articulos/que-es-una-auditoria-y-como-se-realiza</loc><lastmod>2026-07-15</lastmod><priority>0.7</priority></url>
+  <url><loc>https://edvanta.co/articulos/competencias-para-trabajar-como-auditor</loc><lastmod>2026-07-15</lastmod><priority>0.7</priority></url>
+  <url><loc>https://edvanta.co/articulos/que-es-la-gestion-ambiental</loc><lastmod>2026-07-15</lastmod><priority>0.7</priority></url>
+  <url><loc>https://edvanta.co/articulos/salidas-laborales-gestion-ambiental</loc><lastmod>2026-07-15</lastmod><priority>0.7</priority></url>
+  <url><loc>https://edvanta.co/articulos/que-es-seguridad-y-salud-en-el-trabajo</loc><lastmod>2026-07-15</lastmod><priority>0.7</priority></url>
+  <url><loc>https://edvanta.co/articulos/competencias-profesionales-en-sst</loc><lastmod>2026-07-15</lastmod><priority>0.7</priority></url>
+  <url><loc>https://edvanta.co/articulos/que-es-la-gestion-de-proyectos</loc><lastmod>2026-07-15</lastmod><priority>0.7</priority></url>
+  <url><loc>https://edvanta.co/articulos/como-iniciar-en-gestion-de-proyectos</loc><lastmod>2026-07-15</lastmod><priority>0.7</priority></url>
+  <url><loc>https://edvanta.co/articulos/que-es-lean</loc><lastmod>2026-07-15</lastmod><priority>0.7</priority></url>
+  <url><loc>https://edvanta.co/articulos/desperdicios-lean</loc><lastmod>2026-07-15</lastmod><priority>0.7</priority></url>
+  <url><loc>https://edvanta.co/articulos/que-es-lean-six-sigma</loc><lastmod>2026-07-15</lastmod><priority>0.7</priority></url>
+  <url><loc>https://edvanta.co/articulos/metodologia-dmaic</loc><lastmod>2026-07-15</lastmod><priority>0.7</priority></url>
+  <url><loc>https://edvanta.co/articulos/como-tomar-levotiroxina-correctamente</loc><lastmod>2026-07-15</lastmod><priority>0.7</priority></url>
+  <url><loc>https://edvanta.co/articulos/vivir-sin-tiroides</loc><lastmod>2026-07-15</lastmod><priority>0.7</priority></url>
+  <url><loc>https://edvanta.co/articulos/alimentos-suplementos-levotiroxina</loc><lastmod>2026-07-15</lastmod><priority>0.7</priority></url>
+
+  <!-- Cursos -->
+  <url><loc>https://edvanta.co/cursos/gestion-de-calidad</loc><lastmod>2026-07-15</lastmod><priority>0.9</priority></url>
+  <url><loc>https://edvanta.co/cursos/power-bi</loc><lastmod>2026-07-15</lastmod><priority>0.9</priority></url>
+  <url><loc>https://edvanta.co/cursos/auditoria</loc><lastmod>2026-07-15</lastmod><priority>0.9</priority></url>
+  <url><loc>https://edvanta.co/cursos/gestion-ambiental</loc><lastmod>2026-07-15</lastmod><priority>0.9</priority></url>
+  <url><loc>https://edvanta.co/cursos/seguridad-y-salud-en-el-trabajo</loc><lastmod>2026-07-15</lastmod><priority>0.9</priority></url>
+  <url><loc>https://edvanta.co/cursos/gestion-de-proyectos</loc><lastmod>2026-07-15</lastmod><priority>0.9</priority></url>
+  <url><loc>https://edvanta.co/cursos/lean</loc><lastmod>2026-07-15</lastmod><priority>0.8</priority></url>
+  <url><loc>https://edvanta.co/cursos/lean-six-sigma</loc><lastmod>2026-07-15</lastmod><priority>0.9</priority></url>
+
+  <!-- Rutas profesionales -->
+  <url><loc>https://edvanta.co/rutas/calidad-y-auditoria</loc><lastmod>2026-07-15</lastmod><priority>0.8</priority></url>
+  <url><loc>https://edvanta.co/rutas/datos-y-power-bi</loc><lastmod>2026-07-15</lastmod><priority>0.8</priority></url>
+  <url><loc>https://edvanta.co/rutas/seguridad-ambiente-y-sostenibilidad</loc><lastmod>2026-07-15</lastmod><priority>0.8</priority></url>
+  <url><loc>https://edvanta.co/rutas/proyectos-y-mejora-de-procesos</loc><lastmod>2026-07-15</lastmod><priority>0.8</priority></url>
+
+  <!-- Páginas legales -->
+  <url><loc>https://edvanta.co/privacidad</loc><lastmod>2026-07-15</lastmod><priority>0.3</priority></url>
+  <url><loc>https://edvanta.co/terminos</loc><lastmod>2026-07-15</lastmod><priority>0.3</priority></url>
+  <url><loc>https://edvanta.co/descargo-medico</loc><lastmod>2026-07-15</lastmod><priority>0.3</priority></url>
+  <url><loc>https://edvanta.co/afiliados</loc><lastmod>2026-07-15</lastmod><priority>0.3</priority></url>
 </urlset>

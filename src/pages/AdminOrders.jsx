@@ -194,6 +194,18 @@ export default function AdminOrders() {
   const [dbHealth, setDbHealth] = useState(null);
   const [autoRefresh, setAutoRefresh] = useState(true);
 
+  useEffect(() => {
+    document.title = 'Admin | Edvanta';
+    const meta = document.createElement('meta');
+    meta.name = 'robots';
+    meta.content = 'noindex, nofollow';
+    document.head.appendChild(meta);
+    return () => {
+      const el = document.head.querySelector('meta[name="robots"]');
+      if (el) el.remove();
+    };
+  }, []);
+
   const doLogin = useCallback((t) => {
     localStorage.setItem(TOKEN_KEY, t);
     setToken(t);

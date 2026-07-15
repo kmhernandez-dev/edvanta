@@ -10,6 +10,7 @@ import ArticulosSection from '../components/ArticulosSection';
 import { products } from '../data/products';
 import { productosAtenFarma } from '../data/atenfarma';
 import { waLink, EMAIL, LINKEDIN_URL } from '../config/links';
+import { updatePageSeo } from '../utils/seo';
 
 // Packs de la Biblioteca que aplican a químicos farmacéuticos clínicos
 const RECURSOS_QF = products.filter(p => ['atencion-farmaceutica', 'calidad-farmaceutica', 'calidad-auditoria'].includes(p.id));
@@ -32,6 +33,15 @@ export default function AtenFarmaClinic() {
   const { count, openCart } = useCart();
   const [selected, setSelected] = useState(null);
   useEffect(() => { window.scrollTo(0, 0); }, []);
+
+  useEffect(() => {
+    updatePageSeo({
+      title: 'AtenFarmaClinic | Atención farmacéutica clínica para profesionales',
+      description: 'Formación, herramientas y recursos para químicos farmacéuticos clínicos. Seguimiento farmacoterapéutico, farmacovigilancia, indicadores y calidad asistencial.',
+      canonical: 'https://edvanta.co/atenfarmaclinic',
+      image: 'https://edvanta.co/img/port-logoatenfarmaclinic.jpg',
+    });
+  }, []);
 
   return (
     <div className="min-h-screen bg-white">

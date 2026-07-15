@@ -41,7 +41,16 @@ export function updatePageSeo({ title, description, canonical, image, type = 'we
   setMeta('property', 'og:description', description);
   setMeta('property', 'og:type', type);
   setMeta('property', 'og:url', canonical);
-  if (image) setMeta('property', 'og:image', image);
-  setMeta('name', 'twitter:card', image ? 'summary_large_image' : 'summary');
+  if (image) {
+    setMeta('property', 'og:image', image);
+    setMeta('name', 'twitter:card', 'summary_large_image');
+    setMeta('name', 'twitter:title', title);
+    setMeta('name', 'twitter:description', description);
+    setMeta('name', 'twitter:image', image);
+  } else {
+    setMeta('name', 'twitter:card', 'summary');
+    setMeta('name', 'twitter:title', title);
+    setMeta('name', 'twitter:description', description);
+  }
   return jsonLd ? setJsonLd(jsonLdId, jsonLd) : undefined;
 }

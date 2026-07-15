@@ -9,10 +9,19 @@ import Icon from '../components/Icon';
 import ArticulosSection from '../components/ArticulosSection';
 import { ebooks, recursosGratis, servicios, enfermedades, cursosFST, tiendaAmazon, testimonios } from '../data/fst';
 import { waLink } from '../config/links';
+import { updatePageSeo } from '../utils/seo';
 
 export default function FelizSinTiroides() {
-  // Empieza arriba al entrar
   useEffect(() => { window.scrollTo(0, 0); }, []);
+
+  useEffect(() => {
+    updatePageSeo({
+      title: 'Feliz Sin Tiroides | Salud tiroidea y metabólica con Karla Hernández',
+      description: 'Educación, acompañamiento farmacéutico y estilo de vida para personas que viven con enfermedades tiroideas y metabólicas. Por Karla Hernández, Química Farmacéutica.',
+      canonical: 'https://edvanta.co/feliz-sin-tiroides',
+      image: 'https://edvanta.co/img/bienestar.jpg',
+    });
+  }, []);
 
   return (
     <div className="min-h-screen bg-sand-50 font-sans">

@@ -1,12 +1,21 @@
 import { useEffect } from 'react';
 import { Link, Navigate } from 'react-router-dom';
 import { legalDocs } from '../data/legal';
+import { updatePageSeo } from '../utils/seo';
 
 export default function LegalPage({ doc }) {
   useEffect(() => { window.scrollTo(0, 0); }, [doc]);
 
   const data = legalDocs[doc];
   if (!data) return <Navigate to="/" replace />;
+
+  useEffect(() => {
+    updatePageSeo({
+      title: `${data.title} | Edvanta`,
+      description: data.sections[0]?.p?.substring(0, 155) || data.title,
+      canonical: `https://edvanta.co/${doc}`,
+    });
+  }, [data, doc]);
 
   return (
     <div className="min-h-screen bg-sand-50">

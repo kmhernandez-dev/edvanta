@@ -45,22 +45,34 @@ export default function CursoPage() {
       jsonLdId: `course-${course.slug}`,
       jsonLd: {
         '@context': 'https://schema.org',
-        '@type': 'Course',
-        name: course.title,
-        description: course.shortDescription,
-        url: canonical,
-        image: `https://edvanta.co${course.image.webp}`,
-        courseMode: 'online',
-        isAccessibleForFree: true,
-        provider: {
-          '@type': 'Organization',
-          name: 'Plataforma educativa',
-        },
-        publisher: {
-          '@type': 'Organization',
-          name: 'Edvanta',
-          url: 'https://edvanta.co/',
-        },
+        '@graph': [
+          {
+            '@type': 'Course',
+            name: course.title,
+            description: course.shortDescription,
+            url: canonical,
+            image: `https://edvanta.co${course.image.webp}`,
+            courseMode: 'online',
+            isAccessibleForFree: true,
+            provider: {
+              '@type': 'Organization',
+              name: 'Plataforma educativa',
+            },
+            publisher: {
+              '@type': 'Organization',
+              name: 'Edvanta',
+              url: 'https://edvanta.co/',
+            },
+          },
+          {
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+              { '@type': 'ListItem', position: 1, name: 'Inicio', item: 'https://edvanta.co/' },
+              { '@type': 'ListItem', position: 2, name: 'Cursos', item: 'https://edvanta.co/#cursos' },
+              { '@type': 'ListItem', position: 3, name: course.title, item: canonical },
+            ],
+          },
+        ],
       },
     });
     return cleanup;

@@ -18,27 +18,44 @@ export default function RutaProfesionalPage() {
 
   useEffect(() => {
     if (!route) return undefined;
+    const canonical = `https://edvanta.co/rutas/${route.slug}`;
+    const firstCourse = route.courseSlugs.map(getFeaturedCourse).find(Boolean);
+    const image = firstCourse?.image?.webp
+      ? `https://edvanta.co${firstCourse.image.webp}`
+      : 'https://edvanta.co/img/cursos/gestion-de-calidad.webp';
     const cleanup = updatePageSeo({
       title: `${route.title} | Ruta profesional Edvanta`,
       description: route.summary,
-      canonical: `https://edvanta.co/rutas/${route.slug}`,
-      image: 'https://edvanta.co/img/cursos/gestion-de-calidad.webp',
+      canonical,
+      image,
       jsonLdId: `route-${route.slug}`,
       jsonLd: {
         '@context': 'https://schema.org',
-        '@type': 'ItemList',
-        name: route.title,
-        description: route.summary,
-        url: `https://edvanta.co/rutas/${route.slug}`,
-        itemListElement: route.courseSlugs.map((courseSlug, index) => {
-          const course = getFeaturedCourse(courseSlug);
-          return {
-            '@type': 'ListItem',
-            position: index + 1,
-            name: course?.title || courseSlug,
-            url: `https://edvanta.co/cursos/${courseSlug}`,
-          };
-        }),
+        '@graph': [
+          {
+            '@type': 'ItemList',
+            name: route.title,
+            description: route.summary,
+            url: canonical,
+            itemListElement: route.courseSlugs.map((courseSlug, index) => {
+              const course = getFeaturedCourse(courseSlug);
+              return {
+                '@type': 'ListItem',
+                position: index + 1,
+                name: course?.title || courseSlug,
+                url: `https://edvanta.co/cursos/${courseSlug}`,
+              };
+            }),
+          },
+          {
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+              { '@type': 'ListItem', position: 1, name: 'Inicio', item: 'https://edvanta.co/' },
+              { '@type': 'ListItem', position: 2, name: 'Rutas profesionales', item: 'https://edvanta.co/#rutas' },
+              { '@type': 'ListItem', position: 3, name: route.title, item: canonical },
+            ],
+          },
+        ],
       },
     });
     return cleanup;

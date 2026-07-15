@@ -10,6 +10,7 @@ import ArticulosIndex   from './pages/ArticulosIndex';
 import CursoPage        from './pages/CursoPage';
 import RutaProfesionalPage from './pages/RutaProfesionalPage';
 import EnfermedadPage   from './pages/EnfermedadPage';
+import NotFound         from './pages/NotFound';
 
 import CartDrawer    from './components/CartDrawer';
 import CartToast     from './components/CartToast';
@@ -50,8 +51,8 @@ export default function App() {
         <Route path="/descargo-medico" element={<LegalPage doc="descargo-medico" />} />
         <Route path="/afiliados"       element={<LegalPage doc="afiliados" />} />
 
-        {/* Cualquier otra ruta vuelve al inicio */}
-        <Route path="*" element={<BibliotecaHome />} />
+        {/* 404 — página no encontrada */}
+        <Route path="*" element={<NotFound />} />
       </Routes>
 
       {/* Globales: carrito, toast y resultado de pago (en todas las páginas) */}

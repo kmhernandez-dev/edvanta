@@ -9,17 +9,7 @@ import LeadForm from '../components/LeadForm';
 import { getEnfermedad } from '../data/enfermedades';
 import { ebooks } from '../data/fst';
 import { articulosPorMarca } from '../data/articulos';
-
-function setMeta(attr, key, content) {
-  let el = document.head.querySelector(`meta[${attr}="${key}"]`);
-  if (!el) { el = document.createElement('meta'); el.setAttribute(attr, key); document.head.appendChild(el); }
-  el.setAttribute('content', content);
-}
-function setCanonical(href) {
-  let el = document.head.querySelector('link[rel="canonical"]');
-  if (!el) { el = document.createElement('link'); el.setAttribute('rel', 'canonical'); document.head.appendChild(el); }
-  el.setAttribute('href', href);
-}
+import { updatePageSeo } from '../utils/seo';
 
 export default function EnfermedadPage({ slug: propSlug }) {
   const { slug: paramSlug } = useParams();
@@ -31,15 +21,55 @@ export default function EnfermedadPage({ slug: propSlug }) {
   useEffect(() => {
     if (!enf) return;
     const canonical = `https://edvanta.co/enfermedades/${enf.slug}`;
-    document.title = enf.seo.title;
-    setMeta('name', 'description', enf.seo.description);
-    setCanonical(canonical);
-    setMeta('property', 'og:title', enf.seo.title);
-    setMeta('property', 'og:description', enf.seo.description);
-    setMeta('property', 'og:type', 'article');
-    setMeta('property', 'og:url', canonical);
-    setMeta('name', 'twitter:card', 'summary_large_image');
-    return () => { document.title = 'Feliz Sin Tiroides'; };
+    updatePageSeo({
+      title: enf.seo.title,
+      description: enf.seo.description,
+      canonical,
+      type: 'article',
+      jsonLdId: `enfermedad-${enf.slug}`,
+      jsonLd: {
+        '@context': 'https://schema.org',
+        '@graph': [
+          {
+            '@type': 'Article',
+            headline: enf.heroTitle,
+            description: enf.heroText,
+            author: {
+              '@type': 'Person',
+              name: 'Karla Hernández',
+            },
+            publisher: {
+              '@type': 'Organization',
+              name: 'Feliz Sin Tiroides',
+              url: 'https://edvanta.co/feliz-sin-tiroides',
+            },
+            mainEntityOfPage: {
+              '@type': 'WebPage',
+              '@id': canonical,
+            },
+          },
+          {
+            '@type': 'FAQPage',
+            mainEntity: enf.faqs.map(faq => ({
+              '@type': 'Question',
+              name: faq.q,
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: faq.a,
+              },
+            })),
+          },
+          {
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+              { '@type': 'ListItem', position: 1, name: 'Inicio', item: 'https://edvanta.co/' },
+              { '@type': 'ListItem', position: 2, name: 'Feliz Sin Tiroides', item: 'https://edvanta.co/feliz-sin-tiroides' },
+              { '@type': 'ListItem', position: 3, name: enf.name, item: canonical },
+            ],
+          },
+        ],
+      },
+    });
   }, [enf]);
 
   if (!enf) return <Navigate to="/feliz-sin-tiroides" replace />;
@@ -52,9 +82,6 @@ export default function EnfermedadPage({ slug: propSlug }) {
     <div className="min-h-screen bg-sand-50 font-sans">
       <FstHeader />
 
-      {/* ═══════════════════════════════════════════════════════
-          HERO
-          ═══════════════════════════════════════════════════════ */}
       <section className="relative pt-28 pb-16 md:pt-32 md:pb-20 overflow-hidden bg-gradient-to-b from-white via-sand-50 to-white">
         <div className="absolute -top-20 -right-20 w-80 h-80 rounded-full bg-[radial-gradient(circle,rgba(20,184,166,0.12),transparent_70%)]" />
         <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-10 items-center">
@@ -86,20 +113,15 @@ export default function EnfermedadPage({ slug: propSlug }) {
         </div>
       </section>
 
-      {/* ═══════════════════════════════════════════════════════
-          INTRODUCCIÓN EDUCATIVA
-          ═══════════════════════════════════════════════════════ */}
       <section id="introduccion" className="py-16 md:py-20 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <FstSectionTitle eyebrow="Información educativa" title={`¿Qué es el ${enf.name.toLowerCase()}?`} />
 
-          {/* Qué es */}
           <div className="mb-10">
             <h3 className="font-serif text-xl font-semibold text-deepblue-900 mb-3">Definición</h3>
             <p className="text-gray-600 leading-relaxed">{enf.intro.what}</p>
           </div>
 
-          {/* Causas */}
           <div className="mb-10">
             <h3 className="font-serif text-xl font-semibold text-deepblue-900 mb-3">Causas frecuentes</h3>
             <ul className="space-y-2">
@@ -114,7 +136,6 @@ export default function EnfermedadPage({ slug: propSlug }) {
             </ul>
           </div>
 
-          {/* Síntomas */}
           <div className="mb-10">
             <h3 className="font-serif text-xl font-semibold text-deepblue-900 mb-3">Síntomas más comunes</h3>
             <div className="grid sm:grid-cols-2 gap-2">
@@ -129,25 +150,21 @@ export default function EnfermedadPage({ slug: propSlug }) {
             </div>
           </div>
 
-          {/* Diagnóstico */}
           <div className="mb-10">
             <h3 className="font-serif text-xl font-semibold text-deepblue-900 mb-3">¿Cómo se diagnostica?</h3>
             <p className="text-gray-600 leading-relaxed">{enf.intro.diagnosis}</p>
           </div>
 
-          {/* Tratamiento */}
           <div className="mb-10">
             <h3 className="font-serif text-xl font-semibold text-deepblue-900 mb-3">Tratamiento</h3>
             <p className="text-gray-600 leading-relaxed">{enf.intro.treatment}</p>
           </div>
 
-          {/* Seguimiento */}
           <div className="mb-10">
             <h3 className="font-serif text-xl font-semibold text-deepblue-900 mb-3">Importancia del seguimiento médico</h3>
             <p className="text-gray-600 leading-relaxed">{enf.intro.followUp}</p>
           </div>
 
-          {/* Errores frecuentes */}
           <div className="mb-10">
             <h3 className="font-serif text-xl font-semibold text-deepblue-900 mb-3">Errores frecuentes que cometen los pacientes</h3>
             <ul className="space-y-2">
@@ -162,7 +179,6 @@ export default function EnfermedadPage({ slug: propSlug }) {
             </ul>
           </div>
 
-          {/* Rol del paciente */}
           <div className="bg-teal-50 border border-teal-100 rounded-2xl p-6">
             <h3 className="font-serif text-lg font-semibold text-deepblue-900 mb-2">¿Qué puedes aprender a gestionar?</h3>
             <p className="text-gray-600 leading-relaxed text-sm">{enf.intro.patientRole}</p>
@@ -176,14 +192,10 @@ export default function EnfermedadPage({ slug: propSlug }) {
         </div>
       </section>
 
-      {/* ═══════════════════════════════════════════════════════
-          RUTA DE APRENDIZAJE
-          ═══════════════════════════════════════════════════════ */}
       <section className="py-16 md:py-20 bg-sand-50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <FstSectionTitle center eyebrow="Empieza por aquí" title="Ruta de aprendizaje sugerida"
             subtitle="Sigue estos pasos para comprender tu condición y aprender a cuidarte mejor." />
-
           <div className="space-y-4">
             {enf.learningPath.map((step, i) => (
               <Link
@@ -207,9 +219,6 @@ export default function EnfermedadPage({ slug: propSlug }) {
         </div>
       </section>
 
-      {/* ═══════════════════════════════════════════════════════
-          GUÍAS RECOMENDADAS
-          ═══════════════════════════════════════════════════════ */}
       {guiasFiltradas.length > 0 && (
         <section id="recursos" className="py-16 md:py-20 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -222,9 +231,6 @@ export default function EnfermedadPage({ slug: propSlug }) {
         </section>
       )}
 
-      {/* ═══════════════════════════════════════════════════════
-          ARTÍCULOS EDUCATIVOS
-          ═══════════════════════════════════════════════════════ */}
       {artsFiltrados.length > 0 && (
         <section id="articulos" className="py-16 md:py-20 bg-sand-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -257,9 +263,6 @@ export default function EnfermedadPage({ slug: propSlug }) {
         </section>
       )}
 
-      {/* ═══════════════════════════════════════════════════════
-          RECURSOS GRATUITOS
-          ═══════════════════════════════════════════════════════ */}
       <section className="py-16 md:py-20 bg-gradient-to-br from-teal-50 via-sand-50 to-blush-50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <FstSectionTitle center eyebrow="Sin costo" title="Recursos gratuitos"
@@ -278,9 +281,6 @@ export default function EnfermedadPage({ slug: propSlug }) {
         </div>
       </section>
 
-      {/* ═══════════════════════════════════════════════════════
-          PREGUNTAS FRECUENTES
-          ═══════════════════════════════════════════════════════ */}
       <section className="py-16 md:py-20 bg-white">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <FstSectionTitle center eyebrow="¿Tienes dudas?" title="Preguntas frecuentes" />
@@ -302,9 +302,6 @@ export default function EnfermedadPage({ slug: propSlug }) {
         </div>
       </section>
 
-      {/* ═══════════════════════════════════════════════════════
-          CTA FINAL
-          ═══════════════════════════════════════════════════════ */}
       <section className="py-16 bg-deepblue-900 text-white text-center">
         <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="w-16 h-16 rounded-2xl bg-white/10 flex items-center justify-center mx-auto mb-5">
