@@ -9,6 +9,7 @@ import ArticuloPage     from './pages/ArticuloPage';
 import ArticulosIndex   from './pages/ArticulosIndex';
 import CursoPage        from './pages/CursoPage';
 import RutaProfesionalPage from './pages/RutaProfesionalPage';
+import EnfermedadPage   from './pages/EnfermedadPage';
 
 import CartDrawer    from './components/CartDrawer';
 import CartToast     from './components/CartToast';
@@ -23,6 +24,11 @@ export default function App() {
 
         {/* Marca: Feliz Sin Tiroides (pacientes) */}
         <Route path="/feliz-sin-tiroides" element={<FelizSinTiroides />} />
+
+        {/* Enfermedades tiroideas (FST) */}
+        <Route path="/enfermedades/:slug" element={<EnfermedadPage />} />
+        <Route path="/levotiroxina" element={<EnfermedadPage slug="levotiroxina" />} />
+        <Route path="/nutricion-tiroidea" element={<EnfermedadPage slug="nutricion-tiroidea" />} />
 
         {/* Marca: AtenFarmaClinic (químicos farmacéuticos clínicos) */}
         <Route path="/atenfarmaclinic" element={<AtenFarmaClinic />} />

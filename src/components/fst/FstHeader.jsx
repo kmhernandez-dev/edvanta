@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { useCart } from '../../context/CartContext';
 import { waLink } from '../../config/links';
@@ -6,22 +6,43 @@ import { waLink } from '../../config/links';
 const navLinks = [
   { label: 'Inicio',        href: '#fst-inicio' },
   { label: 'Sobre Karla',   href: '#fst-karla' },
-  { label: 'Tiroides',      href: '#fst-tiroides' },
   { label: 'Guías y ebooks',href: '#fst-ebooks' },
   { label: 'Servicios',     href: '#fst-servicios' },
   { label: 'Comunidad',     href: '#fst-comunidad' },
   { label: 'Contacto',      href: '#fst-contacto' },
 ];
 
+const enfermedadesMenu = [
+  { label: 'Hipotiroidismo',          to: '/enfermedades/hipotiroidismo' },
+  { label: 'Hipertiroidismo',         to: '/enfermedades/hipertiroidismo' },
+  { label: 'Tiroiditis de Hashimoto', to: '/enfermedades/hashimoto' },
+  { label: 'Nódulos tiroideos',       to: '/enfermedades/nodulos-tiroideos' },
+  { label: 'Cáncer de tiroides',      to: '/enfermedades/cancer-de-tiroides' },
+  { label: 'Vivir sin tiroides',      to: '/enfermedades/vivir-sin-tiroides' },
+  { label: 'Salud metabólica',        to: '/enfermedades/salud-metabolica' },
+  { label: 'Levotiroxina y medicamentos', to: '/levotiroxina' },
+  { label: 'Nutrición tiroidea',          to: '/nutricion-tiroidea' },
+];
+
 export default function FstHeader() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [megaOpen, setMegaOpen] = useState(false);
   const { count, openCart } = useCart();
+  const megaRef = useRef(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener('scroll', onScroll);
     return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  useEffect(() => {
+    const handleClick = (e) => {
+      if (megaRef.current && !megaRef.current.contains(e.target)) setMegaOpen(false);
+    };
+    document.addEventListener('mousedown', handleClick);
+    return () => document.removeEventListener('mousedown', handleClick);
   }, []);
 
   const handleNav = (e, href) => {
@@ -56,6 +77,51 @@ export default function FstHeader() {
                 {link.label}
               </a>
             ))}
+
+            {/* Mega menu: Enfermedades tiroideas */}
+            <div ref={megaRef} className="relative">
+              <button
+                onClick={() => setMegaOpen(!megaOpen)}
+                className={`px-3 py-1.5 text-sm rounded-lg transition-colors duration-150 font-medium flex items-center gap-1 ${megaOpen ? 'text-teal-700 bg-teal-50' : 'text-deepblue-800/70 hover:text-deepblue-900 hover:bg-sand-50'}`}
+              >
+                Enfermedades tiroideas
+                <svg className={`w-3.5 h-3.5 transition-transform ${megaOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+
+              {megaOpen && (
+                <div className="absolute top-full left-0 mt-1 w-72 bg-white rounded-2xl shadow-xl border border-sand-100 py-2 z-50">
+                  <div className="px-3 py-1.5">
+                    <p className="text-[10px] font-bold text-teal-600 uppercase tracking-widest mb-1">Condiciones</p>
+                  </div>
+                  {enfermedadesMenu.slice(0, 7).map(item => (
+                    <Link
+                      key={item.to}
+                      to={item.to}
+                      onClick={() => setMegaOpen(false)}
+                      className="block px-4 py-2 text-sm text-deepblue-800 hover:bg-teal-50 hover:text-teal-700 transition-colors"
+                    >
+                      {item.label}
+                    </Link>
+                  ))}
+                  <div className="border-t border-sand-100 my-1" />
+                  <div className="px-3 py-1.5">
+                    <p className="text-[10px] font-bold text-teal-600 uppercase tracking-widest mb-1">Temas</p>
+                  </div>
+                  {enfermedadesMenu.slice(7).map(item => (
+                    <Link
+                      key={item.to}
+                      to={item.to}
+                      onClick={() => setMegaOpen(false)}
+                      className="block px-4 py-2 text-sm text-deepblue-800 hover:bg-teal-50 hover:text-teal-700 transition-colors"
+                    >
+                      {item.label}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
           </nav>
 
           {/* CTAs */}
@@ -103,7 +169,7 @@ export default function FstHeader() {
 
       {/* Mobile menu */}
       {menuOpen && (
-        <div className="lg:hidden bg-white border-t border-sand-100 shadow-lg">
+        <div className="lg:hidden bg-white border-t border-sand-100 shadow-lg max-h-[80vh] overflow-y-auto">
           <nav className="px-4 py-3 space-y-1">
             {navLinks.map(link => (
               <a
@@ -115,6 +181,19 @@ export default function FstHeader() {
                 {link.label}
               </a>
             ))}
+            <div className="border-t border-sand-100 my-2" />
+            <p className="px-3 py-1 text-[10px] font-bold text-teal-600 uppercase tracking-widest">Enfermedades tiroideas</p>
+            {enfermedadesMenu.map(item => (
+              <Link
+                key={item.to}
+                to={item.to}
+                onClick={() => setMenuOpen(false)}
+                className="block px-3 py-2.5 text-sm font-medium text-deepblue-800/80 hover:bg-sand-50 rounded-lg transition-colors"
+              >
+                {item.label}
+              </Link>
+            ))}
+            <div className="border-t border-sand-100 my-2" />
             <Link to="/" className="block px-3 py-2.5 text-sm font-medium text-teal-700 hover:bg-sand-50 rounded-lg">
               ← Edvanta
             </Link>

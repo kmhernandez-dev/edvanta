@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import FstHeader from '../components/fst/FstHeader';
 import FstFooter from '../components/fst/FstFooter';
+import FstSectionTitle from '../components/fst/FstSectionTitle';
 import EbookCard from '../components/fst/EbookCard';
 import BrandSwitch from '../components/BrandSwitch';
 import LeadForm from '../components/LeadForm';
@@ -8,16 +9,6 @@ import Icon from '../components/Icon';
 import ArticulosSection from '../components/ArticulosSection';
 import { ebooks, recursosGratis, servicios, enfermedades, cursosFST, tiendaAmazon, testimonios } from '../data/fst';
 import { waLink } from '../config/links';
-
-function FstSectionTitle({ eyebrow, title, subtitle, center }) {
-  return (
-    <div className={`mb-10 ${center ? 'text-center mx-auto max-w-2xl' : ''}`}>
-      {eyebrow && <p className="text-xs font-bold text-teal-600 uppercase tracking-[0.2em] mb-2">{eyebrow}</p>}
-      <h2 className="font-serif text-3xl md:text-4xl font-semibold text-deepblue-900 leading-tight">{title}</h2>
-      {subtitle && <p className="text-base text-gray-500 mt-3 leading-relaxed">{subtitle}</p>}
-    </div>
-  );
-}
 
 export default function FelizSinTiroides() {
   // Empieza arriba al entrar
