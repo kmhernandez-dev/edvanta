@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, Navigate, useParams } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -21,6 +21,54 @@ function ListBlock({ title, items, icon = 'checkCircle' }) {
           </li>
         ))}
       </ul>
+    </div>
+  );
+}
+
+function CourseDetailTabs({ course }) {
+  const groups = [
+    { id: 'skills', label: 'Competencias', title: 'Habilidades que puedes fortalecer', items: course.skills, icon: 'checkCircle' },
+    { id: 'topics', label: 'Temario', title: 'Conceptos clave del curso', items: course.topics, icon: 'book' },
+    { id: 'applications', label: 'Aplicaciones', title: 'Acciones para llevarlo al trabajo', items: course.applications, icon: 'briefcase' },
+  ];
+  const [activeId, setActiveId] = useState(groups[0].id);
+  const activeGroup = groups.find((group) => group.id === activeId) || groups[0];
+
+  return (
+    <div className="rounded-lg border border-gray-200 bg-white p-4 shadow-sm md:p-5">
+      <div className="mb-4 flex gap-2 overflow-x-auto pb-1">
+        {groups.map((group) => {
+          const active = group.id === activeId;
+          return (
+            <button
+              key={group.id}
+              type="button"
+              onClick={() => setActiveId(group.id)}
+              aria-pressed={active}
+              className={`inline-flex shrink-0 items-center gap-2 rounded-lg border px-3 py-2 text-sm font-bold transition ${
+                active
+                  ? 'border-teal-600 bg-teal-600 text-white shadow-sm'
+                  : 'border-gray-200 bg-white text-gray-600 hover:border-teal-200 hover:bg-teal-50 hover:text-teal-800'
+              }`}
+            >
+              <Icon name={group.icon} className="h-4 w-4" />
+              {group.label}
+            </button>
+          );
+        })}
+      </div>
+
+      <h3 className="text-lg font-black text-navy-950">{activeGroup.title}</h3>
+      <div className="mt-4 grid gap-3 sm:grid-cols-2">
+        {activeGroup.items.map((item, index) => (
+          <div key={item} className="flex gap-3 rounded-lg bg-slate-50 p-3">
+            <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-white text-xs font-black text-teal-700 shadow-sm">
+              {index + 1}
+            </span>
+            <p className="text-sm font-semibold leading-relaxed text-navy-900">{item}</p>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
@@ -125,7 +173,7 @@ export default function CursoPage() {
               </div>
 
               <div className="overflow-hidden rounded-lg border border-gray-200 bg-white shadow-lg">
-                <CourseImage course={course} variant="poster" loading="eager" className="mx-auto max-h-[720px] w-full object-cover" />
+                <CourseImage course={course} variant="poster" loading="eager" className="mx-auto max-h-[760px] w-auto max-w-full object-contain" />
               </div>
             </div>
           </div>
@@ -148,13 +196,7 @@ export default function CursoPage() {
                 Edvanta organiza una ruta clara para que sepas qué aprender, cómo aplicarlo y qué habilidades puedes fortalecer con este curso.
               </p>
             </div>
-            <div className="grid gap-3 sm:grid-cols-2">
-              {course.topics.map((topic) => (
-                <div key={topic} className="rounded-lg border border-gray-200 bg-white p-4 text-sm font-semibold text-navy-950">
-                  {topic}
-                </div>
-              ))}
-            </div>
+            <CourseDetailTabs course={course} />
           </div>
         </section>
 

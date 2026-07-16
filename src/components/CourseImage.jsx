@@ -2,8 +2,8 @@ export default function CourseImage({ course, className = '', loading = 'lazy', 
   const isPoster = variant === 'poster';
   const webp = isPoster ? `/img/cursos/posters/${course.slug}.webp` : course.image.webp;
   const jpg = isPoster ? `/img/cursos/posters/${course.slug}.jpg` : course.image.jpg;
-  const width = isPoster ? '900' : '1600';
-  const height = isPoster ? '1272' : '900';
+  const width = isPoster ? '941' : '1600';
+  const height = isPoster ? '1672' : '900';
 
   return (
     <picture>
