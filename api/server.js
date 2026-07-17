@@ -28,6 +28,9 @@ import { createPreferenceRoute } from './routes/create-preference.js';
 import { mpWebhookRoute } from './routes/mp-webhook.js';
 import { leadCaptureRoute } from './routes/lead-capture.js';
 import { listOrdersRoute } from './routes/list-orders.js';
+import academiaAuthRoutes from './routes/academia-auth.js';
+import academiaRoutes from './routes/academia.js';
+import adminAcademiaRoutes from './routes/admin-academia.js';
 
 const PORT = parseInt(process.env.PORT || '3000', 10);
 const NODE_ENV = process.env.NODE_ENV || 'development';
@@ -124,6 +127,11 @@ app.post('/api/create-preference', createPreferenceRoute);
 app.post('/api/mp-webhook',         mpWebhookRoute);
 app.post('/api/lead-capture',       leadCaptureRoute);
 app.get('/api/list-orders',         listOrdersRoute);
+
+// Academia FST
+app.use('/api/academia/auth',  academiaAuthRoutes);
+app.use('/api/academia',       academiaRoutes);
+app.use('/api/admin/academia', adminAcademiaRoutes);
 
 // ── 404 + manejo de errores (no expone stack traces) ─────────
 app.use((_req, res) => res.status(404).json({ error: 'Not found' }));

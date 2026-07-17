@@ -5,20 +5,26 @@ import FelizSinTiroides from './pages/FelizSinTiroides';
 import AtenFarmaClinic  from './pages/AtenFarmaClinic';
 import LegalPage        from './pages/LegalPage';
 import AdminOrders      from './pages/AdminOrders';
+import AdminAcademia    from './pages/AdminAcademia';
 import ArticuloPage     from './pages/ArticuloPage';
 import ArticulosIndex   from './pages/ArticulosIndex';
 import CursoPage        from './pages/CursoPage';
 import RutaProfesionalPage from './pages/RutaProfesionalPage';
 import EnfermedadPage   from './pages/EnfermedadPage';
+import AcademiaIndex    from './pages/AcademiaIndex';
+import AcademiaCurso    from './pages/AcademiaCurso';
+import AcademiaClase    from './pages/AcademiaClase';
+import MisCursos        from './pages/MisCursos';
 import NotFound         from './pages/NotFound';
 
+import { AuthProvider } from './context/AuthContext';
 import CartDrawer    from './components/CartDrawer';
 import CartToast     from './components/CartToast';
 import PaymentStatus from './components/PaymentStatus';
 
 export default function App() {
   return (
-    <>
+    <AuthProvider>
       <Routes>
         {/* Marca principal: Edvanta */}
         <Route path="/" element={<BibliotecaHome />} />
@@ -30,6 +36,12 @@ export default function App() {
         <Route path="/enfermedades/:slug" element={<EnfermedadPage />} />
         <Route path="/levotiroxina" element={<EnfermedadPage slug="levotiroxina" />} />
         <Route path="/nutricion-tiroidea" element={<EnfermedadPage slug="nutricion-tiroidea" />} />
+
+        {/* Academia FST */}
+        <Route path="/academia" element={<AcademiaIndex />} />
+        <Route path="/academia/curso/:slug" element={<AcademiaCurso />} />
+        <Route path="/academia/curso/:slug/clase/:lessonId" element={<AcademiaClase />} />
+        <Route path="/academia/mis-cursos" element={<MisCursos />} />
 
         {/* Marca: AtenFarmaClinic (químicos farmacéuticos clínicos) */}
         <Route path="/atenfarmaclinic" element={<AtenFarmaClinic />} />
@@ -44,6 +56,7 @@ export default function App() {
 
         {/* Panel admin interno (oculto, ruta directa) */}
         <Route path="/admin/orders" element={<AdminOrders />} />
+        <Route path="/admin/academia" element={<AdminAcademia />} />
 
         {/* Páginas legales */}
         <Route path="/privacidad"      element={<LegalPage doc="privacidad" />} />
@@ -59,6 +72,6 @@ export default function App() {
       <CartDrawer />
       <CartToast />
       <PaymentStatus />
-    </>
+    </AuthProvider>
   );
 }
