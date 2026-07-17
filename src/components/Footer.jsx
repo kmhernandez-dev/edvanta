@@ -9,6 +9,8 @@ const quickLinks = [
   { label: 'Recursos', href: '#recursos' },
 ];
 
+const logoVersion = '20260716-edvanta-logo';
+
 export default function Footer() {
   const handleNav = (e, href) => {
     e.preventDefault();
@@ -28,13 +30,15 @@ export default function Footer() {
 
           {/* Brand */}
           <div>
-            <div className="flex items-center gap-2 mb-3">
-              <div className="w-8 h-8 rounded-lg bg-navy-900 flex items-center justify-center">
-                <span className="text-white text-xs font-bold">EV</span>
-              </div>
-              <div>
-                <p className="text-sm font-bold text-navy-950 leading-none">Edvanta</p>
-              </div>
+            <div className="mb-3">
+              <img
+                src={`/img/logo-edvanta-wordmark.png?v=${logoVersion}`}
+                alt="Edvanta"
+                className="h-9 w-auto"
+                width="901"
+                height="162"
+                loading="lazy"
+              />
             </div>
             <p className="text-sm text-gray-500 leading-relaxed mb-4">
               Rutas de aprendizaje, cursos recomendados y recursos profesionales para fortalecer tu perfil.

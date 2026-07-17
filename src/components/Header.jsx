@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { EDVANTA_WHATSAPP_URL, EDVANTA_BRAND_NAME } from '../config/links';
+import { EDVANTA_WHATSAPP_URL } from '../config/links';
 import { useCart } from '../context/CartContext';
 
 const navLinks = [
@@ -10,6 +10,8 @@ const navLinks = [
   { label: 'Recursos', href: '#recursos' },
   { label: 'Acerca de Edvanta', href: '#contacto' },
 ];
+
+const logoVersion = '20260716-edvanta-logo';
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -38,14 +40,19 @@ export default function Header() {
         <div className="flex items-center justify-between h-16">
 
           {/* Logo */}
-          <a href="#inicio" onClick={e => handleNav(e, '#inicio')} className="flex items-center gap-2 shrink-0">
-            <div className="w-8 h-8 rounded-lg bg-navy-900 flex items-center justify-center">
-              <span className="text-white text-xs font-bold">EV</span>
-            </div>
-            <div className="hidden sm:block">
-              <p className="text-sm font-bold text-navy-950 leading-none">{EDVANTA_BRAND_NAME}</p>
-              <p className="text-[10px] text-teal-600 font-medium leading-none mt-0.5">Educación profesional</p>
-            </div>
+          <a
+            href="#inicio"
+            onClick={e => handleNav(e, '#inicio')}
+            className="flex shrink-0 items-center rounded-lg py-1 transition hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2"
+            aria-label="Ir al inicio de Edvanta"
+          >
+            <img
+              src={`/img/logo-edvanta-wordmark.png?v=${logoVersion}`}
+              alt="Edvanta"
+              className="h-8 w-auto sm:h-9"
+              width="901"
+              height="162"
+            />
           </a>
 
           {/* Nav desktop */}
