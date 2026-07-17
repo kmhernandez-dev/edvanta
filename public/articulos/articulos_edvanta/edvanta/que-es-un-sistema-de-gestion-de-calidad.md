@@ -54,13 +54,13 @@ Un SGC responde cuatro preguntas básicas sobre cualquier actividad de la organi
 3. ¿Qué pasa si algo sale mal?
 4. ¿Cómo se mejora para la próxima vez?
 
-Estas preguntas se aplican tanto a una fábrica que produce medicamentos como a un consultorio que atiende pacientes, una empresa de software que libera actualizaciones o un emprendimiento que vende por internet. El SGC no depende del tamaño ni del sector: depende de la decisión de trabajar con orden.
+Estas preguntas se aplican tanto a una fábrica que produce medicamentos como a un consultorio que atiende pacientes, una empresa de software que libera actualizaciones o un emprendimiento que vende por internet. El SGC no depende del tamaño ni del sector: depende de la decisión de trabajar con orden. Si quieres construir una base sólida en esta disciplina, el [curso de gestión de calidad](/cursos/gestion-de-calidad) te guía desde los fundamentos hasta la mejora continua.
 
 La norma ISO 9000 define un sistema de gestión como el conjunto de elementos interrelacionados de una organización para establecer políticas, objetivos y procesos para lograr dichos objetivos [1]. La calidad, en este contexto, no significa lujo ni perfección: significa que el producto o servicio cumple con lo que se espera de él de forma repetible.
 
 ## Por qué importa un SGC
 
-Las organizaciones que operan sin un SGC suelen enfrentar los mismos problemas: cada persona hace las cosas a su manera, los errores se repiten porque nadie documentó la solución, los clientes reciben respuestas distintas según quién los atienda y cuando alguien se va, el conocimiento se va con esa persona.
+Las organizaciones que operan sin un SGC suelen enfrentar los mismos problemas: cada persona hace las cosas a su manera, los errores se repiten porque nadie documentó la solución, los clientes reciben respuestas distintas según quién los atienda y cuando alguien se va, el conocimiento se va con esa persona. Verificar que el sistema realmente funcione es el rol de la auditoría; el [curso de auditoría](/cursos/auditoria) te prepara para evaluar sistemas de gestión con método y criterio.
 
 Un SGC ayuda a:
 

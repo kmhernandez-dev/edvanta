@@ -29,7 +29,7 @@ robots: "index, follow"
 
 # Cómo empezar en gestión de calidad: ruta inicial para principiantes
 
-Empezar en gestión de calidad puede parecer abrumador. Normas, auditorías, indicadores, no conformidades, acciones correctivas: el vocabulario solo ya intimida. Pero la calidad no es un idioma secreto ni una disciplina reservada para ingenieros industriales. Es una forma de pensar y trabajar que cualquier persona puede aprender, siempre que empiece por lo básico y avance con práctica.
+Empezar en gestión de calidad puede parecer abrumador. Normas, auditorías, indicadores, no conformidades, acciones correctivas: el vocabulario solo ya intimida. Pero la calidad no es un idioma secreto ni una disciplina reservada para ingenieros industriales. Es una forma de pensar y trabajar que cualquier persona puede aprender, siempre que empiece por lo básico y avance con práctica. El [curso de gestión de calidad](/cursos/gestion-de-calidad) te guía paso a paso desde los fundamentos hasta la mejora continua.
 
 > **Aviso editorial:** Este artículo ofrece orientación educativa. La implementación de sistemas de gestión debe adaptarse al contexto, la normativa aplicable y los requisitos específicos de cada organización.
 
@@ -128,7 +128,7 @@ La mejor forma de aprender es haciendo. Aquí tienes un proyecto inicial que pue
 
 **Paso 6: Documentar la mejora.** Si funcionó, actualiza el procedimiento y comparte el resultado. Si no, aprende y prueba otra cosa.
 
-Este proyecto te dará experiencia real en mapeo de procesos, análisis de problemas, propuesta de mejora y medición de resultados. Esas cuatro habilidades son el núcleo de la gestión de calidad.
+Este proyecto te dará experiencia real en mapeo de procesos, análisis de problemas, propuesta de mejora y medición de resultados. Esas cuatro habilidades son el núcleo de la gestión de calidad. Una vez que tengas el proceso bajo control, verificar que se cumpla es el siguiente paso; el [curso de auditoría](/cursos/auditoria) te prepara para evaluar sistemas de gestión con método y criterio.
 
 ## Herramientas básicas que usarás todos los días
 

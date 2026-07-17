@@ -60,7 +60,7 @@ Si sigues este orden, cada etapa se apoya en la anterior y evitas tener que reha
 
 ## Etapa 1: Fundamentos de datos
 
-Antes de abrir Power BI, necesitas entender algunos conceptos básicos sobre datos. No toma más de una semana y te ahorrará meses de confusión.
+Antes de abrir Power BI, necesitas entender algunos conceptos básicos sobre datos. No toma más de una semana y te ahorrará meses de confusión. Si estás dando tus primeros pasos en esta herramienta, el [curso de Power BI](/cursos/power-bi) te guía desde la instalación hasta dashboards profesionales.
 
 ### Lo que debes aprender
 
@@ -127,7 +127,7 @@ Con los datos que limpiaste en la etapa 2:
 
 ## Etapa 4: Visualizaciones
 
-Aquí es donde los datos se convierten en información que cualquiera puede entender. Pero visualizar no es solo elegir un gráfico bonito: es elegir el gráfico correcto para lo que quieres comunicar.
+Aquí es donde los datos se convierten en información que cualquiera puede entender. Pero visualizar no es solo elegir un gráfico bonito: es elegir el gráfico correcto para lo que quieres comunicar. Complementar estas habilidades con el [curso de Lean Six Sigma](/cursos/lean-six-sigma) te permitirá aplicar análisis de datos a la mejora de procesos reales.
 
 ### Lo que debes aprender
 

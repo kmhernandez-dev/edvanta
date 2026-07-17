@@ -29,7 +29,7 @@ robots: "index, follow"
 
 # Competencias profesionales en SST para fortalecer tu perfil
 
-Tener el título no basta. En seguridad y salud en el trabajo, lo que diferencia a un profesional competente de uno que solo cumple expedientes son las habilidades prácticas: saber inspeccionar sin ser superficial, investigar incidentes sin buscar culpables, comunicar riesgos sin generar pánico y medir resultados sin maquillar indicadores.
+Tener el título no basta. En seguridad y salud en el trabajo, lo que diferencia a un profesional competente de uno que solo cumple expedientes son las habilidades prácticas: saber inspeccionar sin ser superficial, investigar incidentes sin buscar culpables, comunicar riesgos sin generar pánico y medir resultados sin maquillar indicadores. El [curso de seguridad y salud en el trabajo](/cursos/seguridad-y-salud-en-el-trabajo) te ayuda a desarrollar estas competencias desde los fundamentos.
 
 > **Aviso editorial:** Este artículo describe competencias deseables con fines de orientación educativa. Los requisitos específicos dependen de la legislación de cada país y del perfil del cargo.
 
@@ -124,7 +124,7 @@ Son necesarios pero insuficientes. Miden el pasado, no previenen el futuro.
 - Porcentaje de trabajadores capacitados en temas críticos.
 - Porcentaje de acciones correctivas cerradas con verificación de eficacia.
 
-Los indicadores proactivos son más valiosos porque permiten actuar antes de que ocurra un accidente. Si las inspecciones están bajando, los reportes disminuyen y las acciones no se cierran, el sistema se está debilitando aunque la tasa de accidentalidad aún no lo refleje.
+Los indicadores proactivos son más valiosos porque permiten actuar antes de que ocurra un accidente. Si las inspecciones están bajando, los reportes disminuyen y las acciones no se cierran, el sistema se está debilitando aunque la tasa de accidentalidad aún no lo refleje. Muchas organizaciones integran la SST con la gestión ambiental en un solo sistema HSEQ; el [curso de gestión ambiental](/cursos/gestion-ambiental) te prepara para ampliar tu perfil hacia esta visión integrada.
 
 Un dashboard en Power BI con estos indicadores, actualizado mensualmente, comunica más que un informe de 30 páginas. El [curso de Power BI](/cursos/power-bi) te da esta habilidad.
 

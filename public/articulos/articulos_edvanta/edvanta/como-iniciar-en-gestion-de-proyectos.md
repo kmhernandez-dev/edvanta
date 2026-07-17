@@ -29,7 +29,7 @@ robots: "index, follow"
 
 # Cómo iniciar en gestión de proyectos sin experiencia previa
 
-Nadie te va a dar un proyecto de un millón de dólares para que aprendas. Pero puedes empezar con lo que tienes a mano: un evento, una mejora en tu área, una iniciativa personal. La gestión de proyectos se aprende haciendo, y cuanto más pequeño el primer proyecto, más rápido el aprendizaje.
+Nadie te va a dar un proyecto de un millón de dólares para que aprendas. Pero puedes empezar con lo que tienes a mano: un evento, una mejora en tu área, una iniciativa personal. La gestión de proyectos se aprende haciendo, y cuanto más pequeño el primer proyecto, más rápido el aprendizaje. El [curso de gestión de proyectos](/cursos/gestion-de-proyectos) te da las bases estructuradas para planificar, ejecutar y cerrar proyectos con método.
 
 > **Aviso editorial:** Este artículo ofrece orientación educativa. La práctica de gestión de proyectos debe adaptarse al contexto y los requisitos de cada organización.
 
@@ -53,7 +53,7 @@ Nadie te va a dar un proyecto de un millón de dólares para que aprendas. Pero 
 - Implementar un cambio en tu área (nuevo formato, nuevo procedimiento, nuevo software).
 - Planificar unas vacaciones familiares (destino, vuelos, alojamiento, actividades, presupuesto).
 
-Cada una de estas actividades tiene alcance, tiempo, costo, interesados y riesgos. Si las abordas con método, estás gestionando proyectos. La diferencia entre el principiante y el profesional no es el tamaño del proyecto: es el método.
+Cada una de estas actividades tiene alcance, tiempo, costo, interesados y riesgos. Si las abordas con método, estás gestionando proyectos. La diferencia entre el principiante y el profesional no es el tamaño del proyecto: es el método. Si además quieres que tus proyectos sean más eficientes eliminando desperdicios, el [curso de Lean](/cursos/lean) te enseña a optimizar el flujo de trabajo y reducir lo que no agrega valor.
 
 ## Tu primer proyecto: dónde encontrarlo
 

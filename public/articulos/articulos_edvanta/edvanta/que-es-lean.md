@@ -29,7 +29,7 @@ robots: "index, follow"
 
 # Qué es Lean y cómo ayuda a mejorar procesos
 
-Lean es una filosofía de gestión que busca maximizar el valor para el cliente eliminando todo lo que no lo agrega. Nació en Toyota después de la Segunda Guerra Mundial, cuando la empresa japonesa no podía competir con la producción en masa de Estados Unidos y tuvo que inventar una forma de hacer más con menos. Hoy, Lean se aplica en fábricas, hospitales, bancos, empresas de software, consultorios y cualquier lugar donde existan procesos que puedan mejorarse.
+Lean es una filosofía de gestión que busca maximizar el valor para el cliente eliminando todo lo que no lo agrega. Nació en Toyota después de la Segunda Guerra Mundial, cuando la empresa japonesa no podía competir con la producción en masa de Estados Unidos y tuvo que inventar una forma de hacer más con menos. Hoy, Lean se aplica en fábricas, hospitales, bancos, empresas de software, consultorios y cualquier lugar donde existan procesos que puedan mejorarse. El [curso de Lean](/cursos/lean) te enseña a identificar desperdicios y aplicar herramientas como 5S, VSM y Kaizen en tu entorno.
 
 > **Aviso editorial:** Este artículo resume conceptos con fines educativos. La implementación de Lean debe adaptarse al contexto y la cultura de cada organización.
 
@@ -74,7 +74,7 @@ En lugar de producir grandes lotes basados en pronósticos (push), se produce so
 
 ### 5. Buscar la perfección (Kaizen)
 
-Lean no es un proyecto con fecha de cierre. Es una cultura de mejora continua donde cada persona, todos los días, busca pequeñas formas de hacer mejor su trabajo. La palabra japonesa Kaizen significa "cambio para mejorar" y resume esta mentalidad.
+Lean no es un proyecto con fecha de cierre. Es una cultura de mejora continua donde cada persona, todos los días, busca pequeñas formas de hacer mejor su trabajo. La palabra japonesa Kaizen significa "cambio para mejorar" y resume esta mentalidad. Si quieres llevar la mejora de procesos al siguiente nivel con análisis de datos, el [curso de Lean Six Sigma](/cursos/lean-six-sigma) combina la eficiencia de Lean con el rigor estadístico de Six Sigma.
 
 ## Los 8 desperdicios
 

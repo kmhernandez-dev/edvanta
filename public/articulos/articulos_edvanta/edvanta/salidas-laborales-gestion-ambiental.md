@@ -29,7 +29,7 @@ robots: "index, follow"
 
 # Salidas laborales en gestión ambiental y sostenibilidad
 
-La gestión ambiental dejó de ser un área marginal para convertirse en una función estratégica dentro de las organizaciones. Regulaciones más estrictas, presión de consumidores, criterios de inversión ESG y la urgencia del cambio climático están creando una demanda creciente de profesionales que sepan gestionar impactos ambientales, cumplir requisitos legales y mejorar el desempeño sostenible.
+La gestión ambiental dejó de ser un área marginal para convertirse en una función estratégica dentro de las organizaciones. Regulaciones más estrictas, presión de consumidores, criterios de inversión ESG y la urgencia del cambio climático están creando una demanda creciente de profesionales que sepan gestionar impactos ambientales, cumplir requisitos legales y mejorar el desempeño sostenible. Si quieres formarte en esta área, el [curso de gestión ambiental](/cursos/gestion-ambiental) te da las bases conceptuales y prácticas para empezar.
 
 > **Aviso editorial:** Este artículo describe tendencias del mercado laboral con fines de orientación educativa. Las condiciones específicas dependen del país, el sector y la coyuntura económica.
 
@@ -52,7 +52,7 @@ Tres fuerzas están impulsando la demanda de profesionales ambientales:
 - **Presión del mercado.** Las grandes empresas exigen a sus proveedores demostrar gestión ambiental. Las certificaciones ISO 14001 ya no son un diferenciador: son un requisito para entrar a muchas cadenas de suministro.
 - **Transición energética y economía circular.** La migración hacia energías limpias, la reducción de plásticos de un solo uso, la logística inversa y el ecodiseño están creando roles que no existían hace diez años.
 
-Según la Organización Internacional del Trabajo (OIT), la transición hacia una economía verde podría crear 24 millones de empleos a nivel global para 2030, muchos de ellos vinculados a la gestión ambiental, la eficiencia energética y la economía circular [1].
+Según la Organización Internacional del Trabajo (OIT), la transición hacia una economía verde podría crear 24 millones de empleos a nivel global para 2030, muchos de ellos vinculados a la gestión ambiental, la eficiencia energética y la economía circular [1]. Para aprovechar esta demanda, el [curso de seguridad y salud en el trabajo](/cursos/seguridad-y-salud-en-el-trabajo) complementa tu perfil hacia el enfoque HSEQ que buscan las empresas.
 
 ## Roles y cargos más demandados
 

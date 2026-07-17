@@ -29,7 +29,7 @@ robots: "index, follow"
 
 # Qué es la gestión de proyectos y cómo se aplica
 
-Un proyecto es un esfuerzo temporal que se emprende para crear un producto, servicio o resultado único. La gestión de proyectos es la aplicación de conocimientos, habilidades, herramientas y técnicas a las actividades del proyecto para cumplir sus requisitos. Dicho en simple: es el arte y la ciencia de convertir una idea en un resultado concreto, con un plazo, un presupuesto y un equipo definidos.
+Un proyecto es un esfuerzo temporal que se emprende para crear un producto, servicio o resultado único. La gestión de proyectos es la aplicación de conocimientos, habilidades, herramientas y técnicas a las actividades del proyecto para cumplir sus requisitos. Dicho en simple: es el arte y la ciencia de convertir una idea en un resultado concreto, con un plazo, un presupuesto y un equipo definidos. El [curso de gestión de proyectos](/cursos/gestion-de-proyectos) te enseña las bases para planificar, ejecutar y cerrar proyectos con método.
 
 > **Aviso editorial:** Este artículo resume conceptos con fines educativos. La práctica de gestión de proyectos debe adaptarse al contexto, la metodología y los requisitos de cada organización.
 
@@ -83,7 +83,7 @@ El Project Management Institute (PMI) estructura la gestión de proyectos en cin
 
 ### 2. Planificación
 
-Es la fase más importante y la que más se salta. Planificar no es perder tiempo: es reducir la incertidumbre antes de gastar recursos. Incluye:
+Es la fase más importante y la que más se salta. Planificar no es perder tiempo: es reducir la incertidumbre antes de gastar recursos. Muchos proyectos de mejora se benefician de incorporar principios de eficiencia; el [curso de Lean](/cursos/lean) te enseña a eliminar desperdicios y optimizar el flujo de trabajo. Incluye:
 
 - **Alcance detallado:** qué se entrega, con qué especificaciones, qué queda fuera.
 - **EDT (estructura de desglose del trabajo):** descomposición del proyecto en paquetes de trabajo manejables.

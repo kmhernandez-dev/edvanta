@@ -29,7 +29,7 @@ robots: "index, follow"
 
 # Qué es Lean Six Sigma y cuándo conviene aprenderlo
 
-Lean Six Sigma es la combinación de dos metodologías de mejora de procesos: Lean, que elimina desperdicios y acelera el flujo, y Six Sigma, que reduce la variabilidad y los defectos usando datos y análisis estadístico. Juntas forman un enfoque potente para resolver problemas de proceso de manera estructurada, basada en evidencia y orientada a resultados medibles.
+Lean Six Sigma es la combinación de dos metodologías de mejora de procesos: Lean, que elimina desperdicios y acelera el flujo, y Six Sigma, que reduce la variabilidad y los defectos usando datos y análisis estadístico. Juntas forman un enfoque potente para resolver problemas de proceso de manera estructurada, basada en evidencia y orientada a resultados medibles. El [curso de Lean Six Sigma](/cursos/lean-six-sigma) te enseña a aplicar DMAIC y las herramientas estadísticas esenciales para liderar proyectos de mejora.
 
 > **Aviso editorial:** Este artículo resume conceptos con fines educativos. La aplicación de Lean Six Sigma debe adaptarse al contexto de cada organización.
 
@@ -67,7 +67,7 @@ La unión fue natural: Lean acelera el proceso eliminando lo que sobra; Six Sigm
 | Ritmo | Mejoras rápidas (Kaizen events) | Proyectos estructurados (semanas a meses) |
 | Resultado típico | Menos tiempo de ciclo, menos inventario | Menos defectos, menos variabilidad |
 
-Un profesional que domina ambos puede elegir la herramienta correcta según el problema: si el proceso es lento y burocrático, aplica Lean. Si el proceso tiene resultados impredecibles, aplica Six Sigma. Si tiene ambos problemas, aplica Lean Six Sigma.
+Un profesional que domina ambos puede elegir la herramienta correcta según el problema: si el proceso es lento y burocrático, aplica Lean. Si el proceso tiene resultados impredecibles, aplica Six Sigma. Si tiene ambos problemas, aplica Lean Six Sigma. Para visualizar y analizar los datos que sustentan tus proyectos de mejora, el [curso de Power BI](/cursos/power-bi) te permite construir dashboards que comuniquen resultados con claridad.
 
 ## La estructura de cinturones
 

@@ -29,7 +29,7 @@ robots: "index, follow"
 
 # Qué es la gestión ambiental en una organización
 
-La gestión ambiental es el conjunto de actividades coordinadas que una organización realiza para controlar sus impactos sobre el medio ambiente, cumplir requisitos legales y mejorar su desempeño ambiental de manera continua. No es solo sembrar árboles o reciclar papel: es integrar criterios ambientales en cada decisión operativa, desde la compra de materias primas hasta la disposición final de residuos.
+La gestión ambiental es el conjunto de actividades coordinadas que una organización realiza para controlar sus impactos sobre el medio ambiente, cumplir requisitos legales y mejorar su desempeño ambiental de manera continua. No es solo sembrar árboles o reciclar papel: es integrar criterios ambientales en cada decisión operativa, desde la compra de materias primas hasta la disposición final de residuos. El [curso de gestión ambiental](/cursos/gestion-ambiental) te da las bases para entender aspectos, impactos, requisitos legales e indicadores de desempeño.
 
 > **Aviso editorial:** Este artículo resume conceptos con fines educativos. La implementación de un sistema de gestión ambiental debe ajustarse a la normativa aplicable en cada país y sector.
 
@@ -85,7 +85,7 @@ Un SGA basado en ISO 14001 incluye estos elementos:
 | Auditoría interna | ¿El SGA funciona como dice que funciona? |
 | Revisión por la dirección | ¿El SGA sigue siendo adecuado? |
 
-La estructura es similar a la de cualquier sistema de gestión (calidad, SST) porque todas las normas ISO de sistemas de gestión comparten la estructura de alto nivel (Anexo SL). Esto facilita la integración: una organización puede tener un solo sistema que cubra calidad, ambiente y seguridad (HSEQ).
+La estructura es similar a la de cualquier sistema de gestión (calidad, SST) porque todas las normas ISO de sistemas de gestión comparten la estructura de alto nivel (Anexo SL). Esto facilita la integración: una organización puede tener un solo sistema que cubra calidad, ambiente y seguridad (HSEQ). El [curso de seguridad y salud en el trabajo](/cursos/seguridad-y-salud-en-el-trabajo) complementa tu perfil hacia el enfoque HSEQ integrado que el mercado laboral demanda.
 
 ## Aspectos e impactos ambientales
 

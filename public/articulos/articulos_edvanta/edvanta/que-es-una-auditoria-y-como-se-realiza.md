@@ -54,7 +54,7 @@ Tres palabras clave en esta definición:
 - **Independiente:** el auditor no debe auditar su propio trabajo. Si eres responsable de un proceso, otra persona debe auditarlo. La independencia protege la objetividad.
 - **Documentado:** todo se registra. El plan, las listas de verificación, las evidencias recolectadas, los hallazgos, el informe. Sin documentación, no hay auditoría.
 
-El propósito de una auditoría no es encontrar culpables ni castigar errores. Es verificar que el sistema de gestión funciona, identificar oportunidades de mejora y dar confianza a la organización y a sus partes interesadas de que los procesos están bajo control.
+El propósito de una auditoría no es encontrar culpables ni castigar errores. Es verificar que el sistema de gestión funciona, identificar oportunidades de mejora y dar confianza a la organización y a sus partes interesadas de que los procesos están bajo control. Si quieres formarte en esta disciplina, el [curso de auditoría](/cursos/auditoria) te enseña el proceso completo desde la planificación hasta el seguimiento.
 
 ## Tipos de auditoría
 
@@ -76,7 +76,7 @@ Las auditorías se clasifican según quién las realiza y qué auditan:
 
 ## El proceso paso a paso
 
-Una auditoría típica sigue seis etapas. Aunque los nombres pueden variar según la organización, la lógica es la misma.
+Una auditoría típica sigue seis etapas. Aunque los nombres pueden variar según la organización, la lógica es la misma. Antes de auditar, conviene entender el sistema que se va a evaluar; el [curso de gestión de calidad](/cursos/gestion-de-calidad) te da las bases sobre procesos, indicadores y mejora continua.
 
 ### 1. Planificación
 

@@ -29,7 +29,7 @@ robots: "index, follow"
 
 # Desperdicios Lean: cómo identificarlos en un proceso
 
-Identificar desperdicios es la habilidad más práctica del pensamiento Lean. No necesitas un cinturón negro ni software especializado: necesitas entrenar el ojo para ver lo que siempre estuvo ahí pero nunca notaste. Este artículo te da las claves para reconocer cada tipo de desperdicio en cualquier proceso, con ejemplos de oficina, fábrica y servicios de salud.
+Identificar desperdicios es la habilidad más práctica del pensamiento Lean. No necesitas un cinturón negro ni software especializado: necesitas entrenar el ojo para ver lo que siempre estuvo ahí pero nunca notaste. Este artículo te da las claves para reconocer cada tipo de desperdicio en cualquier proceso, con ejemplos de oficina, fábrica y servicios de salud. El [curso de Lean](/cursos/lean) te enseña a aplicar estas herramientas con ejercicios prácticos y casos reales.
 
 > **Aviso editorial:** Este artículo resume conceptos con fines educativos. La aplicación de herramientas Lean debe adaptarse al contexto de cada organización.
 
@@ -222,7 +222,7 @@ No intentes eliminar todos los desperdicios a la vez. Prioriza con estos criteri
 - **Impacto en el cliente:** ¿este desperdicio afecta directamente al cliente? (esperas, defectos, sobreprocesamiento visible). Atácalo primero.
 - **Facilidad de solución:** ¿puedes eliminarlo esta semana con los recursos que ya tienes? Empieza por ahí. Los triunfos rápidos generan impulso.
 - **Frecuencia:** ¿ocurre todos los días, varias veces al día? Un desperdicio pequeño pero muy frecuente puede sumar más que uno grande pero ocasional.
-- **Efecto dominó:** ¿eliminar este desperdicio reduce o elimina otros? La sobreproducción genera inventario, transporte y defectos. Atacar la causa raíz tiene más impacto que atacar los síntomas.
+- **Efecto dominó:** ¿eliminar este desperdicio reduce o elimina otros? La sobreproducción genera inventario, transporte y defectos. Atacar la causa raíz tiene más impacto que atacar los síntomas. Si quieres profundizar en el análisis de causas con datos, el [curso de Lean Six Sigma](/cursos/lean-six-sigma) te da la metodología DMAIC para resolver problemas complejos de manera estructurada.
 
 ## Desperdicios ocultos que nadie ve
 
@@ -232,7 +232,7 @@ Algunos desperdicios son tan familiares que se volvieron invisibles:
 - **El "por si acaso".** "Por si acaso lo necesitamos" es el origen de inventarios, sobreproducción y sobreprocesamiento.
 - **La multitarea.** Cambiar de una tarea a otra constantemente reduce la productividad hasta en un 40%. Es el desperdicio del cambio de contexto.
 - **La aprobación redundante.** Si un gasto de $50 necesita tres firmas, el costo de las firmas supera el valor del gasto.
-- **El archivo que nadie encuentra.** El tiempo que las personas pasan buscando información (en correos, carpetas, sistemas) es desperdicio puro.
+- **El archivo que nadie encuentra.** El tiempo que las personas pasan buscando información (en correos, carpetas, sistemas) es desperdicio puro. Aprender a ver estos desperdicios es el primer paso; el [curso de Lean](/cursos/lean) te enseña a identificarlos sistemáticamente y a eliminarlos con herramientas como 5S, VSM y Kaizen.
 
 ## Ruta de aprendizaje
 

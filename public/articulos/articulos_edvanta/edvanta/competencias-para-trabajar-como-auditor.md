@@ -29,7 +29,7 @@ robots: "index, follow"
 
 # Competencias para trabajar como auditor interno o de procesos
 
-Ser auditor no es solo conocer la norma. Es saber observar sin prejuzgar, preguntar sin intimidar, escuchar sin interrumpir y escribir sin ambigüedades. Las competencias de un auditor combinan conocimiento técnico con habilidades interpersonales que se desarrollan con práctica, no solo con estudio.
+Ser auditor no es solo conocer la norma. Es saber observar sin prejuzgar, preguntar sin intimidar, escuchar sin interrumpir y escribir sin ambigüedades. Las competencias de un auditor combinan conocimiento técnico con habilidades interpersonales que se desarrollan con práctica, no solo con estudio. El [curso de auditoría](/cursos/auditoria) te entrena en el proceso completo: planificación, ejecución, hallazgos, informe y seguimiento.
 
 > **Aviso editorial:** Este artículo describe competencias deseables con fines educativos. Los requisitos específicos para auditores dependen de la norma aplicable, el sector y la organización.
 
@@ -61,7 +61,7 @@ La norma ISO 19011:2018, que establece las directrices para auditar sistemas de 
 
 ### Conocimiento de la norma aplicable
 
-No necesitas recitar cláusulas de memoria, pero sí entender la estructura, los requisitos y la intención de cada capítulo. Si auditas ISO 9001, debes saber qué pide el capítulo 8 (operación) y cómo se relaciona con el 9 (evaluación del desempeño). Si auditas ISO 14001, debes entender aspectos ambientales, requisitos legales y ciclo de vida.
+No necesitas recitar cláusulas de memoria, pero sí entender la estructura, los requisitos y la intención de cada capítulo. Si auditas ISO 9001, debes saber qué pide el capítulo 8 (operación) y cómo se relaciona con el 9 (evaluación del desempeño). Si auditas ISO 14001, debes entender aspectos ambientales, requisitos legales y ciclo de vida. Antes de auditar, conviene dominar el sistema que vas a evaluar; el [curso de gestión de calidad](/cursos/gestion-de-calidad) te da las bases sobre procesos, indicadores y mejora continua.
 
 ### Conocimiento del sector
 

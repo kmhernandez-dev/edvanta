@@ -29,7 +29,7 @@ robots: "index, follow"
 
 # Qué es Power BI y para qué sirve en el trabajo
 
-Power BI es una plataforma de Microsoft para conectar datos, transformarlos, modelarlos y convertirlos en informes visuales interactivos. En palabras simples: toma datos que están dispersos en Excel, bases de datos, sistemas de gestión o páginas web, los organiza y los presenta como dashboards que cualquier persona puede entender.
+Power BI es una plataforma de Microsoft para conectar datos, transformarlos, modelarlos y convertirlos en informes visuales interactivos. En palabras simples: toma datos que están dispersos en Excel, bases de datos, sistemas de gestión o páginas web, los organiza y los presenta como dashboards que cualquier persona puede entender. Si quieres dominar esta herramienta desde cero, el [curso de Power BI](/cursos/power-bi) te ofrece una ruta estructurada con ejercicios prácticos.
 
 > **Aviso editorial:** Este artículo tiene fines educativos. Las funcionalidades, precios y requisitos de Power BI pueden cambiar. Consulta la documentación oficial de Microsoft para información actualizada.
 
@@ -89,7 +89,7 @@ Un gráfico bien diseñado comunica más que una tabla de números. Power BI per
 
 ### Hacer análisis que Excel no puede
 
-Power BI maneja millones de filas sin problemas, relaciona tablas de distintas fuentes, aplica transformaciones complejas con Power Query y crea medidas dinámicas con DAX. Son capacidades que Excel tiene de forma limitada o que requieren complementos.
+Power BI maneja millones de filas sin problemas, relaciona tablas de distintas fuentes, aplica transformaciones complejas con Power Query y crea medidas dinámicas con DAX. Son capacidades que Excel tiene de forma limitada o que requieren complementos. Si además quieres aplicar el análisis de datos a la mejora de procesos, el [curso de Lean Six Sigma](/cursos/lean-six-sigma) te enseña a usar datos para reducir defectos y variabilidad.
 
 ### Colaborar con datos actualizados
 

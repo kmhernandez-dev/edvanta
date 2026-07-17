@@ -31,6 +31,7 @@ import { listOrdersRoute } from './routes/list-orders.js';
 import academiaAuthRoutes from './routes/academia-auth.js';
 import academiaRoutes from './routes/academia.js';
 import adminAcademiaRoutes from './routes/admin-academia.js';
+import articleCommentsRoutes from './routes/article-comments.js';
 
 const PORT = parseInt(process.env.PORT || '3000', 10);
 const NODE_ENV = process.env.NODE_ENV || 'development';
@@ -132,6 +133,9 @@ app.get('/api/list-orders',         listOrdersRoute);
 app.use('/api/academia/auth',  academiaAuthRoutes);
 app.use('/api/academia',       academiaRoutes);
 app.use('/api/admin/academia', adminAcademiaRoutes);
+
+// Comentarios en artículos
+app.use('/api/article-comments', articleCommentsRoutes);
 
 // ── 404 + manejo de errores (no expone stack traces) ─────────
 app.use((_req, res) => res.status(404).json({ error: 'Not found' }));

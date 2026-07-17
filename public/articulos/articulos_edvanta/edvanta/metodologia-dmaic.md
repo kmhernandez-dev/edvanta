@@ -29,7 +29,7 @@ robots: "index, follow"
 
 # Metodología DMAIC: define, mide, analiza, mejora y controla
 
-DMAIC es el método estructurado de Six Sigma para resolver problemas de proceso. Sus cinco fases —Define, Measure, Analyze, Improve, Control— guían al equipo desde la identificación del problema hasta la implementación de soluciones sostenibles, usando datos en cada paso para tomar decisiones basadas en evidencia, no en opiniones.
+DMAIC es el método estructurado de Six Sigma para resolver problemas de proceso. Sus cinco fases —Define, Measure, Analyze, Improve, Control— guían al equipo desde la identificación del problema hasta la implementación de soluciones sostenibles, usando datos en cada paso para tomar decisiones basadas en evidencia, no en opiniones. El [curso de Lean Six Sigma](/cursos/lean-six-sigma) te enseña a aplicar DMAIC con herramientas estadísticas y casos prácticos.
 
 > **Aviso editorial:** Este artículo resume conceptos con fines educativos. La aplicación de DMAIC debe adaptarse al contexto, los recursos y la cultura de cada organización.
 
@@ -198,7 +198,7 @@ Una empresa de servicios facturaba 2,000 documentos al mes con una tasa de error
 
 ### Control
 
-- Implementaron un dashboard en Power BI que muestra la tasa de error semanal por tipo y por facturador.
+- Implementaron un dashboard en Power BI que muestra la tasa de error semanal por tipo y por facturador. Si quieres aprender a construir dashboards como este, el [curso de Power BI](/cursos/power-bi) te enseña desde la conexión de datos hasta la publicación de informes interactivos.
 - Establecieron alerta automática si la tasa supera el 3%.
 - Actualizaron el procedimiento de facturación.
 - Capacitaron a todo el equipo de facturación.

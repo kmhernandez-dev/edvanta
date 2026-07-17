@@ -29,7 +29,7 @@ robots: "index, follow"
 
 # Qué es seguridad y salud en el trabajo
 
-La seguridad y salud en el trabajo (SST) es la disciplina que busca prevenir lesiones, enfermedades y daños a la salud de los trabajadores, promoviendo condiciones laborales seguras y saludables. No es un conjunto de carteleras ni una charla anual: es una función sistemática que identifica peligros, evalúa riesgos, implementa controles y verifica que funcionen.
+La seguridad y salud en el trabajo (SST) es la disciplina que busca prevenir lesiones, enfermedades y daños a la salud de los trabajadores, promoviendo condiciones laborales seguras y saludables. No es un conjunto de carteleras ni una charla anual: es una función sistemática que identifica peligros, evalúa riesgos, implementa controles y verifica que funcionen. El [curso de seguridad y salud en el trabajo](/cursos/seguridad-y-salud-en-el-trabajo) te da las bases para comprender y aplicar estos conceptos en cualquier organización.
 
 > **Aviso editorial:** Este artículo resume conceptos con fines educativos. La implementación de SST debe ajustarse a la legislación de cada país y a las condiciones específicas de cada organización.
 
@@ -123,7 +123,7 @@ Características de una cultura de seguridad madura:
 - **Aprendizaje, no culpa:** cuando ocurre un incidente, la pregunta no es "¿quién fue?" sino "¿qué falló en el sistema para que esto pudiera ocurrir?".
 - **Mejora continua:** los indicadores de SST se revisan periódicamente y las acciones correctivas se verifican, no solo se documentan.
 
-Construir cultura de seguridad toma años, pero empieza con decisiones concretas: reconocer a quien reporta un peligro, investigar incidentes sin buscar culpables, invertir en controles de ingeniería antes que en sanciones.
+Construir cultura de seguridad toma años, pero empieza con decisiones concretas: reconocer a quien reporta un peligro, investigar incidentes sin buscar culpables, invertir en controles de ingeniería antes que en sanciones. Muchas organizaciones integran la SST con la gestión ambiental en un solo sistema; el [curso de gestión ambiental](/cursos/gestion-ambiental) te ayuda a ampliar tu perfil hacia el enfoque HSEQ.
 
 ## Errores frecuentes
 
