@@ -103,7 +103,7 @@ Un dashboard de ventas puede mostrar: facturación por mes, comparación contra 
 
 ### Calidad
 
-Un dashboard de calidad puede incluir: tasa de defectos por línea de producción, no conformidades abiertas vs. cerradas, tiempo promedio de cierre de acciones correctivas, resultados de auditorías por área y quejas de clientes por categoría.
+Un dashboard de calidad puede incluir: tasa de defectos por línea de producción, no conformidades abiertas vs. cerradas, tiempo promedio de cierre de acciones correctivas, resultados de auditorías por área y quejas de clientes por categoría. Si trabajas en este ámbito, el [curso de gestión de calidad](/cursos/gestion-de-calidad) te da las bases para entender qué indicadores monitorear y cómo interpretarlos.
 
 ### Operaciones y logística
 
@@ -133,7 +133,7 @@ No necesitas saber programar para empezar con Power BI, pero ayuda tener:
 - **Lógica de datos:** entender qué es una tabla, una fila, una columna y cómo se relacionan.
 - **Curiosidad analítica:** querer entender qué dicen los números, no solo mostrarlos.
 
-Si vienes de Excel, la transición es natural. Power Query de Power BI se parece a las transformaciones que haces con fórmulas; las tablas dinámicas de Excel tienen su equivalente en las visualizaciones de Power BI.
+Si vienes de Excel, la transición es natural. Power Query de Power BI se parece a las transformaciones que haces con fórmulas; las tablas dinámicas de Excel tienen su equivalente en las visualizaciones de Power BI. Para quienes buscan una formación guiada en análisis de datos, la [ruta de datos y Power BI](/rutas/datos-y-power-bi) ofrece un itinerario completo desde los fundamentos hasta dashboards profesionales.
 
 ## Power BI vs Excel: ¿cuándo usar cada uno?
 
@@ -202,7 +202,7 @@ Con dedicación de algunas horas por semana, en un mes puedes crear dashboards b
 
 ### ¿Power BI reemplaza a Excel?
 
-No. Son herramientas complementarias. Excel sigue siendo mejor para análisis ad-hoc, modelos financieros, simulaciones y trabajo individual con datos. Power BI es mejor para dashboards interactivos, colaboración, grandes volúmenes de datos y actualización automática. La mayoría de los profesionales usan ambos.
+No. Son herramientas complementarias. Excel sigue siendo mejor para análisis ad-hoc, modelos financieros, simulaciones y trabajo individual con datos. Power BI es mejor para dashboards interactivos, colaboración, grandes volúmenes de datos y actualización automática. La mayoría de los profesionales usan ambos. Si tu objetivo es aplicar estas habilidades en la mejora de procesos, el [curso de Lean Six Sigma](/cursos/lean-six-sigma) te enseña a usar datos para reducir defectos y variabilidad con metodología DMAIC.
 
 ---
 

@@ -54,7 +54,7 @@ La norma ISO 14001 define un sistema de gestión ambiental (SGA) como la parte d
 - ¿Qué puede fallar y causar un daño ambiental (derrame, fuga, incendio)?
 - ¿Cómo se mejora año tras año el desempeño ambiental?
 
-La gestión ambiental no es exclusiva de fábricas o mineras. Un hospital genera residuos peligrosos, consume agua y energía, y usa sustancias químicas. Una oficina consume papel, electricidad y genera residuos electrónicos. Un restaurante genera residuos orgánicos, consume agua y puede verter grasas al alcantarillado. Toda organización interactúa con el medio ambiente.
+La gestión ambiental no es exclusiva de fábricas o mineras. Un hospital genera residuos peligrosos, consume agua y energía, y usa sustancias químicas. Una oficina consume papel, electricidad y genera residuos electrónicos. Un restaurante genera residuos orgánicos, consume agua y puede verter grasas al alcantarillado. Toda organización interactúa con el medio ambiente. Si quieres desarrollar un perfil integrado que combine ambiente, seguridad y calidad, la [ruta de seguridad, ambiente y sostenibilidad](/rutas/seguridad-ambiente-y-sostenibilidad) te ofrece un itinerario completo hacia el enfoque HSEQ.
 
 ## Por qué importa hoy
 

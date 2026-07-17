@@ -120,7 +120,7 @@ Un SGC funcional suele incluir estos elementos:
 | No conformidades y acciones correctivas | ¿Qué hacemos cuando algo falla? |
 | Revisión por la dirección | ¿El sistema sigue siendo adecuado? |
 
-No todos los componentes necesitan el mismo nivel de detalle. Una empresa de 5 personas puede tener un SGC simple pero efectivo; una de 500 necesitará más estructura. Lo importante es que cada componente cumpla una función real, no que exista solo para mostrar en una auditoría.
+No todos los componentes necesitan el mismo nivel de detalle. Una empresa de 5 personas puede tener un SGC simple pero efectivo; una de 500 necesitará más estructura. Lo importante es que cada componente cumpla una función real, no que exista solo para mostrar en una auditoría. Si tu interés está en la verificación de sistemas, la [ruta de calidad y auditoría](/rutas/calidad-y-auditoria) integra estos conocimientos con práctica guiada.
 
 ## Enfoque por procesos
 
@@ -166,7 +166,7 @@ El ciclo PHVA (Planificar, Hacer, Verificar, Actuar), también conocido como cic
 3. **Verificar:** medir si la solución funcionó.
 4. **Actuar:** si funcionó, estandarizar; si no, ajustar y repetir.
 
-La mejora continua no requiere grandes proyectos. A veces, cambiar el orden de dos pasos en un procedimiento o agregar una lista de verificación reduce errores más que una reingeniería completa.
+La mejora continua no requiere grandes proyectos. A veces, cambiar el orden de dos pasos en un procedimiento o agregar una lista de verificación reduce errores más que una reingeniería completa. Si quieres llevar este enfoque al siguiente nivel con análisis de datos, el [curso de Lean Six Sigma](/cursos/lean-six-sigma) te enseña a aplicar DMAIC para resolver problemas de proceso con evidencia estadística.
 
 ## Errores frecuentes al empezar
 

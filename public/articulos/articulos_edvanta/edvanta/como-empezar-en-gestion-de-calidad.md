@@ -144,7 +144,7 @@ No necesitas software costoso para empezar. Estas herramientas cubren la mayorí
 | Gráfico de tendencia | Ver comportamiento en el tiempo | Excel, Google Sheets |
 | Matriz de priorización | Decidir qué atacar primero | Excel, papel |
 
-Con estas siete herramientas puedes resolver el 80% de los problemas de calidad que aparecen en el día a día. Lo importante no es la herramienta, sino la disciplina de usarla.
+Con estas siete herramientas puedes resolver el 80% de los problemas de calidad que aparecen en el día a día. Lo importante no es la herramienta, sino la disciplina de usarla. Si quieres complementar con un enfoque de eficiencia operativa, el [curso de Lean](/cursos/lean) te enseña a identificar y eliminar desperdicios en cualquier proceso.
 
 ## Errores que debes evitar
 
@@ -191,6 +191,7 @@ Esta ruta asume que dedicas algunas horas por semana a estudiar y practicar:
 - Aprende sobre auditorías internas: planificación, ejecución e informe.
 - Practica haciendo una mini-auditoría al proceso que has estado mejorando.
 - Complementa con un curso estructurado que ordene todos estos conceptos.
+- Si tu interés va más allá de la calidad y abarca la mejora de procesos con datos, la [ruta de proyectos y mejora de procesos](/rutas/proyectos-y-mejora-de-procesos) integra Lean, Six Sigma y gestión de proyectos en un solo itinerario.
 
 Para seguir esta ruta con contenido guiado, ejercicios prácticos y acompañamiento estructurado, puedes consultar el [curso de gestión de calidad](/cursos/gestion-de-calidad) recomendado por Edvanta.
 
@@ -198,7 +199,7 @@ Para seguir esta ruta con contenido guiado, ejercicios prácticos y acompañamie
 
 ### ¿Necesito un título universitario para trabajar en calidad?
 
-No es indispensable. Muchas personas llegan a calidad desde roles operativos, administrativos o técnicos. Lo que más se valora es la capacidad de entender procesos, analizar problemas, proponer mejoras y comunicar resultados. Dicho esto, la formación continua —cursos, diplomados, certificaciones— fortalece el perfil y abre oportunidades.
+No es indispensable. Muchas personas llegan a calidad desde roles operativos, administrativos o técnicos. Lo que más se valora es la capacidad de entender procesos, analizar problemas, proponer mejoras y comunicar resultados. Dicho esto, la formación continua —cursos, diplomados, certificaciones— fortalece el perfil y abre oportunidades. Si estás construyendo tu perfil desde cero, la [ruta de calidad y auditoría](/rutas/calidad-y-auditoria) te ofrece un itinerario completo que va desde los fundamentos hasta la práctica de auditoría.
 
 ### ¿Qué norma debería aprender primero?
 

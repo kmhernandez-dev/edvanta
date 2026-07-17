@@ -123,7 +123,7 @@ Características de una cultura de seguridad madura:
 - **Aprendizaje, no culpa:** cuando ocurre un incidente, la pregunta no es "¿quién fue?" sino "¿qué falló en el sistema para que esto pudiera ocurrir?".
 - **Mejora continua:** los indicadores de SST se revisan periódicamente y las acciones correctivas se verifican, no solo se documentan.
 
-Construir cultura de seguridad toma años, pero empieza con decisiones concretas: reconocer a quien reporta un peligro, investigar incidentes sin buscar culpables, invertir en controles de ingeniería antes que en sanciones. Muchas organizaciones integran la SST con la gestión ambiental en un solo sistema; el [curso de gestión ambiental](/cursos/gestion-ambiental) te ayuda a ampliar tu perfil hacia el enfoque HSEQ.
+Construir cultura de seguridad toma años, pero empieza con decisiones concretas: reconocer a quien reporta un peligro, investigar incidentes sin buscar culpables, invertir en controles de ingeniería antes que en sanciones. Muchas organizaciones integran la SST con la gestión ambiental en un solo sistema; el [curso de gestión ambiental](/cursos/gestion-ambiental) te ayuda a ampliar tu perfil hacia el enfoque HSEQ. Si quieres una ruta completa que cubra ambos frentes, la [ruta de seguridad, ambiente y sostenibilidad](/rutas/seguridad-ambiente-y-sostenibilidad) integra estos conocimientos en un itinerario estructurado.
 
 ## Errores frecuentes
 

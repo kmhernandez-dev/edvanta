@@ -56,7 +56,7 @@ Muchas personas cometen el error de empezar por las visualizaciones: abren Power
 5. **Visualizar** (gráficos y dashboards)
 6. **Publicar y compartir** (Power BI Service)
 
-Si sigues este orden, cada etapa se apoya en la anterior y evitas tener que rehacer trabajo.
+Si sigues este orden, cada etapa se apoya en la anterior y evitas tener que rehacer trabajo. Para quienes buscan una formación integral en datos, la [ruta de datos y Power BI](/rutas/datos-y-power-bi) ofrece un itinerario completo que cubre desde los fundamentos hasta dashboards profesionales.
 
 ## Etapa 1: Fundamentos de datos
 
@@ -231,7 +231,7 @@ Sí. De hecho, muchas personas que aprenden Power BI vienen de Excel. Power Quer
 
 ### ¿Qué sigue después de esta ruta?
 
-Una vez que domines lo básico, puedes profundizar en: DAX avanzado (funciones de iteración, contexto de evaluación), Power Query avanzado (lenguaje M), optimización de modelos grandes, integración con Python y R, Power BI Embedded, administración de Power BI Service y certificación oficial de Microsoft (PL-300).
+Una vez que domines lo básico, puedes profundizar en: DAX avanzado (funciones de iteración, contexto de evaluación), Power Query avanzado (lenguaje M), optimización de modelos grandes, integración con Python y R, Power BI Embedded, administración de Power BI Service y certificación oficial de Microsoft (PL-300). Si quieres aplicar tus habilidades de datos a la mejora de procesos, el [curso de Lean Six Sigma](/cursos/lean-six-sigma) te enseña a usar análisis estadístico para reducir defectos y variabilidad.
 
 ---
 

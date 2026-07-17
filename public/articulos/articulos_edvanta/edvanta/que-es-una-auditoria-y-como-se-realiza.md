@@ -97,7 +97,7 @@ Al inicio de la auditoría, el equipo auditor se reúne con los responsables del
 - Resolver dudas logísticas (acceso a documentos, recorridos, disponibilidad de personas).
 - Reafirmar el carácter confidencial de la información.
 
-La reunión de apertura no debería tomar más de 15 a 30 minutos. Su propósito es alinear expectativas, no presentar la auditoría como una amenaza.
+La reunión de apertura no debería tomar más de 15 a 30 minutos. Su propósito es alinear expectativas, no presentar la auditoría como una amenaza. Si estás construyendo tu perfil en esta área, la [ruta de calidad y auditoría](/rutas/calidad-y-auditoria) integra formación en sistemas de gestión y práctica de auditoría en un solo itinerario.
 
 ### 3. Recolección de evidencias
 
@@ -227,7 +227,7 @@ Depende del alcance. Una auditoría interna de un proceso puede tomar de 2 a 4 h
 
 ### ¿Qué pasa si encuentro una no conformidad grave?
 
-Se documenta, se presenta en la reunión de cierre y se acuerda un plazo para la acción correctiva. Si es una auditoría de certificación, una no conformidad mayor puede impedir la certificación hasta que se cierre. En una auditoría interna, es una oportunidad valiosa para mejorar antes de que el problema crezca.
+Se documenta, se presenta en la reunión de cierre y se acuerda un plazo para la acción correctiva. Si es una auditoría de certificación, una no conformidad mayor puede impedir la certificación hasta que se cierre. En una auditoría interna, es una oportunidad valiosa para mejorar antes de que el problema crezca. Para desarrollar un criterio sólido en la clasificación de hallazgos, el [curso de Lean Six Sigma](/cursos/lean-six-sigma) te entrena en el análisis de causas con datos, una habilidad que complementa perfectamente el perfil de auditor.
 
 ---
 
