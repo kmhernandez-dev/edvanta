@@ -5,8 +5,8 @@ meta_description: "Estructura básica de DMAIC para resolver problemas de proces
 slug: "/articulos/metodologia-dmaic"
 canonical: "https://edvanta.co/articulos/metodologia-dmaic"
 category: "Lean Six Sigma"
-author: "Karla Hernández — Química Farmacéutica"
-author_url: "/autores/karla-hernandez"
+author: "Edvanta"
+author_url: "/"
 date_published: "2026-07-08"
 date_modified: "2026-07-14"
 reading_time: "11 minutos"
@@ -22,7 +22,7 @@ robots: "index, follow"
 **Breadcrumb:** [Inicio](/) > [Artículos](/articulos) > [Lean Six Sigma](/articulos?categoria=lean-six-sigma) > Metodología DMAIC
 
 **Categoría:** Lean Six Sigma
-**Autora:** [Karla Hernández — Química Farmacéutica](/autores/karla-hernandez)
+**Autor:** Edvanta - Equipo editorial
 **Publicación:** 8 de julio de 2026
 **Última actualización:** 14 de julio de 2026
 **Tiempo de lectura:** 11 minutos

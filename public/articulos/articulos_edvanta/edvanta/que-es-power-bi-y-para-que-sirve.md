@@ -5,8 +5,8 @@ meta_description: "Explicación sencilla de Power BI, sus componentes principale
 slug: "/articulos/que-es-power-bi-y-para-que-sirve"
 canonical: "https://edvanta.co/articulos/que-es-power-bi-y-para-que-sirve"
 category: "Power BI"
-author: "Karla Hernández — Química Farmacéutica"
-author_url: "/autores/karla-hernandez"
+author: "Edvanta"
+author_url: "/"
 date_published: "2026-07-08"
 date_modified: "2026-07-14"
 reading_time: "10 minutos"
@@ -22,7 +22,7 @@ robots: "index, follow"
 **Breadcrumb:** [Inicio](/) > [Artículos](/articulos) > [Power BI](/articulos?categoria=power-bi) > Qué es Power BI y para qué sirve
 
 **Categoría:** Power BI
-**Autora:** [Karla Hernández — Química Farmacéutica](/autores/karla-hernandez)
+**Autor:** Edvanta - Equipo editorial
 **Publicación:** 8 de julio de 2026
 **Última actualización:** 14 de julio de 2026
 **Tiempo de lectura:** 10 minutos

@@ -5,8 +5,8 @@ meta_description: "Comprende ISO 9001, sus capítulos, enfoque por procesos, rie
 slug: "/articulos/iso-9001-explicada"
 canonical: "https://edvanta.co/articulos/iso-9001-explicada"
 category: "Gestión de Calidad"
-author: "Karla Hernández — Química Farmacéutica"
-author_url: "/autores/karla-hernandez"
+author: "Edvanta"
+author_url: "/"
 date_published: "2026-07-07"
 date_modified: "2026-07-07"
 reading_time: "14 minutos"
@@ -22,7 +22,7 @@ robots: "index, follow"
 **Breadcrumb:** [Inicio](/) > [Artículos](/articulos) > [Gestión de Calidad](/articulos/gestion-de-calidad) > ISO 9001 explicada
 
 **Categoría:** Gestión de Calidad  
-**Autora:** [Karla Hernández — Química Farmacéutica](/autores/karla-hernandez)  
+**Autor:** Edvanta - Equipo editorial  
 **Publicación:** 7 de julio de 2026  
 **Última actualización:** 7 de julio de 2026  
 **Tiempo de lectura:** 14 minutos
@@ -431,10 +431,9 @@ Evalúa cada pregunta con evidencia:
   "datePublished": "2026-07-07",
   "dateModified": "2026-07-07",
   "author": {
-    "@type": "Person",
-    "name": "Karla Hernández",
-    "jobTitle": "Química Farmacéutica",
-    "url": "https://edvanta.co/autores/karla-hernandez"
+    "@type": "Organization",
+    "name": "Edvanta",
+    "url": "https://edvanta.co"
   },
   "publisher": {
     "@type": "Organization",

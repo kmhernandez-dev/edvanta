@@ -5,8 +5,8 @@ meta_description: "Aprende a documentar, investigar y cerrar una no conformidad 
 slug: "/articulos/gestionar-no-conformidad"
 canonical: "https://edvanta.co/articulos/gestionar-no-conformidad"
 category: "Gestión de Calidad"
-author: "Karla Hernández — Química Farmacéutica"
-author_url: "/autores/karla-hernandez"
+author: "Edvanta"
+author_url: "/"
 date_published: "2026-07-07"
 date_modified: "2026-07-07"
 reading_time: "13 minutos"
@@ -22,7 +22,7 @@ robots: "index, follow"
 **Breadcrumb:** [Inicio](/) > [Artículos](/articulos) > [Gestión de Calidad](/articulos/gestion-de-calidad) > Cómo gestionar una no conformidad
 
 **Categoría:** Gestión de Calidad  
-**Autora:** [Karla Hernández — Química Farmacéutica](/autores/karla-hernandez)  
+**Autor:** Edvanta - Equipo editorial  
 **Publicación:** 7 de julio de 2026  
 **Última actualización:** 7 de julio de 2026  
 **Tiempo de lectura:** 13 minutos
@@ -423,10 +423,9 @@ Antes de aprobar el cierre, confirma:
   "datePublished": "2026-07-07",
   "dateModified": "2026-07-07",
   "author": {
-    "@type": "Person",
-    "name": "Karla Hernández",
-    "jobTitle": "Química Farmacéutica",
-    "url": "https://edvanta.co/autores/karla-hernandez"
+    "@type": "Organization",
+    "name": "Edvanta",
+    "url": "https://edvanta.co"
   },
   "publisher": {
     "@type": "Organization",

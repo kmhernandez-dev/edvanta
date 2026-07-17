@@ -5,8 +5,8 @@ meta_description: "Pasos para construir una base inicial en gestión de proyecto
 slug: "/articulos/como-iniciar-en-gestion-de-proyectos"
 canonical: "https://edvanta.co/articulos/como-iniciar-en-gestion-de-proyectos"
 category: "Gestión de proyectos"
-author: "Karla Hernández — Química Farmacéutica"
-author_url: "/autores/karla-hernandez"
+author: "Edvanta"
+author_url: "/"
 date_published: "2026-07-08"
 date_modified: "2026-07-14"
 reading_time: "10 minutos"
@@ -22,7 +22,7 @@ robots: "index, follow"
 **Breadcrumb:** [Inicio](/) > [Artículos](/articulos) > [Gestión de proyectos](/articulos?categoria=gestion-de-proyectos) > Cómo iniciar en gestión de proyectos
 
 **Categoría:** Gestión de proyectos
-**Autora:** [Karla Hernández — Química Farmacéutica](/autores/karla-hernandez)
+**Autor:** Edvanta - Equipo editorial
 **Publicación:** 8 de julio de 2026
 **Última actualización:** 14 de julio de 2026
 **Tiempo de lectura:** 10 minutos

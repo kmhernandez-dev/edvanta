@@ -12,7 +12,7 @@
 export const WHATSAPP_NUMBER = '573006332244';
 
 // URL base lista para usar (mensaje genérico).
-export const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=Hola%20Karla%2C%20quiero%20información%20sobre%20los%20packs%20profesionales`;
+export const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20los%20packs%20profesionales`;
 export const EDVANTA_WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=Hola%2C%20equipo%20Edvanta.%20Quiero%20orientaci%C3%B3n%20sobre%20cursos%20y%20rutas%20profesionales`;
 
 // Helper: arma un enlace de WhatsApp con cualquier mensaje.

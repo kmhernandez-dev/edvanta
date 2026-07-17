@@ -5,8 +5,8 @@ meta_description: "Conceptos básicos de auditoría, planificación, evidencias,
 slug: "/articulos/que-es-una-auditoria-y-como-se-realiza"
 canonical: "https://edvanta.co/articulos/que-es-una-auditoria-y-como-se-realiza"
 category: "Auditoría"
-author: "Karla Hernández — Química Farmacéutica"
-author_url: "/autores/karla-hernandez"
+author: "Edvanta"
+author_url: "/"
 date_published: "2026-07-08"
 date_modified: "2026-07-14"
 reading_time: "11 minutos"
@@ -22,7 +22,7 @@ robots: "index, follow"
 **Breadcrumb:** [Inicio](/) > [Artículos](/articulos) > [Auditoría](/articulos?categoria=auditoria) > Qué es una auditoría
 
 **Categoría:** Auditoría
-**Autora:** [Karla Hernández — Química Farmacéutica](/autores/karla-hernandez)
+**Autor:** Edvanta - Equipo editorial
 **Publicación:** 8 de julio de 2026
 **Última actualización:** 14 de julio de 2026
 **Tiempo de lectura:** 11 minutos

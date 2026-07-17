@@ -2204,7 +2204,7 @@ La lista final debe contar la historia del tratamiento: qué se usaba, qué camb
 **Breadcrumb:** [Inicio](/) > [Artículos](/articulos) > [Gestión de Calidad](/articulos/gestion-de-calidad) > ISO 9001 explicada
 
 **Categoría:** Gestión de Calidad  
-**Autora:** [Karla Hernández — Química Farmacéutica](/autores/karla-hernandez)  
+**Autor:** Edvanta - Equipo editorial  
 **Publicación:** 7 de julio de 2026  
 **Última actualización:** 7 de julio de 2026  
 **Tiempo de lectura:** 14 minutos
@@ -2613,10 +2613,9 @@ Evalúa cada pregunta con evidencia:
   "datePublished": "2026-07-07",
   "dateModified": "2026-07-07",
   "author": {
-    "@type": "Person",
-    "name": "Karla Hernández",
-    "jobTitle": "Química Farmacéutica",
-    "url": "https://edvanta.co/autores/karla-hernandez"
+    "@type": "Organization",
+    "name": "Edvanta",
+    "url": "https://edvanta.co"
   },
   "publisher": {
     "@type": "Organization",
@@ -2636,7 +2635,7 @@ Evalúa cada pregunta con evidencia:
 **Breadcrumb:** [Inicio](/) > [Artículos](/articulos) > [Gestión de Calidad](/articulos/gestion-de-calidad) > Cómo gestionar una no conformidad
 
 **Categoría:** Gestión de Calidad  
-**Autora:** [Karla Hernández — Química Farmacéutica](/autores/karla-hernandez)  
+**Autor:** Edvanta - Equipo editorial  
 **Publicación:** 7 de julio de 2026  
 **Última actualización:** 7 de julio de 2026  
 **Tiempo de lectura:** 13 minutos
@@ -3037,10 +3036,9 @@ Antes de aprobar el cierre, confirma:
   "datePublished": "2026-07-07",
   "dateModified": "2026-07-07",
   "author": {
-    "@type": "Person",
-    "name": "Karla Hernández",
-    "jobTitle": "Química Farmacéutica",
-    "url": "https://edvanta.co/autores/karla-hernandez"
+    "@type": "Organization",
+    "name": "Edvanta",
+    "url": "https://edvanta.co"
   },
   "publisher": {
     "@type": "Organization",
@@ -3060,7 +3058,7 @@ Antes de aprobar el cierre, confirma:
 **Breadcrumb:** [Inicio](/) > [Artículos](/articulos) > [Gestión de Calidad](/articulos/gestion-de-calidad) > Principios ALCOA+
 
 **Categoría:** Gestión de Calidad  
-**Autora:** [Karla Hernández — Química Farmacéutica](/autores/karla-hernandez)  
+**Autor:** Edvanta - Equipo editorial  
 **Publicación:** 7 de julio de 2026  
 **Última actualización:** 7 de julio de 2026  
 **Tiempo de lectura:** 14 minutos
@@ -3538,10 +3536,9 @@ Antes de aprobar un registro crítico, pregunta:
   "datePublished": "2026-07-07",
   "dateModified": "2026-07-07",
   "author": {
-    "@type": "Person",
-    "name": "Karla Hernández",
-    "jobTitle": "Química Farmacéutica",
-    "url": "https://edvanta.co/autores/karla-hernandez"
+    "@type": "Organization",
+    "name": "Edvanta",
+    "url": "https://edvanta.co"
   },
   "publisher": {
     "@type": "Organization",

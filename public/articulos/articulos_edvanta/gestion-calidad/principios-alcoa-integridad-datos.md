@@ -5,8 +5,8 @@ meta_description: "Comprende ALCOA+, ciclo de vida del dato, audit trails, regis
 slug: "/articulos/principios-alcoa-integridad-datos"
 canonical: "https://edvanta.co/articulos/principios-alcoa-integridad-datos"
 category: "Gestión de Calidad"
-author: "Karla Hernández — Química Farmacéutica"
-author_url: "/autores/karla-hernandez"
+author: "Edvanta"
+author_url: "/"
 date_published: "2026-07-07"
 date_modified: "2026-07-07"
 reading_time: "14 minutos"
@@ -22,7 +22,7 @@ robots: "index, follow"
 **Breadcrumb:** [Inicio](/) > [Artículos](/articulos) > [Gestión de Calidad](/articulos/gestion-de-calidad) > Principios ALCOA+
 
 **Categoría:** Gestión de Calidad  
-**Autora:** [Karla Hernández — Química Farmacéutica](/autores/karla-hernandez)  
+**Autor:** Edvanta - Equipo editorial  
 **Publicación:** 7 de julio de 2026  
 **Última actualización:** 7 de julio de 2026  
 **Tiempo de lectura:** 14 minutos
@@ -500,10 +500,9 @@ Antes de aprobar un registro crítico, pregunta:
   "datePublished": "2026-07-07",
   "dateModified": "2026-07-07",
   "author": {
-    "@type": "Person",
-    "name": "Karla Hernández",
-    "jobTitle": "Química Farmacéutica",
-    "url": "https://edvanta.co/autores/karla-hernandez"
+    "@type": "Organization",
+    "name": "Edvanta",
+    "url": "https://edvanta.co"
   },
   "publisher": {
     "@type": "Organization",

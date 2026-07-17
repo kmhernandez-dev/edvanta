@@ -230,9 +230,8 @@ export const featuredCourses = [
   {
     slug: 'lean',
     title: 'Lean',
-    courseCode: 'PENDIENTE',
-    affiliateUrl: null,
-    pendingAffiliateLabel: 'PENDIENTE_ENLACE_AFILIADO_LEAN',
+    courseCode: 'SH-13568',
+    affiliateUrl: 'https://edutin.com/sh-13568',
     category: 'Mejora de procesos',
     duration: '4 semanas',
     modality: '100% virtual',

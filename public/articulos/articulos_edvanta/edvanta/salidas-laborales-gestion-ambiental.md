@@ -5,8 +5,8 @@ meta_description: "Roles, áreas de trabajo y competencias que pueden fortalecer
 slug: "/articulos/salidas-laborales-gestion-ambiental"
 canonical: "https://edvanta.co/articulos/salidas-laborales-gestion-ambiental"
 category: "Gestión ambiental"
-author: "Karla Hernández — Química Farmacéutica"
-author_url: "/autores/karla-hernandez"
+author: "Edvanta"
+author_url: "/"
 date_published: "2026-07-08"
 date_modified: "2026-07-14"
 reading_time: "10 minutos"
@@ -22,7 +22,7 @@ robots: "index, follow"
 **Breadcrumb:** [Inicio](/) > [Artículos](/articulos) > [Gestión ambiental](/articulos?categoria=gestion-ambiental) > Salidas laborales en gestión ambiental
 
 **Categoría:** Gestión ambiental
-**Autora:** [Karla Hernández — Química Farmacéutica](/autores/karla-hernandez)
+**Autor:** Edvanta - Equipo editorial
 **Publicación:** 8 de julio de 2026
 **Última actualización:** 14 de julio de 2026
 **Tiempo de lectura:** 10 minutos
