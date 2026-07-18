@@ -10,6 +10,8 @@ import ArticuloPage     from './pages/ArticuloPage';
 import ArticulosIndex   from './pages/ArticulosIndex';
 import CursoPage        from './pages/CursoPage';
 import RutaProfesionalPage from './pages/RutaProfesionalPage';
+import CursosGratisIndex from './pages/CursosGratisIndex';
+import CursoGratisPage  from './pages/CursoGratisPage';
 import EnfermedadPage   from './pages/EnfermedadPage';
 import AcademiaIndex    from './pages/AcademiaIndex';
 import AcademiaCurso    from './pages/AcademiaCurso';
@@ -53,6 +55,10 @@ export default function App() {
         {/* Cursos y rutas profesionales Edvanta */}
         <Route path="/cursos/:slug" element={<CursoPage />} />
         <Route path="/rutas/:slug" element={<RutaProfesionalPage />} />
+
+        {/* Catálogo de 100+ cursos gratuitos */}
+        <Route path="/cursos-gratis" element={<CursosGratisIndex />} />
+        <Route path="/cursos-gratis/:courseId" element={<CursoGratisPage />} />
 
         {/* Panel admin interno (oculto, ruta directa) */}
         <Route path="/admin/orders" element={<AdminOrders />} />
