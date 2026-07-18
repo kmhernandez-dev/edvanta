@@ -254,12 +254,12 @@ export const featuredCourses = [
     applications: ['Reducir esperas', 'Ordenar procesos', 'Mejorar productividad', 'Detectar reprocesos', 'Optimizar entregas'],
     faqs: [
       {
-        question: '¿Por qué el enlace aparece pendiente?',
-        answer: 'El proyecto todavía no tiene configurado un enlace afiliado independiente para Lean. Edvanta lo mostrará cuando el enlace sea validado.',
+        question: '¿Dónde me inscribo al curso?',
+        answer: 'El acceso al curso recomendado de Lean está disponible desde el enlace de Edutin conectado por Edvanta.',
       },
       {
-        question: '¿Puedo avanzar con Lean Six Sigma mientras tanto?',
-        answer: 'Sí. Lean Six Sigma incluye herramientas de mejora de procesos y puede servir como ruta complementaria mientras se configura Lean.',
+        question: '¿Puedo complementar Lean con Lean Six Sigma?',
+        answer: 'Sí. Lean Six Sigma complementa Lean con análisis de datos, variabilidad y una estructura DMAIC para resolver problemas de proceso.',
       },
     ],
     relatedArticleSlugs: ['que-es-lean', 'desperdicios-lean'],

@@ -33,9 +33,14 @@ export function setJsonLd(id, data) {
   };
 }
 
-export function updatePageSeo({ title, description, canonical, image, type = 'website', jsonLd, jsonLdId = 'page' }) {
+export function updatePageSeo({ title, description, canonical, image, type = 'website', keywords, jsonLd, jsonLdId = 'page' }) {
   document.title = title;
   setMeta('name', 'description', description);
+  if (keywords?.length) {
+    setMeta('name', 'keywords', Array.isArray(keywords) ? keywords.join(', ') : keywords);
+  } else {
+    document.head.querySelector('meta[name="keywords"]')?.remove();
+  }
   setCanonical(canonical);
   setMeta('property', 'og:title', title);
   setMeta('property', 'og:description', description);

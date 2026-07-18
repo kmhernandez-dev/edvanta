@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Link, Navigate, useParams } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -7,6 +7,7 @@ import CourseImage from '../components/CourseImage';
 import AffiliateCourseButton from '../components/AffiliateCourseButton';
 import { articulos, getArticulo } from '../data/articulos';
 import { featuredCourses, getFeaturedCourse } from '../data/featuredCourses';
+import { getCourseLearningContent } from '../data/courseLearningContent';
 import { updatePageSeo } from '../utils/seo';
 
 function ListBlock({ title, items, icon = 'checkCircle' }) {
@@ -21,6 +22,71 @@ function ListBlock({ title, items, icon = 'checkCircle' }) {
           </li>
         ))}
       </ul>
+    </div>
+  );
+}
+
+function SectionHeading({ eyebrow, title, description }) {
+  return (
+    <div className="max-w-3xl">
+      {eyebrow && <p className="mb-2 text-xs font-bold uppercase tracking-widest text-teal-600">{eyebrow}</p>}
+      <h2 className="text-2xl font-bold leading-tight text-navy-950 md:text-3xl">{title}</h2>
+      {description && <p className="mt-3 text-base leading-relaxed text-gray-600">{description}</p>}
+    </div>
+  );
+}
+
+function NumberedGrid({ items }) {
+  return (
+    <div className="mt-6 grid gap-3 sm:grid-cols-2">
+      {items.map((item, index) => (
+        <div key={item} className="flex gap-3 rounded-lg border border-gray-200 bg-white p-4 shadow-sm">
+          <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-teal-50 text-sm font-black text-teal-700">
+            {index + 1}
+          </span>
+          <p className="text-sm font-semibold leading-relaxed text-navy-900">{item}</p>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function StudyTimeline({ items }) {
+  return (
+    <div className="mt-6 space-y-3">
+      {items.map((item, index) => (
+        <div key={item.title} className="grid gap-3 rounded-lg border border-gray-200 bg-white p-4 shadow-sm sm:grid-cols-[7rem_1fr]">
+          <div className="text-sm font-black text-teal-700">Paso {index + 1}</div>
+          <div>
+            <h3 className="text-base font-bold text-navy-950">{item.title}</h3>
+            <p className="mt-1 text-sm leading-relaxed text-gray-600">{item.goal}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function ResourceLinks({ items }) {
+  return (
+    <div className="mt-6 grid gap-4 md:grid-cols-3">
+      {items.map((item) => (
+        <a
+          key={item.url}
+          href={item.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group rounded-lg border border-gray-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:border-teal-200 hover:shadow-md"
+        >
+          <p className="text-xs font-bold uppercase tracking-widest text-teal-600">{item.source}</p>
+          <h3 className="mt-2 text-base font-bold text-navy-950 group-hover:text-teal-700">{item.title}</h3>
+          <p className="mt-2 text-sm leading-relaxed text-gray-600">{item.description}</p>
+          <span className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-navy-900">
+            Leer recurso
+            <span aria-hidden="true">↗</span>
+          </span>
+        </a>
+      ))}
     </div>
   );
 }
@@ -76,6 +142,11 @@ function CourseDetailTabs({ course }) {
 export default function CursoPage() {
   const { slug } = useParams();
   const course = getFeaturedCourse(slug);
+  const learningContent = course ? getCourseLearningContent(course.slug) : null;
+  const courseFaqs = useMemo(
+    () => (course ? [...course.faqs, ...(learningContent?.extraFaqs || [])] : []),
+    [course, learningContent]
+  );
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -84,12 +155,15 @@ export default function CursoPage() {
   useEffect(() => {
     if (!course) return undefined;
     const canonical = `https://edvanta.co/cursos/${course.slug}`;
+    const seoTitle = learningContent?.seoTitle || `${course.title} | Curso recomendado por Edvanta`;
+    const seoDescription = learningContent?.seoDescription || course.shortDescription;
     const cleanup = updatePageSeo({
-      title: `${course.title} | Curso recomendado por Edvanta`,
-      description: course.shortDescription,
+      title: seoTitle,
+      description: seoDescription,
       canonical,
       image: `https://edvanta.co${course.image.webp}`,
       type: 'website',
+      keywords: learningContent?.keywords,
       jsonLdId: `course-${course.slug}`,
       jsonLd: {
         '@context': 'https://schema.org',
@@ -97,14 +171,18 @@ export default function CursoPage() {
           {
             '@type': 'Course',
             name: course.title,
-            description: course.shortDescription,
+            description: seoDescription,
             url: canonical,
             image: `https://edvanta.co${course.image.webp}`,
             courseMode: 'online',
             isAccessibleForFree: true,
+            teaches: course.skills,
+            keywords: learningContent?.keywords?.join(', '),
+            about: learningContent?.keywords,
             provider: {
               '@type': 'Organization',
-              name: 'Plataforma educativa',
+              name: 'Edutin Academy',
+              url: course.affiliateUrl,
             },
             publisher: {
               '@type': 'Organization',
@@ -120,11 +198,36 @@ export default function CursoPage() {
               { '@type': 'ListItem', position: 3, name: course.title, item: canonical },
             ],
           },
+          {
+            '@type': 'FAQPage',
+            mainEntity: courseFaqs.map((faq) => ({
+              '@type': 'Question',
+              name: faq.question,
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: faq.answer,
+              },
+            })),
+          },
+          ...(learningContent?.complementaryReadings?.length
+            ? [
+                {
+                  '@type': 'ItemList',
+                  name: `Lecturas complementarias para ${course.title}`,
+                  itemListElement: learningContent.complementaryReadings.map((item, index) => ({
+                    '@type': 'ListItem',
+                    position: index + 1,
+                    name: item.title,
+                    url: item.url,
+                  })),
+                },
+              ]
+            : []),
         ],
       },
     });
     return cleanup;
-  }, [course]);
+  }, [course, learningContent, courseFaqs]);
 
   if (!course) return <Navigate to="/" replace />;
 
@@ -150,10 +253,10 @@ export default function CursoPage() {
               <div>
                 <p className="mb-3 text-xs font-bold uppercase tracking-widest text-teal-600">{course.category}</p>
                 <h1 className="max-w-3xl text-3xl font-bold leading-tight text-navy-950 md:text-5xl">
-                  Curso de {course.title}
+                  {learningContent?.h1 || `Curso de ${course.title}`}
                 </h1>
                 <p className="mt-5 max-w-2xl text-base leading-relaxed text-gray-600 md:text-lg">
-                  {course.description}
+                  {learningContent?.seoDescription || course.description}
                 </p>
 
                 <div className="mt-6 flex flex-wrap gap-2 text-sm text-gray-600">
@@ -166,10 +269,20 @@ export default function CursoPage() {
                   <AffiliateCourseButton course={course} sourceSection="course_page" className="px-6 py-3">
                     Inscribirme gratis
                   </AffiliateCourseButton>
-                  <Link to="/articulos" className="btn-secondary px-6 py-3">
-                    Ver artículos relacionados
-                  </Link>
+                  <a href="#guia-del-curso" className="btn-secondary px-6 py-3">
+                    Ver guía educativa
+                  </a>
                 </div>
+
+                {learningContent?.keywords?.length > 0 && (
+                  <div className="mt-6 flex flex-wrap gap-2">
+                    {learningContent.keywords.slice(0, 5).map((keyword) => (
+                      <span key={keyword} className="rounded-full border border-teal-100 bg-white px-3 py-1 text-xs font-semibold text-teal-800">
+                        {keyword}
+                      </span>
+                    ))}
+                  </div>
+                )}
               </div>
 
               <div className="overflow-hidden rounded-lg border border-gray-200 bg-white shadow-lg">
@@ -179,6 +292,38 @@ export default function CursoPage() {
           </div>
         </section>
 
+        {learningContent && (
+          <section id="guia-del-curso" className="py-12 md:py-16">
+            <div className="mx-auto grid max-w-7xl gap-8 px-4 sm:px-6 lg:grid-cols-[1.1fr_0.9fr] lg:px-8">
+              <article>
+                <SectionHeading
+                  eyebrow="Guía informativa Edvanta"
+                  title={`Por qué estudiar ${course.title}`}
+                  description="Una página de curso debe ayudarte a decidir, estudiar mejor y saber cómo convertir el aprendizaje en evidencia profesional."
+                />
+                <div className="mt-6 space-y-4 text-base leading-relaxed text-gray-600">
+                  {learningContent.intro.map((paragraph) => (
+                    <p key={paragraph}>{paragraph}</p>
+                  ))}
+                </div>
+              </article>
+
+              <aside className="rounded-lg border border-teal-100 bg-teal-50 p-6">
+                <div className="flex items-center gap-3">
+                  <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-white text-teal-700 shadow-sm">
+                    <Icon name="sparkles" className="h-5 w-5" />
+                  </span>
+                  <div>
+                    <p className="text-xs font-bold uppercase tracking-widest text-teal-700">Opinión de Edvanta</p>
+                    <h2 className="text-xl font-bold text-navy-950">Cómo vemos este curso</h2>
+                  </div>
+                </div>
+                <p className="mt-5 text-sm leading-relaxed text-gray-700">{learningContent.edvantaOpinion}</p>
+              </aside>
+            </div>
+          </section>
+        )}
+
         <section className="py-12 md:py-16">
           <div className="mx-auto grid max-w-7xl gap-5 px-4 sm:px-6 lg:grid-cols-3 lg:px-8">
             <ListBlock title="Para quién es" items={course.audience} icon="users" />
@@ -186,6 +331,19 @@ export default function CursoPage() {
             <ListBlock title="Aplicaciones prácticas" items={course.applications} icon="briefcase" />
           </div>
         </section>
+
+        {learningContent?.outcomes?.length > 0 && (
+          <section className="bg-white pb-12 md:pb-16">
+            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+              <SectionHeading
+                eyebrow="Resultados de aprendizaje"
+                title="Qué deberías poder hacer al terminar"
+                description="Estos resultados te ayudan a estudiar con intención, validar tu avance y construir un portafolio que muestre aplicación real."
+              />
+              <NumberedGrid items={learningContent.outcomes} />
+            </div>
+          </section>
+        )}
 
         <section className="bg-slate-50 py-12 md:py-16">
           <div className="mx-auto grid max-w-7xl gap-8 px-4 sm:px-6 lg:grid-cols-[0.85fr_1.15fr] lg:px-8">
@@ -199,6 +357,43 @@ export default function CursoPage() {
             <CourseDetailTabs course={course} />
           </div>
         </section>
+
+        {learningContent && (
+          <section id="como-estudiar" className="py-12 md:py-16">
+            <div className="mx-auto grid max-w-7xl gap-8 px-4 sm:px-6 lg:grid-cols-[0.95fr_1.05fr] lg:px-8">
+              <div>
+                <SectionHeading
+                  eyebrow="Método de estudio"
+                  title={`Cómo estudiar ${course.title} para que sí se note en tu perfil`}
+                  description="La diferencia entre ver un curso y aprovecharlo está en practicar, documentar y convertir cada tema en una evidencia."
+                />
+                <div className="mt-6 space-y-4">
+                  {learningContent.studyAdvice.map((paragraph) => (
+                    <p key={paragraph} className="text-base leading-relaxed text-gray-600">{paragraph}</p>
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <h3 className="text-xl font-bold text-navy-950">Plan recomendado de estudio</h3>
+                <StudyTimeline items={learningContent.studyPlan} />
+              </div>
+            </div>
+          </section>
+        )}
+
+        {learningContent?.practiceProjects?.length > 0 && (
+          <section className="bg-slate-50 py-12 md:py-16">
+            <div className="mx-auto grid max-w-7xl gap-8 px-4 sm:px-6 lg:grid-cols-[0.85fr_1.15fr] lg:px-8">
+              <SectionHeading
+                eyebrow="Portafolio"
+                title="Proyectos prácticos para demostrar lo aprendido"
+                description="Estos ejercicios convierten el curso en resultados visibles. Puedes adaptarlos a tu trabajo, estudio, emprendimiento o caso personal."
+              />
+              <NumberedGrid items={learningContent.practiceProjects} />
+            </div>
+          </section>
+        )}
 
         <section className="py-12 md:py-16">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -219,7 +414,7 @@ export default function CursoPage() {
               <div>
                 <h2 className="mb-4 text-2xl font-bold text-navy-950">Preguntas frecuentes</h2>
                 <div className="space-y-3">
-                  {course.faqs.map((faq) => (
+                  {courseFaqs.map((faq) => (
                     <details key={faq.question} className="rounded-lg border border-gray-200 bg-white p-4">
                       <summary className="cursor-pointer text-sm font-bold text-navy-950">{faq.question}</summary>
                       <p className="mt-3 text-sm leading-relaxed text-gray-600">{faq.answer}</p>
@@ -231,7 +426,60 @@ export default function CursoPage() {
           </div>
         </section>
 
-        <section className="bg-slate-50 py-12 md:py-16">
+        {learningContent && (
+          <section className="bg-white py-12 md:py-16">
+            <div className="mx-auto grid max-w-7xl gap-5 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
+              <div className="rounded-lg border border-gray-200 bg-white p-6 shadow-sm">
+                <SectionHeading
+                  eyebrow="Evita estos errores"
+                  title="Lo que suele frenar el aprendizaje"
+                  description="Estos puntos te ayudan a estudiar con más criterio y a evitar una experiencia superficial."
+                />
+                <div className="mt-6 space-y-4">
+                  {learningContent.mistakes.map((item, index) => (
+                    <div key={item} className="flex gap-3 border-t border-gray-100 pt-4 first:border-t-0 first:pt-0">
+                      <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-amber-50 text-xs font-black text-amber-700">
+                        {index + 1}
+                      </span>
+                      <p className="text-sm font-semibold leading-relaxed text-navy-900">{item}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="rounded-lg border border-teal-100 bg-teal-50 p-6">
+                <SectionHeading
+                  eyebrow="Checklist Edvanta"
+                  title="Antes de decir que terminaste"
+                  description="Usa esta lista como control rápido para validar si el curso dejó habilidades aplicables."
+                />
+                <div className="mt-6 space-y-4">
+                  {learningContent.checklist.map((item) => (
+                    <div key={item} className="flex gap-3 border-t border-teal-100 pt-4 first:border-t-0 first:pt-0">
+                      <Icon name="checkCircle" className="mt-0.5 h-4 w-4 shrink-0 text-teal-600" />
+                      <p className="text-sm font-semibold leading-relaxed text-navy-900">{item}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </section>
+        )}
+
+        {learningContent?.complementaryReadings?.length > 0 && (
+          <section id="lecturas-complementarias" className="bg-slate-50 py-12 md:py-16">
+            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+              <SectionHeading
+                eyebrow="Lecturas complementarias"
+                title="Recursos externos para profundizar"
+                description="Edvanta redirige a fuentes externas reconocidas para que puedas contrastar conceptos, ampliar criterio y estudiar con mejores referencias."
+              />
+              <ResourceLinks items={learningContent.complementaryReadings} />
+            </div>
+          </section>
+        )}
+
+        <section className="bg-white py-12 md:py-16">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="mb-8 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
               <div>
