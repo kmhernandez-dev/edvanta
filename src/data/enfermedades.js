@@ -62,10 +62,10 @@ export const enfermedades = [
     },
     learningPath: [
       { step: 1, title: 'Comprende tu diagnóstico', desc: 'Aprende qué es el hipotiroidismo, por qué ocurre y cómo afecta tu cuerpo.', link: '/enfermedades/hipotiroidismo#introduccion' },
-      { step: 2, title: 'Aprende a usar correctamente tus medicamentos', desc: 'Domina la forma correcta de tomar levotiroxina: horarios, ayuno e interacciones.', link: '/blog/como-tomar-levotiroxina-correctamente' },
-      { step: 3, title: 'Revisa alimentación, suplementos e interacciones', desc: 'Identifica qué alimentos, bebidas y suplementos debes separar de tu medicamento.', link: '/blog/alimentos-suplementos-levotiroxina' },
-      { step: 4, title: 'Lleva un seguimiento de síntomas y resultados', desc: 'Aprende a leer tus exámenes de laboratorio y a registrar tus síntomas.', link: '/guias/controlando-niveles' },
-      { step: 5, title: 'Utiliza una guía práctica para organizar tu autocuidado', desc: 'Descarga herramientas que te ayuden a aplicar todo lo aprendido en tu día a día.', link: '/guias/comer-hipotiroidismo' },
+      { step: 2, title: 'Aprende a usar correctamente tus medicamentos', desc: 'Domina la forma correcta de tomar levotiroxina: horarios, ayuno e interacciones.', link: '/articulos/como-tomar-levotiroxina-correctamente' },
+      { step: 3, title: 'Revisa alimentación, suplementos e interacciones', desc: 'Identifica qué alimentos, bebidas y suplementos debes separar de tu medicamento.', link: '/articulos/alimentos-suplementos-levotiroxina' },
+      { step: 4, title: 'Lleva un seguimiento de síntomas y resultados', desc: 'Aprende a leer tus exámenes de laboratorio y a registrar tus síntomas.', link: '/feliz-sin-tiroides#fst-ebooks' },
+      { step: 5, title: 'Utiliza una guía práctica para organizar tu autocuidado', desc: 'Descarga herramientas que te ayuden a aplicar todo lo aprendido en tu día a día.', link: '/feliz-sin-tiroides#fst-ebooks' },
     ],
     faqs: [
       { q: '¿El hipotiroidismo tiene cura?', a: 'En la mayoría de los casos, el hipotiroidismo es una condición crónica que requiere tratamiento de por vida. La excepción son algunos casos de hipotiroidismo transitorio (postparto, por medicamentos). El tratamiento con levotiroxina no cura la condición, pero reemplaza la hormona que tu cuerpo no produce, permitiéndote llevar una vida normal.' },
@@ -77,7 +77,7 @@ export const enfermedades = [
       { q: '¿Qué debo hacer si olvido una dosis?', a: 'Si lo recuerdas dentro de las primeras horas, tómala. Si ya pasó medio día, espera a la dosis del día siguiente. No dupliques la dosis. Si olvidas dosis con frecuencia, habla con tu médico sobre estrategias para mejorar la adherencia.' },
     ],
     guias: ['fst-comer-hipotiroidismo', 'fst-dieta-antiinflamatoria', 'fst-diario-hipotiroidismo', 'fst-controlando-niveles', 'fst-manejo-sintomas', 'fst-jugos-funcionales', 'fst-autocuidado'],
-    articulos: ['como-tomar-levotiroxina-correctamente', 'alimentos-suplementos-levotiroxina', 'presentaciones-levotiroxina', 'olvido-dosis-levotiroxina', 'cafe-y-levotiroxina', 'calcio-hierro-levotiroxina', 'estrenimiento-hipotiroidismo', 'sintomas-con-tsh-normal', 'diario-de-sintomas-tiroideos', 'errores-tratamiento-tiroideo'],
+    articulos: ['como-tomar-levotiroxina-correctamente', 'alimentos-suplementos-levotiroxina'],
     recursosGratis: [
       { icon: 'clipboard', title: 'Checklist: cómo tomar correctamente la levotiroxina' },
       { icon: 'checkCircle', title: 'Registro semanal de síntomas y energía' },
@@ -134,10 +134,10 @@ export const enfermedades = [
     },
     learningPath: [
       { step: 1, title: 'Comprende tu diagnóstico', desc: 'Aprende qué es el hipertiroidismo, sus causas y cómo afecta tu cuerpo.', link: '/enfermedades/hipertiroidismo#introduccion' },
-      { step: 2, title: 'Conoce tus opciones de tratamiento', desc: 'Entiende los medicamentos antitiroideos, el yodo radiactivo y la cirugía.', link: '/blog/tratamientos-hipertiroidismo' },
-      { step: 3, title: 'Aprende a cuidar tu alimentación', desc: 'Descubre qué alimentos pueden ayudar a tu bienestar durante el tratamiento.', link: '/guias/comer-hipertiroidismo' },
-      { step: 4, title: 'Maneja tus emociones', desc: 'El hipertiroidismo afecta el ánimo. Aprende estrategias para manejarlo.', link: '/guias/diario-hipertiroidismo' },
-      { step: 5, title: 'Prepárate para la vida después del tratamiento', desc: 'Si recibes yodo o cirugía, aprende cómo será tu vida con levotiroxina.', link: '/guias/yodoterapia' },
+      { step: 2, title: 'Conoce tus opciones de tratamiento', desc: 'Entiende los medicamentos antitiroideos, el yodo radiactivo y la cirugía.', link: '/articulos' },
+      { step: 3, title: 'Aprende a cuidar tu alimentación', desc: 'Descubre qué alimentos pueden ayudar a tu bienestar durante el tratamiento.', link: '/feliz-sin-tiroides#fst-ebooks' },
+      { step: 4, title: 'Maneja tus emociones', desc: 'El hipertiroidismo afecta el ánimo. Aprende estrategias para manejarlo.', link: '/feliz-sin-tiroides#fst-ebooks' },
+      { step: 5, title: 'Prepárate para la vida después del tratamiento', desc: 'Si recibes yodo o cirugía, aprende cómo será tu vida con levotiroxina.', link: '/feliz-sin-tiroides#fst-ebooks' },
     ],
     faqs: [
       { q: '¿El hipertiroidismo se cura?', a: 'Depende de la causa. Algunas tiroiditis son transitorias. La enfermedad de Graves puede entrar en remisión con antitiroideos, pero muchas personas requieren tratamiento definitivo (yodo o cirugía). Después del tratamiento definitivo, la mayoría desarrolla hipotiroidismo controlable con levotiroxina.' },
@@ -146,7 +146,7 @@ export const enfermedades = [
       { q: '¿Los antitiroideos tienen efectos secundarios?', a: 'Pueden causar erupciones cutáneas, dolor articular y, en raros casos, disminución de glóbulos blancos (agranulocitosis) o daño hepático. Por eso los controles de laboratorio son obligatorios. Reporta inmediatamente fiebre, dolor de garganta o ictericia a tu médico.' },
     ],
     guias: ['fst-comer-hipertiroidismo', 'fst-diario-hipertiroidismo', 'fst-yodoterapia', 'fst-controlando-niveles', 'fst-autocuidado'],
-    articulos: ['tratamientos-hipertiroidismo', 'alimentacion-hipertiroidismo', 'enfermedad-de-graves', 'yodoterapia-paso-a-paso', 'ejercicio-y-tiroides'],
+    articulos: [],
     recursosGratis: [
       { icon: 'clipboard', title: 'Checklist: signos de alerta en hipertiroidismo' },
       { icon: 'checkCircle', title: 'Registro de frecuencia cardíaca y síntomas' },
@@ -196,10 +196,10 @@ export const enfermedades = [
     },
     learningPath: [
       { step: 1, title: 'Comprende qué es la autoinmunidad tiroidea', desc: 'Aprende por qué tu sistema inmune ataca tu tiroides y qué significa realmente.', link: '/enfermedades/hashimoto#introduccion' },
-      { step: 2, title: 'Aprende a leer tus análisis', desc: 'TSH, T4 libre, anti-TPO, anti-Tg: qué significa cada valor.', link: '/guias/controlando-niveles' },
-      { step: 3, title: 'Adopta una alimentación que te apoye', desc: 'Conoce los alimentos que favorecen un ambiente antiinflamatorio.', link: '/guias/dieta-antiinflamatoria' },
-      { step: 4, title: 'Maneja el estrés y las emociones', desc: 'El estrés crónico puede influir en la autoinmunidad. Aprende a gestionarlo.', link: '/guias/diario-hipotiroidismo' },
-      { step: 5, title: 'Organiza tu tratamiento y seguimiento', desc: 'Herramientas prácticas para no olvidar tu medicación ni tus controles.', link: '/guias/autocuidado' },
+      { step: 2, title: 'Aprende a leer tus análisis', desc: 'TSH, T4 libre, anti-TPO, anti-Tg: qué significa cada valor.', link: '/feliz-sin-tiroides#fst-ebooks' },
+      { step: 3, title: 'Adopta una alimentación que te apoye', desc: 'Conoce los alimentos que favorecen un ambiente antiinflamatorio.', link: '/feliz-sin-tiroides#fst-ebooks' },
+      { step: 4, title: 'Maneja el estrés y las emociones', desc: 'El estrés crónico puede influir en la autoinmunidad. Aprende a gestionarlo.', link: '/feliz-sin-tiroides#fst-ebooks' },
+      { step: 5, title: 'Organiza tu tratamiento y seguimiento', desc: 'Herramientas prácticas para no olvidar tu medicación ni tus controles.', link: '/feliz-sin-tiroides#fst-ebooks' },
     ],
     faqs: [
       { q: '¿Se puede revertir la tiroiditis de Hashimoto?', a: 'Actualmente no existe un tratamiento médico aprobado que revierta el proceso autoinmune. El objetivo del tratamiento es corregir el hipotiroidismo resultante con levotiroxina. La investigación sobre terapias inmunomoduladoras continúa, pero ninguna ha demostrado eficacia y seguridad suficientes para su uso clínico rutinario.' },
@@ -208,7 +208,7 @@ export const enfermedades = [
       { q: '¿Los anticuerpos van a desaparecer?', a: 'En algunas personas los anticuerpos fluctúan o disminuyen con el tiempo, especialmente después de años de tratamiento con levotiroxina. En otras permanecen elevados. El nivel de anticuerpos no siempre se correlaciona con la severidad de los síntomas ni con la necesidad de tratamiento.' },
     ],
     guias: ['fst-dieta-antiinflamatoria', 'fst-diario-hipotiroidismo', 'fst-controlando-niveles', 'fst-manejo-sintomas', 'fst-autocuidado', 'fst-coleccion-sana'],
-    articulos: ['hashimoto-explicado', 'alimentacion-antiinflamatoria-tiroides', 'estres-y-tiroides', 'embarazo-y-tiroides', 'suplementos-tiroides-evidencia'],
+    articulos: [],
     recursosGratis: [
       { icon: 'clipboard', title: 'Checklist: qué significan tus anticuerpos antitiroideos' },
       { icon: 'checkCircle', title: 'Diario de síntomas y factores desencadenantes' },
@@ -261,10 +261,10 @@ export const enfermedades = [
     },
     learningPath: [
       { step: 1, title: 'Entiende qué es un nódulo tiroideo', desc: 'Aprende por qué se forman y qué tipos existen.', link: '/enfermedades/nodulos-tiroideos#introduccion' },
-      { step: 2, title: 'Aprende a leer tu ecografía', desc: 'Comprende el sistema TI-RADS y qué significa cada puntaje.', link: '/blog/ecografia-tiroidea-tirads' },
-      { step: 3, title: 'Conoce el proceso de la biopsia', desc: 'Qué esperar de una punción con aguja fina (PAAF) y cómo interpretar el resultado.', link: '/blog/biopsia-tiroidea-paaf' },
-      { step: 4, title: 'Organiza tu seguimiento', desc: 'Cada cuánto controlarte y qué signos vigilar.', link: '/guias/controlando-niveles' },
-      { step: 5, title: 'Toma decisiones informadas', desc: 'Si necesitas cirugía, aprende qué esperar y cómo prepararte.', link: '/guias/postoperatorio' },
+      { step: 2, title: 'Aprende a leer tu ecografía', desc: 'Comprende el sistema TI-RADS y qué significa cada puntaje.', link: '/articulos' },
+      { step: 3, title: 'Conoce el proceso de la biopsia', desc: 'Qué esperar de una punción con aguja fina (PAAF) y cómo interpretar el resultado.', link: '/articulos' },
+      { step: 4, title: 'Organiza tu seguimiento', desc: 'Cada cuánto controlarte y qué signos vigilar.', link: '/feliz-sin-tiroides#fst-ebooks' },
+      { step: 5, title: 'Toma decisiones informadas', desc: 'Si necesitas cirugía, aprende qué esperar y cómo prepararte.', link: '/feliz-sin-tiroides#fst-ebooks' },
     ],
     faqs: [
       { q: '¿Un nódulo significa cáncer?', a: 'No. Más del 90% de los nódulos tiroideos son benignos. La ecografía y, si es necesaria, la biopsia permiten determinar la naturaleza del nódulo con alta precisión.' },
@@ -273,7 +273,7 @@ export const enfermedades = [
       { q: '¿Qué es el sistema TI-RADS?', a: 'Es un sistema de clasificación que asigna un puntaje de riesgo a los nódulos según sus características ecográficas (composición, ecogenicidad, forma, márgenes, calcificaciones). Va de TI-RADS 1 (benigno) a TI-RADS 5 (alta sospecha de malignidad). Los nódulos TI-RADS 4 y 5 suelen requerir biopsia.' },
     ],
     guias: ['fst-controlando-niveles', 'fst-postoperatorio', 'fst-autocuidado'],
-    articulos: ['ecografia-tiroidea-tirads', 'biopsia-tiroidea-paaf', 'cirugia-tiroidea-tiroidectomia', 'nodulos-y-embarazo'],
+    articulos: [],
     recursosGratis: [
       { icon: 'clipboard', title: 'Checklist: qué preguntar si tienes un nódulo tiroideo' },
       { icon: 'checkCircle', title: 'Registro de seguimiento de nódulos' },
@@ -324,10 +324,10 @@ export const enfermedades = [
     },
     learningPath: [
       { step: 1, title: 'Comprende tu diagnóstico', desc: 'Aprende sobre el tipo de cáncer que tienes y qué significa.', link: '/enfermedades/cancer-de-tiroides#introduccion' },
-      { step: 2, title: 'Prepárate para la cirugía', desc: 'Qué esperar de una tiroidectomía y cómo prepararte física y emocionalmente.', link: '/guias/postoperatorio' },
-      { step: 3, title: 'Entiende la yodoterapia', desc: 'Si necesitas I-131, aprende el proceso, los cuidados y las precauciones.', link: '/guias/yodoterapia' },
-      { step: 4, title: 'Aprende a vivir sin tiroides', desc: 'Todo sobre la levotiroxina, el seguimiento y la calidad de vida después del tratamiento.', link: '/guias/vivir-sin-tiroides' },
-      { step: 5, title: 'Cuida tu bienestar integral', desc: 'Alimentación, ejercicio, manejo emocional y retorno a la vida cotidiana.', link: '/guias/autocuidado' },
+      { step: 2, title: 'Prepárate para la cirugía', desc: 'Qué esperar de una tiroidectomía y cómo prepararte física y emocionalmente.', link: '/feliz-sin-tiroides#fst-ebooks' },
+      { step: 3, title: 'Entiende la yodoterapia', desc: 'Si necesitas I-131, aprende el proceso, los cuidados y las precauciones.', link: '/feliz-sin-tiroides#fst-ebooks' },
+      { step: 4, title: 'Aprende a vivir sin tiroides', desc: 'Todo sobre la levotiroxina, el seguimiento y la calidad de vida después del tratamiento.', link: '/feliz-sin-tiroides#fst-ebooks' },
+      { step: 5, title: 'Cuida tu bienestar integral', desc: 'Alimentación, ejercicio, manejo emocional y retorno a la vida cotidiana.', link: '/feliz-sin-tiroides#fst-ebooks' },
     ],
     faqs: [
       { q: '¿El cáncer de tiroides es curable?', a: 'Los tipos más frecuentes (papilar y folicular) tienen tasas de curación superiores al 95% cuando se detectan temprano y se tratan adecuadamente. El seguimiento de por vida es necesario para detectar recurrencias, que pueden ocurrir años después.' },
@@ -336,7 +336,7 @@ export const enfermedades = [
       { q: '¿El cáncer de tiroides afecta el embarazo?', a: 'Con una TSH bien controlada, las mujeres que han tenido cáncer de tiroides pueden tener embarazos saludables. Se recomienda planificar el embarazo cuando la enfermedad esté estable y ajustar la levotiroxina desde las primeras semanas.' },
     ],
     guias: ['fst-postoperatorio', 'fst-yodoterapia', 'fst-vivir-sintiroides', 'fst-autocuidado', 'fst-coleccion-sana'],
-    articulos: ['vivir-sin-tiroides', 'yodoterapia-paso-a-paso', 'tiroglobulina-marcador-tumoral', 'embarazo-despues-cancer-tiroides', 'fatiga-despues-tiroidectomia'],
+    articulos: ['vivir-sin-tiroides'],
     recursosGratis: [
       { icon: 'clipboard', title: 'Checklist: qué preguntar antes de tu tiroidectomía' },
       { icon: 'checkCircle', title: 'Plan de preparación para la yodoterapia' },
@@ -387,10 +387,10 @@ export const enfermedades = [
     },
     learningPath: [
       { step: 1, title: 'Comprende tu nueva realidad', desc: 'Qué significa vivir sin tiroides y qué esperar en las primeras semanas.', link: '/enfermedades/vivir-sin-tiroides#introduccion' },
-      { step: 2, title: 'Domina tu medicación', desc: 'Aprende a tomar la levotiroxina de forma óptima y a reconocer señales de dosis inadecuada.', link: '/blog/como-tomar-levotiroxina-correctamente' },
-      { step: 3, title: 'Organiza tu alimentación', desc: 'Qué comer, qué evitar y cómo separar alimentos y suplementos de tu medicamento.', link: '/blog/alimentos-suplementos-levotiroxina' },
-      { step: 4, title: 'Aprende a leer tus análisis', desc: 'TSH, T4 libre, tiroglobulina: qué significan y cuándo preocuparte.', link: '/guias/controlando-niveles' },
-      { step: 5, title: 'Recupera tu energía y bienestar', desc: 'Estrategias para manejar la fatiga, el peso y las emociones.', link: '/guias/vivir-sin-tiroides' },
+      { step: 2, title: 'Domina tu medicación', desc: 'Aprende a tomar la levotiroxina de forma óptima y a reconocer señales de dosis inadecuada.', link: '/articulos/como-tomar-levotiroxina-correctamente' },
+      { step: 3, title: 'Organiza tu alimentación', desc: 'Qué comer, qué evitar y cómo separar alimentos y suplementos de tu medicamento.', link: '/articulos/alimentos-suplementos-levotiroxina' },
+      { step: 4, title: 'Aprende a leer tus análisis', desc: 'TSH, T4 libre, tiroglobulina: qué significan y cuándo preocuparte.', link: '/feliz-sin-tiroides#fst-ebooks' },
+      { step: 5, title: 'Recupera tu energía y bienestar', desc: 'Estrategias para manejar la fatiga, el peso y las emociones.', link: '/feliz-sin-tiroides#fst-ebooks' },
     ],
     faqs: [
       { q: '¿Podré hacer ejercicio sin tiroides?', a: 'Sí. Una vez que tu dosis de levotiroxina esté estable y te sientas bien, puedes retomar el ejercicio progresivamente. El ejercicio regular ayuda a mantener un peso saludable, mejorar el ánimo y reducir la fatiga.' },
@@ -399,7 +399,7 @@ export const enfermedades = [
       { q: '¿Por qué me siento cansada si mi TSH está normal?', a: 'Algunas personas sin tiroides reportan fatiga incluso con TSH en rango. Las causas pueden incluir: dosis no óptima para ti, deficiencia de hierro o vitamina D, apnea del sueño, depresión o simplemente el proceso de adaptación. Consulta a tu médico.' },
     ],
     guias: ['fst-vivir-sintiroides', 'fst-postoperatorio', 'fst-controlando-niveles', 'fst-manejo-sintomas', 'fst-autocuidado', 'fst-coleccion-sana'],
-    articulos: ['vivir-sin-tiroides', 'como-tomar-levotiroxina-correctamente', 'alimentos-suplementos-levotiroxina', 'fatiga-despues-tiroidectomia', 'ejercicio-sin-tiroides', 'viajar-con-levotiroxina'],
+    articulos: ['vivir-sin-tiroides', 'como-tomar-levotiroxina-correctamente', 'alimentos-suplementos-levotiroxina'],
     recursosGratis: [
       { icon: 'clipboard', title: 'Checklist: primeras semanas después de la tiroidectomía' },
       { icon: 'checkCircle', title: 'Registro de dosis, peso y síntomas' },
@@ -455,10 +455,10 @@ export const enfermedades = [
     },
     learningPath: [
       { step: 1, title: 'Comprende tu metabolismo', desc: 'Aprende cómo se relacionan tu tiroides, tu insulina y tu energía.', link: '/enfermedades/salud-metabolica#introduccion' },
-      { step: 2, title: 'Aprende a leer tus análisis metabólicos', desc: 'Glucemia, insulina, HOMA-IR, HbA1c, perfil lipídico: qué significan.', link: '/guias/controlando-niveles' },
-      { step: 3, title: 'Adopta una alimentación que apoye tu metabolismo', desc: 'Alimentos que mejoran la sensibilidad a la insulina y reducen la inflamación.', link: '/guias/dieta-antiinflamatoria' },
-      { step: 4, title: 'Incorpora movimiento a tu ritmo', desc: 'Ejercicio de fuerza, caminatas y actividad diaria: qué funciona y por qué.', link: '/blog/ejercicio-y-tiroides' },
-      { step: 5, title: 'Organiza tu plan integral', desc: 'Herramientas para integrar alimentación, movimiento, sueño y manejo del estrés.', link: '/guias/autocuidado' },
+      { step: 2, title: 'Aprende a leer tus análisis metabólicos', desc: 'Glucemia, insulina, HOMA-IR, HbA1c, perfil lipídico: qué significan.', link: '/feliz-sin-tiroides#fst-ebooks' },
+      { step: 3, title: 'Adopta una alimentación que apoye tu metabolismo', desc: 'Alimentos que mejoran la sensibilidad a la insulina y reducen la inflamación.', link: '/feliz-sin-tiroides#fst-ebooks' },
+      { step: 4, title: 'Incorpora movimiento a tu ritmo', desc: 'Ejercicio de fuerza, caminatas y actividad diaria: qué funciona y por qué.', link: '/articulos' },
+      { step: 5, title: 'Organiza tu plan integral', desc: 'Herramientas para integrar alimentación, movimiento, sueño y manejo del estrés.', link: '/feliz-sin-tiroides#fst-ebooks' },
     ],
     faqs: [
       { q: '¿Tener hipotiroidismo significa que tendré resistencia a la insulina?', a: 'No necesariamente, pero el hipotiroidismo no controlado aumenta el riesgo. La buena noticia es que al optimizar tu TSH, tu sensibilidad a la insulina suele mejorar.' },
@@ -467,7 +467,7 @@ export const enfermedades = [
       { q: '¿Los edulcorantes artificiales afectan el metabolismo?', a: 'La evidencia es mixta. Algunos estudios sugieren que pueden alterar la microbiota intestinal y la respuesta a la insulina. La recomendación prudente es reducir el sabor dulce en general, sea con azúcar o con edulcorantes, y acostumbrar el paladar a sabores menos dulces.' },
     ],
     guias: ['fst-dieta-antiinflamatoria', 'fst-comer-hipotiroidismo', 'fst-guia-ayunos', 'fst-jugos-funcionales', 'fst-autocuidado'],
-    articulos: ['resistencia-a-la-insulina', 'alimentacion-antiinflamatoria-tiroides', 'ejercicio-y-tiroides', 'ayuno-intermitente-y-tiroides', 'sueno-y-metabolismo'],
+    articulos: [],
     recursosGratis: [
       { icon: 'clipboard', title: 'Checklist: indicadores de salud metabólica' },
       { icon: 'checkCircle', title: 'Plan semanal de alimentación antiinflamatoria' },
@@ -519,11 +519,11 @@ export const enfermedades = [
       patientRole: 'Puedes convertirte en la principal responsable de que tu tratamiento funcione: conocer tu dosis, establecer una rutina fija, usar un pastillero o alarma, saber qué alimentos y suplementos separar, y reconocer los signos de dosis inadecuada.',
     },
     learningPath: [
-      { step: 1, title: 'Aprende a tomar correctamente tu medicamento', desc: 'Horario, ayuno, agua, tiempo de espera: los detalles que marcan la diferencia.', link: '/blog/como-tomar-levotiroxina-correctamente' },
-      { step: 2, title: 'Identifica alimentos y bebidas que interfieren', desc: 'Café, leche, soya, fibra: qué separar y cuánto tiempo.', link: '/blog/alimentos-suplementos-levotiroxina' },
-      { step: 3, title: 'Conoce las presentaciones disponibles', desc: 'Tabletas, cápsulas blandas, solución oral: diferencias y cuándo considerar un cambio.', link: '/blog/presentaciones-levotiroxina' },
-      { step: 4, title: 'Organiza tus suplementos', desc: 'Calcio, hierro, magnesio, zinc: cómo separarlos de tu levotiroxina.', link: '/blog/calcio-hierro-levotiroxina' },
-      { step: 5, title: 'Lleva un control de tu tratamiento', desc: 'Registra tu dosis, tus síntomas y tus resultados de laboratorio.', link: '/guias/controlando-niveles' },
+      { step: 1, title: 'Aprende a tomar correctamente tu medicamento', desc: 'Horario, ayuno, agua, tiempo de espera: los detalles que marcan la diferencia.', link: '/articulos/como-tomar-levotiroxina-correctamente' },
+      { step: 2, title: 'Identifica alimentos y bebidas que interfieren', desc: 'Café, leche, soya, fibra: qué separar y cuánto tiempo.', link: '/articulos/alimentos-suplementos-levotiroxina' },
+      { step: 3, title: 'Conoce las presentaciones disponibles', desc: 'Tabletas, cápsulas blandas, solución oral: diferencias y cuándo considerar un cambio.', link: '/articulos' },
+      { step: 4, title: 'Organiza tus suplementos', desc: 'Calcio, hierro, magnesio, zinc: cómo separarlos de tu levotiroxina.', link: '/articulos' },
+      { step: 5, title: 'Lleva un control de tu tratamiento', desc: 'Registra tu dosis, tus síntomas y tus resultados de laboratorio.', link: '/feliz-sin-tiroides#fst-ebooks' },
     ],
     faqs: [
       { q: '¿Por qué debo tomar la levotiroxina en ayunas?', a: 'Los alimentos, especialmente la fibra, el calcio y el hierro, reducen la absorción de levotiroxina. En ayunas, con agua, la absorción es máxima y más predecible. Si la tomas con el desayuno, puedes estar absorbiendo solo el 60-70% de la dosis.' },
@@ -533,7 +533,7 @@ export const enfermedades = [
       { q: '¿La levotiroxina tiene efectos secundarios?', a: 'Cuando la dosis es la correcta, la levotiroxina no debería causar efectos secundarios porque simplemente reemplaza lo que tu cuerpo ya no produce. Los "efectos secundarios" suelen ser síntomas de dosis inadecuada (muy alta o muy baja). Las reacciones alérgicas a la levotiroxina en sí son extremadamente raras; la mayoría de las alergias son a los excipientes (colorantes, lactosa, etc.).' },
     ],
     guias: ['fst-controlando-niveles', 'fst-manejo-sintomas', 'fst-autocuidado'],
-    articulos: ['como-tomar-levotiroxina-correctamente', 'alimentos-suplementos-levotiroxina', 'presentaciones-levotiroxina', 'olvido-dosis-levotiroxina', 'cafe-y-levotiroxina', 'calcio-hierro-levotiroxina', 'cambio-de-marca-levotiroxina', 'viajar-con-levotiroxina'],
+    articulos: ['como-tomar-levotiroxina-correctamente', 'alimentos-suplementos-levotiroxina'],
     recursosGratis: [
       { icon: 'clipboard', title: 'Checklist: cómo tomar correctamente la levotiroxina' },
       { icon: 'bell', title: 'Recordatorio imprimible para tu dosis diaria' },
@@ -585,10 +585,10 @@ export const enfermedades = [
     },
     learningPath: [
       { step: 1, title: 'Separa los mitos de la evidencia', desc: 'Qué dice realmente la ciencia sobre la alimentación y la tiroides.', link: '/enfermedades/nutricion-tiroidea#introduccion' },
-      { step: 2, title: 'Aprende a comer con hipotiroidismo', desc: 'Guía práctica de alimentación cuando tu tiroides funciona de menos.', link: '/guias/comer-hipotiroidismo' },
-      { step: 3, title: 'Adopta un patrón antiinflamatorio', desc: 'Alimentos que ayudan a reducir la inflamación y apoyan tu bienestar.', link: '/guias/dieta-antiinflamatoria' },
-      { step: 4, title: 'Organiza tus comidas con tu medicación', desc: 'Cómo separar alimentos, suplementos y levotiroxina en tu rutina diaria.', link: '/blog/alimentos-suplementos-levotiroxina' },
-      { step: 5, title: 'Explora recetas compatibles', desc: 'Desayunos, jugos funcionales y recetas pensadas para ti.', link: '/guias/jugos-funcionales' },
+      { step: 2, title: 'Aprende a comer con hipotiroidismo', desc: 'Guía práctica de alimentación cuando tu tiroides funciona de menos.', link: '/feliz-sin-tiroides#fst-ebooks' },
+      { step: 3, title: 'Adopta un patrón antiinflamatorio', desc: 'Alimentos que ayudan a reducir la inflamación y apoyan tu bienestar.', link: '/feliz-sin-tiroides#fst-ebooks' },
+      { step: 4, title: 'Organiza tus comidas con tu medicación', desc: 'Cómo separar alimentos, suplementos y levotiroxina en tu rutina diaria.', link: '/articulos/alimentos-suplementos-levotiroxina' },
+      { step: 5, title: 'Explora recetas compatibles', desc: 'Desayunos, jugos funcionales y recetas pensadas para ti.', link: '/feliz-sin-tiroides#fst-ebooks' },
     ],
     faqs: [
       { q: '¿Debo eliminar el gluten si tengo enfermedad tiroidea?', a: 'No, a menos que tengas enfermedad celíaca o sensibilidad al gluten no celíaca diagnosticada. Existe una asociación entre enfermedad tiroidea autoinmune y celiaquía, por lo que si tienes síntomas digestivos, consulta a tu médico. Pero eliminar el gluten "por si acaso" no tiene respaldo científico para la mayoría de las personas.' },
@@ -598,7 +598,7 @@ export const enfermedades = [
       { q: '¿Qué nutrientes son importantes para la tiroides?', a: 'Yodo (en cantidades adecuadas, no en exceso), selenio (apoya la conversión de T4 a T3), zinc (necesario para la síntesis hormonal), hierro (su deficiencia puede reducir la eficacia de la levotiroxina), vitamina D (frecuentemente baja en personas con autoinmunidad). La mejor fuente son los alimentos; los suplementos solo si hay deficiencia diagnosticada.' },
     ],
     guias: ['fst-comer-hipotiroidismo', 'fst-dieta-antiinflamatoria', 'fst-comer-hipertiroidismo', 'fst-guia-ayunos', 'fst-jugos-funcionales', 'fst-coleccion-sana'],
-    articulos: ['alimentos-suplementos-levotiroxina', 'alimentacion-antiinflamatoria-tiroides', 'ayuno-intermitente-y-tiroides', 'suplementos-tiroides-evidencia', 'desayunos-compatibles-levotiroxina', 'estreñimiento-hipotiroidismo'],
+    articulos: ['alimentos-suplementos-levotiroxina', 'desayunos-compatibles-levotiroxina'],
     recursosGratis: [
       { icon: 'clipboard', title: 'Checklist: nutrientes clave para tu tiroides' },
       { icon: 'checkCircle', title: 'Plan semanal de alimentación antiinflamatoria' },

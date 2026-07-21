@@ -6,6 +6,7 @@ import { waLink } from '../../config/links';
 const navLinks = [
   { label: 'Inicio',        href: '#fst-inicio' },
   { label: 'Sobre Karla',   href: '#fst-karla' },
+  { label: 'Academia',      href: '/academia', isRoute: true },
   { label: 'Guías y ebooks',href: '#fst-ebooks' },
   { label: 'Servicios',     href: '#fst-servicios' },
   { label: 'Comunidad',     href: '#fst-comunidad' },
@@ -68,14 +69,24 @@ export default function FstHeader() {
           {/* Nav desktop */}
           <nav className="hidden lg:flex items-center gap-0.5">
             {navLinks.map(link => (
-              <a
-                key={link.href}
-                href={link.href}
-                onClick={e => handleNav(e, link.href)}
-                className="px-3 py-1.5 text-sm text-deepblue-800/70 hover:text-deepblue-900 hover:bg-sand-50 rounded-lg transition-colors duration-150 font-medium"
-              >
-                {link.label}
-              </a>
+              link.isRoute ? (
+                <Link
+                  key={link.href}
+                  to={link.href}
+                  className="px-3 py-1.5 text-sm text-deepblue-800/70 hover:text-deepblue-900 hover:bg-sand-50 rounded-lg transition-colors duration-150 font-medium"
+                >
+                  {link.label}
+                </Link>
+              ) : (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  onClick={e => handleNav(e, link.href)}
+                  className="px-3 py-1.5 text-sm text-deepblue-800/70 hover:text-deepblue-900 hover:bg-sand-50 rounded-lg transition-colors duration-150 font-medium"
+                >
+                  {link.label}
+                </a>
+              )
             ))}
 
             {/* Mega menu: Enfermedades tiroideas */}
@@ -172,14 +183,25 @@ export default function FstHeader() {
         <div className="lg:hidden bg-white border-t border-sand-100 shadow-lg max-h-[80vh] overflow-y-auto">
           <nav className="px-4 py-3 space-y-1">
             {navLinks.map(link => (
-              <a
-                key={link.href}
-                href={link.href}
-                onClick={e => handleNav(e, link.href)}
-                className="block px-3 py-2.5 text-sm font-medium text-deepblue-800/80 hover:bg-sand-50 rounded-lg transition-colors"
-              >
-                {link.label}
-              </a>
+              link.isRoute ? (
+                <Link
+                  key={link.href}
+                  to={link.href}
+                  onClick={() => setMenuOpen(false)}
+                  className="block px-3 py-2.5 text-sm font-medium text-deepblue-800/80 hover:bg-sand-50 rounded-lg transition-colors"
+                >
+                  {link.label}
+                </Link>
+              ) : (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  onClick={e => handleNav(e, link.href)}
+                  className="block px-3 py-2.5 text-sm font-medium text-deepblue-800/80 hover:bg-sand-50 rounded-lg transition-colors"
+                >
+                  {link.label}
+                </a>
+              )
             ))}
             <div className="border-t border-sand-100 my-2" />
             <p className="px-3 py-1 text-[10px] font-bold text-teal-600 uppercase tracking-widest">Enfermedades tiroideas</p>

@@ -40,7 +40,7 @@ export default function LearningPathForm() {
   };
 
   return (
-    <section id="recursos" className="bg-white py-16 md:py-20">
+    <section id="consulta" className="bg-white py-16 md:py-20">
       <div className="mx-auto grid max-w-6xl gap-8 px-4 sm:px-6 md:grid-cols-[0.9fr_1.1fr] lg:px-8">
         <div>
           <p className="mb-2 text-xs font-bold uppercase tracking-widest text-teal-600">Orientación personalizada</p>

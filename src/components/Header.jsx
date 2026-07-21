@@ -136,6 +136,9 @@ export default function Header() {
 
             {/* Brand buttons */}
             <span className="mx-1 text-gray-200">|</span>
+            <Link to="/cursos-gratis" className="px-3 py-1.5 text-sm text-teal-600 hover:text-teal-700 hover:bg-teal-50 rounded-lg transition-colors font-medium">
+              📚 100+ Cursos gratis
+            </Link>
             <Link to="/feliz-sin-tiroides" className="px-3 py-1.5 text-sm text-teal-600 hover:text-teal-700 hover:bg-teal-50 rounded-lg transition-colors font-medium">
               🦋 Feliz Sin Tiroides
             </Link>
