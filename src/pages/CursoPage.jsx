@@ -5,6 +5,8 @@ import Footer from '../components/Footer';
 import Icon from '../components/Icon';
 import CourseImage from '../components/CourseImage';
 import AffiliateCourseButton from '../components/AffiliateCourseButton';
+import EdutinCourseListWidget from '../components/EdutinCourseListWidget';
+import CursoExternoPage from './CursoExternoPage';
 import { articulos, getArticulo } from '../data/articulos';
 import { featuredCourses, getFeaturedCourse } from '../data/featuredCourses';
 import { getCourseLearningContent } from '../data/courseLearningContent';
@@ -229,7 +231,7 @@ export default function CursoPage() {
     return cleanup;
   }, [course, learningContent, courseFaqs]);
 
-  if (!course) return <Navigate to="/" replace />;
+  if (!course) return <CursoExternoPage />;
 
   const relatedArticles = course.relatedArticleSlugs.map(getArticulo).filter(Boolean);
   const complementaryCourses = course.complementaryCourseSlugs.map(getFeaturedCourse).filter(Boolean);
@@ -291,6 +293,8 @@ export default function CursoPage() {
             </div>
           </div>
         </section>
+
+        <EdutinCourseListWidget />
 
         {learningContent && (
           <section id="guia-del-curso" className="py-12 md:py-16">

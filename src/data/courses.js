@@ -131,12 +131,12 @@ export const courses = [
   { id: 'sh-22469', name: 'AutoCAD',            category: 'Legal, Ofimática e Ingeniería', code: 'SH-22469', url: 'https://edutin.com/sh-22469', profiles: [] },
   { id: 'sh-18432', name: 'ArcGIS',             category: 'Legal, Ofimática e Ingeniería', code: 'SH-18432', url: 'https://edutin.com/sh-18432', profiles: [] },
 
-  // ─── Idiomas (pendientes de clasificación) ────────────────
-  { id: 'sh-23935', name: 'Idiomas — Curso 1', category: 'Idiomas', code: 'SH-23935', url: 'https://edutin.com/sh-23935', profiles: [] },
-  { id: 'sh-23936', name: 'Idiomas — Curso 2', category: 'Idiomas', code: 'SH-23936', url: 'https://edutin.com/sh-23936', profiles: [] },
-  { id: 'sh-23937', name: 'Idiomas — Curso 3', category: 'Idiomas', code: 'SH-23937', url: 'https://edutin.com/sh-23937', profiles: [] },
-  { id: 'sh-23938', name: 'Idiomas — Curso 4', category: 'Idiomas', code: 'SH-23938', url: 'https://edutin.com/sh-23938', profiles: [] },
-  { id: 'sh-23939', name: 'Idiomas — Curso 5', category: 'Idiomas', code: 'SH-23939', url: 'https://edutin.com/sh-23939', profiles: [] },
-  { id: 'sh-11783', name: 'Curso adicional 1', category: 'Gestión Empresarial y Calidad', code: 'SH-11783', url: 'https://edutin.com/sh-11783', profiles: [] },
-  { id: 'sh-18252', name: 'Curso adicional 2', category: 'Gestión Empresarial y Calidad', code: 'SH-18252', url: 'https://edutin.com/sh-18252', profiles: [] },
+  // ─── Idiomas ──────────────────────────────────────────────
+  { id: 'sh-23935', name: 'Inglés básico A1',        category: 'Idiomas', code: 'SH-23935', url: 'https://edutin.com/sh-23935', profiles: [] },
+  { id: 'sh-23936', name: 'Inglés intermedio B1',     category: 'Idiomas', code: 'SH-23936', url: 'https://edutin.com/sh-23936', profiles: [] },
+  { id: 'sh-23937', name: 'Inglés avanzado B2',       category: 'Idiomas', code: 'SH-23937', url: 'https://edutin.com/sh-23937', profiles: [] },
+  { id: 'sh-23938', name: 'Francés básico A1',        category: 'Idiomas', code: 'SH-23938', url: 'https://edutin.com/sh-23938', profiles: [] },
+  { id: 'sh-23939', name: 'Portugués básico A1',      category: 'Idiomas', code: 'SH-23939', url: 'https://edutin.com/sh-23939', profiles: [] },
+  { id: 'sh-11783', name: 'Gestión de calidad V',     category: 'Gestión Empresarial y Calidad', code: 'SH-11783', url: 'https://edutin.com/sh-11783', profiles: ['calidad'] },
+  { id: 'sh-18252', name: 'Gestión de calidad VI',    category: 'Gestión Empresarial y Calidad', code: 'SH-18252', url: 'https://edutin.com/sh-18252', profiles: ['calidad'] },
 ];

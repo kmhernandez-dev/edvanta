@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { Link, useParams, Navigate } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import EdutinCourseListWidget from '../components/EdutinCourseListWidget';
 import { courses, COURSE_CATEGORIES } from '../data/courses';
 import { articulos } from '../data/articulos';
 import { updatePageSeo } from '../utils/seo';
@@ -97,6 +98,8 @@ export default function CursoGratisPage() {
             </div>
           </div>
         </section>
+
+        <EdutinCourseListWidget />
 
         {/* Content */}
         <section className="py-10 md:py-14">

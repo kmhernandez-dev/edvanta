@@ -22,12 +22,10 @@ export function waLink(message) {
 
 // ─── Hotmart ─────────────────────────────────────────────────
 // URL base de tu tienda o producto principal en Hotmart.
-// Puedes tener una URL por pack sobreescribiéndola en products.js.
-export const HOTMART_URL = 'https://hotmart.com/tu-tienda';
+export const HOTMART_URL = 'https://hotmart.com/es/marketplace/productos/salud-y-bienestar';
 
 // ─── Formulario de captación de leads ────────────────────────
-// Puede ser Google Forms, Typeform, Notion, ConvertKit, etc.
-export const LEAD_FORM_URL = 'https://forms.gle/tu-formulario';
+export const LEAD_FORM_URL = 'https://edvanta.co/feliz-sin-tiroides#fst-recursos';
 
 // ─── Correo electrónico ───────────────────────────────────────
 export const EMAIL = 'felizsintiroides@gmail.com';

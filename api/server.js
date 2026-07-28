@@ -28,6 +28,8 @@ import { createPreferenceRoute } from './routes/create-preference.js';
 import { mpWebhookRoute } from './routes/mp-webhook.js';
 import { leadCaptureRoute } from './routes/lead-capture.js';
 import { listOrdersRoute } from './routes/list-orders.js';
+import { listCoursesRoute, getCourseBySlugRoute, getFilterOptionsRoute } from './routes/courses.js';
+import { trackClickRoute } from './routes/course-clicks.js';
 import academiaAuthRoutes from './routes/academia-auth.js';
 import academiaRoutes from './routes/academia.js';
 import adminAcademiaRoutes from './routes/admin-academia.js';
@@ -128,6 +130,12 @@ app.post('/api/create-preference', createPreferenceRoute);
 app.post('/api/mp-webhook',         mpWebhookRoute);
 app.post('/api/lead-capture',       leadCaptureRoute);
 app.get('/api/list-orders',         listOrdersRoute);
+
+// Catálogo multi-plataforma de cursos
+app.get('/api/courses',              listCoursesRoute);
+app.get('/api/courses/filters/options', getFilterOptionsRoute);
+app.get('/api/courses/:slug',        getCourseBySlugRoute);
+app.post('/api/course-clicks',       trackClickRoute);
 
 // Academia FST
 app.use('/api/academia/auth',  academiaAuthRoutes);

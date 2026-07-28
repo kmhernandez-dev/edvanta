@@ -1,4 +1,5 @@
 import { trackAffiliateCourseClick } from '../data/featuredCourses';
+import { apiUrl } from '../config/api';
 
 export default function AffiliateCourseButton({
   course,
@@ -24,12 +25,29 @@ export default function AffiliateCourseButton({
     );
   }
 
+  const handleClick = () => {
+    trackAffiliateCourseClick(course, { sourceSection, articleSlug });
+
+    // Registrar clic en el backend
+    fetch(apiUrl('/api/course-clicks'), {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        course_id: null,
+        provider: 'edutin',
+        destination_url: course.affiliateUrl,
+        page_path: typeof window !== 'undefined' ? window.location.pathname : '',
+        referrer: typeof document !== 'undefined' ? document.referrer : '',
+      }),
+    }).catch(() => {});
+  };
+
   return (
     <a
       href={course.affiliateUrl}
       target="_blank"
       rel="sponsored noopener noreferrer"
-      onClick={() => trackAffiliateCourseClick(course, { sourceSection, articleSlug })}
+      onClick={handleClick}
       className={`btn-primary ${className}`}
     >
       {children}

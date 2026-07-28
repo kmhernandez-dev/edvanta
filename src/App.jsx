@@ -12,6 +12,8 @@ import CursoPage        from './pages/CursoPage';
 import RutaProfesionalPage from './pages/RutaProfesionalPage';
 import CursosGratisIndex from './pages/CursosGratisIndex';
 import CursoGratisPage  from './pages/CursoGratisPage';
+import CursosCatalog    from './pages/CursosCatalog';
+import CursoExternoPage from './pages/CursoExternoPage';
 import EnfermedadPage   from './pages/EnfermedadPage';
 import AcademiaIndex    from './pages/AcademiaIndex';
 import AcademiaCurso    from './pages/AcademiaCurso';
@@ -53,7 +55,11 @@ export default function App() {
         <Route path="/articulos/:slug" element={<ArticuloPage />} />
 
         {/* Cursos y rutas profesionales Edvanta */}
-        <Route path="/cursos/:slug" element={<CursoPage />} />
+        <Route path="/cursos" element={<CursosCatalog />} />
+        <Route path="/cursos/coursera" element={<CursosCatalog defaultProvider="coursera" />} />
+        <Route path="/cursos/udemy" element={<CursosCatalog defaultProvider="udemy" />} />
+        <Route path="/cursos/edutin" element={<CursosCatalog defaultProvider="edutin" />} />
+        <Route path="/cursos/:slug" element={<CursoExternoPage />} />
         <Route path="/rutas/:slug" element={<RutaProfesionalPage />} />
 
         {/* Catálogo de 100+ cursos gratuitos */}
