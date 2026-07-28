@@ -30,6 +30,10 @@ import { leadCaptureRoute } from './routes/lead-capture.js';
 import { listOrdersRoute } from './routes/list-orders.js';
 import { listCoursesRoute, getCourseBySlugRoute, getFilterOptionsRoute } from './routes/courses.js';
 import { trackClickRoute } from './routes/course-clicks.js';
+import { importCourses } from './lib/import-courses.js';
+import { readFileSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
+import path from 'node:path';
 import academiaAuthRoutes from './routes/academia-auth.js';
 import academiaRoutes from './routes/academia.js';
 import adminAcademiaRoutes from './routes/admin-academia.js';
@@ -136,6 +140,26 @@ app.get('/api/courses',              listCoursesRoute);
 app.get('/api/courses/filters/options', getFilterOptionsRoute);
 app.get('/api/courses/:slug',        getCourseBySlugRoute);
 app.post('/api/course-clicks',       trackClickRoute);
+
+// Admin: importar cursos desde el JSON incluido en el repo
+app.post('/api/admin/import-courses', async (req, res) => {
+  try {
+    const token = req.headers['x-admin-token'];
+    if (!token || token !== process.env.ADMIN_TOKEN) {
+      return res.status(401).json({ error: 'No autorizado' });
+    }
+
+    const __dirname = path.dirname(fileURLToPath(import.meta.url));
+    const filePath = path.join(__dirname, 'data', 'coursera-udemy-courses.json');
+    const raw = JSON.parse(readFileSync(filePath, 'utf8'));
+
+    const report = await importCourses(raw, { dryRun: false, updateExisting: true });
+    res.json({ ok: true, report });
+  } catch (e) {
+    console.error(JSON.stringify({ level: 'error', msg: 'Error importando cursos', error: e.message }));
+    res.status(500).json({ error: 'Error al importar cursos' });
+  }
+});
 
 // Academia FST
 app.use('/api/academia/auth',  academiaAuthRoutes);
