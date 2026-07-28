@@ -6,6 +6,8 @@
 --  enlaces originales y de afiliado.
 -- ============================================================
 
+CREATE EXTENSION IF NOT EXISTS pg_trgm;
+
 CREATE TABLE IF NOT EXISTS courses (
   id                    BIGSERIAL PRIMARY KEY,
   title                 TEXT NOT NULL,
