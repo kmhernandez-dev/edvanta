@@ -51,7 +51,7 @@ export default function FeaturedCoursesSection() {
           </p>
         </div>
 
-        <div className="mb-8 flex gap-2 overflow-x-auto pb-2">
+        <div className="mb-8 flex flex-wrap gap-2">
           {routeOptions.map((route) => {
             const active = route.slug === activeRoute;
             return (

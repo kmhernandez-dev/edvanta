@@ -204,23 +204,25 @@ export default function CursosCatalog({ defaultProvider = '' }) {
         {/* Filters */}
         <section className="border-b border-gray-200 bg-white sticky top-16 z-30">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-3">
-            <form onSubmit={handleSearchSubmit} className="flex flex-col gap-3">
+            <div className="flex flex-col gap-3">
               {/* Search bar */}
               <div className="flex gap-2">
                 <input
                   type="text"
                   value={search}
                   onChange={e => setSearch(e.target.value)}
+                  onKeyDown={e => { if (e.key === 'Enter') { e.preventDefault(); setPage(1); syncUrl({ q: search, page: null }); } }}
                   placeholder="Buscar curso por título, categoría, instructor..."
-                  className="flex-1 rounded-xl border border-gray-200 bg-white px-4 py-2.5 text-sm outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-100"
+                  className="flex-1 min-w-0 rounded-xl border border-gray-200 bg-white px-4 py-2.5 text-sm outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-100"
                 />
-                <button type="submit" className="px-5 py-2.5 bg-teal-600 text-white text-sm font-semibold rounded-xl hover:bg-teal-700 transition-colors">
+                <button type="button" onClick={() => { setPage(1); syncUrl({ q: search, page: null }); }}
+                  className="px-5 py-2.5 bg-teal-600 text-white text-sm font-semibold rounded-xl hover:bg-teal-700 transition-colors shrink-0">
                   Buscar
                 </button>
               </div>
 
-              {/* Filter row */}
-              <div className="flex flex-wrap gap-2">
+              {/* Filter grid */}
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2">
                 {!defaultProvider && (
                   <select value={provider} onChange={e => handleFilterChange(setProvider, 'provider')(e.target.value)}
                     className="text-xs border border-gray-200 rounded-lg px-3 py-2 bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-teal-400">
@@ -236,14 +238,6 @@ export default function CursosCatalog({ defaultProvider = '' }) {
                   <option value="">Todas las categorías</option>
                   {filterOptions.categories.map(c => (
                     <option key={c} value={c}>{c}</option>
-                  ))}
-                </select>
-
-                <select value={professionalArea} onChange={e => handleFilterChange(setProfessionalArea, 'area')(e.target.value)}
-                  className="text-xs border border-gray-200 rounded-lg px-3 py-2 bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-teal-400">
-                  <option value="">Todas las áreas</option>
-                  {filterOptions.professional_areas.map(a => (
-                    <option key={a} value={a}>{a}</option>
                   ))}
                 </select>
 
@@ -279,12 +273,12 @@ export default function CursosCatalog({ defaultProvider = '' }) {
 
                 {hasFilters && (
                   <button type="button" onClick={clearFilters}
-                    className="text-xs text-teal-600 hover:text-teal-700 font-medium px-3 py-2">
+                    className="text-xs text-teal-600 hover:text-teal-700 font-medium px-3 py-2 rounded-lg hover:bg-teal-50 transition-colors">
                     Limpiar filtros
                   </button>
                 )}
               </div>
-            </form>
+            </div>
           </div>
         </section>
 

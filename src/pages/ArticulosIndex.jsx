@@ -95,7 +95,7 @@ export default function ArticulosIndex() {
         {/* Brand tabs */}
         <section className="border-b border-gray-200 bg-white sticky top-16 z-30">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="flex gap-0 overflow-x-auto">
+            <div className="flex flex-wrap gap-0">
               {BRANDS.map(b => (
                 <button
                   key={b.key}
