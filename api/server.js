@@ -161,6 +161,54 @@ app.post('/api/admin/import-courses', async (req, res) => {
   }
 });
 
+// Admin: generar descripciones SEO para cursos sin short_description
+app.post('/api/admin/generate-seo', async (req, res) => {
+  try {
+    const token = req.headers['x-admin-token'];
+    if (!token || token !== process.env.ADMIN_TOKEN) {
+      return res.status(401).json({ error: 'No autorizado' });
+    }
+
+    const PROVIDER_LABELS = { edutin: 'Edutin Academy', coursera: 'Coursera', udemy: 'Udemy' };
+    const LEVEL_LABELS = { beginner: 'nivel principiante', intermediate: 'nivel intermedio', advanced: 'nivel avanzado', mixed: 'nivel mixto' };
+    const MODALITY_LABELS = { self_paced: 'a tu propio ritmo', instructor_led: 'guiado por instructor', specialization: 'especialización', professional_certificate: 'certificado profesional', guided_project: 'proyecto guiado', course: 'curso' };
+    const PRICE_LABELS = { free: 'acceso gratuito', free_audit: 'auditoría gratuita', paid: 'de pago', subscription: 'por suscripción', financial_aid: 'ayuda financiera disponible' };
+
+    function buildDesc(c) {
+      const provider = PROVIDER_LABELS[c.provider] || c.provider;
+      const modality = MODALITY_LABELS[c.modality] || 'curso';
+      const parts = [`${c.title} es un ${modality}`];
+      if (c.institution) parts.push(`ofrecido por ${c.institution}`);
+      parts.push(`disponible en ${provider}`);
+      if (c.category) { parts.push(`en la categoría de ${c.category}`); if (c.subcategory) parts.push(`(${c.subcategory})`); }
+      if (c.level && c.level !== 'unknown') parts.push(`de ${LEVEL_LABELS[c.level] || c.level}`);
+      if (c.language && c.language !== 'unknown') parts.push(`impartido en ${c.language === 'Spanish' ? 'español' : c.language === 'English' ? 'inglés' : c.language}`);
+      if (c.price_type && c.price_type !== 'unknown') parts.push(`con ${PRICE_LABELS[c.price_type] || c.price_type}`);
+      if (c.certificate_available) parts.push(c.certificate_included ? 'e incluye certificado' : 'con certificado disponible (puede tener costo adicional)');
+      parts.push('Accede a este curso mediante el enlace de afiliado de Edvanta y desarrolla habilidades profesionales con respaldo de plataformas educativas reconocidas.');
+      return parts.join(', ');
+    }
+
+    const { rows: courses } = await pool.query(
+      `SELECT id, title, provider, category, subcategory, language, level, modality, price_type,
+              certificate_available, certificate_included, institution, short_description
+       FROM courses WHERE active = true`
+    );
+
+    const toUpdate = courses.filter(c => !c.short_description);
+    let updated = 0;
+    for (const c of toUpdate) {
+      await pool.query('UPDATE courses SET short_description = $1 WHERE id = $2', [buildDesc(c), c.id]);
+      updated++;
+    }
+
+    res.json({ ok: true, total: courses.length, updated });
+  } catch (e) {
+    console.error(JSON.stringify({ level: 'error', msg: 'Error generando SEO', error: e.message }));
+    res.status(500).json({ error: 'Error al generar descripciones SEO' });
+  }
+});
+
 // Academia FST
 app.use('/api/academia/auth',  academiaAuthRoutes);
 app.use('/api/academia',       academiaRoutes);
