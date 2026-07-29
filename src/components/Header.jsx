@@ -1,5 +1,5 @@
-import { useState, useEffect, useRef, useCallback } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { useState, useEffect, useRef } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { EDVANTA_WHATSAPP_URL } from '../config/links';
 import { useCart } from '../context/CartContext';
 
@@ -55,12 +55,23 @@ export default function Header() {
   const headerRef = useRef(null);
   const { count, openCart } = useCart();
   const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
+
+  // Handle hash from URL on homepage mount
+  useEffect(() => {
+    if (location.hash && location.pathname === '/') {
+      const id = location.hash.replace('#', '');
+      setTimeout(() => {
+        document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    }
+  }, [location.hash, location.pathname]);
 
   // Close menus on route change
   useEffect(() => {
@@ -114,6 +125,17 @@ export default function Header() {
   const closeAll = () => {
     setOpenMenu(null);
     setMobileOpen(false);
+  };
+
+  const handleHashLink = (e, hash) => {
+    e.preventDefault();
+    closeAll();
+    const id = hash.replace('#', '');
+    if (location.pathname === '/') {
+      document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      navigate('/' + hash);
+    }
   };
 
   const isActive = (to) => {
@@ -209,7 +231,7 @@ export default function Header() {
                 <Link
                   key={link.label}
                   to={link.to}
-                  onClick={closeAll}
+                  onClick={link.to.startsWith('/#') ? (e) => handleHashLink(e, link.to) : closeAll}
                   className={`px-2.5 py-1.5 text-sm rounded-lg transition-colors duration-150 font-medium whitespace-nowrap ${
                     isActive(link.to)
                       ? 'text-teal-700 bg-teal-50'
@@ -224,13 +246,13 @@ export default function Header() {
 
           {/* Right CTAs */}
           <div className="flex items-center gap-2">
-            <Link
-              to="/#recursos"
-              onClick={closeAll}
+            <a
+              href="/#recursos"
+              onClick={(e) => handleHashLink(e, '/#recursos')}
               className="hidden sm:inline-flex btn-primary text-xs px-4 py-2"
             >
               Solicitar ruta
-            </Link>
+            </a>
 
             <button
               onClick={openCart}
@@ -308,7 +330,7 @@ export default function Header() {
                 <Link
                   key={link.label}
                   to={link.to}
-                  onClick={closeAll}
+                  onClick={link.to.startsWith('/#') ? (e) => handleHashLink(e, link.to) : closeAll}
                   className={`block px-3 py-2.5 text-sm font-medium rounded-lg transition-colors ${
                     isActive(link.to)
                       ? 'text-teal-700 bg-teal-50 font-semibold'
@@ -332,7 +354,7 @@ export default function Header() {
             </Link>
 
             <div className="pt-3 pb-1 flex flex-col gap-2">
-              <Link to="/#recursos" onClick={closeAll} className="btn-primary text-sm text-center">Solicitar ruta</Link>
+              <a href="/#recursos" onClick={(e) => handleHashLink(e, '/#recursos')} className="btn-primary text-sm text-center">Solicitar ruta</a>
               <a href={EDVANTA_WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="btn-teal text-sm text-center">Hablar con Edvanta</a>
             </div>
           </nav>

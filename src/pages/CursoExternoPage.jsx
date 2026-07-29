@@ -3,6 +3,8 @@ import { Link, Navigate, useParams } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import ExternalCourseCard from '../components/ExternalCourseCard';
+import CursoPage from './CursoPage';
+import { getFeaturedCourse } from '../data/featuredCourses';
 import { apiUrl } from '../config/api';
 import { updatePageSeo } from '../utils/seo';
 
@@ -39,6 +41,40 @@ const MODALITY_LABELS = {
   unknown: 'No especificado',
 };
 
+function buildSeoDescription(course) {
+  if (course.short_description) return course.short_description;
+
+  const parts = [];
+  const provider = PROVIDER_LABELS[course.provider] || course.provider;
+
+  parts.push(`Curso${course.modality === 'specialization' ? ' (especialización)' : course.modality === 'professional_certificate' ? ' (certificado profesional)' : ''} de ${course.title}`);
+
+  if (course.institution) parts.push(`ofrecido por ${course.institution}`);
+  parts.push(`en ${provider}`);
+
+  if (course.category) parts.push(`dentro de la categoría ${course.category}`);
+  if (course.subcategory) parts.push(`(${course.subcategory})`);
+
+  if (course.level && course.level !== 'unknown') {
+    parts.push(`Nivel: ${LEVEL_LABELS[course.level] || course.level}`);
+  }
+
+  if (course.language && course.language !== 'unknown') {
+    parts.push(`Idioma: ${course.language}`);
+  }
+
+  const access = PRICE_TYPE_LABELS[course.price_type] || course.price_type;
+  parts.push(`Acceso: ${access}`);
+
+  if (course.certificate_available) {
+    parts.push(course.certificate_included ? 'Certificado incluido' : 'Certificado disponible');
+  }
+
+  parts.push('Encuentra este curso en Edvanta y accede mediante enlace de afiliado.');
+
+  return parts.join('. ');
+}
+
 function trackClick(course) {
   const url = course.affiliate_url || course.original_url;
   if (!url) return;
@@ -72,11 +108,20 @@ export default function CursoExternoPage() {
   const [loading, setLoading] = useState(true);
   const [notFound, setNotFound] = useState(false);
 
+  // Check if this is a featured course (static data)
+  const featuredCourse = getFeaturedCourse(slug);
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [slug]);
 
   useEffect(() => {
+    // If it's a featured course, CursoPage handles its own data
+    if (featuredCourse) {
+      setLoading(false);
+      return;
+    }
+
     setLoading(true);
     setNotFound(false);
     fetch(apiUrl(`/api/courses/${slug}`))
@@ -91,13 +136,14 @@ export default function CursoExternoPage() {
       })
       .catch(() => setNotFound(true))
       .finally(() => setLoading(false));
-  }, [slug]);
+  }, [slug, featuredCourse]);
 
   useEffect(() => {
-    if (!course) return;
+    if (!course || featuredCourse) return;
     const canonical = `https://edvanta.co/cursos/${course.slug}`;
-    const seoTitle = `${course.title} | ${PROVIDER_LABELS[course.provider] || course.provider} | Edvanta`;
-    const seoDescription = course.short_description || `${course.title} en ${PROVIDER_LABELS[course.provider] || course.provider}. ${course.category ? `Categoría: ${course.category}.` : ''}`;
+    const providerName = PROVIDER_LABELS[course.provider] || course.provider;
+    const seoTitle = `${course.title} | ${providerName} | Edvanta`;
+    const seoDescription = buildSeoDescription(course);
 
     updatePageSeo({
       title: seoTitle,
@@ -115,7 +161,7 @@ export default function CursoExternoPage() {
             courseMode: 'online',
             provider: {
               '@type': 'Organization',
-              name: PROVIDER_LABELS[course.provider] || course.provider,
+              name: providerName,
               url: course.original_url || course.affiliate_url,
             },
             publisher: {
@@ -123,10 +169,10 @@ export default function CursoExternoPage() {
               name: 'Edvanta',
               url: 'https://edvanta.co/',
             },
-            ...(course.institution && {
-              educationalCredentialAwarded: course.institution,
-            }),
-            ...(course.language && { inLanguage: course.language }),
+            ...(course.institution && { educationalCredentialAwarded: course.institution }),
+            ...(course.language && course.language !== 'unknown' && { inLanguage: course.language }),
+            ...(course.level && course.level !== 'unknown' && { educationalLevel: LEVEL_LABELS[course.level] || course.level }),
+            ...(course.price_type === 'free' || course.price_type === 'free_audit' ? { isAccessibleForFree: true } : {}),
           },
           {
             '@type': 'BreadcrumbList',
@@ -139,17 +185,31 @@ export default function CursoExternoPage() {
         ],
       },
     });
-  }, [course]);
+  }, [course, featuredCourse]);
+
+  // Render featured course with its rich static page
+  if (featuredCourse) {
+    return <CursoPage />;
+  }
 
   if (loading) {
     return (
       <div className="min-h-screen bg-white">
         <Header />
         <main className="pt-16">
-          <div className="mx-auto max-w-7xl px-4 py-20 text-center">
-            <div className="animate-pulse space-y-4">
-              <div className="h-8 bg-gray-100 rounded w-1/3 mx-auto" />
-              <div className="h-4 bg-gray-100 rounded w-1/2 mx-auto" />
+          <div className="mx-auto max-w-7xl px-4 py-20">
+            <div className="animate-pulse space-y-6">
+              <div className="h-4 bg-gray-100 rounded w-1/4" />
+              <div className="h-10 bg-gray-100 rounded w-2/3" />
+              <div className="h-6 bg-gray-100 rounded w-1/2" />
+              <div className="grid grid-cols-1 lg:grid-cols-[1fr_0.9fr] gap-8 mt-8">
+                <div className="space-y-4">
+                  <div className="h-4 bg-gray-100 rounded w-full" />
+                  <div className="h-4 bg-gray-100 rounded w-3/4" />
+                  <div className="h-4 bg-gray-100 rounded w-5/6" />
+                </div>
+                <div className="h-64 bg-gray-100 rounded-xl" />
+              </div>
             </div>
           </div>
         </main>
@@ -172,19 +232,19 @@ export default function CursoExternoPage() {
         <section className="bg-slate-50 py-10 md:py-14">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             {/* Breadcrumbs */}
-            <nav className="mb-6 flex flex-wrap items-center gap-2 text-sm text-gray-500">
+            <nav className="mb-6 flex flex-wrap items-center gap-2 text-sm text-gray-500" aria-label="Breadcrumb">
               <Link to="/" className="font-medium text-teal-700 hover:underline">Inicio</Link>
-              <span>/</span>
+              <span aria-hidden="true">/</span>
               <Link to="/cursos" className="font-medium text-teal-700 hover:underline">Cursos</Link>
-              <span>/</span>
+              <span aria-hidden="true">/</span>
               <Link to={`/cursos/${course.provider}`} className="font-medium text-teal-700 hover:underline">{providerLabel}</Link>
-              <span>/</span>
+              <span aria-hidden="true">/</span>
               <span className="text-gray-400 truncate max-w-[200px]">{course.title}</span>
             </nav>
 
             <div className="grid gap-8 lg:grid-cols-[1fr_0.9fr] lg:items-start">
               <div>
-                {/* Provider badge */}
+                {/* Badges */}
                 <div className="flex flex-wrap items-center gap-2 mb-3">
                   <span className={`text-xs font-bold px-3 py-1 rounded-full ${
                     course.provider === 'coursera' ? 'bg-blue-100 text-blue-800' :
@@ -209,25 +269,23 @@ export default function CursoExternoPage() {
                   {course.title}
                 </h1>
 
-                {course.short_description && (
-                  <p className="mt-5 max-w-2xl text-base leading-relaxed text-gray-600 md:text-lg">
-                    {course.short_description}
-                  </p>
-                )}
+                <p className="mt-5 max-w-2xl text-base leading-relaxed text-gray-600 md:text-lg">
+                  {buildSeoDescription(course)}
+                </p>
 
                 {/* Meta pills */}
                 <div className="mt-6 flex flex-wrap gap-2 text-sm text-gray-600">
-                  {course.modality && (
+                  {course.modality && course.modality !== 'unknown' && (
                     <span className="rounded-lg border border-gray-200 bg-white px-3 py-2">
                       {MODALITY_LABELS[course.modality] || course.modality}
                     </span>
                   )}
-                  {course.level && (
+                  {course.level && course.level !== 'unknown' && (
                     <span className="rounded-lg border border-gray-200 bg-white px-3 py-2">
                       {LEVEL_LABELS[course.level] || course.level}
                     </span>
                   )}
-                  {course.language && (
+                  {course.language && course.language !== 'unknown' && (
                     <span className="rounded-lg border border-gray-200 bg-white px-3 py-2">
                       {course.language}
                     </span>
@@ -253,7 +311,7 @@ export default function CursoExternoPage() {
                        course.price_type === 'free_audit' ? 'Auditar curso' :
                        course.price_type === 'subscription' ? 'Ver en plataforma' :
                        'Ver curso en ' + providerLabel}
-                      <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                       </svg>
                     </a>
@@ -304,11 +362,11 @@ export default function CursoExternoPage() {
                     <div>
                       <p className="text-xs text-gray-400 uppercase tracking-wide">Calificación</p>
                       <p className="font-semibold text-navy-900 flex items-center gap-1">
-                        <svg className="w-4 h-4 text-amber-500 fill-current" viewBox="0 0 20 20">
+                        <svg className="w-4 h-4 text-amber-500 fill-current" viewBox="0 0 20 20" aria-hidden="true">
                           <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                         </svg>
-                        {course.rating}
-                        {course.review_count && <span className="text-gray-400 font-normal">({course.review_count} reseñas)</span>}
+                        {Number(course.rating).toFixed(1)}
+                        {course.review_count ? <span className="text-gray-400 font-normal">({course.review_count} reseñas)</span> : null}
                       </p>
                     </div>
                   )}
@@ -317,11 +375,11 @@ export default function CursoExternoPage() {
                       <p className="text-xs text-gray-400 uppercase tracking-wide">Precio de referencia</p>
                       <p className="font-semibold text-navy-900">
                         {course.currency === 'COP' ? '$' : course.currency === 'USD' ? 'US$' : ''}
-                        {course.current_price?.toLocaleString?.() || course.current_price}
+                        {Number(course.current_price).toLocaleString()}
                         {course.original_price && course.original_price > course.current_price && (
                           <span className="ml-2 text-xs text-gray-400 line-through">
                             {course.currency === 'COP' ? '$' : course.currency === 'USD' ? 'US$' : ''}
-                            {course.original_price?.toLocaleString?.() || course.original_price}
+                            {Number(course.original_price).toLocaleString()}
                           </span>
                         )}
                       </p>
@@ -359,6 +417,25 @@ export default function CursoExternoPage() {
               <h2 className="text-xl font-bold text-navy-950 mb-4">Descripción del curso</h2>
               <div className="prose prose-slate max-w-none text-gray-600">
                 {course.full_description}
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* Learning outcomes */}
+        {course.learning_outcomes && course.learning_outcomes.length > 0 && (
+          <section className="py-10 md:py-14">
+            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+              <h2 className="text-xl font-bold text-navy-950 mb-4">Lo que aprenderás</h2>
+              <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                {course.learning_outcomes.map((item, i) => (
+                  <div key={i} className="flex gap-3 rounded-lg border border-gray-200 bg-white p-4 shadow-sm">
+                    <svg className="mt-0.5 h-5 w-5 shrink-0 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span className="text-sm font-medium text-navy-900">{item}</span>
+                  </div>
+                ))}
               </div>
             </div>
           </section>

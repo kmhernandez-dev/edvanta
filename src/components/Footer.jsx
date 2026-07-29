@@ -1,24 +1,28 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { EDVANTA_WHATSAPP_URL, EDVANTA_EMAIL, EDVANTA_LINKEDIN_URL, EDVANTA_BRAND_FULL } from '../config/links';
 
 const quickLinks = [
-  { label: 'Inicio', href: '#inicio' },
-  { label: 'Cursos', href: '#cursos' },
-  { label: 'Rutas profesionales', href: '#rutas' },
-  { label: 'Artículos', href: '#articulos' },
-  { label: 'Recursos', href: '#recursos' },
+  { label: 'Inicio', href: '/#inicio' },
+  { label: 'Cursos', href: '/#cursos' },
+  { label: 'Rutas profesionales', href: '/#rutas' },
+  { label: 'Artículos', href: '/#articulos' },
+  { label: 'Recursos', href: '/#recursos' },
 ];
 
 const logoVersion = '20260716-edvanta-logo';
 
 export default function Footer() {
+  const navigate = useNavigate();
+  const location = useLocation();
+
   const handleNav = (e, href) => {
     e.preventDefault();
-    if (window.location.pathname !== '/') {
-      window.location.href = `/${href}`;
-      return;
+    const id = href.replace('/#', '');
+    if (location.pathname === '/') {
+      document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      navigate(href);
     }
-    document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
   };
 
   const year = new Date().getFullYear();
