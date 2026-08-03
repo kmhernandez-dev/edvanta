@@ -129,12 +129,17 @@ export default function FelizSinTiroides() {
       sessionStorage.setItem('fst-lead-prompt-shown', '1');
       setLeadPromptOpen(true);
     };
+    let exitIntentReady = false;
+    const readinessTimer = window.setTimeout(() => {
+      exitIntentReady = true;
+    }, 20000);
     const timer = window.setTimeout(showPrompt, 45000);
     const exitIntent = event => {
-      if (event.clientY <= 0 && window.innerWidth >= 768) showPrompt();
+      if (exitIntentReady && event.clientY <= 0 && window.innerWidth >= 768) showPrompt();
     };
     document.addEventListener('mouseleave', exitIntent);
     return () => {
+      window.clearTimeout(readinessTimer);
       window.clearTimeout(timer);
       document.removeEventListener('mouseleave', exitIntent);
     };
