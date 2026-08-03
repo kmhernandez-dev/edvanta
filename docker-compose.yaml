@@ -47,7 +47,7 @@ services:
       FROM_EMAIL: "${FROM_EMAIL:?FROM_EMAIL is required}"
       NOTIFY_EMAIL: "${NOTIFY_EMAIL:-${FROM_EMAIL}}"
       ADMIN_TOKEN: "${ADMIN_TOKEN:?ADMIN_TOKEN is required}"
-      JWT_SECRET: "${JWT_SECRET:-${ADMIN_TOKEN}}"
+      JWT_SECRET: "${JWT_SECRET:?JWT_SECRET is required}"
     networks:
       - edvanta-net
       - coolify

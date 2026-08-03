@@ -78,7 +78,7 @@ El texto de comentarios se limita a 1.500 caracteres. Una respuesta solo puede d
 ## Autenticación y privacidad
 
 - La contraseña se almacena con `bcrypt`.
-- Los tokens usan `JWT_SECRET`; en Docker puede heredar temporalmente `ADMIN_TOKEN`, pero en producción se recomienda un secreto largo e independiente.
+- Los tokens usan un `JWT_SECRET` largo e independiente. Docker Compose lo exige para evitar iniciar la academia con un secreto público o incompleto.
 - El registro exige aceptación explícita de la política de privacidad y guarda la fecha en `privacy_accepted_at`.
 - Nunca colocar tokens, claves de correo, Mercado Pago o base de datos en el frontend.
 
