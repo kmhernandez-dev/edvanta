@@ -8,7 +8,7 @@
  * ============================================================
  */
 export const FREE_GUIDES = [
-  { name: 'Checklist: cómo prepararte para tu consulta de tiroides', url: '' },
+  { name: 'Checklist: 12 errores que pueden alterar la absorción de tu levotiroxina', url: 'https://edvanta.co/recursos/checklist-levotiroxina.html' },
   { name: 'Plantilla de seguimiento de síntomas y exámenes',        url: '' },
   { name: 'Mini guía: hábitos diarios para tu metabolismo',         url: '' },
   { name: 'Recordatorio imprimible para tu levotiroxina',           url: '' },

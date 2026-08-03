@@ -1,72 +1,77 @@
 import { Link } from 'react-router-dom';
-import { WHATSAPP_URL, EMAIL, LINKEDIN_URL } from '../../config/links';
+import { EMAIL, INSTAGRAM_URL, waLink } from '../../config/links';
+import { trackEvent } from '../../utils/analytics';
+import Icon from '../Icon';
+
+const whatsappUrl = waLink('Hola, llegué desde la página de Feliz Sin Tiroides y necesito orientación para elegir un recurso.');
 
 export default function FstFooter() {
   const year = new Date().getFullYear();
-
-  const handleNav = (e, href) => {
-    e.preventDefault();
+  const scroll = (event, href) => {
+    event.preventDefault();
     document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
-    <footer id="fst-contacto" className="bg-deepblue-900 text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
-        <div className="grid md:grid-cols-4 gap-10 mb-10">
-          {/* Brand */}
+    <footer id="fst-contacto" className="bg-[#132e55] text-white">
+      <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
+        <div className="grid gap-10 border-b border-white/15 pb-10 md:grid-cols-4">
           <div className="md:col-span-2">
-            <div className="flex items-center gap-2 mb-3">
-              <div className="w-9 h-9 rounded-full bg-gradient-to-br from-teal-500 to-blush-400 flex items-center justify-center text-lg">🦋</div>
-              <p className="font-serif text-lg font-semibold">Feliz Sin Tiroides<span className="text-teal-400">®</span></p>
+            <div className="flex items-center gap-3">
+              <img src="/img/port-logofelizsintiroides.jpg" alt="Feliz Sin Tiroides" width="52" height="52" className="h-12 w-12 rounded-md bg-white object-cover" />
+              <div>
+                <p className="text-lg font-semibold">Feliz Sin Tiroides</p>
+                <p className="text-xs text-white/60">Educación farmacéutica para pacientes tiroideos</p>
+              </div>
             </div>
-            <p className="text-sm text-white/70 leading-relaxed max-w-md mb-4">
-              Educación, acompañamiento farmacéutico y estilo de vida para personas que viven con enfermedades tiroideas y metabólicas. Por Karla Hernández, Química Farmacéutica y paciente sobreviviente de cáncer de tiroides.
+            <p className="mt-4 max-w-xl text-sm leading-6 text-white/70">
+              Información clara para comprender la levotiroxina, los exámenes, la alimentación y los cambios de vivir con una condición tiroidea. Creado por Karla Hernández, química farmacéutica y paciente tiroidectomizada.
             </p>
-            <div className="flex flex-wrap gap-3 text-sm">
-              <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="text-teal-300 hover:text-teal-200">WhatsApp</a>
-              <span className="text-white/30">·</span>
-              <a href={`mailto:${EMAIL}`} className="text-teal-300 hover:text-teal-200">{EMAIL}</a>
-              <span className="text-white/30">·</span>
-              <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" className="text-teal-300 hover:text-teal-200">LinkedIn</a>
+            <div className="mt-5 flex flex-wrap gap-3">
+              <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" onClick={() => trackEvent('whatsapp_click', { location: 'footer' })} className="inline-flex min-h-11 items-center gap-2 rounded-md border border-white/25 px-4 text-sm font-semibold hover:bg-white/10">
+                WhatsApp
+              </a>
+              <a href={`mailto:${EMAIL}`} className="inline-flex min-h-11 items-center gap-2 rounded-md border border-white/25 px-4 text-sm font-semibold hover:bg-white/10">
+                <Icon name="mail" className="h-4 w-4" /> Correo
+              </a>
+              {INSTAGRAM_URL && <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center rounded-md border border-white/25 px-4 text-sm font-semibold hover:bg-white/10">Instagram</a>}
             </div>
           </div>
 
-          {/* Navegación */}
           <div>
-            <p className="text-xs font-bold text-white/50 uppercase tracking-widest mb-4">Explora</p>
-            <nav className="space-y-2 text-sm">
-              <a href="#fst-ebooks" onClick={e => handleNav(e, '#fst-ebooks')} className="block text-white/70 hover:text-white">Guías y ebooks</a>
-              <a href="#fst-servicios" onClick={e => handleNav(e, '#fst-servicios')} className="block text-white/70 hover:text-white">Servicios</a>
-              <a href="#fst-recursos" onClick={e => handleNav(e, '#fst-recursos')} className="block text-white/70 hover:text-white">Recursos gratis</a>
-              <a href="#fst-tienda" onClick={e => handleNav(e, '#fst-tienda')} className="block text-white/70 hover:text-white">Tienda recomendada</a>
-              <Link to="/" className="block text-white/70 hover:text-white">Edvanta</Link>
+            <p className="text-xs font-bold uppercase tracking-widest text-[#d8c5e8]">Explora</p>
+            <nav className="mt-4 space-y-3 text-sm text-white/70">
+              <a href="#fst-recursos" onClick={event => scroll(event, '#fst-recursos')} className="block hover:text-white">Recurso gratuito</a>
+              <a href="#fst-guias" onClick={event => scroll(event, '#fst-guias')} className="block hover:text-white">Guías y diarios</a>
+              <a href="#fst-karla" onClick={event => scroll(event, '#fst-karla')} className="block hover:text-white">Sobre Karla</a>
+              <a href="#fst-preguntas" onClick={event => scroll(event, '#fst-preguntas')} className="block hover:text-white">Preguntas frecuentes</a>
+              <Link to="/articulos" className="block hover:text-white">Artículos educativos</Link>
+              <Link to="/" className="block hover:text-white">Edvanta</Link>
             </nav>
           </div>
 
-          {/* Legal */}
           <div>
-            <p className="text-xs font-bold text-white/50 uppercase tracking-widest mb-4">Legal</p>
-            <nav className="space-y-2 text-sm">
-              <Link to="/privacidad" className="block text-white/70 hover:text-white">Política de privacidad</Link>
-              <Link to="/terminos" className="block text-white/70 hover:text-white">Términos y condiciones</Link>
-              <Link to="/descargo-medico" className="block text-white/70 hover:text-white">Descargo médico</Link>
-              <Link to="/afiliados" className="block text-white/70 hover:text-white">Aviso de afiliados</Link>
+            <p className="text-xs font-bold uppercase tracking-widest text-[#d8c5e8]">Legal</p>
+            <nav className="mt-4 space-y-3 text-sm text-white/70">
+              <Link to="/privacidad" className="block hover:text-white">Política de privacidad</Link>
+              <Link to="/tratamiento-de-datos" className="block hover:text-white">Tratamiento de datos</Link>
+              <Link to="/terminos" className="block hover:text-white">Términos y condiciones</Link>
+              <Link to="/reembolsos" className="block hover:text-white">Política de reembolso</Link>
+              <Link to="/descargo-medico" className="block hover:text-white">Aviso sanitario</Link>
+              <Link to="/afiliados" className="block hover:text-white">Aviso de afiliados</Link>
             </nav>
           </div>
         </div>
 
-        {/* Medical disclaimer banner */}
-        <div className="p-4 bg-white/5 border border-white/10 rounded-xl mb-6">
-          <p className="text-xs text-white/60 leading-relaxed">
-            <strong className="text-white/80">Descargo de responsabilidad médica:</strong> el contenido de Feliz Sin Tiroides® es educativo e informativo y no sustituye la consulta, diagnóstico ni tratamiento de tu médico o profesional de salud. No suspendas ni modifiques tu medicación sin indicación profesional. Ante una urgencia, acude a tu servicio de salud.
+        <div className="mt-6 rounded-lg border border-white/15 bg-white/5 p-4">
+          <p className="text-xs leading-5 text-white/70">
+            <strong className="text-white">Aviso sanitario:</strong> El contenido de Feliz Sin Tiroides es educativo y no reemplaza la valoración, diagnóstico, tratamiento ni seguimiento por parte de profesionales de salud. No modifiques tu medicación sin consultar al profesional tratante.
           </p>
         </div>
 
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pt-2 border-t border-white/10">
-          <p className="text-xs text-white/50">© {year} Feliz Sin Tiroides®. Karla Hernández. Todos los derechos reservados.</p>
-          <a href="#fst-recursos" onClick={e => handleNav(e, '#fst-recursos')} className="text-xs text-teal-300 hover:text-teal-200">
-            Recibe recursos gratis →
-          </a>
+        <div className="mt-6 flex flex-col gap-2 text-xs text-white/50 sm:flex-row sm:items-center sm:justify-between">
+          <p>© {year} Feliz Sin Tiroides. Todos los derechos reservados.</p>
+          <p>Una iniciativa educativa vinculada al ecosistema Edvanta.</p>
         </div>
       </div>
     </footer>

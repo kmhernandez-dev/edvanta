@@ -25,6 +25,7 @@ import { AuthProvider } from './context/AuthContext';
 import CartDrawer    from './components/CartDrawer';
 import CartToast     from './components/CartToast';
 import PaymentStatus from './components/PaymentStatus';
+import AnalyticsConsent from './components/AnalyticsConsent';
 
 export default function App() {
   return (
@@ -72,7 +73,9 @@ export default function App() {
 
         {/* Páginas legales */}
         <Route path="/privacidad"      element={<LegalPage doc="privacidad" />} />
+        <Route path="/tratamiento-de-datos" element={<LegalPage doc="tratamiento-de-datos" />} />
         <Route path="/terminos"        element={<LegalPage doc="terminos" />} />
+        <Route path="/reembolsos"      element={<LegalPage doc="reembolsos" />} />
         <Route path="/descargo-medico" element={<LegalPage doc="descargo-medico" />} />
         <Route path="/afiliados"       element={<LegalPage doc="afiliados" />} />
 
@@ -84,6 +87,7 @@ export default function App() {
       <CartDrawer />
       <CartToast />
       <PaymentStatus />
+      <AnalyticsConsent />
     </AuthProvider>
   );
 }

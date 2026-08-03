@@ -23,7 +23,7 @@ export default function LegalPage({ doc }) {
       <header className="bg-white border-b border-sand-100">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           <Link to="/feliz-sin-tiroides" className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-teal-500 to-blush-400 flex items-center justify-center">🦋</div>
+            <img src="/img/port-logofelizsintiroides.jpg" alt="" className="h-8 w-8 rounded object-cover" />
             <span className="font-serif font-semibold text-deepblue-900">Feliz Sin Tiroides®</span>
           </Link>
           <Link to="/feliz-sin-tiroides" className="text-sm text-teal-600 hover:text-teal-700 font-medium">← Volver</Link>
@@ -50,7 +50,9 @@ export default function LegalPage({ doc }) {
           <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-3">Otros documentos</p>
           <div className="flex flex-wrap gap-x-5 gap-y-2 text-sm">
             <Link to="/privacidad" className="text-teal-600 hover:text-teal-700">Política de privacidad</Link>
+            <Link to="/tratamiento-de-datos" className="text-teal-600 hover:text-teal-700">Tratamiento de datos</Link>
             <Link to="/terminos" className="text-teal-600 hover:text-teal-700">Términos y condiciones</Link>
+            <Link to="/reembolsos" className="text-teal-600 hover:text-teal-700">Reembolsos</Link>
             <Link to="/descargo-medico" className="text-teal-600 hover:text-teal-700">Descargo médico</Link>
             <Link to="/afiliados" className="text-teal-600 hover:text-teal-700">Aviso de afiliados</Link>
           </div>

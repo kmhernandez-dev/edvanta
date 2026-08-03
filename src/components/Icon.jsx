@@ -29,6 +29,14 @@ const PATHS = {
   beaker:      'M9 4h6M10 4v5l-4.5 8A2 2 0 0 0 7.3 20h9.4a2 2 0 0 0 1.8-3L14 9V4M7.5 14h9',
   award:       'M12 15a5 5 0 1 0 0-10 5 5 0 0 0 0 10Zm-3 0-1 6 4-2 4 2-1-6',
   sun:         'M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10ZM12 2v2m0 16v2M4 12H2m20 0h-2M5 5 4 4m15 15-1-1M5 19l-1 1M19 5l1-1',
+  arrowRight:  'M5 12h14m-5-5 5 5-5 5',
+  arrowDown:   'M12 5v14m-5-5 5 5 5-5',
+  lock:        'M7 10V8a5 5 0 0 1 10 0v2m-11 0h12a1 1 0 0 1 1 1v9H5v-9a1 1 0 0 1 1-1Zm6 4v3',
+  globe:       'M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Zm0-18c2.5 2.5 3.5 5.5 3.5 9s-1 6.5-3.5 9m0-18C9.5 5.5 8.5 8.5 8.5 12s1 6.5 3.5 9M3 12h18',
+  mail:        'M4 6h16v12H4V6Zm0 1 8 6 8-6',
+  menu:        'M4 7h16M4 12h16M4 17h16',
+  close:       'M6 6l12 12M18 6 6 18',
+  external:    'M14 5h5v5m0-5-9 9M19 13v6H5V5h6',
 };
 
 export default function Icon({ name, className = 'w-6 h-6', strokeWidth = 1.6 }) {

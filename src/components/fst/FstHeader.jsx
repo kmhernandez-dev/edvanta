@@ -1,226 +1,95 @@
-import { useState, useEffect, useRef } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useCart } from '../../context/CartContext';
-import { waLink } from '../../config/links';
+import { trackEvent } from '../../utils/analytics';
+import Icon from '../Icon';
 
 const navLinks = [
-  { label: 'Inicio',        href: '#fst-inicio' },
-  { label: 'Sobre Karla',   href: '#fst-karla' },
-  { label: 'Academia',      href: '/academia', isRoute: true },
-  { label: 'Guías y ebooks',href: '#fst-ebooks' },
-  { label: 'Servicios',     href: '#fst-servicios' },
-  { label: 'Comunidad',     href: '#fst-comunidad' },
-  { label: 'Contacto',      href: '#fst-contacto' },
+  ['Inicio', '#fst-inicio'],
+  ['Recursos', '#fst-recursos'],
+  ['Guías', '#fst-guias'],
+  ['Cursos', '#fst-cursos'],
+  ['Sobre mí', '#fst-karla'],
+  ['Preguntas frecuentes', '#fst-preguntas'],
 ];
 
-const enfermedadesMenu = [
-  { label: 'Hipotiroidismo',          to: '/enfermedades/hipotiroidismo' },
-  { label: 'Hipertiroidismo',         to: '/enfermedades/hipertiroidismo' },
-  { label: 'Tiroiditis de Hashimoto', to: '/enfermedades/hashimoto' },
-  { label: 'Nódulos tiroideos',       to: '/enfermedades/nodulos-tiroideos' },
-  { label: 'Cáncer de tiroides',      to: '/enfermedades/cancer-de-tiroides' },
-  { label: 'Vivir sin tiroides',      to: '/enfermedades/vivir-sin-tiroides' },
-  { label: 'Salud metabólica',        to: '/enfermedades/salud-metabolica' },
-  { label: 'Levotiroxina y medicamentos', to: '/levotiroxina' },
-  { label: 'Nutrición tiroidea',          to: '/nutricion-tiroidea' },
-];
+function goToSection(event, href, onNavigate) {
+  event.preventDefault();
+  document.querySelector(href)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  onNavigate?.();
+}
 
 export default function FstHeader() {
-  const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [megaOpen, setMegaOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const { count, openCart } = useCart();
-  const megaRef = useRef(null);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener('scroll', onScroll);
+    const onScroll = () => setScrolled(window.scrollY > 12);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  useEffect(() => {
-    const handleClick = (e) => {
-      if (megaRef.current && !megaRef.current.contains(e.target)) setMegaOpen(false);
-    };
-    document.addEventListener('mousedown', handleClick);
-    return () => document.removeEventListener('mousedown', handleClick);
-  }, []);
-
-  const handleNav = (e, href) => {
-    e.preventDefault();
-    setMenuOpen(false);
-    document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
+  const freeResourceClick = (event) => {
+    trackEvent('hero_cta_click', { location: 'header', cta: 'free_resource' });
+    goToSection(event, '#fst-recursos', () => setMenuOpen(false));
   };
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-white/95 backdrop-blur shadow-sm border-b border-sand-100' : 'bg-white/80 backdrop-blur-sm'}`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+    <header className={`fixed inset-x-0 top-0 z-50 border-b transition-colors ${scrolled ? 'border-[#e8e1ee] bg-white/95 shadow-sm backdrop-blur' : 'border-transparent bg-white/90 backdrop-blur-sm'}`}>
+      <div className="mx-auto flex min-h-[72px] max-w-7xl items-center justify-between gap-4 px-4 py-2.5 sm:px-6 lg:px-8">
+        <a href="#fst-inicio" onClick={event => goToSection(event, '#fst-inicio')} className="flex min-w-0 items-center gap-3" aria-label="Feliz Sin Tiroides, inicio">
+          <img src="/img/port-logofelizsintiroides.jpg" alt="" width="48" height="48" className="h-12 w-12 rounded-md object-cover" />
+          <span className="hidden min-w-0 sm:block">
+            <span className="block truncate text-sm font-bold text-[#132e55]">Feliz Sin Tiroides</span>
+            <span className="block truncate text-[11px] text-gray-500">Educación tiroidea responsable</span>
+          </span>
+        </a>
 
-          {/* Logo */}
-          <a href="#fst-inicio" onClick={e => handleNav(e, '#fst-inicio')} className="flex items-center gap-2 shrink-0">
-            <img src="/img/port-logofelizsintiroides.jpg" alt="Feliz Sin Tiroides" className="w-9 h-9 rounded-full object-contain bg-white" />
-            <div>
-              <p className="font-serif text-base font-semibold text-deepblue-800 leading-none">Feliz Sin Tiroides<span className="text-teal-500">®</span></p>
-              <p className="text-[10px] text-teal-600 font-medium leading-none mt-0.5">Salud tiroidea y metabólica</p>
-            </div>
-          </a>
-
-          {/* Nav desktop */}
-          <nav className="hidden lg:flex items-center gap-0.5">
-            {navLinks.map(link => (
-              link.isRoute ? (
-                <Link
-                  key={link.href}
-                  to={link.href}
-                  className="px-3 py-1.5 text-sm text-deepblue-800/70 hover:text-deepblue-900 hover:bg-sand-50 rounded-lg transition-colors duration-150 font-medium"
-                >
-                  {link.label}
-                </Link>
-              ) : (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  onClick={e => handleNav(e, link.href)}
-                  className="px-3 py-1.5 text-sm text-deepblue-800/70 hover:text-deepblue-900 hover:bg-sand-50 rounded-lg transition-colors duration-150 font-medium"
-                >
-                  {link.label}
-                </a>
-              )
-            ))}
-
-            {/* Mega menu: Enfermedades tiroideas */}
-            <div ref={megaRef} className="relative">
-              <button
-                onClick={() => setMegaOpen(!megaOpen)}
-                className={`px-3 py-1.5 text-sm rounded-lg transition-colors duration-150 font-medium flex items-center gap-1 ${megaOpen ? 'text-teal-700 bg-teal-50' : 'text-deepblue-800/70 hover:text-deepblue-900 hover:bg-sand-50'}`}
-              >
-                Enfermedades tiroideas
-                <svg className={`w-3.5 h-3.5 transition-transform ${megaOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" />
-                </svg>
-              </button>
-
-              {megaOpen && (
-                <div className="absolute top-full left-0 mt-1 w-72 bg-white rounded-2xl shadow-xl border border-sand-100 py-2 z-50">
-                  <div className="px-3 py-1.5">
-                    <p className="text-[10px] font-bold text-teal-600 uppercase tracking-widest mb-1">Condiciones</p>
-                  </div>
-                  {enfermedadesMenu.slice(0, 7).map(item => (
-                    <Link
-                      key={item.to}
-                      to={item.to}
-                      onClick={() => setMegaOpen(false)}
-                      className="block px-4 py-2 text-sm text-deepblue-800 hover:bg-teal-50 hover:text-teal-700 transition-colors"
-                    >
-                      {item.label}
-                    </Link>
-                  ))}
-                  <div className="border-t border-sand-100 my-1" />
-                  <div className="px-3 py-1.5">
-                    <p className="text-[10px] font-bold text-teal-600 uppercase tracking-widest mb-1">Temas</p>
-                  </div>
-                  {enfermedadesMenu.slice(7).map(item => (
-                    <Link
-                      key={item.to}
-                      to={item.to}
-                      onClick={() => setMegaOpen(false)}
-                      className="block px-4 py-2 text-sm text-deepblue-800 hover:bg-teal-50 hover:text-teal-700 transition-colors"
-                    >
-                      {item.label}
-                    </Link>
-                  ))}
-                </div>
-              )}
-            </div>
-          </nav>
-
-          {/* CTAs */}
-          <div className="flex items-center gap-2">
-            <a
-              href={waLink('Hola Karla, vengo de Feliz Sin Tiroides y quiero más información.')}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 bg-teal-600 text-white text-xs font-semibold rounded-full hover:bg-teal-700 transition-colors"
-            >
-              Escríbeme
+        <nav className="hidden items-center gap-5 lg:flex" aria-label="Navegación principal">
+          {navLinks.map(([label, href]) => (
+            <a key={href} href={href} onClick={event => goToSection(event, href)} className="text-sm font-medium text-gray-600 transition-colors hover:text-[#563a78]">
+              {label}
             </a>
+          ))}
+        </nav>
 
-            {/* Cart */}
-            <button
-              onClick={openCart}
-              className="relative w-10 h-10 rounded-full bg-sand-50 hover:bg-sand-100 border border-sand-200 flex items-center justify-center text-deepblue-800 transition-colors"
-              aria-label="Abrir carrito"
-            >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-              </svg>
-              {count > 0 && (
-                <span className="absolute -top-1 -right-1 min-w-[18px] h-[18px] px-1 rounded-full bg-blush-500 text-white text-[10px] font-bold flex items-center justify-center ring-2 ring-white">
-                  {count}
-                </span>
-              )}
-            </button>
-
-            {/* Mobile menu button */}
-            <button
-              onClick={() => setMenuOpen(!menuOpen)}
-              className="lg:hidden p-2 rounded-lg text-deepblue-800 hover:bg-sand-50 transition-colors"
-              aria-label="Menú"
-            >
-              {menuOpen ? (
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
-              ) : (
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" /></svg>
-              )}
-            </button>
-          </div>
+        <div className="flex items-center gap-2">
+          <a href="#fst-recursos" onClick={freeResourceClick} className="hidden min-h-11 items-center justify-center rounded-md bg-[#563a78] px-4 text-sm font-semibold text-white hover:bg-[#452b65] md:inline-flex">
+            Recibir recurso gratuito
+          </a>
+          <button type="button" onClick={openCart} className="relative inline-flex h-11 w-11 items-center justify-center rounded-md border border-[#e2d9eb] text-[#563a78] hover:bg-[#f7f2fa]" aria-label={`Abrir carrito, ${count} productos`}>
+            <Icon name="cube" className="h-5 w-5" />
+            {count > 0 && <span className="absolute -right-1 -top-1 flex h-5 min-w-5 items-center justify-center rounded-full bg-[#0f766e] px-1 text-[10px] font-bold text-white">{count}</span>}
+          </button>
+          <button
+            type="button"
+            onClick={() => setMenuOpen(value => !value)}
+            className="inline-flex h-11 w-11 items-center justify-center rounded-md border border-[#e2d9eb] text-[#563a78] lg:hidden"
+            aria-expanded={menuOpen}
+            aria-controls="fst-mobile-menu"
+            aria-label={menuOpen ? 'Cerrar menú' : 'Abrir menú'}
+          >
+            <Icon name={menuOpen ? 'close' : 'menu'} className="h-5 w-5" />
+          </button>
         </div>
       </div>
 
-      {/* Mobile menu */}
       {menuOpen && (
-        <div className="lg:hidden bg-white border-t border-sand-100 shadow-lg max-h-[80vh] overflow-y-auto">
-          <nav className="px-4 py-3 space-y-1">
-            {navLinks.map(link => (
-              link.isRoute ? (
-                <Link
-                  key={link.href}
-                  to={link.href}
-                  onClick={() => setMenuOpen(false)}
-                  className="block px-3 py-2.5 text-sm font-medium text-deepblue-800/80 hover:bg-sand-50 rounded-lg transition-colors"
-                >
-                  {link.label}
-                </Link>
-              ) : (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  onClick={e => handleNav(e, link.href)}
-                  className="block px-3 py-2.5 text-sm font-medium text-deepblue-800/80 hover:bg-sand-50 rounded-lg transition-colors"
-                >
-                  {link.label}
-                </a>
-              )
+        <nav id="fst-mobile-menu" className="border-t border-[#e8e1ee] bg-white px-4 py-4 shadow-lg lg:hidden" aria-label="Navegación móvil">
+          <div className="mx-auto max-w-7xl space-y-1">
+            {navLinks.map(([label, href]) => (
+              <a key={href} href={href} onClick={event => goToSection(event, href, () => setMenuOpen(false))} className="block min-h-11 rounded-md px-3 py-3 text-sm font-medium text-gray-700 hover:bg-[#f7f2fa] hover:text-[#563a78]">
+                {label}
+              </a>
             ))}
-            <div className="border-t border-sand-100 my-2" />
-            <p className="px-3 py-1 text-[10px] font-bold text-teal-600 uppercase tracking-widest">Enfermedades tiroideas</p>
-            {enfermedadesMenu.map(item => (
-              <Link
-                key={item.to}
-                to={item.to}
-                onClick={() => setMenuOpen(false)}
-                className="block px-3 py-2.5 text-sm font-medium text-deepblue-800/80 hover:bg-sand-50 rounded-lg transition-colors"
-              >
-                {item.label}
-              </Link>
-            ))}
-            <div className="border-t border-sand-100 my-2" />
-            <Link to="/" className="block px-3 py-2.5 text-sm font-medium text-teal-700 hover:bg-sand-50 rounded-lg">
-              ← Edvanta
-            </Link>
-          </nav>
-        </div>
+            <a href="#fst-recursos" onClick={freeResourceClick} className="mt-3 flex min-h-11 items-center justify-center rounded-md bg-[#563a78] px-4 text-sm font-semibold text-white">
+              Recibir recurso gratuito
+            </a>
+            <Link to="/" className="mt-2 block min-h-11 rounded-md px-3 py-3 text-sm font-medium text-gray-500 hover:bg-gray-50">Volver a Edvanta</Link>
+          </div>
+        </nav>
       )}
     </header>
   );

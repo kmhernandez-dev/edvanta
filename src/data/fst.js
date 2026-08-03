@@ -15,7 +15,7 @@
 export const ebooks = [
   {
     id: 'fst-coleccion-sana',
-    name: 'Colección SANA TU TIROIDES desde 0',
+    name: 'Colección Bienestar Tiroideo desde 0',
     category: 'Colección · Feliz Sin Tiroides',
     description: 'El programa más completo: todo lo que necesitas para entender y cuidar tu tiroides paso a paso, desde cero. Tu mejor punto de partida.',
     price: 79900,
@@ -40,9 +40,9 @@ export const ebooks = [
   },
   {
     id: 'fst-dieta-antiinflamatoria',
-    name: 'Aprende a Comer con la Dieta Antiinflamatoria y Sana tu Tiroides',
+    name: 'Aprende a Comer con un Enfoque Antiinflamatorio',
     category: 'Guía de alimentación · Feliz Sin Tiroides',
-    description: 'Una alimentación antiinflamatoria para apoyar tu tiroides y tu bienestar general, explicada de forma sencilla y aplicable.',
+    description: 'Un enfoque de alimentación variada para apoyar el bienestar general, explicado de forma sencilla y aplicable.',
     price: 34900,
     comparePrice: 49900,
     cover: { image: '/img/port-nutricional.jpg', emoji: '🥗', gradient: 'from-blush-400 to-teal-500' },
@@ -52,7 +52,7 @@ export const ebooks = [
   },
   {
     id: 'fst-comer-hipertiroidismo',
-    name: 'Aprende a Comer para Sanar el Hipertiroidismo y Graves',
+    name: 'Aprende a Comer con Hipertiroidismo y Enfermedad de Graves',
     category: 'Guía de alimentación · Feliz Sin Tiroides',
     description: 'Alimentación enfocada en hipertiroidismo y enfermedad de Graves, para acompañar tu tratamiento desde la mesa.',
     price: 34900,
@@ -281,9 +281,5 @@ export const tiendaAmazon = [
   { icon: 'scale', name: 'Básculas de cocina', desc: 'Para porciones y recetas amigas de tu metabolismo.', url: 'https://www.amazon.com/s?k=bascula+de+cocina+digital' },
 ];
 
-// ─── TESTIMONIOS ──────────────────────────────────────────────
-export const testimonios = [
-  { name: 'Laura M.', role: 'Paciente con hipotiroidismo', text: 'Por fin entendí mis exámenes y dejé de tomar la levotiroxina de cualquier forma. Karla explica con un cariño que tranquiliza.' },
-  { name: 'Andrea P.', role: 'Tiroiditis de Hashimoto', text: 'El programa de 4 semanas me ayudó a ordenar mis hábitos sin volverme loca. Recuperé energía y confianza.' },
-  { name: 'Carolina R.', role: 'Sobreviviente de cáncer de tiroides', text: 'Sentir que alguien que vivió lo mismo te acompaña no tiene precio. Me sentí entendida en cada paso.' },
-];
+// Los testimonios se publicarán solo cuando exista autorización verificable.
+export const testimonios = [];

@@ -20,6 +20,19 @@ export const legalDocs = {
       { h: '6. Conservación', p: 'Conservamos tus datos mientras exista una relación contigo o hasta que solicites su eliminación.' },
     ],
   },
+  'tratamiento-de-datos': {
+    title: 'Política de tratamiento de datos personales',
+    updated: 'Última actualización: agosto de 2026',
+    sections: [
+      { h: '1. Responsable', p: `Karla Hernández, operadora de Feliz Sin Tiroides y Edvanta, es responsable del tratamiento de los datos recopilados en esta plataforma. Contacto: ${EMAIL}.` },
+      { h: '2. Datos tratados', p: 'Podemos recopilar nombre, correo, país, WhatsApp opcional, interés educativo, fuente de campaña y registros necesarios para entregar recursos o gestionar una compra. No solicitamos historia clínica, identificación ni resultados de laboratorio en los formularios de captación.' },
+      { h: '3. Finalidades', p: 'Los datos se usan para entregar el recurso solicitado, responder consultas, segmentar contenido educativo, gestionar compras y, cuando existe autorización, enviar comunicaciones relacionadas con Feliz Sin Tiroides.' },
+      { h: '4. Base de autorización', p: 'El formulario incluye una casilla de autorización que debe marcarse de forma expresa. La autorización puede revocarse, sin afectar los tratamientos legítimos realizados previamente.' },
+      { h: '5. Encargados y transferencias', p: 'Podemos utilizar proveedores de correo, automatización, alojamiento y pagos que actúan como encargados bajo sus propias medidas de seguridad. No vendemos bases de datos.' },
+      { h: '6. Derechos', p: `Puedes solicitar acceso, actualización, corrección, revocación o eliminación escribiendo a ${EMAIL} desde el correo registrado. Atenderemos la solicitud de acuerdo con la normativa aplicable.` },
+      { h: '7. Seguridad y conservación', p: 'Aplicamos medidas razonables de acceso restringido y minimización. Conservamos los datos durante la relación educativa o comercial y el tiempo necesario para obligaciones legales, salvo solicitud procedente de eliminación.' },
+    ],
+  },
   terminos: {
     title: 'Términos y condiciones',
     updated: 'Última actualización: 2026',
@@ -30,6 +43,17 @@ export const legalDocs = {
       { h: '4. Uso del contenido', p: 'El contenido es para uso personal. No está permitido reproducir, revender ni distribuir los materiales sin autorización escrita.' },
       { h: '5. Pagos', p: 'Los precios están expresados en pesos colombianos (COP) salvo indicación contraria. Los pagos se procesan mediante Mercado Pago.' },
       { h: '6. Modificaciones', p: 'Podemos actualizar estos términos en cualquier momento. La versión vigente es la publicada en esta página.' },
+    ],
+  },
+  reembolsos: {
+    title: 'Política de reembolso',
+    updated: 'Última actualización: agosto de 2026',
+    sections: [
+      { h: '1. Productos vendidos por Hotmart', p: 'Las compras procesadas por Hotmart se rigen por las condiciones de entrega, garantía y reembolso visibles en la página de pago de cada producto. La solicitud debe gestionarse desde los canales habilitados por Hotmart.' },
+      { h: '2. Productos digitales vendidos directamente', p: 'Antes de pagar se informa que se trata de contenido digital. Si el archivo no fue entregado, está dañado o no corresponde al producto adquirido, escríbenos para corregir la entrega o evaluar el reembolso según la normativa aplicable.' },
+      { h: '3. Cómo solicitar ayuda', p: `Envía la solicitud a ${EMAIL} indicando correo de compra, producto, fecha y comprobante. No envíes información bancaria sensible por correo o WhatsApp.` },
+      { h: '4. Plazos y medio de devolución', p: 'La evaluación y el medio de devolución dependen de la pasarela utilizada y de sus tiempos operativos. Informaremos el estado de la solicitud por el correo asociado a la compra.' },
+      { h: '5. Alcance', p: 'Esta política no limita derechos irrenunciables reconocidos por la legislación de protección al consumidor que resulte aplicable.' },
     ],
   },
   'descargo-medico': {
