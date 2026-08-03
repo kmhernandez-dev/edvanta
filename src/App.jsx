@@ -19,6 +19,7 @@ import AcademiaIndex    from './pages/AcademiaIndex';
 import AcademiaCurso    from './pages/AcademiaCurso';
 import AcademiaClase    from './pages/AcademiaClase';
 import MisCursos        from './pages/MisCursos';
+import AcademiaPerfil   from './pages/AcademiaPerfil';
 import NotFound         from './pages/NotFound';
 
 import { AuthProvider } from './context/AuthContext';
@@ -47,6 +48,7 @@ export default function App() {
         <Route path="/academia/curso/:slug" element={<AcademiaCurso />} />
         <Route path="/academia/curso/:slug/clase/:lessonId" element={<AcademiaClase />} />
         <Route path="/academia/mis-cursos" element={<MisCursos />} />
+        <Route path="/academia/perfil" element={<AcademiaPerfil />} />
 
         {/* Marca: AtenFarmaClinic (químicos farmacéuticos clínicos) */}
         <Route path="/atenfarmaclinic" element={<AtenFarmaClinic />} />

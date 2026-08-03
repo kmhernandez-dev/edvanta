@@ -4,6 +4,7 @@ import FstHeader from '../components/fst/FstHeader';
 import FstFooter from '../components/fst/FstFooter';
 import { useAuth } from '../context/AuthContext';
 import { updatePageSeo } from '../utils/seo';
+import Icon from '../components/Icon';
 
 export default function AcademiaCurso() {
   const { slug } = useParams();
@@ -47,10 +48,37 @@ export default function AcademiaCurso() {
 
   useEffect(() => {
     if (!course) return;
-    updatePageSeo({
+    return updatePageSeo({
       title: `${course.title} | Academia Feliz Sin Tiroides`,
       description: course.description?.substring(0, 155) || `Curso gratuito de ${course.category}`,
       canonical: `https://edvanta.co/academia/curso/${course.slug}`,
+      image: course.cover_image,
+      type: 'website',
+      keywords: ['curso de tiroides', 'autocuidado de la tiroides', 'hipotiroidismo', 'educación tiroidea'],
+      jsonLdId: 'academy-course',
+      jsonLd: {
+        '@context': 'https://schema.org',
+        '@type': 'Course',
+        name: course.title,
+        description: course.description,
+        url: `https://edvanta.co/academia/curso/${course.slug}`,
+        image: course.cover_image,
+        isAccessibleForFree: true,
+        provider: {
+          '@type': 'Organization',
+          name: 'Edvanta',
+          url: 'https://edvanta.co',
+        },
+        hasCourseInstance: {
+          '@type': 'CourseInstance',
+          courseMode: 'online',
+          courseWorkload: course.duration,
+          instructor: course.instructor ? {
+            '@type': 'Person',
+            name: course.instructor,
+          } : undefined,
+        },
+      },
     });
   }, [course]);
 
@@ -122,21 +150,33 @@ export default function AcademiaCurso() {
                 </Link>
               </div>
             ) : (
-              <button
-                onClick={handleEnroll}
-                disabled={enrolling}
-                className="inline-flex items-center gap-2 px-7 py-3 bg-teal-600 hover:bg-teal-700 text-white text-sm font-semibold rounded-full transition-colors shadow-sm disabled:opacity-60"
-              >
-                {enrolling ? 'Inscribiendo...' : 'Inscribirme gratis'}
-              </button>
+              <div className="flex flex-col gap-3 sm:flex-row">
+                <button
+                  onClick={handleEnroll}
+                  disabled={enrolling}
+                  className="inline-flex min-h-11 items-center justify-center gap-2 rounded-md bg-teal-600 px-6 text-sm font-semibold text-white shadow-sm hover:bg-teal-700 disabled:opacity-60"
+                >
+                  <Icon name="cap" className="h-4 w-4" /> {enrolling ? 'Inscribiendo...' : 'Inscribirme gratis'}
+                </button>
+                {continueLink && (
+                  <Link to={continueLink} className="inline-flex min-h-11 items-center justify-center gap-2 rounded-md border border-teal-200 bg-white px-6 text-sm font-semibold text-teal-700 hover:bg-teal-50">
+                    Ver primera clase <Icon name="play" className="h-4 w-4" />
+                  </Link>
+                )}
+              </div>
+            )}
+            {course.channel_url && (
+              <a href={course.channel_url} target="_blank" rel="noopener noreferrer" className="mt-4 inline-flex min-h-10 items-center gap-2 text-sm font-semibold text-[#563a78] hover:underline">
+                <Icon name="youtube" className="h-5 w-5" /> Canal Feliz Sin Tiroides <Icon name="external" className="h-4 w-4" />
+              </a>
             )}
           </div>
           <div className="relative">
-            <div className="w-full aspect-[4/3] rounded-2xl bg-gradient-to-br from-teal-100 via-sand-100 to-blush-100 flex items-center justify-center shadow-lg">
+            <div className="flex aspect-[4/3] w-full items-center justify-center overflow-hidden rounded-lg bg-[#eef7f5] shadow-lg">
               {course.cover_image ? (
-                <img src={course.cover_image} alt={course.title} className="w-full h-full object-cover rounded-2xl" />
+                <img src={course.cover_image} alt={course.title} className="h-full w-full object-cover" />
               ) : (
-                <span className="text-7xl">🎓</span>
+                <Icon name="cap" className="h-16 w-16 text-teal-600" />
               )}
             </div>
           </div>
@@ -144,10 +184,10 @@ export default function AcademiaCurso() {
       </section>
 
       {/* Progreso + Módulos */}
-      {enrolled && (
+      {lessons.length > 0 && (
         <section className="py-10 bg-white">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="mb-8">
+            {user && enrolled && <div className="mb-8">
               <div className="flex items-center justify-between mb-2">
                 <span className="text-sm font-semibold text-deepblue-900">Tu progreso</span>
                 <span className="text-sm text-teal-600 font-medium">{progressPct}%</span>
@@ -156,7 +196,7 @@ export default function AcademiaCurso() {
                 <div className="h-full bg-teal-500 rounded-full transition-all duration-500" style={{ width: `${progressPct}%` }} />
               </div>
               <p className="text-xs text-gray-400 mt-1.5">{completedLessons} de {totalLessons} clases completadas</p>
-            </div>
+            </div>}
 
             <h2 className="font-serif text-xl font-semibold text-deepblue-900 mb-5">Contenido del curso</h2>
             <div className="space-y-6">
@@ -164,7 +204,7 @@ export default function AcademiaCurso() {
                 const modLessons = lessons.filter(l => l.module_id === mod.id);
                 if (modLessons.length === 0) return null;
                 return (
-                  <div key={mod.id} className="bg-sand-50 rounded-2xl border border-sand-100 overflow-hidden">
+                  <div key={mod.id} className="overflow-hidden rounded-lg border border-sand-100 bg-sand-50">
                     <div className="px-5 py-4 bg-white border-b border-sand-100">
                       <h3 className="font-serif text-base font-semibold text-deepblue-900">{mod.title}</h3>
                       <p className="text-xs text-gray-400 mt-0.5">{modLessons.length} clases</p>

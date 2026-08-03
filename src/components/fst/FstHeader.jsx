@@ -15,7 +15,12 @@ const navLinks = [
 
 function goToSection(event, href, onNavigate) {
   event.preventDefault();
-  document.querySelector(href)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  const target = document.querySelector(href);
+  if (target) {
+    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  } else {
+    window.location.assign(`/feliz-sin-tiroides${href}`);
+  }
   onNavigate?.();
 }
 
@@ -39,7 +44,7 @@ export default function FstHeader() {
   return (
     <header className={`fixed inset-x-0 top-0 z-50 border-b transition-colors ${scrolled ? 'border-[#e8e1ee] bg-white/95 shadow-sm backdrop-blur' : 'border-transparent bg-white/90 backdrop-blur-sm'}`}>
       <div className="mx-auto flex min-h-[72px] max-w-7xl items-center justify-between gap-4 px-4 py-2.5 sm:px-6 lg:px-8">
-        <a href="#fst-inicio" onClick={event => goToSection(event, '#fst-inicio')} className="flex min-w-0 items-center gap-3" aria-label="Feliz Sin Tiroides, inicio">
+        <a href="/feliz-sin-tiroides#fst-inicio" onClick={event => goToSection(event, '#fst-inicio')} className="flex min-w-0 items-center gap-3" aria-label="Feliz Sin Tiroides, inicio">
           <img src="/img/port-logofelizsintiroides.jpg" alt="" width="48" height="48" className="h-12 w-12 rounded-md object-cover" />
           <span className="hidden min-w-0 sm:block">
             <span className="block truncate text-sm font-bold text-[#132e55]">Feliz Sin Tiroides</span>
@@ -49,14 +54,14 @@ export default function FstHeader() {
 
         <nav className="hidden items-center gap-5 lg:flex" aria-label="Navegación principal">
           {navLinks.map(([label, href]) => (
-            <a key={href} href={href} onClick={event => goToSection(event, href)} className="text-sm font-medium text-gray-600 transition-colors hover:text-[#563a78]">
+            <a key={href} href={`/feliz-sin-tiroides${href}`} onClick={event => goToSection(event, href)} className="text-sm font-medium text-gray-600 transition-colors hover:text-[#563a78]">
               {label}
             </a>
           ))}
         </nav>
 
         <div className="flex items-center gap-2">
-          <a href="#fst-recursos" onClick={freeResourceClick} className="hidden min-h-11 items-center justify-center rounded-md bg-[#563a78] px-4 text-sm font-semibold text-white hover:bg-[#452b65] md:inline-flex">
+          <a href="/feliz-sin-tiroides#fst-recursos" onClick={freeResourceClick} className="hidden min-h-11 items-center justify-center rounded-md bg-[#563a78] px-4 text-sm font-semibold text-white hover:bg-[#452b65] md:inline-flex">
             Recibir recurso gratuito
           </a>
           <button type="button" onClick={openCart} className="relative inline-flex h-11 w-11 items-center justify-center rounded-md border border-[#e2d9eb] text-[#563a78] hover:bg-[#f7f2fa]" aria-label={`Abrir carrito, ${count} productos`}>
@@ -80,11 +85,11 @@ export default function FstHeader() {
         <nav id="fst-mobile-menu" className="border-t border-[#e8e1ee] bg-white px-4 py-4 shadow-lg lg:hidden" aria-label="Navegación móvil">
           <div className="mx-auto max-w-7xl space-y-1">
             {navLinks.map(([label, href]) => (
-              <a key={href} href={href} onClick={event => goToSection(event, href, () => setMenuOpen(false))} className="block min-h-11 rounded-md px-3 py-3 text-sm font-medium text-gray-700 hover:bg-[#f7f2fa] hover:text-[#563a78]">
+              <a key={href} href={`/feliz-sin-tiroides${href}`} onClick={event => goToSection(event, href, () => setMenuOpen(false))} className="block min-h-11 rounded-md px-3 py-3 text-sm font-medium text-gray-700 hover:bg-[#f7f2fa] hover:text-[#563a78]">
                 {label}
               </a>
             ))}
-            <a href="#fst-recursos" onClick={freeResourceClick} className="mt-3 flex min-h-11 items-center justify-center rounded-md bg-[#563a78] px-4 text-sm font-semibold text-white">
+            <a href="/feliz-sin-tiroides#fst-recursos" onClick={freeResourceClick} className="mt-3 flex min-h-11 items-center justify-center rounded-md bg-[#563a78] px-4 text-sm font-semibold text-white">
               Recibir recurso gratuito
             </a>
             <Link to="/" className="mt-2 block min-h-11 rounded-md px-3 py-3 text-sm font-medium text-gray-500 hover:bg-gray-50">Volver a Edvanta</Link>

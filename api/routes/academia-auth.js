@@ -8,16 +8,17 @@ const router = Router();
 // POST /api/academia/auth/register
 router.post('/register', async (req, res) => {
   try {
-    const { name, email, password } = req.body;
+    const { name, email, password, privacy_accepted: privacyAccepted } = req.body;
     if (!name || !email || !password) return res.status(400).json({ error: 'Nombre, email y contraseña son requeridos' });
     if (password.length < 6) return res.status(400).json({ error: 'La contraseña debe tener al menos 6 caracteres' });
+    if (privacyAccepted !== true) return res.status(400).json({ error: 'Debes aceptar la política de privacidad para crear tu cuenta' });
 
     const existing = await pool.query('SELECT id FROM academia_users WHERE email = $1', [email.toLowerCase().trim()]);
     if (existing.rows.length > 0) return res.status(409).json({ error: 'Este correo ya está registrado' });
 
     const hash = await bcrypt.hash(password, 10);
     const { rows: [user] } = await pool.query(
-      'INSERT INTO academia_users (name, email, password_hash) VALUES ($1, $2, $3) RETURNING id, name, email, created_at',
+      'INSERT INTO academia_users (name, email, password_hash, privacy_accepted_at) VALUES ($1, $2, $3, NOW()) RETURNING id, name, email, created_at',
       [name.trim(), email.toLowerCase().trim(), hash]
     );
 

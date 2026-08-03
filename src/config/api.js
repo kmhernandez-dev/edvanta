@@ -23,5 +23,6 @@ export const API_BASE = RAW
 
 export function apiUrl(path) {
   const p = path.startsWith('/') ? path : `/${path}`;
+  if (API_BASE && (p === API_BASE || p.startsWith(`${API_BASE}/`))) return p;
   return API_BASE ? `${API_BASE}${p}` : p;
 }

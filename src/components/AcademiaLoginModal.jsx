@@ -8,10 +8,11 @@ export default function AcademiaLoginModal({ isOpen, onClose }) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [privacyAccepted, setPrivacyAccepted] = useState(false);
   const [error, setError] = useState('');
 
   useEffect(() => {
-    if (isOpen) { setError(''); setPassword(''); }
+    if (isOpen) { setError(''); setPassword(''); setPrivacyAccepted(false); }
   }, [isOpen]);
 
   const handleSubmit = async (e) => {
@@ -21,7 +22,7 @@ export default function AcademiaLoginModal({ isOpen, onClose }) {
       if (mode === 'login') {
         await login(email, password);
       } else {
-        await register(name, email, password);
+        await register(name, email, password, privacyAccepted);
       }
       onClose();
     } catch (err) {
@@ -40,7 +41,7 @@ export default function AcademiaLoginModal({ isOpen, onClose }) {
               <p className="font-serif text-lg font-semibold">{mode === 'login' ? 'Iniciar sesión' : 'Crear cuenta'}</p>
               <p className="text-xs text-white/80 mt-0.5">Academia Feliz Sin Tiroides</p>
             </div>
-            <button onClick={onClose} className="w-8 h-8 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center transition-colors">
+            <button type="button" onClick={onClose} aria-label="Cerrar" className="w-8 h-8 rounded-md bg-white/20 hover:bg-white/30 flex items-center justify-center transition-colors">
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               </svg>
@@ -92,10 +93,25 @@ export default function AcademiaLoginModal({ isOpen, onClose }) {
             />
           </div>
 
+          {mode === 'register' && (
+            <label className="flex items-start gap-2.5 rounded-md border border-sand-200 bg-sand-50/50 p-3 text-xs leading-relaxed text-gray-600">
+              <input
+                type="checkbox"
+                checked={privacyAccepted}
+                onChange={event => setPrivacyAccepted(event.target.checked)}
+                required
+                className="mt-0.5 h-4 w-4 shrink-0 accent-teal-600"
+              />
+              <span>
+                Acepto la <Link to="/privacidad" target="_blank" className="font-semibold text-teal-700 hover:underline">política de privacidad</Link> y el uso de mis datos para acceder a la academia.
+              </span>
+            </label>
+          )}
+
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-2.5 bg-teal-600 hover:bg-teal-700 text-white text-sm font-semibold rounded-full transition-colors disabled:opacity-60"
+            className="min-h-11 w-full rounded-md bg-teal-600 px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-teal-700 disabled:opacity-60"
           >
             {loading ? 'Cargando...' : mode === 'login' ? 'Iniciar sesión' : 'Crear cuenta'}
           </button>
@@ -109,7 +125,7 @@ export default function AcademiaLoginModal({ isOpen, onClose }) {
           </p>
 
           <p className="text-[10px] text-gray-400 text-center leading-snug">
-            Al registrarte aceptas que tus datos se usen únicamente para acceder a los cursos. No compartimos tu información.
+            Tus datos se usan para gestionar tu acceso, progreso e interacciones en la academia.
           </p>
         </form>
       </div>

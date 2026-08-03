@@ -1,6 +1,8 @@
 import jwt from 'jsonwebtoken';
 
-const JWT_SECRET = process.env.JWT_SECRET || 'fst-academia-dev-secret-change-in-production';
+const JWT_SECRET = process.env.JWT_SECRET
+  || process.env.ADMIN_TOKEN
+  || 'fst-academia-dev-secret-change-in-production';
 const JWT_EXPIRES = '7d';
 
 export function signToken(user) {
@@ -22,6 +24,17 @@ export function authMiddleware(req, res, next) {
   } catch {
     return res.status(401).json({ error: 'Token inválido o expirado' });
   }
+}
+
+export function optionalAuthMiddleware(req, _res, next) {
+  const header = req.headers.authorization;
+  if (!header || !header.startsWith('Bearer ')) return next();
+  try {
+    req.user = verifyToken(header.slice(7));
+  } catch {
+    req.user = null;
+  }
+  next();
 }
 
 export function adminMiddleware(req, res, next) {

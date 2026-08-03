@@ -346,7 +346,7 @@ export default function FelizSinTiroides() {
                 <Icon name="book" className="h-7 w-7 text-[#d8c5e8]" />
                 <h3 className="mt-4 text-xl font-semibold">Curso de autocuidado tiroideo</h3>
                 <p className="mt-2 text-sm leading-6 text-white/70">Una ruta práctica sobre hábitos, adherencia y preparación de consultas.</p>
-                <button type="button" onClick={() => { setActiveCategory('tratamiento'); scrollTo('#fst-guias'); }} className="mt-5 inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-white underline underline-offset-4">Ver el curso <Icon name="arrowRight" className="h-4 w-4" /></button>
+                <Link to="/academia/curso/autocuidado-de-la-tiroides" className="mt-5 inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-white underline underline-offset-4">Entrar al curso gratuito <Icon name="arrowRight" className="h-4 w-4" /></Link>
               </div>
               <div className="border-t border-white/30 pt-5">
                 <Icon name="cap" className="h-7 w-7 text-[#d8c5e8]" />

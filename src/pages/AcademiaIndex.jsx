@@ -6,15 +6,17 @@ import FstSectionTitle from '../components/fst/FstSectionTitle';
 import AcademiaLoginModal from '../components/AcademiaLoginModal';
 import { useAuth } from '../context/AuthContext';
 import { updatePageSeo } from '../utils/seo';
+import Icon from '../components/Icon';
 
 const CATEGORY_ICONS = {
-  'Tiroides y endocrinología': '🦋',
-  'Farmacología': '💊',
-  'Nutrición': '🥗',
-  'Salud mental': '🧠',
-  'Enfermería': '🩺',
-  'Atención farmacéutica': '⚕️',
-  'Medicina y autocuidado': '💜',
+  'Tiroides y endocrinología': 'activity',
+  'Tiroides y autocuidado': 'heart',
+  'Farmacología': 'pill',
+  'Nutrición': 'leaf',
+  'Salud mental': 'heart',
+  'Enfermería': 'clipboard',
+  'Atención farmacéutica': 'beaker',
+  'Medicina y autocuidado': 'shield',
 };
 
 export default function AcademiaIndex() {
@@ -52,24 +54,24 @@ export default function AcademiaIndex() {
       <FstHeader />
 
       {/* Hero */}
-      <section className="relative pt-28 pb-12 md:pt-32 md:pb-16 overflow-hidden bg-gradient-to-b from-white via-sand-50 to-white">
-        <div className="absolute -top-20 -right-20 w-80 h-80 rounded-full bg-[radial-gradient(circle,rgba(20,184,166,0.10),transparent_70%)]" />
+      <section className="border-b border-gray-200 bg-white pb-12 pt-28 md:pb-16 md:pt-32">
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-white border border-teal-100 rounded-full shadow-sm mb-6">
-            <span className="text-base">🎓</span>
+          <div className="mb-6 inline-flex items-center gap-2 rounded-md border border-teal-100 bg-teal-50 px-4 py-2">
+            <Icon name="cap" className="h-4 w-4 text-teal-700" />
             <span className="text-xs font-semibold text-teal-700">Academia Feliz Sin Tiroides</span>
           </div>
-          <h1 className="font-serif text-3xl md:text-5xl font-semibold text-deepblue-900 leading-[1.15] mb-5">
-            Cursos gratuitos para cuidar tu salud
+          <h1 className="mb-5 text-3xl font-semibold leading-[1.15] text-deepblue-900 md:text-5xl">
+            Aprende a cuidar tu tiroides con una ruta clara
           </h1>
           <p className="text-base md:text-lg text-gray-600 leading-relaxed mb-7 max-w-2xl mx-auto">
             Aprende sobre tiroides, farmacología, nutrición, salud mental y más. Contenido curado por Karla Hernández, Química Farmacéutica, con enfoque educativo y basado en evidencia.
           </p>
-          {user ? (
-            <Link to="/academia/mis-cursos" className="inline-flex items-center gap-2 px-7 py-3 bg-teal-600 hover:bg-teal-700 text-white text-sm font-semibold rounded-full transition-colors shadow-sm">
-              Mis cursos
-            </Link>
-          ) : null}
+          <div className="flex flex-col justify-center gap-3 sm:flex-row">
+            {user && <Link to="/academia/perfil" className="inline-flex min-h-11 items-center justify-center gap-2 rounded-md bg-teal-600 px-6 text-sm font-semibold text-white hover:bg-teal-700"><Icon name="user" className="h-4 w-4" /> Mi perfil</Link>}
+            <a href="https://www.youtube.com/@felizsintiroides" target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center justify-center gap-2 rounded-md border border-[#d7c8e5] bg-white px-6 text-sm font-semibold text-[#563a78] hover:bg-[#faf8fc]">
+              <Icon name="youtube" className="h-5 w-5" /> Ver canal en YouTube <Icon name="external" className="h-4 w-4" />
+            </a>
+          </div>
         </div>
       </section>
 
@@ -81,13 +83,13 @@ export default function AcademiaIndex() {
               <button
                 key={cat}
                 onClick={() => setSelectedCat(cat)}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+                className={`min-h-11 rounded-md px-4 py-2 text-sm font-medium transition-colors ${
                   selectedCat === cat
                     ? 'bg-teal-600 text-white shadow-sm'
                     : 'bg-white text-deepblue-800 border border-sand-200 hover:border-teal-200'
                 }`}
               >
-                {CATEGORY_ICONS[cat] && <span className="mr-1.5">{CATEGORY_ICONS[cat]}</span>}
+                {CATEGORY_ICONS[cat] && <Icon name={CATEGORY_ICONS[cat]} className="mr-1.5 inline h-4 w-4" />}
                 {cat}
               </button>
             ))}
@@ -108,13 +110,13 @@ export default function AcademiaIndex() {
                 <Link
                   key={course.id}
                   to={`/academia/curso/${course.slug}`}
-                  className="group flex flex-col bg-white rounded-2xl border border-sand-100 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden"
+                  className="group flex flex-col overflow-hidden rounded-lg border border-sand-100 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
                 >
                   <div className="aspect-[16/9] bg-gradient-to-br from-teal-500 to-blush-400 flex items-center justify-center relative">
                     {course.cover_image ? (
                       <img src={course.cover_image} alt={course.title} className="w-full h-full object-cover" />
                     ) : (
-                      <span className="text-5xl">{CATEGORY_ICONS[course.category] || '📚'}</span>
+                      <Icon name={CATEGORY_ICONS[course.category] || 'book'} className="h-14 w-14 text-white" />
                     )}
                     <span className="absolute top-3 left-3 chip bg-white/90 text-deepblue-800 text-[11px] font-semibold px-2.5 py-0.5 rounded-full">
                       {course.category}
@@ -140,7 +142,7 @@ export default function AcademiaIndex() {
                       </span>
                     </div>
                     <span className="inline-flex items-center gap-1 text-xs font-semibold text-teal-600 mt-1">
-                      Inscribirme gratis
+                      Entrar al curso
                       <svg className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                       </svg>

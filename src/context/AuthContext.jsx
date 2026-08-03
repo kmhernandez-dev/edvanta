@@ -22,28 +22,34 @@ export function AuthProvider({ children }) {
 
   const login = useCallback(async (email, password) => {
     setLoading(true);
-    const res = await fetch(apiUrl('/api/academia/auth/login'), {
-      method: 'POST', headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, password }),
-    });
-    const data = await res.json();
-    setLoading(false);
-    if (!res.ok) throw new Error(data.error || 'Error al iniciar sesión');
-    saveAuth(data.user, data.token);
-    return data;
+    try {
+      const res = await fetch(apiUrl('/api/academia/auth/login'), {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Error al iniciar sesión');
+      saveAuth(data.user, data.token);
+      return data;
+    } finally {
+      setLoading(false);
+    }
   }, [saveAuth]);
 
-  const register = useCallback(async (name, email, password) => {
+  const register = useCallback(async (name, email, password, privacyAccepted) => {
     setLoading(true);
-    const res = await fetch(apiUrl('/api/academia/auth/register'), {
-      method: 'POST', headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name, email, password }),
-    });
-    const data = await res.json();
-    setLoading(false);
-    if (!res.ok) throw new Error(data.error || 'Error al registrarse');
-    saveAuth(data.user, data.token);
-    return data;
+    try {
+      const res = await fetch(apiUrl('/api/academia/auth/register'), {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, password, privacy_accepted: privacyAccepted === true }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Error al registrarse');
+      saveAuth(data.user, data.token);
+      return data;
+    } finally {
+      setLoading(false);
+    }
   }, [saveAuth]);
 
   const logout = useCallback(() => {
