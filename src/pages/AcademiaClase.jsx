@@ -44,7 +44,7 @@ function CommentActions({ comment, canInteract, onLike, onReply, isReply = false
 export default function AcademiaClase() {
   const { slug, lessonId } = useParams();
   const { user, api } = useAuth();
-  const numericLessonId = Number.parseInt(lessonId, 10);
+  const lessonKey = String(lessonId || '');
   const [course, setCourse] = useState(null);
   const [modules, setModules] = useState([]);
   const [lessons, setLessons] = useState([]);
@@ -59,8 +59,8 @@ export default function AcademiaClase() {
   const [error, setError] = useState('');
 
   const lesson = useMemo(
-    () => lessons.find(item => item.id === numericLessonId) || null,
-    [lessons, numericLessonId]
+    () => lessons.find(item => String(item.id) === lessonKey) || null,
+    [lessons, lessonKey]
   );
 
   useEffect(() => { window.scrollTo(0, 0); }, [lessonId]);
@@ -81,15 +81,15 @@ export default function AcademiaClase() {
   }, [slug, api]);
 
   useEffect(() => {
-    if (!numericLessonId) return;
+    if (!/^\d+$/.test(lessonKey)) return;
     Promise.all([
-      api(`/api/academia/comments/${numericLessonId}`),
-      api(`/api/academia/lessons/${numericLessonId}/engagement`),
+      api(`/api/academia/comments/${lessonKey}`),
+      api(`/api/academia/lessons/${lessonKey}/engagement`),
     ]).then(([commentData, engagementData]) => {
       setComments(commentData.comments || []);
       setEngagement(engagementData.engagement || { like_count: 0, viewer_liked: false });
     }).catch(() => {});
-  }, [numericLessonId, api, user]);
+  }, [lessonKey, api, user]);
 
   useEffect(() => {
     if (!user || !course) { setProgress([]); return; }
@@ -118,11 +118,11 @@ export default function AcademiaClase() {
     try {
       await api('/api/academia/progress', {
         method: 'POST',
-        body: JSON.stringify({ lesson_id: numericLessonId }),
+        body: JSON.stringify({ lesson_id: lessonKey }),
       });
-      setProgress(current => current.some(item => item.lesson_id === numericLessonId)
+      setProgress(current => current.some(item => String(item.lesson_id) === lessonKey)
         ? current
-        : [...current, { lesson_id: numericLessonId, completed_at: new Date().toISOString() }]);
+        : [...current, { lesson_id: lessonKey, completed_at: new Date().toISOString() }]);
     } catch (requestError) {
       setError(requestError.message);
     }
@@ -131,7 +131,7 @@ export default function AcademiaClase() {
   const toggleLessonLike = async () => {
     if (!requireUser()) return;
     try {
-      const data = await api(`/api/academia/lessons/${numericLessonId}/like`, { method: 'POST' });
+      const data = await api(`/api/academia/lessons/${lessonKey}/like`, { method: 'POST' });
       setEngagement({ like_count: data.like_count, viewer_liked: data.liked });
     } catch (requestError) {
       setError(requestError.message);
@@ -164,7 +164,7 @@ export default function AcademiaClase() {
     try {
       const data = await api('/api/academia/comments', {
         method: 'POST',
-        body: JSON.stringify({ lesson_id: numericLessonId, body: commentText.trim(), parent_id: replyTo }),
+        body: JSON.stringify({ lesson_id: lessonKey, body: commentText.trim(), parent_id: replyTo }),
       });
       setComments(current => [...current, data.comment]);
       setCommentText('');
@@ -181,10 +181,10 @@ export default function AcademiaClase() {
   }
   if (!course || !lesson) return <Navigate to="/academia" replace />;
 
-  const completedIds = new Set(progress.filter(item => item.completed_at).map(item => item.lesson_id));
-  const isCompleted = completedIds.has(numericLessonId);
+  const completedIds = new Set(progress.filter(item => item.completed_at).map(item => String(item.lesson_id)));
+  const isCompleted = completedIds.has(lessonKey);
   const videoId = getYouTubeId(lesson.video_url);
-  const currentIndex = lessons.findIndex(item => item.id === numericLessonId);
+  const currentIndex = lessons.findIndex(item => String(item.id) === lessonKey);
   const previousLesson = currentIndex > 0 ? lessons[currentIndex - 1] : null;
   const nextLesson = currentIndex < lessons.length - 1 ? lessons[currentIndex + 1] : null;
   const topComments = comments.filter(comment => !comment.parent_id);
@@ -369,11 +369,11 @@ export default function AcademiaClase() {
                       <div key={module.id} className="border-b border-gray-100 last:border-0">
                         <p className="bg-[#f7f8fa] px-4 py-2 text-[11px] font-bold uppercase tracking-[0.08em] text-gray-500">{module.title}</p>
                         {moduleLessons.map((item) => {
-                          const active = item.id === numericLessonId;
+                          const active = String(item.id) === lessonKey;
                           return (
                             <Link key={item.id} to={`/academia/curso/${slug}/clase/${item.id}`} className={`flex min-h-12 items-center gap-3 border-l-2 px-4 py-3 ${active ? 'border-[#0f766e] bg-[#eef7f5]' : 'border-transparent hover:bg-gray-50'}`}>
-                              <span className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-full ${completedIds.has(item.id) ? 'bg-[#0f766e] text-white' : active ? 'bg-white text-[#0f766e]' : 'bg-gray-100 text-gray-500'}`}>
-                                <Icon name={completedIds.has(item.id) ? 'check' : 'play'} className="h-3.5 w-3.5" />
+                              <span className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-full ${completedIds.has(String(item.id)) ? 'bg-[#0f766e] text-white' : active ? 'bg-white text-[#0f766e]' : 'bg-gray-100 text-gray-500'}`}>
+                                <Icon name={completedIds.has(String(item.id)) ? 'check' : 'play'} className="h-3.5 w-3.5" />
                               </span>
                               <span className={`text-xs leading-5 ${active ? 'font-semibold text-[#0f615b]' : 'text-gray-700'}`}>{item.title}</span>
                             </Link>
