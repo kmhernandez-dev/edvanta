@@ -22,6 +22,8 @@ La página tenía una base valiosa: productos reales, portadas, enlaces Hotmart,
 4. Selector de etapa del paciente.
 5. Lead magnet y formulario con consentimiento.
 6. Ruta de tres pasos y recomendador interactivo.
+
+El selector de etapa funciona también como acceso directo al catálogo: cada opción activa la categoría correspondiente, desplaza a la ficha del ebook relacionado y la identifica con la etiqueta `Recomendado para tu etapa`. La persona revisa la ficha antes de decidir si compra o solicita orientación; nunca se envía directamente al checkout.
 7. Productos agrupados por tratamiento, nutrición, cirugía y bienestar.
 8. Cursos, academia y orientación educativa.
 9. Perfil real de Karla con límites profesionales explícitos.

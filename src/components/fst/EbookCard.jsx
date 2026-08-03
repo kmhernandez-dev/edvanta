@@ -5,7 +5,7 @@ import { waLink } from '../../config/links';
 import { trackEvent } from '../../utils/analytics';
 import Icon from '../Icon';
 
-export default function EbookCard({ ebook, details }) {
+export default function EbookCard({ ebook, details, recommended = false }) {
   const { addItem } = useCart();
   const cardRef = useRef(null);
   const discount = ebook.comparePrice
@@ -35,7 +35,12 @@ export default function EbookCard({ ebook, details }) {
   };
 
   return (
-    <article ref={cardRef} className={`flex h-full flex-col overflow-hidden rounded-lg border bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg ${ebook.featured ? 'border-[#9c7bc0] ring-1 ring-[#d7c6e7]' : 'border-gray-200'}`}>
+    <article
+      id={`fst-product-${ebook.id}`}
+      ref={cardRef}
+      tabIndex="-1"
+      className={`scroll-mt-28 flex h-full flex-col overflow-hidden rounded-lg border bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg ${recommended ? 'border-[#76539a] ring-2 ring-[#c7b1dc] ring-offset-4' : ebook.featured ? 'border-[#9c7bc0] ring-1 ring-[#d7c6e7]' : 'border-gray-200'}`}
+    >
       {/* Cover */}
       <div className={`relative aspect-[3/4] flex items-center justify-center overflow-hidden ${ebook.cover.image ? 'bg-sand-100' : `bg-gradient-to-br ${ebook.cover.gradient}`}`}>
         {ebook.cover.image
@@ -58,6 +63,11 @@ export default function EbookCard({ ebook, details }) {
 
       {/* Body */}
       <div className="p-5 flex flex-col flex-1 gap-3">
+        {recommended && (
+          <p className="inline-flex w-fit items-center gap-2 rounded bg-[#f2ebf7] px-2.5 py-1 text-[11px] font-bold uppercase tracking-[0.08em] text-[#563a78]">
+            <Icon name="sparkles" className="h-3.5 w-3.5" /> Recomendado para tu etapa
+          </p>
+        )}
         <h3 className="font-serif text-lg font-semibold text-deepblue-900 leading-snug">{ebook.name}</h3>
         <p className="text-sm text-gray-500 leading-relaxed flex-1">{ebook.description}</p>
 

@@ -1,12 +1,12 @@
 export const patientStages = [
-  { id: 'hipotiroidismo', label: 'Vivo con hipotiroidismo', icon: 'trendDown' },
-  { id: 'tiroidectomia', label: 'Me realizaron una tiroidectomía', icon: 'shield' },
-  { id: 'cancer-tiroides', label: 'Tuve o tengo cáncer de tiroides', icon: 'heart' },
-  { id: 'levotiroxina', label: 'Tomo levotiroxina y tengo dudas', icon: 'pill' },
-  { id: 'alimentacion', label: 'Necesito mejorar mi alimentación', icon: 'leaf' },
-  { id: 'examenes', label: 'Quiero comprender mis exámenes', icon: 'chart' },
-  { id: 'yodoterapia', label: 'Estoy próxima a recibir yodoterapia', icon: 'activity' },
-  { id: 'bienestar', label: 'Busco apoyo emocional y organización', icon: 'users' },
+  { id: 'hipotiroidismo', label: 'Vivo con hipotiroidismo', icon: 'trendDown', category: 'tratamiento', productId: 'fst-manejo-sintomas' },
+  { id: 'tiroidectomia', label: 'Me realizaron una tiroidectomía', icon: 'shield', category: 'cirugia', productId: 'fst-vivir-sintiroides' },
+  { id: 'cancer-tiroides', label: 'Tuve o tengo cáncer de tiroides', icon: 'heart', category: 'cirugia', productId: 'fst-vivir-sintiroides' },
+  { id: 'levotiroxina', label: 'Tomo levotiroxina y tengo dudas', icon: 'pill', category: 'tratamiento', productId: 'fst-controlando-niveles' },
+  { id: 'alimentacion', label: 'Necesito mejorar mi alimentación', icon: 'leaf', category: 'nutricion', productId: 'fst-dieta-antiinflamatoria' },
+  { id: 'examenes', label: 'Quiero comprender mis exámenes', icon: 'chart', category: 'tratamiento', productId: 'fst-controlando-niveles' },
+  { id: 'yodoterapia', label: 'Estoy próxima a recibir yodoterapia', icon: 'activity', category: 'cirugia', productId: 'fst-yodoterapia' },
+  { id: 'bienestar', label: 'Busco apoyo emocional y organización', icon: 'users', category: 'bienestar', productId: 'fst-diario-hipotiroidismo' },
 ];
 
 export const productCategories = [

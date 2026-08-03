@@ -62,6 +62,7 @@ export default function FelizSinTiroides() {
   const [selectedStage, setSelectedStage] = useState('');
   const [recommendation, setRecommendation] = useState(null);
   const [activeCategory, setActiveCategory] = useState('tratamiento');
+  const [highlightedProductId, setHighlightedProductId] = useState('');
   const [leadPromptOpen, setLeadPromptOpen] = useState(false);
 
   useEffect(() => {
@@ -157,7 +158,14 @@ export default function FelizSinTiroides() {
 
   const selectStage = (stage) => {
     setSelectedStage(stage.id);
-    trackEvent('patient_stage_selected', { interest: stage.id });
+    setActiveCategory(stage.category);
+    setHighlightedProductId(stage.productId);
+    trackEvent('patient_stage_selected', { interest: stage.id, recommended_product: stage.productId });
+    window.setTimeout(() => {
+      const product = document.querySelector(`#fst-product-${stage.productId}`);
+      product?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      product?.focus({ preventScroll: true });
+    }, 100);
   };
 
   const chooseRecommendation = (option) => {
@@ -245,14 +253,7 @@ export default function FelizSinTiroides() {
                 );
               })}
             </div>
-            {selectedStage && (
-              <div className="mt-6 flex flex-col items-start justify-between gap-4 rounded-lg border border-[#d9c9e6] bg-[#faf8fc] p-5 sm:flex-row sm:items-center">
-                <p className="text-sm leading-6 text-gray-700">Guardaremos esta preferencia únicamente cuando tú completes y autorices el formulario.</p>
-                <button type="button" onClick={() => scrollTo('#fst-recursos')} className="inline-flex min-h-11 shrink-0 items-center gap-2 rounded-md bg-[#563a78] px-5 text-sm font-semibold text-white hover:bg-[#452b65]">
-                  Ver recurso recomendado <Icon name="arrowDown" className="h-4 w-4" />
-                </button>
-              </div>
-            )}
+            <p className="mt-6 text-center text-sm leading-6 text-gray-600">Al elegir una etapa te llevaremos a la ficha del recurso educativo más relacionado. Tu preferencia solo se guardará si completas y autorizas el formulario.</p>
           </div>
         </section>
 
@@ -332,7 +333,7 @@ export default function FelizSinTiroides() {
             </div>
             <p className="mt-5 max-w-3xl text-sm leading-6 text-gray-600">{productCategories.find(category => category.id === activeCategory)?.description}</p>
             <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {activeProducts.map(product => <EbookCard key={product.id} ebook={product} details={productDetails[product.id]} />)}
+              {activeProducts.map(product => <EbookCard key={product.id} ebook={product} details={productDetails[product.id]} recommended={highlightedProductId === product.id} />)}
             </div>
           </div>
         </section>
