@@ -52,6 +52,27 @@ export function AuthProvider({ children }) {
     }
   }, [saveAuth]);
 
+  const googleLogin = useCallback(async (credential, mode, privacyAccepted) => {
+    setLoading(true);
+    try {
+      const res = await fetch(apiUrl('/api/academia/auth/google'), {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          credential,
+          mode,
+          privacy_accepted: privacyAccepted === true,
+        }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Error al continuar con Google');
+      saveAuth(data.user, data.token);
+      return data;
+    } finally {
+      setLoading(false);
+    }
+  }, [saveAuth]);
+
   const logout = useCallback(() => {
     setUser(null);
     setToken('');
@@ -70,7 +91,7 @@ export function AuthProvider({ children }) {
   }, [token, logout]);
 
   return (
-    <AuthContext.Provider value={{ user, token, loading, login, register, logout, api }}>
+    <AuthContext.Provider value={{ user, token, loading, login, register, googleLogin, logout, api }}>
       {children}
     </AuthContext.Provider>
   );

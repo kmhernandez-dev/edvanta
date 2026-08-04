@@ -1,19 +1,88 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import { apiUrl } from '../config/api';
+
+const GOOGLE_SCRIPT_ID = 'google-identity-services';
+
+function loadGoogleIdentity() {
+  if (window.google?.accounts?.id) return Promise.resolve();
+  const existing = document.getElementById(GOOGLE_SCRIPT_ID);
+  if (existing) {
+    return new Promise((resolve, reject) => {
+      existing.addEventListener('load', resolve, { once: true });
+      existing.addEventListener('error', reject, { once: true });
+    });
+  }
+  return new Promise((resolve, reject) => {
+    const script = document.createElement('script');
+    script.id = GOOGLE_SCRIPT_ID;
+    script.src = 'https://accounts.google.com/gsi/client?hl=es';
+    script.async = true;
+    script.defer = true;
+    script.onload = resolve;
+    script.onerror = reject;
+    document.head.appendChild(script);
+  });
+}
 
 export default function AcademiaLoginModal({ isOpen, onClose }) {
-  const { login, register, loading } = useAuth();
+  const { login, register, googleLogin, loading } = useAuth();
+  const googleButtonRef = useRef(null);
   const [mode, setMode] = useState('login');
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [privacyAccepted, setPrivacyAccepted] = useState(false);
   const [error, setError] = useState('');
+  const [googleConfig, setGoogleConfig] = useState({ enabled: false, client_id: null });
 
   useEffect(() => {
     if (isOpen) { setError(''); setPassword(''); setPrivacyAccepted(false); }
   }, [isOpen]);
+
+  useEffect(() => {
+    if (!isOpen) return undefined;
+    let cancelled = false;
+    fetch(apiUrl('/api/academia/auth/config'))
+      .then(response => response.json())
+      .then(data => { if (!cancelled) setGoogleConfig(data.google || { enabled: false, client_id: null }); })
+      .catch(() => { if (!cancelled) setGoogleConfig({ enabled: false, client_id: null }); });
+    return () => { cancelled = true; };
+  }, [isOpen]);
+
+  useEffect(() => {
+    const googleReady = googleConfig.enabled && googleConfig.client_id && isOpen
+      && (mode === 'login' || privacyAccepted);
+    if (!googleReady || !googleButtonRef.current) return undefined;
+    let cancelled = false;
+    loadGoogleIdentity().then(() => {
+      if (cancelled || !googleButtonRef.current) return;
+      googleButtonRef.current.replaceChildren();
+      window.google.accounts.id.initialize({
+        client_id: googleConfig.client_id,
+        callback: async ({ credential }) => {
+          setError('');
+          try {
+            await googleLogin(credential, mode, privacyAccepted);
+            onClose();
+          } catch (requestError) {
+            setError(requestError.message);
+          }
+        },
+      });
+      window.google.accounts.id.renderButton(googleButtonRef.current, {
+        type: 'standard',
+        theme: 'outline',
+        size: 'large',
+        text: mode === 'login' ? 'signin_with' : 'signup_with',
+        shape: 'rectangular',
+        width: 336,
+        locale: 'es',
+      });
+    }).catch(() => setError('No fue posible cargar el acceso con Google'));
+    return () => { cancelled = true; };
+  }, [googleConfig, googleLogin, isOpen, mode, onClose, privacyAccepted]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -34,7 +103,7 @@ export default function AcademiaLoginModal({ isOpen, onClose }) {
 
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-navy-950/50 backdrop-blur-sm" onClick={onClose}>
-      <div className="bg-white rounded-2xl shadow-2xl w-full max-w-sm overflow-hidden" onClick={e => e.stopPropagation()}>
+      <div className="w-full max-w-sm overflow-hidden rounded-lg bg-white shadow-2xl" onClick={e => e.stopPropagation()}>
         <div className="bg-gradient-to-r from-teal-600 to-blush-500 px-6 py-5 text-white">
           <div className="flex items-center justify-between">
             <div>
@@ -52,6 +121,23 @@ export default function AcademiaLoginModal({ isOpen, onClose }) {
         <form onSubmit={handleSubmit} className="p-6 space-y-4">
           {error && (
             <div className="p-3 bg-red-50 border border-red-200 rounded-xl text-xs text-red-700">{error}</div>
+          )}
+
+          {googleConfig.enabled && (
+            <div className="space-y-3">
+              {mode === 'register' && !privacyAccepted ? (
+                <p className="rounded-md border border-gray-200 bg-gray-50 px-3 py-2 text-center text-xs text-gray-500">
+                  Marca la aceptación de privacidad para activar el registro con Google.
+                </p>
+              ) : (
+                <div ref={googleButtonRef} className="flex min-h-11 w-full justify-center overflow-hidden" aria-label="Acceso con Google" />
+              )}
+              <div className="flex items-center gap-3 text-[11px] uppercase text-gray-400">
+                <span className="h-px flex-1 bg-gray-200" />
+                <span>o continúa con correo</span>
+                <span className="h-px flex-1 bg-gray-200" />
+              </div>
+            </div>
           )}
 
           {mode === 'register' && (

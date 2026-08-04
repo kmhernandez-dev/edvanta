@@ -1,6 +1,8 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { Link, Navigate, useParams } from 'react-router-dom';
 import AcademiaLoginModal from '../components/AcademiaLoginModal';
+import AcademiaActivities from '../components/academy/AcademiaActivities';
+import LessonTextContent from '../components/academy/LessonTextContent';
 import FstFooter from '../components/fst/FstFooter';
 import FstHeader from '../components/fst/FstHeader';
 import Icon from '../components/Icon';
@@ -51,6 +53,7 @@ export default function AcademiaClase() {
   const [progress, setProgress] = useState([]);
   const [comments, setComments] = useState([]);
   const [engagement, setEngagement] = useState({ like_count: 0, viewer_liked: false });
+  const [activities, setActivities] = useState([]);
   const [commentText, setCommentText] = useState('');
   const [replyTo, setReplyTo] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -81,13 +84,20 @@ export default function AcademiaClase() {
   }, [slug, api]);
 
   useEffect(() => {
-    if (!/^\d+$/.test(lessonKey)) return;
+    if (!user || !/^\d+$/.test(lessonKey)) {
+      setComments([]);
+      setEngagement({ like_count: 0, viewer_liked: false });
+      setActivities([]);
+      return;
+    }
     Promise.all([
       api(`/api/academia/comments/${lessonKey}`),
       api(`/api/academia/lessons/${lessonKey}/engagement`),
-    ]).then(([commentData, engagementData]) => {
+      api(`/api/academia/lessons/${lessonKey}/activities`),
+    ]).then(([commentData, engagementData, activityData]) => {
       setComments(commentData.comments || []);
       setEngagement(engagementData.engagement || { like_count: 0, viewer_liked: false });
+      setActivities(activityData.activities || []);
     }).catch(() => {});
   }, [lessonKey, api, user]);
 
@@ -181,6 +191,64 @@ export default function AcademiaClase() {
   }
   if (!course || !lesson) return <Navigate to="/academia" replace />;
 
+  if (!user) {
+    return (
+      <div className="min-h-screen bg-[#f7f8fa] font-sans text-[#132e55]">
+        <FstHeader />
+        <main className="pb-20 pt-28">
+          <div className="mx-auto max-w-5xl px-4 sm:px-6">
+            <nav className="mb-8 flex items-center gap-2 text-xs text-gray-500" aria-label="Migas de pan">
+              <Link to="/academia" className="hover:text-[#0f766e]">Academia</Link>
+              <span>/</span>
+              <Link to={`/academia/curso/${slug}`} className="hover:text-[#0f766e]">{course.title}</Link>
+              <span>/</span>
+              <span className="truncate text-gray-700">{lesson.title}</span>
+            </nav>
+            <section className="grid overflow-hidden rounded-lg border border-gray-200 bg-white lg:grid-cols-[1.15fr_0.85fr]" aria-labelledby="access-title">
+              <div className="p-7 sm:p-10">
+                <p className="text-xs font-bold uppercase text-[#0f766e]">Aula privada</p>
+                <h1 id="access-title" className="mt-3 text-3xl font-semibold leading-tight text-[#132e55] sm:text-4xl">Crea tu cuenta para entrar a esta clase</h1>
+                <p className="mt-4 max-w-xl text-base leading-7 text-gray-600">
+                  El acceso es gratuito. Tu cuenta guarda el avance, las actividades y la conversación de cada clase en un solo lugar.
+                </p>
+                <div className="mt-6 space-y-3">
+                  {[
+                    'Video y clase escrita completa',
+                    'Diagramas y lecturas confiables',
+                    'Cuatro actividades prácticas con retroalimentación',
+                    'Progreso, comentarios y respuestas de la comunidad',
+                  ].map(item => (
+                    <p key={item} className="flex items-center gap-3 text-sm text-gray-700">
+                      <Icon name="checkCircle" className="h-5 w-5 shrink-0 text-[#0f766e]" /> {item}
+                    </p>
+                  ))}
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setLoginOpen(true)}
+                  className="mt-8 inline-flex min-h-12 items-center justify-center gap-2 rounded-md bg-[#563a78] px-6 text-sm font-semibold text-white hover:bg-[#452b65]"
+                >
+                  <Icon name="lock" className="h-5 w-5" /> Registrarme o iniciar sesión
+                </button>
+                <p className="mt-3 text-xs text-gray-500">Puedes usar correo y contraseña. Google aparecerá cuando el acceso OAuth esté configurado.</p>
+              </div>
+              <div className="flex min-h-72 items-center justify-center bg-[#eef7f5] p-7 sm:p-10">
+                <div className="w-full max-w-sm">
+                  <span className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-white text-[#0f766e] shadow-sm"><Icon name="book" className="h-6 w-6" /></span>
+                  <p className="mt-5 text-xs font-bold uppercase text-[#0f766e]">Clase seleccionada</p>
+                  <h2 className="mt-2 text-2xl font-semibold leading-tight text-[#132e55]">{lesson.title}</h2>
+                  <p className="mt-4 text-sm leading-6 text-gray-600">Tu aprendizaje queda asociado a tu perfil y puedes continuar desde cualquier dispositivo.</p>
+                </div>
+              </div>
+            </section>
+          </div>
+        </main>
+        <FstFooter />
+        <AcademiaLoginModal isOpen={loginOpen} onClose={() => setLoginOpen(false)} />
+      </div>
+    );
+  }
+
   const completedIds = new Set(progress.filter(item => item.completed_at).map(item => String(item.lesson_id)));
   const isCompleted = completedIds.has(lessonKey);
   const videoId = getYouTubeId(lesson.video_url);
@@ -191,6 +259,11 @@ export default function AcademiaClase() {
   const replies = comments.filter(comment => comment.parent_id);
   const progressPercent = lessons.length ? Math.round((completedIds.size / lessons.length) * 100) : 0;
   const channelUrl = course.channel_url || CHANNEL_URL;
+  const saveActivity = (activityId, submission, answers) => {
+    setActivities(current => current.map(activity => String(activity.id) === String(activityId)
+      ? { ...activity, ...submission, answers }
+      : activity));
+  };
 
   return (
     <div className="min-h-screen bg-[#f7f8fa] font-sans text-[#132e55]">
@@ -245,6 +318,10 @@ export default function AcademiaClase() {
                   </a>
                 </div>
               </section>
+
+              <LessonTextContent content={lesson.content} />
+
+              <AcademiaActivities activities={activities} api={api} totalActivities={4} onSaved={saveActivity} />
 
               {error && <p role="alert" className="rounded-md border border-red-200 bg-red-50 p-3 text-sm text-red-700">{error}</p>}
 

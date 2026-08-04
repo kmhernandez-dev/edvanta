@@ -20,7 +20,7 @@ router.get('/courses', async (_req, res) => {
 });
 
 // GET /api/academia/courses/:slug — detalle de un curso con módulos y lecciones
-router.get('/courses/:slug', async (req, res) => {
+router.get('/courses/:slug', optionalAuthMiddleware, async (req, res) => {
   try {
     const { rows: [course] } = await pool.query(
       `SELECT id, slug, title, description, category, cover_image, duration, class_count,
@@ -34,17 +34,95 @@ router.get('/courses/:slug', async (req, res) => {
     );
 
     const { rows: lessons } = await pool.query(
-      `SELECT l.id, l.module_id, l.title, l.description, l.video_url, l.duration_min, l.has_resources, l.sort_order
+      `SELECT l.id, l.module_id, l.title, l.description, l.video_url, l.duration_min,
+              l.has_resources, l.sort_order, l.content
        FROM academia_lessons l
        JOIN academia_modules m ON l.module_id = m.id
        WHERE m.course_id = $1 AND l.is_published = true
        ORDER BY m.sort_order, l.sort_order`, [course.id]
     );
 
-    res.json({ course, modules, lessons });
+    const visibleLessons = req.user
+      ? lessons
+      : lessons.map(({ video_url: _videoUrl, content: _content, ...preview }) => ({
+          ...preview,
+          description: null,
+          access_locked: true,
+        }));
+
+    res.json({ course, modules, lessons: visibleLessons, authenticated: Boolean(req.user) });
   } catch (e) {
     console.error('academia course detail error:', e.message);
     res.status(500).json({ error: 'Error al obtener curso' });
+  }
+});
+
+// GET /api/academia/lessons/:lessonId/activities — prácticas de una clase
+router.get('/lessons/:lessonId/activities', authMiddleware, async (req, res) => {
+  try {
+    const { rows } = await pool.query(
+      `SELECT a.id, a.slug, a.lesson_id, a.title, a.description, a.content, a.sort_order,
+              s.answers, s.score, s.total, s.completed_at
+       FROM academia_activities a
+       LEFT JOIN academia_activity_submissions s
+         ON s.activity_id = a.id AND s.user_id = $2
+       WHERE a.lesson_id = $1 AND a.is_published = true
+       ORDER BY a.sort_order, a.id`,
+      [req.params.lessonId, req.user.id]
+    );
+    res.json({ activities: rows });
+  } catch (e) {
+    console.error('lesson activities error:', e.message);
+    res.status(500).json({ error: 'Error al obtener las actividades' });
+  }
+});
+
+// POST /api/academia/activities/:activityId/submit — corrige y guarda una práctica
+router.post('/activities/:activityId/submit', authMiddleware, async (req, res) => {
+  try {
+    const answers = req.body?.answers;
+    if (!answers || typeof answers !== 'object' || Array.isArray(answers)) {
+      return res.status(400).json({ error: 'Respuestas inválidas' });
+    }
+    if (JSON.stringify(answers).length > 10000) {
+      return res.status(400).json({ error: 'Las respuestas exceden el tamaño permitido' });
+    }
+
+    const { rows: [activity] } = await pool.query(
+      `SELECT id, lesson_id, answer_key
+       FROM academia_activities WHERE id = $1 AND is_published = true`,
+      [req.params.activityId]
+    );
+    if (!activity) return res.status(404).json({ error: 'Actividad no encontrada' });
+
+    const entries = Object.entries(activity.answer_key || {});
+    const results = entries.map(([questionId, rule]) => ({
+      question_id: questionId,
+      correct: String(answers[questionId] || '') === String(rule.answer),
+      correct_answer: rule.answer,
+      explanation: rule.explanation || '',
+    }));
+    const score = results.filter(result => result.correct).length;
+    const total = entries.length;
+
+    const { rows: [submission] } = await pool.query(
+      `INSERT INTO academia_activity_submissions
+         (activity_id, user_id, answers, score, total, completed_at, updated_at)
+       VALUES ($1, $2, $3::jsonb, $4, $5, NOW(), NOW())
+       ON CONFLICT (activity_id, user_id) DO UPDATE SET
+         answers = EXCLUDED.answers,
+         score = EXCLUDED.score,
+         total = EXCLUDED.total,
+         completed_at = NOW(),
+         updated_at = NOW()
+       RETURNING activity_id, score, total, completed_at`,
+      [activity.id, req.user.id, JSON.stringify(answers), score, total]
+    );
+
+    res.json({ submission, results });
+  } catch (e) {
+    console.error('activity submit error:', e.message);
+    res.status(500).json({ error: 'Error al guardar la actividad' });
   }
 });
 
@@ -280,7 +358,7 @@ router.post('/comments/:commentId/like', authMiddleware, async (req, res) => {
 router.get('/profile', authMiddleware, async (req, res) => {
   try {
     const { rows: [profile] } = await pool.query(
-      `SELECT id, name, email, created_at FROM academia_users WHERE id = $1`, [req.user.id]
+      `SELECT id, name, email, avatar_url, auth_provider, created_at FROM academia_users WHERE id = $1`, [req.user.id]
     );
     if (!profile) return res.status(404).json({ error: 'Perfil no encontrado' });
 
@@ -288,6 +366,7 @@ router.get('/profile', authMiddleware, async (req, res) => {
       `SELECT
          (SELECT COUNT(*)::int FROM academia_enrollments WHERE user_id = $1) AS course_count,
          (SELECT COUNT(*)::int FROM academia_progress WHERE user_id = $1) AS completed_lessons,
+         (SELECT COUNT(*)::int FROM academia_activity_submissions WHERE user_id = $1) AS completed_activities,
          (SELECT COUNT(*)::int FROM academia_comments WHERE user_id = $1 AND is_moderated = true) AS comment_count,
          ((SELECT COUNT(*) FROM academia_lesson_likes WHERE user_id = $1) +
           (SELECT COUNT(*) FROM academia_comment_likes WHERE user_id = $1))::int AS like_count`,

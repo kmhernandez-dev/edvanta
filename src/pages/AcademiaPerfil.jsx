@@ -10,6 +10,7 @@ import { updatePageSeo } from '../utils/seo';
 const statItems = [
   ['course_count', 'book', 'Cursos'],
   ['completed_lessons', 'checkCircle', 'Clases completadas'],
+  ['completed_activities', 'clipboard', 'Prácticas realizadas'],
   ['comment_count', 'message', 'Comentarios'],
   ['like_count', 'thumbsUp', 'Me gusta'],
 ];
@@ -80,7 +81,11 @@ export default function AcademiaPerfil() {
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <section className="flex flex-col gap-5 border-b border-gray-200 pb-8 sm:flex-row sm:items-center sm:justify-between">
             <div className="flex items-center gap-4">
-              <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-[#e8f4f2] text-2xl font-bold text-[#0f766e]">{profile?.name?.charAt(0)?.toUpperCase() || '?'}</div>
+              {profile?.avatar_url ? (
+                <img src={profile.avatar_url} alt="" referrerPolicy="no-referrer" className="h-16 w-16 shrink-0 rounded-full border border-gray-200 object-cover" />
+              ) : (
+                <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-[#e8f4f2] text-2xl font-bold text-[#0f766e]">{profile?.name?.charAt(0)?.toUpperCase() || '?'}</div>
+              )}
               <div>
                 <p className="text-xs font-bold uppercase tracking-[0.12em] text-[#76539a]">Mi perfil</p>
                 <h1 className="mt-1 text-3xl font-semibold">{profile?.name}</h1>
@@ -97,7 +102,7 @@ export default function AcademiaPerfil() {
             <p className="py-16 text-center text-sm text-gray-500">Cargando tu actividad...</p>
           ) : (
             <>
-              <section className="grid grid-cols-2 gap-3 py-8 lg:grid-cols-4" aria-label="Resumen de actividad">
+              <section className="grid grid-cols-2 gap-3 py-8 sm:grid-cols-3 xl:grid-cols-5" aria-label="Resumen de actividad">
                 {statItems.map(([key, icon, label]) => (
                   <div key={key} className="rounded-lg border border-gray-200 bg-white p-4">
                     <Icon name={icon} className="h-5 w-5 text-[#0f766e]" />

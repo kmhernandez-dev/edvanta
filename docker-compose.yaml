@@ -48,6 +48,7 @@ services:
       NOTIFY_EMAIL: "${NOTIFY_EMAIL:-${FROM_EMAIL}}"
       ADMIN_TOKEN: "${ADMIN_TOKEN:?ADMIN_TOKEN is required}"
       JWT_SECRET: "${JWT_SECRET:?JWT_SECRET is required}"
+      GOOGLE_CLIENT_ID: "${GOOGLE_CLIENT_ID:-}"
     networks:
       - edvanta-net
       - coolify
