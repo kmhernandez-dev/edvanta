@@ -219,5 +219,5 @@ export async function leadCaptureRoute(req, res) {
     ).catch(error => console.error(JSON.stringify({ level: 'error', msg: 'No se actualizó el estado del lead', error: error.message })));
   }
 
-  return res.json({ ok: true, delivered, stored, resourceUrl: ready[0]?.url || null });
+  return res.json({ ok: true, delivered, stored, resourceUrl: primaryGuide.url || null });
 }
