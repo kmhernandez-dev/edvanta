@@ -67,7 +67,7 @@ export default function FstLeadForm({ selectedInterest = '', recommendation = ''
         body: JSON.stringify({
           ...form,
           recommendation,
-          resource: 'checklist-12-errores-levotiroxina',
+          resource: 'guia-como-tomar-levotiroxina',
           ...getAttribution(),
         }),
       });
@@ -191,7 +191,7 @@ export default function FstLeadForm({ selectedInterest = '', recommendation = ''
         disabled={status === 'sending'}
         className="mt-4 inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-md bg-[#563a78] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#452b65] disabled:cursor-wait disabled:opacity-70"
       >
-        {status === 'sending' ? 'Preparando tu recurso...' : 'Recibir mi checklist gratuito'}
+        {status === 'sending' ? 'Preparando tu recurso...' : 'Recibir mi guía gratuita'}
         {status !== 'sending' && <Icon name="arrowRight" className="h-4 w-4" />}
       </button>
       <p className="mt-3 flex items-center justify-center gap-1.5 text-center text-xs text-gray-500">

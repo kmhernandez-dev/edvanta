@@ -33,17 +33,17 @@ function SectionHeading({ eyebrow, title, description, centered = false, dark = 
 }
 
 function ResourceMockup() {
-  const items = ['Café demasiado pronto', 'Calcio o hierro sin separación', 'Horarios variables', 'Cambios sin consultar'];
+  const items = ['El mejor horario para tomarla', 'Cuánto esperar antes del café', 'Calcio y hierro: cómo separarlos', 'Qué hacer si olvidas una dosis'];
   return (
-    <div className="relative mx-auto w-full max-w-sm" aria-label="Vista previa del checklist gratuito">
+    <div className="relative mx-auto w-full max-w-sm" aria-label="Vista previa de la guía gratuita">
       <div className="absolute -left-4 top-5 h-[88%] w-full rounded-lg border border-[#ddcfeb] bg-[#efe8f5]" />
       <div className="relative rounded-lg border border-[#d7c8e5] bg-white p-6 shadow-xl">
         <div className="flex items-center justify-between border-b border-[#eee7f3] pb-4">
           <img src="/img/port-logofelizsintiroides.jpg" alt="" className="h-12 w-12 rounded-md object-cover" />
-          <span className="rounded bg-[#f2ebf7] px-2 py-1 text-[10px] font-bold uppercase tracking-widest text-[#563a78]">Checklist</span>
+          <span className="rounded bg-[#f2ebf7] px-2 py-1 text-[10px] font-bold uppercase tracking-widest text-[#563a78]">Guía PDF</span>
         </div>
         <p className="mt-5 text-sm font-semibold text-[#0f766e]">Recurso gratuito</p>
-        <h3 className="mt-1 text-2xl font-semibold leading-tight text-[#132e55]">12 errores que pueden alterar la absorción de tu levotiroxina</h3>
+        <h3 className="mt-1 text-2xl font-semibold leading-tight text-[#132e55]">Cómo tomar la levotiroxina correctamente</h3>
         <div className="mt-5 space-y-3">
           {items.map((item, index) => (
             <div key={item} className="flex items-center gap-3 border-b border-gray-100 pb-2 text-sm text-gray-600">
@@ -262,10 +262,10 @@ export default function FelizSinTiroides() {
             <ResourceMockup />
             <div>
               <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#76539a]">Empieza con una ayuda concreta</p>
-              <h2 className="mt-2 text-3xl font-semibold leading-tight text-[#132e55] md:text-4xl">Checklist gratuito: 12 errores que pueden alterar la absorción de tu levotiroxina</h2>
+              <h2 className="mt-2 text-3xl font-semibold leading-tight text-[#132e55] md:text-4xl">Guía gratuita: cómo tomar la levotiroxina correctamente</h2>
               <p className="mt-4 text-base leading-7 text-gray-600">Recibe una guía breve para revisar horarios, alimentos, suplementos y hábitos que conviene conversar con tu profesional tratante. No incluye cambios de dosis ni reemplaza indicaciones médicas.</p>
               <ul className="my-6 grid gap-2 text-sm text-gray-700 sm:grid-cols-2">
-                {['Errores frecuentes explicados', 'Hoja de preparación de consulta', 'Lenguaje sencillo', 'Acceso inmediato por correo'].map(item => (
+                {['Horarios e interacciones claros', 'Hoja de preparación de consulta', 'Lenguaje sencillo', 'Acceso inmediato por correo'].map(item => (
                   <li key={item} className="flex items-center gap-2"><Icon name="checkCircle" className="h-5 w-5 text-[#0f766e]" /> {item}</li>
                 ))}
               </ul>
@@ -280,7 +280,7 @@ export default function FelizSinTiroides() {
             <div className="grid gap-6 md:grid-cols-3">
               {[
                 ['1', 'Identifica tu necesidad', 'Elige el tema que hoy te genera más preguntas.'],
-                ['2', 'Descarga una base clara', 'Empieza con el checklist y organiza lo que ya sabes.'],
+                ['2', 'Descarga una base clara', 'Empieza con la guía y organiza lo que ya sabes.'],
                 ['3', 'Profundiza con criterio', 'Selecciona una guía o curso según tu etapa.'],
               ].map(([number, title, copy]) => (
                 <div key={number} className="border-t-2 border-[#76539a] px-1 pt-5">
@@ -414,7 +414,7 @@ export default function FelizSinTiroides() {
               ))}
             </div>
             <div className="mt-7 text-center">
-              <a href="#fst-recursos" onClick={event => { event.preventDefault(); scrollTo('#fst-recursos'); }} className="inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-[#563a78] underline underline-offset-4">Descargar el checklist gratuito <Icon name="arrowRight" className="h-4 w-4" /></a>
+              <a href="#fst-recursos" onClick={event => { event.preventDefault(); scrollTo('#fst-recursos'); }} className="inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-[#563a78] underline underline-offset-4">Descargar la guía gratuita <Icon name="arrowRight" className="h-4 w-4" /></a>
             </div>
           </div>
         </section>
@@ -426,7 +426,7 @@ export default function FelizSinTiroides() {
             <h2 className="text-3xl font-semibold leading-tight md:text-4xl">No tienes que aprender a vivir con una condición tiroidea desde la confusión</h2>
             <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-white/80">Empieza con información organizada, comprensible y creada para ayudarte a participar activamente en tu cuidado.</p>
             <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
-              <a href="#fst-recursos" onClick={event => { event.preventDefault(); scrollTo('#fst-recursos'); }} className="inline-flex min-h-11 items-center justify-center rounded-md bg-white px-6 text-sm font-semibold text-[#0f5e57]">Descargar el checklist gratuito</a>
+              <a href="#fst-recursos" onClick={event => { event.preventDefault(); scrollTo('#fst-recursos'); }} className="inline-flex min-h-11 items-center justify-center rounded-md bg-white px-6 text-sm font-semibold text-[#0f5e57]">Descargar la guía gratuita</a>
               <a href="#fst-guias" onClick={event => { event.preventDefault(); scrollTo('#fst-guias'); }} className="inline-flex min-h-11 items-center justify-center rounded-md border border-white/50 px-6 text-sm font-semibold text-white hover:bg-white/10">Ver todos los recursos</a>
             </div>
           </div>
@@ -445,7 +445,7 @@ export default function FelizSinTiroides() {
         <aside className="fixed bottom-20 right-4 z-40 w-[calc(100%-2rem)] max-w-sm rounded-lg border border-[#d7c8e5] bg-white p-5 shadow-2xl" aria-label="Invitación al recurso gratuito">
           <button type="button" onClick={() => setLeadPromptOpen(false)} className="absolute right-2 top-2 inline-flex h-9 w-9 items-center justify-center rounded-md text-gray-500 hover:bg-gray-100" aria-label="Cerrar invitación"><Icon name="close" className="h-4 w-4" /></button>
           <p className="text-xs font-bold uppercase tracking-widest text-[#76539a]">Antes de irte</p>
-          <h2 className="mt-2 pr-8 text-xl font-semibold text-[#132e55]">Llévate el checklist de levotiroxina</h2>
+          <h2 className="mt-2 pr-8 text-xl font-semibold text-[#132e55]">Llévate la guía de levotiroxina</h2>
           <p className="mt-2 text-sm leading-6 text-gray-600">Es gratuito, educativo y te ayuda a preparar mejores preguntas para tu próxima consulta.</p>
           <button type="button" onClick={() => { setLeadPromptOpen(false); scrollTo('#fst-recursos'); }} className="mt-4 inline-flex min-h-11 w-full items-center justify-center rounded-md bg-[#563a78] px-4 text-sm font-semibold text-white">Quiero recibirlo</button>
         </aside>
