@@ -319,7 +319,7 @@ export default function AcademiaClase() {
                 </div>
               </section>
 
-              <LessonTextContent content={lesson.content} />
+              <LessonTextContent content={lesson.content} lesson={lesson} />
 
               <AcademiaActivities activities={activities} api={api} totalActivities={4} onSaved={saveActivity} />
 
