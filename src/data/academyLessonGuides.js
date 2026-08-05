@@ -1,4 +1,4 @@
-const academyImage = name => `/images/academia/${name}`;
+const academyImage = name => `/images/academia/${name}?v=20260804`;
 const ebookLink = id => `/feliz-sin-tiroides#fst-product-${id}`;
 
 export const academyEbooks = {

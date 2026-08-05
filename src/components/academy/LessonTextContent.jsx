@@ -277,7 +277,7 @@ function WellnessPage({ guide }) {
       </div>
 
       <section className="mt-8" aria-labelledby="three-days-title">
-        <img src="/images/academia/ideas-alimentacion-tres-dias.webp" alt="Tres días de comidas variadas con frutas, vegetales, granos y proteínas" className="aspect-video w-full object-cover" loading="lazy" />
+        <img src="/images/academia/ideas-alimentacion-tres-dias.webp?v=20260804" alt="Tres días de comidas variadas con frutas, vegetales, granos y proteínas" className="aspect-video w-full object-cover" loading="lazy" />
         <div className="mt-6 max-w-3xl">
           <p className="text-xs font-bold uppercase text-[#0f766e]">Recetario de muestra</p>
           <h3 id="three-days-title" className="mt-2 text-2xl font-semibold text-[#132e55]">Ideas para tres días reales y flexibles</h3>
@@ -337,7 +337,7 @@ function WellnessPage({ guide }) {
               <li className="flex gap-2"><Icon name="checkCircle" className="mt-0.5 h-5 w-5 shrink-0 text-[#0f766e]" /> No uses bebidas o jugos como sustitutos del tratamiento.</li>
             </ul>
           </div>
-          <img src="/images/academia/hidratacion-autocuidado-diario.webp" alt="Persona organizando agua, movimiento y registro diario" className="aspect-video w-full object-cover" loading="lazy" />
+          <img src="/images/academia/hidratacion-autocuidado-diario.webp?v=20260804" alt="Persona organizando agua, movimiento y registro diario" className="aspect-video w-full object-cover" loading="lazy" />
         </div>
       </section>
 
