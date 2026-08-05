@@ -21,12 +21,6 @@ function parseComment(c) {
 
 // Íconos de línea (inline para no depender de nada)
 const I = {
-  clock: 'M12 8v4l3 2m6-2a9 9 0 11-18 0 9 9 0 0118 0z',
-  coffee: 'M18 8h1a4 4 0 010 8h-1M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8zM6 1v3M10 1v3M14 1v3',
-  pill: 'M10.5 20.5L3.5 13.5a5 5 0 017-7l7 7a5 5 0 01-7 7zM8 8l8 8',
-  ban: 'M18.364 5.636a9 9 0 11-12.728 0 9 9 0 0112.728 0zM5.636 5.636l12.728 12.728',
-  refresh: 'M4 4v5h5M20 20v-5h-5M4 9a8 8 0 0114-3m2 9a8 8 0 01-14 3',
-  alert: 'M12 9v2m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z',
   download: 'M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4',
   check: 'M20 6L9 17l-5-5',
   star: 'M12 2l2.9 6.3 6.9.6-5.2 4.6 1.6 6.8L12 17.3 5.8 20.9l1.6-6.8L2.2 8.9l6.9-.6L12 2z',
@@ -40,15 +34,6 @@ const Svg = ({ d, className = 'w-6 h-6', fill = false }) => (
     <path strokeLinecap="round" strokeLinejoin="round" d={d} />
   </svg>
 );
-
-const BENEFITS = [
-  { icon: I.clock,   t: 'El mejor momento del día', d: 'En ayunas y cuánto esperar antes de desayunar para que se absorba de verdad.' },
-  { icon: I.coffee,  t: 'Café, calcio y hierro',    d: 'El tiempo exacto que debes separar tu café y tus suplementos de la toma.' },
-  { icon: I.ban,     t: 'Lo que bloquea la absorción', d: 'Alimentos, antiácidos y suplementos que sabotean tu tratamiento sin que lo notes.' },
-  { icon: I.refresh, t: 'Si olvidas una dosis',     d: 'Qué hacer (y qué NO hacer) cuando se te pasa una toma, sin arriesgar tu control.' },
-  { icon: I.pill,    t: 'Cómo tomarla paso a paso',  d: 'La rutina simple para que sea un hábito y no una preocupación diaria.' },
-  { icon: I.alert,   t: 'Señales para tu médico',   d: 'Pistas de que tu dosis podría necesitar revisión — para consultarlo a tiempo.' },
-];
 
 // ─── Estrellas ────────────────────────────────────────────────
 function Stars({ value, onChange, size = 'w-7 h-7' }) {
@@ -89,8 +74,8 @@ function FloatingTabs({ onDownload }) {
   );
 }
 
-// ─── Formulario de captación (reutilizado en hero y sección) ──
-function OptInForm({ name, setName, email, setEmail, state, error, onSubmit, compact = false }) {
+// ─── Formulario de captación ──────────────────────────────────
+function OptInForm({ name, setName, email, setEmail, state, error, onSubmit }) {
   return (
     <form onSubmit={onSubmit} className="space-y-3">
       <input value={name} onChange={e => setName(e.target.value)} placeholder="Tu nombre"
@@ -277,26 +262,6 @@ export default function RecursoLevotiroxina() {
         </div>
       </div>
 
-      {/* LO QUE APRENDERÁS */}
-      <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
-        <div className="mx-auto mb-10 max-w-2xl text-center">
-          <p className="mb-2 text-xs font-bold uppercase tracking-widest text-teal-600">Lo que vas a descubrir</p>
-          <h2 className="font-serif text-3xl font-semibold text-deepblue-900 md:text-4xl">6 claves para que tu levotiroxina sí funcione</h2>
-          <p className="mt-3 text-gray-500">Pequeños detalles que hacen una gran diferencia en tus niveles y en cómo te sientes.</p>
-        </div>
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {BENEFITS.map(b => (
-            <div key={b.t} className="group rounded-3xl border border-sand-100 bg-white p-6 shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg">
-              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-teal-50 text-teal-600 transition-colors group-hover:bg-teal-600 group-hover:text-white">
-                <Svg d={b.icon} className="h-6 w-6" />
-              </div>
-              <h3 className="mb-1.5 font-serif text-lg font-semibold text-deepblue-900">{b.t}</h3>
-              <p className="text-sm leading-relaxed text-gray-500">{b.d}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
       {/* GATE / VISOR */}
       <section id="gate" className="relative overflow-hidden bg-gradient-to-br from-deepblue-900 to-teal-800 py-16">
         <div className="bg-dots absolute inset-0 opacity-10" aria-hidden="true" />
@@ -359,6 +324,33 @@ export default function RecursoLevotiroxina() {
         </div>
       </section>
 
+      {/* UPSELL COLECCIÓN (después de conocer a la autora = punto de máxima intención) */}
+      <section className="bg-gradient-to-br from-deepblue-900 to-teal-800 py-16 text-white">
+        <div className="mx-auto max-w-5xl px-4 sm:px-6">
+          <div className="grid items-center gap-10 md:grid-cols-2">
+            <div>
+              <p className="mb-2 text-xs font-bold uppercase tracking-widest text-amber-300">Da el siguiente paso</p>
+              <h2 className="font-serif text-3xl font-semibold leading-tight md:text-4xl">Colección completa "Sana tu Tiroides"</h2>
+              <p className="mt-3 text-white/80">Todo lo que necesitas para tomar el control, en un solo lugar:</p>
+              <ul className="mt-5 space-y-2.5">
+                {['Planes de alimentación antiinflamatoria', 'Manejo de síntomas del día a día', 'Cómo interpretar tus laboratorios (TSH, T4, T3)', 'Guías de bienestar y organización'].map(t => (
+                  <li key={t} className="flex items-start gap-2.5 text-sm text-white/90"><span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-amber-400 text-deepblue-900"><Svg d={I.check} className="h-3 w-3" /></span>{t}</li>
+                ))}
+              </ul>
+              <a href={CHECKOUT_COLECCION} target="_blank" rel="noopener noreferrer"
+                className="mt-7 inline-flex items-center gap-2 rounded-full bg-amber-400 px-7 py-3.5 text-sm font-bold text-deepblue-900 shadow-xl transition-transform hover:scale-[1.02] active:scale-[0.99]">
+                Ver la colección completa <Svg d={I.cart} className="h-4 w-4" />
+              </a>
+              <p className="mt-3 text-xs text-white/50">Pago seguro vía Hotmart · Acceso inmediato</p>
+            </div>
+            <div className="relative mx-auto">
+              <div className="absolute inset-0 -rotate-6 rounded-3xl bg-white/10" aria-hidden="true" />
+              <img src="/img/port-coleccion.jpg" alt="Colección Sana tu Tiroides" className="relative w-full max-w-xs rounded-2xl shadow-2xl" />
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* RESEÑAS */}
       <section id="resenas" className="bg-white py-16">
         <div className="mx-auto max-w-3xl px-4 sm:px-6">
@@ -403,33 +395,6 @@ export default function RecursoLevotiroxina() {
                 <p className="pl-11 text-sm text-gray-600">{r.text}</p>
               </div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* UPSELL COLECCIÓN */}
-      <section className="bg-gradient-to-br from-deepblue-900 to-teal-800 py-16 text-white">
-        <div className="mx-auto max-w-5xl px-4 sm:px-6">
-          <div className="grid items-center gap-10 md:grid-cols-2">
-            <div>
-              <p className="mb-2 text-xs font-bold uppercase tracking-widest text-amber-300">Da el siguiente paso</p>
-              <h2 className="font-serif text-3xl font-semibold leading-tight md:text-4xl">Colección completa "Sana tu Tiroides"</h2>
-              <p className="mt-3 text-white/80">Todo lo que necesitas para tomar el control, en un solo lugar:</p>
-              <ul className="mt-5 space-y-2.5">
-                {['Planes de alimentación antiinflamatoria', 'Manejo de síntomas del día a día', 'Cómo interpretar tus laboratorios (TSH, T4, T3)', 'Guías de bienestar y organización'].map(t => (
-                  <li key={t} className="flex items-start gap-2.5 text-sm text-white/90"><span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-amber-400 text-deepblue-900"><Svg d={I.check} className="h-3 w-3" /></span>{t}</li>
-                ))}
-              </ul>
-              <a href={CHECKOUT_COLECCION} target="_blank" rel="noopener noreferrer"
-                className="mt-7 inline-flex items-center gap-2 rounded-full bg-amber-400 px-7 py-3.5 text-sm font-bold text-deepblue-900 shadow-xl transition-transform hover:scale-[1.02] active:scale-[0.99]">
-                Ver la colección completa <Svg d={I.cart} className="h-4 w-4" />
-              </a>
-              <p className="mt-3 text-xs text-white/50">Pago seguro vía Hotmart · Acceso inmediato</p>
-            </div>
-            <div className="relative mx-auto">
-              <div className="absolute inset-0 -rotate-6 rounded-3xl bg-white/10" aria-hidden="true" />
-              <img src="/img/port-coleccion.jpg" alt="Colección Sana tu Tiroides" className="relative w-full max-w-xs rounded-2xl shadow-2xl" />
-            </div>
           </div>
         </div>
       </section>
