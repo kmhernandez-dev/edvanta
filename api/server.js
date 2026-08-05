@@ -38,6 +38,7 @@ import academiaAuthRoutes from './routes/academia-auth.js';
 import academiaRoutes from './routes/academia.js';
 import adminAcademiaRoutes from './routes/admin-academia.js';
 import articleCommentsRoutes from './routes/article-comments.js';
+import vida360Routes from './routes/vida360.js';
 
 const PORT = parseInt(process.env.PORT || '3000', 10);
 const NODE_ENV = process.env.NODE_ENV || 'development';
@@ -65,7 +66,7 @@ app.use(cors({
     console.warn(JSON.stringify({ level: 'warn', msg: 'CORS bloqueado', origin }));
     return callback(new Error(`Origen no permitido: ${origin}`));
   },
-  methods: ['GET', 'POST', 'OPTIONS'],
+  methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
 }));
 
 // Logger mínimo estructurado
@@ -213,6 +214,9 @@ app.post('/api/admin/generate-seo', async (req, res) => {
 app.use('/api/academia/auth',  academiaAuthRoutes);
 app.use('/api/academia',       academiaRoutes);
 app.use('/api/admin/academia', adminAcademiaRoutes);
+
+// Portal del paciente FST Vida 360
+app.use('/api/vida360', vida360Routes);
 
 // Comentarios en artículos
 app.use('/api/article-comments', articleCommentsRoutes);

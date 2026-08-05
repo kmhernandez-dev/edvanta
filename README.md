@@ -14,6 +14,28 @@ La app combina tres marcas:
 - **Feliz Sin Tiroides**: educacion para pacientes, ebooks, recursos gratis, servicios y comunidad de salud tiroidea.
 - **AtenFarmaClinic**: formacion y recursos para quimicos farmaceuticos clinicos.
 
+## FST Vida 360
+
+`/vida-360` integra un portal educativo para organizar la experiencia de salud
+tiroidea. Incluye ocho perfiles ficticios, onboarding, medicamentos, adherencia,
+sintomas, laboratorios, mapa 360, objetivos, preparacion de consultas, linea de
+tiempo y exportacion PDF/JSON.
+
+El despliegue inicia deliberadamente en **modo piloto**. El modo demostracion es
+funcional y guarda cambios solo en el navegador. El ingreso con datos reales y
+los endpoints `/api/vida360/*` permanecen bloqueados hasta que ambas variables
+se configuren en `true` despues de las revisiones clinica, legal, de privacidad
+y seguridad:
+
+```env
+VITE_VIDA360_REAL_DATA_ENABLED=false
+VIDA360_REAL_DATA_ENABLED=false
+```
+
+La plataforma no diagnostica, no recomienda dosis y no sustituye la consulta
+con profesionales de salud. Las decisiones y riesgos pendientes estan
+documentados en `docs/`.
+
 ## Estado Tecnico
 
 - Frontend React/Vite/Tailwind funcionando.
@@ -93,6 +115,11 @@ La app combina tres marcas:
 | `/terminos` | Terminos y condiciones |
 | `/descargo-medico` | Descargo medico |
 | `/afiliados` | Aviso de afiliados |
+| `/vida-360` | Acceso y demostracion de FST Vida 360 |
+| `/vida-360/mi-salud` | Historia tiroidea y registros del portal |
+| `/vida-360/registrar` | Registro rapido del portal |
+| `/vida-360/consultas` | Preparacion de consultas y documentos |
+| `/vida-360/perfil` | Perfil, consentimientos y privacidad |
 
 ## Endpoints Backend
 
@@ -105,6 +132,10 @@ La app combina tres marcas:
 | `POST` | `/api/mp-webhook` | Webhook Mercado Pago |
 | `POST` | `/api/lead-capture` | Captura de leads |
 | `GET` | `/api/list-orders` | Admin: listar ordenes con `ADMIN_TOKEN` |
+| `GET` | `/api/vida360/state` | Estado del paciente autenticado |
+| `PUT` | `/api/vida360/state` | Autosave del paciente autenticado |
+| `GET` | `/api/vida360/export` | Exportacion del paciente autenticado |
+| `POST` | `/api/vida360/deactivate` | Solicitud de desactivacion |
 
 ## Desarrollo Local
 
@@ -149,6 +180,7 @@ Frontend build-time:
 | Variable | Requerida | Nota |
 |---|---:|---|
 | `VITE_API_URL` | No | Recomendado dejar vacia en Coolify para usar `/api` relativo via nginx |
+| `VITE_VIDA360_REAL_DATA_ENABLED` | No | Default `false`; habilita la interfaz autenticada solo despues de las revisiones |
 
 Backend runtime:
 
@@ -164,6 +196,7 @@ Backend runtime:
 | `FROM_EMAIL` | Si | Remitente verificado |
 | `NOTIFY_EMAIL` | Recomendado | Lead notifications |
 | `ADMIN_TOKEN` | Si | Protege `/api/list-orders` |
+| `VIDA360_REAL_DATA_ENABLED` | No | Default `false`; la API rechaza datos reales si no es exactamente `true` |
 
 Nunca subir secretos al repositorio.
 

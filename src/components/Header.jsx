@@ -36,6 +36,7 @@ const recursosMenu = [
 const ecosistemaMenu = [
   { label: 'Acerca de Edvanta', to: '/#contacto' },
   { label: 'Feliz Sin Tiroides', to: '/feliz-sin-tiroides' },
+  { label: 'FST Vida 360', to: '/vida-360' },
   { label: 'AtenFarmaClinic', to: '/atenfarmaclinic' },
 ];
 

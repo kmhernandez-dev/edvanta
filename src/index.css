@@ -2,6 +2,48 @@
 @tailwind components;
 @tailwind utilities;
 
+/* FST Vida 360 form controls share one accessible, stable treatment. */
+.vida360-field input:not([type='checkbox']):not([type='radio']):not([type='range']),
+.vida360-field select,
+.vida360-field textarea {
+  width: 100%;
+  min-height: 44px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  background: #fff;
+  padding: 0.65rem 0.75rem;
+  color: #263746;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.vida360-field textarea {
+  min-height: 88px;
+  resize: vertical;
+}
+
+.vida360-field input[type='range'] {
+  width: 100%;
+  min-height: 44px;
+  accent-color: #2b8178;
+}
+
+.vida360-field input:focus,
+.vida360-field select:focus,
+.vida360-field textarea:focus {
+  outline: 3px solid rgb(44 177 161 / 20%);
+  border-color: #2cb1a1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vida360-field *,
+  [class*='vida360'] * {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;

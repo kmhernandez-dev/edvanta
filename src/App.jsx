@@ -1,3 +1,4 @@
+import { lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
 import BibliotecaHome   from './pages/BibliotecaHome';
@@ -22,6 +23,8 @@ import AcademiaClase    from './pages/AcademiaClase';
 import MisCursos        from './pages/MisCursos';
 import AcademiaPerfil   from './pages/AcademiaPerfil';
 import NotFound         from './pages/NotFound';
+
+const Vida360Portal = lazy(() => import('./pages/Vida360Portal'));
 
 import { AuthProvider } from './context/AuthContext';
 import CartDrawer    from './components/CartDrawer';
@@ -53,6 +56,13 @@ export default function App() {
         <Route path="/academia/curso/:slug/clase/:lessonId" element={<AcademiaClase />} />
         <Route path="/academia/mis-cursos" element={<MisCursos />} />
         <Route path="/academia/perfil" element={<AcademiaPerfil />} />
+
+        {/* Portal personal FST Vida 360 */}
+        <Route path="/vida-360/*" element={
+          <Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-[#F6F7F8] text-sm font-semibold text-slate-600">Cargando FST Vida 360...</div>}>
+            <Vida360Portal />
+          </Suspense>
+        } />
 
         {/* Marca: AtenFarmaClinic (químicos farmacéuticos clínicos) */}
         <Route path="/atenfarmaclinic" element={<AtenFarmaClinic />} />

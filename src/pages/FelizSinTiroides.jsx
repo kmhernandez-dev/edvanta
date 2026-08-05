@@ -203,11 +203,11 @@ export default function FelizSinTiroides() {
                 Educación farmacéutica, nutricional y emocional para comprender tu levotiroxina, tus exámenes, tu alimentación y los cambios de vivir con una condición tiroidea.
               </p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <a href="#fst-recursos" onClick={event => { event.preventDefault(); trackEvent('hero_cta_click', { cta: 'free_resource' }); scrollTo('#fst-recursos'); }} className="inline-flex min-h-11 items-center justify-center gap-2 rounded-md bg-[#563a78] px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-[#452b65]">
-                  Recibir mi recurso gratuito <Icon name="arrowRight" className="h-4 w-4" />
-                </a>
-                <a href="#fst-guias" onClick={event => { event.preventDefault(); trackEvent('hero_cta_click', { cta: 'guides' }); scrollTo('#fst-guias'); }} className="inline-flex min-h-11 items-center justify-center rounded-md border border-[#9f83ba] bg-white/90 px-6 py-3 text-sm font-semibold text-[#563a78] hover:bg-white">
-                  Explorar las guías
+                <Link to="/vida-360" onClick={() => trackEvent('hero_cta_click', { cta: 'vida360' })} className="inline-flex min-h-11 items-center justify-center gap-2 rounded-md bg-[#0A2540] px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-[#123b5f]">
+                  Organizar mi salud en Vida 360 <Icon name="arrowRight" className="h-4 w-4" />
+                </Link>
+                <a href="#fst-recursos" onClick={event => { event.preventDefault(); trackEvent('hero_cta_click', { cta: 'free_resource' }); scrollTo('#fst-recursos'); }} className="inline-flex min-h-11 items-center justify-center rounded-md border border-[#9f83ba] bg-white/90 px-6 py-3 text-sm font-semibold text-[#563a78] hover:bg-white">
+                  Recibir recurso gratuito
                 </a>
               </div>
               <p className="mt-6 max-w-xl text-sm leading-6 text-gray-600">

@@ -3,6 +3,9 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      args:
+        VITE_API_URL: "${VITE_API_URL:-}"
+        VITE_VIDA360_REAL_DATA_ENABLED: "${VITE_VIDA360_REAL_DATA_ENABLED:-false}"
     restart: unless-stopped
     expose:
       - "80"
@@ -49,6 +52,7 @@ services:
       ADMIN_TOKEN: "${ADMIN_TOKEN:?ADMIN_TOKEN is required}"
       JWT_SECRET: "${JWT_SECRET:?JWT_SECRET is required}"
       GOOGLE_CLIENT_ID: "${GOOGLE_CLIENT_ID:-}"
+      VIDA360_REAL_DATA_ENABLED: "${VIDA360_REAL_DATA_ENABLED:-false}"
     networks:
       - edvanta-net
       - coolify
