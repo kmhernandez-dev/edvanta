@@ -15,6 +15,19 @@
 const RESEND_URL = 'https://api.resend.com/emails';
 
 /**
+ * Devuelve un remitente con el mismo correo verificado de FROM_EMAIL pero con
+ * otro nombre visible. Ej: FROM_EMAIL="Biblioteca KH <contact@edvanta.co>" →
+ * fromWithName('Feliz Sin Tiroides') = "Feliz Sin Tiroides <contact@edvanta.co>".
+ */
+export function fromWithName(displayName) {
+  const raw = (process.env.FROM_EMAIL || '').trim();
+  if (!raw) return '';
+  const match = raw.match(/<([^>]+)>/);
+  const address = match ? match[1].trim() : raw;
+  return `${displayName} <${address}>`;
+}
+
+/**
  * Envía un email vía Resend. Devuelve true si OK, false si falló.
  * Nunca lanza: las funciones de routes deben poder continuar
  * aunque el correo no se envíe.

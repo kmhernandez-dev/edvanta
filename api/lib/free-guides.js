@@ -8,7 +8,7 @@
  * ============================================================
  */
 export const FREE_GUIDES = [
-  { name: 'Checklist: 12 errores que pueden alterar la absorción de tu levotiroxina', url: 'https://edvanta.co/recursos/checklist-levotiroxina.html' },
+  { name: 'Cómo tomar la levotiroxina correctamente', url: 'https://edvanta.co/descargas/como-tomar-levotiroxina-correctamente.pdf' },
   { name: 'Plantilla de seguimiento de síntomas y exámenes',        url: '' },
   { name: 'Mini guía: hábitos diarios para tu metabolismo',         url: '' },
   { name: 'Recordatorio imprimible para tu levotiroxina',           url: '' },
