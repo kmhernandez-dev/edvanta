@@ -89,18 +89,17 @@ export default function FstLeadForm({ selectedInterest = '', recommendation = ''
     return (
       <div ref={formRef} role="status" className="rounded-lg border border-emerald-200 bg-emerald-50 p-6 text-left">
         <Icon name="checkCircle" className="h-8 w-8 text-emerald-700" />
-        <h3 className="mt-3 text-xl font-semibold text-deepblue-900">Tu checklist está listo</h3>
+        <h3 className="mt-3 text-xl font-semibold text-deepblue-900">Tu guía está lista</h3>
         <p className="mt-2 text-sm leading-6 text-gray-600">
-          También enviamos el acceso a <strong>{form.email}</strong>. Revisa la carpeta de correo no deseado si no lo encuentras.
+          Ábrela ahora para leerla y descargar el PDF al instante. También enviamos el acceso a <strong>{form.email}</strong>; revisa la carpeta de correo no deseado si no lo encuentras.
         </p>
         <a
           href={THANK_YOU_PAGE_URL || FREE_RESOURCE_URL}
-          target="_blank"
           rel="noopener noreferrer"
           className="mt-5 inline-flex min-h-11 items-center justify-center gap-2 rounded-md bg-[#563a78] px-5 py-3 text-sm font-semibold text-white hover:bg-[#452b65]"
         >
-          Abrir mi checklist
-          <Icon name="external" className="h-4 w-4" />
+          Abrir y descargar mi guía en PDF
+          <Icon name="arrowRight" className="h-4 w-4" />
         </a>
       </div>
     );

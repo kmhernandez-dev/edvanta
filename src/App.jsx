@@ -2,6 +2,7 @@ import { Routes, Route } from 'react-router-dom';
 
 import BibliotecaHome   from './pages/BibliotecaHome';
 import FelizSinTiroides from './pages/FelizSinTiroides';
+import RecursoLevotiroxina from './pages/RecursoLevotiroxina';
 import AtenFarmaClinic  from './pages/AtenFarmaClinic';
 import LegalPage        from './pages/LegalPage';
 import AdminOrders      from './pages/AdminOrders';
@@ -37,6 +38,9 @@ export default function App() {
 
         {/* Marca: Feliz Sin Tiroides (pacientes) */}
         <Route path="/feliz-sin-tiroides" element={<FelizSinTiroides />} />
+
+        {/* Recurso gratis interactivo: guía PDF de levotiroxina (descarga + reseñas) */}
+        <Route path="/recurso/levotiroxina" element={<RecursoLevotiroxina />} />
 
         {/* Enfermedades tiroideas (FST) */}
         <Route path="/enfermedades/:slug" element={<EnfermedadPage />} />
