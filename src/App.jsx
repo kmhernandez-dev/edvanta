@@ -5,6 +5,7 @@ import BibliotecaHome   from './pages/BibliotecaHome';
 import FelizSinTiroides from './pages/FelizSinTiroides';
 import RecursoLevotiroxina from './pages/RecursoLevotiroxina';
 import AtenFarmaClinic  from './pages/AtenFarmaClinic';
+import AtenFarmaWorkspace from './pages/AtenFarmaWorkspace';
 import LegalPage        from './pages/LegalPage';
 import AdminOrders      from './pages/AdminOrders';
 import AdminAcademia    from './pages/AdminAcademia';
@@ -66,6 +67,7 @@ export default function App() {
 
         {/* Marca: AtenFarmaClinic (químicos farmacéuticos clínicos) */}
         <Route path="/atenfarmaclinic" element={<AtenFarmaClinic />} />
+        <Route path="/atenfarmaclinic/workspace" element={<AtenFarmaWorkspace />} />
 
         {/* Artículos / blog SEO */}
         <Route path="/articulos" element={<ArticulosIndex />} />
