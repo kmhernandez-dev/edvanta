@@ -6,6 +6,8 @@ import FelizSinTiroides from './pages/FelizSinTiroides';
 import RecursoLevotiroxina from './pages/RecursoLevotiroxina';
 import AtenFarmaClinic  from './pages/AtenFarmaClinic';
 import AtenFarmaWorkspace from './pages/AtenFarmaWorkspace';
+import Vida360Pro        from './pages/Vida360Pro';
+import Vida360ProWorkspace from './pages/Vida360ProWorkspace';
 import LegalPage        from './pages/LegalPage';
 import AdminOrders      from './pages/AdminOrders';
 import AdminAcademia    from './pages/AdminAcademia';
@@ -64,6 +66,10 @@ export default function App() {
             <Vida360Portal />
           </Suspense>
         } />
+
+        {/* Vida 360 Pro — workspace profesional multidisciplinario */}
+        <Route path="/vida-360-pro" element={<Vida360Pro />} />
+        <Route path="/vida-360-pro/workspace" element={<Vida360ProWorkspace />} />
 
         {/* Marca: AtenFarmaClinic (químicos farmacéuticos clínicos) */}
         <Route path="/atenfarmaclinic" element={<AtenFarmaClinic />} />
