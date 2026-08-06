@@ -8,7 +8,7 @@ import { useAuth } from '../context/AuthContext';
 import { demoScenarios } from '../data/vida360Demo';
 import { updatePageSeo } from '../utils/seo';
 import {
-  Vida360Consultations, Vida360Dashboard, Vida360Health, Vida360Profile, Vida360Register,
+  Vida360Consultations, Vida360Dashboard, Vida360Health, Vida360Profile, Vida360Register, Vida360Tools,
 } from '../components/vida360/Vida360Sections';
 
 function AccessScreen() {
@@ -139,6 +139,7 @@ function PortalContent() {
   if (location.pathname.startsWith('/vida-360/mi-salud')) content = <Vida360Health />;
   if (location.pathname.startsWith('/vida-360/registrar')) content = <Vida360Register />;
   if (location.pathname.startsWith('/vida-360/consultas')) content = <Vida360Consultations />;
+  if (location.pathname.startsWith('/vida-360/herramientas')) content = <Vida360Tools />;
   if (location.pathname.startsWith('/vida-360/perfil')) content = <Vida360Profile />;
   return <Vida360Shell>{content}</Vida360Shell>;
 }

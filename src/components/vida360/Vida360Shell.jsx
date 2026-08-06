@@ -1,6 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
 import {
-  CalendarDays, ClipboardPlus, HeartPulse, Home, LogOut, Menu, ShieldCheck, UserRound, X,
+  CalendarDays, ClipboardPlus, HeartPulse, Home, LogOut, Menu, ShieldCheck, UserRound, Wrench, X,
 } from 'lucide-react';
 import { useState } from 'react';
 import { useVida360 } from '../../context/Vida360Context';
@@ -10,6 +10,7 @@ const navItems = [
   { to: '/vida-360/mi-salud', label: 'Mi salud', icon: HeartPulse },
   { to: '/vida-360/registrar', label: 'Registrar', icon: ClipboardPlus, prominent: true },
   { to: '/vida-360/consultas', label: 'Consultas', icon: CalendarDays },
+  { to: '/vida-360/herramientas', label: 'Herramientas', icon: Wrench },
   { to: '/vida-360/perfil', label: 'Perfil', icon: UserRound },
 ];
 

@@ -271,3 +271,281 @@ export function Vida360Profile() {
   </>;
 }
 
+export function Vida360Tools() {
+  const { state } = useVida360();
+  const [activeTool, setActiveTool] = useState(null);
+  const [calcValues, setCalcValues] = useState({});
+  const [calcResult, setCalcResult] = useState(null);
+  const [calcErrors, setCalcErrors] = useState({});
+
+  const patientTools = [
+    { id: 'sintomas-tracker', name: 'Diario de síntomas', icon: Activity, description: 'Registra tus síntomas diarios, intensidad y factores desencadenantes para identificar patrones.', category: 'Seguimiento' },
+    { id: 'medicacion-recordatorio', name: 'Organizador de medicación', icon: Pill, description: 'Visualiza tus horarios de medicación, suplementos y separaciones necesarias (ej. levotiroxina vs calcio).', category: 'Medicación' },
+    { id: 'consulta-preparacion', name: 'Preparación para consulta', icon: NotebookPen, description: 'Organiza tus preguntas, síntomas recientes y resultados antes de tu cita médica.', category: 'Consultas' },
+    { id: 'alimentos-tiroides', name: 'Guía de alimentos y tiroides', icon: FlaskConical, description: 'Conoce qué alimentos y suplementos interactúan con tu medicación tiroidea y cómo organizar tus horarios.', category: 'Nutrición' },
+    { id: 'pasaporte-tiroideo', name: 'Pasaporte tiroideo', icon: FileHeart, description: 'Genera un documento portable con tu historia tiroidea, dosis actual y últimos laboratorios.', category: 'Documentos' },
+    { id: 'calculadora-imc', name: 'Calculadora de IMC', icon: Beaker, description: 'Calcula tu índice de masa corporal y conoce su clasificación.', category: 'Calculadoras' },
+    { id: 'calculadora-peso-ideal', name: 'Peso ideal y ajustado', icon: Beaker, description: 'Calcula tu peso ideal según tu altura y tu peso ajustado si tienes sobrepeso.', category: 'Calculadoras' },
+    { id: 'calculadora-superficie', name: 'Superficie corporal', icon: Beaker, description: 'Calcula tu superficie corporal (fórmula de Mosteller).', category: 'Calculadoras' },
+    { id: 'gad7', name: 'Tamizaje de ansiedad (GAD-7)', icon: HeartPulse, description: 'Cuestionario de 7 preguntas para evaluar tu nivel de ansiedad. Resultado orientativo, no diagnóstico.', category: 'Bienestar' },
+    { id: 'phq9', name: 'Tamizaje de estado de ánimo (PHQ-9)', icon: HeartPulse, description: 'Cuestionario de 9 preguntas sobre cómo te has sentido. Resultado orientativo, no diagnóstico.', category: 'Bienestar' },
+  ];
+
+  const calculators = {
+    'calculadora-imc': {
+      name: 'Índice de Masa Corporal (IMC)', formula: 'IMC = Peso (kg) / [Altura (m)]²',
+      fields: [
+        { key: 'weight', label: 'Peso (kg)', type: 'number', min: 30, max: 300, unit: 'kg' },
+        { key: 'height', label: 'Altura (cm)', type: 'number', min: 100, max: 250, unit: 'cm' },
+      ],
+      calculate: (v) => { const h = Number(v.height) / 100; return Math.round((Number(v.weight) / (h * h)) * 10) / 10; },
+      unit: 'kg/m²',
+      interpret: (r) => { if (r < 18.5) return { text: 'Peso bajo', color: 'text-amber-600' }; if (r < 25) return { text: 'Peso normal', color: 'text-teal-600' }; if (r < 30) return { text: 'Sobrepeso', color: 'text-amber-600' }; if (r < 35) return { text: 'Obesidad grado I', color: 'text-red-600' }; if (r < 40) return { text: 'Obesidad grado II', color: 'text-red-600' }; return { text: 'Obesidad grado III', color: 'text-red-600' }; },
+      warning: 'El IMC no distingue entre masa muscular y grasa. No es un indicador completo de salud.',
+    },
+    'calculadora-peso-ideal': {
+      name: 'Peso ideal y peso ajustado', formula: 'PI = 50 + 2.3 × (altura pulg - 60) [hombres] | 45.5 + 2.3 × (altura pulg - 60) [mujeres]',
+      fields: [
+        { key: 'height', label: 'Altura (cm)', type: 'number', min: 100, max: 250, unit: 'cm' },
+        { key: 'weight', label: 'Peso real (kg)', type: 'number', min: 30, max: 300, unit: 'kg' },
+        { key: 'sex', label: 'Sexo', type: 'select', options: [{ value: 'female', label: 'Femenino' }, { value: 'male', label: 'Masculino' }] },
+      ],
+      calculate: (v) => { const inches = Number(v.height) / 2.54; const base = v.sex === 'female' ? 45.5 : 50; const ideal = base + 2.3 * (inches - 60); const adjusted = ideal + 0.4 * (Number(v.weight) - ideal); return { ideal: Math.round(ideal * 10) / 10, adjusted: Math.round(adjusted * 10) / 10 }; },
+      unit: 'kg',
+      interpret: (r) => `Peso ideal: ${r.ideal} kg · Peso ajustado: ${r.adjusted} kg (si peso real > 120% del ideal)`,
+      warning: 'Fórmula de Devine. El peso ajustado se usa cuando el peso real supera el 120% del ideal.',
+    },
+    'calculadora-superficie': {
+      name: 'Superficie corporal (Mosteller)', formula: 'SC (m²) = √[(altura cm × peso kg) / 3600]',
+      fields: [
+        { key: 'weight', label: 'Peso (kg)', type: 'number', min: 1, max: 300, unit: 'kg' },
+        { key: 'height', label: 'Altura (cm)', type: 'number', min: 30, max: 250, unit: 'cm' },
+      ],
+      calculate: (v) => Math.round(Math.sqrt((Number(v.weight) * Number(v.height)) / 3600) * 100) / 100,
+      unit: 'm²',
+      interpret: (r) => r < 1.5 ? 'Superficie corporal baja.' : r <= 2.0 ? 'Dentro del rango promedio adulto.' : 'Superficie corporal elevada.',
+      warning: 'La fórmula de Mosteller es una estimación. No usar como único criterio para decisiones médicas.',
+    },
+    'gad7': {
+      name: 'Tamizaje de ansiedad (GAD-7)', formula: 'Suma de 7 preguntas (0-3 puntos cada una). Rango: 0-21.',
+      fields: [
+        { key: 'q1', label: '¿Te has sentido nervioso/a, ansioso/a o con los nervios de punta?', type: 'select', options: [{ value: '0', label: '0 - Nunca' }, { value: '1', label: '1 - Varios días' }, { value: '2', label: '2 - Más de la mitad de los días' }, { value: '3', label: '3 - Casi todos los días' }] },
+        { key: 'q2', label: '¿No has podido dejar de preocuparte?', type: 'select', options: [{ value: '0', label: '0 - Nunca' }, { value: '1', label: '1 - Varios días' }, { value: '2', label: '2 - Más de la mitad de los días' }, { value: '3', label: '3 - Casi todos los días' }] },
+        { key: 'q3', label: '¿Te has preocupado demasiado por diferentes cosas?', type: 'select', options: [{ value: '0', label: '0 - Nunca' }, { value: '1', label: '1 - Varios días' }, { value: '2', label: '2 - Más de la mitad de los días' }, { value: '3', label: '3 - Casi todos los días' }] },
+        { key: 'q4', label: '¿Has tenido dificultad para relajarte?', type: 'select', options: [{ value: '0', label: '0 - Nunca' }, { value: '1', label: '1 - Varios días' }, { value: '2', label: '2 - Más de la mitad de los días' }, { value: '3', label: '3 - Casi todos los días' }] },
+        { key: 'q5', label: '¿Te has sentido inquieto/a sin poder quedarte quieto/a?', type: 'select', options: [{ value: '0', label: '0 - Nunca' }, { value: '1', label: '1 - Varios días' }, { value: '2', label: '2 - Más de la mitad de los días' }, { value: '3', label: '3 - Casi todos los días' }] },
+        { key: 'q6', label: '¿Te has irritado o enfadado con facilidad?', type: 'select', options: [{ value: '0', label: '0 - Nunca' }, { value: '1', label: '1 - Varios días' }, { value: '2', label: '2 - Más de la mitad de los días' }, { value: '3', label: '3 - Casi todos los días' }] },
+        { key: 'q7', label: '¿Has sentido miedo como si algo terrible pudiera pasar?', type: 'select', options: [{ value: '0', label: '0 - Nunca' }, { value: '1', label: '1 - Varios días' }, { value: '2', label: '2 - Más de la mitad de los días' }, { value: '3', label: '3 - Casi todos los días' }] },
+      ],
+      calculate: (v) => Object.values(v).reduce((s, val) => s + Number(val || 0), 0),
+      unit: 'puntos',
+      interpret: (r) => { if (r <= 4) return { text: 'Ansiedad mínima (0-4). No se requiere intervención.', color: 'text-teal-600' }; if (r <= 9) return { text: 'Ansiedad leve (5-9). Monitoreo recomendado.', color: 'text-teal-600' }; if (r <= 14) return { text: 'Ansiedad moderada (10-14). Considere consultar con un profesional.', color: 'text-amber-600' }; return { text: 'Ansiedad severa (15-21). Se recomienda consultar con un profesional de salud mental.', color: 'text-red-600' }; },
+      warning: 'El GAD-7 es una herramienta de tamizaje, no un diagnóstico. No sustituye la evaluación de un profesional.',
+    },
+    'phq9': {
+      name: 'Cuestionario de estado de ánimo (PHQ-9)', formula: 'Suma de 9 preguntas (0-3 puntos cada una). Rango: 0-27.',
+      fields: [
+        { key: 'q1', label: '¿Poco interés o placer en hacer las cosas?', type: 'select', options: [{ value: '0', label: '0 - Nunca' }, { value: '1', label: '1 - Varios días' }, { value: '2', label: '2 - Más de la mitad de los días' }, { value: '3', label: '3 - Casi todos los días' }] },
+        { key: 'q2', label: '¿Te has sentido desanimado/a, deprimido/a o sin esperanza?', type: 'select', options: [{ value: '0', label: '0 - Nunca' }, { value: '1', label: '1 - Varios días' }, { value: '2', label: '2 - Más de la mitad de los días' }, { value: '3', label: '3 - Casi todos los días' }] },
+        { key: 'q3', label: '¿Problemas para dormir o dormir en exceso?', type: 'select', options: [{ value: '0', label: '0 - Nunca' }, { value: '1', label: '1 - Varios días' }, { value: '2', label: '2 - Más de la mitad de los días' }, { value: '3', label: '3 - Casi todos los días' }] },
+        { key: 'q4', label: '¿Te has sentido cansado/a o con poca energía?', type: 'select', options: [{ value: '0', label: '0 - Nunca' }, { value: '1', label: '1 - Varios días' }, { value: '2', label: '2 - Más de la mitad de los días' }, { value: '3', label: '3 - Casi todos los días' }] },
+        { key: 'q5', label: '¿Poco apetito o comer en exceso?', type: 'select', options: [{ value: '0', label: '0 - Nunca' }, { value: '1', label: '1 - Varios días' }, { value: '2', label: '2 - Más de la mitad de los días' }, { value: '3', label: '3 - Casi todos los días' }] },
+        { key: 'q6', label: '¿Te has sentido mal contigo mismo/a o que eres un fracaso?', type: 'select', options: [{ value: '0', label: '0 - Nunca' }, { value: '1', label: '1 - Varios días' }, { value: '2', label: '2 - Más de la mitad de los días' }, { value: '3', label: '3 - Casi todos los días' }] },
+        { key: 'q7', label: '¿Dificultad para concentrarte en las cosas?', type: 'select', options: [{ value: '0', label: '0 - Nunca' }, { value: '1', label: '1 - Varios días' }, { value: '2', label: '2 - Más de la mitad de los días' }, { value: '3', label: '3 - Casi todos los días' }] },
+        { key: 'q8', label: '¿Te has movido o hablado tan lento que otros lo notan, o lo contrario?', type: 'select', options: [{ value: '0', label: '0 - Nunca' }, { value: '1', label: '1 - Varios días' }, { value: '2', label: '2 - Más de la mitad de los días' }, { value: '3', label: '3 - Casi todos los días' }] },
+        { key: 'q9', label: '¿Has tenido pensamientos de hacerte daño o de que estarías mejor muerto/a?', type: 'select', options: [{ value: '0', label: '0 - Nunca' }, { value: '1', label: '1 - Varios días' }, { value: '2', label: '2 - Más de la mitad de los días' }, { value: '3', label: '3 - Casi todos los días' }] },
+      ],
+      calculate: (v) => Object.values(v).reduce((s, val) => s + Number(val || 0), 0),
+      unit: 'puntos',
+      interpret: (r) => { if (r <= 4) return { text: 'Estado de ánimo dentro de rango normal (0-4).', color: 'text-teal-600' }; if (r <= 9) return { text: 'Síntomas depresivos leves (5-9). Monitoreo recomendado.', color: 'text-teal-600' }; if (r <= 14) return { text: 'Síntomas depresivos moderados (10-14). Considere consultar con un profesional.', color: 'text-amber-600' }; if (r <= 19) return { text: 'Síntomas moderadamente severos (15-19). Se recomienda consultar.', color: 'text-red-600' }; return { text: 'Síntomas severos (20-27). Se recomienda buscar atención profesional.', color: 'text-red-600' }; },
+      warning: 'El PHQ-9 es una herramienta de tamizaje, no un diagnóstico. Si tienes pensamientos de hacerte daño, busca ayuda inmediata.',
+    },
+  };
+
+  const activeCalc = calculators[activeTool];
+
+  const handleCalcChange = (key, value) => { setCalcValues(p => ({ ...p, [key]: value })); setCalcErrors(p => ({ ...p, [key]: '' })); setCalcResult(null); };
+  const handleCalcSubmit = () => { if (!activeCalc) return; const errs = {}; activeCalc.fields.forEach(f => { if (f.type !== 'select' && !calcValues[f.key]) errs[f.key] = 'Requerido'; }); if (Object.keys(errs).length > 0) { setCalcErrors(errs); return; } setCalcResult(activeCalc.calculate(calcValues)); };
+  const handlePassportPdf = async () => { await downloadPatientPdf(state, 'passport'); };
+  const handleConsultationPdf = async () => { await downloadPatientPdf(state, 'consultation'); };
+
+  const medicationSchedule = (state.medications || []).filter(m => m.status === 'active');
+
+  const foodInteractions = [
+    { food: 'Café, té', interaction: 'Reduce la absorción de levotiroxina hasta un 40%', recommendation: 'Espera al menos 60 minutos después de tomar levotiroxina', severity: 'Alta' },
+    { food: 'Leche, yogur, queso', interaction: 'El calcio se une a la levotiroxina y reduce su absorción', recommendation: 'Separa al menos 4 horas de la levotiroxina', severity: 'Alta' },
+    { food: 'Suplementos de calcio', interaction: 'Quelación de levotiroxina', recommendation: 'Toma el calcio en la noche, lejos de la levotiroxina de la mañana', severity: 'Alta' },
+    { food: 'Suplementos de hierro', interaction: 'Quelación de levotiroxina', recommendation: 'Separa al menos 4 horas de la levotiroxina', severity: 'Alta' },
+    { food: 'Nueces de Brasil', interaction: 'Aportan selenio, cofactor para la conversión de T4 a T3', recommendation: '2 nueces al día cubren el requerimiento. No exceder.', severity: 'Beneficio' },
+    { food: 'Brócoli, col, coliflor', interaction: 'En cantidades muy altas y crudas pueden interferir con la captación de yodo', recommendation: 'Seguras en cantidades normales y cocidas. No es necesario eliminarlas.', severity: 'Baja' },
+    { food: 'Soya y derivados', interaction: 'Puede interferir con la absorción de levotiroxina', recommendation: 'Separa 4 horas de la levotiroxina. Cantidades moderadas son seguras.', severity: 'Media' },
+    { food: 'Fibra en exceso', interaction: 'Puede reducir la absorción de levotiroxina', recommendation: 'Mantén una ingesta normal de fibra. No exceder 40g al día.', severity: 'Media' },
+    { food: 'Toronja (pomelo)', interaction: 'Puede afectar el metabolismo de algunos medicamentos', recommendation: 'Consulta con tu médico si consumes toronja regularmente', severity: 'Media' },
+  ];
+
+  return (
+    <>
+      <PageHeading eyebrow="Herramientas" title="Herramientas para tu salud tiroidea" description="Calculadoras, guías y recursos para apoyar el manejo de tu condición. Ninguna herramienta sustituye la evaluación de un profesional de salud." />
+      {!activeTool ? (
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {patientTools.map(tool => (
+            <button key={tool.id} onClick={() => { setActiveTool(tool.id); setCalcValues({}); setCalcResult(null); setCalcErrors({}); }} className="flex flex-col rounded-lg border border-slate-200 bg-white p-5 text-left transition hover:border-[#2CB1A1] hover:shadow-sm">
+              <div className="mb-3 flex items-center gap-3">
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#e8f7f4] text-[#0B8176]"><tool.icon className="h-5 w-5" /></span>
+                <div><p className="text-sm font-semibold text-[#0A2540]">{tool.name}</p><span className="text-[10px] font-medium uppercase text-[#0B8176]">{tool.category}</span></div>
+              </div>
+              <p className="text-xs leading-5 text-slate-500">{tool.description}</p>
+            </button>
+          ))}
+        </div>
+      ) : activeTool === 'sintomas-tracker' ? (
+        <div className="space-y-4">
+          <button onClick={() => setActiveTool(null)} className="flex items-center gap-2 text-sm font-semibold text-[#0B8176] hover:text-[#0A655D] min-h-[44px]"><ArrowRight className="h-4 w-4 rotate-180" /> Volver a herramientas</button>
+          <Panel title="Diario de síntomas" description="Registra tus síntomas para identificar patrones." icon={Activity}>
+            {(state.symptoms || []).length === 0 ? (
+              <EmptyState icon={Activity} title="Sin síntomas registrados" text="Ve a la sección Registrar para añadir tus primeros síntomas." to="/vida-360/registrar" action="Ir a Registrar" />
+            ) : (
+              <div className="space-y-2">
+                <p className="text-xs text-slate-500">Últimos {Math.min(state.symptoms.length, 10)} registros:</p>
+                {(state.symptoms || []).slice(0, 10).map(s => (
+                  <div key={s.id} className="flex items-center justify-between rounded-md border border-slate-100 bg-slate-50 px-3 py-2 text-xs">
+                    <div><span className="font-semibold text-[#0A2540]">{s.name}</span><span className="ml-2 text-slate-500">{s.date}</span></div>
+                    <div className="flex items-center gap-2">
+                      <span className={`font-bold ${Number(s.intensity) >= 7 ? 'text-red-600' : Number(s.intensity) >= 4 ? 'text-amber-600' : 'text-teal-600'}`}>{s.intensity}/10</span>
+                      {s.notes && <span className="text-slate-400 hidden sm:inline">— {s.notes}</span>}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+          </Panel>
+        </div>
+      ) : activeTool === 'medicacion-recordatorio' ? (
+        <div className="space-y-4">
+          <button onClick={() => setActiveTool(null)} className="flex items-center gap-2 text-sm font-semibold text-[#0B8176] hover:text-[#0A655D] min-h-[44px]"><ArrowRight className="h-4 w-4 rotate-180" /> Volver a herramientas</button>
+          <Panel title="Organizador de medicación" description="Visualiza tus medicamentos activos y los horarios recomendados." icon={Pill}>
+            {medicationSchedule.length === 0 ? (
+              <EmptyState icon={Pill} title="Sin medicamentos registrados" text="Ve a la sección Registrar para añadir tus medicamentos." to="/vida-360/registrar" action="Ir a Registrar" />
+            ) : (
+              <div className="space-y-3">
+                {medicationSchedule.map(m => (
+                  <div key={m.id} className="rounded-lg border border-slate-200 p-4">
+                    <div className="flex items-start justify-between"><div><p className="text-sm font-bold text-[#0A2540]">{m.name}</p><p className="text-xs text-slate-500">{m.dose || 'Dosis no registrada'} · {m.frequency || 'Frecuencia no registrada'}</p></div><span className="rounded-full bg-teal-50 px-2 py-0.5 text-[10px] font-semibold text-teal-700">{m.time || 'Sin horario'}</span></div>
+                    {m.name?.toLowerCase().includes('levotiroxina') && (
+                      <div className="mt-3 rounded-md bg-amber-50 border border-amber-200 p-3">
+                        <p className="text-[11px] font-semibold text-amber-800">Recordatorio importante</p>
+                        <ul className="mt-1 space-y-1 text-[10px] text-amber-700">
+                          <li>• Tomar en ayunas, con agua, 30-60 min antes del desayuno.</li>
+                          <li>• Separar al menos 4 horas de: calcio, hierro, antiácidos.</li>
+                          <li>• Evitar café o té hasta 60 min después de tomarla.</li>
+                          <li>• Ser constante con la misma marca de levotiroxina.</li>
+                        </ul>
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            )}
+          </Panel>
+        </div>
+      ) : activeTool === 'consulta-preparacion' ? (
+        <div className="space-y-4">
+          <button onClick={() => setActiveTool(null)} className="flex items-center gap-2 text-sm font-semibold text-[#0B8176] hover:text-[#0A655D] min-h-[44px]"><ArrowRight className="h-4 w-4 rotate-180" /> Volver a herramientas</button>
+          <Panel title="Preparación para tu consulta" description="Revisa esta información antes de tu cita médica." icon={NotebookPen}>
+            <div className="space-y-4">
+              <div className="rounded-lg border border-slate-200 p-4">
+                <p className="text-sm font-semibold text-[#0A2540] mb-2">Resumen para llevar a tu consulta</p>
+                <ul className="space-y-2 text-xs text-slate-600">
+                  <li>• <strong>Diagnóstico:</strong> {state.thyroid?.primaryDiagnosis || 'No registrado'}</li>
+                  <li>• <strong>Medicamentos activos:</strong> {medicationSchedule.length} registrados</li>
+                  <li>• <strong>Síntomas recientes:</strong> {(state.symptoms || []).length} registros</li>
+                  <li>• <strong>Laboratorios:</strong> {(state.labs || []).length} resultados</li>
+                  <li>• <strong>Próximo control:</strong> {state.thyroid?.nextControl || 'No registrado'}</li>
+                </ul>
+              </div>
+              {state.consultation?.questions && (
+                <div className="rounded-lg border border-[#bce6e0] bg-[#f0faf8] p-4">
+                  <p className="text-sm font-semibold text-[#0A2540] mb-2">Tus preguntas para el médico</p>
+                  <p className="text-xs text-slate-600 whitespace-pre-wrap">{state.consultation.questions}</p>
+                </div>
+              )}
+              <button onClick={handleConsultationPdf} className="inline-flex min-h-11 items-center gap-2 rounded-md bg-[#0A2540] px-4 text-sm font-bold text-white"><Download className="h-4 w-4" /> Descargar resumen PDF</button>
+            </div>
+          </Panel>
+        </div>
+      ) : activeTool === 'alimentos-tiroides' ? (
+        <div className="space-y-4">
+          <button onClick={() => setActiveTool(null)} className="flex items-center gap-2 text-sm font-semibold text-[#0B8176] hover:text-[#0A655D] min-h-[44px]"><ArrowRight className="h-4 w-4 rotate-180" /> Volver a herramientas</button>
+          <Panel title="Guía de alimentos y tiroides" description="Conoce cómo organizar tu alimentación con tu medicación tiroidea." icon={FlaskConical}>
+            <div className="space-y-3">
+              <div className="rounded-md bg-amber-50 border border-amber-200 p-3">
+                <p className="text-[11px] font-semibold text-amber-800">Regla de oro</p>
+                <p className="text-[10px] text-amber-700 mt-1">Toma tu levotiroxina en ayunas con agua. Espera 30-60 minutos antes de comer o beber cualquier otra cosa. Separa 4 horas de suplementos de calcio, hierro o antiácidos.</p>
+              </div>
+              {foodInteractions.map((fi, i) => (
+                <div key={i} className="flex items-start justify-between gap-3 rounded-lg border border-slate-200 p-3">
+                  <div className="min-w-0"><p className="text-xs font-semibold text-[#0A2540]">{fi.food}</p><p className="text-[10px] text-slate-500 mt-0.5">{fi.interaction}</p><p className="text-[10px] text-[#0B8176] font-medium mt-1">{fi.recommendation}</p></div>
+                  <span className={`shrink-0 rounded-full px-2 py-0.5 text-[9px] font-bold ${fi.severity === 'Alta' ? 'bg-red-50 text-red-700' : fi.severity === 'Media' ? 'bg-amber-50 text-amber-700' : fi.severity === 'Baja' ? 'bg-teal-50 text-teal-700' : 'bg-emerald-50 text-emerald-700'}`}>{fi.severity}</span>
+                </div>
+              ))}
+            </div>
+          </Panel>
+        </div>
+      ) : activeTool === 'pasaporte-tiroideo' ? (
+        <div className="space-y-4">
+          <button onClick={() => setActiveTool(null)} className="flex items-center gap-2 text-sm font-semibold text-[#0B8176] hover:text-[#0A655D] min-h-[44px]"><ArrowRight className="h-4 w-4 rotate-180" /> Volver a herramientas</button>
+          <Panel title="Pasaporte tiroideo" description="Documento portable con tu información tiroidea esencial." icon={FileHeart}>
+            <div className="space-y-4">
+              <div className="rounded-lg border border-slate-200 p-4 space-y-2 text-xs">
+                <p><span className="font-semibold text-slate-600">Nombre:</span> <span className="text-slate-700">{state.profile?.firstName || '—'} {state.profile?.lastName || ''}</span></p>
+                <p><span className="font-semibold text-slate-600">Diagnóstico:</span> <span className="text-slate-700">{state.thyroid?.primaryDiagnosis || 'No registrado'}</span></p>
+                <p><span className="font-semibold text-slate-600">Cirugía:</span> <span className="text-slate-700">{state.thyroid?.surgeryType || 'No'} · {state.thyroid?.surgeryDate || ''}</span></p>
+                <p><span className="font-semibold text-slate-600">Medicamentos:</span> <span className="text-slate-700">{medicationSchedule.map(m => `${m.name} ${m.dose || ''}`).join(', ') || 'Ninguno'}</span></p>
+                <p><span className="font-semibold text-slate-600">Último laboratorio:</span> <span className="text-slate-700">{(state.labs || [])[0] ? `${(state.labs)[0].analyte}: ${(state.labs)[0].value} ${(state.labs)[0].unit || ''} (${(state.labs)[0].date})` : 'No registrado'}</span></p>
+              </div>
+              <button onClick={handlePassportPdf} className="inline-flex min-h-11 items-center gap-2 rounded-md bg-[#0A2540] px-4 text-sm font-bold text-white"><Download className="h-4 w-4" /> Descargar pasaporte PDF</button>
+            </div>
+          </Panel>
+        </div>
+      ) : activeCalc ? (
+        <div className="space-y-4">
+          <button onClick={() => { setActiveTool(null); setCalcValues({}); setCalcResult(null); }} className="flex items-center gap-2 text-sm font-semibold text-[#0B8176] hover:text-[#0A655D] min-h-[44px]"><ArrowRight className="h-4 w-4 rotate-180" /> Volver a herramientas</button>
+          <Panel title={activeCalc.name} description="Herramienta de apoyo. No sustituye la evaluación de un profesional de salud." icon={Beaker}>
+            <div className="space-y-4">
+              <div className="rounded-md bg-slate-50 border border-slate-200 p-3"><p className="text-[10px] font-semibold text-slate-500 uppercase mb-1">Fórmula</p><p className="text-[11px] text-slate-700 font-mono whitespace-pre-wrap">{activeCalc.formula}</p></div>
+              <div className="grid gap-3 sm:grid-cols-2">
+                {activeCalc.fields.map(f => (
+                  <div key={f.key} className="space-y-1.5">
+                    <label className="text-[11px] font-medium text-slate-700">{f.label} {f.unit && <span className="text-slate-400">({f.unit})</span>}</label>
+                    {f.type === 'select' ? (
+                      <select value={calcValues[f.key] || ''} onChange={e => handleCalcChange(f.key, e.target.value)} className="vida360-field mt-0 block w-full"><option value="">Seleccionar</option>{f.options?.map(o => <option key={o.value} value={o.value}>{o.label}</option>)}</select>
+                    ) : (
+                      <input type={f.type} value={calcValues[f.key] || ''} onChange={e => handleCalcChange(f.key, e.target.value)} min={f.min} max={f.max} step={f.step || 1} className="vida360-field mt-0 block w-full" />
+                    )}
+                    {calcErrors[f.key] && <p className="text-[10px] text-red-600">{calcErrors[f.key]}</p>}
+                  </div>
+                ))}
+              </div>
+              <div className="flex gap-2">
+                <button onClick={handleCalcSubmit} className="inline-flex min-h-11 items-center gap-2 rounded-md bg-[#0A2540] px-4 text-sm font-bold text-white">Calcular</button>
+                <button onClick={() => { setCalcValues({}); setCalcResult(null); }} className="inline-flex min-h-11 items-center gap-2 rounded-md border border-slate-300 px-4 text-sm font-bold text-slate-600">Limpiar</button>
+              </div>
+              {calcResult !== null && (
+                <div className="rounded-lg border border-[#bce6e0] bg-[#f0faf8] p-4">
+                  <p className="text-[10px] font-semibold text-[#0B8176] uppercase mb-1">Resultado</p>
+                  <p className="text-xl font-bold text-[#0A2540]">{typeof calcResult === 'object' ? (calcResult.ideal || calcResult.adjusted || '—') : calcResult}<span className="text-sm font-normal text-[#0B8176] ml-1">{activeCalc.unit}</span></p>
+                  {typeof calcResult === 'object' && calcResult.ideal && calcResult.adjusted && <div className="flex gap-4 mt-1 text-[11px] text-slate-600"><span>Peso ideal: {calcResult.ideal} kg</span><span>Peso ajustado: {calcResult.adjusted} kg</span></div>}
+                  {activeCalc.interpret && (
+                    <div className="mt-2">{typeof activeCalc.interpret(calcResult) === 'object' ? <p className={`text-sm font-semibold ${activeCalc.interpret(calcResult).color}`}>{activeCalc.interpret(calcResult).text}</p> : <p className="text-sm text-slate-700">{activeCalc.interpret(calcResult)}</p>}</div>
+                  )}
+                </div>
+              )}
+              {activeCalc.warning && <div className="rounded-md bg-amber-50 border border-amber-200 p-3"><p className="text-[10px] text-amber-700 leading-relaxed">{activeCalc.warning}</p></div>}
+            </div>
+          </Panel>
+        </div>
+      ) : null}
+    </>
+  );
+}
+
