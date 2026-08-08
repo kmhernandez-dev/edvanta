@@ -1,26 +1,32 @@
 export const patientStages = [
-  { id: 'hipotiroidismo', label: 'Vivo con hipotiroidismo', icon: 'trendDown', category: 'tratamiento', productId: 'fst-manejo-sintomas' },
+  { id: 'hipotiroidismo', label: 'Vivo con hipotiroidismo', icon: 'trendDown', category: 'tratamiento', productId: 'fst-guia-definitiva-hipotiroidismo' },
   { id: 'tiroidectomia', label: 'Me realizaron una tiroidectomía', icon: 'shield', category: 'cirugia', productId: 'fst-vivir-sintiroides' },
   { id: 'cancer-tiroides', label: 'Tuve o tengo cáncer de tiroides', icon: 'heart', category: 'cirugia', productId: 'fst-vivir-sintiroides' },
-  { id: 'levotiroxina', label: 'Tomo levotiroxina y tengo dudas', icon: 'pill', category: 'tratamiento', productId: 'fst-controlando-niveles' },
-  { id: 'alimentacion', label: 'Necesito mejorar mi alimentación', icon: 'leaf', category: 'nutricion', productId: 'fst-dieta-antiinflamatoria' },
+  { id: 'levotiroxina', label: 'Tomo levotiroxina y tengo dudas', icon: 'pill', category: 'tratamiento', productId: 'fst-levotiroxina-sin-sorpresas' },
+  { id: 'alimentacion', label: 'Necesito mejorar mi alimentación', icon: 'leaf', category: 'nutricion', productId: 'fst-protocolo-digestivo-21-dias' },
   { id: 'examenes', label: 'Quiero comprender mis exámenes', icon: 'chart', category: 'tratamiento', productId: 'fst-controlando-niveles' },
   { id: 'yodoterapia', label: 'Estoy próxima a recibir yodoterapia', icon: 'activity', category: 'cirugia', productId: 'fst-yodoterapia' },
-  { id: 'bienestar', label: 'Busco apoyo emocional y organización', icon: 'users', category: 'bienestar', productId: 'fst-diario-hipotiroidismo' },
+  { id: 'bienestar', label: 'Busco apoyo emocional y organización', icon: 'users', category: 'bienestar', productId: 'fst-insomnio-tiroides' },
 ];
 
 export const productCategories = [
   {
+    id: 'nuevos',
+    label: 'Nuevas guías',
+    description: 'Los lanzamientos más recientes, ordenados para resolver primero las dudas más frecuentes sobre diagnóstico, tratamiento y bienestar diario.',
+    productIds: ['fst-recien-diagnosticados-hipotiroidismo', 'fst-levotiroxina-sin-sorpresas', 'fst-guia-definitiva-hipotiroidismo', 'fst-insomnio-tiroides', 'fst-protocolo-digestivo-21-dias', 'fst-nutrir-hashimoto', 'fst-sana-tu-metabolismo', 'fst-caida-cabello-tiroides', 'fst-probioticos', 'fst-guia-definitiva-hipertiroidismo'],
+  },
+  {
     id: 'tratamiento',
     label: 'Tratamiento y levotiroxina',
     description: 'Organiza horarios, síntomas, exámenes y conversaciones con tu equipo de salud.',
-    productIds: ['fst-coleccion-sana', 'fst-controlando-niveles', 'fst-manejo-sintomas', 'fst-autocuidado'],
+    productIds: ['fst-recien-diagnosticados-hipotiroidismo', 'fst-levotiroxina-sin-sorpresas', 'fst-guia-definitiva-hipotiroidismo', 'fst-guia-definitiva-hipertiroidismo', 'fst-coleccion-sana', 'fst-controlando-niveles', 'fst-manejo-sintomas', 'fst-autocuidado'],
   },
   {
     id: 'nutricion',
     label: 'Nutrición tiroidea',
     description: 'Aprende a tomar decisiones alimentarias sin restricciones extremas ni promesas milagrosas.',
-    productIds: ['fst-comer-hipotiroidismo', 'fst-dieta-antiinflamatoria', 'fst-comer-hipertiroidismo', 'fst-guia-ayunos', 'fst-jugos-funcionales'],
+    productIds: ['fst-protocolo-digestivo-21-dias', 'fst-nutrir-hashimoto', 'fst-sana-tu-metabolismo', 'fst-probioticos', 'fst-comer-hipotiroidismo', 'fst-dieta-antiinflamatoria', 'fst-comer-hipertiroidismo', 'fst-guia-ayunos', 'fst-jugos-funcionales'],
   },
   {
     id: 'cirugia',
@@ -30,13 +36,73 @@ export const productCategories = [
   },
   {
     id: 'bienestar',
-    label: 'Bienestar emocional',
-    description: 'Herramientas de registro y autocuidado para transitar el proceso con más claridad.',
-    productIds: ['fst-diario-hipotiroidismo', 'fst-diario-hipertiroidismo'],
+    label: 'Sueño, síntomas y bienestar',
+    description: 'Herramientas de registro y autocuidado para el descanso, los cambios cotidianos y el bienestar emocional.',
+    productIds: ['fst-insomnio-tiroides', 'fst-caida-cabello-tiroides', 'fst-diario-hipotiroidismo', 'fst-diario-hipertiroidismo'],
   },
 ];
 
 export const productDetails = {
+  'fst-recien-diagnosticados-hipotiroidismo': {
+    audience: 'Personas que recibieron recientemente un diagnóstico de hipotiroidismo y necesitan un punto de partida ordenado.',
+    helps: 'Ayuda a comprender los próximos pasos y a preparar controles sin sustituir la orientación clínica.',
+    includes: ['Primeros conceptos', 'Checklist de seguimiento', 'Preguntas para consulta'],
+    format: 'Guía digital en Hotmart',
+  },
+  'fst-levotiroxina-sin-sorpresas': {
+    audience: 'Personas que usan levotiroxina y desean organizar mejor su rutina diaria.',
+    helps: 'Ayuda a reconocer interferencias frecuentes y a registrar dudas sobre horarios, alimentos y otros productos.',
+    includes: ['Rutina de administración', 'Interacciones frecuentes', 'Organizador de preguntas'],
+    format: 'Guía digital en Hotmart',
+  },
+  'fst-guia-definitiva-hipotiroidismo': {
+    audience: 'Personas que quieren una visión integral y comprensible del hipotiroidismo.',
+    helps: 'Ayuda a conectar tratamiento, síntomas, hábitos y seguimiento sin prometer resultados clínicos.',
+    includes: ['Conceptos esenciales', 'Autocuidado cotidiano', 'Ruta de seguimiento'],
+    format: 'Guía digital en Hotmart',
+  },
+  'fst-insomnio-tiroides': {
+    audience: 'Personas con una condición tiroidea que desean comprender y organizar mejor su descanso.',
+    helps: 'Ayuda a observar patrones de sueño y crear una rutina que puedas conversar con tu equipo de salud.',
+    includes: ['Diario de sueño', 'Rutina nocturna', 'Señales para consultar'],
+    format: 'Guía digital en Hotmart',
+  },
+  'fst-protocolo-digestivo-21-dias': {
+    audience: 'Personas con molestias digestivas que buscan un plan educativo y estructurado de hábitos.',
+    helps: 'Ayuda a organizar alimentación, síntomas digestivos y seguimiento durante 21 días.',
+    includes: ['Plan alimentario', 'Rutinas diarias', 'Registro paso a paso'],
+    format: 'Protocolo digital en Hotmart',
+  },
+  'fst-nutrir-hashimoto': {
+    audience: 'Personas con tiroiditis de Hashimoto interesadas en mejorar la organización de su alimentación.',
+    helps: 'Ayuda a construir decisiones alimentarias sostenibles y preguntas informadas para la consulta.',
+    includes: ['Fundamentos de nutrición', 'Ideas de comidas', 'Hábitos sostenibles'],
+    format: 'Guía digital en Hotmart',
+  },
+  'fst-sana-tu-metabolismo': {
+    audience: 'Personas que quieren revisar hábitos relacionados con energía y salud metabólica.',
+    helps: 'Ayuda a integrar alimentación, movimiento, sueño y registro de avances.',
+    includes: ['Ruta de hábitos', 'Seguimiento personal', 'Plan de acción'],
+    format: 'Guía digital en Hotmart',
+  },
+  'fst-caida-cabello-tiroides': {
+    audience: 'Personas con una condición tiroidea que están observando caída del cabello.',
+    helps: 'Ayuda a registrar cambios y organizar factores que conviene revisar con profesionales de salud.',
+    includes: ['Registro de cambios', 'Rutina de cuidado', 'Preguntas para consulta'],
+    format: 'Protocolo digital en Hotmart',
+  },
+  'fst-probioticos': {
+    audience: 'Personas interesadas en comprender el uso responsable de probióticos.',
+    helps: 'Ayuda a comparar productos, reconocer límites y preparar preguntas antes de utilizarlos.',
+    includes: ['Conceptos básicos', 'Criterios de elección', 'Lista de verificación'],
+    format: 'Guía digital en Hotmart',
+  },
+  'fst-guia-definitiva-hipertiroidismo': {
+    audience: 'Personas con hipertiroidismo o enfermedad de Graves que buscan información organizada.',
+    helps: 'Ayuda a comprender conceptos, registrar cambios y preparar conversaciones con el equipo tratante.',
+    includes: ['Conceptos esenciales', 'Seguimiento de síntomas', 'Preparación de consultas'],
+    format: 'Guía digital en Hotmart',
+  },
   'fst-coleccion-sana': {
     audience: 'Personas que necesitan una ruta completa para empezar a comprender su condición tiroidea.',
     helps: 'Ayuda a ordenar conceptos, preguntas, hábitos y seguimiento personal.',
@@ -124,8 +190,11 @@ export const productDetails = {
 };
 
 export const recommendationOptions = [
-  { id: 'levotiroxina', label: 'Mi levotiroxina', category: 'tratamiento', productIds: ['fst-coleccion-sana', 'fst-controlando-niveles'] },
-  { id: 'alimentacion', label: 'Mi alimentación', category: 'nutricion', productIds: ['fst-comer-hipotiroidismo', 'fst-dieta-antiinflamatoria'] },
+  { id: 'levotiroxina', label: 'Mi levotiroxina', category: 'tratamiento', productIds: ['fst-levotiroxina-sin-sorpresas', 'fst-recien-diagnosticados-hipotiroidismo'] },
+  { id: 'alimentacion', label: 'Mi alimentación', category: 'nutricion', productIds: ['fst-protocolo-digestivo-21-dias', 'fst-nutrir-hashimoto'] },
+  { id: 'sueno', label: 'Mi descanso', category: 'bienestar', productIds: ['fst-insomnio-tiroides', 'fst-diario-hipotiroidismo'] },
+  { id: 'digestion', label: 'Mi digestión', category: 'nutricion', productIds: ['fst-protocolo-digestivo-21-dias', 'fst-probioticos'] },
+  { id: 'cabello', label: 'La caída del cabello', category: 'bienestar', productIds: ['fst-caida-cabello-tiroides', 'fst-guia-definitiva-hipotiroidismo'] },
   { id: 'examenes', label: 'Mis exámenes', category: 'tratamiento', productIds: ['fst-controlando-niveles', 'fst-manejo-sintomas'] },
   { id: 'cirugia', label: 'Mi cirugía', category: 'cirugia', productIds: ['fst-postoperatorio', 'fst-vivir-sintiroides'] },
   { id: 'yodoterapia', label: 'La yodoterapia', category: 'cirugia', productIds: ['fst-yodoterapia', 'fst-vivir-sintiroides'] },

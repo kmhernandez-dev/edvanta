@@ -8,6 +8,7 @@ import Icon from '../Icon';
 export default function EbookCard({ ebook, details, recommended = false }) {
   const { addItem } = useCart();
   const cardRef = useRef(null);
+  const adaptedCover = ebook.price == null && Boolean(ebook.cover.image);
   const discount = ebook.comparePrice
     ? Math.round((1 - ebook.price / ebook.comparePrice) * 100)
     : 0;
@@ -44,8 +45,14 @@ export default function EbookCard({ ebook, details, recommended = false }) {
       {/* Cover */}
       <div className={`relative aspect-[3/4] flex items-center justify-center overflow-hidden ${ebook.cover.image ? 'bg-sand-100' : `bg-gradient-to-br ${ebook.cover.gradient}`}`}>
         {ebook.cover.image
-          ? <img src={ebook.cover.image} alt={ebook.name} loading="lazy" className="w-full h-full object-cover" />
+          ? <img src={ebook.cover.image} alt={ebook.name} loading="lazy" className={`h-full w-full object-cover ${adaptedCover ? 'scale-105 opacity-35' : ''}`} />
           : <Icon name="book" className="h-14 w-14 text-white" />}
+        {adaptedCover && (
+          <div className="absolute inset-0 flex flex-col items-center justify-center bg-[#0A2540]/75 px-6 text-center text-white">
+            <span className="text-[10px] font-bold uppercase tracking-[0.16em] text-[#a7e6dc]">Feliz Sin Tiroides</span>
+            <span className="mt-3 text-2xl font-semibold leading-tight">{ebook.name}</span>
+          </div>
+        )}
         {ebook.featured && (
           <span className="absolute left-3 top-3 inline-flex items-center gap-1 rounded bg-white/95 px-2.5 py-1 text-[11px] font-bold text-[#563a78]">
             <Icon name="award" className="h-3.5 w-3.5" /> Más completo
@@ -92,7 +99,9 @@ export default function EbookCard({ ebook, details, recommended = false }) {
 
         {/* Price */}
         <div className="flex items-end gap-2">
-          <span className="text-xl font-bold text-deepblue-900">{formatPrice(ebook.price)}</span>
+          <span className="text-xl font-bold text-deepblue-900">
+            {ebook.price == null ? 'Ver precio en Hotmart' : formatPrice(ebook.price)}
+          </span>
           {ebook.comparePrice && (
             <span className="text-sm text-gray-400 line-through mb-0.5">{formatPrice(ebook.comparePrice)}</span>
           )}

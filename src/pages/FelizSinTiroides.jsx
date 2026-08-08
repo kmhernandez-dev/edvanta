@@ -61,7 +61,7 @@ function ResourceMockup() {
 export default function FelizSinTiroides() {
   const [selectedStage, setSelectedStage] = useState('');
   const [recommendation, setRecommendation] = useState(null);
-  const [activeCategory, setActiveCategory] = useState('tratamiento');
+  const [activeCategory, setActiveCategory] = useState('nuevos');
   const [highlightedProductId, setHighlightedProductId] = useState('');
   const [leadPromptOpen, setLeadPromptOpen] = useState(false);
 
@@ -81,6 +81,12 @@ export default function FelizSinTiroides() {
         'alimentación para hipotiroidismo',
         'yodoterapia I-131',
         'educación para pacientes tiroideos',
+        'guía para recién diagnosticados con hipotiroidismo',
+        'levotiroxina sin sorpresas',
+        'insomnio y enfermedades tiroideas',
+        'alimentación para tiroiditis de Hashimoto',
+        'caída del cabello y tiroides',
+        'probióticos y salud digestiva',
       ],
       jsonLdId: 'feliz-sin-tiroides',
       jsonLd: {
@@ -185,7 +191,7 @@ export default function FelizSinTiroides() {
           <img
             src="/img/feliz-sin-tiroides-hero-v2.webp"
             alt="Mujer organizando su tratamiento, alimentación y autocuidado tiroideo en casa"
-            fetchPriority="high"
+            fetchpriority="high"
             width="1536"
             height="1024"
             className="absolute inset-0 -z-20 h-full w-full object-cover object-[68%_center]"

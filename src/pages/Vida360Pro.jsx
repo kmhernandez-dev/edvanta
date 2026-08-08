@@ -707,7 +707,7 @@ export default function Vida360Pro() {
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
-            {ebooks.slice(0, 4).map(ebook => (
+            {ebooks.filter(ebook => ebook.price != null).slice(0, 4).map(ebook => (
               <div key={ebook.id} className="bg-white border border-slate-200 rounded-xl p-5 hover:border-[#2CB1A1]/30 hover:shadow-sm transition-all group">
                 <div className={`w-full h-32 rounded-lg bg-gradient-to-br ${ebook.cover.gradient} flex items-center justify-center mb-4 text-4xl`}>
                   {ebook.cover.emoji}

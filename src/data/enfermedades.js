@@ -76,7 +76,7 @@ export const enfermedades = [
       { q: '¿Puedo cambiar de marca de levotiroxina?', a: 'No sin consultar a tu médico. Aunque el principio activo es el mismo, la biodisponibilidad puede variar entre marcas. Un cambio de marca puede requerir ajuste de dosis y control de TSH a las 6-8 semanas.' },
       { q: '¿Qué debo hacer si olvido una dosis?', a: 'Si lo recuerdas dentro de las primeras horas, tómala. Si ya pasó medio día, espera a la dosis del día siguiente. No dupliques la dosis. Si olvidas dosis con frecuencia, habla con tu médico sobre estrategias para mejorar la adherencia.' },
     ],
-    guias: ['fst-comer-hipotiroidismo', 'fst-dieta-antiinflamatoria', 'fst-diario-hipotiroidismo', 'fst-controlando-niveles', 'fst-manejo-sintomas', 'fst-jugos-funcionales', 'fst-autocuidado'],
+    guias: ['fst-recien-diagnosticados-hipotiroidismo', 'fst-guia-definitiva-hipotiroidismo', 'fst-levotiroxina-sin-sorpresas', 'fst-insomnio-tiroides', 'fst-caida-cabello-tiroides', 'fst-comer-hipotiroidismo', 'fst-dieta-antiinflamatoria', 'fst-controlando-niveles', 'fst-autocuidado'],
     articulos: ['como-tomar-levotiroxina-correctamente', 'alimentos-suplementos-levotiroxina'],
     recursosGratis: [
       { icon: 'clipboard', title: 'Checklist: cómo tomar correctamente la levotiroxina' },
@@ -145,7 +145,7 @@ export const enfermedades = [
       { q: '¿Qué alimentos debo evitar?', a: 'Evita el exceso de yodo: algas marinas (kelp, nori en grandes cantidades), suplementos con yodo, sal sin yodar que no especifique contenido. No necesitas eliminar la sal yodada de cocina en cantidades normales. Consulta nuestra guía de alimentación para hipertiroidismo.' },
       { q: '¿Los antitiroideos tienen efectos secundarios?', a: 'Pueden causar erupciones cutáneas, dolor articular y, en raros casos, disminución de glóbulos blancos (agranulocitosis) o daño hepático. Por eso los controles de laboratorio son obligatorios. Reporta inmediatamente fiebre, dolor de garganta o ictericia a tu médico.' },
     ],
-    guias: ['fst-comer-hipertiroidismo', 'fst-diario-hipertiroidismo', 'fst-yodoterapia', 'fst-controlando-niveles', 'fst-autocuidado'],
+    guias: ['fst-guia-definitiva-hipertiroidismo', 'fst-insomnio-tiroides', 'fst-comer-hipertiroidismo', 'fst-diario-hipertiroidismo', 'fst-yodoterapia', 'fst-controlando-niveles', 'fst-autocuidado'],
     articulos: [],
     recursosGratis: [
       { icon: 'clipboard', title: 'Checklist: signos de alerta en hipertiroidismo' },
@@ -207,7 +207,7 @@ export const enfermedades = [
       { q: '¿Puedo quedar embarazada con Hashimoto?', a: 'Sí. Con un adecuado control de la TSH (idealmente por debajo de 2.5 mUI/L antes de la concepción y durante el primer trimestre), las mujeres con Hashimoto pueden tener embarazos saludables. El seguimiento debe ser más frecuente durante el embarazo porque los requerimientos de levotiroxina aumentan.' },
       { q: '¿Los anticuerpos van a desaparecer?', a: 'En algunas personas los anticuerpos fluctúan o disminuyen con el tiempo, especialmente después de años de tratamiento con levotiroxina. En otras permanecen elevados. El nivel de anticuerpos no siempre se correlaciona con la severidad de los síntomas ni con la necesidad de tratamiento.' },
     ],
-    guias: ['fst-dieta-antiinflamatoria', 'fst-diario-hipotiroidismo', 'fst-controlando-niveles', 'fst-manejo-sintomas', 'fst-autocuidado', 'fst-coleccion-sana'],
+    guias: ['fst-nutrir-hashimoto', 'fst-guia-definitiva-hipotiroidismo', 'fst-protocolo-digestivo-21-dias', 'fst-probioticos', 'fst-caida-cabello-tiroides', 'fst-dieta-antiinflamatoria', 'fst-autocuidado', 'fst-coleccion-sana'],
     articulos: [],
     recursosGratis: [
       { icon: 'clipboard', title: 'Checklist: qué significan tus anticuerpos antitiroideos' },
@@ -398,7 +398,7 @@ export const enfermedades = [
       { q: '¿Puedo quedar embarazada sin tiroides?', a: 'Sí. Debes planificarlo con tu médico porque los requerimientos de levotiroxina aumentan durante el embarazo. Con un buen control de TSH, el embarazo puede transcurrir normalmente.' },
       { q: '¿Por qué me siento cansada si mi TSH está normal?', a: 'Algunas personas sin tiroides reportan fatiga incluso con TSH en rango. Las causas pueden incluir: dosis no óptima para ti, deficiencia de hierro o vitamina D, apnea del sueño, depresión o simplemente el proceso de adaptación. Consulta a tu médico.' },
     ],
-    guias: ['fst-vivir-sintiroides', 'fst-postoperatorio', 'fst-controlando-niveles', 'fst-manejo-sintomas', 'fst-autocuidado', 'fst-coleccion-sana'],
+    guias: ['fst-levotiroxina-sin-sorpresas', 'fst-vivir-sintiroides', 'fst-postoperatorio', 'fst-controlando-niveles', 'fst-insomnio-tiroides', 'fst-caida-cabello-tiroides', 'fst-autocuidado', 'fst-coleccion-sana'],
     articulos: ['vivir-sin-tiroides', 'como-tomar-levotiroxina-correctamente', 'alimentos-suplementos-levotiroxina'],
     recursosGratis: [
       { icon: 'clipboard', title: 'Checklist: primeras semanas después de la tiroidectomía' },
@@ -466,7 +466,7 @@ export const enfermedades = [
       { q: '¿Qué dieta es mejor para la salud metabólica?', a: 'No existe una única dieta. Los patrones que han mostrado beneficio incluyen: dieta mediterránea, reducción de azúcares añadidos y harinas refinadas, aumento de fibra (verduras, legumbres, frutas enteras), inclusión de proteína en cada comida, y grasas saludables (aceite de oliva, frutos secos, aguacate).' },
       { q: '¿Los edulcorantes artificiales afectan el metabolismo?', a: 'La evidencia es mixta. Algunos estudios sugieren que pueden alterar la microbiota intestinal y la respuesta a la insulina. La recomendación prudente es reducir el sabor dulce en general, sea con azúcar o con edulcorantes, y acostumbrar el paladar a sabores menos dulces.' },
     ],
-    guias: ['fst-dieta-antiinflamatoria', 'fst-comer-hipotiroidismo', 'fst-guia-ayunos', 'fst-jugos-funcionales', 'fst-autocuidado'],
+    guias: ['fst-sana-tu-metabolismo', 'fst-protocolo-digestivo-21-dias', 'fst-probioticos', 'fst-dieta-antiinflamatoria', 'fst-comer-hipotiroidismo', 'fst-guia-ayunos', 'fst-jugos-funcionales', 'fst-autocuidado'],
     articulos: [],
     recursosGratis: [
       { icon: 'clipboard', title: 'Checklist: indicadores de salud metabólica' },
@@ -532,7 +532,7 @@ export const enfermedades = [
       { q: '¿Qué hago si olvido una dosis?', a: 'Si lo recuerdas dentro de las primeras 2-3 horas, tómala. Si ya pasó más tiempo, espera a la dosis del día siguiente. No dupliques la dosis. Si olvidas dosis con frecuencia, habla con tu médico.' },
       { q: '¿La levotiroxina tiene efectos secundarios?', a: 'Cuando la dosis es la correcta, la levotiroxina no debería causar efectos secundarios porque simplemente reemplaza lo que tu cuerpo ya no produce. Los "efectos secundarios" suelen ser síntomas de dosis inadecuada (muy alta o muy baja). Las reacciones alérgicas a la levotiroxina en sí son extremadamente raras; la mayoría de las alergias son a los excipientes (colorantes, lactosa, etc.).' },
     ],
-    guias: ['fst-controlando-niveles', 'fst-manejo-sintomas', 'fst-autocuidado'],
+    guias: ['fst-levotiroxina-sin-sorpresas', 'fst-recien-diagnosticados-hipotiroidismo', 'fst-guia-definitiva-hipotiroidismo', 'fst-controlando-niveles', 'fst-manejo-sintomas', 'fst-autocuidado'],
     articulos: ['como-tomar-levotiroxina-correctamente', 'alimentos-suplementos-levotiroxina'],
     recursosGratis: [
       { icon: 'clipboard', title: 'Checklist: cómo tomar correctamente la levotiroxina' },
@@ -597,7 +597,7 @@ export const enfermedades = [
       { q: '¿El ayuno intermitente es seguro con hipotiroidismo?', a: 'Puede serlo, pero requiere precaución. La levotiroxina debe tomarse en ayunas, lo cual es compatible con el ayuno. Sin embargo, el ayuno prolongado puede afectar la conversión de T4 a T3 y aumentar el cortisol. Si quieres probarlo, consúltalo con tu médico y monitorea tu TSH.' },
       { q: '¿Qué nutrientes son importantes para la tiroides?', a: 'Yodo (en cantidades adecuadas, no en exceso), selenio (apoya la conversión de T4 a T3), zinc (necesario para la síntesis hormonal), hierro (su deficiencia puede reducir la eficacia de la levotiroxina), vitamina D (frecuentemente baja en personas con autoinmunidad). La mejor fuente son los alimentos; los suplementos solo si hay deficiencia diagnosticada.' },
     ],
-    guias: ['fst-comer-hipotiroidismo', 'fst-dieta-antiinflamatoria', 'fst-comer-hipertiroidismo', 'fst-guia-ayunos', 'fst-jugos-funcionales', 'fst-coleccion-sana'],
+    guias: ['fst-protocolo-digestivo-21-dias', 'fst-nutrir-hashimoto', 'fst-probioticos', 'fst-sana-tu-metabolismo', 'fst-comer-hipotiroidismo', 'fst-dieta-antiinflamatoria', 'fst-comer-hipertiroidismo', 'fst-guia-ayunos', 'fst-jugos-funcionales', 'fst-coleccion-sana'],
     articulos: ['alimentos-suplementos-levotiroxina', 'desayunos-compatibles-levotiroxina'],
     recursosGratis: [
       { icon: 'clipboard', title: 'Checklist: nutrientes clave para tu tiroides' },
