@@ -11,7 +11,7 @@
  */
 
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import { supabaseConfigured } from '../../lib/supabase';
 
@@ -26,9 +26,44 @@ function GoogleIcon() {
   );
 }
 
+function friendlyError(raw) {
+  if (!raw) return '';
+  const msg = String(raw);
+  if (/invalid login credentials/i.test(msg)) {
+    return 'Correo o contraseña incorrectos. Si acabas de crear tu cuenta, revisa que hayas confirmado tu correo con el enlace que te enviamos.';
+  }
+  if (/email not confirmed/i.test(msg)) {
+    return 'Todavía no confirmas tu correo. Revisa tu bandeja de entrada (y spam) y pulsa el enlace de confirmación que te enviamos.';
+  }
+  if (/already registered|already been registered|already exists/i.test(msg)) {
+    return 'Este correo ya tiene una cuenta. Pulsa "Ya tengo una cuenta" e inicia sesión.';
+  }
+  if (/rate limit/i.test(msg)) {
+    return 'Se enviaron demasiados correos en poco tiempo. Espera un minuto e intenta de nuevo.';
+  }
+  if (/password should be at least/i.test(msg)) {
+    return 'La contraseña debe tener al menos 6 caracteres.';
+  }
+  if (/signup not enabled|signups not allowed/i.test(msg)) {
+    return 'El registro está desactivado temporalmente en esta plataforma.';
+  }
+  if (/provider is not enabled/i.test(msg)) {
+    return 'El acceso con Google aún no está habilitado. Usa correo y contraseña por ahora.';
+  }
+  if (/rate_limit|too many/i.test(msg)) {
+    return 'Demasiados intentos. Espera un momento e intenta de nuevo.';
+  }
+  if (/failed to fetch|network/i.test(msg)) {
+    return 'Error de conexión. Verifica tu internet e intenta de nuevo.';
+  }
+  return msg;
+}
+
 export default function AuthScreen({ onSuccess }) {
+  const [searchParams] = useSearchParams();
+  const requestedMode = searchParams.get('modo');
   const { login, register, loginWithGoogle, resetPassword, authError, setAuthError, loading } = useAuth();
-  const [mode, setMode] = useState('login');
+  const [mode, setMode] = useState(requestedMode === 'registro' ? 'register' : 'login');
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -49,7 +84,7 @@ export default function AuthScreen({ onSuccess }) {
     setFormError('');
     setAuthError('');
     const result = await loginWithGoogle();
-    if (result?.error) setFormError(result.error);
+    if (result?.error) setFormError(friendlyError(result.error));
   };
 
   const handleSubmit = async event => {
@@ -75,20 +110,20 @@ export default function AuthScreen({ onSuccess }) {
       if (mode === 'register') {
         const result = await register({ name, email, password, privacyAccepted });
         if (result?.error) {
-          setFormError(result.error);
+          setFormError(friendlyError(result.error));
         } else if (result?.user && !result?.session) {
-          setSuccessMessage('Revisa tu correo para confirmar tu cuenta. Si ya confirmaste, inicia sesión.');
+          setSuccessMessage('Tu cuenta fue creada. Revisa tu correo y pulsa el enlace de confirmación. Si ya confirmaste, inicia sesión.');
           setMode('login');
         } else {
           onSuccess?.();
         }
       } else if (mode === 'login') {
         const result = await login(email, password);
-        if (result?.error) setFormError(result.error);
+        if (result?.error) setFormError(friendlyError(result.error));
         else onSuccess?.();
       } else {
         const result = await resetPassword(email);
-        if (result?.error) setFormError(result.error);
+        if (result?.error) setFormError(friendlyError(result.error));
         else setSuccessMessage('Te enviamos un enlace para recuperar tu contraseña. Revisa tu correo.');
       }
     } finally {
@@ -126,7 +161,7 @@ export default function AuthScreen({ onSuccess }) {
 
           {(formError || authError) && (
             <div className="mt-4 rounded-xl border border-rose-200 bg-rose-50 p-3 text-xs leading-5 text-rose-700" role="alert">
-              {formError || authError}
+              {formError || friendlyError(authError)}
             </div>
           )}
           {successMessage && (

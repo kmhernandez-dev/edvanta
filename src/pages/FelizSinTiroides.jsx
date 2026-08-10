@@ -274,7 +274,7 @@ export default function FelizSinTiroides() {
                 Información, herramientas y acompañamiento para ayudarte a organizar tu tratamiento, tus hábitos y tu seguimiento.
               </p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <Link to="/fst-app" onClick={() => trackEvent('hero_cta_click', { cta: 'crear_cuenta' })} className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-[#0A2540] px-6 py-3 text-sm font-bold text-white shadow-sm hover:bg-[#123b5f]">
+                <Link to="/fst-app?modo=registro" onClick={() => trackEvent('hero_cta_click', { cta: 'crear_cuenta' })} className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-[#0A2540] px-6 py-3 text-sm font-bold text-white shadow-sm hover:bg-[#123b5f]">
                   Crear mi cuenta <Icon name="arrowRight" className="h-4 w-4" />
                 </Link>
                 <Link to="/fst-app" onClick={() => trackEvent('hero_cta_click', { cta: 'iniciar_sesion' })} className="inline-flex min-h-12 items-center justify-center rounded-xl border border-[#2CB1A1] bg-white px-6 py-3 text-sm font-bold text-[#0A655D] hover:bg-[#effaf8]">
@@ -282,7 +282,7 @@ export default function FelizSinTiroides() {
                 </Link>
               </div>
               <p className="mt-4 text-sm font-semibold text-[#0A2540]">
-                <Link to="/fst-app" onClick={() => trackEvent('hero_cta_click', { cta: 'google' })} className="inline-flex items-center gap-2 rounded-xl border border-[#e5dceb] bg-white px-4 py-2.5 text-sm font-bold text-[#0A2540] shadow-sm hover:bg-[#faf8fd]">
+                <Link to="/fst-app?modo=registro" onClick={() => trackEvent('hero_cta_click', { cta: 'google' })} className="inline-flex items-center gap-2 rounded-xl border border-[#e5dceb] bg-white px-4 py-2.5 text-sm font-bold text-[#0A2540] shadow-sm hover:bg-[#faf8fd]">
                   <svg className="h-4 w-4" viewBox="0 0 24 24" aria-hidden="true">
                     <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.27-4.74 3.27-8.1Z" />
                     <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23Z" />
@@ -324,7 +324,7 @@ export default function FelizSinTiroides() {
                     </div>
                   </div>
                 ))}
-                <Link to="/fst-app" className="inline-flex min-h-12 items-center gap-2 rounded-xl bg-[#0A2540] px-6 text-sm font-bold text-white hover:bg-[#123b5f]">
+                <Link to="/fst-app?modo=registro" className="inline-flex min-h-12 items-center gap-2 rounded-xl bg-[#0A2540] px-6 text-sm font-bold text-white hover:bg-[#123b5f]">
                   Probar NutriFST IA <Icon name="arrowRight" className="h-4 w-4" />
                 </Link>
               </div>
@@ -355,7 +355,7 @@ export default function FelizSinTiroides() {
                 <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/15 text-white"><Icon name="arrowRight" className="h-5 w-5" /></span>
                 <h3 className="mt-3 font-semibold">Empieza hoy</h3>
                 <p className="mt-1 text-sm leading-6 text-white/70">Crea tu cuenta y descubre tu espacio personal.</p>
-                <Link to="/fst-app" className="mt-3 inline-flex items-center gap-1 text-sm font-bold text-white underline underline-offset-4">Crear mi cuenta</Link>
+                <Link to="/fst-app?modo=registro" className="mt-3 inline-flex items-center gap-1 text-sm font-bold text-white underline underline-offset-4">Crear mi cuenta</Link>
               </div>
             </div>
           </div>
