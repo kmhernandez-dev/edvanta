@@ -10,10 +10,10 @@
  * ============================================================
  */
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
-import { supabaseConfigured } from '../../lib/supabase';
+import { supabase, supabaseConfigured } from '../../lib/supabase';
 
 function GoogleIcon() {
   return (
@@ -47,8 +47,8 @@ function friendlyError(raw) {
   if (/signup not enabled|signups not allowed/i.test(msg)) {
     return 'El registro está desactivado temporalmente en esta plataforma.';
   }
-  if (/provider is not enabled/i.test(msg)) {
-    return 'El acceso con Google aún no está habilitado. Usa correo y contraseña por ahora.';
+  if (/unsupported provider|provider is not enabled/i.test(msg)) {
+    return 'El acceso con Google aún no está habilitado en la plataforma. Usa "Crear mi cuenta" con correo y contraseña por ahora.';
   }
   if (/rate_limit|too many/i.test(msg)) {
     return 'Demasiados intentos. Espera un momento e intenta de nuevo.';
@@ -72,6 +72,23 @@ export default function AuthScreen({ onSuccess }) {
   const [formError, setFormError] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
   const [submitting, setSubmitting] = useState(false);
+  const [googleEnabled, setGoogleEnabled] = useState(null);
+
+  useEffect(() => {
+    if (!supabase || !supabaseConfigured) return;
+    let cancelled = false;
+    supabase.auth.getSettings()
+      .then(({ data, error }) => {
+        if (cancelled) return;
+        if (error) {
+          setGoogleEnabled(false);
+          return;
+        }
+        setGoogleEnabled(Boolean(data?.external?.google));
+      })
+      .catch(() => { if (!cancelled) setGoogleEnabled(false); });
+    return () => { cancelled = true; };
+  }, []);
 
   const switchMode = next => {
     setMode(next);
@@ -181,11 +198,16 @@ export default function AuthScreen({ onSuccess }) {
               <button
                 type="button"
                 onClick={handleGoogle}
-                disabled={!supabaseConfigured || submitting}
-                className="mt-6 flex min-h-12 w-full items-center justify-center gap-3 rounded-xl border border-[#e5dceb] bg-white text-sm font-bold text-[#0A2540] hover:bg-[#faf8fd] disabled:opacity-50"
+                disabled={!supabaseConfigured || submitting || googleEnabled === false}
+                className="mt-6 flex min-h-12 w-full items-center justify-center gap-3 rounded-xl border border-[#e5dceb] bg-white text-sm font-bold text-[#0A2540] hover:bg-[#faf8fd] disabled:cursor-not-allowed disabled:opacity-50"
               >
                 <GoogleIcon /> Continuar con Google
               </button>
+              {googleEnabled === false && (
+                <p className="mt-2 rounded-xl border border-amber-200 bg-amber-50 p-3 text-xs leading-5 text-amber-800">
+                  El acceso con Google aún no está habilitado en la plataforma. Usa "Crear mi cuenta" con correo y contraseña.
+                </p>
+              )}
               <div className="my-5 flex items-center gap-3 text-[11px] uppercase text-slate-400">
                 <span className="h-px flex-1 bg-[#f0eaf5]" />
                 <span>o continúa con correo</span>
