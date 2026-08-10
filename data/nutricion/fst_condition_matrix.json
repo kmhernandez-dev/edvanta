@@ -1,0 +1,85 @@
+{
+  "meta": {
+    "proyecto": "Feliz Sin Tiroides — Base nutricional científica",
+    "descripcion": "Define los 8 perfiles clínicos y los valores de compatibilidad que cada receta declara en su 'condition_matrix'. La clasificación de cada receta se DERIVA de las reglas de fst_clinical_rules.json (no se inventa).",
+    "version": "0.1.0",
+    "fecha_revision": "2026-08-10"
+  },
+  "valores_clasificacion": {
+    "APTA": "Adecuada tal cual para esta condición.",
+    "APTA_CON_MODIFICACION": "Adecuada si se aplica un ajuste indicado (p. ej. usar clara en vez de huevo entero, sal no yodada, versión sin trazas de gluten).",
+    "NO_PRIORITARIA": "No es dañina, pero no aporta ventaja específica para esta condición.",
+    "EVITAR_TEMPORALMENTE": "Evitar solo durante una ventana clínica concreta (p. ej. preparación para radioyodo).",
+    "REQUIERE_REVISION_PROFESIONAL": "Necesita valoración individual antes de recomendarla."
+  },
+  "condiciones": {
+    "hipotiroidismo": {
+      "codigo": "THY-01",
+      "nombre": "Hipotiroidismo primario tratado (levotiroxina)",
+      "prioridades": ["alimentación equilibrada", "aporte suficiente", "higiene de horario con la levotiroxina", "evitar restricciones innecesarias"],
+      "reglas_clave": ["LT4-ADMIN-01", "LT4-COFFEE-01", "LT4-CALCIUM-SUP-01", "LT4-IRON-SUP-01"]
+    },
+    "hashimoto_no_celiaco": {
+      "codigo": "THY-02",
+      "nombre": "Tiroiditis de Hashimoto sin celiaquía",
+      "prioridades": ["dieta variada sin restricciones no justificadas", "NO asumir sin gluten/sin lácteos/AIP"],
+      "reglas_clave": ["GLU-01", "SEL-01", "IOD-EXCESS-01"]
+    },
+    "hashimoto_celiaco": {
+      "codigo": "THY-03",
+      "nombre": "Hashimoto + enfermedad celíaca confirmada",
+      "prioridades": ["dieta SIN gluten estricta de por vida", "revisar trazas y fuentes ocultas"],
+      "reglas_clave": ["GLU-02"]
+    },
+    "graves_hipertiroidismo": {
+      "codigo": "THY-04",
+      "nombre": "Graves / hipertiroidismo activo",
+      "prioridades": ["suficiencia energética", "proteína y masa muscular", "salud ósea", "evitar exceso de yodo", "individualizar (no calorías fijas universales)"],
+      "reglas_clave": ["IOD-EXCESS-01"],
+      "pendiente_cluster": "graves_hipermetabolismo (por verificar)"
+    },
+    "post_tiroidectomia_estable": {
+      "codigo": "THY-05",
+      "nombre": "Post-tiroidectomía estable con reemplazo hormonal",
+      "prioridades": ["calidad global de la alimentación", "higiene de horario con la levotiroxina", "sin dieta especial por carecer de glándula"],
+      "reglas_clave": ["LT4-ADMIN-01"]
+    },
+    "cancer_tiroides_estable": {
+      "codigo": "THY-06",
+      "nombre": "Superviviente de cáncer diferenciado estable (no preparando radioyodo)",
+      "prioridades": ["alimentación saludable normal", "NO dieta baja en yodo automática", "ningún alimento 'previene recurrencias'"],
+      "reglas_clave": ["LT4-ADMIN-01", "IOD-EXCESS-01"]
+    },
+    "pre_radioyodo": {
+      "codigo": "THY-07",
+      "nombre": "Preparación para radioyodo — dieta baja en yodo (TEMPORAL)",
+      "prioridades": ["<50 µg yodo/día bajo indicación", "bajo en yodo ≠ sin yodo", "no continúa tras el tratamiento"],
+      "reglas_clave": ["IOD-RAI-01"],
+      "temporal": true
+    },
+    "hipoparatiroidismo_postquirurgico": {
+      "codigo": "THY-08",
+      "nombre": "Post-tiroidectomía con hipoparatiroidismo / hipocalcemia",
+      "prioridades": ["ALTA PRECAUCIÓN", "identificar fuentes de calcio y su horario vs levotiroxina", "NO modificar dosis de calcio/vitamina D/calcitriol", "requiere seguimiento profesional"],
+      "reglas_clave": ["LT4-CALCIUM-SUP-01"],
+      "pendiente_cluster": "hipoparatiroidismo_calcio (por verificar)"
+    }
+  },
+  "logica_derivacion": "Para cada receta: (1) revisar ingredientes contra iodine_safety_engine y gluten_logic; (2) marcar low_iodine_compatible / iodine_risk / naturalmente_sin_gluten; (3) asignar la clasificación por condición según las reglas_clave; (4) escribir una justificación breve por condición. Toda clasificación debe poder rastrearse a una regla de fst_clinical_rules.json.",
+  "indice_recetas": [
+    {
+      "recipe_id": "FST-DES-001",
+      "nombre": "Arepa de maíz con huevo y aguacate",
+      "resumen_matriz": {
+        "hipotiroidismo": "APTA",
+        "hashimoto_no_celiaco": "APTA",
+        "hashimoto_celiaco": "APTA_CON_MODIFICACION",
+        "graves_hipertiroidismo": "APTA",
+        "post_tiroidectomia_estable": "APTA",
+        "cancer_tiroides_estable": "APTA",
+        "pre_radioyodo": "APTA_CON_MODIFICACION",
+        "hipoparatiroidismo_postquirurgico": "APTA_CON_MODIFICACION"
+      }
+    }
+  ]
+}

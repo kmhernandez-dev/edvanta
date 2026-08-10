@@ -1,0 +1,82 @@
+{
+  "meta": {
+    "proyecto": "Feliz Sin Tiroides — Base nutricional científica",
+    "descripcion": "Recetas maestras. MUESTRA DE FORMATO (1 receta) para validar antes de escalar a 200. Los valores nutricionales son ESTIMACIONES (deben validarse contra tablas de composición USDA/ICBF). Cada clasificación por condición se deriva de fst_clinical_rules.json.",
+    "version": "0.1.0",
+    "fecha_revision": "2026-08-10",
+    "total_recetas": 1,
+    "objetivo_final": 200,
+    "nota_valores": "energia/proteina/carbohidratos/grasas/fibra son ESTIMADOS, no medidos en laboratorio."
+  },
+  "recetas": [
+    {
+      "recipe_id": "FST-DES-001",
+      "nombre": "Arepa de maíz con huevo y aguacate",
+      "tipo_comida": "desayuno",
+      "descripcion": "Desayuno colombiano sencillo y saciante: arepa de maíz asada, huevo y aguacate con un toque de tomate y cebolla. Naturalmente sin gluten y fácil de adaptar.",
+      "porciones": 1,
+      "tiempo_preparacion_min": 15,
+      "dificultad": "fácil",
+      "ingredientes": [
+        { "ingrediente": "Harina de maíz para arepa (masarepa)", "cantidad_g_ml": "40 g", "medida_casera": "1/3 taza", "sustituciones": ["masa de maíz fresca", "arepa ya hecha de maíz puro"] },
+        { "ingrediente": "Agua tibia", "cantidad_g_ml": "60 ml", "medida_casera": "1/4 taza", "sustituciones": [] },
+        { "ingrediente": "Huevo", "cantidad_g_ml": "50 g", "medida_casera": "1 unidad", "sustituciones": ["2 claras (versión baja en yodo)", "tofu firme salteado (versión vegana)"] },
+        { "ingrediente": "Aguacate", "cantidad_g_ml": "70 g", "medida_casera": "1/2 pequeño", "sustituciones": ["omitir para reducir grasa/costo"] },
+        { "ingrediente": "Tomate", "cantidad_g_ml": "40 g", "medida_casera": "1/4 unidad", "sustituciones": [] },
+        { "ingrediente": "Cebolla", "cantidad_g_ml": "15 g", "medida_casera": "1 cucharada picada", "sustituciones": ["cebollín"] },
+        { "ingrediente": "Aceite vegetal", "cantidad_g_ml": "5 ml", "medida_casera": "1 cucharadita", "sustituciones": ["aceite de oliva"] },
+        { "ingrediente": "Sal", "cantidad_g_ml": "1 g", "medida_casera": "1 pizca", "sustituciones": ["sal NO yodada (versión baja en yodo)"] }
+      ],
+      "preparacion": [
+        "Mezcla la masarepa con el agua tibia y una pizca de sal hasta formar una masa suave; deja reposar 2 minutos.",
+        "Forma una arepa de ~1 cm de grosor y ásala en sartén o asador 4–5 minutos por lado hasta que esté dorada.",
+        "Saltea la cebolla y el tomate en el aceite; añade el huevo y revuelve al punto deseado.",
+        "Abre la arepa o sírvela al lado; acompaña con el huevo pericón y el aguacate en tajadas."
+      ],
+      "energia_estimada_kcal": "390",
+      "proteina_estimada_g": "14",
+      "carbohidratos_estimados_g": "34",
+      "grasas_estimadas_g": "22",
+      "fibra_estimada_g": "8",
+      "alergenos": ["huevo"],
+      "vegetariana": true,
+      "vegana": false,
+      "naturalmente_sin_gluten": true,
+      "low_iodine_compatible": false,
+      "iodine_risk": "moderado",
+      "levothyroxine_interaction": false,
+      "interaction_components": [],
+      "condition_matrix": {
+        "hipotiroidismo": { "clasificacion": "APTA", "justificacion": "Desayuno equilibrado y sin gluten; recordar tomar la levotiroxina 30–60 min antes (LT4-ADMIN-01)." },
+        "hashimoto_no_celiaco": { "clasificacion": "APTA", "justificacion": "No requiere quitar gluten ni lácteos; dieta variada (GLU-01)." },
+        "hashimoto_celiaco": { "clasificacion": "APTA_CON_MODIFICACION", "justificacion": "Sin gluten si la arepa es de maíz puro sin contaminación cruzada; verificar trazas (GLU-02)." },
+        "graves_hipertiroidismo": { "clasificacion": "APTA", "justificacion": "Aporta energía y proteína (huevo, aguacate), útiles en estado hipermetabólico; sin exceso de yodo (IOD-EXCESS-01)." },
+        "post_tiroidectomia_estable": { "clasificacion": "APTA", "justificacion": "Comida saludable normal; higiene de horario con la levotiroxina (LT4-ADMIN-01)." },
+        "cancer_tiroides_estable": { "clasificacion": "APTA", "justificacion": "No requiere dieta baja en yodo fuera de la preparación para radioyodo." },
+        "pre_radioyodo": { "clasificacion": "APTA_CON_MODIFICACION", "justificacion": "Usar SOLO clara de huevo, sal NO yodada y sin lácteos para que sea baja en yodo; la yema es de yodo moderado (IOD-RAI-01). Módulo temporal." },
+        "hipoparatiroidismo_postquirurgico": { "clasificacion": "APTA_CON_MODIFICACION", "justificacion": "Adecuada; si usa suplemento de calcio, separarlo ≥4 h de la levotiroxina; requiere seguimiento profesional (LT4-CALCIUM-SUP-01)." }
+      },
+      "clinical_rationale": "Desayuno nutricionalmente equilibrado, naturalmente sin gluten (maíz), con proteína (huevo) y grasas saludables (aguacate). No es una comida 'terapéutica' para la tiroides: es una opción práctica y segura. Si la persona toma levotiroxina por la mañana, conviene desayunar 30–60 minutos después de la toma.",
+      "clinical_claims": ["Naturalmente sin gluten (base de maíz)", "Aporta proteína de buena calidad (huevo)", "Adaptable a dieta baja en yodo con clara de huevo y sal no yodada"],
+      "reglas_aplicadas": ["LT4-ADMIN-01", "GLU-01", "GLU-02", "IOD-RAI-01", "IOD-EXCESS-01", "LT4-CALCIUM-SUP-01"],
+      "evidence_ids": ["EV-LT4-001", "EV-GLU-001", "EV-GLU-002", "EV-IOD-001"],
+      "precauciones": [
+        "Si tomas levotiroxina en la mañana, desayuna 30–60 min después de la toma.",
+        "Para celiaquía: usar arepa de maíz puro sin contaminación cruzada.",
+        "Para preparación de radioyodo: usar solo clara de huevo, sal no yodada y sin lácteos."
+      ],
+      "cuando_no_recomendar": [
+        "Alergia al huevo (usar la adaptación sin huevo).",
+        "Durante dieta baja en yodo estricta si se usa la versión con yema y sal yodada."
+      ],
+      "adaptaciones": {
+        "vegana": "Reemplazar el huevo por tofu firme salteado o fríjoles para mantener la proteína.",
+        "baja_en_yodo": "Usar solo clara de huevo, sal NO yodada y omitir lácteos/quesos.",
+        "sin_gluten_celiaquia": "Usar masarepa/harina de maíz certificada o pura, sin contaminación cruzada.",
+        "alto_en_proteina": "Añadir una clara extra o una porción de fríjoles.",
+        "presupuesto_bajo": "Ingredientes básicos y accesibles; el aguacate puede omitirse o reducirse."
+      },
+      "fecha_revision": "2026-08-10"
+    }
+  ]
+}
