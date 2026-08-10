@@ -78,7 +78,26 @@ export function AuthProvider({ children }) {
       console.error('Error cargando perfil:', error.message);
       return null;
     }
-    setProfile(data || null);
+    if (!data) {
+      // Perfil no existe (usuario creado antes del trigger): lo creamos ahora.
+      const { data: created, error: insertError } = await client
+        .from('profiles')
+        .insert({
+          id: user.id,
+          full_name: user.user_metadata?.full_name || user.user_metadata?.name || user.email?.split('@')[0] || 'Usuario',
+          email: user.email,
+          avatar_url: user.user_metadata?.avatar_url || null,
+        })
+        .select()
+        .single();
+      if (insertError) {
+        console.error('Error creando perfil:', insertError.message);
+        return null;
+      }
+      setProfile(created);
+      return created;
+    }
+    setProfile(data);
     return data;
   }, [user]);
 
@@ -148,6 +167,21 @@ export function AuthProvider({ children }) {
     const client = requireSupabase();
     const { error } = await client.auth.resetPasswordForEmail(email, {
       redirectTo: `${window.location.origin}/mi-espacio?reset=true`,
+    });
+    if (error) {
+      setAuthError(error.message);
+      return { error: error.message };
+    }
+    return { ok: true };
+  }, []);
+
+  const resendConfirmationEmail = useCallback(async email => {
+    setAuthError('');
+    const client = requireSupabase();
+    const { error } = await client.auth.resend({
+      type: 'signup',
+      email,
+      options: { emailRedirectTo: `${window.location.origin}/mi-espacio` },
     });
     if (error) {
       setAuthError(error.message);
@@ -294,6 +328,7 @@ export function AuthProvider({ children }) {
     login,
     loginWithGoogle,
     resetPassword,
+    resendConfirmationEmail,
     updatePassword,
     logout,
     updateProfile,
@@ -309,7 +344,7 @@ export function AuthProvider({ children }) {
     academiaGoogleLogin,
     academiaLogout,
     academiaApi,
-  }), [user, profile, session, loading, authError, profile?.role, supabaseConfigured, register, login, loginWithGoogle, resetPassword, updatePassword, logout, updateProfile, loadProfile, requestAccountDeletion, exportMyData, academiaUser, academiaToken, academiaLoading, academiaLogin, academiaRegister, academiaGoogleLogin, academiaLogout, academiaApi]);
+  }), [user, profile, session, loading, authError, profile?.role, supabaseConfigured, register, login, loginWithGoogle, resetPassword, resendConfirmationEmail, updatePassword, logout, updateProfile, loadProfile, requestAccountDeletion, exportMyData, academiaUser, academiaToken, academiaLoading, academiaLogin, academiaRegister, academiaGoogleLogin, academiaLogout, academiaApi]);
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }

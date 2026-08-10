@@ -65,7 +65,7 @@ function friendlyError(raw) {
 export default function AuthScreen({ onSuccess }) {
   const [searchParams] = useSearchParams();
   const requestedMode = searchParams.get('modo');
-  const { login, register, loginWithGoogle, resetPassword, authError, setAuthError, loading } = useAuth();
+  const { login, register, loginWithGoogle, resetPassword, resendConfirmationEmail, authError, setAuthError, loading } = useAuth();
   const [mode, setMode] = useState(requestedMode === 'registro' ? 'register' : 'login');
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -76,6 +76,8 @@ export default function AuthScreen({ onSuccess }) {
   const [successMessage, setSuccessMessage] = useState('');
   const [submitting, setSubmitting] = useState(false);
   const [googleEnabled, setGoogleEnabled] = useState(null);
+  const [showResend, setShowResend] = useState(false);
+  const [resending, setResending] = useState(false);
 
   useEffect(() => {
     if (!supabaseConfigured || !SUPABASE_URL || !SUPABASE_ANON_KEY) return;
@@ -106,11 +108,25 @@ export default function AuthScreen({ onSuccess }) {
     if (result?.error) setFormError(friendlyError(result.error));
   };
 
+  const handleResend = async () => {
+    setFormError('');
+    setSuccessMessage('');
+    setResending(true);
+    try {
+      const result = await resendConfirmationEmail(email);
+      if (result?.error) setFormError(friendlyError(result.error));
+      else setSuccessMessage('Te reenviamos el enlace de confirmación. Revisa tu correo (y la carpeta de spam).');
+    } finally {
+      setResending(false);
+    }
+  };
+
   const handleSubmit = async event => {
     event.preventDefault();
     setFormError('');
     setSuccessMessage('');
     setAuthError('');
+    setShowResend(false);
 
     if (mode === 'register') {
       if (!name.trim()) return setFormError('Escribe tu nombre.');
@@ -138,8 +154,12 @@ export default function AuthScreen({ onSuccess }) {
         }
       } else if (mode === 'login') {
         const result = await login(email, password);
-        if (result?.error) setFormError(friendlyError(result.error));
-        else onSuccess?.();
+        if (result?.error) {
+          setFormError(friendlyError(result.error));
+          if (/invalid login credentials/i.test(String(result.error))) {
+            setShowResend(true);
+          }
+        } else onSuccess?.();
       } else {
         const result = await resetPassword(email);
         if (result?.error) setFormError(friendlyError(result.error));
@@ -181,6 +201,16 @@ export default function AuthScreen({ onSuccess }) {
           {(formError || authError) && (
             <div className="mt-4 rounded-xl border border-rose-200 bg-rose-50 p-3 text-xs leading-5 text-rose-700" role="alert">
               {formError || friendlyError(authError)}
+              {showResend && mode === 'login' && (
+                <button
+                  type="button"
+                  onClick={handleResend}
+                  disabled={resending || !email.trim()}
+                  className="mt-2 block w-full rounded-lg border border-rose-300 bg-white px-3 py-2 text-xs font-bold text-rose-700 hover:bg-rose-100 disabled:opacity-50"
+                >
+                  {resending ? 'Enviando...' : 'Reenviar enlace de confirmación a mi correo'}
+                </button>
+              )}
             </div>
           )}
           {successMessage && (
