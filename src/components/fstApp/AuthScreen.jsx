@@ -88,9 +88,12 @@ export default function AuthScreen({ onSuccess }) {
       .then(res => res.json())
       .then(data => {
         if (cancelled) return;
-        setGoogleEnabled(Boolean(data?.external?.google));
+        // Solo deshabilitamos el botón si Supabase responde EXPLÍCITAMENTE
+        // que Google está apagado. Si el fetch falla (red/CORS), dejamos
+        // el botón habilitado (null = desconocido, no bloquear).
+        setGoogleEnabled(data?.external?.google === false ? false : true);
       })
-      .catch(() => { if (!cancelled) setGoogleEnabled(false); });
+      .catch(() => { if (!cancelled) setGoogleEnabled(true); });
     return () => { cancelled = true; };
   }, []);
 
@@ -104,8 +107,12 @@ export default function AuthScreen({ onSuccess }) {
   const handleGoogle = async () => {
     setFormError('');
     setAuthError('');
-    const result = await loginWithGoogle();
-    if (result?.error) setFormError(friendlyError(result.error));
+    try {
+      const result = await loginWithGoogle();
+      if (result?.error) setFormError(friendlyError(result.error));
+    } catch (err) {
+      setFormError(friendlyError(err.message));
+    }
   };
 
   const handleResend = async () => {
