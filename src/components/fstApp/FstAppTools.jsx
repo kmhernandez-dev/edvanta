@@ -1,6 +1,8 @@
 /**
  * ============================================================
  *  FstAppTools.jsx — Herramientas de NutriFST IA
+ *
+ *  Datos reales desde Supabase. Sin ficticios ni demo.
  * ============================================================
  */
 
@@ -12,13 +14,15 @@ import {
   ShieldCheck, ShoppingBasket, Sparkles, Stethoscope, Trash2, Upload,
 } from 'lucide-react';
 import { useFstApp, symptomOptions } from '../../context/FstAppContext';
+import { useAuth } from '../../context/AuthContext';
+import { requireSupabase } from '../../lib/supabase';
 import {
   analyzeQuestion, buildWeeklyMenu, replaceMeal, buildShoppingList, checkInteractions,
   buildConsultationReport, mealLabels, uid,
 } from '../../lib/fstApp/nutrifst';
 import { findFood } from '../../data/fstApp/alimentos';
 import { downloadConsultationPdf } from '../../lib/fstApp/pdf';
-import { PageHeading, Panel, Field, SafetyNote, EmptyState, AnswerCard, EvidenceButton, LevelBadge, Chip } from '../fstApp/ui';
+import { PageHeading, Panel, Field, SafetyNote, EmptyState, AnswerCard, EvidenceButton, LevelBadge } from '../fstApp/ui';
 
 const today = () => new Date().toISOString().slice(0, 10);
 const formatDate = value => value ? new Date(`${value}T12:00:00`).toLocaleDateString('es-CO', { day: 'numeric', month: 'short' }) : '';
@@ -33,7 +37,8 @@ const suggestionChips = [
 ];
 
 export function NutriFstChat() {
-  const { state, update } = useFstApp();
+  const { data, addChatMessage, logActivity } = useFstApp();
+  const { user } = useAuth();
   const [input, setInput] = useState('');
   const [typing, setTyping] = useState(false);
   const [menuResult, setMenuResult] = useState(null);
@@ -41,34 +46,40 @@ export function NutriFstChat() {
   const [plateResult, setPlateResult] = useState(null);
   const listRef = useRef(null);
 
-  const send = (text) => {
+  const chatHistory = data.chatHistory || [];
+
+  const send = async text => {
     const question = (text ?? input).trim();
     if (!question || typing) return;
     setInput('');
     setTyping(true);
-    const userMessage = { id: uid('chat'), role: 'user', text: question, at: new Date().toISOString() };
-    update('chatHistory', items => [userMessage, ...items]);
-    window.setTimeout(() => {
-      const answer = analyzeQuestion(question, state.profile);
-      const assistantMessage = {
-        id: uid('chat'),
-        role: 'assistant',
-        text: answer.brief,
-        at: new Date().toISOString(),
-        level: answer.level,
-        evidence: answer.evidence,
-        redNote: answer.redNote,
-      };
-      update('chatHistory', items => [assistantMessage, ...items]);
+    await addChatMessage('user', question);
+    window.setTimeout(async () => {
+      const medications = data.medications || [];
+      const levo = medications.find(item => item.medication_name.toLowerCase().includes('levotiroxina') && item.active);
+      const supplements = medications.filter(item => item.medication_type === 'suplemento' && item.active);
+      const answer = analyzeQuestion(question, {
+        levoTime: levo?.schedule_time || '',
+        medications: levo ? [{ name: levo.medication_name }] : [],
+        supplements: supplements.map(item => ({ name: item.medication_name })),
+        lowIodineMode: data.preferences?.low_iodine_mode || false,
+        symptoms: (data.symptomLogs || []).map(item => ({ name: item.symptoms?.name || 'Síntoma', date: item.log_date, intensity: item.intensity })),
+      });
+      await addChatMessage('assistant', answer.brief, answer.level, answer.evidence);
       setMenuResult(answer.menu || null);
       setCookResult(answer.recipes || null);
       setPlateResult(answer.estimate || null);
       setTyping(false);
+      logActivity('nutrifst_question', 'chat_history');
       window.setTimeout(() => listRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
     }, 700);
   };
 
-  const clearChat = () => update('chatHistory', []);
+  const clearChat = async () => {
+    const client = requireSupabase();
+    if (!user) return;
+    await client.from('chat_history').delete().eq('user_id', user.id);
+  };
 
   return (
     <>
@@ -76,11 +87,6 @@ export function NutriFstChat() {
         eyebrow="NutriFST IA"
         title="Pregúntale a NutriFST"
         description="Alimentos, interacciones con levotiroxina, menús, suplementos y más. Respuestas educativas con evidencia verificable."
-        action={
-          <button type="button" onClick={clearChat} className="inline-flex min-h-10 items-center gap-2 rounded-full border border-[#e5dceb] px-3 text-xs font-bold text-slate-500 hover:bg-[#faf8fd]">
-            <RefreshCw className="h-3.5 w-3.5" /> Limpiar conversación
-          </button>
-        }
       />
 
       <SafetyNote>NutriFST no diagnostica, no modifica dosis ni reemplaza a tu profesional de salud. Ante una emergencia, busca atención médica inmediata.</SafetyNote>
@@ -94,11 +100,11 @@ export function NutriFstChat() {
       </div>
 
       <div ref={listRef} className="mt-4 space-y-4">
-        {state.chatHistory.map(message => (
+        {chatHistory.map(message => (
           <div key={message.id} className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}>
             <div className={`max-w-[92%] sm:max-w-[80%] ${message.role === 'user' ? 'rounded-2xl rounded-br-md bg-[#0A2540] px-4 py-3 text-sm leading-6 text-white' : 'w-full'}`}>
               {message.role === 'user' ? (
-                <p className="whitespace-pre-line">{message.text}</p>
+                <p className="whitespace-pre-line">{message.content}</p>
               ) : (
                 <div className="rounded-2xl border border-[#f0eaf5] bg-white p-4 shadow-[0_2px_12px_rgba(10,37,64,0.05)]">
                   <div className="flex items-center justify-between gap-2">
@@ -107,8 +113,7 @@ export function NutriFstChat() {
                     </span>
                     <LevelBadge level={message.level} />
                   </div>
-                  <p className="mt-2 whitespace-pre-line text-sm leading-6 text-slate-700">{message.text}</p>
-                  {message.redNote && <p className="mt-2 text-xs font-bold text-rose-700">{message.redNote}</p>}
+                  <p className="mt-2 whitespace-pre-line text-sm leading-6 text-slate-700">{message.content}</p>
                   <EvidenceButton evidenceIds={message.evidence} compact />
                 </div>
               )}
@@ -209,42 +214,100 @@ export function NutriFstChat() {
 }
 
 export function LevoSection() {
-  const { state, update, add } = useFstApp();
-  const profile = state.profile;
-  const [time, setTime] = useState(profile.levoTime || '');
-  const [dose, setDose] = useState(profile.levoDose || '');
+  const { data, insert, update, logActivity } = useFstApp();
+  const [time, setTime] = useState('');
+  const [dose, setDose] = useState('');
   const [note, setNote] = useState('');
-  const interactions = useMemo(() => checkInteractions(profile), [profile]);
+  const [message, setMessage] = useState('');
+  const [error, setError] = useState('');
 
-  const saveTime = () => {
-    update('profile', current => ({ ...current, levoTime: time, levoDose: dose }));
-  };
+  const medications = data.medications || [];
+  const medicationLogs = data.medicationLogs || [];
+  const levo = medications.find(item => item.medication_name.toLowerCase().includes('levotiroxina') && item.active);
 
-  const logToday = () => {
-    const existing = state.levoLog.find(item => item.date === today());
-    if (existing) {
-      update('levoLog', items => items.map(item => item.id === existing.id ? { ...item, status: 'Tomada', time: time || profile.levoTime, note } : item));
-    } else {
-      add('levoLog', { id: uid('levo'), date: today(), time: time || profile.levoTime, status: 'Tomada', note });
+  const interactions = useMemo(() => {
+    const supplements = medications.filter(item => item.medication_type === 'suplemento' && item.active);
+    return checkInteractions({
+      levoTime: levo?.schedule_time || '',
+      medications: levo ? [{ name: levo.medication_name }] : [],
+      supplements: supplements.map(item => ({ name: item.medication_name })),
+      lowIodineMode: data.preferences?.low_iodine_mode || false,
+    });
+  }, [medications, levo, data.preferences]);
+
+  const saveTime = async () => {
+    setMessage('');
+    setError('');
+    if (!levo) {
+      const result = await insert('medications', {
+        medication_name: 'Levotiroxina',
+        medication_type: 'medicamento',
+        dose: dose ? Number(dose) : null,
+        dose_unit: 'mcg',
+        frequency: 'Diaria',
+        schedule_time: time || null,
+        active: true,
+      });
+      if (result.error) setError(result.error);
+      else {
+        setMessage('Levotiroxina registrada correctamente.');
+        logActivity('medication_created', 'medications');
+      }
+      return;
     }
-    setNote('');
+    const result = await update('medications', levo.id, {
+      dose: dose ? Number(dose) : levo.dose,
+      schedule_time: time || levo.schedule_time,
+    });
+    if (result.error) setError(result.error);
+    else {
+      setMessage('Horario guardado correctamente.');
+      logActivity('medication_updated', 'medications');
+    }
   };
 
-  const timeline = [...state.levoLog].sort((a, b) => String(b.date).localeCompare(String(a.date))).slice(0, 14);
+  const logToday = async () => {
+    setMessage('');
+    setError('');
+    if (!levo) return;
+    const existing = medicationLogs.find(item => item.medication_id === levo.id && item.scheduled_at?.slice(0, 10) === today());
+    if (existing) {
+      await update('medication_logs', existing.id, { status: 'taken', taken_at: new Date().toISOString(), notes: note });
+    } else {
+      await insert('medication_logs', {
+        medication_id: levo.id,
+        scheduled_at: `${today()}T${levo.schedule_time || '07:00'}:00`,
+        taken_at: new Date().toISOString(),
+        status: 'taken',
+        notes: note,
+      });
+    }
+    setMessage('Toma registrada.');
+    setNote('');
+    logActivity('medication_taken', 'medication_logs');
+  };
+
+  const timeline = [...medicationLogs]
+    .filter(item => item.medication_id === levo?.id)
+    .sort((a, b) => String(b.scheduled_at).localeCompare(String(a.scheduled_at)))
+    .slice(0, 14);
 
   return (
     <>
       <PageHeading eyebrow="Mi medicamento" title="Registrar mi levotiroxina" description="Guarda tu horario y marca tu toma diaria. Nunca te sugeriremos cambiar dosis: eso es decisión de tu equipo de salud." />
       <SafetyNote>Esta herramienta organiza tu registro. No modifica dosis, no suspende medicamentos y no reemplaza la indicación de tu profesional.</SafetyNote>
 
+      {message && <div className="mt-4 rounded-xl border border-emerald-200 bg-emerald-50 p-3 text-sm font-semibold text-emerald-800">{message}</div>}
+      {error && <div className="mt-4 rounded-xl border border-rose-200 bg-rose-50 p-3 text-sm font-semibold text-rose-700">{error}</div>}
+
       <div className="mt-6 grid gap-4 lg:grid-cols-2">
         <Panel title="Mi horario" description="La hora habitual en la que tomas tu levotiroxina" icon={Pill}>
           <div className="grid gap-4 sm:grid-cols-2">
             <Field label="Hora habitual">
-              <input type="time" value={time} onChange={event => setTime(event.target.value)} />
+              <input type="time" value={time || levo?.schedule_time || ''} onChange={event => setTime(event.target.value)} />
             </Field>
-            <Field label="Dosis" hint="Como aparece en tu caja o frasco.">
-              <input value={dose} onChange={event => setDose(event.target.value)} placeholder="Ej. 100 mcg" />
+            <Field label="Dosis (mcg)" hint="Como aparece en tu caja o frasco.">
+              <input type="number" inputMode="decimal" value={dose || levo?.dose || ''} onChange={event => setDose(event.target.value)} placeholder="Ej. 100" />
             </Field>
           </div>
           <button type="button" onClick={saveTime} className="mt-4 inline-flex min-h-11 items-center gap-2 rounded-xl bg-[#0A2540] px-4 text-sm font-bold text-white hover:bg-[#123b5f]">
@@ -261,12 +324,12 @@ export function LevoSection() {
           <div className="flex items-center justify-between rounded-xl border border-[#f0eaf5] bg-[#faf8fd] p-4">
             <div>
               <p className="text-sm font-semibold text-[#0A2540]">Hoy · {formatDate(today())}</p>
-              <p className="text-xs text-slate-500">{time || profile.levoTime || 'Sin horario registrado'} · {dose || profile.levoDose || 'Sin dosis registrada'}</p>
+              <p className="text-xs text-slate-500">{levo?.schedule_time || 'Sin horario registrado'} · {levo?.dose ? `${levo.dose} mcg` : 'Sin dosis registrada'}</p>
             </div>
-            {state.levoLog.find(item => item.date === today())?.status === 'Tomada' ? (
+            {medicationLogs.find(item => item.medication_id === levo?.id && item.scheduled_at?.slice(0, 10) === today())?.status === 'taken' ? (
               <span className="inline-flex items-center gap-1 rounded-full bg-emerald-50 px-3 py-1.5 text-xs font-bold text-emerald-700"><Check className="h-3.5 w-3.5" /> Registrada</span>
             ) : (
-              <button type="button" onClick={logToday} className="rounded-full bg-[#2CB1A1] px-4 py-2 text-xs font-bold text-white hover:bg-[#27a08f]">Registrar toma</button>
+              <button type="button" onClick={logToday} disabled={!levo} className="rounded-full bg-[#2CB1A1] px-4 py-2 text-xs font-bold text-white hover:bg-[#27a08f] disabled:opacity-40">Registrar toma</button>
             )}
           </div>
           <Field label="Nota (opcional)" hint="Ej. la tomé más tarde por un cambio de rutina.">
@@ -282,10 +345,10 @@ export function LevoSection() {
               {timeline.map((item, index) => (
                 <div key={item.id} className="relative flex gap-3 pb-4">
                   {index < timeline.length - 1 && <span className="absolute left-[7px] top-5 h-full w-px bg-[#eae2f8]" />}
-                  <span className={`mt-1 h-3.5 w-3.5 shrink-0 rounded-full border-2 ${item.status === 'Tomada' ? 'border-[#2CB1A1] bg-[#2CB1A1]' : 'border-amber-400 bg-amber-50'}`} />
+                  <span className={`mt-1 h-3.5 w-3.5 shrink-0 rounded-full border-2 ${item.status === 'taken' ? 'border-[#2CB1A1] bg-[#2CB1A1]' : 'border-amber-400 bg-amber-50'}`} />
                   <div className="min-w-0">
-                    <p className="text-sm font-semibold text-[#0A2540]">{formatDate(item.date)} · {item.time}</p>
-                    <p className="text-xs text-slate-500">{item.status}{item.note ? ` — ${item.note}` : ''}</p>
+                    <p className="text-sm font-semibold text-[#0A2540]">{formatDate(item.scheduled_at?.slice(0, 10))} · {item.scheduled_at?.slice(11, 16)}</p>
+                    <p className="text-xs text-slate-500">{item.status === 'taken' ? 'Tomada' : item.status}{item.notes ? ` — ${item.notes}` : ''}</p>
                   </div>
                 </div>
               ))}
@@ -322,7 +385,7 @@ export function LevoSection() {
 }
 
 export function FoodCheckSection() {
-  const { state } = useFstApp();
+  const { data } = useFstApp();
   const [query, setQuery] = useState('');
   const [result, setResult] = useState(null);
 
@@ -378,7 +441,7 @@ export function FoodCheckSection() {
               <p className="text-xs font-bold uppercase tracking-widest text-[#9274C9]">Consideración con suplementos</p>
               <p className="mt-1">{result.supplements}</p>
             </div>
-            {state.profile.lowIodineMode && (
+            {data.preferences?.low_iodine_mode && (
               <div className="rounded-xl border border-amber-200 bg-amber-50 p-3">
                 <p className="text-xs font-bold uppercase tracking-widest text-amber-800">Dieta baja en yodo</p>
                 <p className="mt-1">{result.lowIodine}</p>
@@ -404,18 +467,17 @@ export function FoodCheckSection() {
 }
 
 export function PlateScanner() {
-  const { state, add } = useFstApp();
-  const [image, setImage] = useState(null);
+  const { data, insert, logActivity } = useFstApp();
   const [imageUrl, setImageUrl] = useState('');
   const [detected, setDetected] = useState(null);
   const [confirmed, setConfirmed] = useState(false);
   const [items, setItems] = useState([]);
   const [meal, setMeal] = useState('Almuerzo');
   const [saved, setSaved] = useState(false);
+  const [message, setMessage] = useState('');
 
   const onImage = file => {
     if (!file) return;
-    setImage(file);
     setImageUrl(URL.createObjectURL(file));
     setDetected([
       { name: 'huevo', amount: 1 },
@@ -438,16 +500,24 @@ export function PlateScanner() {
     setDetected(null);
   };
 
-  const saveMeal = () => {
+  const saveMeal = async () => {
     const description = items.map(item => `${item.amount} ${item.name}`).join(', ');
-    add('meals', { id: uid('meal'), date: today(), meal, description, items });
-    setSaved(true);
+    const result = await insert('meals', { meal_type: meal, description, items, meal_date: today() });
+    if (result.error) {
+      setMessage(`Error: ${result.error}`);
+    } else {
+      setSaved(true);
+      setMessage('Comida registrada correctamente.');
+      logActivity('meal_created', 'meals');
+    }
   };
 
   return (
     <>
       <PageHeading eyebrow="Escáner de comidas" title="Analiza tu plato" description="Sube una fotografía de tu comida. La IA identifica tentativamente los alimentos y tú confirmas antes de analizar." />
       <SafetyNote>La identificación de alimentos es tentativa y puede fallar. Siempre revisa y corrige antes de guardar.</SafetyNote>
+
+      {message && <div className="mt-4 rounded-xl border border-emerald-200 bg-emerald-50 p-3 text-sm font-semibold text-emerald-800">{message}</div>}
 
       <div className="mt-6 grid gap-4 lg:grid-cols-2">
         <Panel title="Sube tu foto" icon={Upload}>
@@ -464,7 +534,7 @@ export function PlateScanner() {
             </label>
           )}
           {imageUrl && (
-            <button type="button" onClick={() => { setImageUrl(''); setImage(null); setDetected(null); setConfirmed(false); setSaved(false); }} className="mt-3 text-xs font-bold text-slate-500 hover:text-rose-600">
+            <button type="button" onClick={() => { setImageUrl(''); setDetected(null); setConfirmed(false); setSaved(false); }} className="mt-3 text-xs font-bold text-slate-500 hover:text-rose-600">
               Quitar foto
             </button>
           )}
@@ -543,11 +613,6 @@ export function PlateScanner() {
               </button>
             </>
           )}
-          {saved && (
-            <div className="mt-4 rounded-xl border border-emerald-200 bg-emerald-50 p-3 text-sm font-semibold text-emerald-800">
-              Comida registrada. Puedes ver el desglose estimado en NutriFST o en tu progreso.
-            </div>
-          )}
         </Panel>
       </div>
     </>
@@ -555,29 +620,44 @@ export function PlateScanner() {
 }
 
 export function MenusSection() {
-  const { state, update } = useFstApp();
-  const [menu, setMenu] = useState(state.menu);
+  const { data, insert, logActivity } = useFstApp();
+  const [menu, setMenu] = useState(null);
   const [activeDay, setActiveDay] = useState(0);
   const [optionOpen, setOptionOpen] = useState(null);
+  const [message, setMessage] = useState('');
 
-  const generate = () => {
-    const next = buildWeeklyMenu(state.profile);
+  const generate = async () => {
+    const prefs = data.preferences || {};
+    const next = buildWeeklyMenu({
+      budget: prefs.budget || 'medio',
+      cookTime: prefs.cook_time_min || 30,
+      people: prefs.people_count || 1,
+    });
     setMenu(next);
-    update('menu', next);
+    const result = await insert('menus', { menu_data: next });
+    if (result.error) setMessage(`Error: ${result.error}`);
+    else {
+      setMessage('Menú generado y guardado correctamente.');
+      logActivity('menu_generated', 'menus');
+    }
   };
 
   const changeMeal = (dayIndex, meal, option) => {
     const result = replaceMeal(menu, dayIndex, meal, option);
     setMenu(result.menu);
-    update('menu', result.menu);
     setOptionOpen(null);
   };
 
-  const buildList = () => {
+  const buildList = async () => {
     if (!menu) return;
     const recipes = menu.flatMap(day => [day.desayuno, day.almuerzo, day.cena, day.snack]);
     const list = buildShoppingList(recipes);
-    update('shoppingList', list);
+    const result = await insert('shopping_lists', { list_data: list });
+    if (result.error) setMessage(`Error: ${result.error}`);
+    else {
+      setMessage('Lista de compras creada correctamente.');
+      logActivity('shopping_list_created', 'shopping_lists');
+    }
   };
 
   const day = menu?.[activeDay];
@@ -594,6 +674,8 @@ export function MenusSection() {
           </button>
         }
       />
+
+      {message && <div className="mt-4 rounded-xl border border-emerald-200 bg-emerald-50 p-3 text-sm font-semibold text-emerald-800">{message}</div>}
 
       {!menu ? (
         <div className="mt-6">
@@ -681,7 +763,7 @@ export function MenusSection() {
 }
 
 export function CookSection() {
-  const { state, update } = useFstApp();
+  const { data } = useFstApp();
   const [ingredients, setIngredients] = useState('');
   const [results, setResults] = useState(null);
 
@@ -689,7 +771,7 @@ export function CookSection() {
     event.preventDefault();
     if (!ingredients.trim()) return;
     const list = ingredients.split(',').map(item => item.trim()).filter(Boolean);
-    const answer = analyzeQuestion(`Cocina con lo que tengo: ${list.join(', ')}`, state.profile);
+    const answer = analyzeQuestion(`Cocina con lo que tengo: ${list.join(', ')}`, {});
     setResults(answer.recipes || []);
   };
 
@@ -734,10 +816,10 @@ export function CookSection() {
 }
 
 export function ShoppingListSection() {
-  const { state, update } = useFstApp();
+  const { data } = useFstApp();
   const [checked, setChecked] = useState({});
   const [have, setHave] = useState({});
-  const list = state.shoppingList;
+  const list = data.shoppingLists?.[0]?.list_data || null;
 
   const toggle = (group, name) => {
     const key = `${group}:${name}`;
@@ -803,12 +885,15 @@ export function ShoppingListSection() {
 }
 
 export function SupplementsSection() {
-  const { state, updateProfile } = useFstApp();
+  const { data, insert, remove, logActivity } = useFstApp();
   const [imageUrl, setImageUrl] = useState('');
   const [detected, setDetected] = useState(null);
   const [confirmed, setConfirmed] = useState(false);
   const [form, setForm] = useState({ name: '', dose: '', time: '', note: '' });
-  const supplements = state.profile.supplements;
+  const [message, setMessage] = useState('');
+  const [error, setError] = useState('');
+
+  const supplements = (data.medications || []).filter(item => item.medication_type === 'suplemento');
 
   const onImage = file => {
     if (!file) return;
@@ -826,18 +911,36 @@ export function SupplementsSection() {
     setDetected(null);
   };
 
-  const save = () => {
+  const save = async () => {
+    setMessage('');
+    setError('');
     if (!form.name.trim()) return;
-    updateProfile({ supplements: [...supplements, { id: uid('sup'), ...form }] });
-    setForm({ name: '', dose: '', time: '', note: '' });
-    setImageUrl('');
-    setConfirmed(false);
+    const result = await insert('medications', {
+      medication_name: form.name.trim(),
+      medication_type: 'suplemento',
+      dose: form.dose ? Number(form.dose) : null,
+      dose_unit: 'mg',
+      schedule_time: form.time || null,
+      notes: form.note,
+      active: true,
+    });
+    if (result.error) setError(result.error);
+    else {
+      setMessage('Suplemento guardado correctamente.');
+      setForm({ name: '', dose: '', time: '', note: '' });
+      setImageUrl('');
+      setConfirmed(false);
+      logActivity('supplement_created', 'medications');
+    }
   };
 
   return (
     <>
       <PageHeading eyebrow="Escáner de suplementos" title="Revisa tus suplementos" description="Sube una fotografía de la etiqueta. Detectamos tentativamente los componentes y tú confirmas antes de guardar." />
       <SafetyNote>No recomendamos iniciar suplementos automáticamente. Esta herramienta solo organiza lo que ya tomas y señala consideraciones para conversar con tu profesional.</SafetyNote>
+
+      {message && <div className="mt-4 rounded-xl border border-emerald-200 bg-emerald-50 p-3 text-sm font-semibold text-emerald-800">{message}</div>}
+      {error && <div className="mt-4 rounded-xl border border-rose-200 bg-rose-50 p-3 text-sm font-semibold text-rose-700">{error}</div>}
 
       <div className="mt-6 grid gap-4 lg:grid-cols-2">
         <Panel title="Sube la etiqueta" icon={Upload}>
@@ -887,7 +990,7 @@ export function SupplementsSection() {
             <>
               <div className="grid gap-3 sm:grid-cols-2">
                 <Field label="Nombre"><input value={form.name} onChange={event => setForm(current => ({ ...current, name: event.target.value }))} placeholder="Ej. Calcio" /></Field>
-                <Field label="Dosis"><input value={form.dose} onChange={event => setForm(current => ({ ...current, dose: event.target.value }))} placeholder="Ej. 500 mg" /></Field>
+                <Field label="Dosis (mg)"><input type="number" inputMode="decimal" value={form.dose} onChange={event => setForm(current => ({ ...current, dose: event.target.value }))} placeholder="Ej. 500" /></Field>
                 <Field label="Horario"><input type="time" value={form.time} onChange={event => setForm(current => ({ ...current, time: event.target.value }))} /></Field>
                 <Field label="Nota"><input value={form.note} onChange={event => setForm(current => ({ ...current, note: event.target.value }))} placeholder="Opcional" /></Field>
               </div>
@@ -906,14 +1009,14 @@ export function SupplementsSection() {
               {supplements.map(item => (
                 <div key={item.id} className="flex items-center justify-between rounded-xl border border-[#f0eaf5] bg-[#faf8fd] p-3">
                   <div>
-                    <p className="text-sm font-semibold text-[#0A2540]">{item.name}</p>
-                    <p className="text-xs text-slate-500">{item.dose} · {item.time || 'Sin horario'}{item.note ? ` · ${item.note}` : ''}</p>
+                    <p className="text-sm font-semibold text-[#0A2540]">{item.medication_name}</p>
+                    <p className="text-xs text-slate-500">{item.dose ?? ''} {item.dose_unit || ''} · {item.schedule_time || 'Sin horario'}{item.notes ? ` · ${item.notes}` : ''}</p>
                   </div>
                   <button
                     type="button"
-                    onClick={() => updateProfile({ supplements: supplements.filter(s => s.id !== item.id) })}
+                    onClick={async () => { await remove('medications', item.id); logActivity('supplement_deleted', 'medications'); }}
                     className="flex h-9 w-9 items-center justify-center rounded-full text-slate-400 hover:bg-rose-50 hover:text-rose-600"
-                    aria-label={`Eliminar ${item.name}`}
+                    aria-label={`Eliminar ${item.medication_name}`}
                   >
                     <Trash2 className="h-4 w-4" />
                   </button>
@@ -931,23 +1034,44 @@ export function SupplementsSection() {
 }
 
 export function SymptomsSection() {
-  const { state, add, remove } = useFstApp();
+  const { data, insert, remove, logActivity } = useFstApp();
   const [name, setName] = useState('Energía');
   const [intensity, setIntensity] = useState(5);
   const [notes, setNotes] = useState('');
+  const [message, setMessage] = useState('');
+  const [error, setError] = useState('');
 
-  const save = event => {
+  const symptoms = data.symptoms || [];
+  const symptomLogs = data.symptomLogs || [];
+
+  const save = async event => {
     event.preventDefault();
-    add('symptoms', { id: uid('sym'), name, date: today(), intensity, notes });
-    setNotes('');
+    setMessage('');
+    setError('');
+    let symptom = symptoms.find(item => item.name === name);
+    if (!symptom) {
+      const result = await insert('symptoms', { name });
+      if (result.error) return setError(result.error);
+      symptom = result.data;
+    }
+    const result = await insert('symptom_logs', { symptom_id: symptom.id, intensity, log_date: today(), notes });
+    if (result.error) setError(result.error);
+    else {
+      setMessage('Síntoma registrado correctamente.');
+      setNotes('');
+      logActivity('symptom_logged', 'symptom_logs');
+    }
   };
 
-  const recent = [...state.symptoms].sort((a, b) => String(b.date).localeCompare(String(a.date))).slice(0, 10);
+  const recent = [...symptomLogs].sort((a, b) => String(b.log_date).localeCompare(String(a.log_date))).slice(0, 10);
 
   return (
     <>
       <PageHeading eyebrow="Diario de síntomas" title="Registra cómo te sientes" description="Energía, sueño, digestión, concentración y más. Sin lenguaje de culpa: registrar es observar, no juzgar." />
       <SafetyNote>Una asociación observada no significa necesariamente que una variable sea la causa de la otra. Lleva tus tendencias a la consulta.</SafetyNote>
+
+      {message && <div className="mt-4 rounded-xl border border-emerald-200 bg-emerald-50 p-3 text-sm font-semibold text-emerald-800">{message}</div>}
+      {error && <div className="mt-4 rounded-xl border border-rose-200 bg-rose-50 p-3 text-sm font-semibold text-rose-700">{error}</div>}
 
       <div className="mt-6 grid gap-4 lg:grid-cols-2">
         <Panel title="Nuevo registro" icon={HeartPulse}>
@@ -958,7 +1082,7 @@ export function SymptomsSection() {
               </select>
             </Field>
             <Field label={`Intensidad: ${intensity}/10`}>
-              <input type="range" min="1" max="10" value={intensity} onChange={event => setIntensity(Number(event.target.value))} />
+              <input type="range" min="0" max="10" value={intensity} onChange={event => setIntensity(Number(event.target.value))} />
             </Field>
             <Field label="Nota (opcional)">
               <textarea rows="2" value={notes} onChange={event => setNotes(event.target.value)} placeholder="Ej. después del almuerzo, en la tarde..." />
@@ -975,13 +1099,13 @@ export function SymptomsSection() {
               {recent.map(item => (
                 <div key={item.id} className="flex items-center gap-3 rounded-xl border border-[#f0eaf5] p-3">
                   <div className="min-w-0 flex-1">
-                    <p className="text-sm font-semibold text-[#0A2540]">{item.name} · {item.intensity}/10</p>
-                    <p className="text-xs text-slate-500">{formatDate(item.date)}{item.notes ? ` — ${item.notes}` : ''}</p>
+                    <p className="text-sm font-semibold text-[#0A2540]">{item.symptoms?.name || 'Síntoma'} · {item.intensity}/10</p>
+                    <p className="text-xs text-slate-500">{formatDate(item.log_date)}{item.notes ? ` — ${item.notes}` : ''}</p>
                   </div>
                   <div className="h-2 w-16 overflow-hidden rounded-full bg-[#f0eaf5]">
                     <div className="h-full rounded-full bg-[#2CB1A1]" style={{ width: `${item.intensity * 10}%` }} />
                   </div>
-                  <button type="button" onClick={() => remove('symptoms', item.id)} className="flex h-9 w-9 items-center justify-center rounded-full text-slate-400 hover:bg-rose-50 hover:text-rose-600" aria-label="Eliminar registro">
+                  <button type="button" onClick={async () => { await remove('symptom_logs', item.id); logActivity('symptom_log_deleted', 'symptom_logs'); }} className="flex h-9 w-9 items-center justify-center rounded-full text-slate-400 hover:bg-rose-50 hover:text-rose-600" aria-label="Eliminar registro">
                     <Trash2 className="h-4 w-4" />
                   </button>
                 </div>
@@ -997,22 +1121,28 @@ export function SymptomsSection() {
 }
 
 export function YodoSection() {
-  const { state, updateProfile } = useFstApp();
-  const profile = state.profile;
+  const { data, upsertPreferences, logActivity } = useFstApp();
   const [confirmOpen, setConfirmOpen] = useState(false);
   const [targetDate, setTargetDate] = useState('');
+  const [message, setMessage] = useState('');
 
-  const activate = () => {
-    updateProfile({ lowIodineMode: true, lowIodineConfirmed: true, yodoTargetDate: targetDate });
+  const prefs = data.preferences || {};
+
+  const activate = async () => {
+    await upsertPreferences({ low_iodine_mode: true, low_iodine_confirmed: true, yodo_target_date: targetDate || null });
     setConfirmOpen(false);
+    setMessage('Modo de preparación para radioyodo activado.');
+    logActivity('low_iodine_mode_activated', 'user_preferences');
   };
 
-  const deactivate = () => {
-    updateProfile({ lowIodineMode: false, lowIodineConfirmed: false });
+  const deactivate = async () => {
+    await upsertPreferences({ low_iodine_mode: false, low_iodine_confirmed: false });
+    setMessage('Modo desactivado.');
+    logActivity('low_iodine_mode_deactivated', 'user_preferences');
   };
 
-  const daysLeft = profile.yodoTargetDate
-    ? Math.max(0, Math.ceil((new Date(`${profile.yodoTargetDate}T12:00:00`) - new Date()) / 86400000))
+  const daysLeft = prefs.yodo_target_date
+    ? Math.max(0, Math.ceil((new Date(`${prefs.yodo_target_date}T12:00:00`) - new Date()) / 86400000))
     : null;
 
   return (
@@ -1020,7 +1150,9 @@ export function YodoSection() {
       <PageHeading eyebrow="Modo especial" title="Preparación para radioyodo" description="Un modo independiente con calendario, alimentos, recetas, menú, lista de compras y revisión de suplementos." />
       <SafetyNote>La dieta baja en yodo es temporal y debe realizarse siguiendo las indicaciones del equipo tratante.</SafetyNote>
 
-      {!profile.lowIodineMode ? (
+      {message && <div className="mt-4 rounded-xl border border-emerald-200 bg-emerald-50 p-3 text-sm font-semibold text-emerald-800">{message}</div>}
+
+      {!prefs.low_iodine_mode ? (
         <div className="mt-6 rounded-2xl border border-[#eae2f8] bg-white p-6 shadow-[0_2px_12px_rgba(10,37,64,0.05)]">
           <h2 className="text-lg font-semibold text-[#0A2540]">Activar el modo</h2>
           <p className="mt-2 text-sm leading-6 text-slate-600">Este modo solo debe activarse si tu equipo de salud te indicó una dieta baja en yodo antes de la yodoterapia o un rastreo.</p>
@@ -1101,34 +1233,43 @@ export function YodoSection() {
 }
 
 export function ConsultaSection() {
-  const { state, update } = useFstApp();
+  const { data, logActivity } = useFstApp();
+  const { profile } = useAuth();
   const [range, setRange] = useState(30);
-  const [question, setQuestion] = useState('');
   const [generating, setGenerating] = useState(false);
-
-  const addQuestion = event => {
-    event.preventDefault();
-    if (!question.trim()) return;
-    update('questions', items => [...items, question.trim()]);
-    setQuestion('');
-  };
 
   const generatePdf = async () => {
     setGenerating(true);
     try {
-      const report = buildConsultationReport(state);
+      const medications = data.medications || [];
+      const levo = medications.find(item => item.medication_name.toLowerCase().includes('levotiroxina') && item.active);
+      const supplements = medications.filter(item => item.medication_type === 'suplemento' && item.active);
+      const report = buildConsultationReport({
+        name: profile?.full_name || '',
+        country: profile?.country || '',
+        condition: data.thyroidProfile?.condition_type || '',
+        surgery: data.thyroidProfile?.surgery_type || '',
+        levoTime: levo?.schedule_time || '',
+        medications: levo ? [{ name: levo.medication_name, dose: levo.dose ? `${levo.dose} ${levo.dose_unit || ''}` : '', time: levo.schedule_time || '' }] : [],
+        supplements: supplements.map(item => ({ name: item.medication_name, dose: item.dose ? `${item.dose} ${item.dose_unit || ''}` : '', time: item.schedule_time || '' })),
+        levoLog: (data.medicationLogs || []).filter(item => item.medication_id === levo?.id).map(item => ({ date: item.scheduled_at?.slice(0, 10), time: item.scheduled_at?.slice(11, 16), status: item.status })),
+        meals: (data.meals || []).map(item => ({ date: item.meal_date, meal: item.meal_type, description: item.description })),
+        symptoms: (data.symptomLogs || []).map(item => ({ name: item.symptoms?.name || 'Síntoma', date: item.log_date, intensity: item.intensity, notes: item.notes })),
+        questions: (data.questions || []).filter(item => item.status === 'pending').map(item => item.question),
+      });
       await downloadConsultationPdf(report);
+      logActivity('consultation_pdf_generated', 'documents');
     } finally {
       setGenerating(false);
     }
   };
 
-  const recentSymptoms = [...state.symptoms]
+  const recentSymptoms = (data.symptomLogs || [])
     .filter(item => {
-      const days = (Date.now() - new Date(item.date).getTime()) / 86400000;
+      const days = (Date.now() - new Date(item.log_date).getTime()) / 86400000;
       return days <= range;
     })
-    .sort((a, b) => String(b.date).localeCompare(String(a.date)));
+    .sort((a, b) => String(b.log_date).localeCompare(String(a.log_date)));
 
   return (
     <>
@@ -1153,12 +1294,12 @@ export function ConsultaSection() {
         }>
           <div className="grid grid-cols-2 gap-3">
             {[
-              ['Medicamentos', state.profile.levoDose ? `Levotiroxina ${state.profile.levoDose}` : 'Sin dosis registrada'],
-              ['Horario', state.profile.levoTime || 'Sin horario'],
-              ['Suplementos', state.profile.supplements.length],
-              ['Comidas', state.meals.length],
+              ['Medicamentos', (data.medications || []).filter(item => item.active).length],
+              ['Suplementos', (data.medications || []).filter(item => item.medication_type === 'suplemento').length],
+              ['Comidas', (data.meals || []).length],
               ['Síntomas', recentSymptoms.length],
-              ['Tomas de levotiroxina', state.levoLog.length],
+              ['Tomas de levotiroxina', (data.medicationLogs || []).length],
+              ['Preguntas', (data.questions || []).filter(item => item.status === 'pending').length],
             ].map(([label, value]) => (
               <div key={label} className="rounded-xl border border-[#f0eaf5] bg-[#faf8fd] p-3">
                 <p className="text-[10px] font-bold uppercase tracking-widest text-slate-400">{label}</p>
@@ -1173,8 +1314,8 @@ export function ConsultaSection() {
             <div className="space-y-2">
               {recentSymptoms.slice(0, 8).map(item => (
                 <div key={item.id} className="flex items-center justify-between rounded-xl border border-[#f0eaf5] p-2.5">
-                  <p className="text-sm font-semibold text-[#0A2540]">{item.name} · {item.intensity}/10</p>
-                  <p className="text-xs text-slate-500">{formatDate(item.date)}</p>
+                  <p className="text-sm font-semibold text-[#0A2540]">{item.symptoms?.name || 'Síntoma'} · {item.intensity}/10</p>
+                  <p className="text-xs text-slate-500">{formatDate(item.log_date)}</p>
                 </div>
               ))}
             </div>
@@ -1184,35 +1325,18 @@ export function ConsultaSection() {
         </Panel>
 
         <Panel title="Mis preguntas" icon={Stethoscope}>
-          <form onSubmit={addQuestion} className="flex gap-2">
-            <input
-              value={question}
-              onChange={event => setQuestion(event.target.value)}
-              placeholder="Escribe una pregunta para tu consulta"
-              className="min-h-11 min-w-0 flex-1 rounded-xl border border-[#e5dceb] px-3 text-sm"
-              aria-label="Nueva pregunta"
-            />
-            <button className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#0A2540] text-white" aria-label="Agregar pregunta"><Plus className="h-5 w-5" /></button>
-          </form>
-          {state.questions.length ? (
-            <div className="mt-3 space-y-2">
-              {state.questions.map((item, index) => (
-                <div key={index} className="flex items-start justify-between gap-2 rounded-xl border border-[#f0eaf5] p-3">
-                  <p className="text-sm leading-5 text-slate-600">{index + 1}. {item}</p>
-                  <button
-                    type="button"
-                    onClick={() => update('questions', items => items.filter((_, i) => i !== index))}
-                    className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-slate-400 hover:bg-rose-50 hover:text-rose-600"
-                    aria-label="Quitar pregunta"
-                  >
-                    <Trash2 className="h-3.5 w-3.5" />
-                  </button>
+          {(data.questions || []).filter(item => item.status === 'pending').length ? (
+            <div className="space-y-2">
+              {(data.questions || []).filter(item => item.status === 'pending').map(item => (
+                <div key={item.id} className="rounded-xl border border-[#f0eaf5] p-3">
+                  <p className="text-sm leading-5 text-slate-600">{item.question}</p>
                 </div>
               ))}
             </div>
           ) : (
-            <p className="mt-3 text-sm text-slate-500">Agrega las preguntas que quieres llevar a tu consulta.</p>
+            <p className="text-sm text-slate-500">Agrega preguntas en "Preguntas para mi consulta".</p>
           )}
+          <Link to="/fst-app/preguntas" className="mt-3 inline-flex items-center gap-1 text-xs font-bold text-[#9274C9]">Gestionar preguntas <ArrowRight className="h-3.5 w-3.5" /></Link>
         </Panel>
       </div>
 

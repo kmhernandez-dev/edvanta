@@ -7,7 +7,7 @@ import { useAuth } from '../context/AuthContext';
 import { updatePageSeo } from '../utils/seo';
 
 export default function MisCursos() {
-  const { user, api } = useAuth();
+  const { user, academiaApi: api } = useAuth();
   const [courses, setCourses] = useState([]);
   const [loading, setLoading] = useState(true);
 

@@ -12,7 +12,7 @@ function readSession() {
 }
 
 export function Vida360Provider({ children }) {
-  const { user, api } = useAuth();
+  const { user, academiaApi: api } = useAuth();
   const [session, setSession] = useState(readSession);
   const [state, setState] = useState(null);
   const [loading, setLoading] = useState(false);

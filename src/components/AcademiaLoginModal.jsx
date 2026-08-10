@@ -27,7 +27,7 @@ function loadGoogleIdentity() {
 }
 
 export default function AcademiaLoginModal({ isOpen, onClose }) {
-  const { login, register, googleLogin, loading } = useAuth();
+  const { academiaLogin: login, academiaRegister: register, academiaGoogleLogin, academiaLoading: loading } = useAuth();
   const googleButtonRef = useRef(null);
   const [mode, setMode] = useState('login');
   const [name, setName] = useState('');
@@ -64,7 +64,7 @@ export default function AcademiaLoginModal({ isOpen, onClose }) {
         callback: async ({ credential }) => {
           setError('');
           try {
-            await googleLogin(credential, mode, privacyAccepted);
+            await academiaGoogleLogin(credential, mode, privacyAccepted);
             onClose();
           } catch (requestError) {
             setError(requestError.message);
@@ -82,7 +82,7 @@ export default function AcademiaLoginModal({ isOpen, onClose }) {
       });
     }).catch(() => setError('No fue posible cargar el acceso con Google'));
     return () => { cancelled = true; };
-  }, [googleConfig, googleLogin, isOpen, mode, onClose, privacyAccepted]);
+  }, [googleConfig, academiaGoogleLogin, isOpen, mode, onClose, privacyAccepted]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

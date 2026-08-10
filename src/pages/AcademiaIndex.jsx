@@ -20,7 +20,7 @@ const CATEGORY_ICONS = {
 };
 
 export default function AcademiaIndex() {
-  const { user, api } = useAuth();
+  const { user, academiaApi: api } = useAuth();
   const [courses, setCourses] = useState([]);
   const [loading, setLoading] = useState(true);
   const [selectedCat, setSelectedCat] = useState('Todas');

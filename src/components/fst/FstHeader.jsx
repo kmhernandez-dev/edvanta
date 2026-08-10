@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useCart } from '../../context/CartContext';
+import { useAuth } from '../../context/AuthContext';
 import { trackEvent } from '../../utils/analytics';
 import Icon from '../Icon';
 
@@ -28,6 +29,7 @@ export default function FstHeader() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const { count, openCart } = useCart();
+  const { isAuthenticated, profile } = useAuth();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -54,7 +56,7 @@ export default function FstHeader() {
 
         <nav className="hidden items-center gap-5 lg:flex" aria-label="Navegación principal">
           <Link to="/fst-app" className="rounded-md bg-[#EAE2F8] px-3 py-2 text-sm font-bold text-[#6b4fa8] transition-colors hover:bg-[#e0d5f2]">
-            Mi espacio
+            {isAuthenticated ? 'Mi espacio' : 'Crear mi cuenta'}
           </Link>
           <Link to="/vida-360" className="rounded-md bg-[#e8f7f4] px-3 py-2 text-sm font-bold text-[#0A655D] transition-colors hover:bg-[#d7f1ec]">
             Vida 360

@@ -16,7 +16,7 @@ const statItems = [
 ];
 
 export default function AcademiaPerfil() {
-  const { user, api, logout } = useAuth();
+  const { user, academiaApi: api, academiaLogout: logout } = useAuth();
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [loginOpen, setLoginOpen] = useState(false);

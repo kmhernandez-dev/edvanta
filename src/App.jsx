@@ -1,5 +1,5 @@
 import { lazy, Suspense } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Navigate, Routes, Route } from 'react-router-dom';
 
 import BibliotecaHome   from './pages/BibliotecaHome';
 import FelizSinTiroides from './pages/FelizSinTiroides';
@@ -29,6 +29,7 @@ import NotFound         from './pages/NotFound';
 
 const Vida360Portal = lazy(() => import('./pages/Vida360Portal'));
 const FstAppPortal = lazy(() => import('./pages/FstAppPortal'));
+const AdminPage = lazy(() => import('./pages/AdminPage'));
 
 import { AuthProvider } from './context/AuthContext';
 import CartDrawer    from './components/CartDrawer';
@@ -72,6 +73,15 @@ export default function App() {
         <Route path="/fst-app/*" element={
           <Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-[#FFF9F4] text-sm font-semibold text-slate-600">Cargando tu espacio...</div>}>
             <FstAppPortal />
+          </Suspense>
+        } />
+        <Route path="/mi-espacio" element={<Navigate to="/fst-app" replace />} />
+        <Route path="/mi-espacio/*" element={<Navigate to="/fst-app" replace />} />
+
+        {/* Panel administrativo (solo role = admin) */}
+        <Route path="/admin/*" element={
+          <Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-[#F6F7F8] text-sm font-semibold text-slate-600">Cargando panel...</div>}>
+            <AdminPage />
           </Suspense>
         } />
 

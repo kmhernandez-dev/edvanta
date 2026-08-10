@@ -45,7 +45,7 @@ function CommentActions({ comment, canInteract, onLike, onReply, isReply = false
 
 export default function AcademiaClase() {
   const { slug, lessonId } = useParams();
-  const { user, api } = useAuth();
+  const { user, academiaApi: api } = useAuth();
   const lessonKey = String(lessonId || '');
   const [course, setCourse] = useState(null);
   const [modules, setModules] = useState([]);

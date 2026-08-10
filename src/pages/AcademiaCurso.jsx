@@ -8,7 +8,7 @@ import Icon from '../components/Icon';
 
 export default function AcademiaCurso() {
   const { slug } = useParams();
-  const { user, api } = useAuth();
+  const { user, academiaApi: api } = useAuth();
   const navigate = useNavigate();
   const [course, setCourse] = useState(null);
   const [modules, setModules] = useState([]);

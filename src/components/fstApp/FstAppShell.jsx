@@ -13,6 +13,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import {
   Activity, Apple, BookOpen, ChefHat, HeartPulse, Home, LogOut, Menu, MessageCircle,
   Pill, Plus, Scale, ShieldCheck, ShoppingBasket, Sparkles, Stethoscope, UserRound, X,
+  Beaker, CalendarDays, History, ClipboardList, LockKeyhole,
 } from 'lucide-react';
 import { useFstApp } from '../../context/FstAppContext';
 import { useAuth } from '../../context/AuthContext';
@@ -95,11 +96,11 @@ function QuickAddSheet({ open, onClose }) {
 }
 
 export default function FstAppShell({ children }) {
-  const { state, isDemo, saveStatus, exit } = useFstApp();
-  const { user } = useAuth();
+  const { saveStatus } = useFstApp();
+  const { user, profile, logout } = useAuth();
   const [menuOpen, setMenuOpen] = useState(false);
   const [quickOpen, setQuickOpen] = useState(false);
-  const name = state?.profile?.firstName || user?.name?.split(' ')[0] || 'Mi espacio';
+  const name = profile?.full_name?.split(' ')[0] || user?.email?.split('@')[0] || 'Mi espacio';
 
   return (
     <div className="fst-app min-h-screen bg-[#FFF9F4] text-[#263746]">
@@ -118,7 +119,11 @@ export default function FstAppShell({ children }) {
             </Link>
           </div>
           <div className="flex items-center gap-3">
-            {isDemo && <span className="rounded-full border border-[#d3efe9] bg-[#f0faf8] px-2.5 py-1 text-[10px] font-bold uppercase text-[#0A655D]">Demo ficticio</span>}
+            {profile?.role === 'admin' && (
+              <Link to="/admin" className="rounded-full border border-[#eae2f8] bg-[#f7f3fb] px-2.5 py-1 text-[10px] font-bold uppercase text-[#6b4fa8] hover:bg-[#f0eaf8]">
+                Admin
+              </Link>
+            )}
             <span className={`hidden text-xs sm:inline ${saveStatus === 'error' ? 'text-red-700' : 'text-slate-500'}`} role="status">
               {saveStatus === 'saving' ? 'Guardando...' : saveStatus === 'error' ? 'No se pudo guardar' : 'Guardado automático'}
             </span>
@@ -139,6 +144,11 @@ export default function FstAppShell({ children }) {
           <nav className="mt-2 space-y-1" aria-label="Herramientas de NutriFST">
             {[
               { to: '/fst-app/levotiroxina', label: 'Mi levotiroxina', icon: Pill },
+              { to: '/fst-app/laboratorios', label: 'Mis laboratorios', icon: Beaker },
+              { to: '/fst-app/citas', label: 'Mis citas', icon: CalendarDays },
+              { to: '/fst-app/historia', label: 'Mi historia', icon: History },
+              { to: '/fst-app/habitos', label: 'Mis hábitos', icon: Activity },
+              { to: '/fst-app/preguntas', label: 'Preguntas para consulta', icon: ClipboardList },
               { to: '/fst-app/alimento', label: '¿Puedo comer esto?', icon: Apple },
               { to: '/fst-app/escaneo', label: 'Escáner de comidas', icon: ChefHat },
               { to: '/fst-app/menus', label: 'Mis menús', icon: BookOpen },
@@ -148,6 +158,7 @@ export default function FstAppShell({ children }) {
               { to: '/fst-app/sintomas', label: 'Diario de síntomas', icon: HeartPulse },
               { to: '/fst-app/yodo', label: 'Preparación para radioyodo', icon: ShieldCheck },
               { to: '/fst-app/consulta', label: 'Preparar mi consulta', icon: Stethoscope },
+              { to: '/fst-app/privacidad', label: 'Privacidad', icon: LockKeyhole },
             ].map(item => (
               <Link key={item.to} to={item.to} className="flex min-h-10 items-center gap-3 rounded-xl px-3 text-[13px] font-medium text-slate-600 hover:bg-[#faf8fd] hover:text-[#0A2540]">
                 <item.icon className="h-4 w-4 text-[#9274C9]" strokeWidth={1.8} />
@@ -162,7 +173,7 @@ export default function FstAppShell({ children }) {
                 <p className="text-xs leading-5 text-slate-600">Herramienta educativa. No sustituye la evaluación de un profesional de salud.</p>
               </div>
             </div>
-            <button type="button" onClick={exit} className="flex min-h-11 w-full items-center gap-3 rounded-xl px-3 text-sm font-semibold text-slate-500 hover:bg-[#faf8fd] hover:text-[#0A2540]">
+            <button type="button" onClick={logout} className="flex min-h-11 w-full items-center gap-3 rounded-xl px-3 text-sm font-semibold text-slate-500 hover:bg-[#faf8fd] hover:text-[#0A2540]">
               <LogOut className="h-5 w-5" /> Salir del espacio
             </button>
           </div>
@@ -210,6 +221,11 @@ export default function FstAppShell({ children }) {
             <nav className="mt-2 space-y-1" aria-label="Herramientas móvil">
               {[
                 { to: '/fst-app/levotiroxina', label: 'Mi levotiroxina', icon: Pill },
+                { to: '/fst-app/laboratorios', label: 'Mis laboratorios', icon: Beaker },
+                { to: '/fst-app/citas', label: 'Mis citas', icon: CalendarDays },
+                { to: '/fst-app/historia', label: 'Mi historia', icon: History },
+                { to: '/fst-app/habitos', label: 'Mis hábitos', icon: Activity },
+                { to: '/fst-app/preguntas', label: 'Preguntas para consulta', icon: ClipboardList },
                 { to: '/fst-app/alimento', label: '¿Puedo comer esto?', icon: Apple },
                 { to: '/fst-app/escaneo', label: 'Escáner de comidas', icon: ChefHat },
                 { to: '/fst-app/menus', label: 'Mis menús', icon: BookOpen },
@@ -219,6 +235,7 @@ export default function FstAppShell({ children }) {
                 { to: '/fst-app/sintomas', label: 'Diario de síntomas', icon: HeartPulse },
                 { to: '/fst-app/yodo', label: 'Preparación para radioyodo', icon: ShieldCheck },
                 { to: '/fst-app/consulta', label: 'Preparar mi consulta', icon: Stethoscope },
+                { to: '/fst-app/privacidad', label: 'Privacidad', icon: LockKeyhole },
               ].map(item => (
                 <Link key={item.to} to={item.to} onClick={() => setMenuOpen(false)} className="flex min-h-10 items-center gap-3 rounded-xl px-3 text-[13px] font-medium text-slate-600 hover:bg-[#faf8fd]">
                   <item.icon className="h-4 w-4 text-[#9274C9]" strokeWidth={1.8} />
@@ -226,7 +243,7 @@ export default function FstAppShell({ children }) {
                 </Link>
               ))}
             </nav>
-            <button type="button" onClick={exit} className="mt-8 flex min-h-11 w-full items-center gap-3 rounded-xl border border-[#f0eaf5] px-3 text-sm font-semibold text-slate-600">
+            <button type="button" onClick={logout} className="mt-8 flex min-h-11 w-full items-center gap-3 rounded-xl border border-[#f0eaf5] px-3 text-sm font-semibold text-slate-600">
               <LogOut className="h-5 w-5" /> Salir del espacio
             </button>
           </aside>

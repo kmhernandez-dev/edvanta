@@ -7,6 +7,8 @@ services:
         VITE_API_URL: "${VITE_API_URL:-}"
         VITE_VIDA360_REAL_DATA_ENABLED: "${VITE_VIDA360_REAL_DATA_ENABLED:-false}"
         VITE_FST_APP_REAL_DATA_ENABLED: "${VITE_FST_APP_REAL_DATA_ENABLED:-false}"
+        VITE_SUPABASE_URL: "${VITE_SUPABASE_URL:-}"
+        VITE_SUPABASE_ANON_KEY: "${VITE_SUPABASE_ANON_KEY:-}"
     restart: unless-stopped
     expose:
       - "80"

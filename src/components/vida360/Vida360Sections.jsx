@@ -242,7 +242,7 @@ export function Vida360Consultations() {
 
 export function Vida360Profile() {
   const { state, update, isDemo } = useVida360();
-  const { api } = useAuth();
+  const { academiaApi: api } = useAuth();
   const [message, setMessage] = useState('');
   const changeProfile = (key, value) => update('profile', current => ({ ...current, [key]: value }));
   const toggleConsent = (code, accepted) => update('consents', items => items.map(item => item.code === code ? { ...item, accepted, updatedAt: new Date().toISOString(), revokedAt: accepted ? null : new Date().toISOString() } : item));
