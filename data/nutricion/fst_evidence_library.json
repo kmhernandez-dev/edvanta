@@ -2,9 +2,9 @@
   "meta": {
     "proyecto": "Feliz Sin Tiroides — Base nutricional científica",
     "descripcion": "Bibliografía verificada. Cada entrada fue comprobada en PubMed/NCBI (PMID/DOI reales). El campo 'leido_en_sesion' indica si el texto se leyó directamente (true) o si solo se confirmó la cita (false).",
-    "version": "0.3.0",
+    "version": "0.4.0",
     "fecha_revision": "2026-08-10",
-    "total_referencias": 13
+    "total_referencias": 17
   },
   "referencias": [
     {
@@ -228,6 +228,74 @@
       "conclusion_aplicable": "La evidencia para apoyar o refutar la eficacia de la suplementación con selenio en Hashimoto es incompleta y no fiable para informar la decisión clínica. Hubo mejoras estadísticas en anticuerpos con selenometionina, pero de significado clínico incierto y con riesgo de sesgo.",
       "limitaciones": "Pocos estudios; calidad de evidencia de incierta a alto riesgo de sesgo.",
       "condicion_relacionada": "THY-02 (Hashimoto)",
+      "leido_en_sesion": true
+    },
+    {
+      "evidence_id": "EV-GRA-001",
+      "titulo": "2016 American Thyroid Association Guidelines for Diagnosis and Management of Hyperthyroidism and Other Causes of Thyrotoxicosis",
+      "autores": "Ross DS, Burch HB, Cooper DS, et al.",
+      "anio": 2016,
+      "revista": "Thyroid",
+      "volumen_paginas": "26(10):1343-1421",
+      "tipo_estudio": "Guía de práctica clínica",
+      "nivel_jerarquia": "Guía de práctica clínica",
+      "PMID": "27521067",
+      "DOI": "10.1089/thy.2016.0229",
+      "url_pubmed": "https://pubmed.ncbi.nlm.nih.gov/27521067/",
+      "conclusion_aplicable": "Guía de manejo del hipertiroidismo/tirotoxicosis (incluye enfermedad de Graves). Respalda el manejo clínico e individualizado; el exceso de yodo puede empeorar o precipitar el hipertiroidismo (relación con IOD-EXCESS-01).",
+      "limitaciones": "Guía clínica centrada en diagnóstico y tratamiento médico; la nutrición es de soporte, no terapéutica.",
+      "condicion_relacionada": "THY-04 (Graves/hipertiroidismo)",
+      "leido_en_sesion": true
+    },
+    {
+      "evidence_id": "EV-GRA-002",
+      "titulo": "The skeletal consequences of thyrotoxicosis",
+      "autores": "Nicholls JJ, Brassill MJ, Williams GR, Bassett JHD",
+      "anio": 2012,
+      "revista": "Journal of Endocrinology",
+      "volumen_paginas": "213(3):209-21",
+      "tipo_estudio": "Revisión",
+      "nivel_jerarquia": "Revisión narrativa",
+      "PMID": "22454529",
+      "DOI": "10.1530/JOE-12-0059",
+      "url_pubmed": "https://pubmed.ncbi.nlm.nih.gov/22454529/",
+      "conclusion_aplicable": "La tirotoxicosis establecida causa osteoporosis de alto recambio y riesgo de fractura; el hipertiroidismo subclínico y las dosis supresoras de tiroxina también reducen la densidad mineral ósea, sobre todo en mujeres posmenopáusicas. Respalda cuidar la salud ósea (aporte adecuado de calcio y vitamina D, actividad con carga) como soporte.",
+      "limitaciones": "Los mecanismos moleculares siguen siendo incompletos; revisión.",
+      "condicion_relacionada": "THY-04 (Graves/hipertiroidismo)",
+      "leido_en_sesion": true
+    },
+    {
+      "evidence_id": "EV-HPT-001",
+      "titulo": "European Society of Endocrinology Clinical Guideline: Treatment of chronic hypoparathyroidism in adults",
+      "autores": "Bollerslev J, Rejnmark L, Marcocci C, Shoback DM, et al.",
+      "anio": 2015,
+      "revista": "European Journal of Endocrinology",
+      "volumen_paginas": "173(2):G1-20",
+      "tipo_estudio": "Guía de práctica clínica",
+      "nivel_jerarquia": "Guía de práctica clínica",
+      "PMID": "26160136",
+      "DOI": "10.1530/EJE-15-0628",
+      "url_pubmed": "https://pubmed.ncbi.nlm.nih.gov/26160136/",
+      "conclusion_aplicable": "El tratamiento estándar del hipoparatiroidismo crónico son análogos de vitamina D activa (calcitriol) más suplementos de calcio, con objetivo de calcio sérico en el rango bajo-normal. La sobredosificación causa hipercalciuria y riesgo renal. Es un tratamiento MÉDICO (no nutricional).",
+      "limitaciones": "Poca evidencia de ensayos; recomendaciones basadas en práctica clínica.",
+      "condicion_relacionada": "THY-08 (hipoparatiroidismo)",
+      "leido_en_sesion": true
+    },
+    {
+      "evidence_id": "EV-HPT-002",
+      "titulo": "American Thyroid Association Statement on Postoperative Hypoparathyroidism: Diagnosis, Prevention, and Management in Adults",
+      "autores": "Orloff LA, Wiseman SM, Bernet VJ, et al.",
+      "anio": 2018,
+      "revista": "Thyroid",
+      "volumen_paginas": "28(7):830-841",
+      "tipo_estudio": "Declaración / guía de práctica",
+      "nivel_jerarquia": "Guía de práctica clínica",
+      "PMID": "29848235",
+      "DOI": "10.1089/thy.2017.0309",
+      "url_pubmed": "https://pubmed.ncbi.nlm.nih.gov/29848235/",
+      "conclusion_aplicable": "Declaración de la ATA sobre hipoparatiroidismo posquirúrgico (tras tiroidectomía): diagnóstico, prevención y manejo con calcio y vitamina D activa bajo control médico. Respalda tratar THY-08 como escenario de alta precaución con seguimiento profesional.",
+      "limitaciones": "Enfocada en el manejo clínico posquirúrgico.",
+      "condicion_relacionada": "THY-08 (hipoparatiroidismo posquirúrgico)",
       "leido_en_sesion": true
     }
   ]

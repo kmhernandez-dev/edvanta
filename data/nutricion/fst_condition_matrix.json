@@ -35,8 +35,7 @@
       "codigo": "THY-04",
       "nombre": "Graves / hipertiroidismo activo",
       "prioridades": ["suficiencia energética", "proteína y masa muscular", "salud ósea", "evitar exceso de yodo", "individualizar (no calorías fijas universales)"],
-      "reglas_clave": ["IOD-EXCESS-01"],
-      "pendiente_cluster": "graves_hipermetabolismo (por verificar)"
+      "reglas_clave": ["GRAVES-01", "IOD-EXCESS-01"]
     },
     "post_tiroidectomia_estable": {
       "codigo": "THY-05",
@@ -61,8 +60,7 @@
       "codigo": "THY-08",
       "nombre": "Post-tiroidectomía con hipoparatiroidismo / hipocalcemia",
       "prioridades": ["ALTA PRECAUCIÓN", "identificar fuentes de calcio y su horario vs levotiroxina", "NO modificar dosis de calcio/vitamina D/calcitriol", "requiere seguimiento profesional"],
-      "reglas_clave": ["LT4-CALCIUM-SUP-01"],
-      "pendiente_cluster": "hipoparatiroidismo_calcio (por verificar)"
+      "reglas_clave": ["HIPOPARA-01", "LT4-CALCIUM-SUP-01"]
     }
   },
   "logica_derivacion": "Para cada receta: (1) revisar ingredientes contra iodine_safety_engine y gluten_logic; (2) marcar low_iodine_compatible / iodine_risk / naturalmente_sin_gluten; (3) asignar la clasificación por condición según las reglas_clave; (4) escribir una justificación breve por condición. Toda clasificación debe poder rastrearse a una regla de fst_clinical_rules.json.",

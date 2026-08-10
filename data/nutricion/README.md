@@ -22,8 +22,8 @@ clínicas** (`fst_clinical_rules.json`): las recetas solo las referencian por `r
 
 | Fase | Entregable | Estado |
 |------|-----------|--------|
-| 1 | Revisión científica | 🟡 En curso (clusters levotiroxina + yodo hechos) |
-| 2 | `fst_clinical_rules.json` | 🟡 En curso (11 reglas verificadas) |
+| 1 | Revisión científica | ✅ 6 clusters clínicos verificados |
+| 2 | `fst_clinical_rules.json` | ✅ 13 reglas verificadas (6 clusters) |
 | 3 | `fst_condition_matrix.json` (8 condiciones) | 🟡 Estructura + 8 perfiles + 1 receta indexada |
 | 4 | `fst_ingredient_safety.json` (yodo/gluten/levotiroxina) | 🟡 Motores de yodo y gluten hechos; levotiroxina pendiente |
 | 5 | Diseño de las 200 recetas | 🟡 1 receta MUESTRA (formato validado) |
@@ -70,3 +70,11 @@ THY-06 Cáncer diferenciado estable · THY-07 Preparación radioyodo (bajo en yo
   reglas aplicadas, evidencia, precauciones y adaptaciones. Pendiente de validación de
   formato por el usuario antes de escalar. Próximo (tras validar): Graves e
   hipoparatiroidismo, luego generar recetas en lotes de 25.
+- **2026-08-10** — Formato de receta APROBADO por el usuario. Cerrados los 2 últimos
+  clusters de reglas: GRAVES-01 (soporte hipermetabólico + salud ósea + evitar exceso
+  de yodo, individualizando) e HIPOPARA-01 (alta precaución: la app no toca dosis de
+  calcio/vitamina D; tratamiento médico; seguimiento profesional) + 4 fuentes (guías
+  ATA hipertiroidismo 2016 y ESE hipoparatiroidismo 2015, declaración ATA
+  posquirúrgica 2018, revisión de hueso en tirotoxicosis). **FUNDAMENTO DE REGLAS
+  COMPLETO: 13 reglas, 6 clusters, 17 fuentes.** Próximo: taxonomía de ingredientes y
+  generación de recetas en lotes de 25.
