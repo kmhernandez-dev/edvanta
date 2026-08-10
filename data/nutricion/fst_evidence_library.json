@@ -2,9 +2,9 @@
   "meta": {
     "proyecto": "Feliz Sin Tiroides — Base nutricional científica",
     "descripcion": "Bibliografía verificada. Cada entrada fue comprobada en PubMed/NCBI (PMID/DOI reales). El campo 'leido_en_sesion' indica si el texto se leyó directamente (true) o si solo se confirmó la cita (false).",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "fecha_revision": "2026-08-10",
-    "total_referencias": 6
+    "total_referencias": 9
   },
   "referencias": [
     {
@@ -109,6 +109,58 @@
       "limitaciones": "El texto completo no se leyó en esta sesión (PubMed devolvió verificación anti-bot); la CITA está confirmada (título/revista/año/DOI). Recomendado confirmar el párrafo exacto en acceso institucional antes de producción.",
       "condicion_relacionada": "THY-01 y todas las que usan levotiroxina",
       "leido_en_sesion": false
+    },
+    {
+      "evidence_id": "EV-IOD-001",
+      "titulo": "Low Iodine Diet (recurso para pacientes de la American Thyroid Association)",
+      "autores": "American Thyroid Association",
+      "anio": 2023,
+      "revista": "American Thyroid Association (thyroid.org)",
+      "volumen_paginas": "Recurso para pacientes",
+      "tipo_estudio": "Recurso clínico de sociedad científica (ATA)",
+      "nivel_jerarquia": "Documento de sociedad / guía práctica",
+      "PMID": "",
+      "identificador_verificado": "https://www.thyroid.org/low-iodine-diet/",
+      "DOI": "",
+      "url_pubmed": "https://www.thyroid.org/low-iodine-diet/",
+      "conclusion_aplicable": "Clasifica los alimentos para una dieta baja en yodo previa a radioyodo. EVITAR: sal yodada y sal marina, iodatos/ioduros/algin, suplementos con yodo (especialmente kelp y dulse), horneados comerciales con acondicionadores con yodato, colorante FD&C rojo #3, melaza (blackstrap), soja; granos limitados. LIMITAR (poca cantidad): lácteos, huevos/yema, mariscos y pescados, algas, y aditivos carragenina/agar-agar/alginato/nori. PERMITIDO: sal NO yodada, claras de huevo, frutas y verduras frescas y congeladas, frutos secos sin sal, café o té sin leche. Propósito: mejorar la eficacia del tratamiento con radioyodo.",
+      "limitaciones": "Recurso para pacientes (no ensayo); la duración exacta y la indicación las define el equipo tratante. No indica gramos de yodo por alimento.",
+      "condicion_relacionada": "THY-07 (preparación para radioyodo)",
+      "leido_en_sesion": true
+    },
+    {
+      "evidence_id": "EV-IOD-002",
+      "titulo": "Excess iodine intake: sources, assessment, and effects on thyroid function",
+      "autores": "Farebrother J, Zimmermann MB, Andersson M",
+      "anio": 2019,
+      "revista": "Annals of the New York Academy of Sciences",
+      "volumen_paginas": "1446(1):44-65",
+      "tipo_estudio": "Revisión",
+      "nivel_jerarquia": "Revisión narrativa",
+      "PMID": "30891786",
+      "DOI": "10.1111/nyas.14041",
+      "url_pubmed": "https://pubmed.ncbi.nlm.nih.gov/30891786/",
+      "conclusion_aplicable": "El exceso de yodo puede precipitar hipertiroidismo, hipotiroidismo, bocio y/o autoinmunidad tiroidea. Más susceptibles: personas con enfermedad tiroidea preexistente y quienes tuvieron deficiencia previa de yodo. Suele ser leve y transitorio, pero el hipertiroidismo inducido por yodo puede ser grave en algunos individuos.",
+      "limitaciones": "Revisión narrativa; la susceptibilidad individual varía.",
+      "condicion_relacionada": "THY-02, THY-04 (Graves) y general",
+      "leido_en_sesion": true
+    },
+    {
+      "evidence_id": "EV-IOD-003",
+      "titulo": "2015 American Thyroid Association Management Guidelines for Adult Patients with Thyroid Nodules and Differentiated Thyroid Cancer",
+      "autores": "Haugen BR, Alexander EK, Bible KC, et al.",
+      "anio": 2016,
+      "revista": "Thyroid",
+      "volumen_paginas": "26(1):1-133",
+      "tipo_estudio": "Guía de práctica clínica",
+      "nivel_jerarquia": "Guía de práctica clínica",
+      "PMID": "26462967",
+      "DOI": "10.1089/thy.2015.0020",
+      "url_pubmed": "https://pubmed.ncbi.nlm.nih.gov/26462967/",
+      "conclusion_aplicable": "Guía de manejo del cáncer diferenciado de tiroides. Recomienda una dieta baja en yodo (<50 µg de yodo/día) como preparación para la terapia con radioyodo, junto con la estimulación de TSH, para aumentar la captación de radioyodo.",
+      "limitaciones": "La cifra <50 µg/día y la indicación/duración se aplican bajo criterio del equipo tratante.",
+      "condicion_relacionada": "THY-06 (cáncer) y THY-07 (preparación radioyodo)",
+      "leido_en_sesion": true
     }
   ]
 }

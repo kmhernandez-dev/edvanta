@@ -1,0 +1,47 @@
+{
+  "meta": {
+    "proyecto": "Feliz Sin Tiroides — Base nutricional científica",
+    "descripcion": "Motores de seguridad por ingrediente. Clasificación CATEGÓRICA (no gramos exactos de yodo): la composición real es muy variable y el prompt indica no calcular contenido exacto cuando no hay fuente fiable. Las recetas heredan estas etiquetas.",
+    "version": "0.1.0",
+    "fecha_revision": "2026-08-10",
+    "motores_incluidos": ["iodine_safety_engine"],
+    "motores_pendientes": ["gluten_logic", "levothyroxine_interaction_engine (etiquetado de ingredientes)"]
+  },
+  "iodine_safety_engine": {
+    "descripcion": "Clasifica ingredientes por riesgo de yodo y por compatibilidad con la dieta baja en yodo (THY-07). Regla asociada: IOD-RAI-01, IOD-EXCESS-01. Fuentes: EV-IOD-001 (lista ATA), EV-IOD-002 (exceso de yodo), EV-IOD-003 (guía ATA cáncer).",
+    "recordatorio_clave": "BAJO EN YODO ≠ SIN YODO. La dieta baja en yodo es TEMPORAL y solo bajo indicación del equipo tratante (radioyodo).",
+    "clasificacion_riesgo_yodo": {
+      "alto": {
+        "descripcion": "Aporte de yodo alto y/o muy variable. Evitar en dieta baja en yodo; no abusar fuera de ella.",
+        "ejemplos": ["sal yodada", "sal marina", "algas: kelp", "algas: dulse", "algas: nori (en cantidad)", "suplementos de yodo", "suplementos de algas"],
+        "evidence_ids": ["EV-IOD-001", "EV-IOD-002"]
+      },
+      "moderado": {
+        "descripcion": "Aporte de yodo relevante. Limitar en dieta baja en yodo; sin restricción especial fuera de ella.",
+        "ejemplos": ["pescados y mariscos de mar", "leche y lácteos (queso, yogur, mantequilla)", "huevo entero / yema"],
+        "evidence_ids": ["EV-IOD-001"]
+      },
+      "bajo": {
+        "descripcion": "Aporte de yodo bajo. Permitidos como base de la dieta baja en yodo.",
+        "ejemplos": ["frutas frescas", "verduras frescas y congeladas (sin sal añadida)", "claras de huevo", "frutos secos sin sal", "aceites vegetales", "carnes frescas sin sal (porciones moderadas)", "legumbres cocidas sin sal", "arroz y granos sin acondicionadores con yodato"],
+        "evidence_ids": ["EV-IOD-001"]
+      },
+      "variable_o_incierto": {
+        "descripcion": "Composición variable o desconocida (puede contener yodato/aditivos con yodo). No estimar cifra exacta; tratar con precaución en dieta baja en yodo.",
+        "ejemplos": ["panes y horneados comerciales", "alimentos procesados/empacados", "embutidos y carnes procesadas", "salsas y aderezos comerciales", "aditivos: carragenina, agar-agar, alginato, nori", "colorante FD&C rojo #3", "melaza (blackstrap)", "chocolate con leche"],
+        "evidence_ids": ["EV-IOD-001"]
+      }
+    },
+    "low_iodine_diet": {
+      "objetivo": "<50 µg de yodo/día (según guía ATA, EV-IOD-003), por el tiempo que indique el equipo tratante",
+      "evitar": ["sal yodada", "sal marina", "iodatos/ioduros/algin", "suplementos con yodo (kelp, dulse)", "horneados comerciales con acondicionadores con yodato", "colorante FD&C rojo #3", "melaza", "productos de soja", "chocolate con leche"],
+      "limitar_poca_cantidad": ["lácteos (leche, queso, yogur, mantequilla)", "huevos y yema", "pescados y mariscos", "algas", "aditivos: carragenina, agar-agar, alginato, nori", "granos (p. ej. ~1 porción de pan / ½ taza de pasta al día)", "carnes rojas y aves (porciones moderadas)"],
+      "permitido": ["sal NO yodada", "claras de huevo", "frutas frescas", "verduras frescas y congeladas", "frutos secos sin sal y mantequillas de frutos secos sin sal", "café o té sin leche", "aceites vegetales", "azúcar, miel, mermelada sin colorantes problemáticos"],
+      "evidence_ids": ["EV-IOD-001", "EV-IOD-003"]
+    },
+    "campos_receta_derivados": {
+      "low_iodine_compatible": "true si TODOS los ingredientes están en 'permitido' (o claramente bajo); false si incluye alimentos de 'evitar'; requiere revisión si incluye 'limitar' o 'variable_o_incierto'.",
+      "iodine_risk": "bajo | moderado | alto | variable — según el ingrediente de mayor riesgo presente."
+    }
+  }
+}

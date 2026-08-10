@@ -22,10 +22,10 @@ clínicas** (`fst_clinical_rules.json`): las recetas solo las referencian por `r
 
 | Fase | Entregable | Estado |
 |------|-----------|--------|
-| 1 | Revisión científica | 🟡 En curso (cluster levotiroxina hecho) |
-| 2 | `fst_clinical_rules.json` | 🟡 En curso (6 reglas verificadas) |
+| 1 | Revisión científica | 🟡 En curso (clusters levotiroxina + yodo hechos) |
+| 2 | `fst_clinical_rules.json` | 🟡 En curso (8 reglas verificadas) |
 | 3 | `fst_condition_matrix.json` (8 condiciones) | ⬜ Pendiente |
-| 4 | `fst_ingredient_safety.json` (yodo/gluten/levotiroxina) | ⬜ Pendiente |
+| 4 | `fst_ingredient_safety.json` (yodo/gluten/levotiroxina) | 🟡 Motor de yodo hecho; gluten/levotiroxina pendientes |
 | 5 | Diseño de las 200 recetas | ⬜ Pendiente |
 | 6 | Recetas en 8 lotes × 25 | ⬜ Pendiente |
 | 7 | Dedup | ⬜ Pendiente |
@@ -37,7 +37,7 @@ clínicas** (`fst_clinical_rules.json`): las recetas solo las referencian por `r
 - `fst_evidence_library.json` — bibliografía verificada (PMID/DOI reales).
 - `fst_clinical_rules.json` — reglas clínicas; cada una cita su(s) evidencia(s).
 - `fst_condition_matrix.json` — (pendiente) compatibilidad condición ↔ regla/receta.
-- `fst_ingredient_safety.json` — (pendiente) motores de yodo, gluten y levotiroxina.
+- `fst_ingredient_safety.json` — motor de **yodo** hecho; gluten y levotiroxina pendientes.
 - `fst_recetas_master.json` / `.csv` — (pendiente) las 200 recetas.
 - `fst_qa_report.md` — (pendiente) auditoría.
 
@@ -52,5 +52,9 @@ THY-06 Cáncer diferenciado estable · THY-07 Preparación radioyodo (bajo en yo
 
 - **2026-08-10** — Creada la estructura. Verificado y cargado el cluster
   *administración e interacciones de levotiroxina* (6 reglas, 6 fuentes reales).
-  Próximo: reglas de yodo/radioyodo, gluten/celiaquía y selenio (cada una verificada
-  en vivo antes de entrar).
+- **2026-08-10** — Verificado y cargado el cluster *yodo / radioyodo*: 2 reglas
+  (IOD-RAI-01 dieta baja en yodo temporal para radioyodo; IOD-EXCESS-01 exceso de
+  yodo / algas / suplementos) + 3 fuentes (lista ATA de dieta baja en yodo, revisión
+  de exceso de yodo *Ann N Y Acad Sci* 2019, guía ATA cáncer 2015). Creado
+  `fst_ingredient_safety.json` con el motor de yodo (clasificación de ingredientes).
+  Próximo: gluten/celiaquía y selenio (verificados en vivo antes de entrar).
