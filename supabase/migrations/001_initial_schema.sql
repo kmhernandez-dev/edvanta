@@ -465,9 +465,22 @@ alter table public.shopping_lists enable row level security;
 alter table public.admin_audit_logs enable row level security;
 
 -- ─── RLS: políticas de usuario (user_id = auth.uid()) ────────
+-- Función is_admin: verifica el rol sin recursión (security definer)
+create or replace function public.is_admin()
+returns boolean
+language sql
+security definer
+set search_path = public
+as $$
+  select exists (
+    select 1 from public.profiles
+    where id = auth.uid() and role = 'admin'
+  );
+$$;
+
 -- profiles: el usuario ve/edita su propio perfil; admin ve todos
 create policy "profiles_select_own" on public.profiles
-  for select using (id = auth.uid() or exists (select 1 from public.profiles p where p.id = auth.uid() and p.role = 'admin'));
+  for select using (id = auth.uid() or public.is_admin());
 create policy "profiles_update_own" on public.profiles
   for update using (id = auth.uid()) with check (id = auth.uid());
 create policy "profiles_insert_own" on public.profiles
@@ -602,9 +615,9 @@ create policy "shopping_delete_own" on public.shopping_lists for delete using (u
 
 -- admin_audit_logs: solo admin inserta/lee
 create policy "admin_audit_select_admin" on public.admin_audit_logs
-  for select using (exists (select 1 from public.profiles p where p.id = auth.uid() and p.role = 'admin'));
+  for select using (public.is_admin());
 create policy "admin_audit_insert_admin" on public.admin_audit_logs
-  for insert with check (exists (select 1 from public.profiles p where p.id = auth.uid() and p.role = 'admin'));
+  for insert with check (public.is_admin());
 
 -- ─── FUNCIÓN ADMIN: lista de usuarios (solo admin) ──────────
 create or replace function public.admin_list_users()
