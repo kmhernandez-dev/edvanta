@@ -279,6 +279,7 @@ export function AuthProvider({ children }) {
     return data;
   }, [academiaToken, academiaLogout]);
 
+  const isAdmin = profile?.role === 'admin';
   const value = useMemo(() => ({
     user,
     profile,
@@ -286,7 +287,7 @@ export function AuthProvider({ children }) {
     loading,
     authError,
     setAuthError,
-    isAdmin: profile?.role === 'admin',
+    isAdmin,
     isAuthenticated: Boolean(user),
     supabaseConfigured,
     register,
@@ -308,7 +309,7 @@ export function AuthProvider({ children }) {
     academiaGoogleLogin,
     academiaLogout,
     academiaApi,
-  }), [user, profile, session, loading, authError, isAdmin, supabaseConfigured, register, login, loginWithGoogle, resetPassword, updatePassword, logout, updateProfile, loadProfile, requestAccountDeletion, exportMyData, academiaUser, academiaToken, academiaLoading, academiaLogin, academiaRegister, academiaGoogleLogin, academiaLogout, academiaApi]);
+  }), [user, profile, session, loading, authError, profile?.role, supabaseConfigured, register, login, loginWithGoogle, resetPassword, updatePassword, logout, updateProfile, loadProfile, requestAccountDeletion, exportMyData, academiaUser, academiaToken, academiaLoading, academiaLogin, academiaRegister, academiaGoogleLogin, academiaLogout, academiaApi]);
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }
