@@ -10,6 +10,7 @@ Public brand areas:
 
 - **Biblioteca Profesional KH**: free course discovery, professional templates, dashboards, career and pharmacy/health resources.
 - **Feliz Sin Tiroides**: thyroid-health education, ebooks, free resources and services.
+- **Feliz Sin Tiroides App** (`/fst-app`): HealthTech companion app with NutriFST IA (local knowledge engine), levothyroxine tracking, meal scanner, menus, symptoms diary, shopping list, radioiodine prep mode and consultation PDF report.
 - **AtenFarmaClinic**: clinical pharmacy education and resources.
 
 Production target: `https://edvanta.co`.
@@ -81,6 +82,12 @@ Windows note: use `npm.cmd` if PowerShell blocks `npm.ps1`.
 | `src/context/CartContext.jsx` | Global cart and localStorage persistence |
 | `src/data/products.js` | Visible Biblioteca KH products |
 | `src/data/fst.js` | Feliz Sin Tiroides ebooks/content |
+| `src/data/fstApp/*` | NutriFST knowledge base: `alimentos.js`, `nutrientes.js`, `recetas.js`, `evidence.js` |
+| `src/lib/fstApp/nutrifst.js` | NutriFST engine: question analysis, interactions, menus, safety levels |
+| `src/lib/fstApp/pdf.js` | Consultation PDF report generator (jspdf) |
+| `src/context/FstAppContext.jsx` | FST App state, localStorage demo + API sync |
+| `src/components/fstApp/*` | FST App shell, sections and tools |
+| `src/pages/FstAppPortal.jsx` | FST App portal (routes under `/fst-app/*`) |
 | `src/data/atenfarma.js` | AtenFarmaClinic content |
 | `api/server.js` | Express app and health endpoints |
 | `api/lib/catalog.js` | Server-side product prices; source of truth for checkout |
@@ -90,6 +97,7 @@ Windows note: use `npm.cmd` if PowerShell blocks `npm.ps1`.
 | `api/routes/mp-webhook.js` | Payment confirmation, order log, download email |
 | `api/routes/lead-capture.js` | Lead capture endpoint |
 | `api/routes/list-orders.js` | Admin order listing with `ADMIN_TOKEN` |
+| `api/routes/fst-app.js` | FST App state sync (real mode, gated by `VIDA360_REAL_DATA_ENABLED`) |
 | `api/migrations/001_orders.sql` | PostgreSQL schema |
 | `Dockerfile` | Frontend/nginx image |
 | `Dockerfile.api` | Backend image |
@@ -102,6 +110,7 @@ Frontend:
 
 - `/`
 - `/feliz-sin-tiroides`
+- `/fst-app/*` (app HealthTech: dashboard, NutriFST, levotiroxina, alimentos, escáner, menús, cocina, lista, suplementos, síntomas, yodo, consulta, progreso, perfil)
 - `/atenfarmaclinic`
 - `/privacidad`
 - `/terminos`
@@ -117,6 +126,13 @@ Backend:
 - `POST /api/mp-webhook`
 - `POST /api/lead-capture`
 - `GET /api/list-orders`
+
+## FST App (NutriFST IA)
+
+- Local knowledge engine (no external LLM): `src/lib/fstApp/nutrifst.js` + `src/data/fstApp/*`.
+- Evidence is real and verifiable only (`evidence.js`); never invent references.
+- Clinical safety levels: green (educational), yellow (professional review), red (blocked: dose changes, diagnosis, emergencies, lab treatment).
+- Demo mode works offline via localStorage. Real mode requires `VITE_FST_APP_REAL_DATA_ENABLED=true` (frontend) and `VIDA360_REAL_DATA_ENABLED=true` (backend).
 
 ## Payment Flow
 
@@ -145,6 +161,7 @@ Product IDs are cross-system keys. Do not change a product `id` unless you also 
 Frontend build-time:
 
 - `VITE_API_URL`: optional. Prefer empty in Coolify so frontend uses `/api` relative.
+- `VITE_FST_APP_REAL_DATA_ENABLED`: `true` enables real-data mode for the FST App (default `false`).
 
 Backend runtime:
 

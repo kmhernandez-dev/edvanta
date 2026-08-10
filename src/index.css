@@ -138,3 +138,60 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #94a3b8;
 }
+
+/* ─── App Feliz Sin Tiroides (HealthTech) ─────────────────── */
+.fst-app h1, .fst-app h2, .fst-app h3, .fst-app h4 {
+  font-family: 'Manrope', 'Inter', system-ui, sans-serif;
+}
+
+.fst-field input:not([type='checkbox']):not([type='radio']):not([type='range']),
+.fst-field select,
+.fst-field textarea {
+  width: 100%;
+  min-height: 44px;
+  border: 1px solid #e5dceb;
+  border-radius: 12px;
+  background: #fff;
+  padding: 0.65rem 0.85rem;
+  color: #0A2540;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.fst-field textarea {
+  min-height: 88px;
+  resize: vertical;
+}
+
+.fst-field input[type='range'] {
+  width: 100%;
+  min-height: 44px;
+  accent-color: #2CB1A1;
+}
+
+.fst-field input:focus,
+.fst-field select:focus,
+.fst-field textarea:focus {
+  outline: 3px solid rgb(44 177 161 / 20%);
+  border-color: #2CB1A1;
+}
+
+.fst-scrollbar-thin::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.fst-scrollbar-thin::-webkit-scrollbar-thumb {
+  background: #d8cce8;
+  border-radius: 999px;
+}
+
+@keyframes fstPulse {
+  0%, 100% { opacity: 0.35; }
+  50% { opacity: 1; }
+}
+.fst-typing-dot {
+  animation: fstPulse 1.2s ease-in-out infinite;
+}
+.fst-typing-dot:nth-child(2) { animation-delay: 0.2s; }
+.fst-typing-dot:nth-child(3) { animation-delay: 0.4s; }

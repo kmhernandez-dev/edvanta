@@ -62,10 +62,22 @@ export default {
           800: '#172a63',
           900: '#111f4a',
         },
+        // ─── Paleta HealthTech Feliz Sin Tiroides ───
+        fst: {
+          navy:   '#0A2540',
+          teal:   '#2CB1A1',
+          cream:  '#FFF9F4',
+          blush:  '#F5DCE8',
+          lilac:  '#EAE2F8',
+          purple: '#9274C9',
+          gray:   '#F6F7F8',
+        },
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
         serif: ['Fraunces', 'Georgia', 'Cambria', 'serif'],
+        display: ['Manrope', 'Inter', 'system-ui', 'sans-serif'],
+        hand: ['Patrick Hand', 'Comic Sans MS', 'cursive'],
       },
     },
   },

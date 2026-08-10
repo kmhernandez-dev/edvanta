@@ -53,6 +53,9 @@ export default function FstHeader() {
         </a>
 
         <nav className="hidden items-center gap-5 lg:flex" aria-label="Navegación principal">
+          <Link to="/fst-app" className="rounded-md bg-[#EAE2F8] px-3 py-2 text-sm font-bold text-[#6b4fa8] transition-colors hover:bg-[#e0d5f2]">
+            Mi espacio
+          </Link>
           <Link to="/vida-360" className="rounded-md bg-[#e8f7f4] px-3 py-2 text-sm font-bold text-[#0A655D] transition-colors hover:bg-[#d7f1ec]">
             Vida 360
           </Link>
@@ -87,6 +90,9 @@ export default function FstHeader() {
       {menuOpen && (
         <nav id="fst-mobile-menu" className="border-t border-[#e8e1ee] bg-white px-4 py-4 shadow-lg lg:hidden" aria-label="Navegación móvil">
           <div className="mx-auto max-w-7xl space-y-1">
+            <Link to="/fst-app" onClick={() => setMenuOpen(false)} className="mb-2 flex min-h-11 items-center rounded-md bg-[#EAE2F8] px-3 py-3 text-sm font-bold text-[#6b4fa8]">
+              Abrir mi espacio (NutriFST IA)
+            </Link>
             <Link to="/vida-360" onClick={() => setMenuOpen(false)} className="mb-2 flex min-h-11 items-center rounded-md bg-[#e8f7f4] px-3 py-3 text-sm font-bold text-[#0A655D]">
               Abrir FST Vida 360
             </Link>

@@ -58,6 +58,78 @@ function ResourceMockup() {
   );
 }
 
+function DashboardMockup() {
+  return (
+    <div className="relative mx-auto w-full max-w-sm" aria-label="Vista previa del panel personal">
+      <div className="absolute -right-4 top-6 h-[86%] w-full rounded-2xl border border-[#e5dceb] bg-[#f7f3fb]" />
+      <div className="relative rounded-2xl border border-[#f0eaf5] bg-white p-5 shadow-xl shadow-[#0A2540]/10">
+        <div className="flex items-center justify-between border-b border-[#f3eef7] pb-4">
+          <div>
+            <p className="text-xs font-bold uppercase tracking-widest text-[#9274C9]">Hola, Ana</p>
+            <p className="mt-1 text-lg font-semibold text-[#0A2540]">¿Cómo podemos ayudarte hoy?</p>
+          </div>
+          <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#EAE2F8] text-[#9274C9]">
+            <Icon name="sparkles" className="h-5 w-5" />
+          </span>
+        </div>
+        <div className="mt-4 grid grid-cols-2 gap-2">
+          {['Preguntar a NutriFST', 'Registrar comida', 'Registrar levotiroxina', 'Revisar alimento'].map(item => (
+            <div key={item} className="rounded-xl border border-[#f0eaf5] bg-[#faf8fd] px-3 py-3 text-xs font-semibold text-[#0A2540]">{item}</div>
+          ))}
+        </div>
+        <div className="mt-4 rounded-xl border border-[#d3efe9] bg-[#f0faf8] p-3">
+          <p className="text-[10px] font-bold uppercase tracking-widest text-[#0B8176]">Tu día</p>
+          <p className="mt-1 text-sm font-semibold text-[#0A2540]">Levotiroxina 06:30 · Tomada</p>
+          <p className="text-xs text-slate-500">2 comidas registradas · 1 síntoma</p>
+        </div>
+        <div className="mt-3 grid grid-cols-3 gap-2 border-t border-[#f3eef7] pt-4 text-center">
+          {[['7', 'días de registros'], ['3', 'herramientas usadas'], ['100%', 'control personal']].map(([value, label]) => (
+            <div key={label}><p className="text-lg font-bold text-[#0A2540]">{value}</p><p className="text-[10px] text-slate-500">{label}</p></div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function NutriFstMockup() {
+  return (
+    <div className="relative mx-auto w-full max-w-sm" aria-label="Vista previa de NutriFST IA">
+      <div className="absolute -left-4 top-6 h-[86%] w-full rounded-2xl border border-[#f5dce8] bg-[#fdf4f8]" />
+      <div className="relative rounded-2xl border border-[#f0eaf5] bg-white p-5 shadow-xl shadow-[#0A2540]/10">
+        <div className="flex items-center gap-2 border-b border-[#f3eef7] pb-3">
+          <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#EAE2F8] text-[#9274C9]">
+            <Icon name="sparkles" className="h-4 w-4" />
+          </span>
+          <div>
+            <p className="text-sm font-bold text-[#0A2540]">NutriFST IA</p>
+            <p className="text-[10px] text-slate-500">Asistente nutricional</p>
+          </div>
+        </div>
+        <div className="mt-4 space-y-3">
+          <div className="ml-auto max-w-[85%] rounded-2xl rounded-br-md bg-[#0A2540] px-3 py-2 text-xs leading-5 text-white">¿Puedo tomar café ahora?</div>
+          <div className="max-w-[92%] rounded-2xl border border-[#f0eaf5] bg-[#faf8fd] p-3">
+            <p className="text-[10px] font-bold uppercase tracking-widest text-[#9274C9]">NutriFST</p>
+            <p className="mt-1 text-xs leading-5 text-slate-600">El café puede reducir la absorción de levotiroxina si se toman muy cerca. La práctica habitual es separar la toma del medicamento del café.</p>
+            <span className="mt-2 inline-flex rounded-full border border-[#d3efe9] bg-[#f0faf8] px-2 py-0.5 text-[9px] font-bold uppercase text-[#0B8176]">Ver evidencia</span>
+          </div>
+          <div className="ml-auto max-w-[85%] rounded-2xl rounded-br-md bg-[#0A2540] px-3 py-2 text-xs leading-5 text-white">Hazme un menú para esta semana</div>
+          <div className="max-w-[92%] rounded-2xl border border-[#f0eaf5] bg-[#faf8fd] p-3">
+            <p className="text-[10px] font-bold uppercase tracking-widest text-[#9274C9]">NutriFST</p>
+            <p className="mt-1 text-xs leading-5 text-slate-600">Desayuno: huevos pericos · Almuerzo: pollo con arroz y verduras · Cena: ensalada de pollo</p>
+          </div>
+        </div>
+        <div className="mt-4 flex items-center gap-2 rounded-xl border border-[#f0eaf5] p-2">
+          <span className="min-w-0 flex-1 px-2 text-xs text-slate-400">Escribe tu pregunta...</span>
+          <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[#0A2540] text-white">
+            <Icon name="arrowRight" className="h-4 w-4" />
+          </span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function FelizSinTiroides() {
   const [selectedStage, setSelectedStage] = useState('');
   const [recommendation, setRecommendation] = useState(null);
@@ -187,38 +259,93 @@ export default function FelizSinTiroides() {
       <FstHeader />
 
       <main>
-        <section id="fst-inicio" className="relative isolate flex min-h-[620px] items-center overflow-hidden pt-10 md:pt-20">
-          <img
-            src="/img/feliz-sin-tiroides-hero-v2.webp"
-            alt="Mujer organizando su tratamiento, alimentación y autocuidado tiroideo en casa"
-            fetchpriority="high"
-            width="1536"
-            height="1024"
-            className="absolute inset-0 -z-20 h-full w-full object-cover object-[68%_center]"
-          />
-          <div className="absolute inset-0 -z-10 bg-gradient-to-r from-white via-white/95 to-white/15 md:via-white/85 md:to-transparent" />
-          <div className="mx-auto w-full max-w-7xl px-4 py-8 sm:px-6 md:py-16 lg:px-8">
-            <div className="max-w-2xl">
-              <p className="inline-flex items-center gap-2 rounded border border-[#d7c8e5] bg-white/90 px-3 py-2 text-xs font-bold uppercase tracking-[0.14em] text-[#563a78] shadow-sm">
-                <Icon name="heart" className="h-4 w-4" /> Educación tiroidea clara y responsable
+        <section id="fst-inicio" className="relative isolate overflow-hidden bg-[#FFF9F4] pt-10 md:pt-20">
+          <div className="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-[#F5DCE8]/60 blur-3xl" aria-hidden="true" />
+          <div className="absolute -left-24 top-40 h-72 w-72 rounded-full bg-[#EAE2F8]/60 blur-3xl" aria-hidden="true" />
+          <div className="mx-auto grid max-w-7xl items-center gap-12 px-4 py-12 sm:px-6 md:py-16 lg:grid-cols-[1.05fr_.95fr] lg:px-8">
+            <div>
+              <p className="inline-flex items-center gap-2 rounded-full border border-[#e5dceb] bg-white/90 px-4 py-2 text-xs font-bold uppercase tracking-[0.14em] text-[#9274C9] shadow-sm">
+                <Icon name="heart" className="h-4 w-4" /> Acompañamiento HealthTech para tu tiroides
               </p>
-              <h1 className="mt-6 max-w-2xl text-4xl font-semibold leading-[1.08] text-[#132e55] sm:text-5xl lg:text-6xl">
-                Aprende a cuidar tu salud y organizar tu tratamiento después de una enfermedad o cirugía de tiroides
+              <h1 className="mt-6 max-w-2xl text-4xl font-semibold leading-[1.08] text-[#0A2540] sm:text-5xl lg:text-6xl">
+                Vivir sin tiroides también se aprende
               </h1>
-              <p className="mt-6 max-w-xl text-lg leading-8 text-gray-700">
-                Educación farmacéutica, nutricional y emocional para comprender tu levotiroxina, tus exámenes, tu alimentación y los cambios de vivir con una condición tiroidea.
+              <p className="mt-6 max-w-xl text-lg leading-8 text-slate-600">
+                Información, herramientas y acompañamiento para ayudarte a entender mejor tu alimentación, tus medicamentos y tus hábitos.
               </p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <Link to="/vida-360" onClick={() => trackEvent('hero_cta_click', { cta: 'vida360' })} className="inline-flex min-h-11 items-center justify-center gap-2 rounded-md bg-[#0A2540] px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-[#123b5f]">
-                  Organizar mi salud en Vida 360 <Icon name="arrowRight" className="h-4 w-4" />
+                <Link to="/fst-app" onClick={() => trackEvent('hero_cta_click', { cta: 'crear_cuenta' })} className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-[#0A2540] px-6 py-3 text-sm font-bold text-white shadow-sm hover:bg-[#123b5f]">
+                  Crear mi cuenta <Icon name="arrowRight" className="h-4 w-4" />
                 </Link>
-                <a href="#fst-recursos" onClick={event => { event.preventDefault(); trackEvent('hero_cta_click', { cta: 'free_resource' }); scrollTo('#fst-recursos'); }} className="inline-flex min-h-11 items-center justify-center rounded-md border border-[#9f83ba] bg-white/90 px-6 py-3 text-sm font-semibold text-[#563a78] hover:bg-white">
-                  Recibir recurso gratuito
+                <a href="#fst-app-preview" onClick={event => { event.preventDefault(); trackEvent('hero_cta_click', { cta: 'conocer_nutrifst' }); scrollTo('#fst-app-preview'); }} className="inline-flex min-h-12 items-center justify-center rounded-xl border border-[#2CB1A1] bg-white px-6 py-3 text-sm font-bold text-[#0A655D] hover:bg-[#effaf8]">
+                  Conocer NutriFST IA
                 </a>
               </div>
-              <p className="mt-6 max-w-xl text-sm leading-6 text-gray-600">
+              <p className="mt-6 max-w-xl text-sm leading-6 text-slate-500">
                 Información educativa creada por Karla Hernández, química farmacéutica y paciente tiroidectomizada. No sustituye la consulta médica.
               </p>
+            </div>
+            <div className="relative">
+              <div className="absolute -left-6 -top-6 h-24 w-24 rounded-full bg-[#F5DCE8]" aria-hidden="true" />
+              <div className="absolute -bottom-6 -right-4 h-28 w-28 rounded-full bg-[#EAE2F8]" aria-hidden="true" />
+              <DashboardMockup />
+            </div>
+          </div>
+        </section>
+
+        <section id="fst-app-preview" className="scroll-mt-24 bg-white py-20">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <SectionHeading eyebrow="NutriFST IA" title="Tu asistente nutricional inteligente" description="Pregunta sobre alimentos, sube fotos de tus platos y etiquetas, genera menús y cocina con lo que tienes. Respuestas claras, visuales y con evidencia verificable." centered />
+            <div className="grid items-center gap-10 lg:grid-cols-2">
+              <NutriFstMockup />
+              <div className="space-y-4">
+                {[
+                  ['¿Puedo comer esto?', 'Revisa cualquier alimento o bebida y su relación con la levotiroxina, los suplementos y la dieta baja en yodo.'],
+                  ['Escáner de comidas', 'Sube una foto de tu plato: la IA identifica tentativamente los alimentos, tú confirmas y ves el desglose estimado.'],
+                  ['Menús con IA', 'Desayuno, almuerzo, cena y snack según tu objetivo, país, presupuesto y tiempo. Cada comida se puede cambiar.'],
+                  ['Cocina con lo que tengo', 'Escribe tus ingredientes y recibe opciones que los aprovechan, con preparación paso a paso.'],
+                ].map(([title, text]) => (
+                  <div key={title} className="flex items-start gap-4 rounded-2xl border border-[#f0eaf5] bg-white p-5 shadow-sm">
+                    <span className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-[#EAE2F8] text-[#9274C9]"><Icon name="sparkles" className="h-5 w-5" /></span>
+                    <div>
+                      <h3 className="font-semibold text-[#0A2540]">{title}</h3>
+                      <p className="mt-1 text-sm leading-6 text-slate-600">{text}</p>
+                    </div>
+                  </div>
+                ))}
+                <Link to="/fst-app" className="inline-flex min-h-12 items-center gap-2 rounded-xl bg-[#0A2540] px-6 text-sm font-bold text-white hover:bg-[#123b5f]">
+                  Probar NutriFST IA <Icon name="arrowRight" className="h-4 w-4" />
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="bg-[#faf8fd] py-20">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <SectionHeading eyebrow="Tu espacio personal" title="Todo en un solo lugar" description="Una aplicación de acompañamiento para organizar tu tratamiento, tu alimentación y tus hábitos sin sentirte abrumada." centered />
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              {[
+                ['sparkles', 'NutriFST IA', 'Pregunta, escanea y genera menús con evidencia.'],
+                ['pill', 'Mi medicamento', 'Registra tu levotiroxina y revisa interacciones.'],
+                ['leaf', 'Mi alimentación', 'Escanea comidas y cocina con lo que tienes.'],
+                ['heart', 'Mis síntomas', 'Observa tendencias sin culpa ni juicios.'],
+                ['book', 'Mis menús', 'Planes semanales adaptados a tu realidad.'],
+                ['chart', 'Mi progreso', 'Registros y tendencias para tu consulta.'],
+                ['users', 'Mis recursos', 'Guías y educación creadas por una química farmacéutica.'],
+              ].map(([icon, title, text]) => (
+                <div key={title} className="rounded-2xl border border-[#f0eaf5] bg-white p-5 shadow-sm transition hover:shadow-md">
+                  <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#EAE2F8] text-[#9274C9]"><Icon name={icon} className="h-5 w-5" /></span>
+                  <h3 className="mt-3 font-semibold text-[#0A2540]">{title}</h3>
+                  <p className="mt-1 text-sm leading-6 text-slate-600">{text}</p>
+                </div>
+              ))}
+              <div className="rounded-2xl border border-[#0A2540] bg-[#0A2540] p-5 text-white shadow-sm">
+                <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/15 text-white"><Icon name="arrowRight" className="h-5 w-5" /></span>
+                <h3 className="mt-3 font-semibold">Empieza hoy</h3>
+                <p className="mt-1 text-sm leading-6 text-white/70">Crea tu cuenta y descubre tu espacio personal.</p>
+                <Link to="/fst-app" className="mt-3 inline-flex items-center gap-1 text-sm font-bold text-white underline underline-offset-4">Crear mi cuenta</Link>
+              </div>
             </div>
           </div>
         </section>
