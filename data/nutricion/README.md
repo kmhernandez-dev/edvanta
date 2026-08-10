@@ -26,8 +26,8 @@ clínicas** (`fst_clinical_rules.json`): las recetas solo las referencian por `r
 | 2 | `fst_clinical_rules.json` | ✅ 13 reglas verificadas (6 clusters) |
 | 3 | `fst_condition_matrix.json` (8 condiciones) | 🟡 Estructura + 8 perfiles + 1 receta indexada |
 | 4 | `fst_ingredient_safety.json` (yodo/gluten/levotiroxina) | 🟡 Motores de yodo y gluten hechos; levotiroxina pendiente |
-| 5 | Diseño de las 200 recetas | 🟡 1 receta MUESTRA (formato validado) |
-| 6 | Recetas en 8 lotes × 25 | 🟡 1/200 (muestra) |
+| 5 | Diseño de las 200 recetas | 🟡 25/200 (Lote 1) |
+| 6 | Recetas en 8 lotes × 25 | 🟡 Lote 1 de 8 hecho (25/200) |
 | 7 | Dedup | ⬜ Pendiente |
 | 8–10 | Auditoría científica / farmacológica / yodo | ⬜ Pendiente |
 | 11 | Export maestro (`fst_recetas_master.json`/`.csv`) | ⬜ Pendiente |
@@ -38,7 +38,7 @@ clínicas** (`fst_clinical_rules.json`): las recetas solo las referencian por `r
 - `fst_clinical_rules.json` — reglas clínicas; cada una cita su(s) evidencia(s).
 - `fst_condition_matrix.json` — 8 perfiles clínicos + valores de compatibilidad + índice de recetas.
 - `fst_ingredient_safety.json` — motores de **yodo** y **gluten** hechos; levotiroxina pendiente.
-- `fst_recetas_master.json` / `.csv` — las 200 recetas (por ahora **1 receta muestra**: FST-DES-001).
+- `fst_recetas_master.json` / `.csv` — las 200 recetas (**Lote 1 hecho: 25/200**).
 - `fst_qa_report.md` — (pendiente) auditoría.
 
 ## Condiciones clínicas (perfiles)
@@ -78,3 +78,10 @@ THY-06 Cáncer diferenciado estable · THY-07 Preparación radioyodo (bajo en yo
   posquirúrgica 2018, revisión de hueso en tirotoxicosis). **FUNDAMENTO DE REGLAS
   COMPLETO: 13 reglas, 6 clusters, 17 fuentes.** Próximo: taxonomía de ingredientes y
   generación de recetas en lotes de 25.
+- **2026-08-10** — **LOTE 1 (25/200):** 8 desayunos, 5 almuerzos, 7 cenas, 3 snacks,
+  2 sopas. Variedad real (maíz/arroz/avena/quinua/papa/yuca/plátano/legumbres;
+  huevo/pollo/pavo/pescado/vegano; asado/plancha/horno/salteado/crema/sopa/batido).
+  Sin duplicados (25 IDs y nombres únicos); todas con matriz de 8 condiciones e
+  hiciendo bien las distinciones de yodo (pescado/lácteo → EVITAR_TEMPORALMENTE en
+  radioyodo) y gluten (avena→certificada; salsa de soya→tamari en celiaquía).
+  Próximo: Lote 2 (26–50).
