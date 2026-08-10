@@ -13,7 +13,10 @@
 import { useEffect, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
-import { supabase, supabaseConfigured } from '../../lib/supabase';
+import { supabaseConfigured } from '../../lib/supabase';
+
+const SUPABASE_URL = (import.meta.env.VITE_SUPABASE_URL || '').trim();
+const SUPABASE_ANON_KEY = (import.meta.env.VITE_SUPABASE_ANON_KEY || '').trim();
 
 function GoogleIcon() {
   return (
@@ -75,15 +78,14 @@ export default function AuthScreen({ onSuccess }) {
   const [googleEnabled, setGoogleEnabled] = useState(null);
 
   useEffect(() => {
-    if (!supabase || !supabaseConfigured) return;
+    if (!supabaseConfigured || !SUPABASE_URL || !SUPABASE_ANON_KEY) return;
     let cancelled = false;
-    supabase.auth.getSettings()
-      .then(({ data, error }) => {
+    fetch(`${SUPABASE_URL}/auth/v1/settings`, {
+      headers: { apikey: SUPABASE_ANON_KEY },
+    })
+      .then(res => res.json())
+      .then(data => {
         if (cancelled) return;
-        if (error) {
-          setGoogleEnabled(false);
-          return;
-        }
         setGoogleEnabled(Boolean(data?.external?.google));
       })
       .catch(() => { if (!cancelled) setGoogleEnabled(false); });
