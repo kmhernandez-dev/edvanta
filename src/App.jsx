@@ -1,5 +1,5 @@
 import { lazy, Suspense } from 'react';
-import { Navigate, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 
 import BibliotecaHome   from './pages/BibliotecaHome';
 import FelizSinTiroides from './pages/FelizSinTiroides';
@@ -75,8 +75,19 @@ export default function App() {
             <FstAppPortal />
           </Suspense>
         } />
-        <Route path="/mi-espacio" element={<Navigate to="/fst-app" replace />} />
-        <Route path="/mi-espacio/*" element={<Navigate to="/fst-app" replace />} />
+        {/* /mi-espacio renderiza el portal directamente (NO redirigir con
+            Navigate: el hash #access_token=... que trae Google OAuth o el
+            enlace de confirmación se perdería y la sesión no se crearía). */}
+        <Route path="/mi-espacio" element={
+          <Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-[#FFF9F4] text-sm font-semibold text-slate-600">Cargando tu espacio...</div>}>
+            <FstAppPortal />
+          </Suspense>
+        } />
+        <Route path="/mi-espacio/*" element={
+          <Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-[#FFF9F4] text-sm font-semibold text-slate-600">Cargando tu espacio...</div>}>
+            <FstAppPortal />
+          </Suspense>
+        } />
 
         {/* Panel administrativo (solo role = admin) */}
         <Route path="/admin/*" element={
