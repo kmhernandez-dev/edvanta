@@ -85,31 +85,32 @@ export function FstAppProvider({ children }) {
         'health_timeline', 'documents', 'notifications', 'consents', 'meals',
         'weight_logs', 'chat_history', 'activity_logs', 'menus', 'shopping_lists',
       ];
+      // Cada tabla se carga de forma INDEPENDIENTE: si una falla, las demás
+      // siguen funcionando (antes Promise.all atascaba toda la app).
+      const loadTable = async (table, select = '*') => {
+        const { data: rows, error: tableError } = await client
+          .from(table)
+          .select(select)
+          .order('created_at', { ascending: false });
+        if (tableError) {
+          console.warn(`FstAppContext: no se pudo cargar ${table}:`, tableError.message);
+          return [table, []];
+        }
+        return [table, rows || []];
+      };
       const results = await Promise.all([
-        ...simpleTables.map(async table => {
-          const { data: rows, error: tableError } = await client
-            .from(table)
-            .select('*')
-            .order('created_at', { ascending: false });
-          if (tableError) throw new Error(`${table}: ${tableError.message}`);
-          return [table, rows || []];
-        }),
-        client.from('symptoms').select('*').order('created_at', { ascending: false }),
-        client.from('symptom_logs').select('*, symptoms(name)').order('created_at', { ascending: false }),
-        client.from('medication_logs').select('*, medications(medication_name)').order('created_at', { ascending: false }),
+        ...simpleTables.map(table => loadTable(table)),
+        loadTable('symptoms'),
+        loadTable('symptom_logs', '*, symptoms(name)'),
+        loadTable('medication_logs', '*, medications(medication_name)'),
       ]);
       const next = { ...emptyState, profile };
       for (const [table, rows] of results) {
         if (Array.isArray(rows)) next[table] = rows;
       }
-      const symptomsResult = results[results.length - 3];
-      const symptomLogsResult = results[results.length - 2];
-      const medicationLogsResult = results[results.length - 1];
-      if (symptomsResult?.data) next.symptoms = symptomsResult.data;
-      if (symptomLogsResult?.data) next.symptomLogs = symptomLogsResult.data;
-      if (medicationLogsResult?.data) next.medicationLogs = medicationLogsResult.data;
       setData(next);
     } catch (err) {
+      console.error('FstAppContext loadAll:', err.message);
       setError(err.message);
     } finally {
       setLoading(false);

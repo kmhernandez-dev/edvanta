@@ -47,7 +47,7 @@ function PortalContent() {
   if (!user) return <AuthScreen />;
   if (loading) return <LoadingScreen />;
 
-  const onboardingCompleted = profile?.onboarding_completed || data.profile?.onboarding_completed;
+  const onboardingCompleted = profile?.onboarding_completed || false;
 
   if (!onboardingCompleted) {
     return <FstOnboarding />;
