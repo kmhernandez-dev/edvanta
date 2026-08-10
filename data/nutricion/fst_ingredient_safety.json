@@ -2,10 +2,10 @@
   "meta": {
     "proyecto": "Feliz Sin Tiroides — Base nutricional científica",
     "descripcion": "Motores de seguridad por ingrediente. Clasificación CATEGÓRICA (no gramos exactos de yodo): la composición real es muy variable y el prompt indica no calcular contenido exacto cuando no hay fuente fiable. Las recetas heredan estas etiquetas.",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "fecha_revision": "2026-08-10",
-    "motores_incluidos": ["iodine_safety_engine"],
-    "motores_pendientes": ["gluten_logic", "levothyroxine_interaction_engine (etiquetado de ingredientes)"]
+    "motores_incluidos": ["iodine_safety_engine", "gluten_logic"],
+    "motores_pendientes": ["levothyroxine_interaction_engine (etiquetado de ingredientes)"]
   },
   "iodine_safety_engine": {
     "descripcion": "Clasifica ingredientes por riesgo de yodo y por compatibilidad con la dieta baja en yodo (THY-07). Regla asociada: IOD-RAI-01, IOD-EXCESS-01. Fuentes: EV-IOD-001 (lista ATA), EV-IOD-002 (exceso de yodo), EV-IOD-003 (guía ATA cáncer).",
@@ -43,5 +43,19 @@
       "low_iodine_compatible": "true si TODOS los ingredientes están en 'permitido' (o claramente bajo); false si incluye alimentos de 'evitar'; requiere revisión si incluye 'limitar' o 'variable_o_incierto'.",
       "iodine_risk": "bajo | moderado | alto | variable — según el ingrediente de mayor riesgo presente."
     }
+  },
+  "gluten_logic": {
+    "descripcion": "Estado de gluten de un ingrediente/receta. Reglas asociadas: GLU-01 (Hashimoto sin celiaquía → gluten permitido) y GLU-02 (celiaquía → sin gluten estricto de por vida). Fuentes: EV-GLU-001, EV-GLU-002.",
+    "recordatorio_clave": "Hashimoto NO equivale a 'sin gluten'. La restricción estricta solo aplica en celiaquía diagnosticada, intolerancia o indicación profesional.",
+    "estados": {
+      "gluten_permitido": "Por defecto para Hashimoto sin celiaquía y población general sin indicación. No se restringe.",
+      "naturalmente_sin_gluten": "No contiene gluten por naturaleza. Se puede etiquetar así SIN afirmar beneficio tiroideo.",
+      "requiere_sin_gluten_por_celiaquia": "Solo en celiaquía confirmada (THY-03): dieta sin gluten estricta de por vida, incluidas trazas.",
+      "preferencia_personal": "El usuario elige sin gluten por preferencia, sin diagnóstico. Se respeta como filtro, sin atribuir efecto tiroideo.",
+      "informacion_insuficiente": "Composición/contaminación incierta (ej. avena sin certificar, productos comerciales sin etiqueta clara)."
+    },
+    "fuentes_evidentes_de_gluten": ["trigo", "cebada", "centeno", "avena con posible contaminación cruzada", "harinas y panes de trigo", "pastas de trigo", "salsa de soya con trigo", "rebozados/empanizados con harina de trigo"],
+    "naturalmente_sin_gluten_ejemplos": ["arroz", "maíz y arepa", "papa", "yuca", "ñame", "plátano", "batata", "quinua", "legumbres (fríjol, lenteja, garbanzo)", "frutas", "verduras", "huevo", "carnes y pescado frescos", "frutos secos y semillas"],
+    "evidence_ids": ["EV-GLU-001", "EV-GLU-002"]
   }
 }

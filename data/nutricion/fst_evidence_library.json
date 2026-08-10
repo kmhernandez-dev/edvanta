@@ -2,9 +2,9 @@
   "meta": {
     "proyecto": "Feliz Sin Tiroides — Base nutricional científica",
     "descripcion": "Bibliografía verificada. Cada entrada fue comprobada en PubMed/NCBI (PMID/DOI reales). El campo 'leido_en_sesion' indica si el texto se leyó directamente (true) o si solo se confirmó la cita (false).",
-    "version": "0.2.0",
+    "version": "0.3.0",
     "fecha_revision": "2026-08-10",
-    "total_referencias": 9
+    "total_referencias": 13
   },
   "referencias": [
     {
@@ -160,6 +160,74 @@
       "conclusion_aplicable": "Guía de manejo del cáncer diferenciado de tiroides. Recomienda una dieta baja en yodo (<50 µg de yodo/día) como preparación para la terapia con radioyodo, junto con la estimulación de TSH, para aumentar la captación de radioyodo.",
       "limitaciones": "La cifra <50 µg/día y la indicación/duración se aplican bajo criterio del equipo tratante.",
       "condicion_relacionada": "THY-06 (cáncer) y THY-07 (preparación radioyodo)",
+      "leido_en_sesion": true
+    },
+    {
+      "evidence_id": "EV-GLU-001",
+      "titulo": "Effects of Gluten-Free Diet in Non-Celiac Hashimoto's Thyroiditis: A Systematic Review and Meta-Analysis",
+      "autores": "Araújo EMQ, et al.",
+      "anio": 2025,
+      "revista": "Nutrients",
+      "volumen_paginas": "17(21):3437",
+      "tipo_estudio": "Revisión sistemática y meta-análisis (3 ECA, 110 participantes)",
+      "nivel_jerarquia": "Revisión sistemática / meta-análisis",
+      "PMID": "41228508",
+      "DOI": "10.3390/nu17213437",
+      "url_pubmed": "https://pubmed.ncbi.nlm.nih.gov/41228508/",
+      "conclusion_aplicable": "En Hashimoto SIN celiaquía, la evidencia es muy incierta: la dieta sin gluten no mostró efecto significativo sobre TSH, fT3 ni fT4; redujo anti-tiroglobulina pero aumentó anti-TPO. Justificación limitada para recomendar dieta sin gluten a pacientes con Hashimoto no celíaco según la evidencia actual.",
+      "limitaciones": "Muy pocos estudios (3 ECA, 110 participantes); certeza de evidencia muy baja.",
+      "condicion_relacionada": "THY-02 (Hashimoto sin celiaquía)",
+      "leido_en_sesion": true
+    },
+    {
+      "evidence_id": "EV-GLU-002",
+      "titulo": "Increased Incidence of Thyroid Disease in Patients with Celiac Disease: A Systematic Review and Meta-Analysis",
+      "autores": "Sun X, Lu L, Yang R, Li Y, Shan L, Wang Y",
+      "anio": 2016,
+      "revista": "PLoS One",
+      "volumen_paginas": "11(12):e0168708",
+      "tipo_estudio": "Revisión sistemática y meta-análisis (13 estudios; 15.629 con celiaquía)",
+      "nivel_jerarquia": "Revisión sistemática / meta-análisis",
+      "PMID": "28030626",
+      "DOI": "10.1371/journal.pone.0168708",
+      "url_pubmed": "https://pubmed.ncbi.nlm.nih.gov/28030626/",
+      "conclusion_aplicable": "La enfermedad tiroidea es más frecuente en personas con celiaquía (OR 3,08; IC95% 2,67–3,56), sobre todo tiroiditis autoinmune e hipotiroidismo. Confirma que la celiaquía se trata con una dieta sin gluten de por vida. La asociación respalda considerar cribado cuando esté indicado.",
+      "limitaciones": "No aclara si la dieta sin gluten modifica el riesgo tiroideo; asociación, no causalidad hacia la tiroides.",
+      "condicion_relacionada": "THY-03 (Hashimoto + celiaquía)",
+      "leido_en_sesion": true
+    },
+    {
+      "evidence_id": "EV-SEL-001",
+      "titulo": "Insufficient documentation for clinical efficacy of selenium supplementation in chronic autoimmune thyroiditis, based on a systematic review and meta-analysis",
+      "autores": "Winther KH, Wichman JEM, Bonnema SJ, Hegedüs L",
+      "anio": 2017,
+      "revista": "Endocrine",
+      "volumen_paginas": "55(2):376-385",
+      "tipo_estudio": "Revisión sistemática y meta-análisis",
+      "nivel_jerarquia": "Revisión sistemática / meta-análisis",
+      "PMID": "27683225",
+      "DOI": "10.1007/s12020-016-1098-z",
+      "url_pubmed": "https://pubmed.ncbi.nlm.nih.gov/27683225/",
+      "conclusion_aplicable": "No se encontró efecto de la suplementación con selenio sobre la TSH, la calidad de vida ni la ecografía tiroidea en personas con tiroiditis autoinmune no tratadas con levotiroxina. La eficacia clínica está insuficientemente documentada.",
+      "limitaciones": "Reducción de anticuerpos observada en otros análisis con baja certeza; se necesitan ensayos bien diseñados.",
+      "condicion_relacionada": "THY-02 (Hashimoto)",
+      "leido_en_sesion": true
+    },
+    {
+      "evidence_id": "EV-SEL-002",
+      "titulo": "Selenium Supplementation for Hashimoto's Thyroiditis: Summary of a Cochrane Systematic Review",
+      "autores": "van Zuuren EJ, Albusta AY, Fedorowicz Z, Carter B, Pijl H",
+      "anio": 2014,
+      "revista": "European Thyroid Journal",
+      "volumen_paginas": "3(1):25-31",
+      "tipo_estudio": "Resumen de revisión sistemática Cochrane",
+      "nivel_jerarquia": "Revisión sistemática (Cochrane)",
+      "PMID": "24847462",
+      "DOI": "10.1159/000356040",
+      "url_pubmed": "https://pubmed.ncbi.nlm.nih.gov/24847462/",
+      "conclusion_aplicable": "La evidencia para apoyar o refutar la eficacia de la suplementación con selenio en Hashimoto es incompleta y no fiable para informar la decisión clínica. Hubo mejoras estadísticas en anticuerpos con selenometionina, pero de significado clínico incierto y con riesgo de sesgo.",
+      "limitaciones": "Pocos estudios; calidad de evidencia de incierta a alto riesgo de sesgo.",
+      "condicion_relacionada": "THY-02 (Hashimoto)",
       "leido_en_sesion": true
     }
   ]

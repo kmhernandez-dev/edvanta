@@ -23,9 +23,9 @@ clínicas** (`fst_clinical_rules.json`): las recetas solo las referencian por `r
 | Fase | Entregable | Estado |
 |------|-----------|--------|
 | 1 | Revisión científica | 🟡 En curso (clusters levotiroxina + yodo hechos) |
-| 2 | `fst_clinical_rules.json` | 🟡 En curso (8 reglas verificadas) |
+| 2 | `fst_clinical_rules.json` | 🟡 En curso (11 reglas verificadas) |
 | 3 | `fst_condition_matrix.json` (8 condiciones) | ⬜ Pendiente |
-| 4 | `fst_ingredient_safety.json` (yodo/gluten/levotiroxina) | 🟡 Motor de yodo hecho; gluten/levotiroxina pendientes |
+| 4 | `fst_ingredient_safety.json` (yodo/gluten/levotiroxina) | 🟡 Motores de yodo y gluten hechos; levotiroxina pendiente |
 | 5 | Diseño de las 200 recetas | ⬜ Pendiente |
 | 6 | Recetas en 8 lotes × 25 | ⬜ Pendiente |
 | 7 | Dedup | ⬜ Pendiente |
@@ -37,7 +37,7 @@ clínicas** (`fst_clinical_rules.json`): las recetas solo las referencian por `r
 - `fst_evidence_library.json` — bibliografía verificada (PMID/DOI reales).
 - `fst_clinical_rules.json` — reglas clínicas; cada una cita su(s) evidencia(s).
 - `fst_condition_matrix.json` — (pendiente) compatibilidad condición ↔ regla/receta.
-- `fst_ingredient_safety.json` — motor de **yodo** hecho; gluten y levotiroxina pendientes.
+- `fst_ingredient_safety.json` — motores de **yodo** y **gluten** hechos; levotiroxina pendiente.
 - `fst_recetas_master.json` / `.csv` — (pendiente) las 200 recetas.
 - `fst_qa_report.md` — (pendiente) auditoría.
 
@@ -57,4 +57,10 @@ THY-06 Cáncer diferenciado estable · THY-07 Preparación radioyodo (bajo en yo
   yodo / algas / suplementos) + 3 fuentes (lista ATA de dieta baja en yodo, revisión
   de exceso de yodo *Ann N Y Acad Sci* 2019, guía ATA cáncer 2015). Creado
   `fst_ingredient_safety.json` con el motor de yodo (clasificación de ingredientes).
-  Próximo: gluten/celiaquía y selenio (verificados en vivo antes de entrar).
+- **2026-08-10** — Verificados y cargados los clusters *gluten/celiaquía* y *selenio*:
+  3 reglas (GLU-01 Hashimoto sin celiaquía → gluten permitido; GLU-02 celiaquía →
+  sin gluten estricto de por vida; SEL-01 selenio → no suplementar rutinariamente,
+  alimento ≠ suplemento) + 4 fuentes (meta-análisis *Nutrients* 2025, *PLoS One*
+  2016, Winther *Endocrine* 2017 y Cochrane van Zuuren 2014). Añadido `gluten_logic`
+  al motor de ingredientes. **Total: 11 reglas, 13 fuentes.** Próximo:
+  Graves/hipermetabolismo e hipoparatiroidismo/calcio; luego matriz de condiciones.
