@@ -91,6 +91,23 @@
     @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
   }
 
+  /* ─── Edvanta — sistema visual (azul, aislado de FST/AtenFarma) ─── */
+  .btn-edvanta {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 bg-edvanta-blue text-white text-sm font-semibold rounded-xl hover:bg-edvanta-bluedark active:scale-[0.99] transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-edvanta-blue focus:ring-offset-2 shadow-sm hover:shadow;
+  }
+  .btn-edvanta-outline {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 bg-white text-edvanta-deep text-sm font-semibold rounded-xl border border-edvanta-border hover:bg-edvanta-light active:scale-[0.99] transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-edvanta-blue focus:ring-offset-2;
+  }
+  .card-edvanta {
+    @apply bg-white rounded-2xl border border-edvanta-border shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md;
+  }
+  .eyebrow-edvanta {
+    @apply text-xs font-bold uppercase tracking-widest text-edvanta-blue;
+  }
+  .edvanta h1, .edvanta h2, .edvanta h3 {
+    font-family: 'Manrope', 'Inter', system-ui, sans-serif;
+  }
+
   /* Subtle dotted background for hero / feature sections */
   .bg-dots {
     background-image: radial-gradient(circle, rgba(20, 184, 166, 0.12) 1px, transparent 1px);

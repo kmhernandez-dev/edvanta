@@ -72,6 +72,17 @@ export default {
           purple: '#9274C9',
           gray:   '#F6F7F8',
         },
+        // ─── Edvanta — identidad azul (aislada; no afecta FST ni AtenFarma) ───
+        edvanta: {
+          deep:     '#163A5F',
+          blue:     '#3578E5',
+          bluedark: '#2a63c4',
+          light:    '#EDF5FF',
+          mint:     '#DDF5EA',
+          cream:    '#FAF8F4',
+          ink:      '#263238',
+          border:   '#E5EAF0',
+        },
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],

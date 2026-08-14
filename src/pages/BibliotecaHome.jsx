@@ -2,6 +2,7 @@ import { useState, useMemo } from 'react';
 
 import Header        from '../components/Header';
 import Hero          from '../components/Hero';
+import GoalsSection  from '../components/GoalsSection';
 import CourseCard    from '../components/CourseCard';
 import SearchFilters from '../components/SearchFilters';
 import HerramientaCard from '../components/HerramientaCard';
@@ -50,9 +51,11 @@ export default function BibliotecaHome() {
 
       {/* ── 1. HERO ────────────────────────────────────────────── */}
       <Hero
-        onExploreCourses={() => scrollTo('cursos')}
-        onExploreProducts={() => scrollTo('herramientas')}
+        onFindRoute={() => scrollTo('objetivos')}
+        onExploreCourses={() => scrollTo('catalogo-cursos')}
       />
+
+      <GoalsSection />
 
       <BrandGatewaySection />
       <FeaturedCoursesSection />
