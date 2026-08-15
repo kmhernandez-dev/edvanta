@@ -26,8 +26,8 @@ clínicas** (`fst_clinical_rules.json`): las recetas solo las referencian por `r
 | 2 | `fst_clinical_rules.json` | ✅ 13 reglas verificadas (6 clusters) |
 | 3 | `fst_condition_matrix.json` (8 condiciones) | 🟡 Estructura + 8 perfiles + 1 receta indexada |
 | 4 | `fst_ingredient_safety.json` (yodo/gluten/levotiroxina) | 🟡 Motores de yodo y gluten hechos; levotiroxina pendiente |
-| 5 | Diseño de las 200 recetas | 🟡 25/200 (Lote 1) |
-| 6 | Recetas en 8 lotes × 25 | 🟡 Lote 1 de 8 hecho (25/200) |
+| 5 | Diseño de las 200 recetas | 🟡 50/200 (Lotes 1-2) |
+| 6 | Recetas en 8 lotes × 25 | 🟡 Lotes 1-2 de 8 (50/200) |
 | 7 | Dedup | ⬜ Pendiente |
 | 8–10 | Auditoría científica / farmacológica / yodo | ⬜ Pendiente |
 | 11 | Export maestro (`fst_recetas_master.json`/`.csv`) | ⬜ Pendiente |
@@ -38,7 +38,7 @@ clínicas** (`fst_clinical_rules.json`): las recetas solo las referencian por `r
 - `fst_clinical_rules.json` — reglas clínicas; cada una cita su(s) evidencia(s).
 - `fst_condition_matrix.json` — 8 perfiles clínicos + valores de compatibilidad + índice de recetas.
 - `fst_ingredient_safety.json` — motores de **yodo** y **gluten** hechos; levotiroxina pendiente.
-- `fst_recetas_master.json` / `.csv` — las 200 recetas (**Lote 1 hecho: 25/200**).
+- `fst_recetas_master.json` / `.csv` — las 200 recetas (**Lotes 1-2: 50/200**).
 - `fst_qa_report.md` — (pendiente) auditoría.
 
 ## Condiciones clínicas (perfiles)
@@ -84,4 +84,9 @@ THY-06 Cáncer diferenciado estable · THY-07 Preparación radioyodo (bajo en yo
   Sin duplicados (25 IDs y nombres únicos); todas con matriz de 8 condiciones e
   hiciendo bien las distinciones de yodo (pescado/lácteo → EVITAR_TEMPORALMENTE en
   radioyodo) y gluten (avena→certificada; salsa de soya→tamari en celiaquía).
-  Próximo: Lote 2 (26–50).
+- **2026-08-15** — **LOTE 2 (26–50):** +8 desayunos, +5 almuerzos, +7 cenas, +3 snacks,
+  +2 sopas. Nuevas técnicas/ingredientes (pancakes de avena, smoothie bowl, revuelto de
+  tofu, berenjena rellena, tortilla española, wok, cremas de brócoli/zanahoria, calentado,
+  wrap de maíz). Casos clínicos bien resueltos: pan de trigo → sin_gluten=false + celiaquía
+  CON_MODIFICACION; tofu → regla de soja (LT4-SOY-01); pescado/lácteo → EVITAR_TEMPORALMENTE
+  en radioyodo. **Total: 50/200, 0 duplicados (50 IDs y nombres únicos).** Próximo: Lote 3.
