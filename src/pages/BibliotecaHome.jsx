@@ -3,6 +3,8 @@ import { useState, useMemo } from 'react';
 import Header        from '../components/Header';
 import Hero          from '../components/Hero';
 import GoalsSection  from '../components/GoalsSection';
+import SelectionMethod from '../components/SelectionMethod';
+import Transparency  from '../components/Transparency';
 import CourseCard    from '../components/CourseCard';
 import SearchFilters from '../components/SearchFilters';
 import HerramientaCard from '../components/HerramientaCard';
@@ -27,12 +29,6 @@ function filterCourses(list, { search, category, profile }) {
     return matchSearch && matchCategory && matchProfile;
   });
 }
-
-const PASOS = [
-  { icon: 'cap',       n: '1', title: 'Estudia gratis',          desc: 'Accede a cursos online gratuitos según tu perfil profesional.' },
-  { icon: 'clipboard', n: '2', title: 'Aplica con plantillas',   desc: 'Usa herramientas editables para organizar, documentar y presentar mejor tu trabajo.' },
-  { icon: 'award',     n: '3', title: 'Certifica si lo necesitas', desc: 'El certificado es opcional y puede ayudarte a respaldar tus competencias.' },
-];
 
 export default function BibliotecaHome() {
   const [search, setSearch]     = useState('');
@@ -66,8 +62,8 @@ export default function BibliotecaHome() {
       <section id="catalogo-cursos" className="py-16 md:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-10">
-            <p className="text-xs font-bold text-teal-600 uppercase tracking-widest mb-2">Catálogo extendido</p>
-            <h2 className="text-2xl md:text-3xl font-bold text-navy-950 mb-3">Explora más cursos virtuales gratuitos</h2>
+            <p className="eyebrow-edvanta mb-2">Catálogo extendido</p>
+            <h2 className="font-display text-2xl md:text-3xl font-extrabold text-edvanta-deep mb-3">Explora más cursos virtuales gratuitos</h2>
             <p className="text-base text-gray-500">Más de 6.000 cursos con certificado opcional. Busca por área o perfil profesional.</p>
           </div>
 
@@ -85,7 +81,7 @@ export default function BibliotecaHome() {
                 <div>
                   <p className="font-semibold text-gray-700 mb-1">No encontramos resultados exactos.</p>
                   <p className="text-sm text-gray-500 mb-4">Escríbenos por WhatsApp y te recomendamos una ruta.</p>
-                  <a href={EDVANTA_WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="btn-teal text-sm px-6 py-2.5">Preguntar por WhatsApp</a>
+                  <a href={EDVANTA_WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="btn-edvanta text-sm px-6 py-2.5">Preguntar por WhatsApp</a>
                 </div>
               </div>
             ) : (
@@ -104,8 +100,8 @@ export default function BibliotecaHome() {
       <section id="herramientas" className="py-16 md:py-20 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-2xl mb-10">
-            <p className="text-xs font-bold text-teal-600 uppercase tracking-widest mb-2">Para aplicar lo aprendido</p>
-            <h2 className="text-2xl md:text-3xl font-bold text-navy-950 mb-3">Herramientas profesionales complementarias</h2>
+            <p className="eyebrow-edvanta mb-2">Para aplicar lo aprendido</p>
+            <h2 className="font-display text-2xl md:text-3xl font-extrabold text-edvanta-deep mb-3">Herramientas profesionales complementarias</h2>
             <p className="text-base text-gray-500">
               Recursos editables diseñados para estudiar, trabajar, documentar procesos y fortalecer tu perfil profesional.
             </p>
@@ -119,36 +115,24 @@ export default function BibliotecaHome() {
         </div>
       </section>
 
-      {/* ── 4. CÓMO FUNCIONA + CTA ─────────────────────────────── */}
-      <section className="py-16 md:py-20 bg-white">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-12">
-            <p className="text-xs font-bold text-teal-600 uppercase tracking-widest mb-2">Cómo funciona</p>
-            <h2 className="text-2xl md:text-3xl font-bold text-navy-950">Aprende, aplica y demuestra</h2>
-          </div>
+      {/* ── 4. CÓMO SELECCIONAMOS (confianza) ──────────────────── */}
+      <SelectionMethod />
 
-          <div className="grid md:grid-cols-3 gap-6 mb-16">
-            {PASOS.map((p, i) => (
-              <div key={p.n} className="relative text-center">
-                <div className="w-14 h-14 mx-auto rounded-2xl bg-teal-50 flex items-center justify-center mb-4">
-                  <Icon name={p.icon} className="w-7 h-7 text-teal-600" />
-                </div>
-                <span className="absolute top-0 right-0 md:right-6 text-5xl font-black text-gray-100 -z-0">{p.n}</span>
-                <h3 className="text-base font-bold text-navy-950 mb-1.5 relative">{p.title}</h3>
-                <p className="text-sm text-gray-500 leading-relaxed relative">{p.desc}</p>
-              </div>
-            ))}
-          </div>
-
-          {/* CTA final */}
-          <div className="grid md:grid-cols-2 gap-8 items-center bg-gradient-to-br from-navy-950 to-navy-800 rounded-3xl p-8 md:p-10 overflow-hidden">
+      {/* ── 5. CTA final ───────────────────────────────────────── */}
+      <section className="edvanta bg-white py-16 md:py-20">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <div className="grid items-center gap-8 overflow-hidden rounded-3xl bg-gradient-to-br from-edvanta-deep to-edvanta-blue p-8 md:grid-cols-2 md:p-10">
             <div className="text-center md:text-left">
-              <h2 className="text-2xl md:text-3xl font-bold text-white leading-snug mb-4">
+              <h2 className="font-display text-2xl font-extrabold leading-snug text-white md:text-3xl">
                 Empieza con cursos gratis y complementa con herramientas prácticas
               </h2>
-              <div className="flex flex-col sm:flex-row gap-3 justify-center md:justify-start">
-                <button onClick={() => scrollTo('cursos')} className="btn-teal px-6 py-3 text-sm">Ver cursos recomendados</button>
-                <button onClick={() => scrollTo('herramientas')} className="inline-flex items-center justify-center px-6 py-3 bg-white/10 hover:bg-white/20 text-white text-sm font-semibold rounded-lg transition-colors">Ver herramientas</button>
+              <div className="mt-5 flex flex-col justify-center gap-3 sm:flex-row md:justify-start">
+                <button onClick={() => scrollTo('cursos')} className="inline-flex items-center justify-center rounded-xl bg-white px-6 py-3 text-sm font-semibold text-edvanta-deep transition hover:bg-edvanta-light">
+                  Ver cursos recomendados
+                </button>
+                <button onClick={() => scrollTo('herramientas')} className="inline-flex items-center justify-center rounded-xl bg-white/10 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/20">
+                  Ver herramientas
+                </button>
               </div>
             </div>
             <img src="/img/mockups-plantillas.jpg" alt="Plantillas en Excel, PDF, Word y dashboards" loading="lazy"
@@ -158,6 +142,8 @@ export default function BibliotecaHome() {
       </section>
 
       <ArticulosSection marca="edvanta" eyebrow="Artículos y rutas" title="Artículos y rutas de aprendizaje" dark />
+
+      <Transparency />
 
       <Footer />
 

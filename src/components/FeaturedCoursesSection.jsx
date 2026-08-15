@@ -42,8 +42,8 @@ export default function FeaturedCoursesSection() {
     <section id="cursos" className="bg-white py-16 md:py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto mb-8 max-w-3xl text-center">
-          <p className="mb-2 text-xs font-bold uppercase tracking-widest text-teal-600">Cursos gratis recomendados</p>
-          <h2 className="text-2xl font-bold text-navy-950 md:text-3xl">
+          <p className="mb-2 text-xs font-bold uppercase tracking-widest text-edvanta-blue">Cursos gratis recomendados</p>
+          <h2 className="font-display text-2xl font-extrabold text-edvanta-deep md:text-3xl">
             Aprende una habilidad que abre puertas y aplícala desde el primer día
           </h2>
           <p className="mt-3 text-base leading-relaxed text-gray-500">
@@ -62,8 +62,8 @@ export default function FeaturedCoursesSection() {
                 aria-pressed={active}
                 className={`inline-flex shrink-0 items-center gap-2 rounded-full border px-4 py-2 text-sm font-bold transition ${
                   active
-                    ? 'border-navy-900 bg-navy-950 text-white shadow-md'
-                    : 'border-gray-200 bg-white text-gray-600 hover:border-teal-200 hover:bg-teal-50 hover:text-teal-800'
+                    ? 'border-edvanta-blue bg-edvanta-blue text-white shadow-md'
+                    : 'border-edvanta-border bg-white text-slate-600 hover:border-edvanta-blue/40 hover:bg-edvanta-light hover:text-edvanta-blue'
                 }`}
               >
                 <Icon name={route.icon} className="h-4 w-4" />
@@ -73,10 +73,10 @@ export default function FeaturedCoursesSection() {
           })}
         </div>
 
-        <div className="mb-8 grid overflow-hidden rounded-lg border border-navy-100 bg-gradient-to-br from-slate-50 via-white to-teal-50 shadow-sm lg:grid-cols-[0.9fr_1.1fr]">
+        <div className="mb-8 grid overflow-hidden rounded-2xl border border-edvanta-border bg-gradient-to-br from-edvanta-light via-white to-edvanta-mint/50 shadow-sm lg:grid-cols-[0.9fr_1.1fr]">
           <div className="p-5 md:p-7">
-            <p className="mb-2 text-xs font-black uppercase tracking-widest text-teal-600">Ruta activa</p>
-            <h3 className="text-2xl font-black text-navy-950 md:text-3xl">{activeOption.title}</h3>
+            <p className="mb-2 text-xs font-black uppercase tracking-widest text-edvanta-blue">Ruta activa</p>
+            <h3 className="font-display text-2xl font-black text-edvanta-deep md:text-3xl">{activeOption.title}</h3>
             <p className="mt-3 max-w-xl text-sm leading-relaxed text-gray-600 md:text-base">{activeOption.summary}</p>
 
             <div className="mt-6 rounded-lg border border-white bg-white/80 p-4 shadow-sm">
@@ -110,7 +110,7 @@ export default function FeaturedCoursesSection() {
             </div>
           </div>
 
-          <div className="relative min-h-[420px] overflow-hidden bg-navy-950">
+          <div className="relative min-h-[420px] overflow-hidden bg-edvanta-deep">
             <div className="absolute inset-0 bg-dots opacity-20" />
             <div className="absolute left-5 top-5 z-10 rounded-full bg-white/95 px-3 py-1 text-xs font-black uppercase tracking-wider text-navy-950 shadow-sm">
               {selectedCourse.duration} · {selectedCourse.modality}
@@ -130,8 +130,8 @@ export default function FeaturedCoursesSection() {
               key={course.slug}
               onMouseEnter={() => setSelectedSlug(course.slug)}
               onFocus={() => setSelectedSlug(course.slug)}
-              className={`group flex h-full flex-col overflow-hidden rounded-lg border bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl ${
-                selectedCourse.slug === course.slug ? 'border-teal-300 ring-2 ring-teal-100' : 'border-gray-200'
+              className={`group flex h-full flex-col overflow-hidden rounded-2xl border bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl ${
+                selectedCourse.slug === course.slug ? 'border-edvanta-blue/50 ring-2 ring-edvanta-light' : 'border-edvanta-border'
               }`}
             >
               <Link to={`/cursos/${course.slug}`} className="relative block overflow-hidden bg-slate-100">
@@ -159,7 +159,7 @@ export default function FeaturedCoursesSection() {
                 </div>
 
                 <h3 className="text-lg font-bold leading-snug text-navy-950">
-                  <Link to={`/cursos/${course.slug}`} className="hover:text-teal-700">
+                  <Link to={`/cursos/${course.slug}`} className="hover:text-edvanta-blue">
                     {course.title}
                   </Link>
                 </h3>
@@ -170,7 +170,7 @@ export default function FeaturedCoursesSection() {
                 <div className="mt-4 space-y-2">
                   {course.skills.slice(0, 2).map((skill) => (
                     <div key={skill} className="flex items-center gap-2 text-xs font-semibold text-gray-600">
-                      <Icon name="checkCircle" className="h-4 w-4 shrink-0 text-teal-600" />
+                      <Icon name="checkCircle" className="h-4 w-4 shrink-0 text-edvanta-blue" />
                       <span>{skill}</span>
                     </div>
                   ))}

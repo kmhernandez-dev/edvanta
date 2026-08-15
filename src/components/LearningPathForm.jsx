@@ -43,8 +43,8 @@ export default function LearningPathForm() {
     <section id="consulta" className="bg-white py-16 md:py-20">
       <div className="mx-auto grid max-w-6xl gap-8 px-4 sm:px-6 md:grid-cols-[0.9fr_1.1fr] lg:px-8">
         <div>
-          <p className="mb-2 text-xs font-bold uppercase tracking-widest text-teal-600">Orientación personalizada</p>
-          <h2 className="text-2xl font-bold text-navy-950 md:text-3xl">
+          <p className="mb-2 text-xs font-bold uppercase tracking-widest text-edvanta-blue">Orientación personalizada</p>
+          <h2 className="font-display text-2xl font-extrabold text-edvanta-deep md:text-3xl">
             Recibe una ruta de aprendizaje según tu perfil
           </h2>
           <p className="mt-3 text-base leading-relaxed text-gray-500">
@@ -55,33 +55,33 @@ export default function LearningPathForm() {
           </p>
         </div>
 
-        <form onSubmit={submit} className="rounded-lg border border-gray-200 bg-slate-50 p-5 shadow-sm">
+        <form onSubmit={submit} className="rounded-2xl border border-edvanta-border bg-edvanta-cream p-5 shadow-sm">
           <div className="grid gap-4 sm:grid-cols-2">
             <label className="text-sm font-semibold text-navy-950">
               Nombre
-              <input name="nombre" value={form.nombre} onChange={update} required className="mt-1 w-full rounded-lg border border-gray-200 bg-white px-3 py-2.5 text-sm font-normal text-gray-700 outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-100" />
+              <input name="nombre" value={form.nombre} onChange={update} required className="mt-1 w-full rounded-lg border border-gray-200 bg-white px-3 py-2.5 text-sm font-normal text-gray-700 outline-none focus:border-edvanta-blue focus:ring-2 focus:ring-edvanta-light" />
             </label>
             <label className="text-sm font-semibold text-navy-950">
               Correo
-              <input name="correo" type="email" value={form.correo} onChange={update} required className="mt-1 w-full rounded-lg border border-gray-200 bg-white px-3 py-2.5 text-sm font-normal text-gray-700 outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-100" />
+              <input name="correo" type="email" value={form.correo} onChange={update} required className="mt-1 w-full rounded-lg border border-gray-200 bg-white px-3 py-2.5 text-sm font-normal text-gray-700 outline-none focus:border-edvanta-blue focus:ring-2 focus:ring-edvanta-light" />
             </label>
             <label className="text-sm font-semibold text-navy-950">
               País
-              <input name="pais" value={form.pais} onChange={update} required className="mt-1 w-full rounded-lg border border-gray-200 bg-white px-3 py-2.5 text-sm font-normal text-gray-700 outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-100" />
+              <input name="pais" value={form.pais} onChange={update} required className="mt-1 w-full rounded-lg border border-gray-200 bg-white px-3 py-2.5 text-sm font-normal text-gray-700 outline-none focus:border-edvanta-blue focus:ring-2 focus:ring-edvanta-light" />
             </label>
             <label className="text-sm font-semibold text-navy-950">
               Profesión o área de estudio
-              <input name="profesion" value={form.profesion} onChange={update} required className="mt-1 w-full rounded-lg border border-gray-200 bg-white px-3 py-2.5 text-sm font-normal text-gray-700 outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-100" />
+              <input name="profesion" value={form.profesion} onChange={update} required className="mt-1 w-full rounded-lg border border-gray-200 bg-white px-3 py-2.5 text-sm font-normal text-gray-700 outline-none focus:border-edvanta-blue focus:ring-2 focus:ring-edvanta-light" />
             </label>
             <label className="text-sm font-semibold text-navy-950">
               Área de interés
-              <select name="interes" value={form.interes} onChange={update} className="mt-1 w-full rounded-lg border border-gray-200 bg-white px-3 py-2.5 text-sm font-normal text-gray-700 outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-100">
+              <select name="interes" value={form.interes} onChange={update} className="mt-1 w-full rounded-lg border border-gray-200 bg-white px-3 py-2.5 text-sm font-normal text-gray-700 outline-none focus:border-edvanta-blue focus:ring-2 focus:ring-edvanta-light">
                 {interests.map((interest) => <option key={interest}>{interest}</option>)}
               </select>
             </label>
             <label className="text-sm font-semibold text-navy-950 sm:col-span-2">
               Objetivo profesional
-              <textarea name="objetivo" value={form.objetivo} onChange={update} required rows="4" className="mt-1 w-full resize-none rounded-lg border border-gray-200 bg-white px-3 py-2.5 text-sm font-normal text-gray-700 outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-100" />
+              <textarea name="objetivo" value={form.objetivo} onChange={update} required rows="4" className="mt-1 w-full resize-none rounded-lg border border-gray-200 bg-white px-3 py-2.5 text-sm font-normal text-gray-700 outline-none focus:border-edvanta-blue focus:ring-2 focus:ring-edvanta-light" />
             </label>
           </div>
 
@@ -92,12 +92,12 @@ export default function LearningPathForm() {
               checked={form.consentimiento}
               onChange={update}
               required
-              className="mt-1 h-4 w-4 rounded border-gray-300 text-teal-600 focus:ring-teal-500"
+              className="mt-1 h-4 w-4 rounded border-gray-300 text-edvanta-blue focus:ring-edvanta-blue"
             />
             Acepto que Edvanta use estos datos para responder mi solicitud de orientación. No quiero recibir mensajes no solicitados.
           </label>
 
-          <button type="submit" className="btn-teal mt-5 w-full">
+          <button type="submit" className="btn-edvanta mt-5 w-full">
             Solicitar ruta
           </button>
         </form>
