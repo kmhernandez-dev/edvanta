@@ -640,6 +640,18 @@ export default function FelizSinTiroides() {
               </div>
               <FstAcademyLeadForm />
             </div>
+            <div className="mt-10 rounded-xl border border-white/20 bg-white/5 p-6">
+              <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                <div>
+                  <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#5eead4]">Retos FST</p>
+                  <h3 className="mt-1 text-xl font-semibold">Muévete, aliméntate y construye hábitos una semana a la vez</h3>
+                  <p className="mt-2 max-w-2xl text-sm leading-6 text-white/70">Retos de 7 días de movimiento, fuerza, Pilates, caminatas y hábitos de alimentación para tu rutina.</p>
+                </div>
+                <Link to="/academia/retos" onClick={() => { trackEvent('hero_cta_click', { cta: 'retos_fst' }); trackLeadEvent('retos_viewed', { source: 'landing' }); }} className="inline-flex min-h-12 shrink-0 items-center justify-center gap-2 rounded-xl bg-white px-6 py-3 text-sm font-bold text-[#132e55] hover:bg-[#f2ebf7]">
+                  Explorar retos <Icon name="arrowRight" className="h-4 w-4" />
+                </Link>
+              </div>
+            </div>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Link to="/academia" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-white px-6 py-3 text-sm font-bold text-[#132e55] hover:bg-[#f2ebf7]">
                 Explorar Academy <Icon name="arrowRight" className="h-4 w-4" />

@@ -98,7 +98,18 @@ Windows note: use `npm.cmd` if PowerShell blocks `npm.ps1`.
 | `api/routes/lead-capture.js` | Lead capture endpoint |
 | `api/routes/list-orders.js` | Admin order listing with `ADMIN_TOKEN` |
 | `api/routes/fst-app.js` | FST App state sync (real mode, gated by `VIDA360_REAL_DATA_ENABLED`) |
+| `api/routes/retos.js` | Retos FST public/auth API (list, weekly, detail, join, mine, checkin) |
+| `api/routes/admin-retos.js` | Retos FST admin API (CRUD retos/días, YouTube validation, duplicate) |
 | `api/migrations/001_orders.sql` | PostgreSQL schema |
+| `api/migrations/019_retos_fst.sql` | Retos FST tables (`fst_challenges`, `fst_challenge_days`, `fst_user_challenges`, `fst_challenge_checkins`) |
+| `api/migrations/020_retos_fst_seed.sql` | Retos FST seed: 12 retos × 7 días (48 YouTube videos, URLs only) |
+| `api/migrations/021_retos_fst_metadata.sql` | Verified video metadata (titles, channels, durations from YouTube public pages) |
+| `src/lib/retos.js` | Retos FST helpers: filters, progress, streak, YouTube, WhatsApp |
+| `src/components/retos/*` | Retos FST components (Card, Filters, GoalSelector, Progress, Video, Checkin, Completion, NutriFitCTA) |
+| `src/components/admin/RetosAdmin.jsx` | Retos FST admin UI (tab in `/admin/academia`) |
+| `src/pages/RetosIndex.jsx` | `/academia/retos` catalog |
+| `src/pages/RetoDetalle.jsx` | `/academia/retos/:slug` detail |
+| `src/pages/RetoDia.jsx` | `/academia/retos/:slug/dia/:dayNumber` day page |
 | `Dockerfile` | Frontend/nginx image |
 | `Dockerfile.api` | Backend image |
 | `docker-compose.yaml` | Coolify stack |
@@ -111,6 +122,9 @@ Frontend:
 - `/`
 - `/feliz-sin-tiroides`
 - `/fst-app/*` (app HealthTech: dashboard, NutriFST, levotiroxina, alimentos, escáner, menús, cocina, lista, suplementos, síntomas, yodo, consulta, progreso, perfil)
+- `/academia/retos` (Retos FST catalog)
+- `/academia/retos/:slug` (challenge detail)
+- `/academia/retos/:slug/dia/:dayNumber` (day page with video + check-in)
 - `/atenfarmaclinic`
 - `/privacidad`
 - `/terminos`
@@ -126,6 +140,22 @@ Backend:
 - `POST /api/mp-webhook`
 - `POST /api/lead-capture`
 - `GET /api/list-orders`
+- `GET /api/academia/retos`, `/weekly`, `/mine`, `/:slug`
+- `POST /api/academia/retos/:slug/join`, `/:slug/checkin`
+- `GET/POST/PUT/DELETE /api/admin/academia/retos...` (admin, `ADMIN_TOKEN`)
+
+## Retos FST
+
+- Weekly 7-day movement challenges inside Academia (brand: Feliz Sin Tiroides).
+- 12 evergreen collections seeded (Pilates Princess, Booty Bloom, Core Girl, Abs & Booty, Walk & Glow, Strong Girl, Legs & Booty, Low Impact Girl, 10-Minute Girl, Full Body Girl, Dumbbell Girl, Soft Girl Reset).
+- Videos are external YouTube resources (URL + `youtube_video_id` only). Never download or re-upload. Player uses `youtube-nocookie.com` embed; cards use `i.ytimg.com` thumbnails (no iframes in lists).
+- Progress is per-user in PostgreSQL (`fst_user_challenges` + `fst_challenge_checkins`), keyed to `academia_users.id` (JWT auth, same as Academia). No Supabase tables for retos.
+- Weekly challenge = non-evergreen with `start_date`/`end_date`; fallback is `featured` evergreen. Evergreen challenges can start any day.
+- `selected_goal` persists in localStorage (`fst_retos_selected_goal`) and is saved server-side on join.
+- NutriFit connection: CTA links to `/fst-app/nutrifst?goal=...`; NutriFstChat only shows a context note. NutriFit remains the only nutrition strategy source.
+- Admin: `/admin/academia` → tab "Retos FST" (create/edit challenges and days, YouTube URL validation, duplicate, publish/unpublish).
+- Analytics events: `challenge_viewed`, `challenge_joined`, `challenge_started`, `challenge_day_viewed`, `challenge_day_completed`, `nutrition_challenge_completed`, `challenge_completed`, `nutrifit_opened_from_challenge`, `challenge_shared`, `challenge_filter_used`.
+- Tone rules: no guilt messages, no fat-loss/medical claims, no "cure your thyroid" language. Educational disclaimer links to `/descargo-medico`.
 
 ## FST App (NutriFST IA)
 
