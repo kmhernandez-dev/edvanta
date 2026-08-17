@@ -28,6 +28,11 @@ const CONSENT_VERSION = '1.0';
 const TOKEN_KEY = 'fst_academia_token';
 const USER_KEY = 'fst_academia_user';
 
+function authRedirect(path, fallback = '/mi-espacio') {
+  const safePath = typeof path === 'string' && path.startsWith('/') && !path.startsWith('//') ? path : fallback;
+  return `${window.location.origin}${safePath}`;
+}
+
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
   const [profile, setProfile] = useState(null);
@@ -105,7 +110,7 @@ export function AuthProvider({ children }) {
     if (user) loadProfile();
   }, [user, loadProfile]);
 
-  const register = useCallback(async ({ name, email, password, privacyAccepted }) => {
+  const register = useCallback(async ({ name, email, password, privacyAccepted, redirectPath = '/mi-espacio', consentScope = 'health' }) => {
     setAuthError('');
     const client = requireSupabase();
     if (!privacyAccepted) {
@@ -117,7 +122,7 @@ export function AuthProvider({ children }) {
       password,
       options: {
         data: { full_name: name },
-        emailRedirectTo: `${window.location.origin}/mi-espacio`,
+        emailRedirectTo: authRedirect(redirectPath),
       },
     });
     if (error) {
@@ -125,11 +130,14 @@ export function AuthProvider({ children }) {
       return { error: error.message };
     }
     if (data.user) {
-      await client.from('consents').upsert([
+      const consents = [
         { user_id: data.user.id, consent_type: 'terms', version: CONSENT_VERSION, accepted: true, accepted_at: new Date().toISOString() },
         { user_id: data.user.id, consent_type: 'privacy', version: CONSENT_VERSION, accepted: true, accepted_at: new Date().toISOString() },
-        { user_id: data.user.id, consent_type: 'health_data_processing', version: CONSENT_VERSION, accepted: true, accepted_at: new Date().toISOString() },
-      ], { onConflict: 'user_id,consent_type' });
+      ];
+      if (consentScope === 'health') {
+        consents.push({ user_id: data.user.id, consent_type: 'health_data_processing', version: CONSENT_VERSION, accepted: true, accepted_at: new Date().toISOString() });
+      }
+      await client.from('consents').upsert(consents, { onConflict: 'user_id,consent_type' });
     }
     return { user: data.user, session: data.session };
   }, []);
@@ -145,13 +153,13 @@ export function AuthProvider({ children }) {
     return { user: data.user, session: data.session };
   }, []);
 
-  const loginWithGoogle = useCallback(async () => {
+  const loginWithGoogle = useCallback(async ({ redirectPath = '/mi-espacio' } = {}) => {
     setAuthError('');
     const client = requireSupabase();
     const { error } = await client.auth.signInWithOAuth({
       provider: 'google',
       options: {
-        redirectTo: `${window.location.origin}/mi-espacio`,
+        redirectTo: authRedirect(redirectPath),
         queryParams: { access_type: 'offline', prompt: 'consent' },
       },
     });

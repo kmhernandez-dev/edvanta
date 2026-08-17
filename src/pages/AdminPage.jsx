@@ -20,26 +20,29 @@ import {
 import { useAuth } from '../context/AuthContext';
 import { requireSupabase } from '../lib/supabase';
 import { updatePageSeo } from '../utils/seo';
+import AdminEdvantaContent from './AdminEdvantaContent';
 
 const formatDate = value => value ? new Date(value).toLocaleDateString('es-CO', { day: 'numeric', month: 'short', year: 'numeric' }) : '—';
 const formatDateTime = value => value ? new Date(value).toLocaleString('es-CO', { day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' }) : '—';
 
 function AdminShell({ children }) {
-  const { user, profile, logout } = useAuth();
+  const { user, profile, loading, logout } = useAuth();
   const navigate = useNavigate();
   const [checking, setChecking] = useState(true);
 
   useEffect(() => {
+    if (loading) return;
     if (!user) {
       navigate('/fst-app');
       return;
     }
-    if (profile && profile.role !== 'admin') {
+    if (!profile) return;
+    if (profile.role !== 'admin') {
       navigate('/fst-app');
       return;
     }
     setChecking(false);
-  }, [user, profile, navigate]);
+  }, [user, profile, loading, navigate]);
 
   if (checking) {
     return (
@@ -60,10 +63,11 @@ function AdminShell({ children }) {
             <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#0A2540] text-white"><ShieldCheck className="h-5 w-5" /></span>
             <div className="min-w-0">
               <p className="truncate text-sm font-bold text-[#0A2540]">Panel administrativo</p>
-              <p className="truncate text-xs text-slate-500">Feliz Sin Tiroides · Solo administradores</p>
+              <p className="truncate text-xs text-slate-500">Edvanta y Feliz Sin Tiroides · Solo administradores</p>
             </div>
           </div>
           <div className="flex items-center gap-3">
+            <Link to="/admin/edvanta" className="text-sm font-semibold text-slate-600 hover:text-[#0A2540]">Contenido Edvanta</Link>
             <Link to="/fst-app" className="text-sm font-semibold text-slate-600 hover:text-[#0A2540]">Mi espacio</Link>
             <button type="button" onClick={logout} className="inline-flex min-h-10 items-center gap-2 rounded-xl border border-[#e5dceb] px-3 text-xs font-bold text-slate-600 hover:bg-[#faf8fd]">
               <LogOut className="h-3.5 w-3.5" /> Salir
@@ -413,12 +417,14 @@ export default function AdminPage() {
     title: 'Panel administrativo | Feliz Sin Tiroides',
     description: 'Panel administrativo de Feliz Sin Tiroides.',
     canonical: 'https://edvanta.co/admin',
+    robots: 'noindex,nofollow',
   }), []);
   return (
     <AdminShell>
       <Routes>
         <Route path="/" element={<AdminDashboard />} />
         <Route path="/users/:id" element={<AdminUserDetail />} />
+        <Route path="/edvanta" element={<AdminEdvantaContent />} />
       </Routes>
     </AdminShell>
   );

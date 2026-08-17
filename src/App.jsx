@@ -1,37 +1,58 @@
 import { lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
-import BibliotecaHome   from './pages/BibliotecaHome';
-import FelizSinTiroides from './pages/FelizSinTiroides';
-import RecursoLevotiroxina from './pages/RecursoLevotiroxina';
-import AtenFarmaClinic  from './pages/AtenFarmaClinic';
-import AtenFarmaWorkspace from './pages/AtenFarmaWorkspace';
-import Vida360Pro        from './pages/Vida360Pro';
-import Vida360ProWorkspace from './pages/Vida360ProWorkspace';
-import LegalPage        from './pages/LegalPage';
-import AdminOrders      from './pages/AdminOrders';
-import AdminAcademia    from './pages/AdminAcademia';
-import ArticuloPage     from './pages/ArticuloPage';
-import ArticulosIndex   from './pages/ArticulosIndex';
-import CursoPage        from './pages/CursoPage';
-import RutaProfesionalPage from './pages/RutaProfesionalPage';
-import CursosGratisIndex from './pages/CursosGratisIndex';
-import CursoGratisPage  from './pages/CursoGratisPage';
-import CursosCatalog    from './pages/CursosCatalog';
-import CursoExternoPage from './pages/CursoExternoPage';
-import EnfermedadPage   from './pages/EnfermedadPage';
-import AcademiaIndex    from './pages/AcademiaIndex';
-import AcademiaCurso    from './pages/AcademiaCurso';
-import AcademiaClase    from './pages/AcademiaClase';
-import MisCursos        from './pages/MisCursos';
-import AcademiaPerfil   from './pages/AcademiaPerfil';
-import NotFound         from './pages/NotFound';
-
+const BibliotecaHome = lazy(() => import('./pages/BibliotecaHome'));
+const FelizSinTiroides = lazy(() => import('./pages/FelizSinTiroides'));
+const RecursoLevotiroxina = lazy(() => import('./pages/RecursoLevotiroxina'));
+const RecetasFinder = lazy(() => import('./pages/RecetasFinder'));
+const AtenFarmaClinic = lazy(() => import('./pages/AtenFarmaClinic'));
+const AtenFarmaWorkspace = lazy(() => import('./pages/AtenFarmaWorkspace'));
+const Vida360Pro = lazy(() => import('./pages/Vida360Pro'));
+const Vida360ProWorkspace = lazy(() => import('./pages/Vida360ProWorkspace'));
+const LegalPage = lazy(() => import('./pages/LegalPage'));
+const AdminOrders = lazy(() => import('./pages/AdminOrders'));
+const AdminAcademia = lazy(() => import('./pages/AdminAcademia'));
+const ArticuloPage = lazy(() => import('./pages/ArticuloPage'));
+const ArticulosIndex = lazy(() => import('./pages/ArticulosIndex'));
+const RutaProfesionalPage = lazy(() => import('./pages/RutaProfesionalPage'));
+const LearningPathsIndex = lazy(() => import('./pages/LearningPathsIndex'));
+const LearningHub = lazy(() => import('./pages/LearningHub'));
+const CompetenciesIndex = lazy(() => import('./pages/CompetenciesIndex'));
+const CompetencyPage = lazy(() => import('./pages/CompetencyPage'));
+const CursosGratisIndex = lazy(() => import('./pages/CursosGratisIndex'));
+const CursoGratisPage = lazy(() => import('./pages/CursoGratisPage'));
+const CursosCatalog = lazy(() => import('./pages/CursosCatalog'));
+const CursoExternoPage = lazy(() => import('./pages/CursoExternoPage'));
+const CareersIndex = lazy(() => import('./pages/CareersIndex'));
+const CareerPage = lazy(() => import('./pages/CareerPage'));
+const EnfermedadPage = lazy(() => import('./pages/EnfermedadPage'));
+const AcademiaIndex = lazy(() => import('./pages/AcademiaIndex'));
+const AcademiaCurso = lazy(() => import('./pages/AcademiaCurso'));
+const AcademiaClase = lazy(() => import('./pages/AcademiaClase'));
+const MisCursos = lazy(() => import('./pages/MisCursos'));
+const AcademiaPerfil = lazy(() => import('./pages/AcademiaPerfil'));
+const NotFound = lazy(() => import('./pages/NotFound'));
 const Vida360Portal = lazy(() => import('./pages/Vida360Portal'));
 const FstAppPortal = lazy(() => import('./pages/FstAppPortal'));
 const AdminPage = lazy(() => import('./pages/AdminPage'));
+const ProfessionalAccount = lazy(() => import('./pages/ProfessionalAccount'));
+const ProfessionalOnboarding = lazy(() => import('./pages/ProfessionalOnboarding'));
+const ProfessionalDashboard = lazy(() => import('./pages/ProfessionalDashboard'));
+const ProfessionalProfilePage = lazy(() => import('./pages/ProfessionalProfilePage'));
+const EcosystemDirectory = lazy(() => import('./pages/EcosystemDirectory'));
+const ConnectHub = lazy(() => import('./pages/ConnectHub'));
+const ResourcesHub = lazy(() => import('./pages/ResourcesHub'));
+
+function RouteFallback() {
+  return (
+    <div className="flex min-h-screen items-center justify-center bg-[#f7f9fc] text-sm font-semibold text-slate-600">
+      Cargando contenido...
+    </div>
+  );
+}
 
 import { AuthProvider } from './context/AuthContext';
+import { ProfessionalProvider } from './context/ProfessionalContext';
 import CartDrawer    from './components/CartDrawer';
 import CartToast     from './components/CartToast';
 import PaymentStatus from './components/PaymentStatus';
@@ -40,6 +61,8 @@ import AnalyticsConsent from './components/AnalyticsConsent';
 export default function App() {
   return (
     <AuthProvider>
+      <ProfessionalProvider>
+      <Suspense fallback={<RouteFallback />}>
       <Routes>
         {/* Marca principal: Edvanta */}
         <Route path="/" element={<BibliotecaHome />} />
@@ -49,6 +72,9 @@ export default function App() {
 
         {/* Recurso gratis interactivo: guía PDF de levotiroxina (descarga + reseñas) */}
         <Route path="/recurso/levotiroxina" element={<RecursoLevotiroxina />} />
+
+        {/* Buscador de recetas para la tiroides (usa data/nutricion/fst_recetas_master.json) */}
+        <Route path="/recetas" element={<RecetasFinder />} />
 
         {/* Enfermedades tiroideas (FST) */}
         <Route path="/enfermedades/:slug" element={<EnfermedadPage />} />
@@ -114,7 +140,25 @@ export default function App() {
         <Route path="/cursos/udemy" element={<CursosCatalog defaultProvider="udemy" />} />
         <Route path="/cursos/edutin" element={<CursosCatalog defaultProvider="edutin" />} />
         <Route path="/cursos/:slug" element={<CursoExternoPage />} />
+        <Route path="/aprende" element={<LearningHub />} />
+        <Route path="/competencias" element={<CompetenciesIndex />} />
+        <Route path="/competencias/:slug" element={<CompetencyPage />} />
+        <Route path="/rutas" element={<LearningPathsIndex />} />
         <Route path="/rutas/:slug" element={<RutaProfesionalPage />} />
+        <Route path="/carreras" element={<CareersIndex />} />
+        <Route path="/carreras/:slug" element={<CareerPage />} />
+        <Route path="/oportunidades" element={<Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-[#f7f9fc] text-sm font-semibold text-slate-600">Cargando oportunidades...</div>}><EcosystemDirectory kind="opportunities" /></Suspense>} />
+        <Route path="/empresas" element={<Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-[#f7f9fc] text-sm font-semibold text-slate-600">Cargando empresas...</div>}><EcosystemDirectory kind="companies" /></Suspense>} />
+        <Route path="/proyectos" element={<Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-[#f7f9fc] text-sm font-semibold text-slate-600">Cargando proyectos...</div>}><EcosystemDirectory kind="projects" /></Suspense>} />
+        <Route path="/certificaciones" element={<Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-[#f7f9fc] text-sm font-semibold text-slate-600">Cargando certificaciones...</div>}><EcosystemDirectory kind="certifications" /></Suspense>} />
+        <Route path="/conecta" element={<Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-[#f7f9fc] text-sm font-semibold text-slate-600">Cargando espacios...</div>}><ConnectHub /></Suspense>} />
+        <Route path="/recursos" element={<Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-[#f7f9fc] text-sm font-semibold text-slate-600">Cargando recursos...</div>}><ResourcesHub /></Suspense>} />
+
+        {/* Espacio profesional privado de Edvanta */}
+        <Route path="/cuenta" element={<Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-[#f7f9fc] text-sm font-semibold text-slate-600">Cargando acceso...</div>}><ProfessionalAccount /></Suspense>} />
+        <Route path="/app/onboarding" element={<Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-[#f7f9fc] text-sm font-semibold text-slate-600">Preparando tu perfil...</div>}><ProfessionalOnboarding /></Suspense>} />
+        <Route path="/app/perfil" element={<Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-[#f7f9fc] text-sm font-semibold text-slate-600">Cargando tu perfil...</div>}><ProfessionalProfilePage /></Suspense>} />
+        <Route path="/app" element={<Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-[#f7f9fc] text-sm font-semibold text-slate-600">Cargando tu panel...</div>}><ProfessionalDashboard /></Suspense>} />
 
         {/* Catálogo de 100+ cursos gratuitos */}
         <Route path="/cursos-gratis" element={<CursosGratisIndex />} />
@@ -135,12 +179,14 @@ export default function App() {
         {/* 404 — página no encontrada */}
         <Route path="*" element={<NotFound />} />
       </Routes>
+      </Suspense>
 
       {/* Globales: carrito, toast y resultado de pago (en todas las páginas) */}
       <CartDrawer />
       <CartToast />
       <PaymentStatus />
       <AnalyticsConsent />
+      </ProfessionalProvider>
     </AuthProvider>
   );
 }

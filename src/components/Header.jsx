@@ -1,21 +1,24 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { UserRound } from 'lucide-react';
 import { EDVANTA_WHATSAPP_URL } from '../config/links';
 import { useCart } from '../context/CartContext';
+import { useAuth } from '../context/AuthContext';
 
 const logoVersion = '20260716-edvanta-logo';
 
-const cursosMenu = [
+const aprendeMenu = [
+  { label: 'Centro Aprende', to: '/aprende' },
   { label: 'Todos los cursos', to: '/cursos' },
+  { label: 'Rutas profesionales', to: '/rutas' },
+  { label: 'Competencias', to: '/competencias' },
+  { label: 'Certificaciones', to: '/certificaciones' },
+  { label: 'Explorar carreras', to: '/carreras' },
+  { type: 'separator' },
   { label: 'Cursos gratuitos', to: '/cursos-gratis' },
   { label: 'Coursera', to: '/cursos/coursera' },
   { label: 'Udemy', to: '/cursos/udemy' },
   { label: 'Edutin Academy', to: '/cursos/edutin' },
-  { type: 'separator' },
-  { label: 'Gestión de calidad', to: '/cursos?category=Gestión+de+calidad' },
-  { label: 'Inteligencia artificial', to: '/cursos?category=Inteligencia+artificial' },
-  { label: 'Datos y Power BI', to: '/cursos?category=Ciencia+de+datos' },
-  { label: 'Salud y farmacia', to: '/cursos?category=Farmacología+y+atención+farmacéutica' },
 ];
 
 const articulosMenu = [
@@ -27,10 +30,20 @@ const articulosMenu = [
 ];
 
 const recursosMenu = [
-  { label: 'Guías', to: '/#recursos' },
+  { label: 'Biblioteca de recursos', to: '/recursos' },
+  { label: 'Artículos', to: '/articulos' },
+  { label: 'Guías', to: '/recursos?tipo=guide' },
   { label: 'Plantillas', to: '/#herramientas' },
   { label: 'Herramientas', to: '/#herramientas' },
-  { label: 'Comparador de cursos', to: '/cursos' },
+  { label: 'Regulación', to: '/recursos?tipo=regulation' },
+];
+
+const conectaMenu = [
+  { label: 'Centro Conecta', to: '/conecta' },
+  { label: 'Proyectos', to: '/proyectos' },
+  { label: 'Grupos de estudio', to: '/conecta?tipo=study' },
+  { label: 'Investigación', to: '/conecta?tipo=research' },
+  { label: 'Mentoría', to: '/conecta?tipo=mentoring' },
 ];
 
 const ecosistemaMenu = [
@@ -42,11 +55,13 @@ const ecosistemaMenu = [
 
 const mainLinks = [
   { label: 'Inicio', to: '/' },
-  { label: 'Cursos', menu: cursosMenu },
-  { label: 'Rutas profesionales', to: '/#rutas' },
-  { label: 'Artículos', menu: articulosMenu },
+  { label: 'Carreras', to: '/carreras' },
+  { label: 'Aprende', menu: aprendeMenu },
+  { label: 'Oportunidades', to: '/oportunidades' },
+  { label: 'Conecta', menu: conectaMenu },
   { label: 'Recursos', menu: recursosMenu },
-  { label: 'Ecosistema', menu: ecosistemaMenu },
+  { label: 'Empresas', to: '/empresas' },
+  { label: 'Más', menu: [...articulosMenu, { type: 'separator' }, ...ecosistemaMenu] },
 ];
 
 export default function Header() {
@@ -55,6 +70,7 @@ export default function Header() {
   const [openMenu, setOpenMenu] = useState(null);
   const headerRef = useRef(null);
   const { count, openCart } = useCart();
+  const { user } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -172,7 +188,7 @@ export default function Header() {
           </Link>
 
           {/* Desktop nav */}
-          <nav className="hidden lg:flex items-center gap-0.5" role="navigation" aria-label="Navegación principal">
+          <nav className="hidden xl:flex items-center gap-0.5" role="navigation" aria-label="Navegación principal">
             {mainLinks.map(link => {
               if (link.menu) {
                 const isOpen = openMenu === link.label;
@@ -247,13 +263,14 @@ export default function Header() {
 
           {/* Right CTAs */}
           <div className="flex items-center gap-2">
-            <a
-              href="/#recursos"
-              onClick={(e) => handleHashLink(e, '/#recursos')}
-              className="hidden sm:inline-flex btn-primary text-xs px-4 py-2"
+            <Link
+              to={user ? '/app' : '/cuenta?modo=registro'}
+              onClick={closeAll}
+              className="hidden min-h-10 items-center gap-2 rounded-lg bg-[#071a4a] px-4 text-xs font-bold text-white hover:bg-[#0d2d6d] sm:inline-flex"
             >
-              Solicitar ruta
-            </a>
+              <UserRound className="h-4 w-4" aria-hidden="true" />
+              {user ? 'Mi panel' : 'Crear mi perfil'}
+            </Link>
 
             <button
               onClick={openCart}
@@ -273,7 +290,7 @@ export default function Header() {
             {/* Mobile hamburger */}
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
-              className="lg:hidden p-2 rounded-lg text-gray-600 hover:bg-gray-100 transition-colors"
+              className="xl:hidden p-2 rounded-lg text-gray-600 hover:bg-gray-100 transition-colors"
               aria-label={mobileOpen ? 'Cerrar menú' : 'Abrir menú'}
               aria-expanded={mobileOpen}
             >
@@ -293,7 +310,7 @@ export default function Header() {
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <div className="lg:hidden fixed inset-x-0 top-16 bottom-0 bg-white z-40 overflow-y-auto">
+        <div className="xl:hidden fixed inset-x-0 top-16 bottom-0 bg-white z-40 overflow-y-auto">
           <nav className="px-4 py-3 space-y-1" role="navigation" aria-label="Menú móvil">
             {mainLinks.map(link => {
               if (link.menu) {
@@ -355,7 +372,7 @@ export default function Header() {
             </Link>
 
             <div className="pt-3 pb-1 flex flex-col gap-2">
-              <a href="/#recursos" onClick={(e) => handleHashLink(e, '/#recursos')} className="btn-primary text-sm text-center">Solicitar ruta</a>
+              <Link to={user ? '/app' : '/cuenta?modo=registro'} onClick={closeAll} className="inline-flex min-h-11 items-center justify-center gap-2 rounded-lg bg-[#071a4a] px-5 text-sm font-bold text-white"><UserRound className="h-4 w-4" />{user ? 'Mi panel' : 'Crear mi perfil'}</Link>
               <a href={EDVANTA_WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="btn-teal text-sm text-center">Hablar con Edvanta</a>
             </div>
           </nav>

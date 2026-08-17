@@ -33,9 +33,10 @@ export function setJsonLd(id, data) {
   };
 }
 
-export function updatePageSeo({ title, description, canonical, image, type = 'website', keywords, jsonLd, jsonLdId = 'page' }) {
+export function updatePageSeo({ title, description, canonical, image, type = 'website', keywords, jsonLd, jsonLdId = 'page', robots = 'index,follow' }) {
   document.title = title;
   setMeta('name', 'description', description);
+  setMeta('name', 'robots', robots);
   if (keywords?.length) {
     setMeta('name', 'keywords', Array.isArray(keywords) ? keywords.join(', ') : keywords);
   } else {

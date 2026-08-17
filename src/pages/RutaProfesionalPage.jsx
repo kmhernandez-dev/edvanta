@@ -1,167 +1,300 @@
-import { useEffect } from 'react';
-import { Link, Navigate, useParams } from 'react-router-dom';
+import { useEffect, useMemo, useState } from 'react';
+import { Link, useParams } from 'react-router-dom';
+import { ArrowLeft, ArrowRight, BookOpenCheck, BriefcaseBusiness, CheckCircle2, Clock3, Compass, ExternalLink, FolderKanban, RefreshCw, Route } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import Icon from '../components/Icon';
-import CourseImage from '../components/CourseImage';
-import { getArticulo } from '../data/articulos';
+import { apiUrl } from '../config/api';
 import { getFeaturedCourse, getLearningRoute } from '../data/featuredCourses';
 import { updatePageSeo } from '../utils/seo';
 
+const STEP_LABELS = {
+  orientation: 'Orientación',
+  learning: 'Aprendizaje',
+  practice: 'Práctica',
+  portfolio: 'Portafolio',
+  career: 'Empleabilidad',
+  opportunity: 'Oportunidades',
+};
+
+const STEP_ICONS = {
+  orientation: Compass,
+  learning: BookOpenCheck,
+  practice: CheckCircle2,
+  portfolio: FolderKanban,
+  career: BriefcaseBusiness,
+  opportunity: BriefcaseBusiness,
+};
+
+function buildFallbackPath(slug) {
+  const legacy = getLearningRoute(slug);
+  if (!legacy) return null;
+  const courses = legacy.courseSlugs.map(getFeaturedCourse).filter(Boolean);
+  return {
+    slug: legacy.slug,
+    name: legacy.title,
+    summary: legacy.summary,
+    audience: 'Profesionales que buscan una secuencia clara para desarrollar competencias aplicables.',
+    outcomes: legacy.outcomes,
+    estimated_duration: 'Ruta flexible',
+    level: 'foundation',
+    career: { name: 'Desarrollo profesional', slug: '' },
+    steps: courses.map((course, index) => ({
+      id: `${legacy.slug}-${course.slug}`,
+      step_order: index + 1,
+      title: course.title,
+      description: course.shortDescription,
+      step_type: 'learning',
+      is_optional: false,
+      skill: null,
+      courses: [{
+        slug: course.slug,
+        title: course.title,
+        short_description: course.shortDescription,
+        provider: 'edutin',
+        image_url: course.image?.webp,
+        duration: course.duration,
+        affiliate_url: course.affiliateUrl,
+      }],
+    })),
+  };
+}
+
+function CourseLink({ course }) {
+  return (
+    <Link to={`/cursos/${course.slug}`} className="mt-4 flex items-center gap-3 rounded-lg border border-slate-200 bg-white p-3 transition hover:border-teal-300 hover:bg-teal-50/30">
+      {course.image_url ? (
+        <img src={course.image_url} alt="" className="h-14 w-20 rounded-md object-cover" loading="lazy" />
+      ) : (
+        <span className="inline-flex h-14 w-20 items-center justify-center rounded-md bg-slate-100 text-slate-500">
+          <BookOpenCheck className="h-5 w-5" aria-hidden="true" />
+        </span>
+      )}
+      <span className="min-w-0 flex-1">
+        <span className="block text-xs font-bold uppercase text-teal-700">{course.provider}</span>
+        <span className="mt-1 block text-sm font-bold leading-5 text-[#071a4a]">{course.title}</span>
+      </span>
+      <ArrowRight className="h-4 w-4 shrink-0 text-slate-400" aria-hidden="true" />
+    </Link>
+  );
+}
+
 export default function RutaProfesionalPage() {
   const { slug } = useParams();
-  const route = getLearningRoute(slug);
+  const [path, setPath] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
+  const [reloadKey, setReloadKey] = useState(0);
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
   }, [slug]);
 
   useEffect(() => {
-    if (!route) return undefined;
-    const canonical = `https://edvanta.co/rutas/${route.slug}`;
-    const firstCourse = route.courseSlugs.map(getFeaturedCourse).find(Boolean);
-    const image = firstCourse?.image?.webp
-      ? `https://edvanta.co${firstCourse.image.webp}`
-      : 'https://edvanta.co/img/cursos/gestion-de-calidad.webp';
-    const cleanup = updatePageSeo({
-      title: `${route.title} | Ruta profesional Edvanta`,
-      description: route.summary,
+    const controller = new AbortController();
+    const load = async () => {
+      setLoading(true);
+      setError('');
+      try {
+        const response = await fetch(apiUrl(`/api/learning-paths/${encodeURIComponent(slug)}`), { signal: controller.signal });
+        if (!response.ok) throw new Error(response.status === 404 ? 'Esta ruta aún no tiene una ficha pública.' : 'No fue posible consultar la ruta.');
+        const payload = await response.json();
+        setPath(payload.data || null);
+      } catch (requestError) {
+        if (requestError.name === 'AbortError') return;
+        const fallback = buildFallbackPath(slug);
+        if (fallback) setPath(fallback);
+        else setError(requestError.message);
+      } finally {
+        if (!controller.signal.aborted) setLoading(false);
+      }
+    };
+    load();
+    return () => controller.abort();
+  }, [slug, reloadKey]);
+
+  useEffect(() => {
+    if (!path) return undefined;
+    const canonical = `https://edvanta.co/rutas/${path.slug}`;
+    return updatePageSeo({
+      title: path.seo_title || `${path.name} | Ruta profesional Edvanta`,
+      description: path.seo_description || path.summary,
       canonical,
-      image,
-      jsonLdId: `route-${route.slug}`,
+      jsonLdId: `learning-path-${path.slug}`,
       jsonLd: {
         '@context': 'https://schema.org',
         '@graph': [
           {
-            '@type': 'ItemList',
-            name: route.title,
-            description: route.summary,
+            '@type': 'Course',
+            name: path.name,
+            description: path.summary,
+            provider: { '@type': 'Organization', name: 'Edvanta', url: 'https://edvanta.co' },
+            hasCourseInstance: { '@type': 'CourseInstance', courseMode: 'online' },
             url: canonical,
-            itemListElement: route.courseSlugs.map((courseSlug, index) => {
-              const course = getFeaturedCourse(courseSlug);
-              return {
-                '@type': 'ListItem',
-                position: index + 1,
-                name: course?.title || courseSlug,
-                url: `https://edvanta.co/cursos/${courseSlug}`,
-              };
-            }),
           },
           {
-            '@type': 'BreadcrumbList',
-            itemListElement: [
-              { '@type': 'ListItem', position: 1, name: 'Inicio', item: 'https://edvanta.co/' },
-              { '@type': 'ListItem', position: 2, name: 'Rutas profesionales', item: 'https://edvanta.co/#rutas' },
-              { '@type': 'ListItem', position: 3, name: route.title, item: canonical },
-            ],
+            '@type': 'ItemList',
+            name: `Pasos de ${path.name}`,
+            itemListElement: (path.steps || []).map((step, index) => ({
+              '@type': 'ListItem',
+              position: index + 1,
+              name: step.title,
+            })),
           },
         ],
       },
     });
-    return cleanup;
-  }, [route]);
+  }, [path]);
 
-  if (!route) return <Navigate to="/" replace />;
+  const groupedSteps = useMemo(() => {
+    const groups = [];
+    for (const step of path?.steps || []) {
+      const last = groups[groups.length - 1];
+      if (last?.type === step.step_type) last.items.push(step);
+      else groups.push({ type: step.step_type, items: [step] });
+    }
+    return groups;
+  }, [path]);
 
-  const courses = route.courseSlugs.map(getFeaturedCourse).filter(Boolean);
-  const articles = route.articleSlugs.map(getArticulo).filter(Boolean);
+  if (loading) {
+    return (
+      <>
+        <Header />
+        <main className="min-h-screen bg-[#f7f9fc] pt-16">
+          <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+            <div className="h-5 w-48 animate-pulse rounded bg-slate-200" />
+            <div className="mt-8 h-14 max-w-3xl animate-pulse rounded bg-slate-200" />
+            <div className="mt-5 h-24 max-w-3xl animate-pulse rounded bg-slate-100" />
+          </div>
+        </main>
+        <Footer />
+      </>
+    );
+  }
+
+  if (error || !path) {
+    return (
+      <>
+        <Header />
+        <main className="min-h-[70vh] bg-[#f7f9fc] pt-16">
+          <div className="mx-auto max-w-3xl px-4 py-20 text-center sm:px-6">
+            <Route className="mx-auto h-10 w-10 text-teal-700" aria-hidden="true" />
+            <h1 className="mt-5 text-3xl font-bold text-[#071a4a]">No pudimos abrir esta ruta</h1>
+            <p className="mt-3 text-slate-600">{error || 'La ruta solicitada no está disponible.'}</p>
+            <div className="mt-7 flex flex-wrap justify-center gap-3">
+              <button type="button" onClick={() => setReloadKey(value => value + 1)} className="inline-flex min-h-11 items-center gap-2 rounded-lg bg-[#071a4a] px-5 text-sm font-bold text-white">
+                <RefreshCw className="h-4 w-4" aria-hidden="true" /> Reintentar
+              </button>
+              <Link to="/rutas" className="inline-flex min-h-11 items-center gap-2 rounded-lg border border-slate-300 bg-white px-5 text-sm font-bold text-slate-700">
+                <ArrowLeft className="h-4 w-4" aria-hidden="true" /> Ver todas
+              </Link>
+            </div>
+          </div>
+        </main>
+        <Footer />
+      </>
+    );
+  }
 
   return (
-    <div className="min-h-screen bg-white">
+    <>
       <Header />
-
-      <main className="pt-16">
-        <section className="bg-slate-50 py-12 md:py-16">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <nav className="mb-6 flex flex-wrap items-center gap-2 text-sm text-gray-500">
-              <Link to="/" className="font-medium text-teal-700 hover:underline">Inicio</Link>
-              <span>/</span>
-              <Link to="/#rutas" className="font-medium text-teal-700 hover:underline">Rutas profesionales</Link>
-              <span>/</span>
-              <span>{route.title}</span>
+      <main className="bg-[#f7f9fc] pt-16">
+        <section className="border-b border-slate-200 bg-white">
+          <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
+            <nav className="flex flex-wrap items-center gap-2 text-sm text-slate-500" aria-label="Migas de pan">
+              <Link to="/" className="hover:text-teal-700">Inicio</Link><span>/</span>
+              <Link to="/rutas" className="hover:text-teal-700">Rutas</Link><span>/</span>
+              <span className="font-semibold text-slate-700">{path.name}</span>
             </nav>
-            <div className="max-w-3xl">
-              <span className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-teal-50 text-teal-700">
-                <Icon name={route.icon} className="h-6 w-6" />
-              </span>
-              <h1 className="text-3xl font-bold text-navy-950 md:text-5xl">{route.title}</h1>
-              <p className="mt-5 text-base leading-relaxed text-gray-600 md:text-lg">{route.summary}</p>
-            </div>
-          </div>
-        </section>
 
-        <section className="py-12 md:py-16">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="mb-8 max-w-2xl">
-              <p className="mb-2 text-xs font-bold uppercase tracking-widest text-teal-600">Orden sugerido</p>
-              <h2 className="text-2xl font-bold text-navy-950">Avanza con esta secuencia</h2>
-            </div>
-            <div className="grid gap-5 lg:grid-cols-3">
-              {courses.map((course, index) => (
-                <Link
-                  key={course.slug}
-                  to={`/cursos/${course.slug}`}
-                  className="group overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
-                >
-                  <CourseImage course={course} className="aspect-video w-full object-cover" />
-                  <div className="p-5">
-                    <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-navy-900 text-xs font-bold text-white">
-                      {index + 1}
-                    </span>
-                    <h3 className="mt-3 text-lg font-bold text-navy-950 group-hover:text-teal-700">{course.title}</h3>
-                    <p className="mt-2 text-sm leading-relaxed text-gray-500">{course.shortDescription}</p>
-                    {course.pendingAffiliateLabel && (
-                      <p className="mt-3 text-xs font-semibold text-amber-700">Enlace afiliado pendiente de configuración.</p>
-                    )}
-                  </div>
-                </Link>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="bg-slate-50 py-12 md:py-16">
-          <div className="mx-auto grid max-w-7xl gap-8 px-4 sm:px-6 lg:grid-cols-[0.85fr_1.15fr] lg:px-8">
-            <div>
-              <p className="mb-2 text-xs font-bold uppercase tracking-widest text-teal-600">Competencias</p>
-              <h2 className="text-2xl font-bold text-navy-950">Qué deberías poder demostrar</h2>
-              <p className="mt-3 text-base leading-relaxed text-gray-500">
-                La ruta combina cursos recomendados y artículos de Edvanta para que construyas evidencia de aprendizaje.
-              </p>
-            </div>
-            <div className="grid gap-3 sm:grid-cols-2">
-              {route.outcomes.map((outcome) => (
-                <div key={outcome} className="rounded-lg border border-gray-200 bg-white p-4 text-sm font-semibold text-navy-950">
-                  {outcome}
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="py-12 md:py-16">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="mb-8 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+            <div className="mt-9 grid gap-10 lg:grid-cols-[minmax(0,1fr)_340px] lg:items-end">
               <div>
-                <p className="mb-2 text-xs font-bold uppercase tracking-widest text-teal-600">Lecturas recomendadas</p>
-                <h2 className="text-2xl font-bold text-navy-950">Artículos para acompañar la ruta</h2>
+                <p className="text-sm font-bold uppercase text-teal-700">Ruta para {path.career?.name}</p>
+                <h1 className="mt-3 max-w-4xl text-4xl font-bold leading-tight text-[#071a4a] sm:text-5xl">{path.name}</h1>
+                <p className="mt-5 max-w-3xl text-lg leading-8 text-slate-600">{path.summary}</p>
+                <div className="mt-6 flex flex-wrap gap-4 text-sm font-semibold text-slate-600">
+                  <span className="inline-flex items-center gap-2"><BookOpenCheck className="h-4 w-4 text-teal-700" aria-hidden="true" /> {path.steps?.length || 0} pasos</span>
+                  <span className="inline-flex items-center gap-2"><Clock3 className="h-4 w-4 text-indigo-600" aria-hidden="true" /> {path.estimated_duration}</span>
+                </div>
               </div>
-              <Link to="/articulos" className="text-sm font-semibold text-teal-700 hover:underline">Ver biblioteca de artículos</Link>
-            </div>
-            <div className="grid gap-5 md:grid-cols-3">
-              {articles.map((article) => (
-                <Link key={article.slug} to={`/articulos/${article.slug}`} className="rounded-lg border border-gray-200 bg-white p-5 shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
-                  <p className="text-xs font-bold uppercase tracking-widest text-teal-600">{article.category}</p>
-                  <h3 className="mt-2 text-base font-bold leading-snug text-navy-950">{article.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-gray-500">{article.description}</p>
-                </Link>
-              ))}
+              <div className="border-l-4 border-indigo-500 pl-5">
+                <p className="text-sm font-bold text-[#071a4a]">Pensada para</p>
+                <p className="mt-2 text-sm leading-6 text-slate-600">{path.audience}</p>
+                {path.career?.slug && (
+                  <Link to={`/carreras/${path.career.slug}`} className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-teal-700 hover:text-teal-900">
+                    Ver carrera completa <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                  </Link>
+                )}
+              </div>
             </div>
           </div>
+        </section>
+
+        <section className="mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:px-6 lg:grid-cols-[minmax(0,1fr)_300px] lg:px-8">
+          <div>
+            <div className="mb-8">
+              <p className="text-sm font-bold text-teal-700">Secuencia recomendada</p>
+              <h2 className="mt-1 text-2xl font-bold text-[#071a4a]">Del contexto a la oportunidad</h2>
+              <p className="mt-3 max-w-2xl text-sm leading-6 text-slate-600">Puedes adaptar el ritmo, pero conviene conservar la lógica de fundamentos, aplicación y evidencia profesional.</p>
+            </div>
+
+            <div className="space-y-9">
+              {groupedSteps.map((group) => {
+                const GroupIcon = STEP_ICONS[group.type] || BookOpenCheck;
+                return (
+                  <section key={`${group.type}-${group.items[0].step_order}`} aria-labelledby={`group-${group.items[0].step_order}`}>
+                    <div className="mb-3 flex items-center gap-2 text-sm font-bold text-indigo-700">
+                      <GroupIcon className="h-4 w-4" aria-hidden="true" />
+                      <h3 id={`group-${group.items[0].step_order}`}>{STEP_LABELS[group.type] || 'Desarrollo'}</h3>
+                    </div>
+                    <ol className="space-y-3">
+                      {group.items.map((step) => (
+                        <li key={step.id} className="grid gap-4 rounded-lg border border-slate-200 bg-white p-5 shadow-sm sm:grid-cols-[48px_minmax(0,1fr)]">
+                          <span className="inline-flex h-12 w-12 items-center justify-center rounded-lg bg-[#071a4a] text-sm font-bold text-white">
+                            {String(step.step_order).padStart(2, '0')}
+                          </span>
+                          <div>
+                            <div className="flex flex-wrap items-center gap-2">
+                              <h4 className="text-lg font-bold text-[#071a4a]">{step.title}</h4>
+                              {step.is_optional && <span className="text-xs font-bold text-slate-500">Opcional</span>}
+                            </div>
+                            <p className="mt-2 text-sm leading-6 text-slate-600">{step.description}</p>
+                            {step.skill && <p className="mt-3 text-xs font-bold text-teal-700">Competencia: {step.skill.name}</p>}
+                            {(step.courses || []).map(course => <CourseLink key={course.id || course.slug} course={course} />)}
+                            {!step.courses?.length && ['portfolio', 'career', 'opportunity'].includes(step.step_type) && (
+                              <p className="mt-4 border-l-2 border-slate-200 pl-3 text-xs leading-5 text-slate-500">Este paso queda preparado para herramientas y oportunidades verificadas. No muestra datos de demostracion como si fueran reales.</p>
+                            )}
+                          </div>
+                        </li>
+                      ))}
+                    </ol>
+                  </section>
+                );
+              })}
+            </div>
+          </div>
+
+          <aside className="lg:sticky lg:top-24 lg:self-start">
+            <div className="rounded-lg border border-slate-200 bg-white p-5">
+              <h2 className="text-lg font-bold text-[#071a4a]">Lo que deberías demostrar</h2>
+              <ul className="mt-4 space-y-3">
+                {(path.outcomes || []).map(outcome => (
+                  <li key={outcome} className="flex gap-2 text-sm leading-6 text-slate-600">
+                    <CheckCircle2 className="mt-1 h-4 w-4 shrink-0 text-teal-700" aria-hidden="true" /> {outcome}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <Link to={`/cursos?career=${path.career?.slug || ''}`} className="mt-4 inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-lg bg-[#071a4a] px-4 text-sm font-bold text-white hover:bg-[#102862]">
+              Explorar cursos relacionados <ExternalLink className="h-4 w-4" aria-hidden="true" />
+            </Link>
+            <Link to="/rutas" className="mt-2 inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-lg border border-slate-300 bg-white px-4 text-sm font-bold text-slate-700 hover:border-teal-600 hover:text-teal-700">
+              Comparar otras rutas
+            </Link>
+          </aside>
         </section>
       </main>
-
       <Footer />
-    </div>
+    </>
   );
 }

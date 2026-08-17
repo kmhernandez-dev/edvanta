@@ -207,11 +207,19 @@ async function insertCourse(client, course) {
   return result.rows[0].id;
 }
 
-async function updateCourse(client, id, course) {
+async function updateCourse(client, id, course, options = {}) {
+  const { preserveExistingLinks = false } = options;
+  const originalUrlValue = preserveExistingLinks
+    ? 'COALESCE(courses.original_url, $5)'
+    : '$5';
+  const affiliateUrlValue = preserveExistingLinks
+    ? 'COALESCE(courses.affiliate_url, $6)'
+    : '$6';
+
   await client.query(
     `UPDATE courses SET
       title = $1, short_description = $2, full_description = $3,
-      provider_course_id = $4, original_url = $5, affiliate_url = $6,
+      provider_course_id = $4, original_url = ${originalUrlValue}, affiliate_url = ${affiliateUrlValue},
       category = $7, subcategory = $8, professional_area = $9,
       language = $10, level = $11, modality = $12, price_type = $13,
       current_price = $14, original_price = $15, currency = $16,
@@ -238,7 +246,7 @@ async function updateCourse(client, id, course) {
 }
 
 export async function importCourses(rawCourses, options = {}) {
-  const { dryRun = false, updateExisting = true } = options;
+  const { dryRun = false, updateExisting = true, preserveExistingLinks = false } = options;
 
   const report = {
     dryRun,
@@ -289,7 +297,7 @@ export async function importCourses(rawCourses, options = {}) {
 
         if (dup) {
           if (updateExisting) {
-            await updateCourse(client, dup.id, course);
+            await updateCourse(client, dup.id, course, { preserveExistingLinks });
             report.updated++;
             report.details.push({
               index,

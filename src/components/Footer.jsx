@@ -2,11 +2,17 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { EDVANTA_WHATSAPP_URL, EDVANTA_EMAIL, EDVANTA_LINKEDIN_URL, EDVANTA_BRAND_FULL } from '../config/links';
 
 const quickLinks = [
+  { label: 'Mi panel profesional', href: '/app' },
   { label: 'Inicio', href: '/#inicio' },
-  { label: 'Cursos', href: '/#cursos' },
-  { label: 'Rutas profesionales', href: '/#rutas' },
-  { label: 'Artículos', href: '/#articulos' },
-  { label: 'Recursos', href: '/#recursos' },
+  { label: 'Aprende', href: '/aprende' },
+  { label: 'Cursos', href: '/cursos' },
+  { label: 'Rutas profesionales', href: '/rutas' },
+  { label: 'Competencias', href: '/competencias' },
+  { label: 'Oportunidades', href: '/oportunidades' },
+  { label: 'Conecta', href: '/conecta' },
+  { label: 'Empresas', href: '/empresas' },
+  { label: 'Artículos', href: '/articulos' },
+  { label: 'Recursos', href: '/recursos' },
 ];
 
 const logoVersion = '20260716-edvanta-logo';
@@ -69,15 +75,17 @@ export default function Footer() {
           <div>
             <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4">Navegación</p>
             <nav className="space-y-2">
-              {quickLinks.map(l => (
-                <a
-                  key={l.href}
-                  href={l.href}
-                  onClick={e => handleNav(e, l.href)}
-                  className="block text-sm text-gray-600 hover:text-navy-900 transition-colors"
-                >
+              <Link to="/carreras" className="block text-sm text-gray-600 hover:text-navy-900 transition-colors">
+                Carreras farmacéuticas
+              </Link>
+              {quickLinks.map(l => l.href.startsWith('/#') ? (
+                <a key={l.href} href={l.href} onClick={e => handleNav(e, l.href)} className="block text-sm text-gray-600 hover:text-navy-900 transition-colors">
                   {l.label}
                 </a>
+              ) : (
+                <Link key={l.href} to={l.href} className="block text-sm text-gray-600 hover:text-navy-900 transition-colors">
+                  {l.label}
+                </Link>
               ))}
               <Link to="/articulos" className="block text-sm text-gray-600 hover:text-navy-900 transition-colors">
                 Blog

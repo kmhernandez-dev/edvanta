@@ -65,6 +65,9 @@
   <url><loc>https://edvanta.co/articulos/alimentos-suplementos-levotiroxina</loc><lastmod>2026-07-15</lastmod><priority>0.7</priority></url>
 
   <!-- Cursos -->
+  <url><loc>https://edvanta.co/aprende</loc><lastmod>2026-08-15</lastmod><priority>0.9</priority></url>
+  <url><loc>https://edvanta.co/competencias</loc><lastmod>2026-08-15</lastmod><priority>0.8</priority></url>
+  <url><loc>https://edvanta.co/cursos</loc><lastmod>2026-08-15</lastmod><priority>0.9</priority></url>
   <url><loc>https://edvanta.co/cursos/gestion-de-calidad</loc><lastmod>2026-07-15</lastmod><priority>0.9</priority></url>
   <url><loc>https://edvanta.co/cursos/power-bi</loc><lastmod>2026-07-15</lastmod><priority>0.9</priority></url>
   <url><loc>https://edvanta.co/cursos/auditoria</loc><lastmod>2026-07-15</lastmod><priority>0.9</priority></url>
@@ -74,11 +77,45 @@
   <url><loc>https://edvanta.co/cursos/lean</loc><lastmod>2026-07-15</lastmod><priority>0.8</priority></url>
   <url><loc>https://edvanta.co/cursos/lean-six-sigma</loc><lastmod>2026-07-15</lastmod><priority>0.9</priority></url>
 
+  <!-- Carreras de la industria farmaceutica -->
+  <url><loc>https://edvanta.co/carreras</loc><lastmod>2026-08-15</lastmod><priority>0.9</priority></url>
+  <url><loc>https://edvanta.co/carreras/aseguramiento-calidad</loc><lastmod>2026-08-15</lastmod><priority>0.8</priority></url>
+  <url><loc>https://edvanta.co/carreras/control-calidad</loc><lastmod>2026-08-15</lastmod><priority>0.8</priority></url>
+  <url><loc>https://edvanta.co/carreras/validaciones</loc><lastmod>2026-08-15</lastmod><priority>0.8</priority></url>
+  <url><loc>https://edvanta.co/carreras/asuntos-regulatorios</loc><lastmod>2026-08-15</lastmod><priority>0.8</priority></url>
+  <url><loc>https://edvanta.co/carreras/farmacovigilancia</loc><lastmod>2026-08-15</lastmod><priority>0.8</priority></url>
+  <url><loc>https://edvanta.co/carreras/produccion-farmaceutica</loc><lastmod>2026-08-15</lastmod><priority>0.8</priority></url>
+  <url><loc>https://edvanta.co/carreras/investigacion-desarrollo</loc><lastmod>2026-08-15</lastmod><priority>0.8</priority></url>
+  <url><loc>https://edvanta.co/carreras/industria-cosmetica</loc><lastmod>2026-08-15</lastmod><priority>0.8</priority></url>
+  <url><loc>https://edvanta.co/carreras/medical-affairs</loc><lastmod>2026-08-15</lastmod><priority>0.8</priority></url>
+  <url><loc>https://edvanta.co/carreras/datos-farma</loc><lastmod>2026-08-15</lastmod><priority>0.8</priority></url>
+  <url><loc>https://edvanta.co/carreras/inteligencia-artificial-farma</loc><lastmod>2026-08-15</lastmod><priority>0.8</priority></url>
+
   <!-- Rutas profesionales -->
+  <url><loc>https://edvanta.co/rutas</loc><lastmod>2026-08-15</lastmod><priority>0.9</priority></url>
+  <url><loc>https://edvanta.co/rutas/quality-assurance-desde-cero</loc><lastmod>2026-08-15</lastmod><priority>0.9</priority></url>
+  <url><loc>https://edvanta.co/rutas/control-de-calidad</loc><lastmod>2026-08-15</lastmod><priority>0.8</priority></url>
+  <url><loc>https://edvanta.co/rutas/validaciones-farmaceuticas</loc><lastmod>2026-08-15</lastmod><priority>0.8</priority></url>
+  <url><loc>https://edvanta.co/rutas/regulatory-affairs</loc><lastmod>2026-08-15</lastmod><priority>0.8</priority></url>
+  <url><loc>https://edvanta.co/rutas/farmacovigilancia</loc><lastmod>2026-08-15</lastmod><priority>0.8</priority></url>
+  <url><loc>https://edvanta.co/rutas/produccion-farmaceutica</loc><lastmod>2026-08-15</lastmod><priority>0.8</priority></url>
+  <url><loc>https://edvanta.co/rutas/investigacion-y-desarrollo</loc><lastmod>2026-08-15</lastmod><priority>0.8</priority></url>
+  <url><loc>https://edvanta.co/rutas/formulacion-cosmetica</loc><lastmod>2026-08-15</lastmod><priority>0.8</priority></url>
+  <url><loc>https://edvanta.co/rutas/medical-affairs</loc><lastmod>2026-08-15</lastmod><priority>0.8</priority></url>
+  <url><loc>https://edvanta.co/rutas/data-y-pharma</loc><lastmod>2026-08-15</lastmod><priority>0.8</priority></url>
+  <url><loc>https://edvanta.co/rutas/ia-para-profesionales-farmaceuticos</loc><lastmod>2026-08-15</lastmod><priority>0.8</priority></url>
   <url><loc>https://edvanta.co/rutas/calidad-y-auditoria</loc><lastmod>2026-07-15</lastmod><priority>0.8</priority></url>
   <url><loc>https://edvanta.co/rutas/datos-y-power-bi</loc><lastmod>2026-07-15</lastmod><priority>0.8</priority></url>
   <url><loc>https://edvanta.co/rutas/seguridad-ambiente-y-sostenibilidad</loc><lastmod>2026-07-15</lastmod><priority>0.8</priority></url>
   <url><loc>https://edvanta.co/rutas/proyectos-y-mejora-de-procesos</loc><lastmod>2026-07-15</lastmod><priority>0.8</priority></url>
+
+  <!-- Ecosistema profesional -->
+  <url><loc>https://edvanta.co/recursos</loc><lastmod>2026-08-15</lastmod><priority>0.8</priority></url>
+  <url><loc>https://edvanta.co/certificaciones</loc><lastmod>2026-08-15</lastmod><priority>0.7</priority></url>
+  <url><loc>https://edvanta.co/oportunidades</loc><lastmod>2026-08-15</lastmod><priority>0.8</priority></url>
+  <url><loc>https://edvanta.co/conecta</loc><lastmod>2026-08-15</lastmod><priority>0.8</priority></url>
+  <url><loc>https://edvanta.co/proyectos</loc><lastmod>2026-08-15</lastmod><priority>0.7</priority></url>
+  <url><loc>https://edvanta.co/empresas</loc><lastmod>2026-08-15</lastmod><priority>0.7</priority></url>
 
   <!-- Páginas legales -->
   <url><loc>https://edvanta.co/privacidad</loc><lastmod>2026-07-15</lastmod><priority>0.3</priority></url>

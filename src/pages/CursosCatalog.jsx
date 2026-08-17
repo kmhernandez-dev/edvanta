@@ -5,6 +5,7 @@ import Footer from '../components/Footer';
 import ExternalCourseCard from '../components/ExternalCourseCard';
 import { apiUrl } from '../config/api';
 import { updatePageSeo } from '../utils/seo';
+import { BookOpenCheck } from 'lucide-react';
 
 const PROVIDER_LABELS = {
   edutin: 'Edutin',
@@ -47,12 +48,16 @@ export default function CursosCatalog({ defaultProvider = '' }) {
     languages: [],
     levels: [],
     price_types: [],
+    careers: [],
+    skills: [],
   });
 
   const [search, setSearch] = useState(searchParams.get('q') || '');
   const [provider, setProvider] = useState(searchParams.get('provider') || defaultProvider);
   const [category, setCategory] = useState(searchParams.get('category') || '');
   const [professionalArea, setProfessionalArea] = useState(searchParams.get('area') || '');
+  const [career, setCareer] = useState(searchParams.get('career') || '');
+  const [skill, setSkill] = useState(searchParams.get('skill') || '');
   const [language, setLanguage] = useState(searchParams.get('language') || '');
   const [level, setLevel] = useState(searchParams.get('level') || '');
   const [priceType, setPriceType] = useState(searchParams.get('price_type') || '');
@@ -111,6 +116,8 @@ export default function CursosCatalog({ defaultProvider = '' }) {
     if (provider) params.set('provider', provider);
     if (category) params.set('category', category);
     if (professionalArea) params.set('professional_area', professionalArea);
+    if (career) params.set('career', career);
+    if (skill) params.set('skill', skill);
     if (language) params.set('language', language);
     if (level) params.set('level', level);
     if (priceType) params.set('price_type', priceType);
@@ -128,7 +135,7 @@ export default function CursosCatalog({ defaultProvider = '' }) {
       })
       .catch(() => {})
       .finally(() => setLoading(false));
-  }, [search, provider, category, professionalArea, language, level, priceType, certificate, page]);
+  }, [search, provider, category, professionalArea, career, skill, language, level, priceType, certificate, page]);
 
   const handleFilterChange = (setter, key) => (value) => {
     setter(value);
@@ -147,6 +154,8 @@ export default function CursosCatalog({ defaultProvider = '' }) {
     setProvider(defaultProvider);
     setCategory('');
     setProfessionalArea('');
+    setCareer('');
+    setSkill('');
     setLanguage('');
     setLevel('');
     setPriceType('');
@@ -155,7 +164,7 @@ export default function CursosCatalog({ defaultProvider = '' }) {
     setSearchParams({}, { replace: true });
   };
 
-  const hasFilters = search || (provider && !defaultProvider) || category || professionalArea || language || level || priceType || certificate;
+  const hasFilters = search || (provider && !defaultProvider) || category || professionalArea || career || skill || language || level || priceType || certificate;
 
   return (
     <div className="min-h-screen bg-white">
@@ -163,18 +172,18 @@ export default function CursosCatalog({ defaultProvider = '' }) {
 
       <main className="pt-16">
         {/* Hero */}
-        <section className="bg-gradient-to-br from-navy-900 to-teal-700 text-white py-12 md:py-16">
+        <section className="border-b border-slate-200 bg-white py-12 md:py-16">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl">
-              <p className="mb-2 text-xs font-bold uppercase tracking-widest text-teal-200">
+              <p className="mb-2 text-xs font-bold uppercase text-teal-700">
                 {defaultProvider ? PROVIDER_LABELS[defaultProvider] : 'Catálogo multi-plataforma'}
               </p>
-              <h1 className="text-3xl font-bold md:text-5xl">
+              <h1 className="text-3xl font-bold text-[#071a4a] md:text-5xl">
                 {defaultProvider
                   ? `Cursos de ${PROVIDER_LABELS[defaultProvider]}`
                   : 'Cursos profesionales recomendados'}
               </h1>
-              <p className="mt-4 text-base leading-relaxed text-white/80 md:text-lg">
+              <p className="mt-4 text-base leading-relaxed text-slate-600 md:text-lg">
                 {defaultProvider
                   ? `Explora nuestra selección de cursos de ${PROVIDER_LABELS[defaultProvider]} en farmacia, calidad, datos, IA, gestión de proyectos y más.`
                   : 'Explora cursos de Coursera, Udemy y Edutin en farmacia, calidad, datos, IA, gestión de proyectos y más. Organizados por categoría profesional.'}
@@ -183,16 +192,16 @@ export default function CursosCatalog({ defaultProvider = '' }) {
               {/* Platform tabs */}
               {!defaultProvider && (
                 <div className="flex flex-wrap gap-2 mt-6">
-                  <Link to="/cursos" className="px-4 py-2 rounded-lg bg-white/20 text-white text-sm font-semibold hover:bg-white/30 transition-colors">
+                  <Link to="/cursos" className="rounded-lg bg-[#071a4a] px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-[#102862]">
                     Todas
                   </Link>
-                  <Link to="/cursos/coursera" className="px-4 py-2 rounded-lg bg-white/10 text-white text-sm font-semibold hover:bg-white/30 transition-colors">
+                  <Link to="/cursos/coursera" className="rounded-lg border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition-colors hover:border-teal-600 hover:text-teal-700">
                     Coursera
                   </Link>
-                  <Link to="/cursos/udemy" className="px-4 py-2 rounded-lg bg-white/10 text-white text-sm font-semibold hover:bg-white/30 transition-colors">
+                  <Link to="/cursos/udemy" className="rounded-lg border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition-colors hover:border-teal-600 hover:text-teal-700">
                     Udemy
                   </Link>
-                  <Link to="/cursos/edutin" className="px-4 py-2 rounded-lg bg-white/10 text-white text-sm font-semibold hover:bg-white/30 transition-colors">
+                  <Link to="/cursos/edutin" className="rounded-lg border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition-colors hover:border-teal-600 hover:text-teal-700">
                     Edutin
                   </Link>
                 </div>
@@ -238,6 +247,22 @@ export default function CursosCatalog({ defaultProvider = '' }) {
                   <option value="">Todas las categorías</option>
                   {filterOptions.categories.map(c => (
                     <option key={c} value={c}>{c}</option>
+                  ))}
+                </select>
+
+                <select value={career} onChange={e => handleFilterChange(setCareer, 'career')(e.target.value)}
+                  className="text-xs border border-gray-200 rounded-lg px-3 py-2 bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-teal-400">
+                  <option value="">Todas las carreras</option>
+                  {(filterOptions.careers || []).map(item => (
+                    <option key={item.slug} value={item.slug}>{item.name}</option>
+                  ))}
+                </select>
+
+                <select value={skill} onChange={e => handleFilterChange(setSkill, 'skill')(e.target.value)}
+                  className="text-xs border border-gray-200 rounded-lg px-3 py-2 bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-teal-400">
+                  <option value="">Todas las competencias</option>
+                  {(filterOptions.skills || []).map(item => (
+                    <option key={item.slug} value={item.slug}>{item.name}</option>
                   ))}
                 </select>
 
@@ -295,7 +320,7 @@ export default function CursosCatalog({ defaultProvider = '' }) {
             {loading ? (
               <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                 {Array.from({ length: 8 }).map((_, i) => (
-                  <div key={i} className="rounded-2xl border border-gray-100 bg-white overflow-hidden animate-pulse">
+                  <div key={i} className="animate-pulse overflow-hidden rounded-lg border border-gray-100 bg-white">
                     <div className="aspect-[16/9] bg-gray-100" />
                     <div className="p-4 space-y-3">
                       <div className="h-3 bg-gray-100 rounded w-1/3" />
@@ -306,8 +331,8 @@ export default function CursosCatalog({ defaultProvider = '' }) {
                 ))}
               </div>
             ) : courses.length === 0 ? (
-              <div className="rounded-2xl border border-gray-200 bg-slate-50 py-16 text-center">
-                <p className="text-4xl mb-3">📚</p>
+              <div className="rounded-lg border border-gray-200 bg-slate-50 py-16 text-center">
+                <BookOpenCheck className="mx-auto mb-3 h-9 w-9 text-teal-700" aria-hidden="true" />
                 <p className="font-semibold text-navy-950">No encontramos cursos con esos filtros.</p>
                 <p className="mt-1 text-sm text-gray-500">Prueba con otros filtros o una búsqueda más amplia.</p>
                 {hasFilters && (

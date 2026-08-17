@@ -29,14 +29,20 @@ import { mpWebhookRoute } from './routes/mp-webhook.js';
 import { leadCaptureRoute } from './routes/lead-capture.js';
 import { listOrdersRoute } from './routes/list-orders.js';
 import { listCoursesRoute, getCourseBySlugRoute, getFilterOptionsRoute } from './routes/courses.js';
+import { listCareersRoute, getCareerFiltersRoute, getCareerBySlugRoute } from './routes/careers.js';
+import { listLearningPathsRoute, getLearningPathBySlugRoute } from './routes/learning-paths.js';
+import { listSkillsRoute, getSkillBySlugRoute } from './routes/skills.js';
+import { globalSearchRoute, listCertificationsRoute, listCompaniesRoute, listGroupsRoute, listOpportunitiesRoute, listProjectsRoute, listResourcesRoute } from './routes/ecosystem.js';
 import { trackClickRoute } from './routes/course-clicks.js';
 import { importCourses } from './lib/import-courses.js';
+import { buildEdvantaCatalog, syncEdvantaLearningGraph } from './lib/edvanta-catalog.js';
 import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 import academiaAuthRoutes from './routes/academia-auth.js';
 import academiaRoutes from './routes/academia.js';
 import adminAcademiaRoutes from './routes/admin-academia.js';
+import adminEdvantaRoutes from './routes/admin-edvanta.js';
 import articleCommentsRoutes from './routes/article-comments.js';
 import vida360Routes from './routes/vida360.js';
 import fstAppRoutes from './routes/fst-app.js';
@@ -143,6 +149,28 @@ app.get('/api/courses/filters/options', getFilterOptionsRoute);
 app.get('/api/courses/:slug',        getCourseBySlugRoute);
 app.post('/api/course-clicks',       trackClickRoute);
 
+// Explorador profesional: carreras, habilidades y rutas verificadas
+app.get('/api/careers',                 listCareersRoute);
+app.get('/api/careers/filters/options', getCareerFiltersRoute);
+app.get('/api/careers/:slug',           getCareerBySlugRoute);
+
+// Rutas profesionales conectadas a carreras, competencias y cursos
+app.get('/api/learning-paths',           listLearningPathsRoute);
+app.get('/api/learning-paths/:slug',     getLearningPathBySlugRoute);
+
+// Competencias reutilizables entre carreras, cursos y rutas
+app.get('/api/skills',                   listSkillsRoute);
+app.get('/api/skills/:slug',             getSkillBySlugRoute);
+
+// Ecosistema profesional. Solo se publican registros verificados.
+app.get('/api/opportunities',             listOpportunitiesRoute);
+app.get('/api/companies',                 listCompaniesRoute);
+app.get('/api/projects',                  listProjectsRoute);
+app.get('/api/groups',                    listGroupsRoute);
+app.get('/api/certifications',            listCertificationsRoute);
+app.get('/api/resources',                 listResourcesRoute);
+app.get('/api/search',                    globalSearchRoute);
+
 // Admin: importar cursos desde el JSON incluido en el repo
 app.post('/api/admin/import-courses', async (req, res) => {
   try {
@@ -155,8 +183,23 @@ app.post('/api/admin/import-courses', async (req, res) => {
     const filePath = path.join(__dirname, 'data', 'coursera-udemy-courses.json');
     const raw = JSON.parse(readFileSync(filePath, 'utf8'));
 
-    const report = await importCourses(raw, { dryRun: false, updateExisting: true });
-    res.json({ ok: true, report });
+    const externalReport = await importCourses(raw, { dryRun: false, updateExisting: true });
+    const edvantaCatalog = await buildEdvantaCatalog();
+    const edvantaReport = await importCourses(edvantaCatalog, {
+      dryRun: false,
+      updateExisting: true,
+      preserveExistingLinks: true,
+    });
+    const graphReport = await syncEdvantaLearningGraph(edvantaCatalog);
+
+    res.json({
+      ok: true,
+      report: {
+        external: externalReport,
+        edvanta: edvantaReport,
+        graph: graphReport,
+      },
+    });
   } catch (e) {
     console.error(JSON.stringify({ level: 'error', msg: 'Error importando cursos', error: e.message }));
     res.status(500).json({ error: 'Error al importar cursos' });
@@ -215,6 +258,7 @@ app.post('/api/admin/generate-seo', async (req, res) => {
 app.use('/api/academia/auth',  academiaAuthRoutes);
 app.use('/api/academia',       academiaRoutes);
 app.use('/api/admin/academia', adminAcademiaRoutes);
+app.use('/api/admin/edvanta',  adminEdvantaRoutes);
 
 // Portal del paciente FST Vida 360
 app.use('/api/vida360', vida360Routes);

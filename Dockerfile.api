@@ -15,6 +15,10 @@ RUN apk add --no-cache wget
 
 COPY api/ ./
 
+# Fuentes editoriales del catalogo Edvanta. Se importan desde la misma data
+# que usa el frontend para evitar duplicar o alterar enlaces existentes.
+COPY src/data/courses.js src/data/featuredCourses.js ./source-data/
+
 ENV NODE_ENV=production
 ENV PORT=3000
 

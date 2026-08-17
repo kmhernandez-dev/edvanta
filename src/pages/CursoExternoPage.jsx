@@ -7,6 +7,7 @@ import CursoPage from './CursoPage';
 import { getFeaturedCourse } from '../data/featuredCourses';
 import { apiUrl } from '../config/api';
 import { updatePageSeo } from '../utils/seo';
+import { trackEvent } from '../utils/analytics';
 
 const PROVIDER_LABELS = {
   edutin: 'Edutin',
@@ -91,6 +92,12 @@ function trackClick(course) {
     }),
   }).catch(() => {});
 
+  trackEvent('affiliate_click', {
+    course_id: String(course.id || course.slug),
+    provider: course.provider || '',
+    source_page: typeof window !== 'undefined' ? window.location.pathname : '',
+  });
+
   if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
     window.gtag('event', 'affiliate_course_click', {
       course_id: course.id,
@@ -140,6 +147,7 @@ export default function CursoExternoPage() {
 
   useEffect(() => {
     if (!course || featuredCourse) return;
+    trackEvent('course_viewed', { course_id: String(course.id || course.slug), provider: course.provider || '' });
     const canonical = `https://edvanta.co/cursos/${course.slug}`;
     const providerName = PROVIDER_LABELS[course.provider] || course.provider;
     const seoTitle = `${course.title} | ${providerName} | Edvanta`;

@@ -8,6 +8,8 @@
  *      provider   edutin | coursera | udemy
  *      category   categoría
  *      professional_area
+ *      career     slug de carrera
+ *      skill      slug de competencia
  *      language
  *      level
  *      price_type
@@ -29,6 +31,7 @@ import { pool } from '../db.js';
 const ALLOWED_PROVIDERS = ['edutin', 'coursera', 'udemy'];
 const ALLOWED_PRICE_TYPES = ['free', 'free_audit', 'paid', 'subscription', 'financial_aid', 'unknown'];
 const ALLOWED_LEVELS = ['beginner', 'intermediate', 'advanced', 'mixed', 'unknown'];
+const validSlug = value => /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(value || '');
 
 function sanitizeText(val) {
   if (!val || typeof val !== 'string') return '';
@@ -47,6 +50,8 @@ export async function listCoursesRoute(req, res) {
     const provider = req.query.provider;
     const category = sanitizeText(req.query.category);
     const professionalArea = sanitizeText(req.query.professional_area);
+    const career = sanitizeText(req.query.career);
+    const skill = sanitizeText(req.query.skill);
     const language = sanitizeText(req.query.language);
     const level = req.query.level;
     const priceType = req.query.price_type;
@@ -90,6 +95,45 @@ export async function listCoursesRoute(req, res) {
     if (professionalArea) {
       conditions.push(`c.professional_area = $${paramIdx}`);
       params.push(professionalArea);
+      paramIdx++;
+    }
+
+    if (career) {
+      if (!validSlug(career)) return res.status(400).json({ ok: false, error: 'Carrera no valida' });
+      conditions.push(`(
+        EXISTS (
+          SELECT 1
+          FROM career_course_recommendations editorial
+          JOIN careers selected_career ON selected_career.id = editorial.career_id
+          WHERE editorial.course_id = c.id
+            AND editorial.status = 'published'
+            AND selected_career.slug = $${paramIdx}
+        )
+        OR EXISTS (
+          SELECT 1
+          FROM course_skills taught
+          JOIN career_skills required ON required.skill_id = taught.skill_id
+          JOIN careers selected_career ON selected_career.id = required.career_id
+          WHERE taught.course_id = c.id
+            AND taught.review_status = 'verified'
+            AND selected_career.slug = $${paramIdx}
+        )
+      )`);
+      params.push(career);
+      paramIdx++;
+    }
+
+    if (skill) {
+      if (!validSlug(skill)) return res.status(400).json({ ok: false, error: 'Competencia no valida' });
+      conditions.push(`EXISTS (
+        SELECT 1
+        FROM course_skills taught
+        JOIN skills selected_skill ON selected_skill.id = taught.skill_id
+        WHERE taught.course_id = c.id
+          AND taught.review_status IN ('verified', 'pending')
+          AND selected_skill.slug = $${paramIdx}
+      )`);
+      params.push(skill);
       paramIdx++;
     }
 
@@ -214,13 +258,22 @@ export async function getCourseBySlugRoute(req, res) {
 
 export async function getFilterOptionsRoute(_req, res) {
   try {
-    const [providers, categories, areas, languages, levels, priceTypes] = await Promise.all([
+    const [providers, categories, areas, languages, levels, priceTypes, careers, skills] = await Promise.all([
       pool.query(`SELECT DISTINCT provider FROM courses WHERE active = true ORDER BY provider`),
       pool.query(`SELECT DISTINCT category FROM courses WHERE active = true AND category IS NOT NULL ORDER BY category`),
       pool.query(`SELECT DISTINCT professional_area FROM courses WHERE active = true AND professional_area IS NOT NULL ORDER BY professional_area`),
       pool.query(`SELECT DISTINCT language FROM courses WHERE active = true AND language IS NOT NULL ORDER BY language`),
       pool.query(`SELECT DISTINCT level FROM courses WHERE active = true AND level IS NOT NULL ORDER BY level`),
       pool.query(`SELECT DISTINCT price_type FROM courses WHERE active = true AND price_type IS NOT NULL ORDER BY price_type`),
+      pool.query(`SELECT slug, name FROM careers WHERE status = 'published' ORDER BY sort_order, name`),
+      pool.query(`
+        SELECT DISTINCT skill.slug, skill.name
+        FROM skills skill
+        JOIN course_skills mapped ON mapped.skill_id = skill.id
+        JOIN courses course ON course.id = mapped.course_id AND course.active = TRUE
+        WHERE skill.status = 'published'
+        ORDER BY skill.name
+      `),
     ]);
 
     return res.json({
@@ -232,6 +285,8 @@ export async function getFilterOptionsRoute(_req, res) {
         languages: languages.rows.map(r => r.language),
         levels: levels.rows.map(r => r.level),
         price_types: priceTypes.rows.map(r => r.price_type),
+        careers: careers.rows,
+        skills: skills.rows,
       },
     });
   } catch (e) {
