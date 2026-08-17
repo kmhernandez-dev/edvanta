@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useCart } from '../../context/CartContext';
 import { useAuth } from '../../context/AuthContext';
 import { trackEvent } from '../../utils/analytics';
 import Icon from '../Icon';
@@ -29,7 +28,6 @@ function goToSection(event, href, onNavigate) {
 export default function FstHeader() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const { count, openCart } = useCart();
   const { isAuthenticated } = useAuth();
 
   useEffect(() => {
@@ -73,10 +71,6 @@ export default function FstHeader() {
           <a href="/feliz-sin-tiroides#fst-recursos" onClick={freeResourceClick} className="hidden min-h-11 items-center justify-center rounded-md bg-[#563a78] px-4 text-sm font-semibold text-white hover:bg-[#452b65] md:inline-flex">
             Recibir recurso gratuito
           </a>
-          <button type="button" onClick={openCart} className="relative inline-flex h-11 w-11 items-center justify-center rounded-md border border-[#e2d9eb] text-[#563a78] hover:bg-[#f7f2fa]" aria-label={`Abrir carrito, ${count} productos`}>
-            <Icon name="cube" className="h-5 w-5" />
-            {count > 0 && <span className="absolute -right-1 -top-1 flex h-5 min-w-5 items-center justify-center rounded-full bg-[#0f766e] px-1 text-[10px] font-bold text-white">{count}</span>}
-          </button>
           <button
             type="button"
             onClick={() => setMenuOpen(value => !value)}

@@ -241,7 +241,11 @@ export default function FelizSinTiroides() {
 
   const activeProducts = useMemo(() => {
     const category = productCategories.find(item => item.id === activeCategory);
-    return category?.productIds.map(id => ebooks.find(product => product.id === id)).filter(Boolean) || [];
+    const list = category?.productIds.map(id => ebooks.find(product => product.id === id)).filter(Boolean) || [];
+    // La Colección (producto más vendido) siempre va de primera en cualquier categoría.
+    const coleccion = ebooks.find(product => product.id === 'fst-coleccion-sana');
+    const rest = list.filter(product => product.id !== 'fst-coleccion-sana');
+    return coleccion ? [coleccion, ...rest] : rest;
   }, [activeCategory]);
 
   const recommendedProducts = useMemo(() => {
@@ -459,12 +463,6 @@ export default function FelizSinTiroides() {
                   >
                     Quiero todas las guías <Icon name="arrowRight" className="h-4 w-4" />
                   </a>
-                  {collection.comparePrice && (
-                    <p className="text-sm text-white/70">
-                      <span className="line-through opacity-60">${collection.comparePrice.toLocaleString('es-CO')} COP</span>{' '}
-                      <span className="font-bold text-[#5eead4]">${collection.price.toLocaleString('es-CO')} COP</span>
-                    </p>
-                  )}
                 </div>
                 <p className="mt-4 text-xs text-white/50">Pago seguro en Hotmart · Acceso inmediato</p>
               </div>

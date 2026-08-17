@@ -29,6 +29,11 @@ export const FST_COMMUNITY_URL = 'https://chat.whatsapp.com/CkV75SCDU6f3XgrrJ8d5
 // URL base de tu tienda o producto principal en Hotmart.
 export const HOTMART_URL = 'https://hotmart.com/es/marketplace/productos/salud-y-bienestar';
 
+// Colección Bienestar Tiroideo (producto más vendido). Se usa como destino
+// de compra por defecto para los productos que aún no tienen enlace propio,
+// para no perder oportunidades de venta.
+export const FST_COLECCION_HOTMART = 'https://go.hotmart.com/C99303085S?dp=1';
+
 // ─── Formulario de captación de leads ────────────────────────
 export const LEAD_FORM_URL = 'https://edvanta.co/feliz-sin-tiroides#fst-recursos';
 

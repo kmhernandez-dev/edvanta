@@ -1,18 +1,15 @@
 import { useEffect, useRef } from 'react';
-import { useCart } from '../../context/CartContext';
-import { formatPrice } from '../../utils/format';
-import { waLink } from '../../config/links';
+import { waLink, FST_COLECCION_HOTMART } from '../../config/links';
 import { trackEvent } from '../../utils/analytics';
 import { trackLeadEvent } from '../../lib/leadEvents';
 import Icon from '../Icon';
 
 export default function EbookCard({ ebook, details, recommended = false }) {
-  const { addItem } = useCart();
   const cardRef = useRef(null);
   const adaptedCover = ebook.price == null && Boolean(ebook.cover.image);
-  const discount = ebook.comparePrice
-    ? Math.round((1 - ebook.price / ebook.comparePrice) * 100)
-    : 0;
+  // Todos los productos redirigen a Hotmart. Los que no tienen enlace propio
+  // van a la Colección (el más vendido) para no perder la oportunidad de venta.
+  const buyUrl = ebook.checkoutUrl || ebook.hotmartUrl || FST_COLECCION_HOTMART;
   const waUrl = waLink(`Hola Karla, me interesa "${ebook.name}". ¿Me cuentas más?`);
 
   useEffect(() => {
@@ -63,11 +60,6 @@ export default function EbookCard({ ebook, details, recommended = false }) {
             <Icon name="award" className="h-3.5 w-3.5" /> Más completo
           </span>
         )}
-        {discount > 0 && (
-          <span className="absolute right-3 top-3 rounded bg-[#8f3f6b] px-2 py-1 text-[11px] font-bold text-white">
-            -{discount}%
-          </span>
-        )}
         <span className="absolute bottom-3 left-3 rounded bg-white/95 px-2 py-1 text-[11px] font-semibold text-deepblue-800">
           {ebook.tag}
         </span>
@@ -102,42 +94,20 @@ export default function EbookCard({ ebook, details, recommended = false }) {
           </div>
         )}
 
-        {/* Price */}
-        <div className="flex items-end gap-2">
-          <span className="text-xl font-bold text-deepblue-900">
-            {ebook.price == null ? 'Ver precio en Hotmart' : formatPrice(ebook.price)}
-          </span>
-          {ebook.comparePrice && (
-            <span className="text-sm text-gray-400 line-through mb-0.5">{formatPrice(ebook.comparePrice)}</span>
-          )}
-        </div>
-
-        {/* CTAs */}
+        {/* CTAs — todo redirige a Hotmart (sin precio ni carrito) */}
         <div className="flex flex-col gap-2 mt-1">
-          {ebook.checkoutUrl ? (
-            <a
-              href={ebook.checkoutUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => trackProductClick('checkout')}
-              className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-md bg-[#563a78] px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#452b65]"
-            >
-              Comprar ahora
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-              </svg>
-            </a>
-          ) : (
-            <button
-              onClick={() => { trackProductClick('cart'); addItem(ebook); }}
-              className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-md bg-[#563a78] px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#452b65]"
-            >
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-              </svg>
-              Agregar al carrito
-            </button>
-          )}
+          <a
+            href={buyUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => trackProductClick('checkout')}
+            className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-md bg-[#563a78] px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#452b65]"
+          >
+            Comprar en Hotmart
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+          </a>
           <a
             href={waUrl}
             target="_blank"
@@ -152,7 +122,7 @@ export default function EbookCard({ ebook, details, recommended = false }) {
         {/* Pago seguro */}
         <p className="text-[11px] text-gray-400 text-center flex items-center justify-center gap-1">
           <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>
-          {ebook.checkoutUrl ? 'Pago seguro en Hotmart' : 'Pago seguro con Mercado Pago'}
+          Pago seguro en Hotmart
         </p>
       </div>
         <p className="border-t border-gray-100 px-5 py-3 text-center text-[11px] leading-4 text-gray-500">
