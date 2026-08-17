@@ -89,9 +89,11 @@ ON CONFLICT (slug) DO UPDATE SET
 
 -- ─── Días (7 por reto; días 5–7 repiten sesiones 1–3) ───────
 -- nutrition_challenge rota los 7 microretos educativos.
+-- duration_minutes se castea explícitamente: en VALUES todas las
+-- filas son NULL y PostgreSQL inferiría text (fallaría en INTEGER).
 INSERT INTO fst_challenge_days
   (challenge_id, day_number, title, description, youtube_url, youtube_video_id, instructor, duration_minutes, difficulty, equipment, body_area, training_type, low_impact, beginner_friendly, nutrition_challenge, sort_order, status)
-SELECT c.id, d.day_number, d.title, d.description, d.youtube_url, d.youtube_video_id, d.instructor, d.duration_minutes, d.difficulty, d.equipment, d.body_area, d.training_type, d.low_impact, d.beginner_friendly, d.nutrition_challenge, d.day_number, 'published'
+SELECT c.id, d.day_number, d.title, d.description, d.youtube_url, d.youtube_video_id, d.instructor, d.duration_minutes::integer, d.difficulty, d.equipment, d.body_area, d.training_type, d.low_impact, d.beginner_friendly, d.nutrition_challenge, d.day_number, 'published'
 FROM fst_challenges c
 JOIN (VALUES
   -- Pilates Princess (Move With Nicole)
