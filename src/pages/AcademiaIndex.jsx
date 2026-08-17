@@ -26,6 +26,7 @@ export default function AcademiaIndex() {
   const [selectedCat, setSelectedCat] = useState('Todas');
   const [searchParams] = useSearchParams();
   const [loginOpen, setLoginOpen] = useState(false);
+  const [weeklyChallenge, setWeeklyChallenge] = useState(null);
 
   useEffect(() => { window.scrollTo(0, 0); }, []);
   useEffect(() => { if (searchParams.get('login') === '1') setLoginOpen(true); }, [searchParams]);
@@ -43,6 +44,13 @@ export default function AcademiaIndex() {
       .then(r => r.json())
       .then(d => { setCourses(d.courses || []); setLoading(false); })
       .catch(() => setLoading(false));
+  }, []);
+
+  useEffect(() => {
+    fetch('/api/academia/retos/weekly')
+      .then(r => r.json())
+      .then(d => { if (d.challenge) setWeeklyChallenge(d.challenge); })
+      .catch(() => {});
   }, []);
 
   const categories = ['Todas', ...new Set(courses.map(c => c.category))];
@@ -74,6 +82,41 @@ export default function AcademiaIndex() {
           </div>
         </div>
       </section>
+
+      {/* Esta semana en Feliz Sin Tiroides — Retos FST */}
+      {weeklyChallenge && (
+        <section className="py-10 md:py-14">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid overflow-hidden rounded-lg border border-sand-100 bg-white shadow-sm md:grid-cols-2">
+              <div className="flex aspect-[16/9] items-center justify-center bg-gradient-to-br from-[#e8f4f2] to-[#fdf2f6] md:aspect-auto">
+                {weeklyChallenge.cover_image ? (
+                  <img src={weeklyChallenge.cover_image} alt={weeklyChallenge.title} loading="lazy" className="h-full w-full object-cover" />
+                ) : (
+                  <div className="text-center">
+                    <Icon name="sparkles" className="mx-auto h-12 w-12 text-[#563a78]" />
+                    <p className="mt-2 font-serif text-xl font-semibold text-deepblue-900">{weeklyChallenge.title}</p>
+                  </div>
+                )}
+              </div>
+              <div className="flex flex-col justify-center gap-3 p-6 sm:p-8">
+                <span className="text-xs font-bold uppercase tracking-[0.15em] text-teal-600">Esta semana en Feliz Sin Tiroides</span>
+                <h2 className="font-serif text-2xl font-semibold text-deepblue-900">{weeklyChallenge.title}</h2>
+                <p className="text-sm text-gray-500">
+                  7 días · {weeklyChallenge.level === 'beginner' ? 'Beginner friendly' : weeklyChallenge.level === 'intermediate' ? 'Intermedio' : 'Avanzado'} · {weeklyChallenge.equipment || 'Sin equipo'}
+                </p>
+                <div className="mt-2 flex flex-col gap-3 sm:flex-row">
+                  <Link to={`/academia/retos/${weeklyChallenge.slug}`} className="inline-flex min-h-11 items-center justify-center gap-2 rounded-md bg-teal-600 px-6 text-sm font-semibold text-white hover:bg-teal-700">
+                    Unirme al reto
+                  </Link>
+                  <Link to="/academia/retos" className="inline-flex min-h-11 items-center justify-center gap-2 rounded-md border border-[#d7c8e5] bg-white px-6 text-sm font-semibold text-[#563a78] hover:bg-[#faf8fc]">
+                    Ver todos los retos
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Filtro categorías */}
       <section className="pb-6">

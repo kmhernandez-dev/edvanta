@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { apiUrl } from '../config/api';
+import RetosAdmin from '../components/admin/RetosAdmin';
 
 const TOKEN_KEY = 'edvanta_admin_token';
 
@@ -81,10 +82,10 @@ export default function AdminAcademia() {
       {/* Tabs */}
       <div className="bg-white border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex gap-0">
-          {['courses', 'students', 'comments'].map(t => (
+          {['courses', 'retos', 'students', 'comments'].map(t => (
             <button key={t} onClick={() => { setTab(t); if (t === 'students') loadStudents(); if (t === 'comments') loadComments(true); }}
               className={`px-5 py-3 text-sm font-medium border-b-2 transition-colors ${tab === t ? 'border-teal-600 text-teal-700' : 'border-transparent text-gray-500 hover:text-gray-700'}`}>
-              {t === 'courses' ? 'Cursos' : t === 'students' ? 'Estudiantes' : 'Comentarios'}
+              {t === 'courses' ? 'Cursos' : t === 'retos' ? 'Retos FST' : t === 'students' ? 'Estudiantes' : 'Comentarios'}
             </button>
           ))}
         </div>
@@ -203,6 +204,9 @@ export default function AdminAcademia() {
             </div>
           </div>
         )}
+
+        {/* ─── RETOS FST ─────────────────────────────────────── */}
+        {tab === 'retos' && <RetosAdmin api={api} />}
 
         {/* ─── ESTUDIANTES ───────────────────────────────────── */}
         {tab === 'students' && (

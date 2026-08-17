@@ -44,6 +44,8 @@ import academiaAuthRoutes from './routes/academia-auth.js';
 import academiaRoutes from './routes/academia.js';
 import adminAcademiaRoutes from './routes/admin-academia.js';
 import adminEdvantaRoutes from './routes/admin-edvanta.js';
+import retosRoutes from './routes/retos.js';
+import adminRetosRoutes from './routes/admin-retos.js';
 import articleCommentsRoutes from './routes/article-comments.js';
 import vida360Routes from './routes/vida360.js';
 import fstAppRoutes from './routes/fst-app.js';
@@ -258,8 +260,10 @@ app.post('/api/admin/generate-seo', async (req, res) => {
 
 // Academia FST
 app.use('/api/academia/auth',  academiaAuthRoutes);
+app.use('/api/academia/retos', retosRoutes);
 app.use('/api/academia',       academiaRoutes);
 app.use('/api/admin/academia', adminAcademiaRoutes);
+app.use('/api/admin/academia', adminRetosRoutes);
 app.use('/api/admin/edvanta',  adminEdvantaRoutes);
 
 // Portal del paciente FST Vida 360

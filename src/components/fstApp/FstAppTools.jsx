@@ -7,7 +7,7 @@
  */
 
 import { useMemo, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import {
   Apple, ArrowRight, BookOpen, CalendarDays, Check, ChefHat, ClipboardList,
   FileText, HeartPulse, Pill, Plus, RefreshCw, Send,
@@ -39,6 +39,7 @@ const suggestionChips = [
 export function NutriFstChat() {
   const { data, addChatMessage, logActivity } = useFstApp();
   const { user } = useAuth();
+  const [searchParams] = useSearchParams();
   const [input, setInput] = useState('');
   const [typing, setTyping] = useState(false);
   const [menuResult, setMenuResult] = useState(null);
@@ -47,6 +48,16 @@ export function NutriFstChat() {
   const listRef = useRef(null);
 
   const chatHistory = data.chatHistory || [];
+
+  // Contexto opcional desde Retos FST (?goal=reduce_body_fat|muscle_gain|maintain_wellbeing).
+  // NutriFit sigue siendo la fuente de la estrategia nutricional: solo se muestra
+  // una nota de contexto, sin generar planes ni recomendaciones nuevas.
+  const retoGoal = searchParams.get('goal');
+  const retoGoalLabel = {
+    reduce_body_fat: 'Reducir grasa corporal',
+    muscle_gain: 'Ganar masa muscular',
+    maintain_wellbeing: 'Mantenerme y sentirme mejor',
+  }[retoGoal] || null;
 
   const send = async text => {
     const question = (text ?? input).trim();
@@ -90,6 +101,15 @@ export function NutriFstChat() {
       />
 
       <SafetyNote>NutriFST no diagnostica, no modifica dosis ni reemplaza a tu profesional de salud. Ante una emergencia, busca atención médica inmediata.</SafetyNote>
+
+      {retoGoalLabel && (
+        <div className="mt-4 rounded-2xl border border-[#eae2f8] bg-[#faf8fd] p-4">
+          <p className="text-xs font-bold uppercase tracking-widest text-[#9274C9]">Llegaste desde Retos FST</p>
+          <p className="mt-1 text-sm leading-6 text-slate-700">
+            Tu objetivo seleccionado: <strong>{retoGoalLabel}</strong>. Puedes preguntarle a NutriFST cómo adaptar tu alimentación a ese objetivo con tus datos actuales.
+          </p>
+        </div>
+      )}
 
       <div className="mt-5 flex gap-2 overflow-x-auto pb-2 fst-scrollbar-thin" aria-label="Preguntas sugeridas">
         {suggestionChips.map(chip => (

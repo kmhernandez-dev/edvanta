@@ -31,6 +31,9 @@ const AcademiaCurso = lazy(() => import('./pages/AcademiaCurso'));
 const AcademiaClase = lazy(() => import('./pages/AcademiaClase'));
 const MisCursos = lazy(() => import('./pages/MisCursos'));
 const AcademiaPerfil = lazy(() => import('./pages/AcademiaPerfil'));
+const RetosIndex = lazy(() => import('./pages/RetosIndex'));
+const RetoDetalle = lazy(() => import('./pages/RetoDetalle'));
+const RetoDia = lazy(() => import('./pages/RetoDia'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 const Vida360Portal = lazy(() => import('./pages/Vida360Portal'));
 const FstAppPortal = lazy(() => import('./pages/FstAppPortal'));
@@ -87,6 +90,11 @@ export default function App() {
         <Route path="/academia/curso/:slug/clase/:lessonId" element={<AcademiaClase />} />
         <Route path="/academia/mis-cursos" element={<MisCursos />} />
         <Route path="/academia/perfil" element={<AcademiaPerfil />} />
+
+        {/* Retos FST — retos semanales de movimiento */}
+        <Route path="/academia/retos" element={<RetosIndex />} />
+        <Route path="/academia/retos/:slug" element={<RetoDetalle />} />
+        <Route path="/academia/retos/:slug/dia/:dayNumber" element={<RetoDia />} />
 
         {/* Portal personal FST Vida 360 */}
         <Route path="/vida-360/*" element={
