@@ -120,8 +120,8 @@ async function saveLead(lead) {
     `INSERT INTO leads (
       email, name, country, interest, whatsapp, consent, consent_at,
       resource, recommendation, utm_source, utm_medium, utm_campaign,
-      utm_content, source_page
-    ) VALUES ($1,$2,$3,$4,$5,$6,CASE WHEN $6 THEN NOW() ELSE NULL END,$7,$8,$9,$10,$11,$12,$13)
+      utm_content, utm_term, source_page, source, landing_path
+    ) VALUES ($1,$2,$3,$4,$5,$6,CASE WHEN $6 THEN NOW() ELSE NULL END,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16)
     ON CONFLICT (email) DO UPDATE SET
       name = EXCLUDED.name,
       country = EXCLUDED.country,
@@ -135,7 +135,10 @@ async function saveLead(lead) {
       utm_medium = NULLIF(EXCLUDED.utm_medium, ''),
       utm_campaign = NULLIF(EXCLUDED.utm_campaign, ''),
       utm_content = NULLIF(EXCLUDED.utm_content, ''),
+      utm_term = NULLIF(EXCLUDED.utm_term, ''),
       source_page = NULLIF(EXCLUDED.source_page, ''),
+      source = NULLIF(EXCLUDED.source, ''),
+      landing_path = NULLIF(EXCLUDED.landing_path, ''),
       updated_at = NOW()`,
     [
       lead.email,
@@ -150,10 +153,45 @@ async function saveLead(lead) {
       lead.utmMedium,
       lead.utmCampaign,
       lead.utmContent,
+      lead.utmTerm,
       lead.sourcePage,
+      lead.source,
+      lead.landingPath,
     ],
   );
   return true;
+}
+
+async function saveLeadEvent(lead, eventType, extra = {}) {
+  if (!process.env.DATABASE_URL) return false;
+  try {
+    await pool.query(
+      `INSERT INTO lead_events (email, event_type, resource_slug, resource_name, product_id, metadata)
+       VALUES ($1,$2,$3,$4,$5,$6)`,
+      [
+        lead.email,
+        eventType,
+        extra.resourceSlug || null,
+        extra.resourceName || null,
+        extra.productId || null,
+        JSON.stringify({
+          source: lead.source || null,
+          utm_source: lead.utmSource || null,
+          utm_medium: lead.utmMedium || null,
+          utm_campaign: lead.utmCampaign || null,
+          utm_content: lead.utmContent || null,
+          utm_term: lead.utmTerm || null,
+          landing_path: lead.landingPath || null,
+          source_page: lead.sourcePage || null,
+          ...extra.metadata,
+        }),
+      ],
+    );
+    return true;
+  } catch (error) {
+    console.error(JSON.stringify({ level: 'error', msg: 'No se pudo guardar el evento del lead', error: error.message }));
+    return false;
+  }
 }
 
 async function syncLead(lead) {
@@ -206,7 +244,10 @@ export async function leadCaptureRoute(req, res) {
     utmMedium: clean(req.body?.utmMedium, 160),
     utmCampaign: clean(req.body?.utmCampaign, 160),
     utmContent: clean(req.body?.utmContent, 160),
+    utmTerm: clean(req.body?.utmTerm, 160),
     sourcePage: clean(req.body?.sourcePage, 1000),
+    source: clean(req.body?.source, 80) || 'fst_landing',
+    landingPath: clean(req.body?.landingPath, 255),
   };
 
   if (!emailPattern.test(lead.email)) {
@@ -228,6 +269,12 @@ export async function leadCaptureRoute(req, res) {
   } catch (error) {
     console.error(JSON.stringify({ level: 'error', msg: 'No se pudo guardar el lead', error: error.message, code: error.code }));
   }
+
+  await saveLeadEvent(lead, 'lead_created');
+  await saveLeadEvent(lead, 'free_guide_requested', {
+    resourceSlug: lead.resource,
+    resourceName: 'Cómo tomar la levotiroxina correctamente',
+  });
 
   const notifyTo = process.env.NOTIFY_EMAIL || process.env.FROM_EMAIL;
   await sendEmail({

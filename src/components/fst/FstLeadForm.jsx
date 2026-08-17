@@ -1,7 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
 import Icon from '../Icon';
 import { FORM_ENDPOINT, FREE_RESOURCE_URL, PRIVACY_POLICY_URL, THANK_YOU_PAGE_URL } from '../../config/fst';
+import { FST_COMMUNITY_URL } from '../../config/links';
 import { getAttribution, trackEvent } from '../../utils/analytics';
+import { trackLeadEvent } from '../../lib/leadEvents';
+
+const LEAD_SESSION_KEY = 'fst-lead-requested';
 
 const interestOptions = [
   ['hipotiroidismo', 'Hipotiroidismo'],
@@ -77,8 +81,14 @@ export default function FstLeadForm({ selectedInterest = '', recommendation = ''
       }
 
       setStatus('success');
+      sessionStorage.setItem(LEAD_SESSION_KEY, '1');
       trackEvent('lead_form_submit', { interest: form.interest, form: 'checklist_levotiroxina' });
       trackEvent('free_resource_download', { resource: 'checklist_levotiroxina' });
+      trackLeadEvent('free_guide_requested', {
+        email: form.email,
+        resourceSlug: 'guia-como-tomar-levotiroxina',
+        resourceName: 'Cómo tomar la levotiroxina correctamente',
+      });
     } catch (error) {
       setStatus('error');
       setMessage(error.message || 'Ocurrió un error de conexión. Intenta de nuevo.');
@@ -89,9 +99,9 @@ export default function FstLeadForm({ selectedInterest = '', recommendation = ''
     return (
       <div ref={formRef} role="status" className="rounded-lg border border-emerald-200 bg-emerald-50 p-6 text-left">
         <Icon name="checkCircle" className="h-8 w-8 text-emerald-700" />
-        <h3 className="mt-3 text-xl font-semibold text-deepblue-900">Tu recurso está listo</h3>
+        <h3 className="mt-3 text-xl font-semibold text-deepblue-900">Tu guía está en camino</h3>
         <p className="mt-2 text-sm leading-6 text-gray-600">
-          Ábrelo ahora para leerlo y descargar el PDF al instante. También enviamos el acceso a <strong>{form.email}</strong>; revisa la carpeta de correo no deseado si no lo encuentras.
+          Ábrela ahora para leerla y descargar el PDF al instante. También enviamos el acceso a <strong>{form.email}</strong>; revisa la carpeta de correo no deseado si no lo encuentras.
         </p>
         <a
           href={THANK_YOU_PAGE_URL || FREE_RESOURCE_URL}
@@ -101,6 +111,20 @@ export default function FstLeadForm({ selectedInterest = '', recommendation = ''
           Abrir y descargar mi PDF gratis
           <Icon name="arrowRight" className="h-4 w-4" />
         </a>
+        <div className="mt-5 rounded-md border border-emerald-100 bg-white p-4">
+          <p className="text-sm font-semibold text-deepblue-900">Mientras tanto, únete a la comunidad Feliz Sin Tiroides.</p>
+          <p className="mt-1 text-xs leading-5 text-gray-500">Educación, recursos y novedades compartidas en un grupo cercano.</p>
+          <a
+            href={FST_COMMUNITY_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => { trackEvent('whatsapp_click', { location: 'lead_success' }); trackLeadEvent('community_clicked', { email: form.email, source: 'lead_success' }); }}
+            className="mt-3 inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-md border border-[#0f766e] bg-white px-4 py-2.5 text-sm font-semibold text-[#0f766e] hover:bg-[#effaf8]"
+          >
+            Entrar al grupo de WhatsApp
+            <Icon name="arrowRight" className="h-4 w-4" />
+          </a>
+        </div>
       </div>
     );
   }

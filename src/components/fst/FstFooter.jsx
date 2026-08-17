@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
-import { EMAIL, INSTAGRAM_URL, waLink } from '../../config/links';
+import { EMAIL, FST_COMMUNITY_URL, INSTAGRAM_URL, waLink } from '../../config/links';
 import { trackEvent } from '../../utils/analytics';
+import { trackLeadEvent } from '../../lib/leadEvents';
 import Icon from '../Icon';
 
 const whatsappUrl = waLink('Hola, llegué desde la página de Feliz Sin Tiroides y necesito orientación para elegir un recurso.');
@@ -28,6 +29,9 @@ export default function FstFooter() {
               Información clara para comprender la levotiroxina, los exámenes, la alimentación y los cambios de vivir con una condición tiroidea. Creado por Karla Hernández, química farmacéutica y paciente tiroidectomizada.
             </p>
             <div className="mt-5 flex flex-wrap gap-3">
+              <a href={FST_COMMUNITY_URL} target="_blank" rel="noopener noreferrer" onClick={() => { trackEvent('whatsapp_click', { location: 'footer_comunidad' }); trackLeadEvent('community_clicked', { source: 'footer' }); }} className="inline-flex min-h-11 items-center gap-2 rounded-md border border-white/25 px-4 text-sm font-semibold hover:bg-white/10">
+                <Icon name="users" className="h-4 w-4" /> Comunidad
+              </a>
               <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" onClick={() => trackEvent('whatsapp_click', { location: 'footer' })} className="inline-flex min-h-11 items-center gap-2 rounded-md border border-white/25 px-4 text-sm font-semibold hover:bg-white/10">
                 WhatsApp
               </a>
@@ -43,6 +47,9 @@ export default function FstFooter() {
             <nav className="mt-4 space-y-3 text-sm text-white/70">
               <a href="#fst-recursos" onClick={event => scroll(event, '#fst-recursos')} className="block hover:text-white">Recurso gratuito</a>
               <a href="#fst-guias" onClick={event => scroll(event, '#fst-guias')} className="block hover:text-white">Guías y diarios</a>
+              <a href="#fst-herramientas" onClick={event => scroll(event, '#fst-herramientas')} className="block hover:text-white">Herramientas</a>
+              <a href="#fst-academy" onClick={event => scroll(event, '#fst-academy')} className="block hover:text-white">Academy</a>
+              <a href="#fst-servicios" onClick={event => scroll(event, '#fst-servicios')} className="block hover:text-white">Atención farmacéutica</a>
               <a href="#fst-karla" onClick={event => scroll(event, '#fst-karla')} className="block hover:text-white">Sobre Karla</a>
               <a href="#fst-preguntas" onClick={event => scroll(event, '#fst-preguntas')} className="block hover:text-white">Preguntas frecuentes</a>
               <Link to="/articulos" className="block hover:text-white">Artículos educativos</Link>

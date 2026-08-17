@@ -20,6 +20,11 @@ export function waLink(message) {
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
 }
 
+// ─── Comunidad de WhatsApp (grupo) ────────────────────────────
+// Enlace del grupo comunitario. NO confundir con el WhatsApp de
+// atención privada (wa.me/573006332244).
+export const FST_COMMUNITY_URL = 'https://chat.whatsapp.com/CkV75SCDU6f3XgrrJ8d5up';
+
 // ─── Hotmart ─────────────────────────────────────────────────
 // URL base de tu tienda o producto principal en Hotmart.
 export const HOTMART_URL = 'https://hotmart.com/es/marketplace/productos/salud-y-bienestar';

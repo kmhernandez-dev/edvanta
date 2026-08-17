@@ -3,6 +3,7 @@ import { useCart } from '../../context/CartContext';
 import { formatPrice } from '../../utils/format';
 import { waLink } from '../../config/links';
 import { trackEvent } from '../../utils/analytics';
+import { trackLeadEvent } from '../../lib/leadEvents';
 import Icon from '../Icon';
 
 export default function EbookCard({ ebook, details, recommended = false }) {
@@ -20,6 +21,7 @@ export default function EbookCard({ ebook, details, recommended = false }) {
     const observer = new IntersectionObserver(([entry]) => {
       if (entry.isIntersecting) {
         trackEvent('product_view', { product_id: ebook.id, product_name: ebook.name });
+        trackLeadEvent('guide_viewed', { productId: ebook.id, resourceName: ebook.name });
         observer.disconnect();
       }
     }, { threshold: 0.55 });
@@ -33,6 +35,9 @@ export default function EbookCard({ ebook, details, recommended = false }) {
       product_name: ebook.name,
       destination,
     });
+    if (destination === 'checkout') {
+      trackLeadEvent('hotmart_clicked', { productId: ebook.id, resourceName: ebook.name });
+    }
   };
 
   return (

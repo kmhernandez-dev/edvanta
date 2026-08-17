@@ -7,11 +7,12 @@ import Icon from '../Icon';
 
 const navLinks = [
   ['Inicio', '#fst-inicio'],
-  ['Recursos', '#fst-recursos'],
   ['Guías', '#fst-guias'],
-  ['Cursos', '#fst-cursos'],
+  ['Herramientas', '#fst-herramientas'],
+  ['Academy', '#fst-academy'],
+  ['Atención farmacéutica', '#fst-servicios'],
   ['Sobre mí', '#fst-karla'],
-  ['Preguntas frecuentes', '#fst-preguntas'],
+  ['Comunidad', '#fst-comunidad'],
 ];
 
 function goToSection(event, href, onNavigate) {
@@ -29,7 +30,7 @@ export default function FstHeader() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const { count, openCart } = useCart();
-  const { isAuthenticated, profile } = useAuth();
+  const { isAuthenticated } = useAuth();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -54,13 +55,7 @@ export default function FstHeader() {
           </span>
         </a>
 
-        <nav className="hidden items-center gap-5 lg:flex" aria-label="Navegación principal">
-          <Link to={isAuthenticated ? '/fst-app' : '/fst-app?modo=registro'} className="rounded-md bg-[#EAE2F8] px-3 py-2 text-sm font-bold text-[#6b4fa8] transition-colors hover:bg-[#e0d5f2]">
-            {isAuthenticated ? 'Mi espacio' : 'Crear mi cuenta'}
-          </Link>
-          <Link to="/vida-360" className="rounded-md bg-[#e8f7f4] px-3 py-2 text-sm font-bold text-[#0A655D] transition-colors hover:bg-[#d7f1ec]">
-            Vida 360
-          </Link>
+        <nav className="hidden items-center gap-4 xl:flex" aria-label="Navegación principal">
           {navLinks.map(([label, href]) => (
             <a key={href} href={`/feliz-sin-tiroides${href}`} onClick={event => goToSection(event, href)} className="text-sm font-medium text-gray-600 transition-colors hover:text-[#563a78]">
               {label}
@@ -69,6 +64,12 @@ export default function FstHeader() {
         </nav>
 
         <div className="flex items-center gap-2">
+          <Link to={isAuthenticated ? '/fst-app' : '/fst-app?modo=registro'} className="hidden min-h-11 items-center rounded-md bg-[#EAE2F8] px-3 py-2 text-sm font-bold text-[#6b4fa8] transition-colors hover:bg-[#e0d5f2] md:inline-flex">
+            {isAuthenticated ? 'Mi espacio' : 'Crear mi cuenta'}
+          </Link>
+          <Link to="/vida-360" className="hidden min-h-11 items-center rounded-md bg-[#e8f7f4] px-3 py-2 text-sm font-bold text-[#0A655D] transition-colors hover:bg-[#d7f1ec] lg:inline-flex">
+            Vida 360
+          </Link>
           <a href="/feliz-sin-tiroides#fst-recursos" onClick={freeResourceClick} className="hidden min-h-11 items-center justify-center rounded-md bg-[#563a78] px-4 text-sm font-semibold text-white hover:bg-[#452b65] md:inline-flex">
             Recibir recurso gratuito
           </a>
@@ -79,7 +80,7 @@ export default function FstHeader() {
           <button
             type="button"
             onClick={() => setMenuOpen(value => !value)}
-            className="inline-flex h-11 w-11 items-center justify-center rounded-md border border-[#e2d9eb] text-[#563a78] lg:hidden"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-md border border-[#e2d9eb] text-[#563a78] xl:hidden"
             aria-expanded={menuOpen}
             aria-controls="fst-mobile-menu"
             aria-label={menuOpen ? 'Cerrar menú' : 'Abrir menú'}
@@ -90,7 +91,7 @@ export default function FstHeader() {
       </div>
 
       {menuOpen && (
-        <nav id="fst-mobile-menu" className="border-t border-[#e8e1ee] bg-white px-4 py-4 shadow-lg lg:hidden" aria-label="Navegación móvil">
+        <nav id="fst-mobile-menu" className="border-t border-[#e8e1ee] bg-white px-4 py-4 shadow-lg xl:hidden" aria-label="Navegación móvil">
           <div className="mx-auto max-w-7xl space-y-1">
             <Link to={isAuthenticated ? '/fst-app' : '/fst-app?modo=registro'} onClick={() => setMenuOpen(false)} className="mb-2 flex min-h-11 items-center rounded-md bg-[#EAE2F8] px-3 py-3 text-sm font-bold text-[#6b4fa8]">
               {isAuthenticated ? 'Abrir mi espacio' : 'Crear mi cuenta'}

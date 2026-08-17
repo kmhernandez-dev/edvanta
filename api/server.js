@@ -27,6 +27,7 @@ import { pool } from './db.js';
 import { createPreferenceRoute } from './routes/create-preference.js';
 import { mpWebhookRoute } from './routes/mp-webhook.js';
 import { leadCaptureRoute } from './routes/lead-capture.js';
+import { leadEventsRoute } from './routes/lead-events.js';
 import { listOrdersRoute } from './routes/list-orders.js';
 import { listCoursesRoute, getCourseBySlugRoute, getFilterOptionsRoute } from './routes/courses.js';
 import { listCareersRoute, getCareerFiltersRoute, getCareerBySlugRoute } from './routes/careers.js';
@@ -141,6 +142,7 @@ app.get('/api/health/db', async (_req, res) => {
 app.post('/api/create-preference', createPreferenceRoute);
 app.post('/api/mp-webhook',         mpWebhookRoute);
 app.post('/api/lead-capture',       leadCaptureRoute);
+app.post('/api/lead-events',        leadEventsRoute);
 app.get('/api/list-orders',         listOrdersRoute);
 
 // Catálogo multi-plataforma de cursos
