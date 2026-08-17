@@ -1,16 +1,19 @@
 import { Component } from 'react';
 
+const RELOAD_KEY = 'fst-chunk-reload-attempted';
+
 /**
  * ErrorBoundary global: muestra el error en pantalla en lugar de
  * una pantalla en blanco. Facilita diagnosticar fallos en producción.
  *
  * Si el error es un chunk desactualizado ("Failed to fetch dynamically
- * imported module"), recarga la página automáticamente una sola vez:
- * tras un deploy, el navegador puede tener un index.html viejo que
- * apunta a assets que ya no existen.
+ * imported module"), recarga la página UNA sola vez por sesión con
+ * cache-busting (?v=timestamp): el navegador puede tener un index.html
+ * viejo en caché que apunta a assets que ya no existen tras un deploy.
+ * La URL con query string distinta fuerza a pedir el HTML fresco.
  */
 export default class ErrorBoundary extends Component {
-  state = { error: null, reloaded: false };
+  state = { error: null, reloading: false };
 
   static getDerivedStateFromError(error) {
     return { error };
@@ -19,10 +22,21 @@ export default class ErrorBoundary extends Component {
   componentDidCatch(error, info) {
     console.error('ErrorBoundary capturó un error:', error, info);
     const message = String(error?.message || error);
-    if (/dynamically imported module|import\(\)|chunk/i.test(message) && !this.state.reloaded) {
-      this.setState({ reloaded: true });
-      window.setTimeout(() => window.location.reload(), 400);
+    const isChunkError = /dynamically imported module|import\(\)|chunk/i.test(message);
+    if (!isChunkError) return;
+    if (this.state.reloading) return;
+    try {
+      if (sessionStorage.getItem(RELOAD_KEY)) return;
+      sessionStorage.setItem(RELOAD_KEY, '1');
+    } catch {
+      /* sessionStorage no disponible */
     }
+    this.setState({ reloading: true });
+    window.setTimeout(() => {
+      const url = new URL(window.location.href);
+      url.searchParams.set('v', String(Date.now()));
+      window.location.replace(url.toString());
+    }, 300);
   }
 
   render() {
@@ -37,7 +51,12 @@ export default class ErrorBoundary extends Component {
             </p>
             <button
               type="button"
-              onClick={() => window.location.reload()}
+              onClick={() => {
+                try { sessionStorage.removeItem(RELOAD_KEY); } catch { /* noop */ }
+                const url = new URL(window.location.href);
+                url.searchParams.set('v', String(Date.now()));
+                window.location.replace(url.toString());
+              }}
               className="mt-4 min-h-11 rounded-xl bg-[#0A2540] px-4 text-sm font-bold text-white hover:bg-[#123b5f]"
             >
               Recargar
