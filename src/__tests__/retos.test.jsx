@@ -15,6 +15,9 @@ import {
   levelLabel,
   dayLevelLabel,
   difficultyLabel,
+  challengeXp,
+  unlockedBadges,
+  progressMessage,
 } from '../lib/retos';
 
 describe('extractYouTubeId', () => {
@@ -215,5 +218,62 @@ describe('etiquetas', () => {
     expect(dayLevelLabel('advanced')).toBe('Avanzado');
     expect(difficultyLabel('suave')).toBe('Suave para mí');
     expect(difficultyLabel('reto')).toBe('Me retó');
+  });
+});
+
+describe('challengeXp', () => {
+  const xpConfig = { dayCompleted: 100, checkin: 20, bonus: 10, completion: 300 };
+  const days = [1, 2, 3, 4, 5, 6, 7].map(day => ({ id: day, day_number: day }));
+  const checkinFor = (day, extra = {}) => ({ challenge_day_id: String(day), exercise_completed: true, ...extra });
+
+  it('sin check-ins da 0 XP', () => {
+    expect(challengeXp({ days, checkins: [], xpConfig })).toBe(0);
+  });
+  it('suma 100 por día completado y 20 por día con respuestas', () => {
+    const checkins = [checkinFor(1), checkinFor(2, { checkin_answers: { feeling_after: 'Bien' } })];
+    expect(challengeXp({ days, checkins, xpConfig })).toBe(100 + 100 + 20);
+  });
+  it('suma 10 por el bonus del Día 2', () => {
+    const checkins = [checkinFor(2, { checkin_answers: { bonus_day_2: true } })];
+    expect(challengeXp({ days, checkins, xpConfig })).toBe(100 + 20 + 10);
+  });
+  it('suma 300 al completar 7/7', () => {
+    const checkins = days.map(day => checkinFor(day.id, { checkin_answers: { ok: true } }));
+    expect(challengeXp({ days, checkins, xpConfig })).toBe(7 * 100 + 7 * 20 + 300);
+  });
+  it('sin config devuelve 0', () => {
+    expect(challengeXp({ days, checkins: [], xpConfig: null })).toBe(0);
+  });
+});
+
+describe('unlockedBadges', () => {
+  const badges = [
+    { id: 'a', day: 1 },
+    { id: 'b', day: 3 },
+    { id: 'c', day: 7 },
+  ];
+  const days = [1, 2, 3, 4, 5, 6, 7].map(day => ({ id: day, day_number: day }));
+
+  it('desbloquea según días completados', () => {
+    const checkins = [
+      { challenge_day_id: '1', exercise_completed: true },
+      { challenge_day_id: '3', exercise_completed: true },
+    ];
+    expect(unlockedBadges({ days, checkins, badges }).map(badge => badge.id)).toEqual(['a', 'b']);
+  });
+  it('sin badges devuelve lista vacía', () => {
+    expect(unlockedBadges({ days, checkins: [], badges: null })).toEqual([]);
+  });
+});
+
+describe('progressMessage', () => {
+  const messages = { 0: 'listo', 4: 'mitad', 7: 'completado' };
+  it('devuelve el mensaje del día completado', () => {
+    expect(progressMessage(4, messages)).toBe('mitad');
+    expect(progressMessage(7, messages)).toBe('completado');
+  });
+  it('devuelve null sin mensajes o sin coincidencia', () => {
+    expect(progressMessage(2, messages)).toBeNull();
+    expect(progressMessage(2, null)).toBeNull();
   });
 });

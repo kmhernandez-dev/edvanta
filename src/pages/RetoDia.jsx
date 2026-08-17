@@ -13,6 +13,8 @@ import FstFooter from '../components/fst/FstFooter';
 import AcademiaLoginModal from '../components/AcademiaLoginModal';
 import ChallengeVideo from '../components/retos/ChallengeVideo';
 import DailyCheckin from '../components/retos/DailyCheckin';
+import ActivaQuemaCheckin from '../components/retos/ActivaQuemaCheckin';
+import ActivaQuemaReward from '../components/retos/ActivaQuemaReward';
 import ChallengeCompletion from '../components/retos/ChallengeCompletion';
 import NutriFitCTA from '../components/retos/NutriFitCTA';
 import Icon from '../components/Icon';
@@ -20,6 +22,7 @@ import { useAuth } from '../context/AuthContext';
 import { updatePageSeo } from '../utils/seo';
 import { trackEvent } from '../utils/analytics';
 import { waLink } from '../config/links';
+import { isActivaQuema, ACTIVA_QUEMA_DAY_COVERS } from '../data/retos/activaQuema';
 import {
   challengeProgress, currentStreak, dayLevelLabel, buildShareMessage,
 } from '../lib/retos';
@@ -80,6 +83,8 @@ export default function RetoDia() {
     () => new Set(checkins.filter(item => item.exercise_completed).map(item => String(item.challenge_day_id))),
     [checkins]
   );
+  const activaQuema = isActivaQuema(slug);
+  const dayCover = activaQuema ? ACTIVA_QUEMA_DAY_COVERS[dayKey] : null;
 
   const saveCheckin = useCallback(async patch => {
     if (!user) { setLoginOpen(true); return; }
@@ -145,6 +150,9 @@ export default function RetoDia() {
             <div className="min-w-0 space-y-5">
               {/* Cabecera del día */}
               <section className="rounded-lg border border-sand-100 bg-white p-5 sm:p-6" aria-labelledby="day-title">
+                {dayCover && (
+                  <img src={dayCover} alt={`Día ${day.day_number} · ${day.title}`} loading="lazy" className="mb-4 aspect-[16/9] w-full rounded-lg object-cover" />
+                )}
                 <p className="text-xs font-bold uppercase tracking-[0.15em] text-teal-600">Día {day.day_number} de 7</p>
                 <h1 id="day-title" className="mt-2 text-2xl font-semibold leading-tight text-deepblue-900">{day.title}</h1>
                 {day.description && <p className="mt-3 text-sm leading-6 text-gray-600">{day.description}</p>}
@@ -175,12 +183,23 @@ export default function RetoDia() {
 
               {/* Check-in */}
               {user ? (
-                <DailyCheckin
-                  checkin={checkin}
-                  onSave={saveCheckin}
-                  saving={saving}
-                  nutritionChallenge={day.nutrition_challenge}
-                />
+                activaQuema ? (
+                  <ActivaQuemaCheckin
+                    day={day}
+                    checkin={checkin}
+                    onSave={saveCheckin}
+                    saving={saving}
+                    days={days}
+                    checkins={checkins}
+                  />
+                ) : (
+                  <DailyCheckin
+                    checkin={checkin}
+                    onSave={saveCheckin}
+                    saving={saving}
+                    nutritionChallenge={day.nutrition_challenge}
+                  />
+                )
               ) : (
                 <section className="rounded-lg border border-sand-100 bg-white p-6 text-center">
                   <p className="text-sm font-semibold text-deepblue-900">Crea tu cuenta para guardar tu progreso</p>
@@ -196,6 +215,19 @@ export default function RetoDia() {
               )}
 
               {error && <p role="alert" className="rounded-md border border-red-200 bg-red-50 p-3 text-sm text-red-700">{error}</p>}
+
+              {/* Nota educativa / recordatorio */}
+              {day.educational_note && (
+                <section className="rounded-lg border border-sand-100 bg-white p-5" aria-label="Recuerda">
+                  <h2 className="text-sm font-bold text-deepblue-900">Recuerda</h2>
+                  <p className="mt-2 text-sm leading-6 text-gray-600">{day.educational_note}</p>
+                </section>
+              )}
+
+              {/* Recompensa (solo Activa & Quema) */}
+              {activaQuema && user && membership && (
+                <ActivaQuemaReward completed={progress.completed} total={progress.total} />
+              )}
 
               {/* Pantalla de fin de semana */}
               {allDone && (

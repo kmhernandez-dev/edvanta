@@ -11,6 +11,7 @@ import FstHeader from '../components/fst/FstHeader';
 import FstFooter from '../components/fst/FstFooter';
 import AcademiaLoginModal from '../components/AcademiaLoginModal';
 import ChallengeProgress from '../components/retos/ChallengeProgress';
+import ActivaQuemaProgress from '../components/retos/ActivaQuemaProgress';
 import NutriFitCTA from '../components/retos/NutriFitCTA';
 import { getStoredGoal } from '../components/retos/GoalSelector';
 import Icon from '../components/Icon';
@@ -18,6 +19,7 @@ import { useAuth } from '../context/AuthContext';
 import { updatePageSeo } from '../utils/seo';
 import { trackEvent } from '../utils/analytics';
 import { FST_COMMUNITY_URL, waLink } from '../config/links';
+import { isActivaQuema, ACTIVA_QUEMA_DAY_COVERS } from '../data/retos/activaQuema';
 import {
   challengeProgress, currentStreak, goalLabel, levelLabel, buildShareMessage,
 } from '../lib/retos';
@@ -71,6 +73,7 @@ export default function RetoDetalle() {
     () => new Set(checkins.filter(checkin => checkin.exercise_completed).map(checkin => String(checkin.challenge_day_id))),
     [checkins]
   );
+  const activaQuema = isActivaQuema(slug);
 
   const handleJoin = async () => {
     if (!user) { setLoginOpen(true); return; }
@@ -211,7 +214,11 @@ export default function RetoDetalle() {
         <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
           {user && membership && (
             <div className="mb-8">
-              <ChallengeProgress days={days} checkins={checkins} />
+              {activaQuema ? (
+                <ActivaQuemaProgress days={days} checkins={checkins} />
+              ) : (
+                <ChallengeProgress days={days} checkins={checkins} />
+              )}
               {streak > 0 && (
                 <p className="mt-3 text-center text-xs text-gray-400">
                   {streak} {streak === 1 ? 'día' : 'días'} de racha. Cada día cuenta, sin presión.
@@ -224,15 +231,20 @@ export default function RetoDetalle() {
           <div className="space-y-3">
             {days.map(day => {
               const done = completedIds.has(String(day.id));
+              const cover = activaQuema ? ACTIVA_QUEMA_DAY_COVERS[day.day_number] : null;
               return (
                 <Link
                   key={day.id}
                   to={`/academia/retos/${challenge.slug}/dia/${day.day_number}`}
                   className="flex items-center gap-4 rounded-lg border border-sand-100 bg-white p-4 shadow-sm transition-all hover:border-teal-200 hover:shadow-md"
                 >
-                  <span className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-sm font-bold ${done ? 'bg-teal-600 text-white' : 'border-2 border-sand-200 bg-white text-gray-500'}`}>
-                    {done ? <Icon name="check" className="h-5 w-5" /> : day.day_number}
-                  </span>
+                  {cover ? (
+                    <img src={cover} alt={`Día ${day.day_number}`} loading="lazy" className="h-14 w-20 shrink-0 rounded-md object-cover" />
+                  ) : (
+                    <span className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-sm font-bold ${done ? 'bg-teal-600 text-white' : 'border-2 border-sand-200 bg-white text-gray-500'}`}>
+                      {done ? <Icon name="check" className="h-5 w-5" /> : day.day_number}
+                    </span>
+                  )}
                   <div className="min-w-0 flex-1">
                     <p className="text-xs font-bold uppercase tracking-wider text-gray-400">Día {day.day_number} de 7</p>
                     <p className="truncate text-sm font-semibold text-deepblue-900">{day.title}</p>

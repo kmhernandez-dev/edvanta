@@ -164,6 +164,54 @@ export function durationRange(minutes) {
   return '45+ min';
 }
 
+// ─── XP e insignias (solo reto Activa & Quema) ──────────────
+
+// XP total de una usuaria en un reto, calculado desde los check-ins.
+// dayCompleted: +100 por día con exercise_completed.
+// checkin: +20 por día con al menos una respuesta de check-in.
+// bonus: +10 si respondió el bonus del Día 2.
+// completion: +300 si completó los 7 días.
+export function challengeXp({ days, checkins, xpConfig }) {
+  if (!xpConfig) return 0;
+  const done = (days || []).filter(day =>
+    (checkins || []).some(checkin =>
+      String(checkin.challenge_day_id) === String(day.id) && checkin.exercise_completed
+    )
+  );
+  const answered = (days || []).filter(day =>
+    (checkins || []).some(checkin =>
+      String(checkin.challenge_day_id) === String(day.id) &&
+      checkin.checkin_answers && Object.keys(checkin.checkin_answers).length > 0
+    )
+  );
+  const total = (days || []).length;
+  const completed = done.length;
+  let xp = done.length * xpConfig.dayCompleted + answered.length * xpConfig.checkin;
+  if (xpConfig.bonus && (checkins || []).some(checkin => checkin.checkin_answers?.bonus_day_2)) {
+    xp += xpConfig.bonus;
+  }
+  if (total > 0 && completed >= total) xp += xpConfig.completion;
+  return xp;
+}
+
+// Insignias desbloqueadas según los días completados.
+export function unlockedBadges({ days, checkins, badges }) {
+  if (!badges) return [];
+  const completedIds = new Set(
+    (checkins || []).filter(checkin => checkin.exercise_completed).map(checkin => String(checkin.challenge_day_id))
+  );
+  const completedDays = new Set(
+    (days || []).filter(day => completedIds.has(String(day.id))).map(day => day.day_number)
+  );
+  return badges.filter(badge => completedDays.has(badge.day));
+}
+
+// Mensaje de progreso según días completados (0..7).
+export function progressMessage(completed, messages) {
+  if (!messages) return null;
+  return messages[completed] || null;
+}
+
 // Enriquecer retos con metadatos derivados para filtros (body_area, training_type, duration_range).
 export function enrichChallenge(challenge) {
   if (!challenge) return challenge;

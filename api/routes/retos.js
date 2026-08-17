@@ -97,7 +97,7 @@ router.get('/:slug', optionalAuthMiddleware, async (req, res) => {
       if (member) {
         const { rows: userCheckins } = await pool.query(
           `SELECT challenge_day_id, exercise_completed, nutrition_completed, perceived_difficulty,
-                  energy_score, completed_at
+                  energy_score, checkin_answers, completed_at
            FROM fst_challenge_checkins WHERE user_id = $1 AND challenge_id = $2`,
           [req.user.id, challenge.id]
         );
@@ -145,7 +145,7 @@ router.post('/:slug/checkin', authMiddleware, async (req, res) => {
     );
     if (!challenge) return res.status(404).json({ error: 'Reto no encontrado' });
 
-    const { day_id, exercise_completed, nutrition_completed, perceived_difficulty, energy_score } = req.body || {};
+    const { day_id, exercise_completed, nutrition_completed, perceived_difficulty, energy_score, checkin_answers } = req.body || {};
     if (!day_id) return res.status(400).json({ error: 'day_id requerido' });
 
     const { rows: [day] } = await pool.query(
@@ -168,22 +168,26 @@ router.post('/:slug/checkin', authMiddleware, async (req, res) => {
     const energy = Number.isInteger(Number(energy_score)) && Number(energy_score) >= 1 && Number(energy_score) <= 5
       ? Number(energy_score)
       : null;
+    const answers = checkin_answers && typeof checkin_answers === 'object' && !Array.isArray(checkin_answers)
+      ? JSON.stringify(checkin_answers)
+      : null;
 
     const { rows: [checkin] } = await pool.query(
       `INSERT INTO fst_challenge_checkins
          (user_id, challenge_id, challenge_day_id, exercise_completed, nutrition_completed,
-          perceived_difficulty, energy_score, completed_at, updated_at)
-       VALUES ($1, $2, $3, $4, $5, $6, $7, CASE WHEN $4 THEN NOW() ELSE NULL END, NOW())
+          perceived_difficulty, energy_score, checkin_answers, completed_at, updated_at)
+       VALUES ($1, $2, $3, $4, $5, $6, $7, $8, CASE WHEN $4 THEN NOW() ELSE NULL END, NOW())
        ON CONFLICT (user_id, challenge_day_id) DO UPDATE SET
          exercise_completed = EXCLUDED.exercise_completed,
          nutrition_completed = EXCLUDED.nutrition_completed,
          perceived_difficulty = EXCLUDED.perceived_difficulty,
          energy_score = EXCLUDED.energy_score,
+         checkin_answers = EXCLUDED.checkin_answers,
          completed_at = CASE WHEN EXCLUDED.exercise_completed THEN COALESCE(fst_challenge_checkins.completed_at, NOW()) ELSE NULL END,
          updated_at = NOW()
        RETURNING id, challenge_day_id, exercise_completed, nutrition_completed,
-                 perceived_difficulty, energy_score, completed_at`,
-      [req.user.id, challenge.id, day.id, exerciseDone, nutritionDone, difficulty, energy]
+                 perceived_difficulty, energy_score, checkin_answers, completed_at`,
+      [req.user.id, challenge.id, day.id, exerciseDone, nutritionDone, difficulty, energy, answers]
     );
 
     // Si los 7 días están completos, marcar el reto como completed
