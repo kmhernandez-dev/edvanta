@@ -37,15 +37,13 @@ export default function AnalyticsConsent() {
   if (choice) return null;
 
   return (
-    <aside className="fixed inset-x-3 bottom-3 z-[70] mx-auto max-w-4xl rounded-lg border border-gray-200 bg-white p-4 shadow-2xl" aria-label="Preferencias de analítica">
-      <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-        <p className="text-sm leading-6 text-gray-600">
-          Usamos cookies necesarias para el funcionamiento. La analítica opcional solo se activa con tu autorización y nos ayuda a mejorar la experiencia. Consulta la <Link to="/privacidad" className="font-semibold text-[#563a78] underline">política de privacidad</Link>.
-        </p>
-        <div className="flex shrink-0 gap-2">
-          <button type="button" onClick={() => choose('denied')} className="min-h-11 rounded-md border border-gray-300 px-4 text-sm font-semibold text-gray-700 hover:bg-gray-50">Solo necesarias</button>
-          <button type="button" onClick={() => choose('granted')} className="min-h-11 rounded-md bg-[#563a78] px-4 text-sm font-semibold text-white hover:bg-[#452b65]">Aceptar analítica</button>
-        </div>
+    <aside className="fixed bottom-3 right-3 z-[70] w-[calc(100%-1.5rem)] max-w-xs rounded-lg border border-gray-200 bg-white p-4 shadow-2xl sm:bottom-4 sm:right-4" aria-label="Preferencias de analítica">
+      <p className="text-xs leading-5 text-gray-600">
+        Usamos cookies necesarias. La analítica opcional solo se activa con tu permiso. Ver <Link to="/privacidad" className="font-semibold text-[#563a78] underline">privacidad</Link>.
+      </p>
+      <div className="mt-3 flex gap-2">
+        <button type="button" onClick={() => choose('denied')} className="min-h-10 flex-1 rounded-md border border-gray-300 px-3 text-xs font-semibold text-gray-700 hover:bg-gray-50">Solo necesarias</button>
+        <button type="button" onClick={() => choose('granted')} className="min-h-10 flex-1 rounded-md bg-[#563a78] px-3 text-xs font-semibold text-white hover:bg-[#452b65]">Aceptar</button>
       </div>
     </aside>
   );
