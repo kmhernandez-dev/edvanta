@@ -174,6 +174,29 @@ const PREGNANCY_PATTERNS = [
   /embarazo|embarazada|amantando|amamantando|lactancia/i,
 ];
 
+// ── Módulo psicológico (salud mental y tiroides) ──
+// La crisis se evalúa PRIMERO: nunca se responde con contenido educativo.
+const CRISIS_PATTERNS = [
+  /quiero\s+morir|no\s+quiero\s+(vivir|seguir)|prefiero\s+(no\s+estar|morir|no\s+despertar)|mejor\s+no\s+estar/i,
+  /me\s+quiero\s+matar|suicid|quitarme\s+la\s+vida|acabar\s+con\s+mi\s+vida|terminar\s+con\s+todo|ya\s+no\s+quiero\s+estar/i,
+  /hacerme\s+da[ñn]o|lastimarme|autolesi|cortarme|no\s+vale\s+la\s+pena\s+(vivir|seguir)|ya\s+no\s+puedo\s+m[áa]s\s+con\s+la\s+vida/i,
+];
+const DEPRESSION_PATTERNS = [
+  /depresi|deprimid|muy\s+triste|tristeza\s+(profunda|constante)|sin\s+ganas\s+de|desanim|desesperanz|no\s+disfruto|me\s+siento\s+vac[ií]|ganas\s+de\s+llorar|[áa]nimo\s+(muy\s+)?(bajo|por\s+el\s+piso)|me\s+siento\s+(muy\s+)?mal\s+emocional|nada\s+me\s+importa/i,
+];
+const ANXIETY_PSY_PATTERNS = [
+  /ansiedad|angustia|ataques?\s+de\s+p[áa]nico|muy\s+nerviosa|preocupaci[óo]n\s+constante|no\s+puedo\s+parar\s+de\s+pensar|agobiad|estr[eé]s\s+(constante|todo\s+el\s+tiempo)|me\s+siento\s+abrumad/i,
+];
+const BRAINFOG_PATTERNS = [
+  /niebla\s+mental|mente\s+nublada|no\s+me\s+concentro|falta\s+de\s+concentraci|problemas\s+de\s+memoria|se\s+me\s+olvida|olvido\s+(todo|cosas)|lentitud\s+mental|me\s+siento\s+confundid|no\s+pienso\s+(bien|claro)/i,
+];
+const COPING_PATTERNS = [
+  /no\s+puedo\s+con\s+esto|me\s+siento\s+sol[ao]|carga\s+emocional|sobrellevar|c[óo]mo\s+afrontar|miedo\s+a\s+(que\s+vuelva|la\s+recurrencia|recaer|una\s+reca[íi]da)|volver[áa]?\s+(el\s+)?c[áa]ncer|y\s+si\s+(me\s+)?vuelve|cansada\s+de\s+estar\s+enferma|harta\s+de\s+la\s+tiroides/i,
+];
+const BODYIMAGE_PATTERNS = [
+  /cicatriz|marca\s+en\s+el\s+cuello|me\s+veo\s+(mal|diferente|fea)|imagen\s+corporal|mi\s+autoestima|no\s+me\s+gusta\s+c[óo]mo\s+me\s+veo|verme\s+al\s+espejo|me\s+da\s+verg[üu]enza\s+mi\s+cuello/i,
+];
+
 function buildResponse({ brief, meaning, actions, medication, evidence, level = 'verde', redNote = null }) {
   return {
     level,
@@ -749,6 +772,103 @@ function pregnancyResponse() {
   });
 }
 
+function crisisResponse() {
+  return buildResponse({
+    level: 'rojo',
+    brief: 'Lamento mucho que te sientas así. No estás sola, y esto se puede atender: por favor busca apoyo ahora mismo.',
+    meaning: 'Cuando aparecen pensamientos de no querer vivir o de hacerte daño, lo más importante es hablar cuanto antes con alguien que pueda acompañarte y ayudarte. Mereces ese apoyo.',
+    actions: [
+      'Si estás en peligro inmediato, llama a tu línea local de emergencias o acude al servicio de urgencias más cercano.',
+      'Comunícate con la línea de salud mental o de prevención del suicidio de tu ciudad o país, o con la línea de tu EPS.',
+      'Habla ya con una persona de confianza (familiar, amiga o profesional) y dile cómo te sientes; no tienes que estar sola en esto.',
+      'Pedir ayuda es un acto de cuidado y de valentía, no de debilidad.',
+    ],
+    medication: 'No modifiques ningún medicamento por tu cuenta. Busca a un profesional de salud mental lo antes posible.',
+    evidence: [],
+    redNote: 'Si tienes pensamientos de hacerte daño, busca ayuda profesional o una línea de crisis ahora mismo.',
+  });
+}
+
+function depressionResponse() {
+  return buildResponse({
+    level: 'amarillo',
+    brief: 'Gracias por contarme cómo te sientes. La tristeza sostenida y la falta de ánimo son reales y merecen atención y acompañamiento.',
+    meaning: 'Las alteraciones tiroideas se asocian con mayor frecuencia de síntomas depresivos, incluso cuando los exámenes están en rango. Sentirte así no es "estar exagerando": tiene bases reales y se puede trabajar con apoyo profesional.',
+    actions: [
+      'Coméntale a tu médico o a un profesional de salud mental cómo te has sentido; pueden orientarte y acompañarte.',
+      'Lleva a tu control tus exámenes tiroideos recientes: el estado de la tiroides es parte de la conversación.',
+      'Cuida lo básico: sueño regular, algo de movimiento, luz natural y contacto con personas que te hagan bien.',
+      'Registra tu ánimo unos días para observar cómo cambia y llevarlo a tu consulta.',
+    ],
+    medication: 'No inicies, suspendas ni ajustes ningún medicamento (tiroideo o de salud mental) por tu cuenta: esas decisiones son de tu equipo tratante.',
+    evidence: ['hipotiroidismo-depresion-2019', 'tiroiditis-autoinmune-depresion-2018', 'hashimoto-eutiroideo-depresion-2014'],
+  });
+}
+
+function anxietyPsyResponse() {
+  return buildResponse({
+    level: 'amarillo',
+    brief: 'Entiendo que la ansiedad puede ser muy agotadora. Es válido lo que sientes, y hay formas de acompañarlo.',
+    meaning: 'La ansiedad es frecuente en las enfermedades tiroideas: el hipertiroidismo puede producir o intensificar nerviosismo y palpitaciones, y la tiroiditis autoinmune también se asocia con más ansiedad. Los síntomas de la tiroides y los de la ansiedad a veces se parecen, por eso conviene revisarlo con tu equipo.',
+    actions: [
+      'Comparte con tu médico o profesional de salud mental cómo es tu ansiedad y desde cuándo.',
+      'Si tienes palpitaciones o temblor marcados, coméntalo: puede ayudar revisar tu función tiroidea.',
+      'Prueba pausas de respiración lenta, reducir la cafeína y cuidar el sueño; son apoyos, no un reemplazo del tratamiento.',
+      'Registra los momentos de más ansiedad para identificar patrones junto a tu profesional.',
+    ],
+    medication: 'No tomes ni suspendas medicamentos para la ansiedad por tu cuenta; conversa cualquier cambio con tu equipo.',
+    evidence: ['hipertiroidismo-depresion-ansiedad-2002', 'tiroiditis-autoinmune-depresion-2018'],
+  });
+}
+
+function brainFogResponse() {
+  return buildResponse({
+    level: 'amarillo',
+    brief: 'La "niebla mental" —olvidos, dificultad para concentrarte o pensar con lentitud— es una molestia real que muchas personas con tiroides describen.',
+    meaning: 'La función cognitiva y la calidad de vida pueden verse afectadas en enfermedades tiroideas como el Hashimoto, incluso con tratamiento. No es falta de voluntad: es un síntoma que vale la pena registrar y conversar.',
+    actions: [
+      'Anota cuándo aparece la niebla mental y qué la acompaña (sueño, estrés, exámenes recientes).',
+      'Cuida el sueño, la hidratación y hacer pausas; ayudan a la concentración.',
+      'Lleva estos registros a tu control: pueden ser parte de la conversación sobre tu tratamiento.',
+      'Divide las tareas grandes en pasos pequeños y usa recordatorios; sé amable contigo en los días difíciles.',
+    ],
+    medication: 'No ajustes tu levotiroxina por sentir niebla mental: coméntalo con tu profesional para que lo valore.',
+    evidence: ['hashimoto-cognicion-2018'],
+  });
+}
+
+function copingResponse() {
+  return buildResponse({
+    level: 'amarillo',
+    brief: 'Vivir con una condición tiroidea —y aún más tras un cáncer de tiroides— puede pesar emocionalmente. Lo que sientes es comprensible y muy común.',
+    meaning: 'El distrés, la ansiedad y el miedo a que la enfermedad vuelva son frecuentes en quienes han pasado por un cáncer de tiroides, incluso años después y con buen pronóstico. No estás exagerando y no tienes que cargarlo sola.',
+    actions: [
+      'Apóyate en tu comunidad (como Feliz Sin Tiroides) y en personas de confianza; compartirlo alivia.',
+      'Si el miedo o la angustia te acompañan casi a diario, busca apoyo de un profesional de salud mental.',
+      'Prepara tus dudas para el control: aclarar el seguimiento suele reducir la incertidumbre.',
+      'Trátate con la misma compasión con la que tratarías a una amiga en tu lugar.',
+    ],
+    medication: 'El acompañamiento emocional no reemplaza tu seguimiento médico; mantén tus controles según tu equipo.',
+    evidence: ['cancer-tiroides-distres-2017', 'cancer-tiroides-distres-2021'],
+  });
+}
+
+function bodyImageResponse() {
+  return buildResponse({
+    level: 'amarillo',
+    brief: 'Es normal tener sentimientos encontrados sobre tu cuerpo o tu cicatriz después de una cirugía de tiroides. Tus emociones son válidas.',
+    meaning: 'La imagen corporal y la autoestima son parte de la calidad de vida tras el tratamiento tiroideo. Adaptarse a los cambios —como la cicatriz en el cuello— lleva tiempo, y pedir apoyo es válido.',
+    actions: [
+      'Date permiso de sentir; la adaptación es un proceso, no algo inmediato.',
+      'Comparte cómo te sientes con personas de confianza o con tu comunidad de pacientes.',
+      'Si el malestar con tu imagen afecta tu día a día, un profesional de salud mental puede acompañarte.',
+      'Para dudas sobre el cuidado de la cicatriz, consúltalo con tu equipo tratante.',
+    ],
+    medication: '',
+    evidence: ['cancer-tiroides-distres-2017'],
+  });
+}
+
 function levoGeneralResponse() {
   return buildResponse({
     level: 'verde',
@@ -768,6 +888,8 @@ export function analyzeQuestion(query, profile = {}) {
   const normalized = normalize(query);
   if (!normalized) return greetingResponse();
 
+  // Seguridad primero: crisis de salud mental antes que cualquier otra respuesta.
+  if (CRISIS_PATTERNS.some(pattern => pattern.test(normalized))) return crisisResponse();
   if (EMERGENCY_PATTERNS.some(pattern => pattern.test(normalized))) return emergencyResponse();
   if (DOSIS_PATTERNS.some(pattern => pattern.test(normalized)) && RED_PATTERNS.some(pattern => pattern.test(normalized))) return redResponse(query);
   if (DIAGNOSTIC_PATTERNS.some(pattern => pattern.test(normalized))) return redResponse(query);
@@ -779,6 +901,14 @@ export function analyzeQuestion(query, profile = {}) {
   if (HELP_PATTERNS.some(pattern => pattern.test(normalized))) return helpResponse();
 
   if (PREGNANCY_PATTERNS.some(pattern => pattern.test(normalized))) return pregnancyResponse();
+
+  // Módulo psicológico (salud mental y tiroides)
+  if (DEPRESSION_PATTERNS.some(pattern => pattern.test(normalized))) return depressionResponse();
+  if (ANXIETY_PSY_PATTERNS.some(pattern => pattern.test(normalized))) return anxietyPsyResponse();
+  if (BRAINFOG_PATTERNS.some(pattern => pattern.test(normalized))) return brainFogResponse();
+  if (COPING_PATTERNS.some(pattern => pattern.test(normalized))) return copingResponse();
+  if (BODYIMAGE_PATTERNS.some(pattern => pattern.test(normalized))) return bodyImageResponse();
+
   if (LOW_IODINE_PATTERNS.some(pattern => pattern.test(normalized))) return lowIodineResponse();
   if (YODO_SUPPLEMENT_PATTERNS.some(pattern => pattern.test(normalized))) return yodoSuplementoResponse();
   if (BIOTINA_PATTERNS.some(pattern => pattern.test(normalized))) return biotinaResponse();
