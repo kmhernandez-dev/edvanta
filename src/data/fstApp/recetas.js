@@ -8,7 +8,9 @@
  * ============================================================
  */
 
-export const recipes = [
+import { masterRecipes } from './recetasMaster.js';
+
+const baseRecipes = [
   {
     id: 'huevos-pericos',
     name: 'Huevos pericos',
@@ -404,6 +406,9 @@ export const recipes = [
     notes: 'Versión casera del arroz frito, con más fibra.',
   },
 ];
+
+// Las 24 recetas base + las 50 verificadas del máster (data/nutricion/).
+export const recipes = [...baseRecipes, ...masterRecipes];
 
 export const mealLabels = {
   desayuno: 'Desayuno',

@@ -300,7 +300,8 @@ function menuResponse(query, profile) {
   };
 
   const pick = (pool, avoid = []) => {
-    const candidates = pool.filter(r => !avoid.includes(r.id));
+    let candidates = pool.filter(r => !avoid.includes(r.id));
+    if (profile?.lowIodineMode) candidates = candidates.filter(r => r.lowIodine !== false);
     const byBudget = budget === 'bajo' ? candidates.filter(r => r.cost === 'bajo') : candidates;
     const byTime = time <= 20 ? byBudget.filter(r => r.time <= 20) : byBudget;
     const pool2 = (byTime.length ? byTime : byBudget.length ? byBudget : candidates);
@@ -868,7 +869,8 @@ export function buildWeeklyMenu(profile = {}) {
     snack: recipes.filter(r => r.meal === 'snack'),
   };
   const pick = (pool, used) => {
-    const candidates = pool.filter(r => !used.has(r.id));
+    let candidates = pool.filter(r => !used.has(r.id));
+    if (profile?.lowIodineMode) candidates = candidates.filter(r => r.lowIodine !== false);
     const byBudget = budget === 'bajo' ? candidates.filter(r => r.cost === 'bajo') : candidates;
     const byTime = time <= 20 ? byBudget.filter(r => r.time <= 20) : byBudget;
     const pool2 = (byTime.length ? byTime : byBudget.length ? byBudget : candidates);
