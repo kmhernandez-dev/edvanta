@@ -20,6 +20,7 @@ import {
 import { FST_COMMUNITY_URL, waLink } from '../config/links';
 import { trackEvent } from '../utils/analytics';
 import { trackLeadEvent } from '../lib/leadEvents';
+import { trackFstClick } from '../lib/fstClicks';
 import { updatePageSeo } from '../utils/seo';
 
 const whatsappUrl = waLink('Hola, llegué desde la página de Feliz Sin Tiroides y necesito orientación para elegir un recurso.');
@@ -137,7 +138,7 @@ const choiceRoutes = [
   { icon: 'pill', title: 'Necesito organizar mi levotiroxina', text: 'Empieza con la guía gratuita de administración y horarios.', href: '#fst-recursos', cta: 'Recibir la guía gratuita' },
   { icon: 'book', title: 'Vivo sin tiroides y quiero aprender', text: 'Explora guías organizadas por etapa y necesidad.', href: '#fst-guias', cta: 'Ver guías' },
   { icon: 'chart', title: 'Quiero llevar seguimiento', text: 'Crea una cuenta y organiza registros en Mi espacio y Vida 360.', href: '/fst-app?modo=registro', cta: 'Crear mi cuenta', external: true },
-  { icon: 'sparkles', title: 'Tengo dudas de alimentación', text: 'Pregunta a NutriFST sobre alimentos, menús y combinaciones.', href: '/fst-app/nutrifst', cta: 'Probar NutriFST', external: true },
+  { icon: 'sparkles', title: 'Tengo dudas de alimentación', text: 'Pregunta a NutriFST sobre alimentos, menús y combinaciones.', href: '/nutrifst', cta: 'Probar NutriFST', external: true },
   { icon: 'users', title: 'Quiero acompañamiento profesional', text: 'Conoce los servicios de atención farmacéutica de Feliz Sin Tiroides.', href: '#fst-servicios', cta: 'Conocer los servicios' },
   { icon: 'cap', title: 'Soy profesional o quiero estudiar', text: 'Formación curada en Feliz Sin Tiroides Academy.', href: '#fst-academy', cta: 'Explorar Academy' },
 ];
@@ -347,7 +348,7 @@ export default function FelizSinTiroides() {
                 );
                 const className = 'flex h-full items-start gap-4 rounded-2xl border border-[#f0eaf5] bg-white p-5 text-left shadow-sm transition hover:-translate-y-0.5 hover:border-[#c7b1dc] hover:shadow-md';
                 return route.external
-                  ? <Link key={route.title} to={route.href} className={className}>{inner}</Link>
+                  ? <Link key={route.title} to={route.href} onClick={() => trackFstClick({ section: 'eleccion', element: route.title, label: route.cta, destination: route.href })} className={className}>{inner}</Link>
                   : <a key={route.title} href={route.href} onClick={event => { event.preventDefault(); scrollTo(route.href); }} className={className}>{inner}</a>;
               })}
             </div>
@@ -458,7 +459,7 @@ export default function FelizSinTiroides() {
                     href={collection.checkoutUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    onClick={() => { trackEvent('checkout_click', { product_id: collection.id, product_name: collection.name }); trackLeadEvent('hotmart_clicked', { productId: collection.id, resourceName: collection.name }); }}
+                    onClick={() => { trackEvent('checkout_click', { product_id: collection.id, product_name: collection.name }); trackLeadEvent('hotmart_clicked', { productId: collection.id, resourceName: collection.name }); trackFstClick({ section: 'coleccion', element: `cta_${collection.id}`, label: 'Quiero todas las guías', destination: collection.checkoutUrl }); }}
                     className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-white px-6 py-3 text-sm font-bold text-[#132e55] hover:bg-[#f2ebf7]"
                   >
                     Quiero todas las guías <Icon name="arrowRight" className="h-4 w-4" />
@@ -564,10 +565,10 @@ export default function FelizSinTiroides() {
                   </div>
                 ))}
                 <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-                  <Link to="/fst-app/nutrifst" onClick={() => { trackEvent('hero_cta_click', { cta: 'nutrifst' }); trackLeadEvent('nutrifst_opened', { source: 'landing' }); }} className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-[#0A2540] px-6 text-sm font-bold text-white hover:bg-[#123b5f]">
+                  <Link to="/nutrifst" onClick={() => { trackEvent('hero_cta_click', { cta: 'nutrifst' }); trackLeadEvent('nutrifst_opened', { source: 'landing' }); trackFstClick({ section: 'nutrifst_section', element: 'cta_probar_nutrifst', label: 'Probar NutriFST', destination: '/nutrifst' }); }} className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-[#0A2540] px-6 text-sm font-bold text-white hover:bg-[#123b5f]">
                     Probar NutriFST <Icon name="arrowRight" className="h-4 w-4" />
                   </Link>
-                  <p className="text-xs leading-5 text-gray-500">Requiere una cuenta gratuita. Al entrar podrás crearla o iniciar sesión.</p>
+                  <p className="text-xs leading-5 text-gray-500">Sin necesidad de cuenta. Pruébalo al instante y crea tu cuenta cuando quieras guardar tu historial.</p>
                 </div>
               </div>
             </div>
@@ -598,7 +599,7 @@ export default function FelizSinTiroides() {
                 href={whatsappServiceUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                onClick={() => { trackEvent('whatsapp_click', { location: 'servicios' }); trackLeadEvent('pharmaceutical_service_clicked', { source: 'landing' }); }}
+                onClick={() => { trackEvent('whatsapp_click', { location: 'servicios' }); trackLeadEvent('pharmaceutical_service_clicked', { source: 'landing' }); trackFstClick({ section: 'servicios', element: 'cta_atencion', label: 'Conocer atención farmacéutica', destination: whatsappServiceUrl }); }}
                 className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-[#563a78] px-6 py-3 text-sm font-bold text-white hover:bg-[#452b65]"
               >
                 Conocer atención farmacéutica <Icon name="arrowRight" className="h-4 w-4" />
@@ -673,7 +674,7 @@ export default function FelizSinTiroides() {
               href={FST_COMMUNITY_URL}
               target="_blank"
               rel="noopener noreferrer"
-              onClick={() => { trackEvent('whatsapp_click', { location: 'comunidad' }); trackLeadEvent('community_clicked', { source: 'landing' }); }}
+              onClick={() => { trackEvent('whatsapp_click', { location: 'comunidad' }); trackLeadEvent('community_clicked', { source: 'landing' }); trackFstClick({ section: 'comunidad', element: 'cta_unirme', label: 'Unirme a la comunidad', destination: FST_COMMUNITY_URL }); }}
               className="mt-8 inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-white px-8 py-3 text-sm font-bold text-[#0f5e57] hover:bg-[#effaf8]"
             >
               Unirme a la comunidad <Icon name="arrowRight" className="h-4 w-4" />
@@ -772,7 +773,7 @@ export default function FelizSinTiroides() {
 
       <FstFooter />
 
-      <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" onClick={() => trackEvent('whatsapp_click', { location: 'floating' })} className="fixed bottom-5 right-5 z-40 inline-flex h-12 w-12 items-center justify-center rounded-full bg-[#0f766e] text-white shadow-lg hover:bg-[#0c655f]" aria-label="Orientación por WhatsApp">
+      <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" onClick={() => { trackEvent('whatsapp_click', { location: 'floating' }); trackFstClick({ section: 'flotante', element: 'whatsapp_flotante', label: 'WhatsApp flotante', destination: whatsappUrl }); }} className="fixed bottom-5 right-5 z-40 inline-flex h-12 w-12 items-center justify-center rounded-full bg-[#0f766e] text-white shadow-lg hover:bg-[#0c655f]" aria-label="Orientación por WhatsApp">
         <Icon name="users" className="h-5 w-5" />
       </a>
 

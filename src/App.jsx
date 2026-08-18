@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 
 const BibliotecaHome = lazy(() => import('./pages/BibliotecaHome'));
 const FelizSinTiroides = lazy(() => import('./pages/FelizSinTiroides'));
+const NutriFstPublic = lazy(() => import('./pages/NutriFstPublic'));
 const RecursoLevotiroxina = lazy(() => import('./pages/RecursoLevotiroxina'));
 const RecetasFinder = lazy(() => import('./pages/RecetasFinder'));
 const AtenFarmaClinic = lazy(() => import('./pages/AtenFarmaClinic'));
@@ -12,6 +13,7 @@ const Vida360ProWorkspace = lazy(() => import('./pages/Vida360ProWorkspace'));
 const LegalPage = lazy(() => import('./pages/LegalPage'));
 const AdminOrders = lazy(() => import('./pages/AdminOrders'));
 const AdminAcademia = lazy(() => import('./pages/AdminAcademia'));
+const AdminTracking = lazy(() => import('./pages/AdminTracking'));
 const ArticuloPage = lazy(() => import('./pages/ArticuloPage'));
 const ArticulosIndex = lazy(() => import('./pages/ArticulosIndex'));
 const RutaProfesionalPage = lazy(() => import('./pages/RutaProfesionalPage'));
@@ -72,6 +74,7 @@ export default function App() {
 
         {/* Marca: Feliz Sin Tiroides (pacientes) */}
         <Route path="/feliz-sin-tiroides" element={<FelizSinTiroides />} />
+        <Route path="/nutrifst" element={<NutriFstPublic />} />
 
         {/* Recurso gratis interactivo: guía PDF de levotiroxina (descarga + reseñas) */}
         <Route path="/recurso/levotiroxina" element={<RecursoLevotiroxina />} />
@@ -175,6 +178,7 @@ export default function App() {
         {/* Panel admin interno (oculto, ruta directa) */}
         <Route path="/admin/orders" element={<AdminOrders />} />
         <Route path="/admin/academia" element={<AdminAcademia />} />
+        <Route path="/admin/tracking" element={<AdminTracking />} />
 
         {/* Páginas legales */}
         <Route path="/privacidad"      element={<LegalPage doc="privacidad" />} />

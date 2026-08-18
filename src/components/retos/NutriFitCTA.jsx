@@ -9,6 +9,7 @@
 import { Link } from 'react-router-dom';
 import Icon from '../Icon';
 import { trackEvent } from '../../utils/analytics';
+import { trackFstClick } from '../../lib/fstClicks';
 
 export default function NutriFitCTA({ goal }) {
   const query = goal ? `?goal=${encodeURIComponent(goal)}` : '';
@@ -22,8 +23,8 @@ export default function NutriFitCTA({ goal }) {
           </p>
         </div>
         <Link
-          to={`/fst-app/nutrifst${query}`}
-          onClick={() => trackEvent('nutrifit_opened_from_challenge', { goal: goal || null })}
+          to={`/nutrifst${query}`}
+          onClick={() => { trackEvent('nutrifit_opened_from_challenge', { goal: goal || null }); trackFstClick({ section: 'retos', element: 'cta_nutrifit', label: 'Abrir mi NutriFit', destination: `/nutrifst${query}` }); }}
           className="inline-flex min-h-12 shrink-0 items-center justify-center gap-2 rounded-md bg-[#563a78] px-6 text-sm font-semibold text-white hover:bg-[#452b65]"
         >
           <Icon name="sparkles" className="h-4 w-4" /> Abrir mi NutriFit

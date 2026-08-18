@@ -44,9 +44,11 @@ import academiaAuthRoutes from './routes/academia-auth.js';
 import academiaRoutes from './routes/academia.js';
 import adminAcademiaRoutes from './routes/admin-academia.js';
 import adminEdvantaRoutes from './routes/admin-edvanta.js';
+import adminTrackingRoutes from './routes/admin-tracking.js';
 import retosRoutes from './routes/retos.js';
 import adminRetosRoutes from './routes/admin-retos.js';
 import articleCommentsRoutes from './routes/article-comments.js';
+import fstClicksRoutes from './routes/fst-clicks.js';
 import vida360Routes from './routes/vida360.js';
 import fstAppRoutes from './routes/fst-app.js';
 
@@ -266,6 +268,9 @@ app.use('/api/admin/academia', adminAcademiaRoutes);
 app.use('/api/admin/academia', adminRetosRoutes);
 app.use('/api/admin/edvanta',  adminEdvantaRoutes);
 
+// Panel de seguimiento unificado
+app.use('/api/admin/tracking', adminTrackingRoutes);
+
 // Portal del paciente FST Vida 360
 app.use('/api/vida360', vida360Routes);
 
@@ -274,6 +279,9 @@ app.use('/api/fst-app', fstAppRoutes);
 
 // Comentarios en artículos
 app.use('/api/article-comments', articleCommentsRoutes);
+
+// Clics de Feliz Sin Tiroides (análisis de comportamiento)
+app.use('/api/fst-clicks', fstClicksRoutes);
 
 // ── 404 + manejo de errores (no expone stack traces) ─────────
 app.use((_req, res) => res.status(404).json({ error: 'Not found' }));
