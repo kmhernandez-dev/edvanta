@@ -2,7 +2,6 @@ import { useState, useMemo } from 'react';
 
 import Header        from '../components/Header';
 import Hero          from '../components/Hero';
-import GoalsSection  from '../components/GoalsSection';
 import SelectionMethod from '../components/SelectionMethod';
 import Transparency  from '../components/Transparency';
 import CourseCard    from '../components/CourseCard';
@@ -58,8 +57,6 @@ export default function BibliotecaHome() {
         onCreateAccount="/cuenta?modo=registro"
         onFindRoute={openOrientacion}
       />
-
-      <GoalsSection />
 
       <BrandGatewaySection />
 
