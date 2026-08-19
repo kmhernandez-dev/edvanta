@@ -94,9 +94,6 @@ export default function CourseCarousel({ title, courses, sectionKey }) {
                     loading="lazy"
                     className="aspect-[16/9] w-full object-cover transition duration-500 group-hover:scale-[1.03]"
                   />
-                  <span className="absolute left-3 top-3 rounded-full bg-white px-3 py-1 text-[11px] font-black uppercase tracking-wide text-navy-950 shadow-sm">
-                    Curso virtual
-                  </span>
                 </div>
 
                 <div className="flex flex-1 flex-col p-5">

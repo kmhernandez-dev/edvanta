@@ -772,24 +772,19 @@ export const COURSE_AREA_RELATIONS = [
 
 export const POPULAR_COURSE_IDS = [
   'edutin-gestion-calidad',
-  'edutin-farmacologia-clinica',
-  'edutin-acls',
-  'edutin-power-bi',
-  'edutin-auditoria',
   'edutin-gestion-ambiental',
-  'edutin-auxiliar-rrhh',
+  'edutin-sst',
   'edutin-gestion-riesgo',
+  'edutin-auditoria',
+  'edutin-power-bi',
 ];
 
 export const NEW_COURSE_IDS = [
-  'edutin-gerente-ventas',
+  'edutin-farmacologia-clinica',
+  'edutin-prl',
   'edutin-gestion-proyectos',
-  'edutin-sst',
   'edutin-lean-six-sigma',
   'edutin-lean',
-  'edutin-mecanica-fluidos',
-  'edutin-prl',
-  'edutin-logistica-transporte',
 ];
 
 // ─────────────────────────────────────────────────────────────
