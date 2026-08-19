@@ -599,20 +599,8 @@ const OFFICIAL = {
   '13028': { page: 'https://edutin.com/curso-de-ia-para-logistica', cover: `${CDN_BASE}/13028/img/web/800_imagen.jpg` },
 };
 
-// Portadas locales ya existentes en el proyecto (reutilizadas, no se tocan).
-const LOCAL_COVERS = {
-  'sh-9060': { webp: '/img/cursos/gestion-de-calidad.webp', jpg: '/img/cursos/gestion-de-calidad.jpg', alt: 'Curso virtual de gestión de calidad con enfoque en procesos, indicadores y mejora continua' },
-  'sh-9086': { webp: '/img/cursos/power-bi.webp', jpg: '/img/cursos/power-bi.jpg', alt: 'Curso virtual de Power BI para crear dashboards e indicadores profesionales' },
-  'sh-9215': { webp: '/img/cursos/auditoria.webp', jpg: '/img/cursos/auditoria.jpg', alt: 'Curso virtual de auditoría para evaluar procesos, cumplimiento y mejora organizacional' },
-  'sh-13818': { webp: '/img/cursos/gestion-ambiental.webp', jpg: '/img/cursos/gestion-ambiental.jpg', alt: 'Curso virtual de gestión ambiental con enfoque en sostenibilidad, residuos y cumplimiento' },
-  'sh-13571': { webp: '/img/cursos/seguridad-y-salud-en-el-trabajo.webp', jpg: '/img/cursos/seguridad-y-salud-en-el-trabajo.jpg', alt: 'Curso virtual de seguridad y salud en el trabajo para prevención de riesgos laborales' },
-  'sh-10262': { webp: '/img/cursos/gestion-de-proyectos.webp', jpg: '/img/cursos/gestion-de-proyectos.jpg', alt: 'Curso virtual de gestión de proyectos para planificación, recursos y seguimiento' },
-  'sh-13568': { webp: '/img/cursos/lean.webp', jpg: '/img/cursos/lean.jpg', alt: 'Curso virtual de Lean para identificar desperdicios, mejorar flujo y aumentar valor' },
-  'sh-10218': { webp: '/img/cursos/lean-six-sigma.webp', jpg: '/img/cursos/lean-six-sigma.jpg', alt: 'Curso virtual de Lean Six Sigma para DMAIC, análisis de variabilidad y mejora de procesos' },
-};
-
 // Portadas oficiales Edutin descargadas localmente (public/img/cursos/edutin/{edutinId}.jpg).
-// Se usan SOLO cuando el curso no tiene una portada local previa en el proyecto.
+// TODOS los cursos del catálogo maestro usan su portada oficial.
 const EDUTIN_COVER = (edutinId, title) => ({
   src: `/img/cursos/edutin/${edutinId}.jpg`,
   jpg: `/img/cursos/edutin/${edutinId}.jpg`,
@@ -629,13 +617,12 @@ const EDUTIN_COVER = (edutinId, title) => ({
  *      officialUrl    → página oficial (solo referencia; NO se usa en CTA).
  *      affiliateUrl   → URL de afiliado existente en el proyecto (si existe).
  *      destinationUrl → affiliateUrl siempre; NUNCA la página oficial.
- *  - image:   portada local existente (si hay) o portada oficial CDN.
+ *  - image:   portada oficial Edutin local (public/img/cursos/edutin).
  */
 function curatedCourse({ id, existingId, name, edutinId, existingUrl = null, source, description = '' }) {
   const official = OFFICIAL[String(edutinId)];
   const affiliateUrl = existingUrl || null;
-  const local = LOCAL_COVERS[existingId] || null;
-  const image = local || EDUTIN_COVER(edutinId, name);
+  const image = EDUTIN_COVER(edutinId, name);
   return {
     id,
     edutinId,
