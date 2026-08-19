@@ -12,7 +12,8 @@ import ProductModal  from '../components/ProductModal';
 import Footer        from '../components/Footer';
 import Icon          from '../components/Icon';
 import ArticulosSection from '../components/ArticulosSection';
-import FeaturedCoursesSection from '../components/FeaturedCoursesSection';
+import CourseCarousel from '../components/CourseCarousel';
+import ExploreContentSection from '../components/ExploreContentSection';
 import LearningRoutesSection from '../components/LearningRoutesSection';
 import LearningPathForm from '../components/LearningPathForm';
 import BrandGatewaySection from '../components/BrandGatewaySection';
@@ -20,6 +21,7 @@ import OrientacionModal from '../components/orientacion/OrientacionModal';
 
 import { products } from '../data/products';
 import { courses }  from '../data/courses';
+import { POPULAR_COURSE_IDS, NEW_COURSE_IDS, getCoursesByList } from '../data/catalogMaster';
 import { EDVANTA_WHATSAPP_URL } from '../config/links';
 
 function filterCourses(list, { search, category, profile }) {
@@ -40,6 +42,8 @@ export default function BibliotecaHome() {
 
   const filteredCourses = useMemo(() => filterCourses(courses, { search, category, profile }), [search, category, profile]);
   const herramientas = products.filter(p => p.featured);
+  const popularCourses = getCoursesByList(POPULAR_COURSE_IDS);
+  const newCourses = getCoursesByList(NEW_COURSE_IDS);
 
   const scrollTo = (id) => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
 
@@ -58,7 +62,12 @@ export default function BibliotecaHome() {
       <GoalsSection />
 
       <BrandGatewaySection />
-      <FeaturedCoursesSection />
+
+      {/* ── FORMACIÓN ─────────────────────────────────────────── */}
+      <CourseCarousel title="Los más populares" courses={popularCourses} sectionKey="home_popular_courses" />
+      <CourseCarousel title="Lo más nuevo" courses={newCourses} sectionKey="home_new_courses" />
+      <ExploreContentSection />
+
       <LearningRoutesSection />
       <LearningPathForm />
 

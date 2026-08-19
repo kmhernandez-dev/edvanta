@@ -68,6 +68,7 @@ function AdminShell({ children }) {
           </div>
           <div className="flex items-center gap-3">
             <Link to="/admin/edvanta" className="text-sm font-semibold text-slate-600 hover:text-[#0A2540]">Contenido Edvanta</Link>
+            <Link to="/admin/tracking" className="text-sm font-semibold text-slate-600 hover:text-[#0A2540]">Seguimiento</Link>
             <Link to="/fst-app" className="text-sm font-semibold text-slate-600 hover:text-[#0A2540]">Mi espacio</Link>
             <button type="button" onClick={logout} className="inline-flex min-h-10 items-center gap-2 rounded-xl border border-[#e5dceb] px-3 text-xs font-bold text-slate-600 hover:bg-[#faf8fd]">
               <LogOut className="h-3.5 w-3.5" /> Salir
