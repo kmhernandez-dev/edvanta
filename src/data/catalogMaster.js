@@ -611,6 +611,15 @@ const LOCAL_COVERS = {
   'sh-10218': { webp: '/img/cursos/lean-six-sigma.webp', jpg: '/img/cursos/lean-six-sigma.jpg', alt: 'Curso virtual de Lean Six Sigma para DMAIC, análisis de variabilidad y mejora de procesos' },
 };
 
+// Portadas oficiales Edutin descargadas localmente (public/img/cursos/edutin/{edutinId}.jpg).
+// Se usan SOLO cuando el curso no tiene una portada local previa en el proyecto.
+const EDUTIN_COVER = (edutinId, title) => ({
+  src: `/img/cursos/edutin/${edutinId}.jpg`,
+  jpg: `/img/cursos/edutin/${edutinId}.jpg`,
+  webp: `/img/cursos/edutin/${edutinId}.jpg`,
+  alt: `Portada oficial del curso ${title}`,
+});
+
 /**
  * Curso curado.
  *  - id:      clave interna Edvanta (estable, no cambiar).
@@ -626,7 +635,7 @@ function curatedCourse({ id, existingId, name, edutinId, existingUrl = null, sou
   const official = OFFICIAL[String(edutinId)];
   const affiliateUrl = existingUrl || null;
   const local = LOCAL_COVERS[existingId] || null;
-  const image = local || { webp: official.cover, jpg: official.cover, alt: `Portada oficial del curso ${name}` };
+  const image = local || EDUTIN_COVER(edutinId, name);
   return {
     id,
     edutinId,
