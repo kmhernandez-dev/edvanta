@@ -25,6 +25,9 @@ export function waLink(message) {
 // atención privada (wa.me/573006332244).
 export const FST_COMMUNITY_URL = 'https://chat.whatsapp.com/CkV75SCDU6f3XgrrJ8d5up';
 
+// Comunidad oficial de Químicos Farmacéuticos de Edvanta.
+export const EDVANTA_COMMUNITY_URL = 'https://chat.whatsapp.com/DBqfWNhlkQOFQ9fo90e2Qq';
+
 // ─── Hotmart ─────────────────────────────────────────────────
 // URL base de tu tienda o producto principal en Hotmart.
 export const HOTMART_URL = 'https://hotmart.com/es/marketplace/productos/salud-y-bienestar';

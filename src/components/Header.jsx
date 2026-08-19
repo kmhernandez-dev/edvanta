@@ -1,9 +1,11 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { UserRound } from 'lucide-react';
-import { EDVANTA_WHATSAPP_URL } from '../config/links';
+import { EDVANTA_WHATSAPP_URL, EDVANTA_COMMUNITY_URL } from '../config/links';
 import { useCart } from '../context/CartContext';
 import { useAuth } from '../context/AuthContext';
+import Icon from './Icon';
+import { trackEvent } from '../utils/analytics';
 
 const logoVersion = '20260716-edvanta-logo';
 
@@ -61,6 +63,7 @@ const mainLinks = [
   { label: 'Conecta', menu: conectaMenu },
   { label: 'Recursos', menu: recursosMenu },
   { label: 'Empresas', to: '/empresas' },
+  { label: 'Comunidad', external: EDVANTA_COMMUNITY_URL, event: 'community_clicked' },
   { label: 'Más', menu: [...articulosMenu, { type: 'separator' }, ...ecosistemaMenu] },
 ];
 
@@ -244,6 +247,21 @@ export default function Header() {
                 );
               }
 
+              if (link.external) {
+                return (
+                  <a
+                    key={link.label}
+                    href={link.external}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => { closeAll(); trackEvent(link.event || 'community_clicked', { origin: 'header' }); }}
+                    className="px-2.5 py-1.5 text-sm rounded-lg transition-colors duration-150 font-medium whitespace-nowrap text-gray-600 hover:text-navy-900 hover:bg-gray-50"
+                  >
+                    {link.label}
+                  </a>
+                );
+              }
+
               return (
                 <Link
                   key={link.label}
@@ -263,13 +281,35 @@ export default function Header() {
 
           {/* Right CTAs */}
           <div className="flex items-center gap-2">
+            <a
+              href={EDVANTA_COMMUNITY_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => trackEvent('community_clicked', { origin: 'header' })}
+              className="hidden h-10 items-center gap-1.5 rounded-lg px-2.5 text-sm font-medium text-gray-600 transition-colors hover:bg-gray-50 hover:text-navy-900 sm:inline-flex xl:hidden"
+              aria-label="Comunidad de Químicos Farmacéuticos en WhatsApp"
+            >
+              <Icon name="whatsapp" className="h-4 w-4 text-[#25D366]" />
+              Comunidad
+            </a>
+
+            {!user && (
+              <Link
+                to="/cuenta"
+                onClick={closeAll}
+                className="hidden min-h-10 items-center gap-2 rounded-lg border border-gray-200 bg-white px-4 text-xs font-bold text-navy-900 transition hover:bg-gray-50 sm:inline-flex"
+              >
+                Ingresar
+              </Link>
+            )}
+
             <Link
               to={user ? '/app' : '/cuenta?modo=registro'}
               onClick={closeAll}
               className="hidden min-h-10 items-center gap-2 rounded-lg bg-[#071a4a] px-4 text-xs font-bold text-white hover:bg-[#0d2d6d] sm:inline-flex"
             >
               <UserRound className="h-4 w-4" aria-hidden="true" />
-              {user ? 'Mi panel' : 'Crear mi perfil'}
+              {user ? 'Mi Edvanta' : 'Crear cuenta'}
             </Link>
 
             <button
@@ -344,6 +384,21 @@ export default function Header() {
                   </details>
                 );
               }
+              if (link.external) {
+                return (
+                  <a
+                    key={link.label}
+                    href={link.external}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => { closeAll(); trackEvent('community_clicked', { origin: 'header_mobile' }); }}
+                    className="flex items-center gap-2 px-3 py-2.5 text-sm font-medium rounded-lg text-gray-700 hover:bg-gray-50 hover:text-navy-900"
+                  >
+                    <Icon name="whatsapp" className="h-4 w-4 text-[#25D366]" />
+                    {link.label}
+                  </a>
+                );
+              }
               return (
                 <Link
                   key={link.label}
@@ -372,7 +427,14 @@ export default function Header() {
             </Link>
 
             <div className="pt-3 pb-1 flex flex-col gap-2">
-              <Link to={user ? '/app' : '/cuenta?modo=registro'} onClick={closeAll} className="inline-flex min-h-11 items-center justify-center gap-2 rounded-lg bg-[#071a4a] px-5 text-sm font-bold text-white"><UserRound className="h-4 w-4" />{user ? 'Mi panel' : 'Crear mi perfil'}</Link>
+              <div className="flex flex-col gap-2 sm:flex-row">
+                {!user && (
+                  <Link to="/cuenta" onClick={closeAll} className="inline-flex min-h-11 flex-1 items-center justify-center gap-2 rounded-lg border border-gray-200 bg-white px-5 text-sm font-bold text-navy-900">
+                    Ingresar
+                  </Link>
+                )}
+                <Link to={user ? '/app' : '/cuenta?modo=registro'} onClick={closeAll} className="inline-flex min-h-11 flex-1 items-center justify-center gap-2 rounded-lg bg-[#071a4a] px-5 text-sm font-bold text-white"><UserRound className="h-4 w-4" />{user ? 'Mi Edvanta' : 'Crear cuenta'}</Link>
+              </div>
               <a href={EDVANTA_WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="btn-teal text-sm text-center">Hablar con Edvanta</a>
             </div>
           </nav>

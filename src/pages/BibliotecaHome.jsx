@@ -16,6 +16,7 @@ import FeaturedCoursesSection from '../components/FeaturedCoursesSection';
 import LearningRoutesSection from '../components/LearningRoutesSection';
 import LearningPathForm from '../components/LearningPathForm';
 import BrandGatewaySection from '../components/BrandGatewaySection';
+import OrientacionModal from '../components/orientacion/OrientacionModal';
 
 import { products } from '../data/products';
 import { courses }  from '../data/courses';
@@ -35,11 +36,14 @@ export default function BibliotecaHome() {
   const [category, setCategory] = useState('Todos');
   const [profile, setProfile]   = useState('todos');
   const [selectedProduct, setSelectedProduct] = useState(null);
+  const [orientacionOpen, setOrientacionOpen] = useState(false);
 
   const filteredCourses = useMemo(() => filterCourses(courses, { search, category, profile }), [search, category, profile]);
   const herramientas = products.filter(p => p.featured);
 
   const scrollTo = (id) => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+
+  const openOrientacion = () => setOrientacionOpen(true);
 
   return (
     <div className="min-h-screen">
@@ -47,8 +51,8 @@ export default function BibliotecaHome() {
 
       {/* ── 1. HERO ────────────────────────────────────────────── */}
       <Hero
-        onFindRoute={() => scrollTo('objetivos')}
-        onExploreCourses={() => scrollTo('catalogo-cursos')}
+        onCreateAccount="/cuenta?modo=registro"
+        onFindRoute={openOrientacion}
       />
 
       <GoalsSection />
@@ -150,6 +154,8 @@ export default function BibliotecaHome() {
       {selectedProduct && (
         <ProductModal product={selectedProduct} onClose={() => setSelectedProduct(null)} />
       )}
+
+      <OrientacionModal open={orientacionOpen} onClose={() => setOrientacionOpen(false)} />
     </div>
   );
 }

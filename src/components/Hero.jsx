@@ -1,14 +1,19 @@
+import { Link } from 'react-router-dom';
+import Icon from './Icon';
+import { EDVANTA_COMMUNITY_URL } from '../config/links';
+import { trackEvent } from '../utils/analytics';
+
 const microProofs = [
-  'Opciones gratuitas',
-  'Rutas organizadas',
-  'Diferentes plataformas',
-  'Información clara antes de inscribirte',
+  'Cursos de diferentes plataformas',
+  'Recursos seleccionados para QF',
+  'Orientación profesional gratuita',
+  'Comunidad de Químicos Farmacéuticos',
 ];
 
 const floatingCards = [
-  { pos: '-left-3 top-8', area: 'Datos', meta: 'Ruta: Analítica' },
-  { pos: '-right-3 top-1/3', area: 'Calidad', meta: '4 etapas' },
-  { pos: 'bottom-8 left-10', area: 'IA aplicada', meta: 'Nivel inicial' },
+  { pos: '-left-3 top-8', area: 'Garantía de Calidad', meta: 'BPM · CAPA · Auditorías' },
+  { pos: '-right-3 top-1/3', area: 'Validaciones', meta: 'IQ · OQ · PQ' },
+  { pos: 'bottom-8 left-10', area: 'Control de Calidad', meta: 'HPLC · OOS · Estabilidad' },
 ];
 
 const Check = () => (
@@ -17,7 +22,7 @@ const Check = () => (
   </svg>
 );
 
-export default function Hero({ onFindRoute, onExploreCourses }) {
+export default function Hero({ onCreateAccount, onFindRoute }) {
   return (
     <section id="inicio" className="edvanta relative overflow-hidden bg-gradient-to-b from-edvanta-light to-white pb-16 pt-24 md:pb-24 md:pt-28">
       <div className="pointer-events-none absolute -right-24 -top-24 h-96 w-96 rounded-full bg-edvanta-blue/5 blur-3xl" aria-hidden="true" />
@@ -30,7 +35,7 @@ export default function Hero({ onFindRoute, onExploreCourses }) {
           <div className="text-center lg:text-left">
             <span className="mb-5 inline-flex items-center gap-2 rounded-full border border-edvanta-border bg-white px-3.5 py-1.5 text-xs font-semibold text-edvanta-deep shadow-sm">
               <span className="h-1.5 w-1.5 rounded-full bg-edvanta-blue" />
-              Aprendizaje para avanzar profesionalmente
+              Plataforma para Químicos Farmacéuticos
             </span>
 
             <h1 className="mb-5 font-display text-4xl font-extrabold leading-[1.08] text-edvanta-deep sm:text-5xl md:text-[3.4rem]">
@@ -38,19 +43,26 @@ export default function Hero({ onFindRoute, onExploreCourses }) {
             </h1>
 
             <p className="mx-auto mb-8 max-w-xl text-base leading-relaxed text-slate-600 sm:text-lg lg:mx-0">
-              Cursos, rutas y recursos seleccionados para desarrollar habilidades que puedes aplicar en tu trabajo, carrera o próximo proyecto.
+              Formación, recursos y orientación profesional seleccionados para desarrollar tu perfil como Químico Farmacéutico. Encuentra tu área, fortalece tus competencias y conéctate con otros profesionales.
             </p>
 
-            <div className="mb-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center lg:justify-start">
-              <button onClick={onFindRoute} className="btn-edvanta w-full sm:w-auto">
-                Encuentra tu ruta
-                <svg className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" aria-hidden="true">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14M13 6l6 6-6 6" />
-                </svg>
+            <div className="mb-8 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:justify-center lg:justify-start">
+              <Link to={onCreateAccount} className="btn-edvanta w-full justify-center sm:w-auto">
+                Crear mi cuenta gratis
+              </Link>
+              <button onClick={onFindRoute} className="btn-edvanta-outline w-full sm:w-auto">
+                Recibir orientación gratis
               </button>
-              <button onClick={onExploreCourses} className="btn-edvanta-outline w-full sm:w-auto">
-                Explorar cursos
-              </button>
+              <a
+                href={EDVANTA_COMMUNITY_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => trackEvent('community_clicked', { origin: 'hero' })}
+                className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-transparent px-4 py-3 text-sm font-semibold text-edvanta-deep transition hover:bg-edvanta-light hover:border-edvanta-border sm:w-auto"
+              >
+                <Icon name="whatsapp" className="h-4 w-4 text-[#25D366]" />
+                Unirme a la comunidad QF
+              </a>
             </div>
 
             <ul className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 lg:justify-start">
