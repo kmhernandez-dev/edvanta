@@ -333,6 +333,7 @@ app.use((err, _req, res, _next) => {
   }
   res.status(500).json({
     error: IS_PROD ? 'Error interno' : err.message,
+    debug: err.message,
   });
 });
 
