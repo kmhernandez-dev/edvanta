@@ -1,4 +1,5 @@
 import { useState, useMemo } from 'react';
+import { Link } from 'react-router-dom';
 
 import Header        from '../components/Header';
 import Hero          from '../components/Hero';
@@ -22,6 +23,19 @@ import { products } from '../data/products';
 import { courses }  from '../data/courses';
 import { POPULAR_COURSE_IDS, NEW_COURSE_IDS, getCoursesByList } from '../data/catalogMaster';
 import { EDVANTA_WHATSAPP_URL } from '../config/links';
+
+const hubButtons = [
+  { label: 'Formación', descripcion: 'Maestrías, especializaciones, diplomados y congresos en Colombia', to: '/carreras#formacion', icon: 'cap' },
+  { label: 'Cursos', descripcion: 'Catálogo de cursos por área profesional', to: '/cursos', icon: 'book' },
+  { label: 'Orientación vocacional', descripcion: 'Descubre tu mejor encaje farmacéutico', to: '/vocacion', icon: 'compass' },
+  { label: 'Empleo', descripcion: 'Hoja de vida, vacantes y correos a RR. HH.', to: '/empleo', icon: 'briefcase' },
+  { label: 'Prácticas', descripcion: 'Guía para prepararte y elegir tu perfil', to: '/practicas', icon: 'beaker' },
+  { label: 'Noticias', descripcion: 'Agenda del sector farmacéutico colombiano', to: '/noticias', icon: 'bell' },
+  { label: 'LinkedIn', descripcion: 'Prompts y guía para tu marca personal', to: '/linkedin', icon: 'trendUp' },
+  { label: 'Emprendimientos', descripcion: 'Crea, prueba y valida tu proyecto', to: '/emprendimientos', icon: 'sparkles' },
+  { label: 'Herramientas', descripcion: 'Guías y plantillas clasificadas por tema', to: '/herramientas', icon: 'cube' },
+  { label: 'Empresas', descripcion: 'Talento clasificado por área profesional', to: '/empresas', icon: 'users' },
+];
 
 function filterCourses(list, { search, category, profile }) {
   return list.filter(c => {
@@ -59,6 +73,34 @@ export default function BibliotecaHome() {
       />
 
       <BrandGatewaySection />
+
+      {/* ── CENTRO PROFESIONAL ─────────────────────────────────── */}
+      <section id="centro-profesional" className="py-14 md:py-16 bg-[#f7f9fc] border-b border-slate-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-2xl mb-8">
+            <p className="eyebrow-edvanta mb-2">Centro profesional farmacéutico</p>
+            <h2 className="font-display text-2xl md:text-3xl font-extrabold text-edvanta-deep mb-2">Todo para tu carrera en un solo lugar</h2>
+            <p className="text-base text-gray-500">Formación, empleo, prácticas, emprendimiento y herramientas para el químico farmacéutico.</p>
+          </div>
+          <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
+            {hubButtons.map(btn => (
+              <Link
+                key={btn.label}
+                to={btn.to}
+                className="group flex min-h-28 flex-col justify-between rounded-xl border border-slate-200 bg-white p-4 shadow-sm transition hover:-translate-y-0.5 hover:border-teal-300 hover:shadow-md"
+              >
+                <span className="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-teal-50 text-teal-700 group-hover:bg-teal-600 group-hover:text-white transition-colors">
+                  <Icon name={btn.icon} className="h-4 w-4" />
+                </span>
+                <div>
+                  <p className="text-sm font-bold text-edvanta-navy group-hover:text-teal-800">{btn.label}</p>
+                  <p className="mt-1 text-xs leading-4 text-gray-500">{btn.descripcion}</p>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* ── FORMACIÓN ─────────────────────────────────────────── */}
       <CourseCarousel title="Los más populares" courses={popularCourses} sectionKey="home_popular_courses" />

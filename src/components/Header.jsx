@@ -60,7 +60,6 @@ const mainLinks = [
   { label: 'Más', menu: masMenu },
   { label: 'Comunidad', external: EDVANTA_COMMUNITY_URL, event: 'community_clicked' },
 ];
-
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -185,7 +184,7 @@ export default function Header() {
           </Link>
 
           {/* Desktop nav */}
-          <nav className="hidden 2xl:flex items-center gap-0.5" role="navigation" aria-label="Navegación principal">
+          <nav className="hidden xl:flex items-center gap-0.5" role="navigation" aria-label="Navegación principal">
             {mainLinks.map(link => {
               if (link.menu) {
                 const isOpen = openMenu === link.label;
@@ -197,7 +196,7 @@ export default function Header() {
                       onMouseEnter={() => setOpenMenu(link.label)}
                       aria-expanded={isOpen}
                       aria-haspopup="true"
-                      className={`inline-flex items-center gap-1 px-2.5 py-1.5 text-sm rounded-lg transition-colors duration-150 font-medium whitespace-nowrap ${
+                      className={`inline-flex items-center gap-0.5 px-2 py-1.5 text-[13px] rounded-lg transition-colors duration-150 font-medium whitespace-nowrap ${
                         isOpen
                           ? 'text-teal-700 bg-teal-50'
                           : 'text-gray-600 hover:text-navy-900 hover:bg-gray-50'
@@ -249,7 +248,7 @@ export default function Header() {
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={() => { closeAll(); trackEvent(link.event || 'community_clicked', { origin: 'header' }); }}
-                    className="px-2.5 py-1.5 text-sm rounded-lg transition-colors duration-150 font-medium whitespace-nowrap text-gray-600 hover:text-navy-900 hover:bg-gray-50"
+                    className="px-2 py-1.5 text-[13px] rounded-lg transition-colors duration-150 font-medium whitespace-nowrap text-gray-600 hover:text-navy-900 hover:bg-gray-50"
                   >
                     {link.label}
                   </a>
@@ -261,7 +260,7 @@ export default function Header() {
                   key={link.label}
                   to={link.to}
                   onClick={link.to.startsWith('/#') ? (e) => handleHashLink(e, link.to) : closeAll}
-                  className={`px-2.5 py-1.5 text-sm rounded-lg transition-colors duration-150 font-medium whitespace-nowrap ${
+                  className={`px-2 py-1.5 text-[13px] rounded-lg transition-colors duration-150 font-medium whitespace-nowrap ${
                     isActive(link.to)
                       ? 'text-teal-700 bg-teal-50'
                       : 'text-gray-600 hover:text-navy-900 hover:bg-gray-50'
@@ -280,7 +279,7 @@ export default function Header() {
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => trackEvent('community_clicked', { origin: 'header' })}
-              className="hidden h-10 items-center gap-1.5 rounded-lg px-2.5 text-sm font-medium text-gray-600 transition-colors hover:bg-gray-50 hover:text-navy-900 sm:inline-flex 2xl:hidden"
+              className="hidden h-10 items-center gap-1.5 rounded-lg px-2.5 text-sm font-medium text-gray-600 transition-colors hover:bg-gray-50 hover:text-navy-900 sm:inline-flex xl:hidden"
               aria-label="Comunidad de Químicos Farmacéuticos en WhatsApp"
             >
               <Icon name="whatsapp" className="h-4 w-4 text-[#25D366]" />
@@ -324,7 +323,7 @@ export default function Header() {
             {/* Mobile hamburger */}
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
-              className="2xl:hidden p-2 rounded-lg text-gray-600 hover:bg-gray-100 transition-colors"
+              className="xl:hidden p-2 rounded-lg text-gray-600 hover:bg-gray-100 transition-colors"
               aria-label={mobileOpen ? 'Cerrar menú' : 'Abrir menú'}
               aria-expanded={mobileOpen}
             >
@@ -344,7 +343,7 @@ export default function Header() {
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <div className="2xl:hidden fixed inset-x-0 top-16 bottom-0 bg-white z-40 overflow-y-auto">
+        <div className="xl:hidden fixed inset-x-0 top-16 bottom-0 bg-white z-40 overflow-y-auto">
           <nav className="px-4 py-3 space-y-1" role="navigation" aria-label="Menú móvil">
             {mainLinks.map(link => {
               if (link.menu) {
