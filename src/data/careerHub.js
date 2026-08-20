@@ -194,6 +194,52 @@ export const diplomadosColombia = [
   },
 ];
 
+// ─── Central de mezclas, BPE y farmacia oncológica ─────────
+export const formacionCentralMezclas = [
+  {
+    id: 'udemy-iv-certification',
+    nombre: 'IV Certification: Compounding Sterile Preparations Techniques',
+    organizador: 'Udemy',
+    tipo: 'privada',
+    modalidad: 'Virtual',
+    resumen: 'Curso práctico enfocado en preparaciones estériles y técnicas de compounding para profesionales de central de mezclas.',
+    url: 'https://trk.udemy.com/3kMPrM',
+    areas: ['Central de mezclas', 'Preparaciones estériles', 'Compounding'],
+  },
+  {
+    id: 'pef-direccion-centrales-mezclas',
+    nombre: 'Dirección de Centrales de Mezclas bajo principios BPE',
+    organizador: 'PEF Colombia',
+    tipo: 'privada',
+    modalidad: 'Virtual',
+    resumen: 'Formación enfocada en la dirección de centrales de mezclas bajo Buenas Prácticas de Elaboración (BPE).',
+    url: 'https://www.pef.com.co/buenas-practicas-de-elaboracion/',
+    areas: ['Central de mezclas', 'BPE', 'Dirección'],
+  },
+  {
+    id: 'elbosque-farmacia-oncologica',
+    nombre: 'Diplomado en Farmacia Oncológica para Químicos Farmacéuticos',
+    universidad: 'Universidad El Bosque',
+    tipo: 'privada',
+    modalidad: 'Presencial / Virtual',
+    ciudad: 'Bogotá',
+    resumen: 'Diplomado que incluye Central de Mezclas y BPE aplicadas a medicamentos oncológicos.',
+    url: 'https://www.unbosque.edu.co/educacion-continua/diplomado/farmacia-oncologica-quimicos-farmaceuticos',
+    areas: ['Farmacia oncológica', 'Central de mezclas', 'BPE'],
+  },
+  {
+    id: 'icesi-farmacoterapia-oncologica',
+    nombre: 'Certificación en Farmacoterapia Oncológica',
+    universidad: 'Universidad Icesi',
+    tipo: 'privada',
+    modalidad: 'Virtual',
+    ciudad: 'Cali',
+    resumen: 'Certificación que incluye BPE, preparaciones magistrales estériles y manejo de medicamentos oncológicos.',
+    url: 'https://www.icesi.edu.co/programas/educacion-continua/certificacion-farmacoterapia-oncologica/',
+    areas: ['Farmacoterapia oncológica', 'BPE', 'Preparaciones estériles'],
+  },
+];
+
 export const congresosColombia = [
   {
     id: 'invima-eventos',

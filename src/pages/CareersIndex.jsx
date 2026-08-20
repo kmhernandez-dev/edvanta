@@ -9,7 +9,7 @@ import Footer from '../components/Footer';
 import { updatePageSeo } from '../utils/seo';
 import {
   maestriasColombia, especializacionesColombia, diplomadosColombia,
-  congresosColombia, webinarsColombia, areasCursosHub,
+  congresosColombia, webinarsColombia, areasCursosHub, formacionCentralMezclas,
 } from '../data/careerHub';
 
 const seoDescription = 'Carreras, maestrías, especializaciones, diplomados, empleo, prácticas y herramientas para el profesional farmacéutico en Colombia.';
@@ -258,6 +258,12 @@ export default function CareersIndex() {
                 <div className="mt-4 grid gap-4 sm:grid-cols-2">
                   {webinarsColombia.map(item => <FormItemCard key={item.id} item={item} badge="Webinar / Virtual" />)}
                 </div>
+              </div>
+            </div>
+            <div>
+              <div className="flex items-center gap-2 text-sm font-bold text-teal-700"><FlaskConical className="h-4 w-4" aria-hidden="true" />Central de mezclas, BPE y farmacia oncológica</div>
+              <div className="mt-4 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+                {formacionCentralMezclas.map(item => <FormItemCard key={item.id} item={item} badge="Central de mezclas" />)}
               </div>
             </div>
           </div>
