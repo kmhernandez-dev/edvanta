@@ -230,18 +230,19 @@ export default function EmpleoPage() {
       <Header />
       <main className="min-h-screen bg-[#f7f9fc] pt-16">
         {/* Hero */}
-        <section className="bg-gradient-to-br from-amber-500 via-orange-600 to-rose-600 py-14 lg:py-16">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <section className="relative overflow-hidden bg-gradient-to-br from-edvanta-deep to-edvanta-blue py-14 lg:py-16">
+          <div className="bg-dots pointer-events-none absolute inset-0 opacity-20" aria-hidden="true" />
+          <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <Link to="/carreras" className="inline-flex items-center gap-2 text-sm font-bold text-white/80 transition hover:text-white">
               <ArrowLeft className="h-4 w-4" aria-hidden="true" /> Volver a Carreras
             </Link>
             <div className="mt-6 max-w-3xl">
-              <div className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-1.5 text-xs font-bold uppercase tracking-wide text-amber-100">
+              <div className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-1.5 text-xs font-bold uppercase tracking-wide text-edvanta-light">
                 <BriefcaseBusiness className="h-4 w-4" aria-hidden="true" /> Centro de empleo
               </div>
-              <h1 className="mt-4 text-4xl font-bold leading-tight text-white sm:text-5xl">Empleo farmacéutico: de tu hoja de vida a tu vacante</h1>
-              <p className="mt-4 max-w-2xl text-lg leading-8 text-amber-50">
-                Crea tu hoja de vida con formato ATS 2026, recibe tu puntaje y recomendaciones de la IA, adáptala al cargo,
+              <h1 className="mt-4 font-display text-4xl font-extrabold leading-tight text-white sm:text-5xl">Empleo farmacéutico: de tu hoja de vida a tu vacante</h1>
+              <p className="mt-4 max-w-2xl text-lg leading-8 text-edvanta-light">
+                Crea tu hoja de vida con formato ATS 2026, recibe tu puntaje y recomendaciones, adáptala al cargo,
                 escribe correos profesionales y consulta el banco de ofertas de la comunidad.
               </p>
             </div>

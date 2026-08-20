@@ -1,13 +1,22 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, ArrowRight, Sparkles, Wrench } from 'lucide-react';
+import {
+  ArrowLeft, ArrowRight, Sparkles, Wrench,
+  FileText, ScanSearch, Mail, BriefcaseBusiness, Compass, Share2, ClipboardList, Rocket, Building2,
+} from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { apiUrl } from '../config/api';
 import { updatePageSeo } from '../utils/seo';
 import { clasificacionHerramientas } from '../data/careerHub';
+import { HERRAMIENTAS } from '../data/edvanta/herramientas';
 import { useAuth } from '../context/AuthContext';
 import { useProfessional } from '../context/ProfessionalContext';
+
+const TOOL_ICONS = {
+  file: FileText, scan: ScanSearch, mail: Mail, briefcase: BriefcaseBusiness,
+  compass: Compass, linkedin: Share2, clipboard: ClipboardList, rocket: Rocket, building: Building2,
+};
 
 const resourceTypeLabels = {
   article: 'Artículo',
@@ -56,27 +65,51 @@ export default function HerramientasPage() {
     <>
       <Header />
       <main className="min-h-screen bg-[#f7f9fc] pt-16">
-        <section className="bg-gradient-to-br from-slate-600 via-slate-700 to-slate-900 py-14 lg:py-16">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <Link to="/carreras" className="inline-flex items-center gap-2 text-sm font-bold text-white/80 transition hover:text-white">
+        <section className="relative overflow-hidden border-b border-edvanta-border bg-gradient-to-b from-white to-edvanta-light/50">
+          <div className="bg-dots pointer-events-none absolute inset-0 opacity-60" aria-hidden="true" />
+          <div className="relative mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8 lg:py-16">
+            <Link to="/carreras" className="inline-flex items-center gap-2 text-sm font-bold text-edvanta-blue transition hover:text-edvanta-deep">
               <ArrowLeft className="h-4 w-4" aria-hidden="true" /> Volver a Carreras
             </Link>
             <div className="mt-6 flex max-w-3xl items-start gap-4">
-              <span className="inline-flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-white/15 text-white backdrop-blur">
+              <span className="inline-flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-edvanta-light text-edvanta-blue">
                 <Wrench className="h-7 w-7" aria-hidden="true" />
               </span>
               <div>
-                <p className="text-sm font-bold uppercase tracking-wide text-slate-300">Biblioteca de herramientas</p>
-                <h1 className="mt-2 text-4xl font-bold leading-tight text-white sm:text-5xl">Herramientas profesionales, clasificadas por tema</h1>
-                <p className="mt-4 max-w-2xl text-lg leading-8 text-slate-300">
-                  Guías, plantillas y recursos organizados para que llegues directo a lo que necesitas: carrera, empleo, marca personal, emprendimiento y talento.
+                <p className="eyebrow-edvanta">Centro de herramientas</p>
+                <h1 className="mt-2 font-display text-4xl font-extrabold leading-tight text-edvanta-deep sm:text-5xl">Herramientas para construir tu carrera farmacéutica</h1>
+                <p className="mt-4 max-w-2xl text-lg leading-8 text-slate-600">
+                  Cada herramienta tiene su propia página: entra, entiende qué resuelve y empieza. Carrera, empleo, marca personal, emprendimiento y talento.
                 </p>
               </div>
             </div>
           </div>
         </section>
 
+        {/* Herramientas destacadas — landings individuales */}
         <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+          <p className="eyebrow-edvanta mb-1.5">Herramientas Edvanta</p>
+          <h2 className="font-display text-2xl font-extrabold text-edvanta-deep md:text-3xl">Elige una herramienta y empieza</h2>
+          <div className="mt-7 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {HERRAMIENTAS.map(t => {
+              const TIcon = TOOL_ICONS[t.icon] || Wrench;
+              return (
+                <Link key={t.slug} to={`/herramientas/${t.slug}`} className="card-edvanta group flex flex-col p-5">
+                  <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-edvanta-light text-edvanta-blue transition group-hover:bg-edvanta-blue group-hover:text-white">
+                    <TIcon className="h-5 w-5" aria-hidden="true" />
+                  </span>
+                  <h3 className="mt-4 text-base font-bold text-edvanta-deep group-hover:text-edvanta-blue">{t.nav}</h3>
+                  <p className="mt-1.5 line-clamp-2 flex-1 text-sm leading-6 text-slate-500">{t.tagline}</p>
+                  <span className="mt-3 inline-flex items-center gap-1 text-sm font-bold text-edvanta-blue">Ver herramienta <ArrowRight className="h-4 w-4" aria-hidden="true" /></span>
+                </Link>
+              );
+            })}
+          </div>
+        </section>
+
+        <section className="mx-auto max-w-7xl px-4 pb-12 sm:px-6 lg:px-8">
+          <p className="eyebrow-edvanta mb-1.5">Por tema</p>
+          <h2 className="mb-6 font-display text-2xl font-extrabold text-edvanta-deep md:text-3xl">Todas las herramientas y guías</h2>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {clasificacionHerramientas.map(grupo => (
               <div key={grupo.categoria} className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">

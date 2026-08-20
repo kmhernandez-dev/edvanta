@@ -5,6 +5,7 @@ import { EDVANTA_WHATSAPP_URL, EDVANTA_COMMUNITY_URL } from '../config/links';
 import { useCart } from '../context/CartContext';
 import { useAuth } from '../context/AuthContext';
 import Icon from './Icon';
+import GlobalSearch from './edvanta/GlobalSearch';
 import { trackEvent } from '../utils/analytics';
 
 const logoVersion = '20260716-edvanta-logo';
@@ -274,6 +275,8 @@ export default function Header() {
 
           {/* Right CTAs */}
           <div className="flex items-center gap-2">
+            <GlobalSearch className="h-10" />
+
             <a
               href={EDVANTA_COMMUNITY_URL}
               target="_blank"
