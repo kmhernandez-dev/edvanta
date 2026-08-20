@@ -16,6 +16,8 @@ import { authMiddleware } from '../lib/auth.js';
 
 const router = Router();
 
+router.use(authMiddleware);
+
 const MAX_TEXT = 4000;
 const clean = (value, max = 500) => typeof value === 'string' ? value.trim().slice(0, max) : '';
 
