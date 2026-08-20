@@ -50,7 +50,7 @@ export default function BibliotecaHome() {
   const openOrientacion = () => setOrientacionOpen(true);
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-edvanta-home">
       <Header />
 
       {/* ── 1. HERO ────────────────────────────────────────────── */}
@@ -70,7 +70,7 @@ export default function BibliotecaHome() {
       <LearningPathForm />
 
       {/* ── 2. CURSOS GRATIS ───────────────────────────────────── */}
-      <section id="catalogo-cursos" className="py-16 md:py-20 bg-white">
+      <section id="catalogo-cursos" className="bg-white/60 py-16 md:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-10">
             <p className="eyebrow-edvanta mb-2">Catálogo extendido</p>
@@ -108,7 +108,7 @@ export default function BibliotecaHome() {
       </section>
 
       {/* ── 3. HERRAMIENTAS COMPLEMENTARIAS ────────────────────── */}
-      <section id="herramientas" className="py-16 md:py-20 bg-slate-50">
+      <section id="herramientas" className="bg-edvanta-tint py-16 md:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-2xl mb-10">
             <p className="eyebrow-edvanta mb-2">Para aplicar lo aprendido</p>

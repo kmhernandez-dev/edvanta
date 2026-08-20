@@ -7,7 +7,7 @@ const steps = [
 
 export default function SelectionMethod() {
   return (
-    <section id="como-seleccionamos" className="edvanta bg-white py-16 md:py-24">
+      <section id="como-seleccionamos" className="edvanta bg-white/60 py-16 md:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto mb-12 max-w-2xl text-center">
           <p className="eyebrow-edvanta mb-2">Cómo seleccionamos</p>

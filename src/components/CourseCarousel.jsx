@@ -43,7 +43,7 @@ export default function CourseCarousel({ title, courses, sectionKey }) {
   };
 
   return (
-    <section className="bg-white py-14 md:py-16">
+    <section className="py-14 md:py-16">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-8 flex items-end justify-between gap-4">
           <div>

@@ -113,6 +113,23 @@
     background-image: radial-gradient(circle, rgba(20, 184, 166, 0.12) 1px, transparent 1px);
     background-size: 22px 22px;
   }
+
+  /* Fondo Edvanta: base suave con gradientes radiales muy tenues (azul/teal) */
+  .bg-edvanta-home {
+    background-color: #f7f9fc;
+    background-image:
+      radial-gradient(ellipse 60% 45% at 12% 0%, rgba(53, 120, 229, 0.07), transparent 70%),
+      radial-gradient(ellipse 50% 40% at 88% 12%, rgba(20, 184, 166, 0.06), transparent 70%),
+      radial-gradient(ellipse 45% 35% at 75% 55%, rgba(53, 120, 229, 0.05), transparent 70%);
+  }
+
+  /* Tinte de marca para secciones sobre el fondo del home */
+  .bg-edvanta-tint {
+    background-color: #f3f7fd;
+    background-image:
+      radial-gradient(ellipse 50% 40% at 8% 50%, rgba(53, 120, 229, 0.06), transparent 70%),
+      radial-gradient(ellipse 40% 35% at 92% 30%, rgba(20, 184, 166, 0.05), transparent 70%);
+  }
 }
 
 /* ─── Keyframe animations ──────────────────────────────────── */

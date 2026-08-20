@@ -23,7 +23,7 @@ const gateways = [
 
 export default function BrandGatewaySection() {
   return (
-    <section className="bg-white py-4 md:py-6">
+    <section className="py-4 md:py-6">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid gap-3 md:grid-cols-2">
           {gateways.map((item) => (
