@@ -14,6 +14,9 @@ const LegalPage = lazy(() => import('./pages/LegalPage'));
 const AdminOrders = lazy(() => import('./pages/AdminOrders'));
 const AdminAcademia = lazy(() => import('./pages/AdminAcademia'));
 const AdminTracking = lazy(() => import('./pages/AdminTracking'));
+const AdminCommunityPage = lazy(() => import('./pages/AdminCommunityPage'));
+const AdminEdvantaContent = lazy(() => import('./pages/AdminEdvantaContent'));
+const AdminIndex = lazy(() => import('./pages/AdminIndex'));
 const ArticuloPage = lazy(() => import('./pages/ArticuloPage'));
 const ArticulosIndex = lazy(() => import('./pages/ArticulosIndex'));
 const RutaProfesionalPage = lazy(() => import('./pages/RutaProfesionalPage'));
@@ -135,7 +138,12 @@ export default function App() {
         } />
 
         {/* Panel administrativo (solo role = admin) */}
-        <Route path="/admin/*" element={
+        <Route path="/admin" element={
+          <Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-[#F6F7F8] text-sm font-semibold text-slate-600">Cargando panel...</div>}>
+            <AdminPage />
+          </Suspense>
+        } />
+        <Route path="/admin/users/:id" element={
           <Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-[#F6F7F8] text-sm font-semibold text-slate-600">Cargando panel...</div>}>
             <AdminPage />
           </Suspense>
@@ -194,6 +202,9 @@ export default function App() {
         <Route path="/admin/orders" element={<AdminOrders />} />
         <Route path="/admin/academia" element={<AdminAcademia />} />
         <Route path="/admin/tracking" element={<AdminTracking />} />
+        <Route path="/admin/community" element={<AdminCommunityPage />} />
+        <Route path="/admin/edvanta" element={<AdminEdvantaContent />} />
+        <Route path="/admin-paneles" element={<AdminIndex />} />
 
         {/* Páginas legales */}
         <Route path="/privacidad"      element={<LegalPage doc="privacidad" />} />
