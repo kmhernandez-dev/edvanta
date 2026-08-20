@@ -47,6 +47,14 @@ const ProfessionalProfilePage = lazy(() => import('./pages/ProfessionalProfilePa
 const EcosystemDirectory = lazy(() => import('./pages/EcosystemDirectory'));
 const ConnectHub = lazy(() => import('./pages/ConnectHub'));
 const ResourcesHub = lazy(() => import('./pages/ResourcesHub'));
+const VocacionPage = lazy(() => import('./pages/VocacionPage'));
+const EmpleoPage = lazy(() => import('./pages/EmpleoPage'));
+const PracticasPage = lazy(() => import('./pages/PracticasPage'));
+const NoticiasPage = lazy(() => import('./pages/NoticiasPage'));
+const LinkedinPage = lazy(() => import('./pages/LinkedinPage'));
+const EmprendimientosPage = lazy(() => import('./pages/EmprendimientosPage'));
+const HerramientasPage = lazy(() => import('./pages/HerramientasPage'));
+const EmpresasPage = lazy(() => import('./pages/EmpresasPage'));
 
 function RouteFallback() {
   return (
@@ -158,8 +166,15 @@ export default function App() {
         <Route path="/rutas/:slug" element={<RutaProfesionalPage />} />
         <Route path="/carreras" element={<CareersIndex />} />
         <Route path="/carreras/:slug" element={<CareerPage />} />
+        <Route path="/vocacion" element={<Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-[#f7f9fc] text-sm font-semibold text-slate-600">Cargando orientación vocacional...</div>}><VocacionPage /></Suspense>} />
+        <Route path="/empleo" element={<Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-[#f7f9fc] text-sm font-semibold text-slate-600">Cargando centro de empleo...</div>}><EmpleoPage /></Suspense>} />
+        <Route path="/practicas" element={<Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-[#f7f9fc] text-sm font-semibold text-slate-600">Cargando guía de prácticas...</div>}><PracticasPage /></Suspense>} />
+        <Route path="/noticias" element={<Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-[#f7f9fc] text-sm font-semibold text-slate-600">Cargando noticias...</div>}><NoticiasPage /></Suspense>} />
+        <Route path="/linkedin" element={<Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-[#f7f9fc] text-sm font-semibold text-slate-600">Cargando guía de LinkedIn...</div>}><LinkedinPage /></Suspense>} />
+        <Route path="/emprendimientos" element={<Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-[#f7f9fc] text-sm font-semibold text-slate-600">Cargando emprendimientos...</div>}><EmprendimientosPage /></Suspense>} />
+        <Route path="/herramientas" element={<Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-[#f7f9fc] text-sm font-semibold text-slate-600">Cargando herramientas...</div>}><HerramientasPage /></Suspense>} />
+        <Route path="/empresas" element={<Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-[#f7f9fc] text-sm font-semibold text-slate-600">Cargando talento profesional...</div>}><EmpresasPage /></Suspense>} />
         <Route path="/oportunidades" element={<Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-[#f7f9fc] text-sm font-semibold text-slate-600">Cargando oportunidades...</div>}><EcosystemDirectory kind="opportunities" /></Suspense>} />
-        <Route path="/empresas" element={<Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-[#f7f9fc] text-sm font-semibold text-slate-600">Cargando empresas...</div>}><EcosystemDirectory kind="companies" /></Suspense>} />
         <Route path="/proyectos" element={<Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-[#f7f9fc] text-sm font-semibold text-slate-600">Cargando proyectos...</div>}><EcosystemDirectory kind="projects" /></Suspense>} />
         <Route path="/certificaciones" element={<Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-[#f7f9fc] text-sm font-semibold text-slate-600">Cargando certificaciones...</div>}><EcosystemDirectory kind="certifications" /></Suspense>} />
         <Route path="/conecta" element={<Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-[#f7f9fc] text-sm font-semibold text-slate-600">Cargando espacios...</div>}><ConnectHub /></Suspense>} />

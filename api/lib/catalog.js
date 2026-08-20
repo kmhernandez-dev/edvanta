@@ -24,6 +24,10 @@ export const CATALOG = {
   'indicadores-dashboards':   { name: 'Suite de Indicadores y Dashboards Pro',              price: 39900 },
   'empleabilidad-farmasalud': { name: 'Kit de Empleabilidad FarmaSalud',                    price: 24900 },
 
+  // ── Marca personal ────────────────────────────────────────
+  // Guía "cómo generar ingresos con LinkedIn" ($10 USD ≈ COP).
+  'linkedin-marca-personal':  { name: 'Guía: cómo generar ingresos con LinkedIn y tu marca personal', price: 39900 },
+
   // ── Ebooks Feliz Sin Tiroides ────────────────────────────
   'fst-coleccion-sana':         { name: 'Colección SANA TU TIROIDES desde 0',              price: 79900 },
   'fst-comer-hipotiroidismo':   { name: 'Aprende a Comer con Hipotiroidismo',              price: 34900 },

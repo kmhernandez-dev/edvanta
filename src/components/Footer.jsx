@@ -4,15 +4,18 @@ import { EDVANTA_WHATSAPP_URL, EDVANTA_EMAIL, EDVANTA_LINKEDIN_URL, EDVANTA_BRAN
 const quickLinks = [
   { label: 'Mi panel profesional', href: '/app' },
   { label: 'Inicio', href: '/#inicio' },
-  { label: 'Aprende', href: '/aprende' },
+  { label: 'Carreras', href: '/carreras' },
+  { label: 'Formación en Colombia', href: '/carreras#formacion' },
   { label: 'Cursos', href: '/cursos' },
-  { label: 'Rutas profesionales', href: '/rutas' },
-  { label: 'Competencias', href: '/competencias' },
-  { label: 'Oportunidades', href: '/oportunidades' },
-  { label: 'Conecta', href: '/conecta' },
+  { label: 'Empleo', href: '/empleo' },
+  { label: 'Prácticas', href: '/practicas' },
+  { label: 'Orientación vocacional', href: '/vocacion' },
+  { label: 'LinkedIn', href: '/linkedin' },
+  { label: 'Emprendimientos', href: '/emprendimientos' },
+  { label: 'Noticias', href: '/noticias' },
+  { label: 'Herramientas', href: '/herramientas' },
   { label: 'Empresas', href: '/empresas' },
   { label: 'Artículos', href: '/articulos' },
-  { label: 'Recursos', href: '/recursos' },
 ];
 
 const logoVersion = '20260716-edvanta-logo';
@@ -51,7 +54,7 @@ export default function Footer() {
               />
             </div>
             <p className="text-sm text-gray-500 leading-relaxed mb-4">
-              Rutas de aprendizaje, cursos recomendados y recursos profesionales para fortalecer tu perfil.
+              Centro profesional farmacéutico: formación, empleo, prácticas, emprendimiento y herramientas para tu carrera en Colombia.
             </p>
             <div className="flex gap-2">
               {EDVANTA_LINKEDIN_URL && (

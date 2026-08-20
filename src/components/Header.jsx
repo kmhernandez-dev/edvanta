@@ -9,62 +9,56 @@ import { trackEvent } from '../utils/analytics';
 
 const logoVersion = '20260716-edvanta-logo';
 
-const aprendeMenu = [
-  { label: 'Centro Aprende', to: '/aprende' },
-  { label: 'Todos los cursos', to: '/cursos' },
-  { label: 'Rutas profesionales', to: '/rutas' },
-  { label: 'Competencias', to: '/competencias' },
-  { label: 'Certificaciones', to: '/certificaciones' },
-  { label: 'Explorar carreras', to: '/carreras' },
+const carrerasMenu = [
+  { label: 'Centro de carreras', to: '/carreras' },
+  { label: 'Maestrías en Colombia', to: '/carreras#formacion' },
+  { label: 'Especializaciones', to: '/carreras#formacion' },
+  { label: 'Diplomados', to: '/carreras#formacion' },
+  { label: 'Congresos y webinars', to: '/carreras#formacion' },
+  { label: 'Cursos por área', to: '/carreras#cursos' },
   { type: 'separator' },
-  { label: 'Cursos gratuitos', to: '/cursos-gratis' },
-  { label: 'Coursera', to: '/cursos/coursera' },
-  { label: 'Udemy', to: '/cursos/udemy' },
-  { label: 'Edutin Academy', to: '/cursos/edutin' },
+  { label: 'Orientación vocacional', to: '/vocacion' },
 ];
 
-const articulosMenu = [
-  { label: 'Empleabilidad', to: '/articulos?categoria=empleabilidad' },
-  { label: 'Formación profesional', to: '/articulos?categoria=formacion-profesional' },
-  { label: 'Gestión de calidad', to: '/articulos?categoria=gestion-de-calidad' },
-  { label: 'Tecnología', to: '/articulos?categoria=tecnologia' },
-  { label: 'Salud', to: '/articulos?categoria=salud' },
-];
-
-const recursosMenu = [
-  { label: 'Biblioteca de recursos', to: '/recursos' },
-  { label: 'Artículos', to: '/articulos' },
-  { label: 'Guías', to: '/recursos?tipo=guide' },
-  { label: 'Plantillas', to: '/#herramientas' },
-  { label: 'Herramientas', to: '/#herramientas' },
-  { label: 'Regulación', to: '/recursos?tipo=regulation' },
-];
-
-const conectaMenu = [
-  { label: 'Centro Conecta', to: '/conecta' },
-  { label: 'Proyectos', to: '/proyectos' },
-  { label: 'Grupos de estudio', to: '/conecta?tipo=study' },
-  { label: 'Investigación', to: '/conecta?tipo=research' },
-  { label: 'Mentoría', to: '/conecta?tipo=mentoring' },
+const empleoMenu = [
+  { label: 'Centro de empleo', to: '/empleo' },
+  { label: 'Crear hoja de vida', to: '/empleo#adaptador' },
+  { label: 'Plantillas de correo a RR. HH.', to: '/empleo#correos' },
+  { label: 'Banco de vacantes', to: '/empleo#vacantes' },
+  { label: 'Guía de prácticas', to: '/practicas' },
 ];
 
 const ecosistemaMenu = [
-  { label: 'Acerca de Edvanta', to: '/#contacto' },
   { label: 'Feliz Sin Tiroides', to: '/feliz-sin-tiroides' },
-  { label: 'FST Vida 360', to: '/vida-360' },
   { label: 'AtenFarmaClinic', to: '/atenfarmaclinic' },
 ];
 
+const herramientasMenu = [
+  { label: 'Centro de herramientas', to: '/herramientas' },
+  { label: 'Perfil profesional para empresas', to: '/empresas' },
+  { label: 'Prompts para LinkedIn', to: '/linkedin' },
+  { label: 'Guía de ingresos con tu marca (USD 10)', to: '/linkedin#ingresos' },
+  { label: 'Crea tu emprendimiento', to: '/emprendimientos' },
+  { label: 'Pruebas de productos', to: '/emprendimientos#probar' },
+  { label: 'Crea tu curso o grupo de estudio', to: '/emprendimientos#profesor' },
+  { label: 'Artículos científicos en equipo', to: '/emprendimientos#investigador' },
+  { label: 'Artículos y lecturas', to: '/articulos' },
+];
+
+const masMenu = [...ecosistemaMenu];
+
 const mainLinks = [
   { label: 'Inicio', to: '/' },
-  { label: 'Carreras', to: '/carreras' },
-  { label: 'Aprende', menu: aprendeMenu },
-  { label: 'Oportunidades', to: '/oportunidades' },
-  { label: 'Conecta', menu: conectaMenu },
-  { label: 'Recursos', menu: recursosMenu },
+  { label: 'Carreras', menu: carrerasMenu },
+  { label: 'Empleo', menu: empleoMenu },
+  { label: 'Prácticas', to: '/practicas' },
+  { label: 'LinkedIn', to: '/linkedin' },
+  { label: 'Emprende', to: '/emprendimientos' },
+  { label: 'Noticias', to: '/noticias' },
   { label: 'Empresas', to: '/empresas' },
+  { label: 'Herramientas', menu: herramientasMenu },
+  { label: 'Más', menu: masMenu },
   { label: 'Comunidad', external: EDVANTA_COMMUNITY_URL, event: 'community_clicked' },
-  { label: 'Más', menu: [...articulosMenu, { type: 'separator' }, ...ecosistemaMenu] },
 ];
 
 export default function Header() {
@@ -191,7 +185,7 @@ export default function Header() {
           </Link>
 
           {/* Desktop nav */}
-          <nav className="hidden xl:flex items-center gap-0.5" role="navigation" aria-label="Navegación principal">
+          <nav className="hidden 2xl:flex items-center gap-0.5" role="navigation" aria-label="Navegación principal">
             {mainLinks.map(link => {
               if (link.menu) {
                 const isOpen = openMenu === link.label;
@@ -286,7 +280,7 @@ export default function Header() {
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => trackEvent('community_clicked', { origin: 'header' })}
-              className="hidden h-10 items-center gap-1.5 rounded-lg px-2.5 text-sm font-medium text-gray-600 transition-colors hover:bg-gray-50 hover:text-navy-900 sm:inline-flex xl:hidden"
+              className="hidden h-10 items-center gap-1.5 rounded-lg px-2.5 text-sm font-medium text-gray-600 transition-colors hover:bg-gray-50 hover:text-navy-900 sm:inline-flex 2xl:hidden"
               aria-label="Comunidad de Químicos Farmacéuticos en WhatsApp"
             >
               <Icon name="whatsapp" className="h-4 w-4 text-[#25D366]" />
@@ -330,7 +324,7 @@ export default function Header() {
             {/* Mobile hamburger */}
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
-              className="xl:hidden p-2 rounded-lg text-gray-600 hover:bg-gray-100 transition-colors"
+              className="2xl:hidden p-2 rounded-lg text-gray-600 hover:bg-gray-100 transition-colors"
               aria-label={mobileOpen ? 'Cerrar menú' : 'Abrir menú'}
               aria-expanded={mobileOpen}
             >
@@ -350,7 +344,7 @@ export default function Header() {
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <div className="xl:hidden fixed inset-x-0 top-16 bottom-0 bg-white z-40 overflow-y-auto">
+        <div className="2xl:hidden fixed inset-x-0 top-16 bottom-0 bg-white z-40 overflow-y-auto">
           <nav className="px-4 py-3 space-y-1" role="navigation" aria-label="Menú móvil">
             {mainLinks.map(link => {
               if (link.menu) {

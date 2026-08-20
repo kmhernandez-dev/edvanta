@@ -22,6 +22,7 @@ const DOWNLOADS = {
   'calidad-clinica':         { name: 'Pack Calidad Clínica y Seguridad del Paciente',  url: DOWNLOADS_PLACEHOLDER },
   'indicadores-dashboards':  { name: 'Pack Indicadores, Dashboards y Gestión Pro',     url: DOWNLOADS_PLACEHOLDER },
   'empleabilidad-farmasalud':{ name: 'Kit Empleabilidad FarmaSalud',                   url: DOWNLOADS_PLACEHOLDER },
+  'linkedin-marca-personal':  { name: 'Guía: cómo generar ingresos con LinkedIn y tu marca personal', url: DOWNLOADS_PLACEHOLDER },
   'fst-coleccion-sana':        { name: 'Colección SANA TU TIROIDES desde 0',           url: DOWNLOADS_PLACEHOLDER },
   'fst-comer-hipotiroidismo':  { name: 'Aprende a Comer con Hipotiroidismo',           url: DOWNLOADS_PLACEHOLDER },
   'fst-dieta-antiinflamatoria':{ name: 'Dieta Antiinflamatoria y Sana tu Tiroides',    url: DOWNLOADS_PLACEHOLDER },
