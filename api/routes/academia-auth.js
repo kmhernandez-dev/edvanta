@@ -43,8 +43,8 @@ router.post('/register', async (req, res) => {
     const token = signToken(user);
     res.status(201).json({ user: publicUser(user), token });
   } catch (e) {
-    console.error('register error:', e.message, e.stack);
-    res.status(500).json({ error: 'Error al registrar', detail: e.message });
+    console.error('register error:', e.message);
+    res.status(500).json({ error: 'Error al registrar' });
   }
 });
 
@@ -64,8 +64,8 @@ router.post('/login', async (req, res) => {
     const token = signToken(user);
     res.json({ user: publicUser(user), token });
   } catch (e) {
-    console.error('login error:', e.message, e.stack);
-    res.status(500).json({ error: 'Error al iniciar sesión', detail: e.message });
+    console.error('login error:', e.message);
+    res.status(500).json({ error: 'Error al iniciar sesión' });
   }
 });
 

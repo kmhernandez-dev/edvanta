@@ -126,28 +126,12 @@ app.get('/api/health/db', async (_req, res) => {
   const t0 = Date.now();
   try {
     const r = await pool.query('SELECT 1 AS ok, NOW() AS now, current_database() AS db, version() AS v');
-    let tables = {};
-    try {
-      const t = await pool.query(`
-        SELECT to_regclass('public.academia_users') AS academia_users,
-               to_regclass('public.cv_profiles') AS cv_profiles,
-               to_regclass('public.fst_challenges') AS fst_challenges
-      `);
-      tables = t.rows[0] || {};
-      const u = await pool.query('SELECT count(*)::int AS users FROM academia_users');
-      tables.academia_users_count = u.rows[0].count;
-      const c = await pool.query('SELECT column_name FROM information_schema.columns WHERE table_name = $1 ORDER BY ordinal_position', ['academia_users']);
-      tables.academia_columns = c.rows.map(row => row.column_name).join(',');
-    } catch (e) {
-      tables = { error: e.message };
-    }
     return res.json({
       ok: true,
       latency_ms: Date.now() - t0,
       db: r.rows[0].db,
       server_version: r.rows[0].v.split(' ').slice(0, 2).join(' '),
       server_time: r.rows[0].now,
-      tables,
     });
   } catch (e) {
     console.error(JSON.stringify({ level: 'error', msg: 'DB health check failed', error: e.message, code: e.code }));
@@ -166,16 +150,6 @@ app.post('/api/mp-webhook',         mpWebhookRoute);
 app.post('/api/lead-capture',       leadCaptureRoute);
 app.post('/api/lead-events',        leadEventsRoute);
 app.get('/api/list-orders',         listOrdersRoute);
-
-// Diagnóstico temporal: probar query real de academia_users
-app.get('/api/_diag/academia', async (_req, res) => {
-  try {
-    const r = await pool.query('SELECT id, name, email, auth_provider, password_hash IS NOT NULL AS has_pw FROM academia_users ORDER BY id DESC LIMIT 3');
-    res.json({ ok: true, rows: r.rows });
-  } catch (e) {
-    res.json({ ok: false, error: e.message, code: e.code });
-  }
-});
 
 // Catálogo multi-plataforma de cursos
 app.get('/api/courses',              listCoursesRoute);
@@ -333,7 +307,6 @@ app.use((err, _req, res, _next) => {
   }
   res.status(500).json({
     error: IS_PROD ? 'Error interno' : err.message,
-    debug: err.message,
   });
 });
 
