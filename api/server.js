@@ -134,6 +134,10 @@ app.get('/api/health/db', async (_req, res) => {
                to_regclass('public.fst_challenges') AS fst_challenges
       `);
       tables = t.rows[0] || {};
+      const u = await pool.query('SELECT count(*)::int AS users FROM academia_users');
+      tables.academia_users_count = u.rows[0].count;
+      const c = await pool.query('SELECT column_name FROM information_schema.columns WHERE table_name = $1 ORDER BY ordinal_position', ['academia_users']);
+      tables.academia_columns = c.rows.map(row => row.column_name).join(',');
     } catch (e) {
       tables = { error: e.message };
     }
