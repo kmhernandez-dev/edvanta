@@ -8,7 +8,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { apiUrl } from '../config/api';
 import { updatePageSeo } from '../utils/seo';
-import { plantillasHV, plantillaCorreoRRHH, sectoresEmpleo, bolsasEmpleoOficiales } from '../data/careerHub';
+import { plantillasHV, plantillaCorreoRRHH, sectoresEmpleo, bolsasEmpleoOficiales, empresasEmpleadoras } from '../data/careerHub';
 
 const VACANTES_DEMO = [
   {
@@ -458,6 +458,40 @@ export default function EmpleoPage() {
                 </article>
               );
             })}
+          </div>
+        </section>
+
+        {/* Empresas y correos de RR.HH. vigentes */}
+        <section className="border-t border-slate-200 bg-white">
+          <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+            <div className="flex flex-wrap items-end justify-between gap-3">
+              <div>
+                <p className="text-sm font-bold uppercase tracking-wide text-amber-700">Empresas del sector</p>
+                <h2 className="mt-1 text-2xl font-bold text-[#071a4a] sm:text-3xl">Empresas y portales de recursos humanos vigentes</h2>
+                <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-600">
+                  Empleadores activos en el sector farmacéutico colombiano. Cada ficha lleva el portal de talento oficial vigente donde publican sus vacantes.
+                </p>
+              </div>
+            </div>
+            <div className="mt-7 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {empresasEmpleadoras.map(empresa => (
+                <article key={empresa.nombre} className="flex flex-col rounded-xl border border-slate-200 bg-slate-50 p-5 transition hover:border-amber-300 hover:shadow-md">
+                  <div className="flex items-start justify-between gap-3">
+                    <span className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-white text-amber-700 shadow-sm"><Building2 className="h-5 w-5" aria-hidden="true" /></span>
+                    <span className="rounded-full bg-white px-2.5 py-1 text-[10px] font-bold text-slate-600 shadow-sm">{empresa.sector}</span>
+                  </div>
+                  <h3 className="mt-3 text-base font-bold text-[#071a4a]">{empresa.nombre}</h3>
+                  <p className="mt-1 text-xs font-semibold text-slate-500">{empresa.ciudad}</p>
+                  <p className="mt-2 flex-1 text-sm leading-6 text-slate-600">{empresa.nota}</p>
+                  <a href={empresa.portal} target="_blank" rel="noopener noreferrer" className="mt-4 inline-flex min-h-10 items-center justify-center gap-2 rounded-lg bg-[#071a4a] px-4 text-sm font-bold text-white transition hover:bg-[#0d2d6d]">
+                    <Mail className="h-4 w-4" aria-hidden="true" /> Portal de talento
+                  </a>
+                </article>
+              ))}
+            </div>
+            <p className="mt-5 rounded-lg border border-amber-200 bg-amber-50 p-3 text-xs leading-5 text-amber-900">
+              Los canales de postulación cambian con frecuencia: siempre confirma el portal oficial de la empresa antes de enviar tu hoja de vida.
+            </p>
           </div>
         </section>
 

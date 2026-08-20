@@ -86,7 +86,7 @@ function trackClick(course) {
   }
 }
 
-export default function ExternalCourseCard({ course }) {
+export default function ExternalCourseCard({ course, hideProvider = false }) {
   const navigate = useNavigate();
   const location = useLocation();
   const { user } = useAuth();
@@ -124,9 +124,11 @@ export default function ExternalCourseCard({ course }) {
         )}
 
         {/* Provider badge */}
-        <span className={`absolute top-3 left-3 text-[10px] font-bold px-2.5 py-1 rounded-full ${providerStyle}`}>
-          {providerLabel}
-        </span>
+        {!hideProvider && (
+          <span className={`absolute top-3 left-3 text-[10px] font-bold px-2.5 py-1 rounded-full ${providerStyle}`}>
+            {providerLabel}
+          </span>
+        )}
 
         {/* Featured badge */}
         {course.featured && (

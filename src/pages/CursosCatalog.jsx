@@ -186,26 +186,8 @@ export default function CursosCatalog({ defaultProvider = '' }) {
               <p className="mt-4 text-base leading-relaxed text-slate-600 md:text-lg">
                 {defaultProvider
                   ? `Explora nuestra selección de cursos de ${PROVIDER_LABELS[defaultProvider]} en farmacia, calidad, datos, IA, gestión de proyectos y más.`
-                  : 'Explora cursos de Coursera, Udemy y Edutin en farmacia, calidad, datos, IA, gestión de proyectos y más. Organizados por categoría profesional.'}
+                  : 'Cursos profesionales organizados por categoría y área de la industria farmacéutica, sin importar quién los dicte.'}
               </p>
-
-              {/* Platform tabs */}
-              {!defaultProvider && (
-                <div className="flex flex-wrap gap-2 mt-6">
-                  <Link to="/cursos" className="rounded-lg bg-[#071a4a] px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-[#102862]">
-                    Todas
-                  </Link>
-                  <Link to="/cursos/coursera" className="rounded-lg border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition-colors hover:border-teal-600 hover:text-teal-700">
-                    Coursera
-                  </Link>
-                  <Link to="/cursos/udemy" className="rounded-lg border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition-colors hover:border-teal-600 hover:text-teal-700">
-                    Udemy
-                  </Link>
-                  <Link to="/cursos/edutin" className="rounded-lg border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition-colors hover:border-teal-600 hover:text-teal-700">
-                    Edutin
-                  </Link>
-                </div>
-              )}
             </div>
           </div>
         </section>
@@ -232,16 +214,6 @@ export default function CursosCatalog({ defaultProvider = '' }) {
 
               {/* Filter grid */}
               <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2">
-                {!defaultProvider && (
-                  <select value={provider} onChange={e => handleFilterChange(setProvider, 'provider')(e.target.value)}
-                    className="text-xs border border-gray-200 rounded-lg px-3 py-2 bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-teal-400">
-                    <option value="">Todas las plataformas</option>
-                    {filterOptions.providers.map(p => (
-                      <option key={p} value={p}>{PROVIDER_LABELS[p] || p}</option>
-                    ))}
-                  </select>
-                )}
-
                 <select value={category} onChange={e => handleFilterChange(setCategory, 'category')(e.target.value)}
                   className="text-xs border border-gray-200 rounded-lg px-3 py-2 bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-teal-400">
                   <option value="">Todas las categorías</option>
@@ -344,7 +316,7 @@ export default function CursosCatalog({ defaultProvider = '' }) {
             ) : (
               <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                 {courses.map(course => (
-                  <ExternalCourseCard key={course.id} course={course} />
+                  <ExternalCourseCard key={course.id} course={course} hideProvider={!defaultProvider} />
                 ))}
               </div>
             )}

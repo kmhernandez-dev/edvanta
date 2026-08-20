@@ -120,22 +120,39 @@ export default function EmpresasPage() {
     });
   }, [perfiles, area, query]);
 
-  const publicarPerfil = async () => {
-    const nombre = window.prompt('Tu nombre (se mostrará como está escrito):');
-    if (!nombre || !nombre.trim()) return;
-    const areaSeleccionada = window.prompt('Área (calidad, regulatorio, farmacovigilancia, clinico, produccion, laboratorio, datos o comercial):');
-    if (!areaSeleccionada || !areaSeleccionada.trim()) return;
-    const titulo = window.prompt('Tu título profesional (ej. Química farmacéutica — Analista de calidad):');
-    if (!titulo || !titulo.trim()) return;
-    const linkedin = window.prompt('Enlace de tu perfil de LinkedIn (opcional):') || '';
+  const [formAbierto, setFormAbierto] = useState(false);
+  const [enviandoPerfil, setEnviandoPerfil] = useState(false);
+  const [formMsg, setFormMsg] = useState('');
+  const [formData, setFormData] = useState({
+    display_name: '',
+    area: '',
+    title: '',
+    habilidades: '',
+    proyectos: '',
+    articulos: '',
+    linkedin: '',
+    contacto: '',
+    disponibilidad: '',
+  });
+
+  const publicarPerfil = async (event) => {
+    event.preventDefault();
+    if (!formData.display_name.trim() || !formData.area.trim() || !formData.title.trim()) {
+      setFormMsg('Completa al menos nombre, área y título profesional.');
+      return;
+    }
+    setEnviandoPerfil(true);
+    setFormMsg('');
     const payload = {
-      display_name: nombre.trim(),
-      area: areaSeleccionada.trim().toLowerCase(),
-      title: titulo.trim(),
-      habilidades: [],
-      proyectos: [],
-      articulos: [],
-      linkedin: linkedin.trim(),
+      display_name: formData.display_name.trim(),
+      area: formData.area.trim().toLowerCase(),
+      title: formData.title.trim(),
+      habilidades: formData.habilidades.split('\n').map(s => s.trim()).filter(Boolean).slice(0, 12),
+      proyectos: formData.proyectos.split('\n').map(s => s.trim()).filter(Boolean).slice(0, 8),
+      articulos: formData.articulos.split('\n').map(s => s.trim()).filter(Boolean).slice(0, 8),
+      linkedin: formData.linkedin.trim(),
+      contacto: formData.contacto.trim(),
+      disponibilidad: formData.disponibilidad.trim(),
     };
     try {
       const res = await fetch(apiUrl('/api/community/talent'), {
@@ -144,14 +161,22 @@ export default function EmpresasPage() {
         body: JSON.stringify(payload),
       });
       const data = await res.json().catch(() => ({}));
+      if (res.status === 429) {
+        setFormMsg(`Límite de publicaciones alcanzado: ${data.error || 'intenta de nuevo en unos minutos.'}`);
+        setEnviandoPerfil(false);
+        return;
+      }
       if (res.ok && data.ok) {
-        window.alert('¡Gracias! Tu perfil quedó registrado en el directorio de talento. Será visible tras la revisión del equipo.');
+        setFormAbierto(false);
+        setFormData({ display_name: '', area: '', title: '', contacto: '', habilidades: '', proyectos: '', articulos: '', linkedin: '', disponibilidad: '' });
+        setFormMsg('¡Gracias! Tu perfil quedó registrado en el directorio de talento. Será visible tras la revisión del equipo.');
       } else {
-        window.alert(data.error || 'No se pudo publicar el perfil. Intenta de nuevo.');
+        setFormMsg(data.error || 'No se pudo publicar el perfil. Intenta de nuevo.');
       }
     } catch {
-      window.alert('Sin conexión: tu perfil no se pudo enviar. Inténtalo de nuevo más tarde.');
+      setFormMsg('Sin conexión: tu perfil no se pudo enviar. Inténtalo de nuevo más tarde.');
     }
+    setEnviandoPerfil(false);
   };
 
   const publicarVacante = () => {
@@ -231,10 +256,70 @@ export default function EmpresasPage() {
                 {loadingPerfiles ? 'Consultando el directorio en línea...' : `${talentosVisibles.length} perfiles visibles · cada perfil se clasifica por su área`}
               </p>
             </div>
-            <button type="button" onClick={publicarPerfil} className="inline-flex min-h-11 items-center gap-2 rounded-lg bg-[#071a4a] px-5 text-sm font-bold text-white transition hover:bg-[#0d2d6d]">
+            <button type="button" onClick={() => { setFormMsg(''); setFormAbierto(true); }} className="inline-flex min-h-11 items-center gap-2 rounded-lg bg-[#071a4a] px-5 text-sm font-bold text-white transition hover:bg-[#0d2d6d]">
               <UserRound className="h-4 w-4" aria-hidden="true" /> Publicar mi perfil profesional
             </button>
           </div>
+
+          {formAbierto && (
+            <div className="mt-6 rounded-2xl border border-teal-200 bg-white p-6 shadow-sm sm:p-8">
+              <div className="flex items-start justify-between gap-3">
+                <div>
+                  <h3 className="text-xl font-bold text-[#071a4a]">Publica tu perfil profesional</h3>
+                  <p className="mt-1 text-sm leading-6 text-slate-600">Cuenta qué sabes hacer: habilidades, proyectos, páginas y artículos. Las empresas te encontrarán por tu área. Cada perfil se clasifica automáticamente.</p>
+                </div>
+                <button type="button" onClick={() => setFormAbierto(false)} className="rounded-lg border border-slate-200 px-3 py-1 text-sm font-bold text-slate-500 hover:bg-slate-50">Cerrar</button>
+              </div>
+              <form onSubmit={publicarPerfil} className="mt-6 grid gap-4 sm:grid-cols-2">
+                <label className="block">
+                  <span className="mb-1 block text-sm font-bold text-[#071a4a]">Nombre *</span>
+                  <input value={formData.display_name} onChange={e => setFormData({ ...formData, display_name: e.target.value })} placeholder="Ej. Camila Rodríguez" className="min-h-11 w-full rounded-lg border border-slate-300 px-4 text-sm outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20" />
+                </label>
+                <label className="block">
+                  <span className="mb-1 block text-sm font-bold text-[#071a4a]">Área de especialización *</span>
+                  <select value={formData.area} onChange={e => setFormData({ ...formData, area: e.target.value })} className="min-h-11 w-full rounded-lg border border-slate-300 bg-white px-4 text-sm outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20">
+                    <option value="">Elige tu área...</option>
+                    {areasTalento.map(a => <option key={a.slug} value={a.slug}>{a.nombre}</option>)}
+                  </select>
+                </label>
+                <label className="block sm:col-span-2">
+                  <span className="mb-1 block text-sm font-bold text-[#071a4a]">Título profesional *</span>
+                  <input value={formData.title} onChange={e => setFormData({ ...formData, title: e.target.value })} placeholder="Ej. Química farmacéutica — Analista de control de calidad" className="min-h-11 w-full rounded-lg border border-slate-300 px-4 text-sm outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20" />
+                </label>
+                <label className="block sm:col-span-2">
+                  <span className="mb-1 block text-sm font-bold text-[#071a4a]">Habilidades y competencias</span>
+                  <textarea value={formData.habilidades} onChange={e => setFormData({ ...formData, habilidades: e.target.value })} rows={3} placeholder="Una por línea: Química analítica, Microbiología, BPM..." className="w-full rounded-lg border border-slate-300 p-4 text-sm outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20" />
+                </label>
+                <label className="block">
+                  <span className="mb-1 block text-sm font-bold text-[#071a4a]">Proyectos y páginas</span>
+                  <textarea value={formData.proyectos} onChange={e => setFormData({ ...formData, proyectos: e.target.value })} rows={3} placeholder="Una por línea: nombre del proyecto o URL de tu portafolio..." className="w-full rounded-lg border border-slate-300 p-4 text-sm outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20" />
+                </label>
+                <label className="block">
+                  <span className="mb-1 block text-sm font-bold text-[#071a4a]">Artículos científicos</span>
+                  <textarea value={formData.articulos} onChange={e => setFormData({ ...formData, articulos: e.target.value })} rows={3} placeholder="Títulos de tus papers o publicaciones" className="w-full rounded-lg border border-slate-300 p-4 text-sm outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20" />
+                </label>
+                <label className="block">
+                  <span className="mb-1 block text-sm font-bold text-[#071a4a]">LinkedIn</span>
+                  <input value={formData.linkedin} onChange={e => setFormData({ ...formData, linkedin: e.target.value })} placeholder="https://linkedin.com/in/..." className="min-h-11 w-full rounded-lg border border-slate-300 px-4 text-sm outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20" />
+                </label>
+                <label className="block">
+                  <span className="mb-1 block text-sm font-bold text-[#071a4a]">Contacto (email o WhatsApp)</span>
+                  <input value={formData.contacto} onChange={e => setFormData({ ...formData, contacto: e.target.value })} placeholder="Para que las empresas te contacten" className="min-h-11 w-full rounded-lg border border-slate-300 px-4 text-sm outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20" />
+                </label>
+                <label className="block sm:col-span-2">
+                  <span className="mb-1 block text-sm font-bold text-[#071a4a]">Disponibilidad</span>
+                  <input value={formData.disponibilidad} onChange={e => setFormData({ ...formData, disponibilidad: e.target.value })} placeholder="Ej. Disponible para iniciar, abierto a proyectos..." className="min-h-11 w-full rounded-lg border border-slate-300 px-4 text-sm outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20" />
+                </label>
+                <div className="sm:col-span-2 flex flex-wrap items-center gap-4">
+                  <button type="submit" disabled={enviandoPerfil} className="inline-flex min-h-12 items-center gap-2 rounded-lg bg-teal-600 px-6 text-sm font-bold text-white transition hover:bg-teal-700 disabled:cursor-not-allowed disabled:opacity-60">
+                    {enviandoPerfil ? 'Publicando...' : 'Publicar mi perfil'}
+                  </button>
+                  <p className="text-xs text-slate-500">Tu perfil aparecerá tras la revisión del equipo. No compartas datos sensibles.</p>
+                </div>
+              </form>
+              {formMsg && <div className="mt-4 rounded-lg border border-teal-200 bg-teal-50 p-4 text-sm leading-6 text-teal-900" role="status">{formMsg}</div>}
+            </div>
+          )}
 
           {apiError && (
             <p className="mt-4 rounded-lg border border-amber-200 bg-amber-50 p-3 text-sm leading-6 text-amber-900" role="status">{apiError}</p>

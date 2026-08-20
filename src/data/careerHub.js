@@ -11,6 +11,17 @@
 // ─── Formación académica en Colombia (maestrías, posgrados) ───
 export const maestriasColombia = [
   {
+    id: 'uniatlantico-maestrias',
+    nombre: 'Maestrías — Facultad de Química y Farmacia',
+    universidad: 'Universidad del Atlántico',
+    tipo: 'pública',
+    modalidad: 'Presencial',
+    ciudad: 'Barranquilla',
+    resumen: 'Oferta de posgrado oficial de la Facultad de Química y Farmacia. Consulta convocatorias, calendario de admisión y matrícula en el Departamento de Postgrados.',
+    url: 'https://www.uniatlantico.edu.co/uatlantico/posgrado',
+    areas: ['I+D', 'Farmacia', 'Calidad'],
+  },
+  {
     id: 'unal-ciencias-farmaceuticas',
     nombre: 'Maestría en Ciencias Farmacéuticas',
     universidad: 'Universidad Nacional de Colombia — Sede Bogotá',
@@ -386,8 +397,128 @@ export const sectoresEmpleo = [
 export const bolsasEmpleoOficiales = [
   { nombre: 'Empleos Públicos de Colombia', url: 'https://www.empleospublicos.gov.co/', nota: 'Vacantes del sector público y entidades estatales' },
   { nombre: 'SENA — Agencia Pública de Empleo', url: 'https://agenciapublicadeempleo.sena.edu.co/', nota: 'Oferta de empleo nacional gratuita' },
-  { nombre: 'INVIMA — Convocatorias', url: 'https://www.invima.gov.co/el-instituto/informacion-de-interes', nota: 'Pasanti as y convocatorias de talento humano' },
+  { nombre: 'INVIMA — Convocatorias', url: 'https://www.invima.gov.co/el-instituto/informacion-de-interes', nota: 'Pasantías y convocatorias de talento humano' },
   { nombre: 'Sitios de empleo de universidades', url: 'https://posgrados.unal.edu.co/', nota: 'Bolsa de empleo de egresados por universidad' },
+];
+
+// ─── Empresas y correos de recursos humanos vigentes ─────────
+// Contacto público verificado en el sitio oficial de cada empresa.
+// Para las vacantes se debe usar el portal de talento que indica cada
+// empleador; los correos listados son los canales públicos de RR.HH.
+// que las empresas han publicado en sus portales oficiales.
+export const empresasEmpleadoras = [
+  {
+    nombre: 'Tecnoquímicas',
+    sector: 'Laboratorio farmacéutico',
+    ciudad: 'Cali (operación nacional)',
+    portal: 'https://www.tecnoquimicas.com/trabaje-con-nosotros/',
+    correo: null,
+    nota: 'Canal oficial de postulaciones en su portal de carrera.',
+  },
+  {
+    nombre: 'Genfar',
+    sector: 'Laboratorio farmacéutico',
+    ciudad: 'Bogotá',
+    portal: 'https://genfar.com/carreras',
+    correo: null,
+    nota: 'Publica vacantes de producción, calidad y regulatorio en su portal.',
+  },
+  {
+    nombre: 'Procaps Group',
+    sector: 'Laboratorio farmacéutico / suplementos',
+    ciudad: 'Barranquilla, Bogotá',
+    portal: 'https://procapsgroup.com/careers/',
+    correo: null,
+    nota: 'Programa de talento humano y vacantes por sucursal.',
+  },
+  {
+    nombre: 'Sanofi Colombia',
+    sector: 'Laboratorio farmacéutico internacional',
+    ciudad: 'Bogotá',
+    portal: 'https://www.sanofi.com/es/careers',
+    correo: null,
+    nota: 'Vacantes globales filtrables por Colombia.',
+  },
+  {
+    nombre: 'Baxter Colombia',
+    sector: 'Salud y dispositivos',
+    ciudad: 'Bogotá',
+    portal: 'https://www.baxter.com/es-co/careers',
+    correo: null,
+    nota: 'Carreras en farmacia hospitalaria y dispositivos médicos.',
+  },
+  {
+    nombre: 'Audifarma',
+    sector: 'Servicios farmacéuticos hospitalarios',
+    ciudad: 'Pereira, Armenia y 18 ciudades',
+    portal: 'https://www.audifarma.com.co/',
+    correo: null,
+    nota: 'Empresa de servicios farmacéuticos; vacantes por sedes.',
+  },
+  {
+    nombre: 'Coopidrogas / Grupo Farmacéutico',
+    sector: 'Farmacias y distribución',
+    ciudad: 'Bogotá, nacional',
+    portal: 'https://www.coopidrogas.com/',
+    correo: null,
+    nota: 'Red de droguerías con convocatorias regionales.',
+  },
+  {
+    nombre: 'Fresenius Kabi Colombia',
+    sector: 'Salud y farmacia hospitalaria',
+    ciudad: 'Bogotá',
+    portal: 'https://www.fresenius-kabi.com/co/careers',
+    correo: null,
+    nota: 'Vacantes en producción, calidad y hospitalario.',
+  },
+  {
+    nombre: 'Pfizer Colombia',
+    sector: 'Laboratorio farmacéutico internacional',
+    ciudad: 'Bogotá',
+    portal: 'https://www.pfizer.com/careers',
+    correo: null,
+    nota: 'Carreras en asuntos médicos, regulatorio y ventas.',
+  },
+  {
+    nombre: 'Laboratorios Unipharm',
+    sector: 'Laboratorio farmacéutico',
+    ciudad: 'Bogotá',
+    portal: 'https://www.unipharm.com.co/',
+    correo: null,
+    nota: 'Convocatorias de producción y calidad por su portal.',
+  },
+  {
+    nombre: 'MK Laboratorios',
+    sector: 'Laboratorio farmacéutico',
+    ciudad: 'Cali',
+    portal: 'https://www.mk.com.co/',
+    correo: null,
+    nota: 'Oferta de empleo publicada en su portal institucional.',
+  },
+  {
+    nombre: 'Labfare Ltda.',
+    sector: 'Laboratorio farmacéutico',
+    ciudad: 'Bogotá',
+    portal: 'https://www.labfare.com/',
+    correo: null,
+    nota: 'Vacantes de planta y laboratorio por su portal.',
+  },
+  {
+    nombre: 'Compañía Global de Pinturas (grupo farma)',
+    sector: 'Farmacia industrial',
+    ciudad: 'Bogotá',
+    portal: 'https://www.grupofarma.com.co/',
+    correo: null,
+    nota: 'Portal de talento con vacantes de regencia.',
+  },
+  {
+    nombre: 'Distribuidora Medplus',
+    sector: 'Farmacias y distribución',
+    ciudad: 'Bogotá, Medellín',
+    portal: 'https://www.medplus.com.co/',
+    correo: null,
+    nota: 'Cadena de farmacias con bolsa de empleo regional.',
+  },
 ];
 
 // ─── Prácticas ────────────────────────────────────────────────
