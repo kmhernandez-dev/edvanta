@@ -889,6 +889,18 @@ const legacyArticulos = [
 
 const edvantaArticulos = [
   {
+    slug: 'emprendimientos-quimicos-farmaceuticos-colombia',
+    marca: 'edvanta',
+    category: 'Emprendimiento',
+    title: '5 modelos de emprendimiento para químicos farmacéuticos en Colombia en 2026: casos reales y cómo empezar',
+    description: 'Descubre cinco modelos de emprendimiento para químicos farmacéuticos en Colombia, con casos reales, oportunidades y pasos prácticos para empezar en 2026.',
+    readingTime: '18 min',
+    date: '2026-08-20',
+    updated: '2026-08-20',
+    image: '/img/herramienta-empleabilidad.jpg',
+    mdPath: `${BASE}/edvanta/emprendimientos-quimicos-farmaceuticos-colombia.md`,
+  },
+  {
     slug: 'que-es-un-sistema-de-gestion-de-calidad',
     marca: 'edvanta',
     category: 'Gestión de calidad',

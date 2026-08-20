@@ -220,11 +220,47 @@ const MODERATION_TYPES = {
 
 router.use('/admin', adminMiddleware);
 
+const JOBS_SELECT = `id, slug, cargo, empresa, ciudad, modalidad, requisitos, contacto, fuente, ip_address, status, moderation_note, published_at, created_at`;
+const TALENT_SELECT = `id, slug, display_name, area, title, habilidades, proyectos, articulos, linkedin, contacto, disponibilidad, status, moderation_note, published_at, created_at`;
+
+// Listado completo para administración: pendientes, publicadas y archivadas
+router.get('/admin/list', async (req, res) => {
+  try {
+    const status = clean(req.query.status, 20);
+    const q = clean(req.query.q);
+    const validStatus = new Set(['pending', 'published', 'rejected', 'archived']);
+    if (status && !validStatus.has(status)) return res.status(400).json({ ok: false, error: 'Estado no válido' });
+
+    const jobsParams = [];
+    let jobsWhere = 'TRUE';
+    if (status) { jobsParams.push(status); jobsWhere = `status = $${jobsParams.length}`; }
+    if (q) {
+      jobsParams.push(`%${q}%`);
+      jobsWhere += ` AND (cargo ILIKE $${jobsParams.length} OR empresa ILIKE $${jobsParams.length} OR ciudad ILIKE $${jobsParams.length})`;
+    }
+    const talentParams = [];
+    let talentWhere = 'TRUE';
+    if (status) { talentParams.push(status); talentWhere = `status = $${talentParams.length}`; }
+    if (q) {
+      talentParams.push(`%${q}%`);
+      talentWhere += ` AND (display_name ILIKE $${talentParams.length} OR title ILIKE $${talentParams.length})`;
+    }
+
+    const [jobsResult, talentResult] = await Promise.all([
+      pool.query(`SELECT ${JOBS_SELECT} FROM community_jobs WHERE ${jobsWhere} ORDER BY created_at DESC LIMIT 200`, jobsParams),
+      pool.query(`SELECT ${TALENT_SELECT} FROM talent_profiles WHERE ${talentWhere} ORDER BY created_at DESC LIMIT 200`, talentParams),
+    ]);
+    return res.json({ ok: true, data: { jobs: jobsResult.rows, talent: talentResult.rows } });
+  } catch (error) {
+    return fail(res, 'No fue posible cargar el listado administrativo', error);
+  }
+});
+
 router.get('/admin/pending', async (req, res) => {
   try {
     const [jobsResult, talentResult] = await Promise.all([
-      pool.query(`SELECT id, slug, cargo, empresa, ciudad, modalidad, requisitos, contacto, fuente, ip_address, status, moderation_note, created_at FROM community_jobs WHERE status = 'pending' ORDER BY created_at DESC LIMIT 100`),
-      pool.query(`SELECT id, slug, display_name, area, title, habilidades, proyectos, articulos, linkedin, contacto, disponibilidad, status, moderation_note, created_at FROM talent_profiles WHERE status = 'pending' ORDER BY created_at DESC LIMIT 100`),
+      pool.query(`SELECT ${JOBS_SELECT} FROM community_jobs WHERE status = 'pending' ORDER BY created_at DESC LIMIT 100`),
+      pool.query(`SELECT ${TALENT_SELECT} FROM talent_profiles WHERE status = 'pending' ORDER BY created_at DESC LIMIT 100`),
     ]);
     return res.json({
       ok: true,
