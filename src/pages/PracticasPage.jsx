@@ -139,8 +139,8 @@ export default function PracticasPage() {
                 ].map(item => <li key={item} className="flex items-start gap-2 text-sm leading-6 text-slate-700"><CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-rose-600" aria-hidden="true" />{item}</li>)}
               </ul>
               <div className="mt-6 flex flex-wrap gap-3">
-                <Link to="/empleo#adaptador" className="inline-flex min-h-11 items-center gap-2 rounded-lg bg-[#071a4a] px-5 text-sm font-bold text-white transition hover:bg-[#0d2d6d]">
-                  <FileText className="h-4 w-4" aria-hidden="true" /> Ir al adaptador de HV
+                <Link to="/empleo#creador" className="inline-flex min-h-11 items-center gap-2 rounded-lg bg-[#071a4a] px-5 text-sm font-bold text-white transition hover:bg-[#0d2d6d]">
+                  <FileText className="h-4 w-4" aria-hidden="true" /> Crear mi hoja de vida
                 </Link>
                 <Link to="/empleo" className="inline-flex min-h-11 items-center gap-2 rounded-lg border border-slate-300 bg-white px-5 text-sm font-bold text-slate-700 transition hover:bg-slate-50">
                   Ver plantillas de correo <ArrowRight className="h-4 w-4" aria-hidden="true" />

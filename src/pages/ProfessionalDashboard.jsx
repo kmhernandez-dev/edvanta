@@ -161,6 +161,13 @@ export default function ProfessionalDashboard() {
                 <Link to="/app/perfil" className="mt-5 inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-lg border border-slate-300 text-sm font-bold text-slate-700">Completar perfil</Link>
               </section>
 
+              <section className="rounded-lg border border-amber-200 bg-amber-50/60 p-5">
+                <FileText className="h-6 w-6 text-amber-700" />
+                <h2 className="mt-4 text-lg font-bold text-[#071a4a]">Tu hoja de vida</h2>
+                <p className="mt-2 text-sm leading-6 text-slate-600">Crea o edita tu CV con formato ATS, puntaje IA y descarga en PDF. Se precarga con tus datos del perfil.</p>
+                <Link to="/empleo#creador" className="mt-4 inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-lg bg-amber-600 text-sm font-bold text-white transition hover:bg-amber-700">Crear / editar hoja de vida <ArrowRight className="h-4 w-4" /></Link>
+              </section>
+
               <section className="rounded-lg border border-slate-200 bg-[#071a4a] p-5 text-white">
                 <BriefcaseBusiness className="h-6 w-6 text-teal-300" />
                 <h2 className="mt-4 text-lg font-bold">Explora antes de decidir</h2>

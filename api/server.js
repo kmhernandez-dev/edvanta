@@ -48,6 +48,7 @@ import adminTrackingRoutes from './routes/admin-tracking.js';
 import retosRoutes from './routes/retos.js';
 import adminRetosRoutes from './routes/admin-retos.js';
 import communityRoutes from './routes/community.js';
+import cvRoutes from './routes/cv.js';
 import articleCommentsRoutes from './routes/article-comments.js';
 import fstClicksRoutes from './routes/fst-clicks.js';
 import vida360Routes from './routes/vida360.js';
@@ -286,6 +287,9 @@ app.use('/api/fst-clicks', fstClicksRoutes);
 
 // Banco comunitario de empleo y directorio de talento
 app.use('/api/community', communityRoutes);
+
+// Hoja de vida profesional guardada por usuario de Academia
+app.use('/api/cv', cvRoutes);
 
 // ── 404 + manejo de errores (no expone stack traces) ─────────
 app.use((_req, res) => res.status(404).json({ error: 'Not found' }));

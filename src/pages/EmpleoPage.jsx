@@ -6,9 +6,10 @@ import {
 } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import CvBuilder from '../components/empleo/CvBuilder';
 import { apiUrl } from '../config/api';
 import { updatePageSeo } from '../utils/seo';
-import { plantillasHV, plantillaCorreoRRHH, sectoresEmpleo, bolsasEmpleoOficiales, empresasEmpleadoras } from '../data/careerHub';
+import { plantillaCorreoRRHH, sectoresEmpleo, bolsasEmpleoOficiales, empresasEmpleadoras } from '../data/careerHub';
 
 const VACANTES_DEMO = [
   {
@@ -72,7 +73,6 @@ export default function EmpleoPage() {
   const [vacantes, setVacantes] = useState(VACANTES_DEMO);
   const [loadingVacantes, setLoadingVacantes] = useState(false);
   const [apiError, setApiError] = useState('');
-  const [cargoAdaptador, setCargoAdaptador] = useState('analista-calidad');
   const [formAbierto, setFormAbierto] = useState(false);
   const [formData, setFormData] = useState({ cargo: '', empresa: '', ciudad: '', modalidad: 'Presencial', contacto: '', requisitos: '' });
   const [formMsg, setFormMsg] = useState('');
@@ -81,9 +81,9 @@ export default function EmpleoPage() {
 
   useEffect(() => updatePageSeo({
     title: 'Empleo farmacéutico en Colombia | Edvanta',
-    description: 'Crea tu hoja de vida, adáptala según el cargo, envía correos profesionales a recursos humanos y consulta el banco de vacantes de la comunidad.',
+    description: 'Crea tu hoja de vida con formato ATS 2026, púlela con el puntaje IA, adáptala según el cargo, envía correos profesionales y consulta el banco de vacantes.',
     canonical: 'https://edvanta.co/empleo',
-    keywords: ['empleo farmacéutico', 'vacantes químico farmacéutico', 'hoja de vida farmacia', 'recursos humanos'],
+    keywords: ['empleo farmacéutico', 'vacantes químico farmacéutico', 'hoja de vida farmacia', 'recursos humanos', 'crear hoja de vida', 'puntaje ATS'],
     jsonLdId: 'empleo',
     jsonLd: {
       '@context': 'https://schema.org',
@@ -125,8 +125,6 @@ export default function EmpleoPage() {
       .finally(() => setLoadingVacantes(false));
     return () => controller.abort();
   }, []);
-
-  const plantilla = useMemo(() => plantillasHV.find(p => p.slug === cargoAdaptador) || plantillasHV[0], [cargoAdaptador]);
 
   const correoPlantilla = useMemo(() => {
     const dato = vacantes[0];
@@ -243,7 +241,8 @@ export default function EmpleoPage() {
               </div>
               <h1 className="mt-4 text-4xl font-bold leading-tight text-white sm:text-5xl">Empleo farmacéutico: de tu hoja de vida a tu vacante</h1>
               <p className="mt-4 max-w-2xl text-lg leading-8 text-amber-50">
-                Herramientas para crear tu hoja de vida, adaptarla al cargo, escribir correos profesionales a recursos humanos y un banco de ofertas que crece con la comunidad.
+                Crea tu hoja de vida con formato ATS 2026, recibe tu puntaje y recomendaciones de la IA, adáptala al cargo,
+                escribe correos profesionales y consulta el banco de ofertas de la comunidad.
               </p>
             </div>
           </div>
@@ -254,15 +253,15 @@ export default function EmpleoPage() {
           <div className="grid gap-4 md:grid-cols-3">
             <div className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
               <span className="inline-flex h-11 w-11 items-center justify-center rounded-lg bg-amber-100 text-amber-800"><FileText className="h-5 w-5" aria-hidden="true" /></span>
-              <h2 className="mt-4 text-lg font-bold text-[#071a4a]">Crear hoja de vida</h2>
-              <p className="mt-2 text-sm leading-6 text-slate-600">Elige tu cargo y genera una estructura de CV con palabras clave, habilidades y logros sugeridos para el sector.</p>
-              <a href="#adaptador" className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-amber-700 hover:text-amber-900">Ir al adaptador <ArrowRight className="h-4 w-4" aria-hidden="true" /></a>
+              <h2 className="mt-4 text-lg font-bold text-[#071a4a]">Crear hoja de vida ATS</h2>
+              <p className="mt-2 text-sm leading-6 text-slate-600">Formulario guiado, puntaje de compatibilidad en vivo, adaptación al cargo y descarga en PDF legible por máquinas.</p>
+              <a href="#creador" className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-amber-700 hover:text-amber-900">Ir al creador <ArrowRight className="h-4 w-4" aria-hidden="true" /></a>
             </div>
-            <div className="rounded-1xl border border-slate-200 bg-white p-6 shadow-sm">
+            <div className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
               <span className="inline-flex h-11 w-11 items-center justify-center rounded-lg bg-amber-100 text-amber-800"><Mail className="h-5 w-5" aria-hidden="true" /></span>
               <h2 className="mt-4 text-lg font-bold text-[#071a4a]">Correos a recursos humanos</h2>
               <p className="mt-2 text-sm leading-6 text-slate-600">Plantillas listas para postular, dar seguimiento y agradecer, con formato profesional del sector farmacéutico.</p>
-              <a href="#correos" className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-amber-700 hover:text-amber-900">Ver plantillas <ArrowRight /></a>
+              <a href="#correos" className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-amber-700 hover:text-amber-900">Ver plantillas <ArrowRight className="h-4 w-4" aria-hidden="true" /></a>
             </div>
             <div className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
               <span className="inline-flex h-11 w-11 items-center justify-center rounded-lg bg-amber-100 text-amber-800"><Users className="h-5 w-5" aria-hidden="true" /></span>
@@ -273,67 +272,20 @@ export default function EmpleoPage() {
           </div>
         </section>
 
-        {/* Adaptador de HV */}
-        <section id="adaptador" className="scroll-mt-24 border-y border-slate-200 bg-white">
+        {/* Creador de hoja de vida */}
+        <section id="creador" className="scroll-mt-24 border-y border-slate-200 bg-white">
           <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
             <div className="flex flex-wrap items-end justify-between gap-3">
               <div>
-                <p className="text-sm font-bold uppercase tracking-wide text-amber-700">Adaptador de hoja de vida</p>
-                <h2 className="mt-1 text-2xl font-bold text-[#071a4a] sm:text-3xl">Adapta tu hoja de vida según el cargo</h2>
-                <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-600">Cada cargo busca palabras clave distintas. Elige el tuyo y copia la estructura, las habilidades y los logros sugeridos.</p>
+                <p className="text-sm font-bold uppercase tracking-wide text-amber-700">Creador de hoja de vida + IA</p>
+                <h2 className="mt-1 text-2xl font-bold text-[#071a4a] sm:text-3xl">La hoja de vida que ayuda a conseguir empleo</h2>
+                <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-600">
+                  Estructura que los ATS y la preselección con IA leen bien en 2026: resumen con keywords, logros medibles y PDF con texto seleccionable. Analiza tu CV actual o pégala para conocer tu puntaje.
+                </p>
               </div>
             </div>
-
-            <div className="mt-7 grid gap-6 lg:grid-cols-[320px_1fr]">
-              <div>
-                <label htmlFor="cargo-adaptador" className="mb-2 block text-sm font-bold text-[#071a4a]">Cargo objetivo</label>
-                <select
-                  id="cargo-adaptador"
-                  value={cargoAdaptador}
-                  onChange={e => setCargoAdaptador(e.target.value)}
-                  className="min-h-12 w-full rounded-lg border border-slate-300 bg-white px-4 text-sm font-semibold text-slate-900 outline-none transition focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20"
-                >
-                  {plantillasHV.map(p => <option key={p.slug} value={p.slug}>{p.cargo}</option>)}
-                </select>
-                <div className="mt-4 rounded-lg border border-slate-200 bg-slate-50 p-4">
-                  <p className="text-xs font-bold uppercase tracking-wide text-slate-500">Secciones sugeridas</p>
-                  <ul className="mt-2 space-y-1.5">
-                    {plantilla.secciones.map(s => <li key={s} className="flex items-center gap-2 text-sm text-slate-700"><span className="h-1.5 w-1.5 rounded-full bg-amber-500" aria-hidden="true" />{s}</li>)}
-                  </ul>
-                </div>
-              </div>
-
-              <div className="space-y-4">
-                <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
-                  <div className="flex items-center justify-between gap-3">
-                    <p className="text-xs font-bold uppercase tracking-wide text-amber-700">Palabras clave para {plantilla.cargo}</p>
-                    <CopiarBoton texto={(plantilla.palabras || plantilla.palabrasClave || plantilla.words || plantilla.terminos || []).join(', ')} label="Copiar palabras" />
-                  </div>
-                  <div className="mt-3 flex flex-wrap gap-2">
-                    {(plantilla.palabras || plantilla.palabrasClave || plantilla.words || plantilla.terminos || []).map(p => (
-                      <span key={p} className="rounded-full bg-amber-50 px-3 py-1 text-xs font-bold text-amber-900">{p}</span>
-                    ))}
-                  </div>
-                </div>
-                <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
-                  <div className="flex items-center justify-between gap-3">
-                    <p className="text-xs font-bold uppercase tracking-wide text-amber-700">Logros sugeridos (formato Acción + Impacto)</p>
-                    <CopiarBoton texto={plantilla.logros.join('\n')} label="Copiar logros" />
-                  </div>
-                  <ul className="mt-3 space-y-2">
-                    {plantilla.logros.map(l => <li key={l} className="flex items-start gap-2 text-sm leading-6 text-slate-700"><Sparkles className="mt-0.5 h-4 w-4 shrink-0 text-amber-600" aria-hidden="true" />{l}</li>)}
-                  </ul>
-                </div>
-                <div className="rounded-xl border border-amber-200 bg-amber-50 p-5">
-                  <p className="text-xs font-bold uppercase tracking-wide text-amber-800">Cómo usarlo</p>
-                  <ol className="mt-2 list-inside list-decimal space-y-1 text-sm leading-6 text-amber-900">
-                    <li>Copia la estructura de secciones y escribe tu información.</li>
-                    <li>Adapta 3 logros reales tuyos con el formato Acción + Impacto.</li>
-                    <li>Incluye las palabras clave de forma natural en el resumen.</li>
-                    <li>Guarda tu CV en PDF con el nombre: ApellidoNombre_Cargo.pdf</li>
-                  </ol>
-                </div>
-              </div>
+            <div className="mt-7">
+              <CvBuilder />
             </div>
           </div>
         </section>
@@ -355,7 +307,7 @@ export default function EmpleoPage() {
                 <CopiarBoton texto={correoPlantilla} label="Copiar correo" />
               </div>
               <textarea
-                value={correoPlantilla}
+                value={correoPara || correoPlantilla}
                 onChange={e => setCorreoPara(e.target.value)}
                 rows={14}
                 className="mt-4 w-full rounded-lg border border-slate-200 bg-slate-50 p-4 text-sm leading-6 text-slate-800 outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20"

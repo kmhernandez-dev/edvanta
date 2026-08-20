@@ -809,7 +809,7 @@ export const clasificacionHerramientas = [
   {
     categoria: 'Empleo',
     items: [
-      { nombre: 'Crear hoja de vida', descripcion: 'Adaptador de HV según el cargo farmacéutico.', to: '/empleo' },
+      { nombre: 'Crear hoja de vida', descripcion: 'Creador ATS con puntaje IA, adaptación al cargo y PDF.', to: '/empleo' },
       { nombre: 'Plantillas de correo a RR. HH.', descripcion: 'Correos listos para postular y dar seguimiento.', to: '/empleo' },
       { nombre: 'Banco de vacantes colaborativo', descripcion: 'Ofertas compartidas por la comunidad, con plantilla unificada.', to: '/empleo' },
     ],

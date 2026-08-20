@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { ArrowLeft, Check, LockKeyhole, Save } from 'lucide-react';
+import { ArrowLeft, Check, FileText, LockKeyhole, Save } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { useAuth } from '../context/AuthContext';
@@ -99,6 +99,17 @@ export default function ProfessionalProfilePage() {
             </div>
 
             <fieldset className="mt-7 border-t border-slate-200 pt-6"><legend className="text-sm font-bold text-[#071a4a]">Intereses profesionales</legend><div className="mt-4 flex flex-wrap gap-2">{PROFESSIONAL_INTERESTS.map(interest => { const selected = draft.interests.includes(interest); return <button key={interest} type="button" onClick={() => toggleInterest(interest)} className={`inline-flex min-h-10 items-center gap-2 rounded-full border px-4 text-sm font-semibold ${selected ? 'border-teal-600 bg-teal-50 text-teal-900' : 'border-slate-300 text-slate-600'}`}>{selected && <Check className="h-3.5 w-3.5" />}{interest}</button>; })}</div></fieldset>
+
+            <div className="mt-7 flex items-start gap-3 rounded-lg border border-amber-200 bg-amber-50 p-4">
+              <FileText className="mt-0.5 h-5 w-5 shrink-0 text-amber-700" />
+              <div className="flex flex-1 flex-wrap items-center justify-between gap-3">
+                <div>
+                  <p className="text-sm font-bold text-[#071a4a]">¿Buscas empleo? Convierte estos datos en tu hoja de vida</p>
+                  <p className="mt-1 text-xs leading-5 text-slate-600">El creador de hojas de vida precarga tu nombre, rol, ciudad y resumen desde este perfil. Luego lo guardas, lo analiza la IA y lo descargas en PDF ATS.</p>
+                </div>
+                <Link to="/empleo#creador" className="inline-flex min-h-10 items-center gap-2 rounded-lg bg-amber-600 px-4 text-sm font-bold text-white transition hover:bg-amber-700">Crear mi hoja de vida</Link>
+              </div>
+            </div>
 
             <div className="mt-7 flex items-start gap-3 rounded-lg border border-slate-200 bg-slate-50 p-4"><LockKeyhole className="mt-0.5 h-5 w-5 shrink-0 text-teal-700" /><div><p className="text-sm font-bold text-[#071a4a]">Perfil privado</p><p className="mt-1 text-xs leading-5 text-slate-600">Tu información profesional no se publica ni se comparte con empresas sin una acción explícita de tu parte.</p></div></div>
             {message && <p className={`mt-5 rounded-lg border p-3 text-sm ${message.startsWith('Cambios') ? 'border-emerald-200 bg-emerald-50 text-emerald-800' : 'border-rose-200 bg-rose-50 text-rose-800'}`} role="status">{message}</p>}

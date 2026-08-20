@@ -22,7 +22,7 @@ const carrerasMenu = [
 
 const empleoMenu = [
   { label: 'Centro de empleo', to: '/empleo' },
-  { label: 'Crear hoja de vida', to: '/empleo#adaptador' },
+  { label: 'Crear hoja de vida ATS + IA', to: '/empleo#creador' },
   { label: 'Plantillas de correo a RR. HH.', to: '/empleo#correos' },
   { label: 'Banco de vacantes', to: '/empleo#vacantes' },
   { label: 'Guía de prácticas', to: '/practicas' },
