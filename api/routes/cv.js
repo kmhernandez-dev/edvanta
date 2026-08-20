@@ -24,15 +24,19 @@ const clean = (value, max = 500) => typeof value === 'string' ? value.trim().sli
 function cleanList(value, itemMax, limit) {
   if (!Array.isArray(value)) return [];
   return value
-    .filter(item => item && typeof item === 'object')
+    .filter(item => item !== null && item !== undefined && item !== '')
     .slice(0, limit)
     .map(item => {
-      const out = {};
-      for (const key of Object.keys(item)) {
-        const raw = item[key];
-        out[key] = typeof raw === 'string' ? raw.trim().slice(0, itemMax) : raw;
+      if (typeof item === 'string') return item.trim().slice(0, itemMax);
+      if (typeof item === 'object') {
+        const out = {};
+        for (const key of Object.keys(item)) {
+          const raw = item[key];
+          out[key] = typeof raw === 'string' ? raw.trim().slice(0, itemMax) : raw;
+        }
+        return out;
       }
-      return out;
+      return item;
     });
 }
 
