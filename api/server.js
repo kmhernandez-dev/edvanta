@@ -167,6 +167,16 @@ app.post('/api/lead-capture',       leadCaptureRoute);
 app.post('/api/lead-events',        leadEventsRoute);
 app.get('/api/list-orders',         listOrdersRoute);
 
+// Diagnóstico temporal: probar query real de academia_users
+app.get('/api/_diag/academia', async (_req, res) => {
+  try {
+    const r = await pool.query('SELECT id, name, email, auth_provider, password_hash IS NOT NULL AS has_pw FROM academia_users ORDER BY id DESC LIMIT 3');
+    res.json({ ok: true, rows: r.rows });
+  } catch (e) {
+    res.json({ ok: false, error: e.message, code: e.code });
+  }
+});
+
 // Catálogo multi-plataforma de cursos
 app.get('/api/courses',              listCoursesRoute);
 app.get('/api/courses/filters/options', getFilterOptionsRoute);
