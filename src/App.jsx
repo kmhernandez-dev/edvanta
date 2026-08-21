@@ -2,16 +2,7 @@ import { lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
 const BibliotecaHome = lazy(() => import('./pages/BibliotecaHome'));
-const FelizSinTiroides = lazy(() => import('./pages/FelizSinTiroidesLanding'));
-const RecursosTiroides = lazy(() => import('./pages/landings/RecursosTiroides'));
-const AtencionFarmaceutica = lazy(() => import('./pages/landings/AtencionFarmaceutica'));
-const ColeccionTiroides = lazy(() => import('./pages/landings/ColeccionTiroides'));
-const CaidaCabelloTiroides = lazy(() => import('./pages/landings/CaidaCabelloTiroides'));
-const InsomnioTiroides = lazy(() => import('./pages/landings/InsomnioTiroides'));
-const DiarioHipo = lazy(() => import('./pages/landings/DiarioHipo'));
-const DiarioHiper = lazy(() => import('./pages/landings/DiarioHiper'));
-const ProbioticosTiroides = lazy(() => import('./pages/landings/ProbioticosTiroides'));
-const HashimotoNutricion = lazy(() => import('./pages/landings/HashimotoNutricion'));
+const FelizSinTiroides = lazy(() => import('./pages/FelizSinTiroides'));
 const NutriFstPublic = lazy(() => import('./pages/NutriFstPublic'));
 const RecursoLevotiroxina = lazy(() => import('./pages/RecursoLevotiroxina'));
 const RecetasFinder = lazy(() => import('./pages/RecetasFinder'));
@@ -99,18 +90,6 @@ export default function App() {
 
         {/* Marca: Feliz Sin Tiroides (pacientes) */}
         <Route path="/feliz-sin-tiroides" element={<FelizSinTiroides />} />
-
-        {/* Ecosistema de landings Feliz Sin Tiroides */}
-        <Route path="/recursos-tiroides" element={<RecursosTiroides />} />
-        <Route path="/atencion-farmaceutica" element={<AtencionFarmaceutica />} />
-        <Route path="/coleccion-tiroides" element={<ColeccionTiroides />} />
-        <Route path="/caida-cabello-tiroides" element={<CaidaCabelloTiroides />} />
-        <Route path="/insomnio-tiroides" element={<InsomnioTiroides />} />
-        <Route path="/diario-emociones-hipotiroidismo" element={<DiarioHipo />} />
-        <Route path="/diario-emociones-hipertiroidismo" element={<DiarioHiper />} />
-        <Route path="/probioticos-tiroides" element={<ProbioticosTiroides />} />
-        <Route path="/hashimoto-nutricion" element={<HashimotoNutricion />} />
-
         <Route path="/nutrifst" element={<NutriFstPublic />} />
 
         {/* Recurso gratis interactivo: guía PDF de levotiroxina (descarga + reseñas) */}
