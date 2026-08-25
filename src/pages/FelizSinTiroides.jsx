@@ -104,7 +104,7 @@ const CSS = `
 .fst-landing .heroe__sub{color:var(--gris); font-size:1.1rem; margin:20px 0 30px; max-width:46ch}
 .fst-landing .heroe__botones{display:flex; flex-wrap:wrap; gap:12px}
 .fst-landing .heroe__foto{border-radius:20px; box-shadow:var(--sombra-m); overflow:hidden; background:#fff; border:1px solid var(--linea)}
-.fst-landing .heroe__foto img{width:100%; height:auto; aspect-ratio:4/3; object-fit:cover}
+.fst-landing .heroe__foto img{width:100%; height:auto; aspect-ratio:4/5; object-fit:cover; object-position:center top; background:linear-gradient(160deg,#EFE8FD,#F8D6E0)}
 /* Banda */
 .fst-landing .banda{border-top:1px solid var(--linea); border-bottom:1px solid var(--linea); background:var(--blanco); padding:32px 0}
 .fst-landing .banda__texto{font-family:var(--display); font-size:clamp(1.05rem,2.4vw,1.5rem); font-weight:600; color:var(--tinta); text-align:center; letter-spacing:-.02em; max-width:none}
@@ -268,7 +268,7 @@ export default function FelizSinTiroides() {
             </div>
           </div>
           <div className="heroe__foto">
-            <img src="/img/port-coleccion.jpg" alt="Colección Bienestar Tiroideo de Feliz Sin Tiroides" width="640" height="480" loading="eager" />
+            <img src="/img/karla-real.jpg" alt="Karla Hernández, química farmacéutica clínica — Feliz Sin Tiroides" width="800" height="1000" loading="eager" />
           </div>
         </div>
       </header>
