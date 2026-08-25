@@ -260,7 +260,7 @@ export default function FelizSinTiroides() {
         <div className="heroe__fondo" aria-hidden="true" />
         <div className="contenedor heroe__rejilla">
           <div>
-            <h1>Únete a la comunidad de pacientes tiroideos más grande de habla hispana</h1>
+            <h1>Más de 10.000 pacientes cuidan su salud tiroidea con FST Tiroides Care</h1>
             <p className="heroe__sub">Información clara, ebooks prácticos y acompañamiento profesional para que entiendas tu tiroides y tomes decisiones con seguridad.</p>
             <div className="heroe__botones">
               <a className="btn btn--principal" href={FST_COMMUNITY_URL} target="_blank" rel="noopener noreferrer" onClick={() => trackEvent('fst_hero_click', { cta: 'comunidad' })}>Unirme a la comunidad <span className="flecha">→</span></a>
