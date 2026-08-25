@@ -8,11 +8,6 @@ const whatsappUrl = waLink('Hola, llegué desde la página de Feliz Sin Tiroides
 
 export default function FstFooter() {
   const year = new Date().getFullYear();
-  const scroll = (event, href) => {
-    event.preventDefault();
-    document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
-  };
-
   return (
     <footer id="fst-contacto" className="bg-[#132e55] text-white">
       <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
@@ -45,13 +40,13 @@ export default function FstFooter() {
           <div>
             <p className="text-xs font-bold uppercase tracking-widest text-[#d8c5e8]">Explora</p>
             <nav className="mt-4 space-y-3 text-sm text-white/70">
-              <a href="#fst-recursos" onClick={event => scroll(event, '#fst-recursos')} className="block hover:text-white">Recurso gratuito</a>
-              <a href="#fst-guias" onClick={event => scroll(event, '#fst-guias')} className="block hover:text-white">Guías y diarios</a>
-              <a href="#fst-herramientas" onClick={event => scroll(event, '#fst-herramientas')} className="block hover:text-white">Herramientas</a>
-              <a href="#fst-academy" onClick={event => scroll(event, '#fst-academy')} className="block hover:text-white">Academy</a>
-              <a href="#fst-servicios" onClick={event => scroll(event, '#fst-servicios')} className="block hover:text-white">Atención farmacéutica</a>
-              <a href="#fst-karla" onClick={event => scroll(event, '#fst-karla')} className="block hover:text-white">Sobre Karla</a>
-              <a href="#fst-preguntas" onClick={event => scroll(event, '#fst-preguntas')} className="block hover:text-white">Preguntas frecuentes</a>
+              <Link to="/feliz-sin-tiroides#fst-recursos" className="block hover:text-white">Recurso gratuito</Link>
+              <Link to="/feliz-sin-tiroides/guias" className="block hover:text-white">Guías y ebooks</Link>
+              <Link to="/feliz-sin-tiroides/herramientas" className="block hover:text-white">Herramientas</Link>
+              <Link to="/feliz-sin-tiroides/academy" className="block hover:text-white">Academy</Link>
+              <Link to="/feliz-sin-tiroides/atencion-farmaceutica" className="block hover:text-white">Atención farmacéutica</Link>
+              <Link to="/feliz-sin-tiroides/sobre-mi" className="block hover:text-white">Sobre mí</Link>
+              <Link to="/feliz-sin-tiroides/comunidad" className="block hover:text-white">Comunidad</Link>
               <Link to="/articulos" className="block hover:text-white">Artículos educativos</Link>
               <Link to="/" className="block hover:text-white">Edvanta</Link>
             </nav>

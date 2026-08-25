@@ -13,6 +13,7 @@ global.fetch = vi.fn(() =>
     json: () => Promise.resolve({ google: { enabled: false } }),
   })
 );
+window.scrollTo = vi.fn();
 
 // Capturar errores no capturados
 const originalError = console.error;
@@ -35,7 +36,7 @@ describe('App carga sin errores', () => {
       </MemoryRouter>
     );
     await waitFor(() => {
-      expect(screen.queryByText(/Vivir sin tiroides también se aprende/i)).toBeTruthy();
+      expect(screen.queryByText(/Únete a la comunidad de pacientes tiroideos/i)).toBeTruthy();
     }, { timeout: 8000 });
     const reactErrors = capturedErrors.filter(e => e.includes('at ') || e.includes('Error'));
     expect(reactErrors.length).toBe(0);

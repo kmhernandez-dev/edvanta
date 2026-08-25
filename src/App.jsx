@@ -59,6 +59,7 @@ const EmprendimientosPage = lazy(() => import('./pages/EmprendimientosPage'));
 const HerramientasPage = lazy(() => import('./pages/HerramientasPage'));
 const EmpresasPage = lazy(() => import('./pages/EmpresasPage'));
 const BuscarPage = lazy(() => import('./pages/BuscarPage'));
+const ComunidadPage = lazy(() => import('./pages/ComunidadPage'));
 const HerramientaLandingPage = lazy(() => import('./pages/HerramientaLandingPage'));
 
 function RouteFallback() {
@@ -87,6 +88,9 @@ export default function App() {
 
         {/* Buscador global del ecosistema Edvanta */}
         <Route path="/buscar" element={<BuscarPage />} />
+
+        {/* Landing de la comunidad QF */}
+        <Route path="/comunidad" element={<ComunidadPage />} />
 
         {/* Marca: Feliz Sin Tiroides (pacientes) */}
         <Route path="/feliz-sin-tiroides" element={<FelizSinTiroides />} />
