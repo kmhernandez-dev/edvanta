@@ -29,6 +29,8 @@ const EVENT_LABELS = {
   account_created: 'Cuenta creada',
   nutrifst_opened: 'NutriFST abierto',
   vida360_opened: 'Vida360 abierto',
+  retos_viewed: 'Retos vistos',
+  hotmart_purchase: 'Compra Hotmart',
 };
 
 const STATUS_LABELS = {
@@ -54,6 +56,7 @@ const STATUS_COLORS = {
 };
 
 const TABS = [
+  { id: 'analisis', label: 'Análisis' },
   { id: 'resumen', label: 'Resumen' },
   { id: 'leads', label: 'Guías / Leads' },
   { id: 'eventos', label: 'Eventos' },
@@ -194,6 +197,7 @@ export default function AdminTracking() {
   const [retosStatus, setRetosStatus] = useState('');
   const [provider, setProvider] = useState('');
   const [fstSection, setFstSection] = useState('');
+  const [analytics, setAnalytics] = useState(null);
   const [autoRefresh, setAutoRefresh] = useState(true);
 
   useEffect(() => {
@@ -223,7 +227,7 @@ export default function AdminTracking() {
     setLoading(true);
     setError('');
     try {
-      const [sum, l, e, o, a, r, c, fc] = await Promise.all([
+      const [sum, l, e, o, a, r, c, fc, an] = await Promise.all([
         get('summary'),
         get('leads', { days }),
         get('events', { days, type: eventType }),
@@ -232,6 +236,7 @@ export default function AdminTracking() {
         get('retos', { days, status: retosStatus }),
         get('clicks', { days, provider }),
         get('fstclicks', { days, section: fstSection }),
+        get('analytics'),
       ]);
       setSummary(sum || null);
       setLeads(l);
@@ -241,6 +246,7 @@ export default function AdminTracking() {
       setRetos(r);
       setClicks(c);
       setFstClicks(fc);
+      setAnalytics(an || null);
     } catch (err) {
       setError(err.message === 'token' ? 'Token admin inválido o vencido' : 'Error de red. Reintenta en unos segundos.');
     } finally {
@@ -268,6 +274,7 @@ export default function AdminTracking() {
     localStorage.removeItem(TOKEN_KEY);
     setToken('');
     setSummary(null);
+    setAnalytics(null);
     setLeads([]); setEvents([]); setOrders([]); setAcademy([]); setRetos([]); setClicks([]); setFstClicks([]);
   }, []);
 
@@ -382,6 +389,104 @@ export default function AdminTracking() {
             <span>{error}</span>
             <button onClick={fetchAll} className="text-xs font-semibold underline">Reintentar</button>
           </div>
+        )}
+
+        {tab === 'analisis' && (
+          <>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+              <MetricCard label="Leads / guías" value={analytics?.funnel?.leads_total ?? '—'} hint="total histórico" />
+              <MetricCard label="Clics Hotmart" value={analytics?.funnel?.hotmart_clicks ?? '—'} hint="clics + compras" />
+              <MetricCard label="Ventas aprobadas" value={analytics?.funnel?.orders_approved ?? '—'} hint="Mercado Pago + Hotmart" />
+              <MetricCard label="Ingresos" value={formatPrice(analytics?.funnel?.revenue_total ?? 0)} hint="total histórico" />
+            </div>
+
+            <div className="bg-white border border-gray-200 rounded-xl p-5">
+              <h2 className="text-sm font-bold text-navy-950 mb-4">Embudo de conversión</h2>
+              <div className="space-y-3">
+                {(analytics?.funnel ? [
+                  ['Leads capturados', analytics.funnel.leads_total],
+                  ['Eventos registrados', analytics.funnel.events_total],
+                  ['Clics en Hotmart', analytics.funnel.hotmart_clicks],
+                  ['Compras aprobadas', analytics.funnel.orders_approved],
+                ] : []).map(([label, value], i, arr) => {
+                  const base = arr.length ? arr[0][1] || 1 : 1;
+                  const pct = base ? Math.round((value / base) * 100) : 0;
+                  return (
+                    <div key={label}>
+                      <div className="flex justify-between text-xs mb-1">
+                        <span className="font-medium text-gray-600">{label}</span>
+                        <span className="font-semibold text-navy-950">{value ?? '—'} <span className="text-gray-400 font-normal">({pct}%)</span></span>
+                      </div>
+                      <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
+                        <div className={`h-full rounded-full ${i === arr.length - 1 ? 'bg-emerald-500' : 'bg-teal-600'}`} style={{ width: `${Math.max(pct, 2)}%` }} />
+                      </div>
+                    </div>
+                  );
+                })}
+                {!analytics?.funnel && <p className="text-xs text-gray-400">Cargando embudo…</p>}
+              </div>
+            </div>
+
+            <div className="grid lg:grid-cols-2 gap-4">
+              <div className="bg-white border border-gray-200 rounded-xl p-5">
+                <h2 className="text-sm font-bold text-navy-950 mb-3">Atribución de compras (30 días)</h2>
+                {(analytics?.sources || []).length === 0 && <p className="text-xs text-gray-400">Sin compras con atribución. Los clics Hotmart ya registran email, UTM y campaña: en cuanto vuelvan a llegar compras verás aquí de dónde vino cada una.</p>}
+                {(analytics?.sources || []).length > 0 && (
+                  <DataTable
+                    columns={[
+                      { key: 'utm_source', label: 'Fuente', render: row => <span className="font-semibold text-navy-950">{row.utm_source}</span> },
+                      { key: 'utm_campaign', label: 'Campaña' },
+                      { key: 'landing_path', label: 'Landing', className: 'max-w-32 truncate' },
+                      { key: 'orders', label: 'Ventas', align: 'right' },
+                      { key: 'revenue', label: 'Ingresos', align: 'right', render: row => formatPrice(row.revenue || 0) },
+                    ]}
+                    rows={analytics?.sources || []}
+                    empty="Sin datos"
+                  />
+                )}
+              </div>
+
+              <div className="bg-white border border-gray-200 rounded-xl p-5">
+                <h2 className="text-sm font-bold text-navy-950 mb-3">Actividad diaria (30 días)</h2>
+                <div className="space-y-1">
+                  {(analytics?.daily || []).slice().reverse().map(d => {
+                    const total = (d.leads || 0) + (d.events || 0) + (d.orders || 0);
+                    return (
+                      <div key={d.day} className="flex items-center gap-2 text-xs">
+                        <span className="w-24 shrink-0 text-gray-500 font-medium">{d.day.slice(5)}</span>
+                        <div className="flex-1 h-2 bg-gray-100 rounded-full overflow-hidden flex">
+                          {total > 0 && (
+                            <>
+                              <div className="h-full bg-teal-500" style={{ width: `${(d.leads / total) * 100}%` }} title={`${d.leads} leads`} />
+                              <div className="h-full bg-blue-400" style={{ width: `${(d.events / total) * 100}%` }} title={`${d.events} eventos`} />
+                              <div className="h-full bg-emerald-500" style={{ width: `${(d.orders / total) * 100}%` }} title={`${d.orders} ventas`} />
+                            </>
+                          )}
+                        </div>
+                        <span className="w-16 shrink-0 text-right text-gray-400">{d.leads ?? 0} · {d.events ?? 0} · {d.orders ?? 0}</span>
+                      </div>
+                    );
+                  })}
+                </div>
+                <div className="mt-3 flex gap-4 text-[11px] text-gray-500">
+                  <span><span className="inline-block w-2 h-2 rounded-full bg-teal-500 mr-1" />leads</span>
+                  <span><span className="inline-block w-2 h-2 rounded-full bg-blue-400 mr-1" />eventos</span>
+                  <span><span className="inline-block w-2 h-2 rounded-full bg-emerald-500 mr-1" />ventas</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-white border border-gray-200 rounded-xl p-5">
+              <h2 className="text-sm font-bold text-navy-950 mb-3">Eventos recientes (30 días)</h2>
+              {(analytics?.top_events || []).map(ev => (
+                <div key={ev.event_type} className="flex justify-between py-1.5 text-xs border-b border-gray-50 last:border-0">
+                  <span className="text-gray-600">{EVENT_LABELS[ev.event_type] || ev.event_type}</span>
+                  <span className="font-semibold text-navy-950">{ev.n}</span>
+                </div>
+              ))}
+              {!analytics?.top_events && <p className="text-xs text-gray-400">Cargando eventos…</p>}
+            </div>
+          </>
         )}
 
         {tab === 'resumen' && (

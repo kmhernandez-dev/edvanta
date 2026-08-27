@@ -15,6 +15,8 @@ const ALLOWED_EVENTS = new Set([
   'account_created',
   'nutrifst_opened',
   'vida360_opened',
+  'retos_viewed',
+  'hotmart_purchase',
 ]);
 
 function clean(value, max = 160) {

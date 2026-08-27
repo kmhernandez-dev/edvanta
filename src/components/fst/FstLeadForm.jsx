@@ -4,6 +4,7 @@ import { FORM_ENDPOINT, FREE_RESOURCE_URL, PRIVACY_POLICY_URL, THANK_YOU_PAGE_UR
 import { FST_COMMUNITY_URL } from '../../config/links';
 import { getAttribution, trackEvent } from '../../utils/analytics';
 import { trackLeadEvent } from '../../lib/leadEvents';
+import { rememberLeadEmail } from '../../lib/leadIdentity';
 
 const LEAD_SESSION_KEY = 'fst-lead-requested';
 
@@ -82,6 +83,7 @@ export default function FstLeadForm({ selectedInterest = '', recommendation = ''
 
       setStatus('success');
       sessionStorage.setItem(LEAD_SESSION_KEY, '1');
+      rememberLeadEmail(form.email);
       trackEvent('lead_form_submit', { interest: form.interest, form: 'checklist_levotiroxina' });
       trackEvent('free_resource_download', { resource: 'checklist_levotiroxina' });
       trackLeadEvent('free_guide_requested', {

@@ -3,6 +3,7 @@ import Icon from '../Icon';
 import { FORM_ENDPOINT, PRIVACY_POLICY_URL } from '../../config/fst';
 import { getAttribution, trackEvent } from '../../utils/analytics';
 import { trackLeadEvent } from '../../lib/leadEvents';
+import { rememberLeadEmail } from '../../lib/leadIdentity';
 
 const interestOptions = [
   ['tiroides', 'Tiroides y endocrinología'],
@@ -42,6 +43,7 @@ export default function FstAcademyLeadForm() {
       }
 
       setStatus('success');
+      rememberLeadEmail(form.email);
       trackEvent('lead_form_submit', { interest: form.interest, form: 'academy_aviso' });
       trackLeadEvent('academy_lead_created', {
         email: form.email,

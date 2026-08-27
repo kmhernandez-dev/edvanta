@@ -16,10 +16,13 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Icon from '../components/Icon';
+import FstLeadForm from '../components/fst/FstLeadForm';
 import { ebooks } from '../data/fst';
 import { FST_COMMUNITY_URL, FST_COLECCION_HOTMART, waLink } from '../config/links';
 import { updatePageSeo } from '../utils/seo';
 import { trackEvent } from '../utils/analytics';
+import { trackLeadEvent } from '../lib/leadEvents';
+import { trackFstClick } from '../lib/fstClicks';
 
 const WA_GENERAL = 'Hola Karla, quiero información sobre Feliz Sin Tiroides.';
 const WA_ATENCION = 'Hola Karla, quiero conocer la atención farmacéutica personalizada.';
@@ -225,7 +228,11 @@ export default function FelizSinTiroides() {
   const restantes = ebooks.filter(e => e !== coleccion && (e.checkoutUrl || e.hotmartUrl));
   const catalogo = [coleccion, ...restantes].filter(Boolean);
 
-  const onComprar = (e) => trackEvent('fst_ebook_click', { id: e.id });
+  const onComprar = (e) => {
+    trackEvent('fst_ebook_click', { id: e.id });
+    trackLeadEvent('hotmart_clicked', { productId: e.id, resourceName: e.name });
+    trackFstClick({ section: 'coleccion', element: `cta_${e.id}`, label: e.name, destination: buyUrl(e) });
+  };
 
   return (
     <div className="fst-landing">
@@ -247,8 +254,8 @@ export default function FelizSinTiroides() {
 
           <div className="nav__acciones">
             <Link to="/fst-app" className="nav__acceder">Acceder</Link>
-            <Link to="/fst-app?modo=registro" className="btn btn--principal" onClick={() => trackEvent('fst_nav_click', { cta: 'crear_cuenta' })}>Crear cuenta</Link>
-            <a className="nav__wa" href={waLink(WA_GENERAL)} target="_blank" rel="noopener noreferrer" aria-label="Escribir por WhatsApp">
+            <Link to="/fst-app?modo=registro" className="btn btn--principal" onClick={() => { trackEvent('fst_nav_click', { cta: 'crear_cuenta' }); trackLeadEvent('account_signup_started', { source: 'nav' }); }}>Crear cuenta</Link>
+            <a className="nav__wa" href={waLink(WA_GENERAL)} target="_blank" rel="noopener noreferrer" aria-label="Escribir por WhatsApp" onClick={() => { trackEvent('whatsapp_click', { location: 'nav' }); trackLeadEvent('community_clicked', { source: 'nav_whatsapp' }); }}>
               <Icon name="whatsapp" className="h-5 w-5" />
             </a>
           </div>
@@ -263,7 +270,7 @@ export default function FelizSinTiroides() {
             <h1>Únete a la comunidad de pacientes tiroideos más grande de habla hispana</h1>
             <p className="heroe__sub">Información clara, ebooks prácticos y acompañamiento profesional para que entiendas tu tiroides y tomes decisiones con seguridad.</p>
             <div className="heroe__botones">
-              <a className="btn btn--principal" href={FST_COMMUNITY_URL} target="_blank" rel="noopener noreferrer" onClick={() => trackEvent('fst_hero_click', { cta: 'comunidad' })}>Unirme a la comunidad <span className="flecha">→</span></a>
+              <a className="btn btn--principal" href={FST_COMMUNITY_URL} target="_blank" rel="noopener noreferrer" onClick={() => { trackEvent('fst_hero_click', { cta: 'comunidad' }); trackLeadEvent('community_clicked', { source: 'hero' }); trackFstClick({ section: 'comunidad', element: 'cta_unirme', label: 'Unirme a la comunidad', destination: FST_COMMUNITY_URL }); }}>Unirme a la comunidad <span className="flecha">→</span></a>
               <a className="btn btn--contorno" href="#ebooks">Explorar contenido</a>
             </div>
           </div>
@@ -315,7 +322,23 @@ export default function FelizSinTiroides() {
           </div>
 
           <div className="pie-seccion">
-            <a className="btn btn--suave" href={FST_COLECCION_HOTMART} target="_blank" rel="noopener noreferrer sponsored">Ver la Colección completa <span className="flecha">→</span></a>
+            <a className="btn btn--suave" href={FST_COLECCION_HOTMART} target="_blank" rel="noopener noreferrer sponsored" onClick={() => { trackEvent('fst_ebook_click', { id: 'coleccion' }); trackLeadEvent('hotmart_clicked', { productId: 'fst-coleccion-sana', resourceName: 'Colección Sana tu Tiroides' }); trackFstClick({ section: 'coleccion', element: 'cta_coleccion_completa', label: 'Ver la Colección completa', destination: FST_COLECCION_HOTMART }); }}>Ver la Colección completa <span className="flecha">→</span></a>
+          </div>
+        </div>
+      </section>
+
+      {/* ── GUÍA GRATIS (captación de leads) ── */}
+      <section className="seccion" id="guia-gratis">
+        <div className="contenedor">
+          <div className="grid gap-10 items-center" style={{ gridTemplateColumns: 'minmax(0,1fr)' }}>
+            <div className="encabezado" style={{ marginBottom: 0 }}>
+              <div>
+                <p className="eyebrow">Recurso gratuito</p>
+                <h2>Tu guía de levotiroxina, sin costo</h2>
+                <p>Horarios, alimentos e interacciones en lenguaje claro, para que tu tratamiento por fin funcione. Escrita por una Química Farmacéutica que también vive sin tiroides.</p>
+              </div>
+            </div>
+            <FstLeadForm compact />
           </div>
         </div>
       </section>
@@ -355,7 +378,7 @@ export default function FelizSinTiroides() {
               <div className="panel__linea"><span>Incluye</span><span>Informe escrito</span></div>
               <div className="panel__linea"><span>Contacto</span><span>WhatsApp directo</span></div>
             </div>
-            <a className="btn btn--principal" href={waLink(WA_ATENCION)} target="_blank" rel="noopener noreferrer" onClick={() => trackEvent('fst_atencion_click')}>Conocer la atención farmacéutica <span className="flecha">→</span></a>
+            <a className="btn btn--principal" href={waLink(WA_ATENCION)} target="_blank" rel="noopener noreferrer" onClick={() => { trackEvent('fst_atencion_click'); trackLeadEvent('pharmaceutical_service_clicked', { source: 'landing' }); trackFstClick({ section: 'servicios', element: 'cta_atencion', label: 'Conocer atención farmacéutica', destination: waLink(WA_ATENCION) }); }}>Conocer la atención farmacéutica <span className="flecha">→</span></a>
             <p className="plomo" style={{ fontSize: '.8rem', marginTop: '14px' }}>No sustituye la consulta con tu médico tratante.</p>
           </aside>
         </div>
@@ -379,7 +402,7 @@ export default function FelizSinTiroides() {
                   </>
                 );
                 return item.external ? (
-                  <a key={item.label} className="pie__ex" href={item.href} target="_blank" rel="noopener noreferrer">{inner}</a>
+                  <a key={item.label} className="pie__ex" href={item.href} target="_blank" rel="noopener noreferrer" onClick={() => { trackLeadEvent('community_clicked', { source: 'footer' }); trackFstClick({ section: 'comunidad', element: 'footer_comunidad', label: item.label, destination: item.href }); }}>{inner}</a>
                 ) : item.href.startsWith('#') ? (
                   <a key={item.label} className="pie__ex" href={item.href}>{inner}</a>
                 ) : (
@@ -400,9 +423,9 @@ export default function FelizSinTiroides() {
             <div>
               <h4>Productos</h4>
               <ul>
-                <li><a href="#ebooks">Ebooks</a></li>
+                <li><a href="#ebooks" onClick={() => trackLeadEvent('guide_viewed', { productId: 'ebooks', resourceName: 'Ebooks FST' })}>Ebooks</a></li>
                 <li><a href="#atencion">Atención farmacéutica</a></li>
-                <li><a href={FST_COMMUNITY_URL} target="_blank" rel="noopener noreferrer">Comunidad</a></li>
+                <li><a href={FST_COMMUNITY_URL} target="_blank" rel="noopener noreferrer" onClick={() => trackLeadEvent('community_clicked', { source: 'footer_productos' })}>Comunidad</a></li>
                 <li><Link to="/vida-360">Vida 360</Link></li>
               </ul>
             </div>
@@ -410,7 +433,7 @@ export default function FelizSinTiroides() {
               <h4>Contacto</h4>
               <ul>
                 <li><a href="https://instagram.com/felizsintiroides" target="_blank" rel="noopener noreferrer">@felizsintiroides</a></li>
-                <li><a href={waLink(WA_GENERAL)} target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
+                <li><a href={waLink(WA_GENERAL)} target="_blank" rel="noopener noreferrer" onClick={() => trackLeadEvent('community_clicked', { source: 'footer_whatsapp' })}>WhatsApp</a></li>
                 <li><Link to="/fst-app">Acceder / Crear cuenta</Link></li>
                 <li><Link to="/">Volver a Edvanta</Link></li>
               </ul>

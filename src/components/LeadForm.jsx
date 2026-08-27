@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { apiUrl } from '../config/api';
+import { rememberLeadEmail } from '../lib/leadIdentity';
 
 /**
  * Formulario de captación de correos para los recursos gratis.
@@ -23,6 +24,7 @@ export default function LeadForm({ buttonText = 'Quiero los recursos gratis' }) 
       });
       const data = await res.json();
       if (res.ok && data.ok) {
+        rememberLeadEmail(email);
         setState('success');
       } else {
         setError(data.error || 'No se pudo registrar. Intenta de nuevo.');

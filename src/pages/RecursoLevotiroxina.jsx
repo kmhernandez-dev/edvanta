@@ -4,6 +4,7 @@ import { apiUrl } from '../config/api';
 import { FORM_ENDPOINT } from '../config/fst';
 import { waLink } from '../config/links';
 import { getAttribution, trackEvent } from '../utils/analytics';
+import { rememberLeadEmail } from '../lib/leadIdentity';
 
 const PDF_URL = '/descargas/como-tomar-levotiroxina-correctamente.pdf';
 const PDF_FILENAME = 'Como-tomar-la-levotiroxina-correctamente.pdf';
@@ -148,6 +149,7 @@ export default function RecursoLevotiroxina() {
         method: 'POST', headers: { 'content-type': 'application/json' },
         body: JSON.stringify({ name, email, interest: 'levotiroxina', consent: true, resource: 'guia-como-tomar-levotiroxina', ...getAttribution() }),
       }).catch(() => {});
+      rememberLeadEmail(email);
       trackEvent('lead_form_submit', { form: 'guia_levotiroxina_pdf', interest: 'levotiroxina' });
       trackEvent('free_resource_download', { resource: 'guia_levotiroxina_pdf' });
       localStorage.setItem(UNLOCK_KEY, '1');

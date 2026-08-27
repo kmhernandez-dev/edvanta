@@ -19,7 +19,7 @@ const ALLOWED_EVENTS = [
   'lead_created', 'free_guide_requested', 'guide_viewed', 'hotmart_clicked',
   'academy_viewed', 'academy_lead_created', 'community_clicked',
   'pharmaceutical_service_clicked', 'account_signup_started', 'account_created',
-  'nutrifst_opened', 'vida360_opened',
+  'nutrifst_opened', 'vida360_opened', 'retos_viewed', 'hotmart_purchase',
 ];
 
 function cleanDate(value) {
@@ -305,6 +305,89 @@ router.get('/fstclicks', async (req, res) => {
   } catch (e) {
     console.error(JSON.stringify({ level: 'error', msg: 'tracking fstclicks', error: e.message }));
     res.status(500).json({ error: 'No fue posible cargar los clics FST.' });
+  }
+});
+
+// GET /api/admin/tracking/analytics — análisis del embudo y atribución de compras
+router.get('/analytics', async (_req, res) => {
+  try {
+    const { rows } = await pool.query(`
+      WITH funnel AS (
+        SELECT
+          (SELECT COUNT(*)::int FROM leads) AS leads_total,
+          (SELECT COUNT(*)::int FROM lead_events) AS events_total,
+          (SELECT COUNT(*)::int FROM lead_events WHERE event_type IN ('hotmart_clicked','hotmart_purchase')) AS hotmart_clicks,
+          (SELECT COUNT(*)::int FROM orders WHERE status = 'approved') AS orders_approved,
+          (SELECT COALESCE(SUM(transaction_amount), 0) FROM orders WHERE status = 'approved') AS revenue_total
+      ),
+      daily AS (
+        SELECT to_char(d.d, 'YYYY-MM-DD') AS day, d.d AS date
+        FROM generate_series(NOW() - INTERVAL '29 days', NOW(), INTERVAL '1 day') AS d(d)
+      ),
+      leads_daily AS (
+        SELECT date_trunc('day', created_at) AS day, COUNT(*)::int AS n FROM leads
+        WHERE created_at >= NOW() - INTERVAL '30 days' GROUP BY 1
+      ),
+      events_daily AS (
+        SELECT date_trunc('day', created_at) AS day, COUNT(*)::int AS n FROM lead_events
+        WHERE created_at >= NOW() - INTERVAL '30 days' GROUP BY 1
+      ),
+      orders_daily AS (
+        SELECT date_trunc('day', COALESCE(date_approved, logged_at)) AS day, COUNT(*)::int AS n,
+               COALESCE(SUM(transaction_amount), 0) AS revenue
+        FROM orders WHERE status = 'approved' AND COALESCE(date_approved, logged_at) >= NOW() - INTERVAL '30 days'
+        GROUP BY 1
+      ),
+      order_attribution AS (
+        SELECT
+          o.payment_id,
+          o.transaction_amount,
+          o.email,
+          le.metadata->>'utm_source' AS utm_source,
+          le.metadata->>'utm_campaign' AS utm_campaign,
+          le.metadata->>'landing_path' AS landing_path
+        FROM orders o
+        LEFT JOIN LATERAL (
+          SELECT metadata FROM lead_events le
+          WHERE le.email = o.email
+            AND le.metadata ? 'utm_source'
+            AND le.created_at <= COALESCE(o.date_approved, o.logged_at)
+          ORDER BY le.created_at DESC
+          LIMIT 1
+        ) le ON true
+        WHERE o.status = 'approved' AND o.email IS NOT NULL
+      )
+      SELECT
+        (SELECT row_to_json(f) FROM funnel f) AS funnel,
+        (SELECT COALESCE(json_agg(json_build_object(
+                'day', d.day, 'leads', COALESCE(l.n, 0), 'events', COALESCE(e.n, 0),
+                'orders', COALESCE(o.n, 0), 'revenue', COALESCE(o.revenue, 0))
+              ORDER BY d.date), '[]'::json)
+         FROM daily d
+         LEFT JOIN leads_daily l  ON l.day = d.date
+         LEFT JOIN events_daily e ON e.day = d.date
+         LEFT JOIN orders_daily o ON o.day = d.date) AS daily,
+        (SELECT COALESCE(json_agg(json_build_object('utm_source', utm_source,
+                 'utm_campaign', utm_campaign, 'landing_path', landing_path,
+                 'orders', cnt, 'revenue', revenue) ORDER BY cnt DESC), '[]'::json)
+         FROM (
+           SELECT COALESCE(NULLIF(utm_source, ''), 'directo') AS utm_source,
+                  COALESCE(NULLIF(utm_campaign, ''), 'sin campaña') AS utm_campaign,
+                  COALESCE(NULLIF(landing_path, ''), '/') AS landing_path,
+                  COUNT(*)::int AS cnt, SUM(transaction_amount) AS revenue
+           FROM order_attribution
+           GROUP BY 1, 2, 3
+         ) a) AS sources,
+        (SELECT COALESCE(json_agg(json_build_object('event_type', event_type, 'n', n) ORDER BY n DESC), '[]'::json)
+         FROM (
+           SELECT event_type, COUNT(*)::int AS n FROM lead_events
+           WHERE created_at >= NOW() - INTERVAL '30 days' GROUP BY 1
+         ) e) AS top_events
+    `);
+    res.json({ data: rows[0] });
+  } catch (e) {
+    console.error(JSON.stringify({ level: 'error', msg: 'tracking analytics', error: e.message }));
+    res.status(500).json({ error: 'No fue posible generar el análisis.' });
   }
 });
 
