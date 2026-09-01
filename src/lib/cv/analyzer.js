@@ -185,6 +185,59 @@ export function analyzeCv(cv, cargoSlug = '') {
     findings.push({ tipo: 'error', titulo: 'Errores de ortografía', detalle: `Posibles errores: ${erres.join(', ')}. La IA de revisión los penaliza. Revisa dos veces.` });
   }
 
+  // 9. Calidad del contacto (formato)
+  const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(cv?.email || '');
+  const telefonoOk = /\d{6,}/.test((cv?.telefono || '').replace(/\D/g, ''));
+  if (emailOk) score += 2;
+  else if (String(cv?.email || '').trim()) {
+    findings.push({ tipo: 'warn', titulo: 'Formato del correo', detalle: 'El correo escrito no parece válido. Verifica que no tenga espacios ni errores de tipeo.' });
+  }
+  if (telefonoOk) score += 2;
+  else if (String(cv?.telefono || '').trim()) {
+    findings.push({ tipo: 'warn', titulo: 'Formato del teléfono', detalle: 'El teléfono parece incompleto. Usa el formato +57 300 000 0000 para Colombia.' });
+  }
+  if (String(cv?.linkedin || '').trim()) score += 1;
+  else findings.push({ tipo: 'info', titulo: 'LinkedIn o portafolio', detalle: 'Agrega tu perfil de LinkedIn o portafolio en el encabezado: los reclutadores lo consultan y suma coincidencias.' });
+
+  // 10. Fechas en la experiencia
+  const experiencia = Array.isArray(cv?.experiencia) ? cv.experiencia.filter(e => e?.cargo) : [];
+  if (experiencia.length) {
+    const conFechas = experiencia.filter(e => String(e?.inicio || '').trim() || String(e?.fin || '').trim()).length;
+    if (conFechas === experiencia.length) score += 2;
+    else findings.push({ tipo: 'warn', titulo: 'Fechas en la experiencia', detalle: 'Agrega mes y año de inicio y fin en cada cargo. Los ATS ordenan por fechas y leen mejor la trayectoria.' });
+  }
+
+  // 11. Habilidades
+  const habilidades = Array.isArray(cv?.habilidades) ? cv.habilidades.filter(Boolean) : [];
+  if (habilidades.length >= 4) score += 2;
+  else if (habilidades.length) {
+    findings.push({ tipo: 'warn', titulo: 'Cantidad de habilidades', detalle: `Tienes ${habilidades.length} habilidad(es). Apunta a 6-12 con términos estándar del sector (BPM, CAPA, HPLC, Power BI).` });
+  }
+
+  // 12. Certificaciones y referencias
+  if (Array.isArray(cv?.certificaciones) && cv.certificaciones.length) score += 1;
+  if (Array.isArray(cv?.referencias) && cv.referencias.length) {
+    score += 1;
+  } else {
+    findings.push({ tipo: 'info', titulo: 'Referencias', detalle: 'Escribe "Disponibles a solicitud" o agrega 2 referencias con cargo y contacto.' });
+  }
+
+  // 13. Longitud estimada del documento
+  const palabrasTotales = texto.split(/\s+/).filter(Boolean).length;
+  if (palabrasTotales > 900) {
+    score -= 5;
+    findings.push({ tipo: 'warn', titulo: 'Longitud del documento', detalle: `Tu hoja de vida acumula ~${palabrasTotales} palabras (más de 2 páginas). Recorta a lo esencial: 1-2 páginas maximum.` });
+  } else if (palabrasTotales > 0) {
+    score += 1;
+  }
+
+  // 14. Nombre del archivo
+  findings.push({
+    tipo: 'info',
+    titulo: 'Nombre del archivo',
+    detalle: 'Guarda el PDF como ApellidoNombre_Cargo.pdf (ej. GomezMaria_AnalistaCalidad.pdf). "CV_final_v3.pdf" resta profesionalismo.',
+  });
+
   score = Math.max(0, Math.min(100, score));
 
   const recomendaciones = findings
@@ -198,7 +251,21 @@ export function analyzeCv(cv, cargoSlug = '') {
     bajo: 'Ajusta estructura y contenido siguiendo las recomendaciones: así pasará los filtros automáticos.',
   }[nivel];
 
-  return { score, nivel, mensajeNivel, hallazgos: findings, recomendaciones, keywords: kwUnion };
+  // Desglose por categorías para la interfaz (barras comparativas)
+  const countTipo = (tipo) => findings.filter(f => f.tipo === tipo).length;
+  const desglose = [
+    { nombre: 'Estructura', detalle: 'Secciones esenciales presentes', ok: seccionesOk, total: 4 },
+    { nombre: 'Contacto', detalle: 'Correo, teléfono y perfil válidos', ok: (contactoOk ? 1 : 0) + (emailOk ? 1 : 0) + (telefonoOk ? 1 : 0), total: 3 },
+    { nombre: 'Resumen', detalle: '25-90 palabras con tu valor', ok: resumenLargo >= 25 && resumenLargo <= 90 ? 1 : 0, total: 1 },
+    { nombre: 'Logros', detalle: 'Acción + impacto con números', ok: logros.total && logros.conNumeros >= logros.total / 2 ? 1 : 0, total: 1 },
+    { nombre: 'Keywords', detalle: 'Términos del sector y del cargo', ok: Math.min(kwUnion.length, 10), total: 10 },
+  ];
+
+  const fortalezas = findings
+    .filter(f => f.tipo === 'ok')
+    .map(f => f.titulo);
+
+  return { score, nivel, mensajeNivel, hallazgos: findings, recomendaciones, keywords: kwUnion, desglose, fortalezas };
 }
 
 /**
@@ -242,24 +309,34 @@ export function analyzeText(text, cargoSlug) {
     .filter(s => t.includes(s)).length;
   const tieneLogros = VERBOS_ACCION.some(v => t.includes(v.toLowerCase()))
     || /%|\b\d+\s*(meses|años|anos|proyectos|registros|desviaciones|casos?)/i.test(t);
+  const tieneContacto = /@[^\s@]+\.[^\s@]+|\+?57?[\s.-]?\d{3}[\s.-]?\d{3}[\s.-]?\d{4}|\b\d{7,10}\b/.test(text);
+  const palabras = String(text || '').split(/\s+/).filter(Boolean).length;
 
   const hallazgos = [];
   if (kw.length < 4) hallazgos.push({ tipo: 'warn', titulo: 'Palabras clave del cargo', detalle: `El texto no contiene términos clave de ${cargo?.cargo || 'el cargo'} (${(cargo?.palabras || []).slice(0, 6).join(', ')}). Sin ellos, el ATS no te deja pasar.` });
   if (secciones < 3) hallazgos.push({ tipo: 'warn', titulo: 'Secciones estándar', detalle: 'No se identifican encabezados como "Experiencia" o "Formación". Los ATS necesitan encabezados claros para leer tu documento.' });
   if (!tieneLogros) hallazgos.push({ tipo: 'warn', titulo: 'Logros medibles', detalle: 'No se detectan logros con números o verbos de acción. Convierte responsabilidades en "Acción + Impacto".' });
+  if (!tieneContacto) hallazgos.push({ tipo: 'warn', titulo: 'Datos de contacto', detalle: 'No detecto correo ni teléfono en el texto: sin contacto visible, el reclutador no puede llamarte.' });
+  if (palabras > 900) hallazgos.push({ tipo: 'warn', titulo: 'Documento extenso', detalle: 'El texto supera unas 2 páginas. Los ATS priorizan la primera página: recorta lo esencial.' });
   if (REGEX_DATOS_PROHIBIDOS.test(t)) hallazgos.push({ tipo: 'error', titulo: 'Datos prohibidos', detalle: 'Detecté datos como fecha de nacimiento o identificación: elimínalos (Ley 1581/2012).' });
+  const erres = [];
+  REGEX_TIPOS_ERRORE.forEach(({ re, orig }) => { if (re.test(text)) erres.push(orig); });
+  if (erres.length) hallazgos.push({ tipo: 'error', titulo: 'Errores de ortografía', detalle: `Posibles errores: ${erres.join(', ')}. La IA de revisión los penaliza. Revisa dos veces.` });
   if (REGEX_FOTO.test(t)) hallazgos.push({ tipo: 'info', titulo: 'Foto o imagen', detalle: 'Si el documento lleva foto o diseño complejo, reemplázalo: los ATS leen texto plano.' });
   if (hallazgos.length === 0) hallazgos.push({ tipo: 'ok', titulo: 'Documento bien estructurado', detalle: 'El texto se ve listo para pasar por un ATS: secciones, keywords y logros presentes.' });
 
   const score = Math.max(20, Math.min(95,
-    kw.length * 6 + kwTrans.length * 2 + secciones * 5 + (tieneLogros ? 15 : 0)
+    kw.length * 6 + kwTrans.length * 2 + secciones * 5 + (tieneLogros ? 15 : 0) + (tieneContacto ? 5 : 0)
     - (REGEX_DATOS_PROHIBIDOS.test(t) ? 10 : 0)
   ));
+
+  const fortalezas = hallazgos.filter(f => f.tipo === 'ok').map(f => f.titulo);
 
   return {
     score,
     keywords: [...kw, ...kwTrans],
     hallazgos,
+    fortalezas,
     recomendacion: score >= 70 ? 'Refuerza solo el formato final en PDF con texto seleccionable.' : 'Reescribe con la plantilla de la plataforma: estructura, keywords y logros.',
   };
 }

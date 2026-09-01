@@ -15,7 +15,7 @@ import { Link } from 'react-router-dom';
 import {
   AlertTriangle, Check, ClipboardCopy, Download, FileText, Info, Lock, Plus,
   RefreshCw, Save, Sparkles, Trash2, X, User, Briefcase, GraduationCap, Award,
-  Languages, ScanSearch, ChevronUp, ChevronDown, Eye, Pencil,
+  Languages, ScanSearch, ChevronUp, ChevronDown, Eye, Pencil, Upload, Copy,
 } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 import { useProfessional } from '../../context/ProfessionalContext';
@@ -24,6 +24,7 @@ import { apiUrl } from '../../config/api';
 import { cargosEmpleo } from '../../data/empleo/cargos';
 import { analyzeCv, analyzeText, cargarPorSlug, guiaCVContenido, sugerirCargo } from '../../lib/cv/analyzer';
 import { downloadCvPdf } from '../../lib/cv/pdf';
+import { extractPdfText } from '../../lib/cv/pdfText';
 import { trackEvent } from '../../utils/analytics';
 
 const EMPTY_CV = {
@@ -66,6 +67,37 @@ const SECTIONS = [
 ];
 
 const wordCount = (s) => String(s || '').split(/\s+/).filter(Boolean).length;
+
+// Versión texto plano para pegar en portales (LinkedIn, Elempleo, Magnet…)
+function textoPlano(cv) {
+  const L = [];
+  if (cv.nombre) L.push(cv.nombre);
+  if (cv.titulo) L.push(cv.titulo);
+  const contacto = [cv.email, cv.telefono, cv.ciudad, cv.linkedin].filter(Boolean);
+  if (contacto.length) L.push(contacto.join('  |  '));
+  if (cv.resumen) { L.push(''); L.push('PERFIL PROFESIONAL'); L.push(cv.resumen); }
+  if (cv.experiencia.some(e => e.cargo)) {
+    L.push(''); L.push('EXPERIENCIA');
+    cv.experiencia.filter(e => e.cargo).forEach(e => {
+      L.push(`${e.cargo}${e.empresa ? ` · ${e.empresa}` : ''}${(e.inicio || e.fin) ? ` (${[e.inicio, e.fin || 'Actual'].filter(Boolean).join(' — ')})` : ''}`);
+      String(e.logros || '').split('\n').filter(Boolean).forEach(l => L.push(`• ${l.trim()}`));
+    });
+  }
+  if (cv.educacion.some(e => e.titulo)) {
+    L.push(''); L.push('FORMACIÓN');
+    cv.educacion.filter(e => e.titulo).forEach(e => L.push(`${e.titulo}${e.institucion ? ` · ${e.institucion}` : ''}${e.anio ? ` (${e.anio})` : ''}`));
+  }
+  if (cv.habilidades.length) { L.push(''); L.push('HABILIDADES'); L.push(cv.habilidades.join('  ·  ')); }
+  if (cv.certificaciones.some(c => c.nombre)) {
+    L.push(''); L.push('CERTIFICACIONES');
+    cv.certificaciones.filter(c => c.nombre).forEach(c => L.push(`${c.nombre}${c.institucion ? ` · ${c.institucion}` : ''}${c.anio ? ` (${c.anio})` : ''}`));
+  }
+  if (cv.idiomas.some(i => i.idioma)) {
+    L.push(''); L.push('IDIOMAS');
+    L.push(cv.idiomas.filter(i => i.idioma).map(i => `${i.idioma}${i.nivel ? ` (${i.nivel})` : ''}`).join('  ·  '));
+  }
+  return L.join('\n');
+}
 
 function sectionProgress(cv) {
   const perfil = [cv.nombre, cv.email, cv.resumen, cv.titulo].filter(v => String(v || '').trim()).length / 4;
@@ -210,8 +242,12 @@ export default function CvBuilder() {
   const [textResult, setTextResult] = useState(null);
   const [importStep, setImportStep] = useState(1);
   const [loadingSaved, setLoadingSaved] = useState(false);
+  const [exportOpen, setExportOpen] = useState(false);
+  const [pdfLoading, setPdfLoading] = useState(false);
+  const [pdfError, setPdfError] = useState('');
   const dirty = useRef(false);
   const autosaveTimer = useRef(null);
+  const exportRef = useRef(null);
 
   // ── Cargar CV guardado ──
   useEffect(() => {
@@ -325,11 +361,62 @@ export default function CvBuilder() {
     } catch (e) { setSaveState('error'); setSaveMsg(e.message || 'Sin conexión: no se pudo guardar ahora.'); }
   };
 
-  const descargar = async () => {
-    trackEvent('cv_download_pdf');
+  const descargar = async (style = 'diseno') => {
+    trackEvent('cv_download_pdf', { style });
     const label = adaptacion ? adaptacion.cargo.cargo : '';
-    try { await downloadCvPdf(stripDraft(cv), label); }
+    setExportOpen(false);
+    try { await downloadCvPdf(stripDraft(cv), label, style); }
     catch { setSaveMsg('No fue posible generar el PDF en este navegador.'); setSaveState('error'); }
+  };
+
+  const copiarTexto = async () => {
+    try {
+      await navigator.clipboard.writeText(textoPlano(stripDraft(cv)));
+      setSaveMsg('Texto plano copiado: pégalo en el campo "Resumen" de LinkedIn o del portal de vacantes.');
+      setSaveState('saved');
+    } catch { setSaveMsg('No fue posible copiar en este navegador.'); setSaveState('error'); }
+  };
+
+  // Cierra el menú de exportación al hacer clic fuera
+  useEffect(() => {
+    if (!exportOpen) return undefined;
+    const onDoc = (e) => { if (exportRef.current && !exportRef.current.contains(e.target)) setExportOpen(false); };
+    document.addEventListener('mousedown', onDoc);
+    return () => document.removeEventListener('mousedown', onDoc);
+  }, [exportOpen]);
+
+  // Lee un PDF local y extrae su texto (100% en el navegador)
+  const analizarPdf = async (event) => {
+    const file = event?.target?.files?.[0];
+    if (event?.target) event.target.value = '';
+    if (!file) return;
+    setPdfError('');
+    if (file.type !== 'application/pdf' && !/\.pdf$/i.test(file.name)) {
+      setPdfError('Solo se aceptan archivos PDF. Si tu HV está en Word, expórtala como PDF o pega el texto.');
+      return;
+    }
+    if (file.size > 10 * 1024 * 1024) {
+      setPdfError('El archivo supera 10 MB. Comprime el PDF o pega el texto manualmente.');
+      return;
+    }
+    setPdfLoading(true);
+    trackEvent('cv_pdf_uploaded');
+    try {
+      const text = await extractPdfText(file);
+      if (!text.trim()) {
+        setPdfError('Este PDF no tiene texto extraíble (parece escaneado como imagen). Exporta un PDF con texto seleccionable o pega el contenido manualmente.');
+        return;
+      }
+      setTextoPegado(text);
+      const cargoSugerido = sugerirCargo(text) || cargoObjetivo;
+      if (cargoSugerido) setCargoObjetivo(cargoSugerido);
+      setTextResult(analyzeText(text, cargoSugerido));
+      setImportStep(3);
+    } catch {
+      setPdfError('No fue posible leer este PDF. Prueba con otro archivo o pega el texto manualmente.');
+    } finally {
+      setPdfLoading(false);
+    }
   };
 
   const aplicarSugerencia = () => {
@@ -375,9 +462,32 @@ export default function CvBuilder() {
         <button type="button" onClick={guardar} disabled={!tieneContenido} className="inline-flex min-h-10 items-center gap-1.5 rounded-lg border border-edvanta-border bg-white px-3.5 text-sm font-bold text-slate-800 transition hover:border-teal-400 hover:text-teal-800 disabled:opacity-50">
           <Save className="h-4 w-4" /> <span className="hidden sm:inline">Guardar</span>
         </button>
-        <button type="button" onClick={descargar} disabled={!tieneContenido} className="btn-edvanta min-h-10 px-4 py-0 disabled:opacity-50">
-          <Download className="h-4 w-4" /> <span className="hidden sm:inline">Exportar PDF</span>
+        <button type="button" onClick={copiarTexto} disabled={!tieneContenido} title="Copia tu HV en texto plano para portales" className="inline-flex min-h-10 items-center gap-1.5 rounded-lg border border-edvanta-border bg-white px-3 text-sm font-bold text-slate-700 transition hover:border-edvanta-blue/40 hover:text-edvanta-blue disabled:opacity-50">
+          <Copy className="h-4 w-4" /> <span className="hidden md:inline">Copiar texto</span>
         </button>
+        <div className="relative" ref={exportRef}>
+          <button type="button" onClick={() => setExportOpen(v => !v)} aria-expanded={exportOpen} aria-haspopup="menu" disabled={!tieneContenido} className="btn-edvanta inline-flex min-h-10 items-center gap-1.5 px-4 text-sm font-bold disabled:opacity-50">
+            <Download className="h-4 w-4" /> <span className="hidden sm:inline">Descargar</span> <ChevronDown className="h-3.5 w-3.5" />
+          </button>
+          {exportOpen && (
+            <div role="menu" className="absolute right-0 z-30 mt-2 w-80 rounded-xl border border-edvanta-border bg-white p-2 shadow-xl">
+              <button type="button" role="menuitem" onClick={() => descargar('diseno')} className="flex w-full items-start gap-3 rounded-lg p-3 text-left transition hover:bg-edvanta-light/70">
+                <span className="mt-0.5 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-edvanta-light text-edvanta-blue"><FileText className="h-4 w-4" /></span>
+                <span>
+                  <span className="block text-sm font-black text-edvanta-deep">Diseño Edvanta 2026</span>
+                  <span className="mt-0.5 block text-xs leading-4 text-slate-500">Plantilla Blanca Degradado: chips de contacto, línea de tiempo y acentos azules. PDF con texto seleccionable.</span>
+                </span>
+              </button>
+              <button type="button" onClick={() => descargar('ats')} className="mt-1 flex w-full items-center gap-3 rounded-lg p-3 text-left transition hover:bg-slate-50">
+                <span className="mt-0 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-slate-100 text-slate-500"><FileText className="h-4 w-4" /></span>
+                <span>
+                  <span className="block text-sm font-bold text-slate-700">Formato ATS simple</span>
+                  <span className="mt-0.5 block text-xs leading-4 text-slate-500">Texto plano en blanco y negro, para portales con filtros estrictos.</span>
+                </span>
+              </button>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
@@ -463,7 +573,9 @@ export default function CvBuilder() {
         <ImportAnalyzer
           step={importStep} setStep={setImportStep} texto={textoPegado} setTexto={setTextoPegado}
           cargo={cargoObjetivo} setCargo={setCargoObjetivo} onAnalyze={analizarPegado} result={textResult}
-          onReset={() => { setTextResult(null); setImportStep(1); }}
+          onFile={analizarPdf} pdfLoading={pdfLoading} pdfError={pdfError}
+          onGoBuilder={() => { setMode('builder'); setSection('perfil'); }}
+          onReset={() => { setTextResult(null); setImportStep(1); setPdfError(''); }}
         />
       )}
 
@@ -667,6 +779,43 @@ function SectionEditor(props) {
             )}
           </div>
 
+          {/* Desglose por categorías (150% de detalles) */}
+          {analysis?.desglose?.length > 0 && (
+            <div className="rounded-xl border border-edvanta-border bg-white p-5 shadow-sm">
+              <h3 className="text-base font-black text-edvanta-deep">Desglose por categoría</h3>
+              <div className="mt-4 space-y-3">
+                {analysis.desglose.map(d => {
+                  const ratio = Math.max(0, Math.min(1, (Number(d.ok) || 0) / Math.max(1, d.total)));
+                  const color = ratio >= 0.8 ? 'bg-teal-500' : ratio >= 0.45 ? 'bg-amber-500' : 'bg-rose-400';
+                  return (
+                    <div key={d.nombre}>
+                      <div className="flex items-baseline justify-between gap-2">
+                        <p className="text-[13px] font-bold text-edvanta-deep">{d.nombre}</p>
+                        <p className="text-[11px] font-bold text-slate-400">{Math.round(ratio * 100)}%</p>
+                      </div>
+                      <div className="mt-1 h-1.5 w-full overflow-hidden rounded-full bg-slate-100">
+                        <span className={`block h-1.5 rounded-full transition-all ${color}`} style={{ width: `${Math.round(ratio * 100)}%` }} />
+                      </div>
+                      <p className="mt-1 text-[11px] leading-4 text-slate-500">{d.detalle}</p>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          )}
+
+          {/* Fortalezas detectadas */}
+          {analysis?.fortalezas?.length > 0 && (
+            <div className="rounded-xl border border-teal-200 bg-teal-50/60 p-5">
+              <h3 className="text-base font-black text-teal-900">Lo que ya haces bien</h3>
+              <ul className="mt-3 space-y-2">
+                {analysis.fortalezas.map(f => (
+                  <li key={f} className="flex items-start gap-2 text-sm leading-6 text-slate-700"><Check className="mt-0.5 h-4 w-4 shrink-0 text-teal-600" />{f}</li>
+                ))}
+              </ul>
+            </div>
+          )}
+
           {mejoras.length > 0 && (
             <div className="rounded-xl border border-edvanta-border bg-white p-5 shadow-sm">
               <h3 className="text-base font-black text-edvanta-deep">Mejoras recomendadas</h3>
@@ -719,7 +868,7 @@ function SectionEditor(props) {
 }
 
 // ── Analizador de HV existente (por pasos) ──
-function ImportAnalyzer({ step, setStep, texto, setTexto, cargo, setCargo, onAnalyze, result, onReset }) {
+function ImportAnalyzer({ step, setStep, texto, setTexto, cargo, setCargo, onAnalyze, result, onReset, onFile, pdfLoading, pdfError, onGoBuilder }) {
   const steps = [{ n: 1, label: 'Tu hoja de vida' }, { n: 2, label: 'Cargo objetivo' }, { n: 3, label: 'Análisis' }];
   return (
     <div className="space-y-5">
@@ -736,9 +885,26 @@ function ImportAnalyzer({ step, setStep, texto, setTexto, cargo, setCargo, onAna
 
       {step === 1 && (
         <div className="rounded-xl border border-edvanta-border bg-white p-5 shadow-sm">
-          <p className="text-sm font-bold text-edvanta-deep">Pega el texto de tu hoja de vida actual</p>
-          <p className="mt-1 text-sm text-slate-600">Copia el texto de tu CV (Word, PDF o portales). Nada sale de tu navegador.</p>
-          <textarea value={texto} onChange={e => setTexto(e.target.value)} rows={12} placeholder={'NOMBRE\nQuímica farmacéutica\nExperiencia:\n- Analista de control de calidad…\nFormación:\n- Química farmacéutica…\nHabilidades:\n- BPM, Excel avanzado, Power BI'} className="mt-4 w-full rounded-lg border border-edvanta-border p-4 text-sm leading-6 outline-none focus:border-edvanta-blue focus:ring-2 focus:ring-edvanta-blue/15" />
+          <p className="text-sm font-bold text-edvanta-deep">Sube tu hoja de vida en PDF o pega su texto</p>
+          <p className="mt-1 text-sm text-slate-600">El análisis es 100% local y privado: el archivo se lee en tu navegador y no se envía a ningún servidor.</p>
+
+          <label className="mt-4 flex cursor-pointer flex-col items-center justify-center gap-1.5 rounded-xl border-2 border-dashed border-edvanta-border bg-slate-50/60 px-4 py-8 text-center transition hover:border-edvanta-blue/50 hover:bg-edvanta-light/40">
+            <input type="file" accept="application/pdf,.pdf" className="sr-only" onChange={onFile} disabled={pdfLoading} />
+            <Upload className={`h-7 w-7 text-edvanta-blue ${pdfLoading ? 'animate-pulse' : ''}`} />
+            <span className="text-sm font-black text-edvanta-deep">{pdfLoading ? 'Leyendo tu PDF…' : 'Subir hoja de vida en PDF'}</span>
+            <span className="max-w-sm text-xs leading-5 text-slate-500">Hasta 10 MB. Detectamos el cargo probable, el puntaje ATS y qué corregir. Si tu PDF es un escaneo sin texto, te avisamos.</span>
+          </label>
+
+          {pdfLoading && <p className="mt-3 rounded-lg border border-edvanta-blue/20 bg-edvanta-light/60 p-3 text-sm font-semibold text-edvanta-blue" role="status">Extrayendo el texto del PDF…</p>}
+          {pdfError && <p className="mt-3 rounded-lg border border-rose-200 bg-rose-50 p-3 text-sm leading-6 text-rose-800" role="alert">{pdfError}</p>}
+
+          <div className="my-4 flex items-center gap-3">
+            <span className="h-px flex-1 bg-edvanta-border" />
+            <span className="text-xs font-bold uppercase tracking-wide text-slate-400">o pega el texto</span>
+            <span className="h-px flex-1 bg-edvanta-border" />
+          </div>
+
+          <textarea value={texto} onChange={e => setTexto(e.target.value)} rows={9} placeholder={'NOMBRE\nQuímica farmacéutica\nExperiencia:\n- Analista de control de calidad…\nFormación:\n- Química farmacéutica…\nHabilidades:\n- BPM, Excel avanzado, Power BI'} className="w-full rounded-lg border border-edvanta-border p-4 text-sm leading-6 outline-none focus:border-edvanta-blue focus:ring-2 focus:ring-edvanta-blue/15" />
           <button type="button" onClick={() => setStep(2)} disabled={!texto.trim()} className="btn-edvanta mt-3 disabled:opacity-50">Continuar</button>
         </div>
       )}
@@ -769,11 +935,22 @@ function ImportAnalyzer({ step, setStep, texto, setTexto, cargo, setCargo, onAna
                 <div className="mt-1.5 flex flex-wrap gap-1.5">{result.keywords.map(k => <span key={k} className="rounded-full bg-teal-50 px-2.5 py-0.5 text-[11px] font-bold text-teal-700">{k}</span>)}</div>
               </div>
             )}
+            {result.fortalezas?.length > 0 && (
+              <div className="mt-4 rounded-lg border border-teal-200 bg-teal-50/60 p-4">
+                <p className="text-sm font-bold text-teal-900">Lo que ya haces bien</p>
+                <ul className="mt-2 space-y-1.5">
+                  {result.fortalezas.map(f => (
+                    <li key={f} className="flex items-start gap-2 text-sm leading-6 text-slate-700"><Check className="mt-0.5 h-4 w-4 shrink-0 text-teal-600" />{f}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
             <ul className="mt-4 space-y-2">{result.hallazgos.map((f, i) => <FindingRow key={i} f={f} />)}</ul>
           </div>
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap items-center gap-2">
             <button type="button" onClick={onReset} className="btn-edvanta-outline">Analizar otra</button>
-            <p className="self-center text-xs text-slate-500">¿Quieres reescribirla con el creador? Ve a “Construir mi hoja de vida”.</p>
+            <button type="button" onClick={onGoBuilder} className="btn-edvanta"><FileText className="h-4 w-4" /> Reescribirla en el creador</button>
+            <p className="self-center text-xs text-slate-500">En el creador aplicas las mejoras y descargas el PDF.</p>
           </div>
         </div>
       )}
