@@ -52,6 +52,7 @@ const ConnectHub = lazy(() => import('./pages/ConnectHub'));
 const ResourcesHub = lazy(() => import('./pages/ResourcesHub'));
 const VocacionPage = lazy(() => import('./pages/VocacionPage'));
 const EmpleoPage = lazy(() => import('./pages/EmpleoPage'));
+const OfertasQFPage = lazy(() => import('./pages/OfertasQFPage'));
 const PracticasPage = lazy(() => import('./pages/PracticasPage'));
 const NoticiasPage = lazy(() => import('./pages/NoticiasPage'));
 const LinkedinPage = lazy(() => import('./pages/LinkedinPage'));
@@ -185,6 +186,7 @@ export default function App() {
         <Route path="/carreras/:slug" element={<CareerPage />} />
         <Route path="/vocacion" element={<Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-[#f7f9fc] text-sm font-semibold text-slate-600">Cargando orientación vocacional...</div>}><VocacionPage /></Suspense>} />
         <Route path="/empleo" element={<Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-[#f7f9fc] text-sm font-semibold text-slate-600">Cargando centro de empleo...</div>}><EmpleoPage /></Suspense>} />
+        <Route path="/empleo/ofertas-qf" element={<Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-[#f7f9fc] text-sm font-semibold text-slate-600">Cargando ofertas...</div>}><OfertasQFPage /></Suspense>} />
         <Route path="/practicas" element={<Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-[#f7f9fc] text-sm font-semibold text-slate-600">Cargando guía de prácticas...</div>}><PracticasPage /></Suspense>} />
         <Route path="/noticias" element={<Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-[#f7f9fc] text-sm font-semibold text-slate-600">Cargando noticias...</div>}><NoticiasPage /></Suspense>} />
         <Route path="/linkedin" element={<Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-[#f7f9fc] text-sm font-semibold text-slate-600">Cargando guía de LinkedIn...</div>}><LinkedinPage /></Suspense>} />
