@@ -10,6 +10,7 @@ import CvBuilder from '../components/empleo/CvBuilder';
 import { apiUrl } from '../config/api';
 import { updatePageSeo } from '../utils/seo';
 import { plantillaCorreoRRHH, sectoresEmpleo, bolsasEmpleoOficiales, empresasEmpleadoras } from '../data/careerHub';
+import { ofertasQF } from '../data/empleo/ofertasQF';
 
 const VACANTES_DEMO = [
   {
@@ -103,7 +104,7 @@ function CopiarBoton({ texto, label = 'Copiar' }) {
 }
 
 export default function EmpleoPage() {
-  const [vacantes, setVacantes] = useState(VACANTES_DEMO);
+  const [vacantes, setVacantes] = useState(ofertasQF);
   const [loadingVacantes, setLoadingVacantes] = useState(false);
   const [apiError, setApiError] = useState('');
   const [formAbierto, setFormAbierto] = useState(false);
@@ -123,6 +124,7 @@ export default function EmpleoPage() {
       '@type': 'WebPage',
       name: 'Empleo farmacéutico en Colombia',
       url: 'https://edvanta.co/empleo',
+      description: '22 vacantes para Químicos Farmacéuticos publicadas entre el 28 de agosto y el 3 de septiembre de 2026, con postulación directa en la fuente original.',
     },
   }), []);
 
@@ -145,7 +147,7 @@ export default function EmpleoPage() {
           fuente: j.fuente || 'Comunidad Edvanta',
           fecha: j.published_at ? j.published_at.slice(0, 10) : '',
         })) : [];
-        setVacantes(apiJobs.length ? apiJobs : VACANTES_DEMO);
+        setVacantes([...apiJobs, ...ofertasQF]);
         setApiError('');
       })
       .catch(() => {
@@ -357,9 +359,9 @@ export default function EmpleoPage() {
           <div className="flex flex-wrap items-end justify-between gap-3">
             <div>
               <p className="text-sm font-bold uppercase tracking-wide text-amber-700">Banco de vacantes</p>
-              <h2 className="mt-1 text-2xl font-bold text-[#071a4a] sm:text-3xl">Vacantes con plantilla unificada</h2>
+              <h2 className="mt-1 text-2xl font-bold text-[#071a4a] sm:text-3xl">Vacantes para Químicos Farmacéuticos</h2>
               <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-600">
-                Toda oferta se publica con el mismo formato: cargo, empresa, ciudad, modalidad y contacto directo. 
+                Curadas del 28 de agosto al 3 de septiembre de 2026 en LinkedIn, Magneto365 y portales de empresa. Postúlate directo en la fuente original; verifica siempre que la vacante siga abierta.
                 {loadingVacantes ? ' Consultando el banco en línea...' : ` ${vacantes.length} ofertas visibles ahora.`}
               </p>
             </div>
