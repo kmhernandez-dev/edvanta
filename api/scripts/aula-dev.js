@@ -18,6 +18,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { ensureBootstrapAdmins } from '../lib/aula/accounts.js';
 import { fromPglite } from '../lib/aula/db.js';
+import { cleanMigrationSql } from '../lib/sql-text.js';
 import { hashPassword } from '../lib/aula/security.js';
 import { createDiskStorage } from '../lib/aula/storage.js';
 import { createAulaRouter, startAula } from '../routes/aula/index.js';
@@ -46,7 +47,7 @@ const done = new Set((await pglite.query('SELECT name FROM _migrations')).rows.m
 const migrationsDir = path.join(apiDir, 'migrations');
 for (const file of (await readdir(migrationsDir)).filter((f) => /^\d+_aula_.*\.sql$/.test(f)).sort()) {
   if (done.has(file)) continue;
-  await pglite.exec(await readFile(path.join(migrationsDir, file), 'utf8'));
+  await pglite.exec(cleanMigrationSql(await readFile(path.join(migrationsDir, file), 'utf8')));
   await pglite.query('INSERT INTO _migrations (name) VALUES ($1)', [file]);
   console.log(`Migración aplicada: ${file}`);
 }

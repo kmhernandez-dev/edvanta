@@ -16,6 +16,7 @@ import { readdirSync, readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 import { pool } from '../db.js';
+import { cleanMigrationSql } from './sql-text.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const MIGRATIONS_DIR = path.join(__dirname, '..', 'migrations');
@@ -63,7 +64,7 @@ export async function runMigrations() {
   });
 
   for (const file of pending) {
-    const sql = readFileSync(path.join(MIGRATIONS_DIR, file), 'utf8');
+    const sql = cleanMigrationSql(readFileSync(path.join(MIGRATIONS_DIR, file), 'utf8'));
     log('info', `Corriendo ${file}`);
     try {
       await pool.query('BEGIN');

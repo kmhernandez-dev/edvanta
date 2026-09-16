@@ -10,6 +10,7 @@ import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { fromPglite } from '../lib/aula/db.js';
+import { cleanMigrationSql } from '../lib/sql-text.js';
 import { hashPassword } from '../lib/aula/security.js';
 import { createDiskStorage } from '../lib/aula/storage.js';
 import { createAulaRouter } from '../routes/aula/index.js';
@@ -20,7 +21,7 @@ export async function createTestDb() {
   const pglite = new PGlite();
   const files = (await readdir(MIGRATIONS)).filter((f) => /^\d+_aula_.*\.sql$/.test(f)).sort();
   for (const file of files) {
-    await pglite.exec(await readFile(path.join(MIGRATIONS, file), 'utf8'));
+    await pglite.exec(cleanMigrationSql(await readFile(path.join(MIGRATIONS, file), 'utf8')));
   }
   return { pglite, db: fromPglite(pglite) };
 }
