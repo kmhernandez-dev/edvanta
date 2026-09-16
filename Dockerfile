@@ -30,6 +30,9 @@ FROM nginx:1.27-alpine
 
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
+# Un error en nginx.conf falla el build en lugar de tumbar el sitio.
+RUN nginx -t
+
 # Verificar que wget esté disponible (necesario para HEALTHCHECK).
 RUN apk add --no-cache wget
 

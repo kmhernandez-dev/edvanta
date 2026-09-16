@@ -29,3 +29,7 @@ Thumbs.db
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Datos locales del aula (base PGlite, archivos y correos de desarrollo)
+api/.data/
+.data/

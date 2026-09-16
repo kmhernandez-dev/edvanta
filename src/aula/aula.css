@@ -1,0 +1,102 @@
+/*
+ * Aula Edvanta — variables de diseño provisionales.
+ *
+ * La identidad visual definitiva se aplicará cambiando SOLO estas
+ * variables: los componentes del aula no usan colores fijos.
+ */
+.aula-root {
+  /* Marca */
+  --aula-primary: #082E86;
+  --aula-primary-hover: #0A3AA6;
+  --aula-primary-soft: #E4EBFA;
+  --aula-secondary: #25A7B0;
+  --aula-secondary-soft: #DDF3F2;
+  --aula-accent: #8981CE;
+  --aula-accent-soft: #E9E5FA;
+
+  /* Superficies y texto */
+  --aula-bg: #F6F8FC;
+  --aula-surface: #FFFFFF;
+  --aula-surface-muted: #F6F8FC;
+  --aula-border: #E3E9F2;
+  --aula-border-strong: #C9D4E6;
+  --aula-text: #17223B;
+  --aula-muted: #65718A;
+  --aula-subtle: #A6AEBE;
+
+  /* Estados */
+  --aula-success: #0F7480;
+  --aula-success-soft: #DDF3F2;
+  --aula-warning: #8A5300;
+  --aula-warning-soft: #FFF1D6;
+  --aula-danger: #B42318;
+  --aula-danger-soft: #FEE4E2;
+  --aula-info: #082E86;
+  --aula-info-soft: #E4EBFA;
+  --aula-neutral: #65718A;
+  --aula-neutral-soft: #F0F3F8;
+
+  /* Forma y tipografía */
+  --aula-radius-sm: 8px;
+  --aula-radius: 12px;
+  --aula-radius-lg: 16px;
+  --aula-shadow: 0 1px 2px rgba(23, 34, 59, 0.04), 0 6px 20px rgba(23, 34, 59, 0.06);
+  --aula-shadow-lg: 0 12px 36px rgba(23, 34, 59, 0.14);
+  --aula-font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --aula-font-display: 'Manrope', 'Inter', system-ui, sans-serif;
+  --aula-gradient-hero: linear-gradient(135deg, #EEF1FF 0%, #E9E2F8 32%, #DDF3F2 70%, #F4FAFA 100%);
+  --aula-gradient-brand: linear-gradient(90deg, #8179C9 0%, #65A7C1 50%, #28A8AF 100%);
+
+  font-family: var(--aula-font-body);
+  color: var(--aula-text);
+  background: var(--aula-bg);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+.aula-root h1,
+.aula-root h2,
+.aula-root h3 {
+  font-family: var(--aula-font-display);
+  letter-spacing: -0.02em;
+}
+
+.aula-root :focus-visible {
+  outline: 2px solid var(--aula-primary);
+  outline-offset: 2px;
+}
+
+/* Texto enriquecido de las clases */
+.aula-prose {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--aula-text);
+  overflow-wrap: anywhere;
+}
+.aula-prose h2 { font-size: 1.5rem; font-weight: 800; margin: 1.6em 0 0.5em; color: var(--aula-primary); }
+.aula-prose h3 { font-size: 1.2rem; font-weight: 700; margin: 1.4em 0 0.4em; }
+.aula-prose p { margin: 0.7em 0; }
+.aula-prose ul { list-style: disc; padding-left: 1.4em; margin: 0.7em 0; }
+.aula-prose ol { list-style: decimal; padding-left: 1.4em; margin: 0.7em 0; }
+.aula-prose li { margin: 0.25em 0; }
+.aula-prose a { color: var(--aula-primary); text-decoration: underline; text-underline-offset: 2px; }
+.aula-prose blockquote {
+  border-left: 3px solid var(--aula-accent);
+  background: var(--aula-accent-soft);
+  margin: 1em 0;
+  padding: 0.7em 1em;
+  border-radius: 0 var(--aula-radius-sm) var(--aula-radius-sm) 0;
+}
+.aula-prose mark { background: #FFF1B8; padding: 0 0.15em; border-radius: 3px; }
+.aula-prose table { width: 100%; border-collapse: collapse; margin: 1em 0; font-size: 0.95em; }
+.aula-prose th, .aula-prose td { border: 1px solid var(--aula-border); padding: 0.5em 0.7em; text-align: left; vertical-align: top; }
+.aula-prose th { background: var(--aula-surface-muted); font-weight: 600; }
+.aula-prose hr { border: 0; border-top: 1px solid var(--aula-border); margin: 1.5em 0; }
+.aula-prose img { max-width: 100%; height: auto; border-radius: var(--aula-radius-sm); }
+
+@media (prefers-reduced-motion: reduce) {
+  .aula-root *, .aula-root *::before, .aula-root *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

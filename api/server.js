@@ -53,6 +53,11 @@ import articleCommentsRoutes from './routes/article-comments.js';
 import fstClicksRoutes from './routes/fst-clicks.js';
 import vida360Routes from './routes/vida360.js';
 import fstAppRoutes from './routes/fst-app.js';
+import { createAulaRouter, startAula } from './routes/aula/index.js';
+import { fromPgPool } from './lib/aula/db.js';
+import { createDiskStorage } from './lib/aula/storage.js';
+import { parseAdminEmails } from './lib/aula/accounts.js';
+import { sendEmail, fromWithName } from './lib/resend.js';
 
 const PORT = parseInt(process.env.PORT || '3000', 10);
 const NODE_ENV = process.env.NODE_ENV || 'development';
@@ -70,7 +75,9 @@ const app = express();
 app.disable('x-powered-by');
 
 // ── Middlewares ──────────────────────────────────────────────
-app.use(express.json({ limit: '128kb' }));
+// El aula trae su propio parser (contenidos más largos y subidas por partes).
+const jsonSmall = express.json({ limit: '128kb' });
+app.use((req, res, next) => (req.path.startsWith('/api/aula/') ? next() : jsonSmall(req, res, next)));
 
 app.use(cors({
   origin(origin, callback) {
@@ -291,6 +298,19 @@ app.use('/api/community', communityRoutes);
 // Hoja de vida profesional guardada por usuario de Academia
 app.use('/api/cv', cvRoutes);
 
+// Aula virtual empresarial (cuentas propias, sesiones por cookie)
+const aulaDb = fromPgPool(pool);
+const aulaStorage = createDiskStorage(process.env.AULA_STORAGE_DIR || './.data/aula');
+app.use('/api/aula', createAulaRouter({
+  db: aulaDb,
+  storage: aulaStorage,
+  siteUrl: process.env.SITE_URL || 'https://edvanta.co',
+  secureCookies: IS_PROD,
+  mailer: {
+    send: ({ to, subject, html }) => sendEmail({ to, subject, html, from: fromWithName('Aula Edvanta') || undefined }),
+  },
+}));
+
 // ── 404 + manejo de errores (no expone stack traces) ─────────
 app.use((_req, res) => res.status(404).json({ error: 'Not found' }));
 
@@ -338,6 +358,19 @@ async function start() {
       await pool.query('SELECT 1');
       console.log(JSON.stringify({ level: 'info', msg: 'Conexión a base de datos OK' }));
       await runMigrations();
+      try {
+        await startAula({
+          db: aulaDb,
+          storage: aulaStorage,
+          adminEmails: parseAdminEmails(process.env.AULA_ADMIN_EMAILS),
+          log: (entry) => console.log(JSON.stringify({ level: 'info', ns: 'aula', ...entry })),
+        });
+      } catch (e) {
+        console.error(JSON.stringify({
+          level: 'error', ns: 'aula', msg: 'El aula no pudo arrancar', error: e.message, code: e.code,
+          hint: 'Revisa que AULA_STORAGE_DIR exista y sea escribible, y que la migración 029 se haya aplicado.',
+        }));
+      }
     } catch (e) {
       // NO matamos el proceso: el healthcheck reporta unhealthy pero
       // el contenedor sigue vivo y Coolify puede observar.

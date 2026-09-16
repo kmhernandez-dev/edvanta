@@ -13,3 +13,7 @@ Dockerfile.web.dockerignore
 .idea
 .DS_Store
 opencode.json
+
+# Datos locales del aula (PGlite, archivos y correos de desarrollo)
+api/.data
+.data

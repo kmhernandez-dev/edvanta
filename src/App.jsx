@@ -32,6 +32,7 @@ const CareersIndex = lazy(() => import('./pages/CareersIndex'));
 const CareerPage = lazy(() => import('./pages/CareerPage'));
 const EnfermedadPage = lazy(() => import('./pages/EnfermedadPage'));
 const AcademiaIndex = lazy(() => import('./pages/AcademiaIndex'));
+const AulaApp = lazy(() => import('./aula/AulaApp'));
 const AcademiaCurso = lazy(() => import('./pages/AcademiaCurso'));
 const AcademiaClase = lazy(() => import('./pages/AcademiaClase'));
 const MisCursos = lazy(() => import('./pages/MisCursos'));
@@ -107,6 +108,9 @@ export default function App() {
         <Route path="/enfermedades/:slug" element={<EnfermedadPage />} />
         <Route path="/levotiroxina" element={<EnfermedadPage slug="levotiroxina" />} />
         <Route path="/nutricion-tiroidea" element={<EnfermedadPage slug="nutricion-tiroidea" />} />
+
+        {/* Aula virtual empresarial de Edvanta */}
+        <Route path="/aula/*" element={<AulaApp />} />
 
         {/* Academia FST */}
         <Route path="/academia" element={<AcademiaIndex />} />
