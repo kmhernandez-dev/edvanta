@@ -246,13 +246,12 @@
 .fst-typing-dot:nth-child(2) { animation-delay: 0.2s; }
 .fst-typing-dot:nth-child(3) { animation-delay: 0.4s; }
 
-/* ── Hero del inicio Edvanta: entrada palabra a palabra, degradado vivo y trazo ── */
+/* ── Hero del inicio Edvanta: entrada palabra a palabra, degradado vivo y trazo ──
+   El estado inicial vive solo en los keyframes (fill-mode both): si algo desactiva
+   las animaciones, el título queda visible en vez de invisible. */
 .hx-word {
   display: inline-block;
-  opacity: 0;
-  transform: translateY(0.42em);
-  filter: blur(10px);
-  animation: hxWordIn 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+  animation: hxWordIn 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both;
 }
 .hx-grad {
   background-image: linear-gradient(90deg, #8179C9 0%, #65A7C1 28%, #28A8AF 50%, #65A7C1 72%, #8179C9 100%);
@@ -261,10 +260,10 @@
   background-clip: text;
   color: transparent;
   -webkit-text-fill-color: transparent;
-  /* un poco de aire abajo para que el recorte del degradado no corte las tildes ni la cola de la ç */
+  /* aire abajo para que el recorte del degradado no corte tildes ni descendentes */
   padding-bottom: 0.06em;
   animation:
-    hxWordIn 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) forwards,
+    hxWordIn 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both,
     hxShimmer 7s linear infinite;
 }
 .hx-swoosh {
@@ -278,8 +277,7 @@
 }
 .hx-swoosh path {
   stroke-dasharray: 1;
-  stroke-dashoffset: 1;
-  animation: hxDraw 0.9s cubic-bezier(0.6, 0, 0.2, 1) forwards;
+  animation: hxDraw 0.9s cubic-bezier(0.6, 0, 0.2, 1) both;
 }
 .hx-glow {
   background: radial-gradient(closest-side, rgba(137, 129, 206, 0.28), rgba(37, 167, 176, 0.12) 60%, transparent);
@@ -287,9 +285,7 @@
   animation: hxBreathe 6s ease-in-out infinite;
 }
 .hx-fade {
-  opacity: 0;
-  transform: translateY(12px);
-  animation: hxFadeUp 0.7s ease-out forwards;
+  animation: hxFadeUp 0.7s ease-out both;
 }
 .hx-photo {
   animation: hxPhotoIn 1s cubic-bezier(0.2, 0.7, 0.2, 1) 0.25s both;
@@ -299,21 +295,19 @@
   animation: hxMenuIn 0.18s ease-out;
 }
 
-@keyframes hxWordIn { to { opacity: 1; transform: none; filter: blur(0); } }
+@keyframes hxWordIn {
+  from { opacity: 0; transform: translateY(0.42em); filter: blur(10px); }
+  to { opacity: 1; transform: none; filter: blur(0); }
+}
 @keyframes hxShimmer { from { background-position: 0% 50%; } to { background-position: 220% 50%; } }
-@keyframes hxDraw { to { stroke-dashoffset: 0; } }
+@keyframes hxDraw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
 @keyframes hxBreathe { 0%, 100% { opacity: 0.7; transform: scale(1); } 50% { opacity: 1; transform: scale(1.06); } }
-@keyframes hxFadeUp { to { opacity: 1; transform: none; } }
+@keyframes hxFadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
 @keyframes hxPhotoIn { from { opacity: 0; transform: translateY(18px) scale(0.98); } to { opacity: 1; transform: none; } }
 @keyframes hxMenuIn { from { opacity: 0; transform: translateY(-6px) scale(0.98); } to { opacity: 1; transform: none; } }
 
 @media (prefers-reduced-motion: reduce) {
-  .hx-word, .hx-grad, .hx-fade, .hx-photo, .hx-menu, .hx-glow {
+  .hx-word, .hx-grad, .hx-fade, .hx-photo, .hx-menu, .hx-glow, .hx-swoosh path {
     animation: none;
-    opacity: 1;
-    transform: none;
-    filter: none;
   }
-  .hx-glow { filter: blur(24px); }
-  .hx-swoosh path { animation: none; stroke-dashoffset: 0; }
 }
