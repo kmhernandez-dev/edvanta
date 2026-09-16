@@ -1,7 +1,7 @@
 import { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 
-import Header        from '../components/Header';
+import HomeHeader    from '../components/edvanta/HomeHeader';
 import Hero          from '../components/Hero';
 import SelectionMethod from '../components/SelectionMethod';
 import Transparency  from '../components/Transparency';
@@ -51,7 +51,7 @@ export default function BibliotecaHome() {
 
   return (
     <div className="min-h-screen bg-edvanta-home">
-      <Header />
+      <HomeHeader />
 
       {/* ── 1. HERO ────────────────────────────────────────────── */}
       <Hero
