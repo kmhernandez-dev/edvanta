@@ -1,11 +1,15 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link, Navigate, useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 import { LogIn, MailCheck } from 'lucide-react';
 import { post } from '../api';
 import { AuthLayout } from '../layout/Shells';
 import { homeFor, safeReturn, useAulaSession } from '../session';
 import { Button } from '../ui/Button';
-import { errorsFrom, PasswordInput, TextInput } from '../ui/Form';
+import {
+  checkForm, errorsFrom, isBadEmail, passwordProblem, PasswordInput, TextInput, useFocusFirstError,
+} from '../ui/Form';
+
+const BAD_EMAIL = 'El correo no parece válido. Revisa que tenga el formato nombre@dominio.com.';
 import { Alert, PageLoader, Spinner } from '../ui/States';
 
 export function Entrar() {
@@ -15,12 +19,16 @@ export function Entrar() {
   const [form, setForm] = useState({ email: '', password: '' });
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState(null);
+  const formRef = useRef(null);
+  useFocusFirstError(error, formRef);
 
   if (status === 'loading') return <PageLoader />;
   if (user) return <Navigate to={safeReturn(params.get('volver'), user)} replace />;
 
   const submit = async (e) => {
     e.preventDefault();
+    const problems = checkForm([['email', isBadEmail(form.email), BAD_EMAIL]]);
+    if (problems) { setError(problems); return; }
     setBusy(true);
     setError(null);
     try {
@@ -37,7 +45,7 @@ export function Entrar() {
     <AuthLayout>
       <h1 className="text-2xl font-extrabold text-[var(--aula-primary)]">Entra al aula</h1>
       <p className="mt-1 text-sm text-[var(--aula-muted)]">Usa el correo con el que te dieron acceso.</p>
-      <form onSubmit={submit} className="mt-6 flex flex-col gap-4" noValidate>
+      <form ref={formRef} onSubmit={submit} className="mt-6 flex flex-col gap-4" noValidate>
         {general && <Alert tone="danger">{general}</Alert>}
         {params.get('sesion') === 'vencida' && !error && (
           <Alert tone="info">Tu sesión terminó. Vuelve a entrar para continuar donde ibas.</Alert>
@@ -75,9 +83,13 @@ export function Recuperar() {
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState(null);
   const [sent, setSent] = useState(null);
+  const formRef = useRef(null);
+  useFocusFirstError(error, formRef);
 
   const submit = async (e) => {
     e.preventDefault();
+    const problems = checkForm([['email', isBadEmail(email), BAD_EMAIL]]);
+    if (problems) { setError(problems); return; }
     setBusy(true);
     setError(null);
     try {
@@ -108,7 +120,7 @@ export function Recuperar() {
           <p className="mt-1 text-sm text-[var(--aula-muted)]">
             Te enviaremos un enlace para crear una contraseña nueva. También sirve si aún no has activado tu cuenta.
           </p>
-          <form onSubmit={submit} className="mt-6 flex flex-col gap-4" noValidate>
+          <form ref={formRef} onSubmit={submit} className="mt-6 flex flex-col gap-4" noValidate>
             {general && <Alert tone="danger">{general}</Alert>}
             <TextInput
               label="Correo"
@@ -139,6 +151,8 @@ export function Acceso() {
   const [confirm, setConfirm] = useState('');
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState(null);
+  const formRef = useRef(null);
+  useFocusFirstError(error, formRef);
 
   useEffect(() => {
     let alive = true;
@@ -156,6 +170,8 @@ export function Acceso() {
   const submit = async (e) => {
     e.preventDefault();
     if (password !== confirm) return;
+    const problem = passwordProblem(password);
+    if (problem) { setError(checkForm([['password', true, problem]])); return; }
     setBusy(true);
     setError(null);
     try {
@@ -191,13 +207,13 @@ export function Acceso() {
   return (
     <AuthLayout>
       <h1 className="text-2xl font-extrabold text-[var(--aula-primary)]">
-        {invite ? `Bienvenido, ${info.data.firstName}` : 'Crea una contraseña nueva'}
+        {invite ? `Te damos la bienvenida, ${info.data.firstName}` : 'Crea una contraseña nueva'}
       </h1>
       <p className="mt-1 text-sm text-[var(--aula-muted)]">
         {invite ? 'Crea tu contraseña para entrar al aula con ' : 'Será la nueva contraseña de '}
         <strong className="text-[var(--aula-text)]">{info.data.email}</strong>.
       </p>
-      <form onSubmit={submit} className="mt-6 flex flex-col gap-4" noValidate>
+      <form ref={formRef} onSubmit={submit} className="mt-6 flex flex-col gap-4" noValidate>
         {general && <Alert tone="danger">{general}</Alert>}
         <PasswordInput
           label="Contraseña"

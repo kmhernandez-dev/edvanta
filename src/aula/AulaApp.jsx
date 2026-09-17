@@ -11,6 +11,10 @@ import { Acceso, Entrar, Recuperar } from './pages/Acceso';
 import Cuenta from './pages/Cuenta';
 import MiAula from './pages/MiAula';
 import Bitacora from './pages/admin/Bitacora';
+import Empresas, { EmpresaDetalle } from './pages/admin/Empresas';
+import Grupos, { GrupoDetalle } from './pages/admin/Grupos';
+import Importar from './pages/admin/Importar';
+import Participantes, { ParticipanteDetalle } from './pages/admin/Participantes';
 import Resumen from './pages/admin/Resumen';
 import { AulaSessionProvider, RequireAula, useAulaSession } from './session';
 import { Button } from './ui/Button';
@@ -23,6 +27,10 @@ const TITLES = [
   [/^\/aula\/acceso/, 'Crear contraseña'],
   [/^\/aula\/cuenta/, 'Mi cuenta'],
   [/^\/aula\/admin\/auditoria/, 'Bitácora'],
+  [/^\/aula\/admin\/empresas/, 'Empresas'],
+  [/^\/aula\/admin\/grupos/, 'Grupos'],
+  [/^\/aula\/admin\/participantes\/importar/, 'Importar participantes'],
+  [/^\/aula\/admin\/participantes/, 'Participantes'],
   [/^\/aula\/admin/, 'Administración'],
   [/^\/aula/, 'Mi aula'],
 ];
@@ -72,6 +80,13 @@ export default function AulaApp() {
 
           <Route path="admin" element={<RequireAula role="admin"><AdminShell /></RequireAula>}>
             <Route index element={<Resumen />} />
+            <Route path="empresas" element={<Empresas />} />
+            <Route path="empresas/:id" element={<EmpresaDetalle />} />
+            <Route path="grupos" element={<Grupos />} />
+            <Route path="grupos/:id" element={<GrupoDetalle />} />
+            <Route path="participantes" element={<Participantes />} />
+            <Route path="participantes/importar" element={<Importar />} />
+            <Route path="participantes/:id" element={<ParticipanteDetalle />} />
             <Route path="auditoria" element={<Bitacora />} />
             <Route path="*" element={<NotFoundInAula />} />
           </Route>

@@ -111,8 +111,9 @@ const sleep = (ms) => new Promise((r) => { setTimeout(r, ms); });
  * servidor pide otra posición, continúa desde ahí.
  * onProgress recibe un número entre 0 y 1.
  */
-export async function uploadFile(file, { purpose, context = {}, onProgress, signal } = {}) {
+export async function uploadFile(file, { purpose, context = {}, onProgress, onStart, signal } = {}) {
   const upload = await post('/uploads', { purpose, filename: file.name, size: file.size, ...context }, { signal });
+  onStart?.(upload);
   let offset = upload.receivedBytes || 0;
   let failures = 0;
   onProgress?.(offset / file.size);

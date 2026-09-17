@@ -1,4 +1,4 @@
-import { useId, useState } from 'react';
+import { useEffect, useId, useState } from 'react';
 import { Eye, EyeOff } from 'lucide-react';
 
 const control = [
@@ -127,9 +127,56 @@ export function Toggle({ label, description, checked, onChange, disabled, classN
   );
 }
 
-/** Convierte un error de la API en errores por campo + mensaje general. */
-export function errorsFrom(error) {
+/**
+ * Convierte un error (de la API o de checkForm) en errores por campo +
+ * mensaje general. Con `shown` (campos que el formulario muestra), un
+ * error de otro campo pasa al mensaje general para que no se pierda.
+ */
+export function errorsFrom(error, shown = null) {
   if (!error) return { fields: {}, general: null };
-  if (error.field) return { fields: { [error.field]: error.message }, general: null };
+  if (error.fields) return { fields: error.fields, general: null };
+  if (error.field && (!shown || shown.includes(error.field))) {
+    return { fields: { [error.field]: error.message }, general: null };
+  }
   return { fields: {}, general: error.message || 'Algo salió mal.' };
+}
+
+// ── Validación en el navegador ─────────────────────────────
+// Evita viajes inútiles al servidor y marca los campos al instante. El
+// servidor valida todo de nuevo: esto no reemplaza esa validación.
+
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+export const isBlank = (value) => !String(value ?? '').trim();
+export const isBadEmail = (value) => !isBlank(value) && !EMAIL_RE.test(String(value).trim());
+export const isTooLong = (value, max) => String(value ?? '').trim().length > max;
+
+/** Mismas reglas que el servidor (api/lib/aula/security.js). */
+export function passwordProblem(password) {
+  if (!password || password.length < 10) return 'La contraseña debe tener al menos 10 caracteres.';
+  if (password.length > 128) return 'La contraseña admite como máximo 128 caracteres.';
+  if (!/\p{L}/u.test(password) || !/\d/.test(password)) return 'La contraseña debe combinar letras y números.';
+  return null;
+}
+
+/**
+ * `checks` es una lista de [campo, falla, mensaje]. Devuelve null si todo
+ * está bien, o un error con `fields` (el primer mensaje de cada campo).
+ */
+export function checkForm(checks) {
+  const fields = {};
+  for (const [field, failed, message] of checks) {
+    if (failed && !fields[field]) fields[field] = message;
+  }
+  if (!Object.keys(fields).length) return null;
+  const err = new Error('Revisa los campos marcados.');
+  err.fields = fields;
+  return err;
+}
+
+/** Tras un envío fallido, lleva el foco al primer campo marcado. */
+export function useFocusFirstError(error, containerRef) {
+  useEffect(() => {
+    if (!error) return;
+    containerRef.current?.querySelector('[aria-invalid="true"]')?.focus();
+  }, [error, containerRef]);
 }

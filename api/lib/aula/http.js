@@ -114,6 +114,29 @@ export function date(value, field, label, { optional = false } = {}) {
   return d;
 }
 
+/** «1 curso», «3 cursos». Sin `many`, el plural agrega «s». */
+export const plural = (n, one, many = `${one}s`) => `${n} ${Number(n) === 1 ? one : many}`;
+
+/** «a», «a y b», «a, b y c». */
+export const listJoin = (items) => (items.length < 2
+  ? items.join('')
+  : `${items.slice(0, -1).join(', ')} y ${items[items.length - 1]}`);
+
+/** Fecha de calendario (sin hora): devuelve el texto AAAA-MM-DD. */
+export function calendarDate(value, field, label, { optional = false } = {}) {
+  if (value === undefined || value === null || value === '') {
+    if (optional) return null;
+    throw fieldError(field, `${label} es obligatoria.`);
+  }
+  const text = typeof value === 'string' ? value.trim().slice(0, 10) : '';
+  const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(text);
+  const d = match && new Date(Date.UTC(+match[1], +match[2] - 1, +match[3]));
+  if (!d || d.getUTCFullYear() !== +match[1] || d.getUTCMonth() !== +match[2] - 1 || d.getUTCDate() !== +match[3]) {
+    throw fieldError(field, `${label} no es una fecha válida.`);
+  }
+  return text;
+}
+
 export function id(value, field = 'id', label = 'El identificador') {
   return int(value, field, label, { min: 1 });
 }

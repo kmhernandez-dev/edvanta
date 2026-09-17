@@ -4,24 +4,29 @@
  * La lógica del aula recibe un objeto `db` con `query(text, params)` y
  * `tx(fn)`, y no sabe si detrás hay el pool de `pg` (producción) o PGlite
  * (pruebas). Ambos adaptadores devuelven BIGINT y NUMERIC como números,
- * cosa que `pg` no hace por defecto; el ajuste solo aplica a las consultas
- * del aula para no alterar el resto de la API.
+ * cosa que `pg` no hace por defecto, y DATE como texto AAAA-MM-DD: una
+ * fecha de calendario no tiene zona horaria, y convertirla a Date la corre
+ * un día según el huso del servidor o del navegador. El ajuste solo aplica
+ * a las consultas del aula para no alterar el resto de la API.
  */
 import pg from 'pg';
 
 const INT8 = 20;
 const NUMERIC = 1700;
+const DATE = 1082;
 
 const toNumber = (value) => (value === null ? null : Number(value));
+const asText = (value) => value;
 
 const pgTypes = {
   getTypeParser(oid, format) {
     if (oid === INT8 || oid === NUMERIC) return toNumber;
+    if (oid === DATE) return asText;
     return pg.types.getTypeParser(oid, format);
   },
 };
 
-const pgliteParsers = { [INT8]: toNumber, [NUMERIC]: toNumber };
+const pgliteParsers = { [INT8]: toNumber, [NUMERIC]: toNumber, [DATE]: asText };
 
 // Dentro de una transacción, `tx` reutiliza la misma conexión.
 function scoped(queryFn) {

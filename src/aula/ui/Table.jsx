@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { ArrowDown, ArrowUp, ArrowUpDown, ChevronLeft, ChevronRight, Search, X } from 'lucide-react';
 import { useDebounced } from '../hooks';
 import { EmptyState, ErrorState, LoadingBlock } from './States';
@@ -6,11 +7,14 @@ import { EmptyState, ErrorState, LoadingBlock } from './States';
 /**
  * Tabla administrativa con estados de carga, vacío y error.
  * columns: [{ key, header, render?, sortable?, align?, className? }]
+ * rowHref: la primera celda es un enlace real (teclado y lector de pantalla)
+ * y el clic en cualquier parte de la fila lleva al mismo destino.
  */
 export function DataTable({
   columns, rows, rowKey = 'id', sort, dir, onSort, loading, error, onRetry, empty, caption,
-  onRowClick, selection,
+  rowHref, selection,
 }) {
+  const navigate = useNavigate();
   if (error) return <ErrorState error={error} onRetry={onRetry} />;
   if (loading && !rows?.length) return <LoadingBlock rows={5} />;
   if (!rows?.length) return empty || <EmptyState title="Sin resultados" description="Prueba con otros filtros o términos de búsqueda." />;
@@ -63,8 +67,13 @@ export function DataTable({
           {rows.map((row) => (
             <tr
               key={row[rowKey]}
-              onClick={onRowClick ? () => onRowClick(row) : undefined}
-              className={`border-b border-[var(--aula-border)] last:border-0 ${onRowClick ? 'cursor-pointer hover:bg-[var(--aula-surface-muted)]' : ''}`}
+              onClick={rowHref ? (e) => {
+                // Los controles de la fila (y el propio enlace) hacen lo suyo.
+                if (e.target.closest('a, button, input, select, textarea, label')) return;
+                if (window.getSelection()?.toString()) return;
+                navigate(rowHref(row));
+              } : undefined}
+              className={`border-b border-[var(--aula-border)] last:border-0 ${rowHref ? 'cursor-pointer hover:bg-[var(--aula-surface-muted)]' : ''}`}
             >
               {selection && (
                 <td className="px-3 py-3" onClick={(e) => e.stopPropagation()}>
@@ -77,11 +86,18 @@ export function DataTable({
                   />
                 </td>
               )}
-              {columns.map((col) => (
-                <td key={col.key} className={`px-4 py-3 align-middle ${col.align === 'right' ? 'text-right' : ''} ${col.className || ''}`}>
-                  {col.render ? col.render(row) : row[col.key] ?? '—'}
-                </td>
-              ))}
+              {columns.map((col, index) => {
+                const content = col.render ? col.render(row) : row[col.key] ?? '—';
+                return (
+                  <td key={col.key} className={`px-4 py-3 align-middle ${col.align === 'right' ? 'text-right' : ''} ${col.className || ''}`}>
+                    {rowHref && index === 0 ? (
+                      <Link to={rowHref(row)} className="block rounded-[var(--aula-radius-sm)] hover:text-[var(--aula-primary)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--aula-primary)]">
+                        {content}
+                      </Link>
+                    ) : content}
+                  </td>
+                );
+              })}
             </tr>
           ))}
         </tbody>

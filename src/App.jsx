@@ -1,5 +1,5 @@
 import { lazy, Suspense } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 
 const BibliotecaHome = lazy(() => import('./pages/BibliotecaHome'));
 const FelizSinTiroides = lazy(() => import('./pages/FelizSinTiroides'));
@@ -78,6 +78,22 @@ import CartDrawer    from './components/CartDrawer';
 import CartToast     from './components/CartToast';
 import PaymentStatus from './components/PaymentStatus';
 import AnalyticsConsent from './components/AnalyticsConsent';
+
+/**
+ * Carrito, avisos de compra y resultado de pago van en todo el sitio,
+ * salvo en el aula empresarial, que no tiene comercio.
+ */
+function StoreGlobals() {
+  const { pathname } = useLocation();
+  if (pathname === '/aula' || pathname.startsWith('/aula/')) return null;
+  return (
+    <>
+      <CartDrawer />
+      <CartToast />
+      <PaymentStatus />
+    </>
+  );
+}
 
 export default function App() {
   return (
@@ -235,10 +251,8 @@ export default function App() {
       </Routes>
       </Suspense>
 
-      {/* Globales: carrito, toast y resultado de pago (en todas las páginas) */}
-      <CartDrawer />
-      <CartToast />
-      <PaymentStatus />
+      {/* Globales: carrito, toast y resultado de pago (fuera del aula) y consentimiento */}
+      <StoreGlobals />
       <AnalyticsConsent />
       </ProfessionalProvider>
     </AuthProvider>

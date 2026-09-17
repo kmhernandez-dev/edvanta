@@ -2,22 +2,13 @@ import express from 'express';
 import {
   changePassword, inspectAuthToken, login, prepareReset, redeemAuthToken, revokeSession,
 } from '../../lib/aula/accounts.js';
-import { resetEmail } from '../../lib/aula/emails.js';
+import { accessLink, resetEmail } from '../../lib/aula/emails.js';
 import { badRequest, email as emailField, route, tooMany } from '../../lib/aula/http.js';
 import { clearedSessionCookie, createRateLimiter, sessionCookie } from '../../lib/aula/security.js';
 import { requireUser } from './middleware.js';
 
 const FIFTEEN_MIN = 15 * 60 * 1000;
 const ONE_HOUR = 60 * 60 * 1000;
-
-/**
- * El token de invitación/recuperación va en el fragmento (#) del enlace:
- * el navegador nunca lo envía al servidor, así que no queda en los
- * registros de acceso. La página lo lee y lo manda en el cuerpo.
- */
-export function accessLink(siteUrl, token) {
-  return `${siteUrl.replace(/\/+$/, '')}/aula/acceso#token=${encodeURIComponent(token)}`;
-}
 
 export function authRouter({ mailer, siteUrl, secureCookies }) {
   const router = express.Router();

@@ -41,6 +41,44 @@ Se aplican en el servidor (`api/lib/aula/access.js`):
 - A quien no tiene acceso se le responde «no encontrado».
 - Las rutas `/api/aula/admin/*` exigen rol administrador.
 
+### Empresas, grupos y participantes
+
+Secciones de administración: `/aula/admin/empresas`, `/aula/admin/grupos`,
+`/aula/admin/participantes` y `/aula/admin/participantes/importar`.
+
+- **Empresas**: nombre único (sin distinguir mayúsculas ni espacios). No se
+  elimina una empresa con participantes, grupos o cursos privados: se marca
+  como inactiva y deja de aparecer en los selectores.
+- **Grupos o cohortes**: nombre único dentro de su empresa. Sus fechas son
+  de calendario (`AAAA-MM-DD`, sin huso horario). La empresa de un grupo no
+  cambia si ya tiene miembros o cursos, y un grupo con cursos asignados no
+  se elimina (se cierra).
+- **Personas**: correo único. Un administrador no pertenece a empresas ni a
+  grupos. Siempre queda al menos un administrador activo, y nadie puede
+  suspenderse ni eliminarse a sí mismo. Suspender cierra sus sesiones.
+  Eliminar es lógico: retira sus inscripciones y conserva su historial.
+  Al cambiar de empresa, la persona sale de los grupos de la anterior.
+- **Asignaciones** (`POST /api/aula/admin/assignments`): a personas, grupos o
+  empresas, con fechas. Las de grupo o empresa alcanzan también a quien
+  entre después. Un curso privado solo se asigna dentro de su empresa.
+  Revocar una asignación retira las inscripciones que creó; el historial
+  académico se conserva.
+
+#### Importación CSV
+
+- Columnas: nombre, apellido, correo, empresa, grupo y cargo. La pantalla
+  reconoce encabezados comunes («Correo electrónico», «Cohorte»…) y deja
+  corregir cada columna. Plantilla: botón «Descargar plantilla».
+- Separador coma o punto y coma; UTF-8 o Windows-1252 (CSV de Excel).
+  Máximo 2.000 filas por archivo.
+- Primero se simula (`dryRun`) y se muestra el resultado de cada fila:
+  cuenta nueva, ya existe u omitida con su motivo (correo inválido o
+  repetido en el archivo, empresa o grupo inexistente, persona de otra
+  empresa…). Nada se guarda hasta confirmar.
+- Opciones: crear empresas o grupos que no existan y enviar invitaciones.
+
+Los formularios validan en el navegador y el servidor valida todo de nuevo.
+
 ### Versionado
 
 Los módulos, clases y bloques son la copia de trabajo. Publicar congela un

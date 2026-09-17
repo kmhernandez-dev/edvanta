@@ -3,6 +3,15 @@
  * El envío real lo hace el `mailer` inyectado; en producción es Resend.
  */
 
+/**
+ * El token de invitación/recuperación va en el fragmento (#) del enlace:
+ * el navegador nunca lo envía al servidor, así que no queda en los
+ * registros de acceso. La página lo lee y lo manda en el cuerpo.
+ */
+export function accessLink(siteUrl, token) {
+  return `${String(siteUrl).replace(/\/+$/, '')}/aula/acceso#token=${encodeURIComponent(token)}`;
+}
+
 const escape = (value) => String(value ?? '')
   .replace(/&/g, '&amp;')
   .replace(/</g, '&lt;')

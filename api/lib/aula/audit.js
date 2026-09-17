@@ -32,7 +32,7 @@ export const AUDIT_ACTIONS = {
   'recurso.editar': 'Recurso editado',
   'asignacion.crear': 'Curso asignado',
   'asignacion.revocar': 'Asignación revocada',
-  'inscripcion.retirar': 'Participante retirado',
+  'inscripcion.retirar': 'Retiro de un curso',
   'inscripcion.reactivar': 'Inscripción reactivada',
   'inscripcion.fechas': 'Cambio de fechas de inscripción',
   'inscripcion.actualizacion': 'Actualización obligatoria asignada',

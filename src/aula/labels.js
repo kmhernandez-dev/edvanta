@@ -38,9 +38,20 @@ export const USER_STATUS = {
 
 export const ROLE_LABEL = { admin: 'Administrador', participant: 'Participante' };
 
-export const fmtDate = (value, opts = {}) => (value
-  ? new Date(value).toLocaleDateString('es-CO', { day: 'numeric', month: 'short', year: 'numeric', ...opts })
-  : '—');
+const CALENDAR_DATE = /^\d{4}-\d{2}-\d{2}$/;
+
+/**
+ * Fecha legible. Un texto AAAA-MM-DD es una fecha de calendario (inicio de
+ * una cohorte, por ejemplo) y se muestra igual en cualquier huso horario.
+ */
+export const fmtDate = (value, opts = {}) => {
+  if (!value) return '—';
+  const calendar = typeof value === 'string' && CALENDAR_DATE.test(value);
+  const date = calendar ? new Date(`${value}T12:00:00Z`) : new Date(value);
+  return date.toLocaleDateString('es-CO', {
+    day: 'numeric', month: 'short', year: 'numeric', ...(calendar ? { timeZone: 'UTC' } : {}), ...opts,
+  });
+};
 
 export const fmtDateTime = (value) => (value
   ? new Date(value).toLocaleString('es-CO', { day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' })
@@ -53,6 +64,14 @@ export const fmtBytes = (bytes) => {
   if (bytes < 1024 * 1024 * 1024) return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
   return `${(bytes / (1024 * 1024 * 1024)).toFixed(2)} GB`;
 };
+
+/** «1 miembro», «3 miembros». Sin `many`, el plural agrega «s». */
+export const plural = (n, one, many = `${one}s`) => `${n} ${Number(n) === 1 ? one : many}`;
+
+/** «a», «a y b», «a, b y c». */
+export const listJoin = (items) => (items.length < 2
+  ? items.join('')
+  : `${items.slice(0, -1).join(', ')} y ${items[items.length - 1]}`);
 
 export const fmtPct = (value) => `${Math.round(Number(value) || 0)} %`;
 

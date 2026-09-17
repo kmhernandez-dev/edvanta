@@ -7,23 +7,36 @@ import { TextInput } from './Form';
 
 const FOCUSABLE = 'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])';
 
+// Diálogos abiertos, del más antiguo al más reciente: solo el de arriba
+// atiende Escape y Tab (una confirmación puede abrirse sobre otro diálogo).
+const openStack = [];
+
 /** Diálogo accesible: foco atrapado, Escape para cerrar y retorno del foco. */
 export function Modal({ open, onClose, title, description, children, footer, size = 'md', dismissable = true }) {
   const titleId = useId();
   const descId = useId();
   const panelRef = useRef(null);
   const returnTo = useRef(null);
+  // En refs: si el padre se vuelve a dibujar (nuevo `onClose`) o el envío
+  // cambia `dismissable`, el efecto no se repite y el foco no salta.
+  const closeRef = useRef(onClose);
+  const dismissRef = useRef(dismissable);
+  closeRef.current = onClose;
+  dismissRef.current = dismissable;
 
   useEffect(() => {
     if (!open) return undefined;
+    const token = {};
+    openStack.push(token);
     returnTo.current = document.activeElement;
     const panel = panelRef.current;
     const first = panel?.querySelector('[data-autofocus]') || panel?.querySelector(FOCUSABLE);
     first?.focus();
     const onKey = (e) => {
-      if (e.key === 'Escape' && dismissable) {
+      if (openStack[openStack.length - 1] !== token) return;
+      if (e.key === 'Escape' && dismissRef.current) {
         e.stopPropagation();
-        onClose?.();
+        closeRef.current?.();
       }
       if (e.key === 'Tab' && panel) {
         const items = [...panel.querySelectorAll(FOCUSABLE)].filter((el) => el.offsetParent !== null);
@@ -38,11 +51,12 @@ export function Modal({ open, onClose, title, description, children, footer, siz
     const { overflow } = document.body.style;
     document.body.style.overflow = 'hidden';
     return () => {
+      openStack.splice(openStack.indexOf(token), 1);
       document.removeEventListener('keydown', onKey);
       document.body.style.overflow = overflow;
       returnTo.current?.focus?.();
     };
-  }, [open, dismissable, onClose]);
+  }, [open]);
 
   if (!open) return null;
   const widths = { sm: 'max-w-md', md: 'max-w-xl', lg: 'max-w-3xl', xl: 'max-w-5xl' };
@@ -77,10 +91,12 @@ export function Modal({ open, onClose, title, description, children, footer, siz
  * Confirmación antes de una acción sensible. Si `confirmText` está
  * presente, el usuario debe escribirlo para habilitar el botón.
  * `requireReason` pide un motivo (queda en la bitácora).
+ * `unavailable` ({ reason, action? }) explica por qué la acción no se puede
+ * hacer ahora y ofrece la alternativa, en lugar de un botón que fallaría.
  */
 export function ConfirmDialog({
   open, onClose, onConfirm, title, description, children, confirmLabel = 'Confirmar',
-  tone = 'primary', confirmText, requireReason = false, reasonLabel = 'Motivo',
+  tone = 'primary', confirmText, requireReason = false, reasonLabel = 'Motivo', unavailable = null,
 }) {
   const [typed, setTyped] = useState('');
   const [reason, setReason] = useState('');
@@ -104,6 +120,26 @@ export function ConfirmDialog({
       setBusy(false);
     }
   };
+
+  if (unavailable) {
+    const { reason, action } = unavailable;
+    return (
+      <Modal
+        open={open}
+        onClose={onClose}
+        title={title}
+        size="sm"
+        footer={(
+          <>
+            <Button variant={action ? 'ghost' : 'primary'} onClick={onClose}>Entendido</Button>
+            {action && <Button onClick={() => { onClose(); action.onClick(); }}>{action.label}</Button>}
+          </>
+        )}
+      >
+        <Alert tone="warning">{reason}</Alert>
+      </Modal>
+    );
+  }
 
   return (
     <Modal
