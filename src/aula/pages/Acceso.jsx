@@ -71,7 +71,7 @@ export function Entrar() {
           Entrar
         </Button>
         <Link to="/aula/recuperar" className="text-center text-sm font-semibold text-[var(--aula-primary)] hover:underline">
-          ¿Olvidaste tu contraseña?
+          ¿Primera vez u olvidaste tu contraseña?
         </Link>
       </form>
     </AuthLayout>
@@ -105,7 +105,7 @@ export function Recuperar() {
   const { fields, general } = errorsFrom(error);
   return (
     <AuthLayout>
-      <h1 className="text-2xl font-extrabold text-[var(--aula-primary)]">Restablecer contraseña</h1>
+      <h1 className="text-2xl font-extrabold text-[var(--aula-primary)]">Crear o restablecer tu contraseña</h1>
       {sent ? (
         <div className="mt-6 flex flex-col items-center gap-4 text-center">
           <span className="flex h-12 w-12 items-center justify-center rounded-full bg-[var(--aula-success-soft)] text-[var(--aula-success)]">
@@ -118,7 +118,7 @@ export function Recuperar() {
       ) : (
         <>
           <p className="mt-1 text-sm text-[var(--aula-muted)]">
-            Te enviaremos un enlace para crear una contraseña nueva. También sirve si aún no has activado tu cuenta.
+            Escribe tu correo y te enviaremos un enlace para crear tu contraseña. Sirve para tu primer ingreso y si olvidaste la anterior.
           </p>
           <form ref={formRef} onSubmit={submit} className="mt-6 flex flex-col gap-4" noValidate>
             {general && <Alert tone="danger">{general}</Alert>}

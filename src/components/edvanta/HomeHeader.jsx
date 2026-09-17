@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import {
   Award, BookOpen, ChevronDown, Compass, FileText, Gift, GraduationCap,
-  Menu, Newspaper, Route, Target, UserRound, X,
+  Menu, MonitorPlay, Newspaper, Route, Target, UserRound, X,
 } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 import { EDVANTA_EMAIL } from '../../config/links';
@@ -139,7 +139,16 @@ export default function HomeHeader() {
               Empresas
             </Link>
           </nav>
-          <div className="relative flex items-center">
+          <div className="relative flex items-center gap-6">
+            {/* Acceso al aula virtual de capacitaciones (cuentas propias del aula). */}
+            <Link
+              to="/aula"
+              onClick={() => trackEvent('home_nav_click', { item: 'aula_virtual' })}
+              className="hidden items-center gap-1.5 text-[13.5px] font-semibold text-[#082E86] transition-colors hover:text-[#25A7B0] sm:inline-flex"
+            >
+              <MonitorPlay className="h-4 w-4" aria-hidden="true" />
+              Aula virtual
+            </Link>
             <button
               type="button"
               aria-expanded={open === 'nosotros'}
@@ -266,6 +275,10 @@ export default function HomeHeader() {
             </div>
           )}
           <Link to="/comunidad" className="flex min-h-12 items-center rounded-xl px-3 text-base font-medium text-[#17223B]">Comunidad</Link>
+          <Link to="/aula" className="flex min-h-12 items-center gap-2 rounded-xl px-3 text-base font-medium text-[#082E86]">
+            <MonitorPlay className="h-5 w-5" aria-hidden="true" />
+            Aula virtual
+          </Link>
           <div className="mt-3 flex gap-3">
             {user ? (
               <Link to="/app" className="inline-flex min-h-12 flex-1 items-center justify-center gap-2 rounded-xl bg-[#082E86] px-5 text-sm font-semibold text-white">

@@ -42,7 +42,7 @@ const fullPage = (element) => <Suspense fallback={<PageLoader />}>{element}</Sus
 
 const TITLES = [
   [/^\/aula\/entrar/, 'Entrar'],
-  [/^\/aula\/recuperar/, 'Restablecer contraseña'],
+  [/^\/aula\/recuperar/, 'Crear o restablecer contraseña'],
   [/^\/aula\/acceso/, 'Crear contraseña'],
   [/^\/aula\/cuenta/, 'Mi cuenta'],
   [/^\/aula\/admin\/auditoria/, 'Bitácora'],
