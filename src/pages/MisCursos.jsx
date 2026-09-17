@@ -84,7 +84,7 @@ export default function MisCursos() {
                   >
                     <div className="aspect-[16/9] bg-gradient-to-br from-teal-500 to-blush-400 flex items-center justify-center relative">
                       {course.cover_image ? (
-                        <img src={course.cover_image} alt={course.title} className="w-full h-full object-cover" />
+                        <img src={course.cover_image} alt={course.title} loading="lazy" decoding="async" className="w-full h-full object-cover" />
                       ) : (
                         <span className="text-5xl">🎓</span>
                       )}

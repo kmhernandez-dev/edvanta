@@ -80,7 +80,7 @@ export default function FstPastelLanding() {
               </div>
             </div>
             <div className="overflow-hidden rounded-[18px]">
-              <img src="/img/fst-pastel-health-professional.jpg" alt="Profesional de la salud con bata blanca sosteniendo una tablet" width="900" height="900" className="aspect-square w-full object-cover" />
+              <img src="/img/fst-pastel-health-professional.jpg" alt="Profesional de la salud con bata blanca sosteniendo una tablet" width="900" height="900" loading="eager" decoding="async" className="aspect-square w-full object-cover" />
             </div>
           </div>
         </header>

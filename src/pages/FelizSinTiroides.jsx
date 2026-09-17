@@ -242,7 +242,7 @@ export default function FelizSinTiroides() {
       <nav className={`nav${scrolled ? ' sombra' : ''}`}>
         <div className="nav__fila">
           <a className="marca" href="#inicio" aria-label="Feliz Sin Tiroides, inicio">
-            <img className="marca__logo" src="/img/port-logofelizsintiroides.jpg" alt="" width="38" height="38" />
+            <img className="marca__logo" src="/img/port-logofelizsintiroides.jpg" alt="" width="38" height="38" loading="eager" />
             <span className="marca__texto">Feliz Sin Tiroides<span className="marca__sub">Salud tiroidea, cuidado integral</span></span>
           </a>
 
@@ -415,7 +415,7 @@ export default function FelizSinTiroides() {
           <div className="pie__cols">
             <div>
               <a className="marca" href="#inicio" style={{ marginBottom: '12px' }}>
-                <img className="marca__logo" src="/img/port-logofelizsintiroides.jpg" alt="" width="38" height="38" />
+                <img className="marca__logo" src="/img/port-logofelizsintiroides.jpg" alt="" width="38" height="38" loading="eager" />
                 <span className="marca__texto" style={{ color: '#fff' }}>Feliz Sin Tiroides</span>
               </a>
               <p>Karla Hernández, Química Farmacéutica Clínica.<br />Barranquilla, Colombia.</p>

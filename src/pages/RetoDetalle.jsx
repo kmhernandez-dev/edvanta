@@ -196,7 +196,7 @@ export default function RetoDetalle() {
             <div className="relative">
               <div className="flex aspect-[4/3] w-full items-center justify-center overflow-hidden rounded-lg bg-gradient-to-br from-[#e8f4f2] to-[#fdf2f6] shadow-lg">
                 {challenge.cover_image ? (
-                  <img src={challenge.cover_image} alt={challenge.title} className="h-full w-full object-cover" />
+                  <img src={challenge.cover_image} alt={challenge.title} loading="eager" decoding="async" className="h-full w-full object-cover" />
                 ) : (
                   <div className="text-center">
                     <Icon name="sparkles" className="mx-auto h-16 w-16 text-[#563a78]" />
@@ -239,7 +239,7 @@ export default function RetoDetalle() {
                   className="flex items-center gap-4 rounded-lg border border-sand-100 bg-white p-4 shadow-sm transition-all hover:border-teal-200 hover:shadow-md"
                 >
                   {cover ? (
-                    <img src={cover} alt={`Día ${day.day_number}`} loading="lazy" className="h-14 w-20 shrink-0 rounded-md object-cover" />
+                    <img src={cover} alt={`Día ${day.day_number}`} loading="lazy" decoding="async" className="h-14 w-20 shrink-0 rounded-md object-cover" />
                   ) : (
                     <span className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-sm font-bold ${done ? 'bg-teal-600 text-white' : 'border-2 border-sand-200 bg-white text-gray-500'}`}>
                       {done ? <Icon name="check" className="h-5 w-5" /> : day.day_number}

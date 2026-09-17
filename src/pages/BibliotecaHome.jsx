@@ -138,7 +138,7 @@ export default function BibliotecaHome() {
                 Empieza con cursos gratis y complementa con herramientas prácticas
               </h2>
               <div className="mt-5 flex flex-col justify-center gap-3 sm:flex-row md:justify-start">
-                <button onClick={() => scrollTo('cursos')} className="inline-flex items-center justify-center rounded-xl bg-white px-6 py-3 text-sm font-semibold text-edvanta-deep transition hover:bg-edvanta-light">
+                <button onClick={() => scrollTo('catalogo-cursos')} className="inline-flex items-center justify-center rounded-xl bg-white px-6 py-3 text-sm font-semibold text-edvanta-deep transition hover:bg-edvanta-light">
                   Ver cursos recomendados
                 </button>
                 <button onClick={() => scrollTo('herramientas')} className="inline-flex items-center justify-center rounded-xl bg-white/10 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/20">

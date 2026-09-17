@@ -67,7 +67,7 @@ function PageHero({ eyebrow, title, description, image, imageAlt, actions }) {
             </div>
           </div>
           <div className="relative min-h-80 bg-[#dfeeea]">
-            <img src={image} alt={imageAlt} className="absolute inset-0 h-full w-full object-cover" />
+            <img src={image} alt={imageAlt} loading="eager" decoding="async" className="absolute inset-0 h-full w-full object-cover" />
           </div>
         </div>
       </section>
@@ -80,7 +80,7 @@ function GuideTile({ book }) {
   const url = book.checkoutUrl || book.hotmartUrl;
   return (
     <article className="flex h-full flex-col overflow-hidden rounded-lg border border-[#dfe5e8] bg-white">
-      <img src={book.cover.image} alt={`Portada de ${book.name}`} loading="lazy" className="aspect-[3/4] w-full bg-[#f4f7f7] object-cover" />
+      <img src={book.cover.image} alt={`Portada de ${book.name}`} loading="lazy" decoding="async" className="aspect-[3/4] w-full bg-[#f4f7f7] object-cover" />
       <div className="flex flex-1 flex-col p-4">
         <h2 className="text-base font-bold leading-snug text-[#102c52]">{book.name}</h2>
         <p className="mt-3 text-sm font-semibold text-[#0b8176]">{book.price ? `$ ${book.price.toLocaleString('es-CO')} COP` : 'Consulta el precio en Hotmart'}</p>

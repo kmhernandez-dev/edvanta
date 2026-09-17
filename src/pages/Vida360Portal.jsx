@@ -28,7 +28,7 @@ function AccessScreen() {
       <header className="border-b border-slate-200 bg-white">
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
           <Link to="/feliz-sin-tiroides" className="flex items-center gap-3">
-            <img src="/img/port-logofelizsintiroides.jpg" alt="" className="h-10 w-10 rounded-md object-cover" />
+            <img src="/img/port-logofelizsintiroides.jpg" alt="" loading="eager" className="h-10 w-10 rounded-md object-cover" />
             <span><span className="block text-sm font-bold text-[#0A2540]">FST Vida 360</span><span className="block text-xs text-slate-500">Feliz Sin Tiroides</span></span>
           </Link>
           <Link to="/feliz-sin-tiroides" className="text-sm font-semibold text-slate-600 hover:text-[#0A2540]">Volver</Link>

@@ -174,7 +174,7 @@ export default function AcademiaCurso() {
           <div className="relative">
             <div className="flex aspect-[4/3] w-full items-center justify-center overflow-hidden rounded-lg bg-[#eef7f5] shadow-lg">
               {course.cover_image ? (
-                <img src={course.cover_image} alt={course.title} className="h-full w-full object-cover" />
+                <img src={course.cover_image} alt={course.title} loading="eager" decoding="async" className="h-full w-full object-cover" />
               ) : (
                 <Icon name="cap" className="h-16 w-16 text-teal-600" />
               )}
