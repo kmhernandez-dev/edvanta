@@ -128,13 +128,53 @@ export function calendarDate(value, field, label, { optional = false } = {}) {
     if (optional) return null;
     throw fieldError(field, `${label} es obligatoria.`);
   }
-  const text = typeof value === 'string' ? value.trim().slice(0, 10) : '';
+  const text = typeof value === 'string' ? value.trim() : '';
   const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(text);
   const d = match && new Date(Date.UTC(+match[1], +match[2] - 1, +match[3]));
   if (!d || d.getUTCFullYear() !== +match[1] || d.getUTCMonth() !== +match[2] - 1 || d.getUTCDate() !== +match[3]) {
     throw fieldError(field, `${label} no es una fecha válida.`);
   }
   return text;
+}
+
+// ── Días en hora de Colombia ────────────────────────────────
+// Las fechas que elige un administrador (apertura, cierre, fecha límite)
+// son días completos en hora de Colombia (UTC−5, sin horario de verano):
+// un curso que abre el 15 abre a las 00:00 y uno que cierra el 15 cierra
+// a las 23:59:59 de ese día.
+
+export const AULA_TIME_ZONE = 'America/Bogota';
+const BOGOTA_OFFSET_MS = 5 * 60 * 60 * 1000;
+
+export function bogotaDayStart(ymd) {
+  const [y, m, d] = ymd.split('-').map(Number);
+  return new Date(Date.UTC(y, m - 1, d) + BOGOTA_OFFSET_MS);
+}
+
+export function bogotaDayEnd(ymd) {
+  return new Date(bogotaDayStart(ymd).getTime() + 24 * 60 * 60 * 1000 - 1);
+}
+
+/** Día (AAAA-MM-DD) en Colombia de un instante. */
+export function bogotaYmd(value) {
+  if (!value) return null;
+  return new Date(new Date(value).getTime() - BOGOTA_OFFSET_MS).toISOString().slice(0, 10);
+}
+
+/**
+ * Fecha elegida por día (AAAA-MM-DD → inicio o fin de ese día en Colombia)
+ * o instante exacto (ISO 8601). Devuelve un Date o null.
+ */
+export function dayBoundary(value, field, label, { end = false, optional = false } = {}) {
+  if (value === undefined || value === null || value === '') {
+    if (optional) return null;
+    throw fieldError(field, `${label} es obligatoria.`);
+  }
+  if (typeof value === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(value.trim())) {
+    const ymd = calendarDate(value, field, label);
+    return end ? bogotaDayEnd(ymd) : bogotaDayStart(ymd);
+  }
+  return date(value, field, label);
 }
 
 export function id(value, field = 'id', label = 'El identificador') {
@@ -146,6 +186,26 @@ export function idList(value, field, label, { max = 5000 } = {}) {
   if (value.length > max) throw fieldError(field, `${label}: máximo ${max} a la vez.`);
   const ids = value.map((v) => int(v, field, label, { min: 1 }));
   return [...new Set(ids)];
+}
+
+/** Lista de textos (etiquetas, objetivos…): sin vacíos ni repetidos. */
+export function strList(value, field, label, { maxItems = 20, maxLength = 200 } = {}) {
+  if (value === undefined || value === null) return [];
+  if (!Array.isArray(value)) throw fieldError(field, `${label} no tiene un formato válido.`);
+  const out = [];
+  const seen = new Set();
+  for (const item of value) {
+    if (typeof item !== 'string') throw fieldError(field, `${label} no tiene un formato válido.`);
+    const clean = item.trim().replace(/\s+/g, ' ');
+    if (!clean) continue;
+    if (clean.length > maxLength) throw fieldError(field, `${label}: cada elemento admite como máximo ${maxLength} caracteres.`);
+    const key = clean.toLowerCase();
+    if (seen.has(key)) continue;
+    seen.add(key);
+    out.push(clean);
+  }
+  if (out.length > maxItems) throw fieldError(field, `${label}: máximo ${maxItems}.`);
+  return out;
 }
 
 // ── Paginación y orden ─────────────────────────────────────

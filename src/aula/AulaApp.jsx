@@ -2,7 +2,7 @@
  * Aula Edvanta: aula virtual empresarial (/aula/*).
  * Participantes en /aula, administración en /aula/admin.
  */
-import { useEffect } from 'react';
+import { lazy, Suspense, useEffect } from 'react';
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import { setMeta } from '../utils/seo';
 import './aula.css';
@@ -18,8 +18,23 @@ import Participantes, { ParticipanteDetalle } from './pages/admin/Participantes'
 import Resumen from './pages/admin/Resumen';
 import { AulaSessionProvider, RequireAula, useAulaSession } from './session';
 import { Button } from './ui/Button';
-import { EmptyState } from './ui/States';
+import { EmptyState, PageLoader } from './ui/States';
 import { ToastProvider } from './ui/Toast';
+
+// El editor de cursos (texto enriquecido, arrastrar y soltar, visor PDF)
+// se descarga solo cuando un administrador lo abre.
+const Cursos = lazy(() => import('./pages/admin/Cursos'));
+const CursoLayout = lazy(() => import('./pages/admin/curso/CursoLayout'));
+const Contenido = lazy(() => import('./pages/admin/curso/Contenido'));
+const ClaseEditor = lazy(() => import('./pages/admin/curso/ClaseEditor'));
+const Informacion = lazy(() => import('./pages/admin/curso/Informacion'));
+const Reglas = lazy(() => import('./pages/admin/curso/Reglas'));
+const Recursos = lazy(() => import('./pages/admin/curso/Recursos'));
+const ParticipantesCurso = lazy(() => import('./pages/admin/curso/ParticipantesCurso'));
+const Versiones = lazy(() => import('./pages/admin/curso/Versiones'));
+const VistaPrevia = lazy(() => import('./pages/admin/curso/VistaPrevia'));
+
+const fullPage = (element) => <Suspense fallback={<PageLoader />}>{element}</Suspense>;
 
 const TITLES = [
   [/^\/aula\/entrar/, 'Entrar'],
@@ -27,6 +42,10 @@ const TITLES = [
   [/^\/aula\/acceso/, 'Crear contraseña'],
   [/^\/aula\/cuenta/, 'Mi cuenta'],
   [/^\/aula\/admin\/auditoria/, 'Bitácora'],
+  [/^\/aula\/admin\/cursos\/\d+\/vista-previa/, 'Vista previa'],
+  [/^\/aula\/admin\/cursos\/\d+\/clases/, 'Editar clase'],
+  [/^\/aula\/admin\/cursos\/\d+/, 'Editar curso'],
+  [/^\/aula\/admin\/cursos/, 'Cursos'],
   [/^\/aula\/admin\/empresas/, 'Empresas'],
   [/^\/aula\/admin\/grupos/, 'Grupos'],
   [/^\/aula\/admin\/participantes\/importar/, 'Importar participantes'],
@@ -87,9 +106,24 @@ export default function AulaApp() {
             <Route path="participantes" element={<Participantes />} />
             <Route path="participantes/importar" element={<Importar />} />
             <Route path="participantes/:id" element={<ParticipanteDetalle />} />
+            <Route path="cursos" element={<Cursos />} />
+            <Route path="cursos/:id" element={<CursoLayout />}>
+              <Route index element={<Contenido />} />
+              <Route path="clases/:lessonId" element={<ClaseEditor />} />
+              <Route path="informacion" element={<Informacion />} />
+              <Route path="reglas" element={<Reglas />} />
+              <Route path="recursos" element={<Recursos />} />
+              <Route path="participantes" element={<ParticipantesCurso />} />
+              <Route path="versiones" element={<Versiones />} />
+              <Route path="*" element={<NotFoundInAula />} />
+            </Route>
             <Route path="auditoria" element={<Bitacora />} />
             <Route path="*" element={<NotFoundInAula />} />
           </Route>
+
+          {/* Vista previa a pantalla completa, como la vería un participante. */}
+          <Route path="admin/cursos/:id/vista-previa" element={<RequireAula role="admin">{fullPage(<VistaPrevia />)}</RequireAula>} />
+          <Route path="admin/cursos/:id/vista-previa/:lessonId" element={<RequireAula role="admin">{fullPage(<VistaPrevia />)}</RequireAula>} />
 
           <Route element={<RequireAula><RoleShell /></RequireAula>}>
             <Route index element={<Home />} />

@@ -12,7 +12,7 @@ import {
 } from '../../lib/aula/enrollments.js';
 import { many } from '../../lib/aula/db.js';
 import {
-  badRequest, bool, date, id as idField, idList, oneOf, route, str,
+  badRequest, bool, dayBoundary, id as idField, idList, oneOf, route, str,
 } from '../../lib/aula/http.js';
 import { actorOf } from './middleware.js';
 
@@ -146,8 +146,9 @@ export function adminPeopleRouter(deps) {
     const targetType = oneOf(b.targetType, 'targetType', 'El destino', ['usuario', 'grupo', 'empresa']);
     const targetIds = idList(b.targetIds, 'targetIds', 'Los destinos', { max: 500 });
     const courseIds = idList(b.courseIds, 'courseIds', 'Los cursos', { max: 50 });
-    const startsAt = date(b.startsAt, 'startsAt', 'La fecha de inicio', { optional: true });
-    const dueAt = date(b.dueAt, 'dueAt', 'La fecha límite', { optional: true });
+    // Un día (AAAA-MM-DD) cuenta completo en hora de Colombia: el acceso abre a las 00:00 y el plazo vence a las 23:59.
+    const startsAt = dayBoundary(b.startsAt, 'startsAt', 'La fecha de inicio', { optional: true });
+    const dueAt = dayBoundary(b.dueAt, 'dueAt', 'La fecha límite', { optional: true, end: true });
     if (dueAt && dueAt < req.aula.now && !b.allowPastDue) {
       throw badRequest('La fecha límite ya pasó. Elige una fecha futura.', { field: 'dueAt' });
     }

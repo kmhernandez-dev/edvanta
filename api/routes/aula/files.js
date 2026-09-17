@@ -61,6 +61,10 @@ async function contextLimits(req, purpose) {
     }
     return {};
   }
+  // Un bloque puede pedir solo ciertos formatos (p. ej. imágenes).
+  if ((purpose === 'contenido' || purpose === 'recurso') && Array.isArray(req.body?.accept) && req.body.accept.length) {
+    return { extensions: req.body.accept.filter((e) => typeof e === 'string').map((e) => e.toLowerCase()) };
+  }
   return {};
 }
 

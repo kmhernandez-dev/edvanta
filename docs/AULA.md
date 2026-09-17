@@ -79,12 +79,68 @@ Secciones de administración: `/aula/admin/empresas`, `/aula/admin/grupos`,
 
 Los formularios validan en el navegador y el servidor valida todo de nuevo.
 
+### Cursos y contenido
+
+Sección `/aula/admin/cursos`. Cada curso tiene pestañas: Contenido,
+Información, Reglas y fechas, Recursos, Participantes y Versiones.
+
+- **Estructura**: módulos → clases → bloques. Se ordenan arrastrando (con
+  ratón, pantalla táctil o teclado) o con «Subir/Bajar»; se duplican y se
+  mueven de módulo. Eliminar es lógico y avisa si hay participantes con
+  avance (ese historial se conserva).
+- **Bloques disponibles**: encabezado, texto enriquecido, imagen, galería,
+  video (archivo, YouTube o Vimeo), audio, PDF, presentación (PDF, Google
+  Slides o Canva), archivos descargables, infografía, enlace externo y
+  recuadro destacado. Evaluación, actividad y foro se habilitan con sus
+  módulos. Imágenes e infografías exigen texto alternativo; videos y audios
+  admiten transcripción.
+- **Descargas**: cada bloque decide si su archivo se puede descargar. Sin
+  permiso, el visor no ofrece descarga (el archivo igual llega al navegador
+  para mostrarse: es una barrera de uso, no un bloqueo técnico).
+- **Texto enriquecido**: el editor (TipTap) produce HTML que el servidor
+  limpia con una lista cerrada de etiquetas antes de guardar
+  (`api/lib/aula/richtext.js`) y que el navegador vuelve a limpiar al
+  mostrar.
+- **Clases**: obligatorias u opcionales; se completan marcándolas (lectura,
+  con tiempo mínimo opcional) o al ver un porcentaje del video.
+- **Datos generales** (título, portada, descripción, objetivos…) se ven de
+  inmediato. **Contenido y reglas** (nota mínima, intentos, avance en orden,
+  porcentaje de video) solo llegan a los participantes al publicar.
+- **Fechas**: apertura, cierre y fechas límite son días completos en hora
+  de Colombia.
+- **Vista previa**: `/aula/admin/cursos/:id/vista-previa` muestra la copia
+  de trabajo tal como la verá un participante, sin registrar avance.
+- **Duplicar**: copia estructura, bloques y recursos a un borrador nuevo,
+  también para otra empresa. Un curso publicado o asignado no se elimina:
+  se archiva (y se puede restaurar).
+
 ### Versionado
 
 Los módulos, clases y bloques son la copia de trabajo. Publicar congela un
-snapshot en `aula_course_versions`; cada inscripción apunta a la versión que
-cursa. Las versiones, la bitácora, el historial de notas y las revisiones de
-entregas no se pueden modificar (disparadores en la base).
+snapshot en `aula_course_versions` (con una huella que permite saber si hay
+cambios sin publicar); cada inscripción apunta a la versión que cursa. Las
+versiones, la bitácora, el historial de notas y las revisiones de entregas
+no se pueden modificar (disparadores en la base).
+
+Antes de publicar se revisa el curso (módulos sin clases, clases sin
+contenido, clases de video sin video, cursos sin clases obligatorias) y se
+muestra qué cambió y a quién afecta. Al publicar una versión nueva:
+
+- Quien no ha empezado pasa a la nueva automáticamente.
+- Quien va en curso sigue en su versión, salvo que sea una **actualización
+  obligatoria** (conserva las clases que ya completó).
+- Quien completó conserva su versión y su resultado, salvo que se decida
+  reabrir a los completados en una actualización obligatoria.
+- Todo movimiento queda en la bitácora y los afectados reciben un aviso.
+
+### Recursos de trabajo
+
+Biblioteca por curso con categorías. Cada recurso (archivo o enlace) tiene
+versiones inmutables: reemplazarlo exige contar qué cambió y la versión
+anterior queda en el historial. Los participantes ven solo la versión
+vigente de los recursos publicados, y solo si el curso tiene la biblioteca
+activa. El contenido lo carga el equipo de Edvanta; el aula no genera
+textos.
 
 ### Archivos
 
@@ -128,6 +184,9 @@ npm run dev                            # Vite en localhost:5173 (proxy /api)
 - Administrador local: `admin@aula.local` / `Admin-aula-2026`
 - Los correos se guardan en `api/.data/aula-dev/mails` y el enlace se
   imprime en la consola.
+- Para probar con otra cuenta sin escribir contraseñas (solo en este
+  servidor local): http://localhost:5173/api/aula-dev/entrar?como=correo@prueba
+  (sin `como`, entra el administrador local).
 
 ## Pruebas
 
@@ -141,3 +200,8 @@ npm test           # frontend + backend
 Coolify construye `docker-compose.yaml`. La migración `029_aula_schema.sql`
 se aplica sola al arrancar la API. El volumen `aula-files` persiste entre
 despliegues; inclúyelo en las copias de seguridad del servidor.
+
+La política de seguridad del sitio (`Content-Security-Policy` en
+`nginx.conf`) solo permite incrustar YouTube (sin cookies), Vimeo, Google
+Slides y Canva. Para aceptar otro proveedor hay que agregarlo allí y en
+`api/lib/aula/blocks.js`.

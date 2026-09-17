@@ -1,9 +1,17 @@
-import { useEffect, useRef, useState } from 'react';
+import { Suspense, useEffect, useRef, useState } from 'react';
 import { Link, NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { ChevronDown, KeyRound, LogOut, Menu, X } from 'lucide-react';
 import { useAulaSession } from '../session';
 import { ROLE_LABEL } from '../labels';
 import { ADMIN_NAV, PARTICIPANT_NAV } from '../nav';
+import { LoadingBlock } from '../ui/States';
+
+// Las páginas se cargan bajo demanda; el marco queda fijo mientras llegan.
+const Page = () => (
+  <Suspense fallback={<LoadingBlock rows={4} label="Cargando la página" />}>
+    <Outlet />
+  </Suspense>
+);
 
 function Logo({ to }) {
   return (
@@ -121,7 +129,7 @@ export function ParticipantShell() {
         </div>
       </header>
       <main className="mx-auto max-w-6xl px-4 py-6 sm:px-6 sm:py-8">
-        <Outlet />
+        <Page />
       </main>
     </div>
   );
@@ -187,7 +195,7 @@ export function AdminShell() {
           </div>
         )}
         <main className="min-w-0 flex-1 px-4 py-6 sm:px-8 sm:py-8">
-          <Outlet />
+          <Page />
         </main>
       </div>
     </div>

@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useLayoutEffect, useRef, useState } from 'react';
 import { fileUrl, get, patch, post } from '../../api';
 import { useAsync } from '../../hooks';
 import { Button } from '../../ui/Button';
@@ -81,7 +81,7 @@ export function CompanyFormModal({ open, onClose, company, onSaved }) {
   const [form, setForm] = useState(emptyCompany);
   const { busy, error, setError, run } = useSubmit((saved) => { onSaved?.(saved); onClose(); });
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (!open) return;
     setError(null);
     setForm(company ? {
@@ -150,7 +150,7 @@ export function GroupFormModal({ open, onClose, group, defaultCompanyId, onSaved
   const [form, setForm] = useState({});
   const { busy, error, setError, run } = useSubmit((saved) => { onSaved?.(saved); onClose(); });
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (!open) return;
     setError(null);
     setForm({
@@ -216,7 +216,7 @@ export function UserFormModal({ open, onClose, user, defaultCompanyId, defaultGr
   const groups = useGroupOptions(form.companyId || 'none');
   const { busy, error, setError, run } = useSubmit((saved) => { onSaved?.(saved); onClose(); });
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (!open) return;
     setError(null);
     setForm({

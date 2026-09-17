@@ -16,10 +16,10 @@ import express from 'express';
 import { mkdir, readdir, readFile, rm, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { ensureBootstrapAdmins } from '../lib/aula/accounts.js';
+import { createSession, ensureBootstrapAdmins } from '../lib/aula/accounts.js';
 import { fromPglite } from '../lib/aula/db.js';
 import { cleanMigrationSql } from '../lib/sql-text.js';
-import { hashPassword } from '../lib/aula/security.js';
+import { hashPassword, sessionCookie } from '../lib/aula/security.js';
 import { createDiskStorage } from '../lib/aula/storage.js';
 import { createAulaRouter, startAula } from '../routes/aula/index.js';
 
@@ -81,9 +81,23 @@ app.use('/api/aula', createAulaRouter({
   siteUrl: 'http://localhost:5173',
   secureCookies: false,
 }));
+// Solo en este servidor local: abrir sesión sin escribir contraseñas, para
+// probar la interfaz con cuentas de prueba (?como=correo). No existe en producción.
+app.get('/api/aula-dev/entrar', async (req, res) => {
+  const email = String(req.query.como || ADMIN_EMAIL).trim().toLowerCase();
+  const { rows: [user] } = await pglite.query(
+    "SELECT id, role FROM aula_users WHERE email = $1 AND deleted_at IS NULL AND status = 'active'",
+    [email],
+  );
+  if (!user) return res.status(404).send('No hay una cuenta activa con ese correo en la base local.');
+  const token = await createSession(db, user.id, { ip: '127.0.0.1', userAgent: req.headers['user-agent'] });
+  res.setHeader('Set-Cookie', sessionCookie(token, { secure: false }));
+  return res.redirect(user.role === 'admin' ? '/aula/admin' : '/aula');
+});
 app.use((_req, res) => res.status(404).json({ error: 'Solo el aula corre en este servidor local.' }));
 
 app.listen(port, '127.0.0.1', () => {
   console.log(`\nAula local en http://127.0.0.1:${port}/api/aula`);
-  console.log(`Administrador: ${ADMIN_EMAIL} / ${ADMIN_PASSWORD}\n`);
+  console.log(`Administrador: ${ADMIN_EMAIL} / ${ADMIN_PASSWORD}`);
+  console.log('Entrar sin contraseña (solo local): http://localhost:5173/api/aula-dev/entrar?como=<correo>\n');
 });

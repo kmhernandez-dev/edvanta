@@ -9,6 +9,7 @@ import { ensureBootstrapAdmins } from '../../lib/aula/accounts.js';
 import { errorHandler, notFound } from '../../lib/aula/http.js';
 import { requireAulaHeader } from '../../lib/aula/security.js';
 import { adminAuditRouter } from './admin-audit.js';
+import { adminCoursesRouter } from './admin-courses.js';
 import { adminPeopleRouter } from './admin-people.js';
 import { adminSummaryRouter } from './admin-summary.js';
 import { meRouter } from './me.js';
@@ -44,6 +45,7 @@ export function createAulaRouter({
   admin.use('/summary', adminSummaryRouter(deps));
   admin.use('/audit', adminAuditRouter(deps));
   admin.use('/', adminPeopleRouter(deps));
+  admin.use('/', adminCoursesRouter(deps));
   router.use('/admin', requireAdmin, admin);
 
   router.use((_req, _res, next) => next(notFound('Esta ruta del aula no existe.')));

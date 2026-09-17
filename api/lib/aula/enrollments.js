@@ -11,6 +11,7 @@ import { many, one } from './db.js';
 import { badRequest, conflict, notFound, plural } from './http.js';
 import { audit } from './audit.js';
 import { notify } from './notify.js';
+import { initializeEnrollments, recomputeEnrollment } from './progress.js';
 
 const TARGET_LABEL = { usuario: 'la persona', grupo: 'el grupo', empresa: 'la empresa' };
 
@@ -64,6 +65,10 @@ export async function enrollUsers(db, { course, userIds, assignmentId = null, st
   );
   const created = rows.filter((r) => r.inserted);
   const reactivated = rows.filter((r) => !r.inserted);
+
+  // Lo que exige la versión que van a cursar (las reactivadas conservan su avance).
+  await initializeEnrollments(db, created.map((r) => r.id), course.current_version_id);
+  for (const row of reactivated) await recomputeEnrollment(db, row.id, { now });
 
   for (const row of rows) {
     await notify(db, {

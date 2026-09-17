@@ -100,3 +100,72 @@
     transition-duration: 0.01ms !important;
   }
 }
+
+/* Editor de texto enriquecido */
+.aula-editor p.is-editor-empty:first-child::before {
+  content: attr(data-placeholder);
+  color: var(--aula-subtle);
+  float: left;
+  height: 0;
+  pointer-events: none;
+}
+.aula-editor > :first-child { margin-top: 0; }
+.aula-editor hr.ProseMirror-selectednode { outline: 2px solid var(--aula-primary); }
+
+/* Visor de PDF: capa de texto de pdf.js (seleccionable y legible por lectores de pantalla) */
+.aula-pdf-page {
+  position: relative;
+  --user-unit: 1;
+  --total-scale-factor: calc(var(--scale-factor) * var(--user-unit));
+  --scale-round-x: 1px;
+  --scale-round-y: 1px;
+}
+.aula-pdf-page canvas { display: block; }
+.aula-pdf-page .textLayer {
+  position: absolute;
+  inset: 0;
+  overflow: clip;
+  opacity: 1;
+  line-height: 1;
+  text-align: initial;
+  letter-spacing: normal;
+  word-spacing: normal;
+  text-size-adjust: none;
+  forced-color-adjust: none;
+  transform-origin: 0 0;
+  caret-color: CanvasText;
+  z-index: 0;
+  --min-font-size: 1;
+  --text-scale-factor: calc(var(--total-scale-factor) * var(--min-font-size));
+  --min-font-size-inv: calc(1 / var(--min-font-size));
+}
+.aula-pdf-page .textLayer span,
+.aula-pdf-page .textLayer br {
+  color: transparent;
+  position: absolute;
+  white-space: pre;
+  cursor: text;
+  transform-origin: 0% 0%;
+  user-select: text;
+}
+.aula-pdf-page .textLayer > :not(.markedContent),
+.aula-pdf-page .textLayer .markedContent span:not(.markedContent) {
+  z-index: 1;
+  --font-height: 0;
+  font-size: calc(var(--text-scale-factor) * var(--font-height));
+  --scale-x: 1;
+  --rotate: 0deg;
+  transform: rotate(var(--rotate)) scaleX(var(--scale-x)) scale(var(--min-font-size-inv));
+}
+.aula-pdf-page .textLayer .markedContent { display: contents; }
+.aula-pdf-page .textLayer ::selection { background: rgba(8, 46, 134, 0.25); color: transparent; }
+.aula-pdf-page .textLayer br::selection { background: transparent; }
+.aula-pdf-page .textLayer .endOfContent {
+  display: block;
+  position: absolute;
+  inset: 100% 0 0;
+  z-index: 0;
+  cursor: default;
+  user-select: none;
+}
+.aula-pdf-page .textLayer.selecting .endOfContent { top: 0; }
