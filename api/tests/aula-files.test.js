@@ -54,10 +54,10 @@ describe('aula · archivos', () => {
     expect(exe.status).toBe(400);
     expect(exe.data.error.code).toBe('formato_no_permitido');
 
-    const huge = await adminClient.post('/uploads', { purpose: 'logo', filename: 'logo.png', size: 6 * 1024 * 1024 });
+    const huge = await adminClient.post('/uploads', { purpose: 'logo', filename: 'logo.png', size: 11 * 1024 * 1024 });
     expect(huge.status).toBe(400);
     expect(huge.data.error.code).toBe('archivo_muy_grande');
-    expect(huge.data.error.message).toMatch(/máximo para este tipo es 5\.0 MB/);
+    expect(huge.data.error.message).toMatch(/máximo para este tipo es 10 MB/);
   });
 
   it('pide retomar desde la última parte cuando la posición no coincide', async () => {
@@ -157,8 +157,15 @@ describe('aula · reglas de almacenamiento y disponibilidad', () => {
     expect(() => checkUpload({ purpose: 'entrega', filename: 'a.mp4', size: 10 })).toThrow(/Formatos aceptados/);
     expect(() => checkUpload({ purpose: 'entrega', filename: 'a.pdf', size: 30 * 1024 * 1024, limits: { maxMb: 20 } }))
       .toThrow(/máximo para este tipo es 20 MB/);
-    expect(checkUpload({ purpose: 'contenido', filename: 'Clase 1.MP4', size: 500 * 1024 * 1024 }))
+    // Sin límites de actividad, la entrega acepta ahora hasta 512 MB.
+    expect(checkUpload({ purpose: 'entrega', filename: 'a.pdf', size: 512 * 1024 * 1024 }))
+      .toMatchObject({ extension: 'pdf', kind: 'documento' });
+    // Un video de clase de 6 GB entra en «contenido».
+    expect(checkUpload({ purpose: 'contenido', filename: 'Clase 1.MP4', size: 6 * 1024 * 1024 * 1024 }))
       .toMatchObject({ extension: 'mp4', kind: 'video' });
+    // Pero uno de 9 GB ya no.
+    expect(() => checkUpload({ purpose: 'contenido', filename: 'clase.mp4', size: 9 * 1024 * 1024 * 1024 }))
+      .toThrow(/máximo para este tipo es 8 GB/);
   });
 
   it('interpreta rangos de bytes', () => {

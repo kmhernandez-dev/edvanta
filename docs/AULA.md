@@ -182,13 +182,14 @@ textos.
 
 ### Archivos
 
-- Subida por partes de 8 MB (`POST /uploads`, `PUT /uploads/:id/chunk`,
+- Subida por partes de 64 MB (`POST /uploads`, `PUT /uploads/:id/chunk`,
   `POST /uploads/:id/complete`). Cloudflare corta las peticiones de más de
-  100 MB; así se suben videos de hasta 2 GB.
+  100 MB; así se suben videos de hasta 8 GB.
 - El primer trozo se compara con la firma real del formato.
-- Límites: imágenes 15 MB, documentos 100 MB, audio 200 MB, video 2 GB;
-  logos 5 MB, portadas 10 MB, adjuntos de foro 10 MB; las actividades
-  pueden restringir formatos y tamaño.
+- Límites: imágenes 40 MB, documentos 512 MB, audio 512 MB, video 8 GB;
+  logos 10 MB, portadas 20 MB, adjuntos de foro 25 MB, entregas de
+  actividad hasta 512 MB (tope configurable por actividad hasta 1024 MB);
+  las actividades pueden restringir formatos y tamaño.
 - Las subidas abandonadas más de 24 h se marcan como fallidas y se borran.
 
 ## Variables de entorno (servicio `api`)

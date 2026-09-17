@@ -34,7 +34,7 @@ export function createAulaRouter({
     next();
   });
   router.use(requireAulaHeader);
-  router.use(express.json({ limit: '2mb' }));
+  router.use(express.json({ limit: '4mb' }));
   router.use(attachSession({ db, now }));
 
   router.use('/auth', authRouter(deps));

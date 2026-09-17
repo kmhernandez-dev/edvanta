@@ -117,7 +117,7 @@ export function uploadsRouter({ storage }) {
 
   router.put(
     '/:id/chunk',
-    express.raw({ type: () => true, limit: CHUNK_SIZE + 1024 }),
+    express.raw({ type: () => true, limit: CHUNK_SIZE + 64 * 1024 }),
     route(async (req, res) => {
       const { db } = req.aula;
       const row = await ownUpload(req);

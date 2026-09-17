@@ -5,7 +5,7 @@
  * (AULA_STORAGE_DIR). La interfaz de `createDiskStorage` es la que
  * tendría que cumplir un driver de S3/R2 si se migra después.
  *
- * Las subidas llegan en partes de 8 MB (Cloudflare corta las peticiones
+ * Las subidas llegan en partes de 64 MB (Cloudflare corta las peticiones
  * de más de 100 MB) y el primer trozo se compara con la firma real del
  * formato: un .pdf que no empieza como PDF se rechaza.
  */
@@ -15,7 +15,7 @@ import path from 'node:path';
 import crypto from 'node:crypto';
 import { badRequest } from './http.js';
 
-export const CHUNK_SIZE = 8 * 1024 * 1024;
+export const CHUNK_SIZE = 64 * 1024 * 1024;
 const MB = 1024 * 1024;
 
 // kind decide el tamaño máximo; sniff, la firma que debe tener el archivo.
@@ -45,7 +45,7 @@ export const FILE_TYPES = {
   txt: { mime: 'text/plain', kind: 'documento', sniff: 'text' },
 };
 
-const KIND_LIMIT_MB = { imagen: 15, documento: 100, audio: 200, video: 2048 };
+const KIND_LIMIT_MB = { imagen: 40, documento: 512, audio: 512, video: 8192 };
 
 const ALL = Object.keys(FILE_TYPES);
 const IMAGES = ['png', 'jpg', 'jpeg', 'webp'];
@@ -53,10 +53,10 @@ const IMAGES = ['png', 'jpg', 'jpeg', 'webp'];
 export const UPLOAD_PURPOSES = {
   contenido: { extensions: ALL, maxMb: null },
   recurso: { extensions: ALL, maxMb: null },
-  entrega: { extensions: ['pdf', 'docx', 'doc', 'xlsx', 'xls', 'pptx', 'ppt', 'png', 'jpg', 'jpeg', 'zip', 'txt', 'csv'], maxMb: 200 },
-  foro: { extensions: ['pdf', 'png', 'jpg', 'jpeg', 'docx', 'xlsx', 'pptx'], maxMb: 10 },
-  logo: { extensions: IMAGES, maxMb: 5 },
-  portada: { extensions: IMAGES, maxMb: 10 },
+  entrega: { extensions: ['pdf', 'docx', 'doc', 'xlsx', 'xls', 'pptx', 'ppt', 'png', 'jpg', 'jpeg', 'zip', 'txt', 'csv'], maxMb: 512 },
+  foro: { extensions: ['pdf', 'png', 'jpg', 'jpeg', 'docx', 'xlsx', 'pptx'], maxMb: 25 },
+  logo: { extensions: IMAGES, maxMb: 10 },
+  portada: { extensions: IMAGES, maxMb: 20 },
 };
 
 export function extensionOf(filename) {
@@ -71,7 +71,11 @@ export function safeOriginalName(filename) {
   return (clean || 'archivo').slice(0, 180);
 }
 
-const formatMb = (bytes) => `${(bytes / MB).toFixed(bytes < 10 * MB ? 1 : 0)} MB`;
+const formatMb = (bytes) => {
+  const gb = bytes / (1024 * MB);
+  if (gb >= 1) return `${(Math.round(gb * 10) / 10).toString().replace('.', ',')} GB`;
+  return `${(bytes / MB).toFixed(bytes < 10 * MB ? 1 : 0)} MB`;
+};
 
 /**
  * Valida una subida antes de aceptarla. `limits` permite que una
@@ -221,8 +225,12 @@ export function createDiskStorage(rootDir) {
       const to = finalPath(key);
       await fsp.mkdir(path.dirname(to), { recursive: true });
       await fsp.copyFile(sourcePath, to);
-      const buffer = await fsp.readFile(to);
-      return { sha256: crypto.createHash('sha256').update(buffer).digest('hex'), size: buffer.length };
+      const hash = crypto.createHash('sha256');
+      await new Promise((resolve, reject) => {
+        fs.createReadStream(to).on('data', (chunk) => hash.update(chunk)).on('end', resolve).on('error', reject);
+      });
+      const { size } = await fsp.stat(to);
+      return { sha256: hash.digest('hex'), size };
     },
 
     async writeFile(key, buffer) {

@@ -586,7 +586,7 @@ CREATE TABLE IF NOT EXISTS aula_activities (
   allow_link           BOOLEAN NOT NULL DEFAULT FALSE,
   allow_file           BOOLEAN NOT NULL DEFAULT TRUE,
   accepted_extensions  TEXT[] NOT NULL DEFAULT '{pdf,docx,xlsx,pptx,png,jpg,jpeg}',
-  max_file_mb          INTEGER NOT NULL DEFAULT 20 CHECK (max_file_mb BETWEEN 1 AND 200),
+  max_file_mb          INTEGER NOT NULL DEFAULT 20 CHECK (max_file_mb BETWEEN 1 AND 1024),
   max_points           NUMERIC(6,2) NOT NULL DEFAULT 100 CHECK (max_points > 0),
   is_required          BOOLEAN NOT NULL DEFAULT TRUE,
   status               TEXT NOT NULL DEFAULT 'borrador'
