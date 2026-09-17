@@ -204,8 +204,16 @@ export async function prepareReset(db, email, { now = new Date(), adminHashes = 
     user = await find();
   }
   if (!user || user.status === 'suspended') return null;
-  const token = await issueAuthToken(db, user.id, 'reset', { now });
-  return { user: publicUser(user), token };
+  // Quien nunca creó su contraseña recibe una invitación (7 días), no un
+  // «restablecer» de 2 horas.
+  const { has_password: hasPassword } = await one(
+    db,
+    'SELECT password_hash IS NOT NULL AS has_password FROM aula_users WHERE id = $1',
+    [user.id],
+  );
+  const purpose = user.status === 'invited' && !hasPassword ? 'invite' : 'reset';
+  const token = await issueAuthToken(db, user.id, purpose, { now });
+  return { user: publicUser(user), token, purpose };
 }
 
 export async function changePassword(db, { userId, sessionId, current, next, now = new Date() }) {

@@ -193,6 +193,10 @@ describe('aula · administradores designados por huella', () => {
     expect(res.status).toBe(200);
     expect(t.mails).toHaveLength(1);
     expect(t.mails[0].to).toBe(email);
+    // Primer ingreso: invitación para crear la contraseña, no «restablecer».
+    expect(t.mails[0].subject).toBe('Tu acceso al Aula Edvanta');
+    expect(t.mails[0].html).toContain('acceso de administración');
+    expect(t.mails[0].html).toContain('7 días');
 
     // Un correo sin huella no crea nada (y la respuesta es la misma).
     const other = await c.post('/auth/recover', { email: 'intruso@uni.edu.co' });

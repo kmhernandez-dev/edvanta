@@ -38,13 +38,15 @@ function layout({ heading, intro, buttonLabel, link, note }) {
 </body></html>`;
 }
 
-export function inviteEmail({ firstName, link, invitedBy }) {
+export function inviteEmail({ firstName, link, invitedBy, admin = false }) {
   const who = invitedBy ? ` ${escape(invitedBy)} te dio acceso` : ' Edvanta te dio acceso';
   return {
     subject: 'Tu acceso al Aula Edvanta',
     html: layout({
       heading: `Hola, ${firstName}`,
-      intro: `${who} al Aula Edvanta, donde encontrarás las capacitaciones que te asignaron. Para entrar, crea tu contraseña.`,
+      intro: admin
+        ? 'Tienes acceso de administración al Aula Edvanta: cursos, participantes, empresas y reportes. Para entrar, crea tu contraseña.'
+        : `${who} al Aula Edvanta, donde encontrarás las capacitaciones que te asignaron. Para entrar, crea tu contraseña.`,
       buttonLabel: 'Crear mi contraseña',
       link,
       note: 'El enlace vence en 7 días y solo se puede usar una vez. Si no esperabas este correo, puedes ignorarlo.',

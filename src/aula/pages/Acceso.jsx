@@ -112,7 +112,7 @@ export function Recuperar() {
             <MailCheck className="h-6 w-6" aria-hidden="true" />
           </span>
           <p className="text-sm leading-relaxed text-[var(--aula-text)]" role="status">{sent}</p>
-          <p className="text-xs text-[var(--aula-muted)]">El enlace vence en 2 horas.</p>
+          <p className="text-xs text-[var(--aula-muted)]">Si es tu primer ingreso, el enlace dura 7 días; si ya tenías contraseña, 2 horas.</p>
           <Button variant="secondary" to="/aula/entrar">Volver a entrar</Button>
         </div>
       ) : (

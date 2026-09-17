@@ -2,7 +2,7 @@ import express from 'express';
 import {
   changePassword, inspectAuthToken, login, prepareReset, redeemAuthToken, revokeSession,
 } from '../../lib/aula/accounts.js';
-import { accessLink, resetEmail } from '../../lib/aula/emails.js';
+import { accessLink, inviteEmail, resetEmail } from '../../lib/aula/emails.js';
 import { badRequest, email as emailField, route, tooMany } from '../../lib/aula/http.js';
 import { clearedSessionCookie, createRateLimiter, sessionCookie } from '../../lib/aula/security.js';
 import { requireUser } from './middleware.js';
@@ -56,7 +56,10 @@ export function authRouter({ mailer, siteUrl, secureCookies, adminEmailHashes = 
     }
     const prepared = await prepareReset(db, email, { now, adminHashes: adminEmailHashes });
     if (prepared) {
-      const message = resetEmail({ firstName: prepared.user.firstName, link: accessLink(siteUrl, prepared.token) });
+      const link = accessLink(siteUrl, prepared.token);
+      const message = prepared.purpose === 'invite'
+        ? inviteEmail({ firstName: prepared.user.firstName, link, admin: prepared.user.role === 'admin' })
+        : resetEmail({ firstName: prepared.user.firstName, link });
       const sent = await mailer.send({ to: prepared.user.email, ...message });
       if (!sent) {
         console.error(JSON.stringify({ level: 'error', ns: 'aula', msg: 'No se pudo enviar el correo de recuperación', user: prepared.user.id }));
@@ -65,7 +68,7 @@ export function authRouter({ mailer, siteUrl, secureCookies, adminEmailHashes = 
     // Misma respuesta exista o no la cuenta.
     res.json({
       ok: true,
-      message: 'Si ese correo tiene una cuenta en el aula, te enviamos un enlace para restablecer la contraseña. Revisa también la carpeta de spam.',
+      message: 'Si ese correo tiene una cuenta en el aula, te enviamos un enlace para crear o restablecer tu contraseña. Revisa también la carpeta de spam.',
     });
   }));
 
