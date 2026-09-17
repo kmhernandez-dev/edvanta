@@ -243,3 +243,8 @@ La política de seguridad del sitio (`Content-Security-Policy` en
 `nginx.conf`) solo permite incrustar YouTube (sin cookies), Vimeo, Google
 Slides y Canva. Para aceptar otro proveedor hay que agregarlo allí y en
 `api/lib/aula/blocks.js`.
+
+Las páginas `/aula` tienen su propio bloque en `nginx.conf` con cabeceras de
+seguridad (no se pueden incrustar en otros sitios, sin `Referer` hacia
+sitios externos). En nginx, un `location` que declara `add_header` no
+hereda los del servidor: si se agrega un bloque nuevo, hay que repetirlas.
