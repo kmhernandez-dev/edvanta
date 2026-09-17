@@ -78,7 +78,7 @@ function Outline({ snapshot, currentId, lessonHref, lessonState, onNavigate }) {
 
 export function CoursePlayer({
   snapshot, lessonId, lessonHref, backTo, mode = 'participant', lessonState = () => ({ status: 'pendiente' }),
-  progress, renderCompletion, onMedia, banner, headerActions,
+  progress, renderCompletion, onMedia, banner, headerActions, videoPositions,
 }) {
   const lessons = useMemo(() => flattenLessons(snapshot), [snapshot]);
   const index = Math.max(0, lessons.findIndex((l) => l.id === lessonId));
@@ -175,7 +175,12 @@ export function CoursePlayer({
               </p>
             </header>
 
-            <BlockList blocks={lesson.blocks} files={snapshot.files} onMedia={onMedia ? (block, info) => onMedia(lesson, block, info) : undefined} />
+            <BlockList
+              blocks={lesson.blocks}
+              files={snapshot.files}
+              positions={videoPositions?.[lesson.id]}
+              onMedia={onMedia ? (block, info) => onMedia(lesson, block, info) : undefined}
+            />
 
             <footer className="mt-10 flex flex-col gap-4 border-t border-[var(--aula-border)] pt-6">
               {renderCompletion?.(lesson)}

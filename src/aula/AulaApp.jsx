@@ -33,6 +33,10 @@ const Recursos = lazy(() => import('./pages/admin/curso/Recursos'));
 const ParticipantesCurso = lazy(() => import('./pages/admin/curso/ParticipantesCurso'));
 const Versiones = lazy(() => import('./pages/admin/curso/Versiones'));
 const VistaPrevia = lazy(() => import('./pages/admin/curso/VistaPrevia'));
+const CursoParticipante = lazy(() => import('./pages/curso/CursoParticipante'));
+const PortadaCurso = lazy(() => import('./pages/curso/PortadaCurso'));
+const ClaseParticipante = lazy(() => import('./pages/curso/ClaseParticipante'));
+const RecursosCurso = lazy(() => import('./pages/curso/RecursosCurso'));
 
 const fullPage = (element) => <Suspense fallback={<PageLoader />}>{element}</Suspense>;
 
@@ -51,6 +55,9 @@ const TITLES = [
   [/^\/aula\/admin\/participantes\/importar/, 'Importar participantes'],
   [/^\/aula\/admin\/participantes/, 'Participantes'],
   [/^\/aula\/admin/, 'Administración'],
+  [/^\/aula\/curso\/\d+\/clase/, 'Clase'],
+  [/^\/aula\/curso\/\d+\/recursos/, 'Recursos del curso'],
+  [/^\/aula\/curso/, 'Curso'],
   [/^\/aula/, 'Mi aula'],
 ];
 
@@ -124,6 +131,13 @@ export default function AulaApp() {
           {/* Vista previa a pantalla completa, como la vería un participante. */}
           <Route path="admin/cursos/:id/vista-previa" element={<RequireAula role="admin">{fullPage(<VistaPrevia />)}</RequireAula>} />
           <Route path="admin/cursos/:id/vista-previa/:lessonId" element={<RequireAula role="admin">{fullPage(<VistaPrevia />)}</RequireAula>} />
+
+          {/* Curso del participante a pantalla completa. */}
+          <Route path="curso/:courseId" element={<RequireAula>{fullPage(<CursoParticipante />)}</RequireAula>}>
+            <Route index element={<PortadaCurso />} />
+            <Route path="clase/:lessonId" element={<ClaseParticipante />} />
+            <Route path="recursos" element={<RecursosCurso />} />
+          </Route>
 
           <Route element={<RequireAula><RoleShell /></RequireAula>}>
             <Route index element={<Home />} />

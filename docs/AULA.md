@@ -133,6 +133,44 @@ muestra qué cambió y a quién afecta. Al publicar una versión nueva:
   reabrir a los completados en una actualización obligatoria.
 - Todo movimiento queda en la bitácora y los afectados reciben un aviso.
 
+### Aula del participante
+
+- `/aula`: «Mi aula», con los cursos asignados, su estado, avance y fecha
+  límite.
+- `/aula/curso/:id`: portada del curso (objetivos, contenido, avance por
+  clases, evaluaciones y actividades, y recursos). El botón retoma la
+  última clase abierta.
+- `/aula/curso/:id/clase/:claseId`: reproductor con índice, estados
+  (completada, en progreso, sin empezar, bloqueada), clase anterior y
+  siguiente.
+- `/aula/curso/:id/recursos`: biblioteca de recursos (si está activa).
+
+Reglas de avance (`api/lib/aula/learning.js` y `progress.js`, siempre
+contra el snapshot de la versión que cursa la persona):
+
+- **Avance en orden**: una clase se bloquea mientras haya una obligatoria
+  anterior sin completar; las completadas siguen abiertas para repasar.
+- **Lecturas**: se completan con «Marcar como completada». Si tienen tiempo
+  mínimo, solo cuenta el tiempo con la pestaña visible y actividad reciente
+  (o un video en reproducción); el navegador lo envía cada 30 s y el
+  servidor nunca suma más que el tiempo real transcurrido.
+- **Videos**: cuentan los tramos vistos de forma continua (adelantar no
+  suma). La clase se completa sola cuando cada video llega al porcentaje del
+  curso. El servidor acepta como máximo 2,5 veces el tiempo real entre
+  reportes. YouTube y Vimeo se miden con sus mensajes de reproductor, sin
+  scripts de terceros. Al volver, el video retoma donde quedó.
+- **Curso completado**: 100 % de las clases obligatorias (y, cuando existan,
+  evaluaciones aprobadas y actividades aprobadas). Las clases opcionales no
+  cuentan.
+- Después de la fecha límite el curso sigue abierto; el estado muestra
+  «Vencido» hasta completarlo. Tras la fecha de cierre del curso, nadie
+  puede entrar.
+
+API del participante: `GET /api/aula/me/courses`,
+`GET /api/aula/me/courses/:id`, `GET /api/aula/me/courses/:id/resources` y,
+por clase, `POST …/lessons/:claseId/open`, `…/time`, `…/video` y
+`…/complete`.
+
 ### Recursos de trabajo
 
 Biblioteca por curso con categorías. Cada recurso (archivo o enlace) tiene

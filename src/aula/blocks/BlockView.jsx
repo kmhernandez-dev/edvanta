@@ -3,10 +3,11 @@
  * previa del administrador y el reproductor del curso.
  *
  * `files` trae nombre, tamaño y formato de los archivos del bloque.
- * `onMedia` (opcional) recibe el avance de videos y audios:
- *   onMedia(block, { event: 'progress' | 'ended', current, duration })
+ * `onMedia` (opcional) recibe lo que pasa en videos y audios:
+ *   onMedia(block, { type: 'meta' | 'time' | 'seek' | 'pause' | 'ended', current, duration, playing })
+ * `positions` (opcional) indica dónde retomar cada video: { [blockId]: segundos }.
  */
-import { lazy, Suspense, useEffect, useRef, useState } from 'react';
+import { lazy, Suspense, useEffect, useId, useRef, useState } from 'react';
 import {
   AlertTriangle, ChevronLeft, ChevronRight, Download, ExternalLink, FileText, Info, Lightbulb, Megaphone, X, ZoomIn,
 } from 'lucide-react';
@@ -41,14 +42,20 @@ function DownloadButton({ fileId, file, label = 'Descargar' }) {
 
 // ── Medios ──────────────────────────────────────────────────
 
-function MediaFile({ kind, block, fileId, file, onMedia }) {
+const RESUME_MIN_S = 5;
+
+function MediaFile({ kind, block, fileId, file, onMedia, startAt = 0 }) {
   const ref = useRef(null);
-  const last = useRef(0);
   const Tag = kind === 'video' ? 'video' : 'audio';
-  const report = (event) => {
+  const emit = (type) => {
     const el = ref.current;
     if (!el || !onMedia) return;
-    onMedia(block, { event, current: el.currentTime, duration: el.duration || 0 });
+    onMedia(block, {
+      type,
+      current: el.currentTime,
+      duration: Number.isFinite(el.duration) ? el.duration : 0,
+      playing: !el.paused && !el.ended,
+    });
   };
   return (
     <Tag
@@ -59,12 +66,17 @@ function MediaFile({ kind, block, fileId, file, onMedia }) {
       playsInline
       controlsList={block.allowDownload ? undefined : 'nodownload'}
       onContextMenu={block.allowDownload ? undefined : (e) => e.preventDefault()}
-      onTimeUpdate={() => {
-        const now = ref.current?.currentTime || 0;
-        if (Math.abs(now - last.current) >= 5) { last.current = now; report('progress'); }
+      onLoadedMetadata={() => {
+        const el = ref.current;
+        // Retoma donde quedó la persona (salvo que ya estuviera casi al final).
+        if (el && startAt > RESUME_MIN_S && el.duration && startAt < el.duration - RESUME_MIN_S) el.currentTime = startAt;
+        emit('meta');
       }}
-      onPause={() => report('progress')}
-      onEnded={() => report('ended')}
+      onPlay={() => emit('time')}
+      onTimeUpdate={() => emit('time')}
+      onSeeking={() => emit('seek')}
+      onPause={() => emit('pause')}
+      onEnded={() => emit('ended')}
       className={kind === 'video' ? 'aspect-video w-full rounded-[var(--aula-radius)] bg-black' : 'w-full'}
       aria-label={block.data.title || file?.name || (kind === 'video' ? 'Video' : 'Audio')}
     >
@@ -73,15 +85,97 @@ function MediaFile({ kind, block, fileId, file, onMedia }) {
   );
 }
 
-function EmbeddedVideo({ data }) {
-  const src = data.provider === 'youtube'
-    ? `https://www.youtube-nocookie.com/embed/${data.videoId}?rel=0&modestbranding=1&enablejsapi=1&origin=${encodeURIComponent(window.location.origin)}`
-    : `https://player.vimeo.com/video/${data.videoId}?dnt=1${data.hash ? `&h=${data.hash}` : ''}`;
+const YOUTUBE_ORIGINS = ['https://www.youtube-nocookie.com', 'https://www.youtube.com'];
+const VIMEO_ORIGIN = 'https://player.vimeo.com';
+
+/**
+ * YouTube y Vimeo, con su protocolo de mensajes (sin cargar scripts de
+ * terceros): así se sabe cuánto del video se reproduce.
+ */
+function EmbeddedVideo({ block, onMedia, startAt = 0 }) {
+  const { data } = block;
+  const ref = useRef(null);
+  const frameId = useId();
+  const [start] = useState(() => (startAt > RESUME_MIN_S ? Math.floor(startAt) : 0));
+  const youtube = data.provider === 'youtube';
+  // En refs: aunque el padre se vuelva a dibujar, el oyente no se reinicia.
+  const onMediaRef = useRef(onMedia);
+  const blockRef = useRef(block);
+  onMediaRef.current = onMedia;
+  blockRef.current = block;
+  const tracked = Boolean(onMedia);
+  const src = youtube
+    ? `https://www.youtube-nocookie.com/embed/${data.videoId}?rel=0&modestbranding=1&enablejsapi=1&origin=${encodeURIComponent(window.location.origin)}${start ? `&start=${start}` : ''}`
+    : `https://player.vimeo.com/video/${data.videoId}?dnt=1${data.hash ? `&h=${data.hash}` : ''}${start ? `#t=${start}s` : ''}`;
+
+  useEffect(() => {
+    const iframe = ref.current;
+    if (!tracked || !iframe) return undefined;
+    let duration = 0;
+    let state = -1;
+    let heard = false;
+    const emit = (type, current) => onMediaRef.current?.(blockRef.current, {
+      type, current: Number(current) || 0, duration, playing: state === 1,
+    });
+    const send = (message, origin) => iframe.contentWindow?.postMessage(JSON.stringify(message), origin);
+    const listen = () => send({ event: 'listening', id: frameId, channel: 'widget' }, YOUTUBE_ORIGINS[0]);
+
+    const onMessage = (e) => {
+      if (e.source !== iframe.contentWindow) return;
+      let msg;
+      try { msg = typeof e.data === 'string' ? JSON.parse(e.data) : e.data; } catch { return; }
+      if (!msg || typeof msg !== 'object') return;
+      if (youtube && YOUTUBE_ORIGINS.includes(e.origin)) {
+        heard = true;
+        const info = msg.info && typeof msg.info === 'object' ? msg.info : {};
+        if (info.duration > 0) duration = info.duration;
+        if (typeof info.playerState === 'number' && info.playerState !== state) {
+          state = info.playerState;
+          if (state === 2) emit('pause', info.currentTime);
+          if (state === 0) emit('ended', info.currentTime ?? duration);
+        }
+        if (typeof info.currentTime === 'number') emit('time', info.currentTime);
+      } else if (!youtube && e.origin === VIMEO_ORIGIN) {
+        const d = msg.data || {};
+        if (d.duration > 0) duration = d.duration;
+        if (msg.event === 'ready') {
+          ['play', 'pause', 'ended', 'seeked', 'timeupdate'].forEach((value) => send({ method: 'addEventListener', value }, VIMEO_ORIGIN));
+        } else if (msg.event === 'play') {
+          state = 1;
+        } else if (msg.event === 'timeupdate') {
+          emit('time', d.seconds);
+        } else if (msg.event === 'seeked') {
+          emit('seek', d.seconds);
+        } else if (msg.event === 'pause') {
+          state = 2;
+          emit('pause', d.seconds);
+        } else if (msg.event === 'ended') {
+          state = 0;
+          emit('ended', d.seconds ?? duration);
+        }
+      }
+    };
+
+    window.addEventListener('message', onMessage);
+    let timer = null;
+    if (youtube) {
+      iframe.addEventListener('load', listen);
+      // Hasta que el reproductor responda, se le vuelve a avisar que escuchamos.
+      timer = setInterval(() => { if (heard) clearInterval(timer); else listen(); }, 1500);
+    }
+    return () => {
+      window.removeEventListener('message', onMessage);
+      iframe.removeEventListener('load', listen);
+      clearInterval(timer);
+    };
+  }, [frameId, tracked, youtube]);
+
   return (
     <div className="aspect-video w-full overflow-hidden rounded-[var(--aula-radius)] bg-black">
       <iframe
+        ref={ref}
         src={src}
-        title={data.title || (data.provider === 'youtube' ? 'Video de YouTube' : 'Video de Vimeo')}
+        title={data.title || (youtube ? 'Video de YouTube' : 'Video de Vimeo')}
         className="h-full w-full"
         loading="lazy"
         allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen"
@@ -93,14 +187,14 @@ function EmbeddedVideo({ data }) {
   );
 }
 
-function VideoBlock({ block, files, onMedia }) {
+function VideoBlock({ block, files, onMedia, startAt }) {
   const { data } = block;
   const file = fileOf(files, data.fileId);
   return (
     <figure className="flex flex-col gap-2">
       {data.source === 'archivo'
-        ? <MediaFile kind="video" block={block} fileId={data.fileId} file={file} onMedia={onMedia} />
-        : <EmbeddedVideo data={data} />}
+        ? <MediaFile kind="video" block={block} fileId={data.fileId} file={file} onMedia={onMedia} startAt={startAt} />
+        : <EmbeddedVideo block={block} onMedia={onMedia} startAt={startAt} />}
       {(data.title || (block.allowDownload && data.source === 'archivo')) && (
         <figcaption className="flex flex-wrap items-center justify-between gap-2">
           <span className="text-sm font-semibold">{data.title}</span>
@@ -112,7 +206,7 @@ function VideoBlock({ block, files, onMedia }) {
   );
 }
 
-function AudioBlock({ block, files, onMedia }) {
+function AudioBlock({ block, files, onMedia, startAt }) {
   const { data } = block;
   const file = fileOf(files, data.fileId);
   return (
@@ -121,7 +215,7 @@ function AudioBlock({ block, files, onMedia }) {
         <span className="text-sm font-semibold">{data.title || 'Audio'}</span>
         {block.allowDownload && <DownloadButton fileId={data.fileId} file={file} />}
       </figcaption>
-      <MediaFile kind="audio" block={block} fileId={data.fileId} file={file} onMedia={onMedia} />
+      <MediaFile kind="audio" block={block} fileId={data.fileId} file={file} onMedia={onMedia} startAt={startAt} />
       <Transcript html={data.transcriptHtml} />
     </figure>
   );
@@ -362,7 +456,7 @@ function CalloutBlock({ block }) {
   );
 }
 
-export function BlockView({ block, files, onMedia }) {
+export function BlockView({ block, files, onMedia, startAt }) {
   const { data } = block;
   switch (block.type) {
     case 'encabezado':
@@ -372,8 +466,8 @@ export function BlockView({ block, files, onMedia }) {
     case 'texto': return <RichText html={data.html} />;
     case 'imagen': return <ImageBlock block={block} files={files} />;
     case 'galeria': return <GalleryBlock block={block} files={files} />;
-    case 'video': return <VideoBlock block={block} files={files} onMedia={onMedia} />;
-    case 'audio': return <AudioBlock block={block} files={files} onMedia={onMedia} />;
+    case 'video': return <VideoBlock block={block} files={files} onMedia={onMedia} startAt={startAt} />;
+    case 'audio': return <AudioBlock block={block} files={files} onMedia={onMedia} startAt={startAt} />;
     case 'pdf': return <PdfBlock block={block} mode="documento" />;
     case 'presentacion': return <SlidesBlock block={block} />;
     case 'archivos': return <FilesBlock block={block} files={files} />;
@@ -390,12 +484,12 @@ export function BlockView({ block, files, onMedia }) {
 }
 
 /** Todos los bloques de una clase, con el espaciado de lectura. */
-export function BlockList({ blocks, files, onMedia }) {
+export function BlockList({ blocks, files, onMedia, positions }) {
   return (
     <div className="flex flex-col gap-6">
       {blocks.map((b) => (
         <div key={b.id} id={`bloque-${b.id}`}>
-          <BlockView block={b} files={files} onMedia={onMedia} />
+          <BlockView block={b} files={files} onMedia={onMedia} startAt={positions?.[b.id]} />
         </div>
       ))}
     </div>

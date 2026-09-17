@@ -45,9 +45,10 @@ function toError(status, data) {
   return new ApiError(status, err.code || `http_${status}`, message, err);
 }
 
-export async function api(path, { method = 'GET', body, signal } = {}) {
+/** `keepalive` deja terminar el envío aunque la persona cierre la pestaña. */
+export async function api(path, { method = 'GET', body, signal, keepalive = false } = {}) {
   const headers = { 'X-Aula-Request': '1', Accept: 'application/json' };
-  const init = { method, headers, credentials: 'same-origin', signal };
+  const init = { method, headers, credentials: 'same-origin', signal, keepalive };
   if (body !== undefined) {
     headers['Content-Type'] = 'application/json';
     init.body = JSON.stringify(body);

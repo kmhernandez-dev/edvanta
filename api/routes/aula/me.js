@@ -1,7 +1,16 @@
 import express from 'express';
 import { closedReason } from '../../lib/aula/access.js';
 import { many } from '../../lib/aula/db.js';
-import { route } from '../../lib/aula/http.js';
+import { id as idField, int, route } from '../../lib/aula/http.js';
+import {
+  addLessonTime, completeLesson, courseForParticipant, openLesson, reportVideo,
+} from '../../lib/aula/learning.js';
+import { participantResources } from '../../lib/aula/resources.js';
+
+const ids = (req) => ({
+  courseId: idField(req.params.courseId, 'courseId', 'El curso'),
+  lessonId: req.params.lessonId ? idField(req.params.lessonId, 'lessonId', 'La clase') : null,
+});
 
 export function meRouter() {
   const router = express.Router();
@@ -48,6 +57,38 @@ export function meRouter() {
         closedMessage: closed?.message || null,
       };
     }));
+  }));
+
+  // ── Aula de un curso ──────────────────────────────────────
+  router.get('/courses/:courseId', route(async (req, res) => {
+    const { courseId } = ids(req);
+    res.json(await courseForParticipant(req.aula.db, req.aula.user, courseId, { now: req.aula.now }));
+  }));
+
+  router.get('/courses/:courseId/resources', route(async (req, res) => {
+    const { courseId } = ids(req);
+    res.json(await participantResources(req.aula.db, req.aula.user, courseId, { now: req.aula.now }));
+  }));
+
+  router.post('/courses/:courseId/lessons/:lessonId/open', route(async (req, res) => {
+    const { courseId, lessonId } = ids(req);
+    res.json(await openLesson(req.aula.db, req.aula.user, courseId, lessonId, { now: req.aula.now }));
+  }));
+
+  router.post('/courses/:courseId/lessons/:lessonId/time', route(async (req, res) => {
+    const { courseId, lessonId } = ids(req);
+    const seconds = int(req.body?.seconds, 'seconds', 'El tiempo', { min: 0, max: 3600 });
+    res.json(await addLessonTime(req.aula.db, req.aula.user, courseId, lessonId, seconds, { now: req.aula.now }));
+  }));
+
+  router.post('/courses/:courseId/lessons/:lessonId/video', route(async (req, res) => {
+    const { courseId, lessonId } = ids(req);
+    res.json(await reportVideo(req.aula.db, req.aula.user, courseId, lessonId, req.body, { now: req.aula.now }));
+  }));
+
+  router.post('/courses/:courseId/lessons/:lessonId/complete', route(async (req, res) => {
+    const { courseId, lessonId } = ids(req);
+    res.json(await completeLesson(req.aula.db, req.aula.user, courseId, lessonId, { now: req.aula.now }));
   }));
 
   return router;
