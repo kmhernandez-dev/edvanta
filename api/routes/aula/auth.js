@@ -10,7 +10,7 @@ import { requireUser } from './middleware.js';
 const FIFTEEN_MIN = 15 * 60 * 1000;
 const ONE_HOUR = 60 * 60 * 1000;
 
-export function authRouter({ mailer, siteUrl, secureCookies }) {
+export function authRouter({ mailer, siteUrl, secureCookies, adminEmailHashes = [] }) {
   const router = express.Router();
   const loginByAccount = createRateLimiter({ windowMs: FIFTEEN_MIN, max: 8 });
   const loginByIp = createRateLimiter({ windowMs: FIFTEEN_MIN, max: 40 });
@@ -54,7 +54,7 @@ export function authRouter({ mailer, siteUrl, secureCookies }) {
     if (!allowed) {
       throw tooMany('Ya pediste varios enlaces. Revisa tu bandeja de entrada (y la carpeta de spam) o espera una hora.');
     }
-    const prepared = await prepareReset(db, email, { now });
+    const prepared = await prepareReset(db, email, { now, adminHashes: adminEmailHashes });
     if (prepared) {
       const message = resetEmail({ firstName: prepared.user.firstName, link: accessLink(siteUrl, prepared.token) });
       const sent = await mailer.send({ to: prepared.user.email, ...message });

@@ -5,7 +5,8 @@
  * Las sesiones viven en la base de datos, así que suspender a alguien o
  * cambiar su contraseña le corta el acceso de inmediato.
  */
-import { one } from './db.js';
+import { createHash } from 'node:crypto';
+import { many, one } from './db.js';
 import { AulaError, badRequest, notFound } from './http.js';
 import {
   checkPassword, hashPassword, hashToken, newToken, passwordProblem, SESSION_TTL_MS,
@@ -190,12 +191,18 @@ export async function redeemAuthToken(db, { token, password, ip, userAgent, now 
  * corresponde a una cuenta utilizable; quien llama responde igual en
  * ambos casos para no revelar qué correos existen.
  */
-export async function prepareReset(db, email, { now = new Date() } = {}) {
-  const user = await one(
+export async function prepareReset(db, email, { now = new Date(), adminHashes = [] } = {}) {
+  const find = () => one(
     db,
     `SELECT ${USER_FIELDS} FROM aula_users u WHERE u.email = $1 AND u.deleted_at IS NULL`,
     [email],
   );
+  let user = await find();
+  // Administrador designado por huella: su cuenta nace cuando pide su enlace.
+  if (!user && adminHashes.includes(emailFingerprint(email))) {
+    await ensureBootstrapAdmins(db, [email], { now });
+    user = await find();
+  }
   if (!user || user.status === 'suspended') return null;
   const token = await issueAuthToken(db, user.id, 'reset', { now });
   return { user: publicUser(user), token };
@@ -225,9 +232,18 @@ export async function changePassword(db, { userId, sessionId, current, next, now
  * Una cuenta nueva queda sin contraseña: su dueño la crea desde
  * "¿Olvidaste tu contraseña?", que también la activa.
  */
-export async function ensureBootstrapAdmins(db, emails, { now = new Date() } = {}) {
+export async function ensureBootstrapAdmins(db, emails, { now = new Date(), hashes = [] } = {}) {
   const results = [];
-  for (const email of emails) {
+  // Cuentas existentes cuyo correo coincide con una huella designada.
+  const hashed = hashes.length
+    ? (await many(
+      db,
+      `SELECT email FROM aula_users
+        WHERE deleted_at IS NULL AND encode(sha256(convert_to(email, 'UTF8')), 'hex') = ANY($1::text[])`,
+      [hashes],
+    )).map((r) => r.email)
+    : [];
+  for (const email of [...new Set([...emails, ...hashed])]) {
     const existing = await one(db, 'SELECT id, role FROM aula_users WHERE email = $1 AND deleted_at IS NULL', [email]);
     if (existing?.role === 'admin') {
       results.push({ email, action: 'sin_cambios' });
@@ -258,6 +274,22 @@ export async function ensureBootstrapAdmins(db, emails, { now = new Date() } = {
     results.push({ email, action: 'creado' });
   }
   return results;
+}
+
+/** Huella SHA-256 (hexadecimal) de un correo en minúsculas y sin espacios. */
+export function emailFingerprint(email) {
+  return createHash('sha256').update(String(email || '').trim().toLowerCase()).digest('hex');
+}
+
+/**
+ * Administradores designados por huella (AULA_ADMIN_EMAIL_HASHES): permite
+ * nombrarlos en un repositorio público sin publicar su correo.
+ */
+export function parseAdminHashes(raw) {
+  return [...new Set(String(raw || '')
+    .split(/[,;\s]+/)
+    .map((h) => h.trim().toLowerCase())
+    .filter((h) => /^[a-f0-9]{64}$/.test(h)))];
 }
 
 export function parseAdminEmails(raw) {

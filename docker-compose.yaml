@@ -56,8 +56,11 @@ services:
       JWT_SECRET: "${JWT_SECRET:?JWT_SECRET is required}"
       GOOGLE_CLIENT_ID: "${GOOGLE_CLIENT_ID:-}"
       VIDA360_REAL_DATA_ENABLED: "${VIDA360_REAL_DATA_ENABLED:-false}"
-      # Aula virtual: primer administrador y carpeta persistente de archivos.
+      # Aula virtual: administradores y carpeta persistente de archivos.
+      # AULA_ADMIN_EMAIL_HASHES designa administradores por la huella SHA-256
+      # de su correo (el repositorio es público: así el correo no se publica).
       AULA_ADMIN_EMAILS: "${AULA_ADMIN_EMAILS:-contacto@edvanta.co}"
+      AULA_ADMIN_EMAIL_HASHES: "${AULA_ADMIN_EMAIL_HASHES:-b2f84e0eb67a058d2917ec7cfaaf6a33b7740fe6b72533f5fefc7a9a28c48e37}"
       AULA_STORAGE_DIR: "/data/aula"
     volumes:
       # Videos, PDF e imágenes del aula. Sobrevive a los despliegues:

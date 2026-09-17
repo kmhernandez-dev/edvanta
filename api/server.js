@@ -56,7 +56,7 @@ import fstAppRoutes from './routes/fst-app.js';
 import { createAulaRouter, startAula } from './routes/aula/index.js';
 import { fromPgPool } from './lib/aula/db.js';
 import { createDiskStorage } from './lib/aula/storage.js';
-import { parseAdminEmails } from './lib/aula/accounts.js';
+import { parseAdminEmails, parseAdminHashes } from './lib/aula/accounts.js';
 import { sendEmail, fromWithName } from './lib/resend.js';
 
 const PORT = parseInt(process.env.PORT || '3000', 10);
@@ -301,11 +301,13 @@ app.use('/api/cv', cvRoutes);
 // Aula virtual empresarial (cuentas propias, sesiones por cookie)
 const aulaDb = fromPgPool(pool);
 const aulaStorage = createDiskStorage(process.env.AULA_STORAGE_DIR || './.data/aula');
+const aulaAdminHashes = parseAdminHashes(process.env.AULA_ADMIN_EMAIL_HASHES);
 app.use('/api/aula', createAulaRouter({
   db: aulaDb,
   storage: aulaStorage,
   siteUrl: process.env.SITE_URL || 'https://edvanta.co',
   secureCookies: IS_PROD,
+  adminEmailHashes: aulaAdminHashes,
   mailer: {
     send: ({ to, subject, html }) => sendEmail({ to, subject, html, from: fromWithName('Aula Edvanta') || undefined }),
   },
@@ -363,6 +365,7 @@ async function start() {
           db: aulaDb,
           storage: aulaStorage,
           adminEmails: parseAdminEmails(process.env.AULA_ADMIN_EMAILS),
+          adminHashes: aulaAdminHashes,
           log: (entry) => console.log(JSON.stringify({ level: 'info', ns: 'aula', ...entry })),
         });
       } catch (e) {

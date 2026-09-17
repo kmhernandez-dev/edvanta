@@ -199,13 +199,15 @@ textos.
 | `RESEND_API_KEY`, `FROM_EMAIL` | sí | Correos del aula (ya existentes). |
 | `SITE_URL` | sí | Base de los enlaces de invitación (`https://edvanta.co`). |
 | `AULA_ADMIN_EMAILS` | no | Correos que siempre son administradores. Por defecto `contacto@edvanta.co` (en `docker-compose.yaml`). |
+| `AULA_ADMIN_EMAIL_HASHES` | no | Administradores designados por la huella SHA-256 de su correo (el repositorio es público: así el correo no queda publicado). La cuenta se crea cuando esa persona pide su enlace en `/aula/recuperar`. |
 | `AULA_STORAGE_DIR` | no | Carpeta de archivos. En Coolify `/data/aula` (volumen `aula-files`). |
 | `AULA_BCRYPT_COST` | no | Costo de bcrypt (12). |
 
 ### Primer acceso del administrador
 
 1. Al arrancar, la API crea la cuenta de cada correo de `AULA_ADMIN_EMAILS`
-   (sin contraseña) o la promueve a administrador.
+   (sin contraseña) o la promueve a administrador. Los correos designados por
+   huella (`AULA_ADMIN_EMAIL_HASHES`) se crean al pedir el enlace del paso 2.
 2. Entra a `https://edvanta.co/aula/recuperar` con ese correo.
 3. Abre el enlace del correo y crea la contraseña.
 

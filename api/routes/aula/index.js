@@ -23,9 +23,10 @@ export function createAulaRouter({
   mailer,
   siteUrl,
   secureCookies = true,
+  adminEmailHashes = [],
   now = () => new Date(),
 }) {
-  const deps = { db, storage, mailer, siteUrl, secureCookies };
+  const deps = { db, storage, mailer, siteUrl, secureCookies, adminEmailHashes };
   const router = express.Router();
 
   router.use((_req, res, next) => {
@@ -54,9 +55,9 @@ export function createAulaRouter({
 }
 
 /** Tareas de arranque: carpetas de archivos, administradores iniciales y limpieza periódica. */
-export async function startAula({ db, storage, adminEmails = [], log = () => {} }) {
+export async function startAula({ db, storage, adminEmails = [], adminHashes = [], log = () => {} }) {
   await storage.init();
-  const admins = await ensureBootstrapAdmins(db, adminEmails);
+  const admins = await ensureBootstrapAdmins(db, adminEmails, { hashes: adminHashes });
   log({ msg: 'Aula lista', admins, storage: storage.root });
 
   const sweep = () => sweepStaleUploads({ db, storage })

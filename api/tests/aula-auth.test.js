@@ -1,5 +1,7 @@
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
-import { ensureBootstrapAdmins, parseAdminEmails } from '../lib/aula/accounts.js';
+import {
+  emailFingerprint, ensureBootstrapAdmins, parseAdminEmails, parseAdminHashes,
+} from '../lib/aula/accounts.js';
 import { passwordProblem } from '../lib/aula/security.js';
 import { seedUser, startTestApp } from './helpers.js';
 
@@ -166,5 +168,50 @@ describe('aula · cuentas y sesiones', () => {
     expect(passwordProblem('1234567890123')).toMatch(/letras y números/);
     expect(passwordProblem('clave-segura-2026')).toBeNull();
     expect(passwordProblem('contraseña-ñandú-7')).toBeNull();
+  });
+});
+
+describe('aula · administradores designados por huella', () => {
+  const email = 'responsable@uni.edu.co';
+  let t;
+  let hash;
+  beforeAll(async () => {
+    hash = emailFingerprint(email);
+    t = await startTestApp({ adminEmailHashes: [hash] });
+  });
+  afterAll(async () => { await t.close(); });
+
+  it('solo acepta huellas SHA-256 válidas', () => {
+    expect(parseAdminHashes(`${hash.toUpperCase()}, no-es-huella ; ${hash}`)).toEqual([hash]);
+    expect(emailFingerprint('  Responsable@Uni.edu.CO ')).toBe(hash);
+  });
+
+  it('crea la cuenta de administración cuando esa persona pide su enlace', async () => {
+    const c = t.client();
+    t.mails.length = 0;
+    const res = await c.post('/auth/recover', { email: 'Responsable@Uni.edu.co' });
+    expect(res.status).toBe(200);
+    expect(t.mails).toHaveLength(1);
+    expect(t.mails[0].to).toBe(email);
+
+    // Un correo sin huella no crea nada (y la respuesta es la misma).
+    const other = await c.post('/auth/recover', { email: 'intruso@uni.edu.co' });
+    expect(other.data).toEqual(res.data);
+    expect(t.mails).toHaveLength(1);
+    const { rows } = await t.db.query("SELECT count(*)::int AS n FROM aula_users WHERE email = 'intruso@uni.edu.co'");
+    expect(rows[0].n).toBe(0);
+
+    const redeemed = await c.post('/auth/link/redeem', { token: tokenFromMail(t.mails[0]), password: 'clave-admin-2026' });
+    expect(redeemed.data.user).toMatchObject({ email, role: 'admin', status: 'active' });
+    expect((await c.get('/admin/summary')).status).toBe(200);
+  });
+
+  it('al arrancar promueve una cuenta existente con esa huella', async () => {
+    const other = 'coordinadora@uni.edu.co';
+    const user = await seedUser(t.db, { email: other });
+    const results = await ensureBootstrapAdmins(t.db, [], { hashes: [emailFingerprint(other)] });
+    expect(results).toEqual([{ email: other, action: 'promovido' }]);
+    const { rows } = await t.db.query('SELECT role FROM aula_users WHERE id = $1', [user.id]);
+    expect(rows[0].role).toBe('admin');
   });
 });
