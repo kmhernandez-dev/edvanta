@@ -134,3 +134,41 @@ además se autoguarda en el servidor.
 > quedar **fuera** del render. Si se definen dentro, React desmonta el
 > formulario en cada pulsación y el campo pierde el foco después de cada
 > letra. La prueba `src/__tests__/cv-builder.test.jsx` lo vigila.
+
+## 7. Hoja de vida: cómo funciona por dentro
+
+Todo ocurre en el navegador: el PDF nunca se envía a un servidor.
+
+| Paso | Archivo | Qué hace |
+| --- | --- | --- |
+| Cargar pdf.js | `src/lib/pdfjs.js` | Una sola carga para el sitio y el visor del aula. Comprueba cómo llega el worker y, si el servidor no lo entrega como JavaScript, ejecuta pdf.js en la página |
+| Leer el PDF | `src/lib/cv/pdfText.js` | Reordena el texto por posición (encabezado, cada columna, pie) y cuenta páginas, columnas, imágenes, enlaces y escaneos sin texto |
+| Interpretar | `src/lib/cv/lector.js` | Nombre, contacto, secciones, cargos con fechas y logros, años de experiencia, estudios, habilidades e idiomas |
+| Diagnosticar | `src/lib/cv/diagnostico.js` | Puntaje en seis categorías, prioridades con cómo corregirlas, palabras clave del cargo y reescritura de frases débiles |
+| Generar el PDF | `src/lib/cv/pdf.js` | Plantilla oficial Edvanta y formato ATS simple |
+
+### El worker de pdf.js y nginx
+
+pdf.js procesa los documentos en `pdf.worker.min.mjs`. El navegador solo
+acepta ese archivo si llega como JavaScript; la imagen de nginx no trae
+el tipo de `.mjs` y lo entregaba como `application/octet-stream`, así que
+ningún PDF se podía abrir. `nginx.conf` declara los `.mjs` de `/assets`
+como JavaScript y `src/lib/pdfjs.js` cubre el caso en que eso vuelva a
+fallar.
+
+> pdf.js recuerda para siempre un worker que falló en la misma página:
+> por eso la comprobación se hace **antes** de abrir el primer documento.
+
+### Reglas de la plantilla oficial
+
+La plantilla promete que un filtro ATS la lee completa. Para cumplirlo:
+
+- una sola columna de lectura y texto real (nada de texto dentro de imágenes);
+- títulos de sección **sin** letras espaciadas (con espaciado, algunos
+  lectores leen «E X P E R I E N C I A»);
+- viñetas y separadores como caracteres (`•`, `·`), no como figuras dibujadas;
+- los metadatos del PDF llevan nombre, cargo y habilidades.
+
+Si se cambia el diseño, hay que volver a subir el PDF generado al
+analizador: una hoja de vida bien llenada con la plantilla debe salir en
+nivel «Lista para postular».
