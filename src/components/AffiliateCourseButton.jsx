@@ -18,7 +18,7 @@ export default function AffiliateCourseButton({
         >
           Enlace pendiente
         </button>
-        <p className="text-xs text-amber-700">
+        <p className="text-xs text-edvanta-blue">
           Enlace del curso pendiente de configuración.
         </p>
       </div>

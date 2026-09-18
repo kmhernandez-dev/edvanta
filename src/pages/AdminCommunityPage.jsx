@@ -68,7 +68,7 @@ function JobCard({ item, onMod, onDelete, working }) {
         <p className="text-xs font-bold uppercase text-teal-700">{item.empresa || 'Empresa de la comunidad'}</p>
         <StatusBadge status={item.status} />
       </div>
-      <h3 className="mt-2 text-lg font-bold text-[#071a4a]">{item.cargo}</h3>
+      <h3 className="mt-2 text-lg font-bold text-edvanta-deep">{item.cargo}</h3>
       <p className="mt-1 text-sm text-slate-600">{item.ciudad} · {MODALIDAD_LABELS[item.modalidad] || item.modalidad}</p>
       {item.requisitos && <p className="mt-2 text-sm leading-6 text-slate-600">{item.requisitos}</p>}
       <p className="mt-2 text-sm font-semibold text-slate-700">Contacto: {item.contacto}</p>
@@ -87,7 +87,7 @@ function TalentCard({ item, onMod, onDelete, working }) {
         <p className="text-xs font-bold uppercase text-teal-700">{AREA_LABELS[item.area] || item.area}</p>
         <StatusBadge status={item.status} />
       </div>
-      <h3 className="mt-2 text-lg font-bold text-[#071a4a]">{item.display_name}</h3>
+      <h3 className="mt-2 text-lg font-bold text-edvanta-deep">{item.display_name}</h3>
       <p className="mt-1 text-sm font-semibold text-slate-700">{item.title}</p>
       {item.habilidades?.length > 0 && (
         <div className="mt-2 flex flex-wrap gap-1.5">

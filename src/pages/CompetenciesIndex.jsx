@@ -73,12 +73,12 @@ export default function CompetenciesIndex() {
         <section className="border-b border-slate-200 bg-white">
           <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
             <p className="text-sm font-bold uppercase text-teal-700">Mapa de habilidades</p>
-            <h1 className="mt-3 max-w-4xl text-4xl font-bold leading-tight text-[#071a4a] sm:text-5xl">Comprende qué necesitas aprender y dónde lo vas a usar</h1>
+            <h1 className="mt-3 max-w-4xl text-4xl font-bold leading-tight text-edvanta-deep sm:text-5xl">Comprende qué necesitas aprender y dónde lo vas a usar</h1>
             <p className="mt-5 max-w-3xl text-lg leading-8 text-slate-600">Cada competencia se conecta con las carreras que la requieren, las rutas que la practican y los cursos que la enseñan.</p>
           </div>
         </section>
 
-        <section className="border-b border-slate-200 bg-[#eef3f8]">
+        <section className="border-b border-slate-200 bg-edvanta-bg">
           <div className="mx-auto flex max-w-7xl flex-col gap-3 px-4 py-5 sm:px-6 lg:flex-row lg:items-center lg:px-8">
             <label className="relative flex-1">
               <span className="sr-only">Buscar competencia</span>
@@ -99,7 +99,7 @@ export default function CompetenciesIndex() {
           <div className="mb-7 flex flex-wrap items-end justify-between gap-4">
             <div>
               <p className="text-sm font-bold text-teal-700">{loading ? 'Consultando el mapa' : `${visibleSkills.length} competencias`}</p>
-              <h2 className="mt-1 text-2xl font-bold text-[#071a4a]">Explora por habilidad</h2>
+              <h2 className="mt-1 text-2xl font-bold text-edvanta-deep">Explora por habilidad</h2>
             </div>
             <Link to="/carreras" className="inline-flex items-center gap-2 text-sm font-bold text-teal-700 hover:text-teal-900">Ver por carrera <ArrowRight className="h-4 w-4" aria-hidden="true" /></Link>
           </div>
@@ -109,9 +109,9 @@ export default function CompetenciesIndex() {
           ) : error ? (
             <div className="rounded-lg border border-slate-200 bg-white px-6 py-16 text-center">
               <RefreshCw className="mx-auto h-9 w-9 text-teal-700" aria-hidden="true" />
-              <h2 className="mt-4 text-xl font-bold text-[#071a4a]">No pudimos cargar el mapa de competencias</h2>
+              <h2 className="mt-4 text-xl font-bold text-edvanta-deep">No pudimos cargar el mapa de competencias</h2>
               <p className="mt-2 text-sm text-slate-600">{error}</p>
-              <button type="button" onClick={() => setReloadKey(value => value + 1)} className="mt-5 inline-flex min-h-11 items-center gap-2 rounded-lg bg-[#071a4a] px-5 text-sm font-bold text-white">Reintentar</button>
+              <button type="button" onClick={() => setReloadKey(value => value + 1)} className="mt-5 inline-flex min-h-11 items-center gap-2 rounded-lg bg-edvanta-blue px-5 text-sm font-bold text-white">Reintentar</button>
             </div>
           ) : visibleSkills.length ? (
             <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
@@ -121,7 +121,7 @@ export default function CompetenciesIndex() {
                     <span className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-teal-50 text-teal-700"><Shapes className="h-5 w-5" aria-hidden="true" /></span>
                     <span className="text-xs font-bold text-indigo-700">{TYPE_LABELS[skill.skill_type] || skill.skill_type}</span>
                   </div>
-                  <h3 className="mt-5 text-lg font-bold text-[#071a4a] group-hover:text-teal-800">{skill.name}</h3>
+                  <h3 className="mt-5 text-lg font-bold text-edvanta-deep group-hover:text-teal-800">{skill.name}</h3>
                   <p className="mt-2 flex-1 text-sm leading-6 text-slate-600">{skill.description}</p>
                   <div className="mt-4 flex flex-wrap gap-x-4 gap-y-2 border-t border-slate-100 pt-4 text-xs font-semibold text-slate-500">
                     <span className="inline-flex items-center gap-1.5"><BriefcaseBusiness className="h-4 w-4" aria-hidden="true" /> {skill.career_count} carreras</span>
@@ -133,7 +133,7 @@ export default function CompetenciesIndex() {
           ) : (
             <div className="rounded-lg border border-slate-200 bg-white px-6 py-16 text-center">
               <Shapes className="mx-auto h-9 w-9 text-teal-700" aria-hidden="true" />
-              <h2 className="mt-4 text-xl font-bold text-[#071a4a]">No encontramos coincidencias</h2>
+              <h2 className="mt-4 text-xl font-bold text-edvanta-deep">No encontramos coincidencias</h2>
               <button type="button" onClick={() => { setQuery(''); setType('all'); }} className="mt-5 text-sm font-bold text-teal-700">Limpiar filtros</button>
             </div>
           )}

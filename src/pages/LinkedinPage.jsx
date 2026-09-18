@@ -27,7 +27,7 @@ function PromptCard({ item, index }) {
         <p className="text-xs font-bold uppercase text-sky-700">{item.categoria}</p>
         <span className="rounded-full bg-slate-100 px-2 py-0.5 text-[10px] font-bold text-slate-500">#{index + 1}</span>
       </div>
-      <h3 className="mt-2 text-base font-bold text-[#071a4a]">{item.titulo}</h3>
+      <h3 className="mt-2 text-base font-bold text-edvanta-deep">{item.titulo}</h3>
       <p className="mt-3 flex-1 rounded-lg bg-slate-50 p-3 text-sm leading-6 text-slate-700">{item.prompt}</p>
       <button type="button" onClick={copiar} className="mt-4 inline-flex min-h-10 items-center justify-center gap-2 rounded-lg border border-sky-200 bg-sky-50 px-4 text-sm font-bold text-sky-800 transition hover:bg-sky-100">
         {copiado ? <><CheckCircle2 className="h-4 w-4" /> Copiado</> : <>Copiar prompt</>}
@@ -108,7 +108,7 @@ export default function LinkedinPage() {
         <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
           <div className="flex items-center gap-2">
             <Lightbulb className="h-5 w-5 text-sky-700" aria-hidden="true" />
-            <h2 className="text-2xl font-bold text-[#071a4a] sm:text-3xl">Guía de prompts para mejorar tu LinkedIn</h2>
+            <h2 className="text-2xl font-bold text-edvanta-deep sm:text-3xl">Guía de prompts para mejorar tu LinkedIn</h2>
           </div>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-600">
             Copia el prompt, reemplaza lo que está entre llaves o corchetes y pégalo en tu asistente favorito. El resultado lo adaptas a tu voz.
@@ -138,7 +138,7 @@ export default function LinkedinPage() {
           <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
             <div className="flex items-center gap-2">
               <ImageIcon className="h-5 w-5 text-sky-700" aria-hidden="true" />
-              <h2 className="text-2xl font-bold text-[#071a4a] sm:text-3xl">Guía práctica guiada con imágenes</h2>
+              <h2 className="text-2xl font-bold text-edvanta-deep sm:text-3xl">Guía práctica guiada con imágenes</h2>
             </div>
             <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-600">
               Sigue los 6 pasos en orden. Cada uno corresponde a una pantalla del perfil y tiene una instrucción concreta.
@@ -147,7 +147,7 @@ export default function LinkedinPage() {
               {guiaLinkedinPasos.map(paso => (
                 <div key={paso.paso} className="relative rounded-xl border border-slate-200 bg-slate-50 p-5">
                   <span className="absolute -top-3 left-5 inline-flex h-8 w-8 items-center justify-center rounded-full bg-sky-700 text-sm font-bold text-white" aria-hidden="true">{paso.paso.split(' ')[0]}</span>
-                  <h3 className="mt-3 text-base font-bold text-[#071a4a]">{paso.paso}</h3>
+                  <h3 className="mt-3 text-base font-bold text-edvanta-deep">{paso.paso}</h3>
                   <p className="mt-2 text-sm leading-6 text-slate-600">{paso.detalle}</p>
                   <div className="mt-4 flex h-24 items-center justify-center rounded-lg border border-dashed border-sky-300 bg-sky-50/60">
                     <span className="inline-flex items-center gap-1.5 text-xs font-bold text-sky-700">
@@ -212,7 +212,7 @@ export default function LinkedinPage() {
         <section className="border-t border-slate-200 bg-white">
           <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-6 px-4 py-12 sm:px-6 lg:flex-row lg:items-center lg:px-8">
             <div className="max-w-2xl">
-              <h2 className="text-2xl font-bold text-[#071a4a]">¿Quieres retroalimentación de tu perfil?</h2>
+              <h2 className="text-2xl font-bold text-edvanta-deep">¿Quieres retroalimentación de tu perfil?</h2>
               <p className="mt-2 text-sm leading-6 text-slate-600">
                 Comparte tu perfil en la comunidad de WhatsApp y recibe comentarios de otros profesionales farmacéuticos.
               </p>

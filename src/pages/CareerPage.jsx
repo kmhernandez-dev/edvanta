@@ -111,10 +111,10 @@ export default function CareerPage() {
         <main className="min-h-[70vh] bg-edvanta-bg">
           <div className="mx-auto max-w-3xl px-4 py-20 text-center sm:px-6">
             <Compass className="mx-auto h-10 w-10 text-teal-700" aria-hidden="true" />
-            <h1 className="mt-5 text-3xl font-bold text-[#071a4a]">No pudimos abrir esta carrera</h1>
+            <h1 className="mt-5 text-3xl font-bold text-edvanta-deep">No pudimos abrir esta carrera</h1>
             <p className="mt-3 text-slate-600">{error || 'La ficha solicitada no está disponible.'}</p>
             <div className="mt-7 flex flex-wrap justify-center gap-3">
-              <button type="button" onClick={() => setReloadKey(value => value + 1)} className="inline-flex min-h-11 items-center gap-2 rounded-lg bg-[#071a4a] px-5 text-sm font-bold text-white">
+              <button type="button" onClick={() => setReloadKey(value => value + 1)} className="inline-flex min-h-11 items-center gap-2 rounded-lg bg-edvanta-blue px-5 text-sm font-bold text-white">
                 <RefreshCw className="h-4 w-4" aria-hidden="true" /> Reintentar
               </button>
               <Link to="/carreras" className="inline-flex min-h-11 items-center gap-2 rounded-lg border border-slate-300 bg-white px-5 text-sm font-bold text-slate-700">
@@ -143,12 +143,12 @@ export default function CareerPage() {
             <div className="mt-9 grid gap-10 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-end">
               <div>
                 <p className="text-sm font-bold uppercase text-teal-700">{career.family?.name}</p>
-                <h1 className="mt-3 max-w-4xl text-4xl font-bold leading-tight text-[#071a4a] sm:text-5xl">{career.name}</h1>
+                <h1 className="mt-3 max-w-4xl text-4xl font-bold leading-tight text-edvanta-deep sm:text-5xl">{career.name}</h1>
                 <p className="mt-5 max-w-3xl text-xl font-semibold leading-8 text-slate-700">{career.headline}</p>
                 <p className="mt-4 max-w-3xl text-base leading-7 text-slate-600">{career.summary}</p>
               </div>
               <div className="border-l-4 border-teal-500 pl-5">
-                <p className="text-sm font-bold text-[#071a4a]">Empieza con una visión completa</p>
+                <p className="text-sm font-bold text-edvanta-deep">Empieza con una visión completa</p>
                 <p className="mt-2 text-sm leading-6 text-slate-600">Revisa las funciones, habilidades y contextos de trabajo antes de elegir cursos.</p>
                 <a href="#habilidades" className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-teal-700 hover:text-teal-900">
                   Ver habilidades <ArrowRight className="h-4 w-4" aria-hidden="true" />
@@ -162,14 +162,14 @@ export default function CareerPage() {
           <div>
             <div className="flex items-center gap-3">
               <Target className="h-6 w-6 text-teal-700" aria-hidden="true" />
-              <h2 className="text-2xl font-bold text-[#071a4a]">Qué es esta carrera</h2>
+              <h2 className="text-2xl font-bold text-edvanta-deep">Qué es esta carrera</h2>
             </div>
             <p className="mt-4 text-base leading-8 text-slate-600">{career.what_it_is}</p>
           </div>
           <div>
             <div className="flex items-center gap-3">
               <BookOpenCheck className="h-6 w-6 text-indigo-600" aria-hidden="true" />
-              <h2 className="text-2xl font-bold text-[#071a4a]">Perfil recomendado</h2>
+              <h2 className="text-2xl font-bold text-edvanta-deep">Perfil recomendado</h2>
             </div>
             <p className="mt-4 text-base leading-8 text-slate-600">{career.recommended_profile}</p>
           </div>
@@ -178,7 +178,7 @@ export default function CareerPage() {
         <section className="border-y border-slate-200 bg-white">
           <div className="mx-auto grid max-w-7xl gap-12 px-4 py-12 sm:px-6 lg:grid-cols-2 lg:px-8">
             <div>
-              <h2 className="text-2xl font-bold text-[#071a4a]">Qué podrías hacer</h2>
+              <h2 className="text-2xl font-bold text-edvanta-deep">Qué podrías hacer</h2>
               <ul className="mt-5 space-y-3">
                 {(career.responsibilities || []).map(item => (
                   <li key={item} className="flex gap-3 text-sm leading-6 text-slate-700">
@@ -190,7 +190,7 @@ export default function CareerPage() {
             <div>
               <div className="flex items-center gap-3">
                 <Building2 className="h-6 w-6 text-indigo-600" aria-hidden="true" />
-                <h2 className="text-2xl font-bold text-[#071a4a]">Dónde se desarrolla</h2>
+                <h2 className="text-2xl font-bold text-edvanta-deep">Dónde se desarrolla</h2>
               </div>
               <ul className="mt-5 grid gap-3 sm:grid-cols-2">
                 {(career.workplaces || []).map(item => <li key={item} className="border-l-2 border-indigo-200 pl-3 text-sm font-semibold leading-6 text-slate-700">{item}</li>)}
@@ -202,13 +202,13 @@ export default function CareerPage() {
         <section id="habilidades" className="mx-auto max-w-7xl scroll-mt-24 px-4 py-14 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
             <p className="text-sm font-bold uppercase text-teal-700">Mapa de competencias</p>
-            <h2 className="mt-2 text-3xl font-bold text-[#071a4a]">Habilidades que conviene desarrollar</h2>
+            <h2 className="mt-2 text-3xl font-bold text-edvanta-deep">Habilidades que conviene desarrollar</h2>
             <p className="mt-3 text-base leading-7 text-slate-600">El nivel indica hasta dónde conviene avanzar para desempeñarte con autonomía creciente. No es un requisito de contratación ni una promesa de empleo.</p>
           </div>
           <div className="mt-8 grid gap-5 md:grid-cols-2">
             {Object.entries(skillGroups).map(([type, skills]) => (
               <section key={type} className="rounded-lg border border-slate-200 bg-white p-5">
-                <h3 className="text-lg font-bold text-[#071a4a]">{skillTypeLabels[type] || 'Otras habilidades'}</h3>
+                <h3 className="text-lg font-bold text-edvanta-deep">{skillTypeLabels[type] || 'Otras habilidades'}</h3>
                 <div className="mt-4 divide-y divide-slate-100">
                   {skills.map(skill => (
                     <div key={skill.slug} className="py-3 first:pt-0 last:pb-0">
@@ -227,7 +227,7 @@ export default function CareerPage() {
 
         <section className="border-y border-slate-200 bg-white">
           <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-            <h2 className="text-2xl font-bold text-[#071a4a]">Cómo empezar a prepararte</h2>
+            <h2 className="text-2xl font-bold text-edvanta-deep">Cómo empezar a prepararte</h2>
             <p className="mt-4 max-w-4xl text-base leading-8 text-slate-600">{career.entry_guidance}</p>
 
             {paths.length > 0 && (
@@ -235,7 +235,7 @@ export default function CareerPage() {
                 {paths.map(path => (
                   <Link key={path.id} to={`/rutas/${path.slug}`} className="rounded-lg border border-slate-200 p-5 hover:border-teal-300">
                     <p className="text-xs font-bold uppercase text-teal-700">Ruta profesional</p>
-                    <h3 className="mt-2 text-lg font-bold text-[#071a4a]">{path.name}</h3>
+                    <h3 className="mt-2 text-lg font-bold text-edvanta-deep">{path.name}</h3>
                     <p className="mt-2 text-sm leading-6 text-slate-600">{path.summary}</p>
                   </Link>
                 ))}
@@ -244,12 +244,12 @@ export default function CareerPage() {
 
             {courses.length > 0 ? (
               <div className="mt-10">
-                <h3 className="text-xl font-bold text-[#071a4a]">Cursos relacionados verificados</h3>
+                <h3 className="text-xl font-bold text-edvanta-deep">Cursos relacionados verificados</h3>
                 <div className="mt-4 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
                   {courses.map(course => (
                     <Link key={course.id} to={`/cursos/${course.slug}`} className="rounded-lg border border-slate-200 p-5 hover:border-teal-300">
                       <p className="text-xs font-bold uppercase text-teal-700">{course.provider}</p>
-                      <h4 className="mt-2 font-bold text-[#071a4a]">{course.title}</h4>
+                      <h4 className="mt-2 font-bold text-edvanta-deep">{course.title}</h4>
                       <p className="mt-2 text-xs text-slate-500">{course.matching_skills} habilidades relacionadas</p>
                     </Link>
                   ))}
@@ -263,7 +263,7 @@ export default function CareerPage() {
             )}
 
             <div className="mt-8 flex flex-wrap gap-3">
-              <Link to="/cursos" className="inline-flex min-h-11 items-center gap-2 rounded-lg bg-[#071a4a] px-5 text-sm font-bold text-white hover:bg-[#0d2d6d]">
+              <Link to="/cursos" className="inline-flex min-h-11 items-center gap-2 rounded-lg bg-edvanta-blue px-5 text-sm font-bold text-white hover:bg-edvanta-bluedark">
                 Explorar cursos <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </Link>
               <Link to="/carreras" className="inline-flex min-h-11 items-center gap-2 rounded-lg border border-slate-300 px-5 text-sm font-bold text-slate-700 hover:bg-slate-50">

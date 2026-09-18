@@ -30,7 +30,7 @@ function OpcionCandidato({ activo, onClick, titulo, descripcion }) {
       aria-pressed={activo}
       className={`flex flex-col items-start gap-1 rounded-xl border p-4 text-left transition ${activo ? 'border-teal-600 bg-teal-50 shadow-sm' : 'border-slate-200 bg-white hover:border-teal-300 hover:bg-teal-50/40'}`}
     >
-      <span className={`text-sm font-bold ${activo ? 'text-teal-800' : 'text-[#071a4a]'}`}>{titulo}</span>
+      <span className={`text-sm font-bold ${activo ? 'text-teal-800' : 'text-edvanta-deep'}`}>{titulo}</span>
       {descripcion && <span className="text-xs leading-5 text-slate-500">{descripcion}</span>}
     </button>
   );
@@ -96,7 +96,7 @@ export default function Vocacion() {
 
           {paso === 'interes' && (
             <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
-              <h2 className="text-2xl font-bold text-[#071a4a]">1. ¿Qué te gusta hacer?</h2>
+              <h2 className="text-2xl font-bold text-edvanta-deep">1. ¿Qué te gusta hacer?</h2>
               <p className="mt-2 text-sm text-slate-600">Elige la actividad que más te conecta con tu trabajo del día a día.</p>
               <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
                 {intereses.map(item => (
@@ -113,7 +113,7 @@ export default function Vocacion() {
                 type="button"
                 onClick={avanzar}
                 disabled={!interes}
-                className="mt-7 inline-flex min-h-12 items-center gap-2 rounded-xl bg-[#071a4a] px-6 text-sm font-bold text-white transition enabled:hover:bg-[#0d2d6d] disabled:cursor-not-allowed disabled:opacity-40"
+                className="mt-7 inline-flex min-h-12 items-center gap-2 rounded-xl bg-edvanta-blue px-6 text-sm font-bold text-white transition enabled:hover:bg-edvanta-bluedark disabled:cursor-not-allowed disabled:opacity-40"
               >
                 Continuar <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </button>
@@ -122,7 +122,7 @@ export default function Vocacion() {
 
           {paso === 'fortaleza' && (
             <div className="animate-fade-in rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
-              <h2 className="text-2xl font-bold text-[#071a4a]">¿Cuál es tu mayor fortaleza?</h2>
+              <h2 className="text-2xl font-bold text-edvanta-deep">¿Cuál es tu mayor fortaleza?</h2>
               <p className="mt-2 text-sm text-slate-600">Reconocerla te ayuda a elegir un rol donde brilles.</p>
               <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
                 {fortalezas.map(item => (
@@ -143,7 +143,7 @@ export default function Vocacion() {
                   type="button"
                   onClick={avanzar}
                   disabled={!fortaleza}
-                  className="min-h-12 flex-1 rounded-lg bg-[#071a4a] px-6 text-sm font-bold text-white transition enabled:hover:bg-[#0d2d6d] disabled:cursor-not-allowed disabled:opacity-40"
+                  className="min-h-12 flex-1 rounded-lg bg-edvanta-blue px-6 text-sm font-bold text-white transition enabled:hover:bg-edvanta-bluedark disabled:cursor-not-allowed disabled:opacity-40"
                 >
                   Continuar
                 </button>
@@ -153,7 +153,7 @@ export default function Vocacion() {
 
           {paso === 'area' && (
             <div className="animate-fade-in rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
-              <h2 className="text-2xl font-bold text-[#071a4a]">¿En qué entorno prefieres trabajar?</h2>
+              <h2 className="text-2xl font-bold text-edvanta-deep">¿En qué entorno prefieres trabajar?</h2>
               <p className="mt-2 text-sm text-slate-600">Esto define el tipo de equipo y de resultados con los que convivirás.</p>
               <div className="mt-6 grid gap-3 sm:grid-cols-2">
                 {areas.map(item => (
@@ -174,7 +174,7 @@ export default function Vocacion() {
                   type="button"
                   onClick={avanzar}
                   disabled={!area}
-                  className="min-h-12 flex-1 rounded-lg bg-[#071a4a] px-6 text-sm font-bold text-white transition enabled:hover:bg-[#0d2d6d] disabled:cursor-not-allowed disabled:opacity-40"
+                  className="min-h-12 flex-1 rounded-lg bg-edvanta-blue px-6 text-sm font-bold text-white transition enabled:hover:bg-edvanta-bluedark disabled:cursor-not-allowed disabled:opacity-40"
                 >
                   Ver mi resultado
                 </button>
@@ -211,14 +211,14 @@ export default function Vocacion() {
                   </ul>
                 </div>
                 <div className="mt-6 rounded-xl border border-amber-200 bg-amber-50 p-4">
-                  <p className="text-xs font-bold uppercase text-amber-800">Tu primer paso</p>
+                  <p className="text-xs font-bold uppercase text-edvanta-blue">Tu primer paso</p>
                   <p className="mt-1 text-sm leading-6 text-amber-900">{resultado.primerPaso}</p>
                 </div>
                 <div className="mt-8 flex flex-wrap gap-3">
                   <button type="button" onClick={reiniciar} className="inline-flex min-h-11 items-center gap-2 rounded-lg border border-slate-300 bg-white px-5 text-sm font-bold text-slate-700 hover:bg-slate-50">
                     <RefreshCw className="h-4 w-4" aria-hidden="true" /> Volver a empezar
                   </button>
-                  <Link to="/carreras" className="inline-flex min-h-11 items-center gap-2 rounded-lg bg-[#071a4a] px-5 text-sm font-bold text-white hover:bg-[#0d2d6d]">
+                  <Link to="/carreras" className="inline-flex min-h-11 items-center gap-2 rounded-lg bg-edvanta-blue px-5 text-sm font-bold text-white hover:bg-edvanta-bluedark">
                     Explorar el centro profesional <ArrowRight className="h-4 w-4" aria-hidden="true" />
                   </Link>
                 </div>

@@ -178,7 +178,7 @@ export default function CursosCatalog({ defaultProvider = '' }) {
               <p className="mb-2 text-xs font-bold uppercase text-teal-700">
                 {defaultProvider ? PROVIDER_LABELS[defaultProvider] : 'Catálogo multi-plataforma'}
               </p>
-              <h1 className="text-3xl font-bold text-[#071a4a] md:text-5xl">
+              <h1 className="text-3xl font-bold text-edvanta-deep md:text-5xl">
                 {defaultProvider
                   ? `Cursos de ${PROVIDER_LABELS[defaultProvider]}`
                   : 'Cursos profesionales recomendados'}
@@ -348,10 +348,10 @@ export default function CursosCatalog({ defaultProvider = '' }) {
         <section className="pb-16">
           <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
             <div className="p-4 bg-amber-50 border border-amber-200 rounded-xl space-y-2">
-              <p className="text-xs text-amber-800 leading-relaxed">
+              <p className="text-xs text-edvanta-blue leading-relaxed">
                 <strong>Transparencia de afiliados:</strong> Algunos enlaces de esta página son enlaces de afiliado. Edvanta puede recibir una comisión si realizas una compra, sin costo adicional para ti.
               </p>
-              <p className="text-xs text-amber-700 leading-relaxed">
+              <p className="text-xs text-edvanta-blue leading-relaxed">
                 El curso, el acceso, el precio, el certificado y las condiciones dependen de la plataforma correspondiente (Coursera, Udemy, Edutin). Edvanta no emite certificados de estas plataformas. Los precios en Udemy pueden variar según promociones vigentes.
               </p>
             </div>

@@ -30,7 +30,7 @@ const PRICE_TYPE_LABELS = {
 const PRICE_TYPE_STYLES = {
   free: 'bg-emerald-100 text-emerald-800',
   free_audit: 'bg-teal-100 text-teal-800',
-  paid: 'bg-amber-100 text-amber-800',
+  paid: 'bg-edvanta-light text-edvanta-blue',
   subscription: 'bg-indigo-100 text-indigo-800',
   financial_aid: 'bg-sky-100 text-sky-800',
   unknown: 'bg-gray-100 text-gray-600',

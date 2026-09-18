@@ -403,7 +403,7 @@ export default function CursoPage() {
             <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
               <div className="rounded-lg border border-amber-200 bg-amber-50 p-5">
                 <h2 className="text-lg font-bold text-amber-900">Transparencia sobre certificación</h2>
-                <p className="mt-3 text-sm leading-relaxed text-amber-800">
+                <p className="mt-3 text-sm leading-relaxed text-edvanta-blue">
                   El acceso al contenido académico puede ser gratuito. La certificación puede tener un costo opcional,
                   determinado por la plataforma educativa. Edvanta puede recibir una comisión si accedes desde un enlace afiliado.
                 </p>
@@ -441,7 +441,7 @@ export default function CursoPage() {
                 <div className="mt-6 space-y-4">
                   {learningContent.mistakes.map((item, index) => (
                     <div key={item} className="flex gap-3 border-t border-gray-100 pt-4 first:border-t-0 first:pt-0">
-                      <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-amber-50 text-xs font-black text-amber-700">
+                      <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-edvanta-light text-xs font-black text-edvanta-blue">
                         {index + 1}
                       </span>
                       <p className="text-sm font-semibold leading-relaxed text-navy-900">{item}</p>

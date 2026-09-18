@@ -36,7 +36,7 @@ export default function ComunidadPage() {
             <span className="inline-flex items-center gap-2 rounded-full border border-sky-200 bg-white px-3.5 py-1.5 text-xs font-bold uppercase text-sky-700 shadow-sm">
               <Icon name="users" className="h-4 w-4" /> Comunidad Edvanta
             </span>
-            <h1 className="mt-5 font-display text-4xl font-extrabold leading-[1.1] text-[#071a4a] sm:text-5xl">
+            <h1 className="mt-5 font-display text-4xl font-extrabold leading-[1.1] text-edvanta-deep sm:text-5xl">
               Únete a la comunidad de Químicos Farmacéuticos
             </h1>
             <p className="mx-auto mt-5 max-w-2xl text-lg leading-8 text-slate-600">
@@ -66,14 +66,14 @@ export default function ComunidadPage() {
         {/* Beneficios */}
         <section className="border-y border-slate-200 bg-edvanta-bg py-16">
           <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-            <h2 className="text-center text-2xl font-bold text-[#071a4a] sm:text-3xl">¿Qué encontrarás en la comunidad?</h2>
+            <h2 className="text-center text-2xl font-bold text-edvanta-deep sm:text-3xl">¿Qué encontrarás en la comunidad?</h2>
             <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
               {beneficios.map(b => (
                 <article key={b.titulo} className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
                   <span className="flex h-11 w-11 items-center justify-center rounded-lg bg-sky-50 text-sky-700">
                     <Icon name={b.icon} className="h-5 w-5" />
                   </span>
-                  <h3 className="mt-4 text-base font-bold text-[#071a4a]">{b.titulo}</h3>
+                  <h3 className="mt-4 text-base font-bold text-edvanta-deep">{b.titulo}</h3>
                   <p className="mt-2 text-sm leading-6 text-slate-600">{b.texto}</p>
                 </article>
               ))}
@@ -84,7 +84,7 @@ export default function ComunidadPage() {
         {/* CTA final */}
         <section className="bg-white py-16">
           <div className="mx-auto max-w-3xl px-4 text-center sm:px-6 lg:px-8">
-            <h2 className="text-2xl font-bold text-[#071a4a] sm:text-3xl">No avances solo: crece con tu comunidad</h2>
+            <h2 className="text-2xl font-bold text-edvanta-deep sm:text-3xl">No avances solo: crece con tu comunidad</h2>
             <p className="mx-auto mt-4 max-w-xl leading-8 text-slate-600">
               Únete al grupo y empieza a recibir novedades de cursos, orientación profesional y
               oportunidades compartidas por otros Químicos Farmacéuticos.

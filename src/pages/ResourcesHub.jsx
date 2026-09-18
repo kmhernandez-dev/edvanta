@@ -93,7 +93,7 @@ export default function ResourcesHub() {
         <section className="border-b border-slate-200 bg-white">
           <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
             <p className="text-sm font-bold uppercase text-teal-700">Biblioteca profesional</p>
-            <h1 className="mt-3 max-w-4xl text-4xl font-bold leading-tight text-[#071a4a] sm:text-5xl">Encuentra contexto para aprender, aplicar y decidir mejor</h1>
+            <h1 className="mt-3 max-w-4xl text-4xl font-bold leading-tight text-edvanta-deep sm:text-5xl">Encuentra contexto para aprender, aplicar y decidir mejor</h1>
             <p className="mt-5 max-w-3xl text-lg leading-8 text-slate-600">Recursos conectados con problemas profesionales concretos, fuentes identificables y próximos pasos útiles.</p>
           </div>
         </section>
@@ -105,7 +105,7 @@ export default function ResourcesHub() {
               return (
                 <Link key={entry.title} to={entry.to} className="group min-h-48 rounded-lg border border-slate-200 bg-white p-5 shadow-sm transition hover:border-teal-300 hover:shadow-md">
                   <Icon className="h-6 w-6 text-teal-700" />
-                  <h2 className="mt-4 text-xl font-bold text-[#071a4a]">{entry.title}</h2>
+                  <h2 className="mt-4 text-xl font-bold text-edvanta-deep">{entry.title}</h2>
                   <p className="mt-2 text-sm leading-6 text-slate-600">{entry.text}</p>
                   <span className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-teal-700">Explorar <ArrowRight className="h-4 w-4" /></span>
                 </Link>
@@ -120,7 +120,7 @@ export default function ResourcesHub() {
               <div className="flex flex-wrap items-end justify-between gap-3">
                 <div>
                   <p className="text-sm font-bold text-teal-700">Selección editorial</p>
-                  <h2 className="mt-1 text-2xl font-bold text-[#071a4a]">{selectedType ? resourceTypeLabels[selectedType] || 'Recursos' : 'Recursos verificados recientes'}</h2>
+                  <h2 className="mt-1 text-2xl font-bold text-edvanta-deep">{selectedType ? resourceTypeLabels[selectedType] || 'Recursos' : 'Recursos verificados recientes'}</h2>
                 </div>
                 {selectedType && <Link to="/recursos" className="text-sm font-bold text-teal-700">Ver todos</Link>}
               </div>
@@ -144,7 +144,7 @@ export default function ResourcesHub() {
                             {isSaved ? <BookmarkCheck className="h-4 w-4" /> : <Bookmark className="h-4 w-4" />}
                           </button>
                         </div>
-                        <h3 className="mt-2 text-lg font-bold text-[#071a4a]">{resource.title}</h3>
+                        <h3 className="mt-2 text-lg font-bold text-edvanta-deep">{resource.title}</h3>
                         <p className="mt-2 flex-1 text-sm leading-6 text-slate-600">{resource.excerpt}</p>
                         {resource.source_url && <a href={resource.source_url} target="_blank" rel="noopener noreferrer" className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-teal-700">Abrir recurso <ExternalLink className="h-4 w-4" /></a>}
                       </article>
@@ -154,7 +154,7 @@ export default function ResourcesHub() {
               ) : (
                 <div className="mt-6 rounded-lg border border-dashed border-slate-300 bg-slate-50 px-6 py-12 text-center">
                   <BookOpenText className="mx-auto h-8 w-8 text-teal-700" />
-                  <h3 className="mt-4 text-lg font-bold text-[#071a4a]">Aún no hay recursos verificados en esta categoría</h3>
+                  <h3 className="mt-4 text-lg font-bold text-edvanta-deep">Aún no hay recursos verificados en esta categoría</h3>
                   <p className="mx-auto mt-2 max-w-xl text-sm leading-6 text-slate-600">Publicaremos materiales cuando tengan una fuente identificable y un uso profesional claro.</p>
                 </div>
               )}

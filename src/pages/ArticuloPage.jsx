@@ -68,7 +68,7 @@ function StudyTools({ slug }) {
       <div className="flex flex-wrap items-center gap-2 mb-4">
         <button
           onClick={toggleHighlight}
-          className="inline-flex items-center gap-1.5 px-4 py-2 bg-amber-50 hover:bg-amber-100 text-amber-700 text-xs font-semibold rounded-full border border-amber-200 transition-colors"
+          className="inline-flex items-center gap-1.5 px-4 py-2 bg-edvanta-light hover:bg-edvanta-soft text-edvanta-blue text-xs font-semibold rounded-full border border-edvanta-border transition-colors"
         >
           <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
@@ -78,7 +78,7 @@ function StudyTools({ slug }) {
         <button
           onClick={() => setShowHighlights(!showHighlights)}
           className={`inline-flex items-center gap-1.5 px-4 py-2 text-xs font-semibold rounded-full border transition-colors ${
-            showHighlights ? 'bg-amber-100 text-amber-700 border-amber-300' : 'bg-white text-gray-600 border-gray-200 hover:bg-gray-50'
+            showHighlights ? 'bg-edvanta-light text-edvanta-blue border-edvanta-blue/40' : 'bg-white text-gray-600 border-gray-200 hover:bg-gray-50'
           }`}
         >
           📌 Subrayado ({highlights.length})
@@ -95,13 +95,13 @@ function StudyTools({ slug }) {
 
       {showHighlights && (
         <div className="mb-4 p-4 bg-amber-50 rounded-2xl border border-amber-200">
-          <h3 className="text-sm font-bold text-amber-800 mb-2">Tus subrayados</h3>
+          <h3 className="text-sm font-bold text-edvanta-blue mb-2">Tus subrayados</h3>
           {highlights.length === 0 ? (
             <p className="text-xs text-amber-600">Selecciona texto en el artículo y haz clic en "Subrayar selección".</p>
           ) : (
             <ul className="space-y-2">
               {highlights.map((h, i) => (
-                <li key={i} className="flex items-start justify-between gap-2 text-sm text-amber-900 bg-amber-100/50 rounded-lg p-2">
+                <li key={i} className="flex items-start justify-between gap-2 text-sm text-amber-900 bg-edvanta-light/50 rounded-lg p-2">
                   <span className="flex-1">"{h.text.substring(0, 150)}{h.text.length > 150 ? '...' : ''}"</span>
                   <button onClick={() => removeHighlight(i)} className="text-amber-400 hover:text-red-500 shrink-0 text-xs">✕</button>
                 </li>
@@ -356,7 +356,7 @@ export default function ArticuloPage() {
         )}
 
         <div className="mt-12 p-4 bg-amber-50 border border-amber-200 rounded-xl">
-          <p className="text-xs text-amber-800 leading-relaxed">
+          <p className="text-xs text-edvanta-blue leading-relaxed">
             {isFst
               ? 'Este contenido es educativo e informativo y no reemplaza la consulta, diagnóstico ni tratamiento de un profesional de salud. No modifiques tu medicación sin indicación médica.'
               : 'Este contenido es educativo e informativo. Edvanta organiza rutas de aprendizaje y puede incluir enlaces afiliados a plataformas educativas.'}

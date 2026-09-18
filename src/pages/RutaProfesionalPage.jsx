@@ -71,7 +71,7 @@ function CourseLink({ course }) {
       )}
       <span className="min-w-0 flex-1">
         <span className="block text-xs font-bold uppercase text-teal-700">{course.provider}</span>
-        <span className="mt-1 block text-sm font-bold leading-5 text-[#071a4a]">{course.title}</span>
+        <span className="mt-1 block text-sm font-bold leading-5 text-edvanta-deep">{course.title}</span>
       </span>
       <ArrowRight className="h-4 w-4 shrink-0 text-slate-400" aria-hidden="true" />
     </Link>
@@ -178,10 +178,10 @@ export default function RutaProfesionalPage() {
         <main className="min-h-[70vh] bg-edvanta-bg">
           <div className="mx-auto max-w-3xl px-4 py-20 text-center sm:px-6">
             <Route className="mx-auto h-10 w-10 text-teal-700" aria-hidden="true" />
-            <h1 className="mt-5 text-3xl font-bold text-[#071a4a]">No pudimos abrir esta ruta</h1>
+            <h1 className="mt-5 text-3xl font-bold text-edvanta-deep">No pudimos abrir esta ruta</h1>
             <p className="mt-3 text-slate-600">{error || 'La ruta solicitada no está disponible.'}</p>
             <div className="mt-7 flex flex-wrap justify-center gap-3">
-              <button type="button" onClick={() => setReloadKey(value => value + 1)} className="inline-flex min-h-11 items-center gap-2 rounded-lg bg-[#071a4a] px-5 text-sm font-bold text-white">
+              <button type="button" onClick={() => setReloadKey(value => value + 1)} className="inline-flex min-h-11 items-center gap-2 rounded-lg bg-edvanta-blue px-5 text-sm font-bold text-white">
                 <RefreshCw className="h-4 w-4" aria-hidden="true" /> Reintentar
               </button>
               <Link to="/rutas" className="inline-flex min-h-11 items-center gap-2 rounded-lg border border-slate-300 bg-white px-5 text-sm font-bold text-slate-700">
@@ -210,7 +210,7 @@ export default function RutaProfesionalPage() {
             <div className="mt-9 grid gap-10 lg:grid-cols-[minmax(0,1fr)_340px] lg:items-end">
               <div>
                 <p className="text-sm font-bold uppercase text-teal-700">Ruta para {path.career?.name}</p>
-                <h1 className="mt-3 max-w-4xl text-4xl font-bold leading-tight text-[#071a4a] sm:text-5xl">{path.name}</h1>
+                <h1 className="mt-3 max-w-4xl text-4xl font-bold leading-tight text-edvanta-deep sm:text-5xl">{path.name}</h1>
                 <p className="mt-5 max-w-3xl text-lg leading-8 text-slate-600">{path.summary}</p>
                 <div className="mt-6 flex flex-wrap gap-4 text-sm font-semibold text-slate-600">
                   <span className="inline-flex items-center gap-2"><BookOpenCheck className="h-4 w-4 text-teal-700" aria-hidden="true" /> {path.steps?.length || 0} pasos</span>
@@ -218,7 +218,7 @@ export default function RutaProfesionalPage() {
                 </div>
               </div>
               <div className="border-l-4 border-indigo-500 pl-5">
-                <p className="text-sm font-bold text-[#071a4a]">Pensada para</p>
+                <p className="text-sm font-bold text-edvanta-deep">Pensada para</p>
                 <p className="mt-2 text-sm leading-6 text-slate-600">{path.audience}</p>
                 {path.career?.slug && (
                   <Link to={`/carreras/${path.career.slug}`} className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-teal-700 hover:text-teal-900">
@@ -234,7 +234,7 @@ export default function RutaProfesionalPage() {
           <div>
             <div className="mb-8">
               <p className="text-sm font-bold text-teal-700">Secuencia recomendada</p>
-              <h2 className="mt-1 text-2xl font-bold text-[#071a4a]">Del contexto a la oportunidad</h2>
+              <h2 className="mt-1 text-2xl font-bold text-edvanta-deep">Del contexto a la oportunidad</h2>
               <p className="mt-3 max-w-2xl text-sm leading-6 text-slate-600">Puedes adaptar el ritmo, pero conviene conservar la lógica de fundamentos, aplicación y evidencia profesional.</p>
             </div>
 
@@ -250,12 +250,12 @@ export default function RutaProfesionalPage() {
                     <ol className="space-y-3">
                       {group.items.map((step) => (
                         <li key={step.id} className="grid gap-4 rounded-lg border border-slate-200 bg-white p-5 shadow-sm sm:grid-cols-[48px_minmax(0,1fr)]">
-                          <span className="inline-flex h-12 w-12 items-center justify-center rounded-lg bg-[#071a4a] text-sm font-bold text-white">
+                          <span className="inline-flex h-12 w-12 items-center justify-center rounded-lg bg-edvanta-blue text-sm font-bold text-white">
                             {String(step.step_order).padStart(2, '0')}
                           </span>
                           <div>
                             <div className="flex flex-wrap items-center gap-2">
-                              <h4 className="text-lg font-bold text-[#071a4a]">{step.title}</h4>
+                              <h4 className="text-lg font-bold text-edvanta-deep">{step.title}</h4>
                               {step.is_optional && <span className="text-xs font-bold text-slate-500">Opcional</span>}
                             </div>
                             <p className="mt-2 text-sm leading-6 text-slate-600">{step.description}</p>
@@ -276,7 +276,7 @@ export default function RutaProfesionalPage() {
 
           <aside className="lg:sticky lg:top-24 lg:self-start">
             <div className="rounded-lg border border-slate-200 bg-white p-5">
-              <h2 className="text-lg font-bold text-[#071a4a]">Lo que deberías demostrar</h2>
+              <h2 className="text-lg font-bold text-edvanta-deep">Lo que deberías demostrar</h2>
               <ul className="mt-4 space-y-3">
                 {(path.outcomes || []).map(outcome => (
                   <li key={outcome} className="flex gap-2 text-sm leading-6 text-slate-600">
@@ -285,7 +285,7 @@ export default function RutaProfesionalPage() {
                 ))}
               </ul>
             </div>
-            <Link to={`/cursos?career=${path.career?.slug || ''}`} className="mt-4 inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-lg bg-[#071a4a] px-4 text-sm font-bold text-white hover:bg-[#102862]">
+            <Link to={`/cursos?career=${path.career?.slug || ''}`} className="mt-4 inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-lg bg-edvanta-blue px-4 text-sm font-bold text-white hover:bg-[#102862]">
               Explorar cursos relacionados <ExternalLink className="h-4 w-4" aria-hidden="true" />
             </Link>
             <Link to="/rutas" className="mt-2 inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-lg border border-slate-300 bg-white px-4 text-sm font-bold text-slate-700 hover:border-teal-600 hover:text-teal-700">

@@ -24,7 +24,7 @@ export const HERRAMIENTAS = [
     h1: 'Construye una hoja de vida lista para el sector farmacéutico',
     tagline:
       'Un creador guiado con formato ATS 2026: escribes por secciones, ves tu puntaje de compatibilidad en vivo y descargas un PDF legible por máquinas.',
-    cta: { label: 'Empezar mi hoja de vida', to: '/empleo#creador' },
+    cta: { label: 'Empezar mi hoja de vida', to: '/hoja-de-vida' },
     canDo: [
       'Completar tu hoja de vida por secciones (perfil, experiencia, formación, habilidades).',
       'Ver un puntaje de compatibilidad ATS mientras editas.',
@@ -54,7 +54,7 @@ export const HERRAMIENTAS = [
     h1: 'Descubre qué tan compatible es tu hoja de vida con el cargo',
     tagline:
       'Pega tu hoja de vida y el cargo objetivo: el analizador calcula un puntaje de compatibilidad y te dice qué palabras clave y secciones mejorar.',
-    cta: { label: 'Analizar mi hoja de vida', to: '/empleo#creador' },
+    cta: { label: 'Analizar mi hoja de vida', to: '/hoja-de-vida' },
     canDo: [
       'Obtener un puntaje general de compatibilidad con el cargo.',
       'Ver las palabras clave encontradas y las que faltan.',
@@ -84,7 +84,7 @@ export const HERRAMIENTAS = [
     h1: 'Envía correos profesionales a recursos humanos sin quedarte en blanco',
     tagline:
       'Plantillas de correo en español listas para postular, dar seguimiento y agradecer, con el tono profesional del sector farmacéutico. Editas los campos y copias.',
-    cta: { label: 'Ver plantillas de correo', to: '/empleo#correos' },
+    cta: { label: 'Ver plantillas de correo', to: '/empleo/correos' },
     canDo: [
       'Usar una plantilla de correo de postulación lista para editar.',
       'Cambiar cargo, empresa y tus datos entre llaves en segundos.',
@@ -114,7 +114,7 @@ export const HERRAMIENTAS = [
     h1: 'Encuentra vacantes farmacéuticas y comparte las tuyas',
     tagline:
       'Un banco colaborativo donde las ofertas se publican con la misma plantilla: cargo, empresa, ciudad, modalidad y contacto directo. Consulta o comparte una vacante.',
-    cta: { label: 'Ver el banco de vacantes', to: '/empleo#vacantes' },
+    cta: { label: 'Ver el banco de vacantes', to: '/empleo/ofertas-qf' },
     canDo: [
       'Consultar vacantes del sector con un formato unificado.',
       'Ver cargo, empresa, ciudad, modalidad y contacto directo.',
@@ -264,7 +264,7 @@ export const HERRAMIENTAS = [
     h1: 'Muestra tus habilidades y proyectos a las empresas',
     tagline:
       'Publica tu perfil profesional con tus proyectos, artículos y certificados. Te clasificas por área y las empresas pueden filtrar y contactarte según lo que buscan.',
-    cta: { label: 'Crear mi perfil profesional', to: '/empresas' },
+    cta: { label: 'Publicar mi perfil en la vitrina', to: '/talento' },
     canDo: [
       'Publicar tu perfil con habilidades, proyectos y artículos.',
       'Clasificarte automáticamente por tu área profesional.',

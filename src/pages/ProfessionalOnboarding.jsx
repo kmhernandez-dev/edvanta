@@ -146,7 +146,7 @@ export default function ProfessionalOnboarding() {
   }
 
   if (workspaceError && !professionalProfile) {
-    return <><SiteHeader /><main className="min-h-[75vh] bg-edvanta-bg"><div className="mx-auto max-w-xl px-4 py-20 text-center sm:px-6"><LockKeyhole className="mx-auto h-10 w-10 text-teal-700" /><h1 className="mt-5 text-3xl font-bold text-[#071a4a]">Tu espacio profesional necesita activación</h1><p className="mt-3 text-slate-600">{workspaceError}</p><button type="button" onClick={refreshWorkspace} className="mt-6 min-h-11 rounded-lg bg-[#071a4a] px-5 text-sm font-bold text-white">Reintentar</button></div></main><SiteFooter /></>;
+    return <><SiteHeader /><main className="min-h-[75vh] bg-edvanta-bg"><div className="mx-auto max-w-xl px-4 py-20 text-center sm:px-6"><LockKeyhole className="mx-auto h-10 w-10 text-teal-700" /><h1 className="mt-5 text-3xl font-bold text-edvanta-deep">Tu espacio profesional necesita activación</h1><p className="mt-3 text-slate-600">{workspaceError}</p><button type="button" onClick={refreshWorkspace} className="mt-6 min-h-11 rounded-lg bg-edvanta-blue px-5 text-sm font-bold text-white">Reintentar</button></div></main><SiteFooter /></>;
   }
 
   return (
@@ -156,7 +156,7 @@ export default function ProfessionalOnboarding() {
         <section className="border-b border-slate-200 bg-white">
           <div className="mx-auto max-w-5xl px-4 py-10 sm:px-6 lg:px-8">
             <p className="text-sm font-bold uppercase text-teal-700">Configuración inicial</p>
-            <h1 className="mt-2 text-3xl font-bold text-[#071a4a] sm:text-4xl">Construyamos un punto de partida útil</h1>
+            <h1 className="mt-2 text-3xl font-bold text-edvanta-deep sm:text-4xl">Construyamos un punto de partida útil</h1>
             <p className="mt-3 max-w-2xl text-slate-600">Edvanta usará estas respuestas para ordenar carreras, rutas y cursos. Tu perfil permanecerá privado.</p>
           </div>
         </section>
@@ -175,7 +175,7 @@ export default function ProfessionalOnboarding() {
             {step === 1 && (
               <div className="max-w-2xl">
                 <p className="text-sm font-bold text-teal-700">Paso 1 de 6</p>
-                <h2 className="mt-2 text-2xl font-bold text-[#071a4a]">¿Dónde estás hoy?</h2>
+                <h2 className="mt-2 text-2xl font-bold text-edvanta-deep">¿Dónde estás hoy?</h2>
                 <p className="mt-2 text-sm leading-6 text-slate-600">No necesitas tener experiencia en la industria. Elige la opción que mejor describa tu momento.</p>
                 <div className="mt-6 grid gap-5 sm:grid-cols-2">
                   <label className="text-sm font-bold text-slate-700">Nombre para mostrar<input value={draft.display_name} onChange={event => updateDraft('display_name', event.target.value)} className="mt-2 min-h-11 w-full rounded-lg border border-slate-300 px-3 text-sm font-normal outline-none focus:border-teal-600 focus:ring-2 focus:ring-teal-100" /></label>
@@ -190,7 +190,7 @@ export default function ProfessionalOnboarding() {
             {step === 2 && (
               <div>
                 <p className="text-sm font-bold text-teal-700">Paso 2 de 6</p>
-                <h2 className="mt-2 text-2xl font-bold text-[#071a4a]">¿Qué quieres resolver primero?</h2>
+                <h2 className="mt-2 text-2xl font-bold text-edvanta-deep">¿Qué quieres resolver primero?</h2>
                 <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-600">El panel priorizará acciones según este objetivo. Podrás cambiarlo cuando tu situación evolucione.</p>
                 <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
                   {PROFESSIONAL_GOALS.map(goal => {
@@ -204,7 +204,7 @@ export default function ProfessionalOnboarding() {
             {step === 3 && (
               <div>
                 <p className="text-sm font-bold text-teal-700">Paso 3 de 6</p>
-                <h2 className="mt-2 text-2xl font-bold text-[#071a4a]">Elige una carrera y tus áreas de interés</h2>
+                <h2 className="mt-2 text-2xl font-bold text-edvanta-deep">Elige una carrera y tus áreas de interés</h2>
                 <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-600">Puedes cambiar la carrera después. Esta elección ordena competencias y cursos relevantes.</p>
                 <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
                   {careers.map(career => {
@@ -212,7 +212,7 @@ export default function ProfessionalOnboarding() {
                     return <button key={career.slug} type="button" onClick={() => updateDraft('target_career_slug', career.slug)} aria-pressed={selected} className={`min-h-20 rounded-lg border p-4 text-left text-sm font-bold transition ${selected ? 'border-teal-600 bg-teal-50 text-teal-900 ring-2 ring-teal-100' : 'border-slate-200 bg-white text-slate-700 hover:border-teal-300'}`}>{career.name}{selected && <Check className="mt-3 h-4 w-4 text-teal-700" />}</button>;
                   })}
                 </div>
-                <p className="mt-7 text-sm font-bold text-[#071a4a]">Temas que quieres fortalecer</p>
+                <p className="mt-7 text-sm font-bold text-edvanta-deep">Temas que quieres fortalecer</p>
                 <div className="mt-6 flex flex-wrap gap-2">
                   {PROFESSIONAL_INTERESTS.map(interest => {
                     const selected = draft.interests.includes(interest);
@@ -225,7 +225,7 @@ export default function ProfessionalOnboarding() {
             {step === 4 && (
               <div>
                 <p className="text-sm font-bold text-teal-700">Paso 4 de 6</p>
-                <h2 className="mt-2 text-2xl font-bold text-[#071a4a]">¿Qué habilidades ya tienes?</h2>
+                <h2 className="mt-2 text-2xl font-bold text-edvanta-deep">¿Qué habilidades ya tienes?</h2>
                 <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-600">Es una autoevaluación inicial, no una certificación. Más adelante podrás adjuntar evidencia.</p>
                 <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">{PROFESSIONAL_SKILLS.map(skill => { const selected = draft.self_reported_skills.includes(skill); return <button key={skill} type="button" onClick={() => toggleListValue('self_reported_skills', skill)} aria-pressed={selected} className={`min-h-14 rounded-lg border px-4 text-left text-sm font-semibold ${selected ? 'border-teal-600 bg-teal-50 text-teal-900' : 'border-slate-200 text-slate-700 hover:border-teal-300'}`}>{skill}{selected && <Check className="mt-2 h-4 w-4 text-teal-700" />}</button>; })}</div>
               </div>
@@ -234,7 +234,7 @@ export default function ProfessionalOnboarding() {
             {step === 5 && (
               <div>
                 <p className="text-sm font-bold text-teal-700">Paso 5 de 6</p>
-                <h2 className="mt-2 text-2xl font-bold text-[#071a4a]">¿Qué herramientas utilizas?</h2>
+                <h2 className="mt-2 text-2xl font-bold text-edvanta-deep">¿Qué herramientas utilizas?</h2>
                 <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-600">Selecciona solo las que hayas usado. Esto ayudará a reconocer brechas digitales sin inflar tu perfil.</p>
                 <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">{PROFESSIONAL_TOOLS.map(tool => { const selected = draft.tools.includes(tool); return <button key={tool} type="button" onClick={() => toggleListValue('tools', tool)} aria-pressed={selected} className={`min-h-14 rounded-lg border px-4 text-left text-sm font-semibold ${selected ? 'border-indigo-600 bg-indigo-50 text-indigo-900' : 'border-slate-200 text-slate-700 hover:border-indigo-300'}`}>{tool}{selected && <Check className="mt-2 h-4 w-4 text-indigo-700" />}</button>; })}</div>
               </div>
@@ -243,7 +243,7 @@ export default function ProfessionalOnboarding() {
             {step === 6 && (
               <div>
                 <p className="text-sm font-bold text-teal-700">Paso 6 de 6</p>
-                <h2 className="mt-2 text-2xl font-bold text-[#071a4a]">Disponibilidad y contexto</h2>
+                <h2 className="mt-2 text-2xl font-bold text-edvanta-deep">Disponibilidad y contexto</h2>
                 <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-600">Estos datos preparan futuras recomendaciones. Tu perfil seguirá siendo privado.</p>
                 <div className="mt-6 grid gap-5 sm:grid-cols-2">
                   <label className="text-sm font-bold text-slate-700">Ciudad<input value={draft.city} onChange={event => updateDraft('city', event.target.value)} className="mt-2 min-h-11 w-full rounded-lg border border-slate-300 px-3 text-sm font-normal outline-none focus:border-teal-600 focus:ring-2 focus:ring-teal-100" /></label>
@@ -251,15 +251,15 @@ export default function ProfessionalOnboarding() {
                   <label className="text-sm font-bold text-slate-700 sm:col-span-2">Búsqueda de empleo<select value={draft.job_search_status} onChange={event => updateDraft('job_search_status', event.target.value)} className="mt-2 min-h-11 w-full rounded-lg border border-slate-300 bg-white px-3 text-sm font-normal outline-none focus:border-teal-600 focus:ring-2 focus:ring-teal-100"><option value="actively_looking">Busco empleo activamente</option><option value="open">Estoy abierto a oportunidades</option><option value="not_looking">No busco empleo ahora</option></select></label>
                   <label className="text-sm font-bold text-slate-700 sm:col-span-2">Resumen profesional<textarea value={draft.professional_summary} onChange={event => updateDraft('professional_summary', event.target.value)} rows="4" placeholder="Cuéntanos qué sabes, qué estás construyendo y hacia dónde quieres avanzar." className="mt-2 w-full rounded-lg border border-slate-300 p-3 text-sm font-normal leading-6 outline-none focus:border-teal-600 focus:ring-2 focus:ring-teal-100" /></label>
                 </div>
-                <div className="mt-6 grid gap-3 sm:grid-cols-2"><label className="flex items-start gap-3 rounded-lg border border-slate-200 p-4 text-sm text-slate-700"><input type="checkbox" checked={draft.open_to_projects} onChange={event => updateDraft('open_to_projects', event.target.checked)} className="mt-0.5 h-4 w-4 accent-teal-700" /><span><strong className="block text-[#071a4a]">Abierto a proyectos</strong><span className="mt-1 block text-xs leading-5 text-slate-500">Para iniciativas prácticas o de innovación claramente identificadas.</span></span></label><label className="flex items-start gap-3 rounded-lg border border-slate-200 p-4 text-sm text-slate-700"><input type="checkbox" checked={draft.open_to_research} onChange={event => updateDraft('open_to_research', event.target.checked)} className="mt-0.5 h-4 w-4 accent-teal-700" /><span><strong className="block text-[#071a4a]">Abierto a investigación</strong><span className="mt-1 block text-xs leading-5 text-slate-500">Solo oportunidades verificadas y con alcance transparente.</span></span></label></div>
-                <div className="mt-6 flex items-start gap-3 rounded-lg border border-slate-200 bg-slate-50 p-4"><LockKeyhole className="mt-0.5 h-5 w-5 shrink-0 text-teal-700" /><div><p className="text-sm font-bold text-[#071a4a]">Privado por defecto</p><p className="mt-1 text-xs leading-5 text-slate-600">Nada de este perfil será público mientras no actives expresamente una función de visibilidad.</p></div></div>
+                <div className="mt-6 grid gap-3 sm:grid-cols-2"><label className="flex items-start gap-3 rounded-lg border border-slate-200 p-4 text-sm text-slate-700"><input type="checkbox" checked={draft.open_to_projects} onChange={event => updateDraft('open_to_projects', event.target.checked)} className="mt-0.5 h-4 w-4 accent-teal-700" /><span><strong className="block text-edvanta-deep">Abierto a proyectos</strong><span className="mt-1 block text-xs leading-5 text-slate-500">Para iniciativas prácticas o de innovación claramente identificadas.</span></span></label><label className="flex items-start gap-3 rounded-lg border border-slate-200 p-4 text-sm text-slate-700"><input type="checkbox" checked={draft.open_to_research} onChange={event => updateDraft('open_to_research', event.target.checked)} className="mt-0.5 h-4 w-4 accent-teal-700" /><span><strong className="block text-edvanta-deep">Abierto a investigación</strong><span className="mt-1 block text-xs leading-5 text-slate-500">Solo oportunidades verificadas y con alcance transparente.</span></span></label></div>
+                <div className="mt-6 flex items-start gap-3 rounded-lg border border-slate-200 bg-slate-50 p-4"><LockKeyhole className="mt-0.5 h-5 w-5 shrink-0 text-teal-700" /><div><p className="text-sm font-bold text-edvanta-deep">Privado por defecto</p><p className="mt-1 text-xs leading-5 text-slate-600">Nada de este perfil será público mientras no actives expresamente una función de visibilidad.</p></div></div>
               </div>
             )}
 
             {error && <p className="mt-6 rounded-lg border border-rose-200 bg-rose-50 p-3 text-sm text-rose-800" role="alert">{error}</p>}
             <div className="mt-8 flex flex-wrap items-center justify-between gap-3 border-t border-slate-200 pt-6">
               <button type="button" onClick={() => setStep(current => Math.max(1, current - 1))} disabled={step === 1} className="inline-flex min-h-11 items-center gap-2 rounded-lg border border-slate-300 bg-white px-5 text-sm font-bold text-slate-700 disabled:invisible"><ArrowLeft className="h-4 w-4" /> Anterior</button>
-              {step < 6 ? <button type="button" onClick={next} className="inline-flex min-h-11 items-center gap-2 rounded-lg bg-[#071a4a] px-5 text-sm font-bold text-white">Continuar <ArrowRight className="h-4 w-4" /></button> : <button type="button" onClick={finish} disabled={saving} className="inline-flex min-h-11 items-center gap-2 rounded-lg bg-[#071a4a] px-5 text-sm font-bold text-white disabled:opacity-60">{saving ? 'Guardando...' : 'Abrir mi panel'} <ArrowRight className="h-4 w-4" /></button>}
+              {step < 6 ? <button type="button" onClick={next} className="inline-flex min-h-11 items-center gap-2 rounded-lg bg-edvanta-blue px-5 text-sm font-bold text-white">Continuar <ArrowRight className="h-4 w-4" /></button> : <button type="button" onClick={finish} disabled={saving} className="inline-flex min-h-11 items-center gap-2 rounded-lg bg-edvanta-blue px-5 text-sm font-bold text-white disabled:opacity-60">{saving ? 'Guardando...' : 'Abrir mi panel'} <ArrowRight className="h-4 w-4" /></button>}
             </div>
           </div>
         </section>

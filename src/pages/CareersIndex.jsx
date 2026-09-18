@@ -91,7 +91,7 @@ const modulos = [
     id: 'empresas',
     icon: Building2,
     titulo: 'Empresas',
-    texto: 'Busca talento en la comunidad: perfiles clasificados por área con proyectos y artículos.',
+    texto: 'Capacita a tu equipo y busca talento: perfiles clasificados por área con proyectos y artículos.',
     color: 'from-teal-600 to-cyan-700',
     a: '/empresas',
   },
@@ -103,7 +103,7 @@ function SectionCard({ titulo, descripcion, verTodo, to, children, id }) {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex flex-wrap items-end justify-between gap-3">
           <div className="max-w-3xl">
-            <h2 className="text-2xl font-bold text-[#071a4a] sm:text-3xl">{titulo}</h2>
+            <h2 className="text-2xl font-bold text-edvanta-deep sm:text-3xl">{titulo}</h2>
             {descripcion && <p className="mt-2 text-sm leading-6 text-slate-600">{descripcion}</p>}
           </div>
           {verTodo && (
@@ -125,7 +125,7 @@ function FormItemCard({ item, badge }) {
         <p className="text-xs font-bold uppercase text-teal-700">{badge}</p>
         <span className="rounded-full bg-slate-100 px-2 py-0.5 text-[10px] font-bold text-slate-600">{item.tipo === 'pública' ? 'Pública' : item.tipo === 'privada' ? 'Privada' : item.modalidad}</span>
       </div>
-      <h3 className="mt-3 text-lg font-bold leading-snug text-[#071a4a]">{item.nombre}</h3>
+      <h3 className="mt-3 text-lg font-bold leading-snug text-edvanta-deep">{item.nombre}</h3>
       <p className="mt-1 text-sm font-semibold text-slate-700">{item.universidad || item.organizador}</p>
       <p className="mt-2 flex-1 text-sm leading-6 text-slate-600">{item.resumen}</p>
       <div className="mt-4 flex flex-wrap gap-2 text-[11px] font-semibold text-slate-500">
@@ -172,7 +172,7 @@ export default function CareersIndex() {
       <SiteHeader />
       <main className="min-h-screen bg-edvanta-bg">
         {/* Hero */}
-        <section className="relative overflow-hidden bg-[#071a4a]">
+        <section className="relative overflow-hidden bg-edvanta-blue">
           <div className="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-teal-500/20 blur-3xl" aria-hidden="true" />
           <div className="absolute -left-16 bottom-0 h-64 w-64 rounded-full bg-fuchsia-500/10 blur-3xl" aria-hidden="true" />
           <div className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
@@ -210,7 +210,7 @@ export default function CareersIndex() {
                   <span className={`inline-flex h-11 w-11 items-center justify-center rounded-lg bg-gradient-to-br ${modulo.color} text-white shadow`}>
                     <Icon className="h-5 w-5" aria-hidden="true" />
                   </span>
-                  <h2 className="mt-4 text-lg font-bold text-[#071a4a] group-hover:text-teal-800">{modulo.titulo}</h2>
+                  <h2 className="mt-4 text-lg font-bold text-edvanta-deep group-hover:text-teal-800">{modulo.titulo}</h2>
                   <p className="mt-2 flex-1 text-sm leading-6 text-slate-600">{modulo.descripcion}</p>
                   <span className="mt-3 inline-flex items-center gap-1.5 text-sm font-bold text-teal-700">
                     Entrar <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
@@ -280,7 +280,7 @@ export default function CareersIndex() {
           <div className="mt-7 grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {areasCursosHub.map(area => (
               <Link key={area.slug} to="/cursos" className="group rounded-lg border border-slate-200 bg-white p-4 transition hover:border-teal-300 hover:bg-teal-50/40">
-                <p className="text-sm font-bold text-[#071a4a] group-hover:text-teal-800">{area.nombre}</p>
+                <p className="text-sm font-bold text-edvanta-deep group-hover:text-teal-800">{area.nombre}</p>
                 <p className="mt-1 text-xs leading-5 text-slate-500">{area.detalle}</p>
               </Link>
             ))}

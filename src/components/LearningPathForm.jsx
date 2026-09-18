@@ -50,7 +50,7 @@ export default function LearningPathForm() {
           <p className="mt-3 text-base leading-relaxed text-gray-500">
             Cuéntanos tu área, país y objetivo. Te ayudamos a escoger una secuencia de estudio coherente con tus metas.
           </p>
-          <p className="mt-5 rounded-lg border border-amber-200 bg-amber-50 p-4 text-sm leading-relaxed text-amber-800">
+          <p className="mt-5 rounded-lg border border-amber-200 bg-amber-50 p-4 text-sm leading-relaxed text-amber-900">
             Este formulario no reemplaza asesoría laboral, académica ni legal. Solo organiza una orientación inicial de aprendizaje.
           </p>
         </div>

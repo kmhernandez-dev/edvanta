@@ -19,7 +19,7 @@ const iconBg = {
   purple:  'bg-purple-100 text-purple-700',
   indigo:  'bg-indigo-100 text-indigo-700',
   sky:     'bg-sky-100 text-sky-700',
-  amber:   'bg-amber-100 text-amber-700',
+  amber:   'bg-edvanta-light text-edvanta-blue',
   rose:    'bg-rose-100 text-rose-700',
   orange:  'bg-orange-100 text-orange-700',
 };

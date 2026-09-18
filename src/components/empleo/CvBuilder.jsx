@@ -35,6 +35,9 @@ const EMPTY_CV = {
 let uidCounter = 0;
 const uid = () => `x-${Date.now()}-${++uidCounter}`;
 
+/** Borrador en el navegador: no se pierde lo escrito aunque no haya cuenta. */
+const BORRADOR_LOCAL = 'edvanta_cv_borrador';
+
 function stripDraft(cv) {
   const clone = { ...cv };
   clone.experiencia = clone.experiencia.map(({ id, ...rest }) => rest);
@@ -249,6 +252,19 @@ export default function CvBuilder() {
   const autosaveTimer = useRef(null);
   const exportRef = useRef(null);
 
+  // ── Borrador de este navegador (funciona sin cuenta) ──
+  // Se carga una sola vez al abrir; si la persona tiene cuenta, el CV
+  // guardado en el servidor llega después y manda sobre el borrador.
+  useEffect(() => {
+    try {
+      const crudo = localStorage.getItem(BORRADOR_LOCAL);
+      if (!crudo) return;
+      const guardado = JSON.parse(crudo);
+      if (guardado?.cv) setCv(addIds(guardado.cv));
+      if (guardado?.cargo) setCargoObjetivo(guardado.cargo);
+    } catch { /* borrador ilegible: se ignora */ }
+  }, []);
+
   // ── Cargar CV guardado ──
   useEffect(() => {
     if (!academiaUser || !academiaToken) return undefined;
@@ -350,6 +366,26 @@ export default function CvBuilder() {
     return () => clearTimeout(autosaveTimer.current);
   }, [cv, academiaUser, academiaToken, loadingSaved]);
 
+  // Guarda el borrador en este navegador mientras se escribe.
+  useEffect(() => {
+    if (!tieneContenido) return undefined;
+    const id = setTimeout(() => {
+      try {
+        localStorage.setItem(BORRADOR_LOCAL, JSON.stringify({ cv: stripDraft(cv), cargo: cargoObjetivo }));
+      } catch { /* sin espacio o almacenamiento bloqueado */ }
+    }, 800);
+    return () => clearTimeout(id);
+  }, [cv, cargoObjetivo, tieneContenido]);
+
+  const borrarBorrador = () => {
+    try { localStorage.removeItem(BORRADOR_LOCAL); } catch { /* nada que borrar */ }
+    setCv(EMPTY_CV);
+    setCargoObjetivo('');
+    dirty.current = false;
+    setSaveMsg('Borramos el borrador de este navegador y empezamos de cero.');
+    setSaveState('saved');
+  };
+
   const guardar = async () => {
     trackEvent('cv_saved_attempt');
     if (!academiaUser) { setLoginOpen(true); return; }
@@ -444,20 +480,23 @@ export default function CvBuilder() {
   const saveLabel = { saving: 'Guardando…', saved: 'Guardado', error: 'Error al guardar' };
 
   // ── Barra superior (siempre visible) ──
-  const TopBar = () => (
+  const topBar = (
     <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-edvanta-border bg-white px-4 py-3 shadow-sm">
       <div className="flex items-center gap-3">
         <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-edvanta-light text-edvanta-blue"><FileText className="h-5 w-5" /></span>
         <div>
           <p className="text-sm font-black text-edvanta-deep">Creador de hoja de vida</p>
           <p className="text-[11px] font-semibold text-slate-400">
-            {academiaUser && saveState ? (saveLabel[saveState] || '') : 'Se completa por secciones · Progreso'} {overall > 0 && <span className="text-edvanta-blue">· {overall}%</span>}
+            {academiaUser && saveState ? (saveLabel[saveState] || '') : 'Se guarda en este navegador'} {overall > 0 && <span className="text-edvanta-blue">· {overall}%</span>}
           </p>
         </div>
       </div>
       <div className="flex items-center gap-2">
         <button type="button" onClick={() => setShowPreview(v => !v)} className="inline-flex min-h-10 items-center gap-1.5 rounded-lg border border-edvanta-border bg-white px-3 text-sm font-bold text-slate-700 transition hover:border-edvanta-blue/40 hover:text-edvanta-blue lg:hidden">
           {showPreview ? <><Pencil className="h-4 w-4" /> Editar</> : <><Eye className="h-4 w-4" /> Vista previa</>}
+        </button>
+        <button type="button" onClick={borrarBorrador} disabled={!tieneContenido} title="Borra lo escrito en este navegador y empieza de cero" className="inline-flex min-h-10 items-center gap-1.5 rounded-lg border border-edvanta-border bg-white px-3 text-sm font-bold text-slate-700 transition hover:border-rose-300 hover:text-rose-700 disabled:opacity-50">
+          <Trash2 className="h-4 w-4" /> <span className="hidden md:inline">Empezar de cero</span>
         </button>
         <button type="button" onClick={guardar} disabled={!tieneContenido} className="inline-flex min-h-10 items-center gap-1.5 rounded-lg border border-edvanta-border bg-white px-3.5 text-sm font-bold text-slate-800 transition hover:border-teal-400 hover:text-teal-800 disabled:opacity-50">
           <Save className="h-4 w-4" /> <span className="hidden sm:inline">Guardar</span>
@@ -511,14 +550,14 @@ export default function CvBuilder() {
       {/* ══ MODO BUILDER ══ */}
       {mode === 'builder' && (
         <div className="space-y-4">
-          <TopBar />
+          {topBar}
           {!academiaUser && (
             <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-edvanta-blue/20 bg-edvanta-light/60 p-4">
               <div className="flex items-start gap-3">
                 <Lock className="mt-0.5 h-5 w-5 shrink-0 text-edvanta-blue" />
                 <div>
                   <p className="text-sm font-bold text-edvanta-deep">Crea tu cuenta para guardar y autoguardar tu hoja de vida</p>
-                  <p className="mt-0.5 text-xs leading-5 text-slate-600">Con tu cuenta gratuita, tu CV se autoguarda y lo recuperas desde cualquier dispositivo. La descarga en PDF funciona incluso sin cuenta.</p>
+                  <p className="mt-0.5 text-xs leading-5 text-slate-600">Sin cuenta guardamos un borrador en este navegador. Con tu cuenta gratuita, tu hoja de vida se autoguarda y la recuperas desde cualquier dispositivo. La descarga en PDF funciona siempre.</p>
                 </div>
               </div>
               <button type="button" onClick={() => setLoginOpen(true)} className="inline-flex min-h-10 items-center gap-2 rounded-lg bg-edvanta-deep px-4 text-sm font-bold text-white transition hover:bg-edvanta-blue">
@@ -587,12 +626,11 @@ export default function CvBuilder() {
   );
 }
 
-// ── Editor por sección ──
-function SectionEditor(props) {
-  const { section, cv, setField, addItem, removeItem, patchItem, moveItem, addSkill, removeSkill,
-    cargoObjetivo, setCargoObjetivo, analysis, adaptacion, aplicarSugerencia, tieneContenido, saveMsg, saveState } = props;
-
-  const Panel = ({ title, hint, children, action }) => (
+// Definido fuera de SectionEditor a propósito: si se creara en cada
+// render, React desmontaría el formulario en cada pulsación y el campo
+// perdería el foco después de cada letra.
+function Panel({ title, hint, children, action }) {
+  return (
     <div className="rounded-xl border border-edvanta-border bg-white p-5 shadow-sm">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
@@ -604,6 +642,12 @@ function SectionEditor(props) {
       <div className="mt-4">{children}</div>
     </div>
   );
+}
+
+// ── Editor por sección ──
+function SectionEditor(props) {
+  const { section, cv, setField, addItem, removeItem, patchItem, moveItem, addSkill, removeSkill,
+    cargoObjetivo, setCargoObjetivo, analysis, adaptacion, aplicarSugerencia, tieneContenido, saveMsg, saveState } = props;
 
   if (section === 'perfil') {
     return (
@@ -625,7 +669,7 @@ function SectionEditor(props) {
           <label className="block sm:col-span-2">
             <span className="mb-1 block text-sm font-bold text-edvanta-deep">Resumen profesional (25-90 palabras)</span>
             <textarea value={cv.resumen} onChange={e => setField('resumen', e.target.value)} rows={4} placeholder="Soy [profesión] con X años de experiencia en [área]. Mi logro principal: [resultado medible]. Aporto [qué resuelves] en organizaciones del sector farmacéutico." className="w-full rounded-lg border border-edvanta-border p-3.5 text-sm leading-6 outline-none transition focus:border-edvanta-blue focus:ring-2 focus:ring-edvanta-blue/15" />
-            <p className={`mt-1 text-xs font-semibold ${wordCount(cv.resumen) > 0 && wordCount(cv.resumen) < 25 ? 'text-amber-700' : 'text-slate-400'}`}>{wordCount(cv.resumen)} palabras · ideal 25-90</p>
+            <p className={`mt-1 text-xs font-semibold ${wordCount(cv.resumen) > 0 && wordCount(cv.resumen) < 25 ? 'text-edvanta-blue' : 'text-slate-400'}`}>{wordCount(cv.resumen)} palabras · ideal 25-90</p>
           </label>
         </div>
       </Panel>
@@ -745,7 +789,7 @@ function SectionEditor(props) {
   }
 
   // ── Revisión ATS ──
-  const prioridad = (tipo) => (tipo === 'error' ? { label: 'Prioridad alta', cls: 'bg-rose-100 text-rose-700' } : tipo === 'warn' ? { label: 'Prioridad media', cls: 'bg-amber-100 text-amber-700' } : { label: 'Opcional', cls: 'bg-sky-100 text-sky-700' });
+  const prioridad = (tipo) => (tipo === 'error' ? { label: 'Prioridad alta', cls: 'bg-rose-100 text-rose-700' } : tipo === 'warn' ? { label: 'Prioridad media', cls: 'bg-edvanta-light text-edvanta-blue' } : { label: 'Opcional', cls: 'bg-sky-100 text-sky-700' });
   const mejoras = (analysis?.hallazgos || []).filter(f => f.tipo === 'error' || f.tipo === 'warn' || f.tipo === 'info');
 
   return (

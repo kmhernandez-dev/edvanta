@@ -71,7 +71,7 @@ const HerramientaLandingPage = lazy(() => import('./pages/HerramientaLandingPage
 
 function RouteFallback() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-[#f7f9fc] text-sm font-semibold text-slate-600">
+    <div className="flex min-h-screen items-center justify-center bg-edvanta-bg text-sm font-semibold text-slate-600">
       Cargando contenido...
     </div>
   );
@@ -227,16 +227,16 @@ export default function App() {
         <Route path="/rutas/:slug" element={<RutaProfesionalPage />} />
         <Route path="/carreras" element={<CareersIndex />} />
         <Route path="/carreras/:slug" element={<CareerPage />} />
-        <Route path="/vocacion" element={<Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-[#f7f9fc] text-sm font-semibold text-slate-600">Cargando orientación vocacional...</div>}><VocacionPage /></Suspense>} />
-        <Route path="/empleo" element={<Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-[#f7f9fc] text-sm font-semibold text-slate-600">Cargando centro de empleo...</div>}><EmpleoPage /></Suspense>} />
+        <Route path="/vocacion" element={<Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-edvanta-bg text-sm font-semibold text-slate-600">Cargando orientación vocacional...</div>}><VocacionPage /></Suspense>} />
+        <Route path="/empleo" element={<Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-edvanta-bg text-sm font-semibold text-slate-600">Cargando centro de empleo...</div>}><EmpleoPage /></Suspense>} />
         <Route path="/hoja-de-vida" element={<HojaDeVida />} />
         <Route path="/empleo/correos" element={<CorreosRRHH />} />
-        <Route path="/empleo/ofertas-qf" element={<Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-[#f7f9fc] text-sm font-semibold text-slate-600">Cargando ofertas...</div>}><OfertasQFPage /></Suspense>} />
-        <Route path="/practicas" element={<Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-[#f7f9fc] text-sm font-semibold text-slate-600">Cargando guía de prácticas...</div>}><PracticasPage /></Suspense>} />
-        <Route path="/noticias" element={<Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-[#f7f9fc] text-sm font-semibold text-slate-600">Cargando noticias...</div>}><NoticiasPage /></Suspense>} />
-        <Route path="/linkedin" element={<Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-[#f7f9fc] text-sm font-semibold text-slate-600">Cargando guía de LinkedIn...</div>}><LinkedinPage /></Suspense>} />
-        <Route path="/emprendimientos" element={<Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-[#f7f9fc] text-sm font-semibold text-slate-600">Cargando emprendimientos...</div>}><EmprendimientosPage /></Suspense>} />
-        <Route path="/herramientas" element={<Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-[#f7f9fc] text-sm font-semibold text-slate-600">Cargando herramientas...</div>}><HerramientasPage /></Suspense>} />
+        <Route path="/empleo/ofertas-qf" element={<Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-edvanta-bg text-sm font-semibold text-slate-600">Cargando ofertas...</div>}><OfertasQFPage /></Suspense>} />
+        <Route path="/practicas" element={<Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-edvanta-bg text-sm font-semibold text-slate-600">Cargando guía de prácticas...</div>}><PracticasPage /></Suspense>} />
+        <Route path="/noticias" element={<Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-edvanta-bg text-sm font-semibold text-slate-600">Cargando noticias...</div>}><NoticiasPage /></Suspense>} />
+        <Route path="/linkedin" element={<Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-edvanta-bg text-sm font-semibold text-slate-600">Cargando guía de LinkedIn...</div>}><LinkedinPage /></Suspense>} />
+        <Route path="/emprendimientos" element={<Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-edvanta-bg text-sm font-semibold text-slate-600">Cargando emprendimientos...</div>}><EmprendimientosPage /></Suspense>} />
+        <Route path="/herramientas" element={<Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-edvanta-bg text-sm font-semibold text-slate-600">Cargando herramientas...</div>}><HerramientasPage /></Suspense>} />
         <Route path="/herramientas/:slug" element={<HerramientaLandingPage />} />
         <Route path="/empresas" element={<EmpresasHome />} />
         <Route path="/empresas/capacitacion" element={<EmpresasCapacitacion />} />
@@ -244,17 +244,17 @@ export default function App() {
 
         {/* Vitrina de talento (lado del profesional) */}
         <Route path="/talento" element={<TalentoVitrina />} />
-        <Route path="/oportunidades" element={<Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-[#f7f9fc] text-sm font-semibold text-slate-600">Cargando oportunidades...</div>}><EcosystemDirectory kind="opportunities" /></Suspense>} />
-        <Route path="/proyectos" element={<Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-[#f7f9fc] text-sm font-semibold text-slate-600">Cargando proyectos...</div>}><EcosystemDirectory kind="projects" /></Suspense>} />
-        <Route path="/certificaciones" element={<Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-[#f7f9fc] text-sm font-semibold text-slate-600">Cargando certificaciones...</div>}><EcosystemDirectory kind="certifications" /></Suspense>} />
-        <Route path="/conecta" element={<Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-[#f7f9fc] text-sm font-semibold text-slate-600">Cargando espacios...</div>}><ConnectHub /></Suspense>} />
-        <Route path="/recursos" element={<Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-[#f7f9fc] text-sm font-semibold text-slate-600">Cargando recursos...</div>}><ResourcesHub /></Suspense>} />
+        <Route path="/oportunidades" element={<Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-edvanta-bg text-sm font-semibold text-slate-600">Cargando oportunidades...</div>}><EcosystemDirectory kind="opportunities" /></Suspense>} />
+        <Route path="/proyectos" element={<Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-edvanta-bg text-sm font-semibold text-slate-600">Cargando proyectos...</div>}><EcosystemDirectory kind="projects" /></Suspense>} />
+        <Route path="/certificaciones" element={<Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-edvanta-bg text-sm font-semibold text-slate-600">Cargando certificaciones...</div>}><EcosystemDirectory kind="certifications" /></Suspense>} />
+        <Route path="/conecta" element={<Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-edvanta-bg text-sm font-semibold text-slate-600">Cargando espacios...</div>}><ConnectHub /></Suspense>} />
+        <Route path="/recursos" element={<Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-edvanta-bg text-sm font-semibold text-slate-600">Cargando recursos...</div>}><ResourcesHub /></Suspense>} />
 
         {/* Espacio profesional privado de Edvanta */}
-        <Route path="/cuenta" element={<Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-[#f7f9fc] text-sm font-semibold text-slate-600">Cargando acceso...</div>}><ProfessionalAccount /></Suspense>} />
-        <Route path="/app/onboarding" element={<Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-[#f7f9fc] text-sm font-semibold text-slate-600">Preparando tu perfil...</div>}><ProfessionalOnboarding /></Suspense>} />
-        <Route path="/app/perfil" element={<Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-[#f7f9fc] text-sm font-semibold text-slate-600">Cargando tu perfil...</div>}><ProfessionalProfilePage /></Suspense>} />
-        <Route path="/app" element={<Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-[#f7f9fc] text-sm font-semibold text-slate-600">Cargando tu panel...</div>}><ProfessionalDashboard /></Suspense>} />
+        <Route path="/cuenta" element={<Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-edvanta-bg text-sm font-semibold text-slate-600">Cargando acceso...</div>}><ProfessionalAccount /></Suspense>} />
+        <Route path="/app/onboarding" element={<Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-edvanta-bg text-sm font-semibold text-slate-600">Preparando tu perfil...</div>}><ProfessionalOnboarding /></Suspense>} />
+        <Route path="/app/perfil" element={<Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-edvanta-bg text-sm font-semibold text-slate-600">Cargando tu perfil...</div>}><ProfessionalProfilePage /></Suspense>} />
+        <Route path="/app" element={<Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-edvanta-bg text-sm font-semibold text-slate-600">Cargando tu panel...</div>}><ProfessionalDashboard /></Suspense>} />
 
         {/* Catálogo de 100+ cursos gratuitos */}
         <Route path="/cursos-gratis" element={<CursosGratisIndex />} />

@@ -171,13 +171,13 @@ export default function AdminEdvantaContent() {
     return (
       <section className="mx-auto max-w-md rounded-lg border border-slate-200 bg-white p-6 shadow-sm">
         <Database className="h-8 w-8 text-teal-700" />
-        <h1 className="mt-4 text-2xl font-bold text-[#071a4a]">Contenido profesional Edvanta</h1>
+        <h1 className="mt-4 text-2xl font-bold text-edvanta-deep">Contenido profesional Edvanta</h1>
         <p className="mt-2 text-sm leading-6 text-slate-600">Ingresa el token administrativo para gestionar el catálogo profesional.</p>
         {message && <div className="mt-4 rounded-lg border border-rose-200 bg-rose-50 p-3 text-sm text-rose-700" role="alert">{message}</div>}
         <form onSubmit={login} className="mt-5 space-y-3">
           <label className="block text-sm font-bold text-slate-700" htmlFor="edvanta-admin-token">Token administrativo</label>
           <input id="edvanta-admin-token" type="password" value={tokenInput} onChange={event => setTokenInput(event.target.value)} required className="min-h-11 w-full rounded-lg border border-slate-300 px-3 text-sm outline-none focus:border-teal-600" />
-          <button type="submit" className="inline-flex min-h-11 w-full items-center justify-center rounded-lg bg-[#071a4a] px-4 text-sm font-bold text-white">Entrar</button>
+          <button type="submit" className="inline-flex min-h-11 w-full items-center justify-center rounded-lg bg-edvanta-blue px-4 text-sm font-bold text-white">Entrar</button>
         </form>
       </section>
     );
@@ -186,11 +186,11 @@ export default function AdminEdvantaContent() {
   return (
     <div className="space-y-6">
       <div className="flex flex-wrap items-end justify-between gap-4">
-        <div><p className="text-sm font-bold uppercase text-teal-700">Edvanta profesional</p><h1 className="mt-1 text-3xl font-bold text-[#071a4a]">Gestión editorial</h1><p className="mt-2 max-w-3xl text-sm leading-6 text-slate-600">Crea borradores, publica contenido y mantiene sus relaciones sin editar la base de datos directamente.</p></div>
+        <div><p className="text-sm font-bold uppercase text-teal-700">Edvanta profesional</p><h1 className="mt-1 text-3xl font-bold text-edvanta-deep">Gestión editorial</h1><p className="mt-2 max-w-3xl text-sm leading-6 text-slate-600">Crea borradores, publica contenido y mantiene sus relaciones sin editar la base de datos directamente.</p></div>
         <button type="button" onClick={logout} className="min-h-10 rounded-lg border border-slate-300 bg-white px-4 text-sm font-bold text-slate-700">Cerrar acceso editorial</button>
       </div>
 
-      {summary && <dl className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">{[['Carreras', summary.careers], ['Habilidades', summary.skills], ['Cursos', summary.courses], ['Rutas', summary.learning_paths]].map(([label, value]) => <div key={label} className="rounded-lg border border-slate-200 bg-white p-4"><dt className="text-xs font-bold uppercase text-slate-500">{label}</dt><dd className="mt-2 text-2xl font-bold text-[#071a4a]">{value ?? 0}</dd></div>)}</dl>}
+      {summary && <dl className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">{[['Carreras', summary.careers], ['Habilidades', summary.skills], ['Cursos', summary.courses], ['Rutas', summary.learning_paths]].map(([label, value]) => <div key={label} className="rounded-lg border border-slate-200 bg-white p-4"><dt className="text-xs font-bold uppercase text-slate-500">{label}</dt><dd className="mt-2 text-2xl font-bold text-edvanta-deep">{value ?? 0}</dd></div>)}</dl>}
 
       <div className="overflow-x-auto border-b border-slate-200"><div className="flex min-w-max gap-1" role="tablist" aria-label="Tipos de contenido">{entities.map(entity => { const Icon = entity.icon; const selected = entity.key === entityKey; return <button key={entity.key} type="button" role="tab" aria-selected={selected} onClick={() => setEntityKey(entity.key)} className={`inline-flex min-h-11 items-center gap-2 border-b-2 px-4 text-sm font-bold ${selected ? 'border-teal-600 text-teal-700' : 'border-transparent text-slate-600'}`}><Icon className="h-4 w-4" /> {entity.label}</button>; })}</div></div>
 
@@ -198,11 +198,11 @@ export default function AdminEdvantaContent() {
 
       <div className="grid gap-6 xl:grid-cols-[minmax(0,1fr)_360px]">
         <section className="min-w-0 rounded-lg border border-slate-200 bg-white shadow-sm">
-          <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-200 p-4"><h2 className="text-lg font-bold text-[#071a4a]">{definition.label}</h2><div className="relative w-full sm:w-72"><Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" /><input value={search} onChange={event => setSearch(event.target.value)} placeholder="Buscar..." className="min-h-10 w-full rounded-lg border border-slate-300 pl-9 pr-3 text-sm" /></div></div>
+          <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-200 p-4"><h2 className="text-lg font-bold text-edvanta-deep">{definition.label}</h2><div className="relative w-full sm:w-72"><Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" /><input value={search} onChange={event => setSearch(event.target.value)} placeholder="Buscar..." className="min-h-10 w-full rounded-lg border border-slate-300 pl-9 pr-3 text-sm" /></div></div>
           <div className="divide-y divide-slate-100">
             {loading ? <p className="p-8 text-center text-sm text-slate-500">Cargando contenido...</p> : filteredRecords.map(record => (
               <article key={record.id} className="grid gap-3 p-4 lg:grid-cols-[minmax(0,1fr)_180px_120px] lg:items-center">
-                <div className="min-w-0"><h3 className="truncate font-bold text-[#071a4a]">{record[definition.titleKey] || 'Sin título'}</h3><p className="mt-1 truncate text-xs text-slate-500">{record[definition.metaKey] || record.slug || record.id}</p><p className="mt-1 truncate font-mono text-[10px] text-slate-400">{record.id}</p></div>
+                <div className="min-w-0"><h3 className="truncate font-bold text-edvanta-deep">{record[definition.titleKey] || 'Sin título'}</h3><p className="mt-1 truncate text-xs text-slate-500">{record[definition.metaKey] || record.slug || record.id}</p><p className="mt-1 truncate font-mono text-[10px] text-slate-400">{record.id}</p></div>
                 {definition.statusKey && <select value={String(record[definition.statusKey])} onChange={event => updateRecord(record, { [definition.statusKey]: definition.statusKey === 'active' ? event.target.value === 'true' : event.target.value })} className="min-h-10 rounded-lg border border-slate-300 bg-white px-3 text-sm" aria-label={`Estado de ${record[definition.titleKey] || record.id}`}>{definition.statuses.map(status => <option key={String(status)} value={String(status)}>{statusLabel(status)}</option>)}</select>}
                 {definition.featuredKey ? <label className="inline-flex min-h-10 items-center gap-2 text-sm font-semibold text-slate-700"><input type="checkbox" checked={Boolean(record[definition.featuredKey])} onChange={event => updateRecord(record, { [definition.featuredKey]: event.target.checked })} className="h-4 w-4 accent-teal-600" /> Destacado</label> : <span />}
               </article>
@@ -213,16 +213,16 @@ export default function AdminEdvantaContent() {
 
         <aside className="space-y-5">
           <form onSubmit={createRecord} className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
-            <h2 className="text-lg font-bold text-[#071a4a]">Crear borrador</h2>
+            <h2 className="text-lg font-bold text-edvanta-deep">Crear borrador</h2>
             <div className="mt-4 space-y-3">{definition.fields.map(field => <label key={field.key} className="block text-sm font-bold text-slate-700">{field.label}{field.multiline ? <textarea value={draft[field.key] ?? ''} onChange={event => setDraft(current => ({ ...current, [field.key]: event.target.value }))} required={field.required} rows="3" className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm font-normal" /> : <input type={field.type || 'text'} value={draft[field.key] ?? ''} onChange={event => setDraft(current => ({ ...current, [field.key]: field.type === 'number' ? Number(event.target.value) : event.target.value }))} required={field.required} className="mt-1 min-h-10 w-full rounded-lg border border-slate-300 px-3 text-sm font-normal" />}</label>)}</div>
-            <button type="submit" disabled={loading} className="mt-5 inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-lg bg-[#071a4a] px-4 text-sm font-bold text-white disabled:opacity-60"><Save className="h-4 w-4" /> Guardar borrador</button>
+            <button type="submit" disabled={loading} className="mt-5 inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-lg bg-edvanta-blue px-4 text-sm font-bold text-white disabled:opacity-60"><Save className="h-4 w-4" /> Guardar borrador</button>
           </form>
 
           <form onSubmit={saveRelationship} className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
-            <h2 className="text-lg font-bold text-[#071a4a]">Relacionar contenido</h2>
+            <h2 className="text-lg font-bold text-edvanta-deep">Relacionar contenido</h2>
             <label className="mt-4 block text-sm font-bold text-slate-700">Tipo<select value={relationType} onChange={event => setRelationType(event.target.value)} className="mt-1 min-h-10 w-full rounded-lg border border-slate-300 bg-white px-3 text-sm font-normal">{Object.entries(relationshipDefinitions).map(([key, value]) => <option key={key} value={key}>{value.label}</option>)}</select></label>
             {[relationDefinition.first, relationDefinition.second].map(field => <label key={field.key} className="mt-3 block text-sm font-bold text-slate-700">{field.label}<input value={relationDraft[field.key] ?? ''} onChange={event => setRelationDraft(current => ({ ...current, [field.key]: event.target.value }))} required className="mt-1 min-h-10 w-full rounded-lg border border-slate-300 px-3 font-mono text-xs font-normal" /></label>)}
-            <button type="submit" className="mt-5 inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-lg border border-[#071a4a] bg-white px-4 text-sm font-bold text-[#071a4a]"><Link2 className="h-4 w-4" /> Guardar relación</button>
+            <button type="submit" className="mt-5 inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-lg border border-edvanta-blue bg-white px-4 text-sm font-bold text-edvanta-deep"><Link2 className="h-4 w-4" /> Guardar relación</button>
           </form>
         </aside>
       </div>

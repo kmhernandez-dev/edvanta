@@ -92,12 +92,12 @@ export default function PracticasPage() {
         </section>
 
         <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold text-[#071a4a] sm:text-3xl">Guía paso a paso</h2>
+          <h2 className="text-2xl font-bold text-edvanta-deep sm:text-3xl">Guía paso a paso</h2>
           <div className="mt-7 grid gap-4 md:grid-cols-3">
             {guiaPracticas.map(g => (
               <div key={g.titulo} className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
                 <span className="inline-flex h-11 w-11 items-center justify-center rounded-lg bg-rose-100 text-rose-800"><ClipboardList className="h-5 w-5" aria-hidden="true" /></span>
-                <h3 className="mt-4 text-lg font-bold text-[#071a4a]">{g.titulo}</h3>
+                <h3 className="mt-4 text-lg font-bold text-edvanta-deep">{g.titulo}</h3>
                 <ol className="mt-3 space-y-2">
                   {g.pasos.map(p => <li key={p} className="flex items-start gap-2 text-sm leading-6 text-slate-600"><span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-rose-500" aria-hidden="true" />{p}</li>)}
                 </ol>
@@ -109,11 +109,11 @@ export default function PracticasPage() {
         <section className="border-y border-slate-200 bg-white">
           <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
             <p className="text-sm font-bold uppercase tracking-wide text-rose-700">Elige tu perfil</p>
-            <h2 className="mt-1 text-2xl font-bold text-[#071a4a] sm:text-3xl">Qué perfiles elegir para desarrollar tu carrera farmacéutica</h2>
+            <h2 className="mt-1 text-2xl font-bold text-edvanta-deep sm:text-3xl">Qué perfiles elegir para desarrollar tu carrera farmacéutica</h2>
             <div className="mt-7 grid gap-4 md:grid-cols-2">
               {PERFILES_PRACTICAS.map(p => (
                 <div key={p.titulo} className="rounded-xl border border-slate-200 bg-slate-50 p-5 transition hover:border-rose-300">
-                  <h3 className="text-lg font-bold text-[#071a4a]">{p.titulo}</h3>
+                  <h3 className="text-lg font-bold text-edvanta-deep">{p.titulo}</h3>
                   <p className="mt-1 text-sm font-semibold text-rose-700">{p.ideal}</p>
                   <p className="mt-3 text-sm text-slate-600"><span className="font-bold text-slate-700">En qué trabajarás:</span> {p.areas}</p>
                   <p className="mt-1 text-sm text-slate-600"><span className="font-bold text-slate-700">Dónde:</span> {p.empresas}</p>
@@ -127,7 +127,7 @@ export default function PracticasPage() {
           <div className="grid gap-8 lg:grid-cols-2">
             <div>
               <p className="text-xs font-bold uppercase tracking-wide text-rose-700">Hoja de vida para prácticas</p>
-              <h2 className="mt-1 text-2xl font-bold text-[#071a4a] sm:text-3xl">HV de vida para aplicar a prácticas profesionales</h2>
+              <h2 className="mt-1 text-2xl font-bold text-edvanta-deep sm:text-3xl">HV de vida para aplicar a prácticas profesionales</h2>
               <p className="mt-3 text-sm leading-6 text-slate-600">Tu HV de práctica es distinta a la laboral: debe mostrar potencial, no solo experiencia. Incluye:</p>
               <ul className="mt-5 space-y-3">
                 {[
@@ -139,7 +139,7 @@ export default function PracticasPage() {
                 ].map(item => <li key={item} className="flex items-start gap-2 text-sm leading-6 text-slate-700"><CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-rose-600" aria-hidden="true" />{item}</li>)}
               </ul>
               <div className="mt-6 flex flex-wrap gap-3">
-                <Link to="/empleo#creador" className="inline-flex min-h-11 items-center gap-2 rounded-lg bg-[#071a4a] px-5 text-sm font-bold text-white transition hover:bg-[#0d2d6d]">
+                <Link to="/hoja-de-vida" className="inline-flex min-h-11 items-center gap-2 rounded-lg bg-edvanta-blue px-5 text-sm font-bold text-white transition hover:bg-edvanta-bluedark">
                   <FileText className="h-4 w-4" aria-hidden="true" /> Crear mi hoja de vida
                 </Link>
                 <Link to="/empleo" className="inline-flex min-h-11 items-center gap-2 rounded-lg border border-slate-300 bg-white px-5 text-sm font-bold text-slate-700 transition hover:bg-slate-50">
@@ -150,7 +150,7 @@ export default function PracticasPage() {
 
             <div className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
               <div className="flex flex-wrap items-center justify-between gap-3">
-                <p className="text-sm font-bold text-[#071a4a]">Correo para solicitar práctica</p>
+                <p className="text-sm font-bold text-edvanta-deep">Correo para solicitar práctica</p>
                 <button type="button" onClick={copiar} className="inline-flex items-center gap-1.5 rounded-lg border border-slate-300 bg-white px-3 py-1.5 text-xs font-bold text-slate-700 transition hover:border-rose-400 hover:text-rose-800">
                   {copiado ? 'Copiado' : 'Copiar correo'}
                 </button>
@@ -164,13 +164,13 @@ export default function PracticasPage() {
         <section className="border-t border-slate-200 bg-white">
           <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
             <p className="text-xs font-bold uppercase tracking-wide text-rose-700">Oportunidades oficiales</p>
-            <h2 className="mt-1 text-2xl font-bold text-[#071a4a] sm:text-3xl">Pasantías y becas verificadas</h2>
+            <h2 className="mt-1 text-2xl font-bold text-edvanta-deep sm:text-3xl">Pasantías y becas verificadas</h2>
             <div className="mt-7 grid gap-4 md:grid-cols-3">
               {pasantiasOficiales.map(p => (
                 <a key={p.nombre} href={p.url} target="_blank" rel="noopener noreferrer" className="group rounded-xl border border-slate-200 bg-slate-50 p-5 transition hover:border-rose-300 hover:bg-rose-50/40">
                   <BadgeCheck className="h-6 w-6 text-rose-600" aria-hidden="true" />
                   <p className="mt-3 text-sm font-bold text-rose-700">{p.tipo}</p>
-                  <h3 className="mt-1 text-base font-bold text-[#071a4a] group-hover:text-rose-800">{p.nombre}</h3>
+                  <h3 className="mt-1 text-base font-bold text-edvanta-deep group-hover:text-rose-800">{p.nombre}</h3>
                   <p className="mt-2 text-sm leading-6 text-slate-600">{p.resumen}</p>
                   <span className="mt-3 inline-flex items-center gap-1.5 text-sm font-bold text-rose-700">Abrir convocatoria <ArrowRight className="h-4 w-4" aria-hidden="true" /></span>
                 </a>

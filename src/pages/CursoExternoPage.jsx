@@ -454,7 +454,7 @@ export default function CursoExternoPage() {
           <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
             <div className="rounded-xl border border-amber-200 bg-amber-50 p-6 space-y-3">
               <h2 className="text-lg font-bold text-amber-900">Información importante</h2>
-              <ul className="space-y-2 text-sm text-amber-800">
+              <ul className="space-y-2 text-sm text-edvanta-blue">
                 <li>Este curso es ofrecido por <strong>{providerLabel}</strong>. Edvanta no dicta ni certifica este curso.</li>
                 <li>El acceso, precio, certificado y condiciones dependen exclusivamente de {providerLabel}.</li>
                 {course.affiliate_url && (

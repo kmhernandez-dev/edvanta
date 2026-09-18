@@ -85,7 +85,7 @@ export default function LearningPathsIndex() {
           <div className="mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:px-6 lg:grid-cols-[minmax(0,1fr)_360px] lg:px-8 lg:py-16">
             <div>
               <p className="text-sm font-bold uppercase text-teal-700">Aprende con dirección</p>
-              <h1 className="mt-3 max-w-4xl text-4xl font-bold leading-tight text-[#071a4a] sm:text-5xl">
+              <h1 className="mt-3 max-w-4xl text-4xl font-bold leading-tight text-edvanta-deep sm:text-5xl">
                 Rutas para construir una carrera, no solo acumular cursos
               </h1>
               <p className="mt-5 max-w-3xl text-lg leading-8 text-slate-600">
@@ -93,7 +93,7 @@ export default function LearningPathsIndex() {
               </p>
             </div>
             <div className="border-l-4 border-teal-500 pl-5 lg:self-end">
-              <p className="text-sm font-bold text-[#071a4a]">Empieza por tu objetivo profesional</p>
+              <p className="text-sm font-bold text-edvanta-deep">Empieza por tu objetivo profesional</p>
               <p className="mt-2 text-sm leading-6 text-slate-600">
                 Revisa una carrera si aún no sabes qué ruta elegir. Verás sus funciones, habilidades y cursos relacionados.
               </p>
@@ -104,7 +104,7 @@ export default function LearningPathsIndex() {
           </div>
         </section>
 
-        <section className="border-b border-slate-200 bg-[#eef3f8]">
+        <section className="border-b border-slate-200 bg-edvanta-bg">
           <div className="mx-auto flex max-w-7xl flex-col gap-3 px-4 py-5 sm:px-6 lg:flex-row lg:items-center lg:px-8">
             <label className="relative flex-1">
               <span className="sr-only">Buscar una ruta</span>
@@ -134,7 +134,7 @@ export default function LearningPathsIndex() {
           <div className="mb-7 flex flex-wrap items-end justify-between gap-4">
             <div>
               <p className="text-sm font-bold text-teal-700">{loading ? 'Consultando rutas' : `${visiblePaths.length} rutas disponibles`}</p>
-              <h2 className="mt-1 text-2xl font-bold text-[#071a4a]">Elige tu siguiente recorrido</h2>
+              <h2 className="mt-1 text-2xl font-bold text-edvanta-deep">Elige tu siguiente recorrido</h2>
             </div>
             {usingFallback && (
               <button type="button" onClick={() => setReloadKey(value => value + 1)} className="inline-flex min-h-10 items-center gap-2 rounded-lg border border-slate-300 bg-white px-4 text-sm font-bold text-slate-700 hover:border-teal-600 hover:text-teal-700">
@@ -158,7 +158,7 @@ export default function LearningPathsIndex() {
                     {path.featured && <span className="text-xs font-bold text-indigo-700">Ruta prioritaria</span>}
                   </div>
                   <p className="mt-5 text-xs font-bold uppercase text-teal-700">{path.career?.name}</p>
-                  <h3 className="mt-2 text-xl font-bold leading-7 text-[#071a4a] group-hover:text-teal-800">{path.name || path.title}</h3>
+                  <h3 className="mt-2 text-xl font-bold leading-7 text-edvanta-deep group-hover:text-teal-800">{path.name || path.title}</h3>
                   <p className="mt-3 flex-1 text-sm leading-6 text-slate-600">{path.summary}</p>
                   <div className="mt-5 flex flex-wrap gap-x-5 gap-y-2 border-t border-slate-100 pt-4 text-xs font-semibold text-slate-500">
                     <span className="inline-flex items-center gap-1.5"><BookOpenCheck className="h-4 w-4" aria-hidden="true" /> {path.step_count} pasos</span>
@@ -170,7 +170,7 @@ export default function LearningPathsIndex() {
           ) : (
             <div className="rounded-lg border border-slate-200 bg-white px-6 py-16 text-center">
               <Compass className="mx-auto h-9 w-9 text-teal-700" aria-hidden="true" />
-              <h2 className="mt-4 text-xl font-bold text-[#071a4a]">No encontramos una ruta con esos filtros</h2>
+              <h2 className="mt-4 text-xl font-bold text-edvanta-deep">No encontramos una ruta con esos filtros</h2>
               <button type="button" onClick={() => { setQuery(''); setFamily('all'); }} className="mt-5 text-sm font-bold text-teal-700 hover:text-teal-900">Ver todas las rutas</button>
             </div>
           )}

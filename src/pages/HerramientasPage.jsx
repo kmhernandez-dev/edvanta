@@ -117,7 +117,7 @@ export default function HerramientasPage() {
                 <div className="mt-4 space-y-3">
                   {grupo.items.map(item => (
                     <Link key={item.nombre} to={item.to} className="group block rounded-lg border border-slate-200 bg-slate-50 p-4 transition hover:border-teal-300 hover:bg-teal-50/40">
-                      <p className="text-sm font-bold text-[#071a4a] group-hover:text-teal-800">{item.nombre}</p>
+                      <p className="text-sm font-bold text-edvanta-deep group-hover:text-teal-800">{item.nombre}</p>
                       <p className="mt-1 text-xs leading-5 text-slate-600">{item.descripcion}</p>
                       <span className="mt-2 inline-flex items-center gap-1 text-xs font-bold text-teal-700">Abrir <ArrowRight className="h-3 w-3" aria-hidden="true" /></span>
                     </Link>
@@ -133,7 +133,7 @@ export default function HerramientasPage() {
             <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
               <div className="flex items-center gap-2">
                 <Sparkles className="h-5 w-5 text-teal-700" aria-hidden="true" />
-                <h2 className="text-2xl font-bold text-[#071a4a] sm:text-3xl">Selección editorial verificada</h2>
+                <h2 className="text-2xl font-bold text-edvanta-deep sm:text-3xl">Selección editorial verificada</h2>
               </div>
               {loading ? (
                 <div className="mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-3" aria-label="Cargando recursos">
@@ -150,7 +150,7 @@ export default function HerramientasPage() {
                           <p className="text-xs font-bold uppercase text-teal-700">{resourceTypeLabels[resource.resource_type] || resource.resource_type || 'Recurso'}</p>
                           {isSaved && <span className="rounded-full bg-teal-50 px-2 py-0.5 text-[10px] font-bold text-teal-700">Guardado</span>}
                         </div>
-                        <h3 className="mt-2 text-base font-bold text-[#071a4a]">{resource.title}</h3>
+                        <h3 className="mt-2 text-base font-bold text-edvanta-deep">{resource.title}</h3>
                         <p className="mt-2 flex-1 text-sm leading-6 text-slate-600">{resource.excerpt}</p>
                         {resource.source_url && (
                           <a href={resource.source_url} target="_blank" rel="noopener noreferrer" className="mt-3 inline-flex items-center gap-1.5 text-sm font-bold text-teal-700">

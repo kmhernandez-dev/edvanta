@@ -108,7 +108,7 @@ export default function ProfessionalAccount() {
           <div className="mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:px-6 lg:grid-cols-[minmax(0,1fr)_440px] lg:px-8 lg:py-16">
             <div className="max-w-2xl self-center">
               <p className="text-sm font-bold uppercase text-teal-700">Tu espacio profesional</p>
-              <h1 className="mt-3 text-4xl font-bold leading-tight text-[#071a4a] sm:text-5xl">Convierte tus intereses en un plan que puedas seguir</h1>
+              <h1 className="mt-3 text-4xl font-bold leading-tight text-edvanta-deep sm:text-5xl">Convierte tus intereses en un plan que puedas seguir</h1>
               <p className="mt-5 text-lg leading-8 text-slate-600">Guarda cursos, organiza rutas y concentra en un solo lugar las decisiones que fortalecen tu perfil.</p>
               <div className="mt-8 grid gap-4 sm:grid-cols-3">
                 {[
@@ -130,7 +130,7 @@ export default function ProfessionalAccount() {
                 <button type="button" onClick={() => switchMode('register')} className={`min-h-11 flex-1 border-b-2 px-3 text-sm font-bold ${mode === 'register' ? 'border-teal-600 text-teal-800' : 'border-transparent text-slate-500'}`}>Crear cuenta</button>
               </div>
 
-              <h2 className="mt-6 text-2xl font-bold text-[#071a4a]">{mode === 'login' ? 'Continúa con tu plan' : 'Crea tu perfil profesional'}</h2>
+              <h2 className="mt-6 text-2xl font-bold text-edvanta-deep">{mode === 'login' ? 'Continúa con tu plan' : 'Crea tu perfil profesional'}</h2>
               <p className="mt-2 text-sm leading-6 text-slate-600">{mode === 'login' ? 'Accede a tus cursos guardados y rutas activas.' : 'La configuración inicial toma menos de tres minutos.'}</p>
 
               {!supabaseConfigured && (
@@ -162,7 +162,7 @@ export default function ProfessionalAccount() {
                     <span>Acepto los <Link to="/terminos" target="_blank" className="font-bold text-teal-800">términos</Link> y la <Link to="/privacidad" target="_blank" className="font-bold text-teal-800">política de privacidad</Link>.</span>
                   </label>
                 )}
-                <button type="submit" disabled={!supabaseConfigured || submitting} className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-lg bg-[#071a4a] px-5 text-sm font-bold text-white hover:bg-[#0d2d6d] disabled:cursor-not-allowed disabled:opacity-50">
+                <button type="submit" disabled={!supabaseConfigured || submitting} className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-lg bg-edvanta-blue px-5 text-sm font-bold text-white hover:bg-edvanta-bluedark disabled:cursor-not-allowed disabled:opacity-50">
                   {submitting ? 'Procesando...' : mode === 'login' ? 'Ingresar a mi panel' : 'Crear mi perfil'} <ArrowRight className="h-4 w-4" aria-hidden="true" />
                 </button>
               </form>

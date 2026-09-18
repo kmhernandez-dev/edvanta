@@ -112,7 +112,7 @@ export default function OfertasQFPage() {
                 key={a}
                 type="button"
                 onClick={() => setArea(a)}
-                className={`min-h-10 rounded-full px-4 text-sm font-bold transition ${area === a ? 'bg-[#071a4a] text-white' : 'border border-slate-300 bg-white text-slate-700 hover:border-teal-400 hover:text-teal-800'}`}
+                className={`min-h-10 rounded-full px-4 text-sm font-bold transition ${area === a ? 'bg-edvanta-blue text-white' : 'border border-slate-300 bg-white text-slate-700 hover:border-teal-400 hover:text-teal-800'}`}
               >
                 {a}
               </button>
@@ -134,18 +134,18 @@ export default function OfertasQFPage() {
         <section className="mx-auto max-w-5xl px-4 pb-16 pt-4 sm:px-6 lg:px-8">
           {porDia.map(({ dia, ofertas }) => (
             <div key={dia} className="mt-8">
-              <h2 className="flex items-center gap-3 text-lg font-bold text-[#071a4a]">
+              <h2 className="flex items-center gap-3 text-lg font-bold text-edvanta-deep">
                 Publicadas el {DIAS_LABEL[dia] || formatearFecha(dia)}
                 <span className="h-0.5 flex-1 bg-amber-400/60" aria-hidden="true" />
               </h2>
               <div className="mt-4 grid gap-4 md:grid-cols-2">
                 {ofertas.map(o => (
-                  <article key={o.id} className="flex min-h-56 flex-col rounded-xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:border-amber-300 hover:shadow-md">
+                  <article key={o.id} className="flex min-h-56 flex-col rounded-xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:border-edvanta-blue/40 hover:shadow-md">
                     <div className="flex items-start justify-between gap-3">
-                      <span className="rounded-full bg-amber-50 px-2.5 py-1 text-[10px] font-bold uppercase text-amber-700">{o.area}</span>
+                      <span className="rounded-full bg-edvanta-light px-2.5 py-1 text-[10px] font-bold uppercase text-edvanta-blue">{o.area}</span>
                       <span className="rounded-full bg-slate-100 px-2 py-0.5 text-[10px] font-bold text-slate-600">{o.modalidad}</span>
                     </div>
-                    <h3 className="mt-3 text-lg font-bold leading-snug text-[#071a4a]">{o.cargo}</h3>
+                    <h3 className="mt-3 text-lg font-bold leading-snug text-edvanta-deep">{o.cargo}</h3>
                     <p className="mt-1 flex items-center gap-1.5 text-sm font-semibold text-slate-700">
                       <Building2 className="h-4 w-4 text-amber-600" aria-hidden="true" />{o.empresa}
                     </p>
@@ -158,7 +158,7 @@ export default function OfertasQFPage() {
                       href={o.contacto}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="mt-5 inline-flex min-h-10 items-center justify-center gap-2 rounded-lg bg-[#071a4a] px-4 text-sm font-bold text-white transition hover:bg-[#0d2d6d]"
+                      className="mt-5 inline-flex min-h-10 items-center justify-center gap-2 rounded-lg bg-edvanta-blue px-4 text-sm font-bold text-white transition hover:bg-edvanta-bluedark"
                     >
                       Ver oferta y postularme <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
                     </a>
@@ -179,7 +179,7 @@ export default function OfertasQFPage() {
             <p className="text-sm leading-6 text-slate-600">
               Los enlaces llevan a la publicación original en LinkedIn, Magneto365 o el portal de la empresa.
               Verifica siempre que la vacante siga abierta antes de postularte. ¿Quieres crear tu hoja de vida?{' '}
-              <Link to="/empleo#creador" className="font-bold text-teal-700 hover:text-teal-900">Usa el creador ATS del centro de empleo</Link>.
+              <Link to="/hoja-de-vida" className="font-bold text-teal-700 hover:text-teal-900">Usa el creador ATS del centro de empleo</Link>.
             </p>
           </div>
         </section>

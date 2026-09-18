@@ -880,7 +880,7 @@ export const clasificacionHerramientas = [
   {
     categoria: 'Trabajo y talento',
     items: [
-      { nombre: 'Perfil profesional para empresas', descripcion: 'Muestra habilidades, proyectos y artículos.', to: '/empresas' },
+      { nombre: 'Vitrina de talento', descripcion: 'Publica tus logros y espera a que un cazatalento te contacte.', to: '/talento' },
       { nombre: 'Noticias del sector', descripcion: 'Agenda y fuentes oficiales actualizadas.', to: '/noticias' },
     ],
   },

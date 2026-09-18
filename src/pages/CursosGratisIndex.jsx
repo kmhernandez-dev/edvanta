@@ -178,7 +178,7 @@ export default function CursosGratisIndex() {
         <section className="pb-16">
           <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
             <div className="p-4 bg-amber-50 border border-amber-200 rounded-xl">
-              <p className="text-xs text-amber-800 leading-relaxed">
+              <p className="text-xs text-edvanta-blue leading-relaxed">
                 <strong>Transparencia:</strong> Edvanta puede recibir una comisión si te inscribes mediante algunos enlaces. Esto no modifica el precio ni condiciona nuestro criterio editorial. El contenido académico es gratuito; la certificación puede tener un costo opcional determinado por Edutin Academy. Edvanta no dicta ni certifica estos cursos.
               </p>
             </div>
