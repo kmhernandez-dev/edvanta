@@ -19,6 +19,7 @@ import {
 } from 'lucide-react';
 import SiteHeader from '../components/edvanta/SiteHeader';
 import SiteFooter from '../components/edvanta/SiteFooter';
+import { ImageSlot } from '../components/edvanta/ui';
 import { waLink, EDVANTA_COMMUNITY_URL } from '../config/links';
 import { updatePageSeo } from '../utils/seo';
 import { guiaEmprendimiento, ideasEmprendimiento, plantillasEmprendimiento, pruebasProducto } from '../data/careerHub';
@@ -126,6 +127,15 @@ export default function EmprendimientosPage() {
             </div>
           </div>
         </section>
+
+        {/* Espacio reservado para la imagen de esta landing */}
+        <div className="mx-auto max-w-7xl px-4 pt-10 sm:px-6 lg:px-8">
+          <ImageSlot
+            ratio="banner"
+            label="Equipo trabajando en su emprendimiento"
+            hint="Foto horizontal 16:9, mínimo 1600 × 900 px: dos o tres personas planeando su proyecto."
+          />
+        </div>
 
         {/* Método (4 pasos) */}
         <section className="mx-auto max-w-7xl px-4 pt-10 sm:px-6 lg:px-8">

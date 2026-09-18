@@ -6,6 +6,7 @@ import {
 } from 'lucide-react';
 import SiteHeader from '../components/edvanta/SiteHeader';
 import SiteFooter from '../components/edvanta/SiteFooter';
+import { ImageSlot } from '../components/edvanta/ui';
 import { apiUrl } from '../config/api';
 import { updatePageSeo } from '../utils/seo';
 import { bancoPromptsLinkedin, guiaLinkedinPasos, productoLinkedin } from '../data/careerHub';
@@ -103,6 +104,15 @@ export default function LinkedinPage() {
             </div>
           </div>
         </section>
+
+        {/* Espacio reservado para la imagen de esta landing */}
+        <div className="mx-auto max-w-7xl px-4 pt-10 sm:px-6 lg:px-8">
+          <ImageSlot
+            ratio="banner"
+            label="Perfil de LinkedIn bien armado"
+            hint="Captura del perfil (con datos de ejemplo) o foto de un profesional trabajando en su computador. 1600 × 900 px."
+          />
+        </div>
 
         {/* Prompts */}
         <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">

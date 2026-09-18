@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { ArrowLeft, ArrowRight, CalendarDays, ExternalLink, Globe2, Megaphone, Newspaper } from 'lucide-react';
 import SiteHeader from '../components/edvanta/SiteHeader';
 import SiteFooter from '../components/edvanta/SiteFooter';
+import { ImageSlot } from '../components/edvanta/ui';
 import { updatePageSeo } from '../utils/seo';
 import { fuentesNoticias, noticiasRecientes } from '../data/careerHub';
 
@@ -38,6 +39,15 @@ export default function NoticiasPage() {
             </div>
           </div>
         </section>
+
+        {/* Espacio reservado para la imagen de esta landing */}
+        <div className="mx-auto max-w-7xl px-4 pt-10 sm:px-6 lg:px-8">
+          <ImageSlot
+            ratio="banner"
+            label="Sala de redacción o prensa del sector"
+            hint="Foto horizontal 16:9, mínimo 1600 × 900 px, relacionada con el sector farmacéutico en Colombia."
+          />
+        </div>
 
         <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
           <div className="flex items-center gap-2">

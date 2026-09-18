@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { ArrowLeft, ArrowRight, BadgeCheck, CheckCircle2, ClipboardList, FileText, FlaskConical } from 'lucide-react';
 import SiteHeader from '../components/edvanta/SiteHeader';
 import SiteFooter from '../components/edvanta/SiteFooter';
+import { ImageSlot } from '../components/edvanta/ui';
 import { updatePageSeo } from '../utils/seo';
 import { guiaPracticas, pasantiasOficiales } from '../data/careerHub';
 
@@ -90,6 +91,15 @@ export default function PracticasPage() {
             </div>
           </div>
         </section>
+
+        {/* Espacio reservado para la imagen de esta landing */}
+        <div className="mx-auto max-w-7xl px-4 pt-10 sm:px-6 lg:px-8">
+          <ImageSlot
+            ratio="banner"
+            label="Estudiante en su sitio de prácticas"
+            hint="Foto horizontal 16:9, mínimo 1600 × 900 px: practicante en farmacia, laboratorio o planta, con bata y acompañamiento."
+          />
+        </div>
 
         <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
           <h2 className="text-2xl font-bold text-edvanta-deep sm:text-3xl">Guía paso a paso</h2>

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { ArrowLeft, ArrowRight, Compass, RefreshCw, Sparkles } from 'lucide-react';
 import SiteHeader from '../components/edvanta/SiteHeader';
 import SiteFooter from '../components/edvanta/SiteFooter';
+import { ImageSlot } from '../components/edvanta/ui';
 import { updatePageSeo } from '../utils/seo';
 import { interesesVocacion, fortalezasVocacion, areasLaboralesVocacion, resultadoVocacion } from '../data/careerHub';
 
@@ -90,6 +91,15 @@ export default function Vocacion() {
             </div>
           </div>
         </section>
+
+        {/* Espacio reservado para la imagen de esta landing */}
+        <div className="mx-auto max-w-7xl px-4 pt-10 sm:px-6 lg:px-8">
+          <ImageSlot
+            ratio="banner"
+            label="Estudiante decidiendo su camino profesional"
+            hint="Foto horizontal 16:9, mínimo 1600 × 900 px, ambiente universitario o de orientación."
+          />
+        </div>
 
         <section className="mx-auto max-w-5xl px-4 py-12 sm:px-6 lg:px-8">
           <Progreso paso={paso} />

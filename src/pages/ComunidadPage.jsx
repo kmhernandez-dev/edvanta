@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import SiteHeader from '../components/edvanta/SiteHeader';
 import SiteFooter from '../components/edvanta/SiteFooter';
+import { ImageSlot } from '../components/edvanta/ui';
 import Icon from '../components/Icon';
 import { EDVANTA_COMMUNITY_URL } from '../config/links';
 import { updatePageSeo } from '../utils/seo';
@@ -62,6 +63,15 @@ export default function ComunidadPage() {
             </p>
           </div>
         </section>
+
+        {/* Espacio reservado para la imagen de esta landing */}
+        <div className="mx-auto max-w-7xl px-4 pt-10 sm:px-6 lg:px-8">
+          <ImageSlot
+            ratio="banner"
+            label="Encuentro de la comunidad de químicos farmacéuticos"
+            hint="Foto horizontal 16:9, mínimo 1600 × 900 px: encuentro, taller o reunión de la comunidad."
+          />
+        </div>
 
         {/* Beneficios */}
         <section className="border-y border-slate-200 bg-edvanta-bg py-16">
