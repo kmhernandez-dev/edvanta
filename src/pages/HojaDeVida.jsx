@@ -46,7 +46,7 @@ const ERRORES = [
 const FAQS = [
   { q: '¿Qué es un ATS y por qué importa?', a: 'Es el sistema que usan las empresas para recibir y filtrar hojas de vida. Si el archivo no se puede leer bien, la hoja de vida no llega a una persona. Por eso el formato importa tanto como el contenido.' },
   { q: '¿Mis datos se guardan?', a: 'La hoja de vida se guarda en tu navegador mientras la editas. Si inicias sesión, puedes guardarla en tu cuenta para retomarla desde otro dispositivo.' },
-  { q: '¿Puedo analizar la hoja de vida que ya tengo?', a: 'Sí. En la pestaña de importar puedes subir tu PDF o pegar el texto y recibir el puntaje y las recomendaciones.' },
+  { q: '¿Puedo analizar la hoja de vida que ya tengo?', a: 'Sí. En la pestaña «Analizar mi hoja de vida (PDF)» la subes o pegas el texto: recibes el puntaje por categoría, las palabras clave que te faltan y las frases que conviene reescribir. Con un clic la pasas al creador para corregirla y descargarla con el diseño oficial.' },
   { q: '¿El PDF que descargo sirve para cualquier empresa?', a: 'Sí: sale en una sola columna, con texto seleccionable y sin elementos gráficos que confundan a los filtros.' },
   { q: '¿Cuántas páginas debe tener?', a: 'Una página si tienes menos de diez años de experiencia; dos como máximo. Lo que no aporta al cargo, fuera.' },
 ];
@@ -89,7 +89,7 @@ export default function HojaDeVida() {
           actions={(
             <>
               <Btn href="#creador" icon={FileText}>Crear mi hoja de vida</Btn>
-              <Btn href="#creador" variant="secondary" icon={Search}>Analizar la que ya tengo</Btn>
+              <Btn href="#analizar" variant="secondary" icon={Search}>Analizar la que ya tengo</Btn>
             </>
           )}
           media={(
@@ -107,9 +107,10 @@ export default function HojaDeVida() {
           <SectionHeading
             eyebrow="La herramienta"
             title="Arma tu hoja de vida aquí mismo"
-            desc="Se guarda sola mientras escribes. Si inicias sesión, queda en tu cuenta y la retomas desde cualquier dispositivo."
+            desc="Constrúyela desde cero o sube la que ya tienes en PDF: la analizamos y la pasamos al creador. Se guarda sola mientras escribes."
           />
-          <div className="mt-8">
+          {/* Ancla de «Analizar la que ya tengo»: el creador abre el analizador con #analizar */}
+          <div id="analizar" className="mt-8 scroll-mt-28">
             <CvBuilder />
           </div>
         </Section>

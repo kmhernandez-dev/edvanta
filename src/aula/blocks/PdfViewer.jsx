@@ -10,18 +10,8 @@ import {
 import { fileUrl } from '../api';
 import { Button, IconButton } from '../ui/Button';
 import { Spinner } from '../ui/States';
-
-let pdfjsPromise = null;
-function loadPdfJs() {
-  if (!pdfjsPromise) {
-    pdfjsPromise = import('pdfjs-dist').then(async (mod) => {
-      const worker = await import('pdfjs-dist/build/pdf.worker.min.mjs?url');
-      mod.GlobalWorkerOptions.workerSrc = worker.default;
-      return mod;
-    });
-  }
-  return pdfjsPromise;
-}
+// Carga compartida: resuelve el worker aunque el servidor lo entregue mal.
+import { cargarPdfJs as loadPdfJs } from '../../lib/pdfjs';
 
 const ZOOMS = [0.5, 0.75, 1, 1.25, 1.5, 2];
 

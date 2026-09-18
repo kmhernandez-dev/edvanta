@@ -22,9 +22,11 @@ import { useProfessional } from '../../context/ProfessionalContext';
 import AcademiaLoginModal from '../AcademiaLoginModal';
 import { apiUrl } from '../../config/api';
 import { cargosEmpleo } from '../../data/empleo/cargos';
-import { analyzeCv, analyzeText, cargarPorSlug, guiaCVContenido, sugerirCargo } from '../../lib/cv/analyzer';
+import { analyzeCv, cargarPorSlug, guiaCVContenido } from '../../lib/cv/analyzer';
 import { downloadCvPdf } from '../../lib/cv/pdf';
-import { extractPdfText } from '../../lib/cv/pdfText';
+import { leerPdf } from '../../lib/cv/pdfText';
+import { aHojaDelCreador, leerHojaDeVida } from '../../lib/cv/lector';
+import { diagnosticar } from '../../lib/cv/diagnostico';
 import { trackEvent } from '../../utils/analytics';
 
 const EMPTY_CV = {
@@ -183,49 +185,118 @@ function SkillInput({ onAdd }) {
 
 const inputCls = 'min-h-10 w-full rounded-lg border border-edvanta-border bg-white px-3 text-sm outline-none transition focus:border-edvanta-blue focus:ring-2 focus:ring-edvanta-blue/15';
 
-// ── Vista previa del CV (documento en vivo) ──
+// ── Vista previa del CV: el mismo diseño oficial que sale en el PDF ──
+function EncabezadoPrevio({ children }) {
+  return (
+    <p className="mb-1.5 mt-4 flex items-center gap-2">
+      <span className="h-2 w-2 shrink-0 rounded-[2px] bg-[#25A7B0]" aria-hidden="true" />
+      <span className="text-[9.5px] font-extrabold uppercase tracking-[.14em] text-[#082E86]">{children}</span>
+      <span className="h-px flex-1 bg-[#E3E9F2]" aria-hidden="true" />
+    </p>
+  );
+}
+
 function CvPreview({ cv }) {
   const vacio = !cv.nombre && !cv.resumen && !cv.experiencia.length && !cv.habilidades.length;
-  const contacto = [cv.email, cv.telefono, cv.ciudad, cv.linkedin].filter(Boolean);
+  const contacto = [cv.ciudad, cv.telefono, cv.email, String(cv.linkedin || '').replace(/^https?:\/\/(www\.)?/i, '')].filter(Boolean);
+  const experiencia = cv.experiencia.filter((e) => e.cargo);
+  const educacion = cv.educacion.filter((e) => e.titulo || e.institucion);
+  const certificaciones = cv.certificaciones.filter((c) => c.nombre);
+  const idiomas = cv.idiomas.filter((i) => i.idioma);
   return (
-    <div className="overflow-hidden rounded-xl border border-edvanta-border bg-slate-100 p-3">
-      <p className="mb-2 flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wide text-slate-400"><Eye className="h-3.5 w-3.5" /> Vista previa</p>
-      <div className="mx-auto max-w-md rounded-lg bg-white p-6 shadow-sm ring-1 ring-black/5">
+    <div className="overflow-hidden rounded-2xl border border-edvanta-border bg-edvanta-bg p-3">
+      <p className="mb-2 flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wide text-edvanta-muted">
+        <Eye className="h-3.5 w-3.5" aria-hidden="true" /> Vista previa · Diseño oficial Edvanta
+      </p>
+      <div className="mx-auto max-w-md overflow-hidden rounded-lg bg-white shadow-sm ring-1 ring-black/5">
+        <div className="h-1.5" style={{ background: 'linear-gradient(90deg, #8179C9 0%, #65A7C1 50%, #28A8AF 100%)' }} aria-hidden="true" />
         {vacio ? (
-          <p className="py-16 text-center text-sm text-slate-400">Tu hoja de vida aparecerá aquí a medida que la completes.</p>
+          <p className="px-6 py-20 text-center text-sm text-edvanta-muted">Tu hoja de vida aparecerá aquí a medida que la completes.</p>
         ) : (
-          <div className="text-[11px] leading-relaxed text-slate-700">
-            <h3 className="text-lg font-black text-edvanta-deep">{cv.nombre || 'Tu nombre'}</h3>
-            {cv.titulo && <p className="text-[12px] font-bold text-edvanta-blue">{cv.titulo}</p>}
-            {contacto.length > 0 && <p className="mt-1 text-[10px] text-slate-500">{contacto.join('  ·  ')}</p>}
-            {cv.resumen && (<><p className="cv-h">Perfil profesional</p><p>{cv.resumen}</p></>)}
-            {cv.experiencia.some(e => e.cargo) && (
-              <><p className="cv-h">Experiencia</p>
-                {cv.experiencia.filter(e => e.cargo).map(e => (
-                  <div key={e.id} className="mb-2">
-                    <p className="font-bold text-edvanta-deep">{e.cargo}{e.empresa ? ` · ${e.empresa}` : ''}</p>
-                    {(e.inicio || e.fin) && <p className="text-[10px] text-slate-400">{[e.inicio, e.fin || 'Actual'].filter(Boolean).join(' — ')}</p>}
-                    {String(e.logros || '').split('\n').filter(Boolean).map((l, i) => (
-                      <p key={i} className="pl-3 -indent-2">• {l}</p>
+          <div className="px-6 pb-6 pt-5 text-[10.5px] leading-[1.55] text-[#2B3650]">
+            <h3 className="text-[19px] font-extrabold leading-tight text-[#17223B]">{cv.nombre || 'Tu nombre'}</h3>
+            {cv.titulo && <p className="mt-0.5 text-[11.5px] font-bold text-[#082E86]">{cv.titulo}</p>}
+            {contacto.length > 0 && <p className="mt-1 text-[9.5px] text-[#65718A]">{contacto.join('  ·  ')}</p>}
+            <div className="relative mt-3 h-px bg-[#E3E9F2]" aria-hidden="true">
+              <span className="absolute left-0 top-[-0.5px] h-[2px] w-10 bg-[#25A7B0]" />
+            </div>
+
+            {cv.resumen && (<><EncabezadoPrevio>Perfil profesional</EncabezadoPrevio><p>{cv.resumen}</p></>)}
+
+            {experiencia.length > 0 && (
+              <>
+                <EncabezadoPrevio>Experiencia</EncabezadoPrevio>
+                {experiencia.map((e) => (
+                  <div key={e.id} className="mb-2.5">
+                    <div className="flex items-baseline justify-between gap-2">
+                      <p className="text-[11px] font-bold text-[#17223B]">{e.cargo}</p>
+                      {(e.inicio || e.fin) && <p className="shrink-0 text-[9.5px] text-[#65718A]">{[e.inicio, e.fin || 'Actual'].filter(Boolean).join(' – ')}</p>}
+                    </div>
+                    {e.empresa && <p className="text-[10px] text-[#082E86]">{e.empresa}</p>}
+                    {String(e.logros || '').split('\n').map((l) => l.trim()).filter(Boolean).map((l, i) => (
+                      <p key={i} className="relative mt-0.5 pl-3">
+                        <span className="absolute left-0.5 top-[6px] h-[5px] w-[5px] rounded-full bg-[#25A7B0]" aria-hidden="true" />
+                        {l.replace(/^[•*-]\s*/, '')}
+                      </p>
                     ))}
                   </div>
                 ))}
               </>
             )}
-            {cv.educacion.some(e => e.titulo) && (
-              <><p className="cv-h">Formación</p>
-                {cv.educacion.filter(e => e.titulo).map(e => (
-                  <p key={e.id}><span className="font-bold text-edvanta-deep">{e.titulo}</span>{e.institucion ? ` · ${e.institucion}` : ''}{e.anio ? ` (${e.anio})` : ''}</p>
+
+            {educacion.length > 0 && (
+              <>
+                <EncabezadoPrevio>Formación</EncabezadoPrevio>
+                {educacion.map((e) => (
+                  <div key={e.id} className="mb-1.5">
+                    <div className="flex items-baseline justify-between gap-2">
+                      <p className="font-bold text-[#17223B]">{e.titulo || e.institucion}</p>
+                      {e.anio && <p className="shrink-0 text-[9.5px] text-[#65718A]">{e.anio}</p>}
+                    </div>
+                    {e.titulo && e.institucion && <p className="text-[10px] text-[#65718A]">{e.institucion}</p>}
+                  </div>
                 ))}
               </>
             )}
-            {cv.habilidades.length > 0 && (<><p className="cv-h">Habilidades</p><p>{cv.habilidades.join('  ·  ')}</p></>)}
-            {cv.certificaciones.some(c => c.nombre) && (<><p className="cv-h">Certificaciones</p>{cv.certificaciones.filter(c => c.nombre).map(c => <p key={c.id}>{c.nombre}{c.institucion ? ` · ${c.institucion}` : ''}{c.anio ? ` (${c.anio})` : ''}</p>)}</>)}
-            {cv.idiomas.some(i => i.idioma) && (<><p className="cv-h">Idiomas</p><p>{cv.idiomas.filter(i => i.idioma).map(i => `${i.idioma}${i.nivel ? ` (${i.nivel})` : ''}`).join('  ·  ')}</p></>)}
+
+            {cv.habilidades.length > 0 && (
+              <>
+                <EncabezadoPrevio>Habilidades</EncabezadoPrevio>
+                <p className="font-bold text-[#17223B]">
+                  {cv.habilidades.map((h, i) => (
+                    <span key={h}>
+                      {h}
+                      {i < cv.habilidades.length - 1 && <span className="px-1.5 text-[#25A7B0]">·</span>}
+                    </span>
+                  ))}
+                </p>
+              </>
+            )}
+
+            {certificaciones.length > 0 && (
+              <>
+                <EncabezadoPrevio>Certificaciones y cursos</EncabezadoPrevio>
+                {certificaciones.map((c) => (
+                  <p key={c.id} className="relative pl-3">
+                    <span className="absolute left-0.5 top-[6px] h-[5px] w-[5px] rounded-full bg-[#25A7B0]" aria-hidden="true" />
+                    {[c.nombre, [c.institucion, c.anio].filter(Boolean).join(' · ')].filter(Boolean).join(' · ')}
+                  </p>
+                ))}
+              </>
+            )}
+
+            {idiomas.length > 0 && (
+              <>
+                <EncabezadoPrevio>Idiomas</EncabezadoPrevio>
+                <p>{idiomas.map((i) => [i.idioma, i.nivel].filter(Boolean).join(' — ')).join('   ·   ')}</p>
+              </>
+            )}
+
+            <EncabezadoPrevio>Referencias</EncabezadoPrevio>
+            <p className="italic text-[#65718A]">Disponibles a solicitud.</p>
           </div>
         )}
       </div>
-      <style>{`.cv-h{font-weight:800;text-transform:uppercase;font-size:9px;letter-spacing:.06em;color:#3578E5;margin-top:10px;margin-bottom:2px;border-bottom:1px solid #E5EAF0;padding-bottom:2px}`}</style>
     </div>
   );
 }
@@ -242,8 +313,10 @@ export default function CvBuilder() {
   const [section, setSection] = useState('perfil');
   const [showPreview, setShowPreview] = useState(false); // móvil
   const [textoPegado, setTextoPegado] = useState('');
-  const [textResult, setTextResult] = useState(null);
-  const [importStep, setImportStep] = useState(1);
+  const [lectura, setLectura] = useState(null); // { texto, meta, archivo }
+  const [confirmarReemplazo, setConfirmarReemplazo] = useState(false);
+  const [aviso, setAviso] = useState('');
+  const [cargoAnalisis, setCargoAnalisis] = useState('');
   const [loadingSaved, setLoadingSaved] = useState(false);
   const [exportOpen, setExportOpen] = useState(false);
   const [pdfLoading, setPdfLoading] = useState(false);
@@ -263,6 +336,17 @@ export default function CvBuilder() {
       if (guardado?.cv) setCv(addIds(guardado.cv));
       if (guardado?.cargo) setCargoObjetivo(guardado.cargo);
     } catch { /* borrador ilegible: se ignora */ }
+  }, []);
+
+  // ── #analizar en la dirección abre el analizador (enlace «Analizar la que ya tengo») ──
+  useEffect(() => {
+    const revisar = () => {
+      if (window.location.hash === '#analizar') setMode('importar');
+      else if (window.location.hash === '#creador') setMode('builder');
+    };
+    revisar();
+    window.addEventListener('hashchange', revisar);
+    return () => window.removeEventListener('hashchange', revisar);
   }, []);
 
   // ── Cargar CV guardado ──
@@ -397,7 +481,7 @@ export default function CvBuilder() {
     } catch (e) { setSaveState('error'); setSaveMsg(e.message || 'Sin conexión: no se pudo guardar ahora.'); }
   };
 
-  const descargar = async (style = 'diseno') => {
+  const descargar = async (style = 'edvanta') => {
     trackEvent('cv_download_pdf', { style });
     const label = adaptacion ? adaptacion.cargo.cargo : '';
     setExportOpen(false);
@@ -421,35 +505,21 @@ export default function CvBuilder() {
     return () => document.removeEventListener('mousedown', onDoc);
   }, [exportOpen]);
 
-  // Lee un PDF local y extrae su texto (100% en el navegador)
-  const analizarPdf = async (event) => {
-    const file = event?.target?.files?.[0];
-    if (event?.target) event.target.value = '';
-    if (!file) return;
+  // ── Analizador: lee el PDF en el navegador y arma el diagnóstico ──
+  const analizarArchivo = async (file) => {
     setPdfError('');
-    if (file.type !== 'application/pdf' && !/\.pdf$/i.test(file.name)) {
-      setPdfError('Solo se aceptan archivos PDF. Si tu HV está en Word, expórtala como PDF o pega el texto.');
-      return;
-    }
-    if (file.size > 10 * 1024 * 1024) {
-      setPdfError('El archivo supera 10 MB. Comprime el PDF o pega el texto manualmente.');
-      return;
-    }
+    setConfirmarReemplazo(false);
     setPdfLoading(true);
     trackEvent('cv_pdf_uploaded');
     try {
-      const text = await extractPdfText(file);
-      if (!text.trim()) {
-        setPdfError('Este PDF no tiene texto extraíble (parece escaneado como imagen). Exporta un PDF con texto seleccionable o pega el contenido manualmente.');
-        return;
-      }
-      setTextoPegado(text);
-      const cargoSugerido = sugerirCargo(text) || cargoObjetivo;
-      if (cargoSugerido) setCargoObjetivo(cargoSugerido);
-      setTextResult(analyzeText(text, cargoSugerido));
-      setImportStep(3);
-    } catch {
-      setPdfError('No fue posible leer este PDF. Prueba con otro archivo o pega el texto manualmente.');
+      const { texto, meta } = await leerPdf(file);
+      setCargoAnalisis('');
+      setLectura({ texto, meta, archivo: { nombre: file.name, tamano: file.size } });
+      trackEvent('cv_pdf_analizado', { paginas: meta.paginas, columnas: meta.columnas, escaneado: meta.escaneado });
+    } catch (err) {
+      setLectura(null);
+      setPdfError(err?.codigo ? err.message : 'No pudimos leer este PDF. Prueba exportándolo de nuevo desde Word o Google Docs, o pega el texto abajo.');
+      trackEvent('cv_pdf_error', { codigo: err?.codigo || 'desconocido' });
     } finally {
       setPdfLoading(false);
     }
@@ -469,12 +539,43 @@ export default function CvBuilder() {
   };
 
   const analizarPegado = () => {
-    if (!textoPegado.trim()) return;
+    if (textoPegado.trim().length < 40) return;
     trackEvent('cv_text_analyzed');
-    const cargoSugerido = sugerirCargo(textoPegado) || cargoObjetivo;
-    setTextResult(analyzeText(textoPegado, cargoSugerido));
-    setCargoObjetivo(cargoSugerido);
-    setImportStep(3);
+    setPdfError('');
+    setConfirmarReemplazo(false);
+    setCargoAnalisis('');
+    setLectura({ texto: textoPegado, meta: null, archivo: null });
+  };
+
+  const hojaLeida = useMemo(() => (lectura ? leerHojaDeVida(lectura.texto) : null), [lectura]);
+  const diagnostico = useMemo(
+    () => (hojaLeida ? diagnosticar(hojaLeida, lectura?.meta || null, cargoAnalisis) : null),
+    [hojaLeida, lectura, cargoAnalisis],
+  );
+
+  const reiniciarAnalisis = () => {
+    setLectura(null);
+    setPdfError('');
+    setConfirmarReemplazo(false);
+  };
+
+  // Pasa lo leído al creador: la persona corrige ahí y descarga con el diseño oficial.
+  const cargarEnCreador = () => {
+    if (!hojaLeida) return;
+    touch();
+    setCv(addIds({ ...EMPTY_CV, ...aHojaDelCreador(hojaLeida) }));
+    // El cargo del análisis pasa a ser el cargo objetivo del creador.
+    if (diagnostico?.cargo) setCargoObjetivo(diagnostico.cargo.slug);
+    setConfirmarReemplazo(false);
+    setMode('builder');
+    setSection('perfil');
+    setAviso('Pasamos tu hoja de vida al creador. Revisa cada sección: lo que no pudimos leer quedó vacío para que lo completes. Cuando esté lista, descárgala con el diseño oficial.');
+    trackEvent('cv_importado_al_creador');
+  };
+
+  const pasarAlCreador = () => {
+    if (tieneContenido) setConfirmarReemplazo(true);
+    else cargarEnCreador();
   };
 
   const saveLabel = { saving: 'Guardando…', saved: 'Guardado', error: 'Error al guardar' };
@@ -510,18 +611,18 @@ export default function CvBuilder() {
           </button>
           {exportOpen && (
             <div role="menu" className="absolute right-0 z-30 mt-2 w-80 rounded-xl border border-edvanta-border bg-white p-2 shadow-xl">
-              <button type="button" role="menuitem" onClick={() => descargar('diseno')} className="flex w-full items-start gap-3 rounded-lg p-3 text-left transition hover:bg-edvanta-light/70">
+              <button type="button" role="menuitem" onClick={() => descargar('edvanta')} className="flex w-full items-start gap-3 rounded-lg p-3 text-left transition hover:bg-edvanta-light/70">
                 <span className="mt-0.5 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-edvanta-light text-edvanta-blue"><FileText className="h-4 w-4" /></span>
                 <span>
-                  <span className="block text-sm font-black text-edvanta-deep">Diseño Edvanta 2026</span>
-                  <span className="mt-0.5 block text-xs leading-4 text-slate-500">Plantilla Blanca Degradado: chips de contacto, línea de tiempo y acentos azules. PDF con texto seleccionable.</span>
+                  <span className="block text-sm font-black text-edvanta-deep">Diseño oficial Edvanta</span>
+                  <span className="mt-0.5 block text-xs leading-4 text-slate-500">Moderno y limpio, con la identidad Edvanta. Una sola columna con texto real: los filtros ATS la leen en orden.</span>
                 </span>
               </button>
               <button type="button" onClick={() => descargar('ats')} className="mt-1 flex w-full items-center gap-3 rounded-lg p-3 text-left transition hover:bg-slate-50">
                 <span className="mt-0 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-slate-100 text-slate-500"><FileText className="h-4 w-4" /></span>
                 <span>
                   <span className="block text-sm font-bold text-slate-700">Formato ATS simple</span>
-                  <span className="mt-0.5 block text-xs leading-4 text-slate-500">Texto plano en blanco y negro, para portales con filtros estrictos.</span>
+                  <span className="mt-0.5 block text-xs leading-4 text-slate-500">Blanco y negro, sin diseño, para portales con filtros muy estrictos.</span>
                 </span>
               </button>
             </div>
@@ -537,7 +638,7 @@ export default function CvBuilder() {
       <div className="flex flex-wrap gap-2" role="tablist" aria-label="Modo de la herramienta">
         {[
           { id: 'builder', label: 'Construir mi hoja de vida', icon: FileText },
-          { id: 'importar', label: 'Analizar una HV existente', icon: ScanSearch },
+          { id: 'importar', label: 'Analizar mi hoja de vida (PDF)', icon: ScanSearch },
           { id: 'guia', label: 'Guía 2026', icon: Info },
         ].map(m => (
           <button key={m.id} type="button" role="tab" aria-selected={mode === m.id} onClick={() => setMode(m.id)}
@@ -551,6 +652,15 @@ export default function CvBuilder() {
       {mode === 'builder' && (
         <div className="space-y-4">
           {topBar}
+          {aviso && (
+            <div className="flex items-start gap-3 rounded-xl border border-edvanta-mint bg-edvanta-mint/40 p-4" role="status">
+              <Check className="mt-0.5 h-5 w-5 shrink-0 text-edvanta-tealdark" aria-hidden="true" />
+              <p className="flex-1 text-sm leading-6 text-edvanta-deep">{aviso}</p>
+              <button type="button" onClick={() => setAviso('')} aria-label="Cerrar aviso" className="rounded-lg p-1 text-edvanta-muted hover:bg-white hover:text-edvanta-deep">
+                <X className="h-4 w-4" aria-hidden="true" />
+              </button>
+            </div>
+          )}
           {!academiaUser && (
             <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-edvanta-blue/20 bg-edvanta-light/60 p-4">
               <div className="flex items-start gap-3">
@@ -607,14 +717,14 @@ export default function CvBuilder() {
         </div>
       )}
 
-      {/* ══ MODO IMPORTAR (analizador ATS por pasos) ══ */}
+      {/* ══ MODO ANALIZAR (PDF o texto) ══ */}
       {mode === 'importar' && (
-        <ImportAnalyzer
-          step={importStep} setStep={setImportStep} texto={textoPegado} setTexto={setTextoPegado}
-          cargo={cargoObjetivo} setCargo={setCargoObjetivo} onAnalyze={analizarPegado} result={textResult}
-          onFile={analizarPdf} pdfLoading={pdfLoading} pdfError={pdfError}
-          onGoBuilder={() => { setMode('builder'); setSection('perfil'); }}
-          onReset={() => { setTextResult(null); setImportStep(1); setPdfError(''); }}
+        <AnalizadorHv
+          lectura={lectura} diagnostico={diagnostico} cargo={cargoAnalisis} setCargo={setCargoAnalisis}
+          texto={textoPegado} setTexto={setTextoPegado} onArchivo={analizarArchivo} onTexto={analizarPegado}
+          cargando={pdfLoading} error={pdfError} onReiniciar={reiniciarAnalisis}
+          onPasarAlCreador={pasarAlCreador} confirmar={confirmarReemplazo}
+          onConfirmar={cargarEnCreador} onCancelar={() => setConfirmarReemplazo(false)}
         />
       )}
 
@@ -911,93 +1021,382 @@ function SectionEditor(props) {
   );
 }
 
-// ── Analizador de HV existente (por pasos) ──
-function ImportAnalyzer({ step, setStep, texto, setTexto, cargo, setCargo, onAnalyze, result, onReset, onFile, pdfLoading, pdfError, onGoBuilder }) {
-  const steps = [{ n: 1, label: 'Tu hoja de vida' }, { n: 2, label: 'Cargo objetivo' }, { n: 3, label: 'Análisis' }];
+// ── Analizador de hojas de vida (PDF o texto pegado) ──
+
+const NIVEL_UI = {
+  alto: { color: '#0F7480', fondo: '#DDF3F2', titulo: 'Lista para postular' },
+  medio: { color: '#B45309', fondo: '#FFF1D6', titulo: 'Buena base, con ajustes' },
+  bajo: { color: '#B42318', fondo: '#FEE4E2', titulo: 'Necesita cambios importantes' },
+};
+
+const tamanoLegible = (bytes) => (bytes >= 1024 * 1024
+  ? `${(bytes / (1024 * 1024)).toFixed(1).replace('.', ',')} MB`
+  : `${Math.max(1, Math.round(bytes / 1024))} KB`);
+
+function Anillo({ puntaje, nivel }) {
+  const ui = NIVEL_UI[nivel] || NIVEL_UI.bajo;
+  const R = 30;
+  const C = 2 * Math.PI * R;
+  return (
+    <div className="relative h-24 w-24 shrink-0" role="img" aria-label={`Puntaje ${puntaje} de 100`}>
+      <svg viewBox="0 0 72 72" className="h-24 w-24 -rotate-90" aria-hidden="true">
+        <circle cx="36" cy="36" r={R} fill="none" stroke="#E3E9F2" strokeWidth="7" />
+        <circle cx="36" cy="36" r={R} fill="none" stroke={ui.color} strokeWidth="7" strokeLinecap="round"
+          strokeDasharray={C} strokeDashoffset={C * (1 - puntaje / 100)} style={{ transition: 'stroke-dashoffset .6s ease' }} />
+      </svg>
+      <span className="absolute inset-0 flex flex-col items-center justify-center">
+        <span className="font-display text-2xl font-extrabold text-edvanta-deep">{puntaje}</span>
+        <span className="text-[10px] font-bold text-edvanta-muted">de 100</span>
+      </span>
+    </div>
+  );
+}
+
+function BarraCategoria({ c }) {
+  const pct = Math.round((c.puntos / c.max) * 100);
+  const color = pct >= 80 ? '#25A7B0' : pct >= 50 ? '#D97706' : '#DC2626';
+  return (
+    <div className="rounded-xl border border-edvanta-border bg-white p-3.5">
+      <div className="flex items-baseline justify-between gap-2">
+        <p className="text-sm font-bold text-edvanta-deep">{c.nombre}</p>
+        <p className="text-xs font-bold tabular-nums text-edvanta-muted">{c.puntos}/{c.max}</p>
+      </div>
+      <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-edvanta-bg" aria-hidden="true">
+        <div className="h-1.5 rounded-full transition-all duration-500" style={{ width: `${pct}%`, background: color }} />
+      </div>
+      <p className="mt-1.5 text-[11.5px] leading-4 text-edvanta-muted">{c.que}</p>
+    </div>
+  );
+}
+
+function ZonaArchivo({ onArchivo, cargando }) {
+  const [encima, setEncima] = useState(false);
+  const inputRef = useRef(null);
+  const soltar = (e) => {
+    e.preventDefault();
+    setEncima(false);
+    const archivo = e.dataTransfer?.files?.[0];
+    if (archivo && !cargando) onArchivo(archivo);
+  };
+  return (
+    <div
+      onDragOver={(e) => { e.preventDefault(); if (!encima) setEncima(true); }}
+      onDragLeave={() => setEncima(false)}
+      onDrop={soltar}
+      className={`flex flex-col items-center justify-center gap-2 rounded-2xl border-2 border-dashed px-5 py-10 text-center transition ${encima ? 'border-edvanta-blue bg-edvanta-light/60' : 'border-edvanta-strong bg-edvanta-bg'}`}
+    >
+      <input
+        ref={inputRef}
+        type="file"
+        accept="application/pdf,.pdf"
+        className="sr-only"
+        aria-label="Subir hoja de vida en PDF"
+        onChange={(e) => { const f = e.target.files?.[0]; e.target.value = ''; if (f) onArchivo(f); }}
+        disabled={cargando}
+      />
+      <span className={`inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-white text-edvanta-blue shadow-sm ${cargando ? 'animate-pulse' : ''}`}>
+        <Upload className="h-7 w-7" aria-hidden="true" />
+      </span>
+      <p className="mt-1 text-base font-extrabold text-edvanta-deep">
+        {cargando ? 'Leyendo tu hoja de vida…' : 'Arrastra aquí tu hoja de vida en PDF'}
+      </p>
+      <p className="max-w-md text-sm leading-6 text-edvanta-muted">
+        {cargando ? 'Extraemos el texto, revisamos el formato y calculamos tu puntaje.' : 'O elígela desde tu computador o celular. Hasta 10 MB.'}
+      </p>
+      {!cargando && (
+        <button
+          type="button"
+          onClick={() => inputRef.current?.click()}
+          className="mt-2 inline-flex min-h-11 items-center gap-2 rounded-xl bg-edvanta-blue px-6 text-sm font-semibold text-white shadow-[0_6px_18px_rgba(8,46,134,.22)] transition hover:bg-edvanta-bluedark"
+        >
+          <Upload className="h-4 w-4" aria-hidden="true" /> Elegir PDF
+        </button>
+      )}
+      <p className="mt-1 flex items-center gap-1.5 text-xs text-edvanta-subtle">
+        <Lock className="h-3.5 w-3.5" aria-hidden="true" /> Se lee en tu navegador: el archivo no se envía a ningún servidor.
+      </p>
+    </div>
+  );
+}
+
+function LoQueLeimos({ d }) {
+  const x = d.detectado;
+  const dato = (etiqueta, valor, ok = Boolean(valor)) => (
+    <li className="flex items-start justify-between gap-3 py-1.5">
+      <span className="text-[13px] text-edvanta-muted">{etiqueta}</span>
+      <span className={`max-w-[60%] break-words text-right text-[13px] font-semibold ${ok ? 'text-edvanta-deep' : 'text-rose-700'}`}>
+        {valor || 'No encontrado'}
+      </span>
+    </li>
+  );
+  const NOMBRES = { perfil: 'Perfil', experiencia: 'Experiencia', formacion: 'Formación', habilidades: 'Habilidades', certificaciones: 'Cursos', idiomas: 'Idiomas', referencias: 'Referencias', datos: 'Datos personales', logros: 'Logros', publicaciones: 'Publicaciones', otros: 'Otros' };
+  return (
+    <div className="rounded-2xl border border-edvanta-border bg-white p-5">
+      <p className="text-sm font-extrabold text-edvanta-deep">Lo que leímos de tu hoja de vida</p>
+      <p className="mt-0.5 text-xs text-edvanta-muted">Así la ve un filtro automático. Si algo no coincide, es una pista de formato.</p>
+      <ul className="mt-3 divide-y divide-edvanta-border">
+        {dato('Nombre', x.nombre)}
+        {dato('Título', x.titulo)}
+        {dato('Correo', x.contacto.email)}
+        {dato('Teléfono', x.contacto.telefono)}
+        {dato('LinkedIn', x.contacto.linkedin)}
+        {dato('Ciudad', x.contacto.ciudad)}
+        {dato('Cargos', x.cargos ? `${x.cargos} · ${x.logros} logros` : '', x.cargos > 0)}
+        {dato('Experiencia', x.anosExperiencia ? `${String(x.anosExperiencia).replace('.', ',')} años` : '', x.anosExperiencia > 0)}
+        {dato('Estudios', x.estudios ? String(x.estudios) : '', x.estudios > 0)}
+        {dato('Habilidades', x.habilidades ? String(x.habilidades) : '', x.habilidades > 0)}
+        {dato('Idiomas', x.idiomas ? String(x.idiomas) : '', x.idiomas > 0)}
+        {x.paginas !== null && dato('Páginas', String(x.paginas), x.paginas <= 2)}
+        {x.columnas !== null && dato('Columnas', x.columnas > 1 ? 'Dos columnas' : 'Una columna', x.columnas <= 1)}
+        {x.imagenes !== null && dato('Imágenes', x.imagenes ? String(x.imagenes) : 'Ninguna', true)}
+        {x.creador && dato('Creado con', x.creador)}
+      </ul>
+      {x.secciones.length > 0 && (
+        <div className="mt-3">
+          <p className="text-[11px] font-bold uppercase tracking-[.12em] text-edvanta-muted">Secciones reconocidas</p>
+          <div className="mt-1.5 flex flex-wrap gap-1.5">
+            {x.secciones.map((s) => (
+              <span key={s} className="rounded-full bg-edvanta-mint px-2.5 py-0.5 text-[11px] font-bold text-edvanta-tealdark">{NOMBRES[s] || s}</span>
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+function Reescritura({ r }) {
+  const [copiado, setCopiado] = useState(false);
+  const copiar = async () => {
+    try { await navigator.clipboard.writeText(r.sugerencia); setCopiado(true); setTimeout(() => setCopiado(false), 1800); } catch { /* sin portapapeles */ }
+  };
+  return (
+    <li className="rounded-xl border border-edvanta-border bg-white p-4">
+      <p className="text-[11px] font-bold uppercase tracking-[.12em] text-rose-700">Así está</p>
+      <p className="mt-1 text-sm leading-6 text-edvanta-muted line-through decoration-rose-300">{r.original}</p>
+      <p className="mt-3 text-[11px] font-bold uppercase tracking-[.12em] text-edvanta-tealdark">Mejor así</p>
+      <p className="mt-1 text-sm font-semibold leading-6 text-edvanta-deep">{r.sugerencia}</p>
+      <button type="button" onClick={copiar} className="mt-3 inline-flex items-center gap-1.5 rounded-lg border border-edvanta-border px-3 py-1.5 text-xs font-bold text-edvanta-deep transition hover:border-edvanta-blue/40 hover:text-edvanta-blue">
+        {copiado ? <><Check className="h-3.5 w-3.5 text-edvanta-teal" aria-hidden="true" /> Copiado</> : <><Copy className="h-3.5 w-3.5" aria-hidden="true" /> Copiar</>}
+      </button>
+    </li>
+  );
+}
+
+function AnalizadorHv({
+  lectura, diagnostico: d, cargo, setCargo, texto, setTexto, onArchivo, onTexto, cargando, error,
+  onReiniciar, onPasarAlCreador, confirmar, onConfirmar, onCancelar,
+}) {
+  if (!d) {
+    return (
+      <div className="space-y-5">
+        <div className="rounded-2xl border border-edvanta-border bg-white p-6">
+          <p className="text-xs font-bold uppercase tracking-[.14em] text-edvanta-blue">Analizador ATS</p>
+          <h3 className="mt-1 font-display text-2xl font-extrabold text-edvanta-deep">¿Tu hoja de vida pasa los filtros automáticos?</h3>
+          <p className="mt-1.5 max-w-2xl text-sm leading-6 text-edvanta-muted">
+            Súbela y en segundos te decimos qué ve un sistema de selección: tu puntaje por categoría, qué palabras clave te faltan,
+            qué frases conviene reescribir y cómo arreglar el formato. Después la pasas al creador con un clic.
+          </p>
+          <div className="mt-5">
+            <ZonaArchivo onArchivo={onArchivo} cargando={cargando} />
+          </div>
+          {error && (
+            <div className="mt-4 flex items-start gap-2.5 rounded-xl border border-rose-200 bg-rose-50 p-4 text-sm leading-6 text-rose-800" role="alert">
+              <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
+              <span>{error}</span>
+            </div>
+          )}
+          <div className="my-6 flex items-center gap-3">
+            <span className="h-px flex-1 bg-edvanta-border" />
+            <span className="text-xs font-bold uppercase tracking-wide text-edvanta-subtle">o pega el texto</span>
+            <span className="h-px flex-1 bg-edvanta-border" />
+          </div>
+          <label htmlFor="hv-texto" className="text-sm font-bold text-edvanta-deep">Texto de tu hoja de vida</label>
+          <textarea
+            id="hv-texto"
+            value={texto}
+            onChange={(e) => setTexto(e.target.value)}
+            rows={8}
+            placeholder={'Nombre Apellido\nQuímica farmacéutica\nciudad · teléfono · correo\n\nPERFIL PROFESIONAL\n…\n\nEXPERIENCIA\nCargo | Empresa\nEne 2021 – Actual\n• Logro con cifra…'}
+            className="mt-1.5 w-full rounded-xl border border-edvanta-border p-4 text-sm leading-6 outline-none transition focus:border-edvanta-blue focus:ring-2 focus:ring-edvanta-blue/15"
+          />
+          <div className="mt-3 flex flex-wrap items-center gap-3">
+            <button
+              type="button"
+              onClick={onTexto}
+              disabled={texto.trim().length < 40}
+              className="inline-flex min-h-11 items-center gap-2 rounded-xl bg-edvanta-blue px-6 text-sm font-semibold text-white transition hover:bg-edvanta-bluedark disabled:cursor-not-allowed disabled:opacity-50"
+            >
+              <Sparkles className="h-4 w-4" aria-hidden="true" /> Analizar texto
+            </button>
+            <p className="text-xs text-edvanta-muted">{texto.trim().length < 40 ? 'Pega al menos unas líneas de tu hoja de vida.' : 'Listo para analizar.'}</p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  const ui = NIVEL_UI[d.nivel];
+  const info = d.hallazgos.filter((h) => h.tipo === 'info');
   return (
     <div className="space-y-5">
-      {/* Stepper */}
-      <div className="flex items-center gap-2">
-        {steps.map((s, i) => (
-          <div key={s.n} className="flex flex-1 items-center gap-2">
-            <span className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-sm font-extrabold ${step >= s.n ? 'bg-edvanta-blue text-white' : 'bg-slate-100 text-slate-400'}`}>{s.n}</span>
-            <span className={`text-sm font-bold ${step >= s.n ? 'text-edvanta-deep' : 'text-slate-400'}`}>{s.label}</span>
-            {i < steps.length - 1 && <span className="mx-1 hidden h-0.5 flex-1 bg-slate-200 sm:block" />}
+      {/* Resultado */}
+      <div className="rounded-2xl border border-edvanta-border bg-white p-6">
+        <div className="flex flex-wrap items-start justify-between gap-5">
+          <div className="flex items-center gap-5">
+            <Anillo puntaje={d.puntaje} nivel={d.nivel} />
+            <div>
+              <span className="inline-flex rounded-full px-2.5 py-0.5 text-[11px] font-bold" style={{ color: ui.color, background: ui.fondo }}>{ui.titulo}</span>
+              <h3 className="mt-1.5 font-display text-2xl font-extrabold text-edvanta-deep">Tu puntaje ATS es {d.puntaje}</h3>
+              <p className="mt-1 max-w-xl text-sm leading-6 text-edvanta-muted">{d.mensaje}</p>
+              {lectura?.archivo && (
+                <p className="mt-2 flex items-center gap-1.5 text-xs text-edvanta-subtle">
+                  <FileText className="h-3.5 w-3.5" aria-hidden="true" /> {lectura.archivo.nombre} · {tamanoLegible(lectura.archivo.tamano)}
+                </p>
+              )}
+            </div>
           </div>
-        ))}
+          <div className="w-full sm:w-72">
+            <label htmlFor="hv-cargo" className="text-xs font-bold text-edvanta-deep">Cargo al que te postulas</label>
+            <select
+              id="hv-cargo"
+              value={cargo || d.cargo?.slug || ''}
+              onChange={(e) => setCargo(e.target.value)}
+              className="mt-1 min-h-11 w-full rounded-xl border border-edvanta-border bg-white px-3 text-sm font-semibold outline-none focus:border-edvanta-blue focus:ring-2 focus:ring-edvanta-blue/15"
+            >
+              <option value="">Detectar automáticamente</option>
+              {cargosEmpleo.map((c) => <option key={c.slug} value={c.slug}>{c.cargo}</option>)}
+            </select>
+            {d.cargo?.detectado && <p className="mt-1 text-[11px] text-edvanta-muted">Lo detectamos por el contenido. Cámbialo si te postulas a otro.</p>}
+          </div>
+        </div>
+
+        <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          {d.categorias.map((c) => <BarraCategoria key={c.id} c={c} />)}
+        </div>
+
+        <div className="mt-6 flex flex-wrap items-center gap-3">
+          <button
+            type="button"
+            onClick={onPasarAlCreador}
+            className="inline-flex min-h-12 items-center gap-2 rounded-xl bg-edvanta-blue px-6 text-[15px] font-semibold text-white shadow-[0_6px_18px_rgba(8,46,134,.22)] transition hover:bg-edvanta-bluedark"
+          >
+            <Pencil className="h-4 w-4" aria-hidden="true" /> Mejorarla en el creador
+          </button>
+          <button
+            type="button"
+            onClick={onReiniciar}
+            className="inline-flex min-h-12 items-center gap-2 rounded-xl border border-edvanta-border bg-white px-6 text-[15px] font-semibold text-edvanta-blue transition hover:border-edvanta-blue/40"
+          >
+            <RefreshCw className="h-4 w-4" aria-hidden="true" /> Analizar otra
+          </button>
+          <p className="text-xs text-edvanta-muted">Pasamos tus datos al creador: ahí aplicas las mejoras y la descargas con el diseño oficial.</p>
+        </div>
+
+        {confirmar && (
+          <div className="mt-4 flex flex-wrap items-center gap-3 rounded-xl border border-amber-200 bg-amber-50 p-4" role="alert">
+            <AlertTriangle className="h-5 w-5 shrink-0 text-amber-700" aria-hidden="true" />
+            <p className="flex-1 text-sm leading-6 text-amber-900">Ya tienes una hoja de vida en el creador. Si continúas, la reemplazamos por la que acabas de analizar.</p>
+            <button type="button" onClick={onConfirmar} className="inline-flex min-h-10 items-center rounded-lg bg-amber-700 px-4 text-sm font-bold text-white hover:bg-amber-800">Reemplazar</button>
+            <button type="button" onClick={onCancelar} className="inline-flex min-h-10 items-center rounded-lg border border-amber-300 px-4 text-sm font-bold text-amber-900 hover:bg-amber-100">Cancelar</button>
+          </div>
+        )}
       </div>
 
-      {step === 1 && (
-        <div className="rounded-xl border border-edvanta-border bg-white p-5 shadow-sm">
-          <p className="text-sm font-bold text-edvanta-deep">Sube tu hoja de vida en PDF o pega su texto</p>
-          <p className="mt-1 text-sm text-slate-600">El análisis es 100% local y privado: el archivo se lee en tu navegador y no se envía a ningún servidor.</p>
+      <div className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_minmax(0,360px)] lg:items-start">
+        <div className="space-y-5">
+          {/* Prioridades */}
+          {d.prioridades.length > 0 && (
+            <div className="rounded-2xl border border-edvanta-border bg-white p-5">
+              <p className="text-sm font-extrabold text-edvanta-deep">Qué corregir primero</p>
+              <p className="mt-0.5 text-xs text-edvanta-muted">Ordenado por los puntos que recuperas.</p>
+              <ol className="mt-4 space-y-3">
+                {d.prioridades.map((p, i) => (
+                  <li key={`${p.categoria}-${p.titulo}`} className="rounded-xl border border-edvanta-border p-4">
+                    <div className="flex items-start gap-3">
+                      <span className={`inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-lg text-sm font-extrabold ${p.tipo === 'error' ? 'bg-rose-50 text-rose-700' : 'bg-amber-50 text-amber-700'}`}>{i + 1}</span>
+                      <div className="min-w-0 flex-1">
+                        <div className="flex flex-wrap items-baseline justify-between gap-2">
+                          <p className="text-[15px] font-bold text-edvanta-deep">{p.titulo}</p>
+                          {p.impacto > 0 && <span className="text-[11px] font-bold text-edvanta-tealdark">+{p.impacto} puntos</span>}
+                        </div>
+                        <p className="mt-1 text-sm leading-6 text-edvanta-muted">{p.detalle}</p>
+                        {p.como && (
+                          <p className="mt-2 rounded-lg bg-edvanta-bg px-3 py-2 text-sm leading-6 text-edvanta-deep">
+                            <span className="font-bold text-edvanta-blue">Cómo corregirlo: </span>{p.como}
+                          </p>
+                        )}
+                      </div>
+                    </div>
+                  </li>
+                ))}
+              </ol>
+            </div>
+          )}
 
-          <label className="mt-4 flex cursor-pointer flex-col items-center justify-center gap-1.5 rounded-xl border-2 border-dashed border-edvanta-border bg-slate-50/60 px-4 py-8 text-center transition hover:border-edvanta-blue/50 hover:bg-edvanta-light/40">
-            <input type="file" accept="application/pdf,.pdf" className="sr-only" onChange={onFile} disabled={pdfLoading} />
-            <Upload className={`h-7 w-7 text-edvanta-blue ${pdfLoading ? 'animate-pulse' : ''}`} />
-            <span className="text-sm font-black text-edvanta-deep">{pdfLoading ? 'Leyendo tu PDF…' : 'Subir hoja de vida en PDF'}</span>
-            <span className="max-w-sm text-xs leading-5 text-slate-500">Hasta 10 MB. Detectamos el cargo probable, el puntaje ATS y qué corregir. Si tu PDF es un escaneo sin texto, te avisamos.</span>
-          </label>
+          {/* Reescrituras */}
+          {d.reescrituras.length > 0 && (
+            <div className="rounded-2xl border border-edvanta-border bg-white p-5">
+              <p className="text-sm font-extrabold text-edvanta-deep">Frases que conviene reescribir</p>
+              <p className="mt-0.5 text-xs text-edvanta-muted">Describen tareas, no resultados. Completa lo que va entre corchetes con tu dato real.</p>
+              <ul className="mt-4 grid gap-3">
+                {d.reescrituras.map((r) => <Reescritura key={r.original} r={r} />)}
+              </ul>
+            </div>
+          )}
 
-          {pdfLoading && <p className="mt-3 rounded-lg border border-edvanta-blue/20 bg-edvanta-light/60 p-3 text-sm font-semibold text-edvanta-blue" role="status">Extrayendo el texto del PDF…</p>}
-          {pdfError && <p className="mt-3 rounded-lg border border-rose-200 bg-rose-50 p-3 text-sm leading-6 text-rose-800" role="alert">{pdfError}</p>}
+          {/* Palabras clave */}
+          {d.cargo && (
+            <div className="rounded-2xl border border-edvanta-border bg-white p-5">
+              <p className="text-sm font-extrabold text-edvanta-deep">Palabras clave para {d.cargo.nombre}</p>
+              <p className="mt-0.5 text-xs text-edvanta-muted">Agrega solo las que de verdad manejas: en la entrevista te las van a preguntar.</p>
+              {d.palabrasClave.encontradas.length > 0 && (
+                <>
+                  <p className="mt-4 text-[11px] font-bold uppercase tracking-[.12em] text-edvanta-tealdark">Ya las tienes</p>
+                  <div className="mt-1.5 flex flex-wrap gap-1.5">
+                    {d.palabrasClave.encontradas.map((k) => <span key={k} className="rounded-full bg-edvanta-mint px-2.5 py-1 text-xs font-bold text-edvanta-tealdark">{k}</span>)}
+                  </div>
+                </>
+              )}
+              {d.palabrasClave.faltantes.length > 0 && (
+                <>
+                  <p className="mt-4 text-[11px] font-bold uppercase tracking-[.12em] text-rose-700">Te faltan</p>
+                  <div className="mt-1.5 flex flex-wrap gap-1.5">
+                    {d.palabrasClave.faltantes.map((k) => <span key={k} className="rounded-full border border-dashed border-edvanta-strong px-2.5 py-1 text-xs font-bold text-edvanta-deep">{k}</span>)}
+                  </div>
+                </>
+              )}
+            </div>
+          )}
 
-          <div className="my-4 flex items-center gap-3">
-            <span className="h-px flex-1 bg-edvanta-border" />
-            <span className="text-xs font-bold uppercase tracking-wide text-slate-400">o pega el texto</span>
-            <span className="h-px flex-1 bg-edvanta-border" />
-          </div>
-
-          <textarea value={texto} onChange={e => setTexto(e.target.value)} rows={9} placeholder={'NOMBRE\nQuímica farmacéutica\nExperiencia:\n- Analista de control de calidad…\nFormación:\n- Química farmacéutica…\nHabilidades:\n- BPM, Excel avanzado, Power BI'} className="w-full rounded-lg border border-edvanta-border p-4 text-sm leading-6 outline-none focus:border-edvanta-blue focus:ring-2 focus:ring-edvanta-blue/15" />
-          <button type="button" onClick={() => setStep(2)} disabled={!texto.trim()} className="btn-edvanta mt-3 disabled:opacity-50">Continuar</button>
+          {info.length > 0 && (
+            <div className="rounded-2xl border border-edvanta-border bg-white p-5">
+              <p className="text-sm font-extrabold text-edvanta-deep">Otras observaciones</p>
+              <ul className="mt-3 space-y-2">{info.map((f) => <FindingRow key={f.titulo} f={f} />)}</ul>
+            </div>
+          )}
         </div>
-      )}
 
-      {step === 2 && (
-        <div className="rounded-xl border border-edvanta-border bg-white p-5 shadow-sm">
-          <p className="text-sm font-bold text-edvanta-deep">¿A qué cargo te postulas?</p>
-          <p className="mt-1 text-sm text-slate-600">Opcional. Si lo dejas vacío, detectamos el cargo más probable por el contenido.</p>
-          <select value={cargo} onChange={e => setCargo(e.target.value)} className={inputCls + ' mt-3 min-h-11 max-w-xl font-semibold'}>
-            <option value="">Detectar automáticamente</option>
-            {cargosEmpleo.map(c => <option key={c.slug} value={c.slug}>{c.cargo}</option>)}
-          </select>
-          <div className="mt-4 flex gap-2">
-            <button type="button" onClick={() => setStep(1)} className="btn-edvanta-outline">Atrás</button>
-            <button type="button" onClick={onAnalyze} className="btn-edvanta"><Sparkles className="h-4 w-4" /> Analizar mi hoja de vida</button>
-          </div>
+        <div className="space-y-5">
+          <LoQueLeimos d={d} />
+          {d.fortalezas.length > 0 && (
+            <div className="rounded-2xl border border-edvanta-mint bg-edvanta-mint/40 p-5">
+              <p className="text-sm font-extrabold text-edvanta-tealdark">Lo que ya haces bien</p>
+              <ul className="mt-2 space-y-1.5">
+                {d.fortalezas.map((f) => (
+                  <li key={f} className="flex items-start gap-2 text-sm leading-6 text-edvanta-deep"><Check className="mt-1 h-4 w-4 shrink-0 text-edvanta-teal" aria-hidden="true" />{f}</li>
+                ))}
+              </ul>
+            </div>
+          )}
+          {lectura?.texto && (
+            <details className="rounded-2xl border border-edvanta-border bg-white p-5">
+              <summary className="cursor-pointer text-sm font-bold text-edvanta-deep">Ver el texto que leímos</summary>
+              <pre className="mt-3 max-h-80 overflow-auto whitespace-pre-wrap rounded-lg bg-edvanta-bg p-3 font-sans text-xs leading-5 text-edvanta-deep">{lectura.texto}</pre>
+            </details>
+          )}
         </div>
-      )}
-
-      {step === 3 && result && (
-        <div className="space-y-4">
-          <div className="rounded-xl border border-edvanta-border bg-white p-5 shadow-sm">
-            <ScoreGauge score={result.score} />
-            <p className="mt-3 text-sm font-semibold text-slate-700">{result.recomendacion}</p>
-            {result.keywords?.length > 0 && (
-              <div className="mt-3">
-                <p className="text-[11px] font-bold uppercase tracking-wide text-slate-400">Palabras clave encontradas</p>
-                <div className="mt-1.5 flex flex-wrap gap-1.5">{result.keywords.map(k => <span key={k} className="rounded-full bg-teal-50 px-2.5 py-0.5 text-[11px] font-bold text-teal-700">{k}</span>)}</div>
-              </div>
-            )}
-            {result.fortalezas?.length > 0 && (
-              <div className="mt-4 rounded-lg border border-teal-200 bg-teal-50/60 p-4">
-                <p className="text-sm font-bold text-teal-900">Lo que ya haces bien</p>
-                <ul className="mt-2 space-y-1.5">
-                  {result.fortalezas.map(f => (
-                    <li key={f} className="flex items-start gap-2 text-sm leading-6 text-slate-700"><Check className="mt-0.5 h-4 w-4 shrink-0 text-teal-600" />{f}</li>
-                  ))}
-                </ul>
-              </div>
-            )}
-            <ul className="mt-4 space-y-2">{result.hallazgos.map((f, i) => <FindingRow key={i} f={f} />)}</ul>
-          </div>
-          <div className="flex flex-wrap items-center gap-2">
-            <button type="button" onClick={onReset} className="btn-edvanta-outline">Analizar otra</button>
-            <button type="button" onClick={onGoBuilder} className="btn-edvanta"><FileText className="h-4 w-4" /> Reescribirla en el creador</button>
-            <p className="self-center text-xs text-slate-500">En el creador aplicas las mejoras y descargas el PDF.</p>
-          </div>
-        </div>
-      )}
+      </div>
     </div>
   );
 }
