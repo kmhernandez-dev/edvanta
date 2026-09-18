@@ -141,7 +141,7 @@ Todo ocurre en el navegador: el PDF nunca se envía a un servidor.
 
 | Paso | Archivo | Qué hace |
 | --- | --- | --- |
-| Cargar pdf.js | `src/lib/pdfjs.js` | Una sola carga para el sitio y el visor del aula. Comprueba cómo llega el worker y, si el servidor no lo entrega como JavaScript, ejecuta pdf.js en la página |
+| Cargar pdf.js | `src/lib/pdfjs.js` | Una sola carga para el sitio y el visor del aula. Comprueba cómo llega el worker y, si el servidor no lo entrega como JavaScript, lo descarga y lo envuelve en un Blob con el tipo correcto |
 | Leer el PDF | `src/lib/cv/pdfText.js` | Reordena el texto por posición (encabezado, cada columna, pie) y cuenta páginas, columnas, imágenes, enlaces y escaneos sin texto |
 | Interpretar | `src/lib/cv/lector.js` | Nombre, contacto, secciones, cargos con fechas y logros, años de experiencia, estudios, habilidades e idiomas |
 | Diagnosticar | `src/lib/cv/diagnostico.js` | Puntaje en seis categorías, prioridades con cómo corregirlas, palabras clave del cargo y reescritura de frases débiles |
@@ -158,6 +158,10 @@ fallar.
 
 > pdf.js recuerda para siempre un worker que falló en la misma página:
 > por eso la comprobación se hace **antes** de abrir el primer documento.
+>
+> El plan B (Blob) no se puede probar con `npm run dev`: Vite le inyecta
+> `/@vite/client` a cada archivo JS y dentro de un Blob esa ruta no existe.
+> Se prueba con `npm run build` y `npm run preview`.
 
 ### Reglas de la plantilla oficial
 

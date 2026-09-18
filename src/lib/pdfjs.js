@@ -11,11 +11,11 @@
  *  se podía abrir.
  *
  *  Antes de abrir el primer documento se comprueba cómo llega el
- *  worker. Si no llega como JavaScript, se importa su código en la
- *  página misma (Vite lo empaqueta como .js): pdf.js detecta
- *  `globalThis.pdfjsWorker` y trabaja en el hilo principal, sin pedir el
- *  archivo .mjs. La decisión tiene que tomarse antes del primer intento
- *  porque pdf.js recuerda para siempre un worker fallido.
+ *  worker. Si no llega como JavaScript, se descarga su código y se
+ *  vuelve a envolver en un Blob con el tipo correcto: el worker sigue
+ *  corriendo aparte y el sitio no depende de cómo lo sirva nginx. La
+ *  decisión tiene que tomarse antes del primer intento porque pdf.js
+ *  recuerda para siempre un worker fallido.
  * ============================================================
  */
 
@@ -32,9 +32,12 @@ async function workerServidoComoJs(url) {
   }
 }
 
-/** Deja el motor de pdf.js disponible en la página (sin worker aparte). */
-async function usarHiloPrincipal() {
-  await import('pdfjs-dist/build/pdf.worker.min.mjs');
+/** Descarga el worker y lo devuelve como URL de Blob con tipo JavaScript. */
+async function workerEnBlob(url) {
+  const res = await fetch(url);
+  if (!res.ok) throw new Error(`No se pudo descargar el lector de PDF (${res.status}).`);
+  const codigo = await res.text();
+  return URL.createObjectURL(new Blob([codigo], { type: 'text/javascript' }));
 }
 
 /** Resultado de la última comprobación: útil para diagnosticar. */
@@ -45,12 +48,12 @@ export function cargarPdfJs() {
     libPromise = (async () => {
       const lib = await import('pdfjs-dist');
       const worker = await import('pdfjs-dist/build/pdf.worker.min.mjs?url');
-      lib.GlobalWorkerOptions.workerSrc = worker.default;
       if (await workerServidoComoJs(worker.default)) {
+        lib.GlobalWorkerOptions.workerSrc = worker.default;
         estadoPdfJs.modo = 'worker';
       } else {
-        await usarHiloPrincipal();
-        estadoPdfJs.modo = 'hilo-principal';
+        lib.GlobalWorkerOptions.workerSrc = await workerEnBlob(worker.default);
+        estadoPdfJs.modo = 'worker-blob';
       }
       return lib;
     })().catch((err) => {
