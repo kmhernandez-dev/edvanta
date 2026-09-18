@@ -1,8 +1,8 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { ArrowRight, Bookmark, BookOpenCheck, BriefcaseBusiness, CheckCircle2, Compass, ExternalLink, FileText, LogOut, Route, Settings, Trash2, UserRound } from 'lucide-react';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import SiteHeader from '../components/edvanta/SiteHeader';
+import SiteFooter from '../components/edvanta/SiteFooter';
 import { useAuth } from '../context/AuthContext';
 import { useProfessional } from '../context/ProfessionalContext';
 import { getCareerOption } from '../data/professionalProfileOptions';
@@ -53,17 +53,17 @@ export default function ProfessionalDashboard() {
   };
 
   if (authLoading || loading || !user) {
-    return <><Header /><main className="min-h-screen bg-[#f7f9fc] pt-16"><div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8"><div className="h-10 w-72 animate-pulse rounded bg-slate-200" /><div className="mt-8 grid gap-4 lg:grid-cols-3"><div className="h-56 animate-pulse rounded-lg bg-white lg:col-span-2" /><div className="h-56 animate-pulse rounded-lg bg-white" /></div></div></main></>;
+    return <><SiteHeader /><main className="min-h-screen bg-edvanta-bg"><div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8"><div className="h-10 w-72 animate-pulse rounded bg-slate-200" /><div className="mt-8 grid gap-4 lg:grid-cols-3"><div className="h-56 animate-pulse rounded-lg bg-white lg:col-span-2" /><div className="h-56 animate-pulse rounded-lg bg-white" /></div></div></main></>;
   }
 
   if (workspaceError && !professionalProfile) {
-    return <><Header /><main className="min-h-[75vh] bg-[#f7f9fc] pt-16"><div className="mx-auto max-w-xl px-4 py-20 text-center sm:px-6"><Settings className="mx-auto h-10 w-10 text-teal-700" /><h1 className="mt-5 text-3xl font-bold text-[#071a4a]">No pudimos abrir tu panel</h1><p className="mt-3 text-slate-600">{workspaceError}</p><button type="button" onClick={refreshWorkspace} className="mt-6 min-h-11 rounded-lg bg-[#071a4a] px-5 text-sm font-bold text-white">Reintentar</button></div></main><Footer /></>;
+    return <><SiteHeader /><main className="min-h-[75vh] bg-edvanta-bg"><div className="mx-auto max-w-xl px-4 py-20 text-center sm:px-6"><Settings className="mx-auto h-10 w-10 text-teal-700" /><h1 className="mt-5 text-3xl font-bold text-[#071a4a]">No pudimos abrir tu panel</h1><p className="mt-3 text-slate-600">{workspaceError}</p><button type="button" onClick={refreshWorkspace} className="mt-6 min-h-11 rounded-lg bg-[#071a4a] px-5 text-sm font-bold text-white">Reintentar</button></div></main><SiteFooter /></>;
   }
 
   return (
     <>
-      <Header />
-      <main className="min-h-screen bg-[#f7f9fc] pt-16">
+      <SiteHeader />
+      <main className="min-h-screen bg-edvanta-bg">
         <section className="border-b border-slate-200 bg-white">
           <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-5 px-4 py-9 sm:px-6 lg:px-8">
             <div>
@@ -178,7 +178,7 @@ export default function ProfessionalDashboard() {
           </div>
         </section>
       </main>
-      <Footer />
+      <SiteFooter />
     </>
   );
 }

@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState, useCallback } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import SiteHeader from '../components/edvanta/SiteHeader';
+import SiteFooter from '../components/edvanta/SiteFooter';
 import ExternalCourseCard from '../components/ExternalCourseCard';
 import { apiUrl } from '../config/api';
 import { updatePageSeo } from '../utils/seo';
@@ -168,9 +168,9 @@ export default function CursosCatalog({ defaultProvider = '' }) {
 
   return (
     <div className="min-h-screen bg-white">
-      <Header />
+      <SiteHeader />
 
-      <main className="pt-16">
+      <main>
         {/* Hero */}
         <section className="border-b border-slate-200 bg-white py-12 md:py-16">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -359,7 +359,7 @@ export default function CursosCatalog({ defaultProvider = '' }) {
         </section>
       </main>
 
-      <Footer />
+      <SiteFooter />
     </div>
   );
 }

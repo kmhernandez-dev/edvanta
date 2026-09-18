@@ -1,8 +1,8 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, BookOpenCheck, BriefcaseBusiness, RefreshCw, Search, Shapes } from 'lucide-react';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import SiteHeader from '../components/edvanta/SiteHeader';
+import SiteFooter from '../components/edvanta/SiteFooter';
 import { apiUrl } from '../config/api';
 import { updatePageSeo } from '../utils/seo';
 
@@ -68,8 +68,8 @@ export default function CompetenciesIndex() {
 
   return (
     <>
-      <Header />
-      <main className="min-h-screen bg-[#f7f9fc] pt-16">
+      <SiteHeader />
+      <main className="min-h-screen bg-edvanta-bg">
         <section className="border-b border-slate-200 bg-white">
           <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
             <p className="text-sm font-bold uppercase text-teal-700">Mapa de habilidades</p>
@@ -139,7 +139,7 @@ export default function CompetenciesIndex() {
           )}
         </section>
       </main>
-      <Footer />
+      <SiteFooter />
     </>
   );
 }

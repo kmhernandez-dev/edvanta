@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 import {
   ArrowLeft, BriefcaseBusiness, Building2, ExternalLink, MapPin,
 } from 'lucide-react';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import SiteHeader from '../components/edvanta/SiteHeader';
+import SiteFooter from '../components/edvanta/SiteFooter';
 import { updatePageSeo } from '../utils/seo';
 import { ofertasQF } from '../data/empleo/ofertasQF';
 
@@ -82,8 +82,8 @@ export default function OfertasQFPage() {
 
   return (
     <>
-      <Header />
-      <main className="min-h-screen bg-[#f7f9fc] pt-16">
+      <SiteHeader />
+      <main className="min-h-screen bg-edvanta-bg">
         {/* Hero */}
         <section className="relative overflow-hidden bg-gradient-to-br from-edvanta-deep to-edvanta-blue py-12 lg:py-14">
           <div className="bg-dots pointer-events-none absolute inset-0 opacity-20" aria-hidden="true" />
@@ -184,7 +184,7 @@ export default function OfertasQFPage() {
           </div>
         </section>
       </main>
-      <Footer />
+      <SiteFooter />
     </>
   );
 }

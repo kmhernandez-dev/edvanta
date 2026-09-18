@@ -1,7 +1,7 @@
 import { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 
-import HomeHeader    from '../components/edvanta/HomeHeader';
+import SiteHeader    from '../components/edvanta/SiteHeader';
 import Hero          from '../components/Hero';
 import SelectionMethod from '../components/SelectionMethod';
 import Transparency  from '../components/Transparency';
@@ -9,7 +9,7 @@ import CourseCard    from '../components/CourseCard';
 import SearchFilters from '../components/SearchFilters';
 import HerramientaCard from '../components/HerramientaCard';
 import ProductModal  from '../components/ProductModal';
-import Footer        from '../components/Footer';
+import SiteFooter        from '../components/edvanta/SiteFooter';
 import Icon          from '../components/Icon';
 import ArticulosSection from '../components/ArticulosSection';
 import CourseCarousel from '../components/CourseCarousel';
@@ -51,7 +51,7 @@ export default function BibliotecaHome() {
 
   return (
     <div className="min-h-screen bg-edvanta-home">
-      <HomeHeader />
+      <SiteHeader />
 
       {/* ── 1. HERO ────────────────────────────────────────────── */}
       <Hero
@@ -156,7 +156,7 @@ export default function BibliotecaHome() {
 
       <Transparency />
 
-      <Footer />
+      <SiteFooter />
 
       {selectedProduct && (
         <ProductModal product={selectedProduct} onClose={() => setSelectedProduct(null)} />

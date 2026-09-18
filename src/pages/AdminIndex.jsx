@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 import {
   BriefcaseBusiness, ClipboardList, FileText, GraduationCap, LayoutDashboard, LineChart, ShieldCheck,
 } from 'lucide-react';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import SiteHeader from '../components/edvanta/SiteHeader';
+import SiteFooter from '../components/edvanta/SiteFooter';
 import { updatePageSeo } from '../utils/seo';
 
 const PANELS = [
@@ -62,8 +62,8 @@ export default function AdminIndex() {
 
   return (
     <>
-      <Header />
-      <main className="min-h-screen bg-[#f7f9fc] pt-16">
+      <SiteHeader />
+      <main className="min-h-screen bg-edvanta-bg">
         <section className="border-b border-slate-200 bg-white">
           <div className="mx-auto max-w-5xl px-4 py-10 sm:px-6 lg:px-8">
             <p className="text-sm font-bold uppercase tracking-wide text-teal-700">Administración</p>
@@ -98,7 +98,7 @@ export default function AdminIndex() {
           </div>
         </section>
       </main>
-      <Footer />
+      <SiteFooter />
     </>
   );
 }

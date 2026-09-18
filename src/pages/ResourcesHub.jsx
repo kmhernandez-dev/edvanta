@@ -12,8 +12,8 @@ import {
   ScrollText,
   Wrench,
 } from 'lucide-react';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import SiteHeader from '../components/edvanta/SiteHeader';
+import SiteFooter from '../components/edvanta/SiteFooter';
 import { apiUrl } from '../config/api';
 import { useAuth } from '../context/AuthContext';
 import { useProfessional } from '../context/ProfessionalContext';
@@ -88,8 +88,8 @@ export default function ResourcesHub() {
 
   return (
     <>
-      <Header />
-      <main className="min-h-screen bg-[#f7f9fc] pt-16">
+      <SiteHeader />
+      <main className="min-h-screen bg-edvanta-bg">
         <section className="border-b border-slate-200 bg-white">
           <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
             <p className="text-sm font-bold uppercase text-teal-700">Biblioteca profesional</p>
@@ -162,7 +162,7 @@ export default function ResourcesHub() {
           </section>
         )}
       </main>
-      <Footer />
+      <SiteFooter />
     </>
   );
 }

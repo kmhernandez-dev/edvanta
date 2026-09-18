@@ -4,8 +4,8 @@ import {
   ArrowLeft, ArrowRight, BookOpen, CheckCircle2, Copy, DollarSign,
   Image as ImageIcon, Lightbulb, Loader2, MessageCircle, Sparkles, TrendingUp,
 } from 'lucide-react';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import SiteHeader from '../components/edvanta/SiteHeader';
+import SiteFooter from '../components/edvanta/SiteFooter';
 import { apiUrl } from '../config/api';
 import { updatePageSeo } from '../utils/seo';
 import { bancoPromptsLinkedin, guiaLinkedinPasos, productoLinkedin } from '../data/careerHub';
@@ -82,8 +82,8 @@ export default function LinkedinPage() {
 
   return (
     <>
-      <Header />
-      <main className="min-h-screen bg-[#f7f9fc] pt-16">
+      <SiteHeader />
+      <main className="min-h-screen bg-edvanta-bg">
         <section className="bg-gradient-to-br from-sky-600 via-blue-700 to-indigo-800 py-14 lg:py-16">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <Link to="/carreras" className="inline-flex items-center gap-2 text-sm font-bold text-white/80 transition hover:text-white">
@@ -228,7 +228,7 @@ export default function LinkedinPage() {
           </div>
         </section>
       </main>
-      <Footer />
+      <SiteFooter />
     </>
   );
 }

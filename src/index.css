@@ -2,6 +2,105 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ============================================================
+ * Identidad Edvanta — una sola paleta para todo edvanta.co
+ *
+ * Las escalas `navy` y `teal` de Tailwind se resuelven con estas
+ * variables. Los valores de `:root` son los históricos y los usan
+ * Feliz Sin Tiroides, Vida 360 y AtenFarmaClinic sin cambio alguno.
+ * Dentro de `.edvanta-theme` (lo aplica App.jsx solo a las rutas de
+ * Edvanta) pasan a ser los del Aula Edvanta: un mismo azul, un mismo
+ * verde azulado y un mismo gris en toda la plataforma.
+ * ============================================================ */
+:root {
+  --c-navy-50: 240 244 255;
+  --c-navy-100: 220 230 253;
+  --c-navy-200: 185 205 252;
+  --c-navy-300: 150 180 250;
+  --c-navy-400: 100 144 247;
+  --c-navy-500: 61 110 243;
+  --c-navy-600: 36 81 209;
+  --c-navy-700: 26 62 168;
+  --c-navy-800: 18 45 130;
+  --c-navy-900: 12 31 94;
+  --c-navy-950: 6 15 48;
+
+  --c-teal-50: 240 253 250;
+  --c-teal-100: 204 251 241;
+  --c-teal-200: 153 246 228;
+  --c-teal-300: 94 234 212;
+  --c-teal-400: 45 212 191;
+  --c-teal-500: 20 184 166;
+  --c-teal-600: 13 148 136;
+  --c-teal-700: 15 118 110;
+  --c-teal-800: 17 94 89;
+  --c-teal-900: 19 78 74;
+}
+
+.edvanta-theme {
+  /* Azul Edvanta */
+  --c-navy-50: 241 245 253;
+  --c-navy-100: 228 235 250;
+  --c-navy-200: 201 212 230;
+  --c-navy-300: 169 188 236;
+  --c-navy-400: 125 151 224;
+  --c-navy-500: 74 115 212;
+  --c-navy-600: 31 79 192;
+  --c-navy-700: 10 58 166;
+  --c-navy-800: 10 58 166;
+  --c-navy-900: 8 46 134;
+  --c-navy-950: 23 34 59;
+
+  /* Verde azulado Edvanta */
+  --c-teal-50: 239 250 249;
+  --c-teal-100: 221 243 242;
+  --c-teal-200: 182 231 232;
+  --c-teal-300: 127 212 216;
+  --c-teal-400: 69 189 196;
+  --c-teal-500: 37 167 176;
+  --c-teal-600: 23 140 149;
+  --c-teal-700: 15 116 128;
+  --c-teal-800: 15 116 128;
+  --c-teal-900: 12 90 98;
+
+  /* Tokens con nombre (mismos valores que el aula) */
+  --ed-primary: #082E86;
+  --ed-primary-hover: #0A3AA6;
+  --ed-primary-soft: #E4EBFA;
+  --ed-secondary: #25A7B0;
+  --ed-secondary-soft: #DDF3F2;
+  --ed-accent: #8981CE;
+  --ed-accent-soft: #E9E5FA;
+  --ed-bg: #F6F8FC;
+  --ed-surface: #FFFFFF;
+  --ed-border: #E3E9F2;
+  --ed-border-strong: #C9D4E6;
+  --ed-text: #17223B;
+  --ed-muted: #65718A;
+  --ed-subtle: #A6AEBE;
+  --ed-radius-sm: 8px;
+  --ed-radius: 12px;
+  --ed-radius-lg: 16px;
+  --ed-shadow: 0 1px 2px rgba(23, 34, 59, .04), 0 6px 20px rgba(23, 34, 59, .06);
+  --ed-shadow-lg: 0 12px 36px rgba(23, 34, 59, .14);
+  --ed-gradient-hero: linear-gradient(135deg, #EEF1FF 0%, #E9E2F8 32%, #DDF3F2 70%, #F4FAFA 100%);
+  --ed-gradient-brand: linear-gradient(90deg, #8179C9 0%, #65A7C1 50%, #28A8AF 100%);
+
+  color: var(--ed-text);
+}
+
+.edvanta-theme h1,
+.edvanta-theme h2,
+.edvanta-theme h3 {
+  font-family: 'Manrope', 'Inter', system-ui, sans-serif;
+  letter-spacing: -0.02em;
+}
+
+.edvanta-theme :focus-visible {
+  outline: 2px solid var(--ed-primary);
+  outline-offset: 2px;
+}
+
 /* FST Vida 360 form controls share one accessible, stable treatment. */
 .vida360-field input:not([type='checkbox']):not([type='radio']):not([type='range']),
 .vida360-field select,
@@ -110,25 +209,25 @@
 
   /* Subtle dotted background for hero / feature sections */
   .bg-dots {
-    background-image: radial-gradient(circle, rgba(20, 184, 166, 0.12) 1px, transparent 1px);
+    background-image: radial-gradient(circle, rgba(37, 167, 176, 0.14) 1px, transparent 1px);
     background-size: 22px 22px;
   }
 
   /* Fondo Edvanta: base suave con gradientes radiales muy tenues (azul/teal) */
   .bg-edvanta-home {
-    background-color: #f7f9fc;
+    background-color: #F6F8FC;
     background-image:
-      radial-gradient(ellipse 60% 45% at 12% 0%, rgba(53, 120, 229, 0.07), transparent 70%),
-      radial-gradient(ellipse 50% 40% at 88% 12%, rgba(20, 184, 166, 0.06), transparent 70%),
-      radial-gradient(ellipse 45% 35% at 75% 55%, rgba(53, 120, 229, 0.05), transparent 70%);
+      radial-gradient(ellipse 60% 45% at 12% 0%, rgba(8, 46, 134, 0.06), transparent 70%),
+      radial-gradient(ellipse 50% 40% at 88% 12%, rgba(37, 167, 176, 0.07), transparent 70%),
+      radial-gradient(ellipse 45% 35% at 75% 55%, rgba(137, 129, 206, 0.06), transparent 70%);
   }
 
   /* Tinte de marca para secciones sobre el fondo del home */
   .bg-edvanta-tint {
-    background-color: #f3f7fd;
+    background-color: #F1F5FD;
     background-image:
-      radial-gradient(ellipse 50% 40% at 8% 50%, rgba(53, 120, 229, 0.06), transparent 70%),
-      radial-gradient(ellipse 40% 35% at 92% 30%, rgba(20, 184, 166, 0.05), transparent 70%);
+      radial-gradient(ellipse 50% 40% at 8% 50%, rgba(8, 46, 134, 0.06), transparent 70%),
+      radial-gradient(ellipse 40% 35% at 92% 30%, rgba(37, 167, 176, 0.06), transparent 70%);
   }
 }
 

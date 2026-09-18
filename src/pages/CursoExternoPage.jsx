@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link, Navigate, useParams } from 'react-router-dom';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import SiteHeader from '../components/edvanta/SiteHeader';
+import SiteFooter from '../components/edvanta/SiteFooter';
 import ExternalCourseCard from '../components/ExternalCourseCard';
 import CursoPage from './CursoPage';
 import { getFeaturedCourse } from '../data/featuredCourses';
@@ -203,8 +203,8 @@ export default function CursoExternoPage() {
   if (loading) {
     return (
       <div className="min-h-screen bg-white">
-        <Header />
-        <main className="pt-16">
+        <SiteHeader />
+        <main>
           <div className="mx-auto max-w-7xl px-4 py-20">
             <div className="animate-pulse space-y-6">
               <div className="h-4 bg-gray-100 rounded w-1/4" />
@@ -221,7 +221,7 @@ export default function CursoExternoPage() {
             </div>
           </div>
         </main>
-        <Footer />
+        <SiteFooter />
       </div>
     );
   }
@@ -233,9 +233,9 @@ export default function CursoExternoPage() {
 
   return (
     <div className="min-h-screen bg-white">
-      <Header />
+      <SiteHeader />
 
-      <main className="pt-16">
+      <main>
         {/* Hero */}
         <section className="bg-slate-50 py-10 md:py-14">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -507,7 +507,7 @@ export default function CursoExternoPage() {
         </section>
       </main>
 
-      <Footer />
+      <SiteFooter />
     </div>
   );
 }

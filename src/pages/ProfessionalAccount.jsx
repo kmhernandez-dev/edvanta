@@ -1,8 +1,8 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { ArrowRight, BriefcaseBusiness, CheckCircle2, Globe2, LockKeyhole, Mail, UserRound } from 'lucide-react';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import SiteHeader from '../components/edvanta/SiteHeader';
+import SiteFooter from '../components/edvanta/SiteFooter';
 import { useAuth } from '../context/AuthContext';
 import { useProfessional } from '../context/ProfessionalContext';
 import { updatePageSeo } from '../utils/seo';
@@ -102,8 +102,8 @@ export default function ProfessionalAccount() {
 
   return (
     <>
-      <Header />
-      <main className="min-h-screen bg-[#f7f9fc] pt-16">
+      <SiteHeader />
+      <main className="min-h-screen bg-edvanta-bg">
         <section className="border-b border-slate-200 bg-white">
           <div className="mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:px-6 lg:grid-cols-[minmax(0,1fr)_440px] lg:px-8 lg:py-16">
             <div className="max-w-2xl self-center">
@@ -170,7 +170,7 @@ export default function ProfessionalAccount() {
           </div>
         </section>
       </main>
-      <Footer />
+      <SiteFooter />
     </>
   );
 }

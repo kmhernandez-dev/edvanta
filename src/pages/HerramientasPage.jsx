@@ -4,8 +4,8 @@ import {
   ArrowLeft, ArrowRight, Sparkles, Wrench,
   FileText, ScanSearch, Mail, BriefcaseBusiness, Compass, Share2, ClipboardList, Rocket, Building2,
 } from 'lucide-react';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import SiteHeader from '../components/edvanta/SiteHeader';
+import SiteFooter from '../components/edvanta/SiteFooter';
 import { apiUrl } from '../config/api';
 import { updatePageSeo } from '../utils/seo';
 import { clasificacionHerramientas } from '../data/careerHub';
@@ -63,8 +63,8 @@ export default function HerramientasPage() {
 
   return (
     <>
-      <Header />
-      <main className="min-h-screen bg-[#f7f9fc] pt-16">
+      <SiteHeader />
+      <main className="min-h-screen bg-edvanta-bg">
         <section className="relative overflow-hidden border-b border-edvanta-border bg-gradient-to-b from-white to-edvanta-light/50">
           <div className="bg-dots pointer-events-none absolute inset-0 opacity-60" aria-hidden="true" />
           <div className="relative mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8 lg:py-16">
@@ -170,7 +170,7 @@ export default function HerramientasPage() {
           </section>
         )}
       </main>
-      <Footer />
+      <SiteFooter />
     </>
   );
 }

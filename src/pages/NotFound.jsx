@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import SiteHeader from '../components/edvanta/SiteHeader';
+import SiteFooter from '../components/edvanta/SiteFooter';
 
 export default function NotFound() {
   useEffect(() => {
@@ -19,7 +19,7 @@ export default function NotFound() {
 
   return (
     <div className="min-h-screen bg-white font-sans">
-      <Header />
+      <SiteHeader />
       <main className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 py-24 text-center">
         <p className="text-7xl font-bold text-navy-200 mb-4">404</p>
         <h1 className="font-serif text-3xl md:text-4xl font-semibold text-navy-950 mb-4">
@@ -37,7 +37,7 @@ export default function NotFound() {
           </Link>
         </div>
       </main>
-      <Footer />
+      <SiteFooter />
     </div>
   );
 }

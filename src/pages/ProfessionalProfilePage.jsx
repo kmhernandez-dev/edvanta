@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { ArrowLeft, Check, FileText, LockKeyhole, Save } from 'lucide-react';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import SiteHeader from '../components/edvanta/SiteHeader';
+import SiteFooter from '../components/edvanta/SiteFooter';
 import { useAuth } from '../context/AuthContext';
 import { useProfessional } from '../context/ProfessionalContext';
 import { EXPERIENCE_LEVELS, PROFESSIONAL_CAREERS, PROFESSIONAL_INTERESTS, getCareerOption } from '../data/professionalProfileOptions';
@@ -70,13 +70,13 @@ export default function ProfessionalProfilePage() {
   };
 
   if (authLoading || loading || !draft) {
-    return <><Header /><main className="min-h-screen bg-[#f7f9fc] pt-16"><div className="mx-auto max-w-4xl px-4 py-16 sm:px-6"><div className="h-10 w-72 animate-pulse rounded bg-slate-200" /><div className="mt-8 h-96 animate-pulse rounded-lg bg-white" /></div></main></>;
+    return <><SiteHeader /><main className="min-h-screen bg-edvanta-bg"><div className="mx-auto max-w-4xl px-4 py-16 sm:px-6"><div className="h-10 w-72 animate-pulse rounded bg-slate-200" /><div className="mt-8 h-96 animate-pulse rounded-lg bg-white" /></div></main></>;
   }
 
   return (
     <>
-      <Header />
-      <main className="min-h-screen bg-[#f7f9fc] pt-16">
+      <SiteHeader />
+      <main className="min-h-screen bg-edvanta-bg">
         <section className="border-b border-slate-200 bg-white">
           <div className="mx-auto max-w-4xl px-4 py-10 sm:px-6 lg:px-8">
             <Link to="/app" className="inline-flex items-center gap-2 text-sm font-bold text-teal-700"><ArrowLeft className="h-4 w-4" /> Volver al panel</Link>
@@ -117,7 +117,7 @@ export default function ProfessionalProfilePage() {
           </form>
         </section>
       </main>
-      <Footer />
+      <SiteFooter />
     </>
   );
 }

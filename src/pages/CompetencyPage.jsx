@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { ArrowLeft, ArrowRight, BookOpenCheck, BriefcaseBusiness, RefreshCw, Route, Shapes } from 'lucide-react';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import SiteHeader from '../components/edvanta/SiteHeader';
+import SiteFooter from '../components/edvanta/SiteFooter';
 import ExternalCourseCard from '../components/ExternalCourseCard';
 import { apiUrl } from '../config/api';
 import { updatePageSeo } from '../utils/seo';
@@ -78,19 +78,19 @@ export default function CompetencyPage() {
   }, [skill]);
 
   if (loading) {
-    return <><Header /><main className="min-h-screen bg-[#f7f9fc] pt-16"><div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8"><div className="h-5 w-48 animate-pulse rounded bg-slate-200" /><div className="mt-8 h-14 max-w-3xl animate-pulse rounded bg-slate-200" /><div className="mt-5 h-20 max-w-3xl animate-pulse rounded bg-slate-100" /></div></main><Footer /></>;
+    return <><SiteHeader /><main className="min-h-screen bg-edvanta-bg"><div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8"><div className="h-5 w-48 animate-pulse rounded bg-slate-200" /><div className="mt-8 h-14 max-w-3xl animate-pulse rounded bg-slate-200" /><div className="mt-5 h-20 max-w-3xl animate-pulse rounded bg-slate-100" /></div></main><SiteFooter /></>;
   }
 
   if (error || !skill) {
     return (
-      <><Header /><main className="min-h-[70vh] bg-[#f7f9fc] pt-16"><div className="mx-auto max-w-3xl px-4 py-20 text-center sm:px-6"><Shapes className="mx-auto h-10 w-10 text-teal-700" aria-hidden="true" /><h1 className="mt-5 text-3xl font-bold text-[#071a4a]">No pudimos abrir esta competencia</h1><p className="mt-3 text-slate-600">{error || 'La ficha no está disponible.'}</p><div className="mt-7 flex flex-wrap justify-center gap-3"><button type="button" onClick={() => setReloadKey(value => value + 1)} className="inline-flex min-h-11 items-center gap-2 rounded-lg bg-[#071a4a] px-5 text-sm font-bold text-white"><RefreshCw className="h-4 w-4" aria-hidden="true" /> Reintentar</button><Link to="/competencias" className="inline-flex min-h-11 items-center gap-2 rounded-lg border border-slate-300 bg-white px-5 text-sm font-bold text-slate-700"><ArrowLeft className="h-4 w-4" aria-hidden="true" /> Ver todas</Link></div></div></main><Footer /></>
+      <><SiteHeader /><main className="min-h-[70vh] bg-edvanta-bg"><div className="mx-auto max-w-3xl px-4 py-20 text-center sm:px-6"><Shapes className="mx-auto h-10 w-10 text-teal-700" aria-hidden="true" /><h1 className="mt-5 text-3xl font-bold text-[#071a4a]">No pudimos abrir esta competencia</h1><p className="mt-3 text-slate-600">{error || 'La ficha no está disponible.'}</p><div className="mt-7 flex flex-wrap justify-center gap-3"><button type="button" onClick={() => setReloadKey(value => value + 1)} className="inline-flex min-h-11 items-center gap-2 rounded-lg bg-[#071a4a] px-5 text-sm font-bold text-white"><RefreshCw className="h-4 w-4" aria-hidden="true" /> Reintentar</button><Link to="/competencias" className="inline-flex min-h-11 items-center gap-2 rounded-lg border border-slate-300 bg-white px-5 text-sm font-bold text-slate-700"><ArrowLeft className="h-4 w-4" aria-hidden="true" /> Ver todas</Link></div></div></main><SiteFooter /></>
     );
   }
 
   return (
     <>
-      <Header />
-      <main className="bg-[#f7f9fc] pt-16">
+      <SiteHeader />
+      <main className="bg-edvanta-bg">
         <section className="border-b border-slate-200 bg-white">
           <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
             <nav className="flex flex-wrap items-center gap-2 text-sm text-slate-500" aria-label="Migas de pan"><Link to="/" className="hover:text-teal-700">Inicio</Link><span>/</span><Link to="/competencias" className="hover:text-teal-700">Competencias</Link><span>/</span><span className="font-semibold text-slate-700">{skill.name}</span></nav>
@@ -114,7 +114,7 @@ export default function CompetencyPage() {
         <section className="border-y border-slate-200 bg-white">
           <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
             <div className="mb-7 flex flex-wrap items-end justify-between gap-4"><div><div className="flex items-center gap-3"><BookOpenCheck className="h-6 w-6 text-indigo-600" aria-hidden="true" /><h2 className="text-2xl font-bold text-[#071a4a]">Cursos verificados que la desarrollan</h2></div><p className="mt-3 text-sm leading-6 text-slate-600">La relación se basa en cobertura de competencia, no solo en coincidencias de título.</p></div><Link to={`/cursos?skill=${skill.slug}`} className="text-sm font-bold text-teal-700">Ver catálogo filtrado</Link></div>
-            {courses.length ? <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">{courses.map(course => <ExternalCourseCard key={course.id} course={course} />)}</div> : <p className="rounded-lg border border-slate-200 bg-[#f7f9fc] p-5 text-sm text-slate-600">Aún no hay cursos con relación editorial verificada. Edvanta no mostrará coincidencias automáticas como recomendaciones confirmadas.</p>}
+            {courses.length ? <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">{courses.map(course => <ExternalCourseCard key={course.id} course={course} />)}</div> : <p className="rounded-lg border border-slate-200 bg-edvanta-bg p-5 text-sm text-slate-600">Aún no hay cursos con relación editorial verificada. Edvanta no mostrará coincidencias automáticas como recomendaciones confirmadas.</p>}
           </div>
         </section>
 
@@ -123,7 +123,7 @@ export default function CompetencyPage() {
           {paths.length ? <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">{paths.map(path => <Link key={`${path.slug}-${path.step_order}`} to={`/rutas/${path.slug}`} className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm transition hover:border-teal-300 hover:shadow-md"><p className="text-xs font-bold text-indigo-700">Paso {String(path.step_order).padStart(2, '0')}</p><h3 className="mt-2 text-lg font-bold text-[#071a4a]">{path.name}</h3><p className="mt-2 text-sm leading-6 text-slate-600">{path.summary}</p></Link>)}</div> : <p className="text-sm text-slate-600">Esta competencia aún no forma parte de una ruta publicada.</p>}
         </section>
       </main>
-      <Footer />
+      <SiteFooter />
     </>
   );
 }

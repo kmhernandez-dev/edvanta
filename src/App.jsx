@@ -59,7 +59,12 @@ const NoticiasPage = lazy(() => import('./pages/NoticiasPage'));
 const LinkedinPage = lazy(() => import('./pages/LinkedinPage'));
 const EmprendimientosPage = lazy(() => import('./pages/EmprendimientosPage'));
 const HerramientasPage = lazy(() => import('./pages/HerramientasPage'));
-const EmpresasPage = lazy(() => import('./pages/EmpresasPage'));
+const EmpresasHome = lazy(() => import('./pages/empresas/EmpresasHome'));
+const EmpresasCapacitacion = lazy(() => import('./pages/empresas/EmpresasCapacitacion'));
+const EmpresasTalento = lazy(() => import('./pages/empresas/EmpresasTalento'));
+const TalentoVitrina = lazy(() => import('./pages/TalentoVitrina'));
+const HojaDeVida = lazy(() => import('./pages/HojaDeVida'));
+const CorreosRRHH = lazy(() => import('./pages/empleo/CorreosRRHH'));
 const BuscarPage = lazy(() => import('./pages/BuscarPage'));
 const ComunidadPage = lazy(() => import('./pages/ComunidadPage'));
 const HerramientaLandingPage = lazy(() => import('./pages/HerramientaLandingPage'));
@@ -95,11 +100,29 @@ function StoreGlobals() {
   );
 }
 
+
+/**
+ * Marcas del ecosistema que conservan su propia identidad visual.
+ * Todo lo demás es Edvanta y comparte una sola paleta (.edvanta-theme).
+ */
+const OTRAS_MARCAS = [
+  '/feliz-sin-tiroides', '/fst-app', '/nutrifst', '/recetas', '/enfermedades',
+  '/levotiroxina', '/nutricion-tiroidea', '/recurso', '/academia',
+  '/vida-360', '/vida-360-pro', '/atenfarmaclinic', '/mi-espacio', '/aula',
+];
+
+function EdvantaTheme({ children }) {
+  const { pathname } = useLocation();
+  const esOtraMarca = OTRAS_MARCAS.some((p) => pathname === p || pathname.startsWith(`${p}/`));
+  return <div className={esOtraMarca ? undefined : 'edvanta-theme'}>{children}</div>;
+}
+
 export default function App() {
   return (
     <AuthProvider>
       <ProfessionalProvider>
       <Suspense fallback={<RouteFallback />}>
+      <EdvantaTheme>
       <Routes>
         {/* Marca principal: Edvanta */}
         <Route path="/" element={<BibliotecaHome />} />
@@ -206,6 +229,8 @@ export default function App() {
         <Route path="/carreras/:slug" element={<CareerPage />} />
         <Route path="/vocacion" element={<Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-[#f7f9fc] text-sm font-semibold text-slate-600">Cargando orientación vocacional...</div>}><VocacionPage /></Suspense>} />
         <Route path="/empleo" element={<Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-[#f7f9fc] text-sm font-semibold text-slate-600">Cargando centro de empleo...</div>}><EmpleoPage /></Suspense>} />
+        <Route path="/hoja-de-vida" element={<HojaDeVida />} />
+        <Route path="/empleo/correos" element={<CorreosRRHH />} />
         <Route path="/empleo/ofertas-qf" element={<Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-[#f7f9fc] text-sm font-semibold text-slate-600">Cargando ofertas...</div>}><OfertasQFPage /></Suspense>} />
         <Route path="/practicas" element={<Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-[#f7f9fc] text-sm font-semibold text-slate-600">Cargando guía de prácticas...</div>}><PracticasPage /></Suspense>} />
         <Route path="/noticias" element={<Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-[#f7f9fc] text-sm font-semibold text-slate-600">Cargando noticias...</div>}><NoticiasPage /></Suspense>} />
@@ -213,7 +238,12 @@ export default function App() {
         <Route path="/emprendimientos" element={<Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-[#f7f9fc] text-sm font-semibold text-slate-600">Cargando emprendimientos...</div>}><EmprendimientosPage /></Suspense>} />
         <Route path="/herramientas" element={<Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-[#f7f9fc] text-sm font-semibold text-slate-600">Cargando herramientas...</div>}><HerramientasPage /></Suspense>} />
         <Route path="/herramientas/:slug" element={<HerramientaLandingPage />} />
-        <Route path="/empresas" element={<Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-[#f7f9fc] text-sm font-semibold text-slate-600">Cargando talento profesional...</div>}><EmpresasPage /></Suspense>} />
+        <Route path="/empresas" element={<EmpresasHome />} />
+        <Route path="/empresas/capacitacion" element={<EmpresasCapacitacion />} />
+        <Route path="/empresas/talento" element={<EmpresasTalento />} />
+
+        {/* Vitrina de talento (lado del profesional) */}
+        <Route path="/talento" element={<TalentoVitrina />} />
         <Route path="/oportunidades" element={<Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-[#f7f9fc] text-sm font-semibold text-slate-600">Cargando oportunidades...</div>}><EcosystemDirectory kind="opportunities" /></Suspense>} />
         <Route path="/proyectos" element={<Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-[#f7f9fc] text-sm font-semibold text-slate-600">Cargando proyectos...</div>}><EcosystemDirectory kind="projects" /></Suspense>} />
         <Route path="/certificaciones" element={<Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-[#f7f9fc] text-sm font-semibold text-slate-600">Cargando certificaciones...</div>}><EcosystemDirectory kind="certifications" /></Suspense>} />
@@ -249,6 +279,7 @@ export default function App() {
         {/* 404 — página no encontrada */}
         <Route path="*" element={<NotFound />} />
       </Routes>
+      </EdvantaTheme>
       </Suspense>
 
       {/* Globales: carrito, toast y resultado de pago (fuera del aula) y consentimiento */}

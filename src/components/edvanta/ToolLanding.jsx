@@ -4,8 +4,8 @@ import {
   FileText, ScanSearch, Mail, BriefcaseBusiness, Compass, Share2, ClipboardList, Rocket, Building2,
   Check, ArrowRight, ChevronRight, Sparkles,
 } from 'lucide-react';
-import Header from '../Header';
-import Footer from '../Footer';
+import SiteHeader from './SiteHeader';
+import SiteFooter from './SiteFooter';
 import RelatedContent from './RelatedContent';
 import { updatePageSeo } from '../../utils/seo';
 import { KIND_LABEL } from '../../data/edvanta/herramientas';
@@ -183,8 +183,8 @@ export default function ToolLanding({ tool }) {
 
   return (
     <>
-      <Header />
-      <main className="min-h-screen bg-[#f7f9fc] pt-16">
+      <SiteHeader />
+      <main className="min-h-screen bg-edvanta-bg">
         {/* Breadcrumb */}
         <nav aria-label="Ruta de navegación" className="border-b border-edvanta-border bg-white">
           <div className="mx-auto flex max-w-7xl items-center gap-1.5 px-4 py-3 text-sm text-slate-500 sm:px-6 lg:px-8">
@@ -287,7 +287,7 @@ export default function ToolLanding({ tool }) {
         </div>
 
         {/* CTA final */}
-        <section className="bg-[#f7f9fc] py-16">
+        <section className="bg-edvanta-bg py-16">
           <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
             <div className="overflow-hidden rounded-3xl bg-edvanta-deep px-8 py-12 text-center">
               <h2 className="font-display text-2xl font-extrabold text-white md:text-3xl">{tool.h1}</h2>
@@ -300,7 +300,7 @@ export default function ToolLanding({ tool }) {
           </div>
         </section>
       </main>
-      <Footer />
+      <SiteFooter />
     </>
   );
 }

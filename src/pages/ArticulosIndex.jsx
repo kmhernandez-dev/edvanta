@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import SiteHeader from '../components/edvanta/SiteHeader';
+import SiteFooter from '../components/edvanta/SiteFooter';
 import { articulos } from '../data/articulos';
 import { updatePageSeo } from '../utils/seo';
 
@@ -76,9 +76,9 @@ export default function ArticulosIndex() {
 
   return (
     <div className="min-h-screen bg-white">
-      <Header />
+      <SiteHeader />
 
-      <main className="pt-16">
+      <main>
         {/* Hero */}
         <section className="bg-gradient-to-br from-navy-900 to-teal-700 text-white py-12 md:py-16">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -210,7 +210,7 @@ export default function ArticulosIndex() {
         </section>
       </main>
 
-      <Footer />
+      <SiteFooter />
     </div>
   );
 }

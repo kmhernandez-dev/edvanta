@@ -1,5 +1,16 @@
 import typography from '@tailwindcss/typography'
 
+/**
+ * Las escalas `navy` y `teal` se leen desde variables CSS para que Edvanta
+ * pueda tener su propia identidad sin tocar Feliz Sin Tiroides ni
+ * AtenFarmaClinic: los valores por defecto (en `src/index.css`, `:root`) son
+ * los de siempre y solo cambian dentro de `.edvanta-theme`.
+ */
+const varColor = (name) => `rgb(var(${name}) / <alpha-value>)`
+
+const scale = (prefix, steps) =>
+  Object.fromEntries(steps.map((s) => [s, varColor(`--c-${prefix}-${s}`)]))
+
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
@@ -9,31 +20,8 @@ export default {
   theme: {
     extend: {
       colors: {
-        navy: {
-          50:  '#f0f4ff',
-          100: '#dce6fd',
-          200: '#b9cdfc',
-          300: '#96b4fa',
-          400: '#6490f7',
-          500: '#3d6ef3',
-          600: '#2451d1',
-          700: '#1a3ea8',
-          800: '#122d82',
-          900: '#0c1f5e',
-          950: '#060f30',
-        },
-        teal: {
-          50:  '#f0fdfa',
-          100: '#ccfbf1',
-          200: '#99f6e4',
-          300: '#5eead4',
-          400: '#2dd4bf',
-          500: '#14b8a6',
-          600: '#0d9488',
-          700: '#0f766e',
-          800: '#115e59',
-          900: '#134e4a',
-        },
+        navy: scale('navy', [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950]),
+        teal: scale('teal', [50, 100, 200, 300, 400, 500, 600, 700, 800, 900]),
         gold: {
           400: '#fbbf24',
           500: '#f59e0b',
@@ -72,16 +60,25 @@ export default {
           purple: '#9274C9',
           gray:   '#F6F7F8',
         },
-        // ─── Edvanta — identidad azul (aislada; no afecta FST ni AtenFarma) ───
+        // ─── Edvanta — identidad única (la misma del aula virtual) ───
         edvanta: {
-          deep:     '#163A5F',
-          blue:     '#3578E5',
-          bluedark: '#2a63c4',
-          light:    '#EDF5FF',
-          mint:     '#DDF5EA',
-          cream:    '#FAF8F4',
-          ink:      '#263238',
-          border:   '#E5EAF0',
+          deep:      '#17223B',
+          blue:      '#082E86',
+          bluedark:  '#0A3AA6',
+          light:     '#E4EBFA',
+          soft:      '#EEF5FA',
+          teal:      '#25A7B0',
+          tealdark:  '#0F7480',
+          mint:      '#DDF3F2',
+          violet:    '#8981CE',
+          lilac:     '#E9E5FA',
+          bg:        '#F6F8FC',
+          cream:     '#F6F8FC',
+          ink:       '#17223B',
+          muted:     '#65718A',
+          subtle:    '#A6AEBE',
+          border:    '#E3E9F2',
+          strong:    '#C9D4E6',
         },
       },
       fontFamily: {

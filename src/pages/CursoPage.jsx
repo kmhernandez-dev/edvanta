@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Link, Navigate, useParams } from 'react-router-dom';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import SiteHeader from '../components/edvanta/SiteHeader';
+import SiteFooter from '../components/edvanta/SiteFooter';
 import Icon from '../components/Icon';
 import CourseImage from '../components/CourseImage';
 import AffiliateCourseButton from '../components/AffiliateCourseButton';
@@ -237,9 +237,9 @@ export default function CursoPage() {
 
   return (
     <div className="min-h-screen bg-white">
-      <Header />
+      <SiteHeader />
 
-      <main className="pt-16">
+      <main>
         <section className="bg-slate-50 py-10 md:py-14">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <nav className="mb-6 flex flex-wrap items-center gap-2 text-sm text-gray-500">
@@ -520,7 +520,7 @@ export default function CursoPage() {
         </section>
       </main>
 
-      <Footer />
+      <SiteFooter />
     </div>
   );
 }

@@ -17,8 +17,8 @@ import {
   Download, FlaskConical, GraduationCap, Handshake, Lightbulb, Microscope, Printer,
   Quote, RotateCcw, Share2, Sparkles, Target, Users,
 } from 'lucide-react';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import SiteHeader from '../components/edvanta/SiteHeader';
+import SiteFooter from '../components/edvanta/SiteFooter';
 import { waLink, EDVANTA_COMMUNITY_URL } from '../config/links';
 import { updatePageSeo } from '../utils/seo';
 import { guiaEmprendimiento, ideasEmprendimiento, plantillasEmprendimiento, pruebasProducto } from '../data/careerHub';
@@ -109,8 +109,8 @@ export default function EmprendimientosPage() {
 
   return (
     <>
-      <Header />
-      <main className="min-h-screen bg-[#f7f9fc] pt-16">
+      <SiteHeader />
+      <main className="min-h-screen bg-edvanta-bg">
         {/* Hero Edvanta */}
         <section className="relative overflow-hidden bg-gradient-to-br from-edvanta-deep to-edvanta-blue py-14 lg:py-16">
           <div className="bg-dots pointer-events-none absolute inset-0 opacity-20" aria-hidden="true" />
@@ -257,7 +257,7 @@ export default function EmprendimientosPage() {
           </div>
         </section>
       </main>
-      <Footer />
+      <SiteFooter />
     </>
   );
 }

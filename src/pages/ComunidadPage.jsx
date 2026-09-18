@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import SiteHeader from '../components/edvanta/SiteHeader';
+import SiteFooter from '../components/edvanta/SiteFooter';
 import Icon from '../components/Icon';
 import { EDVANTA_COMMUNITY_URL } from '../config/links';
 import { updatePageSeo } from '../utils/seo';
@@ -27,7 +27,7 @@ export default function ComunidadPage() {
 
   return (
     <div className="min-h-screen bg-white font-sans">
-      <Header />
+      <SiteHeader />
 
       <main>
         {/* Hero */}
@@ -64,7 +64,7 @@ export default function ComunidadPage() {
         </section>
 
         {/* Beneficios */}
-        <section className="border-y border-slate-200 bg-[#f7f9fc] py-16">
+        <section className="border-y border-slate-200 bg-edvanta-bg py-16">
           <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
             <h2 className="text-center text-2xl font-bold text-[#071a4a] sm:text-3xl">¿Qué encontrarás en la comunidad?</h2>
             <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
@@ -102,7 +102,7 @@ export default function ComunidadPage() {
         </section>
       </main>
 
-      <Footer />
+      <SiteFooter />
     </div>
   );
 }

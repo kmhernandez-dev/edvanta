@@ -1,8 +1,8 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, BookOpenCheck, Compass, RefreshCw, Route, Search } from 'lucide-react';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import SiteHeader from '../components/edvanta/SiteHeader';
+import SiteFooter from '../components/edvanta/SiteFooter';
 import { apiUrl } from '../config/api';
 import { learningRoutes } from '../data/featuredCourses';
 import { updatePageSeo } from '../utils/seo';
@@ -79,8 +79,8 @@ export default function LearningPathsIndex() {
 
   return (
     <>
-      <Header />
-      <main className="min-h-screen bg-[#f7f9fc] pt-16">
+      <SiteHeader />
+      <main className="min-h-screen bg-edvanta-bg">
         <section className="border-b border-slate-200 bg-white">
           <div className="mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:px-6 lg:grid-cols-[minmax(0,1fr)_360px] lg:px-8 lg:py-16">
             <div>
@@ -176,7 +176,7 @@ export default function LearningPathsIndex() {
           )}
         </section>
       </main>
-      <Footer />
+      <SiteFooter />
     </>
   );
 }

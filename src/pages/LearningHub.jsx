@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, BadgeCheck, BookOpenCheck, BriefcaseBusiness, Route, Shapes, Target } from 'lucide-react';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import SiteHeader from '../components/edvanta/SiteHeader';
+import SiteFooter from '../components/edvanta/SiteFooter';
 import { apiUrl } from '../config/api';
 import { learningRoutes } from '../data/featuredCourses';
 import { updatePageSeo } from '../utils/seo';
@@ -82,9 +82,9 @@ export default function LearningHub() {
 
   return (
     <>
-      <Header />
-      <main className="bg-white pt-16">
-        <section className="border-b border-slate-200 bg-[#f7f9fc]">
+      <SiteHeader />
+      <main className="bg-white">
+        <section className="border-b border-slate-200 bg-edvanta-bg">
           <div className="mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:px-6 lg:grid-cols-[minmax(0,1fr)_340px] lg:px-8 lg:py-16">
             <div>
               <p className="text-sm font-bold uppercase text-teal-700">Aprende en Edvanta</p>
@@ -168,7 +168,7 @@ export default function LearningHub() {
           </div>
         </section>
       </main>
-      <Footer />
+      <SiteFooter />
     </>
   );
 }

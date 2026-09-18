@@ -1,8 +1,8 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, ArrowRight, BriefcaseBusiness, Check, Compass, LockKeyhole, SearchCheck, Target, Wrench } from 'lucide-react';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import SiteHeader from '../components/edvanta/SiteHeader';
+import SiteFooter from '../components/edvanta/SiteFooter';
 import { apiUrl } from '../config/api';
 import { useAuth } from '../context/AuthContext';
 import { useProfessional } from '../context/ProfessionalContext';
@@ -142,17 +142,17 @@ export default function ProfessionalOnboarding() {
   };
 
   if (authLoading || workspaceLoading || !user) {
-    return <><Header /><main className="min-h-screen bg-[#f7f9fc] pt-16"><div className="mx-auto max-w-4xl px-4 py-20 sm:px-6"><div className="h-8 w-64 animate-pulse rounded bg-slate-200" /><div className="mt-8 h-80 animate-pulse rounded-lg bg-white" /></div></main></>;
+    return <><SiteHeader /><main className="min-h-screen bg-edvanta-bg"><div className="mx-auto max-w-4xl px-4 py-20 sm:px-6"><div className="h-8 w-64 animate-pulse rounded bg-slate-200" /><div className="mt-8 h-80 animate-pulse rounded-lg bg-white" /></div></main></>;
   }
 
   if (workspaceError && !professionalProfile) {
-    return <><Header /><main className="min-h-[75vh] bg-[#f7f9fc] pt-16"><div className="mx-auto max-w-xl px-4 py-20 text-center sm:px-6"><LockKeyhole className="mx-auto h-10 w-10 text-teal-700" /><h1 className="mt-5 text-3xl font-bold text-[#071a4a]">Tu espacio profesional necesita activación</h1><p className="mt-3 text-slate-600">{workspaceError}</p><button type="button" onClick={refreshWorkspace} className="mt-6 min-h-11 rounded-lg bg-[#071a4a] px-5 text-sm font-bold text-white">Reintentar</button></div></main><Footer /></>;
+    return <><SiteHeader /><main className="min-h-[75vh] bg-edvanta-bg"><div className="mx-auto max-w-xl px-4 py-20 text-center sm:px-6"><LockKeyhole className="mx-auto h-10 w-10 text-teal-700" /><h1 className="mt-5 text-3xl font-bold text-[#071a4a]">Tu espacio profesional necesita activación</h1><p className="mt-3 text-slate-600">{workspaceError}</p><button type="button" onClick={refreshWorkspace} className="mt-6 min-h-11 rounded-lg bg-[#071a4a] px-5 text-sm font-bold text-white">Reintentar</button></div></main><SiteFooter /></>;
   }
 
   return (
     <>
-      <Header />
-      <main className="min-h-screen bg-[#f7f9fc] pt-16">
+      <SiteHeader />
+      <main className="min-h-screen bg-edvanta-bg">
         <section className="border-b border-slate-200 bg-white">
           <div className="mx-auto max-w-5xl px-4 py-10 sm:px-6 lg:px-8">
             <p className="text-sm font-bold uppercase text-teal-700">Configuración inicial</p>
@@ -264,7 +264,7 @@ export default function ProfessionalOnboarding() {
           </div>
         </section>
       </main>
-      <Footer />
+      <SiteFooter />
     </>
   );
 }

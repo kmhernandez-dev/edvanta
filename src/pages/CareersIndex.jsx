@@ -4,8 +4,8 @@ import {
   ArrowRight, BadgeCheck, BookOpen, BriefcaseBusiness, Building2, CalendarDays,
   Compass, FlaskConical, GraduationCap, Megaphone, Newspaper, Rocket, Sparkles, Wrench,
 } from 'lucide-react';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import SiteHeader from '../components/edvanta/SiteHeader';
+import SiteFooter from '../components/edvanta/SiteFooter';
 import { updatePageSeo } from '../utils/seo';
 import {
   maestriasColombia, especializacionesColombia, diplomadosColombia,
@@ -169,8 +169,8 @@ export default function CareersIndex() {
 
   return (
     <>
-      <Header />
-      <main className="min-h-screen bg-[#f7f9fc] pt-16">
+      <SiteHeader />
+      <main className="min-h-screen bg-edvanta-bg">
         {/* Hero */}
         <section className="relative overflow-hidden bg-[#071a4a]">
           <div className="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-teal-500/20 blur-3xl" aria-hidden="true" />
@@ -302,7 +302,7 @@ export default function CareersIndex() {
           </div>
         </section>
       </main>
-      <Footer />
+      <SiteFooter />
     </>
   );
 }

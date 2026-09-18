@@ -1,8 +1,8 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, ArrowRight, Compass, RefreshCw, Sparkles } from 'lucide-react';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import SiteHeader from '../components/edvanta/SiteHeader';
+import SiteFooter from '../components/edvanta/SiteFooter';
 import { updatePageSeo } from '../utils/seo';
 import { interesesVocacion, fortalezasVocacion, areasLaboralesVocacion, resultadoVocacion } from '../data/careerHub';
 
@@ -67,8 +67,8 @@ export default function Vocacion() {
 
   return (
     <>
-      <Header />
-      <main className="min-h-screen bg-[#f7f9fc] pt-16">
+      <SiteHeader />
+      <main className="min-h-screen bg-edvanta-bg">
         <section className="bg-gradient-to-br from-fuchsia-600 via-purple-600 to-indigo-700 py-14 lg:py-16">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <Link to="/carreras" className="inline-flex items-center gap-2 text-sm font-bold text-white/80 transition hover:text-white">
@@ -227,7 +227,7 @@ export default function Vocacion() {
           )}
         </section>
       </main>
-      <Footer />
+      <SiteFooter />
     </>
   );
 }

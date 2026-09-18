@@ -1,8 +1,8 @@
 import { useState, useEffect, useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { Search, SlidersHorizontal } from 'lucide-react';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import SiteHeader from '../components/edvanta/SiteHeader';
+import SiteFooter from '../components/edvanta/SiteFooter';
 import ContentNodeCard from '../components/edvanta/ContentNodeCard';
 import { searchContent, orderedTypeGroups } from '../lib/edvanta/search';
 import { AREA_OPTIONS, TYPE_LABELS, TYPE_ORDER } from '../lib/edvanta/contentGraph';
@@ -71,8 +71,8 @@ export default function BuscarPage() {
 
   return (
     <>
-      <Header />
-      <main className="min-h-screen bg-[#f7f9fc] pt-16">
+      <SiteHeader />
+      <main className="min-h-screen bg-edvanta-bg">
         {/* Barra de búsqueda / hero */}
         <section className="border-b border-edvanta-border bg-white">
           <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
@@ -186,7 +186,7 @@ export default function BuscarPage() {
           </section>
         )}
       </main>
-      <Footer />
+      <SiteFooter />
     </>
   );
 }

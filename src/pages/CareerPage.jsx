@@ -1,8 +1,8 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { ArrowLeft, ArrowRight, BookOpenCheck, Building2, CheckCircle2, Compass, RefreshCw, Target } from 'lucide-react';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import SiteHeader from '../components/edvanta/SiteHeader';
+import SiteFooter from '../components/edvanta/SiteFooter';
 import { apiUrl } from '../config/api';
 import { updatePageSeo } from '../utils/seo';
 import { trackEvent } from '../utils/analytics';
@@ -91,15 +91,15 @@ export default function CareerPage() {
   if (loading) {
     return (
       <>
-        <Header />
-        <main className="min-h-screen bg-[#f7f9fc] pt-16">
+        <SiteHeader />
+        <main className="min-h-screen bg-edvanta-bg">
           <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
             <div className="h-5 w-52 animate-pulse rounded bg-slate-200" />
             <div className="mt-8 h-14 max-w-3xl animate-pulse rounded bg-slate-200" />
             <div className="mt-5 h-24 max-w-3xl animate-pulse rounded bg-slate-100" />
           </div>
         </main>
-        <Footer />
+        <SiteFooter />
       </>
     );
   }
@@ -107,8 +107,8 @@ export default function CareerPage() {
   if (error || !career) {
     return (
       <>
-        <Header />
-        <main className="min-h-[70vh] bg-[#f7f9fc] pt-16">
+        <SiteHeader />
+        <main className="min-h-[70vh] bg-edvanta-bg">
           <div className="mx-auto max-w-3xl px-4 py-20 text-center sm:px-6">
             <Compass className="mx-auto h-10 w-10 text-teal-700" aria-hidden="true" />
             <h1 className="mt-5 text-3xl font-bold text-[#071a4a]">No pudimos abrir esta carrera</h1>
@@ -123,15 +123,15 @@ export default function CareerPage() {
             </div>
           </div>
         </main>
-        <Footer />
+        <SiteFooter />
       </>
     );
   }
 
   return (
     <>
-      <Header />
-      <main className="bg-[#f7f9fc] pt-16">
+      <SiteHeader />
+      <main className="bg-edvanta-bg">
         <section className="border-b border-slate-200 bg-white">
           <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
             <nav className="flex flex-wrap items-center gap-2 text-sm text-slate-500" aria-label="Migas de pan">
@@ -277,7 +277,7 @@ export default function CareerPage() {
           <p>Contenido de orientación educativa. Las funciones y requisitos concretos pueden variar según país, empresa, producto y nivel de responsabilidad. Edvanta no garantiza contratación, salario ni resultados profesionales.</p>
         </section>
       </main>
-      <Footer />
+      <SiteFooter />
     </>
   );
 }
