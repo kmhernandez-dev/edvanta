@@ -28,7 +28,7 @@ const modulos = [
     icon: BookOpen,
     titulo: 'Cursos y áreas de estudio',
     texto: 'Explora más de 90 cursos organizados por área profesional, sin importar la plataforma que los dicte.',
-    color: 'from-sky-500 to-blue-600',
+    color: 'from-edvanta-blue to-blue-600',
     a: '/carreras#cursos',
   },
   {
@@ -36,7 +36,7 @@ const modulos = [
     icon: Compass,
     titulo: 'Orientación vocacional',
     texto: 'Sistema guiado de 3 pasos que te recomienda el mejor encaje para tu perfil farmacéutico.',
-    color: 'from-fuchsia-500 to-purple-600',
+    color: 'from-edvanta-blue to-edvanta-blue',
     a: '/vocacion',
   },
   {
@@ -44,7 +44,7 @@ const modulos = [
     icon: BriefcaseBusiness,
     titulo: 'Empleo',
     texto: 'Crea tu hoja de vida, adapta según el cargo, escribe correos a RR. HH. y consulta el banco de vacantes.',
-    color: 'from-amber-500 to-orange-600',
+    color: 'from-amber-500 to-edvanta-blue',
     a: '/empleo',
   },
   {
@@ -52,7 +52,7 @@ const modulos = [
     icon: FlaskConical,
     titulo: 'Prácticas',
     texto: 'Guía completa para prepararte, elegir perfil y aplicar con una hoja de vida pensada para prácticas.',
-    color: 'from-rose-500 to-pink-600',
+    color: 'from-edvanta-violet to-edvanta-blue',
     a: '/practicas',
   },
   {
@@ -60,7 +60,7 @@ const modulos = [
     icon: Megaphone,
     titulo: 'Noticias',
     texto: 'Agenda y fuentes oficiales del sector farmacéutico en Colombia.',
-    color: 'from-indigo-500 to-violet-600',
+    color: 'from-edvanta-blue to-edvanta-blue',
     a: '/noticias',
   },
   {
@@ -68,7 +68,7 @@ const modulos = [
     icon: Sparkles,
     titulo: 'LinkedIn',
     texto: 'Banco de prompts, guía práctica con imágenes y guía para generar ingresos con tu marca personal.',
-    color: 'from-sky-600 to-cyan-700',
+    color: 'from-edvanta-blue to-edvanta-blue',
     a: '/linkedin',
   },
   {
@@ -92,7 +92,7 @@ const modulos = [
     icon: Building2,
     titulo: 'Empresas',
     texto: 'Capacita a tu equipo y busca talento: perfiles clasificados por área con proyectos y artículos.',
-    color: 'from-teal-600 to-cyan-700',
+    color: 'from-teal-600 to-edvanta-blue',
     a: '/empresas',
   },
 ];
@@ -174,7 +174,7 @@ export default function CareersIndex() {
         {/* Hero */}
         <section className="relative overflow-hidden bg-edvanta-blue">
           <div className="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-teal-500/20 blur-3xl" aria-hidden="true" />
-          <div className="absolute -left-16 bottom-0 h-64 w-64 rounded-full bg-fuchsia-500/10 blur-3xl" aria-hidden="true" />
+          <div className="absolute -left-16 bottom-0 h-64 w-64 rounded-full bg-edvanta-blue/10 blur-3xl" aria-hidden="true" />
           <div className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
             <div className="max-w-3xl">
               <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs font-bold uppercase tracking-wide text-teal-200">

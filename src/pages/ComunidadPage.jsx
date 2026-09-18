@@ -33,7 +33,7 @@ export default function ComunidadPage() {
         {/* Hero */}
         <section className="relative overflow-hidden bg-gradient-to-b from-[#EAF2FF] to-white">
           <div className="mx-auto max-w-4xl px-4 py-16 text-center sm:px-6 sm:py-20 lg:px-8">
-            <span className="inline-flex items-center gap-2 rounded-full border border-sky-200 bg-white px-3.5 py-1.5 text-xs font-bold uppercase text-sky-700 shadow-sm">
+            <span className="inline-flex items-center gap-2 rounded-full border border-edvanta-border bg-white px-3.5 py-1.5 text-xs font-bold uppercase text-edvanta-blue shadow-sm">
               <Icon name="users" className="h-4 w-4" /> Comunidad Edvanta
             </span>
             <h1 className="mt-5 font-display text-4xl font-extrabold leading-[1.1] text-edvanta-deep sm:text-5xl">
@@ -53,7 +53,7 @@ export default function ComunidadPage() {
               >
                 <Icon name="whatsapp" className="h-5 w-5" /> Unirme al grupo de WhatsApp
               </a>
-              <Link to="/" className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-xl border border-slate-300 bg-white px-6 text-sm font-semibold text-slate-700 transition hover:border-sky-300 hover:bg-sky-50 sm:w-auto">
+              <Link to="/" className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-xl border border-slate-300 bg-white px-6 text-sm font-semibold text-slate-700 transition hover:border-edvanta-border hover:bg-edvanta-light sm:w-auto">
                 Explorar cursos gratis
               </Link>
             </div>
@@ -70,7 +70,7 @@ export default function ComunidadPage() {
             <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
               {beneficios.map(b => (
                 <article key={b.titulo} className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
-                  <span className="flex h-11 w-11 items-center justify-center rounded-lg bg-sky-50 text-sky-700">
+                  <span className="flex h-11 w-11 items-center justify-center rounded-lg bg-edvanta-light text-edvanta-blue">
                     <Icon name={b.icon} className="h-5 w-5" />
                   </span>
                   <h3 className="mt-4 text-base font-bold text-edvanta-deep">{b.titulo}</h3>

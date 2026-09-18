@@ -95,8 +95,8 @@ export default function LearningHub() {
                 Empieza por la carrera que te interesa, identifica las competencias que te faltan y elige formación que tenga un propósito claro.
               </p>
             </div>
-            <div className="border-l-4 border-indigo-500 pl-5 lg:self-end">
-              <Target className="h-6 w-6 text-indigo-600" aria-hidden="true" />
+            <div className="border-l-4 border-edvanta-blue/40 pl-5 lg:self-end">
+              <Target className="h-6 w-6 text-edvanta-blue" aria-hidden="true" />
               <p className="mt-4 text-sm font-bold text-edvanta-deep">Tu siguiente paso debe responder a una meta</p>
               <p className="mt-2 text-sm leading-6 text-slate-600">No necesitas empezar por el curso más popular. Empieza por la brecha que más limita tu objetivo actual.</p>
             </div>
@@ -133,7 +133,7 @@ export default function LearningHub() {
           <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
             <div className="flex flex-wrap items-end justify-between gap-4">
               <div className="max-w-2xl">
-                <p className="text-sm font-bold text-indigo-700">Rutas profesionales</p>
+                <p className="text-sm font-bold text-edvanta-blue">Rutas profesionales</p>
                 <h2 className="mt-1 text-2xl font-bold text-edvanta-deep">Aprende en el orden que el trabajo lo exige</h2>
                 <p className="mt-3 text-sm leading-6 text-slate-600">Cada ruta combina contexto, competencias, cursos existentes y pasos para construir evidencia.</p>
               </div>
@@ -141,8 +141,8 @@ export default function LearningHub() {
             </div>
             <div className="mt-7 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
               {paths.map(path => (
-                <Link key={path.slug} to={`/rutas/${path.slug}`} className="group flex min-h-60 flex-col rounded-lg border border-slate-200 bg-white p-5 shadow-sm transition hover:border-indigo-300 hover:shadow-md">
-                  <Route className="h-6 w-6 text-indigo-600" aria-hidden="true" />
+                <Link key={path.slug} to={`/rutas/${path.slug}`} className="group flex min-h-60 flex-col rounded-lg border border-slate-200 bg-white p-5 shadow-sm transition hover:border-edvanta-border hover:shadow-md">
+                  <Route className="h-6 w-6 text-edvanta-blue" aria-hidden="true" />
                   <p className="mt-5 text-xs font-bold uppercase text-teal-700">{path.career?.name}</p>
                   <h3 className="mt-2 text-lg font-bold leading-6 text-edvanta-deep">{path.name}</h3>
                   <p className="mt-3 flex-1 text-sm leading-6 text-slate-600">{path.summary}</p>
@@ -161,10 +161,10 @@ export default function LearningHub() {
             <Link to="/cursos" className="mt-5 inline-flex min-h-11 items-center gap-2 rounded-lg bg-edvanta-blue px-5 text-sm font-bold text-white hover:bg-[#102862]">Explorar catálogo <ArrowRight className="h-4 w-4" aria-hidden="true" /></Link>
           </div>
           <div>
-            <Shapes className="h-7 w-7 text-indigo-600" aria-hidden="true" />
+            <Shapes className="h-7 w-7 text-edvanta-blue" aria-hidden="true" />
             <h2 className="mt-4 text-2xl font-bold text-edvanta-deep">Competencias reutilizables</h2>
             <p className="mt-3 text-base leading-7 text-slate-600">Una misma habilidad puede ser importante en varias carreras. Consulta dónde se usa, qué nivel requiere y qué formación la desarrolla.</p>
-            <Link to="/competencias" className="mt-5 inline-flex min-h-11 items-center gap-2 rounded-lg border border-slate-300 bg-white px-5 text-sm font-bold text-slate-700 hover:border-indigo-500 hover:text-indigo-700">Explorar competencias <ArrowRight className="h-4 w-4" aria-hidden="true" /></Link>
+            <Link to="/competencias" className="mt-5 inline-flex min-h-11 items-center gap-2 rounded-lg border border-slate-300 bg-white px-5 text-sm font-bold text-slate-700 hover:border-edvanta-blue/40 hover:text-edvanta-bluedark">Explorar competencias <ArrowRight className="h-4 w-4" aria-hidden="true" /></Link>
           </div>
         </section>
       </main>

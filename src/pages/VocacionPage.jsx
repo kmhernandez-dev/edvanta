@@ -69,7 +69,7 @@ export default function Vocacion() {
     <>
       <SiteHeader />
       <main className="min-h-screen bg-edvanta-bg">
-        <section className="bg-gradient-to-br from-fuchsia-600 via-purple-600 to-indigo-700 py-14 lg:py-16">
+        <section className="bg-edvanta-deep py-14 lg:py-16">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <Link to="/carreras" className="inline-flex items-center gap-2 text-sm font-bold text-white/80 transition hover:text-white">
               <ArrowLeft className="h-4 w-4" aria-hidden="true" /> Volver a Carreras
@@ -79,11 +79,11 @@ export default function Vocacion() {
                 <Compass className="h-7 w-7" aria-hidden="true" />
               </span>
               <div>
-                <p className="text-sm font-bold uppercase tracking-wide text-fuchsia-200">Orientación vocacional</p>
+                <p className="text-sm font-bold uppercase tracking-wide text-edvanta-light">Orientación vocacional</p>
                 <h1 className="mt-2 text-3xl font-bold leading-tight text-white sm:text-4xl">
                   Descubre tu mejor encaje en la industria farmacéutica
                 </h1>
-                <p className="mt-3 text-base leading-7 text-purple-100">
+                <p className="mt-3 text-base leading-7 text-edvanta-light">
                   Responde 3 preguntas cortas y obtén una recomendación personalizada con carreras, formación y primer paso.
                 </p>
               </div>
@@ -184,7 +184,7 @@ export default function Vocacion() {
 
           {paso === 'resultado' && resultado && (
             <div className="animate-fade-in overflow-hidden rounded-2xl border border-teal-200 bg-white shadow-lg">
-              <div className="bg-gradient-to-br from-teal-600 to-emerald-700 p-6 text-white sm:p-8">
+              <div className="bg-gradient-to-br from-edvanta-teal to-edvanta-tealdark p-6 text-white sm:p-8">
                 <Sparkles className="h-8 w-8" aria-hidden="true" />
                 <h2 className="mt-3 text-2xl font-bold sm:text-3xl">{resultado.titulo}</h2>
                 <p className="mt-2 text-sm text-teal-100">{resultado.texto}</p>
