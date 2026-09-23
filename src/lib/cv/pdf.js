@@ -15,7 +15,7 @@
  * ============================================================
  */
 
-const PAGINA = { ancho: 210, alto: 297 };
+export const PAGINA = { ancho: 210, alto: 297 };
 
 const C = {
   tinta: '#17223B',
@@ -29,16 +29,20 @@ const C = {
   claro: '#EEF5FA',
 };
 
-const rgb = (hex) => {
+export const rgb = (hex) => {
   const h = hex.replace('#', '');
   return [parseInt(h.slice(0, 2), 16), parseInt(h.slice(2, 4), 16), parseInt(h.slice(4, 6), 16)];
 };
-const mezcla = (a, b, t) => rgb(a).map((v, i) => Math.round(v + (rgb(b)[i] - v) * t));
-const safe = (v) => String(v ?? '').trim();
+export const mezcla = (a, b, t) => {
+  const ra = Array.isArray(a) ? a : rgb(a);
+  const rb = Array.isArray(b) ? b : rgb(b);
+  return ra.map((v, i) => Math.round(v + (rb[i] - v) * t));
+};
+export const safe = (v) => String(v ?? '').trim();
 
 /* ── Datos normalizados de la hoja de vida ─────────────────── */
 
-function datos(cv) {
+export function datos(cv) {
   const lista = (v) => (Array.isArray(v) ? v.filter(Boolean) : []);
   return {
     nombre: safe(cv.nombre) || 'Nombre Apellido',
@@ -404,18 +408,25 @@ function construirAts(doc, d, cargoLabel) {
 /**
  * Arma el documento sin descargarlo. `comprimir: false` deja el texto
  * legible dentro del archivo (lo usan las pruebas).
+ *
+ * `estilo` admite además las plantillas del catálogo
+ * (`src/lib/cv/plantillas.js`); si el estilo no es reconocido se usa el
+ * diseño oficial Edvanta.
  */
-export async function generarCvPdf(cv, cargoLabel = '', estilo = 'edvanta', { comprimir = true } = {}) {
+export async function generarCvPdf(cv, cargoLabel = '', estilo = 'edvanta', { comprimir = true, foto = null } = {}) {
   const { jsPDF } = await import('jspdf');
   const doc = new jsPDF({ unit: 'mm', format: 'a4', compress: comprimir });
   const d = datos(cv);
   propiedades(doc, d, cargoLabel);
   if (estilo === 'ats') construirAts(doc, d, cargoLabel);
-  else construirEdvanta(doc, d, cargoLabel);
+  else if (estilo !== 'edvanta') {
+    const { construirPlantilla } = await import('./plantillas.js');
+    if (!construirPlantilla(doc, d, cargoLabel, estilo, foto)) construirEdvanta(doc, d, cargoLabel);
+  } else construirEdvanta(doc, d, cargoLabel);
   return doc;
 }
 
-export async function downloadCvPdf(cv, cargoLabel = '', estilo = 'edvanta') {
-  const doc = await generarCvPdf(cv, cargoLabel, estilo);
+export async function downloadCvPdf(cv, cargoLabel = '', estilo = 'edvanta', { foto = null } = {}) {
+  const doc = await generarCvPdf(cv, cargoLabel, estilo, { foto });
   doc.save(nombreArchivo(cv, cargoLabel, estilo));
 }

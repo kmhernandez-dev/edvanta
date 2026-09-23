@@ -19,7 +19,17 @@ const router = Router();
 router.use(authMiddleware);
 
 const MAX_TEXT = 4000;
+const MAX_FOTO = 400_000;
 const clean = (value, max = 500) => typeof value === 'string' ? value.trim().slice(0, max) : '';
+
+const cleanFoto = (value) => {
+  if (typeof value !== 'string') return '';
+  const foto = value.trim();
+  if (!foto) return '';
+  if (!foto.startsWith('data:image/')) return '';
+  if (foto.length > MAX_FOTO) return '';
+  return foto;
+};
 
 function cleanList(value, itemMax, limit) {
   if (!Array.isArray(value)) return [];
@@ -44,7 +54,7 @@ router.get('/', async (req, res) => {
   try {
     const { rows } = await pool.query(
       `SELECT nombre, titulo, email, telefono, ciudad, linkedin, resumen,
-              experiencia, educacion, habilidades, certificaciones, idiomas, referencias,
+              experiencia, educacion, habilidades, certificaciones, idiomas, referencias, foto,
               created_at, updated_at
        FROM cv_profiles WHERE user_id = $1`,
       [req.user.id]
@@ -73,6 +83,7 @@ router.put('/', async (req, res) => {
     certificaciones: cleanList(body.certificaciones, 300, 15),
     idiomas: cleanList(body.idiomas, 120, 8),
     referencias: cleanList(body.referencias, 400, 6),
+    foto: cleanFoto(body.foto),
   };
 
   if (!cv.nombre && !cv.email && !cv.resumen) {
@@ -82,8 +93,8 @@ router.put('/', async (req, res) => {
   try {
     const { rows } = await pool.query(
       `INSERT INTO cv_profiles (user_id, nombre, titulo, email, telefono, ciudad, linkedin, resumen,
-        experiencia, educacion, habilidades, certificaciones, idiomas, referencias)
-       VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9::jsonb, $10::jsonb, $11::jsonb, $12::jsonb, $13::jsonb, $14::jsonb)
+        experiencia, educacion, habilidades, certificaciones, idiomas, referencias, foto)
+       VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9::jsonb, $10::jsonb, $11::jsonb, $12::jsonb, $13::jsonb, $14::jsonb, $15)
        ON CONFLICT (user_id) DO UPDATE SET
          nombre = EXCLUDED.nombre,
          titulo = EXCLUDED.titulo,
@@ -98,13 +109,15 @@ router.put('/', async (req, res) => {
          certificaciones = EXCLUDED.certificaciones,
          idiomas = EXCLUDED.idiomas,
          referencias = EXCLUDED.referencias,
+         foto = EXCLUDED.foto,
          updated_at = NOW()
        RETURNING nombre, titulo, email, telefono, ciudad, linkedin, resumen,
-         experiencia, educacion, habilidades, certificaciones, idiomas, referencias,
+         experiencia, educacion, habilidades, certificaciones, idiomas, referencias, foto,
          created_at, updated_at`,
       [req.user.id, cv.nombre, cv.titulo, cv.email, cv.telefono, cv.ciudad, cv.linkedin, cv.resumen,
         JSON.stringify(cv.experiencia), JSON.stringify(cv.educacion), JSON.stringify(cv.habilidades),
-        JSON.stringify(cv.certificaciones), JSON.stringify(cv.idiomas), JSON.stringify(cv.referencias)]
+        JSON.stringify(cv.certificaciones), JSON.stringify(cv.idiomas), JSON.stringify(cv.referencias),
+        cv.foto]
     );
     return res.json({ ok: true, cv: rows[0] });
   } catch (error) {
