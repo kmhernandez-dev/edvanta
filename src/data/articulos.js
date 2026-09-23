@@ -1493,6 +1493,30 @@ const edvantaArticulos = [
     image: '/img/cursos/gestion-de-calidad.webp',
     mdPath: `${BASE}/calidad-farmaceutica/ema-regulatory-training-atmp.md`,
   },
+  {
+    slug: 'farmacovigilancia-industrial-resolucion-invima-2024015321',
+    marca: 'edvanta',
+    category: 'Calidad farmacéutica',
+    title: 'Farmacovigilancia industrial en Colombia: guía completa de la Resolución INVIMA 2024015321 de 2024',
+    description: 'A quiénes aplica, componentes del programa, plazos de reporte, señales, PBRER/PSUR, PGR, contratación de terceros y lista de verificación para auditorías de farmacovigilancia.',
+    readingTime: '16 min',
+    date: '2026-09-22',
+    updated: '2026-09-22',
+    image: '/img/cursos/gestion-de-calidad.webp',
+    mdPath: `${BASE}/calidad-farmaceutica/farmacovigilancia-industrial-resolucion-invima-2024015321.md`,
+  },
+  {
+    slug: 'normatividad-salud-digital-ihce-rda-siifa-rips-fev-udi-di',
+    marca: 'edvanta',
+    category: 'Calidad farmacéutica',
+    title: 'Normatividad sanitaria digital en Colombia: IHCE, RDA, SIIFA, RIPS-FEV y estándar semántico de dispositivos médicos',
+    description: 'Compendio de la normatividad vigente de salud digital en Colombia: historia clínica electrónica interoperable, RDA, SIIFA, RIPS como soporte de facturación y estándar semántico UDI-DI, con enlaces oficiales.',
+    readingTime: '14 min',
+    date: '2026-09-22',
+    updated: '2026-09-22',
+    image: '/img/cursos/gestion-de-calidad.webp',
+    mdPath: `${BASE}/calidad-farmaceutica/normatividad-salud-digital-ihce-rda-siifa-rips-fev-udi-di.md`,
+  },
 ];
 
 export const articulos = [...legacyArticulos, ...edvantaArticulos];

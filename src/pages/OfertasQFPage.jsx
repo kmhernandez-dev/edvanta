@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
-  ArrowLeft, BriefcaseBusiness, Building2, ExternalLink, MapPin,
+  AlertTriangle, ArrowLeft, BriefcaseBusiness, Building2, CalendarDays, ExternalLink, MapPin, ShieldCheck,
 } from 'lucide-react';
 import SiteHeader from '../components/edvanta/SiteHeader';
 import SiteFooter from '../components/edvanta/SiteFooter';
@@ -10,36 +10,31 @@ import { ofertasQF } from '../data/empleo/ofertasQF';
 
 const FORMATO_FECHA = new Intl.DateTimeFormat('es-CO', { day: 'numeric', month: 'long', year: 'numeric' });
 
-const ORDEN_DIAS = ['2026-09-03', '2026-09-02', '2026-09-01', '2026-08-31', '2026-08-30', '2026-08-29', '2026-08-28'];
-
-const DIAS_LABEL = {
-  '2026-09-03': '3 de septiembre',
-  '2026-09-02': '2 de septiembre',
-  '2026-09-01': '1 de septiembre',
-  '2026-08-31': '31 de agosto',
-  '2026-08-30': '30 de agosto',
-  '2026-08-29': '29 de agosto',
-  '2026-08-28': '28 de agosto',
-};
-
 function formatearFecha(iso) {
-  try { return FORMATO_FECHA.format(new Date(iso)); } catch { return iso; }
+  try { return FORMATO_FECHA.format(new Date(`${iso}T12:00:00`)); } catch { return iso; }
 }
 
 const AREAS_TODAS = ['Todas', ...Array.from(new Set([
-  'Asuntos regulatorios', 'Farmacovigilancia', 'Clínica y central de mezclas',
-  'Calidad y laboratorio', 'I+D y producción', 'Prácticas',
+  'Prácticas', 'Farmacia asistencial', 'Calidad y laboratorio', 'Dirección técnica',
+  'Producción', 'Asuntos regulatorios', 'Cosméticos', 'Otras áreas afines',
 ]))];
 
-function clasificarArea(oferta) {
-  const texto = `${oferta.cargo} ${oferta.requisitos}`.toLowerCase();
-  if (/practicante/.test(texto)) return 'Prácticas';
-  if (/regulatori|invima|registros sanitarios/.test(texto)) return 'Asuntos regulatorios';
-  if (/farmacovigilancia|tecnovigilancia|icsr|psur/.test(texto)) return 'Farmacovigilancia';
-  if (/control de calidad|calidad|hplc|validaci|métodos analíticos|metodos analiticos|auditor/.test(texto)) return 'Calidad y laboratorio';
-  if (/formulaci|manufactura|producci|i\+d|mezclas|central/.test(texto)) return 'I+D y producción';
-  return 'Clínica y central de mezclas';
-}
+const ORDEN_SECCIONES = [
+  'Prácticas, últimos semestres y recién egresados',
+  'Bogotá y alrededores',
+  'Medellín y área metropolitana',
+  'Cali y Yumbo',
+  'Barranquilla, Galapa y Soledad',
+  'Oportunidades compatibles: verificar perfil profesional',
+];
+
+const RECOMENDACIONES = [
+  'Revisa la descripción completa y la ciudad antes de postularte.',
+  'Confirma salario, contrato y horario durante el proceso.',
+  'Mantén actualizados la hoja de vida, LinkedIn, tarjeta profesional y RETHUS, cuando corresponda.',
+  'No realices pagos por inscripciones, exámenes, entrevistas o contratación.',
+  'En LinkedIn puede ser necesario iniciar sesión para completar la postulación.',
+];
 
 export default function OfertasQFPage() {
   const [area, setArea] = useState('Todas');
@@ -47,8 +42,8 @@ export default function OfertasQFPage() {
 
   useEffect(() => {
     updatePageSeo({
-      title: '22 ofertas para Químicos Farmacéuticos | Edvanta',
-      description: '22 vacantes publicadas en Colombia entre el 28 de agosto y el 3 de septiembre de 2026. Postúlate directo en la fuente original.',
+      title: 'Ofertas para Químicos Farmacéuticos | Edvanta',
+      description: 'Vacantes para químicos farmacéuticos en Bogotá, Medellín, Cali y Barranquilla, actualizadas el 22 de septiembre de 2026. Postúlate directo en la fuente original.',
       canonical: 'https://edvanta.co/empleo/ofertas-qf',
       keywords: ['ofertas químico farmacéutico', 'vacantes farmacia Colombia', 'empleo QF', 'vacantes farmacéuticas septiembre 2026'],
       jsonLdId: 'ofertas-qf',
@@ -57,16 +52,14 @@ export default function OfertasQFPage() {
         '@type': 'WebPage',
         name: 'Ofertas laborales para Químicos Farmacéuticos',
         url: 'https://edvanta.co/empleo/ofertas-qf',
-        description: '22 vacantes publicadas en Colombia entre el 28 de agosto y el 3 de septiembre de 2026.',
+        description: 'Vacantes verificadas para químicos farmacéuticos en Colombia, actualizadas el 22 de septiembre de 2026.',
       },
     });
   }, []);
 
-  const ofertasConArea = useMemo(() => ofertasQF.map(o => ({ ...o, area: clasificarArea(o) })), []);
-
   const filtradas = useMemo(() => {
     const q = busqueda.trim().toLowerCase();
-    return ofertasConArea.filter(o => {
+    return ofertasQF.filter(o => {
       const pasaArea = area === 'Todas' || o.area === area;
       const pasaTexto = !q
         || o.cargo.toLowerCase().includes(q)
@@ -74,10 +67,10 @@ export default function OfertasQFPage() {
         || o.ciudad.toLowerCase().includes(q);
       return pasaArea && pasaTexto;
     });
-  }, [ofertasConArea, area, busqueda]);
+  }, [area, busqueda]);
 
-  const porDia = useMemo(() => ORDEN_DIAS
-    .map(dia => ({ dia, ofertas: filtradas.filter(o => o.fecha === dia) }))
+  const porSeccion = useMemo(() => ORDEN_SECCIONES
+    .map(seccion => ({ seccion, ofertas: filtradas.filter(o => o.seccion === seccion) }))
     .filter(b => b.ofertas.length), [filtradas]);
 
   return (
@@ -98,8 +91,10 @@ export default function OfertasQFPage() {
               Ofertas laborales para Químicos Farmacéuticos
             </h1>
             <p className="mt-3 max-w-2xl text-base leading-7 text-edvanta-light">
-              {ofertasQF.length} vacantes publicadas en Colombia entre el <strong className="text-white">28 de agosto</strong> y el{' '}
-              <strong className="text-white">3 de septiembre de 2026</strong>. Toca el botón de cada oferta para postularte directo en la fuente original.
+              {ofertasQF.length} vacantes verificadas en <strong className="text-white">Bogotá, Medellín, Cali y Barranquilla</strong>, organizadas de las más recientes a las más antiguas. Toca el botón de cada oferta para postularte directo en la fuente original.
+            </p>
+            <p className="mt-4 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 text-xs font-bold text-white">
+              <CalendarDays className="h-4 w-4" aria-hidden="true" /> Actualización: 22 de septiembre de 2026
             </p>
           </div>
         </section>
@@ -130,12 +125,12 @@ export default function OfertasQFPage() {
           </p>
         </section>
 
-        {/* Listado por día */}
+        {/* Listado por sección */}
         <section className="mx-auto max-w-5xl px-4 pb-16 pt-4 sm:px-6 lg:px-8">
-          {porDia.map(({ dia, ofertas }) => (
-            <div key={dia} className="mt-8">
+          {porSeccion.map(({ seccion, ofertas }) => (
+            <div key={seccion} className="mt-8">
               <h2 className="flex items-center gap-3 text-lg font-bold text-edvanta-deep">
-                Publicadas el {DIAS_LABEL[dia] || formatearFecha(dia)}
+                {seccion}
                 <span className="h-0.5 flex-1 bg-amber-400/60" aria-hidden="true" />
               </h2>
               <div className="mt-4 grid gap-4 md:grid-cols-2">
@@ -143,16 +138,23 @@ export default function OfertasQFPage() {
                   <article key={o.id} className="flex min-h-56 flex-col rounded-xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:border-edvanta-blue/40 hover:shadow-md">
                     <div className="flex items-start justify-between gap-3">
                       <span className="rounded-full bg-edvanta-light px-2.5 py-1 text-[10px] font-bold uppercase text-edvanta-blue">{o.area}</span>
-                      <span className="rounded-full bg-slate-100 px-2 py-0.5 text-[10px] font-bold text-slate-600">{o.modalidad}</span>
+                      {o.modalidad && <span className="rounded-full bg-slate-100 px-2 py-0.5 text-[10px] font-bold text-slate-600">{o.modalidad}</span>}
                     </div>
                     <h3 className="mt-3 text-lg font-bold leading-snug text-edvanta-deep">{o.cargo}</h3>
                     <p className="mt-1 flex items-center gap-1.5 text-sm font-semibold text-slate-700">
                       <Building2 className="h-4 w-4 text-amber-600" aria-hidden="true" />{o.empresa}
                     </p>
                     <p className="mt-3 flex-1 text-sm leading-6 text-slate-600">{o.requisitos}</p>
+                    {o.nota && (
+                      <p className="mt-3 rounded-lg border border-amber-200 bg-amber-50 px-3 py-2 text-xs font-semibold leading-5 text-amber-900">
+                        <AlertTriangle className="mr-1 inline h-3.5 w-3.5" aria-hidden="true" />
+                        {o.nota}
+                      </p>
+                    )}
                     <div className="mt-4 flex flex-wrap gap-2 text-xs font-semibold text-slate-500">
                       <span className="inline-flex items-center gap-1"><MapPin className="h-3.5 w-3.5" />{o.ciudad}</span>
-                      <span>Publicada {formatearFecha(o.fecha)}</span>
+                      {o.fecha && <span>Publicada el {formatearFecha(o.fecha)}</span>}
+                      {o.publicada && <span className="text-teal-700">{o.publicada}</span>}
                     </div>
                     <a
                       href={o.contacto}
@@ -167,11 +169,43 @@ export default function OfertasQFPage() {
               </div>
             </div>
           ))}
-          {!porDia.length && (
+          {!porSeccion.length && (
             <p className="mt-10 rounded-xl border border-dashed border-slate-300 bg-white px-4 py-10 text-center text-sm font-semibold text-slate-500">
               No hay ofertas con ese filtro. Prueba con otra área o borra la búsqueda.
             </p>
           )}
+        </section>
+
+        {/* Nota fitoterapéuticos */}
+        <section className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+          <div className="rounded-xl border border-teal-200 bg-teal-50 p-5">
+            <p className="flex items-start gap-2 text-sm leading-6 text-teal-900">
+              <ShieldCheck className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
+              <span>
+                <strong className="font-bold">Fitoterapéuticos:</strong> en la revisión del 22 de septiembre no encontramos una vacante reciente, verificable y activa que solicitara expresamente un Químico Farmacéutico para productos fitoterapéuticos en las cuatro ciudades. La oportunidad de Nutramerican Pharma es cercana por su trabajo con suplementos y formulación, pero se presenta arriba como una vacante compatible para verificar perfil, no como una vacante específica de fitoterapéuticos.
+              </span>
+            </p>
+          </div>
+        </section>
+
+        {/* Recomendaciones */}
+        <section className="mx-auto max-w-5xl px-4 py-10 sm:px-6 lg:px-8">
+          <div className="rounded-xl border border-amber-200 bg-amber-50 p-5">
+            <p className="flex items-center gap-2 text-sm font-bold text-amber-900">
+              <AlertTriangle className="h-4 w-4" aria-hidden="true" /> Antes de postularte
+            </p>
+            <p className="mt-1 text-sm leading-6 text-amber-900">
+              Las ofertas pueden cerrar o cambiar sus condiciones sin previo aviso. Ten en cuenta:
+            </p>
+            <ul className="mt-3 space-y-1.5 text-sm leading-6 text-amber-900">
+              {RECOMENDACIONES.map(r => (
+                <li key={r} className="flex items-start gap-2">
+                  <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-amber-500" aria-hidden="true" />
+                  {r}
+                </li>
+              ))}
+            </ul>
+          </div>
         </section>
 
         <section className="border-t border-slate-200 bg-white">

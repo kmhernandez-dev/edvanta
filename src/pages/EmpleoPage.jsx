@@ -187,7 +187,7 @@ export default function EmpleoPage() {
                     <p className="mt-1 text-sm font-semibold text-edvanta-blue">{v.empresa}</p>
                     <div className="mt-3 flex flex-wrap gap-3 text-xs text-edvanta-muted">
                       <span className="inline-flex items-center gap-1"><MapPin className="h-3.5 w-3.5" aria-hidden="true" />{v.ciudad}</span>
-                      <span className="inline-flex items-center gap-1"><Wifi className="h-3.5 w-3.5" aria-hidden="true" />{v.modalidad}</span>
+                      {v.modalidad && <span className="inline-flex items-center gap-1"><Wifi className="h-3.5 w-3.5" aria-hidden="true" />{v.modalidad}</span>}
                       {v.fecha && <span>{formatearFecha(v.fecha)}</span>}
                     </div>
                     {v.requisitos && <p className="mt-3 line-clamp-3 flex-1 text-sm leading-6 text-edvanta-muted">{v.requisitos}</p>}
