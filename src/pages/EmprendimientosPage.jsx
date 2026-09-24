@@ -131,9 +131,9 @@ export default function EmprendimientosPage() {
         {/* Espacio reservado para la imagen de esta landing */}
         <div className="mx-auto max-w-7xl px-4 pt-10 sm:px-6 lg:px-8">
           <ImageSlot
-            ratio="banner"
-            label="Equipo trabajando en su emprendimiento"
-            hint="Foto horizontal 16:9, mínimo 1600 × 900 px: dos o tres personas planeando su proyecto."
+            ratio="wide"
+            src="/img/carrera/equipo-emprendimiento-farmaceutico.webp"
+            alt="Tres profesionales farmacéuticos revisando un producto frente a un tablero con los pasos del proyecto: idea, desarrollo, validación e impacto en salud"
           />
         </div>
 

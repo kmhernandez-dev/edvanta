@@ -55,10 +55,21 @@ que va ahí y el tamaño recomendado. Cuando exista el archivo:
 ```
 
 Si el archivo no carga, la página no queda rota: se ve el espacio
-marcado. Las fotos van en `public/img/`; las de empleo, en
-`public/img/empleo/` (entrevista, escribir el correo, ejemplo de correo,
-áreas de la profesión y equipo). El resto de los espacios sigue punteado
-a la espera de su foto.
+marcado. Las fotos van en `public/img/`, en una carpeta por tema:
+`empleo/`, `talento/`, `empresas/`, `carrera/` y `comunidad/`.
+
+Dos cuidados al colocar una foto:
+
+- La proporción del espacio tiene que ser la de la foto. Las capturas de
+  pantalla son 16:9 (`ratio="wide"`); metidas en un `banner` (21:9) se
+  les recorta arriba y abajo, y ahí se pierde justo lo que se quería
+  mostrar.
+- `alt` describe lo que se ve, no repite el título de la sección: es lo
+  único que recibe quien usa un lector de pantalla.
+
+Siguen punteados, a la espera de su foto: la comparación «antes y
+después» de la hoja de vida, la captura del aula virtual y las fotos de
+la portada de Empresas y de Herramientas.
 
 ## 3. Mapa de landing por proceso
 

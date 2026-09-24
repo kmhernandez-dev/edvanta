@@ -95,9 +95,9 @@ export default function PracticasPage() {
         {/* Espacio reservado para la imagen de esta landing */}
         <div className="mx-auto max-w-7xl px-4 pt-10 sm:px-6 lg:px-8">
           <ImageSlot
-            ratio="banner"
-            label="Estudiante en su sitio de prácticas"
-            hint="Foto horizontal 16:9, mínimo 1600 × 900 px: practicante en farmacia, laboratorio o planta, con bata y acompañamiento."
+            ratio="wide"
+            src="/img/carrera/practicas-laboratorio-acompanamiento.webp"
+            alt="Practicante tomando notas en el laboratorio mientras una química farmacéutica la acompaña con una tableta"
           />
         </div>
 

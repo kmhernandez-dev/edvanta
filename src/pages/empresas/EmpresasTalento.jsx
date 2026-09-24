@@ -91,8 +91,8 @@ export default function EmpresasTalento() {
             <ImageSlot
               ratio="photo"
               priority
-              label="Profesional farmacéutico en su puesto de trabajo"
-              hint="Foto 4:3, mínimo 1200 × 900 px: laboratorio, planta o farmacia hospitalaria, con buena luz."
+              src="/img/empresas/quimica-farmaceutica-en-planta.webp"
+              alt="Química farmacéutica revisando una tableta en la planta de producción, con la línea de llenado al fondo"
             />
           )}
         />
@@ -172,8 +172,8 @@ export default function EmpresasTalento() {
             <div className="mt-8 lg:mt-0">
               <ImageSlot
                 ratio="portrait"
-                label="Equipo de selección revisando perfiles"
-                hint="Foto vertical 3:4, mínimo 900 × 1200 px."
+                src="/img/empresas/seleccion-revisando-perfiles.webp"
+                alt="Dos personas de selección revisando en un portátil el buscador de talento de Edvanta, con una hoja de vida impresa sobre la mesa"
               />
             </div>
           </div>

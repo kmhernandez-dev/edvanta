@@ -67,9 +67,9 @@ export default function ComunidadPage() {
         {/* Espacio reservado para la imagen de esta landing */}
         <div className="mx-auto max-w-7xl px-4 pt-10 sm:px-6 lg:px-8">
           <ImageSlot
-            ratio="banner"
-            label="Encuentro de la comunidad de químicos farmacéuticos"
-            hint="Foto horizontal 16:9, mínimo 1600 × 900 px: encuentro, taller o reunión de la comunidad."
+            ratio="wide"
+            src="/img/comunidad/encuentro-comunidad-farmaceutica.webp"
+            alt="Grupo de químicos farmacéuticos reunidos alrededor de una mesa, conversando sobre una tableta"
           />
         </div>
 

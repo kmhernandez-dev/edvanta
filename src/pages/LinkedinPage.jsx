@@ -108,9 +108,9 @@ export default function LinkedinPage() {
         {/* Espacio reservado para la imagen de esta landing */}
         <div className="mx-auto max-w-7xl px-4 pt-10 sm:px-6 lg:px-8">
           <ImageSlot
-            ratio="banner"
-            label="Perfil de LinkedIn bien armado"
-            hint="Captura del perfil (con datos de ejemplo) o foto de un profesional trabajando en su computador. 1600 × 900 px."
+            ratio="wide"
+            src="/img/carrera/perfil-linkedin-farmaceutico.webp"
+            alt="Perfil profesional de ejemplo con las partes señaladas: foto, título, resumen, proyectos destacados, experiencia, habilidades y certificaciones"
           />
         </div>
 

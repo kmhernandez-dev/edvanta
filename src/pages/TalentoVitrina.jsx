@@ -96,10 +96,10 @@ export default function TalentoVitrina() {
           )}
           media={(
             <ImageSlot
-              ratio="wide"
+              ratio="photo"
               priority
-              src="/img/empleo/profesionales-farmaceuticos-equipo.webp"
-              alt="Grupo de químicos farmacéuticos reunidos alrededor de una mesa, conversando sobre una tableta"
+              src="/img/talento/perfil-profesional-edvanta.webp"
+              alt="Química farmacéutica en su laboratorio junto a su ficha de perfil en Edvanta, con ciudad, disponibilidad y competencias"
             />
           )}
         />
@@ -182,8 +182,8 @@ export default function TalentoVitrina() {
           <div className="gap-10 lg:grid lg:grid-cols-[minmax(0,44%)_minmax(0,1fr)] lg:items-center">
             <ImageSlot
               ratio="photo"
-              label="Ejemplo de un perfil destacado"
-              hint="Captura del perfil publicado con la insignia de destacado. 1200 × 900 px."
+              src="/img/talento/perfil-destacado-edvanta.webp"
+              alt="Perfil publicado en Edvanta: resumen profesional, competencias, certificaciones verificadas, experiencia, proyectos y evidencia adjunta"
             />
             <div className="mt-8 lg:mt-0">
               <SectionHeading eyebrow="Consejos" title="Qué hace que una empresa te escriba" />

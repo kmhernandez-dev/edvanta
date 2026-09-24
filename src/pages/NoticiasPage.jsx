@@ -43,9 +43,9 @@ export default function NoticiasPage() {
         {/* Espacio reservado para la imagen de esta landing */}
         <div className="mx-auto max-w-7xl px-4 pt-10 sm:px-6 lg:px-8">
           <ImageSlot
-            ratio="banner"
-            label="Sala de redacción o prensa del sector"
-            hint="Foto horizontal 16:9, mínimo 1600 × 900 px, relacionada con el sector farmacéutico en Colombia."
+            ratio="wide"
+            src="/img/carrera/noticias-sector-farmaceutico.webp"
+            alt="Profesional leyendo las noticias del sector farmacéutico en un portátil y una tableta, con titulares sobre normatividad y farmacovigilancia"
           />
         </div>
 

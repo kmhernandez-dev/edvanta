@@ -114,8 +114,8 @@ export default function EmpresasCapacitacion() {
             <ImageSlot
               ratio="photo"
               priority
-              label="Capacitación del equipo en curso"
-              hint="Foto horizontal 4:3, mínimo 1200 × 900 px: personas del sector en formación o una clase del aula proyectada."
+              src="/img/empresas/capacitacion-equipo-farmaceutico.webp"
+              alt="Capacitación en calidad farmacéutica, cumplimiento regulatorio y buenas prácticas ante un equipo reunido en una sala"
             />
           )}
         />
@@ -216,9 +216,9 @@ export default function EmpresasCapacitacion() {
           <Steps className="mt-8" items={PASOS} />
           <div className="mt-8">
             <ImageSlot
-              ratio="banner"
-              label="Panel de avance del aula"
-              hint="Captura ancha del tablero con el avance por grupo. 2100 × 900 px."
+              ratio="wide"
+              src="/img/empresas/panel-capacitacion-edvanta.webp"
+              alt="Panel de capacitación de Edvanta: participantes, cursos completados, certificados emitidos, cumplimiento por área y próximos vencimientos"
             />
           </div>
         </Section>
