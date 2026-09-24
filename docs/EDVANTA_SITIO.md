@@ -55,7 +55,10 @@ que va ahí y el tamaño recomendado. Cuando exista el archivo:
 ```
 
 Si el archivo no carga, la página no queda rota: se ve el espacio
-marcado. Las fotos van en `public/img/`.
+marcado. Las fotos van en `public/img/`; las de empleo, en
+`public/img/empleo/` (entrevista, escribir el correo, ejemplo de correo,
+áreas de la profesión y equipo). El resto de los espacios sigue punteado
+a la espera de su foto.
 
 ## 3. Mapa de landing por proceso
 
