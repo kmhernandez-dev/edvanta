@@ -136,8 +136,8 @@ export default function EmpleoPage() {
             <ImageSlot
               ratio="photo"
               priority
-              label="Profesional farmacéutico en una entrevista"
-              hint="Foto 4:3, mínimo 1200 × 900 px: entrevista o profesional en su lugar de trabajo."
+              src="/img/empleo/entrevista-quimica-farmaceutica.webp"
+              alt="Química farmacéutica conversando en una entrevista de trabajo con dos personas del equipo de selección"
             />
           )}
         />

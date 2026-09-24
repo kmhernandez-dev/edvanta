@@ -126,8 +126,8 @@ export default function CorreosRRHH() {
             <ImageSlot
               ratio="photo"
               priority
-              label="Profesional escribiendo un correo"
-              hint="Foto 4:3, mínimo 1200 × 900 px: escritorio con computador, ambiente profesional."
+              src="/img/empleo/escribiendo-correo-postulacion.webp"
+              alt="Química farmacéutica escribiendo en su computador el correo de postulación, con la hoja de vida en PDF ya adjunta"
             />
           )}
         />
@@ -199,8 +199,8 @@ export default function CorreosRRHH() {
             <div className="mt-8 lg:mt-0">
               <ImageSlot
                 ratio="wide"
-                label="Ejemplo de correo bien escrito"
-                hint="Captura de un correo con asunto claro y archivo adjunto. 1600 × 900 px."
+                src="/img/empleo/ejemplo-correo-postulacion.webp"
+                alt="Correo de postulación en pantalla: asunto con el cargo y el nombre, mensaje breve de tres párrafos y la hoja de vida adjunta en PDF"
               />
             </div>
           </div>

@@ -96,10 +96,10 @@ export default function TalentoVitrina() {
           )}
           media={(
             <ImageSlot
-              ratio="photo"
+              ratio="wide"
               priority
-              label="Profesional farmacéutica mostrando su portafolio"
-              hint="Foto 4:3, mínimo 1200 × 900 px. Puede ser un retrato profesional sobre fondo claro."
+              src="/img/empleo/profesionales-farmaceuticos-equipo.webp"
+              alt="Grupo de químicos farmacéuticos reunidos alrededor de una mesa, conversando sobre una tableta"
             />
           )}
         />

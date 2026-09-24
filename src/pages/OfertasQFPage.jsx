@@ -1,11 +1,11 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import {
   AlertTriangle, Building2, CalendarDays, ExternalLink, FileText, MapPin, Search, ShieldCheck, Sparkles,
 } from 'lucide-react';
 import SiteHeader from '../components/edvanta/SiteHeader';
 import SiteFooter from '../components/edvanta/SiteFooter';
 import {
-  Breadcrumb, Btn, Card, CtaBanner, LandingHero, Section, Stat,
+  Breadcrumb, Btn, Card, CtaBanner, ImageSlot, LandingHero, Section, SectionHeading, Stat,
 } from '../components/edvanta/ui';
 import { updatePageSeo } from '../utils/seo';
 import { ofertasQF } from '../data/empleo/ofertasQF';
@@ -75,6 +75,17 @@ export default function OfertasQFPage() {
     .map((seccion) => ({ seccion, ofertas: filtradas.filter((o) => o.seccion === seccion) }))
     .filter((b) => b.ofertas.length), [filtradas]);
 
+  // Volver a la lista desde los atajos de abajo. Dos cuidados:
+  //  · el salto va en un efecto de diseño, con la lista ya filtrada en pantalla;
+  //  · sin animación, porque al filtrar la página se acorta y el navegador recorta
+  //    un desplazamiento animado que todavía va en camino.
+  const saltarALista = useRef(false);
+  useLayoutEffect(() => {
+    if (!saltarALista.current) return;
+    saltarALista.current = false;
+    document.getElementById('ofertas')?.scrollIntoView();
+  });
+
   // Para el resumen de la portada: ciudades distintas, sin el detalle del barrio.
   const ciudades = useMemo(
     () => new Set(ofertasQF.map((o) => o.ciudad.split(',')[0].trim())).size,
@@ -107,9 +118,11 @@ export default function OfertasQFPage() {
           )}
         />
 
-        {/* El buscador acompaña a la lista: al terminarla, deja de seguir */}
-        <div className="relative">
-          <div id="ofertas" className="sticky top-[7.5rem] z-20 scroll-mt-32 border-b border-edvanta-border bg-white/95 backdrop-blur">
+        {/* El buscador acompaña a la lista: al terminarla, deja de seguir. El ancla
+            va en el contenedor y no en la barra: una barra pegajosa se mueve con la
+            página y saltar hacia ella deja el destino a medio camino. */}
+        <div id="ofertas" className="relative scroll-mt-32">
+          <div className="sticky top-[7.5rem] z-20 border-b border-edvanta-border bg-white/95 backdrop-blur">
             <div className="mx-auto max-w-7xl px-4 py-4 sm:px-6 lg:px-8">
               <div className="flex flex-col gap-3 lg:flex-row lg:items-center">
                 <div className="relative lg:w-72 lg:shrink-0">
@@ -200,6 +213,40 @@ export default function OfertasQFPage() {
             )}
           </Section>
         </div>
+
+        {/* Las áreas del sector: la foto lleva de vuelta a la lista filtrada */}
+        <Section tone="surface" bordered>
+          <div className="gap-10 lg:grid lg:grid-cols-[minmax(0,46%)_minmax(0,1fr)] lg:items-center">
+            <ImageSlot
+              ratio="wide"
+              src="/img/empleo/areas-quimico-farmaceutico.webp"
+              alt="Química farmacéutica mirando cuatro salidas de la profesión: la línea de llenado de una planta, el microscopio del laboratorio, la atención en el mostrador de una farmacia y un tablero de datos"
+            />
+            <div className="mt-8 lg:mt-0">
+              <SectionHeading
+                eyebrow="Todas las áreas"
+                title="De la planta al laboratorio, de la farmacia a los datos"
+                desc="El banco reúne vacantes de las ocho áreas donde trabaja hoy un químico farmacéutico en Colombia. Toca la tuya y la lista de arriba se filtra sola."
+              />
+              <div className="mt-6 flex flex-wrap gap-2">
+                {AREAS_TODAS.slice(1).map((a) => {
+                  const cuantas = ofertasQF.filter((o) => o.area === a).length;
+                  return (
+                    <button
+                      key={a}
+                      type="button"
+                      onClick={() => { setArea(a); saltarALista.current = true; }}
+                      className="inline-flex min-h-10 items-center gap-2 rounded-full border border-edvanta-border bg-white px-4 text-sm font-semibold text-edvanta-deep transition hover:border-edvanta-blue/40 hover:text-edvanta-blue"
+                    >
+                      {a}
+                      <span className="text-xs font-bold text-edvanta-subtle">{cuantas}</span>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        </Section>
 
         {/* Avisos antes de postularse */}
         <Section tone="surface" bordered className="!py-12">
