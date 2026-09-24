@@ -145,7 +145,39 @@ Todo ocurre en el navegador: el PDF nunca se envía a un servidor.
 | Leer el PDF | `src/lib/cv/pdfText.js` | Reordena el texto por posición (encabezado, cada columna, pie) y cuenta páginas, columnas, imágenes, enlaces y escaneos sin texto |
 | Interpretar | `src/lib/cv/lector.js` | Nombre, contacto, secciones, cargos con fechas y logros, años de experiencia, estudios, habilidades e idiomas |
 | Diagnosticar | `src/lib/cv/diagnostico.js` | Puntaje en seis categorías, prioridades con cómo corregirlas, palabras clave del cargo y reescritura de frases débiles |
-| Generar el PDF | `src/lib/cv/pdf.js` | Plantilla oficial Edvanta y formato ATS simple |
+| Generar el PDF | `src/lib/cv/pdf.js` | Diseño oficial Edvanta y formato ATS simple |
+| Dibujar los otros 7 | `src/lib/cv/plantillas.js` | Cada diseño en milímetros con jsPDF; se carga solo al generar |
+| Listar los diseños | `src/lib/cv/catalogo.js` | Nombre y descripción de cada uno. Aparte a propósito: la galería los lista sin cargar el dibujo |
+| Ver cómo queda | `src/lib/cv/vistaPrevia.js` | Genera el PDF y lo dibuja con pdf.js: lo que se ve es el archivo que se descarga |
+| Ayudar a escribir | `src/lib/cv/redaccion.js` | Años de experiencia, perfil redactado con los datos reales y sugerencias de logros y habilidades por cargo |
+
+### Los cuatro pasos y la vista previa
+
+La herramienta (`src/components/empleo/CvBuilder.jsx`) abre en **modo
+rápido** (`CvExpres.jsx`): cuatro pasos de un minuto cada uno en vez de un
+formulario largo. Quien prefiera el formulario completo lo tiene en la
+pestaña «Editor completo»; los datos son el mismo objeto.
+
+| Paso | Qué pide | Ayudas |
+| --- | --- | --- |
+| 1. Tus datos | Nombre, contacto y cargo objetivo | Cargos sugeridos del sector |
+| 2. Experiencia | Cargo, empresa y fechas | Mes y año en listas, «Trabajo aquí», un logro por renglón con verbos y ejemplos del cargo |
+| 3. Estudios y habilidades | Títulos y competencias | Habilidades del sector con un clic |
+| 4. Diseño y descarga | El diseño final | «Escribir mi perfil» con los datos ya cargados y los 9 diseños con miniatura |
+
+La vista previa **no es una versión web del CV**: genera el PDF de verdad y
+lo dibuja en un canvas. Dos cosas que cuestan de encontrar si se rompe:
+
+> `page.render()` se llama con `intent: 'print'`. En el modo de pantalla,
+> pdf.js dibuja por partes con `requestAnimationFrame`, que el navegador
+> detiene cuando la pestaña no está a la vista: la promesa no se resuelve
+> nunca y la vista previa se queda en «Preparando…».
+>
+> Dibujar necesita las fuentes base y los módulos WebAssembly de pdf.js.
+> `scripts/preparar-pdfjs.cjs` los copia a `public/pdfjs/` antes de compilar
+> y `OPCIONES_DOCUMENTO` los declara en cada `getDocument`. Sin eso, el
+> worker avisa «Ensure that the standardFontDataUrl API parameter is
+> provided» y no dibuja.
 
 ### El worker de pdf.js y nginx
 
