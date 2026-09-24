@@ -13,7 +13,7 @@
 
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Check, Image as ImageIcon, Loader2, User } from 'lucide-react';
-import { PLANTILLAS } from '../../lib/cv/plantillas';
+import { PLANTILLAS } from '../../lib/cv/catalogo';
 import { dibujarCv, huellaCv, miniaturaCv } from '../../lib/cv/vistaPrevia';
 import { ejemploCv } from '../../lib/cv/ejemplo';
 

@@ -8,7 +8,7 @@
  */
 import { describe, expect, it } from 'vitest';
 import { generarCvPdf, nombreArchivo } from '../lib/cv/pdf';
-import { PLANTILLAS, esEstiloPlantilla } from '../lib/cv/plantillas';
+import { PLANTILLAS, esEstiloPlantilla } from '../lib/cv/catalogo';
 
 const CV = {
   nombre: 'Karla María Hernández', titulo: 'Química farmacéutica', email: 'k@correo.com', telefono: '+57 300 000 0000',
