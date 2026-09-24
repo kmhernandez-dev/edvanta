@@ -33,3 +33,6 @@ yarn-error.log*
 # Datos locales del aula (base PGlite, archivos y correos de desarrollo)
 api/.data/
 .data/
+
+# Fuentes de pdf.js copiadas por scripts/preparar-pdfjs.cjs (no se versionan)
+public/pdfjs/

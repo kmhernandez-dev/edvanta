@@ -258,3 +258,48 @@ Dispensación y control de vencimientos.`, { hoy: HOY });
     expect(ats.output()).not.toContain('[object Object]');
   });
 });
+
+describe('hoja de vida · ayudas para escribir rápido', () => {
+  it('cuenta los años de experiencia con las fechas del creador', async () => {
+    const { anosDeExperiencia } = await import('../lib/cv/redaccion');
+    const experiencia = [
+      { inicio: 'Feb 2022', fin: '' },            // sigue ahí → hasta hoy
+      { inicio: 'Mar 2019', fin: 'Ene 2022' },
+    ];
+    // Mar 2019 → Sep 2026, sin huecos: 7,6 años
+    expect(anosDeExperiencia(experiencia, HOY)).toBeCloseTo(7.6, 1);
+    expect(anosDeExperiencia([], HOY)).toBe(0);
+  });
+
+  it('redacta el perfil con lo que la persona ya escribió', async () => {
+    const { redactarPerfil } = await import('../lib/cv/redaccion');
+    const { ejemploCv } = await import('../lib/cv/ejemplo');
+    const cv = ejemploCv();
+    const perfil = redactarPerfil(cv, 'analista-calidad');
+    expect(perfil).toContain('Química farmacéutica');
+    expect(perfil).toMatch(/años de experiencia/);
+    expect(perfil).toContain('BPM');
+    // Sin datos no se inventa nada
+    expect(redactarPerfil({ titulo: '', experiencia: [], habilidades: [] })).toBe('');
+  });
+
+  it('sugiere logros y habilidades del cargo sin repetir los que ya están', async () => {
+    const { sugerenciasDeHabilidades, sugerenciasDeLogros } = await import('../lib/cv/redaccion');
+    const habilidades = sugerenciasDeHabilidades('analista-calidad', ['BPM']);
+    expect(habilidades.length).toBeGreaterThan(3);
+    expect(habilidades.map((h) => h.toLowerCase())).not.toContain('bpm');
+    const logros = sugerenciasDeLogros('analista-calidad', []);
+    expect(logros.length).toBeGreaterThan(1);
+    const yaUsado = logros[0];
+    expect(sugerenciasDeLogros('analista-calidad', [yaUsado])).not.toContain(yaUsado);
+  });
+
+  it('el catálogo de diseños incluye el oficial, las plantillas y el formato plano', async () => {
+    const { DISENOS, disenoPorId } = await import('../components/empleo/plantillasUi');
+    expect(DISENOS.length).toBe(9);
+    expect(DISENOS[0].id).toBe('edvanta');
+    expect(DISENOS.at(-1).id).toBe('ats');
+    expect(DISENOS.filter((d) => d.foto).map((d) => d.id)).toEqual(['ejecutiva', 'azul']);
+    expect(disenoPorId('no-existe').id).toBe('edvanta');
+  });
+});

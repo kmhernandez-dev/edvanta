@@ -11,7 +11,7 @@ import { fileUrl } from '../api';
 import { Button, IconButton } from '../ui/Button';
 import { Spinner } from '../ui/States';
 // Carga compartida: resuelve el worker aunque el servidor lo entregue mal.
-import { cargarPdfJs as loadPdfJs } from '../../lib/pdfjs';
+import { cargarPdfJs as loadPdfJs, OPCIONES_DOCUMENTO } from '../../lib/pdfjs';
 
 const ZOOMS = [0.5, 0.75, 1, 1.25, 1.5, 2];
 
@@ -43,7 +43,9 @@ export default function PdfViewer({ fileId, title, canDownload = false, mode = '
       .then((lib) => {
         if (!alive) return null;
         setPdfjs(lib);
-        task = lib.getDocument({ url: fileUrl(fileId), withCredentials: true, isEvalSupported: false });
+        // Las opciones incluyen las fuentes base: sin ellas, un PDF que no
+        // trae la fuente dentro (Word, Google Docs) nunca termina de dibujarse.
+        task = lib.getDocument({ url: fileUrl(fileId), withCredentials: true, ...OPCIONES_DOCUMENTO });
         return task.promise;
       })
       .then((loaded) => {

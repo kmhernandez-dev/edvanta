@@ -15,7 +15,7 @@
  * ============================================================
  */
 
-import { cargarPdfJs } from '../pdfjs';
+import { cargarPdfJs, OPCIONES_DOCUMENTO } from '../pdfjs';
 
 export const LIMITE_MB = 10;
 const MAX_PAGINAS = 6;
@@ -177,7 +177,7 @@ export async function leerPdf(file) {
 
   const pdfjs = await cargarPdfJs();
   // En pdf.js 6 quien se libera es la tarea de carga, no el documento.
-  const tarea = pdfjs.getDocument({ data: bytes, isEvalSupported: false });
+  const tarea = pdfjs.getDocument({ data: bytes, ...OPCIONES_DOCUMENTO });
   let pdf;
   try {
     pdf = await tarea.promise;

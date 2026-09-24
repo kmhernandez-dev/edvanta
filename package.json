@@ -9,7 +9,9 @@
     "preview": "vite preview",
     "test": "vitest run && vitest run --config vitest.api.config.js",
     "test:watch": "vitest",
-    "test:api": "vitest run --config vitest.api.config.js"
+    "test:api": "vitest run --config vitest.api.config.js",
+    "predev": "node scripts/preparar-pdfjs.cjs",
+    "prebuild": "node scripts/preparar-pdfjs.cjs"
   },
   "dependencies": {
     "@dnd-kit/core": "^6.3.1",

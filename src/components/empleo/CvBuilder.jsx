@@ -24,7 +24,9 @@ import { apiUrl } from '../../config/api';
 import { cargosEmpleo } from '../../data/empleo/cargos';
 import { analyzeCv, cargarPorSlug, guiaCVContenido } from '../../lib/cv/analyzer';
 import { downloadCvPdf } from '../../lib/cv/pdf';
-import { PLANTILLAS } from '../../lib/cv/plantillas';
+import CvExpres from './CvExpres';
+import { disenoPorId, GaleriaPlantillas, VistaPreviaCv } from './plantillasUi';
+import { ejemploCv } from '../../lib/cv/ejemplo';
 import { leerPdf } from '../../lib/cv/pdfText';
 import { aHojaDelCreador, leerHojaDeVida } from '../../lib/cv/lector';
 import { diagnosticar } from '../../lib/cv/diagnostico';
@@ -216,122 +218,6 @@ function SkillInput({ onAdd }) {
 
 const inputCls = 'min-h-10 w-full rounded-lg border border-edvanta-border bg-white px-3 text-sm outline-none transition focus:border-edvanta-blue focus:ring-2 focus:ring-edvanta-blue/15';
 
-// ── Vista previa del CV: el mismo diseño oficial que sale en el PDF ──
-function EncabezadoPrevio({ children }) {
-  return (
-    <p className="mb-1.5 mt-4 flex items-center gap-2">
-      <span className="h-2 w-2 shrink-0 rounded-[2px] bg-[#25A7B0]" aria-hidden="true" />
-      <span className="text-[9.5px] font-extrabold uppercase tracking-[.14em] text-[#082E86]">{children}</span>
-      <span className="h-px flex-1 bg-[#E3E9F2]" aria-hidden="true" />
-    </p>
-  );
-}
-
-function CvPreview({ cv }) {
-  const vacio = !cv.nombre && !cv.resumen && !cv.experiencia.length && !cv.habilidades.length;
-  const contacto = [cv.ciudad, cv.telefono, cv.email, String(cv.linkedin || '').replace(/^https?:\/\/(www\.)?/i, '')].filter(Boolean);
-  const experiencia = cv.experiencia.filter((e) => e.cargo);
-  const educacion = cv.educacion.filter((e) => e.titulo || e.institucion);
-  const certificaciones = cv.certificaciones.filter((c) => c.nombre);
-  const idiomas = cv.idiomas.filter((i) => i.idioma);
-  return (
-    <div className="overflow-hidden rounded-2xl border border-edvanta-border bg-edvanta-bg p-3">
-      <p className="mb-2 flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wide text-edvanta-muted">
-        <Eye className="h-3.5 w-3.5" aria-hidden="true" /> Vista previa · Diseño oficial Edvanta
-      </p>
-      <div className="mx-auto max-w-md overflow-hidden rounded-lg bg-white shadow-sm ring-1 ring-black/5">
-        <div className="h-1.5" style={{ background: 'linear-gradient(90deg, #8179C9 0%, #65A7C1 50%, #28A8AF 100%)' }} aria-hidden="true" />
-        {vacio ? (
-          <p className="px-6 py-20 text-center text-sm text-edvanta-muted">Tu hoja de vida aparecerá aquí a medida que la completes.</p>
-        ) : (
-          <div className="px-6 pb-6 pt-5 text-[10.5px] leading-[1.55] text-[#2B3650]">
-            <h3 className="text-[19px] font-extrabold leading-tight text-[#17223B]">{cv.nombre || 'Tu nombre'}</h3>
-            {cv.titulo && <p className="mt-0.5 text-[11.5px] font-bold text-[#082E86]">{cv.titulo}</p>}
-            {contacto.length > 0 && <p className="mt-1 text-[9.5px] text-[#65718A]">{contacto.join('  ·  ')}</p>}
-            <div className="relative mt-3 h-px bg-[#E3E9F2]" aria-hidden="true">
-              <span className="absolute left-0 top-[-0.5px] h-[2px] w-10 bg-[#25A7B0]" />
-            </div>
-
-            {cv.resumen && (<><EncabezadoPrevio>Perfil profesional</EncabezadoPrevio><p>{cv.resumen}</p></>)}
-
-            {experiencia.length > 0 && (
-              <>
-                <EncabezadoPrevio>Experiencia</EncabezadoPrevio>
-                {experiencia.map((e) => (
-                  <div key={e.id} className="mb-2.5">
-                    <div className="flex items-baseline justify-between gap-2">
-                      <p className="text-[11px] font-bold text-[#17223B]">{e.cargo}</p>
-                      {(e.inicio || e.fin) && <p className="shrink-0 text-[9.5px] text-[#65718A]">{[e.inicio, e.fin || 'Actual'].filter(Boolean).join(' – ')}</p>}
-                    </div>
-                    {e.empresa && <p className="text-[10px] text-[#082E86]">{e.empresa}</p>}
-                    {String(e.logros || '').split('\n').map((l) => l.trim()).filter(Boolean).map((l, i) => (
-                      <p key={i} className="relative mt-0.5 pl-3">
-                        <span className="absolute left-0.5 top-[6px] h-[5px] w-[5px] rounded-full bg-[#25A7B0]" aria-hidden="true" />
-                        {l.replace(/^[•*-]\s*/, '')}
-                      </p>
-                    ))}
-                  </div>
-                ))}
-              </>
-            )}
-
-            {educacion.length > 0 && (
-              <>
-                <EncabezadoPrevio>Formación</EncabezadoPrevio>
-                {educacion.map((e) => (
-                  <div key={e.id} className="mb-1.5">
-                    <div className="flex items-baseline justify-between gap-2">
-                      <p className="font-bold text-[#17223B]">{e.titulo || e.institucion}</p>
-                      {e.anio && <p className="shrink-0 text-[9.5px] text-[#65718A]">{e.anio}</p>}
-                    </div>
-                    {e.titulo && e.institucion && <p className="text-[10px] text-[#65718A]">{e.institucion}</p>}
-                  </div>
-                ))}
-              </>
-            )}
-
-            {cv.habilidades.length > 0 && (
-              <>
-                <EncabezadoPrevio>Habilidades</EncabezadoPrevio>
-                <p className="font-bold text-[#17223B]">
-                  {cv.habilidades.map((h, i) => (
-                    <span key={h}>
-                      {h}
-                      {i < cv.habilidades.length - 1 && <span className="px-1.5 text-[#25A7B0]">·</span>}
-                    </span>
-                  ))}
-                </p>
-              </>
-            )}
-
-            {certificaciones.length > 0 && (
-              <>
-                <EncabezadoPrevio>Certificaciones y cursos</EncabezadoPrevio>
-                {certificaciones.map((c) => (
-                  <p key={c.id} className="relative pl-3">
-                    <span className="absolute left-0.5 top-[6px] h-[5px] w-[5px] rounded-full bg-[#25A7B0]" aria-hidden="true" />
-                    {[c.nombre, [c.institucion, c.anio].filter(Boolean).join(' · ')].filter(Boolean).join(' · ')}
-                  </p>
-                ))}
-              </>
-            )}
-
-            {idiomas.length > 0 && (
-              <>
-                <EncabezadoPrevio>Idiomas</EncabezadoPrevio>
-                <p>{idiomas.map((i) => [i.idioma, i.nivel].filter(Boolean).join(' — ')).join('   ·   ')}</p>
-              </>
-            )}
-
-            <EncabezadoPrevio>Referencias</EncabezadoPrevio>
-            <p className="italic text-[#65718A]">Disponibles a solicitud.</p>
-          </div>
-        )}
-      </div>
-    </div>
-  );
-}
-
 export default function CvBuilder() {
   const { academiaApi, academiaUser, academiaToken, profile: accountProfile } = useAuth();
   const { professionalProfile, loading: professionalLoading } = useProfessional();
@@ -342,7 +228,8 @@ export default function CvBuilder() {
   const [saveMsg, setSaveMsg] = useState('');
   const [fotoError, setFotoError] = useState('');
   const [loginOpen, setLoginOpen] = useState(false);
-  const [mode, setMode] = useState('builder'); // builder | importar | guia
+  const [mode, setMode] = useState('expres'); // expres | builder | importar | guia
+  const [galeriaAbierta, setGaleriaAbierta] = useState(false);
   const [section, setSection] = useState('perfil');
   const [showPreview, setShowPreview] = useState(false); // móvil
   const [textoPegado, setTextoPegado] = useState('');
@@ -351,12 +238,10 @@ export default function CvBuilder() {
   const [aviso, setAviso] = useState('');
   const [cargoAnalisis, setCargoAnalisis] = useState('');
   const [loadingSaved, setLoadingSaved] = useState(false);
-  const [exportOpen, setExportOpen] = useState(false);
   const [pdfLoading, setPdfLoading] = useState(false);
   const [pdfError, setPdfError] = useState('');
   const dirty = useRef(false);
   const autosaveTimer = useRef(null);
-  const exportRef = useRef(null);
 
   // ── Borrador de este navegador (funciona sin cuenta) ──
   // Se carga una sola vez al abrir; si la persona tiene cuenta, el CV
@@ -376,7 +261,7 @@ export default function CvBuilder() {
   useEffect(() => {
     const revisar = () => {
       if (window.location.hash === '#analizar') setMode('importar');
-      else if (window.location.hash === '#creador') setMode('builder');
+      else if (window.location.hash === '#creador') setMode('expres');
     };
     revisar();
     window.addEventListener('hashchange', revisar);
@@ -519,7 +404,6 @@ export default function CvBuilder() {
   const descargar = async (style = 'edvanta') => {
     trackEvent('cv_download_pdf', { style });
     const label = adaptacion ? adaptacion.cargo.cargo : '';
-    setExportOpen(false);
     try { await downloadCvPdf(stripDraft(cv), label, style, { foto: cv.foto }); }
     catch { setSaveMsg('No fue posible generar el PDF en este navegador.'); setSaveState('error'); }
   };
@@ -548,14 +432,6 @@ export default function CvBuilder() {
       setSaveState('saved');
     } catch { setSaveMsg('No fue posible copiar en este navegador.'); setSaveState('error'); }
   };
-
-  // Cierra el menú de exportación al hacer clic fuera
-  useEffect(() => {
-    if (!exportOpen) return undefined;
-    const onDoc = (e) => { if (exportRef.current && !exportRef.current.contains(e.target)) setExportOpen(false); };
-    document.addEventListener('mousedown', onDoc);
-    return () => document.removeEventListener('mousedown', onDoc);
-  }, [exportOpen]);
 
   // ── Analizador: lee el PDF en el navegador y arma el diagnóstico ──
   const analizarArchivo = async (file) => {
@@ -630,6 +506,34 @@ export default function CvBuilder() {
     else cargarEnCreador();
   };
 
+  // Rellena la hoja con el ejemplo para entender qué va en cada campo.
+  const usarEjemplo = () => {
+    touch();
+    setCv(addIds({ ...EMPTY_CV, ...ejemploCv() }));
+    if (!cargoObjetivo) setCargoObjetivo('analista-calidad');
+    setAviso('Llenamos la hoja con un ejemplo. Cambia los datos por los tuyos: puedes borrar todo con «Empezar de cero».');
+    trackEvent('cv_ejemplo_usado');
+  };
+
+  const acciones = {
+    setField, addItem, removeItem, patchItem, moveItem, addSkill, removeSkill,
+    usarEjemplo, subirFoto, quitarFoto,
+  };
+
+  // La misma vista previa en los dos modos: es el PDF real dibujado.
+  const vistaPreviaNodo = (
+    <div className="space-y-3">
+      <VistaPreviaCv cv={cv} cargoLabel={cv.titulo} estilo={plantillaId} foto={cv.foto} ancho={430} />
+      <button
+        type="button"
+        onClick={() => setGaleriaAbierta((v) => !v)}
+        className="flex w-full items-center justify-center gap-2 rounded-xl border border-edvanta-border bg-white px-4 py-2.5 text-sm font-bold text-edvanta-blue transition hover:border-edvanta-blue/40"
+      >
+        <Sparkles className="h-4 w-4" aria-hidden="true" /> Cambiar diseño · {disenoPorId(plantillaId).nombre}
+      </button>
+    </div>
+  );
+
   const saveLabel = { saving: 'Guardando…', saved: 'Guardado', error: 'Error al guardar' };
 
   // ── Barra superior (siempre visible) ──
@@ -657,88 +561,22 @@ export default function CvBuilder() {
         <button type="button" onClick={copiarTexto} disabled={!tieneContenido} title="Copia tu HV en texto plano para portales" className="inline-flex min-h-10 items-center gap-1.5 rounded-lg border border-edvanta-border bg-white px-3 text-sm font-bold text-slate-700 transition hover:border-edvanta-blue/40 hover:text-edvanta-blue disabled:opacity-50">
           <Copy className="h-4 w-4" /> <span className="hidden md:inline">Copiar texto</span>
         </button>
-        <div className="relative" ref={exportRef}>
-          <button type="button" onClick={() => setExportOpen(v => !v)} aria-expanded={exportOpen} aria-haspopup="menu" disabled={!tieneContenido} className="btn-edvanta inline-flex min-h-10 items-center gap-1.5 px-4 text-sm font-bold disabled:opacity-50">
-            <Download className="h-4 w-4" /> <span className="hidden sm:inline">Descargar</span> <ChevronDown className="h-3.5 w-3.5" />
-          </button>
-          {exportOpen && (
-            <div role="menu" className="absolute right-0 z-30 mt-2 max-h-[80vh] w-[26rem] overflow-y-auto rounded-xl border border-edvanta-border bg-white p-3 shadow-xl">
-              <p className="px-2 pb-2 pt-1 text-[11px] font-bold uppercase tracking-wide text-edvanta-muted">Elige el diseño de tu hoja de vida</p>
-
-              <button type="button" role="menuitem" onClick={() => { setPlantillaId('edvanta'); descargar('edvanta'); }} className="flex w-full items-start gap-3 rounded-lg p-3 text-left transition hover:bg-edvanta-light/70">
-                <span className="mt-0.5 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-edvanta-light text-edvanta-blue"><FileText className="h-4 w-4" /></span>
-                <span>
-                  <span className="block text-sm font-black text-edvanta-deep">Diseño oficial Edvanta</span>
-                  <span className="mt-0.5 block text-xs leading-4 text-slate-500">Moderno y limpio, con la identidad Edvanta. Una sola columna con texto real: los filtros ATS la leen en orden.</span>
-                </span>
-              </button>
-
-              <div className="mt-2 border-t border-edvanta-border pt-2">
-                {PLANTILLAS.map(p => (
-                  <button
-                    key={p.id}
-                    type="button"
-                    role="menuitem"
-                    onClick={() => { setPlantillaId(p.id); descargar(p.id); }}
-                    className={`flex w-full items-start gap-3 rounded-lg p-3 text-left transition ${plantillaId === p.id ? 'bg-edvanta-light/70' : 'hover:bg-slate-50'}`}
-                  >
-                    <span className="mt-0.5 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-slate-100 text-slate-500">
-                      {p.foto ? <User className="h-4 w-4" /> : <FileText className="h-4 w-4" />}
-                    </span>
-                    <span className="min-w-0 flex-1">
-                      <span className="flex flex-wrap items-center gap-1.5">
-                        <span className="block text-sm font-bold text-slate-800">{p.nombre}</span>
-                        {p.foto && (
-                          <span className={`rounded-full px-1.5 py-px text-[9px] font-bold ${cv.foto ? 'bg-teal-50 text-teal-700' : 'bg-amber-50 text-amber-700'}`}>
-                            {cv.foto ? 'Con tu foto' : 'Puede llevar foto'}
-                          </span>
-                        )}
-                      </span>
-                      <span className="mt-0.5 block text-xs leading-4 text-slate-500">{p.desc}</span>
-                    </span>
-                  </button>
-                ))}
-              </div>
-
-              <div className="mt-2 border-t border-edvanta-border pt-2">
-                <button type="button" onClick={() => descargar('ats')} className="flex w-full items-center gap-3 rounded-lg p-3 text-left transition hover:bg-slate-50">
-                  <span className="mt-0 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-slate-100 text-slate-500"><FileText className="h-4 w-4" /></span>
-                  <span>
-                    <span className="block text-sm font-bold text-slate-700">Formato ATS simple</span>
-                    <span className="mt-0.5 block text-xs leading-4 text-slate-500">Blanco y negro, sin diseño, para portales con filtros muy estrictos.</span>
-                  </span>
-                </button>
-              </div>
-
-              {/* Foto para las plantillas que la usan (Ejecutiva y Azul) */}
-              <div className="mt-2 border-t border-edvanta-border pt-3">
-                <div className="flex items-start gap-3 px-2">
-                  {cv.foto ? (
-                    <img src={cv.foto} alt="Foto de la hoja de vida" className="h-14 w-14 shrink-0 rounded-full object-cover ring-2 ring-edvanta-border" />
-                  ) : (
-                    <span className="inline-flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-slate-100 text-slate-400"><User className="h-6 w-6" /></span>
-                  )}
-                  <div className="min-w-0 flex-1">
-                    <p className="text-sm font-bold text-edvanta-deep">Tu foto (opcional)</p>
-                    <p className="mt-0.5 text-xs leading-4 text-slate-500">Se usa en «Ejecutiva» y «Azul con foto». Se recorta en cuadrado y se reduce para que el PDF pese poco.</p>
-                    {fotoError && <p className="mt-1 text-xs font-semibold text-rose-700" role="alert">{fotoError}</p>}
-                    <div className="mt-2 flex flex-wrap gap-2">
-                      <label className="inline-flex min-h-9 cursor-pointer items-center gap-1.5 rounded-lg border border-edvanta-border bg-white px-3 text-xs font-bold text-slate-700 transition hover:border-edvanta-blue/40 hover:text-edvanta-blue">
-                        <Upload className="h-3.5 w-3.5" /> Subir foto
-                        <input type="file" accept="image/*" className="sr-only" onChange={(e) => { const f = e.target.files?.[0]; e.target.value = ''; if (f) subirFoto(f); }} />
-                      </label>
-                      {cv.foto && (
-                        <button type="button" onClick={quitarFoto} className="inline-flex min-h-9 items-center gap-1.5 rounded-lg border border-edvanta-border px-3 text-xs font-bold text-rose-600 transition hover:border-rose-300 hover:text-rose-700">
-                          <Trash2 className="h-3.5 w-3.5" /> Quitar
-                        </button>
-                      )}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          )}
-        </div>
+        <button
+          type="button"
+          onClick={() => setGaleriaAbierta((v) => !v)}
+          className="inline-flex min-h-10 items-center gap-1.5 rounded-lg border border-edvanta-border bg-white px-3 text-sm font-bold text-edvanta-deep transition hover:border-edvanta-blue/40 hover:text-edvanta-blue"
+          title="Ver y cambiar el diseño de tu hoja de vida"
+        >
+          <Sparkles className="h-4 w-4" /> <span className="hidden md:inline">{disenoPorId(plantillaId).nombre}</span>
+        </button>
+        <button
+          type="button"
+          onClick={() => descargar(plantillaId)}
+          disabled={!tieneContenido}
+          className="btn-edvanta inline-flex min-h-10 items-center gap-1.5 px-4 text-sm font-bold disabled:opacity-50"
+        >
+          <Download className="h-4 w-4" /> <span className="hidden sm:inline">Descargar PDF</span>
+        </button>
       </div>
     </div>
   );
@@ -748,7 +586,8 @@ export default function CvBuilder() {
       {/* Modo */}
       <div className="flex flex-wrap gap-2" role="tablist" aria-label="Modo de la herramienta">
         {[
-          { id: 'builder', label: 'Construir mi hoja de vida', icon: FileText },
+          { id: 'expres', label: 'Crear en 5 minutos', icon: Sparkles },
+          { id: 'builder', label: 'Editor completo', icon: FileText },
           { id: 'importar', label: 'Analizar mi hoja de vida (PDF)', icon: ScanSearch },
           { id: 'guia', label: 'Guía 2026', icon: Info },
         ].map(m => (
@@ -759,8 +598,8 @@ export default function CvBuilder() {
         ))}
       </div>
 
-      {/* ══ MODO BUILDER ══ */}
-      {mode === 'builder' && (
+      {/* ══ CREADOR (modo rápido y editor completo comparten cabecera) ══ */}
+      {(mode === 'expres' || mode === 'builder') && (
         <div className="space-y-4">
           {topBar}
           {aviso && (
@@ -788,6 +627,49 @@ export default function CvBuilder() {
           )}
           {loadingSaved && <p className="text-sm text-slate-500">Cargando tu hoja de vida guardada…</p>}
 
+          {galeriaAbierta && (
+            <div className="rounded-2xl border border-edvanta-border bg-white p-5">
+              <div className="flex flex-wrap items-start justify-between gap-3">
+                <div>
+                  <p className="text-base font-extrabold text-edvanta-deep">Elige el diseño de tu hoja de vida</p>
+                  <p className="mt-0.5 text-sm text-edvanta-muted">Cada miniatura es tu hoja de vida real. Todos se descargan en PDF con texto seleccionable.</p>
+                </div>
+                <button type="button" onClick={() => setGaleriaAbierta(false)} aria-label="Cerrar los diseños" className="rounded-lg p-1.5 text-edvanta-muted transition hover:bg-edvanta-bg hover:text-edvanta-deep">
+                  <X className="h-4 w-4" aria-hidden="true" />
+                </button>
+              </div>
+              <GaleriaPlantillas
+                className="mt-4"
+                cv={cv}
+                cargoLabel={cv.titulo}
+                foto={cv.foto}
+                valor={plantillaId}
+                onElegir={(id) => { setPlantillaId(id); trackEvent('cv_plantilla_elegida', { id }); }}
+              />
+            </div>
+          )}
+
+          {mode === 'expres' && (
+            <CvExpres
+              cv={cv}
+              cargoObjetivo={cargoObjetivo}
+              setCargoObjetivo={setCargoObjetivo}
+              plantillaId={plantillaId}
+              setPlantillaId={setPlantillaId}
+              acciones={acciones}
+              vistaPrevia={vistaPreviaNodo}
+              fotoError={fotoError}
+              descargar={descargar}
+              guardar={guardar}
+              copiarTexto={copiarTexto}
+              academiaUser={academiaUser}
+              onCrearCuenta={() => setLoginOpen(true)}
+              irAEditorCompleto={() => { setMode('builder'); setSection('revision'); }}
+              analysis={analysis}
+            />
+          )}
+
+          {mode === 'builder' && (
           <div className="lg:grid lg:grid-cols-[212px_minmax(0,1fr)_minmax(0,360px)] lg:items-start lg:gap-5">
             {/* Navegación de secciones */}
             <nav aria-label="Secciones de la hoja de vida" className="mb-4 flex gap-2 overflow-x-auto pb-1 lg:mb-0 lg:flex-col lg:overflow-visible">
@@ -820,11 +702,12 @@ export default function CvBuilder() {
               />
             </div>
 
-            {/* Vista previa en vivo */}
+            {/* Vista previa en vivo: el PDF real con la plantilla elegida */}
             <div className={`${showPreview ? 'block' : 'hidden lg:block'} lg:sticky lg:top-20`}>
-              <CvPreview cv={cv} />
+              {vistaPreviaNodo}
             </div>
           </div>
+          )}
         </div>
       )}
 

@@ -40,6 +40,23 @@ async function workerEnBlob(url) {
   return URL.createObjectURL(new Blob([codigo], { type: 'text/javascript' }));
 }
 
+/**
+ * Opciones para abrir cualquier documento.
+ *
+ * `standardFontDataUrl` y `wasmUrl` son obligatorios para DIBUJAR: el
+ * primero trae las fuentes base de un PDF que no las incluye
+ * las fuentes dentro (los que genera la herramienta de hoja de vida usan
+ * Helvetica). Sin esa ruta, el worker avisa «Ensure that the
+ * standardFontDataUrl API parameter is provided» y el dibujo se queda
+ * esperando para siempre. Los archivos los copia a public/
+ * scripts/preparar-pdfjs.cjs antes de compilar.
+ */
+export const OPCIONES_DOCUMENTO = {
+  standardFontDataUrl: '/pdfjs/standard_fonts/',
+  wasmUrl: '/pdfjs/wasm/',
+  isEvalSupported: false,
+};
+
 /** Resultado de la última comprobación: útil para diagnosticar. */
 export const estadoPdfJs = { modo: 'sin-cargar' };
 

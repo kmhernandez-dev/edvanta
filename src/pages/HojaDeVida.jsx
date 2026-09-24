@@ -16,16 +16,17 @@ import {
 import SiteHeader from '../components/edvanta/SiteHeader';
 import SiteFooter from '../components/edvanta/SiteFooter';
 import CvBuilder from '../components/empleo/CvBuilder';
+import { MuestraPlantillas } from '../components/empleo/plantillasUi';
 import {
   ArrowLink, Breadcrumb, Btn, Card, CtaBanner, Faq, ImageSlot, LandingHero, Section, SectionHeading, Steps,
 } from '../components/edvanta/ui';
 import { updatePageSeo } from '../utils/seo';
 
 const PASOS = [
-  { title: 'Escribe o importa', desc: 'Empieza desde cero o sube tu hoja de vida actual en PDF para analizarla.' },
-  { title: 'Mira tu puntaje', desc: 'El puntaje ATS se calcula mientras escribes y te dice qué falta.' },
-  { title: 'Adáptala al cargo', desc: 'Pega el cargo al que te vas a postular y ajusta las palabras clave.' },
-  { title: 'Descarga el PDF', desc: 'Sale con texto seleccionable, que es lo que los filtros automáticos leen.' },
+  { title: 'Tus datos', desc: 'Nombre, contacto y el cargo al que apuntas. Un minuto.' },
+  { title: 'Tu experiencia', desc: 'Fechas con selector y logros sugeridos para tu cargo: solo ajustas los datos.' },
+  { title: 'Estudios y habilidades', desc: 'Habilidades del sector con un clic y tus estudios en una línea.' },
+  { title: 'Diseño y descarga', desc: 'Escribimos tu perfil, eliges entre 9 diseños y descargas el PDF.' },
 ];
 
 const QUE_REVISA = [
@@ -78,36 +79,53 @@ export default function HojaDeVida() {
         <LandingHero
           breadcrumb={<Breadcrumb className="mb-6" items={[{ label: 'Empleo', to: '/empleo' }, { label: 'Hoja de vida' }]} />}
           eyebrow="Hoja de vida ATS + IA"
-          title="La hoja de vida que sí llega a manos de una persona"
-          lead="Escríbela paso a paso, mira tu puntaje mientras avanzas y descárgala en un PDF que los filtros automáticos leen sin problema."
+          title="Tu hoja de vida lista en 5 minutos"
+          lead="Contesta cuatro pasos, elige entre 9 diseños y descárgala en PDF. Los filtros automáticos la leen completa y tú ves el resultado mientras escribes."
           bullets={[
-            'Puntaje de compatibilidad en vivo',
-            'Adaptación al cargo al que te postulas',
-            'Análisis de la hoja de vida que ya tienes',
-            'Descarga en PDF con texto seleccionable',
+            'Nueve diseños, uno para cada proceso',
+            'Fechas, logros y habilidades con un clic',
+            'Perfil profesional escrito por ti, con ayuda',
+            'Puntaje ATS en vivo y análisis de la que ya tienes',
           ]}
           actions={(
             <>
-              <Btn href="#creador" icon={FileText}>Crear mi hoja de vida</Btn>
+              <Btn href="#creador" icon={Sparkles}>Crear mi hoja de vida</Btn>
               <Btn href="#analizar" variant="secondary" icon={Search}>Analizar la que ya tengo</Btn>
             </>
           )}
-          media={(
-            <ImageSlot
-              ratio="photo"
-              priority
-              label="Hoja de vida en pantalla con el puntaje"
-              hint="Captura de la herramienta con el medidor de puntaje visible. 1200 × 900 px."
-            />
-          )}
+          media={<MuestraPlantillas ids={['edvanta', 'ejecutiva', 'moderna-turquesa', 'pastel-serena']} ancho={220} />}
         />
+
+        {/* Diseños disponibles */}
+        <Section id="disenos" tone="surface" bordered>
+          <SectionHeading
+            eyebrow="Nueve diseños"
+            title="Elige cómo se ve tu hoja de vida"
+            desc="Todos salen en PDF con texto real y una columna de lectura, así que los filtros automáticos los leen completos. Dos de ellos llevan tu foto."
+            align="center"
+          />
+          <MuestraPlantillas
+            className="mt-10"
+            ids={['edvanta', 'ejecutiva', 'azul', 'azul-academica']}
+            ancho={260}
+          />
+          <MuestraPlantillas
+            className="mt-6"
+            ids={['ejecutiva-moderna', 'azul-clasica', 'pastel-serena', 'moderna-turquesa']}
+            ancho={260}
+          />
+          <div className="mt-10 flex flex-wrap justify-center gap-3">
+            <Btn href="#creador" icon={Sparkles}>Probar los diseños con mis datos</Btn>
+            <Btn href="#analizar" variant="secondary">Analizar mi hoja de vida actual</Btn>
+          </div>
+        </Section>
 
         {/* Herramienta */}
         <Section id="creador" tone="surface" bordered>
           <SectionHeading
             eyebrow="La herramienta"
             title="Arma tu hoja de vida aquí mismo"
-            desc="Constrúyela desde cero o sube la que ya tienes en PDF: la analizamos y la pasamos al creador. Se guarda sola mientras escribes."
+            desc="Cuatro pasos con ayudas en cada campo, vista previa real del PDF y nueve diseños. También puedes subir la que ya tienes: la analizamos y la pasamos al creador."
           />
           {/* Ancla de «Analizar la que ya tengo»: el creador abre el analizador con #analizar */}
           <div id="analizar" className="mt-8 scroll-mt-28">
