@@ -23,7 +23,7 @@ import { useCallback, useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
   BookOpenCheck, ExternalLink, GraduationCap, Image as ImageIcon, Layers, Link2,
-  Plus, Search, Trash2, Video, X,
+  Plus, RefreshCw, Search, Trash2, Video, X,
 } from 'lucide-react';
 import { apiUrl } from '../config/api';
 import { updatePageSeo } from '../utils/seo';
@@ -292,6 +292,81 @@ function FormPropio({ api, onListo, onCancelar }) {
   );
 }
 
+/* ── Importar el catálogo del repositorio ─────────────────── */
+
+/**
+ * Trae a la base los cursos que viven como datos en el repositorio.
+ *
+ * Existe porque el importador ya estaba escrito pero solo se podía
+ * llamar con curl y el token a mano, así que nunca se llamó: la página
+ * /cursos/edutin llevaba meses vacía con 101 cursos esperando, y el
+ * filtro de competencias no ofrecía nada porque ningún curso estaba
+ * enlazado a ninguna.
+ */
+function ImportarCatalogo({ api, onListo }) {
+  const [estado, setEstado] = useState('listo');
+  const [reporte, setReporte] = useState(null);
+  const [error, setError] = useState('');
+
+  const importar = async () => {
+    setEstado('corriendo'); setError(''); setReporte(null);
+    try {
+      const d = await api('/api/admin/import-courses', { method: 'POST', body: '{}' });
+      setReporte(d.report);
+      setEstado('listo');
+      onListo?.();
+    } catch (e) {
+      setError(e.message);
+      setEstado('listo');
+    }
+  };
+
+  return (
+    <div className="rounded-xl border border-slate-200 bg-white p-5">
+      <h2 className="text-sm font-bold text-slate-900">Importar el catálogo del repositorio</h2>
+      <p className="mt-1 text-sm leading-6 text-slate-600">
+        Trae a la base los cursos de Edutin, Coursera y Udemy que están como
+        datos en el código, con sus enlaces de afiliado y sus competencias.
+        Se puede repetir: los que ya estén se actualizan, no se duplican.
+      </p>
+      <button
+        type="button"
+        onClick={importar}
+        disabled={estado === 'corriendo'}
+        className="mt-4 inline-flex min-h-11 items-center gap-2 rounded-lg bg-slate-900 px-4 text-sm font-bold text-white transition hover:bg-slate-800 disabled:opacity-60"
+      >
+        <RefreshCw className={`h-4 w-4 ${estado === 'corriendo' ? 'animate-spin' : ''}`} aria-hidden="true" />
+        {estado === 'corriendo' ? 'Importando… puede tardar un minuto' : 'Importar ahora'}
+      </button>
+      {error && <p className="mt-3 rounded-lg bg-rose-50 px-3 py-2 text-sm font-semibold text-rose-700">{error}</p>}
+      {reporte && (
+        <dl className="mt-4 grid gap-2 text-sm sm:grid-cols-2">
+          <div className="rounded-lg bg-slate-50 px-3 py-2">
+            <dt className="text-xs text-slate-500">Cursos de Edutin</dt>
+            <dd className="font-bold text-slate-900">
+              {reporte.edvanta?.created ?? 0} nuevos · {reporte.edvanta?.updated ?? 0} actualizados
+            </dd>
+          </div>
+          <div className="rounded-lg bg-slate-50 px-3 py-2">
+            <dt className="text-xs text-slate-500">Coursera y Udemy</dt>
+            <dd className="font-bold text-slate-900">
+              {reporte.external?.created ?? 0} nuevos · {reporte.external?.updated ?? 0} actualizados
+            </dd>
+          </div>
+          <div className="rounded-lg bg-slate-50 px-3 py-2">
+            <dt className="text-xs text-slate-500">Competencias enlazadas</dt>
+            <dd className="font-bold text-slate-900">{reporte.graph?.skillMappings ?? 0}</dd>
+          </div>
+          <div className="rounded-lg bg-slate-50 px-3 py-2">
+            <dt className="text-xs text-slate-500">Recomendaciones por carrera</dt>
+            <dd className="font-bold text-slate-900">{reporte.graph?.editorialRecommendations ?? 0}</dd>
+          </div>
+        </dl>
+      )}
+    </div>
+  );
+}
+
 /* ── Pegar los videos de un curso ya creado ───────────────── */
 
 /**
@@ -435,7 +510,7 @@ export default function AdminDesign() {
       ...options,
       headers: { 'Content-Type': 'application/json', 'x-admin-token': token, ...options.headers },
     });
-    if (res.status === 403) {
+    if (res.status === 403 || res.status === 401) {
       setDentro(false); setToken(''); localStorage.removeItem(TOKEN_KEY);
       throw new Error('El token no es válido.');
     }
@@ -519,6 +594,12 @@ export default function AdminDesign() {
               <p className="text-2xl font-bold text-slate-900">{totales.sinPortada}</p>
               <p className="text-sm text-slate-600">Sin portada</p>
             </div>
+          </div>
+        )}
+
+        {!creando && !videosDe && (
+          <div className="mt-6">
+            <ImportarCatalogo api={api} onListo={cargar} />
           </div>
         )}
 
