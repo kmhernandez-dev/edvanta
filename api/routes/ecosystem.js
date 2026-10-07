@@ -165,7 +165,7 @@ export async function listCertificationsRoute(req, res) {
       LEFT JOIN countries country ON country.id = certification.country_id
       WHERE certification.status = 'published' AND certification.verified_at IS NOT NULL
       ORDER BY certification.name
-      LIMIT ${params.length}
+      LIMIT $${params.length}
     `, params);
     return res.json({ ok: true, data: result.rows, total: result.rowCount });
   } catch (error) {
