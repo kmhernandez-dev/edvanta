@@ -16,6 +16,7 @@ const AdminAcademia = lazy(() => import('./pages/AdminAcademia'));
 const AdminTracking = lazy(() => import('./pages/AdminTracking'));
 const AdminCommunityPage = lazy(() => import('./pages/AdminCommunityPage'));
 const AdminEdvantaContent = lazy(() => import('./pages/AdminEdvantaContent'));
+const AdminDesign = lazy(() => import('./pages/AdminDesign'));
 const AdminIndex = lazy(() => import('./pages/AdminIndex'));
 const ArticuloPage = lazy(() => import('./pages/ArticuloPage'));
 const ArticulosIndex = lazy(() => import('./pages/ArticulosIndex'));
@@ -266,6 +267,7 @@ export default function App() {
         <Route path="/admin/tracking" element={<AdminTracking />} />
         <Route path="/admin/community" element={<AdminCommunityPage />} />
         <Route path="/admin/edvanta" element={<AdminEdvantaContent />} />
+        <Route path="/admin/design" element={<AdminDesign />} />
         <Route path="/admin-paneles" element={<AdminIndex />} />
 
         {/* Páginas legales */}

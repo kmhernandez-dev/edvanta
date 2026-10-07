@@ -44,6 +44,7 @@ import academiaAuthRoutes from './routes/academia-auth.js';
 import academiaRoutes from './routes/academia.js';
 import adminAcademiaRoutes from './routes/admin-academia.js';
 import adminEdvantaRoutes from './routes/admin-edvanta.js';
+import adminDesignRoutes from './routes/admin-design.js';
 import adminTrackingRoutes from './routes/admin-tracking.js';
 import retosRoutes from './routes/retos.js';
 import adminRetosRoutes from './routes/admin-retos.js';
@@ -276,6 +277,7 @@ app.use('/api/academia',       academiaRoutes);
 app.use('/api/admin/academia', adminAcademiaRoutes);
 app.use('/api/admin/academia', adminRetosRoutes);
 app.use('/api/admin/edvanta',  adminEdvantaRoutes);
+app.use('/api/admin/design',   adminDesignRoutes);
 
 // Panel de seguimiento unificado
 app.use('/api/admin/tracking', adminTrackingRoutes);

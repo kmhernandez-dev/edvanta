@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import {
-  BriefcaseBusiness, ClipboardList, FileText, GraduationCap, LayoutDashboard, LineChart, ShieldCheck,
+  BookOpenCheck, BriefcaseBusiness, ClipboardList, FileText, GraduationCap, LayoutDashboard, LineChart, ShieldCheck,
 } from 'lucide-react';
 import SiteHeader from '../components/edvanta/SiteHeader';
 import SiteFooter from '../components/edvanta/SiteFooter';
@@ -35,6 +35,20 @@ const PANELS = [
     title: 'Seguimiento',
     desc: 'Eventos de comportamiento y análisis de uso de la plataforma.',
     token: 'ADMIN_TOKEN',
+  },
+  {
+    to: '/admin/design',
+    icon: BookOpenCheck,
+    title: 'Edvanta Design',
+    desc: 'Los cursos de Edvanta en un solo lugar: los curados por enlace y los propios del Aula, con su portada.',
+    token: 'ADMIN_TOKEN',
+  },
+  {
+    to: '/aula/admin/cursos',
+    icon: GraduationCap,
+    title: 'Aula Edvanta',
+    desc: 'El editor completo: unidades, clases, bloques de video y diapositivas, participantes y versiones.',
+    token: 'Cuenta del aula',
   },
   {
     to: '/admin/edvanta',
