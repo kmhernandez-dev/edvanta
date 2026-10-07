@@ -126,6 +126,11 @@ app.get('/api/health', (_req, res) => {
     database: process.env.DATABASE_URL ? 'configured' : 'missing',
     mercado_pago: process.env.MP_ACCESS_TOKEN ? 'configured' : 'missing',
     resend: process.env.RESEND_API_KEY ? 'configured' : 'missing',
+    // Solo dice si está puesta, nunca su valor. Sin esto, cuando el token
+    // falta en el servidor los paneles responden «token no válido» a
+    // cualquier intento y no hay forma de distinguirlo de teclearlo mal.
+    admin_token: process.env.ADMIN_TOKEN ? 'configured' : 'missing',
+    jwt_secret: process.env.JWT_SECRET ? 'configured' : 'missing',
   });
 });
 
