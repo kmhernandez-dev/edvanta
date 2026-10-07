@@ -1,7 +1,8 @@
 import express from 'express';
 import { closedReason } from '../../lib/aula/access.js';
 import { many } from '../../lib/aula/db.js';
-import { id as idField, int, route } from '../../lib/aula/http.js';
+import { enrollUsers } from '../../lib/aula/enrollments.js';
+import { id as idField, int, notFound, route } from '../../lib/aula/http.js';
 import {
   addLessonTime, completeLesson, courseForParticipant, openLesson, reportVideo,
 } from '../../lib/aula/learning.js';
@@ -89,6 +90,72 @@ export function meRouter() {
   router.post('/courses/:courseId/lessons/:lessonId/complete', route(async (req, res) => {
     const { courseId, lessonId } = ids(req);
     res.json(await completeLesson(req.aula.db, req.aula.user, courseId, lessonId, { now: req.aula.now }));
+  }));
+
+  // ── Catálogo abierto de Edvanta ───────────────────────────
+  //
+  // Hasta aquí un participante solo veía lo que le asignaran: el aula se
+  // diseñó para formación de empresas. Los cursos propios de Edvanta son
+  // otra cosa — están para que cualquiera los tome — así que se listan
+  // aparte y la persona se matricula sola.
+  //
+  // El filtro kind = 'edvanta' es la frontera que importa: un curso de
+  // empresa pertenece a su empresa y NO puede asomarse aquí.
+
+  const CATALOGO = `
+    FROM aula_courses c
+   WHERE c.kind = 'edvanta'
+     AND c.status = 'publicado'
+     AND c.deleted_at IS NULL
+     AND c.current_version_id IS NOT NULL
+     AND (c.available_from IS NULL OR c.available_from <= $2)
+     AND (c.available_until IS NULL OR c.available_until > $2)
+     AND NOT EXISTS (
+       SELECT 1 FROM aula_enrollments e
+        WHERE e.course_id = c.id AND e.user_id = $1 AND e.withdrawn_at IS NULL
+     )`;
+
+  router.get('/catalog', route(async (req, res) => {
+    const { db, user, now } = req.aula;
+    const rows = await many(
+      db,
+      `SELECT c.id, c.title, c.short_description, c.cover_file_id, c.cover_url,
+              c.category, c.level, c.duration_minutes, c.author_name,
+              (SELECT COUNT(*)::int FROM aula_lessons l
+                WHERE l.course_id = c.id AND l.deleted_at IS NULL) AS lessons
+       ${CATALOGO}
+       ORDER BY c.published_at DESC NULLS LAST, c.title ASC`,
+      [user.id, now],
+    );
+    res.json(rows.map((r) => ({
+      courseId: r.id,
+      title: r.title,
+      shortDescription: r.short_description || '',
+      coverFileId: r.cover_file_id,
+      coverUrl: r.cover_url,
+      category: r.category,
+      level: r.level,
+      durationMinutes: r.duration_minutes,
+      authorName: r.author_name,
+      lessons: r.lessons,
+    })));
+  }));
+
+  router.post('/catalog/:courseId/enroll', route(async (req, res) => {
+    const { db, user, now } = req.aula;
+    const { courseId } = ids(req);
+    // Se vuelve a comprobar con la MISMA condición del listado: que el curso
+    // estuviera en pantalla hace un rato no basta para matricularse ahora.
+    const [curso] = await many(
+      db,
+      `SELECT c.id, c.title, c.current_version_id ${CATALOGO} AND c.id = $3`,
+      [user.id, now, courseId],
+    );
+    if (!curso) {
+      throw notFound('Este curso ya no está disponible para inscribirse.');
+    }
+    await enrollUsers(db, { course: curso, userIds: [user.id], now });
+    res.status(201).json({ ok: true, courseId: curso.id });
   }));
 
   return router;

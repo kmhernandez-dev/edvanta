@@ -1,5 +1,7 @@
-import { BookOpen, CalendarClock, Lock } from 'lucide-react';
-import { fileUrl, get } from '../api';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { BookOpen, CalendarClock, Lock, Sparkles } from 'lucide-react';
+import { fileUrl, get, post } from '../api';
 import { useAsync } from '../hooks';
 import { fmtDate, fmtMinutes } from '../labels';
 import { useAulaSession } from '../session';
@@ -50,9 +52,63 @@ function CourseCard({ course }) {
   );
 }
 
+/**
+ * Tarjeta del catálogo: un curso de Edvanta en el que todavía no estás.
+ *
+ * No muestra avance ni fecha límite porque no hay matrícula: lo que hace
+ * falta decidir aquí es si el curso te sirve, no cómo vas.
+ */
+function CatalogCard({ course, onEnroll, enrolling }) {
+  const portada = course.coverFileId ? fileUrl(course.coverFileId) : course.coverUrl;
+  return (
+    <article className="flex flex-col overflow-hidden rounded-[var(--aula-radius-lg)] border border-[var(--aula-border)] bg-white">
+      <div className="relative aspect-[16/7]" style={{ background: 'var(--aula-gradient-hero)' }}>
+        {portada && <img src={portada} alt="" className="absolute inset-0 h-full w-full object-cover" loading="lazy" />}
+      </div>
+      <div className="flex flex-1 flex-col gap-3 p-5">
+        <div>
+          {course.category && (
+            <p className="text-xs font-semibold uppercase tracking-wide text-[var(--aula-secondary)]">{course.category}</p>
+          )}
+          <h3 className="mt-0.5 text-lg font-bold leading-snug">{course.title}</h3>
+          {course.shortDescription && (
+            <p className="mt-1 line-clamp-2 text-sm text-[var(--aula-muted)]">{course.shortDescription}</p>
+          )}
+        </div>
+        <div className="mt-auto flex flex-wrap gap-x-4 gap-y-1 text-xs text-[var(--aula-muted)]">
+          <span>{course.lessons} {course.lessons === 1 ? 'clase' : 'clases'}</span>
+          {course.durationMinutes ? <span>{fmtMinutes(course.durationMinutes)}</span> : null}
+          {course.authorName && <span>{course.authorName}</span>}
+        </div>
+        <Button onClick={() => onEnroll(course.courseId)} disabled={enrolling} className="w-full">
+          {enrolling ? 'Inscribiendo…' : 'Empezar curso'}
+        </Button>
+      </div>
+    </article>
+  );
+}
+
 export default function MiAula() {
   const { user } = useAulaSession();
+  const navigate = useNavigate();
   const courses = useAsync(({ signal }) => get('/me/courses', { signal }), []);
+  const catalog = useAsync(({ signal }) => get('/me/catalog', { signal }), []);
+  const [enrolling, setEnrolling] = useState(null);
+  const [enrollError, setEnrollError] = useState('');
+
+  const inscribirse = async (courseId) => {
+    setEnrolling(courseId);
+    setEnrollError('');
+    try {
+      await post(`/me/catalog/${courseId}/enroll`);
+      navigate(`/aula/curso/${courseId}`);
+    } catch (e) {
+      setEnrollError(e.message || 'No fue posible inscribirte.');
+      // El curso pudo cerrarse mientras la pantalla estaba abierta.
+      catalog.reload();
+      setEnrolling(null);
+    }
+  };
 
   const list = courses.data || [];
   const active = list.filter((c) => c.status !== 'completado');
@@ -65,21 +121,43 @@ export default function MiAula() {
         title={`Hola, ${user.firstName}`}
         description={list.length
           ? `Tienes ${active.length} ${active.length === 1 ? 'curso pendiente' : 'cursos pendientes'} y un avance promedio de ${avg} %.`
-          : 'Aquí verás los cursos que te asignen.'}
+          : 'Abajo están los cursos de Edvanta abiertos para ti.'}
       />
       {courses.loading && !courses.data && <LoadingBlock rows={3} label="Cargando tus cursos" />}
       {courses.error && <ErrorState error={courses.error} onRetry={courses.reload} />}
-      {courses.data && !list.length && (
+      {courses.data && !list.length && !(catalog.data || []).length && (
         <EmptyState
           icon={BookOpen}
-          title="Aún no tienes cursos asignados"
-          description="Cuando Edvanta te asigne una capacitación aparecerá aquí, junto con tu avance y tus fechas límite."
+          title="Aún no tienes cursos"
+          description="Cuando Edvanta publique un curso o te asignen una capacitación aparecerá aquí."
         />
       )}
       {list.length > 0 && (
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {list.map((c) => <CourseCard key={c.enrollmentId} course={c} />)}
         </div>
+      )}
+
+      {(catalog.data || []).length > 0 && (
+        <section className={list.length > 0 ? 'mt-10' : ''}>
+          <h2 className="flex items-center gap-2 text-lg font-bold">
+            <Sparkles className="h-5 w-5 text-[var(--aula-secondary)]" aria-hidden="true" />
+            Cursos de Edvanta
+          </h2>
+          <p className="mt-1 text-sm text-[var(--aula-muted)]">
+            Abiertos para ti. Al empezar uno se suma a tus cursos y se guarda tu avance.
+          </p>
+          {enrollError && (
+            <p className="mt-3 rounded-[var(--aula-radius)] bg-[var(--aula-danger-soft,#fef2f2)] px-3 py-2 text-sm font-semibold text-[var(--aula-danger,#b91c1c)]">
+              {enrollError}
+            </p>
+          )}
+          <div className="mt-5 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {catalog.data.map((c) => (
+              <CatalogCard key={c.courseId} course={c} onEnroll={inscribirse} enrolling={enrolling === c.courseId} />
+            ))}
+          </div>
+        </section>
       )}
     </div>
   );
