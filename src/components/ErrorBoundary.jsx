@@ -1,8 +1,12 @@
 import { Component } from 'react';
 
 const RELOAD_KEY = 'fst-chunk-reload-attempts';
-const MAX_RELOADS = 5;        // reintentos para superar la ventana de swap de un deploy
-const WINDOW_MS = 120000;     // 2 min: fuera de esa ventana los intentos se reinician solos
+// Los reintentos tienen que cubrir lo que tarda un despliegue de verdad.
+// Medido en Coolify: entre 105 y 195 segundos desde el push hasta que el
+// contenedor nuevo sirve los assets. Con los 5 intentos anteriores se
+// esperaban 34 segundos en total y la persona acababa viendo el error.
+const MAX_RELOADS = 7;
+const WINDOW_MS = 420000;     // 7 min: fuera de esa ventana los intentos se reinician solos
 
 // Detecta errores de "chunk desactualizado" tras un deploy: el navegador tiene
 // un index.html/bundle viejo que apunta a assets con hash que ya no existen.
@@ -41,10 +45,10 @@ export default class ErrorBoundary extends Component {
     attempts.push(now);
     writeAttempts(attempts);
 
-    this.setState({ reloading: true });
-    // Backoff creciente (~0.5s, 3s, 6s, 10s, 15s) para dar tiempo a que el
-    // contenedor nuevo termine de publicar los assets tras el deploy.
-    const steps = [500, 3000, 6000, 10000, 15000];
+    this.setState({ reloading: true, intento: attempts.length });
+    // Espera creciente hasta sumar algo más de tres minutos, que es lo que
+    // puede tardar el contenedor nuevo en publicar los assets.
+    const steps = [500, 3000, 8000, 15000, 30000, 45000, 60000];
     const delay = steps[Math.min(attempts.length - 1, steps.length - 1)];
     window.setTimeout(() => {
       const url = new URL(window.location.href);
@@ -62,11 +66,22 @@ export default class ErrorBoundary extends Component {
 
   render() {
     if (this.state.reloading) {
+      // A partir del segundo intento la espera se nota, así que se explica
+      // qué está pasando en vez de dejar un giro sin mensaje.
+      const insistiendo = (this.state.intento || 1) >= 2;
       return (
         <div className="fst-app flex min-h-screen items-center justify-center bg-[#FFF9F4] p-6">
-          <div className="flex items-center gap-3 text-sm font-semibold text-[#0A2540]">
-            <span className="h-5 w-5 animate-spin rounded-full border-2 border-[#0A2540] border-t-transparent" aria-hidden="true" />
-            Actualizando a la última versión…
+          <div className="max-w-sm text-center">
+            <div className="flex items-center justify-center gap-3 text-sm font-semibold text-[#0A2540]">
+              <span className="h-5 w-5 animate-spin rounded-full border-2 border-[#0A2540] border-t-transparent" aria-hidden="true" />
+              Actualizando a la última versión…
+            </div>
+            {insistiendo && (
+              <p className="mt-3 text-sm leading-6 text-[#5B6B7F]">
+                Se está publicando una versión nueva. Puede tardar un par de
+                minutos; la página se abre sola en cuanto esté lista.
+              </p>
+            )}
           </div>
         </div>
       );

@@ -214,7 +214,7 @@ export default function CursosCatalog({ defaultProvider = '' }) {
 
               {/* Filter grid */}
               <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2">
-                <select value={category} onChange={e => handleFilterChange(setCategory, 'category')(e.target.value)}
+                <select aria-label="Filtrar por categoría" value={category} onChange={e => handleFilterChange(setCategory, 'category')(e.target.value)}
                   className="text-xs border border-gray-200 rounded-lg px-3 py-2 bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-teal-400">
                   <option value="">Todas las categorías</option>
                   {filterOptions.categories.map(c => (
@@ -222,7 +222,7 @@ export default function CursosCatalog({ defaultProvider = '' }) {
                   ))}
                 </select>
 
-                <select value={career} onChange={e => handleFilterChange(setCareer, 'career')(e.target.value)}
+                <select aria-label="Filtrar por carrera" value={career} onChange={e => handleFilterChange(setCareer, 'career')(e.target.value)}
                   className="text-xs border border-gray-200 rounded-lg px-3 py-2 bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-teal-400">
                   <option value="">Todas las carreras</option>
                   {(filterOptions.careers || []).map(item => (
@@ -230,7 +230,7 @@ export default function CursosCatalog({ defaultProvider = '' }) {
                   ))}
                 </select>
 
-                <select value={skill} onChange={e => handleFilterChange(setSkill, 'skill')(e.target.value)}
+                <select aria-label="Filtrar por competencia" value={skill} onChange={e => handleFilterChange(setSkill, 'skill')(e.target.value)}
                   className="text-xs border border-gray-200 rounded-lg px-3 py-2 bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-teal-400">
                   <option value="">Todas las competencias</option>
                   {(filterOptions.skills || []).map(item => (
@@ -238,7 +238,7 @@ export default function CursosCatalog({ defaultProvider = '' }) {
                   ))}
                 </select>
 
-                <select value={language} onChange={e => handleFilterChange(setLanguage, 'language')(e.target.value)}
+                <select aria-label="Filtrar por idioma" value={language} onChange={e => handleFilterChange(setLanguage, 'language')(e.target.value)}
                   className="text-xs border border-gray-200 rounded-lg px-3 py-2 bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-teal-400">
                   <option value="">Todos los idiomas</option>
                   {filterOptions.languages.map(l => (
@@ -246,7 +246,7 @@ export default function CursosCatalog({ defaultProvider = '' }) {
                   ))}
                 </select>
 
-                <select value={level} onChange={e => handleFilterChange(setLevel, 'level')(e.target.value)}
+                <select aria-label="Filtrar por nivel" value={level} onChange={e => handleFilterChange(setLevel, 'level')(e.target.value)}
                   className="text-xs border border-gray-200 rounded-lg px-3 py-2 bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-teal-400">
                   <option value="">Todos los niveles</option>
                   {filterOptions.levels.map(l => (
@@ -254,7 +254,7 @@ export default function CursosCatalog({ defaultProvider = '' }) {
                   ))}
                 </select>
 
-                <select value={priceType} onChange={e => handleFilterChange(setPriceType, 'price_type')(e.target.value)}
+                <select aria-label="Filtrar por tipo de acceso" value={priceType} onChange={e => handleFilterChange(setPriceType, 'price_type')(e.target.value)}
                   className="text-xs border border-gray-200 rounded-lg px-3 py-2 bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-teal-400">
                   <option value="">Todos los tipos de acceso</option>
                   {filterOptions.price_types.map(p => (
@@ -262,7 +262,7 @@ export default function CursosCatalog({ defaultProvider = '' }) {
                   ))}
                 </select>
 
-                <select value={certificate} onChange={e => handleFilterChange(setCertificate, 'certificate')(e.target.value)}
+                <select aria-label="Filtrar por certificado" value={certificate} onChange={e => handleFilterChange(setCertificate, 'certificate')(e.target.value)}
                   className="text-xs border border-gray-200 rounded-lg px-3 py-2 bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-teal-400">
                   <option value="">Certificado: todos</option>
                   <option value="true">Con certificado</option>

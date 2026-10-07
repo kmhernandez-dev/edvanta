@@ -1,5 +1,5 @@
 import { useEffect, useState, useCallback } from 'react';
-import { Link, useParams, Navigate } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { getArticulo, gradientDe } from '../data/articulos';
@@ -300,7 +300,25 @@ export default function ArticuloPage() {
     });
   }, [art]);
 
-  if (!art) return <Navigate to="/" replace />;
+  // Antes esto era <Navigate to="/" />: un enlace viejo te dejaba en la
+  // portada sin explicación, y Google indexaba la portada como si fuera el
+  // artículo. Mejor decir que no está y ofrecer dónde seguir.
+  if (!art) {
+    return (
+      <div className="flex min-h-[70vh] items-center justify-center bg-white px-4">
+        <div className="max-w-md text-center">
+          <h1 className="text-2xl font-bold text-edvanta-deep">No encontramos este artículo</h1>
+          <p className="mt-3 text-sm leading-6 text-slate-600">
+            Puede que haya cambiado de dirección o que ya no esté publicado.
+          </p>
+          <div className="mt-6 flex flex-wrap justify-center gap-3">
+            <Link to="/articulos" className="inline-flex min-h-11 items-center rounded-lg bg-edvanta-blue px-5 text-sm font-bold text-white">Ver todos los artículos</Link>
+            <Link to="/buscar" className="inline-flex min-h-11 items-center rounded-lg border border-slate-300 bg-white px-5 text-sm font-bold text-slate-700">Buscar en Edvanta</Link>
+          </div>
+        </div>
+      </div>
+    );
+  }
   const marca = MARCA[art.marca] || MARCA.biblioteca;
   const isFst = art.marca === 'fst';
   const isEdvanta = art.marca === 'edvanta' || art.marca === 'biblioteca';

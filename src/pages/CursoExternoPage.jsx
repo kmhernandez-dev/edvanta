@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link, Navigate, useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import SiteHeader from '../components/edvanta/SiteHeader';
 import SiteFooter from '../components/edvanta/SiteFooter';
 import ExternalCourseCard from '../components/ExternalCourseCard';
@@ -226,7 +226,24 @@ export default function CursoExternoPage() {
     );
   }
 
-  if (notFound) return <Navigate to="/cursos" replace />;
+  // Antes caía al catálogo completo. Para quien llega es confuso, y para
+  // Google es un "soft 404": indexa como válida una página que no existe.
+  if (notFound) {
+    return (
+      <div className="flex min-h-[70vh] items-center justify-center bg-edvanta-bg px-4">
+        <div className="max-w-md text-center">
+          <h1 className="text-2xl font-bold text-edvanta-deep">No encontramos este curso</h1>
+          <p className="mt-3 text-sm leading-6 text-slate-600">
+            Puede que lo hayan retirado o que el enlace esté incompleto.
+          </p>
+          <div className="mt-6 flex flex-wrap justify-center gap-3">
+            <Link to="/cursos" className="inline-flex min-h-11 items-center rounded-lg bg-edvanta-blue px-5 text-sm font-bold text-white">Ver el catálogo</Link>
+            <Link to="/buscar" className="inline-flex min-h-11 items-center rounded-lg border border-slate-300 bg-white px-5 text-sm font-bold text-slate-700">Buscar en Edvanta</Link>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   const ctaUrl = course.affiliate_url || course.original_url;
   const providerLabel = PROVIDER_LABELS[course.provider] || course.provider;
