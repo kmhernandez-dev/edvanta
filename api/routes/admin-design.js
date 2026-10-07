@@ -333,4 +333,74 @@ router.get('/structured/:id', async (req, res) => {
   }
 });
 
+/**
+ * Pega (o cambia) el video de varias clases de una sola vez.
+ *
+ * Existe porque la alternativa era entrar al editor del Aula clase por
+ * clase: con cinco cursos de nueve clases son 45 visitas. Aquí se pegan
+ * todas y se guardan juntas.
+ */
+router.put('/structured/:id/videos', async (req, res) => {
+  const cliente = await pool.connect();
+  try {
+    const id = Number(req.params.id);
+    if (!Number.isInteger(id) || id < 1) return fallo(res, 'Identificador no válido.');
+    const items = Array.isArray(req.body?.videos) ? req.body.videos : [];
+    if (!items.length) return fallo(res, 'No llegó ningún video.');
+
+    // Las clases tienen que ser de ESTE curso: si no, se podría escribir
+    // en el curso de al lado pasando otro identificador.
+    const { rows: propias } = await cliente.query(
+      'SELECT id FROM aula_lessons WHERE course_id = $1 AND deleted_at IS NULL', [id],
+    );
+    const permitidas = new Set(propias.map((r) => Number(r.id)));
+
+    // Todo se valida antes de escribir: media tanda guardada sería peor.
+    const plan = [];
+    for (const it of items) {
+      const clase = Number(it?.lessonId);
+      if (!permitidas.has(clase)) return fallo(res, 'Hay una clase que no pertenece a este curso.');
+      const url = texto(it?.url, 2000);
+      if (url && !parseVideoUrl(url)) {
+        return fallo(res, `El enlace «${url.slice(0, 60)}» no es de YouTube ni de Vimeo.`);
+      }
+      plan.push({ clase, url, parsed: url ? parseVideoUrl(url) : null, titulo: texto(it?.title, 200) || '' });
+    }
+
+    await cliente.query('BEGIN');
+    let puestos = 0;
+    let quitados = 0;
+    for (const p of plan) {
+      // El video siempre va de primero; el texto de apoyo queda debajo.
+      await cliente.query(
+        `UPDATE aula_lesson_blocks SET deleted_at = NOW()
+          WHERE lesson_id = $1 AND type = 'video' AND deleted_at IS NULL`, [p.clase],
+      );
+      if (p.url) {
+        await cliente.query(
+          `INSERT INTO aula_lesson_blocks (lesson_id, type, sort_order, data)
+           VALUES ($1, 'video', -1, $2::jsonb)`,
+          [p.clase, JSON.stringify({
+            source: 'enlace', url: p.url, ...p.parsed, title: p.titulo, transcriptHtml: '',
+          })],
+        );
+        puestos += 1;
+      } else {
+        quitados += 1;
+      }
+      await cliente.query(
+        `UPDATE aula_lessons SET completion_rule = $2, updated_at = NOW() WHERE id = $1`,
+        [p.clase, p.url ? 'video' : 'manual'],
+      );
+    }
+    await cliente.query('COMMIT');
+    return res.json({ ok: true, data: { puestos, quitados } });
+  } catch (error) {
+    await cliente.query('ROLLBACK').catch(() => {});
+    return fallo(res, 'No fue posible guardar los videos', error);
+  } finally {
+    cliente.release();
+  }
+});
+
 export default router;
