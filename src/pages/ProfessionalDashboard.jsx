@@ -31,11 +31,9 @@ export default function ProfessionalDashboard() {
     if (!authLoading && !user) navigate('/cuenta?next=%2Fapp', { replace: true });
   }, [authLoading, user, navigate]);
 
-  useEffect(() => {
-    if (!authLoading && !loading && user && !workspaceError && !professionalProfile?.onboarding_completed) {
-      navigate('/app/onboarding', { replace: true });
-    }
-  }, [authLoading, loading, user, workspaceError, professionalProfile, navigate]);
+  // Ya no se obliga a contestar la encuesta antes de ver los cursos: pedía
+  // objetivo, habilidades, herramientas y disponibilidad, y no cambiaba nada
+  // de lo que la persona veía después.
 
   const targetCareer = useMemo(() => getCareerOption(professionalProfile?.target_career_slug), [professionalProfile]);
   const activePath = learningPaths.find(path => path.status === 'in_progress') || null;

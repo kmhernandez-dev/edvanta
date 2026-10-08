@@ -27,9 +27,7 @@ export default function ProfessionalProfilePage() {
     if (!authLoading && !user) navigate('/cuenta?next=%2Fapp%2Fperfil', { replace: true });
   }, [authLoading, user, navigate]);
 
-  useEffect(() => {
-    if (!loading && user && !professionalProfile?.onboarding_completed) navigate('/app/onboarding', { replace: true });
-  }, [loading, user, professionalProfile, navigate]);
+  // El perfil se puede abrir y completar cuando la persona quiera.
 
   useEffect(() => {
     if (professionalProfile) setDraft({

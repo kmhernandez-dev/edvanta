@@ -45,7 +45,11 @@ export default function ProfessionalAccount() {
 
   useEffect(() => {
     if (!authLoading && !workspaceLoading && user) {
-      navigate(professionalProfile?.onboarding_completed ? nextPath : '/app/onboarding', { replace: true });
+      // Antes, quien no había contestado la encuesta era enviado a ella
+      // antes de poder ver nada. Esa encuesta pedía objetivo, habilidades,
+      // herramientas y disponibilidad, y no cambiaba lo que la persona veía
+      // después. Ahora se entra directo a los cursos.
+      navigate(nextPath, { replace: true });
     }
   }, [authLoading, workspaceLoading, user, professionalProfile, nextPath, navigate]);
 
@@ -75,14 +79,14 @@ export default function ProfessionalAccount() {
             email: email.trim(),
             password,
             privacyAccepted,
-            redirectPath: '/app/onboarding',
+            redirectPath: '/app',
             consentScope: 'professional',
           })
         : await login(email.trim(), password);
       if (result?.error) throw new Error(result.error);
       if (mode === 'register') trackEvent('signup_completed', { method: 'email', account_scope: 'professional' });
       if (mode === 'register' && !result?.session) {
-        setSuccess('Revisa tu correo y confirma la cuenta. Después podrás completar tu perfil profesional.');
+        setSuccess('Revisa tu correo y confirma la cuenta para entrar.');
       }
     } catch (error) {
       setFormError(friendlyAuthError(error.message));
@@ -95,7 +99,7 @@ export default function ProfessionalAccount() {
     setFormError('');
     setAuthError('');
     setSubmitting(true);
-    const result = await loginWithGoogle({ redirectPath: '/app/onboarding' });
+    const result = await loginWithGoogle({ redirectPath: '/app' });
     if (result?.error) setFormError(friendlyAuthError(result.error));
     setSubmitting(false);
   };
