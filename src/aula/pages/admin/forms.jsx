@@ -51,6 +51,8 @@ function useSubmit(onDone) {
   const toast = useToast();
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState(null);
+  // `successMessage` puede ser una función: así el aviso depende de lo que
+  // respondió el servidor y no de lo que esperábamos que pasara.
   const run = async (fn, successMessage, problems = null) => {
     if (problems) {
       setError(problems);
@@ -60,7 +62,9 @@ function useSubmit(onDone) {
     setError(null);
     try {
       const result = await fn();
-      toast.success(successMessage);
+      const aviso = typeof successMessage === 'function' ? successMessage(result) : successMessage;
+      if (aviso?.tono === 'alerta') toast.error(aviso.texto);
+      else toast.success(aviso?.texto ?? aviso);
       onDone?.(result);
       return result;
     } catch (err) {
@@ -251,10 +255,22 @@ export function UserFormModal({ open, onClose, user, defaultCompanyId, defaultGr
     if (user) {
       run(() => patch(`/admin/users/${user.id}`, body), 'Datos actualizados.', problems);
     } else {
+      // El servidor devuelve si la invitación salió de verdad. Antes se
+      // ignoraba y la pantalla decía «enviamos la invitación» siempre: la
+      // persona se quedaba esperando un correo que nunca salió y nadie lo
+      // sabía hasta que preguntaba.
+      const correo = String(form.email).trim();
       run(async () => {
         const res = await post('/admin/users', { ...body, groupIds: isAdmin ? [] : form.groupIds, sendInvite: form.sendInvite });
-        return res.user;
-      }, form.sendInvite ? `Cuenta creada. Enviamos la invitación a ${String(form.email).trim()}.` : 'Cuenta creada sin enviar invitación.', problems);
+        return { ...res.user, __invitacionEnviada: res.invitationSent };
+      }, (creado) => {
+        if (!form.sendInvite) return 'Cuenta creada sin enviar invitación.';
+        if (creado?.__invitacionEnviada) return `Cuenta creada. Enviamos la invitación a ${correo}.`;
+        return {
+          tono: 'alerta',
+          texto: `Cuenta creada, pero el correo a ${correo} NO salió. Revisa la configuración de correo y vuelve a invitar desde la ficha de la persona.`,
+        };
+      }, problems);
     }
   };
 
