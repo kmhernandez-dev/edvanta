@@ -131,6 +131,12 @@ app.get('/api/health', (_req, res) => {
     // cualquier intento y no hay forma de distinguirlo de teclearlo mal.
     admin_token: process.env.ADMIN_TOKEN ? 'configured' : 'missing',
     jwt_secret: process.env.JWT_SECRET ? 'configured' : 'missing',
+    // Sin FROM_EMAIL no sale ningún correo, aunque RESEND_API_KEY esté
+    // puesta: el remitente es obligatorio y el envío falla en silencio.
+    from_email: process.env.FROM_EMAIL ? 'configured' : 'missing',
+    // El enlace de invitación se arma con SITE_URL. Si falta, cae en el
+    // valor por defecto y el enlace puede apuntar a otro sitio.
+    site_url: process.env.SITE_URL || '(por defecto: https://edvanta.co)',
   });
 });
 
