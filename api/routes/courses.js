@@ -294,3 +294,53 @@ export async function getFilterOptionsRoute(_req, res) {
     return res.status(500).json({ ok: false, error: 'Error interno' });
   }
 }
+
+/**
+ * Cursos propios de Edvanta, para la portada pública.
+ *
+ * Son los que viven en el aula (`aula_courses`), no en el catálogo
+ * externo. Hasta ahora solo se veían dentro de /aula, así que quien
+ * llegaba a edvanta.co no sabía que existían.
+ *
+ * Solo salen los publicados y de tipo `edvanta`: un curso de empresa
+ * pertenece a su empresa y no puede asomarse a la portada.
+ */
+export async function listOwnCoursesRoute(req, res) {
+  try {
+    const limite = Math.min(24, Math.max(1, parseInt(req.query.limit, 10) || 12));
+    const { rows } = await pool.query(
+      `SELECT c.id, c.title, c.short_description, c.cover_url, c.cover_file_id,
+              c.category, c.level, c.duration_minutes, c.author_name, c.published_at,
+              (SELECT COUNT(*)::int FROM aula_lessons l
+                WHERE l.course_id = c.id AND l.deleted_at IS NULL) AS lessons
+         FROM aula_courses c
+        WHERE c.kind = 'edvanta'
+          AND c.status = 'publicado'
+          AND c.deleted_at IS NULL
+          AND c.current_version_id IS NOT NULL
+        ORDER BY c.published_at DESC NULLS LAST, c.title
+        LIMIT $1`,
+      [limite],
+    );
+    return res.json({
+      ok: true,
+      data: rows.map((r) => ({
+        id: r.id,
+        title: r.title,
+        shortDescription: r.short_description || '',
+        // La portada puede venir de un archivo subido o de un enlace.
+        coverUrl: r.cover_file_id ? `/api/aula/files/${r.cover_file_id}` : r.cover_url,
+        category: r.category,
+        level: r.level,
+        durationMinutes: r.duration_minutes,
+        authorName: r.author_name,
+        lessons: r.lessons,
+        to: `/aula/curso/${r.id}`,
+      })),
+      total: rows.length,
+    });
+  } catch (e) {
+    console.error(JSON.stringify({ level: 'error', msg: 'Error listando cursos propios', error: e.message }));
+    return res.status(500).json({ ok: false, error: 'No fue posible cargar los cursos de Edvanta' });
+  }
+}

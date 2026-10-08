@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import SiteHeader    from '../components/edvanta/SiteHeader';
@@ -12,6 +12,7 @@ import ProductModal  from '../components/ProductModal';
 import SiteFooter        from '../components/edvanta/SiteFooter';
 import Icon          from '../components/Icon';
 import ArticulosSection from '../components/ArticulosSection';
+import { apiUrl } from '../config/api';
 import CourseCarousel from '../components/CourseCarousel';
 import ExploreContentSection from '../components/ExploreContentSection';
 import LearningRoutesSection from '../components/LearningRoutesSection';
@@ -43,6 +44,29 @@ export default function BibliotecaHome() {
 
   const filteredCourses = useMemo(() => filterCourses(courses, { search, category, profile }), [search, category, profile]);
   const herramientas = products.filter(p => p.featured);
+  // Los cursos propios de Edvanta viven en el aula, no en el catálogo
+  // externo. Hasta ahora solo se veían dentro de /aula y quien llegaba a
+  // la portada no sabía que existían.
+  const [cursosPropios, setCursosPropios] = useState([]);
+  useEffect(() => {
+    let vivo = true;
+    fetch(apiUrl('/api/cursos-edvanta?limit=12'))
+      .then((r) => (r.ok ? r.json() : null))
+      .then((j) => {
+        if (!vivo || !j?.data?.length) return;
+        setCursosPropios(j.data.map((c) => ({
+          id: 'propio-' + c.id,
+          title: c.title,
+          description: c.shortDescription,
+          image: c.coverUrl,
+          to: c.to,
+          ctaLabel: 'Ver el curso',
+        })));
+      })
+      .catch(() => {});
+    return () => { vivo = false; };
+  }, []);
+
   const popularCourses = getCoursesByList(POPULAR_COURSE_IDS);
   const newCourses = getCoursesByList(NEW_COURSE_IDS);
 
@@ -66,6 +90,9 @@ export default function BibliotecaHome() {
       <BrandGatewaySection />
 
       {/* ── FORMACIÓN ─────────────────────────────────────────── */}
+      {cursosPropios.length > 0 && (
+        <CourseCarousel title="Cursos propios de Edvanta" courses={cursosPropios} sectionKey="home_own_courses" />
+      )}
       <CourseCarousel title="Los más populares" courses={popularCourses} sectionKey="home_popular_courses" />
       <CourseCarousel title="Lo más nuevo" courses={newCourses} sectionKey="home_new_courses" />
       <ExploreContentSection />

@@ -1,4 +1,5 @@
 import { useCallback, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { trackAffiliateCourseClick } from '../data/featuredCourses';
 import { apiUrl } from '../config/api';
 
@@ -89,10 +90,12 @@ export default function CourseCarousel({ title, courses, sectionKey }) {
               <div className="group flex h-full flex-col overflow-hidden rounded-2xl border border-edvanta-border bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl">
                 <div className="relative block overflow-hidden bg-slate-100">
                   <img
-                    src={course.image.jpg}
-                    alt={course.image.alt}
+                    src={typeof course.image === 'string' ? course.image : course.image?.jpg}
+                    alt={typeof course.image === 'string' ? '' : (course.image?.alt || '')}
                     loading="lazy"
                     className="aspect-[16/9] w-full object-cover transition duration-500 group-hover:scale-[1.03]"
+                    // Sin portada, el hueco gris se ve mejor que el icono de rota.
+                    onError={(e) => { e.currentTarget.style.visibility = 'hidden'; }}
                   />
                 </div>
 
@@ -103,7 +106,18 @@ export default function CourseCarousel({ title, courses, sectionKey }) {
                   )}
 
                   <div className="mt-5 flex flex-col gap-2">
-                    {course.destinationUrl ? (
+                    {/* Un curso propio lleva a una ruta del sitio; uno curado,
+                        a la plataforma del proveedor con rel=sponsored. Marcar
+                        como patrocinado un enlace nuestro sería declararlo
+                        publicidad ajena ante los buscadores. */}
+                    {course.to ? (
+                      <Link
+                        to={course.to}
+                        className="inline-flex items-center justify-center gap-2 rounded-xl bg-edvanta-blue px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-edvanta-bluedark"
+                      >
+                        {course.ctaLabel || 'Ver el curso'}
+                      </Link>
+                    ) : course.destinationUrl ? (
                       <a
                         href={course.destinationUrl}
                         target="_blank"
