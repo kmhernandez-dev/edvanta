@@ -18,7 +18,6 @@ import ExploreContentSection from '../components/ExploreContentSection';
 import LearningRoutesSection from '../components/LearningRoutesSection';
 import LearningPathForm from '../components/LearningPathForm';
 import BrandGatewaySection from '../components/BrandGatewaySection';
-import ProcesosSection from '../components/edvanta/ProcesosSection';
 import OrientacionModal from '../components/orientacion/OrientacionModal';
 
 import { products } from '../data/products';
@@ -84,8 +83,6 @@ export default function BibliotecaHome() {
         onFindRoute={openOrientacion}
       />
 
-      {/* ── 2. ¿QUÉ NECESITAS HOY? (reparte hacia cada landing) ── */}
-      <ProcesosSection />
 
       <BrandGatewaySection />
 
