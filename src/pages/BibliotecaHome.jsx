@@ -88,7 +88,7 @@ export default function BibliotecaHome() {
 
       {/* ── FORMACIÓN ─────────────────────────────────────────── */}
       {cursosPropios.length > 0 && (
-        <CourseCarousel title="Cursos propios de Edvanta" courses={cursosPropios} sectionKey="home_own_courses" />
+        <CourseCarousel title="Los más actuales" courses={cursosPropios} sectionKey="home_own_courses" />
       )}
       <CourseCarousel title="Los más populares" courses={popularCourses} sectionKey="home_popular_courses" />
       <CourseCarousel title="Lo más nuevo" courses={newCourses} sectionKey="home_new_courses" />
