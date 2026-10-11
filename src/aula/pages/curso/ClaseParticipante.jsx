@@ -204,6 +204,7 @@ export default function ClaseParticipante() {
         snapshot={data.snapshot}
         lessonId={lessonId}
         lessonHref={(id) => `/aula/curso/${courseId}/clase/${id}`}
+        courseId={courseId}
         backTo={{ to: `/aula/curso/${courseId}`, label: 'Portada del curso' }}
         lessonState={(id) => data.lessonStates[id] || { status: 'pendiente' }}
         progress={{ pct: data.enrollment.progressPct }}

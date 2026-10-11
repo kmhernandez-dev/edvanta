@@ -12,6 +12,7 @@ import { fmtMinutes } from '../labels';
 import { BlockList } from '../blocks/BlockView';
 import { Button } from '../ui/Button';
 import { ProgressBar } from '../ui/Page';
+import PanelDelCurso from './PanelDelCurso';
 
 export function flattenLessons(snapshot) {
   return (snapshot?.modules || []).flatMap((m, mi) => m.lessons.map((l, li) => ({
@@ -78,7 +79,7 @@ function Outline({ snapshot, currentId, lessonHref, lessonState, onNavigate }) {
 
 export function CoursePlayer({
   snapshot, lessonId, lessonHref, backTo, mode = 'participant', lessonState = () => ({ status: 'pendiente' }),
-  progress, renderCompletion, onMedia, banner, headerActions, videoPositions,
+  progress, renderCompletion, onMedia, banner, headerActions, videoPositions, courseId = null,
 }) {
   const lessons = useMemo(() => flattenLessons(snapshot), [snapshot]);
   const index = Math.max(0, lessons.findIndex((l) => l.id === lessonId));
@@ -139,10 +140,6 @@ export function CoursePlayer({
       </header>
 
       <div className="mx-auto flex max-w-[1400px] gap-6 px-4">
-        <aside className="sticky top-14 hidden h-[calc(100vh-3.5rem)] w-80 shrink-0 overflow-y-auto border-r border-[var(--aula-border)] py-6 pr-4 lg:block">
-          <Outline snapshot={snapshot} currentId={lesson.id} lessonHref={lessonHref} lessonState={lessonState} />
-        </aside>
-
         {menuOpen && (
           <div className="fixed inset-0 z-40 lg:hidden" role="dialog" aria-modal="true" aria-label="Contenido del curso">
             <div className="absolute inset-0 bg-[rgba(23,34,59,0.45)]" aria-hidden="true" onClick={() => setMenuOpen(false)} />
@@ -205,6 +202,22 @@ export function CoursePlayer({
             </footer>
           </article>
         </main>
+
+        {/* El temario va a la derecha, que es donde la mano lo busca mientras
+            se ve el video. Queda después en el DOM a propósito: quien navega
+            con teclado o lector de pantalla llega a la clase antes que al
+            índice, que es el orden en que importan. */}
+        <aside className="sticky top-14 hidden h-[calc(100vh-3.5rem)] w-[min(32%,22rem)] shrink-0 overflow-y-auto border-l border-[var(--aula-border)] py-6 pl-4 lg:block">
+          <PanelDelCurso
+            snapshot={snapshot}
+            lesson={lesson}
+            lessonHref={lessonHref}
+            lessonState={lessonState}
+            progress={progress}
+            Outline={Outline}
+            courseId={courseId}
+          />
+        </aside>
       </div>
     </div>
   );

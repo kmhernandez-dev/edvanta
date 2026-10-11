@@ -2,7 +2,7 @@ import express from 'express';
 import { closedReason } from '../../lib/aula/access.js';
 import { many } from '../../lib/aula/db.js';
 import { enrollUsers } from '../../lib/aula/enrollments.js';
-import { id as idField, int, notFound, route } from '../../lib/aula/http.js';
+import { badRequest, id as idField, int, notFound, route } from '../../lib/aula/http.js';
 import {
   addLessonTime, completeLesson, courseForParticipant, openLesson, reportVideo,
 } from '../../lib/aula/learning.js';
@@ -90,6 +90,81 @@ export function meRouter() {
   router.post('/courses/:courseId/lessons/:lessonId/complete', route(async (req, res) => {
     const { courseId, lessonId } = ids(req);
     res.json(await completeLesson(req.aula.db, req.aula.user, courseId, lessonId, { now: req.aula.now }));
+  }));
+
+  // ── Apuntes de la clase ───────────────────────────────────
+  //
+  // Privados. Se buscan y se guardan siempre a través de la matrícula
+  // de quien pregunta, así que nadie puede leer ni pisar los de otro
+  // cambiando el identificador en la dirección.
+
+  const matriculaDe = async (db, userId, courseId) => {
+    const [fila] = await many(
+      db,
+      `SELECT id FROM aula_enrollments
+        WHERE user_id = $1 AND course_id = $2 AND withdrawn_at IS NULL
+        LIMIT 1`,
+      [userId, courseId],
+    );
+    if (!fila) throw notFound('No encontramos este curso entre los que tienes asignados.');
+    return fila.id;
+  };
+
+  router.get('/courses/:courseId/lessons/:lessonId/note', route(async (req, res) => {
+    const { db, user } = req.aula;
+    const { courseId, lessonId } = ids(req);
+    const enrollmentId = await matriculaDe(db, user.id, courseId);
+    const [nota] = await many(
+      db,
+      `SELECT body, video_second, updated_at FROM aula_notes
+        WHERE enrollment_id = $1 AND lesson_id = $2`,
+      [enrollmentId, lessonId],
+    );
+    res.json({
+      body: nota?.body || '',
+      videoSecond: nota?.video_second ?? null,
+      updatedAt: nota?.updated_at || null,
+    });
+  }));
+
+  router.put('/courses/:courseId/lessons/:lessonId/note', route(async (req, res) => {
+    const { db, user } = req.aula;
+    const { courseId, lessonId } = ids(req);
+    const enrollmentId = await matriculaDe(db, user.id, courseId);
+
+    const cuerpo = typeof req.body?.body === 'string' ? req.body.body : '';
+    if (cuerpo.length > 20000) {
+      throw badRequest('El apunte es demasiado largo. Resume o divídelo en varias clases.');
+    }
+    const segundo = Number.isFinite(Number(req.body?.videoSecond))
+      ? Math.max(0, Math.round(Number(req.body.videoSecond)))
+      : null;
+
+    // Vaciar el apunte lo borra: guardar una fila en blanco solo ensucia.
+    if (!cuerpo.trim()) {
+      await db.query(
+        'DELETE FROM aula_notes WHERE enrollment_id = $1 AND lesson_id = $2',
+        [enrollmentId, lessonId],
+      );
+      return res.json({ body: '', videoSecond: null, updatedAt: null });
+    }
+
+    const [nota] = await many(
+      db,
+      `INSERT INTO aula_notes (enrollment_id, lesson_id, body, video_second)
+       VALUES ($1, $2, $3, $4)
+       ON CONFLICT (enrollment_id, lesson_id) DO UPDATE
+          SET body = EXCLUDED.body,
+              video_second = EXCLUDED.video_second,
+              updated_at = NOW()
+       RETURNING body, video_second, updated_at`,
+      [enrollmentId, lessonId, cuerpo, segundo],
+    );
+    return res.json({
+      body: nota.body,
+      videoSecond: nota.video_second,
+      updatedAt: nota.updated_at,
+    });
   }));
 
   // ── Catálogo abierto de Edvanta ───────────────────────────
