@@ -6,7 +6,7 @@ import { uuid_ossp } from '@electric-sql/pglite/contrib/uuid_ossp';
 import { readdirSync, readFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { describe, expect, it } from 'vitest';
+import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import { cleanMigrationSql } from '../lib/sql-text.js';
 import { SQL_CURSO_PUBLICO, SQL_PORTADA_PUBLICA, temarioPublico } from '../routes/courses.js';
 
@@ -26,31 +26,35 @@ async function baseMigrada() {
 }
 
 describe('migraciones', () => {
+  // Una sola base para todo el archivo. Aplicar las migraciones cuesta
+  // varios megas de SQL —las de contenido pesan lo suyo— y levantar dos
+  // Postgres en memoria para dos comprobaciones de lectura agotaba el
+  // proceso: «Worker exited unexpectedly».
+  let base;
+  beforeAll(async () => { base = await baseMigrada(); }, 240_000);
+  afterAll(async () => { await base?.db.close(); });
+
   it('quita el BOM que dejan algunos editores de Windows', () => {
     expect(cleanMigrationSql('﻿-- hola\nSELECT 1;')).toBe('-- hola\nSELECT 1;');
     expect(cleanMigrationSql('SELECT 1;')).toBe('SELECT 1;');
   });
 
   // Reproduce el arranque de producción: todas las migraciones, en orden,
-  // limpiadas igual que lo hace lib/migrate.js. Si una falla, el migrador
-  // real se detiene ahí y bloquea las siguientes.
-  it('aplica todas las migraciones en orden sobre una base vacía', async () => {
-    const { db, files } = await baseMigrada();
+  // limpiadas igual que lo hace lib/migrate.js. Si una falla, baseMigrada
+  // lanza con el nombre del archivo y el migrador real se detendría ahí.
+  it('aplica todas las migraciones en orden sobre una base vacía', () => {
     const aplicadas = readdirSync(dir).filter((f) => f.endsWith('.sql')).sort();
-    expect(aplicadas).toEqual(files);
-    await db.close();
-  }, 120_000);
+    expect(aplicadas).toEqual(base.files);
+  });
 
   // La ficha pública de un curso se consulta desde fuera del aula, con el
   // pool global, así que no la cubren las pruebas del aula. Lo que puede
   // romperse en silencio es el nombre de una columna: si alguien renombra
   // una, esto falla aquí y no en producción.
   it('las consultas públicas de curso casan con el esquema', async () => {
-    const { db } = await baseMigrada();
-    expect((await db.query(SQL_CURSO_PUBLICO, [1])).rows).toEqual([]);
-    expect((await db.query(SQL_PORTADA_PUBLICA, [1])).rows).toEqual([]);
-    await db.close();
-  }, 120_000);
+    expect((await base.db.query(SQL_CURSO_PUBLICO, [1])).rows).toEqual([]);
+    expect((await base.db.query(SQL_PORTADA_PUBLICA, [1])).rows).toEqual([]);
+  });
 });
 
 describe('ficha pública de curso · temario', () => {

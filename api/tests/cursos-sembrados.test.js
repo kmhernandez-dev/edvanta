@@ -30,6 +30,7 @@ const dir = path.join(path.dirname(fileURLToPath(import.meta.url)), '..', 'migra
 const LINEAS = [
   { categoria: 'Calidad farmacéutica', cursos: 10, unidades: 50, clases: 338 },
   { categoria: 'Asuntos regulatorios', cursos: 10, unidades: 50, clases: 333 },
+  { categoria: 'Asuntos regulatorios — productos especiales', cursos: 10, unidades: 50, clases: 336 },
 ];
 
 let pglite;

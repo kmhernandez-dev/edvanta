@@ -46,15 +46,65 @@ export default class ErrorBoundary extends Component {
     writeAttempts(attempts);
 
     this.setState({ reloading: true, intento: attempts.length });
-    // Espera creciente hasta sumar algo más de tres minutos, que es lo que
-    // puede tardar el contenedor nuevo en publicar los assets.
-    const steps = [500, 3000, 8000, 15000, 30000, 45000, 60000];
-    const delay = steps[Math.min(attempts.length - 1, steps.length - 1)];
-    window.setTimeout(() => {
+    this.esperarAlDespliegue();
+  }
+
+  componentWillUnmount() {
+    this.cancelado = true;
+    window.clearTimeout(this.temporizador);
+  }
+
+  /** El script de entrada que está cargado ahora mismo (lleva hash del build). */
+  entradaActual() {
+    const src = [...document.querySelectorAll('script[src]')]
+      .map((s) => s.getAttribute('src') || '')
+      .find((s) => /\/assets\/index-[A-Za-z0-9_-]+\.js/.test(s));
+    return src || null;
+  }
+
+  /**
+   * Espera a que el contenedor nuevo esté sirviendo, y recarga en cuanto
+   * lo está.
+   *
+   * Antes esto era una espera a ciegas de hasta 60 segundos por intento.
+   * Si el despliegue terminaba en el segundo uno, la persona se quedaba
+   * mirando el giro los 59 restantes sin saber si esperar o no.
+   *
+   * Ahora se pregunta: se pide el index.html sin caché y se mira qué
+   * script de entrada referencia. Mientras sea el mismo que ya falló, el
+   * contenedor viejo sigue delante; cuando cambia, la versión nueva está
+   * publicada y se recarga en ese momento.
+   */
+  async esperarAlDespliegue() {
+    const anterior = this.entradaActual();
+    const hasta = Date.now() + 240000;     // cuatro minutos: más que cualquier despliegue medido
+    const recargar = () => {
+      if (this.cancelado) return;
       const url = new URL(window.location.href);
-      url.searchParams.set('v', String(Date.now()));   // fuerza HTML fresco; conserva el hash (#access_token de OAuth)
+      url.searchParams.set('v', String(Date.now())); // HTML fresco; conserva el hash (#access_token de OAuth)
       window.location.replace(url.toString());
-    }, delay);
+    };
+
+    // Un respiro antes de la primera pregunta: si el fallo fue un corte de
+    // red puntual, recargar de inmediato suele bastar.
+    await new Promise((r) => { this.temporizador = window.setTimeout(r, 1500); });
+
+    while (!this.cancelado && Date.now() < hasta) {
+      try {
+        const res = await fetch(`/index.html?v=${Date.now()}`, { cache: 'no-store' });
+        if (res.ok) {
+          const html = await res.text();
+          const nueva = /\/assets\/index-[A-Za-z0-9_-]+\.js/.exec(html)?.[0] || null;
+          // Sin referencia con la que comparar, no hay nada que esperar.
+          if (!anterior || !nueva || !anterior.includes(nueva.replace(/^\//, ''))) {
+            recargar();
+            return;
+          }
+        }
+      } catch { /* el contenedor todavía no responde: se vuelve a preguntar */ }
+      await new Promise((r) => { this.temporizador = window.setTimeout(r, 2500); });
+    }
+    recargar(); // se acabó el plazo: se intenta igual
   }
 
   handleManualReload = () => {
@@ -66,9 +116,6 @@ export default class ErrorBoundary extends Component {
 
   render() {
     if (this.state.reloading) {
-      // A partir del segundo intento la espera se nota, así que se explica
-      // qué está pasando en vez de dejar un giro sin mensaje.
-      const insistiendo = (this.state.intento || 1) >= 2;
       return (
         <div className="fst-app flex min-h-screen items-center justify-center bg-[#FFF9F4] p-6">
           <div className="max-w-sm text-center">
@@ -76,12 +123,20 @@ export default class ErrorBoundary extends Component {
               <span className="h-5 w-5 animate-spin rounded-full border-2 border-[#0A2540] border-t-transparent" aria-hidden="true" />
               Actualizando a la última versión…
             </div>
-            {insistiendo && (
-              <p className="mt-3 text-sm leading-6 text-[#5B6B7F]">
-                Se está publicando una versión nueva. Puede tardar un par de
-                minutos; la página se abre sola en cuanto esté lista.
-              </p>
-            )}
+            <p className="mt-3 text-sm leading-6 text-[#5B6B7F]">
+              Se está publicando una versión nueva. La página se abre sola en
+              cuanto esté lista, normalmente en menos de dos minutos.
+            </p>
+            {/* Siempre hay un botón. Una pantalla de espera sin nada que
+                pulsar deja a la persona sin saber si esperar o si se colgó,
+                y eso es justo lo que pasó. */}
+            <button
+              type="button"
+              onClick={this.handleManualReload}
+              className="mt-5 min-h-11 rounded-xl border border-[#0A2540]/20 bg-white px-5 text-sm font-bold text-[#0A2540] hover:bg-[#0A2540]/5"
+            >
+              Recargar ahora
+            </button>
           </div>
         </div>
       );
