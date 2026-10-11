@@ -51,6 +51,83 @@ describe('migraciones', () => {
     expect((await db.query(SQL_PORTADA_PUBLICA, [1])).rows).toEqual([]);
     await db.close();
   }, 120_000);
+
+  // Que una migración de 850 kB «corra sin error» no dice nada: podría
+  // haber creado los cursos vacíos. Esto mira lo que quedó dentro.
+  it('la línea de Calidad Farmacéutica queda montada entera', async () => {
+    const { db } = await baseMigrada();
+
+    const { rows: cursos } = await db.query(
+      `SELECT id, title, category, duration_minutes, status
+         FROM aula_courses
+        WHERE category = 'Calidad farmacéutica' AND kind = 'edvanta'
+        ORDER BY id`,
+    );
+    expect(cursos).toHaveLength(10);
+    // En borrador: publicarlos es una decisión que se toma mirándolos.
+    expect(cursos.every((c) => c.status === 'borrador')).toBe(true);
+    expect(cursos.every((c) => c.duration_minutes === 1200)).toBe(true);
+
+    const ids = cursos.map((c) => c.id);
+    const [{ modulos }] = (await db.query(
+      'SELECT COUNT(*)::int AS modulos FROM aula_modules WHERE course_id = ANY($1)', [ids],
+    )).rows;
+    expect(modulos).toBe(50); // cinco unidades por curso
+
+    const [{ clases }] = (await db.query(
+      'SELECT COUNT(*)::int AS clases FROM aula_lessons WHERE course_id = ANY($1)', [ids],
+    )).rows;
+    expect(clases).toBe(338); // el total que declara el índice del archivo
+
+    // Toda clase tiene título, subtítulo (que es el nivel «Clase» del
+    // archivo) y al menos un bloque: ninguna quedó hueca.
+    const [{ huecas }] = (await db.query(
+      `SELECT COUNT(*)::int AS huecas FROM aula_lessons l
+        WHERE l.course_id = ANY($1)
+          AND (btrim(coalesce(l.title, '')) = '' OR btrim(coalesce(l.subtitle, '')) = ''
+               OR NOT EXISTS (SELECT 1 FROM aula_lesson_blocks b WHERE b.lesson_id = l.id))`,
+      [ids],
+    )).rows;
+    expect(huecas).toBe(0);
+
+    const { rows: bloques } = await db.query(
+      `SELECT b.type, COUNT(*)::int AS n
+         FROM aula_lesson_blocks b JOIN aula_lessons l ON l.id = b.lesson_id
+        WHERE l.course_id = ANY($1) GROUP BY b.type ORDER BY b.type`,
+      [ids],
+    );
+    const porTipo = Object.fromEntries(bloques.map((b) => [b.type, b.n]));
+    expect(porTipo.video).toBeGreaterThan(350);
+    expect(porTipo.enlace).toBeGreaterThan(350);
+    expect(porTipo.texto).toBeGreaterThan(400);
+
+    // Ningún bloque mal formado: el Aula los lee por estas claves y un
+    // nulo aquí rompe la clase al abrirla.
+    const [{ rotos }] = (await db.query(
+      `SELECT COUNT(*)::int AS rotos
+         FROM aula_lesson_blocks b JOIN aula_lessons l ON l.id = b.lesson_id
+        WHERE l.course_id = ANY($1)
+          AND ((b.type = 'video'  AND (b.data->>'videoId' IS NULL OR b.data->>'provider' IS NULL))
+            OR (b.type = 'enlace' AND (b.data->>'url' IS NULL OR b.data->>'title' IS NULL))
+            OR (b.type = 'texto'  AND btrim(coalesce(b.data->>'html', '')) = ''))`,
+      [ids],
+    )).rows;
+    expect(rotos).toBe(0);
+
+    // Y nada de enlaces que no sean http(s): ahí es donde se cuela un
+    // javascript: si alguien edita el archivo de origen.
+    const [{ raros }] = (await db.query(
+      `SELECT COUNT(*)::int AS raros
+         FROM aula_lesson_blocks b JOIN aula_lessons l ON l.id = b.lesson_id
+        WHERE l.course_id = ANY($1)
+          AND b.type IN ('enlace', 'video')
+          AND b.data->>'url' !~* '^https?://'`,
+      [ids],
+    )).rows;
+    expect(raros).toBe(0);
+
+    await db.close();
+  }, 180_000);
 });
 
 describe('ficha pública de curso · temario', () => {
