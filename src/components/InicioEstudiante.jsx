@@ -39,7 +39,12 @@ function Avance({ valor, etiqueta }) {
 function Tarjeta({ curso }) {
   const pct = Math.round(Number(curso.progressPct) || 0);
   const empezado = pct > 0;
-  const portada = curso.coverFileId ? `/api/aula/files/${curso.coverFileId}` : curso.coverUrl;
+  // La portada de un curso de Edvanta se pide por su ruta pública, que el
+  // navegador puede cachear. La de un curso de empresa no: esa va por el
+  // aula, con sesión y sin caché, que es como tiene que ir.
+  const portada = curso.coverFileId
+    ? (curso.kind === 'edvanta' ? `/api/cursos-edvanta/${curso.courseId}/portada` : `/api/aula/files/${curso.coverFileId}`)
+    : curso.coverUrl;
   return (
     <article className="flex w-[17rem] shrink-0 snap-start flex-col overflow-hidden rounded-2xl border border-edvanta-border bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg sm:w-[19rem]">
       <div className="relative aspect-[16/9] shrink-0 bg-edvanta-light">

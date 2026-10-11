@@ -25,7 +25,7 @@ export function meRouter() {
               e.lessons_done, e.lessons_required, e.assessments_passed, e.assessments_required,
               e.activities_approved, e.activities_required, e.due_at, e.starts_at,
               e.last_access_at, e.completed_at, e.course_version_id,
-              c.title, c.short_description, c.cover_file_id, c.kind, c.duration_minutes,
+              c.title, c.short_description, c.cover_file_id, c.cover_url, c.kind, c.duration_minutes,
               c.status AS course_status, c.deleted_at AS course_deleted_at, c.current_version_id,
               c.available_from, c.available_until, co.name AS company_name
          FROM aula_enrollments_v e
@@ -43,6 +43,8 @@ export function meRouter() {
         title: r.title,
         shortDescription: r.short_description,
         coverFileId: r.cover_file_id,
+        // La portada también puede venir de un enlace, como en los curados.
+        coverUrl: r.cover_url,
         kind: r.kind,
         companyName: r.company_name,
         durationMinutes: r.duration_minutes,

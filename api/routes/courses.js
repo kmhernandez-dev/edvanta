@@ -26,6 +26,10 @@
  *    Devuelve las opciones disponibles para cada filtro.
  * ============================================================
  */
+import crypto from 'node:crypto';
+import fs from 'node:fs';
+import fsp from 'node:fs/promises';
+import path from 'node:path';
 import { pool } from '../db.js';
 
 const ALLOWED_PROVIDERS = ['edutin', 'coursera', 'udemy'];
@@ -454,8 +458,19 @@ export async function ownCourseDetailRoute(req, res) {
  * Esto NO abre el almacén del aula. Solo sirve un archivo cuando es la
  * portada de un curso propio y publicado, y solo si es una imagen: si
  * alguien pusiera de portada un PDF, aquí no sale.
+ *
+ * Y no sirve el original. Las portadas subidas pesan ~1,7 MB cada una:
+ * seis en el inicio son diez megas de imágenes para ver seis tarjetas.
+ * Se reduce a lo que la tarjeta necesita y se guarda el resultado, así
+ * que el trabajo se hace una vez por imagen y no una vez por visita.
  */
 const PORTADAS_PUBLICAS = new Set(['image/jpeg', 'image/png', 'image/webp', 'image/avif', 'image/gif']);
+
+/** Ancho de la portada más grande que se muestra, con holgura para pantallas densas. */
+const ANCHO_PORTADA = 960;
+// Parte del nombre del archivo derivado: cambiarla invalida lo guardado
+// sin tener que borrar nada a mano.
+const VERSION_PORTADA = 'w960q78';
 
 export const SQL_PORTADA_PUBLICA = `
   SELECT f.storage_key, f.mime_type, f.size_bytes, f.updated_at
@@ -469,6 +484,45 @@ export const SQL_PORTADA_PUBLICA = `
      AND f.deleted_at IS NULL`;
 
 export function ownCourseCoverRoute({ storage }) {
+  const cacheDir = path.join(storage.root, 'portadas');
+
+  /**
+   * Devuelve la ruta de la versión ligera, creándola la primera vez.
+   * Si algo falla (sharp ausente, imagen rota) devuelve null y se sirve
+   * el original: más vale pesada que ninguna.
+   *
+   * Cambiar la portada de un curso sube otro archivo, con otra clave, así
+   * que la versión nueva se genera sola y la vieja queda huérfana. Son
+   * decenas de kilobytes: no vale la pena un barrido para eso.
+   */
+  async function versionLigera(storageKey) {
+    // El nombre sale de un hash: la clave de almacenamiento nunca toca
+    // el sistema de archivos de aquí.
+    const nombre = `${crypto.createHash('sha256').update(storageKey).digest('hex')}.${VERSION_PORTADA}.webp`;
+    const destino = path.join(cacheDir, nombre);
+    try {
+      await fsp.access(destino);
+      return destino;
+    } catch { /* todavía no existe */ }
+    try {
+      const { default: sharp } = await import('sharp');
+      await fsp.mkdir(cacheDir, { recursive: true });
+      // Se escribe aparte y se renombra: si entran dos peticiones a la
+      // vez, nadie lee un archivo a medio escribir.
+      const parcial = `${destino}.${process.pid}.${Date.now()}.part`;
+      await sharp(storage.readStream(storageKey))
+        .rotate()
+        .resize({ width: ANCHO_PORTADA, withoutEnlargement: true })
+        .webp({ quality: 78 })
+        .toFile(parcial);
+      await fsp.rename(parcial, destino);
+      return destino;
+    } catch (err) {
+      console.error(JSON.stringify({ level: 'warn', msg: 'No se pudo reducir la portada', error: err.message }));
+      return null;
+    }
+  }
+
   return async function servirPortada(req, res) {
     try {
       const id = Number.parseInt(req.params.id, 10);
@@ -478,14 +532,20 @@ export function ownCourseCoverRoute({ storage }) {
       if (!f || !PORTADAS_PUBLICAS.has(f.mime_type)) return res.status(404).end();
       if (!(await storage.exists(f.storage_key))) return res.status(404).end();
 
-      res.setHeader('Content-Type', f.mime_type);
-      res.setHeader('Content-Length', f.size_bytes);
       res.setHeader('X-Content-Type-Options', 'nosniff');
       // Es pública y cambia poco; que la cachee el navegador y el proxy.
-      res.setHeader('Cache-Control', 'public, max-age=3600, stale-while-revalidate=86400');
+      res.setHeader('Cache-Control', 'public, max-age=86400, stale-while-revalidate=604800');
+
+      const ligera = await versionLigera(f.storage_key);
+      const origen = ligera
+        ? { tipo: 'image/webp', bytes: (await fsp.stat(ligera)).size, abrir: () => fs.createReadStream(ligera) }
+        : { tipo: f.mime_type, bytes: f.size_bytes, abrir: () => storage.readStream(f.storage_key) };
+
+      res.setHeader('Content-Type', origen.tipo);
+      res.setHeader('Content-Length', origen.bytes);
       if (req.method === 'HEAD') return res.end();
 
-      const stream = storage.readStream(f.storage_key);
+      const stream = origen.abrir();
       stream.on('error', (err) => {
         console.error(JSON.stringify({ level: 'error', msg: 'Error leyendo portada', curso: id, error: err.message }));
         res.destroy(err);
