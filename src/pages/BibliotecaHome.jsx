@@ -1,5 +1,5 @@
 import { useState, useMemo, useEffect } from 'react';
-import { Link, Navigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import SiteHeader    from '../components/edvanta/SiteHeader';
 import Hero          from '../components/Hero';
@@ -14,6 +14,7 @@ import Icon          from '../components/Icon';
 import ArticulosSection from '../components/ArticulosSection';
 import { apiUrl } from '../config/api';
 import { useAuth } from '../context/AuthContext';
+import InicioEstudiante from '../components/InicioEstudiante';
 import CourseCarousel from '../components/CourseCarousel';
 import ExploreContentSection from '../components/ExploreContentSection';
 import LearningRoutesSection from '../components/LearningRoutesSection';
@@ -35,19 +36,12 @@ function filterCourses(list, { search, category, profile }) {
   });
 }
 
-/**
- * El inicio depende de quién mire.
- *
- * Quien ya entró no tiene por qué volver a ver la portada de visitante:
- * su inicio es el aula, con sus cursos, su avance y el catálogo entero.
- */
 export default function BibliotecaHome() {
-  const { user, loading } = useAuth();
-  if (!loading && user) return <Navigate to="/aula" replace />;
-  return <PortadaPublica />;
-}
-
-function PortadaPublica() {
+  // Se renombra: en esta página `profile` ya es el filtro por perfil.
+  const { user, profile: cuenta } = useAuth();
+  // El nombre de pila basta para saludar; el completo ocupa dos renglones.
+  const nombreCorto = String(cuenta?.full_name || user?.user_metadata?.full_name || '')
+    .trim().split(/s+/)[0] || null;
   const [search, setSearch]     = useState('');
   const [category, setCategory] = useState('Todos');
   const [profile, setProfile]   = useState('todos');
@@ -90,11 +84,18 @@ function PortadaPublica() {
     <div className="min-h-screen bg-edvanta-home">
       <SiteHeader />
 
-      {/* ── 1. HERO ────────────────────────────────────────────── */}
-      <Hero
-        onCreateAccount="/cuenta?modo=registro"
-        onFindRoute={openOrientacion}
-      />
+      {/* Quien ya entró abre el inicio con sus cursos. El resto de la
+          página sigue igual: también busca empleo y usa las herramientas,
+          así que quitarle el inicio lo dejaría sin a dónde ir. */}
+      {user && <InicioEstudiante nombre={nombreCorto} />}
+
+      {/* ── 1. HERO (solo para quien aún no tiene cuenta) ──────── */}
+      {!user && (
+        <Hero
+          onCreateAccount="/cuenta?modo=registro"
+          onFindRoute={openOrientacion}
+        />
+      )}
 
 
       <BrandGatewaySection />
