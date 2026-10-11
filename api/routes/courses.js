@@ -312,7 +312,10 @@ export async function getFilterOptionsRoute(_req, res) {
  */
 export async function listOwnCoursesRoute(req, res) {
   try {
-    const limite = Math.min(24, Math.max(1, parseInt(req.query.limit, 10) || 12));
+    // El tope sube a 60: con tres líneas de cursos montadas, 24 dejaba
+    // fuera a los demás sin que se notara. El inicio sigue pidiendo 24,
+    // que ya son muchas tarjetas para un carrusel; /cursos los pide todos.
+    const limite = Math.min(60, Math.max(1, parseInt(req.query.limit, 10) || 12));
     const { rows } = await pool.query(
       `SELECT c.id, c.title, c.short_description, c.cover_url, c.cover_file_id,
               c.category, c.level, c.duration_minutes, c.author_name, c.published_at,

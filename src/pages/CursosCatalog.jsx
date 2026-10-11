@@ -75,7 +75,7 @@ export default function CursosCatalog({ defaultProvider = '' }) {
   useEffect(() => {
     if (defaultProvider) return undefined;
     let vivo = true;
-    fetch(apiUrl('/api/cursos-edvanta?limit=24'))
+    fetch(apiUrl('/api/cursos-edvanta?limit=60'))
       .then((r) => (r.ok ? r.json() : null))
       .then((j) => {
         if (!vivo || !j?.data?.length) return;
