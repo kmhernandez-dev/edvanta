@@ -209,7 +209,25 @@ export function AuthProvider({ children }) {
     return { ok: true };
   }, []);
 
+  /**
+   * Cerrar sesión cierra también la del aula.
+   *
+   * El aula guarda la suya en su propia cookie (httpOnly, limitada a
+   * /api/aula). Si solo se cerrara la de Supabase, la del aula seguiría
+   * viva y entrar a /aula volvería a dejar a la persona dentro: habría
+   * cerrado sesión en una pantalla y no en la otra.
+   *
+   * Se pide primero la del aula, porque si falla la de Supabase igual
+   * queremos haber cerrado aquella.
+   */
   const logout = useCallback(async () => {
+    try {
+      await fetch(apiUrl('/api/aula/auth/logout'), {
+        method: 'POST',
+        credentials: 'include',
+        headers: { 'X-Aula-Request': '1' },
+      });
+    } catch { /* sin red: se cierra lo que se pueda */ }
     const client = requireSupabase();
     await client.auth.signOut();
     setUser(null);

@@ -329,7 +329,9 @@ export async function listOwnCoursesRoute(req, res) {
         title: r.title,
         shortDescription: r.short_description || '',
         // La portada puede venir de un archivo subido o de un enlace.
-        coverUrl: r.cover_file_id ? `/api/aula/files/${r.cover_file_id}` : r.cover_url,
+        // La portada se sirve por su propia ruta pública: /api/aula/files
+        // exige sesión y dejaba la imagen rota a quien no ha entrado.
+        coverUrl: r.cover_file_id ? `/api/cursos-edvanta/${r.id}/portada` : r.cover_url,
         category: r.category,
         level: r.level,
         durationMinutes: r.duration_minutes,
@@ -416,7 +418,7 @@ export async function ownCourseDetailRoute(req, res) {
         title: c.title,
         shortDescription: c.short_description || '',
         descriptionHtml: c.description_html || '',
-        coverUrl: c.cover_file_id ? `/api/aula/files/${c.cover_file_id}` : c.cover_url,
+        coverUrl: c.cover_file_id ? `/api/cursos-edvanta/${c.id}/portada` : c.cover_url,
         category: c.category,
         level: c.level,
         durationMinutes: c.duration_minutes,
@@ -439,4 +441,59 @@ export async function ownCourseDetailRoute(req, res) {
     console.error(JSON.stringify({ level: 'error', msg: 'Error cargando curso propio', error: e.message }));
     return res.status(500).json({ ok: false, error: 'No fue posible cargar el curso' });
   }
+}
+
+/**
+ * GET /api/cursos-edvanta/:id/portada — La portada, sin pedir cuenta.
+ *
+ * Las portadas vivían en /api/aula/files/:id, que exige sesión. En el
+ * aula eso está bien —ahí dentro hay material de empresas— pero en la
+ * portada de edvanta.co dejaba la imagen rota a todo el que no hubiera
+ * entrado: justo a quien hay que convencer.
+ *
+ * Esto NO abre el almacén del aula. Solo sirve un archivo cuando es la
+ * portada de un curso propio y publicado, y solo si es una imagen: si
+ * alguien pusiera de portada un PDF, aquí no sale.
+ */
+const PORTADAS_PUBLICAS = new Set(['image/jpeg', 'image/png', 'image/webp', 'image/avif', 'image/gif']);
+
+export const SQL_PORTADA_PUBLICA = `
+  SELECT f.storage_key, f.mime_type, f.size_bytes, f.updated_at
+    FROM aula_courses c
+    JOIN aula_files f ON f.id = c.cover_file_id
+   WHERE c.id = $1
+     AND c.kind = 'edvanta'
+     AND c.status = 'publicado'
+     AND c.deleted_at IS NULL
+     AND f.status = 'listo'
+     AND f.deleted_at IS NULL`;
+
+export function ownCourseCoverRoute({ storage }) {
+  return async function servirPortada(req, res) {
+    try {
+      const id = Number.parseInt(req.params.id, 10);
+      if (!Number.isInteger(id) || id <= 0) return res.status(404).end();
+      const { rows } = await pool.query(SQL_PORTADA_PUBLICA, [id]);
+      const f = rows[0];
+      if (!f || !PORTADAS_PUBLICAS.has(f.mime_type)) return res.status(404).end();
+      if (!(await storage.exists(f.storage_key))) return res.status(404).end();
+
+      res.setHeader('Content-Type', f.mime_type);
+      res.setHeader('Content-Length', f.size_bytes);
+      res.setHeader('X-Content-Type-Options', 'nosniff');
+      // Es pública y cambia poco; que la cachee el navegador y el proxy.
+      res.setHeader('Cache-Control', 'public, max-age=3600, stale-while-revalidate=86400');
+      if (req.method === 'HEAD') return res.end();
+
+      const stream = storage.readStream(f.storage_key);
+      stream.on('error', (err) => {
+        console.error(JSON.stringify({ level: 'error', msg: 'Error leyendo portada', curso: id, error: err.message }));
+        res.destroy(err);
+      });
+      return stream.pipe(res);
+    } catch (e) {
+      console.error(JSON.stringify({ level: 'error', msg: 'Error sirviendo portada', error: e.message }));
+      return res.status(500).end();
+    }
+  };
 }

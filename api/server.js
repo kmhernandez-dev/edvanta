@@ -29,7 +29,7 @@ import { mpWebhookRoute } from './routes/mp-webhook.js';
 import { leadCaptureRoute } from './routes/lead-capture.js';
 import { leadEventsRoute } from './routes/lead-events.js';
 import { listOrdersRoute } from './routes/list-orders.js';
-import { listCoursesRoute, getCourseBySlugRoute, getFilterOptionsRoute, listOwnCoursesRoute, ownCourseDetailRoute } from './routes/courses.js';
+import { listCoursesRoute, getCourseBySlugRoute, getFilterOptionsRoute, listOwnCoursesRoute, ownCourseDetailRoute, ownCourseCoverRoute } from './routes/courses.js';
 import { listCareersRoute, getCareerFiltersRoute, getCareerBySlugRoute } from './routes/careers.js';
 import { listLearningPathsRoute, getLearningPathBySlugRoute } from './routes/learning-paths.js';
 import { listSkillsRoute, getSkillBySlugRoute } from './routes/skills.js';
@@ -327,6 +327,10 @@ app.use('/api/aula', createAulaRouter({
     send: ({ to, subject, html }) => sendEmail({ to, subject, html, from: fromWithName('Aula Edvanta') || undefined }),
   },
 }));
+
+// La portada de un curso publicado es pública. Va aquí abajo porque
+// necesita el almacenamiento del aula, que se crea unas líneas antes.
+app.get('/api/cursos-edvanta/:id/portada', ownCourseCoverRoute({ storage: aulaStorage }));
 
 // ── 404 + manejo de errores (no expone stack traces) ─────────
 app.use((_req, res) => res.status(404).json({ error: 'Not found' }));

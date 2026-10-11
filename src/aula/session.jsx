@@ -65,8 +65,23 @@ export function AulaSessionProvider({ children }) {
       setState({ status: 'authenticated', user, error: null });
       return user;
     },
+    /**
+     * Salir del aula es salir de Edvanta.
+     *
+     * Desde que la identidad es una sola, cerrar aquí y dejar abierta la
+     * de Edvanta no cerraba nada: al volver a cualquier página del aula,
+     * el puente canjeaba la sesión del sitio y la persona entraba otra
+     * vez. El botón parecía funcionar y no hacía nada.
+     *
+     * Se cierran las dos, y si la de Edvanta falla igual se cierra la del
+     * aula: más vale salir a medias que no salir.
+     */
     async logout() {
       try { await post('/auth/logout'); } finally {
+        try {
+          const { supabase } = await import('../lib/supabase');
+          if (supabase) await supabase.auth.signOut();
+        } catch { /* sin Supabase configurado o sin red: ya salió del aula */ }
         setState({ status: 'anonymous', user: null, error: null });
       }
     },

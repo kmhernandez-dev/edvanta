@@ -8,7 +8,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { describe, expect, it } from 'vitest';
 import { cleanMigrationSql } from '../lib/sql-text.js';
-import { SQL_CURSO_PUBLICO, temarioPublico } from '../routes/courses.js';
+import { SQL_CURSO_PUBLICO, SQL_PORTADA_PUBLICA, temarioPublico } from '../routes/courses.js';
 
 const dir = path.join(path.dirname(fileURLToPath(import.meta.url)), '..', 'migrations');
 
@@ -45,10 +45,10 @@ describe('migraciones', () => {
   // pool global, así que no la cubren las pruebas del aula. Lo que puede
   // romperse en silencio es el nombre de una columna: si alguien renombra
   // una, esto falla aquí y no en producción.
-  it('la consulta de la ficha pública de curso casa con el esquema', async () => {
+  it('las consultas públicas de curso casan con el esquema', async () => {
     const { db } = await baseMigrada();
-    const { rows } = await db.query(SQL_CURSO_PUBLICO, [1]);
-    expect(rows).toEqual([]);
+    expect((await db.query(SQL_CURSO_PUBLICO, [1])).rows).toEqual([]);
+    expect((await db.query(SQL_PORTADA_PUBLICA, [1])).rows).toEqual([]);
     await db.close();
   }, 120_000);
 });

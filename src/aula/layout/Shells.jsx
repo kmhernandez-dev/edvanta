@@ -1,5 +1,5 @@
 import { Suspense, useEffect, useRef, useState } from 'react';
-import { Link, NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom';
+import { Link, NavLink, Outlet, useLocation } from 'react-router-dom';
 import { ChevronDown, KeyRound, LogOut, Menu, X } from 'lucide-react';
 import { useAulaSession } from '../session';
 import { ROLE_LABEL } from '../labels';
@@ -30,7 +30,6 @@ function initials(user) {
 
 function UserMenu() {
   const { user, logout } = useAulaSession();
-  const navigate = useNavigate();
   const [open, setOpen] = useState(false);
   const [leaving, setLeaving] = useState(false);
   const ref = useRef(null);
@@ -47,10 +46,13 @@ function UserMenu() {
     };
   }, [open]);
 
+  // Al salir se va al inicio de Edvanta, no a otro inicio de sesión:
+  // quien cierra sesión casi nunca quiere volver a entrar enseguida.
+  // Se recarga entero para que no quede nada de la sesión en memoria.
   const signOut = async () => {
     setLeaving(true);
     await logout();
-    navigate('/aula/entrar', { replace: true });
+    window.location.replace('/');
   };
 
   return (
