@@ -259,11 +259,13 @@ export default function CursoEdvanta() {
       <div className="min-h-screen bg-edvanta-bg">
         <SiteHeader />
         <Section>
+          {/* El motivo solo se repite si aporta algo: decir dos veces la
+              misma frase no explica nada y hace dudar de la página. */}
           <SectionHeading
             as="h1"
             eyebrow="Curso"
-            title="Este curso no está disponible"
-            desc={fallo}
+            title={fallo}
+            desc="Puede que lo hayamos retirado o que el enlace esté mal copiado. Estos son los cursos que sí están abiertos."
           />
           <div className="mt-7 flex flex-wrap gap-3">
             <Btn to="/">Volver al inicio</Btn>
@@ -316,28 +318,34 @@ export default function CursoEdvanta() {
           NIVEL[curso.level] ? `Nivel ${NIVEL[curso.level].toLowerCase()}` : null,
           'A tu ritmo, sin fecha límite',
         ].filter(Boolean)}
-        media={<div className="lg:sticky lg:top-24">{tarjeta}</div>}
       />
 
-      {curso.learningOutcomes.length > 0 && (
-        <Section tone="surface" bordered>
-          <SectionHeading eyebrow="Al terminar" title="Lo que vas a poder hacer" />
-          <ul className="mt-8 grid gap-4 sm:grid-cols-2">
-            {curso.learningOutcomes.map((o) => (
-              <li key={o} className="flex items-start gap-3 rounded-2xl border border-edvanta-border bg-white p-4">
-                <span className="mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-lg bg-edvanta-mint">
-                  <Check className="h-4 w-4 text-edvanta-tealdark" aria-hidden="true" />
-                </span>
-                <span className="text-sm leading-6 text-edvanta-deep">{o}</span>
-              </li>
-            ))}
-          </ul>
-        </Section>
-      )}
-
+      {/* La tarjeta de inscripción acompaña a la lectura en vez de quedarse
+          arriba: la gente decide mientras repasa el temario, no antes de
+          verlo. En móvil va primero, donde el pulgar llega sin bajar. */}
       <Section>
-        <div className="gap-10 lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(0,22rem)] lg:items-start">
+        <div className="gap-10 lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(0,21rem)] lg:items-start">
+          <div className="order-first mb-10 lg:order-last lg:mb-0">
+            <div className="lg:sticky lg:top-24">{tarjeta}</div>
+          </div>
+
           <div className="min-w-0">
+            {curso.learningOutcomes.length > 0 && (
+              <div className="mb-12">
+                <SectionHeading eyebrow="Al terminar" title="Lo que vas a poder hacer" />
+                <ul className="mt-6 grid gap-3 sm:grid-cols-2">
+                  {curso.learningOutcomes.map((o) => (
+                    <li key={o} className="flex items-start gap-3 rounded-2xl border border-edvanta-border bg-white p-4">
+                      <span className="mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-lg bg-edvanta-mint">
+                        <Check className="h-4 w-4 text-edvanta-tealdark" aria-hidden="true" />
+                      </span>
+                      <span className="text-sm leading-6 text-edvanta-deep">{o}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
             <SectionHeading eyebrow="Contenido" title="Temario completo" desc="Puedes ver de qué trata cada clase antes de inscribirte." />
             <div className="mt-8"><Temario modulos={curso.temario} /></div>
 
@@ -383,11 +391,6 @@ export default function CursoEdvanta() {
               </Card>
             )}
           </div>
-
-          {/* En pantalla ancha la tarjeta ya está arriba; aquí vuelve a
-              aparecer en móvil, al final del temario, que es donde se
-              termina de decidir. */}
-          <div className="mt-10 lg:hidden">{tarjeta}</div>
         </div>
       </Section>
 

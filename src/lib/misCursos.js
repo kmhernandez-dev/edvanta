@@ -16,8 +16,29 @@
 
 import { apiUrl } from '../config/api';
 
+/**
+ * ¿Hay rastro de una sesión de Edvanta en este navegador?
+ *
+ * Supabase guarda la suya en localStorage con una clave sb-…-auth-token.
+ * Mirar la clave antes de cargar la librería evita traer 200 kB a quien
+ * solo está mirando una página pública sin haber entrado nunca.
+ */
+function pareceHaberEntrado() {
+  try {
+    for (let i = 0; i < window.localStorage.length; i += 1) {
+      const clave = window.localStorage.key(i);
+      if (clave && clave.startsWith('sb-') && clave.endsWith('-auth-token')) return true;
+    }
+    return false;
+  } catch {
+    // Navegación privada o almacenamiento bloqueado: se intenta igual.
+    return true;
+  }
+}
+
 /** Canjea la sesión de Edvanta por una del aula. Devuelve true si lo logró. */
 async function abrirSesionDeAula() {
+  if (!pareceHaberEntrado()) return false;
   try {
     const { supabase } = await import('./supabase');
     if (!supabase) return false;
