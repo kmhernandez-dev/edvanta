@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState, useCallback } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import SiteHeader from '../components/edvanta/SiteHeader';
 import SiteFooter from '../components/edvanta/SiteFooter';
+import CourseCarousel from '../components/CourseCarousel';
 import ExternalCourseCard from '../components/ExternalCourseCard';
 import { apiUrl } from '../config/api';
 import { updatePageSeo } from '../utils/seo';
@@ -65,6 +66,31 @@ export default function CursosCatalog({ defaultProvider = '' }) {
   const [page, setPage] = useState(parseInt(searchParams.get('page'), 10) || 1);
 
   useEffect(() => { window.scrollTo(0, 0); }, []);
+
+  // Los cursos que dicta Edvanta encabezan el catálogo general. Antes
+  // esta página solo listaba cursos de otras plataformas, así que la ruta
+  // «Inicio › Cursos › este curso» llevaba a un sitio donde ese curso no
+  // estaba. En las páginas de un proveedor concreto no pintan nada.
+  const [propios, setPropios] = useState([]);
+  useEffect(() => {
+    if (defaultProvider) return undefined;
+    let vivo = true;
+    fetch(apiUrl('/api/cursos-edvanta?limit=12'))
+      .then((r) => (r.ok ? r.json() : null))
+      .then((j) => {
+        if (!vivo || !j?.data?.length) return;
+        setPropios(j.data.map((c) => ({
+          id: `propio-${c.id}`,
+          title: c.title,
+          description: c.shortDescription,
+          image: c.coverUrl,
+          to: c.to,
+          ctaLabel: 'Ver el curso',
+        })));
+      })
+      .catch(() => {});
+    return () => { vivo = false; };
+  }, [defaultProvider]);
 
   const pageTitle = defaultProvider
     ? `Cursos de ${PROVIDER_LABELS[defaultProvider] || defaultProvider} | Edvanta`
@@ -191,6 +217,12 @@ export default function CursosCatalog({ defaultProvider = '' }) {
             </div>
           </div>
         </section>
+
+        {propios.length > 0 && (
+          <section className="border-b border-slate-200 bg-edvanta-bg">
+            <CourseCarousel title="Los más actuales" courses={propios} sectionKey="catalogo_own_courses" />
+          </section>
+        )}
 
         {/* Filters */}
         <section className="border-b border-gray-200 bg-white sticky top-16 z-30">

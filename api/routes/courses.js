@@ -30,6 +30,7 @@ import crypto from 'node:crypto';
 import fs from 'node:fs';
 import fsp from 'node:fs/promises';
 import path from 'node:path';
+import { buffer as streamToBuffer } from 'node:stream/consumers';
 import { pool } from '../db.js';
 
 const ALLOWED_PROVIDERS = ['edutin', 'coursera', 'udemy'];
@@ -507,10 +508,14 @@ export function ownCourseCoverRoute({ storage }) {
     try {
       const { default: sharp } = await import('sharp');
       await fsp.mkdir(cacheDir, { recursive: true });
+      // sharp recibe el contenido, no el flujo: pasarle un readStream
+      // lanza «Expected Buffer or string for input» y la portada salía
+      // entera. Una portada son un par de megas; cabe de sobra.
+      const entrada = await streamToBuffer(storage.readStream(storageKey));
       // Se escribe aparte y se renombra: si entran dos peticiones a la
       // vez, nadie lee un archivo a medio escribir.
       const parcial = `${destino}.${process.pid}.${Date.now()}.part`;
-      await sharp(storage.readStream(storageKey))
+      await sharp(entrada)
         .rotate()
         .resize({ width: ANCHO_PORTADA, withoutEnlargement: true })
         .webp({ quality: 78 })
