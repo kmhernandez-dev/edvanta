@@ -335,12 +335,108 @@ export async function listOwnCoursesRoute(req, res) {
         durationMinutes: r.duration_minutes,
         authorName: r.author_name,
         lessons: r.lessons,
-        to: `/aula/curso/${r.id}`,
+        // La ficha pública, no el aula: así se ve el curso antes de entrar.
+        to: `/curso/${r.id}`,
       })),
       total: rows.length,
     });
   } catch (e) {
     console.error(JSON.stringify({ level: 'error', msg: 'Error listando cursos propios', error: e.message }));
     return res.status(500).json({ ok: false, error: 'No fue posible cargar los cursos de Edvanta' });
+  }
+}
+
+/**
+ * GET /api/cursos-edvanta/:id — Ficha pública de un curso propio.
+ *
+ * Devuelve de qué va el curso y su temario (títulos y duraciones), nunca
+ * el contenido de las clases: eso es lo que se abre al inscribirse. Quien
+ * llega sin cuenta ve lo mismo que un folleto —suficiente para decidir—
+ * y el contenido sigue detrás de la matrícula.
+ *
+ * El temario sale del snapshot publicado, no de las tablas vivas: así la
+ * ficha enseña exactamente el curso que se va a cursar, no un borrador a
+ * medio editar.
+ *
+ * La consulta y el armado del temario se exportan aparte para poder
+ * probarlos: la consulta contra el esquema real (si una columna cambia de
+ * nombre, la prueba falla antes que producción) y el temario contra un
+ * snapshot de ejemplo.
+ */
+export const SQL_CURSO_PUBLICO = `
+  SELECT c.id, c.title, c.short_description, c.description_html, c.cover_url, c.cover_file_id,
+         c.category, c.level, c.duration_minutes, c.author_name, c.tags, c.modality,
+         c.objective, c.learning_outcomes, c.audience, c.prerequisites, c.published_at,
+         v.snapshot, v.version_number
+    FROM aula_courses c
+    JOIN aula_course_versions v ON v.id = c.current_version_id
+   WHERE c.id = $1
+     AND c.kind = 'edvanta'
+     AND c.status = 'publicado'
+     AND c.deleted_at IS NULL`;
+
+/** Del snapshot publicado al temario que se puede enseñar sin cuenta. */
+export function temarioPublico(snapshot) {
+  const modulos = Array.isArray(snapshot?.modules) ? snapshot.modules : [];
+  return modulos.map((m, i) => ({
+    id: m.id,
+    numero: i + 1,
+    title: m.title,
+    lessons: (m.lessons || []).map((l) => ({
+      id: l.id,
+      title: l.title,
+      durationMinutes: l.durationMinutes || null,
+      isRequired: l.isRequired !== false,
+      // Si la clase trae video se dice, porque cambia la expectativa de
+      // quien decide si entrar. No se dice cuál ni dónde está.
+      hasVideo: (l.blocks || []).some((b) => b.type === 'video'),
+    })),
+  }));
+}
+
+export async function ownCourseDetailRoute(req, res) {
+  try {
+    const id = Number.parseInt(req.params.id, 10);
+    if (!Number.isInteger(id) || id <= 0) {
+      return res.status(400).json({ ok: false, error: 'Identificador de curso no válido' });
+    }
+    const { rows } = await pool.query(SQL_CURSO_PUBLICO, [id]);
+    const c = rows[0];
+    if (!c) {
+      return res.status(404).json({ ok: false, error: 'Este curso no está disponible' });
+    }
+
+    const temario = temarioPublico(c.snapshot);
+    const clases = temario.reduce((n, m) => n + m.lessons.length, 0);
+
+    return res.json({
+      ok: true,
+      data: {
+        id: c.id,
+        title: c.title,
+        shortDescription: c.short_description || '',
+        descriptionHtml: c.description_html || '',
+        coverUrl: c.cover_file_id ? `/api/aula/files/${c.cover_file_id}` : c.cover_url,
+        category: c.category,
+        level: c.level,
+        durationMinutes: c.duration_minutes,
+        authorName: c.author_name,
+        tags: Array.isArray(c.tags) ? c.tags : [],
+        modality: c.modality,
+        objective: c.objective || '',
+        learningOutcomes: Array.isArray(c.learning_outcomes) ? c.learning_outcomes : [],
+        audience: c.audience || '',
+        prerequisites: c.prerequisites || '',
+        publishedAt: c.published_at,
+        version: c.version_number,
+        modules: temario.length,
+        lessons: clases,
+        temario,
+        aulaTo: `/aula/curso/${c.id}`,
+      },
+    });
+  } catch (e) {
+    console.error(JSON.stringify({ level: 'error', msg: 'Error cargando curso propio', error: e.message }));
+    return res.status(500).json({ ok: false, error: 'No fue posible cargar el curso' });
   }
 }

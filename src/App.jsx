@@ -26,6 +26,7 @@ const LearningHub = lazy(() => import('./pages/LearningHub'));
 const CompetenciesIndex = lazy(() => import('./pages/CompetenciesIndex'));
 const CompetencyPage = lazy(() => import('./pages/CompetencyPage'));
 const CursosGratisIndex = lazy(() => import('./pages/CursosGratisIndex'));
+const CursoEdvanta = lazy(() => import('./pages/CursoEdvanta'));
 const CursoGratisPage = lazy(() => import('./pages/CursoGratisPage'));
 const CursosCatalog = lazy(() => import('./pages/CursosCatalog'));
 const CursoExternoPage = lazy(() => import('./pages/CursoExternoPage'));
@@ -216,6 +217,8 @@ export default function App() {
         <Route path="/articulos/:slug" element={<ArticuloPage />} />
 
         {/* Cursos y rutas profesionales Edvanta */}
+        {/* Una sola ficha pública por curso propio: se ve antes de entrar. */}
+        <Route path="/curso/:id" element={<CursoEdvanta />} />
         <Route path="/cursos" element={<CursosCatalog />} />
         <Route path="/cursos/coursera" element={<CursosCatalog defaultProvider="coursera" />} />
         <Route path="/cursos/udemy" element={<CursosCatalog defaultProvider="udemy" />} />

@@ -31,9 +31,15 @@ export default function ProfessionalAccount() {
   const [success, setSuccess] = useState('');
   const [submitting, setSubmitting] = useState(false);
 
+  // A dónde se vuelve después de entrar. Antes solo se aceptaba /app, así
+  // que quien venía de la ficha de un curso acababa en otra parte y tenía
+  // que buscarlo de nuevo. Ahora vale cualquier ruta interna, pero solo
+  // interna: una barra sola al principio y nada que parezca otro sitio,
+  // porque este parámetro llega en la dirección y lo escribe cualquiera.
   const nextPath = useMemo(() => {
-    const requested = searchParams.get('next');
-    return requested?.startsWith('/app') && !requested.startsWith('//') ? requested : '/app';
+    const requested = searchParams.get('next') || '';
+    const interna = /^\/(?!\/)[\w\-./?=&%#]*$/.test(requested) && !requested.includes('\\');
+    return interna ? requested : '/app';
   }, [searchParams]);
 
   useEffect(() => updatePageSeo({

@@ -207,6 +207,26 @@
     font-family: 'Manrope', 'Inter', system-ui, sans-serif;
   }
 
+  /* Texto largo escrito por nosotros (descripciones de curso, fichas).
+     Es el equivalente de .aula-prose, pero con la paleta de la portada:
+     el mismo texto se lee igual dentro y fuera del aula. */
+  .ed-prose {
+    @apply text-base leading-7 text-edvanta-muted;
+  }
+  .ed-prose h2 { @apply mt-8 mb-2 font-display text-xl font-extrabold text-edvanta-deep; }
+  .ed-prose h3 { @apply mt-6 mb-2 font-display text-lg font-bold text-edvanta-deep; }
+  .ed-prose h4 { @apply mt-5 mb-1.5 text-base font-bold text-edvanta-deep; }
+  .ed-prose p { @apply my-3; }
+  .ed-prose ul { @apply my-3 list-disc pl-6; }
+  .ed-prose ol { @apply my-3 list-decimal pl-6; }
+  .ed-prose li { @apply my-1; }
+  .ed-prose strong { @apply font-bold text-edvanta-deep; }
+  .ed-prose a { @apply font-semibold text-edvanta-blue underline underline-offset-2 hover:text-edvanta-bluedark; }
+  .ed-prose blockquote { @apply my-4 border-l-4 border-edvanta-teal bg-edvanta-bg py-2 pl-4 italic; }
+  .ed-prose hr { @apply my-6 border-edvanta-border; }
+  .ed-prose code { @apply rounded bg-edvanta-bg px-1.5 py-0.5 text-sm; }
+  .ed-prose pre { @apply my-4 overflow-x-auto rounded-xl bg-edvanta-deep p-4 text-sm text-white; }
+
   /* Subtle dotted background for hero / feature sections */
   .bg-dots {
     background-image: radial-gradient(circle, rgba(37, 167, 176, 0.14) 1px, transparent 1px);
