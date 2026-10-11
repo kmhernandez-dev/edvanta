@@ -1,5 +1,5 @@
 import { lazy, Suspense } from 'react';
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 
 const BibliotecaHome = lazy(() => import('./pages/BibliotecaHome'));
 const FelizSinTiroides = lazy(() => import('./pages/FelizSinTiroides'));
@@ -253,9 +253,12 @@ export default function App() {
 
         {/* Espacio profesional privado de Edvanta */}
         <Route path="/cuenta" element={<Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-edvanta-bg text-sm font-semibold text-slate-600">Cargando acceso...</div>}><ProfessionalAccount /></Suspense>} />
-        <Route path="/app/onboarding" element={<Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-edvanta-bg text-sm font-semibold text-slate-600">Preparando tu perfil...</div>}><ProfessionalOnboarding /></Suspense>} />
+        {/* La encuesta se retira: pedía objetivo, habilidades, herramientas y
+            disponibilidad, y no cambiaba nada de lo que la persona veía. */}
+        <Route path="/app/onboarding" element={<Navigate to="/aula" replace />} />
         <Route path="/app/perfil" element={<Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-edvanta-bg text-sm font-semibold text-slate-600">Cargando tu perfil...</div>}><ProfessionalProfilePage /></Suspense>} />
-        <Route path="/app" element={<Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-edvanta-bg text-sm font-semibold text-slate-600">Cargando tu panel...</div>}><ProfessionalDashboard /></Suspense>} />
+        {/* No hay dos "mi espacio": el de quien estudia es el aula. */}
+        <Route path="/app" element={<Navigate to="/aula" replace />} />
 
         {/* Catálogo de 100+ cursos gratuitos */}
         <Route path="/cursos-gratis" element={<CursosGratisIndex />} />

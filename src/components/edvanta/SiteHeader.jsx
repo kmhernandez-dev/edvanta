@@ -272,9 +272,9 @@ export default function SiteHeader() {
             </button>
 
             {user ? (
-              <Link to="/app" className="hidden h-12 items-center gap-2 rounded-xl bg-edvanta-soft px-5 text-[15px] font-semibold text-edvanta-blue transition-colors hover:bg-edvanta-light lg:inline-flex">
+              <Link to="/aula" className="hidden h-12 items-center gap-2 rounded-xl bg-edvanta-soft px-5 text-[15px] font-semibold text-edvanta-blue transition-colors hover:bg-edvanta-light lg:inline-flex">
                 <UserRound className="h-4 w-4" aria-hidden="true" />
-                Mi Edvanta
+                Mi aula
               </Link>
             ) : (
               <>
@@ -351,9 +351,9 @@ export default function SiteHeader() {
           </Link>
           <div className="mt-3 flex gap-3">
             {user ? (
-              <Link to="/app" className="inline-flex min-h-12 flex-1 items-center justify-center gap-2 rounded-xl bg-edvanta-blue px-5 text-sm font-semibold text-white">
+              <Link to="/aula" className="inline-flex min-h-12 flex-1 items-center justify-center gap-2 rounded-xl bg-edvanta-blue px-5 text-sm font-semibold text-white">
                 <UserRound className="h-4 w-4" aria-hidden="true" />
-                Mi Edvanta
+                Mi aula
               </Link>
             ) : (
               <>

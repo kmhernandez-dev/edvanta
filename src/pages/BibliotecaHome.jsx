@@ -1,5 +1,5 @@
 import { useState, useMemo, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 
 import SiteHeader    from '../components/edvanta/SiteHeader';
 import Hero          from '../components/Hero';
@@ -13,6 +13,7 @@ import SiteFooter        from '../components/edvanta/SiteFooter';
 import Icon          from '../components/Icon';
 import ArticulosSection from '../components/ArticulosSection';
 import { apiUrl } from '../config/api';
+import { useAuth } from '../context/AuthContext';
 import CourseCarousel from '../components/CourseCarousel';
 import ExploreContentSection from '../components/ExploreContentSection';
 import LearningRoutesSection from '../components/LearningRoutesSection';
@@ -34,7 +35,19 @@ function filterCourses(list, { search, category, profile }) {
   });
 }
 
+/**
+ * El inicio depende de quién mire.
+ *
+ * Quien ya entró no tiene por qué volver a ver la portada de visitante:
+ * su inicio es el aula, con sus cursos, su avance y el catálogo entero.
+ */
 export default function BibliotecaHome() {
+  const { user, loading } = useAuth();
+  if (!loading && user) return <Navigate to="/aula" replace />;
+  return <PortadaPublica />;
+}
+
+function PortadaPublica() {
   const [search, setSearch]     = useState('');
   const [category, setCategory] = useState('Todos');
   const [profile, setProfile]   = useState('todos');
