@@ -26,6 +26,8 @@ const LearningHub = lazy(() => import('./pages/LearningHub'));
 const CompetenciesIndex = lazy(() => import('./pages/CompetenciesIndex'));
 const CompetencyPage = lazy(() => import('./pages/CompetencyPage'));
 const CursosGratisIndex = lazy(() => import('./pages/CursosGratisIndex'));
+const VolviendoDeAcceso = lazy(() => import('./pages/VolviendoDeAcceso'));
+const Diagnostico = lazy(() => import('./pages/Diagnostico'));
 const CursoEdvanta = lazy(() => import('./pages/CursoEdvanta'));
 const CursoGratisPage = lazy(() => import('./pages/CursoGratisPage'));
 const CursosCatalog = lazy(() => import('./pages/CursosCatalog'));
@@ -258,10 +260,15 @@ export default function App() {
         <Route path="/cuenta" element={<Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-edvanta-bg text-sm font-semibold text-slate-600">Cargando acceso...</div>}><ProfessionalAccount /></Suspense>} />
         {/* La encuesta se retira: pedía objetivo, habilidades, herramientas y
             disponibilidad, y no cambiaba nada de lo que la persona veía. */}
-        <Route path="/app/onboarding" element={<Navigate to="/aula" replace />} />
+        <Route path="/app/onboarding" element={<VolviendoDeAcceso />} />
         <Route path="/app/perfil" element={<Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-edvanta-bg text-sm font-semibold text-slate-600">Cargando tu perfil...</div>}><ProfessionalProfilePage /></Suspense>} />
         {/* No hay dos "mi espacio": el de quien estudia es el aula. */}
-        <Route path="/app" element={<Navigate to="/aula" replace />} />
+        {/* Aquí vuelve Google con el token en la dirección: no se puede
+            redirigir en seco, hay que esperar a que Supabase lo lea. */}
+        <Route path="/app" element={<VolviendoDeAcceso />} />
+        {/* Revisión en claro de por qué falla el acceso. Pública a
+            propósito: si pidiera sesión, no serviría cuando hace falta. */}
+        <Route path="/diagnostico" element={<Diagnostico />} />
 
         {/* Catálogo de 100+ cursos gratuitos */}
         <Route path="/cursos-gratis" element={<CursosGratisIndex />} />

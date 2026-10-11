@@ -105,7 +105,9 @@ export default function ProfessionalAccount() {
     setFormError('');
     setAuthError('');
     setSubmitting(true);
-    const result = await loginWithGoogle({ redirectPath: '/app' });
+    // Se vuelve a /app, que espera a que Supabase lea el token, y de ahí
+    // a donde la persona quería ir (la ficha de un curso, por ejemplo).
+    const result = await loginWithGoogle({ redirectPath: '/app', next: nextPath });
     if (result?.error) setFormError(friendlyAuthError(result.error));
     setSubmitting(false);
   };

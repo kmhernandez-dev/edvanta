@@ -153,13 +153,25 @@ export function AuthProvider({ children }) {
     return { user: data.user, session: data.session };
   }, []);
 
-  const loginWithGoogle = useCallback(async ({ redirectPath = '/mi-espacio' } = {}) => {
+  /**
+   * Entrar con Google.
+   *
+   * `redirectPath` es la pantalla que recibe la vuelta de Google, y tiene
+   * que ser una que sepa esperar a que Supabase lea el token (ver
+   * pages/VolviendoDeAcceso). `next` es a dónde quería ir la persona, y
+   * viaja en la dirección porque entre medias se sale del sitio: cuando
+   * vuelve, ya no queda nada en memoria de dónde estaba.
+   */
+  const loginWithGoogle = useCallback(async ({ redirectPath = '/mi-espacio', next } = {}) => {
     setAuthError('');
     const client = requireSupabase();
+    const destino = next && next.startsWith('/') && !next.startsWith('//')
+      ? `${redirectPath}?next=${encodeURIComponent(next)}`
+      : redirectPath;
     const { error } = await client.auth.signInWithOAuth({
       provider: 'google',
       options: {
-        redirectTo: authRedirect(redirectPath),
+        redirectTo: authRedirect(destino),
         queryParams: { access_type: 'offline', prompt: 'consent' },
       },
     });
