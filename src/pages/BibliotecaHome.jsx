@@ -56,7 +56,7 @@ export default function BibliotecaHome() {
   const [cursosPropios, setCursosPropios] = useState([]);
   useEffect(() => {
     let vivo = true;
-    fetch(apiUrl('/api/cursos-edvanta?limit=12'))
+    fetch(apiUrl('/api/cursos-edvanta?limit=24'))
       .then((r) => (r.ok ? r.json() : null))
       .then((j) => {
         if (!vivo || !j?.data?.length) return;
