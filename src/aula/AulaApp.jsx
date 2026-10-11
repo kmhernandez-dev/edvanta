@@ -3,7 +3,7 @@
  * Participantes en /aula, administración en /aula/admin.
  */
 import { lazy, Suspense, useEffect } from 'react';
-import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
+import { Navigate, Route, Routes, useLocation, useSearchParams } from 'react-router-dom';
 import { setMeta } from '../utils/seo';
 import './aula.css';
 import { AdminShell, ParticipantShell } from './layout/Shells';
@@ -94,13 +94,25 @@ function NotFoundInAula() {
   );
 }
 
+/** Lleva al acceso único de Edvanta y vuelve aquí al entrar. */
+function AlAccesoUnico() {
+  const [params] = useSearchParams();
+  const volver = params.get('volver') || '/aula';
+  useEffect(() => {
+    window.location.replace(`/cuenta?next=${encodeURIComponent(volver)}`);
+  }, [volver]);
+  return null;
+}
+
 export default function AulaApp() {
   return (
     <AulaSessionProvider>
       <ToastProvider>
         <DocumentMeta />
         <Routes>
-          <Route path="entrar" element={<Entrar />} />
+          {/* Un solo inicio de sesión: el del aula se retira y redirige
+              al de Edvanta, conservando a dónde quería ir la persona. */}
+          <Route path="entrar" element={<AlAccesoUnico />} />
           <Route path="recuperar" element={<Recuperar />} />
           <Route path="acceso" element={<Acceso />} />
 

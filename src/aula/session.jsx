@@ -5,6 +5,27 @@ import { PageError, PageLoader } from './ui/States';
 
 const SessionContext = createContext(null);
 
+/**
+ * Canjea la sesión de edvanta.co por una del aula.
+ *
+ * Devuelve el usuario del aula, o null si no había sesión en el sitio.
+ * Nunca lanza: que el puente falle no puede tumbar el aula, solo deja
+ * a la persona en la pantalla de acceso.
+ */
+async function entrarConSesionDeEdvanta() {
+  try {
+    const { supabase } = await import('../lib/supabase');
+    if (!supabase) return null;
+    const { data } = await supabase.auth.getSession();
+    const accessToken = data?.session?.access_token;
+    if (!accessToken) return null;
+    const { user } = await post('/auth/supabase', { accessToken });
+    return user || null;
+  } catch {
+    return null;
+  }
+}
+
 export function AulaSessionProvider({ children }) {
   const [state, setState] = useState({ status: 'loading', user: null, error: null });
 
@@ -12,7 +33,17 @@ export function AulaSessionProvider({ children }) {
     setState((s) => ({ ...s, status: s.user ? s.status : 'loading', error: null }));
     try {
       const { user } = await get('/auth/me');
-      setState({ status: user ? 'authenticated' : 'anonymous', user, error: null });
+      if (user) {
+        setState({ status: 'authenticated', user, error: null });
+        return;
+      }
+      // Sin sesión del aula, pero puede haberla de Edvanta: quien entró
+      // con Google en el sitio no debería toparse con otro inicio de
+      // sesión aquí. Se canjea su sesión por una del aula.
+      const puenteado = await entrarConSesionDeEdvanta();
+      setState(puenteado
+        ? { status: 'authenticated', user: puenteado, error: null }
+        : { status: 'anonymous', user: null, error: null });
     } catch (error) {
       setState({ status: 'error', user: null, error });
     }
@@ -63,8 +94,12 @@ export function RequireAula({ role, children }) {
   if (status === 'loading') return <PageLoader label="Cargando el aula…" />;
   if (status === 'error') return <PageError error={error} onRetry={refresh} />;
   if (!user) {
+    // Un solo inicio de sesión para todo Edvanta. El aula ya no tiene el
+    // suyo: quien llega sin sesión va al mismo sitio que cualquier otra
+    // parte de la plataforma, y vuelve aquí al entrar.
     const back = encodeURIComponent(`${location.pathname}${location.search}`);
-    return <Navigate to={`/aula/entrar?volver=${back}`} replace />;
+    window.location.replace(`/cuenta?next=${back}`);
+    return <PageLoader label="Llevándote al acceso…" />;
   }
   if (role && user.role !== role) return <Navigate to={homeFor(user)} replace />;
   return children;

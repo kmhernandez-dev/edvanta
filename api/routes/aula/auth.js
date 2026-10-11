@@ -1,7 +1,8 @@
 import express from 'express';
 import {
-  changePassword, inspectAuthToken, login, prepareReset, redeemAuthToken, revokeSession,
+  changePassword, createSession, inspectAuthToken, login, prepareReset, redeemAuthToken, revokeSession,
 } from '../../lib/aula/accounts.js';
+import { usuarioDeSupabase } from '../../lib/aula/supabase.js';
 import { accessLink, inviteEmail, resetEmail } from '../../lib/aula/emails.js';
 import { badRequest, email as emailField, route, tooMany } from '../../lib/aula/http.js';
 import { clearedSessionCookie, createRateLimiter, sessionCookie } from '../../lib/aula/security.js';
@@ -39,6 +40,74 @@ export function authRouter({ mailer, siteUrl, secureCookies, adminEmailHashes = 
     loginByAccount.reset(key);
     res.setHeader('Set-Cookie', sessionCookie(result.token, { secure: secureCookies }));
     res.json({ user: result.user });
+  }));
+
+  /**
+   * Entrar al aula con la sesión que ya se tiene en edvanta.co.
+   *
+   * Es el puente entre las dos identidades. Quien entra con Google en
+   * el sitio ya no necesita crear otra cuenta aquí.
+   *
+   * A quien no exista se le crea una cuenta de participante. Nunca de
+   * administrador: ese rol se otorga a mano, no por registrarse.
+   */
+  router.post('/supabase', route(async (req, res) => {
+    const { db, ip, now } = req.aula;
+    if (!linkByIp.hit(ip || 'sin-ip')) {
+      throw tooMany('Hubo demasiados intentos. Espera unos minutos.');
+    }
+    const identidad = await usuarioDeSupabase(req.body?.accessToken);
+    if (!identidad) {
+      throw badRequest('Tu sesión de Edvanta no se pudo verificar. Vuelve a entrar.');
+    }
+
+    // Se busca por el id de Supabase y, si no, por correo: quien ya tenía
+    // cuenta del aula la conserva, con su empresa, sus grupos y su avance.
+    const { rows: [existente] } = await db.query(
+      `SELECT id, status FROM aula_users
+        WHERE deleted_at IS NULL AND (supabase_user_id = $1 OR lower(email) = $2)
+        ORDER BY (supabase_user_id = $1) DESC
+        LIMIT 1`,
+      [identidad.id, identidad.email],
+    );
+
+    let userId;
+    if (existente) {
+      if (existente.status === 'suspended') {
+        throw badRequest('Esta cuenta está suspendida. Escríbenos para reactivarla.');
+      }
+      userId = existente.id;
+      // Se enlaza y se activa: haber entrado por Supabase ya demuestra que
+      // el correo es suyo, así que una invitación pendiente sobra.
+      await db.query(
+        `UPDATE aula_users
+            SET supabase_user_id = COALESCE(supabase_user_id, $2),
+                status = CASE WHEN status = 'invited' THEN 'active' ELSE status END,
+                updated_at = NOW()
+          WHERE id = $1`,
+        [userId, identidad.id],
+      );
+    } else {
+      const { rows: [creado] } = await db.query(
+        `INSERT INTO aula_users
+           (email, first_name, last_name, role, status, supabase_user_id, created_at, updated_at)
+         VALUES ($1, $2, $3, 'participant', 'active', $4, NOW(), NOW())
+         RETURNING id`,
+        [identidad.email, identidad.firstName, identidad.lastName, identidad.id],
+      );
+      userId = creado.id;
+    }
+
+    const token = await createSession(db, userId, {
+      ip, userAgent: req.headers['user-agent'], now,
+    });
+    res.setHeader('Set-Cookie', sessionCookie(token, { secure: secureCookies }));
+    const { rows: [user] } = await db.query(
+      `SELECT id, email, first_name AS "firstName", last_name AS "lastName", role, status
+         FROM aula_users WHERE id = $1`,
+      [userId],
+    );
+    res.json({ user });
   }));
 
   router.post('/logout', route(async (req, res) => {
