@@ -27,11 +27,10 @@ const CompetenciesIndex = lazy(() => import('./pages/CompetenciesIndex'));
 const CompetencyPage = lazy(() => import('./pages/CompetencyPage'));
 const CursosGratisIndex = lazy(() => import('./pages/CursosGratisIndex'));
 const VolviendoDeAcceso = lazy(() => import('./pages/VolviendoDeAcceso'));
+const FichaDeCurso = lazy(() => import('./pages/FichaDeCurso'));
 const Diagnostico = lazy(() => import('./pages/Diagnostico'));
-const CursoEdvanta = lazy(() => import('./pages/CursoEdvanta'));
 const CursoGratisPage = lazy(() => import('./pages/CursoGratisPage'));
 const CursosCatalog = lazy(() => import('./pages/CursosCatalog'));
-const CursoExternoPage = lazy(() => import('./pages/CursoExternoPage'));
 const CareersIndex = lazy(() => import('./pages/CareersIndex'));
 const CareerPage = lazy(() => import('./pages/CareerPage'));
 const EnfermedadPage = lazy(() => import('./pages/EnfermedadPage'));
@@ -220,12 +219,13 @@ export default function App() {
 
         {/* Cursos y rutas profesionales Edvanta */}
         {/* Una sola ficha pública por curso propio: se ve antes de entrar. */}
-        <Route path="/curso/:id" element={<CursoEdvanta />} />
+        {/* Una sola plantilla para los 224 cursos: propios por id, curados por slug. */}
+        <Route path="/curso/:id" element={<FichaDeCurso modo="propio" />} />
         <Route path="/cursos" element={<CursosCatalog />} />
         <Route path="/cursos/coursera" element={<CursosCatalog defaultProvider="coursera" />} />
         <Route path="/cursos/udemy" element={<CursosCatalog defaultProvider="udemy" />} />
         <Route path="/cursos/edutin" element={<CursosCatalog defaultProvider="edutin" />} />
-        <Route path="/cursos/:slug" element={<CursoExternoPage />} />
+        <Route path="/cursos/:slug" element={<FichaDeCurso modo="curado" />} />
         <Route path="/aprende" element={<LearningHub />} />
         <Route path="/competencias" element={<CompetenciesIndex />} />
         <Route path="/competencias/:slug" element={<CompetencyPage />} />

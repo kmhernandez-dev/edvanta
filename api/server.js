@@ -29,7 +29,7 @@ import { mpWebhookRoute } from './routes/mp-webhook.js';
 import { leadCaptureRoute } from './routes/lead-capture.js';
 import { leadEventsRoute } from './routes/lead-events.js';
 import { listOrdersRoute } from './routes/list-orders.js';
-import { listCoursesRoute, getCourseBySlugRoute, getFilterOptionsRoute, listOwnCoursesRoute, ownCourseDetailRoute, ownCourseCoverRoute } from './routes/courses.js';
+import { listCoursesRoute, getCourseBySlugRoute, getFilterOptionsRoute, listOwnCoursesRoute, ownCourseDetailRoute, ownCourseCoverRoute, fichaDeCursoRoute } from './routes/courses.js';
 import { listCareersRoute, getCareerFiltersRoute, getCareerBySlugRoute } from './routes/careers.js';
 import { listLearningPathsRoute, getLearningPathBySlugRoute } from './routes/learning-paths.js';
 import { listSkillsRoute, getSkillBySlugRoute } from './routes/skills.js';
@@ -175,6 +175,8 @@ app.get('/api/courses',              listCoursesRoute);
 app.get('/api/courses/filters/options', getFilterOptionsRoute);
 app.get('/api/cursos-edvanta',            listOwnCoursesRoute);
 app.get('/api/cursos-edvanta/:id',        ownCourseDetailRoute);
+// Una sola ficha para los 224 cursos: propios por «edvanta-<id>», curados por slug.
+app.get('/api/ficha/:ref',                fichaDeCursoRoute);
 app.get('/api/courses/:slug',        getCourseBySlugRoute);
 app.post('/api/course-clicks',       trackClickRoute);
 

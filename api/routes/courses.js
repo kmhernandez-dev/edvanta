@@ -32,6 +32,7 @@ import fsp from 'node:fs/promises';
 import path from 'node:path';
 import { buffer as streamToBuffer } from 'node:stream/consumers';
 import { pool } from '../db.js';
+import { fichaDeCursoPropio, fichaDeCursoCurado, huecosDeLaFicha } from '../lib/ficha-de-curso.js';
 
 const ALLOWED_PROVIDERS = ['edutin', 'coursera', 'udemy'];
 const ALLOWED_PRICE_TYPES = ['free', 'free_audit', 'paid', 'subscription', 'financial_aid', 'unknown'];
@@ -566,4 +567,92 @@ export function ownCourseCoverRoute({ storage }) {
       return res.status(500).end();
     }
   };
+}
+
+/**
+ * GET /api/ficha/:ref — Cualquier curso, propio o curado, en un solo
+ * formato.
+ *
+ * `ref` es `edvanta-<id>` para los propios y el slug para los curados.
+ * Así una sola plantilla sirve los 224 sin preguntar de dónde viene el
+ * curso: pregunta por sus capacidades.
+ */
+export async function fichaDeCursoRoute(req, res) {
+  try {
+    const ref = String(req.params.ref || '').trim();
+    if (!ref) return res.status(400).json({ ok: false, error: 'Falta el curso' });
+
+    const propio = /^edvanta-(\d+)$/.exec(ref);
+    if (propio) {
+      const id = Number(propio[1]);
+      const { rows } = await pool.query(SQL_CURSO_PUBLICO, [id]);
+      if (!rows[0]) return res.status(404).json({ ok: false, error: 'Este curso no está disponible' });
+      const ficha = fichaDeCursoPropio(rows[0], temarioPublico(rows[0].snapshot));
+      return res.json({ ok: true, data: ficha, faltan: huecosDeLaFicha(ficha), relacionados: await relacionados(ficha) });
+    }
+
+    const { rows } = await pool.query(
+      'SELECT * FROM courses WHERE slug = $1 AND active = true',
+      [ref],
+    );
+    if (!rows[0]) return res.status(404).json({ ok: false, error: 'Este curso no está disponible' });
+    const ficha = fichaDeCursoCurado(rows[0]);
+    return res.json({ ok: true, data: ficha, faltan: huecosDeLaFicha(ficha), relacionados: await relacionados(ficha) });
+  } catch (e) {
+    console.error(JSON.stringify({ level: 'error', msg: 'Error cargando la ficha', error: e.message }));
+    return res.status(500).json({ ok: false, error: 'No fue posible cargar el curso' });
+  }
+}
+
+/**
+ * Hasta cuatro cursos de la misma categoría, sin repetir el actual.
+ *
+ * Se mezclan propios y curados a propósito: a quien mira un curso de
+ * calidad le sirve saber que hay otro del tema, lo imparta quien lo
+ * imparta. Todos llevan a su ficha en Edvanta, nunca fuera.
+ */
+async function relacionados(ficha) {
+  const salida = [];
+  if (ficha.categoria) {
+    const { rows } = await pool.query(
+      `SELECT c.id, c.title, c.short_description, c.cover_url, c.cover_file_id, c.category, c.level
+         FROM aula_courses c
+        WHERE c.kind = 'edvanta' AND c.status = 'publicado' AND c.deleted_at IS NULL
+          AND c.current_version_id IS NOT NULL
+          AND (c.category = $1 OR c.area = $2)
+          AND ('edvanta-' || c.id) <> $3
+        ORDER BY (c.cover_url IS NULL AND c.cover_file_id IS NULL), c.published_at DESC NULLS LAST
+        LIMIT 4`,
+      [ficha.categoria, ficha.area, ficha.id],
+    );
+    for (const r of rows) {
+      salida.push({
+        titulo: r.title,
+        url: `/curso/${r.id}`,
+        portada: r.cover_file_id ? `/api/cursos-edvanta/${r.id}/portada` : r.cover_url,
+        procedencia: 'Edvanta',
+        nivel: r.level,
+      });
+    }
+  }
+  if (salida.length < 4 && ficha.categoria) {
+    const { rows } = await pool.query(
+      `SELECT id, title, slug, provider, image_url, level
+         FROM courses
+        WHERE active = true AND category = $1 AND slug <> $2
+        ORDER BY (image_url IS NULL), featured DESC
+        LIMIT $3`,
+      [ficha.categoria, ficha.variante === 'edvanta' ? '' : ficha.url.replace('/cursos/', ''), 4 - salida.length],
+    );
+    for (const r of rows) {
+      salida.push({
+        titulo: r.title,
+        url: `/cursos/${r.slug}`,
+        portada: r.image_url,
+        procedencia: r.provider === 'edutin' ? 'Edutin Academy' : r.provider === 'udemy' ? 'Udemy' : 'Coursera',
+        nivel: r.level,
+      });
+    }
+  }
+  return salida;
 }
