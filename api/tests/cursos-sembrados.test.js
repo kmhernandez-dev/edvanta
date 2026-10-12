@@ -16,7 +16,7 @@ import { pg_trgm } from '@electric-sql/pglite/contrib/pg_trgm';
 import { pgcrypto } from '@electric-sql/pglite/contrib/pgcrypto';
 import { unaccent } from '@electric-sql/pglite/contrib/unaccent';
 import { uuid_ossp } from '@electric-sql/pglite/contrib/uuid_ossp';
-import { readdirSync, readFileSync } from 'node:fs';
+import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { beforeAll, afterAll, describe, expect, it } from 'vitest';
@@ -157,6 +157,25 @@ describe('las tres categorías con las que se agrupan', () => {
     // Autocuidado de la tiroides se queda fuera a propósito: es para
     // pacientes, no formación profesional.
     expect(porArea['(sin área)']).toBe(1);
+  });
+
+  // Una portada mal puesta no da error: el curso sale con la imagen de
+  // otro y nadie se entera hasta que lo ve un alumno.
+  it('las portadas apuntan a un archivo que existe, y ninguna se repite', async () => {
+    const { rows } = await pglite.query(
+      `SELECT title, cover_url FROM aula_courses
+        WHERE kind = 'edvanta' AND deleted_at IS NULL AND cover_url LIKE '/img/%'
+        ORDER BY title`,
+    );
+    expect(rows.length).toBeGreaterThanOrEqual(9);
+
+    const publico = path.join(path.dirname(fileURLToPath(import.meta.url)), '..', '..', 'public');
+    for (const { title, cover_url: url } of rows) {
+      expect(existsSync(path.join(publico, url)), `${title} → falta ${url}`).toBe(true);
+    }
+    // Dos cursos con la misma portada casi siempre es un copiar y pegar.
+    const urls = rows.map((r) => r.cover_url);
+    expect(new Set(urls).size).toBe(urls.length);
   });
 
   it('ningún curso con categoría conocida se queda sin área', async () => {
