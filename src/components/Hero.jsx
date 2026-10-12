@@ -6,10 +6,8 @@ import { trackEvent } from '../utils/analytics';
 // Cada palabra entra por separado; `grad` lleva el degradado de marca y
 // `swoosh` el trazo que se dibuja debajo.
 const TITLE = [
-  { t: 'Únete' }, { t: 'a' }, { t: 'la' }, { t: 'comunidad' }, { t: 'de' },
-  { t: 'Químicos', grad: true }, { t: 'Farmacéuticos', grad: true },
-  { t: 'más' }, { t: 'grande' }, { t: 'de' },
-  { t: 'Latinoamérica', swoosh: true, tail: '.' },
+  { t: 'Estudia' }, { t: 'gratis', grad: true }, { t: 'y' }, { t: 'certifica' },
+  { t: 'tus' }, { t: 'conocimientos', swoosh: true, tail: '.' },
 ];
 const STEP_MS = 60;
 const TITLE_END_MS = TITLE.length * STEP_MS + 500;
@@ -73,7 +71,7 @@ export default function Hero({ onCreateAccount }) {
               className="hx-fade mx-auto mb-9 mt-7 max-w-xl text-lg leading-relaxed text-[#3C4763] sm:text-xl lg:mx-0"
               style={{ animationDelay: `${TITLE_END_MS - 250}ms` }}
             >
-              Crece profesionalmente con la ayuda de químicos farmacéuticos expertos.
+              Con la ayuda de Químicos Farmacéuticos expertos.
             </p>
 
             <div
