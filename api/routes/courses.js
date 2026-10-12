@@ -318,7 +318,7 @@ export async function listOwnCoursesRoute(req, res) {
     const limite = Math.min(60, Math.max(1, parseInt(req.query.limit, 10) || 12));
     const { rows } = await pool.query(
       `SELECT c.id, c.title, c.short_description, c.cover_url, c.cover_file_id,
-              c.category, c.level, c.duration_minutes, c.author_name, c.published_at,
+              c.category, c.area, c.level, c.duration_minutes, c.author_name, c.published_at,
               (SELECT COUNT(*)::int FROM aula_lessons l
                 WHERE l.course_id = c.id AND l.deleted_at IS NULL) AS lessons
          FROM aula_courses c
@@ -341,6 +341,8 @@ export async function listOwnCoursesRoute(req, res) {
         // exige sesión y dejaba la imagen rota a quien no ha entrado.
         coverUrl: r.cover_file_id ? `/api/cursos-edvanta/${r.id}/portada` : r.cover_url,
         category: r.category,
+        // La categoría grande con la que se agrupan en la web.
+        area: r.area,
         level: r.level,
         durationMinutes: r.duration_minutes,
         authorName: r.author_name,

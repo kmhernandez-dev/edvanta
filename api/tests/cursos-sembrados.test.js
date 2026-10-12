@@ -31,6 +31,7 @@ const LINEAS = [
   { categoria: 'Calidad farmacéutica', cursos: 10, unidades: 50, clases: 338 },
   { categoria: 'Asuntos regulatorios', cursos: 10, unidades: 50, clases: 333 },
   { categoria: 'Asuntos regulatorios — productos especiales', cursos: 10, unidades: 50, clases: 336 },
+  { categoria: 'Farmacología', cursos: 12, unidades: 60, clases: 405 },
 ];
 
 let pglite;
@@ -134,4 +135,37 @@ describe.each(LINEAS)('cursos de $categoria', ({ categoria, cursos: nCursos, uni
     }
     expect(fallos).toEqual([]);
   }, 240_000);
+});
+
+describe('las tres categorías con las que se agrupan', () => {
+  it('cada curso profesional cae en una, y solo en una', async () => {
+    const { rows } = await pglite.query(
+      `SELECT area, COUNT(*)::int AS n FROM aula_courses
+        WHERE kind = 'edvanta' AND deleted_at IS NULL
+        GROUP BY area ORDER BY area NULLS LAST`,
+    );
+    const porArea = Object.fromEntries(rows.map((r) => [r.area ?? '(sin área)', r.n]));
+
+    // Son tres y solo tres: si aparece una cuarta, alguien creó una
+    // categoría nueva sin decidir dónde encaja.
+    const areas = rows.map((r) => r.area).filter(Boolean).sort();
+    expect(areas).toEqual(['Asuntos Regulatorios', 'Calidad', 'Farmacología']);
+
+    expect(porArea['Calidad']).toBe(14);               // 10 sembrados + 4 anteriores
+    expect(porArea['Asuntos Regulatorios']).toBe(21);  // 10 + 10 + el que ya existía
+    expect(porArea['Farmacología']).toBe(12);
+    // Autocuidado de la tiroides se queda fuera a propósito: es para
+    // pacientes, no formación profesional.
+    expect(porArea['(sin área)']).toBe(1);
+  });
+
+  it('ningún curso con categoría conocida se queda sin área', async () => {
+    const { rows } = await pglite.query(
+      `SELECT title, category FROM aula_courses
+        WHERE kind = 'edvanta' AND deleted_at IS NULL AND area IS NULL
+          AND (category LIKE 'Calidad%' OR category LIKE 'Asuntos regulatorios%'
+               OR category = 'Farmacología' OR category = 'Servicio farmacéutico')`,
+    );
+    expect(rows).toEqual([]);
+  });
 });

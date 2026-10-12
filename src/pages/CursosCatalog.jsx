@@ -8,6 +8,10 @@ import { apiUrl } from '../config/api';
 import { updatePageSeo } from '../utils/seo';
 import { BookOpenCheck } from 'lucide-react';
 
+// Las tres categorías con las que se agrupan los cursos propios, en el
+// orden en que se muestran.
+const CATEGORIAS = ['Calidad', 'Asuntos Regulatorios', 'Farmacología'];
+
 const PROVIDER_LABELS = {
   edutin: 'Edutin',
   coursera: 'Coursera',
@@ -85,6 +89,7 @@ export default function CursosCatalog({ defaultProvider = '' }) {
           description: c.shortDescription,
           image: c.coverUrl,
           to: c.to,
+          area: c.area,
           ctaLabel: 'Ver el curso',
         })));
       })
@@ -218,9 +223,32 @@ export default function CursosCatalog({ defaultProvider = '' }) {
           </div>
         </section>
 
+        {/* Un carrusel por categoría. Con más de cuarenta cursos propios,
+            una sola fila larguísima no deja orientarse: lo que la persona
+            quiere saber primero es si hay algo de lo suyo. Lo que todavía
+            no tiene categoría va al final, bajo su propio título, en vez
+            de desaparecer. */}
         {propios.length > 0 && (
           <section className="border-b border-slate-200 bg-edvanta-bg">
-            <CourseCarousel title="Los más actuales" courses={propios} sectionKey="catalogo_own_courses" />
+            {CATEGORIAS.map((area) => {
+              const deLaCategoria = propios.filter((c) => c.area === area);
+              if (!deLaCategoria.length) return null;
+              return (
+                <CourseCarousel
+                  key={area}
+                  title={area}
+                  courses={deLaCategoria}
+                  sectionKey={`catalogo_${area.toLowerCase().replace(/\s+/g, '_')}`}
+                />
+              );
+            })}
+            {propios.some((c) => !CATEGORIAS.includes(c.area)) && (
+              <CourseCarousel
+                title="Otros cursos de Edvanta"
+                courses={propios.filter((c) => !CATEGORIAS.includes(c.area))}
+                sectionKey="catalogo_otros"
+              />
+            )}
           </section>
         )}
 

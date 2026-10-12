@@ -18,8 +18,13 @@ export default defineConfig({
     // hace `forks` por defecto), así la memoria se devuelve entre uno y
     // otro. NO usar singleFork: eso los mete a todos en un proceso y es
     // precisamente lo que lo rompía.
+    // En Vitest 4 `poolOptions` desapareció y estas opciones son de primer
+    // nivel; escribirlo a la vieja usanza no da error, simplemente no se
+    // aplica, que es la peor forma de equivocarse. El aviso de obsoleto al
+    // correr las pruebas fue lo que lo delató.
     pool: 'forks',
-    poolOptions: { forks: { maxForks: 1 } },
+    maxWorkers: 1,
+    minWorkers: 1,
     env: {
       AULA_BCRYPT_COST: '4',
       NODE_ENV: 'test',
