@@ -167,7 +167,7 @@ describe('las tres categorías con las que se agrupan', () => {
         WHERE kind = 'edvanta' AND deleted_at IS NULL AND cover_url LIKE '/img/%'
         ORDER BY title`,
     );
-    expect(rows.length).toBeGreaterThanOrEqual(9);
+    expect(rows.length).toBeGreaterThanOrEqual(19);
 
     const publico = path.join(path.dirname(fileURLToPath(import.meta.url)), '..', '..', 'public');
     for (const { title, cover_url: url } of rows) {
@@ -176,6 +176,18 @@ describe('las tres categorías con las que se agrupan', () => {
     // Dos cursos con la misma portada casi siempre es un copiar y pegar.
     const urls = rows.map((r) => r.cover_url);
     expect(new Set(urls).size).toBe(urls.length);
+  });
+
+  it('los doce de farmacología tienen portada', async () => {
+    const { rows } = await pglite.query(
+      `SELECT title FROM aula_courses
+        WHERE kind = 'edvanta' AND deleted_at IS NULL AND area = 'Farmacología'
+          AND cover_url IS NULL AND cover_file_id IS NULL
+        ORDER BY title`,
+    );
+    // Esta línea está completa; si vuelve a aparecer alguna sin portada,
+    // es que se creó un curso nuevo y se quedó con el hueco gris.
+    expect(rows.map((r) => r.title)).toEqual([]);
   });
 
   it('ningún curso con categoría conocida se queda sin área', async () => {
