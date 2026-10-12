@@ -16,6 +16,7 @@ import { meRouter } from './me.js';
 import { authRouter } from './auth.js';
 import { filesRouter, sweepStaleUploads, uploadsRouter } from './files.js';
 import { opinionesRouter } from './opiniones.js';
+import { adminModeracionRouter } from './admin-moderacion.js';
 import { attachSession, requireAdmin, requireUser } from './middleware.js';
 
 export function createAulaRouter({
@@ -50,6 +51,7 @@ export function createAulaRouter({
   admin.use('/audit', adminAuditRouter(deps));
   admin.use('/', adminPeopleRouter(deps));
   admin.use('/', adminCoursesRouter(deps));
+  admin.use('/', adminModeracionRouter(deps));
   router.use('/admin', requireAdmin, admin);
 
   router.use((_req, _res, next) => next(notFound('Esta ruta del aula no existe.')));

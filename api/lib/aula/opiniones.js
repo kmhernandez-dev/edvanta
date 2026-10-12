@@ -459,3 +459,144 @@ export async function opinionesDeLaClase(db, courseId, lessonId, userId) {
     mia: mia?.puntuacion ?? null,
   };
 }
+
+/* ── Moderación ───────────────────────────────────────────── */
+
+/**
+ * La bandeja de quien modera: comentarios de fichas y de clases en una
+ * sola lista, con su contexto y cuántas veces los reportaron.
+ *
+ * Van en UNION porque son dos tablas distintas a propósito, pero quien
+ * modera no quiere dos pantallas: quiere una cola de trabajo. El
+ * contexto (qué curso, qué clase) viaja con cada fila para no tener que
+ * abrir cada una para saber de qué habla.
+ */
+export async function bandejaDeModeracion(db, { filtro = 'reportados', pagina = 1, porPagina = 20 } = {}) {
+  const condicion = {
+    // Lo que alguien marcó y nadie ha mirado: la cola real de trabajo.
+    reportados: 'r.pendientes > 0',
+    publicados: `c.estado = 'publicado'`,
+    retirados: `c.estado IN ('eliminado', 'oculto')`,
+    todos: 'TRUE',
+  }[filtro] || 'r.pendientes > 0';
+
+  const base = (tabla, tipo) => `
+    SELECT '${tipo}'::text AS donde, c.id, c.cuerpo, c.estado, c.created_at, c.editado_at,
+           c.padre_id, c.user_id,
+           u.first_name, u.last_name, u.email,
+           ${tipo === 'curso'
+    ? `COALESCE(ac.title, cu.title) AS curso, NULL::text AS clase,
+               COALESCE('edvanta-' || ac.id, cu.slug) AS ref, NULL::bigint AS course_id, NULL::bigint AS lesson_id`
+    : `ac2.title AS curso, l.title AS clase,
+               NULL::text AS ref, c.course_id, c.lesson_id`},
+           COALESCE(r.pendientes, 0)::int AS reportes
+      FROM ${tabla} c
+      JOIN aula_users u ON u.id = c.user_id
+      ${tipo === 'curso'
+    ? `LEFT JOIN aula_courses ac ON ac.id = c.aula_course_id
+         LEFT JOIN courses cu ON cu.id = c.curso_id`
+    : `JOIN aula_courses ac2 ON ac2.id = c.course_id
+         JOIN aula_lessons l ON l.id = c.lesson_id`}
+      LEFT JOIN (
+        SELECT objeto_id, COUNT(*)::int AS pendientes
+          FROM reportes_de_contenido
+         WHERE tipo = 'comentario_${tipo}' AND resuelto_at IS NULL
+         GROUP BY objeto_id
+      ) r ON r.objeto_id = c.id
+     WHERE ${condicion}`;
+
+  const filas = await many(
+    db,
+    `${base('comentarios_curso', 'curso')}
+     UNION ALL
+     ${base('comentarios_clase', 'clase')}
+     ORDER BY reportes DESC, created_at DESC
+     LIMIT $1 OFFSET $2`,
+    [porPagina + 1, (Math.max(1, pagina) - 1) * porPagina],
+  );
+
+  const hayMas = filas.length > porPagina;
+  return {
+    hayMas,
+    comentarios: filas.slice(0, porPagina).map((f) => ({
+      id: f.id,
+      donde: f.donde,
+      cuerpo: f.cuerpo,
+      estado: f.estado,
+      esRespuesta: Boolean(f.padre_id),
+      reportes: f.reportes,
+      fecha: f.created_at,
+      editado: Boolean(f.editado_at),
+      autor: { nombre: nombrePublico(f), iniciales: iniciales(f) },
+      // Lo que hace falta para responder sin salir de la bandeja.
+      refCurso: f.ref,
+      courseId: f.course_id,
+      lessonId: f.lesson_id,
+      contexto: {
+        curso: f.curso,
+        clase: f.clase,
+        // A dónde ir para verlo en su sitio.
+        url: f.donde === 'curso'
+          ? (f.ref?.startsWith('edvanta-') ? `/curso/${f.ref.replace('edvanta-', '')}` : `/cursos/${f.ref}`)
+          : `/aula/curso/${f.course_id}/clase/${f.lesson_id}`,
+      },
+    })),
+  };
+}
+
+/** Cuánto hay pendiente, para saber si hay trabajo sin abrir la lista. */
+export async function pendientesDeModerar(db) {
+  const fila = await one(
+    db,
+    `SELECT COUNT(*)::int AS n FROM reportes_de_contenido WHERE resuelto_at IS NULL`,
+  );
+  return fila.n;
+}
+
+/**
+ * Devolver a la vista algo que se retiró.
+ *
+ * Quien modera se equivoca, y sin esto la única salida sería ir a la
+ * base de datos. Un botón de retirar sin su contrario convierte cada
+ * clic en definitivo.
+ */
+export async function restaurarComentario(db, tabla, id) {
+  const fila = await one(
+    db,
+    `UPDATE ${tabla} SET estado = 'publicado' WHERE id = $1 RETURNING id`,
+    [Number(id)],
+  );
+  if (!fila) throw notFound('No encontramos ese comentario.');
+  return fila.id;
+}
+
+/**
+ * Dar un reporte por visto sin tocar el comentario: no todo lo que se
+ * reporta está mal. Sin esto, la cola solo se vacía borrando.
+ */
+export async function resolverReportes(db, tipo, objetoId, moderadorId) {
+  await db.query(
+    `UPDATE reportes_de_contenido
+        SET resuelto_at = NOW()
+      WHERE tipo = $1 AND objeto_id = $2 AND resuelto_at IS NULL`,
+    [tipo, Number(objetoId)],
+  );
+  return { ok: true, por: moderadorId };
+}
+
+/** Quién reportó y por qué, para decidir con criterio. */
+export async function motivosDeReporte(db, tipo, objetoId) {
+  return many(
+    db,
+    `SELECT r.motivo, r.created_at, u.first_name, u.last_name, u.email
+       FROM reportes_de_contenido r
+       JOIN aula_users u ON u.id = r.user_id
+      WHERE r.tipo = $1 AND r.objeto_id = $2 AND r.resuelto_at IS NULL
+      ORDER BY r.created_at DESC`,
+    [tipo, Number(objetoId)],
+  ).then((filas) => filas.map((f) => ({
+    motivo: f.motivo,
+    fecha: f.created_at,
+    quien: nombrePublico(f),
+  })));
+}

@@ -24,7 +24,7 @@ export const FORMACION_GROUPS = [
     title: 'Aprende',
     items: [
       { label: 'Cursos', desc: 'Catálogo con certificado', to: '/cursos', icon: GraduationCap },
-      { label: 'Cursos gratis', desc: 'Opciones recomendadas sin costo', to: '/cursos-gratis', icon: Gift },
+      { label: 'Cursos gratis', desc: 'Opciones recomendadas sin costo', to: '/cursos', icon: Gift },
       { label: 'Rutas profesionales', desc: 'Cursos en orden hacia un cargo', to: '/rutas', icon: Route },
       { label: 'Competencias', desc: 'Qué dominar en cada área', to: '/competencias', icon: Target },
       { label: 'Centro de aprendizaje', desc: 'Elige tu área y empieza', to: '/aprende', icon: Compass },
@@ -99,7 +99,7 @@ export const FOOTER_COLUMNS = [
     title: 'Fórmate',
     links: [
       { label: 'Cursos', to: '/cursos' },
-      { label: 'Cursos gratis', to: '/cursos-gratis' },
+      { label: 'Cursos gratis', to: '/cursos' },
       { label: 'Rutas profesionales', to: '/rutas' },
       { label: 'Competencias', to: '/competencias' },
       { label: 'Guías y recursos', to: '/recursos' },

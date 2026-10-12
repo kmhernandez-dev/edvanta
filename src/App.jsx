@@ -25,11 +25,10 @@ const LearningPathsIndex = lazy(() => import('./pages/LearningPathsIndex'));
 const LearningHub = lazy(() => import('./pages/LearningHub'));
 const CompetenciesIndex = lazy(() => import('./pages/CompetenciesIndex'));
 const CompetencyPage = lazy(() => import('./pages/CompetencyPage'));
-const CursosGratisIndex = lazy(() => import('./pages/CursosGratisIndex'));
 const VolviendoDeAcceso = lazy(() => import('./pages/VolviendoDeAcceso'));
 const FichaDeCurso = lazy(() => import('./pages/FichaDeCurso'));
 const Diagnostico = lazy(() => import('./pages/Diagnostico'));
-const CursoGratisPage = lazy(() => import('./pages/CursoGratisPage'));
+const CursoGratisRedirige = lazy(() => import('./pages/CursoGratisRedirige'));
 const CursosCatalog = lazy(() => import('./pages/CursosCatalog'));
 const CareersIndex = lazy(() => import('./pages/CareersIndex'));
 const CareerPage = lazy(() => import('./pages/CareerPage'));
@@ -271,8 +270,10 @@ export default function App() {
         <Route path="/diagnostico" element={<Diagnostico />} />
 
         {/* Catálogo de 100+ cursos gratuitos */}
-        <Route path="/cursos-gratis" element={<CursosGratisIndex />} />
-        <Route path="/cursos-gratis/:courseId" element={<CursoGratisPage />} />
+        {/* Se retiraron: tenian la marca y el catalogo incrustado de Edutin.
+            Las direcciones siguen abriendo, redirigidas a la ficha. */}
+        <Route path="/cursos-gratis" element={<Navigate to="/cursos" replace />} />
+        <Route path="/cursos-gratis/:courseId" element={<CursoGratisRedirige />} />
 
         {/* Panel admin interno (oculto, ruta directa) */}
         <Route path="/admin/orders" element={<AdminOrders />} />

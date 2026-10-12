@@ -591,8 +591,13 @@ export async function fichaDeCursoRoute(req, res) {
       return res.json({ ok: true, data: ficha, faltan: huecosDeLaFicha(ficha), relacionados: await relacionados(ficha) });
     }
 
+    // Por slug, y si no, por el identificador del proveedor: las
+    // direcciones viejas (/cursos-gratis/sh-7429) usaban ese código y
+    // siguen circulando por ahí.
     const { rows } = await pool.query(
-      'SELECT * FROM courses WHERE slug = $1 AND active = true',
+      `SELECT * FROM courses
+        WHERE active = true AND (slug = $1 OR lower(provider_course_id) = lower($1))
+        ORDER BY (slug = $1) DESC LIMIT 1`,
       [ref],
     );
     if (!rows[0]) return res.status(404).json({ ok: false, error: 'Este curso no está disponible' });

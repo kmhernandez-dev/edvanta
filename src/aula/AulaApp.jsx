@@ -10,6 +10,7 @@ import { AdminShell, ParticipantShell } from './layout/Shells';
 import { Acceso, Entrar, Recuperar } from './pages/Acceso';
 import Cuenta from './pages/Cuenta';
 import MiAula from './pages/MiAula';
+import Moderacion from './pages/admin/Moderacion';
 import Bitacora from './pages/admin/Bitacora';
 import Empresas, { EmpresaDetalle } from './pages/admin/Empresas';
 import Grupos, { GrupoDetalle } from './pages/admin/Grupos';
@@ -136,6 +137,7 @@ export default function AulaApp() {
               <Route path="versiones" element={<Versiones />} />
               <Route path="*" element={<NotFoundInAula />} />
             </Route>
+            <Route path="comentarios" element={<Moderacion />} />
             <Route path="auditoria" element={<Bitacora />} />
             <Route path="*" element={<NotFoundInAula />} />
           </Route>

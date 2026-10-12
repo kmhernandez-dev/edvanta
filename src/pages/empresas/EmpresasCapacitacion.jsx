@@ -199,7 +199,7 @@ export default function EmpresasCapacitacion() {
             {[
               { t: 'Rutas por cargo', d: 'Cursos en orden para llegar a un rol concreto.', to: '/rutas' },
               { t: 'Competencias', d: 'Qué debe dominar cada área del sector.', to: '/competencias' },
-              { t: 'Cursos gratis', d: 'Opciones sin costo para empezar hoy.', to: '/cursos-gratis' },
+              { t: 'Cursos gratis', d: 'Opciones sin costo para empezar hoy.', to: '/cursos' },
             ].map((x) => (
               <Card key={x.t} hover>
                 <p className="text-base font-bold text-edvanta-deep">{x.t}</p>
