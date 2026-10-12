@@ -13,6 +13,7 @@ import { BlockList } from '../blocks/BlockView';
 import { Button } from '../ui/Button';
 import { ProgressBar } from '../ui/Page';
 import PanelDelCurso from './PanelDelCurso';
+import ParticipacionDeClase from './ParticipacionDeClase';
 
 export function flattenLessons(snapshot) {
   return (snapshot?.modules || []).flatMap((m, mi) => m.lessons.map((l, li) => ({
@@ -200,6 +201,12 @@ export function CoursePlayer({
                 )}
               </nav>
             </footer>
+
+            {/* Solo cuando se cursa de verdad: en la vista previa del panel
+                no hay a quién preguntar ni clase que calificar. */}
+            {courseId && mode !== 'preview' && (
+              <ParticipacionDeClase cursoId={courseId} claseId={lesson.id} />
+            )}
           </article>
         </main>
 

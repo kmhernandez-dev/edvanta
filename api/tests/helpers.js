@@ -4,6 +4,10 @@
  * HTTP que guardan su propia cookie de sesión.
  */
 import { PGlite } from '@electric-sql/pglite';
+import { pg_trgm } from '@electric-sql/pglite/contrib/pg_trgm';
+import { pgcrypto } from '@electric-sql/pglite/contrib/pgcrypto';
+import { unaccent } from '@electric-sql/pglite/contrib/unaccent';
+import { uuid_ossp } from '@electric-sql/pglite/contrib/uuid_ossp';
 import express from 'express';
 import { mkdtemp, readdir, readFile, rm } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
@@ -17,9 +21,17 @@ import { createAulaRouter } from '../routes/aula/index.js';
 
 const MIGRATIONS = path.join(path.dirname(fileURLToPath(import.meta.url)), '..', 'migrations');
 
+// El aula se prueba con su propio esquema, no con las migraciones de
+// contenido, que pesan megas y no pintan nada aquí. La excepción es
+// `courses`: la opinión de un curso curado apunta a esa tabla con clave
+// foránea, así que sin ella el esquema del aula ni siquiera se crea.
+const APARTE = ['005_courses.sql'];
+const necesaria = (f) => /^\d+_aula_.*\.sql$/.test(f) || APARTE.includes(f);
+
 export async function createTestDb() {
-  const pglite = new PGlite();
-  const files = (await readdir(MIGRATIONS)).filter((f) => /^\d+_aula_.*\.sql$/.test(f)).sort();
+  // Las mismas extensiones que en producción: 005_courses las necesita.
+  const pglite = new PGlite({ extensions: { pg_trgm, pgcrypto, unaccent, uuid_ossp } });
+  const files = (await readdir(MIGRATIONS)).filter(necesaria).sort();
   for (const file of files) {
     await pglite.exec(cleanMigrationSql(await readFile(path.join(MIGRATIONS, file), 'utf8')));
   }

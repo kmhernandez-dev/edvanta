@@ -18,7 +18,7 @@ import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import {
   Award, BookOpen, Check, ChevronRight, Clock, ExternalLink, MessageCircle,
-  GraduationCap, Globe, Layers, PlayCircle, Star, UserRound,
+  GraduationCap, Globe, Layers, PlayCircle, UserRound,
 } from 'lucide-react';
 
 import SiteHeader from '../components/edvanta/SiteHeader';
@@ -29,6 +29,12 @@ import {
 import { cleanHtml } from '../aula/ui/RichText';
 import { apiUrl } from '../config/api';
 import { miAula, inscribirme } from '../lib/misCursos';
+import {
+  borrarComentario, comentarEnCurso, comentariosDeCurso, editarComentario,
+  opinionesDeCurso, reportar,
+} from '../lib/opiniones';
+import ValoracionesDeCurso from '../components/opiniones/ValoracionesDeCurso';
+import Comentarios from '../components/opiniones/Comentarios';
 import { updatePageSeo } from '../utils/seo';
 import { EDVANTA_WHATSAPP_URL } from '../config/links';
 
@@ -52,6 +58,7 @@ function seccionesDe(f) {
   if (f.capacidades.verTemario) s.push({ id: 'contenido', label: 'Contenido' });
   s.push({ id: 'certificado', label: 'Certificado' });
   s.push({ id: 'valoraciones', label: 'Valoraciones' });
+  s.push({ id: 'preguntas-curso', label: 'Preguntas' });
   s.push({ id: 'preguntas', label: 'Preguntas frecuentes' });
   return s;
 }
@@ -233,30 +240,70 @@ function Certificado({ certificado: c, proveedor }) {
   );
 }
 
-/** Valoraciones. Todavía no se pueden dejar, y eso se dice tal cual. */
-function Valoraciones({ ficha }) {
+/**
+ * Valoraciones y preguntas. Son dos hilos distintos a propósito: una
+ * cosa es calificar el curso y otra preguntar si hace falta saber
+ * estadística. Mezclarlos obliga a quien pregunta a poner estrellas a
+ * algo que todavía no ha hecho.
+ */
+function Participacion({ ficha, refCurso }) {
+  const [datos, setDatos] = useState(null);
+
+  useEffect(() => {
+    let vivo = true;
+    opinionesDeCurso(refCurso).then((r) => {
+      if (vivo && r.ok) setDatos(r.datos);
+    });
+    return () => { vivo = false; };
+  }, [refCurso]);
+
+  const puedo = datos?.puedo || { opinar: false, comentar: false, moderar: false };
+
   return (
-    <Section id="valoraciones">
-      <SectionHeading eyebrow="Opiniones" title="Valoraciones" />
-      <Card className="mt-6 flex flex-col items-start gap-3">
-        <div className="flex items-center gap-1 text-edvanta-subtle" aria-hidden="true">
-          {[1, 2, 3, 4, 5].map((n) => <Star key={n} className="h-5 w-5" />)}
+    <>
+      <Section id="valoraciones">
+        <SectionHeading eyebrow="Opiniones" title="Valoraciones" />
+        <div className="mt-8 lg:max-w-4xl">
+          {datos ? (
+            <ValoracionesDeCurso
+              refCurso={refCurso}
+              urlVolver={ficha.url}
+              inicial={datos}
+              exigeMatricula={datos.exigeMatricula}
+              puedo={puedo}
+            />
+          ) : (
+            <p className="text-sm text-edvanta-muted">Cargando valoraciones…</p>
+          )}
+          {/* Si algún día se muestran las del proveedor, irán aparte y
+              con su fecha. Nunca sumadas a las de Edvanta. */}
+          {ficha.valoracionesDelProveedor && (
+            <p className="mt-6 text-sm text-edvanta-muted">
+              Las valoraciones que {ficha.proveedor.nombre} publica en su sitio son suyas y
+              no se mezclan con las de Edvanta.
+            </p>
+          )}
         </div>
-        <p className="text-base font-bold text-edvanta-deep">
-          Este curso aún no tiene valoraciones en Edvanta.
-        </p>
-        <p className="text-sm leading-7 text-edvanta-muted">
-          Todavía no se pueden dejar opiniones desde la plataforma. Cuando se active,
-          quien haya hecho el curso podrá calificarlo y contar su experiencia.
-        </p>
-        {ficha.valoracionesDelProveedor && (
-          <p className="text-sm text-edvanta-muted">
-            Las valoraciones que {ficha.proveedor.nombre} publica en su sitio son suyas y
-            no se mezclan con las de Edvanta.
-          </p>
-        )}
-      </Card>
-    </Section>
+      </Section>
+
+      <Section id="preguntas-curso" tone="surface" bordered>
+        <div className="lg:max-w-4xl">
+          <Comentarios
+            donde="curso"
+            sitio={`curso-${refCurso}`}
+            titulo="Preguntas y comentarios sobre este curso"
+            descripcion="No hace falta haber hecho el curso para preguntar. Esto se lee en público, así que no pongas aquí datos personales."
+            puedo={puedo}
+            invitacion="Entra con tu cuenta para preguntar. Cualquiera puede leer las respuestas."
+            cargar={(p) => comentariosDeCurso(refCurso, { pagina: p })}
+            publicar={(cuerpo, padreId) => comentarEnCurso(refCurso, { cuerpo, padreId })}
+            editar={(id, cuerpo) => editarComentario('curso', id, cuerpo)}
+            borrar={(id) => borrarComentario('curso', id)}
+            reportar={(id) => reportar('comentario_curso', id)}
+          />
+        </div>
+      </Section>
+    </>
   );
 }
 
@@ -573,7 +620,7 @@ export default function FichaDeCurso({ modo = 'propio' }) {
 
       <Certificado certificado={ficha.certificado} proveedor={ficha.proveedor} />
 
-      <Valoraciones ficha={ficha} />
+      <Participacion ficha={ficha} refCurso={ref} />
 
       {relacionados.length > 0 && (
         <Section tone="surface" bordered>

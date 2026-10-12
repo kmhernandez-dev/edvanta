@@ -15,6 +15,7 @@ import { adminSummaryRouter } from './admin-summary.js';
 import { meRouter } from './me.js';
 import { authRouter } from './auth.js';
 import { filesRouter, sweepStaleUploads, uploadsRouter } from './files.js';
+import { opinionesRouter } from './opiniones.js';
 import { attachSession, requireAdmin, requireUser } from './middleware.js';
 
 export function createAulaRouter({
@@ -41,6 +42,8 @@ export function createAulaRouter({
   router.use('/uploads', requireUser, uploadsRouter(deps));
   router.use('/files', requireUser, filesRouter(deps));
   router.use('/me', requireUser, meRouter(deps));
+  // Leer opiniones y preguntas es público; escribir se comprueba dentro.
+  router.use('/opiniones', opinionesRouter(deps));
 
   const admin = express.Router();
   admin.use('/summary', adminSummaryRouter(deps));
