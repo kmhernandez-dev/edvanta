@@ -1,18 +1,22 @@
 import { Link } from 'react-router-dom';
-import Icon from './Icon';
-import { EDVANTA_COMMUNITY_URL } from '../config/links';
 import { trackEvent } from '../utils/analytics';
+import { PRODUCTO_DESTACADO, productoPorSlug } from '../data/edvanta/productos';
 
 // Cada palabra entra por separado; `grad` lleva el degradado de marca y
 // `swoosh` el trazo que se dibuja debajo.
+//
+// El titular dice qué es Edvanta y para quién trabaja. El anterior
+// («Estudia gratis y certifica tus conocimientos») prometía un
+// certificado que los cursos de Edvanta no emiten.
 const TITLE = [
-  { t: 'Estudia' }, { t: 'gratis', grad: true }, { t: 'y' }, { t: 'certifica' },
-  { t: 'tus' }, { t: 'conocimientos', swoosh: true, tail: '.' },
+  { t: 'Educación' }, { t: 'farmacéutica', grad: true }, { t: 'para' }, { t: 'profesionales,' },
+  { t: 'pacientes' }, { t: 'e' }, { t: 'instituciones', swoosh: true, tail: '.' },
 ];
 const STEP_MS = 60;
 const TITLE_END_MS = TITLE.length * STEP_MS + 500;
 
-export default function Hero({ onCreateAccount }) {
+export default function Hero() {
+  const destacado = productoPorSlug(PRODUCTO_DESTACADO);
   return (
     <section
       id="inicio"
@@ -28,7 +32,7 @@ export default function Hero({ onCreateAccount }) {
           <div className="relative text-center lg:text-left">
             <div className="hx-glow pointer-events-none absolute -left-10 top-6 hidden h-48 w-[30rem] rounded-full lg:block" aria-hidden="true" />
 
-            <h1 className="hx-title relative font-display text-[2.6rem] font-extrabold leading-[1.06] tracking-[-0.03em] text-[#082E86] sm:text-6xl lg:text-[3.6rem]">
+            <h1 className="hx-title relative font-display text-[2.4rem] font-extrabold leading-[1.08] tracking-[-0.03em] text-[#082E86] sm:text-[3.25rem] lg:text-[3.4rem]">
               {TITLE.map((w, i) => (
                 <span key={w.t + i}>
                   <span
@@ -71,30 +75,30 @@ export default function Hero({ onCreateAccount }) {
               className="hx-fade mx-auto mb-9 mt-7 max-w-xl text-lg leading-relaxed text-[#3C4763] sm:text-xl lg:mx-0"
               style={{ animationDelay: `${TITLE_END_MS - 250}ms` }}
             >
-              Con la ayuda de Químicos Farmacéuticos expertos.
+              Cursos, guías y servicios de formación, con la ayuda de químicos farmacéuticos expertos: para
+              actualizar a los equipos de salud, acompañar a pacientes y cuidadores, y capacitar a las instituciones.
             </p>
 
             <div
               className="hx-fade flex flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:justify-center lg:justify-start"
               style={{ animationDelay: `${TITLE_END_MS}ms` }}
             >
+              {destacado && (
+                <Link
+                  to={destacado.to}
+                  onClick={() => trackEvent('hero_cta_clicked', { cta: 'curso_en_vivo' })}
+                  className="inline-flex h-14 items-center justify-center rounded-2xl bg-[#082E86] px-8 text-base font-semibold text-white shadow-[0_10px_26px_rgba(8,46,134,.25)] transition hover:-translate-y-0.5 hover:bg-[#0A3AA6]"
+                >
+                  Ver el curso en vivo
+                </Link>
+              )}
               <Link
-                to={onCreateAccount}
-                onClick={() => trackEvent('hero_cta_clicked', { cta: 'crear_cuenta' })}
-                className="inline-flex h-14 items-center justify-center rounded-2xl bg-[#082E86] px-8 text-base font-semibold text-white shadow-[0_10px_26px_rgba(8,46,134,.25)] transition hover:-translate-y-0.5 hover:bg-[#0A3AA6]"
-              >
-                Crear cuenta gratis
-              </Link>
-              <a
-                href={EDVANTA_COMMUNITY_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => trackEvent('community_clicked', { origin: 'hero' })}
+                to="/escuelas"
+                onClick={() => trackEvent('hero_cta_clicked', { cta: 'escuelas' })}
                 className="inline-flex h-14 items-center justify-center gap-2 rounded-2xl border border-[#C9D4E6] bg-white px-8 text-base font-semibold text-[#082E86] transition hover:-translate-y-0.5 hover:border-[#082E86]"
               >
-                <Icon name="whatsapp" className="h-5 w-5 text-[#25D366]" />
-                Unirme a la comunidad
-              </a>
+                Explorar las escuelas
+              </Link>
             </div>
           </div>
 

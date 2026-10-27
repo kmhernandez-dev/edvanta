@@ -17,6 +17,7 @@ import { authRouter } from './auth.js';
 import { filesRouter, sweepStaleUploads, uploadsRouter } from './files.js';
 import { opinionesRouter } from './opiniones.js';
 import { adminModeracionRouter } from './admin-moderacion.js';
+import { adminSolicitudesRouter, solicitudesRouter } from './solicitudes.js';
 import { attachSession, requireAdmin, requireUser } from './middleware.js';
 
 export function createAulaRouter({
@@ -26,9 +27,10 @@ export function createAulaRouter({
   siteUrl,
   secureCookies = true,
   adminEmailHashes = [],
+  notifyEmail = null,
   now = () => new Date(),
 }) {
-  const deps = { db, storage, mailer, siteUrl, secureCookies, adminEmailHashes };
+  const deps = { db, storage, mailer, siteUrl, secureCookies, adminEmailHashes, notifyEmail };
   const router = express.Router();
 
   router.use((_req, res, next) => {
@@ -45,6 +47,8 @@ export function createAulaRouter({
   router.use('/me', requireUser, meRouter(deps));
   // Leer opiniones y preguntas es público; escribir se comprueba dentro.
   router.use('/opiniones', opinionesRouter(deps));
+  // Interés, propuestas y contacto: se envían sin cuenta.
+  router.use('/solicitudes', solicitudesRouter(deps));
 
   const admin = express.Router();
   admin.use('/summary', adminSummaryRouter(deps));
@@ -52,6 +56,7 @@ export function createAulaRouter({
   admin.use('/', adminPeopleRouter(deps));
   admin.use('/', adminCoursesRouter(deps));
   admin.use('/', adminModeracionRouter(deps));
+  admin.use('/', adminSolicitudesRouter(deps));
   router.use('/admin', requireAdmin, admin);
 
   router.use((_req, _res, next) => next(notFound('Esta ruta del aula no existe.')));

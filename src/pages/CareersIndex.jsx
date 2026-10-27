@@ -91,9 +91,9 @@ const modulos = [
     id: 'empresas',
     icon: Building2,
     titulo: 'Empresas',
-    texto: 'Capacita a tu equipo y busca talento: perfiles clasificados por área con proyectos y artículos.',
+    texto: 'Formación para tu equipo y programas educativos para tus pacientes, bajo propuesta.',
     color: 'from-teal-600 to-edvanta-blue',
-    a: '/empresas',
+    a: '/instituciones',
   },
 ];
 

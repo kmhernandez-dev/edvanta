@@ -2,71 +2,43 @@
  * ============================================================
  *  SiteHeader.jsx — Encabezado único de edvanta.co
  *
- *  Es el mismo en todas las páginas de Edvanta (inicio, cursos,
- *  empleo, herramientas, empresas…). Tiene dos contextos:
+ *  Es el mismo en todas las páginas de Edvanta. La barra principal
+ *  lleva lo que la persona viene a buscar:
  *
- *   · Personal  → Formación · Carrera y empleo · Herramientas · Comunidad
- *   · Empresas  → Inicio · Capacitación · Buscar talento · Aula virtual
+ *    Escuelas ▾ · Cursos · Guías y recursos ▾ · Para pacientes ·
+ *    Para instituciones
  *
- *  La franja superior cambia de contexto y siempre deja a la vista
- *  el acceso al Aula Edvanta. Feliz Sin Tiroides, Vida 360 y
- *  AtenFarmaClinic tienen sus propios encabezados y no usan este.
+ *  La franja de arriba deja a la vista Sobre Edvanta, Contacto y el
+ *  acceso al Aula. Feliz Sin Tiroides, Vida 360 y AtenFarmaClinic
+ *  tienen sus propios encabezados y no usan este.
  * ============================================================
  */
 
 import { useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { ChevronDown, Menu, MonitorPlay, Search, ShoppingCart, UserRound, X } from 'lucide-react';
+import { ArrowRight, ChevronDown, Menu, MonitorPlay, Search, ShoppingCart, UserRound, X } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 import { useCart } from '../../context/CartContext';
-import { EDVANTA_EMAIL } from '../../config/links';
 import { trackEvent } from '../../utils/analytics';
-import {
-  EMPLEO_GROUPS, EMPRESAS_LINKS, esRutaEmpresas, FORMACION_GROUPS, HERRAMIENTAS_GROUPS,
-} from '../../config/navEdvanta';
+import { ESCUELAS_GROUPS, MAIN_LINKS, RECURSOS_GROUPS, TOP_LINKS } from '../../config/navEdvanta';
 import GlobalSearch from './GlobalSearch';
 
-// Se reexporta porque el inicio arma con estos grupos su sección de formación.
-export { FORMACION_GROUPS };
+const MENUS = {
+  escuelas: { id: 'escuelas', label: 'Escuelas', groups: ESCUELAS_GROUPS, width: 'w-[440px]', cols: 1, all: { label: 'Ver las cuatro escuelas', to: '/escuelas' } },
+  recursos: { id: 'recursos', label: 'Guías y recursos', groups: RECURSOS_GROUPS, width: 'w-[640px]', cols: 2 },
+};
 
-const MENUS = [
-  { id: 'formacion', label: 'Formación', groups: FORMACION_GROUPS, width: 'w-[640px]' },
-  { id: 'empleo', label: 'Carrera y empleo', groups: EMPLEO_GROUPS, width: 'w-[660px]' },
-  { id: 'herramientas', label: 'Herramientas', groups: HERRAMIENTAS_GROUPS, width: 'w-[640px]' },
-];
-
-const NOSOTROS = [
-  { label: 'Contacto', href: `mailto:${EDVANTA_EMAIL}` },
-  { label: 'Términos y condiciones', to: '/terminos' },
-  { label: 'Privacidad', to: '/privacidad' },
-];
-
-const NAV_LINK = 'inline-flex h-11 items-center gap-1.5 rounded-lg px-3 text-[15px] font-medium transition-colors';
+const NAV_LINK = 'inline-flex h-11 items-center gap-1.5 whitespace-nowrap rounded-lg px-3 text-[15px] font-medium transition-colors';
+const ON = 'bg-edvanta-soft font-semibold text-edvanta-blue';
+const OFF = 'text-edvanta-deep hover:bg-edvanta-bg';
 
 /** ¿La ruta actual pertenece a este menú? Sirve para marcar la sección activa. */
-const grupoActivo = (groups, pathname) =>
-  groups.some((g) => g.items.some((it) => it.to && (pathname === it.to || pathname.startsWith(`${it.to}/`))));
+const grupoActivo = (menu, pathname) =>
+  (menu.all && (pathname === menu.all.to || pathname.startsWith(`${menu.all.to}/`)))
+  || menu.groups.some((g) => g.items.some((it) => it.to && (pathname === it.to || pathname.startsWith(`${it.to}/`))));
 
 function MenuItem({ item, onPick }) {
   const Icono = item.icon;
-  const body = (
-    <>
-      <span className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl transition-colors ${item.soon ? 'bg-slate-100 text-slate-400' : 'bg-edvanta-soft text-edvanta-blue group-hover:bg-edvanta-blue group-hover:text-white'}`}>
-        <Icono className="h-5 w-5" strokeWidth={1.8} aria-hidden="true" />
-      </span>
-      <span className="min-w-0">
-        <span className="flex items-center gap-2 text-sm font-semibold text-edvanta-deep">
-          {item.label}
-          {item.soon && <span className="rounded-full bg-edvanta-lilac px-2 py-0.5 text-[10.5px] font-semibold text-[#5E51A8]">Próximamente</span>}
-        </span>
-        <span className="mt-0.5 block text-[12.5px] leading-snug text-edvanta-muted">{item.desc}</span>
-      </span>
-    </>
-  );
-
-  if (item.soon) {
-    return <div role="menuitem" aria-disabled="true" className="flex items-start gap-3 rounded-xl px-3 py-2.5 opacity-80">{body}</div>;
-  }
   return (
     <Link
       role="menuitem"
@@ -74,8 +46,61 @@ function MenuItem({ item, onPick }) {
       onClick={() => onPick(item)}
       className="group flex items-start gap-3 rounded-xl px-3 py-2.5 outline-none transition-colors hover:bg-edvanta-bg focus-visible:bg-edvanta-bg focus-visible:ring-2 focus-visible:ring-edvanta-blue/30"
     >
-      {body}
+      <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-edvanta-soft text-edvanta-blue transition-colors group-hover:bg-edvanta-blue group-hover:text-white">
+        <Icono className="h-5 w-5" strokeWidth={1.8} aria-hidden="true" />
+      </span>
+      <span className="min-w-0">
+        <span className="block text-sm font-semibold text-edvanta-deep">{item.label}</span>
+        <span className="mt-0.5 block text-[12.5px] leading-snug text-edvanta-muted">{item.desc}</span>
+      </span>
     </Link>
+  );
+}
+
+function DesktopMenu({ menu, open, onToggle, onPick, pathname }) {
+  const abierto = open === menu.id;
+  return (
+    <div className="relative">
+      <button
+        type="button"
+        aria-expanded={abierto}
+        aria-haspopup="menu"
+        aria-controls={`menu-${menu.id}`}
+        onClick={() => onToggle(menu.id)}
+        className={`${NAV_LINK} ${abierto || grupoActivo(menu, pathname) ? ON : OFF}`}
+      >
+        {menu.label}
+        <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${abierto ? 'rotate-180' : ''}`} aria-hidden="true" />
+      </button>
+      {abierto && (
+        <div
+          id={`menu-${menu.id}`}
+          role="menu"
+          aria-label={`Opciones de ${menu.label}`}
+          className={`hx-menu absolute left-0 top-full z-50 mt-2 ${menu.width} rounded-2xl border border-edvanta-border bg-white p-3 shadow-[0_18px_44px_rgba(23,34,59,.14)]`}
+        >
+          <div className={menu.cols === 2 ? 'grid grid-cols-2 gap-x-2' : ''}>
+            {menu.groups.map((g) => (
+              <div key={g.title}>
+                <p className="px-3 pb-1 pt-2 text-[11px] font-bold uppercase tracking-[.12em] text-edvanta-muted">{g.title}</p>
+                {g.items.map((it) => <MenuItem key={it.label} item={it} onPick={onPick} />)}
+              </div>
+            ))}
+          </div>
+          {menu.all && (
+            <Link
+              role="menuitem"
+              to={menu.all.to}
+              onClick={() => onPick(menu.all)}
+              className="mt-1 flex items-center justify-between border-t border-edvanta-border px-3 pb-1 pt-3 text-sm font-semibold text-edvanta-blue hover:text-edvanta-teal"
+            >
+              {menu.all.label}
+              <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            </Link>
+          )}
+        </div>
+      )}
+    </div>
   );
 }
 
@@ -89,7 +114,6 @@ export default function SiteHeader() {
   const ref = useRef(null);
 
   const { pathname } = location;
-  const empresas = esRutaEmpresas(pathname);
 
   useEffect(() => { setOpen(null); setMobileOpen(false); }, [pathname, location.search]);
 
@@ -124,137 +148,68 @@ export default function SiteHeader() {
     setMobileOpen(false);
   };
 
-  // «/empresas» es la portada empresarial: solo está activa en su propia ruta,
-  // no en las secciones que cuelgan de ella.
-  const activo = (to) => pathname === to || (to !== '/' && to !== '/empresas' && pathname.startsWith(`${to}/`));
+  const activo = (to) => pathname === to || (to !== '/' && pathname.startsWith(`${to}/`));
+
+  const enlace = (l) => (
+    <Link
+      key={l.to}
+      to={l.to}
+      onClick={() => trackEvent('nav_click', { item: l.to })}
+      aria-current={activo(l.to) ? 'page' : undefined}
+      className={`${NAV_LINK} ${activo(l.to) ? ON : OFF}`}
+    >
+      {l.label}
+    </Link>
+  );
+
+  const [cursos, ...publicos] = MAIN_LINKS;
 
   return (
     <header ref={ref} className="sticky top-0 z-50 bg-white">
-      {/* Franja Personal / Empresas */}
+      {/* Franja superior */}
       <div className="border-b border-edvanta-border bg-edvanta-bg">
-        <div className="mx-auto flex h-10 max-w-7xl items-stretch justify-between px-4 sm:px-6 lg:px-8">
-          <nav aria-label="Tipo de cuenta" className="flex items-stretch gap-7">
-            <Link
-              to="/"
-              aria-current={empresas ? undefined : 'true'}
-              className={`flex items-center border-b-2 text-[13.5px] transition-colors ${empresas ? 'border-transparent font-medium text-edvanta-muted hover:text-edvanta-blue' : 'border-edvanta-blue font-semibold text-edvanta-blue'}`}
-            >
-              Personal
-            </Link>
-            <Link
-              to="/empresas"
-              onClick={() => trackEvent('nav_click', { item: 'empresas_tab' })}
-              aria-current={empresas ? 'true' : undefined}
-              className={`flex items-center border-b-2 text-[13.5px] transition-colors ${empresas ? 'border-edvanta-blue font-semibold text-edvanta-blue' : 'border-transparent font-medium text-edvanta-muted hover:text-edvanta-blue'}`}
-            >
-              Empresas
-            </Link>
-          </nav>
-          <div className="relative flex items-center gap-6">
+        <div className="mx-auto flex h-10 max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
+          <p className="hidden truncate text-[13px] text-edvanta-muted sm:block">
+            Educación farmacéutica para profesionales, pacientes e instituciones
+          </p>
+          <nav aria-label="Edvanta" className="ml-auto flex shrink-0 items-center gap-5">
+            {TOP_LINKS.map((l) => (
+              <Link
+                key={l.to}
+                to={l.to}
+                aria-current={activo(l.to) ? 'page' : undefined}
+                className={`hidden text-[13.5px] transition-colors hover:text-edvanta-blue md:inline ${activo(l.to) ? 'font-semibold text-edvanta-blue' : 'text-edvanta-muted'}`}
+              >
+                {l.label}
+              </Link>
+            ))}
             <Link
               to="/aula"
               onClick={() => trackEvent('nav_click', { item: 'aula_virtual' })}
-              className="hidden items-center gap-1.5 text-[13.5px] font-semibold text-edvanta-blue transition-colors hover:text-edvanta-teal sm:inline-flex"
+              className="inline-flex items-center gap-1.5 text-[13.5px] font-semibold text-edvanta-blue transition-colors hover:text-edvanta-teal"
             >
               <MonitorPlay className="h-4 w-4" aria-hidden="true" />
               Aula virtual
             </Link>
-            <button
-              type="button"
-              aria-expanded={open === 'nosotros'}
-              aria-haspopup="menu"
-              onClick={() => toggle('nosotros')}
-              className="inline-flex items-center gap-1.5 text-[13.5px] text-edvanta-muted transition-colors hover:text-edvanta-blue"
-            >
-              Sobre nosotros
-              <ChevronDown className={`h-3.5 w-3.5 transition-transform ${open === 'nosotros' ? 'rotate-180' : ''}`} aria-hidden="true" />
-            </button>
-            {open === 'nosotros' && (
-              <div role="menu" className="absolute right-0 top-full z-50 mt-1 w-56 rounded-xl border border-edvanta-border bg-white p-1.5 shadow-[0_12px_32px_rgba(23,34,59,.10)]">
-                {NOSOTROS.map((n) => (n.href ? (
-                  <a key={n.label} role="menuitem" href={n.href} className="block rounded-lg px-3 py-2 text-sm text-edvanta-deep hover:bg-edvanta-bg">{n.label}</a>
-                ) : (
-                  <Link key={n.label} role="menuitem" to={n.to} className="block rounded-lg px-3 py-2 text-sm text-edvanta-deep hover:bg-edvanta-bg">{n.label}</Link>
-                )))}
-              </div>
-            )}
-          </div>
+          </nav>
         </div>
       </div>
 
       {/* Barra principal */}
       <div className="border-b border-edvanta-border bg-white">
-        <div className="mx-auto flex h-20 max-w-7xl items-center gap-6 px-4 sm:px-6 lg:px-8">
-          <Link to={empresas ? '/empresas' : '/'} className="shrink-0" aria-label="Edvanta, ir al inicio">
+        <div className="mx-auto flex h-20 max-w-7xl items-center gap-4 px-4 sm:px-6 lg:px-8">
+          <Link to="/" className="shrink-0" aria-label="Edvanta, ir al inicio">
             <img src="/img/logo-edvanta.png" alt="Edvanta" width="931" height="512" className="h-11 w-auto sm:h-[52px]" />
           </Link>
 
-          <nav aria-label="Navegación principal" className="hidden items-center gap-1 xl:flex">
-            {empresas ? (
-              EMPRESAS_LINKS.map((l) => (
-                <Link
-                  key={l.to}
-                  to={l.to}
-                  onClick={() => trackEvent('nav_click', { item: l.to })}
-                  aria-current={activo(l.to) ? 'page' : undefined}
-                  className={`${NAV_LINK} ${activo(l.to) ? 'bg-edvanta-soft font-semibold text-edvanta-blue' : 'text-edvanta-deep hover:bg-edvanta-bg'}`}
-                >
-                  {l.label}
-                </Link>
-              ))
-            ) : (
-              <>
-                <Link to="/" aria-current={pathname === '/' ? 'page' : undefined} className={`${NAV_LINK} ${pathname === '/' ? 'font-semibold text-edvanta-blue' : 'text-edvanta-deep hover:bg-edvanta-bg'}`}>
-                  Inicio
-                </Link>
-                {MENUS.map((m) => {
-                  const enSeccion = grupoActivo(m.groups, pathname);
-                  return (
-                    <div key={m.id} className="relative">
-                      <button
-                        type="button"
-                        aria-expanded={open === m.id}
-                        aria-haspopup="menu"
-                        aria-controls={`menu-${m.id}`}
-                        onClick={() => toggle(m.id)}
-                        className={`${NAV_LINK} ${open === m.id || enSeccion ? 'bg-edvanta-soft font-semibold text-edvanta-blue' : 'text-edvanta-deep hover:bg-edvanta-bg'}`}
-                      >
-                        {m.label}
-                        <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${open === m.id ? 'rotate-180' : ''}`} aria-hidden="true" />
-                      </button>
-                      {open === m.id && (
-                        <div
-                          id={`menu-${m.id}`}
-                          role="menu"
-                          aria-label={`Opciones de ${m.label}`}
-                          className={`hx-menu absolute left-0 top-full z-50 mt-2 ${m.width} rounded-2xl border border-edvanta-border bg-white p-3 shadow-[0_18px_44px_rgba(23,34,59,.14)]`}
-                        >
-                          <div className="grid grid-cols-2 gap-x-2">
-                            {m.groups.map((g) => (
-                              <div key={g.title}>
-                                <p className="px-3 pb-1 pt-2 text-[11px] font-bold uppercase tracking-[.12em] text-edvanta-muted">{g.title}</p>
-                                {g.items.map((it) => <MenuItem key={it.label} item={it} onPick={pick} />)}
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-                      )}
-                    </div>
-                  );
-                })}
-                <Link
-                  to="/comunidad"
-                  onClick={() => trackEvent('nav_click', { item: 'comunidad' })}
-                  aria-current={activo('/comunidad') ? 'page' : undefined}
-                  className={`${NAV_LINK} ${activo('/comunidad') ? 'bg-edvanta-soft font-semibold text-edvanta-blue' : 'text-edvanta-deep hover:bg-edvanta-bg'}`}
-                >
-                  Comunidad
-                </Link>
-              </>
-            )}
+          <nav aria-label="Navegación principal" className="hidden items-center gap-0.5 xl:flex">
+            <DesktopMenu menu={MENUS.escuelas} open={open} onToggle={toggle} onPick={pick} pathname={pathname} />
+            {enlace(cursos)}
+            <DesktopMenu menu={MENUS.recursos} open={open} onToggle={toggle} onPick={pick} pathname={pathname} />
+            {publicos.map(enlace)}
           </nav>
 
-          <div className="ml-auto flex items-center gap-2">
+          <div className="ml-auto flex items-center gap-1.5">
             <GlobalSearch className="h-11" />
 
             <button
@@ -277,16 +232,13 @@ export default function SiteHeader() {
                 Mi aula
               </Link>
             ) : (
-              <>
-                <Link to="/cuenta" className="hidden text-[15px] font-semibold text-edvanta-blue hover:text-edvanta-teal lg:inline-flex">Acceder</Link>
-                <Link
-                  to="/cuenta?modo=registro"
-                  onClick={() => trackEvent('nav_click', { item: 'crear_cuenta' })}
-                  className="hidden h-12 items-center rounded-xl bg-edvanta-blue px-5 text-[15px] font-semibold text-white shadow-[0_6px_18px_rgba(8,46,134,.22)] transition hover:-translate-y-px hover:bg-edvanta-bluedark lg:inline-flex"
-                >
-                  Crear cuenta gratis
-                </Link>
-              </>
+              <Link
+                to="/cuenta"
+                onClick={() => trackEvent('nav_click', { item: 'acceder' })}
+                className="hidden h-12 items-center rounded-xl bg-edvanta-blue px-5 text-[15px] font-semibold text-white shadow-[0_6px_18px_rgba(8,46,134,.22)] transition hover:-translate-y-px hover:bg-edvanta-bluedark lg:inline-flex"
+              >
+                Acceder
+              </Link>
             )}
 
             <button
@@ -305,46 +257,45 @@ export default function SiteHeader() {
       {/* Menú móvil */}
       {mobileOpen && (
         <div className="max-h-[calc(100vh-7.5rem)] overflow-y-auto border-b border-edvanta-border bg-white px-4 pb-6 pt-2 shadow-lg xl:hidden">
-          {empresas ? (
-            EMPRESAS_LINKS.map((l) => (
-              <Link key={l.to} to={l.to} className="flex min-h-12 items-center rounded-xl px-3 text-base font-medium text-edvanta-deep">
-                {l.label}
-              </Link>
-            ))
-          ) : (
-            <>
-              <Link to="/" className="flex min-h-12 items-center rounded-xl px-3 text-base font-semibold text-edvanta-blue">Inicio</Link>
-              {MENUS.map((m) => (
-                <div key={m.id}>
-                  <button
-                    type="button"
-                    onClick={() => setMobileMenu((v) => (v === m.id ? null : m.id))}
-                    aria-expanded={mobileMenu === m.id}
-                    className="flex min-h-12 w-full items-center justify-between rounded-xl px-3 text-base font-medium text-edvanta-deep"
-                  >
-                    {m.label}
-                    <ChevronDown className={`h-5 w-5 transition-transform ${mobileMenu === m.id ? 'rotate-180' : ''}`} aria-hidden="true" />
-                  </button>
-                  {mobileMenu === m.id && (
-                    <div className="mb-2 rounded-2xl bg-edvanta-bg p-1.5">
-                      {m.groups.map((g) => (
-                        <div key={g.title}>
-                          <p className="px-3 pb-1 pt-2 text-[11px] font-bold uppercase tracking-[.12em] text-edvanta-muted">{g.title}</p>
-                          {g.items.map((it) => <MenuItem key={it.label} item={it} onPick={pick} />)}
-                        </div>
-                      ))}
+          <Link to="/" className="flex min-h-12 items-center rounded-xl px-3 text-base font-semibold text-edvanta-blue">Inicio</Link>
+          {[MENUS.escuelas, null, MENUS.recursos].map((m) => (m ? (
+            <div key={m.id}>
+              <button
+                type="button"
+                onClick={() => setMobileMenu((v) => (v === m.id ? null : m.id))}
+                aria-expanded={mobileMenu === m.id}
+                className="flex min-h-12 w-full items-center justify-between rounded-xl px-3 text-base font-medium text-edvanta-deep"
+              >
+                {m.label}
+                <ChevronDown className={`h-5 w-5 transition-transform ${mobileMenu === m.id ? 'rotate-180' : ''}`} aria-hidden="true" />
+              </button>
+              {mobileMenu === m.id && (
+                <div className="mb-2 rounded-2xl bg-edvanta-bg p-1.5">
+                  {m.groups.map((g) => (
+                    <div key={g.title}>
+                      <p className="px-3 pb-1 pt-2 text-[11px] font-bold uppercase tracking-[.12em] text-edvanta-muted">{g.title}</p>
+                      {g.items.map((it) => <MenuItem key={it.label} item={it} onPick={pick} />)}
                     </div>
+                  ))}
+                  {m.all && (
+                    <Link to={m.all.to} className="flex min-h-11 items-center gap-2 px-3 text-sm font-semibold text-edvanta-blue">
+                      {m.all.label}
+                      <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                    </Link>
                   )}
                 </div>
-              ))}
-              <Link to="/comunidad" className="flex min-h-12 items-center rounded-xl px-3 text-base font-medium text-edvanta-deep">Comunidad</Link>
-              <Link to="/empresas" className="flex min-h-12 items-center rounded-xl px-3 text-base font-medium text-edvanta-deep">Para empresas</Link>
-            </>
-          )}
-          <Link to="/aula" className="flex min-h-12 items-center gap-2 rounded-xl px-3 text-base font-medium text-edvanta-blue">
-            <MonitorPlay className="h-5 w-5" aria-hidden="true" />
-            Aula virtual
-          </Link>
+              )}
+            </div>
+          ) : (
+            <Link key={cursos.to} to={cursos.to} className="flex min-h-12 items-center rounded-xl px-3 text-base font-medium text-edvanta-deep">
+              {cursos.label}
+            </Link>
+          )))}
+          {[...publicos, ...TOP_LINKS].map((l) => (
+            <Link key={l.to} to={l.to} className="flex min-h-12 items-center rounded-xl px-3 text-base font-medium text-edvanta-deep">
+              {l.label}
+            </Link>
+          ))}
           <Link to="/buscar" className="flex min-h-12 items-center gap-2 rounded-xl px-3 text-base font-medium text-edvanta-deep">
             <Search className="h-5 w-5" aria-hidden="true" />
             Buscar en Edvanta
@@ -358,7 +309,7 @@ export default function SiteHeader() {
             ) : (
               <>
                 <Link to="/cuenta" className="inline-flex min-h-12 flex-1 items-center justify-center rounded-xl border border-edvanta-border px-5 text-sm font-semibold text-edvanta-blue">Acceder</Link>
-                <Link to="/cuenta?modo=registro" className="inline-flex min-h-12 flex-1 items-center justify-center rounded-xl bg-edvanta-blue px-5 text-sm font-semibold text-white">Crear cuenta gratis</Link>
+                <Link to="/cuenta?modo=registro" className="inline-flex min-h-12 flex-1 items-center justify-center rounded-xl bg-edvanta-blue px-5 text-sm font-semibold text-white">Crear cuenta</Link>
               </>
             )}
           </div>

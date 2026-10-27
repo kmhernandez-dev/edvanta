@@ -317,9 +317,13 @@ export async function listOwnCoursesRoute(req, res) {
     // fuera a los demás sin que se notara. El inicio sigue pidiendo 24,
     // que ya son muchas tarjetas para un carrusel; /cursos los pide todos.
     const limite = Math.min(60, Math.max(1, parseInt(req.query.limit, 10) || 12));
+    // Profesionales y pacientes no se listan juntos: cada página pide el
+    // suyo. Sin el parámetro salen todos, como antes.
+    const publico = ['profesionales', 'pacientes'].includes(req.query.publico) ? req.query.publico : null;
+    const area = typeof req.query.area === 'string' && req.query.area.trim() ? req.query.area.trim().slice(0, 80) : null;
     const { rows } = await pool.query(
       `SELECT c.id, c.title, c.short_description, c.cover_url, c.cover_file_id,
-              c.category, c.area, c.level, c.duration_minutes, c.author_name, c.published_at,
+              c.category, c.area, c.publico, c.level, c.duration_minutes, c.author_name, c.published_at,
               (SELECT COUNT(*)::int FROM aula_lessons l
                 WHERE l.course_id = c.id AND l.deleted_at IS NULL) AS lessons
          FROM aula_courses c
@@ -327,9 +331,11 @@ export async function listOwnCoursesRoute(req, res) {
           AND c.status = 'publicado'
           AND c.deleted_at IS NULL
           AND c.current_version_id IS NOT NULL
+          AND ($2::text IS NULL OR c.publico = $2)
+          AND ($3::text IS NULL OR c.area = $3)
         ORDER BY c.published_at DESC NULLS LAST, c.title
         LIMIT $1`,
-      [limite],
+      [limite, publico, area],
     );
     return res.json({
       ok: true,
@@ -344,6 +350,7 @@ export async function listOwnCoursesRoute(req, res) {
         category: r.category,
         // La categoría grande con la que se agrupan en la web.
         area: r.area,
+        publico: r.publico,
         level: r.level,
         durationMinutes: r.duration_minutes,
         authorName: r.author_name,

@@ -38,7 +38,7 @@ export async function createTestDb() {
   return { pglite, db: fromPglite(pglite) };
 }
 
-export async function startTestApp({ now, adminEmailHashes = [] } = {}) {
+export async function startTestApp({ now, adminEmailHashes = [], notifyEmail = null } = {}) {
   const { pglite, db } = await createTestDb();
   const dir = await mkdtemp(path.join(tmpdir(), 'aula-test-'));
   const storage = createDiskStorage(dir);
@@ -52,6 +52,7 @@ export async function startTestApp({ now, adminEmailHashes = [] } = {}) {
     siteUrl: 'https://aula.test',
     secureCookies: false,
     adminEmailHashes,
+    notifyEmail,
     mailer: { send: async (msg) => { mails.push(msg); return true; } },
     now: now || (() => clock.current || new Date()),
   }));

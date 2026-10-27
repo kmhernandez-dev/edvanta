@@ -6,11 +6,13 @@ import CourseCarousel from '../components/CourseCarousel';
 import ExternalCourseCard from '../components/ExternalCourseCard';
 import { apiUrl } from '../config/api';
 import { updatePageSeo } from '../utils/seo';
-import { BookOpenCheck } from 'lucide-react';
+import { BookOpenCheck, CalendarClock } from 'lucide-react';
+import { escuelaDelArea } from '../data/edvanta/escuelas';
+import { PRODUCTO_DESTACADO, productoPorSlug } from '../data/edvanta/productos';
 
-// Las tres categorías con las que se agrupan los cursos propios, en el
-// orden en que se muestran.
-const CATEGORIAS = ['Calidad', 'Asuntos Regulatorios', 'Farmacología'];
+// Las áreas con las que se agrupan los cursos propios, en el orden en
+// que se muestran. Cada una se titula con el nombre de su escuela.
+const CATEGORIAS = ['Farmacología', 'Calidad', 'Asuntos Regulatorios'];
 
 const PROVIDER_LABELS = {
   edutin: 'Edutin',
@@ -79,7 +81,8 @@ export default function CursosCatalog({ defaultProvider = '' }) {
   useEffect(() => {
     if (defaultProvider) return undefined;
     let vivo = true;
-    fetch(apiUrl('/api/cursos-edvanta?limit=60'))
+    // Solo los profesionales: el curso para pacientes vive en /pacientes.
+    fetch(apiUrl('/api/cursos-edvanta?limit=60&publico=profesionales'))
       .then((r) => (r.ok ? r.json() : null))
       .then((j) => {
         if (!vivo || !j?.data?.length) return;
@@ -96,6 +99,8 @@ export default function CursosCatalog({ defaultProvider = '' }) {
       .catch(() => {});
     return () => { vivo = false; };
   }, [defaultProvider]);
+
+  const enVivo = productoPorSlug(PRODUCTO_DESTACADO);
 
   const pageTitle = defaultProvider
     ? `Cursos de ${PROVIDER_LABELS[defaultProvider] || defaultProvider} | Edvanta`
@@ -207,21 +212,35 @@ export default function CursosCatalog({ defaultProvider = '' }) {
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl">
               <p className="mb-2 text-xs font-bold uppercase text-teal-700">
-                {defaultProvider ? PROVIDER_LABELS[defaultProvider] : 'Catálogo multi-plataforma'}
+                {defaultProvider ? PROVIDER_LABELS[defaultProvider] : 'Catálogo de cursos'}
               </p>
               <h1 className="text-3xl font-bold text-edvanta-deep md:text-5xl">
                 {defaultProvider
                   ? `Cursos de ${PROVIDER_LABELS[defaultProvider]}`
-                  : 'Cursos profesionales recomendados'}
+                  : 'Cursos de Edvanta y recomendados'}
               </h1>
               <p className="mt-4 text-base leading-relaxed text-slate-600 md:text-lg">
                 {defaultProvider
                   ? `Explora nuestra selección de cursos de ${PROVIDER_LABELS[defaultProvider]} en farmacia, calidad, datos, IA, gestión de proyectos y más.`
-                  : 'Cursos profesionales organizados por categoría y área de la industria farmacéutica, sin importar quién los dicte.'}
+                  : 'Primero, los cursos de Edvanta, ordenados por escuela. Después, cursos de otras plataformas que recomendamos, señalados como tales.'}
               </p>
             </div>
           </div>
         </section>
+
+        {/* El curso en vivo va antes que todo: es lo que abre primero. */}
+        {!defaultProvider && enVivo && (
+          <section className="border-b border-slate-200 bg-white">
+            <div className="mx-auto flex max-w-7xl flex-col gap-4 px-4 py-6 sm:px-6 md:flex-row md:items-center md:justify-between lg:px-8">
+              <div>
+                <p className="text-xs font-bold uppercase tracking-[.14em] text-amber-700">Curso en vivo · Próxima apertura</p>
+                <p className="mt-1 text-lg font-bold text-edvanta-deep">{enVivo.nombre}</p>
+                <p className="mt-1 flex items-center gap-1.5 text-sm text-slate-600"><CalendarClock className="h-4 w-4" aria-hidden="true" />Para auxiliares y regentes · fecha y valor por confirmar</p>
+              </div>
+              <Link to={enVivo.to} className="inline-flex min-h-11 shrink-0 items-center justify-center rounded-xl bg-edvanta-blue px-5 text-sm font-semibold text-white hover:bg-edvanta-bluedark">Ver el curso</Link>
+            </div>
+          </section>
+        )}
 
         {/* Un carrusel por categoría. Con más de cuarenta cursos propios,
             una sola fila larguísima no deja orientarse: lo que la persona
@@ -236,7 +255,7 @@ export default function CursosCatalog({ defaultProvider = '' }) {
               return (
                 <CourseCarousel
                   key={area}
-                  title={area}
+                  title={escuelaDelArea(area)?.nombre || area}
                   courses={deLaCategoria}
                   sectionKey={`catalogo_${area.toLowerCase().replace(/\s+/g, '_')}`}
                 />
@@ -249,6 +268,19 @@ export default function CursosCatalog({ defaultProvider = '' }) {
                 sectionKey="catalogo_otros"
               />
             )}
+          </section>
+        )}
+
+        {!defaultProvider && (
+          <section id="otras-plataformas" className="scroll-mt-32 bg-white">
+            <div className="mx-auto max-w-7xl px-4 pt-12 sm:px-6 lg:px-8">
+              <p className="text-xs font-bold uppercase tracking-[.14em] text-slate-500">No son de Edvanta</p>
+              <h2 className="mt-1 text-2xl font-bold text-edvanta-deep md:text-3xl">Cursos recomendados de otras plataformas</h2>
+              <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-600">
+                Coursera, Udemy y Edutin. El acceso, el precio y el certificado dependen de cada plataforma. Algunos enlaces son de afiliado:
+                Edvanta puede recibir una comisión sin costo adicional para ti.
+              </p>
+            </div>
           </section>
         )}
 

@@ -2,8 +2,9 @@
  * ============================================================
  *  SiteFooter.jsx — Pie de página único de edvanta.co
  *
- *  Organizado por proceso (fórmate, trabaja, empresas, ecosistema)
- *  para que desde cualquier página se llegue a la landing correcta.
+ *  Organizado como el sitio: escuelas, aprender, pacientes,
+ *  instituciones, carrera y Edvanta. Las columnas salen de
+ *  config/navEdvanta.js, igual que el encabezado.
  * ============================================================
  */
 
@@ -22,7 +23,7 @@ export default function SiteFooter() {
   return (
     <footer id="contacto" className="border-t border-edvanta-border bg-edvanta-bg">
       <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
-        <div className="grid gap-10 lg:grid-cols-[minmax(0,1.3fr)_repeat(4,minmax(0,1fr))]">
+        <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,3fr)]">
           {/* Marca */}
           <div>
             <img
@@ -34,8 +35,8 @@ export default function SiteFooter() {
               loading="lazy"
             />
             <p className="mt-4 max-w-sm text-sm leading-6 text-edvanta-muted">
-              Plataforma profesional farmacéutica: formación con aula virtual, empleo, talento y
-              herramientas para tu carrera y para los equipos de las empresas del sector.
+              Edvanta es educación farmacéutica: cuatro escuelas con cursos, guías y servicios para
+              profesionales de la salud, pacientes y cuidadores, e instituciones.
             </p>
             <div className="mt-5 flex flex-wrap gap-2">
               <a
@@ -79,7 +80,7 @@ export default function SiteFooter() {
             </Link>
           </div>
 
-          {/* Columnas por proceso */}
+          <div className="grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-3">
           {FOOTER_COLUMNS.map((col) => (
             <nav key={col.title} aria-label={col.title}>
               <p className="text-[11px] font-bold uppercase tracking-[.14em] text-edvanta-muted">{col.title}</p>
@@ -94,6 +95,7 @@ export default function SiteFooter() {
               </ul>
             </nav>
           ))}
+          </div>
         </div>
 
         <div className="mt-12 space-y-4 border-t border-edvanta-border pt-6">

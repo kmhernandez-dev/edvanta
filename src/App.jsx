@@ -1,4 +1,4 @@
-import { lazy, Suspense } from 'react';
+import { lazy, Suspense, useEffect } from 'react';
 import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 
 const BibliotecaHome = lazy(() => import('./pages/BibliotecaHome'));
@@ -22,7 +22,6 @@ const ArticuloPage = lazy(() => import('./pages/ArticuloPage'));
 const ArticulosIndex = lazy(() => import('./pages/ArticulosIndex'));
 const RutaProfesionalPage = lazy(() => import('./pages/RutaProfesionalPage'));
 const LearningPathsIndex = lazy(() => import('./pages/LearningPathsIndex'));
-const LearningHub = lazy(() => import('./pages/LearningHub'));
 const CompetenciesIndex = lazy(() => import('./pages/CompetenciesIndex'));
 const CompetencyPage = lazy(() => import('./pages/CompetencyPage'));
 const VolviendoDeAcceso = lazy(() => import('./pages/VolviendoDeAcceso'));
@@ -47,8 +46,6 @@ const Vida360Portal = lazy(() => import('./pages/Vida360Portal'));
 const FstAppPortal = lazy(() => import('./pages/FstAppPortal'));
 const AdminPage = lazy(() => import('./pages/AdminPage'));
 const ProfessionalAccount = lazy(() => import('./pages/ProfessionalAccount'));
-const ProfessionalOnboarding = lazy(() => import('./pages/ProfessionalOnboarding'));
-const ProfessionalDashboard = lazy(() => import('./pages/ProfessionalDashboard'));
 const ProfessionalProfilePage = lazy(() => import('./pages/ProfessionalProfilePage'));
 const EcosystemDirectory = lazy(() => import('./pages/EcosystemDirectory'));
 const ConnectHub = lazy(() => import('./pages/ConnectHub'));
@@ -61,8 +58,6 @@ const NoticiasPage = lazy(() => import('./pages/NoticiasPage'));
 const LinkedinPage = lazy(() => import('./pages/LinkedinPage'));
 const EmprendimientosPage = lazy(() => import('./pages/EmprendimientosPage'));
 const HerramientasPage = lazy(() => import('./pages/HerramientasPage'));
-const EmpresasHome = lazy(() => import('./pages/empresas/EmpresasHome'));
-const EmpresasCapacitacion = lazy(() => import('./pages/empresas/EmpresasCapacitacion'));
 const EmpresasTalento = lazy(() => import('./pages/empresas/EmpresasTalento'));
 const TalentoVitrina = lazy(() => import('./pages/TalentoVitrina'));
 const HojaDeVida = lazy(() => import('./pages/HojaDeVida'));
@@ -70,6 +65,17 @@ const CorreosRRHH = lazy(() => import('./pages/empleo/CorreosRRHH'));
 const BuscarPage = lazy(() => import('./pages/BuscarPage'));
 const ComunidadPage = lazy(() => import('./pages/ComunidadPage'));
 const HerramientaLandingPage = lazy(() => import('./pages/HerramientaLandingPage'));
+
+// Arquitectura de escuelas: una página por puerta de entrada.
+const Escuelas = lazy(() => import('./pages/edvanta/Escuelas'));
+const Escuela = lazy(() => import('./pages/edvanta/Escuela'));
+const CursoEnVivo = lazy(() => import('./pages/edvanta/CursoEnVivo'));
+const Guias = lazy(() => import('./pages/edvanta/Guias'));
+const Pacientes = lazy(() => import('./pages/edvanta/Pacientes'));
+const PacientesTiroides = lazy(() => import('./pages/edvanta/PacientesTiroides'));
+const Instituciones = lazy(() => import('./pages/edvanta/Instituciones'));
+const SobreEdvanta = lazy(() => import('./pages/edvanta/SobreEdvanta'));
+const Contacto = lazy(() => import('./pages/edvanta/Contacto'));
 
 function RouteFallback() {
   return (
@@ -113,6 +119,28 @@ const OTRAS_MARCAS = [
   '/vida-360', '/vida-360-pro', '/atenfarmaclinic', '/mi-espacio', '/aula',
 ];
 
+/**
+ * Un enlace a /instituciones#solicitar-propuesta debe llegar a esa
+ * sección aunque la página se cargue en diferido. Se espera a que el
+ * elemento exista. Los hash con «=» son de acceso (Google, enlaces del
+ * aula) y no se tocan.
+ */
+function IrAlAncla() {
+  const { pathname, hash } = useLocation();
+  useEffect(() => {
+    if (!hash || hash.includes('=')) return undefined;
+    const id = decodeURIComponent(hash.slice(1));
+    let intentos = 0;
+    const t = setInterval(() => {
+      const el = document.getElementById(id);
+      if (el) { el.scrollIntoView({ block: 'start' }); clearInterval(t); }
+      else if (++intentos > 40) clearInterval(t);
+    }, 50);
+    return () => clearInterval(t);
+  }, [pathname, hash]);
+  return null;
+}
+
 function EdvantaTheme({ children }) {
   const { pathname } = useLocation();
   const esOtraMarca = OTRAS_MARCAS.some((p) => pathname === p || pathname.startsWith(`${p}/`));
@@ -125,9 +153,20 @@ export default function App() {
       <ProfessionalProvider>
       <Suspense fallback={<RouteFallback />}>
       <EdvantaTheme>
+      <IrAlAncla />
       <Routes>
         {/* Marca principal: Edvanta */}
         <Route path="/" element={<BibliotecaHome />} />
+
+        {/* Escuelas, públicos y páginas de la empresa */}
+        <Route path="/escuelas" element={<Escuelas />} />
+        <Route path="/escuelas/:slug" element={<Escuela />} />
+        <Route path="/guias" element={<Guias />} />
+        <Route path="/pacientes" element={<Pacientes />} />
+        <Route path="/pacientes/tiroides" element={<PacientesTiroides />} />
+        <Route path="/instituciones" element={<Instituciones />} />
+        <Route path="/sobre-edvanta" element={<SobreEdvanta />} />
+        <Route path="/contacto" element={<Contacto />} />
 
         {/* Buscador global del ecosistema Edvanta */}
         <Route path="/buscar" element={<BuscarPage />} />
@@ -220,12 +259,14 @@ export default function App() {
         {/* Una sola ficha pública por curso propio: se ve antes de entrar. */}
         {/* Una sola plantilla para los 224 cursos: propios por id, curados por slug. */}
         <Route path="/curso/:id" element={<FichaDeCurso modo="propio" />} />
+        <Route path="/cursos/en-vivo/:slug" element={<CursoEnVivo />} />
         <Route path="/cursos" element={<CursosCatalog />} />
         <Route path="/cursos/coursera" element={<CursosCatalog defaultProvider="coursera" />} />
         <Route path="/cursos/udemy" element={<CursosCatalog defaultProvider="udemy" />} />
         <Route path="/cursos/edutin" element={<CursosCatalog defaultProvider="edutin" />} />
         <Route path="/cursos/:slug" element={<FichaDeCurso modo="curado" />} />
-        <Route path="/aprende" element={<LearningHub />} />
+        {/* El centro de aprendizaje duplicaba a /escuelas: se fusiona ahí. */}
+        <Route path="/aprende" element={<Navigate to="/escuelas" replace />} />
         <Route path="/competencias" element={<CompetenciesIndex />} />
         <Route path="/competencias/:slug" element={<CompetencyPage />} />
         <Route path="/rutas" element={<LearningPathsIndex />} />
@@ -243,8 +284,10 @@ export default function App() {
         <Route path="/emprendimientos" element={<Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-edvanta-bg text-sm font-semibold text-slate-600">Cargando emprendimientos...</div>}><EmprendimientosPage /></Suspense>} />
         <Route path="/herramientas" element={<Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-edvanta-bg text-sm font-semibold text-slate-600">Cargando herramientas...</div>}><HerramientasPage /></Suspense>} />
         <Route path="/herramientas/:slug" element={<HerramientaLandingPage />} />
-        <Route path="/empresas" element={<EmpresasHome />} />
-        <Route path="/empresas/capacitacion" element={<EmpresasCapacitacion />} />
+        {/* /empresas y /empresas/capacitacion se fusionaron en /instituciones.
+            nginx responde 301; esto cubre la navegación dentro del sitio. */}
+        <Route path="/empresas" element={<Navigate to="/instituciones" replace />} />
+        <Route path="/empresas/capacitacion" element={<Navigate to="/instituciones#equipo-que-cuida" replace />} />
         <Route path="/empresas/talento" element={<EmpresasTalento />} />
 
         {/* Vitrina de talento (lado del profesional) */}

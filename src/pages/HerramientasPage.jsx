@@ -213,7 +213,7 @@ export default function HerramientasPage() {
           desc="Capacitación en un aula virtual propia, con tus videos y tus diapositivas, y directorio de talento farmacéutico."
           actions={(
             <>
-              <Btn to="/empresas/capacitacion" variant="white" icon={Building2}>Ver capacitación empresarial</Btn>
+              <Btn to="/instituciones" variant="white" icon={Building2}>Ver servicios para instituciones</Btn>
               <Btn to="/empresas/talento" variant="outlineWhite">Buscar talento</Btn>
             </>
           )}

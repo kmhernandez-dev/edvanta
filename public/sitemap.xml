@@ -1,16 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <!-- Página principal -->
-  <url><loc>https://edvanta.co/</loc><lastmod>2026-07-15</lastmod><priority>1.0</priority></url>
+  <url><loc>https://edvanta.co/</loc><lastmod>2026-10-26</lastmod><priority>1.0</priority></url>
+
+  <!-- Arquitectura de Edvanta: escuelas, públicos y empresa -->
+  <url><loc>https://edvanta.co/escuelas</loc><lastmod>2026-10-26</lastmod><priority>0.9</priority></url>
+  <url><loc>https://edvanta.co/escuelas/salud</loc><lastmod>2026-10-26</lastmod><priority>0.9</priority></url>
+  <url><loc>https://edvanta.co/escuelas/calidad</loc><lastmod>2026-10-26</lastmod><priority>0.9</priority></url>
+  <url><loc>https://edvanta.co/escuelas/regulatorios</loc><lastmod>2026-10-26</lastmod><priority>0.9</priority></url>
+  <url><loc>https://edvanta.co/escuelas/marketing</loc><lastmod>2026-10-26</lastmod><priority>0.7</priority></url>
+  <url><loc>https://edvanta.co/cursos/en-vivo/operacion-segura-servicio-farmaceutico</loc><lastmod>2026-10-26</lastmod><priority>0.9</priority></url>
+  <url><loc>https://edvanta.co/guias</loc><lastmod>2026-10-26</lastmod><priority>0.8</priority></url>
+  <url><loc>https://edvanta.co/pacientes</loc><lastmod>2026-10-26</lastmod><priority>0.9</priority></url>
+  <url><loc>https://edvanta.co/pacientes/tiroides</loc><lastmod>2026-10-26</lastmod><priority>0.9</priority></url>
+  <url><loc>https://edvanta.co/instituciones</loc><lastmod>2026-10-26</lastmod><priority>0.9</priority></url>
+  <url><loc>https://edvanta.co/sobre-edvanta</loc><lastmod>2026-10-26</lastmod><priority>0.6</priority></url>
+  <url><loc>https://edvanta.co/contacto</loc><lastmod>2026-10-26</lastmod><priority>0.6</priority></url>
 
   <!-- Marcas -->
   <url><loc>https://edvanta.co/feliz-sin-tiroides</loc><lastmod>2026-08-03</lastmod><priority>0.9</priority></url>
-  <url><loc>https://edvanta.co/feliz-sin-tiroides/guias</loc><lastmod>2026-08-24</lastmod><priority>0.9</priority></url>
-  <url><loc>https://edvanta.co/feliz-sin-tiroides/herramientas</loc><lastmod>2026-08-24</lastmod><priority>0.8</priority></url>
-  <url><loc>https://edvanta.co/feliz-sin-tiroides/academy</loc><lastmod>2026-08-24</lastmod><priority>0.8</priority></url>
-  <url><loc>https://edvanta.co/feliz-sin-tiroides/atencion-farmaceutica</loc><lastmod>2026-08-24</lastmod><priority>0.9</priority></url>
-  <url><loc>https://edvanta.co/feliz-sin-tiroides/sobre-mi</loc><lastmod>2026-08-24</lastmod><priority>0.7</priority></url>
-  <url><loc>https://edvanta.co/feliz-sin-tiroides/comunidad</loc><lastmod>2026-08-24</lastmod><priority>0.8</priority></url>
   <url><loc>https://edvanta.co/atenfarmaclinic</loc><lastmod>2026-07-15</lastmod><priority>0.7</priority></url>
 
   <!-- Academia Feliz Sin Tiroides -->
@@ -86,7 +94,6 @@
   <url><loc>https://edvanta.co/articulos/alimentos-suplementos-levotiroxina</loc><lastmod>2026-07-15</lastmod><priority>0.7</priority></url>
 
   <!-- Cursos -->
-  <url><loc>https://edvanta.co/aprende</loc><lastmod>2026-08-15</lastmod><priority>0.9</priority></url>
   <url><loc>https://edvanta.co/competencias</loc><lastmod>2026-08-15</lastmod><priority>0.8</priority></url>
   <url><loc>https://edvanta.co/cursos</loc><lastmod>2026-08-15</lastmod><priority>0.9</priority></url>
   <url><loc>https://edvanta.co/cursos/gestion-de-calidad</loc><lastmod>2026-07-15</lastmod><priority>0.9</priority></url>
@@ -136,7 +143,6 @@
   <url><loc>https://edvanta.co/oportunidades</loc><lastmod>2026-08-15</lastmod><priority>0.8</priority></url>
   <url><loc>https://edvanta.co/conecta</loc><lastmod>2026-08-15</lastmod><priority>0.8</priority></url>
   <url><loc>https://edvanta.co/proyectos</loc><lastmod>2026-08-15</lastmod><priority>0.7</priority></url>
-  <url><loc>https://edvanta.co/empresas</loc><lastmod>2026-08-15</lastmod><priority>0.7</priority></url>
 
   <!-- Páginas legales -->
   <url><loc>https://edvanta.co/privacidad</loc><lastmod>2026-07-15</lastmod><priority>0.3</priority></url>

@@ -325,6 +325,8 @@ app.use('/api/aula', createAulaRouter({
   siteUrl: process.env.SITE_URL || 'https://edvanta.co',
   secureCookies: IS_PROD,
   adminEmailHashes: aulaAdminHashes,
+  // A dónde llega el aviso de cada solicitud de la web (opcional).
+  notifyEmail: process.env.NOTIFY_EMAIL || null,
   mailer: {
     send: ({ to, subject, html }) => sendEmail({ to, subject, html, from: fromWithName('Aula Edvanta') || undefined }),
   },

@@ -44,6 +44,7 @@ export const AUDIT_ACTIONS = {
   'reporte.exportar': 'Reporte exportado',
   'demo.eliminar': 'Datos demostrativos eliminados',
   'demo.crear': 'Datos demostrativos creados',
+  'solicitud.atender': 'Solicitud atendida',
 };
 
 export async function audit(db, {

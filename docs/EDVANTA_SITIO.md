@@ -71,34 +71,81 @@ Siguen punteados, a la espera de su foto: la comparación «antes y
 después» de la hoja de vida, la captura del aula virtual y las fotos de
 la portada de Empresas y de Herramientas.
 
-## 3. Mapa de landing por proceso
+## 3. Arquitectura: escuelas, públicos y empresa
 
-Cada proceso tiene su página; ninguna mezcla varios.
+Edvanta es **una sola empresa**. Las escuelas ordenan lo que enseña; los
+públicos (profesionales, pacientes, instituciones) son puertas de entrada.
+Nada de esto son marcas aparte.
 
-### Personal
+### Dónde viven los datos
 
-| Proceso | Ruta | Qué resuelve |
+Todo sale de `src/data/edvanta/` y las páginas solo lo pintan:
+
+| Archivo | Qué declara |
+| --- | --- |
+| `escuelas.js` | Las cuatro escuelas, sus áreas con estado real y qué cursos del aula les pertenecen |
+| `programas.js` | AtenFarmaClinic, Feliz Sin Tiroides, Edvanta Contigo y sus rutas por condición |
+| `productos.js` | Ficha única de cada producto propio (curso en vivo, guías) y los kits leídos de `data/products.js` |
+| `servicios.js` | Ofertas y paquetes para instituciones, con necesidad, público, entregables, modalidad y alcance |
+| `estados.js` | El vocabulario de estado: disponible, próxima apertura, bajo propuesta, en desarrollo |
+
+Los cursos virtuales propios **no** se copian aquí: salen de la base de
+datos (`/api/cursos-edvanta?publico=profesionales|pacientes&area=…`).
+`aula_courses.publico` (migración 050) evita que el curso para pacientes
+aparezca entre los profesionales.
+
+### Mapa de rutas
+
+| Ruta | Página | Para quién |
 | --- | --- | --- |
-| Formarme | `/cursos`, `/cursos-gratis`, `/rutas`, `/competencias`, `/aprende` | Catálogo, rutas por cargo y competencias |
-| Conseguir empleo | `/empleo` | Mapa del proceso (no lleva herramientas dentro) |
-| Hoja de vida | `/hoja-de-vida` | Creador ATS + IA (antes `/empleo#creador`) |
-| Escribir a RR. HH. | `/empleo/correos` | Cinco plantillas que se completan con tus datos |
-| Buscar vacantes | `/empleo/ofertas-qf` | Ofertas verificadas |
-| Que me contacten | `/talento` | Vitrina: perfil básico gratis y destacado de pago |
-| Herramientas | `/herramientas` y `/herramientas/:slug` | Una página por herramienta |
-| Comunidad | `/comunidad` | Comunidad de químicos farmacéuticos |
+| `/` | Inicio: qué es Edvanta, tres puertas, curso en vivo, escuelas, guías, instituciones, Karla, contacto | Todos |
+| `/escuelas` y `/escuelas/:slug` (`salud`, `calidad`, `regulatorios`, `marketing`) | Una plantilla para las cuatro escuelas | Profesionales |
+| `/cursos` | Cursos de Edvanta por escuela + recomendados de otras plataformas, separados | Profesionales |
+| `/cursos/en-vivo/:slug` | Ficha del curso en vivo con registro de interés | Profesionales |
+| `/curso/:id`, `/cursos/:slug` | Ficha de curso virtual propio o curado (sin cambios) | Profesionales |
+| `/guias` | Kits, guías para pacientes, lecturas y herramientas de carrera | Todos, separados |
+| `/pacientes` | Edvanta Contigo: rutas por condición y formatos | Pacientes y cuidadores |
+| `/pacientes/tiroides` | Ruta de salud tiroidea, puerta a Feliz Sin Tiroides | Pacientes y cuidadores |
+| `/instituciones` | Ofertas, cuatro paquetes y solicitud de propuesta | Instituciones |
+| `/sobre-edvanta`, `/contacto` | La empresa y sus canales | Todos |
+| `/aula` | Aula virtual (incluye `/aula/admin/solicitudes`) | Participantes y administración |
 
-### Empresas
+Siguen funcionando, fuera del menú principal (en «Guías y recursos» y en
+el pie): `/hoja-de-vida`, `/empleo`, `/talento`, `/carreras`, `/rutas`,
+`/competencias`, `/oportunidades`, `/proyectos`, `/certificaciones`,
+`/conecta`, `/emprendimientos`, `/herramientas`, `/comunidad`,
+`/empresas/talento`.
 
-| Proceso | Ruta | Qué resuelve |
+### Redirecciones
+
+| Antes | Ahora | Dónde |
 | --- | --- | --- |
-| Portada empresarial | `/empresas` | Propuesta completa y reparto a los procesos |
-| Capacitar al equipo | `/empresas/capacitacion` | Aula propia + el mismo catálogo de la parte personal |
-| Contratar | `/empresas/talento` | Directorio de talento y publicación de vacantes |
-| Entrar al aula | `/aula` | Aula virtual empresarial |
+| `/empresas` | `/instituciones` | 301 en `nginx.conf` + `Navigate` en `App.jsx` |
+| `/empresas/capacitacion` | `/instituciones#equipo-que-cuida` | Igual |
+| `/aprende` | `/escuelas` | Igual |
+| `/cursos-gratis/:id` | Ficha del curso | `CursoGratisRedirige.jsx` (sin cambios) |
 
-El inicio (`/`) reparte hacia estos caminos con la sección
-«¿Qué necesitas hoy?» (`ProcesosSection`).
+### Formularios
+
+`src/components/formularios/FormularioSolicitud.jsx` sirve para registrar
+interés, pedir una propuesta o escribir a Edvanta. Envía a
+`POST /api/aula/solicitudes` (migración 051), que guarda la fila y, si
+`NOTIFY_EMAIL` está configurado, avisa por correo. Solo dice «recibido»
+cuando el servidor respondió 201; si falla, ofrece WhatsApp. Se atienden
+en `/aula/admin/solicitudes`.
+
+### Lo que falta y qué lo desbloquea
+
+| Pendiente | Qué hace falta |
+| --- | --- |
+| Fecha, valor y cupos del curso en vivo | Decisión comercial → `fechaInicio`, `precio`, `cupos` en `productos.js` |
+| Inscripción y pago del curso en vivo | Decidir el canal de cobro (Mercado Pago ya integrado o enlace externo) |
+| Aviso por correo de cada solicitud | Variable `NOTIFY_EMAIL` en el servicio de la API (Coolify) |
+| Entrega automática de los kits pagados | Enlaces reales en `DOWNLOADS` de `api/routes/create-preference.js` (hoy `PEGA_AQUI_EL_LINK`; la entrega es manual por WhatsApp) |
+| Versión y fecha de revisión de la guía de levotiroxina | Los datos del PDF → `version` y `fechaRevision` en `productos.js` |
+| Escuela de Marketing | Primer curso o recurso publicado |
+| Rutas Contigo distintas de tiroides | Contenido de cada ruta; hoy solo registran interés |
+| Subpáginas `/feliz-sin-tiroides/*` | No tienen ruta y dan 404 desde el pie de Feliz Sin Tiroides; decisión de esa marca (no se tocó) |
 
 ## 4. Precios
 

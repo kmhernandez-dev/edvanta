@@ -2,139 +2,132 @@
  * ============================================================
  *  navEdvanta.js — Mapa de navegación de edvanta.co
  *
- *  Una sola fuente para el encabezado, el pie de página y los
- *  hubs. Cada proceso (aprender, buscar empleo, mostrarse ante
- *  las empresas, capacitar a un equipo, contratar) tiene su
- *  propia landing; aquí se declara cómo se llega a cada una.
+ *  Una sola fuente para el encabezado y el pie de página. El sitio se
+ *  ordena por lo que la persona viene a buscar:
  *
- *  `/academia` y `/academia/retos` son de Feliz Sin Tiroides:
- *  por eso no aparecen en esta navegación.
+ *    Escuelas · Cursos · Guías y recursos · Para pacientes ·
+ *    Para instituciones
+ *
+ *  y arriba, más discretos: Sobre Edvanta, Contacto y el Aula.
+ *
+ *  Las herramientas de carrera (hoja de vida, empleo, vitrina de
+ *  talento) siguen funcionando, pero ya no ocupan dos menús enteros:
+ *  viven dentro de «Guías y recursos» y en el pie. Edvanta es educación,
+ *  recursos y servicios; el empleo es un complemento.
+ *
+ *  `/academia` y `/academia/retos` son de Feliz Sin Tiroides y tienen
+ *  su propio encabezado.
  * ============================================================
  */
 
 import {
-  Award, BookOpen, Briefcase, Building2, ClipboardList, Compass, FileText, Gift,
-  GraduationCap, Handshake, Lightbulb, MonitorPlay, Newspaper, Route, Search,
-  Sparkles, Target, Users, Wrench,
+  BookOpen, Briefcase, Compass, FileCheck2, FileText, GraduationCap,
+  HeartPulse, Library, Megaphone, Newspaper, Route, ShieldCheck, Sparkles,
 } from 'lucide-react';
+import { ESCUELAS } from '../data/edvanta/escuelas';
 
-/* ── Menú «Formación» (personal) ──────────────────────────── */
-export const FORMACION_GROUPS = [
+const ICONOS_ESCUELA = { HeartPulse, ShieldCheck, FileCheck2, Megaphone };
+
+/* ── Menú «Escuelas» ──────────────────────────────────────── */
+export const ESCUELAS_GROUPS = [
   {
-    title: 'Aprende',
-    items: [
-      { label: 'Cursos', desc: 'Catálogo con certificado', to: '/cursos', icon: GraduationCap },
-      { label: 'Cursos gratis', desc: 'Opciones recomendadas sin costo', to: '/cursos', icon: Gift },
-      { label: 'Rutas profesionales', desc: 'Cursos en orden hacia un cargo', to: '/rutas', icon: Route },
-      { label: 'Competencias', desc: 'Qué dominar en cada área', to: '/competencias', icon: Target },
-      { label: 'Centro de aprendizaje', desc: 'Elige tu área y empieza', to: '/aprende', icon: Compass },
-    ],
+    title: 'Las cuatro escuelas',
+    items: ESCUELAS.map((e) => ({
+      label: e.corto,
+      desc: e.menu,
+      to: `/escuelas/${e.slug}`,
+      icon: ICONOS_ESCUELA[e.icono] || GraduationCap,
+    })),
   },
+];
+
+/* ── Menú «Guías y recursos» ──────────────────────────────── */
+export const RECURSOS_GROUPS = [
   {
-    title: 'Consulta',
+    title: 'Para estudiar y trabajar',
     items: [
-      { label: 'Guías y recursos', desc: 'Material práctico para tu trabajo', to: '/recursos', icon: FileText },
+      { label: 'Guías y kits', desc: 'Guías, e-books y plantillas de Edvanta', to: '/guias', icon: BookOpen },
       { label: 'Artículos', desc: 'Lecturas del sector farmacéutico', to: '/articulos', icon: Newspaper },
-      { label: 'Certificaciones', desc: 'Evalúa antes de invertir', to: '/certificaciones', icon: Award },
-      { label: 'Ebooks', desc: 'En preparación', icon: BookOpen, soon: true },
-    ],
-  },
-];
-
-/* ── Menú «Carrera y empleo» (personal) ───────────────────── */
-export const EMPLEO_GROUPS = [
-  {
-    title: 'Consigue empleo',
-    items: [
-      { label: 'Centro de empleo', desc: 'Todo el proceso, paso a paso', to: '/empleo', icon: Briefcase },
-      { label: 'Hoja de vida ATS + IA', desc: 'Créala, mide su puntaje y descárgala', to: '/hoja-de-vida', icon: FileText },
-      { label: 'Ofertas para QF', desc: 'Vacantes verificadas en Colombia', to: '/empleo/ofertas-qf', icon: Search },
-      { label: 'Correos a RR. HH.', desc: 'Plantillas para postular y hacer seguimiento', to: '/empleo/correos', icon: ClipboardList },
+      { label: 'Biblioteca de referencias', desc: 'Normativa, lecturas y fuentes', to: '/recursos', icon: Library },
+      { label: 'Rutas y competencias', desc: 'Qué aprender, en qué orden', to: '/rutas', icon: Route },
     ],
   },
   {
-    title: 'Proyecta tu carrera',
+    title: 'Para tu carrera',
     items: [
-      { label: 'Vitrina de talento', desc: 'Que los cazatalentos te encuentren', to: '/talento', icon: Sparkles },
+      { label: 'Hoja de vida ATS', desc: 'Créala, mide su puntaje y descárgala', to: '/hoja-de-vida', icon: FileText },
+      { label: 'Centro de empleo', desc: 'Ofertas y postulación paso a paso', to: '/empleo', icon: Briefcase },
+      { label: 'Vitrina de talento', desc: 'Que las empresas te encuentren', to: '/talento', icon: Sparkles },
       { label: 'Carreras farmacéuticas', desc: 'Áreas, cargos y formación', to: '/carreras', icon: Compass },
-      { label: 'Prácticas', desc: 'Cómo conseguirlas y qué esperar', to: '/practicas', icon: GraduationCap },
-      { label: 'LinkedIn profesional', desc: 'Perfil y contenido que te posiciona', to: '/linkedin', icon: Users },
-      { label: 'Orientación vocacional', desc: 'Descubre tu área', to: '/vocacion', icon: Target },
     ],
   },
 ];
 
-/* ── Menú «Herramientas» (personal) ───────────────────────── */
-export const HERRAMIENTAS_GROUPS = [
-  {
-    title: 'Para tu trabajo',
-    items: [
-      { label: 'Centro de herramientas', desc: 'Todas las herramientas Edvanta', to: '/herramientas', icon: Wrench },
-      { label: 'Aula virtual', desc: 'Entra a tus capacitaciones', to: '/aula', icon: MonitorPlay },
-      { label: 'Buscador del ecosistema', desc: 'Encuentra cualquier contenido', to: '/buscar', icon: Search },
-    ],
-  },
-  {
-    title: 'Emprende y conecta',
-    items: [
-      { label: 'Emprendimientos', desc: 'Crea tu proyecto farmacéutico', to: '/emprendimientos', icon: Lightbulb },
-      { label: 'Oportunidades', desc: 'Convocatorias y becas', to: '/oportunidades', icon: Handshake },
-      { label: 'Proyectos', desc: 'Súmate o publica el tuyo', to: '/proyectos', icon: Users },
-      { label: 'Espacios de conexión', desc: 'Dónde encontrar colegas', to: '/conecta', icon: Compass },
-    ],
-  },
+/* ── Enlaces directos de la barra principal ───────────────── */
+export const MAIN_LINKS = [
+  { label: 'Cursos', to: '/cursos' },
+  { label: 'Para pacientes', to: '/pacientes' },
+  { label: 'Para instituciones', to: '/instituciones' },
 ];
 
-/* ── Navegación de empresas ───────────────────────────────── */
-export const EMPRESAS_LINKS = [
-  { label: 'Inicio empresas', to: '/empresas', icon: Building2, desc: 'Qué hace Edvanta por tu equipo' },
-  { label: 'Capacitación', to: '/empresas/capacitacion', icon: GraduationCap, desc: 'Formación y aula virtual para tu equipo' },
-  { label: 'Buscar talento', to: '/empresas/talento', icon: Users, desc: 'Recluta químicos farmacéuticos capacitados' },
-  { label: 'Aula virtual', to: '/aula', icon: MonitorPlay, desc: 'Entra al aula de tu empresa' },
+/* ── Franja superior ──────────────────────────────────────── */
+export const TOP_LINKS = [
+  { label: 'Sobre Edvanta', to: '/sobre-edvanta' },
+  { label: 'Contacto', to: '/contacto' },
 ];
 
 /* ── Pie de página ────────────────────────────────────────── */
 export const FOOTER_COLUMNS = [
   {
-    title: 'Fórmate',
+    title: 'Escuelas',
+    links: [
+      ...ESCUELAS.map((e) => ({ label: e.corto, to: `/escuelas/${e.slug}` })),
+      { label: 'Todas las escuelas', to: '/escuelas' },
+    ],
+  },
+  {
+    title: 'Aprende',
     links: [
       { label: 'Cursos', to: '/cursos' },
-      { label: 'Cursos gratis', to: '/cursos' },
-      { label: 'Rutas profesionales', to: '/rutas' },
-      { label: 'Competencias', to: '/competencias' },
-      { label: 'Guías y recursos', to: '/recursos' },
+      { label: 'Curso en vivo para auxiliares y regentes', to: '/cursos/en-vivo/operacion-segura-servicio-farmaceutico' },
+      { label: 'Guías y kits', to: '/guias' },
       { label: 'Artículos', to: '/articulos' },
+      { label: 'Biblioteca de referencias', to: '/recursos' },
     ],
   },
   {
-    title: 'Trabaja',
+    title: 'Pacientes',
     links: [
-      { label: 'Centro de empleo', to: '/empleo' },
-      { label: 'Hoja de vida ATS + IA', to: '/hoja-de-vida' },
-      { label: 'Ofertas para QF', to: '/empleo/ofertas-qf' },
-      { label: 'Correos a RR. HH.', to: '/empleo/correos' },
-      { label: 'Vitrina de talento', to: '/talento' },
-      { label: 'Prácticas', to: '/practicas' },
+      { label: 'Edvanta Contigo', to: '/pacientes' },
+      { label: 'Salud tiroidea', to: '/pacientes/tiroides' },
+      { label: 'Feliz Sin Tiroides', to: '/feliz-sin-tiroides' },
     ],
   },
   {
-    title: 'Empresas',
+    title: 'Instituciones',
     links: [
-      { label: 'Edvanta para empresas', to: '/empresas' },
-      { label: 'Capacitación de equipos', to: '/empresas/capacitacion' },
-      { label: 'Reclutar talento', to: '/empresas/talento' },
+      { label: 'Para instituciones', to: '/instituciones' },
+      { label: 'Solicitar una propuesta', to: '/instituciones#solicitar-propuesta' },
+      { label: 'Directorio de talento', to: '/empresas/talento' },
       { label: 'Aula virtual', to: '/aula' },
     ],
   },
   {
-    title: 'Ecosistema',
+    title: 'Para tu carrera',
     links: [
-      { label: 'Comunidad', to: '/comunidad' },
-      { label: 'Herramientas', to: '/herramientas' },
-      { label: 'Emprendimientos', to: '/emprendimientos' },
+      { label: 'Hoja de vida ATS', to: '/hoja-de-vida' },
+      { label: 'Centro de empleo', to: '/empleo' },
+      { label: 'Vitrina de talento', to: '/talento' },
       { label: 'Carreras', to: '/carreras' },
-      { label: 'Orientación vocacional', to: '/vocacion' },
-      { label: 'Buscador', to: '/buscar' },
+      { label: 'Comunidad', to: '/comunidad' },
+    ],
+  },
+  {
+    title: 'Edvanta',
+    links: [
+      { label: 'Sobre Edvanta', to: '/sobre-edvanta' },
+      { label: 'Contacto', to: '/contacto' },
+      { label: 'Buscar en Edvanta', to: '/buscar' },
     ],
   },
 ];
@@ -148,5 +141,3 @@ export const FOOTER_LEGAL = [
   { label: 'Aviso de afiliados', to: '/afiliados' },
 ];
 
-/** Rutas que pertenecen al contexto «Empresas» del encabezado. */
-export const esRutaEmpresas = (pathname) => pathname === '/empresas' || pathname.startsWith('/empresas/');

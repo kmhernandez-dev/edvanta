@@ -81,7 +81,7 @@ export default function TalentoVitrina() {
         <LandingHero
           eyebrow="Vitrina de talento"
           title="Publica tus logros y espera a que un cazatalento te contacte"
-          lead="Las empresas del sector farmacéutico buscan aquí a quién contratar. Deja tu perfil listo, con lo que sabes hacer y lo que has logrado."
+          lead="Deja tu perfil listo para que las empresas del sector puedan encontrarte: lo que sabes hacer y lo que has logrado."
           bullets={[
             'Perfil básico gratuito',
             'Te encuentran por tu área y tus habilidades',
