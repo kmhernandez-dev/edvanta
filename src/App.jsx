@@ -154,9 +154,15 @@ function useRevelado(activo, pathname) {
     const raiz = document.querySelector('.edvanta-theme');
     if (!raiz) return undefined;
 
+    // Las que esperan aparecer. Si este efecto se desmonta antes (cambio de
+    // ruta, o el doble montaje de React en desarrollo), se muestran: una
+    // sección nunca puede quedarse oculta sin nadie que la vaya a revelar.
+    const esperando = new Set();
+    const mostrar = (el) => { el.classList.add('is-visible'); esperando.delete(el); };
+
     const io = new IntersectionObserver((entradas) => {
       for (const e of entradas) {
-        if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); }
+        if (e.isIntersecting) { mostrar(e.target); io.unobserve(e.target); }
       }
     }, { rootMargin: '0px 0px -6% 0px' });
 
@@ -169,6 +175,7 @@ function useRevelado(activo, pathname) {
         if (el.parentElement?.closest('[data-ed-reveal]')) continue;
         if (el.getBoundingClientRect().top > window.innerHeight) {
           el.classList.add('ed-reveal');
+          esperando.add(el);
           io.observe(el);
         }
       }
@@ -176,7 +183,12 @@ function useRevelado(activo, pathname) {
     const mo = new MutationObserver(() => { if (!pendiente) pendiente = requestAnimationFrame(preparar); });
     preparar();
     mo.observe(raiz, { childList: true, subtree: true });
-    return () => { mo.disconnect(); io.disconnect(); if (pendiente) cancelAnimationFrame(pendiente); };
+    return () => {
+      mo.disconnect();
+      io.disconnect();
+      if (pendiente) cancelAnimationFrame(pendiente);
+      esperando.forEach(mostrar);
+    };
   }, [activo, pathname]);
 }
 

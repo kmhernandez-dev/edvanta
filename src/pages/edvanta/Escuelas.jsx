@@ -60,6 +60,8 @@ export default function Escuelas() {
               title="Para pacientes y cuidadores"
               desc="Edvanta Contigo: educación en salud en lenguaje claro, empezando por la salud tiroidea."
               cta="Ir a Edvanta Contigo"
+              image="/img/publicos/pacientes.webp"
+              imageAlt="Química farmacéutica explicando la tiroides a pacientes y familiares con una tableta"
             />
             <NavCard
               to="/instituciones"
@@ -67,6 +69,8 @@ export default function Escuelas() {
               title="Para instituciones"
               desc="Formación para equipos, programas para pacientes, licencias y materiales, bajo propuesta."
               cta="Ver qué se puede contratar"
+              image="/img/publicos/instituciones.webp"
+              imageAlt="Presentación de resultados de formación ante el equipo directivo de una institución"
             />
           </div>
         </Section>

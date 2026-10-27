@@ -299,20 +299,25 @@ export function Steps({ items, className = '' }) {
   );
 }
 
-/** Tarjeta de acceso a otra landing: el hilo que conecta los procesos. */
-export function NavCard({ to, href, external = false, icon: Icon, title, desc, cta = 'Entrar', tone = 'blue' }) {
+/**
+ * Tarjeta de acceso a otra landing: el hilo que conecta los procesos.
+ * Con `image` lleva foto arriba y el ícono queda montado sobre su borde.
+ */
+export function NavCard({
+  to, href, external = false, icon: Icon, title, desc, cta = 'Entrar', tone = 'blue', image, imageAlt = '',
+}) {
   const tones = {
     blue: 'bg-edvanta-light text-edvanta-blue',
     teal: 'bg-edvanta-mint text-edvanta-tealdark',
     violet: 'bg-edvanta-lilac text-[#5E51A8]',
   };
-  const inner = (
+  const icono = Icon && (
+    <span className={`inline-flex h-12 w-12 items-center justify-center rounded-xl ${tones[tone] || tones.blue} ${image ? 'relative -mt-6 ring-4 ring-white' : ''}`}>
+      <Icon className="h-6 w-6" strokeWidth={1.8} aria-hidden="true" />
+    </span>
+  );
+  const texto = (
     <>
-      {Icon && (
-        <span className={`inline-flex h-12 w-12 items-center justify-center rounded-xl ${tones[tone] || tones.blue}`}>
-          <Icon className="h-6 w-6" strokeWidth={1.8} aria-hidden="true" />
-        </span>
-      )}
       <p className="mt-4 text-lg font-bold text-edvanta-deep">{title}</p>
       <p className="mt-1.5 flex-1 text-sm leading-6 text-edvanta-muted">{desc}</p>
       <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-bold text-edvanta-blue">
@@ -321,7 +326,32 @@ export function NavCard({ to, href, external = false, icon: Icon, title, desc, c
       </span>
     </>
   );
-  const cls = 'group flex h-full flex-col rounded-2xl border border-edvanta-border bg-white p-6 shadow-[0_1px_2px_rgba(23,34,59,.04)] transition duration-200 hover:-translate-y-0.5 hover:border-edvanta-blue/30 hover:shadow-[0_12px_36px_rgba(23,34,59,.12)]';
+  const inner = image ? (
+    <>
+      <div className="relative aspect-[3/2] overflow-hidden bg-edvanta-bg">
+        <img
+          src={image}
+          alt={imageAlt}
+          width="1000"
+          height="667"
+          loading="lazy"
+          decoding="async"
+          className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.04]"
+        />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-white/60 to-transparent" aria-hidden="true" />
+      </div>
+      <div className="flex flex-1 flex-col px-6 pb-6">
+        {icono}
+        {texto}
+      </div>
+    </>
+  ) : (
+    <>
+      {icono}
+      {texto}
+    </>
+  );
+  const cls = `group flex h-full flex-col overflow-hidden rounded-2xl border border-edvanta-border bg-white shadow-[0_1px_2px_rgba(23,34,59,.04)] transition duration-200 hover:-translate-y-0.5 hover:border-edvanta-blue/30 hover:shadow-[0_12px_36px_rgba(23,34,59,.12)] ${image ? '' : 'p-6'}`;
   if (to) return <Link to={to} className={cls}>{inner}</Link>;
   return <a href={href} className={cls} {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>{inner}</a>;
 }

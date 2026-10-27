@@ -49,6 +49,8 @@ const PUBLICOS = [
     title: 'Profesionales y equipos de salud',
     desc: 'Actualízate con cursos en vivo y virtuales de las cuatro escuelas: farmacia clínica, calidad, regulatorio y comunicación.',
     cta: 'Ver las escuelas',
+    image: '/img/publicos/profesionales.webp',
+    imageAlt: 'Equipo de salud revisando juntos un caso en una tableta',
   },
   {
     to: '/pacientes',
@@ -57,6 +59,8 @@ const PUBLICOS = [
     title: 'Pacientes y cuidadores',
     desc: 'Comprende tu salud con guías y rutas en lenguaje claro. Empieza por la salud tiroidea con Feliz Sin Tiroides.',
     cta: 'Ir a Edvanta Contigo',
+    image: '/img/publicos/pacientes.webp',
+    imageAlt: 'Química farmacéutica explicando la tiroides a pacientes y familiares con una tableta',
   },
   {
     to: '/instituciones',
@@ -65,6 +69,8 @@ const PUBLICOS = [
     title: 'Instituciones',
     desc: 'Formación para equipos, programas educativos para pacientes, licencias y materiales, bajo propuesta.',
     cta: 'Ver qué se puede contratar',
+    image: '/img/publicos/instituciones.webp',
+    imageAlt: 'Presentación de resultados de formación ante el equipo directivo de una institución',
   },
 ];
 
