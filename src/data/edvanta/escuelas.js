@@ -22,6 +22,8 @@ export const ESCUELAS = [
     corto: 'Salud y Farmacia Clínica',
     menu: 'Farmacia clínica, farmacoterapia y pacientes',
     icono: 'HeartPulse',
+    imagen: '/img/escuelas/salud.webp',
+    imagenAlt: 'Químicos farmacéuticos y personal asistencial revisando la farmacoterapia de un paciente en una tableta',
     tono: 'teal',
     resumen:
       'Farmacia clínica y hospitalaria, atención farmacéutica y farmacoterapia para quienes cuidan pacientes, y educación para pacientes y cuidadores.',
@@ -62,6 +64,8 @@ export const ESCUELAS = [
     corto: 'Calidad y Producción',
     menu: 'BPM, documentación, riesgos y validación',
     icono: 'ShieldCheck',
+    imagen: '/img/escuelas/calidad.webp',
+    imagenAlt: 'Equipo con indumentaria de área limpia revisando un proceso de producción en una tableta',
     tono: 'blue',
     resumen:
       'Sistemas de gestión de calidad, buenas prácticas, documentación, riesgos y validación para laboratorios, plantas y servicios farmacéuticos.',
@@ -88,6 +92,8 @@ export const ESCUELAS = [
     corto: 'Asuntos Regulatorios',
     menu: 'Registros, expedientes y etiquetado ante el INVIMA',
     icono: 'FileCheck2',
+    imagen: '/img/escuelas/regulatorios.webp',
+    imagenAlt: 'Profesionales de asuntos regulatorios revisando con lupa el etiquetado de un medicamento',
     tono: 'violet',
     resumen:
       'Registros sanitarios, expedientes, etiquetado y ciclo de vida del producto, con los requisitos del INVIMA y de cada tipo de producto.',
@@ -115,6 +121,8 @@ export const ESCUELAS = [
     corto: 'Marketing y Comunicación',
     menu: 'Visita médica y comunicación de evidencia',
     icono: 'Megaphone',
+    imagen: '/img/escuelas/marketing.webp',
+    imagenAlt: 'Equipo revisando piezas de comunicación de salud en una pantalla',
     tono: 'amber',
     resumen:
       'Marketing farmacéutico, visita médica y comunicación de evidencia, con servicios de materiales para empresas del sector.',

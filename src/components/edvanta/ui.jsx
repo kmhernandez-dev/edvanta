@@ -270,6 +270,22 @@ export function LandingHero({
   );
 }
 
+/** Foto principal de un héroe: la misma forma y sombra que la del inicio. */
+export function HeroPhoto({ src, alt = '' }) {
+  return (
+    <img
+      src={src}
+      alt={alt}
+      width="1200"
+      height="800"
+      loading="eager"
+      fetchpriority="high"
+      decoding="async"
+      className="aspect-[5/4] w-full rounded-[1.75rem] object-cover shadow-[0_24px_60px_rgba(23,34,59,.16)] ring-1 ring-[#082E86]/5"
+    />
+  );
+}
+
 /* ── Piezas menores ───────────────────────────────────────── */
 
 export function Stat({ value, label, tone = 'light' }) {

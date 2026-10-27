@@ -22,7 +22,7 @@ import SiteHeader from '../../components/edvanta/SiteHeader';
 import SiteFooter from '../../components/edvanta/SiteFooter';
 import CourseCarousel from '../../components/CourseCarousel';
 import ProductModal from '../../components/ProductModal';
-import { Breadcrumb, Btn, Card, LandingHero, Section, SectionHeading } from '../../components/edvanta/ui';
+import { Breadcrumb, Btn, Card, HeroPhoto, LandingHero, Section, SectionHeading } from '../../components/edvanta/ui';
 import {
   ICONOS_ESCUELA, ListaDeAreas, ProductoCard, PublicoBadge, useCursosPropios,
 } from '../../components/edvanta/oferta';
@@ -84,6 +84,7 @@ export default function Escuela() {
           eyebrow={<span className="inline-flex items-center gap-2">{Icono && <Icono className="h-4 w-4" aria-hidden="true" />}Escuela de Edvanta</span>}
           title={escuela.nombre}
           highlight={escuela.corto}
+          media={escuela.imagen ? <HeroPhoto src={escuela.imagen} alt={escuela.imagenAlt} /> : undefined}
           lead={escuela.resumen}
           actions={(
             <>

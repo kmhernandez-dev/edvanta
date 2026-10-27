@@ -36,6 +36,8 @@ export const PAQUETES = [
   {
     slug: 'equipo-que-cuida',
     nombre: 'Equipo que Cuida',
+    imagen: '/img/servicios/equipo-que-cuida.webp',
+    imagenAlt: 'Equipo de un servicio farmacéutico en una sesión de formación sobre almacenamiento y cadena de frío',
     lema: 'Formación del talento humano',
     escuelas: ['salud', 'calidad', 'regulatorios'],
     necesidad: 'Actualizar a un equipo en temas de su trabajo diario —servicio farmacéutico, calidad, regulatorio o farmacoterapia— sin depender de cursos sueltos que cada persona busca por su cuenta.',
@@ -54,6 +56,8 @@ export const PAQUETES = [
   {
     slug: 'ruta-contigo',
     nombre: 'Ruta Contigo',
+    imagen: '/img/servicios/ruta-contigo.webp',
+    imagenAlt: 'Química farmacéutica revisando con dos personas una guía educativa para pacientes',
     lema: 'Programa educativo para pacientes',
     escuelas: ['salud'],
     necesidad: 'Acompañar con educación a los pacientes de una condición —para que entiendan su tratamiento y lleguen mejor preparados a la consulta— sin recargar al equipo asistencial.',
@@ -72,6 +76,8 @@ export const PAQUETES = [
   {
     slug: 'biblioteca-contigo',
     nombre: 'Biblioteca Contigo',
+    imagen: '/img/servicios/biblioteca-contigo.webp',
+    imagenAlt: 'Equipo de una institución explorando el catálogo de cursos del aula virtual',
     lema: 'Acceso institucional a recursos revisados',
     escuelas: ['salud', 'calidad', 'regulatorios'],
     necesidad: 'Dar a un equipo o a una población acceso ordenado a cursos y guías de Edvanta, sin comprar uno por uno.',
@@ -88,6 +94,8 @@ export const PAQUETES = [
   {
     slug: 'comunicacion-con-evidencia',
     nombre: 'Comunicación con Evidencia',
+    imagen: '/img/escuelas/marketing.webp',
+    imagenAlt: 'Equipo revisando piezas de comunicación de salud en una pantalla',
     lema: 'Materiales y servicios de comunicación',
     escuelas: ['marketing'],
     necesidad: 'Producir materiales educativos y comerciales del sector farmacéutico que se apoyen en referencias verificables.',

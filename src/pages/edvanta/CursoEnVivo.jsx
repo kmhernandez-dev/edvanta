@@ -94,7 +94,10 @@ export default function CursoEnVivo() {
                 </div>
               </div>
 
-              <Card className="p-0">
+              <Card className="overflow-hidden p-0">
+                {p.imagen && (
+                  <img src={p.imagen} alt={p.imagenAlt} width="1200" height="800" loading="eager" decoding="async" className="aspect-[3/2] w-full object-cover" />
+                )}
                 <dl className="divide-y divide-edvanta-border">
                   {datos.map(({ icono: Icono, k, v }) => (
                     <div key={k} className="flex items-start gap-3 px-5 py-4">

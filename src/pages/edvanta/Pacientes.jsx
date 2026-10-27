@@ -18,7 +18,7 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, BookOpen, HeartPulse, MessagesSquare, Stethoscope, Video } from 'lucide-react';
 import SiteHeader from '../../components/edvanta/SiteHeader';
 import SiteFooter from '../../components/edvanta/SiteFooter';
-import { Breadcrumb, Btn, Card, LandingHero, Section, SectionHeading } from '../../components/edvanta/ui';
+import { Breadcrumb, Btn, Card, HeroPhoto, LandingHero, Section, SectionHeading } from '../../components/edvanta/ui';
 import { EstadoBadge } from '../../components/edvanta/oferta';
 import FormularioSolicitud from '../../components/formularios/FormularioSolicitud';
 import { EDVANTA_CONTIGO, FORMATOS_CONTIGO, RUTAS_CONTIGO } from '../../data/edvanta/programas';
@@ -79,6 +79,7 @@ export default function Pacientes() {
           eyebrow={EDVANTA_CONTIGO.nombre}
           title={EDVANTA_CONTIGO.lema}
           highlight="Participa en tu cuidado."
+          media={<HeroPhoto src="/img/fotos/pacientes-taller.webp" alt="Química farmacéutica explicando una cartilla educativa a un grupo de pacientes y cuidadores" />}
           lead={EDVANTA_CONTIGO.texto}
           actions={(
             <>

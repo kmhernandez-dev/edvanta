@@ -5,6 +5,7 @@ import SiteHeader from '../components/edvanta/SiteHeader';
 import SiteFooter from '../components/edvanta/SiteFooter';
 import { apiUrl } from '../config/api';
 import { learningRoutes } from '../data/featuredCourses';
+import { portadaDeRuta } from '../data/edvanta/imagenes';
 import { updatePageSeo } from '../utils/seo';
 
 const fallbackPaths = learningRoutes.map((path) => ({
@@ -150,7 +151,13 @@ export default function LearningPathsIndex() {
           ) : visiblePaths.length ? (
             <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
               {visiblePaths.map((path) => (
-                <Link key={path.slug} to={`/rutas/${path.slug}`} className="group flex min-h-64 flex-col rounded-lg border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:border-teal-300 hover:shadow-md">
+                <Link key={path.slug} to={`/rutas/${path.slug}`} className="group flex min-h-64 flex-col overflow-hidden rounded-2xl border border-edvanta-border bg-white shadow-[0_1px_2px_rgba(23,34,59,.04)] transition duration-200 hover:-translate-y-0.5 hover:border-edvanta-blue/30 hover:shadow-[0_12px_36px_rgba(23,34,59,.12)]">
+                  {portadaDeRuta(path.slug) && (
+                    <div className="aspect-[3/2] overflow-hidden bg-edvanta-bg">
+                      <img src={portadaDeRuta(path.slug)} alt={`Ruta de aprendizaje: ${path.name || path.title}`} width="1200" height="800" loading="lazy" decoding="async" className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.03]" />
+                    </div>
+                  )}
+                  <div className="flex flex-1 flex-col p-6">
                   <div className="flex items-start justify-between gap-4">
                     <span className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-teal-50 text-teal-700">
                       <Route className="h-5 w-5" aria-hidden="true" />
@@ -163,6 +170,7 @@ export default function LearningPathsIndex() {
                   <div className="mt-5 flex flex-wrap gap-x-5 gap-y-2 border-t border-slate-100 pt-4 text-xs font-semibold text-slate-500">
                     <span className="inline-flex items-center gap-1.5"><BookOpenCheck className="h-4 w-4" aria-hidden="true" /> {path.step_count} pasos</span>
                     <span className="inline-flex items-center gap-1.5"><Compass className="h-4 w-4" aria-hidden="true" /> {path.estimated_duration}</span>
+                  </div>
                   </div>
                 </Link>
               ))}

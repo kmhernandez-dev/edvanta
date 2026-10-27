@@ -96,6 +96,9 @@ function CursoDestacado({ p }) {
         </div>
       </div>
       <div className="border-t border-edvanta-border bg-edvanta-bg p-6 sm:p-10 lg:border-l lg:border-t-0">
+        {p.imagen && (
+          <img src={p.imagen} alt={p.imagenAlt} width="1200" height="800" loading="lazy" decoding="async" className="mb-6 aspect-[3/2] w-full rounded-[14px] object-cover shadow-[0_12px_30px_rgba(23,34,59,.12)]" />
+        )}
         <p className="text-xs font-bold uppercase tracking-[.14em] text-edvanta-muted">Temas</p>
         <ol className="mt-4 space-y-2.5">
           {p.temario.map((t, i) => (

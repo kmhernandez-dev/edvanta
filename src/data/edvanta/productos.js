@@ -31,6 +31,8 @@ export const PRODUCTOS = [
     nombre: 'Operación segura del servicio farmacéutico: de la recepción a la dispensación',
     tipo: 'curso_en_vivo',
     tipoTexto: 'Curso virtual en vivo de actualización',
+    imagen: '/img/fotos/servicio-farmaceutico-recepcion.webp',
+    imagenAlt: 'Auxiliares de farmacia verificando con lector de código la recepción de medicamentos junto a una química farmacéutica',
     escuela: 'salud',
     publico: 'profesionales',
     dirigidoA: 'Auxiliares y regentes de farmacia que trabajan en droguerías, farmacias y servicios farmacéuticos hospitalarios.',

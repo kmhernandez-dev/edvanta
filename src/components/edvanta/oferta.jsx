@@ -99,9 +99,15 @@ export function EscuelaCard({ escuela, cursos = null }) {
   return (
     <Link
       to={`/escuelas/${escuela.slug}`}
-      className="group flex h-full flex-col rounded-2xl border border-edvanta-border bg-white p-6 shadow-[0_1px_2px_rgba(23,34,59,.04)] transition duration-200 hover:-translate-y-0.5 hover:border-edvanta-blue/30 hover:shadow-[0_12px_36px_rgba(23,34,59,.12)]"
+      className="group flex h-full flex-col overflow-hidden rounded-2xl border border-edvanta-border bg-white shadow-[0_1px_2px_rgba(23,34,59,.04)] transition duration-200 hover:-translate-y-0.5 hover:border-edvanta-blue/30 hover:shadow-[0_12px_36px_rgba(23,34,59,.12)]"
     >
-      <span className={`inline-flex h-12 w-12 items-center justify-center rounded-xl ${TONOS[escuela.tono] || TONOS.blue}`}>
+      {escuela.imagen && (
+        <div className="relative aspect-[3/2] overflow-hidden bg-edvanta-bg">
+        <img src={escuela.imagen} alt={escuela.imagenAlt} width="1200" height="800" loading="lazy" decoding="async" className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.04]" />
+      </div>
+      )}
+      <div className={`flex flex-1 flex-col p-6 ${escuela.imagen ? 'pt-0' : ''}`}>
+      <span className={`inline-flex h-12 w-12 items-center justify-center rounded-xl ${TONOS[escuela.tono] || TONOS.blue} ${escuela.imagen ? 'relative -mt-6 ring-4 ring-white' : ''}`}>
         <Icono className="h-6 w-6" strokeWidth={1.8} aria-hidden="true" />
       </span>
       <h3 className="mt-4 font-display text-lg font-extrabold leading-snug text-edvanta-deep">{escuela.nombre}</h3>
@@ -117,6 +123,7 @@ export function EscuelaCard({ escuela, cursos = null }) {
         Conocer la escuela
         <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
       </span>
+      </div>
     </Link>
   );
 }
@@ -205,7 +212,13 @@ export function PaqueteCard({ paquete, onSolicitar }) {
     ['Alcance', p.alcance],
   ];
   return (
-    <article id={p.slug} className="flex h-full scroll-mt-28 flex-col rounded-2xl border border-edvanta-border bg-white p-6 shadow-[0_1px_2px_rgba(23,34,59,.04)]">
+    <article id={p.slug} className="group flex h-full scroll-mt-28 flex-col overflow-hidden rounded-2xl border border-edvanta-border bg-white shadow-[0_1px_2px_rgba(23,34,59,.04)]">
+      {p.imagen && (
+        <div className="relative aspect-[2/1] overflow-hidden bg-edvanta-bg">
+        <img src={p.imagen} alt={p.imagenAlt} width="1200" height="800" loading="lazy" decoding="async" className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.04]" />
+      </div>
+      )}
+      <div className="flex flex-1 flex-col p-6">
       <div className="flex items-start justify-between gap-3">
         <div>
           <p className="text-xs font-bold uppercase tracking-[.12em] text-edvanta-tealdark">{p.lema}</p>
@@ -239,6 +252,7 @@ export function PaqueteCard({ paquete, onSolicitar }) {
           <Users className="h-4 w-4" aria-hidden="true" />
           Solicitar propuesta
         </button>
+      </div>
       </div>
     </article>
   );

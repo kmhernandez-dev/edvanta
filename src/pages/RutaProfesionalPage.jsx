@@ -5,6 +5,7 @@ import SiteHeader from '../components/edvanta/SiteHeader';
 import SiteFooter from '../components/edvanta/SiteFooter';
 import { apiUrl } from '../config/api';
 import { getFeaturedCourse, getLearningRoute } from '../data/featuredCourses';
+import { portadaDeRuta } from '../data/edvanta/imagenes';
 import { updatePageSeo } from '../utils/seo';
 
 const STEP_LABELS = {
@@ -217,6 +218,10 @@ export default function RutaProfesionalPage() {
                   <span className="inline-flex items-center gap-2"><Clock3 className="h-4 w-4 text-indigo-600" aria-hidden="true" /> {path.estimated_duration}</span>
                 </div>
               </div>
+              <div>
+                {portadaDeRuta(path.slug) && (
+                  <img src={portadaDeRuta(path.slug)} alt={`Ruta de aprendizaje: ${path.name}`} width="1200" height="800" loading="eager" decoding="async" className="mb-6 aspect-[3/2] w-full rounded-[1.25rem] object-cover shadow-[0_24px_60px_rgba(23,34,59,.16)] ring-1 ring-[#082E86]/5" />
+                )}
               <div className="border-l-4 border-indigo-500 pl-5">
                 <p className="text-sm font-bold text-edvanta-deep">Pensada para</p>
                 <p className="mt-2 text-sm leading-6 text-slate-600">{path.audience}</p>
@@ -225,6 +230,7 @@ export default function RutaProfesionalPage() {
                     Ver carrera completa <ArrowRight className="h-4 w-4" aria-hidden="true" />
                   </Link>
                 )}
+              </div>
               </div>
             </div>
           </div>
