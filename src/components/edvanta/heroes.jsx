@@ -164,8 +164,46 @@ export function HeroEditorial({
 
 export function HeroInmersivo({
   eyebrow, title, highlight, lead, actions, image, imageAlt = '', imagePosition = 'center', note, breadcrumb, children,
+  fullBleed = false, imageMobile,
 }) {
   const NotaIcono = note?.icon || Heart;
+
+  // Foto de fondo completo: para imágenes que ya traen su zona clara a la
+  // izquierda. En pantallas anchas la foto es el fondo y el texto va sobre
+  // esa zona; por debajo de 1280 px se apila: el recorte con las personas
+  // arriba y el texto debajo, para que nunca quede texto sobre una cara.
+  if (fullBleed) {
+    return (
+      <section className="relative overflow-hidden bg-white xl:min-h-[560px]">
+        <div className="relative aspect-[4/3] sm:aspect-[16/9] xl:hidden">
+          <img src={imageMobile || image} alt={imageAlt} width="1000" height="760" loading="eager" fetchpriority="high" decoding="async"
+            className="h-full w-full object-cover" style={{ objectPosition: 'center 22%' }} />
+          <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-white to-transparent" aria-hidden="true" />
+        </div>
+        {/* La foto ocupa el 62 % derecho y se funde en blanco: el texto nunca
+            queda sobre las personas, ni a 1280 px ni a 1920 px. */}
+        <div className="absolute inset-0 hidden xl:block" style={{ background: 'linear-gradient(90deg, #F4F1FD 0%, #FFFFFF 45%)' }} aria-hidden="true" />
+        <div className="absolute inset-y-0 right-0 hidden w-[62%] xl:block" aria-hidden="true">
+          <img src={image} alt="" width="1920" height="768" loading="eager" decoding="async"
+            className="h-full w-full object-cover" style={{ objectPosition: imagePosition === 'center' ? 'right center' : imagePosition }} />
+          <div className="absolute inset-0" style={{ background: 'linear-gradient(90deg, #FFFFFF 0%, rgba(255,255,255,.6) 8%, rgba(255,255,255,0) 18%)' }} />
+        </div>
+        <Contenedor className="-mt-8 pb-14 sm:-mt-12 xl:mt-0 xl:flex xl:min-h-[560px] xl:items-center xl:py-16">
+          <div className="ds-rise relative max-w-xl xl:max-w-[30rem]">
+            {breadcrumb}
+            {eyebrow && <Eyebrow>{eyebrow}</Eyebrow>}
+            <h1 className="mt-4 font-display text-[2.1rem] font-extrabold leading-[1.07] tracking-[-0.03em] text-edvanta-blue sm:text-[2.6rem] xl:text-[2.75rem]">
+              <TituloConAcento title={title} highlight={highlight} />
+            </h1>
+            <Lead className="xl:text-[1.0625rem] xl:leading-7">{lead}</Lead>
+            <Acciones>{actions}</Acciones>
+            {children}
+          </div>
+        </Contenedor>
+      </section>
+    );
+  }
+
   return (
     <section className="relative overflow-hidden bg-white">
       {/* La foto ocupa la derecha; un velo blanco protege la zona de lectura. */}
@@ -265,7 +303,7 @@ export function HeroCientifico({
 
 // Posiciones de los nodos sobre la curva (en % del lienzo).
 const PUNTOS_RUTA = [
-  { x: 12, y: 70 }, { x: 38, y: 38 }, { x: 64, y: 62 }, { x: 88, y: 24 },
+  { x: 12, y: 74 }, { x: 38, y: 38.5 }, { x: 64, y: 63 }, { x: 88, y: 23 },
 ];
 
 export function HeroRuta({
@@ -300,13 +338,17 @@ export function HeroRuta({
                   <path d="M 4 56 C 20 56, 24 27, 38 27 S 52 46, 64 44 S 80 17, 96 15" fill="none" stroke="url(#ds-ruta)" strokeWidth="0.9" strokeLinecap="round" strokeDasharray="0.2 2.2" />
                   <path d="M 4 56 C 20 56, 24 27, 38 27 S 52 46, 64 44 S 80 17, 96 15" fill="none" stroke="url(#ds-ruta)" strokeWidth="2.6" strokeLinecap="round" strokeOpacity=".16" />
                 </svg>
+                {/* El centro del punto cae sobre la curva; la etiqueta va debajo,
+                    sobre una placa translúcida para que la línea pase por detrás. */}
                 {pasos.map(({ icon: Icon, title: t, desc }, i) => (
-                  <div key={t} className="absolute w-40 -translate-x-1/2 -translate-y-1/2 text-center" style={{ left: `${PUNTOS_RUTA[i].x}%`, top: `${PUNTOS_RUTA[i].y}%` }}>
-                    <span className="ds-flow__dot mx-auto h-14 w-14">
+                  <div key={t} className="absolute z-10 flex w-44 -translate-x-1/2 flex-col items-center text-center" style={{ left: `${PUNTOS_RUTA[i].x}%`, top: `calc(${PUNTOS_RUTA[i].y}% - 1.75rem)` }}>
+                    <span className="ds-flow__dot h-14 w-14">
                       <Icon className="h-6 w-6" strokeWidth={1.8} aria-hidden="true" />
                     </span>
-                    <span className="mt-2 block font-display text-base font-extrabold text-edvanta-deep">{t}</span>
-                    {desc && <span className="block text-xs leading-5 text-edvanta-muted">{desc}</span>}
+                    <span className="mt-2 rounded-xl bg-white/90 px-3 py-1.5 shadow-[var(--ds-sh-xs)] ring-1 ring-edvanta-border/70 backdrop-blur-sm">
+                      <span className="block font-display text-[15px] font-extrabold leading-5 text-edvanta-deep">{t}</span>
+                      {desc && <span className="block text-xs leading-5 text-edvanta-muted">{desc}</span>}
+                    </span>
                   </div>
                 ))}
                 {footer && <div className="absolute bottom-0 right-0">{footer}</div>}

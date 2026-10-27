@@ -13,6 +13,8 @@ Sistema visual único para edvanta.co y el Aula. Implementado el 27-oct-2026.
 | Tokens del Aula (mismos valores) | `src/aula/aula.css` |
 | Colores de Tailwind (`edvanta-*`) | `tailwind.config.js` |
 
+Las clases del sistema que fijan `display` (`ed-btn`, `ds-flow`, `ds-icon-tile`, `ds-chip`) lo hacen con `:where()`, así que `hidden`, `lg:hidden` y compañía siempre mandan.
+
 Todo vive dentro de `.edvanta-theme` y `.aula-root`: **Feliz Sin Tiroides, AtenFarmaClinic, Vida 360 y Academia no cambian.**
 
 ## Tokens
@@ -70,9 +72,9 @@ Las clases heredadas (`btn-edvanta`, `btn-primary`, `btn-secondary`, `btn-teal`,
 | Héroe | Composición | Páginas |
 |---|---|---|
 | A · `HeroEditorial` | Texto + foto, accesos flotantes, franja de rasgos | `/escuelas/:slug` |
-| B · `HeroInmersivo` | Foto amplia con zona de lectura protegida | `/pacientes/tiroides` |
+| B · `HeroInmersivo` | Foto amplia con zona de lectura protegida; `fullBleed` para fotos que traen su zona clara | `/pacientes/tiroides`, `/carreras` (foto completa + recorrido debajo) |
 | C · `HeroCientifico` | Foto con red molecular e insignias | `/escuelas`, `/sobre-edvanta` |
-| D · `HeroRuta` | El recorrido dibujado | `/cursos`, `/rutas`, `/competencias`, `/carreras`, `/vocacion` |
+| D · `HeroRuta` | El recorrido dibujado | `/cursos`, `/rutas`, `/competencias`, `/vocacion` |
 | E · `HeroCorporativo` | Foto, pila de servicios y franja de sectores | `/instituciones` |
 | F · `HeroPaciente` | Foto humana en forma suave, nota y temas | `/pacientes` |
 | G · `HeroPlataforma` / `Portatil` | La herramienta real dentro de un portátil | `/guias`, `/herramientas` |
@@ -130,7 +132,8 @@ Las clases heredadas (`btn-edvanta`, `btn-primary`, `btn-secondary`, `btn-teal`,
 | `/cursos` (+ proveedores) | Profesionales | A | D | Carruseles por escuela | 390/1280 | Navegador | Completa |
 | `/curso/:id`, `/cursos/:slug` | Profesionales | A | H | Tarjeta fija, «Cómo funciona», temario, certificado | 390/768/1280 | Navegador | Completa |
 | `/cursos/en-vivo/:slug` | Profesionales | A | H | Cronograma, docente, registro | 390/1280 | Navegador | Completa |
-| `/rutas`, `/competencias`, `/carreras` | Profesionales | A | D | Diagrama de recorrido | 390 | Navegador | Completa |
+| `/rutas`, `/competencias` | Profesionales | A | D | Diagrama de recorrido | 390/1280 | Navegador | Completa |
+| `/carreras` | Profesionales | A | B (foto completa) | Franja «Tu recorrido» | 390/1024/1280/1920 | Navegador | Completa |
 | `/vocacion` | Profesionales | A | D | Test intacto | 390/768/1280 | Navegador | Completa |
 | `/guias` | Todas | A | G | Kits reales en el portátil | 390/1280 | Navegador | Completa |
 | `/herramientas`, `/hoja-de-vida` | Profesionales | A | LandingHero + G / diagrama | Portátil, «antes / después» | 390/768/1280 | Navegador | Completa |

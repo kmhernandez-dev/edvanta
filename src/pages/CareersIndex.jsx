@@ -8,8 +8,8 @@ import {
 import SiteHeader from '../components/edvanta/SiteHeader';
 import SiteFooter from '../components/edvanta/SiteFooter';
 import { updatePageSeo } from '../utils/seo';
-import { Btn } from '../components/edvanta/ui';
-import { HeroRuta } from '../components/edvanta/heroes';
+import { Btn, Steps } from '../components/edvanta/ui';
+import { HeroInmersivo } from '../components/edvanta/heroes';
 import {
   maestriasColombia, especializacionesColombia, diplomadosColombia,
   congresosColombia, webinarsColombia, areasCursosHub, formacionCentralMezclas,
@@ -174,8 +174,12 @@ export default function CareersIndex() {
     <>
       <SiteHeader />
       <main className="min-h-screen bg-edvanta-bg">
-        {/* Héroe D: la carrera como recorrido. */}
-        <HeroRuta
+        {/* Héroe B a foto completa: el equipo del sector y, sobre la zona clara, el titular. */}
+        <HeroInmersivo
+          fullBleed
+          image="/img/fotos/equipo-carrera-farmaceutica.webp"
+          imageMobile="/img/fotos/equipo-carrera-farmaceutica-movil.webp"
+          imageAlt="Una enfermera, una química farmacéutica con bata y un profesional de la industria, de pie en un laboratorio con tabletas en la mano"
           eyebrow="Centro profesional farmacéutico"
           title="Todo para construir tu carrera farmacéutica en Colombia"
           highlight="tu carrera farmacéutica"
@@ -186,13 +190,23 @@ export default function CareersIndex() {
               <Btn to="/vocacion" variant="secondary" size="lg" icon={Compass}>Orientación vocacional</Btn>
             </>
           )}
-          steps={[
-            { icon: Compass, title: 'Oriéntate', desc: 'Descubre tu área' },
-            { icon: GraduationCap, title: 'Fórmate', desc: 'Cursos y rutas' },
-            { icon: BadgeCheck, title: 'Postúlate', desc: 'Hoja de vida y vacantes' },
-            { icon: TrendingUp, title: 'Crece', desc: 'Emprende y avanza' },
-          ]}
         />
+
+        {/* El recorrido, como diagrama, justo debajo del héroe. */}
+        <section className="ds-surface-diagonal border-y border-edvanta-border">
+          <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8 lg:py-12">
+            <p className="ed-eyebrow">Tu recorrido</p>
+            <Steps
+              className="mt-8"
+              items={[
+                { icon: Compass, title: 'Oriéntate', desc: 'Descubre el área que más encaja contigo.' },
+                { icon: GraduationCap, title: 'Fórmate', desc: 'Cursos y rutas por competencias.' },
+                { icon: BadgeCheck, title: 'Postúlate', desc: 'Hoja de vida, correos y vacantes.' },
+                { icon: TrendingUp, title: 'Crece', desc: 'Emprende y avanza en tu carrera.' },
+              ]}
+            />
+          </div>
+        </section>
 
         {/* Módulos */}
         <section className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
