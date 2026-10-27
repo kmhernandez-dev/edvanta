@@ -39,7 +39,19 @@ for (const a of articulosSalud) {
   }
 }
 
+// Sitios que contestan 403 a cualquier robot pero abren en un navegador.
+// Se abrieron a mano (27-oct-2026); un 404 de ellos sí se reporta.
+const BLOQUEAN_ROBOTS = ['professional.heart.org', 'www.pharmacy.umn.edu'];
+
 async function responde(url) {
+  if (BLOQUEAN_ROBOTS.includes(new URL(url).hostname)) {
+    const estado = await respondeA(url);
+    return estado === 403 ? 200 : estado;
+  }
+  return respondeA(url);
+}
+
+async function respondeA(url) {
   // Los DOI redirigen al editor, que suele bloquear a los robots: basta
   // con que doi.org confirme que el identificador está registrado.
   if (url.startsWith('https://doi.org/')) {

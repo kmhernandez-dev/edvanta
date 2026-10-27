@@ -23,6 +23,7 @@ import { beforeAll, afterAll, describe, expect, it } from 'vitest';
 import { cleanMigrationSql } from '../lib/sql-text.js';
 import { fromPglite } from '../lib/aula/db.js';
 import { buildSnapshot, validateSnapshot } from '../lib/aula/snapshot.js';
+import { publicarAprobados } from '../lib/aula/publicaciones.js';
 
 const dir = path.join(path.dirname(fileURLToPath(import.meta.url)), '..', 'migrations');
 
@@ -32,6 +33,8 @@ const LINEAS = [
   { categoria: 'Asuntos regulatorios', cursos: 10, unidades: 50, clases: 333 },
   { categoria: 'Asuntos regulatorios — productos especiales', cursos: 10, unidades: 50, clases: 336 },
   { categoria: 'Farmacología', cursos: 12, unidades: 60, clases: 405 },
+  // 5 unidades + el anexo de fichas de medicamentos en cada curso.
+  { categoria: 'Farmacoterapia', cursos: 4, unidades: 24, clases: 154 },
 ];
 
 let pglite;
@@ -153,7 +156,7 @@ describe('las tres categorías con las que se agrupan', () => {
 
     expect(porArea['Calidad']).toBe(14);               // 10 sembrados + 4 anteriores
     expect(porArea['Asuntos Regulatorios']).toBe(21);  // 10 + 10 + el que ya existía
-    expect(porArea['Farmacología']).toBe(12);
+    expect(porArea['Farmacología']).toBe(16);          // 12 de farmacología + 4 de farmacoterapia
     // Autocuidado de la tiroides se queda fuera a propósito: es para
     // pacientes, no formación profesional.
     expect(porArea['(sin área)']).toBe(1);
@@ -178,7 +181,7 @@ describe('las tres categorías con las que se agrupan', () => {
     expect(new Set(urls).size).toBe(urls.length);
   });
 
-  it('los doce de farmacología tienen portada', async () => {
+  it('los de farmacología y farmacoterapia tienen portada', async () => {
     const { rows } = await pglite.query(
       `SELECT title FROM aula_courses
         WHERE kind = 'edvanta' AND deleted_at IS NULL AND area = 'Farmacología'
@@ -198,5 +201,68 @@ describe('las tres categorías con las que se agrupan', () => {
                OR category = 'Farmacología' OR category = 'Servicio farmacéutico')`,
     );
     expect(rows).toEqual([]);
+  });
+});
+
+describe('farmacoterapia: lo que se ve no trae marcas de trabajo', () => {
+  it('ningún bloque dice «por confirmar» ni «pendiente de revisión»', async () => {
+    const { rows } = await pglite.query(
+      `SELECT l.title, b.type FROM aula_lesson_blocks b
+         JOIN aula_lessons l ON l.id = b.lesson_id
+         JOIN aula_courses c ON c.id = l.course_id
+        WHERE c.category = 'Farmacoterapia'
+          AND b.data::text ~* $1`,
+      ['por confirmar|\\[pendiente|revisado por: \\['],
+    );
+    expect(rows).toEqual([]);
+  });
+
+  it('las fichas de medicamentos se consultan, pero no son obligatorias', async () => {
+    const { rows } = await pglite.query(
+      `SELECT l.is_required, count(*)::int AS n FROM aula_lessons l
+         JOIN aula_modules m ON m.id = l.module_id
+         JOIN aula_courses c ON c.id = l.course_id
+        WHERE c.category = 'Farmacoterapia' AND m.title = 'Anexo. Fichas de medicamentos'
+        GROUP BY l.is_required`,
+    );
+    expect(rows).toEqual([{ is_required: false, n: 18 }]);
+  });
+});
+
+// Va al final: publica de verdad, y lo de arriba revisa los borradores.
+describe('publicación aprobada al arrancar', () => {
+  it('publica los cuatro cursos aprobados con el mismo camino del botón', async () => {
+    const hechos = await publicarAprobados(db);
+    expect(hechos).toHaveLength(4);
+
+    const { rows } = await pglite.query(
+      `SELECT c.title, c.status, v.version_number, v.snapshot->'totals'->>'lessons' AS clases, p.error
+         FROM aula_courses c
+         JOIN aula_course_versions v ON v.id = c.current_version_id
+         JOIN aula_publicaciones_aprobadas p ON p.course_id = c.id
+        WHERE c.category = 'Farmacoterapia'
+        ORDER BY c.id`,
+    );
+    expect(rows).toHaveLength(4);
+    for (const r of rows) {
+      expect(r.status).toBe('publicado');
+      expect(r.version_number).toBe(1);
+      expect(r.error).toBeNull();
+    }
+    expect(rows.reduce((n, r) => n + Number(r.clases), 0)).toBe(154);
+
+    const [{ n }] = (await pglite.query(
+      "SELECT count(*)::int AS n FROM aula_audit_log WHERE action = 'curso.publicar'",
+    )).rows;
+    expect(n).toBe(4);
+  }, 240_000);
+
+  it('al volver a arrancar no publica nada otra vez', async () => {
+    expect(await publicarAprobados(db)).toEqual([]);
+    const [{ n }] = (await pglite.query(
+      `SELECT count(*)::int AS n FROM aula_course_versions v
+         JOIN aula_courses c ON c.id = v.course_id WHERE c.category = 'Farmacoterapia'`,
+    )).rows;
+    expect(n).toBe(4);
   });
 });

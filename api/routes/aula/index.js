@@ -6,6 +6,7 @@
  */
 import express from 'express';
 import { ensureBootstrapAdmins } from '../../lib/aula/accounts.js';
+import { publicarAprobados } from '../../lib/aula/publicaciones.js';
 import { errorHandler, notFound } from '../../lib/aula/http.js';
 import { requireAulaHeader } from '../../lib/aula/security.js';
 import { adminAuditRouter } from './admin-audit.js';
@@ -69,6 +70,13 @@ export async function startAula({ db, storage, adminEmails = [], adminHashes = [
   await storage.init();
   const admins = await ensureBootstrapAdmins(db, adminEmails, { hashes: adminHashes });
   log({ msg: 'Aula lista', admins, storage: storage.root });
+
+  // Cursos sembrados por migración que ya venían aprobados para publicar.
+  try {
+    await publicarAprobados(db, { log });
+  } catch (err) {
+    log({ level: 'error', msg: 'Falló la publicación de cursos aprobados', error: err.message });
+  }
 
   const sweep = () => sweepStaleUploads({ db, storage })
     .then((n) => { if (n) log({ msg: 'Subidas abandonadas limpiadas', count: n }); })

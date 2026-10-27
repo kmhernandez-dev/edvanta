@@ -1,63 +1,66 @@
-El losartán es un medicamento para la presión alta. Pertenece al grupo de los antagonistas del receptor de angiotensina II (ARA-II): relaja los vasos sanguíneos y así baja la presión. También se usa para proteger el riñón en personas con diabetes y en algunos casos de insuficiencia cardiaca. Se toma todos los días, aunque te sientas bien.
+## ¿Qué es el losartán?
+El losartán (losartán potásico) es un medicamento para la presión alta que pertenece al grupo de los antagonistas del receptor de angiotensina II, también llamados ARA-II o «sartanes». La angiotensina II es una sustancia del cuerpo que estrecha los vasos sanguíneos y hace que el cuerpo retenga sal y agua. El losartán bloquea su efecto, los vasos se relajan y la presión baja. Es un medicamento de venta solo con fórmula médica.
 
-> **En resumen**
-> - Sirve para hipertensión y para proteger el riñón en personas con diabetes.
-> - Su efecto completo se alcanza en unas 3 a 6 semanas.
-> - Está contraindicado en el embarazo.
-> - Evita los suplementos de potasio y los antiinflamatorios sin consultar.
+## ¿Para qué sirve el losartán?
+Según su ficha técnica, el losartán está indicado para:
+- Tratar la hipertensión arterial en adultos y en niños y adolescentes de 6 a 18 años.
+- Proteger el riñón en adultos con presión alta y diabetes tipo 2 que tienen proteína en la orina.
+- Tratar la insuficiencia cardiaca crónica en adultos cuando no se pueden usar los medicamentos del grupo del enalapril, por ejemplo, por tos.
+- Reducir el riesgo de accidente cerebrovascular en personas hipertensas con engrosamiento del corazón (hipertrofia ventricular izquierda).
 
-## Para qué sirve
+No sirve para «bajar la presión rápido» en una crisis ni para tomarlo solo cuando la presión está alta: es un tratamiento de todos los días.
 
-- [Hipertensión arterial](/articulos/presion-alta-sintomas-y-como-bajarla).
-- Protección del riñón en personas con diabetes tipo 2 y pérdida de proteína en la orina.
-- Reducción del riesgo de accidente cerebrovascular en algunas personas con hipertensión y crecimiento del corazón.
-- Insuficiencia cardiaca, en algunos casos.
+## ¿Cómo se toma el losartán? Dosis habituales
+La dosis la define su médico. Como referencia, la ficha técnica indica que en la presión alta la mayoría de los adultos recibe 50 mg una vez al día, y que algunas personas necesitan 100 mg una vez al día. En personas con poco líquido en el cuerpo (por ejemplo, por dosis altas de diuréticos) o mayores de 75 años, el médico puede empezar con 25 mg. En niños, la dosis depende del peso.
 
-## Cómo tomarlo
+Consejos prácticos:
+- Tómelo todos los días a la misma hora, con o sin comida, con un vaso de agua.
+- El efecto completo sobre la presión se alcanza entre 3 y 6 semanas: no se desanime si al principio no ve cambios grandes.
+- Si olvida una dosis, no tome doble. Pregunte a su médico o químico farmacéutico qué hacer en su caso.
+- No lo suspenda aunque su presión ya esté normal: está normal precisamente porque lo toma.
 
-- Una o dos veces al día, según la indicación, con o sin comida.
-- A la misma hora todos los días.
-- No lo suspendas aunque la presión esté normal: está normal gracias al medicamento.
-- Si olvidas una dosis, tómala en cuanto te acuerdes, salvo que ya sea casi la hora de la siguiente. No dupliques.
+## Losartán con hidroclorotiazida: ¿por qué juntos?
+Muchas personas necesitan dos medicamentos para controlar la presión. El losartán se combina con frecuencia con la hidroclorotiazida, un diurético, porque actúan de forma diferente y se complementan. Existen tabletas que traen los dos medicamentos juntos, lo que facilita el tratamiento. Solo su médico puede indicar si usted necesita la combinación y en qué dosis. Si recibe la combinación, no tome además losartán solo, salvo que su médico lo haya indicado así expresamente: sería una duplicación.
 
-## Efectos secundarios
+## Efectos secundarios del losartán
+La mayoría de las personas lo tolera bien. Según la ficha técnica, en personas con presión alta los efectos frecuentes son:
+- Mareo y sensación de vértigo, sobre todo al comienzo o al subir la dosis.
+- Aumento del potasio en la sangre, que se detecta en los exámenes.
 
-- **Frecuentes:** mareo, sobre todo al levantarse rápido o al inicio del tratamiento; cansancio.
-- **Importantes:** potasio alto en la sangre (puede causar debilidad o palpitaciones), alteración de la función renal y, rara vez, hinchazón de cara, labios o lengua (angioedema). Si tienes hinchazón de la cara o dificultad para respirar, busca atención de inmediato.
+En otras situaciones (insuficiencia cardiaca o enfermedad renal con diabetes) pueden aparecer presión baja al ponerse de pie, cansancio o cambios en los exámenes del riñón. A diferencia del enalapril y medicamentos similares, la tos es mucho menos frecuente.
 
-A diferencia del [enalapril](/articulos/enalapril-para-que-sirve), el losartán rara vez produce tos seca, por eso es una alternativa frecuente para quienes no toleran los IECA.
+Busque atención de urgencias si presenta hinchazón de la cara, los labios, la lengua o la garganta, o dificultad para respirar o tragar: es una reacción poco frecuente pero grave llamada angioedema.
 
-## Precauciones e interacciones
+## ¿Quiénes no deben tomar losartán?
+Según su ficha técnica, no debe usarse en personas alérgicas al losartán o a sus componentes, durante el segundo y el tercer trimestre del embarazo, en insuficiencia hepática grave, ni junto con aliskirén en personas con diabetes o enfermedad renal moderada o grave. Su médico también tendrá precaución si usted tiene estrechez de las arterias de los riñones, poco líquido en el cuerpo o antecedentes de angioedema.
 
-- **Embarazo:** está contraindicado porque puede dañar al bebé. Si planeas un embarazo o quedas embarazada, consulta de inmediato para cambiar el tratamiento.
-- **Suplementos de potasio, sustitutos de sal con potasio y diuréticos ahorradores de potasio** (como la espironolactona): aumentan el riesgo de potasio alto.
-- **Antiinflamatorios** como el [ibuprofeno](/articulos/ibuprofeno-para-que-sirve) o el [diclofenaco](/articulos/diclofenaco-para-que-sirve): reducen su efecto y, combinados, pueden afectar el riñón.
-- **Litio:** puede aumentar su concentración.
-- **Deshidratación** (vómito, diarrea, calor intenso): puede bajar demasiado la presión o afectar el riñón; consulta si te ocurre.
+## Interacciones y precauciones importantes
+Antes de tomar otro medicamento, consulte. Las interacciones más relevantes descritas en la ficha técnica son:
+- Suplementos de potasio, «sal dietética» o sustitutos de sal con potasio y diuréticos ahorradores de potasio: pueden subir demasiado el potasio.
+- Antiinflamatorios como ibuprofeno, naproxeno o diclofenaco: pueden disminuir el efecto del losartán y afectar los riñones.
+- Litio: el losartán puede aumentar sus niveles.
+- Otros medicamentos con trimetoprim o heparina pueden aumentar el potasio.
 
-## Controles
+Su médico le pedirá exámenes de potasio y de función renal, sobre todo al inicio y si tiene diabetes o enfermedad renal.
 
-El médico suele pedir exámenes de función renal y de potasio al inicio y periódicamente. Mídete la presión en casa y lleva el registro.
+## Losartán en el embarazo y la lactancia
+El losartán no debe iniciarse durante el embarazo y está contraindicado en el segundo y tercer trimestre. Si usted lo toma y planea un embarazo, hable con su médico antes de buscarlo para cambiarlo por otro medicamento. Si queda embarazada, consulte de inmediato sin suspender por su cuenta. Durante la lactancia no se recomienda; el médico escogerá una alternativa.
 
-## Sobre los retiros de lotes
+## ¿Hay alertas sanitarias sobre el losartán?
+En 2021 el INVIMA publicó la alerta sanitaria 243-2021 sobre el retiro voluntario de lotes de dos productos de losartán potásico (50 mg y 100 mg) por una impureza en el principio activo. La recomendación para los pacientes fue no suspender el tratamiento sin consultar al médico y reportar cualquier evento adverso. Si tiene dudas sobre su medicamento, pregunte al químico farmacéutico.
 
-Entre 2018 y 2019 varias agencias del mundo retiraron lotes de algunos medicamentos del grupo de los «sartanes», incluido el losartán de ciertos fabricantes, por impurezas de nitrosaminas. Fue un problema de fabricación de lotes específicos, no del medicamento en sí. Si tienes dudas sobre tu producto, consulta las alertas del INVIMA o pregunta en tu droguería; no suspendas el tratamiento por tu cuenta.
+## Lo que no debe hacer
+- No suspenda el losartán ni cambie la dosis sin hablar con su médico.
+- No lo comparta con otras personas aunque tengan presión alta.
+- No se automedique con antiinflamatorios ni use sal con potasio sin consultar.
 
-## Preguntas frecuentes
+## Preguntas para su próxima cita
+¿Cuál es mi meta de presión? ¿Cada cuánto debo medirme en casa? ¿Cuándo debo hacerme exámenes de potasio y riñón? ¿Qué hago si me mareo al levantarme?
 
-### ¿El losartán daña los riñones?
-
-En personas con diabetes los protege. Puede alterar la función renal en algunas situaciones, por eso se controla con exámenes.
-
-### ¿Puedo tomar losartán por la noche?
-
-Sí, si así te lo indican. Lo importante es la constancia en el horario.
-
-### ¿El losartán engorda?
-
-No se asocia con aumento de peso.
+Este contenido es educativo y no reemplaza la consulta con su médico o químico farmacéutico.
 
 ## Fuentes
 
-- MedlinePlus en español. [Losartán](https://medlineplus.gov/spanish/druginfo/meds/a695008-es.html).
-- Organización Mundial de la Salud. [Hipertensión](https://www.who.int/es/news-room/fact-sheets/detail/hypertension).
+- AEMPS-CIMA. Ficha técnica Losartán Cinfa 50 mg comprimidos recubiertos con película EFG (revisión feb. 2025). [Ver fuente](https://cima.aemps.es/cima/dochtml/ft/67729/FT_67729.html)
+- INVIMA. Alerta Sanitaria No. 243-2021: Retiro voluntario de Losartán potásico 50 mg y 100 mg por impureza de tipo Azido. [Ver fuente](https://www.invima.gov.co/biblioteca/alerta-sanitaria-losartan-retiro-impureza-azido-243-2021)
+- ESC. 2024 ESC Guidelines for the Management of Elevated Blood Pressure and Hypertension. [Ver fuente](https://www.escardio.org/Guidelines/Clinical-Practice-Guidelines/elevated-blood-pressure-and-hypertension)

@@ -38,7 +38,7 @@ export const ESCUELAS = [
         areas: [
           { nombre: 'Farmacia clínica y hospitalaria', estado: 'disponible', nota: 'Central de mezclas y preparaciones magistrales.' },
           { nombre: 'Atención farmacéutica', estado: 'disponible', nota: 'Kit de Atención Farmacéutica Pro y herramientas de práctica clínica en AtenFarmaClinic.' },
-          { nombre: 'Farmacología y farmacoterapia', estado: 'disponible', nota: 'Oncología, cardiovascular, sistema nervioso central, respiratoria, renal y más.' },
+          { nombre: 'Farmacología y farmacoterapia', estado: 'disponible', nota: 'Oncología, cardiovascular, sistema nervioso central, respiratoria, renal y más, y farmacoterapia de diabetes, hipertensión, insuficiencia cardíaca, asma y EPOC.' },
           { nombre: 'Actualización por áreas clínicas', estado: 'disponible', nota: 'Empieza por endocrinología y enfermedades metabólicas.' },
           { nombre: 'Actualización para regentes de farmacia', estado: 'proxima_apertura', producto: 'operacion-segura-servicio-farmaceutico' },
           { nombre: 'Actualización para auxiliares de farmacia', estado: 'proxima_apertura', producto: 'operacion-segura-servicio-farmaceutico' },

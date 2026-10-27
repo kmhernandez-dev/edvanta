@@ -1,68 +1,91 @@
-La presión alta o hipertensión casi nunca da síntomas: por eso la llaman «asesina silenciosa». Se diagnostica cuando la presión está de forma repetida en 140/90 mmHg o más (algunas guías usan 130/80). Para bajarla funcionan reducir la sal, mantener un peso saludable, hacer ejercicio, limitar el alcohol y, cuando se necesita, tomar medicamentos todos los días.
+## ¿Qué es la presión alta?
+La presión arterial es la fuerza con la que la sangre empuja las paredes de las arterias. Se expresa con dos números: la presión sistólica (el número de arriba, cuando el corazón se contrae) y la diastólica (el de abajo, cuando el corazón descansa entre latidos). Hablamos de presión alta o hipertensión arterial cuando esa fuerza se mantiene elevada de forma persistente.
 
-> **En resumen**
-> - La mayoría de las personas con hipertensión no siente nada.
-> - Mídete la presión periódicamente, aunque te sientas bien.
-> - Menos sal (menos de 5 g al día), más frutas y verduras, ejercicio y peso saludable bajan la presión.
-> - Si te indican medicamento, no lo suspendas cuando la presión se normalice: se normalizó gracias a él.
+Con los años, la presión alta daña las arterias, el corazón, el cerebro, los riñones y los ojos. Por eso aumenta el riesgo de infarto, accidente cerebrovascular, insuficiencia cardiaca y enfermedad renal. La buena noticia es que se puede detectar fácilmente y controlar.
 
-## ¿Qué síntomas puede dar?
+Es muy frecuente. En Colombia, la Cuenta de Alto Costo reportó más de 6,7 millones de personas con hipertensión entre julio de 2024 y junio de 2025, y aproximadamente una de cada tres no tenía la presión controlada. La Organización Mundial de la Salud advirtió en 2025 que la presión alta no controlada pone en riesgo a más de mil millones de personas en el mundo.
 
-Cuando aparecen, suelen indicar presión muy alta: dolor de cabeza fuerte (sobre todo en la nuca), mareo, zumbido en los oídos, visión borrosa, sangrado nasal o palpitaciones. Sentirse bien no descarta hipertensión.
+## ¿De cuánto es la presión alta? Valores de referencia
+La presión se mide en milímetros de mercurio (mmHg). Las guías europeas de cardiología de 2024 usan tres grupos para la medición en el consultorio:
+- Presión no elevada: menos de 120/70 mmHg.
+- Presión elevada: entre 120/70 y 139/89 mmHg.
+- Hipertensión: 140/90 mmHg o más.
 
-## Valores de referencia
+Las guías estadounidenses de 2025 hablan de hipertensión desde 130/80 mmHg. Por eso, su médico puede usar una u otra referencia según su caso. En casa los valores se interpretan distinto: un promedio de 135/85 mmHg o más en las mediciones domiciliarias se considera alto.
 
-| Clasificación | Sistólica (máxima) | Diastólica (mínima) |
-| --- | --- | --- |
-| Óptima | Menos de 120 | Menos de 80 |
-| Elevada o normal alta | 120 a 139 | 80 a 89 |
-| Hipertensión | 140 o más | 90 o más |
+Una sola medición alta no basta para hablar de hipertensión. La presión cambia durante el día y sube con el estrés, el café, el cigarrillo, el dolor o la prisa por llegar a la cita. El diagnóstico se confirma con varias mediciones.
 
-Las guías estadounidenses consideran hipertensión desde 130/80. Tu médico definirá tu meta según tu edad y tus otras enfermedades.
+## Síntomas: por qué la llaman «enemigo silencioso»
+La mayoría de las personas con presión alta no siente nada durante años. El dolor de cabeza, el mareo o el zumbido en los oídos pueden tener muchas causas y no son una forma confiable de saber si la presión está alta. La única manera de saberlo es medirla.
 
-## Cómo medirte bien en casa
+Por eso se recomienda medir la presión periódicamente a todos los adultos, con más frecuencia si hay antecedentes familiares, sobrepeso, diabetes o enfermedad renal.
 
-1. Usa un tensiómetro de brazo validado.
-2. Descansa 5 minutos sentado, con la espalda apoyada y los pies en el piso.
-3. No tomes café, no fumes ni hagas ejercicio 30 minutos antes.
-4. Apoya el brazo a la altura del corazón y no hables.
-5. Toma dos mediciones con un minuto de diferencia y anota ambas.
-6. Mídete a la misma hora y lleva el registro a tu consulta.
+## ¿A qué se debe la presión alta? Causas y factores de riesgo
+En la mayoría de los casos no hay una causa única: es la hipertensión llamada primaria o esencial, que resulta de la combinación de herencia, edad y hábitos. Los factores que más influyen son:
+- Exceso de sal en la comida, sobre todo la sal oculta en embutidos, caldos en cubo, paquetes y comidas rápidas.
+- Sobrepeso y obesidad.
+- Poca actividad física.
+- Consumo de alcohol y tabaco.
+- Dormir poco o mal, y el estrés sostenido.
+- Diabetes y enfermedad renal.
 
-## Cambios que sí bajan la presión
+En una parte de las personas la presión alta se debe a otra enfermedad (por ejemplo, de los riñones, de las glándulas suprarrenales o la apnea del sueño) o a medicamentos y sustancias como antiinflamatorios, descongestionantes nasales, algunos anticonceptivos y corticoides. Si su presión es muy difícil de controlar, su médico puede buscar estas causas.
 
-- **Menos sal:** la OMS recomienda menos de 5 gramos de sal al día (una cucharadita). Ojo con los embutidos, los caldos en cubo, las sopas de sobre, los snacks y el pan.
-- **Alimentación tipo DASH:** abundantes frutas, verduras, legumbres, lácteos bajos en grasa y cereales integrales.
-- **Bajar de peso:** cada kilo perdido ayuda.
-- **Actividad física:** 150 minutos a la semana de caminata rápida u otra actividad moderada.
-- **Menos alcohol** y no fumar.
-- **Dormir bien:** si roncas fuerte y te despiertas cansado, consulta por apnea del sueño.
+## ¿Cómo se confirma el diagnóstico?
+El médico confirma la hipertensión con mediciones repetidas y, cada vez más, con mediciones fuera del consultorio: la automedida en casa durante varios días o el monitoreo ambulatorio de 24 horas (un aparato que mide la presión automáticamente durante un día completo). Estas mediciones ayudan a descubrir la «hipertensión de bata blanca» (alta solo en el consultorio) y la «hipertensión enmascarada» (normal en el consultorio pero alta en la vida diaria).
 
-## Medicamentos para la presión
+También suele pedir exámenes de sangre y orina (creatinina, glucosa, colesterol, potasio, albúmina en orina) y un electrocardiograma, para saber si la presión ya afectó algún órgano y para calcular su riesgo cardiovascular.
 
-Hay varios grupos, y a menudo se combinan: [losartán](/articulos/losartan-para-que-sirve) y otros ARA-II, [enalapril](/articulos/enalapril-para-que-sirve) y otros IECA, diuréticos como la hidroclorotiazida y calcioantagonistas como el amlodipino. La elección depende de cada persona.
+## ¿Cómo bajar la presión alta? Hábitos que sí ayudan
+Los cambios de hábitos son parte del tratamiento para todas las personas, tomen o no medicamentos:
+- Reduzca la sal: las guías europeas recomiendan no superar unos 5 gramos de sal al día (cerca de una cucharadita), sumando la que ya traen los alimentos. Lea las etiquetas.
+- Coma más frutas, verduras, legumbres y granos integrales, y menos ultraprocesados.
+- Muévase: al menos 150 minutos a la semana de actividad moderada, como caminar a paso rápido.
+- Si tiene sobrepeso, bajar de peso ayuda a bajar la presión.
+- Limite o evite el alcohol y no fume.
+- Procure dormir bien.
 
-Consejos para tomarlos bien: a la misma hora todos los días, sin suspenderlos por tu cuenta, y consultando antes de tomar antiinflamatorios como el ibuprofeno, que pueden subir la presión y afectar el riñón.
+Sobre la «sal con potasio» o «sal dietética»: puede ayudar a algunas personas, pero no es para todos. Si toma medicamentos para la presión como losartán o enalapril, diuréticos que ahorran potasio, o si tiene enfermedad de los riñones, consulte primero a su médico, porque puede subir demasiado el potasio en la sangre.
 
-## Cuándo ir a urgencias
+Desconfíe de productos «milagrosos» o remedios que prometen curar la hipertensión. No reemplazan el tratamiento indicado por su médico.
 
-Presión de 180/120 o más con dolor en el pecho, falta de aire, dolor de cabeza muy intenso, confusión, dificultad para hablar, debilidad en un lado del cuerpo o pérdida de visión. Llama a emergencias.
+## Tratamiento con medicamentos: solo con fórmula médica
+Cuando la presión no baja lo suficiente con los hábitos, o cuando el riesgo es alto, el médico formula medicamentos. Los más usados pertenecen a estos grupos: inhibidores de la enzima convertidora (como el enalapril), antagonistas del receptor de angiotensina II (como el losartán), calcioantagonistas (como el amlodipino) y diuréticos (como la hidroclorotiazida). En algunos casos se usan betabloqueadores u otros medicamentos.
 
-## Preguntas frecuentes
+Muchas personas necesitan dos o más medicamentos, y hoy se usan con frecuencia combinaciones en una sola tableta, que facilitan el tratamiento. Todos estos medicamentos se usan solo con fórmula médica. Recomendaciones importantes:
+- Tómelos todos los días, aunque se sienta bien y aunque la presión ya esté normal.
+- No los suspenda, no cambie la dosis y no los combine por su cuenta.
+- No se automedique con antiinflamatorios para el dolor sin consultar.
+- Si nota efectos molestos, consulte a su médico o al químico farmacéutico: casi siempre hay alternativas.
 
-### ¿El ajo o el limón bajan la presión?
+## Presión alta en el embarazo
+La presión alta durante el embarazo requiere control especializado, porque puede afectar a la madre y al bebé. Algunos medicamentos para la presión, como el enalapril o el losartán, no deben usarse durante el embarazo. Si toma uno de ellos y planea un embarazo, hable con su médico antes de buscarlo; si queda en embarazo, consulte de inmediato, sin suspender por su cuenta.
 
-Su efecto es pequeño y no reemplaza el tratamiento. No suspendas tus medicamentos por remedios caseros.
+Vaya a urgencias si en el embarazo presenta dolor de cabeza intenso, visión borrosa o luces, dolor en la parte alta del abdomen, hinchazón súbita de cara o manos, o dificultad para respirar.
 
-### ¿Puedo tomar café si soy hipertenso?
+## Señales de alarma: cuándo ir a urgencias
+Busque atención inmediata si la presión está muy alta (por ejemplo, 180/110 mmHg o más) y además tiene dolor en el pecho, dificultad para respirar, debilidad o adormecimiento de un lado del cuerpo, dificultad para hablar, confusión, dolor de cabeza súbito e intenso o pérdida de visión. Si la presión está muy alta pero no tiene síntomas, consulte a su médico ese mismo día. No tome medicamentos debajo de la lengua para bajarla rápido: una caída brusca también puede ser peligrosa.
 
-En cantidades moderadas suele ser aceptable, pero puede subir la presión por un rato. No lo tomes justo antes de medirte.
+## ¿«Presión alta en el ojo» es lo mismo?
+No. La «presión alta en el ojo» se refiere a la presión dentro del ojo (hipertensión ocular), relacionada con el glaucoma, y la mide el oftalmólogo. Es distinta de la presión arterial alta, aunque esta también puede dañar la retina con el tiempo.
 
-### ¿La hipertensión es para toda la vida?
+## Cómo medirse la presión en casa
+- Use un tensiómetro automático de brazo validado; los de muñeca son menos confiables.
+- Descanse 5 minutos sentado, con la espalda apoyada, los pies en el piso y el brazo apoyado a la altura del corazón.
+- No hable ni mire el celular durante la medición.
+- Tome dos medidas en la mañana y dos en la noche, antes de los medicamentos, durante los días que le indique su médico, y anótelas.
+- Lleve el registro a la consulta.
 
-En la mayoría de los casos es una condición crónica. Con buenos hábitos algunas personas reducen la dosis o el número de medicamentos, siempre con control médico.
+## Cuándo consultar a su médico o al químico farmacéutico
+Consulte si sus mediciones en casa están por encima de lo que le indicó el médico, si tiene efectos molestos con sus medicamentos, si va a iniciar otro medicamento (incluidos los de venta libre) o si planea un embarazo. El químico farmacéutico puede ayudarle a entender su tratamiento, revisar interacciones y enseñarle a medir la presión.
+
+Este contenido es educativo y no reemplaza la consulta médica.
 
 ## Fuentes
 
-- Organización Mundial de la Salud. [Hipertensión](https://www.who.int/es/news-room/fact-sheets/detail/hypertension).
-- Organización Mundial de la Salud. [Reducir el consumo de sal](https://www.who.int/es/news-room/fact-sheets/detail/salt-reduction).
+- Cuenta de Alto Costo. Día mundial de la hipertensión 2026. [Ver fuente](https://cuentadealtocosto.org/noticias/dia-mundial-de-la-hipertension-2026/)
+- OMS. Global report on hypertension 2025. [Ver fuente](https://www.who.int/publications/i/item/9789240115569)
+- OMS. Uncontrolled high blood pressure puts over a billion people at risk (23-09-2025). [Ver fuente](https://www.who.int/news/item/23-09-2025-uncontrolled-high-blood-pressure-puts-over-a-billion-people-at-risk)
+- ESC. 2024 ESC Guidelines for the Management of Elevated Blood Pressure and Hypertension. [Ver fuente](https://www.escardio.org/Guidelines/Clinical-Practice-Guidelines/elevated-blood-pressure-and-hypertension)
+- ACC. New in Clinical Guidance: High Blood Pressure Focus of New ACC/AHA Guideline (01-10-2025). [Ver fuente](https://www.acc.org/latest-in-cardiology/articles/2025/10/01/01/new-in-clinical-guidance-hbp)
+- AEMPS-CIMA. Fichas técnicas de [losartán](https://cima.aemps.es/cima/dochtml/ft/67729/FT_67729.html) y [enalapril](https://cima.aemps.es/cima/dochtml/ft/63355/FT_63355.html)

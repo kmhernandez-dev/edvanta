@@ -1,63 +1,65 @@
-La metformina es el medicamento más usado para tratar la diabetes tipo 2. Baja el azúcar en sangre porque reduce la glucosa que produce el hígado y mejora la respuesta del cuerpo a la insulina. También se usa en algunas personas con prediabetes y en el síndrome de ovario poliquístico. No es un medicamento para bajar de peso: en algunas personas produce una pérdida pequeña, pero no está indicada para eso.
+> **Importante:** La metformina es un medicamento de venta con fórmula médica. La información proviene de la ficha técnica oficial y de los Standards of Care in Diabetes 2026 de la ADA.
 
-> **En resumen**
-> - Se toma con las comidas para reducir las molestias digestivas.
-> - Por sí sola rara vez causa hipoglucemia.
-> - Su uso de años puede bajar la vitamina B12: se recomienda medirla.
-> - Requiere controlar la función renal.
+## ¿Para qué sirve la metformina?
+La metformina sirve para tratar la diabetes tipo 2, sobre todo en personas con sobrepeso, cuando la alimentación y el ejercicio no son suficientes para controlar el azúcar en la sangre. Puede usarse sola o junto con otros medicamentos para la diabetes o con insulina. En niños desde los 10 años también puede usarse, siempre con indicación médica.
 
-## Para qué sirve
+Es uno de los medicamentos más usados en el mundo para la diabetes tipo 2 y lleva muchos años en uso. Las guías actuales la consideran una opción inicial habitual, aunque su médico puede preferir o agregar otros medicamentos si usted tiene enfermedad del corazón o de los riñones.
 
-- [Diabetes tipo 2](/articulos/sintomas-de-diabetes-tipo-2): suele ser el primer medicamento.
-- Prediabetes con alto riesgo, por indicación médica.
-- Síndrome de ovario poliquístico, en algunos casos.
+## ¿Cómo actúa la metformina?
+La metformina disminuye la cantidad de glucosa que produce el hígado y ayuda a que el cuerpo responda mejor a la insulina. A diferencia de otros medicamentos, por sí sola no hace que el azúcar baje demasiado (hipoglucemia).
 
-## Cómo tomarla
+## ¿Qué significa "metformina 850" o "metformina 500 mg"?
+Los números indican la cantidad de medicamento en cada tableta (500, 850 o 1.000 mg). La dosis que usted debe tomar, cuántas veces al día y si debe aumentarse la define su médico, según su glucosa y la función de sus riñones. No cambie la dosis por su cuenta.
 
-- Con las comidas o al final de ellas.
-- El médico suele empezar con una dosis baja y subirla poco a poco para que el estómago se acostumbre.
-- Existen presentaciones de liberación prolongada que suelen tolerarse mejor; se tragan enteras.
-- No la suspendas sin consultar.
+## ¿Cómo se toma la metformina?
+- Se toma por vía oral, durante o después de las comidas.
+- El médico suele iniciar con una dosis baja y aumentarla poco a poco; esto ayuda a que el estómago se acostumbre.
+- Si olvidó una dosis, no tome doble en la siguiente; consulte al químico farmacéutico si tiene dudas.
 
-## Efectos secundarios
+## Efectos secundarios de la metformina
+Según la ficha técnica, los efectos más frecuentes son digestivos: náuseas, vómito, diarrea, dolor de estómago y pérdida del apetito. Suelen aparecer al comienzo y desaparecen solos en la mayoría de las personas. Tomarla con las comidas y aumentar la dosis poco a poco ayuda. También puede cambiar el sabor de los alimentos.
 
-- **Frecuentes, sobre todo al inicio:** náuseas, diarrea, gases, dolor abdominal y sabor metálico. Suelen mejorar en unas semanas.
-- **Déficit de vitamina B12** en uso prolongado: puede causar anemia u hormigueo en pies y manos.
-- **Acidosis láctica:** es muy rara, pero grave. Se presenta sobre todo en personas con enfermedad renal avanzada, insuficiencia hepática, deshidratación grave o infecciones severas. Síntomas: dolor muscular intenso, respiración rápida, dolor abdominal, somnolencia. Requiere urgencias.
+Con el uso prolongado, la metformina puede disminuir la absorción de vitamina B12. Si siente hormigueo en los pies, cansancio o le encuentran anemia, comente a su médico que toma metformina, para que valore medir la vitamina B12.
 
-## Cuándo se suspende temporalmente
+Un efecto muy raro pero grave es la acidosis láctica. Es más probable si los riñones dejan de funcionar bien de repente, por ejemplo por deshidratación. Sus señales son falta de aire, dolor abdominal, calambres, debilidad intensa y sensación de frío. Si las presenta, busque atención médica de inmediato.
 
-- Antes de algunos estudios con medio de contraste yodado, según la función renal y la indicación del médico.
-- Durante enfermedades con vómito, diarrea o deshidratación importante.
-- Antes de cirugías mayores.
+## Contraindicaciones de la metformina
+La ficha técnica indica que no se debe usar en estos casos:
+- Alergia a la metformina o a los componentes de la tableta.
+- Acidosis metabólica aguda (como la cetoacidosis diabética) o precoma diabético.
+- Enfermedad renal grave.
+- Situaciones agudas que pueden afectar el riñón, como deshidratación, infección grave o shock.
+- Enfermedades que reducen el oxígeno en los tejidos, como insuficiencia cardiaca descompensada, insuficiencia respiratoria o infarto reciente.
+- Enfermedad del hígado, intoxicación por alcohol o alcoholismo.
+Por eso su médico revisará la función de sus riñones antes de iniciarla y al menos una vez al año.
 
-Sigue siempre la indicación de tu médico sobre cuándo suspenderla y retomarla.
-
-## Interacciones
-
-- **Alcohol:** el consumo excesivo aumenta el riesgo de acidosis láctica.
-- **Otros medicamentos para la diabetes** (insulina, sulfonilureas): combinados sí pueden causar hipoglucemia.
-- **Algunos medicamentos que afectan el riñón:** el médico evaluará la combinación.
+## ¿Cuándo se suspende temporalmente?
+Consulte a su médico o al químico farmacéutico, porque puede ser necesario suspenderla por un tiempo, si:
+- Tiene vómito, diarrea intensa o fiebre alta y no puede tomar líquidos.
+- Le van a hacer un examen con medio de contraste yodado (por ejemplo, algunas tomografías).
+- Le van a hacer una cirugía con anestesia general, raquídea o epidural.
+La ficha técnica indica que, en estos casos, no se reinicia hasta al menos 48 horas después y cuando el médico confirme que los riñones funcionan bien.
 
 ## ¿La metformina sirve para bajar de peso?
+La metformina no es un medicamento para bajar de peso. Su indicación es la diabetes tipo 2. Algunas personas con diabetes pierden un poco de peso al tomarla, pero no debe usarse con ese fin sin fórmula médica. Si su objetivo es bajar de peso, hable con su médico sobre las opciones adecuadas para usted.
 
-En personas con diabetes o resistencia a la insulina puede producir una pérdida de peso modesta o evitar que suba. En personas sin estas condiciones, su efecto sobre el peso es pequeño y no compensa sus efectos secundarios. Si buscas bajar de peso, empieza por [este artículo](/articulos/como-bajar-de-peso-de-forma-saludable).
+## Metformina, embarazo y lactancia
+Si está embarazada o planea estarlo, consulte a su médico: la ficha técnica recomienda usar insulina para controlar la glucosa durante el embarazo. La metformina pasa a la leche materna y la ficha técnica no recomienda la lactancia durante el tratamiento. Su médico le indicará qué hacer en su caso.
 
-## Preguntas frecuentes
+## Interacciones: qué decirle a su médico
+Informe si toma o va a tomar:
+- Alcohol: aumenta el riesgo de acidosis láctica; evite el consumo excesivo.
+- Antiinflamatorios como ibuprofeno o naproxeno, diuréticos o medicamentos para la presión: pueden afectar los riñones.
+- Corticoides: pueden subir el azúcar.
+- Otros medicamentos que pueden aumentar los niveles de metformina, como cimetidina, dolutegravir o trimetoprim.
 
-### ¿La metformina daña los riñones?
-
-No los daña. Lo que ocurre es que se elimina por el riñón, y si la función renal está muy disminuida, se ajusta la dosis o se suspende.
-
-### ¿Puedo tomar metformina en ayunas?
-
-No se recomienda: aumenta las molestias digestivas. Tómala con comida.
-
-### ¿Cuánto tarda en hacer efecto?
-
-Empieza a actuar en días, pero su efecto completo sobre la hemoglobina glicosilada se ve en unos 3 meses.
+## Consejos prácticos
+- Tome la metformina con las comidas.
+- No la suspenda por su cuenta si tiene molestias leves: consulte primero.
+- Lleve sus exámenes de riñón y de HbA1c a los controles.
+- Guarde las tabletas en su empaque original, fuera del alcance de los niños.
 
 ## Fuentes
 
-- MedlinePlus en español. [Metformina](https://medlineplus.gov/spanish/druginfo/meds/a696005-es.html).
-- Organización Mundial de la Salud. [Diabetes](https://www.who.int/es/news-room/fact-sheets/detail/diabetes).
+- [Ficha técnica Metformina Cinfa 850 mg comprimidos recubiertos con película EFG (AEMPS-CIMA)](https://cima.aemps.es/cima/dochtml/ft/68167/FT_68167.html)
+- [ADA. 9. Pharmacologic Approaches to Glycemic Treatment: Standards of Care in Diabetes—2026 (texto completo en PMC)](https://pmc.ncbi.nlm.nih.gov/articles/PMC12690185)
