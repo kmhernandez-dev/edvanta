@@ -100,7 +100,7 @@ export function ModalityBadge({ modality }) {
   if (!modality || modality === 'unknown') return null;
   const label = MODALITY_LABELS[modality] || modality;
   return (
-    <span className="inline-flex items-center rounded-full bg-slate-100 text-slate-600 border border-slate-200 px-2 py-0.5 text-[10px] font-medium">
+    <span className="inline-flex items-center rounded-full bg-edvanta-soft text-edvanta-muted border border-edvanta-border px-2 py-0.5 text-[10px] font-medium">
       {label}
     </span>
   );

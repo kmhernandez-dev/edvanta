@@ -49,7 +49,7 @@ function Plantilla({ plantilla, datos }) {
           <button
             type="button"
             onClick={copiar}
-            className="inline-flex min-h-10 items-center gap-1.5 rounded-xl border border-edvanta-border bg-white px-4 text-xs font-bold text-edvanta-deep transition hover:border-edvanta-blue/40 hover:text-edvanta-blue"
+            className="ed-btn ed-btn--secondary ed-btn--sm"
           >
             {copiado
               ? <><Check className="h-3.5 w-3.5 text-edvanta-teal" aria-hidden="true" />Copiado</>
@@ -57,7 +57,7 @@ function Plantilla({ plantilla, datos }) {
           </button>
           <a
             href={mailto}
-            className="inline-flex min-h-10 items-center gap-1.5 rounded-xl bg-edvanta-blue px-4 text-xs font-bold text-white transition hover:bg-edvanta-bluedark"
+            className="ed-btn ed-btn--primary ed-btn--sm"
           >
             <Send className="h-3.5 w-3.5" aria-hidden="true" />
             Abrir en mi correo

@@ -62,19 +62,19 @@ function buildFallbackPath(slug) {
 
 function CourseLink({ course }) {
   return (
-    <Link to={`/cursos/${course.slug}`} className="mt-4 flex items-center gap-3 rounded-lg border border-slate-200 bg-white p-3 transition hover:border-teal-300 hover:bg-teal-50/30">
+    <Link to={`/cursos/${course.slug}`} className="mt-4 flex items-center gap-3 ds-card p-3 transition hover:border-edvanta-teal hover:bg-edvanta-mint/30">
       {course.image_url ? (
         <img src={course.image_url} alt="" className="h-14 w-20 rounded-md object-cover" loading="lazy" />
       ) : (
-        <span className="inline-flex h-14 w-20 items-center justify-center rounded-md bg-slate-100 text-slate-500">
+        <span className="inline-flex h-14 w-20 items-center justify-center rounded-md bg-edvanta-soft text-edvanta-subtle">
           <BookOpenCheck className="h-5 w-5" aria-hidden="true" />
         </span>
       )}
       <span className="min-w-0 flex-1">
-        <span className="block text-xs font-bold uppercase text-teal-700">{course.provider}</span>
+        <span className="block text-xs font-bold uppercase text-edvanta-tealdark">{course.provider}</span>
         <span className="mt-1 block text-sm font-bold leading-5 text-edvanta-deep">{course.title}</span>
       </span>
-      <ArrowRight className="h-4 w-4 shrink-0 text-slate-400" aria-hidden="true" />
+      <ArrowRight className="h-4 w-4 shrink-0 text-edvanta-subtle" aria-hidden="true" />
     </Link>
   );
 }
@@ -164,7 +164,7 @@ export default function RutaProfesionalPage() {
           <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
             <div className="h-5 w-48 animate-pulse rounded bg-slate-200" />
             <div className="mt-8 h-14 max-w-3xl animate-pulse rounded bg-slate-200" />
-            <div className="mt-5 h-24 max-w-3xl animate-pulse rounded bg-slate-100" />
+            <div className="mt-5 h-24 max-w-3xl animate-pulse rounded bg-edvanta-soft" />
           </div>
         </main>
         <SiteFooter />
@@ -178,14 +178,14 @@ export default function RutaProfesionalPage() {
         <SiteHeader />
         <main className="min-h-[70vh] bg-edvanta-bg">
           <div className="mx-auto max-w-3xl px-4 py-20 text-center sm:px-6">
-            <Route className="mx-auto h-10 w-10 text-teal-700" aria-hidden="true" />
+            <Route className="mx-auto h-10 w-10 text-edvanta-tealdark" aria-hidden="true" />
             <h1 className="mt-5 text-3xl font-bold text-edvanta-deep">No pudimos abrir esta ruta</h1>
-            <p className="mt-3 text-slate-600">{error || 'La ruta solicitada no está disponible.'}</p>
+            <p className="mt-3 text-edvanta-muted">{error || 'La ruta solicitada no está disponible.'}</p>
             <div className="mt-7 flex flex-wrap justify-center gap-3">
-              <button type="button" onClick={() => setReloadKey(value => value + 1)} className="inline-flex min-h-11 items-center gap-2 rounded-lg bg-edvanta-blue px-5 text-sm font-bold text-white">
+              <button type="button" onClick={() => setReloadKey(value => value + 1)} className="ed-btn ed-btn--primary">
                 <RefreshCw className="h-4 w-4" aria-hidden="true" /> Reintentar
               </button>
-              <Link to="/rutas" className="inline-flex min-h-11 items-center gap-2 rounded-lg border border-slate-300 bg-white px-5 text-sm font-bold text-slate-700">
+              <Link to="/rutas" className="inline-flex min-h-11 items-center gap-2 rounded-lg border border-edvanta-border bg-white px-5 text-sm font-bold text-edvanta-muted">
                 <ArrowLeft className="h-4 w-4" aria-hidden="true" /> Ver todas
               </Link>
             </div>
@@ -202,19 +202,19 @@ export default function RutaProfesionalPage() {
       <main className="bg-edvanta-bg">
         <section className="relative overflow-hidden border-b border-edvanta-border"><div className="ed-backdrop" aria-hidden="true" /><div className="ed-grid" aria-hidden="true" />
           <div className="relative mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
-            <nav className="flex flex-wrap items-center gap-2 text-sm text-slate-500" aria-label="Migas de pan">
-              <Link to="/" className="hover:text-teal-700">Inicio</Link><span>/</span>
-              <Link to="/rutas" className="hover:text-teal-700">Rutas</Link><span>/</span>
-              <span className="font-semibold text-slate-700">{path.name}</span>
+            <nav className="flex flex-wrap items-center gap-2 text-sm text-edvanta-subtle" aria-label="Migas de pan">
+              <Link to="/" className="hover:text-edvanta-tealdark">Inicio</Link><span>/</span>
+              <Link to="/rutas" className="hover:text-edvanta-tealdark">Rutas</Link><span>/</span>
+              <span className="font-semibold text-edvanta-muted">{path.name}</span>
             </nav>
 
             <div className="mt-9 grid gap-10 lg:grid-cols-[minmax(0,1fr)_340px] lg:items-end">
               <div>
                 <p className="ed-eyebrow">Ruta para {path.career?.name}</p>
                 <h1 className="mt-3 max-w-4xl text-4xl font-extrabold leading-[1.08] tracking-[-0.03em] text-edvanta-blue sm:text-5xl">{path.name}</h1>
-                <p className="mt-5 max-w-3xl text-lg leading-8 text-slate-600">{path.summary}</p>
-                <div className="mt-6 flex flex-wrap gap-4 text-sm font-semibold text-slate-600">
-                  <span className="inline-flex items-center gap-2"><BookOpenCheck className="h-4 w-4 text-teal-700" aria-hidden="true" /> {path.steps?.length || 0} pasos</span>
+                <p className="mt-5 max-w-3xl text-lg leading-8 text-edvanta-muted">{path.summary}</p>
+                <div className="mt-6 flex flex-wrap gap-4 text-sm font-semibold text-edvanta-muted">
+                  <span className="inline-flex items-center gap-2"><BookOpenCheck className="h-4 w-4 text-edvanta-tealdark" aria-hidden="true" /> {path.steps?.length || 0} pasos</span>
                   <span className="inline-flex items-center gap-2"><Clock3 className="h-4 w-4 text-indigo-600" aria-hidden="true" /> {path.estimated_duration}</span>
                 </div>
               </div>
@@ -224,9 +224,9 @@ export default function RutaProfesionalPage() {
                 )}
               <div className="border-l-4 border-indigo-500 pl-5">
                 <p className="text-sm font-bold text-edvanta-deep">Pensada para</p>
-                <p className="mt-2 text-sm leading-6 text-slate-600">{path.audience}</p>
+                <p className="mt-2 text-sm leading-6 text-edvanta-muted">{path.audience}</p>
                 {path.career?.slug && (
-                  <Link to={`/carreras/${path.career.slug}`} className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-teal-700 hover:text-teal-900">
+                  <Link to={`/carreras/${path.career.slug}`} className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-edvanta-tealdark hover:text-teal-900">
                     Ver carrera completa <ArrowRight className="h-4 w-4" aria-hidden="true" />
                   </Link>
                 )}
@@ -239,9 +239,9 @@ export default function RutaProfesionalPage() {
         <section className="mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:px-6 lg:grid-cols-[minmax(0,1fr)_300px] lg:px-8">
           <div>
             <div className="mb-8">
-              <p className="text-sm font-bold text-teal-700">Secuencia recomendada</p>
+              <p className="text-sm font-bold text-edvanta-tealdark">Secuencia recomendada</p>
               <h2 className="mt-1 text-2xl font-bold text-edvanta-deep">Del contexto a la oportunidad</h2>
-              <p className="mt-3 max-w-2xl text-sm leading-6 text-slate-600">Puedes adaptar el ritmo, pero conviene conservar la lógica de fundamentos, aplicación y evidencia profesional.</p>
+              <p className="mt-3 max-w-2xl text-sm leading-6 text-edvanta-muted">Puedes adaptar el ritmo, pero conviene conservar la lógica de fundamentos, aplicación y evidencia profesional.</p>
             </div>
 
             <div className="space-y-9">
@@ -255,20 +255,20 @@ export default function RutaProfesionalPage() {
                     </div>
                     <ol className="space-y-3">
                       {group.items.map((step) => (
-                        <li key={step.id} className="grid gap-4 rounded-lg border border-slate-200 bg-white p-5 shadow-sm sm:grid-cols-[48px_minmax(0,1fr)]">
+                        <li key={step.id} className="grid gap-4 ds-card p-5 shadow-sm sm:grid-cols-[48px_minmax(0,1fr)]">
                           <span className="inline-flex h-12 w-12 items-center justify-center rounded-lg bg-edvanta-blue text-sm font-bold text-white">
                             {String(step.step_order).padStart(2, '0')}
                           </span>
                           <div>
                             <div className="flex flex-wrap items-center gap-2">
                               <h4 className="text-lg font-bold text-edvanta-deep">{step.title}</h4>
-                              {step.is_optional && <span className="text-xs font-bold text-slate-500">Opcional</span>}
+                              {step.is_optional && <span className="text-xs font-bold text-edvanta-subtle">Opcional</span>}
                             </div>
-                            <p className="mt-2 text-sm leading-6 text-slate-600">{step.description}</p>
-                            {step.skill && <p className="mt-3 text-xs font-bold text-teal-700">Competencia: {step.skill.name}</p>}
+                            <p className="mt-2 text-sm leading-6 text-edvanta-muted">{step.description}</p>
+                            {step.skill && <p className="mt-3 text-xs font-bold text-edvanta-tealdark">Competencia: {step.skill.name}</p>}
                             {(step.courses || []).map(course => <CourseLink key={course.id || course.slug} course={course} />)}
                             {!step.courses?.length && ['portfolio', 'career', 'opportunity'].includes(step.step_type) && (
-                              <p className="mt-4 border-l-2 border-slate-200 pl-3 text-xs leading-5 text-slate-500">Este paso queda preparado para herramientas y oportunidades verificadas. No muestra datos de demostracion como si fueran reales.</p>
+                              <p className="mt-4 border-l-2 border-edvanta-border pl-3 text-xs leading-5 text-edvanta-subtle">Este paso queda preparado para herramientas y oportunidades verificadas. No muestra datos de demostracion como si fueran reales.</p>
                             )}
                           </div>
                         </li>
@@ -281,20 +281,20 @@ export default function RutaProfesionalPage() {
           </div>
 
           <aside className="lg:sticky lg:top-24 lg:self-start">
-            <div className="rounded-lg border border-slate-200 bg-white p-5">
+            <div className="ds-card p-5">
               <h2 className="text-lg font-bold text-edvanta-deep">Lo que deberías demostrar</h2>
               <ul className="mt-4 space-y-3">
                 {(path.outcomes || []).map(outcome => (
-                  <li key={outcome} className="flex gap-2 text-sm leading-6 text-slate-600">
-                    <CheckCircle2 className="mt-1 h-4 w-4 shrink-0 text-teal-700" aria-hidden="true" /> {outcome}
+                  <li key={outcome} className="flex gap-2 text-sm leading-6 text-edvanta-muted">
+                    <CheckCircle2 className="mt-1 h-4 w-4 shrink-0 text-edvanta-tealdark" aria-hidden="true" /> {outcome}
                   </li>
                 ))}
               </ul>
             </div>
-            <Link to={`/cursos?career=${path.career?.slug || ''}`} className="mt-4 inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-lg bg-edvanta-blue px-4 text-sm font-bold text-white hover:bg-[#102862]">
+            <Link to={`/cursos?career=${path.career?.slug || ''}`} className="ed-btn ed-btn--primary mt-4 w-full">
               Explorar cursos relacionados <ExternalLink className="h-4 w-4" aria-hidden="true" />
             </Link>
-            <Link to="/rutas" className="mt-2 inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-lg border border-slate-300 bg-white px-4 text-sm font-bold text-slate-700 hover:border-teal-600 hover:text-teal-700">
+            <Link to="/rutas" className="mt-2 inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-lg border border-edvanta-border bg-white px-4 text-sm font-bold text-edvanta-muted hover:border-edvanta-teal hover:text-edvanta-tealdark">
               Comparar otras rutas
             </Link>
           </aside>

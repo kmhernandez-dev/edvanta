@@ -1,9 +1,10 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, ArrowRight, Compass, RefreshCw, Sparkles } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Compass, Heart, RefreshCw, Sparkles, Target } from 'lucide-react';
 import SiteHeader from '../components/edvanta/SiteHeader';
 import SiteFooter from '../components/edvanta/SiteFooter';
-import { ImageSlot } from '../components/edvanta/ui';
+import { Btn } from '../components/edvanta/ui';
+import { HeroRuta } from '../components/edvanta/heroes';
 import { updatePageSeo } from '../utils/seo';
 import { interesesVocacion, fortalezasVocacion, areasLaboralesVocacion, resultadoVocacion } from '../data/careerHub';
 
@@ -29,10 +30,10 @@ function OpcionCandidato({ activo, onClick, titulo, descripcion }) {
       type="button"
       onClick={onClick}
       aria-pressed={activo}
-      className={`flex flex-col items-start gap-1 rounded-xl border p-4 text-left transition ${activo ? 'border-teal-600 bg-teal-50 shadow-sm' : 'border-slate-200 bg-white hover:border-teal-300 hover:bg-teal-50/40'}`}
+      className={`flex flex-col items-start gap-1 rounded-xl border p-4 text-left transition ${activo ? 'border-edvanta-teal bg-edvanta-mint shadow-sm' : 'border-edvanta-border bg-white hover:border-edvanta-teal hover:bg-edvanta-mint/40'}`}
     >
-      <span className={`text-sm font-bold ${activo ? 'text-teal-800' : 'text-edvanta-deep'}`}>{titulo}</span>
-      {descripcion && <span className="text-xs leading-5 text-slate-500">{descripcion}</span>}
+      <span className={`text-sm font-bold ${activo ? 'text-edvanta-tealdark' : 'text-edvanta-deep'}`}>{titulo}</span>
+      {descripcion && <span className="text-xs leading-5 text-edvanta-subtle">{descripcion}</span>}
     </button>
   );
 }
@@ -70,44 +71,33 @@ export default function Vocacion() {
     <>
       <SiteHeader />
       <main className="min-h-screen bg-edvanta-bg">
-        <section className="bg-edvanta-deep py-14 lg:py-16">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <Link to="/carreras" className="inline-flex items-center gap-2 text-sm font-bold text-white/80 transition hover:text-white">
+        {/* Héroe D: el propio test dibujado como recorrido. */}
+        <HeroRuta
+          breadcrumb={(
+            <Link to="/carreras" className="mb-8 inline-flex items-center gap-2 text-sm font-bold text-edvanta-muted transition hover:text-edvanta-blue">
               <ArrowLeft className="h-4 w-4" aria-hidden="true" /> Volver a Carreras
             </Link>
-            <div className="mt-6 flex max-w-3xl items-start gap-4">
-              <span className="inline-flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-white/15 text-white backdrop-blur">
-                <Compass className="h-7 w-7" aria-hidden="true" />
-              </span>
-              <div>
-                <p className="text-sm font-bold uppercase tracking-wide text-edvanta-light">Orientación vocacional</p>
-                <h1 className="mt-2 text-3xl font-bold leading-tight text-white sm:text-4xl">
-                  Descubre tu mejor encaje en la industria farmacéutica
-                </h1>
-                <p className="mt-3 text-base leading-7 text-edvanta-light">
-                  Responde 3 preguntas cortas y obtén una recomendación personalizada con carreras, formación y primer paso.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
+          )}
+          eyebrow="Orientación vocacional"
+          title="Descubre tu mejor encaje en la industria farmacéutica"
+          highlight="tu mejor encaje"
+          lead="Responde 3 preguntas cortas y obtén una recomendación personalizada con carreras, formación y primer paso."
+          actions={<Btn href="#test" size="lg" iconRight={ArrowRight}>Empezar el test</Btn>}
+          steps={[
+            { icon: Heart, title: 'Interés', desc: 'Lo que te gusta hacer' },
+            { icon: Sparkles, title: 'Fortaleza', desc: 'En qué eres bueno' },
+            { icon: Compass, title: 'Área', desc: 'Dónde quieres trabajar' },
+            { icon: Target, title: 'Resultado', desc: 'Carreras y primer paso' },
+          ]}
+        />
 
-        {/* Espacio reservado para la imagen de esta landing */}
-        <div className="mx-auto max-w-7xl px-4 pt-10 sm:px-6 lg:px-8">
-          <ImageSlot
-            ratio="banner"
-            label="Estudiante decidiendo su camino profesional"
-            hint="Foto horizontal 16:9, mínimo 1600 × 900 px, ambiente universitario o de orientación."
-          />
-        </div>
-
-        <section className="mx-auto max-w-5xl px-4 py-12 sm:px-6 lg:px-8">
+        <section id="test" className="mx-auto max-w-5xl scroll-mt-28 px-4 py-12 sm:px-6 lg:px-8">
           <Progreso paso={paso} />
 
           {paso === 'interes' && (
-            <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+            <div className="rounded-2xl border border-edvanta-border bg-white p-6 shadow-sm sm:p-8">
               <h2 className="text-2xl font-bold text-edvanta-deep">1. ¿Qué te gusta hacer?</h2>
-              <p className="mt-2 text-sm text-slate-600">Elige la actividad que más te conecta con tu trabajo del día a día.</p>
+              <p className="mt-2 text-sm text-edvanta-muted">Elige la actividad que más te conecta con tu trabajo del día a día.</p>
               <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
                 {intereses.map(item => (
                   <OpcionCandidato
@@ -123,7 +113,7 @@ export default function Vocacion() {
                 type="button"
                 onClick={avanzar}
                 disabled={!interes}
-                className="mt-7 inline-flex min-h-12 items-center gap-2 rounded-xl bg-edvanta-blue px-6 text-sm font-bold text-white transition enabled:hover:bg-edvanta-bluedark disabled:cursor-not-allowed disabled:opacity-40"
+                className="ed-btn ed-btn--primary mt-7"
               >
                 Continuar <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </button>
@@ -131,9 +121,9 @@ export default function Vocacion() {
           )}
 
           {paso === 'fortaleza' && (
-            <div className="animate-fade-in rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+            <div className="animate-fade-in rounded-2xl border border-edvanta-border bg-white p-6 shadow-sm sm:p-8">
               <h2 className="text-2xl font-bold text-edvanta-deep">¿Cuál es tu mayor fortaleza?</h2>
-              <p className="mt-2 text-sm text-slate-600">Reconocerla te ayuda a elegir un rol donde brilles.</p>
+              <p className="mt-2 text-sm text-edvanta-muted">Reconocerla te ayuda a elegir un rol donde brilles.</p>
               <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
                 {fortalezas.map(item => (
                   <OpcionCandidato
@@ -146,14 +136,14 @@ export default function Vocacion() {
                 ))}
               </div>
               <div className="mt-7 flex gap-3">
-                <button type="button" onClick={() => setPaso('interes')} className="inline-flex min-h-12 items-center gap-2 rounded-lg border border-slate-300 bg-white px-5 text-sm font-bold text-slate-700 hover:bg-slate-50">
+                <button type="button" onClick={() => setPaso('interes')} className="inline-flex min-h-12 items-center gap-2 rounded-lg border border-edvanta-border bg-white px-5 text-sm font-bold text-edvanta-muted hover:bg-edvanta-bg">
                   <ArrowLeft className="h-4 w-4" aria-hidden="true" /> Atrás
                 </button>
                 <button
                   type="button"
                   onClick={avanzar}
                   disabled={!fortaleza}
-                  className="min-h-12 flex-1 rounded-lg bg-edvanta-blue px-6 text-sm font-bold text-white transition enabled:hover:bg-edvanta-bluedark disabled:cursor-not-allowed disabled:opacity-40"
+                  className="ed-btn ed-btn--primary flex-1"
                 >
                   Continuar
                 </button>
@@ -162,9 +152,9 @@ export default function Vocacion() {
           )}
 
           {paso === 'area' && (
-            <div className="animate-fade-in rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+            <div className="animate-fade-in rounded-2xl border border-edvanta-border bg-white p-6 shadow-sm sm:p-8">
               <h2 className="text-2xl font-bold text-edvanta-deep">¿En qué entorno prefieres trabajar?</h2>
-              <p className="mt-2 text-sm text-slate-600">Esto define el tipo de equipo y de resultados con los que convivirás.</p>
+              <p className="mt-2 text-sm text-edvanta-muted">Esto define el tipo de equipo y de resultados con los que convivirás.</p>
               <div className="mt-6 grid gap-3 sm:grid-cols-2">
                 {areas.map(item => (
                   <OpcionCandidato
@@ -177,14 +167,14 @@ export default function Vocacion() {
                 ))}
               </div>
               <div className="mt-7 flex gap-3">
-                <button type="button" onClick={() => setPaso('fortaleza')} className="inline-flex min-h-12 items-center gap-2 rounded-lg border border-slate-300 bg-white px-5 text-sm font-bold text-slate-700 hover:bg-slate-50">
+                <button type="button" onClick={() => setPaso('fortaleza')} className="inline-flex min-h-12 items-center gap-2 rounded-lg border border-edvanta-border bg-white px-5 text-sm font-bold text-edvanta-muted hover:bg-edvanta-bg">
                   <ArrowLeft className="h-4 w-4" aria-hidden="true" /> Atrás
                 </button>
                 <button
                   type="button"
                   onClick={avanzar}
                   disabled={!area}
-                  className="min-h-12 flex-1 rounded-lg bg-edvanta-blue px-6 text-sm font-bold text-white transition enabled:hover:bg-edvanta-bluedark disabled:cursor-not-allowed disabled:opacity-40"
+                  className="ed-btn ed-btn--primary flex-1"
                 >
                   Ver mi resultado
                 </button>
@@ -201,20 +191,20 @@ export default function Vocacion() {
               </div>
               <div className="p-6 sm:p-8">
                 <div>
-                  <p className="text-xs font-bold uppercase tracking-wide text-teal-700">Carreras recomendadas</p>
+                  <p className="text-xs font-bold uppercase tracking-wide text-edvanta-tealdark">Carreras recomendadas</p>
                   <div className="mt-3 flex flex-wrap gap-2">
                     {resultado.carreras.map(slug => (
-                      <Link key={slug} to={`/carreras/${slug}`} className="rounded-full border border-teal-200 bg-teal-50 px-4 py-1.5 text-sm font-bold text-teal-800 transition hover:bg-teal-100">
+                      <Link key={slug} to={`/carreras/${slug}`} className="rounded-full border border-teal-200 bg-edvanta-mint px-4 py-1.5 text-sm font-bold text-edvanta-tealdark transition hover:bg-teal-100">
                         Ver carrera
                       </Link>
                     ))}
                   </div>
                 </div>
                 <div className="mt-6">
-                  <p className="text-xs font-bold uppercase tracking-wide text-teal-700">Formación recomendada</p>
+                  <p className="text-xs font-bold uppercase tracking-wide text-edvanta-tealdark">Formación recomendada</p>
                   <ul className="mt-3 space-y-2">
                     {resultado.formacion.map(item => (
-                      <li key={item} className="flex items-start gap-2 text-sm text-slate-700">
+                      <li key={item} className="flex items-start gap-2 text-sm text-edvanta-muted">
                         <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-teal-500" aria-hidden="true" />{item}
                       </li>
                     ))}
@@ -225,10 +215,10 @@ export default function Vocacion() {
                   <p className="mt-1 text-sm leading-6 text-amber-900">{resultado.primerPaso}</p>
                 </div>
                 <div className="mt-8 flex flex-wrap gap-3">
-                  <button type="button" onClick={reiniciar} className="inline-flex min-h-11 items-center gap-2 rounded-lg border border-slate-300 bg-white px-5 text-sm font-bold text-slate-700 hover:bg-slate-50">
+                  <button type="button" onClick={reiniciar} className="inline-flex min-h-11 items-center gap-2 rounded-lg border border-edvanta-border bg-white px-5 text-sm font-bold text-edvanta-muted hover:bg-edvanta-bg">
                     <RefreshCw className="h-4 w-4" aria-hidden="true" /> Volver a empezar
                   </button>
-                  <Link to="/carreras" className="inline-flex min-h-11 items-center gap-2 rounded-lg bg-edvanta-blue px-5 text-sm font-bold text-white hover:bg-edvanta-bluedark">
+                  <Link to="/carreras" className="ed-btn ed-btn--primary">
                     Explorar el centro profesional <ArrowRight className="h-4 w-4" aria-hidden="true" />
                   </Link>
                 </div>

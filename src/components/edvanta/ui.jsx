@@ -12,7 +12,7 @@
  */
 
 import { Link } from 'react-router-dom';
-import { ArrowRight, ChevronRight, ImageIcon } from 'lucide-react';
+import { ArrowRight, ChevronRight, ImageIcon, Loader2 } from 'lucide-react';
 
 /* ── Texto de sección ─────────────────────────────────────── */
 
@@ -53,32 +53,43 @@ export function SectionHeading({ eyebrow, title, desc, align = 'left', tone = 'b
 
 /* ── Contenedores ─────────────────────────────────────────── */
 
+// Superficies del sistema 2.0: se alternan según lo que dice cada bloque.
+// `surface`, `tint` y `soft` se conservan por compatibilidad.
 const TONES = {
   base: '',
-  surface: 'bg-white',
-  tint: 'bg-edvanta-bg',
-  soft: 'bg-edvanta-light/60',
-  dark: 'bg-edvanta-deep text-white',
+  surface: 'ds-surface-white',
+  white: 'ds-surface-white',
+  tint: 'ds-surface-ice',
+  ice: 'ds-surface-ice',
+  soft: 'ds-surface-diagonal',
+  glow: 'ds-surface-glow',
+  aqua: 'ds-surface-aqua',
+  lavender: 'ds-surface-lavender',
+  diagonal: 'ds-surface-diagonal',
+  dark: 'ds-surface-navy',
+  navy: 'ds-surface-navy',
 };
 
-export function Section({ id, tone = 'base', bordered = false, className = '', children, ...rest }) {
+export function Section({ id, tone = 'base', bordered = false, compact = false, className = '', children, ...rest }) {
   return (
     <section
       id={id}
-      className={`${TONES[tone] || ''} ${bordered ? 'border-y border-edvanta-border' : ''} ${id ? 'scroll-mt-28' : ''} ${className}`}
+      className={`relative ${TONES[tone] || ''} ${bordered ? 'border-y border-edvanta-border/80' : ''} ${id ? 'scroll-mt-28' : ''} ${className}`}
       {...rest}
     >
-      <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-16 lg:px-8">{children}</div>
+      <div
+        className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"
+        style={{ paddingBlock: compact ? 'calc(var(--ds-section-y) * 0.6)' : 'var(--ds-section-y)' }}
+      >
+        {children}
+      </div>
     </section>
   );
 }
 
 export function Card({ as: Tag = 'div', hover = false, className = '', children, ...rest }) {
   return (
-    <Tag
-      className={`rounded-2xl border border-edvanta-border bg-white p-6 shadow-[0_1px_2px_rgba(23,34,59,.04),0_6px_20px_rgba(23,34,59,.06)] ${hover ? 'transition duration-200 hover:-translate-y-0.5 hover:border-edvanta-blue/30 hover:shadow-[0_12px_36px_rgba(23,34,59,.12)]' : ''} ${className}`}
-      {...rest}
-    >
+    <Tag className={`ds-card p-6 ${hover ? 'ds-card--interactive' : ''} ${className}`} {...rest}>
       {children}
     </Tag>
   );
@@ -86,31 +97,46 @@ export function Card({ as: Tag = 'div', hover = false, className = '', children,
 
 /* ── Botones y enlaces de acción ──────────────────────────── */
 
+// Variantes del sistema de diseño 2.0 (src/styles/edvanta-ds.css).
+// Los nombres viejos (outlineWhite) se aceptan para no romper nada.
 const BTN = {
-  primary: 'bg-edvanta-blue text-white shadow-[0_6px_18px_rgba(8,46,134,.22)] hover:bg-edvanta-bluedark hover:-translate-y-px',
-  secondary: 'bg-white text-edvanta-blue border border-edvanta-border hover:border-edvanta-blue/40 hover:bg-edvanta-light/50',
-  teal: 'bg-edvanta-teal text-white shadow-[0_6px_18px_rgba(37,167,176,.25)] hover:bg-edvanta-tealdark hover:-translate-y-px',
-  white: 'bg-white text-edvanta-blue hover:bg-edvanta-light',
-  outlineWhite: 'border border-white/40 text-white hover:bg-white/10',
-  ghost: 'text-edvanta-blue hover:bg-edvanta-light/60',
+  primary: 'ed-btn--primary',
+  gradient: 'ed-btn--gradient',
+  secondary: 'ed-btn--secondary',
+  outline: 'ed-btn--outline',
+  ghost: 'ed-btn--ghost',
+  teal: 'ed-btn--teal',
+  white: 'ed-btn--white',
+  outlineWhite: 'ed-btn--outline-white',
+  'outline-white': 'ed-btn--outline-white',
+  danger: 'ed-btn--danger',
+  link: 'ed-btn--link',
 };
+const BTN_SIZE = { sm: 'ed-btn--sm', md: '', lg: 'ed-btn--lg' };
 
-/** Botón de acción. Usa `to` para rutas internas, `href` para externas. */
+/** Clases de un botón del sistema, para elementos que no pueden usar <Btn>. */
+export const btnClass = (variant = 'primary', size = 'md', extra = '') =>
+  ['ed-btn', BTN[variant] || BTN.primary, BTN_SIZE[size] || '', extra].filter(Boolean).join(' ');
+
+/**
+ * Botón de acción. Usa `to` para rutas internas, `href` para externas.
+ * `loading` lo deja ocupado (spinner y aria-busy) sin cambiar su tamaño;
+ * `iconOnly` exige `aria-label`.
+ */
 export function Btn({
-  to, href, onClick, type = 'button', variant = 'primary', size = 'md',
-  icon: Icon, iconRight: IconRight, external = false, className = '', children, ...rest
+  to, href, onClick, type = 'button', variant = 'primary', size = 'md', block = false,
+  icon: Icon, iconRight: IconRight, external = false, loading = false, loadingLabel,
+  iconOnly = false, disabled, className = '', children, ...rest
 }) {
-  const sizes = {
-    sm: 'min-h-10 px-4 text-sm gap-1.5',
-    md: 'min-h-12 px-6 text-[15px] gap-2',
-    lg: 'min-h-14 px-7 text-base gap-2.5',
-  };
-  const cls = `inline-flex items-center justify-center rounded-xl font-semibold transition duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-edvanta-blue focus-visible:ring-offset-2 disabled:opacity-60 disabled:hover:translate-y-0 ${sizes[size]} ${BTN[variant] || BTN.primary} ${className}`;
+  const cls = btnClass(variant, size, `${block ? 'ed-btn--block' : ''} ${iconOnly ? 'ed-btn--icon' : ''} ${className}`.trim());
+  const flecha = IconRight === ArrowRight;
   const inner = (
     <>
-      {Icon && <Icon className="h-[1.1em] w-[1.1em]" aria-hidden="true" />}
-      {children}
-      {IconRight && <IconRight className="h-[1.1em] w-[1.1em]" aria-hidden="true" />}
+      {loading
+        ? <Loader2 className="animate-spin" aria-hidden="true" />
+        : Icon && <Icon aria-hidden="true" />}
+      {loading && loadingLabel ? loadingLabel : children}
+      {!loading && IconRight && <IconRight className={flecha ? 'ed-btn__arrow' : undefined} aria-hidden="true" />}
     </>
   );
   if (to) return <Link to={to} onClick={onClick} className={cls} {...rest}>{inner}</Link>;
@@ -127,7 +153,32 @@ export function Btn({
       </a>
     );
   }
-  return <button type={type} onClick={onClick} className={cls} {...rest}>{inner}</button>;
+  return (
+    <button
+      type={type}
+      onClick={onClick}
+      className={cls}
+      disabled={disabled || loading}
+      aria-busy={loading || undefined}
+      {...rest}
+    >
+      {inner}
+    </button>
+  );
+}
+
+// Nombres del sistema de diseño: el mismo <Btn> con la variante fija.
+export const PrimaryButton = (p) => <Btn variant="primary" {...p} />;
+export const SecondaryButton = (p) => <Btn variant="secondary" {...p} />;
+export const GhostButton = (p) => <Btn variant="ghost" {...p} />;
+export const OutlineButton = (p) => <Btn variant="outline" {...p} />;
+export const LinkButton = (p) => <Btn variant="link" {...p} />;
+/** Acción principal destacada (degradado discreto). Una por pantalla. */
+export const ActionButton = (p) => <Btn variant="gradient" iconRight={ArrowRight} {...p} />;
+export const LoadingButton = ({ loading = true, ...p }) => <Btn loading={loading} {...p} />;
+/** Solo ícono: el `label` es su nombre accesible y su tooltip. */
+export function IconButton({ icon, label, variant = 'ghost', size = 'md', ...p }) {
+  return <Btn variant={variant} size={size} icon={icon} iconOnly aria-label={label} title={label} {...p} />;
 }
 
 /** Enlace discreto con flecha, para “seguir leyendo” dentro de una tarjeta. */
@@ -162,7 +213,7 @@ export function ImageSlot({
   const shape = `${RATIOS[ratio] || RATIOS.wide} ${rounded} overflow-hidden`;
   if (src) {
     return (
-      <div className={`${shape} border border-edvanta-border bg-edvanta-bg ${className}`}>
+      <div className={`${shape} ds-photo bg-edvanta-bg ${className}`}>
         <img
           src={src}
           alt={alt}
@@ -198,7 +249,7 @@ export function ImageSlot({
  * Resalta una parte del título con el degradado de marca y el trazo del
  * inicio. Si `highlight` no aparece en el título, se deja tal cual.
  */
-function TituloConAcento({ title, highlight }) {
+export function TituloConAcento({ title, highlight }) {
   if (typeof title !== 'string' || !highlight || !title.includes(highlight)) return title;
   const [antes, ...resto] = title.split(highlight);
   return (
@@ -223,33 +274,38 @@ function TituloConAcento({ title, highlight }) {
   );
 }
 
+/**
+ * Héroe genérico del sistema 2.0. Las páginas principales usan las
+ * variantes de heroes.jsx (A–H); este queda para páginas de servicio
+ * y herramientas: misma tipografía, superficie con luz periférica y la
+ * foto con marco de marca.
+ */
 export function LandingHero({
   eyebrow, title, highlight, lead, actions, media, bullets, tone = 'light', breadcrumb, children,
 }) {
   const dark = tone === 'dark';
   return (
-    <section className={`relative overflow-hidden ${dark ? 'bg-edvanta-deep' : ''}`}>
+    <section className={`relative overflow-hidden ${dark ? 'ds-surface-navy' : 'ds-surface-glow'}`}>
       {dark ? (
-        <>
-          <div className="bg-dots pointer-events-none absolute inset-0 opacity-20" aria-hidden="true" />
-          <div className="pointer-events-none absolute -right-24 -top-24 h-96 w-96 rounded-full bg-edvanta-violet/30 blur-3xl" aria-hidden="true" />
-          <div className="pointer-events-none absolute -bottom-24 -left-16 h-80 w-80 rounded-full bg-edvanta-teal/25 blur-3xl" aria-hidden="true" />
-        </>
+        <div className="bg-dots pointer-events-none absolute inset-0 opacity-15" aria-hidden="true" />
       ) : (
         <>
-          <div className="ed-backdrop" aria-hidden="true" />
+          <div className="pointer-events-none absolute inset-x-0 top-0 h-[70%]" style={{ background: 'var(--ds-grad-hero)', opacity: 0.55, maskImage: 'linear-gradient(180deg,#000,transparent)', WebkitMaskImage: 'linear-gradient(180deg,#000,transparent)' }} aria-hidden="true" />
           <div className="ed-grid" aria-hidden="true" />
         </>
       )}
-      <div className="relative mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-20 lg:px-8">
+      <div className="relative mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-20">
         {breadcrumb}
-        <div className={`gap-10 ${media ? 'lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(0,46%)] lg:items-center' : ''}`}>
-          <div className={`hx-fade ${media ? '' : 'max-w-3xl'}`}>
+        <div className={`gap-12 ${media ? 'lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(0,46%)] lg:items-center' : ''}`}>
+          <div className={`ds-rise ${media ? '' : 'max-w-3xl'}`}>
             {eyebrow && <Eyebrow tone={dark ? 'white' : 'blue'}>{eyebrow}</Eyebrow>}
-            <h1 className={`mt-3 font-display text-[2.1rem] font-extrabold leading-[1.08] tracking-[-0.03em] sm:text-5xl lg:text-[3.35rem] ${dark ? 'text-white' : 'text-edvanta-blue'}`}>
+            <h1
+              className={`mt-4 font-display font-extrabold leading-[1.07] tracking-[-0.03em] ${dark ? 'text-white' : 'text-edvanta-blue'}`}
+              style={{ fontSize: 'var(--ds-fs-display)' }}
+            >
               <TituloConAcento title={title} highlight={highlight} />
             </h1>
-            {lead && <p className={`mt-4 max-w-2xl text-lg leading-8 ${dark ? 'text-white/85' : 'text-edvanta-muted'}`}>{lead}</p>}
+            {lead && <p className={`mt-5 max-w-2xl text-lg leading-8 ${dark ? 'text-white/85' : 'text-edvanta-muted'}`}>{lead}</p>}
             {bullets?.length > 0 && (
               <ul className="mt-6 grid gap-2 sm:grid-cols-2">
                 {bullets.map((b) => (
@@ -260,10 +316,10 @@ export function LandingHero({
                 ))}
               </ul>
             )}
-            {actions && <div className="mt-8 flex flex-wrap gap-3">{actions}</div>}
+            {actions && <div className="ds-rise-2 mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">{actions}</div>}
             {children}
           </div>
-          {media && <div className="hx-photo mt-10 lg:mt-0">{media}</div>}
+          {media && <div className="ds-rise-2 mt-10 lg:mt-0">{media}</div>}
         </div>
       </div>
     </section>
@@ -271,18 +327,11 @@ export function LandingHero({
 }
 
 /** Foto principal de un héroe: la misma forma y sombra que la del inicio. */
-export function HeroPhoto({ src, alt = '' }) {
+export function HeroPhoto({ src, alt = '', ratio = 'aspect-[5/4]' }) {
   return (
-    <img
-      src={src}
-      alt={alt}
-      width="1200"
-      height="800"
-      loading="eager"
-      fetchpriority="high"
-      decoding="async"
-      className="aspect-[5/4] w-full rounded-[1.75rem] object-cover shadow-[0_24px_60px_rgba(23,34,59,.16)] ring-1 ring-[#082E86]/5"
-    />
+    <div className={`ds-photo ${ratio}`}>
+      <img src={src} alt={alt} width="1200" height="800" loading="eager" fetchpriority="high" decoding="async" />
+    </div>
   );
 }
 
@@ -298,19 +347,31 @@ export function Stat({ value, label, tone = 'light' }) {
   );
 }
 
-/** Pasos numerados de un proceso (de entrada a salida). */
+/**
+ * Pasos de un proceso, como diagrama: puntos numerados unidos por una
+ * línea. En móvil se leen de arriba abajo; en escritorio, de izquierda a
+ * derecha. Cada paso puede traer su `icon`.
+ */
 export function Steps({ items, className = '' }) {
   return (
-    <ol className={`grid gap-4 md:grid-cols-2 lg:grid-cols-4 ${className}`}>
-      {items.map((s, i) => (
-        <li key={s.title} className="relative rounded-2xl border border-edvanta-border bg-white p-5">
-          <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-edvanta-light font-display text-base font-extrabold text-edvanta-blue">
-            {i + 1}
-          </span>
-          <p className="mt-3 text-base font-bold text-edvanta-deep">{s.title}</p>
-          <p className="mt-1.5 text-sm leading-6 text-edvanta-muted">{s.desc}</p>
-        </li>
-      ))}
+    <ol className={`ds-flow ${items.length <= 5 ? 'ds-flow--row' : 'md:grid-cols-2 lg:grid-cols-3'} ${className}`}>
+      {items.map((s, i) => {
+        const Icon = s.icon;
+        return (
+          <li key={s.title} className="ds-flow__step">
+            <span className="ds-flow__dot font-display text-base font-extrabold">
+              {Icon ? <Icon className="h-5 w-5" strokeWidth={1.9} aria-hidden="true" /> : i + 1}
+            </span>
+            <div className="min-w-0 md:mt-4">
+              <p className="text-[15px] font-bold text-edvanta-deep">
+                {Icon && <span className="mr-1.5 text-edvanta-tealdark">{i + 1}.</span>}
+                {s.title}
+              </p>
+              {s.desc && <p className="mt-1.5 text-sm leading-6 text-edvanta-muted">{s.desc}</p>}
+            </div>
+          </li>
+        );
+      })}
     </ol>
   );
 }
@@ -323,12 +384,12 @@ export function NavCard({
   to, href, external = false, icon: Icon, title, desc, cta = 'Entrar', tone = 'blue', image, imageAlt = '',
 }) {
   const tones = {
-    blue: 'bg-edvanta-light text-edvanta-blue',
-    teal: 'bg-edvanta-mint text-edvanta-tealdark',
-    violet: 'bg-edvanta-lilac text-[#5E51A8]',
+    blue: '',
+    teal: 'ds-icon-tile--teal',
+    violet: 'ds-icon-tile--violet',
   };
   const icono = Icon && (
-    <span className={`inline-flex h-12 w-12 items-center justify-center rounded-xl ${tones[tone] || tones.blue} ${image ? 'relative -mt-6 ring-4 ring-white' : ''}`}>
+    <span className={`ds-icon-tile h-12 w-12 ${tones[tone] || ''} ${image ? 'relative -mt-6 ring-4 ring-white' : ''}`}>
       <Icon className="h-6 w-6" strokeWidth={1.8} aria-hidden="true" />
     </span>
   );
@@ -367,7 +428,7 @@ export function NavCard({
       {texto}
     </>
   );
-  const cls = `group flex h-full flex-col overflow-hidden rounded-2xl border border-edvanta-border bg-white shadow-[0_1px_2px_rgba(23,34,59,.04)] transition duration-200 hover:-translate-y-0.5 hover:border-edvanta-blue/30 hover:shadow-[0_12px_36px_rgba(23,34,59,.12)] ${image ? '' : 'p-6'}`;
+  const cls = `group ds-card ds-card--interactive flex h-full flex-col overflow-hidden ${image ? '' : 'p-6'}`;
   if (to) return <Link to={to} className={cls}>{inner}</Link>;
   return <a href={href} className={cls} {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>{inner}</a>;
 }

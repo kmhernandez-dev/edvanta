@@ -69,7 +69,7 @@ function Tarjeta({ curso }) {
         </div>
         <Link
           to={`/aula/curso/${curso.courseId}`}
-          className="inline-flex min-h-11 items-center justify-center gap-2 rounded-xl bg-edvanta-blue px-4 text-sm font-semibold text-white transition hover:bg-edvanta-bluedark"
+          className="ed-btn ed-btn--primary"
         >
           {empezado ? 'Continuar curso' : 'Empezar curso'}
         </Link>
@@ -140,7 +140,7 @@ export default function InicioEstudiante({ nombre }) {
           <div className="flex items-center gap-2">
             <Link
               to="/aula"
-              className="inline-flex min-h-11 items-center gap-1.5 rounded-xl border border-edvanta-border bg-white px-4 text-sm font-bold text-edvanta-blue transition hover:border-edvanta-teal"
+              className="ed-btn ed-btn--secondary"
             >
               Ver todos mis cursos <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </Link>
@@ -172,7 +172,7 @@ export default function InicioEstudiante({ nombre }) {
             </p>
             <Link
               to="/aula"
-              className="inline-flex min-h-11 items-center gap-2 rounded-xl bg-edvanta-blue px-5 text-sm font-semibold text-white transition hover:bg-edvanta-bluedark"
+              className="ed-btn ed-btn--primary"
             >
               Ver los cursos <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </Link>

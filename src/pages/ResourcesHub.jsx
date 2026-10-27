@@ -94,7 +94,7 @@ export default function ResourcesHub() {
           <div className="relative mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
             <p className="ed-eyebrow">Biblioteca profesional</p>
             <h1 className="mt-3 max-w-4xl text-4xl font-extrabold leading-[1.08] tracking-[-0.03em] text-edvanta-blue sm:text-5xl">Encuentra contexto para aprender, aplicar y decidir mejor</h1>
-            <p className="mt-5 max-w-3xl text-lg leading-8 text-slate-600">Recursos conectados con problemas profesionales concretos, fuentes identificables y próximos pasos útiles.</p>
+            <p className="mt-5 max-w-3xl text-lg leading-8 text-edvanta-muted">Recursos conectados con problemas profesionales concretos, fuentes identificables y próximos pasos útiles.</p>
           </div>
         </section>
 
@@ -103,11 +103,11 @@ export default function ResourcesHub() {
             {resourceEntries.map(entry => {
               const Icon = entry.icon;
               return (
-                <Link key={entry.title} to={entry.to} className="group min-h-48 rounded-lg border border-slate-200 bg-white p-5 shadow-sm transition hover:border-teal-300 hover:shadow-md">
-                  <Icon className="h-6 w-6 text-teal-700" />
+                <Link key={entry.title} to={entry.to} className="group min-h-48 ds-card p-5 shadow-sm transition hover:border-edvanta-teal hover:shadow-md">
+                  <Icon className="h-6 w-6 text-edvanta-tealdark" />
                   <h2 className="mt-4 text-xl font-bold text-edvanta-deep">{entry.title}</h2>
-                  <p className="mt-2 text-sm leading-6 text-slate-600">{entry.text}</p>
-                  <span className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-teal-700">Explorar <ArrowRight className="h-4 w-4" /></span>
+                  <p className="mt-2 text-sm leading-6 text-edvanta-muted">{entry.text}</p>
+                  <span className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-edvanta-tealdark">Explorar <ArrowRight className="h-4 w-4" /></span>
                 </Link>
               );
             })}
@@ -115,21 +115,21 @@ export default function ResourcesHub() {
         </section>
 
         {(loadingResources || resources.length > 0 || selectedType) && (
-          <section className="border-y border-slate-200 bg-white">
+          <section className="border-y border-edvanta-border bg-white">
             <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
               <div className="flex flex-wrap items-end justify-between gap-3">
                 <div>
-                  <p className="text-sm font-bold text-teal-700">Selección editorial</p>
+                  <p className="text-sm font-bold text-edvanta-tealdark">Selección editorial</p>
                   <h2 className="mt-1 text-2xl font-bold text-edvanta-deep">{selectedType ? resourceTypeLabels[selectedType] || 'Recursos' : 'Recursos verificados recientes'}</h2>
                 </div>
-                {selectedType && <Link to="/recursos" className="text-sm font-bold text-teal-700">Ver todos</Link>}
+                {selectedType && <Link to="/recursos" className="text-sm font-bold text-edvanta-tealdark">Ver todos</Link>}
               </div>
 
-              {message && <div className="mt-5 rounded-lg border border-teal-200 bg-teal-50 p-3 text-sm text-teal-900" role="status">{message}</div>}
+              {message && <div className="mt-5 rounded-lg border border-teal-200 bg-edvanta-mint p-3 text-sm text-teal-900" role="status">{message}</div>}
 
               {loadingResources ? (
                 <div className="mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-3" aria-label="Cargando recursos">
-                  {[0, 1, 2].map(item => <div key={item} className="h-48 animate-pulse rounded-lg border border-slate-200 bg-slate-50" />)}
+                  {[0, 1, 2].map(item => <div key={item} className="h-48 animate-pulse rounded-lg border border-edvanta-border bg-edvanta-bg" />)}
                 </div>
               ) : resources.length > 0 ? (
                 <div className="mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
@@ -137,25 +137,25 @@ export default function ResourcesHub() {
                     const resourceId = String(resource.id || resource.slug);
                     const isSaved = savedResources.some(item => item.resource_id === resourceId);
                     return (
-                      <article key={resourceId} className="flex min-h-56 flex-col rounded-lg border border-slate-200 p-5">
+                      <article key={resourceId} className="flex min-h-56 flex-col rounded-lg border border-edvanta-border p-5">
                         <div className="flex items-start justify-between gap-4">
-                          <p className="text-xs font-bold uppercase text-teal-700">{resourceTypeLabels[resource.resource_type] || resource.resource_type || 'Recurso'}</p>
-                          <button type="button" onClick={() => handleSave(resource)} className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-slate-200 text-slate-600 hover:border-teal-300 hover:text-teal-700" title={isSaved ? 'Quitar de mi biblioteca' : 'Guardar en mi biblioteca'} aria-label={isSaved ? `Quitar ${resource.title}` : `Guardar ${resource.title}`}>
+                          <p className="text-xs font-bold uppercase text-edvanta-tealdark">{resourceTypeLabels[resource.resource_type] || resource.resource_type || 'Recurso'}</p>
+                          <button type="button" onClick={() => handleSave(resource)} className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-edvanta-border text-edvanta-muted hover:border-edvanta-teal hover:text-edvanta-tealdark" title={isSaved ? 'Quitar de mi biblioteca' : 'Guardar en mi biblioteca'} aria-label={isSaved ? `Quitar ${resource.title}` : `Guardar ${resource.title}`}>
                             {isSaved ? <BookmarkCheck className="h-4 w-4" /> : <Bookmark className="h-4 w-4" />}
                           </button>
                         </div>
                         <h3 className="mt-2 text-lg font-bold text-edvanta-deep">{resource.title}</h3>
-                        <p className="mt-2 flex-1 text-sm leading-6 text-slate-600">{resource.excerpt}</p>
-                        {resource.source_url && <a href={resource.source_url} target="_blank" rel="noopener noreferrer" className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-teal-700">Abrir recurso <ExternalLink className="h-4 w-4" /></a>}
+                        <p className="mt-2 flex-1 text-sm leading-6 text-edvanta-muted">{resource.excerpt}</p>
+                        {resource.source_url && <a href={resource.source_url} target="_blank" rel="noopener noreferrer" className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-edvanta-tealdark">Abrir recurso <ExternalLink className="h-4 w-4" /></a>}
                       </article>
                     );
                   })}
                 </div>
               ) : (
-                <div className="mt-6 rounded-lg border border-dashed border-slate-300 bg-slate-50 px-6 py-12 text-center">
-                  <BookOpenText className="mx-auto h-8 w-8 text-teal-700" />
+                <div className="mt-6 rounded-lg border border-dashed border-edvanta-border bg-edvanta-bg px-6 py-12 text-center">
+                  <BookOpenText className="mx-auto h-8 w-8 text-edvanta-tealdark" />
                   <h3 className="mt-4 text-lg font-bold text-edvanta-deep">Aún no hay recursos verificados en esta categoría</h3>
-                  <p className="mx-auto mt-2 max-w-xl text-sm leading-6 text-slate-600">Publicaremos materiales cuando tengan una fuente identificable y un uso profesional claro.</p>
+                  <p className="mx-auto mt-2 max-w-xl text-sm leading-6 text-edvanta-muted">Publicaremos materiales cuando tengan una fuente identificable y un uso profesional claro.</p>
                 </div>
               )}
             </div>

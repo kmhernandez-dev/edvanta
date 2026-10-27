@@ -153,7 +153,7 @@ function Compartir({ titulo, url }) {
         href={`https://wa.me/?text=${encodeURIComponent(`${titulo} ${url}`)}`}
         target="_blank"
         rel="noopener noreferrer"
-        className="inline-flex min-h-10 items-center gap-2 rounded-xl border border-edvanta-border bg-white px-3.5 text-sm font-semibold text-edvanta-deep transition hover:border-edvanta-teal/50"
+        className="ed-btn ed-btn--secondary ed-btn--sm"
       >
         <MessageCircle className="h-4 w-4 text-[#25D366]" aria-hidden="true" />
         Compartir
@@ -161,7 +161,7 @@ function Compartir({ titulo, url }) {
       <button
         type="button"
         onClick={copiar}
-        className="inline-flex min-h-10 items-center gap-2 rounded-xl border border-edvanta-border bg-white px-3.5 text-sm font-semibold text-edvanta-deep transition hover:border-edvanta-blue/40"
+        className="ed-btn ed-btn--secondary ed-btn--sm"
       >
         {copiado ? <Check className="h-4 w-4 text-edvanta-teal" aria-hidden="true" /> : <Link2 className="h-4 w-4 text-edvanta-blue" aria-hidden="true" />}
         {copiado ? 'Enlace copiado' : 'Copiar enlace'}
@@ -316,8 +316,8 @@ export default function ArticuloPage() {
             <h1 className="font-display text-2xl font-extrabold text-edvanta-blue">No encontramos este artículo</h1>
             <p className="mt-3 text-sm leading-6 text-edvanta-muted">Puede que haya cambiado de dirección o que ya no esté publicado.</p>
             <div className="mt-6 flex flex-wrap justify-center gap-3">
-              <Link to="/articulos" className="inline-flex min-h-11 items-center rounded-xl bg-edvanta-blue px-5 text-sm font-semibold text-white">Ver todos los artículos</Link>
-              <Link to="/buscar" className="inline-flex min-h-11 items-center rounded-xl border border-edvanta-border bg-white px-5 text-sm font-semibold text-edvanta-blue">Buscar en Edvanta</Link>
+              <Link to="/articulos" className="ed-btn ed-btn--primary">Ver todos los artículos</Link>
+              <Link to="/buscar" className="ed-btn ed-btn--secondary">Buscar en Edvanta</Link>
             </div>
           </div>
         </div>
@@ -430,7 +430,7 @@ export default function ArticuloPage() {
                 <p className="mt-2 font-display text-xl font-bold text-edvanta-deep">{relatedCourse.title}</p>
                 <p className="mt-2 text-sm leading-6 text-edvanta-muted">{relatedCourse.shortDescription}</p>
                 <div className="mt-4 flex flex-col gap-2 sm:flex-row">
-                  <Link to={`/cursos/${relatedCourse.slug}`} className="inline-flex min-h-11 items-center justify-center rounded-xl border border-edvanta-border bg-white px-5 text-sm font-semibold text-edvanta-blue">Ver la ficha del curso</Link>
+                  <Link to={`/cursos/${relatedCourse.slug}`} className="ed-btn ed-btn--secondary">Ver la ficha del curso</Link>
                   <AffiliateCourseButton course={relatedCourse} sourceSection="article_page" articleSlug={art.slug} className="text-sm">Ir al curso</AffiliateCourseButton>
                 </div>
               </div>

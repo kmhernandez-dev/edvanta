@@ -88,7 +88,7 @@ export default function CourseCarousel({ title, courses, sectionKey }) {
               className="w-[calc(100%-1.5rem)] max-w-[320px] shrink-0 snap-start sm:w-[calc(50%-0.75rem)] md:w-[calc(33.333%-1rem)] lg:w-[calc(25%-1.125rem)]"
             >
               <div className="group flex h-full flex-col overflow-hidden rounded-2xl border border-edvanta-border bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl">
-                <div className="relative block overflow-hidden bg-slate-100">
+                <div className="relative block overflow-hidden bg-edvanta-soft">
                   <img
                     src={typeof course.image === 'string' ? course.image : course.image?.jpg}
                     alt={typeof course.image === 'string' ? '' : (course.image?.alt || '')}
@@ -113,7 +113,7 @@ export default function CourseCarousel({ title, courses, sectionKey }) {
                     {course.to ? (
                       <Link
                         to={course.to}
-                        className="inline-flex items-center justify-center gap-2 rounded-xl bg-edvanta-blue px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-edvanta-bluedark"
+                        className="ed-btn ed-btn--primary"
                       >
                         {course.ctaLabel || 'Ver el curso'}
                       </Link>
@@ -123,7 +123,7 @@ export default function CourseCarousel({ title, courses, sectionKey }) {
                         target="_blank"
                         rel="sponsored noopener noreferrer"
                         onClick={() => handleClick(course)}
-                        className="inline-flex items-center justify-center gap-2 rounded-xl bg-edvanta-blue px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-edvanta-bluedark"
+                        className="ed-btn ed-btn--primary"
                       >
                         Inscribirme gratis
                         <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">

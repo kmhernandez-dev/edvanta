@@ -455,7 +455,7 @@ export default function CvExpres({
                   <h4 className="text-base font-extrabold text-edvanta-deep">Tu perfil profesional</h4>
                   <p className="mt-1 text-sm text-edvanta-muted">Tres o cuatro líneas al inicio de la hoja. Podemos escribirlas con lo que ya llenaste.</p>
                 </div>
-                <button type="button" onClick={escribirPerfil} className="inline-flex min-h-11 items-center gap-2 rounded-xl bg-edvanta-blue px-5 text-sm font-semibold text-white transition hover:bg-edvanta-bluedark">
+                <button type="button" onClick={escribirPerfil} className="ed-btn ed-btn--primary">
                   <Wand2 className="h-4 w-4" aria-hidden="true" /> {cv.resumen ? 'Volver a escribirlo' : 'Escribir mi perfil'}
                 </button>
               </div>
@@ -492,13 +492,13 @@ export default function CvExpres({
                   </p>
                 </div>
                 <div className="flex flex-wrap gap-2">
-                  <button type="button" onClick={() => descargar(plantillaId)} className="inline-flex min-h-12 items-center gap-2 rounded-xl bg-edvanta-blue px-6 text-[15px] font-semibold text-white shadow-[0_6px_18px_rgba(8,46,134,.22)] transition hover:bg-edvanta-bluedark">
+                  <button type="button" onClick={() => descargar(plantillaId)} className="ed-btn ed-btn--primary">
                     <Download className="h-4 w-4" aria-hidden="true" /> Descargar PDF
                   </button>
-                  <button type="button" onClick={copiarTexto} className="inline-flex min-h-12 items-center gap-2 rounded-xl border border-edvanta-border bg-white px-5 text-sm font-semibold text-edvanta-deep transition hover:border-edvanta-blue/40">
+                  <button type="button" onClick={copiarTexto} className="ed-btn ed-btn--secondary">
                     <Copy className="h-4 w-4" aria-hidden="true" /> Copiar texto
                   </button>
-                  <button type="button" onClick={academiaUser ? guardar : onCrearCuenta} className="inline-flex min-h-12 items-center gap-2 rounded-xl border border-edvanta-border bg-white px-5 text-sm font-semibold text-edvanta-deep transition hover:border-edvanta-blue/40">
+                  <button type="button" onClick={academiaUser ? guardar : onCrearCuenta} className="ed-btn ed-btn--secondary">
                     <Save className="h-4 w-4" aria-hidden="true" /> {academiaUser ? 'Guardar' : 'Guardar en mi cuenta'}
                   </button>
                 </div>
@@ -516,7 +516,7 @@ export default function CvExpres({
             type="button"
             onClick={() => setPaso((p) => Math.max(1, p - 1))}
             disabled={paso === 1}
-            className="inline-flex min-h-12 items-center gap-2 rounded-xl border border-edvanta-border bg-white px-5 text-sm font-semibold text-edvanta-deep transition hover:border-edvanta-blue/40 disabled:opacity-40"
+            className="ed-btn ed-btn--secondary"
           >
             <ArrowLeft className="h-4 w-4" aria-hidden="true" /> Atrás
           </button>
@@ -524,7 +524,7 @@ export default function CvExpres({
             <button
               type="button"
               onClick={() => setPaso((p) => Math.min(4, p + 1))}
-              className="inline-flex min-h-12 items-center gap-2 rounded-xl bg-edvanta-blue px-6 text-[15px] font-semibold text-white shadow-[0_6px_18px_rgba(8,46,134,.22)] transition hover:bg-edvanta-bluedark"
+              className="ed-btn ed-btn--primary"
             >
               Siguiente <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </button>
@@ -532,7 +532,7 @@ export default function CvExpres({
             <button
               type="button"
               onClick={() => descargar(plantillaId)}
-              className="inline-flex min-h-12 items-center gap-2 rounded-xl bg-edvanta-blue px-6 text-[15px] font-semibold text-white shadow-[0_6px_18px_rgba(8,46,134,.22)] transition hover:bg-edvanta-bluedark"
+              className="ed-btn ed-btn--primary"
             >
               <Download className="h-4 w-4" aria-hidden="true" /> Descargar mi hoja de vida
             </button>

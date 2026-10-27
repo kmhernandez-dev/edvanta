@@ -43,7 +43,7 @@ export default function SiteFooter() {
                 href={EDVANTA_WHATSAPP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex min-h-10 items-center gap-2 rounded-xl border border-edvanta-border bg-white px-4 text-sm font-semibold text-edvanta-deep transition hover:border-edvanta-teal/50 hover:text-edvanta-tealdark"
+                className="ed-btn ed-btn--secondary ed-btn--sm"
               >
                 <MessageCircle className="h-4 w-4 text-edvanta-teal" aria-hidden="true" />
                 WhatsApp
@@ -51,7 +51,7 @@ export default function SiteFooter() {
               {EDVANTA_EMAIL && (
                 <a
                   href={`mailto:${EDVANTA_EMAIL}`}
-                  className="inline-flex min-h-10 items-center gap-2 rounded-xl border border-edvanta-border bg-white px-4 text-sm font-semibold text-edvanta-deep transition hover:border-edvanta-blue/40 hover:text-edvanta-blue"
+                  className="ed-btn ed-btn--secondary ed-btn--sm"
                 >
                   <Mail className="h-4 w-4 text-edvanta-blue" aria-hidden="true" />
                   Escríbenos
@@ -73,7 +73,7 @@ export default function SiteFooter() {
             </div>
             <Link
               to="/aula"
-              className="mt-4 inline-flex min-h-11 items-center gap-2 rounded-xl bg-edvanta-blue px-5 text-sm font-semibold text-white transition hover:bg-edvanta-bluedark"
+              className="ed-btn ed-btn--primary mt-4"
             >
               <MonitorPlay className="h-4 w-4" aria-hidden="true" />
               Entrar al aula virtual

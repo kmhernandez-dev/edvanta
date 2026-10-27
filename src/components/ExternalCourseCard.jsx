@@ -114,13 +114,13 @@ export default function ExternalCourseCard({ course, hideProvider = false }) {
   };
 
   return (
-    <div className="group flex flex-col overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm transition duration-200 hover:-translate-y-0.5 hover:border-teal-300 hover:shadow-md">
+    <div className="group flex flex-col overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm transition duration-200 hover:-translate-y-0.5 hover:border-edvanta-teal hover:shadow-md">
       {/* Image area */}
-      <div className="relative flex aspect-[16/9] items-center justify-center overflow-hidden bg-slate-100">
+      <div className="relative flex aspect-[16/9] items-center justify-center overflow-hidden bg-edvanta-soft">
         {course.image_url ? (
           <img src={course.image_url} alt={course.title} className="w-full h-full object-cover" loading="lazy" />
         ) : (
-          <BookOpenCheck className="h-9 w-9 text-slate-400" aria-hidden="true" />
+          <BookOpenCheck className="h-9 w-9 text-edvanta-subtle" aria-hidden="true" />
         )}
 
         {/* Provider badge */}
@@ -142,13 +142,13 @@ export default function ExternalCourseCard({ course, hideProvider = false }) {
       <div className="p-4 flex flex-col flex-1 gap-2">
         {/* Category */}
         {course.category && (
-          <p className="line-clamp-1 text-[11px] font-bold uppercase text-teal-700">
+          <p className="line-clamp-1 text-[11px] font-bold uppercase text-edvanta-tealdark">
             {course.category}
           </p>
         )}
 
         {/* Title */}
-        <h3 className="text-sm font-bold leading-snug text-navy-950 group-hover:text-teal-700 transition-colors line-clamp-2">
+        <h3 className="text-sm font-bold leading-snug text-navy-950 group-hover:text-edvanta-tealdark transition-colors line-clamp-2">
           {course.title}
         </h3>
 
@@ -178,7 +178,7 @@ export default function ExternalCourseCard({ course, hideProvider = false }) {
           )}
 
           {course.certificate_available && (
-            <span className="text-[10px] text-teal-600 bg-teal-50 px-2 py-0.5 rounded-full" title="Certificado disponible">
+            <span className="text-[10px] text-teal-600 bg-edvanta-mint px-2 py-0.5 rounded-full" title="Certificado disponible">
               Cert.
             </span>
           )}
@@ -216,7 +216,7 @@ export default function ExternalCourseCard({ course, hideProvider = false }) {
               Enlace no disponible
             </span>
           )}
-          <button type="button" onClick={handleSave} className={`inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border transition ${isSaved ? 'border-teal-600 bg-teal-50 text-teal-800' : 'border-slate-300 bg-white text-slate-600 hover:border-teal-400 hover:text-teal-700'}`} title={isSaved ? 'Quitar de guardados' : 'Guardar curso'} aria-label={isSaved ? `Quitar ${course.title} de guardados` : `Guardar ${course.title}`}>
+          <button type="button" onClick={handleSave} className={`inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border transition ${isSaved ? 'border-edvanta-teal bg-edvanta-mint text-edvanta-tealdark' : 'border-edvanta-border bg-white text-edvanta-muted hover:border-teal-400 hover:text-edvanta-tealdark'}`} title={isSaved ? 'Quitar de guardados' : 'Guardar curso'} aria-label={isSaved ? `Quitar ${course.title} de guardados` : `Guardar ${course.title}`}>
             {isSaved ? <BookmarkCheck className="h-4 w-4" aria-hidden="true" /> : <Bookmark className="h-4 w-4" aria-hidden="true" />}
           </button>
         </div>

@@ -180,7 +180,7 @@ export function TalentDirectory({ onPublicar }) {
           <button
             type="button"
             onClick={() => { setArea('todas'); setQuery(''); }}
-            className="mt-4 inline-flex min-h-11 items-center rounded-xl bg-edvanta-blue px-5 text-sm font-semibold text-white hover:bg-edvanta-bluedark"
+            className="ed-btn ed-btn--primary mt-4"
           >
             Limpiar filtros
           </button>
@@ -352,10 +352,10 @@ export function TalentPublishForm({ titulo = 'Publica tu perfil profesional', de
           </label>
         </div>
         <div className="mt-5 flex flex-wrap items-center gap-3">
-          <button type="submit" disabled={enviando} className="inline-flex min-h-12 items-center gap-2 rounded-xl bg-edvanta-blue px-6 text-[15px] font-semibold text-white transition hover:bg-edvanta-bluedark disabled:opacity-60">
+          <button type="submit" disabled={enviando} className="ed-btn ed-btn--primary">
             {enviando ? 'Publicando…' : 'Publicar mi perfil'}
           </button>
-          <button type="button" onClick={copiarPerfil} className="inline-flex min-h-12 items-center gap-2 rounded-xl border border-edvanta-border bg-white px-6 text-[15px] font-semibold text-edvanta-blue transition hover:border-edvanta-blue/40">
+          <button type="button" onClick={copiarPerfil} className="ed-btn ed-btn--secondary">
             {copiado ? 'Copiado' : 'Copiar mi perfil'}
           </button>
         </div>

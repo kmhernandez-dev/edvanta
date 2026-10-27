@@ -11,8 +11,12 @@ export function PageHeader({ title, description, actions, back, eyebrow }) {
             {back.label}
           </Link>
         )}
-        {eyebrow && <p className="text-xs font-bold uppercase tracking-[0.12em] text-[var(--aula-secondary)]">{eyebrow}</p>}
-        <h1 className="text-2xl font-extrabold text-[var(--aula-primary)] sm:text-[1.75rem]">{title}</h1>
+        {eyebrow && (
+          <p className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.12em] text-[var(--aula-secondary)]">
+            <span className="h-[3px] w-5 rounded-full" style={{ background: 'var(--aula-gradient-brand)' }} aria-hidden="true" />{eyebrow}
+          </p>
+        )}
+        <h1 className="mt-1 text-2xl font-extrabold tracking-[-0.02em] text-[var(--aula-primary)] sm:text-[1.85rem]">{title}</h1>
         {description && <p className="mt-1 max-w-3xl text-sm leading-relaxed text-[var(--aula-muted)]">{description}</p>}
       </div>
       {actions && <div className="flex flex-wrap gap-2">{actions}</div>}

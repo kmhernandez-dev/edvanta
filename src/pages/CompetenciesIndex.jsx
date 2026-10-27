@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, BookOpenCheck, BriefcaseBusiness, RefreshCw, Search, Shapes } from 'lucide-react';
+import { ArrowRight, BookOpen, BookOpenCheck, BriefcaseBusiness, Compass, RefreshCw, Route, Search, Shapes, Target } from 'lucide-react';
+import { HeroRuta } from '../components/edvanta/heroes';
 import SiteHeader from '../components/edvanta/SiteHeader';
 import SiteFooter from '../components/edvanta/SiteFooter';
 import { apiUrl } from '../config/api';
@@ -70,24 +71,29 @@ export default function CompetenciesIndex() {
     <>
       <SiteHeader />
       <main className="min-h-screen bg-edvanta-bg">
-        <section className="relative overflow-hidden border-b border-edvanta-border"><div className="ed-backdrop" aria-hidden="true" /><div className="ed-grid" aria-hidden="true" />
-          <div className="relative mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
-            <p className="ed-eyebrow">Mapa de habilidades</p>
-            <h1 className="mt-3 max-w-4xl text-4xl font-extrabold leading-[1.08] tracking-[-0.03em] text-edvanta-blue sm:text-5xl">Comprende qué necesitas aprender y dónde lo vas a usar</h1>
-            <p className="mt-5 max-w-3xl text-lg leading-8 text-slate-600">Cada competencia se conecta con las carreras que la requieren, las rutas que la practican y los cursos que la enseñan.</p>
-          </div>
-        </section>
+        <HeroRuta
+          eyebrow="Mapa de habilidades"
+          title="Comprende qué necesitas aprender y dónde lo vas a usar"
+          highlight="dónde lo vas a usar"
+          lead="Cada competencia se conecta con las carreras que la requieren, las rutas que la practican y los cursos que la enseñan."
+          steps={[
+            { icon: Target, title: 'Competencia', desc: 'Qué debes saber hacer' },
+            { icon: Compass, title: 'Carreras', desc: 'Dónde se pide' },
+            { icon: Route, title: 'Rutas', desc: 'Dónde se practica' },
+            { icon: BookOpen, title: 'Cursos', desc: 'Dónde se aprende' },
+          ]}
+        />
 
-        <section className="border-b border-slate-200 bg-edvanta-bg">
+        <section className="border-b border-edvanta-border bg-edvanta-bg">
           <div className="mx-auto flex max-w-7xl flex-col gap-3 px-4 py-5 sm:px-6 lg:flex-row lg:items-center lg:px-8">
             <label className="relative flex-1">
               <span className="sr-only">Buscar competencia</span>
-              <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" aria-hidden="true" />
-              <input value={query} onChange={event => setQuery(event.target.value)} placeholder="Buscar GMP, Power BI, auditorías..." className="min-h-11 w-full rounded-lg border border-slate-300 bg-white pl-10 pr-4 text-sm outline-none focus:border-teal-600 focus:ring-2 focus:ring-teal-100" />
+              <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-edvanta-subtle" aria-hidden="true" />
+              <input value={query} onChange={event => setQuery(event.target.value)} placeholder="Buscar GMP, Power BI, auditorías..." className="min-h-11 w-full rounded-lg border border-edvanta-border bg-white pl-10 pr-4 text-sm outline-none focus:border-edvanta-teal focus:ring-2 focus:ring-teal-100" />
             </label>
             <label>
               <span className="sr-only">Tipo de competencia</span>
-              <select value={type} onChange={event => setType(event.target.value)} className="min-h-11 w-full rounded-lg border border-slate-300 bg-white px-3 text-sm text-slate-700 outline-none focus:border-teal-600 focus:ring-2 focus:ring-teal-100 lg:w-60">
+              <select value={type} onChange={event => setType(event.target.value)} className="min-h-11 w-full rounded-lg border border-edvanta-border bg-white px-3 text-sm text-edvanta-muted outline-none focus:border-edvanta-teal focus:ring-2 focus:ring-teal-100 lg:w-60">
                 <option value="all">Todos los tipos</option>
                 {Object.entries(TYPE_LABELS).map(([value, label]) => <option key={value} value={value}>{label}</option>)}
               </select>
@@ -98,32 +104,32 @@ export default function CompetenciesIndex() {
         <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
           <div className="mb-7 flex flex-wrap items-end justify-between gap-4">
             <div>
-              <p className="text-sm font-bold text-teal-700">{loading ? 'Consultando el mapa' : `${visibleSkills.length} competencias`}</p>
+              <p className="text-sm font-bold text-edvanta-tealdark">{loading ? 'Consultando el mapa' : `${visibleSkills.length} competencias`}</p>
               <h2 className="mt-1 text-2xl font-bold text-edvanta-deep">Explora por habilidad</h2>
             </div>
-            <Link to="/carreras" className="inline-flex items-center gap-2 text-sm font-bold text-teal-700 hover:text-teal-900">Ver por carrera <ArrowRight className="h-4 w-4" aria-hidden="true" /></Link>
+            <Link to="/carreras" className="inline-flex items-center gap-2 text-sm font-bold text-edvanta-tealdark hover:text-teal-900">Ver por carrera <ArrowRight className="h-4 w-4" aria-hidden="true" /></Link>
           </div>
 
           {loading ? (
-            <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">{Array.from({ length: 9 }).map((_, index) => <div key={index} className="h-52 animate-pulse rounded-lg border border-slate-200 bg-white" />)}</div>
+            <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">{Array.from({ length: 9 }).map((_, index) => <div key={index} className="h-52 animate-pulse ds-card" />)}</div>
           ) : error ? (
-            <div className="rounded-lg border border-slate-200 bg-white px-6 py-16 text-center">
-              <RefreshCw className="mx-auto h-9 w-9 text-teal-700" aria-hidden="true" />
+            <div className="ds-card px-6 py-16 text-center">
+              <RefreshCw className="mx-auto h-9 w-9 text-edvanta-tealdark" aria-hidden="true" />
               <h2 className="mt-4 text-xl font-bold text-edvanta-deep">No pudimos cargar el mapa de competencias</h2>
-              <p className="mt-2 text-sm text-slate-600">{error}</p>
-              <button type="button" onClick={() => setReloadKey(value => value + 1)} className="mt-5 inline-flex min-h-11 items-center gap-2 rounded-lg bg-edvanta-blue px-5 text-sm font-bold text-white">Reintentar</button>
+              <p className="mt-2 text-sm text-edvanta-muted">{error}</p>
+              <button type="button" onClick={() => setReloadKey(value => value + 1)} className="ed-btn ed-btn--primary mt-5">Reintentar</button>
             </div>
           ) : visibleSkills.length ? (
             <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
               {visibleSkills.map(skill => (
-                <Link key={skill.slug} to={`/competencias/${skill.slug}`} className="group flex min-h-52 flex-col rounded-lg border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:border-teal-300 hover:shadow-md">
+                <Link key={skill.slug} to={`/competencias/${skill.slug}`} className="group flex min-h-52 flex-col ds-card p-5 shadow-sm transition hover:-translate-y-0.5 hover:border-edvanta-teal hover:shadow-md">
                   <div className="flex items-start justify-between gap-3">
-                    <span className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-teal-50 text-teal-700"><Shapes className="h-5 w-5" aria-hidden="true" /></span>
+                    <span className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-edvanta-mint text-edvanta-tealdark"><Shapes className="h-5 w-5" aria-hidden="true" /></span>
                     <span className="text-xs font-bold text-indigo-700">{TYPE_LABELS[skill.skill_type] || skill.skill_type}</span>
                   </div>
-                  <h3 className="mt-5 text-lg font-bold text-edvanta-deep group-hover:text-teal-800">{skill.name}</h3>
-                  <p className="mt-2 flex-1 text-sm leading-6 text-slate-600">{skill.description}</p>
-                  <div className="mt-4 flex flex-wrap gap-x-4 gap-y-2 border-t border-slate-100 pt-4 text-xs font-semibold text-slate-500">
+                  <h3 className="mt-5 text-lg font-bold text-edvanta-deep group-hover:text-edvanta-tealdark">{skill.name}</h3>
+                  <p className="mt-2 flex-1 text-sm leading-6 text-edvanta-muted">{skill.description}</p>
+                  <div className="mt-4 flex flex-wrap gap-x-4 gap-y-2 border-t border-edvanta-border pt-4 text-xs font-semibold text-edvanta-subtle">
                     <span className="inline-flex items-center gap-1.5"><BriefcaseBusiness className="h-4 w-4" aria-hidden="true" /> {skill.career_count} carreras</span>
                     <span className="inline-flex items-center gap-1.5"><BookOpenCheck className="h-4 w-4" aria-hidden="true" /> {skill.verified_course_count} cursos verificados</span>
                   </div>
@@ -131,10 +137,10 @@ export default function CompetenciesIndex() {
               ))}
             </div>
           ) : (
-            <div className="rounded-lg border border-slate-200 bg-white px-6 py-16 text-center">
-              <Shapes className="mx-auto h-9 w-9 text-teal-700" aria-hidden="true" />
+            <div className="ds-card px-6 py-16 text-center">
+              <Shapes className="mx-auto h-9 w-9 text-edvanta-tealdark" aria-hidden="true" />
               <h2 className="mt-4 text-xl font-bold text-edvanta-deep">No encontramos coincidencias</h2>
-              <button type="button" onClick={() => { setQuery(''); setType('all'); }} className="mt-5 text-sm font-bold text-teal-700">Limpiar filtros</button>
+              <button type="button" onClick={() => { setQuery(''); setType('all'); }} className="mt-5 text-sm font-bold text-edvanta-tealdark">Limpiar filtros</button>
             </div>
           )}
         </section>

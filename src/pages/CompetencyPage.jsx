@@ -78,12 +78,12 @@ export default function CompetencyPage() {
   }, [skill]);
 
   if (loading) {
-    return <><SiteHeader /><main className="min-h-screen bg-edvanta-bg"><div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8"><div className="h-5 w-48 animate-pulse rounded bg-slate-200" /><div className="mt-8 h-14 max-w-3xl animate-pulse rounded bg-slate-200" /><div className="mt-5 h-20 max-w-3xl animate-pulse rounded bg-slate-100" /></div></main><SiteFooter /></>;
+    return <><SiteHeader /><main className="min-h-screen bg-edvanta-bg"><div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8"><div className="h-5 w-48 animate-pulse rounded bg-slate-200" /><div className="mt-8 h-14 max-w-3xl animate-pulse rounded bg-slate-200" /><div className="mt-5 h-20 max-w-3xl animate-pulse rounded bg-edvanta-soft" /></div></main><SiteFooter /></>;
   }
 
   if (error || !skill) {
     return (
-      <><SiteHeader /><main className="min-h-[70vh] bg-edvanta-bg"><div className="mx-auto max-w-3xl px-4 py-20 text-center sm:px-6"><Shapes className="mx-auto h-10 w-10 text-teal-700" aria-hidden="true" /><h1 className="mt-5 text-3xl font-bold text-edvanta-deep">No pudimos abrir esta competencia</h1><p className="mt-3 text-slate-600">{error || 'La ficha no está disponible.'}</p><div className="mt-7 flex flex-wrap justify-center gap-3"><button type="button" onClick={() => setReloadKey(value => value + 1)} className="inline-flex min-h-11 items-center gap-2 rounded-lg bg-edvanta-blue px-5 text-sm font-bold text-white"><RefreshCw className="h-4 w-4" aria-hidden="true" /> Reintentar</button><Link to="/competencias" className="inline-flex min-h-11 items-center gap-2 rounded-lg border border-slate-300 bg-white px-5 text-sm font-bold text-slate-700"><ArrowLeft className="h-4 w-4" aria-hidden="true" /> Ver todas</Link></div></div></main><SiteFooter /></>
+      <><SiteHeader /><main className="min-h-[70vh] bg-edvanta-bg"><div className="mx-auto max-w-3xl px-4 py-20 text-center sm:px-6"><Shapes className="mx-auto h-10 w-10 text-edvanta-tealdark" aria-hidden="true" /><h1 className="mt-5 text-3xl font-bold text-edvanta-deep">No pudimos abrir esta competencia</h1><p className="mt-3 text-edvanta-muted">{error || 'La ficha no está disponible.'}</p><div className="mt-7 flex flex-wrap justify-center gap-3"><button type="button" onClick={() => setReloadKey(value => value + 1)} className="ed-btn ed-btn--primary"><RefreshCw className="h-4 w-4" aria-hidden="true" /> Reintentar</button><Link to="/competencias" className="inline-flex min-h-11 items-center gap-2 rounded-lg border border-edvanta-border bg-white px-5 text-sm font-bold text-edvanta-muted"><ArrowLeft className="h-4 w-4" aria-hidden="true" /> Ver todas</Link></div></div></main><SiteFooter /></>
     );
   }
 
@@ -93,34 +93,34 @@ export default function CompetencyPage() {
       <main className="bg-edvanta-bg">
         <section className="relative overflow-hidden border-b border-edvanta-border"><div className="ed-backdrop" aria-hidden="true" /><div className="ed-grid" aria-hidden="true" />
           <div className="relative mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
-            <nav className="flex flex-wrap items-center gap-2 text-sm text-slate-500" aria-label="Migas de pan"><Link to="/" className="hover:text-teal-700">Inicio</Link><span>/</span><Link to="/competencias" className="hover:text-teal-700">Competencias</Link><span>/</span><span className="font-semibold text-slate-700">{skill.name}</span></nav>
+            <nav className="flex flex-wrap items-center gap-2 text-sm text-edvanta-subtle" aria-label="Migas de pan"><Link to="/" className="hover:text-edvanta-tealdark">Inicio</Link><span>/</span><Link to="/competencias" className="hover:text-edvanta-tealdark">Competencias</Link><span>/</span><span className="font-semibold text-edvanta-muted">{skill.name}</span></nav>
             <div className="mt-9 max-w-4xl">
               <p className="ed-eyebrow">{TYPE_LABELS[skill.skill_type] || 'Competencia profesional'}</p>
               <h1 className="mt-3 text-4xl font-extrabold leading-[1.08] tracking-[-0.03em] text-edvanta-blue sm:text-5xl">{skill.name}</h1>
-              <p className="mt-5 max-w-3xl text-lg leading-8 text-slate-600">{skill.description}</p>
+              <p className="mt-5 max-w-3xl text-lg leading-8 text-edvanta-muted">{skill.description}</p>
             </div>
           </div>
         </section>
 
         <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-          <div className="mb-7 max-w-2xl"><div className="flex items-center gap-3"><BriefcaseBusiness className="h-6 w-6 text-teal-700" aria-hidden="true" /><h2 className="text-2xl font-bold text-edvanta-deep">Carreras que requieren esta competencia</h2></div><p className="mt-3 text-sm leading-6 text-slate-600">El nivel esperado cambia según el rol. Revisa cada carrera antes de elegir una formación.</p></div>
+          <div className="mb-7 max-w-2xl"><div className="flex items-center gap-3"><BriefcaseBusiness className="h-6 w-6 text-edvanta-tealdark" aria-hidden="true" /><h2 className="text-2xl font-bold text-edvanta-deep">Carreras que requieren esta competencia</h2></div><p className="mt-3 text-sm leading-6 text-edvanta-muted">El nivel esperado cambia según el rol. Revisa cada carrera antes de elegir una formación.</p></div>
           {careers.length ? (
             <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-              {careers.map(career => <Link key={career.slug} to={`/carreras/${career.slug}`} className="group rounded-lg border border-slate-200 bg-white p-5 shadow-sm transition hover:border-teal-300 hover:shadow-md"><p className="text-xs font-bold uppercase text-teal-700">{career.family}</p><h3 className="mt-2 text-lg font-bold text-edvanta-deep">{career.name}</h3><p className="mt-2 text-sm leading-6 text-slate-600">{career.headline}</p><div className="mt-4 flex flex-wrap items-center justify-between gap-3 border-t border-slate-100 pt-4"><span className="text-xs font-semibold text-slate-500">Nivel: {LEVEL_LABELS[career.required_level] || career.required_level}</span><span className="inline-flex items-center gap-1 text-xs font-bold text-teal-700">Ver carrera <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" /></span></div></Link>)}
+              {careers.map(career => <Link key={career.slug} to={`/carreras/${career.slug}`} className="group ds-card p-5 shadow-sm transition hover:border-edvanta-teal hover:shadow-md"><p className="text-xs font-bold uppercase text-edvanta-tealdark">{career.family}</p><h3 className="mt-2 text-lg font-bold text-edvanta-deep">{career.name}</h3><p className="mt-2 text-sm leading-6 text-edvanta-muted">{career.headline}</p><div className="mt-4 flex flex-wrap items-center justify-between gap-3 border-t border-edvanta-border pt-4"><span className="text-xs font-semibold text-edvanta-subtle">Nivel: {LEVEL_LABELS[career.required_level] || career.required_level}</span><span className="inline-flex items-center gap-1 text-xs font-bold text-edvanta-tealdark">Ver carrera <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" /></span></div></Link>)}
             </div>
-          ) : <p className="rounded-lg border border-slate-200 bg-white p-5 text-sm text-slate-600">Todavía no hay carreras publicadas asociadas con esta competencia.</p>}
+          ) : <p className="ds-card p-5 text-sm text-edvanta-muted">Todavía no hay carreras publicadas asociadas con esta competencia.</p>}
         </section>
 
-        <section className="border-y border-slate-200 bg-white">
+        <section className="border-y border-edvanta-border bg-white">
           <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-            <div className="mb-7 flex flex-wrap items-end justify-between gap-4"><div><div className="flex items-center gap-3"><BookOpenCheck className="h-6 w-6 text-indigo-600" aria-hidden="true" /><h2 className="text-2xl font-bold text-edvanta-deep">Cursos verificados que la desarrollan</h2></div><p className="mt-3 text-sm leading-6 text-slate-600">La relación se basa en cobertura de competencia, no solo en coincidencias de título.</p></div><Link to={`/cursos?skill=${skill.slug}`} className="text-sm font-bold text-teal-700">Ver catálogo filtrado</Link></div>
-            {courses.length ? <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">{courses.map(course => <ExternalCourseCard key={course.id} course={course} />)}</div> : <p className="rounded-lg border border-slate-200 bg-edvanta-bg p-5 text-sm text-slate-600">Aún no hay cursos con relación editorial verificada. Edvanta no mostrará coincidencias automáticas como recomendaciones confirmadas.</p>}
+            <div className="mb-7 flex flex-wrap items-end justify-between gap-4"><div><div className="flex items-center gap-3"><BookOpenCheck className="h-6 w-6 text-indigo-600" aria-hidden="true" /><h2 className="text-2xl font-bold text-edvanta-deep">Cursos verificados que la desarrollan</h2></div><p className="mt-3 text-sm leading-6 text-edvanta-muted">La relación se basa en cobertura de competencia, no solo en coincidencias de título.</p></div><Link to={`/cursos?skill=${skill.slug}`} className="text-sm font-bold text-edvanta-tealdark">Ver catálogo filtrado</Link></div>
+            {courses.length ? <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">{courses.map(course => <ExternalCourseCard key={course.id} course={course} />)}</div> : <p className="rounded-lg border border-edvanta-border bg-edvanta-bg p-5 text-sm text-edvanta-muted">Aún no hay cursos con relación editorial verificada. Edvanta no mostrará coincidencias automáticas como recomendaciones confirmadas.</p>}
           </div>
         </section>
 
         <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-          <div className="mb-7 flex items-center gap-3"><Route className="h-6 w-6 text-teal-700" aria-hidden="true" /><h2 className="text-2xl font-bold text-edvanta-deep">Rutas donde la practicarás</h2></div>
-          {paths.length ? <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">{paths.map(path => <Link key={`${path.slug}-${path.step_order}`} to={`/rutas/${path.slug}`} className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm transition hover:border-teal-300 hover:shadow-md"><p className="text-xs font-bold text-indigo-700">Paso {String(path.step_order).padStart(2, '0')}</p><h3 className="mt-2 text-lg font-bold text-edvanta-deep">{path.name}</h3><p className="mt-2 text-sm leading-6 text-slate-600">{path.summary}</p></Link>)}</div> : <p className="text-sm text-slate-600">Esta competencia aún no forma parte de una ruta publicada.</p>}
+          <div className="mb-7 flex items-center gap-3"><Route className="h-6 w-6 text-edvanta-tealdark" aria-hidden="true" /><h2 className="text-2xl font-bold text-edvanta-deep">Rutas donde la practicarás</h2></div>
+          {paths.length ? <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">{paths.map(path => <Link key={`${path.slug}-${path.step_order}`} to={`/rutas/${path.slug}`} className="ds-card p-5 shadow-sm transition hover:border-edvanta-teal hover:shadow-md"><p className="text-xs font-bold text-indigo-700">Paso {String(path.step_order).padStart(2, '0')}</p><h3 className="mt-2 text-lg font-bold text-edvanta-deep">{path.name}</h3><p className="mt-2 text-sm leading-6 text-edvanta-muted">{path.summary}</p></Link>)}</div> : <p className="text-sm text-edvanta-muted">Esta competencia aún no forma parte de una ruta publicada.</p>}
         </section>
       </main>
       <SiteFooter />

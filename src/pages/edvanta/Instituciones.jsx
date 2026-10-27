@@ -16,12 +16,16 @@
  */
 
 import { useEffect, useRef, useState } from 'react';
-import { MessageCircle, MonitorPlay } from 'lucide-react';
+import {
+  ArrowRight, Building2, ClipboardList, FileSignature, Factory, HeartHandshake, Hospital, Library, Megaphone,
+  MessageCircle, MessagesSquare, MonitorPlay, Pill, Rocket, Users,
+} from 'lucide-react';
 import SiteHeader from '../../components/edvanta/SiteHeader';
 import SiteFooter from '../../components/edvanta/SiteFooter';
 import {
-  Breadcrumb, Btn, Card, Faq, LandingHero, Section, SectionHeading, Steps,
+  Breadcrumb, Btn, Card, Faq, Section, SectionHeading, Steps,
 } from '../../components/edvanta/ui';
+import { HeroCorporativo } from '../../components/edvanta/heroes';
 import { PaqueteCard } from '../../components/edvanta/oferta';
 import FormularioSolicitud from '../../components/formularios/FormularioSolicitud';
 import { OFERTAS_INSTITUCIONALES, PAQUETES, PROCEDIMIENTO, paquetePorSlug } from '../../data/edvanta/servicios';
@@ -47,6 +51,14 @@ const PREGUNTAS = [
   },
 ];
 
+const ICONO_PAQUETE = {
+  'equipo-que-cuida': Users,
+  'ruta-contigo': HeartHandshake,
+  'biblioteca-contigo': Library,
+  'comunicacion-con-evidencia': Megaphone,
+};
+const PASOS_ICONOS = [ClipboardList, MessagesSquare, FileSignature, Rocket];
+
 export default function Instituciones() {
   const [paquete, setPaquete] = useState('');
   const formulario = useRef(null);
@@ -68,36 +80,62 @@ export default function Instituciones() {
     <div className="min-h-screen bg-white">
       <SiteHeader />
       <main>
-        <LandingHero
-          breadcrumb={<Breadcrumb items={[{ label: 'Inicio', to: '/' }, { label: 'Para instituciones' }]} className="mb-6" />}
+        <HeroCorporativo
+          breadcrumb={<Breadcrumb items={[{ label: 'Inicio', to: '/' }, { label: 'Para instituciones' }]} className="mb-8" />}
           eyebrow="Para instituciones"
           title="Formación y educación en salud para tu institución"
           highlight="para tu institución"
           lead="Hospitales, IPS, EPS y empresas del sector pueden contratar formación para sus equipos, programas educativos para sus pacientes, acceso a recursos y producción de materiales. Todo se arma bajo propuesta, según tu población y tus tiempos."
+          image="/img/publicos/instituciones.webp"
+          imageAlt="Presentación de resultados de formación ante el equipo directivo de una institución"
+          services={PAQUETES.map((p) => ({ icon: ICONO_PAQUETE[p.slug] || Building2, label: p.nombre, to: `/instituciones#${p.slug}` }))}
+          sectors={[
+            { icon: Hospital, label: 'Hospitales y clínicas' },
+            { icon: Building2, label: 'IPS y EPS' },
+            { icon: Pill, label: 'Servicios farmacéuticos y droguerías' },
+            { icon: Factory, label: 'Industria farmacéutica' },
+          ]}
           actions={(
             <>
-              <Btn href="#solicitar-propuesta">Solicitar propuesta</Btn>
-              <Btn href={waLink('Hola, equipo Edvanta. Quiero conversar sobre mi institución.')} external variant="secondary" icon={MessageCircle}>
-                Conversar sobre mi institución
+              <Btn href="#solicitar-propuesta" size="lg" iconRight={ArrowRight}>Solicitar propuesta</Btn>
+              <Btn href={waLink('Hola, equipo Edvanta. Quiero conversar sobre mi institución.')} external variant="secondary" size="lg" icon={MessageCircle}>
+                Conversar primero
               </Btn>
             </>
           )}
         />
 
-        <Section>
-          <SectionHeading eyebrow="Qué puedes contratar" title="Lo que una institución nos pide" />
-          <ul className="mt-8 flex flex-wrap gap-2.5">
-            {OFERTAS_INSTITUCIONALES.map((o) => (
-              <li key={o.nombre}>
-                <a href={`#${o.paquete}`} className="inline-flex min-h-10 items-center rounded-full border border-edvanta-border bg-white px-4 text-sm font-semibold text-edvanta-deep transition hover:border-edvanta-blue/40 hover:text-edvanta-blue">
-                  {o.nombre}
+        <Section tone="white">
+          <SectionHeading
+            eyebrow="Qué puedes contratar"
+            title="De la necesidad al paquete"
+            desc="Lo que una institución nos pide, y el paquete que lo resuelve. Toca uno para ver qué incluye."
+          />
+          <div className="mt-10 grid gap-x-8 gap-y-6 md:grid-cols-2 lg:grid-cols-4">
+            {PAQUETES.map((p) => {
+              const Icono = ICONO_PAQUETE[p.slug] || Building2;
+              const necesidades = OFERTAS_INSTITUCIONALES.filter((o) => o.paquete === p.slug);
+              return (
+                <a key={p.slug} href={`#${p.slug}`} className="group flex flex-col border-t-2 border-edvanta-border pt-5 transition-colors hover:border-edvanta-blue">
+                  <ul className="flex-1 space-y-2">
+                    {necesidades.map((o) => (
+                      <li key={o.nombre} className="flex items-start gap-2 text-[15px] leading-6 text-edvanta-muted">
+                        <span className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-edvanta-teal" aria-hidden="true" />{o.nombre}
+                      </li>
+                    ))}
+                  </ul>
+                  <span className="mt-5 flex items-center gap-3">
+                    <span className="ds-icon-tile h-10 w-10 shrink-0"><Icono className="h-5 w-5" aria-hidden="true" /></span>
+                    <span className="font-display text-base font-extrabold text-edvanta-deep">{p.nombre}</span>
+                    <ArrowRight className="ml-auto h-4 w-4 text-edvanta-blue transition-transform group-hover:translate-x-1" aria-hidden="true" />
+                  </span>
                 </a>
-              </li>
-            ))}
-          </ul>
+              );
+            })}
+          </div>
         </Section>
 
-        <Section tone="tint" bordered>
+        <Section tone="ice" bordered>
           <SectionHeading
             eyebrow="Paquetes"
             title="Cuatro formas de trabajar juntos"
@@ -108,15 +146,15 @@ export default function Instituciones() {
           </div>
         </Section>
 
-        <Section>
-          <SectionHeading eyebrow="Procedimiento" title="Cómo se pide una propuesta" />
+        <Section tone="glow">
+          <SectionHeading eyebrow="Procedimiento" title="Cómo se pide una propuesta" desc="Cuatro pasos, sin compromiso hasta que tengas la propuesta escrita." />
           <Steps
-            className="mt-8"
-            items={PROCEDIMIENTO.map((desc, i) => ({ title: ['Nos cuentas', 'Conversamos', 'Propuesta escrita', 'Empezamos'][i], desc }))}
+            className="mt-12"
+            items={PROCEDIMIENTO.map((desc, i) => ({ title: ['Nos cuentas', 'Conversamos', 'Propuesta escrita', 'Empezamos'][i], desc, icon: PASOS_ICONOS[i] }))}
           />
         </Section>
 
-        <Section tone="tint" bordered>
+        <Section tone="lavender" bordered>
           <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:items-center">
             <div>
               <SectionHeading

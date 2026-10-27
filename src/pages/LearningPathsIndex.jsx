@@ -1,6 +1,8 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, BookOpenCheck, Compass, RefreshCw, Route, Search } from 'lucide-react';
+import { ArrowRight, Award, BookOpen, BookOpenCheck, Compass, RefreshCw, Route, Search, Target } from 'lucide-react';
+import { Btn } from '../components/edvanta/ui';
+import { HeroRuta } from '../components/edvanta/heroes';
 import SiteHeader from '../components/edvanta/SiteHeader';
 import SiteFooter from '../components/edvanta/SiteFooter';
 import { apiUrl } from '../config/api';
@@ -82,39 +84,35 @@ export default function LearningPathsIndex() {
     <>
       <SiteHeader />
       <main className="min-h-screen bg-edvanta-bg">
-        <section className="relative overflow-hidden border-b border-edvanta-border"><div className="ed-backdrop" aria-hidden="true" /><div className="ed-grid" aria-hidden="true" />
-          <div className="relative mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:px-6 lg:grid-cols-[minmax(0,1fr)_360px] lg:px-8 lg:py-16">
-            <div>
-              <p className="ed-eyebrow">Aprende con dirección</p>
-              <h1 className="mt-3 max-w-4xl text-4xl font-extrabold leading-[1.08] tracking-[-0.03em] text-edvanta-blue sm:text-5xl">
-                Rutas para construir una carrera, no solo acumular cursos
-              </h1>
-              <p className="mt-5 max-w-3xl text-lg leading-8 text-slate-600">
-                Cada recorrido conecta lo que una carrera exige con competencias, formación, práctica y evidencia que puedes mostrar.
-              </p>
-            </div>
-            <div className="border-l-4 border-teal-500 pl-5 lg:self-end">
-              <p className="text-sm font-bold text-edvanta-deep">Empieza por tu objetivo profesional</p>
-              <p className="mt-2 text-sm leading-6 text-slate-600">
-                Revisa una carrera si aún no sabes qué ruta elegir. Verás sus funciones, habilidades y cursos relacionados.
-              </p>
-              <Link to="/carreras" className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-teal-700 hover:text-teal-900">
-                Explorar carreras <ArrowRight className="h-4 w-4" aria-hidden="true" />
-              </Link>
-            </div>
-          </div>
-        </section>
+        <HeroRuta
+          eyebrow="Aprende con dirección"
+          title="Rutas para construir una carrera, no solo acumular cursos"
+          highlight="construir una carrera"
+          lead="Cada recorrido conecta lo que una carrera exige con competencias, formación, práctica y evidencia que puedes mostrar."
+          actions={(
+            <>
+              <Btn href="#rutas" size="lg" iconRight={ArrowRight}>Ver las rutas</Btn>
+              <Btn to="/carreras" variant="secondary" size="lg">Explorar carreras</Btn>
+            </>
+          )}
+          steps={[
+            { icon: Compass, title: 'Carrera', desc: 'Lo que exige el cargo' },
+            { icon: Target, title: 'Competencias', desc: 'Lo que necesitas saber' },
+            { icon: BookOpen, title: 'Formación', desc: 'Cursos y práctica' },
+            { icon: Award, title: 'Evidencia', desc: 'Lo que puedes mostrar' },
+          ]}
+        />
 
-        <section className="border-b border-slate-200 bg-edvanta-bg">
+        <section id="rutas" className="scroll-mt-28 border-b border-edvanta-border bg-edvanta-bg">
           <div className="mx-auto flex max-w-7xl flex-col gap-3 px-4 py-5 sm:px-6 lg:flex-row lg:items-center lg:px-8">
             <label className="relative flex-1">
               <span className="sr-only">Buscar una ruta</span>
-              <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" aria-hidden="true" />
+              <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-edvanta-subtle" aria-hidden="true" />
               <input
                 value={query}
                 onChange={event => setQuery(event.target.value)}
                 placeholder="Buscar por carrera o competencia"
-                className="min-h-11 w-full rounded-lg border border-slate-300 bg-white pl-10 pr-4 text-sm text-slate-800 outline-none focus:border-teal-600 focus:ring-2 focus:ring-teal-100"
+                className="min-h-11 w-full rounded-lg border border-edvanta-border bg-white pl-10 pr-4 text-sm text-edvanta-deep outline-none focus:border-edvanta-teal focus:ring-2 focus:ring-teal-100"
               />
             </label>
             <label>
@@ -122,7 +120,7 @@ export default function LearningPathsIndex() {
               <select
                 value={family}
                 onChange={event => setFamily(event.target.value)}
-                className="min-h-11 w-full rounded-lg border border-slate-300 bg-white px-3 text-sm text-slate-700 outline-none focus:border-teal-600 focus:ring-2 focus:ring-teal-100 lg:w-64"
+                className="min-h-11 w-full rounded-lg border border-edvanta-border bg-white px-3 text-sm text-edvanta-muted outline-none focus:border-edvanta-teal focus:ring-2 focus:ring-teal-100 lg:w-64"
               >
                 <option value="all">Todas las familias</option>
                 {families.map(item => <option key={item} value={item}>{item}</option>)}
@@ -134,11 +132,11 @@ export default function LearningPathsIndex() {
         <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
           <div className="mb-7 flex flex-wrap items-end justify-between gap-4">
             <div>
-              <p className="text-sm font-bold text-teal-700">{loading ? 'Consultando rutas' : `${visiblePaths.length} rutas disponibles`}</p>
+              <p className="text-sm font-bold text-edvanta-tealdark">{loading ? 'Consultando rutas' : `${visiblePaths.length} rutas disponibles`}</p>
               <h2 className="mt-1 text-2xl font-bold text-edvanta-deep">Elige tu siguiente recorrido</h2>
             </div>
             {usingFallback && (
-              <button type="button" onClick={() => setReloadKey(value => value + 1)} className="inline-flex min-h-10 items-center gap-2 rounded-lg border border-slate-300 bg-white px-4 text-sm font-bold text-slate-700 hover:border-teal-600 hover:text-teal-700">
+              <button type="button" onClick={() => setReloadKey(value => value + 1)} className="inline-flex min-h-10 items-center gap-2 rounded-lg border border-edvanta-border bg-white px-4 text-sm font-bold text-edvanta-muted hover:border-edvanta-teal hover:text-edvanta-tealdark">
                 <RefreshCw className="h-4 w-4" aria-hidden="true" /> Actualizar catalogo
               </button>
             )}
@@ -146,7 +144,7 @@ export default function LearningPathsIndex() {
 
           {loading ? (
             <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-              {Array.from({ length: 6 }).map((_, index) => <div key={index} className="h-64 animate-pulse rounded-lg border border-slate-200 bg-white" />)}
+              {Array.from({ length: 6 }).map((_, index) => <div key={index} className="h-64 animate-pulse ds-card" />)}
             </div>
           ) : visiblePaths.length ? (
             <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
@@ -159,15 +157,15 @@ export default function LearningPathsIndex() {
                   )}
                   <div className="flex flex-1 flex-col p-6">
                   <div className="flex items-start justify-between gap-4">
-                    <span className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-teal-50 text-teal-700">
+                    <span className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-edvanta-mint text-edvanta-tealdark">
                       <Route className="h-5 w-5" aria-hidden="true" />
                     </span>
                     {path.featured && <span className="text-xs font-bold text-indigo-700">Ruta prioritaria</span>}
                   </div>
-                  <p className="mt-5 text-xs font-bold uppercase text-teal-700">{path.career?.name}</p>
-                  <h3 className="mt-2 text-xl font-bold leading-7 text-edvanta-deep group-hover:text-teal-800">{path.name || path.title}</h3>
-                  <p className="mt-3 flex-1 text-sm leading-6 text-slate-600">{path.summary}</p>
-                  <div className="mt-5 flex flex-wrap gap-x-5 gap-y-2 border-t border-slate-100 pt-4 text-xs font-semibold text-slate-500">
+                  <p className="mt-5 text-xs font-bold uppercase text-edvanta-tealdark">{path.career?.name}</p>
+                  <h3 className="mt-2 text-xl font-bold leading-7 text-edvanta-deep group-hover:text-edvanta-tealdark">{path.name || path.title}</h3>
+                  <p className="mt-3 flex-1 text-sm leading-6 text-edvanta-muted">{path.summary}</p>
+                  <div className="mt-5 flex flex-wrap gap-x-5 gap-y-2 border-t border-edvanta-border pt-4 text-xs font-semibold text-edvanta-subtle">
                     <span className="inline-flex items-center gap-1.5"><BookOpenCheck className="h-4 w-4" aria-hidden="true" /> {path.step_count} pasos</span>
                     <span className="inline-flex items-center gap-1.5"><Compass className="h-4 w-4" aria-hidden="true" /> {path.estimated_duration}</span>
                   </div>
@@ -176,10 +174,10 @@ export default function LearningPathsIndex() {
               ))}
             </div>
           ) : (
-            <div className="rounded-lg border border-slate-200 bg-white px-6 py-16 text-center">
-              <Compass className="mx-auto h-9 w-9 text-teal-700" aria-hidden="true" />
+            <div className="ds-card px-6 py-16 text-center">
+              <Compass className="mx-auto h-9 w-9 text-edvanta-tealdark" aria-hidden="true" />
               <h2 className="mt-4 text-xl font-bold text-edvanta-deep">No encontramos una ruta con esos filtros</h2>
-              <button type="button" onClick={() => { setQuery(''); setFamily('all'); }} className="mt-5 text-sm font-bold text-teal-700 hover:text-teal-900">Ver todas las rutas</button>
+              <button type="button" onClick={() => { setQuery(''); setFamily('all'); }} className="mt-5 text-sm font-bold text-edvanta-tealdark hover:text-teal-900">Ver todas las rutas</button>
             </div>
           )}
         </section>

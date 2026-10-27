@@ -157,7 +157,7 @@ export default function Diagnostico() {
           type="button"
           onClick={revisar}
           disabled={revisando}
-          className="mt-6 inline-flex min-h-11 items-center gap-2 rounded-xl bg-edvanta-blue px-5 text-sm font-bold text-white disabled:opacity-60"
+          className="ed-btn ed-btn--primary mt-6"
         >
           <RefreshCw className={`h-4 w-4 ${revisando ? 'animate-spin' : ''}`} aria-hidden="true" />
           {revisando ? 'Revisando…' : 'Volver a revisar'}

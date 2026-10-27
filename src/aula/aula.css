@@ -5,16 +5,18 @@
  * variables: los componentes del aula no usan colores fijos.
  */
 .aula-root {
-  /* Marca oficial de Edvanta. Los hexadecimales son los del manual,
-     no aproximaciones: un azul casi igual se nota al poner el aula al
-     lado del resto del sitio. */
-  --aula-primary: #031D5C;        /* Azul Edvanta */
-  --aula-primary-hover: #052A80;  /* el mismo azul, aclarado para el hover */
-  --aula-primary-soft: #E6EAF4;
-  --aula-secondary: #4398A1;      /* Turquesa */
-  --aula-secondary-soft: #E9F4F5; /* Turquesa hielo */
-  --aula-accent: #958ACC;         /* Lavanda */
-  --aula-accent-soft: #ECE9F8;    /* Lavanda niebla */
+  /* Sistema de diseño 2.0: el mismo azul, turquesa y lavanda que el resto
+     de edvanta.co (src/styles/edvanta-ds.css). El azul más oscuro del
+     manual (#031D5C) queda para fondos profundos. El turquesa de texto es
+     el oscuro (#0F7480): el claro no alcanza contraste AA sobre blanco. */
+  --aula-primary: #082E86;        /* Azul Edvanta */
+  --aula-primary-hover: #0A3AA6;
+  --aula-primary-deep: #031D5C;
+  --aula-primary-soft: #E8EEFB;
+  --aula-secondary: #0F7480;      /* Turquesa (texto e íconos) */
+  --aula-secondary-soft: #DDF3F2; /* Aqua */
+  --aula-accent: #8981CE;         /* Lavanda */
+  --aula-accent-soft: #EEE8FC;
 
   /* Superficies y texto */
   --aula-bg: #F7F9FC;            /* Blanco digital */
@@ -22,9 +24,9 @@
   --aula-surface-muted: #F7F9FC;
   --aula-border: #E3E9F2;
   --aula-border-strong: #C9D4E6;
-  --aula-text: #17223B;
-  --aula-muted: #65718A;
-  --aula-subtle: #A6AEBE;
+  --aula-text: #14233F;
+  --aula-muted: #4A5A73;
+  --aula-subtle: #66738A;
 
   /* Estados */
   --aula-success: #0F7480;

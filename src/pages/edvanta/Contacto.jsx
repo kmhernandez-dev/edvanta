@@ -14,7 +14,7 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, Mail, MessageCircle } from 'lucide-react';
 import SiteHeader from '../../components/edvanta/SiteHeader';
 import SiteFooter from '../../components/edvanta/SiteFooter';
-import { Breadcrumb, Card, LandingHero, Section } from '../../components/edvanta/ui';
+import { Breadcrumb, Card, Eyebrow } from '../../components/edvanta/ui';
 import FormularioSolicitud from '../../components/formularios/FormularioSolicitud';
 import { EDVANTA_EMAIL, EDVANTA_WHATSAPP_URL } from '../../config/links';
 import { updatePageSeo } from '../../utils/seo';
@@ -37,69 +37,66 @@ export default function Contacto() {
     <div className="min-h-screen bg-white">
       <SiteHeader />
       <main>
-        <LandingHero
-          breadcrumb={<Breadcrumb items={[{ label: 'Inicio', to: '/' }, { label: 'Contacto' }]} className="mb-6" />}
-          eyebrow="Contacto"
-          title="Hablemos"
-          highlight="Hablemos"
-          lead="Escríbenos por el canal que prefieras. Si tu pregunta es sobre tu salud o tu tratamiento, consúltala con tu médico o farmacéutico tratante: por aquí no damos indicaciones clínicas."
-        />
-
-        <Section>
-          <div className="grid gap-10 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)]">
-            <div className="space-y-6">
-              <div className="space-y-3">
-                <a href={EDVANTA_WHATSAPP_URL} target="_blank" rel="noopener noreferrer"
-                  className="flex items-center gap-4 rounded-2xl border border-edvanta-border bg-white p-5 transition hover:border-edvanta-teal/50">
-                  <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-edvanta-mint text-edvanta-tealdark">
-                    <MessageCircle className="h-5 w-5" aria-hidden="true" />
-                  </span>
-                  <span>
-                    <span className="block font-bold text-edvanta-deep">WhatsApp</span>
-                    <span className="block text-sm text-edvanta-muted">La forma más rápida de conversar</span>
-                  </span>
-                </a>
-                {EDVANTA_EMAIL && (
-                  <a href={`mailto:${EDVANTA_EMAIL}`}
-                    className="flex items-center gap-4 rounded-2xl border border-edvanta-border bg-white p-5 transition hover:border-edvanta-blue/40">
-                    <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-edvanta-light text-edvanta-blue">
-                      <Mail className="h-5 w-5" aria-hidden="true" />
-                    </span>
+        {/* El formulario sube al primer pantallazo: quien llega a Contacto ya decidió escribir. */}
+        <section className="ds-surface-glow relative overflow-hidden">
+          <div className="ed-grid" aria-hidden="true" />
+          <div className="relative mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-20">
+            <Breadcrumb items={[{ label: 'Inicio', to: '/' }, { label: 'Contacto' }]} className="mb-8" />
+            <div className="grid gap-12 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-16">
+              <div className="ds-rise">
+                <Eyebrow>Contacto</Eyebrow>
+                <h1 className="mt-4 font-display font-extrabold leading-[1.07] tracking-[-0.03em] text-edvanta-blue" style={{ fontSize: 'var(--ds-fs-display)' }}>
+                  <span className="ed-grad-text">Hablemos</span>
+                </h1>
+                <p className="mt-5 max-w-xl text-lg leading-8 text-edvanta-muted">
+                  Escríbenos por el canal que prefieras. Si tu pregunta es sobre tu salud o tu tratamiento, consúltala con tu
+                  médico o farmacéutico tratante: por aquí no damos indicaciones clínicas.
+                </p>
+                <div className="mt-8 grid gap-3 sm:grid-cols-2">
+                  <a href={EDVANTA_WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="group ds-card ds-card--interactive flex items-center gap-4 p-4">
+                    <span className="ds-icon-tile ds-icon-tile--teal h-11 w-11 shrink-0"><MessageCircle className="h-5 w-5" aria-hidden="true" /></span>
                     <span>
-                      <span className="block font-bold text-edvanta-deep">Correo</span>
-                      <span className="block text-sm text-edvanta-muted">{EDVANTA_EMAIL}</span>
+                      <span className="block font-bold text-edvanta-deep">WhatsApp</span>
+                      <span className="block text-sm text-edvanta-muted">La forma más rápida</span>
                     </span>
                   </a>
-                )}
-              </div>
-              <div>
-                <p className="text-xs font-bold uppercase tracking-[.14em] text-edvanta-muted">Atajos</p>
-                <ul className="mt-3 divide-y divide-edvanta-border overflow-hidden rounded-2xl border border-edvanta-border bg-white">
+                  {EDVANTA_EMAIL && (
+                    <a href={`mailto:${EDVANTA_EMAIL}`} className="group ds-card ds-card--interactive flex items-center gap-4 p-4">
+                      <span className="ds-icon-tile h-11 w-11 shrink-0"><Mail className="h-5 w-5" aria-hidden="true" /></span>
+                      <span className="min-w-0">
+                        <span className="block font-bold text-edvanta-deep">Correo</span>
+                        <span className="block truncate text-sm text-edvanta-muted">{EDVANTA_EMAIL}</span>
+                      </span>
+                    </a>
+                  )}
+                </div>
+                <p className="mt-10 text-xs font-bold uppercase tracking-[.14em] text-edvanta-subtle">Atajos</p>
+                <ul className="mt-3 space-y-1">
                   {ATAJOS.map((a) => (
                     <li key={a.to}>
-                      <Link to={a.to} className="flex items-center justify-between gap-3 px-5 py-4 text-[15px] font-semibold text-edvanta-deep hover:bg-edvanta-bg">
+                      <Link to={a.to} className="group flex items-center justify-between gap-3 border-b border-edvanta-border py-3 text-[15px] font-semibold text-edvanta-deep hover:text-edvanta-blue">
                         {a.t}
-                        <ArrowRight className="h-4 w-4 shrink-0 text-edvanta-blue" aria-hidden="true" />
+                        <ArrowRight className="h-4 w-4 shrink-0 text-edvanta-blue transition-transform group-hover:translate-x-1" aria-hidden="true" />
                       </Link>
                     </li>
                   ))}
                 </ul>
               </div>
+              <Card className="ds-rise-2 self-start p-6 sm:p-8">
+                <h2 className="font-display text-2xl font-extrabold text-edvanta-deep">Escríbenos</h2>
+                <p className="mb-6 mt-1 text-sm text-edvanta-muted">Te respondemos al correo que dejes.</p>
+                <FormularioSolicitud
+                  tipo="contacto"
+                  referencia="contacto-general"
+                  roles={['quimico', 'regente', 'auxiliar', 'otro_profesional', 'estudiante', 'paciente', 'cuidador', 'otro']}
+                  boton="Enviar mensaje"
+                  exito="Te responderemos pronto."
+                  resumenWa="Quiero hacerles una consulta."
+                />
+              </Card>
             </div>
-            <Card>
-              <h2 className="font-display text-xl font-extrabold text-edvanta-deep">Escríbenos</h2>
-              <p className="mt-1 mb-5 text-sm text-edvanta-muted">Te respondemos al correo que dejes.</p>
-              <FormularioSolicitud
-                tipo="contacto"
-                referencia="contacto-general"
-                roles={['quimico', 'regente', 'auxiliar', 'otro_profesional', 'estudiante', 'paciente', 'cuidador', 'otro']}
-                boton="Enviar mensaje"
-                exito="Te responderemos pronto."
-                resumenWa="Quiero hacerles una consulta."
-              />
-            </Card>
           </div>
-        </Section>
+        </section>
       </main>
       <SiteFooter />
     </div>

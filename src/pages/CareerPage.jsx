@@ -96,7 +96,7 @@ export default function CareerPage() {
           <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
             <div className="h-5 w-52 animate-pulse rounded bg-slate-200" />
             <div className="mt-8 h-14 max-w-3xl animate-pulse rounded bg-slate-200" />
-            <div className="mt-5 h-24 max-w-3xl animate-pulse rounded bg-slate-100" />
+            <div className="mt-5 h-24 max-w-3xl animate-pulse rounded bg-edvanta-soft" />
           </div>
         </main>
         <SiteFooter />
@@ -110,14 +110,14 @@ export default function CareerPage() {
         <SiteHeader />
         <main className="min-h-[70vh] bg-edvanta-bg">
           <div className="mx-auto max-w-3xl px-4 py-20 text-center sm:px-6">
-            <Compass className="mx-auto h-10 w-10 text-teal-700" aria-hidden="true" />
+            <Compass className="mx-auto h-10 w-10 text-edvanta-tealdark" aria-hidden="true" />
             <h1 className="mt-5 text-3xl font-bold text-edvanta-deep">No pudimos abrir esta carrera</h1>
-            <p className="mt-3 text-slate-600">{error || 'La ficha solicitada no está disponible.'}</p>
+            <p className="mt-3 text-edvanta-muted">{error || 'La ficha solicitada no está disponible.'}</p>
             <div className="mt-7 flex flex-wrap justify-center gap-3">
-              <button type="button" onClick={() => setReloadKey(value => value + 1)} className="inline-flex min-h-11 items-center gap-2 rounded-lg bg-edvanta-blue px-5 text-sm font-bold text-white">
+              <button type="button" onClick={() => setReloadKey(value => value + 1)} className="ed-btn ed-btn--primary">
                 <RefreshCw className="h-4 w-4" aria-hidden="true" /> Reintentar
               </button>
-              <Link to="/carreras" className="inline-flex min-h-11 items-center gap-2 rounded-lg border border-slate-300 bg-white px-5 text-sm font-bold text-slate-700">
+              <Link to="/carreras" className="inline-flex min-h-11 items-center gap-2 rounded-lg border border-edvanta-border bg-white px-5 text-sm font-bold text-edvanta-muted">
                 <ArrowLeft className="h-4 w-4" aria-hidden="true" /> Ver todas
               </Link>
             </div>
@@ -134,23 +134,23 @@ export default function CareerPage() {
       <main className="bg-edvanta-bg">
         <section className="relative overflow-hidden border-b border-edvanta-border"><div className="ed-backdrop" aria-hidden="true" /><div className="ed-grid" aria-hidden="true" />
           <div className="relative mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
-            <nav className="flex flex-wrap items-center gap-2 text-sm text-slate-500" aria-label="Migas de pan">
-              <Link to="/" className="hover:text-teal-700">Inicio</Link><span>/</span>
-              <Link to="/carreras" className="hover:text-teal-700">Carreras</Link><span>/</span>
-              <span className="font-semibold text-slate-700">{career.name}</span>
+            <nav className="flex flex-wrap items-center gap-2 text-sm text-edvanta-subtle" aria-label="Migas de pan">
+              <Link to="/" className="hover:text-edvanta-tealdark">Inicio</Link><span>/</span>
+              <Link to="/carreras" className="hover:text-edvanta-tealdark">Carreras</Link><span>/</span>
+              <span className="font-semibold text-edvanta-muted">{career.name}</span>
             </nav>
 
             <div className="mt-9 grid gap-10 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-end">
               <div>
                 <p className="ed-eyebrow">{career.family?.name}</p>
                 <h1 className="mt-3 max-w-4xl text-4xl font-extrabold leading-[1.08] tracking-[-0.03em] text-edvanta-blue sm:text-5xl">{career.name}</h1>
-                <p className="mt-5 max-w-3xl text-xl font-semibold leading-8 text-slate-700">{career.headline}</p>
-                <p className="mt-4 max-w-3xl text-base leading-7 text-slate-600">{career.summary}</p>
+                <p className="mt-5 max-w-3xl text-xl font-semibold leading-8 text-edvanta-muted">{career.headline}</p>
+                <p className="mt-4 max-w-3xl text-base leading-7 text-edvanta-muted">{career.summary}</p>
               </div>
               <div className="border-l-4 border-teal-500 pl-5">
                 <p className="text-sm font-bold text-edvanta-deep">Empieza con una visión completa</p>
-                <p className="mt-2 text-sm leading-6 text-slate-600">Revisa las funciones, habilidades y contextos de trabajo antes de elegir cursos.</p>
-                <a href="#habilidades" className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-teal-700 hover:text-teal-900">
+                <p className="mt-2 text-sm leading-6 text-edvanta-muted">Revisa las funciones, habilidades y contextos de trabajo antes de elegir cursos.</p>
+                <a href="#habilidades" className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-edvanta-tealdark hover:text-teal-900">
                   Ver habilidades <ArrowRight className="h-4 w-4" aria-hidden="true" />
                 </a>
               </div>
@@ -161,27 +161,27 @@ export default function CareerPage() {
         <section className="mx-auto grid max-w-7xl gap-12 px-4 py-12 sm:px-6 lg:grid-cols-2 lg:px-8">
           <div>
             <div className="flex items-center gap-3">
-              <Target className="h-6 w-6 text-teal-700" aria-hidden="true" />
+              <Target className="h-6 w-6 text-edvanta-tealdark" aria-hidden="true" />
               <h2 className="text-2xl font-bold text-edvanta-deep">Qué es esta carrera</h2>
             </div>
-            <p className="mt-4 text-base leading-8 text-slate-600">{career.what_it_is}</p>
+            <p className="mt-4 text-base leading-8 text-edvanta-muted">{career.what_it_is}</p>
           </div>
           <div>
             <div className="flex items-center gap-3">
               <BookOpenCheck className="h-6 w-6 text-indigo-600" aria-hidden="true" />
               <h2 className="text-2xl font-bold text-edvanta-deep">Perfil recomendado</h2>
             </div>
-            <p className="mt-4 text-base leading-8 text-slate-600">{career.recommended_profile}</p>
+            <p className="mt-4 text-base leading-8 text-edvanta-muted">{career.recommended_profile}</p>
           </div>
         </section>
 
-        <section className="border-y border-slate-200 bg-white">
+        <section className="border-y border-edvanta-border bg-white">
           <div className="mx-auto grid max-w-7xl gap-12 px-4 py-12 sm:px-6 lg:grid-cols-2 lg:px-8">
             <div>
               <h2 className="text-2xl font-bold text-edvanta-deep">Qué podrías hacer</h2>
               <ul className="mt-5 space-y-3">
                 {(career.responsibilities || []).map(item => (
-                  <li key={item} className="flex gap-3 text-sm leading-6 text-slate-700">
+                  <li key={item} className="flex gap-3 text-sm leading-6 text-edvanta-muted">
                     <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-teal-600" aria-hidden="true" /> {item}
                   </li>
                 ))}
@@ -193,7 +193,7 @@ export default function CareerPage() {
                 <h2 className="text-2xl font-bold text-edvanta-deep">Dónde se desarrolla</h2>
               </div>
               <ul className="mt-5 grid gap-3 sm:grid-cols-2">
-                {(career.workplaces || []).map(item => <li key={item} className="border-l-2 border-indigo-200 pl-3 text-sm font-semibold leading-6 text-slate-700">{item}</li>)}
+                {(career.workplaces || []).map(item => <li key={item} className="border-l-2 border-indigo-200 pl-3 text-sm font-semibold leading-6 text-edvanta-muted">{item}</li>)}
               </ul>
             </div>
           </div>
@@ -203,20 +203,20 @@ export default function CareerPage() {
           <div className="max-w-3xl">
             <p className="ed-eyebrow">Mapa de competencias</p>
             <h2 className="mt-2 text-3xl font-bold text-edvanta-deep">Habilidades que conviene desarrollar</h2>
-            <p className="mt-3 text-base leading-7 text-slate-600">El nivel indica hasta dónde conviene avanzar para desempeñarte con autonomía creciente. No es un requisito de contratación ni una promesa de empleo.</p>
+            <p className="mt-3 text-base leading-7 text-edvanta-muted">El nivel indica hasta dónde conviene avanzar para desempeñarte con autonomía creciente. No es un requisito de contratación ni una promesa de empleo.</p>
           </div>
           <div className="mt-8 grid gap-5 md:grid-cols-2">
             {Object.entries(skillGroups).map(([type, skills]) => (
-              <section key={type} className="rounded-lg border border-slate-200 bg-white p-5">
+              <section key={type} className="ds-card p-5">
                 <h3 className="text-lg font-bold text-edvanta-deep">{skillTypeLabels[type] || 'Otras habilidades'}</h3>
-                <div className="mt-4 divide-y divide-slate-100">
+                <div className="mt-4 divide-y divide-edvanta-border">
                   {skills.map(skill => (
                     <div key={skill.slug} className="py-3 first:pt-0 last:pb-0">
                       <div className="flex items-start justify-between gap-3">
-                        <p className="font-bold text-slate-800">{skill.name}</p>
-                        <span className="shrink-0 rounded-full bg-teal-50 px-2 py-1 text-[11px] font-bold text-teal-800">{levelLabels[skill.required_level] || skill.required_level}</span>
+                        <p className="font-bold text-edvanta-deep">{skill.name}</p>
+                        <span className="shrink-0 rounded-full bg-edvanta-mint px-2 py-1 text-[11px] font-bold text-edvanta-tealdark">{levelLabels[skill.required_level] || skill.required_level}</span>
                       </div>
-                      {skill.description && <p className="mt-1 text-sm leading-6 text-slate-600">{skill.description}</p>}
+                      {skill.description && <p className="mt-1 text-sm leading-6 text-edvanta-muted">{skill.description}</p>}
                     </div>
                   ))}
                 </div>
@@ -225,18 +225,18 @@ export default function CareerPage() {
           </div>
         </section>
 
-        <section className="border-y border-slate-200 bg-white">
+        <section className="border-y border-edvanta-border bg-white">
           <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
             <h2 className="text-2xl font-bold text-edvanta-deep">Cómo empezar a prepararte</h2>
-            <p className="mt-4 max-w-4xl text-base leading-8 text-slate-600">{career.entry_guidance}</p>
+            <p className="mt-4 max-w-4xl text-base leading-8 text-edvanta-muted">{career.entry_guidance}</p>
 
             {paths.length > 0 && (
               <div className="mt-8 grid gap-4 md:grid-cols-2">
                 {paths.map(path => (
-                  <Link key={path.id} to={`/rutas/${path.slug}`} className="rounded-lg border border-slate-200 p-5 hover:border-teal-300">
-                    <p className="text-xs font-bold uppercase text-teal-700">Ruta profesional</p>
+                  <Link key={path.id} to={`/rutas/${path.slug}`} className="rounded-lg border border-edvanta-border p-5 hover:border-edvanta-teal">
+                    <p className="text-xs font-bold uppercase text-edvanta-tealdark">Ruta profesional</p>
                     <h3 className="mt-2 text-lg font-bold text-edvanta-deep">{path.name}</h3>
-                    <p className="mt-2 text-sm leading-6 text-slate-600">{path.summary}</p>
+                    <p className="mt-2 text-sm leading-6 text-edvanta-muted">{path.summary}</p>
                   </Link>
                 ))}
               </div>
@@ -247,10 +247,10 @@ export default function CareerPage() {
                 <h3 className="text-xl font-bold text-edvanta-deep">Cursos relacionados verificados</h3>
                 <div className="mt-4 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
                   {courses.map(course => (
-                    <Link key={course.id} to={`/cursos/${course.slug}`} className="rounded-lg border border-slate-200 p-5 hover:border-teal-300">
-                      <p className="text-xs font-bold uppercase text-teal-700">{course.provider}</p>
+                    <Link key={course.id} to={`/cursos/${course.slug}`} className="rounded-lg border border-edvanta-border p-5 hover:border-edvanta-teal">
+                      <p className="text-xs font-bold uppercase text-edvanta-tealdark">{course.provider}</p>
                       <h4 className="mt-2 font-bold text-edvanta-deep">{course.title}</h4>
-                      <p className="mt-2 text-xs text-slate-500">{course.matching_skills} habilidades relacionadas</p>
+                      <p className="mt-2 text-xs text-edvanta-subtle">{course.matching_skills} habilidades relacionadas</p>
                     </Link>
                   ))}
                 </div>
@@ -263,17 +263,17 @@ export default function CareerPage() {
             )}
 
             <div className="mt-8 flex flex-wrap gap-3">
-              <Link to="/cursos" className="inline-flex min-h-11 items-center gap-2 rounded-lg bg-edvanta-blue px-5 text-sm font-bold text-white hover:bg-edvanta-bluedark">
+              <Link to="/cursos" className="ed-btn ed-btn--primary">
                 Explorar cursos <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </Link>
-              <Link to="/carreras" className="inline-flex min-h-11 items-center gap-2 rounded-lg border border-slate-300 px-5 text-sm font-bold text-slate-700 hover:bg-slate-50">
+              <Link to="/carreras" className="inline-flex min-h-11 items-center gap-2 rounded-lg border border-edvanta-border px-5 text-sm font-bold text-edvanta-muted hover:bg-edvanta-bg">
                 <ArrowLeft className="h-4 w-4" aria-hidden="true" /> Comparar otras carreras
               </Link>
             </div>
           </div>
         </section>
 
-        <section className="mx-auto max-w-7xl px-4 py-9 text-xs leading-5 text-slate-500 sm:px-6 lg:px-8">
+        <section className="mx-auto max-w-7xl px-4 py-9 text-xs leading-5 text-edvanta-subtle sm:px-6 lg:px-8">
           <p>Contenido de orientación educativa. Las funciones y requisitos concretos pueden variar según país, empresa, producto y nivel de responsabilidad. Edvanta no garantiza contratación, salario ni resultados profesionales.</p>
         </section>
       </main>

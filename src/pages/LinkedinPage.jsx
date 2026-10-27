@@ -23,13 +23,13 @@ function PromptCard({ item, index }) {
     } catch { /* ignore */ }
   };
   return (
-    <article className="flex flex-col rounded-xl border border-slate-200 bg-white p-5 shadow-sm transition hover:border-edvanta-border hover:shadow-md">
+    <article className="flex flex-col rounded-xl border border-edvanta-border bg-white p-5 shadow-sm transition hover:border-edvanta-border hover:shadow-md">
       <div className="flex items-start justify-between gap-3">
         <p className="text-xs font-bold uppercase text-edvanta-blue">{item.categoria}</p>
-        <span className="rounded-full bg-slate-100 px-2 py-0.5 text-[10px] font-bold text-slate-500">#{index + 1}</span>
+        <span className="rounded-full bg-edvanta-soft px-2 py-0.5 text-[10px] font-bold text-edvanta-subtle">#{index + 1}</span>
       </div>
       <h3 className="mt-2 text-base font-bold text-edvanta-deep">{item.titulo}</h3>
-      <p className="mt-3 flex-1 rounded-lg bg-slate-50 p-3 text-sm leading-6 text-slate-700">{item.prompt}</p>
+      <p className="mt-3 flex-1 rounded-lg bg-edvanta-bg p-3 text-sm leading-6 text-edvanta-muted">{item.prompt}</p>
       <button type="button" onClick={copiar} className="mt-4 inline-flex min-h-10 items-center justify-center gap-2 rounded-lg border border-edvanta-border bg-edvanta-light px-4 text-sm font-bold text-edvanta-blue transition hover:bg-edvanta-light">
         {copiado ? <><CheckCircle2 className="h-4 w-4" /> Copiado</> : <>Copiar prompt</>}
       </button>
@@ -120,7 +120,7 @@ export default function LinkedinPage() {
             <Lightbulb className="h-5 w-5 text-edvanta-blue" aria-hidden="true" />
             <h2 className="text-2xl font-bold text-edvanta-deep sm:text-3xl">Guía de prompts para mejorar tu LinkedIn</h2>
           </div>
-          <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-600">
+          <p className="mt-2 max-w-3xl text-sm leading-6 text-edvanta-muted">
             Copia el prompt, reemplaza lo que está entre llaves o corchetes y pégalo en tu asistente favorito. El resultado lo adaptas a tu voz.
           </p>
 
@@ -131,7 +131,7 @@ export default function LinkedinPage() {
                 type="button"
                 onClick={() => setCategoria(c)}
                 aria-pressed={categoria === c}
-                className={`min-h-10 shrink-0 rounded-full border px-4 text-sm font-bold transition ${categoria === c ? 'border-edvanta-blue/40 bg-edvanta-blue text-white' : 'border-slate-300 bg-white text-slate-700 hover:border-edvanta-blue/40'}`}
+                className={`min-h-10 shrink-0 rounded-full border px-4 text-sm font-bold transition ${categoria === c ? 'border-edvanta-blue/40 bg-edvanta-blue text-white' : 'border-edvanta-border bg-white text-edvanta-muted hover:border-edvanta-blue/40'}`}
               >
                 {c}
               </button>
@@ -144,21 +144,21 @@ export default function LinkedinPage() {
         </section>
 
         {/* Guía con imágenes */}
-        <section className="border-y border-slate-200 bg-white">
+        <section className="border-y border-edvanta-border bg-white">
           <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
             <div className="flex items-center gap-2">
               <ImageIcon className="h-5 w-5 text-edvanta-blue" aria-hidden="true" />
               <h2 className="text-2xl font-bold text-edvanta-deep sm:text-3xl">Guía práctica guiada con imágenes</h2>
             </div>
-            <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-600">
+            <p className="mt-2 max-w-3xl text-sm leading-6 text-edvanta-muted">
               Sigue los 6 pasos en orden. Cada uno corresponde a una pantalla del perfil y tiene una instrucción concreta.
             </p>
             <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
               {guiaLinkedinPasos.map(paso => (
-                <div key={paso.paso} className="relative rounded-xl border border-slate-200 bg-slate-50 p-5">
+                <div key={paso.paso} className="relative rounded-xl border border-edvanta-border bg-edvanta-bg p-5">
                   <span className="absolute -top-3 left-5 inline-flex h-8 w-8 items-center justify-center rounded-full bg-edvanta-blue text-sm font-bold text-white" aria-hidden="true">{paso.paso.split(' ')[0]}</span>
                   <h3 className="mt-3 text-base font-bold text-edvanta-deep">{paso.paso}</h3>
-                  <p className="mt-2 text-sm leading-6 text-slate-600">{paso.detalle}</p>
+                  <p className="mt-2 text-sm leading-6 text-edvanta-muted">{paso.detalle}</p>
                   <div className="mt-4 flex h-24 items-center justify-center rounded-lg border border-dashed border-edvanta-border bg-edvanta-light/60">
                     <span className="inline-flex items-center gap-1.5 text-xs font-bold text-edvanta-blue">
                       <ImageIcon className="h-4 w-4" aria-hidden="true" /> Referencia visual del paso
@@ -187,14 +187,14 @@ export default function LinkedinPage() {
                 ))}
               </ul>
               <div className="mt-8 flex flex-wrap items-center gap-4">
-                <button type="button" onClick={comprarGuia} disabled={paying} className="inline-flex min-h-12 items-center gap-2 rounded-xl bg-edvanta-blue px-7 text-sm font-bold text-white shadow-lg shadow-edvanta-blue/25 transition hover:bg-edvanta-bluedark disabled:cursor-not-allowed disabled:opacity-60">
+                <button type="button" onClick={comprarGuia} disabled={paying} className="ed-btn ed-btn--primary">
                   {paying ? <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" /> : <BookOpen className="h-4 w-4" aria-hidden="true" />}
                   {paying ? 'Preparando el pago...' : `Comprar por $${productoLinkedin.priceUsd} USD`}
                 </button>
                 <span className="text-sm font-bold text-edvanta-light">Pago seguro con Mercado Pago</span>
               </div>
               {payError && <p className="mt-3 text-sm font-semibold text-rose-300" role="alert">{payError}</p>}
-              <p className="mt-4 text-xs text-slate-400">Incluye la guía en PDF y acceso al acompañamiento por WhatsApp de la comunidad.</p>
+              <p className="mt-4 text-xs text-edvanta-subtle">Incluye la guía en PDF y acceso al acompañamiento por WhatsApp de la comunidad.</p>
             </div>
             <div className="rounded-2xl border border-white/20 bg-edvanta-blue/5 p-8 backdrop-blur">
               <p className="text-xs font-bold uppercase tracking-wide text-edvanta-light">Lo que resolverás</p>
@@ -219,11 +219,11 @@ export default function LinkedinPage() {
         </section>
 
         {/* CTA comunidad */}
-        <section className="border-t border-slate-200 bg-white">
+        <section className="border-t border-edvanta-border bg-white">
           <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-6 px-4 py-12 sm:px-6 lg:flex-row lg:items-center lg:px-8">
             <div className="max-w-2xl">
               <h2 className="text-2xl font-bold text-edvanta-deep">¿Quieres retroalimentación de tu perfil?</h2>
-              <p className="mt-2 text-sm leading-6 text-slate-600">
+              <p className="mt-2 text-sm leading-6 text-edvanta-muted">
                 Comparte tu perfil en la comunidad de WhatsApp y recibe comentarios de otros profesionales farmacéuticos.
               </p>
             </div>
@@ -231,7 +231,7 @@ export default function LinkedinPage() {
               href="https://chat.whatsapp.com/DBqfWNhlkQOFQ9fo90e2Qq"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex min-h-11 items-center gap-2 rounded-lg bg-edvanta-blue px-5 text-sm font-bold text-white transition hover:bg-edvanta-bluedark"
+              className="ed-btn ed-btn--primary"
             >
               <MessageCircle className="h-4 w-4" aria-hidden="true" /> Unirme a la comunidad
             </a>

@@ -34,7 +34,7 @@ export default function VolviendoDeAcceso() {
   if (loading && supabaseConfigured) {
     return (
       <div className="flex min-h-screen items-center justify-center bg-edvanta-bg px-4">
-        <p className="text-sm font-semibold text-slate-600">Entrando…</p>
+        <p className="text-sm font-semibold text-edvanta-muted">Entrando…</p>
       </div>
     );
   }

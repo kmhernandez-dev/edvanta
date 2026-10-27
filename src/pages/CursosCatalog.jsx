@@ -6,7 +6,9 @@ import CourseCarousel from '../components/CourseCarousel';
 import ExternalCourseCard from '../components/ExternalCourseCard';
 import { apiUrl } from '../config/api';
 import { updatePageSeo } from '../utils/seo';
-import { BookOpenCheck, CalendarClock } from 'lucide-react';
+import { ArrowRight, BookOpenCheck, CalendarClock, Compass, Lightbulb, TrendingUp } from 'lucide-react';
+import { Btn } from '../components/edvanta/ui';
+import { HeroRuta } from '../components/edvanta/heroes';
 import { escuelaDelArea } from '../data/edvanta/escuelas';
 import { PRODUCTO_DESTACADO, productoPorSlug } from '../data/edvanta/productos';
 
@@ -207,37 +209,38 @@ export default function CursosCatalog({ defaultProvider = '' }) {
       <SiteHeader />
 
       <main>
-        {/* Hero */}
-        <section className="relative overflow-hidden border-b border-edvanta-border py-12 md:py-16"><div className="ed-backdrop" aria-hidden="true" /><div className="ed-grid" aria-hidden="true" />
-          <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="max-w-3xl">
-              <p className="ed-eyebrow mb-3">
-                {defaultProvider ? PROVIDER_LABELS[defaultProvider] : 'Catálogo de cursos'}
-              </p>
-              <h1 className="text-4xl font-extrabold leading-[1.08] tracking-[-0.03em] text-edvanta-blue md:text-5xl">
-                {defaultProvider
-                  ? `Cursos de ${PROVIDER_LABELS[defaultProvider]}`
-                  : 'Cursos de Edvanta y recomendados'}
-              </h1>
-              <p className="mt-4 text-base leading-relaxed text-slate-600 md:text-lg">
-                {defaultProvider
-                  ? `Explora nuestra selección de cursos de ${PROVIDER_LABELS[defaultProvider]} en farmacia, calidad, datos, IA, gestión de proyectos y más.`
-                  : 'Primero, los cursos de Edvanta, ordenados por escuela. Después, cursos de otras plataformas que recomendamos, señalados como tales.'}
-              </p>
-            </div>
-          </div>
-        </section>
+        {/* Héroe D: el catálogo como recorrido de aprendizaje. */}
+        <HeroRuta
+          eyebrow={defaultProvider ? PROVIDER_LABELS[defaultProvider] : 'Catálogo de cursos'}
+          title={defaultProvider ? `Cursos de ${PROVIDER_LABELS[defaultProvider]}` : 'Cursos de Edvanta y recomendados'}
+          highlight={defaultProvider ? undefined : 'Cursos de Edvanta'}
+          lead={defaultProvider
+            ? `Explora nuestra selección de cursos de ${PROVIDER_LABELS[defaultProvider]} en farmacia, calidad, datos, IA, gestión de proyectos y más.`
+            : 'Primero, los cursos de Edvanta, ordenados por escuela. Después, cursos de otras plataformas que recomendamos, señalados como tales.'}
+          actions={!defaultProvider && (
+            <>
+              <Btn href="#cursos-edvanta" size="lg" iconRight={ArrowRight}>Ver cursos de Edvanta</Btn>
+              <Btn to="/escuelas" variant="secondary" size="lg">Explorar por escuela</Btn>
+            </>
+          )}
+          steps={[
+            { icon: Compass, title: 'Explora', desc: 'Elige escuela y área' },
+            { icon: BookOpenCheck, title: 'Aprende', desc: 'Video y texto, a tu ritmo' },
+            { icon: Lightbulb, title: 'Aplica', desc: 'Casos de la práctica' },
+            { icon: TrendingUp, title: 'Avanza', desc: 'Rutas y competencias' },
+          ]}
+        />
 
         {/* El curso en vivo va antes que todo: es lo que abre primero. */}
         {!defaultProvider && enVivo && (
-          <section className="border-b border-slate-200 bg-white">
+          <section className="border-b border-edvanta-border bg-white">
             <div className="mx-auto flex max-w-7xl flex-col gap-4 px-4 py-6 sm:px-6 md:flex-row md:items-center md:justify-between lg:px-8">
               <div>
                 <p className="text-xs font-bold uppercase tracking-[.14em] text-amber-700">Curso en vivo · Próxima apertura</p>
                 <p className="mt-1 text-lg font-bold text-edvanta-deep">{enVivo.nombre}</p>
-                <p className="mt-1 flex items-center gap-1.5 text-sm text-slate-600"><CalendarClock className="h-4 w-4" aria-hidden="true" />Para auxiliares y regentes · fecha y valor por confirmar</p>
+                <p className="mt-1 flex items-center gap-1.5 text-sm text-edvanta-muted"><CalendarClock className="h-4 w-4" aria-hidden="true" />Para auxiliares y regentes · fecha y valor por confirmar</p>
               </div>
-              <Link to={enVivo.to} className="inline-flex min-h-11 shrink-0 items-center justify-center rounded-xl bg-edvanta-blue px-5 text-sm font-semibold text-white hover:bg-edvanta-bluedark">Ver el curso</Link>
+              <Btn to={enVivo.to} iconRight={ArrowRight} className="shrink-0">Ver el curso</Btn>
             </div>
           </section>
         )}
@@ -248,7 +251,7 @@ export default function CursosCatalog({ defaultProvider = '' }) {
             no tiene categoría va al final, bajo su propio título, en vez
             de desaparecer. */}
         {propios.length > 0 && (
-          <section className="border-b border-slate-200 bg-edvanta-bg">
+          <section id="cursos-edvanta" className="ds-surface-ice scroll-mt-28 border-b border-edvanta-border">
             {CATEGORIAS.map((area) => {
               const deLaCategoria = propios.filter((c) => c.area === area);
               if (!deLaCategoria.length) return null;
@@ -274,9 +277,9 @@ export default function CursosCatalog({ defaultProvider = '' }) {
         {!defaultProvider && (
           <section id="otras-plataformas" className="scroll-mt-32 bg-white">
             <div className="mx-auto max-w-7xl px-4 pt-12 sm:px-6 lg:px-8">
-              <p className="text-xs font-bold uppercase tracking-[.14em] text-slate-500">No son de Edvanta</p>
+              <p className="text-xs font-bold uppercase tracking-[.14em] text-edvanta-subtle">No son de Edvanta</p>
               <h2 className="mt-1 text-2xl font-bold text-edvanta-deep md:text-3xl">Cursos recomendados de otras plataformas</h2>
-              <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-600">
+              <p className="mt-2 max-w-3xl text-sm leading-6 text-edvanta-muted">
                 Coursera, Udemy y Edutin. El acceso, el precio y el certificado dependen de cada plataforma. Algunos enlaces son de afiliado:
                 Edvanta puede recibir una comisión sin costo adicional para ti.
               </p>
@@ -299,7 +302,7 @@ export default function CursosCatalog({ defaultProvider = '' }) {
                   className="flex-1 min-w-0 rounded-xl border border-gray-200 bg-white px-4 py-2.5 text-sm outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-100"
                 />
                 <button type="button" onClick={() => { setPage(1); syncUrl({ q: search, page: null }); }}
-                  className="px-5 py-2.5 bg-teal-600 text-white text-sm font-semibold rounded-xl hover:bg-teal-700 transition-colors shrink-0">
+                  className="ed-btn ed-btn--teal shrink-0">
                   Buscar
                 </button>
               </div>
@@ -362,7 +365,7 @@ export default function CursosCatalog({ defaultProvider = '' }) {
 
                 {hasFilters && (
                   <button type="button" onClick={clearFilters}
-                    className="text-xs text-teal-600 hover:text-teal-700 font-medium px-3 py-2 rounded-lg hover:bg-teal-50 transition-colors">
+                    className="text-xs text-teal-600 hover:text-edvanta-tealdark font-medium px-3 py-2 rounded-lg hover:bg-edvanta-mint transition-colors">
                     Limpiar filtros
                   </button>
                 )}
@@ -395,12 +398,12 @@ export default function CursosCatalog({ defaultProvider = '' }) {
                 ))}
               </div>
             ) : courses.length === 0 ? (
-              <div className="rounded-lg border border-gray-200 bg-slate-50 py-16 text-center">
-                <BookOpenCheck className="mx-auto mb-3 h-9 w-9 text-teal-700" aria-hidden="true" />
+              <div className="rounded-lg border border-gray-200 bg-edvanta-bg py-16 text-center">
+                <BookOpenCheck className="mx-auto mb-3 h-9 w-9 text-edvanta-tealdark" aria-hidden="true" />
                 <p className="font-semibold text-navy-950">No encontramos cursos con esos filtros.</p>
                 <p className="mt-1 text-sm text-gray-500">Prueba con otros filtros o una búsqueda más amplia.</p>
                 {hasFilters && (
-                  <button onClick={clearFilters} className="mt-4 text-sm font-semibold text-teal-600 hover:text-teal-700">
+                  <button onClick={clearFilters} className="mt-4 text-sm font-semibold text-teal-600 hover:text-edvanta-tealdark">
                     Limpiar todos los filtros
                   </button>
                 )}

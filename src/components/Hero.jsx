@@ -1,6 +1,23 @@
 import { Link } from 'react-router-dom';
+import {
+  ArrowRight, BookOpen, Building2, GraduationCap, HeartPulse, MonitorPlay, Users,
+} from 'lucide-react';
 import { trackEvent } from '../utils/analytics';
 import { PRODUCTO_DESTACADO, productoPorSlug } from '../data/edvanta/productos';
+
+const PUERTAS = [
+  { to: '/escuelas', icon: GraduationCap, label: 'Profesionales', tile: '' },
+  { to: '/pacientes', icon: HeartPulse, label: 'Pacientes', tile: 'ds-icon-tile--teal' },
+  { to: '/instituciones', icon: Building2, label: 'Instituciones', tile: 'ds-icon-tile--violet' },
+];
+
+// Lo que existe hoy, dicho en corto. Nada de cifras sin respaldo.
+const RASGOS = [
+  { icon: GraduationCap, label: 'Cuatro escuelas', desc: 'Clínica, calidad, regulatorio y comunicación' },
+  { icon: MonitorPlay, label: 'En vivo y virtuales', desc: 'Cursos en el aula de Edvanta' },
+  { icon: BookOpen, label: 'Guías y kits', desc: 'Para el trabajo diario' },
+  { icon: Users, label: 'Edvanta Contigo', desc: 'Educación para pacientes' },
+];
 
 // Cada palabra entra por separado; `grad` lleva el degradado de marca y
 // `swoosh` el trazo que se dibuja debajo.
@@ -87,15 +104,16 @@ export default function Hero() {
                 <Link
                   to={destacado.to}
                   onClick={() => trackEvent('hero_cta_clicked', { cta: 'curso_en_vivo' })}
-                  className="inline-flex h-14 items-center justify-center rounded-2xl bg-[#082E86] px-8 text-base font-semibold text-white shadow-[0_10px_26px_rgba(8,46,134,.25)] transition hover:-translate-y-0.5 hover:bg-[#0A3AA6]"
+                  className="ed-btn ed-btn--gradient ed-btn--lg"
                 >
                   Ver el curso en vivo
+                  <ArrowRight className="ed-btn__arrow" aria-hidden="true" />
                 </Link>
               )}
               <Link
                 to="/escuelas"
                 onClick={() => trackEvent('hero_cta_clicked', { cta: 'escuelas' })}
-                className="inline-flex h-14 items-center justify-center gap-2 rounded-2xl border border-[#C9D4E6] bg-white px-8 text-base font-semibold text-[#082E86] transition hover:-translate-y-0.5 hover:border-[#082E86]"
+                className="ed-btn ed-btn--secondary ed-btn--lg"
               >
                 Explorar las escuelas
               </Link>
@@ -103,18 +121,41 @@ export default function Hero() {
           </div>
 
           <div className="hx-photo relative mx-auto w-full max-w-xl lg:max-w-none">
-            <img
-              src="/img/edvanta-hero.webp"
-              alt="Equipo de profesionales de la salud"
-              width="1250"
-              height="1000"
-              loading="eager"
-              fetchpriority="high"
-              className="aspect-[5/4] w-full rounded-[1.75rem] object-cover shadow-[0_24px_60px_rgba(23,34,59,.16)] ring-1 ring-[#082E86]/5"
-              style={{ objectPosition: 'center 30%' }}
-            />
+            <div className="ds-photo aspect-[5/4]">
+              <img
+                src="/img/edvanta-hero.webp"
+                alt="Equipo de profesionales de la salud"
+                width="1250"
+                height="1000"
+                loading="eager"
+                fetchpriority="high"
+                style={{ objectPosition: 'center 30%' }}
+              />
+            </div>
+            {/* Tres puertas, a la vista desde el primer pantallazo. */}
+            <nav aria-label="Elige tu público" className="ds-card--glass mt-4 grid grid-cols-3 gap-1.5 p-2 sm:absolute sm:-bottom-7 sm:left-6 sm:right-6 sm:mt-0">
+              {PUERTAS.map(({ to, icon: Icon, label, tile }) => (
+                <Link key={to} to={to} onClick={() => trackEvent('hero_cta_clicked', { cta: to })}
+                  className="group flex flex-col items-center gap-1.5 rounded-xl bg-white/75 px-2 py-2.5 text-center transition hover:bg-white xl:flex-row xl:text-left">
+                  <span className={`ds-icon-tile ${tile} h-9 w-9 shrink-0 rounded-[10px]`}><Icon className="h-[18px] w-[18px]" aria-hidden="true" /></span>
+                  <span className="text-[13px] font-bold leading-tight text-edvanta-deep">{label}</span>
+                </Link>
+              ))}
+            </nav>
           </div>
         </div>
+
+        <ul className="hx-fade mt-16 grid grid-cols-2 gap-x-6 gap-y-5 border-t border-[#082E86]/10 pt-8 md:grid-cols-4" style={{ animationDelay: `${TITLE_END_MS + 100}ms` }}>
+          {RASGOS.map(({ icon: Icon, label, desc }) => (
+            <li key={label} className="flex items-center gap-3">
+              <span className="ds-icon-tile h-10 w-10 shrink-0"><Icon className="h-5 w-5" strokeWidth={1.8} aria-hidden="true" /></span>
+              <span>
+                <span className="block text-sm font-bold text-edvanta-deep">{label}</span>
+                <span className="block text-xs leading-5 text-edvanta-muted">{desc}</span>
+              </span>
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   );

@@ -45,7 +45,7 @@ export default function ArticleComments({ slug }) {
   return (
     <div className="mt-12 border-t border-gray-200 pt-10">
       <h2 className="text-xl font-bold text-navy-950 mb-6">💬 Comentarios y preguntas</h2>
-      {msg && <div className="mb-4 p-3 bg-teal-50 border border-teal-200 rounded-xl text-sm text-teal-700">{msg}</div>}
+      {msg && <div className="mb-4 p-3 bg-edvanta-mint border border-teal-200 rounded-xl text-sm text-edvanta-tealdark">{msg}</div>}
       <form onSubmit={submit} className="mb-8 space-y-3">
         {replyTo && (
           <div className="flex items-center gap-2 text-xs text-gray-500">
@@ -71,7 +71,7 @@ export default function ArticleComments({ slug }) {
             return (
               <div key={comment.id} className="border-b border-gray-100 pb-4 last:border-0">
                 <div className="flex items-center gap-2 mb-1.5">
-                  <div className="w-8 h-8 rounded-full bg-teal-100 flex items-center justify-center text-xs font-bold text-teal-700">
+                  <div className="w-8 h-8 rounded-full bg-teal-100 flex items-center justify-center text-xs font-bold text-edvanta-tealdark">
                     {comment.user_name?.charAt(0)?.toUpperCase() || '?'}
                   </div>
                   <div>

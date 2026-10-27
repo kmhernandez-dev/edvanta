@@ -17,12 +17,15 @@
 
 import { useEffect, useMemo, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { ArrowRight, Building2 } from 'lucide-react';
+import {
+  ArrowRight, BookOpen, Building2, CheckCircle2, CircleDot, Layers, MonitorPlay,
+} from 'lucide-react';
 import SiteHeader from '../../components/edvanta/SiteHeader';
 import SiteFooter from '../../components/edvanta/SiteFooter';
 import CourseCarousel from '../../components/CourseCarousel';
 import ProductModal from '../../components/ProductModal';
-import { Breadcrumb, Btn, Card, HeroPhoto, LandingHero, Section, SectionHeading } from '../../components/edvanta/ui';
+import { Breadcrumb, Btn, Card, Section, SectionHeading } from '../../components/edvanta/ui';
+import { HeroEditorial } from '../../components/edvanta/heroes';
 import {
   ICONOS_ESCUELA, ListaDeAreas, ProductoCard, PublicoBadge, useCursosPropios,
 } from '../../components/edvanta/oferta';
@@ -36,7 +39,7 @@ import NotFound from '../NotFound';
 function Recorrido({ recorrido }) {
   const pacientes = recorrido.publico === 'pacientes';
   return (
-    <div className={`rounded-3xl border p-6 sm:p-8 ${pacientes ? 'border-edvanta-teal/30 bg-edvanta-mint/40' : 'border-edvanta-border bg-edvanta-bg'}`}>
+    <div className={`min-w-0 rounded-[var(--ds-r-xl)] border p-5 sm:p-8 ${pacientes ? 'ds-surface-aqua border-edvanta-teal/25' : 'ds-surface-ice border-edvanta-border'}`}>
       <PublicoBadge publico={recorrido.publico} />
       <h3 className="mt-3 font-display text-2xl font-extrabold text-edvanta-deep">{recorrido.titulo}</h3>
       {recorrido.texto && <p className="mt-2 max-w-2xl text-[15px] leading-7 text-edvanta-muted">{recorrido.texto}</p>}
@@ -74,22 +77,37 @@ export default function Escuela() {
   const Icono = ICONOS_ESCUELA[escuela.icono];
   const programas = escuela.programas.map((p) => PROGRAMAS[p]).filter(Boolean);
   const sinCatalogo = !escuela.catalogo;
+  const areas = escuela.recorridos.flatMap((r) => r.areas);
+  const disponibles = areas.filter((a) => a.estado === 'disponible');
+
+  // Solo datos que existen: cursos publicados, productos y áreas abiertas.
+  const rasgos = [
+    !sinCatalogo && { icon: MonitorPlay, label: cursos.length ? `${cursos.length} cursos virtuales` : 'Cursos virtuales', desc: 'En el aula, a tu ritmo' },
+    productos.length > 0 && { icon: BookOpen, label: `${productos.length} ${productos.length === 1 ? 'producto' : 'productos'}`, desc: 'Cursos en vivo, guías y kits' },
+    { icon: Layers, label: `${disponibles.length} de ${areas.length} áreas`, desc: 'Con contenido disponible' },
+    { icon: Building2, label: 'Para instituciones', desc: 'Formación bajo propuesta' },
+  ].filter(Boolean);
 
   return (
     <div className="min-h-screen bg-white">
       <SiteHeader />
       <main>
-        <LandingHero
-          breadcrumb={<Breadcrumb items={[{ label: 'Inicio', to: '/' }, { label: 'Escuelas', to: '/escuelas' }, { label: escuela.corto }]} className="mb-6" />}
+        <HeroEditorial
+          breadcrumb={<Breadcrumb items={[{ label: 'Inicio', to: '/' }, { label: 'Escuelas', to: '/escuelas' }, { label: escuela.corto }]} className="mb-8" />}
           eyebrow={<span className="inline-flex items-center gap-2">{Icono && <Icono className="h-4 w-4" aria-hidden="true" />}Escuela de Edvanta</span>}
           title={escuela.nombre}
           highlight={escuela.corto}
-          media={escuela.imagen ? <HeroPhoto src={escuela.imagen} alt={escuela.imagenAlt} /> : undefined}
+          image={escuela.imagen}
+          imageAlt={escuela.imagenAlt}
           lead={escuela.resumen}
+          aside={disponibles.slice(0, 4).map((a) => ({ icon: CheckCircle2, label: a.nombre }))}
+          features={rasgos}
           actions={(
             <>
-              {!sinCatalogo && <Btn href="#cursos">Ver cursos de la escuela</Btn>}
-              <Btn to="/instituciones" variant="secondary" icon={Building2}>Para instituciones</Btn>
+              {!sinCatalogo
+                ? <Btn href="#cursos" size="lg" iconRight={ArrowRight}>Ver cursos de la escuela</Btn>
+                : <Btn href="#aviso" size="lg" icon={CircleDot}>Avísame cuando abra</Btn>}
+              <Btn to="/instituciones" variant="secondary" size="lg" icon={Building2}>Para instituciones</Btn>
             </>
           )}
         />
@@ -104,7 +122,7 @@ export default function Escuela() {
         )}
 
         {!sinCatalogo && (
-          <section id="cursos" className="scroll-mt-28 border-y border-edvanta-border bg-edvanta-bg">
+          <section id="cursos" className="ds-surface-ice scroll-mt-28 border-y border-edvanta-border">
             {cursos.length > 0 ? (
               <CourseCarousel title={`Cursos virtuales de ${escuela.corto}`} courses={cursos} sectionKey={`escuela_${escuela.slug}`} />
             ) : (
@@ -142,7 +160,7 @@ export default function Escuela() {
             <SectionHeading eyebrow="Identidades vinculadas" title="Programas de esta escuela" desc="Conservan su nombre y su comunidad, y forman parte de Edvanta." />
             <div className="mt-8 grid gap-5 md:grid-cols-2">
               {programas.map((p) => (
-                <Link key={p.slug} to={p.to} className="group flex items-start gap-4 rounded-2xl border border-edvanta-border bg-white p-6 transition hover:-translate-y-0.5 hover:border-edvanta-blue/30 hover:shadow-[0_12px_36px_rgba(23,34,59,.12)]">
+                <Link key={p.slug} to={p.to} className="group ds-card ds-card--interactive flex items-start gap-4 p-6">
                   <img src={p.logo} alt="" width="56" height="56" loading="lazy" className="h-14 w-14 shrink-0 rounded-xl object-cover ring-1 ring-edvanta-border" />
                   <div>
                     <PublicoBadge publico={p.publico} />

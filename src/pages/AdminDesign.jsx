@@ -136,7 +136,7 @@ function FormCurado({ api, onListo, onCancelar }) {
 
       {error && <p className="rounded-lg bg-rose-50 px-3 py-2 text-sm font-semibold text-rose-700">{error}</p>}
       <div className="flex gap-3">
-        <button type="submit" disabled={guardando} className="min-h-11 rounded-lg bg-teal-600 px-5 text-sm font-bold text-white transition hover:bg-teal-700 disabled:opacity-60">
+        <button type="submit" disabled={guardando} className="ed-btn ed-btn--teal">
           {guardando ? 'Guardando…' : 'Guardar curso curado'}
         </button>
         <button type="button" onClick={onCancelar} className="min-h-11 rounded-lg border border-slate-300 px-5 text-sm font-bold text-slate-700">Cancelar</button>
@@ -280,7 +280,7 @@ function FormPropio({ api, onListo, onCancelar }) {
 
       {error && <p className="rounded-lg bg-rose-50 px-3 py-2 text-sm font-semibold text-rose-700">{error}</p>}
       <div className="flex gap-3">
-        <button type="submit" disabled={guardando} className="min-h-11 rounded-lg bg-teal-600 px-5 text-sm font-bold text-white transition hover:bg-teal-700 disabled:opacity-60">
+        <button type="submit" disabled={guardando} className="ed-btn ed-btn--teal">
           {guardando ? 'Creando…' : `Crear curso (${unidades.length} unidades, ${totalClases} clases)`}
         </button>
         <button type="button" onClick={onCancelar} className="min-h-11 rounded-lg border border-slate-300 px-5 text-sm font-bold text-slate-700">Cancelar</button>
@@ -469,7 +469,7 @@ function PanelVideos({ api, cursoId, onCerrar }) {
 
       <div className="sticky bottom-0 mt-5 flex gap-3 border-t border-slate-200 bg-white py-4">
         <button type="button" onClick={guardar} disabled={guardando}
-          className="min-h-11 rounded-lg bg-teal-600 px-5 text-sm font-bold text-white hover:bg-teal-700 disabled:opacity-60">
+          className="ed-btn ed-btn--teal">
           {guardando ? 'Guardando…' : 'Guardar los videos'}
         </button>
         <a href={`/aula/admin/cursos/${cursoId}/vista-previa`} target="_blank" rel="noopener noreferrer"
@@ -606,7 +606,7 @@ export default function AdminDesign() {
         {!creando && (
           <div className="mt-6 flex flex-wrap items-center gap-3">
             <button type="button" onClick={() => setCreando('propio')}
-              className="inline-flex min-h-11 items-center gap-2 rounded-lg bg-teal-600 px-4 text-sm font-bold text-white hover:bg-teal-700">
+              className="ed-btn ed-btn--teal">
               <GraduationCap className="h-4 w-4" aria-hidden="true" /> Curso propio (Aula)
             </button>
             <button type="button" onClick={() => setCreando('curado')}

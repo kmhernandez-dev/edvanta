@@ -3,10 +3,13 @@ import { Link, useLocation } from 'react-router-dom';
 import {
   ArrowRight, BadgeCheck, BookOpen, BriefcaseBusiness, Building2, CalendarDays,
   Compass, FlaskConical, GraduationCap, Megaphone, Newspaper, Rocket, Sparkles, Wrench,
+  TrendingUp,
 } from 'lucide-react';
 import SiteHeader from '../components/edvanta/SiteHeader';
 import SiteFooter from '../components/edvanta/SiteFooter';
 import { updatePageSeo } from '../utils/seo';
+import { Btn } from '../components/edvanta/ui';
+import { HeroRuta } from '../components/edvanta/heroes';
 import {
   maestriasColombia, especializacionesColombia, diplomadosColombia,
   congresosColombia, webinarsColombia, areasCursosHub, formacionCentralMezclas,
@@ -99,15 +102,15 @@ const modulos = [
 
 function SectionCard({ titulo, descripcion, verTodo, to, children, id }) {
   return (
-    <section id={id} className="scroll-mt-24 border-b border-slate-100 py-12 sm:py-14">
+    <section id={id} className="scroll-mt-24 border-b border-edvanta-border py-12 sm:py-14">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex flex-wrap items-end justify-between gap-3">
           <div className="max-w-3xl">
             <h2 className="text-2xl font-bold text-edvanta-deep sm:text-3xl">{titulo}</h2>
-            {descripcion && <p className="mt-2 text-sm leading-6 text-slate-600">{descripcion}</p>}
+            {descripcion && <p className="mt-2 text-sm leading-6 text-edvanta-muted">{descripcion}</p>}
           </div>
           {verTodo && (
-            <Link to={to} className="inline-flex items-center gap-2 rounded-lg border border-slate-300 bg-white px-4 py-2 text-sm font-bold text-slate-700 transition hover:border-teal-400 hover:text-teal-800">
+            <Link to={to} className="inline-flex items-center gap-2 rounded-lg border border-edvanta-border bg-white px-4 py-2 text-sm font-bold text-edvanta-muted transition hover:border-teal-400 hover:text-edvanta-tealdark">
               {verTodo} <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </Link>
           )}
@@ -120,19 +123,19 @@ function SectionCard({ titulo, descripcion, verTodo, to, children, id }) {
 
 function FormItemCard({ item, badge }) {
   return (
-    <article className="flex min-h-52 flex-col rounded-lg border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:border-teal-300 hover:shadow-md">
+    <article className="flex min-h-52 flex-col ds-card p-5 shadow-sm transition hover:-translate-y-0.5 hover:border-edvanta-teal hover:shadow-md">
       <div className="flex items-start justify-between gap-3">
-        <p className="text-xs font-bold uppercase text-teal-700">{badge}</p>
-        <span className="rounded-full bg-slate-100 px-2 py-0.5 text-[10px] font-bold text-slate-600">{item.tipo === 'pública' ? 'Pública' : item.tipo === 'privada' ? 'Privada' : item.modalidad}</span>
+        <p className="text-xs font-bold uppercase text-edvanta-tealdark">{badge}</p>
+        <span className="rounded-full bg-edvanta-soft px-2 py-0.5 text-[10px] font-bold text-edvanta-muted">{item.tipo === 'pública' ? 'Pública' : item.tipo === 'privada' ? 'Privada' : item.modalidad}</span>
       </div>
       <h3 className="mt-3 text-lg font-bold leading-snug text-edvanta-deep">{item.nombre}</h3>
-      <p className="mt-1 text-sm font-semibold text-slate-700">{item.universidad || item.organizador}</p>
-      <p className="mt-2 flex-1 text-sm leading-6 text-slate-600">{item.resumen}</p>
-      <div className="mt-4 flex flex-wrap gap-2 text-[11px] font-semibold text-slate-500">
-        <span className="inline-flex items-center gap-1 rounded-full bg-slate-50 px-2 py-0.5"><CalendarDays className="h-3 w-3" />{item.modalidad}</span>
-        {item.ciudad && <span className="rounded-full bg-slate-50 px-2 py-0.5">{item.ciudad}</span>}
+      <p className="mt-1 text-sm font-semibold text-edvanta-muted">{item.universidad || item.organizador}</p>
+      <p className="mt-2 flex-1 text-sm leading-6 text-edvanta-muted">{item.resumen}</p>
+      <div className="mt-4 flex flex-wrap gap-2 text-[11px] font-semibold text-edvanta-subtle">
+        <span className="inline-flex items-center gap-1 rounded-full bg-edvanta-bg px-2 py-0.5"><CalendarDays className="h-3 w-3" />{item.modalidad}</span>
+        {item.ciudad && <span className="rounded-full bg-edvanta-bg px-2 py-0.5">{item.ciudad}</span>}
       </div>
-      <a href={item.url} target="_blank" rel="noopener noreferrer" className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-teal-700 hover:text-teal-900">
+      <a href={item.url} target="_blank" rel="noopener noreferrer" className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-edvanta-tealdark hover:text-teal-900">
         Ver programa <ArrowRight className="h-4 w-4" aria-hidden="true" />
       </a>
     </article>
@@ -171,34 +174,25 @@ export default function CareersIndex() {
     <>
       <SiteHeader />
       <main className="min-h-screen bg-edvanta-bg">
-        {/* Hero */}
-        <section className="relative overflow-hidden bg-edvanta-blue">
-          <div className="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-teal-500/20 blur-3xl" aria-hidden="true" />
-          <div className="absolute -left-16 bottom-0 h-64 w-64 rounded-full bg-edvanta-blue/10 blur-3xl" aria-hidden="true" />
-          <div className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
-            <div className="max-w-3xl">
-              <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs font-bold uppercase tracking-wide text-teal-200">
-                <BadgeCheck className="h-4 w-4" aria-hidden="true" />
-                Centro profesional farmacéutico
-              </div>
-              <h1 className="mt-6 text-4xl font-bold leading-tight text-white sm:text-5xl">
-                Todo para construir tu carrera farmacéutica en Colombia
-              </h1>
-              <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-300">
-                Formación verificada, orientación vocacional, empleo, prácticas, emprendimiento y herramientas
-                en un solo lugar. Diseñado para el químico farmacéutico y el técnico del sector.
-              </p>
-              <div className="mt-8 flex flex-wrap gap-3">
-                <a href="#formacion" className="inline-flex min-h-12 items-center gap-2 rounded-xl bg-teal-500 px-6 text-sm font-bold text-white shadow-lg shadow-teal-500/25 transition hover:bg-teal-400">
-                  <GraduationCap className="h-4 w-4" aria-hidden="true" /> Explorar formación
-                </a>
-                <Link to="/vocacion" className="inline-flex min-h-12 items-center gap-2 rounded-xl border border-white/25 bg-white/10 px-6 text-sm font-bold text-white backdrop-blur transition hover:bg-white/20">
-                  <Compass className="h-4 w-4" aria-hidden="true" /> Orientación vocacional
-                </Link>
-              </div>
-            </div>
-          </div>
-        </section>
+        {/* Héroe D: la carrera como recorrido. */}
+        <HeroRuta
+          eyebrow="Centro profesional farmacéutico"
+          title="Todo para construir tu carrera farmacéutica en Colombia"
+          highlight="tu carrera farmacéutica"
+          lead="Formación verificada, orientación vocacional, empleo, prácticas, emprendimiento y herramientas en un solo lugar. Diseñado para el químico farmacéutico y el técnico del sector."
+          actions={(
+            <>
+              <Btn href="#formacion" size="lg" icon={GraduationCap}>Explorar formación</Btn>
+              <Btn to="/vocacion" variant="secondary" size="lg" icon={Compass}>Orientación vocacional</Btn>
+            </>
+          )}
+          steps={[
+            { icon: Compass, title: 'Oriéntate', desc: 'Descubre tu área' },
+            { icon: GraduationCap, title: 'Fórmate', desc: 'Cursos y rutas' },
+            { icon: BadgeCheck, title: 'Postúlate', desc: 'Hoja de vida y vacantes' },
+            { icon: TrendingUp, title: 'Crece', desc: 'Emprende y avanza' },
+          ]}
+        />
 
         {/* Módulos */}
         <section className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
@@ -206,13 +200,13 @@ export default function CareersIndex() {
             {modulos.map(modulo => {
               const Icon = modulo.icon;
               return (
-                <Link key={modulo.id} to={modulo.a} className="group flex min-h-44 flex-col rounded-xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-1 hover:border-teal-300 hover:shadow-lg">
+                <Link key={modulo.id} to={modulo.a} className="group flex min-h-44 flex-col rounded-xl border border-edvanta-border bg-white p-5 shadow-sm transition hover:-translate-y-1 hover:border-edvanta-teal hover:shadow-lg">
                   <span className={`inline-flex h-11 w-11 items-center justify-center rounded-lg bg-gradient-to-br ${modulo.color} text-white shadow`}>
                     <Icon className="h-5 w-5" aria-hidden="true" />
                   </span>
-                  <h2 className="mt-4 text-lg font-bold text-edvanta-deep group-hover:text-teal-800">{modulo.titulo}</h2>
-                  <p className="mt-2 flex-1 text-sm leading-6 text-slate-600">{modulo.descripcion}</p>
-                  <span className="mt-3 inline-flex items-center gap-1.5 text-sm font-bold text-teal-700">
+                  <h2 className="mt-4 text-lg font-bold text-edvanta-deep group-hover:text-edvanta-tealdark">{modulo.titulo}</h2>
+                  <p className="mt-2 flex-1 text-sm leading-6 text-edvanta-muted">{modulo.descripcion}</p>
+                  <span className="mt-3 inline-flex items-center gap-1.5 text-sm font-bold text-edvanta-tealdark">
                     Entrar <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
                   </span>
                 </Link>
@@ -229,39 +223,39 @@ export default function CareersIndex() {
         >
           <div className="mt-7 space-y-8">
             <div>
-              <div className="flex items-center gap-2 text-sm font-bold text-teal-700"><GraduationCap className="h-4 w-4" aria-hidden="true" />Maestrías en universidades de Colombia</div>
+              <div className="flex items-center gap-2 text-sm font-bold text-edvanta-tealdark"><GraduationCap className="h-4 w-4" aria-hidden="true" />Maestrías en universidades de Colombia</div>
               <div className="mt-4 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
                 {maestriasColombia.map(item => <FormItemCard key={item.id} item={item} badge="Maestría" />)}
               </div>
             </div>
             <div>
-              <div className="flex items-center gap-2 text-sm font-bold text-teal-700"><BadgeCheck className="h-4 w-4" aria-hidden="true" />Especializaciones</div>
+              <div className="flex items-center gap-2 text-sm font-bold text-edvanta-tealdark"><BadgeCheck className="h-4 w-4" aria-hidden="true" />Especializaciones</div>
               <div className="mt-4 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
                 {especializacionesColombia.map(item => <FormItemCard key={item.id} item={item} badge="Especialización" />)}
               </div>
             </div>
             <div>
-              <div className="flex items-center gap-2 text-sm font-bold text-teal-700"><BookOpen className="h-4 w-4" aria-hidden="true" />Diplomados</div>
+              <div className="flex items-center gap-2 text-sm font-bold text-edvanta-tealdark"><BookOpen className="h-4 w-4" aria-hidden="true" />Diplomados</div>
               <div className="mt-4 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
                 {diplomadosColombia.map(item => <FormItemCard key={item.id} item={item} badge="Diplomado" />)}
               </div>
             </div>
             <div className="grid gap-4 lg:grid-cols-2">
               <div>
-                <div className="flex items-center gap-2 text-sm font-bold text-teal-700"><CalendarDays className="h-4 w-4" aria-hidden="true" />Congresos y eventos</div>
+                <div className="flex items-center gap-2 text-sm font-bold text-edvanta-tealdark"><CalendarDays className="h-4 w-4" aria-hidden="true" />Congresos y eventos</div>
                 <div className="mt-4 grid gap-4 sm:grid-cols-2">
                   {congresosColombia.map(item => <FormItemCard key={item.id} item={item} badge="Congreso / Evento" />)}
                 </div>
               </div>
               <div>
-                <div className="flex items-center gap-2 text-sm font-bold text-teal-700"><Megaphone className="h-4 w-4" aria-hidden="true" />Webinars y formación virtual</div>
+                <div className="flex items-center gap-2 text-sm font-bold text-edvanta-tealdark"><Megaphone className="h-4 w-4" aria-hidden="true" />Webinars y formación virtual</div>
                 <div className="mt-4 grid gap-4 sm:grid-cols-2">
                   {webinarsColombia.map(item => <FormItemCard key={item.id} item={item} badge="Webinar / Virtual" />)}
                 </div>
               </div>
             </div>
             <div>
-              <div className="flex items-center gap-2 text-sm font-bold text-teal-700"><FlaskConical className="h-4 w-4" aria-hidden="true" />Central de mezclas, BPE y farmacia oncológica</div>
+              <div className="flex items-center gap-2 text-sm font-bold text-edvanta-tealdark"><FlaskConical className="h-4 w-4" aria-hidden="true" />Central de mezclas, BPE y farmacia oncológica</div>
               <div className="mt-4 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
                 {formacionCentralMezclas.map(item => <FormItemCard key={item.id} item={item} badge="Central de mezclas" />)}
               </div>
@@ -279,9 +273,9 @@ export default function CareersIndex() {
         >
           <div className="mt-7 grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {areasCursosHub.map(area => (
-              <Link key={area.slug} to="/cursos" className="group rounded-lg border border-slate-200 bg-white p-4 transition hover:border-teal-300 hover:bg-teal-50/40">
-                <p className="text-sm font-bold text-edvanta-deep group-hover:text-teal-800">{area.nombre}</p>
-                <p className="mt-1 text-xs leading-5 text-slate-500">{area.detalle}</p>
+              <Link key={area.slug} to="/cursos" className="group ds-card p-4 transition hover:border-edvanta-teal hover:bg-edvanta-mint/40">
+                <p className="text-sm font-bold text-edvanta-deep group-hover:text-edvanta-tealdark">{area.nombre}</p>
+                <p className="mt-1 text-xs leading-5 text-edvanta-subtle">{area.detalle}</p>
               </Link>
             ))}
           </div>

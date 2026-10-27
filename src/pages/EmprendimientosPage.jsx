@@ -144,7 +144,7 @@ export default function EmprendimientosPage() {
               <div key={paso.titulo} className="card-edvanta p-5">
                 <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-edvanta-deep text-sm font-bold text-white" aria-hidden="true">{i + 1}</span>
                 <h3 className="mt-3 text-base font-bold text-edvanta-deep">{paso.titulo.replace(/^\d+\.\s*/, '')}</h3>
-                <p className="mt-2 text-sm leading-6 text-slate-600">{paso.texto}</p>
+                <p className="mt-2 text-sm leading-6 text-edvanta-muted">{paso.texto}</p>
               </div>
             ))}
           </div>
@@ -156,13 +156,13 @@ export default function EmprendimientosPage() {
             <div>
               <p className="eyebrow-edvanta mb-1">Herramienta Edvanta</p>
               <h2 className="font-display text-2xl font-extrabold text-edvanta-deep md:text-3xl">Tu Lean Canvas farmacéutico</h2>
-              <p className="mt-1 text-sm text-slate-500">{llenos}/{BLOCKS.length} bloques · se guarda solo en tu navegador</p>
+              <p className="mt-1 text-sm text-edvanta-subtle">{llenos}/{BLOCKS.length} bloques · se guarda solo en tu navegador</p>
             </div>
             <div className="flex flex-wrap items-center gap-2">
               <button type="button" onClick={() => copiar(canvasTexto, 'canvas')} className="btn-edvanta-outline min-h-10 px-4 py-0"><ClipboardCopy className="h-4 w-4" /> {copiado === 'canvas' ? 'Copiado' : 'Copiar'}</button>
               <button type="button" onClick={descargar} className="btn-edvanta-outline min-h-10 px-4 py-0"><Download className="h-4 w-4" /> .txt</button>
               <button type="button" onClick={imprimir} className="btn-edvanta min-h-10 px-4 py-0"><Printer className="h-4 w-4" /> Imprimir / PDF</button>
-              <button type="button" onClick={reiniciar} aria-label="Reiniciar canvas" className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-edvanta-border text-slate-400 transition hover:border-rose-300 hover:text-rose-500"><RotateCcw className="h-4 w-4" /></button>
+              <button type="button" onClick={reiniciar} aria-label="Reiniciar canvas" className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-edvanta-border text-edvanta-subtle transition hover:border-rose-300 hover:text-rose-500"><RotateCcw className="h-4 w-4" /></button>
             </div>
           </div>
 
@@ -173,10 +173,10 @@ export default function EmprendimientosPage() {
 
           {/* Ideas para inspirarse */}
           <div className="mt-5 rounded-xl border border-edvanta-border bg-white p-4">
-            <p className="text-xs font-bold uppercase tracking-wide text-slate-400">¿Sin idea? Toca una para empezar</p>
+            <p className="text-xs font-bold uppercase tracking-wide text-edvanta-subtle">¿Sin idea? Toca una para empezar</p>
             <div className="mt-2 flex flex-wrap gap-2">
               {ideasEmprendimiento.map(idea => (
-                <button key={idea} type="button" onClick={() => setBlock('idea', idea)} className="rounded-full border border-edvanta-border bg-slate-50 px-3 py-1.5 text-xs font-medium text-slate-600 transition hover:border-edvanta-blue/40 hover:bg-edvanta-light hover:text-edvanta-blue">{idea}</button>
+                <button key={idea} type="button" onClick={() => setBlock('idea', idea)} className="rounded-full border border-edvanta-border bg-edvanta-bg px-3 py-1.5 text-xs font-medium text-edvanta-muted transition hover:border-edvanta-blue/40 hover:bg-edvanta-light hover:text-edvanta-blue">{idea}</button>
               ))}
             </div>
           </div>
@@ -191,7 +191,7 @@ export default function EmprendimientosPage() {
                   {canvas[b.id].trim() && <CheckCircle2 className="ml-auto h-4 w-4 text-teal-600" aria-hidden="true" />}
                 </div>
                 <label className="mt-3 block">
-                  <span className="mb-1.5 block text-xs font-semibold leading-5 text-slate-500">{b.pregunta}</span>
+                  <span className="mb-1.5 block text-xs font-semibold leading-5 text-edvanta-subtle">{b.pregunta}</span>
                   <textarea value={canvas[b.id]} onChange={e => setBlock(b.id, e.target.value)} rows={3} placeholder={b.ph} className="w-full rounded-lg border border-edvanta-border p-3 text-sm leading-6 outline-none transition focus:border-edvanta-blue focus:ring-2 focus:ring-edvanta-blue/15" />
                 </label>
               </div>
@@ -204,8 +204,8 @@ export default function EmprendimientosPage() {
               <h3 className="flex items-center gap-2 text-base font-black text-edvanta-deep"><Quote className="h-5 w-5 text-edvanta-blue" /> Tu pitch de 30 segundos</h3>
               <button type="button" onClick={() => copiar(pitch, 'pitch')} className="btn-edvanta-outline min-h-9 px-3 py-0 text-xs"><ClipboardCopy className="h-3.5 w-3.5" /> {copiado === 'pitch' ? 'Copiado' : 'Copiar pitch'}</button>
             </div>
-            <p className="mt-3 rounded-lg bg-white p-4 text-sm leading-7 text-slate-700">{pitch}</p>
-            <p className="mt-2 text-xs text-slate-500">Se arma con lo que escribes en el canvas: problema → solución → diferencial → validación → llamada.</p>
+            <p className="mt-3 rounded-lg bg-white p-4 text-sm leading-7 text-edvanta-muted">{pitch}</p>
+            <p className="mt-2 text-xs text-edvanta-subtle">Se arma con lo que escribes en el canvas: problema → solución → diferencial → validación → llamada.</p>
           </div>
 
           {/* Plantillas de apoyo */}
@@ -213,7 +213,7 @@ export default function EmprendimientosPage() {
             {plantillasEmprendimiento.map(pl => (
               <div key={pl.nombre} className="rounded-xl border border-edvanta-border bg-white p-4">
                 <p className="text-sm font-bold text-edvanta-deep">{pl.nombre}</p>
-                <p className="mt-1 text-xs leading-5 text-slate-500">{pl.archivo}</p>
+                <p className="mt-1 text-xs leading-5 text-edvanta-subtle">{pl.archivo}</p>
               </div>
             ))}
           </div>
@@ -227,20 +227,20 @@ export default function EmprendimientosPage() {
         <section id="probar" className="scroll-mt-24 border-t border-edvanta-border bg-white">
           <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
             <div className="flex items-center gap-2"><Beaker className="h-5 w-5 text-edvanta-blue" aria-hidden="true" /><h2 className="text-2xl font-bold text-edvanta-deep sm:text-3xl">Descubre, prueba y valida emprendimientos colombianos</h2></div>
-            <p className="mt-2 max-w-3xl text-base leading-7 text-slate-600">{pruebasProducto.slogan}. Aquí conviven dos roles: quien quiere que prueben su producto y quien entra a revisar novedades.</p>
+            <p className="mt-2 max-w-3xl text-base leading-7 text-edvanta-muted">{pruebasProducto.slogan}. Aquí conviven dos roles: quien quiere que prueben su producto y quien entra a revisar novedades.</p>
             <div className="mt-6 grid gap-6 lg:grid-cols-2">
               <div className="card-edvanta p-6">
                 <span className="inline-flex h-11 w-11 items-center justify-center rounded-lg bg-edvanta-light text-edvanta-blue"><FlaskConical className="h-5 w-5" aria-hidden="true" /></span>
                 <h3 className="mt-4 text-xl font-bold text-edvanta-deep">¿Tienes un producto o herramienta?</h3>
-                <p className="mt-2 text-sm leading-6 text-slate-600">Registra tu producto para que la comunidad lo pruebe y te dé retroalimentación real de usuarios.</p>
-                <ul className="mt-4 space-y-2">{pruebasProducto.comoFunciona.slice(0, 2).map(step => <li key={step} className="flex items-start gap-2 text-sm leading-6 text-slate-600"><CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-teal-600" aria-hidden="true" />{step}</li>)}</ul>
+                <p className="mt-2 text-sm leading-6 text-edvanta-muted">Registra tu producto para que la comunidad lo pruebe y te dé retroalimentación real de usuarios.</p>
+                <ul className="mt-4 space-y-2">{pruebasProducto.comoFunciona.slice(0, 2).map(step => <li key={step} className="flex items-start gap-2 text-sm leading-6 text-edvanta-muted"><CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-teal-600" aria-hidden="true" />{step}</li>)}</ul>
                 <button type="button" onClick={registrarProducto} className="btn-edvanta mt-5"><FlaskConical className="h-4 w-4" /> Quiero que prueben mi producto</button>
               </div>
               <div className="card-edvanta p-6">
-                <span className="inline-flex h-11 w-11 items-center justify-center rounded-lg bg-teal-50 text-teal-700"><Handshake className="h-5 w-5" aria-hidden="true" /></span>
+                <span className="inline-flex h-11 w-11 items-center justify-center rounded-lg bg-edvanta-mint text-edvanta-tealdark"><Handshake className="h-5 w-5" aria-hidden="true" /></span>
                 <h3 className="mt-4 text-xl font-bold text-edvanta-deep">¿Solo quieres ver novedades?</h3>
-                <p className="mt-2 text-sm leading-6 text-slate-600">Revisa los nuevos emprendimientos de la comunidad, pruébalos y deja tu reseña honesta. Tu opinión valida ideas reales.</p>
-                <ul className="mt-4 space-y-2">{pruebasProducto.comoFunciona.slice(2).map(step => <li key={step} className="flex items-start gap-2 text-sm leading-6 text-slate-600"><CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-teal-600" aria-hidden="true" />{step}</li>)}</ul>
+                <p className="mt-2 text-sm leading-6 text-edvanta-muted">Revisa los nuevos emprendimientos de la comunidad, pruébalos y deja tu reseña honesta. Tu opinión valida ideas reales.</p>
+                <ul className="mt-4 space-y-2">{pruebasProducto.comoFunciona.slice(2).map(step => <li key={step} className="flex items-start gap-2 text-sm leading-6 text-edvanta-muted"><CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-teal-600" aria-hidden="true" />{step}</li>)}</ul>
                 <a href={EDVANTA_COMMUNITY_URL} target="_blank" rel="noopener noreferrer" className="btn-edvanta-outline mt-5"><Users className="h-4 w-4" /> Ver novedades en la comunidad</a>
               </div>
             </div>
@@ -253,15 +253,15 @@ export default function EmprendimientosPage() {
             <div className="rounded-2xl border border-edvanta-border bg-white p-7 shadow-sm">
               <span className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-edvanta-deep text-white"><GraduationCap className="h-6 w-6" aria-hidden="true" /></span>
               <h3 className="mt-4 text-xl font-bold text-edvanta-deep">¿Tienes habilidades como profesor?</h3>
-              <p className="mt-2 text-sm leading-6 text-slate-600">Crea tu propio curso y grupo de estudio. Usa la comunidad para convocar a tus primeros estudiantes.</p>
-              <ul className="mt-4 space-y-2">{['Arma el temario en 5 sesiones', 'Publica tu convocatoria en la comunidad', 'Guía un grupo de estudio semanal', 'Recibe retroalimentación de tus estudiantes'].map(item => <li key={item} className="flex items-start gap-2 text-sm leading-6 text-slate-700"><CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-teal-600" aria-hidden="true" />{item}</li>)}</ul>
+              <p className="mt-2 text-sm leading-6 text-edvanta-muted">Crea tu propio curso y grupo de estudio. Usa la comunidad para convocar a tus primeros estudiantes.</p>
+              <ul className="mt-4 space-y-2">{['Arma el temario en 5 sesiones', 'Publica tu convocatoria en la comunidad', 'Guía un grupo de estudio semanal', 'Recibe retroalimentación de tus estudiantes'].map(item => <li key={item} className="flex items-start gap-2 text-sm leading-6 text-edvanta-muted"><CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-teal-600" aria-hidden="true" />{item}</li>)}</ul>
               <a href={EDVANTA_COMMUNITY_URL} target="_blank" rel="noopener noreferrer" className="btn-edvanta mt-5"><Users className="h-4 w-4" /> Crear mi curso o grupo</a>
             </div>
             <div id="investigador" className="scroll-mt-24 rounded-2xl border border-edvanta-border bg-white p-7 shadow-sm">
               <span className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-edvanta-blue text-white"><Microscope className="h-6 w-6" aria-hidden="true" /></span>
               <h3 className="mt-4 text-xl font-black text-edvanta-deep">¿Eres investigador y quieres crear más papers?</h3>
-              <p className="mt-2 text-sm leading-6 text-slate-600">Encuentra profesionales con intereses similares y crea artículos de valor en equipo. Más manos, más rigor.</p>
-              <ul className="mt-4 space-y-2">{['Publica tu línea de investigación', 'Forma un grupo de coautoría', 'Comparte datos y metodologías', 'Publica en revistas indexadas con respaldo'].map(item => <li key={item} className="flex items-start gap-2 text-sm leading-6 text-slate-700"><CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-teal-600" aria-hidden="true" />{item}</li>)}</ul>
+              <p className="mt-2 text-sm leading-6 text-edvanta-muted">Encuentra profesionales con intereses similares y crea artículos de valor en equipo. Más manos, más rigor.</p>
+              <ul className="mt-4 space-y-2">{['Publica tu línea de investigación', 'Forma un grupo de coautoría', 'Comparte datos y metodologías', 'Publica en revistas indexadas con respaldo'].map(item => <li key={item} className="flex items-start gap-2 text-sm leading-6 text-edvanta-muted"><CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-teal-600" aria-hidden="true" />{item}</li>)}</ul>
               <button type="button" onClick={() => window.open(waLink('Hola, soy investigador y quiero crear artículos en equipo. Mi línea es: '), '_blank', 'noopener')} className="btn-edvanta mt-5"><Quote className="h-4 w-4" /> Buscar coautores</button>
             </div>
           </div>

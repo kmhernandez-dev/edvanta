@@ -130,7 +130,7 @@ export default function ProfessionalAccount() {
             <div className="max-w-2xl self-center">
               <p className="ed-eyebrow">Tu espacio profesional</p>
               <h1 className="mt-3 text-4xl font-extrabold leading-[1.08] tracking-[-0.03em] text-edvanta-blue sm:text-5xl">Convierte tus intereses en un plan que puedas seguir</h1>
-              <p className="mt-5 text-lg leading-8 text-slate-600">Guarda cursos, organiza rutas y concentra en un solo lugar las decisiones que fortalecen tu perfil.</p>
+              <p className="mt-5 text-lg leading-8 text-edvanta-muted">Guarda cursos, organiza rutas y concentra en un solo lugar las decisiones que fortalecen tu perfil.</p>
               <div className="mt-8 grid gap-4 sm:grid-cols-3">
                 {[
                   [BriefcaseBusiness, 'Define una carrera objetivo'],
@@ -138,21 +138,21 @@ export default function ProfessionalAccount() {
                   [LockKeyhole, 'Datos privados por defecto'],
                 ].map(([Icon, label]) => (
                   <div key={label} className="border-l-2 border-teal-500 pl-3">
-                    <Icon className="h-5 w-5 text-teal-700" aria-hidden="true" />
-                    <p className="mt-2 text-sm font-semibold leading-5 text-slate-700">{label}</p>
+                    <Icon className="h-5 w-5 text-edvanta-tealdark" aria-hidden="true" />
+                    <p className="mt-2 text-sm font-semibold leading-5 text-edvanta-muted">{label}</p>
                   </div>
                 ))}
               </div>
             </div>
 
-            <div className="rounded-lg border border-slate-200 bg-white p-6 shadow-sm sm:p-7">
-              <div className="flex gap-1 border-b border-slate-200" role="tablist" aria-label="Acceso a Edvanta">
-                <button type="button" onClick={() => switchMode('login')} className={`min-h-11 flex-1 border-b-2 px-3 text-sm font-bold ${mode === 'login' ? 'border-teal-600 text-teal-800' : 'border-transparent text-slate-500'}`}>Ingresar</button>
-                <button type="button" onClick={() => switchMode('register')} className={`min-h-11 flex-1 border-b-2 px-3 text-sm font-bold ${mode === 'register' ? 'border-teal-600 text-teal-800' : 'border-transparent text-slate-500'}`}>Crear cuenta</button>
+            <div className="ds-card p-6 shadow-sm sm:p-7">
+              <div className="flex gap-1 border-b border-edvanta-border" role="tablist" aria-label="Acceso a Edvanta">
+                <button type="button" onClick={() => switchMode('login')} className={`min-h-11 flex-1 border-b-2 px-3 text-sm font-bold ${mode === 'login' ? 'border-edvanta-teal text-edvanta-tealdark' : 'border-transparent text-edvanta-subtle'}`}>Ingresar</button>
+                <button type="button" onClick={() => switchMode('register')} className={`min-h-11 flex-1 border-b-2 px-3 text-sm font-bold ${mode === 'register' ? 'border-edvanta-teal text-edvanta-tealdark' : 'border-transparent text-edvanta-subtle'}`}>Crear cuenta</button>
               </div>
 
               <h2 className="mt-6 text-2xl font-bold text-edvanta-deep">{mode === 'login' ? 'Continúa con tu plan' : 'Crea tu perfil profesional'}</h2>
-              <p className="mt-2 text-sm leading-6 text-slate-600">{mode === 'login' ? 'Accede a tus cursos guardados y rutas activas.' : 'La configuración inicial toma menos de tres minutos.'}</p>
+              <p className="mt-2 text-sm leading-6 text-edvanta-muted">{mode === 'login' ? 'Accede a tus cursos guardados y rutas activas.' : 'La configuración inicial toma menos de tres minutos.'}</p>
 
               {!supabaseConfigured && (
                 <div className="mt-5 rounded-lg border border-amber-200 bg-amber-50 p-3 text-sm leading-6 text-amber-900">El registro todavía no está configurado en este entorno.</div>
@@ -160,35 +160,35 @@ export default function ProfessionalAccount() {
               {(formError || authError) && <div className="mt-5 rounded-lg border border-rose-200 bg-rose-50 p-3 text-sm text-rose-800" role="alert">{formError || friendlyAuthError(authError)}</div>}
               {success && <div className="mt-5 rounded-lg border border-emerald-200 bg-emerald-50 p-3 text-sm text-emerald-800" role="status">{success}</div>}
 
-              <button type="button" onClick={handleGoogle} disabled={!supabaseConfigured || submitting} className="mt-6 inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-lg border border-slate-300 bg-white px-4 text-sm font-bold text-slate-800 hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-50">
+              <button type="button" onClick={handleGoogle} disabled={!supabaseConfigured || submitting} className="mt-6 inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-lg border border-edvanta-border bg-white px-4 text-sm font-bold text-edvanta-deep hover:bg-edvanta-bg disabled:cursor-not-allowed disabled:opacity-50">
                 <Globe2 className="h-5 w-5" aria-hidden="true" /> Continuar con Google
               </button>
-              <p className="mt-2 text-center text-[11px] leading-4 text-slate-500">
+              <p className="mt-2 text-center text-[11px] leading-4 text-edvanta-subtle">
                 Solo pedimos tu nombre y correo. Al continuar aceptas los{' '}
-                <Link to="/terminos" target="_blank" className="font-semibold text-teal-800">términos</Link> y la{' '}
-                <Link to="/privacidad" target="_blank" className="font-semibold text-teal-800">política de privacidad</Link>.
+                <Link to="/terminos" target="_blank" className="font-semibold text-edvanta-tealdark">términos</Link> y la{' '}
+                <Link to="/privacidad" target="_blank" className="font-semibold text-edvanta-tealdark">política de privacidad</Link>.
               </p>
-              <div className="my-5 flex items-center gap-3 text-xs text-slate-400"><span className="h-px flex-1 bg-slate-200" /><span>o usa tu correo</span><span className="h-px flex-1 bg-slate-200" /></div>
+              <div className="my-5 flex items-center gap-3 text-xs text-edvanta-subtle"><span className="h-px flex-1 bg-slate-200" /><span>o usa tu correo</span><span className="h-px flex-1 bg-slate-200" /></div>
 
               <form onSubmit={handleSubmit} className="space-y-4">
                 {mode === 'register' && (
-                  <label className="block text-sm font-semibold text-slate-700">Nombre
-                    <span className="relative mt-1.5 block"><UserRound className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" aria-hidden="true" /><input value={name} onChange={event => setName(event.target.value)} autoComplete="name" className="min-h-11 w-full rounded-lg border border-slate-300 bg-white pl-10 pr-3 text-sm outline-none focus:border-teal-600 focus:ring-2 focus:ring-teal-100" /></span>
+                  <label className="block text-sm font-semibold text-edvanta-muted">Nombre
+                    <span className="relative mt-1.5 block"><UserRound className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-edvanta-subtle" aria-hidden="true" /><input value={name} onChange={event => setName(event.target.value)} autoComplete="name" className="min-h-11 w-full rounded-lg border border-edvanta-border bg-white pl-10 pr-3 text-sm outline-none focus:border-edvanta-teal focus:ring-2 focus:ring-teal-100" /></span>
                   </label>
                 )}
-                <label className="block text-sm font-semibold text-slate-700">Correo
-                  <span className="relative mt-1.5 block"><Mail className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" aria-hidden="true" /><input type="email" value={email} onChange={event => setEmail(event.target.value)} autoComplete="email" className="min-h-11 w-full rounded-lg border border-slate-300 bg-white pl-10 pr-3 text-sm outline-none focus:border-teal-600 focus:ring-2 focus:ring-teal-100" /></span>
+                <label className="block text-sm font-semibold text-edvanta-muted">Correo
+                  <span className="relative mt-1.5 block"><Mail className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-edvanta-subtle" aria-hidden="true" /><input type="email" value={email} onChange={event => setEmail(event.target.value)} autoComplete="email" className="min-h-11 w-full rounded-lg border border-edvanta-border bg-white pl-10 pr-3 text-sm outline-none focus:border-edvanta-teal focus:ring-2 focus:ring-teal-100" /></span>
                 </label>
-                <label className="block text-sm font-semibold text-slate-700">Contraseña
-                  <span className="relative mt-1.5 block"><LockKeyhole className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" aria-hidden="true" /><input type="password" value={password} onChange={event => setPassword(event.target.value)} autoComplete={mode === 'register' ? 'new-password' : 'current-password'} className="min-h-11 w-full rounded-lg border border-slate-300 bg-white pl-10 pr-3 text-sm outline-none focus:border-teal-600 focus:ring-2 focus:ring-teal-100" /></span>
+                <label className="block text-sm font-semibold text-edvanta-muted">Contraseña
+                  <span className="relative mt-1.5 block"><LockKeyhole className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-edvanta-subtle" aria-hidden="true" /><input type="password" value={password} onChange={event => setPassword(event.target.value)} autoComplete={mode === 'register' ? 'new-password' : 'current-password'} className="min-h-11 w-full rounded-lg border border-edvanta-border bg-white pl-10 pr-3 text-sm outline-none focus:border-edvanta-teal focus:ring-2 focus:ring-teal-100" /></span>
                 </label>
                 {mode === 'register' && (
-                  <label className="flex items-start gap-3 rounded-lg border border-slate-200 bg-slate-50 p-3 text-xs leading-5 text-slate-600">
+                  <label className="flex items-start gap-3 rounded-lg border border-edvanta-border bg-edvanta-bg p-3 text-xs leading-5 text-edvanta-muted">
                     <input type="checkbox" checked={privacyAccepted} onChange={event => setPrivacyAccepted(event.target.checked)} className="mt-0.5 h-4 w-4 shrink-0 accent-teal-700" />
-                    <span>Acepto los <Link to="/terminos" target="_blank" className="font-bold text-teal-800">términos</Link> y la <Link to="/privacidad" target="_blank" className="font-bold text-teal-800">política de privacidad</Link>.</span>
+                    <span>Acepto los <Link to="/terminos" target="_blank" className="font-bold text-edvanta-tealdark">términos</Link> y la <Link to="/privacidad" target="_blank" className="font-bold text-edvanta-tealdark">política de privacidad</Link>.</span>
                   </label>
                 )}
-                <button type="submit" disabled={!supabaseConfigured || submitting} className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-lg bg-edvanta-blue px-5 text-sm font-bold text-white hover:bg-edvanta-bluedark disabled:cursor-not-allowed disabled:opacity-50">
+                <button type="submit" disabled={!supabaseConfigured || submitting} className="ed-btn ed-btn--primary w-full">
                   {submitting ? 'Procesando...' : mode === 'login' ? 'Ingresar a mi panel' : 'Crear mi perfil'} <ArrowRight className="h-4 w-4" aria-hidden="true" />
                 </button>
               </form>

@@ -82,19 +82,19 @@ export default function BuscarPage() {
             </h1>
             <form onSubmit={submit} className="mt-5 flex max-w-2xl items-center gap-2">
               <div className="relative flex-1">
-                <Search className="pointer-events-none absolute left-3.5 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400" aria-hidden="true" />
+                <Search className="pointer-events-none absolute left-3.5 top-1/2 h-5 w-5 -translate-y-1/2 text-edvanta-subtle" aria-hidden="true" />
                 <input
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                   type="search"
                   placeholder="Cursos, áreas, rutas, herramientas o artículos…"
                   aria-label="Término de búsqueda"
-                  className="h-12 w-full rounded-xl border border-edvanta-border bg-white pl-11 pr-4 text-base text-edvanta-deep placeholder:text-slate-400 focus:border-edvanta-blue focus:outline-none focus:ring-2 focus:ring-edvanta-blue/30"
+                  className="h-12 w-full rounded-xl border border-edvanta-border bg-white pl-11 pr-4 text-base text-edvanta-deep placeholder:text-edvanta-subtle focus:border-edvanta-blue focus:outline-none focus:ring-2 focus:ring-edvanta-blue/30"
                 />
               </div>
               <button type="submit" className="btn-edvanta h-12 shrink-0">Buscar</button>
             </form>
-            {q && <p className="mt-3 text-sm text-slate-500">{res.total} {res.total === 1 ? 'resultado' : 'resultados'} en el ecosistema.</p>}
+            {q && <p className="mt-3 text-sm text-edvanta-subtle">{res.total} {res.total === 1 ? 'resultado' : 'resultados'} en el ecosistema.</p>}
           </div>
         </section>
 
@@ -104,12 +104,12 @@ export default function BuscarPage() {
               <Search className="h-7 w-7" aria-hidden="true" />
             </div>
             <p className="mt-4 text-base font-semibold text-edvanta-deep">Escribe qué necesitas aprender o resolver.</p>
-            <p className="mt-1 text-sm text-slate-500">Ej.: Validaciones, Aseguramiento de Calidad, Farmacovigilancia, Power BI, hoja de vida.</p>
+            <p className="mt-1 text-sm text-edvanta-subtle">Ej.: Validaciones, Aseguramiento de Calidad, Farmacovigilancia, Power BI, hoja de vida.</p>
           </section>
         ) : res.total === 0 ? (
           <section className="mx-auto max-w-3xl px-4 py-16 text-center sm:px-6 lg:px-8">
             <p className="text-lg font-bold text-edvanta-deep">No encontramos resultados para “{q}”.</p>
-            <p className="mt-2 text-sm text-slate-500">Prueba con un área (Calidad, Validaciones, Regulatorio) o una competencia (GMP, CAPA, HPLC, CSV).</p>
+            <p className="mt-2 text-sm text-edvanta-subtle">Prueba con un área (Calidad, Validaciones, Regulatorio) o una competencia (GMP, CAPA, HPLC, CSV).</p>
             <a href={EDVANTA_WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="btn-edvanta mt-6">Pedir orientación por WhatsApp</a>
           </section>
         ) : (
@@ -123,24 +123,24 @@ export default function BuscarPage() {
                   onClick={() => setType(t.id)}
                   aria-pressed={type === t.id}
                   className={`inline-flex items-center gap-1.5 rounded-full px-3.5 py-1.5 text-sm font-bold transition ${
-                    type === t.id ? 'bg-edvanta-deep text-white' : 'border border-edvanta-border bg-white text-slate-600 hover:border-edvanta-blue/40 hover:text-edvanta-blue'
+                    type === t.id ? 'bg-edvanta-deep text-white' : 'border border-edvanta-border bg-white text-edvanta-muted hover:border-edvanta-blue/40 hover:text-edvanta-blue'
                   }`}
                 >
                   {t.label}
-                  <span className={`text-xs ${type === t.id ? 'text-white/70' : 'text-slate-400'}`}>{typeCounts[t.id] || 0}</span>
+                  <span className={`text-xs ${type === t.id ? 'text-white/70' : 'text-edvanta-subtle'}`}>{typeCounts[t.id] || 0}</span>
                 </button>
               ))}
 
               {/* Filtro por área */}
               {areasInResults.length > 1 && (
                 <div className="ml-auto flex items-center gap-2">
-                  <SlidersHorizontal className="h-4 w-4 text-slate-400" aria-hidden="true" />
+                  <SlidersHorizontal className="h-4 w-4 text-edvanta-subtle" aria-hidden="true" />
                   <label htmlFor="area-filter" className="sr-only">Filtrar por área</label>
                   <select
                     id="area-filter"
                     value={area}
                     onChange={(e) => setArea(e.target.value)}
-                    className="rounded-lg border border-edvanta-border bg-white px-3 py-1.5 text-sm font-medium text-slate-600 focus:border-edvanta-blue focus:outline-none focus:ring-2 focus:ring-edvanta-blue/30"
+                    className="rounded-lg border border-edvanta-border bg-white px-3 py-1.5 text-sm font-medium text-edvanta-muted focus:border-edvanta-blue focus:outline-none focus:ring-2 focus:ring-edvanta-blue/30"
                   >
                     <option value="all">Todas las áreas</option>
                     {areasInResults.map((a) => (
@@ -153,7 +153,7 @@ export default function BuscarPage() {
 
             {/* Resultados */}
             {visible.length === 0 ? (
-              <p className="mt-10 rounded-xl border border-dashed border-edvanta-border bg-white px-6 py-12 text-center text-sm text-slate-500">
+              <p className="mt-10 rounded-xl border border-dashed border-edvanta-border bg-white px-6 py-12 text-center text-sm text-edvanta-subtle">
                 No hay resultados con estos filtros. Cambia el tipo o el área.
               </p>
             ) : type === 'all' ? (

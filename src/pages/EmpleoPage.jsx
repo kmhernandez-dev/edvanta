@@ -195,7 +195,7 @@ export default function EmpleoPage() {
                       <a
                         href={c.href}
                         {...(c.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-                        className="mt-4 inline-flex min-h-11 items-center justify-center gap-2 rounded-xl bg-edvanta-blue px-4 text-sm font-semibold text-white transition hover:bg-edvanta-bluedark"
+                        className="ed-btn ed-btn--primary mt-4"
                       >
                         Ver la oferta
                         <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />

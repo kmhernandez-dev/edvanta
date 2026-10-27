@@ -56,33 +56,33 @@ export default function NoticiasPage() {
           </div>
           <div className="mt-7 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {noticiasRecientes.map(n => (
-              <a key={n.titulo} href={n.url} target="_blank" rel="noopener noreferrer" className="group flex min-h-56 flex-col rounded-xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:border-edvanta-border hover:shadow-md">
+              <a key={n.titulo} href={n.url} target="_blank" rel="noopener noreferrer" className="group flex min-h-56 flex-col rounded-xl border border-edvanta-border bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:border-edvanta-border hover:shadow-md">
                 <div className="flex items-center justify-between gap-3">
                   <p className="text-xs font-bold uppercase text-edvanta-blue">{n.fuente}</p>
-                  <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-slate-500"><CalendarDays className="h-3 w-3" />{n.fecha}</span>
+                  <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-edvanta-subtle"><CalendarDays className="h-3 w-3" />{n.fecha}</span>
                 </div>
                 <h3 className="mt-3 flex-1 text-base font-bold leading-snug text-edvanta-deep group-hover:text-edvanta-blue">{n.titulo}</h3>
-                <p className="mt-2 text-sm leading-6 text-slate-600">{n.nota}</p>
+                <p className="mt-2 text-sm leading-6 text-edvanta-muted">{n.nota}</p>
                 <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-bold text-edvanta-blue">Leer en la fuente <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" /></span>
               </a>
             ))}
           </div>
         </section>
 
-        <section className="border-t border-slate-200 bg-white">
+        <section className="border-t border-edvanta-border bg-white">
           <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
             <div className="flex items-center gap-2">
               <Globe2 className="h-5 w-5 text-edvanta-blue" aria-hidden="true" />
               <h2 className="text-2xl font-bold text-edvanta-deep sm:text-3xl">Fuentes oficiales para seguimiento</h2>
             </div>
-            <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-600">
+            <p className="mt-2 max-w-2xl text-sm leading-6 text-edvanta-muted">
               Revisa directamente estas fuentes para convocatorias, normativa y agenda institucional.
             </p>
             <div className="mt-7 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {fuentesNoticias.map(f => (
-                <a key={f.fuente} href={f.url} target="_blank" rel="noopener noreferrer" className="group rounded-xl border border-slate-200 bg-slate-50 p-5 transition hover:border-edvanta-border hover:bg-edvanta-light/40">
+                <a key={f.fuente} href={f.url} target="_blank" rel="noopener noreferrer" className="group rounded-xl border border-edvanta-border bg-edvanta-bg p-5 transition hover:border-edvanta-border hover:bg-edvanta-light/40">
                   <p className="text-sm font-bold text-edvanta-deep group-hover:text-edvanta-blue">{f.fuente}</p>
-                  <p className="mt-2 text-sm leading-6 text-slate-600">{f.resumen}</p>
+                  <p className="mt-2 text-sm leading-6 text-edvanta-muted">{f.resumen}</p>
                   <span className="mt-3 inline-flex items-center gap-1.5 text-sm font-bold text-edvanta-blue">Abrir <ArrowRight className="h-4 w-4" aria-hidden="true" /></span>
                 </a>
               ))}
@@ -90,7 +90,7 @@ export default function NoticiasPage() {
             <div className="mt-10 rounded-xl border border-edvanta-border bg-edvanta-light p-5">
               <p className="text-sm font-bold text-edvanta-blue">¿Quieres recibir las noticias en tu correo?</p>
               <p className="mt-1 text-sm text-edvanta-blue">EscrÍbenos por WhatsApp y te enviamos el resumen mensual del sector.</p>
-              <a href="https://wa.me/573006332244?text=Hola%2C%20quiero%20recibir%20el%20resumen%20mensual%20de%20noticias%20del%20sector%20farmac%C3%A9utico" target="_blank" rel="noopener noreferrer" className="mt-3 inline-flex min-h-10 items-center gap-2 rounded-lg bg-edvanta-blue px-4 text-sm font-bold text-white transition hover:bg-edvanta-bluedark">
+              <a href="https://wa.me/573006332244?text=Hola%2C%20quiero%20recibir%20el%20resumen%20mensual%20de%20noticias%20del%20sector%20farmac%C3%A9utico" target="_blank" rel="noopener noreferrer" className="ed-btn ed-btn--primary ed-btn--sm mt-3">
                 Unirme al resumen mensual
               </a>
             </div>

@@ -102,7 +102,7 @@ function Franja({ titulo, descripcion, icono: Icono, children, total }) {
   );
 }
 
-const TARJETA = 'flex w-[17rem] shrink-0 snap-start flex-col overflow-hidden rounded-[var(--aula-radius-lg)] border border-[var(--aula-border)] bg-white sm:w-[19rem]';
+const TARJETA = 'flex w-[17rem] shrink-0 snap-start flex-col overflow-hidden rounded-[var(--aula-radius-lg)] border border-[var(--aula-border)] bg-white shadow-[0_1px_2px_rgba(20,35,63,.04)] transition duration-200 hover:-translate-y-1 hover:shadow-[var(--aula-shadow-lg)] sm:w-[19rem]';
 
 function Portada({ src, children }) {
   return (

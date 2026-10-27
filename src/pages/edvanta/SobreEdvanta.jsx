@@ -13,10 +13,11 @@
 
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Building2, HeartPulse } from 'lucide-react';
+import { ArrowRight, Building2, GraduationCap, HeartPulse } from 'lucide-react';
 import SiteHeader from '../../components/edvanta/SiteHeader';
 import SiteFooter from '../../components/edvanta/SiteFooter';
-import { Breadcrumb, Btn, LandingHero, NavCard, Section, SectionHeading } from '../../components/edvanta/ui';
+import { Breadcrumb, Btn, NavCard, Section, SectionHeading } from '../../components/edvanta/ui';
+import { HeroCientifico } from '../../components/edvanta/heroes';
 import { ICONOS_ESCUELA } from '../../components/edvanta/oferta';
 import { ESCUELAS } from '../../data/edvanta/escuelas';
 import { AUTORA } from '../../data/edvanta/productos';
@@ -53,22 +54,36 @@ export default function SobreEdvanta() {
     <div className="min-h-screen bg-white">
       <SiteHeader />
       <main>
-        <LandingHero
-          breadcrumb={<Breadcrumb items={[{ label: 'Inicio', to: '/' }, { label: 'Sobre Edvanta' }]} className="mb-6" />}
+        <HeroCientifico
+          breadcrumb={<Breadcrumb items={[{ label: 'Inicio', to: '/' }, { label: 'Sobre Edvanta' }]} className="mb-8" />}
           eyebrow="Sobre Edvanta"
           title="Una empresa de educación farmacéutica"
           highlight="educación farmacéutica"
           lead="Formamos a quienes trabajan con medicamentos, acompañamos con educación a pacientes y cuidadores, y diseñamos programas para instituciones. Todo bajo una misma marca y un mismo criterio."
+          image="/img/comunidad/encuentro-comunidad-farmaceutica.webp"
+          imageAlt="Grupo de químicos farmacéuticos reunidos alrededor de una mesa, conversando sobre una tableta"
+          imagePosition="center"
+          badges={[
+            { icon: GraduationCap, label: 'Cuatro escuelas' },
+            { icon: HeartPulse, label: 'Edvanta Contigo' },
+            { icon: Building2, label: 'Instituciones' },
+          ]}
+          actions={(
+            <>
+              <Btn to="/escuelas" size="lg" iconRight={ArrowRight}>Ver las escuelas</Btn>
+              <Btn to="/contacto" variant="secondary" size="lg">Contactar a Edvanta</Btn>
+            </>
+          )}
         />
 
-        <Section>
+        <Section tone="white">
           <SectionHeading eyebrow="Cómo nos organizamos" title="Cuatro escuelas y dos puertas" />
-          <div className="mt-8 grid gap-4 md:grid-cols-2">
+          <div className="mt-10 grid gap-4 md:grid-cols-2">
             {ESCUELAS.map((e) => {
               const Icono = ICONOS_ESCUELA[e.icono];
               return (
-                <Link key={e.slug} to={`/escuelas/${e.slug}`} className="flex items-start gap-4 rounded-2xl border border-edvanta-border bg-white p-5 transition hover:border-edvanta-blue/30">
-                  <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-edvanta-light text-edvanta-blue">
+                <Link key={e.slug} to={`/escuelas/${e.slug}`} className="group ds-card ds-card--interactive flex items-start gap-4 p-5">
+                  <span className="ds-icon-tile h-11 w-11 shrink-0">
                     {Icono && <Icono className="h-5 w-5" aria-hidden="true" />}
                   </span>
                   <span>
@@ -85,10 +100,11 @@ export default function SobreEdvanta() {
           </div>
         </Section>
 
-        <Section tone="tint" bordered>
+        <Section tone="lavender" bordered>
           <div className="grid gap-10 lg:grid-cols-[300px_minmax(0,1fr)] lg:items-center">
-            <img src="/img/karla-real.jpg" alt={AUTORA.nombre} width="800" height="1000" loading="lazy"
-              className="mx-auto aspect-[4/5] w-60 rounded-3xl bg-white object-cover object-top lg:w-full" />
+            <div className="ds-photo mx-auto aspect-[4/5] w-60 lg:w-full">
+              <img src="/img/karla-real.jpg" alt={AUTORA.nombre} width="800" height="1000" loading="lazy" className="object-top" />
+            </div>
             <div>
               <SectionHeading eyebrow="Quién está detrás" title={AUTORA.nombre} desc={`${AUTORA.profesion}. ${AUTORA.ciudad}.`} />
               <p className="mt-4 max-w-2xl text-base leading-7 text-edvanta-muted">
@@ -104,16 +120,19 @@ export default function SobreEdvanta() {
           </div>
         </Section>
 
-        <Section>
-          <SectionHeading eyebrow="Enfoque académico" title="Así trabajamos" />
-          <div className="mt-8 grid gap-5 md:grid-cols-2">
-            {PRINCIPIOS.map((p) => (
-              <div key={p.t} className="rounded-2xl border border-edvanta-border bg-white p-6">
-                <h3 className="text-lg font-bold text-edvanta-deep">{p.t}</h3>
-                <p className="mt-2 text-sm leading-6 text-edvanta-muted">{p.d}</p>
-              </div>
+        <Section tone="white">
+          <SectionHeading eyebrow="Enfoque académico" title="Así trabajamos" desc="Compromisos que se pueden comprobar en el propio sitio." />
+          <ol className="mt-10 grid gap-x-12 gap-y-8 md:grid-cols-2">
+            {PRINCIPIOS.map((p, i) => (
+              <li key={p.t} className="flex gap-5 border-t border-edvanta-border pt-6">
+                <span className="ed-grad-text font-display text-4xl font-extrabold leading-none">{String(i + 1).padStart(2, '0')}</span>
+                <div>
+                  <h3 className="text-lg font-bold text-edvanta-deep">{p.t}</h3>
+                  <p className="mt-2 text-[15px] leading-7 text-edvanta-muted">{p.d}</p>
+                </div>
+              </li>
             ))}
-          </div>
+          </ol>
           <div className="mt-10 flex flex-wrap gap-3">
             <Btn to="/contacto">Contactar a Edvanta</Btn>
             <Btn to="/escuelas" variant="secondary">Ver las escuelas</Btn>

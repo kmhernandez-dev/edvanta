@@ -138,7 +138,7 @@ export default function PublicarVacanteForm({ onPublicada, compacto = false }) {
         <button
           type="submit"
           disabled={enviando}
-          className="inline-flex min-h-12 items-center gap-2 rounded-xl bg-edvanta-blue px-6 text-[15px] font-semibold text-white transition hover:bg-edvanta-bluedark disabled:opacity-60"
+          className="ed-btn ed-btn--primary"
         >
           <Send className="h-4 w-4" aria-hidden="true" />
           {enviando ? 'Publicando…' : 'Publicar la vacante'}

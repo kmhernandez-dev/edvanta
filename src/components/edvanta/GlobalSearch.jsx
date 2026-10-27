@@ -111,12 +111,12 @@ export default function GlobalSearch({ className = '' }) {
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className={`inline-flex items-center gap-2 rounded-xl border border-edvanta-border bg-white px-3 text-sm text-slate-500 transition hover:border-edvanta-blue/40 hover:text-edvanta-deep focus:outline-none focus-visible:ring-2 focus-visible:ring-edvanta-blue ${className}`}
+        className={`inline-flex items-center gap-2 rounded-xl border border-edvanta-border bg-white px-3 text-sm text-edvanta-subtle transition hover:border-edvanta-blue/40 hover:text-edvanta-deep focus:outline-none focus-visible:ring-2 focus-visible:ring-edvanta-blue ${className}`}
         aria-label="Buscar en Edvanta"
       >
         <Search className="h-4 w-4" aria-hidden="true" />
         <span className="hidden lg:inline">Buscar…</span>
-        <kbd className="ml-1 hidden rounded border border-edvanta-border bg-slate-50 px-1.5 py-0.5 text-[10px] font-semibold text-slate-400 lg:inline">/</kbd>
+        <kbd className="ml-1 hidden rounded border border-edvanta-border bg-edvanta-bg px-1.5 py-0.5 text-[10px] font-semibold text-edvanta-subtle lg:inline">/</kbd>
       </button>
 
       {!open ? null : (
@@ -130,7 +130,7 @@ export default function GlobalSearch({ className = '' }) {
           <div className="w-full max-w-2xl overflow-hidden rounded-2xl bg-white shadow-2xl ring-1 ring-black/5">
             {/* Input */}
             <div className="flex items-center gap-3 border-b border-edvanta-border px-4">
-              <Search className="h-5 w-5 shrink-0 text-slate-400" aria-hidden="true" />
+              <Search className="h-5 w-5 shrink-0 text-edvanta-subtle" aria-hidden="true" />
               <input
                 ref={inputRef}
                 value={q}
@@ -138,11 +138,11 @@ export default function GlobalSearch({ className = '' }) {
                 onKeyDown={onInputKeyDown}
                 type="search"
                 placeholder="Busca cursos, áreas, rutas, herramientas o artículos…"
-                className="h-14 w-full border-0 bg-transparent text-base text-edvanta-deep placeholder:text-slate-400 focus:outline-none focus:ring-0"
+                className="h-14 w-full border-0 bg-transparent text-base text-edvanta-deep placeholder:text-edvanta-subtle focus:outline-none focus:ring-0"
                 aria-label="Término de búsqueda"
                 aria-controls="edvanta-search-results"
               />
-              <button type="button" onClick={close} className="rounded-lg p-1 text-slate-400 hover:bg-slate-100 hover:text-slate-600" aria-label="Cerrar buscador">
+              <button type="button" onClick={close} className="rounded-lg p-1 text-edvanta-subtle hover:bg-edvanta-soft hover:text-edvanta-muted" aria-label="Cerrar buscador">
                 <X className="h-5 w-5" aria-hidden="true" />
               </button>
             </div>
@@ -151,14 +151,14 @@ export default function GlobalSearch({ className = '' }) {
             <div id="edvanta-search-results" className="edvanta-scrollbar-thin max-h-[55vh] overflow-y-auto p-2">
               {!hasQuery ? (
                 <div className="px-3 py-4">
-                  <p className="mb-2 text-xs font-bold uppercase tracking-wide text-slate-400">Búsquedas sugeridas</p>
+                  <p className="mb-2 text-xs font-bold uppercase tracking-wide text-edvanta-subtle">Búsquedas sugeridas</p>
                   <div className="flex flex-wrap gap-2">
                     {SUGGESTED.map((s) => (
                       <button
                         key={s}
                         type="button"
                         onClick={() => setQ(s)}
-                        className="rounded-full border border-edvanta-border bg-slate-50 px-3 py-1.5 text-sm font-medium text-slate-600 transition hover:border-edvanta-blue/40 hover:bg-edvanta-light hover:text-edvanta-blue"
+                        className="rounded-full border border-edvanta-border bg-edvanta-bg px-3 py-1.5 text-sm font-medium text-edvanta-muted transition hover:border-edvanta-blue/40 hover:bg-edvanta-light hover:text-edvanta-blue"
                       >
                         {s}
                       </button>
@@ -167,8 +167,8 @@ export default function GlobalSearch({ className = '' }) {
                 </div>
               ) : flat.length === 0 ? (
                 <div className="px-4 py-10 text-center">
-                  <p className="text-sm font-semibold text-slate-600">No encontramos resultados para “{debounced}”.</p>
-                  <p className="mt-1 text-sm text-slate-400">Intenta con un área (Calidad, Validaciones) o una competencia (GMP, CAPA, HPLC).</p>
+                  <p className="text-sm font-semibold text-edvanta-muted">No encontramos resultados para “{debounced}”.</p>
+                  <p className="mt-1 text-sm text-edvanta-subtle">Intenta con un área (Calidad, Validaciones) o una competencia (GMP, CAPA, HPLC).</p>
                 </div>
               ) : (
                 <>
@@ -176,7 +176,7 @@ export default function GlobalSearch({ className = '' }) {
                     const Icon = TYPE_ICON[g.type] || FileText;
                     return (
                       <div key={g.type} className="mb-1">
-                        <p className="flex items-center gap-1.5 px-3 py-1.5 text-[11px] font-bold uppercase tracking-wide text-slate-400">
+                        <p className="flex items-center gap-1.5 px-3 py-1.5 text-[11px] font-bold uppercase tracking-wide text-edvanta-subtle">
                           <Icon className="h-3 w-3" aria-hidden="true" /> {g.items[0].node.typeLabel}
                         </p>
                         {g.items.map(({ node }) => {
@@ -189,15 +189,15 @@ export default function GlobalSearch({ className = '' }) {
                               type="button"
                               onMouseEnter={() => setActive(idx)}
                               onClick={() => goToNode(node)}
-                              className={`flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-left transition ${isActive ? 'bg-edvanta-light' : 'hover:bg-slate-50'}`}
+                              className={`flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-left transition ${isActive ? 'bg-edvanta-light' : 'hover:bg-edvanta-bg'}`}
                             >
                               <span className="min-w-0 flex-1">
                                 <span className="flex items-center gap-1.5">
                                   <span className="truncate text-sm font-bold text-edvanta-deep">{node.title}</span>
-                                  {external && <ArrowUpRight className="h-3.5 w-3.5 shrink-0 text-slate-400" aria-hidden="true" />}
+                                  {external && <ArrowUpRight className="h-3.5 w-3.5 shrink-0 text-edvanta-subtle" aria-hidden="true" />}
                                 </span>
                                 {(node.areaLabels?.[0] || node.description) && (
-                                  <span className="mt-0.5 line-clamp-1 block text-xs text-slate-500">
+                                  <span className="mt-0.5 line-clamp-1 block text-xs text-edvanta-subtle">
                                     {node.areaLabels?.[0] ? `${node.areaLabels[0]} · ` : ''}{node.description}
                                   </span>
                                 )}
@@ -214,7 +214,7 @@ export default function GlobalSearch({ className = '' }) {
                     type="button"
                     onMouseEnter={() => setActive(seeAllIndex)}
                     onClick={seeAll}
-                    className={`mt-1 flex w-full items-center justify-between rounded-xl px-3 py-3 text-sm font-bold transition ${active === seeAllIndex ? 'bg-edvanta-blue text-white' : 'bg-slate-50 text-edvanta-blue hover:bg-edvanta-light'}`}
+                    className={`mt-1 flex w-full items-center justify-between rounded-xl px-3 py-3 text-sm font-bold transition ${active === seeAllIndex ? 'bg-edvanta-blue text-white' : 'bg-edvanta-bg text-edvanta-blue hover:bg-edvanta-light'}`}
                   >
                     Ver todos los resultados de “{debounced}”
                     <ArrowUpRight className="h-4 w-4" aria-hidden="true" />

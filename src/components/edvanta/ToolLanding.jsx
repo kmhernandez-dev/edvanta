@@ -26,9 +26,9 @@ function ToolPreview({ kind, Icon }) {
               <div className="h-10 w-10 shrink-0 rounded-full bg-edvanta-light" />
               <div className="flex-1 space-y-1.5">
                 <div className="h-2.5 w-2/3 rounded bg-slate-200" />
-                <div className="h-2 w-1/2 rounded bg-slate-100" />
+                <div className="h-2 w-1/2 rounded bg-edvanta-soft" />
               </div>
-              <div className="flex h-12 w-12 shrink-0 flex-col items-center justify-center rounded-xl bg-teal-50 text-teal-700">
+              <div className="flex h-12 w-12 shrink-0 flex-col items-center justify-center rounded-xl bg-edvanta-mint text-edvanta-tealdark">
                 <span className="text-base font-extrabold leading-none">82</span>
                 <span className="text-[8px] font-bold uppercase">ATS</span>
               </div>
@@ -39,7 +39,7 @@ function ToolPreview({ kind, Icon }) {
                   <span className="text-[11px] font-bold text-edvanta-deep">{s}</span>
                   <span className="text-[10px] font-bold text-teal-600">{[100, 80, 60][i]}%</span>
                 </div>
-                <div className="mt-1.5 h-1.5 w-full rounded-full bg-slate-100">
+                <div className="mt-1.5 h-1.5 w-full rounded-full bg-edvanta-soft">
                   <div className="h-1.5 rounded-full bg-edvanta-blue" style={{ width: `${[100, 80, 60][i]}%` }} />
                 </div>
               </div>
@@ -49,20 +49,20 @@ function ToolPreview({ kind, Icon }) {
       case 'analyzer':
         return (
           <div className="space-y-3">
-            <div className="flex items-center justify-between rounded-lg bg-teal-50 p-3">
-              <span className="text-[11px] font-bold text-teal-800">Compatibilidad con el cargo</span>
-              <span className="text-xl font-extrabold text-teal-700">78%</span>
+            <div className="flex items-center justify-between rounded-lg bg-edvanta-mint p-3">
+              <span className="text-[11px] font-bold text-edvanta-tealdark">Compatibilidad con el cargo</span>
+              <span className="text-xl font-extrabold text-edvanta-tealdark">78%</span>
             </div>
             <div>
-              <p className="mb-1.5 text-[10px] font-bold uppercase tracking-wide text-slate-400">Palabras clave encontradas</p>
+              <p className="mb-1.5 text-[10px] font-bold uppercase tracking-wide text-edvanta-subtle">Palabras clave encontradas</p>
               <div className="flex flex-wrap gap-1.5">
                 {['BPM', 'HPLC', 'Auditoría'].map((k) => (
-                  <span key={k} className="rounded-full bg-teal-50 px-2 py-0.5 text-[10px] font-bold text-teal-700">{k}</span>
+                  <span key={k} className="rounded-full bg-edvanta-mint px-2 py-0.5 text-[10px] font-bold text-edvanta-tealdark">{k}</span>
                 ))}
               </div>
             </div>
             <div>
-              <p className="mb-1.5 text-[10px] font-bold uppercase tracking-wide text-slate-400">Faltantes (prioridad alta)</p>
+              <p className="mb-1.5 text-[10px] font-bold uppercase tracking-wide text-edvanta-subtle">Faltantes (prioridad alta)</p>
               <div className="flex flex-wrap gap-1.5">
                 {['CAPA', 'Validación'].map((k) => (
                   <span key={k} className="rounded-full bg-amber-50 px-2 py-0.5 text-[10px] font-bold text-amber-700">{k}</span>
@@ -80,8 +80,8 @@ function ToolPreview({ kind, Icon }) {
                 <span className="rounded bg-edvanta-light px-1.5 py-0.5 text-[9px] font-bold text-edvanta-blue">Copiar</span>
               </div>
               <div className="space-y-1.5">
-                <div className="h-2 w-full rounded bg-slate-100" />
-                <div className="h-2 w-4/5 rounded bg-slate-100" />
+                <div className="h-2 w-full rounded bg-edvanta-soft" />
+                <div className="h-2 w-4/5 rounded bg-edvanta-soft" />
               </div>
             </div>
             {['Acerca de', 'Experiencia'].map((s) => (
@@ -97,8 +97,8 @@ function ToolPreview({ kind, Icon }) {
           <div className="space-y-2.5">
             {['Elige tus intereses', 'Señala tus fortalezas', 'Explora tu resultado'].map((s, i) => (
               <div key={s} className="flex items-center gap-3 rounded-lg border border-edvanta-border bg-white p-2.5">
-                <span className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-[11px] font-extrabold ${i === 0 ? 'bg-edvanta-blue text-white' : 'bg-slate-100 text-slate-400'}`}>{i + 1}</span>
-                <span className={`text-[11px] font-bold ${i === 0 ? 'text-edvanta-deep' : 'text-slate-400'}`}>{s}</span>
+                <span className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-[11px] font-extrabold ${i === 0 ? 'bg-edvanta-blue text-white' : 'bg-edvanta-soft text-edvanta-subtle'}`}>{i + 1}</span>
+                <span className={`text-[11px] font-bold ${i === 0 ? 'text-edvanta-deep' : 'text-edvanta-subtle'}`}>{s}</span>
               </div>
             ))}
           </div>
@@ -110,7 +110,7 @@ function ToolPreview({ kind, Icon }) {
               <div key={s} className="rounded-lg border border-edvanta-border bg-white p-2.5">
                 <div className="flex items-center justify-between">
                   <span className="text-[11px] font-bold text-edvanta-deep">{s.split(' · ')[0]}</span>
-                  <span className="rounded-full bg-slate-100 px-1.5 py-0.5 text-[9px] font-bold text-slate-500">{s.split(' · ')[1]}</span>
+                  <span className="rounded-full bg-edvanta-soft px-1.5 py-0.5 text-[9px] font-bold text-edvanta-subtle">{s.split(' · ')[1]}</span>
                 </div>
               </div>
             ))}
@@ -125,7 +125,7 @@ function ToolPreview({ kind, Icon }) {
               <div className="h-2 w-1/3 rounded bg-slate-200" />
             </div>
             <div className="space-y-1.5">
-              {[5, 4, 5, 3].map((w, i) => <div key={i} className="h-2 rounded bg-slate-100" style={{ width: `${w * 18}%` }} />)}
+              {[5, 4, 5, 3].map((w, i) => <div key={i} className="h-2 rounded bg-edvanta-soft" style={{ width: `${w * 18}%` }} />)}
             </div>
           </div>
         );
@@ -139,7 +139,7 @@ function ToolPreview({ kind, Icon }) {
         <span className="h-2.5 w-2.5 rounded-full bg-slate-200" />
         <span className="h-2.5 w-2.5 rounded-full bg-slate-200" />
         <span className="h-2.5 w-2.5 rounded-full bg-slate-200" />
-        <span className="ml-2 inline-flex items-center gap-1 text-[10px] font-bold text-slate-400">
+        <span className="ml-2 inline-flex items-center gap-1 text-[10px] font-bold text-edvanta-subtle">
           <Icon className="h-3 w-3" aria-hidden="true" /> Vista previa
         </span>
       </div>
@@ -187,7 +187,7 @@ export default function ToolLanding({ tool }) {
       <main className="min-h-screen bg-edvanta-bg">
         {/* Breadcrumb */}
         <nav aria-label="Ruta de navegación" className="border-b border-edvanta-border bg-white">
-          <div className="mx-auto flex max-w-7xl items-center gap-1.5 px-4 py-3 text-sm text-slate-500 sm:px-6 lg:px-8">
+          <div className="mx-auto flex max-w-7xl items-center gap-1.5 px-4 py-3 text-sm text-edvanta-subtle sm:px-6 lg:px-8">
             <Link to="/" className="font-semibold hover:text-edvanta-blue">Edvanta</Link>
             <ChevronRight className="h-3.5 w-3.5 text-slate-300" aria-hidden="true" />
             <Link to="/herramientas" className="font-semibold hover:text-edvanta-blue">Herramientas</Link>
@@ -207,7 +207,7 @@ export default function ToolLanding({ tool }) {
               <h1 className="mt-4 font-display text-3xl font-extrabold leading-tight text-edvanta-deep sm:text-4xl lg:text-[2.9rem]">
                 {tool.h1}
               </h1>
-              <p className="mt-4 max-w-xl text-lg leading-8 text-slate-600">{tool.tagline}</p>
+              <p className="mt-4 max-w-xl text-lg leading-8 text-edvanta-muted">{tool.tagline}</p>
               <div className="mt-7 flex flex-wrap items-center gap-3">
                 <Cta className="btn-edvanta">
                   {tool.cta.label} <ArrowRight className="h-4 w-4" aria-hidden="true" />
@@ -215,7 +215,7 @@ export default function ToolLanding({ tool }) {
                 <Link to="/herramientas" className="btn-edvanta-outline">Ver todas las herramientas</Link>
               </div>
               {KIND_LABEL[tool.kind] && (
-                <p className="mt-4 text-sm font-semibold text-slate-400">{KIND_LABEL[tool.kind]} · Gratis</p>
+                <p className="mt-4 text-sm font-semibold text-edvanta-subtle">{KIND_LABEL[tool.kind]} · Gratis</p>
               )}
             </div>
             <div className="flex justify-center lg:justify-end">
@@ -231,10 +231,10 @@ export default function ToolLanding({ tool }) {
           <div className="mt-7 grid gap-3 sm:grid-cols-2">
             {tool.canDo.map((item) => (
               <div key={item} className="flex items-start gap-3 rounded-xl border border-edvanta-border bg-white p-4">
-                <span className="mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-teal-50 text-teal-600">
+                <span className="mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-edvanta-mint text-teal-600">
                   <Check className="h-3.5 w-3.5" aria-hidden="true" />
                 </span>
-                <span className="text-sm leading-6 text-slate-700">{item}</span>
+                <span className="text-sm leading-6 text-edvanta-muted">{item}</span>
               </div>
             ))}
           </div>
@@ -250,7 +250,7 @@ export default function ToolLanding({ tool }) {
                 <div key={s.title} className="relative">
                   <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-edvanta-deep text-lg font-extrabold text-white">{i + 1}</span>
                   <h3 className="mt-4 text-base font-bold text-edvanta-deep">{s.title}</h3>
-                  <p className="mt-1.5 text-sm leading-6 text-slate-600">{s.text}</p>
+                  <p className="mt-1.5 text-sm leading-6 text-edvanta-muted">{s.text}</p>
                 </div>
               ))}
             </div>
@@ -265,7 +265,7 @@ export default function ToolLanding({ tool }) {
               <h2 className="font-display text-2xl font-extrabold text-edvanta-deep">Pensada para ti si…</h2>
               <ul className="mt-5 space-y-2.5">
                 {tool.audience.map((a) => (
-                  <li key={a} className="flex items-start gap-2.5 text-sm leading-6 text-slate-700">
+                  <li key={a} className="flex items-start gap-2.5 text-sm leading-6 text-edvanta-muted">
                     <ChevronRight className="mt-1 h-4 w-4 shrink-0 text-edvanta-blue" aria-hidden="true" /> {a}
                   </li>
                 ))}

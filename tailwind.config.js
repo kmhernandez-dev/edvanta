@@ -62,7 +62,7 @@ export default {
         },
         // ─── Edvanta — identidad única (la misma del aula virtual) ───
         edvanta: {
-          deep:      '#17223B',
+          deep:      '#14233F',
           blue:      '#082E86',
           bluedark:  '#0A3AA6',
           light:     '#E4EBFA',
@@ -74,9 +74,9 @@ export default {
           lilac:     '#E9E5FA',
           bg:        '#F6F8FC',
           cream:     '#F6F8FC',
-          ink:       '#17223B',
-          muted:     '#65718A',
-          subtle:    '#A6AEBE',
+          ink:       '#14233F',
+          muted:     '#4A5A73',
+          subtle:    '#66738A',
           border:    '#E3E9F2',
           strong:    '#C9D4E6',
         },

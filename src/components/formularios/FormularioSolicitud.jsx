@@ -265,7 +265,7 @@ export default function FormularioSolicitud({
       <button
         type="submit"
         disabled={estado === 'enviando'}
-        className="inline-flex min-h-12 w-full items-center justify-center rounded-xl bg-edvanta-blue px-6 text-[15px] font-semibold text-white shadow-[0_6px_18px_rgba(8,46,134,.22)] transition hover:bg-edvanta-bluedark disabled:cursor-wait disabled:opacity-70 sm:w-auto"
+        className="ed-btn ed-btn--primary w-full sm:w-auto"
       >
         {estado === 'enviando' ? 'Enviando…' : boton}
       </button>

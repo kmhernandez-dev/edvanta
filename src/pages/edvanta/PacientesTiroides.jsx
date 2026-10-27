@@ -13,11 +13,12 @@
 
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, MessageCircle } from 'lucide-react';
+import { ArrowRight, BookOpen, Download, MessageCircle } from 'lucide-react';
 import SiteHeader from '../../components/edvanta/SiteHeader';
 import SiteFooter from '../../components/edvanta/SiteFooter';
 import CourseCarousel from '../../components/CourseCarousel';
-import { Breadcrumb, Btn, LandingHero, Section, SectionHeading } from '../../components/edvanta/ui';
+import { Breadcrumb, Btn, Section, SectionHeading } from '../../components/edvanta/ui';
+import { HeroInmersivo } from '../../components/edvanta/heroes';
 import { ProductoCard, useCursosPropios } from '../../components/edvanta/oferta';
 import { PROGRAMAS } from '../../data/edvanta/programas';
 import { PRODUCTOS } from '../../data/edvanta/productos';
@@ -52,54 +53,52 @@ export default function PacientesTiroides() {
     <div className="min-h-screen bg-white">
       <SiteHeader />
       <main>
-        <LandingHero
-          breadcrumb={<Breadcrumb items={[{ label: 'Inicio', to: '/' }, { label: 'Para pacientes', to: '/pacientes' }, { label: 'Salud tiroidea' }]} className="mb-6" />}
+        <HeroInmersivo
+          breadcrumb={<Breadcrumb items={[{ label: 'Inicio', to: '/' }, { label: 'Para pacientes', to: '/pacientes' }, { label: 'Salud tiroidea' }]} className="mb-8" />}
           eyebrow="Edvanta Contigo · Feliz Sin Tiroides"
           title="Tu tiroides, explicada con claridad"
           highlight="con claridad"
           lead={`${fst.nombre} es el programa de Edvanta para personas con hipotiroidismo, Hashimoto o que viven sin tiroides. Lo creó Karla Hernández, química farmacéutica que también vive sin tiroides.`}
+          image="/img/publicos/pacientes.webp"
+          imageAlt="Química farmacéutica explicando la tiroides a pacientes y familiares con una tableta"
+          note={{ title: fst.nombre, text: fst.texto }}
           actions={(
             <>
-              <Btn to="/recurso/levotiroxina" variant="teal">Descargar la guía gratuita</Btn>
-              <Btn to={fst.to} variant="secondary">Ir a Feliz Sin Tiroides</Btn>
+              <Btn to="/recurso/levotiroxina" variant="teal" size="lg" icon={Download}>Descargar la guía gratuita</Btn>
+              <Btn to={fst.to} variant="secondary" size="lg">Ir a Feliz Sin Tiroides</Btn>
             </>
-          )}
-          media={(
-            <div className="flex items-center gap-5 rounded-3xl border border-edvanta-border bg-white p-6 shadow-[0_12px_36px_rgba(23,34,59,.08)]">
-              <img src={fst.logo} alt="Feliz Sin Tiroides" width="96" height="96" className="h-24 w-24 shrink-0 rounded-2xl object-cover" />
-              <p className="text-sm leading-6 text-edvanta-muted">{fst.texto}</p>
-            </div>
           )}
         />
 
-        <Section>
-          <SectionHeading eyebrow="Empieza por aquí" title="Guías para leer en casa y llevar a la consulta" />
-          <div className="mt-8 grid gap-5 md:grid-cols-2">
+        <Section tone="white">
+          <SectionHeading eyebrow="Empieza por aquí" tone="teal" title="Guías para leer en casa y llevar a la consulta" />
+          <div className="mt-10 grid gap-6 md:grid-cols-2">
             {guias.map((p) => <ProductoCard key={p.slug} producto={p} />)}
           </div>
         </Section>
 
         {cursos.length > 0 && (
-          <section className="border-y border-edvanta-border bg-edvanta-mint/30">
+          <section className="ds-surface-aqua border-y border-edvanta-teal/15">
             <CourseCarousel title="Curso para pacientes" courses={cursos} sectionKey="pacientes_tiroides" />
           </section>
         )}
 
-        <Section>
-          <SectionHeading eyebrow="Comprende tu condición" title="Información por tema" desc="Páginas en lenguaje claro, para leer con calma y conversar con tu médico." />
-          <ul className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        <Section tone="white">
+          <SectionHeading eyebrow="Comprende tu condición" tone="teal" title="Información por tema" desc="Páginas en lenguaje claro, para leer con calma y conversar con tu médico." />
+          <ul className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {CONDICIONES.map((c) => (
               <li key={c.to}>
-                <Link to={c.to} className="flex items-center justify-between gap-3 rounded-2xl border border-edvanta-border bg-white px-5 py-4 text-[15px] font-semibold text-edvanta-deep transition hover:border-edvanta-teal/50 hover:text-edvanta-tealdark">
-                  {c.nombre}
-                  <ArrowRight className="h-4 w-4 shrink-0" aria-hidden="true" />
+                <Link to={c.to} className="group ds-card ds-card--interactive flex items-center gap-3 px-5 py-4 text-[15px] font-semibold text-edvanta-deep hover:text-edvanta-tealdark">
+                  <span className="ds-icon-tile ds-icon-tile--teal h-9 w-9 shrink-0 rounded-[10px]"><BookOpen className="h-4 w-4" aria-hidden="true" /></span>
+                  <span className="flex-1">{c.nombre}</span>
+                  <ArrowRight className="h-4 w-4 shrink-0 transition-transform group-hover:translate-x-1" aria-hidden="true" />
                 </Link>
               </li>
             ))}
           </ul>
         </Section>
 
-        <Section tone="tint" bordered>
+        <Section tone="lavender" compact>
           <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-center">
             <div>
               <h2 className="font-display text-2xl font-extrabold text-edvanta-deep">No estás sola ni solo</h2>

@@ -272,7 +272,7 @@ export default function SiteHeader() {
               <Link
                 to="/cuenta"
                 onClick={() => trackEvent('nav_click', { item: 'acceder' })}
-                className="hidden h-12 items-center rounded-xl bg-edvanta-blue px-5 text-[15px] font-semibold text-white shadow-[0_6px_18px_rgba(8,46,134,.22)] transition hover:-translate-y-px hover:bg-edvanta-bluedark lg:inline-flex"
+                className="ed-btn ed-btn--primary hidden lg:inline-flex"
               >
                 Acceder
               </Link>
@@ -349,14 +349,14 @@ export default function SiteHeader() {
           </Link>
           <div className="mt-3 flex gap-3">
             {user ? (
-              <Link to="/aula" className="inline-flex min-h-12 flex-1 items-center justify-center gap-2 rounded-xl bg-edvanta-blue px-5 text-sm font-semibold text-white">
+              <Link to="/aula" className="ed-btn ed-btn--primary flex-1">
                 <UserRound className="h-4 w-4" aria-hidden="true" />
                 Mi aula
               </Link>
             ) : (
               <>
                 <Link to="/cuenta" className="inline-flex min-h-12 flex-1 items-center justify-center rounded-xl border border-edvanta-border px-5 text-sm font-semibold text-edvanta-blue">Acceder</Link>
-                <Link to="/cuenta?modo=registro" className="inline-flex min-h-12 flex-1 items-center justify-center rounded-xl bg-edvanta-blue px-5 text-sm font-semibold text-white">Crear cuenta</Link>
+                <Link to="/cuenta?modo=registro" className="ed-btn ed-btn--primary flex-1">Crear cuenta</Link>
               </>
             )}
           </div>

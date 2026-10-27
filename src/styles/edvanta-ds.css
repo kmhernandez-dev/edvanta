@@ -1,0 +1,378 @@
+/* ============================================================
+ *  EDVANTA DESIGN SYSTEM 2.0
+ *
+ *  Un solo lugar para lo que se repite en toda la plataforma:
+ *  color, tipografía, radios, sombras, movimiento, botones,
+ *  superficies, tarjetas, estados de carga y progreso.
+ *
+ *  Vive dentro de `.edvanta-theme` (sitio) y `.aula-root` (aula), así
+ *  que Feliz Sin Tiroides, Vida 360 y AtenFarmaClinic no cambian.
+ *
+ *  Los azules, turquesas y lavandas son los del sistema de diseño del
+ *  canvas (#082E86, #25A7B0, #8981CE). El azul más oscuro del manual
+ *  (#031D5C) queda como «navy profundo» para bandas y fondos.
+ * ============================================================ */
+
+.edvanta-theme,
+.aula-root {
+  /* Color */
+  --ds-navy: #082E86;
+  --ds-navy-hover: #0A3AA6;
+  --ds-navy-deep: #031D5C;
+  --ds-navy-soft: #E8EEFB;
+  --ds-teal: #25A7B0;
+  --ds-teal-strong: #0F7480;     /* turquesa con contraste AA sobre blanco */
+  --ds-aqua: #DDF3F2;
+  --ds-aqua-soft: #F0FAF9;
+  --ds-violet: #8981CE;
+  --ds-violet-strong: #5E51A8;
+  --ds-lavender: #EEE8FC;
+  --ds-lavender-soft: #F6F3FE;
+  --ds-ice: #F4F7FD;
+  --ds-bg: #F8FAFD;
+  --ds-white: #FFFFFF;
+  --ds-text: #14233F;
+  --ds-text-2: #4A5A73;          /* secundario: 7:1 sobre blanco */
+  --ds-text-3: #66738A;          /* metadatos: 4,7:1 sobre blanco */
+  --ds-line: #E3E9F2;
+  --ds-line-strong: #C9D4E6;
+
+  /* Degradados (solo héroes, bandas y CTA) */
+  --ds-grad-hero: linear-gradient(135deg, #EEF1FF 0%, #E9E2F8 32%, #DDF3F2 70%, #F4FAFA 100%);
+  --ds-grad-brand: linear-gradient(90deg, #8179C9 0%, #65A7C1 50%, #28A8AF 100%);
+  --ds-grad-navy: linear-gradient(135deg, #031D5C 0%, #082E86 55%, #12509F 100%);
+  --ds-grad-action: linear-gradient(120deg, #082E86 0%, #1A47A8 60%, #1C6E9C 100%);
+
+  /* Forma */
+  --ds-r-xs: 8px;
+  --ds-r-sm: 10px;
+  --ds-r: 14px;
+  --ds-r-lg: 20px;
+  --ds-r-xl: 28px;
+
+  /* Elevación */
+  --ds-sh-xs: 0 1px 2px rgba(20, 35, 63, 0.05);
+  --ds-sh-sm: 0 1px 2px rgba(20, 35, 63, 0.04), 0 6px 18px -8px rgba(20, 35, 63, 0.12);
+  --ds-sh-md: 0 2px 4px rgba(20, 35, 63, 0.04), 0 18px 36px -14px rgba(20, 35, 63, 0.2);
+  --ds-sh-lg: 0 32px 64px -24px rgba(8, 46, 134, 0.32);
+  --ds-sh-btn: 0 10px 22px -10px rgba(8, 46, 134, 0.6);
+
+  /* Movimiento */
+  --ds-ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --ds-dur-1: 140ms;
+  --ds-dur-2: 220ms;
+  --ds-dur-3: 420ms;
+
+  /* Tipografía */
+  --ds-font-display: 'Manrope', 'Inter', system-ui, sans-serif;
+  --ds-font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --ds-fs-display: clamp(2.1rem, 1.55rem + 2.3vw, 3.35rem);
+  --ds-fs-h2: clamp(1.65rem, 1.35rem + 1.2vw, 2.35rem);
+  --ds-fs-lead: clamp(1.05rem, 1rem + 0.25vw, 1.175rem);
+
+  /* Ritmo vertical de las secciones */
+  --ds-section-y: clamp(3.25rem, 2.4rem + 3vw, 5rem);
+}
+
+/* ── Botones ──────────────────────────────────────────────────
+   Un solo botón con variantes. La forma, la altura y los estados son
+   los mismos en todo el sitio y en el aula; solo cambia el color. */
+/* display va con :where() (especificidad cero): así `hidden`, `sm:flex` y
+   compañía siguen mandando sobre el botón. */
+:where(.ed-btn) { display: inline-flex; }
+.ed-btn {
+  --btn-h: 46px;
+  --btn-px: 1.35rem;
+  --btn-fs: 0.9375rem;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  min-height: var(--btn-h);
+  padding: 0 var(--btn-px);
+  border: 1px solid transparent;
+  border-radius: var(--ds-r);
+  font-family: var(--ds-font-body);
+  font-size: var(--btn-fs);
+  font-weight: 650;
+  line-height: 1.15;
+  letter-spacing: -0.005em;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    background-color var(--ds-dur-2) var(--ds-ease),
+    color var(--ds-dur-2) var(--ds-ease),
+    border-color var(--ds-dur-2) var(--ds-ease),
+    box-shadow var(--ds-dur-2) var(--ds-ease),
+    transform var(--ds-dur-2) var(--ds-ease);
+}
+.ed-btn svg { flex-shrink: 0; width: 1.1em; height: 1.1em; transition: transform var(--ds-dur-2) var(--ds-ease); }
+.ed-btn:hover:not(:disabled):not([aria-disabled='true']) { transform: translateY(-1px); }
+.ed-btn:hover:not(:disabled) .ed-btn__arrow { transform: translateX(3px); }
+.ed-btn:active:not(:disabled) { transform: translateY(0) scale(0.985); transition-duration: var(--ds-dur-1); }
+.ed-btn:focus-visible { outline: none; box-shadow: 0 0 0 3px #fff, 0 0 0 5px rgba(37, 167, 176, 0.75); }
+.ed-btn:disabled,
+.ed-btn[aria-disabled='true'] { opacity: 0.55; cursor: not-allowed; transform: none; box-shadow: none; }
+.ed-btn[aria-busy='true'] { cursor: progress; }
+
+.ed-btn--sm { --btn-h: 40px; --btn-px: 1rem; --btn-fs: 0.875rem; border-radius: var(--ds-r-sm); }
+.ed-btn--lg { --btn-h: 54px; --btn-px: 1.75rem; --btn-fs: 1rem; }
+.ed-btn--block { width: 100%; }
+
+.ed-btn--primary {
+  background: var(--ds-navy);
+  color: #fff;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14), var(--ds-sh-btn);
+}
+.ed-btn--primary:hover:not(:disabled) { background: var(--ds-navy-hover); color: #fff; box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14), 0 16px 28px -12px rgba(8, 46, 134, 0.65); }
+
+.ed-btn--gradient {
+  background: var(--ds-grad-action);
+  background-size: 140% 100%;
+  background-position: 0% 50%;
+  color: #fff;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16), var(--ds-sh-btn);
+  transition-property: background-position, box-shadow, transform, color;
+}
+.ed-btn--gradient:hover:not(:disabled) { background-position: 100% 50%; color: #fff; }
+
+.ed-btn--secondary {
+  background: #fff;
+  color: var(--ds-navy);
+  border-color: var(--ds-line-strong);
+  box-shadow: var(--ds-sh-xs);
+}
+.ed-btn--secondary:hover:not(:disabled) { background: var(--ds-aqua-soft); border-color: #8FD0D4; color: var(--ds-navy); }
+
+.ed-btn--outline {
+  background: transparent;
+  color: var(--ds-navy);
+  border: 1.5px solid currentColor;
+}
+.ed-btn--outline:hover:not(:disabled) { background: var(--ds-navy-soft); }
+
+.ed-btn--ghost { background: transparent; color: var(--ds-navy); }
+.ed-btn--ghost:hover:not(:disabled) { background: var(--ds-navy-soft); transform: none; }
+
+.ed-btn--teal {
+  background: var(--ds-teal-strong);
+  color: #fff;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14), 0 10px 22px -10px rgba(15, 116, 128, 0.6);
+}
+.ed-btn--teal:hover:not(:disabled) { background: #0B6670; color: #fff; }
+
+.ed-btn--white { background: #fff; color: var(--ds-navy); box-shadow: 0 10px 24px -12px rgba(3, 29, 92, 0.55); }
+.ed-btn--white:hover:not(:disabled) { background: var(--ds-aqua); color: var(--ds-navy-deep); }
+
+.ed-btn--outline-white { background: rgba(255, 255, 255, 0.06); color: #fff; border-color: rgba(255, 255, 255, 0.5); }
+.ed-btn--outline-white:hover:not(:disabled) { background: rgba(255, 255, 255, 0.14); border-color: #fff; color: #fff; }
+
+.ed-btn--danger { background: #B42318; color: #fff; }
+.ed-btn--danger:hover:not(:disabled) { background: #912018; color: #fff; }
+
+/* Enlace con forma de acción: sin caja, con subrayado al pasar. */
+.ed-btn--link {
+  --btn-h: auto;
+  --btn-px: 0;
+  min-height: 0;
+  border: 0;
+  border-radius: 4px;
+  background: none;
+  color: var(--ds-navy);
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 4px;
+}
+.ed-btn--link:hover:not(:disabled) { transform: none; color: var(--ds-navy-hover); text-decoration-color: rgba(8, 46, 134, 0.4); }
+
+/* Solo ícono: cuadrado, con nombre accesible obligatorio (aria-label). */
+.ed-btn--icon { --btn-px: 0; width: var(--btn-h); min-width: var(--btn-h); padding: 0; }
+.ed-btn--icon.ed-btn--sm { --btn-h: 40px; }
+
+/* ── Superficies ──────────────────────────────────────────────
+   Se alternan según lo que dice cada bloque; ningún degradado cubre
+   la página entera. */
+.ds-surface-white { background: #fff; }
+.ds-surface-ice { background: var(--ds-ice); }
+.ds-surface-glow {
+  background:
+    radial-gradient(ellipse 55% 60% at 100% 0%, rgba(137, 129, 206, 0.13), transparent 70%),
+    radial-gradient(ellipse 50% 55% at 0% 100%, rgba(37, 167, 176, 0.11), transparent 70%),
+    #fff;
+}
+.ds-surface-aqua { background: linear-gradient(180deg, #F0FAF9 0%, #E6F6F5 100%); }
+.ds-surface-lavender { background: linear-gradient(180deg, #F7F4FE 0%, #EFEAFC 100%); }
+.ds-surface-diagonal { background: linear-gradient(135deg, #F3F6FE 0%, #F5F1FD 45%, #EEF9F8 100%); }
+.ds-surface-navy {
+  background:
+    radial-gradient(ellipse 60% 70% at 100% 0%, rgba(137, 129, 206, 0.35), transparent 65%),
+    radial-gradient(ellipse 50% 60% at 0% 100%, rgba(37, 167, 176, 0.28), transparent 65%),
+    var(--ds-grad-navy);
+  color: #fff;
+}
+
+/* ── Tarjetas ─────────────────────────────────────────────────
+   Solo cuando agrupan algo o se pueden tocar. Nada de tarjeta dentro
+   de tarjeta. */
+.ds-card {
+  background: #fff;
+  border: 1px solid var(--ds-line);
+  border-radius: var(--ds-r-lg);
+  box-shadow: var(--ds-sh-sm);
+}
+.ds-card--interactive {
+  transition: transform var(--ds-dur-2) var(--ds-ease), box-shadow var(--ds-dur-2) var(--ds-ease), border-color var(--ds-dur-2) var(--ds-ease);
+}
+.ds-card--interactive:hover { transform: translateY(-3px); border-color: rgba(8, 46, 134, 0.22); box-shadow: var(--ds-sh-md); }
+.ds-card--glass {
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: var(--ds-r-lg);
+  box-shadow: 0 18px 40px -18px rgba(8, 46, 134, 0.35);
+  -webkit-backdrop-filter: blur(14px) saturate(1.2);
+  backdrop-filter: blur(14px) saturate(1.2);
+}
+
+/* Foto con marco de marca: esquinas, sombra y un filo de degradado. */
+.ds-photo { position: relative; overflow: hidden; border-radius: var(--ds-r-xl); box-shadow: var(--ds-sh-lg); isolation: isolate; }
+.ds-photo img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.ds-photo::after {
+  content: ''; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
+  box-shadow: inset 0 0 0 1px rgba(8, 46, 134, 0.08);
+}
+
+/* Ícono en ficha de color suave. */
+.ds-icon-tile {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 3rem; height: 3rem; border-radius: var(--ds-r);
+  background: linear-gradient(135deg, #fff 0%, var(--ds-navy-soft) 100%);
+  color: var(--ds-navy);
+  box-shadow: inset 0 0 0 1px rgba(8, 46, 134, 0.08);
+}
+.ds-icon-tile--teal { background: linear-gradient(135deg, #fff 0%, var(--ds-aqua) 100%); color: var(--ds-teal-strong); box-shadow: inset 0 0 0 1px rgba(15, 116, 128, 0.12); }
+.ds-icon-tile--violet { background: linear-gradient(135deg, #fff 0%, var(--ds-lavender) 100%); color: var(--ds-violet-strong); box-shadow: inset 0 0 0 1px rgba(94, 81, 168, 0.12); }
+
+/* Etiqueta pequeña. */
+.ds-chip {
+  display: inline-flex; align-items: center; gap: 0.35rem;
+  min-height: 28px; padding: 0 0.7rem; border-radius: 999px;
+  font-size: 0.78rem; font-weight: 650; line-height: 1;
+  background: var(--ds-navy-soft); color: var(--ds-navy);
+}
+.ds-chip--teal { background: var(--ds-aqua); color: var(--ds-teal-strong); }
+.ds-chip--violet { background: var(--ds-lavender); color: var(--ds-violet-strong); }
+.ds-chip--glass { background: rgba(255, 255, 255, 0.85); color: var(--ds-navy); box-shadow: var(--ds-sh-xs); }
+
+/* ── Estados de carga y progreso ───────────────────────────── */
+.ds-skeleton {
+  position: relative; overflow: hidden; border-radius: var(--ds-r-sm);
+  background: #EDF1F8;
+}
+.ds-skeleton::after {
+  content: ''; position: absolute; inset: 0; transform: translateX(-100%);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.65), transparent);
+  animation: dsShimmer 1.4s var(--ds-ease) infinite;
+}
+@keyframes dsShimmer { to { transform: translateX(100%); } }
+
+.ds-progress { height: 8px; border-radius: 999px; background: var(--ds-navy-soft); overflow: hidden; }
+.ds-progress > span {
+  display: block; height: 100%; border-radius: inherit; background: var(--ds-grad-brand);
+  transition: width 0.8s var(--ds-ease);
+}
+
+/* Anillo de progreso (SVG): el trazo se anima al cambiar. */
+.ds-ring circle { transition: stroke-dashoffset 0.9s var(--ds-ease); }
+
+/* ── Diagramas ────────────────────────────────────────────────
+   Recorridos y procesos con texto real: se leen en móvil en vertical
+   y en escritorio en horizontal. */
+.ds-flow { display: grid; gap: 1rem; counter-reset: dsflow; }
+@media (min-width: 768px) { .ds-flow--row { grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); gap: 0; } }
+.ds-flow__step { position: relative; display: flex; gap: 0.9rem; align-items: flex-start; }
+/* De arriba abajo: una línea punteada baja de cada punto al siguiente. */
+.ds-flow__step:not(:last-child)::before {
+  content: ''; position: absolute; left: calc(1.5rem - 1px); top: 3.4rem; bottom: -0.85rem; width: 2px;
+  background: repeating-linear-gradient(180deg, rgba(8, 46, 134, 0.26) 0 6px, transparent 6px 12px);
+}
+@media (min-width: 768px) { .ds-flow--row .ds-flow__step::before { display: none; } }
+@media (min-width: 768px) {
+  .ds-flow--row .ds-flow__step { flex-direction: column; padding-right: 1.5rem; }
+  .ds-flow--row .ds-flow__step:not(:last-child)::after {
+    content: ''; position: absolute; top: 1.5rem; left: 3.6rem; right: 0.6rem; height: 2px;
+    background: repeating-linear-gradient(90deg, rgba(8, 46, 134, 0.28) 0 6px, transparent 6px 12px);
+  }
+}
+.ds-flow__dot {
+  position: relative; z-index: 1; flex-shrink: 0;
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 3rem; height: 3rem; border-radius: 999px;
+  background: #fff; color: var(--ds-navy);
+  box-shadow: 0 0 0 1px rgba(8, 46, 134, 0.1), 0 10px 22px -12px rgba(8, 46, 134, 0.5);
+}
+.ds-flow__dot::before {
+  content: ''; position: absolute; inset: -4px; border-radius: inherit; z-index: -1;
+  background: var(--ds-grad-brand); opacity: 0.35;
+}
+
+/* ── Movimiento ───────────────────────────────────────────────
+   Discreto: aparece y se asienta. Sin bucles en elementos de lectura. */
+.ds-rise { animation: dsRise 0.7s var(--ds-ease) both; }
+.ds-rise-2 { animation: dsRise 0.7s var(--ds-ease) 0.12s both; }
+.ds-rise-3 { animation: dsRise 0.7s var(--ds-ease) 0.24s both; }
+@keyframes dsRise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+.ds-float { animation: dsFloat 7s ease-in-out infinite; }
+@keyframes dsFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .ed-btn, .ed-btn svg, .ds-card--interactive, .ds-progress > span, .ds-ring circle { transition: none; }
+  .ds-skeleton::after, .ds-rise, .ds-rise-2, .ds-rise-3, .ds-float { animation: none; }
+}
+
+/* ── Clases heredadas ─────────────────────────────────────────
+   Botones viejos que todavía aparecen en algunas páginas de Edvanta:
+   toman la forma del sistema nuevo sin tocar cada archivo. Fuera de
+   `.edvanta-theme` (FST, AtenFarma) siguen como estaban. */
+.edvanta-theme .btn-edvanta,
+.edvanta-theme .btn-primary {
+  border-radius: var(--ds-r); font-weight: 650;
+  background: var(--ds-navy); color: #fff; border: 1px solid transparent;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14), var(--ds-sh-btn);
+  transition: background-color var(--ds-dur-2) var(--ds-ease), transform var(--ds-dur-2) var(--ds-ease), box-shadow var(--ds-dur-2) var(--ds-ease);
+}
+.edvanta-theme .btn-edvanta:hover,
+.edvanta-theme .btn-primary:hover { background: var(--ds-navy-hover); transform: translateY(-1px); }
+.edvanta-theme .btn-edvanta-outline,
+.edvanta-theme .btn-secondary {
+  border-radius: var(--ds-r); font-weight: 650;
+  background: #fff; color: var(--ds-navy); border: 1px solid var(--ds-line-strong); box-shadow: var(--ds-sh-xs);
+  transition: background-color var(--ds-dur-2) var(--ds-ease), border-color var(--ds-dur-2) var(--ds-ease), transform var(--ds-dur-2) var(--ds-ease);
+}
+.edvanta-theme .btn-edvanta-outline:hover,
+.edvanta-theme .btn-secondary:hover { background: var(--ds-aqua-soft); border-color: #8FD0D4; transform: translateY(-1px); }
+.edvanta-theme .btn-teal {
+  border-radius: var(--ds-r); font-weight: 650;
+  background: var(--ds-teal-strong); color: #fff;
+}
+.edvanta-theme .btn-teal:hover { background: #0B6670; }
+.edvanta-theme .btn-outline-teal {
+  border-radius: var(--ds-r); font-weight: 650;
+  color: var(--ds-teal-strong); border: 1.5px solid currentColor; background: transparent;
+}
+
+/* Foco visible en todo el sitio: anillo turquesa que se ve sobre blanco y sobre azul. */
+.edvanta-theme :focus-visible { outline: 2px solid var(--ds-teal-strong); outline-offset: 3px; }
+.edvanta-theme .ed-btn:focus-visible { outline: none; }
+
+/* Destinos de foco programático (tabindex="-1"): el foco llega ahí al
+   cambiar de clase o de página para los lectores de pantalla, pero no es
+   un control, así que no se pinta contorno. */
+.edvanta-theme [tabindex='-1']:focus,
+.edvanta-theme [tabindex='-1']:focus-visible,
+.aula-root [tabindex='-1']:focus,
+.aula-root [tabindex='-1']:focus-visible { outline: none; }

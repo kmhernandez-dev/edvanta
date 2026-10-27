@@ -10,7 +10,6 @@ import {
 } from 'lucide-react';
 import { fmtMinutes } from '../labels';
 import { BlockList } from '../blocks/BlockView';
-import { Button } from '../ui/Button';
 import { ProgressBar } from '../ui/Page';
 import PanelDelCurso from './PanelDelCurso';
 import ParticipacionDeClase from './ParticipacionDeClase';
@@ -55,8 +54,8 @@ function Outline({ snapshot, currentId, lessonHref, lessonState, onNavigate }) {
                   <span className="sr-only">. {meta.label}{locked && state.reason ? `: ${state.reason}` : ''}</span>
                 </>
               );
-              const cls = `flex items-start gap-2.5 rounded-[var(--aula-radius-sm)] px-2 py-2 ${
-                current ? 'bg-[var(--aula-primary-soft)] font-semibold text-[var(--aula-primary)]' : 'text-[var(--aula-text)]'
+              const cls = `flex items-start gap-2.5 rounded-[var(--aula-radius-sm)] border-l-[3px] px-2 py-2 transition-colors ${
+                current ? 'border-[var(--aula-primary)] bg-[var(--aula-primary-soft)] font-semibold text-[var(--aula-primary)]' : 'border-transparent text-[var(--aula-text)]'
               }`;
               return (
                 <li key={l.id}>
@@ -137,6 +136,10 @@ export function CoursePlayer({
           )}
           {headerActions}
         </div>
+        {/* Dónde vas dentro del curso: la línea de marca avanza clase a clase. */}
+        <div className="h-[3px] bg-[var(--aula-primary-soft)]" aria-hidden="true">
+          <div className="h-full transition-[width] duration-700" style={{ width: `${((index + 1) / lessons.length) * 100}%`, background: 'var(--aula-gradient-brand)' }} />
+        </div>
         {banner}
       </header>
 
@@ -160,16 +163,16 @@ export function CoursePlayer({
 
         <main ref={mainRef} tabIndex={-1} className="min-w-0 flex-1 py-6 focus:outline-none sm:py-8">
           <article className="mx-auto max-w-3xl">
-            <header className="mb-6">
-              <p className="text-xs font-bold uppercase tracking-[0.12em] text-[var(--aula-secondary)]">
-                Módulo {lesson.moduleIndex + 1} · {lesson.moduleTitle}
+            <header className="mb-7">
+              <p className="inline-flex max-w-full items-center rounded-full bg-[var(--aula-secondary-soft)] px-3 py-1 text-[11px] font-bold uppercase tracking-[0.1em] text-[var(--aula-secondary)]">
+                <span className="truncate">Módulo {lesson.moduleIndex + 1} · {lesson.moduleTitle}</span>
               </p>
-              <h1 className="mt-1 text-2xl font-extrabold leading-tight text-[var(--aula-primary)] sm:text-3xl">{lesson.title}</h1>
-              {lesson.subtitle && <p className="mt-1 text-base text-[var(--aula-muted)]">{lesson.subtitle}</p>}
-              <p className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-[var(--aula-muted)]">
-                <span>Clase {index + 1} de {lessons.length}</span>
-                {lesson.durationMinutes ? <span className="inline-flex items-center gap-1"><Clock className="h-3.5 w-3.5" aria-hidden="true" />{fmtMinutes(lesson.durationMinutes)}</span> : null}
-                <span>{lesson.isRequired ? 'Obligatoria' : 'Opcional'}</span>
+              <h1 className="mt-3 text-[1.65rem] font-extrabold leading-tight text-[var(--aula-primary)] sm:text-[2rem]">{lesson.title}</h1>
+              {lesson.subtitle && <p className="mt-1.5 text-base text-[var(--aula-muted)]">{lesson.subtitle}</p>}
+              <p className="mt-3 flex flex-wrap items-center gap-2 text-xs font-semibold text-[var(--aula-muted)]">
+                <span className="rounded-full bg-[var(--aula-neutral-soft)] px-2.5 py-1">Clase {index + 1} de {lessons.length}</span>
+                {lesson.durationMinutes ? <span className="inline-flex items-center gap-1 rounded-full bg-[var(--aula-neutral-soft)] px-2.5 py-1"><Clock className="h-3.5 w-3.5" aria-hidden="true" />{fmtMinutes(lesson.durationMinutes)}</span> : null}
+                <span className="rounded-full bg-[var(--aula-neutral-soft)] px-2.5 py-1">{lesson.isRequired ? 'Obligatoria' : 'Opcional'}</span>
               </p>
             </header>
 
@@ -182,21 +185,30 @@ export function CoursePlayer({
 
             <footer className="mt-10 flex flex-col gap-4 border-t border-[var(--aula-border)] pt-6">
               {renderCompletion?.(lesson)}
-              <nav aria-label="Navegación entre clases" className="flex flex-wrap items-center justify-between gap-3">
+              {/* Anterior y siguiente como tarjetas: se ve a dónde lleva cada una. */}
+              <nav aria-label="Navegación entre clases" className="grid gap-3 sm:grid-cols-2">
                 {prev ? (
-                  <Button variant="secondary" icon={ChevronLeft} to={lessonHref(prev.id)}>
-                    <span className="sr-only">Clase anterior: </span><span className="max-w-[16ch] truncate sm:max-w-[28ch]">{prev.title}</span>
-                  </Button>
-                ) : <span />}
+                  <Link to={lessonHref(prev.id)} className="group flex min-w-0 items-center gap-3 rounded-[var(--aula-radius-lg)] border border-[var(--aula-border)] bg-white p-4 transition hover:-translate-y-0.5 hover:border-[var(--aula-border-strong)] hover:shadow-[var(--aula-shadow)]">
+                    <ChevronLeft className="h-5 w-5 shrink-0 text-[var(--aula-primary)] transition-transform group-hover:-translate-x-0.5" aria-hidden="true" />
+                    <span className="min-w-0">
+                      <span className="block text-[11px] font-bold uppercase tracking-[0.1em] text-[var(--aula-muted)]">Clase anterior</span>
+                      <span className="block truncate text-sm font-semibold text-[var(--aula-text)]">{prev.title}</span>
+                    </span>
+                  </Link>
+                ) : <span className="hidden sm:block" />}
                 {next && (
                   nextState?.status === 'bloqueado' && mode !== 'preview' ? (
-                    <p className="flex items-center gap-2 text-sm text-[var(--aula-muted)]">
-                      <Lock className="h-4 w-4" aria-hidden="true" /> {nextState.reason || 'Completa esta clase para continuar.'}
+                    <p className="flex items-center gap-2 rounded-[var(--aula-radius-lg)] border border-dashed border-[var(--aula-border-strong)] p-4 text-sm text-[var(--aula-muted)]">
+                      <Lock className="h-4 w-4 shrink-0" aria-hidden="true" /> {nextState.reason || 'Completa esta clase para continuar.'}
                     </p>
                   ) : (
-                    <Button iconRight={ChevronRight} to={lessonHref(next.id)}>
-                      <span className="sr-only">Clase siguiente: </span><span className="max-w-[16ch] truncate sm:max-w-[28ch]">{next.title}</span>
-                    </Button>
+                    <Link to={lessonHref(next.id)} className="group flex min-w-0 items-center justify-end gap-3 rounded-[var(--aula-radius-lg)] bg-[var(--aula-primary)] p-4 text-right text-white shadow-[0_14px_28px_-14px_rgba(8,46,134,.7)] transition hover:-translate-y-0.5 hover:bg-[var(--aula-primary-hover)]">
+                      <span className="min-w-0">
+                        <span className="block text-[11px] font-bold uppercase tracking-[0.1em] text-white/75">Siguiente clase</span>
+                        <span className="block truncate text-sm font-semibold">{next.title}</span>
+                      </span>
+                      <ChevronRight className="h-5 w-5 shrink-0 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
+                    </Link>
                   )
                 )}
               </nav>

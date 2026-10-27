@@ -37,15 +37,15 @@ export default function ContentNodeCard({ node, variant = 'card', onNavigate }) 
   if (variant === 'row') {
     return (
       <Wrapper className="group flex items-start gap-3 rounded-xl px-3 py-2.5 transition hover:bg-edvanta-light/60 focus:outline-none focus-visible:ring-2 focus-visible:ring-edvanta-blue">
-        <span className={`mt-0.5 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-slate-50 ${meta.tint}`}>
+        <span className={`mt-0.5 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-edvanta-bg ${meta.tint}`}>
           <Icon className="h-4 w-4" aria-hidden="true" />
         </span>
         <span className="min-w-0 flex-1">
           <span className="flex items-center gap-1.5">
             <span className="truncate text-sm font-bold text-edvanta-deep group-hover:text-edvanta-blue">{node.title}</span>
-            {isExternal && <ArrowUpRight className="h-3.5 w-3.5 shrink-0 text-slate-400" aria-hidden="true" />}
+            {isExternal && <ArrowUpRight className="h-3.5 w-3.5 shrink-0 text-edvanta-subtle" aria-hidden="true" />}
           </span>
-          {node.description && <span className="mt-0.5 line-clamp-1 block text-xs text-slate-500">{node.description}</span>}
+          {node.description && <span className="mt-0.5 line-clamp-1 block text-xs text-edvanta-subtle">{node.description}</span>}
         </span>
       </Wrapper>
     );
@@ -54,7 +54,7 @@ export default function ContentNodeCard({ node, variant = 'card', onNavigate }) 
   return (
     <Wrapper className="card-edvanta group flex h-full flex-col overflow-hidden focus:outline-none focus-visible:ring-2 focus-visible:ring-edvanta-blue">
       {node.image ? (
-        <div className="aspect-[16/10] w-full overflow-hidden bg-slate-100">
+        <div className="aspect-[16/10] w-full overflow-hidden bg-edvanta-soft">
           <img
             src={node.image}
             alt={node.title}
@@ -74,13 +74,13 @@ export default function ContentNodeCard({ node, variant = 'card', onNavigate }) 
             {node.typeLabel}
           </span>
           {node.areaLabels?.[0] && (
-            <span className="truncate text-[11px] font-semibold text-slate-400">{node.areaLabels[0]}</span>
+            <span className="truncate text-[11px] font-semibold text-edvanta-subtle">{node.areaLabels[0]}</span>
           )}
         </div>
         <h3 className="line-clamp-2 text-[15px] font-bold leading-snug text-edvanta-deep group-hover:text-edvanta-blue">
           {node.title}
         </h3>
-        {node.description && <p className="mt-1.5 line-clamp-2 flex-1 text-sm leading-6 text-slate-500">{node.description}</p>}
+        {node.description && <p className="mt-1.5 line-clamp-2 flex-1 text-sm leading-6 text-edvanta-subtle">{node.description}</p>}
         <span className="mt-3 inline-flex items-center gap-1 text-sm font-bold text-edvanta-blue">
           {isExternal ? 'Abrir recurso' : 'Ver más'}
           {isExternal ? <ArrowUpRight className="h-4 w-4" aria-hidden="true" /> : <ArrowRight className="h-4 w-4" aria-hidden="true" />}

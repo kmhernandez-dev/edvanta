@@ -105,28 +105,28 @@ export default function PracticasPage() {
           <h2 className="text-2xl font-bold text-edvanta-deep sm:text-3xl">Guía paso a paso</h2>
           <div className="mt-7 grid gap-4 md:grid-cols-3">
             {guiaPracticas.map(g => (
-              <div key={g.titulo} className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
+              <div key={g.titulo} className="rounded-xl border border-edvanta-border bg-white p-6 shadow-sm">
                 <span className="inline-flex h-11 w-11 items-center justify-center rounded-lg bg-edvanta-light text-edvanta-blue"><ClipboardList className="h-5 w-5" aria-hidden="true" /></span>
                 <h3 className="mt-4 text-lg font-bold text-edvanta-deep">{g.titulo}</h3>
                 <ol className="mt-3 space-y-2">
-                  {g.pasos.map(p => <li key={p} className="flex items-start gap-2 text-sm leading-6 text-slate-600"><span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-edvanta-blue" aria-hidden="true" />{p}</li>)}
+                  {g.pasos.map(p => <li key={p} className="flex items-start gap-2 text-sm leading-6 text-edvanta-muted"><span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-edvanta-blue" aria-hidden="true" />{p}</li>)}
                 </ol>
               </div>
             ))}
           </div>
         </section>
 
-        <section className="border-y border-slate-200 bg-white">
+        <section className="border-y border-edvanta-border bg-white">
           <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
             <p className="text-sm font-bold uppercase tracking-wide text-edvanta-blue">Elige tu perfil</p>
             <h2 className="mt-1 text-2xl font-bold text-edvanta-deep sm:text-3xl">Qué perfiles elegir para desarrollar tu carrera farmacéutica</h2>
             <div className="mt-7 grid gap-4 md:grid-cols-2">
               {PERFILES_PRACTICAS.map(p => (
-                <div key={p.titulo} className="rounded-xl border border-slate-200 bg-slate-50 p-5 transition hover:border-edvanta-border">
+                <div key={p.titulo} className="rounded-xl border border-edvanta-border bg-edvanta-bg p-5 transition hover:border-edvanta-border">
                   <h3 className="text-lg font-bold text-edvanta-deep">{p.titulo}</h3>
                   <p className="mt-1 text-sm font-semibold text-edvanta-blue">{p.ideal}</p>
-                  <p className="mt-3 text-sm text-slate-600"><span className="font-bold text-slate-700">En qué trabajarás:</span> {p.areas}</p>
-                  <p className="mt-1 text-sm text-slate-600"><span className="font-bold text-slate-700">Dónde:</span> {p.empresas}</p>
+                  <p className="mt-3 text-sm text-edvanta-muted"><span className="font-bold text-edvanta-muted">En qué trabajarás:</span> {p.areas}</p>
+                  <p className="mt-1 text-sm text-edvanta-muted"><span className="font-bold text-edvanta-muted">Dónde:</span> {p.empresas}</p>
                 </div>
               ))}
             </div>
@@ -138,7 +138,7 @@ export default function PracticasPage() {
             <div>
               <p className="text-xs font-bold uppercase tracking-wide text-edvanta-blue">Hoja de vida para prácticas</p>
               <h2 className="mt-1 text-2xl font-bold text-edvanta-deep sm:text-3xl">HV de vida para aplicar a prácticas profesionales</h2>
-              <p className="mt-3 text-sm leading-6 text-slate-600">Tu HV de práctica es distinta a la laboral: debe mostrar potencial, no solo experiencia. Incluye:</p>
+              <p className="mt-3 text-sm leading-6 text-edvanta-muted">Tu HV de práctica es distinta a la laboral: debe mostrar potencial, no solo experiencia. Incluye:</p>
               <ul className="mt-5 space-y-3">
                 {[
                   'Resumen de 2 líneas: programa, semestre y área de interés',
@@ -146,42 +146,42 @@ export default function PracticasPage() {
                   'Habilidades de herramientas (Excel, Power BI, paquete Office)',
                   'Disponibilidad: horario, días y duración de la práctica',
                   'Idiomas y certificaciones vigentes',
-                ].map(item => <li key={item} className="flex items-start gap-2 text-sm leading-6 text-slate-700"><CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-edvanta-blue" aria-hidden="true" />{item}</li>)}
+                ].map(item => <li key={item} className="flex items-start gap-2 text-sm leading-6 text-edvanta-muted"><CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-edvanta-blue" aria-hidden="true" />{item}</li>)}
               </ul>
               <div className="mt-6 flex flex-wrap gap-3">
-                <Link to="/hoja-de-vida" className="inline-flex min-h-11 items-center gap-2 rounded-lg bg-edvanta-blue px-5 text-sm font-bold text-white transition hover:bg-edvanta-bluedark">
+                <Link to="/hoja-de-vida" className="ed-btn ed-btn--primary">
                   <FileText className="h-4 w-4" aria-hidden="true" /> Crear mi hoja de vida
                 </Link>
-                <Link to="/empleo" className="inline-flex min-h-11 items-center gap-2 rounded-lg border border-slate-300 bg-white px-5 text-sm font-bold text-slate-700 transition hover:bg-slate-50">
+                <Link to="/empleo" className="inline-flex min-h-11 items-center gap-2 rounded-lg border border-edvanta-border bg-white px-5 text-sm font-bold text-edvanta-muted transition hover:bg-edvanta-bg">
                   Ver plantillas de correo <ArrowRight className="h-4 w-4" aria-hidden="true" />
                 </Link>
               </div>
             </div>
 
-            <div className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
+            <div className="rounded-xl border border-edvanta-border bg-white p-6 shadow-sm">
               <div className="flex flex-wrap items-center justify-between gap-3">
                 <p className="text-sm font-bold text-edvanta-deep">Correo para solicitar práctica</p>
-                <button type="button" onClick={copiar} className="inline-flex items-center gap-1.5 rounded-lg border border-slate-300 bg-white px-3 py-1.5 text-xs font-bold text-slate-700 transition hover:border-edvanta-blue/40 hover:text-edvanta-bluedark">
+                <button type="button" onClick={copiar} className="inline-flex items-center gap-1.5 rounded-lg border border-edvanta-border bg-white px-3 py-1.5 text-xs font-bold text-edvanta-muted transition hover:border-edvanta-blue/40 hover:text-edvanta-bluedark">
                   {copiado ? 'Copiado' : 'Copiar correo'}
                 </button>
               </div>
-              <textarea value={correo} onChange={e => setCorreo(e.target.value)} rows={16} className="mt-4 w-full rounded-lg border border-slate-200 bg-slate-50 p-4 text-sm leading-6 text-slate-800 outline-none" aria-label="Correo de solicitud de práctica" />
-              <p className="mt-3 text-xs text-slate-500">Reemplaza los campos entre llaves y agrega una línea sobre el laboratorio o proyecto que más te gustó.</p>
+              <textarea value={correo} onChange={e => setCorreo(e.target.value)} rows={16} className="mt-4 w-full rounded-lg border border-edvanta-border bg-edvanta-bg p-4 text-sm leading-6 text-edvanta-deep outline-none" aria-label="Correo de solicitud de práctica" />
+              <p className="mt-3 text-xs text-edvanta-subtle">Reemplaza los campos entre llaves y agrega una línea sobre el laboratorio o proyecto que más te gustó.</p>
             </div>
           </div>
         </section>
 
-        <section className="border-t border-slate-200 bg-white">
+        <section className="border-t border-edvanta-border bg-white">
           <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
             <p className="text-xs font-bold uppercase tracking-wide text-edvanta-blue">Oportunidades oficiales</p>
             <h2 className="mt-1 text-2xl font-bold text-edvanta-deep sm:text-3xl">Pasantías y becas verificadas</h2>
             <div className="mt-7 grid gap-4 md:grid-cols-3">
               {pasantiasOficiales.map(p => (
-                <a key={p.nombre} href={p.url} target="_blank" rel="noopener noreferrer" className="group rounded-xl border border-slate-200 bg-slate-50 p-5 transition hover:border-edvanta-border hover:bg-edvanta-light/40">
+                <a key={p.nombre} href={p.url} target="_blank" rel="noopener noreferrer" className="group rounded-xl border border-edvanta-border bg-edvanta-bg p-5 transition hover:border-edvanta-border hover:bg-edvanta-light/40">
                   <BadgeCheck className="h-6 w-6 text-edvanta-blue" aria-hidden="true" />
                   <p className="mt-3 text-sm font-bold text-edvanta-blue">{p.tipo}</p>
                   <h3 className="mt-1 text-base font-bold text-edvanta-deep group-hover:text-edvanta-blue">{p.nombre}</h3>
-                  <p className="mt-2 text-sm leading-6 text-slate-600">{p.resumen}</p>
+                  <p className="mt-2 text-sm leading-6 text-edvanta-muted">{p.resumen}</p>
                   <span className="mt-3 inline-flex items-center gap-1.5 text-sm font-bold text-edvanta-blue">Abrir convocatoria <ArrowRight className="h-4 w-4" aria-hidden="true" /></span>
                 </a>
               ))}

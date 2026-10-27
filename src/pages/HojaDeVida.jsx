@@ -18,7 +18,7 @@ import SiteFooter from '../components/edvanta/SiteFooter';
 import CvBuilder from '../components/empleo/CvBuilder';
 import { MuestraPlantillas } from '../components/empleo/plantillasUi';
 import {
-  ArrowLink, Breadcrumb, Btn, Card, CtaBanner, Faq, ImageSlot, LandingHero, Section, SectionHeading, Steps,
+  ArrowLink, Breadcrumb, Btn, Card, CtaBanner, Faq, LandingHero, Section, SectionHeading, Steps,
 } from '../components/edvanta/ui';
 import { updatePageSeo } from '../utils/seo';
 
@@ -43,6 +43,47 @@ const ERRORES = [
   'PDF exportado como imagen: el sistema no puede leer el texto.',
   'El mismo documento para todas las vacantes, sin adaptar el cargo.',
 ];
+
+/**
+ * Antes y después, dibujado: la misma hoja de vida en columnas con foto y
+ * tablas (lo que los filtros leen mal) y en una sola columna con las
+ * secciones en el orden que esperan. Es un esquema, no una captura.
+ */
+function AntesYDespues() {
+  const linea = (w, tono = 'bg-[#DDE4EF]') => <span className={`block h-1.5 rounded-full ${tono}`} style={{ width: w }} />;
+  return (
+    <figure className="grid grid-cols-2 gap-4" aria-label="Comparación esquemática: hoja de vida en columnas con foto y tablas, frente a una hoja de vida en una sola columna con secciones ordenadas">
+      <div className="relative rounded-[var(--ds-r-lg)] border border-[#F3C1BD] bg-white p-3.5 shadow-[var(--ds-sh-sm)]" aria-hidden="true">
+        <span className="ds-chip mb-3 bg-[#FEE4E2] text-[#B42318]">Antes</span>
+        <div className="flex gap-2">
+          <span className="h-10 w-10 shrink-0 rounded-lg bg-[#DDE4EF]" />
+          <div className="flex-1 space-y-1.5 pt-1">{linea('80%', 'bg-[#C9D4E6]')}{linea('55%')}</div>
+        </div>
+        <div className="mt-3 grid grid-cols-[38%_1fr] gap-2">
+          <div className="space-y-1.5 rounded-md bg-[#F2F5FA] p-1.5">{linea('90%')}{linea('70%')}{linea('85%')}{linea('60%')}</div>
+          <div className="space-y-1.5">
+            <div className="grid grid-cols-3 gap-1">{[0, 1, 2, 3, 4, 5].map((i) => <span key={i} className="h-3 rounded-sm border border-[#DDE4EF]" />)}</div>
+            {linea('95%')}{linea('80%')}{linea('88%')}
+          </div>
+        </div>
+        <ul className="mt-3 space-y-1 text-[10px] font-semibold text-[#B42318]">
+          <li>· Columnas y tablas</li><li>· Foto y datos personales</li>
+        </ul>
+      </div>
+      <div className="relative rounded-[var(--ds-r-lg)] border border-edvanta-teal/40 bg-white p-3.5 shadow-[var(--ds-sh-md)]" aria-hidden="true">
+        <span className="ds-chip ds-chip--teal mb-3">Después</span>
+        <div className="space-y-1.5">{linea('70%', 'bg-edvanta-blue/70')}{linea('45%')}</div>
+        {['Perfil', 'Experiencia', 'Formación', 'Habilidades'].map((s) => (
+          <div key={s} className="mt-2.5">
+            <span className="block text-[10px] font-extrabold uppercase tracking-wide text-edvanta-tealdark">{s}</span>
+            <div className="mt-1 space-y-1">{linea('95%')}{linea('78%')}</div>
+          </div>
+        ))}
+        <span className="mt-3 inline-flex items-center gap-1 text-[10px] font-bold text-edvanta-tealdark"><BadgeCheck className="h-3.5 w-3.5" />Formato ATS</span>
+      </div>
+    </figure>
+  );
+}
 
 const FAQS = [
   { q: '¿Qué es un ATS y por qué importa?', a: 'Es el sistema que usan las empresas para recibir y filtrar hojas de vida. Si el archivo no se puede leer bien, la hoja de vida no llega a una persona. Por eso el formato importa tanto como el contenido.' },
@@ -168,11 +209,7 @@ export default function HojaDeVida() {
               </ul>
             </div>
             <div className="mt-8 lg:mt-0">
-              <ImageSlot
-                ratio="portrait"
-                label="Comparación: hoja de vida antes y después"
-                hint="Montaje vertical con las dos versiones. 900 × 1200 px."
-              />
+              <AntesYDespues />
             </div>
           </div>
         </Section>

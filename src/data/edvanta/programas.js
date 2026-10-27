@@ -52,15 +52,15 @@ export const RUTAS_CONTIGO = [
     slug: 'tiroides',
     nombre: 'Salud tiroidea',
     programa: 'feliz-sin-tiroides',
-    estado: 'disponible',
+    estado: 'disponible', imagen: '/img/contigo/tiroides.webp',
     texto: 'Hipotiroidismo, Hashimoto, vivir sin tiroides y cómo tomar la levotiroxina.',
     to: '/pacientes/tiroides',
   },
-  { slug: 'ruta-diabetes', nombre: 'Tu Ruta Diabetes', estado: 'en_desarrollo', texto: 'Para comprender la diabetes, sus medicamentos y el día a día.' },
-  { slug: 'ruta-renal', nombre: 'Tu Ruta Renal', estado: 'en_desarrollo', texto: 'Para quienes viven con enfermedad renal y para sus cuidadores.' },
-  { slug: 'ruta-cardiovascular', nombre: 'Tu Ruta Cardiovascular', estado: 'en_desarrollo', texto: 'Presión arterial, colesterol y medicamentos del corazón.' },
-  { slug: 'ruta-respiratoria', nombre: 'Tu Ruta Respiratoria', estado: 'en_desarrollo', texto: 'Asma, EPOC y el uso correcto de los inhaladores.' },
-  { slug: 'ruta-oncologica', nombre: 'Tu Ruta Oncológica', estado: 'en_desarrollo', texto: 'Para pacientes en tratamiento oncológico y sus familias.' },
+  { slug: 'ruta-diabetes', nombre: 'Tu Ruta Diabetes', estado: 'en_desarrollo', imagen: '/img/contigo/ruta-diabetes.webp', texto: 'Para comprender la diabetes, sus medicamentos y el día a día.' },
+  { slug: 'ruta-renal', nombre: 'Tu Ruta Renal', estado: 'en_desarrollo', imagen: '/img/contigo/ruta-renal.webp', texto: 'Para quienes viven con enfermedad renal y para sus cuidadores.' },
+  { slug: 'ruta-cardiovascular', nombre: 'Tu Ruta Cardiovascular', estado: 'en_desarrollo', imagen: '/img/contigo/ruta-cardiovascular.webp', texto: 'Presión arterial, colesterol y medicamentos del corazón.' },
+  { slug: 'ruta-respiratoria', nombre: 'Tu Ruta Respiratoria', estado: 'en_desarrollo', imagen: '/img/contigo/ruta-respiratoria.webp', texto: 'Asma, EPOC y el uso correcto de los inhaladores.' },
+  { slug: 'ruta-oncologica', nombre: 'Tu Ruta Oncológica', estado: 'en_desarrollo', imagen: '/img/contigo/ruta-oncologica.webp', texto: 'Para pacientes en tratamiento oncológico y sus familias.' },
 ];
 
 /** Los tres formatos de Edvanta Contigo y qué hay hoy de cada uno. */
@@ -70,14 +70,14 @@ export const FORMATOS_CONTIGO = [
     nombre: 'Aulas Contigo',
     tipo: 'Talleres educativos en vivo',
     texto: 'Sesiones por videollamada sobre un tema concreto, con tiempo para preguntas.',
-    estado: 'en_desarrollo',
+    estado: 'en_desarrollo', imagen: '/img/contigo/aulas-contigo.webp',
   },
   {
     id: 'guias',
     nombre: 'Guías Contigo',
     tipo: 'E-books, agendas de consulta y recursos prácticos',
     texto: 'Material para leer en casa, llevar a la consulta y compartir con la familia.',
-    estado: 'disponible',
+    estado: 'disponible', imagen: '/img/contigo/guias-contigo.webp',
     nota: 'Hoy: la guía gratuita de levotiroxina y las guías de Feliz Sin Tiroides.',
   },
   {
@@ -85,6 +85,6 @@ export const FORMATOS_CONTIGO = [
     nombre: 'Encuentros Contigo',
     tipo: 'Espacios de orientación y preguntas',
     texto: 'Encuentros grupales para resolver dudas generales sobre una condición. Son educativos: no son consultas individuales.',
-    estado: 'en_desarrollo',
+    estado: 'en_desarrollo', imagen: '/img/contigo/encuentros-contigo.webp',
   },
 ];

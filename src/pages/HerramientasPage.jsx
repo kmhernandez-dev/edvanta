@@ -17,8 +17,9 @@ import {
 import SiteHeader from '../components/edvanta/SiteHeader';
 import SiteFooter from '../components/edvanta/SiteFooter';
 import {
-  ArrowLink, Btn, Card, CtaBanner, ImageSlot, LandingHero, Section, SectionHeading,
+  ArrowLink, Btn, Card, CtaBanner, LandingHero, Section, SectionHeading,
 } from '../components/edvanta/ui';
+import { Portatil } from '../components/edvanta/heroes';
 import { apiUrl } from '../config/api';
 import { updatePageSeo } from '../utils/seo';
 import { clasificacionHerramientas } from '../data/careerHub';
@@ -29,6 +30,29 @@ const TOOL_ICONS = {
   file: FileText, scan: ScanSearch, mail: Mail, briefcase: BriefcaseBusiness,
   compass: Compass, linkedin: Share2, clipboard: ClipboardList, rocket: Rocket, building: Building2,
 };
+
+/** Las herramientas reales, dentro del portátil del héroe (sin capturas inventadas). */
+function VistaHerramientas() {
+  return (
+    <div className="flex h-full flex-col bg-[#F8FAFD] p-3 sm:p-4" aria-hidden="true">
+      <div className="flex items-center gap-2">
+        <Wrench className="h-3.5 w-3.5 text-edvanta-blue sm:h-4 sm:w-4" />
+        <span className="font-display text-[11px] font-extrabold text-edvanta-blue sm:text-sm">Centro de herramientas</span>
+      </div>
+      <div className="mt-2 grid flex-1 grid-cols-3 gap-1.5 sm:mt-3 sm:gap-2">
+        {HERRAMIENTAS.slice(0, 9).map((h) => {
+          const I = TOOL_ICONS[h.icon] || Wrench;
+          return (
+            <div key={h.slug} className="flex flex-col items-start justify-between rounded-lg bg-white p-1.5 ring-1 ring-edvanta-border sm:p-2">
+              <span className="inline-flex h-5 w-5 items-center justify-center rounded-md bg-edvanta-light text-edvanta-blue sm:h-6 sm:w-6"><I className="h-3 w-3 sm:h-3.5 sm:w-3.5" /></span>
+              <span className="mt-1 line-clamp-2 text-[8px] font-bold leading-tight text-edvanta-deep sm:text-[10px]">{h.nav}</span>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
 
 const resourceTypeLabels = {
   article: 'Artículo',
@@ -84,14 +108,7 @@ export default function HerramientasPage() {
               <Btn to="/aula" variant="secondary" icon={MonitorPlay}>Entrar al aula virtual</Btn>
             </>
           )}
-          media={(
-            <ImageSlot
-              ratio="photo"
-              priority
-              label="Herramientas Edvanta en pantalla"
-              hint="Montaje de dos o tres herramientas abiertas. 1200 × 900 px."
-            />
-          )}
+          media={<Portatil><VistaHerramientas /></Portatil>}
         />
 
         {/* Las más usadas */}

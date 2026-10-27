@@ -18,7 +18,8 @@ import {
 } from 'lucide-react';
 import SiteHeader from '../../components/edvanta/SiteHeader';
 import SiteFooter from '../../components/edvanta/SiteFooter';
-import { Breadcrumb, Btn, Card, Section, SectionHeading } from '../../components/edvanta/ui';
+import { Breadcrumb, Btn, Card, Section, SectionHeading, Steps } from '../../components/edvanta/ui';
+import { HeroCurso } from '../../components/edvanta/heroes';
 import { EstadoBadge, PublicoBadge } from '../../components/edvanta/oferta';
 import FormularioSolicitud from '../../components/formularios/FormularioSolicitud';
 import { escuelaPorSlug } from '../../data/edvanta/escuelas';
@@ -66,60 +67,36 @@ export default function CursoEnVivo() {
     <div className="min-h-screen bg-white">
       <SiteHeader />
       <main>
-        <section style={{ background: 'var(--ed-gradient-hero)' }}>
-          <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
-            <Breadcrumb items={[
-              { label: 'Inicio', to: '/' },
-              { label: 'Cursos', to: '/cursos' },
-              { label: 'Curso en vivo' },
-            ]} />
-            <div className="mt-6 grid gap-10 lg:grid-cols-[minmax(0,1fr)_380px] lg:items-start">
-              <div>
-                <div className="flex flex-wrap gap-2">
-                  <EstadoBadge estado={p.estado} />
-                  <PublicoBadge publico={p.publico} />
-                </div>
-                <p className="mt-5 text-xs font-bold uppercase tracking-[.14em] text-edvanta-blue">
-                  {p.tipoTexto}{escuela ? ` · ${escuela.nombre}` : ''}
-                </p>
-                <h1 className="mt-2 font-display text-[2rem] font-extrabold leading-[1.12] text-edvanta-deep sm:text-[2.75rem]">
-                  {p.nombre}
-                </h1>
-                <p className="mt-4 max-w-2xl text-lg leading-8 text-edvanta-muted">
-                  <span className="font-semibold text-edvanta-deep">Para: </span>{p.dirigidoA}
-                </p>
-                <div className="mt-8 flex flex-wrap gap-3">
-                  <Btn href="#registro">{p.accion.etiqueta}</Btn>
-                  <Btn href="#temario" variant="secondary">Ver el temario</Btn>
-                </div>
-              </div>
+        <HeroCurso
+          breadcrumb={<Breadcrumb className="mb-8" items={[
+            { label: 'Inicio', to: '/' },
+            { label: 'Cursos', to: '/cursos' },
+            { label: 'Curso en vivo' },
+          ]} />}
+          badges={<><EstadoBadge estado={p.estado} /><PublicoBadge publico={p.publico} /></>}
+          eyebrow={`${p.tipoTexto}${escuela ? ` · ${escuela.corto}` : ''}`}
+          title={p.nombre}
+          lead={<><span className="font-semibold text-edvanta-deep">Para: </span>{p.dirigidoA}</>}
+          meta={datos.map(({ icono, k, v }) => ({ icon: icono, label: k === 'Docente' ? v : `${k}: ${v}` }))}
+          image={p.imagen}
+          imageAlt={p.imagenAlt}
+          aside={{ title: 'Incluye', items: p.formato.incluye.slice(0, 4).map((i) => ({ icon: CheckCircle2, label: i })) }}
+          actions={(
+            <>
+              <Btn href="#registro" variant="gradient" size="lg">{p.accion.etiqueta}</Btn>
+              <Btn href="#temario" variant="secondary" size="lg">Ver el temario</Btn>
+            </>
+          )}
+        >
+          {(!p.fechaInicio || p.precio === null) && (
+            <p className="mt-6 flex max-w-xl items-start gap-2.5 rounded-[var(--ds-r)] border border-amber-200 bg-amber-50/90 px-4 py-3 text-sm leading-6 text-amber-900">
+              <Info className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
+              La fecha de inicio y el valor aún no están definidos. Registra tu interés y te escribimos cuando lo estén.
+            </p>
+          )}
+        </HeroCurso>
 
-              <Card className="overflow-hidden p-0">
-                {p.imagen && (
-                  <img src={p.imagen} alt={p.imagenAlt} width="1200" height="800" loading="eager" decoding="async" className="aspect-[3/2] w-full object-cover" />
-                )}
-                <dl className="divide-y divide-edvanta-border">
-                  {datos.map(({ icono: Icono, k, v }) => (
-                    <div key={k} className="flex items-start gap-3 px-5 py-4">
-                      <Icono className="mt-0.5 h-5 w-5 shrink-0 text-edvanta-teal" aria-hidden="true" />
-                      <div>
-                        <dt className="text-xs font-bold uppercase tracking-[.1em] text-edvanta-muted">{k}</dt>
-                        <dd className="mt-0.5 text-[15px] font-semibold text-edvanta-deep">{v}</dd>
-                      </div>
-                    </div>
-                  ))}
-                </dl>
-                {(!p.fechaInicio || p.precio === null) && (
-                  <p className="border-t border-edvanta-border bg-amber-50 px-5 py-3 text-sm leading-6 text-amber-900">
-                    La fecha de inicio y el valor aún no están definidos. Registra tu interés y te escribimos cuando lo estén.
-                  </p>
-                )}
-              </Card>
-            </div>
-          </div>
-        </section>
-
-        <Section>
+        <Section tone="white">
           <div className="grid gap-10 lg:grid-cols-2">
             <div>
               <SectionHeading eyebrow="Por qué este curso" title="Cada paso del medicamento, en orden" />
@@ -137,7 +114,7 @@ export default function CursoEnVivo() {
                   </li>
                 ))}
               </ul>
-              <div className="mt-6 rounded-2xl border border-edvanta-border bg-edvanta-bg p-5">
+              <div className="ds-surface-lavender mt-6 rounded-[var(--ds-r-lg)] border border-edvanta-violet/20 p-5">
                 <p className="flex items-center gap-2 text-sm font-bold text-edvanta-deep">
                   <Info className="h-4 w-4 text-edvanta-blue" aria-hidden="true" />
                   Para que no haya confusiones
@@ -150,22 +127,17 @@ export default function CursoEnVivo() {
           </div>
         </Section>
 
-        <Section id="temario" tone="tint" bordered>
+        <Section id="temario" tone="diagonal" bordered>
           <SectionHeading eyebrow="Temario" title="Temas del curso" desc={`${p.formato.encuentros}, en ${p.formato.duracion.toLowerCase()}.`} />
-          <ol className="mt-8 grid gap-3 sm:grid-cols-2">
-            {p.temario.map((t, i) => (
-              <li key={t} className="flex items-center gap-4 rounded-2xl border border-edvanta-border bg-white px-5 py-4">
-                <span className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-edvanta-light font-display text-base font-extrabold text-edvanta-blue">{i + 1}</span>
-                <span className="text-[15px] font-semibold text-edvanta-deep">{t}</span>
-              </li>
-            ))}
-          </ol>
+          {/* Cronograma: un tema tras otro, como se recorren en el curso. */}
+          <Steps className="mt-10" items={p.temario.map((t) => ({ title: t }))} />
         </Section>
 
-        <Section>
+        <Section tone="white">
           <div className="grid gap-10 lg:grid-cols-[280px_minmax(0,1fr)] lg:items-center">
-            <img src="/img/karla-real.jpg" alt={`${p.docente.nombre}, docente del curso`} width="800" height="1000" loading="lazy"
-              className="mx-auto aspect-[4/5] w-56 rounded-3xl bg-edvanta-bg object-cover object-top lg:w-full" />
+            <div className="ds-photo mx-auto aspect-[4/5] w-56 lg:w-full">
+              <img src="/img/karla-real.jpg" alt={`${p.docente.nombre}, docente del curso`} width="800" height="1000" loading="lazy" className="object-top" />
+            </div>
             <div>
               <SectionHeading eyebrow="Docente" title={p.docente.nombre} desc={`${p.docente.profesion}. ${p.docente.ciudad}.`} />
               <p className="mt-4 max-w-2xl text-base leading-7 text-edvanta-muted">
@@ -175,7 +147,7 @@ export default function CursoEnVivo() {
           </div>
         </Section>
 
-        <Section id="registro" tone="tint" bordered>
+        <Section id="registro" tone="glow" bordered>
           <div className="grid gap-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
             <div>
               <SectionHeading

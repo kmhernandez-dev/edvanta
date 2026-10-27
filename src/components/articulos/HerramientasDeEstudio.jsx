@@ -75,7 +75,7 @@ export default function StudyTools({ slug }) {
         <button
           onClick={() => setShowNotes(!showNotes)}
           className={`inline-flex items-center gap-1.5 px-4 py-2 text-xs font-semibold rounded-full border transition-colors ${
-            showNotes ? 'bg-teal-100 text-teal-700 border-teal-300' : 'bg-white text-gray-600 border-gray-200 hover:bg-gray-50'
+            showNotes ? 'bg-teal-100 text-edvanta-tealdark border-edvanta-teal' : 'bg-white text-gray-600 border-gray-200 hover:bg-gray-50'
           }`}
         >
           📝 Notas ({notes.length})
@@ -101,8 +101,8 @@ export default function StudyTools({ slug }) {
       )}
 
       {showNotes && (
-        <div className="mb-4 p-4 bg-teal-50 rounded-2xl border border-teal-200">
-          <h3 className="text-sm font-bold text-teal-800 mb-2">Tus notas de estudio</h3>
+        <div className="mb-4 p-4 bg-edvanta-mint rounded-2xl border border-teal-200">
+          <h3 className="text-sm font-bold text-edvanta-tealdark mb-2">Tus notas de estudio</h3>
           <div className="flex gap-2 mb-3">
             <input
               value={noteText}
@@ -111,7 +111,7 @@ export default function StudyTools({ slug }) {
               placeholder="Escribe una nota o apunte..."
               className="flex-1 rounded-xl border border-teal-200 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-teal-300"
             />
-            <button onClick={addNote} className="px-4 py-2 bg-teal-600 hover:bg-teal-700 text-white text-xs font-semibold rounded-xl transition-colors">
+            <button onClick={addNote} className="ed-btn ed-btn--teal ed-btn--sm">
               Guardar
             </button>
           </div>

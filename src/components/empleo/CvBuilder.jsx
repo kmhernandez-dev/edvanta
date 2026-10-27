@@ -165,7 +165,7 @@ function ScoreGauge({ score }) {
       <div>
         <p className="text-sm font-bold text-edvanta-deep">Puntaje ATS: {pct}/100</p>
         <p className="mt-0.5 text-xs font-semibold" style={{ color }}>{label}</p>
-        <p className="mt-0.5 max-w-56 text-[11px] leading-4 text-slate-500">Estimado local, orientativo y privado. No se envía tu información a terceros.</p>
+        <p className="mt-0.5 max-w-56 text-[11px] leading-4 text-edvanta-subtle">Estimado local, orientativo y privado. No se envía tu información a terceros.</p>
       </div>
     </div>
   );
@@ -186,7 +186,7 @@ function FindingRow({ f }) {
         {s.icon}
         <div>
           <p className="text-sm font-bold text-edvanta-deep">{f.titulo}</p>
-          <p className="mt-0.5 text-xs leading-5 text-slate-600">{f.detalle}</p>
+          <p className="mt-0.5 text-xs leading-5 text-edvanta-muted">{f.detalle}</p>
         </div>
       </div>
     </li>
@@ -199,9 +199,9 @@ function CopyButton({ text, label = 'Copiar' }) {
     <button
       type="button"
       onClick={async () => { try { await navigator.clipboard.writeText(text); setCopied(true); setTimeout(() => setCopied(false), 1800); } catch { /* noop */ } }}
-      className="inline-flex items-center gap-1.5 rounded-lg border border-edvanta-border bg-white px-3 py-1.5 text-xs font-bold text-slate-700 transition hover:border-edvanta-blue/40 hover:text-edvanta-blue"
+      className="inline-flex items-center gap-1.5 rounded-lg border border-edvanta-border bg-white px-3 py-1.5 text-xs font-bold text-edvanta-muted transition hover:border-edvanta-blue/40 hover:text-edvanta-blue"
     >
-      {copied ? <span className="text-teal-700">Copiado</span> : <><ClipboardCopy className="h-3.5 w-3.5" />{label}</>}
+      {copied ? <span className="text-edvanta-tealdark">Copiado</span> : <><ClipboardCopy className="h-3.5 w-3.5" />{label}</>}
     </button>
   );
 }
@@ -536,7 +536,7 @@ export default function CvBuilder() {
       <button
         type="button"
         onClick={() => setGaleriaAbierta((v) => !v)}
-        className="flex w-full items-center justify-center gap-2 rounded-xl border border-edvanta-border bg-white px-4 py-2.5 text-sm font-bold text-edvanta-blue transition hover:border-edvanta-blue/40"
+        className="ed-btn ed-btn--secondary w-full"
       >
         <Sparkles className="h-4 w-4" aria-hidden="true" /> Cambiar diseño · {disenoPorId(plantillaId).nombre}
       </button>
@@ -552,28 +552,28 @@ export default function CvBuilder() {
         <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-edvanta-light text-edvanta-blue"><FileText className="h-5 w-5" /></span>
         <div>
           <p className="text-sm font-black text-edvanta-deep">Creador de hoja de vida</p>
-          <p className="text-[11px] font-semibold text-slate-400">
+          <p className="text-[11px] font-semibold text-edvanta-subtle">
             {academiaUser && saveState ? (saveLabel[saveState] || '') : 'Se guarda en este navegador'} {overall > 0 && <span className="text-edvanta-blue">· {overall}%</span>}
           </p>
         </div>
       </div>
-      <div className="flex items-center gap-2">
-        <button type="button" onClick={() => setShowPreview(v => !v)} className="inline-flex min-h-10 items-center gap-1.5 rounded-lg border border-edvanta-border bg-white px-3 text-sm font-bold text-slate-700 transition hover:border-edvanta-blue/40 hover:text-edvanta-blue lg:hidden">
+      <div className="flex flex-wrap items-center gap-2">
+        <button type="button" onClick={() => setShowPreview(v => !v)} className="inline-flex min-h-10 items-center gap-1.5 rounded-lg border border-edvanta-border bg-white px-3 text-sm font-bold text-edvanta-muted transition hover:border-edvanta-blue/40 hover:text-edvanta-blue lg:hidden">
           {showPreview ? <><Pencil className="h-4 w-4" /> Editar</> : <><Eye className="h-4 w-4" /> Vista previa</>}
         </button>
-        <button type="button" onClick={borrarBorrador} disabled={!tieneContenido} title="Borra lo escrito en este navegador y empieza de cero" className="inline-flex min-h-10 items-center gap-1.5 rounded-lg border border-edvanta-border bg-white px-3 text-sm font-bold text-slate-700 transition hover:border-rose-300 hover:text-rose-700 disabled:opacity-50">
+        <button type="button" onClick={borrarBorrador} disabled={!tieneContenido} title="Borra lo escrito en este navegador y empieza de cero" className="inline-flex min-h-10 items-center gap-1.5 rounded-lg border border-edvanta-border bg-white px-3 text-sm font-bold text-edvanta-muted transition hover:border-rose-300 hover:text-rose-700 disabled:opacity-50">
           <Trash2 className="h-4 w-4" /> <span className="hidden md:inline">Empezar de cero</span>
         </button>
-        <button type="button" onClick={guardar} disabled={!tieneContenido} className="inline-flex min-h-10 items-center gap-1.5 rounded-lg border border-edvanta-border bg-white px-3.5 text-sm font-bold text-slate-800 transition hover:border-teal-400 hover:text-teal-800 disabled:opacity-50">
+        <button type="button" onClick={guardar} disabled={!tieneContenido} className="inline-flex min-h-10 items-center gap-1.5 rounded-lg border border-edvanta-border bg-white px-3.5 text-sm font-bold text-edvanta-deep transition hover:border-teal-400 hover:text-edvanta-tealdark disabled:opacity-50">
           <Save className="h-4 w-4" /> <span className="hidden sm:inline">Guardar</span>
         </button>
-        <button type="button" onClick={copiarTexto} disabled={!tieneContenido} title="Copia tu HV en texto plano para portales" className="inline-flex min-h-10 items-center gap-1.5 rounded-lg border border-edvanta-border bg-white px-3 text-sm font-bold text-slate-700 transition hover:border-edvanta-blue/40 hover:text-edvanta-blue disabled:opacity-50">
+        <button type="button" onClick={copiarTexto} disabled={!tieneContenido} title="Copia tu HV en texto plano para portales" className="inline-flex min-h-10 items-center gap-1.5 rounded-lg border border-edvanta-border bg-white px-3 text-sm font-bold text-edvanta-muted transition hover:border-edvanta-blue/40 hover:text-edvanta-blue disabled:opacity-50">
           <Copy className="h-4 w-4" /> <span className="hidden md:inline">Copiar texto</span>
         </button>
         <button
           type="button"
           onClick={() => setGaleriaAbierta((v) => !v)}
-          className="inline-flex min-h-10 items-center gap-1.5 rounded-lg border border-edvanta-border bg-white px-3 text-sm font-bold text-edvanta-deep transition hover:border-edvanta-blue/40 hover:text-edvanta-blue"
+          className="ed-btn ed-btn--secondary ed-btn--sm"
           title="Ver y cambiar el diseño de tu hoja de vida"
         >
           <Sparkles className="h-4 w-4" /> <span className="hidden md:inline">{disenoPorId(plantillaId).nombre}</span>
@@ -601,7 +601,7 @@ export default function CvBuilder() {
           { id: 'guia', label: 'Guía 2026', icon: Info },
         ].map(m => (
           <button key={m.id} type="button" role="tab" aria-selected={mode === m.id} onClick={() => setMode(m.id)}
-            className={`inline-flex min-h-10 items-center gap-2 rounded-lg border px-4 text-sm font-bold transition ${mode === m.id ? 'border-edvanta-blue bg-edvanta-blue text-white' : 'border-edvanta-border bg-white text-slate-700 hover:border-edvanta-blue/40'}`}>
+            className={`inline-flex min-h-10 items-center gap-2 rounded-lg border px-4 text-sm font-bold transition ${mode === m.id ? 'border-edvanta-blue bg-edvanta-blue text-white' : 'border-edvanta-border bg-white text-edvanta-muted hover:border-edvanta-blue/40'}`}>
             <m.icon className="h-4 w-4" /> {m.label}
           </button>
         ))}
@@ -626,7 +626,7 @@ export default function CvBuilder() {
                 <Lock className="mt-0.5 h-5 w-5 shrink-0 text-edvanta-blue" />
                 <div>
                   <p className="text-sm font-bold text-edvanta-deep">Crea tu cuenta para guardar y autoguardar tu hoja de vida</p>
-                  <p className="mt-0.5 text-xs leading-5 text-slate-600">Sin cuenta guardamos un borrador en este navegador. Con tu cuenta gratuita, tu hoja de vida se autoguarda y la recuperas desde cualquier dispositivo. La descarga en PDF funciona siempre.</p>
+                  <p className="mt-0.5 text-xs leading-5 text-edvanta-muted">Sin cuenta guardamos un borrador en este navegador. Con tu cuenta gratuita, tu hoja de vida se autoguarda y la recuperas desde cualquier dispositivo. La descarga en PDF funciona siempre.</p>
                 </div>
               </div>
               <button type="button" onClick={() => setLoginOpen(true)} className="inline-flex min-h-10 items-center gap-2 rounded-lg bg-edvanta-deep px-4 text-sm font-bold text-white transition hover:bg-edvanta-blue">
@@ -634,7 +634,7 @@ export default function CvBuilder() {
               </button>
             </div>
           )}
-          {loadingSaved && <p className="text-sm text-slate-500">Cargando tu hoja de vida guardada…</p>}
+          {loadingSaved && <p className="text-sm text-edvanta-subtle">Cargando tu hoja de vida guardada…</p>}
 
           {galeriaAbierta && (
             <div className="rounded-2xl border border-edvanta-border bg-white p-5">
@@ -688,10 +688,10 @@ export default function CvBuilder() {
                 return (
                   <button key={s.id} type="button" onClick={() => { setSection(s.id); setShowPreview(false); }}
                     className={`group flex shrink-0 items-center gap-2.5 rounded-xl border px-3 py-2.5 text-left transition lg:shrink lg:w-full ${active ? 'border-edvanta-blue bg-edvanta-light/70' : 'border-edvanta-border bg-white hover:border-edvanta-blue/40'}`}>
-                    <span className={`inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg ${active ? 'bg-edvanta-blue text-white' : 'bg-slate-50 text-slate-400'}`}><s.icon className="h-4 w-4" /></span>
+                    <span className={`inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg ${active ? 'bg-edvanta-blue text-white' : 'bg-edvanta-bg text-edvanta-subtle'}`}><s.icon className="h-4 w-4" /></span>
                     <span className="min-w-0">
-                      <span className={`block whitespace-nowrap text-[13px] font-bold ${active ? 'text-edvanta-deep' : 'text-slate-600'}`}>{s.label}</span>
-                      <span className="mt-1 hidden h-1 w-full overflow-hidden rounded-full bg-slate-100 lg:block">
+                      <span className={`block whitespace-nowrap text-[13px] font-bold ${active ? 'text-edvanta-deep' : 'text-edvanta-muted'}`}>{s.label}</span>
+                      <span className="mt-1 hidden h-1 w-full overflow-hidden rounded-full bg-edvanta-soft lg:block">
                         <span className="block h-1 rounded-full bg-edvanta-blue transition-all" style={{ width: `${Math.round(p * 100)}%` }} />
                       </span>
                     </span>
@@ -748,7 +748,7 @@ function Panel({ title, hint, children, action }) {
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
           <h3 className="text-base font-black text-edvanta-deep">{title}</h3>
-          {hint && <p className="mt-0.5 text-xs leading-5 text-slate-500">{hint}</p>}
+          {hint && <p className="mt-0.5 text-xs leading-5 text-edvanta-subtle">{hint}</p>}
         </div>
         {action}
       </div>
@@ -782,7 +782,7 @@ function SectionEditor(props) {
           <label className="block sm:col-span-2">
             <span className="mb-1 block text-sm font-bold text-edvanta-deep">Resumen profesional (25-90 palabras)</span>
             <textarea value={cv.resumen} onChange={e => setField('resumen', e.target.value)} rows={4} placeholder="Soy [profesión] con X años de experiencia en [área]. Mi logro principal: [resultado medible]. Aporto [qué resuelves] en organizaciones del sector farmacéutico." className="w-full rounded-lg border border-edvanta-border p-3.5 text-sm leading-6 outline-none transition focus:border-edvanta-blue focus:ring-2 focus:ring-edvanta-blue/15" />
-            <p className={`mt-1 text-xs font-semibold ${wordCount(cv.resumen) > 0 && wordCount(cv.resumen) < 25 ? 'text-edvanta-blue' : 'text-slate-400'}`}>{wordCount(cv.resumen)} palabras · ideal 25-90</p>
+            <p className={`mt-1 text-xs font-semibold ${wordCount(cv.resumen) > 0 && wordCount(cv.resumen) < 25 ? 'text-edvanta-blue' : 'text-edvanta-subtle'}`}>{wordCount(cv.resumen)} palabras · ideal 25-90</p>
           </label>
         </div>
       </Panel>
@@ -792,26 +792,26 @@ function SectionEditor(props) {
   if (section === 'experiencia') {
     return (
       <Panel title="Experiencia laboral" hint="Cronológico inverso. Por cada cargo, 2-3 logros medibles (Acción + Impacto), no responsabilidades genéricas."
-        action={<button type="button" onClick={() => addItem('experiencia')} className="inline-flex min-h-10 items-center gap-1.5 rounded-lg border border-edvanta-border px-3 text-sm font-bold text-slate-700 transition hover:border-edvanta-blue/40 hover:text-edvanta-blue"><Plus className="h-4 w-4" /> Agregar cargo</button>}>
-        {cv.experiencia.length === 0 && <p className="rounded-lg border border-dashed border-edvanta-border p-4 text-center text-sm text-slate-500">Agrega tu cargo más reciente primero.</p>}
+        action={<button type="button" onClick={() => addItem('experiencia')} className="inline-flex min-h-10 items-center gap-1.5 rounded-lg border border-edvanta-border px-3 text-sm font-bold text-edvanta-muted transition hover:border-edvanta-blue/40 hover:text-edvanta-blue"><Plus className="h-4 w-4" /> Agregar cargo</button>}>
+        {cv.experiencia.length === 0 && <p className="rounded-lg border border-dashed border-edvanta-border p-4 text-center text-sm text-edvanta-subtle">Agrega tu cargo más reciente primero.</p>}
         <div className="space-y-3">
           {cv.experiencia.map((e, idx) => (
-            <div key={e.id} className="rounded-lg border border-edvanta-border bg-slate-50/70 p-4">
+            <div key={e.id} className="rounded-lg border border-edvanta-border bg-edvanta-bg/70 p-4">
               <div className="mb-2 flex items-center justify-between">
-                <span className="text-xs font-bold text-slate-400">Cargo {idx + 1}</span>
+                <span className="text-xs font-bold text-edvanta-subtle">Cargo {idx + 1}</span>
                 <div className="flex items-center gap-1">
-                  <button type="button" onClick={() => moveItem('experiencia', e.id, -1)} disabled={idx === 0} aria-label="Subir" className="rounded p-1 text-slate-400 hover:bg-white hover:text-edvanta-blue disabled:opacity-30"><ChevronUp className="h-4 w-4" /></button>
-                  <button type="button" onClick={() => moveItem('experiencia', e.id, 1)} disabled={idx === cv.experiencia.length - 1} aria-label="Bajar" className="rounded p-1 text-slate-400 hover:bg-white hover:text-edvanta-blue disabled:opacity-30"><ChevronDown className="h-4 w-4" /></button>
+                  <button type="button" onClick={() => moveItem('experiencia', e.id, -1)} disabled={idx === 0} aria-label="Subir" className="rounded p-1 text-edvanta-subtle hover:bg-white hover:text-edvanta-blue disabled:opacity-30"><ChevronUp className="h-4 w-4" /></button>
+                  <button type="button" onClick={() => moveItem('experiencia', e.id, 1)} disabled={idx === cv.experiencia.length - 1} aria-label="Bajar" className="rounded p-1 text-edvanta-subtle hover:bg-white hover:text-edvanta-blue disabled:opacity-30"><ChevronDown className="h-4 w-4" /></button>
                   <button type="button" onClick={() => removeItem('experiencia', e.id)} aria-label="Quitar cargo" className="rounded p-1 text-rose-500 hover:bg-white hover:text-rose-700"><Trash2 className="h-4 w-4" /></button>
                 </div>
               </div>
               <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-                <label className="block"><span className="mb-1 block text-xs font-bold text-slate-600">Cargo *</span><input value={e.cargo} onChange={ev => patchItem('experiencia', e.id, 'cargo', ev.target.value)} placeholder="Analista de control de calidad" className={inputCls} /></label>
-                <label className="block"><span className="mb-1 block text-xs font-bold text-slate-600">Empresa</span><input value={e.empresa} onChange={ev => patchItem('experiencia', e.id, 'empresa', ev.target.value)} placeholder="Nombre de la empresa" className={inputCls} /></label>
-                <label className="block"><span className="mb-1 block text-xs font-bold text-slate-600">Inicio</span><input value={e.inicio} onChange={ev => patchItem('experiencia', e.id, 'inicio', ev.target.value)} placeholder="Ene 2023" className={inputCls} /></label>
-                <label className="block"><span className="mb-1 block text-xs font-bold text-slate-600">Fin (actual = vacío)</span><input value={e.fin} onChange={ev => patchItem('experiencia', e.id, 'fin', ev.target.value)} placeholder="Mar 2025" className={inputCls} /></label>
+                <label className="block"><span className="mb-1 block text-xs font-bold text-edvanta-muted">Cargo *</span><input value={e.cargo} onChange={ev => patchItem('experiencia', e.id, 'cargo', ev.target.value)} placeholder="Analista de control de calidad" className={inputCls} /></label>
+                <label className="block"><span className="mb-1 block text-xs font-bold text-edvanta-muted">Empresa</span><input value={e.empresa} onChange={ev => patchItem('experiencia', e.id, 'empresa', ev.target.value)} placeholder="Nombre de la empresa" className={inputCls} /></label>
+                <label className="block"><span className="mb-1 block text-xs font-bold text-edvanta-muted">Inicio</span><input value={e.inicio} onChange={ev => patchItem('experiencia', e.id, 'inicio', ev.target.value)} placeholder="Ene 2023" className={inputCls} /></label>
+                <label className="block"><span className="mb-1 block text-xs font-bold text-edvanta-muted">Fin (actual = vacío)</span><input value={e.fin} onChange={ev => patchItem('experiencia', e.id, 'fin', ev.target.value)} placeholder="Mar 2025" className={inputCls} /></label>
               </div>
-              <label className="mt-3 block"><span className="mb-1 block text-xs font-bold text-slate-600">Logros (uno por línea, Acción + Impacto)</span>
+              <label className="mt-3 block"><span className="mb-1 block text-xs font-bold text-edvanta-muted">Logros (uno por línea, Acción + Impacto)</span>
                 <textarea value={e.logros} onChange={ev => patchItem('experiencia', e.id, 'logros', ev.target.value)} rows={3} placeholder={'Coordiné la renovación de 12 registros sanitarios sin observaciones.\nReducí desviaciones 30% con plan de muestreo.'} className="w-full rounded-lg border border-edvanta-border bg-white p-3 text-sm outline-none focus:border-edvanta-blue" /></label>
             </div>
           ))}
@@ -823,17 +823,17 @@ function SectionEditor(props) {
   if (section === 'formacion') {
     return (
       <Panel title="Formación académica" hint="Pregrado, posgrados o técnicos."
-        action={<button type="button" onClick={() => addItem('educacion')} className="inline-flex min-h-10 items-center gap-1.5 rounded-lg border border-edvanta-border px-3 text-sm font-bold text-slate-700 transition hover:border-edvanta-blue/40 hover:text-edvanta-blue"><Plus className="h-4 w-4" /> Agregar</button>}>
-        {cv.educacion.length === 0 && <p className="rounded-lg border border-dashed border-edvanta-border p-4 text-center text-sm text-slate-500">Agrega tu título profesional.</p>}
+        action={<button type="button" onClick={() => addItem('educacion')} className="inline-flex min-h-10 items-center gap-1.5 rounded-lg border border-edvanta-border px-3 text-sm font-bold text-edvanta-muted transition hover:border-edvanta-blue/40 hover:text-edvanta-blue"><Plus className="h-4 w-4" /> Agregar</button>}>
+        {cv.educacion.length === 0 && <p className="rounded-lg border border-dashed border-edvanta-border p-4 text-center text-sm text-edvanta-subtle">Agrega tu título profesional.</p>}
         <div className="space-y-2">
           {cv.educacion.map((e, idx) => (
-            <div key={e.id} className="flex flex-wrap items-end gap-3 rounded-lg border border-edvanta-border bg-slate-50/70 p-3">
-              <label className="block min-w-52 flex-1"><span className="mb-1 block text-xs font-bold text-slate-600">Título *</span><input value={e.titulo} onChange={ev => patchItem('educacion', e.id, 'titulo', ev.target.value)} placeholder="Química farmacéutica" className={inputCls} /></label>
-              <label className="block min-w-40 flex-1"><span className="mb-1 block text-xs font-bold text-slate-600">Institución</span><input value={e.institucion} onChange={ev => patchItem('educacion', e.id, 'institucion', ev.target.value)} placeholder="Universidad" className={inputCls} /></label>
-              <label className="block w-24"><span className="mb-1 block text-xs font-bold text-slate-600">Año</span><input value={e.anio} onChange={ev => patchItem('educacion', e.id, 'anio', ev.target.value)} placeholder="2020" className={inputCls} /></label>
+            <div key={e.id} className="flex flex-wrap items-end gap-3 rounded-lg border border-edvanta-border bg-edvanta-bg/70 p-3">
+              <label className="block min-w-52 flex-1"><span className="mb-1 block text-xs font-bold text-edvanta-muted">Título *</span><input value={e.titulo} onChange={ev => patchItem('educacion', e.id, 'titulo', ev.target.value)} placeholder="Química farmacéutica" className={inputCls} /></label>
+              <label className="block min-w-40 flex-1"><span className="mb-1 block text-xs font-bold text-edvanta-muted">Institución</span><input value={e.institucion} onChange={ev => patchItem('educacion', e.id, 'institucion', ev.target.value)} placeholder="Universidad" className={inputCls} /></label>
+              <label className="block w-24"><span className="mb-1 block text-xs font-bold text-edvanta-muted">Año</span><input value={e.anio} onChange={ev => patchItem('educacion', e.id, 'anio', ev.target.value)} placeholder="2020" className={inputCls} /></label>
               <div className="flex items-center gap-1 pb-1">
-                <button type="button" onClick={() => moveItem('educacion', e.id, -1)} disabled={idx === 0} aria-label="Subir" className="rounded p-1 text-slate-400 hover:text-edvanta-blue disabled:opacity-30"><ChevronUp className="h-4 w-4" /></button>
-                <button type="button" onClick={() => moveItem('educacion', e.id, 1)} disabled={idx === cv.educacion.length - 1} aria-label="Bajar" className="rounded p-1 text-slate-400 hover:text-edvanta-blue disabled:opacity-30"><ChevronDown className="h-4 w-4" /></button>
+                <button type="button" onClick={() => moveItem('educacion', e.id, -1)} disabled={idx === 0} aria-label="Subir" className="rounded p-1 text-edvanta-subtle hover:text-edvanta-blue disabled:opacity-30"><ChevronUp className="h-4 w-4" /></button>
+                <button type="button" onClick={() => moveItem('educacion', e.id, 1)} disabled={idx === cv.educacion.length - 1} aria-label="Bajar" className="rounded p-1 text-edvanta-subtle hover:text-edvanta-blue disabled:opacity-30"><ChevronDown className="h-4 w-4" /></button>
                 <button type="button" onClick={() => removeItem('educacion', e.id)} aria-label="Quitar" className="rounded p-1 text-rose-500 hover:text-rose-700"><Trash2 className="h-4 w-4" /></button>
               </div>
             </div>
@@ -847,7 +847,7 @@ function SectionEditor(props) {
     return (
       <Panel title="Habilidades y competencias" hint="Usa términos estándar del sector (BPM, CAPA, HPLC, Power BI). Apunta a 6-12.">
         <div className="flex flex-wrap gap-2">
-          {cv.habilidades.length === 0 && <p className="text-sm text-slate-500">Aún no agregas habilidades.</p>}
+          {cv.habilidades.length === 0 && <p className="text-sm text-edvanta-subtle">Aún no agregas habilidades.</p>}
           {cv.habilidades.map((h, i) => (
             <span key={`${h}-${i}`} className="inline-flex items-center gap-1.5 rounded-full bg-edvanta-light px-3 py-1 text-xs font-bold text-edvanta-blue">
               {h}
@@ -863,11 +863,11 @@ function SectionEditor(props) {
   if (section === 'certificaciones') {
     return (
       <Panel title="Certificaciones" hint="Opcional pero suma. Cursos, diplomados o avales del sector."
-        action={<button type="button" onClick={() => addItem('certificaciones')} className="inline-flex min-h-10 items-center gap-1.5 rounded-lg border border-edvanta-border px-3 text-sm font-bold text-slate-700 transition hover:border-edvanta-blue/40 hover:text-edvanta-blue"><Plus className="h-4 w-4" /> Agregar</button>}>
-        {cv.certificaciones.length === 0 && <p className="rounded-lg border border-dashed border-edvanta-border p-4 text-center text-sm text-slate-500">Sin certificaciones aún. Es una sección opcional.</p>}
+        action={<button type="button" onClick={() => addItem('certificaciones')} className="inline-flex min-h-10 items-center gap-1.5 rounded-lg border border-edvanta-border px-3 text-sm font-bold text-edvanta-muted transition hover:border-edvanta-blue/40 hover:text-edvanta-blue"><Plus className="h-4 w-4" /> Agregar</button>}>
+        {cv.certificaciones.length === 0 && <p className="rounded-lg border border-dashed border-edvanta-border p-4 text-center text-sm text-edvanta-subtle">Sin certificaciones aún. Es una sección opcional.</p>}
         <div className="space-y-2">
           {cv.certificaciones.map(c => (
-            <div key={c.id} className="rounded-lg border border-edvanta-border bg-slate-50/70 p-3">
+            <div key={c.id} className="rounded-lg border border-edvanta-border bg-edvanta-bg/70 p-3">
               <input value={c.nombre} onChange={ev => patchItem('certificaciones', c.id, 'nombre', ev.target.value)} placeholder="Certificación (ej. BPM INVIMA)" className={inputCls} />
               <div className="mt-2 flex gap-2">
                 <input value={c.institucion} onChange={ev => patchItem('certificaciones', c.id, 'institucion', ev.target.value)} placeholder="Institución" className={inputCls + ' flex-1'} />
@@ -884,8 +884,8 @@ function SectionEditor(props) {
   if (section === 'idiomas') {
     return (
       <Panel title="Idiomas" hint="Opcional. Los ATS suelen preguntarlo; agrégalo aunque sea nivel básico."
-        action={<button type="button" onClick={() => addItem('idiomas')} className="inline-flex min-h-10 items-center gap-1.5 rounded-lg border border-edvanta-border px-3 text-sm font-bold text-slate-700 transition hover:border-edvanta-blue/40 hover:text-edvanta-blue"><Plus className="h-4 w-4" /> Agregar</button>}>
-        {cv.idiomas.length === 0 && <p className="rounded-lg border border-dashed border-edvanta-border p-4 text-center text-sm text-slate-500">Sin idiomas aún.</p>}
+        action={<button type="button" onClick={() => addItem('idiomas')} className="inline-flex min-h-10 items-center gap-1.5 rounded-lg border border-edvanta-border px-3 text-sm font-bold text-edvanta-muted transition hover:border-edvanta-blue/40 hover:text-edvanta-blue"><Plus className="h-4 w-4" /> Agregar</button>}>
+        {cv.idiomas.length === 0 && <p className="rounded-lg border border-dashed border-edvanta-border p-4 text-center text-sm text-edvanta-subtle">Sin idiomas aún.</p>}
         <div className="space-y-2">
           {cv.idiomas.map(i => (
             <div key={i.id} className="flex gap-2">
@@ -915,23 +915,23 @@ function SectionEditor(props) {
             {cargosEmpleo.map(c => <option key={c.slug} value={c.slug}>{c.cargo}</option>)}
           </select>
         </label>
-        <p className="mt-2 text-xs text-slate-500">Compara tu hoja de vida contra lo que piden los ATS para ese cargo.</p>
+        <p className="mt-2 text-xs text-edvanta-subtle">Compara tu hoja de vida contra lo que piden los ATS para ese cargo.</p>
       </div>
 
       {!tieneContenido ? (
         <div className="rounded-xl border border-dashed border-edvanta-border bg-white p-8 text-center">
           <Sparkles className="mx-auto h-8 w-8 text-edvanta-blue" />
           <p className="mt-3 text-sm font-bold text-edvanta-deep">Aún no hay contenido para analizar</p>
-          <p className="mt-1 text-sm text-slate-500">Completa las secciones y tu puntaje aparece aquí en vivo.</p>
+          <p className="mt-1 text-sm text-edvanta-subtle">Completa las secciones y tu puntaje aparece aquí en vivo.</p>
         </div>
       ) : (
         <>
           <div className="rounded-xl border border-edvanta-border bg-white p-5 shadow-sm">
             <ScoreGauge score={analysis?.score || 0} />
-            <p className="mt-4 text-sm font-semibold leading-6 text-slate-700">{analysis?.mensajeNivel}</p>
+            <p className="mt-4 text-sm font-semibold leading-6 text-edvanta-muted">{analysis?.mensajeNivel}</p>
             {analysis?.keywords?.length > 0 && (
               <div className="mt-3 flex flex-wrap gap-1.5">
-                {analysis.keywords.slice(0, 14).map(k => <span key={k} className="rounded-full bg-teal-50 px-2.5 py-0.5 text-[11px] font-bold text-teal-700">{k}</span>)}
+                {analysis.keywords.slice(0, 14).map(k => <span key={k} className="rounded-full bg-edvanta-mint px-2.5 py-0.5 text-[11px] font-bold text-edvanta-tealdark">{k}</span>)}
               </div>
             )}
           </div>
@@ -948,12 +948,12 @@ function SectionEditor(props) {
                     <div key={d.nombre}>
                       <div className="flex items-baseline justify-between gap-2">
                         <p className="text-[13px] font-bold text-edvanta-deep">{d.nombre}</p>
-                        <p className="text-[11px] font-bold text-slate-400">{Math.round(ratio * 100)}%</p>
+                        <p className="text-[11px] font-bold text-edvanta-subtle">{Math.round(ratio * 100)}%</p>
                       </div>
-                      <div className="mt-1 h-1.5 w-full overflow-hidden rounded-full bg-slate-100">
+                      <div className="mt-1 h-1.5 w-full overflow-hidden rounded-full bg-edvanta-soft">
                         <span className={`block h-1.5 rounded-full transition-all ${color}`} style={{ width: `${Math.round(ratio * 100)}%` }} />
                       </div>
-                      <p className="mt-1 text-[11px] leading-4 text-slate-500">{d.detalle}</p>
+                      <p className="mt-1 text-[11px] leading-4 text-edvanta-subtle">{d.detalle}</p>
                     </div>
                   );
                 })}
@@ -963,11 +963,11 @@ function SectionEditor(props) {
 
           {/* Fortalezas detectadas */}
           {analysis?.fortalezas?.length > 0 && (
-            <div className="rounded-xl border border-teal-200 bg-teal-50/60 p-5">
+            <div className="rounded-xl border border-teal-200 bg-edvanta-mint/60 p-5">
               <h3 className="text-base font-black text-teal-900">Lo que ya haces bien</h3>
               <ul className="mt-3 space-y-2">
                 {analysis.fortalezas.map(f => (
-                  <li key={f} className="flex items-start gap-2 text-sm leading-6 text-slate-700"><Check className="mt-0.5 h-4 w-4 shrink-0 text-teal-600" />{f}</li>
+                  <li key={f} className="flex items-start gap-2 text-sm leading-6 text-edvanta-muted"><Check className="mt-0.5 h-4 w-4 shrink-0 text-teal-600" />{f}</li>
                 ))}
               </ul>
             </div>
@@ -985,7 +985,7 @@ function SectionEditor(props) {
                         <p className="text-sm font-bold text-edvanta-deep">{f.titulo}</p>
                         <span className={`shrink-0 rounded-full px-2 py-0.5 text-[10px] font-bold ${p.cls}`}>{p.label}</span>
                       </div>
-                      <p className="mt-1 text-xs leading-5 text-slate-600">{f.detalle}</p>
+                      <p className="mt-1 text-xs leading-5 text-edvanta-muted">{f.detalle}</p>
                     </li>
                   );
                 })}
@@ -1005,12 +1005,12 @@ function SectionEditor(props) {
               <div className="mt-4 grid gap-4 lg:grid-cols-2">
                 <div>
                   <p className="text-xs font-bold uppercase tracking-wide text-edvanta-blue">Resumen sugerido</p>
-                  <p className="mt-2 rounded-lg bg-white p-3 text-sm leading-6 text-slate-700">{adaptacion.resumenSugerido}</p>
+                  <p className="mt-2 rounded-lg bg-white p-3 text-sm leading-6 text-edvanta-muted">{adaptacion.resumenSugerido}</p>
                 </div>
                 <div>
                   <p className="text-xs font-bold uppercase tracking-wide text-edvanta-blue">Logros sugeridos</p>
                   <ul className="mt-2 space-y-1.5">
-                    {adaptacion.logros.map(l => <li key={l} className="flex items-start gap-2 text-sm leading-6 text-slate-700"><span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-edvanta-blue" />{l}</li>)}
+                    {adaptacion.logros.map(l => <li key={l} className="flex items-start gap-2 text-sm leading-6 text-edvanta-muted"><span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-edvanta-blue" />{l}</li>)}
                   </ul>
                 </div>
               </div>
@@ -1019,7 +1019,7 @@ function SectionEditor(props) {
           )}
         </>
       )}
-      {saveMsg && <p className={`rounded-lg border p-3 text-sm leading-6 ${saveState === 'error' ? 'border-rose-200 bg-rose-50 text-rose-800' : 'border-teal-200 bg-teal-50 text-teal-900'}`} role="status">{saveMsg}</p>}
+      {saveMsg && <p className={`rounded-lg border p-3 text-sm leading-6 ${saveState === 'error' ? 'border-rose-200 bg-rose-50 text-rose-800' : 'border-teal-200 bg-edvanta-mint text-teal-900'}`} role="status">{saveMsg}</p>}
     </div>
   );
 }
@@ -1110,7 +1110,7 @@ function ZonaArchivo({ onArchivo, cargando }) {
         <button
           type="button"
           onClick={() => inputRef.current?.click()}
-          className="mt-2 inline-flex min-h-11 items-center gap-2 rounded-xl bg-edvanta-blue px-6 text-sm font-semibold text-white shadow-[0_6px_18px_rgba(8,46,134,.22)] transition hover:bg-edvanta-bluedark"
+          className="ed-btn ed-btn--primary mt-2"
         >
           <Upload className="h-4 w-4" aria-hidden="true" /> Elegir PDF
         </button>
@@ -1282,14 +1282,14 @@ function AnalizadorHv({
           <button
             type="button"
             onClick={onPasarAlCreador}
-            className="inline-flex min-h-12 items-center gap-2 rounded-xl bg-edvanta-blue px-6 text-[15px] font-semibold text-white shadow-[0_6px_18px_rgba(8,46,134,.22)] transition hover:bg-edvanta-bluedark"
+            className="ed-btn ed-btn--primary"
           >
             <Pencil className="h-4 w-4" aria-hidden="true" /> Mejorarla en el creador
           </button>
           <button
             type="button"
             onClick={onReiniciar}
-            className="inline-flex min-h-12 items-center gap-2 rounded-xl border border-edvanta-border bg-white px-6 text-[15px] font-semibold text-edvanta-blue transition hover:border-edvanta-blue/40"
+            className="ed-btn ed-btn--secondary"
           >
             <RefreshCw className="h-4 w-4" aria-hidden="true" /> Analizar otra
           </button>
@@ -1411,21 +1411,21 @@ function Guia2026() {
       <div className="rounded-xl border border-edvanta-blue/20 bg-white p-6">
         <p className="text-xs font-bold uppercase tracking-wide text-edvanta-blue">La regla de oro del 2026</p>
         <h3 className="mt-1 text-xl font-black text-edvanta-deep">Tu hoja de vida la revisa una máquina antes que una persona</h3>
-        <p className="mt-2 text-sm leading-6 text-slate-600">La mayoría de las vacantes en Colombia se gestionan con ATS y preselección con IA. La primera lectura es automática: estructura, palabras clave del anuncio, logros medibles y formato PDF legible.</p>
+        <p className="mt-2 text-sm leading-6 text-edvanta-muted">La mayoría de las vacantes en Colombia se gestionan con ATS y preselección con IA. La primera lectura es automática: estructura, palabras clave del anuncio, logros medibles y formato PDF legible.</p>
         <ul className="mt-4 space-y-2">
           {guiaCVContenido.ats2026.map(a => (
-            <li key={a.titulo} className="flex items-start gap-2 text-sm leading-6 text-slate-700"><Check className="mt-0.5 h-4 w-4 shrink-0 text-teal-600" /><span><strong className="text-edvanta-deep">{a.titulo}.</strong> {a.detalle}</span></li>
+            <li key={a.titulo} className="flex items-start gap-2 text-sm leading-6 text-edvanta-muted"><Check className="mt-0.5 h-4 w-4 shrink-0 text-teal-600" /><span><strong className="text-edvanta-deep">{a.titulo}.</strong> {a.detalle}</span></li>
           ))}
         </ul>
       </div>
       <div className="grid gap-4 lg:grid-cols-2">
         <div className="rounded-xl border border-teal-200 bg-white p-5">
-          <p className="text-sm font-bold text-teal-800">Lo que sí debe llevar</p>
-          <ul className="mt-3 space-y-2.5">{guiaCVContenido.debeIr.map(i => <li key={i.titulo} className="flex items-start gap-2 text-sm leading-5 text-slate-700"><Check className="mt-0.5 h-4 w-4 shrink-0 text-teal-600" /><span><strong className="text-edvanta-deep">{i.titulo}.</strong> {i.detalle}</span></li>)}</ul>
+          <p className="text-sm font-bold text-edvanta-tealdark">Lo que sí debe llevar</p>
+          <ul className="mt-3 space-y-2.5">{guiaCVContenido.debeIr.map(i => <li key={i.titulo} className="flex items-start gap-2 text-sm leading-5 text-edvanta-muted"><Check className="mt-0.5 h-4 w-4 shrink-0 text-teal-600" /><span><strong className="text-edvanta-deep">{i.titulo}.</strong> {i.detalle}</span></li>)}</ul>
         </div>
         <div className="rounded-xl border border-rose-200 bg-white p-5">
           <p className="text-sm font-bold uppercase text-rose-700">Lo que NO debe llevar</p>
-          <ul className="mt-3 space-y-2.5">{guiaCVContenido.noDebe.map(i => <li key={i.titulo} className="flex items-start gap-2 text-sm leading-5 text-slate-700"><X className="mt-0.5 h-4 w-4 shrink-0 text-rose-600" /><span><strong className="text-edvanta-deep">{i.titulo}.</strong> {i.detalle}</span></li>)}</ul>
+          <ul className="mt-3 space-y-2.5">{guiaCVContenido.noDebe.map(i => <li key={i.titulo} className="flex items-start gap-2 text-sm leading-5 text-edvanta-muted"><X className="mt-0.5 h-4 w-4 shrink-0 text-rose-600" /><span><strong className="text-edvanta-deep">{i.titulo}.</strong> {i.detalle}</span></li>)}</ul>
         </div>
       </div>
     </div>

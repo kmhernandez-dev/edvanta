@@ -17,14 +17,14 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import {
-  Award, BookOpen, Check, ChevronRight, Clock, ExternalLink, MessageCircle,
+  ArrowRight, Award, BookOpen, Check, ChevronRight, Clock, ExternalLink, MessageCircle,
   GraduationCap, Globe, Layers, PlayCircle, UserRound,
 } from 'lucide-react';
 
 import SiteHeader from '../components/edvanta/SiteHeader';
 import SiteFooter from '../components/edvanta/SiteFooter';
 import {
-  Breadcrumb, Btn, Card, Eyebrow, Faq, Section, SectionHeading,
+  Breadcrumb, Btn, Card, Eyebrow, Faq, Section, SectionHeading, Steps,
 } from '../components/edvanta/ui';
 import { cleanHtml } from '../aula/ui/RichText';
 import { apiUrl } from '../config/api';
@@ -124,7 +124,7 @@ function Temario({ modulos }) {
           Contraer todo
         </Btn>
       </div>
-      <div className="divide-y divide-edvanta-border overflow-hidden rounded-2xl border border-edvanta-border bg-white">
+      <div className="ds-card divide-y divide-edvanta-border overflow-hidden">
         {modulos.map((m, i) => {
           const abierta = abiertas.has(i);
           return (
@@ -205,10 +205,11 @@ function Certificado({ certificado: c, proveedor }) {
         <div className="mb-8 lg:mb-0">
           {/* Proporción de documento horizontal. Sin imagen válida no se
               dibuja una credencial de mentira: se dice que no la hay. */}
-          <div className="flex aspect-[1.414/1] items-center justify-center rounded-2xl border-2 border-dashed border-edvanta-strong bg-edvanta-bg px-6 text-center">
-            <div>
-              <Award className="mx-auto h-9 w-9 text-edvanta-blue/50" aria-hidden="true" />
-              <p className="mt-2 text-sm font-semibold text-edvanta-muted">
+          <div className="ds-surface-lavender relative flex aspect-[1.414/1] items-center justify-center overflow-hidden rounded-[var(--ds-r-xl)] px-6 text-center">
+            <div className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-edvanta-violet/20 blur-2xl" aria-hidden="true" />
+            <div className="relative">
+              <span className="ds-icon-tile ds-icon-tile--violet mx-auto h-16 w-16 rounded-2xl"><Award className="h-8 w-8" aria-hidden="true" /></span>
+              <p className="mt-3 text-sm font-bold text-edvanta-deep">
                 {c.estado === 'not_offered' ? 'Sin certificado' : 'Vista previa no disponible'}
               </p>
             </div>
@@ -458,12 +459,12 @@ export default function FichaDeCurso({ modo = 'propio' }) {
     : `El curso se estudia en ${ficha.proveedor.nombre}. Edvanta lo seleccionó, no lo imparte.`;
 
   const tarjeta = (
-    <Card className="p-0">
+    <Card className="overflow-hidden p-0 shadow-[var(--ds-sh-lg)]">
       {ficha.portada ? (
-        <img src={imagen(ficha.portada)} alt="" className="aspect-[16/9] w-full rounded-t-2xl object-cover"
+        <img src={imagen(ficha.portada)} alt="" className="aspect-[16/9] w-full object-cover"
           onError={(e) => { e.currentTarget.style.display = 'none'; }} />
       ) : (
-        <div className="flex aspect-[16/9] w-full items-center justify-center rounded-t-2xl bg-edvanta-light" aria-hidden="true">
+        <div className="flex aspect-[16/9] w-full items-center justify-center" style={{ background: "var(--ds-grad-hero)" }} aria-hidden="true">
           <GraduationCap className="h-12 w-12 text-edvanta-blue/40" />
         </div>
       )}
@@ -482,8 +483,8 @@ export default function FichaDeCurso({ modo = 'propio' }) {
         </ul>
 
         {ficha.capacidades.irAlProveedor || propio ? (
-          <Btn size="lg" className="mt-6 w-full" onClick={accion} disabled={trabajando}
-            iconRight={propio ? undefined : ExternalLink}>
+          <Btn size="lg" block variant={propio ? "gradient" : "primary"} className="mt-6" onClick={accion} loading={trabajando} loadingLabel="Un momento…"
+            iconRight={propio ? ArrowRight : ExternalLink}>
             {trabajando ? 'Un momento…' : textoBoton}
           </Btn>
         ) : (
@@ -507,45 +508,65 @@ export default function FichaDeCurso({ modo = 'propio' }) {
     <div className="min-h-screen bg-edvanta-bg">
       <SiteHeader />
 
-      <section className="relative overflow-hidden" style={{ background: 'var(--ed-gradient-hero)' }}>
+      {/* Héroe H (experiencia de curso): datos del curso a la izquierda y la
+          tarjeta de inscripción, fija, a la derecha. */}
+      <section className="ds-surface-diagonal relative overflow-hidden">
+        <div className="ed-grid" aria-hidden="true" />
+        <div className="pointer-events-none absolute -right-24 -top-24 h-96 w-96 rounded-full bg-edvanta-violet/15 blur-3xl" aria-hidden="true" />
         <div className="relative mx-auto max-w-7xl px-4 py-10 sm:px-6 sm:py-14 lg:px-8">
-          <Breadcrumb className="mb-6" items={[
+          <Breadcrumb className="mb-8" items={[
             { label: 'Inicio', to: '/' },
             { label: 'Cursos', to: '/cursos' },
             ...(ficha.categoria ? [{ label: ficha.categoria, to: `/cursos?category=${encodeURIComponent(ficha.categoria)}` }] : []),
             { label: ficha.titulo },
           ]} />
-          <div className="gap-10 lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(0,22rem)] lg:items-start">
-            <div>
-              <div className="flex flex-wrap items-center gap-2">
-                <span className="inline-flex items-center gap-1.5 rounded-full bg-white px-3 py-1 text-xs font-bold text-edvanta-blue ring-1 ring-edvanta-border">
+          <div className="gap-12 lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(0,23rem)] lg:items-start">
+            <div className="ds-rise">
+              <div className="flex flex-wrap items-center gap-2.5">
+                <span className={`ds-chip ${propio ? '' : 'ds-chip--violet'}`}>
+                  {propio ? <GraduationCap className="h-3.5 w-3.5" aria-hidden="true" /> : <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />}
                   {propio ? 'Curso de Edvanta' : `Lo imparte ${ficha.proveedor.imparte}`}
                 </span>
                 {ficha.categoria && <Eyebrow>{ficha.categoria}</Eyebrow>}
               </div>
-              <h1 className="mt-3 font-display text-[2rem] font-extrabold leading-[1.1] text-edvanta-deep sm:text-5xl">
+              <h1 className="mt-5 font-display text-[2rem] font-extrabold leading-[1.1] tracking-[-0.025em] text-edvanta-blue sm:text-[2.75rem] lg:text-[3rem]">
                 {ficha.titulo}
               </h1>
               {ficha.resumen && (
-                <p className="mt-4 max-w-2xl text-lg leading-8 text-edvanta-muted">{ficha.resumen}</p>
+                <p className="mt-5 max-w-2xl text-lg leading-8 text-edvanta-muted">{ficha.resumen}</p>
               )}
-              <ul className="mt-6 grid gap-2 sm:grid-cols-2">
+              <ul className="mt-7 grid max-w-2xl gap-3 sm:grid-cols-2">
                 {[
-                  ficha.clases ? `${ficha.clases} clases en ${ficha.unidades} unidades` : null,
-                  duracion(ficha.duracionMinutos) || ficha.duracionTexto,
-                  ficha.nivel,
-                  ficha.modalidad,
-                ].filter(Boolean).map((t) => (
-                  <li key={t} className="flex items-start gap-2 text-sm font-semibold text-edvanta-deep">
-                    <ChevronRight className="mt-0.5 h-4 w-4 shrink-0 text-edvanta-teal" aria-hidden="true" />{t}
+                  ficha.clases ? { icon: Layers, t: `${ficha.clases} clases en ${ficha.unidades} unidades` } : null,
+                  (duracion(ficha.duracionMinutos) || ficha.duracionTexto) ? { icon: Clock, t: duracion(ficha.duracionMinutos) || ficha.duracionTexto } : null,
+                  ficha.nivel ? { icon: BookOpen, t: ficha.nivel } : null,
+                  ficha.modalidad ? { icon: PlayCircle, t: ficha.modalidad } : null,
+                ].filter(Boolean).map(({ icon: I, t }) => (
+                  <li key={t} className="flex items-center gap-3 text-sm font-semibold text-edvanta-deep">
+                    <span className="ds-icon-tile ds-icon-tile--teal h-9 w-9 shrink-0 rounded-[10px]"><I className="h-4 w-4" aria-hidden="true" /></span>{t}
                   </li>
                 ))}
               </ul>
             </div>
-            <div className="mt-8 lg:mt-0 lg:sticky lg:top-28">{tarjeta}</div>
+            <div className="ds-rise-2 mt-10 lg:sticky lg:top-28 lg:mt-0">{tarjeta}</div>
           </div>
         </div>
       </section>
+
+      {propio && (
+        <Section tone="white" compact>
+          <SectionHeading eyebrow="Cómo funciona" title="Estudias a tu ritmo, en el aula de Edvanta" />
+          <Steps
+            className="mt-10"
+            items={[
+              { icon: UserRound, title: 'Crea tu cuenta', desc: 'Es gratis y con ella entras al aula.' },
+              { icon: PlayCircle, title: 'Estudia a tu ritmo', desc: 'Clases con video y texto de apoyo.' },
+              { icon: BookOpen, title: 'Profundiza', desc: 'Documentos oficiales y lecturas para ampliar.' },
+              { icon: Check, title: 'Retoma cuando quieras', desc: 'Tu avance queda guardado clase a clase.' },
+            ]}
+          />
+        </Section>
+      )}
 
       <Anclas secciones={secciones} activa={seccionActiva} />
 

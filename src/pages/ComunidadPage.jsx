@@ -40,7 +40,7 @@ export default function ComunidadPage() {
             <h1 className="mt-5 font-display text-4xl font-extrabold leading-[1.1] text-edvanta-deep sm:text-5xl">
               Únete a la comunidad de Químicos Farmacéuticos
             </h1>
-            <p className="mx-auto mt-5 max-w-2xl text-lg leading-8 text-slate-600">
+            <p className="mx-auto mt-5 max-w-2xl text-lg leading-8 text-edvanta-muted">
               Un grupo abierto y gratuito para conectar con otros profesionales: orientación,
               ofertas, retroalimentación de perfil y aprendizaje colaborativo.
             </p>
@@ -54,11 +54,11 @@ export default function ComunidadPage() {
               >
                 <Icon name="whatsapp" className="h-5 w-5" /> Unirme al grupo de WhatsApp
               </a>
-              <Link to="/" className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-xl border border-slate-300 bg-white px-6 text-sm font-semibold text-slate-700 transition hover:border-edvanta-border hover:bg-edvanta-light sm:w-auto">
+              <Link to="/" className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-xl border border-edvanta-border bg-white px-6 text-sm font-semibold text-edvanta-muted transition hover:border-edvanta-border hover:bg-edvanta-light sm:w-auto">
                 Explorar cursos gratis
               </Link>
             </div>
-            <p className="mt-5 text-sm text-slate-400">
+            <p className="mt-5 text-sm text-edvanta-subtle">
               Gratis y sin costo. Solo necesitas WhatsApp.
             </p>
           </div>
@@ -74,17 +74,17 @@ export default function ComunidadPage() {
         </div>
 
         {/* Beneficios */}
-        <section className="border-y border-slate-200 bg-edvanta-bg py-16">
+        <section className="border-y border-edvanta-border bg-edvanta-bg py-16">
           <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
             <h2 className="text-center text-2xl font-bold text-edvanta-deep sm:text-3xl">¿Qué encontrarás en la comunidad?</h2>
             <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
               {beneficios.map(b => (
-                <article key={b.titulo} className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
+                <article key={b.titulo} className="rounded-xl border border-edvanta-border bg-white p-5 shadow-sm">
                   <span className="flex h-11 w-11 items-center justify-center rounded-lg bg-edvanta-light text-edvanta-blue">
                     <Icon name={b.icon} className="h-5 w-5" />
                   </span>
                   <h3 className="mt-4 text-base font-bold text-edvanta-deep">{b.titulo}</h3>
-                  <p className="mt-2 text-sm leading-6 text-slate-600">{b.texto}</p>
+                  <p className="mt-2 text-sm leading-6 text-edvanta-muted">{b.texto}</p>
                 </article>
               ))}
             </div>
@@ -95,7 +95,7 @@ export default function ComunidadPage() {
         <section className="bg-white py-16">
           <div className="mx-auto max-w-3xl px-4 text-center sm:px-6 lg:px-8">
             <h2 className="text-2xl font-bold text-edvanta-deep sm:text-3xl">No avances solo: crece con tu comunidad</h2>
-            <p className="mx-auto mt-4 max-w-xl leading-8 text-slate-600">
+            <p className="mx-auto mt-4 max-w-xl leading-8 text-edvanta-muted">
               Únete al grupo y empieza a recibir novedades de cursos, orientación profesional y
               oportunidades compartidas por otros Químicos Farmacéuticos.
             </p>

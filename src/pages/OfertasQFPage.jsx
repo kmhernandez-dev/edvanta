@@ -192,7 +192,7 @@ export default function OfertasQFPage() {
                         href={o.contacto}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="mt-5 inline-flex min-h-11 items-center justify-center gap-2 rounded-xl bg-edvanta-blue px-4 text-sm font-semibold text-white transition hover:-translate-y-px hover:bg-edvanta-bluedark"
+                        className="ed-btn ed-btn--primary mt-5"
                       >
                         Ver oferta y postularme <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
                       </a>

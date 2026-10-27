@@ -182,7 +182,7 @@ export default function ArticulosIndex() {
                 placeholder="Busca un medicamento, un síntoma o un tema…"
                 className="min-w-0 flex-1 bg-transparent px-2 text-[15px] text-edvanta-deep outline-none placeholder:text-edvanta-subtle"
               />
-              <button type="submit" className="inline-flex min-h-11 shrink-0 items-center rounded-xl bg-edvanta-blue px-5 text-sm font-semibold text-white transition hover:bg-edvanta-bluedark">
+              <button type="submit" className="ed-btn ed-btn--primary shrink-0">
                 Buscar
               </button>
             </form>
@@ -255,7 +255,7 @@ export default function ArticulosIndex() {
             <div className="mt-8 rounded-[18px] border border-dashed border-edvanta-strong bg-edvanta-bg p-10 text-center">
               <p className="font-display text-lg font-bold text-edvanta-deep">No encontramos artículos con esa búsqueda</p>
               <p className="mt-2 text-sm text-edvanta-muted">Prueba con otra palabra, por ejemplo el nombre del medicamento sin la marca.</p>
-              <button type="button" onClick={() => { setBusqueda(''); setParams({}, { replace: true }); }} className="mt-5 inline-flex min-h-11 items-center rounded-xl bg-edvanta-blue px-5 text-sm font-semibold text-white">Ver todos</button>
+              <button type="button" onClick={() => { setBusqueda(''); setParams({}, { replace: true }); }} className="ed-btn ed-btn--primary mt-5">Ver todos</button>
             </div>
           ) : (
             <>
@@ -267,7 +267,7 @@ export default function ArticulosIndex() {
                   <button
                     type="button"
                     onClick={() => setVisibles((v) => v + POR_PAGINA)}
-                    className="inline-flex min-h-12 items-center gap-2 rounded-xl border border-edvanta-border bg-white px-6 text-[15px] font-semibold text-edvanta-blue transition hover:border-edvanta-blue/40 hover:bg-edvanta-light/50"
+                    className="ed-btn ed-btn--secondary"
                   >
                     Ver más artículos
                     <span className="text-sm font-normal text-edvanta-muted">({filtrados.length - visibles} más)</span>

@@ -13,14 +13,39 @@
 
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Briefcase, Compass, FileText, Library, Newspaper, Sparkles } from 'lucide-react';
+import {
+  BookHeart, Briefcase, Compass, FileSpreadsheet, FileText, Library, Newspaper, Sparkles,
+} from 'lucide-react';
 import SiteHeader from '../../components/edvanta/SiteHeader';
 import SiteFooter from '../../components/edvanta/SiteFooter';
 import ProductModal from '../../components/ProductModal';
-import { Breadcrumb, Btn, LandingHero, NavCard, Section, SectionHeading } from '../../components/edvanta/ui';
+import { Breadcrumb, Btn, NavCard, Section, SectionHeading } from '../../components/edvanta/ui';
+import { HeroPlataforma } from '../../components/edvanta/heroes';
 import { ProductoCard } from '../../components/edvanta/oferta';
 import { KITS_PROFESIONALES, PRODUCTOS } from '../../data/edvanta/productos';
 import { updatePageSeo } from '../../utils/seo';
+
+/** Vista de la biblioteca dentro del portátil del héroe: los kits reales. */
+function VistaBiblioteca() {
+  return (
+    <div className="flex h-full flex-col bg-[#F8FAFD] p-3 text-left sm:p-4" aria-hidden="true">
+      <div className="flex items-center justify-between">
+        <span className="font-display text-[11px] font-extrabold text-edvanta-blue sm:text-sm">Guías y recursos</span>
+        <span className="rounded-full bg-edvanta-mint px-2 py-0.5 text-[9px] font-bold text-edvanta-tealdark sm:text-[11px]">{KITS_PROFESIONALES.length} kits</span>
+      </div>
+      <div className="mt-2 grid flex-1 grid-cols-2 gap-2 sm:mt-3 sm:gap-2.5">
+        {KITS_PROFESIONALES.slice(0, 4).map((k, i) => (
+          <div key={k.slug} className="flex flex-col justify-between rounded-lg bg-white p-2 shadow-[var(--ds-sh-xs)] ring-1 ring-edvanta-border sm:p-2.5">
+            <span className={`inline-flex h-5 w-5 items-center justify-center rounded-md sm:h-7 sm:w-7 ${i % 2 ? 'bg-edvanta-lilac text-[#5E51A8]' : 'bg-edvanta-light text-edvanta-blue'}`}>
+              <FileSpreadsheet className="h-3 w-3 sm:h-4 sm:w-4" />
+            </span>
+            <span className="mt-1.5 line-clamp-2 text-[9px] font-bold leading-tight text-edvanta-deep sm:text-[11px]">{k.nombre}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
 
 export default function Guias() {
   const [kit, setKit] = useState(null);
@@ -36,16 +61,22 @@ export default function Guias() {
     <div className="min-h-screen bg-white">
       <SiteHeader />
       <main>
-        <LandingHero
-          breadcrumb={<Breadcrumb items={[{ label: 'Inicio', to: '/' }, { label: 'Guías y recursos' }]} className="mb-6" />}
+        <HeroPlataforma
+          breadcrumb={<Breadcrumb items={[{ label: 'Inicio', to: '/' }, { label: 'Guías y recursos' }]} className="mb-8" />}
           eyebrow="Guías y recursos"
           title="Material para aplicar lo que sabes"
           highlight="lo que sabes"
           lead="Kits editables para el trabajo diario, guías para pacientes y lecturas gratuitas. Cada recurso dice para quién es, cómo se usa y si es gratis o de pago."
+          preview={<VistaBiblioteca />}
+          features={[
+            { icon: FileSpreadsheet, label: 'Kits editables' },
+            { icon: BookHeart, label: 'Guías para pacientes' },
+            { icon: Newspaper, label: 'Artículos gratis' },
+          ]}
           actions={(
             <>
-              <Btn href="#profesionales">Para profesionales</Btn>
-              <Btn href="#pacientes" variant="secondary">Para pacientes</Btn>
+              <Btn href="#profesionales" size="lg">Para profesionales</Btn>
+              <Btn href="#pacientes" variant="secondary" size="lg">Para pacientes</Btn>
             </>
           )}
         />

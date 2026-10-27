@@ -177,7 +177,7 @@ export default function AdminEdvantaContent() {
         <form onSubmit={login} className="mt-5 space-y-3">
           <label className="block text-sm font-bold text-slate-700" htmlFor="edvanta-admin-token">Token administrativo</label>
           <input id="edvanta-admin-token" type="password" value={tokenInput} onChange={event => setTokenInput(event.target.value)} required className="min-h-11 w-full rounded-lg border border-slate-300 px-3 text-sm outline-none focus:border-teal-600" />
-          <button type="submit" className="inline-flex min-h-11 w-full items-center justify-center rounded-lg bg-edvanta-blue px-4 text-sm font-bold text-white">Entrar</button>
+          <button type="submit" className="ed-btn ed-btn--primary w-full">Entrar</button>
         </form>
       </section>
     );
@@ -215,14 +215,14 @@ export default function AdminEdvantaContent() {
           <form onSubmit={createRecord} className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
             <h2 className="text-lg font-bold text-edvanta-deep">Crear borrador</h2>
             <div className="mt-4 space-y-3">{definition.fields.map(field => <label key={field.key} className="block text-sm font-bold text-slate-700">{field.label}{field.multiline ? <textarea value={draft[field.key] ?? ''} onChange={event => setDraft(current => ({ ...current, [field.key]: event.target.value }))} required={field.required} rows="3" className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm font-normal" /> : <input type={field.type || 'text'} value={draft[field.key] ?? ''} onChange={event => setDraft(current => ({ ...current, [field.key]: field.type === 'number' ? Number(event.target.value) : event.target.value }))} required={field.required} className="mt-1 min-h-10 w-full rounded-lg border border-slate-300 px-3 text-sm font-normal" />}</label>)}</div>
-            <button type="submit" disabled={loading} className="mt-5 inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-lg bg-edvanta-blue px-4 text-sm font-bold text-white disabled:opacity-60"><Save className="h-4 w-4" /> Guardar borrador</button>
+            <button type="submit" disabled={loading} className="ed-btn ed-btn--primary mt-5 w-full"><Save className="h-4 w-4" /> Guardar borrador</button>
           </form>
 
           <form onSubmit={saveRelationship} className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
             <h2 className="text-lg font-bold text-edvanta-deep">Relacionar contenido</h2>
             <label className="mt-4 block text-sm font-bold text-slate-700">Tipo<select value={relationType} onChange={event => setRelationType(event.target.value)} className="mt-1 min-h-10 w-full rounded-lg border border-slate-300 bg-white px-3 text-sm font-normal">{Object.entries(relationshipDefinitions).map(([key, value]) => <option key={key} value={key}>{value.label}</option>)}</select></label>
             {[relationDefinition.first, relationDefinition.second].map(field => <label key={field.key} className="mt-3 block text-sm font-bold text-slate-700">{field.label}<input value={relationDraft[field.key] ?? ''} onChange={event => setRelationDraft(current => ({ ...current, [field.key]: event.target.value }))} required className="mt-1 min-h-10 w-full rounded-lg border border-slate-300 px-3 font-mono text-xs font-normal" /></label>)}
-            <button type="submit" className="mt-5 inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-lg border border-edvanta-blue bg-white px-4 text-sm font-bold text-edvanta-deep"><Link2 className="h-4 w-4" /> Guardar relación</button>
+            <button type="submit" className="ed-btn ed-btn--secondary mt-5 w-full"><Link2 className="h-4 w-4" /> Guardar relación</button>
           </form>
         </aside>
       </div>
