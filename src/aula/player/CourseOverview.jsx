@@ -74,28 +74,23 @@ export function CourseOverview({
         </Link>
 
         <header className="mt-4 overflow-hidden rounded-[var(--aula-radius-lg)] border border-[var(--aula-border)] bg-white">
-          <div className="grid md:grid-cols-[1.3fr_1fr]">
-            <div className="flex flex-col gap-3 p-6 sm:p-8">
-              <h1 className="text-2xl font-extrabold leading-tight text-[var(--aula-primary)] sm:text-3xl">{course.title}</h1>
-              {course.shortDescription && <p className="text-base text-[var(--aula-muted)]">{course.shortDescription}</p>}
-              <p className="flex flex-wrap gap-x-4 gap-y-1 text-sm text-[var(--aula-muted)]">
-                <span>{plural(modules.length, 'módulo')} · {plural(lessons.length, 'clase')}</span>
-                {course.durationMinutes ? <span className="inline-flex items-center gap-1"><Clock className="h-4 w-4" aria-hidden="true" />{fmtMinutes(course.durationMinutes)}</span> : null}
-              </p>
-              {progress && (
-                <div className="mt-1 flex flex-col gap-1.5">
-                  <ProgressBar value={progress.pct} label="Avance del curso" />
-                  <p className="text-xs text-[var(--aula-muted)]">{Math.round(progress.pct)} % · {progress.label}</p>
-                </div>
-              )}
-              {notice}
-              {startHref && (
-                <div className="mt-2"><Button size="lg" icon={PlayCircle} to={startHref}>{startLabel}</Button></div>
-              )}
-            </div>
-            <div className="min-h-[180px]" style={{ background: 'var(--aula-gradient-hero)' }}>
-              {course.coverFileId && <img src={fileUrl(course.coverFileId)} alt="" className="h-full w-full object-cover" />}
-            </div>
+          <div className="flex flex-col gap-3 p-6 sm:p-8">
+            <h1 className="text-2xl font-extrabold leading-tight text-[var(--aula-primary)] sm:text-3xl">{course.title}</h1>
+            {course.shortDescription && <p className="text-base text-[var(--aula-muted)]">{course.shortDescription}</p>}
+            <p className="flex flex-wrap gap-x-4 gap-y-1 text-sm text-[var(--aula-muted)]">
+              <span>{plural(modules.length, 'módulo')} · {plural(lessons.length, 'clase')}</span>
+              {course.durationMinutes ? <span className="inline-flex items-center gap-1"><Clock className="h-4 w-4" aria-hidden="true" />{fmtMinutes(course.durationMinutes)}</span> : null}
+            </p>
+            {progress && (
+              <div className="mt-1 flex flex-col gap-1.5">
+                <ProgressBar value={progress.pct} label="Avance del curso" />
+                <p className="text-xs text-[var(--aula-muted)]">{Math.round(progress.pct)} % · {progress.label}</p>
+              </div>
+            )}
+            {notice}
+            {startHref && (
+              <div className="mt-2"><Button size="lg" icon={PlayCircle} to={startHref}>{startLabel}</Button></div>
+            )}
           </div>
         </header>
 
