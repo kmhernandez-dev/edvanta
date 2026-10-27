@@ -8,6 +8,8 @@
  *  mdPath: ruta pública del archivo .md a renderizar
  * ============================================================
  */
+import { articulosSalud } from './articulosSalud.js';
+
 const BASE = '/articulos/articulos_edvanta';
 
 const legacyArticulos = [
@@ -1519,7 +1521,8 @@ const edvantaArticulos = [
   },
 ];
 
-export const articulos = [...legacyArticulos, ...edvantaArticulos];
+// Los de salud van primero: son los más recientes y los que más se buscan.
+export const articulos = [...articulosSalud, ...legacyArticulos, ...edvantaArticulos];
 
 export const getArticulo = (slug) => articulos.find(a => a.slug === slug);
 export const articulosPorMarca = (marca) => articulos.filter(a => a.marca === marca);
@@ -1529,5 +1532,6 @@ const GRADIENTS = {
   atenfarma: 'from-deepblue-800 to-teal-600',
   biblioteca: 'from-navy-900 to-teal-600',
   edvanta: 'from-navy-900 to-teal-600',
+  contigo: 'from-teal-600 to-edvanta-blue',
 };
 export const gradientDe = (marca) => GRADIENTS[marca] || GRADIENTS.biblioteca;

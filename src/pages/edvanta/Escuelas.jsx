@@ -38,6 +38,7 @@ export default function Escuelas() {
           breadcrumb={<Breadcrumb items={[{ label: 'Inicio', to: '/' }, { label: 'Escuelas' }]} className="mb-6" />}
           eyebrow="Escuelas de Edvanta"
           title="Cuatro escuelas, una sola Edvanta"
+          highlight="una sola Edvanta"
           lead="Cada escuela reúne los cursos, guías y servicios de un campo del trabajo farmacéutico. Las áreas que aún no tienen contenido se muestran como lo que son: en desarrollo."
         />
 

@@ -23,9 +23,15 @@ export function Eyebrow({ children, tone = 'blue', className = '' }) {
     violet: 'text-[#5E51A8]',
     white: 'text-white/80',
   };
+  // El filo de marca antes del texto es la firma de cada sección.
   return (
-    <p className={`text-xs font-bold uppercase tracking-[.14em] ${tones[tone] || tones.blue} ${className}`}>
-      {children}
+    <p className={`inline-flex items-center gap-2.5 text-xs font-bold uppercase tracking-[.14em] ${tones[tone] || tones.blue} ${className}`}>
+      <span
+        className={`h-[3px] w-6 shrink-0 rounded-full ${tone === 'white' ? 'bg-white/60' : ''}`}
+        style={tone === 'white' ? undefined : { background: 'var(--ed-gradient-brand)' }}
+        aria-hidden="true"
+      />
+      <span>{children}</span>
     </p>
   );
 }
@@ -188,20 +194,60 @@ export function ImageSlot({
  * Portada de una landing. `media` suele ser un <ImageSlot/>.
  * Con `tone="dark"` queda sobre el azul Edvanta.
  */
+/**
+ * Resalta una parte del título con el degradado de marca y el trazo del
+ * inicio. Si `highlight` no aparece en el título, se deja tal cual.
+ */
+function TituloConAcento({ title, highlight }) {
+  if (typeof title !== 'string' || !highlight || !title.includes(highlight)) return title;
+  const [antes, ...resto] = title.split(highlight);
+  return (
+    <>
+      {antes}
+      <span className="relative inline-block">
+        <span className="ed-grad-text">{highlight}</span>
+        {/* El trazo solo bajo resaltados cortos: en dos líneas se ve torcido. */}
+        {highlight.length <= 20 && <svg className="hx-swoosh" viewBox="0 0 300 24" preserveAspectRatio="none" aria-hidden="true">
+          <defs>
+            <linearGradient id="ed-swoosh-grad" x1="0" x2="1" y1="0" y2="0">
+              <stop offset="0" stopColor="#8179C9" />
+              <stop offset=".5" stopColor="#65A7C1" />
+              <stop offset="1" stopColor="#28A8AF" />
+            </linearGradient>
+          </defs>
+          <path d="M4 17 C 70 7, 170 4, 296 11" pathLength="1" stroke="url(#ed-swoosh-grad)" strokeWidth="7" strokeLinecap="round" fill="none" />
+        </svg>}
+      </span>
+      {resto.join(highlight)}
+    </>
+  );
+}
+
 export function LandingHero({
-  eyebrow, title, lead, actions, media, bullets, tone = 'light', breadcrumb, children,
+  eyebrow, title, highlight, lead, actions, media, bullets, tone = 'light', breadcrumb, children,
 }) {
   const dark = tone === 'dark';
   return (
-    <section className={`relative overflow-hidden ${dark ? 'bg-edvanta-deep' : ''}`} style={dark ? undefined : { background: 'var(--ed-gradient-hero)' }}>
-      {dark && <div className="bg-dots pointer-events-none absolute inset-0 opacity-20" aria-hidden="true" />}
-      <div className="relative mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
+    <section className={`relative overflow-hidden ${dark ? 'bg-edvanta-deep' : ''}`}>
+      {dark ? (
+        <>
+          <div className="bg-dots pointer-events-none absolute inset-0 opacity-20" aria-hidden="true" />
+          <div className="pointer-events-none absolute -right-24 -top-24 h-96 w-96 rounded-full bg-edvanta-violet/30 blur-3xl" aria-hidden="true" />
+          <div className="pointer-events-none absolute -bottom-24 -left-16 h-80 w-80 rounded-full bg-edvanta-teal/25 blur-3xl" aria-hidden="true" />
+        </>
+      ) : (
+        <>
+          <div className="ed-backdrop" aria-hidden="true" />
+          <div className="ed-grid" aria-hidden="true" />
+        </>
+      )}
+      <div className="relative mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-20 lg:px-8">
         {breadcrumb}
         <div className={`gap-10 ${media ? 'lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(0,46%)] lg:items-center' : ''}`}>
-          <div className={media ? '' : 'max-w-3xl'}>
+          <div className={`hx-fade ${media ? '' : 'max-w-3xl'}`}>
             {eyebrow && <Eyebrow tone={dark ? 'white' : 'blue'}>{eyebrow}</Eyebrow>}
-            <h1 className={`mt-3 font-display text-[2rem] font-extrabold leading-[1.1] sm:text-5xl ${dark ? 'text-white' : 'text-edvanta-deep'}`}>
-              {title}
+            <h1 className={`mt-3 font-display text-[2.1rem] font-extrabold leading-[1.08] tracking-[-0.03em] sm:text-5xl lg:text-[3.35rem] ${dark ? 'text-white' : 'text-edvanta-blue'}`}>
+              <TituloConAcento title={title} highlight={highlight} />
             </h1>
             {lead && <p className={`mt-4 max-w-2xl text-lg leading-8 ${dark ? 'text-white/85' : 'text-edvanta-muted'}`}>{lead}</p>}
             {bullets?.length > 0 && (
@@ -217,7 +263,7 @@ export function LandingHero({
             {actions && <div className="mt-8 flex flex-wrap gap-3">{actions}</div>}
             {children}
           </div>
-          {media && <div className="mt-10 lg:mt-0">{media}</div>}
+          {media && <div className="hx-photo mt-10 lg:mt-0">{media}</div>}
         </div>
       </div>
     </section>
@@ -322,8 +368,10 @@ export function Breadcrumb({ items, tone = 'light', className = '' }) {
 export function CtaBanner({ eyebrow, title, desc, actions, media }) {
   return (
     <section className="mx-auto max-w-7xl px-4 pb-16 sm:px-6 lg:px-8">
-      <div className="overflow-hidden rounded-3xl bg-edvanta-deep px-6 py-12 sm:px-12">
-        <div className={media ? 'gap-10 lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(0,38%)] lg:items-center' : ''}>
+      <div className="ed-edge relative overflow-hidden rounded-[1.75rem] bg-edvanta-blue px-6 py-12 sm:px-12">
+        <div className="pointer-events-none absolute -right-20 -top-24 h-80 w-80 rounded-full bg-edvanta-violet/40 blur-3xl" aria-hidden="true" />
+        <div className="pointer-events-none absolute -bottom-28 left-1/3 h-72 w-72 rounded-full bg-edvanta-teal/30 blur-3xl" aria-hidden="true" />
+        <div className={`relative ${media ? 'gap-10 lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(0,38%)] lg:items-center' : ''}`}>
           <div>
             {eyebrow && <Eyebrow tone="white">{eyebrow}</Eyebrow>}
             <h2 className="mt-2 max-w-2xl font-display text-2xl font-extrabold leading-tight text-white sm:text-3xl">{title}</h2>

@@ -78,6 +78,7 @@ export default function Pacientes() {
           breadcrumb={<Breadcrumb items={[{ label: 'Inicio', to: '/' }, { label: 'Para pacientes' }]} className="mb-6" />}
           eyebrow={EDVANTA_CONTIGO.nombre}
           title={EDVANTA_CONTIGO.lema}
+          highlight="Participa en tu cuidado."
           lead={EDVANTA_CONTIGO.texto}
           actions={(
             <>

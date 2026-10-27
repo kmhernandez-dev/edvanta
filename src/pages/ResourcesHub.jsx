@@ -90,10 +90,10 @@ export default function ResourcesHub() {
     <>
       <SiteHeader />
       <main className="min-h-screen bg-edvanta-bg">
-        <section className="border-b border-slate-200 bg-white">
-          <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
-            <p className="text-sm font-bold uppercase text-teal-700">Biblioteca profesional</p>
-            <h1 className="mt-3 max-w-4xl text-4xl font-bold leading-tight text-edvanta-deep sm:text-5xl">Encuentra contexto para aprender, aplicar y decidir mejor</h1>
+        <section className="relative overflow-hidden border-b border-edvanta-border"><div className="ed-backdrop" aria-hidden="true" /><div className="ed-grid" aria-hidden="true" />
+          <div className="relative mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
+            <p className="ed-eyebrow">Biblioteca profesional</p>
+            <h1 className="mt-3 max-w-4xl text-4xl font-extrabold leading-[1.08] tracking-[-0.03em] text-edvanta-blue sm:text-5xl">Encuentra contexto para aprender, aplicar y decidir mejor</h1>
             <p className="mt-5 max-w-3xl text-lg leading-8 text-slate-600">Recursos conectados con problemas profesionales concretos, fuentes identificables y próximos pasos útiles.</p>
           </div>
         </section>

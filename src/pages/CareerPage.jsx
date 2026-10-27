@@ -132,8 +132,8 @@ export default function CareerPage() {
     <>
       <SiteHeader />
       <main className="bg-edvanta-bg">
-        <section className="border-b border-slate-200 bg-white">
-          <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
+        <section className="relative overflow-hidden border-b border-edvanta-border"><div className="ed-backdrop" aria-hidden="true" /><div className="ed-grid" aria-hidden="true" />
+          <div className="relative mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
             <nav className="flex flex-wrap items-center gap-2 text-sm text-slate-500" aria-label="Migas de pan">
               <Link to="/" className="hover:text-teal-700">Inicio</Link><span>/</span>
               <Link to="/carreras" className="hover:text-teal-700">Carreras</Link><span>/</span>
@@ -142,8 +142,8 @@ export default function CareerPage() {
 
             <div className="mt-9 grid gap-10 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-end">
               <div>
-                <p className="text-sm font-bold uppercase text-teal-700">{career.family?.name}</p>
-                <h1 className="mt-3 max-w-4xl text-4xl font-bold leading-tight text-edvanta-deep sm:text-5xl">{career.name}</h1>
+                <p className="ed-eyebrow">{career.family?.name}</p>
+                <h1 className="mt-3 max-w-4xl text-4xl font-extrabold leading-[1.08] tracking-[-0.03em] text-edvanta-blue sm:text-5xl">{career.name}</h1>
                 <p className="mt-5 max-w-3xl text-xl font-semibold leading-8 text-slate-700">{career.headline}</p>
                 <p className="mt-4 max-w-3xl text-base leading-7 text-slate-600">{career.summary}</p>
               </div>
@@ -201,7 +201,7 @@ export default function CareerPage() {
 
         <section id="habilidades" className="mx-auto max-w-7xl scroll-mt-24 px-4 py-14 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
-            <p className="text-sm font-bold uppercase text-teal-700">Mapa de competencias</p>
+            <p className="ed-eyebrow">Mapa de competencias</p>
             <h2 className="mt-2 text-3xl font-bold text-edvanta-deep">Habilidades que conviene desarrollar</h2>
             <p className="mt-3 text-base leading-7 text-slate-600">El nivel indica hasta dónde conviene avanzar para desempeñarte con autonomía creciente. No es un requisito de contratación ni una promesa de empleo.</p>
           </div>

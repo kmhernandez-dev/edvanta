@@ -41,6 +41,7 @@ export default function Contacto() {
           breadcrumb={<Breadcrumb items={[{ label: 'Inicio', to: '/' }, { label: 'Contacto' }]} className="mb-6" />}
           eyebrow="Contacto"
           title="Hablemos"
+          highlight="Hablemos"
           lead="Escríbenos por el canal que prefieras. Si tu pregunta es sobre tu salud o tu tratamiento, consúltala con tu médico o farmacéutico tratante: por aquí no damos indicaciones clínicas."
         />
 

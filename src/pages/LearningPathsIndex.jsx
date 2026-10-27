@@ -81,11 +81,11 @@ export default function LearningPathsIndex() {
     <>
       <SiteHeader />
       <main className="min-h-screen bg-edvanta-bg">
-        <section className="border-b border-slate-200 bg-white">
-          <div className="mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:px-6 lg:grid-cols-[minmax(0,1fr)_360px] lg:px-8 lg:py-16">
+        <section className="relative overflow-hidden border-b border-edvanta-border"><div className="ed-backdrop" aria-hidden="true" /><div className="ed-grid" aria-hidden="true" />
+          <div className="relative mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:px-6 lg:grid-cols-[minmax(0,1fr)_360px] lg:px-8 lg:py-16">
             <div>
-              <p className="text-sm font-bold uppercase text-teal-700">Aprende con dirección</p>
-              <h1 className="mt-3 max-w-4xl text-4xl font-bold leading-tight text-edvanta-deep sm:text-5xl">
+              <p className="ed-eyebrow">Aprende con dirección</p>
+              <h1 className="mt-3 max-w-4xl text-4xl font-extrabold leading-[1.08] tracking-[-0.03em] text-edvanta-blue sm:text-5xl">
                 Rutas para construir una carrera, no solo acumular cursos
               </h1>
               <p className="mt-5 max-w-3xl text-lg leading-8 text-slate-600">

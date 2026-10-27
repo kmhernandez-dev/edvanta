@@ -56,6 +56,7 @@ export default function PacientesTiroides() {
           breadcrumb={<Breadcrumb items={[{ label: 'Inicio', to: '/' }, { label: 'Para pacientes', to: '/pacientes' }, { label: 'Salud tiroidea' }]} className="mb-6" />}
           eyebrow="Edvanta Contigo · Feliz Sin Tiroides"
           title="Tu tiroides, explicada con claridad"
+          highlight="con claridad"
           lead={`${fst.nombre} es el programa de Edvanta para personas con hipotiroidismo, Hashimoto o que viven sin tiroides. Lo creó Karla Hernández, química farmacéutica que también vive sin tiroides.`}
           actions={(
             <>

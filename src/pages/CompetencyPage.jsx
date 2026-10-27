@@ -91,12 +91,12 @@ export default function CompetencyPage() {
     <>
       <SiteHeader />
       <main className="bg-edvanta-bg">
-        <section className="border-b border-slate-200 bg-white">
-          <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
+        <section className="relative overflow-hidden border-b border-edvanta-border"><div className="ed-backdrop" aria-hidden="true" /><div className="ed-grid" aria-hidden="true" />
+          <div className="relative mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
             <nav className="flex flex-wrap items-center gap-2 text-sm text-slate-500" aria-label="Migas de pan"><Link to="/" className="hover:text-teal-700">Inicio</Link><span>/</span><Link to="/competencias" className="hover:text-teal-700">Competencias</Link><span>/</span><span className="font-semibold text-slate-700">{skill.name}</span></nav>
             <div className="mt-9 max-w-4xl">
-              <p className="text-sm font-bold uppercase text-teal-700">{TYPE_LABELS[skill.skill_type] || 'Competencia profesional'}</p>
-              <h1 className="mt-3 text-4xl font-bold leading-tight text-edvanta-deep sm:text-5xl">{skill.name}</h1>
+              <p className="ed-eyebrow">{TYPE_LABELS[skill.skill_type] || 'Competencia profesional'}</p>
+              <h1 className="mt-3 text-4xl font-extrabold leading-[1.08] tracking-[-0.03em] text-edvanta-blue sm:text-5xl">{skill.name}</h1>
               <p className="mt-5 max-w-3xl text-lg leading-8 text-slate-600">{skill.description}</p>
             </div>
           </div>

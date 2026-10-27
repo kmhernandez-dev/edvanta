@@ -208,13 +208,13 @@ export default function CursosCatalog({ defaultProvider = '' }) {
 
       <main>
         {/* Hero */}
-        <section className="border-b border-slate-200 bg-white py-12 md:py-16">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <section className="relative overflow-hidden border-b border-edvanta-border py-12 md:py-16"><div className="ed-backdrop" aria-hidden="true" /><div className="ed-grid" aria-hidden="true" />
+          <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl">
-              <p className="mb-2 text-xs font-bold uppercase text-teal-700">
+              <p className="ed-eyebrow mb-3">
                 {defaultProvider ? PROVIDER_LABELS[defaultProvider] : 'Catálogo de cursos'}
               </p>
-              <h1 className="text-3xl font-bold text-edvanta-deep md:text-5xl">
+              <h1 className="text-4xl font-extrabold leading-[1.08] tracking-[-0.03em] text-edvanta-blue md:text-5xl">
                 {defaultProvider
                   ? `Cursos de ${PROVIDER_LABELS[defaultProvider]}`
                   : 'Cursos de Edvanta y recomendados'}

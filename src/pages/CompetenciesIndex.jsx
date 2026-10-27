@@ -70,10 +70,10 @@ export default function CompetenciesIndex() {
     <>
       <SiteHeader />
       <main className="min-h-screen bg-edvanta-bg">
-        <section className="border-b border-slate-200 bg-white">
-          <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
-            <p className="text-sm font-bold uppercase text-teal-700">Mapa de habilidades</p>
-            <h1 className="mt-3 max-w-4xl text-4xl font-bold leading-tight text-edvanta-deep sm:text-5xl">Comprende qué necesitas aprender y dónde lo vas a usar</h1>
+        <section className="relative overflow-hidden border-b border-edvanta-border"><div className="ed-backdrop" aria-hidden="true" /><div className="ed-grid" aria-hidden="true" />
+          <div className="relative mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
+            <p className="ed-eyebrow">Mapa de habilidades</p>
+            <h1 className="mt-3 max-w-4xl text-4xl font-extrabold leading-[1.08] tracking-[-0.03em] text-edvanta-blue sm:text-5xl">Comprende qué necesitas aprender y dónde lo vas a usar</h1>
             <p className="mt-5 max-w-3xl text-lg leading-8 text-slate-600">Cada competencia se conecta con las carreras que la requieren, las rutas que la practican y los cursos que la enseñan.</p>
           </div>
         </section>

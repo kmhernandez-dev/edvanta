@@ -141,9 +141,49 @@ function IrAlAncla() {
   return null;
 }
 
+/**
+ * Las secciones de Edvanta aparecen con un desplazamiento suave al llegar
+ * a ellas. Solo se marcan las que todavía están por debajo de la pantalla:
+ * lo que ya se ve nunca se oculta. Sin IntersectionObserver o con
+ * «reducir movimiento» activado, no se hace nada.
+ */
+function useRevelado(activo, pathname) {
+  useEffect(() => {
+    if (!activo || typeof IntersectionObserver === 'undefined') return undefined;
+    if (window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) return undefined;
+    const raiz = document.querySelector('.edvanta-theme');
+    if (!raiz) return undefined;
+
+    const io = new IntersectionObserver((entradas) => {
+      for (const e of entradas) {
+        if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); }
+      }
+    }, { rootMargin: '0px 0px -6% 0px' });
+
+    let pendiente = 0;
+    const preparar = () => {
+      pendiente = 0;
+      for (const el of raiz.querySelectorAll('section')) {
+        if (el.dataset.edReveal || el.closest('header, footer, [data-sin-revelado]')) continue;
+        el.dataset.edReveal = '1';
+        if (el.parentElement?.closest('[data-ed-reveal]')) continue;
+        if (el.getBoundingClientRect().top > window.innerHeight) {
+          el.classList.add('ed-reveal');
+          io.observe(el);
+        }
+      }
+    };
+    const mo = new MutationObserver(() => { if (!pendiente) pendiente = requestAnimationFrame(preparar); });
+    preparar();
+    mo.observe(raiz, { childList: true, subtree: true });
+    return () => { mo.disconnect(); io.disconnect(); if (pendiente) cancelAnimationFrame(pendiente); };
+  }, [activo, pathname]);
+}
+
 function EdvantaTheme({ children }) {
   const { pathname } = useLocation();
   const esOtraMarca = OTRAS_MARCAS.some((p) => pathname === p || pathname.startsWith(`${p}/`));
+  useRevelado(!esOtraMarca, pathname);
   return <div className={esOtraMarca ? undefined : 'edvanta-theme'}>{children}</div>;
 }
 

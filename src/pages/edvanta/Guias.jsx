@@ -40,6 +40,7 @@ export default function Guias() {
           breadcrumb={<Breadcrumb items={[{ label: 'Inicio', to: '/' }, { label: 'Guías y recursos' }]} className="mb-6" />}
           eyebrow="Guías y recursos"
           title="Material para aplicar lo que sabes"
+          highlight="lo que sabes"
           lead="Kits editables para el trabajo diario, guías para pacientes y lecturas gratuitas. Cada recurso dice para quién es, cómo se usa y si es gratis o de pago."
           actions={(
             <>

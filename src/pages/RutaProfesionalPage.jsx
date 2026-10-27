@@ -199,8 +199,8 @@ export default function RutaProfesionalPage() {
     <>
       <SiteHeader />
       <main className="bg-edvanta-bg">
-        <section className="border-b border-slate-200 bg-white">
-          <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
+        <section className="relative overflow-hidden border-b border-edvanta-border"><div className="ed-backdrop" aria-hidden="true" /><div className="ed-grid" aria-hidden="true" />
+          <div className="relative mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
             <nav className="flex flex-wrap items-center gap-2 text-sm text-slate-500" aria-label="Migas de pan">
               <Link to="/" className="hover:text-teal-700">Inicio</Link><span>/</span>
               <Link to="/rutas" className="hover:text-teal-700">Rutas</Link><span>/</span>
@@ -209,8 +209,8 @@ export default function RutaProfesionalPage() {
 
             <div className="mt-9 grid gap-10 lg:grid-cols-[minmax(0,1fr)_340px] lg:items-end">
               <div>
-                <p className="text-sm font-bold uppercase text-teal-700">Ruta para {path.career?.name}</p>
-                <h1 className="mt-3 max-w-4xl text-4xl font-bold leading-tight text-edvanta-deep sm:text-5xl">{path.name}</h1>
+                <p className="ed-eyebrow">Ruta para {path.career?.name}</p>
+                <h1 className="mt-3 max-w-4xl text-4xl font-extrabold leading-[1.08] tracking-[-0.03em] text-edvanta-blue sm:text-5xl">{path.name}</h1>
                 <p className="mt-5 max-w-3xl text-lg leading-8 text-slate-600">{path.summary}</p>
                 <div className="mt-6 flex flex-wrap gap-4 text-sm font-semibold text-slate-600">
                   <span className="inline-flex items-center gap-2"><BookOpenCheck className="h-4 w-4 text-teal-700" aria-hidden="true" /> {path.steps?.length || 0} pasos</span>

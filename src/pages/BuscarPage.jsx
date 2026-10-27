@@ -74,10 +74,10 @@ export default function BuscarPage() {
       <SiteHeader />
       <main className="min-h-screen bg-edvanta-bg">
         {/* Barra de búsqueda / hero */}
-        <section className="border-b border-edvanta-border bg-white">
-          <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+        <section className="relative overflow-hidden border-b border-edvanta-border"><div className="ed-backdrop" aria-hidden="true" /><div className="ed-grid" aria-hidden="true" />
+          <div className="relative mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
             <p className="eyebrow-edvanta mb-2">Buscador del ecosistema</p>
-            <h1 className="font-display text-3xl font-extrabold text-edvanta-deep sm:text-4xl">
+            <h1 className="font-display text-3xl font-extrabold tracking-[-0.03em] text-edvanta-blue sm:text-[2.6rem]">
               {q ? <>Resultados para <span className="text-edvanta-blue">“{q}”</span></> : 'Busca en todo Edvanta'}
             </h1>
             <form onSubmit={submit} className="mt-5 flex max-w-2xl items-center gap-2">

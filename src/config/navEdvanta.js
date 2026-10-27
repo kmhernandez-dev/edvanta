@@ -63,11 +63,40 @@ export const RECURSOS_GROUPS = [
   },
 ];
 
-/* ── Enlaces directos de la barra principal ───────────────── */
+/* ── Enlaces directos de la barra principal (profesionales) ── */
 export const MAIN_LINKS = [
   { label: 'Cursos', to: '/cursos' },
-  { label: 'Para pacientes', to: '/pacientes' },
-  { label: 'Para instituciones', to: '/instituciones' },
+  { label: 'Artículos', to: '/articulos' },
+];
+
+/* ── Franja de públicos ───────────────────────────────────────
+   Es la misma idea de la antigua franja Personal / Empresas, que la
+   usuaria pidió conservar: elige a quién le habla el sitio, y la barra
+   principal cambia con esa elección. */
+export const PUBLICOS_NAV = [
+  { id: 'profesionales', label: 'Profesionales', to: '/escuelas' },
+  { id: 'pacientes', label: 'Pacientes', to: '/pacientes' },
+  { id: 'instituciones', label: 'Instituciones', to: '/instituciones' },
+];
+
+export const contextoDe = (pathname) => {
+  if (/^\/pacientes(\/|$)/.test(pathname)) return 'pacientes';
+  if (/^\/(instituciones|empresas)(\/|$)/.test(pathname)) return 'instituciones';
+  return 'profesionales';
+};
+
+export const NAV_PACIENTES = [
+  { label: 'Edvanta Contigo', to: '/pacientes' },
+  { label: 'Salud tiroidea', to: '/pacientes/tiroides' },
+  { label: 'Artículos de salud', to: '/articulos?publico=pacientes' },
+  { label: 'Guías para pacientes', to: '/guias#pacientes' },
+];
+
+export const NAV_INSTITUCIONES = [
+  { label: 'Qué ofrecemos', to: '/instituciones' },
+  { label: 'Paquetes', to: '/instituciones#equipo-que-cuida' },
+  { label: 'Directorio de talento', to: '/empresas/talento' },
+  { label: 'Solicitar propuesta', to: '/instituciones#solicitar-propuesta' },
 ];
 
 /* ── Franja superior ──────────────────────────────────────── */

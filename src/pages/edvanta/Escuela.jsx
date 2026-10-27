@@ -83,6 +83,7 @@ export default function Escuela() {
           breadcrumb={<Breadcrumb items={[{ label: 'Inicio', to: '/' }, { label: 'Escuelas', to: '/escuelas' }, { label: escuela.corto }]} className="mb-6" />}
           eyebrow={<span className="inline-flex items-center gap-2">{Icono && <Icono className="h-4 w-4" aria-hidden="true" />}Escuela de Edvanta</span>}
           title={escuela.nombre}
+          highlight={escuela.corto}
           lead={escuela.resumen}
           actions={(
             <>

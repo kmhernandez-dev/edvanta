@@ -116,11 +116,11 @@ export default function ProfessionalAccount() {
     <>
       <SiteHeader />
       <main className="min-h-screen bg-edvanta-bg">
-        <section className="border-b border-slate-200 bg-white">
-          <div className="mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:px-6 lg:grid-cols-[minmax(0,1fr)_440px] lg:px-8 lg:py-16">
+        <section className="relative overflow-hidden border-b border-edvanta-border"><div className="ed-backdrop" aria-hidden="true" /><div className="ed-grid" aria-hidden="true" />
+          <div className="relative mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:px-6 lg:grid-cols-[minmax(0,1fr)_440px] lg:px-8 lg:py-16">
             <div className="max-w-2xl self-center">
-              <p className="text-sm font-bold uppercase text-teal-700">Tu espacio profesional</p>
-              <h1 className="mt-3 text-4xl font-bold leading-tight text-edvanta-deep sm:text-5xl">Convierte tus intereses en un plan que puedas seguir</h1>
+              <p className="ed-eyebrow">Tu espacio profesional</p>
+              <h1 className="mt-3 text-4xl font-extrabold leading-[1.08] tracking-[-0.03em] text-edvanta-blue sm:text-5xl">Convierte tus intereses en un plan que puedas seguir</h1>
               <p className="mt-5 text-lg leading-8 text-slate-600">Guarda cursos, organiza rutas y concentra en un solo lugar las decisiones que fortalecen tu perfil.</p>
               <div className="mt-8 grid gap-4 sm:grid-cols-3">
                 {[

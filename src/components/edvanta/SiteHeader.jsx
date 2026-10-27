@@ -2,14 +2,16 @@
  * ============================================================
  *  SiteHeader.jsx — Encabezado único de edvanta.co
  *
- *  Es el mismo en todas las páginas de Edvanta. La barra principal
- *  lleva lo que la persona viene a buscar:
+ *  Es el mismo en todas las páginas de Edvanta. La franja de arriba
+ *  elige el público —Profesionales · Pacientes · Instituciones, la
+ *  heredera de la franja Personal / Empresas— y la barra principal
+ *  cambia con esa elección:
  *
- *    Escuelas ▾ · Cursos · Guías y recursos ▾ · Para pacientes ·
- *    Para instituciones
+ *    Profesionales → Escuelas ▾ · Cursos · Guías y recursos ▾ · Artículos
+ *    Pacientes     → Edvanta Contigo · Salud tiroidea · Artículos · Guías
+ *    Instituciones → Qué ofrecemos · Paquetes · Talento · Propuesta
  *
- *  La franja de arriba deja a la vista Sobre Edvanta, Contacto y el
- *  acceso al Aula. Feliz Sin Tiroides, Vida 360 y AtenFarmaClinic
+ *  A la derecha de la franja quedan Sobre Edvanta, Contacto y el Aula. Feliz Sin Tiroides, Vida 360 y AtenFarmaClinic
  *  tienen sus propios encabezados y no usan este.
  * ============================================================
  */
@@ -20,7 +22,9 @@ import { ArrowRight, ChevronDown, Menu, MonitorPlay, Search, ShoppingCart, UserR
 import { useAuth } from '../../context/AuthContext';
 import { useCart } from '../../context/CartContext';
 import { trackEvent } from '../../utils/analytics';
-import { ESCUELAS_GROUPS, MAIN_LINKS, RECURSOS_GROUPS, TOP_LINKS } from '../../config/navEdvanta';
+import {
+  ESCUELAS_GROUPS, MAIN_LINKS, NAV_INSTITUCIONES, NAV_PACIENTES, PUBLICOS_NAV, RECURSOS_GROUPS, TOP_LINKS, contextoDe,
+} from '../../config/navEdvanta';
 import GlobalSearch from './GlobalSearch';
 
 const MENUS = {
@@ -162,17 +166,45 @@ export default function SiteHeader() {
     </Link>
   );
 
-  const [cursos, ...publicos] = MAIN_LINKS;
+  const [cursos, articulos] = MAIN_LINKS;
+  const contexto = contextoDe(pathname);
+  const enlacesDelContexto = contexto === 'pacientes' ? NAV_PACIENTES : contexto === 'instituciones' ? NAV_INSTITUCIONES : null;
+  const sinQuery = (to) => to.split(/[?#]/)[0];
+  const activoEn = (to) => (to.includes('#') ? false : activo(sinQuery(to)));
+  const enlaceSimple = (l) => (
+    <Link
+      key={l.to}
+      to={l.to}
+      onClick={() => trackEvent('nav_click', { item: l.to })}
+      aria-current={activoEn(l.to) ? 'page' : undefined}
+      className={`${NAV_LINK} ${activoEn(l.to) ? ON : OFF}`}
+    >
+      {l.label}
+    </Link>
+  );
 
   return (
     <header ref={ref} className="sticky top-0 z-50 bg-white">
       {/* Franja superior */}
       <div className="border-b border-edvanta-border bg-edvanta-bg">
-        <div className="mx-auto flex h-10 max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
-          <p className="hidden truncate text-[13px] text-edvanta-muted sm:block">
-            Educación farmacéutica para profesionales, pacientes e instituciones
-          </p>
-          <nav aria-label="Edvanta" className="ml-auto flex shrink-0 items-center gap-5">
+        <div className="mx-auto flex h-10 max-w-7xl items-center justify-between gap-3 px-4 sm:px-6 lg:px-8">
+          <nav aria-label="Público" className="flex h-full min-w-0 items-stretch gap-3 overflow-x-auto [scrollbar-width:none] sm:gap-7 [&::-webkit-scrollbar]:hidden">
+            {PUBLICOS_NAV.map((p) => {
+              const actual = contexto === p.id;
+              return (
+                <Link
+                  key={p.id}
+                  to={p.to}
+                  onClick={() => trackEvent('nav_click', { item: `publico_${p.id}` })}
+                  aria-current={actual ? 'true' : undefined}
+                  className={`flex shrink-0 items-center border-b-2 text-[12.5px] transition-colors sm:text-[13.5px] ${actual ? 'border-edvanta-blue font-semibold text-edvanta-blue' : 'border-transparent font-medium text-edvanta-muted hover:text-edvanta-blue'}`}
+                >
+                  {p.label}
+                </Link>
+              );
+            })}
+          </nav>
+          <nav aria-label="Edvanta" className="ml-auto flex shrink-0 items-center gap-3 sm:gap-5">
             {TOP_LINKS.map((l) => (
               <Link
                 key={l.to}
@@ -189,7 +221,8 @@ export default function SiteHeader() {
               className="inline-flex items-center gap-1.5 text-[13.5px] font-semibold text-edvanta-blue transition-colors hover:text-edvanta-teal"
             >
               <MonitorPlay className="h-4 w-4" aria-hidden="true" />
-              Aula virtual
+              <span className="hidden sm:inline">Aula virtual</span>
+              <span className="sr-only sm:hidden">Aula virtual</span>
             </Link>
           </nav>
         </div>
@@ -203,10 +236,14 @@ export default function SiteHeader() {
           </Link>
 
           <nav aria-label="Navegación principal" className="hidden items-center gap-0.5 xl:flex">
-            <DesktopMenu menu={MENUS.escuelas} open={open} onToggle={toggle} onPick={pick} pathname={pathname} />
-            {enlace(cursos)}
-            <DesktopMenu menu={MENUS.recursos} open={open} onToggle={toggle} onPick={pick} pathname={pathname} />
-            {publicos.map(enlace)}
+            {enlacesDelContexto ? enlacesDelContexto.map(enlaceSimple) : (
+              <>
+                <DesktopMenu menu={MENUS.escuelas} open={open} onToggle={toggle} onPick={pick} pathname={pathname} />
+                {enlace(cursos)}
+                <DesktopMenu menu={MENUS.recursos} open={open} onToggle={toggle} onPick={pick} pathname={pathname} />
+                {enlace(articulos)}
+              </>
+            )}
           </nav>
 
           <div className="ml-auto flex items-center gap-1.5">
@@ -258,6 +295,16 @@ export default function SiteHeader() {
       {mobileOpen && (
         <div className="max-h-[calc(100vh-7.5rem)] overflow-y-auto border-b border-edvanta-border bg-white px-4 pb-6 pt-2 shadow-lg xl:hidden">
           <Link to="/" className="flex min-h-12 items-center rounded-xl px-3 text-base font-semibold text-edvanta-blue">Inicio</Link>
+          {enlacesDelContexto && (
+            <div className="mb-2 rounded-2xl bg-edvanta-bg p-1.5">
+              <p className="px-3 pb-1 pt-2 text-[11px] font-bold uppercase tracking-[.12em] text-edvanta-muted">
+                {contexto === 'pacientes' ? 'Para pacientes' : 'Para instituciones'}
+              </p>
+              {enlacesDelContexto.map((l) => (
+                <Link key={l.to} to={l.to} className="flex min-h-11 items-center rounded-xl px-3 text-[15px] font-medium text-edvanta-deep">{l.label}</Link>
+              ))}
+            </div>
+          )}
           {[MENUS.escuelas, null, MENUS.recursos].map((m) => (m ? (
             <div key={m.id}>
               <button
@@ -291,7 +338,7 @@ export default function SiteHeader() {
               {cursos.label}
             </Link>
           )))}
-          {[...publicos, ...TOP_LINKS].map((l) => (
+          {[articulos, ...TOP_LINKS].map((l) => (
             <Link key={l.to} to={l.to} className="flex min-h-12 items-center rounded-xl px-3 text-base font-medium text-edvanta-deep">
               {l.label}
             </Link>

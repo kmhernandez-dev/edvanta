@@ -75,8 +75,8 @@ export default function ProfessionalProfilePage() {
     <>
       <SiteHeader />
       <main className="min-h-screen bg-edvanta-bg">
-        <section className="border-b border-slate-200 bg-white">
-          <div className="mx-auto max-w-4xl px-4 py-10 sm:px-6 lg:px-8">
+        <section className="relative overflow-hidden border-b border-edvanta-border"><div className="ed-backdrop" aria-hidden="true" /><div className="ed-grid" aria-hidden="true" />
+          <div className="relative mx-auto max-w-4xl px-4 py-10 sm:px-6 lg:px-8">
             <Link to="/app" className="inline-flex items-center gap-2 text-sm font-bold text-teal-700"><ArrowLeft className="h-4 w-4" /> Volver al panel</Link>
             <h1 className="mt-5 text-3xl font-bold text-edvanta-deep sm:text-4xl">Edita tu perfil profesional</h1>
             <p className="mt-3 text-slate-600">Mantén actualizado tu objetivo para que tus rutas y recomendaciones sigan teniendo sentido.</p>

@@ -57,6 +57,7 @@ export default function SobreEdvanta() {
           breadcrumb={<Breadcrumb items={[{ label: 'Inicio', to: '/' }, { label: 'Sobre Edvanta' }]} className="mb-6" />}
           eyebrow="Sobre Edvanta"
           title="Una empresa de educación farmacéutica"
+          highlight="educación farmacéutica"
           lead="Formamos a quienes trabajan con medicamentos, acompañamos con educación a pacientes y cuidadores, y diseñamos programas para instituciones. Todo bajo una misma marca y un mismo criterio."
         />
 

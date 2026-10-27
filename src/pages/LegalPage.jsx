@@ -1,15 +1,24 @@
+/**
+ * Documentos legales de la plataforma (privacidad, términos, reembolsos…).
+ * Son de Edvanta, que opera también Feliz Sin Tiroides y AtenFarmaClinic,
+ * así que van con el encabezado y el diseño de Edvanta.
+ */
 import { useEffect } from 'react';
 import { Link, Navigate } from 'react-router-dom';
+import SiteHeader from '../components/edvanta/SiteHeader';
+import SiteFooter from '../components/edvanta/SiteFooter';
+import { Breadcrumb, LandingHero } from '../components/edvanta/ui';
+import { FOOTER_LEGAL } from '../config/navEdvanta';
 import { legalDocs } from '../data/legal';
 import { updatePageSeo } from '../utils/seo';
 
 export default function LegalPage({ doc }) {
+  const data = legalDocs[doc];
+
   useEffect(() => { window.scrollTo(0, 0); }, [doc]);
 
-  const data = legalDocs[doc];
-  if (!data) return <Navigate to="/" replace />;
-
   useEffect(() => {
+    if (!data) return;
     updatePageSeo({
       title: `${data.title} | Edvanta`,
       description: data.sections[0]?.p?.substring(0, 155) || data.title,
@@ -17,47 +26,48 @@ export default function LegalPage({ doc }) {
     });
   }, [data, doc]);
 
+  if (!data) return <Navigate to="/" replace />;
+
   return (
-    <div className="min-h-screen bg-sand-50">
-      {/* Header simple */}
-      <header className="bg-white border-b border-sand-100">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-          <Link to="/feliz-sin-tiroides" className="flex items-center gap-2">
-            <img src="/img/port-logofelizsintiroides.jpg" alt="" className="h-8 w-8 rounded object-cover" />
-            <span className="font-serif font-semibold text-deepblue-900">Feliz Sin Tiroides®</span>
-          </Link>
-          <Link to="/feliz-sin-tiroides" className="text-sm text-teal-600 hover:text-teal-700 font-medium">← Volver</Link>
-        </div>
-      </header>
-
-      {/* Content */}
-      <main className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
-        <p className="text-xs font-bold text-teal-600 uppercase tracking-widest mb-2">Información legal</p>
-        <h1 className="font-serif text-3xl md:text-4xl font-semibold text-deepblue-900 mb-1">{data.title}</h1>
-        <p className="text-sm text-gray-400 mb-10">{data.updated}</p>
-
-        <div className="space-y-8">
-          {data.sections.map((s, i) => (
-            <section key={i}>
-              <h2 className="text-lg font-semibold text-deepblue-900 mb-2">{s.h}</h2>
-              <p className="text-[15px] text-gray-600 leading-relaxed">{s.p}</p>
-            </section>
-          ))}
-        </div>
-
-        {/* Other legal links */}
-        <div className="mt-12 pt-8 border-t border-sand-200">
-          <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-3">Otros documentos</p>
-          <div className="flex flex-wrap gap-x-5 gap-y-2 text-sm">
-            <Link to="/privacidad" className="text-teal-600 hover:text-teal-700">Política de privacidad</Link>
-            <Link to="/tratamiento-de-datos" className="text-teal-600 hover:text-teal-700">Tratamiento de datos</Link>
-            <Link to="/terminos" className="text-teal-600 hover:text-teal-700">Términos y condiciones</Link>
-            <Link to="/reembolsos" className="text-teal-600 hover:text-teal-700">Reembolsos</Link>
-            <Link to="/descargo-medico" className="text-teal-600 hover:text-teal-700">Descargo médico</Link>
-            <Link to="/afiliados" className="text-teal-600 hover:text-teal-700">Aviso de afiliados</Link>
+    <div className="min-h-screen bg-white">
+      <SiteHeader />
+      <LandingHero
+        breadcrumb={<Breadcrumb items={[{ label: 'Inicio', to: '/' }, { label: 'Información legal' }]} className="mb-6" />}
+        eyebrow="Información legal"
+        title={data.title}
+        lead={data.updated}
+      />
+      <main className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
+        <div className="lg:grid lg:grid-cols-[minmax(0,1fr)_240px] lg:gap-12">
+          <div className="ed-prose max-w-[46rem]">
+            {data.sections.map((s) => (
+              <div key={s.h}>
+                <h2>{s.h}</h2>
+                <p>{s.p}</p>
+              </div>
+            ))}
           </div>
+          <aside className="mt-12 lg:mt-0">
+            <nav aria-label="Otros documentos" className="lg:sticky lg:top-36">
+              <p className="mb-3 text-[11px] font-bold uppercase tracking-[.14em] text-edvanta-muted">Otros documentos</p>
+              <ul className="space-y-1 border-l border-edvanta-border">
+                {FOOTER_LEGAL.map((l) => (
+                  <li key={l.to}>
+                    <Link
+                      to={l.to}
+                      aria-current={l.to === `/${doc}` ? 'page' : undefined}
+                      className={`-ml-px block border-l-2 py-1.5 pl-4 text-sm ${l.to === `/${doc}` ? 'border-edvanta-teal font-semibold text-edvanta-blue' : 'border-transparent text-edvanta-muted hover:text-edvanta-blue'}`}
+                    >
+                      {l.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          </aside>
         </div>
       </main>
+      <SiteFooter />
     </div>
   );
 }

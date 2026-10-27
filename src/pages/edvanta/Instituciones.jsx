@@ -72,6 +72,7 @@ export default function Instituciones() {
           breadcrumb={<Breadcrumb items={[{ label: 'Inicio', to: '/' }, { label: 'Para instituciones' }]} className="mb-6" />}
           eyebrow="Para instituciones"
           title="Formación y educación en salud para tu institución"
+          highlight="para tu institución"
           lead="Hospitales, IPS, EPS y empresas del sector pueden contratar formación para sus equipos, programas educativos para sus pacientes, acceso a recursos y producción de materiales. Todo se arma bajo propuesta, según tu población y tus tiempos."
           actions={(
             <>

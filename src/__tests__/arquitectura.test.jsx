@@ -11,7 +11,9 @@ import path from 'node:path';
 import { cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { afterEach, describe, expect, it, vi } from 'vitest';
-import { ESCUELAS_GROUPS, FOOTER_COLUMNS, MAIN_LINKS, RECURSOS_GROUPS, TOP_LINKS } from '../config/navEdvanta';
+import {
+  ESCUELAS_GROUPS, FOOTER_COLUMNS, MAIN_LINKS, NAV_INSTITUCIONES, NAV_PACIENTES, PUBLICOS_NAV, RECURSOS_GROUPS, TOP_LINKS, contextoDe,
+} from '../config/navEdvanta';
 import { ESCUELAS, cursoEnEscuela } from '../data/edvanta/escuelas';
 import { ESTADOS } from '../data/edvanta/estados';
 import {
@@ -32,7 +34,7 @@ function rutasDeLaApp() {
 
 describe('navegación', () => {
   const rutas = rutasDeLaApp();
-  const existe = (to) => rutas.some((r) => r.test(to.split('#')[0]));
+  const existe = (to) => rutas.some((r) => r.test(to.split(/[?#]/)[0]));
 
   it('cada enlace del encabezado y del pie lleva a una ruta que existe', () => {
     const enlaces = [
@@ -40,10 +42,21 @@ describe('navegación', () => {
       ...RECURSOS_GROUPS.flatMap((g) => g.items.map((i) => i.to)),
       ...MAIN_LINKS.map((l) => l.to),
       ...TOP_LINKS.map((l) => l.to),
+      ...PUBLICOS_NAV.map((l) => l.to),
+      ...NAV_PACIENTES.map((l) => l.to),
+      ...NAV_INSTITUCIONES.map((l) => l.to),
       ...FOOTER_COLUMNS.flatMap((c) => c.links.map((l) => l.to)),
     ];
     const rotos = enlaces.filter((to) => !existe(to));
     expect(rotos).toEqual([]);
+  });
+
+  it('la franja de públicos elige el menú según la página', () => {
+    expect(contextoDe('/pacientes/tiroides')).toBe('pacientes');
+    expect(contextoDe('/instituciones')).toBe('instituciones');
+    expect(contextoDe('/empresas/talento')).toBe('instituciones');
+    expect(contextoDe('/cursos')).toBe('profesionales');
+    expect(contextoDe('/pacientesx')).toBe('profesionales');
   });
 
   it('las páginas de cada escuela y producto también existen', () => {
