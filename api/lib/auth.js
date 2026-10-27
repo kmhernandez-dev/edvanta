@@ -6,7 +6,13 @@ const JWT_SECRET = process.env.JWT_SECRET
 const JWT_EXPIRES = '7d';
 
 export function signToken(user) {
-  return jwt.sign({ id: user.id, email: user.email, name: user.name }, JWT_SECRET, { expiresIn: JWT_EXPIRES });
+  // El id puede venir como bigint desde PostgreSQL en algunas herramientas.
+  // En el JWT viaja siempre como texto para que JSON no falle.
+  return jwt.sign(
+    { id: String(user.id), email: user.email, name: user.name },
+    JWT_SECRET,
+    { expiresIn: JWT_EXPIRES },
+  );
 }
 
 export function verifyToken(token) {

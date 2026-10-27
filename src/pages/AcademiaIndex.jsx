@@ -29,7 +29,10 @@ export default function AcademiaIndex() {
   const [weeklyChallenge, setWeeklyChallenge] = useState(null);
 
   useEffect(() => { window.scrollTo(0, 0); }, []);
-  useEffect(() => { if (searchParams.get('login') === '1') setLoginOpen(true); }, [searchParams]);
+  useEffect(() => {
+    if (user) setLoginOpen(false);
+    else if (searchParams.get('login') === '1') setLoginOpen(true);
+  }, [searchParams, user]);
 
   useEffect(() => {
     updatePageSeo({

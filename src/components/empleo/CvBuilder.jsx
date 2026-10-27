@@ -219,7 +219,7 @@ function SkillInput({ onAdd }) {
 const inputCls = 'min-h-10 w-full rounded-lg border border-edvanta-border bg-white px-3 text-sm outline-none transition focus:border-edvanta-blue focus:ring-2 focus:ring-edvanta-blue/15';
 
 export default function CvBuilder() {
-  const { academiaApi, academiaUser, academiaToken, profile: accountProfile } = useAuth();
+  const { user, academiaApi, academiaUser, academiaToken, exchangeSupabaseForAcademia, profile: accountProfile } = useAuth();
   const { professionalProfile, loading: professionalLoading } = useProfessional();
   const [cv, setCv] = useState(EMPTY_CV);
   const [cargoObjetivo, setCargoObjetivo] = useState('');
@@ -256,6 +256,15 @@ export default function CvBuilder() {
       if (guardado?.plantilla) setPlantillaId(guardado.plantilla);
     } catch { /* borrador ilegible: se ignora */ }
   }, []);
+
+  // ── La sesión de Edvanta también abre la cuenta de Academia ──
+  // Quien entró con Google no tiene que volver a registrarse aquí para
+  // guardar su hoja de vida. Si ya existía una cuenta con ese correo, el
+  // contexto abre el aviso de vinculación en vez de duplicarla.
+  useEffect(() => {
+    if (!user || academiaUser || academiaToken) return;
+    exchangeSupabaseForAcademia().catch(() => {});
+  }, [user, academiaUser, academiaToken, exchangeSupabaseForAcademia]);
 
   // ── #analizar en la dirección abre el analizador (enlace «Analizar la que ya tengo») ──
   useEffect(() => {
@@ -392,7 +401,7 @@ export default function CvBuilder() {
 
   const guardar = async () => {
     trackEvent('cv_saved_attempt');
-    if (!academiaUser) { setLoginOpen(true); return; }
+    if (!academiaUser && !user) { setLoginOpen(true); return; }
     setSaveState('saving'); setSaveMsg('');
     try {
       const data = await academiaApi('/api/cv', { method: 'PUT', body: JSON.stringify(stripDraft(cv)) });

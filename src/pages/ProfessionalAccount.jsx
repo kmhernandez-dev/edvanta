@@ -5,6 +5,7 @@ import SiteHeader from '../components/edvanta/SiteHeader';
 import SiteFooter from '../components/edvanta/SiteFooter';
 import { useAuth } from '../context/AuthContext';
 import { useProfessional } from '../context/ProfessionalContext';
+import { safeNextPath } from '../lib/authRedirect';
 import { updatePageSeo } from '../utils/seo';
 import { trackEvent } from '../utils/analytics';
 
@@ -36,11 +37,10 @@ export default function ProfessionalAccount() {
   // que buscarlo de nuevo. Ahora vale cualquier ruta interna, pero solo
   // interna: una barra sola al principio y nada que parezca otro sitio,
   // porque este parámetro llega en la dirección y lo escribe cualquiera.
-  const nextPath = useMemo(() => {
-    const requested = searchParams.get('next') || '';
-    const interna = /^\/(?!\/)[\w\-./?=&%#]*$/.test(requested) && !requested.includes('\\');
-    return interna ? requested : '/app';
-  }, [searchParams]);
+  const nextPath = useMemo(
+    () => safeNextPath(searchParams.get('next'), '/app'),
+    [searchParams],
+  );
 
   useEffect(() => updatePageSeo({
     title: 'Crea tu perfil profesional | Edvanta',
@@ -104,10 +104,19 @@ export default function ProfessionalAccount() {
   const handleGoogle = async () => {
     setFormError('');
     setAuthError('');
+    if (mode === 'register' && !privacyAccepted) {
+      setFormError('Debes aceptar los términos y la política de privacidad antes de crear la cuenta con Google.');
+      return;
+    }
     setSubmitting(true);
+    // En registro, si no venía de una página concreta, la primera parada
+    // es completar el perfil. En ingreso se vuelve al panel.
+    const destino = nextPath === '/app' && mode === 'register'
+      ? '/app/perfil?bienvenida=1'
+      : nextPath;
     // Se vuelve a /app, que espera a que Supabase lea el token, y de ahí
     // a donde la persona quería ir (la ficha de un curso, por ejemplo).
-    const result = await loginWithGoogle({ redirectPath: '/app', next: nextPath });
+    const result = await loginWithGoogle({ redirectPath: '/app', next: destino });
     if (result?.error) setFormError(friendlyAuthError(result.error));
     setSubmitting(false);
   };
@@ -154,6 +163,11 @@ export default function ProfessionalAccount() {
               <button type="button" onClick={handleGoogle} disabled={!supabaseConfigured || submitting} className="mt-6 inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-lg border border-slate-300 bg-white px-4 text-sm font-bold text-slate-800 hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-50">
                 <Globe2 className="h-5 w-5" aria-hidden="true" /> Continuar con Google
               </button>
+              <p className="mt-2 text-center text-[11px] leading-4 text-slate-500">
+                Solo pedimos tu nombre y correo. Al continuar aceptas los{' '}
+                <Link to="/terminos" target="_blank" className="font-semibold text-teal-800">términos</Link> y la{' '}
+                <Link to="/privacidad" target="_blank" className="font-semibold text-teal-800">política de privacidad</Link>.
+              </p>
               <div className="my-5 flex items-center gap-3 text-xs text-slate-400"><span className="h-px flex-1 bg-slate-200" /><span>o usa tu correo</span><span className="h-px flex-1 bg-slate-200" /></div>
 
               <form onSubmit={handleSubmit} className="space-y-4">

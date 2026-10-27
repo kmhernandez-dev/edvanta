@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { ArrowLeft, Check, FileText, LockKeyhole, Save } from 'lucide-react';
 import SiteHeader from '../components/edvanta/SiteHeader';
 import SiteFooter from '../components/edvanta/SiteFooter';
@@ -10,11 +10,13 @@ import { updatePageSeo } from '../utils/seo';
 
 export default function ProfessionalProfilePage() {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
   const { user, profile: accountProfile, loading: authLoading } = useAuth();
   const { professionalProfile, loading, upsertProfessionalProfile } = useProfessional();
   const [draft, setDraft] = useState(null);
   const [saving, setSaving] = useState(false);
   const [message, setMessage] = useState('');
+  const welcome = searchParams.get('bienvenida') === '1';
 
   useEffect(() => updatePageSeo({
     title: 'Editar perfil profesional | Edvanta',
@@ -29,19 +31,28 @@ export default function ProfessionalProfilePage() {
 
   // El perfil se puede abrir y completar cuando la persona quiera.
 
+  // Una cuenta nueva de Google todavía no tiene fila en
+  // professional_profiles. Antes esto dejaba la pantalla cargando para
+  // siempre; ahora el formulario nace vacío (con el nombre de la cuenta)
+  // y se puede completar.
   useEffect(() => {
-    if (professionalProfile) setDraft({
-      display_name: professionalProfile.display_name || accountProfile?.full_name || '',
-      headline: professionalProfile.headline || '',
-      current_role: professionalProfile.current_role || '',
-      experience_level: professionalProfile.experience_level || '',
-      target_career_slug: professionalProfile.target_career_slug || '',
-      professional_summary: professionalProfile.professional_summary || '',
-      city: professionalProfile.city || '',
-      country: professionalProfile.country || '',
-      interests: professionalProfile.interests || [],
+    if (loading) return;
+    setDraft({
+      display_name: professionalProfile?.display_name
+        || accountProfile?.full_name
+        || user?.user_metadata?.full_name
+        || user?.user_metadata?.name
+        || '',
+      headline: professionalProfile?.headline || '',
+      current_role: professionalProfile?.current_role || '',
+      experience_level: professionalProfile?.experience_level || '',
+      target_career_slug: professionalProfile?.target_career_slug || '',
+      professional_summary: professionalProfile?.professional_summary || '',
+      city: professionalProfile?.city || '',
+      country: professionalProfile?.country || accountProfile?.country || '',
+      interests: professionalProfile?.interests || [],
     });
-  }, [professionalProfile, accountProfile]);
+  }, [professionalProfile, accountProfile, user, loading]);
 
   const update = (key, value) => setDraft(current => ({ ...current, [key]: value }));
   const toggleInterest = interest => update('interests', draft.interests.includes(interest) ? draft.interests.filter(item => item !== interest) : [...draft.interests, interest]);
@@ -60,7 +71,7 @@ export default function ProfessionalProfilePage() {
       professional_summary: draft.professional_summary.trim() || null,
       city: draft.city.trim() || null,
       country: draft.country.trim() || null,
-      target_path_slug: career?.pathSlug || professionalProfile.target_path_slug,
+      target_path_slug: career?.pathSlug || professionalProfile?.target_path_slug || null,
       onboarding_completed: true,
     });
     setSaving(false);
@@ -84,6 +95,12 @@ export default function ProfessionalProfilePage() {
         </section>
 
         <section className="mx-auto max-w-4xl px-4 py-10 sm:px-6 lg:px-8">
+          {welcome && !professionalProfile && (
+            <div className="mb-6 rounded-lg border border-teal-200 bg-teal-50 p-4">
+              <p className="text-sm font-bold text-teal-900">Tu cuenta de Edvanta ya está creada</p>
+              <p className="mt-1 text-sm leading-6 text-teal-800">Completa los datos que faltan para que tus cursos guardados, rutas y recomendaciones tengan contexto. Puedes cambiarlos cuando quieras.</p>
+            </div>
+          )}
           <form onSubmit={save} className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm sm:p-8">
             <div className="grid gap-5 sm:grid-cols-2">
               <label className="text-sm font-bold text-slate-700">Nombre para mostrar<input value={draft.display_name} onChange={event => update('display_name', event.target.value)} className="mt-2 min-h-11 w-full rounded-lg border border-slate-300 px-3 font-normal outline-none focus:border-teal-600 focus:ring-2 focus:ring-teal-100" /></label>

@@ -22,21 +22,14 @@
 
 import { Navigate, useSearchParams } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-
-/** Solo rutas de esta plataforma: el destino viaja en la dirección. */
-function rutaInterna(valor) {
-  if (typeof valor !== 'string') return null;
-  const limpia = valor.trim();
-  if (!/^\/(?!\/)[\w\-./?=&%#]*$/.test(limpia) || limpia.includes('\\')) return null;
-  // Volver aquí nos dejaría dando vueltas.
-  if (limpia === '/app' || limpia.startsWith('/app?')) return null;
-  return limpia;
-}
+import { safeNextPath } from '../lib/authRedirect';
 
 export default function VolviendoDeAcceso() {
   const { user, loading, supabaseConfigured } = useAuth();
   const [params] = useSearchParams();
-  const destino = rutaInterna(params.get('next')) || '/aula';
+  // Solo rutas de esta plataforma: el destino viaja en la dirección. Las
+  // pantallas de acceso se descartan para no volver a empezar el bucle.
+  const destino = safeNextPath(params.get('next'), '/aula');
 
   if (loading && supabaseConfigured) {
     return (

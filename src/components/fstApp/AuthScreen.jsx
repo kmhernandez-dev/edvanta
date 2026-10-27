@@ -11,7 +11,7 @@
  */
 
 import { useEffect, useState } from 'react';
-import { Link, useSearchParams } from 'react-router-dom';
+import { Link, useLocation, useSearchParams } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import { supabaseConfigured } from '../../lib/supabase';
 
@@ -64,6 +64,7 @@ function friendlyError(raw) {
 
 export default function AuthScreen({ onSuccess }) {
   const [searchParams] = useSearchParams();
+  const location = useLocation();
   const requestedMode = searchParams.get('modo');
   const { login, register, loginWithGoogle, resetPassword, resendConfirmationEmail, authError, setAuthError, loading } = useAuth();
   const [mode, setMode] = useState(requestedMode === 'registro' ? 'register' : 'login');
@@ -107,8 +108,15 @@ export default function AuthScreen({ onSuccess }) {
   const handleGoogle = async () => {
     setFormError('');
     setAuthError('');
+    if (mode === 'register' && !privacyAccepted) {
+      setFormError('Debes aceptar los términos y la política de privacidad antes de crear la cuenta con Google.');
+      return;
+    }
     try {
-      const result = await loginWithGoogle();
+      // Se vuelve exactamente a la pantalla que la persona estaba usando
+      // (NutriFST, menús, síntomas...), no siempre al panel.
+      const current = `${location.pathname}${location.search}`;
+      const result = await loginWithGoogle({ redirectPath: current });
       if (result?.error) setFormError(friendlyError(result.error));
     } catch (err) {
       setFormError(friendlyError(err.message));
@@ -242,6 +250,11 @@ export default function AuthScreen({ onSuccess }) {
               >
                 <GoogleIcon /> Continuar con Google
               </button>
+              <p className="mt-2 text-center text-[11px] leading-4 text-slate-500">
+                Solo pedimos tu nombre y correo. Al continuar aceptas los{' '}
+                <Link to="/terminos" target="_blank" className="font-semibold text-[#0B8176]">términos</Link> y la{' '}
+                <Link to="/privacidad" target="_blank" className="font-semibold text-[#0B8176]">política de privacidad</Link>.
+              </p>
               {googleEnabled === false && (
                 <p className="mt-2 rounded-xl border border-amber-200 bg-amber-50 p-3 text-xs leading-5 text-amber-800">
                   El acceso con Google aún no está habilitado en la plataforma. Usa "Crear mi cuenta" con correo y contraseña.

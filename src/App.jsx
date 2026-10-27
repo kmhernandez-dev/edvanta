@@ -91,6 +91,7 @@ import CartDrawer    from './components/CartDrawer';
 import CartToast     from './components/CartToast';
 import PaymentStatus from './components/PaymentStatus';
 import AnalyticsConsent from './components/AnalyticsConsent';
+import AcademiaLinkModal from './components/AcademiaLinkModal';
 
 /**
  * Carrito, avisos de compra y resultado de pago van en todo el sitio,
@@ -396,6 +397,7 @@ export default function App() {
       {/* Globales: carrito, toast y resultado de pago (fuera del aula) y consentimiento */}
       <StoreGlobals />
       <AnalyticsConsent />
+      <AcademiaLinkModal />
       </ProfessionalProvider>
     </AuthProvider>
   );
