@@ -13,7 +13,9 @@
  * ============================================================
  */
 
-import { badRequest, bool, email, notFound, oneOf, str } from './http.js';
+import {
+  badRequest, bool, calendarDate, email, int, notFound, oneOf, str, strList,
+} from './http.js';
 import { audit } from './audit.js';
 
 export const TIPOS = ['interes', 'propuesta', 'contacto'];
@@ -35,9 +37,22 @@ export const TIPOS_DE_INSTITUCION = {
   ips: 'IPS',
   eps: 'EPS',
   laboratorio: 'Laboratorio farmacéutico',
+  fabricante: 'Fabricante o maquilador',
+  distribuidor: 'Distribuidor u operador farmacéutico',
   distribuidora: 'Distribuidora o droguería',
+  drogueria: 'Droguería',
+  farmacia: 'Farmacia',
+  'central-mezclas': 'Central de mezclas',
   empresa: 'Otra empresa',
-  otra: 'Otra institución',
+  otra: 'Otra organización del sector salud',
+};
+
+export const MODALIDADES = {
+  'en-vivo': 'Sesiones en vivo por videollamada',
+  aula: 'Cohorte cerrada en el aula virtual',
+  combinada: 'Formación combinada',
+  diseno: 'Diseño a medida',
+  'por-definir': 'Por definir con la institución',
 };
 
 const REFERENCIA = /^[a-z0-9][a-z0-9-]{0,79}$/;
@@ -63,6 +78,18 @@ export function leerSolicitud(body = {}) {
   const mensaje = str(body.mensaje, 'mensaje', 'El mensaje', {
     optional: tipo !== 'contacto', max: 1500,
   });
+  const areas = strList(body.areas, 'areas', 'Las áreas de interés', { maxItems: 20, maxLength: 120 });
+  const perfiles = strList(body.perfiles, 'perfiles', 'Los perfiles', { maxItems: 20, maxLength: 120 });
+  const participantes = int(body.participantes, 'participantes', 'El número de participantes', {
+    min: 1, max: 100000, optional: true,
+  });
+  const modalidad = oneOf(body.modalidad, 'modalidad', 'La modalidad', Object.keys(MODALIDADES), { optional: true });
+  const resultadoEsperado = str(body.resultadoEsperado, 'resultadoEsperado', 'La necesidad o resultado esperado', {
+    optional: true, max: 1500,
+  });
+  const pais = str(body.pais, 'pais', 'El país', { optional: true, max: 80 });
+  const ciudad = str(body.ciudad, 'ciudad', 'La ciudad', { optional: true, max: 80 });
+  const fechaTentativa = calendarDate(body.fechaTentativa, 'fechaTentativa', 'La fecha tentativa', { optional: true });
 
   if (body.aceptaTratamiento !== true) {
     throw badRequest('Para responderte necesitamos tu autorización para usar estos datos.', { field: 'aceptaTratamiento' });
@@ -78,11 +105,25 @@ export function leerSolicitud(body = {}) {
     institucion,
     tipoInstitucion: oneOf(body.tipoInstitucion, 'tipoInstitucion', 'El tipo de institución', Object.keys(TIPOS_DE_INSTITUCION), { optional: true }),
     cargo: str(body.cargo, 'cargo', 'El cargo', { optional: true, max: 120 }),
+    areas,
+    perfiles,
+    participantes,
+    modalidad,
+    resultadoEsperado,
+    pais,
+    ciudad,
+    fechaTentativa,
     mensaje,
     aceptaNovedades: bool(body.aceptaNovedades, 'aceptaNovedades', 'La autorización de novedades', { optional: true, fallback: false }),
     origen: str(body.origen, 'origen', 'La página de origen', { optional: true, max: 255 }),
   };
 }
+
+const fechaTexto = (v) => {
+  if (!v) return null;
+  if (v instanceof Date) return v.toISOString().slice(0, 10);
+  return String(v).slice(0, 10);
+};
 
 const aFila = (r) => ({
   id: r.id,
@@ -97,6 +138,15 @@ const aFila = (r) => ({
   tipoInstitucion: r.tipo_institucion,
   tipoInstitucionTexto: r.tipo_institucion ? TIPOS_DE_INSTITUCION[r.tipo_institucion] || r.tipo_institucion : null,
   cargo: r.cargo,
+  areas: r.areas || [],
+  perfiles: r.perfiles || [],
+  participantes: r.participantes,
+  modalidad: r.modalidad,
+  modalidadTexto: r.modalidad ? MODALIDADES[r.modalidad] || r.modalidad : null,
+  resultadoEsperado: r.resultado_esperado,
+  pais: r.pais,
+  ciudad: r.ciudad,
+  fechaTentativa: fechaTexto(r.fecha_tentativa),
   mensaje: r.mensaje,
   aceptaNovedades: r.acepta_novedades,
   origen: r.origen,
@@ -110,12 +160,16 @@ export async function crearSolicitud(db, s) {
   const { rows } = await db.query(
     `INSERT INTO solicitudes
        (tipo, referencia, nombre, correo, whatsapp, rol, institucion, tipo_institucion,
-        cargo, mensaje, acepta_tratamiento, acepta_novedades, origen)
-     VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, TRUE, $11, $12)
+        cargo, areas, perfiles, participantes, modalidad, resultado_esperado, pais, ciudad,
+        fecha_tentativa, mensaje, acepta_tratamiento, acepta_novedades, origen)
+     VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16,
+             $17, $18, TRUE, $19, $20)
      RETURNING *`,
     [
       s.tipo, s.referencia, s.nombre, s.correo, s.whatsapp, s.rol, s.institucion,
-      s.tipoInstitucion, s.cargo, s.mensaje, s.aceptaNovedades, s.origen,
+      s.tipoInstitucion, s.cargo, s.areas, s.perfiles, s.participantes, s.modalidad,
+      s.resultadoEsperado, s.pais, s.ciudad, s.fechaTentativa, s.mensaje,
+      s.aceptaNovedades, s.origen,
     ],
   );
   return aFila(rows[0]);
@@ -203,6 +257,13 @@ export function avisoDeSolicitud(s, siteUrl) {
     ['Institución', s.institucion],
     ['Tipo de institución', s.tipoInstitucionTexto],
     ['Cargo', s.cargo],
+    ['Áreas de interés', (s.areas || []).join(', ')],
+    ['Perfiles', (s.perfiles || []).join(', ')],
+    ['Participantes', s.participantes],
+    ['Modalidad', s.modalidadTexto],
+    ['Necesidad o resultado esperado', s.resultadoEsperado],
+    ['Ubicación', [s.ciudad, s.pais].filter(Boolean).join(', ')],
+    ['Fecha tentativa', s.fechaTentativa],
     ['Mensaje', s.mensaje],
     ['Acepta novedades', s.aceptaNovedades ? 'Sí' : 'No'],
     ['Página', s.origen],

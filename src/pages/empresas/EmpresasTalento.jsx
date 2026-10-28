@@ -207,7 +207,7 @@ export default function EmpresasTalento() {
               </span>
               <p className="mt-4 text-base font-bold text-edvanta-deep">¿Ya contrataste? Capacítalo</p>
               <p className="mt-1.5 text-sm leading-6 text-edvanta-muted">Monta la inducción y la formación técnica en el aula virtual de tu empresa.</p>
-              <ArrowLink to="/instituciones#equipo-que-cuida" className="mt-4">Ver formación para equipos</ArrowLink>
+              <ArrowLink to="/instituciones/paquetes/equipo-que-cuida" className="mt-4">Ver formación para equipos</ArrowLink>
             </Card>
             <Card hover>
               <span className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-edvanta-lilac text-[#5E51A8]">

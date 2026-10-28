@@ -305,7 +305,7 @@ export default function EmpleoPage() {
                 <ArrowLink to="/empresas/talento" className="mt-4">Entrar como empresa</ArrowLink>
                 <p className="mt-6 border-t border-edvanta-border pt-4 text-sm leading-6 text-edvanta-muted">
                   ¿Necesitas capacitar al equipo que ya tienes?{' '}
-                  <Link to="/instituciones#equipo-que-cuida" className="font-bold text-edvanta-blue hover:underline">Ver formación para equipos</Link>.
+                  <Link to="/instituciones/paquetes/equipo-que-cuida" className="font-bold text-edvanta-blue hover:underline">Ver formación para equipos</Link>.
                 </p>
               </Card>
             </div>

@@ -42,6 +42,39 @@ describe('App carga sin errores', () => {
     expect(reactErrors.length).toBe(0);
   });
 
+  it('abre por URL directa un área y un paquete institucional', async () => {
+    capturedErrors = [];
+    const { unmount } = render(
+      <MemoryRouter initialEntries={['/empresas/regentes-de-farmacia']}>
+        <AuthProvider>
+          <CartProvider>
+            <App />
+          </CartProvider>
+        </AuthProvider>
+      </MemoryRouter>
+    );
+    await waitFor(() => {
+      expect(screen.getByRole('heading', { level: 1, name: /Capacitación para regentes de farmacia/i })).toBeTruthy();
+    }, { timeout: 8000 });
+    unmount();
+
+    render(
+      <MemoryRouter initialEntries={['/instituciones/paquetes/equipo-que-cuida']}>
+        <AuthProvider>
+          <CartProvider>
+            <App />
+          </CartProvider>
+        </AuthProvider>
+      </MemoryRouter>
+    );
+    await waitFor(() => {
+      expect(screen.getByRole('heading', { level: 1, name: /Equipo que Cuida: formación para el talento humano/i })).toBeTruthy();
+    }, { timeout: 8000 });
+
+    const fatalErrors = capturedErrors.filter(e => /(TypeError|ReferenceError|is not defined|is not a function|Cannot read)/.test(e));
+    expect(fatalErrors.length).toBe(0);
+  }, 20000);
+
   it('renderiza /fst-app sin lanzar excepciones', async () => {
     capturedErrors = [];
     render(

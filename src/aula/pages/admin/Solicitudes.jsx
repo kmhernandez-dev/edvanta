@@ -71,6 +71,12 @@ function Fila({ s, onCambio }) {
     ['Rol', s.rolTexto],
     ['Institución', [s.institucion, s.tipoInstitucionTexto].filter(Boolean).join(' · ')],
     ['Cargo', s.cargo],
+    ['Áreas de interés', (s.areas || []).join(', ')],
+    ['Perfiles', (s.perfiles || []).join(', ')],
+    ['Participantes', s.participantes],
+    ['Modalidad', s.modalidadTexto],
+    ['Ubicación', [s.ciudad, s.pais].filter(Boolean).join(', ')],
+    ['Fecha tentativa', s.fechaTentativa],
     ['Página', s.origen],
     ['Novedades', s.aceptaNovedades ? 'Aceptó recibir novedades' : 'Solo para responder esta solicitud'],
   ].filter(([, v]) => v);
@@ -106,6 +112,13 @@ function Fila({ s, onCambio }) {
           </div>
         ))}
       </dl>
+
+      {s.resultadoEsperado && (
+        <div className="mt-3 rounded-[var(--aula-radius-sm)] bg-[var(--aula-neutral-soft)] p-3">
+          <p className="text-xs font-bold text-[var(--aula-muted)]">Necesidad o resultado esperado</p>
+          <p className="mt-1 whitespace-pre-wrap text-sm leading-6 text-[var(--aula-text)]">{s.resultadoEsperado}</p>
+        </div>
+      )}
 
       {s.mensaje && (
         <p className="mt-3 whitespace-pre-wrap rounded-[var(--aula-radius-sm)] bg-[var(--aula-neutral-soft)] p-3 text-sm leading-6 text-[var(--aula-text)]">

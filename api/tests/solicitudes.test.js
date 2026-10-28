@@ -65,6 +65,42 @@ describe('solicitudes de la web', () => {
     expect(ok.status).toBe(201);
   });
 
+  it('una propuesta guarda varias áreas, perfiles y datos de alcance', async () => {
+    const r = await t.client().post('/solicitudes', {
+      tipo: 'propuesta',
+      referencia: 'equipo-que-cuida',
+      nombre: 'Marta Ruiz',
+      correo: 'marta@lab.co',
+      cargo: 'Jefa de calidad',
+      institucion: 'Laboratorio del Caribe',
+      tipoInstitucion: 'laboratorio',
+      areas: ['Regentes de farmacia', 'Aseguramiento de la calidad'],
+      perfiles: ['Equipos de calidad', 'Regentes de farmacia'],
+      participantes: 30,
+      modalidad: 'combinada',
+      resultadoEsperado: 'Alinear criterios antes de una revisión interna.',
+      pais: 'Colombia',
+      ciudad: 'Barranquilla',
+      fechaTentativa: '2026-11-20',
+      aceptaTratamiento: true,
+    });
+    expect(r.status).toBe(201);
+
+    const { rows } = await t.db.query('SELECT * FROM solicitudes WHERE id = $1', [r.data.id]);
+    expect(rows[0].areas).toEqual(['Regentes de farmacia', 'Aseguramiento de la calidad']);
+    expect(rows[0].perfiles).toEqual(['Equipos de calidad', 'Regentes de farmacia']);
+    expect(rows[0].participantes).toBe(30);
+    expect(rows[0].modalidad).toBe('combinada');
+    expect(rows[0].pais).toBe('Colombia');
+    expect(rows[0].ciudad).toBe('Barranquilla');
+
+    const lista = await admin.get('/admin/solicitudes');
+    const guardada = lista.data.solicitudes.find((s) => s.id === r.data.id);
+    expect(guardada.areas).toEqual(['Regentes de farmacia', 'Aseguramiento de la calidad']);
+    expect(guardada.modalidadTexto).toBe('Formación combinada');
+    expect(guardada.fechaTentativa).toBe('2026-11-20');
+  });
+
   it('rechaza un rol o una referencia que no existen', async () => {
     const r1 = await t.client().post('/solicitudes', { ...base, correo: 'c@prueba.co', rol: 'director-general' });
     expect(r1.status).toBe(400);

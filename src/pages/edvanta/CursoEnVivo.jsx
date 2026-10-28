@@ -167,7 +167,7 @@ export default function CursoEnVivo() {
                 <p className="mt-1.5 text-sm leading-6 text-edvanta-muted">
                   Se puede abrir como cohorte cerrada para tu droguería, clínica u hospital.
                 </p>
-                <Btn to="/instituciones#equipo-que-cuida" variant="secondary" size="sm" className="mt-3">Ver formación para equipos</Btn>
+                <Btn to="/instituciones/paquetes/equipo-que-cuida" variant="secondary" size="sm" className="mt-3">Ver formación para equipos</Btn>
               </div>
             </div>
             <Card>

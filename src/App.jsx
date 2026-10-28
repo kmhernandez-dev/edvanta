@@ -74,6 +74,8 @@ const Guias = lazy(() => import('./pages/edvanta/Guias'));
 const Pacientes = lazy(() => import('./pages/edvanta/Pacientes'));
 const PacientesTiroides = lazy(() => import('./pages/edvanta/PacientesTiroides'));
 const Instituciones = lazy(() => import('./pages/edvanta/Instituciones'));
+const CapacitacionArea = lazy(() => import('./pages/edvanta/CapacitacionArea'));
+const PaqueteInstitucional = lazy(() => import('./pages/edvanta/PaqueteInstitucional'));
 const SobreEdvanta = lazy(() => import('./pages/edvanta/SobreEdvanta'));
 const Contacto = lazy(() => import('./pages/edvanta/Contacto'));
 
@@ -218,6 +220,7 @@ export default function App() {
         <Route path="/pacientes" element={<Pacientes />} />
         <Route path="/pacientes/tiroides" element={<PacientesTiroides />} />
         <Route path="/instituciones" element={<Instituciones />} />
+        <Route path="/instituciones/paquetes/:slug" element={<PaqueteInstitucional />} />
         <Route path="/sobre-edvanta" element={<SobreEdvanta />} />
         <Route path="/contacto" element={<Contacto />} />
 
@@ -229,6 +232,12 @@ export default function App() {
 
         {/* Marca: Feliz Sin Tiroides (pacientes) */}
         <Route path="/feliz-sin-tiroides" element={<FelizSinTiroides />} />
+        <Route path="/feliz-sin-tiroides/guias" element={<Navigate to="/feliz-sin-tiroides#ebooks" replace />} />
+        <Route path="/feliz-sin-tiroides/herramientas" element={<Navigate to="/fst-app" replace />} />
+        <Route path="/feliz-sin-tiroides/academy" element={<Navigate to="/academia" replace />} />
+        <Route path="/feliz-sin-tiroides/atencion-farmaceutica" element={<Navigate to="/feliz-sin-tiroides#atencion" replace />} />
+        <Route path="/feliz-sin-tiroides/sobre-mi" element={<Navigate to="/sobre-edvanta" replace />} />
+        <Route path="/feliz-sin-tiroides/comunidad" element={<Navigate to="/feliz-sin-tiroides#comunidad" replace />} />
         <Route path="/nutrifst" element={<NutriFstPublic />} />
 
         {/* Recurso gratis interactivo: guía PDF de levotiroxina (descarga + reseñas) */}
@@ -340,8 +349,10 @@ export default function App() {
         {/* /empresas y /empresas/capacitacion se fusionaron en /instituciones.
             nginx responde 301; esto cubre la navegación dentro del sitio. */}
         <Route path="/empresas" element={<Navigate to="/instituciones" replace />} />
-        <Route path="/empresas/capacitacion" element={<Navigate to="/instituciones#equipo-que-cuida" replace />} />
+        <Route path="/empresas/capacitacion" element={<Navigate to="/instituciones/paquetes/equipo-que-cuida" replace />} />
         <Route path="/empresas/talento" element={<EmpresasTalento />} />
+        {/* Landings por área de capacitación (catálogo de /instituciones). */}
+        <Route path="/empresas/:slug" element={<CapacitacionArea />} />
 
         {/* Vitrina de talento (lado del profesional) */}
         <Route path="/talento" element={<TalentoVitrina />} />

@@ -287,7 +287,7 @@ export default function BibliotecaHome() {
         </div>
         <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {PAQUETES.map((p) => (
-            <Link key={p.slug} to={`/instituciones#${p.slug}`} className="group ds-card ds-card--interactive flex h-full flex-col overflow-hidden">
+            <Link key={p.slug} to={`/instituciones/paquetes/${p.slug}`} className="group ds-card ds-card--interactive flex h-full flex-col overflow-hidden">
               {p.imagen && (
                 <div className="aspect-[16/10] overflow-hidden">
                   <img src={p.imagen} alt="" width="1200" height="800" loading="lazy" decoding="async" className="h-full w-full object-cover transition duration-700 group-hover:scale-[1.05]" />

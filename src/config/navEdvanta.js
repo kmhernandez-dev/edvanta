@@ -93,8 +93,8 @@ export const NAV_PACIENTES = [
 ];
 
 export const NAV_INSTITUCIONES = [
-  { label: 'Qué ofrecemos', to: '/instituciones' },
-  { label: 'Paquetes', to: '/instituciones#equipo-que-cuida' },
+  { label: 'Áreas de capacitación', to: '/instituciones#catalogo' },
+  { label: 'Paquetes', to: '/instituciones#paquetes' },
   { label: 'Directorio de talento', to: '/empresas/talento' },
   { label: 'Solicitar propuesta', to: '/instituciones#solicitar-propuesta' },
 ];
@@ -135,7 +135,9 @@ export const FOOTER_COLUMNS = [
   {
     title: 'Instituciones',
     links: [
-      { label: 'Para instituciones', to: '/instituciones' },
+      { label: 'Capacitación para organizaciones', to: '/instituciones' },
+      { label: 'Áreas de capacitación', to: '/instituciones#catalogo' },
+      { label: 'Equipo que Cuida', to: '/instituciones/paquetes/equipo-que-cuida' },
       { label: 'Solicitar una propuesta', to: '/instituciones#solicitar-propuesta' },
       { label: 'Directorio de talento', to: '/empresas/talento' },
       { label: 'Aula virtual', to: '/aula' },

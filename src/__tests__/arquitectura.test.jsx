@@ -21,6 +21,7 @@ import {
 } from '../data/edvanta/productos';
 import { RUTAS_CONTIGO } from '../data/edvanta/programas';
 import { PAQUETES } from '../data/edvanta/servicios';
+import { AREAS_CAPACITACION, areaPorSlug } from '../data/edvanta/capacitacion';
 import FormularioSolicitud from '../components/formularios/FormularioSolicitud';
 
 /** Las rutas declaradas en App.jsx, como expresiones regulares. */
@@ -63,6 +64,17 @@ describe('navegación', () => {
     for (const e of ESCUELAS) expect(existe(`/escuelas/${e.slug}`)).toBe(true);
     for (const p of PRODUCTOS) if (p.to) expect(existe(p.to)).toBe(true);
     for (const r of RUTAS_CONTIGO) if (r.to) expect(existe(r.to)).toBe(true);
+  });
+
+  it('cada área de capacitación y cada paquete institucional tiene su ruta', () => {
+    for (const a of AREAS_CAPACITACION) {
+      expect(existe(`/empresas/${a.slug}`), a.slug).toBe(true);
+      for (const r of a.relacionados) expect(areaPorSlug(r), `${a.slug} -> ${r}`).toBeTruthy();
+    }
+    for (const p of PAQUETES) {
+      expect(existe(`/instituciones/paquetes/${p.slug}`), p.slug).toBe(true);
+      for (const r of p.areasRelacionadas || []) expect(areaPorSlug(r), `${p.slug} -> ${r}`).toBeTruthy();
+    }
   });
 });
 
