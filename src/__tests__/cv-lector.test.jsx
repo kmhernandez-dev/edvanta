@@ -150,7 +150,10 @@ describe('hoja de vida · orden de lectura del PDF', () => {
     expect(ordenarPagina(items, 600)).toEqual({ texto: 'Primera línea\nSegunda línea', columnas: 1 });
   });
 
-  it('en dos columnas lee el encabezado, luego la izquierda y luego la derecha', () => {
+  // La columna con más texto (la principal) va antes que la barra lateral,
+  // aunque la barra esté a la izquierda: así el nombre, el perfil y la
+  // experiencia quedan al comienzo, como los lee un reclutador.
+  it('en dos columnas lee el encabezado, luego la columna principal y después la barra lateral', () => {
     const items = [
       it2('KARLA HERNÁNDEZ QUÍMICA FARMACÉUTICA', 40, 800, 420),
       // barra lateral
@@ -165,8 +168,14 @@ describe('hoja de vida · orden de lectura del PDF', () => {
     expect(columnas).toBe(2);
     const lineas = texto.split('\n').filter(Boolean);
     expect(lineas[0]).toBe('KARLA HERNÁNDEZ QUÍMICA FARMACÉUTICA');
-    expect(lineas.indexOf('Power BI')).toBeLessThan(lineas.indexOf('PERFIL PROFESIONAL'));
+    expect(lineas.indexOf('Lideré 4 validaciones')).toBeLessThan(lineas.indexOf('CONTACTO'));
+    expect(lineas.indexOf('BPM')).toBeLessThan(lineas.indexOf('Power BI'));
     expect(lineas.indexOf('EXPERIENCIA LABORAL')).toBeLessThan(lineas.indexOf('Analista de calidad'));
+  });
+
+  it('separa en líneas lo que comparte altura pero está lejos (etiqueta y contenido)', () => {
+    const items = [it2('PERFIL', 50, 700), it2('Química farmacéutica con 6 años', 200, 700)];
+    expect(ordenarPagina(items, 600).texto).toBe('PERFIL\nQuímica farmacéutica con 6 años');
   });
 
   it('normaliza viñetas y ligaduras', () => {
@@ -237,7 +246,7 @@ Dispensación y control de vencimientos.`, { hoy: HOY });
     ]);
   });
 
-  it('genera el PDF oficial con metadatos y nombre de archivo ordenado', async () => {
+  it('genera el PDF tamaño carta con metadatos y nombre de archivo ordenado', async () => {
     const { generarCvPdf, nombreArchivo } = await import('../lib/cv/pdf');
     const cv = {
       nombre: 'Karla María Hernández', titulo: 'Química farmacéutica', email: 'k@correo.com', telefono: '+57 300 000 0000',
@@ -246,13 +255,17 @@ Dispensación y control de vencimientos.`, { hoy: HOY });
       educacion: [{ titulo: 'Química Farmacéutica', institucion: 'Universidad', anio: '2017' }],
       habilidades: ['BPM', 'HPLC'], certificaciones: [], idiomas: [{ idioma: 'Inglés', nivel: 'B2' }], referencias: [],
     };
-    const doc = await generarCvPdf(cv, 'Analista de calidad', 'edvanta', { comprimir: false });
+    const doc = await generarCvPdf(cv, 'Analista de calidad', 'corporativo', { comprimir: false });
     expect(doc.getNumberOfPages()).toBe(1);
+    // Carta: 8,5 × 11 pulgadas
+    expect(Math.round(doc.internal.pageSize.getWidth())).toBe(216);
+    expect(Math.round(doc.internal.pageSize.getHeight())).toBe(279);
     const crudo = doc.output();
-    expect(crudo).toContain('PERFIL PROFESIONAL');
-    expect(crudo).toContain('EXPERIENCIA');
+    expect(crudo).toContain('Perfil profesional');
+    expect(crudo).toContain('Experiencia laboral');
     expect(nombreArchivo(cv, 'Analista de calidad')).toBe('Karla-Hernandez-Analista-de-calidad.pdf');
-    expect(nombreArchivo(cv, '', 'ats')).toBe('Karla-Hernandez-ATS.pdf');
+    expect(nombreArchivo(cv, '')).toBe('Karla-Hernandez.pdf');
+    // Los nombres de los diseños anteriores se traducen al equivalente actual.
     const ats = await generarCvPdf(cv, '', 'ats', { comprimir: false });
     expect(ats.output()).toContain('Karla Mar');
     expect(ats.output()).not.toContain('[object Object]');
@@ -294,12 +307,15 @@ describe('hoja de vida · ayudas para escribir rápido', () => {
     expect(sugerenciasDeLogros('analista-calidad', [yaUsado])).not.toContain(yaUsado);
   });
 
-  it('el catálogo de diseños incluye el oficial, las plantillas y el formato plano', async () => {
+  it('el catálogo tiene los diez diseños nuevos y traduce los anteriores', async () => {
     const { DISENOS, disenoPorId } = await import('../components/empleo/plantillasUi');
-    expect(DISENOS.length).toBe(9);
-    expect(DISENOS[0].id).toBe('edvanta');
-    expect(DISENOS.at(-1).id).toBe('ats');
-    expect(DISENOS.filter((d) => d.foto).map((d) => d.id)).toEqual(['ejecutiva', 'azul']);
-    expect(disenoPorId('no-existe').id).toBe('edvanta');
+    expect(DISENOS.map((d) => d.id)).toEqual([
+      'corporativo', 'tradicional', 'columna-derecha', 'modular', 'funcional',
+      'clasico', 'barra-lateral', 'moderno', 'linea-tiempo', 'ejecutivo',
+    ]);
+    expect(DISENOS.filter((d) => d.foto).map((d) => d.id)).toEqual(['columna-derecha', 'barra-lateral', 'moderno']);
+    expect(disenoPorId('no-existe').id).toBe('corporativo');
+    expect(disenoPorId('ats').id).toBe('tradicional');
+    expect(disenoPorId('ejecutiva').id).toBe('barra-lateral');
   });
 });

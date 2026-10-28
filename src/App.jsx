@@ -61,6 +61,7 @@ const HerramientasPage = lazy(() => import('./pages/HerramientasPage'));
 const EmpresasTalento = lazy(() => import('./pages/empresas/EmpresasTalento'));
 const TalentoVitrina = lazy(() => import('./pages/TalentoVitrina'));
 const HojaDeVida = lazy(() => import('./pages/HojaDeVida'));
+const HojaDeVidaCrear = lazy(() => import('./pages/HojaDeVidaCrear'));
 const CorreosRRHH = lazy(() => import('./pages/empleo/CorreosRRHH'));
 const BuscarPage = lazy(() => import('./pages/BuscarPage'));
 const ComunidadPage = lazy(() => import('./pages/ComunidadPage'));
@@ -338,6 +339,7 @@ export default function App() {
         <Route path="/vocacion" element={<Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-edvanta-bg text-sm font-semibold text-slate-600">Cargando orientación vocacional...</div>}><VocacionPage /></Suspense>} />
         <Route path="/empleo" element={<Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-edvanta-bg text-sm font-semibold text-slate-600">Cargando centro de empleo...</div>}><EmpleoPage /></Suspense>} />
         <Route path="/hoja-de-vida" element={<HojaDeVida />} />
+        <Route path="/hoja-de-vida/crear" element={<HojaDeVidaCrear />} />
         <Route path="/empleo/correos" element={<CorreosRRHH />} />
         <Route path="/empleo/ofertas-qf" element={<Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-edvanta-bg text-sm font-semibold text-slate-600">Cargando ofertas...</div>}><OfertasQFPage /></Suspense>} />
         <Route path="/practicas" element={<Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-edvanta-bg text-sm font-semibold text-slate-600">Cargando guía de prácticas...</div>}><PracticasPage /></Suspense>} />

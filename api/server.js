@@ -50,6 +50,7 @@ import retosRoutes from './routes/retos.js';
 import adminRetosRoutes from './routes/admin-retos.js';
 import communityRoutes from './routes/community.js';
 import cvRoutes from './routes/cv.js';
+import cvIaRoutes from './routes/cv-ia.js';
 import articleCommentsRoutes from './routes/article-comments.js';
 import fstClicksRoutes from './routes/fst-clicks.js';
 import vida360Routes from './routes/vida360.js';
@@ -314,6 +315,9 @@ app.use('/api/community', communityRoutes);
 
 // Hoja de vida profesional guardada por usuario de Academia
 app.use('/api/cv', cvRoutes);
+
+// Lectura y revisión de hojas de vida con IA (clave solo en el servidor)
+app.use('/api/cv-ia', cvIaRoutes);
 
 // Aula virtual empresarial (cuentas propias, sesiones por cookie)
 const aulaDb = fromPgPool(pool);

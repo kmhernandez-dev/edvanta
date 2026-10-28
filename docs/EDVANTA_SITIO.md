@@ -181,7 +181,7 @@ node scripts/auditar-enlaces.cjs
 
 | Herramienta | Componente | Dónde se usa |
 | --- | --- | --- |
-| Creador de hoja de vida | `src/components/empleo/CvBuilder.jsx` | `/hoja-de-vida` |
+| Hoja de vida (la herramienta sola) | `src/components/empleo/EditorHojaDeVida.jsx` | `/hoja-de-vida/crear` (la landing es `/hoja-de-vida`) |
 | Plantillas de correo | `src/pages/empleo/CorreosRRHH.jsx` | `/empleo/correos` |
 | Directorio de talento | `src/components/edvanta/talento.jsx` | `/empresas/talento` |
 | Publicar perfil | `src/components/edvanta/talento.jsx` | `/talento` |
@@ -191,40 +191,63 @@ El creador de hoja de vida guarda un borrador en el navegador
 (`edvanta_cv_borrador`) aunque no haya cuenta, y con sesión iniciada
 además se autoguarda en el servidor.
 
-> Cuidado al editar `CvBuilder`: los componentes internos (`Panel`) deben
-> quedar **fuera** del render. Si se definen dentro, React desmonta el
+> Cuidado al editar el editor: los componentes internos deben quedar
+> **fuera** del render. Si se definen dentro, React desmonta el
 > formulario en cada pulsación y el campo pierde el foco después de cada
 > letra. La prueba `src/__tests__/cv-builder.test.jsx` lo vigila.
 
 ## 7. Hoja de vida: cómo funciona por dentro
 
-Todo ocurre en el navegador: el PDF nunca se envía a un servidor.
+La landing `/hoja-de-vida` solo explica y muestra los diseños; cada botón
+lleva a `/hoja-de-vida/crear` (con `?diseno=<id>` si la persona tocó uno).
+La herramienta tiene su propia barra y tres momentos: **inicio** (subir la
+hoja anterior en PDF o Word, o empezar de cero), **lectura** y **editor**
+(cinco pasos a la izquierda, el PDF real y el puntaje a la derecha).
+
+El archivo se lee en el navegador. Si la IA está configurada, solo el
+**texto** viaja al servidor para que Claude lo ordene y lo califique; no
+se guarda.
 
 | Paso | Archivo | Qué hace |
 | --- | --- | --- |
 | Cargar pdf.js | `src/lib/pdfjs.js` | Una sola carga para el sitio y el visor del aula. Comprueba cómo llega el worker y, si el servidor no lo entrega como JavaScript, lo descarga y lo envuelve en un Blob con el tipo correcto |
-| Leer el PDF | `src/lib/cv/pdfText.js` | Reordena el texto por posición (encabezado, cada columna, pie) y cuenta páginas, columnas, imágenes, enlaces y escaneos sin texto |
+| Leer el PDF | `src/lib/cv/pdfText.js` | Reordena el texto por posición y cuenta páginas, columnas, imágenes, enlaces y escaneos sin texto (ver «Orden de lectura») |
+| Leer el Word | `src/lib/cv/docx.js` | Abre el .docx con fflate y saca el texto de `word/document.xml` y los encabezados. El .doc antiguo se rechaza con un mensaje claro |
 | Interpretar | `src/lib/cv/lector.js` | Nombre, contacto, secciones, cargos con fechas y logros, años de experiencia, estudios, habilidades e idiomas |
 | Diagnosticar | `src/lib/cv/diagnostico.js` | Puntaje en seis categorías, prioridades con cómo corregirlas, palabras clave del cargo y reescritura de frases débiles |
-| Generar el PDF | `src/lib/cv/pdf.js` | Diseño oficial Edvanta y formato ATS simple |
-| Dibujar los otros 7 | `src/lib/cv/plantillas.js` | Cada diseño en milímetros con jsPDF; se carga solo al generar |
-| Listar los diseños | `src/lib/cv/catalogo.js` | Nombre y descripción de cada uno. Aparte a propósito: la galería los lista sin cargar el dibujo |
+| Unir todo | `src/lib/cv/revision.js` | `leerArchivoCv`, `textoPlano`, la revisión local del editor y el cliente de la revisión con IA |
+| Revisar con IA | `api/lib/cv-ia.js`, `api/routes/cv-ia.js` | `POST /api/cv-ia/revisar`: Claude extrae los datos y califica con la misma rúbrica. El total lo suma el servidor |
+| Generar el PDF | `src/lib/cv/pdf.js` | Datos normalizados, metadatos y hoja tamaño carta |
+| Dibujar los 10 diseños | `src/lib/cv/plantillas.js` | Los diseños de «Hojas de vida · Edvanta» en jsPDF; se carga solo al generar |
+| Listar los diseños | `src/lib/cv/catalogo.js` | Nombre, descripción y equivalencias de los diseños anteriores. Aparte a propósito: la galería los lista sin cargar el dibujo |
 | Ver cómo queda | `src/lib/cv/vistaPrevia.js` | Genera el PDF y lo dibuja con pdf.js: lo que se ve es el archivo que se descarga |
 | Ayudar a escribir | `src/lib/cv/redaccion.js` | Años de experiencia, perfil redactado con los datos reales y sugerencias de logros y habilidades por cargo |
 
-### Los cuatro pasos y la vista previa
+### La revisión con IA
 
-La herramienta (`src/components/empleo/CvBuilder.jsx`) abre en **modo
-rápido** (`CvExpres.jsx`): cuatro pasos de un minuto cada uno en vez de un
-formulario largo. Quien prefiera el formulario completo lo tiene en la
-pestaña «Editor completo»; los datos son el mismo objeto.
+- La clave va **solo** en el servidor: `ANTHROPIC_API_KEY` en Coolify
+  (servicio de la API). Sin clave, `GET /api/cv-ia/estado` responde
+  `disponible: false` y la herramienta usa el analizador local sin avisar
+  de errores.
+- Modelo `claude-opus-5-5` con salida estructurada (JSON Schema). El
+  modelo propone los puntos de cada categoría; el servidor los recorta al
+  máximo de cada una y suma el total.
+- No se inventan datos: las reescrituras dejan entre [corchetes] las cifras
+  que la persona debe completar.
+- Límites: 8 revisiones por hora por IP sin sesión, 30 con sesión y un tope
+  diario total (`CV_IA_TOPE_DIARIO`, 400 por defecto).
 
-| Paso | Qué pide | Ayudas |
-| --- | --- | --- |
-| 1. Tus datos | Nombre, contacto y cargo objetivo | Cargos sugeridos del sector |
-| 2. Experiencia | Cargo, empresa y fechas | Mes y año en listas, «Trabajo aquí», un logro por renglón con verbos y ejemplos del cargo |
-| 3. Estudios y habilidades | Títulos y competencias | Habilidades del sector con un clic |
-| 4. Diseño y descarga | El diseño final | «Escribir mi perfil» con los datos ya cargados y los 9 diseños con miniatura |
+### Los diez diseños
+
+`corporativo` (predeterminado), `tradicional`, `columna-derecha` (foto),
+`modular`, `funcional`, `clasico`, `barra-lateral` (foto), `moderno` (foto),
+`linea-tiempo` y `ejecutivo`. Los nombres de los diseños anteriores
+(`edvanta`, `ats`, `ejecutiva`…) se traducen al equivalente con
+`normalizarEstilo`, así los borradores viejos siguen abriendo.
+
+Las cifras del diseño modular salen de los datos (años desde el primer
+cargo, número de cargos, certificaciones); sus etiquetas no pueden ser un
+nombre de sección, porque el lector las tomaría como título.
 
 La vista previa **no es una versión web del CV**: genera el PDF de verdad y
 lo dibuja en un canvas. Dos cosas que cuestan de encontrar si se rompe:
@@ -239,6 +262,17 @@ lo dibuja en un canvas. Dos cosas que cuestan de encontrar si se rompe:
 > y `OPCIONES_DOCUMENTO` los declara en cada `getDocument`. Sin eso, el
 > worker avisa «Ensure that the standardFontDataUrl API parameter is
 > provided» y no dibuja.
+
+### Orden de lectura
+
+`ordenarPagina` (en `pdfText.js`) arma el texto como lo leería un filtro:
+
+1. Lo que está por encima del primer título de sección (nombre, cargo,
+   contacto) es el encabezado, esté a la izquierda o a la derecha.
+2. Las franjas a todo lo ancho cortan la página en zonas; en cada zona va
+   primero la columna con más texto (la principal) y después la lateral.
+3. Dentro de una línea, un hueco grande separa dos textos (una etiqueta y
+   su contenido, una columna de fechas): cada uno sale en su línea.
 
 ### El worker de pdf.js y nginx
 
@@ -256,16 +290,25 @@ fallar.
 > `/@vite/client` a cada archivo JS y dentro de un Blob esa ruta no existe.
 > Se prueba con `npm run build` y `npm run preview`.
 
-### Reglas de la plantilla oficial
+### Reglas de los diseños
 
-La plantilla promete que un filtro ATS la lee completa. Para cumplirlo:
+Cada diseño promete que un filtro ATS lo lee completo. Para cumplirlo:
 
-- una sola columna de lectura y texto real (nada de texto dentro de imágenes);
+- texto real (nada de texto dentro de imágenes) y la columna principal
+  escrita antes que la lateral;
+- nada de bloques lado a lado que mezclen dos secciones (habilidades e
+  idiomas van uno debajo del otro en los diseños de una columna);
+- un rango de fechas nunca se parte en dos líneas: la columna de fechas se
+  ensancha lo justo;
+- sin foto, los diseños con foto dibujan una silueta, nunca iniciales
+  (se leerían como texto);
 - títulos de sección **sin** letras espaciadas (con espaciado, algunos
   lectores leen «E X P E R I E N C I A»);
 - viñetas y separadores como caracteres (`•`, `·`), no como figuras dibujadas;
 - los metadatos del PDF llevan nombre, cargo y habilidades.
 
-Si se cambia el diseño, hay que volver a subir el PDF generado al
-analizador: una hoja de vida bien llenada con la plantilla debe salir en
-nivel «Lista para postular».
+Si se cambia un diseño, hay que volver a subir el PDF generado al
+analizador: la hoja de ejemplo (`src/lib/cv/ejemplo.js`) debe leerse
+completa (nombre, título, contacto, perfil, dos cargos con fechas y tres
+logros, dos estudios, habilidades e idiomas) y salir en nivel «Lista para
+postular». Con los diez diseños sale entre 87 y 91.

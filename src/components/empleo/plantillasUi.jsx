@@ -13,30 +13,14 @@
 
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Check, Image as ImageIcon, Loader2, User } from 'lucide-react';
-import { PLANTILLAS } from '../../lib/cv/catalogo';
+import { DISENO_PREDETERMINADO, normalizarEstilo, PLANTILLAS } from '../../lib/cv/catalogo';
 import { dibujarCv, huellaCv, miniaturaCv } from '../../lib/cv/vistaPrevia';
 import { ejemploCv } from '../../lib/cv/ejemplo';
 
-/** Catálogo completo: el diseño oficial, las plantillas y el formato plano. */
-export const DISENOS = [
-  {
-    id: 'edvanta',
-    nombre: 'Edvanta oficial',
-    desc: 'Limpia y moderna, con la identidad Edvanta. La más segura con los filtros automáticos.',
-    foto: false,
-    etiqueta: 'Recomendada',
-  },
-  ...PLANTILLAS,
-  {
-    id: 'ats',
-    nombre: 'ATS simple',
-    desc: 'Blanco y negro, sin adornos. Para portales con filtros muy estrictos.',
-    foto: false,
-    etiqueta: 'Sin diseño',
-  },
-];
+/** Los diez diseños del catálogo (tamaño carta). */
+export const DISENOS = PLANTILLAS;
 
-export const disenoPorId = (id) => DISENOS.find((d) => d.id === id) || DISENOS[0];
+export const disenoPorId = (id) => DISENOS.find((d) => d.id === normalizarEstilo(id)) || DISENOS[0];
 
 /* ── Miniaturas ───────────────────────────────────────────── */
 
@@ -83,7 +67,7 @@ function useMiniaturas({ cv, cargoLabel, foto, activo, disenos = DISENOS, ancho 
  * persona deje de escribir para no regenerar el PDF en cada tecla.
  */
 export function VistaPreviaCv({
-  cv, cargoLabel = '', estilo = 'edvanta', foto = null, ancho = 520, className = '', etiqueta = true,
+  cv, cargoLabel = '', estilo = DISENO_PREDETERMINADO, foto = null, ancho = 520, className = '', etiqueta = true,
 }) {
   const canvasRef = useRef(null);
   const [estado, setEstado] = useState('cargando');
@@ -150,7 +134,7 @@ function TarjetaDiseno({ diseno, imagen, seleccionado, onElegir, conFoto }) {
       aria-pressed={seleccionado}
       className={`group relative flex flex-col overflow-hidden rounded-2xl border-2 bg-white text-left transition ${seleccionado ? 'border-edvanta-blue shadow-[0_12px_28px_rgba(8,46,134,.18)]' : 'border-edvanta-border hover:-translate-y-0.5 hover:border-edvanta-blue/40 hover:shadow-[0_10px_24px_rgba(23,34,59,.10)]'}`}
     >
-      <span className="relative block aspect-[210/297] w-full overflow-hidden bg-edvanta-bg">
+      <span className="relative block aspect-[216/279] w-full overflow-hidden bg-edvanta-bg">
         {imagen ? (
           <img src={imagen} alt={`Diseño ${diseno.nombre}`} className="h-full w-full object-cover object-top" loading="lazy" />
         ) : (
@@ -173,9 +157,9 @@ function TarjetaDiseno({ diseno, imagen, seleccionado, onElegir, conFoto }) {
         <span className="flex items-center gap-1.5 text-sm font-bold text-edvanta-deep">
           {diseno.nombre}
           {diseno.foto && (
-            <span className={`inline-flex items-center gap-1 rounded-full px-1.5 py-px text-[10px] font-bold ${conFoto ? 'bg-edvanta-mint text-edvanta-tealdark' : 'bg-amber-50 text-amber-700'}`}>
+            <span className={`inline-flex items-center gap-1 rounded-full px-1.5 py-px text-[10px] font-bold ${conFoto ? 'bg-edvanta-mint text-edvanta-tealdark' : 'bg-edvanta-lilac text-[#5E51A8]'}`}>
               <User className="h-2.5 w-2.5" aria-hidden="true" />
-              {conFoto ? 'Con tu foto' : 'Lleva foto'}
+              {conFoto ? 'Con tu foto' : 'Admite foto'}
             </span>
           )}
         </span>
@@ -190,18 +174,18 @@ function TarjetaDiseno({ diseno, imagen, seleccionado, onElegir, conFoto }) {
  * `activo` evita generar los PDF cuando la galería no está a la vista.
  */
 export function GaleriaPlantillas({
-  cv, cargoLabel = '', foto = null, valor = 'edvanta', onElegir, activo = true, className = '',
+  cv, cargoLabel = '', foto = null, valor = DISENO_PREDETERMINADO, onElegir, activo = true, className = '', columnas = 'grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5',
 }) {
   const { imagenes, cargando } = useMiniaturas({ cv, cargoLabel, foto, activo });
   return (
     <div className={className}>
-      <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+      <div className={`grid gap-3 ${columnas}`}>
         {DISENOS.map((d) => (
           <TarjetaDiseno
             key={d.id}
             diseno={d}
             imagen={imagenes[d.id]}
-            seleccionado={valor === d.id}
+            seleccionado={normalizarEstilo(valor) === d.id}
             onElegir={onElegir}
             conFoto={Boolean(foto)}
           />
@@ -219,24 +203,25 @@ export function GaleriaPlantillas({
 /* ── Muestra para la landing ──────────────────────────────── */
 
 /** Miniaturas con datos de ejemplo, para mostrar los diseños sin editar nada. */
-export function MuestraPlantillas({ ids = ['edvanta', 'ejecutiva', 'azul', 'moderna-turquesa'], ancho = 260, className = '', onElegir }) {
+export function MuestraPlantillas({ ids = ['corporativo', 'barra-lateral', 'moderno', 'clasico'], ancho = 260, className = '', onElegir, rejilla = 'grid-cols-2 sm:grid-cols-4', escalonar = true, conDescripcion = false, sinNombre = false }) {
   const cv = useMemo(() => ejemploCv(), []);
   const disenos = useMemo(() => ids.map((id) => disenoPorId(id)), [ids]);
   const { imagenes } = useMiniaturas({ cv, cargoLabel: '', foto: null, activo: true, disenos, ancho });
   return (
-    <div className={`grid grid-cols-2 gap-4 sm:grid-cols-4 ${className}`}>
+    <div className={`grid gap-4 ${rejilla} ${className}`}>
       {disenos.map((d, i) => {
         const contenido = (
           <>
-            <span className="block aspect-[210/297] w-full overflow-hidden rounded-xl bg-white shadow-[0_12px_28px_rgba(23,34,59,.16)] ring-1 ring-black/5">
+            <span className="block aspect-[216/279] w-full overflow-hidden rounded-xl bg-white shadow-[0_12px_28px_rgba(23,34,59,.16)] ring-1 ring-black/5">
               {imagenes[d.id]
                 ? <img src={imagenes[d.id]} alt={`Plantilla ${d.nombre}`} className="h-full w-full object-cover object-top" loading="lazy" />
                 : <span className="flex h-full w-full items-center justify-center"><Loader2 className="h-5 w-5 animate-spin text-edvanta-subtle" aria-hidden="true" /></span>}
             </span>
-            <span className="mt-2 block text-center text-sm font-bold text-edvanta-deep">{d.nombre}</span>
+            {!sinNombre && <span className="mt-2.5 block text-center text-sm font-bold text-edvanta-deep">{d.nombre}</span>}
+            {conDescripcion && <span className="mt-0.5 block text-center text-xs leading-5 text-edvanta-muted">{d.desc}</span>}
           </>
         );
-        const clase = `block transition ${i % 2 ? 'sm:mt-6' : ''} ${onElegir ? 'hover:-translate-y-1' : ''}`;
+        const clase = `block transition ${escalonar && i % 2 ? 'sm:mt-6' : ''} ${onElegir ? 'hover:-translate-y-1' : ''}`;
         return onElegir
           ? <button key={d.id} type="button" onClick={() => onElegir(d.id)} className={`${clase} text-left`}>{contenido}</button>
           : <div key={d.id} className={clase}>{contenido}</div>;

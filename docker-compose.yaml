@@ -63,6 +63,10 @@ services:
       JWT_SECRET: "${JWT_SECRET:?JWT_SECRET is required}"
       GOOGLE_CLIENT_ID: "${GOOGLE_CLIENT_ID:-}"
       VIDA360_REAL_DATA_ENABLED: "${VIDA360_REAL_DATA_ENABLED:-false}"
+      # Revisión de hojas de vida con IA (/api/cv-ia). Opcional: sin clave,
+      # la herramienta usa el analizador local del navegador.
+      ANTHROPIC_API_KEY: "${ANTHROPIC_API_KEY:-}"
+      CV_IA_TOPE_DIARIO: "${CV_IA_TOPE_DIARIO:-400}"
       # Aula virtual: administradores y carpeta persistente de archivos.
       # AULA_ADMIN_EMAIL_HASHES designa administradores por la huella SHA-256
       # de su correo (el repositorio es público: así el correo no se publica).

@@ -223,6 +223,15 @@ export function leerHojaDeVida(texto, { hoy = new Date() } = {}) {
   let nombre = '';
   let titulo = '';
   const primeras = utiles.slice(0, 8).filter((l) => !RE_TITULO_DOC.test(l.trim()));
+  // Nombre partido en dos líneas («Camila» / «Rodríguez Peña»): se une.
+  const unaPalabra = (l) => /^[A-ZÁÉÍÓÚÑ][a-záéíóúñü'-]+$|^[A-ZÁÉÍÓÚÑ'-]{2,}$/.test(String(l || '').trim());
+  for (let i = 0; i < primeras.length - 1; i += 1) {
+    const junto = `${primeras[i]} ${primeras[i + 1]}`;
+    if (unaPalabra(primeras[i]) && !detectarEncabezado(primeras[i]) && pareceNombre(primeras[i + 1]) && pareceNombre(junto)) {
+      primeras.splice(i, 2, junto);
+      break;
+    }
+  }
   const iNombre = primeras.findIndex(pareceNombre);
   if (iNombre >= 0) {
     nombre = primeras[iNombre].replace(/\s+/g, ' ');
@@ -231,9 +240,10 @@ export function leerHojaDeVida(texto, { hoy = new Date() } = {}) {
       nombre = nombre.toLowerCase().replace(/(^|\s)([a-záéíóúñ])/g, (m, e, c) => e + c.toUpperCase())
         .replace(/\s(De|Del|La|Las|Los|Y)\s/g, (m) => m.toLowerCase());
     }
-    const siguiente = primeras[iNombre + 1] || '';
-    if (siguiente && siguiente.split(' ').length <= 9 && !RE_EMAIL.test(siguiente) && !RE_TELEFONO.test(siguiente)
-      && !detectarEncabezado(siguiente) && !/\d{4}/.test(siguiente)) {
+    // El título va justo después del nombre; si el contacto quedó en medio
+    // (correo alineado a la derecha del nombre), se salta.
+    const siguiente = primeras.slice(iNombre + 1, iNombre + 4).find((l) => !esLineaDeContacto(l)) || '';
+    if (siguiente && siguiente.split(' ').length <= 9 && !detectarEncabezado(siguiente) && !/\d{4}/.test(siguiente)) {
       titulo = siguiente;
     }
   }
@@ -289,15 +299,26 @@ export function leerHojaDeVida(texto, { hoy = new Date() } = {}) {
     }
     bloque = null;
   };
+  let anteriorViñeta = false;
   for (const l of lineasExp) {
-    if (!l) continue;
+    if (!l) { anteriorViñeta = false; continue; }
     const rango = leerRango(l, hoy);
     const resto = rango ? l.replace(rango.texto, '').replace(/[|·(),\s–—-]+$/g, '').replace(/^[|·(),\s–—-]+/g, '').trim() : l;
     if (esViñeta(l)) {
       if (!bloque) bloque = { cabecera: [], logros: [], rango: null };
       bloque.logros.push(sinViñeta(l));
+      anteriorViñeta = true;
       continue;
     }
+    // Un logro largo ocupa varias líneas en el PDF: la que sigue a una viñeta,
+    // sin fecha y sin pinta de cargo o empresa, es su continuación.
+    const ultimo = bloque?.logros[bloque.logros.length - 1];
+    if (anteriorViñeta && ultimo && !rango
+      && (/^[a-záéíóúñü(]/.test(l) || (!/[.;:!?]$/.test(ultimo) && !RE_CARGO.test(l) && !RE_ORGANIZACION.test(l)))) {
+      bloque.logros[bloque.logros.length - 1] = `${ultimo} ${l}`;
+      continue;
+    }
+    anteriorViñeta = false;
     // Empieza otro cargo si aparece un segundo rango de fechas, o una línea
     // corta (un nombre de cargo) después de que ya hubo logros.
     const empiezaOtro = bloque && ((rango && bloque.rango) || (bloque.logros.length > 0 && resto && !pareceLogro(resto)));
@@ -392,8 +413,26 @@ export function leerHojaDeVida(texto, { hoy = new Date() } = {}) {
  * Pasa lo leído al formato del creador de hoja de vida.
  * Lo que no se reconoció queda vacío para completarlo a mano.
  */
+const esLineaDeContacto = (l) => RE_EMAIL.test(l) || RE_TELEFONO.test(l) || RE_LINKEDIN.test(l)
+  || (l.split(/\s+/).length <= 3 && Boolean(primeraCiudad(l)));
+
+/**
+ * Muchos diseños ponen el perfil justo debajo del nombre, sin título de
+ * sección. Si no hay sección «Perfil», se toma el párrafo largo del
+ * encabezado (sin nombre, título ni contacto).
+ */
+function perfilDelEncabezado(leida) {
+  const fuera = new Set([leida.nombre, leida.titulo].filter(Boolean).map(normalizar));
+  const lineas = (leida.secciones.encabezado || []).filter((l) => l && !fuera.has(normalizar(l)) && !esLineaDeContacto(l));
+  const inicio = lineas.findIndex((l) => l.split(/\s+/).length >= 8);
+  if (inicio < 0) return '';
+  const texto = lineas.slice(inicio).join(' ').replace(/\s+/g, ' ').trim();
+  return texto.split(' ').length >= 20 ? texto : '';
+}
+
 export function aHojaDelCreador(leida) {
-  const perfil = (leida.secciones.perfil || []).filter(Boolean).join(' ').replace(/\s+/g, ' ').trim();
+  const perfil = (leida.secciones.perfil || []).filter(Boolean).join(' ').replace(/\s+/g, ' ').trim()
+    || perfilDelEncabezado(leida);
   return {
     nombre: leida.nombre,
     titulo: leida.titulo,

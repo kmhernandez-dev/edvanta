@@ -16,6 +16,7 @@
  */
 
 import { cargarPdfJs, OPCIONES_DOCUMENTO } from '../pdfjs';
+import { detectarEncabezado } from './lector';
 
 export const LIMITE_MB = 10;
 const MAX_PAGINAS = 6;
@@ -32,7 +33,12 @@ function limpiar(str) {
     .replace(/\u00A0/g, ' ');
 }
 
-/** Agrupa trozos en líneas (misma altura) y une las palabras con su espacio. */
+/**
+ * Agrupa trozos en líneas (misma altura) y une las palabras con su espacio.
+ * Si dentro de una línea hay un hueco grande (una etiqueta a la izquierda y
+ * su contenido, el nombre y el correo alineado a la derecha, una columna de
+ * fechas), cada lado sale como una línea aparte, de izquierda a derecha.
+ */
 function armarLineas(items) {
   const ordenados = [...items].sort((a, b) => (b.y - a.y) || (a.x - b.x));
   const lineas = [];
@@ -44,17 +50,22 @@ function armarLineas(items) {
   }
   return lineas
     .sort((a, b) => b.y - a.y)
-    .map((l) => {
+    .flatMap((l) => {
       const partes = l.items.sort((a, b) => a.x - b.x);
+      const trozos = [];
       let texto = '';
       let finAnterior = null;
       for (const p of partes) {
         const hueco = finAnterior === null ? 0 : p.x - finAnterior;
-        if (texto && hueco > p.h * 0.18 && !texto.endsWith(' ') && !p.str.startsWith(' ')) texto += ' ';
+        if (texto.trim() && hueco > Math.max(16, p.h * 1.6)) {
+          trozos.push(texto);
+          texto = '';
+        } else if (texto && hueco > p.h * 0.18 && !texto.endsWith(' ') && !p.str.startsWith(' ')) texto += ' ';
         texto += p.str;
         finAnterior = p.x + p.w;
       }
-      return { y: l.y, h: l.h, texto: texto.replace(/\s+/g, ' ').trim() };
+      trozos.push(texto);
+      return trozos.map((t) => ({ y: l.y, h: l.h, texto: t.replace(/\s+/g, ' ').trim() }));
     })
     .filter((l) => l.texto);
 }
@@ -127,17 +138,50 @@ export function ordenarPagina(items, anchoPagina) {
   const corte = buscarCanal(limpios, anchoPagina);
   if (corte === null) return { texto: lineasATexto(armarLineas(limpios)), columnas: 1 };
 
-  const cruzan = limpios.filter((it) => it.x < corte && it.x + it.w > corte);
-  const izquierda = limpios.filter((it) => it.x + it.w <= corte);
-  const derecha = limpios.filter((it) => it.x >= corte);
-  const techo = Math.max(...[...izquierda, ...derecha].map((it) => it.y));
-  const encabezado = cruzan.filter((it) => it.y > techo);
-  const pie = cruzan.filter((it) => it.y <= techo);
+  // Lo que queda por encima del primer título de sección (nombre, cargo y
+  // contacto) es el encabezado, aunque esté a un lado del canal: si no, el
+  // contacto de la derecha terminaría pegado a la última sección.
+  const titulos = limpios.filter((it) => detectarEncabezado(it.str));
+  const yTitulo = titulos.length ? Math.max(...titulos.map((it) => it.y)) : Infinity;
+  const arriba = limpios.filter((it) => it.y > yTitulo + 1);
+  const cuerpo = limpios.filter((it) => it.y <= yTitulo + 1);
 
-  const bloques = [encabezado, izquierda, derecha, pie]
+  // Las franjas a todo lo ancho (un perfil o una fila de cifras que cruzan
+  // el canal con holgura) cortan la página en zonas. Cada zona se lee por
+  // columnas y cada franja queda en su lugar.
+  // En cada zona va primero la columna con más texto: casi siempre es la
+  // principal (perfil, experiencia), aunque la barra lateral esté a la
+  // izquierda.
+  const margen = anchoPagina * 0.1;
+  const esFranja = (it) => it.x < corte - margen && it.x + it.w > corte + margen;
+  const chars = (lista) => lista.reduce((n, it) => n + it.str.length, 0);
+  const bloques = [arriba];
+  let zona = [];
+  let franja = [];
+  const cerrarZona = () => {
+    const izquierda = zona.filter((it) => it.x + it.w / 2 < corte);
+    const derecha = zona.filter((it) => it.x + it.w / 2 >= corte);
+    bloques.push(...(chars(derecha) > chars(izquierda) ? [derecha, izquierda] : [izquierda, derecha]));
+    zona = [];
+  };
+  const cerrarFranja = () => { bloques.push(franja); franja = []; };
+  [...cuerpo].sort((a, b) => b.y - a.y).forEach((it) => {
+    if (esFranja(it)) {
+      if (zona.length) cerrarZona();
+      franja.push(it);
+    } else {
+      if (franja.length) cerrarFranja();
+      zona.push(it);
+    }
+  });
+  if (franja.length) cerrarFranja();
+  if (zona.length) cerrarZona();
+
+  const texto = bloques
     .filter((b) => b.length)
-    .map((b) => lineasATexto(armarLineas(b)));
-  return { texto: bloques.join('\n\n'), columnas: 2 };
+    .map((b) => lineasATexto(armarLineas(b)))
+    .join('\n\n');
+  return { texto, columnas: 2 };
 }
 
 /* ── Lectura del archivo ──────────────────────────────────── */

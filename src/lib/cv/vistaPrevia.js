@@ -29,7 +29,7 @@ async function abrirPdfGenerado(cv, cargoLabel, estilo, foto) {
  * Dibuja una página del PDF en un canvas.
  * @returns {Promise<{paginas: number, alto: number}>}
  */
-export async function dibujarCv(canvas, { cv, cargoLabel = '', estilo = 'edvanta', foto = null, ancho = 420, pagina = 1 }) {
+export async function dibujarCv(canvas, { cv, cargoLabel = '', estilo = 'corporativo', foto = null, ancho = 420, pagina = 1 }) {
   const { pdf, cerrar } = await abrirPdfGenerado(cv, cargoLabel, estilo, foto);
   try {
     const page = await pdf.getPage(Math.min(Math.max(1, pagina), pdf.numPages));
@@ -56,7 +56,7 @@ export async function dibujarCv(canvas, { cv, cargoLabel = '', estilo = 'edvanta
 }
 
 /** Miniatura en PNG (para la galería de plantillas). */
-export async function miniaturaCv({ cv, cargoLabel = '', estilo = 'edvanta', foto = null, ancho = 200 }) {
+export async function miniaturaCv({ cv, cargoLabel = '', estilo = 'corporativo', foto = null, ancho = 200 }) {
   const canvas = document.createElement('canvas');
   await dibujarCv(canvas, { cv, cargoLabel, estilo, foto, ancho });
   return canvas.toDataURL('image/png');

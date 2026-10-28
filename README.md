@@ -197,6 +197,8 @@ Backend runtime:
 | `NOTIFY_EMAIL` | Recomendado | Lead notifications |
 | `ADMIN_TOKEN` | Si | Protege `/api/list-orders` |
 | `VIDA360_REAL_DATA_ENABLED` | No | Default `false`; la API rechaza datos reales si no es exactamente `true` |
+| `ANTHROPIC_API_KEY` | Recomendado | Revisión de hojas de vida con IA (`/api/cv-ia`). Sin ella se usa el analizador local |
+| `CV_IA_TOPE_DIARIO` | No | Tope diario de revisiones con IA. Default `400` |
 
 Nunca subir secretos al repositorio.
 
