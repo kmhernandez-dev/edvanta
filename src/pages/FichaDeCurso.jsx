@@ -411,22 +411,39 @@ export default function FichaDeCurso({ modo = 'propio', slugPublico = '' }) {
     // «Curso de Gestión de Calidad | Edvanta»: el mismo nombre que el
     // encabezado de la página y que su dirección.
     const nombre = nombreDeCurso(ficha.titulo);
+    const url = `https://edvanta.co${ficha.url}`;
+    const imagen = ficha.portada ? (ficha.portada.startsWith('/') ? `https://edvanta.co${ficha.portada}` : ficha.portada) : undefined;
     updatePageSeo({
       title: `${nombre} | Edvanta`,
       description: ficha.resumen || `${nombre}: ${ficha.categoria || 'formación profesional'} en Edvanta.`,
-      canonical: `https://edvanta.co${ficha.url}`,
+      canonical: url,
+      image: imagen,
       type: 'website',
       jsonLdId: `ficha-${ficha.id}`,
       // Solo lo que se ve en la página: nada de puntuaciones de ejemplo.
-      jsonLd: {
-        '@context': 'https://schema.org',
-        '@type': 'Course',
-        name: nombre,
-        description: ficha.resumen || '',
-        url: `https://edvanta.co${ficha.url}`,
-        inLanguage: 'es',
-        provider: { '@type': 'Organization', name: ficha.proveedor.nombre },
-      },
+      // Lo mismo que la API escribe en el HTML (api/routes/paginas-publicas.js),
+      // que se retira al montar: el curso y sus migas.
+      jsonLd: [
+        {
+          '@context': 'https://schema.org',
+          '@type': 'Course',
+          name: nombre,
+          description: ficha.resumen || '',
+          url,
+          inLanguage: ficha.idioma === 'Inglés' ? 'en' : 'es',
+          ...(imagen ? { image: imagen } : {}),
+          provider: { '@type': 'Organization', name: ficha.proveedor.nombre },
+        },
+        {
+          '@context': 'https://schema.org',
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            { '@type': 'ListItem', position: 1, name: 'Inicio', item: 'https://edvanta.co/' },
+            { '@type': 'ListItem', position: 2, name: 'Cursos', item: 'https://edvanta.co/cursos' },
+            { '@type': 'ListItem', position: 3, name: nombre, item: url },
+          ],
+        },
+      ],
     });
   }, [ficha]);
 

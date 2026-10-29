@@ -38,23 +38,38 @@ export default function CursoEnVivo({ slug: slugProducto = '' }) {
 
   useEffect(() => {
     if (!valido) return;
+    // «Curso de Operación segura del servicio farmacéutico | Edvanta»: el
+    // mismo nombre que su dirección (/curso-de-operacion-segura-…).
+    const nombre = nombreDeCurso(p.nombre.split(':')[0].trim());
+    const url = `https://edvanta.co${p.to}`;
     updatePageSeo({
-      // «Curso de Operación segura del servicio farmacéutico | Edvanta»: el
-      // mismo nombre que su dirección (/curso-de-operacion-segura-…).
-      title: `${nombreDeCurso(p.nombre.split(':')[0].trim())} | Edvanta`,
+      title: `${nombre} | Edvanta`,
       description: `${p.tipoTexto} para ${p.dirigidoA.charAt(0).toLowerCase()}${p.dirigidoA.slice(1)} ${p.formato.duracion}, ${p.formato.encuentros.toLowerCase()}.`,
-      canonical: `https://edvanta.co${p.to}`,
+      canonical: url,
       jsonLdId: 'curso-en-vivo',
-      jsonLd: {
-        '@context': 'https://schema.org',
-        '@type': 'Course',
-        name: p.nombre,
-        description: p.objetivo,
-        inLanguage: 'es',
-        provider: { '@type': 'Organization', name: 'Edvanta', sameAs: 'https://edvanta.co' },
-        instructor: { '@type': 'Person', name: p.docente.nombre, jobTitle: p.docente.profesion },
-        teaches: p.temario,
-      },
+      // Reemplaza al de la página prerenderizada: el curso y sus migas.
+      jsonLd: [
+        {
+          '@context': 'https://schema.org',
+          '@type': 'Course',
+          name: p.nombre,
+          description: p.objetivo,
+          url,
+          inLanguage: 'es',
+          provider: { '@type': 'Organization', name: 'Edvanta', sameAs: 'https://edvanta.co' },
+          instructor: { '@type': 'Person', name: p.docente.nombre, jobTitle: p.docente.profesion },
+          teaches: p.temario,
+        },
+        {
+          '@context': 'https://schema.org',
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            { '@type': 'ListItem', position: 1, name: 'Inicio', item: 'https://edvanta.co/' },
+            { '@type': 'ListItem', position: 2, name: 'Cursos', item: 'https://edvanta.co/cursos' },
+            { '@type': 'ListItem', position: 3, name: nombre, item: url },
+          ],
+        },
+      ],
     });
   }, [valido, p]);
 

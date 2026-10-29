@@ -101,8 +101,9 @@ aparezca entre los profesionales.
 | `/` | Inicio: qué es Edvanta, tres puertas, curso en vivo, escuelas, guías, instituciones, Karla, contacto | Todos |
 | `/escuelas` y `/escuelas/:slug` (`salud`, `calidad`, `regulatorios`, `marketing`) | Una plantilla para las cuatro escuelas | Profesionales |
 | `/cursos` | Cursos de Edvanta por escuela + recomendados de otras plataformas, separados | Profesionales |
-| `/cursos/en-vivo/:slug` | Ficha del curso en vivo con registro de interés | Profesionales |
-| `/curso/:id`, `/cursos/:slug` | Ficha de curso virtual propio o curado (sin cambios) | Profesionales |
+| `/curso-de-operacion-segura-del-servicio-farmaceutico` | Ficha del curso en vivo con registro de interés | Profesionales |
+| `/curso-de-<nombre-del-curso>` | Ficha de curso virtual propio o de otra plataforma (las direcciones viejas `/curso/:id` y `/cursos/:slug` redirigen) | Profesionales |
+| `/articulos/categoria/:slug` | Los artículos de una categoría | Todos |
 | `/guias` | Kits, guías para pacientes, lecturas y herramientas de carrera | Todos, separados |
 | `/pacientes` | Edvanta Contigo: rutas por condición y formatos | Pacientes y cuidadores |
 | `/pacientes/tiroides` | Ruta de salud tiroidea, puerta a Feliz Sin Tiroides | Pacientes y cuidadores |
@@ -121,9 +122,14 @@ el pie): `/hoja-de-vida`, `/empleo`, `/talento`, `/carreras`, `/rutas`,
 | Antes | Ahora | Dónde |
 | --- | --- | --- |
 | `/empresas` | `/instituciones` | 301 en `nginx.conf` + `Navigate` en `App.jsx` |
-| `/empresas/capacitacion` | `/instituciones#equipo-que-cuida` | Igual |
+| `/empresas/capacitacion` | `/instituciones/paquetes/equipo-que-cuida` | Igual |
 | `/aprende` | `/escuelas` | Igual |
-| `/cursos-gratis/:id` | Ficha del curso | `CursoGratisRedirige.jsx` (sin cambios) |
+| `/curso/:id`, `/cursos/:slug`, `/cursos-gratis/:código` | `/curso-de-…` (la ficha) | 301 de la API (tabla `public_slugs`) |
+| Herramientas, competencias y curso en vivo renombrados, `/cursos-gratis` | Su dirección en español | 301 en `nginx.conf`, listados en `src/data/edvanta/direcciones.js` |
+| `/articulos?categoria=…` | `/articulos/categoria/…` | 301 de la API |
+
+La tabla completa, las reglas de los slugs y cómo se mantienen están en
+[`URLS_PUBLICAS.md`](URLS_PUBLICAS.md). Las redirecciones no se borran.
 
 ### Formularios
 
@@ -171,7 +177,10 @@ pasarela nueva para este servicio.
    encabezado y en el pie.
 4. Lleva `updatePageSeo` con título, descripción y canónica propias.
 5. Deja marcados sus espacios de imagen con `ImageSlot`.
-6. Todo botón lleva a algo real. La auditoría rápida:
+6. Su dirección describe lo que hay, en español, en minúsculas y con
+   guiones. Si una dirección publicada cambia, la vieja lleva su 301
+   ([`URLS_PUBLICAS.md`](URLS_PUBLICAS.md), sección 3).
+7. Todo botón lleva a algo real. La auditoría rápida:
 
 ```bash
 node scripts/auditar-enlaces.cjs
