@@ -8,7 +8,7 @@ category: "Feliz Sin Tiroides"
 author: "Karla Hernández — Química Farmacéutica"
 author_url: "/autores/karla-hernandez"
 date_published: "2026-07-17"
-date_modified: "2026-07-17"
+date_modified: "2026-10-28"
 reading_time: "13 minutos"
 image: "/images/articulos/como-tomar-levotiroxina-correctamente.webp"
 image_alt: "Planificador de menú semanal con platos saludables y un reloj"
@@ -263,28 +263,20 @@ Para profundizar en los fundamentos de la alimentación tiroidea, te invitamos a
 1. Ihnatowicz P, et al. The importance of nutritional factors and dietary management of Hashimoto's thyroiditis. *Ann Agric Environ Med*. 2020. <a href="https://pubmed.ncbi.nlm.nih.gov/32588591/" target="_blank" rel="noopener noreferrer">https://pubmed.ncbi.nlm.nih.gov/32588591/</a>
 2. American Thyroid Association. Thyroid Hormone Treatment. <a href="https://www.thyroid.org/thyroid-hormone-treatment/" target="_blank" rel="noopener noreferrer">https://www.thyroid.org/thyroid-hormone-treatment/</a>
 
-## JSON-LD sugerido
+## Preguntas frecuentes
 
-```json
-{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "Menú semanal completo para hipotiroidismo: organiza tus comidas",
-  "description": "Plan de 7 días con desayunos, almuerzos, cenas y snacks. Diseñado para respetar los tiempos de la levotiroxina y apoyar la salud tiroidea.",
-  "image": "https://edvanta.co/images/articulos/como-tomar-levotiroxina-correctamente.webp",
-  "datePublished": "2026-07-17",
-  "dateModified": "2026-07-17",
-  "author": {
-    "@type": "Person",
-    "name": "Karla Hernández",
-    "jobTitle": "Química Farmacéutica",
-    "url": "https://edvanta.co/autores/karla-hernandez"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Biblioteca Profesional KH",
-    "url": "https://edvanta.co"
-  },
-  "mainEntityOfPage": "https://edvanta.co/articulos/menu-semanal-hipotiroidismo"
-}
-```
+### ¿Puedo cambiar los alimentos del menú?
+
+Sí. El menú es una guía; puedes intercambiar alimentos por otros de aporte nutricional similar y ajustar las porciones a tu apetito, actividad y recomendaciones profesionales. Mantén los tiempos de la levotiroxina y separa calcio, hierro o magnesio según tu fórmula.
+
+### ¿Cómo organizo la levotiroxina y el desayuno?
+
+El ejemplo toma la levotiroxina a las 6:30 a. m. con agua y el desayuno 45 a 60 minutos después. Si tu médico o el prospecto indican otro intervalo, sigue esa indicación. No suspendas ni cambies la dosis para adaptar el menú.
+
+### ¿Este menú sirve para bajar de peso?
+
+No es un plan para bajar de peso ni garantiza cambios de peso. Es una guía de organización de comidas. El peso depende de muchos factores y debe abordarse con tu equipo de salud, sin suspender la levotiroxina ni otros medicamentos.
+
+### ¿Puedo usar este menú si tengo otra condición?
+
+Consúltalo con tu médico o nutricionista. El menú debe adaptarse si tienes diabetes, enfermedad renal, alergias, embarazo u otra condición, y si tomas medicamentos que interactúan con los alimentos.

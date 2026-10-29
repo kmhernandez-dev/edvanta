@@ -8,7 +8,7 @@ category: "Calidad farmacéutica"
 author: "Edvanta"
 author_url: "/"
 date_published: "2026-08-14"
-date_modified: "2026-08-14"
+date_modified: "2026-10-28"
 reading_time: "7 minutos"
 og_title: "ICH Q2(R2)/Q14 Training: guía del recurso"
 og_description: "El marco armonizado actual para validación y desarrollo de métodos analíticos, explicado con los materiales oficiales de ICH."
@@ -105,3 +105,9 @@ En el sitio oficial de ICH: [ich.org](https://www.ich.org/news/ich-q2r2q14-iwg-t
 **Referencias:**
 
 [1] ICH. *Q2(R2)/Q14 IWG Training Materials*.
+
+## Fuentes y recursos
+
+- [ich.org](https://www.ich.org/news/ich-q2r2q14-iwg-training-materials-now-available-ich-website)
+
+Enlaces consultados para esta guía. Verifica siempre la versión vigente del documento o de la ficha técnica.

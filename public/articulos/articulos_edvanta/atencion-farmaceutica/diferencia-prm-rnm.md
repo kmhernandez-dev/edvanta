@@ -8,7 +8,7 @@ category: "Atención Farmacéutica"
 author: "Karla Hernández — Química Farmacéutica"
 author_url: "/autores/karla-hernandez"
 date_published: "2026-07-07"
-date_modified: "2026-07-07"
+date_modified: "2026-10-28"
 reading_time: "13 minutos"
 image: "https://edvanta.co/images/articulos/diferencia-prm-rnm.webp"
 image_alt: "Diagrama clínico que separa causas relacionadas con medicamentos de resultados negativos en salud"
@@ -32,6 +32,8 @@ robots: "index, follow"
 # PRM y RNM: diferencias, clasificación y ejemplos clínicos
 
 Un problema relacionado con medicamentos —PRM— describe una situación del proceso de uso que puede causar o favorecer un resultado negativo. Un resultado negativo asociado a la medicación —RNM— describe el efecto no deseado que ya se manifiesta o se identifica en el estado de salud. En términos sencillos: **el PRM suele funcionar como causa o factor de riesgo; el RNM es el resultado clínico que se desea prevenir o resolver**.
+
+**Cómo se relaciona:** este artículo explica la diferencia conceptual entre PRM y RNM. Para clasificarlos con ejemplos y criterios operativos, consulta [Clasificación de PRM y RNM con ejemplos](/articulos/clasificacion-prm-rnm-ejemplos-clinicos).
 
 > **Aviso editorial:** Este material tiene fines educativos y debe adaptarse a los protocolos, competencias profesionales y regulación aplicable en cada institución.
 
@@ -392,29 +394,3 @@ Para cada caso, completa:
 2. Pharmaceutical Care Network Europe. PCNE Classification for Drug-Related Problems V9.1. <a href="https://pcne.org/wp-content/uploads/2026/02/PCNE_Working-Groups-Classification_V9-1_final.pdf" target="_blank" rel="noopener noreferrer">Clasificación oficial PCNE</a>
 3. Grupo de Investigación en Atención Farmacéutica, Universidad de Granada. *Método Dáder. Guía de Seguimiento Farmacoterapéutico*. 3.ª ed. 2007. <a href="https://www.ugr.es/~cts131/esp/guias/GUIA%20FINAL%20DADER.pdf" target="_blank" rel="noopener noreferrer">Guía Dáder</a>
 4. Pharmaceutical Care Network Europe. Working Group on Drug-Related Problems. <a href="https://pcne.org/working-groups/pcne-working-group-on-drug-related-problems/" target="_blank" rel="noopener noreferrer">Página oficial PCNE</a>
-
-## JSON-LD sugerido
-
-```json
-{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "PRM y RNM: diferencias, clasificación y ejemplos clínicos",
-  "description": "Guía para diferenciar problemas relacionados con medicamentos de resultados negativos asociados a la medicación.",
-  "image": "https://edvanta.co/images/articulos/diferencia-prm-rnm.webp",
-  "datePublished": "2026-07-07",
-  "dateModified": "2026-07-07",
-  "author": {
-    "@type": "Person",
-    "name": "Karla Hernández",
-    "jobTitle": "Química Farmacéutica",
-    "url": "https://edvanta.co/autores/karla-hernandez"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Biblioteca Profesional KH",
-    "url": "https://edvanta.co"
-  },
-  "mainEntityOfPage": "https://edvanta.co/articulos/diferencia-prm-rnm"
-}
-```

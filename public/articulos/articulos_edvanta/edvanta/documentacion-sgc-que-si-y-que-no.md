@@ -8,7 +8,7 @@ category: "Gestión de calidad"
 author: "Edvanta"
 author_url: "/"
 date_published: "2026-07-15"
-date_modified: "2026-07-15"
+date_modified: "2026-10-28"
 reading_time: "11 minutos"
 og_title: "Documentación de un SGC: qué sí documentar y qué no"
 og_description: "Guía para documentar tu sistema de gestión de calidad sin caer en la burocracia: información documentada obligatoria vs. opcional, formatos y control de versiones."
@@ -305,3 +305,9 @@ La norma no establece una frecuencia. La práctica recomendada es revisar cada d
 [3] ISO 9001:2015, Anexo A.5. Aclaración sobre la información documentada.
 
 [4] ISO/TC 176/SC 2. (2016). *Guidance on the requirements for documented information of ISO 9001:2015*.
+
+## Fuentes y recursos
+
+- [ISO 9001: gestión de la calidad](https://www.iso.org/iso-9001-quality-management.html)
+
+Fuentes oficiales de referencia. Verifica la versión vigente y su aplicabilidad al contexto de tu organización.

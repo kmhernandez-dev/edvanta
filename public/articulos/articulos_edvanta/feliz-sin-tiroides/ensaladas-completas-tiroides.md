@@ -8,7 +8,7 @@ category: "Feliz Sin Tiroides"
 author: "Karla Hernández — Química Farmacéutica"
 author_url: "/autores/karla-hernandez"
 date_published: "2026-07-17"
-date_modified: "2026-07-17"
+date_modified: "2026-10-28"
 reading_time: "10 minutos"
 image: "/images/articulos/como-tomar-levotiroxina-correctamente.webp"
 image_alt: "Ensalada completa con quinoa, vegetales, aguacate y semillas"
@@ -303,29 +303,3 @@ Para más ideas de alimentación compatible con tu tratamiento, te invitamos a e
 
 1. Felker P, et al. Concentrations of thiocyanate and goitrin in human plasma. *J Clin Endocrinol Metab*. 2016. <a href="https://pubmed.ncbi.nlm.nih.gov/26963956/" target="_blank" rel="noopener noreferrer">https://pubmed.ncbi.nlm.nih.gov/26963956/</a>
 2. Ihnatowicz P, et al. The importance of nutritional factors and dietary management of Hashimoto's thyroiditis. *Ann Agric Environ Med*. 2020. <a href="https://pubmed.ncbi.nlm.nih.gov/32588591/" target="_blank" rel="noopener noreferrer">https://pubmed.ncbi.nlm.nih.gov/32588591/</a>
-
-## JSON-LD sugerido
-
-```json
-{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "Ensaladas completas que apoyan tu salud tiroidea",
-  "description": "Ensaladas que son plato único: combinan proteína, grasas saludables y vegetales ricos en nutrientes clave para la tiroides.",
-  "image": "https://edvanta.co/images/articulos/como-tomar-levotiroxina-correctamente.webp",
-  "datePublished": "2026-07-17",
-  "dateModified": "2026-07-17",
-  "author": {
-    "@type": "Person",
-    "name": "Karla Hernández",
-    "jobTitle": "Química Farmacéutica",
-    "url": "https://edvanta.co/autores/karla-hernandez"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Biblioteca Profesional KH",
-    "url": "https://edvanta.co"
-  },
-  "mainEntityOfPage": "https://edvanta.co/articulos/ensaladas-completas-tiroides"
-}
-```

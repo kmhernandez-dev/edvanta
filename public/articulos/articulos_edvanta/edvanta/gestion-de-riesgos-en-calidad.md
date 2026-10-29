@@ -8,7 +8,7 @@ category: "Gestión de calidad"
 author: "Edvanta"
 author_url: "/"
 date_published: "2026-07-15"
-date_modified: "2026-07-15"
+date_modified: "2026-10-28"
 reading_time: "12 minutos"
 og_title: "Gestión de riesgos en sistemas de calidad: metodología y ejemplos"
 og_description: "Cómo implementar la gestión de riesgos en tu SGC: identificación, análisis, evaluación, tratamiento y monitoreo con ejemplos prácticos."
@@ -372,3 +372,9 @@ Si tu organización tiene múltiples normas, puedes unificar la gestión de ries
 [4] ISO 9001:2015, apartado 0.3.3. Pensamiento basado en riesgos.
 
 [5] Project Management Institute. (2019). *The Standard for Risk Management in Portfolios, Programs, and Projects*. PMI.
+
+## Fuentes y recursos
+
+- [ISO 31000: gestión del riesgo](https://www.iso.org/iso-31000-risk-management.html)
+
+Fuentes oficiales de referencia. Verifica la versión vigente y su aplicabilidad al contexto de tu organización.

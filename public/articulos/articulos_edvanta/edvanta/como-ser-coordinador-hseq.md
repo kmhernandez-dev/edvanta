@@ -8,7 +8,7 @@ category: "Profesiones"
 author: "Edvanta"
 author_url: "/autores/edvanta"
 date_published: "2026-07-17"
-date_modified: "2026-07-17"
+date_modified: "2026-10-28"
 reading_time: "10 minutos"
 og_title: "Cómo ser coordinador HSEQ: el perfil más buscado en industria"
 og_description: "Descubre cómo construir un perfil HSEQ integrado: formación, certificaciones, salario y plan de carrera."
@@ -107,3 +107,11 @@ Sí, como auxiliar o analista HSEQ. Con 1-2 años de experiencia y las certifica
 
 [1] ISO 9001:2015, ISO 14001:2015, ISO 45001:2018.
 [2] ISO 19011:2018. Directrices para la auditoría de los sistemas de gestión.
+
+## Fuentes y recursos
+
+- [ISO 45001: seguridad y salud en el trabajo](https://www.iso.org/iso-45001-occupational-health-and-safety.html)
+- [ISO 14001: gestión ambiental](https://www.iso.org/iso-14001-environmental-management.html)
+- [OIT: seguridad y salud en el trabajo](https://www.ilo.org/es/temas/seguridad-y-salud-en-el-trabajo)
+
+Fuentes oficiales de referencia. Verifica la versión vigente y su aplicabilidad al contexto de tu organización.

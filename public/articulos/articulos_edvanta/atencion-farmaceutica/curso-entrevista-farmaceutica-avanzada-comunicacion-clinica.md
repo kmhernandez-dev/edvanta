@@ -8,7 +8,7 @@ category: "Atención Farmacéutica"
 author: "Karla Hernández — Química Farmacéutica"
 author_url: "/autores/karla-hernandez"
 date_published: "2026-08-05"
-date_modified: "2026-08-05"
+date_modified: "2026-10-28"
 reading_time: "7 minutos"
 image: "https://edvanta.co/images/articulos/que-es-atencion-farmaceutica.webp"
 image_alt: "Farmacéutico realizando entrevista clínica avanzada"
@@ -84,3 +84,8 @@ La comunicación es la habilidad que multiplica el valor de todo tu conocimiento
 - [Entrevista farmacéutica: claves para una comunicación clínica efectiva](/articulos/entrevista-farmaceutica-claves-comunicacion-clinica)
 - [Estrategias farmacéuticas para mejorar el control de la hipertensión arterial](/articulos/estrategias-farmaceuticas-hipertension-arterial)
 - [Problemas farmacoterapéuticos: identificación, clasificación y resolución](/articulos/problemas-farmacoterapeuticos-identificacion-clasificacion)
+
+## Recursos relacionados
+- [Entrevista Farmacéutica Avanzada](https://go.hotmart.com/N107033004S?dp=1)
+
+Enlaces a programas, casos y recursos mencionados en el artículo.

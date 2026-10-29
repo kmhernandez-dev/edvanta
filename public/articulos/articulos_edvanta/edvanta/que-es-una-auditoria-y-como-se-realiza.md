@@ -8,7 +8,7 @@ category: "Auditoría"
 author: "Edvanta"
 author_url: "/"
 date_published: "2026-07-08"
-date_modified: "2026-07-14"
+date_modified: "2026-10-28"
 reading_time: "11 minutos"
 og_title: "Qué es una auditoría y cómo se realiza paso a paso"
 og_description: "Aprende qué es una auditoría, sus tipos, el proceso completo desde la planificación hasta el seguimiento, y las habilidades necesarias para auditar."
@@ -237,3 +237,9 @@ Se documenta, se presenta en la reunión de cierre y se acuerda un plazo para la
 [2] ISO 9001:2015. Sistemas de gestión de la calidad — Requisitos.
 
 [3] ISO 9000:2015. Sistemas de gestión de la calidad — Fundamentos y vocabulario.
+
+## Fuentes y recursos
+
+- [ISO 19011: directrices para auditar sistemas de gestión](https://www.iso.org/standard/70017.html)
+
+Fuentes oficiales de referencia. Verifica la versión vigente y su aplicabilidad al contexto de tu organización.

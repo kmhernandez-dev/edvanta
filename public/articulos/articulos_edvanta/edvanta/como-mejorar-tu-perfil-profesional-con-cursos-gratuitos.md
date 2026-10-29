@@ -8,7 +8,7 @@ category: "Profesiones"
 author: "Edvanta"
 author_url: "/autores/edvanta"
 date_published: "2026-07-17"
-date_modified: "2026-07-17"
+date_modified: "2026-10-28"
 reading_time: "10 minutos"
 og_title: "Cómo mejorar tu perfil profesional con cursos gratuitos"
 og_description: "Guía estratégica para seleccionar cursos gratuitos, organizarlos en rutas y presentarlos en tu CV y LinkedIn."
@@ -174,3 +174,12 @@ Combina los cursos con un proyecto personal o voluntario. Un dashboard de datos 
 
 [1] LinkedIn. (2025). *Workplace Learning Report*.
 [2] World Economic Forum. (2025). *Future of Jobs Report*.
+
+## Recursos relacionados
+- [Excel](https://edutin.com/sh-10219)
+- [Análisis de datos](https://edutin.com/sh-20360)
+- [Marketing digital](https://edutin.com/sh-14836)
+- [Asistente administrativo](https://edutin.com/sh-21034)
+- [Gestión del talento humano](https://edutin.com/sh-22969)
+
+Enlaces a programas, casos y recursos mencionados en el artículo.

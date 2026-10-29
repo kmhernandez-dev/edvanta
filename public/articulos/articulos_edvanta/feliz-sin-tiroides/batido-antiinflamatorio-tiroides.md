@@ -8,7 +8,7 @@ category: "Feliz Sin Tiroides"
 author: "Karla Hernández — Química Farmacéutica"
 author_url: "/autores/karla-hernandez"
 date_published: "2026-07-17"
-date_modified: "2026-07-17"
+date_modified: "2026-10-28"
 reading_time: "9 minutos"
 image: "/images/articulos/como-tomar-levotiroxina-correctamente.webp"
 image_alt: "Batido verde antiinflamatorio en un vaso con ingredientes frescos alrededor"
@@ -209,29 +209,3 @@ Para seguir aprendiendo sobre alimentación y tiroides, te invitamos a explorar 
 1. Antonelli A, et al. Autoimmune thyroid disorders. *Autoimmun Rev*. 2015. <a href="https://pubmed.ncbi.nlm.nih.gov/25461470/" target="_blank" rel="noopener noreferrer">https://pubmed.ncbi.nlm.nih.gov/25461470/</a>
 2. Wiesner A, et al. Levothyroxine Interactions with Food and Dietary Supplements: A Systematic Review. *Pharmaceuticals*. 2021. <a href="https://pubmed.ncbi.nlm.nih.gov/33801406/" target="_blank" rel="noopener noreferrer">https://pubmed.ncbi.nlm.nih.gov/33801406/</a>
 3. Felker P, et al. Concentrations of thiocyanate and goitrin in human plasma and thyroid gland. *J Clin Endocrinol Metab*. 2016. <a href="https://pubmed.ncbi.nlm.nih.gov/26963956/" target="_blank" rel="noopener noreferrer">https://pubmed.ncbi.nlm.nih.gov/26963956/</a>
-
-## JSON-LD sugerido
-
-```json
-{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "Batido antiinflamatorio para apoyar tu salud tiroidea",
-  "description": "Receta de batido con ingredientes antiinflamatorios, aporte nutricional, cuándo tomarlo y cómo separarlo de tu medicación.",
-  "image": "https://edvanta.co/images/articulos/como-tomar-levotiroxina-correctamente.webp",
-  "datePublished": "2026-07-17",
-  "dateModified": "2026-07-17",
-  "author": {
-    "@type": "Person",
-    "name": "Karla Hernández",
-    "jobTitle": "Química Farmacéutica",
-    "url": "https://edvanta.co/autores/karla-hernandez"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Biblioteca Profesional KH",
-    "url": "https://edvanta.co"
-  },
-  "mainEntityOfPage": "https://edvanta.co/articulos/batido-antiinflamatorio-tiroides"
-}
-```

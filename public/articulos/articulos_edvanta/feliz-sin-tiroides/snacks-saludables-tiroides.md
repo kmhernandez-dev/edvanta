@@ -8,7 +8,7 @@ category: "Feliz Sin Tiroides"
 author: "Karla Hernández — Química Farmacéutica"
 author_url: "/autores/karla-hernandez"
 date_published: "2026-07-17"
-date_modified: "2026-07-17"
+date_modified: "2026-10-28"
 reading_time: "9 minutos"
 image: "/images/articulos/como-tomar-levotiroxina-correctamente.webp"
 image_alt: "Variedad de snacks saludables: frutos secos, fruta, hummus con vegetales"
@@ -198,29 +198,3 @@ Para más ideas de alimentación compatible con tu tratamiento, te invitamos a e
 
 1. Ihnatowicz P, et al. The importance of nutritional factors and dietary management of Hashimoto's thyroiditis. *Ann Agric Environ Med*. 2020. <a href="https://pubmed.ncbi.nlm.nih.gov/32588591/" target="_blank" rel="noopener noreferrer">https://pubmed.ncbi.nlm.nih.gov/32588591/</a>
 2. Wiesner A, et al. Levothyroxine Interactions with Food and Dietary Supplements: A Systematic Review. *Pharmaceuticals*. 2021. <a href="https://pubmed.ncbi.nlm.nih.gov/33801406/" target="_blank" rel="noopener noreferrer">https://pubmed.ncbi.nlm.nih.gov/33801406/</a>
-
-## JSON-LD sugerido
-
-```json
-{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "Snacks saludables para personas con enfermedad tiroidea",
-  "description": "Opciones de snacks que no interfieren con la levotiroxina, ricos en nutrientes clave y fáciles de preparar. Con tabla de horarios recomendados.",
-  "image": "https://edvanta.co/images/articulos/como-tomar-levotiroxina-correctamente.webp",
-  "datePublished": "2026-07-17",
-  "dateModified": "2026-07-17",
-  "author": {
-    "@type": "Person",
-    "name": "Karla Hernández",
-    "jobTitle": "Química Farmacéutica",
-    "url": "https://edvanta.co/autores/karla-hernandez"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Biblioteca Profesional KH",
-    "url": "https://edvanta.co"
-  },
-  "mainEntityOfPage": "https://edvanta.co/articulos/snacks-saludables-tiroides"
-}
-```

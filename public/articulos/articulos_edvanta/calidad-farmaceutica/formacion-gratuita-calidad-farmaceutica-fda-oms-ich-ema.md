@@ -8,7 +8,7 @@ category: "Calidad farmacéutica"
 author: "Edvanta"
 author_url: "/"
 date_published: "2026-08-14"
-date_modified: "2026-08-14"
+date_modified: "2026-10-28"
 reading_time: "12 minutos"
 og_title: "10 recursos gratuitos de formación en calidad farmacéutica"
 og_description: "FDA, OMS, ICH y EMA publican formación oficial gratuita para la industria farmacéutica. Esta es la selección que todo QF debería conocer."
@@ -205,3 +205,18 @@ Sí. Los cursos de la OPS son ideales para empezar desde cero. Los de ICH y FDA 
 [8] ICH. *Training Programme for ICH Q8/Q9/Q10*.
 [9] ICH. *Q2(R2)/Q14 IWG Training Materials*.
 [10] EMA. *Regulatory Training for Advanced Therapy Medicinal Products*.
+
+## Fuentes y recursos
+
+- [fda.gov](https://www.fda.gov/drugs/cder-small-business-industry-assistance-sbia/fda-pharmaceutical-quality-training-modules)
+- [fda.gov](https://www.fda.gov/drugs/news-events-human-drugs/generic-drugs-forum-gdf-2026-04222026)
+- [unitar.org](https://event.unitar.org/full-catalog/who-good-reliance-practices)
+- [catálogo OMS](https://www.who.int/tools/health-products-regulation-and-prequalification-learning-catalogue/vigilance)
+- [whoacademy.org](https://whoacademy.org/coursewares/course-v1%3AWHOAcademy-Hosted%2BH0118EN%2BH0118EN_Q1_2025)
+- [campus.paho.org](https://campus.paho.org/es/curso/manufactura-bancos-sangre)
+- [campus.paho.org](https://campus.paho.org/mooc/course/info.php?id=239)
+- [ich.org](https://ich.org/page/training-programme-q8q9q10-0)
+- [ich.org](https://www.ich.org/news/ich-q2r2q14-iwg-training-materials-now-available-ich-website)
+- [ema.europa.eu](https://www.ema.europa.eu/en/human-regulatory-overview/advanced-therapy-medicinal-products-overview)
+
+Enlaces consultados para esta guía. Verifica siempre la versión vigente del documento o de la ficha técnica.

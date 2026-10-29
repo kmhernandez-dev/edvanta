@@ -35,6 +35,24 @@ La furosemida alivia la congestión y la espironolactona protege el corazón a l
 
 Este contenido es educativo y no reemplaza la consulta médica.
 
+## Preguntas frecuentes
+
+### ¿A qué hora conviene tomar la furosemida?
+
+Muchas personas la toman en la mañana para evitar levantarse a orinar durante la noche. Si tu médico indica dos dosis, suele preferirse la segunda en las primeras horas de la tarde. Sigue siempre tu fórmula y no cambies el horario sin consultar.
+
+### ¿Qué hago si olvido una dosis?
+
+No tomes una dosis doble. Consulta a tu médico o químico farmacéutico para decidir si debes tomarla ese día o esperar a la siguiente, según tu horario y tu estado clínico.
+
+### ¿Puedo tomar furosemida y espironolactona juntas?
+
+Sí, si están formuladas juntas y con controles de potasio y función renal. No son intercambiables: la furosemida alivia la congestión y la espironolactona protege el corazón a largo plazo. No agregues ni quites ninguna sin indicación.
+
+### ¿Necesito suplementos de potasio?
+
+Solo si el médico los indica después de revisar tus exámenes. No uses suplementos de potasio ni sales que lo contengan por tu cuenta, porque puedes subir demasiado el potasio, especialmente si también tomas espironolactona.
+
 ## Fuentes
 
 - [Ficha técnica Furosemida Cinfa 40 mg comprimidos EFG (AEMPS-CIMA)](https://cima.aemps.es/cima/dochtml/ft/64140/FT_64140.html)

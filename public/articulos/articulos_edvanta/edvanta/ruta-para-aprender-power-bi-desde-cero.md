@@ -8,7 +8,7 @@ category: "Power BI"
 author: "Edvanta"
 author_url: "/"
 date_published: "2026-07-08"
-date_modified: "2026-07-14"
+date_modified: "2026-10-28"
 reading_time: "12 minutos"
 og_title: "Ruta para aprender Power BI desde cero"
 og_description: "Guía paso a paso para aprender Power BI: desde la instalación hasta dashboards profesionales, con ejercicios prácticos y recursos recomendados."
@@ -241,3 +241,9 @@ Una vez que domines lo básico, puedes profundizar en: DAX avanzado (funciones d
 [2] Documentación oficial de Microsoft Power BI: https://learn.microsoft.com/power-bi
 
 [3] Microsoft Learn: ruta de aprendizaje para PL-300 (Microsoft Power BI Data Analyst).
+
+## Fuentes y recursos
+
+- [Microsoft Learn: documentación de Power BI](https://learn.microsoft.com/es-es/power-bi/)
+
+Fuentes oficiales de referencia. Verifica la versión vigente y su aplicabilidad al contexto de tu organización.

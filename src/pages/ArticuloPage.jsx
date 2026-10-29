@@ -187,39 +187,189 @@ function TarjetaRelacionada({ a }) {
   );
 }
 
+const RECETA_FST = /(receta|batido|caldo|semillas|aloe|magnesio|adapt[oó]genos|aceites|vinagre|desayuno|almuerzo|cena|snack|men[uú]|sopa|ensalada|prote[ií]na|postre|batch)/i;
+
+function pasoPaciente(art) {
+  if (art.marca === 'fst') {
+    const receta = RECETA_FST.test(art.title);
+    return receta
+      ? {
+        eyebrow: 'Recetas y alimentación',
+        title: 'Come bien sin perder de vista tu tratamiento',
+        desc: 'Recetas y guías para organizar comidas compatibles con tu medicación tiroidea.',
+        primary: { to: '/recetas', label: 'Buscar recetas' },
+        secondary: { to: '/fst-app', label: 'Abrir la app FST' },
+      }
+      : {
+        eyebrow: 'Feliz Sin Tiroides',
+        title: 'Entiende tu tiroides y tu tratamiento',
+        desc: 'Información clara sobre levotiroxina, controles y vida con una condición tiroidea.',
+        primary: { to: '/pacientes/tiroides', label: 'Explorar salud tiroidea' },
+        secondary: { to: '/recurso/levotiroxina', label: 'Guía gratuita de levotiroxina' },
+      };
+  }
+  if (art.category === 'Nutrición y recetas' || art.category === 'Bajar de peso') {
+    return {
+      eyebrow: 'Edvanta Contigo',
+      title: 'Lleva lo que aprendiste a tu mesa',
+      desc: 'Recetas, menús y herramientas para organizar una alimentación más clara y sostenible.',
+      primary: { to: '/recetas', label: 'Explorar recetas' },
+      secondary: { to: '/fst-app', label: 'Conocer la app FST' },
+    };
+  }
+  if (['Medicamentos', 'Enfermedades y síntomas', 'Plantas medicinales', 'Homeopatía'].includes(art.category)) {
+    return {
+      eyebrow: 'Edvanta Contigo',
+      title: 'Comprende tu salud. Participa en tu cuidado.',
+      desc: 'Guías en lenguaje claro para leer en casa y llevar a tu próxima consulta.',
+      primary: { to: '/pacientes', label: 'Ir a Edvanta Contigo' },
+      secondary: { to: '/fst-app', label: 'Conocer la app FST' },
+    };
+  }
+  return {
+    eyebrow: 'Edvanta Contigo',
+    title: 'Comprende tu salud. Participa en tu cuidado.',
+    desc: 'Guías en lenguaje claro para leer en casa y llevar a tu próxima consulta.',
+    primary: { to: '/pacientes', label: 'Ir a Edvanta Contigo' },
+    secondary: { to: '/fst-app', label: 'Conocer la app FST' },
+  };
+}
+
+const PASO_PRO = {
+  'Atención Farmacéutica': {
+    eyebrow: 'Escuela de Salud y Farmacia Clínica',
+    title: 'Formación para la práctica clínica',
+    desc: 'Cursos y rutas para fortalecer la entrevista, la valoración y el seguimiento farmacoterapéutico.',
+    primary: { to: '/escuelas/salud', label: 'Explorar la escuela' },
+    secondary: { to: '/curso-de-operacion-segura-del-servicio-farmaceutico', label: 'Ver curso en vivo' },
+  },
+  Farmacoterapia: {
+    eyebrow: 'Escuela de Salud y Farmacia Clínica',
+    title: 'Formación para la práctica clínica',
+    desc: 'Cursos y rutas para fortalecer la entrevista, la valoración y el seguimiento farmacoterapéutico.',
+    primary: { to: '/escuelas/salud', label: 'Explorar la escuela' },
+    secondary: { to: '/curso-de-operacion-segura-del-servicio-farmaceutico', label: 'Ver curso en vivo' },
+  },
+  'Calidad farmacéutica': {
+    eyebrow: 'Escuela de Calidad y Producción',
+    title: 'Formación para calidad, producción y BPM',
+    desc: 'Cursos y rutas para sostener sistemas de calidad, validaciones y operaciones farmacéuticas.',
+    primary: { to: '/escuelas/calidad', label: 'Explorar la escuela' },
+    secondary: { to: '/instituciones', label: 'Formación para instituciones' },
+  },
+  'Gestión de Calidad': {
+    eyebrow: 'Escuela de Calidad y Producción',
+    title: 'Formación para calidad y mejora continua',
+    desc: 'Cursos y rutas para sostener sistemas de calidad, auditorías y mejora de procesos.',
+    primary: { to: '/escuelas/calidad', label: 'Explorar la escuela' },
+    secondary: { to: '/instituciones', label: 'Formación para instituciones' },
+  },
+  'Gestión de calidad': {
+    eyebrow: 'Escuela de Calidad y Producción',
+    title: 'Formación para calidad y mejora continua',
+    desc: 'Cursos y rutas para sostener sistemas de calidad, auditorías y mejora de procesos.',
+    primary: { to: '/escuelas/calidad', label: 'Explorar la escuela' },
+    secondary: { to: '/instituciones', label: 'Formación para instituciones' },
+  },
+  Auditoría: {
+    eyebrow: 'Escuela de Calidad y Producción',
+    title: 'Formación para auditar y mejorar procesos',
+    desc: 'Cursos y rutas para preparar auditorías, leer hallazgos y sostener acciones de mejora.',
+    primary: { to: '/escuelas/calidad', label: 'Explorar la escuela' },
+    secondary: { to: '/instituciones', label: 'Formación para instituciones' },
+  },
+  Lean: {
+    eyebrow: 'Escuela de Calidad y Producción',
+    title: 'Formación para mejorar procesos',
+    desc: 'Cursos y rutas sobre Lean, Six Sigma y mejora continua aplicada a operaciones farmacéuticas.',
+    primary: { to: '/escuelas/calidad', label: 'Explorar la escuela' },
+    secondary: { to: '/cursos', label: 'Ver cursos' },
+  },
+  'Lean Six Sigma': {
+    eyebrow: 'Escuela de Calidad y Producción',
+    title: 'Formación para mejorar procesos',
+    desc: 'Cursos y rutas sobre Lean, Six Sigma y mejora continua aplicada a operaciones farmacéuticas.',
+    primary: { to: '/escuelas/calidad', label: 'Explorar la escuela' },
+    secondary: { to: '/cursos', label: 'Ver cursos' },
+  },
+  'Asuntos regulatorios': {
+    eyebrow: 'Escuela de Asuntos Regulatorios',
+    title: 'Formación regulatoria aplicada',
+    desc: 'Cursos y rutas para gestionar registros, expedientes y cambios regulatorios con criterio.',
+    primary: { to: '/escuelas/regulatorios', label: 'Explorar la escuela' },
+    secondary: { to: '/instituciones', label: 'Formación para instituciones' },
+  },
+  'Noticias farmacéuticas': {
+    eyebrow: 'Escuela de Asuntos Regulatorios',
+    title: 'Formación regulatoria aplicada',
+    desc: 'Cursos y rutas para entender el entorno normativo y su impacto en la operación.',
+    primary: { to: '/escuelas/regulatorios', label: 'Explorar la escuela' },
+    secondary: { to: '/instituciones', label: 'Formación para instituciones' },
+  },
+  'Farmacia y profesión': {
+    eyebrow: 'Escuela de Salud y Farmacia Clínica',
+    title: 'Formación para el servicio farmacéutico',
+    desc: 'Cursos y rutas para ordenar la operación, la dispensación y la atención en farmacia.',
+    primary: { to: '/curso-de-operacion-segura-del-servicio-farmaceutico', label: 'Ver curso en vivo' },
+    secondary: { to: '/escuelas/salud', label: 'Explorar la escuela' },
+  },
+  Profesiones: {
+    eyebrow: 'Edvanta para tu carrera',
+    title: 'Herramientas para avanzar en tu perfil',
+    desc: 'Ofertas, hoja de vida, rutas y recursos para conectar tu formación con oportunidades reales.',
+    primary: { to: '/empleo', label: 'Ir al centro de empleo' },
+    secondary: { to: '/herramientas', label: 'Ver herramientas' },
+  },
+  'Técnicas de estudio': {
+    eyebrow: 'Edvanta para estudiar mejor',
+    title: 'Herramientas para aprender con método',
+    desc: 'Recursos y técnicas para organizar el estudio y sostener el aprendizaje en el tiempo.',
+    primary: { to: '/herramientas', label: 'Ver herramientas' },
+    secondary: { to: '/cursos', label: 'Explorar cursos' },
+  },
+  'Power BI': {
+    eyebrow: 'Ruta de datos e indicadores',
+    title: 'Aprende a convertir datos en decisiones',
+    desc: 'Ruta y cursos para modelar datos, construir tableros y comunicar resultados con claridad.',
+    primary: { to: '/rutas/datos-indicadores', label: 'Ver la ruta' },
+    secondary: { to: '/cursos', label: 'Explorar cursos' },
+  },
+  Emprendimiento: {
+    eyebrow: 'Edvanta para emprender',
+    title: 'Convierte tu formación en un proyecto',
+    desc: 'Ideas, casos y recursos para explorar modelos de negocio en el sector farmacéutico.',
+    primary: { to: '/emprendimientos', label: 'Ver emprendimientos' },
+    secondary: { to: '/herramientas', label: 'Explorar herramientas' },
+  },
+};
+
+const PASO_PRO_DEFAULT = {
+  eyebrow: 'Escuelas de Edvanta',
+  title: 'Sigue formándote en el tema que te importa',
+  desc: 'Cursos, rutas y recursos para profundizar con criterio profesional.',
+  primary: { to: '/escuelas', label: 'Explorar las escuelas' },
+  secondary: { to: '/cursos', label: 'Ver cursos' },
+};
+
 /** La siguiente acción depende de a quién le habla el artículo. */
 function SiguientePaso({ art }) {
   const pacientes = art.publico === 'pacientes' || art.marca === 'fst' || art.marca === 'contigo';
+  const paso = pacientes ? pasoPaciente(art) : (PASO_PRO[art.category] || PASO_PRO_DEFAULT);
   return (
     <div className="ed-edge relative overflow-hidden rounded-[18px] bg-edvanta-blue p-6 text-white sm:p-8">
       <div className={`pointer-events-none absolute -right-16 -top-20 h-64 w-64 rounded-full blur-3xl ${pacientes ? 'bg-edvanta-teal/35' : 'bg-edvanta-violet/40'}`} aria-hidden="true" />
-      {pacientes ? (
-        <div className="relative">
-          <p className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[.14em] text-white/80">
-            <HeartPulse className="h-4 w-4" aria-hidden="true" />
-            Edvanta Contigo
-          </p>
-          <p className="mt-2 font-display text-2xl font-extrabold leading-tight">Comprende tu salud. Participa en tu cuidado.</p>
-          <p className="mt-2 max-w-xl text-[15px] leading-7 text-white/85">Guías en lenguaje claro para leer en casa y llevar a tu próxima consulta.</p>
-          <div className="mt-5 flex flex-wrap gap-3">
-            <Link to="/pacientes" className="inline-flex min-h-11 items-center rounded-xl bg-white px-5 text-sm font-semibold text-edvanta-blue transition hover:bg-edvanta-light">Ir a Edvanta Contigo</Link>
-            <Link to="/recurso/levotiroxina" className="inline-flex min-h-11 items-center rounded-xl border border-white/40 px-5 text-sm font-semibold text-white transition hover:bg-white/10">Guía gratuita de levotiroxina</Link>
-          </div>
+      <div className="relative">
+        <p className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[.14em] text-white/80">
+          {pacientes ? <HeartPulse className="h-4 w-4" aria-hidden="true" /> : <BookOpen className="h-4 w-4" aria-hidden="true" />}
+          {paso.eyebrow}
+        </p>
+        <p className="mt-2 font-display text-2xl font-extrabold leading-tight">{paso.title}</p>
+        <p className="mt-2 max-w-xl text-[15px] leading-7 text-white/85">{paso.desc}</p>
+        <div className="mt-5 flex flex-wrap gap-3">
+          <Link to={paso.primary.to} className="inline-flex min-h-11 items-center rounded-xl bg-white px-5 text-sm font-semibold text-edvanta-blue transition hover:bg-edvanta-light">{paso.primary.label}</Link>
+          <Link to={paso.secondary.to} className="inline-flex min-h-11 items-center rounded-xl border border-white/40 px-5 text-sm font-semibold text-white transition hover:bg-white/10">{paso.secondary.label}</Link>
         </div>
-      ) : (
-        <div className="relative">
-          <p className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[.14em] text-white/80">
-            <BookOpen className="h-4 w-4" aria-hidden="true" />
-            Curso en vivo · Próxima apertura
-          </p>
-          <p className="mt-2 font-display text-2xl font-extrabold leading-tight">Operación segura del servicio farmacéutico</p>
-          <p className="mt-2 max-w-xl text-[15px] leading-7 text-white/85">Para auxiliares y regentes: de la recepción a la dispensación, en ocho encuentros en vivo.</p>
-          <div className="mt-5 flex flex-wrap gap-3">
-            <Link to="/curso-de-operacion-segura-del-servicio-farmaceutico" className="inline-flex min-h-11 items-center rounded-xl bg-white px-5 text-sm font-semibold text-edvanta-blue transition hover:bg-edvanta-light">Ver el curso</Link>
-            <Link to="/escuelas" className="inline-flex min-h-11 items-center rounded-xl border border-white/40 px-5 text-sm font-semibold text-white transition hover:bg-white/10">Explorar las escuelas</Link>
-          </div>
-        </div>
-      )}
+      </div>
     </div>
   );
 }
@@ -263,6 +413,7 @@ export default function ArticuloPage() {
     if (!art) return;
     const canonical = `https://edvanta.co/articulos/${art.slug}`;
     const imagen = `https://edvanta.co${art.image || '/img/edvanta-hero.webp'}`;
+    const imagenJsonLd = { '@type': 'ImageObject', url: imagen, caption: art.imageAlt || art.title };
     const autor = art.autor || (art.marca === 'fst' ? 'Karla Hernández' : 'Equipo editorial de Edvanta');
     const faq = texto ? preguntasFrecuentes(texto) : [];
     const grafo = [
@@ -271,8 +422,9 @@ export default function ArticuloPage() {
         headline: art.title,
         name: art.title,
         description: art.description,
-        image: imagen,
-        inLanguage: 'es',
+        image: imagenJsonLd,
+        articleSection: art.category,
+        inLanguage: 'es-CO',
         author: { '@type': autor.startsWith('Equipo') ? 'Organization' : 'Person', name: autor },
         ...(art.revisor ? { reviewedBy: { '@type': 'Person', name: art.revisor } } : {}),
         datePublished: art.date,
@@ -296,10 +448,11 @@ export default function ArticuloPage() {
       });
     }
     updatePageSeo({
-      title: `${art.title} | Edvanta`,
-      description: art.description,
+      title: `${art.seoTitle || art.title} | Edvanta`,
+      description: art.seoDescription || art.description,
       canonical,
       image: imagen,
+      imageAlt: art.imageAlt || art.title,
       type: 'article',
       jsonLdId: 'articulo',
       jsonLd: { '@context': 'https://schema.org', '@graph': grafo },
@@ -379,7 +532,7 @@ export default function ArticuloPage() {
 
       {art.image && (
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-          <img src={art.image} alt="" className="aspect-[16/8] w-full rounded-[18px] object-cover shadow-[0_18px_44px_rgba(23,34,59,.12)]" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
+          <img src={art.image} alt={art.imageAlt || art.title} width="1200" height="600" loading="eager" decoding="async" className="aspect-[16/8] w-full rounded-[18px] object-cover shadow-[0_18px_44px_rgba(23,34,59,.12)]" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
         </div>
       )}
 

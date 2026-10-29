@@ -8,7 +8,7 @@ category: "Gestión de calidad"
 author: "Edvanta"
 author_url: "/"
 date_published: "2026-07-15"
-date_modified: "2026-07-15"
+date_modified: "2026-10-28"
 reading_time: "12 minutos"
 og_title: "Ciclo PHVA en la práctica: mejora continua paso a paso"
 og_description: "Aplica el ciclo Planificar-Hacer-Verificar-Actuar con ejemplos reales: cómo pasar de la teoría a resultados medibles en tu organización."
@@ -379,3 +379,9 @@ Aplica a cualquier proceso, en cualquier sector. Un hospital puede usar PHVA par
 [4] Imai, M. (1986). *Kaizen: The Key to Japan's Competitive Success*. McGraw-Hill.
 
 [5] ISO 9000:2015. Sistemas de gestión de la calidad — Fundamentos y vocabulario. Apartado 2.3.5: Mejora.
+
+## Fuentes y recursos
+
+- [ISO 9001: gestión de la calidad](https://www.iso.org/iso-9001-quality-management.html)
+
+Fuentes oficiales de referencia. Verifica la versión vigente y su aplicabilidad al contexto de tu organización.

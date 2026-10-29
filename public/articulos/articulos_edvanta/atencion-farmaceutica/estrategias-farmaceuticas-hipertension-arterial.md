@@ -8,7 +8,7 @@ category: "Atención Farmacéutica"
 author: "Karla Hernández — Química Farmacéutica"
 author_url: "/autores/karla-hernandez"
 date_published: "2026-08-05"
-date_modified: "2026-08-05"
+date_modified: "2026-10-28"
 reading_time: "11 minutos"
 image: "https://edvanta.co/images/articulos/que-es-atencion-farmaceutica.webp"
 image_alt: "Farmacéutico midiendo la presión arterial y revisando medicación antihipertensiva"
@@ -32,6 +32,8 @@ robots: "index, follow"
 # Estrategias farmacéuticas para mejorar el control de la hipertensión arterial
 
 La hipertensión arterial (HTA) es el principal factor de riesgo modificable para enfermedad cardiovascular y la primera causa de muerte prevenible a nivel mundial. A pesar de la disponibilidad de tratamientos efectivos, menos del 50% de los pacientes hipertensos logran un control adecuado de su presión arterial. El farmacéutico clínico puede marcar una diferencia significativa en estos resultados.
+
+**Cómo se relaciona:** este artículo se centra en estrategias de seguimiento y adherencia. Para el proceso de intervención y ajuste, consulta [Hipertensión: intervención farmacéutica paso a paso](/articulos/hipertension-arterial-intervencion-farmaceutica).
 
 > **Aviso editorial:** Este material tiene fines educativos y debe adaptarse a los protocolos, competencias profesionales y regulación aplicable en cada institución.
 

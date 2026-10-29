@@ -8,7 +8,7 @@ category: "Atención Farmacéutica"
 author: "Karla Hernández — Química Farmacéutica"
 author_url: "/autores/karla-hernandez"
 date_published: "2026-08-05"
-date_modified: "2026-08-05"
+date_modified: "2026-10-28"
 reading_time: "7 minutos"
 image: "https://edvanta.co/images/articulos/que-es-atencion-farmaceutica.webp"
 image_alt: "Farmacéutico diseñando un plan de cuidados"
@@ -79,3 +79,8 @@ Un farmacéutico que solo identifica problemas es un detector. Un farmacéutico 
 - [Plan de cuidados farmacoterapéutico: diseño, implementación y seguimiento](/articulos/plan-cuidados-farmacoterapeutico-diseno-seguimiento)
 - [Gestión integral de la farmacoterapia: fundamentos y aplicación clínica](/articulos/gestion-integral-farmacoterapia-fundamentos)
 - [Pharmacotherapy Workup: el método de Cipolle, Strand y Morley explicado](/articulos/pharmacotherapy-workup-cipolle-strand-morley)
+
+## Recursos relacionados
+- [Plan de Cuidados Farmacoterapéutico](https://go.hotmart.com/S107033035L?dp=1)
+
+Enlaces a programas, casos y recursos mencionados en el artículo.

@@ -8,7 +8,7 @@ category: "Gestión de calidad"
 author: "Edvanta"
 author_url: "/"
 date_published: "2026-07-08"
-date_modified: "2026-07-14"
+date_modified: "2026-10-28"
 reading_time: "11 minutos"
 og_title: "Cómo empezar en gestión de calidad: ruta inicial para principiantes"
 og_description: "Ruta práctica para iniciar en gestión de calidad con conceptos, habilidades, proyectos iniciales y errores comunes que debes evitar."
@@ -221,3 +221,10 @@ Depende del país, el sector, la experiencia y el nivel de responsabilidad. En A
 [2] ISO 9001:2015. Sistemas de gestión de la calidad — Requisitos.
 
 [3] Deming, W. E. (1986). *Out of the Crisis*. MIT Press.
+
+## Fuentes y recursos
+
+- [ISO 9001: sistemas de gestión de la calidad](https://www.iso.org/iso-9001-quality-management.html)
+- [ISO 19011: directrices para auditar sistemas de gestión](https://www.iso.org/standard/70017.html)
+
+Fuentes oficiales de referencia. Verifica la versión vigente y su aplicabilidad al contexto de tu organización.

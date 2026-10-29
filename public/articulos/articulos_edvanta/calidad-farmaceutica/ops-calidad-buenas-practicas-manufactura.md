@@ -8,7 +8,7 @@ category: "Calidad farmacéutica"
 author: "Edvanta"
 author_url: "/"
 date_published: "2026-08-14"
-date_modified: "2026-08-14"
+date_modified: "2026-10-28"
 reading_time: "6 minutos"
 og_title: "OPS Calidad y BPM: curso para empezar en industria"
 og_description: "Curso gratuito de la OPS sobre fundamentos de calidad y GMP: sistema de calidad, documentación, instalaciones, equipos, insumos y distribución."
@@ -103,3 +103,9 @@ En el Campus Virtual de Salud Pública: [campus.paho.org](https://campus.paho.or
 **Referencias:**
 
 [1] OPS. *Calidad y Buenas Prácticas de Manufactura, Control, Almacenamiento y Distribución*. Campus Virtual de Salud Pública.
+
+## Fuentes y recursos
+
+- [campus.paho.org](https://campus.paho.org/mooc/course/info.php?id=239)
+
+Enlaces consultados para esta guía. Verifica siempre la versión vigente del documento o de la ficha técnica.

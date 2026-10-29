@@ -8,7 +8,7 @@ category: "Gestión de proyectos"
 author: "Edvanta"
 author_url: "/"
 date_published: "2026-07-08"
-date_modified: "2026-07-14"
+date_modified: "2026-10-28"
 reading_time: "10 minutos"
 og_title: "Qué es la gestión de proyectos y cómo se aplica"
 og_description: "Aprende los fundamentos de la gestión de proyectos: alcance, cronograma, recursos, riesgos y seguimiento, con ejemplos prácticos."
@@ -187,3 +187,10 @@ Varía mucho según el país, la industria, la experiencia y la certificación. 
 [1] Project Management Institute. (2021). *A Guide to the Project Management Body of Knowledge (PMBOK Guide)*, 7th Edition.
 
 [2] ISO 21500:2021. Gestión de proyectos, programas y carteras — Contexto y conceptos.
+
+## Fuentes y recursos
+
+- [Project Management Institute](https://www.pmi.org/)
+- [ISO 21500: gestión de proyectos](https://www.iso.org/standard/83997.html)
+
+Fuentes oficiales de referencia. Verifica la versión vigente y su aplicabilidad al contexto de tu organización.

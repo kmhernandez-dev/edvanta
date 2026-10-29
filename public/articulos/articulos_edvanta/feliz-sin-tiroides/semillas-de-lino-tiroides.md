@@ -8,7 +8,7 @@ category: "Feliz Sin Tiroides"
 author: "Karla Hernández — Química Farmacéutica"
 author_url: "/autores/karla-hernandez"
 date_published: "2026-07-17"
-date_modified: "2026-07-17"
+date_modified: "2026-10-28"
 reading_time: "9 minutos"
 image: "/images/articulos/como-tomar-levotiroxina-correctamente.webp"
 image_alt: "Semillas de lino y chía en cucharas de madera sobre una mesa"
@@ -219,29 +219,3 @@ Para complementar esta información, te invitamos a explorar nuestra [Guía de A
 2. Burdge GC, Calder PC. Conversion of alpha-linolenic acid to longer-chain polyunsaturated fatty acids. *Reprod Nutr Dev*. 2005. <a href="https://pubmed.ncbi.nlm.nih.gov/16188209/" target="_blank" rel="noopener noreferrer">https://pubmed.ncbi.nlm.nih.gov/16188209/</a>
 3. Ihnatowicz P, et al. The importance of nutritional factors and dietary management of Hashimoto's thyroiditis. *Ann Agric Environ Med*. 2020. <a href="https://pubmed.ncbi.nlm.nih.gov/32588591/" target="_blank" rel="noopener noreferrer">https://pubmed.ncbi.nlm.nih.gov/32588591/</a>
 4. Liel Y, et al. Evidence for a clinically important adverse effect of fiber-enriched diet on the bioavailability of levothyroxine. *J Clin Endocrinol Metab*. 1996. <a href="https://pubmed.ncbi.nlm.nih.gov/8636317/" target="_blank" rel="noopener noreferrer">https://pubmed.ncbi.nlm.nih.gov/8636317/</a>
-
-## JSON-LD sugerido
-
-```json
-{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "Semillas de lino y chía: omega-3 vegetal para tu bienestar tiroideo",
-  "description": "Propiedades antiinflamatorias, cómo incorporarlas, cantidad diaria recomendada y su interacción con la levotiroxina.",
-  "image": "https://edvanta.co/images/articulos/como-tomar-levotiroxina-correctamente.webp",
-  "datePublished": "2026-07-17",
-  "dateModified": "2026-07-17",
-  "author": {
-    "@type": "Person",
-    "name": "Karla Hernández",
-    "jobTitle": "Química Farmacéutica",
-    "url": "https://edvanta.co/autores/karla-hernandez"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Biblioteca Profesional KH",
-    "url": "https://edvanta.co"
-  },
-  "mainEntityOfPage": "https://edvanta.co/articulos/semillas-de-lino-tiroides"
-}
-```

@@ -8,7 +8,7 @@ category: "Gestión de Calidad"
 author: "Edvanta"
 author_url: "/"
 date_published: "2026-07-07"
-date_modified: "2026-07-07"
+date_modified: "2026-10-28"
 reading_time: "14 minutos"
 image: "https://edvanta.co/images/articulos/iso-9001-explicada.webp"
 image_alt: "Mapa de procesos, ciclo PHVA e indicadores como representación de un sistema de gestión de calidad ISO 9001"
@@ -418,28 +418,3 @@ Evalúa cada pregunta con evidencia:
 6. ISO/TC 176/SC 2. The process approach in ISO 9001:2015. <a href="https://www.iso.org/iso/iso9001_2015_process_approach.pdf" target="_blank" rel="noopener noreferrer">Guía oficial ISO</a>
 7. International Accreditation Forum. IAF and ISO Joint Communiqué on Climate Change Amendments. 2024. <a href="https://iaf.nu/en/news/iaf-and-iso-publish-joint-communique/" target="_blank" rel="noopener noreferrer">Página oficial IAF</a>
 8. International Organization for Standardization. ISO 9000 family — Quality management. <a href="https://www.iso.org/standards/popular/iso-9000-family" target="_blank" rel="noopener noreferrer">https://www.iso.org/standards/popular/iso-9000-family</a>
-
-## JSON-LD sugerido
-
-```json
-{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "ISO 9001 explicada de forma sencilla: estructura, requisitos y aplicación",
-  "description": "Explicación práctica de la estructura, enfoque por procesos, riesgos, documentación e implementación de ISO 9001.",
-  "image": "https://edvanta.co/images/articulos/iso-9001-explicada.webp",
-  "datePublished": "2026-07-07",
-  "dateModified": "2026-07-07",
-  "author": {
-    "@type": "Organization",
-    "name": "Edvanta",
-    "url": "https://edvanta.co"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Biblioteca Profesional KH",
-    "url": "https://edvanta.co"
-  },
-  "mainEntityOfPage": "https://edvanta.co/articulos/iso-9001-explicada"
-}
-```

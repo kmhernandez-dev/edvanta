@@ -8,7 +8,7 @@ category: "Calidad farmacéutica"
 author: "Edvanta"
 author_url: "/"
 date_published: "2026-08-14"
-date_modified: "2026-08-14"
+date_modified: "2026-10-28"
 reading_time: "8 minutos"
 og_title: "OPS BPM en Servicios de Sangre: guía del curso"
 og_description: "14 módulos gratuitos de la OPS sobre BPM: desviaciones, auditoría interna, validación de procesos y sistemas informáticos, gestión de riesgos y más."
@@ -112,3 +112,9 @@ En el Campus Virtual de Salud Pública: [campus.paho.org](https://campus.paho.or
 **Referencias:**
 
 [1] OPS. *Buenas Prácticas de Manufactura en Servicios de Sangre*. Campus Virtual de Salud Pública.
+
+## Fuentes y recursos
+
+- [campus.paho.org](https://campus.paho.org/es/curso/manufactura-bancos-sangre)
+
+Enlaces consultados para esta guía. Verifica siempre la versión vigente del documento o de la ficha técnica.

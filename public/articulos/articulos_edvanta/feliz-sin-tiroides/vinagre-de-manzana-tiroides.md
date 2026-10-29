@@ -8,7 +8,7 @@ category: "Feliz Sin Tiroides"
 author: "Karla Hernández — Química Farmacéutica"
 author_url: "/autores/karla-hernandez"
 date_published: "2026-07-17"
-date_modified: "2026-07-17"
+date_modified: "2026-10-28"
 reading_time: "9 minutos"
 image: "/images/articulos/como-tomar-levotiroxina-correctamente.webp"
 image_alt: "Botella de vinagre de manzana junto a una cuchara y una manzana"
@@ -229,29 +229,3 @@ Para aprender más sobre alimentación y tiroides, te invitamos a explorar nuest
 1. Johnston CS, et al. Vinegar improves insulin sensitivity to a high-carbohydrate meal. *Diabetes Care*. 2004. <a href="https://pubmed.ncbi.nlm.nih.gov/14693969/" target="_blank" rel="noopener noreferrer">https://pubmed.ncbi.nlm.nih.gov/14693969/</a>
 2. Kondo T, et al. Vinegar intake reduces body weight and serum triglyceride levels. *Biosci Biotechnol Biochem*. 2009. <a href="https://pubmed.ncbi.nlm.nih.gov/19661687/" target="_blank" rel="noopener noreferrer">https://pubmed.ncbi.nlm.nih.gov/19661687/</a>
 3. Lhotta K, et al. Hypokalemia, hyperreninemia and osteoporosis in a patient ingesting large amounts of cider vinegar. *Nephron*. 1998. <a href="https://pubmed.ncbi.nlm.nih.gov/9736819/" target="_blank" rel="noopener noreferrer">https://pubmed.ncbi.nlm.nih.gov/9736819/</a>
-
-## JSON-LD sugerido
-
-```json
-{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "Vinagre de manzana: ¿ayuda realmente al metabolismo tiroideo?",
-  "description": "Evidencia sobre vinagre de manzana y metabolismo, cómo consumirlo de forma segura, posibles interacciones y precauciones.",
-  "image": "https://edvanta.co/images/articulos/como-tomar-levotiroxina-correctamente.webp",
-  "datePublished": "2026-07-17",
-  "dateModified": "2026-07-17",
-  "author": {
-    "@type": "Person",
-    "name": "Karla Hernández",
-    "jobTitle": "Química Farmacéutica",
-    "url": "https://edvanta.co/autores/karla-hernandez"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Biblioteca Profesional KH",
-    "url": "https://edvanta.co"
-  },
-  "mainEntityOfPage": "https://edvanta.co/articulos/vinagre-de-manzana-tiroides"
-}
-```

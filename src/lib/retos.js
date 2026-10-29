@@ -95,12 +95,22 @@ export function challengeProgress(days, checkins) {
   return { total, completed, percent };
 }
 
+const fechaDeCheckin = (valor) => {
+  const texto = String(valor || '');
+  if (/^\d{4}-\d{2}-\d{2}$/.test(texto)) return new Date(`${texto}T12:00:00`);
+  const fecha = new Date(texto);
+  if (Number.isNaN(fecha.getTime())) return null;
+  fecha.setHours(12, 0, 0, 0);
+  return fecha;
+};
+
 // Racha actual de días consecutivos con ejercicio completado.
 // Amable: si ayer no hubo check-in, la racha empieza hoy (nunca mensajes de culpa).
 export function currentStreak(checkins) {
   const done = (checkins || [])
     .filter(checkin => checkin.exercise_completed && checkin.completed_at)
-    .map(checkin => new Date(`${String(checkin.completed_at).slice(0, 10)}T12:00:00`))
+    .map(checkin => fechaDeCheckin(checkin.completed_at))
+    .filter(Boolean)
     .sort((a, b) => b - a);
   if (done.length === 0) return 0;
 

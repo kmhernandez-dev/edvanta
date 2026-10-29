@@ -81,6 +81,24 @@ Consulte si sus mediciones en casa están por encima de lo que le indicó el mé
 
 Este contenido es educativo y no reemplaza la consulta médica.
 
+## Preguntas frecuentes
+
+### ¿Puedo dejar el medicamento si mi presión ya está normal?
+
+No por tu cuenta. La presión puede estar normal precisamente porque el tratamiento está funcionando. Suspenderlo o cambiar la dosis sin indicación médica puede hacer que vuelva a subir. Habla con tu médico antes de cualquier cambio.
+
+### ¿Qué diferencia hay entre presión alta y una crisis hipertensiva?
+
+Una crisis hipertensiva es una presión muy alta, por ejemplo 180/110 mmHg o más, acompañada de síntomas que sugieren daño en un órgano, como dolor en el pecho, dificultad para respirar, debilidad de un lado del cuerpo o alteración de la visión. Es una urgencia. Si la presión está muy alta pero no tienes síntomas, consulta a tu médico ese mismo día.
+
+### ¿Puedo tomar ibuprofeno o naproxeno para el dolor?
+
+Ten precaución: los antiinflamatorios pueden subir la presión y reducir el efecto de algunos medicamentos para la hipertensión. No los uses de forma habitual sin consultar a tu médico o químico farmacéutico, sobre todo si tienes enfermedad renal o tomas varios medicamentos.
+
+### ¿La sal con potasio es una buena opción para mí?
+
+No es para todas las personas. Puede ser peligrosa si tienes enfermedad renal o tomas medicamentos que aumentan el potasio, como losartán, enalapril o espironolactona. Consulta antes de reemplazar la sal habitual.
+
 ## Fuentes
 
 - Cuenta de Alto Costo. Día mundial de la hipertensión 2026. [Ver fuente](https://cuentadealtocosto.org/noticias/dia-mundial-de-la-hipertension-2026/)

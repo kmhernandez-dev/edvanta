@@ -44,9 +44,10 @@ const esc = (t) => String(t ?? '')
   .replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;');
 
 /** Cambia el contenido de una etiqueta <meta> o <link> de la plantilla. */
-function conMeta(html, { title, description, canonical, image, type = 'article' }) {
+function conMeta(html, { title, description, canonical, image, imageAlt = '', type = 'article' }) {
   const t = esc(title);
   const d = esc(description);
+  const alt = esc(imageAlt);
   return html
     .replace(/<title>[\s\S]*?<\/title>/, `<title>${t}</title>`)
     .replace(/(<meta name="description" content=")[^"]*(")/, `$1${d}$2`)
@@ -58,7 +59,8 @@ function conMeta(html, { title, description, canonical, image, type = 'article' 
     .replace(/(<meta property="og:image" content=")[^"]*(")/, `$1${image}$2`)
     .replace(/(<meta name="twitter:title" content=")[^"]*(")/, `$1${t}$2`)
     .replace(/(<meta name="twitter:description" content=")[^"]*(")/, `$1${d}$2`)
-    .replace(/(<meta name="twitter:image" content=")[^"]*(")/, `$1${image}$2`);
+    .replace(/(<meta name="twitter:image" content=")[^"]*(")/, `$1${image}$2`)
+    .replace('</head>', `${alt ? `<meta property="og:image:alt" content="${alt}" />\n    <meta name="twitter:image:alt" content="${alt}" />\n  ` : ''}</head>`);
 }
 
 function conJsonLd(html, datos) {
@@ -96,6 +98,7 @@ for (const art of articulos) {
   const md = readFileSync(archivo, 'utf8');
   const canonical = `${SITIO}/articulos/${art.slug}`;
   const image = `${SITIO}${art.image || '/img/edvanta-hero.webp'}`;
+  const imagenJsonLd = { '@type': 'ImageObject', url: image, caption: art.imageAlt || art.title };
   const autor = art.autor || (art.marca === 'fst' ? 'Karla Hernández' : 'Equipo editorial de Edvanta');
   const faq = preguntasFrecuentes(md);
   const relacionados = articulos.filter((a) => a.slug !== art.slug && a.category === art.category).slice(0, 4);
@@ -105,9 +108,10 @@ for (const art of articulos) {
       '@type': SALUD.includes(art.marca) ? 'MedicalWebPage' : 'Article',
       headline: art.title,
       name: art.title,
-      description: art.description,
-      image,
-      inLanguage: 'es',
+      description: art.seoDescription || art.description,
+      image: imagenJsonLd,
+      articleSection: art.category,
+      inLanguage: 'es-CO',
       author: { '@type': autor.startsWith('Equipo') ? 'Organization' : 'Person', name: autor },
       ...(art.revisor ? { reviewedBy: { '@type': 'Person', name: art.revisor } } : {}),
       datePublished: art.date,
@@ -144,7 +148,7 @@ for (const art of articulos) {
   ${relacionados.length ? `<aside><h2>Sigue leyendo</h2><ul>${relacionados.map((r) => `<li><a href="/articulos/${r.slug}">${esc(r.title)}</a></li>`).join('')}</ul></aside>` : ''}
 </main>`;
 
-  let html = conMeta(plantilla, { title: `${art.title} | Edvanta`, description: art.description, canonical, image });
+  let html = conMeta(plantilla, { title: `${art.seoTitle || art.title} | Edvanta`, description: art.seoDescription || art.description, canonical, image, imageAlt: art.imageAlt || art.title });
   html = conJsonLd(html, { '@context': 'https://schema.org', '@graph': grafo });
   html = conCuerpo(html, cuerpo);
   writeFileSync(path.join(dist, 'articulos', `${art.slug}.html`), html);

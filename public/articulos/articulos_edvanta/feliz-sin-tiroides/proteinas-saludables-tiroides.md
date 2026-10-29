@@ -8,7 +8,7 @@ category: "Feliz Sin Tiroides"
 author: "Karla Hernández — Química Farmacéutica"
 author_url: "/autores/karla-hernandez"
 date_published: "2026-07-17"
-date_modified: "2026-07-17"
+date_modified: "2026-10-28"
 reading_time: "10 minutos"
 image: "/images/articulos/como-tomar-levotiroxina-correctamente.webp"
 image_alt: "Variedad de fuentes de proteína: salmón, pollo, huevos, lentejas y tofu"
@@ -230,29 +230,3 @@ Para más información sobre alimentación y tiroides, te invitamos a explorar n
 
 1. Ihnatowicz P, et al. The importance of nutritional factors and dietary management of Hashimoto's thyroiditis. *Ann Agric Environ Med*. 2020. <a href="https://pubmed.ncbi.nlm.nih.gov/32588591/" target="_blank" rel="noopener noreferrer">https://pubmed.ncbi.nlm.nih.gov/32588591/</a>
 2. Rayman MP. Selenium and human health. *Lancet*. 2012. <a href="https://pubmed.ncbi.nlm.nih.gov/22381456/" target="_blank" rel="noopener noreferrer">https://pubmed.ncbi.nlm.nih.gov/22381456/</a>
-
-## JSON-LD sugerido
-
-```json
-{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "Proteínas saludables para la tiroides: pescado, pollo, legumbres y más",
-  "description": "Guía de fuentes de proteína compatibles con la salud tiroidea, cómo prepararlas y cómo combinarlas con otros nutrientes.",
-  "image": "https://edvanta.co/images/articulos/como-tomar-levotiroxina-correctamente.webp",
-  "datePublished": "2026-07-17",
-  "dateModified": "2026-07-17",
-  "author": {
-    "@type": "Person",
-    "name": "Karla Hernández",
-    "jobTitle": "Química Farmacéutica",
-    "url": "https://edvanta.co/autores/karla-hernandez"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Biblioteca Profesional KH",
-    "url": "https://edvanta.co"
-  },
-  "mainEntityOfPage": "https://edvanta.co/articulos/proteinas-saludables-tiroides"
-}
-```

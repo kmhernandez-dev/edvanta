@@ -8,7 +8,7 @@ category: "Gestión de calidad"
 author: "Edvanta"
 author_url: "/"
 date_published: "2026-07-15"
-date_modified: "2026-07-15"
+date_modified: "2026-10-28"
 reading_time: "12 minutos"
 og_title: "Cómo prepararse para una auditoría de certificación ISO 9001"
 og_description: "Guía práctica para preparar una auditoría de certificación: documentación, evidencias, simulacros, roles del equipo y errores que debes evitar."
@@ -351,3 +351,10 @@ No es obligatorio. Muchas organizaciones se preparan con su equipo interno de ca
 [3] IAF MD 5:2019. Determination of Audit Time for Quality and Environmental Management Systems.
 
 [4] IAF ID 3:2011. Informative Document for Management of Extraordinary Events or Circumstances Affecting Accreditation.
+
+## Fuentes y recursos
+
+- [ISO 19011: directrices para auditar sistemas de gestión](https://www.iso.org/standard/70017.html)
+- [ISO 9001: gestión de la calidad](https://www.iso.org/iso-9001-quality-management.html)
+
+Fuentes oficiales de referencia. Verifica la versión vigente y su aplicabilidad al contexto de tu organización.

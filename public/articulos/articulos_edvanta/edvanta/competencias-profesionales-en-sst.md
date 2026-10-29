@@ -8,7 +8,7 @@ category: "Seguridad y salud en el trabajo"
 author: "Edvanta"
 author_url: "/"
 date_published: "2026-07-08"
-date_modified: "2026-07-14"
+date_modified: "2026-10-28"
 reading_time: "10 minutos"
 og_title: "Competencias profesionales en SST para fortalecer tu perfil"
 og_description: "Descubre las habilidades técnicas y blandas que necesitas para destacar en seguridad y salud en el trabajo, con ruta de formación recomendada."
@@ -185,3 +185,10 @@ Varía según el país, la experiencia y el nivel de responsabilidad. Un auxilia
 [2] GTC 45:2012. Guía para la identificación de los peligros y la valoración de los riesgos. ICONTEC.
 
 [3] OIT. (2011). Sistema de gestión de la SST: una herramienta para la mejora continua.
+
+## Fuentes y recursos
+
+- [ISO 45001: seguridad y salud en el trabajo](https://www.iso.org/iso-45001-occupational-health-and-safety.html)
+- [OIT: seguridad y salud en el trabajo](https://www.ilo.org/es/temas/seguridad-y-salud-en-el-trabajo)
+
+Fuentes oficiales de referencia. Verifica la versión vigente y su aplicabilidad al contexto de tu organización.

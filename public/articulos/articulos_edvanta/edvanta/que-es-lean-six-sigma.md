@@ -8,7 +8,7 @@ category: "Lean Six Sigma"
 author: "Edvanta"
 author_url: "/"
 date_published: "2026-07-08"
-date_modified: "2026-07-14"
+date_modified: "2026-10-28"
 reading_time: "10 minutos"
 og_title: "Qué es Lean Six Sigma y cuándo conviene aprenderlo"
 og_description: "Descubre qué es Lean Six Sigma, en qué se diferencia de Lean, cuándo conviene aplicarlo y cómo puede impulsar tu carrera profesional."
@@ -158,3 +158,9 @@ Sí. El [curso de Lean Six Sigma](/cursos/lean-six-sigma) incluye los fundamento
 [2] Pyzdek, T., & Keller, P. (2018). *The Six Sigma Handbook*, 5th Edition. McGraw-Hill.
 
 [3] Harry, M., & Schroeder, R. (2000). *Six Sigma: The Breakthrough Management Strategy Revolutionizing the World's Top Corporations*. Currency.
+
+## Fuentes y recursos
+
+- [ASQ: Six Sigma](https://asq.org/quality-resources/six-sigma)
+
+Fuentes oficiales de referencia. Verifica la versión vigente y su aplicabilidad al contexto de tu organización.

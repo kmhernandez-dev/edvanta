@@ -44,6 +44,24 @@ Las infecciones respiratorias son la causa más común de exacerbaciones. La gu�
 - Asista a sus controles y lleve todos sus inhaladores para revisarlos.
 - Si tiene una exacerbación, pida una cita de control después, aunque ya se sienta mejor.
 
+## Preguntas frecuentes
+
+### ¿La EPOC se cura?
+
+No. Es una enfermedad crónica que no se revierte, pero dejar de fumar, usar los inhaladores indicados, vacunarse y hacer rehabilitación puede frenar su progresión y mejorar la calidad de vida.
+
+### ¿Puedo dejar de fumar después de muchos años?
+
+Sí. Dejar de fumar beneficia a cualquier edad y es la medida más importante para proteger los pulmones. Existen programas y tratamientos que aumentan la probabilidad de lograrlo; pide ayuda en tu EPS o con tu médico.
+
+### ¿Necesito oxígeno en casa?
+
+Solo si tu médico lo indica después de medir el oxígeno en sangre. No todas las personas con EPOC lo necesitan, y usarlo sin indicación puede ser peligroso.
+
+### ¿Qué es una exacerbación de la EPOC?
+
+Es un empeoramiento de la falta de aire, la tos o los mocos que requiere un cambio de tratamiento. Puede ser leve o grave. Si empeora rápido, aparece fiebre, confusión o coloración azulada, busca atención urgente.
+
 ## Fuentes
 
 - [GOLD. 2026 GOLD Report and Pocket Guide](https://goldcopd.org/2026-gold-report-and-pocket-guide/)

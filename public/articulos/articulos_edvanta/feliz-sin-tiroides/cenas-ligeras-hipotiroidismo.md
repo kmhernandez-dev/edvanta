@@ -8,7 +8,7 @@ category: "Feliz Sin Tiroides"
 author: "Karla Hernández — Química Farmacéutica"
 author_url: "/autores/karla-hernandez"
 date_published: "2026-07-17"
-date_modified: "2026-07-17"
+date_modified: "2026-10-28"
 reading_time: "10 minutos"
 image: "/images/articulos/como-tomar-levotiroxina-correctamente.webp"
 image_alt: "Cena ligera con vegetales al vapor y pescado blanco"
@@ -299,29 +299,3 @@ Para más ideas de comidas, te invitamos a explorar nuestro [Menú Semanal para 
 
 1. Ebert EC. The thyroid and the gut. *J Clin Gastroenterol*. 2010. <a href="https://pubmed.ncbi.nlm.nih.gov/20351569/" target="_blank" rel="noopener noreferrer">https://pubmed.ncbi.nlm.nih.gov/20351569/</a>
 2. American Thyroid Association. Thyroid Hormone Treatment. <a href="https://www.thyroid.org/thyroid-hormone-treatment/" target="_blank" rel="noopener noreferrer">https://www.thyroid.org/thyroid-hormone-treatment/</a>
-
-## JSON-LD sugerido
-
-```json
-{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "Cenas ligeras para hipotiroidismo: recetas que no interfieren con tu tratamiento",
-  "description": "Cenas fáciles de digerir, nutritivas y compatibles con la medicación tiroidea. Con opciones vegetarianas y con proteína animal.",
-  "image": "https://edvanta.co/images/articulos/como-tomar-levotiroxina-correctamente.webp",
-  "datePublished": "2026-07-17",
-  "dateModified": "2026-07-17",
-  "author": {
-    "@type": "Person",
-    "name": "Karla Hernández",
-    "jobTitle": "Química Farmacéutica",
-    "url": "https://edvanta.co/autores/karla-hernandez"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Biblioteca Profesional KH",
-    "url": "https://edvanta.co"
-  },
-  "mainEntityOfPage": "https://edvanta.co/articulos/cenas-ligeras-hipotiroidismo"
-}
-```

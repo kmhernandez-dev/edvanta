@@ -8,7 +8,7 @@ category: "Gestión de Calidad"
 author: "Edvanta"
 author_url: "/"
 date_published: "2026-07-07"
-date_modified: "2026-07-07"
+date_modified: "2026-10-28"
 reading_time: "14 minutos"
 image: "https://edvanta.co/images/articulos/principios-alcoa-integridad-datos.webp"
 image_alt: "Registros farmacéuticos en papel y sistemas electrónicos protegidos mediante los principios ALCOA+"
@@ -487,28 +487,3 @@ Antes de aprobar un registro crítico, pregunta:
 4. International Council for Harmonisation. ICH Q10: Pharmaceutical Quality System. <a href="https://database.ich.org/sites/default/files/Q10%20Guideline.pdf" target="_blank" rel="noopener noreferrer">Guía oficial ICH</a>
 5. International Council for Harmonisation. ICH Q9(R1): Quality Risk Management. <a href="https://database.ich.org/sites/default/files/ICH_Q9%28R1%29_Guideline_Step4_2022_1219.pdf" target="_blank" rel="noopener noreferrer">Guía oficial ICH</a>
 6. U.S. Food and Drug Administration. Culture of Quality: Data Integrity and CGMP Compliance. 2022. <a href="https://www.fda.gov/media/165535/download" target="_blank" rel="noopener noreferrer">Material oficial FDA</a>
-
-## JSON-LD sugerido
-
-```json
-{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "Principios ALCOA+: integridad de datos en la industria farmacéutica",
-  "description": "Explicación práctica de ALCOA+, ciclo de vida del dato, audit trails y controles para registros farmacéuticos confiables.",
-  "image": "https://edvanta.co/images/articulos/principios-alcoa-integridad-datos.webp",
-  "datePublished": "2026-07-07",
-  "dateModified": "2026-07-07",
-  "author": {
-    "@type": "Organization",
-    "name": "Edvanta",
-    "url": "https://edvanta.co"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Biblioteca Profesional KH",
-    "url": "https://edvanta.co"
-  },
-  "mainEntityOfPage": "https://edvanta.co/articulos/principios-alcoa-integridad-datos"
-}
-```

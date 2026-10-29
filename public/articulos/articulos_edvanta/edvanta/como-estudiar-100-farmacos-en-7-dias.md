@@ -8,7 +8,7 @@ category: "Técnicas de estudio"
 author: "Edvanta"
 author_url: "/autores/edvanta"
 date_published: "2026-07-17"
-date_modified: "2026-07-17"
+date_modified: "2026-10-28"
 reading_time: "12 minutos"
 og_title: "Cómo estudiar 100 fármacos en 7 días"
 og_description: "Método acelerado para memorizar farmacología con reglas mnemotécnicas, tablas de clasificación y repetición espaciada."
@@ -267,3 +267,13 @@ No. El método asume que partes de cero. Los días 1-2 son justamente para const
 [1] Ebbinghaus, H. (1885). *Memory: A Contribution to Experimental Psychology*.
 [2] Dunlosky, J. et al. (2013). Improving Students' Learning With Effective Learning Techniques. *Psychological Science in the Public Interest*.
 [3] Roediger, H. L., & Karpicke, J. D. (2006). Test-Enhanced Learning. *Psychological Science*.
+
+## Recursos relacionados
+- [curso de neurociencia](https://edutin.com/sh-15973)
+- [curso de farmacología cardiovascular](https://edutin.com/sh-20799)
+- [curso de técnicas de estudio](https://edutin.com/sh-15968)
+- [curso de farmacología clínica](https://edutin.com/sh-7429)
+- [curso de psicología del aprendizaje](https://edutin.com/sh-15972)
+- [curso de productividad](https://edutin.com/sh-15975)
+
+Enlaces a programas, casos y recursos mencionados en el artículo.

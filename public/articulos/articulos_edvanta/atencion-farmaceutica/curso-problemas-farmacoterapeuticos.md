@@ -8,7 +8,7 @@ category: "Atención Farmacéutica"
 author: "Karla Hernández — Química Farmacéutica"
 author_url: "/autores/karla-hernandez"
 date_published: "2026-08-05"
-date_modified: "2026-08-05"
+date_modified: "2026-10-28"
 reading_time: "7 minutos"
 image: "https://edvanta.co/images/articulos/que-es-atencion-farmaceutica.webp"
 image_alt: "Farmacéutico identificando problemas farmacoterapéuticos"
@@ -80,3 +80,8 @@ La identificación de problemas farmacoterapéuticos no es una habilidad más: e
 - [Problemas farmacoterapéuticos: identificación, clasificación y resolución](/articulos/problemas-farmacoterapeuticos-identificacion-clasificacion)
 - [Pharmacotherapy Workup: el método de Cipolle, Strand y Morley explicado](/articulos/pharmacotherapy-workup-cipolle-strand-morley)
 - [Seguridad del medicamento: prevención de errores y gestión de riesgos en farmacia](/articulos/seguridad-medicamento-prevencion-errores-gestion-riesgos)
+
+## Recursos relacionados
+- [Problemas Farmacoterapéuticos](https://go.hotmart.com/O107033642F?dp=1)
+
+Enlaces a programas, casos y recursos mencionados en el artículo.

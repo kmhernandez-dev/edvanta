@@ -8,7 +8,7 @@ category: "Calidad farmacéutica"
 author: "Edvanta"
 author_url: "/"
 date_published: "2026-08-14"
-date_modified: "2026-08-14"
+date_modified: "2026-10-28"
 reading_time: "7 minutos"
 og_title: "EMA ATMP Regulatory Training: guía del recurso"
 og_description: "La EMA ofrece módulos gratuitos sobre el entorno regulatorio de terapias génicas, celulares y de ingeniería tisular. Conoce qué incluyen."
@@ -103,3 +103,9 @@ En el sitio oficial de la EMA: [ema.europa.eu](https://www.ema.europa.eu/en/huma
 **Referencias:**
 
 [1] EMA. *Regulatory Training for Advanced Therapy Medicinal Products*.
+
+## Fuentes y recursos
+
+- [ema.europa.eu](https://www.ema.europa.eu/en/human-regulatory-overview/advanced-therapy-medicinal-products-overview)
+
+Enlaces consultados para esta guía. Verifica siempre la versión vigente del documento o de la ficha técnica.

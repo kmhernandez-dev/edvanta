@@ -8,7 +8,7 @@ category: "Power BI"
 author: "Edvanta"
 author_url: "/"
 date_published: "2026-07-08"
-date_modified: "2026-07-14"
+date_modified: "2026-10-28"
 reading_time: "10 minutos"
 og_title: "Qué es Power BI y para qué sirve en el trabajo"
 og_description: "Aprende qué es Power BI, sus componentes, cómo crear dashboards y por qué es una habilidad cada vez más solicitada en el mercado laboral."
@@ -212,3 +212,9 @@ No. Son herramientas complementarias. Excel sigue siendo mejor para análisis ad
 [2] Ferrari, A., & Russo, M. (2021). *The Definitive Guide to DAX*. Microsoft Press.
 
 [3] Documentación oficial de Microsoft Power BI: https://learn.microsoft.com/power-bi
+
+## Fuentes y recursos
+
+- [Microsoft Learn: documentación de Power BI](https://learn.microsoft.com/es-es/power-bi/)
+
+Fuentes oficiales de referencia. Verifica la versión vigente y su aplicabilidad al contexto de tu organización.

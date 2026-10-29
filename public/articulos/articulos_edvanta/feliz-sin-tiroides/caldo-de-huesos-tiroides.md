@@ -8,7 +8,7 @@ category: "Feliz Sin Tiroides"
 author: "Karla Hernández — Química Farmacéutica"
 author_url: "/autores/karla-hernandez"
 date_published: "2026-07-17"
-date_modified: "2026-07-17"
+date_modified: "2026-10-28"
 reading_time: "10 minutos"
 image: "/images/articulos/como-tomar-levotiroxina-correctamente.webp"
 image_alt: "Olla con caldo de huesos humeante junto a vegetales frescos"
@@ -208,29 +208,3 @@ Para seguir aprendiendo, te invitamos a explorar la [Colección Sana tu Tiroides
 1. Alcock RD, et al. Bone broth unlikely to provide reliable concentrations of collagen precursors. *Int J Sport Nutr Exerc Metab*. 2019. <a href="https://pubmed.ncbi.nlm.nih.gov/29893587/" target="_blank" rel="noopener noreferrer">https://pubmed.ncbi.nlm.nih.gov/29893587/</a>
 2. Lerner A, et al. The gut-thyroid axis and autoimmune thyroiditis. *Autoimmun Rev*. 2017. <a href="https://pubmed.ncbi.nlm.nih.gov/28131932/" target="_blank" rel="noopener noreferrer">https://pubmed.ncbi.nlm.nih.gov/28131932/</a>
 3. Monro JA, et al. The risk of lead contamination in bone broth diets. *Med Hypotheses*. 2013. <a href="https://pubmed.ncbi.nlm.nih.gov/23375414/" target="_blank" rel="noopener noreferrer">https://pubmed.ncbi.nlm.nih.gov/23375414/</a>
-
-## JSON-LD sugerido
-
-```json
-{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "Caldo de huesos: preparación, nutrientes y su relación con la salud tiroidea",
-  "description": "Beneficios del colágeno y minerales del caldo de huesos, receta paso a paso y su papel en una alimentación antiinflamatoria.",
-  "image": "https://edvanta.co/images/articulos/como-tomar-levotiroxina-correctamente.webp",
-  "datePublished": "2026-07-17",
-  "dateModified": "2026-07-17",
-  "author": {
-    "@type": "Person",
-    "name": "Karla Hernández",
-    "jobTitle": "Química Farmacéutica",
-    "url": "https://edvanta.co/autores/karla-hernandez"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Biblioteca Profesional KH",
-    "url": "https://edvanta.co"
-  },
-  "mainEntityOfPage": "https://edvanta.co/articulos/caldo-de-huesos-tiroides"
-}
-```

@@ -8,7 +8,7 @@ category: "Atención Farmacéutica"
 author: "Karla Hernández — Química Farmacéutica"
 author_url: "/autores/karla-hernandez"
 date_published: "2026-07-17"
-date_modified: "2026-07-17"
+date_modified: "2026-10-28"
 reading_time: "12 minutos"
 image: "https://edvanta.co/images/articulos/que-es-atencion-farmaceutica.webp"
 image_alt: "Farmacéutico realizando conciliación medicamentosa durante el ingreso hospitalario"
@@ -32,6 +32,8 @@ robots: "index, follow"
 # Conciliación medicamentosa: guía práctica para cada transición asistencial
 
 La conciliación medicamentosa es un proceso sistemático que compara la medicación que el paciente toma habitualmente con la prescrita en cada transición asistencial, con el objetivo de identificar y resolver discrepancias de forma proactiva. Es una de las intervenciones farmacéuticas con mayor impacto en seguridad del paciente [1].
+
+**Cómo se relaciona:** esta guía prioriza la aplicación por transición. Para el proceso conceptual completo, consulta [Conciliación medicamentosa: proceso paso a paso](/articulos/conciliacion-medicamentosa).
 
 > **Aviso editorial:** Este material tiene fines educativos y debe adaptarse a los protocolos, competencias profesionales y regulación aplicable en cada institución.
 

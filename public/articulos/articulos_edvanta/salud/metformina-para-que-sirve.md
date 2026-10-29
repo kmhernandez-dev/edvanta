@@ -59,6 +59,24 @@ Informe si toma o va a tomar:
 - Lleve sus exámenes de riñón y de HbA1c a los controles.
 - Guarde las tabletas en su empaque original, fuera del alcance de los niños.
 
+## Preguntas frecuentes
+
+### ¿La metformina es insulina?
+
+No. La metformina es un medicamento oral que ayuda a controlar la glucosa; la insulina es una hormona que se administra por inyección. La metformina puede combinarse con insulina si el médico lo indica.
+
+### ¿Puedo tomarla con el estómago vacío?
+
+Es mejor tomarla durante o después de las comidas para reducir las molestias digestivas. Si tu fórmula indica otra cosa, sigue la indicación de tu médico o del prospecto.
+
+### ¿La metformina daña los riñones?
+
+No se considera que cause daño renal, pero no se usa en enfermedad renal grave y exige control de la función renal. Si tienes vómito, diarrea intensa o te van a hacer un examen con contraste, pregunta si debes suspenderla temporalmente.
+
+### ¿Sirve para bajar de peso?
+
+No es un medicamento indicado para bajar de peso. Su uso es para la diabetes tipo 2. Algunas personas pierden algo de peso, pero no debe usarse con fines estéticos ni sin fórmula médica.
+
 ## Fuentes
 
 - [Ficha técnica Metformina Cinfa 850 mg comprimidos recubiertos con película EFG (AEMPS-CIMA)](https://cima.aemps.es/cima/dochtml/ft/68167/FT_68167.html)

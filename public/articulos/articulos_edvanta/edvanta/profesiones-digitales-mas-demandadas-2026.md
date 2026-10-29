@@ -8,7 +8,7 @@ category: "Profesiones"
 author: "Edvanta"
 author_url: "/autores/edvanta"
 date_published: "2026-07-17"
-date_modified: "2026-07-17"
+date_modified: "2026-10-28"
 reading_time: "11 minutos"
 og_title: "Profesiones digitales más demandadas en 2026"
 og_description: "Las 10 profesiones digitales con mayor demanda, salarios actualizados y cómo formarte en cada una."
@@ -128,3 +128,10 @@ Sí. De hecho, los perfiles híbridos son los mejor pagados. Un analista de dato
 [1] World Economic Forum. (2025). *Future of Jobs Report 2025*.
 [2] (ISC)². (2025). *Cybersecurity Workforce Study*.
 [3] LinkedIn. (2026). *Jobs on the Rise 2026*.
+
+## Recursos relacionados
+- [Marketing digital](https://edutin.com/sh-14836)
+- [Python](https://edutin.com/sh-16658)
+- [Análisis de datos](https://edutin.com/sh-20360)
+
+Enlaces a programas, casos y recursos mencionados en el artículo.

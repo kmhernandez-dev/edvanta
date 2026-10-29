@@ -8,7 +8,7 @@ category: "Calidad farmacéutica"
 author: "Edvanta"
 author_url: "/"
 date_published: "2026-08-14"
-date_modified: "2026-08-14"
+date_modified: "2026-10-28"
 reading_time: "7 minutos"
 og_title: "FDA Pharmaceutical Quality Training Modules: guía completa"
 og_description: "La FDA publica formación oficial gratuita en calidad farmacéutica. Conoce qué incluye y cómo aprovecharla."
@@ -100,3 +100,9 @@ En el sitio oficial de la FDA, en la sección de CDER Small Business and Industr
 **Referencias:**
 
 [1] FDA. *Pharmaceutical Quality Training Modules*. CDER Small Business and Industry Assistance.
+
+## Fuentes y recursos
+
+- [fda.gov](https://www.fda.gov/drugs/cder-small-business-industry-assistance-sbia/fda-pharmaceutical-quality-training-modules)
+
+Enlaces consultados para esta guía. Verifica siempre la versión vigente del documento o de la ficha técnica.

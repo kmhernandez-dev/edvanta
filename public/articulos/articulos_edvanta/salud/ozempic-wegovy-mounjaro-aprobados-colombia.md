@@ -37,6 +37,24 @@ Lee la guía completa para pacientes: [Ozempic para bajar de peso: lo que debes 
 
 La demanda de estos medicamentos aumentó la circulación de productos falsificados y de origen dudoso. Verificar el registro, el lote, la cadena de frío y la procedencia es parte del trabajo diario en la dispensación. Repasa las claves de la [cadena de frío de medicamentos](/articulos/cadena-de-frio-medicamentos).
 
+## Preguntas frecuentes
+
+### ¿Cuál está aprobado para obesidad en Colombia?
+
+Según la información recogida en este artículo con corte a agosto de 2026, Wegovy (semaglutida en dosis altas) está aprobado para obesidad y sobrepeso. Ozempic y Mounjaro se indican para diabetes tipo 2. Verifica siempre la indicación vigente en el registro sanitario.
+
+### ¿Puedo comprar cualquiera de estos medicamentos sin fórmula?
+
+No. Son medicamentos de venta con fórmula médica y requieren valoración y seguimiento. Comprarlos por redes sociales o sin registro sanitario expone a productos falsificados y a riesgos graves.
+
+### ¿Ozempic, Wegovy y Mounjaro son lo mismo?
+
+No. Ozempic y Wegovy contienen semaglutida, pero en presentaciones y dosis diferentes; Mounjaro contiene tirzepatida. No son intercambiables sin indicación médica.
+
+### ¿Qué alertas existen por productos ilegales?
+
+El INVIMA ha alertado por productos que se venden como semaglutida sin registro, como una supuesta «semaglutida + vitamina B12», y por lotes falsificados. Verifica el registro, el lote y la cadena de frío antes de usar o dispensar.
+
 ## Fuentes
 
 - El Colombiano. [¿Para qué están aprobados Wegovy, Ozempic y Mounjaro en Colombia según el Invima?](https://www.elcolombiano.com/tendencias/medicamentos-aprobados-invima-bajar-peso-wegovy-ozempic-mounjaro-NA40373439), 27 de agosto de 2026.

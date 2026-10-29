@@ -8,7 +8,7 @@ category: "Calidad farmacéutica"
 author: "Edvanta"
 author_url: "/"
 date_published: "2026-08-14"
-date_modified: "2026-08-14"
+date_modified: "2026-10-28"
 reading_time: "6 minutos"
 og_title: "WHO Academy: buenas prácticas en ensayos clínicos"
 og_description: "Formación gratuita de la OMS Academy sobre diseño, conducción y supervisión de ensayos clínicos. 9 módulos interactivos."
@@ -101,3 +101,9 @@ En la plataforma oficial: [whoacademy.org](https://whoacademy.org/coursewares/co
 **Referencias:**
 
 [1] OMS Academy. *WHO Good Practices for Clinical Trial Design and Implementation*.
+
+## Fuentes y recursos
+
+- [whoacademy.org](https://whoacademy.org/coursewares/course-v1%3AWHOAcademy-Hosted%2BH0118EN%2BH0118EN_Q1_2025)
+
+Enlaces consultados para esta guía. Verifica siempre la versión vigente del documento o de la ficha técnica.

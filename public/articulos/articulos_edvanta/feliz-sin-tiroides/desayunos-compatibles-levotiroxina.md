@@ -8,7 +8,7 @@ category: "Feliz Sin Tiroides"
 author: "Karla Hernández — Química Farmacéutica"
 author_url: "/autores/karla-hernandez"
 date_published: "2026-07-17"
-date_modified: "2026-07-17"
+date_modified: "2026-10-28"
 reading_time: "11 minutos"
 image: "/images/articulos/como-tomar-levotiroxina-correctamente.webp"
 image_alt: "Desayuno saludable con avena, frutas y frutos secos junto a un reloj"
@@ -362,29 +362,3 @@ Para más ideas de comidas compatibles con tu tratamiento, te invitamos a explor
 
 1. American Thyroid Association. Thyroid Hormone Treatment. <a href="https://www.thyroid.org/thyroid-hormone-treatment/" target="_blank" rel="noopener noreferrer">https://www.thyroid.org/thyroid-hormone-treatment/</a>
 2. Wiesner A, et al. Levothyroxine Interactions with Food and Dietary Supplements: A Systematic Review. *Pharmaceuticals*. 2021. <a href="https://pubmed.ncbi.nlm.nih.gov/33801406/" target="_blank" rel="noopener noreferrer">https://pubmed.ncbi.nlm.nih.gov/33801406/</a>
-
-## JSON-LD sugerido
-
-```json
-{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "7 desayunos compatibles con la levotiroxina: ricos, fáciles y seguros",
-  "description": "Desayunos que puedes comer después de tu dosis de levotiroxina, respetando el tiempo de espera. Con recetas, tiempos y valor nutricional.",
-  "image": "https://edvanta.co/images/articulos/como-tomar-levotiroxina-correctamente.webp",
-  "datePublished": "2026-07-17",
-  "dateModified": "2026-07-17",
-  "author": {
-    "@type": "Person",
-    "name": "Karla Hernández",
-    "jobTitle": "Química Farmacéutica",
-    "url": "https://edvanta.co/autores/karla-hernandez"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Biblioteca Profesional KH",
-    "url": "https://edvanta.co"
-  },
-  "mainEntityOfPage": "https://edvanta.co/articulos/desayunos-compatibles-levotiroxina"
-}
-```

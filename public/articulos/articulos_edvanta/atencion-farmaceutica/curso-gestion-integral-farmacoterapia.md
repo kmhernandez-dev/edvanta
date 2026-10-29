@@ -8,7 +8,7 @@ category: "Atención Farmacéutica"
 author: "Karla Hernández — Química Farmacéutica"
 author_url: "/autores/karla-hernandez"
 date_published: "2026-08-05"
-date_modified: "2026-08-05"
+date_modified: "2026-10-28"
 reading_time: "7 minutos"
 image: "https://edvanta.co/images/articulos/que-es-atencion-farmaceutica.webp"
 image_alt: "Farmacéutico gestionando integralmente la farmacoterapia"
@@ -81,3 +81,8 @@ La GIF no es una moda: es el estándar de la práctica farmacéutica del siglo X
 - [Gestión integral de la farmacoterapia: fundamentos y aplicación clínica](/articulos/gestion-integral-farmacoterapia-fundamentos)
 - [Pharmacotherapy Workup: el método de Cipolle, Strand y Morley explicado](/articulos/pharmacotherapy-workup-cipolle-strand-morley)
 - [Plan de cuidados farmacoterapéutico: diseño, implementación y seguimiento](/articulos/plan-cuidados-farmacoterapeutico-diseno-seguimiento)
+
+## Recursos relacionados
+- [Fundamentos de la Gestión Integral de la Farmacoterapia](https://go.hotmart.com/E107033125O?dp=1)
+
+Enlaces a programas, casos y recursos mencionados en el artículo.

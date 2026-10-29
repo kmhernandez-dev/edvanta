@@ -8,7 +8,7 @@ category: "Atención Farmacéutica"
 author: "Karla Hernández — Química Farmacéutica"
 author_url: "/autores/karla-hernandez"
 date_published: "2026-07-07"
-date_modified: "2026-07-07"
+date_modified: "2026-10-28"
 reading_time: "12 minutos"
 image: "https://edvanta.co/images/articulos/que-es-atencion-farmaceutica.webp"
 image_alt: "Profesional farmacéutico revisando el tratamiento de una persona durante una consulta"
@@ -382,29 +382,3 @@ Utiliza esta secuencia en cada revisión:
 4. World Health Organization. The Role of the Pharmacist in the Health Care System. 1994/1998. <a href="https://iris.who.int/bitstreams/b5e735c5-7218-4230-bb04-aa37ab08c444/download" target="_blank" rel="noopener noreferrer">Documento OMS</a>
 5. Pharmaceutical Care Network Europe. PCNE Classification for Drug-Related Problems V9.1. <a href="https://pcne.org/wp-content/uploads/2026/02/PCNE_Working-Groups-Classification_V9-1_final.pdf" target="_blank" rel="noopener noreferrer">Clasificación PCNE</a>
 6. World Health Organization Regional Office for Europe. Advancing the role of pharmacists to meet changing patient and health system needs. 2024. <a href="https://www.who.int/europe/news-room/feature-stories/item/advancing-the-role-of-pharmacists-to-meet-changing-patient-and-health-system-needs" target="_blank" rel="noopener noreferrer">Artículo OMS Europa</a>
-
-## JSON-LD sugerido
-
-```json
-{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "Qué es la atención farmacéutica y cómo se aplica en la práctica",
-  "description": "Definición, proceso, documentación, indicadores y ejemplos de atención farmacéutica centrada en el paciente.",
-  "image": "https://edvanta.co/images/articulos/que-es-atencion-farmaceutica.webp",
-  "datePublished": "2026-07-07",
-  "dateModified": "2026-07-07",
-  "author": {
-    "@type": "Person",
-    "name": "Karla Hernández",
-    "jobTitle": "Química Farmacéutica",
-    "url": "https://edvanta.co/autores/karla-hernandez"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Biblioteca Profesional KH",
-    "url": "https://edvanta.co"
-  },
-  "mainEntityOfPage": "https://edvanta.co/articulos/que-es-atencion-farmaceutica"
-}
-```

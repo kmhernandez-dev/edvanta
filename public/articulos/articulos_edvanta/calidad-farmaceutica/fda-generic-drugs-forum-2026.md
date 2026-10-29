@@ -8,7 +8,7 @@ category: "Calidad farmacéutica"
 author: "Edvanta"
 author_url: "/"
 date_published: "2026-08-14"
-date_modified: "2026-08-14"
+date_modified: "2026-10-28"
 reading_time: "7 minutos"
 og_title: "FDA Generic Drugs Forum 2026: guía del recurso"
 og_description: "Grabaciones y diapositivas oficiales del Generic Drugs Forum 2026 de la FDA: ANDA, DMF, integridad de datos y más."
@@ -97,3 +97,9 @@ En el sitio oficial de la FDA: [fda.gov](https://www.fda.gov/drugs/news-events-h
 **Referencias:**
 
 [1] FDA. *Generic Drugs Forum (GDF) 2026*.
+
+## Fuentes y recursos
+
+- [fda.gov](https://www.fda.gov/drugs/news-events-human-drugs/generic-drugs-forum-gdf-2026-04222026)
+
+Enlaces consultados para esta guía. Verifica siempre la versión vigente del documento o de la ficha técnica.

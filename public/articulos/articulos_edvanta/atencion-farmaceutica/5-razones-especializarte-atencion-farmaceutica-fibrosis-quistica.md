@@ -8,7 +8,7 @@ category: "Atención Farmacéutica"
 author: "Karla Hernández — Química Farmacéutica"
 author_url: "/autores/karla-hernandez"
 date_published: "2026-08-05"
-date_modified: "2026-08-05"
+date_modified: "2026-10-28"
 reading_time: "7 minutos"
 image: "https://edvanta.co/images/articulos/que-es-atencion-farmaceutica.webp"
 image_alt: "Farmacéutico especializado en fibrosis quística"
@@ -84,3 +84,8 @@ No dejes pasar la oportunidad de especializarte en un área con alta demanda, gr
 - [Rol del farmacéutico clínico en fibrosis quística: manejo integral](/articulos/rol-farmaceutico-fibrosis-quistica)
 - [Stewardship farmacéutico: el rol del farmacéutico en los programas PROA](/articulos/stewardship-farmaceutico-proa-optimizacion-antimicrobianos)
 - [Terapia de reemplazo enzimático: guía farmacéutica para enfermedades lisosomales](/articulos/terapia-reemplazo-enzimatico-guia-farmaceutica-lisosomal)
+
+## Recursos relacionados
+- [Atención Farmacéutica en Fibrosis Quística](https://go.hotmart.com/A107041181P)
+
+Enlaces a programas, casos y recursos mencionados en el artículo.

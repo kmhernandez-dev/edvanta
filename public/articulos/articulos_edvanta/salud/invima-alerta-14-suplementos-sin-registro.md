@@ -52,6 +52,24 @@ Según la autoridad sanitaria:
 
 Los productos que prometen curar enfermedades crónicas y se venden por redes sociales son una fuente frecuente de alertas. Lee [cómo reconocer productos peligrosos para adelgazar](/articulos/pastillas-para-adelgazar-riesgos) y las [interacciones de las plantas medicinales](/articulos/plantas-medicinales-interacciones-medicamentos).
 
+## Preguntas frecuentes
+
+### ¿Qué hago si tomé uno de estos productos?
+
+Suspende su consumo. Si tienes síntomas o suspendiste un tratamiento para diabetes, hipertensión o dolor, consulta a un profesional de la salud. Reporta la reacción al INVIMA por los canales de farmacovigilancia.
+
+### ¿Cómo verifico si un suplemento tiene registro sanitario?
+
+Consulta el registro en los canales oficiales del INVIMA antes de comprar. Puedes seguir la guía paso a paso para [consultar el registro sanitario de un medicamento](/articulos/como-consultar-registro-sanitario-invima).
+
+### ¿Un producto con registro sanitario es siempre seguro?
+
+El registro indica que el producto fue autorizado para un uso y unas condiciones determinadas, pero no reemplaza la valoración médica ni garantiza que sea adecuado para tu caso. Revisa la indicación, la procedencia y las condiciones de conservación.
+
+### ¿Dónde reporto una reacción adversa?
+
+En Colombia puedes reportarla al INVIMA por los canales de farmacovigilancia o al correo invimafv@invima.gov.co. También puedes consultar la guía para [reportar un efecto adverso de un medicamento](/articulos/como-reportar-efecto-adverso-medicamento).
+
 ## Fuentes
 
 - Infobae. [Invima advirtió por 14 suplementos sin registro sanitario que se ofrecen para diabetes, articulaciones y otros usos](https://www.infobae.com/colombia/2026/10/22/invima-advirtio-por-14-suplementos-sin-registro-sanitario-que-se-ofrecen-para-diabetes-articulaciones-y-otros-usos/), 22 de octubre de 2026.

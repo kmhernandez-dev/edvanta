@@ -8,7 +8,7 @@ category: "Calidad farmacéutica"
 author: "Edvanta"
 author_url: "/"
 date_published: "2026-09-22"
-date_modified: "2026-09-22"
+date_modified: "2026-10-28"
 reading_time: "14 minutos"
 og_title: "IHCE, RDA, SIIFA, RIPS-FEV y UDI-DI: normatividad sanitaria digital en Colombia"
 og_description: "Marco normativo vigente de salud digital en Colombia con enlaces oficiales del Ministerio de Salud e INVIMA, actualizado a septiembre de 2026."
@@ -154,3 +154,30 @@ Consérvalos como «Antecedentes históricos — normas derogadas» y no los pre
 [2] Ministerio de Salud y Protección Social. *Resolución 866 de 2021; Resolución 1888 de 2025; Resolución 1799 de 2026; Resolución 948 de 2026; Resolución 1405 de 2022*.
 [3] Ministerio de Salud y Protección Social. *Decreto 228 de 2025 y Resolución 1962 de 2025 — SIIFA*.
 [4] INVIMA. *Estándar semántico y codificación UDI-DI de dispositivos médicos*.
+
+## Fuentes y recursos
+
+- [minsalud.gov.co](https://www.minsalud.gov.co/Normatividad_Nuevo/Ley%202015%202020.pdf)
+- [minsalud.gov.co](https://www.minsalud.gov.co/sites/rid/Lists/BibliotecaDigital/RIDE/DE/DIJ/resolucion-866-de-2021.pdf)
+- [minsalud.gov.co](https://www.minsalud.gov.co/sites/rid/Lists/BibliotecaDigital/RIDE/DE/DIJ/resolucion-1888-de-2025.pdf)
+- [minsalud.gov.co](https://www.minsalud.gov.co/sites/rid/Lists/BibliotecaDigital/RIDE/DE/DIJ/resolucion-1799-de-2026.pdf)
+- [minsalud.gov.co](https://www.minsalud.gov.co/sites/rid/Lists/BibliotecaDigital/RIDE/DE/DIJ/circular-externa-0019-de-2026.pdf)
+- [minsalud.gov.co](https://www.minsalud.gov.co/sites/rid/Lists/BibliotecaDigital/RIDE/INEC/IGUB/ley-1966-de-2019.pdf)
+- [minsalud.gov.co](https://www.minsalud.gov.co/Normatividad_Nuevo/DECRETO%20No%20228%20DE%2027%20DE%20FEBRERO%20DE%202025.pdf)
+- [minsalud.gov.co](https://www.minsalud.gov.co/Normatividad_Nuevo/Resolucion%20No%201962%20de%202025.pdf)
+- [minsalud.gov.co](https://www.minsalud.gov.co/sites/rid/Lists/BibliotecaDigital/RIDE/DE/DIJ/resolucion-0948-de-2026.pdf)
+- [minsalud.gov.co](https://www.minsalud.gov.co/sites/rid/Lists/BibliotecaDigital/RIDE/DE/OT/doc-tec1-tecnicas-datos-validacion-rips-fev-salud.pdf)
+- [minsalud.gov.co](https://www.minsalud.gov.co/sites/rid/Lists/BibliotecaDigital/RIDE/DE/OT/anexo-tecnico2-resolucion-948-de-2026.pdf)
+- [minsalud.gov.co](https://www.minsalud.gov.co/sites/rid/Lists/BibliotecaDigital/RIDE/DE/DIJ/resolucion-2535-de-2013.pdf)
+- [minsalud.gov.co](https://www.minsalud.gov.co/Normatividad_Nuevo/Resoluci%C3%B3n%20No.%201405%20de%202022.pdf)
+- [minsalud.gov.co](https://www.minsalud.gov.co/sites/rid/Lists/BibliotecaDigital/RIDE/VP/DOA/siifa-presentacion-general-V10120260716.pdf)
+- [minsalud.gov.co](https://www.minsalud.gov.co/sites/rid/Lists/BibliotecaDigital/RIDE/VP/RBC/manual-ingreso-siifa-version201-20260626.pdf)
+- [minsalud.gov.co](https://www.minsalud.gov.co/sites/rid/Lists/BibliotecaDigital/RIDE/VP/RBC/siifa-manualfuncional-modulo1-contratacion-v202-20260619.pdf)
+- [minsalud.gov.co](https://www.minsalud.gov.co/sites/rid/Lists/BibliotecaDigital/RIDE/VP/RBC/siifa-manualfuncional-modulo2-fevrips-v102-20260619.pdf)
+- [minsalud.gov.co](https://www.minsalud.gov.co/sites/rid/Lists/BibliotecaDigital/RIDE/VP/FS/manual-interoperabilidad-modulo2-fevrips-v102-20260706.pdf)
+- [invima.gov.co](https://www.invima.gov.co/invima_website/static/attachments/dispositivos_estandar_semantico_codificacion_dispositivos/Manual_20de_20usuario_20para_20reporte_20de_20estandar_20semantico_20y_20codificaci_C3_B3n_20DM_20y_20RDIV_20_1_.pdf)
+- [minsalud.gov.co](https://www.minsalud.gov.co/Normatividad_Nuevo/Resoluci%C3%B3n%20No%202275%20de%202023.pdf)
+- [minsalud.gov.co](https://www.minsalud.gov.co/Normatividad_Nuevo/Resoluci%C3%B3n%20No%20558%20de%202024.pdf)
+- [minsalud.gov.co](https://www.minsalud.gov.co/Normatividad_Nuevo/Resoluci%C3%B3n%20No%201884%20de%202024.pdf)
+
+Enlaces consultados para esta guía. Verifica siempre la versión vigente del documento o de la ficha técnica.

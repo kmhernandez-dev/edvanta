@@ -8,7 +8,7 @@ category: "Gestión ambiental"
 author: "Edvanta"
 author_url: "/"
 date_published: "2026-07-08"
-date_modified: "2026-07-14"
+date_modified: "2026-10-28"
 reading_time: "10 minutos"
 og_title: "Qué es la gestión ambiental en una organización"
 og_description: "Aprende los fundamentos de la gestión ambiental: impactos, residuos, cumplimiento legal, indicadores y cómo implementarla en cualquier organización."
@@ -210,3 +210,9 @@ Depende del tamaño, el punto de partida y si se busca certificación. Los costo
 [2] PNUMA. (2011). Hacia una economía verde: Guía para el desarrollo sostenible y la erradicación de la pobreza.
 
 [3] ISO 14031:2021. Gestión ambiental — Evaluación del desempeño ambiental — Directrices.
+
+## Fuentes y recursos
+
+- [ISO 14001: gestión ambiental](https://www.iso.org/iso-14001-environmental-management.html)
+
+Fuentes oficiales de referencia. Verifica la versión vigente y su aplicabilidad al contexto de tu organización.

@@ -8,7 +8,7 @@ category: "Profesiones"
 author: "Edvanta"
 author_url: "/autores/edvanta"
 date_published: "2026-07-17"
-date_modified: "2026-07-17"
+date_modified: "2026-10-28"
 reading_time: "10 minutos"
 og_title: "Cómo ser gestor de proyectos sin experiencia"
 og_description: "Guía para empezar en gestión de proyectos desde cero: metodologías, certificaciones, experiencia práctica y salario."
@@ -111,3 +111,10 @@ CAPM del PMI si quieres la ruta tradicional. Scrum Master (CSM) si te interesa t
 
 [1] PMI. (2021). *PMBOK Guide*, 7th Edition.
 [2] Sutherland, J. (2014). *Scrum: The Art of Doing Twice the Work in Half the Time*.
+
+## Fuentes y recursos
+
+- [Project Management Institute](https://www.pmi.org/)
+- [ISO 21500: gestión de proyectos](https://www.iso.org/standard/83997.html)
+
+Fuentes oficiales de referencia. Verifica la versión vigente y su aplicabilidad al contexto de tu organización.

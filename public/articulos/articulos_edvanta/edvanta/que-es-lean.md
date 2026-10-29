@@ -8,7 +8,7 @@ category: "Lean"
 author: "Edvanta"
 author_url: "/"
 date_published: "2026-07-08"
-date_modified: "2026-07-14"
+date_modified: "2026-10-28"
 reading_time: "10 minutos"
 og_title: "Qué es Lean y cómo ayuda a mejorar procesos"
 og_description: "Aprende los fundamentos de Lean: valor, flujo, desperdicios, 5S, Kaizen y mejora continua aplicada a procesos reales."
@@ -174,3 +174,9 @@ Lean no requiere grandes inversiones en tecnología. De hecho, muchas mejoras Le
 [2] Ohno, T. (1988). *Toyota Production System: Beyond Large-Scale Production*. Productivity Press.
 
 [3] Liker, J. K. (2004). *The Toyota Way: 14 Management Principles from the World's Greatest Manufacturer*. McGraw-Hill.
+
+## Fuentes y recursos
+
+- [Lean Enterprise Institute](https://www.lean.org/)
+
+Fuentes oficiales de referencia. Verifica la versión vigente y su aplicabilidad al contexto de tu organización.

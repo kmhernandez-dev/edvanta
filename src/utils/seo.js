@@ -19,6 +19,10 @@ export function setCanonical(href) {
 }
 
 export function setJsonLd(id, data) {
+  // La página estática ya trae su JSON-LD para los buscadores. Al montar
+  // React se reemplaza por el de la aplicación para no publicar dos veces
+  // el mismo Article/FAQPage.
+  document.head.querySelectorAll('script[data-prerender]').forEach((s) => s.remove());
   let element = document.head.querySelector(`script[data-jsonld="${id}"]`);
   if (!element) {
     element = document.createElement('script');
@@ -33,7 +37,7 @@ export function setJsonLd(id, data) {
   };
 }
 
-export function updatePageSeo({ title, description, canonical, image, type = 'website', keywords, jsonLd, jsonLdId = 'page', robots = 'index,follow' }) {
+export function updatePageSeo({ title, description, canonical, image, imageAlt, type = 'website', keywords, jsonLd, jsonLdId = 'page', robots = 'index,follow' }) {
   document.title = title;
   setMeta('name', 'description', description);
   setMeta('name', 'robots', robots);
@@ -53,10 +57,17 @@ export function updatePageSeo({ title, description, canonical, image, type = 'we
     setMeta('name', 'twitter:title', title);
     setMeta('name', 'twitter:description', description);
     setMeta('name', 'twitter:image', image);
+    if (imageAlt) {
+      setMeta('property', 'og:image:alt', imageAlt);
+      setMeta('name', 'twitter:image:alt', imageAlt);
+    } else {
+      document.head.querySelectorAll('meta[property="og:image:alt"], meta[name="twitter:image:alt"]').forEach((el) => el.remove());
+    }
   } else {
     setMeta('name', 'twitter:card', 'summary');
     setMeta('name', 'twitter:title', title);
     setMeta('name', 'twitter:description', description);
+    document.head.querySelectorAll('meta[property="og:image:alt"], meta[name="twitter:image:alt"]').forEach((el) => el.remove());
   }
   return jsonLd ? setJsonLd(jsonLdId, jsonLd) : undefined;
 }

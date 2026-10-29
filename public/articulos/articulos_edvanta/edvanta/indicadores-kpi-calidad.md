@@ -8,7 +8,7 @@ category: "Gestión de calidad"
 author: "Edvanta"
 author_url: "/"
 date_published: "2026-07-15"
-date_modified: "2026-07-15"
+date_modified: "2026-10-28"
 reading_time: "12 minutos"
 og_title: "Indicadores de calidad (KPI): cómo definirlos, medirlos y usarlos"
 og_description: "Aprende a definir indicadores de calidad efectivos: características de un buen KPI, ejemplos por área, fichas técnicas y dashboards de seguimiento."
@@ -294,3 +294,9 @@ No al inicio. Excel o Google Sheets bien usados (con tablas dinámicas, gráfico
 [3] Parmenter, D. (2015). *Key Performance Indicators: Developing, Implementing, and Using Winning KPIs*. Wiley.
 
 [4] Eckerson, W. W. (2010). *Performance Dashboards: Measuring, Monitoring, and Managing Your Business*. Wiley.
+
+## Fuentes y recursos
+
+- [ISO 9001: gestión de la calidad](https://www.iso.org/iso-9001-quality-management.html)
+
+Fuentes oficiales de referencia. Verifica la versión vigente y su aplicabilidad al contexto de tu organización.

@@ -8,7 +8,7 @@ category: "Atención Farmacéutica"
 author: "Karla Hernández — Química Farmacéutica"
 author_url: "/autores/karla-hernandez"
 date_published: "2026-08-05"
-date_modified: "2026-08-05"
+date_modified: "2026-10-28"
 reading_time: "7 minutos"
 image: "https://edvanta.co/images/articulos/que-es-atencion-farmaceutica.webp"
 image_alt: "Farmacéutico especializado en terapia de reemplazo enzimático"
@@ -82,3 +82,8 @@ Las enfermedades raras necesitan farmacéuticos extraordinarios. Conviértete en
 - [Terapia de reemplazo enzimático: guía farmacéutica para enfermedades lisosomales](/articulos/terapia-reemplazo-enzimatico-guia-farmaceutica-lisosomal)
 - [Rol del farmacéutico clínico en fibrosis quística: manejo integral](/articulos/rol-farmaceutico-fibrosis-quistica)
 - [Stewardship farmacéutico: el rol del farmacéutico en los programas PROA](/articulos/stewardship-farmaceutico-proa-optimizacion-antimicrobianos)
+
+## Recursos relacionados
+- [Terapia de Reemplazo Enzimático (TRE): Guía Farmacéutica para Enfermedades de Depósito Lisosomal](https://go.hotmart.com/J107041157J?dp=1)
+
+Enlaces a programas, casos y recursos mencionados en el artículo.

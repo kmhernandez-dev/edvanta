@@ -8,7 +8,7 @@ category: "Feliz Sin Tiroides"
 author: "Karla Hernández — Química Farmacéutica"
 author_url: "/autores/karla-hernandez"
 date_published: "2026-07-17"
-date_modified: "2026-07-17"
+date_modified: "2026-10-28"
 reading_time: "11 minutos"
 image: "/images/articulos/como-tomar-levotiroxina-correctamente.webp"
 image_alt: "Recipientes de vidrio con comidas preparadas para la semana"
@@ -261,29 +261,3 @@ Para más herramientas de organización, te invitamos a explorar nuestro [Menú 
 
 1. American Thyroid Association. Thyroid Hormone Treatment. <a href="https://www.thyroid.org/thyroid-hormone-treatment/" target="_blank" rel="noopener noreferrer">https://www.thyroid.org/thyroid-hormone-treatment/</a>
 2. Ihnatowicz P, et al. The importance of nutritional factors and dietary management of Hashimoto's thyroiditis. *Ann Agric Environ Med*. 2020. <a href="https://pubmed.ncbi.nlm.nih.gov/32588591/" target="_blank" rel="noopener noreferrer">https://pubmed.ncbi.nlm.nih.gov/32588591/</a>
-
-## JSON-LD sugerido
-
-```json
-{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "Batch cooking para personas con hipotiroidismo: cocina una vez, come toda la semana",
-  "description": "Guía de preparación semanal de comidas: cómo organizarte, qué cocinar en lote, cómo almacenar y cómo respetar los horarios de tu medicación.",
-  "image": "https://edvanta.co/images/articulos/como-tomar-levotiroxina-correctamente.webp",
-  "datePublished": "2026-07-17",
-  "dateModified": "2026-07-17",
-  "author": {
-    "@type": "Person",
-    "name": "Karla Hernández",
-    "jobTitle": "Química Farmacéutica",
-    "url": "https://edvanta.co/autores/karla-hernandez"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Biblioteca Profesional KH",
-    "url": "https://edvanta.co"
-  },
-  "mainEntityOfPage": "https://edvanta.co/articulos/batch-cooking-tiroides"
-}
-```

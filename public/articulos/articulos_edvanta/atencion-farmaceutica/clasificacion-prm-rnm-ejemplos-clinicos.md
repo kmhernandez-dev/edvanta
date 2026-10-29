@@ -8,7 +8,7 @@ category: "Atención Farmacéutica"
 author: "Karla Hernández — Química Farmacéutica"
 author_url: "/autores/karla-hernandez"
 date_published: "2026-07-17"
-date_modified: "2026-07-17"
+date_modified: "2026-10-28"
 reading_time: "12 minutos"
 image: "https://edvanta.co/images/articulos/que-es-atencion-farmaceutica.webp"
 image_alt: "Farmacéutico analizando la clasificación de PRM y RNM con fichas clínicas"
@@ -32,6 +32,8 @@ robots: "index, follow"
 # Clasificación de PRM y RNM con ejemplos clínicos reales
 
 La clasificación de problemas relacionados con medicamentos (PRM) y resultados negativos asociados a la medicación (RNM) es una competencia esencial para el farmacéutico clínico. Una clasificación precisa permite estandarizar la documentación, priorizar intervenciones, comunicar hallazgos al equipo de salud y medir el impacto del servicio farmacéutico.
+
+**Cómo se relaciona:** aquí encontrarás la clasificación y ejemplos. Si buscas primero la diferencia conceptual, consulta [PRM y RNM: diferencias y relación clínica](/articulos/diferencia-prm-rnm).
 
 > **Aviso editorial:** Este material tiene fines educativos y debe adaptarse a los protocolos, competencias profesionales y regulación aplicable en cada institución.
 

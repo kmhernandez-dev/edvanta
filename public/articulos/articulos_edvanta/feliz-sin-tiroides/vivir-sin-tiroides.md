@@ -8,7 +8,7 @@ category: "Feliz Sin Tiroides"
 author: "Karla Hernández — Química Farmacéutica"
 author_url: "/autores/karla-hernandez"
 date_published: "2026-07-07"
-date_modified: "2026-07-07"
+date_modified: "2026-10-28"
 reading_time: "12 minutos"
 image: "https://edvanta.co/images/articulos/vivir-sin-tiroides.webp"
 image_alt: "Persona organizando su tratamiento y controles después de una tiroidectomía"
@@ -277,29 +277,3 @@ El autocuidado más útil no es perseguir cada síntoma con cambios de dosis. Es
 9. American Thyroid Association. Thyroglobulin and thyroid cancer follow-up. <a href="https://www.thyroid.org/patient-thyroid-information/ct-for-patients/august-2024/vol-17-issue-8-p-5-6/" target="_blank" rel="noopener noreferrer">Artículo ATA</a>
 10. Landry V, et al. Health-Related Quality of Life following Total Thyroidectomy and Hemithyroidectomy. 2022. <a href="https://pubmed.ncbi.nlm.nih.gov/35877210/" target="_blank" rel="noopener noreferrer">https://pubmed.ncbi.nlm.nih.gov/35877210/</a>
 11. Ringel MD, et al. 2025 American Thyroid Association Management Guidelines for Adult Patients with Differentiated Thyroid Cancer. <a href="https://pubmed.ncbi.nlm.nih.gov/40844370/" target="_blank" rel="noopener noreferrer">https://pubmed.ncbi.nlm.nih.gov/40844370/</a>
-
-## JSON-LD sugerido
-
-```json
-{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "Vivir sin tiroides después de una tiroidectomía: qué cambia y qué debes vigilar",
-  "description": "Guía clínica y educativa sobre tratamiento, controles y señales de atención después de una tiroidectomía.",
-  "image": "https://edvanta.co/images/articulos/vivir-sin-tiroides.webp",
-  "datePublished": "2026-07-07",
-  "dateModified": "2026-07-07",
-  "author": {
-    "@type": "Person",
-    "name": "Karla Hernández",
-    "jobTitle": "Química Farmacéutica",
-    "url": "https://edvanta.co/autores/karla-hernandez"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Biblioteca Profesional KH",
-    "url": "https://edvanta.co"
-  },
-  "mainEntityOfPage": "https://edvanta.co/articulos/vivir-sin-tiroides"
-}
-```

@@ -59,6 +59,24 @@ El INVIMA ha emitido alertas por productos fraudulentos o falsificados que se ve
 ## ¿Cuándo consultar al médico?
 Consulte si tiene glucosas muy altas o muy bajas con frecuencia, vómito persistente, dolor abdominal intenso, dificultad para respirar, heridas en los pies que no sanan o cambios en la visión. Ante una urgencia, acuda al servicio de urgencias.
 
+## Preguntas frecuentes
+
+### ¿La diabetes tipo 2 se cura?
+
+Es una enfermedad crónica. Puede controlarse y algunas personas entran en remisión con pérdida de peso y cambios sostenidos, pero la enfermedad puede volver. Por eso se necesita seguimiento médico aunque la glucosa esté normal.
+
+### ¿Qué es la HbA1c?
+
+Es un análisis que refleja el promedio de la glucosa de los últimos dos o tres meses. Para muchas personas adultas la meta es menor de 7 %, pero el médico puede fijar una meta diferente según la edad, otras enfermedades y el riesgo de hipoglucemia.
+
+### ¿La metformina es suficiente?
+
+No siempre. El médico puede combinarla con otros medicamentos o indicar insulina según el nivel de glucosa, la función renal, el peso y las enfermedades cardiovasculares. No cambies ni suspendas el tratamiento por tu cuenta.
+
+### ¿Puedo dejar los medicamentos si controlo la glucosa?
+
+Solo si el médico lo indica. Un buen control no significa que la diabetes haya desaparecido: muchas veces es el resultado del tratamiento. Suspenderlo sin supervisión puede provocar descompensaciones.
+
 ## Fuentes
 
 - [ADA. 9. Pharmacologic Approaches to Glycemic Treatment: Standards of Care in Diabetes—2026 (texto completo en PMC)](https://pmc.ncbi.nlm.nih.gov/articles/PMC12690185)

@@ -51,6 +51,24 @@ Comuníquese con su programa o con su médico si aumenta más de 2 kilos en 3 d�
 
 Este contenido es educativo y no reemplaza la consulta médica.
 
+## Preguntas frecuentes
+
+### ¿La insuficiencia cardíaca se cura?
+
+En la mayoría de los casos es una enfermedad crónica que se controla con tratamiento y seguimiento. Algunas causas pueden mejorar o revertirse si se tratan a tiempo. El objetivo es aliviar síntomas, mejorar la calidad de vida y reducir hospitalizaciones.
+
+### ¿Puedo tomar ibuprofeno u otros antiinflamatorios?
+
+No sin consultar. Los antiinflamatorios pueden retener líquidos, empeorar la hinchazón y afectar los riñones o la presión. Pregunta a tu médico o químico farmacéutico antes de usar cualquier medicamento nuevo, incluidos los naturales.
+
+### ¿Qué es la fracción de eyección?
+
+Es el porcentaje de sangre que el corazón expulsa en cada latido, medido con un ecocardiograma. Ayuda a clasificar la insuficiencia cardíaca y a elegir el tratamiento; no es un valor que debas interpretar solo.
+
+### ¿Puedo hacer ejercicio?
+
+Sí, con la indicación de tu equipo de salud. La actividad física adaptada y la rehabilitación cardíaca pueden mejorar la capacidad funcional y la calidad de vida. Pregunta qué tipo de ejercicio y qué intensidad son adecuados para ti.
+
 ## Fuentes
 
 - [ESC. Major changes made to the ESC Guidelines on heart failure](https://www.escardio.org/news/press/press-releases/major-changes-made-to-the-esc-guidelines-on-heart-failure/)

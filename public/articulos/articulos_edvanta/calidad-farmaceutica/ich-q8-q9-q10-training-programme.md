@@ -8,7 +8,7 @@ category: "Calidad farmacéutica"
 author: "Edvanta"
 author_url: "/"
 date_published: "2026-08-14"
-date_modified: "2026-08-14"
+date_modified: "2026-10-28"
 reading_time: "7 minutos"
 og_title: "ICH Q8/Q9/Q10 Training: guía del programa"
 og_description: "Material oficial de ICH sobre Q8, Q9 y Q10: desarrollo farmacéutico, calidad por diseño, gestión de riesgos y sistema de calidad farmacéutico."
@@ -108,3 +108,9 @@ En el sitio oficial de ICH: [ich.org](https://ich.org/page/training-programme-q8
 **Referencias:**
 
 [1] ICH. *Training Programme for ICH Q8/Q9/Q10*.
+
+## Fuentes y recursos
+
+- [ich.org](https://ich.org/page/training-programme-q8q9q10-0)
+
+Enlaces consultados para esta guía. Verifica siempre la versión vigente del documento o de la ficha técnica.

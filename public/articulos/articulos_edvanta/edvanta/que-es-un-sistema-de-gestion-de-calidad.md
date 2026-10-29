@@ -8,7 +8,7 @@ category: "Gestión de calidad"
 author: "Edvanta"
 author_url: "/"
 date_published: "2026-07-08"
-date_modified: "2026-07-14"
+date_modified: "2026-10-28"
 reading_time: "10 minutos"
 og_title: "Qué es un sistema de gestión de calidad y por qué importa"
 og_description: "Aprende los fundamentos de los sistemas de gestión de calidad, enfoque por procesos, indicadores, riesgos y mejora continua."
@@ -223,3 +223,9 @@ Calidad es el grado en que un producto o servicio cumple requisitos. Gestión de
 [3] ISO 9000:2015, apartado 2.3. Principios de gestión de la calidad.
 
 [4] ISO 9001:2015, apartado 4.4. Sistema de gestión de la calidad y sus procesos.
+
+## Fuentes y recursos
+
+- [ISO 9001: sistemas de gestión de la calidad](https://www.iso.org/iso-9001-quality-management.html)
+
+Fuentes oficiales de referencia. Verifica la versión vigente y su aplicabilidad al contexto de tu organización.

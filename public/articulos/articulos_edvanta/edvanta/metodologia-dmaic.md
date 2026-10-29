@@ -8,7 +8,7 @@ category: "Lean Six Sigma"
 author: "Edvanta"
 author_url: "/"
 date_published: "2026-07-08"
-date_modified: "2026-07-14"
+date_modified: "2026-10-28"
 reading_time: "11 minutos"
 og_title: "Metodología DMAIC: define, mide, analiza, mejora y controla"
 og_description: "Aprende la metodología DMAIC paso a paso con ejemplos prácticos, herramientas por fase y una guía para aplicar mejora de procesos basada en datos."
@@ -252,3 +252,9 @@ Sí. La metodología es de dominio público. Puedes aprenderla por tu cuenta o m
 [2] George, M. L., Rowlands, D., Price, M., & Maxey, J. (2005). *The Lean Six Sigma Pocket Toolbook*. McGraw-Hill.
 
 [3] Harry, M., & Schroeder, R. (2000). *Six Sigma: The Breakthrough Management Strategy Revolutionizing the World's Top Corporations*. Currency.
+
+## Fuentes y recursos
+
+- [ASQ: DMAIC](https://asq.org/quality-resources/dmaic)
+
+Fuentes oficiales de referencia. Verifica la versión vigente y su aplicabilidad al contexto de tu organización.

@@ -8,7 +8,7 @@ category: "Feliz Sin Tiroides"
 author: "Karla Hernández — Química Farmacéutica"
 author_url: "/autores/karla-hernandez"
 date_published: "2026-07-17"
-date_modified: "2026-07-17"
+date_modified: "2026-10-28"
 reading_time: "10 minutos"
 image: "/images/articulos/como-tomar-levotiroxina-correctamente.webp"
 image_alt: "Alimentos ricos en magnesio: espinacas, almendras, aguacate y semillas"
@@ -235,29 +235,3 @@ Para seguir aprendiendo sobre nutrición y tiroides, te invitamos a explorar nue
 
 1. Moncayo R, Moncayo H. The WOMED model of benign thyroid disease. *J Clin Transl Endocrinol*. 2015. <a href="https://pubmed.ncbi.nlm.nih.gov/29159111/" target="_blank" rel="noopener noreferrer">https://pubmed.ncbi.nlm.nih.gov/29159111/</a>
 2. Abbasi B, et al. The effect of magnesium supplementation on primary insomnia. *J Res Med Sci*. 2012. <a href="https://pubmed.ncbi.nlm.nih.gov/23853635/" target="_blank" rel="noopener noreferrer">https://pubmed.ncbi.nlm.nih.gov/23853635/</a>
-
-## JSON-LD sugerido
-
-```json
-{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "Magnesio y relajación muscular: fuentes naturales y su importancia tiroidea",
-  "description": "Alimentos ricos en magnesio, su papel en la función tiroidea, cómo separarlo de la levotiroxina y recetas ricas en magnesio.",
-  "image": "https://edvanta.co/images/articulos/como-tomar-levotiroxina-correctamente.webp",
-  "datePublished": "2026-07-17",
-  "dateModified": "2026-07-17",
-  "author": {
-    "@type": "Person",
-    "name": "Karla Hernández",
-    "jobTitle": "Química Farmacéutica",
-    "url": "https://edvanta.co/autores/karla-hernandez"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Biblioteca Profesional KH",
-    "url": "https://edvanta.co"
-  },
-  "mainEntityOfPage": "https://edvanta.co/articulos/magnesio-relajacion-muscular-tiroides"
-}
-```

@@ -8,7 +8,7 @@ category: "Feliz Sin Tiroides"
 author: "Karla Hernández — Química Farmacéutica"
 author_url: "/autores/karla-hernandez"
 date_published: "2026-07-17"
-date_modified: "2026-07-17"
+date_modified: "2026-10-28"
 reading_time: "9 minutos"
 image: "/images/articulos/como-tomar-levotiroxina-correctamente.webp"
 image_alt: "Postres saludables: mousse de chocolate, frutas con yogur y galletas de avena"
@@ -279,29 +279,3 @@ Para más recetas compatibles con tu tratamiento, te invitamos a explorar nuestr
 
 1. Katz DL, et al. Cocoa and chocolate in human health and disease. *Antioxid Redox Signal*. 2011. <a href="https://pubmed.ncbi.nlm.nih.gov/21470061/" target="_blank" rel="noopener noreferrer">https://pubmed.ncbi.nlm.nih.gov/21470061/</a>
 2. Ihnatowicz P, et al. The importance of nutritional factors and dietary management of Hashimoto's thyroiditis. *Ann Agric Environ Med*. 2020. <a href="https://pubmed.ncbi.nlm.nih.gov/32588591/" target="_blank" rel="noopener noreferrer">https://pubmed.ncbi.nlm.nih.gov/32588591/</a>
-
-## JSON-LD sugerido
-
-```json
-{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "Postres saludables compatibles con tu tratamiento tiroideo",
-  "description": "Recetas de postres sin azúcar refinada, con ingredientes que no interfieren con la levotiroxina. Incluye opciones sin gluten y sin lácteos.",
-  "image": "https://edvanta.co/images/articulos/como-tomar-levotiroxina-correctamente.webp",
-  "datePublished": "2026-07-17",
-  "dateModified": "2026-07-17",
-  "author": {
-    "@type": "Person",
-    "name": "Karla Hernández",
-    "jobTitle": "Química Farmacéutica",
-    "url": "https://edvanta.co/autores/karla-hernandez"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Biblioteca Profesional KH",
-    "url": "https://edvanta.co"
-  },
-  "mainEntityOfPage": "https://edvanta.co/articulos/postres-saludables-tiroides"
-}
-```

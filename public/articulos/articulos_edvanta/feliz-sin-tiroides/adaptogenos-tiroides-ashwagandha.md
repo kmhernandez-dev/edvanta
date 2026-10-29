@@ -8,7 +8,7 @@ category: "Feliz Sin Tiroides"
 author: "Karla Hernández — Química Farmacéutica"
 author_url: "/autores/karla-hernandez"
 date_published: "2026-07-17"
-date_modified: "2026-07-17"
+date_modified: "2026-10-28"
 reading_time: "11 minutos"
 image: "/images/articulos/como-tomar-levotiroxina-correctamente.webp"
 image_alt: "Raíz de ashwagandha en polvo y cápsulas de rhodiola sobre una mesa"
@@ -224,29 +224,3 @@ Para profundizar en estrategias de autocuidado seguras y basadas en evidencia, t
 2. Sharma AK, et al. Efficacy and safety of ashwagandha root extract in subclinical hypothyroid patients. *J Altern Complement Med*. 2018. <a href="https://pubmed.ncbi.nlm.nih.gov/28829155/" target="_blank" rel="noopener noreferrer">https://pubmed.ncbi.nlm.nih.gov/28829155/</a>
 3. Ishaque S, et al. Rhodiola rosea for physical and mental fatigue. *BMC Complement Altern Med*. 2012. <a href="https://pubmed.ncbi.nlm.nih.gov/22594733/" target="_blank" rel="noopener noreferrer">https://pubmed.ncbi.nlm.nih.gov/22594733/</a>
 4. Cohen PA. Hazards of hindsight: monitoring the safety of nutritional supplements. *N Engl J Med*. 2014. <a href="https://pubmed.ncbi.nlm.nih.gov/24693888/" target="_blank" rel="noopener noreferrer">https://pubmed.ncbi.nlm.nih.gov/24693888/</a>
-
-## JSON-LD sugerido
-
-```json
-{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "Adaptógenos y tiroides: lo que dice la evidencia sobre ashwagandha y rhodiola",
-  "description": "Qué son los adaptógenos, evidencia científica disponible, posibles interacciones con hormonas tiroideas y precauciones esenciales.",
-  "image": "https://edvanta.co/images/articulos/como-tomar-levotiroxina-correctamente.webp",
-  "datePublished": "2026-07-17",
-  "dateModified": "2026-07-17",
-  "author": {
-    "@type": "Person",
-    "name": "Karla Hernández",
-    "jobTitle": "Química Farmacéutica",
-    "url": "https://edvanta.co/autores/karla-hernandez"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Biblioteca Profesional KH",
-    "url": "https://edvanta.co"
-  },
-  "mainEntityOfPage": "https://edvanta.co/articulos/adaptogenos-tiroides-ashwagandha"
-}
-```

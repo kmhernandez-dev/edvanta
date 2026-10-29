@@ -8,7 +8,7 @@ category: "Gestión ambiental"
 author: "Edvanta"
 author_url: "/"
 date_published: "2026-07-08"
-date_modified: "2026-07-14"
+date_modified: "2026-10-28"
 reading_time: "10 minutos"
 og_title: "Salidas laborales en gestión ambiental y sostenibilidad"
 og_description: "Descubre los roles, sectores y competencias más demandados en gestión ambiental, sostenibilidad y HSEQ, y cómo construir un perfil competitivo."
@@ -212,3 +212,9 @@ Varía mucho según el país, el sector y la experiencia. En América Latina, un
 [1] OIT. (2018). Perspectivas sociales y del empleo en el mundo 2018: Sostenibilidad medioambiental con empleo.
 
 [2] ISO 14001:2015. Sistemas de gestión ambiental — Requisitos con orientación para su uso.
+
+## Fuentes y recursos
+
+- [ISO 14001: gestión ambiental](https://www.iso.org/iso-14001-environmental-management.html)
+
+Fuentes oficiales de referencia. Verifica la versión vigente y su aplicabilidad al contexto de tu organización.

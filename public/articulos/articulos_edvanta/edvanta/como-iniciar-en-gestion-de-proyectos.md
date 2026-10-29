@@ -8,7 +8,7 @@ category: "Gestión de proyectos"
 author: "Edvanta"
 author_url: "/"
 date_published: "2026-07-08"
-date_modified: "2026-07-14"
+date_modified: "2026-10-28"
 reading_time: "10 minutos"
 og_title: "Cómo iniciar en gestión de proyectos sin experiencia previa"
 og_description: "Guía práctica para empezar en gestión de proyectos desde cero: ejercicios, herramientas, errores que evitar y ruta de formación recomendada."
@@ -169,3 +169,10 @@ Aprende los fundamentos de ambos. El enfoque predictivo te da la disciplina de p
 [1] Project Management Institute. (2021). *A Guide to the Project Management Body of Knowledge (PMBOK Guide)*, 7th Edition.
 
 [2] Sutherland, J. (2014). *Scrum: The Art of Doing Twice the Work in Half the Time*.
+
+## Fuentes y recursos
+
+- [Project Management Institute](https://www.pmi.org/)
+- [ISO 21500: gestión de proyectos](https://www.iso.org/standard/83997.html)
+
+Fuentes oficiales de referencia. Verifica la versión vigente y su aplicabilidad al contexto de tu organización.

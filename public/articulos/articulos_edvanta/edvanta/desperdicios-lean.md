@@ -8,7 +8,7 @@ category: "Lean"
 author: "Edvanta"
 author_url: "/"
 date_published: "2026-07-08"
-date_modified: "2026-07-14"
+date_modified: "2026-10-28"
 reading_time: "10 minutos"
 og_title: "Desperdicios Lean: cómo identificarlos en un proceso"
 og_description: "Aprende a reconocer los 8 desperdicios Lean en procesos administrativos, productivos y de servicio, con ejemplos concretos y ejercicios prácticos."
@@ -265,3 +265,9 @@ La espera, en sus múltiples formas: esperar aprobaciones, esperar respuestas, e
 [2] Liker, J. K. (2004). *The Toyota Way*. McGraw-Hill.
 
 [3] Womack, J. P., & Jones, D. T. (2003). *Lean Thinking*. Free Press.
+
+## Fuentes y recursos
+
+- [Lean Enterprise Institute](https://www.lean.org/)
+
+Fuentes oficiales de referencia. Verifica la versión vigente y su aplicabilidad al contexto de tu organización.

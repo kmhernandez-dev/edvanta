@@ -8,7 +8,7 @@ category: "Profesiones"
 author: "Edvanta"
 author_url: "/autores/edvanta"
 date_published: "2026-07-17"
-date_modified: "2026-07-17"
+date_modified: "2026-10-28"
 reading_time: "11 minutos"
 og_title: "Cómo ser analista de datos con Power BI"
 og_description: "Ruta de aprendizaje, habilidades, salario y plan de 6 meses para convertirte en analista de datos con Power BI."
@@ -137,3 +137,15 @@ Con un portafolio de 3-5 dashboards sólidos y formación estructurada, puedes c
 
 [1] Ferrari, A. & Russo, M. (2021). *The Definitive Guide to DAX*. Microsoft Press.
 [2] Few, S. (2012). *Show Me the Numbers*. Analytics Press.
+
+## Recursos relacionados
+- [Curso de análisis de datos](https://edutin.com/sh-20360)
+- [curso de Excel](https://edutin.com/sh-10219)
+
+Enlaces a programas, casos y recursos mencionados en el artículo.
+
+## Fuentes y recursos
+
+- [Microsoft Learn: documentación de Power BI](https://learn.microsoft.com/es-es/power-bi/)
+
+Fuentes oficiales de referencia. Verifica la versión vigente y su aplicabilidad al contexto de tu organización.

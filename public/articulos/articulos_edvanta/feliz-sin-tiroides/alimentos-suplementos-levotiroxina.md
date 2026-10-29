@@ -8,7 +8,7 @@ category: "Feliz Sin Tiroides"
 author: "Karla Hernández — Química Farmacéutica"
 author_url: "/autores/karla-hernandez"
 date_published: "2026-07-07"
-date_modified: "2026-07-07"
+date_modified: "2026-10-28"
 reading_time: "11 minutos"
 image: "https://edvanta.co/images/articulos/alimentos-suplementos-levotiroxina.webp"
 image_alt: "Levotiroxina separada de café, suplemento de calcio, hierro y alimentos ricos en fibra"
@@ -310,29 +310,3 @@ Antes de aumentar la dosis ante una TSH elevada, conviene revisar cómo se toma 
 8. Liel Y, et al. Evidence for a clinically important adverse effect of fiber-enriched diet on the bioavailability of levothyroxine. 1996. <a href="https://pubmed.ncbi.nlm.nih.gov/8636317/" target="_blank" rel="noopener noreferrer">https://pubmed.ncbi.nlm.nih.gov/8636317/</a>
 9. European Medicines Agency. Levothyroxine and orlistat: amendments to product information. 2022. <a href="https://www.ema.europa.eu/en/documents/psusa/levothyroxine-cmdh-scientific-conclusions-and-grounds-variation-amendments-product-information-and-timetable-implementation-psusa00001860202201_en.pdf" target="_blank" rel="noopener noreferrer">Documento EMA</a>
 10. Samarasinghe S, et al. Biotin Interference with Routine Clinical Immunoassays. 2017. <a href="https://pubmed.ncbi.nlm.nih.gov/28534685/" target="_blank" rel="noopener noreferrer">https://pubmed.ncbi.nlm.nih.gov/28534685/</a>
-
-## JSON-LD sugerido
-
-```json
-{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "Alimentos y suplementos que pueden interferir con la levotiroxina",
-  "description": "Guía sobre calcio, hierro, café, soya, fibra, biotina y otros productos relevantes para el tratamiento con levotiroxina.",
-  "image": "https://edvanta.co/images/articulos/alimentos-suplementos-levotiroxina.webp",
-  "datePublished": "2026-07-07",
-  "dateModified": "2026-07-07",
-  "author": {
-    "@type": "Person",
-    "name": "Karla Hernández",
-    "jobTitle": "Química Farmacéutica",
-    "url": "https://edvanta.co/autores/karla-hernandez"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Biblioteca Profesional KH",
-    "url": "https://edvanta.co"
-  },
-  "mainEntityOfPage": "https://edvanta.co/articulos/alimentos-suplementos-levotiroxina"
-}
-```

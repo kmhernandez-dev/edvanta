@@ -64,6 +64,24 @@ Las infecciones respiratorias son la causa más común de crisis. En Colombia, e
 - ¿Me puede revisar cómo uso el inhalador?
 - ¿Tengo mis vacunas al día?
 
+## Preguntas frecuentes
+
+### ¿El asma se cura?
+
+No es una enfermedad que se cure, pero la mayoría de las personas puede controlarla y llevar una vida normal con tratamiento y seguimiento. El objetivo es evitar síntomas, crisis y limitaciones en la vida diaria.
+
+### ¿Por qué no basta con usar salbutamol?
+
+El salbutamol alivia la falta de aire en el momento, pero no trata la inflamación de los bronquios. Las guías actuales recomiendan un tratamiento que contenga corticoide inhalado; usar solo rescate con frecuencia se asocia con crisis más graves.
+
+### ¿Puedo hacer ejercicio si tengo asma?
+
+Sí, si el asma está controlada y sigues el plan indicado. Lleva tu inhalador de rescate, calienta antes del ejercicio y consulta si necesitas usarlo antes de la actividad. Si el ejercicio desencadena síntomas con frecuencia, revisa tu tratamiento.
+
+### ¿Qué es un plan de acción para el asma?
+
+Es un documento escrito por tu equipo de salud con los medicamentos diarios, qué hacer cuando empeora y cuándo acudir a urgencias. Pídelo y llévalo contigo; también puede ayudar compartirlo con el colegio o el trabajo.
+
 ## Fuentes
 
 - [GINA. 2026 GINA Strategy Report](https://ginasthma.org/2026-gina-strategy-report/)

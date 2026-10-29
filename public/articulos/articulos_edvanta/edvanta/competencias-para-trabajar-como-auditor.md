@@ -8,7 +8,7 @@ category: "Auditoría"
 author: "Edvanta"
 author_url: "/"
 date_published: "2026-07-08"
-date_modified: "2026-07-14"
+date_modified: "2026-10-28"
 reading_time: "10 minutos"
 og_title: "Competencias para trabajar como auditor interno o de procesos"
 og_description: "Descubre las habilidades técnicas y blandas que necesitas para trabajar como auditor interno, con ejemplos prácticos y ruta de formación."
@@ -190,3 +190,9 @@ Depende del tipo de auditoría, la experiencia y el país. Un auditor interno pu
 [1] ISO 19011:2018. Directrices para la auditoría de los sistemas de gestión.
 
 [2] ISO 9001:2015. Sistemas de gestión de la calidad — Requisitos.
+
+## Fuentes y recursos
+
+- [ISO 19011: directrices para auditar sistemas de gestión](https://www.iso.org/standard/70017.html)
+
+Fuentes oficiales de referencia. Verifica la versión vigente y su aplicabilidad al contexto de tu organización.

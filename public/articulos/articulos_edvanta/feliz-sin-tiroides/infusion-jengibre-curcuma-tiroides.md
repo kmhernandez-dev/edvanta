@@ -8,7 +8,7 @@ category: "Feliz Sin Tiroides"
 author: "Karla Hernández — Química Farmacéutica"
 author_url: "/autores/karla-hernandez"
 date_published: "2026-07-17"
-date_modified: "2026-07-17"
+date_modified: "2026-10-28"
 reading_time: "10 minutos"
 image: "/images/articulos/como-tomar-levotiroxina-correctamente.webp"
 image_alt: "Taza de infusión de jengibre y cúrcuma junto a raíces frescas"
@@ -223,29 +223,3 @@ Si quieres aprender más sobre cómo la alimentación puede apoyar tu salud tiro
 3. Hewlings SJ, Kalman DS. Curcumin: A Review of Its Effects on Human Health. *Foods*. 2017. <a href="https://pubmed.ncbi.nlm.nih.gov/29065496/" target="_blank" rel="noopener noreferrer">https://pubmed.ncbi.nlm.nih.gov/29065496/</a>
 4. Ihnatowicz P, et al. The importance of nutritional factors and dietary management of Hashimoto's thyroiditis. *Ann Agric Environ Med*. 2020. <a href="https://pubmed.ncbi.nlm.nih.gov/32588591/" target="_blank" rel="noopener noreferrer">https://pubmed.ncbi.nlm.nih.gov/32588591/</a>
 5. Ulbricht C, et al. An evidence-based systematic review of ginger by the Natural Standard Research Collaboration. *J Diet Suppl*. 2011. <a href="https://pubmed.ncbi.nlm.nih.gov/22432725/" target="_blank" rel="noopener noreferrer">https://pubmed.ncbi.nlm.nih.gov/22432725/</a>
-
-## JSON-LD sugerido
-
-```json
-{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "Infusión de jengibre y cúrcuma: propiedades y precauciones para la tiroides",
-  "description": "Preparación, beneficios antiinflamatorios, posibles interacciones con medicamentos tiroideos y quiénes deberían evitar esta infusión.",
-  "image": "https://edvanta.co/images/articulos/como-tomar-levotiroxina-correctamente.webp",
-  "datePublished": "2026-07-17",
-  "dateModified": "2026-07-17",
-  "author": {
-    "@type": "Person",
-    "name": "Karla Hernández",
-    "jobTitle": "Química Farmacéutica",
-    "url": "https://edvanta.co/autores/karla-hernandez"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Biblioteca Profesional KH",
-    "url": "https://edvanta.co"
-  },
-  "mainEntityOfPage": "https://edvanta.co/articulos/infusion-jengibre-curcuma-tiroides"
-}
-```

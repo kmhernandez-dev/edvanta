@@ -8,7 +8,7 @@ category: "Atención Farmacéutica"
 author: "Karla Hernández — Química Farmacéutica"
 author_url: "/autores/karla-hernandez"
 date_published: "2026-07-17"
-date_modified: "2026-07-17"
+date_modified: "2026-10-28"
 reading_time: "12 minutos"
 image: "https://edvanta.co/images/articulos/que-es-atencion-farmaceutica.webp"
 image_alt: "Farmacéutico midiendo la presión arterial y revisando el tratamiento antihipertensivo"
@@ -32,6 +32,8 @@ robots: "index, follow"
 # Intervención farmacéutica en hipertensión arterial
 
 La hipertensión arterial (HTA) es el factor de riesgo modificable más importante para la enfermedad cardiovascular y la principal causa de muerte prevenible en el mundo. A pesar de la disponibilidad de tratamientos efectivos, menos del 50% de los pacientes hipertensos alcanzan las metas de control. El farmacéutico puede mejorar significativamente estas cifras mediante intervenciones estructuradas [1].
+
+**Cómo se relaciona:** este artículo desarrolla la intervención y el ajuste del tratamiento. Para estrategias de seguimiento y adherencia, consulta [Hipertensión: seguimiento farmacéutico práctico](/articulos/estrategias-farmaceuticas-hipertension-arterial).
 
 > **Aviso editorial:** Este material tiene fines educativos y debe adaptarse a los protocolos, competencias profesionales y regulación aplicable en cada institución.
 

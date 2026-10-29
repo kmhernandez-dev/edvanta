@@ -8,7 +8,7 @@ category: "Calidad farmacéutica"
 author: "Edvanta"
 author_url: "/"
 date_published: "2026-08-14"
-date_modified: "2026-08-14"
+date_modified: "2026-10-28"
 reading_time: "8 minutos"
 og_title: "OMS Pharmacovigilance Inspection Training: guía del curso"
 og_description: "21 módulos gratuitos de la OMS sobre inspecciones de farmacovigilancia: QMS de PV, QPPV, ICSR, CAPA y más. Con certificado."
@@ -108,3 +108,9 @@ En el catálogo de la OMS: [who.int](https://www.who.int/tools/health-products-r
 **Referencias:**
 
 [1] OMS. *Pharmacovigilance Inspection Training Course*. Catálogo de aprendizaje de productos de salud.
+
+## Fuentes y recursos
+
+- [who.int](https://www.who.int/tools/health-products-regulation-and-prequalification-learning-catalogue/vigilance)
+
+Enlaces consultados para esta guía. Verifica siempre la versión vigente del documento o de la ficha técnica.

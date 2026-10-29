@@ -8,7 +8,7 @@ category: "Gestión de Calidad"
 author: "Edvanta"
 author_url: "/"
 date_published: "2026-07-07"
-date_modified: "2026-07-07"
+date_modified: "2026-10-28"
 reading_time: "13 minutos"
 image: "https://edvanta.co/images/articulos/gestionar-no-conformidad.webp"
 image_alt: "Equipo de calidad analizando una no conformidad mediante causa raíz, plan de acción y verificación de eficacia"
@@ -410,28 +410,3 @@ Antes de aprobar el cierre, confirma:
 4. International Council for Harmonisation. ICH Q9(R1): Quality Risk Management. <a href="https://database.ich.org/sites/default/files/ICH_Q9%28R1%29_Guideline_Step4_2022_1219.pdf" target="_blank" rel="noopener noreferrer">Guía oficial ICH</a>
 5. U.S. Food and Drug Administration. Quality Systems Approach to Pharmaceutical Current Good Manufacturing Practice Regulations. 2006. <a href="https://www.fda.gov/media/71023/download" target="_blank" rel="noopener noreferrer">Guía oficial FDA</a>
 6. International Council for Harmonisation. ICH Q7: Good Manufacturing Practice Guide for Active Pharmaceutical Ingredients. <a href="https://database.ich.org/sites/default/files/Q7%20Guideline.pdf" target="_blank" rel="noopener noreferrer">Guía oficial ICH</a>
-
-## JSON-LD sugerido
-
-```json
-{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "Cómo gestionar una no conformidad: causa raíz, acciones y eficacia",
-  "description": "Guía práctica para documentar, investigar y cerrar una no conformidad mediante análisis de causa, acciones correctivas y verificación de eficacia.",
-  "image": "https://edvanta.co/images/articulos/gestionar-no-conformidad.webp",
-  "datePublished": "2026-07-07",
-  "dateModified": "2026-07-07",
-  "author": {
-    "@type": "Organization",
-    "name": "Edvanta",
-    "url": "https://edvanta.co"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Biblioteca Profesional KH",
-    "url": "https://edvanta.co"
-  },
-  "mainEntityOfPage": "https://edvanta.co/articulos/gestionar-no-conformidad"
-}
-```

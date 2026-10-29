@@ -8,7 +8,7 @@ category: "Técnicas de estudio"
 author: "Edvanta"
 author_url: "/autores/edvanta"
 date_published: "2026-07-17"
-date_modified: "2026-07-17"
+date_modified: "2026-10-28"
 reading_time: "11 minutos"
 og_title: "Técnicas de estudio basadas en neurociencia"
 og_description: "Descubre qué dice la ciencia sobre cómo aprende el cerebro y aplica técnicas de estudio basadas en evidencia."
@@ -205,3 +205,11 @@ La mayoría no tiene respaldo científico sólido. La cafeína es el nootrópico
 [2] Walker, M. (2017). *Why We Sleep*. Scribner.
 [3] Ratey, J. (2008). *Spark: The Revolutionary New Science of Exercise and the Brain*.
 [4] Oakley, B. (2014). *A Mind for Numbers*. TarcherPerigee.
+
+## Recursos relacionados
+- [curso de neurociencia](https://edutin.com/sh-15973)
+- [curso de nutrición](https://edutin.com/sh-9356)
+- [curso de memoria y concentración](https://edutin.com/sh-15971)
+- [curso de técnicas de estudio](https://edutin.com/sh-15968)
+
+Enlaces a programas, casos y recursos mencionados en el artículo.

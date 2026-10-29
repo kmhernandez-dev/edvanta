@@ -59,6 +59,24 @@ En 2021 el INVIMA publicó la alerta sanitaria 243-2021 sobre el retiro voluntar
 
 Este contenido es educativo y no reemplaza la consulta con su médico o químico farmacéutico.
 
+## Preguntas frecuentes
+
+### ¿Losartán y losartán potásico son lo mismo?
+
+Sí. El losartán potásico es la forma de sal que suele usarse en las tabletas; el principio activo es el losartán. Revisa el nombre y la concentración de tu fórmula y no dupliques el medicamento si también tomas una combinación que ya lo contiene.
+
+### ¿Puedo suspenderlo si me siento bien?
+
+No sin hablar con tu médico. La presión normal suele ser consecuencia del tratamiento. Suspenderlo por tu cuenta puede hacer que vuelva a subir y aumentar el riesgo cardiovascular.
+
+### ¿Produce tos como el enalapril?
+
+La tos es mucho menos frecuente con losartán que con enalapril y otros medicamentos del grupo de los IECA. Si aparece tos, no asumas que es por el losartán: coméntalo para revisar otras causas y alternativas.
+
+### ¿Qué hago si olvido una dosis?
+
+No tomes una dosis doble. Consulta a tu médico o químico farmacéutico para saber cómo actuar según tu horario y tu tratamiento; ellos pueden indicarte si debes tomarla ese mismo día o esperar a la siguiente.
+
 ## Fuentes
 
 - AEMPS-CIMA. Ficha técnica Losartán Cinfa 50 mg comprimidos recubiertos con película EFG (revisión feb. 2025). [Ver fuente](https://cima.aemps.es/cima/dochtml/ft/67729/FT_67729.html)

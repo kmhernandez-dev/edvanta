@@ -8,7 +8,7 @@ category: "Seguridad y salud en el trabajo"
 author: "Edvanta"
 author_url: "/"
 date_published: "2026-07-08"
-date_modified: "2026-07-14"
+date_modified: "2026-10-28"
 reading_time: "10 minutos"
 og_title: "Qué es seguridad y salud en el trabajo"
 og_description: "Aprende los fundamentos de la seguridad y salud en el trabajo: peligros, riesgos, prevención, cultura de seguridad y bienestar laboral."
@@ -173,3 +173,10 @@ Es la enfermedad contraída como resultado de la exposición a factores de riesg
 [2] ISO 45001:2018. Sistemas de gestión de la seguridad y salud en el trabajo — Requisitos con orientación para su uso.
 
 [3] GTC 45:2012. Guía para la identificación de los peligros y la valoración de los riesgos en seguridad y salud ocupacional. ICONTEC.
+
+## Fuentes y recursos
+
+- [ISO 45001: seguridad y salud en el trabajo](https://www.iso.org/iso-45001-occupational-health-and-safety.html)
+- [OIT: seguridad y salud en el trabajo](https://www.ilo.org/es/temas/seguridad-y-salud-en-el-trabajo)
+
+Fuentes oficiales de referencia. Verifica la versión vigente y su aplicabilidad al contexto de tu organización.

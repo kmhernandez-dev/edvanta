@@ -8,7 +8,7 @@ category: "Atención Farmacéutica"
 author: "Karla Hernández — Química Farmacéutica"
 author_url: "/autores/karla-hernandez"
 date_published: "2026-08-05"
-date_modified: "2026-08-05"
+date_modified: "2026-10-28"
 reading_time: "7 minutos"
 image: "https://edvanta.co/images/articulos/que-es-atencion-farmaceutica.webp"
 image_alt: "Farmacéutico liderando un programa PROA"
@@ -84,3 +84,8 @@ La resistencia bacteriana no espera. Cada día que pasa sin optimizar el uso de 
 - [Stewardship farmacéutico: el rol del farmacéutico en los programas PROA](/articulos/stewardship-farmaceutico-proa-optimizacion-antimicrobianos)
 - [Seguridad del medicamento: prevención de errores y gestión de riesgos en farmacia](/articulos/seguridad-medicamento-prevencion-errores-gestion-riesgos)
 - [Rol del farmacéutico clínico en fibrosis quística: manejo integral](/articulos/rol-farmaceutico-fibrosis-quistica)
+
+## Recursos relacionados
+- [Stewardship Farmacéutico: PROA](https://go.hotmart.com/K107032633H?dp=1)
+
+Enlaces a programas, casos y recursos mencionados en el artículo.

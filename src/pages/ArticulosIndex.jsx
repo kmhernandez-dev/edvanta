@@ -84,7 +84,7 @@ function Tarjeta({ a, destacada = false }) {
       className="group relative flex h-full flex-col overflow-hidden rounded-[14px] border border-edvanta-border bg-white shadow-[0_1px_2px_rgba(23,34,59,.04)] transition duration-200 hover:-translate-y-0.5 hover:border-edvanta-blue/30 hover:shadow-[0_12px_36px_rgba(23,34,59,.12)]"
     >
       {a.image ? (
-        <img src={a.image} alt="" loading="lazy" className="aspect-[16/8] w-full object-cover" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
+        <img src={a.image} alt={a.imageAlt || a.title} width="1200" height="600" loading="lazy" decoding="async" className="aspect-[16/8] w-full object-cover" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
       ) : (
         <div
           className="relative aspect-[16/6] w-full overflow-hidden"

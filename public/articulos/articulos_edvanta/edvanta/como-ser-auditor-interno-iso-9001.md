@@ -8,7 +8,7 @@ category: "Profesiones"
 author: "Edvanta"
 author_url: "/autores/edvanta"
 date_published: "2026-07-17"
-date_modified: "2026-07-17"
+date_modified: "2026-10-28"
 reading_time: "11 minutos"
 og_title: "Cómo ser auditor interno ISO 9001: requisitos, salario y plan de carrera"
 og_description: "Descubre cómo convertirte en auditor interno ISO 9001: formación, certificaciones, salario en Latinoamérica y plan de carrera paso a paso."
@@ -181,3 +181,10 @@ Después de ISO 9001, las más valoradas son ISO 14001 (gestión ambiental) e IS
 
 [1] ISO 9001:2015. Sistemas de gestión de la calidad — Requisitos.
 [2] ISO 19011:2018. Directrices para la auditoría de los sistemas de gestión.
+
+## Fuentes y recursos
+
+- [ISO 19011: directrices para auditar sistemas de gestión](https://www.iso.org/standard/70017.html)
+- [ISO 9001: gestión de la calidad](https://www.iso.org/iso-9001-quality-management.html)
+
+Fuentes oficiales de referencia. Verifica la versión vigente y su aplicabilidad al contexto de tu organización.

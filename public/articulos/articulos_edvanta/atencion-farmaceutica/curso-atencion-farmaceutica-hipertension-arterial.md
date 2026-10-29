@@ -8,7 +8,7 @@ category: "Atención Farmacéutica"
 author: "Karla Hernández — Química Farmacéutica"
 author_url: "/autores/karla-hernandez"
 date_published: "2026-08-05"
-date_modified: "2026-08-05"
+date_modified: "2026-10-28"
 reading_time: "7 minutos"
 image: "https://edvanta.co/images/articulos/que-es-atencion-farmaceutica.webp"
 image_alt: "Farmacéutico clínico especializado en hipertensión arterial"
@@ -88,3 +88,8 @@ Invertir en tu formación es invertir en la salud de tus pacientes. La HTA es la
 - [Estrategias farmacéuticas para mejorar el control de la hipertensión arterial](/articulos/estrategias-farmaceuticas-hipertension-arterial)
 - [Entrevista farmacéutica: claves para una comunicación clínica efectiva](/articulos/entrevista-farmaceutica-claves-comunicacion-clinica)
 - [Plan de cuidados farmacoterapéutico: diseño, implementación y seguimiento](/articulos/plan-cuidados-farmacoterapeutico-diseno-seguimiento)
+
+## Recursos relacionados
+- [Atención Farmacéutica en Hipertensión Arterial](https://go.hotmart.com/C107041198W?dp=1)
+
+Enlaces a programas, casos y recursos mencionados en el artículo.

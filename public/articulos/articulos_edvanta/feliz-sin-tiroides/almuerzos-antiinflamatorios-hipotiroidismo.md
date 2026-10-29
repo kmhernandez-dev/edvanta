@@ -8,7 +8,7 @@ category: "Feliz Sin Tiroides"
 author: "Karla Hernández — Química Farmacéutica"
 author_url: "/autores/karla-hernandez"
 date_published: "2026-07-17"
-date_modified: "2026-07-17"
+date_modified: "2026-10-28"
 reading_time: "12 minutos"
 image: "/images/articulos/como-tomar-levotiroxina-correctamente.webp"
 image_alt: "Plato de almuerzo antiinflamatorio con salmón, vegetales y quinoa"
@@ -370,29 +370,3 @@ Para más ideas de comidas, te invitamos a explorar nuestro [Menú Semanal para 
 
 1. Ihnatowicz P, et al. The importance of nutritional factors and dietary management of Hashimoto's thyroiditis. *Ann Agric Environ Med*. 2020. <a href="https://pubmed.ncbi.nlm.nih.gov/32588591/" target="_blank" rel="noopener noreferrer">https://pubmed.ncbi.nlm.nih.gov/32588591/</a>
 2. Calder PC. Omega-3 fatty acids and inflammatory processes. *Nutrients*. 2010. <a href="https://pubmed.ncbi.nlm.nih.gov/22254051/" target="_blank" rel="noopener noreferrer">https://pubmed.ncbi.nlm.nih.gov/22254051/</a>
-
-## JSON-LD sugerido
-
-```json
-{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "5 almuerzos antiinflamatorios para personas con hipotiroidismo",
-  "description": "Recetas completas de almuerzo con ingredientes que apoyan la función tiroidea y reducen la inflamación. Incluye lista de compras semanal.",
-  "image": "https://edvanta.co/images/articulos/como-tomar-levotiroxina-correctamente.webp",
-  "datePublished": "2026-07-17",
-  "dateModified": "2026-07-17",
-  "author": {
-    "@type": "Person",
-    "name": "Karla Hernández",
-    "jobTitle": "Química Farmacéutica",
-    "url": "https://edvanta.co/autores/karla-hernandez"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Biblioteca Profesional KH",
-    "url": "https://edvanta.co"
-  },
-  "mainEntityOfPage": "https://edvanta.co/articulos/almuerzos-antiinflamatorios-hipotiroidismo"
-}
-```

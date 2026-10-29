@@ -8,7 +8,7 @@ category: "Feliz Sin Tiroides"
 author: "Karla Hernández — Química Farmacéutica"
 author_url: "/autores/karla-hernandez"
 date_published: "2026-07-17"
-date_modified: "2026-07-17"
+date_modified: "2026-10-28"
 reading_time: "10 minutos"
 image: "/images/articulos/como-tomar-levotiroxina-correctamente.webp"
 image_alt: "Frascos de aceites esenciales con un signo de interrogación, representando la incertidumbre científica"
@@ -221,29 +221,3 @@ Para conocer estrategias de autocuidado con respaldo científico, te invitamos a
 1. Burt S. Essential oils: their antibacterial properties and potential applications in foods. *Int J Food Microbiol*. 2004. <a href="https://pubmed.ncbi.nlm.nih.gov/15246235/" target="_blank" rel="noopener noreferrer">https://pubmed.ncbi.nlm.nih.gov/15246235/</a>
 2. De Groot AC, Schmidt E. Essential oils: contact allergy and chemical composition. *Contact Dermatitis*. 2016. <a href="https://pubmed.ncbi.nlm.nih.gov/27061882/" target="_blank" rel="noopener noreferrer">https://pubmed.ncbi.nlm.nih.gov/27061882/</a>
 3. Sánchez-Vidaña DI, et al. The effectiveness of aromatherapy for depressive symptoms. *Evid Based Complement Alternat Med*. 2017. <a href="https://pubmed.ncbi.nlm.nih.gov/28713437/" target="_blank" rel="noopener noreferrer">https://pubmed.ncbi.nlm.nih.gov/28713437/</a>
-
-## JSON-LD sugerido
-
-```json
-{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "Aceites esenciales y tiroides: separando mitos de evidencia",
-  "description": "Qué dice realmente la ciencia sobre aceites esenciales y función tiroidea, usos seguros, riesgos y qué evitar.",
-  "image": "https://edvanta.co/images/articulos/como-tomar-levotiroxina-correctamente.webp",
-  "datePublished": "2026-07-17",
-  "dateModified": "2026-07-17",
-  "author": {
-    "@type": "Person",
-    "name": "Karla Hernández",
-    "jobTitle": "Química Farmacéutica",
-    "url": "https://edvanta.co/autores/karla-hernandez"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Biblioteca Profesional KH",
-    "url": "https://edvanta.co"
-  },
-  "mainEntityOfPage": "https://edvanta.co/articulos/aceites-esenciales-tiroides-mitos"
-}
-```

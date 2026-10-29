@@ -8,7 +8,7 @@ category: "Atención Farmacéutica"
 author: "Karla Hernández — Química Farmacéutica"
 author_url: "/autores/karla-hernandez"
 date_published: "2026-08-05"
-date_modified: "2026-08-05"
+date_modified: "2026-10-28"
 reading_time: "7 minutos"
 image: "https://edvanta.co/images/articulos/que-es-atencion-farmaceutica.webp"
 image_alt: "Farmacéutico aplicando el Pharmacotherapy Workup"
@@ -86,3 +86,8 @@ El PTW no es solo un método: es la base sobre la que construyes tu identidad co
 - [Pharmacotherapy Workup: el método de Cipolle, Strand y Morley explicado](/articulos/pharmacotherapy-workup-cipolle-strand-morley)
 - [Gestión integral de la farmacoterapia: fundamentos y aplicación clínica](/articulos/gestion-integral-farmacoterapia-fundamentos)
 - [Problemas farmacoterapéuticos: identificación, clasificación y resolución](/articulos/problemas-farmacoterapeuticos-identificacion-clasificacion)
+
+## Recursos relacionados
+- [Pharmacotherapy Workup de Cipolle, Strand y Morley](https://go.hotmart.com/V107032692K?dp=1)
+
+Enlaces a programas, casos y recursos mencionados en el artículo.

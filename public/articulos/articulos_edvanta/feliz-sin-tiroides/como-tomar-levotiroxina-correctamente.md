@@ -8,7 +8,7 @@ category: "Feliz Sin Tiroides"
 author: "Karla Hernández — Química Farmacéutica"
 author_url: "/autores/karla-hernandez"
 date_published: "2026-07-07"
-date_modified: "2026-07-07"
+date_modified: "2026-10-28"
 reading_time: "11 minutos"
 image: "https://edvanta.co/images/articulos/como-tomar-levotiroxina-correctamente.webp"
 image_alt: "Tableta de levotiroxina junto a un vaso de agua y un reloj, como representación de una administración constante"
@@ -272,29 +272,3 @@ Guarda esta lista antes de tu próxima consulta:
 9. American Thyroid Association. Post Operative Expectations. <a href="https://www.thyroid.org/post-operative-expectations/" target="_blank" rel="noopener noreferrer">https://www.thyroid.org/post-operative-expectations/</a>
 10. Samarasinghe S, et al. Biotin Interference with Routine Clinical Immunoassays. *Endocr Pract*. 2017. <a href="https://pubmed.ncbi.nlm.nih.gov/28534685/" target="_blank" rel="noopener noreferrer">https://pubmed.ncbi.nlm.nih.gov/28534685/</a>
 11. MedlinePlus. Levothyroxine Drug Information. <a href="https://medlineplus.gov/druginfo/meds/a682461.html" target="_blank" rel="noopener noreferrer">https://medlineplus.gov/druginfo/meds/a682461.html</a>
-
-## JSON-LD sugerido
-
-```json
-{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "Cómo tomar levotiroxina correctamente: horarios, alimentos e interacciones",
-  "description": "Guía educativa sobre horarios, alimentos, suplementos e interacciones que pueden modificar la absorción de levotiroxina.",
-  "image": "https://edvanta.co/images/articulos/como-tomar-levotiroxina-correctamente.webp",
-  "datePublished": "2026-07-07",
-  "dateModified": "2026-07-07",
-  "author": {
-    "@type": "Person",
-    "name": "Karla Hernández",
-    "jobTitle": "Química Farmacéutica",
-    "url": "https://edvanta.co/autores/karla-hernandez"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Biblioteca Profesional KH",
-    "url": "https://edvanta.co"
-  },
-  "mainEntityOfPage": "https://edvanta.co/articulos/como-tomar-levotiroxina-correctamente"
-}
-```

@@ -800,3 +800,14 @@ Para una publicación de alto nivel evitaría llenar el artículo con fotografí
 La identidad visual debería basarse principalmente en **diagramas editoriales propios, datos, procesos y fotografías técnicas reales**.
 
 Esto hará que el contenido se perciba como análisis profesional y no como un artículo genérico de “cinco ideas para emprender”.
+
+## Recursos relacionados
+- [Pharmarket](https://www.pharmarket.co/)
+- [Kumpels](https://www.kumpels.com.co/)
+- [Binnol](https://binnol.com/)
+- [Félix Santiago Consultores](https://felixsantiagoconsultores.com/)
+- [QFS Regulatorios LATAM](https://qfsregulatorioslatam.com/)
+- [Telaraña Farmacéutica](https://www.telaranafarmaceutica.com/)
+- [Plataforma Educativa Farmacéutica](https://www.pef.com.co/)
+
+Enlaces a programas, casos y recursos mencionados en el artículo.

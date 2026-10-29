@@ -8,7 +8,7 @@ category: "Atención Farmacéutica"
 author: "Karla Hernández — Química Farmacéutica"
 author_url: "/autores/karla-hernandez"
 date_published: "2026-07-07"
-date_modified: "2026-07-07"
+date_modified: "2026-10-28"
 reading_time: "13 minutos"
 image: "https://edvanta.co/images/articulos/conciliacion-medicamentosa.webp"
 image_alt: "Profesional comparando la lista domiciliaria de medicamentos con órdenes hospitalarias de ingreso y egreso"
@@ -32,6 +32,8 @@ robots: "index, follow"
 # Conciliación medicamentosa paso a paso: ingreso, traslado y egreso
 
 La conciliación medicamentosa es un proceso formal para obtener una lista confiable de los medicamentos que una persona utilizaba, compararla con las nuevas órdenes y resolver discrepancias durante cada transición de cuidado. Su objetivo no es copiar una lista: es evitar omisiones, duplicidades, dosis incorrectas y cambios no intencionales.
+
+**Cómo se relaciona:** aquí se desarrolla el proceso completo de conciliación. Para una lista de verificación por transición, consulta [Conciliación medicamentosa: checklist por transición](/articulos/conciliacion-medicamentosa-guia-practica).
 
 > **Aviso editorial:** Este material tiene fines educativos y debe adaptarse a los protocolos, competencias profesionales y regulación aplicable en cada institución.
 
@@ -473,29 +475,3 @@ La lista final debe contar la historia del tratamiento: qué se usaba, qué camb
 5. Agency for Healthcare Research and Quality. Designing the Medication Reconciliation Process. <a href="https://www.ahrq.gov/patient-safety/settings/hospital/match/chapter-3.html" target="_blank" rel="noopener noreferrer">https://www.ahrq.gov/patient-safety/settings/hospital/match/chapter-3.html</a>
 6. AHRQ Patient Safety Network. Medication Reconciliation Primer. <a href="https://psnet.ahrq.gov/primer/medication-reconciliation" target="_blank" rel="noopener noreferrer">https://psnet.ahrq.gov/primer/medication-reconciliation</a>
 7. The Joint Commission. Maintaining and Communicating Patient Medication Information. <a href="https://www.jointcommission.org/en/knowledge-library/support-center/standards-interpretation/standards-faqs/000001214" target="_blank" rel="noopener noreferrer">Página oficial</a>
-
-## JSON-LD sugerido
-
-```json
-{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "Conciliación medicamentosa paso a paso: ingreso, traslado y egreso",
-  "description": "Guía para obtener la mejor historia de medicación, detectar discrepancias y comunicar cambios seguros durante transiciones de cuidado.",
-  "image": "https://edvanta.co/images/articulos/conciliacion-medicamentosa.webp",
-  "datePublished": "2026-07-07",
-  "dateModified": "2026-07-07",
-  "author": {
-    "@type": "Person",
-    "name": "Karla Hernández",
-    "jobTitle": "Química Farmacéutica",
-    "url": "https://edvanta.co/autores/karla-hernandez"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Biblioteca Profesional KH",
-    "url": "https://edvanta.co"
-  },
-  "mainEntityOfPage": "https://edvanta.co/articulos/conciliacion-medicamentosa"
-}
-```

@@ -8,7 +8,7 @@ category: "Calidad farmacéutica"
 author: "Edvanta"
 author_url: "/"
 date_published: "2026-08-14"
-date_modified: "2026-08-14"
+date_modified: "2026-10-28"
 reading_time: "6 minutos"
 og_title: "WHO Good Reliance Practices: curso gratuito de la OMS"
 og_description: "Curso gratuito de la OMS sobre reliance regulatorio, disponible en español y con constancia de participación."
@@ -98,3 +98,9 @@ En el catálogo de UNITAR: [event.unitar.org](https://event.unitar.org/full-cata
 **Referencias:**
 
 [1] OMS/UNITAR. *WHO Good Reliance Practices*.
+
+## Fuentes y recursos
+
+- [event.unitar.org](https://event.unitar.org/full-catalog/who-good-reliance-practices)
+
+Enlaces consultados para esta guía. Verifica siempre la versión vigente del documento o de la ficha técnica.
