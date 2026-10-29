@@ -54,13 +54,13 @@ export default function EmpresasTalento() {
     updatePageSeo({
       title: 'Recluta talento farmacéutico | Edvanta para empresas',
       description: 'Encuentra químicos farmacéuticos por área: calidad, regulatorio, farmacovigilancia, clínico y comercial. Perfiles con habilidades, proyectos y artículos.',
-      canonical: 'https://edvanta.co/empresas/talento',
+      canonical: 'https://edvanta.co/empresas/recluta-talento-farmaceutico',
       jsonLdId: 'empresas-talento',
       jsonLd: {
         '@context': 'https://schema.org',
         '@type': 'CollectionPage',
         name: 'Talento farmacéutico Edvanta',
-        url: 'https://edvanta.co/empresas/talento',
+        url: 'https://edvanta.co/empresas/recluta-talento-farmaceutico',
       },
     });
   }, []);
@@ -215,7 +215,7 @@ export default function EmpresasTalento() {
               </span>
               <p className="mt-4 text-base font-bold text-edvanta-deep">¿Eres profesional y quieres aparecer aquí?</p>
               <p className="mt-1.5 text-sm leading-6 text-edvanta-muted">Publica tus logros en la vitrina de talento y espera a que un cazatalento te contacte.</p>
-              <ArrowLink to="/talento" className="mt-4">Ir a la vitrina de talento</ArrowLink>
+              <ArrowLink to="/vitrina-de-talento-farmaceutico" className="mt-4">Ir a la vitrina de talento</ArrowLink>
             </Card>
           </div>
         </Section>

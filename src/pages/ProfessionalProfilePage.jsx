@@ -5,7 +5,7 @@ import SiteHeader from '../components/edvanta/SiteHeader';
 import SiteFooter from '../components/edvanta/SiteFooter';
 import { useAuth } from '../context/AuthContext';
 import { useProfessional } from '../context/ProfessionalContext';
-import { EXPERIENCE_LEVELS, PROFESSIONAL_CAREERS, PROFESSIONAL_INTERESTS, getCareerOption } from '../data/professionalProfileOptions';
+import { EXPERIENCE_LEVELS, PROFESSIONAL_CAREERS, PROFESSIONAL_INTERESTS, getCareerOption, slugVigente } from '../data/professionalProfileOptions';
 import { updatePageSeo } from '../utils/seo';
 
 export default function ProfessionalProfilePage() {
@@ -46,7 +46,8 @@ export default function ProfessionalProfilePage() {
       headline: professionalProfile?.headline || '',
       current_role: professionalProfile?.current_role || '',
       experience_level: professionalProfile?.experience_level || '',
-      target_career_slug: professionalProfile?.target_career_slug || '',
+      // Un perfil guardado antes de los nombres nuevos se lee con el vigente.
+      target_career_slug: slugVigente(professionalProfile?.target_career_slug),
       professional_summary: professionalProfile?.professional_summary || '',
       city: professionalProfile?.city || '',
       country: professionalProfile?.country || accountProfile?.country || '',
@@ -71,7 +72,7 @@ export default function ProfessionalProfilePage() {
       professional_summary: draft.professional_summary.trim() || null,
       city: draft.city.trim() || null,
       country: draft.country.trim() || null,
-      target_path_slug: career?.pathSlug || professionalProfile?.target_path_slug || null,
+      target_path_slug: career?.pathSlug || slugVigente(professionalProfile?.target_path_slug) || null,
       onboarding_completed: true,
     });
     setSaving(false);

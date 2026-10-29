@@ -14,13 +14,17 @@
  *    /cursos/<slug-viejo>   → 301 a /curso-de-…   (cursos curados)
  *    /cursos-gratis/<código>→ 301 a /curso-de-…   (códigos de Edutin)
  *    /articulos?categoria=… → 301 a /articulos/categoria/…
+ *    /carreras/…, /rutas/…, /competencias/…
+ *                           → la página con su título ya escrito, o 301
+ *                             si el nombre es anterior (slugs_anteriores)
  *
  *  Una sola redirección, nunca una cadena. Lo que no existe responde
  *  404 con la misma aplicación (que muestra «no encontramos»).
  *
  *  Además:
- *    GET /api/sitemap-cursos.xml  todos los cursos públicos
- *    GET /api/direcciones         tabla de direcciones antiguas → nuevas
+ *    GET /api/sitemap-cursos.xml       todos los cursos públicos
+ *    GET /api/sitemap-profesional.xml  carreras, rutas y competencias
+ *    GET /api/direcciones              tabla de direcciones antiguas → nuevas
  * ============================================================
  */
 import { Router } from 'express';
@@ -95,6 +99,28 @@ export function plantillaDelSitio({ url, ttlMs = 60_000, fetcher = globalThis.fe
   };
 }
 
+/** Las secciones del grafo profesional: carpeta de la dirección, tipo y migas. */
+const PERFILES = [['carreras', 'carrera', 'Carreras'], ['rutas', 'ruta', 'Rutas'], ['competencias', 'competencia', 'Competencias']];
+
+/**
+ * Las rutas fijas del sitio (learningRoutes de featuredCourses.js), que no
+ * tienen ficha en la base. La imagen de la API copia el archivo en
+ * source-data/ (Dockerfile.api); en desarrollo se lee de src/data.
+ */
+let rutasFijasGuardadas = null;
+async function rutasFijas() {
+  if (rutasFijasGuardadas) return rutasFijasGuardadas;
+  for (const archivo of ['../../src/data/featuredCourses.js', '../source-data/featuredCourses.js']) {
+    try {
+      const m = await import(new URL(archivo, import.meta.url).href);
+      rutasFijasGuardadas = m.learningRoutes || [];
+      return rutasFijasGuardadas;
+    } catch { /* el siguiente */ }
+  }
+  rutasFijasGuardadas = [];
+  return rutasFijasGuardadas;
+}
+
 /** Datos de la página de un curso a partir de su slug vigente. */
 async function cursoDelSlug(db, entidad, id) {
   if (entidad === 'aula') {
@@ -128,12 +154,15 @@ export function crearRutasPublicas({ db, sitio = '', obtenerPlantilla = async ()
     return res.set('X-Accel-Redirect', '/_aplicacion_404').end();
   };
 
-  const noEncontrado = async (res) => {
+  const noEncontrado = async (res, {
+    canonical = absoluta('/cursos'),
+    descripcion = 'Esta dirección no existe o el curso ya no está disponible.',
+  } = {}) => {
     const plantilla = await obtenerPlantilla();
     const html = plantilla && conMetadatos(plantilla, {
       titulo: 'Página no encontrada | Edvanta',
-      descripcion: 'Esta dirección no existe o el curso ya no está disponible.',
-      canonical: absoluta('/cursos'),
+      descripcion,
+      canonical,
       indexar: false,
     });
     return aplicacion(res, 404, html);
@@ -146,14 +175,15 @@ export function crearRutasPublicas({ db, sitio = '', obtenerPlantilla = async ()
       const slug = pedido.toLowerCase();
       if (!/^curso-[a-z0-9-]+$/.test(slug)) return noEncontrado(res);
       const r = await resolverSlug(db, slug);
-      // Sin fila: puede ser una página fija (el curso en vivo sale de su .html
+      // Solo vale un curso público: la dirección de un curso de empresa (o de
+      // uno retirado) se trata como si no existiera, también al redirigir.
+      const ficha = r ? await cursoDelSlug(db, r.entidad, r.id) : null;
+      // Sin curso: puede ser una página fija (el curso en vivo sale de su .html
       // en nginx). Se normaliza la dirección; si tampoco existe, allá da 404.
-      if (!r) return pedido !== slug || req.path.endsWith('/') ? redirigir(req, res, `/${slug}`) : noEncontrado(res);
+      if (!ficha) return pedido !== slug || req.path.endsWith('/') ? redirigir(req, res, `/${slug}`) : noEncontrado(res);
       if (!r.esVigente || pedido !== slug || req.path.endsWith('/')) {
         return r.vigente ? redirigir(req, res, `/${r.vigente}`) : noEncontrado(res);
       }
-      const ficha = await cursoDelSlug(db, r.entidad, r.id);
-      if (!ficha) return noEncontrado(res);
 
       const plantilla = await obtenerPlantilla();
       if (!plantilla) return aplicacion(res, 200, null);
@@ -243,6 +273,139 @@ export function crearRutasPublicas({ db, sitio = '', obtenerPlantilla = async ()
     return res.redirect(301, absoluta(publico ? `${destino}?publico=${publico}` : destino));
   });
 
+  // ── Carreras, rutas y competencias ──────────────────────────
+  //
+  // /carreras/<slug>, /rutas/<slug> y /competencias/<slug>: la página con
+  // su título y su descripción ya escritos (los mismos que pone la
+  // aplicación), 301 en un salto si el nombre es anterior (tabla
+  // slugs_anteriores) y 404 si no existe.
+  async function perfilPublico(tipo, slug) {
+    const anterior = `(SELECT entidad_id FROM slugs_anteriores WHERE tipo = '${tipo}' AND anterior = $1)`;
+    if (tipo === 'carrera') {
+      const { rows } = await db.query(
+        `SELECT c.slug, c.name, c.headline, c.summary, c.seo_title, c.seo_description
+           FROM careers c JOIN career_families f ON f.id = c.family_id
+          WHERE (c.slug = $1 OR c.id = ${anterior}) AND c.status = 'published' AND f.status = 'published'
+          LIMIT 1`,
+        [slug],
+      );
+      const c = rows[0];
+      return c && {
+        slug: c.slug,
+        nombre: c.name,
+        resumen: c.headline || c.summary,
+        titulo: c.seo_title || `${c.name} | Carreras Edvanta`,
+        descripcion: c.seo_description || c.summary,
+      };
+    }
+    if (tipo === 'ruta') {
+      const { rows } = await db.query(
+        `SELECT p.slug, p.name, p.summary, p.seo_title, p.seo_description
+           FROM learning_paths p JOIN careers c ON c.id = p.career_id AND c.status = 'published'
+          WHERE (p.slug = $1 OR p.id = ${anterior}) AND p.status = 'published'
+          LIMIT 1`,
+        [slug],
+      );
+      const p = rows[0];
+      if (p) {
+        return {
+          slug: p.slug,
+          nombre: p.name,
+          resumen: p.summary,
+          titulo: p.seo_title || `${p.name} | Ruta profesional Edvanta`,
+          descripcion: p.seo_description || p.summary,
+        };
+      }
+      // Las rutas fijas del sitio, que no tienen ficha en la base.
+      const fija = (await rutasFijas()).find((r) => r.slug === slug);
+      return fija && {
+        slug: fija.slug, nombre: fija.title, resumen: fija.summary, titulo: `${fija.title} | Ruta profesional Edvanta`, descripcion: fija.summary,
+      };
+    }
+    const { rows } = await db.query(
+      `SELECT slug, name, description FROM skills
+        WHERE (slug = $1 OR id = ${anterior}) AND status = 'published'
+        LIMIT 1`,
+      [slug],
+    );
+    const s = rows[0];
+    return s && {
+      slug: s.slug,
+      nombre: s.name,
+      resumen: s.description,
+      titulo: `${s.name}: carreras, cursos y rutas | Edvanta`,
+      descripcion: `${s.description || ''} Descubre qué carreras requieren ${s.name}, qué nivel necesitas y qué formación puede ayudarte a desarrollarla.`.trim(),
+    };
+  }
+
+  for (const [carpeta, tipo, seccion] of PERFILES) {
+    router.get(`/paginas/${carpeta}/:slug`, async (req, res) => {
+      try {
+        const pedido = String(req.params.slug || '');
+        const slug = pedido.toLowerCase();
+        const p = /^[a-z0-9]+(-[a-z0-9]+)*$/.test(slug) ? await perfilPublico(tipo, slug) : null;
+        if (!p) {
+          return noEncontrado(res, { canonical: absoluta(`/${carpeta}`), descripcion: 'Esta dirección no existe o la página ya no está disponible.' });
+        }
+        // Nombre anterior, mayúsculas o barra final: a la vigente, en un salto.
+        if (p.slug !== pedido || req.path.endsWith('/')) return redirigir(req, res, `/${carpeta}/${p.slug}`);
+        const plantilla = await obtenerPlantilla();
+        if (!plantilla) return aplicacion(res, 200, null);
+        const canonical = absoluta(`/${carpeta}/${p.slug}`);
+        return aplicacion(res, 200, conMetadatos(plantilla, {
+          titulo: p.titulo,
+          descripcion: resumen(p.descripcion),
+          canonical,
+          jsonLd: [{
+            '@context': 'https://schema.org',
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+              { '@type': 'ListItem', position: 1, name: 'Inicio', item: absoluta('/') },
+              { '@type': 'ListItem', position: 2, name: seccion, item: absoluta(`/${carpeta}`) },
+              { '@type': 'ListItem', position: 3, name: p.nombre, item: canonical },
+            ],
+          }],
+          cuerpo: `<main><h1>${esc(p.nombre)}</h1>${p.resumen ? `<p>${esc(p.resumen)}</p>` : ''}</main>`,
+        }));
+      } catch (e) {
+        console.error(JSON.stringify({ level: 'error', msg: `página de ${tipo}`, error: e.message }));
+        return aplicacion(res, 200, null);
+      }
+    });
+  }
+
+  // Carreras, rutas y competencias publicadas, con su dirección vigente.
+  router.get('/sitemap-profesional.xml', async (_req, res) => {
+    try {
+      const { rows } = await db.query(
+        `SELECT '/carreras/' || c.slug AS ruta, c.updated_at AS fecha
+           FROM careers c JOIN career_families f ON f.id = c.family_id
+          WHERE c.status = 'published' AND f.status = 'published'
+         UNION ALL
+         SELECT '/rutas/' || p.slug, p.updated_at
+           FROM learning_paths p JOIN careers c ON c.id = p.career_id AND c.status = 'published'
+          WHERE p.status = 'published'
+         UNION ALL
+         SELECT '/competencias/' || s.slug, s.updated_at FROM skills s WHERE s.status = 'published'
+          ORDER BY 1`,
+      );
+      const enBase = new Set(rows.map((r) => r.ruta));
+      const fijas = (await rutasFijas()).map((r) => ({ ruta: `/rutas/${r.slug}`, fecha: null })).filter((r) => !enBase.has(r.ruta));
+      const dia = (f) => (f ? new Date(f).toISOString().slice(0, 10) : null);
+      const xml = [
+        '<?xml version="1.0" encoding="UTF-8"?>',
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
+        ...[...rows, ...fijas].map((r) => `  <url><loc>${esc(absoluta(r.ruta))}</loc>${dia(r.fecha) ? `<lastmod>${dia(r.fecha)}</lastmod>` : ''}</url>`),
+        '</urlset>',
+      ].join('\n');
+      res.set('Cache-Control', 'public, max-age=3600');
+      return res.type('application/xml').send(xml);
+    } catch (e) {
+      console.error(JSON.stringify({ level: 'error', msg: 'sitemap profesional', error: e.message }));
+      return res.status(503).type('text/plain').send('Sitemap no disponible');
+    }
+  });
+
   // Todos los cursos públicos, con su dirección vigente.
   router.get('/sitemap-cursos.xml', async (_req, res) => {
     try {
@@ -288,10 +451,28 @@ export function crearRutasPublicas({ db, sitio = '', obtenerPlantilla = async ()
          SELECT h.entity, h.entity_id, NULL, '/' || h.slug, '/' || v.slug
            FROM public_slugs h JOIN public_slugs v ON v.entity = h.entity AND v.entity_id = h.entity_id AND v.is_current
           WHERE NOT h.is_current
+            AND (h.entity <> 'aula' OR EXISTS (SELECT 1 FROM aula_courses c WHERE c.id = h.entity_id AND c.kind = 'edvanta'))
           ORDER BY 1, 2`,
       );
+      // Carreras, rutas y competencias que cambiaron de nombre. Sin las tablas
+      // del grafo profesional (la base de pruebas del aula) sale solo con cursos.
+      const { rows: perfiles } = await db.query(
+        `SELECT a.tipo, a.anterior, COALESCE(c.slug, p.slug, s.slug) AS actual, COALESCE(c.name, p.name, s.name) AS nombre
+           FROM slugs_anteriores a
+           LEFT JOIN careers c ON a.tipo = 'carrera' AND c.id = a.entidad_id
+           LEFT JOIN learning_paths p ON a.tipo = 'ruta' AND p.id = a.entidad_id
+           LEFT JOIN skills s ON a.tipo = 'competencia' AND s.id = a.entidad_id
+          ORDER BY a.tipo, a.anterior`,
+      ).catch(() => ({ rows: [] }));
+      const carpeta = Object.fromEntries(PERFILES.map(([c, t]) => [t, c]));
+      const data = [
+        ...rows.map((r) => ({ ...r, id: Number(r.id) })),
+        ...perfiles.filter((r) => r.actual && r.actual !== r.anterior).map((r) => ({
+          entidad: r.tipo, id: null, titulo: r.nombre, antigua: `/${carpeta[r.tipo]}/${r.anterior}`, nueva: `/${carpeta[r.tipo]}/${r.actual}`,
+        })),
+      ];
       res.set('Cache-Control', 'no-cache');
-      return res.json({ ok: true, total: rows.length, data: rows.map((r) => ({ ...r, id: Number(r.id) })) });
+      return res.json({ ok: true, total: data.length, data });
     } catch (e) {
       console.error(JSON.stringify({ level: 'error', msg: 'tabla de direcciones', error: e.message }));
       return res.status(500).json({ ok: false, error: 'No fue posible armar la tabla' });

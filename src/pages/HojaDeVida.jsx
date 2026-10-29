@@ -262,9 +262,9 @@ export default function HojaDeVida() {
           <SectionHeading eyebrow="Cuando la tengas lista" title="Sigue el proceso completo" />
           <div className="mt-8 grid gap-5 md:grid-cols-3">
             {[
-              { icon: Mail, tile: '', title: 'Escribe el correo', desc: 'Plantillas para postular, hacer seguimiento y agradecer.', to: '/empleo/correos', cta: 'Ver plantillas' },
-              { icon: Search, tile: 'ds-icon-tile--teal', title: 'Busca la vacante', desc: 'Ofertas para químicos farmacéuticos con postulación directa.', to: '/empleo/ofertas-qf', cta: 'Ver ofertas' },
-              { icon: Sparkles, tile: 'ds-icon-tile--violet', title: 'Que te busquen a ti', desc: 'Publica tus logros en la vitrina de talento.', to: '/talento', cta: 'Ir a la vitrina' },
+              { icon: Mail, tile: '', title: 'Escribe el correo', desc: 'Plantillas para postular, hacer seguimiento y agradecer.', to: '/empleo/plantillas-de-correo-para-recursos-humanos', cta: 'Ver plantillas' },
+              { icon: Search, tile: 'ds-icon-tile--teal', title: 'Busca la vacante', desc: 'Ofertas para químicos farmacéuticos con postulación directa.', to: '/empleo/ofertas-para-quimicos-farmaceuticos', cta: 'Ver ofertas' },
+              { icon: Sparkles, tile: 'ds-icon-tile--violet', title: 'Que te busquen a ti', desc: 'Publica tus logros en la vitrina de talento.', to: '/vitrina-de-talento-farmaceutico', cta: 'Ir a la vitrina' },
             ].map((c) => (
               <Card key={c.title} hover>
                 <span className={`ds-icon-tile h-12 w-12 items-center justify-center rounded-xl ${c.tile}`} aria-hidden="true"><c.icon className="h-6 w-6" strokeWidth={1.8} /></span>

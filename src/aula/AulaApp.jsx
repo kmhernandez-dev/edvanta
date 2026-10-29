@@ -42,6 +42,15 @@ const RecursosCurso = lazy(() => import('./pages/curso/RecursosCurso'));
 
 const fullPage = (element) => <Suspense fallback={<PageLoader />}>{element}</Suspense>;
 
+// Las páginas de un curso del participante, iguales por su nombre o por id.
+const paginasDelCurso = (
+  <>
+    <Route index element={<PortadaCurso />} />
+    <Route path="clase/:clase" element={<ClaseParticipante />} />
+    <Route path="recursos" element={<RecursosCurso />} />
+  </>
+);
+
 const TITLES = [
   [/^\/aula\/entrar/, 'Entrar'],
   [/^\/aula\/recuperar/, 'Crear o restablecer contraseña'],
@@ -58,8 +67,8 @@ const TITLES = [
   [/^\/aula\/admin\/participantes\/importar/, 'Importar participantes'],
   [/^\/aula\/admin\/participantes/, 'Participantes'],
   [/^\/aula\/admin/, 'Administración'],
-  [/^\/aula\/curso\/\d+\/clase/, 'Clase'],
-  [/^\/aula\/curso\/\d+\/recursos/, 'Recursos del curso'],
+  [/^\/aula\/(curso\/\d+|curso-[^/]+)\/clase/, 'Clase'],
+  [/^\/aula\/(curso\/\d+|curso-[^/]+)\/recursos/, 'Recursos del curso'],
   [/^\/aula\/curso/, 'Curso'],
   [/^\/aula/, 'Mi aula'],
 ];
@@ -149,11 +158,13 @@ export default function AulaApp() {
           <Route path="admin/cursos/:id/vista-previa" element={<RequireAula role="admin">{fullPage(<VistaPrevia />)}</RequireAula>} />
           <Route path="admin/cursos/:id/vista-previa/:lessonId" element={<RequireAula role="admin">{fullPage(<VistaPrevia />)}</RequireAula>} />
 
-          {/* Curso del participante a pantalla completa. */}
+          {/* Curso del participante a pantalla completa, por su nombre
+              (/aula/curso-de-…). La dirección vieja por id lleva a esa. */}
+          <Route path=":cursoRef" element={<RequireAula>{fullPage(<CursoParticipante />)}</RequireAula>}>
+            {paginasDelCurso}
+          </Route>
           <Route path="curso/:courseId" element={<RequireAula>{fullPage(<CursoParticipante />)}</RequireAula>}>
-            <Route index element={<PortadaCurso />} />
-            <Route path="clase/:lessonId" element={<ClaseParticipante />} />
-            <Route path="recursos" element={<RecursosCurso />} />
+            {paginasDelCurso}
           </Route>
 
           <Route element={<RequireAula><RoleShell /></RequireAula>}>

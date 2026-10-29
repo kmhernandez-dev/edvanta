@@ -5,7 +5,9 @@ Cada página pública indexable tiene una dirección que dice qué hay en ella:
 `/curso/53`. Las direcciones viejas siguen funcionando: responden **301 en
 un solo salto** a la nueva y conservan la consulta (`?utm_source=…`).
 
-En producción desde el 2026-10-28 (commit `03aa834`).
+En producción desde el 2026-10-28 (commit `03aa834`): cursos, herramientas y
+categorías. Desde el 2026-10-29: el aula, las escuelas, las carreras, las
+rutas, las competencias y las páginas que tenían un nombre recortado.
 
 ## 1. Reglas
 
@@ -15,6 +17,9 @@ En producción desde el 2026-10-28 (commit `03aa834`).
 | Herramienta | `/herramientas/<lo-que-hace>` | `/herramientas/creador-de-hoja-de-vida` |
 | Categoría de artículos | `/articulos/categoria/<categoría>` | `/articulos/categoria/gestion-de-calidad` |
 | Artículo | `/articulos/<tema>` (sin cambios: ya eran descriptivas) | `/articulos/iso-9001-explicada` |
+| Escuela | `/escuelas/<nombre-completo>` | `/escuelas/salud-y-farmacia-clinica` |
+| Carrera, ruta y competencia | `/carreras/<nombre>`, `/rutas/<nombre>`, `/competencias/<nombre>` | `/competencias/buenas-practicas-de-manufactura` |
+| Aula: curso y clase | `/aula/<dirección del curso>/clase/<clase>` | `/aula/curso-de-farmacoterapia-de-la-diabetes/clase/metformina` |
 
 - Palabras del nombre real, en minúsculas, con guiones y sin tildes
   (`ñ` → `n`, `&` → `y`, `+` → `mas`). Nunca un número como único nombre.
@@ -36,6 +41,13 @@ En producción desde el 2026-10-28 (commit `03aa834`).
   antepone «Curso de».
 - Las excepciones elegidas a mano están en `SLUGS_ELEGIDOS`
   (`api/lib/slugs-publicos.js`).
+- Carreras, rutas y competencias: el nombre completo, con sus conectores
+  (`aseguramiento-de-calidad`, no `aseguramiento-calidad`). Donde el sitio
+  ya usaba el término en español para lo mismo, se unifica: la ruta
+  «Regulatory Affairs» se llama «Asuntos regulatorios», como la carrera. Se
+  conservan los nombres de uso internacional (Power BI, Excel, SQL, Lean, Six
+  Sigma, Medical Affairs) y se explican las siglas opacas
+  (`resultados-fuera-de-especificacion-oos-y-oot`).
 
 ## 2. Cómo funciona
 
@@ -73,13 +85,52 @@ En producción desde el 2026-10-28 (commit `03aa834`).
 - **Al compilar** (`scripts/prerenderizar-paginas.mjs`): herramientas,
   categorías y cursos en vivo salen como `.html` con su título escrito, y
   `sitemap.xml` se limpia de direcciones viejas.
-- **Sitemaps**: `/sitemap.xml` (páginas fijas) y `/sitemap-cursos.xml` (lo
-  arma la API con cada curso público en su dirección vigente). `robots.txt`
-  declara los dos.
+- **Carreras, rutas y competencias** (migración 060): salen de la base. La
+  tabla `slugs_anteriores` guarda cada nombre viejo apuntando al id del
+  registro, así que la redirección es de un salto aunque el nombre vuelva a
+  cambiar. nginx pasa `/carreras/…`, `/rutas/…` y `/competencias/…` a la
+  API (`/api/paginas/…`), que escribe la página con su título, descripción,
+  canonical y migas (los mismos que pone la aplicación), responde el 301 si
+  el nombre es anterior y 404 si no existe. Las cuatro rutas fijas de
+  `src/data/featuredCourses.js` (`learningRoutes`) también tienen página.
+  `/api/careers/:slug`, `/api/learning-paths/:slug` y `/api/skills/:slug`
+  aceptan el nombre viejo y devuelven el vigente.
+- **El grafo de recomendaciones** (`api/lib/edvanta-catalog.js`) une cursos,
+  competencias, carreras y rutas por su slug. `slugsDelGrafo()` los lista y
+  la prueba de migraciones falla si alguno no existe en la base: un nombre
+  viejo no dejaría de recomendar en silencio.
+- **Perfiles guardados**: las carreras y rutas que eligió cada persona viven
+  en Supabase con el nombre de entonces. `slugVigente()`
+  (`src/data/professionalProfileOptions.js`) los lee con el nombre nuevo y
+  se guardan así la próxima vez.
+- **El aula** (migración 059):
+  - el curso se abre por la misma dirección pública:
+    `/aula/curso-de-farmacoterapia-de-la-diabetes`;
+  - cada clase tiene su nombre en `aula_lessons.slug`: se asigna al publicar
+    el curso (y a las que ya existían, al arrancar la API), es único dentro
+    del curso contando las borradas, nunca es solo un número y no cambia
+    aunque cambie el título;
+  - un curso de empresa recibe su dirección con el nombre de la institución
+    (`…-para-pharmarket`), para no quitarle el nombre corto al catálogo, y
+    nunca sale del aula: la página pública da 404 y no aparece en el sitemap
+    ni en `/api/direcciones`;
+  - las direcciones viejas por id (`/aula/curso/53/clase/812`), que siguen en
+    avisos y correos ya enviados, llevan a la nueva con la misma clase. La API
+    sigue trabajando con ids: el avance, los apuntes y los comentarios no
+    dependen de la dirección;
+  - la administración (`/aula/admin/…`) sigue con ids a propósito: los
+    borradores todavía no tienen nombre público y los nombres de personas y
+    empresas no deben quedar en una dirección.
+- **Sitemaps**: `/sitemap.xml` (páginas fijas), `/sitemap-cursos.xml` (cada
+  curso público) y `/sitemap-profesional.xml` (carreras, rutas y
+  competencias). Los dos últimos los arma la API desde la base, siempre al
+  día. `robots.txt` declara los tres.
 - **Enlaces internos**: las listas de la API traen `url` y la búsqueda trae
-  `destination`; en el sitio, `rutaDeCurso(curso)` (`src/lib/slug.js`).
+  `destination`; en el sitio, `rutaDeCurso(curso)` (`src/lib/slug.js`) y, en
+  el aula, `rutaEnAula(curso)` (`src/aula/rutas.js`).
 - **Tabla en vivo**: `GET https://edvanta.co/api/direcciones` devuelve
-  antigua → nueva de todos los cursos (y del historial), siempre al día.
+  antigua → nueva de todos los cursos (y del historial) y de las carreras,
+  rutas y competencias renombradas, siempre al día.
 
 ## 3. Al publicar o renombrar
 
@@ -92,11 +143,15 @@ En producción desde el 2026-10-28 (commit `03aa834`).
 | Herramienta nueva | Slug descriptivo en español en `src/data/edvanta/herramientas.js`. |
 | Página fija renombrada | Fila en `direcciones.js` + su 301 en `nginx.conf` (la prueba lo exige). Si vuelve a cambiar, la fila vieja apunta directo al destino final. |
 | Curso en vivo nuevo | `to: '/curso-de-…'` en `src/data/edvanta/productos.js`. |
+| Clase nueva o renombrada en el aula | Nada: recibe su nombre al publicar el curso y lo conserva. |
+| Carrera, ruta o competencia nueva | Slug con su nombre completo en español. |
+| Carrera, ruta o competencia renombrada | En una migración: la fila en `slugs_anteriores` (tipo, nombre viejo, id) y el `UPDATE` del slug. Cambiar también los slugs que usa `api/lib/edvanta-catalog.js` (la prueba de migraciones lo exige). |
+| Escuela nueva | Slug con su nombre completo en `src/data/edvanta/escuelas.js`. |
 
 **Las redirecciones se mantienen indefinidamente** (como mínimo un año): no
-se borran los bloques de `nginx.conf`, las rutas `/api/paginas/*` ni el
-historial de `public_slugs`. Si algún día se cambia de servidor, las
-redirecciones se van con el sitio.
+se borran los bloques de `nginx.conf`, las rutas `/api/paginas/*`, el
+historial de `public_slugs` ni las filas de `slugs_anteriores`. Si algún día
+se cambia de servidor, las redirecciones se van con el sitio.
 
 Para comprobar que todo sigue en pie:
 
@@ -352,7 +407,7 @@ la ficha (`/curso-de-farmacologia-clinica`); si el código ya no existe, a
 | `/cursos/gestion-de-calidad-vi-18252` | `/curso-de-gestion-de-calidad-vi` | Gestión de calidad VI |
 | `/cursos/lean` | `/curso-de-lean` | Lean |
 
-### Herramientas, competencias y curso en vivo (12)
+### Herramientas, dos competencias y curso en vivo (12)
 
 | Antes | Ahora | Tipo |
 | --- | --- | --- |
@@ -403,13 +458,106 @@ dos filtros con el mismo contenido y quedaron en una sola.
 | `/articulos?categoria=Profesiones` | `/articulos/categoria/profesiones` | Profesiones |
 | `/articulos?categoria=Calidad%20farmac%C3%A9utica` | `/articulos/categoria/calidad-farmaceutica` | Calidad farmacéutica |
 
+### Escuelas (4)
+
+| Antes | Ahora | Escuela |
+| --- | --- | --- |
+| `/escuelas/salud` | `/escuelas/salud-y-farmacia-clinica` | Escuela de Salud y Farmacia Clínica |
+| `/escuelas/calidad` | `/escuelas/calidad-y-produccion-farmaceutica` | Escuela de Calidad y Producción Farmacéutica |
+| `/escuelas/regulatorios` | `/escuelas/asuntos-regulatorios` | Escuela de Asuntos Regulatorios |
+| `/escuelas/marketing` | `/escuelas/marketing-y-comunicacion-farmaceutica` | Escuela de Marketing y Comunicación Farmacéutica |
+
+### Páginas con un nombre abreviado o genérico (8)
+
+| Antes | Ahora | Título de la página |
+| --- | --- | --- |
+| `/empleo/ofertas-qf` | `/empleo/ofertas-para-quimicos-farmaceuticos` | Ofertas para Químicos Farmacéuticos |
+| `/empleo/correos` | `/empleo/plantillas-de-correo-para-recursos-humanos` | Plantillas de correo para recursos humanos |
+| `/vocacion` | `/orientacion-vocacional` | Orientación vocacional para químicos farmacéuticos |
+| `/linkedin` | `/linkedin-farmaceutico` | Mejora tu LinkedIn farmacéutico |
+| `/practicas` | `/practicas-profesionales-farmaceuticas` | Prácticas profesionales farmacéuticas |
+| `/emprendimientos` | `/emprendimiento-farmaceutico` | Emprendimiento farmacéutico: Lean Canvas |
+| `/talento` | `/vitrina-de-talento-farmaceutico` | Vitrina de talento farmacéutico |
+| `/empresas/talento` | `/empresas/recluta-talento-farmaceutico` | Recluta talento farmacéutico |
+
+### Carreras (5)
+
+| Antes | Ahora | Nombre |
+| --- | --- | --- |
+| `/carreras/aseguramiento-calidad` | `/carreras/aseguramiento-de-calidad` | Aseguramiento de calidad |
+| `/carreras/control-calidad` | `/carreras/control-de-calidad` | Control de calidad |
+| `/carreras/datos-farma` | `/carreras/datos-para-la-industria-farmaceutica` | Datos para la industria farmacéutica (antes «Datos y Pharma») |
+| `/carreras/inteligencia-artificial-farma` | `/carreras/inteligencia-artificial-en-la-industria-farmaceutica` | Inteligencia artificial en la industria farmacéutica (antes «Inteligencia artificial y Pharma») |
+| `/carreras/investigacion-desarrollo` | `/carreras/investigacion-y-desarrollo` | Investigación y desarrollo |
+
+### Rutas (3)
+
+| Antes | Ahora | Nombre |
+| --- | --- | --- |
+| `/rutas/quality-assurance-desde-cero` | `/rutas/aseguramiento-de-calidad-desde-cero` | Aseguramiento de calidad desde cero (antes «Quality Assurance desde cero») |
+| `/rutas/regulatory-affairs` | `/rutas/asuntos-regulatorios` | Asuntos regulatorios (antes «Regulatory Affairs») |
+| `/rutas/data-y-pharma` | `/rutas/datos-para-la-industria-farmaceutica` | Datos para la industria farmacéutica (antes «Data & Pharma») |
+
+Además, las once rutas de la base tienen ahora su nombre, título,
+descripción y resumen con tildes («Producción farmacéutica», «Formulación
+cosmética»…): es lo que muestran la página y los buscadores. Solo se corrigió
+la ortografía; la redacción es la misma.
+
+### Competencias (23, más las 2 de la primera parte)
+
+| Antes | Ahora | Nombre |
+| --- | --- | --- |
+| `/competencias/integridad-datos` | `/competencias/integridad-de-datos` | Integridad de datos |
+| `/competencias/bpm-gmp` | `/competencias/buenas-practicas-de-manufactura` | Buenas Prácticas de Manufactura (BPM/GMP) |
+| `/competencias/gestion-riesgos-calidad` | `/competencias/gestion-de-riesgos-de-calidad` | Gestión de riesgos de calidad |
+| `/competencias/gestion-proyectos` | `/competencias/gestion-de-proyectos` | Gestión de proyectos |
+| `/competencias/evidencia-cientifica` | `/competencias/lectura-critica-de-evidencia` | Lectura crítica de evidencia |
+| `/competencias/sistemas-gestion-calidad` | `/competencias/sistemas-de-gestion-de-calidad` | Sistemas de gestión de calidad |
+| `/competencias/analisis-datos` | `/competencias/analisis-de-datos` | Análisis de datos |
+| `/competencias/capa-desviaciones` | `/competencias/desviaciones-y-capa` | Desviaciones y CAPA |
+| `/competencias/diseno-experimentos` | `/competencias/diseno-de-experimentos` | Diseño de experimentos |
+| `/competencias/estabilidad` | `/competencias/estudios-de-estabilidad` | Estudios de estabilidad |
+| `/competencias/gobernanza-datos` | `/competencias/gobernanza-de-datos` | Gobernanza de datos |
+| `/competencias/visualizacion-datos` | `/competencias/visualizacion-de-datos` | Visualización de datos |
+| `/competencias/ia-aplicada` | `/competencias/inteligencia-artificial-aplicada` | Inteligencia artificial aplicada |
+| `/competencias/evaluacion-causalidad` | `/competencias/evaluacion-de-causalidad` | Evaluación de causalidad |
+| `/competencias/gestion-casos-seguridad` | `/competencias/gestion-de-casos-de-seguridad` | Gestión de casos de seguridad |
+| `/competencias/investigacion-desarrollo` | `/competencias/investigacion-y-desarrollo` | Investigación y desarrollo |
+| `/competencias/oos-oot` | `/competencias/resultados-fuera-de-especificacion-oos-y-oot` | Resultados fuera de especificación (OOS y OOT) |
+| `/competencias/python-datos` | `/competencias/python-para-datos` | Python para datos |
+| `/competencias/validacion-metodos` | `/competencias/validacion-de-metodos-analiticos` | Validación de métodos analíticos |
+| `/competencias/validacion-procesos` | `/competencias/validacion-de-procesos` | Validación de procesos |
+| `/competencias/seguridad-salud-trabajo` | `/competencias/seguridad-y-salud-en-el-trabajo` | Seguridad y salud en el trabajo |
+| `/competencias/busqueda-empleo` | `/competencias/busqueda-de-empleo` | Búsqueda de empleo (antes «Busqueda de oportunidades») |
+| `/competencias/cv-profesional` | `/competencias/hoja-de-vida-profesional` | Hoja de vida profesional (antes «CV profesional») |
+| `/competencias/change-control` | `/competencias/control-de-cambios` | Control de cambios (primera parte) |
+| `/competencias/supplier-quality` | `/competencias/calidad-de-proveedores` | Calidad de proveedores (primera parte) |
+
+### Aula
+
+| Antes | Ahora |
+| --- | --- |
+| `/aula/curso/53` | `/aula/curso-de-farmacoterapia-de-la-diabetes` |
+| `/aula/curso/53/clase/812` | `/aula/curso-de-farmacoterapia-de-la-diabetes/clase/<nombre de la clase>` |
+| `/aula/curso/53/recursos` | `/aula/curso-de-farmacoterapia-de-la-diabetes/recursos` |
+
+Cada curso de Edvanta usa en el aula la misma dirección de su página
+pública (tablas de arriba). Las clases toman el nombre de su título al
+publicar; el aula es privada, así que esas direcciones no se indexan.
+
 ### Sin cambios (ya eran descriptivas)
 
-- Los 193 artículos (`/articulos/<tema>`), las escuelas, carreras, rutas,
-  las demás competencias y los paquetes para instituciones.
-- `/herramientas/orientacion-vocacional` y los catálogos
-  `/cursos/coursera`, `/cursos/udemy` y `/cursos/edutin`.
-- Feliz Sin Tiroides y AtenFarmaClinic (no se tocaron).
+- Los 193 artículos (`/articulos/<tema>`), los paquetes para instituciones,
+  las áreas de capacitación para empresas (`/empresas/<área>`) y las
+  carreras, rutas y competencias cuyo nombre ya estaba completo
+  (`/carreras/farmacovigilancia`, `/competencias/power-bi`…).
+- `/herramientas/orientacion-vocacional`, los catálogos `/cursos/coursera`,
+  `/cursos/udemy` y `/cursos/edutin`, y las páginas con nombre claro de una
+  palabra: `/noticias`, `/guias`, `/recursos`, `/oportunidades`,
+  `/proyectos`, `/certificaciones`, `/comunidad` y `/conecta` (el nombre de
+  ese espacio).
+- Feliz Sin Tiroides, su Academia (`/academia/…`) y AtenFarmaClinic (no se
+  tocaron).
 - `/cursos?category=…` es un filtro del catálogo (su canonical es
   `/cursos`), no una página indexable aparte: no se creó una página nueva.
 
@@ -459,7 +607,8 @@ direcciones: la versión confirmada toma el día en UTC y falla después de las
 
 | Dónde | Qué |
 | --- | --- |
-| Google Search Console | Enviar `https://edvanta.co/sitemap-cursos.xml` y volver a enviar `https://edvanta.co/sitemap.xml` (`robots.txt` ya los declara; enviarlos acelera el rastreo). En las semanas siguientes, las viejas deben pasar a «Página con redirección» y las nuevas a indexadas. |
+| Google Search Console | Enviar `https://edvanta.co/sitemap-cursos.xml` y `https://edvanta.co/sitemap-profesional.xml`, y volver a enviar `https://edvanta.co/sitemap.xml` (`robots.txt` ya los declara; enviarlos acelera el rastreo). En las semanas siguientes, las viejas deben pasar a «Página con redirección» y las nuevas a indexadas. |
+| Contenido (opcional) | Las descripciones de varias competencias siguen sin tildes (la de control de cambios dice «Evaluacion, aprobacion…»): salen en la descripción de los buscadores. Corregirlas es una revisión de texto, una por una. |
 | Bing Webmaster Tools (si se usa) | Lo mismo. |
 | Cloudflare | Nada: las direcciones viejas se servían con `no-store` y no quedaron en caché. Verificado que el 301, `robots.txt` y los sitemaps salen nuevos a través de Cloudflare. |
 | Coolify | Nada obligatorio. `SPA_SHELL_URL` (opcional, en la API) solo hace falta si la API dejara de poder leer `https://edvanta.co/index.html`; hoy funciona y, si fallara, la ficha se arma en el navegador sin los metadatos en el HTML. |

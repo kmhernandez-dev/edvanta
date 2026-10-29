@@ -52,7 +52,7 @@ import communityRoutes from './routes/community.js';
 import cvRoutes from './routes/cv.js';
 import cvIaRoutes from './routes/cv-ia.js';
 import { crearRutasPublicas, plantillaDelSitio } from './routes/paginas-publicas.js';
-import { asegurarSlugsDeCursos } from './lib/slugs-publicos.js';
+import { asegurarSlugsDeClases, asegurarSlugsDeCursos } from './lib/slugs-publicos.js';
 import articleCommentsRoutes from './routes/article-comments.js';
 import fstClicksRoutes from './routes/fst-clicks.js';
 import vida360Routes from './routes/vida360.js';
@@ -403,7 +403,9 @@ async function start() {
       // no se tocan: una dirección publicada no cambia.
       try {
         const nuevos = await asegurarSlugsDeCursos(pool);
-        console.log(JSON.stringify({ level: 'info', msg: 'Direcciones públicas de cursos', nuevas: nuevos.length }));
+        // Y cada clase del aula con su nombre (/aula/curso-de-…/clase/<clase>).
+        const clases = await asegurarSlugsDeClases(pool);
+        console.log(JSON.stringify({ level: 'info', msg: 'Direcciones públicas de cursos', nuevas: nuevos.length, clases }));
       } catch (e) {
         console.error(JSON.stringify({ level: 'error', msg: 'No se pudieron asignar las direcciones de cursos', error: e.message }));
       }

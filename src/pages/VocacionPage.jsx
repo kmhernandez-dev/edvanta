@@ -47,13 +47,13 @@ export default function Vocacion() {
   useEffect(() => updatePageSeo({
     title: 'Orientación vocacional para químicos farmacéuticos | Edvanta',
     description: 'Sistema guiado de 3 pasos para descubrir el mejor encaje profesional farmacéutico: laboratorio, procesos, regulación, pacientes o datos.',
-    canonical: 'https://edvanta.co/vocacion',
+    canonical: 'https://edvanta.co/orientacion-vocacional',
     jsonLdId: 'vocacion',
     jsonLd: {
       '@context': 'https://schema.org',
       '@type': 'WebPage',
       name: 'Orientación vocacional farmacéutica',
-      url: 'https://edvanta.co/vocacion',
+      url: 'https://edvanta.co/orientacion-vocacional',
     },
   }), []);
 

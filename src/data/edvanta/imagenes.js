@@ -4,8 +4,8 @@
  * public/img/rutas/<slug>.webp. Una ruta nueva sin portada se muestra sin ella.
  */
 const RUTAS_CON_PORTADA = new Set([
-  'quality-assurance-desde-cero', 'control-de-calidad', 'validaciones-farmaceuticas', 'regulatory-affairs',
-  'farmacovigilancia', 'produccion-farmaceutica', 'data-y-pharma', 'ia-para-profesionales-farmaceuticos',
+  'aseguramiento-de-calidad-desde-cero', 'control-de-calidad', 'validaciones-farmaceuticas', 'asuntos-regulatorios',
+  'farmacovigilancia', 'produccion-farmaceutica', 'datos-para-la-industria-farmaceutica', 'ia-para-profesionales-farmaceuticos',
   'investigacion-y-desarrollo', 'formulacion-cosmetica', 'medical-affairs',
 ]);
 

@@ -7,11 +7,29 @@ import {
   addLessonTime, completeLesson, courseForParticipant, openLesson, reportVideo,
 } from '../../lib/aula/learning.js';
 import { participantResources } from '../../lib/aula/resources.js';
+import { resolverSlug } from '../../lib/slugs-publicos.js';
 
 const ids = (req) => ({
   courseId: idField(req.params.courseId, 'courseId', 'El curso'),
   lessonId: req.params.lessonId ? idField(req.params.lessonId, 'lessonId', 'La clase') : null,
 });
+
+/**
+ * El curso que se abre en el aula, por su dirección (/aula/curso-de-…,
+ * también un nombre anterior) o por su id. Si el nombre no existe, la misma
+ * respuesta que si no es tuyo: no se puede averiguar qué cursos hay.
+ */
+async function cursoPedido(db, ref) {
+  const texto = String(ref ?? '').toLowerCase();
+  if (/^\d+$/.test(texto)) return idField(texto, 'courseId', 'El curso');
+  const r = /^curso-[a-z0-9-]+$/.test(texto) ? await resolverSlug(db, texto) : null;
+  if (r?.entidad !== 'aula') throw notFound('No encontramos este curso entre los que tienes asignados.');
+  return r.id;
+}
+
+/** Slug vigente de cada curso, para los enlaces de la lista. */
+const SLUG_DEL_CURSO = `(SELECT ps.slug FROM public_slugs ps
+   WHERE ps.entity = 'aula' AND ps.entity_id = c.id AND ps.is_current LIMIT 1)`;
 
 export function meRouter() {
   const router = express.Router();
@@ -27,7 +45,8 @@ export function meRouter() {
               e.last_access_at, e.completed_at, e.course_version_id,
               c.title, c.short_description, c.cover_file_id, c.cover_url, c.kind, c.duration_minutes,
               c.status AS course_status, c.deleted_at AS course_deleted_at, c.current_version_id,
-              c.available_from, c.available_until, co.name AS company_name
+              c.available_from, c.available_until, co.name AS company_name,
+              ${SLUG_DEL_CURSO} AS slug
          FROM aula_enrollments_v e
          JOIN aula_courses c ON c.id = e.course_id
          LEFT JOIN aula_companies co ON co.id = c.company_id
@@ -40,6 +59,8 @@ export function meRouter() {
       return {
         enrollmentId: r.enrollment_id,
         courseId: r.course_id,
+        // Su dirección en el aula: /aula/<slug> (sin slug, /aula/curso/<id>).
+        slug: r.slug || null,
         title: r.title,
         shortDescription: r.short_description,
         coverFileId: r.cover_file_id,
@@ -64,7 +85,7 @@ export function meRouter() {
 
   // ── Aula de un curso ──────────────────────────────────────
   router.get('/courses/:courseId', route(async (req, res) => {
-    const { courseId } = ids(req);
+    const courseId = await cursoPedido(req.aula.db, req.params.courseId);
     res.json(await courseForParticipant(req.aula.db, req.aula.user, courseId, { now: req.aula.now }));
   }));
 
@@ -199,13 +220,15 @@ export function meRouter() {
       `SELECT c.id, c.title, c.short_description, c.cover_file_id, c.cover_url,
               c.category, c.level, c.duration_minutes, c.author_name,
               (SELECT COUNT(*)::int FROM aula_lessons l
-                WHERE l.course_id = c.id AND l.deleted_at IS NULL) AS lessons
+                WHERE l.course_id = c.id AND l.deleted_at IS NULL) AS lessons,
+              ${SLUG_DEL_CURSO} AS slug
        ${CATALOGO}
        ORDER BY c.published_at DESC NULLS LAST, c.title ASC`,
       [user.id, now],
     );
     res.json(rows.map((r) => ({
       courseId: r.id,
+      slug: r.slug || null,
       title: r.title,
       shortDescription: r.short_description || '',
       coverFileId: r.cover_file_id,
@@ -225,14 +248,14 @@ export function meRouter() {
     // estuviera en pantalla hace un rato no basta para matricularse ahora.
     const [curso] = await many(
       db,
-      `SELECT c.id, c.title, c.current_version_id ${CATALOGO} AND c.id = $3`,
+      `SELECT c.id, c.title, c.current_version_id, ${SLUG_DEL_CURSO} AS slug ${CATALOGO} AND c.id = $3`,
       [user.id, now, courseId],
     );
     if (!curso) {
       throw notFound('Este curso ya no está disponible para inscribirse.');
     }
     await enrollUsers(db, { course: curso, userIds: [user.id], now });
-    res.status(201).json({ ok: true, courseId: curso.id });
+    res.status(201).json({ ok: true, courseId: curso.id, slug: curso.slug || null });
   }));
 
   return router;

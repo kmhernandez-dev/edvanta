@@ -99,7 +99,7 @@ aparezca entre los profesionales.
 | Ruta | Página | Para quién |
 | --- | --- | --- |
 | `/` | Inicio: qué es Edvanta, tres puertas, curso en vivo, escuelas, guías, instituciones, Karla, contacto | Todos |
-| `/escuelas` y `/escuelas/:slug` (`salud`, `calidad`, `regulatorios`, `marketing`) | Una plantilla para las cuatro escuelas | Profesionales |
+| `/escuelas` y `/escuelas/:slug` (`salud-y-farmacia-clinica`, `calidad-y-produccion-farmaceutica`, `asuntos-regulatorios`, `marketing-y-comunicacion-farmaceutica`) | Una plantilla para las cuatro escuelas | Profesionales |
 | `/cursos` | Cursos de Edvanta por escuela + recomendados de otras plataformas, separados | Profesionales |
 | `/curso-de-operacion-segura-del-servicio-farmaceutico` | Ficha del curso en vivo con registro de interés | Profesionales |
 | `/curso-de-<nombre-del-curso>` | Ficha de curso virtual propio o de otra plataforma (las direcciones viejas `/curso/:id` y `/cursos/:slug` redirigen) | Profesionales |
@@ -109,13 +109,13 @@ aparezca entre los profesionales.
 | `/pacientes/tiroides` | Ruta de salud tiroidea, puerta a Feliz Sin Tiroides | Pacientes y cuidadores |
 | `/instituciones` | Ofertas, cuatro paquetes y solicitud de propuesta | Instituciones |
 | `/sobre-edvanta`, `/contacto` | La empresa y sus canales | Todos |
-| `/aula` | Aula virtual (incluye `/aula/admin/solicitudes`) | Participantes y administración |
+| `/aula` | Aula virtual (incluye `/aula/admin/solicitudes`); cada curso en `/aula/curso-de-…` y sus clases en `/aula/curso-de-…/clase/<clase>` | Participantes y administración |
 
 Siguen funcionando, fuera del menú principal (en «Guías y recursos» y en
-el pie): `/hoja-de-vida`, `/empleo`, `/talento`, `/carreras`, `/rutas`,
-`/competencias`, `/oportunidades`, `/proyectos`, `/certificaciones`,
-`/conecta`, `/emprendimientos`, `/herramientas`, `/comunidad`,
-`/empresas/talento`.
+el pie): `/hoja-de-vida`, `/empleo`, `/vitrina-de-talento-farmaceutico`,
+`/carreras`, `/rutas`, `/competencias`, `/oportunidades`, `/proyectos`,
+`/certificaciones`, `/conecta`, `/emprendimiento-farmaceutico`,
+`/herramientas`, `/comunidad`, `/empresas/recluta-talento-farmaceutico`.
 
 ### Redirecciones
 
@@ -125,8 +125,10 @@ el pie): `/hoja-de-vida`, `/empleo`, `/talento`, `/carreras`, `/rutas`,
 | `/empresas/capacitacion` | `/instituciones/paquetes/equipo-que-cuida` | Igual |
 | `/aprende` | `/escuelas` | Igual |
 | `/curso/:id`, `/cursos/:slug`, `/cursos-gratis/:código` | `/curso-de-…` (la ficha) | 301 de la API (tabla `public_slugs`) |
-| Herramientas, competencias y curso en vivo renombrados, `/cursos-gratis` | Su dirección en español | 301 en `nginx.conf`, listados en `src/data/edvanta/direcciones.js` |
+| Herramientas, escuelas, páginas y curso en vivo renombrados, `/cursos-gratis` | Su dirección en español | 301 en `nginx.conf` + ruta en `App.jsx`, listados en `src/data/edvanta/direcciones.js` |
 | `/articulos?categoria=…` | `/articulos/categoria/…` | 301 de la API |
+| Carreras, rutas y competencias con nombre anterior | Su nombre vigente | 301 de la API (tabla `slugs_anteriores`) |
+| `/aula/curso/:id/clase/:id` | `/aula/curso-de-…/clase/<clase>` | El aula, en el navegador (sigue en avisos y correos viejos) |
 
 La tabla completa, las reglas de los slugs y cómo se mantienen están en
 [`URLS_PUBLICAS.md`](URLS_PUBLICAS.md). Las redirecciones no se borran.

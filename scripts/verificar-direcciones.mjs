@@ -93,17 +93,23 @@ async function responde(grupo, ruta, estado = 200) {
 const tabla = await pedir('/api/direcciones');
 if (tabla.estado !== 200) { console.error('No hay /api/direcciones:', tabla.estado); process.exit(1); }
 const filas = JSON.parse(tabla.cuerpo).data;
-const vigentes = filas.filter((f) => f.titulo != null);
-const historial = filas.filter((f) => f.titulo == null);
+const esCurso = (f) => f.entidad === 'aula' || f.entidad === 'curado';
+const vigentes = filas.filter((f) => esCurso(f) && f.titulo != null);
+const historial = filas.filter((f) => esCurso(f) && f.titulo == null);
+// Carreras, rutas y competencias que cambiaron de nombre (tabla slugs_anteriores).
+const perfiles = filas.filter((f) => !esCurso(f));
 
 await enParalelo(vigentes, 4, (f) => redirige(f.entidad === 'aula' ? 'Cursos propios: /curso/<id>' : 'Cursos curados: /cursos/<slug>', f.antigua, f.nueva));
 await enParalelo(historial, 4, (f) => redirige('Historial de slugs', f.antigua, f.nueva));
+await enParalelo(perfiles, 4, (f) => redirige('Carreras, rutas y competencias: nombre anterior', f.antigua, f.nueva));
 
 const porNueva = new Map(vigentes.map((f) => [f.nueva, f]));
 await enParalelo([...porNueva.values()], 4, (f) => {
   const nombre = nombreDeCurso(f.titulo);
   return pagina('Páginas de curso nuevas', f.nueva, { titulo: `${nombre} | Edvanta`, h1: nombre, jsonLd: 'Course' });
 });
+const perfilesNuevos = new Map(perfiles.map((f) => [f.nueva, f]));
+await enParalelo([...perfilesNuevos.values()], 4, (f) => pagina('Carreras, rutas y competencias renombradas', f.nueva, { h1: f.titulo, jsonLd: 'BreadcrumbList' }));
 
 /* ── Direcciones fijas ────────────────────────────────────── */
 
@@ -196,19 +202,27 @@ const sobran = locsCursos.filter((u) => !esperadas.has(u));
 anotar('Sitemaps', '/sitemap-cursos.xml', sc.estado === 200 && /xml/.test(sc.tipo) && !faltan.length && !sobran.length,
   `${sc.estado} ${sc.tipo} · ${locsCursos.length} cursos${faltan.length ? ` · faltan ${faltan.length}` : ''}${sobran.length ? ` · sobran ${sobran.length}` : ''}`);
 
+const sp = await pedir('/sitemap-profesional.xml');
+const locsPerfiles = [...sp.cuerpo.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
+const sinPerfil = [...perfilesNuevos.keys()].map((n) => SITIO + n).filter((u) => !locsPerfiles.includes(u));
+const viejosEnPerfiles = locsPerfiles.filter((u) => perfiles.some((f) => SITIO + f.antigua === u));
+anotar('Sitemaps', '/sitemap-profesional.xml', sp.estado === 200 && /xml/.test(sp.tipo) && locsPerfiles.length > 0 && !sinPerfil.length && !viejosEnPerfiles.length,
+  `${sp.estado} ${sp.tipo} · ${locsPerfiles.length} carreras, rutas y competencias${sinPerfil.length ? ` · faltan ${sinPerfil.length}` : ''}${viejosEnPerfiles.length ? ` · viejas ${viejosEnPerfiles.length}` : ''}`);
+
 const sm = await pedir('/sitemap.xml');
 const locs = [...sm.cuerpo.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
 const viejasEnSitemap = locs.filter((u) => viejas.has(u.replace(SITIO, '')) || /\/curso\/\d+$|\/cursos\/en-vivo\//.test(u)
   || (/\/cursos\/[^/]+$/.test(u) && !/\/cursos\/(coursera|udemy|edutin)$/.test(u)));
 anotar('Sitemaps', '/sitemap.xml sin direcciones viejas', sm.estado === 200 && viejasEnSitemap.length === 0, `${locs.length} direcciones${viejasEnSitemap.length ? ` · viejas: ${viejasEnSitemap.join(', ')}` : ''}`);
-await enParalelo(locs, 4, async (u) => {
+await enParalelo([...locs, ...locsPerfiles], 4, async (u) => {
   const r = await pedir(u);
   if (r.estado !== 200) anotar('Sitemaps: cada dirección responde 200 directo', u, false, `${r.estado}${r.location ? ` → ${r.location}` : ''}`);
 });
-anotar('Sitemaps: cada dirección responde 200 directo', `${locs.length} de /sitemap.xml`, true, 'revisadas');
+anotar('Sitemaps: cada dirección responde 200 directo', `${locs.length} de /sitemap.xml y ${locsPerfiles.length} de /sitemap-profesional.xml`, true, 'revisadas');
 
 const rb = await pedir('/robots.txt');
-anotar('Sitemaps', '/robots.txt', /Sitemap: https:\/\/edvanta\.co\/sitemap\.xml/.test(rb.cuerpo) && /Sitemap: https:\/\/edvanta\.co\/sitemap-cursos\.xml/.test(rb.cuerpo), 'declara los dos sitemaps');
+const declarados = ['sitemap.xml', 'sitemap-cursos.xml', 'sitemap-profesional.xml'];
+anotar('Sitemaps', '/robots.txt', declarados.every((s) => rb.cuerpo.includes(`Sitemap: https://edvanta.co/${s}`)), 'declara los tres sitemaps');
 
 /* ── Informe ──────────────────────────────────────────────── */
 

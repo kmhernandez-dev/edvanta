@@ -4,3 +4,4 @@ Disallow: /admin/
 
 Sitemap: https://edvanta.co/sitemap.xml
 Sitemap: https://edvanta.co/sitemap-cursos.xml
+Sitemap: https://edvanta.co/sitemap-profesional.xml

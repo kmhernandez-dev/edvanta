@@ -1,4 +1,3 @@
-import { useParams } from 'react-router-dom';
 import { CalendarClock, PartyPopper } from 'lucide-react';
 import { get } from '../../api';
 import { useAsync } from '../../hooks';
@@ -53,8 +52,7 @@ function Resources({ courseId }) {
 }
 
 export default function PortadaCurso() {
-  const { courseId } = useParams();
-  const { data } = useCourseData();
+  const { data, courseId, rutas } = useCourseData();
   const e = data.enrollment;
   const lessons = flattenLessons(data.snapshot);
   const started = Boolean(e.firstAccessAt);
@@ -67,9 +65,9 @@ export default function PortadaCurso() {
     <CourseOverview
       snapshot={data.snapshot}
       backTo={{ to: '/aula', label: 'Mi aula' }}
-      startHref={resume && lessons.length ? `/aula/curso/${courseId}/clase/${resume}` : null}
+      startHref={resume && lessons.length ? rutas.clase(resume) : null}
       startLabel={startLabel}
-      lessonHref={(id) => `/aula/curso/${courseId}/clase/${id}`}
+      lessonHref={rutas.clase}
       lessonState={(id) => data.lessonStates[id] || { status: 'pendiente' }}
       progress={{ pct: e.progressPct, label: progressLabel(e) }}
       notice={(

@@ -454,7 +454,11 @@ export default function FichaDeCurso({ modo = 'propio', slugPublico = '' }) {
       if (ficha.proveedor.enlace) window.open(ficha.proveedor.enlace, '_blank', 'noopener,noreferrer');
       return;
     }
-    if (estado === 'dentro') { navigate(`/aula/curso/${String(ficha.id).replace('edvanta-', '')}`); return; }
+    // En el aula, el curso vive en la misma dirección: /aula/curso-de-…
+    const enAula = ficha.url?.startsWith('/curso-')
+      ? `/aula${ficha.url}`
+      : `/aula/curso/${String(ficha.id).replace('edvanta-', '')}`;
+    if (estado === 'dentro') { navigate(enAula); return; }
     if (estado === 'visitante') {
       navigate(`/cuenta?modo=registro&next=${encodeURIComponent(ficha.url)}`);
       return;
@@ -462,7 +466,7 @@ export default function FichaDeCurso({ modo = 'propio', slugPublico = '' }) {
     setTrabajando(true);
     const res = await inscribirme(Number(String(ficha.id).replace('edvanta-', '')));
     setTrabajando(false);
-    if (res.ok) { navigate(`/aula/curso/${String(ficha.id).replace('edvanta-', '')}`); return; }
+    if (res.ok) { navigate(enAula); return; }
     if (res.motivo === 'sin_sesion') {
       navigate(`/cuenta?modo=registro&next=${encodeURIComponent(ficha.url)}`);
       return;

@@ -161,8 +161,23 @@ export async function courseForParticipant(db, user, courseId, { now = new Date(
       durationMinutes: live.duration_minutes,
     },
   };
+  // Las direcciones del aula (/aula/curso-de-…/clase/<clase>) salen de las
+  // tablas vivas: la foto de cada versión no cambia, ni su huella.
+  const curso = await one(
+    db,
+    `SELECT slug FROM public_slugs WHERE entity = 'aula' AND entity_id = $1 AND is_current LIMIT 1`,
+    [courseId],
+  );
+  const clases = await many(db, 'SELECT id, slug FROM aula_lessons WHERE course_id = $1 AND slug IS NOT NULL', [courseId]);
+  const slugDe = new Map(clases.map((c) => [Number(c.id), c.slug]));
+  snapshot.modules = (snapshot.modules || []).map((m) => ({
+    ...m,
+    lessons: (m.lessons || []).map((l) => ({ ...l, slug: slugDe.get(Number(l.id)) || null })),
+  }));
   return {
     snapshot,
+    courseId: Number(courseId),
+    courseSlug: curso?.slug || null,
     version: { id: ctx.version.id, number: ctx.version.version_number },
     companyName: live.company_name,
     resourcesEnabled: live.resources_enabled,

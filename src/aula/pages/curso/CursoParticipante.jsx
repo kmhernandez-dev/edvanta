@@ -1,13 +1,15 @@
 /**
- * Aula de un curso para el participante (/aula/curso/:courseId/*).
+ * Aula de un curso para el participante, por su nombre (/aula/curso-de-…/*)
+ * o por la dirección vieja (/aula/curso/:courseId/*), que lleva a la nueva.
  * Carga el curso una vez y lo comparte con la portada, las clases y los
  * recursos. Las actualizaciones de avance conservan el mismo snapshot.
  */
-import { Suspense, useCallback } from 'react';
-import { Link, Outlet, useOutletContext, useParams } from 'react-router-dom';
+import { Suspense, useCallback, useMemo } from 'react';
+import { Link, Navigate, Outlet, useLocation, useOutletContext, useParams } from 'react-router-dom';
 import { ArrowLeft, CalendarClock, Eye, Lock, SearchX } from 'lucide-react';
 import { get } from '../../api';
 import { useAsync } from '../../hooks';
+import { direccionVigente, rutasDelCurso } from '../../rutas';
 import { useAulaSession } from '../../session';
 import { Button } from '../../ui/Button';
 import { PageLoader } from '../../ui/States';
@@ -44,9 +46,9 @@ function Unavailable({ error, courseId }) {
             : error.message}
         </p>
         <div className="mt-2 flex flex-wrap justify-center gap-2">
-          {admin
-            ? <Button icon={Eye} to={`/aula/admin/cursos/${courseId}/vista-previa`}>Abrir la vista previa</Button>
-            : <Button icon={ArrowLeft} to="/aula">Volver a Mi aula</Button>}
+          {admin && courseId && <Button icon={Eye} to={`/aula/admin/cursos/${courseId}/vista-previa`}>Abrir la vista previa</Button>}
+          {admin && !courseId && <Button icon={ArrowLeft} to="/aula/admin/cursos">Ir a los cursos</Button>}
+          {!admin && <Button icon={ArrowLeft} to="/aula">Volver a Mi aula</Button>}
         </div>
         {!admin && error.status === 404 && (
           <p className="text-xs text-[var(--aula-muted)]">Si crees que deberías tenerlo, escribe a quien coordina tu capacitación.</p>
@@ -57,9 +59,16 @@ function Unavailable({ error, courseId }) {
 }
 
 export default function CursoParticipante() {
-  const { courseId } = useParams();
-  const course = useAsync(({ signal }) => get(`/me/courses/${courseId}`, { signal }), [courseId]);
+  const { cursoRef, courseId: idViejo } = useParams();
+  const ref = cursoRef ?? idViejo;
+  const { pathname, search, hash } = useLocation();
+  const valida = /^\d+$/.test(ref) || /^curso-[a-z0-9-]+$/i.test(ref);
+  const course = useAsync(
+    ({ signal }) => (valida ? get(`/me/courses/${encodeURIComponent(ref)}`, { signal }) : Promise.resolve(null)),
+    [ref, valida],
+  );
   const { setData } = course;
+  const rutas = useMemo(() => (course.data ? rutasDelCurso(course.data) : null), [course.data]);
 
   // Aplica la respuesta de un evento de aprendizaje sin reemplazar el contenido.
   const applyProgress = useCallback((res) => {
@@ -81,9 +90,13 @@ export default function CursoParticipante() {
     } : d));
   }, [setData]);
 
+  const numerico = /^\d+$/.test(ref) ? ref : null;
+  if (!valida) {
+    return <Unavailable error={{ status: 404, message: 'Revisa la dirección o vuelve a Mi aula.' }} courseId={null} />;
+  }
   if (course.loading && !course.data) return <PageLoader label="Abriendo el curso…" />;
   if (course.error && !course.data) {
-    if (course.error.status === 403 || course.error.status === 404) return <Unavailable error={course.error} courseId={courseId} />;
+    if (course.error.status === 403 || course.error.status === 404) return <Unavailable error={course.error} courseId={numerico} />;
     return (
       <div className="aula-root flex min-h-screen flex-col items-center justify-center gap-3 px-4 text-center">
         <p role="alert" className="text-sm text-[var(--aula-danger)]">{course.error.message}</p>
@@ -95,9 +108,17 @@ export default function CursoParticipante() {
     );
   }
 
+  // Llegó por la dirección vieja (/aula/curso/53/clase/812), por un nombre
+  // anterior o con mayúsculas: a la vigente, con la misma clase.
+  const prefijo = cursoRef != null ? `/aula/${cursoRef}` : `/aula/curso/${idViejo}`;
+  const destino = direccionVigente(pathname, prefijo, course.data, rutas);
+  if (destino) return <Navigate to={`${destino}${search}${hash}`} replace />;
+
+  // Las páginas del curso llaman a la API por id; la dirección es solo para leer.
+  const courseId = course.data.courseId ?? course.data.snapshot.course.id;
   return (
     <Suspense fallback={<PageLoader />}>
-      <Outlet context={{ data: course.data, reload: course.reload, applyProgress, setVideoProgress }} />
+      <Outlet context={{ data: course.data, reload: course.reload, applyProgress, setVideoProgress, courseId, rutas }} />
     </Suspense>
   );
 }

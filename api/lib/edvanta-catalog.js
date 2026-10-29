@@ -13,57 +13,74 @@ const PROFILE_AREAS = {
 };
 
 const PROFILE_SKILLS = {
-  calidad: ['sistemas-gestion-calidad', 'gestion-documental', 'mejora-continua'],
-  datos: ['analisis-datos', 'visualizacion-datos'],
+  calidad: ['sistemas-de-gestion-de-calidad', 'gestion-documental', 'mejora-continua'],
+  datos: ['analisis-de-datos', 'visualizacion-de-datos'],
   farmacia: ['industria-farmaceutica'],
-  hseq: ['gestion-riesgos-calidad'],
-  logistica: ['gestion-proyectos'],
+  hseq: ['gestion-de-riesgos-de-calidad'],
+  logistica: ['gestion-de-proyectos'],
   marketing: ['comunicacion-cientifica'],
-  empleabilidad: ['cv-profesional'],
+  empleabilidad: ['hoja-de-vida-profesional'],
 };
 
 const TITLE_SKILL_RULES = [
-  [/power bi/i, ['power-bi', 'analisis-datos', 'visualizacion-datos']],
-  [/excel/i, ['excel', 'analisis-datos']],
-  [/sql/i, ['sql', 'analisis-datos']],
-  [/python/i, ['python-datos', 'analisis-datos']],
-  [/inteligencia artificial|\bia\b/i, ['ia-aplicada']],
-  [/lean six sigma/i, ['lean', 'six-sigma', 'mejora-continua', 'analisis-datos']],
+  [/power bi/i, ['power-bi', 'analisis-de-datos', 'visualizacion-de-datos']],
+  [/excel/i, ['excel', 'analisis-de-datos']],
+  [/sql/i, ['sql', 'analisis-de-datos']],
+  [/python/i, ['python-para-datos', 'analisis-de-datos']],
+  [/inteligencia artificial|\bia\b/i, ['inteligencia-artificial-aplicada']],
+  [/lean six sigma/i, ['lean', 'six-sigma', 'mejora-continua', 'analisis-de-datos']],
   [/\blean\b/i, ['lean', 'mejora-continua']],
-  [/auditor/i, ['auditorias', 'sistemas-gestion-calidad']],
-  [/calidad/i, ['sistemas-gestion-calidad', 'gestion-documental', 'mejora-continua']],
-  [/riesgo/i, ['gestion-riesgos-calidad']],
-  [/proyecto/i, ['gestion-proyectos']],
-  [/ambiental/i, ['gestion-ambiental', 'gestion-riesgos-calidad']],
-  [/seguridad y salud|riesgos laborales/i, ['seguridad-salud-trabajo', 'gestion-riesgos-calidad']],
+  [/auditor/i, ['auditorias', 'sistemas-de-gestion-de-calidad']],
+  [/calidad/i, ['sistemas-de-gestion-de-calidad', 'gestion-documental', 'mejora-continua']],
+  [/riesgo/i, ['gestion-de-riesgos-de-calidad']],
+  [/proyecto/i, ['gestion-de-proyectos']],
+  [/ambiental/i, ['gestion-ambiental', 'gestion-de-riesgos-de-calidad']],
+  [/seguridad y salud|riesgos laborales/i, ['seguridad-y-salud-en-el-trabajo', 'gestion-de-riesgos-de-calidad']],
   [/farmacolog|medicamento|farmac/i, ['industria-farmaceutica']],
-  [/nutrici|endocrin|diabetes|microbiota/i, ['evidencia-cientifica']],
-  [/logistica|inventario|almacen|abastecimiento/i, ['gestion-proyectos', 'analisis-datos']],
+  [/nutrici|endocrin|diabetes|microbiota/i, ['lectura-critica-de-evidencia']],
+  [/logistica|inventario|almacen|abastecimiento/i, ['gestion-de-proyectos', 'analisis-de-datos']],
 ];
 
 const FEATURED_RECOMMENDATIONS = {
-  'sh-9060': ['aseguramiento-calidad', 'control-calidad', 'validaciones', 'asuntos-regulatorios', 'produccion-farmaceutica'],
-  'sh-9086': ['datos-farma', 'aseguramiento-calidad', 'control-calidad', 'produccion-farmaceutica', 'inteligencia-artificial-farma'],
-  'sh-9215': ['aseguramiento-calidad', 'control-calidad', 'asuntos-regulatorios', 'produccion-farmaceutica'],
+  'sh-9060': ['aseguramiento-de-calidad', 'control-de-calidad', 'validaciones', 'asuntos-regulatorios', 'produccion-farmaceutica'],
+  'sh-9086': ['datos-para-la-industria-farmaceutica', 'aseguramiento-de-calidad', 'control-de-calidad', 'produccion-farmaceutica', 'inteligencia-artificial-en-la-industria-farmaceutica'],
+  'sh-9215': ['aseguramiento-de-calidad', 'control-de-calidad', 'asuntos-regulatorios', 'produccion-farmaceutica'],
   'sh-13818': ['produccion-farmaceutica', 'industria-cosmetica'],
   'sh-13571': ['produccion-farmaceutica'],
-  'sh-10262': ['validaciones', 'asuntos-regulatorios', 'investigacion-desarrollo', 'medical-affairs'],
-  'sh-13568': ['aseguramiento-calidad', 'produccion-farmaceutica', 'datos-farma'],
-  'sh-10218': ['aseguramiento-calidad', 'control-calidad', 'produccion-farmaceutica', 'datos-farma'],
+  'sh-10262': ['validaciones', 'asuntos-regulatorios', 'investigacion-y-desarrollo', 'medical-affairs'],
+  'sh-13568': ['aseguramiento-de-calidad', 'produccion-farmaceutica', 'datos-para-la-industria-farmaceutica'],
+  'sh-10218': ['aseguramiento-de-calidad', 'control-de-calidad', 'produccion-farmaceutica', 'datos-para-la-industria-farmaceutica'],
 };
 
 const PATH_STEP_COURSES = {
-  'quality-assurance-desde-cero': { 2: ['sh-9060'], 3: ['sh-9060'], 4: ['sh-9060'], 9: ['sh-9215'], 12: ['sh-9086'] },
+  'aseguramiento-de-calidad-desde-cero': { 2: ['sh-9060'], 3: ['sh-9060'], 4: ['sh-9060'], 9: ['sh-9215'], 12: ['sh-9086'] },
   'control-de-calidad': { 1: ['sh-9060'], 4: ['sh-9086'] },
   'validaciones-farmaceuticas': { 1: ['sh-9060'], 3: ['sh-9215'], 4: ['sh-10262'] },
-  'regulatory-affairs': { 1: ['sh-9060'], 3: ['sh-9215'] },
+  'asuntos-regulatorios': { 1: ['sh-9060'], 3: ['sh-9215'] },
   'produccion-farmaceutica': { 1: ['sh-9060'], 3: ['sh-13568', 'sh-10218'], 4: ['sh-13568'] },
   'investigacion-y-desarrollo': { 2: ['sh-10262'], 4: ['sh-10262'] },
   'formulacion-cosmetica': { 3: ['sh-13818'] },
   'medical-affairs': { 4: ['sh-10262'] },
-  'data-y-pharma': { 2: ['sh-9086'], 3: ['sh-9086'], 4: ['sh-9086'] },
+  'datos-para-la-industria-farmaceutica': { 2: ['sh-9086'], 3: ['sh-9086'], 4: ['sh-9086'] },
   'ia-para-profesionales-farmaceuticos': { 2: ['sh-9086'], 4: ['sh-10262'] },
 };
+
+/**
+ * Todos los slugs de carrera, ruta y competencia que el grafo usa por su
+ * nombre. Si uno no existe en la base, la sincronización lo salta sin
+ * avisar; la prueba de migraciones compara esta lista con la base.
+ */
+export function slugsDelGrafo() {
+  return {
+    carreras: [...new Set(Object.values(FEATURED_RECOMMENDATIONS).flat())],
+    rutas: Object.keys(PATH_STEP_COURSES),
+    competencias: [...new Set([
+      ...Object.values(PROFILE_SKILLS).flat(),
+      ...TITLE_SKILL_RULES.flatMap(([, skills]) => skills),
+      ...Object.values(SKILL_ALIASES),
+    ])],
+  };
+}
 
 function slugify(value) {
   return value
@@ -94,6 +111,49 @@ async function importSourceModule(filename) {
   throw new Error(`No se encontro la fuente del catalogo: ${filename}`);
 }
 
+// Habilidades de los cursos destacados (normalizadas) → competencia del grafo.
+const SKILL_ALIASES = {
+  'enfoque-por-procesos': 'sistemas-de-gestion-de-calidad',
+  'indicadores-de-gestion': 'visualizacion-de-datos',
+  'control-documental': 'gestion-documental',
+  'mejora-continua': 'mejora-continua',
+  'gestion-de-riesgos': 'gestion-de-riesgos-de-calidad',
+  'modelado-de-datos': 'analisis-de-datos',
+  'limpieza-y-transformacion': 'analisis-de-datos',
+  dashboards: 'power-bi',
+  'visualizacion-de-indicadores': 'visualizacion-de-datos',
+  'analisis-para-decisiones': 'analisis-de-datos',
+  planificacion: 'gestion-de-proyectos',
+  'recoleccion-de-evidencias': 'auditorias',
+  entrevistas: 'auditorias',
+  'redaccion-de-hallazgos': 'auditorias',
+  'seguimiento-de-acciones': 'desviaciones-y-capa',
+  'identificacion-de-impactos': 'gestion-ambiental',
+  'gestion-de-residuos': 'gestion-ambiental',
+  'cumplimiento-ambiental': 'gestion-ambiental',
+  'indicadores-ambientales': 'visualizacion-de-datos',
+  'mejora-sostenible': 'mejora-continua',
+  'identificacion-de-peligros': 'seguridad-y-salud-en-el-trabajo',
+  'evaluacion-de-riesgos': 'gestion-de-riesgos-de-calidad',
+  'medidas-de-control': 'seguridad-y-salud-en-el-trabajo',
+  inspecciones: 'auditorias',
+  'promocion-de-bienestar-laboral': 'seguridad-y-salud-en-el-trabajo',
+  'alcance-y-objetivos': 'gestion-de-proyectos',
+  cronograma: 'gestion-de-proyectos',
+  'gestion-de-recursos': 'gestion-de-proyectos',
+  riesgos: 'gestion-de-riesgos-de-calidad',
+  'seguimiento-de-avances': 'gestion-de-proyectos',
+  'principios-lean': 'lean',
+  'identificacion-de-desperdicios': 'lean',
+  'flujo-de-valor': 'lean',
+  estandarizacion: 'lean',
+  dmaic: 'six-sigma',
+  'analisis-de-variabilidad': 'six-sigma',
+  indicadores: 'visualizacion-de-datos',
+  'control-de-procesos': 'six-sigma',
+  'mejora-basada-en-datos': 'six-sigma',
+};
+
 function inferSkillSlugs(course, featured) {
   const slugs = new Set();
   for (const profile of course.profiles || []) {
@@ -106,48 +166,7 @@ function inferSkillSlugs(course, featured) {
   }
   for (const skill of featured?.skills || []) {
     const normalized = slugify(skill);
-    const aliases = {
-      'enfoque-por-procesos': 'sistemas-gestion-calidad',
-      'indicadores-de-gestion': 'visualizacion-datos',
-      'control-documental': 'gestion-documental',
-      'mejora-continua': 'mejora-continua',
-      'gestion-de-riesgos': 'gestion-riesgos-calidad',
-      'modelado-de-datos': 'analisis-datos',
-      'limpieza-y-transformacion': 'analisis-datos',
-      dashboards: 'power-bi',
-      'visualizacion-de-indicadores': 'visualizacion-datos',
-      'analisis-para-decisiones': 'analisis-datos',
-      planificacion: 'gestion-proyectos',
-      'recoleccion-de-evidencias': 'auditorias',
-      entrevistas: 'auditorias',
-      'redaccion-de-hallazgos': 'auditorias',
-      'seguimiento-de-acciones': 'capa-desviaciones',
-      'identificacion-de-impactos': 'gestion-ambiental',
-      'gestion-de-residuos': 'gestion-ambiental',
-      'cumplimiento-ambiental': 'gestion-ambiental',
-      'indicadores-ambientales': 'visualizacion-datos',
-      'mejora-sostenible': 'mejora-continua',
-      'identificacion-de-peligros': 'seguridad-salud-trabajo',
-      'evaluacion-de-riesgos': 'gestion-riesgos-calidad',
-      'medidas-de-control': 'seguridad-salud-trabajo',
-      inspecciones: 'auditorias',
-      'promocion-de-bienestar-laboral': 'seguridad-salud-trabajo',
-      'alcance-y-objetivos': 'gestion-proyectos',
-      cronograma: 'gestion-proyectos',
-      'gestion-de-recursos': 'gestion-proyectos',
-      riesgos: 'gestion-riesgos-calidad',
-      'seguimiento-de-avances': 'gestion-proyectos',
-      'principios-lean': 'lean',
-      'identificacion-de-desperdicios': 'lean',
-      'flujo-de-valor': 'lean',
-      estandarizacion: 'lean',
-      dmaic: 'six-sigma',
-      'analisis-de-variabilidad': 'six-sigma',
-      indicadores: 'visualizacion-datos',
-      'control-de-procesos': 'six-sigma',
-      'mejora-basada-en-datos': 'six-sigma',
-    };
-    if (aliases[normalized]) slugs.add(aliases[normalized]);
+    if (SKILL_ALIASES[normalized]) slugs.add(SKILL_ALIASES[normalized]);
   }
   return [...slugs];
 }

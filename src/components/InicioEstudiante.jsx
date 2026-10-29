@@ -19,6 +19,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, ChevronLeft, ChevronRight, GraduationCap } from 'lucide-react';
 import { misCursos } from '../lib/misCursos';
+import { rutaEnAula } from '../aula/rutas';
 
 function Avance({ valor, etiqueta }) {
   const pct = Math.max(0, Math.min(100, Math.round(Number(valor) || 0)));
@@ -68,7 +69,7 @@ function Tarjeta({ curso }) {
           <Avance valor={pct} etiqueta={`Avance en ${curso.title}`} />
         </div>
         <Link
-          to={`/aula/curso/${curso.courseId}`}
+          to={rutaEnAula(curso)}
           className="ed-btn ed-btn--primary"
         >
           {empezado ? 'Continuar curso' : 'Empezar curso'}

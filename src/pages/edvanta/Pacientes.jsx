@@ -224,7 +224,7 @@ export default function Pacientes() {
               </p>
             </div>
             <div className="flex flex-wrap gap-3">
-              <Btn to="/escuelas/salud" variant="secondary">Escuela de Salud</Btn>
+              <Btn to="/escuelas/salud-y-farmacia-clinica" variant="secondary">Escuela de Salud</Btn>
               <Btn to="/instituciones/paquetes/ruta-contigo" variant="primary" iconRight={ArrowRight}>Ruta Contigo para instituciones</Btn>
             </div>
           </div>

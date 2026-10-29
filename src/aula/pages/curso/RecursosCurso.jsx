@@ -1,4 +1,4 @@
-import { Link, Navigate, useParams } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import { ArrowLeft, Library } from 'lucide-react';
 import { get } from '../../api';
 import { useAsync } from '../../hooks';
@@ -7,15 +7,14 @@ import { ResourceList } from '../../player/CourseOverview';
 import { useCourseData } from './CursoParticipante';
 
 export default function RecursosCurso() {
-  const { courseId } = useParams();
-  const { data } = useCourseData();
+  const { data, courseId, rutas } = useCourseData();
   const res = useAsync(({ signal }) => get(`/me/courses/${courseId}/resources`, { signal }), [courseId]);
-  if (!data.resourcesEnabled) return <Navigate to={`/aula/curso/${courseId}`} replace />;
+  if (!data.resourcesEnabled) return <Navigate to={rutas.base} replace />;
 
   return (
     <div className="aula-root min-h-screen">
       <div className="mx-auto max-w-4xl px-4 py-6 sm:py-10">
-        <Link to={`/aula/curso/${courseId}`} className="inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--aula-muted)] hover:text-[var(--aula-primary)]">
+        <Link to={rutas.base} className="inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--aula-muted)] hover:text-[var(--aula-primary)]">
           <ArrowLeft className="h-4 w-4" aria-hidden="true" /> {data.snapshot.course.title}
         </Link>
         <h1 className="mt-3 flex items-center gap-2 text-2xl font-extrabold text-[var(--aula-primary)]">

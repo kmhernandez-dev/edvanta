@@ -48,9 +48,9 @@ export default function EmprendimientosPage() {
   useEffect(() => updatePageSeo({
     title: 'Emprendimiento farmacéutico: Lean Canvas | Edvanta',
     description: 'Construye tu emprendimiento farmacéutico con un Lean Canvas guiado, genera tu pitch de 30 segundos y valida tu idea con la comunidad. Herramienta gratuita.',
-    canonical: 'https://edvanta.co/emprendimientos',
+    canonical: 'https://edvanta.co/emprendimiento-farmaceutico',
     jsonLdId: 'emprendimientos',
-    jsonLd: { '@context': 'https://schema.org', '@type': 'WebApplication', name: 'Lean Canvas farmacéutico Edvanta', applicationCategory: 'BusinessApplication', offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' }, url: 'https://edvanta.co/emprendimientos' },
+    jsonLd: { '@context': 'https://schema.org', '@type': 'WebApplication', name: 'Lean Canvas farmacéutico Edvanta', applicationCategory: 'BusinessApplication', offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' }, url: 'https://edvanta.co/emprendimiento-farmaceutico' },
   }), []);
 
   useEffect(() => { try { localStorage.setItem(STORAGE, JSON.stringify(canvas)); } catch { /* noop */ } }, [canvas]);

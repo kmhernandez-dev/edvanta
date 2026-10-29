@@ -23,6 +23,7 @@ import { apiUrl } from '../../config/api';
 import { fileUrl, get, post } from '../api';
 import { useAsync } from '../hooks';
 import { fmtDate, fmtMinutes } from '../labels';
+import { rutaEnAula } from '../rutas';
 import { useAulaSession } from '../session';
 import { StatusBadge } from '../ui/Badge';
 import { Button } from '../ui/Button';
@@ -150,7 +151,7 @@ function CursoEnMarcha({ course }) {
           )}
         </div>
         {course.open ? (
-          <Button to={`/aula/curso/${course.courseId}`} className="w-full">{cta}</Button>
+          <Button to={rutaEnAula(course)} className="w-full">{cta}</Button>
         ) : (
           <p className="flex items-start gap-2 rounded-[var(--aula-radius)] bg-[var(--aula-neutral-soft)] px-3 py-2 text-xs text-[var(--aula-muted)]">
             <Lock className="mt-0.5 h-3.5 w-3.5 shrink-0" aria-hidden="true" /> {course.closedMessage}
@@ -235,8 +236,8 @@ export default function MiAula() {
     setEnrolling(courseId);
     setEnrollError('');
     try {
-      await post(`/me/catalog/${courseId}/enroll`);
-      navigate(`/aula/curso/${courseId}`);
+      const res = await post(`/me/catalog/${courseId}/enroll`);
+      navigate(rutaEnAula({ slug: res?.slug, courseId }));
     } catch (e) {
       setEnrollError(e.message || 'No fue posible inscribirte.');
       catalog.reload();

@@ -46,14 +46,14 @@ export default function OfertasQFPage() {
     updatePageSeo({
       title: 'Ofertas para Químicos Farmacéuticos | Edvanta',
       description: 'Vacantes para químicos farmacéuticos en Bogotá, Medellín, Cali y Barranquilla, actualizadas el 22 de septiembre de 2026. Postúlate directo en la fuente original.',
-      canonical: 'https://edvanta.co/empleo/ofertas-qf',
+      canonical: 'https://edvanta.co/empleo/ofertas-para-quimicos-farmaceuticos',
       keywords: ['ofertas químico farmacéutico', 'vacantes farmacia Colombia', 'empleo QF', 'vacantes farmacéuticas septiembre 2026'],
       jsonLdId: 'ofertas-qf',
       jsonLd: {
         '@context': 'https://schema.org',
         '@type': 'WebPage',
         name: 'Ofertas laborales para Químicos Farmacéuticos',
-        url: 'https://edvanta.co/empleo/ofertas-qf',
+        url: 'https://edvanta.co/empleo/ofertas-para-quimicos-farmaceuticos',
         description: 'Vacantes verificadas para químicos farmacéuticos en Colombia, actualizadas el 22 de septiembre de 2026.',
       },
     });
@@ -288,7 +288,7 @@ export default function OfertasQFPage() {
           actions={(
             <>
               <Btn to="/hoja-de-vida" variant="white" icon={Sparkles}>Crear mi hoja de vida</Btn>
-              <Btn to="/empleo/correos" variant="outlineWhite">Ver las plantillas de correo</Btn>
+              <Btn to="/empleo/plantillas-de-correo-para-recursos-humanos" variant="outlineWhite">Ver las plantillas de correo</Btn>
             </>
           )}
         />

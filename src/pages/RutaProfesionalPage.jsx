@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, Navigate, useParams } from 'react-router-dom';
 import { ArrowLeft, ArrowRight, BookOpenCheck, BriefcaseBusiness, CheckCircle2, Clock3, Compass, ExternalLink, FolderKanban, RefreshCw, Route } from 'lucide-react';
 import SiteHeader from '../components/edvanta/SiteHeader';
 import SiteFooter from '../components/edvanta/SiteFooter';
@@ -196,6 +196,9 @@ export default function RutaProfesionalPage() {
       </>
     );
   }
+
+  // Llegó por un nombre anterior de la ruta: a su dirección vigente.
+  if (path.slug && path.slug !== slug) return <Navigate to={`/rutas/${path.slug}`} replace />;
 
   return (
     <>

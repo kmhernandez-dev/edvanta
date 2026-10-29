@@ -146,7 +146,10 @@ describe('moderación de comentarios', () => {
     const c = r.data.comentarios.find((x) => x.donde === 'clase');
     expect(c).toBeTruthy();
     expect(c.contexto.clase).toBe('Clase 1');
-    expect(c.contexto.url).toBe(`/aula/curso/${cursoId}/clase/${claseId}`);
+    // La clase en su sitio, por su nombre (la de siempre por id también abre).
+    expect(c.contexto.url).toBe('/aula/curso-moderado/clase/clase-1');
+    expect(c.courseId).toBe(Number(cursoId));
+    expect(c.lessonId).toBe(Number(claseId));
   });
 
   it('ni el administrador puede reescribir lo que escribió otra persona', async () => {

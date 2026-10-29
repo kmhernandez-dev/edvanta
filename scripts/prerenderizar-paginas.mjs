@@ -171,6 +171,8 @@ if (existsSync(rutaSitemap)) {
     if (/^https:\/\/edvanta\.co\/cursos\/(?!coursera$|udemy$|edutin$)[^/]+$/.test(loc)) return false;
     if (/^https:\/\/edvanta\.co\/herramientas\/[^/]+$/.test(loc)) return false;
     if (/^https:\/\/edvanta\.co\/articulos\/categoria\//.test(loc)) return false;
+    // Carreras, rutas y competencias salen de la base: /sitemap-profesional.xml.
+    if (/^https:\/\/edvanta\.co\/(carreras|rutas|competencias)\/[^/]+$/.test(loc)) return false;
     return true;
   }).join('\n');
   const lineas = enSitemap.map((u) => `  <url><loc>${SITIO}${u.ruta}</loc>${u.fecha ? `<lastmod>${u.fecha}</lastmod>` : ''}<priority>${u.prioridad}</priority></url>`);

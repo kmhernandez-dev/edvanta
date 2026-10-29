@@ -40,7 +40,7 @@ const modulos = [
     titulo: 'Orientación vocacional',
     texto: 'Sistema guiado de 3 pasos que te recomienda el mejor encaje para tu perfil farmacéutico.',
     color: 'from-edvanta-blue to-edvanta-blue',
-    a: '/vocacion',
+    a: '/orientacion-vocacional',
   },
   {
     id: 'empleo',
@@ -56,7 +56,7 @@ const modulos = [
     titulo: 'Prácticas',
     texto: 'Guía completa para prepararte, elegir perfil y aplicar con una hoja de vida pensada para prácticas.',
     color: 'from-edvanta-violet to-edvanta-blue',
-    a: '/practicas',
+    a: '/practicas-profesionales-farmaceuticas',
   },
   {
     id: 'noticias',
@@ -72,7 +72,7 @@ const modulos = [
     titulo: 'LinkedIn',
     texto: 'Banco de prompts, guía práctica con imágenes y guía para generar ingresos con tu marca personal.',
     color: 'from-edvanta-blue to-edvanta-blue',
-    a: '/linkedin',
+    a: '/linkedin-farmaceutico',
   },
   {
     id: 'emprendimientos',
@@ -80,7 +80,7 @@ const modulos = [
     titulo: 'Emprendimientos',
     texto: 'Crea tu idea, conéctate con la comunidad, prueba productos y publica tu emprendimiento.',
     color: 'from-lime-500 to-green-600',
-    a: '/emprendimientos',
+    a: '/emprendimiento-farmaceutico',
   },
   {
     id: 'herramientas',
@@ -187,7 +187,7 @@ export default function CareersIndex() {
           actions={(
             <>
               <Btn href="#formacion" size="lg" icon={GraduationCap}>Explorar formación</Btn>
-              <Btn to="/vocacion" variant="secondary" size="lg" icon={Compass}>Orientación vocacional</Btn>
+              <Btn to="/orientacion-vocacional" variant="secondary" size="lg" icon={Compass}>Orientación vocacional</Btn>
             </>
           )}
         />
@@ -304,7 +304,7 @@ export default function CareersIndex() {
                 Responde 3 preguntas cortas y te recomendamos tu mejor encaje profesional, la formación adecuada y tu primer paso.
               </p>
             </div>
-            <Link to="/vocacion" className="inline-flex min-h-12 shrink-0 items-center gap-2 rounded-xl bg-teal-500 px-6 text-sm font-bold text-white shadow-lg shadow-teal-500/25 transition hover:bg-teal-400">
+            <Link to="/orientacion-vocacional" className="inline-flex min-h-12 shrink-0 items-center gap-2 rounded-xl bg-teal-500 px-6 text-sm font-bold text-white shadow-lg shadow-teal-500/25 transition hover:bg-teal-400">
               <Compass className="h-4 w-4" aria-hidden="true" /> Hacer la orientación vocacional
             </Link>
           </div>

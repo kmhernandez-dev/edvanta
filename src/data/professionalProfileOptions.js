@@ -1,16 +1,35 @@
 export const PROFESSIONAL_CAREERS = [
-  { slug: 'aseguramiento-calidad', name: 'Aseguramiento de Calidad', pathSlug: 'quality-assurance-desde-cero' },
-  { slug: 'control-calidad', name: 'Control de Calidad', pathSlug: 'control-de-calidad' },
+  { slug: 'aseguramiento-de-calidad', name: 'Aseguramiento de Calidad', pathSlug: 'aseguramiento-de-calidad-desde-cero' },
+  { slug: 'control-de-calidad', name: 'Control de Calidad', pathSlug: 'control-de-calidad' },
   { slug: 'validaciones', name: 'Validaciones farmacéuticas', pathSlug: 'validaciones-farmaceuticas' },
-  { slug: 'asuntos-regulatorios', name: 'Regulatory Affairs', pathSlug: 'regulatory-affairs' },
+  { slug: 'asuntos-regulatorios', name: 'Asuntos regulatorios', pathSlug: 'asuntos-regulatorios' },
   { slug: 'farmacovigilancia', name: 'Farmacovigilancia', pathSlug: 'farmacovigilancia' },
   { slug: 'produccion-farmaceutica', name: 'Producción farmacéutica', pathSlug: 'produccion-farmaceutica' },
-  { slug: 'investigacion-desarrollo', name: 'Investigación y desarrollo', pathSlug: 'investigacion-y-desarrollo' },
+  { slug: 'investigacion-y-desarrollo', name: 'Investigación y desarrollo', pathSlug: 'investigacion-y-desarrollo' },
   { slug: 'industria-cosmetica', name: 'Formulación cosmética', pathSlug: 'formulacion-cosmetica' },
   { slug: 'medical-affairs', name: 'Medical Affairs', pathSlug: 'medical-affairs' },
-  { slug: 'datos-farma', name: 'Data & Pharma', pathSlug: 'data-y-pharma' },
-  { slug: 'inteligencia-artificial-farma', name: 'Inteligencia artificial para farmacia', pathSlug: 'ia-para-profesionales-farmaceuticos' },
+  { slug: 'datos-para-la-industria-farmaceutica', name: 'Datos para la industria farmacéutica', pathSlug: 'datos-para-la-industria-farmaceutica' },
+  { slug: 'inteligencia-artificial-en-la-industria-farmaceutica', name: 'Inteligencia artificial en la industria farmacéutica', pathSlug: 'ia-para-profesionales-farmaceuticos' },
 ];
+
+/**
+ * Nombres que tuvieron las carreras y rutas antes de la migración 060. Los
+ * perfiles guardados en Supabase pueden traerlos: se leen como el actual
+ * y se guardan con el nuevo la próxima vez.
+ */
+const SLUGS_ANTERIORES = {
+  'aseguramiento-calidad': 'aseguramiento-de-calidad',
+  'control-calidad': 'control-de-calidad',
+  'investigacion-desarrollo': 'investigacion-y-desarrollo',
+  'datos-farma': 'datos-para-la-industria-farmaceutica',
+  'inteligencia-artificial-farma': 'inteligencia-artificial-en-la-industria-farmaceutica',
+  'quality-assurance-desde-cero': 'aseguramiento-de-calidad-desde-cero',
+  'regulatory-affairs': 'asuntos-regulatorios',
+  'data-y-pharma': 'datos-para-la-industria-farmaceutica',
+};
+
+/** El slug vigente de una carrera o ruta guardada con su nombre anterior. */
+export const slugVigente = (slug) => SLUGS_ANTERIORES[slug] || slug || '';
 
 export const PROFESSIONAL_INTERESTS = [
   'Calidad y cumplimiento',
@@ -73,5 +92,6 @@ export const PROFESSIONAL_TOOLS = [
 ];
 
 export function getCareerOption(slug) {
-  return PROFESSIONAL_CAREERS.find(career => career.slug === slug) || null;
+  const vigente = slugVigente(slug);
+  return PROFESSIONAL_CAREERS.find(career => career.slug === vigente) || null;
 }

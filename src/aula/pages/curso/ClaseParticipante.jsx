@@ -9,6 +9,7 @@ import { Alert, PageLoader } from '../../ui/States';
 import { useToast } from '../../ui/Toast';
 import { CoursePlayer, flattenLessons } from '../../player/CoursePlayer';
 import { useActiveTime, useVideoTracker } from '../../player/tracking';
+import { buscarClase } from '../../rutas';
 import { useCourseData } from './CursoParticipante';
 
 const clock = (seconds) => {
@@ -80,12 +81,13 @@ function CompletionPanel({ lesson, state, rules, activeSeconds, watchedPct, onCo
 }
 
 export default function ClaseParticipante() {
-  const { courseId, lessonId: rawLessonId } = useParams();
-  const lessonId = Number(rawLessonId);
+  // La clase llega por su nombre (/clase/metformina); la API, por su id.
+  const { clase: ref } = useParams();
   const navigate = useNavigate();
   const toast = useToast();
-  const { data, applyProgress, setVideoProgress } = useCourseData();
-  const lesson = useMemo(() => flattenLessons(data.snapshot).find((l) => l.id === lessonId), [data.snapshot, lessonId]);
+  const { data, applyProgress, setVideoProgress, courseId, rutas } = useCourseData();
+  const lesson = useMemo(() => buscarClase(flattenLessons(data.snapshot), ref), [data.snapshot, ref]);
+  const lessonId = lesson?.id ?? null;
   const state = data.lessonStates[lessonId] || { status: 'pendiente' };
   const [opened, setOpened] = useState(false);
   const [openError, setOpenError] = useState(null);
@@ -115,7 +117,7 @@ export default function ClaseParticipante() {
         if (!alive) return;
         if (err.code === 'clase_bloqueada') {
           toast.info(err.message);
-          navigate(`/aula/curso/${courseId}`, { replace: true });
+          navigate(rutas.base, { replace: true });
           return;
         }
         setOpenError(err);
@@ -161,12 +163,12 @@ export default function ClaseParticipante() {
     return { [lessonId]: Object.fromEntries(Object.entries(byBlock).map(([id, v]) => [id, v.position || 0])) };
   }, [data.videoProgress, lessonId]);
 
-  if (!lesson) return <Navigate to={`/aula/curso/${courseId}`} replace />;
+  if (!lesson) return <Navigate to={rutas.base} replace />;
   if (openError) {
     return (
       <div className="aula-root flex min-h-screen flex-col items-center justify-center gap-3 px-4 text-center">
         <p role="alert" className="max-w-md text-sm text-[var(--aula-danger)]">{openError.message}</p>
-        <Button variant="secondary" to={`/aula/curso/${courseId}`}>Volver a la portada del curso</Button>
+        <Button variant="secondary" to={rutas.base}>Volver a la portada del curso</Button>
       </div>
     );
   }
@@ -203,15 +205,15 @@ export default function ClaseParticipante() {
       <CoursePlayer
         snapshot={data.snapshot}
         lessonId={lessonId}
-        lessonHref={(id) => `/aula/curso/${courseId}/clase/${id}`}
+        lessonHref={rutas.clase}
         courseId={courseId}
-        backTo={{ to: `/aula/curso/${courseId}`, label: 'Portada del curso' }}
+        backTo={{ to: rutas.base, label: 'Portada del curso' }}
         lessonState={(id) => data.lessonStates[id] || { status: 'pendiente' }}
         progress={{ pct: data.enrollment.progressPct }}
         videoPositions={positions}
         onMedia={onMedia}
         headerActions={data.resourcesEnabled && (
-          <Button size="sm" variant="ghost" icon={Library} to={`/aula/curso/${courseId}/recursos`}>
+          <Button size="sm" variant="ghost" icon={Library} to={rutas.recursos}>
             <span className="hidden sm:inline">Recursos</span>
           </Button>
         )}

@@ -466,7 +466,7 @@ export async function ownCourseDetailRoute(req, res) {
         modules: temario.length,
         lessons: clases,
         temario,
-        aulaTo: `/aula/curso/${c.id}`,
+        aulaTo: c.public_slug ? `/aula/${c.public_slug}` : `/aula/curso/${c.id}`,
       },
     });
   } catch (e) {

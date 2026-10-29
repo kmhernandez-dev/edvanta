@@ -121,7 +121,7 @@ export default function Guias() {
           <div className="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
             <NavCard to="/hoja-de-vida" icon={FileText} title="Hoja de vida ATS" desc="Créala por pasos, mide su puntaje y descárgala en PDF." cta="Crear mi hoja de vida" />
             <NavCard to="/empleo" icon={Briefcase} title="Centro de empleo" desc="Ofertas para químicos farmacéuticos y guía de postulación." cta="Ver el centro de empleo" />
-            <NavCard to="/talento" icon={Sparkles} title="Vitrina de talento" desc="Publica tu perfil profesional para que las empresas te encuentren." cta="Ver la vitrina" />
+            <NavCard to="/vitrina-de-talento-farmaceutico" icon={Sparkles} title="Vitrina de talento" desc="Publica tu perfil profesional para que las empresas te encuentren." cta="Ver la vitrina" />
             <NavCard to="/carreras" icon={Compass} title="Carreras farmacéuticas" desc="Áreas, cargos y la formación que pide cada una." cta="Explorar carreras" />
           </div>
           <p className="mt-6 text-sm leading-7 text-edvanta-muted">
@@ -133,7 +133,7 @@ export default function Guias() {
               ['Proyectos de práctica', '/proyectos'],
               ['Certificaciones', '/certificaciones'],
               ['Espacios de conexión', '/conecta'],
-              ['Emprendimientos', '/emprendimientos'],
+              ['Emprendimientos', '/emprendimiento-farmaceutico'],
               ['Centro de herramientas', '/herramientas'],
             ].map(([t, to], i) => (
               <span key={to}>

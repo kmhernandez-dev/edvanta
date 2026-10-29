@@ -67,8 +67,8 @@ const resourceTypeLabels = {
 /** Las tres que se usan más, con su propia página y su herramienta dentro. */
 const DESTACADAS = [
   { to: '/hoja-de-vida', icon: FileText, title: 'Hoja de vida ATS + IA', desc: 'Créala, mide su puntaje y descárgala en PDF legible por los filtros automáticos.' },
-  { to: '/empleo/correos', icon: Mail, title: 'Correos a recursos humanos', desc: 'Cinco plantillas que se completan con tus datos y se copian de un clic.' },
-  { to: '/talento', icon: Sparkles, title: 'Vitrina de talento', desc: 'Publica tus logros para que las empresas del sector te contacten.' },
+  { to: '/empleo/plantillas-de-correo-para-recursos-humanos', icon: Mail, title: 'Correos a recursos humanos', desc: 'Cinco plantillas que se completan con tus datos y se copian de un clic.' },
+  { to: '/vitrina-de-talento-farmaceutico', icon: Sparkles, title: 'Vitrina de talento', desc: 'Publica tus logros para que las empresas del sector te contacten.' },
 ];
 
 export default function HerramientasPage() {
@@ -231,7 +231,7 @@ export default function HerramientasPage() {
           actions={(
             <>
               <Btn to="/instituciones" variant="white" icon={Building2}>Ver servicios para instituciones</Btn>
-              <Btn to="/empresas/talento" variant="outlineWhite">Buscar talento</Btn>
+              <Btn to="/empresas/recluta-talento-farmaceutico" variant="outlineWhite">Buscar talento</Btn>
             </>
           )}
         />

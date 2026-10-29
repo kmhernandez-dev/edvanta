@@ -22,7 +22,7 @@ export const PROGRAMAS = {
   atenfarmaclinic: {
     slug: 'atenfarmaclinic',
     nombre: 'AtenFarmaClinic',
-    escuela: 'salud',
+    escuela: 'salud-y-farmacia-clinica',
     publico: 'profesionales',
     texto: 'Herramientas y artículos para la práctica de la farmacia clínica y la atención farmacéutica.',
     to: '/atenfarmaclinic',
@@ -31,7 +31,7 @@ export const PROGRAMAS = {
   'feliz-sin-tiroides': {
     slug: 'feliz-sin-tiroides',
     nombre: 'Feliz Sin Tiroides',
-    escuela: 'salud',
+    escuela: 'salud-y-farmacia-clinica',
     publico: 'pacientes',
     texto: 'Programa especializado en salud tiroidea, creado por una química farmacéutica que vive sin tiroides. Guías, recetas, comunidad y acompañamiento educativo.',
     to: '/feliz-sin-tiroides',

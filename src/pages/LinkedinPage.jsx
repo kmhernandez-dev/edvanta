@@ -46,9 +46,9 @@ export default function LinkedinPage() {
   useEffect(() => updatePageSeo({
     title: 'Mejora tu LinkedIn farmacéutico | Edvanta',
     description: 'Guía práctica con imágenes, banco de prompts de IA y guía para generar ingresos con LinkedIn y tu marca personal.',
-    canonical: 'https://edvanta.co/linkedin',
+    canonical: 'https://edvanta.co/linkedin-farmaceutico',
     jsonLdId: 'linkedin',
-    jsonLd: { '@context': 'https://schema.org', '@type': 'WebPage', name: 'LinkedIn para farmacéuticos', url: 'https://edvanta.co/linkedin' },
+    jsonLd: { '@context': 'https://schema.org', '@type': 'WebPage', name: 'LinkedIn para farmacéuticos', url: 'https://edvanta.co/linkedin-farmaceutico' },
   }), []);
 
   const promptsVisibles = useMemo(

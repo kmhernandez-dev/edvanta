@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, Navigate, useParams } from 'react-router-dom';
 import { ArrowLeft, ArrowRight, BookOpenCheck, BriefcaseBusiness, RefreshCw, Route, Shapes } from 'lucide-react';
 import SiteHeader from '../components/edvanta/SiteHeader';
 import SiteFooter from '../components/edvanta/SiteFooter';
@@ -86,6 +86,9 @@ export default function CompetencyPage() {
       <><SiteHeader /><main className="min-h-[70vh] bg-edvanta-bg"><div className="mx-auto max-w-3xl px-4 py-20 text-center sm:px-6"><Shapes className="mx-auto h-10 w-10 text-edvanta-tealdark" aria-hidden="true" /><h1 className="mt-5 text-3xl font-bold text-edvanta-deep">No pudimos abrir esta competencia</h1><p className="mt-3 text-edvanta-muted">{error || 'La ficha no está disponible.'}</p><div className="mt-7 flex flex-wrap justify-center gap-3"><button type="button" onClick={() => setReloadKey(value => value + 1)} className="ed-btn ed-btn--primary"><RefreshCw className="h-4 w-4" aria-hidden="true" /> Reintentar</button><Link to="/competencias" className="inline-flex min-h-11 items-center gap-2 rounded-lg border border-edvanta-border bg-white px-5 text-sm font-bold text-edvanta-muted"><ArrowLeft className="h-4 w-4" aria-hidden="true" /> Ver todas</Link></div></div></main><SiteFooter /></>
     );
   }
+
+  // Llegó por un nombre anterior de la competencia: a su dirección vigente.
+  if (skill.slug && skill.slug !== slug) return <Navigate to={`/competencias/${skill.slug}`} replace />;
 
   return (
     <>

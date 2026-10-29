@@ -135,7 +135,7 @@ describe('profesionales y pacientes no se mezclan', () => {
   it('un curso de servicio farmacéutico aparece en Salud sin dejar Calidad', () => {
     const curso = { area: 'Calidad', category: 'Servicio farmacéutico' };
     const en = ESCUELAS.filter((e) => cursoEnEscuela(curso, e)).map((e) => e.slug);
-    expect(en).toEqual(['salud', 'calidad']);
+    expect(en).toEqual(['salud-y-farmacia-clinica', 'calidad-y-produccion-farmaceutica']);
   });
 });
 

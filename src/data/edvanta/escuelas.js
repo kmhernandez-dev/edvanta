@@ -17,7 +17,7 @@
 
 export const ESCUELAS = [
   {
-    slug: 'salud',
+    slug: 'salud-y-farmacia-clinica',
     nombre: 'Escuela de Salud y Farmacia Clínica',
     corto: 'Salud y Farmacia Clínica',
     menu: 'Farmacia clínica, farmacoterapia y pacientes',
@@ -59,7 +59,7 @@ export const ESCUELAS = [
     ],
   },
   {
-    slug: 'calidad',
+    slug: 'calidad-y-produccion-farmaceutica',
     nombre: 'Escuela de Calidad y Producción Farmacéutica',
     corto: 'Calidad y Producción',
     menu: 'BPM, documentación, riesgos y validación',
@@ -87,7 +87,7 @@ export const ESCUELAS = [
     ],
   },
   {
-    slug: 'regulatorios',
+    slug: 'asuntos-regulatorios',
     nombre: 'Escuela de Asuntos Regulatorios',
     corto: 'Asuntos Regulatorios',
     menu: 'Registros, expedientes y etiquetado ante el INVIMA',
@@ -116,7 +116,7 @@ export const ESCUELAS = [
     ],
   },
   {
-    slug: 'marketing',
+    slug: 'marketing-y-comunicacion-farmaceutica',
     nombre: 'Escuela de Marketing y Comunicación Farmacéutica',
     corto: 'Marketing y Comunicación',
     menu: 'Visita médica y comunicación de evidencia',

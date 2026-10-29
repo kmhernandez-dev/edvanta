@@ -487,9 +487,12 @@ export async function bandejaDeModeracion(db, { filtro = 'reportados', pagina = 
            u.first_name, u.last_name, u.email,
            ${tipo === 'curso'
     ? `COALESCE(ac.title, cu.title) AS curso, NULL::text AS clase,
-               COALESCE('edvanta-' || ac.id, cu.slug) AS ref, NULL::bigint AS course_id, NULL::bigint AS lesson_id`
+               COALESCE('edvanta-' || ac.id, cu.slug) AS ref, NULL::bigint AS course_id, NULL::bigint AS lesson_id,
+               NULL::text AS curso_slug, NULL::text AS clase_slug`
     : `ac2.title AS curso, l.title AS clase,
-               NULL::text AS ref, c.course_id, c.lesson_id`},
+               NULL::text AS ref, c.course_id, c.lesson_id,
+               (SELECT ps.slug FROM public_slugs ps WHERE ps.entity = 'aula' AND ps.entity_id = c.course_id AND ps.is_current LIMIT 1) AS curso_slug,
+               l.slug AS clase_slug`},
            COALESCE(r.pendientes, 0)::int AS reportes
       FROM ${tabla} c
       JOIN aula_users u ON u.id = c.user_id
@@ -541,7 +544,7 @@ export async function bandejaDeModeracion(db, { filtro = 'reportados', pagina = 
         // A dónde ir para verlo en su sitio.
         url: f.donde === 'curso'
           ? (rutas.get(f.ref) || (f.ref?.startsWith('edvanta-') ? `/curso/${f.ref.replace('edvanta-', '')}` : `/cursos/${f.ref}`))
-          : `/aula/curso/${f.course_id}/clase/${f.lesson_id}`,
+          : `${f.curso_slug ? `/aula/${f.curso_slug}` : `/aula/curso/${f.course_id}`}/clase/${f.clase_slug || f.lesson_id}`,
       },
     })),
   };

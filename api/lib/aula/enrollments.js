@@ -12,6 +12,7 @@ import { badRequest, conflict, notFound, plural } from './http.js';
 import { audit } from './audit.js';
 import { notify } from './notify.js';
 import { initializeEnrollments, recomputeEnrollment } from './progress.js';
+import { rutaEnAula } from '../slugs-publicos.js';
 
 const TARGET_LABEL = { usuario: 'la persona', grupo: 'el grupo', empresa: 'la empresa' };
 
@@ -70,13 +71,14 @@ export async function enrollUsers(db, { course, userIds, assignmentId = null, st
   await initializeEnrollments(db, created.map((r) => r.id), course.current_version_id);
   for (const row of reactivated) await recomputeEnrollment(db, row.id, { now });
 
+  const link = rows.length ? await rutaEnAula(db, course.id) : null;
   for (const row of rows) {
     await notify(db, {
       userId: row.user_id,
       type: 'asignacion',
       title: `Te asignaron el curso «${course.title}»`,
       body: dueAt ? `Fecha límite: ${new Date(dueAt).toLocaleDateString('es-CO', { timeZone: 'America/Bogota' })}.` : null,
-      link: `/aula/curso/${course.id}`,
+      link,
       dedupeKey: `asignacion:${course.id}:${now.getTime()}`,
       now,
     });

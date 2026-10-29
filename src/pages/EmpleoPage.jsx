@@ -36,11 +36,11 @@ const formatearFecha = (iso) => {
 
 const RUTAS = [
   { to: '/hoja-de-vida', icon: FileText, title: 'Hoja de vida ATS + IA', desc: 'Créala paso a paso, mira tu puntaje en vivo y descárgala en PDF legible por los filtros automáticos.', cta: 'Crear mi hoja de vida', tone: 'blue' },
-  { to: '/empleo/correos', icon: Mail, title: 'Correos a recursos humanos', desc: 'Cinco plantillas listas: postulación, espontánea, seguimiento, agradecimiento y referido.', cta: 'Ver plantillas', tone: 'teal' },
-  { to: '/empleo/ofertas-qf', icon: Search, title: 'Ofertas para químicos farmacéuticos', desc: 'Vacantes verificadas en Colombia con enlace directo a la publicación original.', cta: 'Ver ofertas', tone: 'violet' },
-  { to: '/talento', icon: Sparkles, title: 'Vitrina de talento', desc: 'Publica tus logros y espera a que un cazatalento te contacte.', cta: 'Publicar mi perfil', tone: 'blue' },
-  { to: '/practicas', icon: GraduationCap, title: 'Prácticas profesionales', desc: 'Cómo conseguirlas, qué exigen y dónde están las convocatorias.', cta: 'Ver la guía', tone: 'teal' },
-  { to: '/linkedin', icon: Users, title: 'LinkedIn profesional', desc: 'Perfil, contenido y mensajes que te posicionan en el sector.', cta: 'Mejorar mi perfil', tone: 'violet' },
+  { to: '/empleo/plantillas-de-correo-para-recursos-humanos', icon: Mail, title: 'Correos a recursos humanos', desc: 'Cinco plantillas listas: postulación, espontánea, seguimiento, agradecimiento y referido.', cta: 'Ver plantillas', tone: 'teal' },
+  { to: '/empleo/ofertas-para-quimicos-farmaceuticos', icon: Search, title: 'Ofertas para químicos farmacéuticos', desc: 'Vacantes verificadas en Colombia con enlace directo a la publicación original.', cta: 'Ver ofertas', tone: 'violet' },
+  { to: '/vitrina-de-talento-farmaceutico', icon: Sparkles, title: 'Vitrina de talento', desc: 'Publica tus logros y espera a que un cazatalento te contacte.', cta: 'Publicar mi perfil', tone: 'blue' },
+  { to: '/practicas-profesionales-farmaceuticas', icon: GraduationCap, title: 'Prácticas profesionales', desc: 'Cómo conseguirlas, qué exigen y dónde están las convocatorias.', cta: 'Ver la guía', tone: 'teal' },
+  { to: '/linkedin-farmaceutico', icon: Users, title: 'LinkedIn profesional', desc: 'Perfil, contenido y mensajes que te posicionan en el sector.', cta: 'Mejorar mi perfil', tone: 'violet' },
 ];
 
 const PASOS = [
@@ -129,7 +129,7 @@ export default function EmpleoPage() {
           actions={(
             <>
               <Btn to="/hoja-de-vida" icon={FileText}>Crear mi hoja de vida</Btn>
-              <Btn to="/empleo/ofertas-qf" variant="secondary" icon={Search}>Ver ofertas abiertas</Btn>
+              <Btn to="/empleo/ofertas-para-quimicos-farmaceuticos" variant="secondary" icon={Search}>Ver ofertas abiertas</Btn>
             </>
           )}
           media={(
@@ -168,7 +168,7 @@ export default function EmpleoPage() {
               title="Últimas ofertas publicadas"
               desc="Vacantes verificadas y ofertas compartidas por la comunidad. La postulación siempre es en la fuente original."
             />
-            <ArrowLink to="/empleo/ofertas-qf">Ver todas las ofertas</ArrowLink>
+            <ArrowLink to="/empleo/ofertas-para-quimicos-farmaceuticos">Ver todas las ofertas</ArrowLink>
           </div>
 
           {apiError && <p className="mt-6 rounded-xl border border-amber-200 bg-amber-50 p-3 text-sm text-amber-900" role="status">{apiError}</p>}
@@ -302,7 +302,7 @@ export default function EmpleoPage() {
                 <p className="mt-1.5 text-sm leading-6 text-edvanta-muted">
                   En la sección de empresas puedes buscar en el directorio de talento por área y contactar directamente.
                 </p>
-                <ArrowLink to="/empresas/talento" className="mt-4">Entrar como empresa</ArrowLink>
+                <ArrowLink to="/empresas/recluta-talento-farmaceutico" className="mt-4">Entrar como empresa</ArrowLink>
                 <p className="mt-6 border-t border-edvanta-border pt-4 text-sm leading-6 text-edvanta-muted">
                   ¿Necesitas capacitar al equipo que ya tienes?{' '}
                   <Link to="/instituciones/paquetes/equipo-que-cuida" className="font-bold text-edvanta-blue hover:underline">Ver formación para equipos</Link>.
@@ -319,7 +319,7 @@ export default function EmpleoPage() {
           actions={(
             <>
               <Btn to="/hoja-de-vida" variant="white" icon={FileText}>Crear mi hoja de vida</Btn>
-              <Btn to="/talento" variant="outlineWhite" icon={Briefcase}>Publicar mi perfil</Btn>
+              <Btn to="/vitrina-de-talento-farmaceutico" variant="outlineWhite" icon={Briefcase}>Publicar mi perfil</Btn>
             </>
           )}
         />

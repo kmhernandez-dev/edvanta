@@ -39,7 +39,27 @@ export const DIRECCIONES_ANTIGUAS = [
   },
   // Páginas que solo redirigían en el navegador
   { antigua: '/cursos-gratis', nueva: '/cursos', tipo: 'catálogo' },
+  // Escuelas: su nombre completo, no un recorte
+  { antigua: '/escuelas/salud', nueva: '/escuelas/salud-y-farmacia-clinica', tipo: 'escuela' },
+  { antigua: '/escuelas/calidad', nueva: '/escuelas/calidad-y-produccion-farmaceutica', tipo: 'escuela' },
+  { antigua: '/escuelas/regulatorios', nueva: '/escuelas/asuntos-regulatorios', tipo: 'escuela' },
+  { antigua: '/escuelas/marketing', nueva: '/escuelas/marketing-y-comunicacion-farmaceutica', tipo: 'escuela' },
+  // Páginas con un nombre abreviado o genérico: el de su título
+  { antigua: '/empleo/ofertas-qf', nueva: '/empleo/ofertas-para-quimicos-farmaceuticos', tipo: 'página' },
+  { antigua: '/empleo/correos', nueva: '/empleo/plantillas-de-correo-para-recursos-humanos', tipo: 'página' },
+  { antigua: '/vocacion', nueva: '/orientacion-vocacional', tipo: 'página' },
+  { antigua: '/linkedin', nueva: '/linkedin-farmaceutico', tipo: 'página' },
+  { antigua: '/practicas', nueva: '/practicas-profesionales-farmaceuticas', tipo: 'página' },
+  { antigua: '/emprendimientos', nueva: '/emprendimiento-farmaceutico', tipo: 'página' },
+  { antigua: '/talento', nueva: '/vitrina-de-talento-farmaceutico', tipo: 'página' },
+  { antigua: '/empresas/talento', nueva: '/empresas/recluta-talento-farmaceutico', tipo: 'página' },
 ];
+
+/*
+ * Las carreras, rutas y competencias (/carreras/…, /rutas/…, /competencias/…)
+ * tampoco están aquí: salen de la base, y sus nombres anteriores viven en
+ * la tabla slugs_anteriores (migración 060). La API responde el 301.
+ */
 
 /** Nueva dirección de una antigua, o null. */
 export const direccionNueva = (ruta) => DIRECCIONES_ANTIGUAS.find((d) => d.antigua === ruta)?.nueva || null;

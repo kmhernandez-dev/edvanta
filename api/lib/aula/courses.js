@@ -18,7 +18,7 @@ import { notify } from './notify.js';
 import { buildSnapshot, diffSnapshots, validateSnapshot } from './snapshot.js';
 import { recomputeEnrollment } from './progress.js';
 import { copyModuleInto } from './structure.js';
-import { asegurarSlug } from '../slugs-publicos.js';
+import { asegurarSlug, asegurarSlugsDeClases, rutaEnAula } from '../slugs-publicos.js';
 
 const has = (o, k) => Object.prototype.hasOwnProperty.call(o, k);
 
@@ -593,11 +593,17 @@ export async function publishCourse(db, id, {
         WHERE id = $1`,
       [id, version.id, now, actor.id],
     );
-    // Su dirección pública (/curso-de-…) nace con la primera publicación y no
-    // cambia después, aunque cambie el título. Los de empresa no tienen.
+    // Su dirección (/curso-de-…) nace con la primera publicación y no cambia
+    // después, aunque cambie el título. La de un curso de empresa lleva el
+    // nombre de la institución y solo se usa dentro del aula. Las clases
+    // reciben la suya al publicarse (/aula/curso-de-…/clase/<clase>).
     if (locked.kind === 'edvanta') {
       await asegurarSlug(tx, { entidad: 'aula', id, titulo: locked.title, nivel: locked.level });
+    } else {
+      const empresa = await one(tx, 'SELECT name FROM aula_companies WHERE id = $1', [locked.company_id]);
+      await asegurarSlug(tx, { entidad: 'aula', id, titulo: locked.title, empresa: empresa?.name || 'empresa' });
     }
+    await asegurarSlugsDeClases(tx, id);
 
     // Quién pasa a la versión nueva.
     const moved = await many(
@@ -619,7 +625,7 @@ export async function publishCourse(db, id, {
     for (const m of moved) await recomputeEnrollment(tx, m.id, { now });
 
     const title = course.title;
-    const link = `/aula/curso/${id}`;
+    const link = await rutaEnAula(tx, id);
     if (!previous) {
       for (const m of moved) {
         await notify(tx, {

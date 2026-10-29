@@ -33,7 +33,7 @@ export const PRODUCTOS = [
     tipoTexto: 'Curso virtual en vivo de actualización',
     imagen: '/img/fotos/servicio-farmaceutico-recepcion.webp',
     imagenAlt: 'Auxiliares de farmacia verificando con lector de código la recepción de medicamentos junto a una química farmacéutica',
-    escuela: 'salud',
+    escuela: 'salud-y-farmacia-clinica',
     publico: 'profesionales',
     dirigidoA: 'Auxiliares y regentes de farmacia que trabajan en droguerías, farmacias y servicios farmacéuticos hospitalarios.',
     necesidad:
@@ -85,7 +85,7 @@ export const PRODUCTOS = [
     nombre: 'Cómo tomar la levotiroxina correctamente',
     tipo: 'guia',
     tipoTexto: 'Guía gratuita en PDF',
-    escuela: 'salud',
+    escuela: 'salud-y-farmacia-clinica',
     programa: 'feliz-sin-tiroides',
     publico: 'pacientes',
     dirigidoA: 'Personas que toman levotiroxina y sus cuidadores.',
@@ -110,7 +110,7 @@ export const PRODUCTOS = [
     nombre: 'Colección «Sana tu Tiroides»',
     tipo: 'guia',
     tipoTexto: 'Colección de guías digitales',
-    escuela: 'salud',
+    escuela: 'salud-y-farmacia-clinica',
     programa: 'feliz-sin-tiroides',
     publico: 'pacientes',
     dirigidoA: 'Personas con hipotiroidismo o que viven sin tiroides.',
@@ -126,11 +126,11 @@ export const PRODUCTOS = [
 
 /** Escuela de cada kit profesional de data/products.js. */
 const ESCUELA_DEL_KIT = {
-  'atencion-farmaceutica': 'salud',
-  'calidad-clinica': 'salud',
-  'calidad-farmaceutica': 'calidad',
-  'calidad-auditoria': 'calidad',
-  'indicadores-dashboards': 'calidad',
+  'atencion-farmaceutica': 'salud-y-farmacia-clinica',
+  'calidad-clinica': 'salud-y-farmacia-clinica',
+  'calidad-farmaceutica': 'calidad-y-produccion-farmaceutica',
+  'calidad-auditoria': 'calidad-y-produccion-farmaceutica',
+  'indicadores-dashboards': 'calidad-y-produccion-farmaceutica',
   'empleabilidad-farmasalud': null,
 };
 

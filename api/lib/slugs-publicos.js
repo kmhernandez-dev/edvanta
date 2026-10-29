@@ -15,10 +15,16 @@
  *  opiniones y pagos siguen colgando del id del curso.
  *
  *  Dos fuentes de cursos comparten el mismo espacio de nombres:
- *    aula    → aula_courses (los propios de Edvanta)
+ *    aula    → aula_courses (los propios de Edvanta y los de empresa)
  *    curado  → courses (Edutin, Coursera, Udemy)
  *  Si dos cursos producen el mismo slug, gana el propio y el curado
  *  se diferencia por su proveedor («…-en-coursera»).
+ *
+ *  El aula usa las mismas direcciones (/aula/curso-de-…/clase/<clase>).
+ *  Los cursos de empresa también tienen slug, siempre con el nombre de la
+ *  institución («…-para-pharmarket»), y nunca salen fuera del aula: la
+ *  página pública, el sitemap y /api/direcciones solo muestran los de
+ *  Edvanta publicados.
  * ============================================================
  */
 
@@ -120,9 +126,15 @@ const NIVEL = {
  * Lo que diferencia debe ser real: el proveedor y luego el nivel. Solo
  * si todo eso coincide se numera, y el nombre sigue siendo descriptivo.
  */
-export function candidatosDeSlug({ titulo, entidad, proveedor, nivel }) {
+export function candidatosDeSlug({ titulo, entidad, proveedor, nivel, empresa }) {
   const base = slugBaseDeCurso(titulo);
   if (!base) return [];
+  // Curso de una empresa: nunca el nombre corto, que queda para el catálogo.
+  if (empresa != null) {
+    const sufijo = `-para-${recortar(slugify(empresa), 30) || 'empresa'}`;
+    const propio = `${recortar(base, LARGO_MAXIMO + 10 - sufijo.length - 2)}${sufijo}`;
+    return [propio, ...Array.from({ length: 8 }, (_, i) => `${propio}-${i + 2}`)];
+  }
   const lista = [base];
   const prov = NOMBRE_PROVEEDOR[proveedor];
   if (entidad === 'curado' && prov) lista.push(`${base}-en-${prov}`);
@@ -150,11 +162,11 @@ export async function slugActual(db, entidad, id) {
  * Le da slug a un curso si todavía no tiene. Devuelve el vigente.
  * Nunca toca uno que ya exista: una dirección publicada no se mueve.
  */
-export async function asegurarSlug(db, { entidad, id, titulo, proveedor = null, nivel = null }) {
+export async function asegurarSlug(db, { entidad, id, titulo, proveedor = null, nivel = null, empresa = null }) {
   if (!ENTIDADES.includes(entidad)) throw new Error(`Entidad desconocida: ${entidad}`);
   const existente = await slugActual(db, entidad, id);
   if (existente) return existente;
-  for (const candidato of candidatosDeSlug({ titulo, entidad, proveedor, nivel })) {
+  for (const candidato of candidatosDeSlug({ titulo, entidad, proveedor, nivel, empresa })) {
     const { rows } = await db.query(
       `INSERT INTO public_slugs (slug, entity, entity_id, is_current)
        VALUES ($1, $2, $3, TRUE)
@@ -225,7 +237,75 @@ export async function asegurarSlugsDeCursos(db) {
     const slug = await asegurarSlug(db, { entidad: 'curado', id: c.id, titulo: c.title, proveedor: c.provider, nivel: c.level });
     if (slug) creados.push({ entidad: 'curado', id: Number(c.id), slug });
   }
+  // Los de empresa, al final y con el nombre de la institución: solo para
+  // sus direcciones dentro del aula. Basta con que se hayan publicado una vez.
+  const { rows: deEmpresa } = await db.query(
+    `SELECT c.id, c.title, co.name AS empresa FROM aula_courses c
+       JOIN aula_companies co ON co.id = c.company_id
+      WHERE c.kind = 'empresa' AND c.current_version_id IS NOT NULL AND c.deleted_at IS NULL
+        AND NOT EXISTS (SELECT 1 FROM public_slugs s WHERE s.entity = 'aula' AND s.entity_id = c.id AND s.is_current)
+      ORDER BY c.id`,
+  );
+  for (const c of deEmpresa) {
+    const slug = await asegurarSlug(db, { entidad: 'aula', id: c.id, titulo: c.title, empresa: c.empresa });
+    if (slug) creados.push({ entidad: 'aula', id: Number(c.id), slug });
+  }
   return creados;
+}
+
+/* ── Clases del aula ──────────────────────────────────────── */
+
+/** Slug de una clase: su título, corto, sin tildes y nunca solo un número. */
+export function slugDeClase(titulo) {
+  const slug = recortar(slugify(titulo), 60) || 'clase';
+  return /^\d+$/.test(slug) ? `clase-${slug}` : slug;
+}
+
+/**
+ * Le da slug a las clases que no lo tengan (todas, o las de un curso), en
+ * el orden del temario. Único dentro del curso, contando las borradas: una
+ * dirección vieja nunca abre otra clase. Uno asignado no cambia aunque
+ * cambie el título.
+ */
+export async function asegurarSlugsDeClases(db, courseId = null) {
+  const porCurso = courseId != null;
+  const { rows } = await db.query(
+    `SELECT l.id, l.course_id, l.title FROM aula_lessons l
+       JOIN aula_modules m ON m.id = l.module_id
+      WHERE l.slug IS NULL ${porCurso ? 'AND l.course_id = $1' : ''}
+      ORDER BY l.course_id, m.sort_order, m.id, l.sort_order, l.id`,
+    porCurso ? [Number(courseId)] : [],
+  );
+  if (!rows.length) return 0;
+  const cursos = [...new Set(rows.map((r) => Number(r.course_id)))];
+  const { rows: usados } = await db.query(
+    'SELECT course_id, slug FROM aula_lessons WHERE slug IS NOT NULL AND course_id = ANY($1::bigint[])',
+    [cursos],
+  );
+  const ocupados = new Map(cursos.map((c) => [c, new Set()]));
+  for (const u of usados) ocupados.get(Number(u.course_id)).add(u.slug);
+  for (const l of rows) {
+    const enUso = ocupados.get(Number(l.course_id));
+    const base = slugDeClase(l.title);
+    let slug = base;
+    for (let n = 2; enUso.has(slug); n += 1) slug = `${base}-${n}`;
+    await db.query('UPDATE aula_lessons SET slug = $1 WHERE id = $2 AND slug IS NULL', [slug, l.id]);
+    enUso.add(slug);
+  }
+  return rows.length;
+}
+
+/**
+ * Dirección de un curso (o de una de sus clases) dentro del aula, para
+ * avisos y enlaces que arma el servidor. Sin slug, la de siempre por id:
+ * el aula la lleva a la nueva.
+ */
+export async function rutaEnAula(db, courseId, lessonId = null) {
+  const curso = await slugActual(db, 'aula', courseId);
+  const base = curso ? `/aula/${curso}` : `/aula/curso/${Number(courseId)}`;
+  if (lessonId == null) return base;
+  const { rows } = await db.query('SELECT slug FROM aula_lessons WHERE id = $1 AND course_id = $2', [Number(lessonId), Number(courseId)]);
+  return `${base}/clase/${rows[0]?.slug || Number(lessonId)}`;
 }
 
 /**
@@ -280,8 +360,11 @@ export async function rutasDeReferencias(db, refs) {
   const curados = lista.filter((r) => !/^edvanta-\d+$/.test(r));
   const mapa = new Map();
   if (propios.length) {
+    // Solo los de Edvanta: la dirección de un curso de empresa no sale del aula.
     const { rows } = await db.query(
-      `SELECT entity_id, slug FROM public_slugs WHERE entity = 'aula' AND is_current AND entity_id = ANY($1::bigint[])`,
+      `SELECT s.entity_id, s.slug FROM public_slugs s
+         JOIN aula_courses c ON c.id = s.entity_id AND c.kind = 'edvanta'
+        WHERE s.entity = 'aula' AND s.is_current AND s.entity_id = ANY($1::bigint[])`,
       [propios],
     );
     for (const r of rows) mapa.set(`edvanta-${r.entity_id}`, `/${r.slug}`);

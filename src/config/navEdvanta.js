@@ -57,7 +57,7 @@ export const RECURSOS_GROUPS = [
     items: [
       { label: 'Hoja de vida ATS', desc: 'Créala, mide su puntaje y descárgala', to: '/hoja-de-vida', icon: FileText },
       { label: 'Centro de empleo', desc: 'Ofertas y postulación paso a paso', to: '/empleo', icon: Briefcase },
-      { label: 'Vitrina de talento', desc: 'Que las empresas te encuentren', to: '/talento', icon: Sparkles },
+      { label: 'Vitrina de talento', desc: 'Que las empresas te encuentren', to: '/vitrina-de-talento-farmaceutico', icon: Sparkles },
       { label: 'Carreras farmacéuticas', desc: 'Áreas, cargos y formación', to: '/carreras', icon: Compass },
     ],
   },
@@ -95,7 +95,7 @@ export const NAV_PACIENTES = [
 export const NAV_INSTITUCIONES = [
   { label: 'Áreas de capacitación', to: '/instituciones#catalogo' },
   { label: 'Paquetes', to: '/instituciones#paquetes' },
-  { label: 'Directorio de talento', to: '/empresas/talento' },
+  { label: 'Directorio de talento', to: '/empresas/recluta-talento-farmaceutico' },
   { label: 'Solicitar propuesta', to: '/instituciones#solicitar-propuesta' },
 ];
 
@@ -139,7 +139,7 @@ export const FOOTER_COLUMNS = [
       { label: 'Áreas de capacitación', to: '/instituciones#catalogo' },
       { label: 'Equipo que Cuida', to: '/instituciones/paquetes/equipo-que-cuida' },
       { label: 'Solicitar una propuesta', to: '/instituciones#solicitar-propuesta' },
-      { label: 'Directorio de talento', to: '/empresas/talento' },
+      { label: 'Directorio de talento', to: '/empresas/recluta-talento-farmaceutico' },
       { label: 'Aula virtual', to: '/aula' },
     ],
   },
@@ -148,7 +148,7 @@ export const FOOTER_COLUMNS = [
     links: [
       { label: 'Hoja de vida ATS', to: '/hoja-de-vida' },
       { label: 'Centro de empleo', to: '/empleo' },
-      { label: 'Vitrina de talento', to: '/talento' },
+      { label: 'Vitrina de talento', to: '/vitrina-de-talento-farmaceutico' },
       { label: 'Carreras', to: '/carreras' },
       { label: 'Comunidad', to: '/comunidad' },
     ],

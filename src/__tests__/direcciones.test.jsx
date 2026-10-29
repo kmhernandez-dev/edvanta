@@ -11,6 +11,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { describe, expect, it } from 'vitest';
 import { DIRECCIONES_ANTIGUAS } from '../data/edvanta/direcciones';
+import { ESCUELAS } from '../data/edvanta/escuelas';
 import { HERRAMIENTAS } from '../data/edvanta/herramientas';
 import { PRODUCTOS } from '../data/edvanta/productos';
 import { featuredCourses } from '../data/featuredCourses';
@@ -42,6 +43,17 @@ describe('direcciones · redirecciones fijas', () => {
     }
     const enVivo = DIRECCIONES_ANTIGUAS.find((d) => d.tipo === 'curso en vivo');
     expect(PRODUCTOS.some((p) => p.to === enVivo.nueva)).toBe(true);
+    const escuelas = new Set(ESCUELAS.map((e) => `/escuelas/${e.slug}`));
+    for (const d of DIRECCIONES_ANTIGUAS.filter((x) => x.tipo === 'escuela')) expect(escuelas.has(d.nueva), d.nueva).toBe(true);
+    const app = readFileSync(path.join(raiz, 'src', 'App.jsx'), 'utf8');
+    for (const d of DIRECCIONES_ANTIGUAS.filter((x) => x.tipo === 'página')) expect(app.includes(`path="${d.nueva}"`), d.nueva).toBe(true);
+  });
+
+  it('las escuelas y las páginas renombradas llevan a la nueva también dentro del sitio', () => {
+    const app = readFileSync(path.join(raiz, 'src', 'App.jsx'), 'utf8');
+    expect(app).toMatch(/DIRECCIONES_ANTIGUAS\.filter\(\(d\) => d\.tipo === 'escuela' \|\| d\.tipo === 'página'\)/);
+    // Ninguna escuela conserva el nombre recortado.
+    for (const e of ESCUELAS) expect(e.slug.split('-').length, e.slug).toBeGreaterThan(1);
   });
 
   it('los proxys a la API no reenvían $uri (viene decodificado: %0D%0A sería un salto de línea)', () => {

@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, Navigate, useParams } from 'react-router-dom';
 import { ArrowLeft, ArrowRight, BookOpenCheck, Building2, CheckCircle2, Compass, RefreshCw, Target } from 'lucide-react';
 import SiteHeader from '../components/edvanta/SiteHeader';
 import SiteFooter from '../components/edvanta/SiteFooter';
@@ -128,6 +128,9 @@ export default function CareerPage() {
       </>
     );
   }
+
+  // Llegó por un nombre anterior de la carrera: a su dirección vigente.
+  if (career.slug && career.slug !== slug) return <Navigate to={`/carreras/${career.slug}`} replace />;
 
   return (
     <>

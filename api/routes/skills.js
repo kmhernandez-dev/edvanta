@@ -67,7 +67,8 @@ export async function getSkillBySlugRoute(req, res) {
     const skillResult = await pool.query(`
       SELECT id, slug, name, skill_type, description
       FROM skills
-      WHERE slug = $1 AND status = 'published'
+      WHERE (slug = $1 OR id = (SELECT entidad_id FROM slugs_anteriores WHERE tipo = 'competencia' AND anterior = $1))
+        AND status = 'published'
       LIMIT 1
     `, [slug]);
     if (!skillResult.rowCount) return res.status(404).json({ ok: false, error: 'Competencia no encontrada' });

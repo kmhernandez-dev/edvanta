@@ -55,9 +55,9 @@ export default function PracticasPage() {
   useEffect(() => updatePageSeo({
     title: 'Prácticas profesionales farmacéuticas | Edvanta',
     description: 'Guía para prepararte, elegir el perfil y aplicar a prácticas profesionales con hoja de vida adaptada y correos listos.',
-    canonical: 'https://edvanta.co/practicas',
+    canonical: 'https://edvanta.co/practicas-profesionales-farmaceuticas',
     jsonLdId: 'practicas',
-    jsonLd: { '@context': 'https://schema.org', '@type': 'WebPage', name: 'Prácticas profesionales farmacéuticas', url: 'https://edvanta.co/practicas' },
+    jsonLd: { '@context': 'https://schema.org', '@type': 'WebPage', name: 'Prácticas profesionales farmacéuticas', url: 'https://edvanta.co/practicas-profesionales-farmaceuticas' },
   }), []);
 
   const copiar = async () => {

@@ -345,14 +345,14 @@ export const resultadoVocacion = {
   laboratorio: {
     titulo: 'Tu perfil apunta a laboratorio, calidad o producción',
     texto: 'Las carreras con mayor ajuste combinan tu interés práctico con la precisión documental.',
-    carreras: ['control-calidad', 'validaciones', 'produccion-farmaceutica', 'investigacion-desarrollo'],
+    carreras: ['control-de-calidad', 'validaciones', 'produccion-farmaceutica', 'investigacion-y-desarrollo'],
     formacion: ['Maestría en Ciencias Farmacéuticas (UNAL)', 'Maestría en Ciencias Farmacéuticas y Alimentarias (UdeA)'],
     primerPaso: 'Refuerza química analítica, microbiología, integridad de datos y buenas prácticas de laboratorio.',
   },
   oficina: {
     titulo: 'Tu perfil apunta a regulación, calidad y gestión',
     texto: 'La escritura técnica y la coordinación de procesos serán tus mejores herramientas.',
-    carreras: ['asuntos-regulatorios', 'aseguramiento-calidad', 'farmacovigilancia'],
+    carreras: ['asuntos-regulatorios', 'aseguramiento-de-calidad', 'farmacovigilancia'],
     formacion: ['Especialización en Farmacia Clínica (Uniatlántico)', 'Especialización en Farmacología Clínica (La Sabana)', 'Maestría en Toxicología (UNAL)'],
     primerPaso: 'Estudia regulación sanitaria, estructura de dossiers, evaluación de causalidad y gestión de riesgos.',
   },
@@ -366,7 +366,7 @@ export const resultadoVocacion = {
   hibrido: {
     titulo: 'Perfecto para explorar: tu perfil es mixto',
     texto: 'Tienes buen panorama; te recomendamos probar una ruta de 30 días en dos áreas distintas.',
-    carreras: ['datos-farma', 'aseguramiento-calidad', 'farmacovigilancia'],
+    carreras: ['datos-para-la-industria-farmaceutica', 'aseguramiento-de-calidad', 'farmacovigilancia'],
     formacion: ['Maestría en Ciencias — Farmacología (UNAL)', 'Diplomados virtuales (UNAD / La Sabana)'],
     primerPaso: 'Recorre una semana de contenidos de tres áreas y anota cuál te hizo sentir más en casa.',
   },
@@ -847,8 +847,8 @@ export const clasificacionHerramientas = [
   {
     categoria: 'Guías de carrera',
     items: [
-      { nombre: 'Orientación vocacional', descripcion: 'Sistema guiado para descubrir tu mejor encaje farmacéutico.', to: '/vocacion' },
-      { nombre: 'Cómo prepararte para tus prácticas', descripcion: 'Guía paso a paso con plantilla de HV y correo.', to: '/practicas' },
+      { nombre: 'Orientación vocacional', descripcion: 'Sistema guiado para descubrir tu mejor encaje farmacéutico.', to: '/orientacion-vocacional' },
+      { nombre: 'Cómo prepararte para tus prácticas', descripcion: 'Guía paso a paso con plantilla de HV y correo.', to: '/practicas-profesionales-farmaceuticas' },
       { nombre: 'Maestrías en Colombia', descripcion: 'Directorio verificado de posgrados por universidad.', to: '/carreras#formacion' },
     ],
   },
@@ -863,24 +863,24 @@ export const clasificacionHerramientas = [
   {
     categoria: 'Marca personal',
     items: [
-      { nombre: 'Prompts para mejorar LinkedIn', descripcion: 'Banco de prompts por categoría con botón de copia.', to: '/linkedin' },
-      { nombre: 'Guía práctica con imagen para LinkedIn', descripcion: '6 pasos visuales para optimizar tu perfil.', to: '/linkedin' },
-      { nombre: 'Guía de ingresos con tu marca personal (USD 10)', descripcion: 'Producto digital vendible con el carrito.', to: '/linkedin#ingresos' },
+      { nombre: 'Prompts para mejorar LinkedIn', descripcion: 'Banco de prompts por categoría con botón de copia.', to: '/linkedin-farmaceutico' },
+      { nombre: 'Guía práctica con imagen para LinkedIn', descripcion: '6 pasos visuales para optimizar tu perfil.', to: '/linkedin-farmaceutico' },
+      { nombre: 'Guía de ingresos con tu marca personal (USD 10)', descripcion: 'Producto digital vendible con el carrito.', to: '/linkedin-farmaceutico#ingresos' },
     ],
   },
   {
     categoria: 'Emprendimiento',
     items: [
-      { nombre: 'Crea tu emprendimiento', descripcion: 'Canvas de idea y preguntas guiadas de validación.', to: '/emprendimientos' },
-      { nombre: 'Pruebas de productos', descripcion: 'Descubre, prueba y valida emprendimientos colombianos.', to: '/emprendimientos#probar' },
-      { nombre: 'Crea tu curso o grupo de estudio', descripcion: 'Para profesionales con vocación docente.', to: '/emprendimientos#profesor' },
-      { nombre: 'Publica artículos científicos en equipo', descripcion: 'Encuentra coautores y crea papers con la comunidad.', to: '/emprendimientos#investigador' },
+      { nombre: 'Crea tu emprendimiento', descripcion: 'Canvas de idea y preguntas guiadas de validación.', to: '/emprendimiento-farmaceutico' },
+      { nombre: 'Pruebas de productos', descripcion: 'Descubre, prueba y valida emprendimientos colombianos.', to: '/emprendimiento-farmaceutico#probar' },
+      { nombre: 'Crea tu curso o grupo de estudio', descripcion: 'Para profesionales con vocación docente.', to: '/emprendimiento-farmaceutico#profesor' },
+      { nombre: 'Publica artículos científicos en equipo', descripcion: 'Encuentra coautores y crea papers con la comunidad.', to: '/emprendimiento-farmaceutico#investigador' },
     ],
   },
   {
     categoria: 'Trabajo y talento',
     items: [
-      { nombre: 'Vitrina de talento', descripcion: 'Publica tus logros y espera a que un cazatalento te contacte.', to: '/talento' },
+      { nombre: 'Vitrina de talento', descripcion: 'Publica tus logros y espera a que un cazatalento te contacte.', to: '/vitrina-de-talento-farmaceutico' },
       { nombre: 'Noticias del sector', descripcion: 'Agenda y fuentes oficiales actualizadas.', to: '/noticias' },
     ],
   },

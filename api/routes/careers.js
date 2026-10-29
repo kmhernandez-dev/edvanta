@@ -128,7 +128,8 @@ export async function getCareerBySlugRoute(req, res) {
       FROM careers c
       JOIN career_families f ON f.id = c.family_id
       ${skillsLateral}
-      WHERE c.slug = $1 AND c.status = 'published' AND f.status = 'published'
+      WHERE (c.slug = $1 OR c.id = (SELECT entidad_id FROM slugs_anteriores WHERE tipo = 'carrera' AND anterior = $1))
+        AND c.status = 'published' AND f.status = 'published'
       LIMIT 1
     `, [slug]);
 

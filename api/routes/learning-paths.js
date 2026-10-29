@@ -69,7 +69,8 @@ export async function getLearningPathBySlugRoute(req, res) {
       FROM learning_paths path
       JOIN careers career ON career.id = path.career_id AND career.status = 'published'
       JOIN career_families family ON family.id = career.family_id
-      WHERE path.slug = $1 AND path.status = 'published'
+      WHERE (path.slug = $1 OR path.id = (SELECT entidad_id FROM slugs_anteriores WHERE tipo = 'ruta' AND anterior = $1))
+        AND path.status = 'published'
       LIMIT 1
     `, [slug]);
 

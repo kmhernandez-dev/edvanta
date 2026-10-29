@@ -96,6 +96,13 @@ import CartToast     from './components/CartToast';
 import PaymentStatus from './components/PaymentStatus';
 import AnalyticsConsent from './components/AnalyticsConsent';
 import AcademiaLinkModal from './components/AcademiaLinkModal';
+import { DIRECCIONES_ANTIGUAS } from './data/edvanta/direcciones';
+
+/** Lleva a la dirección nueva conservando la consulta (?utm_source=…). */
+function RedirigeA({ to }) {
+  const { search, hash } = useLocation();
+  return <Navigate to={`${to}${search}${hash}`} replace />;
+}
 
 /**
  * Carrito, avisos de compra y resultado de pago van en todo el sitio,
@@ -341,28 +348,28 @@ export default function App() {
         <Route path="/rutas/:slug" element={<RutaProfesionalPage />} />
         <Route path="/carreras" element={<CareersIndex />} />
         <Route path="/carreras/:slug" element={<CareerPage />} />
-        <Route path="/vocacion" element={<Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-edvanta-bg text-sm font-semibold text-slate-600">Cargando orientación vocacional...</div>}><VocacionPage /></Suspense>} />
+        <Route path="/orientacion-vocacional" element={<Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-edvanta-bg text-sm font-semibold text-slate-600">Cargando orientación vocacional...</div>}><VocacionPage /></Suspense>} />
         <Route path="/empleo" element={<Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-edvanta-bg text-sm font-semibold text-slate-600">Cargando centro de empleo...</div>}><EmpleoPage /></Suspense>} />
         <Route path="/hoja-de-vida" element={<HojaDeVida />} />
         <Route path="/hoja-de-vida/crear" element={<HojaDeVidaCrear />} />
-        <Route path="/empleo/correos" element={<CorreosRRHH />} />
-        <Route path="/empleo/ofertas-qf" element={<Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-edvanta-bg text-sm font-semibold text-slate-600">Cargando ofertas...</div>}><OfertasQFPage /></Suspense>} />
-        <Route path="/practicas" element={<Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-edvanta-bg text-sm font-semibold text-slate-600">Cargando guía de prácticas...</div>}><PracticasPage /></Suspense>} />
+        <Route path="/empleo/plantillas-de-correo-para-recursos-humanos" element={<CorreosRRHH />} />
+        <Route path="/empleo/ofertas-para-quimicos-farmaceuticos" element={<Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-edvanta-bg text-sm font-semibold text-slate-600">Cargando ofertas...</div>}><OfertasQFPage /></Suspense>} />
+        <Route path="/practicas-profesionales-farmaceuticas" element={<Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-edvanta-bg text-sm font-semibold text-slate-600">Cargando guía de prácticas...</div>}><PracticasPage /></Suspense>} />
         <Route path="/noticias" element={<Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-edvanta-bg text-sm font-semibold text-slate-600">Cargando noticias...</div>}><NoticiasPage /></Suspense>} />
-        <Route path="/linkedin" element={<Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-edvanta-bg text-sm font-semibold text-slate-600">Cargando guía de LinkedIn...</div>}><LinkedinPage /></Suspense>} />
-        <Route path="/emprendimientos" element={<Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-edvanta-bg text-sm font-semibold text-slate-600">Cargando emprendimientos...</div>}><EmprendimientosPage /></Suspense>} />
+        <Route path="/linkedin-farmaceutico" element={<Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-edvanta-bg text-sm font-semibold text-slate-600">Cargando guía de LinkedIn...</div>}><LinkedinPage /></Suspense>} />
+        <Route path="/emprendimiento-farmaceutico" element={<Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-edvanta-bg text-sm font-semibold text-slate-600">Cargando emprendimientos...</div>}><EmprendimientosPage /></Suspense>} />
         <Route path="/herramientas" element={<Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-edvanta-bg text-sm font-semibold text-slate-600">Cargando herramientas...</div>}><HerramientasPage /></Suspense>} />
         <Route path="/herramientas/:slug" element={<HerramientaLandingPage />} />
         {/* /empresas y /empresas/capacitacion se fusionaron en /instituciones.
             nginx responde 301; esto cubre la navegación dentro del sitio. */}
         <Route path="/empresas" element={<Navigate to="/instituciones" replace />} />
         <Route path="/empresas/capacitacion" element={<Navigate to="/instituciones/paquetes/equipo-que-cuida" replace />} />
-        <Route path="/empresas/talento" element={<EmpresasTalento />} />
+        <Route path="/empresas/recluta-talento-farmaceutico" element={<EmpresasTalento />} />
         {/* Landings por área de capacitación (catálogo de /instituciones). */}
         <Route path="/empresas/:slug" element={<CapacitacionArea />} />
 
         {/* Vitrina de talento (lado del profesional) */}
-        <Route path="/talento" element={<TalentoVitrina />} />
+        <Route path="/vitrina-de-talento-farmaceutico" element={<TalentoVitrina />} />
         <Route path="/oportunidades" element={<Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-edvanta-bg text-sm font-semibold text-slate-600">Cargando oportunidades...</div>}><EcosystemDirectory kind="opportunities" /></Suspense>} />
         <Route path="/proyectos" element={<Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-edvanta-bg text-sm font-semibold text-slate-600">Cargando proyectos...</div>}><EcosystemDirectory kind="projects" /></Suspense>} />
         <Route path="/certificaciones" element={<Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-edvanta-bg text-sm font-semibold text-slate-600">Cargando certificaciones...</div>}><EcosystemDirectory kind="certifications" /></Suspense>} />
@@ -405,6 +412,12 @@ export default function App() {
         <Route path="/reembolsos"      element={<LegalPage doc="reembolsos" />} />
         <Route path="/descargo-medico" element={<LegalPage doc="descargo-medico" />} />
         <Route path="/afiliados"       element={<LegalPage doc="afiliados" />} />
+
+        {/* Escuelas y páginas que cambiaron de nombre: la vieja lleva a la
+            nueva también al navegar dentro del sitio (nginx responde el 301). */}
+        {DIRECCIONES_ANTIGUAS.filter((d) => d.tipo === 'escuela' || d.tipo === 'página').map((d) => (
+          <Route key={d.antigua} path={d.antigua} element={<RedirigeA to={d.nueva} />} />
+        ))}
 
         {/* 404 — página no encontrada */}
         {/* Direcciones de un tramo: los cursos (/curso-de-…). Lo demás, 404. */}

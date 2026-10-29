@@ -87,13 +87,13 @@ export default function CorreosRRHH() {
     updatePageSeo({
       title: 'Plantillas de correo para recursos humanos | Edvanta',
       description: 'Cinco correos listos para postular, insistir con elegancia, agradecer una entrevista y pedir un referido en el sector farmacéutico.',
-      canonical: 'https://edvanta.co/empleo/correos',
+      canonical: 'https://edvanta.co/empleo/plantillas-de-correo-para-recursos-humanos',
       jsonLdId: 'empleo-correos',
       jsonLd: {
         '@context': 'https://schema.org',
         '@type': 'WebPage',
         name: 'Plantillas de correo para recursos humanos',
-        url: 'https://edvanta.co/empleo/correos',
+        url: 'https://edvanta.co/empleo/plantillas-de-correo-para-recursos-humanos',
       },
     });
   }, []);
@@ -192,8 +192,8 @@ export default function CorreosRRHH() {
                 <li>· Un solo seguimiento por vacante: más que eso resta.</li>
               </ul>
               <div className="mt-7 flex flex-wrap gap-3">
-                <Btn to="/empleo/ofertas-qf" variant="secondary">Ver vacantes abiertas</Btn>
-                <ArrowLink to="/linkedin">Mejorar mi LinkedIn</ArrowLink>
+                <Btn to="/empleo/ofertas-para-quimicos-farmaceuticos" variant="secondary">Ver vacantes abiertas</Btn>
+                <ArrowLink to="/linkedin-farmaceutico">Mejorar mi LinkedIn</ArrowLink>
               </div>
             </div>
             <div className="mt-8 lg:mt-0">

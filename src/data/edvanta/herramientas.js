@@ -84,7 +84,7 @@ export const HERRAMIENTAS = [
     h1: 'Envía correos profesionales a recursos humanos sin quedarte en blanco',
     tagline:
       'Plantillas de correo en español listas para postular, dar seguimiento y agradecer, con el tono profesional del sector farmacéutico. Editas los campos y copias.',
-    cta: { label: 'Ver plantillas de correo', to: '/empleo/correos' },
+    cta: { label: 'Ver plantillas de correo', to: '/empleo/plantillas-de-correo-para-recursos-humanos' },
     canDo: [
       'Usar una plantilla de correo de postulación lista para editar.',
       'Cambiar cargo, empresa y tus datos entre llaves en segundos.',
@@ -114,7 +114,7 @@ export const HERRAMIENTAS = [
     h1: 'Encuentra vacantes farmacéuticas y comparte las tuyas',
     tagline:
       'Un banco colaborativo donde las ofertas se publican con la misma plantilla: cargo, empresa, ciudad, modalidad y contacto directo. Consulta o comparte una vacante.',
-    cta: { label: 'Ver el banco de vacantes', to: '/empleo/ofertas-qf' },
+    cta: { label: 'Ver el banco de vacantes', to: '/empleo/ofertas-para-quimicos-farmaceuticos' },
     canDo: [
       'Consultar vacantes del sector con un formato unificado.',
       'Ver cargo, empresa, ciudad, modalidad y contacto directo.',
@@ -144,7 +144,7 @@ export const HERRAMIENTAS = [
     h1: 'Descubre en qué área farmacéutica encajas mejor',
     tagline:
       'Un recorrido guiado por tus intereses y fortalezas que te sugiere las áreas profesionales del químico farmacéutico donde tienes más afinidad.',
-    cta: { label: 'Empezar la orientación', to: '/vocacion' },
+    cta: { label: 'Empezar la orientación', to: '/orientacion-vocacional' },
     canDo: [
       'Responder un cuestionario corto de intereses y fortalezas.',
       'Recibir áreas farmacéuticas sugeridas según tu perfil.',
@@ -174,7 +174,7 @@ export const HERRAMIENTAS = [
     h1: 'Mejora tu LinkedIn con prompts pensados para farmacéuticos',
     tagline:
       'Un banco de prompts por categoría (titular, "Acerca de", experiencia, contenido) con botón de copia, más una guía visual de 6 pasos para optimizar tu perfil.',
-    cta: { label: 'Abrir la guía de LinkedIn', to: '/linkedin' },
+    cta: { label: 'Abrir la guía de LinkedIn', to: '/linkedin-farmaceutico' },
     canDo: [
       'Copiar prompts por categoría para redactar cada parte de tu perfil.',
       'Seguir una guía visual de 6 pasos para optimizar LinkedIn.',
@@ -204,7 +204,7 @@ export const HERRAMIENTAS = [
     h1: 'Prepárate para tus prácticas paso a paso',
     tagline:
       'Una guía práctica para llegar preparado a tus prácticas: elegir área, preparar tu perfil, tu hoja de vida y tu correo, y postularte con las fuentes oficiales.',
-    cta: { label: 'Abrir la guía de prácticas', to: '/practicas' },
+    cta: { label: 'Abrir la guía de prácticas', to: '/practicas-profesionales-farmaceuticas' },
     canDo: [
       'Seguir una ruta clara para preparar tus prácticas.',
       'Usar la plantilla de hoja de vida y de correo para practicantes.',
@@ -234,7 +234,7 @@ export const HERRAMIENTAS = [
     h1: 'Convierte tu idea farmacéutica en un proyecto validado',
     tagline:
       'Un recorrido de emprendimiento con canvas de idea y preguntas guiadas de validación, más recursos para probar productos, enseñar o publicar en equipo.',
-    cta: { label: 'Empezar a emprender', to: '/emprendimientos' },
+    cta: { label: 'Empezar a emprender', to: '/emprendimiento-farmaceutico' },
     canDo: [
       'Estructurar tu idea con un canvas y preguntas guiadas.',
       'Validar el problema, el cliente y la propuesta de valor.',
@@ -264,7 +264,7 @@ export const HERRAMIENTAS = [
     h1: 'Muestra tus habilidades y proyectos a las empresas',
     tagline:
       'Publica tu perfil profesional con tus proyectos, artículos y certificados. Te clasificas por área y las empresas pueden filtrar y contactarte según lo que buscan.',
-    cta: { label: 'Publicar mi perfil en la vitrina', to: '/talento' },
+    cta: { label: 'Publicar mi perfil en la vitrina', to: '/vitrina-de-talento-farmaceutico' },
     canDo: [
       'Publicar tu perfil con habilidades, proyectos y artículos.',
       'Clasificarte automáticamente por tu área profesional.',

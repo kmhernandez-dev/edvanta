@@ -63,13 +63,13 @@ export default function TalentoVitrina() {
     updatePageSeo({
       title: 'Vitrina de talento farmacéutico | Publica tus logros | Edvanta',
       description: 'Publica tus logros profesionales y espera a que un cazatalento te contacte. Perfil básico gratuito y perfil destacado para llegar antes a las empresas.',
-      canonical: 'https://edvanta.co/talento',
+      canonical: 'https://edvanta.co/vitrina-de-talento-farmaceutico',
       jsonLdId: 'talento',
       jsonLd: {
         '@context': 'https://schema.org',
         '@type': 'WebPage',
         name: 'Vitrina de talento farmacéutico',
-        url: 'https://edvanta.co/talento',
+        url: 'https://edvanta.co/vitrina-de-talento-farmaceutico',
       },
     });
   }, []);
@@ -203,7 +203,7 @@ export default function TalentoVitrina() {
               </ul>
               <div className="mt-7 flex flex-wrap gap-3">
                 <Btn to="/hoja-de-vida" variant="secondary" icon={FileText}>Mejorar mi hoja de vida</Btn>
-                <Btn to="/linkedin" variant="ghost" icon={Users}>Optimizar mi LinkedIn</Btn>
+                <Btn to="/linkedin-farmaceutico" variant="ghost" icon={Users}>Optimizar mi LinkedIn</Btn>
               </div>
             </div>
           </div>
@@ -227,7 +227,7 @@ export default function TalentoVitrina() {
               </span>
               <p className="mt-4 text-base font-bold text-edvanta-deep">Revisa las vacantes abiertas</p>
               <p className="mt-1.5 text-sm leading-6 text-edvanta-muted">Ofertas para químicos farmacéuticos con postulación directa.</p>
-              <ArrowLink to="/empleo/ofertas-qf" className="mt-4">Ver ofertas</ArrowLink>
+              <ArrowLink to="/empleo/ofertas-para-quimicos-farmaceuticos" className="mt-4">Ver ofertas</ArrowLink>
             </Card>
             <Card hover>
               <span className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-edvanta-lilac text-[#5E51A8]">
@@ -235,7 +235,7 @@ export default function TalentoVitrina() {
               </span>
               <p className="mt-4 text-base font-bold text-edvanta-deep">¿Vienes de una empresa?</p>
               <p className="mt-1.5 text-sm leading-6 text-edvanta-muted">Busca talento en el directorio y publica tu vacante gratis.</p>
-              <ArrowLink to="/empresas/talento" className="mt-4">Entrar como empresa</ArrowLink>
+              <ArrowLink to="/empresas/recluta-talento-farmaceutico" className="mt-4">Entrar como empresa</ArrowLink>
             </Card>
           </div>
         </Section>

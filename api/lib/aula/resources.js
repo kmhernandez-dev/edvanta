@@ -14,6 +14,7 @@ import {
 import { audit } from './audit.js';
 import { notify } from './notify.js';
 import { requireOpenEnrollment } from './access.js';
+import { rutaEnAula } from '../slugs-publicos.js';
 
 const has = (o, k) => Object.prototype.hasOwnProperty.call(o, k);
 
@@ -293,10 +294,11 @@ export async function addResourceVersion(db, resourceId, version, { actor, ip, n
           WHERE e.course_id = $1 AND e.withdrawn_at IS NULL AND c.resources_enabled`,
         [r.course_id],
       );
+      const link = people.length ? `${await rutaEnAula(tx, r.course_id)}/recursos` : null;
       for (const p of people) {
         await notify(tx, {
           userId: p.user_id, type: 'recurso_actualizado', title: `Se actualizó «${r.title}»`,
-          body: version.notes, link: `/aula/curso/${r.course_id}/recursos`, dedupeKey: `recurso:${v.id}`, now,
+          body: version.notes, link, dedupeKey: `recurso:${v.id}`, now,
         });
       }
       notified = people.length;
