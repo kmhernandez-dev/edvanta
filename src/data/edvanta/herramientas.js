@@ -16,7 +16,7 @@
 
 export const HERRAMIENTAS = [
   {
-    slug: 'cv-builder',
+    slug: 'creador-de-hoja-de-vida',
     kind: 'builder',
     icon: 'file',
     nav: 'Creador de hoja de vida',
@@ -46,7 +46,7 @@ export const HERRAMIENTAS = [
     },
   },
   {
-    slug: 'analizador-ats',
+    slug: 'analizador-ats-de-hoja-de-vida',
     kind: 'analyzer',
     icon: 'scan',
     nav: 'Analizador ATS',
@@ -76,7 +76,7 @@ export const HERRAMIENTAS = [
     },
   },
   {
-    slug: 'correos-rrhh',
+    slug: 'plantillas-de-correo-para-recursos-humanos',
     kind: 'library',
     icon: 'mail',
     nav: 'Correos a RR. HH.',
@@ -106,7 +106,7 @@ export const HERRAMIENTAS = [
     },
   },
   {
-    slug: 'banco-vacantes',
+    slug: 'banco-de-vacantes-farmaceuticas',
     kind: 'explorer',
     icon: 'briefcase',
     nav: 'Banco de vacantes',
@@ -166,7 +166,7 @@ export const HERRAMIENTAS = [
     },
   },
   {
-    slug: 'linkedin',
+    slug: 'guia-para-mejorar-linkedin',
     kind: 'generator',
     icon: 'linkedin',
     nav: 'LinkedIn',
@@ -196,7 +196,7 @@ export const HERRAMIENTAS = [
     },
   },
   {
-    slug: 'practicas',
+    slug: 'practicas-farmaceuticas',
     kind: 'wizard',
     icon: 'clipboard',
     nav: 'Prácticas',
@@ -226,7 +226,7 @@ export const HERRAMIENTAS = [
     },
   },
   {
-    slug: 'emprende',
+    slug: 'emprendimiento-farmaceutico',
     kind: 'wizard',
     icon: 'rocket',
     nav: 'Emprende',
@@ -256,7 +256,7 @@ export const HERRAMIENTAS = [
     },
   },
   {
-    slug: 'perfil-empresas',
+    slug: 'perfil-profesional-para-empresas',
     kind: 'builder',
     icon: 'building',
     nav: 'Perfil para empresas',

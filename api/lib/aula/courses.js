@@ -18,6 +18,7 @@ import { notify } from './notify.js';
 import { buildSnapshot, diffSnapshots, validateSnapshot } from './snapshot.js';
 import { recomputeEnrollment } from './progress.js';
 import { copyModuleInto } from './structure.js';
+import { asegurarSlug } from '../slugs-publicos.js';
 
 const has = (o, k) => Object.prototype.hasOwnProperty.call(o, k);
 
@@ -592,6 +593,11 @@ export async function publishCourse(db, id, {
         WHERE id = $1`,
       [id, version.id, now, actor.id],
     );
+    // Su dirección pública (/curso-de-…) nace con la primera publicación y no
+    // cambia después, aunque cambie el título. Los de empresa no tienen.
+    if (locked.kind === 'edvanta') {
+      await asegurarSlug(tx, { entidad: 'aula', id, titulo: locked.title, nivel: locked.level });
+    }
 
     // Quién pasa a la versión nueva.
     const moved = await many(

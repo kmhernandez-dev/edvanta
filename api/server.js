@@ -51,6 +51,8 @@ import adminRetosRoutes from './routes/admin-retos.js';
 import communityRoutes from './routes/community.js';
 import cvRoutes from './routes/cv.js';
 import cvIaRoutes from './routes/cv-ia.js';
+import { crearRutasPublicas, plantillaDelSitio } from './routes/paginas-publicas.js';
+import { asegurarSlugsDeCursos } from './lib/slugs-publicos.js';
 import articleCommentsRoutes from './routes/article-comments.js';
 import fstClicksRoutes from './routes/fst-clicks.js';
 import vida360Routes from './routes/vida360.js';
@@ -319,6 +321,16 @@ app.use('/api/cv', cvRoutes);
 // Lectura y revisión de hojas de vida con IA (clave solo en el servidor)
 app.use('/api/cv-ia', cvIaRoutes);
 
+// Direcciones públicas de los cursos (/curso-de-…): nginx manda aquí las
+// nuevas (página con metadatos) y las viejas (301). También el sitemap de
+// cursos y la tabla de direcciones antiguas → nuevas.
+const SITIO_PUBLICO = (process.env.SITE_URL || 'https://edvanta.co').replace(/\/+$/, '');
+app.use('/api', crearRutasPublicas({
+  db: pool,
+  sitio: SITIO_PUBLICO,
+  obtenerPlantilla: plantillaDelSitio({ url: process.env.SPA_SHELL_URL || `${SITIO_PUBLICO}/index.html` }),
+}));
+
 // Aula virtual empresarial (cuentas propias, sesiones por cookie)
 const aulaDb = fromPgPool(pool);
 const aulaStorage = createDiskStorage(process.env.AULA_STORAGE_DIR || './.data/aula');
@@ -387,6 +399,14 @@ async function start() {
       await pool.query('SELECT 1');
       console.log(JSON.stringify({ level: 'info', msg: 'Conexión a base de datos OK' }));
       await runMigrations();
+      // Cada curso público con su dirección descriptiva. Los que ya la tienen
+      // no se tocan: una dirección publicada no cambia.
+      try {
+        const nuevos = await asegurarSlugsDeCursos(pool);
+        console.log(JSON.stringify({ level: 'info', msg: 'Direcciones públicas de cursos', nuevas: nuevos.length }));
+      } catch (e) {
+        console.error(JSON.stringify({ level: 'error', msg: 'No se pudieron asignar las direcciones de cursos', error: e.message }));
+      }
       try {
         await startAula({
           db: aulaDb,

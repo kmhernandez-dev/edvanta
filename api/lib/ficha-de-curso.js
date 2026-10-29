@@ -118,7 +118,8 @@ export function fichaDeCursoPropio(curso, temario) {
     variante: 'edvanta',
     dondeSeEstudia: EN_EDVANTA,
     proveedor: { clave: 'edvanta', nombre: 'Edvanta', imparte: 'Edvanta' },
-    url: `/curso/${curso.id}`,
+    // La dirección pública (/curso-de-…). Sin slug todavía, la vieja, que redirige.
+    url: curso.public_slug ? `/${curso.public_slug}` : `/curso/${curso.id}`,
     titulo: texto(curso.title),
     resumen: texto(curso.short_description),
     descripcionHtml: texto(curso.description_html),
@@ -158,7 +159,9 @@ export function fichaDeCursoCurado(curso) {
     variante: curso.provider,
     dondeSeEstudia: EN_PROVEEDOR,
     proveedor: { clave: curso.provider, nombre: p.nombre, imparte: p.nombre, accion: p.accion, enlace },
-    url: `/cursos/${curso.slug}`,
+    url: curso.public_slug ? `/${curso.public_slug}` : `/cursos/${curso.slug}`,
+    // Referencia interna (opiniones, guardados): el slug de la tabla courses.
+    referencia: curso.slug,
     titulo: texto(curso.title),
     resumen: texto(curso.short_description),
     descripcionHtml: null,

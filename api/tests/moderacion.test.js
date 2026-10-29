@@ -72,7 +72,8 @@ describe('moderación de comentarios', () => {
     // Con su contexto: quién, en qué curso y a dónde ir a verlo.
     expect(c.autor.nombre).toBe('Lucía Pérez');
     expect(c.contexto.curso).toBe('Curso moderado');
-    expect(c.contexto.url).toBe(`/curso/${cursoId}`);
+    // La dirección pública del curso, la que nace al publicarlo.
+    expect(c.contexto.url).toBe('/curso-moderado');
   });
 
   it('se puede ver quién reportó y por qué', async () => {

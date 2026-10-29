@@ -113,7 +113,7 @@ export default function SobreEdvanta() {
                 Dicta el primer curso en vivo de Edvanta, para auxiliares y regentes de farmacia.
               </p>
               <div className="mt-6 flex flex-wrap gap-3">
-                <Btn to="/cursos/en-vivo/operacion-segura-servicio-farmaceutico">Ver el curso en vivo</Btn>
+                <Btn to="/curso-de-operacion-segura-del-servicio-farmaceutico">Ver el curso en vivo</Btn>
                 {LINKEDIN_URL && <Btn href={LINKEDIN_URL} external variant="secondary">LinkedIn</Btn>}
               </div>
             </div>

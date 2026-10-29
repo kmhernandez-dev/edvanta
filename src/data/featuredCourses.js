@@ -1,6 +1,8 @@
 export const featuredCourses = [
   {
     slug: 'gestion-de-calidad',
+    // Dirección pública de la ficha (tabla public_slugs de la API).
+    ruta: '/curso-de-gestion-de-calidad',
     title: 'Gestión de calidad',
     courseCode: 'SH-9060',
     affiliateUrl: 'https://edutin.com/sh-9060',
@@ -35,6 +37,8 @@ export const featuredCourses = [
   },
   {
     slug: 'power-bi',
+    // Dirección pública de la ficha (tabla public_slugs de la API).
+    ruta: '/curso-de-power-bi',
     title: 'Power BI',
     courseCode: 'SH-9086',
     affiliateUrl: 'https://edutin.com/sh-9086',
@@ -69,6 +73,8 @@ export const featuredCourses = [
   },
   {
     slug: 'auditoria',
+    // Dirección pública de la ficha (tabla public_slugs de la API).
+    ruta: '/curso-de-auditoria',
     title: 'Auditoría',
     courseCode: 'SH-9215',
     affiliateUrl: 'https://edutin.com/sh-9215',
@@ -103,6 +109,8 @@ export const featuredCourses = [
   },
   {
     slug: 'gestion-ambiental',
+    // Dirección pública de la ficha (tabla public_slugs de la API).
+    ruta: '/curso-de-gestion-ambiental',
     title: 'Gestión ambiental',
     courseCode: 'SH-13818',
     affiliateUrl: 'https://edutin.com/sh-13818',
@@ -137,6 +145,8 @@ export const featuredCourses = [
   },
   {
     slug: 'seguridad-y-salud-en-el-trabajo',
+    // Dirección pública de la ficha (tabla public_slugs de la API).
+    ruta: '/curso-de-seguridad-y-salud-en-el-trabajo',
     title: 'Seguridad y salud en el trabajo',
     courseCode: 'SH-13571',
     affiliateUrl: 'https://edutin.com/sh-13571',
@@ -171,6 +181,8 @@ export const featuredCourses = [
   },
   {
     slug: 'gestion-de-proyectos',
+    // Dirección pública de la ficha (tabla public_slugs de la API).
+    ruta: '/curso-de-gestion-de-proyectos',
     title: 'Gestión de proyectos',
     courseCode: 'SH-10262',
     affiliateUrl: 'https://edutin.com/sh-10262',
@@ -205,6 +217,8 @@ export const featuredCourses = [
   },
   {
     slug: 'lean',
+    // Dirección pública de la ficha (tabla public_slugs de la API).
+    ruta: '/curso-de-lean',
     title: 'Lean',
     courseCode: 'SH-13568',
     affiliateUrl: 'https://edutin.com/sh-13568',
@@ -239,6 +253,8 @@ export const featuredCourses = [
   },
   {
     slug: 'lean-six-sigma',
+    // Dirección pública de la ficha (tabla public_slugs de la API).
+    ruta: '/curso-de-lean-six-sigma',
     title: 'Lean Six Sigma',
     courseCode: 'SH-10218',
     affiliateUrl: 'https://edutin.com/sh-10218',

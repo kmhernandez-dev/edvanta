@@ -12,13 +12,15 @@
  *  selección editorial (no se presenta como «lo más leído», porque no
  *  hay datos de lectura que lo respalden).
  *
- *  Los filtros viven en la dirección (?publico=…&categoria=…&q=…) para
- *  que un enlace compartido abra la misma vista.
+ *  Cada categoría tiene su propia página, con dirección descriptiva:
+ *  /articulos/categoria/gestion-de-calidad (antes era el filtro
+ *  ?categoria=Gestión%20de%20calidad, que nginx redirige con 301). El
+ *  público y la búsqueda siguen en la consulta (?publico=…&q=…).
  * ============================================================
  */
 
 import { useEffect, useMemo, useState } from 'react';
-import { Link, useSearchParams } from 'react-router-dom';
+import { Link, Navigate, useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import { ArrowRight, BookOpen, Clock, GraduationCap, HeartPulse, History, Search, Sparkles } from 'lucide-react';
 import SiteHeader from '../components/edvanta/SiteHeader';
 import SiteFooter from '../components/edvanta/SiteFooter';
@@ -27,6 +29,8 @@ import FormularioSolicitud from '../components/formularios/FormularioSolicitud';
 import { articulos, getArticulo } from '../data/articulos';
 import { lecturasRecientes } from '../lib/articulos/lecturas';
 import { updatePageSeo } from '../utils/seo';
+import { rutaDeCategoria, slugify } from '../lib/slug';
+import NotFound from './NotFound';
 
 const POR_PAGINA = 12;
 
@@ -49,6 +53,28 @@ const SELECCION = [
 ];
 
 const normalizar = (t) => String(t).normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+
+/**
+ * Las categorías, agrupadas por su slug: «Gestión de Calidad» y «Gestión
+ * de calidad» son la misma página. Se muestra el nombre más usado.
+ */
+export function categoriasDe(lista) {
+  const porSlug = new Map();
+  for (const a of lista) {
+    const slug = slugify(a.category);
+    if (!slug) continue;
+    const c = porSlug.get(slug) || { slug, total: 0, nombres: new Map() };
+    c.total += 1;
+    c.nombres.set(a.category, (c.nombres.get(a.category) || 0) + 1);
+    porSlug.set(slug, c);
+  }
+  return [...porSlug.values()]
+    .map(({ slug, total, nombres }) => ({ slug, total, nombre: [...nombres.entries()].sort((x, y) => y[1] - x[1])[0][0] }))
+    .sort((x, y) => y.total - x.total);
+}
+
+const TODAS_LAS_CATEGORIAS = categoriasDe(articulos);
+export const categoriaPorSlug = (slug) => TODAS_LAS_CATEGORIAS.find((c) => c.slug === slug) || null;
 
 function Tarjeta({ a, destacada = false }) {
   const pacientes = publicoDe(a) === 'pacientes';
@@ -91,64 +117,100 @@ function Tarjeta({ a, destacada = false }) {
 
 export default function ArticulosIndex() {
   const [params, setParams] = useSearchParams();
+  const navigate = useNavigate();
+  const { categoria: slugCategoria = '' } = useParams();
   const publico = params.get('publico') || '';
   const categoriaParam = params.get('categoria') || '';
   const q = params.get('q') || '';
+  const actual = slugCategoria ? categoriaPorSlug(slugCategoria) : null;
   const [busqueda, setBusqueda] = useState(q);
   const [visibles, setVisibles] = useState(POR_PAGINA);
   const [recientes, setRecientes] = useState([]);
 
   useEffect(() => { setRecientes(lecturasRecientes().map(getArticulo).filter(Boolean).slice(0, 3)); }, []);
-  useEffect(() => { setVisibles(POR_PAGINA); }, [publico, categoriaParam, q]);
+  useEffect(() => { setVisibles(POR_PAGINA); }, [publico, slugCategoria, q]);
 
   const cambiar = (clave, valor) => {
     const p = new URLSearchParams(params);
     if (valor) p.set(clave, valor); else p.delete(clave);
-    if (clave === 'publico') p.delete('categoria');
+    // Cambiar de público vuelve al índice: la categoría puede no tener de ese público.
+    if (clave === 'publico' && slugCategoria) {
+      navigate(`/articulos${p.toString() ? `?${p}` : ''}`);
+      return;
+    }
     setParams(p, { replace: true });
+  };
+  const conConsulta = (ruta) => {
+    const p = new URLSearchParams(params);
+    p.delete('categoria');
+    return `${ruta}${p.toString() ? `?${p}` : ''}`;
   };
 
   const delPublico = useMemo(() => (publico ? articulos.filter((a) => publicoDe(a) === publico) : articulos), [publico]);
 
-  const categorias = useMemo(() => {
-    const cuenta = new Map();
-    for (const a of delPublico) cuenta.set(a.category, (cuenta.get(a.category) || 0) + 1);
-    return [...cuenta.entries()].sort((x, y) => y[1] - x[1]);
-  }, [delPublico]);
-
-  // Acepta la categoría exacta o un fragmento, como hacían los enlaces viejos.
-  const categoria = useMemo(() => {
-    if (!categoriaParam) return '';
-    const exacta = categorias.find(([c]) => c === categoriaParam);
-    if (exacta) return exacta[0];
-    const parcial = categorias.find(([c]) => normalizar(c).includes(normalizar(categoriaParam).replace(/-/g, ' ')));
-    return parcial ? parcial[0] : '';
-  }, [categoriaParam, categorias]);
+  const categorias = useMemo(() => categoriasDe(delPublico), [delPublico]);
+  const categoria = actual?.nombre || '';
 
   const filtrados = useMemo(() => {
     const t = normalizar(q.trim());
-    return delPublico.filter((a) => (!categoria || a.category === categoria)
+    return delPublico.filter((a) => (!slugCategoria || slugify(a.category) === slugCategoria)
       && (!t || normalizar(`${a.title} ${a.description} ${a.category}`).includes(t)));
-  }, [delPublico, categoria, q]);
+  }, [delPublico, slugCategoria, q]);
 
   const seleccion = useMemo(() => SELECCION.map(getArticulo).filter(Boolean), []);
   const filtrando = Boolean(publico || categoria || q);
 
-  useEffect(() => updatePageSeo({
-    title: 'Artículos de salud, medicamentos y farmacia | Edvanta',
-    description: 'Para qué sirve cada medicamento, síntomas de enfermedades, cómo bajar de peso, recetas, plantas medicinales, regulación y noticias farmacéuticas, en lenguaje claro.',
-    canonical: 'https://edvanta.co/articulos',
-    jsonLdId: 'articles-index',
-    jsonLd: {
-      '@context': 'https://schema.org',
-      '@type': 'CollectionPage',
-      name: 'Artículos de Edvanta',
-      url: 'https://edvanta.co/articulos',
-      publisher: { '@type': 'Organization', name: 'Edvanta' },
-    },
-  }), []);
+  useEffect(() => {
+    // Categoría que no existe: el título lo pone la página de «no encontrada».
+    if (slugCategoria && !actual) return;
+    if (actual) {
+      const url = `https://edvanta.co${rutaDeCategoria(actual.nombre)}`;
+      updatePageSeo({
+        title: `Artículos de ${actual.nombre} | Edvanta`,
+        description: `${actual.total} ${actual.total === 1 ? 'artículo' : 'artículos'} de ${actual.nombre.toLowerCase()} en Edvanta, en lenguaje claro y con fuentes.`,
+        canonical: url,
+        jsonLdId: 'articles-index',
+        jsonLd: {
+          '@context': 'https://schema.org',
+          '@type': 'CollectionPage',
+          name: `Artículos de ${actual.nombre}`,
+          url,
+          publisher: { '@type': 'Organization', name: 'Edvanta' },
+          breadcrumb: {
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+              { '@type': 'ListItem', position: 1, name: 'Inicio', item: 'https://edvanta.co/' },
+              { '@type': 'ListItem', position: 2, name: 'Artículos', item: 'https://edvanta.co/articulos' },
+              { '@type': 'ListItem', position: 3, name: actual.nombre, item: url },
+            ],
+          },
+        },
+      });
+      return;
+    }
+    updatePageSeo({
+      title: 'Artículos de salud, medicamentos y farmacia | Edvanta',
+      description: 'Para qué sirve cada medicamento, síntomas de enfermedades, cómo bajar de peso, recetas, plantas medicinales, regulación y noticias farmacéuticas, en lenguaje claro.',
+      canonical: 'https://edvanta.co/articulos',
+      jsonLdId: 'articles-index',
+      jsonLd: {
+        '@context': 'https://schema.org',
+        '@type': 'CollectionPage',
+        name: 'Artículos de Edvanta',
+        url: 'https://edvanta.co/articulos',
+        publisher: { '@type': 'Organization', name: 'Edvanta' },
+      },
+    });
+  }, [actual, slugCategoria]);
 
   const buscar = (e) => { e.preventDefault(); cambiar('q', busqueda.trim()); };
+
+  // El filtro viejo (?categoria=…) dentro del sitio pasa a la página de la categoría.
+  if (!slugCategoria && categoriaParam) {
+    const destino = categoriaPorSlug(slugify(categoriaParam));
+    return <Navigate to={destino ? conConsulta(`/articulos/categoria/${destino.slug}`) : conConsulta('/articulos')} replace />;
+  }
+  if (slugCategoria && !actual) return <NotFound />;
 
   return (
     <div className="min-h-screen bg-white">
@@ -158,18 +220,23 @@ export default function ArticulosIndex() {
           <div className="ed-backdrop" aria-hidden="true" />
           <div className="ed-grid" aria-hidden="true" />
           <div className="relative mx-auto max-w-7xl px-4 pb-12 pt-10 sm:px-6 sm:pb-16 sm:pt-14 lg:px-8">
-            <Breadcrumb items={[{ label: 'Inicio', to: '/' }, { label: 'Artículos' }]} />
+            <Breadcrumb items={actual
+              ? [{ label: 'Inicio', to: '/' }, { label: 'Artículos', to: '/articulos' }, { label: actual.nombre }]
+              : [{ label: 'Inicio', to: '/' }, { label: 'Artículos' }]} />
             <div className="hx-fade mt-6 max-w-3xl">
               <p className="inline-flex items-center gap-2.5 text-xs font-bold uppercase tracking-[.14em] text-edvanta-blue">
                 <span className="h-[3px] w-6 rounded-full" style={{ background: 'var(--ed-gradient-brand)' }} aria-hidden="true" />
                 Artículos de Edvanta
               </p>
               <h1 className="mt-3 font-display text-[2.1rem] font-extrabold leading-[1.08] tracking-[-0.03em] text-edvanta-blue sm:text-5xl lg:text-[3.35rem]">
-                Salud y farmacia, <span className="ed-grad-text">explicadas con claridad</span>
+                {actual
+                  ? <>Artículos de <span className="ed-grad-text">{actual.nombre.toLowerCase()}</span></>
+                  : <>Salud y farmacia, <span className="ed-grad-text">explicadas con claridad</span></>}
               </h1>
               <p className="mt-4 text-lg leading-8 text-edvanta-muted">
-                Para qué sirve cada medicamento, qué significan tus síntomas, cómo bajar de peso sin riesgos y lo que cambia en la
-                regulación farmacéutica. {articulos.length} artículos en lenguaje claro.
+                {actual
+                  ? `${actual.total} ${actual.total === 1 ? 'artículo' : 'artículos'} de ${actual.nombre.toLowerCase()}, en lenguaje claro y con fuentes.`
+                  : `Para qué sirve cada medicamento, qué significan tus síntomas, cómo bajar de peso sin riesgos y lo que cambia en la regulación farmacéutica. ${articulos.length} artículos en lenguaje claro.`}
               </p>
             </div>
             <form onSubmit={buscar} role="search" className="hx-fade mt-8 flex max-w-2xl gap-2 rounded-2xl border border-edvanta-border bg-white p-2 shadow-[0_18px_44px_rgba(23,34,59,.10)]">
@@ -205,18 +272,20 @@ export default function ArticulosIndex() {
                 </button>
               ))}
               <span className="mx-1 w-px shrink-0 bg-edvanta-border" aria-hidden="true" />
-              {categorias.map(([c, n]) => (
-                <button
-                  key={c}
-                  type="button"
-                  onClick={() => cambiar('categoria', categoria === c ? '' : c)}
-                  aria-pressed={categoria === c}
-                  className={`inline-flex min-h-10 shrink-0 items-center gap-1.5 rounded-xl border px-3.5 text-sm font-medium transition ${categoria === c ? 'border-edvanta-teal bg-edvanta-mint text-edvanta-tealdark' : 'border-edvanta-border bg-white text-edvanta-muted hover:text-edvanta-blue'}`}
-                >
-                  {c}
-                  <span className="text-xs opacity-70">{n}</span>
-                </button>
-              ))}
+              {categorias.map((c) => {
+                const activa = slugCategoria === c.slug;
+                return (
+                  <Link
+                    key={c.slug}
+                    to={conConsulta(activa ? '/articulos' : `/articulos/categoria/${c.slug}`)}
+                    aria-current={activa ? 'page' : undefined}
+                    className={`inline-flex min-h-10 shrink-0 items-center gap-1.5 rounded-xl border px-3.5 text-sm font-medium transition ${activa ? 'border-edvanta-teal bg-edvanta-mint text-edvanta-tealdark' : 'border-edvanta-border bg-white text-edvanta-muted hover:text-edvanta-blue'}`}
+                  >
+                    {c.nombre}
+                    <span className="text-xs opacity-70">{c.total}</span>
+                  </Link>
+                );
+              })}
             </div>
           </div>
         </div>
@@ -255,7 +324,7 @@ export default function ArticulosIndex() {
             <div className="mt-8 rounded-[18px] border border-dashed border-edvanta-strong bg-edvanta-bg p-10 text-center">
               <p className="font-display text-lg font-bold text-edvanta-deep">No encontramos artículos con esa búsqueda</p>
               <p className="mt-2 text-sm text-edvanta-muted">Prueba con otra palabra, por ejemplo el nombre del medicamento sin la marca.</p>
-              <button type="button" onClick={() => { setBusqueda(''); setParams({}, { replace: true }); }} className="ed-btn ed-btn--primary mt-5">Ver todos</button>
+              <button type="button" onClick={() => { setBusqueda(''); navigate('/articulos'); }} className="ed-btn ed-btn--primary mt-5">Ver todos</button>
             </div>
           ) : (
             <>

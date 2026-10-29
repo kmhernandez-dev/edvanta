@@ -21,7 +21,7 @@ import { updatePageSeo } from '../../utils/seo';
 
 const ATAJOS = [
   { t: 'Quiero una propuesta para mi institución', to: '/instituciones#solicitar-propuesta' },
-  { t: 'Me interesa el curso en vivo para auxiliares y regentes', to: '/cursos/en-vivo/operacion-segura-servicio-farmaceutico#registro' },
+  { t: 'Me interesa el curso en vivo para auxiliares y regentes', to: '/curso-de-operacion-segura-del-servicio-farmaceutico#registro' },
   { t: 'No puedo entrar al aula virtual', to: '/diagnostico' },
   { t: 'Política de reembolsos de los kits', to: '/reembolsos' },
 ];

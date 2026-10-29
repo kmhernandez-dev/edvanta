@@ -16,8 +16,8 @@
  * ============================================================
  */
 
-import { products as KITS } from '../products';
-import { FST_COLECCION_HOTMART } from '../../config/links';
+import { products as KITS } from '../products.js';
+import { FST_COLECCION_HOTMART } from '../../config/links.js';
 
 export const AUTORA = {
   nombre: 'Karla Hernández',
@@ -76,7 +76,9 @@ export const PRODUCTOS = [
     origen: 'propio',
     accion: { tipo: 'interes', etiqueta: 'Registrar mi interés' },
     etiquetas: ['Auxiliares de farmacia', 'Regentes de farmacia', 'Servicio farmacéutico', 'En vivo'],
-    to: '/cursos/en-vivo/operacion-segura-servicio-farmaceutico',
+    // Dirección pública, con el patrón de todos los cursos. La vieja
+    // (/cursos/en-vivo/operacion-segura-servicio-farmaceutico) redirige aquí.
+    to: '/curso-de-operacion-segura-del-servicio-farmaceutico',
   },
   {
     slug: 'guia-levotiroxina',

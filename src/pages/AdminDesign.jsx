@@ -27,6 +27,7 @@ import {
 } from 'lucide-react';
 import { apiUrl } from '../config/api';
 import { updatePageSeo } from '../utils/seo';
+import { rutaDeCurso } from '../lib/slug';
 
 const TOKEN_KEY = 'edvanta_admin_token';
 const NIVELES = [['', 'Sin nivel'], ['basico', 'Básico'], ['intermedio', 'Intermedio'], ['avanzado', 'Avanzado']];
@@ -685,7 +686,7 @@ export default function AdminDesign() {
                     </>
                   ) : (
                     <>
-                      <Link to={`/cursos/${c.slug}`} className="text-teal-700 hover:text-teal-900">Ver ficha</Link>
+                      <Link to={rutaDeCurso(c)} className="text-teal-700 hover:text-teal-900">Ver ficha</Link>
                       {c.original_url && (
                         <a href={c.original_url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-slate-500 hover:text-slate-800">
                           Origen <ExternalLink className="h-3 w-3" aria-hidden="true" />

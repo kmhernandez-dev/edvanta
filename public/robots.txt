@@ -3,3 +3,4 @@ Allow: /
 Disallow: /admin/
 
 Sitemap: https://edvanta.co/sitemap.xml
+Sitemap: https://edvanta.co/sitemap-cursos.xml

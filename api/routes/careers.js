@@ -164,6 +164,9 @@ export async function getCareerBySlugRoute(req, res) {
         )
         SELECT
           id, slug, title, short_description, provider, image_url, level, duration,
+          -- Dirección pública del curso (/curso-de-…).
+          COALESCE((SELECT '/' || ps.slug FROM public_slugs ps
+                     WHERE ps.entity = 'curado' AND ps.entity_id = candidates.id AND ps.is_current), '/cursos/' || slug) AS url,
           BOOL_OR(editorial) AS editorial,
           MAX(priority)::int AS editorial_priority,
           MAX(matching_skills)::int AS matching_skills

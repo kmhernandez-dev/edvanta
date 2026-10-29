@@ -19,7 +19,7 @@ import {
 } from 'lucide-react';
 import { apiUrl } from '../../config/api';
 import { ESTADOS, ORIGENES } from '../../data/edvanta/estados';
-import { formatoPrecio } from '../../data/edvanta/productos';
+import { formatoPrecio, productoPorSlug } from '../../data/edvanta/productos';
 
 export const ICONOS_ESCUELA = { HeartPulse, ShieldCheck, FileCheck2, Megaphone };
 
@@ -127,7 +127,8 @@ export function ListaDeAreas({ areas }) {
   return (
     <ul className="ds-card divide-y divide-edvanta-border overflow-hidden">
       {areas.map((a) => {
-        const destino = a.producto ? `/cursos/en-vivo/${a.producto}` : a.to;
+        // El producto lleva su dirección pública (/curso-de-…) en `to`.
+        const destino = a.producto ? (productoPorSlug(a.producto)?.to || a.to) : a.to;
         const punto = a.estado === 'disponible' ? 'bg-edvanta-teal' : a.estado === 'proxima_apertura' ? 'bg-edvanta-violet' : 'bg-edvanta-strong';
         const cuerpo = (
           <>

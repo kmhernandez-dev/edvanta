@@ -33,6 +33,7 @@ import path from 'node:path';
 import { buffer as streamToBuffer } from 'node:stream/consumers';
 import { pool } from '../db.js';
 import { fichaDeCursoPropio, fichaDeCursoCurado, huecosDeLaFicha } from '../lib/ficha-de-curso.js';
+import { asegurarSlug, resolverSlug } from '../lib/slugs-publicos.js';
 
 const ALLOWED_PROVIDERS = ['edutin', 'coursera', 'udemy'];
 const ALLOWED_PRICE_TYPES = ['free', 'free_audit', 'paid', 'subscription', 'financial_aid', 'unknown'];
@@ -196,8 +197,10 @@ export async function listCoursesRoute(req, res) {
         c.duration, c.rating, c.review_count, c.student_count,
         c.image_url, c.instructor, c.institution,
         c.skills, c.featured, c.trending,
-        c.published_at, c.created_at
+        c.published_at, c.created_at,
+        COALESCE('/' || ps.slug, '/cursos/' || c.slug) AS url
       FROM courses c
+      LEFT JOIN public_slugs ps ON ps.entity = 'curado' AND ps.entity_id = c.id AND ps.is_current
       ${whereClause}
       ORDER BY c.featured DESC, c.trending DESC, c.created_at DESC
       LIMIT $${paramIdx} OFFSET $${paramIdx + 1}
@@ -228,7 +231,10 @@ export async function getCourseBySlugRoute(req, res) {
     if (!slug) return res.status(400).json({ ok: false, error: 'Slug requerido' });
 
     const result = await pool.query(
-      `SELECT * FROM courses WHERE slug = $1 AND active = true`,
+      `SELECT c.*, COALESCE('/' || ps.slug, '/cursos/' || c.slug) AS url
+         FROM courses c
+         LEFT JOIN public_slugs ps ON ps.entity = 'curado' AND ps.entity_id = c.id AND ps.is_current
+        WHERE c.slug = $1 AND c.active = true`,
       [slug]
     );
 
@@ -240,13 +246,15 @@ export async function getCourseBySlugRoute(req, res) {
 
     // Cursos relacionados: misma categoría o misma área profesional
     const related = await pool.query(
-      `SELECT id, title, slug, short_description, provider, category, level, price_type,
-              image_url, institution, instructor, rating, duration, featured
-       FROM courses
-       WHERE active = true
-         AND id != $1
-         AND (category = $2 OR professional_area = $3)
-       ORDER BY featured DESC, rating DESC NULLS LAST
+      `SELECT c.id, c.title, c.slug, c.short_description, c.provider, c.category, c.level, c.price_type,
+              c.image_url, c.institution, c.instructor, c.rating, c.duration, c.featured,
+              COALESCE('/' || ps.slug, '/cursos/' || c.slug) AS url
+       FROM courses c
+       LEFT JOIN public_slugs ps ON ps.entity = 'curado' AND ps.entity_id = c.id AND ps.is_current
+       WHERE c.active = true
+         AND c.id != $1
+         AND (c.category = $2 OR c.professional_area = $3)
+       ORDER BY c.featured DESC, c.rating DESC NULLS LAST
        LIMIT 6`,
       [course.id, course.category, course.professional_area]
     );
@@ -325,8 +333,10 @@ export async function listOwnCoursesRoute(req, res) {
       `SELECT c.id, c.title, c.short_description, c.cover_url, c.cover_file_id,
               c.category, c.area, c.publico, c.level, c.duration_minutes, c.author_name, c.published_at,
               (SELECT COUNT(*)::int FROM aula_lessons l
-                WHERE l.course_id = c.id AND l.deleted_at IS NULL) AS lessons
+                WHERE l.course_id = c.id AND l.deleted_at IS NULL) AS lessons,
+              ps.slug AS public_slug
          FROM aula_courses c
+         LEFT JOIN public_slugs ps ON ps.entity = 'aula' AND ps.entity_id = c.id AND ps.is_current
         WHERE c.kind = 'edvanta'
           AND c.status = 'publicado'
           AND c.deleted_at IS NULL
@@ -356,7 +366,10 @@ export async function listOwnCoursesRoute(req, res) {
         authorName: r.author_name,
         lessons: r.lessons,
         // La ficha pública, no el aula: así se ve el curso antes de entrar.
-        to: `/curso/${r.id}`,
+        // La dirección es la descriptiva (/curso-de-…); sin slug, la vieja,
+        // que redirige.
+        slug: r.public_slug || null,
+        to: r.public_slug ? `/${r.public_slug}` : `/curso/${r.id}`,
       })),
       total: rows.length,
     });
@@ -387,9 +400,10 @@ export const SQL_CURSO_PUBLICO = `
   SELECT c.id, c.title, c.short_description, c.description_html, c.cover_url, c.cover_file_id,
          c.category, c.level, c.duration_minutes, c.author_name, c.tags, c.modality,
          c.objective, c.learning_outcomes, c.audience, c.prerequisites, c.published_at,
-         v.snapshot, v.version_number
+         v.snapshot, v.version_number, ps.slug AS public_slug
     FROM aula_courses c
     JOIN aula_course_versions v ON v.id = c.current_version_id
+    LEFT JOIN public_slugs ps ON ps.entity = 'aula' AND ps.entity_id = c.id AND ps.is_current
    WHERE c.id = $1
      AND c.kind = 'edvanta'
      AND c.status = 'publicado'
@@ -586,14 +600,31 @@ export function ownCourseCoverRoute({ storage }) {
  */
 export async function fichaDeCursoRoute(req, res) {
   try {
-    const ref = String(req.params.ref || '').trim();
+    let ref = String(req.params.ref || '').trim();
     if (!ref) return res.status(400).json({ ok: false, error: 'Falta el curso' });
+
+    // La dirección pública (/curso-de-…): se traduce al curso que nombra.
+    // Si es un slug del historial, la ficha trae la dirección vigente y la
+    // página se cambia sola a ella.
+    if (/^curso-[a-z0-9-]+$/.test(ref)) {
+      const r = await resolverSlug(pool, ref);
+      if (!r) return res.status(404).json({ ok: false, error: 'Este curso no está disponible' });
+      if (r.entidad === 'aula') ref = `edvanta-${r.id}`;
+      else {
+        const { rows: curado } = await pool.query('SELECT slug FROM courses WHERE id = $1', [r.id]);
+        if (!curado[0]) return res.status(404).json({ ok: false, error: 'Este curso no está disponible' });
+        ref = curado[0].slug;
+      }
+    }
 
     const propio = /^edvanta-(\d+)$/.exec(ref);
     if (propio) {
       const id = Number(propio[1]);
       const { rows } = await pool.query(SQL_CURSO_PUBLICO, [id]);
       if (!rows[0]) return res.status(404).json({ ok: false, error: 'Este curso no está disponible' });
+      if (!rows[0].public_slug) {
+        rows[0].public_slug = await asegurarSlug(pool, { entidad: 'aula', id, titulo: rows[0].title, nivel: rows[0].level });
+      }
       const ficha = fichaDeCursoPropio(rows[0], temarioPublico(rows[0].snapshot));
       return res.json({ ok: true, data: ficha, faltan: huecosDeLaFicha(ficha), relacionados: await relacionados(ficha) });
     }
@@ -602,12 +633,17 @@ export async function fichaDeCursoRoute(req, res) {
     // direcciones viejas (/cursos-gratis/sh-7429) usaban ese código y
     // siguen circulando por ahí.
     const { rows } = await pool.query(
-      `SELECT * FROM courses
-        WHERE active = true AND (slug = $1 OR lower(provider_course_id) = lower($1))
-        ORDER BY (slug = $1) DESC LIMIT 1`,
+      `SELECT c.*, ps.slug AS public_slug FROM courses c
+         LEFT JOIN public_slugs ps ON ps.entity = 'curado' AND ps.entity_id = c.id AND ps.is_current
+        WHERE c.active = true AND (c.slug = $1 OR lower(c.provider_course_id) = lower($1))
+        ORDER BY (c.slug = $1) DESC LIMIT 1`,
       [ref],
     );
     if (!rows[0]) return res.status(404).json({ ok: false, error: 'Este curso no está disponible' });
+    if (!rows[0].public_slug) {
+      const c = rows[0];
+      c.public_slug = await asegurarSlug(pool, { entidad: 'curado', id: c.id, titulo: c.title, proveedor: c.provider, nivel: c.level });
+    }
     const ficha = fichaDeCursoCurado(rows[0]);
     return res.json({ ok: true, data: ficha, faltan: huecosDeLaFicha(ficha), relacionados: await relacionados(ficha) });
   } catch (e) {
@@ -627,8 +663,9 @@ async function relacionados(ficha) {
   const salida = [];
   if (ficha.categoria) {
     const { rows } = await pool.query(
-      `SELECT c.id, c.title, c.short_description, c.cover_url, c.cover_file_id, c.category, c.level
+      `SELECT c.id, c.title, c.short_description, c.cover_url, c.cover_file_id, c.category, c.level, ps.slug AS public_slug
          FROM aula_courses c
+         LEFT JOIN public_slugs ps ON ps.entity = 'aula' AND ps.entity_id = c.id AND ps.is_current
         WHERE c.kind = 'edvanta' AND c.status = 'publicado' AND c.deleted_at IS NULL
           AND c.current_version_id IS NOT NULL
           AND (c.category = $1 OR c.area = $2)
@@ -640,7 +677,7 @@ async function relacionados(ficha) {
     for (const r of rows) {
       salida.push({
         titulo: r.title,
-        url: `/curso/${r.id}`,
+        url: r.public_slug ? `/${r.public_slug}` : `/curso/${r.id}`,
         portada: r.cover_file_id ? `/api/cursos-edvanta/${r.id}/portada` : r.cover_url,
         procedencia: 'Edvanta',
         nivel: r.level,
@@ -649,17 +686,18 @@ async function relacionados(ficha) {
   }
   if (salida.length < 4 && ficha.categoria) {
     const { rows } = await pool.query(
-      `SELECT id, title, slug, provider, image_url, level
-         FROM courses
-        WHERE active = true AND category = $1 AND slug <> $2
-        ORDER BY (image_url IS NULL), featured DESC
+      `SELECT c.id, c.title, c.slug, c.provider, c.image_url, c.level, ps.slug AS public_slug
+         FROM courses c
+         LEFT JOIN public_slugs ps ON ps.entity = 'curado' AND ps.entity_id = c.id AND ps.is_current
+        WHERE c.active = true AND c.category = $1 AND c.slug <> $2
+        ORDER BY (c.image_url IS NULL), c.featured DESC
         LIMIT $3`,
-      [ficha.categoria, ficha.variante === 'edvanta' ? '' : ficha.url.replace('/cursos/', ''), 4 - salida.length],
+      [ficha.categoria, ficha.variante === 'edvanta' ? '' : (ficha.referencia || ''), 4 - salida.length],
     );
     for (const r of rows) {
       salida.push({
         titulo: r.title,
-        url: `/cursos/${r.slug}`,
+        url: r.public_slug ? `/${r.public_slug}` : `/cursos/${r.slug}`,
         portada: r.image_url,
         procedencia: r.provider === 'edutin' ? 'Edutin Academy' : r.provider === 'udemy' ? 'Udemy' : 'Coursera',
         nivel: r.level,

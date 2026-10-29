@@ -28,6 +28,7 @@ import { StatusBadge } from '../ui/Badge';
 import { Button } from '../ui/Button';
 import { PageHeader, ProgressBar } from '../ui/Page';
 import { EmptyState, ErrorState, LoadingBlock } from '../ui/States';
+import { rutaDeCurso } from '../../lib/slug';
 
 /* ── Franja deslizable ────────────────────────────────────── */
 
@@ -203,7 +204,7 @@ function CursoCurado({ curso }) {
           )}
         </div>
         <a
-          href={`/cursos/${curso.slug}`}
+          href={rutaDeCurso(curso)}
           className="mt-auto inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-[var(--aula-radius)] border border-[var(--aula-border)] bg-white text-sm font-semibold transition hover:border-[var(--aula-secondary)]"
         >
           Ver el curso <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />

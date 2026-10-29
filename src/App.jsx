@@ -26,6 +26,7 @@ const CompetenciesIndex = lazy(() => import('./pages/CompetenciesIndex'));
 const CompetencyPage = lazy(() => import('./pages/CompetencyPage'));
 const VolviendoDeAcceso = lazy(() => import('./pages/VolviendoDeAcceso'));
 const FichaDeCurso = lazy(() => import('./pages/FichaDeCurso'));
+const PaginaPublica = lazy(() => import('./pages/PaginaPublica'));
 const Diagnostico = lazy(() => import('./pages/Diagnostico'));
 const CursoGratisRedirige = lazy(() => import('./pages/CursoGratisRedirige'));
 const CursosCatalog = lazy(() => import('./pages/CursosCatalog'));
@@ -316,11 +317,15 @@ export default function App() {
 
         {/* Artículos / blog SEO */}
         <Route path="/articulos" element={<ArticulosIndex />} />
+        <Route path="/articulos/categoria/:categoria" element={<ArticulosIndex />} />
         <Route path="/articulos/:slug" element={<ArticuloPage />} />
 
         {/* Cursos y rutas profesionales Edvanta */}
         {/* Una sola ficha pública por curso propio: se ve antes de entrar. */}
-        {/* Una sola plantilla para los 224 cursos: propios por id, curados por slug. */}
+        {/* Una sola plantilla para los 224 cursos. Su dirección es /curso-de-…
+            (PaginaPublica, al final). /curso/:id y /cursos/:slug son las viejas:
+            nginx responde 301 y aquí se cambian solas por si llega un enlace
+            dentro del sitio. */}
         <Route path="/curso/:id" element={<FichaDeCurso modo="propio" />} />
         <Route path="/cursos/en-vivo/:slug" element={<CursoEnVivo />} />
         <Route path="/cursos" element={<CursosCatalog />} />
@@ -402,6 +407,8 @@ export default function App() {
         <Route path="/afiliados"       element={<LegalPage doc="afiliados" />} />
 
         {/* 404 — página no encontrada */}
+        {/* Direcciones de un tramo: los cursos (/curso-de-…). Lo demás, 404. */}
+        <Route path="/:slugPublico" element={<PaginaPublica />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       </EdvantaTheme>

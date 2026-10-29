@@ -17,6 +17,7 @@
 
 import { many, one } from './db.js';
 import { badRequest, forbidden, notFound } from './http.js';
+import { rutasDeReferencias } from '../slugs-publicos.js';
 
 const MAX_RESENA = 4000;
 const MAX_COMENTARIO = 4000;
@@ -516,6 +517,8 @@ export async function bandejaDeModeracion(db, { filtro = 'reportados', pagina = 
   );
 
   const hayMas = filas.length > porPagina;
+  // La dirección pública de cada curso (/curso-de-…), en una sola consulta.
+  const rutas = await rutasDeReferencias(db, filas.map((f) => f.donde === 'curso' && f.ref));
   return {
     hayMas,
     comentarios: filas.slice(0, porPagina).map((f) => ({
@@ -537,7 +540,7 @@ export async function bandejaDeModeracion(db, { filtro = 'reportados', pagina = 
         clase: f.clase,
         // A dónde ir para verlo en su sitio.
         url: f.donde === 'curso'
-          ? (f.ref?.startsWith('edvanta-') ? `/curso/${f.ref.replace('edvanta-', '')}` : `/cursos/${f.ref}`)
+          ? (rutas.get(f.ref) || (f.ref?.startsWith('edvanta-') ? `/curso/${f.ref.replace('edvanta-', '')}` : `/cursos/${f.ref}`))
           : `/aula/curso/${f.course_id}/clase/${f.lesson_id}`,
       },
     })),

@@ -2,7 +2,9 @@
  * ============================================================
  *  CursoEnVivo.jsx — Ficha de un curso en vivo de Edvanta
  *
- *  /cursos/en-vivo/:slug. Lee el producto de data/edvanta/productos.js.
+ *  /curso-de-… (su dirección pública, la de `to` en productos.js). La
+ *  dirección vieja /cursos/en-vivo/:slug redirige a esa. Lee el producto
+ *  de data/edvanta/productos.js.
  *
  *  Mientras no haya fecha ni valor aprobados, la ficha lo dice y la
  *  única acción es registrar interés: no hay botón de pago, no hay
@@ -12,7 +14,7 @@
  */
 
 import { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { Navigate, useLocation, useParams } from 'react-router-dom';
 import {
   Building2, CalendarClock, CheckCircle2, Clock, Info, MonitorPlay, UserRound, Wallet,
 } from 'lucide-react';
@@ -25,17 +27,21 @@ import FormularioSolicitud from '../../components/formularios/FormularioSolicitu
 import { escuelaPorSlug } from '../../data/edvanta/escuelas';
 import { formatoPrecio, productoPorSlug } from '../../data/edvanta/productos';
 import { updatePageSeo } from '../../utils/seo';
+import { nombreDeCurso } from '../../lib/slug';
 import NotFound from '../NotFound';
 
-export default function CursoEnVivo() {
-  const { slug } = useParams();
-  const p = productoPorSlug(slug);
+export default function CursoEnVivo({ slug: slugProducto = '' }) {
+  const { slug: slugRuta } = useParams();
+  const p = productoPorSlug(slugProducto || slugRuta);
+  const location = useLocation();
   const valido = p && p.tipo === 'curso_en_vivo';
 
   useEffect(() => {
     if (!valido) return;
     updatePageSeo({
-      title: `${p.nombre} | Curso en vivo | Edvanta`,
+      // «Curso de Operación segura del servicio farmacéutico | Edvanta»: el
+      // mismo nombre que su dirección (/curso-de-operacion-segura-…).
+      title: `${nombreDeCurso(p.nombre.split(':')[0].trim())} | Edvanta`,
       description: `${p.tipoTexto} para ${p.dirigidoA.charAt(0).toLowerCase()}${p.dirigidoA.slice(1)} ${p.formato.duracion}, ${p.formato.encuentros.toLowerCase()}.`,
       canonical: `https://edvanta.co${p.to}`,
       jsonLdId: 'curso-en-vivo',
@@ -53,6 +59,8 @@ export default function CursoEnVivo() {
   }, [valido, p]);
 
   if (!valido) return <NotFound />;
+  // Llegó por la dirección vieja (/cursos/en-vivo/…): a la nueva.
+  if (p.to && location.pathname !== p.to) return <Navigate to={`${p.to}${location.search}${location.hash}`} replace />;
 
   const escuela = escuelaPorSlug(p.escuela);
   const datos = [

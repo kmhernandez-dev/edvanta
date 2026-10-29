@@ -7,6 +7,7 @@ import { apiUrl } from '../config/api';
 import { getFeaturedCourse, getLearningRoute } from '../data/featuredCourses';
 import { portadaDeRuta } from '../data/edvanta/imagenes';
 import { updatePageSeo } from '../utils/seo';
+import { rutaDeCurso } from '../lib/slug';
 
 const STEP_LABELS = {
   orientation: 'Orientación',
@@ -62,7 +63,7 @@ function buildFallbackPath(slug) {
 
 function CourseLink({ course }) {
   return (
-    <Link to={`/cursos/${course.slug}`} className="mt-4 flex items-center gap-3 ds-card p-3 transition hover:border-edvanta-teal hover:bg-edvanta-mint/30">
+    <Link to={rutaDeCurso(course)} className="mt-4 flex items-center gap-3 ds-card p-3 transition hover:border-edvanta-teal hover:bg-edvanta-mint/30">
       {course.image_url ? (
         <img src={course.image_url} alt="" className="h-14 w-20 rounded-md object-cover" loading="lazy" />
       ) : (

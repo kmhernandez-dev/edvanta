@@ -118,7 +118,7 @@ export const FOOTER_COLUMNS = [
     title: 'Aprende',
     links: [
       { label: 'Cursos', to: '/cursos' },
-      { label: 'Curso en vivo para auxiliares y regentes', to: '/cursos/en-vivo/operacion-segura-servicio-farmaceutico' },
+      { label: 'Curso en vivo para auxiliares y regentes', to: '/curso-de-operacion-segura-del-servicio-farmaceutico' },
       { label: 'Guías y kits', to: '/guias' },
       { label: 'Artículos', to: '/articulos' },
       { label: 'Biblioteca de referencias', to: '/recursos' },

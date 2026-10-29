@@ -37,6 +37,7 @@ import {
 } from '../lib/articulos/markdown';
 import { registrarLectura } from '../lib/articulos/lecturas';
 import { updatePageSeo } from '../utils/seo';
+import { rutaDeCategoria, rutaDeCurso } from '../lib/slug';
 
 const MARCA = {
   fst: { to: '/feliz-sin-tiroides', name: 'Feliz Sin Tiroides' },
@@ -214,7 +215,7 @@ function SiguientePaso({ art }) {
           <p className="mt-2 font-display text-2xl font-extrabold leading-tight">Operación segura del servicio farmacéutico</p>
           <p className="mt-2 max-w-xl text-[15px] leading-7 text-white/85">Para auxiliares y regentes: de la recepción a la dispensación, en ocho encuentros en vivo.</p>
           <div className="mt-5 flex flex-wrap gap-3">
-            <Link to="/cursos/en-vivo/operacion-segura-servicio-farmaceutico" className="inline-flex min-h-11 items-center rounded-xl bg-white px-5 text-sm font-semibold text-edvanta-blue transition hover:bg-edvanta-light">Ver el curso</Link>
+            <Link to="/curso-de-operacion-segura-del-servicio-farmaceutico" className="inline-flex min-h-11 items-center rounded-xl bg-white px-5 text-sm font-semibold text-edvanta-blue transition hover:bg-edvanta-light">Ver el curso</Link>
             <Link to="/escuelas" className="inline-flex min-h-11 items-center rounded-xl border border-white/40 px-5 text-sm font-semibold text-white transition hover:bg-white/10">Explorar las escuelas</Link>
           </div>
         </div>
@@ -347,7 +348,7 @@ export default function ArticuloPage() {
             { label: art.category },
           ]} />
           <div className="hx-fade mt-6 flex flex-wrap items-center gap-2">
-            <Link to={`/articulos?categoria=${encodeURIComponent(art.category)}`} className="rounded-full bg-white/80 px-3 py-1 text-xs font-bold text-edvanta-blue ring-1 ring-edvanta-border transition hover:ring-edvanta-blue/40">
+            <Link to={rutaDeCategoria(art.category)} className="rounded-full bg-white/80 px-3 py-1 text-xs font-bold text-edvanta-blue ring-1 ring-edvanta-border transition hover:ring-edvanta-blue/40">
               {art.category}
             </Link>
             {art.marca !== 'edvanta' && art.marca !== 'biblioteca' && (
@@ -430,7 +431,7 @@ export default function ArticuloPage() {
                 <p className="mt-2 font-display text-xl font-bold text-edvanta-deep">{relatedCourse.title}</p>
                 <p className="mt-2 text-sm leading-6 text-edvanta-muted">{relatedCourse.shortDescription}</p>
                 <div className="mt-4 flex flex-col gap-2 sm:flex-row">
-                  <Link to={`/cursos/${relatedCourse.slug}`} className="ed-btn ed-btn--secondary">Ver la ficha del curso</Link>
+                  <Link to={rutaDeCurso(relatedCourse)} className="ed-btn ed-btn--secondary">Ver la ficha del curso</Link>
                   <AffiliateCourseButton course={relatedCourse} sourceSection="article_page" articleSlug={art.slug} className="text-sm">Ir al curso</AffiliateCourseButton>
                 </div>
               </div>

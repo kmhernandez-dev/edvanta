@@ -254,7 +254,9 @@ export async function globalSearchRoute(req, res) {
            AND ed_normaliza(name || ' ' || COALESCE(description, '')) LIKE c.contiene
 
         UNION ALL
-        SELECT 'course', slug, title, short_description, '/cursos/' || slug,
+        SELECT 'course', slug, title, short_description,
+               COALESCE((SELECT '/' || ps.slug FROM public_slugs ps
+                          WHERE ps.entity = 'curado' AND ps.entity_id = courses.id AND ps.is_current), '/cursos/' || slug),
                ed_normaliza(title || ' ' || COALESCE(short_description, '')),
                ed_normaliza(title), 30
           FROM courses, consulta c
@@ -322,7 +324,9 @@ export async function globalSearchRoute(req, res) {
                  similarity(ed_normaliza(name), c.q)
             FROM skills, consulta c WHERE status = 'published'
           UNION ALL
-          SELECT 'course', slug, title, short_description, '/cursos/' || slug,
+          SELECT 'course', slug, title, short_description,
+               COALESCE((SELECT '/' || ps.slug FROM public_slugs ps
+                          WHERE ps.entity = 'curado' AND ps.entity_id = courses.id AND ps.is_current), '/cursos/' || slug),
                  similarity(ed_normaliza(title), c.q)
             FROM courses, consulta c WHERE active = TRUE
         ) AS t

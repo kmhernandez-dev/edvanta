@@ -15,7 +15,7 @@
  */
 
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import {
   ArrowRight, Award, BookOpen, Check, ChevronRight, Clock, ExternalLink, MessageCircle,
   GraduationCap, Globe, Layers, PlayCircle, UserRound,
@@ -28,6 +28,7 @@ import {
 } from '../components/edvanta/ui';
 import { cleanHtml } from '../aula/ui/RichText';
 import { apiUrl } from '../config/api';
+import { nombreDeCurso } from '../lib/slug';
 import { miAula, inscribirme } from '../lib/misCursos';
 import {
   borrarComentario, comentarEnCurso, comentariosDeCurso, editarComentario,
@@ -310,10 +311,25 @@ function Participacion({ ficha, refCurso }) {
 
 /* ── Página ───────────────────────────────────────────────── */
 
-export default function FichaDeCurso({ modo = 'propio' }) {
+/**
+ * La última ficha cargada por dirección: cuando una dirección vieja
+ * (/curso/53, /cursos/<slug>) se cambia por la nueva, la página no vuelve
+ * a pedir el curso que acaba de traer.
+ */
+const fichasRecientes = new Map();
+
+/**
+ * modo:
+ *   publico → /curso-de-…        (la dirección de siempre)
+ *   propio  → /curso/:id         (vieja: se cambia sola a la nueva)
+ *   curado  → /cursos/:slug      (vieja: se cambia sola a la nueva)
+ */
+export default function FichaDeCurso({ modo = 'propio', slugPublico = '' }) {
   const params = useParams();
   const navigate = useNavigate();
-  const ref = modo === 'propio' ? `edvanta-${params.id}` : params.slug;
+  const location = useLocation();
+  const ref = modo === 'publico' ? String(slugPublico || params.slugPublico || '').toLowerCase()
+    : modo === 'propio' ? `edvanta-${params.id}` : params.slug;
 
   const [ficha, setFicha] = useState(null);
   const [relacionados, setRelacionados] = useState([]);
@@ -327,19 +343,35 @@ export default function FichaDeCurso({ modo = 'propio' }) {
 
   useEffect(() => {
     let vivo = true;
-    setFicha(null);
     setFallo(null);
+    const reciente = fichasRecientes.get(ref);
+    if (reciente) {
+      setFicha(reciente.data);
+      setRelacionados(reciente.relacionados || []);
+      return () => { vivo = false; };
+    }
+    setFicha(null);
     fetch(apiUrl(`/api/ficha/${encodeURIComponent(ref)}`))
       .then(async (r) => {
         const j = await r.json().catch(() => null);
         if (!vivo) return;
         if (!r.ok || !j?.ok) { setFallo(j?.error || 'No encontramos este curso.'); return; }
+        if (fichasRecientes.size > 20) fichasRecientes.clear();
+        if (j.data?.url?.startsWith('/curso-')) fichasRecientes.set(j.data.url.slice(1), j);
         setFicha(j.data);
         setRelacionados(j.relacionados || []);
       })
       .catch(() => { if (vivo) setFallo('No pudimos cargar el curso. Revisa tu conexión.'); });
     return () => { vivo = false; };
   }, [ref]);
+
+  // Una dirección vieja (o un slug del historial) pasa a la vigente sin
+  // dejar la vieja en el historial del navegador.
+  useEffect(() => {
+    if (ficha?.url && ficha.url.startsWith('/curso-') && ficha.url !== location.pathname) {
+      navigate(`${ficha.url}${location.search}${location.hash}`, { replace: true });
+    }
+  }, [ficha, location.pathname, location.search, location.hash, navigate]);
 
   // Quién mira. Solo importa en los cursos propios, que son los que se cursan aquí.
   useEffect(() => {
@@ -376,9 +408,12 @@ export default function FichaDeCurso({ modo = 'propio' }) {
 
   useEffect(() => {
     if (!ficha) return;
+    // «Curso de Gestión de Calidad | Edvanta»: el mismo nombre que el
+    // encabezado de la página y que su dirección.
+    const nombre = nombreDeCurso(ficha.titulo);
     updatePageSeo({
-      title: `${ficha.titulo} | ${ficha.proveedor.nombre === 'Edvanta' ? 'Curso de Edvanta' : `Curso en ${ficha.proveedor.nombre}`}`,
-      description: ficha.resumen || `${ficha.titulo}: ${ficha.categoria || 'formación profesional'} en Edvanta.`,
+      title: `${nombre} | Edvanta`,
+      description: ficha.resumen || `${nombre}: ${ficha.categoria || 'formación profesional'} en Edvanta.`,
       canonical: `https://edvanta.co${ficha.url}`,
       type: 'website',
       jsonLdId: `ficha-${ficha.id}`,
@@ -386,7 +421,7 @@ export default function FichaDeCurso({ modo = 'propio' }) {
       jsonLd: {
         '@context': 'https://schema.org',
         '@type': 'Course',
-        name: ficha.titulo,
+        name: nombre,
         description: ficha.resumen || '',
         url: `https://edvanta.co${ficha.url}`,
         inLanguage: 'es',
@@ -518,7 +553,7 @@ export default function FichaDeCurso({ modo = 'propio' }) {
             { label: 'Inicio', to: '/' },
             { label: 'Cursos', to: '/cursos' },
             ...(ficha.categoria ? [{ label: ficha.categoria, to: `/cursos?category=${encodeURIComponent(ficha.categoria)}` }] : []),
-            { label: ficha.titulo },
+            { label: nombreDeCurso(ficha.titulo) },
           ]} />
           <div className="gap-12 lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(0,23rem)] lg:items-start">
             <div className="ds-rise">
@@ -530,7 +565,7 @@ export default function FichaDeCurso({ modo = 'propio' }) {
                 {ficha.categoria && <Eyebrow>{ficha.categoria}</Eyebrow>}
               </div>
               <h1 className="mt-5 font-display text-[2rem] font-extrabold leading-[1.1] tracking-[-0.025em] text-edvanta-blue sm:text-[2.75rem] lg:text-[3rem]">
-                {ficha.titulo}
+                {nombreDeCurso(ficha.titulo)}
               </h1>
               {ficha.resumen && (
                 <p className="mt-5 max-w-2xl text-lg leading-8 text-edvanta-muted">{ficha.resumen}</p>
@@ -641,7 +676,7 @@ export default function FichaDeCurso({ modo = 'propio' }) {
 
       <Certificado certificado={ficha.certificado} proveedor={ficha.proveedor} />
 
-      <Participacion ficha={ficha} refCurso={ref} />
+      <Participacion ficha={ficha} refCurso={ficha.dondeSeEstudia === 'edvanta' ? ficha.id : (ficha.referencia || ref)} />
 
       {relacionados.length > 0 && (
         <Section tone="surface" bordered>

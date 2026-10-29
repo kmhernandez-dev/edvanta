@@ -6,6 +6,7 @@ import SiteFooter from '../components/edvanta/SiteFooter';
 import { apiUrl } from '../config/api';
 import { updatePageSeo } from '../utils/seo';
 import { trackEvent } from '../utils/analytics';
+import { rutaDeCurso } from '../lib/slug';
 
 const skillTypeLabels = {
   technical: 'Conocimiento técnico',
@@ -247,7 +248,7 @@ export default function CareerPage() {
                 <h3 className="text-xl font-bold text-edvanta-deep">Cursos relacionados verificados</h3>
                 <div className="mt-4 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
                   {courses.map(course => (
-                    <Link key={course.id} to={`/cursos/${course.slug}`} className="rounded-lg border border-edvanta-border p-5 hover:border-edvanta-teal">
+                    <Link key={course.id} to={rutaDeCurso(course)} className="rounded-lg border border-edvanta-border p-5 hover:border-edvanta-teal">
                       <p className="text-xs font-bold uppercase text-edvanta-tealdark">{course.provider}</p>
                       <h4 className="mt-2 font-bold text-edvanta-deep">{course.title}</h4>
                       <p className="mt-2 text-xs text-edvanta-subtle">{course.matching_skills} habilidades relacionadas</p>

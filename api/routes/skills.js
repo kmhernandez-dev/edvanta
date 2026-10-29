@@ -87,6 +87,7 @@ export async function getSkillBySlugRoute(req, res) {
       pool.query(`
         SELECT
           course.id, course.slug, course.title, course.short_description,
+          COALESCE((SELECT '/' || ps.slug FROM public_slugs ps WHERE ps.entity = 'curado' AND ps.entity_id = course.id AND ps.is_current), '/cursos/' || course.slug) AS url,
           course.provider, course.image_url, course.duration, course.level,
           course.price_type, course.certificate_available,
           mapped.coverage, mapped.relevance, mapped.primary_skill

@@ -100,6 +100,7 @@ export async function getLearningPathBySlugRoute(req, res) {
           jsonb_build_object(
             'id', course.id,
             'slug', course.slug,
+            'url', COALESCE((SELECT '/' || ps.slug FROM public_slugs ps WHERE ps.entity = 'curado' AND ps.entity_id = course.id AND ps.is_current), '/cursos/' || course.slug),
             'title', course.title,
             'short_description', course.short_description,
             'provider', course.provider,

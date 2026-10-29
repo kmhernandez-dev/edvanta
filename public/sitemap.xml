@@ -9,7 +9,6 @@
   <url><loc>https://edvanta.co/escuelas/calidad</loc><lastmod>2026-10-26</lastmod><priority>0.9</priority></url>
   <url><loc>https://edvanta.co/escuelas/regulatorios</loc><lastmod>2026-10-26</lastmod><priority>0.9</priority></url>
   <url><loc>https://edvanta.co/escuelas/marketing</loc><lastmod>2026-10-26</lastmod><priority>0.7</priority></url>
-  <url><loc>https://edvanta.co/cursos/en-vivo/operacion-segura-servicio-farmaceutico</loc><lastmod>2026-10-26</lastmod><priority>0.9</priority></url>
   <url><loc>https://edvanta.co/guias</loc><lastmod>2026-10-26</lastmod><priority>0.8</priority></url>
   <url><loc>https://edvanta.co/pacientes</loc><lastmod>2026-10-26</lastmod><priority>0.9</priority></url>
   <url><loc>https://edvanta.co/pacientes/tiroides</loc><lastmod>2026-10-26</lastmod><priority>0.9</priority></url>
@@ -118,14 +117,23 @@
   <!-- Cursos -->
   <url><loc>https://edvanta.co/competencias</loc><lastmod>2026-08-15</lastmod><priority>0.8</priority></url>
   <url><loc>https://edvanta.co/cursos</loc><lastmod>2026-08-15</lastmod><priority>0.9</priority></url>
-  <url><loc>https://edvanta.co/cursos/gestion-de-calidad</loc><lastmod>2026-07-15</lastmod><priority>0.9</priority></url>
-  <url><loc>https://edvanta.co/cursos/power-bi</loc><lastmod>2026-07-15</lastmod><priority>0.9</priority></url>
-  <url><loc>https://edvanta.co/cursos/auditoria</loc><lastmod>2026-07-15</lastmod><priority>0.9</priority></url>
-  <url><loc>https://edvanta.co/cursos/gestion-ambiental</loc><lastmod>2026-07-15</lastmod><priority>0.9</priority></url>
-  <url><loc>https://edvanta.co/cursos/seguridad-y-salud-en-el-trabajo</loc><lastmod>2026-07-15</lastmod><priority>0.9</priority></url>
-  <url><loc>https://edvanta.co/cursos/gestion-de-proyectos</loc><lastmod>2026-07-15</lastmod><priority>0.9</priority></url>
-  <url><loc>https://edvanta.co/cursos/lean</loc><lastmod>2026-07-15</lastmod><priority>0.8</priority></url>
-  <url><loc>https://edvanta.co/cursos/lean-six-sigma</loc><lastmod>2026-07-15</lastmod><priority>0.9</priority></url>
+  <!-- Las fichas de curso (/curso-de-…) están en /sitemap-cursos.xml, que arma la API -->
+  <url><loc>https://edvanta.co/curso-de-operacion-segura-del-servicio-farmaceutico</loc><lastmod>2026-10-28</lastmod><priority>0.9</priority></url>
+  <url><loc>https://edvanta.co/cursos/coursera</loc><lastmod>2026-10-28</lastmod><priority>0.6</priority></url>
+  <url><loc>https://edvanta.co/cursos/udemy</loc><lastmod>2026-10-28</lastmod><priority>0.6</priority></url>
+  <url><loc>https://edvanta.co/cursos/edutin</loc><lastmod>2026-10-28</lastmod><priority>0.6</priority></url>
+  <url><loc>https://edvanta.co/hoja-de-vida</loc><lastmod>2026-10-28</lastmod><priority>0.9</priority></url>
+  <url><loc>https://edvanta.co/empleo</loc><lastmod>2026-10-28</lastmod><priority>0.8</priority></url>
+  <url><loc>https://edvanta.co/empleo/ofertas-qf</loc><lastmod>2026-10-28</lastmod><priority>0.8</priority></url>
+  <url><loc>https://edvanta.co/empleo/correos</loc><lastmod>2026-10-28</lastmod><priority>0.7</priority></url>
+  <url><loc>https://edvanta.co/vocacion</loc><lastmod>2026-10-28</lastmod><priority>0.7</priority></url>
+  <url><loc>https://edvanta.co/herramientas</loc><lastmod>2026-10-28</lastmod><priority>0.7</priority></url>
+  <url><loc>https://edvanta.co/linkedin</loc><lastmod>2026-10-28</lastmod><priority>0.6</priority></url>
+  <url><loc>https://edvanta.co/practicas</loc><lastmod>2026-10-28</lastmod><priority>0.6</priority></url>
+  <url><loc>https://edvanta.co/emprendimientos</loc><lastmod>2026-10-28</lastmod><priority>0.6</priority></url>
+  <url><loc>https://edvanta.co/noticias</loc><lastmod>2026-10-28</lastmod><priority>0.6</priority></url>
+  <url><loc>https://edvanta.co/talento</loc><lastmod>2026-10-28</lastmod><priority>0.6</priority></url>
+  <url><loc>https://edvanta.co/empresas/talento</loc><lastmod>2026-10-28</lastmod><priority>0.6</priority></url>
 
   <!-- Carreras de la industria farmaceutica -->
   <url><loc>https://edvanta.co/carreras</loc><lastmod>2026-08-15</lastmod><priority>0.9</priority></url>
