@@ -6,8 +6,9 @@ Cada página pública indexable tiene una dirección que dice qué hay en ella:
 un solo salto** a la nueva y conservan la consulta (`?utm_source=…`).
 
 En producción desde el 2026-10-28 (commit `03aa834`): cursos, herramientas y
-categorías. Desde el 2026-10-29: el aula, las escuelas, las carreras, las
-rutas, las competencias y las páginas que tenían un nombre recortado.
+categorías. Desde el 2026-10-29 (commit `90b0b6a`): el aula, las escuelas,
+las carreras, las rutas, las competencias y las páginas que tenían un nombre
+recortado.
 
 ## 1. Reglas
 
@@ -602,6 +603,41 @@ artículos y 34 páginas prerenderizadas. Las 3 pruebas que fallan son de
 rachas (`src/__tests__/retos.test.jsx`) y no tienen que ver con las
 direcciones: la versión confirmada toma el día en UTC y falla después de las
 7 p. m. en Colombia.
+
+### Segunda parte (2026-10-29)
+
+| Revisión | Resultado |
+| --- | --- |
+| Carreras, rutas y competencias: el nombre viejo → 301 en un salto al vigente | 33/33 ✓ |
+| Sus páginas nuevas: 200 directo, canonical, og:url, H1 y migas (`BreadcrumbList`) escritos en el HTML | 33/33 ✓ |
+| Escuelas y páginas renombradas → 301 (con las 12 fijas de la primera parte) | 24/24 ✓ |
+| Sus destinos responden 200 | 15/15 ✓ |
+| `/sitemap-profesional.xml`: carreras, rutas (también las 4 fijas) y competencias, cada una 200 directo | 76 direcciones ✓ |
+| `/sitemap.xml` sin direcciones viejas, cada una 200 directo | 319 direcciones ✓ |
+| `robots.txt` declara los tres sitemaps | ✓ |
+| El grafo de recomendaciones sigue unido con los nombres nuevos | «Aseguramiento de calidad»: 9 competencias, 6 cursos recomendados y su ruta; la ruta, sus 5 pasos con curso ✓ |
+| Todo lo de la primera parte (cursos, herramientas, categorías, 404, consulta, variantes) | sin cambios ✓ |
+
+En el navegador:
+
+- `/rutas/quality-assurance-desde-cero` termina en
+  `/rutas/aseguramiento-de-calidad-desde-cero`, con su título, H1, canonical
+  y portada; la página no tiene ningún enlace a un nombre viejo.
+- `/competencias/buenas-practicas-de-manufactura` enlaza a las carreras por
+  su nombre nuevo y lleva un solo bloque de datos estructurados.
+- `/escuelas/calidad` termina en `/escuelas/calidad-y-produccion-farmaceutica`
+  con sus 14 cursos y productos; el menú enlaza las cuatro escuelas nuevas.
+- `/linkedin?utm_source=prueba` termina en
+  `/linkedin-farmaceutico?utm_source=prueba`.
+- El aula pide iniciar sesión y conserva la dirección pedida. Abrir un curso
+  por dentro necesita una cuenta de participante: lo cubren las pruebas (10 de
+  la API: nombres al publicar, nombre fijo aunque cambie el título, curso de
+  empresa fuera del sitio público, avisos con la dirección nueva; 6 del sitio:
+  `/aula/curso/53/clase/812` → `/aula/curso-de-…/clase/metformina` con su
+  consulta).
+
+Antes de publicar: pruebas de la API 187/187, pruebas del sitio 135/135,
+compilación completa y auditoría de enlaces internos sin ningún enlace roto.
 
 ## 6. Pendientes fuera del código
 
