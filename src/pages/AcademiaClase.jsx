@@ -204,7 +204,7 @@ export default function AcademiaClase() {
               <span>/</span>
               <span className="truncate text-edvanta-deep">{lesson.title}</span>
             </nav>
-            <section className="grid overflow-hidden rounded-lg border border-edvanta-border bg-white lg:grid-cols-[1.15fr_0.85fr]" aria-labelledby="access-title">
+            <section className="grid grid-cols-1 overflow-hidden rounded-lg border border-edvanta-border bg-white lg:grid-cols-[1.15fr_0.85fr]" aria-labelledby="access-title">
               <div className="p-7 sm:p-10">
                 <p className="text-xs font-bold uppercase text-edvanta-tealdark">Aula privada</p>
                 <h1 id="access-title" className="mt-3 text-3xl font-semibold leading-tight text-edvanta-deep sm:text-4xl">Crea tu cuenta para entrar a esta clase</h1>
@@ -278,7 +278,7 @@ export default function AcademiaClase() {
             <span className="truncate text-edvanta-deep">{lesson.title}</span>
           </nav>
 
-          <div className="grid items-start gap-6 lg:grid-cols-[minmax(0,1fr)_360px]">
+          <div className="grid grid-cols-1 items-start gap-6 lg:grid-cols-[minmax(0,1fr)_360px]">
             <div className="min-w-0 space-y-5">
               <div className="aspect-video overflow-hidden rounded-lg bg-black shadow-sm">
                 {videoId ? (

@@ -151,7 +151,7 @@ export default function RetoDia() {
             <span className="truncate text-edvanta-deep">Día {day.day_number}</span>
           </nav>
 
-          <div className="grid items-start gap-6 lg:grid-cols-[minmax(0,1fr)_340px]">
+          <div className="grid grid-cols-1 items-start gap-6 lg:grid-cols-[minmax(0,1fr)_340px]">
             <div className="min-w-0 space-y-5">
               {/* Cabecera del día */}
               <section className="rounded-lg border border-edvanta-border bg-white p-5 sm:p-6" aria-labelledby="day-title">
@@ -263,7 +263,7 @@ export default function RetoDia() {
             </div>
 
             {/* Barra lateral */}
-            <aside className="space-y-4 lg:sticky lg:top-24">
+            <aside className="min-w-0 space-y-4 lg:sticky lg:top-24">
               {user && membership && (
                 <section className="rounded-lg border border-edvanta-border bg-white p-4" aria-labelledby="side-progress">
                   <div className="flex items-center justify-between gap-3">
@@ -302,7 +302,7 @@ export default function RetoDia() {
                         <span className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-[11px] font-bold ${done ? 'bg-teal-600 text-white' : active ? 'bg-white text-teal-700' : 'bg-edvanta-bg text-edvanta-muted'}`}>
                           {done ? <Icon name="check" className="h-3.5 w-3.5" /> : item.day_number}
                         </span>
-                        <span className={`truncate text-xs ${active ? 'font-semibold text-teal-800' : 'text-edvanta-deep'}`}>{item.title}</span>
+                        <span className={`min-w-0 truncate text-xs ${active ? 'font-semibold text-teal-800' : 'text-edvanta-deep'}`}>{item.title}</span>
                       </Link>
                     );
                   })}

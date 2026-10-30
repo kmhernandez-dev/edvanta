@@ -181,7 +181,7 @@ export default function AcademiaCurso() {
 
       {/* Héroe: lo que es el curso y, al lado, su tarjeta */}
       <section className="ds-surface-glow border-b border-edvanta-border">
-        <div className="mx-auto grid max-w-7xl gap-10 px-4 py-10 sm:px-6 md:py-14 lg:grid-cols-[minmax(0,1fr)_380px] lg:gap-14 lg:px-8">
+        <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-4 py-10 sm:px-6 md:py-14 lg:grid-cols-[minmax(0,1fr)_380px] lg:gap-14 lg:px-8">
           <div className="min-w-0">
             <Breadcrumb items={[{ label: 'Feliz Sin Tiroides', to: '/feliz-sin-tiroides' }, { label: 'Academia', to: '/academia' }, { label: course.title }]} className="mb-6" />
             <div className="flex flex-wrap gap-2">
@@ -249,7 +249,7 @@ export default function AcademiaCurso() {
       </section>
 
       {/* Para quién es y quién lo prepara */}
-      <div className="mx-auto grid max-w-7xl gap-12 px-4 pb-14 pt-4 sm:px-6 lg:grid-cols-2 lg:gap-14 lg:px-8">
+      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-12 px-4 pb-14 pt-4 sm:px-6 lg:grid-cols-2 lg:gap-14 lg:px-8">
         <section>
           <SectionHeading eyebrow="Para quién es" tone="teal" title="¿A quién está dirigido?" />
           <ul className="mt-6 space-y-3">
@@ -288,7 +288,7 @@ export default function AcademiaCurso() {
       {/* Temario, con la inscripción o el avance siempre a mano */}
       {lessons.length > 0 && (
         <section id="temario" className="scroll-mt-32 border-t border-edvanta-border bg-edvanta-bg">
-          <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 lg:grid-cols-[minmax(0,1fr)_340px] lg:gap-14 lg:px-8">
+          <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-4 py-14 sm:px-6 lg:grid-cols-[minmax(0,1fr)_340px] lg:gap-14 lg:px-8">
             <div className="min-w-0">
               <SectionHeading eyebrow="Temario" title="Contenido del curso" desc={`${modulosConClases} ${modulosConClases === 1 ? 'módulo' : 'módulos'} · ${clases}`} />
               <div className="mt-6 space-y-4">
