@@ -228,6 +228,25 @@ export function meRouter() {
         WHERE e.course_id = c.id AND e.user_id = $1 AND e.withdrawn_at IS NULL
      )`;
 
+  /**
+   * Inscribe a la persona en un curso del catálogo abierto, con la misma
+   * condición que el listado. Se usa tanto por id como por la dirección
+   * descriptiva del aula, para que abrir un enlace compartido no obligue
+   * a pasar por una pantalla de inscripción.
+   */
+  const inscribirEnCatalogo = async (db, user, now, courseId) => {
+    const [curso] = await many(
+      db,
+      `SELECT c.id, c.title, c.current_version_id, ${SLUG_DEL_CURSO} AS slug ${CATALOGO} AND c.id = $3`,
+      [user.id, now, courseId],
+    );
+    if (!curso) {
+      throw notFound('Este curso ya no está disponible para inscribirse.');
+    }
+    await enrollUsers(db, { course: curso, userIds: [user.id], now });
+    return { courseId: curso.id, slug: curso.slug || null };
+  };
+
   router.get('/catalog', route(async (req, res) => {
     const { db, user, now } = req.aula;
     const rows = await many(
@@ -259,18 +278,22 @@ export function meRouter() {
   router.post('/catalog/:courseId/enroll', route(async (req, res) => {
     const { db, user, now } = req.aula;
     const { courseId } = ids(req);
-    // Se vuelve a comprobar con la MISMA condición del listado: que el curso
-    // estuviera en pantalla hace un rato no basta para matricularse ahora.
-    const [curso] = await many(
-      db,
-      `SELECT c.id, c.title, c.current_version_id, ${SLUG_DEL_CURSO} AS slug ${CATALOGO} AND c.id = $3`,
-      [user.id, now, courseId],
-    );
-    if (!curso) {
-      throw notFound('Este curso ya no está disponible para inscribirse.');
+    const inscripcion = await inscribirEnCatalogo(db, user, now, courseId);
+    res.status(201).json({ ok: true, ...inscripcion });
+  }));
+
+  // Abrir un enlace /aula/curso-de-… no debe terminar en una pantalla de
+  // inscripción: se inscribe y se continúa. La condición es la misma del
+  // catálogo; un curso de empresa o retirado sigue dando 404.
+  router.post('/catalog/slug/:slug/enroll', route(async (req, res) => {
+    const { db, user, now } = req.aula;
+    const slug = String(req.params.slug || '').toLowerCase();
+    const resuelto = /^curso-[a-z0-9-]+$/.test(slug) ? await resolverSlug(db, slug) : null;
+    if (resuelto?.entidad !== 'aula') {
+      throw notFound('No encontramos este curso entre los disponibles.');
     }
-    await enrollUsers(db, { course: curso, userIds: [user.id], now });
-    res.status(201).json({ ok: true, courseId: curso.id, slug: curso.slug || null });
+    const inscripcion = await inscribirEnCatalogo(db, user, now, resuelto.id);
+    res.status(201).json({ ok: true, ...inscripcion });
   }));
 
   return router;

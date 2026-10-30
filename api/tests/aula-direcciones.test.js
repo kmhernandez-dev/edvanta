@@ -188,8 +188,23 @@ describe('aula · direcciones con nombre', () => {
     expect(tabla.data.some((f) => /pharmarket/.test(`${f.antigua} ${f.nueva}`))).toBe(false);
     expect(tabla.data.some((f) => f.nueva === '/curso-de-gestion-de-calidad')).toBe(true);
     const sitemap = await (await pedirPublico('/sitemap-cursos.xml')).text();
-    expect(sitemap).toContain('https://edvanta.test/curso-de-gestion-de-calidad<');
+    expect(sitemap).not.toContain('https://edvanta.test/curso-de-gestion-de-calidad<');
     expect(sitemap).not.toContain('pharmarket');
-    expect((await pedirPublico('/paginas/slug/curso-de-gestion-de-calidad')).status).toBe(200);
+    const publicoPropio = await pedirPublico('/paginas/slug/curso-de-gestion-de-calidad');
+    expect(publicoPropio.status).toBe(301);
+    expect(publicoPropio.headers.get('location')).toBe('https://edvanta.test/aula/curso-de-gestion-de-calidad');
+  });
+
+  it('abrir el enlace del catálogo inscribe y abre el curso sin paso intermedio', async () => {
+    const antes = await p.get('/me/courses/curso-de-gestion-de-calidad');
+    expect(antes.status).toBe(404);
+
+    const alta = await p.post('/me/catalog/slug/curso-de-gestion-de-calidad/enroll', {});
+    expect(alta.status).toBe(201);
+    expect(alta.data.courseId).toBe(Number(deEdvanta.id));
+
+    const despues = await p.get('/me/courses/curso-de-gestion-de-calidad');
+    expect(despues.status).toBe(200);
+    expect(despues.data.courseId).toBe(Number(deEdvanta.id));
   });
 });

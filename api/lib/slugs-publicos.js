@@ -2,9 +2,12 @@
  * ============================================================
  *  lib/slugs-publicos.js — Direcciones públicas de los cursos
  *
- *  Cada curso público tiene una dirección descriptiva y fija:
+ *  Cada curso tiene una dirección descriptiva y fija:
  *
- *    https://edvanta.co/curso-de-farmacoterapia-de-la-diabetes
+ *    https://edvanta.co/aula/curso-de-farmacoterapia-de-la-diabetes
+ *
+ *  Los cursos curados conservan además su ficha pública en
+ *  /curso-de-…; los propios abren directamente en el aula.
  *
  *  El slug se guarda en `public_slugs` (no se recalcula): se crea
  *  cuando el curso se publica y no cambia aunque cambie el título.
