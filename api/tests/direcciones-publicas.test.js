@@ -133,7 +133,7 @@ describe('slugs de curso · base de datos y rutas', () => {
   it('las direcciones viejas llegan a la nueva en un solo 301, con su consulta', async () => {
     const propio = await pedir(`/api/paginas/curso/${ids.diabetes}?utm_source=boletin`);
     expect(propio.status).toBe(301);
-    expect(propio.headers.get('location')).toBe('https://edvanta.test/aula/curso-de-farmacoterapia-de-la-diabetes?utm_source=boletin');
+    expect(propio.headers.get('location')).toBe('https://edvanta.test/curso-de-farmacoterapia-de-la-diabetes?utm_source=boletin');
 
     const curado = await pedir('/api/paginas/cursos/farmacologia-cardiovascular-20799');
     expect(curado.status).toBe(301);
@@ -142,33 +142,28 @@ describe('slugs de curso · base de datos y rutas', () => {
     const gratis = await pedir('/api/paginas/cursos-gratis/SH-9060');
     expect(gratis.headers.get('location')).toBe('https://edvanta.test/curso-de-gestion-de-calidad');
 
-    // El destino de un curado no vuelve a redirigir: es la página final.
-    const destino = await pedir('/api/paginas/slug/curso-de-farmacologia-cardiovascular-en-edutin');
+    // El destino no vuelve a redirigir: es la página final.
+    const destino = await pedir('/api/paginas/slug/curso-de-farmacoterapia-de-la-diabetes');
     expect(destino.status).toBe(200);
   });
 
-  it('la ficha nueva de un curso curado trae título, canonical, redes y datos estructurados', async () => {
-    const r = await pedir('/api/paginas/slug/curso-de-farmacologia-cardiovascular-en-edutin');
+  it('la página nueva trae título, canonical, redes y datos estructurados', async () => {
+    const r = await pedir('/api/paginas/slug/curso-de-farmacoterapia-de-la-diabetes');
     const html = await r.text();
-    expect(html).toContain('<title>Curso de Farmacolog');
-    expect(html).toContain('cardiovascular | Edvanta</title>');
-    expect(html).toContain('<link rel="canonical" href="https://edvanta.test/curso-de-farmacologia-cardiovascular-en-edutin"');
-    expect(html).toContain('<meta property="og:url" content="https://edvanta.test/curso-de-farmacologia-cardiovascular-en-edutin"');
+    expect(html).toContain('<title>Curso de Farmacoterapia de la Diabetes | Edvanta</title>');
+    expect(html).toContain('<link rel="canonical" href="https://edvanta.test/curso-de-farmacoterapia-de-la-diabetes"');
+    expect(html).toContain('<meta property="og:url" content="https://edvanta.test/curso-de-farmacoterapia-de-la-diabetes"');
     expect(html).toContain('"@type":"Course"');
-    expect(html).toContain('<h1>Curso de Farmacolog');
-    expect(html).toContain('cardiovascular</h1>');
+    expect(html).toContain('<h1>Curso de Farmacoterapia de la Diabetes</h1>');
     expect(r.headers.get('cache-control')).toContain('no-cache');
   });
 
-  it('los cursos propios redirigen al aula; mayúsculas y barra final también', async () => {
+  it('mayúsculas, barra final y slugs del historial redirigen a la vigente', async () => {
     const mayus = await pedir('/api/paginas/slug/Curso-De-Farmacoterapia-De-La-Diabetes');
     expect(mayus.status).toBe(301);
-    expect(mayus.headers.get('location')).toBe('https://edvanta.test/aula/curso-de-farmacoterapia-de-la-diabetes');
+    expect(mayus.headers.get('location')).toBe('https://edvanta.test/curso-de-farmacoterapia-de-la-diabetes');
     const barra = await pedir('/api/paginas/slug/curso-de-farmacoterapia-de-la-diabetes/');
-    expect(barra.headers.get('location')).toBe('https://edvanta.test/aula/curso-de-farmacoterapia-de-la-diabetes');
-    const propio = await pedir('/api/paginas/slug/curso-de-farmacoterapia-de-la-diabetes');
-    expect(propio.status).toBe(301);
-    expect(propio.headers.get('location')).toBe('https://edvanta.test/aula/curso-de-farmacoterapia-de-la-diabetes');
+    expect(barra.headers.get('location')).toBe('https://edvanta.test/curso-de-farmacoterapia-de-la-diabetes');
 
     await cambiarSlug(db, { entidad: 'curado', id: ids.excel, nuevo: 'curso-de-especializacion-en-excel-de-coursera' });
     const viejo = await pedir('/api/paginas/slug/curso-de-especializacion-en-excel');
@@ -203,8 +198,7 @@ describe('slugs de curso · base de datos y rutas', () => {
 
   it('el sitemap de cursos y la tabla de direcciones salen de la base', async () => {
     const xml = await (await pedir('/api/sitemap-cursos.xml')).text();
-    // Los propios viven en el aula (noindex): no se anuncian.
-    expect(xml).not.toContain('<loc>https://edvanta.test/curso-de-farmacoterapia-de-la-diabetes</loc>');
+    expect(xml).toContain('<loc>https://edvanta.test/curso-de-farmacoterapia-de-la-diabetes</loc>');
     expect(xml).toContain('<loc>https://edvanta.test/curso-de-farmacologia-cardiovascular-en-edutin</loc>');
     expect(xml).not.toContain('preparacion');
 

@@ -102,8 +102,9 @@ export function CourseOverview({
     <div className="aula-root min-h-screen">
       {banner}
       {/* Cabecera compacta: qué curso es, cuánto llevas y por dónde sigues. */}
-      <header className="border-b border-[var(--aula-border)] bg-white">
-        <div className="relative mx-auto max-w-[1400px] px-5 py-6 sm:py-9">
+      <header className="relative overflow-hidden border-b border-[var(--aula-border)]" style={{ background: 'var(--aula-gradient-hero)' }}>
+        <div className="pointer-events-none absolute -right-24 -top-24 h-80 w-80 rounded-full bg-[#8981CE]/20 blur-3xl" aria-hidden="true" />
+        <div className="relative mx-auto max-w-6xl px-4 py-6 sm:py-9">
           <Link to={backTo.to} className="inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--aula-muted)] hover:text-[var(--aula-primary)]">
             <ArrowLeft className="h-4 w-4" aria-hidden="true" /> {backTo.label}
           </Link>
@@ -138,7 +139,7 @@ export function CourseOverview({
         </div>
       </header>
 
-      <div className="mx-auto max-w-[1400px] px-5 py-8 sm:py-10">
+      <div className="mx-auto max-w-6xl px-4 py-8 sm:py-10">
         <div className="grid gap-8 lg:grid-cols-[1.45fr_1fr]">
           <div className="flex min-w-0 flex-col gap-8">
             {/* El temario primero: en módulos que se abren y cierran. */}

@@ -7,8 +7,7 @@
  *  página. Lo que no es un curso es «página no encontrada».
  *
  *  · Curso en vivo (data/edvanta/productos.js, campo `to`) → su página.
- *  · /curso-… de un curso curado → su ficha; la API resuelve el slug.
- *  · /curso-… de un curso propio → se abre en el aula (redirección).
+ *  · /curso-… → la ficha; la API resuelve el slug (tabla public_slugs).
  * ============================================================
  */
 

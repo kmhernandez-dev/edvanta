@@ -365,10 +365,11 @@ export async function listOwnCoursesRoute(req, res) {
         durationMinutes: r.duration_minutes,
         authorName: r.author_name,
         lessons: r.lessons,
-        // El curso propio se abre directamente en el aula. La dirección es
-        // la descriptiva (/aula/curso-de-…); sin slug, la vieja, que redirige.
+        // La ficha pública, no el aula: así se ve el curso antes de entrar.
+        // La dirección es la descriptiva (/curso-de-…); sin slug, la vieja,
+        // que redirige.
         slug: r.public_slug || null,
-        to: r.public_slug ? `/aula/${r.public_slug}` : `/aula/curso/${r.id}`,
+        to: r.public_slug ? `/${r.public_slug}` : `/curso/${r.id}`,
       })),
       total: rows.length,
     });
@@ -676,7 +677,7 @@ async function relacionados(ficha) {
     for (const r of rows) {
       salida.push({
         titulo: r.title,
-        url: r.public_slug ? `/aula/${r.public_slug}` : `/aula/curso/${r.id}`,
+        url: r.public_slug ? `/${r.public_slug}` : `/curso/${r.id}`,
         portada: r.cover_file_id ? `/api/cursos-edvanta/${r.id}/portada` : r.cover_url,
         procedencia: 'Edvanta',
         nivel: r.level,

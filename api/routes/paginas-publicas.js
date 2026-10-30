@@ -4,14 +4,14 @@
  *
  *  nginx manda aquí las direcciones de curso, viejas y nuevas:
  *
- *    /curso-de-…            → ficha del curso curado con su título,
- *                             descripción, imagen y datos estructurados
- *                             ya escritos en el HTML. Si el slug es del
+ *    /curso-de-…            → página del curso con su título, su
+ *                             descripción, su imagen y sus datos
+ *                             estructurados ya escritos en el HTML
+ *                             (los buscadores y las redes los leen sin
+ *                             ejecutar JavaScript). Si el slug es del
  *                             historial, 301 al vigente.
- *                             En cursos propios, 301 a /aula/curso-de-…
- *                             (la ficha pública ya no existe).
- *    /curso/53              → 301 a /aula/curso-de-…   (cursos propios)
- *    /cursos/<slug-viejo>   → 301 a /curso-de-…        (cursos curados)
+ *    /curso/53              → 301 a /curso-de-…   (cursos propios)
+ *    /cursos/<slug-viejo>   → 301 a /curso-de-…   (cursos curados)
  *    /cursos-gratis/<código>→ 301 a /curso-de-…   (códigos de Edutin)
  *    /articulos?categoria=… → 301 a /articulos/categoria/…
  *    /carreras/…, /rutas/…, /competencias/…
@@ -22,7 +22,7 @@
  *  404 con la misma aplicación (que muestra «no encontramos»).
  *
  *  Además:
- *    GET /api/sitemap-cursos.xml       los cursos curados con ficha pública
+ *    GET /api/sitemap-cursos.xml       todos los cursos públicos
  *    GET /api/sitemap-profesional.xml  carreras, rutas y competencias
  *    GET /api/direcciones              tabla de direcciones antiguas → nuevas
  * ============================================================
@@ -182,14 +182,6 @@ export function crearRutasPublicas({ db, sitio = '', obtenerPlantilla = async ()
       // Sin curso: puede ser una página fija (el curso en vivo sale de su .html
       // en nginx). Se normaliza la dirección; si tampoco existe, allá da 404.
       if (!ficha) return pedido !== slug || req.path.endsWith('/') ? redirigir(req, res, `/${slug}`) : noEncontrado(res);
-
-      // Los cursos propios ya no tienen ficha pública: su dirección lleva
-      // al aula, donde la persona entra y queda inscrita. Los curados de
-      // otras plataformas conservan su ficha.
-      if (r.entidad === 'aula') {
-        return redirigir(req, res, `/aula/${r.vigente || slug}`);
-      }
-
       if (!r.esVigente || pedido !== slug || req.path.endsWith('/')) {
         return r.vigente ? redirigir(req, res, `/${r.vigente}`) : noEncontrado(res);
       }
@@ -240,7 +232,7 @@ export function crearRutasPublicas({ db, sitio = '', obtenerPlantilla = async ()
     try {
       const id = Number.parseInt(req.params.id, 10);
       const ruta = Number.isInteger(id) && id > 0 ? await rutaDeCursoPropio(db, id) : null;
-      return ruta ? redirigir(req, res, `/aula${ruta}`) : noEncontrado(res);
+      return ruta ? redirigir(req, res, ruta) : noEncontrado(res);
     } catch (e) {
       console.error(JSON.stringify({ level: 'error', msg: 'redireccion curso propio', error: e.message }));
       return noEncontrado(res);
@@ -419,10 +411,12 @@ export function crearRutasPublicas({ db, sitio = '', obtenerPlantilla = async ()
   router.get('/sitemap-cursos.xml', async (_req, res) => {
     try {
       await asegurarSlugsDeCursos(db);
-      // Los cursos propios viven en el aula (noindex): no se anuncian en
-      // el sitemap público. Solo se listan los curados, que conservan ficha.
       const { rows } = await db.query(
-        `SELECT '/' || s.slug AS ruta, COALESCE(c.updated_at, c.created_at) AS fecha
+        `SELECT '/' || s.slug AS ruta, COALESCE(c.updated_at, c.published_at) AS fecha
+           FROM public_slugs s JOIN aula_courses c ON c.id = s.entity_id
+          WHERE s.entity = 'aula' AND s.is_current AND c.kind = 'edvanta' AND c.status = 'publicado' AND c.deleted_at IS NULL
+         UNION ALL
+         SELECT '/' || s.slug, COALESCE(c.updated_at, c.created_at)
            FROM public_slugs s JOIN courses c ON c.id = s.entity_id
           WHERE s.entity = 'curado' AND s.is_current AND c.active = TRUE
           ORDER BY 1`,

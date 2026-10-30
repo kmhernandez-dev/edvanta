@@ -29,7 +29,11 @@ function Pestana({ activa, onClick, icono: Icono, children, id, panelId }) {
       aria-selected={activa}
       aria-controls={panelId}
       onClick={onClick}
-      className="aula-player-tab"
+      className={`inline-flex min-h-10 flex-1 items-center justify-center gap-1.5 rounded-[var(--aula-radius)] px-3 text-sm font-bold transition ${
+        activa
+          ? 'bg-[var(--aula-primary)] text-white'
+          : 'text-[var(--aula-muted)] hover:bg-[var(--aula-neutral-soft)]'
+      }`}
     >
       <Icono className="h-4 w-4" aria-hidden="true" />
       {children}
@@ -138,14 +142,24 @@ function Apuntes({ courseId, lessonId }) {
   );
 }
 
-export default function PanelDelCurso({
-  snapshot, lesson, lessonHref, lessonState, progress, Outline, courseId, onNavigate,
-}) {
+export default function PanelDelCurso({ snapshot, lesson, lessonHref, lessonState, progress, Outline, courseId }) {
   const [pestana, setPestana] = useState('contenido');
 
   return (
-    <div className="flex h-full flex-col">
-      <div role="tablist" aria-label="Panel del curso" className="aula-player-tabs">
+    <div className="flex h-full flex-col gap-4">
+      {progress && (
+        <div>
+          <div className="flex items-center justify-between text-xs font-semibold text-[var(--aula-muted)]">
+            <span>Tu avance</span>
+            <span className="tabular-nums text-[var(--aula-text)]">{Math.round(progress.pct)} %</span>
+          </div>
+          <div className="mt-1.5">
+            <ProgressBar value={progress.pct} label="Avance del curso" size="sm" />
+          </div>
+        </div>
+      )}
+
+      <div role="tablist" aria-label="Panel del curso" className="flex gap-1 rounded-[var(--aula-radius)] bg-[var(--aula-neutral-soft)] p-1">
         <Pestana
           id="pestana-contenido" panelId="panel-contenido"
           activa={pestana === 'contenido'} onClick={() => setPestana('contenido')} icono={ListTree}
@@ -160,35 +174,16 @@ export default function PanelDelCurso({
         </Pestana>
       </div>
 
-      {progress && (
-        <div className="aula-player-progress">
-          <div className="aula-player-progress__top">
-            <span>Tu avance</span>
-            <strong>{Math.round(progress.pct)} %</strong>
-          </div>
-          <ProgressBar value={progress.pct} label="Avance del curso" size="sm" />
-          <p className="aula-player-progress__hint">
-            Este progreso representa la cantidad de contenido del curso que has completado.
-          </p>
-        </div>
-      )}
-
       <div className="min-h-0 flex-1">
         <div id="panel-contenido" role="tabpanel" aria-labelledby="pestana-contenido" hidden={pestana !== 'contenido'}>
-          <Outline
-            snapshot={snapshot}
-            currentId={lesson.id}
-            lessonHref={lessonHref}
-            lessonState={lessonState}
-            onNavigate={onNavigate}
-          />
+          <Outline snapshot={snapshot} currentId={lesson.id} lessonHref={lessonHref} lessonState={lessonState} />
         </div>
         <div
           id="panel-apuntes"
           role="tabpanel"
           aria-labelledby="pestana-apuntes"
           hidden={pestana !== 'apuntes'}
-          className="h-full pt-3"
+          className="h-full"
         >
           {/* Se monta solo al abrir la pestaña: así no se piden los apuntes
               de cada clase que alguien simplemente hojea. */}

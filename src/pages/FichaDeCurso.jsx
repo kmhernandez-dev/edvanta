@@ -2,10 +2,6 @@
  * ============================================================
  *  FichaDeCurso.jsx — Una sola página para todos los cursos
  *
- *  La ficha queda para los cursos curados de otras plataformas. Los
- *  cursos propios de Edvanta ya no tienen ficha pública: su dirección
- *  abre directamente el aula, donde la persona entra y aprende.
- *
  *  Antes había tres plantillas (propios, cursos gratis y externos)
  *  que decían cosas distintas sobre lo mismo. Esta es una, y lo que
  *  cambia de un curso a otro no es la página: son las capacidades que
@@ -249,21 +245,10 @@ export default function FichaDeCurso({ modo = 'propio', slugPublico = '' }) {
     return () => { vivo = false; };
   }, [ref]);
 
-  // Los cursos propios ya no tienen ficha pública: su dirección lleva
-  // directamente al aula. Los curados conservan su ficha y solo se
-  // normaliza una dirección vieja o del historial.
+  // Una dirección vieja (o un slug del historial) pasa a la vigente sin
+  // dejar la vieja en el historial del navegador.
   useEffect(() => {
-    if (!ficha) return;
-    if (ficha.dondeSeEstudia === 'edvanta') {
-      const enAula = ficha.url?.startsWith('/curso-')
-        ? `/aula${ficha.url}`
-        : `/aula/curso/${String(ficha.id).replace('edvanta-', '')}`;
-      if (enAula !== location.pathname) {
-        navigate(`${enAula}${location.search}${location.hash}`, { replace: true });
-      }
-      return;
-    }
-    if (ficha.url?.startsWith('/curso-') && ficha.url !== location.pathname) {
+    if (ficha?.url && ficha.url.startsWith('/curso-') && ficha.url !== location.pathname) {
       navigate(`${ficha.url}${location.search}${location.hash}`, { replace: true });
     }
   }, [ficha, location.pathname, location.search, location.hash, navigate]);
@@ -394,19 +379,6 @@ export default function FichaDeCurso({ modo = 'propio', slugPublico = '' }) {
         <SiteHeader />
         <div className="curso-container py-24 text-center text-sm font-semibold text-edvanta-muted">
           Cargando el curso…
-        </div>
-      </div>
-    );
-  }
-
-  // Los cursos propios viven en el aula. Mientras el efecto anterior
-  // cambia la dirección, no se pinta una ficha que ya no existe.
-  if (ficha.dondeSeEstudia === 'edvanta') {
-    return (
-      <div className="curso-ficha min-h-screen bg-white">
-        <SiteHeader />
-        <div className="curso-container py-24 text-center text-sm font-semibold text-edvanta-muted">
-          Abriendo tu aula…
         </div>
       </div>
     );
