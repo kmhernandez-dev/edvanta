@@ -33,6 +33,7 @@ import {
   asegurarSlugsDeCursos, nombreDeCurso, resolverSlug, rutaDeCursoCurado, rutaDeCursoPropio, slugify,
 } from '../lib/slugs-publicos.js';
 import { SQL_CURSO_PUBLICO, temarioPublico } from './courses.js';
+import { verificarCertificado } from '../lib/aula/certificados.js';
 
 const esc = (t) => String(t ?? '')
   .replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;');
@@ -432,6 +433,21 @@ export function crearRutasPublicas({ db, sitio = '', obtenerPlantilla = async ()
     } catch (e) {
       console.error(JSON.stringify({ level: 'error', msg: 'sitemap de cursos', error: e.message }));
       return res.status(503).type('text/plain').send('Sitemap no disponible');
+    }
+  });
+
+  // Verificación pública de un certificado (lo que abre su QR). Lleva el
+  // nombre de una persona: no se guarda en caché ni se indexa.
+  router.get('/certificados/:codigo', async (req, res) => {
+    res.set('Cache-Control', 'no-store');
+    res.set('X-Robots-Tag', 'noindex, nofollow');
+    try {
+      const certificado = await verificarCertificado(db, req.params.codigo);
+      if (!certificado) return res.status(404).json({ ok: false, error: 'No encontramos un certificado con ese código.' });
+      return res.json({ ok: true, data: certificado });
+    } catch (e) {
+      console.error(JSON.stringify({ level: 'error', msg: 'verificación de certificado', error: e.message }));
+      return res.status(500).json({ ok: false, error: 'No fue posible verificar el certificado.' });
     }
   });
 

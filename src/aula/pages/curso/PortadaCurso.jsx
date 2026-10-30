@@ -1,5 +1,6 @@
-import { CalendarClock, PartyPopper } from 'lucide-react';
+import { Award, CalendarClock, PartyPopper } from 'lucide-react';
 import { get } from '../../api';
+import { Button } from '../../ui/Button';
 import { useAsync } from '../../hooks';
 import { fmtDate, plural } from '../../labels';
 import { StatusBadge } from '../../ui/Badge';
@@ -78,6 +79,17 @@ export default function PortadaCurso() {
             {e.status === 'completado' && <PartyPopper className="h-4 w-4 text-[var(--aula-success)]" aria-hidden="true" />}
           </div>
           <Notice enrollment={e} />
+          {e.status === 'completado' && (
+            <div className="flex flex-wrap items-center justify-between gap-3 rounded-[var(--aula-radius)] border border-[var(--aula-border)] bg-white px-4 py-3">
+              <p className="flex items-center gap-2 text-sm font-semibold">
+                <Award className="h-5 w-5 text-[var(--aula-secondary)]" aria-hidden="true" />
+                {data.certificate ? `Tu certificado ${data.certificate.code}` : 'Ya puedes emitir tu certificado de aprobación'}
+              </p>
+              <Button size="sm" to={rutas.certificado} icon={Award}>
+                {data.certificate ? 'Ver mi certificado' : 'Obtener mi certificado'}
+              </Button>
+            </div>
+          )}
         </div>
       )}
       resources={data.resourcesEnabled ? <Resources courseId={courseId} /> : null}

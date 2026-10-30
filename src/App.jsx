@@ -27,6 +27,7 @@ const CompetencyPage = lazy(() => import('./pages/CompetencyPage'));
 const VolviendoDeAcceso = lazy(() => import('./pages/VolviendoDeAcceso'));
 const FichaDeCurso = lazy(() => import('./pages/FichaDeCurso'));
 const PaginaPublica = lazy(() => import('./pages/PaginaPublica'));
+const VerificarCertificado = lazy(() => import('./pages/VerificarCertificado'));
 const Diagnostico = lazy(() => import('./pages/Diagnostico'));
 const CursoGratisRedirige = lazy(() => import('./pages/CursoGratisRedirige'));
 const CursosCatalog = lazy(() => import('./pages/CursosCatalog'));
@@ -412,6 +413,10 @@ export default function App() {
         <Route path="/reembolsos"      element={<LegalPage doc="reembolsos" />} />
         <Route path="/descargo-medico" element={<LegalPage doc="descargo-medico" />} />
         <Route path="/afiliados"       element={<LegalPage doc="afiliados" />} />
+
+        {/* Verificación pública de certificados (lo que abre su QR) */}
+        <Route path="/certificados" element={<VerificarCertificado />} />
+        <Route path="/certificados/:codigo" element={<VerificarCertificado />} />
 
         {/* Escuelas y páginas que cambiaron de nombre: la vieja lleva a la
             nueva también al navegar dentro del sitio (nginx responde el 301). */}

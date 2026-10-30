@@ -7,6 +7,7 @@ import {
   addLessonTime, completeLesson, courseForParticipant, openLesson, reportVideo,
 } from '../../lib/aula/learning.js';
 import { participantResources } from '../../lib/aula/resources.js';
+import { certificadoDelCurso, emitirCertificado } from '../../lib/aula/certificados.js';
 import { resolverSlug } from '../../lib/slugs-publicos.js';
 
 const ids = (req) => ({
@@ -92,6 +93,20 @@ export function meRouter() {
   router.get('/courses/:courseId/resources', route(async (req, res) => {
     const { courseId } = ids(req);
     res.json(await participantResources(req.aula.db, req.aula.user, courseId, { now: req.aula.now }));
+  }));
+
+  // ── Certificado de aprobación ─────────────────────────────
+  router.get('/courses/:courseId/certificate', route(async (req, res) => {
+    const { courseId } = ids(req);
+    res.json(await certificadoDelCurso(req.aula.db, req.aula.user, courseId));
+  }));
+
+  router.post('/courses/:courseId/certificate', route(async (req, res) => {
+    const { courseId } = ids(req);
+    const certificado = await emitirCertificado(req.aula.db, req.aula.user, courseId, {
+      documento: req.body?.documento, now: req.aula.now,
+    });
+    res.status(201).json({ certificado });
   }));
 
   router.post('/courses/:courseId/lessons/:lessonId/open', route(async (req, res) => {

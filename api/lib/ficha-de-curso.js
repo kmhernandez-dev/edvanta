@@ -19,6 +19,8 @@
  * ============================================================
  */
 
+import { EMISOR, horasDe } from './aula/certificados.js';
+
 /** Dónde se estudia de verdad el curso. */
 export const EN_EDVANTA = 'edvanta';
 export const EN_PROVEEDOR = 'proveedor';
@@ -71,13 +73,14 @@ const entero = (v) => {
  */
 function certificado({ propio, curso }) {
   if (propio) {
-    // El flujo de evaluación y emisión todavía no existe en el Aula.
+    // El aula lo emite al completar el curso (lib/aula/certificados.js):
+    // con código, QR y verificación pública en /certificados/<código>.
     return {
-      estado: 'not_offered',
-      emisor: null,
-      condiciones: null,
-      horas: null,
-      nota: 'Este curso todavía no incluye certificado de Edvanta.',
+      estado: 'available',
+      emisor: `${EMISOR.nombre} (NIT ${EMISOR.nit})`,
+      condiciones: 'Completa todas las clases obligatorias del curso y pídelo desde tu aula.',
+      horas: horasDe(curso.duration_minutes),
+      nota: 'Al completar el curso, Edvanta te expide tu certificado de aprobación: con tu nombre, el curso, sus horas y un código para verificarlo.',
     };
   }
   const p = PROVEEDORES[curso.provider];

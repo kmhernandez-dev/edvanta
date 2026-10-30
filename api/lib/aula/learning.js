@@ -174,10 +174,17 @@ export async function courseForParticipant(db, user, courseId, { now = new Date(
     ...m,
     lessons: (m.lessons || []).map((l) => ({ ...l, slug: slugDe.get(Number(l.id)) || null })),
   }));
+  // Si ya pidió su certificado, la portada lo enlaza.
+  const cert = await one(
+    db,
+    `SELECT code, status, issued_at FROM aula_certificates WHERE enrollment_id = $1 AND status <> 'pendiente'`,
+    [ctx.enrollment.id],
+  );
   return {
     snapshot,
     courseId: Number(courseId),
     courseSlug: curso?.slug || null,
+    certificate: cert ? { code: cert.code, status: cert.status, issuedAt: cert.issued_at } : null,
     version: { id: ctx.version.id, number: ctx.version.version_number },
     companyName: live.company_name,
     resourcesEnabled: live.resources_enabled,

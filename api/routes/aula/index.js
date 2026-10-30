@@ -12,6 +12,7 @@ import { requireAulaHeader } from '../../lib/aula/security.js';
 import { adminAuditRouter } from './admin-audit.js';
 import { adminCoursesRouter } from './admin-courses.js';
 import { adminPeopleRouter } from './admin-people.js';
+import { adminCertificadosRouter } from './admin-certificados.js';
 import { adminSummaryRouter } from './admin-summary.js';
 import { meRouter } from './me.js';
 import { authRouter } from './auth.js';
@@ -57,6 +58,7 @@ export function createAulaRouter({
   admin.use('/', adminPeopleRouter(deps));
   admin.use('/', adminCoursesRouter(deps));
   admin.use('/', adminModeracionRouter(deps));
+  admin.use('/', adminCertificadosRouter(deps));
   admin.use('/', adminSolicitudesRouter(deps));
   router.use('/admin', requireAdmin, admin);
 

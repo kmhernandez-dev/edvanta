@@ -58,9 +58,15 @@ describe('ficha de un curso propio', () => {
     expect(f.capacidades.verTemario).toBe(true);
   });
 
-  it('no inventa un certificado que todavía no se emite', () => {
-    expect(f.certificado.estado).toBe('not_offered');
-    expect(f.certificado.horas).toBeNull();
+  it('el certificado de Edvanta está disponible y dice quién lo emite y qué pide', () => {
+    // El aula lo emite al completar el curso (lib/aula/certificados.js).
+    expect(f.certificado.estado).toBe('available');
+    expect(f.certificado.emisor).toBe('Edvanta S.A.S. (NIT 902.120.527-6)');
+    expect(f.certificado.condiciones).toMatch(/clases obligatorias/);
+    // Las horas salen de la duración declarada (1200 minutos).
+    expect(f.certificado.horas).toBe(20);
+    // Sin duración declarada, no se inventan.
+    expect(fichaDeCursoPropio({ ...cursoPropio, duration_minutes: 0 }, []).certificado.horas).toBeNull();
   });
 
   it('no rellena «qué aprenderás» repitiendo el objetivo', () => {

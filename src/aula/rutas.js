@@ -34,6 +34,7 @@ export function rutasDelCurso(data) {
     base,
     clase: (id) => `${base}/clase/${slugDe.get(id) || id}`,
     recursos: `${base}/recursos`,
+    certificado: `${base}/certificado`,
   };
 }
 

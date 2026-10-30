@@ -39,6 +39,7 @@ const CursoParticipante = lazy(() => import('./pages/curso/CursoParticipante'));
 const PortadaCurso = lazy(() => import('./pages/curso/PortadaCurso'));
 const ClaseParticipante = lazy(() => import('./pages/curso/ClaseParticipante'));
 const RecursosCurso = lazy(() => import('./pages/curso/RecursosCurso'));
+const CertificadoCurso = lazy(() => import('./pages/curso/CertificadoCurso'));
 
 const fullPage = (element) => <Suspense fallback={<PageLoader />}>{element}</Suspense>;
 
@@ -48,6 +49,7 @@ const paginasDelCurso = (
     <Route index element={<PortadaCurso />} />
     <Route path="clase/:clase" element={<ClaseParticipante />} />
     <Route path="recursos" element={<RecursosCurso />} />
+    <Route path="certificado" element={<CertificadoCurso />} />
   </>
 );
 
@@ -69,6 +71,7 @@ const TITLES = [
   [/^\/aula\/admin/, 'Administración'],
   [/^\/aula\/(curso\/\d+|curso-[^/]+)\/clase/, 'Clase'],
   [/^\/aula\/(curso\/\d+|curso-[^/]+)\/recursos/, 'Recursos del curso'],
+  [/^\/aula\/(curso\/\d+|curso-[^/]+)\/certificado/, 'Certificado'],
   [/^\/aula\/curso/, 'Curso'],
   [/^\/aula/, 'Mi aula'],
 ];
