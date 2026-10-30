@@ -546,6 +546,21 @@ Cada curso de Edvanta usa en el aula la misma dirección de su página
 pública (tablas de arriba). Las clases toman el nombre de su título al
 publicar; el aula es privada, así que esas direcciones no se indexan.
 
+El certificado de aprobación de cada curso vive en
+`/aula/<dirección del curso>/certificado` (privado).
+
+### Certificados (verificación pública)
+
+| Dirección | Qué es |
+| --- | --- |
+| `/certificados` | Buscador: se escribe el código del certificado (`EDV-XXXX-XXXX`) |
+| `/certificados/EDV-XXXX-XXXX` | La verificación de un certificado: titular, curso, horas, fecha y estado |
+
+Es la dirección del QR del diploma. No se indexa (`noindex, nofollow`),
+no se guarda en caché y del documento del titular solo muestra los
+últimos cuatro caracteres. La API es `/api/certificados/<código>` (404
+si el código no existe).
+
 ### Sin cambios (ya eran descriptivas)
 
 - Los 193 artículos (`/articulos/<tema>`), los paquetes para instituciones,
@@ -557,8 +572,8 @@ publicar; el aula es privada, así que esas direcciones no se indexan.
   palabra: `/noticias`, `/guias`, `/recursos`, `/oportunidades`,
   `/proyectos`, `/certificaciones`, `/comunidad` y `/conecta` (el nombre de
   ese espacio).
-- Feliz Sin Tiroides, su Academia (`/academia/…`) y AtenFarmaClinic (no se
-  tocaron).
+- Feliz Sin Tiroides, su Academia (`/academia/…`) y AtenFarmaClinic: sus
+  direcciones no cambiaron (el 30-oct-2026 solo cambió su diseño).
 - `/cursos?category=…` es un filtro del catálogo (su canonical es
   `/cursos`), no una página indexable aparte: no se creó una página nueva.
 

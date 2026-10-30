@@ -15,7 +15,7 @@ export default function ChallengeVideo({ videoId, title }) {
 
   if (!videoId) {
     return (
-      <div className="flex aspect-video w-full items-center justify-center rounded-lg bg-[#f7f8fa] text-sm text-gray-400">
+      <div className="flex aspect-video w-full items-center justify-center rounded-lg bg-edvanta-bg text-sm text-edvanta-subtle">
         Video no disponible
       </div>
     );
@@ -33,7 +33,7 @@ export default function ChallengeVideo({ videoId, title }) {
           <img src={thumbnail} alt="" loading="lazy" className="h-full w-full object-cover opacity-90 transition-opacity group-hover:opacity-70" />
         )}
         <span className="absolute inset-0 flex items-center justify-center">
-          <span className="flex h-16 w-16 items-center justify-center rounded-full bg-white/90 text-[#563a78] shadow-lg transition-transform group-hover:scale-105">
+          <span className="flex h-16 w-16 items-center justify-center rounded-full bg-white/90 text-edvanta-blue shadow-lg transition-transform group-hover:scale-105">
             <Icon name="play" className="ml-1 h-7 w-7" />
           </span>
         </span>

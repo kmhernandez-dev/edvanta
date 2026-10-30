@@ -82,7 +82,7 @@ export default function AtenFarmaClinic() {
       <AfcHeader />
 
       {/* Hero */}
-      <section className="relative pt-28 pb-16 md:pt-36 md:pb-24 bg-gradient-to-b from-slate-50 to-white overflow-hidden">
+      <section className="relative pt-12 pb-16 md:pt-16 md:pb-24 bg-gradient-to-b from-edvanta-bg to-white overflow-hidden">
         <div className="absolute -top-20 -right-24 w-96 h-96 rounded-full bg-[radial-gradient(circle,rgba(20,184,166,0.12),transparent_70%)]" />
         <div className="absolute -bottom-20 -left-24 w-80 h-80 rounded-full bg-[radial-gradient(circle,rgba(30,58,138,0.08),transparent_70%)]" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -95,20 +95,20 @@ export default function AtenFarmaClinic() {
                 </svg>
                 <span className="text-xs font-semibold text-teal-700">Para químicos farmacéuticos clínicos</span>
               </div>
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-deepblue-900 leading-tight mb-5">
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-edvanta-deep leading-tight mb-5">
                 Herramientas clínicas para{' '}
-                <span className="bg-gradient-to-r from-deepblue-700 to-teal-600 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-edvanta-blue to-teal-600 bg-clip-text text-transparent">
                   analizar, documentar y dar seguimiento
                 </span>{' '}
                 a la farmacoterapia
               </h1>
-              <p className="text-base lg:text-lg text-gray-600 leading-relaxed mb-7 max-w-xl mx-auto lg:mx-0">
+              <p className="text-base lg:text-lg text-edvanta-muted leading-relaxed mb-7 max-w-xl mx-auto lg:mx-0">
                 Organiza la información del paciente, identifica problemas farmacoterapéuticos, construye planes de cuidado y genera informes profesionales mediante un proceso clínico estructurado.
               </p>
               <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-3">
                 <Link
                   to="/atenfarmaclinic/workspace"
-                  className="inline-flex items-center justify-center gap-2 px-7 py-3 bg-deepblue-800 hover:bg-deepblue-900 text-white text-sm font-semibold rounded-lg transition-colors"
+                  className="inline-flex items-center justify-center gap-2 px-7 py-3 bg-edvanta-blue hover:bg-[#031D5C] text-white text-sm font-semibold rounded-lg transition-colors"
                 >
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.8}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 00-2.455 2.456z" />
@@ -126,8 +126,8 @@ export default function AtenFarmaClinic() {
 
             {/* Workspace preview */}
             <div className="hidden lg:block">
-              <div className="bg-white rounded-2xl border border-gray-200 shadow-lg overflow-hidden">
-                <div className="bg-deepblue-900 px-4 py-2.5 flex items-center gap-2">
+              <div className="bg-white rounded-2xl border border-edvanta-border shadow-lg overflow-hidden">
+                <div className="bg-[#031D5C] px-4 py-2.5 flex items-center gap-2">
                   <div className="flex gap-1.5">
                     <div className="w-2.5 h-2.5 rounded-full bg-red-400" />
                     <div className="w-2.5 h-2.5 rounded-full bg-amber-400" />
@@ -138,27 +138,27 @@ export default function AtenFarmaClinic() {
                 <div className="p-4 space-y-3">
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-xs font-bold text-deepblue-900">Caso demo: Paciente polimedicado</p>
-                      <p className="text-[10px] text-gray-400">En evaluación · Minnesota/CMM</p>
+                      <p className="text-xs font-bold text-edvanta-deep">Caso demo: Paciente polimedicado</p>
+                      <p className="text-[10px] text-edvanta-subtle">En evaluación · Minnesota/CMM</p>
                     </div>
                     <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-teal-50 text-teal-700">Activo</span>
                   </div>
                   <div className="grid grid-cols-2 gap-2">
-                    <div className="bg-gray-50 rounded-lg p-2.5">
-                      <p className="text-[10px] font-semibold text-gray-500 mb-1">Medicamentos</p>
-                      <p className="text-lg font-bold text-deepblue-900">8</p>
+                    <div className="bg-edvanta-bg rounded-lg p-2.5">
+                      <p className="text-[10px] font-semibold text-edvanta-muted mb-1">Medicamentos</p>
+                      <p className="text-lg font-bold text-edvanta-deep">8</p>
                     </div>
-                    <div className="bg-gray-50 rounded-lg p-2.5">
-                      <p className="text-[10px] font-semibold text-gray-500 mb-1">Problemas</p>
+                    <div className="bg-edvanta-bg rounded-lg p-2.5">
+                      <p className="text-[10px] font-semibold text-edvanta-muted mb-1">Problemas</p>
                       <p className="text-lg font-bold text-amber-600">3</p>
                     </div>
-                    <div className="bg-gray-50 rounded-lg p-2.5">
-                      <p className="text-[10px] font-semibold text-gray-500 mb-1">Plan de cuidado</p>
+                    <div className="bg-edvanta-bg rounded-lg p-2.5">
+                      <p className="text-[10px] font-semibold text-edvanta-muted mb-1">Plan de cuidado</p>
                       <p className="text-lg font-bold text-teal-600">2</p>
                     </div>
-                    <div className="bg-gray-50 rounded-lg p-2.5">
-                      <p className="text-[10px] font-semibold text-gray-500 mb-1">Seguimiento</p>
-                      <p className="text-lg font-bold text-deepblue-700">1</p>
+                    <div className="bg-edvanta-bg rounded-lg p-2.5">
+                      <p className="text-[10px] font-semibold text-edvanta-muted mb-1">Seguimiento</p>
+                      <p className="text-lg font-bold text-edvanta-blue">1</p>
                     </div>
                   </div>
                   <div className="bg-teal-50 rounded-lg p-2.5">
@@ -181,10 +181,10 @@ export default function AtenFarmaClinic() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-10">
             <p className="text-xs font-bold text-teal-600 uppercase tracking-widest mb-2">Actividades clínicas</p>
-            <h2 className="text-2xl md:text-3xl font-bold text-deepblue-900">
+            <h2 className="text-2xl md:text-3xl font-bold text-edvanta-deep">
               ¿Qué actividad clínica necesitas realizar?
             </h2>
-            <p className="text-gray-500 text-sm mt-2">
+            <p className="text-edvanta-muted text-sm mt-2">
               Selecciona la actividad y accede a la herramienta correspondiente.
             </p>
           </div>
@@ -197,14 +197,14 @@ export default function AtenFarmaClinic() {
       </section>
 
       {/* Clinical Process */}
-      <section className="py-16 bg-slate-50">
+      <section className="py-16 bg-edvanta-bg">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-10">
             <p className="text-xs font-bold text-teal-600 uppercase tracking-widest mb-2">Proceso clínico</p>
-            <h2 className="text-2xl md:text-3xl font-bold text-deepblue-900">
+            <h2 className="text-2xl md:text-3xl font-bold text-edvanta-deep">
               Del dato a la intervención documentada
             </h2>
-            <p className="text-gray-500 text-sm mt-2">
+            <p className="text-edvanta-muted text-sm mt-2">
               Un flujo estructurado en ocho etapas para guiar tu práctica clínica.
             </p>
           </div>
@@ -213,14 +213,14 @@ export default function AtenFarmaClinic() {
       </section>
 
       {/* Clinical Tools */}
-      <section id="herramientas" className="py-16 bg-white">
+      <section id="herramientas" className="scroll-mt-32 py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-10">
             <p className="text-xs font-bold text-teal-600 uppercase tracking-widest mb-2">Herramientas clínicas</p>
-            <h2 className="text-2xl md:text-3xl font-bold text-deepblue-900">
+            <h2 className="text-2xl md:text-3xl font-bold text-edvanta-deep">
               Cada herramienta responde a una actividad clínica
             </h2>
-            <p className="text-gray-500 text-sm mt-2">
+            <p className="text-edvanta-muted text-sm mt-2">
               Herramientas estructuradas para documentar, analizar y comunicar tu trabajo farmacéutico.
             </p>
           </div>
@@ -233,14 +233,14 @@ export default function AtenFarmaClinic() {
       </section>
 
       {/* Clinical Cases */}
-      <section id="casos" className="py-16 bg-slate-50">
+      <section id="casos" className="scroll-mt-32 py-16 bg-edvanta-bg">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-10">
             <p className="text-xs font-bold text-teal-600 uppercase tracking-widest mb-2">Casos clínicos</p>
-            <h2 className="text-2xl md:text-3xl font-bold text-deepblue-900">
+            <h2 className="text-2xl md:text-3xl font-bold text-edvanta-deep">
               Aprende resolviendo casos ficticios
             </h2>
-            <p className="text-gray-500 text-sm mt-2">
+            <p className="text-edvanta-muted text-sm mt-2">
               Casos educativos con diferentes niveles de complejidad y contextos de práctica.
             </p>
           </div>
@@ -258,31 +258,31 @@ export default function AtenFarmaClinic() {
       </section>
 
       {/* Para Instituciones */}
-      <section id="instituciones" className="py-16 bg-white">
+      <section id="instituciones" className="scroll-mt-32 py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-10 items-start">
             <div>
               <p className="text-xs font-bold text-teal-600 uppercase tracking-widest mb-2">Para instituciones</p>
-              <h2 className="text-2xl md:text-3xl font-bold text-deepblue-900 mb-3">
+              <h2 className="text-2xl md:text-3xl font-bold text-edvanta-deep mb-3">
                 Estandariza la documentación clínica de tu equipo
               </h2>
-              <p className="text-gray-500 text-sm leading-relaxed mb-6">
+              <p className="text-edvanta-muted text-sm leading-relaxed mb-6">
                 Estandariza la documentación, el seguimiento y la medición de las intervenciones farmacéuticas de tu equipo. Diseñado para IPS, clínicas, hospitales, servicios farmacéuticos, universidades y programas de atención domiciliaria.
               </p>
               <a
                 href={waLink('Hola, soy de una institución y quiero información sobre AtenFarmaClinic para equipos.')}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-deepblue-800 hover:bg-deepblue-900 text-white text-sm font-semibold rounded-lg transition-colors"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-edvanta-blue hover:bg-[#031D5C] text-white text-sm font-semibold rounded-lg transition-colors"
               >
                 Solicitar información institucional
               </a>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {institutionalFeatures.map(f => (
-                <div key={f.title} className="bg-slate-50 rounded-xl p-4 border border-gray-100">
-                  <p className="text-sm font-bold text-deepblue-900 mb-1">{f.title}</p>
-                  <p className="text-xs text-gray-500 leading-relaxed">{f.description}</p>
+                <div key={f.title} className="bg-edvanta-bg rounded-xl p-4 border border-edvanta-border">
+                  <p className="text-sm font-bold text-edvanta-deep mb-1">{f.title}</p>
+                  <p className="text-xs text-edvanta-muted leading-relaxed">{f.description}</p>
                 </div>
               ))}
             </div>
@@ -291,14 +291,14 @@ export default function AtenFarmaClinic() {
       </section>
 
       {/* Metodología */}
-      <section id="metodologia" className="py-16 bg-slate-50">
+      <section id="metodologia" className="scroll-mt-32 py-16 bg-edvanta-bg">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-10">
             <p className="text-xs font-bold text-teal-600 uppercase tracking-widest mb-2">Metodología</p>
-            <h2 className="text-2xl md:text-3xl font-bold text-deepblue-900">
+            <h2 className="text-2xl md:text-3xl font-bold text-edvanta-deep">
               Trabaja con la metodología que prefieras
             </h2>
-            <p className="text-gray-500 text-sm mt-2">
+            <p className="text-edvanta-muted text-sm mt-2">
               AtenFarmaClinic permite trabajar con metodologías diferenciadas. Selecciona una antes de clasificar tus hallazgos.
             </p>
           </div>
@@ -313,14 +313,14 @@ export default function AtenFarmaClinic() {
       </section>
 
       {/* Formación y Biblioteca */}
-      <section id="formacion" className="py-16 bg-white">
+      <section id="formacion" className="scroll-mt-32 py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-10">
             <p className="text-xs font-bold text-teal-600 uppercase tracking-widest mb-2">Formación y biblioteca</p>
-            <h2 className="text-2xl md:text-3xl font-bold text-deepblue-900">
+            <h2 className="text-2xl md:text-3xl font-bold text-edvanta-deep">
               Rutas de aprendizaje para tu práctica clínica
             </h2>
-            <p className="text-gray-500 text-sm mt-2">
+            <p className="text-edvanta-muted text-sm mt-2">
               Contenidos organizados por áreas de competencia profesional.
             </p>
           </div>
@@ -328,9 +328,9 @@ export default function AtenFarmaClinic() {
           {/* Learning Routes */}
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 mb-12">
             {learningRoutes.map(route => (
-              <div key={route.id} className="bg-slate-50 rounded-xl p-4 border border-gray-100 hover:border-teal-200 transition-colors">
+              <div key={route.id} className="bg-edvanta-bg rounded-xl p-4 border border-edvanta-border hover:border-teal-200 transition-colors">
                 <div className="w-9 h-9 rounded-lg bg-teal-50 flex items-center justify-center mb-3">
-                  <svg className="w-4 h-4 text-deepblue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.6}>
+                  <svg className="w-4 h-4 text-edvanta-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.6}>
                     <path strokeLinecap="round" strokeLinejoin="round" d={
                       route.icon === 'book' ? 'M12 6C10 4.5 7 4 4 4.5v13C7 17 10 17.5 12 19m0-13c2-1.5 5-2 8-1.5v13c-3-.5-6 0-8 1.5m0-13v13' :
                       route.icon === 'clipboard' ? 'M9 5h6a1 1 0 0 1 1 1v0a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v0a1 1 0 0 1 1-1Zm-1 1H6a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1h-2' :
@@ -343,16 +343,16 @@ export default function AtenFarmaClinic() {
                     } />
                   </svg>
                 </div>
-                <p className="text-sm font-bold text-deepblue-900 mb-1">{route.title}</p>
-                <p className="text-xs text-gray-500 leading-relaxed">{route.description}</p>
+                <p className="text-sm font-bold text-edvanta-deep mb-1">{route.title}</p>
+                <p className="text-xs text-edvanta-muted leading-relaxed">{route.description}</p>
               </div>
             ))}
           </div>
 
           {/* Cursos Hotmart */}
-          <div id="biblioteca" className="mb-10">
-            <h3 className="text-lg font-bold text-deepblue-900 mb-1">Cursos profesionales</h3>
-            <p className="text-sm text-gray-500 mb-5">Programas creados por Karla Hernández. Pago seguro a través de Hotmart.</p>
+          <div id="biblioteca" className="scroll-mt-32 mb-10">
+            <h3 className="text-lg font-bold text-edvanta-deep mb-1">Cursos profesionales</h3>
+            <p className="text-sm text-edvanta-muted mb-5">Programas creados por Karla Hernández. Pago seguro a través de Hotmart.</p>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
               {productosAtenFarma.map(p => <HotmartCard key={p.id} product={p} />)}
             </div>
@@ -360,8 +360,8 @@ export default function AtenFarmaClinic() {
 
           {/* Recursos descargables */}
           <div className="mb-10">
-            <h3 className="text-lg font-bold text-deepblue-900 mb-1">Kits profesionales descargables</h3>
-            <p className="text-sm text-gray-500 mb-5">Formatos editables de seguimiento, farmacovigilancia, calidad y documentación técnica. Pago seguro con Mercado Pago.</p>
+            <h3 className="text-lg font-bold text-edvanta-deep mb-1">Kits profesionales descargables</h3>
+            <p className="text-sm text-edvanta-muted mb-5">Formatos editables de seguimiento, farmacovigilancia, calidad y documentación técnica. Pago seguro con Mercado Pago.</p>
             <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-5">
               {RECURSOS_QF.map(p => <ProductCard key={p.id} product={p} onDetails={setSelected} />)}
             </div>
@@ -369,19 +369,19 @@ export default function AtenFarmaClinic() {
 
           {/* Cursos recomendados */}
           <div>
-            <h3 className="text-lg font-bold text-deepblue-900 mb-1">Cursos complementarios recomendados</h3>
-            <p className="text-sm text-gray-500 mb-5">Formación continua en plataformas educativas.</p>
+            <h3 className="text-lg font-bold text-edvanta-deep mb-1">Cursos complementarios recomendados</h3>
+            <p className="text-sm text-edvanta-muted mb-5">Formación continua en plataformas educativas.</p>
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
               {CURSOS_EDUTIN.map(c => (
                 <a key={c.code} href={c.url} target="_blank" rel="noopener noreferrer"
-                   className="group bg-slate-50 rounded-xl p-4 border border-gray-100 hover:border-teal-200 hover:shadow-sm transition-all">
+                   className="group bg-edvanta-bg rounded-xl p-4 border border-edvanta-border hover:border-teal-200 hover:shadow-sm transition-all">
                   <div className="flex items-center justify-between mb-2">
-                    <svg className="w-5 h-5 text-deepblue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.6}>
+                    <svg className="w-5 h-5 text-edvanta-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.6}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M12 5 2 9l10 4 10-4-10-4Zm0 4v0M6 11v4c0 1 2.7 2.5 6 2.5s6-1.5 6-2.5v-4" />
                     </svg>
-                    <span className="text-[10px] font-mono text-gray-400">{c.code}</span>
+                    <span className="text-[10px] font-mono text-edvanta-subtle">{c.code}</span>
                   </div>
-                  <p className="text-sm font-semibold text-deepblue-900 group-hover:text-teal-700 transition-colors">{c.name}</p>
+                  <p className="text-sm font-semibold text-edvanta-deep group-hover:text-teal-700 transition-colors">{c.name}</p>
                 </a>
               ))}
             </div>
@@ -390,11 +390,11 @@ export default function AtenFarmaClinic() {
       </section>
 
       {/* FAQ */}
-      <section className="py-16 bg-slate-50">
+      <section className="py-16 bg-edvanta-bg">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10">
             <p className="text-xs font-bold text-teal-600 uppercase tracking-widest mb-2">Preguntas frecuentes</p>
-            <h2 className="text-2xl md:text-3xl font-bold text-deepblue-900">
+            <h2 className="text-2xl md:text-3xl font-bold text-edvanta-deep">
               Resuelve tus dudas sobre AtenFarmaClinic
             </h2>
           </div>
@@ -403,7 +403,7 @@ export default function AtenFarmaClinic() {
       </section>
 
       {/* CTA Final */}
-      <section className="py-16 bg-deepblue-900 text-white">
+      <section className="py-16 bg-[#031D5C] text-white">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-2xl md:text-3xl font-bold mb-3">
             Convierte el conocimiento farmacéutico en intervenciones organizadas, comunicables y medibles

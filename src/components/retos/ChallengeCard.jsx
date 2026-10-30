@@ -10,10 +10,10 @@ import Icon from '../Icon';
 import { levelLabel, goalLabel } from '../../lib/retos';
 
 const COVER_GRADIENTS = [
-  'from-[#e8f4f2] to-[#fdf2f6]',
-  'from-[#f2ebf7] to-[#eef7f5]',
-  'from-[#fdf2f6] to-[#f5f0e8]',
-  'from-[#eef7f5] to-[#f2ebf7]',
+  'from-edvanta-mint to-edvanta-lilac',
+  'from-edvanta-lilac to-[#F0FAF9]',
+  'from-edvanta-lilac to-edvanta-bg',
+  'from-[#F0FAF9] to-edvanta-lilac',
 ];
 
 function coverGradient(title) {
@@ -29,7 +29,7 @@ export default function ChallengeCard({ challenge, progress = null }) {
   return (
     <Link
       to={`/academia/retos/${challenge.slug}`}
-      className="group flex flex-col overflow-hidden rounded-lg border border-sand-100 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-500"
+      className="group flex flex-col overflow-hidden rounded-lg border border-edvanta-border bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-500"
     >
       <div className={`relative flex aspect-[16/9] items-center justify-center bg-gradient-to-br ${gradient}`}>
         {challenge.cover_image ? (
@@ -41,30 +41,30 @@ export default function ChallengeCard({ challenge, progress = null }) {
           />
         ) : (
           <div className="text-center">
-            <Icon name="sparkles" className="mx-auto h-10 w-10 text-[#563a78]" />
-            <p className="mt-2 font-serif text-lg font-semibold text-deepblue-900">{challenge.title}</p>
+            <Icon name="sparkles" className="mx-auto h-10 w-10 text-edvanta-blue" />
+            <p className="mt-2 font-display text-lg font-extrabold text-edvanta-deep">{challenge.title}</p>
           </div>
         )}
-        <span className="absolute left-3 top-3 rounded-full bg-white/90 px-2.5 py-0.5 text-[11px] font-semibold text-deepblue-800">
+        <span className="absolute left-3 top-3 rounded-full bg-white/90 px-2.5 py-0.5 text-[11px] font-semibold text-edvanta-deep">
           7 días
         </span>
         {challenge.featured && (
-          <span className="absolute right-3 top-3 rounded-full bg-[#563a78]/90 px-2.5 py-0.5 text-[11px] font-semibold text-white">
+          <span className="absolute right-3 top-3 rounded-full bg-edvanta-blue/90 px-2.5 py-0.5 text-[11px] font-semibold text-white">
             Destacado
           </span>
         )}
       </div>
 
       <div className="flex flex-1 flex-col gap-2 p-5">
-        <h3 className="font-serif text-lg font-semibold leading-snug text-deepblue-900 transition-colors group-hover:text-teal-700">
+        <h3 className="font-display text-lg font-extrabold leading-snug text-edvanta-deep transition-colors group-hover:text-teal-700">
           {challenge.title}
         </h3>
-        {challenge.tagline && <p className="text-sm italic text-[#76539a]">{challenge.tagline}</p>}
+        {challenge.tagline && <p className="text-sm italic text-edvanta-blue">{challenge.tagline}</p>}
         {challenge.description && (
-          <p className="line-clamp-2 flex-1 text-sm leading-relaxed text-gray-500">{challenge.description}</p>
+          <p className="line-clamp-2 flex-1 text-sm leading-relaxed text-edvanta-muted">{challenge.description}</p>
         )}
 
-        <div className="mt-1 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-gray-400">
+        <div className="mt-1 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-edvanta-subtle">
           {challenge.average_duration && (
             <span className="inline-flex items-center gap-1">
               <Icon name="clock" className="h-3.5 w-3.5" /> {challenge.average_duration}
@@ -86,7 +86,7 @@ export default function ChallengeCard({ challenge, progress = null }) {
               <span className="font-semibold text-teal-700">{progress.completed} de {progress.total} días</span>
               <span className="font-semibold text-teal-700">{pct}%</span>
             </div>
-            <div className="mt-1 h-1.5 w-full overflow-hidden rounded-full bg-sand-100" role="progressbar" aria-valuenow={pct} aria-valuemin={0} aria-valuemax={100} aria-label={`Progreso del reto ${challenge.title}`}>
+            <div className="mt-1 h-1.5 w-full overflow-hidden rounded-full bg-edvanta-bg" role="progressbar" aria-valuenow={pct} aria-valuemin={0} aria-valuemax={100} aria-label={`Progreso del reto ${challenge.title}`}>
               <div className="h-full rounded-full bg-teal-500 transition-all duration-500" style={{ width: `${pct}%` }} />
             </div>
           </div>

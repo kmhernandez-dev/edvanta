@@ -381,7 +381,7 @@ export function Steps({ items, className = '' }) {
  * Con `image` lleva foto arriba y el ícono queda montado sobre su borde.
  */
 export function NavCard({
-  to, href, external = false, icon: Icon, title, desc, cta = 'Entrar', tone = 'blue', image, imageAlt = '',
+  to, href, external = false, icon: Icon, title, desc, cta = 'Entrar', tone = 'blue', image, imageAlt = '', onClick,
 }) {
   const tones = {
     blue: '',
@@ -429,8 +429,8 @@ export function NavCard({
     </>
   );
   const cls = `group ds-card ds-card--interactive flex h-full flex-col overflow-hidden ${image ? '' : 'p-6'}`;
-  if (to) return <Link to={to} className={cls}>{inner}</Link>;
-  return <a href={href} className={cls} {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>{inner}</a>;
+  if (to) return <Link to={to} onClick={onClick} className={cls}>{inner}</Link>;
+  return <a href={href} onClick={onClick} className={cls} {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>{inner}</a>;
 }
 
 /** Preguntas frecuentes (detalle nativo: accesible y sin JavaScript). */

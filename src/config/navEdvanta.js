@@ -15,8 +15,10 @@
  *  viven dentro de «Guías y recursos» y en el pie. Edvanta es educación,
  *  recursos y servicios; el empleo es un complemento.
  *
- *  `/academia` y `/academia/retos` son de Feliz Sin Tiroides y tienen
- *  su propio encabezado.
+ *  Feliz Sin Tiroides y AtenFarmaClinic usan este mismo encabezado y,
+ *  debajo, la barra de su programa (config/navProgramas.js). Las páginas
+ *  de Feliz Sin Tiroides son de pacientes: la barra principal muestra
+ *  la de «Para pacientes».
  * ============================================================
  */
 
@@ -79,8 +81,11 @@ export const PUBLICOS_NAV = [
   { id: 'instituciones', label: 'Instituciones', to: '/instituciones' },
 ];
 
+/** Páginas de Feliz Sin Tiroides: son de pacientes. */
+const FST = /^\/(feliz-sin-tiroides|academia|recetas|nutrifst|recurso|enfermedades|levotiroxina|nutricion-tiroidea)(\/|$)/;
+
 export const contextoDe = (pathname) => {
-  if (/^\/pacientes(\/|$)/.test(pathname)) return 'pacientes';
+  if (/^\/pacientes(\/|$)/.test(pathname) || FST.test(pathname)) return 'pacientes';
   if (/^\/(instituciones|empresas)(\/|$)/.test(pathname)) return 'instituciones';
   return 'profesionales';
 };

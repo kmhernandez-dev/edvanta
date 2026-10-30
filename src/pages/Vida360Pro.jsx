@@ -2,35 +2,28 @@ import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Icon from '../components/Icon';
 import ProfessionalDisclaimer from '../components/atenfarma/ProfessionalDisclaimer';
+import { EncabezadoDePrograma, PieDePrograma } from '../components/edvanta/programa';
+import { PROGRAMA_V360PRO } from '../config/navProgramas';
 import {
   DISCIPLINES, PROFESSIONAL_TOOLS, DEMO_CASES_V360,
   FAQS_V360, CLINICAL_PROCESS_V360, CALCULATORS_V360,
 } from '../data/vida360-pro-demo';
 import { ebooks, servicios, enfermedades, cursosFST } from '../data/fst';
-import { waLink, EMAIL, LINKEDIN_URL } from '../config/links';
+import { waLink } from '../config/links';
 import { updatePageSeo } from '../utils/seo';
 
-const NAV_ITEMS = [
-  { id: 'inicio', label: 'Inicio' },
-  { id: 'plataforma', label: 'Plataforma' },
-  { id: 'disciplinas', label: 'Disciplinas' },
-  { id: 'herramientas', label: 'Herramientas' },
-  { id: 'casos', label: 'Casos' },
-  { id: 'planes', label: 'Planes' },
-];
-
 const DISCIPLINE_COLORS = {
-  endocrinologia: { bg: 'bg-blue-50', text: 'text-blue-700', border: 'border-blue-200', light: 'bg-blue-50/50', icon: 'text-blue-600' },
+  endocrinologia: { bg: 'bg-edvanta-light', text: 'text-edvanta-blue', border: 'border-edvanta-light', light: 'bg-edvanta-light/50', icon: 'text-edvanta-blue' },
   farmacia: { bg: 'bg-teal-50', text: 'text-teal-700', border: 'border-teal-200', light: 'bg-teal-50/50', icon: 'text-teal-600' },
   nutricion: { bg: 'bg-emerald-50', text: 'text-emerald-700', border: 'border-emerald-200', light: 'bg-emerald-50/50', icon: 'text-emerald-600' },
-  psicologia: { bg: 'bg-purple-50', text: 'text-purple-700', border: 'border-purple-200', light: 'bg-purple-50/50', icon: 'text-purple-600' },
+  psicologia: { bg: 'bg-edvanta-lilac', text: 'text-[#5E51A8]', border: 'border-edvanta-lilac', light: 'bg-edvanta-lilac/50', icon: 'text-[#5E51A8]' },
 };
 
 const STATS = [
-  { value: '4', label: 'Disciplinas integradas', icon: 'users' },
-  { value: '26', label: 'Herramientas clínicas', icon: 'clipboard' },
-  { value: '5', label: 'Calculadoras validadas', icon: 'beaker' },
-  { value: '3', label: 'Casos multidisciplinarios', icon: 'book' },
+  { value: String(DISCIPLINES.length), label: 'Disciplinas integradas', icon: 'users' },
+  { value: String(PROFESSIONAL_TOOLS.length), label: 'Herramientas clínicas', icon: 'clipboard' },
+  { value: String(CALCULATORS_V360.length), label: 'Calculadoras validadas', icon: 'beaker' },
+  { value: String(DEMO_CASES_V360.length), label: 'Casos multidisciplinarios', icon: 'book' },
 ];
 
 const PLANS = [
@@ -42,9 +35,9 @@ const PLANS = [
     description: 'Conoce la plataforma con casos ficticios y todas las herramientas en modo demostrativo.',
     features: [
       'Acceso al workspace demostrativo',
-      '3 casos clínicos ficticios',
-      '26 herramientas en modo demo',
-      '5 calculadoras clínicas',
+      `${DEMO_CASES_V360.length} casos clínicos ficticios`,
+      `${PROFESSIONAL_TOOLS.length} herramientas en modo demo`,
+      `${CALCULATORS_V360.length} calculadoras clínicas`,
       'Exportación de informes en PDF',
       'Sin registro de datos reales',
     ],
@@ -127,8 +120,6 @@ const BENEFITS = [
 
 export default function Vida360Pro() {
   const navigate = useNavigate();
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState('inicio');
   const [activeFaq, setActiveFaq] = useState(null);
 
   useEffect(() => { window.scrollTo(0, 0); }, []);
@@ -143,82 +134,15 @@ export default function Vida360Pro() {
     });
   }, []);
 
-  const scrollTo = (id) => {
-    setActiveSection(id);
-    setMobileMenuOpen(false);
-    const el = document.getElementById(`v360p-${id}`);
-    el?.scrollIntoView({ behavior: 'smooth' });
-  };
+  const scrollTo = (id) => document.getElementById(`v360p-${id}`)?.scrollIntoView({ behavior: 'smooth' });
 
   return (
     <div className="min-h-screen bg-white font-sans">
-      {/* ── NAV ── */}
-      <header className="fixed top-0 inset-x-0 z-50 bg-white/95 backdrop-blur border-b border-slate-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            <Link to="/vida-360-pro" className="flex items-center gap-2.5 flex-shrink-0 group">
-              <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-[#0A2540] to-[#2B8178] flex items-center justify-center">
-                <span className="text-white text-xs font-bold">360</span>
-              </div>
-              <div className="hidden sm:block">
-                <p className="text-sm font-bold text-[#0A2540] leading-none group-hover:text-[#2B8178] transition-colors">Vida 360 Pro</p>
-                <p className="text-[10px] text-slate-400 font-medium leading-none mt-0.5">by Feliz Sin Tiroides</p>
-              </div>
-            </Link>
-
-            <nav className="hidden lg:flex items-center gap-0.5" aria-label="Navegación principal">
-              {NAV_ITEMS.map(item => (
-                <button
-                  key={item.id}
-                  onClick={() => scrollTo(item.id)}
-                  className={`px-3.5 py-2 text-[13px] font-medium rounded-lg transition-all min-h-[44px] ${
-                    activeSection === item.id
-                      ? 'bg-[#0A2540]/8 text-[#0A2540]'
-                      : 'text-slate-500 hover:text-[#0A2540] hover:bg-slate-50'
-                  }`}
-                >
-                  {item.label}
-                </button>
-              ))}
-            </nav>
-
-            <div className="flex items-center gap-2">
-              <button
-                onClick={() => navigate('/vida-360-pro/workspace')}
-                className="hidden sm:inline-flex items-center gap-1.5 px-4 py-2.5 bg-[#2B8178] hover:bg-[#216d65] text-white text-[13px] font-semibold rounded-lg transition-all shadow-sm hover:shadow-md min-h-[44px]"
-              >
-                Entrar al workspace
-                <Icon name="arrowRight" className="w-3.5 h-3.5" />
-              </button>
-              <button
-                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="lg:hidden p-2.5 text-slate-600 hover:text-[#0A2540] rounded-lg min-h-[44px] min-w-[44px] flex items-center justify-center"
-                aria-label={mobileMenuOpen ? 'Cerrar menú' : 'Abrir menú'}
-                aria-expanded={mobileMenuOpen}
-              >
-                <Icon name={mobileMenuOpen ? 'close' : 'menu'} className="w-5 h-5" />
-              </button>
-            </div>
-          </div>
-
-          {mobileMenuOpen && (
-            <nav className="lg:hidden py-3 border-t border-slate-100 space-y-1 animate-slide-up">
-              {NAV_ITEMS.map(item => (
-                <button key={item.id} onClick={() => scrollTo(item.id)} className={`block w-full text-left px-3 py-2.5 text-[13px] font-medium rounded-lg min-h-[44px] ${activeSection === item.id ? 'bg-[#0A2540]/8 text-[#0A2540]' : 'text-slate-600 hover:bg-slate-50'}`}>
-                  {item.label}
-                </button>
-              ))}
-              <button onClick={() => { setMobileMenuOpen(false); navigate('/vida-360-pro/workspace'); }} className="block w-full text-left px-3 py-2.5 text-[13px] font-semibold text-white bg-[#2B8178] rounded-lg min-h-[44px] mt-2">
-                Entrar al workspace →
-              </button>
-            </nav>
-          )}
-        </div>
-      </header>
+      <EncabezadoDePrograma programa={PROGRAMA_V360PRO} />
 
       {/* ── HERO ── */}
-      <section id="v360p-inicio" className="relative pt-28 pb-20 md:pt-40 md:pb-28 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#F6F7F8] via-white to-[#effaf8]" />
+      <section id="v360p-inicio" className="scroll-mt-32 relative pt-12 pb-20 md:pt-16 md:pb-28 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-edvanta-bg via-white to-[#F0FAF9]" />
         <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full bg-[radial-gradient(circle,rgba(43,129,120,0.08),transparent_70%)] -translate-y-1/2 translate-x-1/4" />
         <div className="absolute bottom-0 left-0 w-[500px] h-[500px] rounded-full bg-[radial-gradient(circle,rgba(10,37,64,0.04),transparent_70%)] translate-y-1/3 -translate-x-1/4" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-[radial-gradient(circle,rgba(43,129,120,0.03),transparent_60%)]" />
@@ -226,52 +150,52 @@ export default function Vida360Pro() {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div className="text-center lg:text-left">
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-white/80 backdrop-blur border border-[#2CB1A1]/20 rounded-full shadow-sm mb-6">
-                <div className="w-2 h-2 rounded-full bg-[#2B8178] animate-pulse" />
-                <span className="text-[13px] font-semibold text-[#0B8176]">Plataforma profesional · Feliz Sin Tiroides</span>
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-white/80 backdrop-blur border border-edvanta-teal/20 rounded-full shadow-sm mb-6">
+                <div className="w-2 h-2 rounded-full bg-edvanta-tealdark animate-pulse" />
+                <span className="text-[13px] font-semibold text-edvanta-tealdark">Plataforma profesional · Feliz Sin Tiroides</span>
               </div>
 
-              <h1 className="text-4xl md:text-5xl lg:text-[56px] font-bold text-[#0A2540] leading-[1.08] mb-6 tracking-tight">
+              <h1 className="text-4xl md:text-5xl lg:text-[56px] font-bold text-edvanta-deep leading-[1.08] mb-6 tracking-tight">
                 La plataforma que integra la{' '}
                 <span className="relative whitespace-nowrap">
-                  <span className="relative z-10 bg-gradient-to-r from-[#2B8178] to-[#0B8176] bg-clip-text text-transparent">salud tiroidea</span>
-                  <span className="absolute bottom-1 left-0 right-0 h-3 bg-[#2CB1A1]/15 -z-0 rounded-full" />
+                  <span className="relative z-10 bg-gradient-to-r from-edvanta-tealdark to-edvanta-tealdark bg-clip-text text-transparent">salud tiroidea</span>
+                  <span className="absolute bottom-1 left-0 right-0 h-3 bg-edvanta-teal/15 -z-0 rounded-full" />
                 </span>
                 {' '}en un solo lugar
               </h1>
 
-              <p className="text-lg md:text-xl text-slate-500 leading-relaxed mb-8 max-w-xl mx-auto lg:mx-0">
+              <p className="text-lg md:text-xl text-edvanta-muted leading-relaxed mb-8 max-w-xl mx-auto lg:mx-0">
                 Herramientas profesionales para endocrinólogos, químicos farmacéuticos, nutricionistas y psicólogos. Documenta, evalúa, interviene y mide el impacto de tu trabajo clínico con pacientes tiroideos.
               </p>
 
               <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-3 mb-8">
                 <button
                   onClick={() => navigate('/vida-360-pro/workspace')}
-                  className="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-[#0A2540] hover:bg-[#123b5f] text-white text-[15px] font-semibold rounded-xl transition-all shadow-lg shadow-[#0A2540]/15 hover:shadow-xl hover:shadow-[#0A2540]/20 min-h-[52px]"
+                  className="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-[#031D5C] hover:bg-[#031D5C] text-white text-[15px] font-semibold rounded-xl transition-all shadow-lg shadow-edvanta-deep/15 hover:shadow-xl hover:shadow-edvanta-deep/20 min-h-[52px]"
                 >
                   Probar el workspace gratis
                   <Icon name="arrowRight" className="w-4 h-4" />
                 </button>
                 <button
                   onClick={() => scrollTo('planes')}
-                  className="inline-flex items-center justify-center gap-2 px-7 py-3.5 text-[#0A2540] text-[15px] font-semibold rounded-xl border-2 border-[#0A2540]/15 hover:border-[#0A2540]/30 hover:bg-[#0A2540]/3 transition-all min-h-[52px]"
+                  className="inline-flex items-center justify-center gap-2 px-7 py-3.5 text-edvanta-deep text-[15px] font-semibold rounded-xl border-2 border-edvanta-deep/15 hover:border-edvanta-deep/30 hover:bg-[#031D5C]/3 transition-all min-h-[52px]"
                 >
                   Ver planes
                 </button>
               </div>
 
-              <div className="flex items-center gap-6 justify-center lg:justify-start text-[13px] text-slate-400">
-                <span className="flex items-center gap-1.5"><Icon name="checkCircle" className="w-4 h-4 text-[#2B8178]" /> Sin registro</span>
-                <span className="flex items-center gap-1.5"><Icon name="checkCircle" className="w-4 h-4 text-[#2B8178]" /> Casos ficticios</span>
-                <span className="flex items-center gap-1.5"><Icon name="checkCircle" className="w-4 h-4 text-[#2B8178]" /> Acceso inmediato</span>
+              <div className="flex items-center gap-6 justify-center lg:justify-start text-[13px] text-edvanta-subtle">
+                <span className="flex items-center gap-1.5"><Icon name="checkCircle" className="w-4 h-4 text-edvanta-tealdark" /> Sin registro</span>
+                <span className="flex items-center gap-1.5"><Icon name="checkCircle" className="w-4 h-4 text-edvanta-tealdark" /> Casos ficticios</span>
+                <span className="flex items-center gap-1.5"><Icon name="checkCircle" className="w-4 h-4 text-edvanta-tealdark" /> Acceso inmediato</span>
               </div>
             </div>
 
             {/* Hero visual */}
             <div className="relative">
-              <div className="absolute -inset-4 bg-gradient-to-br from-[#2B8178]/10 via-[#0A2540]/5 to-purple-500/5 rounded-3xl blur-2xl" />
-              <div className="relative bg-white border border-slate-200 rounded-2xl shadow-xl shadow-slate-200/50 overflow-hidden">
-                <div className="bg-[#0A2540] px-5 py-3 flex items-center justify-between">
+              <div className="absolute -inset-4 bg-gradient-to-br from-edvanta-tealdark/10 via-[#031D5C]/5 to-edvanta-violet/5 rounded-3xl blur-2xl" />
+              <div className="relative bg-white border border-edvanta-border rounded-2xl shadow-xl shadow-edvanta-border/50 overflow-hidden">
+                <div className="bg-[#031D5C] px-5 py-3 flex items-center justify-between">
                   <div className="flex items-center gap-2">
                     <div className="flex gap-1.5">
                       <div className="w-3 h-3 rounded-full bg-red-400/80" />
@@ -280,14 +204,14 @@ export default function Vida360Pro() {
                     </div>
                     <span className="text-[12px] text-white/70 ml-2 font-medium">Vida 360 Pro</span>
                   </div>
-                  <span className="text-[10px] text-[#2CB1A1] font-semibold bg-[#2CB1A1]/15 px-2 py-0.5 rounded-full">v1.0</span>
+                  <span className="text-[10px] text-edvanta-teal font-semibold bg-edvanta-teal/15 px-2 py-0.5 rounded-full">v1.0</span>
                 </div>
 
                 <div className="p-5 space-y-4">
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">Paciente activo</p>
-                      <p className="text-sm font-bold text-[#0A2540]">Post-tiroidectomía · 42a</p>
+                      <p className="text-[11px] font-semibold text-edvanta-subtle uppercase tracking-wider">Paciente activo</p>
+                      <p className="text-sm font-bold text-edvanta-deep">Post-tiroidectomía · 42a</p>
                     </div>
                     <span className="px-2 py-1 bg-amber-50 text-amber-700 text-[10px] font-semibold rounded-full border border-amber-200">En seguimiento</span>
                   </div>
@@ -298,24 +222,24 @@ export default function Vida360Pro() {
                       return (
                         <div key={d.id} className={`text-center p-2.5 rounded-xl ${c.light} border ${c.border}`}>
                           <Icon name={d.icon} className={`w-4 h-4 mx-auto mb-1 ${c.icon}`} />
-                          <p className="text-[9px] font-semibold text-slate-700 leading-tight">{d.shortName}</p>
+                          <p className="text-[9px] font-semibold text-edvanta-deep leading-tight">{d.shortName}</p>
                         </div>
                       );
                     })}
                   </div>
 
                   <div className="grid grid-cols-2 gap-2">
-                    <div className="bg-slate-50 rounded-xl p-3">
-                      <p className="text-[9px] text-slate-400 uppercase tracking-wider font-semibold mb-2">Laboratorios</p>
+                    <div className="bg-edvanta-bg rounded-xl p-3">
+                      <p className="text-[9px] text-edvanta-subtle uppercase tracking-wider font-semibold mb-2">Laboratorios</p>
                       <div className="space-y-1.5">
-                        <div className="flex justify-between text-[10px]"><span className="text-slate-500">TSH</span><span className="text-red-500 font-bold">6.2 ↑</span></div>
-                        <div className="flex justify-between text-[10px]"><span className="text-slate-500">T4L</span><span className="text-emerald-500 font-bold">1.1</span></div>
-                        <div className="flex justify-between text-[10px]"><span className="text-slate-500">Vit D</span><span className="text-red-500 font-bold">18 ↓</span></div>
-                        <div className="flex justify-between text-[10px]"><span className="text-slate-500">Anti-TPO</span><span className="text-red-500 font-bold">450 ↑</span></div>
+                        <div className="flex justify-between text-[10px]"><span className="text-edvanta-muted">TSH</span><span className="text-red-500 font-bold">6.2 ↑</span></div>
+                        <div className="flex justify-between text-[10px]"><span className="text-edvanta-muted">T4L</span><span className="text-emerald-500 font-bold">1.1</span></div>
+                        <div className="flex justify-between text-[10px]"><span className="text-edvanta-muted">Vit D</span><span className="text-red-500 font-bold">18 ↓</span></div>
+                        <div className="flex justify-between text-[10px]"><span className="text-edvanta-muted">Anti-TPO</span><span className="text-red-500 font-bold">450 ↑</span></div>
                       </div>
                     </div>
-                    <div className="bg-slate-50 rounded-xl p-3">
-                      <p className="text-[9px] text-slate-400 uppercase tracking-wider font-semibold mb-2">Problemas</p>
+                    <div className="bg-edvanta-bg rounded-xl p-3">
+                      <p className="text-[9px] text-edvanta-subtle uppercase tracking-wider font-semibold mb-2">Problemas</p>
                       <div className="space-y-2">
                         <div className="space-y-1">
                           <div className="h-1.5 bg-red-200 rounded-full w-full" />
@@ -333,16 +257,16 @@ export default function Vida360Pro() {
                     </div>
                   </div>
 
-                  <div className="bg-gradient-to-r from-[#effaf8] to-[#f0f4ff] rounded-xl p-3">
-                    <p className="text-[9px] text-slate-400 uppercase tracking-wider font-semibold mb-2">Plan integrado</p>
+                  <div className="bg-gradient-to-r from-[#F0FAF9] to-edvanta-bg rounded-xl p-3">
+                    <p className="text-[9px] text-edvanta-subtle uppercase tracking-wider font-semibold mb-2">Plan integrado</p>
                     <div className="space-y-1.5">
                       <div className="flex items-center gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-[#2B8178]" />
-                        <div className="h-1 bg-[#2B8178]/20 rounded flex-1" />
+                        <div className="w-1.5 h-1.5 rounded-full bg-edvanta-tealdark" />
+                        <div className="h-1 bg-edvanta-tealdark/20 rounded flex-1" />
                       </div>
                       <div className="flex items-center gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-purple-400" />
-                        <div className="h-1 bg-purple-200 rounded flex-1" />
+                        <div className="w-1.5 h-1.5 rounded-full bg-edvanta-violet" />
+                        <div className="h-1 bg-edvanta-lilac rounded flex-1" />
                       </div>
                       <div className="flex items-center gap-2">
                         <div className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
@@ -358,16 +282,16 @@ export default function Vida360Pro() {
       </section>
 
       {/* ── STATS ── */}
-      <section className="py-12 bg-white border-y border-slate-100">
+      <section className="py-12 bg-white border-y border-edvanta-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {STATS.map((stat, i) => (
               <div key={i} className="text-center">
-                <div className="w-12 h-12 rounded-xl bg-[#effaf8] flex items-center justify-center mx-auto mb-3">
-                  <Icon name={stat.icon} className="w-5 h-5 text-[#2B8178]" />
+                <div className="w-12 h-12 rounded-xl bg-[#F0FAF9] flex items-center justify-center mx-auto mb-3">
+                  <Icon name={stat.icon} className="w-5 h-5 text-edvanta-tealdark" />
                 </div>
-                <p className="text-3xl font-bold text-[#0A2540]">{stat.value}</p>
-                <p className="text-[13px] text-slate-500 mt-1">{stat.label}</p>
+                <p className="text-3xl font-bold text-edvanta-deep">{stat.value}</p>
+                <p className="text-[13px] text-edvanta-muted mt-1">{stat.label}</p>
               </div>
             ))}
           </div>
@@ -375,57 +299,57 @@ export default function Vida360Pro() {
       </section>
 
       {/* ── PLATFORM OVERVIEW ── */}
-      <section id="v360p-plataforma" className="py-20 md:py-28 bg-white">
+      <section id="v360p-plataforma" className="scroll-mt-32 py-20 md:py-28 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-16">
-            <p className="text-xs font-bold text-[#2B8178] uppercase tracking-[0.2em] mb-3">Ecosistema Vida 360</p>
-            <h2 className="text-3xl md:text-4xl font-bold text-[#0A2540] mb-4">Dos portales, un solo ecosistema</h2>
-            <p className="text-base text-slate-500 leading-relaxed">
+            <p className="text-xs font-bold text-edvanta-tealdark uppercase tracking-[0.2em] mb-3">Ecosistema Vida 360</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-edvanta-deep mb-4">Dos portales, un solo ecosistema</h2>
+            <p className="text-base text-edvanta-muted leading-relaxed">
               Vida 360 conecta a pacientes y profesionales en un ecosistema diseñado para la salud tiroidea. El paciente se organiza. El profesional documenta, interviene y mide.
             </p>
           </div>
 
           <div className="grid lg:grid-cols-2 gap-8">
             {/* Patient portal */}
-            <div className="group relative bg-gradient-to-br from-[#effaf8] to-[#f0fdfa] border border-[#2CB1A1]/20 rounded-2xl p-8 hover:shadow-lg transition-all">
-              <div className="absolute top-4 right-4 px-3 py-1 bg-[#2B8178]/10 text-[#2B8178] text-[11px] font-semibold rounded-full">Para pacientes</div>
-              <div className="w-14 h-14 rounded-2xl bg-white shadow-sm border border-[#2CB1A1]/20 flex items-center justify-center mb-5">
-                <Icon name="heart" className="w-7 h-7 text-[#2B8178]" />
+            <div className="group relative bg-gradient-to-br from-[#F0FAF9] to-[#F0FAF9] border border-edvanta-teal/20 rounded-2xl p-8 hover:shadow-lg transition-all">
+              <div className="absolute top-4 right-4 px-3 py-1 bg-edvanta-tealdark/10 text-edvanta-tealdark text-[11px] font-semibold rounded-full">Para pacientes</div>
+              <div className="w-14 h-14 rounded-2xl bg-white shadow-sm border border-edvanta-teal/20 flex items-center justify-center mb-5">
+                <Icon name="heart" className="w-7 h-7 text-edvanta-tealdark" />
               </div>
-              <h3 className="text-xl font-bold text-[#0A2540] mb-3">FST Vida 360</h3>
-              <p className="text-sm text-slate-500 leading-relaxed mb-5">
+              <h3 className="text-xl font-bold text-edvanta-deep mb-3">FST Vida 360</h3>
+              <p className="text-sm text-edvanta-muted leading-relaxed mb-5">
                 El portal personal donde cada paciente organiza su historia tiroidea, medicamentos, síntomas, laboratorios y preguntas para la consulta. Un espacio privado, comprensible y educativo.
               </p>
               <ul className="space-y-2 mb-6">
                 {['Diario de síntomas y medicación', 'Laboratorios con gráficos de evolución', 'Preparación de consultas', 'Pasaporte tiroideo descargable', 'Guía de alimentos y tiroides', 'Calculadoras de salud'].map((f, i) => (
-                  <li key={i} className="flex items-center gap-2 text-[13px] text-slate-600">
-                    <Icon name="checkCircle" className="w-4 h-4 text-[#2B8178] flex-shrink-0" /> {f}
+                  <li key={i} className="flex items-center gap-2 text-[13px] text-edvanta-muted">
+                    <Icon name="checkCircle" className="w-4 h-4 text-edvanta-tealdark flex-shrink-0" /> {f}
                   </li>
                 ))}
               </ul>
-              <Link to="/vida-360" className="inline-flex items-center gap-2 text-[14px] font-semibold text-[#2B8178] hover:text-[#216d65] transition-colors">
+              <Link to="/vida-360" className="inline-flex items-center gap-2 text-[14px] font-semibold text-edvanta-tealdark hover:text-[#0B6670] transition-colors">
                 Ir al portal del paciente <Icon name="arrowRight" className="w-4 h-4" />
               </Link>
             </div>
 
             {/* Professional workspace */}
-            <div className="group relative bg-gradient-to-br from-[#f0f4ff] to-[#f5f7fb] border border-[#0A2540]/15 rounded-2xl p-8 hover:shadow-lg transition-all">
-              <div className="absolute top-4 right-4 px-3 py-1 bg-[#0A2540]/10 text-[#0A2540] text-[11px] font-semibold rounded-full">Para profesionales</div>
-              <div className="w-14 h-14 rounded-2xl bg-white shadow-sm border border-[#0A2540]/10 flex items-center justify-center mb-5">
-                <Icon name="briefcase" className="w-7 h-7 text-[#0A2540]" />
+            <div className="group relative bg-gradient-to-br from-edvanta-bg to-edvanta-bg border border-edvanta-deep/15 rounded-2xl p-8 hover:shadow-lg transition-all">
+              <div className="absolute top-4 right-4 px-3 py-1 bg-[#031D5C]/10 text-edvanta-deep text-[11px] font-semibold rounded-full">Para profesionales</div>
+              <div className="w-14 h-14 rounded-2xl bg-white shadow-sm border border-edvanta-deep/10 flex items-center justify-center mb-5">
+                <Icon name="briefcase" className="w-7 h-7 text-edvanta-deep" />
               </div>
-              <h3 className="text-xl font-bold text-[#0A2540] mb-3">Vida 360 Pro</h3>
-              <p className="text-sm text-slate-500 leading-relaxed mb-5">
+              <h3 className="text-xl font-bold text-edvanta-deep mb-3">Vida 360 Pro</h3>
+              <p className="text-sm text-edvanta-muted leading-relaxed mb-5">
                 El workspace profesional donde endocrinólogos, farmacéuticos, nutricionistas y psicólogos documentan, evalúan, intervienen y miden resultados. Cuatro disciplinas integradas en un solo expediente.
               </p>
               <ul className="space-y-2 mb-6">
                 {['Workspace clínico multidisciplinario', 'Evaluación farmacoterapéutica', 'Planes de cuidado y nutrición', 'Tamizaje psicológico (GAD-7, PHQ-9)', 'Informes profesionales en PDF', 'Casos clínicos educativos'].map((f, i) => (
-                  <li key={i} className="flex items-center gap-2 text-[13px] text-slate-600">
-                    <Icon name="checkCircle" className="w-4 h-4 text-[#0A2540] flex-shrink-0" /> {f}
+                  <li key={i} className="flex items-center gap-2 text-[13px] text-edvanta-muted">
+                    <Icon name="checkCircle" className="w-4 h-4 text-edvanta-deep flex-shrink-0" /> {f}
                   </li>
                 ))}
               </ul>
-              <button onClick={() => navigate('/vida-360-pro/workspace')} className="inline-flex items-center gap-2 text-[14px] font-semibold text-[#0A2540] hover:text-[#123b5f] transition-colors">
+              <button onClick={() => navigate('/vida-360-pro/workspace')} className="inline-flex items-center gap-2 text-[14px] font-semibold text-edvanta-deep hover:text-edvanta-deep transition-colors">
                 Entrar al workspace <Icon name="arrowRight" className="w-4 h-4" />
               </button>
             </div>
@@ -434,21 +358,21 @@ export default function Vida360Pro() {
       </section>
 
       {/* ── BENEFITS ── */}
-      <section className="py-20 md:py-28 bg-[#F6F7F8]">
+      <section className="py-20 md:py-28 bg-edvanta-bg">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-16">
-            <p className="text-xs font-bold text-[#2B8178] uppercase tracking-[0.2em] mb-3">¿Por qué Vida 360 Pro?</p>
-            <h2 className="text-3xl md:text-4xl font-bold text-[#0A2540] mb-4">Todo lo que necesitas para la práctica clínica tiroidea</h2>
-            <p className="text-base text-slate-500">Herramientas diseñadas por profesionales de la salud para profesionales de la salud.</p>
+            <p className="text-xs font-bold text-edvanta-tealdark uppercase tracking-[0.2em] mb-3">¿Por qué Vida 360 Pro?</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-edvanta-deep mb-4">Todo lo que necesitas para la práctica clínica tiroidea</h2>
+            <p className="text-base text-edvanta-muted">Herramientas diseñadas por profesionales de la salud para profesionales de la salud.</p>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {BENEFITS.map((b, i) => (
-              <div key={i} className="bg-white border border-slate-200 rounded-2xl p-6 hover:border-[#2CB1A1]/30 hover:shadow-md transition-all group">
-                <div className="w-12 h-12 rounded-xl bg-[#effaf8] flex items-center justify-center mb-4 group-hover:bg-[#2B8178] transition-colors">
-                  <Icon name={b.icon} className="w-6 h-6 text-[#2B8178] group-hover:text-white transition-colors" />
+              <div key={i} className="bg-white border border-edvanta-border rounded-2xl p-6 hover:border-edvanta-teal/30 hover:shadow-md transition-all group">
+                <div className="w-12 h-12 rounded-xl bg-[#F0FAF9] flex items-center justify-center mb-4 group-hover:bg-edvanta-tealdark transition-colors">
+                  <Icon name={b.icon} className="w-6 h-6 text-edvanta-tealdark group-hover:text-white transition-colors" />
                 </div>
-                <h3 className="text-base font-bold text-[#0A2540] mb-2">{b.title}</h3>
-                <p className="text-[13px] text-slate-500 leading-relaxed">{b.description}</p>
+                <h3 className="text-base font-bold text-edvanta-deep mb-2">{b.title}</h3>
+                <p className="text-[13px] text-edvanta-muted leading-relaxed">{b.description}</p>
               </div>
             ))}
           </div>
@@ -456,25 +380,25 @@ export default function Vida360Pro() {
       </section>
 
       {/* ── DISCIPLINES ── */}
-      <section id="v360p-disciplinas" className="py-20 md:py-28 bg-white">
+      <section id="v360p-disciplinas" className="scroll-mt-32 py-20 md:py-28 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-16">
-            <p className="text-xs font-bold text-[#2B8178] uppercase tracking-[0.2em] mb-3">Enfoque multidisciplinario</p>
-            <h2 className="text-3xl md:text-4xl font-bold text-[#0A2540] mb-4">Cuatro disciplinas, un solo paciente</h2>
-            <p className="text-base text-slate-500">Cada profesional encuentra herramientas específicas para su área, integradas en un flujo de trabajo colaborativo.</p>
+            <p className="text-xs font-bold text-edvanta-tealdark uppercase tracking-[0.2em] mb-3">Enfoque multidisciplinario</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-edvanta-deep mb-4">Cuatro disciplinas, un solo paciente</h2>
+            <p className="text-base text-edvanta-muted">Cada profesional encuentra herramientas específicas para su área, integradas en un flujo de trabajo colaborativo.</p>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {DISCIPLINES.map(d => {
               const c = DISCIPLINE_COLORS[d.id];
               return (
                 <div key={d.id} className={`relative rounded-2xl border ${c.border} ${c.light} p-6 hover:shadow-md transition-all group`}>
-                  <div className="w-12 h-12 rounded-xl bg-white shadow-sm border border-slate-100 flex items-center justify-center mb-4">
+                  <div className="w-12 h-12 rounded-xl bg-white shadow-sm border border-edvanta-border flex items-center justify-center mb-4">
                     <Icon name={d.icon} className={`w-6 h-6 ${c.icon}`} />
                   </div>
-                  <h3 className="text-base font-bold text-[#0A2540] mb-2">{d.name}</h3>
-                  <p className="text-[13px] text-slate-500 leading-relaxed mb-4">{d.description}</p>
+                  <h3 className="text-base font-bold text-edvanta-deep mb-2">{d.name}</h3>
+                  <p className="text-[13px] text-edvanta-muted leading-relaxed mb-4">{d.description}</p>
                   <div className="flex items-center justify-between">
-                    <span className="text-[12px] font-semibold text-slate-400">{d.tools.length} herramientas</span>
+                    <span className="text-[12px] font-semibold text-edvanta-subtle">{d.tools.length} herramientas</span>
                     <span className={`text-[11px] font-semibold ${c.text}`}>Ver →</span>
                   </div>
                 </div>
@@ -485,12 +409,12 @@ export default function Vida360Pro() {
       </section>
 
       {/* ── TOOLS ── */}
-      <section id="v360p-herramientas" className="py-20 md:py-28 bg-[#F6F7F8]">
+      <section id="v360p-herramientas" className="scroll-mt-32 py-20 md:py-28 bg-edvanta-bg">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-16">
-            <p className="text-xs font-bold text-[#2B8178] uppercase tracking-[0.2em] mb-3">Herramientas profesionales</p>
-            <h2 className="text-3xl md:text-4xl font-bold text-[#0A2540] mb-4">26 instrumentos para cada etapa del proceso clínico</h2>
-            <p className="text-base text-slate-500">Desde la evaluación inicial hasta el informe final. Cada herramienta está diseñada para una actividad específica.</p>
+            <p className="text-xs font-bold text-edvanta-tealdark uppercase tracking-[0.2em] mb-3">Herramientas profesionales</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-edvanta-deep mb-4">26 instrumentos para cada etapa del proceso clínico</h2>
+            <p className="text-base text-edvanta-muted">Desde la evaluación inicial hasta el informe final. Cada herramienta está diseñada para una actividad específica.</p>
           </div>
 
           <div className="space-y-10">
@@ -503,24 +427,24 @@ export default function Vida360Pro() {
                     <div className={`w-8 h-8 rounded-lg ${c.bg} flex items-center justify-center`}>
                       <Icon name={d.icon} className={`w-4 h-4 ${c.icon}`} />
                     </div>
-                    <h3 className="text-lg font-bold text-[#0A2540]">{d.name}</h3>
-                    <span className="text-[13px] text-slate-400 font-medium">· {tools.length} herramientas</span>
+                    <h3 className="text-lg font-bold text-edvanta-deep">{d.name}</h3>
+                    <span className="text-[13px] text-edvanta-subtle font-medium">· {tools.length} herramientas</span>
                   </div>
                   <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
                     {tools.map(tool => (
-                      <div key={tool.id} className="bg-white border border-slate-200 rounded-xl p-4 hover:border-slate-300 hover:shadow-sm transition-all group">
+                      <div key={tool.id} className="bg-white border border-edvanta-border rounded-xl p-4 hover:border-edvanta-strong hover:shadow-sm transition-all group">
                         <div className="flex items-start gap-2.5 mb-2">
                           <div className={`w-8 h-8 rounded-lg ${c.bg} flex items-center justify-center flex-shrink-0`}>
                             <Icon name={tool.icon} className={`w-4 h-4 ${c.icon}`} />
                           </div>
                           <div className="min-w-0">
-                            <p className="text-[13px] font-semibold text-[#0A2540] leading-tight">{tool.name}</p>
+                            <p className="text-[13px] font-semibold text-edvanta-deep leading-tight">{tool.name}</p>
                             <span className="inline-block mt-1 text-[10px] font-semibold px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200">
                               {tool.status === 'demo' ? 'Demo disponible' : 'Próximamente'}
                             </span>
                           </div>
                         </div>
-                        <p className="text-[11px] text-slate-500 leading-relaxed">{tool.activity}</p>
+                        <p className="text-[11px] text-edvanta-muted leading-relaxed">{tool.activity}</p>
                       </div>
                     ))}
                   </div>
@@ -535,23 +459,23 @@ export default function Vida360Pro() {
       <section className="py-20 md:py-28 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-16">
-            <p className="text-xs font-bold text-[#2B8178] uppercase tracking-[0.2em] mb-3">Proceso clínico</p>
-            <h2 className="text-3xl md:text-4xl font-bold text-[#0A2540] mb-4">Del dato a la intervención documentada</h2>
-            <p className="text-base text-slate-500">Un flujo estructurado que guía cada etapa del trabajo clínico, desde la valoración inicial hasta la integración de hallazgos.</p>
+            <p className="text-xs font-bold text-edvanta-tealdark uppercase tracking-[0.2em] mb-3">Proceso clínico</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-edvanta-deep mb-4">Del dato a la intervención documentada</h2>
+            <p className="text-base text-edvanta-muted">Un flujo estructurado que guía cada etapa del trabajo clínico, desde la valoración inicial hasta la integración de hallazgos.</p>
           </div>
 
           <div className="relative">
-            <div className="hidden lg:block absolute top-8 left-[calc(12.5%+24px)] right-[calc(12.5%+24px)] h-0.5 bg-slate-200" />
+            <div className="hidden lg:block absolute top-8 left-[calc(12.5%+24px)] right-[calc(12.5%+24px)] h-0.5 bg-edvanta-border" />
             <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-4">
               {CLINICAL_PROCESS_V360.map((step, i) => (
                 <div key={step.step} className="relative text-center group">
-                  <div className={`w-14 h-14 rounded-2xl bg-white border-2 mx-auto mb-3 flex items-center justify-center shadow-sm transition-all group-hover:border-[#2B8178] group-hover:shadow-md ${
-                    i === 0 ? 'border-[#2B8178]' : 'border-slate-200'
+                  <div className={`w-14 h-14 rounded-2xl bg-white border-2 mx-auto mb-3 flex items-center justify-center shadow-sm transition-all group-hover:border-edvanta-tealdark group-hover:shadow-md ${
+                    i === 0 ? 'border-edvanta-tealdark' : 'border-edvanta-border'
                   }`}>
-                    <span className="text-sm font-bold text-[#0A2540]">{step.step}</span>
+                    <span className="text-sm font-bold text-edvanta-deep">{step.step}</span>
                   </div>
-                  <p className="text-[13px] font-bold text-[#0A2540] mb-1">{step.name}</p>
-                  <p className="text-[11px] text-slate-400 leading-tight hidden sm:block">{step.description}</p>
+                  <p className="text-[13px] font-bold text-edvanta-deep mb-1">{step.name}</p>
+                  <p className="text-[11px] text-edvanta-subtle leading-tight hidden sm:block">{step.description}</p>
                 </div>
               ))}
             </div>
@@ -560,26 +484,26 @@ export default function Vida360Pro() {
       </section>
 
       {/* ── CASES ── */}
-      <section id="v360p-casos" className="py-20 md:py-28 bg-[#F6F7F8]">
+      <section id="v360p-casos" className="scroll-mt-32 py-20 md:py-28 bg-edvanta-bg">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-16">
-            <p className="text-xs font-bold text-[#2B8178] uppercase tracking-[0.2em] mb-3">Casos clínicos</p>
-            <h2 className="text-3xl md:text-4xl font-bold text-[#0A2540] mb-4">Practica con casos realistas</h2>
-            <p className="text-base text-slate-500">Todos los casos son ficticios y fueron creados con fines exclusivamente educativos. Recorré el flujo completo de atención multidisciplinaria.</p>
+            <p className="text-xs font-bold text-edvanta-tealdark uppercase tracking-[0.2em] mb-3">Casos clínicos</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-edvanta-deep mb-4">Practica con casos realistas</h2>
+            <p className="text-base text-edvanta-muted">Todos los casos son ficticios y fueron creados con fines exclusivamente educativos. Recorré el flujo completo de atención multidisciplinaria.</p>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {DEMO_CASES_V360.map(caseData => (
-              <div key={caseData.id} className="bg-white border border-slate-200 rounded-2xl p-6 hover:border-[#2CB1A1]/30 hover:shadow-lg transition-all flex flex-col group">
+              <div key={caseData.id} className="bg-white border border-edvanta-border rounded-2xl p-6 hover:border-edvanta-teal/30 hover:shadow-lg transition-all flex flex-col group">
                 <div className="flex items-start justify-between mb-3">
                   <span className={`text-[11px] font-semibold px-2.5 py-1 rounded-full border ${
                     caseData.level === 'Básico' ? 'bg-emerald-50 text-emerald-700 border-emerald-200' :
-                    caseData.level === 'Intermedio' ? 'bg-blue-50 text-blue-700 border-blue-200' :
+                    caseData.level === 'Intermedio' ? 'bg-edvanta-light text-edvanta-blue border-edvanta-light' :
                     'bg-amber-50 text-amber-700 border-amber-200'
                   }`}>{caseData.level}</span>
-                  <span className="text-[12px] text-slate-400 font-medium">{caseData.duration}</span>
+                  <span className="text-[12px] text-edvanta-subtle font-medium">{caseData.duration}</span>
                 </div>
-                <h3 className="text-base font-bold text-[#0A2540] mb-2 leading-snug group-hover:text-[#2B8178] transition-colors">{caseData.title}</h3>
-                <p className="text-[13px] text-slate-500 mb-4 flex-1 leading-relaxed">{caseData.objective}</p>
+                <h3 className="text-base font-bold text-edvanta-deep mb-2 leading-snug group-hover:text-edvanta-tealdark transition-colors">{caseData.title}</h3>
+                <p className="text-[13px] text-edvanta-muted mb-4 flex-1 leading-relaxed">{caseData.objective}</p>
                 <div className="flex flex-wrap gap-1.5 mb-4">
                   {caseData.disciplines?.map(d => {
                     const disc = DISCIPLINES.find(dd => dd.id === d);
@@ -593,13 +517,13 @@ export default function Vida360Pro() {
                 </div>
                 <div className="flex flex-wrap gap-1 mb-4">
                   {caseData.tags?.map(tag => (
-                    <span key={tag} className="text-[10px] bg-slate-100 text-slate-500 px-2 py-0.5 rounded-full">{tag}</span>
+                    <span key={tag} className="text-[10px] bg-edvanta-soft text-edvanta-muted px-2 py-0.5 rounded-full">{tag}</span>
                   ))}
                 </div>
                 <p className="text-[11px] text-amber-600 font-medium mb-4 italic">Caso ficticio con fines educativos</p>
                 <button
                   onClick={() => navigate(`/vida-360-pro/workspace?case=${caseData.id}`)}
-                  className="w-full py-2.5 bg-[#0A2540] hover:bg-[#123b5f] text-white text-[13px] font-semibold rounded-xl transition-all min-h-[44px]"
+                  className="w-full py-2.5 bg-[#031D5C] hover:bg-[#031D5C] text-white text-[13px] font-semibold rounded-xl transition-all min-h-[44px]"
                 >
                   Resolver caso
                 </button>
@@ -613,24 +537,24 @@ export default function Vida360Pro() {
       <section className="py-20 md:py-28 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-16">
-            <p className="text-xs font-bold text-[#2B8178] uppercase tracking-[0.2em] mb-3">Calculadoras clínicas</p>
-            <h2 className="text-3xl md:text-4xl font-bold text-[#0A2540] mb-4">Herramientas de apoyo para la toma de decisiones</h2>
-            <p className="text-base text-slate-500">Calculadoras validadas para cada disciplina. No sustituyen el juicio clínico profesional.</p>
+            <p className="text-xs font-bold text-edvanta-tealdark uppercase tracking-[0.2em] mb-3">Calculadoras clínicas</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-edvanta-deep mb-4">Herramientas de apoyo para la toma de decisiones</h2>
+            <p className="text-base text-edvanta-muted">Calculadoras validadas para cada disciplina. No sustituyen el juicio clínico profesional.</p>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {CALCULATORS_V360.map(calc => {
               const disc = DISCIPLINES.find(d => d.id === calc.discipline);
               const col = DISCIPLINE_COLORS[calc.discipline];
               return (
-                <div key={calc.id} className="bg-white border border-slate-200 rounded-xl p-5 hover:border-slate-300 hover:shadow-sm transition-all group">
+                <div key={calc.id} className="bg-white border border-edvanta-border rounded-xl p-5 hover:border-edvanta-strong hover:shadow-sm transition-all group">
                   <div className="flex items-center gap-2 mb-3">
                     <span className={`text-[10px] font-semibold px-2 py-0.5 rounded-full ${col?.bg} ${col?.text}`}>
                       {disc?.shortName || calc.discipline}
                     </span>
                   </div>
-                  <h3 className="text-sm font-bold text-[#0A2540] mb-2 group-hover:text-[#2B8178] transition-colors">{calc.name}</h3>
-                  <p className="text-[11px] text-slate-500 font-mono leading-relaxed mb-3 bg-slate-50 rounded-lg p-2.5">{calc.formula}</p>
-                  <p className="text-[11px] text-slate-400 leading-relaxed">{calc.population}</p>
+                  <h3 className="text-sm font-bold text-edvanta-deep mb-2 group-hover:text-edvanta-tealdark transition-colors">{calc.name}</h3>
+                  <p className="text-[11px] text-edvanta-muted font-mono leading-relaxed mb-3 bg-edvanta-bg rounded-lg p-2.5">{calc.formula}</p>
+                  <p className="text-[11px] text-edvanta-subtle leading-relaxed">{calc.population}</p>
                 </div>
               );
             })}
@@ -639,37 +563,37 @@ export default function Vida360Pro() {
       </section>
 
       {/* ── PLANS ── */}
-      <section id="v360p-planes" className="py-20 md:py-28 bg-[#F6F7F8]">
+      <section id="v360p-planes" className="scroll-mt-32 py-20 md:py-28 bg-edvanta-bg">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-16">
-            <p className="text-xs font-bold text-[#2B8178] uppercase tracking-[0.2em] mb-3">Planes</p>
-            <h2 className="text-3xl md:text-4xl font-bold text-[#0A2540] mb-4">Elige cómo empezar</h2>
-            <p className="text-base text-slate-500">Desde la exploración gratuita hasta la implementación institucional completa.</p>
+            <p className="text-xs font-bold text-edvanta-tealdark uppercase tracking-[0.2em] mb-3">Planes</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-edvanta-deep mb-4">Elige cómo empezar</h2>
+            <p className="text-base text-edvanta-muted">Desde la exploración gratuita hasta la implementación institucional completa.</p>
           </div>
           <div className="grid lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
             {PLANS.map(plan => (
               <div key={plan.id} className={`relative rounded-2xl border-2 p-7 flex flex-col transition-all ${
                 plan.highlighted
-                  ? 'border-[#2B8178] bg-white shadow-xl shadow-[#2B8178]/10 scale-[1.02]'
-                  : 'border-slate-200 bg-white hover:border-slate-300 hover:shadow-md'
+                  ? 'border-edvanta-tealdark bg-white shadow-xl shadow-edvanta-tealdark/10 scale-[1.02]'
+                  : 'border-edvanta-border bg-white hover:border-edvanta-strong hover:shadow-md'
               }`}>
                 {plan.highlighted && (
-                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 bg-[#2B8178] text-white text-[11px] font-bold rounded-full">
+                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 bg-edvanta-tealdark text-white text-[11px] font-bold rounded-full">
                     Más popular
                   </div>
                 )}
                 <div className="mb-5">
-                  <h3 className="text-lg font-bold text-[#0A2540] mb-1">{plan.name}</h3>
-                  <p className="text-[13px] text-slate-500">{plan.description}</p>
+                  <h3 className="text-lg font-bold text-edvanta-deep mb-1">{plan.name}</h3>
+                  <p className="text-[13px] text-edvanta-muted">{plan.description}</p>
                 </div>
                 <div className="mb-5">
-                  <span className="text-3xl font-bold text-[#0A2540]">{plan.price}</span>
-                  {plan.period && <span className="text-sm text-slate-400">/{plan.period}</span>}
+                  <span className="text-3xl font-bold text-edvanta-deep">{plan.price}</span>
+                  {plan.period && <span className="text-sm text-edvanta-subtle">/{plan.period}</span>}
                 </div>
                 <ul className="space-y-2.5 mb-7 flex-1">
                   {plan.features.map((f, i) => (
-                    <li key={i} className="flex items-start gap-2 text-[13px] text-slate-600">
-                      <Icon name="check" className="w-4 h-4 text-[#2B8178] flex-shrink-0 mt-0.5" />
+                    <li key={i} className="flex items-start gap-2 text-[13px] text-edvanta-muted">
+                      <Icon name="check" className="w-4 h-4 text-edvanta-tealdark flex-shrink-0 mt-0.5" />
                       {f}
                     </li>
                   ))}
@@ -677,16 +601,16 @@ export default function Vida360Pro() {
                 {plan.href.startsWith('http') ? (
                   <a href={plan.href} target="_blank" rel="noopener noreferrer" className={`w-full py-3 rounded-xl text-[14px] font-semibold text-center transition-all min-h-[48px] flex items-center justify-center ${
                     plan.highlighted
-                      ? 'bg-[#2B8178] hover:bg-[#216d65] text-white shadow-md'
-                      : 'bg-[#0A2540] hover:bg-[#123b5f] text-white'
+                      ? 'bg-edvanta-tealdark hover:bg-[#0B6670] text-white shadow-md'
+                      : 'bg-[#031D5C] hover:bg-[#031D5C] text-white'
                   }`}>
                     {plan.cta}
                   </a>
                 ) : (
                   <button onClick={() => plan.href === '/vida-360-pro/workspace' ? navigate(plan.href) : scrollTo(plan.href.replace('#', ''))} className={`w-full py-3 rounded-xl text-[14px] font-semibold text-center transition-all min-h-[48px] flex items-center justify-center ${
                     plan.highlighted
-                      ? 'bg-[#2B8178] hover:bg-[#216d65] text-white shadow-md'
-                      : 'bg-[#0A2540] hover:bg-[#123b5f] text-white'
+                      ? 'bg-edvanta-tealdark hover:bg-[#0B6670] text-white shadow-md'
+                      : 'bg-[#031D5C] hover:bg-[#031D5C] text-white'
                   }`}>
                     {plan.cta}
                   </button>
@@ -701,21 +625,21 @@ export default function Vida360Pro() {
       <section className="py-20 md:py-28 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-16">
-            <p className="text-xs font-bold text-[#2B8178] uppercase tracking-[0.2em] mb-3">Ecosistema Feliz Sin Tiroides</p>
-            <h2 className="text-3xl md:text-4xl font-bold text-[#0A2540] mb-4">Recursos complementarios para tu práctica</h2>
-            <p className="text-base text-slate-500">Guías, ebooks, servicios y formación que complementan el workspace profesional.</p>
+            <p className="text-xs font-bold text-edvanta-tealdark uppercase tracking-[0.2em] mb-3">Ecosistema Feliz Sin Tiroides</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-edvanta-deep mb-4">Recursos complementarios para tu práctica</h2>
+            <p className="text-base text-edvanta-muted">Guías, ebooks, servicios y formación que complementan el workspace profesional.</p>
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
             {ebooks.filter(ebook => ebook.price != null).slice(0, 4).map(ebook => (
-              <div key={ebook.id} className="bg-white border border-slate-200 rounded-xl p-5 hover:border-[#2CB1A1]/30 hover:shadow-sm transition-all group">
+              <div key={ebook.id} className="bg-white border border-edvanta-border rounded-xl p-5 hover:border-edvanta-teal/30 hover:shadow-sm transition-all group">
                 <div className={`w-full h-32 rounded-lg bg-gradient-to-br ${ebook.cover.gradient} flex items-center justify-center mb-4 text-4xl`}>
                   {ebook.cover.emoji}
                 </div>
-                <p className="text-[13px] font-semibold text-[#0A2540] mb-1 group-hover:text-[#2B8178] transition-colors leading-snug">{ebook.name}</p>
-                <p className="text-[11px] text-slate-500 mb-3 line-clamp-2">{ebook.description}</p>
+                <p className="text-[13px] font-semibold text-edvanta-deep mb-1 group-hover:text-edvanta-tealdark transition-colors leading-snug">{ebook.name}</p>
+                <p className="text-[11px] text-edvanta-muted mb-3 line-clamp-2">{ebook.description}</p>
                 {ebook.price && (
-                  <p className="text-sm font-bold text-[#0A2540]">${ebook.price.toLocaleString('es-CO')} COP</p>
+                  <p className="text-sm font-bold text-edvanta-deep">${ebook.price.toLocaleString('es-CO')} COP</p>
                 )}
               </div>
             ))}
@@ -723,16 +647,16 @@ export default function Vida360Pro() {
 
           {servicios && servicios.length > 0 && (
             <div className="mb-12">
-              <h3 className="text-xl font-bold text-[#0A2540] mb-6 text-center">Servicios profesionales</h3>
+              <h3 className="text-xl font-bold text-edvanta-deep mb-6 text-center">Servicios profesionales</h3>
               <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 {servicios.slice(0, 3).map(s => (
-                  <div key={s.id} className="bg-gradient-to-br from-[#effaf8] to-white border border-[#2CB1A1]/20 rounded-xl p-5">
+                  <div key={s.id} className="bg-gradient-to-br from-[#F0FAF9] to-white border border-edvanta-teal/20 rounded-xl p-5">
                     <div className="w-10 h-10 rounded-xl bg-white shadow-sm flex items-center justify-center mb-3">
-                      <Icon name={s.icon} className="w-5 h-5 text-[#2B8178]" />
+                      <Icon name={s.icon} className="w-5 h-5 text-edvanta-tealdark" />
                     </div>
-                    <p className="text-sm font-bold text-[#0A2540] mb-1">{s.name}</p>
-                    <p className="text-[11px] text-slate-500 mb-1">{s.duration}</p>
-                    <p className="text-[12px] text-slate-600 leading-relaxed">{s.description}</p>
+                    <p className="text-sm font-bold text-edvanta-deep mb-1">{s.name}</p>
+                    <p className="text-[11px] text-edvanta-muted mb-1">{s.duration}</p>
+                    <p className="text-[12px] text-edvanta-muted leading-relaxed">{s.description}</p>
                   </div>
                 ))}
               </div>
@@ -740,7 +664,7 @@ export default function Vida360Pro() {
           )}
 
           <div className="text-center">
-            <Link to="/feliz-sin-tiroides" className="inline-flex items-center gap-2 px-6 py-3 text-[14px] font-semibold text-[#2B8178] border-2 border-[#2B8178]/20 rounded-xl hover:bg-[#2B8178]/5 transition-all">
+            <Link to="/feliz-sin-tiroides" className="inline-flex items-center gap-2 px-6 py-3 text-[14px] font-semibold text-edvanta-tealdark border-2 border-edvanta-tealdark/20 rounded-xl hover:bg-edvanta-tealdark/5 transition-all">
               Explorar todos los recursos de Feliz Sin Tiroides
               <Icon name="arrowRight" className="w-4 h-4" />
             </Link>
@@ -749,28 +673,28 @@ export default function Vida360Pro() {
       </section>
 
       {/* ── FAQ ── */}
-      <section className="py-20 md:py-28 bg-[#F6F7F8]">
+      <section className="py-20 md:py-28 bg-edvanta-bg">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <p className="text-xs font-bold text-[#2B8178] uppercase tracking-[0.2em] mb-3">Preguntas frecuentes</p>
-            <h2 className="text-3xl md:text-4xl font-bold text-[#0A2540]">Resuelve tus dudas</h2>
+            <p className="text-xs font-bold text-edvanta-tealdark uppercase tracking-[0.2em] mb-3">Preguntas frecuentes</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-edvanta-deep">Resuelve tus dudas</h2>
           </div>
           <div className="space-y-3">
             {FAQS_V360.map((faq, i) => (
-              <div key={i} className="bg-white border border-slate-200 rounded-xl overflow-hidden">
+              <div key={i} className="bg-white border border-edvanta-border rounded-xl overflow-hidden">
                 <button
                   onClick={() => setActiveFaq(activeFaq === i ? null : i)}
-                  className="w-full flex items-center justify-between px-5 py-4 text-left hover:bg-slate-50 transition-colors min-h-[52px]"
+                  className="w-full flex items-center justify-between px-5 py-4 text-left hover:bg-edvanta-bg transition-colors min-h-[52px]"
                   aria-expanded={activeFaq === i}
                 >
-                  <span className="text-[14px] font-semibold text-[#0A2540] pr-4">{faq.q}</span>
-                  <svg className={`w-5 h-5 text-slate-400 transition-transform flex-shrink-0 ${activeFaq === i ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <span className="text-[14px] font-semibold text-edvanta-deep pr-4">{faq.q}</span>
+                  <svg className={`w-5 h-5 text-edvanta-subtle transition-transform flex-shrink-0 ${activeFaq === i ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                   </svg>
                 </button>
                 {activeFaq === i && (
                   <div className="px-5 pb-4 animate-slide-up">
-                    <p className="text-[13px] text-slate-600 leading-relaxed">{faq.a}</p>
+                    <p className="text-[13px] text-edvanta-muted leading-relaxed">{faq.a}</p>
                   </div>
                 )}
               </div>
@@ -781,7 +705,7 @@ export default function Vida360Pro() {
 
       {/* ── CTA ── */}
       <section className="relative py-20 md:py-28 overflow-hidden">
-        <div className="absolute inset-0 bg-[#0A2540]" />
+        <div className="absolute inset-0 bg-[#031D5C]" />
         <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-[radial-gradient(circle,rgba(43,129,120,0.3),transparent_70%)] -translate-y-1/2 translate-x-1/4" />
         <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-[radial-gradient(circle,rgba(44,177,161,0.2),transparent_70%)] translate-y-1/3 -translate-x-1/4" />
 
@@ -795,7 +719,7 @@ export default function Vida360Pro() {
           <div className="flex flex-col sm:flex-row justify-center gap-3">
             <button
               onClick={() => navigate('/vida-360-pro/workspace')}
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#2B8178] hover:bg-[#216d65] text-white text-[15px] font-bold rounded-xl transition-all shadow-lg shadow-[#2B8178]/30 hover:shadow-xl min-h-[52px]"
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-edvanta-tealdark hover:bg-[#0B6670] text-white text-[15px] font-bold rounded-xl transition-all shadow-lg shadow-edvanta-tealdark/30 hover:shadow-xl min-h-[52px]"
             >
               Comenzar ahora gratis
               <Icon name="arrowRight" className="w-4 h-4" />
@@ -819,68 +743,7 @@ export default function Vida360Pro() {
         </div>
       </section>
 
-      {/* ── FOOTER ── */}
-      <footer className="bg-[#0A2540] text-white py-14">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-8 mb-10">
-            <div className="lg:col-span-2">
-              <div className="flex items-center gap-2.5 mb-4">
-                <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-[#2B8178] to-[#2CB1A1] flex items-center justify-center">
-                  <span className="text-white text-xs font-bold">360</span>
-                </div>
-                <div>
-                  <p className="text-base font-bold text-white">Vida 360 Pro</p>
-                  <p className="text-[11px] text-white/50">by Feliz Sin Tiroides</p>
-                </div>
-              </div>
-              <p className="text-[13px] text-white/50 leading-relaxed mb-4 max-w-sm">
-                Plataforma profesional multidisciplinaria para la atención integral de la salud tiroidea. Parte del ecosistema Feliz Sin Tiroides y Edvanta.
-              </p>
-              <div className="flex items-center gap-3">
-                <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" className="text-[13px] text-[#2CB1A1] hover:text-white transition-colors font-medium">LinkedIn</a>
-                <span className="text-white/20">·</span>
-                <a href={waLink('Hola, tengo una consulta sobre Vida 360 Pro.')} target="_blank" rel="noopener noreferrer" className="text-[13px] text-[#2CB1A1] hover:text-white transition-colors font-medium">WhatsApp</a>
-              </div>
-            </div>
-
-            <div>
-              <p className="text-xs font-bold text-white/70 uppercase tracking-wider mb-4">Plataforma</p>
-              <div className="space-y-2">
-                {NAV_ITEMS.map(item => (
-                  <button key={item.id} onClick={() => scrollTo(item.id)} className="block text-[13px] text-white/50 hover:text-white transition-colors">{item.label}</button>
-                ))}
-              </div>
-            </div>
-
-            <div>
-              <p className="text-xs font-bold text-white/70 uppercase tracking-wider mb-4">Legal</p>
-              <div className="space-y-2">
-                <Link to="/privacidad" className="block text-[13px] text-white/50 hover:text-white transition-colors">Privacidad</Link>
-                <Link to="/tratamiento-de-datos" className="block text-[13px] text-white/50 hover:text-white transition-colors">Datos personales</Link>
-                <Link to="/terminos" className="block text-[13px] text-white/50 hover:text-white transition-colors">Términos</Link>
-                <Link to="/descargo-medico" className="block text-[13px] text-white/50 hover:text-white transition-colors">Descargo médico</Link>
-              </div>
-            </div>
-
-            <div>
-              <p className="text-xs font-bold text-white/70 uppercase tracking-wider mb-4">Ecosistema</p>
-              <div className="space-y-2">
-                <Link to="/" className="block text-[13px] text-white/50 hover:text-white transition-colors">Edvanta</Link>
-                <Link to="/feliz-sin-tiroides" className="block text-[13px] text-white/50 hover:text-white transition-colors">Feliz Sin Tiroides</Link>
-                <Link to="/vida-360" className="block text-[13px] text-white/50 hover:text-white transition-colors">Portal pacientes</Link>
-                <Link to="/atenfarmaclinic" className="block text-[13px] text-white/50 hover:text-white transition-colors">AtenFarmaClinic</Link>
-              </div>
-            </div>
-          </div>
-
-          <div className="border-t border-white/10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <p className="text-[12px] text-white/40">
-              &copy; {new Date().getFullYear()} Vida 360 Pro · Feliz Sin Tiroides · Karla Hernández, Q.F. · Todos los derechos reservados.
-            </p>
-            <p className="text-[12px] text-white/30">{EMAIL}</p>
-          </div>
-        </div>
-      </footer>
+      <PieDePrograma programa={PROGRAMA_V360PRO} id="v360p-contacto" />
     </div>
   );
 }

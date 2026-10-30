@@ -92,27 +92,27 @@ export default function RetosIndex() {
   };
 
   return (
-    <div className="min-h-screen bg-sand-50 font-sans">
+    <div className="min-h-screen bg-edvanta-bg font-sans">
       <FstHeader />
 
       {/* A. Hero */}
-      <section className="border-b border-gray-200 bg-white pb-12 pt-28 md:pb-16 md:pt-32">
+      <section className="border-b border-edvanta-border bg-white pb-12 pt-10 md:pb-16 md:pt-14">
         <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
-          <div className="mb-6 inline-flex items-center gap-2 rounded-md border border-[#eae2f8] bg-[#f7f3fb] px-4 py-2">
-            <Icon name="sparkles" className="h-4 w-4 text-[#6b4fa8]" />
-            <span className="text-xs font-semibold text-[#6b4fa8]">Retos FST · Feliz Sin Tiroides</span>
+          <div className="mb-6 inline-flex items-center gap-2 rounded-md border border-edvanta-border bg-edvanta-bg px-4 py-2">
+            <Icon name="sparkles" className="h-4 w-4 text-edvanta-blue" />
+            <span className="text-xs font-semibold text-edvanta-blue">Retos FST · Feliz Sin Tiroides</span>
           </div>
-          <h1 className="mb-5 font-serif text-3xl font-semibold leading-[1.15] text-deepblue-900 md:text-5xl">
+          <h1 className="mb-5 font-display text-3xl font-extrabold leading-[1.15] text-edvanta-deep md:text-5xl">
             Tu semana. Tu objetivo. Tu reto.
           </h1>
-          <p className="mx-auto mb-7 max-w-2xl text-base leading-relaxed text-gray-600 md:text-lg">
+          <p className="mx-auto mb-7 max-w-2xl text-base leading-relaxed text-edvanta-muted md:text-lg">
             Elige cómo quieres moverte esta semana y encuentra una experiencia de 7 días que se adapte a ti.
           </p>
           <div className="flex flex-col justify-center gap-3 sm:flex-row">
             <a href="#elige-tu-objetivo" onClick={event => { event.preventDefault(); document.getElementById('elige-tu-objetivo')?.scrollIntoView({ behavior: 'smooth' }); }} className="inline-flex min-h-12 items-center justify-center gap-2 rounded-md bg-teal-600 px-6 text-sm font-semibold text-white hover:bg-teal-700">
               Encontrar mi reto
             </a>
-            <button type="button" onClick={scrollToAll} className="inline-flex min-h-12 items-center justify-center gap-2 rounded-md border border-[#d7c8e5] bg-white px-6 text-sm font-semibold text-[#563a78] hover:bg-[#faf8fc]">
+            <button type="button" onClick={scrollToAll} className="inline-flex min-h-12 items-center justify-center gap-2 rounded-md border border-edvanta-border bg-white px-6 text-sm font-semibold text-edvanta-blue hover:bg-edvanta-bg">
               Ver todos los retos
             </button>
           </div>
@@ -123,28 +123,28 @@ export default function RetosIndex() {
       <section className="py-10 md:py-14">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mb-6 flex items-center justify-between gap-3">
-            <h2 className="font-serif text-2xl font-semibold text-deepblue-900">Reto de esta semana</h2>
+            <h2 className="font-display text-2xl font-extrabold text-edvanta-deep">Reto de esta semana</h2>
             <button type="button" onClick={scrollToAll} className="text-sm font-semibold text-teal-700 hover:underline">Ver todos</button>
           </div>
           {loading ? (
-            <p className="py-10 text-center text-sm text-gray-400">Cargando retos...</p>
+            <p className="py-10 text-center text-sm text-edvanta-subtle">Cargando retos...</p>
           ) : weekly ? (
-            <div className="grid overflow-hidden rounded-lg border border-sand-100 bg-white shadow-sm md:grid-cols-2">
-              <div className="flex aspect-[16/9] items-center justify-center bg-gradient-to-br from-[#e8f4f2] to-[#fdf2f6] md:aspect-auto">
+            <div className="grid overflow-hidden rounded-lg border border-edvanta-border bg-white shadow-sm md:grid-cols-2">
+              <div className="flex aspect-[16/9] items-center justify-center bg-gradient-to-br from-edvanta-mint to-edvanta-lilac md:aspect-auto">
                 {weekly.cover_image ? (
                   <img src={weekly.cover_image} alt={weekly.title} loading="lazy" className="h-full w-full object-cover" />
                 ) : (
                   <div className="text-center">
-                    <Icon name="sparkles" className="mx-auto h-12 w-12 text-[#563a78]" />
-                    <p className="mt-2 font-serif text-xl font-semibold text-deepblue-900">{weekly.title}</p>
+                    <Icon name="sparkles" className="mx-auto h-12 w-12 text-edvanta-blue" />
+                    <p className="mt-2 font-display text-xl font-extrabold text-edvanta-deep">{weekly.title}</p>
                   </div>
                 )}
               </div>
               <div className="flex flex-col justify-center gap-3 p-6 sm:p-8">
                 <span className="text-xs font-bold uppercase tracking-[0.15em] text-teal-600">Reto destacado</span>
-                <h3 className="font-serif text-2xl font-semibold text-deepblue-900">{weekly.title}</h3>
-                {weekly.tagline && <p className="text-sm italic text-[#76539a]">{weekly.tagline}</p>}
-                <div className="flex flex-wrap gap-x-4 gap-y-1 text-xs text-gray-500">
+                <h3 className="font-display text-2xl font-extrabold text-edvanta-deep">{weekly.title}</h3>
+                {weekly.tagline && <p className="text-sm italic text-edvanta-blue">{weekly.tagline}</p>}
+                <div className="flex flex-wrap gap-x-4 gap-y-1 text-xs text-edvanta-muted">
                   <span>7 días</span>
                   {weekly.average_duration && <span>· {weekly.average_duration}</span>}
                   <span>· {levelLabel(weekly.level)}</span>
@@ -157,9 +157,9 @@ export default function RetosIndex() {
               </div>
             </div>
           ) : (
-            <div className="rounded-lg border border-sand-100 bg-white p-8 text-center">
-              <p className="text-sm text-gray-500">Estamos preparando el próximo reto ✨</p>
-              <p className="mt-1 text-xs text-gray-400">Mientras tanto, explora la biblioteca de retos evergreen.</p>
+            <div className="rounded-lg border border-edvanta-border bg-white p-8 text-center">
+              <p className="text-sm text-edvanta-muted">Estamos preparando el próximo reto ✨</p>
+              <p className="mt-1 text-xs text-edvanta-subtle">Mientras tanto, explora la biblioteca de retos evergreen.</p>
             </div>
           )}
         </div>
@@ -170,7 +170,7 @@ export default function RetosIndex() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mb-8 text-center">
             <p className="mb-2 text-xs font-bold uppercase tracking-[0.2em] text-teal-600">Primer paso</p>
-            <h2 className="font-serif text-3xl font-semibold text-deepblue-900">Elige tu objetivo</h2>
+            <h2 className="font-display text-3xl font-extrabold text-edvanta-deep">Elige tu objetivo</h2>
           </div>
           <GoalSelector onSelect={handleGoalSelect} />
         </div>
@@ -181,13 +181,13 @@ export default function RetosIndex() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mb-8 text-center">
             <p className="mb-2 text-xs font-bold uppercase tracking-[0.2em] text-teal-600">Biblioteca</p>
-            <h2 className="font-serif text-3xl font-semibold text-deepblue-900">Explora por vibe</h2>
-            <p className="mx-auto mt-3 max-w-2xl text-sm leading-6 text-gray-500">
+            <h2 className="font-display text-3xl font-extrabold text-edvanta-deep">Explora por vibe</h2>
+            <p className="mx-auto mt-3 max-w-2xl text-sm leading-6 text-edvanta-muted">
               Doce colecciones de 7 días para moverte a tu manera. Todas pueden iniciarse cualquier día.
             </p>
           </div>
           {loading ? (
-            <p className="py-10 text-center text-sm text-gray-400">Cargando retos...</p>
+            <p className="py-10 text-center text-sm text-edvanta-subtle">Cargando retos...</p>
           ) : (
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
               {challenges.map(challenge => (
@@ -206,8 +206,8 @@ export default function RetosIndex() {
               <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
                 <div>
                   <p className="text-xs font-bold uppercase tracking-[0.15em] text-teal-700">Continúa tu reto</p>
-                  <h2 className="mt-1 font-serif text-2xl font-semibold text-deepblue-900">{activeChallenge.title}</h2>
-                  <p className="mt-1 text-sm text-gray-600">
+                  <h2 className="mt-1 font-display text-2xl font-extrabold text-edvanta-deep">{activeChallenge.title}</h2>
+                  <p className="mt-1 text-sm text-edvanta-muted">
                     Día {activeProgress.nextDay} de {activeProgress.total} · {activeProgress.percent}%
                   </p>
                   <div className="mt-3 h-2 w-full max-w-xs overflow-hidden rounded-full bg-white" role="progressbar" aria-valuenow={activeProgress.completed} aria-valuemin={0} aria-valuemax={activeProgress.total} aria-label={`Progreso de ${activeChallenge.title}`}>
@@ -227,8 +227,8 @@ export default function RetosIndex() {
       <section id="todos-los-retos" className="scroll-mt-24 py-10 md:py-14">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mb-8 text-center">
-            <h2 className="font-serif text-3xl font-semibold text-deepblue-900">Todos los retos</h2>
-            <p className="mx-auto mt-3 max-w-2xl text-sm leading-6 text-gray-500">
+            <h2 className="font-display text-3xl font-extrabold text-edvanta-deep">Todos los retos</h2>
+            <p className="mx-auto mt-3 max-w-2xl text-sm leading-6 text-edvanta-muted">
               Filtra por objetivo, zona corporal, tipo, duración, equipamiento y nivel.
             </p>
           </div>
@@ -243,11 +243,11 @@ export default function RetosIndex() {
 
             <div>
               {loading ? (
-                <p className="py-10 text-center text-sm text-gray-400">Cargando retos...</p>
+                <p className="py-10 text-center text-sm text-edvanta-subtle">Cargando retos...</p>
               ) : filtered.length === 0 ? (
-                <div className="rounded-lg border border-sand-100 bg-white p-10 text-center">
-                  <p className="text-sm font-semibold text-deepblue-900">Tu próxima semana puede empezar aquí.</p>
-                  <p className="mt-1 text-xs text-gray-400">Prueba con otros filtros o explora la biblioteca completa.</p>
+                <div className="rounded-lg border border-edvanta-border bg-white p-10 text-center">
+                  <p className="text-sm font-semibold text-edvanta-deep">Tu próxima semana puede empezar aquí.</p>
+                  <p className="mt-1 text-xs text-edvanta-subtle">Prueba con otros filtros o explora la biblioteca completa.</p>
                   <button
                     type="button"
                     onClick={() => setFilters({ goal: '', bodyArea: '', type: '', duration: '', equipment: '', level: '' })}

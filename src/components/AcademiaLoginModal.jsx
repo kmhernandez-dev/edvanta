@@ -175,10 +175,10 @@ export default function AcademiaLoginModal({ isOpen, onClose }) {
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-navy-950/50 backdrop-blur-sm" onClick={onClose}>
       <div className="w-full max-w-sm overflow-hidden rounded-lg bg-white shadow-2xl" onClick={e => e.stopPropagation()}>
-        <div className="bg-gradient-to-r from-teal-600 to-blush-500 px-6 py-5 text-white">
+        <div className="bg-gradient-to-r from-teal-600 to-edvanta-violet px-6 py-5 text-white">
           <div className="flex items-center justify-between">
             <div>
-              <p className="font-serif text-lg font-semibold">{mode === 'login' ? 'Iniciar sesión' : 'Crear cuenta'}</p>
+              <p className="font-display text-lg font-extrabold">{mode === 'login' ? 'Iniciar sesión' : 'Crear cuenta'}</p>
               <p className="text-xs text-white/80 mt-0.5">Academia Feliz Sin Tiroides</p>
             </div>
             <button type="button" onClick={onClose} aria-label="Cerrar" className="w-8 h-8 rounded-md bg-white/20 hover:bg-white/30 flex items-center justify-center transition-colors">
@@ -200,38 +200,38 @@ export default function AcademiaLoginModal({ isOpen, onClose }) {
                 type="button"
                 onClick={handleGoogleRedirect}
                 disabled={loading || (mode === 'register' && !privacyAccepted)}
-                className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-md border border-gray-300 bg-white px-4 text-sm font-semibold text-gray-800 transition-colors hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-50"
+                className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-md border border-edvanta-strong bg-white px-4 text-sm font-semibold text-edvanta-deep transition-colors hover:bg-edvanta-bg disabled:cursor-not-allowed disabled:opacity-50"
               >
                 <GoogleIcon /> Continuar con Google
               </button>
-              <p className="text-center text-[10px] leading-4 text-gray-500">
+              <p className="text-center text-[10px] leading-4 text-edvanta-muted">
                 Solo pedimos tu nombre y correo. Al continuar aceptas la{' '}
                 <Link to="/privacidad" target="_blank" className="font-semibold text-teal-700 hover:underline">política de privacidad</Link>.
               </p>
               {mode === 'register' && !privacyAccepted && (
-                <p className="rounded-md border border-gray-200 bg-gray-50 px-3 py-2 text-center text-xs text-gray-500">
+                <p className="rounded-md border border-edvanta-border bg-edvanta-bg px-3 py-2 text-center text-xs text-edvanta-muted">
                   Marca la aceptación de privacidad para activar el registro con Google.
                 </p>
               )}
-              <div className="flex items-center gap-3 text-[11px] uppercase text-gray-400">
-                <span className="h-px flex-1 bg-gray-200" />
+              <div className="flex items-center gap-3 text-[11px] uppercase text-edvanta-subtle">
+                <span className="h-px flex-1 bg-edvanta-border" />
                 <span>o continúa con correo</span>
-                <span className="h-px flex-1 bg-gray-200" />
+                <span className="h-px flex-1 bg-edvanta-border" />
               </div>
             </div>
           ) : googleConfig.enabled && (
             <div className="space-y-3">
               {mode === 'register' && !privacyAccepted ? (
-                <p className="rounded-md border border-gray-200 bg-gray-50 px-3 py-2 text-center text-xs text-gray-500">
+                <p className="rounded-md border border-edvanta-border bg-edvanta-bg px-3 py-2 text-center text-xs text-edvanta-muted">
                   Marca la aceptación de privacidad para activar el registro con Google.
                 </p>
               ) : (
                 <div ref={googleButtonRef} className="flex min-h-11 w-full justify-center overflow-hidden" aria-label="Acceso con Google" />
               )}
-              <div className="flex items-center gap-3 text-[11px] uppercase text-gray-400">
-                <span className="h-px flex-1 bg-gray-200" />
+              <div className="flex items-center gap-3 text-[11px] uppercase text-edvanta-subtle">
+                <span className="h-px flex-1 bg-edvanta-border" />
                 <span>o continúa con correo</span>
-                <span className="h-px flex-1 bg-gray-200" />
+                <span className="h-px flex-1 bg-edvanta-border" />
               </div>
             </div>
           )}
@@ -262,45 +262,45 @@ export default function AcademiaLoginModal({ isOpen, onClose }) {
 
           {mode === 'register' && (
             <div>
-              <label className="block text-xs font-semibold text-deepblue-800 mb-1">Nombre</label>
+              <label className="block text-xs font-semibold text-edvanta-deep mb-1">Nombre</label>
               <input
                 type="text"
                 value={name}
                 onChange={e => setName(e.target.value)}
                 required
-                className="w-full rounded-xl border border-sand-200 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-teal-200 focus:border-teal-300"
+                className="w-full rounded-xl border border-edvanta-border px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-teal-200 focus:border-teal-300"
                 placeholder="Tu nombre"
               />
             </div>
           )}
 
           <div>
-            <label className="block text-xs font-semibold text-deepblue-800 mb-1">Correo electrónico</label>
+            <label className="block text-xs font-semibold text-edvanta-deep mb-1">Correo electrónico</label>
             <input
               type="email"
               value={email}
               onChange={e => setEmail(e.target.value)}
               required
-              className="w-full rounded-xl border border-sand-200 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-teal-200 focus:border-teal-300"
+              className="w-full rounded-xl border border-edvanta-border px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-teal-200 focus:border-teal-300"
               placeholder="tu@correo.com"
             />
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-deepblue-800 mb-1">Contraseña</label>
+            <label className="block text-xs font-semibold text-edvanta-deep mb-1">Contraseña</label>
             <input
               type="password"
               value={password}
               onChange={e => setPassword(e.target.value)}
               required
               minLength={6}
-              className="w-full rounded-xl border border-sand-200 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-teal-200 focus:border-teal-300"
+              className="w-full rounded-xl border border-edvanta-border px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-teal-200 focus:border-teal-300"
               placeholder="Mínimo 6 caracteres"
             />
           </div>
 
           {mode === 'register' && (
-            <label className="flex items-start gap-2.5 rounded-md border border-sand-200 bg-sand-50/50 p-3 text-xs leading-relaxed text-gray-600">
+            <label className="flex items-start gap-2.5 rounded-md border border-edvanta-border bg-edvanta-bg/50 p-3 text-xs leading-relaxed text-edvanta-muted">
               <input
                 type="checkbox"
                 checked={privacyAccepted}
@@ -322,7 +322,7 @@ export default function AcademiaLoginModal({ isOpen, onClose }) {
             {loading ? 'Cargando...' : mode === 'login' ? 'Iniciar sesión' : 'Crear cuenta'}
           </button>
 
-          <p className="text-center text-xs text-gray-500">
+          <p className="text-center text-xs text-edvanta-muted">
             {mode === 'login' ? (
               <>¿No tienes cuenta? <button type="button" onClick={() => { setMode('register'); setError(''); setLinkCredential(''); }} className="text-teal-600 hover:underline font-medium">Regístrate</button></>
             ) : (
@@ -330,7 +330,7 @@ export default function AcademiaLoginModal({ isOpen, onClose }) {
             )}
           </p>
 
-          <p className="text-[10px] text-gray-400 text-center leading-snug">
+          <p className="text-[10px] text-edvanta-subtle text-center leading-snug">
             Tus datos se usan para gestionar tu acceso, progreso e interacciones en la academia.
           </p>
         </form>

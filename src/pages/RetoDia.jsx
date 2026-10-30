@@ -19,6 +19,7 @@ import ChallengeCompletion from '../components/retos/ChallengeCompletion';
 import NutriFitCTA from '../components/retos/NutriFitCTA';
 import Icon from '../components/Icon';
 import { useAuth } from '../context/AuthContext';
+import { apiUrl } from '../config/api';
 import { updatePageSeo } from '../utils/seo';
 import { trackEvent } from '../utils/analytics';
 import { waLink } from '../config/links';
@@ -46,7 +47,11 @@ export default function RetoDia() {
   const load = useCallback(() => {
     let cancelled = false;
     setLoading(true);
-    api(`/api/academia/retos/${slug}`)
+    // Sin sesión el día se ve igual; la sesión solo hace falta para el
+    // check-in (igual que en RetoDetalle).
+    const ruta = `/api/academia/retos/${slug}`;
+    api(ruta)
+      .catch(() => fetch(apiUrl(ruta)).then(r => (r.ok ? r.json() : Promise.reject(new Error('No encontrado')))))
       .then(data => {
         if (cancelled) return;
         setChallenge(data.challenge || null);
@@ -121,7 +126,7 @@ export default function RetoDia() {
   };
 
   if (loading) {
-    return <div className="min-h-screen bg-sand-50"><FstHeader /><p className="pt-36 text-center text-sm text-gray-500">Cargando día...</p><FstFooter /></div>;
+    return <div className="min-h-screen bg-edvanta-bg"><FstHeader /><p className="py-20 text-center text-sm text-edvanta-muted">Cargando día...</p><FstFooter /></div>;
   }
   if (!challenge) return <Navigate to="/academia/retos" replace />;
   if (!day) return <Navigate to={`/academia/retos/${challenge.slug}`} replace />;
@@ -132,31 +137,31 @@ export default function RetoDia() {
   const allDone = progress.total > 0 && progress.completed >= progress.total;
 
   return (
-    <div className="min-h-screen bg-sand-50 font-sans">
+    <div className="min-h-screen bg-edvanta-bg font-sans">
       <FstHeader />
-      <main className="pb-16 pt-24">
+      <main className="pb-16 pt-6">
         <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-          <nav className="mb-5 flex min-w-0 items-center gap-2 overflow-hidden text-xs text-gray-500" aria-label="Migas de pan">
-            <Link to="/academia" className="shrink-0 hover:text-[#0f766e]">Academia</Link>
+          <nav className="mb-5 flex min-w-0 items-center gap-2 overflow-hidden text-xs text-edvanta-muted" aria-label="Migas de pan">
+            <Link to="/academia" className="shrink-0 hover:text-edvanta-tealdark">Academia</Link>
             <span>/</span>
-            <Link to="/academia/retos" className="shrink-0 hover:text-[#0f766e]">Retos FST</Link>
+            <Link to="/academia/retos" className="shrink-0 hover:text-edvanta-tealdark">Retos FST</Link>
             <span>/</span>
-            <Link to={`/academia/retos/${challenge.slug}`} className="max-w-40 truncate hover:text-[#0f766e]">{challenge.title}</Link>
+            <Link to={`/academia/retos/${challenge.slug}`} className="max-w-40 truncate hover:text-edvanta-tealdark">{challenge.title}</Link>
             <span>/</span>
-            <span className="truncate text-gray-700">Día {day.day_number}</span>
+            <span className="truncate text-edvanta-deep">Día {day.day_number}</span>
           </nav>
 
           <div className="grid items-start gap-6 lg:grid-cols-[minmax(0,1fr)_340px]">
             <div className="min-w-0 space-y-5">
               {/* Cabecera del día */}
-              <section className="rounded-lg border border-sand-100 bg-white p-5 sm:p-6" aria-labelledby="day-title">
+              <section className="rounded-lg border border-edvanta-border bg-white p-5 sm:p-6" aria-labelledby="day-title">
                 {dayCover && (
                   <img src={dayCover} alt={`Día ${day.day_number} · ${day.title}`} loading="lazy" className="mb-4 aspect-[16/9] w-full rounded-lg object-cover" />
                 )}
                 <p className="text-xs font-bold uppercase tracking-[0.15em] text-teal-600">Día {day.day_number} de 7</p>
-                <h1 id="day-title" className="mt-2 text-2xl font-semibold leading-tight text-deepblue-900">{day.title}</h1>
-                {day.description && <p className="mt-3 text-sm leading-6 text-gray-600">{day.description}</p>}
-                <dl className="mt-4 flex flex-wrap gap-x-6 gap-y-2 text-xs text-gray-500">
+                <h1 id="day-title" className="mt-2 text-2xl font-semibold leading-tight text-edvanta-deep">{day.title}</h1>
+                {day.description && <p className="mt-3 text-sm leading-6 text-edvanta-muted">{day.description}</p>}
+                <dl className="mt-4 flex flex-wrap gap-x-6 gap-y-2 text-xs text-edvanta-muted">
                   {day.instructor && (
                     <div className="flex items-center gap-1.5"><Icon name="user" className="h-4 w-4 text-teal-600" /> {day.instructor}</div>
                   )}
@@ -177,7 +182,7 @@ export default function RetoDia() {
 
               {/* Video */}
               <ChallengeVideo videoId={day.youtube_video_id} title={day.title} />
-              <p className="text-xs leading-5 text-gray-400">
+              <p className="text-xs leading-5 text-edvanta-subtle">
                 Este entrenamiento es un recurso externo seleccionado para el reto. El contenido pertenece a su creadora original.
               </p>
 
@@ -201,13 +206,13 @@ export default function RetoDia() {
                   />
                 )
               ) : (
-                <section className="rounded-lg border border-sand-100 bg-white p-6 text-center">
-                  <p className="text-sm font-semibold text-deepblue-900">Crea tu cuenta para guardar tu progreso</p>
-                  <p className="mt-1 text-xs text-gray-500">Tu avance queda asociado a tu perfil y puedes continuar desde cualquier dispositivo.</p>
+                <section className="rounded-lg border border-edvanta-border bg-white p-6 text-center">
+                  <p className="text-sm font-semibold text-edvanta-deep">Crea tu cuenta para guardar tu progreso</p>
+                  <p className="mt-1 text-xs text-edvanta-muted">Tu avance queda asociado a tu perfil y puedes continuar desde cualquier dispositivo.</p>
                   <button
                     type="button"
                     onClick={() => setLoginOpen(true)}
-                    className="mt-4 inline-flex min-h-11 items-center justify-center gap-2 rounded-md bg-[#563a78] px-6 text-sm font-semibold text-white hover:bg-[#452b65]"
+                    className="mt-4 inline-flex min-h-11 items-center justify-center gap-2 rounded-md bg-edvanta-blue px-6 text-sm font-semibold text-white hover:bg-edvanta-bluedark"
                   >
                     <Icon name="lock" className="h-4 w-4" /> Registrarme o iniciar sesión
                   </button>
@@ -218,9 +223,9 @@ export default function RetoDia() {
 
               {/* Nota educativa / recordatorio */}
               {day.educational_note && (
-                <section className="rounded-lg border border-sand-100 bg-white p-5" aria-label="Recuerda">
-                  <h2 className="text-sm font-bold text-deepblue-900">Recuerda</h2>
-                  <p className="mt-2 text-sm leading-6 text-gray-600">{day.educational_note}</p>
+                <section className="rounded-lg border border-edvanta-border bg-white p-5" aria-label="Recuerda">
+                  <h2 className="text-sm font-bold text-edvanta-deep">Recuerda</h2>
+                  <p className="mt-2 text-sm leading-6 text-edvanta-muted">{day.educational_note}</p>
                 </section>
               )}
 
@@ -245,12 +250,12 @@ export default function RetoDia() {
               {/* Navegación entre días */}
               <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                 {previousDay ? (
-                  <Link to={`/academia/retos/${challenge.slug}/dia/${previousDay.day_number}`} className="inline-flex min-h-11 items-center justify-center rounded-md border border-sand-200 bg-white px-4 text-sm font-semibold text-gray-600 hover:border-teal-200">
+                  <Link to={`/academia/retos/${challenge.slug}/dia/${previousDay.day_number}`} className="inline-flex min-h-11 items-center justify-center rounded-md border border-edvanta-border bg-white px-4 text-sm font-semibold text-edvanta-muted hover:border-teal-200">
                     Día {previousDay.day_number}
                   </Link>
                 ) : <span />}
                 {nextDay && (
-                  <Link to={`/academia/retos/${challenge.slug}/dia/${nextDay.day_number}`} className="inline-flex min-h-11 items-center justify-center gap-2 rounded-md bg-[#563a78] px-4 text-sm font-semibold text-white hover:bg-[#452b65]">
+                  <Link to={`/academia/retos/${challenge.slug}/dia/${nextDay.day_number}`} className="inline-flex min-h-11 items-center justify-center gap-2 rounded-md bg-edvanta-blue px-4 text-sm font-semibold text-white hover:bg-edvanta-bluedark">
                     Día {nextDay.day_number} <Icon name="arrowRight" className="h-4 w-4" />
                   </Link>
                 )}
@@ -260,30 +265,30 @@ export default function RetoDia() {
             {/* Barra lateral */}
             <aside className="space-y-4 lg:sticky lg:top-24">
               {user && membership && (
-                <section className="rounded-lg border border-sand-100 bg-white p-4" aria-labelledby="side-progress">
+                <section className="rounded-lg border border-edvanta-border bg-white p-4" aria-labelledby="side-progress">
                   <div className="flex items-center justify-between gap-3">
-                    <h2 id="side-progress" className="text-sm font-semibold text-deepblue-900">Tu progreso</h2>
-                    <Link to={`/academia/retos/${challenge.slug}`} className="text-xs font-semibold text-[#563a78] hover:underline">Ver reto</Link>
+                    <h2 id="side-progress" className="text-sm font-semibold text-edvanta-deep">Tu progreso</h2>
+                    <Link to={`/academia/retos/${challenge.slug}`} className="text-xs font-semibold text-edvanta-blue hover:underline">Ver reto</Link>
                   </div>
-                  <div className="mt-3 h-2 overflow-hidden rounded-full bg-sand-100">
+                  <div className="mt-3 h-2 overflow-hidden rounded-full bg-edvanta-bg">
                     <div className="h-full rounded-full bg-teal-500 transition-all duration-500" style={{ width: `${progress.percent}%` }} />
                   </div>
-                  <p className="mt-2 text-xs text-gray-500">{progress.completed} de {progress.total} días · {progress.percent}%</p>
+                  <p className="mt-2 text-xs text-edvanta-muted">{progress.completed} de {progress.total} días · {progress.percent}%</p>
                   {streak > 0 && (
-                    <p className="mt-2 inline-flex items-center gap-1.5 rounded-full bg-[#fdf2f6] px-3 py-1 text-xs font-semibold text-[#b04a76]">
+                    <p className="mt-2 inline-flex items-center gap-1.5 rounded-full bg-edvanta-lilac px-3 py-1 text-xs font-semibold text-[#5E51A8]">
                       <Icon name="sparkles" className="h-3.5 w-3.5" /> {streak} {streak === 1 ? 'día' : 'días'} de racha
                     </p>
                   )}
                 </section>
               )}
 
-              <section className="overflow-hidden rounded-lg border border-sand-100 bg-white" aria-labelledby="side-days">
-                <div className="border-b border-sand-100 px-4 py-3">
-                  <h2 id="side-days" className="inline-flex items-center gap-2 text-sm font-semibold text-deepblue-900">
+              <section className="overflow-hidden rounded-lg border border-edvanta-border bg-white" aria-labelledby="side-days">
+                <div className="border-b border-edvanta-border px-4 py-3">
+                  <h2 id="side-days" className="inline-flex items-center gap-2 text-sm font-semibold text-edvanta-deep">
                     <Icon name="list" className="h-4 w-4" /> Los 7 días
                   </h2>
                 </div>
-                <div className="divide-y divide-sand-100">
+                <div className="divide-y divide-edvanta-border">
                   {days.map(item => {
                     const active = Number(item.day_number) === dayKey;
                     const done = completedIds.has(String(item.id));
@@ -291,13 +296,13 @@ export default function RetoDia() {
                       <Link
                         key={item.id}
                         to={`/academia/retos/${challenge.slug}/dia/${item.day_number}`}
-                        className={`flex min-h-12 items-center gap-3 border-l-2 px-4 py-3 ${active ? 'border-teal-600 bg-teal-50/60' : 'border-transparent hover:bg-sand-50'}`}
+                        className={`flex min-h-12 items-center gap-3 border-l-2 px-4 py-3 ${active ? 'border-teal-600 bg-teal-50/60' : 'border-transparent hover:bg-edvanta-bg'}`}
                         aria-current={active ? 'page' : undefined}
                       >
-                        <span className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-[11px] font-bold ${done ? 'bg-teal-600 text-white' : active ? 'bg-white text-teal-700' : 'bg-sand-100 text-gray-500'}`}>
+                        <span className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-[11px] font-bold ${done ? 'bg-teal-600 text-white' : active ? 'bg-white text-teal-700' : 'bg-edvanta-bg text-edvanta-muted'}`}>
                           {done ? <Icon name="check" className="h-3.5 w-3.5" /> : item.day_number}
                         </span>
-                        <span className={`truncate text-xs ${active ? 'font-semibold text-teal-800' : 'text-gray-700'}`}>{item.title}</span>
+                        <span className={`truncate text-xs ${active ? 'font-semibold text-teal-800' : 'text-edvanta-deep'}`}>{item.title}</span>
                       </Link>
                     );
                   })}
@@ -308,7 +313,7 @@ export default function RetoDia() {
                 <button
                   type="button"
                   onClick={shareProgress}
-                  className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-md border border-[#d7c8e5] bg-white px-4 text-sm font-semibold text-[#563a78] hover:bg-[#faf8fc]"
+                  className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-md border border-edvanta-border bg-white px-4 text-sm font-semibold text-edvanta-blue hover:bg-edvanta-bg"
                 >
                   <Icon name="message" className="h-4 w-4" /> Compartir mi avance
                 </button>

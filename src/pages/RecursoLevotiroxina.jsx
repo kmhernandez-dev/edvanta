@@ -1,5 +1,7 @@
 import { useEffect, useState, useCallback } from 'react';
-import { Link } from 'react-router-dom';
+import FstHeader from '../components/fst/FstHeader';
+import FstFooter from '../components/fst/FstFooter';
+import { btnClass } from '../components/edvanta/ui';
 import { apiUrl } from '../config/api';
 import { FORM_ENDPOINT } from '../config/fst';
 import { waLink } from '../config/links';
@@ -46,7 +48,7 @@ function Stars({ value, onChange, size = 'w-7 h-7' }) {
           onMouseEnter={() => onChange && setHover(n)} onMouseLeave={() => onChange && setHover(0)}
           onClick={() => onChange && onChange(n)}
           className={onChange ? 'transition-transform hover:scale-110' : 'cursor-default'} aria-label={`${n} estrellas`}>
-          <Svg d={I.star} fill className={`${size} ${(hover || value) >= n ? 'text-amber-400' : 'text-gray-300'} transition-colors`} />
+          <Svg d={I.star} fill className={`${size} ${(hover || value) >= n ? 'text-amber-400' : 'text-edvanta-strong'} transition-colors`} />
         </button>
       ))}
     </div>
@@ -58,8 +60,8 @@ function FloatingTabs({ onDownload }) {
   const scrollTo = (id) => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
   const tabs = [
     { label: 'Descargar', color: 'bg-teal-600 hover:bg-teal-700', onClick: onDownload, icon: I.download },
-    { label: 'Reseñas', color: 'bg-blush-500 hover:bg-blush-600', onClick: () => scrollTo('resenas'), icon: I.star },
-    { label: 'Comprar', color: 'bg-deepblue-800 hover:bg-deepblue-900', href: CHECKOUT_COLECCION, icon: I.cart },
+    { label: 'Reseñas', color: 'bg-edvanta-violet hover:bg-edvanta-violet', onClick: () => scrollTo('resenas'), icon: I.star },
+    { label: 'Comprar', color: 'bg-edvanta-blue hover:bg-[#031D5C]', href: CHECKOUT_COLECCION, icon: I.cart },
     { label: 'WhatsApp', color: 'bg-green-600 hover:bg-green-700', href: waLink('Hola Karla, descargué la guía de levotiroxina y quiero saber más.'), icon: I.chat },
   ];
   return (
@@ -80,16 +82,15 @@ function OptInForm({ name, setName, email, setEmail, state, error, onSubmit }) {
   return (
     <form onSubmit={onSubmit} className="space-y-3">
       <input value={name} onChange={e => setName(e.target.value)} placeholder="Tu nombre"
-        className="w-full rounded-xl border border-sand-200 bg-white px-4 py-3 text-sm text-gray-800 focus:outline-none focus:ring-2 focus:ring-teal-400" />
+        className="w-full rounded-xl border border-edvanta-border bg-white px-4 py-3 text-sm text-edvanta-deep focus:outline-none focus:ring-2 focus:ring-teal-400" />
       <input type="email" required value={email} onChange={e => setEmail(e.target.value)} placeholder="Tu mejor correo"
-        className="w-full rounded-xl border border-sand-200 bg-white px-4 py-3 text-sm text-gray-800 focus:outline-none focus:ring-2 focus:ring-teal-400" />
+        className="w-full rounded-xl border border-edvanta-border bg-white px-4 py-3 text-sm text-edvanta-deep focus:outline-none focus:ring-2 focus:ring-teal-400" />
       {error && <p className="text-center text-xs text-red-600">{error}</p>}
-      <button type="submit" disabled={state === 'sending'}
-        className="flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-teal-500 to-teal-700 px-6 py-3.5 text-sm font-bold text-white shadow-lg shadow-teal-600/25 transition-all hover:shadow-xl hover:brightness-105 active:scale-[0.99] disabled:opacity-70">
+      <button type="submit" disabled={state === 'sending'} className={btnClass('teal', 'lg', 'ed-btn--block')}>
         {state === 'sending' ? 'Preparando tu descarga…' : 'Descargar la guía gratis'}
         <Svg d={I.download} className="h-4 w-4" />
       </button>
-      <p className="flex items-center justify-center gap-1.5 text-center text-[11px] text-gray-400">
+      <p className="flex items-center justify-center gap-1.5 text-center text-[11px] text-edvanta-subtle">
         <Svg d={I.lock} className="h-3.5 w-3.5" /> Descarga inmediata · Sin spam · Cancela cuando quieras
       </p>
     </form>
@@ -179,37 +180,25 @@ export default function RecursoLevotiroxina() {
     }
   };
 
-  const avg = reviews.length ? (reviews.reduce((s, r) => s + r.stars, 0) / reviews.length).toFixed(1) : '5.0';
-  const downloads = reviews.length + 128;
+  // Solo calificaciones reales: sin reseñas no se muestra ninguna.
+  const avg = reviews.length ? (reviews.reduce((s, r) => s + r.stars, 0) / reviews.length).toFixed(1) : null;
 
   return (
-    <div className="min-h-screen bg-sand-50 font-sans text-gray-800">
-      {/* Header */}
-      <header className="sticky top-0 z-30 border-b border-sand-100 bg-white/90 backdrop-blur">
-        <div className="mx-auto flex h-14 max-w-6xl items-center justify-between px-4 sm:px-6">
-          <Link to="/feliz-sin-tiroides" className="flex items-center gap-2">
-            <img src="/img/port-logofelizsintiroides.jpg" alt="Feliz Sin Tiroides" className="h-8 w-8 rounded-full bg-white object-contain" />
-            <span className="font-serif font-semibold text-deepblue-900">Feliz Sin Tiroides<span className="text-teal-500">®</span></span>
-          </Link>
-          <button onClick={() => (unlocked ? download() : scrollToGate())}
-            className="hidden rounded-full bg-teal-600 px-4 py-2 text-xs font-bold text-white hover:bg-teal-700 sm:inline-flex">
-            Descargar gratis
-          </button>
-        </div>
-      </header>
+    <div className="min-h-screen bg-edvanta-bg font-sans text-edvanta-deep">
+      <FstHeader />
 
       <FloatingTabs onDownload={() => (unlocked ? download() : scrollToGate())} />
 
       {/* HERO */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-teal-600 via-teal-700 to-deepblue-900 text-white">
-        <div className="bg-dots absolute inset-0 opacity-20" aria-hidden="true" />
+      <section className="ds-surface-navy relative overflow-hidden text-white">
+        <div className="bg-dots absolute inset-0 opacity-15" aria-hidden="true" />
         <div className="relative mx-auto grid max-w-6xl items-center gap-10 px-4 py-16 sm:px-6 md:grid-cols-2 md:py-20">
           <div>
             <span className="mb-4 inline-flex items-center gap-1.5 rounded-full bg-white/15 px-3 py-1 text-xs font-bold uppercase tracking-widest ring-1 ring-white/20 backdrop-blur">
-              <span className="text-amber-300">★</span> Guía gratuita · PDF
+              Guía gratuita · PDF
             </span>
-            <h1 className="mb-4 font-serif text-4xl font-semibold leading-[1.1] md:text-5xl">
-              Cómo tomar la levotiroxina <span className="text-amber-300">correctamente</span>
+            <h1 className="mb-4 font-display text-4xl font-extrabold leading-[1.1] md:text-5xl">
+              Cómo tomar la levotiroxina <span className="text-edvanta-mint">correctamente</span>
             </h1>
             <p className="mb-6 max-w-md text-base leading-relaxed text-white/85">
               La guía práctica —horarios, alimentos e interacciones— para que tu tratamiento por fin funcione. Escrita por una Química Farmacéutica que también vive sin tiroides.
@@ -222,28 +211,29 @@ export default function RecursoLevotiroxina() {
               ))}
             </ul>
             <div className="flex flex-wrap items-center gap-4">
-              <button onClick={scrollToGate}
-                className="inline-flex items-center gap-2 rounded-full bg-white px-7 py-3.5 text-sm font-bold text-deepblue-900 shadow-xl transition-transform hover:scale-[1.02] active:scale-[0.99]">
+              <button type="button" onClick={scrollToGate} className={btnClass('white', 'lg')}>
                 Quiero mi guía gratis <Svg d={I.download} className="h-4 w-4" />
               </button>
-              <div className="flex items-center gap-2">
-                <Stars value={Math.round(+avg)} size="w-4 h-4" />
-                <span className="text-sm text-white/80">{avg} · {downloads}+ descargas</span>
-              </div>
+              {avg && (
+                <div className="flex items-center gap-2">
+                  <Stars value={Math.round(+avg)} size="w-4 h-4" />
+                  <span className="text-sm text-white/80">{avg} · {reviews.length} {reviews.length === 1 ? 'reseña' : 'reseñas'}</span>
+                </div>
+              )}
             </div>
           </div>
 
           {/* Book mockup */}
           <div className="relative mx-auto">
             <div className="animate-float relative w-56 rotate-2 md:w-64">
-              <div className="absolute -right-3 -top-3 z-10 rotate-6 rounded-lg bg-amber-400 px-3 py-1 text-xs font-black uppercase tracking-wider text-deepblue-900 shadow-lg">Gratis</div>
+              <div className="absolute -right-3 -top-3 z-10 rotate-6 rounded-lg bg-edvanta-teal px-3 py-1 text-xs font-black uppercase tracking-wider text-white shadow-lg">Gratis</div>
               <div className="flex aspect-[3/4] flex-col items-center justify-center rounded-2xl bg-white p-6 text-center shadow-2xl ring-1 ring-black/5">
                 <img src="/img/port-logofelizsintiroides.jpg" alt="" className="mb-4 h-16 w-16 rounded-full object-contain" />
-                <p className="font-serif text-lg font-semibold leading-tight text-deepblue-900">Cómo tomar la levotiroxina correctamente</p>
+                <p className="font-display text-lg font-extrabold leading-tight text-edvanta-deep">Cómo tomar la levotiroxina correctamente</p>
                 <div className="my-3 h-px w-12 bg-teal-300" />
-                <p className="text-xs text-gray-400">Guía PDF · Karla Hernández, Q.F.</p>
+                <p className="text-xs text-edvanta-subtle">Guía PDF · Karla Hernández, Q.F.</p>
                 {!unlocked && (
-                  <div className="absolute inset-0 flex items-center justify-center rounded-2xl bg-deepblue-900/25 backdrop-blur-[1px]">
+                  <div className="absolute inset-0 flex items-center justify-center rounded-2xl bg-[#031D5C]/25 backdrop-blur-[1px]">
                     <span className="flex h-14 w-14 items-center justify-center rounded-full bg-white text-teal-600 shadow-lg"><Svg d={I.lock} className="h-6 w-6" /></span>
                   </div>
                 )}
@@ -251,31 +241,31 @@ export default function RecursoLevotiroxina() {
             </div>
           </div>
         </div>
-        <svg className="relative block w-full text-sand-50" viewBox="0 0 1440 48" preserveAspectRatio="none" aria-hidden="true"><path fill="currentColor" d="M0 48h1440V0c-240 32-480 48-720 48S240 32 0 0z" /></svg>
+        <svg className="relative block w-full text-edvanta-bg" viewBox="0 0 1440 48" preserveAspectRatio="none" aria-hidden="true"><path fill="currentColor" d="M0 48h1440V0c-240 32-480 48-720 48S240 32 0 0z" /></svg>
       </section>
 
       {/* TRUST BAR */}
-      <div className="border-b border-sand-100 bg-white">
-        <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-center gap-x-8 gap-y-2 px-4 py-4 text-xs font-semibold text-gray-500 sm:px-6">
+      <div className="border-b border-edvanta-border bg-white">
+        <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-center gap-x-8 gap-y-2 px-4 py-4 text-xs font-semibold text-edvanta-muted sm:px-6">
           <span className="flex items-center gap-1.5"><Svg d={I.shield} className="h-4 w-4 text-teal-600" /> Química Farmacéutica</span>
           <span className="flex items-center gap-1.5"><Svg d={I.check} className="h-4 w-4 text-teal-600" /> Basado en evidencia</span>
-          <span className="flex items-center gap-1.5"><Svg d={I.download} className="h-4 w-4 text-teal-600" /> {downloads}+ descargas</span>
-          <span className="flex items-center gap-1.5"><Svg d={I.star} fill className="h-4 w-4 text-amber-400" /> {avg} de 5</span>
+          <span className="flex items-center gap-1.5"><Svg d={I.download} className="h-4 w-4 text-teal-600" /> Descarga inmediata</span>
+          {avg && <span className="flex items-center gap-1.5"><Svg d={I.star} fill className="h-4 w-4 text-amber-400" /> {avg} de 5</span>}
         </div>
       </div>
 
       {/* GATE / VISOR */}
-      <section id="gate" className="relative overflow-hidden bg-gradient-to-br from-deepblue-900 to-teal-800 py-16">
+      <section id="gate" className="ds-surface-navy relative scroll-mt-32 overflow-hidden py-16">
         <div className="bg-dots absolute inset-0 opacity-10" aria-hidden="true" />
         <div className="relative mx-auto max-w-4xl px-4 sm:px-6">
           {!unlocked ? (
             <div className="grid items-center gap-8 md:grid-cols-2">
               <div className="text-white">
-                <h2 className="font-serif text-3xl font-semibold leading-tight md:text-4xl">Descarga tu guía gratis ahora</h2>
+                <h2 className="font-display text-3xl font-extrabold leading-tight md:text-4xl">Descarga tu guía gratis ahora</h2>
                 <p className="mt-3 text-white/80">Déjame tu nombre y correo. Recibes la guía al instante y, de regalo, más recursos para vivir mejor con tu tiroides.</p>
                 <ul className="mt-5 space-y-2">
                   {['PDF listo para leer y descargar', 'Consejos que puedes aplicar hoy mismo', 'También te llega a tu correo'].map(t => (
-                    <li key={t} className="flex items-center gap-2 text-sm text-white/90"><Svg d={I.check} className="h-4 w-4 text-amber-300" />{t}</li>
+                    <li key={t} className="flex items-center gap-2 text-sm text-white/90"><Svg d={I.check} className="h-4 w-4 text-edvanta-mint" />{t}</li>
                   ))}
                 </ul>
               </div>
@@ -283,8 +273,8 @@ export default function RecursoLevotiroxina() {
                 <div className="mb-4 flex items-center gap-3">
                   <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-teal-50 text-teal-600"><Svg d={I.download} className="h-5 w-5" /></div>
                   <div>
-                    <p className="font-serif font-semibold leading-tight text-deepblue-900">Tu guía en PDF</p>
-                    <p className="text-xs text-gray-400">Descarga 100% gratis</p>
+                    <p className="font-display font-extrabold leading-tight text-edvanta-deep">Tu guía en PDF</p>
+                    <p className="text-xs text-edvanta-subtle">Descarga 100% gratis</p>
                   </div>
                 </div>
                 <OptInForm name={name} setName={setName} email={email} setEmail={setEmail} state={state} error={error} onSubmit={handleGate} />
@@ -299,12 +289,12 @@ export default function RecursoLevotiroxina() {
                 </div>
               )}
               <div className="mb-4 flex flex-col items-center justify-between gap-3 sm:flex-row">
-                <h2 className="font-serif text-2xl font-semibold text-deepblue-900">Tu guía en PDF</h2>
-                <button onClick={download} className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-teal-500 to-teal-700 px-6 py-2.5 text-sm font-bold text-white shadow-lg shadow-teal-600/25 transition-transform hover:scale-[1.02]">
+                <h2 className="font-display text-2xl font-extrabold text-edvanta-deep">Tu guía en PDF</h2>
+                <button type="button" onClick={download} className={btnClass('teal')}>
                   <Svg d={I.download} className="h-4 w-4" /> Descargar PDF
                 </button>
               </div>
-              <div className="overflow-hidden rounded-2xl border border-sand-200 bg-sand-50">
+              <div className="overflow-hidden rounded-2xl border border-edvanta-border bg-edvanta-bg">
                 <iframe src={`${PDF_URL}#view=FitH`} title="Guía cómo tomar la levotiroxina" className="h-[75vh] w-full" />
               </div>
             </div>
@@ -314,12 +304,12 @@ export default function RecursoLevotiroxina() {
 
       {/* AUTORA */}
       <section className="mx-auto max-w-4xl px-4 py-16 sm:px-6">
-        <div className="flex flex-col items-center gap-8 rounded-3xl border border-sand-100 bg-white p-8 shadow-sm sm:flex-row sm:p-10">
+        <div className="flex flex-col items-center gap-8 rounded-3xl border border-edvanta-border bg-white p-8 shadow-sm sm:flex-row sm:p-10">
           <img src="/img/karla-real.jpg" alt="Karla Hernández, Química Farmacéutica" className="h-32 w-32 shrink-0 rounded-full object-cover shadow-md ring-4 ring-teal-50" />
           <div className="text-center sm:text-left">
             <p className="text-xs font-bold uppercase tracking-widest text-teal-600">Quién te acompaña</p>
-            <h2 className="mt-1 font-serif text-2xl font-semibold text-deepblue-900">Karla Hernández, Q.F.</h2>
-            <p className="mt-3 text-sm leading-relaxed text-gray-500">
+            <h2 className="mt-1 font-display text-2xl font-extrabold text-edvanta-deep">Karla Hernández, Q.F.</h2>
+            <p className="mt-3 text-sm leading-relaxed text-edvanta-muted">
               Química Farmacéutica y paciente sin tiroides. Sé lo confuso que es empezar con la levotiroxina: por eso reuní en esta guía, en lenguaje claro, lo que de verdad importa para que tu tratamiento funcione y te sientas mejor cada día.
             </p>
           </div>
@@ -327,20 +317,19 @@ export default function RecursoLevotiroxina() {
       </section>
 
       {/* UPSELL COLECCIÓN (después de conocer a la autora = punto de máxima intención) */}
-      <section className="bg-gradient-to-br from-deepblue-900 to-teal-800 py-16 text-white">
+      <section className="ds-surface-navy py-16 text-white">
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
           <div className="grid items-center gap-10 md:grid-cols-2">
             <div>
-              <p className="mb-2 text-xs font-bold uppercase tracking-widest text-amber-300">Da el siguiente paso</p>
-              <h2 className="font-serif text-3xl font-semibold leading-tight md:text-4xl">Colección completa "Sana tu Tiroides"</h2>
+              <p className="mb-2 text-xs font-bold uppercase tracking-widest text-edvanta-mint">Da el siguiente paso</p>
+              <h2 className="font-display text-3xl font-extrabold leading-tight md:text-4xl">Colección completa "Sana tu Tiroides"</h2>
               <p className="mt-3 text-white/80">Todo lo que necesitas para tomar el control, en un solo lugar:</p>
               <ul className="mt-5 space-y-2.5">
                 {['Planes de alimentación antiinflamatoria', 'Manejo de síntomas del día a día', 'Cómo interpretar tus laboratorios (TSH, T4, T3)', 'Guías de bienestar y organización'].map(t => (
-                  <li key={t} className="flex items-start gap-2.5 text-sm text-white/90"><span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-amber-400 text-deepblue-900"><Svg d={I.check} className="h-3 w-3" /></span>{t}</li>
+                  <li key={t} className="flex items-start gap-2.5 text-sm text-white/90"><span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-edvanta-mint text-edvanta-tealdark"><Svg d={I.check} className="h-3 w-3" /></span>{t}</li>
                 ))}
               </ul>
-              <a href={CHECKOUT_COLECCION} target="_blank" rel="noopener noreferrer"
-                className="mt-7 inline-flex items-center gap-2 rounded-full bg-amber-400 px-7 py-3.5 text-sm font-bold text-deepblue-900 shadow-xl transition-transform hover:scale-[1.02] active:scale-[0.99]">
+              <a href={CHECKOUT_COLECCION} target="_blank" rel="noopener noreferrer sponsored" className={btnClass('white', 'lg', 'mt-7')}>
                 Ver la colección completa <Svg d={I.cart} className="h-4 w-4" />
               </a>
               <p className="mt-3 text-xs text-white/50">Pago seguro vía Hotmart · Acceso inmediato</p>
@@ -358,10 +347,14 @@ export default function RecursoLevotiroxina() {
         <div className="mx-auto max-w-3xl px-4 sm:px-6">
           <div className="mb-8 text-center">
             <p className="mb-2 text-xs font-bold uppercase tracking-widest text-teal-600">Reseñas</p>
-            <h2 className="font-serif text-3xl font-semibold text-deepblue-900 md:text-4xl">Lo que dicen quienes ya la descargaron</h2>
-            <div className="mt-3 inline-flex items-center gap-2 rounded-full bg-amber-50 px-4 py-1.5">
-              <Stars value={Math.round(+avg)} size="w-5 h-5" /><span className="text-sm font-semibold text-amber-700">{avg} de 5 · {reviews.length} reseñas</span>
-            </div>
+            <h2 className="font-display text-3xl font-extrabold text-edvanta-deep md:text-4xl">
+              {avg ? 'Lo que dicen quienes ya la descargaron' : '¿Ya la leíste? Cuéntanos qué te pareció'}
+            </h2>
+            {avg && (
+              <div className="mt-3 inline-flex items-center gap-2 rounded-full bg-amber-50 px-4 py-1.5">
+                <Stars value={Math.round(+avg)} size="w-5 h-5" /><span className="text-sm font-semibold text-amber-700">{avg} de 5 · {reviews.length} {reviews.length === 1 ? 'reseña' : 'reseñas'}</span>
+              </div>
+            )}
           </div>
 
           {rDone ? (
@@ -369,46 +362,46 @@ export default function RecursoLevotiroxina() {
               <p className="font-semibold text-teal-800">¡Gracias por tu reseña! 💜</p>
             </div>
           ) : (
-            <form onSubmit={submitReview} className="mb-8 space-y-3 rounded-3xl border border-sand-100 bg-sand-50 p-5 shadow-sm md:p-6">
-              <div className="flex items-center gap-3"><span className="text-sm text-gray-500">Tu calificación:</span><Stars value={rStars} onChange={setRStars} /></div>
+            <form onSubmit={submitReview} className="mb-8 space-y-3 rounded-3xl border border-edvanta-border bg-edvanta-bg p-5 shadow-sm md:p-6">
+              <div className="flex items-center gap-3"><span className="text-sm text-edvanta-muted">Tu calificación:</span><Stars value={rStars} onChange={setRStars} /></div>
               <input value={rName} onChange={e => setRName(e.target.value)} placeholder="Tu nombre"
-                className="w-full rounded-xl border border-sand-200 bg-white px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-teal-400" />
+                className="w-full rounded-xl border border-edvanta-border bg-white px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-teal-400" />
               <textarea value={rText} onChange={e => setRText(e.target.value)} placeholder="¿Qué te pareció la guía? ¿Te ayudó?" rows={3}
-                className="w-full rounded-xl border border-sand-200 bg-white px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-teal-400" />
+                className="w-full rounded-xl border border-edvanta-border bg-white px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-teal-400" />
               {rError && <p className="text-xs text-red-600">{rError}</p>}
-              <button type="submit" disabled={rState === 'sending'}
-                className="inline-flex items-center gap-2 rounded-full bg-teal-600 px-6 py-2.5 text-sm font-bold text-white hover:bg-teal-700 disabled:opacity-70">
+              <button type="submit" disabled={rState === 'sending'} className={btnClass('primary')}>
                 {rState === 'sending' ? 'Publicando…' : 'Publicar reseña'}
               </button>
             </form>
           )}
 
           <div className="space-y-3">
-            {reviews.length === 0 && <p className="text-center text-sm text-gray-400">Sé la primera persona en dejar una reseña.</p>}
+            {reviews.length === 0 && <p className="text-center text-sm text-edvanta-subtle">Sé la primera persona en dejar una reseña.</p>}
             {reviews.map(r => (
-              <div key={r.id} className="rounded-2xl border border-sand-100 bg-white p-5 shadow-sm">
+              <div key={r.id} className="rounded-2xl border border-edvanta-border bg-white p-5 shadow-sm">
                 <div className="mb-1.5 flex items-center justify-between">
                   <div className="flex items-center gap-2.5">
                     <span className="flex h-9 w-9 items-center justify-center rounded-full bg-teal-100 text-sm font-bold text-teal-700">{r.name.charAt(0).toUpperCase()}</span>
-                    <p className="text-sm font-semibold text-deepblue-900">{r.name}</p>
+                    <p className="text-sm font-semibold text-edvanta-deep">{r.name}</p>
                   </div>
                   <Stars value={r.stars} size="w-4 h-4" />
                 </div>
-                <p className="pl-11 text-sm text-gray-600">{r.text}</p>
+                <p className="pl-11 text-sm text-edvanta-muted">{r.text}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
+      <FstFooter />
+
       {/* CTA mobile fijo */}
-      <div className="fixed inset-x-0 bottom-0 z-40 border-t border-sand-200 bg-white/95 p-3 backdrop-blur sm:hidden">
-        <button onClick={() => (unlocked ? download() : scrollToGate())}
-          className="flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-teal-500 to-teal-700 px-6 py-3 text-sm font-bold text-white shadow-lg">
+      <div className="fixed inset-x-0 bottom-0 z-40 border-t border-edvanta-border bg-white/95 p-3 backdrop-blur sm:hidden">
+        <button type="button" onClick={() => (unlocked ? download() : scrollToGate())} className={btnClass('teal', 'md', 'ed-btn--block')}>
           <Svg d={I.download} className="h-4 w-4" /> {unlocked ? 'Descargar la guía' : 'Descargar la guía gratis'}
         </button>
       </div>
-      <div className="h-16 sm:hidden" aria-hidden="true" />
+      <div className="h-20 sm:hidden" aria-hidden="true" />
     </div>
   );
 }

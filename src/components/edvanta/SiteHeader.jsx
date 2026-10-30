@@ -11,8 +11,11 @@
  *    Pacientes     → Edvanta Contigo · Salud tiroidea · Artículos · Guías
  *    Instituciones → Qué ofrecemos · Paquetes · Talento · Propuesta
  *
- *  A la derecha de la franja quedan Sobre Edvanta, Contacto y el Aula. Feliz Sin Tiroides, Vida 360 y AtenFarmaClinic
- *  tienen sus propios encabezados y no usan este.
+ *  A la derecha de la franja quedan Sobre Edvanta, Contacto y el Aula.
+ *  Feliz Sin Tiroides y AtenFarmaClinic también lo usan, con la barra de
+ *  su programa debajo (components/edvanta/programa.jsx). Solo las
+ *  aplicaciones (Vida 360, Mi espacio, los workspace y el aula) llevan
+ *  el suyo.
  * ============================================================
  */
 

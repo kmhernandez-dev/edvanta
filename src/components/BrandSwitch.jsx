@@ -21,7 +21,7 @@ const BRANDS = [
     icon: 'heart',
     name: 'Feliz Sin Tiroides®',
     desc: 'Salud tiroidea y metabólica para pacientes',
-    accent: 'from-teal-600 to-blush-400',
+    accent: 'from-teal-600 to-edvanta-violet',
     ring: 'ring-teal-200',
   },
   {
@@ -30,16 +30,16 @@ const BRANDS = [
     icon: 'pill',
     name: 'AtenFarmaClinic',
     desc: 'Atención farmacéutica clínica para químicos farmacéuticos',
-    accent: 'from-deepblue-700 to-teal-700',
-    ring: 'ring-deepblue-600/20',
+    accent: 'from-edvanta-blue to-teal-700',
+    ring: 'ring-edvanta-blue/20',
   },
 ];
 
 export default function BrandSwitch({ current }) {
   return (
-    <section className="py-12 bg-white border-y border-gray-100">
+    <section className="py-12 bg-white border-y border-edvanta-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <p className="text-center text-xs font-bold text-gray-400 uppercase tracking-widest mb-6">
+        <p className="text-center text-xs font-bold text-edvanta-subtle uppercase tracking-widest mb-6">
           El ecosistema Edvanta
         </p>
         <div className="grid sm:grid-cols-3 gap-4">
@@ -49,13 +49,13 @@ export default function BrandSwitch({ current }) {
               <div className={`relative h-full p-5 rounded-2xl border transition-all duration-300 ${
                 isCurrent
                   ? `bg-gradient-to-br ${b.accent} text-white border-transparent shadow-md`
-                  : 'bg-white border-gray-100 hover:border-gray-200 hover:-translate-y-0.5 hover:shadow-md'
+                  : 'bg-white border-edvanta-border hover:border-edvanta-border hover:-translate-y-0.5 hover:shadow-md'
               }`}>
                 <div className={`w-11 h-11 rounded-xl flex items-center justify-center mb-3 ${isCurrent ? 'bg-white/15' : 'bg-teal-50'}`}>
                   <Icon name={b.icon} className={`w-6 h-6 ${isCurrent ? 'text-white' : 'text-teal-600'}`} />
                 </div>
                 <p className={`text-sm font-bold mb-1 ${isCurrent ? 'text-white' : 'text-navy-950'}`}>{b.name}</p>
-                <p className={`text-xs leading-snug ${isCurrent ? 'text-white/80' : 'text-gray-500'}`}>{b.desc}</p>
+                <p className={`text-xs leading-snug ${isCurrent ? 'text-white/80' : 'text-edvanta-muted'}`}>{b.desc}</p>
                 {isCurrent ? (
                   <span className="inline-block mt-3 text-[11px] font-semibold bg-white/20 px-2 py-0.5 rounded-full">Estás aquí</span>
                 ) : (

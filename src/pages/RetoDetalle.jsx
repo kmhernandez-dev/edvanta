@@ -16,6 +16,7 @@ import NutriFitCTA from '../components/retos/NutriFitCTA';
 import { getStoredGoal } from '../components/retos/GoalSelector';
 import Icon from '../components/Icon';
 import { useAuth } from '../context/AuthContext';
+import { apiUrl } from '../config/api';
 import { updatePageSeo } from '../utils/seo';
 import { trackEvent } from '../utils/analytics';
 import { FST_COMMUNITY_URL, waLink } from '../config/links';
@@ -41,7 +42,12 @@ export default function RetoDetalle() {
   const load = useCallback(() => {
     let cancelled = false;
     setLoading(true);
-    api(`/api/academia/retos/${slug}`)
+    // Sin sesión el reto se ve igual (la API lo entrega sin datos de la
+    // persona); la sesión solo hace falta para unirse. Antes, sin sesión,
+    // la página devolvía a la lista de retos.
+    const ruta = `/api/academia/retos/${slug}`;
+    api(ruta)
+      .catch(() => fetch(apiUrl(ruta)).then(r => (r.ok ? r.json() : Promise.reject(new Error('No encontrado')))))
       .then(data => {
         if (cancelled) return;
         setChallenge(data.challenge || null);
@@ -102,7 +108,7 @@ export default function RetoDetalle() {
   };
 
   if (loading) {
-    return <div className="min-h-screen bg-sand-50"><FstHeader /><p className="pt-36 text-center text-sm text-gray-500">Cargando reto...</p><FstFooter /></div>;
+    return <div className="min-h-screen bg-edvanta-bg"><FstHeader /><p className="py-20 text-center text-sm text-edvanta-muted">Cargando reto...</p><FstFooter /></div>;
   }
   if (!challenge) return <Navigate to="/academia/retos" replace />;
 
@@ -110,52 +116,52 @@ export default function RetoDetalle() {
   const continueDay = firstIncomplete || days[0];
 
   return (
-    <div className="min-h-screen bg-sand-50 font-sans">
+    <div className="min-h-screen bg-edvanta-bg font-sans">
       <FstHeader />
 
       {/* Hero del reto */}
-      <section className="border-b border-gray-200 bg-white pb-10 pt-28 md:pb-14 md:pt-32">
+      <section className="border-b border-edvanta-border bg-white pb-10 pt-10 md:pb-14 md:pt-14">
         <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-          <nav className="mb-6 flex items-center gap-2 text-xs text-gray-500" aria-label="Migas de pan">
-            <Link to="/academia" className="hover:text-[#0f766e]">Academia</Link>
+          <nav className="mb-6 flex items-center gap-2 text-xs text-edvanta-muted" aria-label="Migas de pan">
+            <Link to="/academia" className="hover:text-edvanta-tealdark">Academia</Link>
             <span>/</span>
-            <Link to="/academia/retos" className="hover:text-[#0f766e]">Retos FST</Link>
+            <Link to="/academia/retos" className="hover:text-edvanta-tealdark">Retos FST</Link>
             <span>/</span>
-            <span className="truncate text-gray-700">{challenge.title}</span>
+            <span className="truncate text-edvanta-deep">{challenge.title}</span>
           </nav>
 
           <div className="grid items-center gap-10 md:grid-cols-2">
             <div>
-              <span className="inline-flex items-center gap-1.5 rounded-full bg-[#f2ebf7] px-3 py-1 text-xs font-semibold text-[#563a78]">
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-edvanta-lilac px-3 py-1 text-xs font-semibold text-edvanta-blue">
                 <Icon name="sparkles" className="h-3.5 w-3.5" /> Reto de 7 días
               </span>
-              <h1 className="mt-4 font-serif text-3xl font-semibold leading-tight text-deepblue-900 md:text-4xl">{challenge.title}</h1>
-              {challenge.tagline && <p className="mt-2 text-base italic text-[#76539a]">{challenge.tagline}</p>}
-              {challenge.description && <p className="mt-4 leading-relaxed text-gray-600">{challenge.description}</p>}
+              <h1 className="mt-4 font-display text-3xl font-extrabold leading-tight text-edvanta-deep md:text-4xl">{challenge.title}</h1>
+              {challenge.tagline && <p className="mt-2 text-base italic text-edvanta-blue">{challenge.tagline}</p>}
+              {challenge.description && <p className="mt-4 leading-relaxed text-edvanta-muted">{challenge.description}</p>}
 
-              <dl className="mt-6 grid grid-cols-2 gap-x-6 gap-y-3 text-sm text-gray-600 sm:grid-cols-3">
+              <dl className="mt-6 grid grid-cols-2 gap-x-6 gap-y-3 text-sm text-edvanta-muted sm:grid-cols-3">
                 <div>
-                  <dt className="text-xs font-bold uppercase tracking-wider text-gray-400">Objetivo</dt>
+                  <dt className="text-xs font-bold uppercase tracking-wider text-edvanta-subtle">Objetivo</dt>
                   <dd className="mt-0.5 font-medium">{goalLabel(challenge.primary_goal)}</dd>
                 </div>
                 <div>
-                  <dt className="text-xs font-bold uppercase tracking-wider text-gray-400">Nivel</dt>
+                  <dt className="text-xs font-bold uppercase tracking-wider text-edvanta-subtle">Nivel</dt>
                   <dd className="mt-0.5 font-medium">{levelLabel(challenge.level)}</dd>
                 </div>
                 <div>
-                  <dt className="text-xs font-bold uppercase tracking-wider text-gray-400">Duración media</dt>
+                  <dt className="text-xs font-bold uppercase tracking-wider text-edvanta-subtle">Duración media</dt>
                   <dd className="mt-0.5 font-medium">{challenge.average_duration || 'A tu ritmo'}</dd>
                 </div>
                 <div>
-                  <dt className="text-xs font-bold uppercase tracking-wider text-gray-400">Equipamiento</dt>
+                  <dt className="text-xs font-bold uppercase tracking-wider text-edvanta-subtle">Equipamiento</dt>
                   <dd className="mt-0.5 font-medium">{challenge.equipment || 'Sin equipo'}</dd>
                 </div>
                 <div>
-                  <dt className="text-xs font-bold uppercase tracking-wider text-gray-400">Instructora</dt>
+                  <dt className="text-xs font-bold uppercase tracking-wider text-edvanta-subtle">Instructora</dt>
                   <dd className="mt-0.5 font-medium">{challenge.instructor || 'Creadoras externas'}</dd>
                 </div>
                 <div>
-                  <dt className="text-xs font-bold uppercase tracking-wider text-gray-400">Sesiones</dt>
+                  <dt className="text-xs font-bold uppercase tracking-wider text-edvanta-subtle">Sesiones</dt>
                   <dd className="mt-0.5 font-medium">{days.length} sesiones</dd>
                 </div>
               </dl>
@@ -181,12 +187,12 @@ export default function RetoDetalle() {
                   <button
                     type="button"
                     onClick={shareProgress}
-                    className="inline-flex min-h-12 items-center justify-center gap-2 rounded-md border border-[#d7c8e5] bg-white px-6 text-sm font-semibold text-[#563a78] hover:bg-[#faf8fc]"
+                    className="inline-flex min-h-12 items-center justify-center gap-2 rounded-md border border-edvanta-border bg-white px-6 text-sm font-semibold text-edvanta-blue hover:bg-edvanta-bg"
                   >
                     <Icon name="message" className="h-4 w-4" /> Compartir mi avance
                   </button>
                 )}
-                <a href={FST_COMMUNITY_URL} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-md border border-sand-200 bg-white px-6 text-sm font-semibold text-gray-600 hover:bg-sand-50">
+                <a href={FST_COMMUNITY_URL} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-md border border-edvanta-border bg-white px-6 text-sm font-semibold text-edvanta-muted hover:bg-edvanta-bg">
                   <Icon name="users" className="h-4 w-4" /> Ir a la comunidad FST
                 </a>
               </div>
@@ -194,13 +200,13 @@ export default function RetoDetalle() {
             </div>
 
             <div className="relative">
-              <div className="flex aspect-[4/3] w-full items-center justify-center overflow-hidden rounded-lg bg-gradient-to-br from-[#e8f4f2] to-[#fdf2f6] shadow-lg">
+              <div className="flex aspect-[4/3] w-full items-center justify-center overflow-hidden rounded-lg bg-gradient-to-br from-edvanta-mint to-edvanta-lilac shadow-lg">
                 {challenge.cover_image ? (
                   <img src={challenge.cover_image} alt={challenge.title} loading="eager" decoding="async" className="h-full w-full object-cover" />
                 ) : (
                   <div className="text-center">
-                    <Icon name="sparkles" className="mx-auto h-16 w-16 text-[#563a78]" />
-                    <p className="mt-3 font-serif text-2xl font-semibold text-deepblue-900">{challenge.title}</p>
+                    <Icon name="sparkles" className="mx-auto h-16 w-16 text-edvanta-blue" />
+                    <p className="mt-3 font-display text-2xl font-extrabold text-edvanta-deep">{challenge.title}</p>
                   </div>
                 )}
               </div>
@@ -220,14 +226,14 @@ export default function RetoDetalle() {
                 <ChallengeProgress days={days} checkins={checkins} />
               )}
               {streak > 0 && (
-                <p className="mt-3 text-center text-xs text-gray-400">
+                <p className="mt-3 text-center text-xs text-edvanta-subtle">
                   {streak} {streak === 1 ? 'día' : 'días'} de racha. Cada día cuenta, sin presión.
                 </p>
               )}
             </div>
           )}
 
-          <h2 className="mb-5 font-serif text-xl font-semibold text-deepblue-900">Tu semana</h2>
+          <h2 className="mb-5 font-display text-xl font-extrabold text-edvanta-deep">Tu semana</h2>
           <div className="space-y-3">
             {days.map(day => {
               const done = completedIds.has(String(day.id));
@@ -236,26 +242,26 @@ export default function RetoDetalle() {
                 <Link
                   key={day.id}
                   to={`/academia/retos/${challenge.slug}/dia/${day.day_number}`}
-                  className="flex items-center gap-4 rounded-lg border border-sand-100 bg-white p-4 shadow-sm transition-all hover:border-teal-200 hover:shadow-md"
+                  className="flex items-center gap-4 rounded-lg border border-edvanta-border bg-white p-4 shadow-sm transition-all hover:border-teal-200 hover:shadow-md"
                 >
                   {cover ? (
                     <img src={cover} alt={`Día ${day.day_number}`} loading="lazy" decoding="async" className="h-14 w-20 shrink-0 rounded-md object-cover" />
                   ) : (
-                    <span className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-sm font-bold ${done ? 'bg-teal-600 text-white' : 'border-2 border-sand-200 bg-white text-gray-500'}`}>
+                    <span className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-sm font-bold ${done ? 'bg-teal-600 text-white' : 'border-2 border-edvanta-border bg-white text-edvanta-muted'}`}>
                       {done ? <Icon name="check" className="h-5 w-5" /> : day.day_number}
                     </span>
                   )}
                   <div className="min-w-0 flex-1">
-                    <p className="text-xs font-bold uppercase tracking-wider text-gray-400">Día {day.day_number} de 7</p>
-                    <p className="truncate text-sm font-semibold text-deepblue-900">{day.title}</p>
-                    <p className="mt-0.5 flex flex-wrap gap-x-3 gap-y-0.5 text-xs text-gray-400">
+                    <p className="text-xs font-bold uppercase tracking-wider text-edvanta-subtle">Día {day.day_number} de 7</p>
+                    <p className="truncate text-sm font-semibold text-edvanta-deep">{day.title}</p>
+                    <p className="mt-0.5 flex flex-wrap gap-x-3 gap-y-0.5 text-xs text-edvanta-subtle">
                       {day.duration_minutes && <span>{day.duration_minutes} min</span>}
                       {day.body_area && <span>· {day.body_area}</span>}
                       {day.equipment && <span>· {day.equipment}</span>}
                       {day.instructor && <span>· {day.instructor}</span>}
                     </p>
                   </div>
-                  <Icon name="arrowRight" className="h-4 w-4 shrink-0 text-gray-300" />
+                  <Icon name="arrowRight" className="h-4 w-4 shrink-0 text-edvanta-strong" />
                 </Link>
               );
             })}

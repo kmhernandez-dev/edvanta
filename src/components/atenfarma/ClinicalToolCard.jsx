@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 const STATUS_MAP = {
   available: { label: 'Disponible', className: 'bg-teal-50 text-teal-700 border-teal-200' },
   demo: { label: 'Demostración', className: 'bg-amber-50 text-amber-700 border-amber-200' },
-  upcoming: { label: 'Próximamente', className: 'bg-gray-50 text-gray-500 border-gray-200' },
+  upcoming: { label: 'Próximamente', className: 'bg-edvanta-bg text-edvanta-muted border-edvanta-border' },
 };
 
 const ICON_PATHS = {
@@ -24,26 +24,26 @@ export default function ClinicalToolCard({ tool }) {
   const d = ICON_PATHS[tool.icon] || ICON_PATHS.clipboard;
 
   return (
-    <div className="bg-white rounded-2xl border border-gray-100 p-6 hover:border-teal-200 hover:shadow-md transition-all flex flex-col">
+    <div className="bg-white rounded-2xl border border-edvanta-border p-6 hover:border-teal-200 hover:shadow-md transition-all flex flex-col">
       <div className="w-11 h-11 rounded-xl bg-teal-50 flex items-center justify-center mb-4 shrink-0">
-        <svg className="w-5 h-5 text-deepblue-700" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <svg className="w-5 h-5 text-edvanta-blue" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
           <path d={d} />
         </svg>
       </div>
-      <h3 className="text-sm font-bold text-deepblue-900 mb-1.5">{tool.name}</h3>
-      <p className="text-xs text-gray-500 leading-relaxed mb-3 flex-1">{tool.activity}</p>
-      <div className="text-[11px] text-gray-400 mb-3 space-y-0.5">
-        <p><span className="font-medium text-gray-500">Resultado:</span> {tool.result}</p>
-        <p><span className="font-medium text-gray-500">Perfil:</span> {tool.audience}</p>
+      <h3 className="text-sm font-bold text-edvanta-deep mb-1.5">{tool.name}</h3>
+      <p className="text-xs text-edvanta-muted leading-relaxed mb-3 flex-1">{tool.activity}</p>
+      <div className="text-[11px] text-edvanta-subtle mb-3 space-y-0.5">
+        <p><span className="font-medium text-edvanta-muted">Resultado:</span> {tool.result}</p>
+        <p><span className="font-medium text-edvanta-muted">Perfil:</span> {tool.audience}</p>
       </div>
-      <div className="flex items-center justify-between mt-auto pt-3 border-t border-gray-50">
+      <div className="flex items-center justify-between mt-auto pt-3 border-t border-edvanta-border">
         <span className={`text-[10px] font-semibold px-2 py-0.5 rounded-full border ${status.className}`}>
           {status.label}
         </span>
         {tool.status !== 'upcoming' && (
           <Link
             to={tool.route}
-            className="text-xs font-semibold text-deepblue-700 hover:text-teal-600 transition-colors flex items-center gap-1"
+            className="text-xs font-semibold text-edvanta-blue hover:text-teal-600 transition-colors flex items-center gap-1"
           >
             Acceder
             <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>

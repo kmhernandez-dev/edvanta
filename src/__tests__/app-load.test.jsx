@@ -41,7 +41,9 @@ describe('App carga sin errores', () => {
       </MemoryRouter>
     );
     await waitFor(() => {
-      expect(screen.queryByText(/Únete a la comunidad de pacientes tiroideos/i)).toBeTruthy();
+      // El título resalta «pacientes tiroideos» en su propio elemento: se
+      // busca por el encabezado completo, no por un solo nodo de texto.
+      expect(screen.queryByRole('heading', { level: 1, name: /Únete a la comunidad de pacientes tiroideos/i })).toBeTruthy();
     }, { timeout: 8000 });
     const reactErrors = capturedErrors.filter(e => e.includes('at ') || e.includes('Error'));
     expect(reactErrors.length).toBe(0);

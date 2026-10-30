@@ -71,19 +71,19 @@ export default function NutriFstPublic() {
   };
 
   return (
-    <div className="min-h-screen bg-sand-50 font-sans">
+    <div className="min-h-screen bg-edvanta-bg font-sans">
       <FstHeader />
-      <main className="pb-16 pt-24">
+      <main className="pb-16 pt-8">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
           {/* Hero */}
           <section className="text-center">
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-[#f2ebf7] px-3 py-1 text-xs font-semibold text-[#563a78]">
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-edvanta-lilac px-3 py-1 text-xs font-semibold text-edvanta-blue">
               <Icon name="sparkles" className="h-3.5 w-3.5" /> NutriFST IA · Feliz Sin Tiroides
             </span>
-            <h1 className="mt-4 font-serif text-3xl font-semibold leading-tight text-deepblue-900 md:text-4xl">
+            <h1 className="mt-4 font-display text-3xl font-extrabold leading-tight text-edvanta-deep md:text-4xl">
               Pregúntale a NutriFST
             </h1>
-            <p className="mx-auto mt-3 max-w-2xl text-sm leading-6 text-gray-600">
+            <p className="mx-auto mt-3 max-w-2xl text-sm leading-6 text-edvanta-muted">
               Alimentos, interacciones con levotiroxina, menús, suplementos y más.
               Respuestas educativas con evidencia verificable. Sin necesidad de cuenta.
             </p>
@@ -97,15 +97,15 @@ export default function NutriFstPublic() {
           </div>
 
           {/* Chat */}
-          <section className="mt-6 overflow-hidden rounded-2xl border border-[#eae2f8] bg-white shadow-sm" aria-label="Chat con NutriFST">
-            <div className="border-b border-[#f0eaf5] bg-[#faf8fd] px-4 py-3">
+          <section className="mt-6 overflow-hidden rounded-2xl border border-edvanta-border bg-white shadow-sm" aria-label="Chat con NutriFST">
+            <div className="border-b border-edvanta-border bg-edvanta-bg px-4 py-3">
               <div className="flex items-center gap-2">
-                <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#EAE2F8] text-[#9274C9]">
+                <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-edvanta-lilac text-[#5E51A8]">
                   <Icon name="sparkles" className="h-4 w-4" />
                 </span>
                 <div>
-                  <p className="text-sm font-bold text-[#0A2540]">NutriFST IA</p>
-                  <p className="text-[10px] text-slate-500">Asistente nutricional · respuestas deterministas</p>
+                  <p className="text-sm font-bold text-edvanta-deep">NutriFST IA</p>
+                  <p className="text-[10px] text-edvanta-muted">Asistente nutricional · respuestas deterministas</p>
                 </div>
               </div>
             </div>
@@ -115,11 +115,11 @@ export default function NutriFstPublic() {
                 <div key={message.id} className={message.role === 'user' ? 'flex justify-end' : 'flex justify-start'}>
                   <div className={`max-w-[88%] rounded-2xl px-3.5 py-2.5 text-sm leading-6 ${
                     message.role === 'user'
-                      ? 'rounded-br-md bg-[#0A2540] text-white'
-                      : 'rounded-bl-md border border-[#f0eaf5] bg-[#faf8fd] text-slate-700'
+                      ? 'rounded-br-md bg-[#031D5C] text-white'
+                      : 'rounded-bl-md border border-edvanta-border bg-edvanta-bg text-edvanta-deep'
                   }`}>
                     {message.role === 'assistant' && (
-                      <p className="text-[10px] font-bold uppercase tracking-widest text-[#9274C9]">NutriFST</p>
+                      <p className="text-[10px] font-bold uppercase tracking-widest text-[#5E51A8]">NutriFST</p>
                     )}
                     <p className="mt-0.5 whitespace-pre-line">{message.content}</p>
                     {message.role === 'assistant' && (
@@ -133,21 +133,21 @@ export default function NutriFstPublic() {
               ))}
               {typing && (
                 <div className="flex justify-start">
-                  <div className="rounded-2xl rounded-bl-md border border-[#f0eaf5] bg-[#faf8fd] px-4 py-3 text-xs text-slate-400">
+                  <div className="rounded-2xl rounded-bl-md border border-edvanta-border bg-edvanta-bg px-4 py-3 text-xs text-edvanta-subtle">
                     Escribiendo…
                   </div>
                 </div>
               )}
             </div>
 
-            <div className="border-t border-[#f0eaf5] p-3">
+            <div className="border-t border-edvanta-border p-3">
               <div className="mb-3 flex gap-2 overflow-x-auto pb-1" aria-label="Preguntas sugeridas">
                 {suggestionChips.map(chip => (
                   <button
                     key={chip}
                     type="button"
                     onClick={() => send(chip)}
-                    className="shrink-0 rounded-full border border-[#eae2f8] bg-white px-3 py-1.5 text-xs font-semibold text-[#9274C9] hover:bg-[#f7f3fb]"
+                    className="shrink-0 rounded-full border border-edvanta-border bg-white px-3 py-1.5 text-xs font-semibold text-[#5E51A8] hover:bg-edvanta-bg"
                   >
                     {chip}
                   </button>
@@ -162,13 +162,13 @@ export default function NutriFstPublic() {
                   value={input}
                   onChange={event => setInput(event.target.value)}
                   placeholder="Escribe tu pregunta sobre alimentación o levotiroxina…"
-                  className="min-h-11 flex-1 rounded-xl border border-[#f0eaf5] bg-white px-4 text-sm text-[#0A2540] focus:outline-none focus:ring-2 focus:ring-[#2CB1A1]/30"
+                  className="min-h-11 flex-1 rounded-xl border border-edvanta-border bg-white px-4 text-sm text-edvanta-deep focus:outline-none focus:ring-2 focus:ring-edvanta-teal/30"
                   aria-label="Tu pregunta"
                 />
                 <button
                   type="submit"
                   disabled={typing || !input.trim()}
-                  className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#0A2540] text-white hover:bg-[#123b5f] disabled:opacity-50"
+                  className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#031D5C] text-white hover:bg-[#031D5C] disabled:opacity-50"
                   aria-label="Enviar pregunta"
                 >
                   <Icon name="arrowRight" className="h-4 w-4" />
@@ -178,11 +178,11 @@ export default function NutriFstPublic() {
           </section>
 
           {/* CTA cuenta */}
-          <section className="mt-8 rounded-2xl border border-[#d3efe9] bg-gradient-to-br from-[#e8f4f2] to-[#fdf2f6] p-6 text-center sm:p-8">
-            <h2 className="font-serif text-2xl font-semibold text-deepblue-900">
+          <section className="mt-8 rounded-2xl border border-edvanta-mint bg-gradient-to-br from-edvanta-mint to-edvanta-lilac p-6 text-center sm:p-8">
+            <h2 className="font-display text-2xl font-extrabold text-edvanta-deep">
               Tu espacio completo te espera
             </h2>
-            <p className="mx-auto mt-2 max-w-xl text-sm leading-6 text-gray-600">
+            <p className="mx-auto mt-2 max-w-xl text-sm leading-6 text-edvanta-muted">
               Con tu cuenta de Feliz Sin Tiroides puedes guardar tus preguntas, registrar tu medicación,
               tus síntomas y generar tu reporte de consulta. NutriFST aprende de tus datos.
             </p>
@@ -202,7 +202,7 @@ export default function NutriFstPublic() {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => trackFstClick({ section: 'nutrifst', element: 'cta_whatsapp', label: 'Hablar con Karla' })}
-                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-md border border-sand-200 bg-white px-6 text-sm font-semibold text-gray-600 hover:bg-sand-50"
+                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-md border border-edvanta-border bg-white px-6 text-sm font-semibold text-edvanta-muted hover:bg-edvanta-bg"
               >
                 <Icon name="message" className="h-4 w-4" /> Hablar con Karla
               </a>

@@ -18,18 +18,18 @@ export default function ActivityCard({ activity }) {
   return (
     <Link
       to={activity.route}
-      className="group bg-white rounded-2xl border border-gray-100 p-5 hover:border-teal-200 hover:shadow-md transition-all flex items-start gap-4"
+      className="group bg-white rounded-2xl border border-edvanta-border p-5 hover:border-teal-200 hover:shadow-md transition-all flex items-start gap-4"
     >
       <div className="w-10 h-10 rounded-xl bg-teal-50 flex items-center justify-center shrink-0 group-hover:bg-teal-100 transition-colors">
-        <svg className="w-5 h-5 text-deepblue-700" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <svg className="w-5 h-5 text-edvanta-blue" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
           <path d={d} />
         </svg>
       </div>
       <div className="min-w-0">
-        <h3 className="text-sm font-bold text-deepblue-900 group-hover:text-teal-700 transition-colors mb-0.5">{activity.title}</h3>
-        <p className="text-xs text-gray-500 leading-relaxed">{activity.description}</p>
+        <h3 className="text-sm font-bold text-edvanta-deep group-hover:text-teal-700 transition-colors mb-0.5">{activity.title}</h3>
+        <p className="text-xs text-edvanta-muted leading-relaxed">{activity.description}</p>
       </div>
-      <svg className="w-4 h-4 text-gray-300 group-hover:text-teal-500 shrink-0 mt-1 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+      <svg className="w-4 h-4 text-edvanta-strong group-hover:text-teal-500 shrink-0 mt-1 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
         <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
       </svg>
     </Link>

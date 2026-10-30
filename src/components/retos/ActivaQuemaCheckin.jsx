@@ -63,9 +63,9 @@ export default function ActivaQuemaCheckin({ day, checkin, onSave, saving, days,
     const current = answers[question.id];
     const selected = Array.isArray(current) ? current : current ? [current] : [];
     return (
-      <div key={question.id} className="border-t border-sand-100 pt-5">
-        <h2 className="text-base font-bold text-deepblue-900">{question.question}</h2>
-        <p className="mt-1 text-xs text-gray-400">
+      <div key={question.id} className="border-t border-edvanta-border pt-5">
+        <h2 className="text-base font-bold text-edvanta-deep">{question.question}</h2>
+        <p className="mt-1 text-xs text-edvanta-subtle">
           {question.phase === 'before' ? 'Antes de entrenar' : 'Después de entrenar'}
           {question.type === 'multi' ? ' · Puedes elegir más de una' : ' · Elige una opción'}
         </p>
@@ -80,7 +80,7 @@ export default function ActivaQuemaCheckin({ day, checkin, onSave, saving, days,
                 aria-checked={active}
                 onClick={() => toggleAnswer(question.id, option)}
                 className={`min-h-10 rounded-full border px-4 py-2 text-xs font-semibold transition-colors ${
-                  active ? 'border-[#76539a] bg-[#f2ebf7] text-[#563a78]' : 'border-sand-200 bg-white text-gray-600 hover:border-[#d7c8e5]'
+                  active ? 'border-edvanta-blue bg-edvanta-lilac text-edvanta-blue' : 'border-edvanta-border bg-white text-edvanta-muted hover:border-edvanta-border'
                 }`}
               >
                 {option}
@@ -93,10 +93,10 @@ export default function ActivaQuemaCheckin({ day, checkin, onSave, saving, days,
   };
 
   return (
-    <section className="space-y-5 rounded-lg border border-sand-100 bg-white p-5 shadow-sm sm:p-6" aria-label="Check-in del día">
+    <section className="space-y-5 rounded-lg border border-edvanta-border bg-white p-5 shadow-sm sm:p-6" aria-label="Check-in del día">
       {/* Completar día */}
       <div>
-        <h2 className="text-base font-bold text-deepblue-900">¿Terminaste tu entrenamiento?</h2>
+        <h2 className="text-base font-bold text-edvanta-deep">¿Terminaste tu entrenamiento?</h2>
         <button
           type="button"
           onClick={() => save({ exercise_completed: !exerciseDone })}
@@ -111,7 +111,7 @@ export default function ActivaQuemaCheckin({ day, checkin, onSave, saving, days,
           {saving ? 'Guardando...' : exerciseDone ? 'Día completado · Toca para desmarcar' : 'Completar día'}
         </button>
         {exerciseDone && checkin?.completed_at && (
-          <p className="mt-2 text-xs text-gray-400">
+          <p className="mt-2 text-xs text-edvanta-subtle">
             Completado el {new Date(checkin.completed_at).toLocaleDateString('es-CO', { day: 'numeric', month: 'long', hour: '2-digit', minute: '2-digit' })}
           </p>
         )}
@@ -122,34 +122,34 @@ export default function ActivaQuemaCheckin({ day, checkin, onSave, saving, days,
 
       {/* Bonus opcional (Día 2) */}
       {bonus && (
-        <div className="border-t border-sand-100 pt-5">
-          <h2 className="text-base font-bold text-deepblue-900">{bonus.title}</h2>
-          <p className="mt-1 text-sm text-gray-600">{bonus.text}</p>
+        <div className="border-t border-edvanta-border pt-5">
+          <h2 className="text-base font-bold text-edvanta-deep">{bonus.title}</h2>
+          <p className="mt-1 text-sm text-edvanta-muted">{bonus.text}</p>
           <button
             type="button"
             onClick={toggleBonus}
             disabled={saving}
             className={`mt-3 inline-flex min-h-10 items-center gap-2 rounded-full border px-4 py-2 text-xs font-semibold transition-colors disabled:opacity-60 ${
               answers.bonus_day_2
-                ? 'border-[#76539a] bg-[#f2ebf7] text-[#563a78]'
-                : 'border-sand-200 bg-white text-gray-600 hover:border-[#d7c8e5]'
+                ? 'border-edvanta-blue bg-edvanta-lilac text-edvanta-blue'
+                : 'border-edvanta-border bg-white text-edvanta-muted hover:border-edvanta-border'
             }`}
           >
             <Icon name={answers.bonus_day_2 ? 'checkCircle' : 'circle'} className="h-4 w-4" />
             {bonus.cta}
           </button>
-          <p className="mt-2 text-xs text-gray-400">Opcional. No es obligatorio para completar el día.</p>
+          <p className="mt-2 text-xs text-edvanta-subtle">Opcional. No es obligatorio para completar el día.</p>
         </div>
       )}
 
       {/* Mensaje de finalización del día */}
       {exerciseDone && dayMessage && (
         <div className="rounded-lg border border-teal-100 bg-teal-50/60 p-5 text-center">
-          <h2 className="font-serif text-xl font-semibold text-deepblue-900">{dayMessage.completionTitle}</h2>
-          <p className="mt-1 text-sm leading-6 text-gray-600">{dayMessage.completionText}</p>
+          <h2 className="font-display text-xl font-extrabold text-edvanta-deep">{dayMessage.completionTitle}</h2>
+          <p className="mt-1 text-sm leading-6 text-edvanta-muted">{dayMessage.completionText}</p>
           <p className="mt-2 text-xs font-bold uppercase tracking-[0.15em] text-teal-700">{dayMessage.completionCount}</p>
           {dayBadge && (
-            <p className="mt-3 inline-flex items-center gap-2 rounded-full border border-[#d7c8e5] bg-white px-4 py-2 text-xs font-semibold text-[#563a78]">
+            <p className="mt-3 inline-flex items-center gap-2 rounded-full border border-edvanta-border bg-white px-4 py-2 text-xs font-semibold text-edvanta-blue">
               <Icon name="award" className="h-4 w-4" /> Insignia desbloqueada: {dayBadge.title}
             </p>
           )}

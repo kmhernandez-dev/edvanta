@@ -15,7 +15,21 @@ Sistema visual único para edvanta.co y el Aula. Implementado el 27-oct-2026.
 
 Las clases del sistema que fijan `display` (`ed-btn`, `ds-flow`, `ds-icon-tile`, `ds-chip`) lo hacen con `:where()`, así que `hidden`, `lg:hidden` y compañía siempre mandan.
 
-Todo vive dentro de `.edvanta-theme` y `.aula-root`: **Feliz Sin Tiroides, AtenFarmaClinic, Vida 360 y Academia no cambian.**
+Todo vive dentro de `.edvanta-theme` y `.aula-root`. Desde el 30-oct-2026 también cubre las páginas de **Feliz Sin Tiroides, la Academia y los Retos, AtenFarmaClinic y Vida 360 Pro**. Solo quedan fuera las aplicaciones con interfaz propia: `/fst-app`, `/mi-espacio`, `/vida-360` y los dos *workspace* (`APLICACIONES` en `src/App.jsx`).
+
+## Programas (Feliz Sin Tiroides, AtenFarmaClinic, Vida 360 Pro)
+
+Son programas de Edvanta, no sitios aparte. Llevan el encabezado y el pie de edvanta.co y, entre ellos, dos piezas propias (`src/components/edvanta/programa.jsx`):
+
+| Pieza | Qué hace |
+|---|---|
+| `BarraDePrograma` | Va bajo el encabezado: logo, nombre y secciones del programa, y su acción (Mi espacio, Probar las herramientas, Entrar al workspace). No queda fija. Marca la sección de dirección más larga (en `/academia/retos/…`, «Retos»). En el celular, las secciones se deslizan de lado. |
+| `PieDePrograma` | Va antes del pie de Edvanta: quién lo hace, contacto (comunidad, WhatsApp, correo, Instagram o LinkedIn), sus secciones y su aviso sanitario o de uso profesional. |
+
+- Las secciones y contactos están en `src/config/navProgramas.js` (`PROGRAMA_FST`, `PROGRAMA_AFC`, `PROGRAMA_V360PRO`).
+- `FstHeader`, `FstFooter`, `AfcHeader` y `AfcFooter` solo envuelven estas piezas.
+- Las páginas de Feliz Sin Tiroides cuentan como de pacientes (`contextoDe` en `navEdvanta.js`): la barra principal muestra «Para pacientes».
+- Colores y letra: un reemplazo pasó 1.267 colores sueltos de esas páginas a los tokens (los morados de FST pasan al azul de acción o a la lavanda), y los títulos de Fraunces pasaron a Manrope. Los colores de estado (verde, ámbar, rojo) se conservan.
 
 ## Tokens
 
@@ -114,7 +128,7 @@ Las clases heredadas (`btn-edvanta`, `btn-primary`, `btn-secondary`, `btn-teal`,
 | `/img/publicos/*`, `/img/escuelas/*`, `/img/servicios/*`, `/img/fotos/*` | Adecuada | Fotografía realista de marca |
 | `/img/cursos/farmacoterapia-*` | Adecuada (ilustración) | Portadas con degradado. Se pueden cambiar por fotos si se entregan |
 | Huecos de Herramientas, Hoja de vida y Vocación | Reemplazados | Portátil con herramientas reales, comparación de formato «antes / después» y diagrama del test |
-| `/img/enfermedades/*.jpg` (9) | No existe | Son de Feliz Sin Tiroides (fuera de alcance); la página no queda rota, pero faltan las fotos |
+| `/img/enfermedades/*.jpg` (9) | No existe | Son de Feliz Sin Tiroides; la página no queda rota, pero faltan las fotos |
 | Fotos de las maquetas del brief | No se usaron | Traían cifras sin respaldo («+10.000 profesionales», «+200 instituciones») |
 
 ## Matriz de cobertura
@@ -122,7 +136,7 @@ Las clases heredadas (`btn-edvanta`, `btn-primary`, `btn-secondary`, `btn-teal`,
 **Leyenda:**
 - **Completa:** héroe propio, componentes del sistema y verificación en 390, 768 y 1280 px sin desborde ni errores.
 - **Sistema aplicado:** botones, colores y superficies unificados, héroe de marca genérico y verificación en 390 px.
-- **Fuera de alcance:** otra marca, por instrucción.
+- **Fuera de alcance:** aplicación con interfaz propia.
 
 | Ruta | Audiencia | Tipo | Héroe | Componentes | Responsive | Pruebas | Estado |
 |---|---|---|---|---|---|---|---|
@@ -130,7 +144,8 @@ Las clases heredadas (`btn-edvanta`, `btn-primary`, `btn-secondary`, `btn-teal`,
 | `/escuelas` | Profesionales | A | C | Tarjetas de escuela, mapa de áreas | 390/768/1280 | Navegador | Completa |
 | `/escuelas/:slug` | Profesionales | A | A | Rasgos reales, áreas, productos | 390/768/1280 | Navegador | Completa |
 | `/cursos` (+ proveedores) | Profesionales | A | D | Carruseles por escuela | 390/1280 | Navegador | Completa |
-| `/curso/:id`, `/cursos/:slug` | Profesionales | A | H | Tarjeta fija, «Cómo funciona», temario, certificado | 390/768/1280 | Navegador | Completa |
+| `/curso-de-…` (ficha) | Profesionales | A | Ficha (orden tipo Edutin) | Migas, tarjeta fija, rasgos, «Qué aprenderás», temario, docente, banda, diploma de muestra (cursos propios), opiniones | 390/768/1280 | Navegador + pruebas | Completa |
+| `/certificados`, `/certificados/:código` | Todas | — | Verificación | Buscador, diploma, estado vigente o revocado | 390/1280 | Navegador + pruebas API | Completa |
 | `/cursos/en-vivo/:slug` | Profesionales | A | H | Cronograma, docente, registro | 390/1280 | Navegador | Completa |
 | `/rutas`, `/competencias` | Profesionales | A | D | Diagrama de recorrido | 390/1280 | Navegador | Completa |
 | `/carreras` | Profesionales | A | B (foto completa) | Franja «Tu recorrido» | 390/1024/1280/1920 | Navegador | Completa |
@@ -150,11 +165,18 @@ Las clases heredadas (`btn-edvanta`, `btn-primary`, `btn-secondary`, `btn-teal`,
 | `/aula`, `/aula/curso/:id`, clase, vista previa | Estudiantes | LMS | Cabecera compacta | Anillo, módulos plegables, navegación por tarjetas | 390 | Servidor local + navegador | Completa (portada y clase) |
 | `/aula/admin/*` | Administración | Interno | — | `Button` y tokens del aula | — | Pruebas API | Sistema aplicado |
 | `/admin/*` (paneles) | Interno | — | — | Sin cambios de diseño | — | — | Pendiente |
-| `/feliz-sin-tiroides`, `/nutrifst`, `/recetas`, `/recurso/levotiroxina`, `/enfermedades/*`, `/academia/*`, `/vida-360-pro*`, `/atenfarmaclinic*` | Otras marcas | — | — | — | — | — | Fuera de alcance |
+| `/feliz-sin-tiroides` | Pacientes | B | F | Barra del programa, carrusel de ebooks, guía gratis, atención, «Explora» | 390/1280 | Navegador + prueba de carga | Completa |
+| `/academia/curso/:slug` | Pacientes | A | Ficha (orden tipo Edutin) | Tarjeta con portada, rasgos, para quién, temario con avance fijo al lado, docente, banda | 390/1280 | Navegador | Completa |
+| `/academia`, `/academia/retos/*`, `/academia/mis-cursos`, `/academia/perfil`, clase | Pacientes | B | Propio | Barra del programa, colores y letra | 390/1280 | Navegador | Sistema aplicado |
+| `/nutrifst`, `/recetas`, `/recurso/levotiroxina`, `/enfermedades/*`, `/levotiroxina`, `/nutricion-tiroidea` | Pacientes | B | Propio | Barra del programa, colores y letra | 390/1280 | Navegador | Sistema aplicado |
+| `/atenfarmaclinic` | Profesionales | A | Propio | Barra del programa, colores | 390/1280 | Navegador | Sistema aplicado |
+| `/vida-360-pro` | Profesionales | A | Propio | Barra del programa, colores; cifras tomadas de los datos | 390/1280 | Navegador | Sistema aplicado |
+| `/fst-app`, `/mi-espacio`, `/vida-360`, `/vida-360-pro/workspace`, `/atenfarmaclinic/workspace` | Usuarios | App | — | — | — | — | Fuera de alcance |
 
 ## Pendiente
 
 - Héroes propios para las páginas marcadas como «Sistema aplicado» (empleo, talento, conecta, artículos…). Hoy usan el héroe de marca genérico.
 - Paneles internos `/admin/*`.
+- Las aplicaciones (`/fst-app`, `/mi-espacio`, `/vida-360` y los *workspace*): siguen con su interfaz propia.
 - Fotos de `/img/enfermedades/*` (Feliz Sin Tiroides).
 - Verificación de `/rutas/:slug`, `/competencias/:slug` y `/carreras/:slug` con datos reales en producción.

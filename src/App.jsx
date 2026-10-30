@@ -123,13 +123,14 @@ function StoreGlobals() {
 
 
 /**
- * Marcas del ecosistema que conservan su propia identidad visual.
- * Todo lo demás es Edvanta y comparte una sola paleta (.edvanta-theme).
+ * Aplicaciones con su propia interfaz: el aula, los espacios personales
+ * y los workspace. Todo lo demás —también las páginas de Feliz Sin
+ * Tiroides, AtenFarmaClinic y Vida 360 Pro— es Edvanta y comparte una
+ * sola paleta, letra y botones (.edvanta-theme).
  */
-const OTRAS_MARCAS = [
-  '/feliz-sin-tiroides', '/fst-app', '/nutrifst', '/recetas', '/enfermedades',
-  '/levotiroxina', '/nutricion-tiroidea', '/recurso', '/academia',
-  '/vida-360', '/vida-360-pro', '/atenfarmaclinic', '/mi-espacio', '/aula',
+const APLICACIONES = [
+  '/fst-app', '/mi-espacio', '/vida-360', '/aula',
+  '/vida-360-pro/workspace', '/atenfarmaclinic/workspace',
 ];
 
 /**
@@ -207,9 +208,9 @@ function useRevelado(activo, pathname) {
 
 function EdvantaTheme({ children }) {
   const { pathname } = useLocation();
-  const esOtraMarca = OTRAS_MARCAS.some((p) => pathname === p || pathname.startsWith(`${p}/`));
-  useRevelado(!esOtraMarca, pathname);
-  return <div className={esOtraMarca ? undefined : 'edvanta-theme'}>{children}</div>;
+  const esAplicacion = APLICACIONES.some((p) => pathname === p || pathname.startsWith(`${p}/`));
+  useRevelado(!esAplicacion, pathname);
+  return <div className={esAplicacion ? undefined : 'edvanta-theme'}>{children}</div>;
 }
 
 export default function App() {

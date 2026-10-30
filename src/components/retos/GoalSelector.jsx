@@ -47,15 +47,15 @@ export default function GoalSelector({ onSelect }) {
             className={`flex flex-col items-start gap-3 rounded-lg border p-5 text-left transition-all duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-500 ${
               active
                 ? 'border-teal-500 bg-teal-50/60 shadow-md'
-                : 'border-sand-100 bg-white shadow-sm hover:border-teal-200 hover:shadow-md'
+                : 'border-edvanta-border bg-white shadow-sm hover:border-teal-200 hover:shadow-md'
             }`}
           >
-            <span className={`flex h-11 w-11 items-center justify-center rounded-full ${active ? 'bg-teal-600 text-white' : 'bg-[#f2ebf7] text-[#563a78]'}`}>
+            <span className={`flex h-11 w-11 items-center justify-center rounded-full ${active ? 'bg-teal-600 text-white' : 'bg-edvanta-lilac text-edvanta-blue'}`}>
               <Icon name={goal.icon} className="h-5 w-5" />
             </span>
-            <span className="font-serif text-lg font-semibold leading-snug text-deepblue-900">{goal.label}</span>
-            <span className="text-sm leading-relaxed text-gray-500">{goal.description}</span>
-            <span className={`mt-1 inline-flex items-center gap-1.5 text-xs font-semibold ${active ? 'text-teal-700' : 'text-gray-400'}`}>
+            <span className="font-display text-lg font-extrabold leading-snug text-edvanta-deep">{goal.label}</span>
+            <span className="text-sm leading-relaxed text-edvanta-muted">{goal.description}</span>
+            <span className={`mt-1 inline-flex items-center gap-1.5 text-xs font-semibold ${active ? 'text-teal-700' : 'text-edvanta-subtle'}`}>
               {active ? (
                 <>
                   <Icon name="checkCircle" className="h-4 w-4" /> Objetivo seleccionado

@@ -33,10 +33,10 @@ export default function DailyCheckin({ checkin, onSave, saving, nutritionChallen
   };
 
   return (
-    <section className="space-y-5 rounded-lg border border-sand-100 bg-white p-5 shadow-sm sm:p-6" aria-label="Check-in del día">
+    <section className="space-y-5 rounded-lg border border-edvanta-border bg-white p-5 shadow-sm sm:p-6" aria-label="Check-in del día">
       {/* Completar día */}
       <div>
-        <h2 className="text-base font-bold text-deepblue-900">¿Terminaste tu entrenamiento?</h2>
+        <h2 className="text-base font-bold text-edvanta-deep">¿Terminaste tu entrenamiento?</h2>
         <button
           type="button"
           onClick={() => save({ exercise_completed: !exerciseDone })}
@@ -51,15 +51,15 @@ export default function DailyCheckin({ checkin, onSave, saving, nutritionChallen
           {saving ? 'Guardando...' : exerciseDone ? 'Día completado · Toca para desmarcar' : 'Completar día'}
         </button>
         {exerciseDone && checkin?.completed_at && (
-          <p className="mt-2 text-xs text-gray-400">
+          <p className="mt-2 text-xs text-edvanta-subtle">
             Completado el {new Date(checkin.completed_at).toLocaleDateString('es-CO', { day: 'numeric', month: 'long', hour: '2-digit', minute: '2-digit' })}
           </p>
         )}
       </div>
 
       {/* Sensación */}
-      <div className="border-t border-sand-100 pt-5">
-        <h2 className="text-base font-bold text-deepblue-900">¿Cómo se sintió hoy?</h2>
+      <div className="border-t border-edvanta-border pt-5">
+        <h2 className="text-base font-bold text-edvanta-deep">¿Cómo se sintió hoy?</h2>
         <div className="mt-3 flex flex-wrap gap-2" role="radiogroup" aria-label="¿Cómo se sintió hoy?">
           {DIFFICULTY_OPTIONS.map(option => {
             const active = difficulty === option.id;
@@ -71,7 +71,7 @@ export default function DailyCheckin({ checkin, onSave, saving, nutritionChallen
                 aria-checked={active}
                 onClick={() => { setDifficulty(option.id); save({ perceived_difficulty: option.id }); }}
                 className={`min-h-10 rounded-full border px-4 py-2 text-xs font-semibold transition-colors ${
-                  active ? 'border-[#76539a] bg-[#f2ebf7] text-[#563a78]' : 'border-sand-200 bg-white text-gray-600 hover:border-[#d7c8e5]'
+                  active ? 'border-edvanta-blue bg-edvanta-lilac text-edvanta-blue' : 'border-edvanta-border bg-white text-edvanta-muted hover:border-edvanta-border'
                 }`}
               >
                 {option.label}
@@ -79,25 +79,25 @@ export default function DailyCheckin({ checkin, onSave, saving, nutritionChallen
             );
           })}
         </div>
-        {difficulty && <p className="mt-2 text-xs text-gray-400">Guardado: {difficultyLabel(difficulty)}</p>}
+        {difficulty && <p className="mt-2 text-xs text-edvanta-subtle">Guardado: {difficultyLabel(difficulty)}</p>}
       </div>
 
       {/* Microreto nutricional */}
       {nutritionChallenge && (
-        <div className="border-t border-sand-100 pt-5">
-          <h2 className="text-base font-bold text-deepblue-900">Mi check-in de hoy</h2>
+        <div className="border-t border-edvanta-border pt-5">
+          <h2 className="text-base font-bold text-edvanta-deep">Mi check-in de hoy</h2>
           <div className="mt-3 space-y-2">
-            <p className="flex items-center gap-2 text-sm text-gray-700">
-              <Icon name={exerciseDone ? 'checkCircle' : 'circle'} className={`h-5 w-5 ${exerciseDone ? 'text-teal-600' : 'text-gray-300'}`} />
+            <p className="flex items-center gap-2 text-sm text-edvanta-deep">
+              <Icon name={exerciseDone ? 'checkCircle' : 'circle'} className={`h-5 w-5 ${exerciseDone ? 'text-teal-600' : 'text-edvanta-strong'}`} />
               Entrenamiento realizado
             </p>
             <button
               type="button"
               onClick={() => { setNutritionDone(value => !value); save({ nutrition_completed: !nutritionDone }); }}
-              className="flex w-full items-center gap-2 rounded-md p-1 text-left text-sm text-gray-700 hover:bg-sand-50"
+              className="flex w-full items-center gap-2 rounded-md p-1 text-left text-sm text-edvanta-deep hover:bg-edvanta-bg"
               aria-pressed={nutritionDone}
             >
-              <Icon name={nutritionDone ? 'checkCircle' : 'circle'} className={`h-5 w-5 shrink-0 ${nutritionDone ? 'text-teal-600' : 'text-gray-300'}`} />
+              <Icon name={nutritionDone ? 'checkCircle' : 'circle'} className={`h-5 w-5 shrink-0 ${nutritionDone ? 'text-teal-600' : 'text-edvanta-strong'}`} />
               <span>
                 <span className="font-semibold">Reto de alimentación:</span> {nutritionChallenge}
               </span>
@@ -107,9 +107,9 @@ export default function DailyCheckin({ checkin, onSave, saving, nutritionChallen
       )}
 
       {/* Energía */}
-      <div className="border-t border-sand-100 pt-5">
-        <h2 className="text-base font-bold text-deepblue-900">¿Cómo está tu energía hoy?</h2>
-        <p className="mt-1 text-xs text-gray-400">Opcional. Solo para tu registro personal.</p>
+      <div className="border-t border-edvanta-border pt-5">
+        <h2 className="text-base font-bold text-edvanta-deep">¿Cómo está tu energía hoy?</h2>
+        <p className="mt-1 text-xs text-edvanta-subtle">Opcional. Solo para tu registro personal.</p>
         <div className="mt-3 flex gap-2" role="radiogroup" aria-label="Nivel de energía de 1 a 5">
           {[1, 2, 3, 4, 5].map(value => {
             const active = energy === value;
@@ -122,7 +122,7 @@ export default function DailyCheckin({ checkin, onSave, saving, nutritionChallen
                 aria-label={`Energía ${value} de 5`}
                 onClick={() => { setEnergy(value); save({ energy_score: value }); }}
                 className={`flex h-11 w-11 items-center justify-center rounded-full border text-sm font-bold transition-colors ${
-                  active ? 'border-teal-600 bg-teal-600 text-white' : 'border-sand-200 bg-white text-gray-500 hover:border-teal-200'
+                  active ? 'border-teal-600 bg-teal-600 text-white' : 'border-edvanta-border bg-white text-edvanta-muted hover:border-teal-200'
                 }`}
               >
                 {value}

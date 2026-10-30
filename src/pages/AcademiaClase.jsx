@@ -27,18 +27,18 @@ function CommentActions({ comment, canInteract, onLike, onReply, isReply = false
       <button
         type="button"
         onClick={() => onLike(comment.id)}
-        className={`inline-flex min-h-9 items-center gap-1.5 text-xs font-semibold ${comment.viewer_liked ? 'text-[#563a78]' : 'text-gray-500 hover:text-[#563a78]'}`}
+        className={`inline-flex min-h-9 items-center gap-1.5 text-xs font-semibold ${comment.viewer_liked ? 'text-edvanta-blue' : 'text-edvanta-muted hover:text-edvanta-blue'}`}
         aria-pressed={comment.viewer_liked}
         aria-label={`${comment.viewer_liked ? 'Quitar me gusta de' : 'Dar me gusta a'} este comentario`}
       >
         <Icon name="thumbsUp" className="h-4 w-4" /> {comment.like_count || 0}
       </button>
       {!isReply && (
-        <button type="button" onClick={() => onReply(comment.id)} className="inline-flex min-h-9 items-center gap-1.5 text-xs font-semibold text-gray-500 hover:text-[#0f766e]">
+        <button type="button" onClick={() => onReply(comment.id)} className="inline-flex min-h-9 items-center gap-1.5 text-xs font-semibold text-edvanta-muted hover:text-edvanta-tealdark">
           <Icon name="reply" className="h-4 w-4" /> Responder
         </button>
       )}
-      {!canInteract && <span className="text-[11px] text-gray-400">Inicia sesión para interactuar</span>}
+      {!canInteract && <span className="text-[11px] text-edvanta-subtle">Inicia sesión para interactuar</span>}
     </div>
   );
 }
@@ -187,28 +187,28 @@ export default function AcademiaClase() {
   };
 
   if (loading) {
-    return <div className="min-h-screen bg-[#f7f8fa]"><FstHeader /><p className="pt-36 text-center text-sm text-gray-500">Cargando la sala...</p></div>;
+    return <div className="min-h-screen bg-edvanta-bg"><FstHeader /><p className="py-20 text-center text-sm text-edvanta-muted">Cargando la sala...</p></div>;
   }
   if (!course || !lesson) return <Navigate to="/academia" replace />;
 
   if (!user) {
     return (
-      <div className="min-h-screen bg-[#f7f8fa] font-sans text-[#132e55]">
+      <div className="min-h-screen bg-edvanta-bg font-sans text-edvanta-deep">
         <FstHeader />
-        <main className="pb-20 pt-28">
+        <main className="pb-20 pt-8">
           <div className="mx-auto max-w-5xl px-4 sm:px-6">
-            <nav className="mb-8 flex items-center gap-2 text-xs text-gray-500" aria-label="Migas de pan">
-              <Link to="/academia" className="hover:text-[#0f766e]">Academia</Link>
+            <nav className="mb-8 flex items-center gap-2 text-xs text-edvanta-muted" aria-label="Migas de pan">
+              <Link to="/academia" className="hover:text-edvanta-tealdark">Academia</Link>
               <span>/</span>
-              <Link to={`/academia/curso/${slug}`} className="hover:text-[#0f766e]">{course.title}</Link>
+              <Link to={`/academia/curso/${slug}`} className="hover:text-edvanta-tealdark">{course.title}</Link>
               <span>/</span>
-              <span className="truncate text-gray-700">{lesson.title}</span>
+              <span className="truncate text-edvanta-deep">{lesson.title}</span>
             </nav>
-            <section className="grid overflow-hidden rounded-lg border border-gray-200 bg-white lg:grid-cols-[1.15fr_0.85fr]" aria-labelledby="access-title">
+            <section className="grid overflow-hidden rounded-lg border border-edvanta-border bg-white lg:grid-cols-[1.15fr_0.85fr]" aria-labelledby="access-title">
               <div className="p-7 sm:p-10">
-                <p className="text-xs font-bold uppercase text-[#0f766e]">Aula privada</p>
-                <h1 id="access-title" className="mt-3 text-3xl font-semibold leading-tight text-[#132e55] sm:text-4xl">Crea tu cuenta para entrar a esta clase</h1>
-                <p className="mt-4 max-w-xl text-base leading-7 text-gray-600">
+                <p className="text-xs font-bold uppercase text-edvanta-tealdark">Aula privada</p>
+                <h1 id="access-title" className="mt-3 text-3xl font-semibold leading-tight text-edvanta-deep sm:text-4xl">Crea tu cuenta para entrar a esta clase</h1>
+                <p className="mt-4 max-w-xl text-base leading-7 text-edvanta-muted">
                   El acceso es gratuito. Tu cuenta guarda el avance, las actividades y la conversación de cada clase en un solo lugar.
                 </p>
                 <div className="mt-6 space-y-3">
@@ -218,26 +218,26 @@ export default function AcademiaClase() {
                     'Cuatro actividades prácticas con retroalimentación',
                     'Progreso, comentarios y respuestas de la comunidad',
                   ].map(item => (
-                    <p key={item} className="flex items-center gap-3 text-sm text-gray-700">
-                      <Icon name="checkCircle" className="h-5 w-5 shrink-0 text-[#0f766e]" /> {item}
+                    <p key={item} className="flex items-center gap-3 text-sm text-edvanta-deep">
+                      <Icon name="checkCircle" className="h-5 w-5 shrink-0 text-edvanta-tealdark" /> {item}
                     </p>
                   ))}
                 </div>
                 <button
                   type="button"
                   onClick={() => setLoginOpen(true)}
-                  className="mt-8 inline-flex min-h-12 items-center justify-center gap-2 rounded-md bg-[#563a78] px-6 text-sm font-semibold text-white hover:bg-[#452b65]"
+                  className="mt-8 inline-flex min-h-12 items-center justify-center gap-2 rounded-md bg-edvanta-blue px-6 text-sm font-semibold text-white hover:bg-edvanta-bluedark"
                 >
                   <Icon name="lock" className="h-5 w-5" /> Registrarme o iniciar sesión
                 </button>
-                <p className="mt-3 text-xs text-gray-500">Puedes usar correo y contraseña. Google aparecerá cuando el acceso OAuth esté configurado.</p>
+                <p className="mt-3 text-xs text-edvanta-muted">Puedes usar correo y contraseña. Google aparecerá cuando el acceso OAuth esté configurado.</p>
               </div>
-              <div className="flex min-h-72 items-center justify-center bg-[#eef7f5] p-7 sm:p-10">
+              <div className="flex min-h-72 items-center justify-center bg-[#F0FAF9] p-7 sm:p-10">
                 <div className="w-full max-w-sm">
-                  <span className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-white text-[#0f766e] shadow-sm"><Icon name="book" className="h-6 w-6" /></span>
-                  <p className="mt-5 text-xs font-bold uppercase text-[#0f766e]">Clase seleccionada</p>
-                  <h2 className="mt-2 text-2xl font-semibold leading-tight text-[#132e55]">{lesson.title}</h2>
-                  <p className="mt-4 text-sm leading-6 text-gray-600">Tu aprendizaje queda asociado a tu perfil y puedes continuar desde cualquier dispositivo.</p>
+                  <span className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-white text-edvanta-tealdark shadow-sm"><Icon name="book" className="h-6 w-6" /></span>
+                  <p className="mt-5 text-xs font-bold uppercase text-edvanta-tealdark">Clase seleccionada</p>
+                  <h2 className="mt-2 text-2xl font-semibold leading-tight text-edvanta-deep">{lesson.title}</h2>
+                  <p className="mt-4 text-sm leading-6 text-edvanta-muted">Tu aprendizaje queda asociado a tu perfil y puedes continuar desde cualquier dispositivo.</p>
                 </div>
               </div>
             </section>
@@ -266,16 +266,16 @@ export default function AcademiaClase() {
   };
 
   return (
-    <div className="min-h-screen bg-[#f7f8fa] font-sans text-[#132e55]">
+    <div className="min-h-screen bg-edvanta-bg font-sans text-edvanta-deep">
       <FstHeader />
-      <main className="pb-16 pt-24">
+      <main className="pb-16 pt-6">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <nav className="mb-5 flex min-w-0 items-center gap-2 overflow-hidden text-xs text-gray-500" aria-label="Migas de pan">
-            <Link to="/academia" className="shrink-0 hover:text-[#0f766e]">Academia</Link>
+          <nav className="mb-5 flex min-w-0 items-center gap-2 overflow-hidden text-xs text-edvanta-muted" aria-label="Migas de pan">
+            <Link to="/academia" className="shrink-0 hover:text-edvanta-tealdark">Academia</Link>
             <span>/</span>
-            <Link to={`/academia/curso/${slug}`} className="max-w-52 truncate hover:text-[#0f766e]">{course.title}</Link>
+            <Link to={`/academia/curso/${slug}`} className="max-w-52 truncate hover:text-edvanta-tealdark">{course.title}</Link>
             <span>/</span>
-            <span className="truncate text-gray-700">{lesson.title}</span>
+            <span className="truncate text-edvanta-deep">{lesson.title}</span>
           </nav>
 
           <div className="grid items-start gap-6 lg:grid-cols-[minmax(0,1fr)_360px]">
@@ -295,25 +295,25 @@ export default function AcademiaClase() {
                 )}
               </div>
 
-              <section className="rounded-lg border border-gray-200 bg-white p-5 sm:p-6" aria-labelledby="lesson-title">
+              <section className="rounded-lg border border-edvanta-border bg-white p-5 sm:p-6" aria-labelledby="lesson-title">
                 <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-start">
                   <div className="min-w-0">
-                    <p className="mb-2 text-xs font-bold uppercase tracking-[0.12em] text-[#0f766e]">Clase {currentIndex + 1} de {lessons.length}</p>
-                    <h1 id="lesson-title" className="text-2xl font-semibold leading-tight text-[#132e55]">{lesson.title}</h1>
-                    {lesson.description && <p className="mt-3 max-w-3xl text-sm leading-6 text-gray-600">{lesson.description}</p>}
+                    <p className="mb-2 text-xs font-bold uppercase tracking-[0.12em] text-edvanta-tealdark">Clase {currentIndex + 1} de {lessons.length}</p>
+                    <h1 id="lesson-title" className="text-2xl font-semibold leading-tight text-edvanta-deep">{lesson.title}</h1>
+                    {lesson.description && <p className="mt-3 max-w-3xl text-sm leading-6 text-edvanta-muted">{lesson.description}</p>}
                   </div>
                   <button
                     type="button"
                     onClick={toggleLessonLike}
-                    className={`inline-flex min-h-11 shrink-0 items-center justify-center gap-2 rounded-md border px-4 text-sm font-semibold ${engagement.viewer_liked ? 'border-[#76539a] bg-[#f2ebf7] text-[#563a78]' : 'border-gray-200 bg-white text-gray-600 hover:border-[#9f83ba]'}`}
+                    className={`inline-flex min-h-11 shrink-0 items-center justify-center gap-2 rounded-md border px-4 text-sm font-semibold ${engagement.viewer_liked ? 'border-edvanta-blue bg-edvanta-lilac text-edvanta-blue' : 'border-edvanta-border bg-white text-edvanta-muted hover:border-edvanta-violet'}`}
                     aria-pressed={engagement.viewer_liked}
                   >
                     <Icon name="thumbsUp" className="h-5 w-5" /> Me gusta {engagement.like_count || 0}
                   </button>
                 </div>
-                <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-3 border-t border-gray-100 pt-4 text-xs text-gray-500">
-                  <span className="inline-flex items-center gap-2"><Icon name="user" className="h-4 w-4 text-[#0f766e]" /> {course.instructor || 'Karla Hernández'}</span>
-                  <a href={channelUrl} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-9 items-center gap-2 font-semibold text-[#563a78] hover:underline">
+                <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-3 border-t border-edvanta-border pt-4 text-xs text-edvanta-muted">
+                  <span className="inline-flex items-center gap-2"><Icon name="user" className="h-4 w-4 text-edvanta-tealdark" /> {course.instructor || 'Karla Hernández'}</span>
+                  <a href={channelUrl} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-9 items-center gap-2 font-semibold text-edvanta-blue hover:underline">
                     <Icon name="youtube" className="h-4 w-4" /> Visitar canal en YouTube <Icon name="external" className="h-3.5 w-3.5" />
                   </a>
                 </div>
@@ -330,87 +330,87 @@ export default function AcademiaClase() {
                   type="button"
                   onClick={markComplete}
                   disabled={isCompleted}
-                  className={`inline-flex min-h-11 items-center justify-center gap-2 rounded-md px-5 text-sm font-semibold ${isCompleted ? 'border border-emerald-200 bg-emerald-50 text-emerald-700' : 'bg-[#0f766e] text-white hover:bg-[#0b5f59]'}`}
+                  className={`inline-flex min-h-11 items-center justify-center gap-2 rounded-md px-5 text-sm font-semibold ${isCompleted ? 'border border-emerald-200 bg-emerald-50 text-emerald-700' : 'bg-edvanta-tealdark text-white hover:bg-[#0B6670]'}`}
                 >
                   <Icon name={isCompleted ? 'checkCircle' : 'check'} className="h-5 w-5" /> {isCompleted ? 'Clase completada' : 'Marcar como completada'}
                 </button>
                 <div className="grid grid-cols-2 gap-2">
                   {previousLesson ? (
-                    <Link to={`/academia/curso/${slug}/clase/${previousLesson.id}`} className="inline-flex min-h-11 items-center justify-center rounded-md border border-gray-200 bg-white px-4 text-sm font-semibold text-gray-600 hover:border-[#9f83ba]">Anterior</Link>
+                    <Link to={`/academia/curso/${slug}/clase/${previousLesson.id}`} className="inline-flex min-h-11 items-center justify-center rounded-md border border-edvanta-border bg-white px-4 text-sm font-semibold text-edvanta-muted hover:border-edvanta-violet">Anterior</Link>
                   ) : <span />}
                   {nextLesson && (
-                    <Link to={`/academia/curso/${slug}/clase/${nextLesson.id}`} className="inline-flex min-h-11 items-center justify-center gap-2 rounded-md bg-[#563a78] px-4 text-sm font-semibold text-white hover:bg-[#452b65]">Siguiente <Icon name="arrowRight" className="h-4 w-4" /></Link>
+                    <Link to={`/academia/curso/${slug}/clase/${nextLesson.id}`} className="inline-flex min-h-11 items-center justify-center gap-2 rounded-md bg-edvanta-blue px-4 text-sm font-semibold text-white hover:bg-edvanta-bluedark">Siguiente <Icon name="arrowRight" className="h-4 w-4" /></Link>
                   )}
                 </div>
               </div>
 
-              <section className="rounded-lg border border-gray-200 bg-white p-5 sm:p-6" aria-labelledby="comments-title">
+              <section className="rounded-lg border border-edvanta-border bg-white p-5 sm:p-6" aria-labelledby="comments-title">
                 <div className="mb-5 flex items-center justify-between gap-3">
                   <div>
-                    <h2 id="comments-title" className="text-lg font-semibold text-[#132e55]">Conversación de la clase</h2>
-                    <p className="mt-1 text-xs text-gray-500">Comparte preguntas y aprendizajes. No publiques datos clínicos sensibles.</p>
+                    <h2 id="comments-title" className="text-lg font-semibold text-edvanta-deep">Conversación de la clase</h2>
+                    <p className="mt-1 text-xs text-edvanta-muted">Comparte preguntas y aprendizajes. No publiques datos clínicos sensibles.</p>
                   </div>
-                  <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-gray-500"><Icon name="message" className="h-4 w-4" /> {topComments.length}</span>
+                  <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-edvanta-muted"><Icon name="message" className="h-4 w-4" /> {topComments.length}</span>
                 </div>
 
                 {user ? (
-                  <form onSubmit={submitComment} className="border-b border-gray-100 pb-6">
+                  <form onSubmit={submitComment} className="border-b border-edvanta-border pb-6">
                     {replyTo && (
-                      <div className="mb-2 flex items-center justify-between rounded-md bg-[#f2ebf7] px-3 py-2 text-xs text-[#563a78]">
+                      <div className="mb-2 flex items-center justify-between rounded-md bg-edvanta-lilac px-3 py-2 text-xs text-edvanta-blue">
                         <span>Estás respondiendo a un comentario.</span>
                         <button type="button" onClick={() => setReplyTo(null)} className="font-semibold hover:underline">Cancelar</button>
                       </div>
                     )}
-                    <label htmlFor="academy-comment" className="mb-2 block text-sm font-semibold text-[#132e55]">Tu comentario</label>
+                    <label htmlFor="academy-comment" className="mb-2 block text-sm font-semibold text-edvanta-deep">Tu comentario</label>
                     <textarea
                       id="academy-comment"
                       value={commentText}
                       onChange={event => setCommentText(event.target.value.slice(0, 1500))}
                       placeholder="Escribe una pregunta o comparte lo que aprendiste..."
                       rows={4}
-                      className="w-full resize-y rounded-md border border-gray-300 p-3 text-sm outline-none focus:border-[#76539a] focus:ring-2 focus:ring-[#e6dced]"
+                      className="w-full resize-y rounded-md border border-edvanta-strong p-3 text-sm outline-none focus:border-edvanta-blue focus:ring-2 focus:ring-edvanta-border"
                     />
                     <div className="mt-2 flex items-center justify-between gap-3">
-                      <span className="text-xs text-gray-400">{commentText.length}/1500</span>
-                      <button type="submit" disabled={submitting || !commentText.trim()} className="inline-flex min-h-11 items-center gap-2 rounded-md bg-[#563a78] px-5 text-sm font-semibold text-white disabled:cursor-not-allowed disabled:opacity-50">
+                      <span className="text-xs text-edvanta-subtle">{commentText.length}/1500</span>
+                      <button type="submit" disabled={submitting || !commentText.trim()} className="inline-flex min-h-11 items-center gap-2 rounded-md bg-edvanta-blue px-5 text-sm font-semibold text-white disabled:cursor-not-allowed disabled:opacity-50">
                         <Icon name="message" className="h-4 w-4" /> {submitting ? 'Publicando...' : replyTo ? 'Publicar respuesta' : 'Publicar comentario'}
                       </button>
                     </div>
                   </form>
                 ) : (
-                  <button type="button" onClick={() => setLoginOpen(true)} className="mb-6 flex min-h-11 w-full items-center justify-center gap-2 rounded-md border border-[#d7c8e5] bg-[#faf8fc] px-4 text-sm font-semibold text-[#563a78]">
+                  <button type="button" onClick={() => setLoginOpen(true)} className="mb-6 flex min-h-11 w-full items-center justify-center gap-2 rounded-md border border-edvanta-border bg-edvanta-bg px-4 text-sm font-semibold text-edvanta-blue">
                     <Icon name="lock" className="h-4 w-4" /> Inicia sesión para participar
                   </button>
                 )}
 
                 {topComments.length === 0 ? (
-                  <p className="py-8 text-center text-sm text-gray-500">Aún no hay comentarios. Inicia la conversación de esta clase.</p>
+                  <p className="py-8 text-center text-sm text-edvanta-muted">Aún no hay comentarios. Inicia la conversación de esta clase.</p>
                 ) : (
-                  <div className="divide-y divide-gray-100">
+                  <div className="divide-y divide-edvanta-border">
                     {topComments.map(comment => {
                       const commentReplies = replies.filter(reply => reply.parent_id === comment.id);
                       return (
                         <article key={comment.id} className="py-5">
                           <div className="flex items-center gap-3">
-                            <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#e8f4f2] text-xs font-bold text-[#0f766e]">{comment.user_name?.charAt(0)?.toUpperCase() || '?'}</div>
+                            <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-edvanta-mint text-xs font-bold text-edvanta-tealdark">{comment.user_name?.charAt(0)?.toUpperCase() || '?'}</div>
                             <div className="min-w-0">
-                              <p className="truncate text-sm font-semibold text-[#132e55]">{comment.user_name}</p>
-                              <p className="text-[11px] text-gray-400">{formatDate(comment.created_at)}</p>
+                              <p className="truncate text-sm font-semibold text-edvanta-deep">{comment.user_name}</p>
+                              <p className="text-[11px] text-edvanta-subtle">{formatDate(comment.created_at)}</p>
                             </div>
                           </div>
-                          <p className="ml-10 mt-2 whitespace-pre-wrap text-sm leading-6 text-gray-700">{comment.body}</p>
+                          <p className="ml-10 mt-2 whitespace-pre-wrap text-sm leading-6 text-edvanta-deep">{comment.body}</p>
                           <CommentActions comment={comment} canInteract={!!user} onLike={toggleCommentLike} onReply={startReply} />
 
                           {commentReplies.map(reply => (
-                            <div key={reply.id} className="ml-10 mt-4 border-l-2 border-[#d7e9e6] pl-4">
+                            <div key={reply.id} className="ml-10 mt-4 border-l-2 border-edvanta-mint pl-4">
                               <div className="flex items-center gap-2">
-                                <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-gray-100 text-[11px] font-bold text-gray-600">{reply.user_name?.charAt(0)?.toUpperCase() || '?'}</div>
+                                <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-edvanta-soft text-[11px] font-bold text-edvanta-muted">{reply.user_name?.charAt(0)?.toUpperCase() || '?'}</div>
                                 <div>
-                                  <p className="text-xs font-semibold text-[#132e55]">{reply.user_name}</p>
-                                  <p className="text-[10px] text-gray-400">{formatDate(reply.created_at)}</p>
+                                  <p className="text-xs font-semibold text-edvanta-deep">{reply.user_name}</p>
+                                  <p className="text-[10px] text-edvanta-subtle">{formatDate(reply.created_at)}</p>
                                 </div>
                               </div>
-                              <p className="ml-8 mt-1 whitespace-pre-wrap text-sm leading-6 text-gray-600">{reply.body}</p>
+                              <p className="ml-8 mt-1 whitespace-pre-wrap text-sm leading-6 text-edvanta-muted">{reply.body}</p>
                               <CommentActions comment={reply} canInteract={!!user} onLike={toggleCommentLike} onReply={startReply} isReply />
                             </div>
                           ))}
@@ -424,35 +424,35 @@ export default function AcademiaClase() {
 
             <aside className="space-y-4 lg:sticky lg:top-24">
               {user && (
-                <section className="rounded-lg border border-gray-200 bg-white p-4" aria-labelledby="progress-title">
+                <section className="rounded-lg border border-edvanta-border bg-white p-4" aria-labelledby="progress-title">
                   <div className="flex items-center justify-between gap-3">
-                    <h2 id="progress-title" className="text-sm font-semibold text-[#132e55]">Tu progreso</h2>
-                    <Link to="/academia/perfil" className="text-xs font-semibold text-[#563a78] hover:underline">Ver perfil</Link>
+                    <h2 id="progress-title" className="text-sm font-semibold text-edvanta-deep">Tu progreso</h2>
+                    <Link to="/academia/perfil" className="text-xs font-semibold text-edvanta-blue hover:underline">Ver perfil</Link>
                   </div>
-                  <div className="mt-3 h-2 overflow-hidden rounded-full bg-gray-100"><div className="h-full rounded-full bg-[#0f766e]" style={{ width: `${progressPercent}%` }} /></div>
-                  <p className="mt-2 text-xs text-gray-500">{completedIds.size} de {lessons.length} clases · {progressPercent}%</p>
+                  <div className="mt-3 h-2 overflow-hidden rounded-full bg-edvanta-soft"><div className="h-full rounded-full bg-edvanta-tealdark" style={{ width: `${progressPercent}%` }} /></div>
+                  <p className="mt-2 text-xs text-edvanta-muted">{completedIds.size} de {lessons.length} clases · {progressPercent}%</p>
                 </section>
               )}
 
-              <section className="overflow-hidden rounded-lg border border-gray-200 bg-white" aria-labelledby="content-title">
-                <div className="border-b border-gray-200 px-4 py-3">
-                  <h2 id="content-title" className="inline-flex items-center gap-2 text-sm font-semibold text-[#132e55]"><Icon name="list" className="h-4 w-4" /> Contenido del curso</h2>
+              <section className="overflow-hidden rounded-lg border border-edvanta-border bg-white" aria-labelledby="content-title">
+                <div className="border-b border-edvanta-border px-4 py-3">
+                  <h2 id="content-title" className="inline-flex items-center gap-2 text-sm font-semibold text-edvanta-deep"><Icon name="list" className="h-4 w-4" /> Contenido del curso</h2>
                 </div>
                 <div className="max-h-[66vh] overflow-y-auto">
                   {modules.map(module => {
                     const moduleLessons = lessons.filter(item => item.module_id === module.id);
                     if (!moduleLessons.length) return null;
                     return (
-                      <div key={module.id} className="border-b border-gray-100 last:border-0">
-                        <p className="bg-[#f7f8fa] px-4 py-2 text-[11px] font-bold uppercase tracking-[0.08em] text-gray-500">{module.title}</p>
+                      <div key={module.id} className="border-b border-edvanta-border last:border-0">
+                        <p className="bg-edvanta-bg px-4 py-2 text-[11px] font-bold uppercase tracking-[0.08em] text-edvanta-muted">{module.title}</p>
                         {moduleLessons.map((item) => {
                           const active = String(item.id) === lessonKey;
                           return (
-                            <Link key={item.id} to={`/academia/curso/${slug}/clase/${item.id}`} className={`flex min-h-12 items-center gap-3 border-l-2 px-4 py-3 ${active ? 'border-[#0f766e] bg-[#eef7f5]' : 'border-transparent hover:bg-gray-50'}`}>
-                              <span className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-full ${completedIds.has(String(item.id)) ? 'bg-[#0f766e] text-white' : active ? 'bg-white text-[#0f766e]' : 'bg-gray-100 text-gray-500'}`}>
+                            <Link key={item.id} to={`/academia/curso/${slug}/clase/${item.id}`} className={`flex min-h-12 items-center gap-3 border-l-2 px-4 py-3 ${active ? 'border-edvanta-tealdark bg-[#F0FAF9]' : 'border-transparent hover:bg-edvanta-bg'}`}>
+                              <span className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-full ${completedIds.has(String(item.id)) ? 'bg-edvanta-tealdark text-white' : active ? 'bg-white text-edvanta-tealdark' : 'bg-edvanta-soft text-edvanta-muted'}`}>
                                 <Icon name={completedIds.has(String(item.id)) ? 'check' : 'play'} className="h-3.5 w-3.5" />
                               </span>
-                              <span className={`text-xs leading-5 ${active ? 'font-semibold text-[#0f615b]' : 'text-gray-700'}`}>{item.title}</span>
+                              <span className={`text-xs leading-5 ${active ? 'font-semibold text-[#0B6670]' : 'text-edvanta-deep'}`}>{item.title}</span>
                             </Link>
                           );
                         })}

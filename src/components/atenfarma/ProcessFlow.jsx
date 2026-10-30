@@ -19,12 +19,12 @@ export default function ProcessFlow({ steps }) {
           return (
             <div key={step.step} className="relative text-center">
               <div className="w-12 h-12 rounded-xl bg-teal-50 flex items-center justify-center mx-auto mb-2">
-                <svg className="w-5 h-5 text-deepblue-700" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <svg className="w-5 h-5 text-edvanta-blue" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                   <path d={d} />
                 </svg>
               </div>
-              <p className="text-[10px] font-bold text-deepblue-900 mb-0.5">{step.title}</p>
-              <p className="text-[10px] text-gray-400 leading-tight">{step.description}</p>
+              <p className="text-[10px] font-bold text-edvanta-deep mb-0.5">{step.title}</p>
+              <p className="text-[10px] text-edvanta-subtle leading-tight">{step.description}</p>
               {i < steps.length - 1 && (
                 <div className="absolute top-6 -right-1.5 w-3 text-teal-300">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
@@ -43,15 +43,15 @@ export default function ProcessFlow({ steps }) {
             <div key={step.step} className="flex items-start gap-3 relative">
               <div className="flex flex-col items-center shrink-0">
                 <div className="w-10 h-10 rounded-xl bg-teal-50 flex items-center justify-center">
-                  <svg className="w-4 h-4 text-deepblue-700" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <svg className="w-4 h-4 text-edvanta-blue" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                     <path d={d} />
                   </svg>
                 </div>
                 {i < steps.length - 1 && <div className="w-0.5 h-6 bg-teal-100 my-1" />}
               </div>
               <div className="pb-4">
-                <p className="text-xs font-bold text-deepblue-900">{step.step}. {step.title}</p>
-                <p className="text-[11px] text-gray-500">{step.description}</p>
+                <p className="text-xs font-bold text-edvanta-deep">{step.step}. {step.title}</p>
+                <p className="text-[11px] text-edvanta-muted">{step.description}</p>
               </div>
             </div>
           );
