@@ -32,6 +32,7 @@ const importar = (rel) => import(pathToFileURL(path.join(raiz, rel)).href);
 const { articulos } = await importar('src/data/articulos.js');
 const { HERRAMIENTAS } = await importar('src/data/edvanta/herramientas.js');
 const { PRODUCTOS } = await importar('src/data/edvanta/productos.js');
+const { ESCUELA_MARKETING, PROGRAMAS_MARKETING, SERVICIOS_MARKETING } = await importar('src/data/edvanta/marketing.js');
 const { DIRECCIONES_ANTIGUAS } = await importar('src/data/edvanta/direcciones.js');
 const { nombreDeCurso, slugify } = await importar('src/lib/slug.js');
 
@@ -40,7 +41,7 @@ const plantilla = readFileSync(path.join(dist, 'index.html'), 'utf8');
 const esc = (t) => String(t ?? '')
   .replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;');
 
-function pagina({ titulo, descripcion, canonical, imagen = `${SITIO}/img/edvanta-hero.webp`, jsonLd = [], cuerpo = '' }) {
+function pagina({ titulo, descripcion, canonical, imagen = `${SITIO}/img/edvanta-hero.webp`, jsonLd = [], cuerpo = '', robots = null }) {
   const t = esc(titulo);
   const d = esc(descripcion);
   let html = plantilla
@@ -54,6 +55,9 @@ function pagina({ titulo, descripcion, canonical, imagen = `${SITIO}/img/edvanta
     .replace(/(<meta name="twitter:title" content=")[^"]*(")/, `$1${t}$2`)
     .replace(/(<meta name="twitter:description" content=")[^"]*(")/, `$1${d}$2`)
     .replace(/(<meta name="twitter:image" content=")[^"]*(")/, `$1${imagen}$2`);
+  if (robots) {
+    html = html.replace(/<meta name="robots"[^>]*>/, `<meta name="robots" content="${esc(robots)}" />`);
+  }
   const scripts = jsonLd.map((j) => `    <script type="application/ld+json" data-prerender>${JSON.stringify(j).replaceAll('</', '<\\/')}</script>`).join('\n');
   if (scripts) html = html.replace('</head>', `${scripts}\n  </head>`);
   if (cuerpo) html = html.replace('<div id="root"></div>', `<div id="root">${cuerpo}</div>`);
@@ -158,6 +162,105 @@ for (const p of PRODUCTOS.filter((x) => x.tipo === 'curso_en_vivo' && x.to?.star
 
 /* ── Sitemap ──────────────────────────────────────────────── */
 
+/* ── Escuela de Marketing y servicios ────────────────────── */
+
+const rutaEscuelaMarketing = `/escuelas/${ESCUELA_MARKETING.slug}`;
+const canonicalEscuelaMarketing = `${SITIO}${rutaEscuelaMarketing}`;
+const htmlEscuelaMarketing = pagina({
+  titulo: 'Escuela de Marketing y Comunicación Farmacéutica | Edvanta',
+  descripcion: 'Formación para profesionales y soluciones para empresas que quieren comunicar con claridad en el sector farmacéutico y de la salud.',
+  canonical: canonicalEscuelaMarketing,
+  imagen: `${SITIO}${ESCUELA_MARKETING.imagen}`,
+  jsonLd: [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'CollectionPage',
+      name: 'Escuela de Marketing y Comunicación Farmacéutica',
+      description: 'Formación y servicios de marketing y comunicación para profesionales y empresas del sector farmacéutico y de la salud.',
+      url: canonicalEscuelaMarketing,
+      publisher: { '@type': 'Organization', name: 'Edvanta', url: SITIO },
+    },
+    migas([['Inicio', `${SITIO}/`], ['Escuelas', `${SITIO}/escuelas`], ['Marketing y Comunicación', canonicalEscuelaMarketing]]),
+  ],
+  cuerpo: `<main><h1>${esc(ESCUELA_MARKETING.titulo)}</h1><p>${esc(ESCUELA_MARKETING.lead)}</p><p><a href="/empresas/marketing">Ver soluciones para empresas</a></p></main>`,
+});
+escribir(`${rutaEscuelaMarketing.slice(1)}.html`, htmlEscuelaMarketing);
+// La carpeta de programas existe: este index evita un 403 al abrir
+// la escuela con barra final.
+escribir(`${rutaEscuelaMarketing.slice(1)}/index.html`, htmlEscuelaMarketing);
+// La escuela ya figura en el sitemap base; no se duplica aquí.
+
+// Programas en desarrollo: se prerenderizan para que una recarga directa
+// tenga contenido y noindex, pero no entran al sitemap ni al índice.
+for (const p of PROGRAMAS_MARKETING) {
+  const ruta = `/escuelas/${ESCUELA_MARKETING.slug}/programas/${p.slug}`;
+  const canonical = `${SITIO}${ruta}`;
+  escribir(`${ruta.slice(1)}.html`, pagina({
+    titulo: `${p.nombre} | Programa en desarrollo | Edvanta`,
+    descripcion: `${p.resultado} Programa propuesto de la Escuela de Marketing y Comunicación Farmacéutica.`,
+    canonical,
+    robots: 'noindex,follow',
+    cuerpo: `<main><h1>${esc(p.nombre)}</h1><p>${esc(p.resumen)}</p><p><strong>Programa en desarrollo:</strong> sin fecha, matrícula ni certificado confirmados.</p></main>`,
+    jsonLd: [migas([
+      ['Inicio', `${SITIO}/`],
+      ['Escuelas', `${SITIO}/escuelas`],
+      ['Marketing y Comunicación', canonicalEscuelaMarketing],
+      [p.nombre, canonical],
+    ])],
+  }));
+}
+
+const rutaHubMarketing = '/empresas/marketing';
+const canonicalHubMarketing = `${SITIO}${rutaHubMarketing}`;
+const htmlHubMarketing = pagina({
+  titulo: 'Marketing y comunicación para empresas del sector salud | Edvanta',
+  descripcion: 'Estrategia, comunicación científica, materiales, contenidos, campañas y formación de equipos. Servicios de Edvanta para empresas del sector farmacéutico y de la salud.',
+  canonical: canonicalHubMarketing,
+  imagen: `${SITIO}/img/escuelas/marketing.webp`,
+  jsonLd: [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'CollectionPage',
+      name: 'Marketing y comunicación para empresas',
+      description: 'Servicios de estrategia, comunicación científica, materiales, contenidos y formación para empresas del sector salud.',
+      url: canonicalHubMarketing,
+      publisher: { '@type': 'Organization', name: 'Edvanta', url: SITIO },
+    },
+    migas([['Inicio', `${SITIO}/`], ['Instituciones', `${SITIO}/instituciones`], ['Marketing y comunicación', canonicalHubMarketing]]),
+  ],
+  cuerpo: `<main><h1>Marketing y comunicación para empresas</h1><p>Soluciones para comunicar mejor la ciencia, bajo propuesta.</p><ul>${SERVICIOS_MARKETING.map((s) => `<li><a href="/empresas/marketing/${s.slug}">${esc(s.nombre)}</a></li>`).join('')}</ul></main>`,
+});
+escribir('empresas/marketing.html', htmlHubMarketing);
+// La carpeta de servicios existe: también se deja un index para que
+// /empresas/marketing/ no termine en un 403 del servidor.
+escribir('empresas/marketing/index.html', htmlHubMarketing);
+enSitemap.push({ ruta: rutaHubMarketing, prioridad: '0.8' });
+
+for (const s of SERVICIOS_MARKETING) {
+  const ruta = `/empresas/marketing/${s.slug}`;
+  const canonical = `${SITIO}${ruta}`;
+  escribir(`${ruta.slice(1)}.html`, pagina({
+    titulo: `${s.nombre} para empresas | Edvanta`,
+    descripcion: s.necesidad,
+    canonical,
+    imagen: `${SITIO}/img/escuelas/marketing.webp`,
+    jsonLd: [
+      {
+        '@context': 'https://schema.org',
+        '@type': 'Service',
+        name: s.nombre,
+        description: s.necesidad,
+        serviceType: s.nombre,
+        url: canonical,
+        provider: { '@type': 'Organization', name: 'Edvanta', url: SITIO },
+      },
+      migas([['Inicio', `${SITIO}/`], ['Instituciones', `${SITIO}/instituciones`], ['Marketing y comunicación', canonicalHubMarketing], [s.nombre, canonical]]),
+    ],
+    cuerpo: `<main><h1>${esc(s.nombre)}</h1><p>${esc(s.necesidad)}</p><p><a href="/empresas/marketing">Ver todos los servicios</a></p></main>`,
+  }));
+  enSitemap.push({ ruta, prioridad: '0.7' });
+}
+
 const rutaSitemap = path.join(dist, 'sitemap.xml');
 if (existsSync(rutaSitemap)) {
   let xml = readFileSync(rutaSitemap, 'utf8');
@@ -180,4 +283,4 @@ if (existsSync(rutaSitemap)) {
   writeFileSync(rutaSitemap, xml);
 }
 
-console.log(`Páginas fijas prerenderizadas: ${enSitemap.length} (herramientas, categorías y cursos en vivo)`);
+console.log(`Páginas fijas prerenderizadas: ${enSitemap.length} (herramientas, categorías, cursos en vivo y marketing)`);

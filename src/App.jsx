@@ -72,6 +72,10 @@ const HerramientaLandingPage = lazy(() => import('./pages/HerramientaLandingPage
 // Arquitectura de escuelas: una página por puerta de entrada.
 const Escuelas = lazy(() => import('./pages/edvanta/Escuelas'));
 const Escuela = lazy(() => import('./pages/edvanta/Escuela'));
+const MarketingEscuela = lazy(() => import('./pages/edvanta/MarketingEscuela'));
+const MarketingPrograma = lazy(() => import('./pages/edvanta/MarketingPrograma'));
+const MarketingServicios = lazy(() => import('./pages/edvanta/MarketingServicios'));
+const MarketingServicio = lazy(() => import('./pages/edvanta/MarketingServicio'));
 const CursoEnVivo = lazy(() => import('./pages/edvanta/CursoEnVivo'));
 const Guias = lazy(() => import('./pages/edvanta/Guias'));
 const Pacientes = lazy(() => import('./pages/edvanta/Pacientes'));
@@ -226,6 +230,8 @@ export default function App() {
 
         {/* Escuelas, públicos y páginas de la empresa */}
         <Route path="/escuelas" element={<Escuelas />} />
+        <Route path="/escuelas/marketing-y-comunicacion-farmaceutica" element={<MarketingEscuela />} />
+        <Route path="/escuelas/marketing-y-comunicacion-farmaceutica/programas/:slug" element={<MarketingPrograma />} />
         <Route path="/escuelas/:slug" element={<Escuela />} />
         <Route path="/guias" element={<Guias />} />
         <Route path="/pacientes" element={<Pacientes />} />
@@ -367,6 +373,8 @@ export default function App() {
         <Route path="/empresas" element={<Navigate to="/instituciones" replace />} />
         <Route path="/empresas/capacitacion" element={<Navigate to="/instituciones/paquetes/equipo-que-cuida" replace />} />
         <Route path="/empresas/recluta-talento-farmaceutico" element={<EmpresasTalento />} />
+        <Route path="/empresas/marketing" element={<MarketingServicios />} />
+        <Route path="/empresas/marketing/:servicio" element={<MarketingServicio />} />
         {/* Landings por área de capacitación (catálogo de /instituciones). */}
         <Route path="/empresas/:slug" element={<CapacitacionArea />} />
 

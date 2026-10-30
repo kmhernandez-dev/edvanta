@@ -1,0 +1,623 @@
+/* ============================================================
+ *  Escuela de Marketing y servicios para empresas
+ *
+ *  Composiciones editoriales con el blanco como base y lavanda y
+ *  menta muy pálidos como acentos. Las piezas gráficas son ejemplos
+ *  de estructura, no proyectos contratados.
+ * ============================================================ */
+
+.marketing-bg-lavender {
+  background: #f4f0fb;
+}
+
+.marketing-bg-mint {
+  background: #eff8f2;
+}
+
+/* ── Tarjetas ─────────────────────────────────────────────── */
+
+.marketing-card {
+  border: 1px solid var(--ds-line);
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 2px 10px -6px rgba(20, 35, 63, 0.12);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.marketing-card:hover {
+  transform: translateY(-2px);
+  border-color: #c9d4e6;
+  box-shadow: 0 18px 34px -26px rgba(8, 46, 134, 0.35);
+}
+
+.marketing-card__icon {
+  display: inline-flex;
+  width: 44px;
+  height: 44px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #f4f0fb 0%, #eff8f2 100%);
+  color: var(--ds-teal-strong);
+}
+
+/* ── Composición principal ────────────────────────────────── */
+
+.marketing-stage {
+  position: relative;
+  min-height: 430px;
+  overflow: hidden;
+  border: 1px solid #e7e1f4;
+  border-radius: 26px;
+  background:
+    radial-gradient(ellipse 55% 55% at 8% 8%, rgba(137, 129, 206, 0.15), transparent 68%),
+    radial-gradient(ellipse 55% 55% at 95% 88%, rgba(37, 167, 176, 0.14), transparent 68%),
+    linear-gradient(145deg, #f7f4fd 0%, #eff8f2 62%, #fbfdfd 100%);
+  padding: 24px;
+}
+
+.marketing-stage__poster,
+.marketing-stage__sheet,
+.marketing-stage__campaign {
+  position: absolute;
+  background: #fff;
+  box-shadow: 0 20px 44px -30px rgba(20, 35, 63, 0.48);
+}
+
+.marketing-stage__poster {
+  left: 7%;
+  top: 9%;
+  width: 49%;
+  min-height: 224px;
+  transform: rotate(-2.5deg);
+  border: 1px solid #e8e2f3;
+  border-radius: 18px;
+  padding: 20px;
+}
+
+.marketing-stage__kicker {
+  display: inline-flex;
+  border-radius: 999px;
+  background: #f4f0fb;
+  padding: 5px 9px;
+  color: #5e51a8;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.marketing-stage__title {
+  margin-top: 20px;
+  color: var(--ds-navy);
+  font-family: var(--ds-font-display);
+  font-size: 1.55rem;
+  font-weight: 800;
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+}
+
+.marketing-stage__line {
+  margin-top: 7px;
+  color: var(--ds-text-2);
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.marketing-stage__bars {
+  display: flex;
+  gap: 5px;
+  margin-top: 21px;
+}
+
+.marketing-stage__bars span {
+  display: block;
+  height: 5px;
+  border-radius: 999px;
+  background: #e8e2f3;
+}
+
+.marketing-stage__bars span:nth-child(1) { width: 42%; background: #c8bfe9; }
+.marketing-stage__bars span:nth-child(2) { width: 24%; background: #b9e4e1; }
+.marketing-stage__bars span:nth-child(3) { width: 18%; }
+
+.marketing-stage__meta {
+  margin-top: 22px;
+  color: var(--ds-text-3);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.marketing-stage__sheet {
+  right: 6%;
+  top: 7%;
+  width: 39%;
+  transform: rotate(2deg);
+  border: 1px solid #e1eceb;
+  border-radius: 16px;
+  padding: 17px;
+}
+
+.marketing-stage__sheet-head {
+  display: block;
+  color: var(--ds-teal-strong);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.marketing-stage__sheet p {
+  margin-top: 14px;
+  color: var(--ds-text);
+  font-size: 11px;
+  font-weight: 650;
+  line-height: 1.35;
+}
+
+.marketing-stage__rule {
+  height: 4px;
+  margin-top: 8px;
+  border-radius: 999px;
+  background: #e7efef;
+}
+
+.marketing-stage__rule--short {
+  width: 64%;
+}
+
+.marketing-stage__sheet .marketing-stage__ref {
+  margin-top: 18px;
+  color: var(--ds-text-3);
+  font-size: 8px;
+  font-weight: 600;
+}
+
+.marketing-stage__campaign {
+  left: 20%;
+  bottom: 6%;
+  width: 64%;
+  overflow: hidden;
+  border: 1px solid #e4e9f2;
+  border-radius: 16px;
+}
+
+.marketing-stage__campaign img {
+  display: block;
+  width: 100%;
+  height: 92px;
+  object-fit: cover;
+}
+
+.marketing-stage__campaign-body {
+  padding: 12px 14px 14px;
+}
+
+.marketing-stage__campaign-body > span {
+  color: var(--ds-text-3);
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.marketing-stage__campaign-body p {
+  margin-top: 4px;
+  color: var(--ds-navy);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.marketing-stage__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 9px;
+  color: var(--ds-teal-strong);
+  font-size: 9px;
+  font-weight: 800;
+}
+
+/* ── Pestañas ─────────────────────────────────────────────── */
+
+.marketing-tabs {
+  display: flex;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  gap: 6px;
+  overflow-x: auto;
+  border-bottom: 1px solid var(--ds-line);
+  padding-bottom: 1px;
+  scrollbar-width: thin;
+}
+
+.marketing-tab {
+  min-height: 44px;
+  flex-shrink: 0;
+  border-bottom: 2px solid transparent;
+  padding: 0 14px;
+  color: var(--ds-text-2);
+  font-size: 13px;
+  font-weight: 700;
+  transition: color 0.18s ease, border-color 0.18s ease, background-color 0.18s ease;
+}
+
+.marketing-tab:hover {
+  color: var(--ds-navy);
+  background: #f8fafc;
+}
+
+.marketing-tab[aria-selected='true'] {
+  border-color: var(--ds-navy);
+  color: var(--ds-navy);
+}
+
+.marketing-panel {
+  border: 1px solid var(--ds-line);
+  border-radius: 18px;
+  background: #fff;
+  padding: 24px;
+}
+
+.marketing-area-visual {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 18px;
+  background:
+    radial-gradient(ellipse 70% 80% at 100% 0%, rgba(137, 129, 206, 0.16), transparent 70%),
+    linear-gradient(150deg, #f4f0fb, #eff8f2);
+  padding: 26px;
+}
+
+.marketing-area-visual__kicker {
+  color: #5e51a8;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.marketing-area-visual > p {
+  margin-top: 8px;
+  color: var(--ds-navy);
+  font-family: var(--ds-font-display);
+  font-size: 1.15rem;
+  font-weight: 800;
+  line-height: 1.35;
+}
+
+.marketing-area-visual__list {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  margin-top: 18px;
+}
+
+.marketing-area-visual__list span {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  color: var(--ds-text-2);
+  font-size: 11px;
+  line-height: 1.45;
+}
+
+.marketing-area-visual__list em {
+  color: #5e51a8;
+  font-style: normal;
+  font-weight: 800;
+}
+
+/* ── Proceso ──────────────────────────────────────────────── */
+
+.marketing-process {
+  display: grid;
+  gap: 14px;
+  list-style: none;
+}
+
+@media (min-width: 900px) {
+  .marketing-process {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 12px;
+  }
+}
+
+.marketing-process__step {
+  border: 1px solid var(--ds-line);
+  border-radius: 16px;
+  background: #fff;
+  padding: 18px;
+}
+
+.marketing-process__num {
+  display: inline-flex;
+  width: 30px;
+  height: 30px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9px;
+  background: #f4f0fb;
+  color: #5e51a8;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.marketing-process__step h3 {
+  margin-top: 12px;
+  color: var(--ds-text);
+  font-family: var(--ds-font-display);
+  font-size: 0.95rem;
+  font-weight: 800;
+}
+
+.marketing-process__step p {
+  margin-top: 5px;
+  color: var(--ds-text-2);
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+.marketing-process__out {
+  display: inline-block;
+  margin-top: 12px;
+  border-radius: 999px;
+  background: #eff8f2;
+  padding: 4px 8px;
+  color: var(--ds-teal-strong);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
+/* ── Ejemplos de entregables ──────────────────────────────── */
+
+.marketing-example {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--ds-line);
+  border-radius: 18px;
+  background: #fff;
+}
+
+.marketing-example__surface {
+  min-height: 190px;
+  padding: 18px;
+  background:
+    radial-gradient(ellipse 70% 80% at 100% 0%, rgba(137, 129, 206, 0.12), transparent 70%),
+    linear-gradient(150deg, #f7f4fd, #eff8f2);
+}
+
+.marketing-example__surface--ficha,
+.marketing-example__surface--program {
+  background: #f7f9fc;
+}
+
+.marketing-example__kicker {
+  color: var(--ds-text-3);
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.marketing-example__surface h4 {
+  margin-top: 12px;
+  color: var(--ds-navy);
+  font-family: var(--ds-font-display);
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 1.3;
+}
+
+.marketing-example__line {
+  height: 5px;
+  width: 70%;
+  margin-top: 8px;
+  border-radius: 999px;
+  background: #dfe5ee;
+}
+
+.marketing-example__line--long {
+  width: 92%;
+}
+
+.marketing-example__mini {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 5px;
+  margin-top: 16px;
+}
+
+.marketing-example__mini span {
+  border: 1px solid #e3e9f2;
+  border-radius: 7px;
+  background: #fff;
+  padding: 6px 5px;
+  color: var(--ds-text-2);
+  font-size: 7px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.marketing-example__small {
+  margin-top: 12px;
+  color: var(--ds-text-3);
+  font-size: 9px;
+  line-height: 1.5;
+}
+
+.marketing-example__steps {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 12px;
+}
+
+.marketing-example__steps span {
+  border: 1px solid #e3e9f2;
+  border-radius: 8px;
+  background: #fff;
+  padding: 7px 8px;
+  color: var(--ds-text-3);
+  font-size: 8px;
+  line-height: 1.35;
+}
+
+.marketing-example__steps strong {
+  color: var(--ds-navy);
+  font-size: 9px;
+}
+
+.marketing-example__calendar {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 4px;
+  margin-top: 12px;
+}
+
+.marketing-example__calendar span {
+  display: flex;
+  min-height: 44px;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid #e3e9f2;
+  border-radius: 7px;
+  background: #fff;
+  padding: 5px;
+}
+
+.marketing-example__calendar strong {
+  color: #5e51a8;
+  font-size: 8px;
+}
+
+.marketing-example__calendar em {
+  color: var(--ds-text-2);
+  font-size: 7px;
+  font-style: normal;
+  line-height: 1.25;
+}
+
+.marketing-example__browser {
+  display: flex;
+  gap: 3px;
+  margin-top: 8px;
+}
+
+.marketing-example__browser-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 999px;
+  background: #c9d4e6;
+}
+
+.marketing-example__cta {
+  display: inline-block;
+  margin-top: 12px;
+  border-radius: 6px;
+  background: var(--ds-navy);
+  padding: 5px 8px;
+  color: #fff;
+  font-size: 7px;
+  font-weight: 800;
+}
+
+.marketing-example__agenda {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-top: 12px;
+}
+
+.marketing-example__agenda span {
+  border: 1px solid #e3e9f2;
+  border-radius: 7px;
+  background: #fff;
+  padding: 7px 8px;
+  color: var(--ds-text-2);
+  font-size: 8px;
+  line-height: 1.35;
+}
+
+.marketing-example__agenda strong {
+  color: var(--ds-navy);
+}
+
+.marketing-example__caption {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 16px;
+}
+
+.marketing-example__title {
+  color: var(--ds-text);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.marketing-example__desc {
+  margin-top: 4px;
+  flex: 1;
+  color: var(--ds-text-2);
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.marketing-example__tag {
+  align-self: flex-start;
+  margin-top: 10px;
+  border-radius: 999px;
+  background: #f4f0fb;
+  padding: 3px 7px;
+  color: #5e51a8;
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
+/* ── Ajustes ──────────────────────────────────────────────── */
+
+@media (max-width: 767px) {
+  .marketing-stage {
+    display: flex;
+    min-height: auto;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .marketing-stage__poster,
+  .marketing-stage__sheet,
+  .marketing-stage__campaign {
+    position: static;
+    width: 100%;
+    transform: none;
+  }
+
+  .marketing-stage__poster {
+    min-height: 0;
+  }
+
+  .marketing-stage__title {
+    font-size: 1.35rem;
+  }
+
+  .marketing-stage__campaign img {
+    height: 110px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marketing-card,
+  .marketing-tab {
+    transition: none;
+  }
+}

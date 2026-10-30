@@ -197,6 +197,22 @@ export default function Instituciones() {
           </div>
         </Section>
 
+        <Section tone="lavender" bordered>
+          <div className="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
+            <div>
+              <SectionHeading
+                eyebrow="Marketing y comunicación"
+                title="¿Tu equipo necesita comunicar mejor la ciencia?"
+                desc="Estrategia, comunicación científica, materiales, contenidos y formación de equipos comerciales. Una línea de servicios con propuesta según la necesidad de tu organización."
+              />
+            </div>
+            <div className="flex shrink-0 flex-wrap gap-3">
+              <Btn to="/empresas/marketing" icon={Megaphone} iconRight={ArrowRight}>Ver servicios de marketing</Btn>
+              <Btn to="/empresas/marketing#solicitar-propuesta" variant="secondary">Solicitar propuesta</Btn>
+            </div>
+          </div>
+        </Section>
+
         <Section id="catalogo" tone="ice" bordered>
           <SectionHeading
             eyebrow="Catálogo de capacitación"

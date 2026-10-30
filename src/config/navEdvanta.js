@@ -98,10 +98,11 @@ export const NAV_PACIENTES = [
 ];
 
 export const NAV_INSTITUCIONES = [
-  { label: 'Áreas de capacitación', to: '/instituciones#catalogo' },
+  { label: 'Capacitación', to: '/instituciones#catalogo' },
+  { label: 'Marketing', to: '/empresas/marketing' },
   { label: 'Paquetes', to: '/instituciones#paquetes' },
-  { label: 'Directorio de talento', to: '/empresas/recluta-talento-farmaceutico' },
-  { label: 'Solicitar propuesta', to: '/instituciones#solicitar-propuesta' },
+  { label: 'Talento', to: '/empresas/recluta-talento-farmaceutico' },
+  { label: 'Propuesta', to: '/instituciones#solicitar-propuesta' },
 ];
 
 /* ── Franja superior ──────────────────────────────────────── */
@@ -142,6 +143,7 @@ export const FOOTER_COLUMNS = [
     links: [
       { label: 'Capacitación para organizaciones', to: '/instituciones' },
       { label: 'Áreas de capacitación', to: '/instituciones#catalogo' },
+      { label: 'Marketing y comunicación', to: '/empresas/marketing' },
       { label: 'Equipo que Cuida', to: '/instituciones/paquetes/equipo-que-cuida' },
       { label: 'Solicitar una propuesta', to: '/instituciones#solicitar-propuesta' },
       { label: 'Directorio de talento', to: '/empresas/recluta-talento-farmaceutico' },
