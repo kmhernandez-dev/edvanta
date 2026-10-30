@@ -138,6 +138,19 @@ describe('aula · direcciones con nombre', () => {
     }
   });
 
+  it('abrir el enlace del catálogo inscribe y abre el curso sin paso intermedio', async () => {
+    const antes = await p.get('/me/courses/curso-de-gestion-de-calidad');
+    expect(antes.status).toBe(404);
+
+    const alta = await p.post('/me/catalog/slug/curso-de-gestion-de-calidad/enroll', {});
+    expect(alta.status).toBe(201);
+    expect(alta.data.courseId).toBe(Number(deEdvanta.id));
+
+    const despues = await p.get('/me/courses/curso-de-gestion-de-calidad');
+    expect(despues.status).toBe(200);
+    expect(despues.data.courseId).toBe(Number(deEdvanta.id));
+  });
+
   it('el aviso de asignación ya lleva la dirección con nombre', async () => {
     const { rows } = await t.db.query(
       `SELECT link FROM aula_notifications WHERE user_id = $1 AND type = 'asignacion'`,

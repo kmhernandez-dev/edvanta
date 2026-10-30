@@ -1,98 +1,33 @@
-import { Award, CalendarClock, PartyPopper } from 'lucide-react';
-import { get } from '../../api';
-import { Button } from '../../ui/Button';
-import { useAsync } from '../../hooks';
-import { fmtDate, plural } from '../../labels';
-import { StatusBadge } from '../../ui/Badge';
-import { Alert, LoadingBlock } from '../../ui/States';
-import { CourseOverview, ResourceList } from '../../player/CourseOverview';
+/**
+ * La portada intermedia del curso ya no se muestra: quien entra al aula
+ * pasa directo a la clase donde va. La API entrega `resumeLessonId`
+ * (la última clase abierta o la siguiente pendiente), así que la persona
+ * retoma su avance sin una pantalla extra.
+ *
+ * La vista general del curso sigue existiendo para la vista previa del
+ * administrador (`CourseOverview`), pero no como paso del participante.
+ */
+import { Navigate } from 'react-router-dom';
 import { flattenLessons } from '../../player/CoursePlayer';
 import { useCourseData } from './CursoParticipante';
 
-const DAY_MS = 24 * 60 * 60 * 1000;
-
-export function progressLabel(enrollment) {
-  const parts = [`${enrollment.lessons.done} de ${plural(enrollment.lessons.required, 'clase obligatoria', 'clases obligatorias')}`];
-  if (enrollment.assessments.required) parts.push(`${enrollment.assessments.passed} de ${plural(enrollment.assessments.required, 'evaluación', 'evaluaciones')}`);
-  if (enrollment.activities.required) parts.push(`${enrollment.activities.approved} de ${plural(enrollment.activities.required, 'actividad', 'actividades')}`);
-  return parts.join(' · ');
-}
-
-function Notice({ enrollment }) {
-  if (enrollment.status === 'completado') {
-    return (
-      <Alert tone="success" title="¡Completaste este curso!">
-        {enrollment.completedAt ? `Lo terminaste el ${fmtDate(enrollment.completedAt)}. ` : ''}Puedes volver a repasar sus clases cuando quieras.
-      </Alert>
-    );
-  }
-  if (!enrollment.dueAt) return null;
-  const due = new Date(enrollment.dueAt);
-  const days = Math.ceil((due.getTime() - Date.now()) / DAY_MS);
-  if (days < 0) {
-    return (
-      <Alert tone="warning" title={`La fecha límite fue el ${fmtDate(due)}`}>
-        Todavía puedes avanzar; quien coordina tu capacitación verá la fecha en que termines.
-      </Alert>
-    );
-  }
-  return (
-    <p className="flex items-center gap-2 text-sm text-[var(--aula-muted)]">
-      <CalendarClock className="h-4 w-4 shrink-0" aria-hidden="true" />
-      Fecha límite: <strong className="text-[var(--aula-text)]">{fmtDate(due)}</strong>
-      {days <= 7 && <span>({days <= 1 ? 'vence pronto' : `quedan ${days} días`})</span>}
-    </p>
-  );
-}
-
-function Resources({ courseId }) {
-  const res = useAsync(({ signal }) => get(`/me/courses/${courseId}/resources`, { signal }), [courseId]);
-  if (res.loading && !res.data) return <LoadingBlock rows={2} label="Cargando recursos" />;
-  if (res.error) return <p className="text-sm text-[var(--aula-danger)]">{res.error.message}</p>;
-  return <ResourceList resources={res.data.resources} categories={res.data.categories} />;
-}
-
 export default function PortadaCurso() {
-  const { data, courseId, rutas } = useCourseData();
-  const e = data.enrollment;
-  const lessons = flattenLessons(data.snapshot);
-  const started = Boolean(e.firstAccessAt);
-  const resume = data.resumeLessonId;
-  const startLabel = e.status === 'completado'
-    ? 'Repasar el curso'
-    : started ? 'Continuar donde quedaste' : 'Empezar el curso';
+  const { data, rutas } = useCourseData();
+  const clases = flattenLessons(data.snapshot);
+  const destino = data.resumeLessonId || clases[0]?.id;
 
-  return (
-    <CourseOverview
-      snapshot={data.snapshot}
-      backTo={{ to: '/aula', label: 'Mi aula' }}
-      startHref={resume && lessons.length ? rutas.clase(resume) : null}
-      startLabel={startLabel}
-      lessonHref={rutas.clase}
-      lessonState={(id) => data.lessonStates[id] || { status: 'pendiente' }}
-      progress={{ pct: e.progressPct, label: progressLabel(e) }}
-      notice={(
-        <div className="flex flex-col gap-3">
-          <div className="flex flex-wrap items-center gap-2 text-xs text-[var(--aula-muted)]">
-            <StatusBadge kind="enrollment" status={e.status} />
-            {data.companyName && <span>Capacitación de {data.companyName}</span>}
-            {e.status === 'completado' && <PartyPopper className="h-4 w-4 text-[var(--aula-success)]" aria-hidden="true" />}
-          </div>
-          <Notice enrollment={e} />
-          {e.status === 'completado' && (
-            <div className="flex flex-wrap items-center justify-between gap-3 rounded-[var(--aula-radius)] border border-[var(--aula-border)] bg-white px-4 py-3">
-              <p className="flex items-center gap-2 text-sm font-semibold">
-                <Award className="h-5 w-5 text-[var(--aula-secondary)]" aria-hidden="true" />
-                {data.certificate ? `Tu certificado ${data.certificate.code}` : 'Ya puedes emitir tu certificado de aprobación'}
-              </p>
-              <Button size="sm" to={rutas.certificado} icon={Award}>
-                {data.certificate ? 'Ver mi certificado' : 'Obtener mi certificado'}
-              </Button>
-            </div>
-          )}
+  if (!destino) {
+    return (
+      <div className="aula-root flex min-h-screen items-center justify-center px-4">
+        <div className="max-w-md rounded-[var(--aula-radius-lg)] border border-[var(--aula-border)] bg-white px-6 py-8 text-center">
+          <h1 className="text-lg font-bold text-[var(--aula-primary)]">Este curso todavía no tiene clases</h1>
+          <p className="mt-2 text-sm text-[var(--aula-muted)]">
+            Cuando se publiquen, aparecerán aquí y podrás empezar directamente.
+          </p>
         </div>
-      )}
-      resources={data.resourcesEnabled ? <Resources courseId={courseId} /> : null}
-    />
-  );
+      </div>
+    );
+  }
+
+  return <Navigate to={rutas.clase(destino)} replace />;
 }

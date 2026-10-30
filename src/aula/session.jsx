@@ -99,6 +99,11 @@ export function useAulaSession() {
   return ctx;
 }
 
+/** La sesión si existe; null fuera del aula (pruebas de piezas aisladas). */
+export function useAulaSessionOptional() {
+  return useContext(SessionContext);
+}
+
 export const homeFor = (user) => (user?.role === 'admin' ? '/aula/admin' : '/aula');
 
 /** Solo muestra el contenido con sesión (y el rol pedido); si no, redirige. */

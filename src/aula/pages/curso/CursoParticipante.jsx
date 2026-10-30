@@ -4,13 +4,13 @@
  * Carga el curso una vez y lo comparte con la portada, las clases y los
  * recursos. Las actualizaciones de avance conservan el mismo snapshot.
  */
-import { Suspense, useCallback, useMemo } from 'react';
+import { Suspense, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Link, Navigate, Outlet, useLocation, useOutletContext, useParams } from 'react-router-dom';
 import { ArrowLeft, CalendarClock, Eye, Lock, SearchX } from 'lucide-react';
-import { get } from '../../api';
+import { get, post } from '../../api';
 import { useAsync } from '../../hooks';
 import { direccionVigente, rutasDelCurso } from '../../rutas';
-import { useAulaSession } from '../../session';
+import { useAulaSessionOptional } from '../../session';
 import { Button } from '../../ui/Button';
 import { PageLoader } from '../../ui/States';
 
@@ -27,7 +27,7 @@ const CLOSED_ICON = {
 };
 
 function Unavailable({ error, courseId }) {
-  const { user } = useAulaSession();
+  const { user } = useAulaSessionOptional() || {};
   const admin = user?.role === 'admin';
   const Icon = error.status === 404 ? SearchX : CLOSED_ICON[error.code] || Lock;
   const title = error.status === 404
@@ -62,6 +62,7 @@ export default function CursoParticipante() {
   const { cursoRef, courseId: idViejo } = useParams();
   const ref = cursoRef ?? idViejo;
   const { pathname, search, hash } = useLocation();
+  const { user } = useAulaSessionOptional() || {};
   const valida = /^\d+$/.test(ref) || /^curso-[a-z0-9-]+$/i.test(ref);
   const course = useAsync(
     ({ signal }) => (valida ? get(`/me/courses/${encodeURIComponent(ref)}`, { signal }) : Promise.resolve(null)),
@@ -69,6 +70,30 @@ export default function CursoParticipante() {
   );
   const { setData } = course;
   const rutas = useMemo(() => (course.data ? rutasDelCurso(course.data) : null), [course.data]);
+  const autoIntentado = useRef(null);
+  const [autoFallo, setAutoFallo] = useState(false);
+
+  // Quien abre un enlace de curso con su cuenta entra directo: si todavía
+  // no está inscrito, se inscribe en el catálogo abierto y se recarga. Los
+  // administradores no tienen matrícula: siguen usando la vista previa.
+  useEffect(() => {
+    setAutoFallo(false);
+    autoIntentado.current = null;
+  }, [ref]);
+
+  useEffect(() => {
+    if (!user || user.role === 'admin' || course.error?.status !== 404) return undefined;
+    if (!valida || autoIntentado.current === ref) return undefined;
+    const destino = /^curso-[a-z0-9-]+$/i.test(ref)
+      ? `/me/catalog/slug/${encodeURIComponent(ref)}/enroll`
+      : `/me/catalog/${Number(ref)}/enroll`;
+    autoIntentado.current = ref;
+    let vivo = true;
+    post(destino)
+      .then(() => { if (vivo) course.reload(); })
+      .catch(() => { if (vivo) setAutoFallo(true); });
+    return () => { vivo = false; };
+  }, [course.error, course.reload, ref, user?.role, valida]);
 
   // Aplica la respuesta de un evento de aprendizaje sin reemplazar el contenido.
   const applyProgress = useCallback((res) => {
@@ -95,6 +120,9 @@ export default function CursoParticipante() {
     return <Unavailable error={{ status: 404, message: 'Revisa la dirección o vuelve a Mi aula.' }} courseId={null} />;
   }
   if (course.loading && !course.data) return <PageLoader label="Abriendo el curso…" />;
+  if (course.error?.status === 404 && !course.data && user && user.role !== 'admin' && valida && !autoFallo) {
+    return <PageLoader label="Inscribiéndote y abriendo el curso…" />;
+  }
   if (course.error && !course.data) {
     if (course.error.status === 403 || course.error.status === 404) return <Unavailable error={course.error} courseId={numerico} />;
     return (

@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Navigate, useNavigate, useParams } from 'react-router-dom';
-import { CheckCircle2, Clock, Library, PartyPopper, PlayCircle } from 'lucide-react';
+import { Award, BookOpen, CheckCircle2, Clock, Library, PartyPopper, PlayCircle } from 'lucide-react';
 import { post } from '../../api';
 import { fmtDate } from '../../labels';
 import { Button } from '../../ui/Button';
@@ -168,7 +168,7 @@ export default function ClaseParticipante() {
     return (
       <div className="aula-root flex min-h-screen flex-col items-center justify-center gap-3 px-4 text-center">
         <p role="alert" className="max-w-md text-sm text-[var(--aula-danger)]">{openError.message}</p>
-        <Button variant="secondary" to={rutas.base}>Volver a la portada del curso</Button>
+        <Button variant="secondary" to="/aula">Volver a Mi aula</Button>
       </div>
     );
   }
@@ -207,15 +207,28 @@ export default function ClaseParticipante() {
         lessonId={lessonId}
         lessonHref={rutas.clase}
         courseId={courseId}
-        backTo={{ to: rutas.base, label: 'Portada del curso' }}
+        backTo={{ to: '/aula', label: 'Mi aula' }}
         lessonState={(id) => data.lessonStates[id] || { status: 'pendiente' }}
         progress={{ pct: data.enrollment.progressPct }}
         videoPositions={positions}
         onMedia={onMedia}
         headerActions={data.resourcesEnabled && (
-          <Button size="sm" variant="ghost" icon={Library} to={rutas.recursos}>
+          <Button size="sm" variant="ghost" icon={Library} to={rutas.recursos} aria-label="Recursos del curso">
             <span className="hidden sm:inline">Recursos</span>
           </Button>
+        )}
+        footerActions={(
+          <>
+            <Button
+              size="sm"
+              variant="secondary"
+              to={data.courseSlug ? `/${data.courseSlug}` : '/cursos'}
+              icon={BookOpen}
+            >
+              Portada del curso
+            </Button>
+            <Button size="sm" to={rutas.certificado} icon={Award}>Certificado</Button>
+          </>
         )}
         renderCompletion={(current) => (
           <CompletionPanel

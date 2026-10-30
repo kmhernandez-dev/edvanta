@@ -340,7 +340,8 @@ export default function FichaDeCurso({ modo = 'propio', slugPublico = '' }) {
       : `/aula/curso/${String(ficha.id).replace('edvanta-', '')}`;
     if (estado === 'dentro') { navigate(enAula); return; }
     if (estado === 'visitante') {
-      navigate(`/cuenta?modo=registro&next=${encodeURIComponent(ficha.url)}`);
+      // Vuelve directo al aula: allí se inscribe y entra a la clase que le toca.
+      navigate(`/cuenta?modo=registro&next=${encodeURIComponent(enAula)}`);
       return;
     }
     setTrabajando(true);
@@ -348,7 +349,7 @@ export default function FichaDeCurso({ modo = 'propio', slugPublico = '' }) {
     setTrabajando(false);
     if (res.ok) { navigate(enAula); return; }
     if (res.motivo === 'sin_sesion') {
-      navigate(`/cuenta?modo=registro&next=${encodeURIComponent(ficha.url)}`);
+      navigate(`/cuenta?modo=registro&next=${encodeURIComponent(enAula)}`);
       return;
     }
     setError(res.mensaje || 'No pudimos inscribirte. Intenta de nuevo en un momento.');
