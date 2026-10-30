@@ -125,7 +125,7 @@ export default function Escuelas() {
           <SectionHeading eyebrow="¿No eres profesional de la salud?" title="Otras puertas de entrada" />
           <div className="mt-8 grid gap-5 md:grid-cols-2">
             <NavCard
-              to="/pacientes"
+              to="/contigo"
               icon={HeartPulse}
               tone="teal"
               title="Para pacientes y cuidadores"

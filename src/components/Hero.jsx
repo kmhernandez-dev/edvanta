@@ -7,7 +7,7 @@ import { PRODUCTO_DESTACADO, productoPorSlug } from '../data/edvanta/productos';
 
 const PUERTAS = [
   { to: '/escuelas', icon: GraduationCap, label: 'Profesionales', tile: '' },
-  { to: '/pacientes', icon: HeartPulse, label: 'Pacientes', tile: 'ds-icon-tile--teal' },
+  { to: '/contigo', icon: HeartPulse, label: 'Pacientes', tile: 'ds-icon-tile--teal' },
   { to: '/instituciones', icon: Building2, label: 'Instituciones', tile: 'ds-icon-tile--violet' },
 ];
 

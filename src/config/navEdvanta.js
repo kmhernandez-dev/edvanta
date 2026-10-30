@@ -77,7 +77,7 @@ export const MAIN_LINKS = [
    principal cambia con esa elección. */
 export const PUBLICOS_NAV = [
   { id: 'profesionales', label: 'Profesionales', to: '/escuelas' },
-  { id: 'pacientes', label: 'Pacientes', to: '/pacientes' },
+  { id: 'pacientes', label: 'Pacientes', to: '/contigo' },
   { id: 'instituciones', label: 'Instituciones', to: '/instituciones' },
 ];
 
@@ -85,16 +85,16 @@ export const PUBLICOS_NAV = [
 const FST = /^\/(feliz-sin-tiroides|academia|recetas|nutrifst|recurso|enfermedades|levotiroxina|nutricion-tiroidea)(\/|$)/;
 
 export const contextoDe = (pathname) => {
-  if (/^\/pacientes(\/|$)/.test(pathname) || FST.test(pathname)) return 'pacientes';
+  if (/^\/(pacientes|contigo|mi-cuidado)(\/|$)/.test(pathname) || FST.test(pathname)) return 'pacientes';
   if (/^\/(instituciones|empresas)(\/|$)/.test(pathname)) return 'instituciones';
   return 'profesionales';
 };
 
 export const NAV_PACIENTES = [
-  { label: 'Edvanta Contigo', to: '/pacientes' },
-  { label: 'Salud tiroidea', to: '/pacientes/tiroides' },
-  { label: 'Artículos de salud', to: '/articulos?publico=pacientes' },
-  { label: 'Guías para pacientes', to: '/guias#pacientes' },
+  { label: 'Edvanta Contigo', to: '/contigo' },
+  { label: 'Salud tiroidea', to: '/contigo/tiroides' },
+  { label: 'Mi cuidado', to: '/mi-cuidado' },
+  { label: 'Planes', to: '/contigo/planes' },
 ];
 
 export const NAV_INSTITUCIONES = [
@@ -133,8 +133,10 @@ export const FOOTER_COLUMNS = [
   {
     title: 'Pacientes',
     links: [
-      { label: 'Edvanta Contigo', to: '/pacientes' },
-      { label: 'Salud tiroidea', to: '/pacientes/tiroides' },
+      { label: 'Edvanta Contigo', to: '/contigo' },
+      { label: 'Salud tiroidea', to: '/contigo/tiroides' },
+      { label: 'Mi cuidado', to: '/mi-cuidado' },
+      { label: 'Planes', to: '/contigo/planes' },
       { label: 'Feliz Sin Tiroides', to: '/feliz-sin-tiroides' },
     ],
   },

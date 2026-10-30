@@ -78,8 +78,18 @@ const MarketingServicios = lazy(() => import('./pages/edvanta/MarketingServicios
 const MarketingServicio = lazy(() => import('./pages/edvanta/MarketingServicio'));
 const CursoEnVivo = lazy(() => import('./pages/edvanta/CursoEnVivo'));
 const Guias = lazy(() => import('./pages/edvanta/Guias'));
-const Pacientes = lazy(() => import('./pages/edvanta/Pacientes'));
-const PacientesTiroides = lazy(() => import('./pages/edvanta/PacientesTiroides'));
+const ContigoHome = lazy(() => import('./pages/contigo/ContigoHome'));
+const ContigoRutas = lazy(() => import('./pages/contigo/ContigoRutas'));
+const ContigoTiroides = lazy(() => import('./pages/contigo/ContigoTiroides'));
+const ContigoGuias = lazy(() => import('./pages/contigo/ContigoGuias'));
+const ContigoInteres = lazy(() => import('./pages/contigo/ContigoInteres'));
+const ContigoPlanes = lazy(() => import('./pages/contigo/ContigoPlanes'));
+const ContigoProfesionales = lazy(() => import('./pages/contigo/ContigoProfesionales'));
+const ContigoPerfil = lazy(() => import('./pages/contigo/ContigoPerfil'));
+const ContigoReservar = lazy(() => import('./pages/contigo/ContigoReservar'));
+const ContigoRedProfesional = lazy(() => import('./pages/contigo/ContigoRedProfesional'));
+const MiCuidado = lazy(() => import('./pages/contigo/MiCuidado'));
+const ContigoEnPreparacion = lazy(() => import('./pages/contigo/ContigoEnPreparacion'));
 const Instituciones = lazy(() => import('./pages/edvanta/Instituciones'));
 const CapacitacionArea = lazy(() => import('./pages/edvanta/CapacitacionArea'));
 const PaqueteInstitucional = lazy(() => import('./pages/edvanta/PaqueteInstitucional'));
@@ -234,8 +244,29 @@ export default function App() {
         <Route path="/escuelas/marketing-y-comunicacion-farmaceutica/programas/:slug" element={<MarketingPrograma />} />
         <Route path="/escuelas/:slug" element={<Escuela />} />
         <Route path="/guias" element={<Guias />} />
-        <Route path="/pacientes" element={<Pacientes />} />
-        <Route path="/pacientes/tiroides" element={<PacientesTiroides />} />
+        {/* Edvanta Contigo: la puerta de pacientes. Las direcciones
+            anteriores se conservan como redirección permanente. */}
+        <Route path="/contigo" element={<ContigoHome />} />
+        <Route path="/contigo/rutas" element={<ContigoRutas />} />
+        <Route path="/contigo/tiroides" element={<ContigoTiroides />} />
+        <Route path="/contigo/tiroides/guias" element={<ContigoGuias />} />
+        <Route path="/contigo/:ruta/interes" element={<ContigoInteres />} />
+        <Route path="/contigo/planes" element={<ContigoPlanes />} />
+        <Route path="/contigo/profesionales" element={<ContigoProfesionales />} />
+        <Route path="/contigo/profesionales/:slug" element={<ContigoPerfil />} />
+        <Route path="/contigo/servicios/:slug/reservar" element={<ContigoReservar />} />
+        <Route path="/contigo/red-profesional" element={<ContigoRedProfesional />} />
+        <Route path="/contigo/red-profesional/postulacion" element={<ContigoRedProfesional />} />
+        <Route path="/mi-cuidado" element={<MiCuidado />} />
+        <Route path="/mi-cuidado/plan" element={<MiCuidado />} />
+        <Route path="/mi-cuidado/suscripcion" element={<MiCuidado />} />
+        <Route path="/mi-cuidado/medicamentos" element={<Navigate to="/fst-app/levotiroxina" replace />} />
+        <Route path="/mi-cuidado/laboratorios" element={<Navigate to="/fst-app/laboratorios" replace />} />
+        <Route path="/mi-cuidado/consultas/preparar" element={<Navigate to="/fst-app/consulta" replace />} />
+        <Route path="/mi-cuidado/comunidad" element={<Navigate to="/feliz-sin-tiroides#comunidad" replace />} />
+        <Route path="/profesional/agenda" element={<ContigoEnPreparacion titulo="Agenda profesional" descripcion="La agenda de los profesionales de Edvanta Contigo se habilitará después de la verificación y vinculación." breadcrumb={[{label:'Profesionales', to:'/contigo/red-profesional'},{label:'Agenda'}]} />} />
+        <Route path="/profesional/pacientes" element={<ContigoEnPreparacion titulo="Mis pacientes" descripcion="Los casos asignados y autorizados aparecerán aquí cuando la red profesional esté operativa." breadcrumb={[{label:'Profesionales', to:'/contigo/red-profesional'},{label:'Pacientes'}]} />} />
+        <Route path="/operacion/contigo" element={<ContigoEnPreparacion titulo="Operación de Edvanta Contigo" descripcion="La gestión de contenidos, cupos, pagos y permisos se habilitará con la operación del piloto." breadcrumb={[{label:'Operación'}]} />} />
         <Route path="/instituciones" element={<Instituciones />} />
         <Route path="/instituciones/paquetes/:slug" element={<PaqueteInstitucional />} />
         <Route path="/sobre-edvanta" element={<SobreEdvanta />} />

@@ -42,7 +42,7 @@ import { rutaDeCategoria, rutaDeCurso } from '../lib/slug';
 const MARCA = {
   fst: { to: '/feliz-sin-tiroides', name: 'Feliz Sin Tiroides' },
   atenfarma: { to: '/atenfarmaclinic', name: 'AtenFarmaClinic' },
-  contigo: { to: '/pacientes', name: 'Edvanta Contigo' },
+  contigo: { to: '/contigo', name: 'Edvanta Contigo' },
   biblioteca: { to: '/articulos', name: 'Edvanta' },
   edvanta: { to: '/articulos', name: 'Edvanta' },
 };
@@ -204,7 +204,7 @@ function pasoPaciente(art) {
         eyebrow: 'Feliz Sin Tiroides',
         title: 'Entiende tu tiroides y tu tratamiento',
         desc: 'Información clara sobre levotiroxina, controles y vida con una condición tiroidea.',
-        primary: { to: '/pacientes/tiroides', label: 'Explorar salud tiroidea' },
+        primary: { to: '/contigo/tiroides', label: 'Explorar salud tiroidea' },
         secondary: { to: '/recurso/levotiroxina', label: 'Guía gratuita de levotiroxina' },
       };
   }
@@ -222,7 +222,7 @@ function pasoPaciente(art) {
       eyebrow: 'Edvanta Contigo',
       title: 'Comprende tu salud. Participa en tu cuidado.',
       desc: 'Guías en lenguaje claro para leer en casa y llevar a tu próxima consulta.',
-      primary: { to: '/pacientes', label: 'Ir a Edvanta Contigo' },
+      primary: { to: '/contigo', label: 'Ir a Edvanta Contigo' },
       secondary: { to: '/fst-app', label: 'Conocer la app FST' },
     };
   }
@@ -230,7 +230,7 @@ function pasoPaciente(art) {
     eyebrow: 'Edvanta Contigo',
     title: 'Comprende tu salud. Participa en tu cuidado.',
     desc: 'Guías en lenguaje claro para leer en casa y llevar a tu próxima consulta.',
-    primary: { to: '/pacientes', label: 'Ir a Edvanta Contigo' },
+    primary: { to: '/contigo', label: 'Ir a Edvanta Contigo' },
     secondary: { to: '/fst-app', label: 'Conocer la app FST' },
   };
 }

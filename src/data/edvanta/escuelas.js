@@ -50,10 +50,10 @@ export const ESCUELAS = [
         titulo: 'Educación para pacientes y cuidadores',
         publico: 'pacientes',
         texto: 'Para comprender una condición de salud y participar en el cuidado. Vive en Edvanta Contigo.',
-        to: '/pacientes',
+        to: '/contigo',
         areas: [
-          { nombre: 'Salud tiroidea · Feliz Sin Tiroides', estado: 'disponible', to: '/pacientes/tiroides' },
-          { nombre: 'Rutas por otras condiciones de salud', estado: 'en_desarrollo', to: '/pacientes' },
+          { nombre: 'Salud tiroidea · Feliz Sin Tiroides', estado: 'disponible', to: '/contigo/tiroides' },
+          { nombre: 'Rutas por otras condiciones de salud', estado: 'en_desarrollo', to: '/contigo/rutas' },
         ],
       },
     ],

@@ -54,7 +54,7 @@ export const RUTAS_CONTIGO = [
     programa: 'feliz-sin-tiroides',
     estado: 'disponible', imagen: '/img/contigo/tiroides.webp',
     texto: 'Hipotiroidismo, Hashimoto, vivir sin tiroides y cómo tomar la levotiroxina.',
-    to: '/pacientes/tiroides',
+    to: '/contigo/tiroides',
   },
   { slug: 'ruta-diabetes', nombre: 'Tu Ruta Diabetes', estado: 'en_desarrollo', imagen: '/img/contigo/ruta-diabetes.webp', texto: 'Para comprender la diabetes, sus medicamentos y el día a día.' },
   { slug: 'ruta-renal', nombre: 'Tu Ruta Renal', estado: 'en_desarrollo', imagen: '/img/contigo/ruta-renal.webp', texto: 'Para quienes viven con enfermedad renal y para sus cuidadores.' },

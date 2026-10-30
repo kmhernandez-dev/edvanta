@@ -88,6 +88,10 @@ Windows note: use `npm.cmd` if PowerShell blocks `npm.ps1`.
 | `src/context/FstAppContext.jsx` | FST App state, localStorage demo + API sync |
 | `src/components/fstApp/*` | FST App shell, sections and tools |
 | `src/pages/FstAppPortal.jsx` | FST App portal (routes under `/fst-app/*`) |
+| `src/data/edvanta/contigo.js` | Edvanta Contigo content: six routes, needs, tools, plans, FAQ, professional network state |
+| `src/pages/contigo/*` | Contigo public pages, Mi cuidado, interest, plans, network and placeholders |
+| `src/components/contigo/ContigoPieces.jsx` | Contigo cards, status chips and illustrative Mi cuidado visual |
+| `src/styles/contigo.css` | Contigo visual tokens and route-card image crops |
 | `src/data/atenfarma.js` | AtenFarmaClinic content |
 | `api/server.js` | Express app and health endpoints |
 | `api/lib/catalog.js` | Server-side product prices; source of truth for checkout |
@@ -122,6 +126,16 @@ Frontend:
 - `/`
 - `/feliz-sin-tiroides`
 - `/fst-app/*` (app HealthTech: dashboard, NutriFST, levotiroxina, alimentos, escáner, menús, cocina, lista, suplementos, síntomas, yodo, consulta, progreso, perfil)
+- `/contigo` (Edvanta Contigo home)
+- `/contigo/rutas`, `/contigo/tiroides`, `/contigo/tiroides/guias`
+- `/contigo/:ruta/interes` (interest list for the five future routes)
+- `/contigo/planes`, `/contigo/profesionales`, `/contigo/profesionales/:slug`
+- `/contigo/servicios/:slug/reservar` (placeholder; no active bookings)
+- `/contigo/red-profesional`, `/contigo/red-profesional/postulacion`
+- `/mi-cuidado`, `/mi-cuidado/plan`, `/mi-cuidado/suscripcion`
+- `/mi-cuidado/medicamentos`, `/laboratorios`, `/consultas/preparar`, `/comunidad` redirect to the real FST tools
+- `/profesional/agenda`, `/profesional/pacientes`, `/operacion/contigo` (placeholders)
+- `/pacientes` and `/pacientes/tiroides` return 301 to `/contigo` and `/contigo/tiroides` in nginx
 - `/academia/retos` (Retos FST catalog)
 - `/academia/retos/:slug` (challenge detail)
 - `/academia/retos/:slug/dia/:dayNumber` (day page with video + check-in)
@@ -163,6 +177,16 @@ Backend:
 - Evidence is real and verifiable only (`evidence.js`); never invent references.
 - Clinical safety levels: green (educational), yellow (professional review), red (blocked: dose changes, diagnosis, emergencies, lab treatment).
 - Demo mode works offline via localStorage. Real mode requires `VITE_FST_APP_REAL_DATA_ENABLED=true` (frontend) and `VIDA360_REAL_DATA_ENABLED=true` (backend).
+
+## Edvanta Contigo
+
+- Patient-facing brand that replaces the old `/pacientes` section. The public home is `/contigo`.
+- Only the thyroid route (`/contigo/tiroides`) is open. Diabetes, renal, cardiovascular, respiratory and oncology are interest lists.
+- Real private tools stay in Feliz Sin Tiroides (`/fst-app`). Mi cuidado links to them and does not duplicate clinical histories.
+- Plans, the individual consultation and the professional network are proposals in preparation. Demo prices are labeled; this version does not charge or book.
+- No professional profiles are invented. `CONTIGO_PROFESIONALES` stays empty until verified professionals exist.
+- Public pages are prerendered in `scripts/prerenderizar-paginas.mjs`; plans, interest, profiles, Mi cuidado and professional/operation placeholders are `noindex`.
+- Route-card photos are cropped with CSS so the text baked into the source images is not shown; titles remain real HTML text.
 
 ## Payment Flow
 
@@ -237,6 +261,9 @@ If these return 503, inspect Coolify service status, Traefik labels/domains, web
 - `src/config/links.js` may contain placeholder Hotmart/form/social links.
 - Mercado Pago webhook signature validation is not implemented.
 - Frontend `npm audit` reports Vite/esbuild dev-server advisory; plan a Vite upgrade and test.
+- Edvanta Contigo Plus, the individual consultation, bookings and the professional network are not active. They are UI proposals with demo prices and interest forms.
+- Contigo does not have its own consent/audit/RLS schema yet; private tools reuse the existing FST/Supabase flow.
+- Discord roles and n8n flows described in the product plan are not connected.
 
 ## Editing Rules
 

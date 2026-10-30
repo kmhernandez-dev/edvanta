@@ -95,7 +95,7 @@ export default function SobreEdvanta() {
             })}
           </div>
           <div className="mt-6 grid gap-5 md:grid-cols-2">
-            <NavCard to="/pacientes" icon={HeartPulse} tone="teal" title="Edvanta Contigo" desc="La puerta para pacientes y cuidadores, con Feliz Sin Tiroides como primera ruta." cta="Conocer Edvanta Contigo" image="/img/publicos/pacientes.webp" imageAlt="Química farmacéutica explicando la tiroides a pacientes y familiares con una tableta" />
+            <NavCard to="/contigo" icon={HeartPulse} tone="teal" title="Edvanta Contigo" desc="La puerta para pacientes y cuidadores, con Feliz Sin Tiroides como primera ruta." cta="Conocer Edvanta Contigo" image="/img/publicos/pacientes.webp" imageAlt="Química farmacéutica explicando la tiroides a pacientes y familiares con una tableta" />
             <NavCard to="/instituciones" icon={Building2} title="Para instituciones" desc="Lo que hospitales, IPS, EPS y empresas pueden contratar de todas las escuelas." cta="Ver servicios" image="/img/publicos/instituciones.webp" imageAlt="Presentación de resultados de formación ante el equipo directivo de una institución" />
           </div>
         </Section>

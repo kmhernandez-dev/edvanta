@@ -1,0 +1,323 @@
+/* ============================================================
+ *  Edvanta Contigo — capa de pacientes
+ *
+ *  Blanco, salvia y lavanda muy pálidos. El verde es la acción de
+ *  esta línea; el azul Edvanta sigue en la navegación y los títulos
+ *  de sección. Las piezas gráficas son ilustrativas, no datos reales.
+ * ============================================================ */
+
+.contigo-page {
+  --contigo-ink: #233540;
+  --contigo-primary: #126f63;
+  --contigo-primary-strong: #0b5b51;
+  --contigo-sage: #e8f1e7;
+  --contigo-lavender: #eee8f6;
+  --contigo-mint: #eff8f2;
+  --contigo-border: #dce8e4;
+  --contigo-muted: #5d6b6a;
+  background: #fff;
+  color: var(--contigo-ink);
+}
+
+.contigo-bg-sage { background: var(--contigo-sage); }
+.contigo-bg-lavender { background: var(--contigo-lavender); }
+.contigo-bg-mint { background: var(--contigo-mint); }
+
+.contigo-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--contigo-primary);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.contigo-eyebrow::before {
+  content: '';
+  width: 24px;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--contigo-primary), #9f91c9);
+}
+
+.contigo-card {
+  border: 1px solid var(--contigo-border);
+  border-radius: 20px;
+  background: #fff;
+  box-shadow: 0 3px 12px rgba(35, 53, 64, 0.05);
+}
+
+.contigo-card--interactive {
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.contigo-card--interactive:hover {
+  transform: translateY(-2px);
+  border-color: #b9d6ce;
+  box-shadow: 0 18px 36px -28px rgba(18, 111, 99, 0.35);
+}
+
+.contigo-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 28px;
+  border-radius: 999px;
+  padding: 0 10px;
+  font-size: 11px;
+  font-weight: 750;
+  line-height: 1;
+}
+
+.contigo-chip--available { background: var(--contigo-sage); color: var(--contigo-primary-strong); }
+.contigo-chip--soon { background: var(--contigo-lavender); color: #5e51a8; }
+.contigo-chip--demo { background: #fff4d9; color: #8a5300; }
+
+.contigo-icon {
+  display: inline-flex;
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #f5faf7 0%, #eee8f6 100%);
+  color: var(--contigo-primary);
+}
+
+/* ── Hero visual ──────────────────────────────────────────── */
+
+.contigo-hero-visual {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--contigo-border);
+  border-radius: 26px;
+  background:
+    radial-gradient(ellipse 65% 55% at 100% 0%, rgba(159, 145, 201, 0.16), transparent 65%),
+    radial-gradient(ellipse 60% 50% at 0% 100%, rgba(93, 178, 160, 0.16), transparent 65%),
+    linear-gradient(145deg, #f9fcfa 0%, #f6f2fb 100%);
+  padding: 22px;
+}
+
+.contigo-hero-visual__label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border-radius: 999px;
+  background: #fff;
+  padding: 5px 9px;
+  color: var(--contigo-muted);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.contigo-hero-visual__stack {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.contigo-mini-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border: 1px solid #e7efeb;
+  border-radius: 14px;
+  background: #fff;
+  padding: 13px 14px;
+  box-shadow: 0 16px 30px -28px rgba(35, 53, 64, 0.4);
+}
+
+.contigo-mini-card:nth-child(2) { margin-left: 8%; }
+.contigo-mini-card:nth-child(3) { margin-left: 3%; }
+
+.contigo-mini-card__icon {
+  display: inline-flex;
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background: var(--contigo-mint);
+  color: var(--contigo-primary);
+}
+
+.contigo-mini-card__title {
+  display: block;
+  color: var(--contigo-ink);
+  font-size: 12px;
+  font-weight: 750;
+}
+
+.contigo-mini-card__text {
+  display: block;
+  margin-top: 2px;
+  color: var(--contigo-muted);
+  font-size: 10px;
+  line-height: 1.35;
+}
+
+.contigo-hero-visual__note {
+  margin-top: 14px;
+  color: var(--contigo-muted);
+  font-size: 10px;
+  line-height: 1.45;
+}
+
+/* ── Tarjetas de ruta ─────────────────────────────────────── */
+
+.contigo-route-media {
+  position: relative;
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+  background: var(--contigo-mint);
+}
+
+.contigo-route-media img {
+  position: absolute;
+  top: 0;
+  left: -140%;
+  display: block;
+  width: 240%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  object-position: center 0%;
+  transition: transform 0.5s ease;
+}
+
+.contigo-card--interactive:hover .contigo-route-media img {
+  transform: scale(1.03);
+}
+
+.contigo-route-badge {
+  position: absolute;
+  right: 12px;
+  top: 12px;
+}
+
+/* ── Herramientas ─────────────────────────────────────────── */
+
+.contigo-tool {
+  display: flex;
+  gap: 14px;
+  border: 1px solid var(--contigo-border);
+  border-radius: 16px;
+  background: #fff;
+  padding: 18px;
+}
+
+.contigo-tool h3 {
+  margin: 0;
+  color: var(--contigo-ink);
+  font-family: var(--ds-font-display, 'Manrope', 'Inter', sans-serif);
+  font-size: 0.95rem;
+  font-weight: 800;
+  line-height: 1.35;
+}
+
+.contigo-tool p {
+  margin: 5px 0 0;
+  color: var(--contigo-muted);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.contigo-tool--disabled {
+  background: #fbfcfe;
+  border-style: dashed;
+}
+
+/* ── Planes ───────────────────────────────────────────────── */
+
+.contigo-plan {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  border: 1px solid var(--contigo-border);
+  border-radius: 20px;
+  background: #fff;
+  padding: 22px;
+}
+
+.contigo-plan--featured {
+  border-color: #b9d6ce;
+  box-shadow: 0 18px 36px -30px rgba(18, 111, 99, 0.35);
+}
+
+.contigo-plan__price {
+  margin-top: 16px;
+  color: var(--contigo-primary-strong);
+  font-family: var(--ds-font-display, 'Manrope', 'Inter', sans-serif);
+  font-size: 1.5rem;
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+.contigo-plan__note {
+  margin-top: 6px;
+  color: var(--contigo-muted);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.contigo-plan__list {
+  margin: 16px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.contigo-plan__list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 5px 0;
+  color: var(--contigo-ink);
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.contigo-plan__list svg {
+  flex-shrink: 0;
+  margin-top: 1px;
+  color: var(--contigo-primary);
+}
+
+/* ── Visual del perfil / agenda vacía ─────────────────────── */
+
+.contigo-empty {
+  border: 1px dashed #c7dcd6;
+  border-radius: 20px;
+  background: linear-gradient(145deg, #f9fcfa, #f7f3fb);
+  padding: 28px;
+  text-align: center;
+}
+
+.contigo-empty h2 {
+  margin-top: 14px;
+  color: var(--contigo-ink);
+  font-family: var(--ds-font-display, 'Manrope', 'Inter', sans-serif);
+  font-size: 1.25rem;
+  font-weight: 800;
+}
+
+.contigo-empty p {
+  max-width: 52ch;
+  margin: 8px auto 0;
+  color: var(--contigo-muted);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contigo-card--interactive,
+  .contigo-route-media img {
+    transition: none;
+  }
+}

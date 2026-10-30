@@ -46,7 +46,7 @@ export default function PacientesTiroides() {
   useEffect(() => updatePageSeo({
     title: 'Salud tiroidea para pacientes | Edvanta Contigo · Feliz Sin Tiroides',
     description: 'Guías, curso y recursos en lenguaje claro sobre hipotiroidismo, Hashimoto, levotiroxina y vivir sin tiroides.',
-    canonical: 'https://edvanta.co/pacientes/tiroides',
+    canonical: 'https://edvanta.co/contigo/tiroides',
   }), []);
 
   return (
@@ -54,7 +54,7 @@ export default function PacientesTiroides() {
       <SiteHeader />
       <main>
         <HeroInmersivo
-          breadcrumb={<Breadcrumb items={[{ label: 'Inicio', to: '/' }, { label: 'Para pacientes', to: '/pacientes' }, { label: 'Salud tiroidea' }]} className="mb-8" />}
+          breadcrumb={<Breadcrumb items={[{ label: 'Inicio', to: '/' }, { label: 'Para pacientes', to: '/contigo' }, { label: 'Salud tiroidea' }]} className="mb-8" />}
           eyebrow="Edvanta Contigo · Feliz Sin Tiroides"
           title="Tu tiroides, explicada con claridad"
           highlight="con claridad"

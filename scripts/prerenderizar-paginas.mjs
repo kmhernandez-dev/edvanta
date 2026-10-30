@@ -261,6 +261,129 @@ for (const s of SERVICIOS_MARKETING) {
   enSitemap.push({ ruta, prioridad: '0.7' });
 }
 
+/* ── Edvanta Contigo ─────────────────────────────────────── */
+
+const { CONTIGO, CONTIGO_RUTAS, CONTIGO_RIESGO } = await importar('src/data/edvanta/contigo.js');
+const rutaTiroidesContigo = '/contigo/tiroides';
+const canonicalTiroidesContigo = `${SITIO}${rutaTiroidesContigo}`;
+const avisoContigo = `<p>${CONTIGO_RIESGO.map((r) => esc(r)).join(' ')}</p>`;
+
+const htmlContigoHome = pagina({
+  titulo: 'Edvanta Contigo | Acompañamiento educativo en salud',
+  descripcion: CONTIGO.lead,
+  canonical: `${SITIO}/contigo`,
+  imagen: `${SITIO}${CONTIGO.imagen}`,
+  jsonLd: [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'CollectionPage',
+      name: CONTIGO.nombre,
+      description: CONTIGO.lead,
+      url: `${SITIO}/contigo`,
+      publisher: { '@type': 'Organization', name: 'Edvanta', url: SITIO },
+    },
+    migas([['Inicio', `${SITIO}/`], ['Edvanta Contigo', `${SITIO}/contigo`]]),
+  ],
+  cuerpo: `<main><h1>${esc(CONTIGO.titulo)}</h1><p>${esc(CONTIGO.lead)}</p><ul>${CONTIGO_RUTAS.map((r) => `<li><a href="${esc(r.to)}">${esc(r.nombre)}</a> — ${esc(r.texto)}</li>`).join('')}</ul><p><a href="/contigo/tiroides">Salud tiroidea</a> · <a href="/mi-cuidado">Mi cuidado</a> · <a href="/contigo/planes">Planes</a></p>${avisoContigo}</main>`,
+});
+escribir('contigo.html', htmlContigoHome);
+escribir('contigo/index.html', htmlContigoHome);
+enSitemap.push({ ruta: '/contigo', prioridad: '0.9' });
+
+const htmlRutasContigo = pagina({
+  titulo: 'Rutas de salud de Edvanta Contigo | Edvanta',
+  descripcion: 'Seis rutas educativas por condición. Salud tiroidea está disponible y las demás están en lista de interés.',
+  canonical: `${SITIO}/contigo/rutas`,
+  jsonLd: [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'CollectionPage',
+      name: 'Rutas de salud de Edvanta Contigo',
+      url: `${SITIO}/contigo/rutas`,
+      publisher: { '@type': 'Organization', name: 'Edvanta', url: SITIO },
+    },
+    migas([['Inicio', `${SITIO}/`], ['Edvanta Contigo', `${SITIO}/contigo`], ['Rutas', `${SITIO}/contigo/rutas`]]),
+  ],
+  cuerpo: `<main><h1>Rutas de salud</h1><ul>${CONTIGO_RUTAS.map((r) => `<li><a href="${esc(r.to)}">${esc(r.nombre)}</a> — ${esc(r.texto)} ${r.estado === 'disponible' ? '(Disponible)' : '(En lista de interés)'}</li>`).join('')}</ul>${avisoContigo}</main>`,
+});
+escribir('contigo/rutas.html', htmlRutasContigo);
+enSitemap.push({ ruta: '/contigo/rutas', prioridad: '0.8' });
+
+const htmlTiroidesContigo = pagina({
+  titulo: 'Salud tiroidea: hipotiroidismo, Hashimoto y levotiroxina | Edvanta Contigo',
+  descripcion: 'Ruta educativa de salud tiroidea: comprende tu condición, organiza tu tratamiento y prepara tus consultas. Educación clara, no reemplaza a tu equipo de salud.',
+  canonical: canonicalTiroidesContigo,
+  imagen: `${SITIO}${CONTIGO_RUTAS.find((r) => r.slug === 'tiroides')?.imagen || CONTIGO.imagen}`,
+  jsonLd: [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'CollectionPage',
+      name: 'Salud tiroidea',
+      description: 'Ruta educativa sobre hipotiroidismo, Hashimoto, vivir sin tiroides y levotiroxina.',
+      url: canonicalTiroidesContigo,
+      publisher: { '@type': 'Organization', name: 'Edvanta', url: SITIO },
+    },
+    migas([['Inicio', `${SITIO}/`], ['Edvanta Contigo', `${SITIO}/contigo`], ['Salud tiroidea', canonicalTiroidesContigo]]),
+  ],
+  cuerpo: `<main><h1>Salud tiroidea</h1><p>Hipotiroidismo, Hashimoto, vivir sin tiroides y cómo tomar la levotiroxina.</p><p><a href="/contigo/tiroides/guias">Ver guías de salud tiroidea</a></p><p>La ruta educativa no diagnostica, no cambia dosis y no reemplaza a tu médico.</p>${avisoContigo}</main>`,
+});
+escribir('contigo/tiroides.html', htmlTiroidesContigo);
+escribir('contigo/tiroides/index.html', htmlTiroidesContigo);
+enSitemap.push({ ruta: rutaTiroidesContigo, prioridad: '0.9' });
+
+const htmlGuiasContigo = pagina({
+  titulo: 'Guías de salud tiroidea | Edvanta Contigo',
+  descripcion: 'Guías y recursos prácticos de Feliz Sin Tiroides para comprender el hipotiroidismo, Hashimoto y el uso de la levotiroxina.',
+  canonical: `${SITIO}/contigo/tiroides/guias`,
+  jsonLd: [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'CollectionPage',
+      name: 'Guías de salud tiroidea',
+      url: `${SITIO}/contigo/tiroides/guias`,
+      publisher: { '@type': 'Organization', name: 'Edvanta', url: SITIO },
+    },
+    migas([['Inicio', `${SITIO}/`], ['Edvanta Contigo', `${SITIO}/contigo`], ['Salud tiroidea', canonicalTiroidesContigo], ['Guías', `${SITIO}/contigo/tiroides/guias`]]),
+  ],
+  cuerpo: `<main><h1>Guías de salud tiroidea</h1><p>Material educativo para leer en casa y llevar a tu consulta. No sustituye la valoración de tu equipo de salud.</p><p><a href="/feliz-sin-tiroides">Ver Feliz Sin Tiroides</a> · <a href="/contigo/tiroides">Volver a la ruta</a></p></main>`,
+});
+escribir('contigo/tiroides/guias.html', htmlGuiasContigo);
+enSitemap.push({ ruta: '/contigo/tiroides/guias', prioridad: '0.8' });
+
+const htmlProfesionalesContigo = pagina({
+  titulo: 'Red profesional de Edvanta Contigo | Edvanta',
+  descripcion: 'La red de profesionales verificados está en preparación. Conoce cómo funcionará, qué requisitos tendrá y cómo dejar tu interés.',
+  canonical: `${SITIO}/contigo/profesionales`,
+  robots: 'noindex,follow',
+  jsonLd: [
+    migas([['Inicio', `${SITIO}/`], ['Edvanta Contigo', `${SITIO}/contigo`], ['Red profesional', `${SITIO}/contigo/profesionales`]]),
+  ],
+  cuerpo: `<main><h1>Red profesional</h1><p>Estamos preparando la vinculación de profesionales verificados. Todavía no hay agendas ni reservas activas.</p><p><a href="/contigo/red-profesional">Conocer el proceso de vinculación</a></p></main>`,
+});
+escribir('contigo/profesionales.html', htmlProfesionalesContigo);
+
+const htmlRedContigo = pagina({
+  titulo: 'Red de profesionales de Edvanta Contigo | Edvanta',
+  descripcion: 'Proceso de vinculación para profesionales de salud: requisitos, verificación y activación de agenda. La red está en preparación.',
+  canonical: `${SITIO}/contigo/red-profesional`,
+  robots: 'noindex,follow',
+  jsonLd: [
+    migas([['Inicio', `${SITIO}/`], ['Edvanta Contigo', `${SITIO}/contigo`], ['Red profesional', `${SITIO}/contigo/red-profesional`]]),
+  ],
+  cuerpo: `<main><h1>Red de profesionales de Edvanta Contigo</h1><p>La vinculación está en preparación. Ningún perfil se publica ni recibe pacientes automáticamente.</p><p><a href="/contigo/red-profesional/postulacion">Enviar solicitud de vinculación</a></p></main>`,
+});
+escribir('contigo/red-profesional.html', htmlRedContigo);
+escribir('contigo/red-profesional/index.html', htmlRedContigo);
+
+const htmlPlanesContigo = pagina({
+  titulo: 'Planes de Edvanta Contigo | Edvanta',
+  descripcion: 'Planes propuestos de Edvanta Contigo. Los precios son de prueba y los servicios todavía no se pueden pagar.',
+  canonical: `${SITIO}/contigo/planes`,
+  robots: 'noindex,follow',
+  cuerpo: `<main><h1>Planes de Edvanta Contigo</h1><p>Propuesta de planes con precios de prueba. Esta versión no procesa cobros ni reservas.</p><p><a href="/contigo">Volver a Edvanta Contigo</a></p></main>`,
+});
+escribir('contigo/planes.html', htmlPlanesContigo);
+
 const rutaSitemap = path.join(dist, 'sitemap.xml');
 if (existsSync(rutaSitemap)) {
   let xml = readFileSync(rutaSitemap, 'utf8');
@@ -283,4 +406,4 @@ if (existsSync(rutaSitemap)) {
   writeFileSync(rutaSitemap, xml);
 }
 
-console.log(`Páginas fijas prerenderizadas: ${enSitemap.length} (herramientas, categorías, cursos en vivo y marketing)`);
+console.log(`Páginas fijas prerenderizadas: ${enSitemap.length} (herramientas, categorías, cursos en vivo, marketing y Contigo)`);

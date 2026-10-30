@@ -56,7 +56,7 @@ const PUBLICOS = [
     imageAlt: 'Equipo de salud revisando juntos un caso en una tableta',
   },
   {
-    to: '/pacientes',
+    to: '/contigo',
     icon: HeartPulse,
     tono: 'teal',
     etiqueta: 'Para pacientes y cuidadores',

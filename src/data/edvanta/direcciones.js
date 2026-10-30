@@ -39,6 +39,9 @@ export const DIRECCIONES_ANTIGUAS = [
   },
   // Páginas que solo redirigían en el navegador
   { antigua: '/cursos-gratis', nueva: '/cursos', tipo: 'catálogo' },
+  // La puerta de pacientes pasó a Edvanta Contigo
+  { antigua: '/pacientes', nueva: '/contigo', tipo: 'página' },
+  { antigua: '/pacientes/tiroides', nueva: '/contigo/tiroides', tipo: 'página' },
   // Escuelas: su nombre completo, no un recorte
   { antigua: '/escuelas/salud', nueva: '/escuelas/salud-y-farmacia-clinica', tipo: 'escuela' },
   { antigua: '/escuelas/calidad', nueva: '/escuelas/calidad-y-produccion-farmaceutica', tipo: 'escuela' },

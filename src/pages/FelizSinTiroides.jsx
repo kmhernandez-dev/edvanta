@@ -128,7 +128,7 @@ export default function FelizSinTiroides() {
       <FstHeader />
       <main>
         <HeroPaciente
-          breadcrumb={<Breadcrumb items={[{ label: 'Inicio', to: '/' }, { label: 'Para pacientes', to: '/pacientes' }, { label: 'Feliz Sin Tiroides' }]} className="mb-8" />}
+          breadcrumb={<Breadcrumb items={[{ label: 'Inicio', to: '/' }, { label: 'Para pacientes', to: '/contigo' }, { label: 'Feliz Sin Tiroides' }]} className="mb-8" />}
           eyebrow="Feliz Sin Tiroides"
           title="Únete a la comunidad de pacientes tiroideos más grande de habla hispana"
           highlight="pacientes tiroideos"

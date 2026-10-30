@@ -91,7 +91,7 @@ export default function Pacientes() {
   useEffect(() => updatePageSeo({
     title: 'Edvanta Contigo | Educación en salud para pacientes y cuidadores',
     description: 'Comprende tu salud y participa en tu cuidado: guías, talleres y rutas educativas en lenguaje claro, empezando por la salud tiroidea.',
-    canonical: 'https://edvanta.co/pacientes',
+    canonical: 'https://edvanta.co/contigo',
   }), []);
 
   const elegida = RUTAS_CONTIGO.find((r) => r.slug === ruta);
@@ -111,14 +111,14 @@ export default function Pacientes() {
           note={{ title: 'Pequeños aprendizajes, grandes cambios', text: 'En lenguaje claro y preparado por una química farmacéutica.' }}
           actions={(
             <>
-              <Btn to="/pacientes/tiroides" variant="teal" icon={HeartPulse} size="lg">Salud tiroidea</Btn>
+              <Btn to="/contigo/tiroides" variant="teal" icon={HeartPulse} size="lg">Salud tiroidea</Btn>
               <Btn href="#rutas" variant="secondary" size="lg">Ver las rutas</Btn>
             </>
           )}
           topics={RUTAS_CONTIGO.map((r) => ({
             icon: ICONO_RUTA[r.slug] || HeartPulse,
             label: CORTO[r.slug] || r.nombre,
-            to: r.to || `/pacientes#${r.slug}`,
+            to: r.to || `/contigo#${r.slug}`,
             tone: r.estado === 'disponible' ? 'teal' : 'violet',
           }))}
         />
