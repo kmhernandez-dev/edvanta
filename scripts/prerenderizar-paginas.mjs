@@ -384,6 +384,81 @@ const htmlPlanesContigo = pagina({
 });
 escribir('contigo/planes.html', htmlPlanesContigo);
 
+// Páginas de utilidad y rutas en preparación: noindex y sin sitemap.
+for (const r of CONTIGO_RUTAS.filter((x) => x.estado !== 'disponible')) {
+  const ruta = `/contigo/${r.slug}/interes`;
+  escribir(`${ruta.slice(1)}.html`, pagina({
+    titulo: `${r.nombre}: ruta en preparación | Edvanta Contigo`,
+    descripcion: r.texto,
+    canonical: `${SITIO}${ruta}`,
+    robots: 'noindex,follow',
+    cuerpo: `<main><h1>${esc(r.nombre)}: una ruta en preparación</h1><p>${esc(r.texto)}</p><p><a href="/contigo/rutas">Ver las rutas</a></p></main>`,
+  }));
+}
+
+const paginasUtilidadContigo = [
+  {
+    ruta: '/mi-cuidado',
+    titulo: 'Mi cuidado | Edvanta Contigo',
+    descripcion: 'Tu espacio para organizar medicamentos, documentos y preguntas. Las herramientas se abren en Feliz Sin Tiroides.',
+    cuerpo: `<main><h1>Mi cuidado</h1><p>Un punto de entrada a tus herramientas privadas de salud tiroidea.</p><p><a href="/fst-app">Entrar o crear mi cuenta</a></p></main>`,
+  },
+  {
+    ruta: '/mi-cuidado/plan',
+    titulo: 'Mi plan | Edvanta Contigo',
+    descripcion: 'Los acuerdos del acompañamiento profesional aparecerán aquí cuando el servicio esté habilitado.',
+    cuerpo: `<main><h1>Mi plan todavía no está disponible</h1><p><a href="/contigo/profesionales">Conocer la red profesional</a></p></main>`,
+  },
+  {
+    ruta: '/mi-cuidado/suscripcion',
+    titulo: 'Mi suscripción | Edvanta Contigo',
+    descripcion: 'La membresía todavía no está habilitada. No hay cobros ni renovaciones activas.',
+    cuerpo: `<main><h1>La membresía todavía no está habilitada</h1><p><a href="/contigo/planes">Ver planes propuestos</a></p></main>`,
+  },
+  {
+    ruta: '/contigo/servicios/consulta-farmaceutica/reservar',
+    titulo: 'Consulta farmacéutica | Reservas en preparación | Edvanta Contigo',
+    descripcion: 'La consulta farmacéutica individual es una propuesta en preparación. No hay agenda ni pagos habilitados.',
+    cuerpo: `<main><h1>Consulta farmacéutica individual</h1><p>Reservas no habilitadas. El precio mostrado es un ejemplo, no un cobro activo.</p><p><a href="/contigo/profesionales">Volver a la red profesional</a></p></main>`,
+  },
+  {
+    ruta: '/contigo/red-profesional/postulacion',
+    titulo: 'Postulación a la red profesional | Edvanta Contigo',
+    descripcion: 'Envía tu solicitud para la red de profesionales de Edvanta Contigo. La solicitud pasa por revisión.',
+    cuerpo: `<main><h1>Enviar mi solicitud de vinculación</h1><p>La solicitud no habilita atención automáticamente.</p><p><a href="/contigo/red-profesional">Conocer el proceso</a></p></main>`,
+  },
+  {
+    ruta: '/profesional/agenda',
+    titulo: 'Agenda profesional | Edvanta Contigo',
+    descripcion: 'La agenda de los profesionales se habilitará después de la verificación y vinculación.',
+    cuerpo: `<main><h1>Agenda profesional</h1><p>La agenda se habilitará después de la verificación y vinculación.</p></main>`,
+  },
+  {
+    ruta: '/profesional/pacientes',
+    titulo: 'Mis pacientes | Edvanta Contigo',
+    descripcion: 'Los casos asignados y autorizados aparecerán aquí cuando la red profesional esté operativa.',
+    cuerpo: `<main><h1>Mis pacientes</h1><p>Los casos asignados y autorizados aparecerán aquí cuando la red esté operativa.</p></main>`,
+  },
+  {
+    ruta: '/operacion/contigo',
+    titulo: 'Operación de Edvanta Contigo | Edvanta',
+    descripcion: 'La gestión de contenidos, cupos, pagos y permisos se habilitará con la operación del piloto.',
+    cuerpo: `<main><h1>Operación de Edvanta Contigo</h1><p>La gestión se habilitará con la operación del piloto.</p></main>`,
+  },
+];
+
+for (const p of paginasUtilidadContigo) {
+  const html = pagina({
+    titulo: p.titulo,
+    descripcion: p.descripcion,
+    canonical: `${SITIO}${p.ruta}`,
+    robots: 'noindex,follow',
+    cuerpo: p.cuerpo,
+  });
+  escribir(`${p.ruta.slice(1)}.html`, html);
+  if (p.ruta === '/mi-cuidado') escribir('mi-cuidado/index.html', html);
+}
+
 const rutaSitemap = path.join(dist, 'sitemap.xml');
 if (existsSync(rutaSitemap)) {
   let xml = readFileSync(rutaSitemap, 'utf8');
