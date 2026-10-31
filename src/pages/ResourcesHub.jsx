@@ -21,9 +21,9 @@ import { updatePageSeo } from '../utils/seo';
 
 const resourceEntries = [
   { title: 'Artículos', text: 'Explicaciones profundas sobre carreras, habilidades y formación.', icon: Newspaper, to: '/articulos' },
-  { title: 'Guías', text: 'Materiales para orientar decisiones y organizar procesos profesionales.', icon: BookOpenText, to: '/#recursos' },
-  { title: 'Plantillas', text: 'Documentos editables para aplicar lo aprendido en contextos reales.', icon: FileText, to: '/#herramientas' },
-  { title: 'Herramientas', text: 'Recursos prácticos para calidad, farmacia y crecimiento profesional.', icon: Wrench, to: '/#herramientas' },
+  { title: 'Guías', text: 'Materiales para orientar decisiones y organizar procesos profesionales.', icon: BookOpenText, to: '/guias' },
+  { title: 'Plantillas', text: 'Documentos editables para aplicar lo aprendido en contextos reales.', icon: FileText, to: '/#guias' },
+  { title: 'Herramientas', text: 'Recursos prácticos para calidad, farmacia y crecimiento profesional.', icon: Wrench, to: '/herramientas' },
   { title: 'Regulación', text: 'Fuentes oficiales y contenido contextualizado por país cuando esté verificado.', icon: Scale, to: '/recursos?tipo=regulation' },
   { title: 'Investigación', text: 'Lecturas y referencias que conectan evidencia con práctica profesional.', icon: ScrollText, to: '/recursos?tipo=research' },
 ];

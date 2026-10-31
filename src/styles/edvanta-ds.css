@@ -335,9 +335,35 @@
 .ds-float { animation: dsFloat 7s ease-in-out infinite; }
 @keyframes dsFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
 
+/* ── Catálogo de los inicios (components/edvanta/catalogo.jsx) ──
+   Filas que se deslizan sin barra visible, insignias sobre las
+   portadas, el aviso de novedades y lo que se despliega. */
+.ds-fila { scrollbar-width: none; overscroll-behavior-x: contain; }
+.ds-fila::-webkit-scrollbar { display: none; }
+:where(.ds-insignia) { display: inline-flex; }
+.ds-insignia {
+  align-items: center; gap: 0.3rem;
+  min-height: 22px; padding: 0 0.55rem; border-radius: 999px;
+  font-size: 0.68rem; font-weight: 700; letter-spacing: 0.02em; line-height: 1;
+  background: rgba(255, 255, 255, 0.94); color: var(--ds-navy);
+  box-shadow: var(--ds-sh-xs);
+}
+.ds-insignia--edvanta { background: var(--ds-navy); color: #fff; }
+.ds-insignia--vivo { background: var(--ds-navy-deep); color: #fff; }
+.ds-insignia--nuevo {
+  color: #fff;
+  background-image: linear-gradient(110deg, var(--ds-teal-strong) 40%, #3BB8C1 50%, var(--ds-teal-strong) 60%);
+  background-size: 220% 100%;
+  animation: dsBrillo 3.2s linear infinite;
+}
+@keyframes dsBrillo { from { background-position: 100% 0; } to { background-position: -120% 0; } }
+.ds-aviso { animation: dsAvisoIn var(--ds-dur-3) var(--ds-ease) both; }
+@keyframes dsAvisoIn { from { opacity: 0; transform: translateY(18px) scale(0.98); } to { opacity: 1; transform: none; } }
+.ds-desplegado { animation: dsRise var(--ds-dur-3) var(--ds-ease) both; }
+
 @media (prefers-reduced-motion: reduce) {
   .ed-btn, .ed-btn svg, .ds-card--interactive, .ds-progress > span, .ds-ring circle { transition: none; }
-  .ds-skeleton::after, .ds-rise, .ds-rise-2, .ds-rise-3, .ds-float { animation: none; }
+  .ds-skeleton::after, .ds-rise, .ds-rise-2, .ds-rise-3, .ds-float, .ds-insignia--nuevo, .ds-aviso, .ds-desplegado { animation: none; }
 }
 
 /* ── Clases heredadas ─────────────────────────────────────────

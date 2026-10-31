@@ -31,6 +31,25 @@ Son programas de Edvanta, no sitios aparte. Llevan el encabezado y el pie de edv
 - Las páginas de Feliz Sin Tiroides cuentan como de pacientes (`contextoDe` en `navEdvanta.js`): la barra principal muestra «Para pacientes».
 - Colores y letra: un reemplazo pasó 1.267 colores sueltos de esas páginas a los tokens (los morados de FST pasan al azul de acción o a la lavanda), y los títulos de Fraunces pasaron a Manrope. Los colores de estado (verde, ámbar, rojo) se conservan.
 
+## Inicios como catálogo (31-oct-2026)
+
+Los inicios de profesionales (`/`), instituciones (`/instituciones`) y pacientes (`/contigo`) son catálogos: después del héroe va lo que se ofrece, en filas que se deslizan con cuatro tarjetas a la vista en escritorio. Las escuelas, los servicios y lo demás quedan en el menú o en botones. Las piezas están en `src/components/edvanta/catalogo.jsx` y las reglas, en `src/data/edvanta/catalogoInicio.js`.
+
+| Pieza | Qué hace |
+|---|---|
+| `FilaDeCatalogo` | Título con ícono, subtítulo, «Ver todo», flechas y la fila (`ancho`: `curso`, `libro` o `ruta`). En el celular se asoma la tarjeta siguiente. |
+| `TarjetaCurso` | Portada con acercamiento al pasar, insignias (`Nuevo`, `Edvanta`, `Edutin`, `En vivo`), área, horas, clases y «Certificado» en los propios. |
+| `TarjetaLibro` / `PortadaGenerada` | Guía en vertical. Si no tiene portada propia (las guías nuevas de FST usan la de otro libro en los datos), se hace una con su título. |
+| `TarjetaGuia`, `TarjetaArticulo`, `TarjetaRuta` | Kit editable (abre su ficha con precio), artículo con la portada de un curso de su tema y ruta con su foto y el nombre encima. |
+| `ServiciosPlegados` | Los servicios, en botones que abren su contenido. `anclas` mantiene vivos enlaces viejos: `/instituciones#catalogo` abre «Áreas de capacitación». |
+| `EncuestaRapida` | Tres pasos al final (intereses, perfil, datos). Se guarda como solicitud `interes` con su `referencia` (`encuesta-inicio-profesionales`, `encuesta-inicio-pacientes`). |
+| `AvisoNovedad` | Aviso una vez por visita con el curso más nuevo. Espera a que se cierre el de cookies. |
+
+Reglas:
+- Solo salen cursos con portada: los propios con su ilustración y 22 de Edutin con su foto oficial (`public/img/cursos/edutin/<id>.jpg`), con ficha en Edvanta y la insignia «Edutin».
+- «Lo más nuevo» sale del número de publicación del aula y «Lo más actual», de los temas (IA, oncología de precisión, productos especiales). No hay cifras de ventas ni «más populares».
+- Los afiches «Curso GRATIS» están prohibidos: se borraron (migración 062) y no deben volver.
+
 ## Tokens
 
 | Token | Valor | Uso |
@@ -140,7 +159,7 @@ Las clases heredadas (`btn-edvanta`, `btn-primary`, `btn-secondary`, `btn-teal`,
 
 | Ruta | Audiencia | Tipo | Héroe | Componentes | Responsive | Pruebas | Estado |
 |---|---|---|---|---|---|---|---|
-| `/` | Todas | A | Inicio | Paneles de público, curso destacado, escuelas, recorrido, paquetes | 390/768/1280 | Navegador + build | Completa |
+| `/` | Profesionales | A | Inicio | Catálogo: lo más nuevo, lo más actual, 7 áreas, guías, artículos, rutas, encuesta y aviso de novedad | 390/768/1280 | Navegador + build | Completa |
 | `/escuelas` | Profesionales | A | C | Tarjetas de escuela, mapa de áreas | 390/768/1280 | Navegador | Completa |
 | `/escuelas/:slug` | Profesionales | A | A | Rasgos reales, áreas, productos | 390/768/1280 | Navegador | Completa |
 | `/cursos` (+ proveedores) | Profesionales | A | D | Carruseles por escuela | 390/1280 | Navegador | Completa |
@@ -154,7 +173,8 @@ Las clases heredadas (`btn-edvanta`, `btn-primary`, `btn-secondary`, `btn-teal`,
 | `/herramientas`, `/hoja-de-vida` | Profesionales | A | LandingHero + G / diagrama | Portátil, «antes / después» | 390/768/1280 | Navegador | Completa |
 | `/pacientes` | Pacientes | B | F | 9 imágenes de Contigo, «es / no es» | 390/768/1280 | Navegador | Completa |
 | `/pacientes/tiroides` | Pacientes | B | B | Guías, temas | 390/1280 | Navegador | Completa |
-| `/instituciones` | Instituciones | C | E | Necesidad → paquete, proceso, paquetes | 390/768/1280 | Navegador | Completa |
+| `/instituciones` | Instituciones | C | E | Catálogo: paquetes, lo más nuevo y cursos por área; servicios en botones; propuesta como encuesta | 390/1280 | Navegador | Completa |
+| `/contigo` | Pacientes | B | Contigo | Catálogo de guías: lo más nuevo, gratis, guías FST por tema, rutas, artículos; servicios en botones; encuesta | 390/1280 | Navegador | Completa |
 | `/sobre-edvanta` | Todas | C | C | Principios numerados | 390/1280 | Navegador | Completa |
 | `/contacto` | Todas | C | Formulario en el primer pantallazo | Canales, atajos | 390/1280 | Navegador | Completa |
 | `/articulos`, `/articulos/:slug` | Todas | A/B | Editorial existente | Botones y colores | 390 | Navegador + prerender | Sistema aplicado |

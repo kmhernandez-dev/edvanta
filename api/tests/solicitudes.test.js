@@ -42,6 +42,34 @@ describe('solicitudes de la web', () => {
     expect(rows[0].acepta_novedades).toBe(false);
   });
 
+  // La encuesta del final de los inicios (components/edvanta/catalogo.jsx)
+  // manda esto: temas como áreas, cómo prefiere aprender y una idea.
+  it('la encuesta de los inicios se guarda como interés con sus respuestas', async () => {
+    const r = await t.client().post('/solicitudes', {
+      tipo: 'interes',
+      referencia: 'encuesta-inicio-profesionales',
+      nombre: 'Carla Ruiz',
+      correo: 'carla@prueba.co',
+      rol: 'quimico',
+      areas: ['Farmacia clínica', 'Datos e IA'],
+      modalidad: 'aula',
+      mensaje: 'Un curso de farmacovigilancia',
+      aceptaTratamiento: true,
+      aceptaNovedades: true,
+      origen: '/',
+    });
+    expect(r.status).toBe(201);
+    const { rows } = await t.db.query('SELECT * FROM solicitudes WHERE id = $1', [r.data.id]);
+    expect(rows[0]).toMatchObject({ referencia: 'encuesta-inicio-profesionales', rol: 'quimico', modalidad: 'aula', acepta_novedades: true });
+    expect(rows[0].areas).toEqual(['Farmacia clínica', 'Datos e IA']);
+
+    const paciente = await t.client().post('/solicitudes', {
+      tipo: 'interes', referencia: 'encuesta-inicio-pacientes', nombre: 'Rosa', correo: 'rosa@prueba.co',
+      rol: 'cuidador', areas: ['Hashimoto'], modalidad: 'combinada', aceptaTratamiento: true, origen: '/contigo',
+    });
+    expect(paciente.status).toBe(201);
+  });
+
   it('sin autorización de tratamiento no se guarda nada', async () => {
     const antes = (await t.db.query('SELECT COUNT(*)::int AS n FROM solicitudes')).rows[0].n;
     const r = await t.client().post('/solicitudes', { ...base, correo: 'b@prueba.co', aceptaTratamiento: false });
