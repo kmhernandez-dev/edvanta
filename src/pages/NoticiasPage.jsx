@@ -5,7 +5,12 @@ import SiteHeader from '../components/edvanta/SiteHeader';
 import SiteFooter from '../components/edvanta/SiteFooter';
 import { ImageSlot } from '../components/edvanta/ui';
 import { updatePageSeo } from '../utils/seo';
-import { fuentesNoticias, noticiasRecientes } from '../data/careerHub';
+import { fuentesNoticias } from '../data/careerHub';
+import { NOTICIAS_FARMACEUTICAS } from '../data/noticiasFarmaceuticas';
+
+const fechaNoticia = (fecha) => new Intl.DateTimeFormat('es-CO', {
+  day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC',
+}).format(new Date(`${fecha}T12:00:00Z`));
 
 export default function NoticiasPage() {
   useEffect(() => updatePageSeo({
@@ -33,7 +38,7 @@ export default function NoticiasPage() {
                 <p className="text-sm font-bold uppercase tracking-wide text-edvanta-light">Noticias del sector</p>
                 <h1 className="mt-2 text-4xl font-bold leading-tight text-white sm:text-5xl">Mantente al día con lo que pasa en el sector farmacéutico</h1>
                 <p className="mt-4 max-w-2xl text-lg leading-8 text-edvanta-light">
-                  Agenda, convocatorias y noticias relevantes para el profesional farmacéutico en Colombia, con enlaces a las fuentes oficiales.
+                  Actualidad regulatoria y sanitaria para profesionales farmacéuticos, explicada con contexto y enlazada a sus fuentes oficiales.
                 </p>
               </div>
             </div>
@@ -52,19 +57,33 @@ export default function NoticiasPage() {
         <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
           <div className="flex items-center gap-2">
             <Megaphone className="h-5 w-5 text-edvanta-blue" aria-hidden="true" />
-            <h2 className="text-2xl font-bold text-edvanta-deep sm:text-3xl">Noticias recientes</h2>
+            <h2 className="text-2xl font-bold text-edvanta-deep sm:text-3xl">100 noticias farmacéuticas recientes</h2>
           </div>
-          <div className="mt-7 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-            {noticiasRecientes.map(n => (
-              <a key={n.titulo} href={n.url} target="_blank" rel="noopener noreferrer" className="group flex min-h-56 flex-col rounded-xl border border-edvanta-border bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:border-edvanta-border hover:shadow-md">
-                <div className="flex items-center justify-between gap-3">
-                  <p className="text-xs font-bold uppercase text-edvanta-blue">{n.fuente}</p>
-                  <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-edvanta-subtle"><CalendarDays className="h-3 w-3" />{n.fecha}</span>
+          <p className="mt-2 max-w-3xl text-sm leading-6 text-edvanta-muted">
+            Aprobaciones, alertas, retiros, farmacovigilancia, calidad, ensayos clínicos y regulación de INVIMA, ANVISA, FDA, EMA y MHRA.
+          </p>
+          <div className="mt-7 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+            {NOTICIAS_FARMACEUTICAS.map(n => (
+              <article key={n.slug} className="group flex overflow-hidden rounded-xl border border-edvanta-border bg-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
+                <div className="flex min-w-0 flex-1 flex-col">
+                  <Link to={`/articulos/${n.slug}`} className="flex flex-1 flex-col">
+                    <img src={n.image} alt={n.imageAlt} width="1200" height="630" loading="lazy" decoding="async" className="aspect-[16/8] w-full object-cover" />
+                    <div className="flex flex-1 flex-col p-5">
+                      <div className="flex flex-wrap items-center justify-between gap-2">
+                        <p className="text-xs font-bold uppercase text-edvanta-blue">{n.sourceEntity}</p>
+                        <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-edvanta-subtle"><CalendarDays className="h-3 w-3" />{fechaNoticia(n.date)}</span>
+                      </div>
+                      <p className="mt-3 text-[11px] font-bold uppercase tracking-wide text-teal-700">{n.newsTopic}</p>
+                      <h3 className="mt-1 text-base font-bold leading-snug text-edvanta-deep group-hover:text-edvanta-blue">{n.title}</h3>
+                      <p className="mt-2 line-clamp-3 flex-1 text-sm leading-6 text-edvanta-muted">{n.description}</p>
+                      <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-bold text-edvanta-blue">Leer análisis <ArrowRight className="h-4 w-4" aria-hidden="true" /></span>
+                    </div>
+                  </Link>
+                  <a href={n.sourceUrl} target="_blank" rel="noopener noreferrer" className="mx-5 mb-5 inline-flex items-center gap-1.5 text-xs font-bold text-edvanta-muted hover:text-edvanta-blue">
+                    Fuente oficial <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
+                  </a>
                 </div>
-                <h3 className="mt-3 flex-1 text-base font-bold leading-snug text-edvanta-deep group-hover:text-edvanta-blue">{n.titulo}</h3>
-                <p className="mt-2 text-sm leading-6 text-edvanta-muted">{n.nota}</p>
-                <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-bold text-edvanta-blue">Leer en la fuente <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" /></span>
-              </a>
+              </article>
             ))}
           </div>
         </section>

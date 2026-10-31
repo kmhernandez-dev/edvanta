@@ -453,6 +453,7 @@ export default function ArticuloPage() {
       canonical,
       image: imagen,
       imageAlt: art.imageAlt || art.title,
+      keywords: art.keywords,
       type: 'article',
       jsonLdId: 'articulo',
       jsonLd: { '@context': 'https://schema.org', '@graph': grafo },

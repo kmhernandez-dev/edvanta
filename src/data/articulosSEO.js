@@ -1,4 +1,6 @@
-export const SEO_ARTICULOS = {
+import { SEO_NOTICIAS } from './noticiasFarmaceuticas.js';
+
+const SEO_BASE = {
   "5-razones-especializarte-atencion-farmaceutica-fibrosis-quistica": {"seoTitle":"Especialízate en atención farmacéutica en fibrosis quística","seoDescription":"Descubre por qué la atención farmacéutica en fibrosis quística es una de las áreas de mayor demanda y cómo puedes especializarte con formación de calidad.","image":"/img/escuelas/salud.webp","imageAlt":"Farmacéutico especializado en fibrosis quística","updated":"2026-10-28"},
   "aceites-esenciales-tiroides-mitos": {"seoTitle":"Aceites esenciales y tiroides: mitos, evidencia y usos seguros","seoDescription":"Qué dice realmente la ciencia sobre aceites esenciales y función tiroidea, usos seguros, riesgos y qué evitar.","image":"/img/feliz-sin-tiroides-hero-v2.webp","imageAlt":"Frascos de aceites esenciales con un signo de interrogación, representando la incertidumbre científica","updated":"2026-10-28"},
   "acetaminofen-para-que-sirve": {"seoTitle":"Acetaminofén: para qué sirve, dosis y riesgos","seoDescription":"Para qué sirve el acetaminofén (paracetamol), cuánto es la dosis máxima diaria, el riesgo de sumarlo con antigripales y por qué es el indicado en el dengue.","image":"/img/publicos/pacientes.webp","imageAlt":"Imagen editorial sobre medicamentos: Acetaminofén: para qué sirve, dosis máxima y riesgos para el hígado"},
@@ -193,3 +195,5 @@ export const SEO_ARTICULOS = {
   "who-academy-buenas-practicas-ensayos-clinicos": {"seoTitle":"WHO Academy: buenas prácticas en ensayos clínicos","seoDescription":"La OMS Academy ofrece formación gratuita de 2026 sobre diseño, conducción y supervisión de ensayos clínicos: 9 módulos interactivos, autogestionados.","image":"/img/escuelas/calidad.webp","imageAlt":"Imagen editorial sobre calidad farmacéutica: WHO Academy: buenas prácticas en diseño e implementación de ensayos clínicos","updated":"2026-10-28"},
   "who-good-reliance-practices": {"seoTitle":"WHO Good Reliance Practices: curso gratuito de la OMS","seoDescription":"Aprende reliance regulatorio con el curso gratuito de la OMS en UNITAR: cómo una autoridad se apoya en las evaluaciones de otras agencias. Disponible en español.","image":"/img/escuelas/calidad.webp","imageAlt":"Imagen editorial sobre calidad farmacéutica: WHO Good Reliance Practices: el curso gratuito de la OMS sobre reliance regulatorio","updated":"2026-10-28"},
 };
+
+export const SEO_ARTICULOS = { ...SEO_NOTICIAS, ...SEO_BASE };

@@ -10,6 +10,7 @@
  */
 import { articulosSalud } from './articulosSalud.js';
 import { SEO_ARTICULOS } from './articulosSEO.js';
+import { NOTICIAS_FARMACEUTICAS } from './noticiasFarmaceuticas.js';
 
 const BASE = '/articulos/articulos_edvanta';
 
@@ -1476,7 +1477,7 @@ const edvantaArticulos = [
 // Los de salud van primero: son los más recientes y los que más se buscan.
 // Cada entrada recibe su capa SEO (título de búsqueda, descripción, imagen y alt)
 // sin cambiar el H1 ni la descripción visible del artículo.
-export const articulos = [...articulosSalud, ...legacyArticulos, ...edvantaArticulos]
+export const articulos = [...NOTICIAS_FARMACEUTICAS, ...articulosSalud, ...legacyArticulos, ...edvantaArticulos]
   .map((a) => ({ ...a, ...(SEO_ARTICULOS[a.slug] || {}) }));
 
 export const getArticulo = (slug) => articulos.find(a => a.slug === slug);
