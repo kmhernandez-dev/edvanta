@@ -21,7 +21,8 @@ describe('SEO de los 293 artículos', () => {
       expect(seo.seoDescription.length, `${a.slug} descripción`).toBeGreaterThan(60);
       expect(seo.seoDescription.length, `${a.slug} descripción`).toBeLessThanOrEqual(161);
       expect(seo.imageAlt.length, `${a.slug} alt`).toBeGreaterThan(10);
-      expect(existsSync(path.join(RAIZ, 'public', seo.image.replace(/^\//, ''))), `${a.slug} imagen ${seo.image}`).toBe(true);
+      const imagePath = seo.image.split('?')[0].replace(/^\//, '');
+      expect(existsSync(path.join(RAIZ, 'public', imagePath)), `${a.slug} imagen ${seo.image}`).toBe(true);
       expect(existsSync(path.join(RAIZ, 'public', a.mdPath.replace(/^\//, ''))), `${a.slug} markdown`).toBe(true);
     }
   });
