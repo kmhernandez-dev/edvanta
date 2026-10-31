@@ -148,6 +148,26 @@ describe('migraciones', () => {
       await new Promise((resolve) => server.close(resolve));
     }
   });
+
+  // ── Sin afiches «Curso GRATIS» (062) ────────────────────────
+  it('los cursos que apuntaban a un afiche pasan a la portada real de Edutin', async () => {
+    await base.db.exec(`
+      INSERT INTO courses (title, slug, image_url) VALUES
+        ('Gestión de calidad', 'prueba-afiche-calidad', '/img/cursos/gestion-de-calidad.webp'),
+        ('Lean Six Sigma', 'prueba-afiche-lss', '/img/cursos/posters/lean-six-sigma.jpg'),
+        ('Otro afiche', 'prueba-afiche-otro', '/img/cursos/posters/otro.webp'),
+        ('Con su portada', 'prueba-portada-propia', '/img/cursos/edutin/12938.jpg');
+    `);
+    await base.db.exec(cleanMigrationSql(readFileSync(path.join(dir, '062_cursos_sin_afiches.sql'), 'utf8')));
+    const { rows } = await base.db.query(`SELECT slug, image_url FROM courses WHERE slug LIKE 'prueba-%' ORDER BY slug`);
+    expect(Object.fromEntries(rows.map((r) => [r.slug, r.image_url]))).toEqual({
+      'prueba-afiche-calidad': '/img/cursos/edutin/12938.jpg',
+      'prueba-afiche-lss': '/img/cursos/edutin/12588.jpg',
+      'prueba-afiche-otro': null,
+      'prueba-portada-propia': '/img/cursos/edutin/12938.jpg',
+    });
+    await base.db.exec(`DELETE FROM courses WHERE slug LIKE 'prueba-%'`);
+  });
 });
 
 describe('ficha pública de curso · temario', () => {

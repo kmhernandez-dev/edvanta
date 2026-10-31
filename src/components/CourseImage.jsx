@@ -1,10 +1,9 @@
-export default function CourseImage({ course, className = '', loading = 'lazy', variant = 'landscape' }) {
+// Portada horizontal de un curso. La variante de afiche vertical («Curso
+// GRATIS») se quitó: esos afiches se borraron y no deben volver a salir.
+export default function CourseImage({ course, className = '', loading = 'lazy' }) {
   const assetVersion = '20260716-edvanta-refresh';
-  const isPoster = variant === 'poster';
-  const webp = isPoster ? `/img/cursos/posters/${course.slug}.webp?v=${assetVersion}` : `${course.image.webp}?v=${assetVersion}`;
-  const jpg = isPoster ? `/img/cursos/posters/${course.slug}.jpg?v=${assetVersion}` : `${course.image.jpg}?v=${assetVersion}`;
-  const width = isPoster ? '941' : '1600';
-  const height = isPoster ? '1672' : '900';
+  const webp = `${course.image.webp}?v=${assetVersion}`;
+  const jpg = `${course.image.jpg}?v=${assetVersion}`;
 
   return (
     <picture>
@@ -12,8 +11,8 @@ export default function CourseImage({ course, className = '', loading = 'lazy', 
       <img
         src={jpg}
         alt={course.image.alt}
-        width={width}
-        height={height}
+        width="1600"
+        height="900"
         loading={loading}
         decoding={loading === 'eager' ? 'sync' : 'async'}
         className={className}
