@@ -110,17 +110,17 @@ Videos: los dos existentes (53 y 61 minutos) son complementarios; las 9 clases q
 
 - **PGlite / pruebas:** 063, 064 y 065 aplicadas y probadas.
 - **Aula local:** 063, 064 y 065 aplicadas; servidor iniciado.
-- **Producción / Coolify:** no se accedió; 064 y 065 **no aplicadas**. 063 no se versiona en el repositorio público.
-- El migrador real aplicará 064 y 065 en el siguiente arranque del servicio API. 063 debe aplicarse desde almacenamiento privado después de la revisión especializada; eso no se verificó en el entorno objetivo.
+- **Producción / Coolify:** 064 y 065 aplicadas por el migrador; 063 aplicada manualmente desde un artefacto temporal privado. Curso BPM publicado.
+- El repositorio público sigue sin 063. Para reconstruir la base desde cero hay que aplicar 063 desde almacenamiento privado antes de publicar BPM.
 
 ## 6. Qué queda pendiente
 
-1. **Aplicar 064 y 065 en producción** y verificar el historial de migraciones y las tablas resultantes. 063 queda en almacenamiento privado hasta la revisión de BPM.
+1. **Conservar 063 en almacenamiento privado** para reconstrucciones futuras; ya se aplicó en producción y el curso BPM quedó publicado.
 2. **Prueba E2E de navegador** (Playwright u equivalente) para las rutas y la interacción visual; no se ejecutó.
 3. **Revisión especializada de BPM**: `REVISION-ESPECIALIZADA-BPM.md` está preparada, pero no firmada. No se atribuye a un experto inexistente.
-4. **Publicación de BPM**: sigue en borrador; requiere la revisión anterior y la decisión académica.
+4. **BPM**: publicado el 2026-11-03 a solicitud del propietario. La revisión especializada sigue pendiente y debe completarse antes de promoverlo comercialmente.
 5. **Fase B**: BPE y el resto del catálogo. Quedan **51 cursos, 249 unidades y 1.610 clases** sin la capa pedagógica completa.
-6. **Visibilidad del repositorio**: el repositorio es público. `contenido/aula/bpm/`, la migración 063, `bpm-pedagogia.test.js` y `bpm-vista-previa.html` contienen claves o guías docentes y quedaron **ignorados por git** en esta sesión. Falta moverlos a almacenamiento privado y definir cómo se aplicará 063 sin publicarla.
+6. **Visibilidad del repositorio**: el repositorio es público. `contenido/aula/bpm/`, la migración 063, `bpm-pedagogia.test.js` y `bpm-vista-previa.html` contienen claves o guías docentes y quedaron **ignorados por git**. 063 se aplicó en producción desde un artefacto temporal privado y se eliminó; el paquete debe conservarse en almacenamiento privado para futuras reconstrucciones.
 
 ## 7. Punto exacto de continuación
 
@@ -136,5 +136,7 @@ Videos: los dos existentes (53 y 61 minutos) son complementarios; las 9 clases q
 - `https://edvanta.co/`, `/api/health` y `/api/health/db` responden 200.
 - Las rutas nuevas de CRM responden 401 sin sesión y los chunks `Seguimiento`, `QuizCurso` y `DocenteCurso` responden 200.
 - 064 y 065 se ejecutan en el arranque del servicio API. No se consultó `_migrations` directamente en producción.
-- 063 y el paquete BPM **no se desplegaron** porque contienen claves y el repositorio es público.
+- 063 se aplicó manualmente a las 18:39 UTC desde un artefacto temporal privado (gist no listado, eliminado después). El curso BPM quedó **publicado** (versión 2), con 3 quizzes, 3 actividades y 3 foros.
+- La ficha pública `https://edvanta.co/curso-de-bpm-en-la-industria-farmaceutica` responde 200 y muestra 3 unidades y 9 clases.
+- Los almacenamientos temporales de Coolify y el gist se eliminaron; 063 no está en el repositorio. La revisión especializada de BPM sigue pendiente.
 

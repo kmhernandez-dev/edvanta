@@ -11,9 +11,9 @@ Fuente de verdad del aula: PostgreSQL y migraciones `api/migrations/`.
 | Pruebas API con PGlite | Sí | Base en memoria, sin credenciales | 001–065 | **Aplicadas**. 063, 064 y 065 se aplicaron dos veces sin duplicar datos. | `npm.cmd run test:api`: 20 archivos, 215 pruebas aprobadas. |
 | Aula local de desarrollo | Sí | PGlite persistente en `api/.data/aula-dev/db` | 005, 029–061, 063, 064 y 065 | **Aplicadas**. El servidor arrancó y quedó escuchando en `127.0.0.1:3000`. | Salida de `node api/scripts/aula-dev.js --reset`: «Aula lista». |
 | Vista previa del frontend | Sí | Build estático en `dist/` | No aplica | **Rutas directas responden 200** (SPA fallback). | `vite preview` + peticiones a `/aula`, `/aula/docente`, `/aula/curso/1/evaluacion`, quiz, actividad y foro. |
-| Producción / Coolify | Sí | PostgreSQL 16.14 (`biblioteca_kh`) | 064 y 065 versionadas; 063 privada | **Desplegado** el 2026-11-03 17:46 UTC. Health y DB responden 200; rutas CRM activas. | Deployment `bg3nkuksngc3aailfpxubtv2`, commit `aaa6b32`. No se consultó `_migrations` directamente. |
+| Producción / Coolify | Sí | PostgreSQL 16.14 (`biblioteca_kh`) | 064 y 065 versionadas; 063 aplicada en privado | **Desplegado** el 2026-11-03 17:46 UTC; BPM publicado a las 18:39 UTC. Health 200 y ficha BPM 200. | Deployments `bg3nkuksngc3aailfpxubtv2` e `i2kogfeg5w5trhsjzmwcnps0`; 063 desde artefacto temporal eliminado. No se consultó `_migrations`. |
 
-Nota: 064 y 065 están **versionadas**, **generadas** y **ejecutadas en pruebas**. 063 se ejecuta en local, pero **no se versiona** en el repositorio público porque contiene claves de quiz; debe aplicarse desde almacenamiento privado. El migrador real (`api/lib/migrate.js`) se ejecutó en el arranque del despliegue del 2026-11-03; no se consultó `_migrations` directamente en producción.
+Nota: 064 y 065 están **versionadas**, **generadas** y **ejecutadas en pruebas**. 063 se ejecuta en local y **no se versiona** en el repositorio público porque contiene claves de quiz; se aplicó en producción desde un artefacto temporal privado que se eliminó. El migrador real (`api/lib/migrate.js`) se ejecutó en el arranque del despliegue del 2026-11-03; no se consultó `_migrations` directamente en producción.
 
 ## 2. Rutas y pantallas accesibles en el entorno probado
 
@@ -121,11 +121,11 @@ El rol `docente` solo ve los cursos asignados en `aula_course_teachers`. Un admi
 
 - No se ejecutó un navegador automatizado (Playwright u equivalente). Se comprobó compilación, rutas directas y comportamiento API; la interacción visual no se validó con un E2E de navegador.
 - No se probó en un dispositivo móvil físico; el CSS conserva los breakpoints existentes y las tablas tienen desplazamiento horizontal.
-- Se desplegó en Coolify el 2026-11-03 17:46 UTC (commit `aaa6b32`). 064 y 065 se ejecutan en el arranque; 063 es privada y no se versiona. No se consultó `_migrations` directamente.
-- BPM sigue en **borrador**. La revisión especializada está pendiente y no se atribuye a ninguna persona.
+- Se desplegó en Coolify el 2026-11-03 17:46 UTC (commit `aaa6b32`). 064 y 065 se ejecutan en el arranque; 063 se aplicó manualmente desde un artefacto privado temporal. No se consultó `_migrations` directamente.
+- BPM quedó **publicado** el 2026-11-03 a solicitud del propietario, con versión 2, 3 quizzes, 3 actividades y 3 foros. La revisión especializada sigue pendiente y no se atribuye a ninguna persona.
 - La revisión de videos no se completó: los dos videos existentes son largos y se conservan como complementarios; no se afirma haberlos reproducido.
 - La subida de archivos usa el almacenamiento privado existente y las reglas de extensión/tamaño del aula; no se probó con archivos grandes ni con todos los formatos.
-- El repositorio es público. Las claves de los quizzes y las guías docentes están en `contenido/aula/bpm/` y en la migración 063, no en `public/`, `dist/` ni en importaciones del frontend. En esta sesión se añadieron a `.gitignore`; falta moverlos a almacenamiento privado y definir la aplicación de 063 sin publicarla. La visibilidad del repositorio no se puede resolver desde el código.
+- El repositorio es público. Las claves de los quizzes y las guías docentes están en `contenido/aula/bpm/` y en la migración 063, no en `public/`, `dist/` ni en importaciones del frontend. Se añadieron a `.gitignore`; 063 se aplicó en producción desde un artefacto temporal privado que se eliminó. Falta conservar el paquete en almacenamiento privado para reconstrucciones futuras. La visibilidad del repositorio no se puede resolver desde el código.
 
 ## 7. Tabla de cierre
 
@@ -139,13 +139,13 @@ El rol `docente` solo ve los cursos asignados en `aula_course_teachers`. Un admi
 | Sin vista docente | Cursos asignados, estudiantes, entregas, revisión por rúbrica, foros y notas | `pedagogia.test.js`, páginas `docente/*` | PGlite / API y build | Prueba visual con navegador |
 | Progreso solo por clases | Contadores por tipo, progreso separado de nota y aprobación | `progress.js`, `pedagogia-core.js`, caso 78,5 | PGlite / API | — |
 | Sin rol docente | Rol `docente`, tabla de asignación y rutas protegidas | Migración 064, pruebas de administración | PGlite / API | Asignación real en producción |
-| Migración no aplicada en producción | 064 y 065 versionadas; 063 privada y probada | Pruebas de doble aplicación | PGlite y aula local | Aplicar 064/065 en Coolify; 063 desde almacenamiento privado |
+| Migración no aplicada en producción | 064 y 065 versionadas; 063 aplicada en privado | Pruebas de doble aplicación y despliegue real | PGlite, aula local y producción | Conservar 063 para reconstrucciones futuras |
 | Sin identificación estable para CRM | `crm_code`, segmento, etiquetas, origen y notas; seguimiento y exportación | Migración 065, `pedagogia.test.js`, `Seguimiento.jsx` | PGlite / API y build | Clasificación real de la base existente |
 | Revisión especializada pendiente | Paquete privado y checklist | `bpm-vista-previa.html`, `REVISION-ESPECIALIZADA-BPM.md` | Documento | Revisor competente y firma |
 
 ## 8. Estado de BPM y siguiente trabajo
 
-BPM está **pedagógicamente completo en el paquete**, con la política 60/30/10 y los instrumentos cargados. Sigue en **borrador**, pendiente de revisión especializada y publicación. El recorrido funcional se probó con un curso aislado y con el paquete privado; 063 no se versiona en el repositorio público. El curso BPM no está publicado.
+BPM está **pedagógicamente completo en el paquete**, con la política 60/30/10 y los instrumentos cargados. Se **publicó** el 2026-11-03 a solicitud del propietario: versión 2, 3 quizzes, 3 actividades y 3 foros. Sigue pendiente la revisión especializada antes de promoverlo comercialmente. El recorrido funcional se probó con un curso aislado y con el paquete privado; 063 no se versiona en el repositorio público y se aplicó desde un artefacto temporal privado.
 
 La fase B (BPE y resto del catálogo) no se inició en esta sesión. El siguiente punto exacto es crear `contenido/aula/bpe/` y revisar las 9 clases de la migración 034 y las fuentes de la 038. No se declara completo el catálogo.
 
