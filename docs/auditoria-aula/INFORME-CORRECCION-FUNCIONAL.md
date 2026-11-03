@@ -11,9 +11,9 @@ Fuente de verdad del aula: PostgreSQL y migraciones `api/migrations/`.
 | Pruebas API con PGlite | Sí | Base en memoria, sin credenciales | 001–065 | **Aplicadas**. 063, 064 y 065 se aplicaron dos veces sin duplicar datos. | `npm.cmd run test:api`: 20 archivos, 215 pruebas aprobadas. |
 | Aula local de desarrollo | Sí | PGlite persistente en `api/.data/aula-dev/db` | 005, 029–061, 063, 064 y 065 | **Aplicadas**. El servidor arrancó y quedó escuchando en `127.0.0.1:3000`. | Salida de `node api/scripts/aula-dev.js --reset`: «Aula lista». |
 | Vista previa del frontend | Sí | Build estático en `dist/` | No aplica | **Rutas directas responden 200** (SPA fallback). | `vite preview` + peticiones a `/aula`, `/aula/docente`, `/aula/curso/1/evaluacion`, quiz, actividad y foro. |
-| Producción / Coolify | No se accedió | No hay `DATABASE_URL` en el repositorio | 063, 064 y 065 pendientes | **No aplicadas**. No se reinició ni se desplegó producción. | Sin evidencia de producción; no se declara verificada. |
+| Producción / Coolify | Sí | PostgreSQL 16.14 (`biblioteca_kh`) | 064 y 065 versionadas; 063 privada | **Desplegado** el 2026-11-03 17:46 UTC. Health y DB responden 200; rutas CRM activas. | Deployment `bg3nkuksngc3aailfpxubtv2`, commit `aaa6b32`. No se consultó `_migrations` directamente. |
 
-Nota: 064 y 065 están **versionadas**, **generadas** y **ejecutadas en pruebas**. 063 se ejecuta en local, pero **no se versiona** en el repositorio público porque contiene claves de quiz; debe aplicarse desde almacenamiento privado. El migrador real (`api/lib/migrate.js`) aplicará 064 y 065 en el siguiente arranque del servicio API en Coolify; eso no se comprobó en producción.
+Nota: 064 y 065 están **versionadas**, **generadas** y **ejecutadas en pruebas**. 063 se ejecuta en local, pero **no se versiona** en el repositorio público porque contiene claves de quiz; debe aplicarse desde almacenamiento privado. El migrador real (`api/lib/migrate.js`) se ejecutó en el arranque del despliegue del 2026-11-03; no se consultó `_migrations` directamente en producción.
 
 ## 2. Rutas y pantallas accesibles en el entorno probado
 
@@ -121,7 +121,7 @@ El rol `docente` solo ve los cursos asignados en `aula_course_teachers`. Un admi
 
 - No se ejecutó un navegador automatizado (Playwright u equivalente). Se comprobó compilación, rutas directas y comportamiento API; la interacción visual no se validó con un E2E de navegador.
 - No se probó en un dispositivo móvil físico; el CSS conserva los breakpoints existentes y las tablas tienen desplazamiento horizontal.
-- No se accedió a la base de producción ni se desplegó en Coolify. 064 y 065 no están aplicadas en el entorno objetivo; 063 es privada y no se versiona.
+- Se desplegó en Coolify el 2026-11-03 17:46 UTC (commit `aaa6b32`). 064 y 065 se ejecutan en el arranque; 063 es privada y no se versiona. No se consultó `_migrations` directamente.
 - BPM sigue en **borrador**. La revisión especializada está pendiente y no se atribuye a ninguna persona.
 - La revisión de videos no se completó: los dos videos existentes son largos y se conservan como complementarios; no se afirma haberlos reproducido.
 - La subida de archivos usa el almacenamiento privado existente y las reglas de extensión/tamaño del aula; no se probó con archivos grandes ni con todos los formatos.

@@ -130,3 +130,11 @@ Videos: los dos existentes (53 y 61 minutos) son complementarios; las 9 clases q
 - Repetir el ciclo: validar paquete → generar migración → probar API → comprobar UI → checkpoint.
 - No se declara completo el catálogo.
 
+## 8. Despliegue del 2026-11-03
+
+- Commit `aaa6b32` desplegado en Coolify; deployment `bg3nkuksngc3aailfpxubtv2` finalizado a las 17:46 UTC.
+- `https://edvanta.co/`, `/api/health` y `/api/health/db` responden 200.
+- Las rutas nuevas de CRM responden 401 sin sesión y los chunks `Seguimiento`, `QuizCurso` y `DocenteCurso` responden 200.
+- 064 y 065 se ejecutan en el arranque del servicio API. No se consultó `_migrations` directamente en producción.
+- 063 y el paquete BPM **no se desplegaron** porque contienen claves y el repositorio es público.
+
