@@ -98,7 +98,7 @@ Curso: **Buenas Prácticas de Elaboración (BPE) y Preparaciones Magistrales** (
 | Elemento | Estado |
 |---|---|
 | Unidades | 3, con descripción nueva |
-| Clases | 9, todas **sin video principal**: 1.511–1.946 palabras renderizadas; cada una con caso, 2 ejemplos resueltos, figura, mapa, errores, práctica y práctica adicional con solución, síntesis y 4–5 fuentes |
+| Clases | 9, todas **sin video principal**: 1.527–1.946 palabras renderizadas; cada una con caso, 2 ejemplos resueltos, figura, mapa, errores, práctica y práctica adicional con solución, síntesis y 4–5 fuentes |
 | Tipos | 1 conceptual · 3 procedimentales · 3 analíticas · 2 mixtas |
 | Videos complementarios | 2: EFEsalud `QCGnnSDFgk0` (clase 1, tramo 3:10–5:40, contexto español) y Hospital Departamental de Villavicencio `9dEGNB5MlsA` (clase 9, tramo 2:13–4:39, con advertencia sobre su confusión entre «serio» e «inesperado»). Se revisó su transcripción automática en el navegador; no se afirma haberlos reproducido completos |
 | Quizzes | 3 × 4 preguntas × 4 opciones (12 y 48); 11 de 12 en nivel Aplicar o Analizar; retroalimentación por opción; la clave ya no es siempre la opción más larga |
