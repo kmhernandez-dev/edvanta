@@ -8,7 +8,7 @@
  */
 import { many, one } from './db.js';
 import { requireCourseTeacher, requireOpenEnrollment } from './access.js';
-import { badRequest, conflict, forbidden, id as idField, int, notFound, oneOf, str } from './http.js';
+import { badRequest, conflict, forbidden, id as idField, int, notFound, num, oneOf, str } from './http.js';
 import { sanitizeRichText } from './richtext.js';
 import { recomputeEnrollment } from './progress.js';
 import {
@@ -245,10 +245,13 @@ export async function startAttempt(db, user, courseId, assessmentId, { now = new
 export async function saveAttempt(db, user, courseId, assessmentId, answers, { now = new Date() } = {}) {
   return db.tx(async (tx) => {
     const enrollment = await requireOpenEnrollment(tx, user, courseId, { now });
-    const { assessment, served } = await loadAssessment(tx, courseId, assessmentId);
+    const { assessment } = await loadAssessment(tx, courseId, assessmentId);
     const attempt = await openAttempt(tx, assessment.id, enrollment.id, { lock: true });
     if (!attempt) throw conflict('No tienes un intento en curso para este quiz.');
-    const saved = await saveAnswers(tx, served, attempt, answers);
+    // La versión que se califica es la que se sirvió al iniciar el intento,
+    // no la copia actual del quiz.
+    const attemptServed = asJson(attempt.served) || { questions: [] };
+    const saved = await saveAnswers(tx, attemptServed, attempt, answers);
     return { saved, attempt: publicAttempt(attempt, await answersOf(tx, attempt.id)) };
   });
 }
@@ -357,8 +360,9 @@ export async function submitAttempt(db, user, courseId, assessmentId, answers, {
     if (!attempt) {
       const last = await latestAttempt(tx, assessment.id, enrollment.id);
       if (last) {
+        const lastServed = asJson(last.served) || served;
         const saved = await answersOf(tx, last.id);
-        const detail = (served.questions || []).map((q) => {
+        const detail = (lastServed.questions || []).map((q) => {
           const optionId = Number(saved[String(q.id)]);
           return {
             questionId: Number(q.id), optionId, isCorrect: optionId === Number(q.correctOptionId),
@@ -368,8 +372,8 @@ export async function submitAttempt(db, user, courseId, assessmentId, answers, {
         });
         return {
           alreadySubmitted: true,
-          ...(await resultAfterSubmit(tx, last, served, detail, {
-            showAnswers: Boolean(assessment.show_answers_after_submit),
+          ...(await resultAfterSubmit(tx, last, lastServed, detail, {
+            showAnswers: Boolean(lastServed.showAnswersAfterSubmit ?? assessment.show_answers_after_submit),
             maxAttempts: Number(assessment.max_attempts || 1),
           })),
         };
@@ -379,11 +383,12 @@ export async function submitAttempt(db, user, courseId, assessmentId, answers, {
     if (attempt.status !== 'en_curso') {
       throw conflict('Este intento ya fue enviado.');
     }
+    const attemptServed = asJson(attempt.served) || served;
     if (Array.isArray(answers) && answers.length) {
-      await saveAnswers(tx, served, attempt, answers);
+      await saveAnswers(tx, attemptServed, attempt, answers);
     }
     const saved = await answersOf(tx, attempt.id);
-    const grade = await gradeAttempt(tx, served, attempt, saved);
+    const grade = await gradeAttempt(tx, attemptServed, attempt, saved);
     const updated = await one(
       tx,
       `UPDATE aula_attempts
@@ -418,7 +423,7 @@ export async function submitAttempt(db, user, courseId, assessmentId, answers, {
     return {
       alreadySubmitted: false,
       attempt: publicAttempt(updated, Object.fromEntries(grade.detail.map((d) => [String(d.questionId), d.optionId]))),
-      feedback: feedbackFor(served, grade.detail, Boolean(assessment.show_answers_after_submit)),
+      feedback: feedbackFor(attemptServed, grade.detail, Boolean(attemptServed.showAnswersAfterSubmit ?? assessment.show_answers_after_submit)),
       bestScore: best.best === null || best.best === undefined ? grade.scorePct : Number(best.best),
       used: rows[0].used,
       attemptsRemaining: Math.max(0, maxAttempts - rows[0].used),
@@ -435,11 +440,12 @@ export async function attemptResult(db, user, courseId, assessmentId, attemptId,
     [attemptId, assessment.id, enrollment.id],
   );
   if (!attempt) throw notFound('No encontramos ese intento.');
+  const attemptServed = asJson(attempt.served) || served;
   const answers = await answersOf(db, attempt.id);
   if (attempt.status === 'en_curso') {
     return { attempt: publicAttempt(attempt, answers), feedback: null };
   }
-  const detail = (served.questions || []).map((q) => {
+  const detail = (attemptServed.questions || []).map((q) => {
     const optionId = Number(answers[String(q.id)]);
     return {
       questionId: Number(q.id), optionId, isCorrect: optionId === Number(q.correctOptionId),
@@ -449,7 +455,7 @@ export async function attemptResult(db, user, courseId, assessmentId, attemptId,
   });
   return {
     attempt: publicAttempt(attempt, answers),
-    feedback: feedbackFor(served, detail, Boolean(assessment.show_answers_after_submit)),
+    feedback: feedbackFor(attemptServed, detail, Boolean(attemptServed.showAnswersAfterSubmit ?? assessment.show_answers_after_submit)),
   };
 }
 
@@ -458,9 +464,10 @@ export async function attemptResult(db, user, courseId, assessmentId, attemptId,
 async function loadActivity(db, courseId, activityId) {
   const activity = await one(
     db,
-    `SELECT id, course_id, module_id, title, instructions_html, rubric, due_at,
+    `SELECT id, course_id, module_id, title, instructions_html, case_html, points_to_solve,
+            expected_product, extension_hint, support_html, materials, rubric, due_at,
             allow_text, allow_link, allow_file, accepted_extensions, max_file_mb,
-            max_points, is_required, status, weight, sort_order
+            max_points, is_required, status, weight, sort_order, grading_method
        FROM aula_activities
       WHERE id = $1 AND course_id = $2 AND deleted_at IS NULL AND status = 'publicado'`,
     [activityId, courseId],
@@ -512,7 +519,11 @@ async function activityDetail(db, user, courseId, activityId, { now = new Date()
   return {
     activity: {
       id: activity.id, moduleId: activity.module_id, title: activity.title,
-      instructionsHtml: activity.instructions_html, rubric: asJson(activity.rubric),
+      instructionsHtml: activity.instructions_html, caseHtml: activity.case_html || '',
+      pointsToSolve: asJson(activity.points_to_solve) || [],
+      expectedProduct: activity.expected_product || '', extensionHint: activity.extension_hint || '',
+      supportHtml: activity.support_html || '', materials: asJson(activity.materials) || [],
+      rubric: asJson(activity.rubric), gradingMethod: activity.grading_method || (activity.rubric ? 'rubrica' : 'directa'),
       dueAt: activity.due_at, allowText: activity.allow_text, allowLink: activity.allow_link,
       allowFile: activity.allow_file, acceptedExtensions: activity.accepted_extensions,
       maxFileMb: activity.max_file_mb, maxPoints: Number(activity.max_points),
@@ -641,12 +652,30 @@ export async function submitActivity(db, user, courseId, activityId, input = {},
 async function loadForum(db, courseId, forumId) {
   const forum = await one(
     db,
-    `SELECT id, course_id, module_id, lesson_id, scope, title, description, is_closed, allow_attachments, weight, rubric
-       FROM aula_forums WHERE id = $1 AND course_id = $2 AND deleted_at IS NULL`,
+    `SELECT id, course_id, module_id, lesson_id, scope, title, purpose, description,
+            central_question, guiding_questions, participation_html, rules_html,
+            opens_at, closes_at, no_participants_alternative, grading_method,
+            status, sort_order, is_closed, allow_attachments, weight, rubric
+       FROM aula_forums
+      WHERE id = $1 AND course_id = $2 AND deleted_at IS NULL AND status = 'publicado'`,
     [forumId, courseId],
   );
-  if (!forum) throw notFound('No encontramos ese foro en el curso.');
+  if (!forum) throw notFound('No encontramos ese foro publicado en el curso.');
   return forum;
+}
+
+function forumWindowState(forum, now) {
+  if (forum.opens_at && new Date(forum.opens_at) > now) {
+    return {
+      open: false,
+      message: `Este foro abre el ${new Date(forum.opens_at).toLocaleDateString('es-CO', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'America/Bogota' })}.`,
+    };
+  }
+  if (forum.closes_at && new Date(forum.closes_at) < now) {
+    return { open: false, message: 'El periodo de participación de este foro terminó. La lectura sigue disponible.' };
+  }
+  if (forum.is_closed) return { open: false, message: 'Este foro está cerrado a nuevas respuestas. La lectura sigue disponible.' };
+  return { open: true, message: null };
 }
 
 function authorName(row) {
@@ -668,10 +697,18 @@ export async function forumForStudent(db, user, courseId, forumId, { now = new D
   );
   const muted = await one(db, 'SELECT 1 FROM aula_forum_mutes WHERE course_id = $1 AND user_id = $2', [courseId, user.id]);
   const state = await forumState(db, forum.id, enrollment.id, user.id);
+  const windowState = forumWindowState(forum, now);
   return {
     forum: {
-      id: forum.id, title: forum.title, description: forum.description,
+      id: forum.id, title: forum.title, purpose: forum.purpose || '',
+      description: forum.description, centralQuestion: forum.central_question || '',
+      guidingQuestions: forum.guiding_questions || [],
+      participationHtml: forum.participation_html || '', rulesHtml: forum.rules_html || '',
+      opensAt: forum.opens_at, closesAt: forum.closes_at,
+      noParticipantsAlternative: forum.no_participants_alternative || '',
+      gradingMethod: forum.grading_method,
       isClosed: forum.is_closed, allowAttachments: forum.allow_attachments,
+      isOpen: windowState.open, closedMessage: windowState.message,
       weight: forum.weight === null ? null : Number(forum.weight),
       rubric: asJson(forum.rubric),
     },
@@ -681,14 +718,15 @@ export async function forumForStudent(db, user, courseId, forumId, { now = new D
       replyCount: p.reply_count, lastActivityAt: p.last_activity_at, createdAt: p.created_at,
       author: authorName(p), isMine: p.author_id === user.id,
     })),
-    canPost: !forum.is_closed && !muted,
+    canPost: windowState.open && !muted,
     isMuted: Boolean(muted),
     state,
   };
 }
 
 async function checkForumPosting(db, user, forum, now) {
-  if (forum.is_closed) throw forbidden('Este foro está cerrado.');
+  const windowState = forumWindowState(forum, now);
+  if (!windowState.open) throw forbidden(windowState.message || 'Este foro no está abierto a respuestas.');
   const muted = await one(db, 'SELECT 1 FROM aula_forum_mutes WHERE course_id = $1 AND user_id = $2', [forum.course_id, user.id]);
   if (muted) throw forbidden('Un administrador limitó tu participación en los foros de este curso.');
   await requireOpenEnrollment(db, user, forum.course_id, { now });
@@ -780,21 +818,27 @@ export async function hideForumPost(db, actor, postId, reason, { ip, now = new D
 function rubricReview(rubric, criteria, maxPoints, meta) {
   const defs = Array.isArray(rubric?.criteria) ? rubric.criteria : [];
   if (!defs.length) throw badRequest('La actividad no tiene una rúbrica configurada.');
+  const scale = rubric?.scale === '0-100' ? '0-100' : '0-4';
   const input = new Map((Array.isArray(criteria) ? criteria : []).map((c) => [String(c.id), c]));
   const review = [];
   for (const def of defs) {
     const item = input.get(String(def.id));
     if (!item) throw badRequest(`Falta el criterio «${def.name}».`, { field: 'criteria' });
-    const level = int(item.level, `criteria.${def.id}.level`, `El nivel de ${def.name}`, { min: 0, max: 4 });
-    review.push({
-      id: def.id, name: def.name, weight: Number(def.weight), level,
-      comment: str(item.comment, `criteria.${def.id}.comment`, `El comentario de ${def.name}`, { max: 2000, optional: true }),
-    });
+    const comment = str(item.comment, `criteria.${def.id}.comment`, `El comentario de ${def.name}`, { max: 2000, optional: true });
+    if (scale === '0-100') {
+      const scoreValue = num(item.score, `criteria.${def.id}.score`, `La nota de ${def.name}`, { min: 0, max: 100 });
+      review.push({ id: def.id, name: def.name, weight: Number(def.weight), score: scoreValue, comment });
+    } else {
+      const level = int(item.level, `criteria.${def.id}.level`, `El nivel de ${def.name}`, { min: 0, max: 4 });
+      review.push({ id: def.id, name: def.name, weight: Number(def.weight), level, comment });
+    }
   }
-  const score100 = round2(review.reduce((sum, r) => sum + (r.weight * r.level) / 4, 0));
+  const score100 = round2(review.reduce((sum, r) => sum
+    + (scale === '0-100' ? (r.score * r.weight) / 100 : (r.weight * r.level) / 4), 0));
   const score = round2((score100 * Number(maxPoints || 100)) / 100);
   return {
-    version: 1,
+    version: scale === '0-100' ? 2 : 1,
+    scale,
     criteria: review,
     score100,
     score,
@@ -813,7 +857,7 @@ const DECISION_STATUS = {
 export async function teacherSubmission(db, actor, submissionId) {
   const submission = await one(
     db,
-    `SELECT s.*, a.course_id, a.title AS activity_title, a.rubric, a.max_points,
+    `SELECT s.*, a.course_id, a.title AS activity_title, a.rubric, a.max_points, a.grading_method,
             e.user_id AS student_id, u.first_name, u.last_name, u.email
        FROM aula_submissions s
        JOIN aula_activities a ON a.id = s.activity_id
@@ -850,6 +894,7 @@ export async function teacherSubmission(db, actor, submissionId) {
       lastSubmittedAt: submission.last_submitted_at,
       reviewedAt: submission.reviewed_at,
       rubric: asJson(submission.rubric),
+      gradingMethod: submission.grading_method || (submission.rubric ? 'rubrica' : 'directa'),
       maxPoints: Number(submission.max_points),
       rubricReview: asJson(submission.rubric_review),
       reviewDraft: asJson(submission.review_draft),
@@ -862,7 +907,7 @@ export async function teacherSubmission(db, actor, submissionId) {
 export async function reviewSubmission(db, actor, submissionId, input, { ip, now = new Date() } = {}) {
   const submission = await one(
     db,
-    `SELECT s.*, a.course_id, a.title AS activity_title, a.rubric, a.max_points,
+    `SELECT s.*, a.course_id, a.title AS activity_title, a.rubric, a.max_points, a.grading_method,
             e.user_id AS student_id, u.first_name, u.last_name, u.email
        FROM aula_submissions s
        JOIN aula_activities a ON a.id = s.activity_id
@@ -876,20 +921,41 @@ export async function reviewSubmission(db, actor, submissionId, input, { ip, now
   const publish = Boolean(input?.publish);
   const decision = oneOf(input?.decision, 'decision', 'La decisión', Object.keys(DECISION_STATUS), { optional: true });
   const feedback = str(input?.feedback, 'feedback', 'La retroalimentación', { max: 10000, optional: true });
+  const changeReason = str(input?.changeReason, 'changeReason', 'El motivo del cambio de nota', { min: 5, max: 1000, optional: true });
   const previousScore = submission.score === null || submission.score === undefined ? null : Number(submission.score);
   const latestRevision = await one(
     db,
     'SELECT id FROM aula_submission_revisions WHERE submission_id = $1 ORDER BY revision_number DESC LIMIT 1',
     [submission.id],
   );
-  const review = rubricReview(asJson(submission.rubric), input?.criteria, submission.max_points, {
+  const meta = {
     decision: decision || null,
     revisionId: latestRevision?.id || null,
     revisionNumber: submission.current_revision,
     reviewerId: actor.id,
     reviewerEmail: actor.email,
     reviewedAt: now,
-  });
+  };
+  const hasCriteria = Array.isArray(input?.criteria) && input.criteria.length > 0;
+  let review;
+  if (hasCriteria) {
+    review = rubricReview(asJson(submission.rubric), input.criteria, submission.max_points, meta);
+  } else {
+    const score100 = num(input?.score, 'score', 'La nota', { min: 0, max: 100, optional: !publish });
+    if (score100 === null && publish) {
+      throw badRequest('Escribe una nota entre 0 y 100 antes de publicar.', { field: 'score' });
+    }
+    review = {
+      version: 1,
+      scale: '0-100',
+      mode: 'directa',
+      criteria: [],
+      score100,
+      score: score100 === null ? null : round2((score100 * Number(submission.max_points || 100)) / 100),
+      maxPoints: Number(submission.max_points || 100),
+      ...meta,
+    };
+  }
 
   if (!publish) {
     const draft = { ...review, feedback, savedAt: now };
@@ -902,6 +968,15 @@ export async function reviewSubmission(db, actor, submissionId, input, { ip, now
     return { draft: true, review: draft };
   }
   if (!decision) throw badRequest('Elige una decisión antes de publicar.');
+  if (review.score === null || review.score === undefined) {
+    throw badRequest('Escribe una nota entre 0 y 100 antes de publicar.', { field: 'score' });
+  }
+
+  const changed = previousScore !== null && Math.abs(previousScore - Number(review.score)) > 0.005;
+  const reasonForChange = changeReason || (feedback && feedback.trim().length >= 5 ? feedback : null);
+  if (changed && !reasonForChange) {
+    throw badRequest('Explica el motivo del cambio de una nota ya publicada.', { field: 'changeReason' });
+  }
 
   return db.tx(async (tx) => {
     const updated = await one(
@@ -922,15 +997,14 @@ export async function reviewSubmission(db, actor, submissionId, input, { ip, now
       [submission.id, updated.graded_revision_id, actor.id, actor.email, decision, feedback, review.score, now],
     );
     await recomputeEnrollment(tx, submission.enrollment_id, { now });
-    if (previousScore !== null && previousScore !== Number(review.score)) {
-      const changeReason = feedback && feedback.trim().length >= 5 ? feedback : 'Revisión docente de la entrega';
+    if (changed) {
       await tx.query(
         `INSERT INTO aula_grade_changes
            (target_type, target_id, enrollment_id, old_value, new_value, reason, changed_by, changed_by_email, changed_at)
          VALUES ('entrega', $1, $2, $3, $4, $5, $6, $7, $8)`,
         [
           submission.id, submission.enrollment_id, previousScore, review.score,
-          changeReason.slice(0, 500), actor.id, actor.email, now,
+          reasonForChange.slice(0, 500), actor.id, actor.email, now,
         ],
       );
     }
@@ -938,6 +1012,7 @@ export async function reviewSubmission(db, actor, submissionId, input, { ip, now
       actor, ip, action: 'entrega.revisar', entityType: 'entrega', entityId: submission.id,
       courseId: submission.course_id,
       summary: `Entrega de ${authorName(submission)} revisada: ${decision}, ${review.score}/${review.maxPoints}.`,
+      reason: changed ? reasonForChange : null,
       after: { decision, score: review.score, maxPoints: review.maxPoints, revision: submission.current_revision },
     });
     return { draft: false, submission: updated, review };
@@ -973,6 +1048,11 @@ export async function teacherForum(db, actor, forumId) {
   return {
     forum: {
       id: forum.id, courseId: forum.course_id, title: forum.title, description: forum.description,
+      purpose: forum.purpose || '', centralQuestion: forum.central_question || '',
+      guidingQuestions: forum.guiding_questions || [], participationHtml: forum.participation_html || '',
+      rulesHtml: forum.rules_html || '', noParticipantsAlternative: forum.no_participants_alternative || '',
+      opensAt: forum.opens_at, closesAt: forum.closes_at, status: forum.status,
+      gradingMethod: forum.grading_method || (forum.rubric ? 'rubrica' : 'formativa'),
       rubric: asJson(forum.rubric), weight: forum.weight === null ? null : Number(forum.weight),
     },
     posts: posts.map((p) => ({
@@ -1003,6 +1083,7 @@ export async function gradeForum(db, actor, forumId, input, { ip, now = new Date
   );
   if (!enrollment) throw notFound('Esa persona no está matriculada en el curso.');
   const feedback = str(input?.feedback, 'feedback', 'La retroalimentación', { max: 10000, optional: true });
+  const changeReason = str(input?.changeReason, 'changeReason', 'El motivo del cambio de nota', { min: 5, max: 1000, optional: true });
   let score;
   let review = null;
   if (Array.isArray(input?.criteria) && input.criteria.length) {
@@ -1013,34 +1094,52 @@ export async function gradeForum(db, actor, forumId, input, { ip, now = new Date
   } else {
     score = Number(input?.score);
     if (!Number.isFinite(score) || score < 0 || score > 100) {
-      throw badRequest('La nota del foro debe estar entre 0 y 100.');
+      throw badRequest('La nota del foro debe estar entre 0 y 100.', { field: 'score' });
     }
     score = round2(score);
   }
-  const previous = await one(
-    db,
-    'SELECT score, feedback, graded_at FROM aula_forum_grades WHERE forum_id = $1 AND enrollment_id = $2',
-    [forum.id, enrollmentId],
-  );
-  const row = await one(
-    db,
-    `INSERT INTO aula_forum_grades (forum_id, enrollment_id, score, rubric_review, feedback, graded_by, graded_at)
-     VALUES ($1, $2, $3, $4::jsonb, $5, $6, $7)
-     ON CONFLICT (forum_id, enrollment_id) DO UPDATE
-        SET score = EXCLUDED.score, rubric_review = EXCLUDED.rubric_review,
-            feedback = EXCLUDED.feedback, graded_by = EXCLUDED.graded_by,
-            graded_at = EXCLUDED.graded_at, updated_at = NOW()
-     RETURNING *`,
-    [forum.id, enrollmentId, score, review ? JSON.stringify(review) : null, feedback, actor.id, now],
-  );
-  await recomputeEnrollment(db, enrollmentId, { now });
-  await audit(db, {
-    actor, ip, action: 'foro.calificar', entityType: 'foro_calificacion', entityId: row.id, courseId: forum.course_id,
-    summary: `Foro «${forum.title}» calificado a ${authorName(enrollment)}: ${score}/100.`,
-    before: previous ? { score: previous.score === null ? null : Number(previous.score), feedback: previous.feedback, gradedAt: previous.graded_at } : null,
-    after: { score, enrollmentId },
+  return db.tx(async (tx) => {
+    const previous = await one(
+      tx,
+      'SELECT score, feedback, graded_at FROM aula_forum_grades WHERE forum_id = $1 AND enrollment_id = $2 FOR UPDATE',
+      [forum.id, enrollmentId],
+    );
+    const previousScore = previous?.score === null || previous?.score === undefined ? null : Number(previous.score);
+    const changed = previousScore !== null && Math.abs(previousScore - score) > 0.005;
+    const reasonForChange = changeReason || (feedback && feedback.trim().length >= 5 ? feedback : null);
+    if (changed && !reasonForChange) {
+      throw badRequest('Explica el motivo del cambio de una nota ya publicada.', { field: 'changeReason' });
+    }
+    const row = await one(
+      tx,
+      `INSERT INTO aula_forum_grades (forum_id, enrollment_id, score, rubric_review, feedback, graded_by, graded_at)
+       VALUES ($1, $2, $3, $4::jsonb, $5, $6, $7)
+       ON CONFLICT (forum_id, enrollment_id) DO UPDATE
+          SET score = EXCLUDED.score, rubric_review = EXCLUDED.rubric_review,
+              feedback = EXCLUDED.feedback, graded_by = EXCLUDED.graded_by,
+              graded_at = EXCLUDED.graded_at, updated_at = NOW()
+       RETURNING *`,
+      [forum.id, enrollmentId, score, review ? JSON.stringify(review) : null, feedback, actor.id, now],
+    );
+    if (changed) {
+      await tx.query(
+        `INSERT INTO aula_grade_changes
+           (target_type, target_id, enrollment_id, old_value, new_value, reason, changed_by, changed_by_email, changed_at, metadata)
+         VALUES ('foro', $1, $2, $3, $4, $5, $6, $7, $8, $9::jsonb)`,
+        [row.id, enrollmentId, previousScore, score, reasonForChange.slice(0, 500), actor.id, actor.email, now,
+          JSON.stringify({ forumId: forum.id, forumTitle: forum.title })],
+      );
+    }
+    await recomputeEnrollment(tx, enrollmentId, { now });
+    await audit(tx, {
+      actor, ip, action: 'foro.calificar', entityType: 'foro_calificacion', entityId: row.id, courseId: forum.course_id,
+      summary: `Foro «${forum.title}» calificado a ${authorName(enrollment)}: ${score}/100.`,
+      reason: changed ? reasonForChange : null,
+      before: previous ? { score: previousScore, feedback: previous.feedback, gradedAt: previous.graded_at } : null,
+      after: { score, enrollmentId },
+    });
+    return { grade: row, review };
   });
-  return { grade: row, review };
 }
 
 // ── Docente: cursos y resumen ──────────────────────────────────────────
@@ -1169,16 +1268,27 @@ export async function pedagogyOverview(db, user, courseId, { now = new Date() } 
   const activities = await activityList(db, user, courseId, { now });
   const forumRows = await many(
     db,
-    `SELECT id, title, description, is_closed, allow_attachments, weight, rubric
-       FROM aula_forums WHERE course_id = $1 AND deleted_at IS NULL ORDER BY id`,
+    `SELECT id, title, purpose, description, central_question, guiding_questions,
+            participation_html, rules_html, opens_at, closes_at, no_participants_alternative,
+            grading_method, is_closed, allow_attachments, weight, rubric
+       FROM aula_forums
+      WHERE course_id = $1 AND deleted_at IS NULL AND status = 'publicado'
+      ORDER BY sort_order, id`,
     [courseId],
   );
   const forums = [];
   for (const f of forumRows) {
     const state = await forumState(db, f.id, enrollment.id, user.id);
+    const windowState = forumWindowState(f, now);
     forums.push({
-      id: f.id, title: f.title, description: f.description,
-      isClosed: f.is_closed, allowAttachments: f.allow_attachments,
+      id: f.id, title: f.title, purpose: f.purpose || '', description: f.description,
+      centralQuestion: f.central_question || '', guidingQuestions: f.guiding_questions || [],
+      participationHtml: f.participation_html || '', rulesHtml: f.rules_html || '',
+      noParticipantsAlternative: f.no_participants_alternative || '',
+      opensAt: f.opens_at, closesAt: f.closes_at,
+      isOpen: windowState.open, closedMessage: windowState.message,
+      gradingMethod: f.grading_method, isClosed: f.is_closed,
+      allowAttachments: f.allow_attachments,
       weight: f.weight === null ? null : Number(f.weight),
       rubric: asJson(f.rubric),
       ...state,
@@ -1189,13 +1299,17 @@ export async function pedagogyOverview(db, user, courseId, { now = new Date() } 
     grade: progress ? {
       configured: progress.configured,
       configOk: progress.configOk,
+      configError: progress.configError,
       finalScore: progress.finalScore,
+      accumulatedScore: progress.accumulatedScore,
       provisional: progress.provisional,
       approved: progress.approved,
       pending: progress.pending,
       components: progress.components,
       passingScore: progress.passingScore,
       policy: progress.policy,
+      weightsByType: progress.weightsByType,
+      weightMismatch: progress.weightMismatch,
     } : null,
     requirements: progress?.requirements || null,
     assessments,

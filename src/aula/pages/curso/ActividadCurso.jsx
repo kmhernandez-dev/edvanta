@@ -140,13 +140,51 @@ export default function ActividadCurso() {
               {activity.dueAt && <span className="text-xs text-[var(--aula-muted)]">Fecha límite: {fmtDate(activity.dueAt)}</span>}
             </div>
             <RichText html={activity.instructionsHtml} className="mt-3" />
+            {activity.caseHtml && <RichText html={activity.caseHtml} className="mt-4" />}
+            {activity.pointsToSolve?.length > 0 && (
+              <div className="mt-4">
+                <h2 className="text-sm font-bold">Puntos a resolver</h2>
+                <ol className="mt-2 list-decimal space-y-1 pl-5 text-sm">
+                  {activity.pointsToSolve.map((point, index) => <li key={index}>{point}</li>)}
+                </ol>
+              </div>
+            )}
+            {(activity.expectedProduct || activity.extensionHint) && (
+              <div className="mt-4 rounded-[var(--aula-radius)] bg-[var(--aula-surface-muted)] p-3 text-sm">
+                {activity.expectedProduct && <p><strong>Producto esperado:</strong> {activity.expectedProduct}</p>}
+                {activity.extensionHint && <p className="mt-1"><strong>Extensión orientativa:</strong> {activity.extensionHint}</p>}
+              </div>
+            )}
+            {activity.materials?.length > 0 && (
+              <div className="mt-4">
+                <h2 className="text-sm font-bold">Materiales</h2>
+                <ul className="mt-2 flex flex-col gap-2 text-sm">
+                  {activity.materials.map((material, index) => (
+                    <li key={index}>
+                      {material.fileId ? (
+                        <a href={fileUrl(material.fileId, { download: true })} className="inline-flex items-center gap-1 font-semibold text-[var(--aula-primary)] underline">
+                          <FileDown className="h-4 w-4" aria-hidden="true" />{material.name}
+                        </a>
+                      ) : (
+                        <a href={material.url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 font-semibold text-[var(--aula-primary)] underline">
+                          <ExternalLink className="h-4 w-4" aria-hidden="true" />{material.name}
+                        </a>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+            {activity.supportHtml && <RichText html={activity.supportHtml} className="mt-4" />}
           </section>
 
-          <section className="rounded-[var(--aula-radius-lg)] border border-[var(--aula-border)] bg-white p-5">
-            <h2 className="text-lg font-bold">Rúbrica</h2>
-            <p className="mb-3 mt-1 text-sm text-[var(--aula-muted)]">La nota se calcula con estos criterios. Los pesos suman 100 % dentro de la actividad.</p>
-            <Rubric rubric={activity.rubric} />
-          </section>
+          {activity.rubric?.criteria?.length > 0 && (
+            <section className="rounded-[var(--aula-radius-lg)] border border-[var(--aula-border)] bg-white p-5">
+              <h2 className="text-lg font-bold">Rúbrica</h2>
+              <p className="mb-3 mt-1 text-sm text-[var(--aula-muted)]">La nota se calcula con estos criterios. Los pesos suman 100 % dentro de la actividad.</p>
+              <Rubric rubric={activity.rubric} />
+            </section>
+          )}
 
           {submission?.feedback && (
             <Alert tone={submission.rawStatus === 'requiere_ajustes' ? 'warning' : 'info'} title="Retroalimentación docente">
@@ -161,7 +199,9 @@ export default function ActividadCurso() {
                 {submission.rubricReview.criteria.map((c) => (
                   <li key={c.id} className="flex flex-wrap items-center justify-between gap-2 py-2">
                     <span><strong>{c.name}</strong>{c.comment ? ` · ${c.comment}` : ''}</span>
-                    <Badge tone={c.level >= 3 ? 'success' : c.level >= 2 ? 'warning' : 'danger'}>{c.level}/4</Badge>
+                    <Badge tone={(c.score ?? (c.level / 4) * 100) >= 70 ? 'success' : (c.score ?? (c.level / 4) * 100) >= 50 ? 'warning' : 'danger'}>
+                      {c.score !== undefined && c.score !== null ? `${Number(c.score).toFixed(1)}/100` : `${c.level}/4`}
+                    </Badge>
                   </li>
                 ))}
               </ul>
@@ -214,10 +254,6 @@ export default function ActividadCurso() {
             </section>
           )}
 
-          <section className="rounded-[var(--aula-radius-lg)] border border-[var(--aula-border)] bg-white p-5">
-            <h2 className="text-lg font-bold">Producto esperado</h2>
-            <p className="mt-2 text-sm leading-relaxed">La consigna completa está en las instrucciones de arriba. Se aceptan ensayos, informes, mapas conceptuales descritos o procedimientos según lo que pida la actividad. No se exigen grabaciones de video.</p>
-          </section>
         </div>
       )}
 

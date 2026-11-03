@@ -212,6 +212,9 @@ export default function ClaseParticipante() {
         progress={{ pct: data.enrollment.progressPct }}
         videoPositions={positions}
         onMedia={onMedia}
+        resourceHref={(type, id) => (type === 'quiz'
+          ? rutas.evaluacionQuiz(id)
+          : type === 'activity' ? rutas.evaluacionActividad(id) : rutas.evaluacionForo(id))}
         headerActions={(
           <>
             <Button size="sm" variant="ghost" icon={ClipboardCheck} to={rutas.evaluacion} aria-label="Evaluación del curso">

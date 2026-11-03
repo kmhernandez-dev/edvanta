@@ -32,6 +32,9 @@ const Contenido = lazy(() => import('./pages/admin/curso/Contenido'));
 const ClaseEditor = lazy(() => import('./pages/admin/curso/ClaseEditor'));
 const Informacion = lazy(() => import('./pages/admin/curso/Informacion'));
 const Reglas = lazy(() => import('./pages/admin/curso/Reglas'));
+const Revision = lazy(() => import('./pages/admin/curso/Revision'));
+const Calificaciones = lazy(() => import('./pages/admin/curso/Calificaciones'));
+const Participacion = lazy(() => import('./pages/admin/curso/Participacion'));
 const Recursos = lazy(() => import('./pages/admin/curso/Recursos'));
 const ParticipantesCurso = lazy(() => import('./pages/admin/curso/ParticipantesCurso'));
 const DocentesCurso = lazy(() => import('./pages/admin/curso/DocentesCurso'));
@@ -50,6 +53,7 @@ const DocenteCursos = lazy(() => import('./pages/docente/DocenteCursos'));
 const DocenteCurso = lazy(() => import('./pages/docente/DocenteCurso'));
 const DocenteEntrega = lazy(() => import('./pages/docente/DocenteEntrega'));
 const DocenteForo = lazy(() => import('./pages/docente/DocenteForo'));
+const DocenteGestion = lazy(() => import('./pages/docente/DocenteGestion'));
 
 const fullPage = (element) => <Suspense fallback={<PageLoader />}>{element}</Suspense>;
 
@@ -88,6 +92,7 @@ const TITLES = [
   [/^\/aula\/(curso\/\d+|curso-[^/]+)\/evaluacion\/actividad/, 'Actividad'],
   [/^\/aula\/(curso\/\d+|curso-[^/]+)\/evaluacion\/foro/, 'Foro'],
   [/^\/aula\/(curso\/\d+|curso-[^/]+)\/evaluacion/, 'Evaluación'],
+  [/^\/aula\/docente\/curso\/\d+\/gestion/, 'Gestionar curso · Docencia'],
   [/^\/aula\/docente\/curso/, 'Curso · Docencia'],
   [/^\/aula\/docente\/entrega/, 'Revisar entrega'],
   [/^\/aula\/docente\/foro/, 'Revisar foro'],
@@ -172,6 +177,9 @@ export default function AulaApp() {
               <Route index element={<Contenido />} />
               <Route path="clases/:lessonId" element={<ClaseEditor />} />
               <Route path="informacion" element={<Informacion />} />
+              <Route path="revision" element={<Revision />} />
+              <Route path="calificaciones" element={<Calificaciones />} />
+              <Route path="participacion" element={<Participacion />} />
               <Route path="reglas" element={<Reglas />} />
               <Route path="recursos" element={<Recursos />} />
               <Route path="participantes" element={<ParticipantesCurso />} />
@@ -192,6 +200,7 @@ export default function AulaApp() {
           <Route path="docente" element={<RequireAula roles={['docente', 'admin']}><DocenteShell /></RequireAula>}>
             <Route index element={fullPage(<DocenteCursos />)} />
             <Route path="curso/:courseId" element={fullPage(<DocenteCurso />)} />
+            <Route path="curso/:courseId/gestion" element={fullPage(<DocenteGestion />)} />
             <Route path="entrega/:submissionId" element={fullPage(<DocenteEntrega />)} />
             <Route path="foro/:forumId" element={fullPage(<DocenteForo />)} />
             <Route path="*" element={<NotFoundInAula />} />

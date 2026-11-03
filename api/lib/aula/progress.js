@@ -81,7 +81,7 @@ export async function recomputeEnrollment(db, enrollmentId, { now = new Date() }
   let status;
   if (total > 0 && achieved >= total) {
     if (ped?.configured) {
-      if (ped.pending.length > 0) status = 'pendiente_revision';
+      if (ped.pending.length > 0 || !ped.configOk) status = 'pendiente_revision';
       else status = ped.approved ? 'completado' : 'no_aprobado';
     } else {
       status = 'completado';
@@ -94,7 +94,7 @@ export async function recomputeEnrollment(db, enrollmentId, { now = new Date() }
 
   const pct = total ? round2((achieved / total) * 100) : 0;
   const completedAt = status === 'completado' || status === 'no_aprobado' ? (e.completed_at || now) : null;
-  const finalScore = ped?.configured ? ped.finalScore : null;
+  const finalScore = ped?.configured && ped?.configOk ? ped.finalScore : null;
 
   await db.query(
     `UPDATE aula_enrollments

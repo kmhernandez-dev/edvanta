@@ -1,8 +1,8 @@
 ﻿import { Suspense, useState } from 'react';
 import { Link, Outlet, useNavigate, useOutletContext, useParams } from 'react-router-dom';
 import {
-  Archive, ArchiveRestore, Copy, Eye, FileClock, History, Layers, Library, Rocket, Send, Settings2, SlidersHorizontal,
-  Trash2, Undo2, UserCog, Users,
+  Archive, ArchiveRestore, BarChart3, ClipboardCheck, Copy, Eye, FileClock, History, Layers, Library,
+  MessageSquare, Rocket, Send, Settings2, SlidersHorizontal, Trash2, Undo2, UserCog, Users,
 } from 'lucide-react';
 import { api, get, post } from '../../../api';
 import { useAsync } from '../../../hooks';
@@ -103,9 +103,12 @@ export default function CursoLayout() {
         label="Secciones del curso"
         className="mb-6"
         items={[
-          { to: base, end: true, label: 'Contenido', icon: Layers, match: /\/clases\// },
+          { to: base, end: true, label: 'Contenido y evaluaciones', icon: Layers, match: /\/clases\// },
+          { to: `${base}/revision`, label: 'Entregas y revisión', icon: ClipboardCheck },
+          { to: `${base}/calificaciones`, label: 'Calificaciones', icon: BarChart3 },
+          { to: `${base}/participacion`, label: 'Participación', icon: MessageSquare },
           { to: `${base}/informacion`, label: 'Información', icon: Settings2 },
-          { to: `${base}/reglas`, label: 'Reglas y fechas', icon: SlidersHorizontal },
+          { to: `${base}/reglas`, label: 'Configuración académica', icon: SlidersHorizontal },
           { to: `${base}/recursos`, label: 'Recursos', icon: Library },
           { to: `${base}/participantes`, label: 'Participantes', icon: Users },
           { to: `${base}/docentes`, label: 'Docentes', icon: UserCog },

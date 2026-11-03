@@ -139,7 +139,7 @@ function Apuntes({ courseId, lessonId }) {
 }
 
 export default function PanelDelCurso({
-  snapshot, lesson, lessonHref, lessonState, progress, Outline, courseId, onNavigate,
+  snapshot, lesson, lessonHref, lessonState, progress, Outline, courseId, onNavigate, resourceHref = null,
 }) {
   const [pestana, setPestana] = useState('contenido');
 
@@ -181,6 +181,7 @@ export default function PanelDelCurso({
             lessonHref={lessonHref}
             lessonState={lessonState}
             onNavigate={onNavigate}
+            resourceHref={resourceHref}
           />
         </div>
         <div

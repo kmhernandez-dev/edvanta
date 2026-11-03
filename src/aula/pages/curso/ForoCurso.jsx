@@ -142,9 +142,24 @@ export default function ForoCurso() {
               <Badge tone={detail.data.state.graded ? 'success' : detail.data.state.participated ? 'warning' : 'neutral'}>
                 {detail.data.state.graded ? `Nota ${Number(detail.data.state.score).toFixed(1)}/100` : detail.data.state.participated ? 'Participaste · pendiente de valoración' : 'Sin participación'}
               </Badge>
-              {forum.isClosed && <Badge tone="neutral">Cerrado</Badge>}
+              {!forum.isOpen && <Badge tone="neutral">Cerrado a respuestas</Badge>}
+              {forum.gradingMethod !== 'formativa' && forum.weight !== null && <span className="text-xs text-[var(--aula-muted)]">Peso {forum.weight} %</span>}
             </div>
+            {forum.purpose && <p className="mt-3 text-sm font-semibold">{forum.purpose}</p>}
             <RichText html={forum.description} className="mt-3" />
+            {forum.centralQuestion && (
+              <p className="mt-4 rounded-[var(--aula-radius)] bg-[var(--aula-surface-muted)] px-3 py-2 text-sm"><strong>Pregunta central:</strong> {forum.centralQuestion}</p>
+            )}
+            {forum.guidingQuestions?.length > 0 && (
+              <div className="mt-4">
+                <h2 className="text-sm font-bold">Preguntas de profundización</h2>
+                <ul className="mt-2 list-disc space-y-1 pl-5 text-sm">{forum.guidingQuestions.map((q, index) => <li key={index}>{q}</li>)}</ul>
+              </div>
+            )}
+            {forum.participationHtml && <RichText html={forum.participationHtml} className="mt-4" />}
+            {forum.rulesHtml && <RichText html={forum.rulesHtml} className="mt-4" />}
+            {forum.noParticipantsAlternative && <Alert tone="info" className="mt-4" title="Alternativa pedagógica">{forum.noParticipantsAlternative}</Alert>}
+            {forum.opensAt && <p className="mt-3 text-xs text-[var(--aula-muted)]">Abre: {fmtDate(forum.opensAt)}{forum.closesAt ? ` · Cierra: ${fmtDate(forum.closesAt)}` : ''}</p>}
             {detail.data.state.feedback && <p className="mt-3 rounded-[var(--aula-radius)] bg-[var(--aula-surface-muted)] px-3 py-2 text-sm"><strong>Retroalimentación docente:</strong> {detail.data.state.feedback}</p>}
           </section>
 
@@ -184,7 +199,7 @@ export default function ForoCurso() {
               </form>
             </>
           ) : (
-            <Alert tone="info" title="No puedes publicar ahora">{detail.data.isMuted ? 'Un administrador limitó tu participación en este foro.' : 'Este foro está cerrado. Puedes leer las intervenciones existentes.'}</Alert>
+            <Alert tone="info" title="No puedes publicar ahora">{detail.data.isMuted ? 'Un administrador limitó tu participación en este foro.' : forum.closedMessage || 'Este foro está cerrado. Puedes leer las intervenciones existentes.'}</Alert>
           )}
         </div>
       )}

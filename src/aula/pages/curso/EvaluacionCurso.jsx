@@ -51,6 +51,9 @@ function GradeCard({ grade, enrollment }) {
             {final === null ? '—' : final.toFixed(1)}
           </p>
           <p className="mt-1 text-xs text-[var(--aula-muted)]">sobre 100</p>
+          {final === null && grade.accumulatedScore !== null && grade.accumulatedScore !== undefined && (
+            <p className="mt-1 text-xs text-[var(--aula-muted)]">Acumulado parcial: {Number(grade.accumulatedScore).toFixed(1)}</p>
+          )}
           {grade.configured && !grade.provisional && (
             <p className={`mt-2 text-sm font-bold ${grade.approved ? 'text-[var(--aula-success)]' : 'text-[var(--aula-danger)]'}`}>
               {grade.approved ? 'Aprobado' : 'No aprobado'}
@@ -128,7 +131,7 @@ export default function EvaluacionCurso() {
           <GradeCard grade={grade} enrollment={enrollment} />
           {grade?.configured && !grade.configOk && (
             <Alert tone="warning" title="Configuración de nota incompleta">
-              <p>Los pesos de este curso no suman 100 %. La nota se muestra, pero no se emitirá aprobación hasta que el docente corrija la configuración.</p>
+              <p>{grade.configError || 'Los pesos de este curso no suman 100 %. La nota se muestra como provisional hasta que el docente corrija la configuración.'}</p>
             </Alert>
           )}
           {pendingCount > 0 && (

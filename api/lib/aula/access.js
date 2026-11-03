@@ -128,6 +128,40 @@ export async function fileAccess(db, user, fileId) {
       return row ? { file, canView: true, canDownload: Boolean(row.downloadable) } : { file, canView: false, canDownload: false };
 
     case 'recurso':
+      // Un archivo de una actividad puede ser material público de la
+      // consigna (no una entrega). Solo se sirve si la actividad está
+      // publicada y la persona cursa el curso, o si es docente asignado.
+      row = await one(
+        db,
+        `SELECT 1
+           FROM aula_activities a
+           JOIN aula_courses c ON c.id = a.course_id
+           JOIN aula_enrollments e ON e.course_id = c.id
+          WHERE a.deleted_at IS NULL AND a.status = 'publicado'
+            AND EXISTS (
+              SELECT 1 FROM jsonb_array_elements(a.materials) item
+               WHERE item->>'fileId' = $1::text
+            )
+            AND ${openCourse}
+          LIMIT 1`,
+        [fileId, user.id],
+      );
+      if (row) return { file, canView: true, canDownload: true };
+      row = await one(
+        db,
+        `SELECT 1
+           FROM aula_activities a
+           JOIN aula_course_teachers t ON t.course_id = a.course_id
+          WHERE a.deleted_at IS NULL
+            AND EXISTS (
+              SELECT 1 FROM jsonb_array_elements(a.materials) item
+               WHERE item->>'fileId' = $1::text
+            )
+            AND t.user_id = $2
+          LIMIT 1`,
+        [fileId, user.id],
+      );
+      if (row) return { file, canView: true, canDownload: true };
       row = await one(
         db,
         `SELECT bool_or(r.allow_download) AS downloadable

@@ -1,5 +1,5 @@
 ﻿import { Link, useParams } from 'react-router-dom';
-import { ArrowLeft, ArrowRight, ClipboardCheck, FileText, MessageSquare, Users } from 'lucide-react';
+import { ArrowLeft, ArrowRight, ClipboardCheck, FileText, MessageSquare, Settings2, Users } from 'lucide-react';
 import { get } from '../../api';
 import { useAsync } from '../../hooks';
 import { useAulaSession } from '../../session';
@@ -32,7 +32,14 @@ export default function DocenteCurso() {
         title={data?.course.title || 'Curso'}
         description="Revisa entregas, intentos y foros. La nota solo se publica cuando tú la publicas."
         back={{ to: '/aula/docente', label: 'Mis cursos' }}
-        actions={data && user?.role === 'admin' && <Button variant="secondary" to={`/aula/admin/cursos/${data.course.id}`} icon={ArrowLeft}>Abrir editor del curso</Button>}
+        actions={data && (
+          <div className="flex flex-wrap gap-2">
+            <Button to={`/aula/docente/curso/${data.course.id}/gestion`} icon={Settings2}>Gestionar curso</Button>
+            {user?.role === 'admin' && (
+              <Button variant="secondary" to={`/aula/admin/cursos/${data.course.id}`} icon={ArrowLeft}>Abrir editor del curso</Button>
+            )}
+          </div>
+        )}
       />
       {overview.loading && !data && <LoadingBlock rows={5} label="Cargando el curso" />}
       {overview.error && <ErrorState error={overview.error} onRetry={overview.reload} />}

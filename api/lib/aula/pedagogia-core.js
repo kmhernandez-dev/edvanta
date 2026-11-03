@@ -77,10 +77,11 @@ export async function activityRows(db, courseId) {
 export async function forumRows(db, courseId) {
   return many(
     db,
-    `SELECT id, module_id, lesson_id, scope, title, description, is_closed, allow_attachments, weight
+    `SELECT id, module_id, lesson_id, scope, title, description, status, is_closed,
+            allow_attachments, weight
        FROM aula_forums
-      WHERE course_id = $1 AND deleted_at IS NULL
-      ORDER BY id`,
+      WHERE course_id = $1 AND deleted_at IS NULL AND status <> 'archivado'
+      ORDER BY sort_order, id`,
     [courseId],
   );
 }
@@ -256,8 +257,8 @@ export async function pedagogyProgress(db, { enrollmentId, courseId, userId }) {
     const state = await forumState(db, f.id, enrollmentId, userId);
     forumItems.push({
       id: f.id, moduleId: f.module_id, title: f.title, weight: n(f.weight),
-      required: n(f.weight) > 0,
-      available: true, ...state,
+      required: n(f.weight) > 0 && f.status === 'publicado',
+      available: f.status === 'publicado', ...state,
     });
   }
 
@@ -271,6 +272,8 @@ export async function pedagogyProgress(db, { enrollmentId, courseId, userId }) {
       score: a.bestScore, status: a.status,
       submitted: a.submitted, passed: a.passed,
       pending: a.bestScore === null,
+      maxAttempts: a.maxAttempts,
+      attempts: a.attempts,
     })),
     ...requiredActivities.map((a) => ({
       type: 'activity', id: a.id, title: a.title, weight: a.weight,
@@ -286,21 +289,49 @@ export async function pedagogyProgress(db, { enrollmentId, courseId, userId }) {
     })),
   ];
 
-  const finalScore = round2(components.reduce((sum, c) => sum + (c.score === null ? 0 : (c.score * c.weight) / 100), 0));
+  const accumulatedScore = round2(components.reduce((sum, c) => sum + (c.score === null ? 0 : (c.score * c.weight) / 100), 0));
   const pending = components.filter((c) => c.pending);
   const weightsTotal = round2(components.reduce((sum, c) => sum + c.weight, 0));
-  const approved = policy.configured && policy.configOk && pending.length === 0 && finalScore >= policy.passingScore;
+  const weightsByType = {
+    activities: round2(components.filter((c) => c.type === 'activity').reduce((sum, c) => sum + c.weight, 0)),
+    quizzes: round2(components.filter((c) => c.type === 'quiz').reduce((sum, c) => sum + c.weight, 0)),
+    forums: round2(components.filter((c) => c.type === 'forum').reduce((sum, c) => sum + c.weight, 0)),
+  };
+  const weightMismatch = [];
+  for (const key of ['activities', 'quizzes', 'forums']) {
+    if (Math.abs(Number(weightsByType[key] || 0) - Number(policy.components[key] || 0)) > 0.05) {
+      weightMismatch.push(
+        `Los recursos de ${key === 'activities' ? 'actividades' : key === 'quizzes' ? 'quizzes' : 'foros'} suman ${weightsByType[key]} % y la política declara ${policy.components[key]} %.`,
+      );
+    }
+  }
+  const configOk = policy.configured && policy.configOk && weightMismatch.length === 0;
+  const configError = !policy.configured
+    ? policy.error
+    : !policy.configOk
+      ? policy.error
+      : weightMismatch.length
+        ? weightMismatch.join(' ')
+        : null;
+  const effectivePolicy = { ...policy, configOk, weightMismatch, error: configError };
+  const finalScore = pending.length === 0 && configOk ? accumulatedScore : null;
+  const approved = policy.configured && configOk && pending.length === 0 && accumulatedScore >= policy.passingScore;
 
   return {
     configured: policy.configured,
-    configOk: policy.configOk,
-    policy,
+    configOk,
+    configError,
+    policy: effectivePolicy,
     passingScore: policy.passingScore,
     finalScore,
-    provisional: pending.length > 0,
+    accumulatedScore,
+    provisional: pending.length > 0 || !configOk,
     approved,
     pending: pending.map((p) => ({ type: p.type, id: p.id, title: p.title })),
     weightsTotal,
+    weightsByType,
+    declaredWeights: policy.components,
+    weightMismatch,
     components,
     requirements: {
       lessons: null,

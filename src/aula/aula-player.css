@@ -595,3 +595,18 @@
     transition: none;
   }
 }
+
+.aula-player-resources {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0.4rem 0.5rem 0.2rem 1.75rem;
+}
+.aula-player-resources .aula-player-lesson {
+  border-left: 2px solid var(--aula-accent-soft);
+  border-radius: var(--aula-radius-sm);
+}
+.aula-player-resources .aula-player-thumb {
+  background: var(--aula-accent-soft);
+  color: #5e51a8;
+}

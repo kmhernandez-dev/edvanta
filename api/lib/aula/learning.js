@@ -200,6 +200,45 @@ export async function courseForParticipant(db, user, courseId, { now = new Date(
   const pedagogy = await pedagogyProgress(db, {
     enrollmentId: ctx.enrollment.id, courseId, userId: user.id,
   });
+  // Los recursos de evaluación publicados se muestran dentro de su unidad.
+  // No forman parte de la huella de la versión: publicar un quiz no obliga
+  // a publicar de nuevo el curso, y los borradores nunca llegan aquí.
+  const evalRows = await many(
+    db,
+    `SELECT 'quiz' AS type, id, module_id, title, weight, sort_order, status
+       FROM aula_assessments
+      WHERE course_id = $1 AND deleted_at IS NULL AND status = 'publicado'
+      UNION ALL
+     SELECT 'activity' AS type, id, module_id, title, weight, sort_order, status
+       FROM aula_activities
+      WHERE course_id = $1 AND deleted_at IS NULL AND status = 'publicado'
+      UNION ALL
+     SELECT 'forum' AS type, id, module_id, title, weight, sort_order, status
+       FROM aula_forums
+      WHERE course_id = $1 AND deleted_at IS NULL AND status = 'publicado'
+      ORDER BY module_id, sort_order, id`,
+    [courseId],
+  );
+  const resourceState = new Map();
+  for (const item of pedagogy?.items?.assessments || []) resourceState.set(`quiz-${item.id}`, item.status);
+  for (const item of pedagogy?.items?.activities || []) resourceState.set(`activity-${item.id}`, item.status);
+  for (const item of pedagogy?.items?.forums || []) resourceState.set(`forum-${item.id}`, item.status);
+  const resources = evalRows.map((r) => ({
+    type: r.type, id: Number(r.id), moduleId: r.module_id, title: r.title,
+    weight: r.weight === null ? null : Number(r.weight),
+    sortOrder: r.sort_order,
+    state: resourceState.get(`${r.type}-${r.id}`) || 'pendiente',
+  }));
+  const byModule = new Map();
+  for (const resource of resources) {
+    if (!byModule.has(resource.moduleId)) byModule.set(resource.moduleId, []);
+    byModule.get(resource.moduleId).push(resource);
+  }
+  snapshot.modules = (snapshot.modules || []).map((m) => ({
+    ...m,
+    resources: byModule.get(m.id) || [],
+  }));
+  snapshot.resources = resources;
   return {
     snapshot,
     courseId: Number(courseId),
@@ -215,14 +254,18 @@ export async function courseForParticipant(db, user, courseId, { now = new Date(
     grade: pedagogy ? {
       configured: pedagogy.configured,
       configOk: pedagogy.configOk,
+      configError: pedagogy.configError,
       policy: pedagogy.policy,
       passingScore: pedagogy.passingScore,
       finalScore: pedagogy.finalScore,
+      accumulatedScore: pedagogy.accumulatedScore,
       provisional: pedagogy.provisional,
       approved: pedagogy.approved,
       pending: pedagogy.pending,
       components: pedagogy.components,
       requirements: pedagogy.requirements,
+      weightsByType: pedagogy.weightsByType,
+      weightMismatch: pedagogy.weightMismatch,
     } : null,
     videoProgress: Object.fromEntries(ctx.progress.map((p) => [p.lesson_id, p.video_segments && !Array.isArray(p.video_segments) ? p.video_segments : {}])),
   };

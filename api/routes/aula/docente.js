@@ -8,6 +8,7 @@ import {
   gradeForum, hideForumPost, listCourseTeachers, teacherCourseOverview, teacherCourses,
   teacherForum, teacherSubmission, teacherSubmissions, reviewSubmission,
 } from '../../lib/aula/pedagogia.js';
+import { authoringRouter } from './authoring.js';
 
 const courseIdOf = (req) => idField(req.params.courseId, 'courseId', 'El curso');
 const idOf = (req, name) => idField(req.params[name], name, 'El identificador');
@@ -62,6 +63,8 @@ export function docenteRouter() {
       ip: req.aula.ip, now: req.aula.now,
     }));
   }));
+
+  router.use('/authoring', authoringRouter());
 
   return router;
 }

@@ -7,7 +7,7 @@ import { fmtDate } from '../../labels';
 import { Badge } from '../../ui/Badge';
 import { Button } from '../../ui/Button';
 import { ConfirmDialog } from '../../ui/Dialog';
-import { Select, TextArea } from '../../ui/Form';
+import { Select, TextArea, TextInput } from '../../ui/Form';
 import { PageHeader } from '../../ui/Page';
 import { RichText } from '../../ui/RichText';
 import { Alert, ErrorState, LoadingBlock } from '../../ui/States';
@@ -26,20 +26,27 @@ export default function DocenteForo() {
   );
   const [enrollmentId, setEnrollmentId] = useState('');
   const [levels, setLevels] = useState({});
+  const [criteriaScores, setCriteriaScores] = useState({});
   const [score, setScore] = useState('');
   const [feedback, setFeedback] = useState('');
+  const [changeReason, setChangeReason] = useState('');
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState(null);
   const [hide, setHide] = useState(null);
 
   const criteria = forum?.rubric?.criteria || [];
-  const hasRubric = criteria.length > 0;
+  const hasRubric = criteria.length > 0 && forum?.gradingMethod === 'rubrica';
+  const rubricScale = forum?.rubric?.scale === '0-100' ? '0-100' : '0-4';
   const preview = useMemo(() => {
-    if (!hasRubric) return score === '' ? null : Number(score);
-    const complete = criteria.every((c) => levels[c.id] !== undefined && levels[c.id] !== '');
+    if (!hasRubric) return score === '' || !Number.isFinite(Number(score)) ? null : Number(score);
+    const complete = criteria.every((c) => (rubricScale === '0-100'
+      ? criteriaScores[c.id] !== undefined && criteriaScores[c.id] !== ''
+      : levels[c.id] !== undefined && levels[c.id] !== ''));
     if (!complete) return null;
-    return Math.round(criteria.reduce((sum, c) => sum + (Number(c.weight) * Number(levels[c.id])) / 4, 0) * 100) / 100;
-  }, [hasRubric, criteria, levels, score]);
+    return Math.round(criteria.reduce((sum, c) => sum + (rubricScale === '0-100'
+      ? (Number(criteriaScores[c.id]) * Number(c.weight)) / 100
+      : (Number(c.weight) * Number(levels[c.id])) / 4), 0) * 100) / 100;
+  }, [hasRubric, criteria, levels, criteriaScores, rubricScale, score]);
 
   const grade = async () => {
     if (!enrollmentId) { setError(new Error('Elige un estudiante.')); return; }
@@ -50,10 +57,16 @@ export default function DocenteForo() {
       await post(`/docente/forums/${forumId}/grade`, {
         enrollmentId: Number(enrollmentId),
         feedback,
-        ...(hasRubric ? { criteria: criteria.map((c) => ({ id: c.id, level: Number(levels[c.id]) })) } : { score: Number(score) }),
+        changeReason: changeReason || null,
+        ...(hasRubric
+          ? { criteria: criteria.map((c) => (rubricScale === '0-100'
+            ? { id: c.id, score: Number(criteriaScores[c.id]) }
+            : { id: c.id, level: Number(levels[c.id]) })) }
+          : { score: Number(score) }),
       });
       await forumDetail.reload();
       setFeedback('');
+      setChangeReason('');
       toast.success(`Foro calificado: ${preview.toFixed(1)}/100.`);
     } catch (err) {
       setError(err);
@@ -119,22 +132,38 @@ export default function DocenteForo() {
               <Select label="Estudiante" value={enrollmentId} onChange={(e) => setEnrollmentId(e.target.value)} placeholder="Elige un estudiante"
                 options={(courseDetail.data?.students || []).map((s) => ({ value: String(s.enrollmentId), label: `${s.name} · ${s.email}` }))} />
               {hasRubric ? (
-                <div className="flex items-end"><p className="text-sm text-[var(--aula-muted)]">Nota calculada: <strong className="text-lg text-[var(--aula-text)]">{preview === null ? '—' : preview.toFixed(1)}</strong>/100</p></div>
+                <div className="flex items-end"><p className="text-sm text-[var(--aula-muted)]">Nota calculada: <strong className="text-lg text-[var(--aula-text)]">{preview === null ? '-' : preview.toFixed(1)}</strong>/100</p></div>
               ) : (
-                <Select label="Nota (0–100)" value={score} onChange={(e) => setScore(e.target.value)} options={Array.from({ length: 21 }, (_, i) => ({ value: String(i * 5), label: String(i * 5) }))} />
+                <TextInput label="Nota (0 a 100)" inputMode="decimal" value={score} onChange={(e) => setScore(e.target.value.replace(/[^\d.]/g, ''))} hint="Cualquier valor entre 0 y 100. Cero es una nota válida." />
               )}
             </div>
             {hasRubric && (
               <div className="mt-4 flex flex-col gap-3">
                 {criteria.map((c) => (
-                  <div key={c.id} className="grid gap-2 sm:grid-cols-[1fr_160px] sm:items-end">
+                  <div key={c.id} className="grid gap-2 sm:grid-cols-[1fr_190px] sm:items-end">
                     <div><p className="text-sm font-semibold">{c.name} <span className="font-normal text-[var(--aula-muted)]">({c.weight} %)</span></p></div>
-                    <Select label={`Nivel · ${c.name}`} value={String(levels[c.id] ?? '')} onChange={(e) => setLevels((l) => ({ ...l, [c.id]: e.target.value }))} options={LEVELS.map((v) => ({ value: v, label: v }))} placeholder="Nivel" />
+                    {rubricScale === '0-100' ? (
+                      <TextInput
+                        label={`Nota · ${c.name}`}
+                        inputMode="decimal"
+                        value={String(criteriaScores[c.id] ?? '')}
+                        onChange={(e) => setCriteriaScores((v) => ({ ...v, [c.id]: e.target.value.replace(/[^\d.]/g, '') }))}
+                      />
+                    ) : (
+                      <Select label={`Nivel · ${c.name}`} value={String(levels[c.id] ?? '')} onChange={(e) => setLevels((l) => ({ ...l, [c.id]: e.target.value }))} options={LEVELS.map((v) => ({ value: v, label: v }))} placeholder="Nivel" />
+                    )}
                   </div>
                 ))}
               </div>
             )}
             <TextArea label="Retroalimentación" rows={3} value={feedback} onChange={(e) => setFeedback(e.target.value)} className="mt-3" />
+            <TextInput
+              className="mt-3"
+              label="Motivo del cambio de nota (si rectificas una nota publicada)"
+              value={changeReason}
+              onChange={(e) => setChangeReason(e.target.value)}
+              hint="Queda registrado en el historial junto con la fecha y tu usuario."
+            />
             <div className="mt-3"><Button icon={Send} onClick={grade} loading={busy} disabled={preview === null || !enrollmentId}>Publicar nota del foro</Button></div>
           </section>
 

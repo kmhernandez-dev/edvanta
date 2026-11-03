@@ -20,6 +20,7 @@ import {
 } from '../../lib/aula/resources.js';
 import { buildSnapshot } from '../../lib/aula/snapshot.js';
 import { addCourseTeacher, listCourseTeachers, removeCourseTeacher } from '../../lib/aula/pedagogia.js';
+import { authoringRouter } from './authoring.js';
 import {
   bool, id as idField, idList, int, oneOf, route, str,
 } from '../../lib/aula/http.js';
@@ -196,6 +197,11 @@ export function adminCoursesRouter() {
     res.json(await setResourceStatus(req.aula.db, param(req), req.body?.status, ctx(req)));
   }));
   router.delete('/resources/:id', route(async (req, res) => res.json(await deleteResource(req.aula.db, param(req), ctx(req)))));
+
+  // Autoría de evaluaciones, libro de calificaciones y configuración
+  // académica. Se monta aquí y en /docente para que administración y
+  // docentes asignados usen el mismo editor con permisos comprobados.
+  router.use('/authoring', authoringRouter());
 
   return router;
 }

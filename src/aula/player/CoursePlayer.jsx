@@ -11,7 +11,8 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
-  ArrowLeft, CheckCircle2, ChevronDown, ChevronLeft, ChevronRight, Circle, CircleDot, Clock, Lock, Menu, PlayCircle, X,
+  ArrowLeft, CheckCircle2, ChevronDown, ChevronLeft, ChevronRight, Circle, CircleDot, ClipboardCheck,
+  Clock, FileText, Lock, Menu, MessageSquare, PlayCircle, X,
 } from 'lucide-react';
 import { fmtMinutes } from '../labels';
 import { BlockList } from '../blocks/BlockView';
@@ -39,7 +40,55 @@ function miniaturaDe(clase) {
   return video ? `https://i.ytimg.com/vi/${video.data.videoId}/mqdefault.jpg` : null;
 }
 
-function Outline({ snapshot, currentId, lessonHref, lessonState, onNavigate }) {
+const RESOURCE_ICON = { quiz: ClipboardCheck, activity: FileText, forum: MessageSquare };
+const RESOURCE_STATE = {
+  pendiente: { label: 'Pendiente', tone: 'text-[var(--aula-subtle)]' },
+  en_curso: { label: 'En curso', tone: 'text-[var(--aula-secondary)]' },
+  aprobado: { label: 'Aprobado', tone: 'text-[var(--aula-success)]' },
+  finalizado: { label: 'Finalizado', tone: 'text-[var(--aula-warning)]' },
+  borrador: { label: 'Borrador', tone: 'text-[var(--aula-subtle)]' },
+  pendiente_revision: { label: 'Pendiente de revisión', tone: 'text-[var(--aula-warning)]' },
+  calificado: { label: 'Calificado', tone: 'text-[var(--aula-success)]' },
+  sin_entregar: { label: 'Sin entregar', tone: 'text-[var(--aula-subtle)]' },
+};
+
+function ResourceRows({ resources = [], resourceHref, onNavigate }) {
+  if (!resources.length) return null;
+  return (
+    <ul className="aula-player-resources">
+      {resources.map((resource) => {
+        const Icon = RESOURCE_ICON[resource.type] || FileText;
+        const state = RESOURCE_STATE[resource.state] || RESOURCE_STATE.pendiente;
+        const body = (
+          <>
+            <span className="aula-player-thumb"><Icon className="h-4 w-4" aria-hidden="true" /></span>
+            <span className="aula-player-lesson__body">
+              <span className="aula-player-lesson__title">{resource.title}</span>
+              <span className="aula-player-lesson__meta">
+                {resource.type === 'quiz' ? 'Quiz' : resource.type === 'activity' ? 'Actividad' : 'Foro'}
+                {resource.weight ? ` · ${resource.weight} %` : ' · formativo'}
+                {' · '}{state.label}
+              </span>
+            </span>
+            <span className={`text-[11px] font-semibold ${state.tone}`}>{state.label}</span>
+          </>
+        );
+        const href = resourceHref?.(resource.type, resource.id);
+        return (
+          <li key={`${resource.type}-${resource.id}`}>
+            {href ? (
+              <Link to={href} onClick={onNavigate} className="aula-player-lesson">{body}</Link>
+            ) : (
+              <span className="aula-player-lesson">{body}</span>
+            )}
+          </li>
+        );
+      })}
+    </ul>
+  );
+}
+
+function Outline({ snapshot, currentId, lessonHref, lessonState, onNavigate, resourceHref }) {
   return (
     <nav aria-label="Contenido del curso" className="aula-player-outline">
       {snapshot.modules.map((m, mi) => {
@@ -99,6 +148,7 @@ function Outline({ snapshot, currentId, lessonHref, lessonState, onNavigate }) {
                 );
               })}
             </ol>
+            <ResourceRows resources={m.resources || []} resourceHref={resourceHref} onNavigate={onNavigate} />
           </details>
         );
       })}
@@ -109,6 +159,7 @@ function Outline({ snapshot, currentId, lessonHref, lessonState, onNavigate }) {
 export function CoursePlayer({
   snapshot, lessonId, lessonHref, backTo, mode = 'participant', lessonState = () => ({ status: 'pendiente' }),
   progress, renderCompletion, onMedia, banner, headerActions, footerActions, videoPositions, courseId = null,
+  resourceHref = null,
 }) {
   const lessons = useMemo(() => flattenLessons(snapshot), [snapshot]);
   const index = Math.max(0, lessons.findIndex((l) => l.id === lessonId));
@@ -214,6 +265,7 @@ export function CoursePlayer({
                   progress={progress}
                   Outline={Outline}
                   courseId={courseId}
+                  resourceHref={resourceHref}
                   onNavigate={() => setMenuOpen(false)}
                 />
               </div>
@@ -300,6 +352,7 @@ export function CoursePlayer({
             progress={progress}
             Outline={Outline}
             courseId={courseId}
+            resourceHref={resourceHref}
           />
         </aside>
       </div>

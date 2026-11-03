@@ -3,6 +3,7 @@ import { Button } from '../../../ui/Button';
 import { checkForm, errorsFrom, TextInput, Toggle } from '../../../ui/Form';
 import { Card } from '../../../ui/Page';
 import { Alert } from '../../../ui/States';
+import { AcademicConfigPanel } from '../../../components/curso/GestionAcademica';
 import { useCourse } from './CursoLayout';
 import { useCourseForm } from './courseForm';
 
@@ -42,6 +43,7 @@ export default function Reglas() {
   const pendingRules = course.version && course.hasUnpublishedChanges;
 
   return (
+    <div className="flex flex-col gap-6">
     <form ref={f.ref} onSubmit={(e) => f.submit(e, toBody)} noValidate className="flex flex-col gap-6">
       {general && <Alert tone="danger">{general}</Alert>}
       {pendingRules && (
@@ -94,5 +96,7 @@ export default function Reglas() {
         </div>
       )}
     </form>
+    <AcademicConfigPanel courseId={course.id} base="/admin" />
+    </div>
   );
 }

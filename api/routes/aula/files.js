@@ -1,5 +1,5 @@
 import express from 'express';
-import { fileAccess, requireOpenEnrollment } from '../../lib/aula/access.js';
+import { fileAccess, requireCourseTeacher, requireOpenEnrollment } from '../../lib/aula/access.js';
 import { one } from '../../lib/aula/db.js';
 import {
   AulaError, badRequest, conflict, forbidden, id as idField, notFound, oneOf, route, str,
@@ -9,8 +9,12 @@ import {
 } from '../../lib/aula/storage.js';
 
 const ADMIN_PURPOSES = ['contenido', 'recurso', 'logo', 'portada', 'foro'];
+const DOCENTE_PURPOSES = ['recurso'];
 const PARTICIPANT_PURPOSES = ['entrega', 'foro'];
 const STALE_UPLOAD_MS = 24 * 60 * 60 * 1000;
+const purposesFor = (user) => (user.role === 'admin'
+  ? ADMIN_PURPOSES
+  : user.role === 'docente' ? DOCENTE_PURPOSES : PARTICIPANT_PURPOSES);
 
 function publicUpload(row) {
   return {
@@ -30,6 +34,11 @@ function publicUpload(row) {
 /** Límites extra según dónde se va a usar el archivo (actividad o foro). */
 async function contextLimits(req, purpose) {
   const { db, user, now } = req.aula;
+  if (purpose === 'recurso' && user.role === 'docente') {
+    const courseId = idField(req.body?.courseId, 'courseId', 'El curso');
+    await requireCourseTeacher(db, user, courseId);
+    return {};
+  }
   if (purpose === 'entrega') {
     const activityId = idField(req.body?.activityId, 'activityId', 'La actividad');
     const activity = await one(
@@ -79,7 +88,7 @@ export function uploadsRouter({ storage }) {
   // Consulta las reglas antes de elegir el archivo (formatos y tamaños).
   router.post('/rules', route(async (req, res) => {
     const { user } = req.aula;
-    const allowed = user.role === 'admin' ? ADMIN_PURPOSES : PARTICIPANT_PURPOSES;
+    const allowed = purposesFor(user);
     const purpose = oneOf(req.body?.purpose, 'purpose', 'El tipo de subida', allowed);
     const limits = await contextLimits(req, purpose);
     res.json(uploadRules(purpose, limits));
@@ -87,7 +96,7 @@ export function uploadsRouter({ storage }) {
 
   router.post('/', route(async (req, res) => {
     const { db, user, now } = req.aula;
-    const allowed = user.role === 'admin' ? ADMIN_PURPOSES : PARTICIPANT_PURPOSES;
+    const allowed = purposesFor(user);
     const purpose = oneOf(req.body?.purpose, 'purpose', 'El tipo de subida', allowed);
     const filename = safeOriginalName(str(req.body?.filename, 'filename', 'El nombre del archivo', { max: 255 }));
     const limits = await contextLimits(req, purpose);

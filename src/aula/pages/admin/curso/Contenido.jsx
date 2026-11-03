@@ -4,6 +4,7 @@ import {
   ArrowDown, ArrowUp, Copy, FolderInput, Layers, Pencil, PlayCircle, Plus, Settings2, Timer, Trash2,
 } from 'lucide-react';
 import { api, get, patch, post, put } from '../../../api';
+import { useAsync } from '../../../hooks';
 import { fmtMinutes, plural } from '../../../labels';
 import { Badge } from '../../../ui/Badge';
 import { Button } from '../../../ui/Button';
@@ -17,6 +18,7 @@ import { DragHandle, moveBy, SortableItem, SortableList } from '../../../ui/Sort
 import { useToast } from '../../../ui/Toast';
 import { BLOCK_META } from '../../../blocks/meta';
 import { useCourse } from './CursoLayout';
+import { UnitEvaluations } from '../../../components/curso/EvaluacionesCurso';
 
 function useModalForm(initial, open) {
   const [form, setForm] = useState(initial);
@@ -234,6 +236,10 @@ export default function Contenido() {
   const navigate = useNavigate();
   const toast = useToast();
   const [modules, setModules] = useState(course.outline);
+  const authoring = useAsync(({ signal }) => get(`/admin/authoring/courses/${course.id}`, { signal }), [course.id]);
+  const evalResources = authoring.data
+    ? [...authoring.data.quizzes, ...authoring.data.activities, ...authoring.data.forums]
+    : [];
   const [dialog, setDialog] = useState(null);
   const [impact, setImpact] = useState(null);
   const [saving, setSaving] = useState(false);
@@ -365,9 +371,18 @@ export default function Contenido() {
                 )}
                 {!archived && (
                   <Button size="sm" variant="ghost" icon={Plus} className="self-start" onClick={() => setDialog({ kind: 'lesson', moduleId: m.id })}>
-                    Agregar clase
+                    Añadir clase
                   </Button>
                 )}
+                <UnitEvaluations
+                  courseId={course.id}
+                  base="/admin"
+                  module={m}
+                  resources={evalResources}
+                  modules={modules}
+                  onChanged={() => { authoring.reload(); reload(); }}
+                  showAdd={!archived}
+                />
               </div>
             </SortableItem>
           ))}
