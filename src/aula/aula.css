@@ -92,11 +92,27 @@
   border-radius: 0 var(--aula-radius-sm) var(--aula-radius-sm) 0;
 }
 .aula-prose mark { background: #FFF1B8; padding: 0 0.15em; border-radius: 3px; }
+.aula-prose figure { margin: 1.2em 0; }
+.aula-prose figcaption { margin-top: 0.45em; font-size: 0.875rem; color: var(--aula-muted); }
+.aula-prose .aula-scroll { max-width: 100%; overflow-x: auto; }
 .aula-prose table { width: 100%; border-collapse: collapse; margin: 1em 0; font-size: 0.95em; }
+.aula-prose caption { caption-side: top; text-align: left; font-weight: 700; padding-bottom: 0.4em; }
 .aula-prose th, .aula-prose td { border: 1px solid var(--aula-border); padding: 0.5em 0.7em; text-align: left; vertical-align: top; }
 .aula-prose th { background: var(--aula-surface-muted); font-weight: 600; }
+.aula-prose details { margin: 1em 0; border: 1px solid var(--aula-border); border-radius: var(--aula-radius); background: var(--aula-surface-muted); }
+.aula-prose details > summary { cursor: pointer; padding: 0.7em 0.9em; font-weight: 700; color: var(--aula-primary); }
+.aula-prose details > *:not(summary) { padding: 0 0.9em; }
+.aula-prose details > *:last-child { padding-bottom: 0.9em; }
+.aula-prose dl { margin: 1em 0; }
+.aula-prose dt { font-weight: 700; margin-top: 0.7em; }
+.aula-prose dd { margin: 0.2em 0 0 1.2em; }
+.aula-prose abbr { text-decoration: underline dotted; cursor: help; }
 .aula-prose hr { border: 0; border-top: 1px solid var(--aula-border); margin: 1.5em 0; }
 .aula-prose img { max-width: 100%; height: auto; border-radius: var(--aula-radius-sm); }
+@media (max-width: 640px) {
+  .aula-prose table { display: block; overflow-x: auto; white-space: nowrap; }
+  .aula-prose th, .aula-prose td { white-space: normal; min-width: 8rem; }
+}
 
 @media (prefers-reduced-motion: reduce) {
   .aula-root *, .aula-root *::before, .aula-root *::after {

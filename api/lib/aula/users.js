@@ -1,10 +1,10 @@
-/**
+﻿/**
  * Participantes y administradores: alta manual, edición, suspensión,
  * baja, invitaciones e importación por CSV.
  */
 import { many, one, whereBuilder } from './db.js';
 import {
-  badRequest, conflict, email as emailField, forbidden, notFound, oneOf, pageResult, paging, plural, sorting, str,
+  badRequest, conflict, email as emailField, forbidden, notFound, oneOf, pageResult, paging, plural, sorting, str, strList,
 } from './http.js';
 import { audit } from './audit.js';
 import { issueAuthToken, publicUser, revokeUserSessions, USER_FIELDS } from './accounts.js';
@@ -13,6 +13,8 @@ import { applyStandingAssignments } from './enrollments.js';
 
 const has = (body, key) => Object.prototype.hasOwnProperty.call(body, key);
 const MAX_IMPORT_ROWS = 2000;
+const roleNoun = (role) => (role === 'admin' ? 'administración' : role === 'docente' ? 'docencia' : 'participante');
+const roleName = (role) => (role === 'admin' ? 'administrador' : role === 'docente' ? 'docente' : 'participante');
 
 export function readUser(body = {}, { partial = false } = {}) {
   const out = {};
@@ -20,10 +22,22 @@ export function readUser(body = {}, { partial = false } = {}) {
   if (!partial || has(body, 'lastName')) out.lastName = str(body.lastName, 'lastName', 'El apellido', { max: 80, optional: true }) || '';
   if (!partial || has(body, 'email')) out.email = emailField(body.email);
   if (!partial || has(body, 'jobTitle')) out.jobTitle = str(body.jobTitle, 'jobTitle', 'El cargo', { max: 120, optional: true });
-  if (!partial || has(body, 'role')) out.role = oneOf(body.role ?? 'participant', 'role', 'El rol', ['participant', 'admin']);
+  if (!partial || has(body, 'role')) out.role = oneOf(body.role ?? 'participant', 'role', 'El rol', ['participant', 'admin', 'docente']);
   if (!partial || has(body, 'companyId')) {
     out.companyId = body.companyId === null || body.companyId === undefined || body.companyId === '' ? null : Number(body.companyId);
     if (out.companyId !== null && !(out.companyId > 0)) throw badRequest('La empresa no es válida.', { field: 'companyId' });
+  }
+  if (!partial || has(body, 'segmento')) {
+    out.segmento = str(body.segmento, 'segmento', 'El segmento', { max: 60, optional: true }) || 'sin_clasificar';
+  }
+  if (!partial || has(body, 'crmTags')) {
+    out.crmTags = strList(body.crmTags, 'crmTags', 'Las etiquetas CRM', { maxItems: 20, maxLength: 40 });
+  }
+  if (!partial || has(body, 'crmSource')) {
+    out.crmSource = str(body.crmSource, 'crmSource', 'El origen', { max: 120, optional: true });
+  }
+  if (!partial || has(body, 'crmNotes')) {
+    out.crmNotes = str(body.crmNotes, 'crmNotes', 'Las notas internas', { max: 2000, optional: true });
   }
   return out;
 }
@@ -62,10 +76,14 @@ export async function listUsers(db, query) {
   const w = whereBuilder(['u.deleted_at IS NULL']);
   if (query.q?.trim()) {
     const p = w.param(`%${query.q.trim()}%`);
-    w.and(`(u.first_name ILIKE ${p} OR u.last_name ILIKE ${p} OR u.email ILIKE ${p} OR (u.first_name || ' ' || u.last_name) ILIKE ${p})`);
+    w.and(`(u.first_name ILIKE ${p} OR u.last_name ILIKE ${p} OR u.email ILIKE ${p}
+      OR (u.first_name || ' ' || u.last_name) ILIKE ${p} OR u.crm_code ILIKE ${p}
+      OR EXISTS (SELECT 1 FROM unnest(u.crm_tags) tag WHERE tag ILIKE ${p}))`);
   }
-  if (['participant', 'admin'].includes(query.role)) w.and(`u.role = ${w.param(query.role)}`);
+  if (['participant', 'admin', 'docente'].includes(query.role)) w.and(`u.role = ${w.param(query.role)}`);
   if (['invited', 'active', 'suspended'].includes(query.status)) w.and(`u.status = ${w.param(query.status)}`);
+  if (query.segmento?.trim()) w.and(`u.segmento = ${w.param(query.segmento.trim())}`);
+  if (query.tag?.trim()) w.and(`EXISTS (SELECT 1 FROM unnest(u.crm_tags) tag WHERE tag = ${w.param(query.tag.trim())})`);
   if (query.companyId === 'none') w.and('u.company_id IS NULL');
   else if (Number(query.companyId) > 0) w.and(`u.company_id = ${w.param(Number(query.companyId))}`);
   if (Number(query.groupId) > 0) {
@@ -100,7 +118,13 @@ const emailTaken = (email) => (err) => {
 
 async function sendInvite(db, user, { actor, mailer, siteUrl, now }) {
   const token = await issueAuthToken(db, user.id, 'invite', { createdBy: actor?.id ?? null, now });
-  const message = inviteEmail({ firstName: user.first_name ?? user.firstName, link: accessLink(siteUrl, token), invitedBy: 'Edvanta' });
+  const message = inviteEmail({
+    firstName: user.first_name ?? user.firstName,
+    link: accessLink(siteUrl, token),
+    invitedBy: 'Edvanta',
+    admin: user.role === 'admin',
+    docente: user.role === 'docente',
+  });
   return { token, message, to: user.email };
 }
 
@@ -124,14 +148,23 @@ export async function createUser(db, input, { groupIds = [], invite = true, acto
   if (input.role === 'admin' && groupIds.length) {
     throw badRequest('Los administradores no forman parte de grupos de participantes.');
   }
+  if (input.role === 'docente' && (input.companyId || groupIds.length)) {
+    throw badRequest('Los docentes no se asocian a una empresa ni a grupos de participantes.');
+  }
   const prepared = [];
   const user = await db.tx(async (tx) => {
     await assertCompany(tx, input.companyId);
     const row = await one(
       tx,
-      `INSERT INTO aula_users (email, first_name, last_name, role, status, company_id, job_title, created_at, updated_at)
-       VALUES ($1, $2, $3, $4, 'invited', $5, $6, $7, $7) RETURNING *`,
-      [input.email, input.firstName, input.lastName, input.role, input.companyId, input.jobTitle, now],
+      `INSERT INTO aula_users
+         (email, first_name, last_name, role, status, company_id, job_title,
+          segmento, crm_tags, crm_source, crm_notes, created_at, updated_at)
+       VALUES ($1, $2, $3, $4, 'invited', $5, $6, $7, $8, $9, $10, $11, $11)
+       RETURNING *`,
+      [
+        input.email, input.firstName, input.lastName, input.role, input.companyId, input.jobTitle,
+        input.segmento || 'sin_clasificar', input.crmTags || [], input.crmSource || null, input.crmNotes || null, now,
+      ],
     ).catch(emailTaken(input.email));
 
     if (groupIds.length) {
@@ -150,7 +183,7 @@ export async function createUser(db, input, { groupIds = [], invite = true, acto
     if (invite) prepared.push(await sendInvite(tx, row, { actor, mailer, siteUrl, now }));
     await audit(tx, {
       actor, ip, action: 'usuario.crear', entityType: 'usuario', entityId: row.id, companyId: row.company_id,
-      summary: `Cuenta de ${row.role === 'admin' ? 'administración' : 'participante'} creada para ${row.email}${enrolled ? `, con ${plural(enrolled, 'inscripción', 'inscripciones')} por sus grupos o su empresa` : ''}.`,
+      summary: `Cuenta de ${roleNoun(row.role)} creada para ${row.email}${enrolled ? `, con ${plural(enrolled, 'inscripción', 'inscripciones')} por sus grupos o su empresa` : ''}.`,
       after: { email: row.email, role: row.role, companyId: row.company_id, groupIds },
     });
     return row;
@@ -176,9 +209,15 @@ export async function updateUser(db, id, input, { actor, ip, now = new Date() })
     if (nextRole === 'admin' && nextCompany) {
       throw badRequest('Los administradores de Edvanta no se asocian a una empresa cliente.', { field: 'companyId' });
     }
+    if (nextRole === 'docente' && nextCompany) {
+      throw badRequest('Los docentes no se asocian a una empresa cliente.', { field: 'companyId' });
+    }
     if ('companyId' in input) await assertCompany(tx, input.companyId);
 
-    const map = { firstName: 'first_name', lastName: 'last_name', email: 'email', jobTitle: 'job_title', role: 'role', companyId: 'company_id' };
+    const map = {
+      firstName: 'first_name', lastName: 'last_name', email: 'email', jobTitle: 'job_title', role: 'role',
+      companyId: 'company_id', segmento: 'segmento', crmTags: 'crm_tags', crmSource: 'crm_source', crmNotes: 'crm_notes',
+    };
     const sets = [];
     const params = [id];
     for (const [key, column] of Object.entries(map)) {
@@ -186,6 +225,9 @@ export async function updateUser(db, id, input, { actor, ip, now = new Date() })
         params.push(input[key]);
         sets.push(`${column} = $${params.length}`);
       }
+    }
+    if (['segmento', 'crmTags', 'crmSource', 'crmNotes'].some((key) => key in input)) {
+      sets.push('crm_updated_at = NOW()');
     }
     if (sets.length) await tx.query(`UPDATE aula_users SET ${sets.join(', ')} WHERE id = $1`, params).catch(emailTaken(input.email));
 
@@ -210,7 +252,7 @@ export async function updateUser(db, id, input, { actor, ip, now = new Date() })
       actor, ip, action: roleChanged ? 'usuario.rol' : 'usuario.editar', entityType: 'usuario', entityId: id,
       companyId: after.company_id,
       summary: roleChanged
-        ? `${after.email} ahora es ${after.role === 'admin' ? 'administrador' : 'participante'}.`
+        ? `${after.email} ahora es ${roleName(after.role)}.`
         : `Datos de ${after.email} actualizados${enrolled ? `; ${plural(enrolled, 'inscripción nueva', 'inscripciones nuevas')} por su empresa` : ''}.`,
       before: publicUser(before), after: publicUser(after),
     });
@@ -478,3 +520,4 @@ export const IMPORT_TEMPLATE = [
   'Ana,Pérez (ejemplo),ana.perez@empresa-ejemplo.co,Pharmarket,Fuerza comercial — octubre 2026,Visitadora médica',
   '',
 ].join('\r\n');
+

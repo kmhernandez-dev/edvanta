@@ -4,6 +4,7 @@ import { apiUrl } from '../config/api';
 import { Bookmark, BookmarkCheck, BookOpenCheck, ExternalLink, Star } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { useProfessional } from '../context/ProfessionalContext';
+import { edvantaCourseImageByEdutinId, edvantaCourseImageBySlug } from '../data/courseImages';
 import { trackEvent } from '../utils/analytics';
 
 const PROVIDER_LABELS = {
@@ -100,6 +101,10 @@ export default function ExternalCourseCard({ course, hideProvider = false }) {
   const modalityLabel = MODALITY_LABELS[course.modality];
   const ctaUrl = course.affiliate_url || course.original_url;
   const courseId = String(course.id || course.slug);
+  const brandedImage = edvantaCourseImageByEdutinId(course.provider_course_id)
+    || edvantaCourseImageBySlug(course.slug);
+  const courseImageUrl = brandedImage?.src || course.image_url;
+  const courseImageAlt = brandedImage?.alt || course.title;
   const isSaved = savedCourses.some(item => item.course_id === courseId);
 
   const handleSave = async () => {
@@ -109,7 +114,7 @@ export default function ExternalCourseCard({ course, hideProvider = false }) {
       navigate(`/cuenta?modo=registro&next=${encodeURIComponent(next)}`);
       return;
     }
-    const result = isSaved ? await removeCourse(courseId) : await saveCourse(course);
+    const result = isSaved ? await removeCourse(courseId) : await saveCourse({ ...course, image_url: courseImageUrl });
     if (result.error) setSaveStatus(result.error);
   };
 
@@ -117,8 +122,8 @@ export default function ExternalCourseCard({ course, hideProvider = false }) {
     <div className="group flex flex-col overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm transition duration-200 hover:-translate-y-0.5 hover:border-edvanta-teal hover:shadow-md">
       {/* Image area */}
       <div className="relative flex aspect-[16/9] items-center justify-center overflow-hidden bg-edvanta-soft">
-        {course.image_url ? (
-          <img src={course.image_url} alt={course.title} className="w-full h-full object-cover" loading="lazy" />
+        {courseImageUrl ? (
+          <img src={courseImageUrl} alt={courseImageAlt} className="w-full h-full object-cover" loading="lazy" />
         ) : (
           <BookOpenCheck className="h-9 w-9 text-edvanta-subtle" aria-hidden="true" />
         )}

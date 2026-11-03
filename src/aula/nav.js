@@ -1,8 +1,12 @@
-/**
+﻿/**
  * Navegación del aula. Cada módulo agrega aquí sus secciones cuando su
  * funcionalidad está completa: no se enlaza nada que no funcione.
  */
-import { BookOpen, Building2, GraduationCap, History, Inbox, LayoutDashboard, MessageSquare, Users, UsersRound } from 'lucide-react';
+import { BookOpen, Building2, GraduationCap, History, Inbox, LayoutDashboard, MessageSquare, Target, Users, UsersRound } from 'lucide-react';
+
+export const DOCENTE_NAV = [
+  { to: '/aula/docente', label: 'Mis cursos', icon: BookOpen, end: true },
+];
 
 export const PARTICIPANT_NAV = [
   { to: '/aula', label: 'Mi aula', icon: BookOpen, end: true },
@@ -19,6 +23,7 @@ export const ADMIN_NAV = [
     title: 'Formación',
     items: [
       { to: '/aula/admin/cursos', label: 'Cursos', icon: GraduationCap },
+      { to: '/aula/docente', label: 'Docencia', icon: BookOpen },
     ],
   },
   {
@@ -27,6 +32,7 @@ export const ADMIN_NAV = [
       { to: '/aula/admin/empresas', label: 'Empresas', icon: Building2 },
       { to: '/aula/admin/grupos', label: 'Grupos', icon: UsersRound },
       { to: '/aula/admin/participantes', label: 'Participantes', icon: Users },
+      { to: '/aula/admin/seguimiento', label: 'Seguimiento CRM', icon: Target },
     ],
   },
   {
@@ -38,3 +44,4 @@ export const ADMIN_NAV = [
     ],
   },
 ];
+

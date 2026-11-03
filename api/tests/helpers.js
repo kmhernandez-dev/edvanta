@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Arnés de pruebas del aula: PostgreSQL real (PGlite) con el esquema del
  * aula, la API montada en un puerto libre, un disco temporal y clientes
  * HTTP que guardan su propia cookie de sesión.
@@ -25,7 +25,7 @@ const MIGRATIONS = path.join(path.dirname(fileURLToPath(import.meta.url)), '..',
 // contenido, que pesan megas y no pintan nada aquí. La excepción es
 // `courses`: la opinión de un curso curado apunta a esa tabla con clave
 // foránea, así que sin ella el esquema del aula ni siquiera se crea.
-const APARTE = ['005_courses.sql'];
+const APARTE = ['005_courses.sql', '064_pedagogia_funcional.sql', '065_aula_crm_clasificacion.sql'];
 const necesaria = (f) => /^\d+_aula_.*\.sql$/.test(f) || APARTE.includes(f);
 
 export async function createTestDb() {

@@ -1,4 +1,4 @@
-import express from 'express';
+﻿import express from 'express';
 import {
   addGroupMembers, companyOptions, createCompany, createGroup, deleteCompany, deleteGroup, getCompany, getGroup,
   groupOptions, listCompanies, listGroupMembers, listGroups, readCompany, readGroup, removeGroupMember,
@@ -11,6 +11,7 @@ import {
   createAssignment, reactivateEnrollment, revokeAssignment, withdrawEnrollment,
 } from '../../lib/aula/enrollments.js';
 import { many } from '../../lib/aula/db.js';
+import { crmCsv, crmUsers } from '../../lib/aula/crm.js';
 import {
   badRequest, bool, dayBoundary, id as idField, idList, oneOf, route, str,
 } from '../../lib/aula/http.js';
@@ -86,6 +87,16 @@ export function adminPeopleRouter(deps) {
 
   // ── Personas ──────────────────────────────────────────────
   router.get('/users', route(async (req, res) => res.json(await listUsers(req.aula.db, req.query))));
+  // ── Seguimiento y exportación CRM ───────────────────────────────────
+  router.get('/crm/users', route(async (req, res) => {
+    res.json(await crmUsers(req.aula.db, req.query));
+  }));
+  router.get('/crm/export', route(async (req, res) => {
+    const csv = await crmCsv(req.aula.db);
+    res.setHeader('Content-Type', 'text/csv; charset=utf-8');
+    res.setHeader('Content-Disposition', 'attachment; filename="seguimiento-crm-aula.csv"');
+    res.send(`\uFEFF${csv}`);
+  }));
   router.post('/users', route(async (req, res) => {
     const input = readUser(req.body);
     const groupIds = Array.isArray(req.body?.groupIds) && req.body.groupIds.length
@@ -184,3 +195,4 @@ export function adminPeopleRouter(deps) {
 
   return router;
 }
+

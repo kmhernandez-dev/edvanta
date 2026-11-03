@@ -1,9 +1,9 @@
-import { Suspense, useEffect, useRef, useState } from 'react';
+﻿import { Suspense, useEffect, useRef, useState } from 'react';
 import { Link, NavLink, Outlet, useLocation } from 'react-router-dom';
 import { ChevronDown, KeyRound, LogOut, Menu, X } from 'lucide-react';
 import { useAulaSession } from '../session';
 import { ROLE_LABEL } from '../labels';
-import { ADMIN_NAV, PARTICIPANT_NAV } from '../nav';
+import { ADMIN_NAV, DOCENTE_NAV, PARTICIPANT_NAV } from '../nav';
 import { LoadingBlock } from '../ui/States';
 
 // Las páginas se cargan bajo demanda; el marco queda fijo mientras llegan.
@@ -200,6 +200,40 @@ export function AdminShell() {
           <Page />
         </main>
       </div>
+    </div>
+  );
+}
+
+export function DocenteShell() {
+  return (
+    <div className="aula-root">
+      <header className="sticky top-0 z-40 border-b border-[var(--aula-border)] bg-white">
+        <div className="mx-auto flex h-16 max-w-6xl items-center gap-6 px-4 sm:px-6">
+          <Logo to="/aula/docente" />
+          <span className="hidden rounded-full bg-[var(--aula-accent-soft)] px-2.5 py-1 text-xs font-semibold text-[#5E51A8] sm:inline">
+            Docencia
+          </span>
+          <nav aria-label="Docencia" className="flex items-center gap-1">
+            {DOCENTE_NAV.map((item) => (
+              <NavLink
+                key={item.to}
+                to={item.to}
+                end={item.end}
+                className={({ isActive }) => `inline-flex h-10 items-center gap-2 rounded-[var(--aula-radius-sm)] px-3 text-sm font-medium ${
+                  isActive ? 'bg-[var(--aula-primary-soft)] text-[var(--aula-primary)]' : 'text-[var(--aula-muted)] hover:bg-[var(--aula-neutral-soft)] hover:text-[var(--aula-text)]'
+                }`}
+              >
+                <item.icon className="h-4 w-4" aria-hidden="true" />
+                <span className="hidden sm:inline">{item.label}</span>
+              </NavLink>
+            ))}
+          </nav>
+          <div className="ml-auto"><UserMenu /></div>
+        </div>
+      </header>
+      <main className="mx-auto max-w-6xl px-4 py-6 sm:px-6 sm:py-8">
+        <Page />
+      </main>
     </div>
   );
 }

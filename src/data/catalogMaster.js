@@ -13,10 +13,12 @@
  *    - Nunca se inventan cursos ni URLs para rellenar categorías.
  *    - Las URLs existentes del proyecto se reutilizan exactas, nunca se
  *      normalizan ni se reemplazan.
- *    - Las portadas usadas son las oficiales de Edutin (CDN) o las locales
- *      ya existentes en el proyecto; no se generan imágenes nuevas.
+ *    - Los cursos destacados usan la familia editorial propia de Edvanta;
+ *      el resto conserva las portadas oficiales locales del proveedor.
  * ============================================================
  */
+
+import { edvantaCourseImageByEdutinId } from './courseImages';
 
 // ─────────────────────────────────────────────────────────────
 // 1. ÁREAS PROFESIONALES (30) — mapa profesional del QF
@@ -599,9 +601,9 @@ const OFFICIAL = {
   '13028': { page: 'https://edutin.com/curso-de-ia-para-logistica', cover: `${CDN_BASE}/13028/img/web/800_imagen.jpg` },
 };
 
-// Portadas oficiales Edutin descargadas localmente (public/img/cursos/edutin/{edutinId}.jpg).
-// TODOS los cursos del catálogo maestro usan su portada oficial.
-const EDUTIN_COVER = (edutinId, title) => ({
+// Los cursos de mayor visibilidad usan la familia editorial de Edvanta.
+// Los demás conservan la portada oficial local del proveedor.
+const EDUTIN_COVER = (edutinId, title) => edvantaCourseImageByEdutinId(edutinId) || ({
   src: `/img/cursos/edutin/${edutinId}.jpg`,
   jpg: `/img/cursos/edutin/${edutinId}.jpg`,
   webp: `/img/cursos/edutin/${edutinId}.jpg`,

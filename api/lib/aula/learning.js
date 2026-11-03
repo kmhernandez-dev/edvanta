@@ -10,6 +10,7 @@ import { many, one } from './db.js';
 import { AulaError, badRequest, conflict, notFound } from './http.js';
 import { requireOpenEnrollment } from './access.js';
 import { recomputeEnrollment } from './progress.js';
+import { pedagogyProgress } from './pedagogia-core.js';
 
 const MAX_TIME_REPORT_S = 60;
 const MAX_VIDEO_SECONDS = 24 * 60 * 60;
@@ -118,8 +119,24 @@ function summary(enrollment) {
     status: enrollment.effective_status || enrollment.progress_status,
     progressPct: Number(enrollment.progress_pct) || 0,
     lessons: { done: enrollment.lessons_done, required: enrollment.lessons_required, pct: pct(enrollment.lessons_done, enrollment.lessons_required) },
-    assessments: { passed: enrollment.assessments_passed, required: enrollment.assessments_required, pct: pct(enrollment.assessments_passed, enrollment.assessments_required) },
-    activities: { approved: enrollment.activities_approved, required: enrollment.activities_required, pct: pct(enrollment.activities_approved, enrollment.activities_required) },
+    assessments: {
+      submitted: enrollment.assessments_submitted ?? 0,
+      passed: enrollment.assessments_passed,
+      required: enrollment.assessments_required,
+      pct: pct(enrollment.assessments_submitted ?? 0, enrollment.assessments_required),
+    },
+    activities: {
+      submitted: enrollment.activities_submitted ?? 0,
+      approved: enrollment.activities_approved,
+      required: enrollment.activities_required,
+      pct: pct(enrollment.activities_submitted ?? 0, enrollment.activities_required),
+    },
+    forums: {
+      participated: enrollment.forums_participated ?? 0,
+      required: enrollment.forums_required ?? 0,
+      pct: pct(enrollment.forums_participated ?? 0, enrollment.forums_required ?? 0),
+    },
+    finalScore: enrollment.final_score === null || enrollment.final_score === undefined ? null : Number(enrollment.final_score),
     startsAt: enrollment.starts_at,
     dueAt: enrollment.due_at,
     completedAt: enrollment.completed_at,
@@ -180,6 +197,9 @@ export async function courseForParticipant(db, user, courseId, { now = new Date(
     `SELECT code, status, issued_at FROM aula_certificates WHERE enrollment_id = $1 AND status <> 'pendiente'`,
     [ctx.enrollment.id],
   );
+  const pedagogy = await pedagogyProgress(db, {
+    enrollmentId: ctx.enrollment.id, courseId, userId: user.id,
+  });
   return {
     snapshot,
     courseId: Number(courseId),
@@ -191,6 +211,19 @@ export async function courseForParticipant(db, user, courseId, { now = new Date(
     enrollment: await freshSummary(db, ctx.enrollment.id),
     lessonStates: states,
     resumeLessonId: resumeLessonId(ctx.snapshot, states),
+    pedagogy,
+    grade: pedagogy ? {
+      configured: pedagogy.configured,
+      configOk: pedagogy.configOk,
+      policy: pedagogy.policy,
+      passingScore: pedagogy.passingScore,
+      finalScore: pedagogy.finalScore,
+      provisional: pedagogy.provisional,
+      approved: pedagogy.approved,
+      pending: pedagogy.pending,
+      components: pedagogy.components,
+      requirements: pedagogy.requirements,
+    } : null,
     videoProgress: Object.fromEntries(ctx.progress.map((p) => [p.lesson_id, p.video_segments && !Array.isArray(p.video_segments) ? p.video_segments : {}])),
   };
 }

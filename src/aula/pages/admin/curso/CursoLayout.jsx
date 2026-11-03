@@ -1,8 +1,8 @@
-import { Suspense, useState } from 'react';
+﻿import { Suspense, useState } from 'react';
 import { Link, Outlet, useNavigate, useOutletContext, useParams } from 'react-router-dom';
 import {
   Archive, ArchiveRestore, Copy, Eye, FileClock, History, Layers, Library, Rocket, Send, Settings2, SlidersHorizontal,
-  Trash2, Undo2, Users,
+  Trash2, Undo2, UserCog, Users,
 } from 'lucide-react';
 import { api, get, post } from '../../../api';
 import { useAsync } from '../../../hooks';
@@ -108,6 +108,7 @@ export default function CursoLayout() {
           { to: `${base}/reglas`, label: 'Reglas y fechas', icon: SlidersHorizontal },
           { to: `${base}/recursos`, label: 'Recursos', icon: Library },
           { to: `${base}/participantes`, label: 'Participantes', icon: Users },
+          { to: `${base}/docentes`, label: 'Docentes', icon: UserCog },
           { to: `${base}/versiones`, label: 'Versiones', icon: History },
         ]}
       />

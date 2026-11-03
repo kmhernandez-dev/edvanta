@@ -1,4 +1,4 @@
-import { resolveSession } from '../../lib/aula/accounts.js';
+﻿import { resolveSession } from '../../lib/aula/accounts.js';
 import { forbidden, unauthorized } from '../../lib/aula/http.js';
 import { clientIp, readCookie, SESSION_COOKIE } from '../../lib/aula/security.js';
 
@@ -45,3 +45,12 @@ export function requireParticipant(req, _res, next) {
 
 /** Datos del actor para la bitácora. */
 export const actorOf = (req) => ({ id: req.aula.user.id, email: req.aula.user.email });
+
+/** Solo docentes y administradores entran a la sección docente. */
+export function requireDocente(req, _res, next) {
+  if (!req.aula?.user) return next(unauthorized());
+  if (!['admin', 'docente'].includes(req.aula.user.role)) {
+    return next(forbidden('Esta sección es para docentes y administradores del aula.'));
+  }
+  return next();
+}

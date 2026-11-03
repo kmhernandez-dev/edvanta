@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Direcciones del aula con nombre:
  *
  *   /aula/curso-de-farmacoterapia-de-la-diabetes
@@ -35,6 +35,10 @@ export function rutasDelCurso(data) {
     clase: (id) => `${base}/clase/${slugDe.get(id) || id}`,
     recursos: `${base}/recursos`,
     certificado: `${base}/certificado`,
+    evaluacion: `${base}/evaluacion`,
+    evaluacionQuiz: (id) => `${base}/evaluacion/quiz/${id}`,
+    evaluacionActividad: (id) => `${base}/evaluacion/actividad/${id}`,
+    evaluacionForo: (id) => `${base}/evaluacion/foro/${id}`,
   };
 }
 

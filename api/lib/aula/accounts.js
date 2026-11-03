@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Cuentas del aula: sesiones, invitaciones, recuperación de contraseña
  * y designación de administradores.
  *
@@ -23,7 +23,8 @@ const TOUCH_EVERY_MS = 5 * 60 * 1000;
 
 export const USER_FIELDS = `
   u.id, u.email, u.first_name, u.last_name, u.role, u.status, u.company_id,
-  u.job_title, u.is_demo, u.last_login_at, u.created_at, u.updated_at`;
+  u.job_title, u.is_demo, u.last_login_at, u.created_at, u.updated_at,
+  u.crm_code, u.segmento, u.crm_tags, u.crm_source, u.crm_notes, u.crm_updated_at`;
 
 export function publicUser(row) {
   if (!row) return null;
@@ -37,6 +38,12 @@ export function publicUser(row) {
     status: row.status,
     companyId: row.company_id ?? null,
     jobTitle: row.job_title ?? null,
+    crmCode: row.crm_code ?? null,
+    segmento: row.segmento ?? 'sin_clasificar',
+    crmTags: row.crm_tags ?? [],
+    crmSource: row.crm_source ?? null,
+    crmNotes: row.crm_notes ?? null,
+    crmUpdatedAt: row.crm_updated_at ?? null,
     isDemo: Boolean(row.is_demo),
     lastLoginAt: row.last_login_at ?? null,
     createdAt: row.created_at ?? null,
@@ -306,3 +313,4 @@ export function parseAdminEmails(raw) {
     .map((e) => e.trim().toLowerCase())
     .filter((e) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(e)))];
 }
+

@@ -36,3 +36,10 @@ api/.data/
 
 # Fuentes de pdf.js copiadas por scripts/preparar-pdfjs.cjs (no se versionan)
 public/pdfjs/
+
+# Contenido BPM privado: claves de quiz y guías docentes.
+# No se publica en el repositorio público hasta la revisión especializada.
+contenido/aula/bpm/
+api/migrations/063_pedagogia_bpm.sql
+api/tests/bpm-pedagogia.test.js
+docs/auditoria-aula/bpm-vista-previa.html

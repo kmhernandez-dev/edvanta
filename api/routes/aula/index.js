@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Router del Aula Edvanta (/api/aula).
  *
  * Se construye con sus dependencias (base de datos, almacenamiento,
@@ -15,12 +15,14 @@ import { adminPeopleRouter } from './admin-people.js';
 import { adminCertificadosRouter } from './admin-certificados.js';
 import { adminSummaryRouter } from './admin-summary.js';
 import { meRouter } from './me.js';
+import { pedagogiaRouter } from './pedagogia.js';
+import { docenteRouter } from './docente.js';
 import { authRouter } from './auth.js';
 import { filesRouter, sweepStaleUploads, uploadsRouter } from './files.js';
 import { opinionesRouter } from './opiniones.js';
 import { adminModeracionRouter } from './admin-moderacion.js';
 import { adminSolicitudesRouter, solicitudesRouter } from './solicitudes.js';
-import { attachSession, requireAdmin, requireUser } from './middleware.js';
+import { attachSession, requireAdmin, requireDocente, requireUser } from './middleware.js';
 
 export function createAulaRouter({
   db,
@@ -46,7 +48,9 @@ export function createAulaRouter({
   router.use('/auth', authRouter(deps));
   router.use('/uploads', requireUser, uploadsRouter(deps));
   router.use('/files', requireUser, filesRouter(deps));
+  router.use('/me', requireUser, pedagogiaRouter(deps));
   router.use('/me', requireUser, meRouter(deps));
+  router.use('/docente', requireUser, requireDocente, docenteRouter(deps));
   // Leer opiniones y preguntas es público; escribir se comprueba dentro.
   router.use('/opiniones', opinionesRouter(deps));
   // Interés, propuestas y contacto: se envían sin cuenta.

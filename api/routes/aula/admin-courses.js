@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Administración de cursos: datos, estructura, bloques, recursos,
  * vista previa, publicación y participantes de cada curso.
  */
@@ -19,6 +19,7 @@ import {
   updateCategory, updateResource,
 } from '../../lib/aula/resources.js';
 import { buildSnapshot } from '../../lib/aula/snapshot.js';
+import { addCourseTeacher, listCourseTeachers, removeCourseTeacher } from '../../lib/aula/pedagogia.js';
 import {
   bool, id as idField, idList, int, oneOf, route, str,
 } from '../../lib/aula/http.js';
@@ -90,6 +91,22 @@ export function adminCoursesRouter() {
     res.json(await listCourseAssignments(req.aula.db, param(req)));
   }));
 
+  // ── Docentes asignados ───────────────────────────────────────────────
+  router.get('/courses/:id/teachers', route(async (req, res) => {
+    res.json(await listCourseTeachers(req.aula.db, param(req)));
+  }));
+  router.post('/courses/:id/teachers', route(async (req, res) => {
+    const userId = idField(req.body?.userId, 'userId', 'La persona');
+    const role = oneOf(req.body?.role ?? 'docente', 'role', 'El rol docente', ['docente', 'tutor']);
+    res.status(201).json(await addCourseTeacher(req.aula.db, actorOf(req), param(req), userId, {
+      role, ip: req.aula.ip, now: req.aula.now,
+    }));
+  }));
+  router.delete('/courses/:id/teachers/:userId', route(async (req, res) => {
+    res.json(await removeCourseTeacher(req.aula.db, actorOf(req), param(req), idField(req.params.userId, 'userId', 'La persona'), {
+      ip: req.aula.ip,
+    }));
+  }));
   // ── Módulos ───────────────────────────────────────────────
   router.post('/courses/:id/modules', route(async (req, res) => {
     const afterModuleId = req.body?.afterModuleId ? idField(req.body.afterModuleId, 'afterModuleId', 'El módulo') : null;

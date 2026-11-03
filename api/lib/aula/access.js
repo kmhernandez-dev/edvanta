@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Reglas de acceso del aula. Se aplican en el servidor en cada petición;
  * la interfaz solo refleja lo que estas funciones permiten.
  *
@@ -12,7 +12,7 @@
  * revelar qué cursos existen.
  */
 import { one } from './db.js';
-import { AulaError, notFound } from './http.js';
+import { AulaError, forbidden, notFound } from './http.js';
 
 const fmtDate = (d) => new Date(d).toLocaleDateString('es-CO', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'America/Bogota' });
 
@@ -61,6 +61,31 @@ export async function requireOpenEnrollment(db, user, courseId, { now = new Date
   if (!row) throw notFound('No encontramos este curso entre los que tienes asignados.');
   const reason = closedReason(row, now);
   if (reason) throw new AulaError(403, reason.code, reason.message);
+  return row;
+}
+/** Asignación docente vigente, o null. Un administrador no la necesita. */
+export async function courseTeacher(db, userId, courseId) {
+  return one(
+    db,
+    `SELECT t.course_id, t.user_id, t.role
+       FROM aula_course_teachers t
+       JOIN aula_users u ON u.id = t.user_id AND u.deleted_at IS NULL AND u.status = 'active'
+      WHERE t.course_id = $1 AND t.user_id = $2`,
+    [courseId, userId],
+  );
+}
+
+/**
+ * Solo el docente asignado al curso (o un administrador) puede revisar
+ * entregas, intentos y foros de ese curso.
+ */
+export async function requireCourseTeacher(db, user, courseId) {
+  if (user?.role === 'admin') return { admin: true, courseId, userId: user.id };
+  if (user?.role !== 'docente') {
+    throw forbidden('Esta sección es para docentes asignados al curso.');
+  }
+  const row = await courseTeacher(db, user.id, courseId);
+  if (!row) throw forbidden('No tienes asignación docente para este curso.');
   return row;
 }
 
@@ -146,6 +171,33 @@ export async function fileAccess(db, user, fileId) {
            JOIN aula_enrollments e ON e.course_id = c.id
           WHERE p.file_id = $1 AND p.is_hidden = FALSE AND p.deleted_at IS NULL AND f.deleted_at IS NULL
             AND ${openCourse}
+          LIMIT 1`,
+        [fileId, user.id],
+      );
+      if (!row) {
+        row = await one(
+          db,
+          `SELECT 1
+             FROM aula_forum_posts p
+             JOIN aula_forums f ON f.id = p.forum_id
+             JOIN aula_course_teachers t ON t.course_id = f.course_id
+            WHERE p.file_id = $1 AND p.deleted_at IS NULL AND f.deleted_at IS NULL
+              AND t.user_id = $2
+            LIMIT 1`,
+          [fileId, user.id],
+        );
+      }
+      return { file, canView: Boolean(row), canDownload: Boolean(row) };
+
+    case 'entrega':
+      row = await one(
+        db,
+        `SELECT 1
+           FROM aula_submission_revisions r
+           JOIN aula_submissions s ON s.id = r.submission_id
+           JOIN aula_activities a ON a.id = s.activity_id
+           JOIN aula_course_teachers t ON t.course_id = a.course_id
+          WHERE r.file_id = $1 AND t.user_id = $2
           LIMIT 1`,
         [fileId, user.id],
       );

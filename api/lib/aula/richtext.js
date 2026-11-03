@@ -12,12 +12,25 @@ import { badRequest } from './http.js';
 
 const ALLOWED_TAGS = [
   'p', 'br', 'strong', 'em', 'u', 's', 'code', 'pre', 'blockquote',
-  'ul', 'ol', 'li', 'hr', 'h2', 'h3', 'h4', 'a',
+  'ul', 'ol', 'li', 'hr', 'h2', 'h3', 'h4', 'a', 'article', 'section',
+  // Tablas, figuras y desplegables: son el soporte de los mapas de
+  // relaciones, las comparaciones y las soluciones de autoevaluación.
+  // No admiten estilo, clase ni eventos en línea.
+  'table', 'caption', 'thead', 'tbody', 'tfoot', 'tr', 'th', 'td',
+  'figure', 'figcaption', 'details', 'summary',
+  'dl', 'dt', 'dd', 'abbr', 'sup', 'sub', 'mark', 'small',
 ];
 
 const OPTIONS = {
   allowedTags: ALLOWED_TAGS,
-  allowedAttributes: { a: ['href', 'target', 'rel'], ol: ['start'] },
+  allowedAttributes: {
+    a: ['href', 'target', 'rel'],
+    ol: ['start'],
+    th: ['scope', 'colspan', 'rowspan'],
+    td: ['colspan', 'rowspan'],
+    details: ['open'],
+    abbr: ['title'],
+  },
   allowedSchemes: ['http', 'https', 'mailto', 'tel'],
   allowProtocolRelative: false,
   transformTags: {

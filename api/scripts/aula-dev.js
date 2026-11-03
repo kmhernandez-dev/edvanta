@@ -12,6 +12,10 @@
  * raíz el aula queda disponible en http://localhost:5173/aula.
  */
 import { PGlite } from '@electric-sql/pglite';
+import { pg_trgm } from '@electric-sql/pglite/contrib/pg_trgm';
+import { pgcrypto } from '@electric-sql/pglite/contrib/pgcrypto';
+import { unaccent } from '@electric-sql/pglite/contrib/unaccent';
+import { uuid_ossp } from '@electric-sql/pglite/contrib/uuid_ossp';
 import express from 'express';
 import { mkdir, readdir, readFile, rm, writeFile } from 'node:fs/promises';
 import path from 'node:path';
@@ -38,14 +42,19 @@ if (args.includes('--reset')) {
 }
 await mkdir(path.join(baseDir, 'mails'), { recursive: true });
 
-const pglite = new PGlite(path.join(baseDir, 'db'));
+const pglite = new PGlite(path.join(baseDir, 'db'), {
+  extensions: { pg_trgm, pgcrypto, unaccent, uuid_ossp },
+});
 const db = fromPglite(pglite);
 
 // Migraciones del aula con su propio registro.
 await pglite.exec('CREATE TABLE IF NOT EXISTS _migrations (name TEXT PRIMARY KEY, run_at TIMESTAMPTZ NOT NULL DEFAULT NOW())');
 const done = new Set((await pglite.query('SELECT name FROM _migrations')).rows.map((r) => r.name));
 const migrationsDir = path.join(apiDir, 'migrations');
-for (const file of (await readdir(migrationsDir)).filter((f) => /^\d+_aula_.*\.sql$/.test(f)).sort()) {
+// El aula local también aplica la capa pedagógica de BPM y su política de
+// nota. Así se puede probar el recorrido completo sin PostgreSQL.
+const pedagogiaDev = /^\d+_aula_.*\.sql$|^005_courses\.sql$|^063_pedagogia_bpm\.sql$|^064_pedagogia_funcional\.sql$|^065_aula_crm_clasificacion\.sql$/;
+for (const file of (await readdir(migrationsDir)).filter((f) => pedagogiaDev.test(f)).sort()) {
   if (done.has(file)) continue;
   await pglite.exec(cleanMigrationSql(await readFile(path.join(migrationsDir, file), 'utf8')));
   await pglite.query('INSERT INTO _migrations (name) VALUES ($1)', [file]);

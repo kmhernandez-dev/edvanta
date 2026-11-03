@@ -1,4 +1,4 @@
-import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
+﻿import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 import { get, post } from './api';
 import { PageError, PageLoader } from './ui/States';
@@ -104,10 +104,10 @@ export function useAulaSessionOptional() {
   return useContext(SessionContext);
 }
 
-export const homeFor = (user) => (user?.role === 'admin' ? '/aula/admin' : '/aula');
+export const homeFor = (user) => (user?.role === 'admin' ? '/aula/admin' : user?.role === 'docente' ? '/aula/docente' : '/aula');
 
 /** Solo muestra el contenido con sesión (y el rol pedido); si no, redirige. */
-export function RequireAula({ role, children }) {
+export function RequireAula({ role, roles, children }) {
   const { status, user, error, refresh } = useAulaSession();
   const location = useLocation();
 
@@ -122,6 +122,7 @@ export function RequireAula({ role, children }) {
     return <PageLoader label="Llevándote al acceso…" />;
   }
   if (role && user.role !== role) return <Navigate to={homeFor(user)} replace />;
+  if (roles && !roles.includes(user.role)) return <Navigate to={homeFor(user)} replace />;
   return children;
 }
 
@@ -129,6 +130,7 @@ export function RequireAula({ role, children }) {
 export function safeReturn(raw, user) {
   if (typeof raw === 'string' && raw.startsWith('/aula') && !raw.startsWith('//') && !raw.startsWith('/aula/entrar')) {
     if (raw.startsWith('/aula/admin') && user?.role !== 'admin') return homeFor(user);
+    if (raw.startsWith('/aula/docente') && !['admin', 'docente'].includes(user?.role)) return homeFor(user);
     return raw;
   }
   return homeFor(user);

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { Ban, Mail, Pencil, Plus, RotateCcw, Trash2, Upload, UserCheck, Users } from 'lucide-react';
 import { api, get, post } from '../../api';
@@ -31,6 +31,7 @@ export default function Participantes() {
           <p className="font-semibold">
             {u.fullName}
             {u.role === 'admin' && <Badge tone="info" className="ml-2">Admin</Badge>}
+            {u.role === 'docente' && <Badge tone="accent" className="ml-2">Docente</Badge>}
             {u.isDemo && <Badge tone="accent" className="ml-2">Demo</Badge>}
           </p>
           <p className="truncate text-xs text-[var(--aula-muted)]">{u.email}</p>
@@ -38,6 +39,12 @@ export default function Participantes() {
       ),
     },
     { key: 'company', header: 'Empresa', sortable: true, render: (u) => u.companyName || <span className="text-[var(--aula-muted)]">—</span> },
+    { key: 'crm', header: 'CRM', render: (u) => (
+      <div>
+        <p className="font-mono text-xs font-semibold text-[var(--aula-primary)]">{u.crmCode || '—'}</p>
+        <Badge tone={u.segmento === 'sin_clasificar' ? 'neutral' : 'accent'} className="mt-1">{u.segmento || 'sin_clasificar'}</Badge>
+      </div>
+    ) },
     { key: 'groups', header: 'Grupos', render: (u) => (u.groups.length ? u.groups.map((g) => g.name).join(', ') : <span className="text-[var(--aula-muted)]">—</span>) },
     { key: 'enrollments', header: 'Cursos', align: 'right', render: (u) => <span className="tabular-nums">{u.enrollments}</span> },
     { key: 'status', header: 'Cuenta', sortable: true, render: (u) => <StatusBadge kind="user" status={u.status} /> },
@@ -67,7 +74,7 @@ export default function Participantes() {
           <FilterSelect label="Cuenta" value={status} onChange={(v) => table.update({ status: v })}
             options={[{ value: 'active', label: 'Activas' }, { value: 'invited', label: 'Invitación pendiente' }, { value: 'suspended', label: 'Suspendidas' }]} allLabel="Todas" />
           <FilterSelect label="Rol" value={role} onChange={(v) => table.update({ role: v })}
-            options={[{ value: 'participant', label: 'Participantes' }, { value: 'admin', label: 'Administradores' }]} allLabel="Todos" />
+            options={[{ value: 'participant', label: 'Participantes' }, { value: 'docente', label: 'Docentes' }, { value: 'admin', label: 'Administradores' }]} allLabel="Todos" />
         </div>
         <DataTable
           caption="Participantes"
@@ -166,7 +173,16 @@ export function ParticipanteDetalle() {
         <Card><p className="text-sm text-[var(--aula-muted)]">Último acceso</p><p className="mt-1 font-semibold">{u.lastLoginAt ? fmtDateTime(u.lastLoginAt) : 'Nunca ha entrado'}</p></Card>
         <Card><p className="text-sm text-[var(--aula-muted)]">Alta</p><p className="mt-1 font-semibold">{fmtDate(u.createdAt)}</p></Card>
       </div>
-      {u.status === 'invited' && (
+      <Card title="Clasificación CRM" className="mb-6">
+        <div className="grid gap-4 sm:grid-cols-2">
+          <div><p className="text-sm text-[var(--aula-muted)]">Código estable</p><p className="mt-1 font-mono font-semibold text-[var(--aula-primary)]">{u.crmCode || '—'}</p></div>
+          <div><p className="text-sm text-[var(--aula-muted)]">Segmento</p><div className="mt-1"><Badge tone={u.segmento === 'sin_clasificar' ? 'neutral' : 'accent'}>{u.segmento || 'sin_clasificar'}</Badge></div></div>
+          <div><p className="text-sm text-[var(--aula-muted)]">Etiquetas</p><div className="mt-1 flex flex-wrap gap-1">{u.crmTags?.length ? u.crmTags.map((t) => <span key={t} className="rounded-full bg-[var(--aula-neutral-soft)] px-2 py-0.5 text-xs">{t}</span>) : <span className="text-sm text-[var(--aula-muted)]">Sin etiquetas</span>}</div></div>
+          <div><p className="text-sm text-[var(--aula-muted)]">Origen</p><p className="mt-1 font-semibold">{u.crmSource || '—'}</p></div>
+        </div>
+        {u.crmNotes && <p className="mt-3 rounded-[var(--aula-radius)] bg-[var(--aula-surface-muted)] px-3 py-2 text-sm"><strong>Notas internas:</strong> {u.crmNotes}</p>}
+        <div className="mt-3"><Button size="sm" variant="secondary" to="/aula/admin/seguimiento">Ver seguimiento CRM</Button></div>
+      </Card>      {u.status === 'invited' && (
         <Alert tone="info" className="mb-6" title="Invitación pendiente">
           Esta persona aún no crea su contraseña. El enlace vence a los 7 días; puedes reenviarlo cuando quieras.
         </Alert>
@@ -265,3 +281,4 @@ export function ParticipanteDetalle() {
     </div>
   );
 }
+

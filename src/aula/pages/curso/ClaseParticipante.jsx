@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Navigate, useNavigate, useParams } from 'react-router-dom';
-import { Award, BookOpen, CheckCircle2, Clock, Library, PartyPopper, PlayCircle } from 'lucide-react';
+import { Award, BookOpen, CheckCircle2, Clock, ClipboardCheck, Library, PartyPopper, PlayCircle } from 'lucide-react';
 import { post } from '../../api';
 import { fmtDate } from '../../labels';
 import { Button } from '../../ui/Button';
@@ -212,10 +212,17 @@ export default function ClaseParticipante() {
         progress={{ pct: data.enrollment.progressPct }}
         videoPositions={positions}
         onMedia={onMedia}
-        headerActions={data.resourcesEnabled && (
-          <Button size="sm" variant="ghost" icon={Library} to={rutas.recursos} aria-label="Recursos del curso">
-            <span className="hidden sm:inline">Recursos</span>
-          </Button>
+        headerActions={(
+          <>
+            <Button size="sm" variant="ghost" icon={ClipboardCheck} to={rutas.evaluacion} aria-label="Evaluación del curso">
+              <span className="hidden sm:inline">Evaluación</span>
+            </Button>
+            {data.resourcesEnabled && (
+              <Button size="sm" variant="ghost" icon={Library} to={rutas.recursos} aria-label="Recursos del curso">
+                <span className="hidden sm:inline">Recursos</span>
+              </Button>
+            )}
+          </>
         )}
         footerActions={(
           <>

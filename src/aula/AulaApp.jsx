@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Aula Edvanta: aula virtual empresarial (/aula/*).
  * Participantes en /aula, administración en /aula/admin.
  */
@@ -6,7 +6,7 @@ import { lazy, Suspense, useEffect } from 'react';
 import { Navigate, Route, Routes, useLocation, useSearchParams } from 'react-router-dom';
 import { setMeta } from '../utils/seo';
 import './aula.css';
-import { AdminShell, ParticipantShell } from './layout/Shells';
+import { AdminShell, DocenteShell, ParticipantShell } from './layout/Shells';
 import { Acceso, Entrar, Recuperar } from './pages/Acceso';
 import Cuenta from './pages/Cuenta';
 import MiAula from './pages/MiAula';
@@ -18,7 +18,7 @@ import Grupos, { GrupoDetalle } from './pages/admin/Grupos';
 import Importar from './pages/admin/Importar';
 import Participantes, { ParticipanteDetalle } from './pages/admin/Participantes';
 import Resumen from './pages/admin/Resumen';
-import { AulaSessionProvider, RequireAula, useAulaSession } from './session';
+import { AulaSessionProvider, homeFor, RequireAula, useAulaSession } from './session';
 import { Button } from './ui/Button';
 import { EmptyState, PageLoader } from './ui/States';
 import { ToastProvider } from './ui/Toast';
@@ -26,6 +26,7 @@ import { ToastProvider } from './ui/Toast';
 // El editor de cursos (texto enriquecido, arrastrar y soltar, visor PDF)
 // se descarga solo cuando un administrador lo abre.
 const Cursos = lazy(() => import('./pages/admin/Cursos'));
+const Seguimiento = lazy(() => import('./pages/admin/Seguimiento'));
 const CursoLayout = lazy(() => import('./pages/admin/curso/CursoLayout'));
 const Contenido = lazy(() => import('./pages/admin/curso/Contenido'));
 const ClaseEditor = lazy(() => import('./pages/admin/curso/ClaseEditor'));
@@ -33,6 +34,7 @@ const Informacion = lazy(() => import('./pages/admin/curso/Informacion'));
 const Reglas = lazy(() => import('./pages/admin/curso/Reglas'));
 const Recursos = lazy(() => import('./pages/admin/curso/Recursos'));
 const ParticipantesCurso = lazy(() => import('./pages/admin/curso/ParticipantesCurso'));
+const DocentesCurso = lazy(() => import('./pages/admin/curso/DocentesCurso'));
 const Versiones = lazy(() => import('./pages/admin/curso/Versiones'));
 const VistaPrevia = lazy(() => import('./pages/admin/curso/VistaPrevia'));
 const CursoParticipante = lazy(() => import('./pages/curso/CursoParticipante'));
@@ -40,6 +42,14 @@ const PortadaCurso = lazy(() => import('./pages/curso/PortadaCurso'));
 const ClaseParticipante = lazy(() => import('./pages/curso/ClaseParticipante'));
 const RecursosCurso = lazy(() => import('./pages/curso/RecursosCurso'));
 const CertificadoCurso = lazy(() => import('./pages/curso/CertificadoCurso'));
+const EvaluacionCurso = lazy(() => import('./pages/curso/EvaluacionCurso'));
+const QuizCurso = lazy(() => import('./pages/curso/QuizCurso'));
+const ActividadCurso = lazy(() => import('./pages/curso/ActividadCurso'));
+const ForoCurso = lazy(() => import('./pages/curso/ForoCurso'));
+const DocenteCursos = lazy(() => import('./pages/docente/DocenteCursos'));
+const DocenteCurso = lazy(() => import('./pages/docente/DocenteCurso'));
+const DocenteEntrega = lazy(() => import('./pages/docente/DocenteEntrega'));
+const DocenteForo = lazy(() => import('./pages/docente/DocenteForo'));
 
 const fullPage = (element) => <Suspense fallback={<PageLoader />}>{element}</Suspense>;
 
@@ -48,6 +58,10 @@ const paginasDelCurso = (
   <>
     <Route index element={<PortadaCurso />} />
     <Route path="clase/:clase" element={<ClaseParticipante />} />
+    <Route path="evaluacion" element={<EvaluacionCurso />} />
+    <Route path="evaluacion/quiz/:quizId" element={<QuizCurso />} />
+    <Route path="evaluacion/actividad/:activityId" element={<ActividadCurso />} />
+    <Route path="evaluacion/foro/:forumId" element={<ForoCurso />} />
     <Route path="recursos" element={<RecursosCurso />} />
     <Route path="certificado" element={<CertificadoCurso />} />
   </>
@@ -66,9 +80,18 @@ const TITLES = [
   [/^\/aula\/admin\/cursos/, 'Cursos'],
   [/^\/aula\/admin\/empresas/, 'Empresas'],
   [/^\/aula\/admin\/grupos/, 'Grupos'],
+  [/^\/aula\/admin\/seguimiento/, 'Seguimiento CRM'],
   [/^\/aula\/admin\/participantes\/importar/, 'Importar participantes'],
   [/^\/aula\/admin\/participantes/, 'Participantes'],
   [/^\/aula\/admin/, 'Administración'],
+  [/^\/aula\/(curso\/\d+|curso-[^/]+)\/evaluacion\/quiz/, 'Quiz'],
+  [/^\/aula\/(curso\/\d+|curso-[^/]+)\/evaluacion\/actividad/, 'Actividad'],
+  [/^\/aula\/(curso\/\d+|curso-[^/]+)\/evaluacion\/foro/, 'Foro'],
+  [/^\/aula\/(curso\/\d+|curso-[^/]+)\/evaluacion/, 'Evaluación'],
+  [/^\/aula\/docente\/curso/, 'Curso · Docencia'],
+  [/^\/aula\/docente\/entrega/, 'Revisar entrega'],
+  [/^\/aula\/docente\/foro/, 'Revisar foro'],
+  [/^\/aula\/docente/, 'Docencia'],
   [/^\/aula\/(curso\/\d+|curso-[^/]+)\/clase/, 'Clase'],
   [/^\/aula\/(curso\/\d+|curso-[^/]+)\/recursos/, 'Recursos del curso'],
   [/^\/aula\/(curso\/\d+|curso-[^/]+)\/certificado/, 'Certificado'],
@@ -89,12 +112,15 @@ function DocumentMeta() {
 /** Mismo contenido (p. ej. Mi cuenta) dentro del marco de cada rol. */
 function RoleShell() {
   const { user } = useAulaSession();
-  return user.role === 'admin' ? <AdminShell /> : <ParticipantShell />;
+  if (user.role === 'admin') return <AdminShell />;
+  if (user.role === 'docente') return <DocenteShell />;
+  return <ParticipantShell />;
 }
 
 function Home() {
   const { user } = useAulaSession();
   if (user.role === 'admin') return <Navigate to="/aula/admin" replace />;
+  if (user.role === 'docente') return <Navigate to="/aula/docente" replace />;
   return <MiAula />;
 }
 
@@ -104,7 +130,7 @@ function NotFoundInAula() {
     <EmptyState
       title="Esta página no existe"
       description="Puede que el enlace esté incompleto o que la sección se haya movido."
-      action={<Button to={user?.role === 'admin' ? '/aula/admin' : '/aula'}>Ir al inicio del aula</Button>}
+      action={<Button to={homeFor(user)}>Ir al inicio del aula</Button>}
     />
   );
 }
@@ -140,6 +166,7 @@ export default function AulaApp() {
             <Route path="participantes" element={<Participantes />} />
             <Route path="participantes/importar" element={<Importar />} />
             <Route path="participantes/:id" element={<ParticipanteDetalle />} />
+            <Route path="seguimiento" element={fullPage(<Seguimiento />)} />
             <Route path="cursos" element={<Cursos />} />
             <Route path="cursos/:id" element={<CursoLayout />}>
               <Route index element={<Contenido />} />
@@ -148,6 +175,7 @@ export default function AulaApp() {
               <Route path="reglas" element={<Reglas />} />
               <Route path="recursos" element={<Recursos />} />
               <Route path="participantes" element={<ParticipantesCurso />} />
+              <Route path="docentes" element={<DocentesCurso />} />
               <Route path="versiones" element={<Versiones />} />
               <Route path="*" element={<NotFoundInAula />} />
             </Route>
@@ -160,6 +188,14 @@ export default function AulaApp() {
           {/* Vista previa a pantalla completa, como la vería un participante. */}
           <Route path="admin/cursos/:id/vista-previa" element={<RequireAula role="admin">{fullPage(<VistaPrevia />)}</RequireAula>} />
           <Route path="admin/cursos/:id/vista-previa/:lessonId" element={<RequireAula role="admin">{fullPage(<VistaPrevia />)}</RequireAula>} />
+
+          <Route path="docente" element={<RequireAula roles={['docente', 'admin']}><DocenteShell /></RequireAula>}>
+            <Route index element={fullPage(<DocenteCursos />)} />
+            <Route path="curso/:courseId" element={fullPage(<DocenteCurso />)} />
+            <Route path="entrega/:submissionId" element={fullPage(<DocenteEntrega />)} />
+            <Route path="foro/:forumId" element={fullPage(<DocenteForo />)} />
+            <Route path="*" element={<NotFoundInAula />} />
+          </Route>
 
           {/* Curso del participante a pantalla completa, por su nombre
               (/aula/curso-de-…). La dirección vieja por id lleva a esa. */}
@@ -180,3 +216,4 @@ export default function AulaApp() {
     </AulaSessionProvider>
   );
 }
+

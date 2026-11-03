@@ -1,3 +1,5 @@
+import { edvantaCourseImageBySlug } from './courseImages';
+
 export const featuredCourses = [
   {
     slug: 'gestion-de-calidad',
@@ -11,7 +13,7 @@ export const featuredCourses = [
     modality: '100% virtual',
     accent: 'teal',
     icon: 'shield',
-    image: null,
+    image: edvantaCourseImageBySlug('gestion-de-calidad'),
     shortDescription: 'Aprende los fundamentos de los sistemas de gestión de calidad, enfoque por procesos, indicadores, riesgos y mejora continua.',
     description: 'Este curso es una base sólida para personas que quieren entender cómo se organiza, controla y mejora un sistema de gestión de calidad dentro de una organización.',
     audience: [
@@ -47,7 +49,7 @@ export const featuredCourses = [
     modality: '100% virtual',
     accent: 'gold',
     icon: 'chart',
-    image: null,
+    image: edvantaCourseImageBySlug('power-bi'),
     shortDescription: 'Aprende a transformar datos, construir visualizaciones e interpretar indicadores para apoyar decisiones profesionales.',
     description: 'Power BI es una habilidad práctica para perfiles administrativos, comerciales, financieros, de calidad y operaciones que necesitan convertir datos en reportes claros.',
     audience: [
@@ -83,7 +85,7 @@ export const featuredCourses = [
     modality: '100% virtual',
     accent: 'teal',
     icon: 'clipboard',
-    image: null,
+    image: edvantaCourseImageBySlug('auditoria'),
     shortDescription: 'Desarrolla bases para planificar auditorías, recolectar evidencias, redactar hallazgos y hacer seguimiento.',
     description: 'La auditoría es una competencia transversal para validar procesos, evidencias y cumplimiento en sistemas de gestión, operaciones y servicios.',
     audience: [
@@ -119,7 +121,7 @@ export const featuredCourses = [
     modality: '100% virtual',
     accent: 'green',
     icon: 'leaf',
-    image: null,
+    image: edvantaCourseImageBySlug('gestion-ambiental'),
     shortDescription: 'Fortalece bases para identificar impactos ambientales, gestionar residuos, cumplir requisitos y mejorar prácticas sostenibles.',
     description: 'La gestión ambiental ayuda a organizaciones y profesionales a reducir impactos, ordenar responsabilidades y tomar decisiones más sostenibles.',
     audience: [
@@ -155,7 +157,7 @@ export const featuredCourses = [
     modality: '100% virtual',
     accent: 'orange',
     icon: 'shield',
-    image: null,
+    image: edvantaCourseImageBySlug('seguridad-y-salud-en-el-trabajo'),
     shortDescription: 'Aprende conceptos de prevención, identificación de peligros, evaluación de riesgos y promoción de ambientes laborales seguros.',
     description: 'La seguridad y salud en el trabajo es clave para prevenir incidentes, proteger equipos y fortalecer la cultura preventiva en organizaciones.',
     audience: [
@@ -191,7 +193,7 @@ export const featuredCourses = [
     modality: '100% virtual',
     accent: 'blue',
     icon: 'map',
-    image: null,
+    image: edvantaCourseImageBySlug('gestion-de-proyectos'),
     shortDescription: 'Aprende fundamentos para definir objetivos, planificar tiempos y recursos, gestionar riesgos y coordinar entregables.',
     description: 'La gestión de proyectos permite convertir ideas en resultados medibles mediante planificación, seguimiento, comunicación y control de avances.',
     audience: [
@@ -227,7 +229,7 @@ export const featuredCourses = [
     modality: '100% virtual',
     accent: 'teal',
     icon: 'trendUp',
-    image: null,
+    image: edvantaCourseImageBySlug('lean'),
     shortDescription: 'Comprende principios Lean, desperdicios, flujo de valor, eficiencia y mejora continua aplicada a procesos.',
     description: 'Lean ayuda a detectar actividades que no agregan valor, ordenar procesos y mejorar la forma en que una organización entrega resultados.',
     audience: [
@@ -263,7 +265,7 @@ export const featuredCourses = [
     modality: '100% virtual',
     accent: 'purple',
     icon: 'activity',
-    image: null,
+    image: edvantaCourseImageBySlug('lean-six-sigma'),
     shortDescription: 'Aprende a aplicar Lean Six Sigma para reducir desperdicios, analizar variabilidad y mejorar procesos con datos.',
     description: 'Lean Six Sigma combina mejora de flujo, análisis de datos y metodología DMAIC para resolver problemas de proceso con evidencia.',
     audience: [

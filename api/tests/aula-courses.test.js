@@ -17,6 +17,19 @@ describe('aula · texto enriquecido y enlaces', () => {
     expect(sanitizeRichText('<p> &nbsp; </p><p><br></p>')).toBe('');
   });
 
+  it('permite tablas y desplegables, y sigue eliminando scripts', () => {
+    const html = '<table><caption>Mapa</caption><tr><th scope="col">A</th><td colspan="2">B</td></tr></table>'
+      + '<details open><summary>Ver</summary><p>Solución</p><script>alert(1)</script></details>';
+    const clean = sanitizeRichText(html);
+    expect(clean).toContain('<table>');
+    expect(clean).toContain('<caption>Mapa</caption>');
+    expect(clean).toContain('scope="col"');
+    expect(clean).toContain('colspan="2"');
+    expect(clean).toContain('<details open>');
+    expect(clean).toContain('<summary>Ver</summary>');
+    expect(clean).not.toContain('<script');
+  });
+
   it('reconoce videos y presentaciones de proveedores permitidos', () => {
     expect(parseVideoUrl('https://www.youtube.com/watch?v=dQw4w9WgXcQ&t=10')).toEqual({ provider: 'youtube', videoId: 'dQw4w9WgXcQ' });
     expect(parseVideoUrl('https://youtu.be/dQw4w9WgXcQ')).toEqual({ provider: 'youtube', videoId: 'dQw4w9WgXcQ' });

@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef, useState } from 'react';
+﻿import { useLayoutEffect, useRef, useState } from 'react';
 import { fileUrl, get, patch, post } from '../../api';
 import { useAsync } from '../../hooks';
 import { Button } from '../../ui/Button';
@@ -231,12 +231,18 @@ export function UserFormModal({ open, onClose, user, defaultCompanyId, defaultGr
       role: user?.role || 'participant',
       companyId: String(user?.companyId ?? defaultCompanyId ?? ''),
       groupIds: defaultGroupId ? [Number(defaultGroupId)] : [],
+      segmento: user?.segmento || 'sin_clasificar',
+      crmTags: (user?.crmTags || []).join(', '),
+      crmSource: user?.crmSource || '',
+      crmNotes: user?.crmNotes || '',
       sendInvite: true,
     });
   }, [open, user, defaultCompanyId, defaultGroupId, setError]);
 
   const set = (key) => (e) => setForm({ ...form, [key]: e.target.value });
   const isAdmin = form.role === 'admin';
+  const isDocente = form.role === 'docente';
+  const isStaff = isAdmin || isDocente;
   const toggleGroup = (id) => setForm((f) => ({
     ...f, groupIds: f.groupIds.includes(id) ? f.groupIds.filter((g) => g !== id) : [...f.groupIds, id],
   }));
@@ -245,7 +251,11 @@ export function UserFormModal({ open, onClose, user, defaultCompanyId, defaultGr
     e.preventDefault();
     const body = {
       firstName: form.firstName, lastName: form.lastName, email: form.email, jobTitle: form.jobTitle,
-      role: form.role, companyId: isAdmin || !form.companyId ? null : Number(form.companyId),
+      role: form.role, companyId: isStaff || !form.companyId ? null : Number(form.companyId),
+      segmento: form.segmento,
+      crmTags: String(form.crmTags || '').split(',').map((t) => t.trim()).filter(Boolean),
+      crmSource: form.crmSource,
+      crmNotes: form.crmNotes,
     };
     const problems = checkForm([
       ['firstName', isBlank(form.firstName), 'El nombre es obligatorio.'],
@@ -261,7 +271,7 @@ export function UserFormModal({ open, onClose, user, defaultCompanyId, defaultGr
       // sabía hasta que preguntaba.
       const correo = String(form.email).trim();
       run(async () => {
-        const res = await post('/admin/users', { ...body, groupIds: isAdmin ? [] : form.groupIds, sendInvite: form.sendInvite });
+        const res = await post('/admin/users', { ...body, groupIds: isStaff ? [] : form.groupIds, sendInvite: form.sendInvite });
         return { ...res.user, __invitacionEnviada: res.invitationSent };
       }, (creado) => {
         if (!form.sendInvite) return 'Cuenta creada sin enviar invitación.';
@@ -288,11 +298,15 @@ export function UserFormModal({ open, onClose, user, defaultCompanyId, defaultGr
         hint={user ? 'Si cambias el correo, la persona entrará con el nuevo.' : undefined} />
       <div className="grid gap-4 sm:grid-cols-2">
         <Select label="Rol" value={form.role || 'participant'} onChange={set('role')} error={fields.role}
-          options={[{ value: 'participant', label: 'Participante' }, { value: 'admin', label: 'Administrador de Edvanta' }]} />
+          options={[{ value: 'participant', label: 'Participante' }, { value: 'docente', label: 'Docente' }, { value: 'admin', label: 'Administrador de Edvanta' }]} />
         <TextInput label="Cargo" value={form.jobTitle || ''} error={fields.jobTitle} onChange={set('jobTitle')} />
       </div>
-      {isAdmin ? (
-        <Alert tone="warning">Un administrador controla todo el aula: cursos, personas, notas y reportes de todas las empresas.</Alert>
+      {isStaff ? (
+        <Alert tone={isAdmin ? 'warning' : 'info'}>
+          {isAdmin
+            ? 'Un administrador controla todo el aula: cursos, personas, notas y reportes de todas las empresas.'
+            : 'Un docente solo entra a los cursos donde la administración lo asigne. No ve cursos ni estudiantes de otros docentes.'}
+        </Alert>
       ) : (
         <>
           <Select label="Empresa" value={form.companyId || ''} onChange={(e) => setForm({ ...form, companyId: e.target.value, groupIds: [] })}
@@ -310,7 +324,28 @@ export function UserFormModal({ open, onClose, user, defaultCompanyId, defaultGr
           )}
         </>
       )}
-      {!user && (
+      <fieldset className="flex flex-col gap-4 rounded-[var(--aula-radius)] border border-[var(--aula-border)] bg-[var(--aula-surface-muted)] p-4">
+        <legend className="px-1 text-sm font-bold">Clasificación CRM</legend>
+        <div className="grid gap-4 sm:grid-cols-2">
+          <Select label="Segmento" value={form.segmento || 'sin_clasificar'} onChange={set('segmento')}
+            options={[
+              { value: 'sin_clasificar', label: 'Sin clasificar' },
+              { value: 'profesional_salud', label: 'Profesional de salud' },
+              { value: 'estudiante', label: 'Estudiante' },
+              { value: 'paciente', label: 'Paciente / cuidador' },
+              { value: 'empresa', label: 'Empresa' },
+              { value: 'docente', label: 'Docente' },
+              { value: 'aliado', label: 'Aliado' },
+              { value: 'otro', label: 'Otro' },
+            ]} />
+          <TextInput label="Etiquetas" value={form.crmTags || ''} onChange={set('crmTags')}
+            hint="Sepáralas con comas. Ej.: diabetes, empresa, cohorte-2026." />
+        </div>
+        <TextInput label="Origen" value={form.crmSource || ''} onChange={set('crmSource')}
+          hint="De dónde llegó: campaña, referido, formulario, empresa." />
+        <TextArea label="Notas internas" rows={3} value={form.crmNotes || ''} onChange={set('crmNotes')}
+          hint="Solo las ve la administración." />
+      </fieldset>      {!user && (
         <Checkbox
           label="Enviar invitación por correo ahora"
           description="La persona recibe un enlace para crear su contraseña. Vence en 7 días; puedes reenviarlo."
@@ -321,3 +356,6 @@ export function UserFormModal({ open, onClose, user, defaultCompanyId, defaultGr
     </FormModal>
   );
 }
+
+
+

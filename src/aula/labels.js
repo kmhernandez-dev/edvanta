@@ -1,4 +1,4 @@
-/** Etiquetas y tonos de los estados del aula. */
+﻿/** Etiquetas y tonos de los estados del aula. */
 
 export const ENROLLMENT_STATUS = {
   invitado: { label: 'Invitado', tone: 'neutral', description: 'Aún no activó su cuenta.' },
@@ -36,7 +36,7 @@ export const USER_STATUS = {
   suspended: { label: 'Suspendida', tone: 'danger' },
 };
 
-export const ROLE_LABEL = { admin: 'Administrador', participant: 'Participante' };
+export const ROLE_LABEL = { admin: 'Administrador', participant: 'Participante', docente: 'Docente' };
 
 const CALENDAR_DATE = /^\d{4}-\d{2}-\d{2}$/;
 
