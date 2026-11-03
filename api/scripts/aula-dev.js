@@ -51,9 +51,10 @@ const db = fromPglite(pglite);
 await pglite.exec('CREATE TABLE IF NOT EXISTS _migrations (name TEXT PRIMARY KEY, run_at TIMESTAMPTZ NOT NULL DEFAULT NOW())');
 const done = new Set((await pglite.query('SELECT name FROM _migrations')).rows.map((r) => r.name));
 const migrationsDir = path.join(apiDir, 'migrations');
-// El aula local también aplica la capa pedagógica de BPM y su política de
-// nota. Así se puede probar el recorrido completo sin PostgreSQL.
-const pedagogiaDev = /^\d+_aula_.*\.sql$|^005_courses\.sql$|^063_pedagogia_bpm\.sql$|^064_pedagogia_funcional\.sql$|^065_aula_crm_clasificacion\.sql$/;
+// El aula local también aplica las capas pedagógicas privadas (BPM, BPE)
+// cuando existen en disco, y la política de nota. Así se puede probar el
+// recorrido completo sin PostgreSQL.
+const pedagogiaDev = /^\d+_aula_.*\.sql$|^005_courses\.sql$|^063_pedagogia_bpm\.sql$|^064_pedagogia_funcional\.sql$|^065_aula_crm_clasificacion\.sql$|^067_pedagogia_bpe\.sql$/;
 for (const file of (await readdir(migrationsDir)).filter((f) => pedagogiaDev.test(f)).sort()) {
   if (done.has(file)) continue;
   await pglite.exec(cleanMigrationSql(await readFile(path.join(migrationsDir, file), 'utf8')));

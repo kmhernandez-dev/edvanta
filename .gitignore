@@ -43,3 +43,9 @@ contenido/aula/bpm/
 api/migrations/063_pedagogia_bpm.sql
 api/tests/bpm-pedagogia.test.js
 docs/auditoria-aula/bpm-vista-previa.html
+
+# Contenido BPE privado (lote 2): mismas razones que BPM.
+contenido/aula/bpe/
+api/migrations/067_pedagogia_bpe.sql
+api/tests/bpe-pedagogia.test.js
+docs/auditoria-aula/bpe-vista-previa.html
