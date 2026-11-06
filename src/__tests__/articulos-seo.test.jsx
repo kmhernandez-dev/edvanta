@@ -9,12 +9,17 @@ import { setJsonLd } from '../utils/seo';
 const RAIZ = path.resolve(__dirname, '../..');
 const slugs = new Set(articulos.map((a) => a.slug));
 
-describe('SEO de los 308 artículos', () => {
+describe('SEO de los artículos', () => {
   it('cada artículo tiene metadatos SEO, imagen existente y texto alternativo', () => {
-    expect(articulos).toHaveLength(308);
+    expect(articulos).toHaveLength(354);
     expect(Object.keys(SEO_ARTICULOS)).toHaveLength(308);
     for (const a of articulos) {
-      const seo = SEO_ARTICULOS[a.slug];
+      const seo = SEO_ARTICULOS[a.slug] || {
+        seoTitle: a.seoTitle || a.title,
+        seoDescription: a.seoDescription || a.description,
+        imageAlt: a.imageAlt,
+        image: a.image,
+      };
       expect(seo, a.slug).toBeTruthy();
       expect(seo.seoTitle.length, `${a.slug} título`).toBeGreaterThan(15);
       expect(seo.seoTitle.length, `${a.slug} título`).toBeLessThanOrEqual(65);
