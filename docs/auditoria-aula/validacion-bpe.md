@@ -5,7 +5,7 @@ Paquete: **Buenas Prácticas de Elaboración (BPE) y Preparaciones Magistrales**
 - **Errores:** 0
 - **Avisos:** 0
 - **Pesos:** actividades 60 % · quizzes 30 % · foros 10 % · total 100 %
-- **Estructura:** 3 unidades · 9 clases · 3 quizzes (12 preguntas) · 3 foros · 3 actividades
+- **Estructura:** 3 unidades · 9 clases · 3 quizzes (12 preguntas) · 4 foros · 5 actividades
 
 ## Clases
 
@@ -33,6 +33,7 @@ Paquete: **Buenas Prácticas de Elaboración (BPE) y Preparaciones Magistrales**
 
 - Clase sin video principal: 1.500–2.200 palabras renderizadas, dos ejemplos resueltos y práctica adicional.
 - Clase con video principal: 1.000–1.500 palabras y un ejemplo resuelto.
-- Quizzes de 4 preguntas × 4 opciones, una correcta, retroalimentación por opción y al menos 2 de nivel Aplicar o Analizar.
-- Actividades con rúbrica de 4 a 6 criterios que suman 100 y niveles 4 a 0; foros con rúbrica que suma 100 y guía privada.
+- Quizzes de 4 preguntas × 4 opciones, una correcta, retroalimentación por opción, en orden ascendente de Bloom y hasta el nivel Evaluar.
+- Una actividad por unidad basada en un caso (título, caso, instrucciones paso a paso con nivel de Bloom y rúbrica de 4 a 6 criterios que suman 100) y un proyecto integrador sobre un solo caso que se desarrolla a lo largo del curso; máximo 5 actividades.
+- Un foro de bienvenida sin nota y un foro de interacción por unidad, con caso, rúbrica que suma 100 y guía privada de moderación.
 - Solo etiquetas y atributos que admite el sanitizador del aula.

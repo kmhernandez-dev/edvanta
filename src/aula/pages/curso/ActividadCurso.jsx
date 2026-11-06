@@ -139,11 +139,12 @@ export default function ActividadCurso() {
               {state.graded && <Badge tone="success">Nota {Number(state.score100).toFixed(1)}/100</Badge>}
               {activity.dueAt && <span className="text-xs text-[var(--aula-muted)]">Fecha límite: {fmtDate(activity.dueAt)}</span>}
             </div>
-            <RichText html={activity.instructionsHtml} className="mt-3" />
-            {activity.caseHtml && <RichText html={activity.caseHtml} className="mt-4" />}
+            {/* Orden de la consigna: caso de estudio, instrucciones, entrega y rúbrica. */}
+            {activity.caseHtml && <RichText html={activity.caseHtml} className="mt-3" />}
+            <RichText html={activity.instructionsHtml} className={activity.caseHtml ? 'mt-4' : 'mt-3'} />
             {activity.pointsToSolve?.length > 0 && (
               <div className="mt-4">
-                <h2 className="text-sm font-bold">Puntos a resolver</h2>
+                <h2 className="text-sm font-bold">Qué debe contener tu entrega</h2>
                 <ol className="mt-2 list-decimal space-y-1 pl-5 text-sm">
                   {activity.pointsToSolve.map((point, index) => <li key={index}>{point}</li>)}
                 </ol>

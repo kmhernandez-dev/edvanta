@@ -49,6 +49,7 @@ const unidadDe = (id) => {
 const ETIQUETAS = new Set(['p', 'br', 'strong', 'em', 'u', 's', 'code', 'pre', 'blockquote', 'ul', 'ol', 'li', 'hr', 'h2', 'h3', 'h4', 'a', 'article', 'section', 'table', 'caption', 'thead', 'tbody', 'tfoot', 'tr', 'th', 'td', 'figure', 'figcaption', 'details', 'summary', 'dl', 'dt', 'dd', 'abbr', 'sup', 'sub', 'mark', 'small']);
 const ATRIBUTOS = { a: ['href', 'target', 'rel'], ol: ['start'], th: ['scope', 'colspan', 'rowspan'], td: ['colspan', 'rowspan'], details: ['open'] };
 const TIPOS = ['conceptual', 'procedimental', 'analitica', 'mixta'];
+const BLOOM = ['Recordar', 'Comprender', 'Aplicar', 'Analizar', 'Evaluar', 'Crear'];
 
 function revisarHtml(html, donde, errores) {
   if (/<script|\son[a-z]+\s*=|javascript:/i.test(html)) errores.push(`${donde}: contiene HTML o URL no permitida.`);
@@ -142,6 +143,12 @@ function validar() {
     if (q.preguntas.length !== 4) errores.push(`${q.id}: debe tener exactamente 4 preguntas.`);
     const altos = q.preguntas.filter((p) => /Aplicar|Analizar|Evaluar|Crear/.test(p.nivel)).length;
     if (altos < 2) errores.push(`${q.id}: al menos 2 preguntas deben ser de nivel Aplicar o Analizar.`);
+    // Taxonomía de Bloom: las preguntas suben de nivel y el quiz llega al
+    // menos a evaluar.
+    const orden = q.preguntas.map((p) => BLOOM.indexOf(p.nivel));
+    if (orden.some((x, i) => i > 0 && x < orden[i - 1])) errores.push(`${q.id}: las preguntas deben ir de menor a mayor nivel de Bloom.`);
+    if (new Set(orden).size < 3) errores.push(`${q.id}: debe cubrir al menos 3 niveles de Bloom.`);
+    if (Math.max(...orden) < BLOOM.indexOf('Evaluar')) errores.push(`${q.id}: debe llegar al nivel Evaluar.`);
     for (const p of q.preguntas) {
       addId(p.id, 'pregunta');
       if (!LECCIONES.some((l) => l.id === p.clase)) errores.push(`${p.id}: la clase ${p.clase} no existe.`);
@@ -161,25 +168,40 @@ function validar() {
   const totalPreguntas = posiciones.length;
   if (largas > totalPreguntas * 0.6) avisos.push(`En ${largas} de ${totalPreguntas} preguntas la opción correcta es la más larga: revisa la longitud de los distractores.`);
 
+  const bienvenida = FOROS.filter((f) => f.tipo === 'bienvenida');
+  if (bienvenida.length !== 1) errores.push(`Debe haber exactamente un foro de bienvenida (hay ${bienvenida.length}).`);
   for (const f of FOROS) {
     addId(f.id, 'foro');
     for (const k of ['proposito', 'caso', 'preguntaCentral', 'requisitos', 'extension', 'respuestas', 'reglas', 'criterios', 'alternativa', 'moderacion']) {
       if (!f[k]) errores.push(`${f.id}: falta ${k}.`);
     }
+    if (!(f.bloom || []).every((b) => BLOOM.includes(b)) || !f.bloom?.length) errores.push(`${f.id}: falta el nivel de Bloom.`);
     if (f.preguntasProfundizacion.length < 2 || f.preguntasProfundizacion.length > 3) errores.push(`${f.id}: debe tener 2 o 3 preguntas de profundización.`);
-    const suma = f.rubrica.reduce((n, r) => n + r.peso, 0);
-    if (Math.abs(suma - 100) > 0.01) errores.push(`${f.id}: la rúbrica suma ${suma}, no 100.`);
-    if (f.rubrica.length < 3) errores.push(`${f.id}: la rúbrica debe tener al menos 3 criterios.`);
+    if (f.tipo === 'bienvenida') {
+      if (!f.titulo.startsWith('Foro de bienvenida')) errores.push(`${f.id}: el título debe empezar por «Foro de bienvenida».`);
+      if (f.peso) errores.push(`${f.id}: el foro de bienvenida no lleva nota.`);
+    } else {
+      if (f.tipo !== 'interaccion' || !f.titulo.startsWith('Foro de interacción')) errores.push(`${f.id}: debe ser un «Foro de interacción».`);
+      const suma = f.rubrica.reduce((n, r) => n + r.peso, 0);
+      if (Math.abs(suma - 100) > 0.01) errores.push(`${f.id}: la rúbrica suma ${suma}, no 100.`);
+      if (f.rubrica.length < 3) errores.push(`${f.id}: la rúbrica debe tener al menos 3 criterios.`);
+    }
     for (const r of f.rubrica) for (const k of ['nivel4', 'nivel3', 'nivel2', 'nivel1', 'nivel0']) if (!r[k]) errores.push(`${f.id}: ${r.criterio} no describe ${k}.`);
     const publico = renderForoDescripcion(f) + renderForoParticipacion(f) + renderForoReglas(f) + f.alternativa;
     if (publico.includes(f.moderacion.slice(20, 80))) errores.push(`${f.id}: la guía de moderación aparece en el texto del estudiante.`);
     revisarHtml(publico, f.id, errores);
   }
 
+  const deUnidad = ACTIVIDADES.filter((a) => !a.unidades || a.unidades.length === 1);
+  const deProyecto = ACTIVIDADES.filter((a) => a.unidades?.length > 1);
+  if (deUnidad.length !== UNIDADES.length) errores.push(`Debe haber una actividad por unidad (hay ${deUnidad.length} para ${UNIDADES.length} unidades).`);
+  if (!deProyecto.length) errores.push('Falta el proyecto integrador que se desarrolla a lo largo del curso.');
   for (const a of ACTIVIDADES) {
     addId(a.id, 'actividad');
-    for (const k of ['caso', 'producto', 'extension', 'anexos', 'tiempo', 'modalidad', 'fuentes', 'ia', 'guiaDocente']) if (!a[k]) errores.push(`${a.id}: falta ${k}.`);
+    for (const k of ['titulo', 'caso', 'producto', 'extension', 'anexos', 'tiempo', 'modalidad', 'fuentes', 'ia', 'guiaDocente']) if (!a[k]) errores.push(`${a.id}: falta ${k}.`);
     if (!a.puntos?.length) errores.push(`${a.id}: faltan los puntos a resolver.`);
+    if ((a.pasos || []).length < 5) errores.push(`${a.id}: las instrucciones paso a paso deben tener al menos 5 pasos.`);
+    if (!a.bloom?.length || !a.bloom.every((b) => BLOOM.includes(b))) errores.push(`${a.id}: falta el nivel de Bloom.`);
     if (!a.etiquetas?.includes('Caso ficticio')) errores.push(`${a.id}: el caso debe declararse ficticio.`);
     if (a.rubrica.length < 4 || a.rubrica.length > 6) errores.push(`${a.id}: la rúbrica debe tener entre 4 y 6 criterios.`);
     const suma = a.rubrica.reduce((n, r) => n + r.peso, 0);
@@ -220,8 +242,9 @@ function validar() {
     '',
     '- Clase sin video principal: 1.500–2.200 palabras renderizadas, dos ejemplos resueltos y práctica adicional.',
     '- Clase con video principal: 1.000–1.500 palabras y un ejemplo resuelto.',
-    '- Quizzes de 4 preguntas × 4 opciones, una correcta, retroalimentación por opción y al menos 2 de nivel Aplicar o Analizar.',
-    '- Actividades con rúbrica de 4 a 6 criterios que suman 100 y niveles 4 a 0; foros con rúbrica que suma 100 y guía privada.',
+    '- Quizzes de 4 preguntas × 4 opciones, una correcta, retroalimentación por opción, en orden ascendente de Bloom y hasta el nivel Evaluar.',
+    '- Una actividad por unidad basada en un caso (título, caso, instrucciones paso a paso con nivel de Bloom y rúbrica de 4 a 6 criterios que suman 100) y un proyecto integrador sobre un solo caso que se desarrolla a lo largo del curso; máximo 5 actividades.',
+    '- Un foro de bienvenida sin nota y un foro de interacción por unidad, con caso, rúbrica que suma 100 y guía privada de moderación.',
     '- Solo etiquetas y atributos que admite el sanitizador del aula.',
     '',
   ].join('\n');
@@ -268,6 +291,34 @@ const moduloSql = (u) => `
   IF v_unidad IS NULL THEN
     RAISE EXCEPTION 'No existe la unidad ${u.UNIDAD.numero} (${u.UNIDAD.titulo.replaceAll("'", "''")}).';
   END IF;`;
+
+// Foro de bienvenida: de todo el curso, formativo, sin nota ni rúbrica.
+function foroBienvenidaSql(f) {
+  const alternativa = sqlString(`Si aún no hay compañeros: ${f.alternativa}`);
+  return `
+  -- ── Foro ${f.id} (bienvenida) ───────────────────────────
+  SELECT id INTO v_foro FROM aula_forums
+   WHERE course_id = v_curso AND title = ${sqlString(f.titulo)} AND deleted_at IS NULL LIMIT 1;
+  IF v_foro IS NULL THEN
+    INSERT INTO aula_forums
+      (course_id, module_id, scope, title, purpose, description, central_question, guiding_questions,
+       participation_html, rules_html, no_participants_alternative, grading_method, weight, rubric,
+       is_closed, allow_attachments, status, sort_order)
+    VALUES
+      (v_curso, NULL, 'curso', ${sqlString(f.titulo)}, ${sqlString(f.proposito)}, ${html(renderForoDescripcion(f))},
+       ${sqlString(f.preguntaCentral)}, ${sqlArray(f.preguntasProfundizacion)}, ${html(renderForoParticipacion(f))},
+       ${html(renderForoReglas(f))}, ${alternativa}, 'formativa', NULL, NULL, FALSE, FALSE, 'borrador', 0)
+    RETURNING id INTO v_foro;
+  ELSE
+    UPDATE aula_forums
+       SET module_id = NULL, scope = 'curso', purpose = ${sqlString(f.proposito)}, description = ${html(renderForoDescripcion(f))},
+           central_question = ${sqlString(f.preguntaCentral)}, guiding_questions = ${sqlArray(f.preguntasProfundizacion)},
+           participation_html = ${html(renderForoParticipacion(f))}, rules_html = ${html(renderForoReglas(f))},
+           no_participants_alternative = ${alternativa}, sort_order = 0, updated_at = NOW()
+     WHERE id = v_foro;
+  END IF;
+`;
+}
 
 function migracion() {
   const politica = { version: 1, components: { activities: CURSO.pesos.actividades, quizzes: CURSO.pesos.quizzes, forums: CURSO.pesos.foros }, rounding: 'half_up' };
@@ -454,8 +505,10 @@ ${p.opciones.map((o, k) => `    INSERT INTO aula_question_options (question_id, 
   }
 
   for (const a of ACTIVIDADES) {
-    const u = unidadDe(a.id);
-    const n = u.UNIDAD.numero;
+    // Las entregas del proyecto declaran su unidad; van después de la
+    // actividad de esa unidad.
+    const u = a.unidad ? UNIDADES.find((x) => x.UNIDAD.numero === a.unidad) : unidadDe(a.id);
+    const n = u.UNIDAD.numero + (a.unidades?.length > 1 ? 10 : 0);
     const campos = {
       instructions: html(renderActividadInstrucciones(a)),
       caso: html(renderActividadCaso(a)),
@@ -498,6 +551,10 @@ ${p.opciones.map((o, k) => `    INSERT INTO aula_question_options (question_id, 
   }
 
   for (const f of FOROS) {
+    if (f.tipo === 'bienvenida') {
+      b.push(foroBienvenidaSql(f));
+      continue;
+    }
     const u = unidadDe(f.id);
     const n = u.UNIDAD.numero;
     const c = {
@@ -573,6 +630,13 @@ ${quiz(u.QUIZ)}
 <section><h2>${esc(u.FORO.titulo)} <small>(peso ${u.FORO.peso} %)</small></h2>${renderForo(u.FORO)}<div class="docente"><h3>Guía de moderación (reservada)</h3>${u.FORO.moderacion}</div></section>
 ${u.ACTIVIDAD ? `<section><h2>${esc(u.ACTIVIDAD.titulo)} <small>(peso ${u.ACTIVIDAD.peso} %)</small></h2>${renderActividad(u.ACTIVIDAD)}<div class="docente">${renderGuiaDocente(u.ACTIVIDAD)}</div></section>` : ''}`).join('\n');
 
+  const bienvenida = FOROS.filter((f) => f.tipo === 'bienvenida').map((f) => `
+<h1>${esc(f.titulo)}</h1>
+<section>${renderForo(f)}<div class="docente"><h3>Guía de moderación (reservada)</h3>${f.moderacion}</div></section>`).join('\n');
+  const proyecto = ACTIVIDADES.filter((a) => a.unidades?.length > 1).map((a) => `
+<h1>${esc(a.titulo)} <small>(peso ${a.peso} %)</small></h1>
+<section>${renderActividad(a)}<div class="docente">${renderGuiaDocente(a)}</div></section>`).join('\n');
+
   const pagina = `<!doctype html>
 <html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>${esc(CURSO.tituloCorto)} · vista previa docente</title>
@@ -589,7 +653,9 @@ figure{margin:16px 0;padding:12px;border-left:4px solid #6b7bb5;background:#f4f6
 <h1>${esc(CURSO.titulo)}</h1>
 <p class="meta">Versión ${CURSO.version} · ${CURSO.fecha} · ${LECCIONES.length} clases · ${QUIZZES.length} quizzes · ${FOROS.length} foros · ${ACTIVIDADES.length} actividades</p>
 ${renderCurso(CURSO)}
+${bienvenida}
 ${cuerpo}
+${proyecto}
 </body></html>`;
   const destino = path.join(raiz, 'docs', 'auditoria-aula', PAQUETE.vistaPrevia);
   mkdirSync(path.dirname(destino), { recursive: true });

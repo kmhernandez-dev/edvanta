@@ -101,10 +101,12 @@ Curso: **Buenas Prácticas de Elaboración (BPE) y Preparaciones Magistrales** (
 | Clases | 9, todas **sin video principal**: 1.527–1.946 palabras renderizadas; cada una con caso, 2 ejemplos resueltos, figura, mapa, errores, práctica y práctica adicional con solución, síntesis y 4–5 fuentes |
 | Tipos | 1 conceptual · 3 procedimentales · 3 analíticas · 2 mixtas |
 | Videos complementarios | 2: EFEsalud `QCGnnSDFgk0` (clase 1, tramo 3:10–5:40, contexto español) y Hospital Departamental de Villavicencio `9dEGNB5MlsA` (clase 9, tramo 2:13–4:39, con advertencia sobre su confusión entre «serio» e «inesperado»). Se revisó su transcripción automática en el navegador; no se afirma haberlos reproducido completos |
-| Quizzes | 3 × 4 preguntas × 4 opciones (12 y 48); 11 de 12 en nivel Aplicar o Analizar; retroalimentación por opción; la clave ya no es siempre la opción más larga |
-| Actividades | 3 (dictamen de admisión; guía, registro y etiqueta; plan de calidad y respuesta a una queja), rúbricas de 5 criterios con niveles 4–0, guía docente en `teacher_guide_html` |
+| Quizzes | 3 × 4 preguntas × 4 opciones (12 y 48), **en progresión de Bloom**: comprender → aplicar → analizar → evaluar; retroalimentación por opción; la clave no es siempre la opción más larga |
+| Actividades | 3 de unidad basadas en un caso (dictamen de admisión; guía, registro y etiqueta; plan de calidad y respuesta a una queja), con título, caso, instrucciones paso a paso, nivel de Bloom, rúbrica de 5 criterios y guía docente en `teacher_guide_html` |
+| Proyecto integrador | Un solo caso a lo largo del curso (servicio de magistrales de la Clínica Montesol, ficticia) en 2 entregas: avance (unidades 1–2, 8 %) y final (16 %) |
+| Foros | 1 **foro de bienvenida** (curso, formativo, sin nota) y 3 **foros de interacción** (uno por unidad, con caso y rúbrica) |
 | Foros | 3, con propósito, pregunta central, 3 preguntas de profundización, alternativa sin participantes y rúbrica de 3 criterios |
-| Pesos | Actividades 20/20/20 · quizzes 10/10/10 · foros 3,34/3,33/3,33 = 60/30/10; aprobación 70; 2 intentos |
+| Pesos | Actividades 12/12/12 + proyecto 8/16 · quizzes 10/10/10 · foros de interacción 3,34/3,33/3,33 = 60/30/10; aprobación 70; 2 intentos; 5 actividades obligatorias (máximo permitido) |
 | Estado | Quizzes, actividades y foros en **borrador**; curso sin publicar |
 
 Correcciones frente a 034 y 038:
@@ -127,6 +129,14 @@ Archivos:
 Protecciones de 067: crea los recursos en borrador; si ya existen, no cambia su estado; no toca preguntas de un quiz con intentos, ni rúbricas o pesos de actividades con entregas o foros con notas; no cambia nota mínima, intentos ni política de un curso con matrículas. La prueba privada lo comprueba.
 
 Limitaciones: `aula_forums` no tiene una columna privada para la guía de moderación; queda en el paquete y en la vista previa docente. La revisión especializada de BPE no está hecha.
+
+### Estándar pedagógico desde el 2026-11-06 (pedido de la propietaria)
+
+- Actividades, foros y quizzes bajo la taxonomía de Bloom y basados en casos de estudio.
+- Cada actividad: título, caso de estudio, instrucciones detalladas paso a paso y rúbrica de evaluación.
+- Una actividad por unidad; las demás actividades son de proyecto: un caso que se desarrolla a lo largo del curso (máximo 5 obligatorias en total).
+- Foros con título: un foro de bienvenida y foros de interacción.
+- `scripts/paquete-aula.mjs` lo valida (orden de Bloom en los quizzes, foro de bienvenida único, actividad por unidad y proyecto) y el aula muestra la actividad en el orden caso → instrucciones → entrega → rúbrica.
 
 ## 4. Validaciones ejecutadas
 

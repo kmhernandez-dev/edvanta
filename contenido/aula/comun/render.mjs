@@ -80,26 +80,35 @@ ${l.fuentes.map((f) => `<li>${f.institucion}. <em>${f.titulo}</em> (${f.anio}). 
 }
 
 // ── Foros ────────────────────────────────────────────────────────────
-// El aula muestra por separado el propósito, la pregunta central, las
-// preguntas de profundización, la participación, las normas, la
-// alternativa y la rúbrica. La descripción solo lleva el caso.
+// Dos tipos: el foro de bienvenida (formativo, sin nota) y los foros de
+// interacción (uno por unidad, con caso y rúbrica). El aula muestra por
+// separado el propósito, la pregunta central, las preguntas de
+// profundización, la participación, las normas, la alternativa y la
+// rúbrica. La descripción lleva el caso y el nivel de Bloom.
 
-export const renderForoDescripcion = (f) => `<h2>Caso del foro</h2>
+const esBienvenida = (f) => f.tipo === 'bienvenida';
+export const niveles = (b) => (b || []).join(', ').replace(/, ([^,]*)$/, ' y $1').toLowerCase();
+
+export const renderForoDescripcion = (f) => (esBienvenida(f)
+  ? `<h2>Para empezar</h2>
 <p>${f.caso}</p>
-<p><strong>Caso ficticio. Datos simulados.</strong></p>`;
+<p><strong>Foro formativo: no se califica.</strong> Nivel de la taxonomía de Bloom: ${niveles(f.bloom)}.</p>`
+  : `<h2>Caso del foro</h2>
+<p>${f.caso}</p>
+<p><strong>Caso ficticio. Datos simulados.</strong> Nivel de la taxonomía de Bloom: ${niveles(f.bloom)}.</p>`);
 
 export const renderForoParticipacion = (f) => `<h2>Qué debes publicar</h2>
 <p>${f.requisitos}</p>
-${lista([`Extensión: ${f.extension}`, `Respuestas: ${f.respuestas}`, `Peso en el curso: ${f.peso} %.`])}`;
+${lista([`Extensión: ${f.extension}`, `Respuestas: ${f.respuestas}`, f.peso ? `Peso en el curso: ${f.peso} %.` : 'Sin peso en la nota del curso.'])}`;
 
 export const renderForoReglas = (f) => `<h2>Normas de participación</h2>
 <p>${f.reglas}</p>
 <h2>Criterios de valoración</h2>
 <p>${f.criterios}</p>
-<details>
+${f.rubrica?.length ? `<details>
   <summary>Ver la rúbrica completa con sus cinco niveles</summary>
   ${tablaNiveles(f.rubrica, 'Rúbrica del foro (los pesos suman 100 %)')}
-</details>`;
+</details>` : ''}`;
 
 /** Versión de una sola pieza, para la vista previa y la lectura humana. */
 export const renderForo = (f) => `<p><strong>${f.proposito}</strong></p>
@@ -113,9 +122,12 @@ ${renderForoReglas(f)}
 <p><strong>Si el grupo tiene menos de tres participantes:</strong> ${f.alternativa}</p>`;
 
 // ── Actividades ──────────────────────────────────────────────────────
-// El caso, los puntos, el producto y la extensión van en sus columnas;
-// las instrucciones llevan el propósito, las condiciones y la rúbrica
-// completa (el aula resume la rúbrica con el nivel 4).
+// Lo que ve el estudiante, en este orden: título, caso de estudio,
+// instrucciones paso a paso (con lo que debe contener la entrega) y
+// rúbrica. El caso, los puntos, el producto y la extensión van en sus
+// columnas; las instrucciones llevan el nivel de Bloom, los pasos, las
+// fases del proyecto, las condiciones y la rúbrica completa (el aula
+// resume la rúbrica con el nivel 4).
 
 export const renderActividadCaso = (a) => `<h2>Caso de estudio</h2>
 <p>${a.caso}</p>
@@ -126,7 +138,11 @@ export const renderActividadApoyo = (a) => `<h2>Materiales, anexos y datos</h2>
 <h2>Fuentes de apoyo y citación</h2>
 <p>${a.fuentes}</p>`;
 
-export const renderActividadInstrucciones = (a) => `<h2>Para qué sirve esta actividad</h2>
+export const renderActividadInstrucciones = (a) => `<h2>Instrucciones paso a paso</h2>
+<p><strong>Nivel de la taxonomía de Bloom:</strong> ${niveles(a.bloom)}.</p>
+${lista(a.pasos, 'ol')}
+${a.fases || ''}
+<h2>Para qué sirve esta actividad</h2>
 ${lista(a.resultados)}
 <h2>Tiempo y modalidad</h2>
 ${lista([`Tiempo estimado: ${a.tiempo}`, `Modalidad: ${a.modalidad}`, `Peso en el curso: ${a.peso} %.`])}
@@ -141,12 +157,12 @@ ${lista([`Tiempo estimado: ${a.tiempo}`, `Modalidad: ${a.modalidad}`, `Peso en e
 
 /** Versión de una sola pieza, para la vista previa y la lectura humana. */
 export const renderActividad = (a) => `${renderActividadCaso(a)}
-<h2>Puntos a resolver</h2>
+${renderActividadInstrucciones(a)}
+<h2>Qué debe contener tu entrega</h2>
 ${lista(a.puntos, 'ol')}
 <h2>Producto esperado</h2>
 <p>${a.producto} Extensión orientativa: ${a.extension}.</p>
-${renderActividadApoyo(a)}
-${renderActividadInstrucciones(a)}`;
+${renderActividadApoyo(a)}`;
 
 /** Solo para la columna privada teacher_guide_html y la vista docente. */
 export const renderGuiaDocente = (a) => `<h2>Guía docente (reservada)</h2>
