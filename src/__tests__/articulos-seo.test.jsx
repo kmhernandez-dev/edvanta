@@ -9,10 +9,10 @@ import { setJsonLd } from '../utils/seo';
 const RAIZ = path.resolve(__dirname, '../..');
 const slugs = new Set(articulos.map((a) => a.slug));
 
-describe('SEO de los 293 artículos', () => {
+describe('SEO de los 308 artículos', () => {
   it('cada artículo tiene metadatos SEO, imagen existente y texto alternativo', () => {
-    expect(articulos).toHaveLength(293);
-    expect(Object.keys(SEO_ARTICULOS)).toHaveLength(293);
+    expect(articulos).toHaveLength(308);
+    expect(Object.keys(SEO_ARTICULOS)).toHaveLength(308);
     for (const a of articulos) {
       const seo = SEO_ARTICULOS[a.slug];
       expect(seo, a.slug).toBeTruthy();

@@ -66,9 +66,27 @@ function textoDe(children) {
 
 // El id sale solo del texto del título: sin contadores, para que no
 // cambie entre un dibujado y otro y coincida con el del índice.
-function crearComponentes() {
+// Los espacios de imagen del artículo (art.imagenes) se muestran después
+// del título indicado, solo cuando ya tienen foto (src).
+function crearComponentes(imagenes = []) {
+  const despuesDe = new Map(
+    imagenes.filter((i) => i.src && i.despuesDe).map((i) => [slugify(i.despuesDe), i]),
+  );
   return {
-    h2: ({ children }) => <h2 id={slugify(textoDe(children))}>{children}</h2>,
+    h2: ({ children }) => {
+      const id = slugify(textoDe(children));
+      const img = despuesDe.get(id);
+      return (
+        <>
+          <h2 id={id}>{children}</h2>
+          {img && (
+            <figure className="my-6">
+              <img src={img.src} alt={img.alt} loading="lazy" decoding="async" className="w-full rounded-[14px] object-cover" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
+            </figure>
+          )}
+        </>
+      );
+    },
     h3: ({ children }) => <h3 id={slugify(textoDe(children))}>{children}</h3>,
     table: ({ children }) => <div className="ed-table"><table>{children}</table></div>,
     a: ({ href = '', children }) => (href.startsWith('/')
@@ -399,7 +417,7 @@ export default function ArticuloPage() {
   const indice = useMemo(() => (texto ? secciones(texto) : []), [texto]);
   const ids = useMemo(() => indice.map((s) => s.id), [indice]);
   const activa = useSeccionActiva(estado === 'ok' ? ids : []);
-  const componentes = useMemo(() => crearComponentes(), [cuerpo]);
+  const componentes = useMemo(() => crearComponentes(art?.imagenes), [cuerpo, art]);
   const minutos = texto ? `${minutosDeLectura(texto)} min` : art?.readingTime;
 
   const relacionados = useMemo(() => {

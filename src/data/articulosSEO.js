@@ -1,4 +1,5 @@
 import { SEO_NOTICIAS } from './noticiasFarmaceuticas.js';
+import { SEO_BLOG_EDVANTA } from './blogEdvanta.js';
 
 const SEO_BASE = {
   "5-razones-especializarte-atencion-farmaceutica-fibrosis-quistica": {"seoTitle":"Especialízate en atención farmacéutica en fibrosis quística","seoDescription":"Descubre por qué la atención farmacéutica en fibrosis quística es una de las áreas de mayor demanda y cómo puedes especializarte con formación de calidad.","image":"/img/escuelas/salud.webp","imageAlt":"Farmacéutico especializado en fibrosis quística","updated":"2026-10-28"},
@@ -196,4 +197,4 @@ const SEO_BASE = {
   "who-good-reliance-practices": {"seoTitle":"WHO Good Reliance Practices: curso gratuito de la OMS","seoDescription":"Aprende reliance regulatorio con el curso gratuito de la OMS en UNITAR: cómo una autoridad se apoya en las evaluaciones de otras agencias. Disponible en español.","image":"/img/escuelas/calidad.webp","imageAlt":"Imagen editorial sobre calidad farmacéutica: WHO Good Reliance Practices: el curso gratuito de la OMS sobre reliance regulatorio","updated":"2026-10-28"},
 };
 
-export const SEO_ARTICULOS = { ...SEO_NOTICIAS, ...SEO_BASE };
+export const SEO_ARTICULOS = { ...SEO_NOTICIAS, ...SEO_BASE, ...SEO_BLOG_EDVANTA };

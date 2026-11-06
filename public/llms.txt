@@ -1,0 +1,45 @@
+# Edvanta
+
+> Edvanta (Edvanta S.A.S., NIT 902.120.527-6) es una empresa colombiana de educación farmacéutica con sede en Medellín, creada por un grupo de químicos farmacéuticos con experiencia en inteligencia artificial, marketing y educación. Forma a quienes trabajan con medicamentos, educa a pacientes y cuidadores, y capacita equipos de instituciones de salud.
+
+Datos clave:
+
+- Cuatro escuelas para profesionales: Salud y Farmacia Clínica; Calidad y Producción Farmacéutica; Asuntos Regulatorios; Marketing y Comunicación Farmacéutica.
+- Edvanta Contigo es la puerta para pacientes y cuidadores; su primera ruta es Feliz Sin Tiroides. Es educación, no atención clínica.
+- Los cursos propios se toman en el aula de Edvanta. El contenido es gratis; el certificado de aprobación cuesta COP 60.000 por curso (pago único con Mercado Pago). En los cursos asignados por una institución, el certificado va incluido.
+- Los certificados se expiden en Medellín, llevan código EDV-XXXX-XXXX y QR, no se vencen (salvo revocación) y se verifican en https://edvanta.co/certificados.
+- Los cursos de Edvanta son educación informal según el Decreto 1075 de 2015 (art. 2.6.6.8): no otorgan títulos profesionales ni certificados de aptitud ocupacional.
+- Método: casos de estudio, quizzes ordenados según la taxonomía de Bloom, actividades con rúbrica, foros de bienvenida e interacción y un proyecto integrador por curso.
+- Los cursos de otras plataformas se muestran separados de los propios; los enlaces de afiliado se señalan.
+
+## Conoce Edvanta
+
+- [¿Qué es Edvanta?](https://edvanta.co/articulos/que-es-edvanta): qué hace, para quién y qué no es.
+- [La historia de Edvanta](https://edvanta.co/articulos/historia-de-edvanta): los químicos farmacéuticos de Medellín que la crearon.
+- [Cómo usa Edvanta la inteligencia artificial](https://edvanta.co/articulos/edvanta-e-inteligencia-artificial)
+- [Marketing con criterio farmacéutico](https://edvanta.co/articulos/marketing-farmaceutico-con-criterio)
+- [Así se diseña un curso en Edvanta](https://edvanta.co/articulos/como-se-disena-un-curso-en-edvanta)
+- [Aprender con casos](https://edvanta.co/articulos/aprender-con-casos-edvanta)
+- [Profesionales, pacientes e instituciones](https://edvanta.co/articulos/edvanta-profesionales-pacientes-instituciones)
+- [Feliz Sin Tiroides](https://edvanta.co/articulos/feliz-sin-tiroides-programa-edvanta)
+- [Edvanta para instituciones](https://edvanta.co/articulos/edvanta-para-instituciones)
+- [Preguntas frecuentes sobre Edvanta](https://edvanta.co/articulos/preguntas-frecuentes-sobre-edvanta)
+
+## Certificados
+
+- [Vigencia de los certificados](https://edvanta.co/articulos/vigencia-certificados-edvanta)
+- [Cómo verificar un certificado](https://edvanta.co/articulos/como-verificar-certificado-edvanta)
+- [Cuánto cuesta un certificado](https://edvanta.co/articulos/cuanto-cuesta-certificado-edvanta)
+- [Qué acredita un certificado: educación informal](https://edvanta.co/articulos/certificados-edvanta-educacion-informal)
+- [Del aula a LinkedIn](https://edvanta.co/articulos/certificado-edvanta-en-linkedin)
+- [Verificación pública de certificados](https://edvanta.co/certificados)
+
+## Sitio
+
+- [Sobre Edvanta](https://edvanta.co/sobre-edvanta)
+- [Escuelas](https://edvanta.co/escuelas)
+- [Cursos](https://edvanta.co/cursos)
+- [Edvanta Contigo (pacientes)](https://edvanta.co/contigo)
+- [Instituciones](https://edvanta.co/instituciones)
+- [Artículos](https://edvanta.co/articulos)
+- [Contacto](https://edvanta.co/contacto)
