@@ -24,7 +24,8 @@ export default function CartDrawer() {
         ? await fetch(apiUrl('/api/aula/me/checkout'), {
           method: 'POST',
           credentials: 'include',
-          headers: { 'content-type': 'application/json' },
+          // El aula solo acepta cambios que traen esta cabecera (protección CSRF).
+          headers: { 'content-type': 'application/json', 'X-Aula-Request': '1' },
           body: JSON.stringify({ items: items.map(i => ({ id: i.id, qty: i.qty })), volverA: '/?tipo=certificado' }),
         })
         : await fetch(apiUrl('/api/create-preference'), {
