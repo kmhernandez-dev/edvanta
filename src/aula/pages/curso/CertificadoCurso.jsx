@@ -5,11 +5,13 @@
  *  - Completado: la vista previa con su nombre, el documento (opcional) y
  *    el botón para emitirlo. Se emite una vez y no cambia después.
  *  - Emitido: el diploma, el PDF, el enlace de verificación y LinkedIn.
+ *  - Si el curso cobra el certificado, se paga aquí (Mercado Pago) en
+ *    cualquier momento; sin el pago aprobado no se emite.
  */
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import {
-  ArrowLeft, Award, Check, Copy, Download, ExternalLink, Share2, ShieldCheck,
+  ArrowLeft, Award, Check, Copy, CreditCard, Download, ExternalLink, Share2, ShieldCheck,
 } from 'lucide-react';
 import { get, post } from '../../api';
 import { useAsync } from '../../hooks';
@@ -59,6 +61,44 @@ function Emitido({ c, onDescargar, descargando }) {
   );
 }
 
+const pesos = (n) => new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP', maximumFractionDigits: 0 }).format(n);
+
+/** Pago del certificado: precio, estado y botón a Mercado Pago. */
+function PagoDelCertificado({ pago, courseId }) {
+  const { pathname } = useLocation();
+  const [pagando, setPagando] = useState(false);
+  const [error, setError] = useState(null);
+  if (!pago?.requerido || pago.estado === 'pagado') return null;
+  const pagar = async () => {
+    setPagando(true);
+    setError(null);
+    try {
+      const res = await post('/me/checkout', { items: [{ id: `certificado-${courseId}` }], volverA: pathname });
+      if (res.initPoint) window.location.href = res.initPoint;
+      else throw new Error('No se pudo abrir Mercado Pago. Intenta de nuevo.');
+    } catch (err) {
+      setError(err);
+      setPagando(false);
+    }
+  };
+  return (
+    <div className="flex flex-col gap-3 rounded-[var(--aula-radius-lg)] border border-[var(--aula-border)] bg-white p-5">
+      <p className="text-sm font-bold">Precio del certificado</p>
+      <p className="text-2xl font-extrabold text-[var(--aula-primary)]">{pesos(pago.precio)} <span className="text-sm font-semibold text-[var(--aula-muted)]">COP · pago único</span></p>
+      <p className="text-sm leading-6 text-[var(--aula-muted)]">
+        El curso es gratis; el certificado tiene costo. Puedes pagarlo ahora o cuando termines. Al completar el curso lo emites aquí mismo.
+      </p>
+      {pago.estado === 'pendiente' && (
+        <Alert tone="info" title="Tienes un pago en proceso">
+          Si ya pagaste, Mercado Pago puede tardar unos minutos en confirmarlo: recarga esta página más tarde. Si no terminaste el pago, puedes intentarlo de nuevo.
+        </Alert>
+      )}
+      {error && <p role="alert" className="text-sm font-semibold text-[var(--aula-danger)]">{error.message}</p>}
+      <Button icon={CreditCard} onClick={pagar} loading={pagando} loadingLabel="Abriendo Mercado Pago…">Pagar mi certificado</Button>
+    </div>
+  );
+}
+
 export default function CertificadoCurso() {
   const { data, courseId, rutas, reload } = useCourseData();
   const toast = useToast();
@@ -98,6 +138,15 @@ export default function CertificadoCurso() {
 
   const e = data.enrollment;
   const d = estado.data;
+  const { search } = useLocation();
+  const volvioDePagar = new URLSearchParams(search).get('pago');
+  // Al volver de Mercado Pago, el webhook puede tardar unos segundos.
+  useEffect(() => {
+    if (volvioDePagar !== 'exitoso') return undefined;
+    const t = setTimeout(() => estado.reload(), 4000);
+    return () => clearTimeout(t);
+  }, [volvioDePagar]); // eslint-disable-line react-hooks/exhaustive-deps
+  const debePago = Boolean(d?.pago?.requerido && d.pago.estado !== 'pagado');
 
   return (
     <div className="aula-root min-h-screen">
@@ -113,6 +162,12 @@ export default function CertificadoCurso() {
           {estado.loading && !d && <LoadingBlock rows={3} label="Cargando tu certificado" />}
           {estado.error && <ErrorState error={estado.error} onRetry={estado.reload} />}
 
+          {volvioDePagar === 'exitoso' && debePago && (
+            <Alert tone="success" title="Recibimos tu pago" className="mb-5">
+              Mercado Pago lo está confirmando. En unos minutos aparecerá como pagado y podrás emitir tu certificado.
+            </Alert>
+          )}
+
           {d?.certificado && <Emitido c={d.certificado} onDescargar={descargar} descargando={descargando} />}
 
           {d && !d.certificado && !d.elegible && (
@@ -121,6 +176,7 @@ export default function CertificadoCurso() {
                 Llevas {e.lessons.done} de {e.lessons.required} clases obligatorias. Cuando las completes, aquí mismo emites tu certificado.
               </Alert>
               <Diploma muestra curso={d.borrador.curso} horas={d.borrador.horas} modalidad={d.borrador.modalidad} />
+              <PagoDelCertificado pago={d.pago} courseId={courseId} />
               <div><Button to={rutas.base} variant="secondary">Volver al curso</Button></div>
             </div>
           )}
@@ -154,10 +210,14 @@ export default function CertificadoCurso() {
                   </span>
                 </label>
                 {error && <p role="alert" className="text-sm font-semibold text-[var(--aula-danger)]">{error.message}</p>}
-                <Button type="submit" icon={Award} loading={emitiendo} loadingLabel="Emitiendo…" disabled={!d.borrador.titular}>
+                {debePago && (
+                  <p className="text-sm leading-6 text-[var(--aula-muted)]">Para emitirlo, primero paga el certificado ({pesos(d.pago.precio)} COP).</p>
+                )}
+                <Button type="submit" icon={Award} loading={emitiendo} loadingLabel="Emitiendo…" disabled={!d.borrador.titular || debePago}>
                   Emitir mi certificado
                 </Button>
               </form>
+              {debePago && <div className="lg:col-start-2"><PagoDelCertificado pago={d.pago} courseId={courseId} /></div>}
             </div>
           )}
         </div>

@@ -9,6 +9,8 @@ function cartReducer(state, action) {
   switch (action.type) {
     case 'ADD': {
       const existing = state.find(i => i.id === action.product.id);
+      // Un certificado es uno por persona: no se suma dos veces.
+      if (existing && existing.category === 'certificado') return state;
       if (existing) {
         return state.map(i =>
           i.id === action.product.id ? { ...i, qty: i.qty + 1 } : i
@@ -25,7 +27,7 @@ function cartReducer(state, action) {
     case 'REMOVE':
       return state.filter(i => i.id !== action.id);
     case 'INCREMENT':
-      return state.map(i => i.id === action.id ? { ...i, qty: i.qty + 1 } : i);
+      return state.map(i => i.id === action.id && i.category !== 'certificado' ? { ...i, qty: i.qty + 1 } : i);
     case 'DECREMENT':
       return state
         .map(i => i.id === action.id ? { ...i, qty: i.qty - 1 } : i)

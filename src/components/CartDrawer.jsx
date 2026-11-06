@@ -9,21 +9,38 @@ export default function CartDrawer() {
   const [paying, setPaying]   = useState(false);
   const [payError, setPayError] = useState('');
 
-  // Crea la preferencia en Mercado Pago y redirige al checkout
+  const tieneCertificados = items.some(i => i.category === 'certificado');
+  const [pideCuenta, setPideCuenta] = useState(false);
+
+  // Crea la preferencia en Mercado Pago y redirige al checkout.
+  // Los certificados se pagan con la cuenta del aula: el pago queda a
+  // nombre de quien va a emitirlo.
   const payWithMercadoPago = async () => {
     setPaying(true);
     setPayError('');
+    setPideCuenta(false);
     try {
-      const res = await fetch(apiUrl('/api/create-preference'), {
-        method: 'POST',
-        headers: { 'content-type': 'application/json' },
-        body: JSON.stringify({ items }),
-      });
-      const data = await res.json();
-      if (res.ok && data.init_point) {
-        window.location.href = data.init_point; // redirige a Mercado Pago
+      const res = tieneCertificados
+        ? await fetch(apiUrl('/api/aula/me/checkout'), {
+          method: 'POST',
+          credentials: 'include',
+          headers: { 'content-type': 'application/json' },
+          body: JSON.stringify({ items: items.map(i => ({ id: i.id, qty: i.qty })), volverA: '/?tipo=certificado' }),
+        })
+        : await fetch(apiUrl('/api/create-preference'), {
+          method: 'POST',
+          headers: { 'content-type': 'application/json' },
+          body: JSON.stringify({ items }),
+        });
+      const data = await res.json().catch(() => ({}));
+      const destino = data.init_point || data.initPoint;
+      if (res.ok && destino) {
+        window.location.href = destino; // redirige a Mercado Pago
+      } else if (res.status === 401) {
+        setPideCuenta(true);
+        setPaying(false);
       } else {
-        setPayError(data.error || 'No se pudo iniciar el pago. Intenta de nuevo.');
+        setPayError(data.error?.message || data.error || 'No se pudo iniciar el pago. Intenta de nuevo.');
         setPaying(false);
       }
     } catch {
@@ -103,7 +120,7 @@ export default function CartDrawer() {
             </div>
             <div>
               <p className="font-semibold text-navy-950 mb-1">Tu carrito está vacío</p>
-              <p className="text-sm text-gray-500">Agrega packs profesionales para empezar a organizar tu crecimiento.</p>
+              <p className="text-sm text-gray-500">Agrega el certificado de un curso o un pack profesional.</p>
             </div>
             <button onClick={closeCart} className="btn-primary text-sm mt-2">
               Explorar packs
@@ -124,8 +141,11 @@ export default function CartDrawer() {
                   <div className="flex-1 min-w-0">
                     <p className="text-sm font-semibold text-navy-950 leading-snug truncate">{item.name}</p>
                     <p className="text-xs text-gray-400 mb-2">{formatPrice(item.price)} c/u</p>
-                    {/* Qty controls */}
+                    {/* Qty controls (un certificado es único) */}
                     <div className="flex items-center gap-2">
+                      {item.category === 'certificado' ? (
+                        <span className="text-[11px] font-semibold text-teal-700 bg-teal-50 rounded-md px-2 py-1">Certificado · se emite al completar el curso</span>
+                      ) : (
                       <div className="flex items-center border border-gray-200 rounded-lg overflow-hidden">
                         <button
                           onClick={() => decrement(item.id)}
@@ -147,6 +167,7 @@ export default function CartDrawer() {
                           </svg>
                         </button>
                       </div>
+                      )}
                       <button
                         onClick={() => removeItem(item.id)}
                         className="text-xs text-gray-400 hover:text-red-500 transition-colors ml-auto"
@@ -179,6 +200,14 @@ export default function CartDrawer() {
                 <span className="text-sm text-gray-500">Total</span>
                 <span className="text-xl font-bold text-navy-950">{formatPrice(total)}</span>
               </div>
+
+              {pideCuenta && (
+                <div className="p-3 bg-amber-50 border border-amber-200 rounded-lg text-xs text-amber-900 leading-snug">
+                  <p className="font-semibold">Entra a tu aula para pagar el certificado.</p>
+                  <p className="mt-1">El pago queda a tu nombre y lo usas para emitir tu certificado al completar el curso. Tu carrito se conserva.</p>
+                  <a href="/aula/entrar" className="mt-2 inline-block font-semibold underline">Entrar o crear mi cuenta</a>
+                </div>
+              )}
 
               {/* Error message */}
               {payError && (
@@ -228,7 +257,9 @@ export default function CartDrawer() {
               </a>
 
               <p className="text-[11px] text-gray-400 text-center leading-snug">
-                Pago seguro con Mercado Pago (tarjetas, PSE, Nequi y más). Productos digitales descargables.
+                {tieneCertificados
+                  ? 'Pago seguro con Mercado Pago (tarjetas, PSE, Nequi y más). El certificado se emite desde tu aula al completar el curso.'
+                  : 'Pago seguro con Mercado Pago (tarjetas, PSE, Nequi y más). Productos digitales descargables.'}
               </p>
             </div>
           </>

@@ -33,8 +33,10 @@ export function createAulaRouter({
   adminEmailHashes = [],
   notifyEmail = null,
   now = () => new Date(),
+  // Crea la preferencia de pago; las pruebas la reemplazan para no usar la red.
+  crearPreferencia = null,
 }) {
-  const deps = { db, storage, mailer, siteUrl, secureCookies, adminEmailHashes, notifyEmail };
+  const deps = { db, storage, mailer, siteUrl, secureCookies, adminEmailHashes, notifyEmail, crearPreferencia };
   const router = express.Router();
 
   router.use((_req, res, next) => {

@@ -14,6 +14,7 @@ import { randomInt } from 'node:crypto';
 import { many, one } from './db.js';
 import { AulaError, badRequest, notFound } from './http.js';
 import { audit } from './audit.js';
+import { pagoDelCertificado, pesos } from './checkout.js';
 
 export const EMISOR = { nombre: 'Edvanta S.A.S.', nit: '902.120.527-6' };
 export const CIUDAD_DE_EXPEDICION = 'Medellín';
@@ -72,7 +73,8 @@ function vista(c) {
 async function matriculaDe(db, userId, courseId) {
   return one(
     db,
-    `SELECT e.id, e.effective_status, c.title, c.duration_minutes, c.modality
+    `SELECT e.id, e.effective_status, e.assignment_id, c.id AS course_id, c.title, c.duration_minutes, c.modality,
+            c.certificate_price
        FROM aula_enrollments_v e JOIN aula_courses c ON c.id = e.course_id
       WHERE e.user_id = $1 AND e.course_id = $2 AND e.withdrawn_at IS NULL
       LIMIT 1`,
@@ -86,8 +88,11 @@ export async function certificadoDelCurso(db, user, courseId) {
   if (!m) throw notFound('No encontramos este curso entre los que tienes asignados.');
   const c = await one(db, 'SELECT * FROM aula_certificates WHERE enrollment_id = $1', [m.id]);
   const persona = await one(db, 'SELECT first_name, last_name FROM aula_users WHERE id = $1', [user.id]);
+  const pago = await pagoDelCertificado(db, user.id, { id: m.course_id, certificate_price: m.certificate_price }, m);
   return {
     elegible: m.effective_status === 'completado',
+    // El certificado ya emitido no se cobra de nuevo.
+    pago: c?.status === 'emitido' ? { ...pago, requerido: false } : pago,
     certificado: vista(c),
     // Lo que diría si lo pidiera ahora: para que lo revise antes.
     borrador: {
@@ -119,6 +124,10 @@ export async function emitirCertificado(db, user, courseId, { documento = null, 
     }
     if (m.effective_status !== 'completado') {
       throw new AulaError(409, 'curso_sin_completar', 'Completa todas las clases obligatorias del curso para obtener tu certificado.');
+    }
+    const pago = await pagoDelCertificado(tx, user.id, { id: m.course_id, certificate_price: m.certificate_price }, m);
+    if (pago.requerido && pago.estado !== 'pagado') {
+      throw new AulaError(402, 'certificado_sin_pago', `El certificado de este curso cuesta ${pesos(pago.precio)}. Págalo y luego emítelo desde esta página.`, { precio: pago.precio, estado: pago.estado });
     }
     const persona = await one(tx, 'SELECT first_name, last_name FROM aula_users WHERE id = $1', [user.id]);
     const titular = nombreCompleto(persona);

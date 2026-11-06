@@ -1001,3 +1001,27 @@
     transition: none;
   }
 }
+
+/* Precio del certificado y botón de carrito (cursos propios). */
+.curso-cert-compra {
+  margin-top: 16px;
+  border: 1px solid var(--cf-border);
+  border-radius: 14px;
+  background: var(--cf-surface, #f8fafc);
+  padding: 18px;
+}
+
+.curso-cert-precio {
+  margin: 6px 0 0;
+  color: var(--cf-primary);
+  font-family: var(--ds-font-display, 'Manrope', 'Inter', system-ui, sans-serif);
+  font-size: 1.5rem;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.curso-cert-precio span {
+  color: var(--cf-muted);
+  font-size: 0.8rem;
+  font-weight: 600;
+}

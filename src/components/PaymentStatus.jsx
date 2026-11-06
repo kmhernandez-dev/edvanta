@@ -2,6 +2,12 @@ import { useEffect, useState } from 'react';
 import { useCart } from '../context/CartContext';
 import { waLink } from '../config/links';
 
+// Textos cuando la compra incluye certificados del aula.
+const CERTIFICADO = {
+  exitoso: 'Tu certificado quedó pagado. Lo emites desde tu aula al completar el curso; la confirmación de Mercado Pago puede tardar unos minutos en aparecer.',
+  pendiente: 'Tu pago está en proceso. Cuando se acredite, el certificado aparecerá como pagado en tu aula.',
+};
+
 const CONFIG = {
   exitoso: {
     color: 'bg-teal-600',
@@ -36,6 +42,7 @@ export default function PaymentStatus() {
   const { clearCart } = useCart();
   const [status, setStatus] = useState(null);
   const [paymentId, setPaymentId] = useState(null);
+  const [esCertificado, setEsCertificado] = useState(false);
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -50,6 +57,7 @@ export default function PaymentStatus() {
 
     if (result) {
       setStatus(result);
+      setEsCertificado(params.get('tipo') === 'certificado');
       if (payId && payId !== 'null') setPaymentId(payId);
       if (result === 'exitoso') clearCart();
       // Limpia los parámetros de la URL sin recargar
@@ -58,7 +66,7 @@ export default function PaymentStatus() {
   }, [clearCart]);
 
   if (!status) return null;
-  const c = CONFIG[status];
+  const c = esCertificado && CERTIFICADO[status] ? { ...CONFIG[status], text: CERTIFICADO[status] } : CONFIG[status];
 
   return (
     <div className="fixed inset-0 z-[95] flex items-center justify-center p-4 bg-navy-950/50 backdrop-blur-sm" onClick={() => setStatus(null)}>

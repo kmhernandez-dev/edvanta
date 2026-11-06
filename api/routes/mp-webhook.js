@@ -6,7 +6,9 @@
  * 2. Si no existe intento previo, inserta una orden aprobada.
  * 3. Envia el correo de descarga cuando hay enlaces configurados.
  */
-import { query } from '../db.js';
+import { pool, query } from '../db.js';
+import { fromPgPool } from '../lib/aula/db.js';
+import { aprobarPagosDeCertificados } from '../lib/aula/checkout.js';
 import { sendEmail } from '../lib/resend.js';
 import { getDownload } from './create-preference.js';
 
@@ -150,6 +152,16 @@ export async function mpWebhookRoute(req, res) {
       }
     } catch (e) {
       console.error('[webhook] Error guardando orden:', e.message);
+    }
+
+    // Certificados del aula pagados en esta compra.
+    try {
+      const aprobados = await aprobarPagosDeCertificados(fromPgPool(pool), {
+        externalReference, paymentId: pid, metadata: payment?.metadata || null,
+      });
+      if (aprobados.length) console.log(`[webhook] ${aprobados.length} certificado(s) pagado(s) con el pago ${pid}`);
+    } catch (e) {
+      console.error('[webhook] Error aprobando certificados:', e.message);
     }
 
     if (email && downloadableIds.length > 0) {

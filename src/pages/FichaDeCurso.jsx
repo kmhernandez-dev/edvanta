@@ -22,7 +22,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import {
   ArrowRight, Award, BadgeCheck, BookOpen, Check, Clock, ExternalLink, FileText,
-  GraduationCap, Layers, MessageCircle, MonitorSmartphone, QrCode, Share2, UserRound,
+  GraduationCap, Layers, MessageCircle, MonitorSmartphone, QrCode, Share2, ShoppingCart, UserRound,
 } from 'lucide-react';
 
 import SiteHeader from '../components/edvanta/SiteHeader';
@@ -31,6 +31,8 @@ import Diploma from '../components/edvanta/Diploma';
 import { Btn, Card, Faq } from '../components/edvanta/ui';
 import { cleanHtml } from '../aula/ui/RichText';
 import { apiUrl } from '../config/api';
+import { useCart } from '../context/CartContext';
+import { formatPrice } from '../utils/format';
 import { nombreDeCurso } from '../lib/slug';
 import { miAula, inscribirme } from '../lib/misCursos';
 import { EMISOR, textoDeHoras } from '../lib/certificado/formato';
@@ -62,6 +64,36 @@ function duracion(minutos) {
 const imagen = (url) => (url && url.startsWith('/api') ? apiUrl(url) : url);
 
 /* ── Certificado ──────────────────────────────────────────── */
+
+/**
+ * El contenido de los cursos propios es gratis; el certificado tiene un
+ * precio único que pone el servidor (aula_courses.certificate_price).
+ * Se puede pagar antes o después de terminar: se emite al completar.
+ */
+function CompraCertificado({ ficha, nombre }) {
+  const { items, addItem, openCart } = useCart();
+  const precio = Number(ficha.certificado?.precio) || 0;
+  const cursoId = /^edvanta-(\d+)$/.exec(ficha.id || '')?.[1];
+  if (!precio || !cursoId) return null;
+  const id = `certificado-${cursoId}`;
+  const enCarrito = items.some((i) => i.id === id);
+  const agregar = () => {
+    if (!enCarrito) addItem({ id, name: `Certificado · ${nombre}`, price: precio, category: 'certificado' });
+    openCart();
+  };
+  return (
+    <div className="curso-cert-compra">
+      <p className="curso-cert-label">Precio del certificado</p>
+      <p className="curso-cert-precio">{formatPrice(precio)} <span>COP · pago único</span></p>
+      <p className="curso-cert-conditions">
+        El contenido es gratis. Paga el certificado cuando quieras con Mercado Pago y emítelo desde tu aula al completar el curso.
+      </p>
+      <Btn variant="secondary" className="mt-4 w-full" onClick={agregar} icon={ShoppingCart}>
+        {enCarrito ? 'Ver mi carrito' : 'Agregar certificado al carrito'}
+      </Btn>
+    </div>
+  );
+}
 
 /**
  * El certificado va en TODAS las fichas: es la primera duda de
@@ -105,6 +137,8 @@ function Certificado({ ficha, nombre, accion, boton }) {
               </p>
               <p className="curso-cert-conditions">{c.condiciones}</p>
             </div>
+
+            <CompraCertificado ficha={ficha} nombre={nombre} />
 
             {boton && <div className="curso-cert-cta">{boton}</div>}
           </div>
@@ -393,7 +427,9 @@ export default function FichaDeCurso({ modo = 'propio', slugPublico = '' }) {
     ? { visitante: 'Crear cuenta gratis', fuera: 'Inscribirme gratis', dentro: 'Continuar aprendiendo' }[estado]
     : ficha.proveedor.accion;
   const notaCertificado = {
-    available: 'Acceso gratis al contenido. El certificado se emite desde tu aula al completar el curso.',
+    available: Number(ficha.certificado.precio) > 0
+      ? `Acceso gratis al contenido. Certificado: ${formatPrice(ficha.certificado.precio)} COP, lo emites desde tu aula al completar el curso.`
+      : 'Acceso gratis al contenido. El certificado se emite desde tu aula al completar el curso.',
     pending_confirmation: 'Acceso gratis al contenido. Las condiciones del certificado están por confirmar.',
     not_offered: 'Acceso gratis al contenido. Este curso no incluye certificado.',
   }[ficha.certificado.estado] || 'Acceso gratis al contenido.';
@@ -421,7 +457,9 @@ export default function FichaDeCurso({ modo = 'propio', slugPublico = '' }) {
     ficha.modalidad || null,
     propio ? 'Acceso desde el celular y el computador' : null,
     ficha.certificado.estado === 'available'
-      ? 'Certificado de aprobación de Edvanta'
+      ? (Number(ficha.certificado.precio) > 0
+        ? `Certificado de aprobación de Edvanta (${formatPrice(ficha.certificado.precio)} COP)`
+        : 'Certificado de aprobación de Edvanta')
       : ficha.certificado.estado === 'pending_confirmation'
         ? `Certificado según ${ficha.proveedor.nombre}`
         : null,

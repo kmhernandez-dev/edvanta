@@ -8,6 +8,8 @@ import {
 } from '../../lib/aula/learning.js';
 import { participantResources } from '../../lib/aula/resources.js';
 import { certificadoDelCurso, emitirCertificado } from '../../lib/aula/certificados.js';
+import { iniciarPago } from '../../lib/aula/checkout.js';
+import { crearPreferenciaMercadoPago } from '../../lib/pagos.js';
 import { resolverSlug } from '../../lib/slugs-publicos.js';
 
 const ids = (req) => ({
@@ -32,8 +34,20 @@ async function cursoPedido(db, ref) {
 const SLUG_DEL_CURSO = `(SELECT ps.slug FROM public_slugs ps
    WHERE ps.entity = 'aula' AND ps.entity_id = c.id AND ps.is_current LIMIT 1)`;
 
-export function meRouter() {
+export function meRouter(deps = {}) {
   const router = express.Router();
+
+  // ── Pago de certificados (y productos de la tienda) ───────────
+  // El precio lo pone el servidor; el navegador solo manda ids.
+  router.post('/checkout', route(async (req, res) => {
+    const siteUrl = process.env.SITE_URL || deps.siteUrl || 'https://edvanta.co';
+    const apiUrl = process.env.API_URL || siteUrl;
+    const crearPreferencia = deps.crearPreferencia || crearPreferenciaMercadoPago(process.env.MP_ACCESS_TOKEN);
+    const pago = await iniciarPago(req.aula.db, req.aula.user, req.body?.items, {
+      crearPreferencia, siteUrl, apiUrl, volverA: req.body?.volverA,
+    });
+    res.status(201).json(pago);
+  }));
 
   // Cursos asignados al participante (sin los retirados).
   router.get('/courses', route(async (req, res) => {

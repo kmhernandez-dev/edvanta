@@ -400,7 +400,7 @@ export const SQL_CURSO_PUBLICO = `
   SELECT c.id, c.title, c.short_description, c.description_html, c.cover_url, c.cover_file_id,
          c.category, c.level, c.duration_minutes, c.author_name, c.tags, c.modality,
          c.objective, c.learning_outcomes, c.audience, c.prerequisites, c.published_at,
-         v.snapshot, v.version_number, ps.slug AS public_slug
+         c.certificate_price, v.snapshot, v.version_number, ps.slug AS public_slug
     FROM aula_courses c
     JOIN aula_course_versions v ON v.id = c.current_version_id
     LEFT JOIN public_slugs ps ON ps.entity = 'aula' AND ps.entity_id = c.id AND ps.is_current

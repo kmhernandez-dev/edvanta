@@ -75,12 +75,19 @@ function certificado({ propio, curso }) {
   if (propio) {
     // El aula lo emite al completar el curso (lib/aula/certificados.js):
     // con código, QR y verificación pública en /certificados/<código>.
+    const precio = Number(curso.certificate_price) || 0;
     return {
       estado: 'available',
       emisor: `${EMISOR.nombre} (NIT ${EMISOR.nit})`,
-      condiciones: 'Completa todas las clases obligatorias del curso y pídelo desde tu aula.',
+      condiciones: precio > 0
+        ? 'Completa todas las clases obligatorias del curso, paga el certificado y pídelo desde tu aula.'
+        : 'Completa todas las clases obligatorias del curso y pídelo desde tu aula.',
       horas: horasDe(curso.duration_minutes),
-      nota: 'Al completar el curso, Edvanta te expide tu certificado de aprobación: con tu nombre, el curso, sus horas y un código para verificarlo.',
+      // Precio en pesos colombianos; 0 = sin costo. El contenido es gratis.
+      precio,
+      nota: precio > 0
+        ? 'El contenido del curso es gratis. El certificado tiene un costo único: lo pagas cuando quieras y lo emites al completar el curso, con tu nombre, sus horas y un código para verificarlo.'
+        : 'Al completar el curso, Edvanta te expide tu certificado de aprobación: con tu nombre, el curso, sus horas y un código para verificarlo.',
     };
   }
   const p = PROVEEDORES[curso.provider];
