@@ -1,0 +1,4141 @@
+{
+  "summary": {
+    "generatedAt": "2026-10-30T19:04:18.091Z",
+    "total": 197,
+    "referenced": 94,
+    "withoutStaticReference": 103,
+    "duplicateCandidates": 4,
+    "highWeight": 3,
+    "firstBatch": 8
+  },
+  "images": [
+    {
+      "id": "IMG-0001",
+      "file": "public/img/carrera/equipo-emprendimiento-farmaceutico.webp",
+      "url": "/img/carrera/equipo-emprendimiento-farmaceutico.webp",
+      "extension": ".webp",
+      "bytes": 179336,
+      "dimensions": {
+        "width": 1672,
+        "height": 941
+      },
+      "hash": "9ec12e097a2e612f69282f9b41fc806e6f23d9db51e6de68b8a7ad50ee91d212",
+      "references": [
+        "src/data/articulosSEO.js:38",
+        "src/data/articulosSEO.js:165",
+        "src/data/edvanta/capacitacion.js:1609",
+        "src/pages/EmprendimientosPage.jsx:135"
+      ],
+      "action": "conservar_y_revisar",
+      "status": "referenciada",
+      "priority": "alta",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0002",
+      "file": "public/img/cursos/_preview-contact-sheet-fixed.jpg",
+      "url": "/img/cursos/_preview-contact-sheet-fixed.jpg",
+      "extension": ".jpg",
+      "bytes": 153291,
+      "dimensions": {
+        "width": 800,
+        "height": 980
+      },
+      "hash": "21d3a0b0047af2df7a5efe61c955cbfe08b7f783a195a6c18d79bec2ce908e43",
+      "references": [],
+      "action": "revisar",
+      "status": "sin_referencia_estatica",
+      "priority": "alta",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0003",
+      "file": "public/img/cursos/_preview-contact-sheet.jpg",
+      "url": "/img/cursos/_preview-contact-sheet.jpg",
+      "extension": ".jpg",
+      "bytes": 252447,
+      "dimensions": {
+        "width": 800,
+        "height": 980
+      },
+      "hash": "3299478ccee7fbb00482037982ba666995c4d9b8218be90cd256381ad38d85de",
+      "references": [],
+      "action": "revisar",
+      "status": "sin_referencia_estatica",
+      "priority": "alta",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0004",
+      "file": "public/img/cursos/cannabis-medicinal.webp",
+      "url": "/img/cursos/cannabis-medicinal.webp",
+      "extension": ".webp",
+      "bytes": 50806,
+      "dimensions": {
+        "width": 960,
+        "height": 540
+      },
+      "hash": "e715346a483bb843133cca3f6d776b91d8b78e0742289be63f8ba2f7537e8da9",
+      "references": [],
+      "action": "revisar",
+      "status": "sin_referencia_estatica",
+      "priority": "alta",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0005",
+      "file": "public/img/cursos/edutin/12413.jpg",
+      "url": "/img/cursos/edutin/12413.jpg",
+      "extension": ".jpg",
+      "bytes": 58055,
+      "dimensions": {
+        "width": 800,
+        "height": 484
+      },
+      "hash": "1e6ab482875e2d73e0d723d1a78030706b148a6713c0d551a91a57a507590f7d",
+      "references": [],
+      "action": "revisar",
+      "status": "sin_referencia_estatica",
+      "priority": "alta",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0006",
+      "file": "public/img/cursos/edutin/12482.jpg",
+      "url": "/img/cursos/edutin/12482.jpg",
+      "extension": ".jpg",
+      "bytes": 39799,
+      "dimensions": {
+        "width": 800,
+        "height": 484
+      },
+      "hash": "4d6ec3e5984c1b3ab9ba9f16a56ff51e7f7c92da34d897b8afb4c3ddbbbc56bb",
+      "references": [],
+      "action": "revisar",
+      "status": "sin_referencia_estatica",
+      "priority": "alta",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0007",
+      "file": "public/img/cursos/edutin/12532.jpg",
+      "url": "/img/cursos/edutin/12532.jpg",
+      "extension": ".jpg",
+      "bytes": 28747,
+      "dimensions": {
+        "width": 800,
+        "height": 483
+      },
+      "hash": "a957e35afc3be03fb661d758e9e1360dc4ce07700f4b77d3d6ebcecca9ccdb31",
+      "references": [],
+      "action": "revisar",
+      "status": "sin_referencia_estatica",
+      "priority": "alta",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0008",
+      "file": "public/img/cursos/edutin/12549.jpg",
+      "url": "/img/cursos/edutin/12549.jpg",
+      "extension": ".jpg",
+      "bytes": 46334,
+      "dimensions": {
+        "width": 800,
+        "height": 483
+      },
+      "hash": "5073f225bb8f316f567234178ad7583073c5d41cd9283eeb24b79547ec2ccd66",
+      "references": [],
+      "action": "revisar",
+      "status": "sin_referencia_estatica",
+      "priority": "alta",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0009",
+      "file": "public/img/cursos/edutin/12578.jpg",
+      "url": "/img/cursos/edutin/12578.jpg",
+      "extension": ".jpg",
+      "bytes": 30875,
+      "dimensions": {
+        "width": 800,
+        "height": 484
+      },
+      "hash": "3da77e89ffa40be1377ef5f86ca5ddae6d57ec8e04bb02fc3b4fda67e74e6454",
+      "references": [],
+      "action": "revisar",
+      "status": "sin_referencia_estatica",
+      "priority": "alta",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0010",
+      "file": "public/img/cursos/edutin/12588.jpg",
+      "url": "/img/cursos/edutin/12588.jpg",
+      "extension": ".jpg",
+      "bytes": 30056,
+      "dimensions": {
+        "width": 800,
+        "height": 483
+      },
+      "hash": "328e7d30c69ff66225665b70ebd6ac1e07fa35e6015a95cc1e0a4f7d5e73331b",
+      "references": [],
+      "action": "revisar",
+      "status": "sin_referencia_estatica",
+      "priority": "alta",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0011",
+      "file": "public/img/cursos/edutin/12678.jpg",
+      "url": "/img/cursos/edutin/12678.jpg",
+      "extension": ".jpg",
+      "bytes": 42545,
+      "dimensions": {
+        "width": 800,
+        "height": 484
+      },
+      "hash": "dacc86edcfd7b6167b61013af8400d5d24761386a838aed88fd7591816d74799",
+      "references": [],
+      "action": "revisar",
+      "status": "sin_referencia_estatica",
+      "priority": "alta",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0012",
+      "file": "public/img/cursos/edutin/12702.jpg",
+      "url": "/img/cursos/edutin/12702.jpg",
+      "extension": ".jpg",
+      "bytes": 54743,
+      "dimensions": {
+        "width": 800,
+        "height": 484
+      },
+      "hash": "bff65026e0224f4d10b13e9a594230604812d700f3eaa09042104dc433b6b3e8",
+      "references": [],
+      "action": "revisar",
+      "status": "sin_referencia_estatica",
+      "priority": "alta",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0013",
+      "file": "public/img/cursos/edutin/12719.jpg",
+      "url": "/img/cursos/edutin/12719.jpg",
+      "extension": ".jpg",
+      "bytes": 41617,
+      "dimensions": {
+        "width": 800,
+        "height": 484
+      },
+      "hash": "3f3f04aec802b1fdc0bdc6acfbe2a4f73d917cdd12d81e42b10561a89d3e8cc4",
+      "references": [],
+      "action": "revisar",
+      "status": "sin_referencia_estatica",
+      "priority": "alta",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0014",
+      "file": "public/img/cursos/edutin/12727.jpg",
+      "url": "/img/cursos/edutin/12727.jpg",
+      "extension": ".jpg",
+      "bytes": 36227,
+      "dimensions": {
+        "width": 800,
+        "height": 484
+      },
+      "hash": "1aec9a770f697ff2a17dd4ef081f1034c0aa644a59a70713f28b482d0cf24678",
+      "references": [],
+      "action": "revisar",
+      "status": "sin_referencia_estatica",
+      "priority": "alta",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0015",
+      "file": "public/img/cursos/edutin/12848.jpg",
+      "url": "/img/cursos/edutin/12848.jpg",
+      "extension": ".jpg",
+      "bytes": 40778,
+      "dimensions": {
+        "width": 800,
+        "height": 484
+      },
+      "hash": "9feac6120c5d82884535a14d4ec39b95f993495ae1cb5702ae55af7b9cf5f637",
+      "references": [],
+      "action": "revisar",
+      "status": "sin_referencia_estatica",
+      "priority": "alta",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0016",
+      "file": "public/img/cursos/edutin/12854.jpg",
+      "url": "/img/cursos/edutin/12854.jpg",
+      "extension": ".jpg",
+      "bytes": 44859,
+      "dimensions": {
+        "width": 800,
+        "height": 484
+      },
+      "hash": "19a20eb26af0d9b0a4a14318582078de8ab581434b064127c910eaf3d619ec32",
+      "references": [],
+      "action": "revisar",
+      "status": "sin_referencia_estatica",
+      "priority": "alta",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0017",
+      "file": "public/img/cursos/edutin/12879.jpg",
+      "url": "/img/cursos/edutin/12879.jpg",
+      "extension": ".jpg",
+      "bytes": 44322,
+      "dimensions": {
+        "width": 800,
+        "height": 484
+      },
+      "hash": "6951021bee70b45ffa68c84aa3d62f5d6aa3f5ea036104dc800be65c66fc5893",
+      "references": [],
+      "action": "revisar",
+      "status": "sin_referencia_estatica",
+      "priority": "alta",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0018",
+      "file": "public/img/cursos/edutin/12938.jpg",
+      "url": "/img/cursos/edutin/12938.jpg",
+      "extension": ".jpg",
+      "bytes": 30069,
+      "dimensions": {
+        "width": 800,
+        "height": 484
+      },
+      "hash": "f2cdd136fc518e64b3269832fdc63bc9cbc80d139e996dcbc695b44ca338801f",
+      "references": [],
+      "action": "revisar",
+      "status": "sin_referencia_estatica",
+      "priority": "alta",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0019",
+      "file": "public/img/cursos/edutin/12962.jpg",
+      "url": "/img/cursos/edutin/12962.jpg",
+      "extension": ".jpg",
+      "bytes": 37133,
+      "dimensions": {
+        "width": 800,
+        "height": 484
+      },
+      "hash": "89f6dc3dfb1c2befd88f2c3895504f70e855a3b37219b619e952b9f3a4a7deea",
+      "references": [],
+      "action": "revisar",
+      "status": "sin_referencia_estatica",
+      "priority": "alta",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0020",
+      "file": "public/img/cursos/edutin/12984.jpg",
+      "url": "/img/cursos/edutin/12984.jpg",
+      "extension": ".jpg",
+      "bytes": 49526,
+      "dimensions": {
+        "width": 800,
+        "height": 484
+      },
+      "hash": "f1db6058ced0558fc02ad43b1d0d29c9916c9db59920c4d1b0d375b1b3bc0e68",
+      "references": [],
+      "action": "revisar",
+      "status": "sin_referencia_estatica",
+      "priority": "alta",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0021",
+      "file": "public/img/cursos/edutin/12987.jpg",
+      "url": "/img/cursos/edutin/12987.jpg",
+      "extension": ".jpg",
+      "bytes": 30910,
+      "dimensions": {
+        "width": 800,
+        "height": 484
+      },
+      "hash": "2eec59e86bb9e6712a94450546740d4b14b624b5c2852be131694eb7b605c879",
+      "references": [],
+      "action": "revisar",
+      "status": "sin_referencia_estatica",
+      "priority": "alta",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0022",
+      "file": "public/img/cursos/edutin/13028.jpg",
+      "url": "/img/cursos/edutin/13028.jpg",
+      "extension": ".jpg",
+      "bytes": 27150,
+      "dimensions": {
+        "width": 800,
+        "height": 484
+      },
+      "hash": "5f3e9a1d871a72a262faee3b4dd14fb3c1784ce2b02a127b0295a17b5bbfa168",
+      "references": [],
+      "action": "revisar",
+      "status": "sin_referencia_estatica",
+      "priority": "alta",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0023",
+      "file": "public/img/cursos/edutin/13096.jpg",
+      "url": "/img/cursos/edutin/13096.jpg",
+      "extension": ".jpg",
+      "bytes": 27377,
+      "dimensions": {
+        "width": 800,
+        "height": 484
+      },
+      "hash": "63480d500e4a7515bed4c2139f35cdbf179777e9369198475fd3d7049dca1366",
+      "references": [],
+      "action": "revisar",
+      "status": "sin_referencia_estatica",
+      "priority": "alta",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0024",
+      "file": "public/img/cursos/edutin/13097.jpg",
+      "url": "/img/cursos/edutin/13097.jpg",
+      "extension": ".jpg",
+      "bytes": 27448,
+      "dimensions": {
+        "width": 800,
+        "height": 484
+      },
+      "hash": "979fe41fb5c09c1416b43b68aa796d930dca0e9c65a05ea2ca704258d7ed83f8",
+      "references": [],
+      "action": "revisar",
+      "status": "sin_referencia_estatica",
+      "priority": "alta",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0025",
+      "file": "public/img/cursos/edutin/13098.jpg",
+      "url": "/img/cursos/edutin/13098.jpg",
+      "extension": ".jpg",
+      "bytes": 26927,
+      "dimensions": {
+        "width": 800,
+        "height": 484
+      },
+      "hash": "0f650219d9c20d12c37dc7a22c635adb0e47ace5a42a33206bb1fa8b8693b051",
+      "references": [],
+      "action": "revisar",
+      "status": "sin_referencia_estatica",
+      "priority": "alta",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0026",
+      "file": "public/img/cursos/edutin/13109.jpg",
+      "url": "/img/cursos/edutin/13109.jpg",
+      "extension": ".jpg",
+      "bytes": 31685,
+      "dimensions": {
+        "width": 800,
+        "height": 484
+      },
+      "hash": "49788ec192226199ae00ad4ae0756bd47eb8bd638ad9e4f07b095961a7f770f0",
+      "references": [],
+      "action": "revisar",
+      "status": "sin_referencia_estatica",
+      "priority": "alta",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0027",
+      "file": "public/img/cursos/edutin/13226.jpg",
+      "url": "/img/cursos/edutin/13226.jpg",
+      "extension": ".jpg",
+      "bytes": 30188,
+      "dimensions": {
+        "width": 800,
+        "height": 483
+      },
+      "hash": "3de5adbfe27ebe01ffb8b533c6233f8901c3e50a669f8eca7ccfb7b3f0b3fe41",
+      "references": [],
+      "action": "revisar",
+      "status": "sin_referencia_estatica",
+      "priority": "alta",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0028",
+      "file": "public/img/cursos/edutin/13242.jpg",
+      "url": "/img/cursos/edutin/13242.jpg",
+      "extension": ".jpg",
+      "bytes": 40073,
+      "dimensions": {
+        "width": 800,
+        "height": 484
+      },
+      "hash": "c0614b246952aafd0c2905d7cbcc0e152766e2b9347237424a8889c71755b5e3",
+      "references": [],
+      "action": "revisar",
+      "status": "sin_referencia_estatica",
+      "priority": "alta",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0029",
+      "file": "public/img/cursos/edutin/13469.jpg",
+      "url": "/img/cursos/edutin/13469.jpg",
+      "extension": ".jpg",
+      "bytes": 29802,
+      "dimensions": {
+        "width": 800,
+        "height": 484
+      },
+      "hash": "a4996b281fddca9a907eed20ba4480c782d14621027cd6c6dc00c34b8717e462",
+      "references": [],
+      "action": "revisar",
+      "status": "sin_referencia_estatica",
+      "priority": "alta",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0030",
+      "file": "public/img/cursos/edutin/13477.jpg",
+      "url": "/img/cursos/edutin/13477.jpg",
+      "extension": ".jpg",
+      "bytes": 35962,
+      "dimensions": {
+        "width": 800,
+        "height": 484
+      },
+      "hash": "3276aa068b4b9a88b3d479af9e960f3c8701634c99194aa94e41ac32c634b8e7",
+      "references": [],
+      "action": "revisar",
+      "status": "sin_referencia_estatica",
+      "priority": "alta",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0031",
+      "file": "public/img/cursos/edutin/3429.jpg",
+      "url": "/img/cursos/edutin/3429.jpg",
+      "extension": ".jpg",
+      "bytes": 56018,
+      "dimensions": {
+        "width": 800,
+        "height": 484
+      },
+      "hash": "5edb8e850ee2cb5f9de78644e91da578c4991cca9c31c3a1a47d04c396fa91e1",
+      "references": [],
+      "action": "revisar",
+      "status": "sin_referencia_estatica",
+      "priority": "alta",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0032",
+      "file": "public/img/cursos/edutin/4591.jpg",
+      "url": "/img/cursos/edutin/4591.jpg",
+      "extension": ".jpg",
+      "bytes": 43691,
+      "dimensions": {
+        "width": 800,
+        "height": 484
+      },
+      "hash": "7a5d26d91a85eaa08aeda596229dd828c7ef2bcaf767476e0384a77d97d67d4e",
+      "references": [],
+      "action": "revisar",
+      "status": "sin_referencia_estatica",
+      "priority": "alta",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0033",
+      "file": "public/img/cursos/edvanta/auditoria.webp",
+      "url": "/img/cursos/edvanta/auditoria.webp",
+      "extension": ".webp",
+      "bytes": 52006,
+      "dimensions": {
+        "width": 1200,
+        "height": 675
+      },
+      "hash": "dcf5f17b3b6d3d06f1b182524877d44f07c7a958affed99227cfea80c30f35a0",
+      "references": [
+        "src/data/courseImages.js:21"
+      ],
+      "action": "conservar",
+      "status": "integrada_lote_1",
+      "priority": "alta",
+      "duplicates": [],
+      "promptRef": "docs/imagenes-edvanta/PROMPTS_LOTE_1.md",
+      "flags": []
+    },
+    {
+      "id": "IMG-0034",
+      "file": "public/img/cursos/edvanta/gestion-ambiental.webp",
+      "url": "/img/cursos/edvanta/gestion-ambiental.webp",
+      "extension": ".webp",
+      "bytes": 51596,
+      "dimensions": {
+        "width": 1200,
+        "height": 675
+      },
+      "hash": "b3c91a652463e95b844d9858bf59e2b9e1db080e09bde5cd58f7494aa8b77e37",
+      "references": [
+        "src/data/courseImages.js:26"
+      ],
+      "action": "conservar",
+      "status": "integrada_lote_1",
+      "priority": "alta",
+      "duplicates": [],
+      "promptRef": "docs/imagenes-edvanta/PROMPTS_LOTE_1.md",
+      "flags": []
+    },
+    {
+      "id": "IMG-0035",
+      "file": "public/img/cursos/edvanta/gestion-de-calidad.webp",
+      "url": "/img/cursos/edvanta/gestion-de-calidad.webp",
+      "extension": ".webp",
+      "bytes": 56736,
+      "dimensions": {
+        "width": 1200,
+        "height": 675
+      },
+      "hash": "09a5007e57aedd8b3d5a9444b2c4bfca59ef3f216b40363187fb4063f80be18a",
+      "references": [
+        "src/data/courseImages.js:11"
+      ],
+      "action": "conservar",
+      "status": "integrada_lote_1",
+      "priority": "alta",
+      "duplicates": [],
+      "promptRef": "docs/imagenes-edvanta/PROMPTS_LOTE_1.md",
+      "flags": []
+    },
+    {
+      "id": "IMG-0036",
+      "file": "public/img/cursos/edvanta/gestion-de-proyectos.webp",
+      "url": "/img/cursos/edvanta/gestion-de-proyectos.webp",
+      "extension": ".webp",
+      "bytes": 47976,
+      "dimensions": {
+        "width": 1200,
+        "height": 675
+      },
+      "hash": "bcdb47ce8e68a6d1bf6dc31987b86b7278f8f54c58d3465634320a0224bcb34a",
+      "references": [
+        "src/data/courseImages.js:36"
+      ],
+      "action": "conservar",
+      "status": "integrada_lote_1",
+      "priority": "alta",
+      "duplicates": [],
+      "promptRef": "docs/imagenes-edvanta/PROMPTS_LOTE_1.md",
+      "flags": []
+    },
+    {
+      "id": "IMG-0037",
+      "file": "public/img/cursos/edvanta/lean-six-sigma.webp",
+      "url": "/img/cursos/edvanta/lean-six-sigma.webp",
+      "extension": ".webp",
+      "bytes": 53110,
+      "dimensions": {
+        "width": 1200,
+        "height": 675
+      },
+      "hash": "76bf7fbfe3a0ed8cc8863257859eafc20164516030df3ab2e4fdb705ae44f305",
+      "references": [
+        "src/data/courseImages.js:46"
+      ],
+      "action": "conservar",
+      "status": "integrada_lote_1",
+      "priority": "alta",
+      "duplicates": [],
+      "promptRef": "docs/imagenes-edvanta/PROMPTS_LOTE_1.md",
+      "flags": []
+    },
+    {
+      "id": "IMG-0038",
+      "file": "public/img/cursos/edvanta/lean.webp",
+      "url": "/img/cursos/edvanta/lean.webp",
+      "extension": ".webp",
+      "bytes": 39934,
+      "dimensions": {
+        "width": 1200,
+        "height": 675
+      },
+      "hash": "ae80c4e5b5b721cf0e6725c24d35ba0cb0be9c6fb4b1329fe116ade0828b64dd",
+      "references": [
+        "src/data/courseImages.js:41"
+      ],
+      "action": "conservar",
+      "status": "integrada_lote_1",
+      "priority": "alta",
+      "duplicates": [],
+      "promptRef": "docs/imagenes-edvanta/PROMPTS_LOTE_1.md",
+      "flags": []
+    },
+    {
+      "id": "IMG-0039",
+      "file": "public/img/cursos/edvanta/power-bi.webp",
+      "url": "/img/cursos/edvanta/power-bi.webp",
+      "extension": ".webp",
+      "bytes": 47252,
+      "dimensions": {
+        "width": 1200,
+        "height": 675
+      },
+      "hash": "cb783d93a81bb30392e6337bcbbe12b569f680edf856c738494b1e5ef557f014",
+      "references": [
+        "src/data/courseImages.js:16"
+      ],
+      "action": "conservar",
+      "status": "integrada_lote_1",
+      "priority": "alta",
+      "duplicates": [],
+      "promptRef": "docs/imagenes-edvanta/PROMPTS_LOTE_1.md",
+      "flags": []
+    },
+    {
+      "id": "IMG-0040",
+      "file": "public/img/cursos/edvanta/seguridad-y-salud-en-el-trabajo.webp",
+      "url": "/img/cursos/edvanta/seguridad-y-salud-en-el-trabajo.webp",
+      "extension": ".webp",
+      "bytes": 47794,
+      "dimensions": {
+        "width": 1200,
+        "height": 675
+      },
+      "hash": "5d0a7d64b831783fa900987cfb3c654a2fa65be9e5c5748ea69142c4fb7d7741",
+      "references": [
+        "src/data/courseImages.js:31"
+      ],
+      "action": "conservar",
+      "status": "integrada_lote_1",
+      "priority": "alta",
+      "duplicates": [],
+      "promptRef": "docs/imagenes-edvanta/PROMPTS_LOTE_1.md",
+      "flags": []
+    },
+    {
+      "id": "IMG-0041",
+      "file": "public/img/cursos/farmacologia-anticoagulantes.webp",
+      "url": "/img/cursos/farmacologia-anticoagulantes.webp",
+      "extension": ".webp",
+      "bytes": 52290,
+      "dimensions": {
+        "width": 960,
+        "height": 540
+      },
+      "hash": "aafe08f57cdcced57d92f7e2fa4d1d60f30ea50ac15f71565455883728d71260",
+      "references": [],
+      "action": "revisar",
+      "status": "sin_referencia_estatica",
+      "priority": "alta",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0042",
+      "file": "public/img/cursos/farmacologia-cardiovascular.webp",
+      "url": "/img/cursos/farmacologia-cardiovascular.webp",
+      "extension": ".webp",
+      "bytes": 58602,
+      "dimensions": {
+        "width": 960,
+        "height": 540
+      },
+      "hash": "3c19e21abbb8ac9cee970fb3c02d4e331fe91fcce2db7cf56b4b378cdf3d6fc6",
+      "references": [],
+      "action": "revisar",
+      "status": "sin_referencia_estatica",
+      "priority": "alta",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0043",
+      "file": "public/img/cursos/farmacologia-endocrina.webp",
+      "url": "/img/cursos/farmacologia-endocrina.webp",
+      "extension": ".webp",
+      "bytes": 48204,
+      "dimensions": {
+        "width": 960,
+        "height": 540
+      },
+      "hash": "d29f55a6b57cbaa0f6ccfc201a810259bac5f5397fef9eece45e203635b2fb1d",
+      "references": [],
+      "action": "revisar",
+      "status": "sin_referencia_estatica",
+      "priority": "alta",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0044",
+      "file": "public/img/cursos/farmacologia-gastrointestinal.webp",
+      "url": "/img/cursos/farmacologia-gastrointestinal.webp",
+      "extension": ".webp",
+      "bytes": 45514,
+      "dimensions": {
+        "width": 960,
+        "height": 540
+      },
+      "hash": "aeeeec1e42062451d2a462c7e9868335cf46088f2bc6798d8351e5c0722d3040",
+      "references": [],
+      "action": "revisar",
+      "status": "sin_referencia_estatica",
+      "priority": "alta",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0045",
+      "file": "public/img/cursos/farmacologia-oncologica.webp",
+      "url": "/img/cursos/farmacologia-oncologica.webp",
+      "extension": ".webp",
+      "bytes": 59700,
+      "dimensions": {
+        "width": 960,
+        "height": 540
+      },
+      "hash": "e09dd8b85c3be1da3c4087660338742f00bf8ea8849ad27cdcc2017d59a77277",
+      "references": [],
+      "action": "revisar",
+      "status": "sin_referencia_estatica",
+      "priority": "alta",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0046",
+      "file": "public/img/cursos/farmacologia-renal.webp",
+      "url": "/img/cursos/farmacologia-renal.webp",
+      "extension": ".webp",
+      "bytes": 54884,
+      "dimensions": {
+        "width": 960,
+        "height": 540
+      },
+      "hash": "c3fd46c7e47271e5caa33f6fc5bc50b4bfaf35980bb2c5ddcfcf71b7e6cbb15a",
+      "references": [],
+      "action": "revisar",
+      "status": "sin_referencia_estatica",
+      "priority": "alta",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0047",
+      "file": "public/img/cursos/farmacologia-respiratoria.webp",
+      "url": "/img/cursos/farmacologia-respiratoria.webp",
+      "extension": ".webp",
+      "bytes": 52734,
+      "dimensions": {
+        "width": 960,
+        "height": 540
+      },
+      "hash": "9b8cb2356c867f17bf049eae5634a422e29b36544248a2034f8fb66688dd10d8",
+      "references": [],
+      "action": "revisar",
+      "status": "sin_referencia_estatica",
+      "priority": "alta",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0048",
+      "file": "public/img/cursos/farmacologia-sistema-nervioso-central.webp",
+      "url": "/img/cursos/farmacologia-sistema-nervioso-central.webp",
+      "extension": ".webp",
+      "bytes": 67690,
+      "dimensions": {
+        "width": 960,
+        "height": 540
+      },
+      "hash": "cbc6c320c8c460d775960fd33cc6fe42ca551cce36d1f7ea7c933b61683e551e",
+      "references": [],
+      "action": "revisar",
+      "status": "sin_referencia_estatica",
+      "priority": "alta",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0049",
+      "file": "public/img/cursos/farmacoterapia-asma-epoc.webp",
+      "url": "/img/cursos/farmacoterapia-asma-epoc.webp",
+      "extension": ".webp",
+      "bytes": 23550,
+      "dimensions": {
+        "width": 960,
+        "height": 540
+      },
+      "hash": "3e5ab4df189fff35c606ad5a1fdfa6117042e7094ccd3f5aae0013854f6c2713",
+      "references": [],
+      "action": "revisar",
+      "status": "sin_referencia_estatica",
+      "priority": "alta",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0050",
+      "file": "public/img/cursos/farmacoterapia-diabetes.webp",
+      "url": "/img/cursos/farmacoterapia-diabetes.webp",
+      "extension": ".webp",
+      "bytes": 24302,
+      "dimensions": {
+        "width": 960,
+        "height": 540
+      },
+      "hash": "9091a8f1befc7e3ed4338f3b50639b639809fbb77189e760e86326b1624372af",
+      "references": [],
+      "action": "revisar",
+      "status": "sin_referencia_estatica",
+      "priority": "alta",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0051",
+      "file": "public/img/cursos/farmacoterapia-hipertension.webp",
+      "url": "/img/cursos/farmacoterapia-hipertension.webp",
+      "extension": ".webp",
+      "bytes": 25480,
+      "dimensions": {
+        "width": 960,
+        "height": 540
+      },
+      "hash": "a13179874f6701d525cde8fdbf5cdfb384b81b2e89e5f4ca3745911ab153db7c",
+      "references": [],
+      "action": "revisar",
+      "status": "sin_referencia_estatica",
+      "priority": "alta",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0052",
+      "file": "public/img/cursos/farmacoterapia-insuficiencia-cardiaca.webp",
+      "url": "/img/cursos/farmacoterapia-insuficiencia-cardiaca.webp",
+      "extension": ".webp",
+      "bytes": 23936,
+      "dimensions": {
+        "width": 960,
+        "height": 540
+      },
+      "hash": "e6e3364da0f24d9b34dd25510d8a553375e55b6a5f204e7356d45a43af2af40d",
+      "references": [],
+      "action": "revisar",
+      "status": "sin_referencia_estatica",
+      "priority": "alta",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0053",
+      "file": "public/img/cursos/fitoterapeuticos.webp",
+      "url": "/img/cursos/fitoterapeuticos.webp",
+      "extension": ".webp",
+      "bytes": 61456,
+      "dimensions": {
+        "width": 960,
+        "height": 540
+      },
+      "hash": "111d063697836728b4dc92860c2ad1f7e52270ce38f814d2fea26b464ed0d3d3",
+      "references": [],
+      "action": "revisar",
+      "status": "sin_referencia_estatica",
+      "priority": "alta",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0054",
+      "file": "public/img/cursos/gases-medicinales.webp",
+      "url": "/img/cursos/gases-medicinales.webp",
+      "extension": ".webp",
+      "bytes": 53686,
+      "dimensions": {
+        "width": 960,
+        "height": 540
+      },
+      "hash": "8fb33383a78a628f104d6f47b3085ed5ec6f7e3ff051165f06a97282937a34f2",
+      "references": [],
+      "action": "revisar",
+      "status": "sin_referencia_estatica",
+      "priority": "alta",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0055",
+      "file": "public/img/cursos/homeopaticos.webp",
+      "url": "/img/cursos/homeopaticos.webp",
+      "extension": ".webp",
+      "bytes": 41804,
+      "dimensions": {
+        "width": 960,
+        "height": 540
+      },
+      "hash": "445b0e3fecde70a90111c566c94129a6a75020a50b79732d7c1fee47bcbac43f",
+      "references": [],
+      "action": "revisar",
+      "status": "sin_referencia_estatica",
+      "priority": "alta",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0056",
+      "file": "public/img/cursos/inmunoterapia-oncologica.webp",
+      "url": "/img/cursos/inmunoterapia-oncologica.webp",
+      "extension": ".webp",
+      "bytes": 58980,
+      "dimensions": {
+        "width": 960,
+        "height": 540
+      },
+      "hash": "31f3c10eb635e4bebd185ac6d09e665b99bcd626e2f3cf6c1a4e6046912d5f54",
+      "references": [],
+      "action": "revisar",
+      "status": "sin_referencia_estatica",
+      "priority": "alta",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0057",
+      "file": "public/img/cursos/psicofarmacologia.webp",
+      "url": "/img/cursos/psicofarmacologia.webp",
+      "extension": ".webp",
+      "bytes": 46338,
+      "dimensions": {
+        "width": 960,
+        "height": 540
+      },
+      "hash": "ade23d274ad28211e5e73508a8b0bb776eb2b67b530a80e7941208a1d23b13b5",
+      "references": [],
+      "action": "revisar",
+      "status": "sin_referencia_estatica",
+      "priority": "alta",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0058",
+      "file": "public/img/cursos/quimioterapia-antineoplasica.webp",
+      "url": "/img/cursos/quimioterapia-antineoplasica.webp",
+      "extension": ".webp",
+      "bytes": 54190,
+      "dimensions": {
+        "width": 960,
+        "height": 540
+      },
+      "hash": "4f52d7afd8173fe5c309705570ca3825bfa5f7999f52397595417b1dfe80cdd4",
+      "references": [],
+      "action": "revisar",
+      "status": "sin_referencia_estatica",
+      "priority": "alta",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0059",
+      "file": "public/img/cursos/radiofarmacos.webp",
+      "url": "/img/cursos/radiofarmacos.webp",
+      "extension": ".webp",
+      "bytes": 44918,
+      "dimensions": {
+        "width": 960,
+        "height": 540
+      },
+      "hash": "e1aeab57798bd879a0c965a80b36e4f1ad7f22dc1a0dae5e653acbefa3e91a68",
+      "references": [],
+      "action": "revisar",
+      "status": "sin_referencia_estatica",
+      "priority": "alta",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0060",
+      "file": "public/img/cursos/suplementos-dietarios.webp",
+      "url": "/img/cursos/suplementos-dietarios.webp",
+      "extension": ".webp",
+      "bytes": 43674,
+      "dimensions": {
+        "width": 960,
+        "height": 540
+      },
+      "hash": "f39b4421f6d7eb8b6883cd115862ca5193be329c99f03cd118d531d880342ce5",
+      "references": [],
+      "action": "revisar",
+      "status": "sin_referencia_estatica",
+      "priority": "alta",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0061",
+      "file": "public/img/cursos/terapias-dirigidas-oncologia.webp",
+      "url": "/img/cursos/terapias-dirigidas-oncologia.webp",
+      "extension": ".webp",
+      "bytes": 57672,
+      "dimensions": {
+        "width": 960,
+        "height": 540
+      },
+      "hash": "e12ac855138c4602d01cc6c50d9861f9981493e783e6c15c5dc6ea765ecd347a",
+      "references": [],
+      "action": "revisar",
+      "status": "sin_referencia_estatica",
+      "priority": "alta",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0062",
+      "file": "public/img/cursos/vitales-no-disponibles.webp",
+      "url": "/img/cursos/vitales-no-disponibles.webp",
+      "extension": ".webp",
+      "bytes": 52142,
+      "dimensions": {
+        "width": 960,
+        "height": 540
+      },
+      "hash": "dde690ba370fa5e14329c3980827415eb0bbaf7400542fac7264f7dbe17b22b6",
+      "references": [],
+      "action": "revisar",
+      "status": "sin_referencia_estatica",
+      "priority": "alta",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0063",
+      "file": "public/img/edvanta-hero.webp",
+      "url": "/img/edvanta-hero.webp",
+      "extension": ".webp",
+      "bytes": 162048,
+      "dimensions": {
+        "width": 1254,
+        "height": 1254
+      },
+      "hash": "815cc0258337a7f09f05e99d691518f4047852c5b56175403a00e743bcf22508",
+      "references": [
+        "src/components/Hero.jsx:126",
+        "src/pages/ArticuloPage.jsx:415",
+        "scripts/prerenderizar-articulos.mjs:100",
+        "scripts/prerenderizar-articulos.mjs:174",
+        "scripts/prerenderizar-paginas.mjs:44"
+      ],
+      "action": "conservar_y_revisar",
+      "status": "referenciada",
+      "priority": "alta",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0064",
+      "file": "public/img/escuelas/calidad.webp",
+      "url": "/img/escuelas/calidad.webp",
+      "extension": ".webp",
+      "bytes": 65698,
+      "dimensions": {
+        "width": 1200,
+        "height": 800
+      },
+      "hash": "078c21ac45f7cc0c2ca72468b635c033e2ee331bb8e27fe4929a4f56130f0bc6",
+      "references": [
+        "src/data/articulosSEO.js:30",
+        "src/data/articulosSEO.js:35",
+        "src/data/articulosSEO.js:40",
+        "src/data/articulosSEO.js:47",
+        "src/data/articulosSEO.js:48",
+        "src/data/articulosSEO.js:66",
+        "src/data/articulosSEO.js:74",
+        "src/data/articulosSEO.js:76",
+        "src/data/articulosSEO.js:93",
+        "src/data/articulosSEO.js:95",
+        "src/data/articulosSEO.js:96",
+        "src/data/articulosSEO.js:97"
+      ],
+      "action": "conservar_y_revisar",
+      "status": "referenciada",
+      "priority": "alta",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0065",
+      "file": "public/img/escuelas/marketing.webp",
+      "url": "/img/escuelas/marketing.webp",
+      "extension": ".webp",
+      "bytes": 69104,
+      "dimensions": {
+        "width": 1200,
+        "height": 800
+      },
+      "hash": "e8dc0bfb2d90b04e0684989925b114e729ddfff6d4bbe89572ec6e7b98564c72",
+      "references": [
+        "src/components/edvanta/marketing.jsx:93",
+        "src/data/edvanta/capacitacion.js:1449",
+        "src/data/edvanta/escuelas.js:124",
+        "src/data/edvanta/marketing.js:22",
+        "src/data/edvanta/servicios.js:173",
+        "src/pages/edvanta/MarketingEscuela.jsx:40",
+        "src/pages/edvanta/MarketingServicio.jsx:38",
+        "src/pages/edvanta/MarketingServicios.jsx:87",
+        "scripts/prerenderizar-paginas.mjs:219",
+        "scripts/prerenderizar-paginas.mjs:246"
+      ],
+      "action": "conservar_y_revisar",
+      "status": "referenciada",
+      "priority": "alta",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0066",
+      "file": "public/img/escuelas/regulatorios.webp",
+      "url": "/img/escuelas/regulatorios.webp",
+      "extension": ".webp",
+      "bytes": 61368,
+      "dimensions": {
+        "width": 1200,
+        "height": 800
+      },
+      "hash": "67e2b736b728066a69053b776f915984ff329c1ae81ab17ba21021ffd29b8e94",
+      "references": [
+        "src/data/articulosSalud.js:233",
+        "src/data/articulosSEO.js:34",
+        "src/data/articulosSEO.js:41",
+        "src/data/articulosSEO.js:63",
+        "src/data/articulosSEO.js:122",
+        "src/data/articulosSEO.js:133",
+        "src/data/articulosSEO.js:150",
+        "src/data/edvanta/capacitacion.js:969",
+        "src/data/edvanta/escuelas.js:95"
+      ],
+      "action": "conservar_y_revisar",
+      "status": "referenciada",
+      "priority": "alta",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0067",
+      "file": "public/img/escuelas/salud.webp",
+      "url": "/img/escuelas/salud.webp",
+      "extension": ".webp",
+      "bytes": 57776,
+      "dimensions": {
+        "width": 1200,
+        "height": 800
+      },
+      "hash": "864a471331cdcbc7824b996a9defef5a263716e51e6eb03dd4e66817d34b6dfb",
+      "references": [
+        "src/data/articulosSEO.js:2",
+        "src/data/articulosSEO.js:7",
+        "src/data/articulosSEO.js:15",
+        "src/data/articulosSEO.js:16",
+        "src/data/articulosSEO.js:18",
+        "src/data/articulosSEO.js:19",
+        "src/data/articulosSEO.js:25",
+        "src/data/articulosSEO.js:31",
+        "src/data/articulosSEO.js:49",
+        "src/data/articulosSEO.js:50",
+        "src/data/articulosSEO.js:52",
+        "src/data/articulosSEO.js:53"
+      ],
+      "action": "conservar_y_revisar",
+      "status": "referenciada",
+      "priority": "alta",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0068",
+      "file": "public/img/feliz-sin-tiroides-hero-v2.webp",
+      "url": "/img/feliz-sin-tiroides-hero-v2.webp",
+      "extension": ".webp",
+      "bytes": 127314,
+      "dimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "hash": "1043a967c341a63df5845e1f3dca7beaeb3b55ba40ed000e737c69168e9d236c",
+      "references": [
+        "src/data/articulosSEO.js:3",
+        "src/data/articulosSEO.js:6",
+        "src/data/articulosSEO.js:9",
+        "src/data/articulosSEO.js:10",
+        "src/data/articulosSEO.js:11",
+        "src/data/articulosSEO.js:23",
+        "src/data/articulosSEO.js:24",
+        "src/data/articulosSEO.js:28",
+        "src/data/articulosSEO.js:29",
+        "src/data/articulosSEO.js:46",
+        "src/data/articulosSEO.js:64",
+        "src/data/articulosSEO.js:79"
+      ],
+      "action": "conservar_y_revisar",
+      "status": "referenciada",
+      "priority": "alta",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0069",
+      "file": "public/img/fotos/pacientes-taller.webp",
+      "url": "/img/fotos/pacientes-taller.webp",
+      "extension": ".webp",
+      "bytes": 72952,
+      "dimensions": {
+        "width": 1200,
+        "height": 800
+      },
+      "hash": "a7df683edd56ea8d94b879308e696b0eaafa38df3444161afcd1647bb89b6fc4",
+      "references": [
+        "src/data/edvanta/contigo.js:50",
+        "src/pages/contigo/ContigoHome.jsx:37",
+        "src/pages/edvanta/Pacientes.jsx:109"
+      ],
+      "action": "conservar_y_revisar",
+      "status": "referenciada",
+      "priority": "alta",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0070",
+      "file": "public/img/fotos/servicio-farmaceutico-recepcion.webp",
+      "url": "/img/fotos/servicio-farmaceutico-recepcion.webp",
+      "extension": ".webp",
+      "bytes": 63098,
+      "dimensions": {
+        "width": 1200,
+        "height": 800
+      },
+      "hash": "de47adf98ec5f5a4c18cf35ee5ffd083e98b97cc6db9bf55509a1d953f0aa4e4",
+      "references": [
+        "src/data/articulosSalud.js:261",
+        "src/data/articulosSEO.js:98",
+        "src/data/edvanta/capacitacion.js:329",
+        "src/data/edvanta/capacitacion.js:1209",
+        "src/data/edvanta/productos.js:34"
+      ],
+      "action": "conservar_y_revisar",
+      "status": "referenciada",
+      "priority": "alta",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0071",
+      "file": "public/img/herramienta-datos.jpg",
+      "url": "/img/herramienta-datos.jpg",
+      "extension": ".jpg",
+      "bytes": 86801,
+      "dimensions": {
+        "width": 1100,
+        "height": 825
+      },
+      "hash": "b5ab27586c45903638587c02552eb73589d766a70e6bbbdf7c481746fc6215d4",
+      "references": [
+        "src/data/articulosSEO.js:168",
+        "src/data/articulosSEO.js:175",
+        "src/data/products.js:212"
+      ],
+      "action": "conservar_y_revisar",
+      "status": "referenciada",
+      "priority": "alta",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0072",
+      "file": "public/img/herramienta-empleabilidad.jpg",
+      "url": "/img/herramienta-empleabilidad.jpg",
+      "extension": ".jpg",
+      "bytes": 92103,
+      "dimensions": {
+        "width": 1100,
+        "height": 825
+      },
+      "hash": "cd21870a6f74f992b22c16ea437bbebd191d75be9edf80cd4405fdad0f1e6582",
+      "references": [
+        "src/data/articulos.js:903",
+        "src/data/articulosSEO.js:32",
+        "src/data/articulosSEO.js:36",
+        "src/data/articulosSEO.js:37",
+        "src/data/articulosSEO.js:39",
+        "src/data/articulosSEO.js:42",
+        "src/data/articulosSEO.js:43",
+        "src/data/articulosSEO.js:44",
+        "src/data/articulosSEO.js:45",
+        "src/data/articulosSEO.js:77",
+        "src/data/articulosSEO.js:130",
+        "src/data/articulosSEO.js:137"
+      ],
+      "action": "conservar_y_revisar",
+      "status": "referenciada",
+      "priority": "alta",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0073",
+      "file": "public/img/herramienta-farmaceutica.jpg",
+      "url": "/img/herramienta-farmaceutica.jpg",
+      "extension": ".jpg",
+      "bytes": 95812,
+      "dimensions": {
+        "width": 1100,
+        "height": 825
+      },
+      "hash": "2142df2d3879456f55636eaff244c455e90b39f6340b65b2815e621782173979",
+      "references": [
+        "src/data/edvanta/capacitacion.js:569",
+        "src/data/products.js:21",
+        "src/pages/FstSectionLanding.jsx:139",
+        "src/pages/FstSectionLanding.jsx:140"
+      ],
+      "action": "conservar_y_revisar",
+      "status": "referenciada",
+      "priority": "alta",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0074",
+      "file": "public/img/karla-real.jpg",
+      "url": "/img/karla-real.jpg",
+      "extension": ".jpg",
+      "bytes": 62288,
+      "dimensions": {
+        "width": 800,
+        "height": 1000
+      },
+      "hash": "a9ebd1f4e51a4e5ce701b53ed0916158a076048477a0552485b981150085e8dc",
+      "references": [
+        "src/pages/AcademiaCurso.jsx:273",
+        "src/pages/BibliotecaHome.jsx:314",
+        "src/pages/edvanta/CursoEnVivo.jsx:162",
+        "src/pages/edvanta/SobreEdvanta.jsx:106",
+        "src/pages/FstSectionLanding.jsx:187",
+        "src/pages/RecursoLevotiroxina.jsx:308"
+      ],
+      "action": "conservar_y_revisar",
+      "status": "referenciada",
+      "priority": "alta",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0075",
+      "file": "public/img/logo-edvanta.png",
+      "url": "/img/logo-edvanta.png",
+      "extension": ".png",
+      "bytes": 135031,
+      "dimensions": {
+        "width": 931,
+        "height": 512
+      },
+      "hash": "7c82ca0ab8960dd85fc832f79ae8ae55738fe2b93feb4cb17102813a6cdbf4f0",
+      "references": [
+        "src/aula/layout/Shells.jsx:19",
+        "src/aula/player/CoursePlayer.jsx:162",
+        "src/components/edvanta/SiteHeader.jsx:238",
+        "src/components/empleo/EditorHojaDeVida.jsx:369",
+        "src/lib/certificado/formato.js:10",
+        "src/pages/ArticuloPage.jsx:432",
+        "scripts/prerenderizar-articulos.mjs:119"
+      ],
+      "action": "conservar_y_revisar",
+      "status": "referenciada",
+      "priority": "alta",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0076",
+      "file": "public/img/nutricion.jpg",
+      "url": "/img/nutricion.jpg",
+      "extension": ".jpg",
+      "bytes": 207647,
+      "dimensions": {
+        "width": 900,
+        "height": 600
+      },
+      "hash": "6916ab15ecf5bfa785189384c7ba2cbcaf30220468d1c28bd00370f630d6fe0b",
+      "references": [
+        "src/data/articulosSEO.js:8",
+        "src/data/articulosSEO.js:21",
+        "src/data/articulosSEO.js:33",
+        "src/data/articulosSEO.js:51",
+        "src/data/articulosSEO.js:61",
+        "src/data/articulosSEO.js:65",
+        "src/data/articulosSEO.js:70",
+        "src/data/articulosSEO.js:71",
+        "src/data/articulosSEO.js:129",
+        "src/data/articulosSEO.js:135",
+        "src/data/articulosSEO.js:141",
+        "src/data/articulosSEO.js:148"
+      ],
+      "action": "conservar_y_revisar",
+      "status": "referenciada",
+      "priority": "alta",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0077",
+      "file": "public/img/port-coleccion.jpg",
+      "url": "/img/port-coleccion.jpg",
+      "extension": ".jpg",
+      "bytes": 56298,
+      "dimensions": {
+        "width": 720,
+        "height": 385
+      },
+      "hash": "ee78ea1c4cd3f8f4c10da7b8e1a95a26fcf1a3324b69366ca0c6709b5a7a0cc7",
+      "references": [
+        "src/data/academyLessonGuides.js:8",
+        "src/data/fst.js:145",
+        "src/pages/RecursoLevotiroxina.jsx:339",
+        "api/routes/lead-capture.js:86"
+      ],
+      "action": "conservar_y_revisar",
+      "status": "referenciada",
+      "priority": "alta",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0078",
+      "file": "public/img/port-diario-hipo.jpg",
+      "url": "/img/port-diario-hipo.jpg",
+      "extension": ".jpg",
+      "bytes": 47311,
+      "dimensions": {
+        "width": 455,
+        "height": 587
+      },
+      "hash": "bea6200a8cc1a25e3039d1a5e57a6d4a360f1edfa46134600f1c02309ce53b30",
+      "references": [
+        "src/data/academyLessonGuides.js:50",
+        "src/data/fst.js:60",
+        "src/data/fst.js:218"
+      ],
+      "action": "conservar_y_revisar",
+      "status": "referenciada",
+      "priority": "alta",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0079",
+      "file": "public/img/port-hipertiroidismo.jpg",
+      "url": "/img/port-hipertiroidismo.jpg",
+      "extension": ".jpg",
+      "bytes": 51935,
+      "dimensions": {
+        "width": 394,
+        "height": 520
+      },
+      "hash": "e93c1fc24c5b62de253fb876775da4e016c9a34ce8ddc1553657e43951b01249",
+      "references": [
+        "src/data/academyLessonGuides.js:26",
+        "src/data/fst.js:133",
+        "src/data/fst.js:182"
+      ],
+      "action": "conservar_y_revisar",
+      "status": "referenciada",
+      "priority": "alta",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0080",
+      "file": "public/img/port-hipotiroidismo.jpg",
+      "url": "/img/port-hipotiroidismo.jpg",
+      "extension": ".jpg",
+      "bytes": 56007,
+      "dimensions": {
+        "width": 422,
+        "height": 553
+      },
+      "hash": "c46de046850e6b6522f18780807dd19f5af617be2303427e8e28b2b426e9177a",
+      "references": [
+        "src/data/academyLessonGuides.js:14",
+        "src/data/fst.js:24",
+        "src/data/fst.js:84",
+        "src/data/fst.js:158"
+      ],
+      "action": "conservar_y_revisar",
+      "status": "referenciada",
+      "priority": "alta",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0081",
+      "file": "public/img/port-jugosfuncionales.jpg",
+      "url": "/img/port-jugosfuncionales.jpg",
+      "extension": ".jpg",
+      "bytes": 34216,
+      "dimensions": {
+        "width": 387,
+        "height": 536
+      },
+      "hash": "75b69cd416ed4bee64f102ef2510d710f962153685c65fe0c865a1ba5f5f3286",
+      "references": [
+        "src/data/academyLessonGuides.js:62",
+        "src/data/fst.js:120",
+        "src/data/fst.js:285"
+      ],
+      "action": "conservar_y_revisar",
+      "status": "referenciada",
+      "priority": "alta",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0082",
+      "file": "public/img/port-logoatenfarmaclinic.jpg",
+      "url": "/img/port-logoatenfarmaclinic.jpg",
+      "extension": ".jpg",
+      "bytes": 10599,
+      "dimensions": {
+        "width": 306,
+        "height": 260
+      },
+      "hash": "307d963cffe75e724a61dc77e9501740b6c822482e702aaac19fa1eaa65eda74",
+      "references": [
+        "src/config/navProgramas.js:94",
+        "src/data/edvanta/programas.js:29",
+        "src/pages/AtenFarmaClinic.jsx:59",
+        "src/pages/AtenFarmaClinic.jsx:73",
+        "src/pages/AtenFarmaWorkspace.jsx:548"
+      ],
+      "action": "conservar_y_revisar",
+      "status": "referenciada",
+      "priority": "alta",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0083",
+      "file": "public/img/port-logofelizsintiroides.jpg",
+      "url": "/img/port-logofelizsintiroides.jpg",
+      "extension": ".jpg",
+      "bytes": 3690,
+      "dimensions": {
+        "width": 112,
+        "height": 103
+      },
+      "hash": "9706f94090543f13a8833f7a32506d58cba0d995d8ce61dbf3b9d18f1e410a63",
+      "references": [
+        "src/components/fstApp/AuthScreen.jsx:195",
+        "src/components/fstApp/FstAppShell.jsx:114",
+        "src/components/vida360/Vida360Shell.jsx:53",
+        "src/config/navProgramas.js:21",
+        "src/data/edvanta/programas.js:38",
+        "src/pages/RecursoLevotiroxina.jsx:231",
+        "src/pages/Vida360Portal.jsx:31",
+        "src/pages/Vida360ProWorkspace.jsx:101",
+        "api/routes/lead-capture.js:40"
+      ],
+      "action": "conservar_y_revisar",
+      "status": "referenciada",
+      "priority": "alta",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0084",
+      "file": "public/img/port-manejodesintomas.jpg",
+      "url": "/img/port-manejodesintomas.jpg",
+      "extension": ".jpg",
+      "bytes": 30176,
+      "dimensions": {
+        "width": 402,
+        "height": 521
+      },
+      "hash": "fa1b0575147152a6d9ca883c66e2863264e68697a5d87ef104076e369ff93b0e",
+      "references": [
+        "src/data/academyLessonGuides.js:38",
+        "src/data/fst.js:48",
+        "src/data/fst.js:108",
+        "src/data/fst.js:252"
+      ],
+      "action": "conservar_y_revisar",
+      "status": "referenciada",
+      "priority": "alta",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0085",
+      "file": "public/img/port-nutricional.jpg",
+      "url": "/img/port-nutricional.jpg",
+      "extension": ".jpg",
+      "bytes": 49965,
+      "dimensions": {
+        "width": 384,
+        "height": 516
+      },
+      "hash": "dfb5da91074d74fef58ca2c92790a9fb7c1ba1e58bdaeb9fc92340b99aa988bd",
+      "references": [
+        "src/data/academyLessonGuides.js:20",
+        "src/data/fst.js:72",
+        "src/data/fst.js:170"
+      ],
+      "action": "conservar_y_revisar",
+      "status": "referenciada",
+      "priority": "alta",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0086",
+      "file": "public/img/port-pruebas.jpg",
+      "url": "/img/port-pruebas.jpg",
+      "extension": ".jpg",
+      "bytes": 38981,
+      "dimensions": {
+        "width": 409,
+        "height": 530
+      },
+      "hash": "dadd6472538edbf072a1ae5906e28c5eccbbb9e6d83df9f5bad761002c8bf63a",
+      "references": [
+        "src/data/academyLessonGuides.js:32",
+        "src/data/fst.js:36",
+        "src/data/fst.js:241"
+      ],
+      "action": "conservar_y_revisar",
+      "status": "referenciada",
+      "priority": "alta",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0087",
+      "file": "public/img/publicos/instituciones.webp",
+      "url": "/img/publicos/instituciones.webp",
+      "extension": ".webp",
+      "bytes": 51244,
+      "dimensions": {
+        "width": 1000,
+        "height": 667
+      },
+      "hash": "ce0dadfcf75b730729072bef7998d1babca5719b1065e137e765198e63eda052",
+      "references": [
+        "src/pages/BibliotecaHome.jsx:79",
+        "src/pages/edvanta/Escuelas.jsx:143",
+        "src/pages/edvanta/Instituciones.jsx:153",
+        "src/pages/edvanta/SobreEdvanta.jsx:99"
+      ],
+      "action": "conservar_y_revisar",
+      "status": "referenciada",
+      "priority": "alta",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0088",
+      "file": "public/img/publicos/pacientes.webp",
+      "url": "/img/publicos/pacientes.webp",
+      "extension": ".webp",
+      "bytes": 47594,
+      "dimensions": {
+        "width": 1000,
+        "height": 667
+      },
+      "hash": "9cf51bdf1a23259932b75158168225c3232c865cdd4134d37a5ee1e79b8f706d",
+      "references": [
+        "src/data/articulosSEO.js:4",
+        "src/data/articulosSEO.js:5",
+        "src/data/articulosSEO.js:12",
+        "src/data/articulosSEO.js:13",
+        "src/data/articulosSEO.js:14",
+        "src/data/articulosSEO.js:17",
+        "src/data/articulosSEO.js:20",
+        "src/data/articulosSEO.js:22",
+        "src/data/articulosSEO.js:26",
+        "src/data/articulosSEO.js:62",
+        "src/data/articulosSEO.js:68",
+        "src/data/articulosSEO.js:69"
+      ],
+      "action": "conservar_y_revisar",
+      "status": "referenciada",
+      "priority": "alta",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0089",
+      "file": "public/img/publicos/profesionales.webp",
+      "url": "/img/publicos/profesionales.webp",
+      "extension": ".webp",
+      "bytes": 51036,
+      "dimensions": {
+        "width": 1000,
+        "height": 667
+      },
+      "hash": "b56f9c0c0a55f8e7bdfb11217345bc2036d83c3a3f1484233f9e39f54638896c",
+      "references": [
+        "src/pages/BibliotecaHome.jsx:55",
+        "src/pages/edvanta/Escuelas.jsx:94"
+      ],
+      "action": "conservar_y_revisar",
+      "status": "referenciada",
+      "priority": "alta",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0090",
+      "file": "public/img/servicios/biblioteca-contigo.webp",
+      "url": "/img/servicios/biblioteca-contigo.webp",
+      "extension": ".webp",
+      "bytes": 66886,
+      "dimensions": {
+        "width": 1200,
+        "height": 800
+      },
+      "hash": "8253c44f07a819f5eade22d93f7c8b5211095cadf4be49302b3f4f43b0aaf671",
+      "references": [
+        "src/data/edvanta/servicios.js:130"
+      ],
+      "action": "conservar_y_revisar",
+      "status": "referenciada",
+      "priority": "alta",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0091",
+      "file": "public/img/servicios/equipo-que-cuida.webp",
+      "url": "/img/servicios/equipo-que-cuida.webp",
+      "extension": ".webp",
+      "bytes": 54432,
+      "dimensions": {
+        "width": 1200,
+        "height": 800
+      },
+      "hash": "f557ab63031b777f6e42031a079038178da59de6507b33bafba9bd0e074bc6ec",
+      "references": [
+        "src/data/articulosSalud.js:265",
+        "src/data/articulosSEO.js:27",
+        "src/data/edvanta/capacitacion.js:409",
+        "src/data/edvanta/servicios.js:39"
+      ],
+      "action": "conservar_y_revisar",
+      "status": "referenciada",
+      "priority": "alta",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0092",
+      "file": "public/img/servicios/ruta-contigo.webp",
+      "url": "/img/servicios/ruta-contigo.webp",
+      "extension": ".webp",
+      "bytes": 61792,
+      "dimensions": {
+        "width": 1200,
+        "height": 800
+      },
+      "hash": "e41b6e151b41ae462c3fb7b0362786cbf29439514c2a39bb8fee0eb9875679ad",
+      "references": [
+        "src/data/edvanta/servicios.js:85"
+      ],
+      "action": "conservar_y_revisar",
+      "status": "referenciada",
+      "priority": "alta",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0093",
+      "file": "public/images/academia/hidratacion-autocuidado-diario.webp",
+      "url": "/images/academia/hidratacion-autocuidado-diario.webp",
+      "extension": ".webp",
+      "bytes": 120164,
+      "dimensions": {
+        "width": 1599,
+        "height": 900
+      },
+      "hash": "b94084089bababb8fb78319f14b0a8370cf04c4281a3e9385d984bbf1437d432",
+      "references": [
+        "src/components/academy/LessonTextContent.jsx:340"
+      ],
+      "action": "conservar_y_revisar",
+      "status": "referenciada",
+      "priority": "media",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0094",
+      "file": "public/images/academia/ideas-alimentacion-tres-dias.webp",
+      "url": "/images/academia/ideas-alimentacion-tres-dias.webp",
+      "extension": ".webp",
+      "bytes": 249832,
+      "dimensions": {
+        "width": 1599,
+        "height": 900
+      },
+      "hash": "597134fb5b3302ef27f9578309445a90adb070bf64dfa93a47cdccd347cc9d1b",
+      "references": [
+        "src/components/academy/LessonTextContent.jsx:280"
+      ],
+      "action": "conservar_y_revisar",
+      "status": "referenciada",
+      "priority": "media",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0095",
+      "file": "public/img/carrera/noticias-sector-farmaceutico.webp",
+      "url": "/img/carrera/noticias-sector-farmaceutico.webp",
+      "extension": ".webp",
+      "bytes": 180296,
+      "dimensions": {
+        "width": 1672,
+        "height": 941
+      },
+      "hash": "ee503409fd664e2d583273167f2a3da6c1bac0f1b74080cb11d6df069dd0cbd2",
+      "references": [
+        "src/pages/NoticiasPage.jsx:47"
+      ],
+      "action": "conservar_y_revisar",
+      "status": "referenciada",
+      "priority": "media",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0096",
+      "file": "public/img/carrera/perfil-linkedin-farmaceutico.webp",
+      "url": "/img/carrera/perfil-linkedin-farmaceutico.webp",
+      "extension": ".webp",
+      "bytes": 260836,
+      "dimensions": {
+        "width": 1672,
+        "height": 941
+      },
+      "hash": "7bc01a91695c926210f37d22285809313d002aa00cc4a8cc08f211be6e2d8f04",
+      "references": [
+        "src/pages/LinkedinPage.jsx:112"
+      ],
+      "action": "conservar_y_revisar",
+      "status": "referenciada",
+      "priority": "media",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0097",
+      "file": "public/img/carrera/practicas-laboratorio-acompanamiento.webp",
+      "url": "/img/carrera/practicas-laboratorio-acompanamiento.webp",
+      "extension": ".webp",
+      "bytes": 156058,
+      "dimensions": {
+        "width": 1672,
+        "height": 941
+      },
+      "hash": "bfd0e9642c7311628bd6b893644e0a4faa07e6624fc50133bf0e90058a4e2e67",
+      "references": [
+        "src/pages/PracticasPage.jsx:99"
+      ],
+      "action": "conservar_y_revisar",
+      "status": "referenciada",
+      "priority": "media",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0098",
+      "file": "public/img/certificado/firma-direccion-academica.png",
+      "url": "/img/certificado/firma-direccion-academica.png",
+      "extension": ".png",
+      "bytes": 4014,
+      "dimensions": {
+        "width": 340,
+        "height": 96
+      },
+      "hash": "852af3ae87b7b3331422c28983b2757708b21bc5c239b0e7f6163c07622a1ec9",
+      "references": [
+        "src/lib/certificado/formato.js:8"
+      ],
+      "action": "conservar_y_revisar",
+      "status": "referenciada",
+      "priority": "media",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0099",
+      "file": "public/img/certificado/sello-edvanta.png",
+      "url": "/img/certificado/sello-edvanta.png",
+      "extension": ".png",
+      "bytes": 9273,
+      "dimensions": {
+        "width": 196,
+        "height": 196
+      },
+      "hash": "d7d78cb30f50b4e2969b5b91643a8d741c28492ea569e07f5cfd8dec419c29d1",
+      "references": [
+        "src/lib/certificado/formato.js:9"
+      ],
+      "action": "conservar_y_revisar",
+      "status": "referenciada",
+      "priority": "media",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0100",
+      "file": "public/img/COLECCION DE LA TIROIDES (10).png",
+      "url": "/img/COLECCION DE LA TIROIDES (10).png",
+      "extension": ".png",
+      "bytes": 1479881,
+      "dimensions": {
+        "width": 1545,
+        "height": 1999
+      },
+      "hash": "3caef40cb73956f71a07d2a4f28c50451253fcfaa649b2ba5f069e95624176a9",
+      "references": [
+        "src/pages/FstSectionLanding.jsx:102"
+      ],
+      "action": "conservar_y_revisar",
+      "status": "referenciada",
+      "priority": "media",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": [
+        "peso_alto"
+      ]
+    },
+    {
+      "id": "IMG-0101",
+      "file": "public/img/comunidad/encuentro-comunidad-farmaceutica.webp",
+      "url": "/img/comunidad/encuentro-comunidad-farmaceutica.webp",
+      "extension": ".webp",
+      "bytes": 192366,
+      "dimensions": {
+        "width": 1672,
+        "height": 941
+      },
+      "hash": "5253bbe3b308f60b79f489b780cd4a5921184472ad133d01851d4b75219e5ae7",
+      "references": [
+        "src/pages/ComunidadPage.jsx:71",
+        "src/pages/edvanta/SobreEdvanta.jsx:63"
+      ],
+      "action": "conservar_y_revisar",
+      "status": "referenciada",
+      "priority": "media",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0102",
+      "file": "public/img/contigo/aulas-contigo.webp",
+      "url": "/img/contigo/aulas-contigo.webp",
+      "extension": ".webp",
+      "bytes": 59162,
+      "dimensions": {
+        "width": 1200,
+        "height": 800
+      },
+      "hash": "bb79e8d6e3f4dcb05a2d015eb76dee86911ed4dd38bc9c3c598fe1185942316d",
+      "references": [
+        "src/data/edvanta/programas.js:73"
+      ],
+      "action": "conservar_y_revisar",
+      "status": "referenciada",
+      "priority": "media",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0103",
+      "file": "public/img/contigo/encuentros-contigo.webp",
+      "url": "/img/contigo/encuentros-contigo.webp",
+      "extension": ".webp",
+      "bytes": 63330,
+      "dimensions": {
+        "width": 1200,
+        "height": 800
+      },
+      "hash": "8f41c433ac6cdbd662cda25dbbc699423ef64b4bd64d02c20ef77eb350b2c935",
+      "references": [
+        "src/data/edvanta/programas.js:88"
+      ],
+      "action": "conservar_y_revisar",
+      "status": "referenciada",
+      "priority": "media",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0104",
+      "file": "public/img/contigo/guias-contigo.webp",
+      "url": "/img/contigo/guias-contigo.webp",
+      "extension": ".webp",
+      "bytes": 54702,
+      "dimensions": {
+        "width": 1200,
+        "height": 800
+      },
+      "hash": "01a85ad3b3624c99a1abe68d60307b9d2f1f0e97ef317bd104628c4a4962c8dc",
+      "references": [
+        "src/data/edvanta/programas.js:80"
+      ],
+      "action": "conservar_y_revisar",
+      "status": "referenciada",
+      "priority": "media",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0105",
+      "file": "public/img/contigo/ruta-cardiovascular.webp",
+      "url": "/img/contigo/ruta-cardiovascular.webp",
+      "extension": ".webp",
+      "bytes": 57072,
+      "dimensions": {
+        "width": 1200,
+        "height": 800
+      },
+      "hash": "e9f6e398cbf4f0b0290c07da4bd7d0c42fa817d70437a7883fc1e159422c2f19",
+      "references": [
+        "src/data/edvanta/programas.js:61"
+      ],
+      "action": "conservar_y_revisar",
+      "status": "referenciada",
+      "priority": "media",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0106",
+      "file": "public/img/contigo/ruta-diabetes.webp",
+      "url": "/img/contigo/ruta-diabetes.webp",
+      "extension": ".webp",
+      "bytes": 53378,
+      "dimensions": {
+        "width": 1200,
+        "height": 800
+      },
+      "hash": "37584dacc4f7502b50b1f499d5e99ab3ee19988ac7858aaca463ff5691db6e8e",
+      "references": [
+        "src/data/edvanta/programas.js:59"
+      ],
+      "action": "conservar_y_revisar",
+      "status": "referenciada",
+      "priority": "media",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0107",
+      "file": "public/img/contigo/ruta-oncologica.webp",
+      "url": "/img/contigo/ruta-oncologica.webp",
+      "extension": ".webp",
+      "bytes": 60408,
+      "dimensions": {
+        "width": 1200,
+        "height": 800
+      },
+      "hash": "1a17126ec4280cf5462c402628ba0588cf62fbc5b791606a3c5c6557e5d6c01f",
+      "references": [
+        "src/data/edvanta/programas.js:63"
+      ],
+      "action": "conservar_y_revisar",
+      "status": "referenciada",
+      "priority": "media",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0108",
+      "file": "public/img/contigo/ruta-renal.webp",
+      "url": "/img/contigo/ruta-renal.webp",
+      "extension": ".webp",
+      "bytes": 68760,
+      "dimensions": {
+        "width": 1200,
+        "height": 800
+      },
+      "hash": "41d24159ce05561c99840898e2c4518e39cf3da80689525dcdf3faf9ca9a56ca",
+      "references": [
+        "src/data/edvanta/programas.js:60"
+      ],
+      "action": "conservar_y_revisar",
+      "status": "referenciada",
+      "priority": "media",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0109",
+      "file": "public/img/contigo/ruta-respiratoria.webp",
+      "url": "/img/contigo/ruta-respiratoria.webp",
+      "extension": ".webp",
+      "bytes": 61704,
+      "dimensions": {
+        "width": 1200,
+        "height": 800
+      },
+      "hash": "93059be80f85f3224a63b01417d330bc137e4056379814b4dfaf0d62d4fc5cb3",
+      "references": [
+        "src/data/edvanta/programas.js:62"
+      ],
+      "action": "conservar_y_revisar",
+      "status": "referenciada",
+      "priority": "media",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0110",
+      "file": "public/img/contigo/tiroides.webp",
+      "url": "/img/contigo/tiroides.webp",
+      "extension": ".webp",
+      "bytes": 62208,
+      "dimensions": {
+        "width": 1200,
+        "height": 800
+      },
+      "hash": "5279c603f58b08a1c6f70bf83c9a280ca46a9bb9e4612b4592dcb686253d7951",
+      "references": [
+        "src/data/edvanta/programas.js:55"
+      ],
+      "action": "conservar_y_revisar",
+      "status": "referenciada",
+      "priority": "media",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0111",
+      "file": "public/img/empleo/areas-quimico-farmaceutico.webp",
+      "url": "/img/empleo/areas-quimico-farmaceutico.webp",
+      "extension": ".webp",
+      "bytes": 151864,
+      "dimensions": {
+        "width": 1672,
+        "height": 941
+      },
+      "hash": "7fcd87a238b7ae024f9cb4ffe60a753af5da1acb8d67eadb90b2d09673f551c6",
+      "references": [
+        "src/pages/OfertasQFPage.jsx:222"
+      ],
+      "action": "conservar_y_revisar",
+      "status": "referenciada",
+      "priority": "media",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0112",
+      "file": "public/img/empleo/ejemplo-correo-postulacion.webp",
+      "url": "/img/empleo/ejemplo-correo-postulacion.webp",
+      "extension": ".webp",
+      "bytes": 120822,
+      "dimensions": {
+        "width": 1672,
+        "height": 941
+      },
+      "hash": "428cb97bb2a90c7a3ed67b45293b1cf1d47d6de06ea4595dad8baf8861c29547",
+      "references": [
+        "src/pages/empleo/CorreosRRHH.jsx:202"
+      ],
+      "action": "conservar_y_revisar",
+      "status": "referenciada",
+      "priority": "media",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0113",
+      "file": "public/img/empleo/entrevista-quimica-farmaceutica.webp",
+      "url": "/img/empleo/entrevista-quimica-farmaceutica.webp",
+      "extension": ".webp",
+      "bytes": 136500,
+      "dimensions": {
+        "width": 1448,
+        "height": 1086
+      },
+      "hash": "170de9b9d0c90aab65f09c47d2c43411d0a72c5f62f08d517a6d66adf775b2da",
+      "references": [
+        "src/pages/EmpleoPage.jsx:139"
+      ],
+      "action": "conservar_y_revisar",
+      "status": "referenciada",
+      "priority": "media",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0114",
+      "file": "public/img/empleo/escribiendo-correo-postulacion.webp",
+      "url": "/img/empleo/escribiendo-correo-postulacion.webp",
+      "extension": ".webp",
+      "bytes": 118852,
+      "dimensions": {
+        "width": 1448,
+        "height": 1086
+      },
+      "hash": "10ea0c1b3efb6519c2705d99d3f9c0a61981286c41b9ba55e2d6e42aa2c2ba25",
+      "references": [
+        "src/pages/empleo/CorreosRRHH.jsx:129",
+        "src/pages/HojaDeVida.jsx:135"
+      ],
+      "action": "conservar_y_revisar",
+      "status": "referenciada",
+      "priority": "media",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0115",
+      "file": "public/img/empresas/capacitacion-equipo-farmaceutico.webp",
+      "url": "/img/empresas/capacitacion-equipo-farmaceutico.webp",
+      "extension": ".webp",
+      "bytes": 158654,
+      "dimensions": {
+        "width": 1448,
+        "height": 1086
+      },
+      "hash": "69aa9c55e5d247ba1edbf00f3cb990a84af022a252c4d411c7e2b31d2ef10b42",
+      "references": [
+        "src/data/edvanta/capacitacion.js:249"
+      ],
+      "action": "conservar_y_revisar",
+      "status": "referenciada",
+      "priority": "media",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0116",
+      "file": "public/img/empresas/panel-capacitacion-edvanta.webp",
+      "url": "/img/empresas/panel-capacitacion-edvanta.webp",
+      "extension": ".webp",
+      "bytes": 178066,
+      "dimensions": {
+        "width": 1672,
+        "height": 941
+      },
+      "hash": "d2627bb5243737ac03b4e1925f1316913c245cee52f37773383a29d6d30dfb79",
+      "references": [],
+      "action": "revisar",
+      "status": "sin_referencia_estatica",
+      "priority": "media",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0117",
+      "file": "public/img/empresas/quimica-farmaceutica-en-planta.webp",
+      "url": "/img/empresas/quimica-farmaceutica-en-planta.webp",
+      "extension": ".webp",
+      "bytes": 112022,
+      "dimensions": {
+        "width": 1448,
+        "height": 1086
+      },
+      "hash": "9c64791a91aaab07238f7611cffaee8078d87d44f2a103905c878585465bca3e",
+      "references": [
+        "src/data/edvanta/capacitacion.js:1369",
+        "src/pages/empresas/EmpresasTalento.jsx:94"
+      ],
+      "action": "conservar_y_revisar",
+      "status": "referenciada",
+      "priority": "media",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0118",
+      "file": "public/img/empresas/seleccion-revisando-perfiles.webp",
+      "url": "/img/empresas/seleccion-revisando-perfiles.webp",
+      "extension": ".webp",
+      "bytes": 173386,
+      "dimensions": {
+        "width": 1086,
+        "height": 1448
+      },
+      "hash": "581ddc377f36187b181c9d6e781d79f63147cca4ad848c207ce5a940c14f8b49",
+      "references": [
+        "src/pages/empresas/EmpresasTalento.jsx:175",
+        "src/pages/HojaDeVida.jsx:222"
+      ],
+      "action": "conservar_y_revisar",
+      "status": "referenciada",
+      "priority": "media",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0119",
+      "file": "public/img/fotos/equipo-carrera-farmaceutica-movil.webp",
+      "url": "/img/fotos/equipo-carrera-farmaceutica-movil.webp",
+      "extension": ".webp",
+      "bytes": 45192,
+      "dimensions": {
+        "width": 1000,
+        "height": 760
+      },
+      "hash": "d2788eed8f69b76f2009b9dddab70f8389d60af4818fed23ace1b9dfe691b49b",
+      "references": [
+        "src/pages/CareersIndex.jsx:181"
+      ],
+      "action": "conservar_y_revisar",
+      "status": "referenciada",
+      "priority": "media",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0120",
+      "file": "public/img/fotos/equipo-carrera-farmaceutica.webp",
+      "url": "/img/fotos/equipo-carrera-farmaceutica.webp",
+      "extension": ".webp",
+      "bytes": 43642,
+      "dimensions": {
+        "width": 1920,
+        "height": 768
+      },
+      "hash": "a653828d0c11120e8eb7e9edad564e9ca3462ecbd5f40bbbd8e94ff303f43a7d",
+      "references": [
+        "src/pages/CareersIndex.jsx:180"
+      ],
+      "action": "conservar_y_revisar",
+      "status": "referenciada",
+      "priority": "media",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0121",
+      "file": "public/img/fst-hero-profesional.jpg",
+      "url": "/img/fst-hero-profesional.jpg",
+      "extension": ".jpg",
+      "bytes": 78781,
+      "dimensions": {
+        "width": 900,
+        "height": 900
+      },
+      "hash": "54a8235d91c573caf8f025edbdd58733205bf754c1ea4f90c7abf52bf9fee1f2",
+      "references": [
+        "src/pages/FelizSinTiroides.jsx:136"
+      ],
+      "action": "conservar_y_revisar",
+      "status": "referenciada",
+      "priority": "media",
+      "duplicates": [
+        "/img/fst-pastel-health-professional.jpg"
+      ],
+      "promptRef": null,
+      "flags": [
+        "duplicado_binario"
+      ]
+    },
+    {
+      "id": "IMG-0122",
+      "file": "public/img/fst-pastel-health-professional.jpg",
+      "url": "/img/fst-pastel-health-professional.jpg",
+      "extension": ".jpg",
+      "bytes": 78781,
+      "dimensions": {
+        "width": 900,
+        "height": 900
+      },
+      "hash": "54a8235d91c573caf8f025edbdd58733205bf754c1ea4f90c7abf52bf9fee1f2",
+      "references": [
+        "src/pages/FstPastelLanding.jsx:33",
+        "src/pages/FstPastelLanding.jsx:83"
+      ],
+      "action": "conservar_y_revisar",
+      "status": "referenciada",
+      "priority": "media",
+      "duplicates": [
+        "/img/fst-hero-profesional.jpg"
+      ],
+      "promptRef": null,
+      "flags": [
+        "duplicado_binario"
+      ]
+    },
+    {
+      "id": "IMG-0123",
+      "file": "public/img/hero-biblioteca.jpg",
+      "url": "/img/hero-biblioteca.jpg",
+      "extension": ".jpg",
+      "bytes": 83626,
+      "dimensions": {
+        "width": 1100,
+        "height": 825
+      },
+      "hash": "7c86f937f0fcd1ccaaa07179c222fbd0f688c878fedda779ecb76e2c8817c9c5",
+      "references": [
+        "index.html:21",
+        "index.html:27"
+      ],
+      "action": "conservar_y_revisar",
+      "status": "referenciada",
+      "priority": "media",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0124",
+      "file": "public/img/herramienta-calidad.jpg",
+      "url": "/img/herramienta-calidad.jpg",
+      "extension": ".jpg",
+      "bytes": 82149,
+      "dimensions": {
+        "width": 1100,
+        "height": 825
+      },
+      "hash": "fda6de7e8f357942328faf602d5269d29a2898dd4622d03a9962712196a9b4e4",
+      "references": [
+        "src/data/products.js:71"
+      ],
+      "action": "conservar_y_revisar",
+      "status": "referenciada",
+      "priority": "media",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0125",
+      "file": "public/img/logo-edvanta-wordmark.png",
+      "url": "/img/logo-edvanta-wordmark.png",
+      "extension": ".png",
+      "bytes": 75588,
+      "dimensions": {
+        "width": 901,
+        "height": 162
+      },
+      "hash": "23f05f63f4f0c224d033f695081dfa6adfbdf5f837bfc5f2f8578ec03808a6a4",
+      "references": [
+        "src/components/edvanta/SiteFooter.jsx:30"
+      ],
+      "action": "conservar_y_revisar",
+      "status": "referenciada",
+      "priority": "media",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0126",
+      "file": "public/img/port-ayunos.jpg",
+      "url": "/img/port-ayunos.jpg",
+      "extension": ".jpg",
+      "bytes": 28946,
+      "dimensions": {
+        "width": 412,
+        "height": 533
+      },
+      "hash": "93ebe9af2ae4b384a21d302b2ad56ae5b100dda5bfaede2a3abe318d707c2a0f",
+      "references": [
+        "src/data/fst.js:194"
+      ],
+      "action": "conservar_y_revisar",
+      "status": "referenciada",
+      "priority": "media",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0127",
+      "file": "public/img/port-diario-hiper.jpg",
+      "url": "/img/port-diario-hiper.jpg",
+      "extension": ".jpg",
+      "bytes": 45657,
+      "dimensions": {
+        "width": 449,
+        "height": 587
+      },
+      "hash": "94d6d6668e214c19751dd46858da75f5f8035039bde45d1b1cf83a97a72def4c",
+      "references": [
+        "src/data/academyLessonGuides.js:56",
+        "src/data/fst.js:230"
+      ],
+      "action": "conservar_y_revisar",
+      "status": "referenciada",
+      "priority": "media",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0128",
+      "file": "public/img/port-gestion.jpg",
+      "url": "/img/port-gestion.jpg",
+      "extension": ".jpg",
+      "bytes": 18254,
+      "dimensions": {
+        "width": 261,
+        "height": 424
+      },
+      "hash": "3db69e4da617b4809acbd57da150ed6880eb30a4811b8e3317d30238b0f04bd4",
+      "references": [
+        "src/data/fst.js:96"
+      ],
+      "action": "conservar_y_revisar",
+      "status": "referenciada",
+      "priority": "media",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0129",
+      "file": "public/img/port-portada.jpg",
+      "url": "/img/port-portada.jpg",
+      "extension": ".jpg",
+      "bytes": 44851,
+      "dimensions": {
+        "width": 720,
+        "height": 540
+      },
+      "hash": "fd3a2ebea47f9c14728722daffd22a6a26e9ed62ecebd1b26aefa23769356430",
+      "references": [
+        "src/data/academyLessonGuides.js:68",
+        "src/data/fst.js:296"
+      ],
+      "action": "conservar_y_revisar",
+      "status": "referenciada",
+      "priority": "media",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0130",
+      "file": "public/img/port-postoperatorio.jpg",
+      "url": "/img/port-postoperatorio.jpg",
+      "extension": ".jpg",
+      "bytes": 23182,
+      "dimensions": {
+        "width": 382,
+        "height": 525
+      },
+      "hash": "d9bd6089e3a88b2d20a592d1eb2733d30923ee9f1915cd711951649ffd50c427",
+      "references": [
+        "src/data/fst.js:274"
+      ],
+      "action": "conservar_y_revisar",
+      "status": "referenciada",
+      "priority": "media",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0131",
+      "file": "public/img/port-vivirsintiroides.jpg",
+      "url": "/img/port-vivirsintiroides.jpg",
+      "extension": ".jpg",
+      "bytes": 26458,
+      "dimensions": {
+        "width": 377,
+        "height": 516
+      },
+      "hash": "1a375b8a84bbe0f72592d40e3bccb6d44a1c39bb5acfd694da8dadb81b6a4086",
+      "references": [
+        "src/data/academyLessonGuides.js:44",
+        "src/data/fst.js:263"
+      ],
+      "action": "conservar_y_revisar",
+      "status": "referenciada",
+      "priority": "media",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0132",
+      "file": "public/img/port-yodoterapia.jpg",
+      "url": "/img/port-yodoterapia.jpg",
+      "extension": ".jpg",
+      "bytes": 30797,
+      "dimensions": {
+        "width": 370,
+        "height": 523
+      },
+      "hash": "ab2fe9ee1be668d359015b4abf5a04e6e3ce3095d7b1a91137a7302fc44e70a5",
+      "references": [
+        "src/data/fst.js:206"
+      ],
+      "action": "conservar_y_revisar",
+      "status": "referenciada",
+      "priority": "media",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0133",
+      "file": "public/img/retos/activa-quema-dia-1.svg",
+      "url": "/img/retos/activa-quema-dia-1.svg",
+      "extension": ".svg",
+      "bytes": 1237,
+      "dimensions": {
+        "width": 1200,
+        "height": 675
+      },
+      "hash": "451d884284b86f8196ff1128d484ccec4cd6991668c03bee0bb9d14f1019b1de",
+      "references": [
+        "src/data/retos/activaQuema.js:52"
+      ],
+      "action": "conservar_y_revisar",
+      "status": "referenciada",
+      "priority": "media",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0134",
+      "file": "public/img/retos/activa-quema-dia-2.svg",
+      "url": "/img/retos/activa-quema-dia-2.svg",
+      "extension": ".svg",
+      "bytes": 1257,
+      "dimensions": {
+        "width": 1200,
+        "height": 675
+      },
+      "hash": "d55ed4336b4a47b64d30580f37c0e836e979849c858457afac25f0355b949ff6",
+      "references": [
+        "src/data/retos/activaQuema.js:53"
+      ],
+      "action": "conservar_y_revisar",
+      "status": "referenciada",
+      "priority": "media",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0135",
+      "file": "public/img/retos/activa-quema-dia-3.svg",
+      "url": "/img/retos/activa-quema-dia-3.svg",
+      "extension": ".svg",
+      "bytes": 1254,
+      "dimensions": {
+        "width": 1200,
+        "height": 675
+      },
+      "hash": "1c147838306bc5538e534f299254d60d09eb1fc9cdf468af7990e90964277690",
+      "references": [
+        "src/data/retos/activaQuema.js:54"
+      ],
+      "action": "conservar_y_revisar",
+      "status": "referenciada",
+      "priority": "media",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0136",
+      "file": "public/img/retos/activa-quema-dia-4.svg",
+      "url": "/img/retos/activa-quema-dia-4.svg",
+      "extension": ".svg",
+      "bytes": 1246,
+      "dimensions": {
+        "width": 1200,
+        "height": 675
+      },
+      "hash": "0e0e68c07e6c7e401bd2787014825a76ceab580f6275d11113bfe1a38eb8fe8f",
+      "references": [
+        "src/data/retos/activaQuema.js:55"
+      ],
+      "action": "conservar_y_revisar",
+      "status": "referenciada",
+      "priority": "media",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0137",
+      "file": "public/img/retos/activa-quema-dia-5.svg",
+      "url": "/img/retos/activa-quema-dia-5.svg",
+      "extension": ".svg",
+      "bytes": 1250,
+      "dimensions": {
+        "width": 1200,
+        "height": 675
+      },
+      "hash": "4b8ffdd4e2a980bb6566d90c1b5cf2239a3fafaa4c6bdae4ab179a26a20eb182",
+      "references": [
+        "src/data/retos/activaQuema.js:56"
+      ],
+      "action": "conservar_y_revisar",
+      "status": "referenciada",
+      "priority": "media",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0138",
+      "file": "public/img/retos/activa-quema-dia-6.svg",
+      "url": "/img/retos/activa-quema-dia-6.svg",
+      "extension": ".svg",
+      "bytes": 1260,
+      "dimensions": {
+        "width": 1200,
+        "height": 675
+      },
+      "hash": "5ddb675008a17db095e9752a27d8ab9e57fc17af12e2750e3749f219108cc8d0",
+      "references": [
+        "src/data/retos/activaQuema.js:57"
+      ],
+      "action": "conservar_y_revisar",
+      "status": "referenciada",
+      "priority": "media",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0139",
+      "file": "public/img/retos/activa-quema-dia-7.svg",
+      "url": "/img/retos/activa-quema-dia-7.svg",
+      "extension": ".svg",
+      "bytes": 1253,
+      "dimensions": {
+        "width": 1200,
+        "height": 675
+      },
+      "hash": "1a4045250341f62fcc841a1a4027a323b0cc219e77f3c1738ee43cc4e93848aa",
+      "references": [
+        "src/data/retos/activaQuema.js:58"
+      ],
+      "action": "conservar_y_revisar",
+      "status": "referenciada",
+      "priority": "media",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0140",
+      "file": "public/img/rutas/aseguramiento-de-calidad-desde-cero.webp",
+      "url": "/img/rutas/aseguramiento-de-calidad-desde-cero.webp",
+      "extension": ".webp",
+      "bytes": 62758,
+      "dimensions": {
+        "width": 1200,
+        "height": 800
+      },
+      "hash": "7b3bb22699e6a9b3ca6a6ac28e7b1684859dc9fcbf96d7147aa090fc470701c7",
+      "references": [],
+      "action": "validar_y_eliminar",
+      "status": "candidata_duplicada",
+      "priority": "media",
+      "duplicates": [
+        "/img/rutas/quality-assurance-desde-cero.webp"
+      ],
+      "promptRef": null,
+      "flags": [
+        "duplicado_binario"
+      ]
+    },
+    {
+      "id": "IMG-0141",
+      "file": "public/img/rutas/asuntos-regulatorios.webp",
+      "url": "/img/rutas/asuntos-regulatorios.webp",
+      "extension": ".webp",
+      "bytes": 63560,
+      "dimensions": {
+        "width": 1200,
+        "height": 800
+      },
+      "hash": "05a9aa233ba7e6e6164db0e1568a3be3744c6d9625be5d2856a180da40b6cc5e",
+      "references": [],
+      "action": "validar_y_eliminar",
+      "status": "candidata_duplicada",
+      "priority": "media",
+      "duplicates": [
+        "/img/rutas/regulatory-affairs.webp"
+      ],
+      "promptRef": null,
+      "flags": [
+        "duplicado_binario"
+      ]
+    },
+    {
+      "id": "IMG-0142",
+      "file": "public/img/rutas/control-de-calidad.webp",
+      "url": "/img/rutas/control-de-calidad.webp",
+      "extension": ".webp",
+      "bytes": 56282,
+      "dimensions": {
+        "width": 1200,
+        "height": 800
+      },
+      "hash": "3eeb61ae46701bfae4c1e13d804c0c2a553218a748c4ffceb9e51a1ea9f1a0d4",
+      "references": [
+        "src/data/edvanta/capacitacion.js:809"
+      ],
+      "action": "conservar_y_revisar",
+      "status": "referenciada",
+      "priority": "media",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0143",
+      "file": "public/img/rutas/data-y-pharma.webp",
+      "url": "/img/rutas/data-y-pharma.webp",
+      "extension": ".webp",
+      "bytes": 53038,
+      "dimensions": {
+        "width": 1200,
+        "height": 800
+      },
+      "hash": "af2d7a136cc3e1f549fee82d4830e5942bbdd28766a5968a116b6c2fe36d2f5a",
+      "references": [
+        "src/data/edvanta/capacitacion.js:1529"
+      ],
+      "action": "conservar_y_revisar",
+      "status": "referenciada",
+      "priority": "media",
+      "duplicates": [
+        "/img/rutas/datos-para-la-industria-farmaceutica.webp"
+      ],
+      "promptRef": null,
+      "flags": [
+        "duplicado_binario"
+      ]
+    },
+    {
+      "id": "IMG-0144",
+      "file": "public/img/rutas/datos-para-la-industria-farmaceutica.webp",
+      "url": "/img/rutas/datos-para-la-industria-farmaceutica.webp",
+      "extension": ".webp",
+      "bytes": 53038,
+      "dimensions": {
+        "width": 1200,
+        "height": 800
+      },
+      "hash": "af2d7a136cc3e1f549fee82d4830e5942bbdd28766a5968a116b6c2fe36d2f5a",
+      "references": [],
+      "action": "validar_y_eliminar",
+      "status": "candidata_duplicada",
+      "priority": "media",
+      "duplicates": [
+        "/img/rutas/data-y-pharma.webp"
+      ],
+      "promptRef": null,
+      "flags": [
+        "duplicado_binario"
+      ]
+    },
+    {
+      "id": "IMG-0145",
+      "file": "public/img/rutas/farmacovigilancia.webp",
+      "url": "/img/rutas/farmacovigilancia.webp",
+      "extension": ".webp",
+      "bytes": 64514,
+      "dimensions": {
+        "width": 1200,
+        "height": 800
+      },
+      "hash": "d611c968d15113e756e41b779b1f8c757a64803e2db3e1196471aa0367a7c560",
+      "references": [
+        "src/data/edvanta/capacitacion.js:1049"
+      ],
+      "action": "conservar_y_revisar",
+      "status": "referenciada",
+      "priority": "media",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0146",
+      "file": "public/img/rutas/formulacion-cosmetica.webp",
+      "url": "/img/rutas/formulacion-cosmetica.webp",
+      "extension": ".webp",
+      "bytes": 72802,
+      "dimensions": {
+        "width": 1200,
+        "height": 800
+      },
+      "hash": "753ba8a6f4b62ec8ba27c6cd56a5509ff752b9f7bbba6d897a44b036066a6ca3",
+      "references": [],
+      "action": "revisar",
+      "status": "sin_referencia_estatica",
+      "priority": "media",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0147",
+      "file": "public/img/rutas/ia-para-profesionales-farmaceuticos.webp",
+      "url": "/img/rutas/ia-para-profesionales-farmaceuticos.webp",
+      "extension": ".webp",
+      "bytes": 58790,
+      "dimensions": {
+        "width": 1200,
+        "height": 800
+      },
+      "hash": "b50825f0e243a70d0c7e7af9bb3ba7b531abdbf86eb0c090a403ebe1e500070b",
+      "references": [],
+      "action": "revisar",
+      "status": "sin_referencia_estatica",
+      "priority": "media",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0148",
+      "file": "public/img/rutas/investigacion-y-desarrollo.webp",
+      "url": "/img/rutas/investigacion-y-desarrollo.webp",
+      "extension": ".webp",
+      "bytes": 59130,
+      "dimensions": {
+        "width": 1200,
+        "height": 800
+      },
+      "hash": "13622144185fd20512c26c35746173dd3389a28bcf33882dd59c782440328023",
+      "references": [
+        "src/data/edvanta/capacitacion.js:649"
+      ],
+      "action": "conservar_y_revisar",
+      "status": "referenciada",
+      "priority": "media",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0149",
+      "file": "public/img/rutas/medical-affairs.webp",
+      "url": "/img/rutas/medical-affairs.webp",
+      "extension": ".webp",
+      "bytes": 56406,
+      "dimensions": {
+        "width": 1200,
+        "height": 800
+      },
+      "hash": "9ec2256d616375e748ca0e46751811ed30952d73e2232ea9330e508814b13b92",
+      "references": [],
+      "action": "revisar",
+      "status": "sin_referencia_estatica",
+      "priority": "media",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0150",
+      "file": "public/img/rutas/produccion-farmaceutica.webp",
+      "url": "/img/rutas/produccion-farmaceutica.webp",
+      "extension": ".webp",
+      "bytes": 54300,
+      "dimensions": {
+        "width": 1200,
+        "height": 800
+      },
+      "hash": "d71323ba9df6668fe6ec580bfa9592b5df9390282e9096d50bf625afccb032c1",
+      "references": [
+        "src/data/edvanta/capacitacion.js:889"
+      ],
+      "action": "conservar_y_revisar",
+      "status": "referenciada",
+      "priority": "media",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0151",
+      "file": "public/img/rutas/quality-assurance-desde-cero.webp",
+      "url": "/img/rutas/quality-assurance-desde-cero.webp",
+      "extension": ".webp",
+      "bytes": 62758,
+      "dimensions": {
+        "width": 1200,
+        "height": 800
+      },
+      "hash": "7b3bb22699e6a9b3ca6a6ac28e7b1684859dc9fcbf96d7147aa090fc470701c7",
+      "references": [
+        "src/data/edvanta/capacitacion.js:729"
+      ],
+      "action": "conservar_y_revisar",
+      "status": "referenciada",
+      "priority": "media",
+      "duplicates": [
+        "/img/rutas/aseguramiento-de-calidad-desde-cero.webp"
+      ],
+      "promptRef": null,
+      "flags": [
+        "duplicado_binario"
+      ]
+    },
+    {
+      "id": "IMG-0152",
+      "file": "public/img/rutas/regulatory-affairs.webp",
+      "url": "/img/rutas/regulatory-affairs.webp",
+      "extension": ".webp",
+      "bytes": 63560,
+      "dimensions": {
+        "width": 1200,
+        "height": 800
+      },
+      "hash": "05a9aa233ba7e6e6164db0e1568a3be3744c6d9625be5d2856a180da40b6cc5e",
+      "references": [],
+      "action": "validar_y_eliminar",
+      "status": "candidata_duplicada",
+      "priority": "media",
+      "duplicates": [
+        "/img/rutas/asuntos-regulatorios.webp"
+      ],
+      "promptRef": null,
+      "flags": [
+        "duplicado_binario"
+      ]
+    },
+    {
+      "id": "IMG-0153",
+      "file": "public/img/rutas/validaciones-farmaceuticas.webp",
+      "url": "/img/rutas/validaciones-farmaceuticas.webp",
+      "extension": ".webp",
+      "bytes": 54072,
+      "dimensions": {
+        "width": 1200,
+        "height": 800
+      },
+      "hash": "8dc3bc278893379b034820c123c571ee6cb661b6379fb622b2aa4e7d7563f5d6",
+      "references": [
+        "src/data/edvanta/capacitacion.js:1129"
+      ],
+      "action": "conservar_y_revisar",
+      "status": "referenciada",
+      "priority": "media",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0154",
+      "file": "public/img/talento/perfil-destacado-edvanta.webp",
+      "url": "/img/talento/perfil-destacado-edvanta.webp",
+      "extension": ".webp",
+      "bytes": 222154,
+      "dimensions": {
+        "width": 1448,
+        "height": 1086
+      },
+      "hash": "1d526610614465957ed2429d0b0bd1d4fee3e9aa0a746999bb8cbe68e6eedd4a",
+      "references": [
+        "src/pages/TalentoVitrina.jsx:185"
+      ],
+      "action": "conservar_y_revisar",
+      "status": "referenciada",
+      "priority": "media",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0155",
+      "file": "public/img/talento/perfil-profesional-edvanta.webp",
+      "url": "/img/talento/perfil-profesional-edvanta.webp",
+      "extension": ".webp",
+      "bytes": 140166,
+      "dimensions": {
+        "width": 1448,
+        "height": 1086
+      },
+      "hash": "adf067cbb6ae6a0703a8db3d25dd434f23997f2e3ff347be00c6efa718a61119",
+      "references": [
+        "src/pages/TalentoVitrina.jsx:101"
+      ],
+      "action": "conservar_y_revisar",
+      "status": "referenciada",
+      "priority": "media",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0156",
+      "file": "public/images/academia/estudio-autocuidado-tiroideo.webp",
+      "url": "/images/academia/estudio-autocuidado-tiroideo.webp",
+      "extension": ".webp",
+      "bytes": 71164,
+      "dimensions": {
+        "width": 1599,
+        "height": 900
+      },
+      "hash": "9bbbc3133b89284660c92ba17ef00e038ed0ffb827235d46f1a20ce81846b62b",
+      "references": [],
+      "action": "revisar",
+      "status": "sin_referencia_estatica",
+      "priority": "baja",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0157",
+      "file": "public/images/academia/organizar-consulta-examenes.webp",
+      "url": "/images/academia/organizar-consulta-examenes.webp",
+      "extension": ".webp",
+      "bytes": 87422,
+      "dimensions": {
+        "width": 1599,
+        "height": 900
+      },
+      "hash": "86bc485e03d9f159972f6d7f6fc572ea0cfa6512b085c8ae7d71ff9cafd53b43",
+      "references": [],
+      "action": "revisar",
+      "status": "sin_referencia_estatica",
+      "priority": "baja",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0158",
+      "file": "public/images/academia/rutina-medicacion-manana.webp",
+      "url": "/images/academia/rutina-medicacion-manana.webp",
+      "extension": ".webp",
+      "bytes": 60890,
+      "dimensions": {
+        "width": 1599,
+        "height": 900
+      },
+      "hash": "c6d1c670309ca9aa2b129845ec3e2916978dfd5a0c6a706ad1a7f166f363e3ee",
+      "references": [],
+      "action": "revisar",
+      "status": "sin_referencia_estatica",
+      "priority": "baja",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0159",
+      "file": "public/images/academia/rutina-piel-seca.webp",
+      "url": "/images/academia/rutina-piel-seca.webp",
+      "extension": ".webp",
+      "bytes": 93192,
+      "dimensions": {
+        "width": 1599,
+        "height": 900
+      },
+      "hash": "249d9590d310bc80c43b903c4d6fae0b6944b2fae8683946568c415f2715d5fd",
+      "references": [],
+      "action": "revisar",
+      "status": "sin_referencia_estatica",
+      "priority": "baja",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0160",
+      "file": "public/img/Captura de pantalla 2025-12-28 210110.png",
+      "url": "/img/Captura de pantalla 2025-12-28 210110.png",
+      "extension": ".png",
+      "bytes": 290370,
+      "dimensions": {
+        "width": 459,
+        "height": 590
+      },
+      "hash": "c75b8eac744c5e9c52e1acf30d434f8bd852ef36f22b3ed73a7b88ffa600b545",
+      "references": [],
+      "action": "revisar",
+      "status": "sin_referencia_estatica",
+      "priority": "baja",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0161",
+      "file": "public/img/Captura de pantalla 2026-01-16 123017.png",
+      "url": "/img/Captura de pantalla 2026-01-16 123017.png",
+      "extension": ".png",
+      "bytes": 169466,
+      "dimensions": {
+        "width": 405,
+        "height": 529
+      },
+      "hash": "7cb9eafa8ad8aa36f7cc51917d93fd87bb012d851c15cf40719dc8bd31b37b18",
+      "references": [],
+      "action": "revisar",
+      "status": "sin_referencia_estatica",
+      "priority": "baja",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0162",
+      "file": "public/img/Captura de pantalla 2026-01-16 123051.png",
+      "url": "/img/Captura de pantalla 2026-01-16 123051.png",
+      "extension": ".png",
+      "bytes": 286410,
+      "dimensions": {
+        "width": 400,
+        "height": 521
+      },
+      "hash": "9460a56a94f2d4abc2b2621256f1803aeadfa968abc486f7d2f2e337af4f2b41",
+      "references": [],
+      "action": "revisar",
+      "status": "sin_referencia_estatica",
+      "priority": "baja",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0163",
+      "file": "public/img/Captura de pantalla 2026-01-16 123113.png",
+      "url": "/img/Captura de pantalla 2026-01-16 123113.png",
+      "extension": ".png",
+      "bytes": 361722,
+      "dimensions": {
+        "width": 401,
+        "height": 527
+      },
+      "hash": "8ad4271c4fb50a8f24d4146246d1164a1f9e7eb0874c3bf4b4e8f0cb0296ba11",
+      "references": [],
+      "action": "revisar",
+      "status": "sin_referencia_estatica",
+      "priority": "baja",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0164",
+      "file": "public/img/clinico-digital.jpg",
+      "url": "/img/clinico-digital.jpg",
+      "extension": ".jpg",
+      "bytes": 56712,
+      "dimensions": {
+        "width": 900,
+        "height": 600
+      },
+      "hash": "78016a6679a5a9942e8412a512269d9ff3471ebbc931e1efc7239c85fe6f2245",
+      "references": [],
+      "action": "revisar",
+      "status": "sin_referencia_estatica",
+      "priority": "baja",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0165",
+      "file": "public/img/karla.png",
+      "url": "/img/karla.png",
+      "extension": ".png",
+      "bytes": 712476,
+      "dimensions": {
+        "width": 1080,
+        "height": 1350
+      },
+      "hash": "9f07f7c65043464f51ccf53a200eecdee494da7a370de88042f8e2eaa4f85c7b",
+      "references": [],
+      "action": "revisar",
+      "status": "sin_referencia_estatica",
+      "priority": "baja",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": [
+        "peso_alto"
+      ]
+    },
+    {
+      "id": "IMG-0166",
+      "file": "public/img/mockups-plantillas.jpg",
+      "url": "/img/mockups-plantillas.jpg",
+      "extension": ".jpg",
+      "bytes": 93236,
+      "dimensions": {
+        "width": 1100,
+        "height": 825
+      },
+      "hash": "e3b65750c0a043f2fef3dc896cb0d1d723e8ca3ca2bfa83d09d26a0c0fc40fe5",
+      "references": [],
+      "action": "revisar",
+      "status": "sin_referencia_estatica",
+      "priority": "baja",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0167",
+      "file": "public/img/port-ayunos.jpg.png",
+      "url": "/img/port-ayunos.jpg.png",
+      "extension": ".png",
+      "bytes": 100122,
+      "dimensions": {
+        "width": 412,
+        "height": 533
+      },
+      "hash": "e078c5245e7a067108849551abcda7f7fcfca25bce7360c4223b1ed650d46cf4",
+      "references": [],
+      "action": "revisar",
+      "status": "sin_referencia_estatica",
+      "priority": "baja",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0168",
+      "file": "public/img/port-coleccion.jpg.png",
+      "url": "/img/port-coleccion.jpg.png",
+      "extension": ".png",
+      "bytes": 457002,
+      "dimensions": {
+        "width": 917,
+        "height": 490
+      },
+      "hash": "acdbfafee1883cbfe3ecdd76ebac52d606d9bc0c098e017b676e9788d8111fd2",
+      "references": [],
+      "action": "revisar",
+      "status": "sin_referencia_estatica",
+      "priority": "baja",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0169",
+      "file": "public/img/port-diario-hiper.jpg.png",
+      "url": "/img/port-diario-hiper.jpg.png",
+      "extension": ".png",
+      "bytes": 372641,
+      "dimensions": {
+        "width": 449,
+        "height": 587
+      },
+      "hash": "5aa43ae6efba335a8f95932d7897c1e4c4b00bb957dfb93f88d96dfca8c7dd65",
+      "references": [],
+      "action": "revisar",
+      "status": "sin_referencia_estatica",
+      "priority": "baja",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0170",
+      "file": "public/img/port-diario-hipo.jpg.png",
+      "url": "/img/port-diario-hipo.jpg.png",
+      "extension": ".png",
+      "bytes": 381996,
+      "dimensions": {
+        "width": 455,
+        "height": 587
+      },
+      "hash": "70c0ede53cac65736a40c808c7b4b1075ae15f96727cd9c1d5cd5677abe042f2",
+      "references": [],
+      "action": "revisar",
+      "status": "sin_referencia_estatica",
+      "priority": "baja",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0171",
+      "file": "public/img/port-gestion.jpg.png",
+      "url": "/img/port-gestion.jpg.png",
+      "extension": ".png",
+      "bytes": 141140,
+      "dimensions": {
+        "width": 261,
+        "height": 424
+      },
+      "hash": "f6cfccc59274a2f713f944df7b025daf98bcc6ebbe281e2d531092f196403f6d",
+      "references": [],
+      "action": "revisar",
+      "status": "sin_referencia_estatica",
+      "priority": "baja",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0172",
+      "file": "public/img/port-hipertiroidismo.jpg.png",
+      "url": "/img/port-hipertiroidismo.jpg.png",
+      "extension": ".png",
+      "bytes": 386141,
+      "dimensions": {
+        "width": 394,
+        "height": 520
+      },
+      "hash": "aee75307336e5dc119e604eb7aca10ad4db9a12d98373ce9fcf770014c8425cd",
+      "references": [],
+      "action": "revisar",
+      "status": "sin_referencia_estatica",
+      "priority": "baja",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0173",
+      "file": "public/img/port-hipotiroidismo.jpg.png",
+      "url": "/img/port-hipotiroidismo.jpg.png",
+      "extension": ".png",
+      "bytes": 402081,
+      "dimensions": {
+        "width": 422,
+        "height": 553
+      },
+      "hash": "4e6c65ddbe473b209883d5585e54aa039b2bc6649d8212cec06dd31318194897",
+      "references": [],
+      "action": "revisar",
+      "status": "sin_referencia_estatica",
+      "priority": "baja",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0174",
+      "file": "public/img/port-jugosfuncionales.jpg.png",
+      "url": "/img/port-jugosfuncionales.jpg.png",
+      "extension": ".png",
+      "bytes": 263437,
+      "dimensions": {
+        "width": 387,
+        "height": 536
+      },
+      "hash": "1d557953964d9af195ff2ebea014dc5a2d20d0cb4b504e92f3f899c102372f07",
+      "references": [],
+      "action": "revisar",
+      "status": "sin_referencia_estatica",
+      "priority": "baja",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0175",
+      "file": "public/img/port-logoatenfarmaclinic.jpg.png",
+      "url": "/img/port-logoatenfarmaclinic.jpg.png",
+      "extension": ".png",
+      "bytes": 33377,
+      "dimensions": {
+        "width": 306,
+        "height": 260
+      },
+      "hash": "b2d6c9b2d4cbf191de45201a349e56a06bce62d46e33992d5aa94b4e28cb8092",
+      "references": [],
+      "action": "revisar",
+      "status": "sin_referencia_estatica",
+      "priority": "baja",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0176",
+      "file": "public/img/port-logofelizsintiroides.jpg.png",
+      "url": "/img/port-logofelizsintiroides.jpg.png",
+      "extension": ".png",
+      "bytes": 7466,
+      "dimensions": {
+        "width": 112,
+        "height": 103
+      },
+      "hash": "3d17bbaa61e31385f7ca5f2dbcc95b90f9798e72a1b235afc042d859b25de0e0",
+      "references": [],
+      "action": "revisar",
+      "status": "sin_referencia_estatica",
+      "priority": "baja",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0177",
+      "file": "public/img/port-manejodesintomas.jpg.png",
+      "url": "/img/port-manejodesintomas.jpg.png",
+      "extension": ".png",
+      "bytes": 320812,
+      "dimensions": {
+        "width": 402,
+        "height": 521
+      },
+      "hash": "b55cc6befb502f945b1f4a6f3ef0c2488684f083bb519d62f10f6209d81d8e30",
+      "references": [],
+      "action": "revisar",
+      "status": "sin_referencia_estatica",
+      "priority": "baja",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0178",
+      "file": "public/img/port-nutricional.jpg.png",
+      "url": "/img/port-nutricional.jpg.png",
+      "extension": ".png",
+      "bytes": 233827,
+      "dimensions": {
+        "width": 384,
+        "height": 516
+      },
+      "hash": "ab7117364a4b670d9147052a3039056d7a26d5faa12c7b10b8fbd762a8d6a16c",
+      "references": [],
+      "action": "revisar",
+      "status": "sin_referencia_estatica",
+      "priority": "baja",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0179",
+      "file": "public/img/port-portada.jpg.png",
+      "url": "/img/port-portada.jpg.png",
+      "extension": ".png",
+      "bytes": 1817801,
+      "dimensions": {
+        "width": 1448,
+        "height": 1086
+      },
+      "hash": "385193356c483e56ddd2958a38447c25d43e56ee04ac1964978ee81bf1d1f968",
+      "references": [],
+      "action": "revisar",
+      "status": "sin_referencia_estatica",
+      "priority": "baja",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": [
+        "peso_alto"
+      ]
+    },
+    {
+      "id": "IMG-0180",
+      "file": "public/img/port-postoperatorio.jpg.png",
+      "url": "/img/port-postoperatorio.jpg.png",
+      "extension": ".png",
+      "bytes": 121638,
+      "dimensions": {
+        "width": 382,
+        "height": 525
+      },
+      "hash": "02d8ac481ce32b48119756afbe30f05eee25fe5011dc558c5931a43f8d1f4f0f",
+      "references": [],
+      "action": "revisar",
+      "status": "sin_referencia_estatica",
+      "priority": "baja",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0181",
+      "file": "public/img/port-pruebas.jpg.png",
+      "url": "/img/port-pruebas.jpg.png",
+      "extension": ".png",
+      "bytes": 75586,
+      "dimensions": {
+        "width": 409,
+        "height": 530
+      },
+      "hash": "92a8a6ee5106afd0e6757c74d45aecd31809a859f72be45655ec9fd3eb3a4aa5",
+      "references": [],
+      "action": "revisar",
+      "status": "sin_referencia_estatica",
+      "priority": "baja",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0182",
+      "file": "public/img/port-vivirsintiroides.jpg.png",
+      "url": "/img/port-vivirsintiroides.jpg.png",
+      "extension": ".png",
+      "bytes": 290597,
+      "dimensions": {
+        "width": 377,
+        "height": 516
+      },
+      "hash": "a9dc2475762f827b106c805f1fc9e183ee9af3f92f2b10a7be74da28a8ebbe53",
+      "references": [],
+      "action": "revisar",
+      "status": "sin_referencia_estatica",
+      "priority": "baja",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0183",
+      "file": "public/img/port-yodoterapia.jpg.png",
+      "url": "/img/port-yodoterapia.jpg.png",
+      "extension": ".png",
+      "bytes": 221382,
+      "dimensions": {
+        "width": 370,
+        "height": 523
+      },
+      "hash": "e4fe0e5c838d916c66746ab93c56fbeaacc4d7e6f4993cf75473e7190a15ff03",
+      "references": [],
+      "action": "revisar",
+      "status": "sin_referencia_estatica",
+      "priority": "baja",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0184",
+      "file": "public/img/POWER BI (1).png",
+      "url": "/img/POWER BI (1).png",
+      "extension": ".png",
+      "bytes": 193585,
+      "dimensions": {
+        "width": 1200,
+        "height": 1200
+      },
+      "hash": "2d6d707ec55ac0314bf71715634bdd206e4140adb8e73498820a3784fdda024e",
+      "references": [],
+      "action": "revisar",
+      "status": "sin_referencia_estatica",
+      "priority": "baja",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0185",
+      "file": "public/img/retos/10-minute-girl.svg",
+      "url": "/img/retos/10-minute-girl.svg",
+      "extension": ".svg",
+      "bytes": 1120,
+      "dimensions": {
+        "width": 1200,
+        "height": 675
+      },
+      "hash": "2b1004c287894e50bfa8bd19c6d17110c7c10e498a566fd9a9131eb6560a1796",
+      "references": [],
+      "action": "revisar",
+      "status": "sin_referencia_estatica",
+      "priority": "baja",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0186",
+      "file": "public/img/retos/abs-booty.svg",
+      "url": "/img/retos/abs-booty.svg",
+      "extension": ".svg",
+      "bytes": 1122,
+      "dimensions": {
+        "width": 1200,
+        "height": 675
+      },
+      "hash": "60d9a3023a86c45c380368ca7d9fb36def7ea2508e2a90dc64f39a00066e71cf",
+      "references": [],
+      "action": "revisar",
+      "status": "sin_referencia_estatica",
+      "priority": "baja",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0187",
+      "file": "public/img/retos/activa-quema.svg",
+      "url": "/img/retos/activa-quema.svg",
+      "extension": ".svg",
+      "bytes": 1761,
+      "dimensions": {
+        "width": 1200,
+        "height": 675
+      },
+      "hash": "1b1ff50eee17be31faf0767edb994b030e878972c0d3e97ea104dd09bb5af7ea",
+      "references": [],
+      "action": "revisar",
+      "status": "sin_referencia_estatica",
+      "priority": "baja",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0188",
+      "file": "public/img/retos/booty-bloom.svg",
+      "url": "/img/retos/booty-bloom.svg",
+      "extension": ".svg",
+      "bytes": 1114,
+      "dimensions": {
+        "width": 1200,
+        "height": 675
+      },
+      "hash": "9dab9689b796b43a5fc8d63cf1754a60bba946c50562124d5de9701594b7eaa8",
+      "references": [],
+      "action": "revisar",
+      "status": "sin_referencia_estatica",
+      "priority": "baja",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0189",
+      "file": "public/img/retos/core-girl.svg",
+      "url": "/img/retos/core-girl.svg",
+      "extension": ".svg",
+      "bytes": 1110,
+      "dimensions": {
+        "width": 1200,
+        "height": 675
+      },
+      "hash": "8307e7c9303295589351dca8c6d1c9b89e2e074da0889fa988956bb82c891b47",
+      "references": [],
+      "action": "revisar",
+      "status": "sin_referencia_estatica",
+      "priority": "baja",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0190",
+      "file": "public/img/retos/dumbbell-girl.svg",
+      "url": "/img/retos/dumbbell-girl.svg",
+      "extension": ".svg",
+      "bytes": 1118,
+      "dimensions": {
+        "width": 1200,
+        "height": 675
+      },
+      "hash": "97f12f7e650c03f1119585a65a90f2e436ad7b140f3a9453e392846c1617d9d5",
+      "references": [],
+      "action": "revisar",
+      "status": "sin_referencia_estatica",
+      "priority": "baja",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0191",
+      "file": "public/img/retos/full-body-girl.svg",
+      "url": "/img/retos/full-body-girl.svg",
+      "extension": ".svg",
+      "bytes": 1120,
+      "dimensions": {
+        "width": 1200,
+        "height": 675
+      },
+      "hash": "6806f91ee306b8a9254d617f6562ff0eaf4613cbcdd0a351876c56b094363387",
+      "references": [],
+      "action": "revisar",
+      "status": "sin_referencia_estatica",
+      "priority": "baja",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0192",
+      "file": "public/img/retos/legs-booty.svg",
+      "url": "/img/retos/legs-booty.svg",
+      "extension": ".svg",
+      "bytes": 1124,
+      "dimensions": {
+        "width": 1200,
+        "height": 675
+      },
+      "hash": "1ebc393f6198eda06779f07a450c3d892fd6a05a12e9434b2e9b6ab22c55cb2e",
+      "references": [],
+      "action": "revisar",
+      "status": "sin_referencia_estatica",
+      "priority": "baja",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0193",
+      "file": "public/img/retos/low-impact-girl.svg",
+      "url": "/img/retos/low-impact-girl.svg",
+      "extension": ".svg",
+      "bytes": 1122,
+      "dimensions": {
+        "width": 1200,
+        "height": 675
+      },
+      "hash": "4325a01ec81270b8d3fe5430502b9a11e5f844b32fb2a714a5245f33805dba31",
+      "references": [],
+      "action": "revisar",
+      "status": "sin_referencia_estatica",
+      "priority": "baja",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0194",
+      "file": "public/img/retos/pilates-princess.svg",
+      "url": "/img/retos/pilates-princess.svg",
+      "extension": ".svg",
+      "bytes": 1124,
+      "dimensions": {
+        "width": 1200,
+        "height": 675
+      },
+      "hash": "099662b8e379849badf0230328285c747c56c14e4c8fc43316f5b91330a716d1",
+      "references": [],
+      "action": "revisar",
+      "status": "sin_referencia_estatica",
+      "priority": "baja",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0195",
+      "file": "public/img/retos/soft-girl-reset.svg",
+      "url": "/img/retos/soft-girl-reset.svg",
+      "extension": ".svg",
+      "bytes": 1122,
+      "dimensions": {
+        "width": 1200,
+        "height": 675
+      },
+      "hash": "af7d1abac100c9ffe5c243dc1b1cc093b2091b621fd63db1ca8d99c9036df403",
+      "references": [],
+      "action": "revisar",
+      "status": "sin_referencia_estatica",
+      "priority": "baja",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0196",
+      "file": "public/img/retos/strong-girl.svg",
+      "url": "/img/retos/strong-girl.svg",
+      "extension": ".svg",
+      "bytes": 1114,
+      "dimensions": {
+        "width": 1200,
+        "height": 675
+      },
+      "hash": "ee1b816db6dbe9f12665eca5889160de7ae82e4cf763f84d29a2d32505c1882c",
+      "references": [],
+      "action": "revisar",
+      "status": "sin_referencia_estatica",
+      "priority": "baja",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    },
+    {
+      "id": "IMG-0197",
+      "file": "public/img/retos/walk-glow.svg",
+      "url": "/img/retos/walk-glow.svg",
+      "extension": ".svg",
+      "bytes": 1122,
+      "dimensions": {
+        "width": 1200,
+        "height": 675
+      },
+      "hash": "7dfcd8105ed189681b01eec0b730730093c7b664830a7a1639501fbbc3c1f844",
+      "references": [],
+      "action": "revisar",
+      "status": "sin_referencia_estatica",
+      "priority": "baja",
+      "duplicates": [],
+      "promptRef": null,
+      "flags": []
+    }
+  ]
+}
