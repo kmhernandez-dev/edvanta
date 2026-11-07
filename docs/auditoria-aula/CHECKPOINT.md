@@ -155,7 +155,7 @@ Pedido de la propietaria: crear quizzes, actividades y foros con el estándar nu
 | Lote | Migración privada | Cursos | Estado |
 |---|---|---|---|
 | bases | `069_evaluacion_bases.sql` (392 KB) | Central de Mezclas; Asuntos Regulatorios ante INVIMA; Validaciones y Calificaciones | Validado (0 errores, 0 avisos) y probado en PGlite (7/7). No aplicado en producción |
-| calidad | `070_evaluacion_calidad.sql` | 10 cursos de Calidad farmacéutica (inventario 7–16) | Pendiente |
+| calidad | `070_evaluacion_calidad.sql` (1,6 MB) | Gestión de Calidad, Aseguramiento, Control de Calidad, BPM, BPL, Documentación, Auditoría, Gestión de Riesgos, Desviaciones y CAPA, Validación de Métodos Analíticos | Validado (0 errores, 0 avisos) y probado en PGlite junto con bases (17/17). No aplicado en producción |
 | regulatorios | `071_evaluacion_regulatorios.sql` | 20 cursos de Asuntos regulatorios (17–36) | Pendiente |
 | farmacologia | `072_evaluacion_farmacologia.sql` | 12 cursos (37–48) | Pendiente |
 | farmacoterapia | `073_evaluacion_farmacoterapia.sql` | 4 cursos de 6 unidades (49–52) | Pendiente |
@@ -202,6 +202,8 @@ Pedido de la propietaria: crear quizzes, actividades y foros con el estándar nu
 | `node scripts/paquete-aula.mjs bpe todo` tras la corrección normativa | 0 errores, 0 avisos; la clase 9 queda en 1.842 palabras |
 | `node scripts/evaluacion-aula.mjs bases todo` | 3 cursos, 0 errores, 0 avisos; claves repartidas en A/B/C/D |
 | `api/tests/catalogo-evaluacion.test.js` (lote bases) | **7/7**: estructura y pesos por curso, sin tocar clases, idempotencia y protecciones |
+| `node scripts/evaluacion-aula.mjs calidad todo` | 10 cursos, 0 errores, 0 avisos; claves 5/5/5/5 por curso |
+| `api/tests/catalogo-evaluacion.test.js` (bases y calidad) | **17/17** |
 
 ## 5. Entornos
 
@@ -224,7 +226,7 @@ Pedido de la propietaria: crear quizzes, actividades y foros con el estándar nu
 
 ## 7. Punto exacto de continuación
 
-- Siguiente lote de evaluación: **calidad** (`070_evaluacion_calidad.sql`), 10 cursos de 5 unidades del inventario 7–16. Las unidades, clases y objetivos de cada clase salen de las migraciones 042 (y 043–045, 055 para los lotes siguientes).
+- Siguiente lote de evaluación: **regulatorios** (`071_evaluacion_regulatorios.sql`), 20 cursos de 5 unidades del inventario 17–36 (migraciones 043 y 044). Antes de escribir cada curso, verificar en el normograma del Invima la norma específica (fitoterapéuticos, homeopáticos, suplementos, cannabis, biológicos, vitales no disponibles, bioequivalencia). El curso de renovación debe enseñar el régimen vigente del Decreto 1474 de 2023.
 - Por curso: `contenido/aula/catalogo/<clave>.mjs` con `CURSO`, `UNIDADES` (quiz, foro y, en las unidades 1, 2 y 4, actividad), `PROYECTO` (entregas en las unidades 3 y 5) y `BIENVENIDA`; registrarlo en `index.mjs`.
 - Ciclo: `node scripts/evaluacion-aula.mjs <lote> todo` → revisar el reparto de claves y que la correcta no sea la opción más larga → `npx vitest run --config vitest.api.config.js api/tests/catalogo-evaluacion.test.js` → checkpoint.
 - Verificar en fuentes oficiales cualquier plazo, número o norma antes de usarlo (ver «Normas verificadas»).
