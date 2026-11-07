@@ -138,6 +138,48 @@ Limitaciones: `aula_forums` no tiene una columna privada para la guía de modera
 - Foros con título: un foro de bienvenida y foros de interacción.
 - `scripts/paquete-aula.mjs` lo valida (orden de Bloom en los quizzes, foro de bienvenida único, actividad por unidad y proyecto) y el aula muestra la actividad en el orden caso → instrucciones → entrega → rúbrica.
 
+## 3c. Fase B · capa de evaluación del catálogo (esquema 3, desde el 2026-11-06)
+
+Pedido de la propietaria: crear quizzes, actividades y foros con el estándar nuevo en **todos** los cursos. Para los cursos cuyas clases ya existen se crea solo la capa de evaluación; las clases no se reescriben.
+
+- **Herramienta pública:** `scripts/evaluacion-aula.mjs <lote|todos> validar|migracion|vista|todo` y los moldes de `contenido/aula/comun/evaluacion.mjs`.
+- **Privado (ignorado por git):** `contenido/aula/catalogo/<clave>.mjs` y su `index.mjs` con los lotes; `api/migrations/0NN_evaluacion_<lote>.sql`; `api/tests/catalogo-evaluacion.test.js`; `docs/auditoria-aula/evaluacion-<lote>-vista-previa.html`. Público: `docs/auditoria-aula/validacion-evaluacion-<lote>.md`.
+- **Por curso:**
+  - un quiz por unidad: 4 preguntas comprender → aplicar → analizar → evaluar, 4 opciones, retroalimentación por opción, clase de referencia y fuente;
+  - 5 actividades: 3 de unidad con caso propio y 2 entregas del proyecto integrador (8 % y 16 %);
+  - un foro de bienvenida sin nota y un foro de interacción por unidad.
+- **Cursos de 5 unidades:** actividad propia en las unidades 1, 2 y 4; la entrega 1 del proyecto es la actividad de la unidad 3 y la entrega final, la de la unidad 5. Cada unidad tiene una actividad y se respeta el máximo de 5 obligatorias del servidor (`MAX_REQUIRED_ACTIVITIES`). En los cursos de 6 unidades, una queda sin actividad propia y se documenta en `SIN_ACTIVIDAD`.
+- **Pesos:** actividades 60 (12/12/12 + 8/16), quizzes 30 repartidos por unidad, foros de interacción 10; aprobación 70; 2 intentos.
+- **Protecciones de la migración:** crea en borrador; no toca clases ni descripciones; respeta intentos, entregas, notas, estado publicado y matrículas. Cada texto largo va en una variable PL/pgSQL, lo que reduce el tamaño a la mitad.
+
+| Lote | Migración privada | Cursos | Estado |
+|---|---|---|---|
+| bases | `069_evaluacion_bases.sql` (392 KB) | Central de Mezclas; Asuntos Regulatorios ante INVIMA; Validaciones y Calificaciones | Validado (0 errores, 0 avisos) y probado en PGlite (7/7). No aplicado en producción |
+| calidad | `070_evaluacion_calidad.sql` | 10 cursos de Calidad farmacéutica (inventario 7–16) | Pendiente |
+| regulatorios | `071_evaluacion_regulatorios.sql` | 20 cursos de Asuntos regulatorios (17–36) | Pendiente |
+| farmacologia | `072_evaluacion_farmacologia.sql` | 12 cursos (37–48) | Pendiente |
+| farmacoterapia | `073_evaluacion_farmacoterapia.sql` | 4 cursos de 6 unidades (49–52) | Pendiente |
+| otros | — | BPM al estándar nuevo y Autocuidado de la tiroides (pacientes) | Pendiente |
+
+### Normas verificadas el 2026-11-06 que cambian contenidos
+
+- **Decreto 1474 de 2023:**
+  - Volvió indefinida la vigencia de los registros sanitarios de medicamentos (modificó el artículo 16 del Decreto 677 de 1995), siempre que se mantengan las condiciones aprobadas.
+  - El Invima archiva las renovaciones pendientes.
+  - **Quedan desactualizados** la clase «Modificaciones y renovaciones» del curso INVIMA (dice «Y el registro vence») y el enfoque del **Curso de Renovación de Registros Sanitarios de Medicamentos**.
+- **Decreto 334 de 2022:**
+  - Regula la modificación de registros y la información y publicidad de medicamentos; derogó los artículos 18 y 79 del Decreto 677.
+  - Su artículo 11 limita la publicidad de los medicamentos de venta con fórmula a publicaciones restringidas a médicos y odontólogos, y la prohíbe en redes, medios masivos y plataformas digitales.
+  - Lo reglamenta la Resolución 1896 de 2023.
+- **Resolución 2024015321 de 2024 del Invima** (rige desde el 1 de marzo de 2025 y derogó la 2004009455 de 2004):
+  - Los titulares comunican los eventos serios en 15 días calendario y los no serios en 90, por eReporting Industria.
+  - El programa de farmacovigilancia está a cargo de un médico o un químico farmacéutico que resida en Colombia.
+  - El artículo 16 alcanza a los establecimientos independientes de una IPS que elaboran magistrales con certificado de BPE.
+- **Decreto 677 de 1995:**
+  - El requerimiento se hace por una sola vez, con un término de 30 a 60 días hábiles según el trámite; vencido sin respuesta, se declara el abandono (artículos 23, 25, 29 y 31).
+  - El artículo 110 hace las medidas sanitarias de seguridad de inmediata ejecución, preventivas y transitorias.
+- Con estos hallazgos se corrigió BPE (clase 9, quiz 3 de la unidad 3 y foro 3) y se regeneró 067, que sigue sin aplicar en producción.
+
 ## 4. Validaciones ejecutadas
 
 | Comprobación | Resultado |
@@ -157,6 +199,9 @@ Limitaciones: `aula_forums` no tiene una columna privada para la guía de modera
 | `npm.cmd test` (lote 2) | **139/139** de frontend y **239/239** de API en 22 archivos |
 | `npm.cmd run build` (lote 2) | Correcto; postbuild correcto |
 | Aula local (lote 2) | 067 aplicada; vista previa del borrador con tablas, figuras, desplegables y video; sin desborde a 375 px; 9 recursos en borrador en el panel de autoría |
+| `node scripts/paquete-aula.mjs bpe todo` tras la corrección normativa | 0 errores, 0 avisos; la clase 9 queda en 1.842 palabras |
+| `node scripts/evaluacion-aula.mjs bases todo` | 3 cursos, 0 errores, 0 avisos; claves repartidas en A/B/C/D |
+| `api/tests/catalogo-evaluacion.test.js` (lote bases) | **7/7**: estructura y pesos por curso, sin tocar clases, idempotencia y protecciones |
 
 ## 5. Entornos
 
@@ -172,16 +217,17 @@ Limitaciones: `aula_forums` no tiene una columna privada para la guía de modera
 2. **Prueba E2E de navegador** (Playwright u equivalente) para las rutas y la interacción visual; no se ejecutó.
 3. **Revisión especializada de BPM**: `REVISION-ESPECIALIZADA-BPM.md` está preparada, pero no firmada. No se atribuye a un experto inexistente.
 4. **BPM**: publicado el 2026-11-03 a solicitud del propietario. La revisión especializada sigue pendiente y debe completarse antes de promoverlo comercialmente.
-5. **Fase B**: con BPE preparado, quedan **50 cursos, 246 unidades y 1.601 clases** sin la capa pedagógica completa.
+5. **Fase B**: con BPE preparado, quedan **50 cursos, 246 unidades y 1.601 clases** sin la capa pedagógica completa. La capa de evaluación (esquema 3) está lista en el lote bases; faltan 46 cursos, BPM al estándar nuevo y Autocuidado (sección 3c).
+8. **Contenidos desactualizados por normas nuevas** (sección 3c): la clase «Modificaciones y renovaciones» del curso INVIMA y el Curso de Renovación de Registros Sanitarios de Medicamentos, por el Decreto 1474 de 2023.
 6. **Visibilidad del repositorio**: el repositorio es público. `contenido/aula/bpm/`, la migración 063, `bpm-pedagogia.test.js` y `bpm-vista-previa.html` contienen claves o guías docentes y quedaron **ignorados por git**. 063 se aplicó en producción desde un artefacto temporal privado y se eliminó; el paquete debe conservarse en almacenamiento privado para futuras reconstrucciones.
 7. **BPE**: aplicar 067 en producción por un canal privado autorizado; publicar los 9 recursos y luego el curso desde el panel de autoría; revisión especializada antes de promoverlo.
 
 ## 7. Punto exacto de continuación
 
-- Siguiente curso: **Central de Mezclas: Preparaciones Estériles, BPE y Gestión de la Calidad** (9 clases en 034; fuentes en 038).
-- Crear `contenido/aula/central-mezclas/` con el esquema 2 de `contenido/aula/bpe/` (`index.mjs` con `PAQUETE`, `fuentes.mjs`, `unidad1-3.mjs`), añadirlo a `.gitignore` junto con su migración (068), su prueba y su vista previa.
-- Ciclo: `node scripts/paquete-aula.mjs central-mezclas todo` → prueba privada en PGlite → `npm.cmd test` y build → aula local → checkpoint.
-- Lo estéril que BPE remite a Central de Mezclas (clase 3) debe quedar cubierto allí: áreas limpias, grados A–D, flujo laminar, USP 797.
+- Siguiente lote de evaluación: **calidad** (`070_evaluacion_calidad.sql`), 10 cursos de 5 unidades del inventario 7–16. Las unidades, clases y objetivos de cada clase salen de las migraciones 042 (y 043–045, 055 para los lotes siguientes).
+- Por curso: `contenido/aula/catalogo/<clave>.mjs` con `CURSO`, `UNIDADES` (quiz, foro y, en las unidades 1, 2 y 4, actividad), `PROYECTO` (entregas en las unidades 3 y 5) y `BIENVENIDA`; registrarlo en `index.mjs`.
+- Ciclo: `node scripts/evaluacion-aula.mjs <lote> todo` → revisar el reparto de claves y que la correcta no sea la opción más larga → `npx vitest run --config vitest.api.config.js api/tests/catalogo-evaluacion.test.js` → checkpoint.
+- Verificar en fuentes oficiales cualquier plazo, número o norma antes de usarlo (ver «Normas verificadas»).
 - No se declara completo el catálogo.
 
 ## 8. Despliegue del 2026-11-03

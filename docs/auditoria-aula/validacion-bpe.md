@@ -19,7 +19,7 @@ Paquete: **Buenas Prácticas de Elaboración (BPE) y Preparaciones Magistrales**
 | bpe-u2-l3 | La guía de elaboración y el etiquetado | procedimental | 1731 | sin video adecuado | 4 |
 | bpe-u3-l1 | Controles de calidad posibles | analitica | 1564 | sin video adecuado | 4 |
 | bpe-u3-l2 | Estabilidad y fecha límite de uso | analitica | 1665 | sin video adecuado | 5 |
-| bpe-u3-l3 | Cuando algo sale mal: farmacovigilancia | mixta | 1664 | complementario (9dEGNB5MlsA) | 5 |
+| bpe-u3-l3 | Cuando algo sale mal: farmacovigilancia | mixta | 1842 | complementario (9dEGNB5MlsA) | 5 |
 
 ## Errores
 
