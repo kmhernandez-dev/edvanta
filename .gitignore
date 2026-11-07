@@ -49,3 +49,9 @@ contenido/aula/bpe/
 api/migrations/067_pedagogia_bpe.sql
 api/tests/bpe-pedagogia.test.js
 docs/auditoria-aula/bpe-vista-previa.html
+
+# Capa de evaluación del catálogo (esquema 3): claves de quiz y guías docentes.
+contenido/aula/catalogo/
+api/migrations/*_evaluacion_*.sql
+api/tests/catalogo-evaluacion.test.js
+docs/auditoria-aula/evaluacion-*-vista-previa.html
