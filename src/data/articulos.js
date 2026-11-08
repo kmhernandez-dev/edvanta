@@ -13,6 +13,7 @@ import { SEO_ARTICULOS } from './articulosSEO.js';
 import { NOTICIAS_FARMACEUTICAS } from './noticiasFarmaceuticas.js';
 import { BLOG_EDVANTA } from './blogEdvanta.js';
 import { ARTICULOS_FST50 } from './articulosFst50.js';
+import { INDUSTRIA_CURSOS_50 } from './industriaCursos50.js';
 
 const BASE = '/articulos/articulos_edvanta';
 
@@ -1485,6 +1486,7 @@ const ARTICULOS_BASE = [
   ...articulosSalud,
   ...legacyArticulos,
   ...edvantaArticulos,
+  ...INDUSTRIA_CURSOS_50,
 ];
 const FST50_SLUGS = new Set(ARTICULOS_FST50.map((a) => a.slug));
 
