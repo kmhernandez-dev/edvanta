@@ -32,7 +32,8 @@ Este informe es el diagnóstico de Fase 0. En el primer lote de Fase 1 ya se apl
 - El sitemap actual no contiene URLs sin HTML estático ni artículos `noindex`.
 - Se añadieron `404.html`, `error_page 404`, redirects HTTP→HTTPS y `www`→apex, y ubicaciones explícitas para las rutas SPA que no tienen HTML prerenderizado.
 - Las páginas privadas llevan `X-Robots-Tag: noindex, nofollow`.
-- **Pendiente:** revisión clínica real de los 184 artículos, poda de las noticias casi duplicadas, páginas de autoría/política editorial, Astro + PostgreSQL y auditoría de backlinks.
+- **E-E-A-T publicado:** `/autores/karla-hernandez`, política editorial, política de revisión clínica, equipo editorial, fuentes y metodología, enlazadas desde el footer y las fichas.
+- **Pendiente:** revisión clínica real de los 184 artículos, poda de las noticias casi duplicadas, Astro + PostgreSQL y auditoría de backlinks.
 
 ---
 
@@ -246,13 +247,14 @@ Mientras tanto, el repositorio contiene **hipótesis de intención** en `docs/AR
 
 ### P1 — Corregir en las primeras 4 semanas
 
-#### P1-1. E-E-A-T incompleto
+#### P1-1. E-E-A-T incompleto (corregido en el lote E-E-A-T)
 
 - **Evidencia:** no existe `/autores/karla-hernandez` real; el Markdown existe en `public/articulos/articulos_edvanta/autores/karla-hernandez.md`, pero no está en `src/data/articulos.js`, no tiene ruta y en producción devuelve 200 con canonical a la home. No existen páginas de política editorial, política de revisión clínica, equipo editorial, fuentes ni metodología. `Organization` no tiene `sameAs`. El `Person` del JSON-LD solo lleva `name`.
 - **Impacto:** Google y los sistemas de IA no pueden verificar quién es la autora, qué credenciales tiene, cómo se revisa el contenido y con qué fuentes.
 - **Corrección:** crear `/autores/karla-hernandez` con `ProfilePage` + `Person` (credenciales, `sameAs` a LinkedIn, áreas, publicaciones, conflicto de interés); crear `/politica-editorial`, `/politica-de-revision-clinica`, `/equipo-editorial`, `/fuentes`, `/metodologia`; enlazarlas desde el footer y desde cada artículo; añadir `reviewedBy` y `lastReviewed` reales.
 - **Esfuerzo:** 1 semana de contenido + 2 días de desarrollo.
 - **Responsable:** editor + desarrollo.
+- **Estado:** corregido; autora y cinco páginas de transparencia publicadas, enlazadas y con schema `ProfilePage`/`Person`/`reviewedBy`.
 
 #### P1-2. Datos estructurados incompletos
 
