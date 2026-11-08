@@ -480,9 +480,12 @@ for (const r of RUTAS_FIJAS) {
       inLanguage: 'es-CO',
       isPartOf: { '@type': 'WebSite', name: 'Edvanta', url: SITIO },
       publisher: { '@type': 'Organization', name: 'Edvanta', url: SITIO },
+      ...(r.mainEntity ? { mainEntity: r.mainEntity } : {}),
+      ...(r.reviewedBy ? { reviewedBy: r.reviewedBy } : {}),
     },
     migas([['Inicio', `${SITIO}/`], [seccion, `${SITIO}/`], [h1, canonical]]),
   ];
+  if (r.extraJsonLd) grafo.push(...r.extraJsonLd);
   const html = pagina({
     titulo: r.titulo,
     descripcion: r.descripcion,
@@ -493,6 +496,7 @@ for (const r of RUTAS_FIJAS) {
   });
   escribir(`${r.ruta.slice(1)}.html`, html);
   escribir(`${r.ruta.slice(1)}/index.html`, html);
+  enSitemap.push({ ruta: r.ruta, prioridad: r.prioridad || '0.6', fecha: r.fecha || null });
 }
 
 const html404 = pagina({

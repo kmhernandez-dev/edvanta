@@ -170,6 +170,17 @@ export const FOOTER_COLUMNS = [
       { label: 'Buscar en Edvanta', to: '/buscar' },
     ],
   },
+  {
+    title: 'Transparencia',
+    links: [
+      { label: 'Autora y revisora', to: '/autores/karla-hernandez' },
+      { label: 'Política editorial', to: '/politica-editorial' },
+      { label: 'Revisión clínica', to: '/politica-de-revision-clinica' },
+      { label: 'Equipo editorial', to: '/equipo-editorial' },
+      { label: 'Fuentes', to: '/fuentes' },
+      { label: 'Metodología', to: '/metodologia' },
+    ],
+  },
 ];
 
 export const FOOTER_LEGAL = [

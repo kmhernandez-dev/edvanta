@@ -95,6 +95,8 @@ const CapacitacionArea = lazy(() => import('./pages/edvanta/CapacitacionArea'));
 const PaqueteInstitucional = lazy(() => import('./pages/edvanta/PaqueteInstitucional'));
 const SobreEdvanta = lazy(() => import('./pages/edvanta/SobreEdvanta'));
 const Contacto = lazy(() => import('./pages/edvanta/Contacto'));
+const AutorPage = lazy(() => import('./pages/edvanta/AutorPage'));
+const PaginaEditorial = lazy(() => import('./pages/edvanta/PaginaEditorial'));
 
 function RouteFallback() {
   return (
@@ -271,6 +273,12 @@ export default function App() {
         <Route path="/instituciones/paquetes/:slug" element={<PaqueteInstitucional />} />
         <Route path="/sobre-edvanta" element={<SobreEdvanta />} />
         <Route path="/contacto" element={<Contacto />} />
+        <Route path="/autores/karla-hernandez" element={<AutorPage />} />
+        <Route path="/politica-editorial" element={<PaginaEditorial slug="politica-editorial" />} />
+        <Route path="/politica-de-revision-clinica" element={<PaginaEditorial slug="politica-de-revision-clinica" />} />
+        <Route path="/equipo-editorial" element={<PaginaEditorial slug="equipo-editorial" />} />
+        <Route path="/fuentes" element={<PaginaEditorial slug="fuentes" />} />
+        <Route path="/metodologia" element={<PaginaEditorial slug="metodologia" />} />
 
         {/* Buscador global del ecosistema Edvanta */}
         <Route path="/buscar" element={<BuscarPage />} />

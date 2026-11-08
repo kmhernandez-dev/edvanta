@@ -9,6 +9,7 @@ import LeadForm from '../components/LeadForm';
 import { getEnfermedad } from '../data/enfermedades';
 import { ebooks } from '../data/fst';
 import { articulosPorMarca } from '../data/articulos';
+import { entidadAutor, entidadRevisor } from '../lib/seo/autoria';
 import { tieneRevisionClinica } from '../lib/seo/indexabilidad';
 import { updatePageSeo } from '../utils/seo';
 
@@ -51,11 +52,8 @@ export default function EnfermedadPage({ slug: propSlug }) {
             headline: enf.heroTitle,
             description: enf.heroText,
             inLanguage: 'es-CO',
-            author: {
-              '@type': 'Person',
-              name: 'Karla Hernández',
-            },
-            ...(enf.revisor ? { reviewedBy: { '@type': 'Person', name: enf.revisor } } : {}),
+            author: entidadAutor({ autor: 'Karla Hernández' }),
+            ...(entidadRevisor(enf) ? { reviewedBy: entidadRevisor(enf) } : {}),
             ...(tieneRevisionClinica(enf) ? { lastReviewed: enf.reviewedAt || enf.reviewed_at || enf.fechaRevision } : {}),
             publisher: {
               '@type': 'Organization',

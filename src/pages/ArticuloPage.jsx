@@ -36,6 +36,7 @@ import {
   limpiarMarkdown, minutosDeLectura, preguntasFrecuentes, secciones, slugify,
 } from '../lib/articulos/markdown';
 import { registrarLectura } from '../lib/articulos/lecturas';
+import { entidadAutor, entidadRevisor, esAutoraKarla } from '../lib/seo/autoria';
 import { robotsDeArticulo, tieneRevisionClinica } from '../lib/seo/indexabilidad';
 import { updatePageSeo } from '../utils/seo';
 import { rutaDeCategoria, rutaDeCurso } from '../lib/slug';
@@ -444,8 +445,8 @@ export default function ArticuloPage() {
         image: imagenJsonLd,
         articleSection: art.category,
         inLanguage: 'es-CO',
-        author: { '@type': autor.startsWith('Equipo') ? 'Organization' : 'Person', name: autor },
-        ...(art.revisor ? { reviewedBy: { '@type': 'Person', name: art.revisor } } : {}),
+        author: entidadAutor(art),
+        ...(entidadRevisor(art) ? { reviewedBy: entidadRevisor(art) } : {}),
         ...(tieneRevisionClinica(art) && SALUD.includes(art.marca) ? { lastReviewed: art.reviewedAt || art.reviewed_at || art.fechaRevision } : {}),
         datePublished: art.date,
         dateModified: art.updated || art.date,
@@ -541,7 +542,9 @@ export default function ArticuloPage() {
               <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-edvanta-blue text-[11px] font-bold text-white">
                 {autor.startsWith('Karla') ? 'KH' : 'ED'}
               </span>
-              {autor}
+              <Link to={esAutoraKarla(art) ? '/autores/karla-hernandez' : '/equipo-editorial'} className="underline decoration-edvanta-border underline-offset-4 hover:text-edvanta-blue">
+                {autor}
+              </Link>
             </span>
             {art.revisor && (
               <span className="inline-flex items-center gap-1.5"><ShieldCheck className="h-4 w-4 text-edvanta-teal" aria-hidden="true" />Revisado por {art.revisor}{tieneRevisionClinica(art) ? ` el ${fechaLarga(art.reviewedAt || art.reviewed_at || art.fechaRevision)}` : ' · fecha de revisión pendiente'}</span>
@@ -594,6 +597,20 @@ export default function ArticuloPage() {
                 </p>
               </div>
             )}
+
+            <div className="mt-8 rounded-[14px] border border-edvanta-border bg-white p-5 text-sm leading-6 text-edvanta-muted">
+              <p className="font-semibold text-edvanta-deep">Transparencia editorial</p>
+              <p className="mt-2">
+                {esSalud && !tieneRevisionClinica(art)
+                  ? 'Este artículo está pendiente de revisión clínica. Mientras se completa, no se indexa en buscadores.'
+                  : 'Este contenido sigue nuestra política editorial y de revisión clínica.'}{' '}
+                <Link to="/politica-de-revision-clinica" className="font-semibold text-edvanta-blue underline">Cómo se revisa</Link>
+                {' · '}
+                <Link to="/fuentes" className="font-semibold text-edvanta-blue underline">Fuentes</Link>
+                {' · '}
+                <Link to="/politica-editorial" className="font-semibold text-edvanta-blue underline">Política editorial</Link>
+              </p>
+            </div>
 
             <div className="mt-10 flex flex-wrap items-center justify-between gap-4 border-t border-edvanta-border pt-6">
               <p className="text-sm font-semibold text-edvanta-deep">¿Le sirve a alguien que conoces?</p>

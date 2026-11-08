@@ -3,6 +3,7 @@ import { AREAS_CAPACITACION } from '../src/data/edvanta/capacitacion.js';
 import { PAQUETES } from '../src/data/edvanta/servicios.js';
 import { enfermedades } from '../src/data/enfermedades.js';
 import { ebooks } from '../src/data/fst.js';
+import { AUTORA_PERFIL } from '../src/data/edvanta/eeat.js';
 import { tieneRevisionClinica } from '../src/lib/seo/indexabilidad.js';
 
 const rutas = [];
@@ -180,5 +181,56 @@ add('/hoja-de-vida/crear', 'Crear hoja de vida | Edvanta', 'Crea tu hoja de vida
 add('/diagnostico', 'Diagnóstico de acceso | Edvanta', 'Revisión pública de los pasos de acceso y autenticación de Edvanta.', { tipo: 'WebPage', seccion: 'Edvanta', robots: 'noindex,follow', enlaces: [['Inicio', '/'], ['Contacto', '/contacto']] });
 
 add('/certificados', 'Verificar certificado | Edvanta', 'Verifica un certificado de Edvanta con su código y QR.', { tipo: 'WebPage', seccion: 'Edvanta', robots: 'noindex,follow', enlaces: [['Inicio', '/'], ['Cursos', '/cursos'], ['Contacto', '/contacto']] });
+
+add('/autores/karla-hernandez', 'Karla Melissa Hernández Salcedo | Autora y revisora clínica | Edvanta', 'Perfil de Karla Melissa Hernández Salcedo, química farmacéutica clínica de la Universidad del Atlántico, autora y revisora clínica de Edvanta.', {
+  tipo: 'ProfilePage',
+  seccion: 'Transparencia',
+  mainEntity: { '@id': 'https://edvanta.co/autores/karla-hernandez#person' },
+  enlaces: [['Política editorial', '/politica-editorial'], ['Política de revisión clínica', '/politica-de-revision-clinica'], ['Equipo editorial', '/equipo-editorial'], ['Fuentes', '/fuentes'], ['Metodología', '/metodologia']],
+  extraJsonLd: [{
+    '@type': 'Person',
+    '@id': 'https://edvanta.co/autores/karla-hernandez#person',
+    name: AUTORA_PERFIL.nombre,
+    alternateName: AUTORA_PERFIL.nombreCorto,
+    jobTitle: AUTORA_PERFIL.profesion,
+    url: 'https://edvanta.co/autores/karla-hernandez',
+    image: 'https://edvanta.co/img/karla-real.jpg',
+    sameAs: [AUTORA_PERFIL.linkedin],
+    alumniOf: { '@type': 'CollegeOrUniversity', name: AUTORA_PERFIL.universidad },
+    worksFor: { '@type': 'Organization', name: 'Edvanta', url: 'https://edvanta.co/' },
+    knowsAbout: AUTORA_PERFIL.areas,
+  }],
+});
+
+add('/politica-editorial', 'Política editorial | Edvanta', 'Cómo seleccionamos, escribimos, revisamos y actualizamos el contenido de Edvanta.', {
+  tipo: 'WebPage',
+  seccion: 'Transparencia',
+  enlaces: [['Política de revisión clínica', '/politica-de-revision-clinica'], ['Equipo editorial', '/equipo-editorial'], ['Fuentes', '/fuentes'], ['Metodología', '/metodologia']],
+});
+
+add('/politica-de-revision-clinica', 'Política de revisión clínica | Edvanta', 'Quién revisa el contenido clínico de Edvanta, qué se revisa, cómo y cada cuánto.', {
+  tipo: 'WebPage',
+  seccion: 'Transparencia',
+  reviewedBy: { '@type': 'Person', name: AUTORA_PERFIL.nombre, url: 'https://edvanta.co/autores/karla-hernandez', sameAs: AUTORA_PERFIL.linkedin },
+  enlaces: [['Autora y revisora', '/autores/karla-hernandez'], ['Política editorial', '/politica-editorial'], ['Fuentes', '/fuentes'], ['Metodología', '/metodologia']],
+});
+
+add('/equipo-editorial', 'Equipo editorial | Edvanta', 'Quién dirige, escribe y revisa el contenido de Edvanta.', {
+  tipo: 'WebPage',
+  seccion: 'Transparencia',
+  enlaces: [['Autora y revisora', '/autores/karla-hernandez'], ['Política editorial', '/politica-editorial'], ['Política de revisión clínica', '/politica-de-revision-clinica']],
+});
+
+add('/fuentes', 'Fuentes y criterios de verificación | Edvanta', 'Qué fuentes usa Edvanta, cómo las verifica y cómo las cita.', {
+  tipo: 'WebPage',
+  seccion: 'Transparencia',
+  enlaces: [['Política editorial', '/politica-editorial'], ['Política de revisión clínica', '/politica-de-revision-clinica'], ['Metodología', '/metodologia']],
+});
+
+add('/metodologia', 'Metodología editorial | Edvanta', 'Cómo investigamos, escribimos, revisamos y actualizamos el contenido de Edvanta.', {
+  tipo: 'WebPage',
+  seccion: 'Transparencia',
+  enlaces: [['Política editorial', '/politica-editorial'], ['Política de revisión clínica', '/politica-de-revision-clinica'], ['Fuentes', '/fuentes'], ['Equipo editorial', '/equipo-editorial']],
+});
 
 export const RUTAS_FIJAS = rutas;

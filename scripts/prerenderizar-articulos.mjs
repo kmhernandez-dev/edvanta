@@ -37,6 +37,7 @@ const importar = (rel) => import(pathToFileURL(path.join(raiz, rel)).href);
 const { articulos } = await importar('src/data/articulos.js');
 const { limpiarMarkdown, preguntasFrecuentes, slugify, textoPlano } = await importar('src/lib/articulos/markdown.js');
 const { puedeIndexarse, robotsDeArticulo, tieneRevisionClinica } = await importar('src/lib/seo/indexabilidad.js');
+const { entidadAutor, entidadRevisor, esAutoraKarla } = await importar('src/lib/seo/autoria.js');
 
 const plantilla = readFileSync(path.join(dist, 'index.html'), 'utf8');
 const SALUD = ['fst', 'contigo', 'atenfarma'];
@@ -114,8 +115,8 @@ for (const art of articulos) {
       image: imagenJsonLd,
       articleSection: art.category,
       inLanguage: 'es-CO',
-      author: { '@type': autor.startsWith('Equipo') ? 'Organization' : 'Person', name: autor },
-      ...(art.revisor ? { reviewedBy: { '@type': 'Person', name: art.revisor } } : {}),
+      author: entidadAutor(art),
+      ...(entidadRevisor(art) ? { reviewedBy: entidadRevisor(art) } : {}),
       ...(tieneRevisionClinica(art) && SALUD.includes(art.marca) ? { lastReviewed: art.reviewedAt || art.reviewed_at || art.fechaRevision } : {}),
       datePublished: art.date,
       dateModified: art.updated || art.date,
@@ -145,9 +146,10 @@ for (const art of articulos) {
     <p>${esc(art.category)}</p>
     <h1>${esc(art.title)}</h1>
     <p>${esc(art.description)}</p>
-    <p>${esc(autor)}${art.revisor ? ` · Revisado por ${esc(art.revisor)}${tieneRevisionClinica(art) ? ` el ${esc(fecha(art.reviewedAt || art.reviewed_at || art.fechaRevision))}` : ' · fecha de revisión pendiente'}` : ''} · Actualizado el ${esc(fecha(art.updated || art.date))}</p>
+    <p><a href="${esAutoraKarla(art) ? '/autores/karla-hernandez' : '/equipo-editorial'}">${esc(autor)}</a>${art.revisor ? ` · Revisado por ${esc(art.revisor)}${tieneRevisionClinica(art) ? ` el ${esc(fecha(art.reviewedAt || art.reviewed_at || art.fechaRevision))}` : ' · fecha de revisión pendiente'}` : ''} · Actualizado el ${esc(fecha(art.updated || art.date))}</p>
     <div class="ed-prose">${markdownAHtml(limpiarMarkdown(md))}</div>
   </article>
+  <p><a href="/politica-de-revision-clinica">Cómo se revisa</a> · <a href="/fuentes">Fuentes</a> · <a href="/politica-editorial">Política editorial</a></p>
   ${relacionados.length ? `<aside><h2>Sigue leyendo</h2><ul>${relacionados.map((r) => `<li><a href="/articulos/${r.slug}">${esc(r.title)}</a></li>`).join('')}</ul></aside>` : ''}
 </main>`;
 
