@@ -9,6 +9,7 @@ import LeadForm from '../components/LeadForm';
 import { getEnfermedad } from '../data/enfermedades';
 import { ebooks } from '../data/fst';
 import { articulosPorMarca } from '../data/articulos';
+import { tieneRevisionClinica } from '../lib/seo/indexabilidad';
 import { updatePageSeo } from '../utils/seo';
 
 // La pregunta de la introducción, con su artículo y sus mayúsculas: no
@@ -40,18 +41,22 @@ export default function EnfermedadPage({ slug: propSlug }) {
       description: enf.seo.description,
       canonical,
       type: 'article',
+      robots: tieneRevisionClinica(enf) ? 'index,follow' : 'noindex,follow',
       jsonLdId: `enfermedad-${enf.slug}`,
       jsonLd: {
         '@context': 'https://schema.org',
         '@graph': [
           {
-            '@type': 'Article',
+            '@type': 'MedicalWebPage',
             headline: enf.heroTitle,
             description: enf.heroText,
+            inLanguage: 'es-CO',
             author: {
               '@type': 'Person',
               name: 'Karla Hernández',
             },
+            ...(enf.revisor ? { reviewedBy: { '@type': 'Person', name: enf.revisor } } : {}),
+            ...(tieneRevisionClinica(enf) ? { lastReviewed: enf.reviewedAt || enf.reviewed_at || enf.fechaRevision } : {}),
             publisher: {
               '@type': 'Organization',
               name: 'Feliz Sin Tiroides',

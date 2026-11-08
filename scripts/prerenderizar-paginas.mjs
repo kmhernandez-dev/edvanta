@@ -35,6 +35,7 @@ const { PRODUCTOS } = await importar('src/data/edvanta/productos.js');
 const { ESCUELA_MARKETING, PROGRAMAS_MARKETING, SERVICIOS_MARKETING } = await importar('src/data/edvanta/marketing.js');
 const { DIRECCIONES_ANTIGUAS } = await importar('src/data/edvanta/direcciones.js');
 const { nombreDeCurso, slugify } = await importar('src/lib/slug.js');
+const { RUTAS_FIJAS } = await importar('scripts/seo-rutas-fijas.mjs');
 
 const plantilla = readFileSync(path.join(dist, 'index.html'), 'utf8');
 
@@ -459,7 +460,59 @@ for (const p of paginasUtilidadContigo) {
   if (p.ruta === '/mi-cuidado') escribir('mi-cuidado/index.html', html);
 }
 
+/* ── Rutas públicas fijas: HTML propio, canonical y migas ─── */
+
+const tipoSchema = (tipo) => tipo || 'WebPage';
+
+for (const r of RUTAS_FIJAS) {
+  const canonical = `${SITIO}${r.ruta}`;
+  const h1 = r.h1 || String(r.titulo).split(' | ')[0];
+  const seccion = r.seccion || 'Edvanta';
+  const enlaces = (r.enlaces || []).map(([nombre, to]) => `<li><a href="${esc(to)}">${esc(nombre)}</a></li>`).join('');
+  const cuerpo = `<main><nav aria-label="Ruta de navegación"><a href="/">Inicio</a> › ${esc(seccion)}</nav><h1>${esc(h1)}</h1><p>${esc(r.descripcion)}</p>${enlaces ? `<ul>${enlaces}</ul>` : ''}<p><a href="/">Volver al inicio</a></p></main>`;
+  const grafo = [
+    {
+      '@context': 'https://schema.org',
+      '@type': tipoSchema(r.tipo),
+      name: h1,
+      description: r.descripcion,
+      url: canonical,
+      inLanguage: 'es-CO',
+      isPartOf: { '@type': 'WebSite', name: 'Edvanta', url: SITIO },
+      publisher: { '@type': 'Organization', name: 'Edvanta', url: SITIO },
+    },
+    migas([['Inicio', `${SITIO}/`], [seccion, `${SITIO}/`], [h1, canonical]]),
+  ];
+  const html = pagina({
+    titulo: r.titulo,
+    descripcion: r.descripcion,
+    canonical,
+    jsonLd: grafo,
+    robots: r.robots || null,
+    cuerpo,
+  });
+  escribir(`${r.ruta.slice(1)}.html`, html);
+  escribir(`${r.ruta.slice(1)}/index.html`, html);
+}
+
+const html404 = pagina({
+  titulo: 'Página no encontrada | Edvanta',
+  descripcion: 'La dirección no existe o cambió de lugar. Vuelve al inicio o busca contenido de Edvanta.',
+  canonical: `${SITIO}/404`,
+  robots: 'noindex,follow',
+  jsonLd: [migas([['Inicio', `${SITIO}/`], ['Página no encontrada', `${SITIO}/404`]])],
+  cuerpo: '<main><h1>Página no encontrada</h1><p>La dirección no existe o cambió de lugar.</p><p><a href="/">Volver al inicio</a> · <a href="/articulos">Ver artículos</a> · <a href="/cursos">Ver cursos</a></p></main>',
+});
+escribir('404.html', html404);
+
 const rutaSitemap = path.join(dist, 'sitemap.xml');
+const rutaSitemapBase = path.join(raiz, 'public', 'sitemap.xml');
+if (existsSync(rutaSitemapBase)) {
+  const actual = existsSync(rutaSitemap) ? readFileSync(rutaSitemap, 'utf8') : '';
+  if (!actual || /<sitemapindex\b/.test(actual)) {
+    writeFileSync(rutaSitemap, readFileSync(rutaSitemapBase, 'utf8'));
+  }
+}
 if (existsSync(rutaSitemap)) {
   let xml = readFileSync(rutaSitemap, 'utf8');
   // Fuera: las fichas de curso por su dirección vieja (las vigentes salen en

@@ -36,6 +36,7 @@ const importar = (rel) => import(pathToFileURL(path.join(raiz, rel)).href);
 
 const { articulos } = await importar('src/data/articulos.js');
 const { limpiarMarkdown, preguntasFrecuentes, slugify, textoPlano } = await importar('src/lib/articulos/markdown.js');
+const { puedeIndexarse, robotsDeArticulo, tieneRevisionClinica } = await importar('src/lib/seo/indexabilidad.js');
 
 const plantilla = readFileSync(path.join(dist, 'index.html'), 'utf8');
 const SALUD = ['fst', 'contigo', 'atenfarma'];
@@ -44,13 +45,14 @@ const esc = (t) => String(t ?? '')
   .replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;');
 
 /** Cambia el contenido de una etiqueta <meta> o <link> de la plantilla. */
-function conMeta(html, { title, description, canonical, image, imageAlt = '', type = 'article' }) {
+function conMeta(html, { title, description, canonical, image, imageAlt = '', type = 'article', robots = 'index,follow' }) {
   const t = esc(title);
   const d = esc(description);
   const alt = esc(imageAlt);
   return html
     .replace(/<title>[\s\S]*?<\/title>/, `<title>${t}</title>`)
     .replace(/(<meta name="description" content=")[^"]*(")/, `$1${d}$2`)
+    .replace(/(<meta name="robots" content=")[^"]*(")/, `$1${robots}$2`)
     .replace(/(<link rel="canonical" href=")[^"]*(")/, `$1${canonical}$2`)
     .replace(/(<meta property="og:type" content=")[^"]*(")/, `$1${type}$2`)
     .replace(/(<meta property="og:title" content=")[^"]*(")/, `$1${t}$2`)
@@ -114,6 +116,7 @@ for (const art of articulos) {
       inLanguage: 'es-CO',
       author: { '@type': autor.startsWith('Equipo') ? 'Organization' : 'Person', name: autor },
       ...(art.revisor ? { reviewedBy: { '@type': 'Person', name: art.revisor } } : {}),
+      ...(tieneRevisionClinica(art) && SALUD.includes(art.marca) ? { lastReviewed: art.reviewedAt || art.reviewed_at || art.fechaRevision } : {}),
       datePublished: art.date,
       dateModified: art.updated || art.date,
       publisher: { '@type': 'Organization', name: 'Edvanta', url: SITIO, logo: { '@type': 'ImageObject', url: `${SITIO}/img/logo-edvanta.png` } },
@@ -142,13 +145,13 @@ for (const art of articulos) {
     <p>${esc(art.category)}</p>
     <h1>${esc(art.title)}</h1>
     <p>${esc(art.description)}</p>
-    <p>${esc(autor)}${art.revisor ? ` · Revisado por ${esc(art.revisor)}` : ''} · Actualizado el ${esc(fecha(art.updated || art.date))}</p>
+    <p>${esc(autor)}${art.revisor ? ` · Revisado por ${esc(art.revisor)}${tieneRevisionClinica(art) ? ` el ${esc(fecha(art.reviewedAt || art.reviewed_at || art.fechaRevision))}` : ' · fecha de revisión pendiente'}` : ''} · Actualizado el ${esc(fecha(art.updated || art.date))}</p>
     <div class="ed-prose">${markdownAHtml(limpiarMarkdown(md))}</div>
   </article>
   ${relacionados.length ? `<aside><h2>Sigue leyendo</h2><ul>${relacionados.map((r) => `<li><a href="/articulos/${r.slug}">${esc(r.title)}</a></li>`).join('')}</ul></aside>` : ''}
 </main>`;
 
-  let html = conMeta(plantilla, { title: `${art.seoTitle || art.title} | Edvanta`, description: art.seoDescription || art.description, canonical, image, imageAlt: art.imageAlt || art.title });
+  let html = conMeta(plantilla, { title: `${art.seoTitle || art.title} | Edvanta`, description: art.seoDescription || art.description, canonical, image, imageAlt: art.imageAlt || art.title, robots: robotsDeArticulo(art) });
   html = conJsonLd(html, { '@context': 'https://schema.org', '@graph': grafo });
   html = conCuerpo(html, cuerpo);
   writeFileSync(path.join(dist, 'articulos', `${art.slug}.html`), html);
@@ -179,12 +182,20 @@ writeFileSync(path.join(dist, 'articulos.html'), htmlIndice);
 
 // Sitemap: la lista de artículos se genera completa aquí, con su fecha.
 const rutaSitemap = path.join(dist, 'sitemap.xml');
+const rutaSitemapBase = path.join(raiz, 'public', 'sitemap.xml');
+if (existsSync(rutaSitemapBase)) {
+  const actual = existsSync(rutaSitemap) ? readFileSync(rutaSitemap, 'utf8') : '';
+  if (!actual || /<sitemapindex\b/.test(actual)) {
+    writeFileSync(rutaSitemap, readFileSync(rutaSitemapBase, 'utf8'));
+  }
+}
 if (existsSync(rutaSitemap)) {
   let xml = readFileSync(rutaSitemap, 'utf8');
   xml = xml.replace(/[ \t]*<url><loc>https:\/\/edvanta\.co\/articulos\/[^<]+<\/loc>[^\n]*\n/g, '');
-  const lineas = articulos.map((a) => `  <url><loc>${SITIO}/articulos/${a.slug}</loc><lastmod>${a.updated || a.date}</lastmod><priority>${a.publico === 'pacientes' || a.marca === 'contigo' ? '0.8' : '0.7'}</priority></url>`);
+  const lineas = articulos.filter(puedeIndexarse).map((a) => `  <url><loc>${SITIO}/articulos/${a.slug}</loc><lastmod>${a.updated || a.date}</lastmod><priority>${a.publico === 'pacientes' || a.marca === 'contigo' ? '0.8' : '0.7'}</priority></url>`);
   xml = xml.replace('</urlset>', `\n  <!-- Artículos (generado al compilar) -->\n${lineas.join('\n')}\n</urlset>`);
   writeFileSync(rutaSitemap, xml);
 }
 
-console.log(`Páginas estáticas de artículos: ${escritos}${faltantes.length ? ` · sin .md: ${faltantes.join(', ')}` : ''}`);
+const sinRevision = articulos.filter((a) => !puedeIndexarse(a)).length;
+console.log(`Páginas estáticas de artículos: ${escritos}${faltantes.length ? ` · sin .md: ${faltantes.join(', ')}` : ''} · noindex por revisión: ${sinRevision}`);

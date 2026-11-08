@@ -36,6 +36,7 @@ import {
   limpiarMarkdown, minutosDeLectura, preguntasFrecuentes, secciones, slugify,
 } from '../lib/articulos/markdown';
 import { registrarLectura } from '../lib/articulos/lecturas';
+import { robotsDeArticulo, tieneRevisionClinica } from '../lib/seo/indexabilidad';
 import { updatePageSeo } from '../utils/seo';
 import { rutaDeCategoria, rutaDeCurso } from '../lib/slug';
 
@@ -445,6 +446,7 @@ export default function ArticuloPage() {
         inLanguage: 'es-CO',
         author: { '@type': autor.startsWith('Equipo') ? 'Organization' : 'Person', name: autor },
         ...(art.revisor ? { reviewedBy: { '@type': 'Person', name: art.revisor } } : {}),
+        ...(tieneRevisionClinica(art) && SALUD.includes(art.marca) ? { lastReviewed: art.reviewedAt || art.reviewed_at || art.fechaRevision } : {}),
         datePublished: art.date,
         dateModified: art.updated || art.date,
         publisher: { '@type': 'Organization', name: 'Edvanta', url: 'https://edvanta.co', logo: { '@type': 'ImageObject', url: 'https://edvanta.co/img/logo-edvanta.png' } },
@@ -473,6 +475,7 @@ export default function ArticuloPage() {
       imageAlt: art.imageAlt || art.title,
       keywords: art.keywords,
       type: 'article',
+      robots: robotsDeArticulo(art),
       jsonLdId: 'articulo',
       jsonLd: { '@context': 'https://schema.org', '@graph': grafo },
     });
@@ -541,7 +544,7 @@ export default function ArticuloPage() {
               {autor}
             </span>
             {art.revisor && (
-              <span className="inline-flex items-center gap-1.5"><ShieldCheck className="h-4 w-4 text-edvanta-teal" aria-hidden="true" />Revisado por {art.revisor}</span>
+              <span className="inline-flex items-center gap-1.5"><ShieldCheck className="h-4 w-4 text-edvanta-teal" aria-hidden="true" />Revisado por {art.revisor}{tieneRevisionClinica(art) ? ` el ${fechaLarga(art.reviewedAt || art.reviewed_at || art.fechaRevision)}` : ' · fecha de revisión pendiente'}</span>
             )}
             <span className="inline-flex items-center gap-1.5"><CalendarDays className="h-4 w-4" aria-hidden="true" />Actualizado el {fechaLarga(art.updated || art.date)}</span>
             {minutos && <span className="inline-flex items-center gap-1.5"><Clock className="h-4 w-4" aria-hidden="true" />{minutos} de lectura</span>}
