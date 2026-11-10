@@ -48,6 +48,20 @@ Trabajas para **Karla Hernández**, química farmacéutica con tarjeta profesion
   - Registro en `src/data/revisionClinica.js`.
   - Autora y revisora con enlace a LinkedIn.
   - Ya son indexables: el sitemap de artículos pasó de 147 a 331.
+- 9-nov, commit 011cf82: títulos y descripciones reescritos en todo el sitio con una sola regla (`api/lib/meta-seo.js` y `src/lib/seo/titulos.js`).
+  - Título de 60 caracteres como máximo; «| Edvanta» solo si cabe.
+  - Descripción de 155 como máximo, nunca cortada con «…».
+  - «gratis» solo en los cursos propios.
+  - Tildes en 19 competencias (migración 074).
+  - Las 9 páginas de enfermedades quedan revisadas por Karla («todo ya lo aprobé»).
+- 9-nov, commit 4ba66e3: las 15 noticias del INVIMA reescritas con contenido propio, verificadas contra cada alerta oficial (`public/articulos/articulos_edvanta/noticias-invima/`, `src/data/noticiasReescritas.js`).
+  - Similitud entre ellas menor de 0,3; antes, 0,65.
+  - Vuelven al índice: el sitemap de artículos sube a 346.
+- 9-nov, en Search Console (con aprobación de Karla):
+  - se reenvió `sitemap.xml`;
+  - se inició la validación de «Soft 404», «Rastreada: actualmente sin indexar» y «Descubierta: actualmente sin indexar»;
+  - se solicitó la indexación de 7 URL: el curso de Gestión de Calidad, el artículo de levotiroxina, `/noticias`, la alerta de Buscapina, `/escuelas`, el curso de Registro Sanitario y el curso de Autocuidado de la tiroides.
+  - Ya estaban indexadas la portada, `/cursos`, `/instituciones` y `/enfermedades/hipotiroidismo`.
 
 **Documentos**
 
@@ -84,7 +98,9 @@ Trabajas para **Karla Hernández**, química farmacéutica con tarjeta profesion
 
 ### 2. Validaciones en Search Console
 
-Una vez publicados los cambios, se pide «Validar corrección» en los motivos de tipo «Sitio web»:
+**Hecho el 9-nov** (ver Contexto). Cada mes, revisar cómo avanzan las validaciones y solicitar la indexación de las páginas nuevas importantes; la cuota es de unas 10 al día. «Alternativa con canónica adecuada» y «Duplicada» resultaron ser variantes con parámetros y direcciones viejas que ya redirigen: no requieren validación.
+
+Para cambios futuros, se pide «Validar corrección» en los motivos de tipo «Sitio web»:
 
 - alternativa con canónica adecuada;
 - duplicada;
@@ -100,9 +116,9 @@ También se envía `https://edvanta.co/sitemap-index.xml` y se solicita la index
 
 Lo hace Karla, o se hace en el panel del navegador solo con su aprobación.
 
-### 3. Noticias del INVIMA con contenido propio
+### 3. Noticias con contenido propio
 
-Reescribir las 15 noticias del INVIMA (`src/data/noticiasFarmaceuticas.js`; su fuente es `outputs/edvanta_paquete_editorial_2026-10-31/noticias.json`). Cada una lleva esta estructura y unas 400 a 700 palabras propias, sin las secciones de plantilla:
+**Hecho el 9-nov:** las 15 del INVIMA. Para cada noticia nueva, o para reescribir una internacional, se escribe un .md en `public/articulos/articulos_edvanta/noticias-invima/` y se agrega su entrada en `src/data/noticiasReescritas.js`. Cada una lleva esta estructura y unas 400 a 700 palabras propias, sin secciones de plantilla:
 
 1. Qué comunicó el INVIMA: número de informe o alerta, producto, lote y fecha, según la fuente oficial.
 2. A quién afecta en Colombia: pacientes, prescriptores, servicios farmacéuticos, distribuidores.
