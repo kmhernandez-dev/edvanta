@@ -14,6 +14,7 @@ import { NOTICIAS_FARMACEUTICAS } from './noticiasFarmaceuticas.js';
 import { BLOG_EDVANTA } from './blogEdvanta.js';
 import { ARTICULOS_FST50 } from './articulosFst50.js';
 import { INDUSTRIA_CURSOS_50 } from './industriaCursos50.js';
+import { REVISION_CLINICA } from './revisionClinica.js';
 
 const BASE = '/articulos/articulos_edvanta';
 
@@ -1499,6 +1500,8 @@ export const articulos = [
 ].map((a) => ({
   ...a,
   ...(FST50_SLUGS.has(a.slug) ? {} : (SEO_ARTICULOS[a.slug] || {})),
+  // Revisor y fecha de la revisión clínica (revisionClinica.js), si la hubo.
+  ...(REVISION_CLINICA[a.slug] || {}),
 }));
 
 export const getArticulo = (slug) => articulos.find(a => a.slug === slug);

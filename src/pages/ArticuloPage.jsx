@@ -547,7 +547,11 @@ export default function ArticuloPage() {
               </Link>
             </span>
             {art.revisor && (
-              <span className="inline-flex items-center gap-1.5"><ShieldCheck className="h-4 w-4 text-edvanta-teal" aria-hidden="true" />Revisado por {art.revisor}{tieneRevisionClinica(art) ? ` el ${fechaLarga(art.reviewedAt || art.reviewed_at || art.fechaRevision)}` : ' · fecha de revisión pendiente'}</span>
+              <span className="inline-flex items-center gap-1.5"><ShieldCheck className="h-4 w-4 text-edvanta-teal" aria-hidden="true" />Revisado por{' '}
+                {art.revisorUrl
+                  ? <a href={art.revisorUrl} target="_blank" rel="noopener noreferrer" className="underline decoration-edvanta-border underline-offset-4 hover:text-edvanta-blue">{art.revisor}</a>
+                  : art.revisor}
+                {tieneRevisionClinica(art) ? ` el ${fechaLarga(art.reviewedAt || art.reviewed_at || art.fechaRevision)}` : ' · fecha de revisión pendiente'}</span>
             )}
             <span className="inline-flex items-center gap-1.5"><CalendarDays className="h-4 w-4" aria-hidden="true" />Actualizado el {fechaLarga(art.updated || art.date)}</span>
             {minutos && <span className="inline-flex items-center gap-1.5"><Clock className="h-4 w-4" aria-hidden="true" />{minutos} de lectura</span>}
