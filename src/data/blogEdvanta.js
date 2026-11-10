@@ -31,7 +31,9 @@ const espacio = (slug, id, despuesDe, sugerencia, alt) => ({
   src: null,
 });
 
-const post = ({ slug, title, description, readingTime, imagenes }) => ({
+// `actualizado`: solo en los artículos que cambiaron después del 6-nov
+// (p. ej., el 10-nov, al abrir la Escuela de Habilidades Blandas).
+const post = ({ slug, title, description, readingTime, imagenes, actualizado }) => ({
   slug,
   marca: 'edvanta',
   category: CATEGORIA,
@@ -39,7 +41,7 @@ const post = ({ slug, title, description, readingTime, imagenes }) => ({
   description,
   readingTime,
   date: FECHA,
-  updated: FECHA,
+  updated: actualizado || FECHA,
   autor: 'Equipo Edvanta',
   mdPath: `${BASE}/${slug}.md`,
   imagenes: imagenes.map((i) => espacio(slug, ...i)),
@@ -49,8 +51,9 @@ export const BLOG_EDVANTA = [
   post({
     slug: 'que-es-edvanta',
     title: '¿Qué es Edvanta? La plataforma de educación farmacéutica nacida en Medellín',
-    description: 'Edvanta es una empresa colombiana de educación farmacéutica con sede en Medellín: cuatro escuelas para profesionales, Edvanta Contigo para pacientes y programas para instituciones.',
+    description: 'Edvanta es una empresa colombiana de educación farmacéutica con sede en Medellín: cinco escuelas para profesionales, Edvanta Contigo para pacientes y programas para instituciones.',
     readingTime: '5 min',
+    actualizado: '2026-11-10',
     imagenes: [
       ['portada', null, 'Foto real del equipo de Edvanta en Medellín (no de banco de imágenes), con luz natural y algún elemento reconocible de la ciudad al fondo.', 'Equipo de químicos farmacéuticos de Edvanta en Medellín'],
       ['1', 'Lo que hace Edvanta, en tres frentes', 'Ilustración simple con las tres puertas del sitio: Profesionales, Pacientes e Instituciones, con los colores de la marca.', 'Las tres puertas de Edvanta: profesionales, pacientes e instituciones'],
@@ -62,10 +65,11 @@ export const BLOG_EDVANTA = [
     title: 'La historia de Edvanta: químicos farmacéuticos de Medellín que decidieron enseñar distinto',
     description: 'Cómo un grupo de químicos farmacéuticos de Medellín, apasionados por la inteligencia artificial y el marketing, creó Edvanta para enseñar a decidir y no a repetir.',
     readingTime: '6 min',
+    actualizado: '2026-11-10',
     imagenes: [
       ['portada', null, 'Foto real de los fundadores conversando alrededor de una mesa con café (un tinto), en un espacio de Medellín.', 'Fundadores de Edvanta conversando en Medellín'],
       ['1', 'El problema que no nos dejaba dormir', 'Composición que muestre el caos: un PDF largo de norma, un chat lleno de reenvíos y una persona confundida (ilustración, no foto de pacientes).', 'Ilustración de la sobrecarga de información normativa'],
-      ['2', 'De una idea a cuatro escuelas', 'Línea de tiempo gráfica: biblioteca de recursos → cuatro escuelas → Edvanta Contigo → instituciones (sin fechas inventadas).', 'Evolución de Edvanta de biblioteca de recursos a empresa de educación farmacéutica'],
+      ['2', 'De una idea a cinco escuelas', 'Línea de tiempo gráfica: biblioteca de recursos → escuelas → Edvanta Contigo → instituciones (sin fechas inventadas).', 'Evolución de Edvanta de biblioteca de recursos a empresa de educación farmacéutica'],
     ],
   }),
   post({
@@ -141,11 +145,12 @@ export const BLOG_EDVANTA = [
   post({
     slug: 'edvanta-profesionales-pacientes-instituciones',
     title: 'Tres puertas, una misión: Edvanta para profesionales, pacientes e instituciones',
-    description: 'Cuatro escuelas para profesionales, Edvanta Contigo para pacientes y programas con evidencia para instituciones, bajo un mismo criterio farmacéutico.',
+    description: 'Cinco escuelas para profesionales, Edvanta Contigo para pacientes y programas con evidencia para instituciones, bajo un mismo criterio farmacéutico.',
     readingTime: '5 min',
+    actualizado: '2026-11-10',
     imagenes: [
       ['portada', null, 'Collage de tres fotos reales: un profesional estudiando, una paciente leyendo una guía y un equipo en capacitación.', 'Profesionales, pacientes e instituciones en Edvanta'],
-      ['1', 'Profesionales: cuatro escuelas para decidir mejor', 'Gráfico con las cuatro escuelas y un ícono para cada una.', 'Las cuatro escuelas de Edvanta'],
+      ['1', 'Profesionales: cinco escuelas para decidir mejor', 'Gráfico con las cinco escuelas y un ícono para cada una.', 'Las cinco escuelas de Edvanta'],
     ],
   }),
   post({
@@ -163,6 +168,7 @@ export const BLOG_EDVANTA = [
     title: 'Edvanta para instituciones: capacitar equipos de salud con evidencia y trazabilidad',
     description: 'Programas de capacitación para hospitales, IPS, EPS y empresas, con casos, rúbricas, seguimiento por persona y certificados verificables incluidos.',
     readingTime: '5 min',
+    actualizado: '2026-11-10',
     imagenes: [
       ['portada', null, 'Foto de una sesión de capacitación con un equipo de salud (con autorización de las personas), proyector con una clase del aula.', 'Capacitación institucional con Edvanta'],
       ['1', 'Cómo trabajamos con una institución', 'Diagrama de los seis pasos del programa institucional.', 'Pasos de un programa de capacitación institucional de Edvanta'],
@@ -192,6 +198,7 @@ export const BLOG_EDVANTA = [
     title: 'Preguntas frecuentes sobre Edvanta: todo lo que la gente nos pregunta',
     description: 'Qué es Edvanta, quién la fundó, cuánto cuesta y cuánto dura un certificado, cómo se verifica, qué acredita y cómo se enseña, en un solo lugar.',
     readingTime: '5 min',
+    actualizado: '2026-11-10',
     imagenes: [
       ['portada', null, 'Imagen de marca de Edvanta con el texto «Preguntas frecuentes» y el logo oficial (sin modificarlo).', 'Preguntas frecuentes sobre Edvanta'],
     ],
@@ -213,7 +220,7 @@ const SEO = {
   'cuanto-cuesta-certificado-edvanta': ['Cuánto cuesta un certificado de Edvanta: COP 60.000', 'En los cursos propios de Edvanta el contenido es gratis y el certificado cuesta COP 60.000 por curso, en un pago único con Mercado Pago.', '/img/fotos/equipo-carrera-farmaceutica-movil.webp', 'Profesional farmacéutico consultando su curso en el celular'],
   'certificados-edvanta-educacion-informal': ['Qué acredita un certificado de Edvanta: educación informal', 'Los cursos de Edvanta son educación informal según el Decreto 1075 de 2015: acreditan la aprobación de un curso de actualización, no un título.', '/img/escuelas/regulatorios.webp', 'Escuela de Asuntos Regulatorios de Edvanta'],
   'como-se-disena-un-curso-en-edvanta': ['Cómo se diseña un curso en Edvanta: casos y Bloom', 'Cada unidad tiene una actividad con un caso, un quiz ordenado según Bloom y un foro de interacción; cada curso, un proyecto integrador.', '/img/fotos/equipo-carrera-farmaceutica.webp', 'Equipo farmacéutico en formación'],
-  'edvanta-profesionales-pacientes-instituciones': ['Edvanta para profesionales, pacientes e instituciones', 'Cuatro escuelas para profesionales, Edvanta Contigo para pacientes y programas con evidencia para instituciones, con un mismo criterio farmacéutico.', '/img/contigo/aulas-contigo.webp', 'Espacios de aprendizaje de Edvanta'],
+  'edvanta-profesionales-pacientes-instituciones': ['Edvanta para profesionales, pacientes e instituciones', 'Cinco escuelas para profesionales, Edvanta Contigo para pacientes y programas con evidencia para instituciones, con un mismo criterio farmacéutico.', '/img/contigo/aulas-contigo.webp', 'Espacios de aprendizaje de Edvanta'],
   'feliz-sin-tiroides-programa-edvanta': ['Feliz Sin Tiroides: el programa para pacientes de Edvanta', 'Feliz Sin Tiroides es el programa educativo de Edvanta para personas con condiciones de la tiroides y sus cuidadores, con fuentes y sin promesas.', '/img/feliz-sin-tiroides-hero-v2.webp', 'Programa educativo Feliz Sin Tiroides'],
   'edvanta-para-instituciones': ['Edvanta para instituciones: capacitación con evidencia', 'Programas para hospitales, IPS, EPS y empresas, con casos, rúbricas, seguimiento por persona y certificados verificables incluidos.', '/img/empresas/capacitacion-equipo-farmaceutico.webp', 'Capacitación de un equipo farmacéutico'],
   'aprender-con-casos-edvanta': ['Aprender con casos: el método de Edvanta', 'En el trabajo nadie pregunta una definición: aparece un caso y hay que decidir. Así usa Edvanta los casos en clases, actividades y proyectos.', '/img/escuelas/salud.webp', 'Escuela de Salud y Farmacia Clínica de Edvanta'],

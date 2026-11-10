@@ -20,9 +20,9 @@ La respuesta fue Edvanta, con tres ingredientes que vienen directo de nuestra fo
 2. **Inteligencia artificial bien usada.** La IA nos ayuda a buscar, ordenar y redactar borradores, pero no decide qué es correcto. Esa decisión es humana, profesional y con fuentes.
 3. **Marketing con ética.** Aprendimos a contar las cosas para que se entiendan y se recuerden, sin prometer milagros, sin testimonios inventados y sin cifras que no existen.
 
-## De una idea a cuatro escuelas
+## De una idea a cinco escuelas
 
-Lo que empezó como una biblioteca de recursos para profesionales creció hasta convertirse en una empresa de educación farmacéutica con cuatro escuelas —Salud y Farmacia Clínica; Calidad y Producción Farmacéutica; Asuntos Regulatorios; y Marketing y Comunicación Farmacéutica—, una puerta para pacientes llamada Edvanta Contigo y servicios de capacitación para instituciones.
+Lo que empezó como una biblioteca de recursos para profesionales creció hasta convertirse en una empresa de educación farmacéutica con cinco escuelas —Salud y Farmacia Clínica; Calidad y Producción Farmacéutica; Asuntos Regulatorios; Habilidades Blandas; y Marketing y Comunicación Farmacéutica—, una puerta para pacientes llamada Edvanta Contigo y servicios de capacitación para instituciones.
 
 En el camino nació también **Feliz Sin Tiroides**, un programa educativo para personas que viven con condiciones de la tiroides, porque entendimos que el conocimiento farmacéutico no puede quedarse encerrado entre colegas.
 

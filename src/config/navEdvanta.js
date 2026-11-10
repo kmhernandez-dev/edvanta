@@ -24,16 +24,16 @@
 
 import {
   BookOpen, Briefcase, Compass, FileCheck2, FileText, GraduationCap,
-  HeartPulse, Library, Megaphone, Newspaper, Route, ShieldCheck, Sparkles,
+  HeartPulse, Library, Megaphone, MessagesSquare, Newspaper, Route, ShieldCheck, Sparkles,
 } from 'lucide-react';
 import { ESCUELAS } from '../data/edvanta/escuelas';
 
-const ICONOS_ESCUELA = { HeartPulse, ShieldCheck, FileCheck2, Megaphone };
+const ICONOS_ESCUELA = { HeartPulse, ShieldCheck, FileCheck2, Megaphone, MessagesSquare };
 
 /* ── Menú «Escuelas» ──────────────────────────────────────── */
 export const ESCUELAS_GROUPS = [
   {
-    title: 'Las cuatro escuelas',
+    title: 'Las cinco escuelas',
     items: ESCUELAS.map((e) => ({
       label: e.corto,
       desc: e.menu,

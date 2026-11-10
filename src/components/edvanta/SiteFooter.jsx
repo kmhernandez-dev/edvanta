@@ -35,7 +35,7 @@ export default function SiteFooter() {
               loading="lazy"
             />
             <p className="mt-4 max-w-sm text-sm leading-6 text-edvanta-muted">
-              Edvanta es educación farmacéutica: cuatro escuelas con cursos, guías y servicios para
+              Edvanta es educación farmacéutica: cinco escuelas con cursos, guías y servicios para
               profesionales de la salud, pacientes y cuidadores, e instituciones.
             </p>
             <div className="mt-5 flex flex-wrap gap-2">

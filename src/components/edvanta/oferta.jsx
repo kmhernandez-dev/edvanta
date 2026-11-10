@@ -15,13 +15,13 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
-  ArrowRight, CalendarClock, CheckCircle2, FileCheck2, GraduationCap, HeartPulse, Megaphone, MonitorPlay, ShieldCheck, Tag, Users,
+  ArrowRight, CalendarClock, CheckCircle2, FileCheck2, GraduationCap, HeartPulse, Megaphone, MessagesSquare, MonitorPlay, ShieldCheck, Tag, Users,
 } from 'lucide-react';
 import { apiUrl } from '../../config/api';
 import { ESTADOS, ORIGENES } from '../../data/edvanta/estados';
 import { formatoPrecio, productoPorSlug } from '../../data/edvanta/productos';
 
-export const ICONOS_ESCUELA = { HeartPulse, ShieldCheck, FileCheck2, Megaphone };
+export const ICONOS_ESCUELA = { HeartPulse, ShieldCheck, FileCheck2, Megaphone, MessagesSquare };
 
 // Ficha del ícono de cada escuela (sistema de diseño 2.0).
 const TILE = { teal: 'ds-icon-tile--teal', blue: '', violet: 'ds-icon-tile--violet', amber: 'ds-icon-tile--violet' };

@@ -1,6 +1,6 @@
 /**
  * ============================================================
- *  escuelas.js — Las cuatro escuelas de Edvanta
+ *  escuelas.js — Las cinco escuelas de Edvanta
  *
  *  Edvanta es una sola empresa. Las escuelas ordenan lo que enseña,
  *  no son marcas aparte. Cada una declara sus áreas y, para cada área,
@@ -111,6 +111,35 @@ export const ESCUELAS = [
           { nombre: 'Ciclo de vida del producto', estado: 'disponible', nota: 'Estabilidad, bioequivalencia, cambios y renovación.' },
           { nombre: 'Requisitos por tipo de producto', estado: 'disponible', nota: 'Biológicos, biosimilares, vacunas, fitoterapéuticos, suplementos, cannabis, radiofármacos y gases medicinales.' },
           { nombre: 'Requisitos por país', estado: 'en_desarrollo', nota: 'Hoy el contenido corresponde a Colombia.' },
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'habilidades-blandas',
+    nombre: 'Escuela de Habilidades Blandas',
+    corto: 'Habilidades Blandas',
+    menu: 'Oratoria, comunicación, liderazgo y servicio',
+    icono: 'MessagesSquare',
+    imagen: '/img/escuelas/habilidades-blandas.webp',
+    imagenAlt: 'Químicos farmacéuticos y personal de salud conversando alrededor de una mesa de trabajo con una tableta',
+    tono: 'teal',
+    resumen:
+      'Oratoria, comunicación asertiva, negociación, inteligencia emocional, liderazgo y servicio al paciente, con ejemplos del sector farmacéutico y de la salud.',
+    // Los diez cursos de la migración 075 (scripts/generar-habilidades-blandas.mjs).
+    catalogo: { area: 'Habilidades Blandas', categorias: [] },
+    programas: [],
+    recorridos: [
+      {
+        id: 'talento',
+        titulo: 'Áreas de la escuela',
+        publico: 'profesionales',
+        areas: [
+          { nombre: 'Oratoria y presentaciones', estado: 'disponible', nota: 'Oratoria, miedo a hablar en público, presentaciones y storytelling, y hablar frente a la cámara.' },
+          { nombre: 'Comunicación interpersonal', estado: 'disponible', nota: 'Comunicación asertiva y lenguaje corporal.' },
+          { nombre: 'Liderazgo y relaciones laborales', estado: 'disponible', nota: 'Negociación y persuasión, inteligencia emocional, y liderazgo y trabajo en equipo.' },
+          { nombre: 'Servicio al paciente', estado: 'disponible', nota: 'Servicio al cliente y comunicación con el paciente en farmacias y droguerías.' },
+          { nombre: 'Capacitación de equipos institucionales', estado: 'a_solicitud', to: '/instituciones' },
         ],
       },
     ],

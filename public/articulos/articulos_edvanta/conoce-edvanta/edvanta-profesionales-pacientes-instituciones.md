@@ -2,13 +2,14 @@
 
 **Edvanta tiene tres puertas de entrada —profesionales, pacientes e instituciones— y una sola misión: que el conocimiento sobre medicamentos llegue completo, verificable y útil a quien lo necesita.** En la parte superior del sitio verás siempre esas tres opciones; cada una cambia el menú y lo que te mostramos.
 
-## Profesionales: cuatro escuelas para decidir mejor
+## Profesionales: cinco escuelas para decidir mejor
 
-La puerta de profesionales es para químicos farmacéuticos, regentes, auxiliares, estudiantes y equipos de salud y de la industria. Está organizada en cuatro escuelas:
+La puerta de profesionales es para químicos farmacéuticos, regentes, auxiliares, estudiantes y equipos de salud y de la industria. Está organizada en cinco escuelas:
 
 - **Escuela de Salud y Farmacia Clínica:** atención farmacéutica, farmacoterapia y seguridad del paciente.
 - **Escuela de Calidad y Producción Farmacéutica:** buenas prácticas, validaciones, centrales de mezclas y sistemas de calidad.
 - **Escuela de Asuntos Regulatorios:** normas, trámites y relación con la autoridad sanitaria.
+- **Escuela de Habilidades Blandas:** oratoria, comunicación asertiva, negociación, inteligencia emocional, liderazgo y servicio al paciente.
 - **Escuela de Marketing y Comunicación Farmacéutica:** comunicar salud con ética, marca personal y estrategia digital.
 
 Allí encuentras cursos propios del aula de Edvanta, con contenido gratis y certificado verificable, además de una selección de cursos de otras plataformas, identificados como tales.
@@ -33,7 +34,7 @@ Hospitales, IPS, EPS y empresas del sector pueden contratar programas para sus e
 
 ### ¿Qué son las escuelas de Edvanta?
 
-Son las cuatro áreas de formación profesional: Salud y Farmacia Clínica; Calidad y Producción Farmacéutica; Asuntos Regulatorios; y Marketing y Comunicación Farmacéutica.
+Son las cinco áreas de formación profesional: Salud y Farmacia Clínica; Calidad y Producción Farmacéutica; Asuntos Regulatorios; Habilidades Blandas; y Marketing y Comunicación Farmacéutica.
 
 ### ¿Qué es Edvanta Contigo?
 

@@ -4,7 +4,7 @@
 
 ## Sobre la empresa
 
-Edvanta forma a quienes trabajan con medicamentos, acompaña con educación a pacientes y cuidadores y diseña programas de capacitación para instituciones. Trabaja con cuatro escuelas profesionales, la puerta Edvanta Contigo para pacientes y servicios para instituciones. Su regla central: todo lo que se enseña debe poder sostenerse con una fuente verificable.
+Edvanta forma a quienes trabajan con medicamentos, acompaña con educación a pacientes y cuidadores y diseña programas de capacitación para instituciones. Trabaja con cinco escuelas profesionales, la puerta Edvanta Contigo para pacientes y servicios para instituciones. Su regla central: todo lo que se enseña debe poder sostenerse con una fuente verificable.
 
 ## Sobre los cursos y los certificados
 

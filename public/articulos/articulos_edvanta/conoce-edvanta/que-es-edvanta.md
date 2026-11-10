@@ -8,7 +8,7 @@ Si llegaste aquí preguntándote «¿Edvanta es una universidad?, ¿una tienda d
 
 Edvanta trabaja bajo una sola marca y un solo criterio, pero con tres puertas de entrada:
 
-- **Profesionales.** Cuatro escuelas: Salud y Farmacia Clínica; Calidad y Producción Farmacéutica; Asuntos Regulatorios; y Marketing y Comunicación Farmacéutica. Allí están los cursos propios del aula de Edvanta, las rutas de aprendizaje y una selección de cursos de otras plataformas, siempre identificados como tales.
+- **Profesionales.** Cinco escuelas: Salud y Farmacia Clínica; Calidad y Producción Farmacéutica; Asuntos Regulatorios; Habilidades Blandas; y Marketing y Comunicación Farmacéutica. Allí están los cursos propios del aula de Edvanta, las rutas de aprendizaje y una selección de cursos de otras plataformas, siempre identificados como tales.
 - **Pacientes y cuidadores.** Edvanta Contigo reúne guías y programas educativos para entender una condición de salud y preparar mejor la consulta. Su primera ruta es Feliz Sin Tiroides, para personas que viven con condiciones de la tiroides.
 - **Instituciones.** Hospitales, IPS, EPS y empresas pueden contratar programas de capacitación para sus equipos, con seguimiento del avance y evidencias de aprendizaje.
 

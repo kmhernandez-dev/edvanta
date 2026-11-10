@@ -32,7 +32,7 @@ const [PUERTA_CONTIGO, PUERTA_INSTITUCIONES] = SOBRE_EDVANTA.puertas;
 export default function SobreEdvanta() {
   useEffect(() => updatePageSeo({
     title: 'Sobre Edvanta | Educación farmacéutica',
-    description: 'Edvanta es una empresa de educación farmacéutica: cuatro escuelas, Edvanta Contigo para pacientes y servicios para instituciones.',
+    description: 'Edvanta es una empresa de educación farmacéutica: cinco escuelas, Edvanta Contigo para pacientes y servicios para instituciones.',
     canonical: 'https://edvanta.co/sobre-edvanta',
   }), []);
 
@@ -50,7 +50,7 @@ export default function SobreEdvanta() {
           imageAlt="Grupo de químicos farmacéuticos reunidos alrededor de una mesa, conversando sobre una tableta"
           imagePosition="center"
           badges={[
-            { icon: GraduationCap, label: 'Cuatro escuelas' },
+            { icon: GraduationCap, label: 'Cinco escuelas' },
             { icon: HeartPulse, label: 'Edvanta Contigo' },
             { icon: Building2, label: 'Instituciones' },
           ]}
@@ -63,7 +63,7 @@ export default function SobreEdvanta() {
         />
 
         <Section tone="white">
-          <SectionHeading eyebrow="Cómo nos organizamos" title="Cuatro escuelas y dos puertas" />
+          <SectionHeading eyebrow="Cómo nos organizamos" title="Cinco escuelas y dos puertas" />
           <div className="mt-10 grid gap-4 md:grid-cols-2">
             {ESCUELAS.map((e) => {
               const Icono = ICONOS_ESCUELA[e.icono];

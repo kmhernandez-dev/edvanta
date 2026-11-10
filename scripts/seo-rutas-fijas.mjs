@@ -22,16 +22,23 @@ import {
 import { EDVANTA_EMAIL, EDVANTA_WHATSAPP_URL } from '../src/config/links.js';
 import { NOTICIAS } from '../src/data/noticiasReescritas.js';
 import { fuentesNoticias } from '../src/data/careerHub.js';
+import { CURSOS_HABILIDADES_BLANDAS } from '../src/data/edvanta/cursosHabilidadesBlandas.js';
 
 const AREAS_POR_SLUG = new Map(AREAS_CAPACITACION.map((a) => [a.slug, a]));
 
-/** Lo que el sitio ya ofrece en cada escuela, sin consultar la base. */
+/**
+ * Lo que el sitio ya ofrece en cada escuela, sin consultar la base. Los
+ * cursos propios viven en el aula; los de Habilidades Blandas tienen una
+ * lista estática (migración 075) para que el HTML enlace sus fichas.
+ */
+const CURSOS_PROPIOS_ESTATICOS = { 'habilidades-blandas': CURSOS_HABILIDADES_BLANDAS };
+
 function extrasDeEscuela(slug) {
   const areas = AREAS_DEL_INICIO.filter((a) => a.escuela === slug);
   const ids = new Set(areas.map((a) => a.id));
   return {
     areas,
-    cursos: CURSOS_EDUTIN.filter((c) => ids.has(c.area)),
+    cursos: [...(CURSOS_PROPIOS_ESTATICOS[slug] || []), ...CURSOS_EDUTIN.filter((c) => ids.has(c.area))],
     productos: productosDeEscuela(slug),
   };
 }
@@ -43,7 +50,7 @@ const add = (ruta, titulo, descripcion, extra = {}) => {
 
 const cursoAutocuidado = ebooks.find((c) => c.id === 'fst-autocuidado');
 
-add('/escuelas', 'Escuelas de Edvanta | Salud, Calidad, Regulatorios y Marketing farmacéutico', 'Cuatro escuelas de formación farmacéutica: Salud y Farmacia Clínica, Calidad y Producción, Asuntos Regulatorios, y Marketing y Comunicación.', { tipo: 'CollectionPage', seccion: 'Escuelas', enlaces: [['Escuela de Salud y Farmacia Clínica', '/escuelas/salud-y-farmacia-clinica'], ['Escuela de Calidad y Producción Farmacéutica', '/escuelas/calidad-y-produccion-farmaceutica'], ['Escuela de Asuntos Regulatorios', '/escuelas/asuntos-regulatorios'], ['Escuela de Marketing y Comunicación Farmacéutica', '/escuelas/marketing-y-comunicacion-farmaceutica']], contenido: contenidoEscuelas(ESCUELAS) });
+add('/escuelas', 'Escuelas de Edvanta | Formación farmacéutica y habilidades', 'Cinco escuelas: Salud y Farmacia Clínica, Calidad y Producción, Asuntos Regulatorios, Habilidades Blandas, y Marketing y Comunicación.', { tipo: 'CollectionPage', seccion: 'Escuelas', enlaces: ESCUELAS.map((e) => [e.nombre, `/escuelas/${e.slug}`]), contenido: contenidoEscuelas(ESCUELAS) });
 
 for (const escuela of ESCUELAS) {
   if (escuela.slug === 'marketing-y-comunicacion-farmaceutica') continue;
@@ -79,7 +86,7 @@ for (const paquete of PAQUETES) {
   });
 }
 
-add('/sobre-edvanta', 'Sobre Edvanta | Educación farmacéutica', 'Edvanta es una empresa de educación farmacéutica: cuatro escuelas, Edvanta Contigo para pacientes y servicios para instituciones.', { tipo: 'AboutPage', seccion: 'Edvanta', enlaces: [['Escuelas', '/escuelas'], ['Edvanta Contigo', '/contigo'], ['Contacto', '/contacto']], h1: SOBRE_EDVANTA.titulo, contenido: contenidoSobreEdvanta(SOBRE_EDVANTA, ESCUELAS, AUTORA) });
+add('/sobre-edvanta', 'Sobre Edvanta | Educación farmacéutica', 'Edvanta es una empresa de educación farmacéutica: cinco escuelas, Edvanta Contigo para pacientes y servicios para instituciones.', { tipo: 'AboutPage', seccion: 'Edvanta', enlaces: [['Escuelas', '/escuelas'], ['Edvanta Contigo', '/contigo'], ['Contacto', '/contacto']], h1: SOBRE_EDVANTA.titulo, contenido: contenidoSobreEdvanta(SOBRE_EDVANTA, ESCUELAS, AUTORA) });
 
 add('/contacto', 'Contacto | Edvanta', 'Escríbele a Edvanta por WhatsApp, por correo o con el formulario.', { tipo: 'ContactPage', seccion: 'Edvanta', enlaces: [['Sobre Edvanta', '/sobre-edvanta'], ['Instituciones', '/instituciones']], contenido: contenidoContacto(CONTACTO, { email: EDVANTA_EMAIL, whatsapp: EDVANTA_WHATSAPP_URL }) });
 

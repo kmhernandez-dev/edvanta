@@ -140,7 +140,68 @@ describe.each(LINEAS)('cursos de $categoria', ({ categoria, cursos: nCursos, uni
   }, 240_000);
 });
 
-describe('las tres categorías con las que se agrupan', () => {
+// Escuela de Habilidades Blandas (075): un área propia, cuatro etiquetas
+// finas, y dos títulos que empiezan por «Curso para», por eso va aparte.
+describe('cursos de la Escuela de Habilidades Blandas', () => {
+  let cursos;
+
+  beforeAll(async () => {
+    cursos = (await pglite.query(
+      `SELECT id, title, status, category FROM aula_courses
+        WHERE area = 'Habilidades Blandas' AND kind = 'edvanta' AND deleted_at IS NULL
+        ORDER BY id`,
+    )).rows;
+  });
+
+  it('están los diez, en borrador y con sus cuatro etiquetas finas', () => {
+    expect(cursos).toHaveLength(10);
+    expect(cursos.every((c) => c.status === 'borrador')).toBe(true);
+    expect([...new Set(cursos.map((c) => c.category))].sort()).toEqual([
+      'Comunicación interpersonal', 'Liderazgo y relaciones laborales', 'Oratoria y presentaciones', 'Servicio al paciente',
+    ]);
+  });
+
+  it('cuatro unidades y ocho clases en texto por curso, ninguna hueca', async () => {
+    const { rows } = await pglite.query(
+      `SELECT c.id,
+              (SELECT COUNT(*)::int FROM aula_modules m WHERE m.course_id = c.id) AS unidades,
+              (SELECT COUNT(*)::int FROM aula_lessons l WHERE l.course_id = c.id) AS clases,
+              (SELECT COUNT(*)::int FROM aula_lessons l WHERE l.course_id = c.id
+                  AND NOT EXISTS (SELECT 1 FROM aula_lesson_blocks b WHERE b.lesson_id = l.id AND b.type = 'texto')) AS sin_texto
+         FROM aula_courses c WHERE c.id = ANY($1)`,
+      [cursos.map((c) => c.id)],
+    );
+    expect(rows).toHaveLength(10);
+    for (const r of rows) {
+      expect(r.unidades).toBe(4);
+      expect(r.clases).toBe(8);
+      expect(r.sin_texto).toBe(0);
+    }
+  });
+
+  it('lo que se ve no trae marcas de trabajo', async () => {
+    const { rows } = await pglite.query(
+      `SELECT l.title FROM aula_lesson_blocks b
+         JOIN aula_lessons l ON l.id = b.lesson_id
+         JOIN aula_courses c ON c.id = l.course_id
+        WHERE c.area = 'Habilidades Blandas' AND b.data::text ~* $1`,
+      ['por confirmar|\\[pendiente|pendiente de revisi'],
+    );
+    expect(rows).toEqual([]);
+  });
+
+  it('todos pasan la validación de publicar', async () => {
+    const fallos = [];
+    for (const c of cursos) {
+      const snapshot = await buildSnapshot(db, c.id);
+      const { errors } = validateSnapshot(snapshot, { status: 'borrador', kind: 'edvanta' });
+      if (errors.length) fallos.push(`${c.title}: ${errors.slice(0, 3).map((e) => e.message).join(' | ')}`);
+    }
+    expect(fallos).toEqual([]);
+  }, 240_000);
+});
+
+describe('las categorías con las que se agrupan', () => {
   it('cada curso profesional cae en una, y solo en una', async () => {
     const { rows } = await pglite.query(
       `SELECT area, COUNT(*)::int AS n FROM aula_courses
@@ -149,14 +210,15 @@ describe('las tres categorías con las que se agrupan', () => {
     );
     const porArea = Object.fromEntries(rows.map((r) => [r.area ?? '(sin área)', r.n]));
 
-    // Son tres y solo tres: si aparece una cuarta, alguien creó una
-    // categoría nueva sin decidir dónde encaja.
+    // Una por escuela con cursos propios: si aparece otra, alguien creó
+    // una categoría nueva sin decidir dónde encaja.
     const areas = rows.map((r) => r.area).filter(Boolean).sort();
-    expect(areas).toEqual(['Asuntos Regulatorios', 'Calidad', 'Farmacología']);
+    expect(areas).toEqual(['Asuntos Regulatorios', 'Calidad', 'Farmacología', 'Habilidades Blandas']);
 
     expect(porArea['Calidad']).toBe(14);               // 10 sembrados + 4 anteriores
     expect(porArea['Asuntos Regulatorios']).toBe(21);  // 10 + 10 + el que ya existía
     expect(porArea['Farmacología']).toBe(16);          // 12 de farmacología + 4 de farmacoterapia
+    expect(porArea['Habilidades Blandas']).toBe(10);   // la escuela de la migración 075
     // Autocuidado de la tiroides se queda fuera a propósito: es para
     // pacientes, no formación profesional.
     expect(porArea['(sin área)']).toBe(1);
@@ -231,9 +293,10 @@ describe('farmacoterapia: lo que se ve no trae marcas de trabajo', () => {
 
 // Va al final: publica de verdad, y lo de arriba revisa los borradores.
 describe('publicación aprobada al arrancar', () => {
-  it('publica los cuatro cursos aprobados con el mismo camino del botón', async () => {
+  it('publica los catorce cursos aprobados con el mismo camino del botón', async () => {
+    // 4 de farmacoterapia (055) + 10 de habilidades blandas (075).
     const hechos = await publicarAprobados(db);
-    expect(hechos).toHaveLength(4);
+    expect(hechos).toHaveLength(14);
 
     const { rows } = await pglite.query(
       `SELECT c.title, c.status, v.version_number, v.snapshot->'totals'->>'lessons' AS clases, p.error
@@ -251,10 +314,25 @@ describe('publicación aprobada al arrancar', () => {
     }
     expect(rows.reduce((n, r) => n + Number(r.clases), 0)).toBe(154);
 
+    const { rows: blandas } = await pglite.query(
+      `SELECT c.status, v.version_number, v.snapshot->'totals'->>'lessons' AS clases, p.error
+         FROM aula_courses c
+         JOIN aula_course_versions v ON v.id = c.current_version_id
+         JOIN aula_publicaciones_aprobadas p ON p.course_id = c.id
+        WHERE c.area = 'Habilidades Blandas'`,
+    );
+    expect(blandas).toHaveLength(10);
+    for (const r of blandas) {
+      expect(r.status).toBe('publicado');
+      expect(r.version_number).toBe(1);
+      expect(r.error).toBeNull();
+    }
+    expect(blandas.reduce((n, r) => n + Number(r.clases), 0)).toBe(80);
+
     const [{ n }] = (await pglite.query(
       "SELECT count(*)::int AS n FROM aula_audit_log WHERE action = 'curso.publicar'",
     )).rows;
-    expect(n).toBe(4);
+    expect(n).toBe(14);
   }, 240_000);
 
   it('al volver a arrancar no publica nada otra vez', async () => {

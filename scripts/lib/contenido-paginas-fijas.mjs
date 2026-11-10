@@ -181,7 +181,7 @@ export function contenidoNoticias(noticias, fuentes = []) {
 export function contenidoSobreEdvanta(sobre, escuelas = [], autora = {}) {
   return [
     parrafo(sobre.lead),
-    seccion('Cuatro escuelas y dos puertas', [
+    seccion('Cinco escuelas y dos puertas', [
       `<ul>${escuelas.map((e) => `<li><a href="/escuelas/${esc(e.slug)}">${esc(e.nombre)}</a>: ${esc(e.resumen)}</li>`).join('')}</ul>`,
       enlacesConTexto(sobre.puertas),
     ].join('')),

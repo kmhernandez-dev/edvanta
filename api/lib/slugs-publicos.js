@@ -86,6 +86,12 @@ export const SLUGS_ELEGIDOS = {
   'buenas-practicas-de-manufactura-bpm-en-la-industria-farmaceutica': 'curso-de-bpm-en-la-industria-farmaceutica',
   'buenas-practicas-de-elaboracion-bpe-y-preparaciones-magistrales': 'curso-de-bpe-y-preparaciones-magistrales',
   'validaciones-y-calificaciones-en-la-industria-farmaceutica': 'curso-de-validaciones-y-calificaciones',
+  // Escuela de Habilidades Blandas (migración 075): la dirección es la
+  // palabra clave principal de cada curso.
+  'curso-de-oratoria-como-hablar-en-publico-con-seguridad': 'curso-de-oratoria',
+  'curso-de-comunicacion-asertiva-en-el-trabajo': 'curso-de-comunicacion-asertiva',
+  'curso-de-inteligencia-emocional-en-el-trabajo': 'curso-de-inteligencia-emocional',
+  'curso-de-servicio-al-cliente-y-comunicacion-con-el-paciente': 'curso-de-servicio-al-cliente',
 };
 
 const PREFIJO = 'curso-de-';

@@ -26,7 +26,7 @@ import { useCallback, useEffect, useId, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import {
   ArrowLeft, ArrowRight, Award, Bell, BookOpen, BrainCircuit, Briefcase, Check, ChevronDown, Clock, FileCheck2,
-  HardHat, HeartPulse, LibraryBig, Newspaper, PartyPopper, Pill, PlayCircle, Radio, Route, Salad, Send,
+  HardHat, HeartPulse, LibraryBig, MessagesSquare, Newspaper, PartyPopper, Pill, PlayCircle, Radio, Route, Salad, Send,
   ShieldCheck, Sparkles, X, Zap,
 } from 'lucide-react';
 import { apiUrl } from '../../config/api';
@@ -133,7 +133,7 @@ export function FilaCargando() {
 }
 
 const ICONOS = {
-  BookOpen, BrainCircuit, Briefcase, FileCheck2, HardHat, HeartPulse, LibraryBig, Newspaper, Pill, Route, Salad,
+  BookOpen, BrainCircuit, Briefcase, FileCheck2, HardHat, HeartPulse, LibraryBig, MessagesSquare, Newspaper, Pill, Route, Salad,
   ShieldCheck, Sparkles, Zap,
 };
 

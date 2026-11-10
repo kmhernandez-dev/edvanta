@@ -31,7 +31,7 @@ import {
 import GlobalSearch from './GlobalSearch';
 
 const MENUS = {
-  escuelas: { id: 'escuelas', label: 'Escuelas', groups: ESCUELAS_GROUPS, width: 'w-[440px]', cols: 1, all: { label: 'Ver las cuatro escuelas', to: '/escuelas' } },
+  escuelas: { id: 'escuelas', label: 'Escuelas', groups: ESCUELAS_GROUPS, width: 'w-[440px]', cols: 1, all: { label: 'Ver las cinco escuelas', to: '/escuelas' } },
   recursos: { id: 'recursos', label: 'Guías y recursos', groups: RECURSOS_GROUPS, width: 'w-[640px]', cols: 2 },
 };
 

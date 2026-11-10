@@ -4,7 +4,7 @@
 
 Datos clave:
 
-- Cuatro escuelas para profesionales: Salud y Farmacia Clínica; Calidad y Producción Farmacéutica; Asuntos Regulatorios; Marketing y Comunicación Farmacéutica.
+- Cinco escuelas para profesionales: Salud y Farmacia Clínica; Calidad y Producción Farmacéutica; Asuntos Regulatorios; Habilidades Blandas (oratoria, comunicación, negociación, inteligencia emocional, liderazgo y servicio al paciente); Marketing y Comunicación Farmacéutica.
 - Edvanta Contigo es la puerta para pacientes y cuidadores; su primera ruta es Feliz Sin Tiroides. Es educación, no atención clínica.
 - Los cursos propios se toman en el aula de Edvanta. El contenido es gratis; el certificado de aprobación cuesta COP 60.000 por curso (pago único con Mercado Pago). En los cursos asignados por una institución, el certificado va incluido.
 - Los certificados se expiden en Medellín, llevan código EDV-XXXX-XXXX y QR, no se vencen (salvo revocación) y se verifican en https://edvanta.co/certificados.
@@ -47,6 +47,7 @@ Datos clave:
 
 - [Sobre Edvanta](https://edvanta.co/sobre-edvanta)
 - [Escuelas](https://edvanta.co/escuelas)
+- [Escuela de Habilidades Blandas](https://edvanta.co/escuelas/habilidades-blandas)
 - [Cursos](https://edvanta.co/cursos)
 - [Edvanta Contigo (pacientes)](https://edvanta.co/contigo)
 - [Instituciones](https://edvanta.co/instituciones)

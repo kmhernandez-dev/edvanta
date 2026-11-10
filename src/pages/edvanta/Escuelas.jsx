@@ -2,14 +2,16 @@
  * ============================================================
  *  Escuelas.jsx — /escuelas
  *
- *  Las cuatro escuelas de Edvanta, cada una con lo que hoy tiene
+ *  Las cinco escuelas de Edvanta, cada una con lo que hoy tiene
  *  publicado. El número de cursos sale de la base de datos, no de un
  *  texto escrito a mano.
  * ============================================================
  */
 
 import { useEffect, useMemo } from 'react';
-import { ArrowRight, Building2, FileCheck2, GraduationCap, HeartPulse, Megaphone, ShieldCheck } from 'lucide-react';
+import {
+  ArrowRight, Building2, FileCheck2, GraduationCap, HeartPulse, Megaphone, MessagesSquare, ShieldCheck,
+} from 'lucide-react';
 import { Link } from 'react-router-dom';
 import SiteHeader from '../../components/edvanta/SiteHeader';
 import SiteFooter from '../../components/edvanta/SiteFooter';
@@ -19,10 +21,10 @@ import { EscuelaCard, useCursosPropios } from '../../components/edvanta/oferta';
 import { ESCUELAS, cursoEnEscuela } from '../../data/edvanta/escuelas';
 import { updatePageSeo } from '../../utils/seo';
 
-const ICONOS = { HeartPulse, ShieldCheck, FileCheck2, Megaphone };
+const ICONOS = { HeartPulse, ShieldCheck, FileCheck2, Megaphone, MessagesSquare };
 
 /**
- * Mapa de las escuelas: Edvanta arriba, las cuatro escuelas debajo y,
+ * Mapa de las escuelas: Edvanta arriba, las cinco escuelas debajo y,
  * en cada una, sus áreas con el estado real (punto de color).
  */
 function MapaDeEscuelas() {
@@ -33,11 +35,13 @@ function MapaDeEscuelas() {
           <GraduationCap className="h-4 w-4" aria-hidden="true" />Edvanta
         </span>
       </div>
-      {/* Las ramas solo se dibujan en escritorio, donde las cuatro columnas caben. */}
-      <svg viewBox="0 0 100 10" preserveAspectRatio="none" className="mx-auto hidden h-10 w-[76%] lg:block" aria-hidden="true">
-        <path d="M50 0 V4 M12.5 10 V4 H87.5 V10 M37.5 4 V10 M62.5 4 V10" fill="none" stroke="#C9D4E6" strokeWidth="1.5" vectorEffect="non-scaling-stroke" />
+      {/* Las ramas solo se dibujan en escritorio, donde las cinco columnas caben:
+          una por escuela, en el centro de cada columna (con el espacio entre
+          columnas, quedan en 9,2 · 29,6 · 50 · 70,4 · 90,8 % del ancho). */}
+      <svg viewBox="0 0 100 10" preserveAspectRatio="none" className="mx-auto hidden h-10 w-full lg:block" aria-hidden="true">
+        <path d="M50 0 V10 M9.2 10 V4 H90.8 V10 M29.6 4 V10 M70.4 4 V10" fill="none" stroke="#C9D4E6" strokeWidth="1.5" vectorEffect="non-scaling-stroke" />
       </svg>
-      <ol className="mt-6 grid gap-6 sm:grid-cols-2 lg:mt-0 lg:grid-cols-4">
+      <ol className="mt-6 grid gap-6 sm:grid-cols-2 lg:mt-0 lg:grid-cols-5">
         {ESCUELAS.map((e) => {
           const Icono = ICONOS[e.icono] || GraduationCap;
           const areas = e.recorridos.flatMap((r) => r.areas);
@@ -76,8 +80,8 @@ export default function Escuelas() {
   );
 
   useEffect(() => updatePageSeo({
-    title: 'Escuelas de Edvanta | Salud, Calidad, Regulatorios y Marketing farmacéutico',
-    description: 'Cuatro escuelas de formación farmacéutica: Salud y Farmacia Clínica, Calidad y Producción, Asuntos Regulatorios, y Marketing y Comunicación.',
+    title: 'Escuelas de Edvanta | Formación farmacéutica y habilidades',
+    description: 'Cinco escuelas: Salud y Farmacia Clínica, Calidad y Producción, Asuntos Regulatorios, Habilidades Blandas, y Marketing y Comunicación.',
     canonical: 'https://edvanta.co/escuelas',
   }), []);
 
@@ -88,7 +92,7 @@ export default function Escuelas() {
         <HeroCientifico
           breadcrumb={<Breadcrumb items={[{ label: 'Inicio', to: '/' }, { label: 'Escuelas' }]} className="mb-8" />}
           eyebrow="Escuelas de Edvanta"
-          title="Cuatro escuelas, una sola Edvanta"
+          title="Cinco escuelas, una sola Edvanta"
           highlight="una sola Edvanta"
           lead="Cada escuela reúne los cursos, guías y servicios de un campo del trabajo farmacéutico. Las áreas que aún no tienen contenido se muestran como lo que son: en desarrollo."
           image="/img/publicos/profesionales.webp"
@@ -104,7 +108,7 @@ export default function Escuelas() {
 
         <Section id="escuelas" tone="white">
           <SectionHeading eyebrow="Elige tu escuela" title="Qué encuentras en cada una" />
-          <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+          <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
             {ESCUELAS.map((e) => (
               <EscuelaCard key={e.slug} escuela={e} cursos={e.catalogo ? porEscuela[e.slug] : null} />
             ))}

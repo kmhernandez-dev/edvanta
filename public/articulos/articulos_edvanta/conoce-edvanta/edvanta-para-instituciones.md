@@ -11,7 +11,7 @@ Como químicos farmacéuticos, conocemos esa pregunta desde adentro. Por eso dis
 ## Cómo trabajamos con una institución
 
 1. **Diagnóstico de necesidades.** Revisamos con el equipo qué procesos, cargos y riesgos debe cubrir la capacitación.
-2. **Programa a la medida.** Seleccionamos y adaptamos cursos de las cuatro escuelas, o diseñamos uno nuevo cuando hace falta.
+2. **Programa a la medida.** Seleccionamos y adaptamos cursos de las cinco escuelas, o diseñamos uno nuevo cuando hace falta.
 3. **Asignación en el aula.** Cada colaborador recibe su acceso; la institución ve el avance por persona y por curso.
 4. **Evaluación con rúbricas.** Quizzes por niveles de la taxonomía de Bloom, actividades basadas en casos y, cuando aplica, un proyecto sobre la realidad del propio servicio.
 5. **Certificados verificables.** Cada persona que aprueba obtiene un certificado con código y QR; en los cursos asignados por la institución, el certificado va incluido en el programa.

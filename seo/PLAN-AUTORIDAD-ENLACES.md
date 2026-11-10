@@ -60,7 +60,7 @@ Cada perfil oficial con el sitio web en su ficha suma un enlace, y le confirma a
 | Acción | Quién | Resultado |
 |---|---|---|
 | Crear la página de empresa **Edvanta** en LinkedIn (hoy `EDVANTA_LINKEDIN_URL` está vacío), con sitio web `https://edvanta.co` | Karla | Enlace desde linkedin.com/company |
-| Crear el **Perfil de Empresa de Google**, con sitio web, **solo si Edvanta atiende en un lugar físico o presta servicios presenciales en una zona** (por ejemplo, capacitaciones en las instituciones). Google no admite perfiles de negocios que funcionan solo en línea. El nombre legal y la dirección los confirma Karla | Karla | Ficha en Google Maps y búsqueda de marca |
+| Crear el **Perfil de Empresa de Google** (Edvanta S.A.S., Medellín, como dice `public/llms.txt`), con sitio web, **solo si Edvanta atiende en un lugar físico o presta servicios presenciales en una zona** (por ejemplo, capacitaciones en las instituciones). Google no admite perfiles de negocios que funcionan solo en línea | Karla | Ficha en Google Maps y búsqueda de marca |
 | Perfil de Instagram, TikTok y YouTube de Edvanta con `https://edvanta.co` en la biografía | Karla | Enlaces de perfil |
 | En tu LinkedIn personal, poner como sitio web `https://edvanta.co/autores/karla-hernandez` y destacar 3 artículos revisados | Karla | Refuerza la autoría (E-E-A-T) |
 | Enviar las URL de esos perfiles para agregarlas al `sameAs` del JSON-LD de la organización | Karla → equipo | Google une la marca con sus perfiles |

@@ -2,7 +2,7 @@
  * ============================================================
  *  Escuela.jsx — /escuelas/:slug
  *
- *  Una sola plantilla para las cuatro escuelas. Muestra, en este orden:
+ *  Una sola plantilla para las cinco escuelas. Muestra, en este orden:
  *  lo que se puede usar hoy (productos y cursos), las áreas con su
  *  estado real y las identidades vinculadas.
  *

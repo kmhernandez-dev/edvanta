@@ -24,6 +24,7 @@ export const AREAS_DEL_INICIO = [
   { id: 'farmacologia', corto: 'Farmacología', titulo: 'Farmacología por sistemas y oncología', subtitulo: 'Mecanismos, uso seguro y casos', icono: 'Pill', escuela: 'salud-y-farmacia-clinica' },
   { id: 'calidad', corto: 'Calidad', titulo: 'Calidad y producción farmacéutica', subtitulo: 'BPM, auditoría, riesgos y mejora continua', icono: 'ShieldCheck', escuela: 'calidad-y-produccion-farmaceutica' },
   { id: 'regulatorios', corto: 'Regulatorios', titulo: 'Asuntos regulatorios', subtitulo: 'Registro sanitario y productos especiales ante el INVIMA', icono: 'FileCheck2', escuela: 'asuntos-regulatorios' },
+  { id: 'habilidades-blandas', corto: 'Habilidades blandas', titulo: 'Habilidades blandas', subtitulo: 'Oratoria, comunicación, liderazgo y servicio al paciente', icono: 'MessagesSquare', escuela: 'habilidades-blandas' },
   { id: 'datos-ia', corto: 'Datos e IA', titulo: 'Datos e inteligencia artificial', subtitulo: 'Power BI e IA aplicada a la operación', icono: 'BrainCircuit', escuela: null },
   { id: 'hseq', corto: 'SST y ambiente', titulo: 'Seguridad, salud en el trabajo y ambiente', subtitulo: 'SST, riesgo químico y gestión ambiental', icono: 'HardHat', escuela: null },
   { id: 'gestion', corto: 'Gestión', titulo: 'Gestión y habilidades profesionales', subtitulo: 'Proyectos, administración y finanzas', icono: 'Briefcase', escuela: null },
@@ -36,6 +37,7 @@ export function areaDeCursoPropio(c) {
   if (c.area === 'Farmacología') return c.category === 'Farmacoterapia' ? 'farmacia-clinica' : 'farmacologia';
   if (c.area === 'Calidad') return 'calidad';
   if (c.area === 'Asuntos Regulatorios') return 'regulatorios';
+  if (c.area === 'Habilidades Blandas') return 'habilidades-blandas';
   return null;
 }
 

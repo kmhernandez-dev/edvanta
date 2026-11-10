@@ -13,7 +13,7 @@ const PUERTAS = [
 
 // Lo que existe hoy, dicho en corto. Nada de cifras sin respaldo.
 const RASGOS = [
-  { icon: GraduationCap, label: 'Cuatro escuelas', desc: 'Clínica, calidad, regulatorio y comunicación' },
+  { icon: GraduationCap, label: 'Cinco escuelas', desc: 'Clínica, calidad, regulatorio, habilidades blandas y comunicación' },
   { icon: MonitorPlay, label: 'En vivo y virtuales', desc: 'Cursos en el aula de Edvanta' },
   { icon: BookOpen, label: 'Guías y kits', desc: 'Para el trabajo diario' },
   { icon: Users, label: 'Edvanta Contigo', desc: 'Educación para pacientes' },
