@@ -36,7 +36,9 @@ const { ESCUELA_MARKETING, PROGRAMAS_MARKETING, SERVICIOS_MARKETING } = await im
 const { DIRECCIONES_ANTIGUAS } = await importar('src/data/edvanta/direcciones.js');
 const { nombreDeCurso, slugify } = await importar('src/lib/slug.js');
 const { RUTAS_FIJAS } = await importar('scripts/seo-rutas-fijas.mjs');
-const { contenidoHerramienta, contenidoServicioMarketing } = await importar('scripts/lib/contenido-paginas-fijas.mjs');
+const {
+  contenidoHerramienta, contenidoReto, contenidoRetos, contenidoServicioMarketing,
+} = await importar('scripts/lib/contenido-paginas-fijas.mjs');
 const { metaDeCategoria } = await importar('src/lib/seo/titulos.js');
 
 const plantilla = readFileSync(path.join(dist, 'index.html'), 'utf8');
@@ -465,6 +467,43 @@ for (const p of paginasUtilidadContigo) {
 /* ── Rutas públicas fijas: HTML propio, canonical y migas ─── */
 
 const tipoSchema = (tipo) => tipo || 'WebPage';
+
+/* ── Retos FST: su contenido vive en la base y se lee de la API pública ── */
+
+/**
+ * Los retos (y sus 7 días) se administran en la base de datos. Al compilar
+ * se leen de la API pública del sitio; si no responde, las páginas quedan
+ * como antes (título y descripción) y la compilación sigue.
+ */
+async function cargarRetos() {
+  const leer = async (ruta) => {
+    const r = await fetch(`${SITIO}${ruta}`, { signal: AbortSignal.timeout(8000), headers: { 'User-Agent': 'edvanta-prerender' } });
+    if (!r.ok) throw new Error(`${ruta}: ${r.status}`);
+    return r.json();
+  };
+  try {
+    const { challenges = [] } = await leer('/api/academia/retos');
+    const detalle = {};
+    for (const c of challenges) {
+      try { detalle[c.slug] = await leer(`/api/academia/retos/${encodeURIComponent(c.slug)}`); } catch { /* sin días */ }
+    }
+    return { challenges, detalle };
+  } catch (e) {
+    console.warn(`Retos FST: no se pudo leer la API (${e.message}); se prerenderizan sin días.`);
+    return null;
+  }
+}
+
+const retosApi = await cargarRetos();
+if (retosApi) {
+  for (const r of RUTAS_FIJAS) {
+    if (r.ruta === '/academia/retos') r.contenido = contenidoRetos(retosApi.challenges);
+    const m = /^\/academia\/retos\/([a-z0-9-]+)$/.exec(r.ruta);
+    const d = m && retosApi.detalle[m[1]];
+    if (d?.challenge) r.contenido = contenidoReto(d.challenge, d.days);
+  }
+  console.log(`Retos FST: ${retosApi.challenges.length} retos, ${Object.keys(retosApi.detalle).length} con sus días`);
+}
 
 for (const r of RUTAS_FIJAS) {
   const canonical = `${SITIO}${r.ruta}`;

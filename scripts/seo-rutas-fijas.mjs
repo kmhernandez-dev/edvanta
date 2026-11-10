@@ -6,13 +6,18 @@ import { ebooks } from '../src/data/fst.js';
 import { AUTORA_PERFIL } from '../src/data/edvanta/eeat.js';
 import { tieneRevisionClinica } from '../src/lib/seo/indexabilidad.js';
 import {
-  contenidoArea, contenidoEscuela, contenidoEscuelas, contenidoInstituciones, contenidoNoticias, contenidoPaquete,
+  contenidoArea, contenidoContacto, contenidoEscuela, contenidoEscuelas, contenidoGuias, contenidoInstituciones,
+  contenidoNoticias, contenidoPaquete, contenidoSobreEdvanta,
 } from './lib/contenido-paginas-fijas.mjs';
 import { AREAS_DEL_INICIO, CURSOS_EDUTIN } from '../src/data/edvanta/catalogoInicio.js';
 import {
   META_CURSOS, META_INSTITUCIONES, META_NOTICIAS, metaDeArea, metaDeCursosDe, metaDePaquete, tituloDeEnfermedad,
 } from '../src/lib/seo/titulos.js';
-import { productosDeEscuela } from '../src/data/edvanta/productos.js';
+import {
+  AUTORA, KITS_PROFESIONALES, PRODUCTOS, formatoPrecio, productosDeEscuela,
+} from '../src/data/edvanta/productos.js';
+import { CONTACTO, GUIAS, SOBRE_EDVANTA } from '../src/data/edvanta/paginasInstitucionales.js';
+import { EDVANTA_EMAIL, EDVANTA_WHATSAPP_URL } from '../src/config/links.js';
 import { NOTICIAS } from '../src/data/noticiasReescritas.js';
 import { fuentesNoticias } from '../src/data/careerHub.js';
 
@@ -48,7 +53,7 @@ for (const escuela of ESCUELAS) {
   });
 }
 
-add('/guias', 'Guías y recursos | Edvanta', 'Kits y guías de Edvanta para profesionales farmacéuticos, guías para pacientes, artículos y herramientas gratuitas para tu carrera.', { tipo: 'CollectionPage', seccion: 'Recursos', enlaces: [['Artículos', '/articulos'], ['Herramientas', '/herramientas'], ['Recursos profesionales', '/recursos']] });
+add('/guias', 'Guías y recursos | Edvanta', 'Kits y guías de Edvanta para profesionales farmacéuticos, guías para pacientes, artículos y herramientas gratuitas para tu carrera.', { tipo: 'CollectionPage', seccion: 'Recursos', enlaces: [['Artículos', '/articulos'], ['Herramientas', '/herramientas'], ['Recursos profesionales', '/recursos']], h1: GUIAS.titulo, contenido: contenidoGuias(GUIAS, KITS_PROFESIONALES, PRODUCTOS.filter((p) => p.publico === 'pacientes' && p.tipo === 'guia'), formatoPrecio) });
 
 add('/instituciones', META_INSTITUCIONES.titulo, META_INSTITUCIONES.descripcion, { tipo: 'CollectionPage', seccion: 'Instituciones', enlaces: [['Áreas de capacitación', '/empresas/regentes-de-farmacia'], ['Paquetes institucionales', '/instituciones/paquetes/equipo-que-cuida'], ['Contacto', '/contacto']], contenido: contenidoInstituciones(AREAS_CAPACITACION, PAQUETES) });
 
@@ -72,9 +77,9 @@ for (const paquete of PAQUETES) {
   });
 }
 
-add('/sobre-edvanta', 'Sobre Edvanta | Educación farmacéutica', 'Edvanta es una empresa de educación farmacéutica: cuatro escuelas, Edvanta Contigo para pacientes y servicios para instituciones.', { tipo: 'AboutPage', seccion: 'Edvanta', enlaces: [['Escuelas', '/escuelas'], ['Edvanta Contigo', '/contigo'], ['Contacto', '/contacto']] });
+add('/sobre-edvanta', 'Sobre Edvanta | Educación farmacéutica', 'Edvanta es una empresa de educación farmacéutica: cuatro escuelas, Edvanta Contigo para pacientes y servicios para instituciones.', { tipo: 'AboutPage', seccion: 'Edvanta', enlaces: [['Escuelas', '/escuelas'], ['Edvanta Contigo', '/contigo'], ['Contacto', '/contacto']], h1: SOBRE_EDVANTA.titulo, contenido: contenidoSobreEdvanta(SOBRE_EDVANTA, ESCUELAS, AUTORA) });
 
-add('/contacto', 'Contacto | Edvanta', 'Escríbele a Edvanta por WhatsApp, por correo o con el formulario.', { tipo: 'ContactPage', seccion: 'Edvanta', enlaces: [['Sobre Edvanta', '/sobre-edvanta'], ['Instituciones', '/instituciones']] });
+add('/contacto', 'Contacto | Edvanta', 'Escríbele a Edvanta por WhatsApp, por correo o con el formulario.', { tipo: 'ContactPage', seccion: 'Edvanta', enlaces: [['Sobre Edvanta', '/sobre-edvanta'], ['Instituciones', '/instituciones']], contenido: contenidoContacto(CONTACTO, { email: EDVANTA_EMAIL, whatsapp: EDVANTA_WHATSAPP_URL }) });
 
 add('/feliz-sin-tiroides', 'Feliz Sin Tiroides | Comunidad, ebooks y atención farmacéutica para pacientes tiroideos', 'La comunidad de pacientes tiroideos de habla hispana. Ebooks prácticos y atención farmacéutica personalizada con enfoque biopsicosocial.', { tipo: 'CollectionPage', seccion: 'Feliz Sin Tiroides', enlaces: [['Contigo', '/contigo'], ['Enfermedades tiroideas', '/enfermedades/hipotiroidismo'], ['Academia', '/academia']] });
 

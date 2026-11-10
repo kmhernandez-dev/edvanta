@@ -175,6 +175,100 @@ export function contenidoNoticias(noticias, fuentes = []) {
   ].join('');
 }
 
+/* ── Sobre Edvanta, Contacto y Guías ────────────────────── */
+
+/** /sobre-edvanta: escuelas, las dos puertas, quién está detrás y cómo trabajamos. */
+export function contenidoSobreEdvanta(sobre, escuelas = [], autora = {}) {
+  return [
+    parrafo(sobre.lead),
+    seccion('Cuatro escuelas y dos puertas', [
+      `<ul>${escuelas.map((e) => `<li><a href="/escuelas/${esc(e.slug)}">${esc(e.nombre)}</a>: ${esc(e.resumen)}</li>`).join('')}</ul>`,
+      enlacesConTexto(sobre.puertas),
+    ].join('')),
+    seccion('Quién está detrás', `<p><strong>${esc(autora.nombre)}</strong>${autora.profesion ? `, ${esc(autora.profesion)}` : ''}${autora.ciudad ? `. ${esc(autora.ciudad)}` : ''}.</p>${parrafo(sobre.autoraTexto)}<p><a href="/autores/karla-hernandez">Ver perfil y criterios de revisión</a></p>`),
+    seccion('Así trabajamos', `<ol>${(sobre.principios || []).map((p) => `<li><strong>${esc(p.t)}.</strong> ${esc(p.d)}</li>`).join('')}</ol>`),
+  ].join('');
+}
+
+/** Lista de enlaces con su descripción: «Título: descripción». */
+function enlacesConTexto(items = []) {
+  const v = items.filter((x) => x && x.to && x.titulo);
+  return v.length ? `<ul>${v.map((x) => `<li><a href="${esc(x.to)}">${esc(x.titulo)}</a>${x.desc ? `: ${esc(x.desc)}` : ''}</li>`).join('')}</ul>` : '';
+}
+
+/** /contacto: canales reales y atajos. */
+export function contenidoContacto(contacto, { email, whatsapp } = {}) {
+  const canales = [
+    whatsapp && `<li><a href="${esc(whatsapp)}" rel="noopener">WhatsApp</a>: la forma más rápida.</li>`,
+    email && `<li>Correo: <a href="mailto:${esc(email)}">${esc(email)}</a></li>`,
+    '<li>Formulario de esta página: te respondemos al correo que dejes.</li>',
+  ].filter(Boolean);
+  return [
+    parrafo(contacto.intro),
+    seccion('Canales', `<ul>${canales.join('')}</ul>`),
+    seccion('Atajos', `<ul>${(contacto.atajos || []).map((a) => `<li><a href="${esc(a.to)}">${esc(a.t)}</a></li>`).join('')}</ul>`),
+  ].join('');
+}
+
+/** /guias: kits, guías para pacientes, lecturas y herramientas. */
+export function contenidoGuias(guias, kits = [], paraPacientes = [], precio = (p) => String(p)) {
+  const kit = (k) => `<li><strong>${esc(k.nombre)}</strong>${k.tipoTexto ? ` (${esc(k.tipoTexto.toLowerCase())})` : ''}: ${esc(k.objetivo || '')}${k.dirigidoA ? ` Para: ${esc(k.dirigidoA)}` : ''}${typeof k.precio === 'number' ? ` Valor: ${esc(precio(k.precio))}.` : ''}</li>`;
+  const guia = (g) => {
+    const destino = g.to || g.accion?.to || g.accion?.href;
+    const nombre = destino ? `<a href="${esc(destino)}"${g.accion?.tipo === 'externo' ? ' rel="sponsored noopener"' : ''}>${esc(g.nombre)}</a>` : `<strong>${esc(g.nombre)}</strong>`;
+    return `<li>${nombre}: ${esc(g.objetivo || g.necesidad || '')}${typeof g.precio === 'number' ? ` ${esc(precio(g.precio))}.` : ''}${g.accion?.nota ? ` ${esc(g.accion.nota)}` : ''}</li>`;
+  };
+  return [
+    parrafo(guias.lead),
+    kits.length ? seccion(guias.kits.titulo, `${parrafo(guias.kits.desc)}<ul>${kits.map(kit).join('')}</ul>`) : '',
+    paraPacientes.length ? seccion(guias.pacientes.titulo, `${parrafo(guias.pacientes.desc)}<ul>${paraPacientes.map(guia).join('')}</ul>`) : '',
+    seccion('Para leer y consultar', enlacesConTexto(guias.lecturas)),
+    seccion(guias.carrera.titulo, `${parrafo(guias.carrera.desc)}${enlacesConTexto(guias.carrera.herramientas)}<p>También: ${guias.carrera.tambien.map(([t, to]) => `<a href="${esc(to)}">${esc(t)}</a>`).join(' · ')}</p>`),
+    seccion('Cursos de otras plataformas', parrafo(guias.otrasPlataformas)),
+  ].join('');
+}
+
+/* ── Retos de la Academia Feliz Sin Tiroides ─────────────── */
+
+const NIVEL_RETO = { beginner: 'Principiante', intermediate: 'Intermedio', advanced: 'Avanzado' };
+
+const datosDeReto = (r) => [
+  r.category && `Tipo: ${r.category}`,
+  NIVEL_RETO[r.level] && `Nivel: ${NIVEL_RETO[r.level].toLowerCase()}`,
+  r.average_duration && `Sesiones de ${r.average_duration}`,
+  r.equipment && `Equipo: ${r.equipment}`,
+  r.instructor && `Videos de ${r.instructor}`,
+].filter(Boolean);
+
+/** /academia/retos: los retos publicados (de la API pública). */
+export function contenidoRetos(retos = []) {
+  const v = retos.filter((r) => r && r.slug && r.title);
+  return v.length
+    ? seccion('Retos de 7 días', `<ul>${v.map((r) => `<li><a href="/academia/retos/${esc(r.slug)}">${esc(r.title)}</a>: ${esc(r.tagline || '')} ${esc(r.description || '')}${datosDeReto(r).length ? ` (${esc(datosDeReto(r).join(' · '))})` : ''}</li>`).join('')}</ul>`)
+    : '';
+}
+
+/** /academia/retos/<slug>: el reto y sus días, con el reto de nutrición de cada uno. */
+export function contenidoReto(reto, dias = []) {
+  const v = (dias || []).filter((d) => d && d.day_number).sort((a, b) => a.day_number - b.day_number);
+  const dia = (d) => {
+    const partes = [
+      d.training_type,
+      d.body_area && d.body_area.toLowerCase(),
+      d.duration_minutes && `${d.duration_minutes} min`,
+      d.low_impact && 'bajo impacto',
+    ].filter(Boolean).join(' · ');
+    return `<li><strong>Día ${d.day_number}${partes ? `: ${esc(partes)}` : ''}.</strong>${d.nutrition_challenge ? ` Reto de nutrición: ${esc(d.nutrition_challenge)}.` : ''}${d.educational_note ? ` ${esc(d.educational_note)}` : ''}</li>`;
+  };
+  // El lema ya va en la descripción de la página (seo-rutas-fijas.mjs).
+  return [
+    datosDeReto(reto || {}).length ? lista(datosDeReto(reto)) : '',
+    v.length ? seccion('Los días del reto', `<ol>${v.map(dia).join('')}</ol>`) : '',
+    // El mismo descargo que muestra la página del reto (RetoDetalle.jsx).
+    '<p><strong>Descargo:</strong> los Retos FST tienen fines educativos y de bienestar general. No sustituyen valoración, diagnóstico ni tratamiento individual por profesionales de salud. <a href="/descargo-medico">Ver descargo médico</a></p>',
+  ].join('');
+}
+
 /** /empresas/marketing/<slug>: un servicio de la Escuela de Marketing. */
 export function contenidoServicioMarketing(s) {
   return [

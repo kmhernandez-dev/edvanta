@@ -23,25 +23,11 @@ import { ESCUELAS } from '../../data/edvanta/escuelas';
 import { AUTORA } from '../../data/edvanta/productos';
 import { LINKEDIN_URL } from '../../config/links';
 import { updatePageSeo } from '../../utils/seo';
+// Los textos viven en datos: el HTML para buscadores (prerender) dice lo mismo.
+import { SOBRE_EDVANTA } from '../../data/edvanta/paginasInstitucionales';
 
-const PRINCIPIOS = [
-  {
-    t: 'Decimos qué es nuestro y qué no',
-    d: 'Los cursos de Edvanta y los de otras plataformas se muestran separados. Cuando un enlace es de afiliado, lo señalamos.',
-  },
-  {
-    t: 'Fechas, precios y cupos, solo cuando existen',
-    d: 'Si algo todavía no tiene fecha o valor aprobado, lo decimos y te ofrecemos un aviso en lugar de un dato que parezca real.',
-  },
-  {
-    t: 'Actualización, no títulos',
-    d: 'Nuestros cursos son formación de actualización. No otorgan títulos de auxiliar, regente ni ningún otro título profesional.',
-  },
-  {
-    t: 'Educar no es consultar',
-    d: 'Lo que hacemos para pacientes es educación: ayuda a entender y a preparar la consulta, pero no reemplaza la atención de su equipo de salud.',
-  },
-];
+const PRINCIPIOS = SOBRE_EDVANTA.principios;
+const [PUERTA_CONTIGO, PUERTA_INSTITUCIONES] = SOBRE_EDVANTA.puertas;
 
 export default function SobreEdvanta() {
   useEffect(() => updatePageSeo({
@@ -57,9 +43,9 @@ export default function SobreEdvanta() {
         <HeroCientifico
           breadcrumb={<Breadcrumb items={[{ label: 'Inicio', to: '/' }, { label: 'Sobre Edvanta' }]} className="mb-8" />}
           eyebrow="Sobre Edvanta"
-          title="Una empresa de educación farmacéutica"
+          title={SOBRE_EDVANTA.titulo}
           highlight="educación farmacéutica"
-          lead="Formamos a quienes trabajan con medicamentos, acompañamos con educación a pacientes y cuidadores, y diseñamos programas para instituciones. Todo bajo una misma marca y un mismo criterio."
+          lead={SOBRE_EDVANTA.lead}
           image="/img/comunidad/encuentro-comunidad-farmaceutica.webp"
           imageAlt="Grupo de químicos farmacéuticos reunidos alrededor de una mesa, conversando sobre una tableta"
           imagePosition="center"
@@ -95,8 +81,8 @@ export default function SobreEdvanta() {
             })}
           </div>
           <div className="mt-6 grid gap-5 md:grid-cols-2">
-            <NavCard to="/contigo" icon={HeartPulse} tone="teal" title="Edvanta Contigo" desc="La puerta para pacientes y cuidadores, con Feliz Sin Tiroides como primera ruta." cta="Conocer Edvanta Contigo" image="/img/publicos/pacientes.webp" imageAlt="Química farmacéutica explicando la tiroides a pacientes y familiares con una tableta" />
-            <NavCard to="/instituciones" icon={Building2} title="Para instituciones" desc="Lo que hospitales, IPS, EPS y empresas pueden contratar de todas las escuelas." cta="Ver servicios" image="/img/publicos/instituciones.webp" imageAlt="Presentación de resultados de formación ante el equipo directivo de una institución" />
+            <NavCard to={PUERTA_CONTIGO.to} icon={HeartPulse} tone="teal" title={PUERTA_CONTIGO.titulo} desc={PUERTA_CONTIGO.desc} cta={PUERTA_CONTIGO.cta} image="/img/publicos/pacientes.webp" imageAlt="Química farmacéutica explicando la tiroides a pacientes y familiares con una tableta" />
+            <NavCard to={PUERTA_INSTITUCIONES.to} icon={Building2} title={PUERTA_INSTITUCIONES.titulo} desc={PUERTA_INSTITUCIONES.desc} cta={PUERTA_INSTITUCIONES.cta} image="/img/publicos/instituciones.webp" imageAlt="Presentación de resultados de formación ante el equipo directivo de una institución" />
           </div>
         </Section>
 
@@ -107,11 +93,7 @@ export default function SobreEdvanta() {
             </div>
             <div>
               <SectionHeading eyebrow="Quién está detrás" title={AUTORA.nombre} desc={`${AUTORA.profesion}. ${AUTORA.ciudad}.`} />
-              <p className="mt-4 max-w-2xl text-base leading-7 text-edvanta-muted">
-                Está al frente de Edvanta y creó Feliz Sin Tiroides, el programa para personas que viven con una condición tiroidea,
-                desde su doble experiencia: la de química farmacéutica y la de paciente que vive sin tiroides.
-                Dicta el primer curso en vivo de Edvanta, para auxiliares y regentes de farmacia.
-              </p>
+              <p className="mt-4 max-w-2xl text-base leading-7 text-edvanta-muted">{SOBRE_EDVANTA.autoraTexto}</p>
               <div className="mt-6 flex flex-wrap gap-3">
                 <Btn to="/autores/karla-hernandez" iconRight={ArrowRight}>Ver perfil y criterios de revisión</Btn>
                 <Btn to="/curso-de-operacion-segura-del-servicio-farmaceutico" variant="secondary">Ver el curso en vivo</Btn>
