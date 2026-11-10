@@ -6,7 +6,7 @@
  */
 import express from 'express';
 import { ensureBootstrapAdmins } from '../../lib/aula/accounts.js';
-import { publicarAprobados } from '../../lib/aula/publicaciones.js';
+import { publicarAprobados, republicarAprobadas } from '../../lib/aula/publicaciones.js';
 import { errorHandler, notFound } from '../../lib/aula/http.js';
 import { requireAulaHeader } from '../../lib/aula/security.js';
 import { adminAuditRouter } from './admin-audit.js';
@@ -84,6 +84,12 @@ export async function startAula({ db, storage, adminEmails = [], adminHashes = [
     await publicarAprobados(db, { log });
   } catch (err) {
     log({ level: 'error', msg: 'Falló la publicación de cursos aprobados', error: err.message });
+  }
+  // Y las versiones nuevas aprobadas de cursos ya publicados (videos, clases reescritas).
+  try {
+    await republicarAprobadas(db, { log });
+  } catch (err) {
+    log({ level: 'error', msg: 'Falló la publicación de versiones aprobadas', error: err.message });
   }
 
   const sweep = () => sweepStaleUploads({ db, storage })

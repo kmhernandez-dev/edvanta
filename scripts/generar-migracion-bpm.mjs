@@ -3,10 +3,19 @@
  * contenido/aula/bpm.
  *
  *   node scripts/generar-migracion-bpm.mjs
+ *   node scripts/generar-migracion-bpm.mjs --publica
  *
  * La migración es idempotente: actualiza el curso y las clases existentes,
  * reemplaza solo los bloques de texto de BPM y crea evaluación, actividad
  * y foro si aún no existen. No publica el curso.
+ *
+ * Con --publica escribe 084_clases_quices_actividades_foros_bpm.sql, la
+ * versión que sí va al repositorio (aprobado por la dirección académica:
+ * todos los cursos llevan quizzes, actividades y foros). Incluye lo que
+ * hacía el bloque de BPM de la 064 (política 60/30/10, pesos y rúbrica de
+ * foros), deja todo PUBLICADO, no toca preguntas de quizzes con intentos
+ * ni rúbricas o pesos con entregas o notas, nunca detiene el arranque y
+ * aprueba una versión nueva del curso (077) para que se vean las clases.
  */
 import { writeFileSync } from 'node:fs';
 import path from 'node:path';
@@ -15,7 +24,55 @@ import { CURSO, UNIDADES, LECCIONES, QUIZZES, FOROS, ACTIVIDADES } from '../cont
 import { renderLeccion, renderForo, renderActividad, renderCurso } from '../contenido/aula/bpm/render.mjs';
 
 const raiz = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const destino = path.join(raiz, 'api', 'migrations', '063_pedagogia_bpm.sql');
+const PUBLICA = process.argv.includes('--publica');
+const destino = path.join(raiz, 'api', 'migrations', PUBLICA ? '084_clases_quices_actividades_foros_bpm.sql' : '063_pedagogia_bpm.sql');
+const ESTADO = PUBLICA ? 'publicado' : 'borrador';
+// Pesos de la 064: quizzes 3 × 10, actividades 3 × 20, foros 3.34 + 3.33 + 3.33.
+const PESO_QUIZ = 10;
+const PESO_ACTIVIDAD = 20;
+const pesoForo = (i) => (i === 0 ? 3.34 : 3.33);
+const fallar = (msg) => (PUBLICA
+  ? `RAISE NOTICE '${msg.replaceAll("'", "''")} Se salta.';
+    RETURN;`
+  : `RAISE EXCEPTION '${msg.replaceAll("'", "''")}';`);
+
+// Rúbrica de los foros de BPM, la misma que aplicó la 064.
+const RUBRICA_FOROS = {
+  version: 1,
+  total: 100,
+  criteria: [
+    {
+      id: 'pertinencia', name: 'Pertinencia', weight: 30,
+      levels: [
+        { level: 4, label: 'Destacado', description: 'Responde la pregunta central y usa el caso de forma explícita.' },
+        { level: 3, label: 'Logrado', description: 'Responde la pregunta y menciona el caso.' },
+        { level: 2, label: 'En desarrollo', description: 'Responde de forma general, con poca relación con el caso.' },
+        { level: 1, label: 'Inicial', description: 'Se aleja de la pregunta.' },
+        { level: 0, label: 'Sin evidencia', description: 'No responde.' },
+      ],
+    },
+    {
+      id: 'razonamiento', name: 'Razonamiento con evidencia', weight: 40,
+      levels: [
+        { level: 4, label: 'Destacado', description: 'Distingue conceptos, norma y riesgo con evidencia verificable.' },
+        { level: 3, label: 'Logrado', description: 'Argumenta con una razón técnica correcta.' },
+        { level: 2, label: 'En desarrollo', description: 'Usa opiniones generales.' },
+        { level: 1, label: 'Inicial', description: 'Afirma sin justificar.' },
+        { level: 0, label: 'Sin evidencia', description: 'No hay argumento.' },
+      ],
+    },
+    {
+      id: 'interaccion', name: 'Interacción sustantiva', weight: 30,
+      levels: [
+        { level: 4, label: 'Destacado', description: 'Aporta comparación, pregunta o evidencia en dos respuestas.' },
+        { level: 3, label: 'Logrado', description: 'Responde a dos compañeros con aportes pertinentes.' },
+        { level: 2, label: 'En desarrollo', description: 'Responde a uno o de forma superficial.' },
+        { level: 1, label: 'Inicial', description: 'Solo dice «de acuerdo».' },
+        { level: 0, label: 'Sin evidencia', description: 'No responde.' },
+      ],
+    },
+  ],
+};
 
 const sqlString = (s) => `'${String(s ?? '').replaceAll("'", "''")}'`;
 const sqlArray = (arr) => `ARRAY[${(arr || []).map(sqlString).join(', ')}]::text[]`;
@@ -50,7 +107,31 @@ const rubricaJson = (rubrica) => JSON.stringify({
 
 const bloques = [];
 
-bloques.push(`-- ============================================================
+bloques.push(PUBLICA ? `-- ============================================================
+--  084_clases_quices_actividades_foros_bpm.sql — Curso de BPM completo
+--
+--  Generado por scripts/generar-migracion-bpm.mjs --publica a partir de
+--  contenido/aula/bpm. No editar a mano.
+--
+--  Aprobado por la dirección académica: todos los cursos llevan quizzes,
+--  actividades y foros. Las claves de los quizzes son las mismas que el
+--  aula muestra al estudiante cuando envía.
+--
+--  Qué hace:
+--   1. Actualiza los metadatos del curso, la nota mínima ${CURSO.aprobacion}, ${CURSO.intentos} intentos
+--      y la política 60/30/10.
+--   2. Reemplaza el texto de las nueve clases por la versión completa,
+--      conservando videos, enlaces y destacados.
+--   3. Crea o actualiza PUBLICADOS tres quizzes (10 % cada uno), tres
+--      actividades con rúbrica (20 % cada una) y tres foros con rúbrica
+--      (3,34 + 3,33 + 3,33 %). No toca preguntas de quizzes con intentos
+--      ni rúbricas o pesos de recursos con entregas o notas.
+--   4. Si el curso ya está publicado, aprueba una versión nueva (077)
+--      para que quien estudia vea las clases completas.
+--   5. Si el curso, una unidad o una clase no está en la base, avisa y
+--      se salta: nunca detiene el arranque del servidor.
+-- ============================================================
+` : `-- ============================================================
 --  063_pedagogia_bpm.sql — Curso de BPM completo
 --
 --  Generado por scripts/generar-migracion-bpm.mjs a partir de
@@ -69,7 +150,9 @@ bloques.push(`-- ============================================================
 --  Pesos: actividades 60 %, quizzes 30 %, foros 10 %.
 --  Aprobación: 70/100. Intentos por quiz: 2 (se conserva la mayor).
 -- ============================================================
+`);
 
+bloques.push(`
 DO $bpm$
 DECLARE
   v_curso   BIGINT;
@@ -88,9 +171,23 @@ BEGIN
    LIMIT 1;
 
   IF v_curso IS NULL THEN
-    RAISE EXCEPTION 'No existe el curso de BPM: aplica primero la migración 034.';
+    ${fallar('No existe el curso de BPM: aplica primero la migración 034.')}
   END IF;
-
+${PUBLICA ? `
+  -- Si alguien cambió unidades o clases en el panel, no se fuerza nada.
+  IF EXISTS (
+    SELECT 1 FROM (VALUES
+${LECCIONES.map((l) => `      (${sqlString(unidadDe(l.id).UNIDAD.titulo)}, ${sqlString(l.titulo)})`).join(',\n')}
+    ) AS e(unidad, clase)
+     WHERE NOT EXISTS (
+       SELECT 1 FROM aula_lessons l JOIN aula_modules m ON m.id = l.module_id
+        WHERE l.course_id = v_curso AND m.course_id = v_curso AND l.deleted_at IS NULL AND m.deleted_at IS NULL
+          AND m.title = e.unidad AND l.title = e.clase)
+  ) THEN
+    RAISE NOTICE 'BPM: sus unidades o clases no coinciden con el paquete; se salta.';
+    RETURN;
+  END IF;
+` : ''}
   UPDATE aula_courses
      SET short_description = ${sqlString(CURSO.descripcionCorta)},
          description_html = ${dollar('bpm_html', renderCurso(CURSO))},
@@ -104,7 +201,8 @@ BEGIN
          area = ${sqlString(CURSO.area)},
          tags = ${sqlArray(CURSO.etiquetas)},
          passing_score = ${CURSO.aprobacion},
-         max_attempts = ${CURSO.intentos},
+         max_attempts = ${CURSO.intentos},${PUBLICA ? `
+         grade_policy = '{"version":1,"components":{"activities":60,"quizzes":30,"forums":10},"rounding":"half_up"}'::jsonb,` : ''}
          publico = 'profesionales',
          updated_at = NOW()
    WHERE id = v_curso;
@@ -121,7 +219,7 @@ for (const l of LECCIONES) {
    LIMIT 1;
 
   IF v_unidad IS NULL THEN
-    RAISE EXCEPTION 'No existe la unidad ${unidad.UNIDAD.numero} del curso de BPM.';
+    ${fallar(`No existe la unidad ${unidad.UNIDAD.numero} del curso de BPM.`)}
   END IF;
 
   SELECT id INTO v_clase FROM aula_lessons
@@ -129,7 +227,7 @@ for (const l of LECCIONES) {
    LIMIT 1;
 
   IF v_clase IS NULL THEN
-    RAISE EXCEPTION 'No existe la clase % en la unidad %.', ${sqlString(l.titulo)}, ${unidad.UNIDAD.numero};
+    ${fallar(`No existe la clase ${l.titulo} en la unidad ${unidad.UNIDAD.numero}.`)}
   END IF;
 
   UPDATE aula_lessons
@@ -182,10 +280,10 @@ for (const q of QUIZZES) {
     INSERT INTO aula_assessments
       (course_id, module_id, title, instructions_html, is_required, passing_score,
        max_attempts, shuffle_questions, shuffle_options, show_answers_after_submit,
-       status, sort_order)
+       status, sort_order${PUBLICA ? ', weight' : ''})
     VALUES
       (v_curso, v_unidad, ${sqlString(q.titulo)}, ${sqlString(q.instrucciones)}, TRUE,
-       ${CURSO.aprobacion}, ${CURSO.intentos}, FALSE, FALSE, TRUE, 'borrador', ${unidadNum})
+       ${CURSO.aprobacion}, ${CURSO.intentos}, FALSE, FALSE, TRUE, '${ESTADO}', ${unidadNum}${PUBLICA ? `, ${PESO_QUIZ}` : ''})
     RETURNING id INTO v_eval;
   ELSE
     UPDATE aula_assessments
@@ -195,12 +293,17 @@ for (const q of QUIZZES) {
            passing_score = ${CURSO.aprobacion},
            max_attempts = ${CURSO.intentos},
            show_answers_after_submit = TRUE,
-           status = 'borrador',
+           status = '${ESTADO}',${PUBLICA ? `
+           weight = ${PESO_QUIZ},` : ''}
            sort_order = ${unidadNum},
            updated_at = NOW()
      WHERE id = v_eval;
   END IF;
-
+${PUBLICA ? `
+  IF EXISTS (SELECT 1 FROM aula_attempts WHERE assessment_id = v_eval) THEN
+    RAISE NOTICE 'El quiz % ya tiene intentos: no se modifican sus preguntas.', ${sqlString(q.titulo)};
+  ELSE
+` : ''}
   DELETE FROM aula_assessment_questions WHERE assessment_id = v_eval;
 `);
 
@@ -245,6 +348,8 @@ for (const q of QUIZZES) {
   VALUES (v_eval, v_pregunta, ${index}, 25);
 `);
   });
+  if (PUBLICA) bloques.push(`  END IF;
+`);
 }
 
 // Activities
@@ -268,16 +373,23 @@ for (const a of ACTIVIDADES) {
   IF v_act IS NULL THEN
     INSERT INTO aula_activities
       (course_id, module_id, title, instructions_html, rubric, allow_text, allow_link, allow_file,
-       accepted_extensions, max_file_mb, max_points, is_required, status, sort_order)
+       accepted_extensions, max_file_mb, max_points, is_required, status, sort_order${PUBLICA ? ', grading_method, weight' : ''})
     VALUES
       (v_curso, v_unidad, ${sqlString(a.titulo)}, ${dollar('bpm_html', html)}, ${dollar('bpm_json', rubric)}::jsonb,
-       TRUE, TRUE, TRUE, ARRAY['pdf','docx','xlsx','pptx','png','jpg','jpeg']::text[], 20, 100, TRUE, 'borrador', ${unidadNum})
+       TRUE, TRUE, TRUE, ARRAY['pdf','docx','xlsx','pptx','png','jpg','jpeg']::text[], 20, 100, TRUE, '${ESTADO}', ${unidadNum}${PUBLICA ? `, 'rubrica', ${PESO_ACTIVIDAD}` : ''})
     RETURNING id INTO v_act;
-  ELSE
+  ELSE${PUBLICA ? `
+    IF EXISTS (SELECT 1 FROM aula_submissions WHERE activity_id = v_act) THEN
+      RAISE NOTICE 'La actividad % tiene entregas: se conserva su rúbrica y su peso.', ${sqlString(a.titulo)};
+    ELSE
+      UPDATE aula_activities
+         SET rubric = ${dollar('bpm_json', rubric)}::jsonb, grading_method = 'rubrica', weight = ${PESO_ACTIVIDAD}
+       WHERE id = v_act;
+    END IF;` : ''}
     UPDATE aula_activities
        SET module_id = v_unidad,
-           instructions_html = ${dollar('bpm_html', html)},
-           rubric = ${dollar('bpm_json', rubric)}::jsonb,
+           instructions_html = ${dollar('bpm_html', html)},${PUBLICA ? '' : `
+           rubric = ${dollar('bpm_json', rubric)}::jsonb,`}
            allow_text = TRUE,
            allow_link = TRUE,
            allow_file = TRUE,
@@ -285,7 +397,7 @@ for (const a of ACTIVIDADES) {
            max_file_mb = 20,
            max_points = 100,
            is_required = TRUE,
-           status = 'borrador',
+           status = '${ESTADO}',
            sort_order = ${unidadNum},
            updated_at = NOW()
      WHERE id = v_act;
@@ -294,7 +406,7 @@ for (const a of ACTIVIDADES) {
 }
 
 // Forums
-for (const f of FOROS) {
+FOROS.forEach((f, iForo) => {
   const unidadNum = Number(/^bpm-u(\d+)-foro$/.exec(f.id)[1]);
   const unidad = UNIDADES.find((u) => u.UNIDAD.numero === unidadNum);
   const html = renderForo(f);
@@ -310,8 +422,8 @@ for (const f of FOROS) {
    LIMIT 1;
 
   IF v_foro IS NULL THEN
-    INSERT INTO aula_forums (course_id, module_id, scope, title, description, is_closed, allow_attachments)
-    VALUES (v_curso, v_unidad, 'modulo', ${sqlString(f.titulo)}, ${dollar('bpm_html', html)}, FALSE, FALSE)
+    INSERT INTO aula_forums (course_id, module_id, scope, title, description, is_closed, allow_attachments${PUBLICA ? ', status, grading_method, weight, rubric, sort_order' : ''})
+    VALUES (v_curso, v_unidad, 'modulo', ${sqlString(f.titulo)}, ${dollar('bpm_html', html)}, FALSE, FALSE${PUBLICA ? `, 'publicado', 'rubrica', ${pesoForo(iForo)}, ${dollar('bpm_json', JSON.stringify(RUBRICA_FOROS))}::jsonb, ${unidadNum}` : ''})
     RETURNING id INTO v_foro;
   ELSE
     UPDATE aula_forums
@@ -319,10 +431,30 @@ for (const f of FOROS) {
            scope = 'modulo',
            description = ${dollar('bpm_html', html)},
            is_closed = FALSE,
-           allow_attachments = FALSE,
+           allow_attachments = FALSE,${PUBLICA ? `
+           status = 'publicado',
+           sort_order = ${unidadNum},` : ''}
            updated_at = NOW()
-     WHERE id = v_foro;
+     WHERE id = v_foro;${PUBLICA ? `
+    IF EXISTS (SELECT 1 FROM aula_forum_grades WHERE forum_id = v_foro) THEN
+      RAISE NOTICE 'El foro % tiene notas: se conserva su rúbrica y su peso.', ${sqlString(f.titulo)};
+    ELSE
+      UPDATE aula_forums
+         SET grading_method = 'rubrica', weight = ${pesoForo(iForo)}, rubric = ${dollar('bpm_json', JSON.stringify(RUBRICA_FOROS))}::jsonb
+       WHERE id = v_foro;
+    END IF;` : ''}
   END IF;
+`);
+});
+
+if (PUBLICA) {
+  bloques.push(`
+  -- Ya publicado: se aprueba la versión nueva con las clases completas.
+  -- Si todavía no tiene su primera versión, esa primera publicación ya
+  -- las incluye.
+  INSERT INTO aula_republicaciones_aprobadas (course_id, aprobado_por, nota)
+  SELECT v_curso, 'Dirección académica de Edvanta', 'Clases completas, quizzes, actividades y foros (10-nov-2026).'
+   WHERE EXISTS (SELECT 1 FROM aula_courses WHERE id = v_curso AND current_version_id IS NOT NULL);
 `);
 }
 

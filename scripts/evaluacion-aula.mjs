@@ -29,9 +29,15 @@ import {
 import { NIVELES_QUIZ } from '../contenido/aula/comun/evaluacion.mjs';
 
 const raiz = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const [loteArg, accion = 'validar'] = process.argv.slice(2);
+const [loteArg, accion = 'validar'] = process.argv.slice(2).filter((a) => !a.startsWith('--'));
+// --publica: la versión que va al repositorio y se aplica sola al desplegar.
+// Sin guías docentes; quizzes, actividades y foros PUBLICADOS y la política
+// de nota en todos los cursos; si en la base falta el curso o una unidad,
+// se salta con un aviso en vez de detener el arranque del servidor.
+const PUBLICA = process.argv.includes('--publica');
+const ESTADO = PUBLICA ? 'publicado' : 'borrador';
 if (!loteArg || !/^[a-z0-9-]+$/.test(loteArg) || !['validar', 'migracion', 'vista', 'todo'].includes(accion)) {
-  console.error('Uso: node scripts/evaluacion-aula.mjs <lote|todos> validar|migracion|vista|todo');
+  console.error('Uso: node scripts/evaluacion-aula.mjs <lote|todos> validar|migracion|vista|todo [--publica]');
   process.exit(2);
 }
 
@@ -359,9 +365,22 @@ BEGIN
    WHERE kind = 'edvanta' AND title = ${sqlString(CURSO.titulo)} AND deleted_at IS NULL
    LIMIT 1;
   IF v_curso IS NULL THEN
-    RAISE EXCEPTION 'No existe el curso ${CURSO.titulo.replaceAll("'", "''")}.';
+    ${PUBLICA ? `RAISE NOTICE 'No existe el curso ${CURSO.titulo.replaceAll("'", "''")}: se salta.';
+    RETURN;` : `RAISE EXCEPTION 'No existe el curso ${CURSO.titulo.replaceAll("'", "''")}.';`}
+  END IF;
+${PUBLICA ? `
+  -- Si alguien cambió las unidades en el panel, no se fuerza nada.
+  IF (SELECT COUNT(DISTINCT title) FROM aula_modules
+       WHERE course_id = v_curso AND deleted_at IS NULL
+         AND title = ANY(${sqlArray(unidades.map((u) => u.titulo))})) < ${unidades.length} THEN
+    RAISE NOTICE '${corto}: sus unidades no coinciden con el paquete; se salta.';
+    RETURN;
   END IF;
 
+  UPDATE aula_courses
+     SET passing_score = ${APROBACION}, max_attempts = ${INTENTOS}, grade_policy = ${json(politica)}, updated_at = NOW()
+   WHERE id = v_curso;
+` : `
   IF NOT EXISTS (SELECT 1 FROM aula_enrollments WHERE course_id = v_curso) THEN
     UPDATE aula_courses
        SET passing_score = ${APROBACION}, max_attempts = ${INTENTOS}, grade_policy = ${json(politica)}, updated_at = NOW()
@@ -369,7 +388,7 @@ BEGIN
   ELSE
     RAISE NOTICE '${corto} tiene matrículas: no se cambian nota mínima, intentos ni política.';
   END IF;
-`);
+`}`);
 
   for (const u of unidades) {
     const q = u.quiz;
@@ -393,9 +412,10 @@ BEGIN
        shuffle_questions, shuffle_options, show_answers_after_submit, status, sort_order, weight)
     VALUES
       (v_curso, v_unidad, v_t1, v_t2, TRUE, ${APROBACION}, ${INTENTOS},
-       FALSE, FALSE, TRUE, 'borrador', ${u.num}, ${q.peso})
+       FALSE, FALSE, TRUE, '${ESTADO}', ${u.num}, ${q.peso})
     RETURNING id INTO v_eval;
-  END IF;
+  END IF;${PUBLICA ? `
+  UPDATE aula_assessments SET status = 'publicado', updated_at = NOW() WHERE id = v_eval AND status = 'borrador';` : ''}
 
   IF EXISTS (SELECT 1 FROM aula_attempts WHERE assessment_id = v_eval) THEN
     RAISE NOTICE 'El quiz % ya tiene intentos: no se modifican sus preguntas ni su configuración.', v_t1;
@@ -446,7 +466,7 @@ ${p.opciones.map((o, j) => `      (v_pregunta, ${sqlString(o.texto)}, ${o.correc
   v_t4 := ${sqlString(a.producto)};
   v_t5 := ${sqlString(a.extension)};
   v_t6 := ${html(renderActividadApoyo(a))};
-  v_t7 := ${html(renderGuiaDocente(a))};
+  v_t7 := ${PUBLICA ? 'NULL' : html(renderGuiaDocente(a))};
   v_j1 := ${json(a.puntos)};
   v_j2 := ${json(rubrica(a.rubrica))};
   SELECT id INTO v_act FROM aula_activities
@@ -459,13 +479,13 @@ ${p.opciones.map((o, j) => `      (v_pregunta, ${sqlString(o.texto)}, ${o.correc
     VALUES
       (v_curso, v_unidad, v_t1, v_t2, v_t3, v_j1, v_t4,
        v_t5, v_t6, v_t7, v_j2, 'rubrica', TRUE, TRUE,
-       TRUE, ARRAY['pdf','docx','xlsx','pptx','png','jpg','jpeg']::text[], 20, 100, TRUE, 'borrador', ${orden}, ${a.peso})
+       TRUE, ARRAY['pdf','docx','xlsx','pptx','png','jpg','jpeg']::text[], 20, 100, TRUE, '${ESTADO}', ${orden}, ${a.peso})
     RETURNING id INTO v_act;
   ELSE
     UPDATE aula_activities
        SET module_id = v_unidad, instructions_html = v_t2, case_html = v_t3, points_to_solve = v_j1,
-           expected_product = v_t4, extension_hint = v_t5, support_html = v_t6, teacher_guide_html = v_t7,
-           sort_order = ${orden}, updated_at = NOW()
+           expected_product = v_t4, extension_hint = v_t5, support_html = v_t6, teacher_guide_html = COALESCE(v_t7, teacher_guide_html),
+           ${PUBLICA ? "status = 'publicado', " : ''}sort_order = ${orden}, updated_at = NOW()
      WHERE id = v_act;
     IF EXISTS (SELECT 1 FROM aula_submissions WHERE activity_id = v_act) THEN
       RAISE NOTICE 'La actividad % tiene entregas: se conserva su rúbrica y su peso.', v_t1;
@@ -506,11 +526,11 @@ ${p.opciones.map((o, j) => `      (v_pregunta, ${sqlString(o.texto)}, ${o.correc
     VALUES
       (v_curso, ${bienvenida ? 'NULL' : 'v_unidad'}, '${bienvenida ? 'curso' : 'modulo'}', v_t1, v_t2, v_t3, v_t4, v_a1,
        v_t5, v_t6, v_t7, '${bienvenida ? 'formativa' : 'rubrica'}', ${bienvenida ? 'NULL' : f.peso}, v_j1,
-       FALSE, FALSE, 'borrador', ${bienvenida ? 0 : u.num})
+       FALSE, FALSE, '${ESTADO}', ${bienvenida ? 0 : u.num})
     RETURNING id INTO v_foro;
   ELSE
     UPDATE aula_forums
-       SET module_id = ${bienvenida ? 'NULL' : 'v_unidad'}, scope = '${bienvenida ? 'curso' : 'modulo'}', purpose = v_t2, description = v_t3,
+       SET ${PUBLICA ? "status = 'publicado', " : ''}module_id = ${bienvenida ? 'NULL' : 'v_unidad'}, scope = '${bienvenida ? 'curso' : 'modulo'}', purpose = v_t2, description = v_t3,
            central_question = v_t4, guiding_questions = v_a1, participation_html = v_t5,
            rules_html = v_t6, no_participants_alternative = v_t7, sort_order = ${bienvenida ? 0 : u.num}, updated_at = NOW()
      WHERE id = v_foro;${bienvenida ? '' : `
@@ -537,6 +557,7 @@ $${tag}$;
 }
 
 function migracion(nombre, lote, cursos) {
+  if (PUBLICA) return migracionPublica(nombre, lote, cursos);
   const cabecera = `-- ============================================================
 --  ${lote.migracion} — capa de evaluación, lote «${nombre}»
 --
@@ -562,6 +583,36 @@ function migracion(nombre, lote, cursos) {
   const destino = path.join(raiz, 'api', 'migrations', lote.migracion);
   writeFileSync(destino, sql, 'utf8');
   console.log(`Migración generada: ${path.relative(raiz, destino)} (${(sql.length / 1024).toFixed(1)} KB)`);
+}
+
+/** La versión pública: se aplica sola al desplegar (ver --publica arriba). */
+function migracionPublica(nombre, lote, cursos) {
+  if (!lote.publica) throw new Error(`El lote ${nombre} no tiene nombre de migración pública (campo «publica»).`);
+  if (/_evaluacion_/.test(lote.publica)) throw new Error('El nombre público no puede contener «_evaluacion_»: quedaría fuera del repositorio.');
+  const cabecera = `-- ============================================================
+--  ${lote.publica} — quizzes, actividades y foros, lote «${nombre}»
+--
+--  Generado por scripts/evaluacion-aula.mjs ${nombre} migracion --publica
+--  a partir de contenido/aula/catalogo. No editar a mano.
+--
+--  Cursos: ${cursos.map((c) => c.CURSO.tituloCorto).join('; ')}.
+--
+--  Qué hace en cada curso (aprobado por la dirección académica: todos
+--  los cursos llevan quizzes, actividades y foros):
+--   1. Nota mínima ${APROBACION}, ${INTENTOS} intentos y política ${PESOS.actividades}/${PESOS.quizzes}/${PESOS.foros}.
+--   2. Crea PUBLICADOS un quiz por unidad, las actividades con rúbrica y
+--      los foros; si ya existían en borrador, los publica. No toca
+--      preguntas de quizzes con intentos ni rúbricas o pesos de recursos
+--      con entregas o notas.
+--   3. Sin guías docentes: esas quedan en la versión privada.
+--   4. Si el curso o alguna unidad no está en la base, lo salta con un
+--      aviso: nunca detiene el arranque del servidor.
+-- ============================================================
+`;
+  const sql = cabecera + cursos.map(sqlCurso).join('\n');
+  const destino = path.join(raiz, 'api', 'migrations', lote.publica);
+  writeFileSync(destino, sql, 'utf8');
+  console.log(`Migración pública generada: ${path.relative(raiz, destino)} (${(sql.length / 1024).toFixed(1)} KB)`);
 }
 
 // ── Vista previa privada (docente) ───────────────────────────────────

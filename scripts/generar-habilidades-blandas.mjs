@@ -8,13 +8,15 @@
  *   1. api/migrations/075_cursos_habilidades_blandas.sql (pública): los
  *      10 cursos, sus 40 unidades y 80 clases en texto, y la aprobación
  *      de publicación (la hace el servidor al arrancar).
- *   2. api/migrations/076_evaluacion_habilidades_blandas.sql (PRIVADA,
- *      .gitignore): 40 quizzes con sus claves, 40 actividades con
- *      rúbrica, 40 foros y la política de nota. Se aplica a mano, como
- *      las demás capas de evaluación.
- *   3. src/data/edvanta/cursosHabilidadesBlandas.js: la lista estática
+ *   2. api/migrations/078_videos_habilidades_blandas.sql: un video de
+ *      YouTube por clase (scripts/datos/videos-habilidades-blandas.json)
+ *      y la nueva versión aprobada de cada curso.
+ *   3. api/migrations/079_quices_actividades_foros_habilidades_blandas.sql:
+ *      40 quizzes, 40 actividades con rúbrica, 40 foros y la política de
+ *      nota, publicados (todos los cursos llevan evaluación).
+ *   4. src/data/edvanta/cursosHabilidadesBlandas.js: la lista estática
  *      con la que el HTML de la escuela enlaza sus cursos.
- *   4. Las portadas de los cursos y la imagen de la escuela.
+ *   5. Las portadas de los cursos y la imagen de la escuela.
  *
  *   node scripts/generar-habilidades-blandas.mjs <ruta al .xlsx>
  *
@@ -512,25 +514,21 @@ const INSTRUCCIONES_QUIZ = 'Cuatro preguntas de selección múltiple con una sol
 
 const privada = [];
 privada.push(`-- ============================================================
---  076_evaluacion_habilidades_blandas.sql — evaluación de la Escuela de
---  Habilidades Blandas
+--  079_quices_actividades_foros_habilidades_blandas.sql — evaluación de
+--  la Escuela de Habilidades Blandas
 --
---  Generado por scripts/generar-habilidades-blandas.mjs. Contiene claves
---  de quiz: es un archivo PRIVADO (.gitignore) y se aplica a mano, como
---  las demás capas de evaluación:
+--  Generado por scripts/generar-habilidades-blandas.mjs. Se aplica sola
+--  al desplegar: la dirección académica pidió que todos los cursos
+--  tengan quizzes, actividades y foros (10-nov-2026).
 --
---    psql --single-transaction -f 076_evaluacion_habilidades_blandas.sql
---
---  En cada curso de la 075, si todavía no tiene matrículas:
+--  En cada curso de la 075:
 --   1. Nota mínima 70, 2 intentos y política 60/30/10 (actividades,
 --      quizzes, foros), y la duración del diseño completo.
 --   2. Crea PUBLICADOS un quiz de cuatro preguntas por unidad, una
 --      actividad con rúbrica por unidad (la 4 es el proyecto final) y un
---      foro por unidad. Todo quedó aprobado el 9-nov-2026.
---  Si el curso ya tiene matrículas, crea lo mismo en BORRADOR y no toca
---  la política ni la duración: activar requisitos a mitad de curso es
---  una decisión del panel.
---  Es idempotente: lo que ya existe (por título) no se duplica.
+--      foro por unidad; lo que ya existiera en borrador queda publicado.
+--  Es idempotente: lo que ya existe (por título) no se duplica. Si un
+--  curso no está en la base, se salta con un aviso.
 -- ============================================================
 `);
 
@@ -558,17 +556,12 @@ BEGIN
     RETURN;
   END IF;
 
-  IF EXISTS (SELECT 1 FROM aula_enrollments WHERE course_id = v_curso) THEN
-    v_estado := 'borrador';
-    RAISE NOTICE '${c.titulo.replaceAll("'", "''")} tiene matrículas: la evaluación queda en borrador.';
-  ELSE
-    v_estado := 'publicado';
-    UPDATE aula_courses
-       SET passing_score = 70, max_attempts = 2, duration_minutes = ${c.horas * 60},
-           grade_policy = ${dolar(jj, JSON.stringify({ version: 1, components: { activities: 60, quizzes: 30, forums: 10 }, rounding: 'half_up' }))}::jsonb,
-           updated_at = NOW()
-     WHERE id = v_curso;
-  END IF;
+  v_estado := 'publicado';
+  UPDATE aula_courses
+     SET passing_score = 70, max_attempts = 2, duration_minutes = ${c.horas * 60},
+         grade_policy = ${dolar(jj, JSON.stringify({ version: 1, components: { activities: 60, quizzes: 30, forums: 10 }, rounding: 'half_up' }))}::jsonb,
+         updated_at = NOW()
+   WHERE id = v_curso;
 `);
   for (const u of c.unidades) {
     const ref = `${c.titulo} unidad ${u.numero}`;
@@ -640,10 +633,83 @@ ${q.opciones.map((o, io) => `    INSERT INTO aula_question_options (question_id,
   END IF;
 `);
   }
-  p.push(`END
+  p.push(`
+  -- Lo que existiera en borrador (p. ej., de la antigua versión privada 076) queda publicado.
+  UPDATE aula_assessments SET status = 'publicado', updated_at = NOW() WHERE course_id = v_curso AND status = 'borrador' AND deleted_at IS NULL;
+  UPDATE aula_activities  SET status = 'publicado', updated_at = NOW() WHERE course_id = v_curso AND status = 'borrador' AND deleted_at IS NULL;
+  UPDATE aula_forums      SET status = 'publicado', updated_at = NOW() WHERE course_id = v_curso AND status = 'borrador' AND deleted_at IS NULL;
+END
 $${tag}$;
 `);
   privada.push(p.join(''));
+}
+
+/* ── 6 bis. Videos de YouTube por clase (078) ─────────────────────── */
+
+// Curados el 10-nov-2026 con la búsqueda sugerida de cada clase: en
+// español, de 2 a 25 minutos, pertinentes y verificados con oEmbed.
+const VIDEOS = JSON.parse(readFileSync(path.join(raiz, 'scripts', 'datos', 'videos-habilidades-blandas.json'), 'utf8'));
+const videos = [`-- ============================================================
+--  078_videos_habilidades_blandas.sql — un video de YouTube por clase
+--
+--  Generado por scripts/generar-habilidades-blandas.mjs a partir de
+--  scripts/datos/videos-habilidades-blandas.json: 80 videos en español
+--  (2 a 25 minutos), elegidos con la búsqueda sugerida de cada clase en el
+--  .xlsx y verificados con oEmbed el 10-nov-2026.
+--
+--  Cada video entra como segundo bloque de su clase, después de «En esta
+--  clase». Si la clase ya lo tiene, no se repite. Como los cursos ya
+--  estaban publicados, se aprueba una versión nueva de cada uno
+--  (aula_republicaciones_aprobadas, 077): el servidor la publica al
+--  arrancar y quien estudia ve los videos.
+-- ============================================================
+`];
+for (const c of modelo) {
+  const tag = `vd${c.clave}`;
+  const partes = [`
+-- ─── ${c.titulo} ───
+DO $${tag}$
+DECLARE
+  v_curso BIGINT;
+  v_clase BIGINT;
+BEGIN
+  SELECT id INTO v_curso FROM aula_courses
+   WHERE kind = 'edvanta' AND title = ${lit(c.titulo)} AND deleted_at IS NULL LIMIT 1;
+  IF v_curso IS NULL THEN
+    RAISE NOTICE 'No existe ${c.titulo.replaceAll("'", "''")}: se salta.';
+    RETURN;
+  END IF;
+`];
+  for (const u of c.unidades) {
+    for (const cl of u.clases) {
+      const v = VIDEOS.find((x) => x.curso === c.titulo && x.codigo === cl.codigo);
+      if (!v) throw new Error(`${c.titulo} ${cl.codigo}: falta su video`);
+      const { data } = readBlockData('video', {
+        source: 'enlace', url: `https://www.youtube.com/watch?v=${v.videoId}`, title: v.titulo, transcriptHtml: '',
+      });
+      partes.push(`
+  SELECT id INTO v_clase FROM aula_lessons
+   WHERE course_id = v_curso AND title = ${lit(cl.titulo)} AND deleted_at IS NULL LIMIT 1;
+  IF v_clase IS NOT NULL AND NOT EXISTS (
+    SELECT 1 FROM aula_lesson_blocks WHERE lesson_id = v_clase AND type = 'video' AND data->>'videoId' = ${lit(v.videoId)}
+  ) THEN
+    UPDATE aula_lesson_blocks SET sort_order = sort_order + 1 WHERE lesson_id = v_clase AND sort_order >= 1;
+    INSERT INTO aula_lesson_blocks (lesson_id, type, sort_order, data)
+    VALUES (v_clase, 'video', 1, ${dolar(`${tag}j`, JSON.stringify(data))}::jsonb);
+  END IF;
+`);
+    }
+  }
+  partes.push(`
+  -- Ya publicado: se aprueba la versión nueva con los videos. Si todavía
+  -- no tiene su primera versión, esa primera publicación ya los incluye.
+  INSERT INTO aula_republicaciones_aprobadas (course_id, aprobado_por, nota)
+  SELECT v_curso, 'Dirección académica de Edvanta', 'Videos complementarios de YouTube en cada clase (10-nov-2026).'
+   WHERE EXISTS (SELECT 1 FROM aula_courses WHERE id = v_curso AND current_version_id IS NOT NULL);
+END
+$${tag}$;
+`);
+  videos.push(partes.join(''));
 }
 
 /* ── 7. Lista estática para el HTML de la escuela ─────────────────── */
@@ -733,10 +799,12 @@ function svgPortada(arte) {
 /* ── 9. Escritura ─────────────────────────────────────────────────── */
 
 const salidaPublica = path.join(raiz, 'api', 'migrations', '075_cursos_habilidades_blandas.sql');
-const salidaPrivada = path.join(raiz, 'api', 'migrations', '076_evaluacion_habilidades_blandas.sql');
+const salidaVideos = path.join(raiz, 'api', 'migrations', '078_videos_habilidades_blandas.sql');
+const salidaEvaluacion = path.join(raiz, 'api', 'migrations', '079_quices_actividades_foros_habilidades_blandas.sql');
 const salidaLista = path.join(raiz, 'src', 'data', 'edvanta', 'cursosHabilidadesBlandas.js');
 writeFileSync(salidaPublica, publica.join(''), 'utf8');
-writeFileSync(salidaPrivada, privada.join(''), 'utf8');
+writeFileSync(salidaVideos, videos.join(''), 'utf8');
+writeFileSync(salidaEvaluacion, privada.join(''), 'utf8');
 writeFileSync(salidaLista, modulo, 'utf8');
 
 for (const c of modelo) {
@@ -748,6 +816,6 @@ await sharp(path.join(raiz, 'public', 'img', 'comunidad', 'encuentro-comunidad-f
   .webp({ quality: 82 })
   .toFile(path.join(raiz, 'public', 'img', 'escuelas', 'habilidades-blandas.webp'));
 
-console.log(`075: ${(publica.join('').length / 1024).toFixed(0)} KB · 076 (privada): ${(privada.join('').length / 1024).toFixed(0)} KB`);
+console.log(`075: ${(publica.join('').length / 1024).toFixed(0)} KB · 078 videos: ${(videos.join('').length / 1024).toFixed(0)} KB · 079 evaluación: ${(privada.join('').length / 1024).toFixed(0)} KB`);
 console.log(`${modelo.length} cursos · ${total.clases} clases · ${total.actividades} actividades · ${total.preguntas} preguntas · ${total.foros} foros`);
 for (const c of modelo) console.log(`  /${c.slug} · ${minutosDeClases(c)} min de clases · ${c.horas} h de diseño`);

@@ -5,10 +5,18 @@
  *   node scripts/paquete-aula.mjs <curso> migracion
  *   node scripts/paquete-aula.mjs <curso> vista
  *   node scripts/paquete-aula.mjs <curso> todo
+ *   node scripts/paquete-aula.mjs <curso> publica
  *
  * <curso> es la carpeta de contenido/aula (por ejemplo, bpe). La carpeta,
  * la migración y la vista previa contienen claves y guías docentes: están
  * en .gitignore y no se publican en el repositorio.
+ *
+ * «publica» escribe PAQUETE.publica, la versión que sí va al repositorio
+ * (aprobado por la dirección académica: todos los cursos llevan quizzes,
+ * actividades y foros): sin guías docentes; quizzes, actividades y foros
+ * PUBLICADOS; política siempre; si algo no coincide, avisa y se salta sin
+ * detener el arranque; y deja aprobada una versión nueva del curso
+ * (aula_republicaciones_aprobadas, 077) para que se vean las clases.
  *
  * La migración es idempotente y conservadora: crea quizzes, actividades y
  * foros en borrador, no cambia el estado de lo que ya exista, no toca
@@ -27,9 +35,16 @@ import {
 const raiz = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const [clave, accion = 'validar'] = process.argv.slice(2);
 if (!clave || !/^[a-z0-9-]+$/.test(clave)) {
-  console.error('Uso: node scripts/paquete-aula.mjs <curso> validar|migracion|vista|todo');
+  console.error('Uso: node scripts/paquete-aula.mjs <curso> validar|migracion|vista|todo|publica');
   process.exit(2);
 }
+const PUBLICA = accion === 'publica';
+const ESTADO = PUBLICA ? 'publicado' : 'borrador';
+// En la versión pública un fallo no puede detener el arranque del servidor.
+const fallar = (msg) => (PUBLICA
+  ? `RAISE NOTICE '${msg.replaceAll("'", "''")} Se salta.';
+    RETURN;`
+  : `RAISE EXCEPTION '${msg.replaceAll("'", "''")}';`);
 
 const pkg = await import(pathToFileURL(path.join(raiz, 'contenido', 'aula', clave, 'index.mjs')).href);
 const { PAQUETE, CURSO, UNIDADES, LECCIONES, QUIZZES, FOROS, ACTIVIDADES, CONTROL_PESOS } = pkg;
@@ -289,7 +304,7 @@ const moduloSql = (u) => `
    WHERE course_id = v_curso AND title = ${sqlString(u.UNIDAD.titulo)} AND deleted_at IS NULL
    LIMIT 1;
   IF v_unidad IS NULL THEN
-    RAISE EXCEPTION 'No existe la unidad ${u.UNIDAD.numero} (${u.UNIDAD.titulo.replaceAll("'", "''")}).';
+    ${fallar(`No existe la unidad ${u.UNIDAD.numero} (${u.UNIDAD.titulo}).`)}
   END IF;`;
 
 // Foro de bienvenida: de todo el curso, formativo, sin nota ni rúbrica.
@@ -307,11 +322,11 @@ function foroBienvenidaSql(f) {
     VALUES
       (v_curso, NULL, 'curso', ${sqlString(f.titulo)}, ${sqlString(f.proposito)}, ${html(renderForoDescripcion(f))},
        ${sqlString(f.preguntaCentral)}, ${sqlArray(f.preguntasProfundizacion)}, ${html(renderForoParticipacion(f))},
-       ${html(renderForoReglas(f))}, ${alternativa}, 'formativa', NULL, NULL, FALSE, FALSE, 'borrador', 0)
+       ${html(renderForoReglas(f))}, ${alternativa}, 'formativa', NULL, NULL, FALSE, FALSE, '${ESTADO}', 0)
     RETURNING id INTO v_foro;
   ELSE
     UPDATE aula_forums
-       SET module_id = NULL, scope = 'curso', purpose = ${sqlString(f.proposito)}, description = ${html(renderForoDescripcion(f))},
+       SET ${PUBLICA ? "status = 'publicado', " : ''}module_id = NULL, scope = 'curso', purpose = ${sqlString(f.proposito)}, description = ${html(renderForoDescripcion(f))},
            central_question = ${sqlString(f.preguntaCentral)}, guiding_questions = ${sqlArray(f.preguntasProfundizacion)},
            participation_html = ${html(renderForoParticipacion(f))}, rules_html = ${html(renderForoReglas(f))},
            no_participants_alternative = ${alternativa}, sort_order = 0, updated_at = NOW()
@@ -323,8 +338,91 @@ function foroBienvenidaSql(f) {
 function migracion() {
   const politica = { version: 1, components: { activities: CURSO.pesos.actividades, quizzes: CURSO.pesos.quizzes, forums: CURSO.pesos.foros }, rounding: 'half_up' };
   const b = [];
-  b.push(`-- ============================================================
---  ${PAQUETE.migracion} — ${CURSO.titulo}
+  const nombre = PUBLICA ? PAQUETE.publica : PAQUETE.migracion;
+  if (!nombre) {
+    console.error(`El paquete ${clave} no declara ${PUBLICA ? 'PAQUETE.publica' : 'PAQUETE.migracion'}.`);
+    process.exit(2);
+  }
+  const unidadesClases = LECCIONES.map((l) => [unidadDe(l.id).UNIDAD.titulo, l.titulo]);
+  b.push(PUBLICA ? `-- ============================================================
+--  ${nombre} — ${CURSO.titulo}
+--
+--  Generado por scripts/paquete-aula.mjs ${clave} publica a partir de
+--  contenido/aula/${clave}. No editar a mano.
+--
+--  Aprobado por la dirección académica: todos los cursos llevan quizzes,
+--  actividades y foros. Las claves de los quizzes son las mismas que el
+--  aula muestra al estudiante cuando envía; las guías docentes quedan en
+--  la versión privada.
+--
+--  Qué hace:
+--   1. Actualiza los metadatos del curso, la nota mínima ${CURSO.aprobacion}, ${CURSO.intentos} intentos
+--      y la política ${CURSO.pesos.actividades}/${CURSO.pesos.quizzes}/${CURSO.pesos.foros}.
+--   2. Reemplaza el texto, los destacados y los enlaces de las clases por
+--      la clase completa, con videos complementarios verificados y
+--      enlaces a fuentes oficiales.
+--   3. Crea PUBLICADOS los quizzes, las actividades con rúbrica y los
+--      foros; si ya existían en borrador, los publica. No toca preguntas
+--      de quizzes con intentos ni rúbricas o pesos de recursos con
+--      entregas o notas.
+--   4. Si el curso ya está publicado, aprueba una versión nueva (077)
+--      para que quien estudia vea las clases completas.
+--   5. Si el curso, una unidad o una clase no está en la base, avisa y
+--      se salta: nunca detiene el arranque del servidor.
+-- ============================================================
+
+DO $${P}$
+DECLARE
+  v_curso    BIGINT;
+  v_unidad   BIGINT;
+  v_clase    BIGINT;
+  v_banco    BIGINT;
+  v_pregunta BIGINT;
+  v_eval     BIGINT;
+  v_act      BIGINT;
+  v_foro     BIGINT;
+  v_orden    INTEGER;
+BEGIN
+  SELECT id INTO v_curso FROM aula_courses
+   WHERE kind = 'edvanta' AND title = ${sqlString(CURSO.titulo)} AND deleted_at IS NULL
+   LIMIT 1;
+  IF v_curso IS NULL THEN
+    ${fallar(`No existe el curso ${CURSO.titulo}.`)}
+  END IF;
+
+  -- Si alguien cambió unidades o clases en el panel, no se fuerza nada.
+  IF EXISTS (
+    SELECT 1 FROM (VALUES
+${unidadesClases.map(([u, l]) => `      (${sqlString(u)}, ${sqlString(l)})`).join(',\n')}
+    ) AS e(unidad, clase)
+     WHERE NOT EXISTS (
+       SELECT 1 FROM aula_lessons l JOIN aula_modules m ON m.id = l.module_id
+        WHERE l.course_id = v_curso AND m.course_id = v_curso AND l.deleted_at IS NULL AND m.deleted_at IS NULL
+          AND m.title = e.unidad AND l.title = e.clase)
+  ) THEN
+    RAISE NOTICE '${CURSO.tituloCorto.replaceAll("'", "''")}: sus unidades o clases no coinciden con el paquete; se salta.';
+    RETURN;
+  END IF;
+
+  UPDATE aula_courses
+     SET short_description = ${sqlString(CURSO.descripcionCorta)},
+         description_html = ${html(renderCurso(CURSO))},
+         objective = ${sqlString(CURSO.objetivo)},
+         learning_outcomes = ${sqlArray(CURSO.resultados)},
+         audience = ${sqlString(CURSO.publico)},
+         prerequisites = ${sqlString(CURSO.prerrequisitos)},
+         duration_minutes = ${CURSO.duracionMin},
+         level = ${sqlString(CURSO.nivel)},
+         category = ${sqlString(CURSO.categoria)},
+         area = ${sqlString(CURSO.area)},
+         tags = ${sqlArray(CURSO.etiquetas)},
+         passing_score = ${CURSO.aprobacion},
+         max_attempts = ${CURSO.intentos},
+         grade_policy = ${json(politica)},
+         updated_at = NOW()
+   WHERE id = v_curso;
+` : `-- ============================================================
+--  ${nombre} — ${CURSO.titulo}
 --
 --  Generado por scripts/paquete-aula.mjs a partir de contenido/aula/${clave}.
 --  No editar a mano. Contiene claves de quiz y guías docentes: es un
@@ -406,7 +504,7 @@ BEGIN
    WHERE course_id = v_curso AND module_id = v_unidad AND title = ${sqlString(l.titulo)} AND deleted_at IS NULL
    LIMIT 1;
   IF v_clase IS NULL THEN
-    RAISE EXCEPTION 'No existe la clase ${l.titulo.replaceAll("'", "''")}.';
+    ${fallar(`No existe la clase ${l.titulo}.`)}
   END IF;
 
   UPDATE aula_lessons
@@ -464,9 +562,10 @@ BEGIN
        shuffle_questions, shuffle_options, show_answers_after_submit, status, sort_order, weight)
     VALUES
       (v_curso, v_unidad, ${sqlString(q.titulo)}, ${sqlString(q.instrucciones)}, TRUE, ${CURSO.aprobacion}, ${CURSO.intentos},
-       FALSE, FALSE, TRUE, 'borrador', ${n}, ${q.peso})
+       FALSE, FALSE, TRUE, '${ESTADO}', ${n}, ${q.peso})
     RETURNING id INTO v_eval;
-  END IF;
+  END IF;${PUBLICA ? `
+  UPDATE aula_assessments SET status = 'publicado', updated_at = NOW() WHERE id = v_eval AND status = 'borrador';` : ''}
 
   IF EXISTS (SELECT 1 FROM aula_attempts WHERE assessment_id = v_eval) THEN
     RAISE NOTICE 'El quiz % ya tiene intentos: no se modifican sus preguntas ni su configuración.', ${sqlString(q.titulo)};
@@ -516,7 +615,10 @@ ${p.opciones.map((o, k) => `    INSERT INTO aula_question_options (question_id, 
       producto: sqlString(a.producto),
       extension: sqlString(a.extension),
       apoyo: html(renderActividadApoyo(a)),
-      guia: html(renderGuiaDocente(a)),
+      // La versión pública no lleva guía docente: crea sin ella y conserva
+      // la que ya esté en la base.
+      guia: PUBLICA ? 'NULL' : html(renderGuiaDocente(a)),
+      guiaUpdate: PUBLICA ? 'teacher_guide_html' : html(renderGuiaDocente(a)),
     };
     b.push(`
   -- ── Actividad ${a.id} ─────────────────────────────────${moduloSql(u)}
@@ -530,13 +632,13 @@ ${p.opciones.map((o, k) => `    INSERT INTO aula_question_options (question_id, 
     VALUES
       (v_curso, v_unidad, ${sqlString(a.titulo)}, ${campos.instructions}, ${campos.caso}, ${campos.puntos}, ${campos.producto},
        ${campos.extension}, ${campos.apoyo}, ${campos.guia}, ${json(rubrica(a.rubrica))}, 'rubrica', TRUE, TRUE,
-       TRUE, ARRAY['pdf','docx','xlsx','pptx','png','jpg','jpeg']::text[], 20, 100, TRUE, 'borrador', ${n}, ${a.peso})
+       TRUE, ARRAY['pdf','docx','xlsx','pptx','png','jpg','jpeg']::text[], 20, 100, TRUE, '${ESTADO}', ${n}, ${a.peso})
     RETURNING id INTO v_act;
   ELSE
     UPDATE aula_activities
-       SET module_id = v_unidad, instructions_html = ${campos.instructions}, case_html = ${campos.caso},
+       SET ${PUBLICA ? "status = 'publicado', " : ''}module_id = v_unidad, instructions_html = ${campos.instructions}, case_html = ${campos.caso},
            points_to_solve = ${campos.puntos}, expected_product = ${campos.producto}, extension_hint = ${campos.extension},
-           support_html = ${campos.apoyo}, teacher_guide_html = ${campos.guia}, sort_order = ${n}, updated_at = NOW()
+           support_html = ${campos.apoyo}, teacher_guide_html = ${campos.guiaUpdate}, sort_order = ${n}, updated_at = NOW()
      WHERE id = v_act;
     IF EXISTS (SELECT 1 FROM aula_submissions WHERE activity_id = v_act) THEN
       RAISE NOTICE 'La actividad % tiene entregas: se conserva su rúbrica y su peso.', ${sqlString(a.titulo)};
@@ -578,11 +680,11 @@ ${p.opciones.map((o, k) => `    INSERT INTO aula_question_options (question_id, 
     VALUES
       (v_curso, v_unidad, 'modulo', ${sqlString(f.titulo)}, ${c.proposito}, ${c.descripcion}, ${c.pregunta}, ${c.guias},
        ${c.participacion}, ${c.reglas}, ${c.alternativa}, 'rubrica', ${f.peso}, ${json(rubrica(f.rubrica))},
-       FALSE, FALSE, 'borrador', ${n})
+       FALSE, FALSE, '${ESTADO}', ${n})
     RETURNING id INTO v_foro;
   ELSE
     UPDATE aula_forums
-       SET module_id = v_unidad, scope = 'modulo', purpose = ${c.proposito}, description = ${c.descripcion},
+       SET ${PUBLICA ? "status = 'publicado', " : ''}module_id = v_unidad, scope = 'modulo', purpose = ${c.proposito}, description = ${c.descripcion},
            central_question = ${c.pregunta}, guiding_questions = ${c.guias}, participation_html = ${c.participacion},
            rules_html = ${c.reglas}, no_participants_alternative = ${c.alternativa}, sort_order = ${n}, updated_at = NOW()
      WHERE id = v_foro;
@@ -597,6 +699,16 @@ ${p.opciones.map((o, k) => `    INSERT INTO aula_question_options (question_id, 
 `);
   }
 
+  if (PUBLICA) {
+    b.push(`
+  -- Ya publicado: se aprueba la versión nueva con las clases completas.
+  -- Si todavía no tiene su primera versión, esa primera publicación ya
+  -- las incluye.
+  INSERT INTO aula_republicaciones_aprobadas (course_id, aprobado_por, nota)
+  SELECT v_curso, 'Dirección académica de Edvanta', 'Clases completas, quizzes, actividades y foros (10-nov-2026).'
+   WHERE EXISTS (SELECT 1 FROM aula_courses WHERE id = v_curso AND current_version_id IS NOT NULL);
+`);
+  }
   b.push(`
   RAISE NOTICE '${CURSO.tituloCorto.replaceAll("'", "''")}: % clases, % quizzes, % actividades, % foros.',
     (SELECT COUNT(*) FROM aula_lessons WHERE course_id = v_curso AND deleted_at IS NULL),
@@ -607,7 +719,7 @@ END
 $${P}$;
 `);
   const sql = b.join('\n');
-  const destino = path.join(raiz, 'api', 'migrations', PAQUETE.migracion);
+  const destino = path.join(raiz, 'api', 'migrations', nombre);
   writeFileSync(destino, sql, 'utf8');
   console.log(`Migración generada: ${path.relative(raiz, destino)} (${(sql.length / 1024).toFixed(1)} KB)`);
 }
@@ -669,9 +781,10 @@ if (accion === 'validar' || accion === 'todo') {
   const ok = validar();
   if (!ok) process.exit(1);
 }
-if (accion === 'migracion' || accion === 'todo') migracion();
+if (accion === 'publica' && !validar()) process.exit(1);
+if (accion === 'migracion' || accion === 'todo' || accion === 'publica') migracion();
 if (accion === 'vista' || accion === 'todo') vista();
-if (!['validar', 'migracion', 'vista', 'todo'].includes(accion)) {
+if (!['validar', 'migracion', 'vista', 'todo', 'publica'].includes(accion)) {
   console.error(`Acción desconocida: ${accion}`);
   process.exit(2);
 }
