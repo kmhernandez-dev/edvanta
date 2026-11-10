@@ -58,6 +58,8 @@ function unidadesDelInventario(titulo) {
   if (!c) return null;
   const unidades = [];
   for (const l of c.lecciones) {
+    // El anexo de fichas (Farmacoterapia) es de consulta y no se evalúa.
+    if (/^Anexo\b/.test(l.unidad)) continue;
     let u = unidades.find((x) => x.titulo === l.unidad);
     if (!u) { u = { titulo: l.unidad, clases: [] }; unidades.push(u); }
     u.clases.push(l.title);
@@ -339,7 +341,10 @@ function sqlCurso(c) {
    WHERE course_id = v_curso AND title = ${sqlString(u.titulo)} AND deleted_at IS NULL
    LIMIT 1;
   IF v_unidad IS NULL THEN
-    RAISE EXCEPTION 'No existe la unidad ${u.num} (${u.titulo.replaceAll("'", "''")}) en ${corto}.';
+    ${PUBLICA
+    ? `RAISE NOTICE 'No existe la unidad ${u.num} (${u.titulo.replaceAll("'", "''")}) en ${corto}: se salta.';
+    RETURN;`
+    : `RAISE EXCEPTION 'No existe la unidad ${u.num} (${u.titulo.replaceAll("'", "''")}) en ${corto}.';`}
   END IF;`;
 
   const b = [];
