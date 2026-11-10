@@ -158,6 +158,75 @@ describe('slugs de curso · base de datos y rutas', () => {
     expect(r.headers.get('cache-control')).toContain('no-cache');
   });
 
+  it('la ficha completa queda escrita en el HTML: temario, resultados, preguntas y relacionados', async () => {
+    const snapshot = {
+      modules: [
+        { id: 'm1', title: 'Unidad 1. Bases de la diabetes', lessons: [{ id: 'l1', title: 'Fisiopatología de la diabetes tipo 2' }, { id: 'l2', title: 'Metas glucémicas' }] },
+        { id: 'm2', title: 'Unidad 2. Metformina', lessons: [{ id: 'l3', title: 'Mecanismo y dosis' }] },
+      ],
+    };
+    // Las versiones publicadas no se modifican: se publica una nueva.
+    const { rows: [anterior] } = await db.query('SELECT current_version_id FROM aula_courses WHERE id = $1', [ids.diabetes]);
+    const { rows: [nueva] } = await db.query(
+      'INSERT INTO aula_course_versions (course_id, version_number, snapshot) VALUES ($1, 2, $2) RETURNING id',
+      [ids.diabetes, JSON.stringify(snapshot)],
+    );
+    await db.query('UPDATE aula_courses SET current_version_id = $2 WHERE id = $1', [ids.diabetes, nueva.id]);
+    await db.query(
+      `UPDATE aula_courses SET category = 'Farmacoterapia', learning_outcomes = $2, audience = $3, prerequisites = $4,
+              description_html = $5, duration_minutes = 750, certificate_price = 60000, short_description = $6
+        WHERE id = $1`,
+      [
+        ids.diabetes,
+        ['Elegir el antidiabético según el paciente'],
+        'Químicos farmacéuticos y regentes de farmacia',
+        'Farmacología básica',
+        '<p>Primer párrafo &amp; más.</p><script>alert("x")</script><ul><li>Punto uno</li></ul><img src=x onerror=alert(1)>',
+        'Curso para elegir tratamientos. Precio de referencia $150.000 y $1 de prueba.',
+      ],
+    );
+    await db.query("UPDATE aula_courses SET category = 'Farmacoterapia' WHERE id = $1", [ids.cardio]);
+    try {
+      const html = await (await pedir('/api/paginas/slug/curso-de-farmacoterapia-de-la-diabetes')).text();
+      const cuerpo = html.slice(html.indexOf('<div id="root">'));
+      // Temario, resultados, público, requisitos, certificado y preguntas.
+      expect(cuerpo).toContain('<h2>Temario</h2>');
+      expect(cuerpo).toContain('<h3>Unidad 1. Bases de la diabetes</h3>');
+      expect(cuerpo).toContain('<li>Fisiopatología de la diabetes tipo 2</li>');
+      expect(cuerpo).toContain('<li>Elegir el antidiabético según el paciente</li>');
+      expect(cuerpo).toContain('Químicos farmacéuticos y regentes de farmacia');
+      expect(cuerpo).toContain('<li>2 unidades · 3 clases</li>');
+      expect(cuerpo).toContain('Duración: 12,5 horas');
+      expect(cuerpo).toContain('$60.000 COP');
+      expect(cuerpo).toContain('<h3>¿Dónde se estudia este curso?</h3>');
+      // La descripción llega como texto: nada del HTML original se ejecuta.
+      expect(cuerpo).toContain('<p>Primer párrafo &amp; más.</p>');
+      expect(cuerpo).toContain('• Punto uno');
+      expect(cuerpo).not.toMatch(/<script>alert|onerror|<img/);
+      // Enlace interno a otro curso público de la misma área.
+      expect(cuerpo).toContain('<a href="/curso-de-farmacologia-cardiovascular">Curso de Farmacología Cardiovascular</a>');
+      // Un «$1» del texto no se lee como patrón de reemplazo.
+      expect(html).toContain('Precio de referencia $150.000 y $1 de prueba.');
+      expect(html).not.toMatch(/content="Curso para elegir tratamientos\. Precio de referencia <meta/);
+      // Datos estructurados del curso: gratis el contenido, certificado de pago.
+      expect(html).toContain('"category":"Partially Free"');
+      expect(html).toContain('"courseMode":"Online"');
+      expect(html).toContain('"courseWorkload":"PT750M"');
+      expect(html).toContain('"syllabusSections":[{"@type":"Syllabus","name":"Unidad 1. Bases de la diabetes"}');
+    } finally {
+      await db.query('UPDATE aula_courses SET current_version_id = $2 WHERE id = $1', [ids.diabetes, anterior.current_version_id]);
+    }
+  });
+
+  it('un curso curado no inventa temario ni datos de su proveedor', async () => {
+    const html = await (await pedir('/api/paginas/slug/curso-de-farmacologia-cardiovascular-en-edutin')).text();
+    const cuerpo = html.slice(html.indexOf('<div id="root">'));
+    expect(cuerpo).toContain('Se estudia en Edutin Academy. Edvanta lo seleccionó; no lo imparte.');
+    expect(cuerpo).not.toContain('<h2>Temario</h2>');
+    expect(cuerpo).toContain('No lo tenemos confirmado.');
+    expect(html).not.toContain('"offers"');
+  });
+
   it('mayúsculas, barra final y slugs del historial redirigen a la vigente', async () => {
     const mayus = await pedir('/api/paginas/slug/Curso-De-Farmacoterapia-De-La-Diabetes');
     expect(mayus.status).toBe(301);

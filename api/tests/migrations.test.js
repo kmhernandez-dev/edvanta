@@ -128,7 +128,18 @@ describe('migraciones', () => {
       const competencia = await (await pedir('/paginas/competencias/buenas-practicas-de-manufactura')).text();
       expect(competencia).toMatch(/<title>Buenas Prácticas de Manufactura \(BPM\/GMP\): carreras, cursos y rutas \| Edvanta<\/title>/);
       // Las rutas fijas del sitio (sin ficha en la base) también tienen página.
-      expect((await pedir('/paginas/rutas/calidad-y-auditoria')).status).toBe(200);
+      const fija = await pedir('/paginas/rutas/calidad-y-auditoria');
+      expect(fija.status).toBe(200);
+      expect(await fija.text()).toContain('<li>Comprender sistemas de gestión</li>');
+
+      // El contenido va escrito en el HTML, con enlaces a las páginas vecinas
+      // del grafo, para quien no ejecuta JavaScript.
+      expect(html).toContain('<h2>Qué hace</h2>');
+      expect(html).toContain('<li>Administrar procedimientos y registros</li>');
+      expect(html).toContain('<h2>Competencias clave</h2>');
+      expect(html).toContain('<a href="/competencias/buenas-practicas-de-manufactura">');
+      expect(competencia).toContain('<h2>Carreras que la requieren</h2>');
+      expect(competencia).toContain('<a href="/carreras/aseguramiento-de-calidad">Aseguramiento de calidad</a>');
 
       const nada = await pedir('/paginas/carreras/no-existe');
       expect(nada.status).toBe(404);

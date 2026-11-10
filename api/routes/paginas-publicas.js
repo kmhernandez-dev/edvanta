@@ -33,7 +33,9 @@ import {
   asegurarSlugsDeCursos, nombreDeCurso, resolverSlug, rutaDeCursoCurado, rutaDeCursoPropio, slugify,
 } from '../lib/slugs-publicos.js';
 import { SQL_CURSO_PUBLICO, temarioPublico } from './courses.js';
-import { verificarCertificado } from '../lib/aula/certificados.js';
+import { EMISOR, verificarCertificado } from '../lib/aula/certificados.js';
+import { cuerpoDeCurso, datosDeCurso } from '../lib/html-de-ficha.js';
+import { cuerpoDePerfil, extrasDePerfil } from '../lib/html-de-perfil.js';
 
 const esc = (t) => String(t ?? '')
   .replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;');
@@ -52,27 +54,33 @@ export function conMetadatos(html, {
 }) {
   const t = esc(titulo);
   const d = esc(descripcion);
+  // Siempre con función: un texto con «$1» o «$&» (un precio, por
+  // ejemplo «$150.000») no debe leerse como patrón de reemplazo.
+  const poner = (valor) => (_m, antes, despues) => `${antes}${valor}${despues}`;
   let salida = html
-    .replace(/<title>[\s\S]*?<\/title>/, `<title>${t}</title>`)
-    .replace(/(<meta name="description" content=")[^"]*(")/, `$1${d}$2`)
-    .replace(/(<link rel="canonical" href=")[^"]*(")/, `$1${esc(canonical)}$2`)
-    .replace(/(<meta property="og:type" content=")[^"]*(")/, `$1${tipo}$2`)
-    .replace(/(<meta property="og:title" content=")[^"]*(")/, `$1${t}$2`)
-    .replace(/(<meta property="og:description" content=")[^"]*(")/, `$1${d}$2`)
-    .replace(/(<meta property="og:url" content=")[^"]*(")/, `$1${esc(canonical)}$2`)
-    .replace(/(<meta name="twitter:title" content=")[^"]*(")/, `$1${t}$2`)
-    .replace(/(<meta name="twitter:description" content=")[^"]*(")/, `$1${d}$2`);
+    .replace(/<title>[\s\S]*?<\/title>/, () => `<title>${t}</title>`)
+    .replace(/(<meta name="description" content=")[^"]*(")/, poner(d))
+    .replace(/(<link rel="canonical" href=")[^"]*(")/, poner(esc(canonical)))
+    .replace(/(<meta property="og:type" content=")[^"]*(")/, poner(tipo))
+    .replace(/(<meta property="og:title" content=")[^"]*(")/, poner(t))
+    .replace(/(<meta property="og:description" content=")[^"]*(")/, poner(d))
+    .replace(/(<meta property="og:url" content=")[^"]*(")/, poner(esc(canonical)))
+    .replace(/(<meta name="twitter:title" content=")[^"]*(")/, poner(t))
+    .replace(/(<meta name="twitter:description" content=")[^"]*(")/, poner(d));
   if (imagen) {
     salida = salida
-      .replace(/(<meta property="og:image" content=")[^"]*(")/, `$1${esc(imagen)}$2`)
-      .replace(/(<meta name="twitter:image" content=")[^"]*(")/, `$1${esc(imagen)}$2`);
+      .replace(/(<meta property="og:image" content=")[^"]*(")/, poner(esc(imagen)))
+      .replace(/(<meta name="twitter:image" content=")[^"]*(")/, poner(esc(imagen)));
   }
+  // La plantilla dice «index, follow»; una página que no se indexa lo
+  // dice en la misma etiqueta, no en una segunda que la contradiga.
+  if (!indexar) salida = salida.replace(/<meta name="robots"[^>]*>/, '<meta name="robots" content="noindex, follow" />');
   const extra = [
-    indexar ? '' : '<meta name="robots" content="noindex, follow" />',
+    indexar || /<meta name="robots"/.test(salida) ? '' : '<meta name="robots" content="noindex, follow" />',
     ...jsonLd.map((datos) => `<script type="application/ld+json" data-prerender>${JSON.stringify(datos).replaceAll('</', '<\\/')}</script>`),
   ].filter(Boolean).join('\n    ');
-  if (extra) salida = salida.replace('</head>', `    ${extra}\n  </head>`);
-  if (cuerpo) salida = salida.replace('<div id="root"></div>', `<div id="root">${cuerpo}</div>`);
+  if (extra) salida = salida.replace('</head>', () => `    ${extra}\n  </head>`);
+  if (cuerpo) salida = salida.replace('<div id="root"></div>', () => `<div id="root">${cuerpo}</div>`);
   return salida;
 }
 
@@ -130,6 +138,31 @@ async function cursoDelSlug(db, entidad, id) {
   }
   const { rows } = await db.query('SELECT * FROM courses WHERE id = $1 AND active = TRUE', [id]);
   return rows[0] ? fichaDeCursoCurado(rows[0]) : null;
+}
+
+/**
+ * Hasta seis cursos públicos de la misma área, con su dirección vigente:
+ * enlaces internos que los buscadores siguen sin ejecutar JavaScript.
+ * Los propios enlazan primero a otros propios; los curados, a curados.
+ */
+async function relacionadosDe(db, entidad, id, categoria) {
+  if (!categoria) return [];
+  const sql = entidad === 'aula'
+    ? `SELECT s.slug, c.title FROM aula_courses c
+         JOIN public_slugs s ON s.entity = 'aula' AND s.entity_id = c.id AND s.is_current
+        WHERE c.kind = 'edvanta' AND c.status = 'publicado' AND c.deleted_at IS NULL
+          AND c.category = $1 AND c.id <> $2
+        ORDER BY c.published_at DESC NULLS LAST, c.id LIMIT 6`
+    : `SELECT s.slug, c.title FROM courses c
+         JOIN public_slugs s ON s.entity = 'curado' AND s.entity_id = c.id AND s.is_current
+        WHERE c.active = TRUE AND c.category = $1 AND c.id <> $2
+        ORDER BY c.id LIMIT 6`;
+  try {
+    const { rows } = await db.query(sql, [categoria, id]);
+    return rows.map((r) => ({ slug: r.slug, titulo: nombreDeCurso(r.title) }));
+  } catch {
+    return [];
+  }
 }
 
 export function crearRutasPublicas({ db, sitio = '', obtenerPlantilla = async () => null } = {}) {
@@ -191,22 +224,14 @@ export function crearRutasPublicas({ db, sitio = '', obtenerPlantilla = async ()
       const nombre = nombreDeCurso(ficha.titulo);
       const canonical = absoluta(`/${slug}`);
       const imagen = ficha.portada ? (ficha.portada.startsWith('/') ? absoluta(ficha.portada) : ficha.portada) : null;
+      const relacionados = await relacionadosDe(db, r.entidad, r.id, ficha.categoria);
       const html = conMetadatos(plantilla, {
         titulo: `${nombre} | Edvanta`,
         descripcion: resumen(ficha.resumen || `${nombre}: ${ficha.categoria || 'formación profesional'} en Edvanta.`),
         canonical,
         imagen,
         jsonLd: [
-          {
-            '@context': 'https://schema.org',
-            '@type': 'Course',
-            name: nombre,
-            description: ficha.resumen || '',
-            url: canonical,
-            inLanguage: ficha.idioma === 'Inglés' ? 'en' : 'es',
-            ...(imagen ? { image: imagen } : {}),
-            provider: { '@type': 'Organization', name: ficha.proveedor.nombre },
-          },
+          datosDeCurso(ficha, { nombre, canonical, imagen, horas: ficha.certificado?.horas }),
           {
             '@context': 'https://schema.org',
             '@type': 'BreadcrumbList',
@@ -217,8 +242,8 @@ export function crearRutasPublicas({ db, sitio = '', obtenerPlantilla = async ()
             ],
           },
         ],
-        // Lo esencial ya escrito: lo reemplaza la aplicación al cargar.
-        cuerpo: `<main><h1>${esc(nombre)}</h1>${ficha.resumen ? `<p>${esc(ficha.resumen)}</p>` : ''}<p><a href="/cursos">Ver todos los cursos</a></p></main>`,
+        // La ficha completa ya escrita: la reemplaza la aplicación al cargar.
+        cuerpo: cuerpoDeCurso(ficha, { nombre, relacionados, emisor: EMISOR.nombre }),
       });
       return aplicacion(res, 200, html);
     } catch (e) {
@@ -284,7 +309,8 @@ export function crearRutasPublicas({ db, sitio = '', obtenerPlantilla = async ()
     const anterior = `(SELECT entidad_id FROM slugs_anteriores WHERE tipo = '${tipo}' AND anterior = $1)`;
     if (tipo === 'carrera') {
       const { rows } = await db.query(
-        `SELECT c.slug, c.name, c.headline, c.summary, c.seo_title, c.seo_description
+        `SELECT c.id, c.slug, c.name, c.headline, c.summary, c.seo_title, c.seo_description,
+                c.what_it_is, c.recommended_profile, c.entry_guidance, c.responsibilities, c.workplaces
            FROM careers c JOIN career_families f ON f.id = c.family_id
           WHERE (c.slug = $1 OR c.id = ${anterior}) AND c.status = 'published' AND f.status = 'published'
           LIMIT 1`,
@@ -292,16 +318,23 @@ export function crearRutasPublicas({ db, sitio = '', obtenerPlantilla = async ()
       );
       const c = rows[0];
       return c && {
+        id: c.id,
         slug: c.slug,
         nombre: c.name,
         resumen: c.headline || c.summary,
         titulo: c.seo_title || `${c.name} | Carreras Edvanta`,
         descripcion: c.seo_description || c.summary,
+        // El resumen va arriba solo si el titular lo reemplazó.
+        queEs: c.what_it_is || (c.headline && c.summary !== c.headline ? c.summary : null),
+        perfil: c.recommended_profile,
+        comoEmpezar: c.entry_guidance,
+        responsabilidades: c.responsibilities,
+        lugares: c.workplaces,
       };
     }
     if (tipo === 'ruta') {
       const { rows } = await db.query(
-        `SELECT p.slug, p.name, p.summary, p.seo_title, p.seo_description
+        `SELECT p.id, p.slug, p.name, p.summary, p.seo_title, p.seo_description
            FROM learning_paths p JOIN careers c ON c.id = p.career_id AND c.status = 'published'
           WHERE (p.slug = $1 OR p.id = ${anterior}) AND p.status = 'published'
           LIMIT 1`,
@@ -310,6 +343,7 @@ export function crearRutasPublicas({ db, sitio = '', obtenerPlantilla = async ()
       const p = rows[0];
       if (p) {
         return {
+          id: p.id,
           slug: p.slug,
           nombre: p.name,
           resumen: p.summary,
@@ -320,23 +354,49 @@ export function crearRutasPublicas({ db, sitio = '', obtenerPlantilla = async ()
       // Las rutas fijas del sitio, que no tienen ficha en la base.
       const fija = (await rutasFijas()).find((r) => r.slug === slug);
       return fija && {
-        slug: fija.slug, nombre: fija.title, resumen: fija.summary, titulo: `${fija.title} | Ruta profesional Edvanta`, descripcion: fija.summary,
+        slug: fija.slug,
+        nombre: fija.title,
+        resumen: fija.summary,
+        titulo: `${fija.title} | Ruta profesional Edvanta`,
+        descripcion: fija.summary,
+        fija,
       };
     }
     const { rows } = await db.query(
-      `SELECT slug, name, description FROM skills
+      `SELECT id, slug, name, description FROM skills
         WHERE (slug = $1 OR id = ${anterior}) AND status = 'published'
         LIMIT 1`,
       [slug],
     );
     const s = rows[0];
     return s && {
+      id: s.id,
       slug: s.slug,
       nombre: s.name,
       resumen: s.description,
       titulo: `${s.name}: carreras, cursos y rutas | Edvanta`,
       descripcion: `${s.description || ''} Descubre qué carreras requieren ${s.name}, qué nivel necesitas y qué formación puede ayudarte a desarrollarla.`.trim(),
     };
+  }
+
+  /** Una ruta fija (featuredCourses.js): sus resultados y sus cursos vigentes. */
+  async function extrasDeRutaFija(fija) {
+    if (!fija) return {};
+    let cursos = [];
+    const slugs = Array.isArray(fija.courseSlugs) ? fija.courseSlugs.filter(Boolean) : [];
+    if (slugs.length) {
+      try {
+        const { rows } = await db.query(
+          `SELECT c.title, '/' || ps.slug AS url
+             FROM courses c JOIN public_slugs ps ON ps.entity = 'curado' AND ps.entity_id = c.id AND ps.is_current
+            WHERE c.active = TRUE AND c.slug = ANY($1::text[])
+            ORDER BY array_position($1::text[], c.slug)`,
+          [slugs],
+        );
+        cursos = rows.map((r) => ({ nombre: nombreDeCurso(r.title), url: r.url }));
+      } catch { /* sin cursos */ }
+    }
+    return { resultados: Array.isArray(fija.outcomes) ? fija.outcomes.filter(Boolean) : [], cursos };
   }
 
   for (const [carpeta, tipo, seccion] of PERFILES) {
@@ -353,6 +413,7 @@ export function crearRutasPublicas({ db, sitio = '', obtenerPlantilla = async ()
         const plantilla = await obtenerPlantilla();
         if (!plantilla) return aplicacion(res, 200, null);
         const canonical = absoluta(`/${carpeta}/${p.slug}`);
+        const extras = p.id ? await extrasDePerfil(db, tipo, p.id) : await extrasDeRutaFija(p.fija);
         return aplicacion(res, 200, conMetadatos(plantilla, {
           titulo: p.titulo,
           descripcion: resumen(p.descripcion),
@@ -366,7 +427,7 @@ export function crearRutasPublicas({ db, sitio = '', obtenerPlantilla = async ()
               { '@type': 'ListItem', position: 3, name: p.nombre, item: canonical },
             ],
           }],
-          cuerpo: `<main><h1>${esc(p.nombre)}</h1>${p.resumen ? `<p>${esc(p.resumen)}</p>` : ''}</main>`,
+          cuerpo: cuerpoDePerfil(tipo, p, extras, { carpeta, nombreSeccion: seccion }),
         }));
       } catch (e) {
         console.error(JSON.stringify({ level: 'error', msg: `página de ${tipo}`, error: e.message }));
