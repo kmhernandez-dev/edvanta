@@ -13,7 +13,7 @@ import {
   META_CURSOS, META_INSTITUCIONES, META_NOTICIAS, metaDeArea, metaDeCursosDe, metaDePaquete, tituloDeEnfermedad,
 } from '../src/lib/seo/titulos.js';
 import { productosDeEscuela } from '../src/data/edvanta/productos.js';
-import { NOTICIAS_FARMACEUTICAS } from '../src/data/noticiasFarmaceuticas.js';
+import { NOTICIAS } from '../src/data/noticiasReescritas.js';
 import { fuentesNoticias } from '../src/data/careerHub.js';
 
 const AREAS_POR_SLUG = new Map(AREAS_CAPACITACION.map((a) => [a.slug, a]));
@@ -140,7 +140,7 @@ add('/practicas-profesionales-farmaceuticas', 'Prácticas profesionales farmacé
 
 add('/emprendimiento-farmaceutico', 'Emprendimiento farmacéutico: Lean Canvas | Edvanta', 'Construye tu emprendimiento farmacéutico con un Lean Canvas guiado, genera tu pitch de 30 segundos y valida tu idea con la comunidad. Herramienta gratuita.', { tipo: 'WebPage', seccion: 'Empleo', enlaces: [['Empleo', '/empleo'], ['Herramientas', '/herramientas'], ['Comunidad', '/comunidad']] });
 
-add('/noticias', META_NOTICIAS.titulo, META_NOTICIAS.descripcion, { tipo: 'CollectionPage', seccion: 'Actualidad', enlaces: [['Artículos', '/articulos'], ['Recursos', '/recursos'], ['Carreras', '/carreras']], contenido: contenidoNoticias(NOTICIAS_FARMACEUTICAS, fuentesNoticias) });
+add('/noticias', META_NOTICIAS.titulo, META_NOTICIAS.descripcion, { tipo: 'CollectionPage', seccion: 'Actualidad', enlaces: [['Artículos', '/articulos'], ['Recursos', '/recursos'], ['Carreras', '/carreras']], contenido: contenidoNoticias(NOTICIAS, fuentesNoticias) });
 
 add('/vitrina-de-talento-farmaceutico', 'Vitrina de talento farmacéutico | Publica tus logros | Edvanta', 'Publica tus logros profesionales y espera a que un cazatalento te contacte. Perfil básico gratuito y perfil destacado para llegar antes a las empresas.', { tipo: 'WebPage', seccion: 'Empleo', enlaces: [['Empleo', '/empleo'], ['Perfil profesional', '/empresas/recluta-talento-farmaceutico'], ['Hoja de vida', '/hoja-de-vida']] });
 

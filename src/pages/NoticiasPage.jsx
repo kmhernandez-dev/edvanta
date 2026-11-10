@@ -7,7 +7,8 @@ import { ImageSlot } from '../components/edvanta/ui';
 import { updatePageSeo } from '../utils/seo';
 import { META_NOTICIAS } from '../lib/seo/titulos';
 import { fuentesNoticias } from '../data/careerHub';
-import { NOTICIAS_FARMACEUTICAS } from '../data/noticiasFarmaceuticas';
+// Las noticias del paquete con la versión reescrita donde la hay.
+import { NOTICIAS as NOTICIAS_FARMACEUTICAS } from '../data/noticiasReescritas';
 
 const fechaNoticia = (fecha) => new Intl.DateTimeFormat('es-CO', {
   day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC',

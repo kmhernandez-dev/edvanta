@@ -45,14 +45,44 @@ describe('indexabilidad de artículos', () => {
     expect(puedeIndexarse({ marca: 'edvanta', category: 'Noticias farmacéuticas' })).toBe(true);
   });
 
-  it('las 100 noticias del paquete quedan fuera del índice y las demás no cambian', async () => {
+  it('las noticias de plantilla quedan fuera del índice; las reescritas vuelven', async () => {
     const { NOTICIAS_FARMACEUTICAS } = await import('../data/noticiasFarmaceuticas.js');
+    const { NOTICIAS_REESCRITAS } = await import('../data/noticiasReescritas.js');
     const { articulos } = await import('../data/articulos.js');
+    // El paquete original, tal cual, nunca se indexa.
     expect(NOTICIAS_FARMACEUTICAS.every((n) => !puedeIndexarse(n))).toBe(true);
-    // Las notas escritas a mano no caen en la regla de plantilla (si son de
-    // salud, siguen la regla de revisión clínica, como cualquier artículo).
     const noticias = articulos.filter((a) => a.category === 'Noticias farmacéuticas');
-    expect(noticias.filter(esNoticiaDePlantilla)).toHaveLength(NOTICIAS_FARMACEUTICAS.length);
+    const reescritas = Object.keys(NOTICIAS_REESCRITAS);
+    expect(reescritas).toHaveLength(15);
+    // Las reescritas tienen texto propio y vuelven al índice; las demás del paquete no.
+    for (const slug of reescritas) {
+      const a = noticias.find((n) => n.slug === slug);
+      expect(a, slug).toBeTruthy();
+      expect(puedeIndexarse(a), slug).toBe(true);
+      expect(a.mdPath, slug).toMatch(/^\/articulos\/articulos_edvanta\/noticias-invima\//);
+    }
+    expect(noticias.filter(esNoticiaDePlantilla)).toHaveLength(NOTICIAS_FARMACEUTICAS.length - reescritas.length);
+    // Las notas escritas a mano no caen en la regla de plantilla.
     expect(noticias.length).toBeGreaterThan(NOTICIAS_FARMACEUTICAS.length);
+  });
+
+  it('las noticias reescritas no se parecen entre sí', async () => {
+    const { readFileSync } = await import('node:fs');
+    const { NOTICIAS_REESCRITAS } = await import('../data/noticiasReescritas.js');
+    const tejas = (texto) => {
+      const p = texto.toLowerCase().replace(/[^a-záéíóúñü0-9 ]+/g, ' ').split(/\s+/).filter(Boolean);
+      const s = new Set();
+      for (let i = 0; i + 5 <= p.length; i++) s.add(p.slice(i, i + 5).join(' '));
+      return s;
+    };
+    const textos = Object.values(NOTICIAS_REESCRITAS).map((n) => tejas(readFileSync(`public${n.mdPath}`, 'utf8')));
+    for (let i = 0; i < textos.length; i++) {
+      for (let j = i + 1; j < textos.length; j++) {
+        let comun = 0;
+        for (const x of textos[i]) if (textos[j].has(x)) comun++;
+        const similitud = comun / (textos[i].size + textos[j].size - comun);
+        expect(similitud, `${i} y ${j}`).toBeLessThan(0.3);
+      }
+    }
   });
 });
