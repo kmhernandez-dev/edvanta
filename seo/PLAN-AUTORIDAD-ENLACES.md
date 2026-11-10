@@ -3,6 +3,25 @@
 **Fecha:** 9 de noviembre de 2026
 **Dueña de la ejecución:** Karla Hernández (los contactos y las cuentas son suyos). El equipo técnico prepara textos, páginas y medición.
 
+## Estado al 9 de noviembre de 2026
+
+**Publicado en el sitio (commit 9112a68)**, para que otros tengan qué enlazar:
+
+- «Cómo citar este artículo» en Vancouver y APA 7 al final de cada artículo, también en el HTML que lee Google.
+- `/alianzas`: la propuesta para facultades, semilleros, gremios y fundaciones. Las propuestas por correo apuntan ahí.
+- `/prensa`: qué es Edvanta, cómo citarnos, logos y contacto para entrevistas.
+- `/feed.xml`: los 50 artículos y noticias indexables más recientes.
+
+**Preparado y sin enviar:**
+
+- Correos para siete universidades y gremios, con el contacto verificado en el sitio oficial de cada uno.
+- Un mensaje de LinkedIn para la asociación de químicos farmacéuticos hospitalarios.
+- Los textos de los perfiles de marca.
+
+Todo está en el kit local de Karla (`kit-de-enlaces.html` y `seguimiento-enlaces.csv`). No se sube a este repositorio porque es público y lleva datos de contacto de terceros.
+
+**Búsqueda de menciones sin enlace (9-nov):** no apareció ninguna de Edvanta ni de Feliz Sin Tiroides. Aparecen otras empresas llamadas «Edvanta», como una de India con el dominio edvanta.com. Por eso los perfiles oficiales de la marca son urgentes.
+
 ## 1. Punto de partida
 
 Los datos de Search Console (informe «Enlaces», consultado el 9-nov-2026):
@@ -41,7 +60,7 @@ Cada perfil oficial con el sitio web en su ficha suma un enlace, y le confirma a
 | Acción | Quién | Resultado |
 |---|---|---|
 | Crear la página de empresa **Edvanta** en LinkedIn (hoy `EDVANTA_LINKEDIN_URL` está vacío), con sitio web `https://edvanta.co` | Karla | Enlace desde linkedin.com/company |
-| Crear el **Perfil de Empresa de Google** (Edvanta S.A.S., Medellín), con sitio web | Karla | Ficha en Google Maps y búsqueda de marca |
+| Crear el **Perfil de Empresa de Google**, con sitio web, **solo si Edvanta atiende en un lugar físico o presta servicios presenciales en una zona** (por ejemplo, capacitaciones en las instituciones). Google no admite perfiles de negocios que funcionan solo en línea. El nombre legal y la dirección los confirma Karla | Karla | Ficha en Google Maps y búsqueda de marca |
 | Perfil de Instagram, TikTok y YouTube de Edvanta con `https://edvanta.co` en la biografía | Karla | Enlaces de perfil |
 | En tu LinkedIn personal, poner como sitio web `https://edvanta.co/autores/karla-hernandez` y destacar 3 artículos revisados | Karla | Refuerza la autoría (E-E-A-T) |
 | Enviar las URL de esos perfiles para agregarlas al `sameAs` del JSON-LD de la organización | Karla → equipo | Google une la marca con sus perfiles |

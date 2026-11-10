@@ -68,6 +68,11 @@ Trabajas para **Karla Hernández**, química farmacéutica con tarjeta profesion
   - se solicitó la indexación de 7 URL: el curso de Gestión de Calidad, el artículo de levotiroxina, `/noticias`, la alerta de Buscapina, `/escuelas`, el curso de Registro Sanitario y el curso de Autocuidado de la tiroides;
   - después del despliegue de las noticias internacionales, 3 más: gotas oftálmicas falsificadas (FDA), Foundayo (EMA) e ivermectina (Anvisa).
   - Ya estaban indexadas la portada, `/cursos`, `/instituciones` y `/enfermedades/hipotiroidismo`.
+- 9-nov, commit 9112a68: recursos para que otros sitios enlacen a Edvanta.
+  - «Cómo citar este artículo» en Vancouver y APA 7 (`src/lib/seo/citas.js`), en la página y en el HTML prerenderizado.
+  - `/prensa` y `/alianzas`, con HTML completo y enlazadas desde el pie de página.
+  - `/feed.xml` (`scripts/generar-feed.mjs`, al final de `postbuild`).
+  - El estado de los contactos está en `seo/PLAN-AUTORIDAD-ENLACES.md` («Estado al 9 de noviembre»).
 
 **Documentos**
 
