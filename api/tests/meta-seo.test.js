@@ -96,6 +96,14 @@ describe('cursos', () => {
     const n = 'Curso de Advanced Certification in Pharmacovigilance and Drug Safety';
     expect(tituloDeCurso(curado({ proveedor: { nombre: 'Udemy' } }), n)).toBe(n);
   });
+
+  it('un nombre largo con subtítulo se queda con lo de antes de los dos puntos', () => {
+    const n = 'Curso para Hablar Frente a la Cámara: Oratoria Digital para Videos y Videollamadas';
+    expect(tituloDeCurso(propio(), n)).toBe('Curso para Hablar Frente a la Cámara gratis | Edvanta');
+    // Si el nombre completo cabe, se conserva con su subtítulo.
+    const corto = 'Curso de Oratoria: cómo hablar en público con seguridad';
+    expect(tituloDeCurso(propio(), corto)).toBe(corto);
+  });
 });
 
 describe('carreras, rutas y competencias', () => {

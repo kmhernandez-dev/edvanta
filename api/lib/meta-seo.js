@@ -93,12 +93,27 @@ export function descripcionConCierre(base, cierres = [], { max = MAX_DESCRIPCION
 
 const esPropio = (ficha) => ficha?.dondeSeEstudia === 'edvanta';
 
-/** Título del curso: «gratis» en los propios; el proveedor en los curados. */
+/** «Título: subtítulo» → «Título», si lo de antes tiene al menos tres palabras. */
+function sinSubtitulo(t) {
+  const [antes, ...resto] = t.split(':');
+  return resto.length && antes.trim().split(/\s+/).length >= 3 ? antes.trim() : '';
+}
+
+/**
+ * Título del curso: «gratis» en los propios; el proveedor en los curados.
+ * Si el nombre completo no cabe, se prueba sin el subtítulo de los dos
+ * puntos: «Curso para Hablar Frente a la Cámara: Oratoria Digital…».
+ */
 export function tituloDeCurso(ficha, nombre) {
   const n = limpio(nombre || ficha?.titulo);
-  if (esPropio(ficha)) return tituloQueCabe([`${n} gratis | Edvanta`, `${n} gratis`, `${n} | Edvanta`, n]);
+  const c = sinSubtitulo(n);
+  if (esPropio(ficha)) {
+    const variantes = (x) => [`${x} gratis | Edvanta`, `${x} gratis`, `${x} | Edvanta`, x];
+    return tituloQueCabe([...variantes(n), ...(c ? variantes(c) : [])]);
+  }
   const prov = limpio(ficha?.proveedor?.nombre);
-  return tituloQueCabe([prov && `${n} en ${prov} | Edvanta`, prov && `${n} en ${prov}`, `${n} | Edvanta`, n]);
+  const variantes = (x) => [prov && `${x} en ${prov} | Edvanta`, prov && `${x} en ${prov}`, `${x} | Edvanta`, x];
+  return tituloQueCabe([...variantes(n), ...(c ? variantes(c) : [])]);
 }
 
 /** Un resumen que no diga nada propio («Curso del catálogo.») no sirve de base. */
