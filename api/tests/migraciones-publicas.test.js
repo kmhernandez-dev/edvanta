@@ -107,8 +107,8 @@ describe('migraciones públicas, como en producción', () => {
          AND EXISTS (SELECT 1 FROM aula_assessments a WHERE a.course_id = c.id AND a.deleted_at IS NULL)
        ORDER BY c.title`);
     // 10 de Habilidades Blandas, 3 de bases, 10 de calidad, 2 de
-    // regulatorios, BPM, BPE, 4 de Farmacoterapia, 12 de Farmacología (4 de oncología) y Autocuidado de la tiroides.
-    expect(cursos.length).toBeGreaterThanOrEqual(44);
+    // regulatorios, BPM, BPE, 4 de Farmacoterapia, 12 de Farmacología (4 de oncología), Autocuidado de la tiroides y 2 regulatorios más (renovación y modificaciones).
+    expect(cursos.length).toBeGreaterThanOrEqual(46);
     for (const c of cursos) {
       const ctx = c.title;
       expect(c.quizzes, ctx).toBeGreaterThan(0);
