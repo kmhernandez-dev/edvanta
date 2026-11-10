@@ -139,6 +139,42 @@ export function contenidoHerramienta(h) {
   ].join('');
 }
 
+const MESES = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
+const fechaLarga = (iso) => {
+  const m = /^(\d{4})-(\d{2})-(\d{2})/.exec(String(iso || ''));
+  return m ? `${Number(m[3])} de ${MESES[Number(m[2]) - 1]} de ${m[1]}` : '';
+};
+
+const AUTORIDADES = [
+  ['INVIMA', 'Alertas y comunicados del INVIMA (Colombia)'],
+  ['ANVISA', 'Anvisa (Brasil)'],
+  ['FDA', 'FDA (Estados Unidos)'],
+  ['EMA', 'EMA (Unión Europea)'],
+  ['MHRA', 'MHRA (Reino Unido)'],
+];
+
+/**
+ * /noticias: el resumen que reúne las noticias del paquete editorial.
+ * Cada una con su fecha, su resumen y el enlace a la fuente oficial,
+ * agrupadas por autoridad (primero el INVIMA). Las noticias se leen en
+ * su propia página, pero el índice las recibe aquí, reunidas.
+ */
+export function contenidoNoticias(noticias, fuentes = []) {
+  const grupos = AUTORIDADES.map(([clave, titulo]) => [titulo, noticias.filter((n) => n.sourceEntity === clave)]);
+  const conocidas = new Set(AUTORIDADES.map(([c]) => c));
+  const otras = noticias.filter((n) => !conocidas.has(n.sourceEntity));
+  if (otras.length) grupos.push(['Otras fuentes', otras]);
+  const ultima = noticias.map((n) => n.updated || n.date || '').sort().pop();
+  const item = (n) => `<li><a href="/articulos/${esc(n.slug)}">${esc(n.title)}</a>${n.date ? ` (${esc(fechaLarga(n.date))})` : ''}. ${esc(n.description || '')}${n.sourceUrl ? ` <a href="${esc(n.sourceUrl)}">Fuente oficial</a>.` : ''}</li>`;
+  return [
+    `<p>${noticias.length} noticias de autoridades sanitarias, agrupadas por entidad, con el resumen de cada una y el enlace a su fuente oficial${ultima ? `. Corte: ${esc(fechaLarga(ultima))}` : ''}.</p>`,
+    ...grupos.filter(([, lista]) => lista.length).map(([titulo, lista]) => seccion(`${titulo}: ${lista.length}`, `<ul>${lista.map(item).join('')}</ul>`)),
+    fuentes.length
+      ? seccion('Fuentes oficiales para seguimiento', `<ul>${fuentes.filter((f) => f && f.fuente && f.url).map((f) => `<li><a href="${esc(f.url)}">${esc(f.fuente)}</a>${f.resumen ? `: ${esc(f.resumen)}` : ''}</li>`).join('')}</ul>`)
+      : '',
+  ].join('');
+}
+
 /** /empresas/marketing/<slug>: un servicio de la Escuela de Marketing. */
 export function contenidoServicioMarketing(s) {
   return [

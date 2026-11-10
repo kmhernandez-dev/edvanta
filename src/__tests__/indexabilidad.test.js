@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import {
   esContenidoDeSalud,
+  esNoticiaDePlantilla,
   puedeIndexarse,
   robotsDeArticulo,
   tieneRevisionClinica,
@@ -32,5 +33,26 @@ describe('indexabilidad de artículos', () => {
   it('devuelve la directiva de robots correcta', () => {
     expect(robotsDeArticulo({ marca: 'contigo' })).toBe('noindex,follow');
     expect(robotsDeArticulo({ marca: 'edvanta', category: 'Noticias farmacéuticas' })).toBe('index,follow');
+  });
+
+  it('las noticias de plantilla no se indexan una por una; las reescritas sí', () => {
+    const plantilla = { marca: 'edvanta', category: 'Noticias farmacéuticas', sourceEntity: 'FDA' };
+    expect(esNoticiaDePlantilla(plantilla)).toBe(true);
+    expect(puedeIndexarse(plantilla)).toBe(false);
+    expect(robotsDeArticulo({ ...plantilla, sourceEntity: 'INVIMA' })).toBe('noindex,follow');
+    expect(puedeIndexarse({ ...plantilla, contenidoPropio: true })).toBe(true);
+    // Una nota escrita a mano (sin entidad de origen del paquete) sigue indexable.
+    expect(puedeIndexarse({ marca: 'edvanta', category: 'Noticias farmacéuticas' })).toBe(true);
+  });
+
+  it('las 100 noticias del paquete quedan fuera del índice y las demás no cambian', async () => {
+    const { NOTICIAS_FARMACEUTICAS } = await import('../data/noticiasFarmaceuticas.js');
+    const { articulos } = await import('../data/articulos.js');
+    expect(NOTICIAS_FARMACEUTICAS.every((n) => !puedeIndexarse(n))).toBe(true);
+    // Las notas escritas a mano no caen en la regla de plantilla (si son de
+    // salud, siguen la regla de revisión clínica, como cualquier artículo).
+    const noticias = articulos.filter((a) => a.category === 'Noticias farmacéuticas');
+    expect(noticias.filter(esNoticiaDePlantilla)).toHaveLength(NOTICIAS_FARMACEUTICAS.length);
+    expect(noticias.length).toBeGreaterThan(NOTICIAS_FARMACEUTICAS.length);
   });
 });

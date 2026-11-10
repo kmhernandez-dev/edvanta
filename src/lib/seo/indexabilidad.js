@@ -22,7 +22,24 @@ export function tieneRevisionClinica(articulo = {}) {
   return Boolean(articulo.revisor && fecha);
 }
 
+/**
+ * Noticias del paquete editorial del 31-oct-2026 (noticiasFarmaceuticas.js):
+ * comparten la mayor parte del texto entre sí (similitud media de 0,65 en
+ * las del INVIMA y de 0,51 en las internacionales, medida en noviembre de
+ * 2026). Indexadas una por una parecen contenido repetido a escala y frenan
+ * la indexación del resto del sitio. Se leen igual, pero el índice las
+ * recibe reunidas en /noticias. Una noticia reescrita con contenido propio
+ * (qué cambió, a quién afecta en Colombia, qué debe hacer el equipo, fuente
+ * y fecha de consulta) lleva `contenidoPropio: true` y vuelve al índice.
+ */
+export function esNoticiaDePlantilla(articulo = {}) {
+  return articulo.category === 'Noticias farmacéuticas'
+    && Boolean(articulo.sourceEntity)
+    && !articulo.contenidoPropio;
+}
+
 export function puedeIndexarse(articulo = {}) {
+  if (esNoticiaDePlantilla(articulo)) return false;
   return !esContenidoDeSalud(articulo) || tieneRevisionClinica(articulo);
 }
 
