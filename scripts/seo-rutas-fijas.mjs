@@ -5,6 +5,24 @@ import { enfermedades } from '../src/data/enfermedades.js';
 import { ebooks } from '../src/data/fst.js';
 import { AUTORA_PERFIL } from '../src/data/edvanta/eeat.js';
 import { tieneRevisionClinica } from '../src/lib/seo/indexabilidad.js';
+import {
+  contenidoArea, contenidoEscuela, contenidoEscuelas, contenidoInstituciones, contenidoPaquete,
+} from './lib/contenido-paginas-fijas.mjs';
+import { AREAS_DEL_INICIO, CURSOS_EDUTIN } from '../src/data/edvanta/catalogoInicio.js';
+import { productosDeEscuela } from '../src/data/edvanta/productos.js';
+
+const AREAS_POR_SLUG = new Map(AREAS_CAPACITACION.map((a) => [a.slug, a]));
+
+/** Lo que el sitio ya ofrece en cada escuela, sin consultar la base. */
+function extrasDeEscuela(slug) {
+  const areas = AREAS_DEL_INICIO.filter((a) => a.escuela === slug);
+  const ids = new Set(areas.map((a) => a.id));
+  return {
+    areas,
+    cursos: CURSOS_EDUTIN.filter((c) => ids.has(c.area)),
+    productos: productosDeEscuela(slug),
+  };
+}
 
 const rutas = [];
 const add = (ruta, titulo, descripcion, extra = {}) => {
@@ -13,7 +31,7 @@ const add = (ruta, titulo, descripcion, extra = {}) => {
 
 const cursoAutocuidado = ebooks.find((c) => c.id === 'fst-autocuidado');
 
-add('/escuelas', 'Escuelas de Edvanta | Salud, Calidad, Regulatorios y Marketing farmacéutico', 'Cuatro escuelas de formación farmacéutica: Salud y Farmacia Clínica, Calidad y Producción, Asuntos Regulatorios, y Marketing y Comunicación.', { tipo: 'CollectionPage', seccion: 'Escuelas', enlaces: [['Escuela de Salud y Farmacia Clínica', '/escuelas/salud-y-farmacia-clinica'], ['Escuela de Calidad y Producción Farmacéutica', '/escuelas/calidad-y-produccion-farmaceutica'], ['Escuela de Asuntos Regulatorios', '/escuelas/asuntos-regulatorios'], ['Escuela de Marketing y Comunicación Farmacéutica', '/escuelas/marketing-y-comunicacion-farmaceutica']] });
+add('/escuelas', 'Escuelas de Edvanta | Salud, Calidad, Regulatorios y Marketing farmacéutico', 'Cuatro escuelas de formación farmacéutica: Salud y Farmacia Clínica, Calidad y Producción, Asuntos Regulatorios, y Marketing y Comunicación.', { tipo: 'CollectionPage', seccion: 'Escuelas', enlaces: [['Escuela de Salud y Farmacia Clínica', '/escuelas/salud-y-farmacia-clinica'], ['Escuela de Calidad y Producción Farmacéutica', '/escuelas/calidad-y-produccion-farmaceutica'], ['Escuela de Asuntos Regulatorios', '/escuelas/asuntos-regulatorios'], ['Escuela de Marketing y Comunicación Farmacéutica', '/escuelas/marketing-y-comunicacion-farmaceutica']], contenido: contenidoEscuelas(ESCUELAS) });
 
 for (const escuela of ESCUELAS) {
   if (escuela.slug === 'marketing-y-comunicacion-farmaceutica') continue;
@@ -21,18 +39,21 @@ for (const escuela of ESCUELAS) {
     tipo: 'CollectionPage',
     seccion: 'Escuelas',
     enlaces: [['Todas las escuelas', '/escuelas'], ['Cursos profesionales', '/cursos'], ['Instituciones', '/instituciones']],
+    contenido: contenidoEscuela(escuela, extrasDeEscuela(escuela.slug)),
   });
 }
 
 add('/guias', 'Guías y recursos | Edvanta', 'Kits y guías de Edvanta para profesionales farmacéuticos, guías para pacientes, artículos y herramientas gratuitas para tu carrera.', { tipo: 'CollectionPage', seccion: 'Recursos', enlaces: [['Artículos', '/articulos'], ['Herramientas', '/herramientas'], ['Recursos profesionales', '/recursos']] });
 
-add('/instituciones', 'Capacitación farmacéutica para empresas e instituciones | Edvanta', 'Propuestas de formación para laboratorios, distribuidores, farmacias, hospitales, clínicas e IPS. Combina áreas, perfiles y modalidades según las necesidades de tu equipo.', { tipo: 'CollectionPage', seccion: 'Instituciones', enlaces: [['Áreas de capacitación', '/empresas/regentes-de-farmacia'], ['Paquetes institucionales', '/instituciones/paquetes/equipo-que-cuida'], ['Contacto', '/contacto']] });
+add('/instituciones', 'Capacitación farmacéutica para empresas e instituciones | Edvanta', 'Propuestas de formación para laboratorios, distribuidores, farmacias, hospitales, clínicas e IPS. Combina áreas, perfiles y modalidades según las necesidades de tu equipo.', { tipo: 'CollectionPage', seccion: 'Instituciones', enlaces: [['Áreas de capacitación', '/empresas/regentes-de-farmacia'], ['Paquetes institucionales', '/instituciones/paquetes/equipo-que-cuida'], ['Contacto', '/contacto']], contenido: contenidoInstituciones(AREAS_CAPACITACION, PAQUETES) });
 
 for (const area of AREAS_CAPACITACION) {
   add(`/empresas/${area.slug}`, `${area.nombre} | Capacitación para empresas e instituciones | Edvanta`, area.resumen, {
     tipo: 'WebPage',
     seccion: 'Instituciones',
     enlaces: [['Instituciones', '/instituciones'], ['Otras áreas de capacitación', '/instituciones#areas'], ['Contacto', '/contacto']],
+    h1: area.heroTitle || undefined,
+    contenido: contenidoArea(area, AREAS_POR_SLUG),
   });
 }
 
@@ -41,6 +62,8 @@ for (const paquete of PAQUETES) {
     tipo: 'WebPage',
     seccion: 'Instituciones',
     enlaces: [['Instituciones', '/instituciones'], ['Paquetes', '/instituciones#paquetes'], ['Contacto', '/contacto']],
+    h1: paquete.heroTitle || undefined,
+    contenido: contenidoPaquete(paquete, AREAS_POR_SLUG),
   });
 }
 

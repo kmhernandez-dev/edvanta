@@ -36,6 +36,7 @@ const { ESCUELA_MARKETING, PROGRAMAS_MARKETING, SERVICIOS_MARKETING } = await im
 const { DIRECCIONES_ANTIGUAS } = await importar('src/data/edvanta/direcciones.js');
 const { nombreDeCurso, slugify } = await importar('src/lib/slug.js');
 const { RUTAS_FIJAS } = await importar('scripts/seo-rutas-fijas.mjs');
+const { contenidoHerramienta, contenidoServicioMarketing } = await importar('scripts/lib/contenido-paginas-fijas.mjs');
 
 const plantilla = readFileSync(path.join(dist, 'index.html'), 'utf8');
 
@@ -100,7 +101,7 @@ for (const h of HERRAMIENTAS) {
       },
       migas([['Inicio', `${SITIO}/`], ['Herramientas', `${SITIO}/herramientas`], [h.nav, canonical]]),
     ],
-    cuerpo: `<main><h1>${esc(h.h1)}</h1><p>${esc(h.tagline)}</p><p><a href="${esc(h.cta.to)}">${esc(h.cta.label)}</a></p></main>`,
+    cuerpo: `<main><h1>${esc(h.h1)}</h1><p>${esc(h.tagline)}</p>${contenidoHerramienta(h)}<p><a href="${esc(h.cta.to)}">${esc(h.cta.label)}</a></p></main>`,
   }));
   enSitemap.push({ ruta: `/herramientas/${h.slug}`, prioridad: '0.7' });
 }
@@ -257,7 +258,7 @@ for (const s of SERVICIOS_MARKETING) {
       },
       migas([['Inicio', `${SITIO}/`], ['Instituciones', `${SITIO}/instituciones`], ['Marketing y comunicación', canonicalHubMarketing], [s.nombre, canonical]]),
     ],
-    cuerpo: `<main><h1>${esc(s.nombre)}</h1><p>${esc(s.necesidad)}</p><p><a href="/empresas/marketing">Ver todos los servicios</a></p></main>`,
+    cuerpo: `<main><h1>${esc(s.nombre)}</h1><p>${esc(s.necesidad)}</p>${contenidoServicioMarketing(s)}<p><a href="/empresas/marketing">Ver todos los servicios</a></p></main>`,
   }));
   enSitemap.push({ ruta, prioridad: '0.7' });
 }
@@ -469,7 +470,7 @@ for (const r of RUTAS_FIJAS) {
   const h1 = r.h1 || String(r.titulo).split(' | ')[0];
   const seccion = r.seccion || 'Edvanta';
   const enlaces = (r.enlaces || []).map(([nombre, to]) => `<li><a href="${esc(to)}">${esc(nombre)}</a></li>`).join('');
-  const cuerpo = `<main><nav aria-label="Ruta de navegación"><a href="/">Inicio</a> › ${esc(seccion)}</nav><h1>${esc(h1)}</h1><p>${esc(r.descripcion)}</p>${enlaces ? `<ul>${enlaces}</ul>` : ''}<p><a href="/">Volver al inicio</a></p></main>`;
+  const cuerpo = `<main><nav aria-label="Ruta de navegación"><a href="/">Inicio</a> › ${esc(seccion)}</nav><h1>${esc(h1)}</h1><p>${esc(r.descripcion)}</p>${r.contenido || ''}${enlaces ? `<ul>${enlaces}</ul>` : ''}<p><a href="/">Volver al inicio</a></p></main>`;
   const grafo = [
     {
       '@context': 'https://schema.org',
