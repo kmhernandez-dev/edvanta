@@ -1,24 +1,32 @@
 /**
  * ============================================================
- *  NOTICIAS DEL INVIMA REESCRITAS CON CONTENIDO PROPIO
+ *  NOTICIAS DEL PAQUETE REESCRITAS CON CONTENIDO PROPIO
  *
- *  Las 15 noticias del INVIMA del paquete del 31-oct-2026 compartían el
- *  65 % del texto entre sí y quedaron en noindex (indexabilidad.js). El
+ *  Las 100 noticias del paquete del 31-oct-2026 compartían buena parte
+ *  del texto entre sí y quedaron en noindex (indexabilidad.js). El
  *  9 de noviembre de 2026 se reescribieron una por una, verificadas
- *  contra la alerta o el comunicado oficial. Cada una explica qué dice
- *  la fuente, por qué importa, qué debe hacer cada actor y cómo
- *  reportar. Los textos están en /articulos/articulos_edvanta/noticias-invima/.
+ *  contra la alerta o el comunicado oficial, las que valían la pena:
+ *
+ *  - 15 del INVIMA, en /articulos/articulos_edvanta/noticias-invima/
+ *  - 20 internacionales (FDA, EMA, MHRA y Anvisa), en
+ *    /articulos/articulos_edvanta/noticias-internacionales/
+ *
+ *  Cada una explica qué dice la fuente, por qué importa, qué debe hacer
+ *  cada actor, qué significa para Colombia y cómo reportar.
  *
  *  articulos.js aplica estos datos sobre la noticia original:
  *  `contenidoPropio: true` la devuelve al índice. El paquete original
  *  (noticiasFarmaceuticas.js) no se toca, porque se genera aparte.
- *  Tres fechas se corrigieron con la fuente: Pumpkin Seed Oil y Flexacil
- *  son del 21 de octubre, y Ethiopian Black Seed Oil del 14.
+ *  Fechas corregidas con la fuente: Pumpkin Seed Oil y Flexacil (21-oct),
+ *  Ethiopian Black Seed Oil (14-oct), implantes hormonales de la Anvisa
+ *  (13-oct), gotas oftálmicas falsificadas (16-oct), biosimilares (13-oct)
+ *  y cannabis (22-jul, actualizada el 13-oct).
  * ============================================================
  */
 import { NOTICIAS_FARMACEUTICAS } from './noticiasFarmaceuticas.js';
 
 export const NOTICIAS_REESCRITAS = {
+  // ── INVIMA ──
   'invima-comunica-riesgo-de-nefropatia-asociada-a-anticoagulantes-orales': {
     contenidoPropio: true,
     mdPath: '/articulos/articulos_edvanta/noticias-invima/invima-comunica-riesgo-de-nefropatia-asociada-a-anticoagulantes-orales.md',
@@ -170,6 +178,211 @@ export const NOTICIAS_REESCRITAS = {
     seoTitle: 'Comisión Revisora del INVIMA: qué cambiaría con la reforma',
     seoDescription: 'El INVIMA consultó un acuerdo y una resolución para actualizar la Comisión Revisora y sus salas. Qué cambiaría en medicamentos y qué sigue.',
     description: 'El INVIMA consultó un acuerdo y una resolución para actualizar la Comisión Revisora y sus salas. Qué cambiaría en medicamentos y qué sigue.',
+    autor: 'Equipo editorial de Edvanta'
+  },
+  // ── Internacionales ──
+  'anvisa-aprueba-cinco-nuevas-plumas-de-agonistas-glp-1': {
+    contenidoPropio: true,
+    mdPath: '/articulos/articulos_edvanta/noticias-internacionales/anvisa-aprueba-cinco-nuevas-plumas-de-agonistas-glp-1.md',
+    updated: '2026-11-09',
+    readingTime: '2 min',
+    seoTitle: 'Anvisa aprueba 5 plumas de liraglutida y semaglutida',
+    seoDescription: 'Brasil aprobó Aribet, Lyrza y Wylovol (liraglutida) y Embeltah y Sevema (semaglutida) para diabetes y obesidad. Qué implica para Colombia.',
+    description: 'Brasil aprobó Aribet, Lyrza y Wylovol (liraglutida) y Embeltah y Sevema (semaglutida) para diabetes y obesidad. Qué implica para Colombia.',
+    autor: 'Equipo editorial de Edvanta'
+  },
+  'anvisa-suspende-implantes-hormonales-irregulares-y-ordena-aprehension-de-tirzepatida': {
+    contenidoPropio: true,
+    mdPath: '/articulos/articulos_edvanta/noticias-internacionales/anvisa-suspende-implantes-hormonales-irregulares-y-ordena-aprehension-de-tirzepatida.md',
+    date: '2026-10-13',
+    updated: '2026-11-09',
+    readingTime: '2 min',
+    seoTitle: 'Implantes hormonales y tirzepatida: medidas de la Anvisa',
+    seoDescription: 'La Anvisa suspendió implantes hormonales despachados sin pruebas de esterilidad y decomisó tirzepatida magistral y Xeomin falsificado. Lecciones.',
+    description: 'La Anvisa suspendió implantes hormonales despachados sin pruebas de esterilidad y decomisó tirzepatida magistral y Xeomin falsificado. Lecciones.',
+    autor: 'Equipo editorial de Edvanta'
+  },
+  'anvisa-prohibe-plumas-de-tirzepatida-y-retatrutida-sin-registro': {
+    contenidoPropio: true,
+    mdPath: '/articulos/articulos_edvanta/noticias-internacionales/anvisa-prohibe-plumas-de-tirzepatida-y-retatrutida-sin-registro.md',
+    updated: '2026-11-09',
+    readingTime: '2 min',
+    seoTitle: 'Plumas de tirzepatida y retatrutida sin registro: Anvisa',
+    seoDescription: 'Brasil prohibió y ordenó decomisar plumas de tirzepatida y retatrutida vendidas por internet. La retatrutida no tiene registro en ningún país.',
+    description: 'Brasil prohibió y ordenó decomisar plumas de tirzepatida y retatrutida vendidas por internet. La retatrutida no tiene registro en ningún país.',
+    autor: 'Equipo editorial de Edvanta'
+  },
+  'chmp-recomienda-foundayo-orforglipron-oral-para-obesidad-y-diabetes-tipo-2': {
+    contenidoPropio: true,
+    mdPath: '/articulos/articulos_edvanta/noticias-internacionales/chmp-recomienda-foundayo-orforglipron-oral-para-obesidad-y-diabetes-tipo-2.md',
+    updated: '2026-11-09',
+    readingTime: '2 min',
+    seoTitle: 'Foundayo (orforglipron): la EMA recomienda el GLP-1 oral',
+    seoDescription: 'La EMA recomendó autorizar Foundayo, un GLP-1 en tableta diaria para el control del peso y la diabetes tipo 2. Resultados de los estudios y precauciones.',
+    description: 'La EMA recomendó autorizar Foundayo, un GLP-1 en tableta diaria para el control del peso y la diabetes tipo 2. Resultados de los estudios y precauciones.',
+    autor: 'Equipo editorial de Edvanta'
+  },
+  'mhra-incauta-plumas-falsificadas-para-perdida-de-peso-valoradas-en-dos-millones-de-libras': {
+    contenidoPropio: true,
+    mdPath: '/articulos/articulos_edvanta/noticias-internacionales/mhra-incauta-plumas-falsificadas-para-perdida-de-peso-valoradas-en-dos-millones-de-libras.md',
+    updated: '2026-11-09',
+    readingTime: '2 min',
+    seoTitle: 'MHRA incauta 12.000 plumas falsas para bajar de peso',
+    seoDescription: 'En Birmingham se incautaron plumas falsas de retatrutida y tirzepatida valoradas en 2 millones de libras. Cómo evitar productos falsificados.',
+    description: 'En Birmingham se incautaron plumas falsas de retatrutida y tirzepatida valoradas en 2 millones de libras. Cómo evitar productos falsificados.',
+    autor: 'Equipo editorial de Edvanta'
+  },
+  'fda-aprueba-insulina-icodec-semanal-para-pacientes-pediatricos-con-diabetes-tipo-2': {
+    contenidoPropio: true,
+    mdPath: '/articulos/articulos_edvanta/noticias-internacionales/fda-aprueba-insulina-icodec-semanal-para-pacientes-pediatricos-con-diabetes-tipo-2.md',
+    updated: '2026-11-09',
+    readingTime: '2 min',
+    seoTitle: 'Awiqli: la FDA aprueba insulina semanal para niños',
+    seoDescription: 'La FDA aprobó la insulina icodec (Awiqli) para niños de 10 años o más con diabetes tipo 2: una inyección a la semana. Riesgos y qué significa.',
+    description: 'La FDA aprobó la insulina icodec (Awiqli) para niños de 10 años o más con diabetes tipo 2: una inyección a la semana. Riesgos y qué significa.',
+    autor: 'Equipo editorial de Edvanta'
+  },
+  'mhra-autoriza-insulina-efsitora-alfa-semanal-para-diabetes-tipo-2': {
+    contenidoPropio: true,
+    mdPath: '/articulos/articulos_edvanta/noticias-internacionales/mhra-autoriza-insulina-efsitora-alfa-semanal-para-diabetes-tipo-2.md',
+    updated: '2026-11-09',
+    readingTime: '2 min',
+    seoTitle: 'Onswik: insulina semanal autorizada en el Reino Unido',
+    seoDescription: 'La MHRA autorizó la insulina efsitora alfa (Onswik) para adultos con diabetes tipo 2: 52 inyecciones al año en lugar de hasta 365. Qué se sabe.',
+    description: 'La MHRA autorizó la insulina efsitora alfa (Onswik) para adultos con diabetes tipo 2: 52 inyecciones al año en lugar de hasta 365. Qué se sabe.',
+    autor: 'Equipo editorial de Edvanta'
+  },
+  'anvisa-aclara-que-suplementos-no-tratan-resistencia-a-la-insulina': {
+    contenidoPropio: true,
+    mdPath: '/articulos/articulos_edvanta/noticias-internacionales/anvisa-aclara-que-suplementos-no-tratan-resistencia-a-la-insulina.md',
+    updated: '2026-11-09',
+    readingTime: '2 min',
+    seoTitle: 'Suplementos no tratan la resistencia a la insulina: Anvisa',
+    seoDescription: 'Berberina, magnesio o mio-inositol no tratan la resistencia a la insulina, aclaró la Anvisa. Por qué es riesgoso creerlo y qué dice la norma en Colombia.',
+    description: 'Berberina, magnesio o mio-inositol no tratan la resistencia a la insulina, aclaró la Anvisa. Por qué es riesgoso creerlo y qué dice la norma en Colombia.',
+    autor: 'Equipo editorial de Edvanta'
+  },
+  'anvisa-prohibe-lotes-falsificados-de-keytruda': {
+    contenidoPropio: true,
+    mdPath: '/articulos/articulos_edvanta/noticias-internacionales/anvisa-prohibe-lotes-falsificados-de-keytruda.md',
+    updated: '2026-11-09',
+    readingTime: '2 min',
+    seoTitle: 'Keytruda falsificado: la Anvisa decomisa dos lotes',
+    seoDescription: 'La Anvisa ordenó decomisar los lotes Z005197 y Z012354 de Keytruda (pembrolizumab) por falsificación. Qué deben revisar hospitales y pacientes.',
+    description: 'La Anvisa ordenó decomisar los lotes Z005197 y Z012354 de Keytruda (pembrolizumab) por falsificación. Qué deben revisar hospitales y pacientes.',
+    autor: 'Equipo editorial de Edvanta'
+  },
+  'anvisa-ordena-aprehension-de-lote-falsificado-de-toxina-botulinica': {
+    contenidoPropio: true,
+    mdPath: '/articulos/articulos_edvanta/noticias-internacionales/anvisa-ordena-aprehension-de-lote-falsificado-de-toxina-botulinica.md',
+    updated: '2026-11-09',
+    readingTime: '2 min',
+    seoTitle: 'Dysport falsificado: cómo reconocer el lote 025155',
+    seoDescription: 'La Anvisa ordenó decomisar el lote 025155 de Dysport, una toxina botulínica falsificada. Señales para reconocerla y cómo protegerse en Colombia.',
+    description: 'La Anvisa ordenó decomisar el lote 025155 de Dysport, una toxina botulínica falsificada. Señales para reconocerla y cómo protegerse en Colombia.',
+    autor: 'Equipo editorial de Edvanta'
+  },
+  'fda-informa-sobre-versiones-falsificadas-de-gotas-oftalmicas': {
+    contenidoPropio: true,
+    mdPath: '/articulos/articulos_edvanta/noticias-internacionales/fda-informa-sobre-versiones-falsificadas-de-gotas-oftalmicas.md',
+    date: '2026-10-16',
+    updated: '2026-11-09',
+    readingTime: '3 min',
+    seoTitle: 'Gotas para los ojos falsificadas: alerta de la FDA',
+    seoDescription: 'La FDA halló colirios Ocusan y Manzanilla falsificados y contaminados en tiendas hispanas de EE. UU. Cómo reconocerlos y qué hacer si los usó.',
+    description: 'La FDA halló colirios Ocusan y Manzanilla falsificados y contaminados en tiendas hispanas de EE. UU. Cómo reconocerlos y qué hacer si los usó.',
+    autor: 'Equipo editorial de Edvanta'
+  },
+  'fda-detecta-diclofenaco-y-dexametasona-no-declarados-en-rx7-articulaciones': {
+    contenidoPropio: true,
+    mdPath: '/articulos/articulos_edvanta/noticias-internacionales/fda-detecta-diclofenaco-y-dexametasona-no-declarados-en-rx7-articulaciones.md',
+    updated: '2026-11-09',
+    readingTime: '2 min',
+    seoTitle: 'RX7 Articulaciones tiene diclofenaco y dexametasona ocultos',
+    seoDescription: 'La FDA encontró diclofenaco y dexametasona no declarados en RX7 Articulaciones, vendido para el dolor articular. Riesgos y cómo suspenderlo.',
+    description: 'La FDA encontró diclofenaco y dexametasona no declarados en RX7 Articulaciones, vendido para el dolor articular. Riesgos y cómo suspenderlo.',
+    autor: 'Equipo editorial de Edvanta'
+  },
+  'anvisa-desmiente-que-la-ivermectina-cure-el-cancer': {
+    contenidoPropio: true,
+    mdPath: '/articulos/articulos_edvanta/noticias-internacionales/anvisa-desmiente-que-la-ivermectina-cure-el-cancer.md',
+    updated: '2026-11-09',
+    readingTime: '2 min',
+    seoTitle: 'La ivermectina no cura el cáncer, aclara la Anvisa',
+    seoDescription: 'No hay evidencia de que la ivermectina cure el cáncer. La Anvisa explica de dónde viene el mito y el riesgo real: abandonar un tratamiento eficaz.',
+    description: 'No hay evidencia de que la ivermectina cure el cáncer. La Anvisa explica de dónde viene el mito y el riesgo real: abandonar un tratamiento eficaz.',
+    autor: 'Equipo editorial de Edvanta'
+  },
+  'mhra-refuerza-informacion-de-seguridad-de-antidepresivos': {
+    contenidoPropio: true,
+    mdPath: '/articulos/articulos_edvanta/noticias-internacionales/mhra-refuerza-informacion-de-seguridad-de-antidepresivos.md',
+    updated: '2026-11-09',
+    readingTime: '2 min',
+    seoTitle: 'Antidepresivos: nuevas advertencias en el Reino Unido',
+    seoDescription: 'La MHRA reforzó la información sobre ideas suicidas y disfunción sexual persistente (PSSD) con antidepresivos. Por qué no debe suspenderlos solo.',
+    description: 'La MHRA reforzó la información sobre ideas suicidas y disfunción sexual persistente (PSSD) con antidepresivos. Por qué no debe suspenderlos solo.',
+    autor: 'Equipo editorial de Edvanta'
+  },
+  'prac-inicia-revision-de-deanxit-por-efectos-neurologicos-y-psiquiatricos': {
+    contenidoPropio: true,
+    mdPath: '/articulos/articulos_edvanta/noticias-internacionales/prac-inicia-revision-de-deanxit-por-efectos-neurologicos-y-psiquiatricos.md',
+    updated: '2026-11-09',
+    readingTime: '2 min',
+    seoTitle: 'Deanxit en revisión en Europa por efectos neurológicos',
+    seoDescription: 'El PRAC revisa Deanxit (flupentixol y melitraceno) por reportes de temblores, rigidez y problemas de memoria. Qué hacer si lo toma.',
+    description: 'El PRAC revisa Deanxit (flupentixol y melitraceno) por reportes de temblores, rigidez y problemas de memoria. Qué hacer si lo toma.',
+    autor: 'Equipo editorial de Edvanta'
+  },
+  'anvisa-publica-plan-para-implementar-ich-e8-r1-e-ich-e6-r3': {
+    contenidoPropio: true,
+    mdPath: '/articulos/articulos_edvanta/noticias-internacionales/anvisa-publica-plan-para-implementar-ich-e8-r1-e-ich-e6-r3.md',
+    updated: '2026-11-09',
+    readingTime: '2 min',
+    seoTitle: 'ICH E6(R3) y E8(R1): el plan de Brasil para adoptarlas',
+    seoDescription: 'La Anvisa publicó su plan para implementar las guías ICH E8(R1) y E6(R3) de buenas prácticas clínicas. Qué incluye y qué significa para Colombia.',
+    description: 'La Anvisa publicó su plan para implementar las guías ICH E8(R1) y E6(R3) de buenas prácticas clínicas. Qué incluye y qué significa para Colombia.',
+    autor: 'Equipo editorial de Edvanta'
+  },
+  'fda-finaliza-guia-e2b-r3-para-transmision-electronica-de-reportes-de-seguridad': {
+    contenidoPropio: true,
+    mdPath: '/articulos/articulos_edvanta/noticias-internacionales/fda-finaliza-guia-e2b-r3-para-transmision-electronica-de-reportes-de-seguridad.md',
+    updated: '2026-11-09',
+    readingTime: '2 min',
+    seoTitle: 'E2B(R3): la FDA publica la guía final para reportes ICSR',
+    seoDescription: 'La FDA finalizó la guía E2B(R3) para transmitir reportes de seguridad de casos individuales. Qué incluye y cómo se reporta en Colombia.',
+    description: 'La FDA finalizó la guía E2B(R3) para transmitir reportes de seguridad de casos individuales. Qué incluye y cómo se reporta en Colombia.',
+    autor: 'Equipo editorial de Edvanta'
+  },
+  'fda-finaliza-guia-sobre-cambios-posaprobacion-de-biosimilares': {
+    contenidoPropio: true,
+    mdPath: '/articulos/articulos_edvanta/noticias-internacionales/fda-finaliza-guia-sobre-cambios-posaprobacion-de-biosimilares.md',
+    date: '2026-10-13',
+    updated: '2026-11-09',
+    readingTime: '2 min',
+    seoTitle: 'Biosimilares: guía final de la FDA sobre cambios',
+    seoDescription: 'La FDA finalizó su guía de preguntas y respuestas sobre cambios de fabricación en biosimilares e intercambiables aprobados. Qué es y por qué importa.',
+    description: 'La FDA finalizó su guía de preguntas y respuestas sobre cambios de fabricación en biosimilares e intercambiables aprobados. Qué es y por qué importa.',
+    autor: 'Equipo editorial de Edvanta'
+  },
+  'anvisa-publica-preguntas-y-respuestas-sobre-productos-de-cannabis': {
+    contenidoPropio: true,
+    mdPath: '/articulos/articulos_edvanta/noticias-internacionales/anvisa-publica-preguntas-y-respuestas-sobre-productos-de-cannabis.md',
+    date: '2026-07-22',
+    updated: '2026-11-09',
+    readingTime: '2 min',
+    seoTitle: 'Cannabis medicinal en Brasil: preguntas de la Anvisa',
+    seoDescription: 'La Anvisa explicó la RDC 1.015/2026 sobre productos de cannabis medicinal, vigente desde mayo de 2026. Qué cambia y cómo se regula en Colombia.',
+    description: 'La Anvisa explicó la RDC 1.015/2026 sobre productos de cannabis medicinal, vigente desde mayo de 2026. Qué cambia y cómo se regula en Colombia.',
+    autor: 'Equipo editorial de Edvanta'
+  },
+  'chmp-respalda-cambio-de-nyxoid-a-dispensacion-sin-receta': {
+    contenidoPropio: true,
+    mdPath: '/articulos/articulos_edvanta/noticias-internacionales/chmp-respalda-cambio-de-nyxoid-a-dispensacion-sin-receta.md',
+    updated: '2026-11-09',
+    readingTime: '2 min',
+    seoTitle: 'Naloxona nasal sin receta: la EMA respalda el cambio',
+    seoDescription: 'El CHMP recomendó que Nyxoid, naloxona en aerosol nasal para sobredosis de opioides, se venda sin receta en Europa. Qué es y qué hacer en Colombia.',
+    description: 'El CHMP recomendó que Nyxoid, naloxona en aerosol nasal para sobredosis de opioides, se venda sin receta en Europa. Qué es y qué hacer en Colombia.',
     autor: 'Equipo editorial de Edvanta'
   },
 };

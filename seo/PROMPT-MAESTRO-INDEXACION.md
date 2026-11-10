@@ -57,6 +57,11 @@ Trabajas para **Karla Hernández**, química farmacéutica con tarjeta profesion
 - 9-nov, commit 4ba66e3: las 15 noticias del INVIMA reescritas con contenido propio, verificadas contra cada alerta oficial (`public/articulos/articulos_edvanta/noticias-invima/`, `src/data/noticiasReescritas.js`).
   - Similitud entre ellas menor de 0,3; antes, 0,65.
   - Vuelven al índice: el sitemap de artículos sube a 346.
+- 9-nov, commit 6dbd0a2: contenido real en el HTML de `/sobre-edvanta`, `/contacto`, `/guias` y los retos de la academia (`src/data/edvanta/paginasInstitucionales.js`; los retos se leen de la API al prerenderizar).
+- 9-nov: 20 noticias internacionales reescritas con contenido propio (FDA, EMA, MHRA y Anvisa), verificadas contra cada fuente oficial (`public/articulos/articulos_edvanta/noticias-internacionales/`).
+  - Se eligieron las que tienen consecuencia práctica en Colombia: GLP-1 y plumas falsificadas, insulinas semanales, falsificaciones (Keytruda, Dysport, colirios), ingredientes ocultos, mitos (ivermectina, suplementos), seguridad de psicofármacos y guías regulatorias (ICH E6(R3), E2B(R3), biosimilares, cannabis, naloxona).
+  - Similitud máxima entre las 35 reescritas: 0,20.
+  - El sitemap de artículos sube a 366. Las otras 65 noticias internacionales siguen en `noindex,follow`, reunidas en `/noticias`.
 - 9-nov, en Search Console (con aprobación de Karla):
   - se reenvió `sitemap.xml`;
   - se inició la validación de «Soft 404», «Rastreada: actualmente sin indexar» y «Descubierta: actualmente sin indexar»;
@@ -118,15 +123,17 @@ Lo hace Karla, o se hace en el panel del navegador solo con su aprobación.
 
 ### 3. Noticias con contenido propio
 
-**Hecho el 9-nov:** las 15 del INVIMA. Para cada noticia nueva, o para reescribir una internacional, se escribe un .md en `public/articulos/articulos_edvanta/noticias-invima/` y se agrega su entrada en `src/data/noticiasReescritas.js`. Cada una lleva esta estructura y unas 400 a 700 palabras propias, sin secciones de plantilla:
+**Hecho el 9-nov:** las 15 del INVIMA y 20 internacionales. Quedan 65 internacionales en `noindex`. Solo se reescribe una si tiene consecuencia práctica para pacientes o profesionales en Colombia. Las que repiten un tema ya cubierto se dejan en `/noticias`.
 
-1. Qué comunicó el INVIMA: número de informe o alerta, producto, lote y fecha, según la fuente oficial.
-2. A quién afecta en Colombia: pacientes, prescriptores, servicios farmacéuticos, distribuidores.
-3. Qué debe hacer cada uno, en pasos concretos.
+Para cada noticia nueva o reescrita, se escribe un .md en `public/articulos/articulos_edvanta/noticias-invima/` (INVIMA) o en `noticias-internacionales/` (FDA, EMA, MHRA, Anvisa). Luego se agrega su entrada en `src/data/noticiasReescritas.js`. Cada una lleva unas 400 a 700 palabras propias, sin secciones de plantilla, con esta estructura:
+
+1. Qué comunicó la autoridad: número de informe o alerta, producto, lote y fecha, según la fuente oficial.
+2. A quién afecta en Colombia: pacientes, prescriptores, servicios farmacéuticos, distribuidores. Una decisión extranjera no autoriza nada aquí: eso lo define el registro sanitario del INVIMA.
+3. Qué debe hacer cada uno, en pasos concretos, y cómo reportar (VigiFlow o invimafv@invima.gov.co).
 4. Qué no se sabe todavía.
-5. Fuente oficial con enlace y fecha de consulta.
+5. Fuente oficial con enlace y fecha de consulta, y la nota editorial sobre el uso de IA.
 
-Después, marcar `contenidoPropio: true` y comprobar que la similitud con las demás noticias baje de 0,3. Lo mismo vale para cualquier noticia nueva. El resumen mensual de `/noticias` se actualiza con las alertas del mes.
+Después, marcar `contenidoPropio: true` y comprobar que la similitud con las demás noticias baje de 0,3 (lo verifica `src/__tests__/indexabilidad.test.js`). Lo mismo vale para cualquier noticia nueva. El resumen mensual de `/noticias` se actualiza con las alertas del mes.
 
 ### 4. Artículos de salud nuevos
 
