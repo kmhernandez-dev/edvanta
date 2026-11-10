@@ -37,6 +37,7 @@ import {
 } from '../lib/articulos/markdown';
 import { registrarLectura } from '../lib/articulos/lecturas';
 import { entidadAutor, entidadRevisor, esAutoraKarla } from '../lib/seo/autoria';
+import { citasDeArticulo, hoyEnColombia } from '../lib/seo/citas';
 import { robotsDeArticulo, tieneRevisionClinica } from '../lib/seo/indexabilidad';
 import { updatePageSeo } from '../utils/seo';
 import { descripcionDeArticulo, tituloDeArticulo } from '../lib/seo/titulos';
@@ -189,6 +190,43 @@ function Compartir({ titulo, url }) {
         {copiado ? 'Enlace copiado' : 'Copiar enlace'}
       </button>
     </div>
+  );
+}
+
+/** «Cómo citar este artículo»: Vancouver y APA 7 listas para copiar, con la fecha de consulta de hoy. */
+function CitarArticulo({ art }) {
+  const citas = useMemo(() => citasDeArticulo(art, { citado: hoyEnColombia() }), [art]);
+  const [copiada, setCopiada] = useState('');
+  const copiar = async (estilo) => {
+    try {
+      await navigator.clipboard.writeText(citas[estilo]);
+      setCopiada(estilo);
+      setTimeout(() => setCopiada(''), 2500);
+    } catch { /* el navegador no dejó copiar; la cita sigue visible para seleccionarla */ }
+  };
+  const estilos = [
+    ['vancouver', 'Vancouver', 'Ciencias de la salud'],
+    ['apa', 'APA 7', 'Otras disciplinas'],
+  ];
+  return (
+    <details className="mt-8 rounded-[14px] border border-edvanta-border bg-white p-5">
+      <summary className="cursor-pointer list-none text-sm font-bold text-edvanta-blue">Cómo citar este artículo</summary>
+      <div className="mt-4 space-y-4">
+        {estilos.map(([clave, nombre, uso]) => (
+          <div key={clave}>
+            <p className="text-[11px] font-bold uppercase tracking-[.12em] text-edvanta-muted">{nombre} · {uso}</p>
+            <p className="mt-1 select-all break-words text-sm leading-6 text-edvanta-deep">{citas[clave]}</p>
+            <button type="button" onClick={() => copiar(clave)} className="ed-btn ed-btn--secondary ed-btn--sm mt-2">
+              {copiada === clave ? <Check className="h-4 w-4 text-edvanta-teal" aria-hidden="true" /> : <Link2 className="h-4 w-4 text-edvanta-blue" aria-hidden="true" />}
+              {copiada === clave ? 'Cita copiada' : `Copiar cita ${nombre}`}
+            </button>
+          </div>
+        ))}
+        <p className="text-xs leading-5 text-edvanta-muted">
+          Si citas este artículo en un trabajo, una tesis o una página web, enlázalo con su dirección: así tus lectores llegan a la versión actualizada.
+        </p>
+      </div>
+    </details>
   );
 }
 
@@ -621,6 +659,8 @@ export default function ArticuloPage() {
                 <Link to="/politica-editorial" className="font-semibold text-edvanta-blue underline">Política editorial</Link>
               </p>
             </div>
+
+            <CitarArticulo art={art} />
 
             <div className="mt-10 flex flex-wrap items-center justify-between gap-4 border-t border-edvanta-border pt-6">
               <p className="text-sm font-semibold text-edvanta-deep">¿Le sirve a alguien que conoces?</p>

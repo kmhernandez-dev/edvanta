@@ -6,8 +6,8 @@ import { ebooks } from '../src/data/fst.js';
 import { AUTORA_PERFIL } from '../src/data/edvanta/eeat.js';
 import { tieneRevisionClinica } from '../src/lib/seo/indexabilidad.js';
 import {
-  contenidoArea, contenidoContacto, contenidoEscuela, contenidoEscuelas, contenidoGuias, contenidoInstituciones,
-  contenidoNoticias, contenidoPaquete, contenidoSobreEdvanta,
+  contenidoAlianzas, contenidoArea, contenidoContacto, contenidoEscuela, contenidoEscuelas, contenidoGuias, contenidoInstituciones,
+  contenidoNoticias, contenidoPaquete, contenidoPrensa, contenidoSobreEdvanta,
 } from './lib/contenido-paginas-fijas.mjs';
 import { AREAS_DEL_INICIO, CURSOS_EDUTIN } from '../src/data/edvanta/catalogoInicio.js';
 import {
@@ -16,7 +16,9 @@ import {
 import {
   AUTORA, KITS_PROFESIONALES, PRODUCTOS, formatoPrecio, productosDeEscuela,
 } from '../src/data/edvanta/productos.js';
-import { CONTACTO, GUIAS, SOBRE_EDVANTA } from '../src/data/edvanta/paginasInstitucionales.js';
+import {
+  ALIANZAS, CONTACTO, GUIAS, PRENSA, SOBRE_EDVANTA,
+} from '../src/data/edvanta/paginasInstitucionales.js';
 import { EDVANTA_EMAIL, EDVANTA_WHATSAPP_URL } from '../src/config/links.js';
 import { NOTICIAS } from '../src/data/noticiasReescritas.js';
 import { fuentesNoticias } from '../src/data/careerHub.js';
@@ -80,6 +82,10 @@ for (const paquete of PAQUETES) {
 add('/sobre-edvanta', 'Sobre Edvanta | Educación farmacéutica', 'Edvanta es una empresa de educación farmacéutica: cuatro escuelas, Edvanta Contigo para pacientes y servicios para instituciones.', { tipo: 'AboutPage', seccion: 'Edvanta', enlaces: [['Escuelas', '/escuelas'], ['Edvanta Contigo', '/contigo'], ['Contacto', '/contacto']], h1: SOBRE_EDVANTA.titulo, contenido: contenidoSobreEdvanta(SOBRE_EDVANTA, ESCUELAS, AUTORA) });
 
 add('/contacto', 'Contacto | Edvanta', 'Escríbele a Edvanta por WhatsApp, por correo o con el formulario.', { tipo: 'ContactPage', seccion: 'Edvanta', enlaces: [['Sobre Edvanta', '/sobre-edvanta'], ['Instituciones', '/instituciones']], contenido: contenidoContacto(CONTACTO, { email: EDVANTA_EMAIL, whatsapp: EDVANTA_WHATSAPP_URL }) });
+
+add('/prensa', PRENSA.seoTitle, PRENSA.seoDescription, { tipo: 'WebPage', seccion: 'Edvanta', enlaces: [['Sobre Edvanta', '/sobre-edvanta'], ['Alianzas', '/alianzas'], ['Contacto', '/contacto']], h1: PRENSA.titulo, contenido: contenidoPrensa(PRENSA, AUTORA_PERFIL, { email: EDVANTA_EMAIL, whatsapp: EDVANTA_WHATSAPP_URL }) });
+
+add('/alianzas', ALIANZAS.seoTitle, ALIANZAS.seoDescription, { tipo: 'WebPage', seccion: 'Edvanta', enlaces: [['Sobre Edvanta', '/sobre-edvanta'], ['Instituciones', '/instituciones'], ['Prensa y citas', '/prensa']], h1: ALIANZAS.titulo, contenido: contenidoAlianzas(ALIANZAS, { email: EDVANTA_EMAIL, whatsapp: EDVANTA_WHATSAPP_URL }) });
 
 add('/feliz-sin-tiroides', 'Feliz Sin Tiroides | Comunidad, ebooks y atención farmacéutica para pacientes tiroideos', 'La comunidad de pacientes tiroideos de habla hispana. Ebooks prácticos y atención farmacéutica personalizada con enfoque biopsicosocial.', { tipo: 'CollectionPage', seccion: 'Feliz Sin Tiroides', enlaces: [['Contigo', '/contigo'], ['Enfermedades tiroideas', '/enfermedades/hipotiroidismo'], ['Academia', '/academia']] });
 

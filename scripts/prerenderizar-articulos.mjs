@@ -39,6 +39,7 @@ const { limpiarMarkdown, preguntasFrecuentes, slugify, textoPlano } = await impo
 const { puedeIndexarse, robotsDeArticulo, tieneRevisionClinica } = await importar('src/lib/seo/indexabilidad.js');
 const { entidadAutor, entidadRevisor, esAutoraKarla } = await importar('src/lib/seo/autoria.js');
 const { descripcionDeArticulo, tituloDeArticulo } = await importar('src/lib/seo/titulos.js');
+const { citasDeArticulo } = await importar('src/lib/seo/citas.js');
 
 const plantilla = readFileSync(path.join(dist, 'index.html'), 'utf8');
 const SALUD = ['fst', 'contigo', 'atenfarma'];
@@ -106,6 +107,8 @@ for (const art of articulos) {
   const autor = art.autor || (art.marca === 'fst' ? 'Karla Hernández' : 'Equipo editorial de Edvanta');
   const faq = preguntasFrecuentes(md);
   const relacionados = articulos.filter((a) => a.slug !== art.slug && a.category === art.category).slice(0, 4);
+  // Sin fecha de consulta: la pone quien cita.
+  const citas = citasDeArticulo(art);
 
   const grafo = [
     {
@@ -151,6 +154,7 @@ for (const art of articulos) {
     <div class="ed-prose">${markdownAHtml(limpiarMarkdown(md))}</div>
   </article>
   <p><a href="/politica-de-revision-clinica">Cómo se revisa</a> · <a href="/fuentes">Fuentes</a> · <a href="/politica-editorial">Política editorial</a></p>
+  <section><h2>Cómo citar este artículo</h2><p>Vancouver: ${esc(citas.vancouver)}</p><p>APA 7: ${esc(citas.apa)}</p></section>
   ${relacionados.length ? `<aside><h2>Sigue leyendo</h2><ul>${relacionados.map((r) => `<li><a href="/articulos/${r.slug}">${esc(r.title)}</a></li>`).join('')}</ul></aside>` : ''}
 </main>`;
 

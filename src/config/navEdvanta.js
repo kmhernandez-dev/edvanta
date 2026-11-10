@@ -166,6 +166,8 @@ export const FOOTER_COLUMNS = [
     title: 'Edvanta',
     links: [
       { label: 'Sobre Edvanta', to: '/sobre-edvanta' },
+      { label: 'Alianzas académicas', to: '/alianzas' },
+      { label: 'Prensa y citas', to: '/prensa' },
       { label: 'Contacto', to: '/contacto' },
       { label: 'Buscar en Edvanta', to: '/buscar' },
     ],

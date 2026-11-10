@@ -210,6 +210,48 @@ export function contenidoContacto(contacto, { email, whatsapp } = {}) {
   ].join('');
 }
 
+/** /prensa: qué es Edvanta, recursos para citar, cómo citar, vocera, logos y contacto. */
+export function contenidoPrensa(prensa, autora = {}, { email, whatsapp } = {}) {
+  return [
+    parrafo(prensa.lead),
+    seccion('Qué es Edvanta', `${parrafo(prensa.descripcionCorta)}${enlacesConTexto(prensa.recursos)}`),
+    seccion('Vocera y autora', [
+      `<p><strong>${esc(autora.nombre)}</strong>${autora.profesion ? `, ${esc(autora.profesion)}` : ''}${autora.universidad ? `, ${esc(autora.universidad)}` : ''}${autora.ciudad ? `. ${esc(autora.ciudad)}` : ''}.</p>`,
+      parrafo(prensa.vocera),
+      (autora.areas || []).length ? `<p>Temas en los que podemos aportar contexto:</p>${lista(autora.areas)}` : '',
+      '<p><a href="/autores/karla-hernandez">Ver perfil y criterios de revisión</a></p>',
+    ].join('')),
+    seccion('Cómo citarnos', `<ol>${(prensa.comoCitar || []).map((t) => `<li>${esc(t)}</li>`).join('')}</ol>`),
+    seccion('Logos', `${parrafo(prensa.usoLogo)}<ul>${(prensa.logos || []).map((l) => `<li><a href="${esc(l.src)}">${esc(l.titulo)}</a>: ${esc(l.medidas)}</li>`).join('')}</ul>`),
+    seccion('Entrevistas, datos y correcciones', [
+      parrafo(prensa.consultas),
+      `<ul>${[
+        email && `<li>Correo: <a href="mailto:${esc(email)}">${esc(email)}</a></li>`,
+        whatsapp && `<li><a href="${esc(whatsapp)}" rel="noopener">WhatsApp</a></li>`,
+        '<li><a href="/alianzas">Alianzas académicas y gremiales</a></li>',
+      ].filter(Boolean).join('')}</ul>`,
+    ].join('')),
+  ].join('');
+}
+
+/** /alianzas: para quién, lo disponible hoy, formas de colaborar y cómo empezar. */
+export function contenidoAlianzas(alianzas, { email, whatsapp } = {}) {
+  return [
+    parrafo(alianzas.lead),
+    seccion('Para quién', lista(alianzas.paraQuien)),
+    seccion('Lo que su comunidad puede usar desde ya', enlacesConTexto(alianzas.disponible)),
+    seccion('Formas de colaborar', `<ol>${(alianzas.formas || []).map((f) => `<li><strong>${esc(f.t)}.</strong> ${esc(f.d)}${f.to ? ` <a href="${esc(f.to)}">Ver más</a>` : ''}</li>`).join('')}</ol>${parrafo(alianzas.condiciones)}`),
+    seccion('Cómo empezar', [
+      parrafo(alianzas.comoEmpezar),
+      `<ul>${[
+        email && `<li>Correo: <a href="mailto:${esc(email)}">${esc(email)}</a></li>`,
+        whatsapp && `<li><a href="${esc(whatsapp)}" rel="noopener">WhatsApp</a></li>`,
+        '<li><a href="/prensa">Prensa y citas</a></li>',
+      ].filter(Boolean).join('')}</ul>`,
+    ].join('')),
+  ].join('');
+}
+
 /** /guias: kits, guías para pacientes, lecturas y herramientas. */
 export function contenidoGuias(guias, kits = [], paraPacientes = [], precio = (p) => String(p)) {
   const kit = (k) => `<li><strong>${esc(k.nombre)}</strong>${k.tipoTexto ? ` (${esc(k.tipoTexto.toLowerCase())})` : ''}: ${esc(k.objetivo || '')}${k.dirigidoA ? ` Para: ${esc(k.dirigidoA)}` : ''}${typeof k.precio === 'number' ? ` Valor: ${esc(precio(k.precio))}.` : ''}</li>`;

@@ -101,3 +101,68 @@ export const GUIAS = {
   },
   otrasPlataformas: 'En el catálogo también recomendamos cursos de Coursera, Udemy y Edutin. No son de Edvanta: el acceso, el precio y el certificado dependen de cada plataforma, y algunos enlaces son de afiliado, por lo que Edvanta puede recibir una comisión sin costo adicional para ti.',
 };
+
+/**
+ * /prensa — Para periodistas, docentes y organizaciones que quieren citar
+ * o enlazar a Edvanta. Solo datos comprobables en el propio sitio: nada de
+ * cifras de alumnos, premios ni apariciones en medios.
+ */
+export const PRENSA = {
+  seoTitle: 'Prensa y citas | Edvanta',
+  seoDescription: 'Para periodistas, docentes y estudiantes: qué es Edvanta, cómo citarnos, recursos para enlazar, logos y contacto para entrevistas.',
+  titulo: 'Prensa y citas',
+  lead: 'Información sobre Edvanta para periodistas, docentes, estudiantes y organizaciones que quieran citarnos, enlazarnos o consultar a nuestro equipo.',
+  descripcionCorta: 'Edvanta es una empresa colombiana de educación farmacéutica. Forma a quienes trabajan con medicamentos, educa a pacientes y cuidadores y diseña programas para instituciones. Sus artículos de salud tienen autora y revisión clínica de una química farmacéutica, y sus noticias regulatorias enlazan a la fuente oficial.',
+  recursos: [
+    { to: '/noticias', titulo: 'Noticias y alertas sanitarias', desc: 'Alertas y comunicados del INVIMA y de agencias de referencia, cada uno con su fuente oficial y lo que significa para Colombia.' },
+    { to: '/articulos', titulo: 'Artículos de salud y farmacia', desc: 'Con autora, revisora, fecha de revisión y fuentes. Cada artículo trae su cita lista en Vancouver y APA 7.' },
+    { to: '/herramientas', titulo: 'Herramientas gratuitas', desc: 'Calculadoras y herramientas para la práctica y la carrera farmacéutica, con su fórmula y sus límites explicados.' },
+    { to: '/cursos', titulo: 'Cursos', desc: 'Cursos propios de Edvanta y cursos recomendados de otras plataformas, separados y señalados.' },
+  ],
+  comoCitar: [
+    'Enlaza la página exacta que citas: el artículo, la noticia o la herramienta. Así tus lectores llegan a la versión actualizada.',
+    'Para mencionar la plataforma, usa el nombre «Edvanta» y la dirección https://edvanta.co.',
+    'En trabajos académicos, copia la cita en Vancouver o APA 7 que aparece al final de cada artículo, en «Cómo citar este artículo».',
+    'Si citas una alerta o una norma, enlaza también la fuente oficial. Nosotros la indicamos en cada noticia.',
+  ],
+  logos: [
+    { src: '/img/logo-edvanta.png', titulo: 'Logo de Edvanta', medidas: '931 × 512 px, PNG con fondo transparente' },
+    { src: '/img/logo-edvanta-wordmark.png', titulo: 'Logotipo horizontal', medidas: '901 × 162 px, PNG con fondo transparente' },
+  ],
+  usoLogo: 'Úsalos sin deformarlos, recortarlos ni cambiar sus colores, y solo para referirte a Edvanta.',
+  vocera: 'Está al frente de Edvanta: dirige la línea editorial y la revisión clínica de sus contenidos. También creó Feliz Sin Tiroides, el programa para personas que viven con una condición tiroidea.',
+  consultas: 'Para entrevistas, datos o aclaraciones sobre un contenido, escríbenos con el tema, el medio y la fecha límite. Si encuentras un error en un artículo, también queremos saberlo: lo corregimos y actualizamos la fecha.',
+};
+
+/**
+ * /alianzas — Para facultades, semilleros, oficinas de egresados, colegios
+ * profesionales y fundaciones de pacientes. Describe lo que Edvanta ofrece
+ * hoy; no menciona alianzas firmadas, porque no hay ninguna documentada.
+ */
+export const ALIANZAS = {
+  seoTitle: 'Alianzas académicas y gremiales | Edvanta',
+  seoDescription: 'Cursos gratuitos, charlas y recursos de Edvanta para facultades de Química Farmacéutica, semilleros, colegios profesionales y fundaciones.',
+  titulo: 'Alianzas académicas y gremiales',
+  lead: 'Para facultades y programas de Química Farmacéutica, semilleros, oficinas de egresados y de prácticas, colegios profesionales y fundaciones de pacientes que quieran sumar formación farmacéutica práctica para su comunidad.',
+  paraQuien: [
+    'Facultades y programas de Química Farmacéutica, Farmacia y Regencia de Farmacia.',
+    'Semilleros de investigación y grupos de estudio.',
+    'Oficinas de egresados, de prácticas y de bienestar universitario.',
+    'Colegios profesionales, asociaciones y gremios del sector farmacéutico.',
+    'Fundaciones y comunidades de pacientes.',
+  ],
+  disponible: [
+    { to: '/cursos', titulo: 'Cursos propios gratuitos', desc: 'Buenas prácticas de manufactura, asuntos regulatorios, registro sanitario, farmacología y farmacoterapia, entre otros. El contenido es gratuito; el certificado verificable es opcional.' },
+    { to: '/noticias', titulo: 'Noticias regulatorias con fuente oficial', desc: 'Alertas del INVIMA y de agencias de referencia explicadas para Colombia, útiles para clases y boletines.' },
+    { to: '/articulos', titulo: 'Artículos con revisión clínica', desc: 'Lecturas para pacientes y profesionales, con autora, fuentes y cita lista para trabajos académicos.' },
+    { to: '/herramientas', titulo: 'Herramientas para la carrera', desc: 'Hoja de vida, centro de empleo, rutas profesionales y otras herramientas gratuitas para estudiantes y egresados.' },
+  ],
+  formas: [
+    { t: 'Una página para su comunidad', d: 'Una selección de cursos y recursos de Edvanta pensada para su programa o sus asociados, a la que pueden enlazar desde su sitio.' },
+    { t: 'Charlas y talleres virtuales', d: 'Sesiones para estudiantes, semilleros o asociados sobre temas como calidad, asuntos regulatorios, farmacovigilancia o uso seguro de medicamentos.' },
+    { t: 'Contenido para sus canales', d: 'Resúmenes de alertas sanitarias y lecturas para boletines, carteleras o aulas virtuales, siempre con la fuente oficial.' },
+    { t: 'Formación para equipos', d: 'Programas de capacitación para instituciones, con matrícula institucional.', to: '/instituciones' },
+  ],
+  condiciones: 'Cada alianza se acuerda por escrito con la institución. No incluye pagos por enlaces ni publicidad encubierta: se basa en contenido útil para su comunidad.',
+  comoEmpezar: 'Escríbenos con el nombre de la institución, el programa o grupo, y lo que necesita su comunidad. Te respondemos con una propuesta.',
+};

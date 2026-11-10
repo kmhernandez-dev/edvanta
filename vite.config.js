@@ -9,7 +9,9 @@ export default defineConfig({
     port: parseInt(process.env.PORT) || 5173,
     strictPort: false,
     proxy: {
-      '/api': {
+      // Todo /api va al servidor, menos /api/lib/: ahí viven módulos que el
+      // cliente importa (api/lib/meta-seo.js) y que Vite debe servir como código.
+      '^/api/(?!lib/)': {
         target: process.env.VITE_API_TARGET || 'http://127.0.0.1:3000',
         changeOrigin: true,
       },
