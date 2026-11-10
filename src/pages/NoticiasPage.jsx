@@ -5,6 +5,7 @@ import SiteHeader from '../components/edvanta/SiteHeader';
 import SiteFooter from '../components/edvanta/SiteFooter';
 import { ImageSlot } from '../components/edvanta/ui';
 import { updatePageSeo } from '../utils/seo';
+import { META_NOTICIAS } from '../lib/seo/titulos';
 import { fuentesNoticias } from '../data/careerHub';
 import { NOTICIAS_FARMACEUTICAS } from '../data/noticiasFarmaceuticas';
 
@@ -14,8 +15,8 @@ const fechaNoticia = (fecha) => new Intl.DateTimeFormat('es-CO', {
 
 export default function NoticiasPage() {
   useEffect(() => updatePageSeo({
-    title: 'Noticias del sector farmacéutico en Colombia | Edvanta',
-    description: 'Noticias, convocatorias y agenda del sector farmacéutico colombiano con fuentes oficiales verificadas.',
+    title: META_NOTICIAS.titulo,
+    description: META_NOTICIAS.descripcion,
     canonical: 'https://edvanta.co/noticias',
     jsonLdId: 'noticias',
     jsonLd: { '@context': 'https://schema.org', '@type': 'CollectionPage', name: 'Noticias del sector farmacéutico', url: 'https://edvanta.co/noticias' },

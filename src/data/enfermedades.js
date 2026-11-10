@@ -17,7 +17,9 @@
  * ============================================================
  */
 
-export const enfermedades = [
+import { REVISION_ENFERMEDADES } from './revisionClinica.js';
+
+const ENFERMEDADES_BASE = [
   // ═══════════════════════════════════════════════════════════
   // 1. HIPOTIROIDISMO
   // ═══════════════════════════════════════════════════════════
@@ -610,5 +612,8 @@ export const enfermedades = [
     },
   },
 ];
+
+// Revisor y fecha de la revisión clínica (revisionClinica.js), si la hubo.
+export const enfermedades = ENFERMEDADES_BASE.map((e) => ({ ...e, ...(REVISION_ENFERMEDADES[e.slug] || {}) }));
 
 export const getEnfermedad = (slug) => enfermedades.find(e => e.slug === slug);

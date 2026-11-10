@@ -6,6 +6,7 @@ import CourseCarousel from '../components/CourseCarousel';
 import ExternalCourseCard from '../components/ExternalCourseCard';
 import { apiUrl } from '../config/api';
 import { updatePageSeo } from '../utils/seo';
+import { META_CURSOS, metaDeCursosDe } from '../lib/seo/titulos';
 import { ArrowRight, BookOpenCheck, CalendarClock, Compass, Lightbulb, TrendingUp } from 'lucide-react';
 import { Btn } from '../components/edvanta/ui';
 import { HeroRuta } from '../components/edvanta/heroes';
@@ -104,13 +105,9 @@ export default function CursosCatalog({ defaultProvider = '' }) {
 
   const enVivo = productoPorSlug(PRODUCTO_DESTACADO);
 
-  const pageTitle = defaultProvider
-    ? `Cursos de ${PROVIDER_LABELS[defaultProvider] || defaultProvider} | Edvanta`
-    : 'Cursos profesionales recomendados | Edvanta';
-
-  const pageDescription = defaultProvider
-    ? `Explora cursos de ${PROVIDER_LABELS[defaultProvider] || defaultProvider} en farmacia, calidad, datos, IA, gestión de proyectos y más. Organizados por categoría profesional.`
-    : 'Explora cursos de Coursera, Udemy y Edutin en farmacia, calidad, datos, IA, gestión de proyectos y más. Organizados por categoría profesional.';
+  const metaCursos = defaultProvider ? metaDeCursosDe(PROVIDER_LABELS[defaultProvider] || defaultProvider) : META_CURSOS;
+  const pageTitle = metaCursos.titulo;
+  const pageDescription = metaCursos.descripcion;
 
   useEffect(() => {
     updatePageSeo({

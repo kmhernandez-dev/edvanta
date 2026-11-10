@@ -39,6 +39,7 @@ import { registrarLectura } from '../lib/articulos/lecturas';
 import { entidadAutor, entidadRevisor, esAutoraKarla } from '../lib/seo/autoria';
 import { robotsDeArticulo, tieneRevisionClinica } from '../lib/seo/indexabilidad';
 import { updatePageSeo } from '../utils/seo';
+import { descripcionDeArticulo, tituloDeArticulo } from '../lib/seo/titulos';
 import { rutaDeCategoria, rutaDeCurso } from '../lib/slug';
 
 const MARCA = {
@@ -469,8 +470,8 @@ export default function ArticuloPage() {
       });
     }
     updatePageSeo({
-      title: `${art.seoTitle || art.title} | Edvanta`,
-      description: art.seoDescription || art.description,
+      title: tituloDeArticulo(art),
+      description: descripcionDeArticulo(art),
       canonical,
       image: imagen,
       imageAlt: art.imageAlt || art.title,

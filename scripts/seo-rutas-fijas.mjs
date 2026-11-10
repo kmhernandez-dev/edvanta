@@ -9,6 +9,9 @@ import {
   contenidoArea, contenidoEscuela, contenidoEscuelas, contenidoInstituciones, contenidoNoticias, contenidoPaquete,
 } from './lib/contenido-paginas-fijas.mjs';
 import { AREAS_DEL_INICIO, CURSOS_EDUTIN } from '../src/data/edvanta/catalogoInicio.js';
+import {
+  META_CURSOS, META_INSTITUCIONES, META_NOTICIAS, metaDeArea, metaDeCursosDe, metaDePaquete, tituloDeEnfermedad,
+} from '../src/lib/seo/titulos.js';
 import { productosDeEscuela } from '../src/data/edvanta/productos.js';
 import { NOTICIAS_FARMACEUTICAS } from '../src/data/noticiasFarmaceuticas.js';
 import { fuentesNoticias } from '../src/data/careerHub.js';
@@ -47,10 +50,10 @@ for (const escuela of ESCUELAS) {
 
 add('/guias', 'Guías y recursos | Edvanta', 'Kits y guías de Edvanta para profesionales farmacéuticos, guías para pacientes, artículos y herramientas gratuitas para tu carrera.', { tipo: 'CollectionPage', seccion: 'Recursos', enlaces: [['Artículos', '/articulos'], ['Herramientas', '/herramientas'], ['Recursos profesionales', '/recursos']] });
 
-add('/instituciones', 'Capacitación farmacéutica para empresas e instituciones | Edvanta', 'Propuestas de formación para laboratorios, distribuidores, farmacias, hospitales, clínicas e IPS. Combina áreas, perfiles y modalidades según las necesidades de tu equipo.', { tipo: 'CollectionPage', seccion: 'Instituciones', enlaces: [['Áreas de capacitación', '/empresas/regentes-de-farmacia'], ['Paquetes institucionales', '/instituciones/paquetes/equipo-que-cuida'], ['Contacto', '/contacto']], contenido: contenidoInstituciones(AREAS_CAPACITACION, PAQUETES) });
+add('/instituciones', META_INSTITUCIONES.titulo, META_INSTITUCIONES.descripcion, { tipo: 'CollectionPage', seccion: 'Instituciones', enlaces: [['Áreas de capacitación', '/empresas/regentes-de-farmacia'], ['Paquetes institucionales', '/instituciones/paquetes/equipo-que-cuida'], ['Contacto', '/contacto']], contenido: contenidoInstituciones(AREAS_CAPACITACION, PAQUETES) });
 
 for (const area of AREAS_CAPACITACION) {
-  add(`/empresas/${area.slug}`, `${area.nombre} | Capacitación para empresas e instituciones | Edvanta`, area.resumen, {
+  add(`/empresas/${area.slug}`, metaDeArea(area).titulo, metaDeArea(area).descripcion, {
     tipo: 'WebPage',
     seccion: 'Instituciones',
     enlaces: [['Instituciones', '/instituciones'], ['Otras áreas de capacitación', '/instituciones#areas'], ['Contacto', '/contacto']],
@@ -60,7 +63,7 @@ for (const area of AREAS_CAPACITACION) {
 }
 
 for (const paquete of PAQUETES) {
-  add(`/instituciones/paquetes/${paquete.slug}`, `${paquete.nombre} | Capacitación y servicios para instituciones | Edvanta`, `${paquete.lema}. ${paquete.necesidad}`, {
+  add(`/instituciones/paquetes/${paquete.slug}`, metaDePaquete(paquete).titulo, metaDePaquete(paquete).descripcion, {
     tipo: 'WebPage',
     seccion: 'Instituciones',
     enlaces: [['Instituciones', '/instituciones'], ['Paquetes', '/instituciones#paquetes'], ['Contacto', '/contacto']],
@@ -106,11 +109,12 @@ for (const [slug, title, description] of retos) {
 
 add('/competencias', 'Competencias para la industria farmacéutica | Edvanta', 'Explora competencias técnicas, digitales, de negocio y humanas conectadas con carreras, rutas y cursos profesionales.', { tipo: 'CollectionPage', seccion: 'Carreras', enlaces: [['Carreras', '/carreras'], ['Rutas', '/rutas'], ['Cursos', '/cursos']] });
 
+// Los mismos títulos que pone CursosCatalog.jsx (src/lib/seo/titulos.js).
 const cursosTexto = {
-  '': ['Cursos profesionales recomendados | Edvanta', 'Explora cursos de Coursera, Udemy y Edutin en farmacia, calidad, datos, IA, gestión de proyectos y más. Organizados por categoría profesional.'],
-  coursera: ['Cursos de Coursera | Edvanta', 'Explora cursos de Coursera en farmacia, calidad, datos, IA, gestión de proyectos y más. Organizados por categoría profesional.'],
-  udemy: ['Cursos de Udemy | Edvanta', 'Explora cursos de Udemy en farmacia, calidad, datos, IA, gestión de proyectos y más. Organizados por categoría profesional.'],
-  edutin: ['Cursos de Edutin | Edvanta', 'Explora cursos de Edutin en farmacia, calidad, datos, IA, gestión de proyectos y más. Organizados por categoría profesional.'],
+  '': [META_CURSOS.titulo, META_CURSOS.descripcion],
+  coursera: [metaDeCursosDe('Coursera').titulo, metaDeCursosDe('Coursera').descripcion],
+  udemy: [metaDeCursosDe('Udemy').titulo, metaDeCursosDe('Udemy').descripcion],
+  edutin: [metaDeCursosDe('Edutin').titulo, metaDeCursosDe('Edutin').descripcion],
 };
 
 for (const [provider, [title, description]] of Object.entries(cursosTexto)) {
@@ -136,7 +140,7 @@ add('/practicas-profesionales-farmaceuticas', 'Prácticas profesionales farmacé
 
 add('/emprendimiento-farmaceutico', 'Emprendimiento farmacéutico: Lean Canvas | Edvanta', 'Construye tu emprendimiento farmacéutico con un Lean Canvas guiado, genera tu pitch de 30 segundos y valida tu idea con la comunidad. Herramienta gratuita.', { tipo: 'WebPage', seccion: 'Empleo', enlaces: [['Empleo', '/empleo'], ['Herramientas', '/herramientas'], ['Comunidad', '/comunidad']] });
 
-add('/noticias', 'Noticias del sector farmacéutico en Colombia | Edvanta', 'Noticias, convocatorias y agenda del sector farmacéutico colombiano con fuentes oficiales verificadas.', { tipo: 'CollectionPage', seccion: 'Actualidad', enlaces: [['Artículos', '/articulos'], ['Recursos', '/recursos'], ['Carreras', '/carreras']], contenido: contenidoNoticias(NOTICIAS_FARMACEUTICAS, fuentesNoticias) });
+add('/noticias', META_NOTICIAS.titulo, META_NOTICIAS.descripcion, { tipo: 'CollectionPage', seccion: 'Actualidad', enlaces: [['Artículos', '/articulos'], ['Recursos', '/recursos'], ['Carreras', '/carreras']], contenido: contenidoNoticias(NOTICIAS_FARMACEUTICAS, fuentesNoticias) });
 
 add('/vitrina-de-talento-farmaceutico', 'Vitrina de talento farmacéutico | Publica tus logros | Edvanta', 'Publica tus logros profesionales y espera a que un cazatalento te contacte. Perfil básico gratuito y perfil destacado para llegar antes a las empresas.', { tipo: 'WebPage', seccion: 'Empleo', enlaces: [['Empleo', '/empleo'], ['Perfil profesional', '/empresas/recluta-talento-farmaceutico'], ['Hoja de vida', '/hoja-de-vida']] });
 
@@ -170,7 +174,7 @@ for (const [slug, title, description] of legales) {
 }
 
 for (const enfermedad of enfermedades) {
-  add(`/enfermedades/${enfermedad.slug}`, enfermedad.seo.title, enfermedad.seo.description, {
+  add(`/enfermedades/${enfermedad.slug}`, tituloDeEnfermedad(enfermedad), enfermedad.seo.description, {
     tipo: 'MedicalWebPage',
     seccion: 'Feliz Sin Tiroides',
     robots: tieneRevisionClinica(enfermedad) ? 'index,follow' : 'noindex,follow',
@@ -181,7 +185,7 @@ for (const enfermedad of enfermedades) {
 for (const slug of ['levotiroxina', 'nutricion-tiroidea']) {
   const enfermedad = enfermedades.find((e) => e.slug === slug);
   if (!enfermedad) continue;
-  add(`/${slug}`, enfermedad.seo.title, enfermedad.seo.description, {
+  add(`/${slug}`, tituloDeEnfermedad(enfermedad), enfermedad.seo.description, {
     tipo: 'MedicalWebPage',
     seccion: 'Feliz Sin Tiroides',
     robots: tieneRevisionClinica(enfermedad) ? 'index,follow' : 'noindex,follow',

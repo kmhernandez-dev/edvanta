@@ -12,6 +12,7 @@ import { articulosPorMarca } from '../data/articulos';
 import { entidadAutor, entidadRevisor } from '../lib/seo/autoria';
 import { tieneRevisionClinica } from '../lib/seo/indexabilidad';
 import { updatePageSeo } from '../utils/seo';
+import { tituloDeEnfermedad } from '../lib/seo/titulos';
 
 // La pregunta de la introducción, con su artículo y sus mayúsculas: no
 // todas las páginas son «el …» (la tiroiditis, los nódulos, la levotiroxina).
@@ -38,7 +39,7 @@ export default function EnfermedadPage({ slug: propSlug }) {
     if (!enf) return;
     const canonical = `https://edvanta.co/enfermedades/${enf.slug}`;
     updatePageSeo({
-      title: enf.seo.title,
+      title: tituloDeEnfermedad(enf),
       description: enf.seo.description,
       canonical,
       type: 'article',

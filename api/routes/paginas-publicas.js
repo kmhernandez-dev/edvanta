@@ -36,17 +36,12 @@ import { SQL_CURSO_PUBLICO, temarioPublico } from './courses.js';
 import { EMISOR, verificarCertificado } from '../lib/aula/certificados.js';
 import { cuerpoDeCurso, datosDeCurso } from '../lib/html-de-ficha.js';
 import { cuerpoDePerfil, extrasDePerfil } from '../lib/html-de-perfil.js';
+import {
+  descripcionDeCurso, metaDeCarrera, metaDeCompetencia, metaDeRuta, tituloDeCurso,
+} from '../lib/meta-seo.js';
 
 const esc = (t) => String(t ?? '')
   .replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;');
-
-/** Recorta en una palabra, para la descripción de los buscadores. */
-function resumen(texto, max = 160) {
-  const t = String(texto ?? '').replace(/\s+/g, ' ').trim();
-  if (t.length <= max) return t;
-  const corte = t.slice(0, max - 1);
-  return `${corte.slice(0, corte.lastIndexOf(' ') > 80 ? corte.lastIndexOf(' ') : corte.length).replace(/[,;:.\s]+$/, '')}…`;
-}
 
 /** Cambia las etiquetas de la plantilla (index.html) por las de la página. */
 export function conMetadatos(html, {
@@ -226,8 +221,8 @@ export function crearRutasPublicas({ db, sitio = '', obtenerPlantilla = async ()
       const imagen = ficha.portada ? (ficha.portada.startsWith('/') ? absoluta(ficha.portada) : ficha.portada) : null;
       const relacionados = await relacionadosDe(db, r.entidad, r.id, ficha.categoria);
       const html = conMetadatos(plantilla, {
-        titulo: `${nombre} | Edvanta`,
-        descripcion: resumen(ficha.resumen || `${nombre}: ${ficha.categoria || 'formación profesional'} en Edvanta.`),
+        titulo: tituloDeCurso(ficha, nombre),
+        descripcion: descripcionDeCurso(ficha, nombre),
         canonical,
         imagen,
         jsonLd: [
@@ -322,8 +317,7 @@ export function crearRutasPublicas({ db, sitio = '', obtenerPlantilla = async ()
         slug: c.slug,
         nombre: c.name,
         resumen: c.headline || c.summary,
-        titulo: c.seo_title || `${c.name} | Carreras Edvanta`,
-        descripcion: c.seo_description || c.summary,
+        ...((m) => ({ titulo: m.titulo, descripcion: m.descripcion }))(metaDeCarrera(c)),
         // El resumen va arriba solo si el titular lo reemplazó.
         queEs: c.what_it_is || (c.headline && c.summary !== c.headline ? c.summary : null),
         perfil: c.recommended_profile,
@@ -347,8 +341,7 @@ export function crearRutasPublicas({ db, sitio = '', obtenerPlantilla = async ()
           slug: p.slug,
           nombre: p.name,
           resumen: p.summary,
-          titulo: p.seo_title || `${p.name} | Ruta profesional Edvanta`,
-          descripcion: p.seo_description || p.summary,
+          ...((m) => ({ titulo: m.titulo, descripcion: m.descripcion }))(metaDeRuta(p)),
         };
       }
       // Las rutas fijas del sitio, que no tienen ficha en la base.
@@ -357,8 +350,7 @@ export function crearRutasPublicas({ db, sitio = '', obtenerPlantilla = async ()
         slug: fija.slug,
         nombre: fija.title,
         resumen: fija.summary,
-        titulo: `${fija.title} | Ruta profesional Edvanta`,
-        descripcion: fija.summary,
+        ...((m) => ({ titulo: m.titulo, descripcion: m.descripcion }))(metaDeRuta({ name: fija.title, summary: fija.summary })),
         fija,
       };
     }
@@ -374,8 +366,7 @@ export function crearRutasPublicas({ db, sitio = '', obtenerPlantilla = async ()
       slug: s.slug,
       nombre: s.name,
       resumen: s.description,
-      titulo: `${s.name}: carreras, cursos y rutas | Edvanta`,
-      descripcion: `${s.description || ''} Descubre qué carreras requieren ${s.name}, qué nivel necesitas y qué formación puede ayudarte a desarrollarla.`.trim(),
+      ...((m) => ({ titulo: m.titulo, descripcion: m.descripcion }))(metaDeCompetencia(s)),
     };
   }
 
@@ -416,7 +407,7 @@ export function crearRutasPublicas({ db, sitio = '', obtenerPlantilla = async ()
         const extras = p.id ? await extrasDePerfil(db, tipo, p.id) : await extrasDeRutaFija(p.fija);
         return aplicacion(res, 200, conMetadatos(plantilla, {
           titulo: p.titulo,
-          descripcion: resumen(p.descripcion),
+          descripcion: p.descripcion,
           canonical,
           jsonLd: [{
             '@context': 'https://schema.org',

@@ -43,6 +43,10 @@ import {
 import ValoracionesDeCurso from '../components/opiniones/ValoracionesDeCurso';
 import Comentarios from '../components/opiniones/Comentarios';
 import { updatePageSeo } from '../utils/seo';
+// Los mismos títulos, descripción y datos estructurados que escribe la API
+// en el HTML (api/routes/paginas-publicas.js): un solo origen.
+import { descripcionDeCurso, tituloDeCurso } from '../../api/lib/meta-seo.js';
+import { datosDeCurso } from '../../api/lib/html-de-ficha.js';
 import { EDVANTA_WHATSAPP_URL } from '../config/links';
 import FichaCursoHero from '../components/curso/FichaCursoHero';
 import ContenidoCurso from '../components/curso/ContenidoCurso';
@@ -328,8 +332,8 @@ export default function FichaDeCurso({ modo = 'propio', slugPublico = '' }) {
     const url = `https://edvanta.co${ficha.url}`;
     const imagenSeo = ficha.portada ? (ficha.portada.startsWith('/') ? `https://edvanta.co${ficha.portada}` : ficha.portada) : undefined;
     updatePageSeo({
-      title: `${nombre} | Edvanta`,
-      description: ficha.resumen || `${nombre}: ${ficha.categoria || 'formación profesional'} en Edvanta.`,
+      title: tituloDeCurso(ficha, nombre),
+      description: descripcionDeCurso(ficha, nombre),
       canonical: url,
       image: imagenSeo,
       type: 'website',
@@ -338,16 +342,7 @@ export default function FichaDeCurso({ modo = 'propio', slugPublico = '' }) {
       // Lo mismo que la API escribe en el HTML (api/routes/paginas-publicas.js),
       // que se retira al montar: el curso y sus migas.
       jsonLd: [
-        {
-          '@context': 'https://schema.org',
-          '@type': 'Course',
-          name: nombre,
-          description: ficha.resumen || '',
-          url,
-          inLanguage: ficha.idioma === 'Inglés' ? 'en' : 'es',
-          ...(imagenSeo ? { image: imagenSeo } : {}),
-          provider: { '@type': 'Organization', name: ficha.proveedor.nombre },
-        },
+        datosDeCurso(ficha, { nombre, canonical: url, imagen: imagenSeo, horas: ficha.certificado?.horas }),
         {
           '@context': 'https://schema.org',
           '@type': 'BreadcrumbList',

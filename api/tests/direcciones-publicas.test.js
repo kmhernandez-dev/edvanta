@@ -150,7 +150,9 @@ describe('slugs de curso · base de datos y rutas', () => {
   it('la página nueva trae título, canonical, redes y datos estructurados', async () => {
     const r = await pedir('/api/paginas/slug/curso-de-farmacoterapia-de-la-diabetes');
     const html = await r.text();
-    expect(html).toContain('<title>Curso de Farmacoterapia de la Diabetes | Edvanta</title>');
+    // Curso propio: «gratis» en el título y la promesa verdadera en la descripción.
+    expect(html).toContain('<title>Curso de Farmacoterapia de la Diabetes gratis | Edvanta</title>');
+    expect(html).toContain('Gratis, a tu ritmo y con certificado verificable." />');
     expect(html).toContain('<link rel="canonical" href="https://edvanta.test/curso-de-farmacoterapia-de-la-diabetes"');
     expect(html).toContain('<meta property="og:url" content="https://edvanta.test/curso-de-farmacoterapia-de-la-diabetes"');
     expect(html).toContain('"@type":"Course"');

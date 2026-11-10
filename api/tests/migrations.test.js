@@ -92,6 +92,23 @@ describe('migraciones', () => {
     expect(ruta).toEqual({ name: 'Aseguramiento de calidad desde cero', seo_title: 'Ruta de aseguramiento de calidad desde cero | Edvanta' });
   });
 
+  it('las descripciones de competencias quedan con tildes (074)', async () => {
+    const { rows } = await base.db.query(
+      "SELECT slug, description FROM skills WHERE slug IN ('asuntos-regulatorios', 'sistemas-de-gestion-de-calidad', 'six-sigma', 'medical-affairs') ORDER BY slug",
+    );
+    expect(rows.map((r) => r.description)).toEqual([
+      'Gestión del cumplimiento regulatorio durante el ciclo de vida del producto.',
+      'Intercambio científico y estrategia médica basada en evidencia.',
+      'Diseño, mantenimiento y mejora de un sistema de gestión de calidad.',
+      'Reducción de variabilidad y resolución de problemas basada en datos.',
+    ]);
+    // Ninguna descripción publicada conserva las formas sin tilde más comunes.
+    const { rows: sinTilde } = await base.db.query(
+      "SELECT slug FROM skills WHERE status = 'published' AND description ~ '(Gestion |gestion |cion[ ,.]|Diseno|Analisis|calculo|cientifico|medica |farmaceutica[.])'",
+    );
+    expect(sinTilde).toEqual([]);
+  });
+
   it('el grafo de recomendaciones solo usa nombres que existen en la base', async () => {
     const grafo = slugsDelGrafo();
     const existen = { carreras: await slugsDe('careers'), rutas: await slugsDe('learning_paths'), competencias: await slugsDe('skills') };
@@ -126,7 +143,8 @@ describe('migraciones', () => {
       expect(html).toContain('<h1>Aseguramiento de calidad</h1>');
       expect(html).toContain('"@type":"BreadcrumbList"');
       const competencia = await (await pedir('/paginas/competencias/buenas-practicas-de-manufactura')).text();
-      expect(competencia).toMatch(/<title>Buenas Prácticas de Manufactura \(BPM\/GMP\): carreras, cursos y rutas \| Edvanta<\/title>/);
+      // Con «: carreras, cursos y rutas» pasaría de 60 caracteres: queda el nombre con la marca.
+      expect(competencia).toContain('<title>Buenas Prácticas de Manufactura (BPM/GMP) | Edvanta</title>');
       // Las rutas fijas del sitio (sin ficha en la base) también tienen página.
       const fija = await pedir('/paginas/rutas/calidad-y-auditoria');
       expect(fija.status).toBe(200);

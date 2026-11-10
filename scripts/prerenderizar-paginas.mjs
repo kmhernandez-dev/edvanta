@@ -37,6 +37,7 @@ const { DIRECCIONES_ANTIGUAS } = await importar('src/data/edvanta/direcciones.js
 const { nombreDeCurso, slugify } = await importar('src/lib/slug.js');
 const { RUTAS_FIJAS } = await importar('scripts/seo-rutas-fijas.mjs');
 const { contenidoHerramienta, contenidoServicioMarketing } = await importar('scripts/lib/contenido-paginas-fijas.mjs');
+const { metaDeCategoria } = await importar('src/lib/seo/titulos.js');
 
 const plantilla = readFileSync(path.join(dist, 'index.html'), 'utf8');
 
@@ -124,8 +125,8 @@ for (const c of categorias.values()) {
   const canonical = `${SITIO}/articulos/categoria/${c.slug}`;
   const n = c.lista.length;
   escribir(`articulos/categoria/${c.slug}.html`, pagina({
-    titulo: `Artículos de ${nombre} | Edvanta`,
-    descripcion: `${n} ${n === 1 ? 'artículo' : 'artículos'} de ${nombre.toLowerCase()} en Edvanta, en lenguaje claro y con fuentes.`,
+    titulo: metaDeCategoria(nombre, n).titulo,
+    descripcion: metaDeCategoria(nombre, n).descripcion,
     canonical,
     jsonLd: [
       { '@context': 'https://schema.org', '@type': 'CollectionPage', name: `Artículos de ${nombre}`, url: canonical, publisher: { '@type': 'Organization', name: 'Edvanta' } },

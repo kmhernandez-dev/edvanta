@@ -17,6 +17,7 @@ import {
 import { PAQUETES, paquetePorSlug, paqueteTo } from '../../data/edvanta/servicios';
 import { waLink } from '../../config/links';
 import { updatePageSeo } from '../../utils/seo';
+import { metaDePaquete } from '../../lib/seo/titulos';
 import NotFound from '../NotFound';
 
 const ICONOS_PROCESO = [MessagesSquare, ClipboardList, FileSignature, Rocket];
@@ -34,8 +35,8 @@ export default function PaqueteInstitucional() {
   useEffect(() => {
     if (!paquete) return;
     updatePageSeo({
-      title: `${paquete.nombre} | Capacitación y servicios para instituciones | Edvanta`,
-      description: `${paquete.lema}. ${paquete.necesidad}`,
+      title: metaDePaquete(paquete).titulo,
+      description: metaDePaquete(paquete).descripcion,
       canonical: `https://edvanta.co${paqueteTo(paquete.slug)}`,
       image: `https://edvanta.co${paquete.imagen}`,
       keywords: [paquete.nombre, 'capacitación para instituciones', 'Edvanta'],

@@ -38,6 +38,7 @@ const { articulos } = await importar('src/data/articulos.js');
 const { limpiarMarkdown, preguntasFrecuentes, slugify, textoPlano } = await importar('src/lib/articulos/markdown.js');
 const { puedeIndexarse, robotsDeArticulo, tieneRevisionClinica } = await importar('src/lib/seo/indexabilidad.js');
 const { entidadAutor, entidadRevisor, esAutoraKarla } = await importar('src/lib/seo/autoria.js');
+const { descripcionDeArticulo, tituloDeArticulo } = await importar('src/lib/seo/titulos.js');
 
 const plantilla = readFileSync(path.join(dist, 'index.html'), 'utf8');
 const SALUD = ['fst', 'contigo', 'atenfarma'];
@@ -153,7 +154,7 @@ for (const art of articulos) {
   ${relacionados.length ? `<aside><h2>Sigue leyendo</h2><ul>${relacionados.map((r) => `<li><a href="/articulos/${r.slug}">${esc(r.title)}</a></li>`).join('')}</ul></aside>` : ''}
 </main>`;
 
-  let html = conMeta(plantilla, { title: `${art.seoTitle || art.title} | Edvanta`, description: art.seoDescription || art.description, canonical, image, imageAlt: art.imageAlt || art.title, robots: robotsDeArticulo(art) });
+  let html = conMeta(plantilla, { title: tituloDeArticulo(art), description: descripcionDeArticulo(art), canonical, image, imageAlt: art.imageAlt || art.title, robots: robotsDeArticulo(art) });
   html = conJsonLd(html, { '@context': 'https://schema.org', '@graph': grafo });
   html = conCuerpo(html, cuerpo);
   writeFileSync(path.join(dist, 'articulos', `${art.slug}.html`), html);

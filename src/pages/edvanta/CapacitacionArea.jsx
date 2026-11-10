@@ -16,6 +16,7 @@ import {
   areaPorSlug, areasRelacionadas,
 } from '../../data/edvanta/capacitacion';
 import { updatePageSeo } from '../../utils/seo';
+import { metaDeArea } from '../../lib/seo/titulos';
 import NotFound from '../NotFound';
 
 const ICONOS_MODALIDAD = { live: MonitorPlay, aula: BookOpen, mix: Layers, design: Sparkles };
@@ -28,8 +29,8 @@ export default function CapacitacionArea() {
   useEffect(() => {
     if (!area) return;
     updatePageSeo({
-      title: `${area.nombre} | Capacitación para empresas e instituciones | Edvanta`,
-      description: area.resumen,
+      title: metaDeArea(area).titulo,
+      description: metaDeArea(area).descripcion,
       canonical: `https://edvanta.co/empresas/${area.slug}`,
       image: `https://edvanta.co${area.imagen}`,
       keywords: ['capacitación farmacéutica', area.nombre, 'formación para empresas'],

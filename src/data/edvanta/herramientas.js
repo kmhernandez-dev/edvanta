@@ -100,7 +100,7 @@ export const HERRAMIENTAS = [
     outcome: 'Un correo profesional y personalizado, listo para enviar a recursos humanos.',
     relatedMeta: { areaIds: [], tags: ['empleabilidad'] },
     seo: {
-      title: 'Plantillas de correo para recursos humanos | Edvanta',
+      title: 'Cómo escribirle a recursos humanos: 5 plantillas | Edvanta',
       description: 'Correos profesionales listos para postular, dar seguimiento y agradecer en el sector farmacéutico. Edita y copia con un clic.',
       keywords: ['correo postulación', 'plantilla correo recursos humanos', 'correo hoja de vida', 'seguimiento vacante'],
     },
@@ -160,7 +160,7 @@ export const HERRAMIENTAS = [
     outcome: 'Una o varias áreas farmacéuticas sugeridas, con el siguiente paso para explorarlas.',
     relatedMeta: { areaIds: ['quality-assurance', 'regulatory-affairs', 'pharmacovigilance'], tags: [] },
     seo: {
-      title: 'Orientación vocacional para químicos farmacéuticos | Edvanta',
+      title: 'Orientación vocacional farmacéutica en 3 pasos | Edvanta',
       description: 'Descubre en qué área farmacéutica encajas mejor con un recorrido guiado por tus intereses y fortalezas. Herramienta gratuita de Edvanta.',
       keywords: ['orientación vocacional farmacia', 'áreas químico farmacéutico', 'qué área elegir farmacia', 'test vocacional farmacéutico'],
     },

@@ -6,6 +6,7 @@ import SiteFooter from '../components/edvanta/SiteFooter';
 import ExternalCourseCard from '../components/ExternalCourseCard';
 import { apiUrl } from '../config/api';
 import { updatePageSeo } from '../utils/seo';
+import { metaDeCompetencia } from '../../api/lib/meta-seo.js';
 import { trackEvent } from '../utils/analytics';
 
 const TYPE_LABELS = {
@@ -62,8 +63,8 @@ export default function CompetencyPage() {
     if (!skill) return undefined;
     trackEvent('skill_viewed', { skill: skill.slug });
     return updatePageSeo({
-      title: `${skill.name}: carreras, cursos y rutas | Edvanta`,
-      description: `${skill.description} Descubre qué carreras requieren ${skill.name}, qué nivel necesitas y qué formación puede ayudarte a desarrollarla.`,
+      title: metaDeCompetencia(skill).titulo,
+      description: metaDeCompetencia(skill).descripcion,
       canonical: `https://edvanta.co/competencias/${skill.slug}`,
       jsonLdId: 'skill-detail',
       jsonLd: {

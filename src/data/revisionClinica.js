@@ -227,3 +227,14 @@ const REVISADOS_POR_KARLA_2026_11_09 = [
 export const REVISION_CLINICA = Object.fromEntries(
   REVISADOS_POR_KARLA_2026_11_09.map((slug) => [slug, KARLA_2026_11_09]),
 );
+
+/**
+ * Páginas de enfermedades tiroideas (src/data/enfermedades.js), también de
+ * Karla. El 9 de noviembre de 2026, al preguntarle si las había revisado,
+ * respondió por escrito: «todo ya lo aprobé». enfermedades.js aplica este
+ * registro sobre cada página.
+ */
+export const REVISION_ENFERMEDADES = Object.fromEntries([
+  'hipotiroidismo', 'hipertiroidismo', 'hashimoto', 'nodulos-tiroideos', 'cancer-de-tiroides',
+  'vivir-sin-tiroides', 'salud-metabolica', 'levotiroxina', 'nutricion-tiroidea',
+].map((slug) => [slug, KARLA_2026_11_09]));

@@ -29,6 +29,7 @@ import FormularioSolicitud from '../components/formularios/FormularioSolicitud';
 import { articulos, getArticulo } from '../data/articulos';
 import { lecturasRecientes } from '../lib/articulos/lecturas';
 import { updatePageSeo } from '../utils/seo';
+import { metaDeCategoria } from '../lib/seo/titulos';
 import { rutaDeCategoria, slugify } from '../lib/slug';
 import NotFound from './NotFound';
 
@@ -166,8 +167,8 @@ export default function ArticulosIndex() {
     if (actual) {
       const url = `https://edvanta.co${rutaDeCategoria(actual.nombre)}`;
       updatePageSeo({
-        title: `Artículos de ${actual.nombre} | Edvanta`,
-        description: `${actual.total} ${actual.total === 1 ? 'artículo' : 'artículos'} de ${actual.nombre.toLowerCase()} en Edvanta, en lenguaje claro y con fuentes.`,
+        title: metaDeCategoria(actual.nombre, actual.total).titulo,
+        description: metaDeCategoria(actual.nombre, actual.total).descripcion,
         canonical: url,
         jsonLdId: 'articles-index',
         jsonLd: {

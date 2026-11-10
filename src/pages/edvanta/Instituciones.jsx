@@ -36,6 +36,7 @@ import { AREAS_DEL_INICIO } from '../../data/edvanta/catalogoInicio';
 import { PAQUETES, paquetePorSlug, paqueteTo } from '../../data/edvanta/servicios';
 import { waLink } from '../../config/links';
 import { updatePageSeo } from '../../utils/seo';
+import { META_INSTITUCIONES } from '../../lib/seo/titulos';
 
 const ICONOS_ORGANIZACION = {
   factory: Factory,
@@ -96,8 +97,8 @@ export default function Instituciones() {
   const { cargando, cursos } = useCursosConPortada('profesionales');
 
   useEffect(() => updatePageSeo({
-    title: 'Capacitación farmacéutica para empresas e instituciones | Edvanta',
-    description: 'Propuestas de formación para laboratorios, distribuidores, farmacias, hospitales, clínicas e IPS. Combina áreas, perfiles y modalidades según las necesidades de tu equipo.',
+    title: META_INSTITUCIONES.titulo,
+    description: META_INSTITUCIONES.descripcion,
     canonical: 'https://edvanta.co/instituciones',
   }), []);
 

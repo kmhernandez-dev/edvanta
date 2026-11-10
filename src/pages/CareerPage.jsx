@@ -5,6 +5,7 @@ import SiteHeader from '../components/edvanta/SiteHeader';
 import SiteFooter from '../components/edvanta/SiteFooter';
 import { apiUrl } from '../config/api';
 import { updatePageSeo } from '../utils/seo';
+import { metaDeCarrera } from '../../api/lib/meta-seo.js';
 import { trackEvent } from '../utils/analytics';
 import { rutaDeCurso } from '../lib/slug';
 
@@ -60,9 +61,9 @@ export default function CareerPage() {
   useEffect(() => {
     if (!career) return undefined;
     trackEvent('career_viewed', { career: career.slug });
-    const description = career.seo_description || career.summary;
+    const { titulo, descripcion: description } = metaDeCarrera(career);
     return updatePageSeo({
-      title: career.seo_title || `${career.name} | Carreras Edvanta`,
+      title: titulo,
       description,
       canonical: `https://edvanta.co/carreras/${career.slug}`,
       keywords: [career.name, career.family?.name, ...(career.skills || []).slice(0, 5).map(skill => skill.name)],

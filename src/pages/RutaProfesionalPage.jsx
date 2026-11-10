@@ -7,6 +7,7 @@ import { apiUrl } from '../config/api';
 import { getFeaturedCourse, getLearningRoute } from '../data/featuredCourses';
 import { portadaDeRuta } from '../data/edvanta/imagenes';
 import { updatePageSeo } from '../utils/seo';
+import { metaDeRuta } from '../../api/lib/meta-seo.js';
 import { rutaDeCurso } from '../lib/slug';
 
 const STEP_LABELS = {
@@ -118,8 +119,8 @@ export default function RutaProfesionalPage() {
     if (!path) return undefined;
     const canonical = `https://edvanta.co/rutas/${path.slug}`;
     return updatePageSeo({
-      title: path.seo_title || `${path.name} | Ruta profesional Edvanta`,
-      description: path.seo_description || path.summary,
+      title: metaDeRuta(path).titulo,
+      description: metaDeRuta(path).descripcion,
       canonical,
       jsonLdId: `learning-path-${path.slug}`,
       jsonLd: {
