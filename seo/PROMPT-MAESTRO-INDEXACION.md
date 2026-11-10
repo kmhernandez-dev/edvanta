@@ -65,7 +65,8 @@ Trabajas para **Karla Hernández**, química farmacéutica con tarjeta profesion
 - 9-nov, en Search Console (con aprobación de Karla):
   - se reenvió `sitemap.xml`;
   - se inició la validación de «Soft 404», «Rastreada: actualmente sin indexar» y «Descubierta: actualmente sin indexar»;
-  - se solicitó la indexación de 7 URL: el curso de Gestión de Calidad, el artículo de levotiroxina, `/noticias`, la alerta de Buscapina, `/escuelas`, el curso de Registro Sanitario y el curso de Autocuidado de la tiroides.
+  - se solicitó la indexación de 7 URL: el curso de Gestión de Calidad, el artículo de levotiroxina, `/noticias`, la alerta de Buscapina, `/escuelas`, el curso de Registro Sanitario y el curso de Autocuidado de la tiroides;
+  - después del despliegue de las noticias internacionales, 3 más: gotas oftálmicas falsificadas (FDA), Foundayo (EMA) e ivermectina (Anvisa).
   - Ya estaban indexadas la portada, `/cursos`, `/instituciones` y `/enfermedades/hipotiroidismo`.
 
 **Documentos**
