@@ -116,3 +116,15 @@ En el servidor local los colores no se pueden medir con exactitud: la caché de 
 | D8 | El control de radios ya había detectado valores fuera de la escala en las páginas nuevas; esta entrega se hizo dentro de la escala | Prueba H6 | Cerrado |
 
 **Al vencer la oferta:** la interfaz se apaga sola. El título prerenderizado de `/ofertas` se actualiza en el siguiente despliegue.
+
+### Correos 3.2 · Carta académica · 11-nov-2026
+
+**Pedido de la dueña:** correos más elegantes y más vendedores, sofisticados, con el aire de una universidad de prestigio.
+
+| Id | Acción | Control | Estado |
+|---|---|---|---|
+| C1 | Un solo diseño para los 15 correos (`api/lib/aula/correo-academico.js`): papel marfil, serifa clásica (Libre Baskerville con Georgia de respaldo), filetes y versalitas en oro viejo, panel azul profundo con marco dorado y franja «Beneficio vigente» | Prueba: todos los correos usan la misma carta | Hecho |
+| C2 | Carta firmada: saludo formal sin suponer género («Laura:»), una sola acción principal en un botón sobrio, despedida y firma de Karla, y P. D. con la oferta real | Revisión de las muestras | Hecho |
+| C3 | El cupón se presenta como un diploma: doble marco dorado, la cifra en serifa, la placa con el código y la vigencia | Se apaga solo al vencer la oferta | Hecho |
+| C4 | El estilo es propio de Edvanta: sin nombres, escudos ni colores de universidades reales | Prueba: ningún correo nombra a una universidad | Hecho |
+| C5 | El dorado del texto (#8A6A35) cumple contraste AA sobre papel; el dorado claro solo se usa en filetes o sobre azul | Revisión | Hecho |

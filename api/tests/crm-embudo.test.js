@@ -138,3 +138,22 @@ describe('registro desde una página /unete', () => {
     expect(await enviarCorreoEmbudo(t.db, mailer, { correo: 'ana@prueba.co', plantilla: 'inscripcion-curso', clave: '7', datos })).toBe(false);
   });
 });
+
+describe('estilo de carta académica (11-nov-2026)', () => {
+  const datos = { nombre: 'Laura', area: 'Calidad y BPM', curso: 'Gestión de calidad', cursoUrl: 'https://edvanta.co/aula', precio: 60000, siteUrl: 'https://edvanta.co' };
+
+  it('todos los correos usan el mismo diseño: serifa, oro y firma', () => {
+    for (const nombre of Object.keys(PLANTILLAS)) {
+      const { html } = armarCorreo(nombre, datos);
+      expect(html, nombre).toContain('Libre Baskerville');
+      expect(html, nombre).toContain('#B8955A');
+      expect(html, nombre).toContain('Karla Hernández');
+    }
+  });
+
+  it('el estilo es propio: ningún correo nombra o imita a una universidad real', () => {
+    for (const nombre of Object.keys(PLANTILLAS)) {
+      expect(armarCorreo(nombre, datos).html, nombre).not.toMatch(/harvard|stanford|oxford|yale|veritas|crimson/i);
+    }
+  });
+});
