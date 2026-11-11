@@ -128,3 +128,13 @@ En el servidor local los colores no se pueden medir con exactitud: la caché de 
 | C3 | El cupón se presenta como un diploma: doble marco dorado, la cifra en serifa, la placa con el código y la vigencia | Se apaga solo al vencer la oferta | Hecho |
 | C4 | El estilo es propio de Edvanta: sin nombres, escudos ni colores de universidades reales | Prueba: ningún correo nombra a una universidad | Hecho |
 | C5 | El dorado del texto (#8A6A35) cumple contraste AA sobre papel; el dorado claro solo se usa en filetes o sobre azul | Revisión | Hecho |
+
+### Correos 3.3 · Blanco, degradados y estilo actual · 11-nov-2026
+
+**Decisión de la dueña:** el estilo «carta académica» (C1–C5) no le gustó. Pidió blanco, degradados y un aire muy actual y moderno. Se reemplazó en el mismo día.
+
+| Id | Acción | Control | Estado |
+|---|---|---|---|
+| C6 | Diseño único nuevo (`api/lib/aula/correo-diseno.js`) para los 15 correos: fondo muy claro con luces lavanda y aqua; tarjeta blanca de 28 px; panel principal con degradado violeta → azul → turquesa; tipografía Inter; botones en píldora con degradado; cupón con borde degradado coral → violeta; posdata en tarjeta clara; firma con foto | Prueba: todos los correos usan el mismo diseño | Hecho |
+| C7 | Contraste: el texto blanco va sobre la parte oscura de cada degradado (#5B53C9, #2F62D3 y #0E8691, 4,3:1 o más en textos grandes). Cada degradado tiene un color sólido de respaldo para Outlook | Revisión | Hecho |
+| C8 | Se retiró `correo-academico.js`; el estilo sigue siendo propio, sin imitar a ninguna institución | Prueba | Hecho |

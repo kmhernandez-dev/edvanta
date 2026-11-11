@@ -3,8 +3,8 @@
  * ============================================================
  *  generar-correos.mjs — Los 5 correos del flujo de ventas
  *
- *  Escribe docs/email-marketing/0N-*.html con el estilo de carta
- *  académica de Edvanta (api/lib/aula/correo-academico.js, el mismo de
+ *  Escribe docs/email-marketing/0N-*.html con el estilo de correo
+ *  moderno de Edvanta (api/lib/aula/correo-diseno.js, el mismo de
  *  los correos automáticos), sus versiones con datos de ejemplo en
  *  muestras/ y una página index.html para verlos juntos.
  *
@@ -26,9 +26,9 @@ import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { PROMOCION, promoActiva } from '../api/lib/aula/promocion.js';
 import {
-  beneficio, boton, cartaAcademica, cita, conUtm, destacado, divisor, enlace, etiqueta, lista, nota, parrafo,
+  beneficio, boton, cartaCorreo, cita, conUtm, destacado, divisor, enlace, etiqueta, lista, nota, parrafo,
   portada, posdata, recuadro, saludo, subtitulo,
-} from '../api/lib/aula/correo-academico.js';
+} from '../api/lib/aula/correo-diseno.js';
 
 const RAIZ = join(dirname(fileURLToPath(import.meta.url)), '..');
 const SALIDA = join(RAIZ, 'docs', 'email-marketing');
@@ -106,7 +106,7 @@ const CORREOS = [
         'Acceso por correo al comprar en Hotmart.',
       ]),
       beneficio(SITIO, CAMPANA, c, { titulo: 'Tu beneficio' }),
-      boton(oferta ? `Obtener la guía con ${PROMOCION.porcentaje}&nbsp;%` : 'Conocer la guía', u('{{guia_url}}', c), { variante: oferta ? 'oro' : 'azul' }),
+      boton(oferta ? `Obtener la guía con ${PROMOCION.porcentaje}&nbsp;%` : 'Conocer la guía', u('{{guia_url}}', c), { variante: oferta ? 'oferta' : 'principal' }),
       nota('Pago seguro en Hotmart, con su garantía de reembolso.'),
       oferta ? posdata(`El cupón ${destacado(PROMOCION.codigo)} vence el ${PROMOCION.fechaTexto} a las 11:59 p. m. (hora de Colombia).`) : '',
     ].join(''),
@@ -148,7 +148,7 @@ mkdirSync(join(SALIDA, 'muestras'), { recursive: true });
 const indice = [];
 for (const [i, c] of CORREOS.entries()) {
   const id = c.archivo.replace('.html', '');
-  const html = cartaAcademica({
+  const html = cartaCorreo({
     siteUrl: SITIO, asunto: c.asunto, pre: c.preencabezado, encabezado: c.encabezado, cuerpo: c.cuerpo(id),
     campana: CAMPANA, contenido: id, marketing: true, bajaUrl: '{{baja_url}}',
   });
@@ -157,6 +157,6 @@ for (const [i, c] of CORREOS.entries()) {
   indice.push(`<section><p class="dia">${i + 1} · ${c.dia}</p><h2>${llenar(c.asunto)}</h2><p class="pre">${c.preencabezado}</p><iframe src="muestras/${c.archivo}" title="${c.asunto}" loading="lazy"></iframe></section>`);
 }
 writeFileSync(join(SALIDA, 'index.html'), `<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Correos de venta · Edvanta</title>
-<style>body{margin:0;background:#F4EEE2;font-family:Georgia,'Times New Roman',serif;color:#1B2440}main{max-width:1360px;margin:0 auto;padding:28px 16px;display:grid;grid-template-columns:repeat(auto-fill,minmax(400px,1fr));gap:24px}h1{max-width:1360px;margin:32px auto 0;padding:0 16px;font-size:30px}section{background:#FFFDF8;border:1px solid #E6DCC6;padding:18px}.dia{margin:0;font:700 12px Helvetica,Arial,sans-serif;letter-spacing:3px;text-transform:uppercase;color:#8A6A35}h2{margin:8px 0 4px;font-size:19px}.pre{margin:0 0 12px;font-size:15px;font-style:italic;color:#434A5C}iframe{width:100%;height:900px;border:0;background:#F4EEE2}</style></head>
-<body><h1>Correos de venta · 5 cartas</h1><main>${indice.join('')}</main></body></html>`);
+<style>body{margin:0;background:#F5F7FC;font-family:Inter,Segoe UI,Arial,sans-serif;color:#14233F}main{max-width:1360px;margin:0 auto;padding:28px 16px;display:grid;grid-template-columns:repeat(auto-fill,minmax(400px,1fr));gap:24px}h1{max-width:1360px;margin:32px auto 0;padding:0 16px;font-size:30px}section{background:#fff;border:1px solid #EAEEF6;border-radius:24px;padding:18px}.dia{margin:0;font-size:12px;font-weight:700;letter-spacing:1.6px;text-transform:uppercase;color:#5B53C9}h2{margin:8px 0 4px;font-size:19px}.pre{margin:0 0 12px;font-size:14px;color:#4A5A73}iframe{width:100%;height:900px;border:0;border-radius:16px;background:#F5F7FC}</style></head>
+<body><h1>Correos de venta · 5 correos</h1><main>${indice.join('')}</main></body></html>`);
 console.log(`Correos generados: ${CORREOS.length} en docs/email-marketing/`);

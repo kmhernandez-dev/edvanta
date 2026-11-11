@@ -139,14 +139,14 @@ describe('registro desde una página /unete', () => {
   });
 });
 
-describe('estilo de carta académica (11-nov-2026)', () => {
+describe('estilo moderno de los correos (11-nov-2026)', () => {
   const datos = { nombre: 'Laura', area: 'Calidad y BPM', curso: 'Gestión de calidad', cursoUrl: 'https://edvanta.co/aula', precio: 60000, siteUrl: 'https://edvanta.co' };
 
-  it('todos los correos usan el mismo diseño: serifa, oro y firma', () => {
+  it('todos los correos usan el mismo diseño: blanco, degradados y firma', () => {
     for (const nombre of Object.keys(PLANTILLAS)) {
       const { html } = armarCorreo(nombre, datos);
-      expect(html, nombre).toContain('Libre Baskerville');
-      expect(html, nombre).toContain('#B8955A');
+      expect(html, nombre).toContain('linear-gradient(135deg,#5B53C9');
+      expect(html, nombre).toContain('border-radius:28px');
       expect(html, nombre).toContain('Karla Hernández');
     }
   });

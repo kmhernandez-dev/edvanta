@@ -16,8 +16,8 @@
  *   certificado-pagado cuando se aprueba el pago del certificado.
  *   novedades          cada 30 días, solo a quien aceptó novedades.
  *
- *  El diseño (carta académica: marfil, serifa, oro) vive en
- *  correo-academico.js y es el mismo de los correos de venta.
+ *  El diseño (blanco, degradados y píldoras) vive en
+ *  correo-diseno.js y es el mismo de los correos de venta.
  *
  *  `enviarCorreoEmbudo` nunca manda dos veces el mismo correo: reserva
  *  (correo, plantilla, clave) en embudo_correos antes de enviar.
@@ -30,9 +30,9 @@
 
 import { PROMOCION, promoActiva } from './promocion.js';
 import {
-  beneficio, boton, cartaAcademica, cita, conUtm, destacado, divisor, dosCaminos, enlace, esc, etiqueta, lista, nota,
+  beneficio, boton, cartaCorreo, cita, conUtm, destacado, divisor, dosCaminos, enlace, esc, etiqueta, lista, nota,
   parrafo, portada, posdata, recuadro, saludo, subtitulo,
-} from './correo-academico.js';
+} from './correo-diseno.js';
 
 const WA_NUMERO = '573006332244';
 const wa = (mensaje) => `https://wa.me/${WA_NUMERO}?text=${encodeURIComponent(mensaje)}`;
@@ -112,7 +112,7 @@ export const PLANTILLAS = {
         portadaGuia(siteUrl, r.guia, url),
         cita('Un prompt resuelve un documento. Un método resuelve cientos.'),
         beneficio(siteUrl, 'ciclo', 'registro-guia', { titulo: 'Tu beneficio' }),
-        boton(promoActiva() ? `Obtener la guía con ${PROMOCION.porcentaje}&nbsp;%` : 'Conocer la guía', url, { variante: promoActiva() ? 'oro' : 'azul' }),
+        boton(promoActiva() ? `Obtener la guía con ${PROMOCION.porcentaje}&nbsp;%` : 'Conocer la guía', url, { variante: promoActiva() ? 'oferta' : 'principal' }),
         nota('Pago seguro en Hotmart, con su garantía de reembolso.'),
         divisor(),
         recuadro([etiqueta('Mientras tanto, sin costo'), parrafo(`Estudia un curso gratis del aula; ${CERT_TEXTO(60000)}.`, 'margin:0;'), enlace('Ver los cursos gratis', conUtm(`${siteUrl}/cursos`, 'ciclo', 'registro-guia'))].join('')),
@@ -193,7 +193,7 @@ export const PLANTILLAS = {
   'bienvenida-curso': ({ nombre, curso, cursoUrl, precio }) => ({
     asunto: `Te damos la bienvenida a ${curso}`,
     pre: 'Cómo sacarle el máximo al curso y tus dos caminos: acompañamiento o certificado.',
-    encabezado: ['Carta de bienvenida', esc(curso)],
+    encabezado: ['Bienvenida al curso', esc(curso)],
     cuerpo: [
       saludo(primerNombre(nombre)),
       parrafo('Es un gusto tenerte en el curso. Estas tres prácticas te ayudan a sacarle el máximo:'),
@@ -250,7 +250,7 @@ export const PLANTILLAS = {
     return {
       asunto: `${primerNombre(nombre)}, lo nuevo en Edvanta para ti`,
       pre: 'Un curso gratis y una guía seleccionada para tu área.',
-      encabezado: ['Edición del mes', area ? `Lo nuevo en ${esc(area)}` : 'Lo nuevo para tu práctica'],
+      encabezado: ['Novedades del mes', area ? `Lo nuevo en ${esc(area)}` : 'Lo nuevo para tu práctica'],
       cuerpo: [
         saludo(primerNombre(nombre)),
         parrafo('Esta es nuestra selección del mes para ti: un curso para estudiar sin costo y una guía práctica para tu día a día.'),
@@ -281,7 +281,7 @@ export function armarCorreo(plantilla, datos) {
   const m = fn({ ...datos, siteUrl });
   return {
     subject: m.asunto,
-    html: cartaAcademica({
+    html: cartaCorreo({
       siteUrl, asunto: m.asunto, pre: m.pre, encabezado: m.encabezado, cuerpo: m.cuerpo,
       campana: 'ciclo', contenido: plantilla, marketing: m.marketing, despedida: m.despedida,
     }),
