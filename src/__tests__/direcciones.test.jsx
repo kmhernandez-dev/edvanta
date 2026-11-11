@@ -26,7 +26,9 @@ const nginx = readFileSync(path.join(raiz, 'nginx.conf'), 'utf8');
 describe('direcciones · redirecciones fijas', () => {
   it('cada dirección vieja tiene su 301 en nginx hacia la nueva', () => {
     for (const { antigua, nueva } of DIRECCIONES_ANTIGUAS) {
-      const bloque = new RegExp(`location = ${antigua.replace(/[/.]/g, '\\$&')}\\s*\\{\\s*return 301 https://\\$host${nueva.replace(/[/.]/g, '\\$&')}(\\$is_args\\$args)?;`);
+      // El destino puede llevar ?area=: se escapan todos los caracteres especiales.
+      const re = (x) => x.replace(/[.*+?^${}()|[\]\\/]/g, '\\$&');
+      const bloque = new RegExp(`location = ${re(antigua)}\\s*\\{\\s*return 301 https://\\$host${re(nueva)}(\\$is_args\\$args)?;`);
       expect(nginx, `${antigua} → ${nueva}`).toMatch(bloque);
     }
   });

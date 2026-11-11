@@ -56,6 +56,12 @@ export const DIRECCIONES_ANTIGUAS = [
   { antigua: '/emprendimientos', nueva: '/emprendimiento-farmaceutico', tipo: 'página' },
   { antigua: '/talento', nueva: '/vitrina-de-talento-farmaceutico', tipo: 'página' },
   { antigua: '/empresas/talento', nueva: '/empresas/recluta-talento-farmaceutico', tipo: 'página' },
+  // Encuestas por área (vivieron el 11-nov-2026): ahora son /unete con el área marcada.
+  { antigua: '/encuesta/calidad', nueva: '/unete/cursos?area=calidad', tipo: 'registro' },
+  { antigua: '/encuesta/farmacia-clinica', nueva: '/unete/cursos?area=farmacia-clinica', tipo: 'registro' },
+  { antigua: '/encuesta/farmacologia', nueva: '/unete/cursos?area=farmacologia', tipo: 'registro' },
+  { antigua: '/encuesta/asuntos-regulatorios', nueva: '/unete/cursos?area=asuntos-regulatorios', tipo: 'registro' },
+  { antigua: '/encuesta/webinars', nueva: '/unete/profesionales?area=webinars', tipo: 'registro' },
 ];
 
 /*
