@@ -218,6 +218,22 @@ for (const [publico, u] of Object.entries(UNETE)) {
 }
 
 
+// La vitrina de guías (/ofertas): con la oferta vigente en el título mientras dure.
+{
+  const { PROMOCION, promoActiva } = await importar('src/data/promocion.js');
+  const conOferta = promoActiva();
+  escribir('ofertas.html', pagina({
+    titulo: conOferta ? `Ofertas: ${PROMOCION.porcentaje} % en guías para químicos farmacéuticos y pacientes | Edvanta` : 'Guías para químicos farmacéuticos y pacientes | Edvanta',
+    descripcion: conOferta
+      ? `${PROMOCION.porcentaje} % de descuento con el cupón ${PROMOCION.codigo} hasta el ${PROMOCION.fechaTexto}: guías de IA con Claude, calidad, farmacia clínica y salud tiroidea.`
+      : 'Guías de IA con Claude, calidad, farmacia clínica y salud tiroidea, escritas por una química farmacéutica clínica.',
+    canonical: `${SITIO}/ofertas`,
+    imagen: `${SITIO}/img/unete/og-guias.jpg`,
+    cuerpo: `<main><h1>Guías para químicos farmacéuticos y pacientes</h1><ul>${GUIAS_VENTA.map((g) => `<li><a href="/guia/${g.slug}">${esc(g.titulo)}</a></li>`).join('')}</ul></main>`,
+  }));
+  enSitemap.push({ ruta: '/ofertas', prioridad: '0.8' });
+}
+
 /* ── Sitemap ──────────────────────────────────────────────── */
 
 /* ── Escuela de Marketing y servicios ────────────────────── */

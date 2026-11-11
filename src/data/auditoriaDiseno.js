@@ -45,6 +45,8 @@ export const COLORES_DEL_SISTEMA = [
   '#067647', '#ECFDF3', '#B54708', '#FFFAEB', '#B42318', '#FEF3F2', '#912018',
   // Canal WhatsApp (decisión del embudo, 11-nov-2026): el verde se reconoce y convierte
   '#25D366', '#1FBE5B', '#052E28',
+  // Oferta (Diseño 3.1, 11-nov-2026): coral solo para descuentos; oro para destacar
+  '#D93A22', '#FF5A3C', '#F0532F', '#FFE8E2', '#FFB020', '#FFF4DB', '#3A2F8A',
   // Neutros para superposición
   '#000000',
 ];

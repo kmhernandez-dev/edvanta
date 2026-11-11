@@ -28,6 +28,7 @@ import { ArrowRight, Check } from 'lucide-react';
 import { waLink } from '../../config/links';
 import { enviarSolicitud } from '../../lib/solicitudes';
 import { trackEvent } from '../../utils/analytics';
+import { PROMOCION, promoActiva } from '../../data/promocion';
 
 /* ── A quién le habla cada página ──────────────────────────── */
 
@@ -291,6 +292,11 @@ export function CierreDeVenta() {
         <div>
           <p className="text-xs font-semibold uppercase tracking-[.16em] text-[#DDF3F2]">{oferta.antetitulo}</p>
           <h2 id="cierre-de-venta" className="mt-3 font-display text-2xl font-bold leading-tight text-white sm:text-4xl">{oferta.titulo}</h2>
+          {promoActiva() && seccion !== 'instituciones' && (
+            <Link to="/ofertas" onClick={() => trackEvent('cierre_promo_click', { seccion })} className="mt-4 inline-flex flex-wrap items-center gap-2 rounded-full bg-white/10 py-1 pl-1 pr-3 text-[14px] font-semibold text-white ring-1 ring-white/25 transition hover:bg-white/15">
+              <span className="ed-insignia-promo">−{PROMOCION.porcentaje}%</span> Guías con el cupón <b className="tracking-wide">{PROMOCION.codigo}</b> hasta el {PROMOCION.fechaTexto}
+            </Link>
+          )}
           <p className="mt-4 max-w-xl text-base leading-7 text-[#E8EEFB]">{oferta.texto}</p>
           <ul className="mt-6 grid gap-2.5 sm:grid-cols-1">
             {oferta.puntos.map((p) => (

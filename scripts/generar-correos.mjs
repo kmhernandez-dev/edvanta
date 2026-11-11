@@ -20,6 +20,8 @@
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { cuponCorreo } from '../api/lib/aula/correos-embudo.js';
+import { PROMOCION, promoActiva } from '../api/lib/aula/promocion.js';
 
 const RAIZ = join(dirname(fileURLToPath(import.meta.url)), '..');
 const SALIDA = join(RAIZ, 'docs', 'email-marketing');
@@ -36,7 +38,7 @@ const FUENTE = "font-family:Inter,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;"
 
 const boton = (texto, url, { fondo = C.navy, color = '#FFFFFF' } = {}) => `
 <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin:0 auto;">
-  <tr><td align="center" bgcolor="${fondo}" style="border-radius:999px;">
+  <tr><td align="center" bgcolor="${fondo}" style="border-radius:999px;background:${fondo};background-image:${fondo === C.navy ? 'linear-gradient(135deg,#0A3AA6 0%,#082E86 55%,#031D5C 100%)' : fondo === '#D93A22' ? 'linear-gradient(135deg,#F0532F 0%,#D93A22 55%,#B42318 100%)' : 'none'};box-shadow:0 12px 24px -12px rgba(3,29,92,.55);">
     <!--[if mso]><v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" href="${url}" style="height:52px;v-text-anchor:middle;width:300px;" arcsize="50%" fillcolor="${fondo}" stroke="f"><center style="color:${color};font-family:Arial,sans-serif;font-size:16px;font-weight:bold;">${texto}</center></v:roundrect><![endif]-->
     <!--[if !mso]><!--><a href="${url}" target="_blank" style="display:inline-block;padding:16px 34px;${FUENTE}font-size:16px;font-weight:600;line-height:20px;color:${color};text-decoration:none;border-radius:999px;background:${fondo};">${texto} &rarr;</a><!--<![endif]-->
   </td></tr>
@@ -78,9 +80,11 @@ function plantilla({ asunto, preencabezado, banda, cuerpo, correo }) {
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:${C.fondo};">
   <tr><td align="center" style="padding:28px 12px;">
     <table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" class="tarjeta" style="width:600px;max-width:600px;background:#FFFFFF;border-radius:24px;overflow:hidden;border:1px solid ${C.linea};">
-      <tr><td style="padding:24px 36px 0;" class="pad">
-        <a href="${utm(SITIO, correo)}" target="_blank"><img src="${SITIO}/img/logo-edvanta.png" width="104" alt="Edvanta" style="display:block;border:0;height:auto;"></a>
-      </td></tr>
+      <tr><td style="height:6px;line-height:6px;font-size:0;background:#8981CE;background-image:linear-gradient(90deg,#8981CE 0%,#25A7B0 50%,#FF5A3C 100%);">&nbsp;</td></tr>
+      <tr><td style="padding:22px 36px 0;" class="pad"><table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
+        <td valign="middle"><a href="${utm(SITIO, correo)}" target="_blank"><img src="${SITIO}/img/logo-edvanta.png" width="104" alt="Edvanta" style="display:block;border:0;height:auto;"></a></td>
+        ${promoActiva() ? `<td valign="middle" align="right"><a href="${utm(`${SITIO}/ofertas`, correo)}" style="display:inline-block;padding:6px 12px;${FUENTE}font-size:12px;font-weight:800;color:#FFFFFF;background:#D93A22;border-radius:999px;text-decoration:none;">−${PROMOCION.porcentaje}% · ${PROMOCION.codigo}</a></td>` : ''}
+      </tr></table></td></tr>
       ${banda ? `<tr><td style="padding:20px 36px 0;" class="pad">${banda}</td></tr>` : ''}
       <tr><td style="padding:28px 36px 36px;" class="pad">${cuerpo}${firma}</td></tr>
       <tr><td style="background:${C.deep};padding:22px 36px;" class="pad">
@@ -96,7 +100,7 @@ function plantilla({ asunto, preencabezado, banda, cuerpo, correo }) {
 
 const banda = (titulo, sub, color = C.navy) => `
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
-  <td style="background:${color};background-image:linear-gradient(135deg,${C.deep} 0%,${color} 62%,#0A3AA6 100%);border-radius:18px;padding:26px 26px;">
+  <td style="background:${color};background-image:radial-gradient(circle at 92% 8%,rgba(137,129,206,.75) 0%,rgba(137,129,206,0) 42%),radial-gradient(circle at 6% 96%,rgba(37,167,176,.6) 0%,rgba(37,167,176,0) 40%),linear-gradient(135deg,${C.deep} 0%,${color} 60%,#3A2F8A 100%);border-radius:18px;padding:28px 26px;">
     <p style="margin:0 0 6px;${FUENTE}font-size:12px;line-height:16px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#DDF3F2;">${sub}</p>
     <p style="margin:0;font-family:Manrope,Inter,'Segoe UI',Arial,sans-serif;font-size:24px;line-height:30px;font-weight:800;color:#FFFFFF;">${titulo}</p>
   </td></tr></table>`;
@@ -141,6 +145,7 @@ const CORREOS = [
       p('En Edvanta los cursos propios se estudian sin costo. Cuando quieras demostrar lo que aprendiste, pides tu certificado:'),
       lista(['<strong>Contenido gratis</strong> en todos los cursos propios', '<strong>Casos reales y quices</strong> para practicar en el aula', '<strong>Certificado verificable</strong> por COP 60.000, en un solo pago', '<strong>Verificación pública</strong>: quien revise tu hoja de vida puede comprobarlo']),
       boton('Seguir con {{curso_titulo}}', utm('{{curso_url}}', c)),
+      cuponCorreo(SITIO, c, { titulo: 'Y para tu trabajo, guías' }),
       p(`<a href="${utm(`${SITIO}/cursos`, c)}" style="color:${C.tealdark};font-weight:600;">O mira todos los cursos gratis</a>`, 'text-align:center;margin:18px 0 0;font-size:14px;'),
     ].join(''),
   },
@@ -156,7 +161,8 @@ const CORREOS = [
       h1('{{guia_titulo}}'),
       p('Si cada semana repites el mismo trabajo, esta guía es para ti. Está escrita por Karla Hernández, química farmacéutica clínica, con casos ficticios para practicar sin exponer datos reales.'),
       lista(['La técnica en una línea y la instrucción lista para copiar', 'Qué verificar antes de usar cada resultado', 'Acceso por correo al comprar en Hotmart']),
-      boton('Ver la guía por dentro', utm('{{guia_url}}', c), { fondo: C.navy }),
+      cuponCorreo(SITIO, c, { titulo: 'Tu descuento' }),
+      boton(promoActiva() ? `Comprar con ${PROMOCION.porcentaje} % OFF` : 'Ver la guía por dentro', utm('{{guia_url}}', c), { fondo: promoActiva() ? '#D93A22' : C.navy }),
       p('Pago seguro en Hotmart, con su garantía de reembolso.', 'text-align:center;margin:14px 0 0;font-size:13px;color:#66738A;'),
     ].join(''),
   },
@@ -168,6 +174,7 @@ const CORREOS = [
     banda: banda('Antes de decidir, resolvamos tus dudas', 'Preguntas frecuentes', C.navy),
     cuerpo: (c) => [
       h1('{{nombre}}, estas son las preguntas que más nos hacen'),
+      cuponCorreo(SITIO, c, { titulo: 'Tu cupón sigue activo' }),
       caja([h2('¿Cómo recibo la guía?'), p('Pagas en Hotmart y recibes el acceso en el correo con el que compraste. También queda en tu cuenta de Hotmart.', 'margin:0;')].join('')),
       caja([h2('¿Y si no es lo que esperaba?'), p('La compra está protegida por la garantía de Hotmart: puedes pedir el reembolso dentro del plazo que indica la página de pago.', 'margin:0;')].join('')),
       caja([h2('¿Es para mí?'), p('Escríbenos por WhatsApp con tu cargo y lo que quieres resolver. Te decimos con honestidad si la guía te sirve o si te conviene empezar por un curso gratis.', 'margin:0;')].join('')),

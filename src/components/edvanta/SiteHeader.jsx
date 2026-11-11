@@ -29,6 +29,7 @@ import {
   ESCUELAS_GROUPS, MAIN_LINKS, NAV_INSTITUCIONES, NAV_PACIENTES, PUBLICOS_NAV, RECURSOS_GROUPS, TOP_LINKS, contextoDe,
 } from '../../config/navEdvanta';
 import GlobalSearch from './GlobalSearch';
+import { FranjaPromo } from './promo';
 
 const MENUS = {
   escuelas: { id: 'escuelas', label: 'Escuelas', groups: ESCUELAS_GROUPS, width: 'w-[440px]', cols: 1, all: { label: 'Ver las cinco escuelas', to: '/escuelas' } },
@@ -188,6 +189,8 @@ export default function SiteHeader() {
 
   return (
     <header ref={ref} className="sticky top-0 z-50 bg-white">
+      {/* La oferta vigente (se apaga sola al vencer). */}
+      <FranjaPromo />
       {/* Franja superior */}
       <div className="border-b border-edvanta-border bg-edvanta-bg">
         <div className="mx-auto flex h-10 max-w-7xl items-center justify-between gap-3 px-4 sm:px-6 lg:px-8">

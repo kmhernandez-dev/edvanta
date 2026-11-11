@@ -608,3 +608,108 @@ body:has(.ed-barra-movil) .ed-wa-flotante { bottom: 5.5rem; }
 @keyframes edAcercar { from { transform: scale(1.06); } to { transform: scale(1); } }
 @keyframes edSubir { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
 @media (prefers-reduced-motion: reduce) { .ed-unete-foto img, .ed-unete-chip { animation: none; } }
+
+/* ── Diseño 3.1 · Oferta, color y movimiento ──────────────────
+   Decisión de la dueña (11-nov-2026): más color, más movimiento y
+   ofertas visibles. El coral es el color de la oferta y solo se usa
+   para ella. Contraste AA con texto blanco: #D93A22 (4,6:1). */
+:root { --ds-promo: #D93A22; --ds-promo-vivo: #FF5A3C; --ds-promo-suave: #FFE8E2; --ds-oro: #FFB020; --ds-oro-suave: #FFF4DB; }
+
+.ed-btn--promo {
+  background: linear-gradient(135deg, #F0532F 0%, #D93A22 55%, #B42318 100%);
+  color: #fff; box-shadow: 0 14px 30px -14px rgba(217, 58, 34, 0.8);
+}
+.ed-btn--promo:hover:not(:disabled) { color: #fff; box-shadow: 0 0 0 4px rgba(255, 90, 60, 0.18), 0 16px 34px -14px rgba(217, 58, 34, 0.9); }
+.ed-btn--promo::after {
+  content: ''; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
+  background: linear-gradient(110deg, transparent 30%, rgba(255, 255, 255, 0.35) 50%, transparent 70%);
+  transform: translateX(-130%); animation: edBrillo 3.2s ease-in-out 1s infinite;
+}
+@keyframes edBrillo { 0%, 60% { transform: translateX(-130%); } 100% { transform: translateX(130%); } }
+
+.ed-franja-promo {
+  background: linear-gradient(90deg, #B42318, #D93A22, #5E51A8, #3A2F8A, #D93A22, #B42318);
+  background-size: 300% 100%; animation: edFluir 14s linear infinite;
+}
+@keyframes edFluir { from { background-position: 0% 50%; } to { background-position: 300% 50%; } }
+
+.ed-reloj {
+  display: inline-flex; flex-direction: column; align-items: center; min-width: 54px; padding: 6px 8px 5px;
+  border-radius: 10px; background: #fff; border: 1px solid var(--ds-promo-suave);
+  box-shadow: 0 10px 22px -16px rgba(217, 58, 34, 0.7);
+}
+.ed-reloj__n { font-family: Manrope, Inter, sans-serif; font-weight: 800; font-size: 22px; line-height: 1.1; color: var(--ds-promo); }
+.ed-reloj__l { font-size: 12px; line-height: 1.3; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; color: #66738A; }
+.ed-reloj--oscuro { background: rgba(255, 255, 255, 0.12); border-color: rgba(255, 255, 255, 0.22); box-shadow: none; }
+.ed-reloj--oscuro .ed-reloj__n { color: #fff; }
+.ed-reloj--oscuro .ed-reloj__l { color: #E8EEFB; }
+
+.ed-cupon {
+  position: relative; display: flex; align-items: center; justify-content: space-between; gap: 14px;
+  padding: 14px 16px 14px 20px; border-radius: 14px; background: #FFF; border: 2px dashed var(--ds-promo-vivo);
+  box-shadow: 0 16px 34px -24px rgba(217, 58, 34, 0.7);
+}
+.ed-cupon::before, .ed-cupon::after {
+  content: ''; position: absolute; top: 50%; width: 18px; height: 18px; border-radius: 50%;
+  background: var(--ds-surface, #F8FAFD); border: 2px dashed var(--ds-promo-vivo); transform: translateY(-50%);
+}
+.ed-cupon::before { left: -11px; clip-path: inset(0 0 0 50%); }
+.ed-cupon::after { right: -11px; clip-path: inset(0 50% 0 0); }
+
+.ed-insignia-promo {
+  display: inline-flex; align-items: center; padding: 4px 11px; border-radius: 999px;
+  background: var(--ds-promo); color: #fff; font-weight: 800; font-size: 14px; letter-spacing: .02em;
+  box-shadow: 0 10px 22px -10px rgba(217, 58, 34, 0.8); animation: edLatido 2.6s ease-in-out infinite;
+}
+@keyframes edLatido { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.07); } }
+
+/* Sello circular sobre la portada del libro. */
+.ed-sello {
+  position: absolute; z-index: 3; top: -16px; right: -12px; width: 92px; height: 92px; border-radius: 50%;
+  display: grid; place-items: center; text-align: center; color: #fff;
+  background: radial-gradient(circle at 30% 25%, #FF5A3C, #D93A22 60%, #B42318);
+  box-shadow: 0 18px 34px -14px rgba(180, 35, 24, 0.75); transform: rotate(-10deg);
+  animation: edBalanceo 4s ease-in-out infinite;
+}
+.ed-sello::before { content: ''; position: absolute; inset: 6px; border-radius: 50%; border: 2px dashed rgba(255, 255, 255, 0.55); }
+.ed-sello b { display: block; font-family: Manrope, Inter, sans-serif; font-size: 26px; font-weight: 800; line-height: 1; }
+.ed-sello span { display: block; font-size: 12px; font-weight: 700; letter-spacing: .08em; }
+@keyframes edBalanceo { 0%, 100% { transform: rotate(-10deg) scale(1); } 50% { transform: rotate(-4deg) scale(1.05); } }
+
+/* Burbujas de color que se mueven despacio detrás de un bloque. */
+.ed-vivo { position: relative; isolation: isolate; overflow: hidden; }
+.ed-vivo::before, .ed-vivo::after {
+  content: ''; position: absolute; z-index: -1; border-radius: 50%; filter: blur(60px); opacity: .55; pointer-events: none;
+}
+.ed-vivo::before { width: 460px; height: 460px; top: -140px; right: -80px; background: #8981CE; animation: edFlotarA 16s ease-in-out infinite; }
+.ed-vivo::after { width: 420px; height: 420px; bottom: -160px; left: -120px; background: #25A7B0; animation: edFlotarB 18s ease-in-out infinite; }
+.ed-vivo--promo::after { background: #FF5A3C; opacity: .28; }
+@keyframes edFlotarA { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(-60px, 50px); } }
+@keyframes edFlotarB { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(70px, -40px); } }
+
+/* Cinta de beneficios que se desliza. */
+.ed-marquesina { overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
+.ed-marquesina__pista { display: flex; width: max-content; gap: 44px; animation: edDesliza 38s linear infinite; }
+.ed-marquesina:hover .ed-marquesina__pista { animation-play-state: paused; }
+@keyframes edDesliza { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* Aparición al bajar (useRevelar). Sin JavaScript, todo se ve. */
+.js-revelar [data-revelar] { opacity: 0; transform: translateY(22px); transition: opacity .7s ease, transform .7s cubic-bezier(.2, .8, .2, 1); }
+.js-revelar [data-revelar].esta-visible { opacity: 1; transform: none; }
+
+/* Tarjetas de dolor en tres tintes de la marca. */
+.ed-dolor:nth-child(1) { background: linear-gradient(180deg, #FFFFFF, #F6F3FE); }
+.ed-dolor:nth-child(2) { background: linear-gradient(180deg, #FFFFFF, #F0FAF9); }
+.ed-dolor:nth-child(3) { background: linear-gradient(180deg, #FFFFFF, #FFE8E2); }
+
+@media (prefers-reduced-motion: reduce) {
+  .ed-btn--promo::after, .ed-franja-promo, .ed-insignia-promo, .ed-sello, .ed-vivo::before, .ed-vivo::after, .ed-marquesina__pista { animation: none; }
+  .js-revelar [data-revelar] { opacity: 1; transform: none; transition: none; }
+}
+
+.ed-collage { animation: edCollage 7s ease-in-out infinite; }
+@keyframes edCollage { 0%, 100% { translate: 0 0; } 50% { translate: 0 -10px; } }
+@media (prefers-reduced-motion: reduce) { .ed-collage { animation: none; } }
+
+.ed-tarjeta-brillo { position: relative; border: 2px solid transparent; background: linear-gradient(#fff, #fff) padding-box, linear-gradient(135deg, #8981CE, #25A7B0 55%, #FF5A3C) border-box; }
+@media (max-width: 639px) { .ed-sello { right: 4px; top: -12px; width: 78px; height: 78px; } .ed-sello b { font-size: 22px; } }

@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight, Lock } from 'lucide-react';
 import { BotonWhatsApp } from '../edvanta/embudo';
+import { InsigniaDescuento } from '../edvanta/promo';
 import { rutaDeGuia } from '../../data/guiasVenta';
 
 /**
@@ -16,6 +17,7 @@ export default function HotmartCard({ product }) {
       <div className={`relative flex aspect-[4/3] items-center justify-center bg-gradient-to-br ${product.cover.gradient}`}>
         <span className="text-6xl drop-shadow-sm" aria-hidden="true">{product.cover.emoji}</span>
         <span className="absolute bottom-3 left-3 rounded-full bg-white/90 px-2.5 py-0.5 text-xs font-semibold text-edvanta-deep">{product.tag}</span>
+        {pagina && <InsigniaDescuento className="absolute right-3 top-3" />}
       </div>
 
       <div className="flex flex-1 flex-col gap-3 p-5">

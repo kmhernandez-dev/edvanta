@@ -21,6 +21,7 @@ const AdminAuditoriaDiseno = lazy(() => import('./pages/AdminAuditoriaDiseno'));
 const GuiaVenta = lazy(() => import('./pages/GuiaVenta'));
 const EncuestaArea = lazy(() => import('./pages/EncuestaArea'));
 const Unete = lazy(() => import('./pages/Unete'));
+const Ofertas = lazy(() => import('./pages/Ofertas'));
 const AdminEnlacesLinkedin = lazy(() => import('./pages/AdminEnlacesLinkedin'));
 const AdminIndex = lazy(() => import('./pages/AdminIndex'));
 const ArticuloPage = lazy(() => import('./pages/ArticuloPage'));
@@ -393,6 +394,7 @@ export default function App() {
         <Route path="/guia/:slug" element={<GuiaVenta />} />
         <Route path="/encuesta/:area" element={<EncuestaArea />} />
         <Route path="/unete/:publico" element={<Unete />} />
+        <Route path="/ofertas" element={<Ofertas />} />
         <Route path="/unete" element={<Navigate to="/unete/profesionales" replace />} />
         <Route path="/admin/enlaces-linkedin" element={<AdminEnlacesLinkedin />} />
         <Route path="/cursos/en-vivo/:slug" element={<CursoEnVivo />} />

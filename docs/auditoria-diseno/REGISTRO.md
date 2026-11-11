@@ -97,3 +97,22 @@ En el servidor local los colores no se pueden medir con exactitud: la caché de 
 | E12 | Correos automáticos: registro (5), inscripción, bienvenida, recordatorio, certificado pagado y novedades. Una sola vez por persona, sin avalanchas a contactos antiguos | Pruebas de la API (plantillas sin huecos, envío único, bienvenida al día siguiente) | Hecho |
 | E13 | Las encuestas por área de la primera entrega se unieron a `/unete` y la dirección vieja redirige | Prueba de redirección | Hecho |
 | E14 | El control de diseño detectó radios fuera de la escala en las páginas nuevas (14, 10 y 20 px) y se corrigieron antes de publicar | Prueba H6 | Cerrado |
+
+## Diseño 3.1 · Color, movimiento y oferta · 11-nov-2026
+
+**Pedido de la dueña:** que todo se vea colorido y dinámico, con descuentos, botones y publicidad.
+
+**Oferta real decidida por la dueña:** 20 % con el cupón EDVANTA20 hasta el 30-nov-2026, 11:59 p. m. (hora de Colombia). El cupón se crea en Hotmart. Vive en una sola fuente (`src/data/promocion.js`, con su copia en la API para los correos) y todo se apaga solo al vencer.
+
+| Id | Acción | Control | Estado |
+|---|---|---|---|
+| D1 | Acento coral, solo para ofertas: botón con brillo (#D93A22, contraste 4,6:1 con blanco), insignia «−20 %» que late y sello circular en las portadas | Colores agregados al sistema; auditoría C7 | Hecho |
+| D2 | Franja superior animada en todo el sitio, con cuenta regresiva real; se puede cerrar | Prueba: se apaga después del 30-nov | Hecho |
+| D3 | `/ofertas`: vitrina de las 38 guías con filtros, collage animado, cupón para copiar y los pasos para usarlo | Prerender y sitemap | Hecho |
+| D4 | Páginas de venta: héroe con burbujas de color, sello de descuento, cupón, cuenta regresiva, cinta de beneficios en movimiento, tarjetas en tres tintes y aparición al bajar | Revisión en celular: sin desborde y 12 bloques que aparecen | Hecho |
+| D5 | Páginas `/unete`: fondo vivo, sellos sobre la foto, borde degradado en el formulario y cupón en guías | Revisión visual | Hecho |
+| D6 | Correos (5 de venta y 10 automáticos): franja de colores, sello de la oferta, banda con luces, botones con degradado (respaldo sólido para Outlook), cupón como tiquete y portada de la guía en JPG | Pruebas de la API: plantillas sin huecos | Hecho |
+| D7 | El cupón solo puede estar escrito en `promocion.js`, para que nunca quede una oferta vencida a la vista | Prueba de control | Hecho |
+| D8 | El control de radios ya había detectado valores fuera de la escala en las páginas nuevas; esta entrega se hizo dentro de la escala | Prueba H6 | Cerrado |
+
+**Al vencer la oferta:** la interfaz se apaga sola. El título prerenderizado de `/ofertas` se actualiza en el siguiente despliegue.

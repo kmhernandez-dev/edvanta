@@ -28,6 +28,8 @@
  * ============================================================
  */
 
+import { PROMOCION, promoActiva } from './promocion.js';
+
 const WA_NUMERO = '573006332244';
 const wa = (mensaje) => `https://wa.me/${WA_NUMERO}?text=${encodeURIComponent(mensaje)}`;
 const esc = (v) => String(v ?? '')
@@ -53,15 +55,43 @@ export function recomendacionDeArea(area) {
   return hallado ? hallado[1] : { escuela: null, guia: null };
 }
 
+const PORTADA_DE_GUIA = {
+  'claude-aseguramiento-de-calidad-farmaceutica': 'claude-aseguramiento-de-calidad',
+  'claude-control-de-calidad-farmaceutica': 'claude-control-de-calidad',
+  'claude-farmacia-asistencial': 'claude-farmacia-asistencial',
+  'claude-automatizacion-de-tareas-farmaceuticas': 'claude-automatizacion-de-tareas',
+  'metodo-linkedin-edutin': 'metodo-linkedin-edutin',
+};
+const portadaGuia = (siteUrl, slug, url) => (PORTADA_DE_GUIA[slug] ? `
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:0 0 22px;"><tr><td align="center" style="background:#F6F3FE;background-image:linear-gradient(135deg,#F6F3FE 0%,#F0FAF9 100%);border-radius:18px;padding:22px;">
+  <a href="${url}" target="_blank"><img src="${siteUrl}/img/guias/correo/${PORTADA_DE_GUIA[slug]}.jpg" width="260" alt="Portada de la guía" style="display:block;width:260px;max-width:100%;height:auto;border:0;border-radius:12px;box-shadow:0 22px 40px -22px rgba(3,29,92,.6);"></a>
+</td></tr></table>` : '');
+
 /* ── Diseño ─────────────────────────────────────────────────── */
 
 const F = "font-family:Inter,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;";
 const T = "font-family:Manrope,Inter,'Segoe UI',Arial,sans-serif;";
 
+const DEGRADADOS = { '#082E86': 'linear-gradient(135deg,#0A3AA6 0%,#082E86 55%,#031D5C 100%)', '#D93A22': 'linear-gradient(135deg,#F0532F 0%,#D93A22 55%,#B42318 100%)', '#5E51A8': 'linear-gradient(135deg,#8981CE 0%,#5E51A8 100%)' };
 const boton = (texto, url, { fondo = '#082E86', color = '#FFFFFF' } = {}) => `
-<table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin:0 auto;"><tr><td align="center" bgcolor="${fondo}" style="border-radius:999px;">
-  <a href="${esc(url)}" target="_blank" style="display:inline-block;padding:15px 32px;${F}font-size:16px;font-weight:600;line-height:20px;color:${color};text-decoration:none;border-radius:999px;background:${fondo};">${texto} &rarr;</a>
+<table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin:0 auto;"><tr><td align="center" bgcolor="${fondo}" style="border-radius:999px;background:${fondo};background-image:${DEGRADADOS[fondo] || 'none'};box-shadow:0 12px 24px -12px rgba(3,29,92,.55);">
+  <a href="${esc(url)}" target="_blank" style="display:inline-block;padding:16px 34px;${F}font-size:16px;font-weight:700;line-height:20px;color:${color};text-decoration:none;border-radius:999px;">${texto} &rarr;</a>
 </td></tr></table>`;
+
+/** El cupón vigente como tiquete. Desaparece solo cuando la oferta vence. */
+export const cuponCorreo = (siteUrl, plantilla, { titulo = 'Guías con descuento' } = {}) => (promoActiva() ? `
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:4px 0 24px;"><tr><td style="border:2px dashed #FF5A3C;border-radius:18px;background:#FFF4DB;background-image:linear-gradient(135deg,#FFF4DB 0%,#FFE8E2 100%);padding:20px 22px;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
+    <td valign="middle" class="col" style="padding:0 12px 12px 0;">
+      <p style="margin:0 0 4px;${F}font-size:12px;line-height:16px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#B42318;">${titulo} · hasta el ${PROMOCION.fechaTexto}</p>
+      <p style="margin:0 0 4px;${T}font-size:30px;line-height:34px;font-weight:800;color:#D93A22;">${PROMOCION.porcentaje} % OFF</p>
+      <p style="margin:0;${F}font-size:14px;line-height:21px;color:#4A5A73;">Usa el cupón <strong style="font-size:16px;letter-spacing:1px;color:#14233F;background:#FFFFFF;border-radius:6px;padding:2px 8px;">${PROMOCION.codigo}</strong> al pagar en Hotmart.</p>
+    </td>
+    <td valign="middle" align="right" class="col" style="padding:0 0 12px 0;">
+      <a href="${esc(utm(`${siteUrl}/ofertas`, plantilla))}" target="_blank" style="display:inline-block;padding:12px 22px;${F}font-size:15px;font-weight:700;color:#FFFFFF;background:#D93A22;background-image:linear-gradient(135deg,#F0532F,#B42318);border-radius:999px;text-decoration:none;white-space:nowrap;">Ver ofertas &rarr;</a>
+    </td>
+  </tr></table>
+</td></tr></table>` : '');
 const p = (t, extra = '') => `<p style="margin:0 0 16px;${F}font-size:16px;line-height:26px;color:#4A5A73;${extra}">${t}</p>`;
 const h1 = (t) => `<h1 style="margin:0 0 14px;${T}font-size:28px;line-height:34px;font-weight:800;color:#14233F;letter-spacing:-0.4px;">${t}</h1>`;
 const h2 = (t) => `<h2 style="margin:0 0 8px;${T}font-size:19px;line-height:25px;font-weight:700;color:#14233F;">${t}</h2>`;
@@ -100,8 +130,12 @@ function layout({ siteUrl, asunto, pre, banda, cuerpo, plantilla, marketing = fa
 <div style="display:none;max-height:0;overflow:hidden;opacity:0;">${esc(pre)}&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;</div>
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#F4F7FD;"><tr><td align="center" style="padding:26px 12px;">
 <table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" class="tarjeta" style="width:600px;max-width:600px;background:#FFFFFF;border-radius:24px;overflow:hidden;border:1px solid #E3E9F2;">
-  <tr><td style="padding:24px 34px 0;" class="pad"><a href="${esc(utm(siteUrl, plantilla))}" target="_blank"><img src="${siteUrl}/img/logo-edvanta.png" width="104" alt="Edvanta" style="display:block;border:0;height:auto;"></a></td></tr>
-  ${banda ? `<tr><td style="padding:18px 34px 0;" class="pad"><table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="background:#082E86;background-image:linear-gradient(135deg,#031D5C 0%,#082E86 62%,#0A3AA6 100%);border-radius:18px;padding:24px 24px;">
+  <tr><td style="height:6px;line-height:6px;font-size:0;background:#8981CE;background-image:linear-gradient(90deg,#8981CE 0%,#25A7B0 50%,#FF5A3C 100%);">&nbsp;</td></tr>
+  <tr><td style="padding:22px 34px 0;" class="pad"><table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
+    <td valign="middle"><a href="${esc(utm(siteUrl, plantilla))}" target="_blank"><img src="${siteUrl}/img/logo-edvanta.png" width="104" alt="Edvanta" style="display:block;border:0;height:auto;"></a></td>
+    ${promoActiva() ? `<td valign="middle" align="right"><a href="${esc(utm(`${siteUrl}/ofertas`, plantilla))}" style="display:inline-block;padding:6px 12px;${F}font-size:12px;font-weight:800;color:#FFFFFF;background:#D93A22;border-radius:999px;text-decoration:none;">−${PROMOCION.porcentaje}% · ${PROMOCION.codigo}</a></td>` : ''}
+  </tr></table></td></tr>
+  ${banda ? `<tr><td style="padding:18px 34px 0;" class="pad"><table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="background:#082E86;background-image:radial-gradient(circle at 92% 8%,rgba(137,129,206,.75) 0%,rgba(137,129,206,0) 42%),radial-gradient(circle at 6% 96%,rgba(37,167,176,.6) 0%,rgba(37,167,176,0) 40%),linear-gradient(135deg,#031D5C 0%,#082E86 60%,#3A2F8A 100%);border-radius:18px;padding:28px 26px;">
     <p style="margin:0 0 6px;${F}font-size:12px;line-height:16px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#DDF3F2;">${banda[0]}</p>
     <p style="margin:0;${T}font-size:23px;line-height:29px;font-weight:800;color:#FFFFFF;">${banda[1]}</p></td></tr></table></td></tr>` : ''}
   <tr><td style="padding:26px 34px 34px;" class="pad">${cuerpo}${firma}</td></tr>
@@ -130,6 +164,7 @@ export const PLANTILLAS = {
         boton(area ? `Ver los cursos de ${esc(area)}` : 'Ver los cursos gratis', utm(destino, 'registro-profesional')),
         caja([ante('Si quieres demostrarlo'), p(`Cuando termines, ${CERT_TEXTO(60000)}. Quien revise tu hoja de vida puede verificarlo.`, 'margin:0;')].join(''), '#F6F3FE'),
         r.guia ? caja([ante('Para ahorrar horas en tu trabajo'), h2(esc(r.guiaTitulo)), p('La guía práctica con instrucciones listas para copiar y lo que debes verificar.', 'margin:0 0 12px;'), `<a href="${esc(utm(`${siteUrl}/guia/${r.guia}`, 'registro-profesional'))}" style="${F}font-size:15px;font-weight:600;color:#082E86;">Ver la guía &rarr;</a>`].join('')) : '',
+        cuponCorreo(siteUrl, 'registro-profesional'),
         enlaceWa(`Hola, equipo Edvanta. Soy ${primerNombre(nombre)} y quiero que me recomienden un curso${area ? ` de ${area}` : ''}.`),
       ].join(''),
     };
@@ -144,7 +179,9 @@ export const PLANTILLAS = {
       cuerpo: [
         h1(`Hola, ${esc(primerNombre(nombre))}. Esta es tu guía.`),
         p(`Te registraste para recibir guías${area ? ` de ${esc(area)}` : ''}. Elegimos la que más tiempo te puede ahorrar: técnicas aplicables, instrucciones listas para copiar y qué verificar antes de usar cada resultado.`),
-        boton('Ver la guía por dentro', utm(url, 'registro-guia')),
+        portadaGuia(siteUrl, r.guia, esc(utm(url, 'registro-guia'))),
+        cuponCorreo(siteUrl, 'registro-guia', { titulo: 'Tu descuento' }),
+        boton(promoActiva() ? `Ver la guía con ${PROMOCION.porcentaje} % OFF` : 'Ver la guía por dentro', utm(url, 'registro-guia'), { fondo: promoActiva() ? '#D93A22' : '#082E86' }),
         p('Pago seguro en Hotmart, con su garantía de reembolso.', 'text-align:center;margin:12px 0 0;font-size:13px;color:#66738A;'),
         caja([ante('Mientras tanto, gratis'), p(`Estudia un curso gratis del aula y, si quieres, ${CERT_TEXTO(60000)}.`, 'margin:0 0 10px;'), `<a href="${esc(utm(`${siteUrl}/cursos`, 'registro-guia'))}" style="${F}font-size:15px;font-weight:600;color:#082E86;">Ver los cursos gratis &rarr;</a>`].join('')),
         enlaceWa(`Hola, soy ${primerNombre(nombre)}. ¿Qué guía me recomiendan${area ? ` para ${area}` : ''}?`),
@@ -160,6 +197,7 @@ export const PLANTILLAS = {
       p(`Te contamos lo que tenemos para acompañarte${area ? ` con ${esc(String(area).toLowerCase())}` : ''}. Todo está escrito en lenguaje claro por una química farmacéutica.`),
       lista(['<strong>Guía gratis:</strong> cómo tomar la levotiroxina correctamente', '<strong>Guías, curso, retos y recetas</strong> para pacientes y cuidadores', '<strong>Comunidad</strong> para no vivir el proceso a solas']),
       boton('Ver mis recursos gratis', utm(`${siteUrl}/contigo#gratis`, 'registro-paciente')),
+      cuponCorreo(siteUrl, 'registro-paciente', { titulo: 'Guías de Feliz Sin Tiroides' }),
       caja([ante('Si quieres ir más a fondo'), h2('Colección Bienestar Tiroideo desde 0'), p('Entiende y cuida tu tiroides paso a paso, desde cero.', 'margin:0 0 10px;'), `<a href="${esc(utm(`${siteUrl}/guia/coleccion-bienestar-tiroideo`, 'registro-paciente'))}" style="${F}font-size:15px;font-weight:600;color:#082E86;">Conocer la colección &rarr;</a>`].join(''), '#F6F3FE'),
       p('Este contenido es educativo: no reemplaza la valoración, el diagnóstico ni el tratamiento de tu equipo de salud.', 'font-size:13px;line-height:20px;color:#66738A;margin:0;'),
       enlaceWa(`Hola, soy ${primerNombre(nombre)}. Quiero orientación sobre los recursos para pacientes.`),
@@ -232,6 +270,7 @@ export const PLANTILLAS = {
       p(`Recibimos el pago del certificado de <strong style="color:#14233F;">${esc(curso)}</strong>. Cuando cumplas los requisitos del curso, lo emites desde el aula.`),
       lista(['<strong>Emítelo</strong> desde la pestaña del certificado en el aula', '<strong>Compártelo</strong>: cualquiera puede verificarlo en edvanta.co/certificados', '<strong>Agrégalo a LinkedIn</strong> en «Licencias y certificaciones»']),
       boton('Ir a mi curso', utm(cursoUrl, 'certificado-pagado')),
+      cuponCorreo(siteUrl, 'certificado-pagado', { titulo: 'Para seguir aprendiendo' }),
       caja([ante('Tu siguiente paso'), p('Sigue con otro curso gratis de tu área y suma certificados a tu perfil.', 'margin:0 0 10px;'), `<a href="${esc(utm(`${siteUrl}/cursos`, 'certificado-pagado'))}" style="${F}font-size:15px;font-weight:600;color:#082E86;">Ver más cursos &rarr;</a>`].join(''), '#F6F3FE'),
     ].join(''),
   }),
@@ -243,7 +282,9 @@ export const PLANTILLAS = {
       banda: ['Novedades', area ? `Lo nuevo en ${esc(area)}` : 'Lo nuevo para tu práctica'],
       cuerpo: [
         h1('Esto es lo que preparamos este mes'),
+        cuponCorreo(siteUrl, 'novedades'),
         caja([ante('Curso gratis'), p(`Estudia gratis en el aula y, si quieres, ${CERT_TEXTO(60000)}.`, 'margin:0 0 10px;'), `<a href="${esc(utm(r.escuela ? `${siteUrl}/escuelas/${r.escuela}` : `${siteUrl}/cursos`, 'novedades'))}" style="${F}font-size:15px;font-weight:600;color:#082E86;">Ver los cursos &rarr;</a>`].join('')),
+        r.guia ? portadaGuia(siteUrl, r.guia, esc(utm(`${siteUrl}/guia/${r.guia}`, 'novedades'))) : '',
         r.guia ? caja([ante('Guía recomendada'), h2(esc(r.guiaTitulo)), `<a href="${esc(utm(`${siteUrl}/guia/${r.guia}`, 'novedades'))}" style="${F}font-size:15px;font-weight:600;color:#082E86;">Ver la guía &rarr;</a>`].join(''), '#F6F3FE') : '',
         enlaceWa(`Hola, soy ${primerNombre(nombre)}. Quiero una recomendación para este mes.`),
       ].join(''),

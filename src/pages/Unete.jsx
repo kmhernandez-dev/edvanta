@@ -17,6 +17,8 @@ import { useEffect, useId, useMemo, useState } from 'react';
 import { Link, Navigate, useLocation, useParams } from 'react-router-dom';
 import { ArrowRight, Check, Lock, Mail } from 'lucide-react';
 import { BotonWhatsApp, enlaceWhatsApp, irAWhatsApp, prepararVentana } from '../components/edvanta/embudo';
+import { CuentaRegresiva, CuponCopiable } from '../components/edvanta/promo';
+import { PROMOCION, promoActiva } from '../data/promocion';
 import { AREAS_PROFESIONALES, PAISES, PROFESIONES, QUIEN_ERES, UNETE, areasDelEnlace } from '../data/embudoLinkedin';
 import { GUIAS_VENTA } from '../data/guiasVenta';
 import { enviarSolicitud } from '../lib/solicitudes';
@@ -74,7 +76,7 @@ function Resultado({ publico, conf, datos }) {
   let extra = null;
   if (publico === 'guias') {
     principal = guias.length
-      ? <div className="space-y-2.5">{guias.map(tarjetaGuia)}</div>
+      ? <div className="space-y-2.5">{promoActiva() && <CuponCopiable origen="unete-guias-listo" />}{guias.map(tarjetaGuia)}</div>
       : <Link to="/" className="ed-btn ed-btn--gradient ed-btn--lg ed-btn--block">Ver las guías <ArrowRight className="ed-btn__arrow" aria-hidden="true" /></Link>;
   } else if (publico === 'pacientes') {
     principal = <Link to="/contigo#gratis" className="ed-btn ed-btn--gradient ed-btn--lg ed-btn--block">Ver mis recursos gratis <ArrowRight className="ed-btn__arrow" aria-hidden="true" /></Link>;
@@ -181,7 +183,7 @@ export default function Unete() {
   const pide = (c) => conf.campos.includes(c);
 
   return (
-    <div className="min-h-screen bg-[#F8FAFD]">
+    <div className="ed-vivo min-h-screen bg-[#F8FAFD]">
       <header className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6">
         <Link to="/" aria-label="Edvanta, inicio"><img src="/img/logo-edvanta.png?v=20260716-edvanta-logo" alt="Edvanta" width="931" height="512" className="h-11 w-auto" /></Link>
         <a href={enlaceWhatsApp(`Hola, equipo Edvanta. Tengo una pregunta sobre ${conf.antetitulo.toLowerCase()}.`)} target="_blank" rel="noopener noreferrer" onClick={() => trackEvent('whatsapp_click', { origen: `unete-${publico}-cabecera` })} className="text-[14px] font-semibold text-edvanta-tealdark hover:underline">¿Dudas? WhatsApp</a>
@@ -192,6 +194,14 @@ export default function Unete() {
         <div className="ed-unete-foto relative overflow-hidden rounded-[28px] bg-edvanta-bg">
           <img src={conf.imagen} alt="" width="640" height="800" fetchpriority="high" decoding="async" className="h-56 w-full object-cover object-[50%_22%] sm:h-72 lg:h-full" />
           <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#031D5C]/80 via-[#031D5C]/10 to-transparent" aria-hidden="true" />
+          <div className="absolute left-3 top-3 flex flex-wrap gap-2">
+            {conf.conOferta && promoActiva() && <span className="ed-insignia-promo">−{PROMOCION.porcentaje}% · {PROMOCION.codigo}</span>}
+            {(conf.sellos || []).map((t, i) => (
+              <span key={t} className="ed-unete-chip inline-flex items-center gap-1.5 rounded-full bg-white/90 px-3 py-1.5 text-[13px] font-bold text-edvanta-deep shadow-[0_10px_24px_-14px_rgba(3,29,92,.7)] backdrop-blur" style={{ animationDelay: `${150 + i * 120}ms` }}>
+                <span className="h-2 w-2 rounded-full bg-[#25A7B0]" aria-hidden="true" />{t}
+              </span>
+            ))}
+          </div>
           <ul className="absolute inset-x-4 bottom-4 hidden gap-2 lg:grid">
             {conf.beneficios.map((b, i) => (
               <li key={b} className="ed-unete-chip flex items-center gap-2.5 rounded-[14px] bg-white/90 px-3.5 py-2.5 text-[14px] font-semibold text-edvanta-deep backdrop-blur" style={{ animationDelay: `${300 + i * 120}ms` }}>
@@ -205,11 +215,17 @@ export default function Unete() {
           <p className="text-xs font-semibold uppercase tracking-[.16em] text-edvanta-tealdark">{conf.antetitulo}</p>
           <h1 className="mt-2 font-display text-[1.9rem] font-extrabold leading-[1.1] tracking-[-0.02em] text-edvanta-deep [text-wrap:balance] sm:text-[2.6rem]">{conf.titulo}</h1>
           <p className="mt-3 max-w-lg text-[16px] leading-7 text-edvanta-muted">{conf.bajada}</p>
+          {conf.conOferta && promoActiva() && (
+            <div className="mt-5 flex flex-wrap items-end gap-3">
+              <CuponCopiable origen={`unete-${publico}`} className="min-w-[15rem] flex-1" />
+              <div><p className="mb-1 text-[12px] font-semibold uppercase tracking-[.12em] text-[#B42318]">Termina en</p><CuentaRegresiva /></div>
+            </div>
+          )}
           <ul className="mt-4 flex flex-wrap gap-x-4 gap-y-1.5 lg:hidden">
             {conf.beneficios.map((b) => <li key={b} className="inline-flex items-center gap-1.5 text-[14px] text-edvanta-deep"><Check className="h-4 w-4 text-edvanta-teal" aria-hidden="true" />{b}</li>)}
           </ul>
 
-          <div className="mt-6 rounded-[20px] border border-edvanta-border bg-white p-5 shadow-[0_24px_60px_-32px_rgba(3,29,92,.35)] sm:p-7">
+          <div className="ed-tarjeta-brillo mt-6 rounded-[20px] bg-white p-5 shadow-[0_28px_70px_-34px_rgba(3,29,92,.45)] sm:p-7">
             {estado === 'listo' ? <Resultado publico={publico} conf={conf} datos={datos} /> : (
               <form onSubmit={enviar} className="space-y-4">
                 <div className="grid gap-4 sm:grid-cols-2">
@@ -278,7 +294,7 @@ export default function Unete() {
                   </label>
                 </div>
                 {error && <p role="alert" className="rounded-[10px] bg-[#FEF3F2] px-3 py-2 text-sm font-semibold text-[#B42318]">{error}</p>}
-                <button type="submit" disabled={estado === 'enviando'} aria-busy={estado === 'enviando' || undefined} className="ed-btn ed-btn--gradient ed-btn--lg ed-btn--block">
+                <button type="submit" disabled={estado === 'enviando'} aria-busy={estado === 'enviando' || undefined} className={`ed-btn ${conf.conOferta && promoActiva() ? 'ed-btn--promo' : 'ed-btn--gradient'} ed-btn--lg ed-btn--block`}>
                   {estado === 'enviando' ? 'Enviando…' : conf.boton} <ArrowRight className="ed-btn__arrow" aria-hidden="true" />
                 </button>
                 <p className="flex items-center justify-center gap-1.5 text-[12px] text-edvanta-subtle"><Lock className="h-3 w-3" aria-hidden="true" /> Tus datos están protegidos. Sin spam: te das de baja cuando quieras.</p>

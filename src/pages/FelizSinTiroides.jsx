@@ -30,6 +30,7 @@ import {
 } from '../components/edvanta/ui';
 import { ebooks } from '../data/fst';
 import { rutaDeGuia } from '../data/guiasVenta';
+import { InsigniaDescuento } from '../components/edvanta/promo';
 import { FST_COMMUNITY_URL, FST_COLECCION_HOTMART, waLink } from '../config/links';
 import { updatePageSeo } from '../utils/seo';
 import { trackEvent } from '../utils/analytics';
@@ -71,7 +72,8 @@ const enHotmart = { target: '_blank', rel: 'noopener noreferrer sponsored' };
 function EbookCard({ e, onComprar }) {
   return (
     <article className="ebook ds-card ds-card--interactive flex w-[80%] shrink-0 snap-start flex-col overflow-hidden sm:w-[calc(50%-10px)] lg:w-[calc(33.333%-14px)] xl:w-[calc(25%-15px)]">
-      <div className="aspect-[16/11] overflow-hidden bg-edvanta-lilac">
+      <div className="relative aspect-[16/11] overflow-hidden bg-edvanta-lilac">
+        {rutaDeGuia(e.id) && <InsigniaDescuento className="absolute left-3 top-3 z-10" />}
         {e.cover?.image && <img src={e.cover.image} alt={e.name} width="800" height="550" loading="lazy" decoding="async" className="h-full w-full object-cover" />}
       </div>
       <div className="flex flex-1 flex-col p-5">

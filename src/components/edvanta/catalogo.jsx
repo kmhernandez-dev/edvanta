@@ -36,6 +36,7 @@ import { formatoPrecio } from '../../data/edvanta/productos';
 import { enviarSolicitud } from '../../lib/solicitudes';
 import { trackEvent } from '../../utils/analytics';
 import { BotonWhatsApp, enlaceWhatsApp, irAWhatsApp, prepararVentana } from './embudo';
+import { InsigniaDescuento } from './promo';
 
 /* ── Datos ─────────────────────────────────────────────────── */
 
@@ -289,6 +290,7 @@ export function TarjetaLibro({ libro, fila }) {
   const contenido = (
     <>
       <div className="relative aspect-[3/4] overflow-hidden rounded-[var(--ds-r)] bg-edvanta-bg shadow-[var(--ds-sh-sm)] ring-1 ring-edvanta-border transition duration-300 group-hover:-translate-y-1 group-hover:shadow-[var(--ds-sh-md)]">
+        {libro.oferta && <InsigniaDescuento className="absolute left-2 top-2 z-10" />}
         {libro.portada ? (
           <img src={libro.portada} alt="" width="300" height="400" loading="lazy" decoding="async" onError={ocultarSiFalla} className="h-full w-full object-cover" />
         ) : (

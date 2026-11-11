@@ -37,11 +37,12 @@ import {
 import { KITS_PROFESIONALES, PRODUCTO_DESTACADO, productoPorSlug } from '../data/edvanta/productos';
 import { updatePageSeo } from '../utils/seo';
 import { GUIAS_VENTA, MARCAS } from '../data/guiasVenta';
+import { PROMOCION, promoActiva } from '../data/promocion';
 
 /** Guías profesionales que se venden en Hotmart: cada una abre su página de venta. */
 const GUIAS_PROFESIONALES = GUIAS_VENTA
   .filter((g) => g.marca !== 'fst')
-  .map((g) => ({ id: g.slug, titulo: g.titulo, portada: g.portada, sello: MARCAS[g.marca].sello, to: `/guia/${g.slug}`, accion: 'Ver la guía', tono: g.marca === 'atenfarma' ? 1 : 0 }));
+  .map((g) => ({ id: g.slug, titulo: g.titulo, portada: g.portada, sello: MARCAS[g.marca].sello, to: `/guia/${g.slug}`, accion: 'Ver la guía', tono: g.marca === 'atenfarma' ? 1 : 0, oferta: promoActiva() }));
 
 const TEMAS_DE_LA_ENCUESTA = [
   'Farmacia clínica', 'Farmacología', 'Oncología', 'Calidad y BPM', 'Asuntos regulatorios',
@@ -151,11 +152,12 @@ export default function BibliotecaHome() {
           <FilaDeCatalogo
             id="guias-profesionales"
             titulo="Guías para químicos farmacéuticos"
-            subtitulo="IA con Claude, calidad, farmacia clínica y LinkedIn"
+            subtitulo={`IA con Claude, calidad, farmacia clínica y LinkedIn${promoActiva() ? ` · ${PROMOCION.porcentaje} % OFF con ${PROMOCION.codigo}` : ''}`}
             icono="Sparkles"
             tono="violet"
             items={GUIAS_PROFESIONALES}
             render={(l) => <TarjetaLibro libro={l} fila="guias-profesionales" />}
+            verTodo={{ to: '/ofertas', label: 'Ver todas las ofertas' }}
           />
           <FilaDeCatalogo
             id="guias"

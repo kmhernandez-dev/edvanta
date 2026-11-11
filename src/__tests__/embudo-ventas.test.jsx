@@ -6,7 +6,7 @@
  * precios inventados; las páginas de salud dicen que no reemplazan al
  * equipo tratante; y el embudo no aparece donde no debe.
  */
-import { existsSync, readFileSync } from 'node:fs';
+import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs';
 import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { GUIAS_VENTA, guiaPorSlug, rutaDeGuia } from '../data/guiasVenta';
@@ -130,5 +130,37 @@ describe('Rastreo de ventas en Hotmart', () => {
     expect(u.searchParams.get('off')).toBe('627c9uzi');
     expect(u.searchParams.get('sck')).toBe('HOTMART_SITE');
     expect(u.searchParams.get('src')).toBe('edv-claude-aseguramiento-hero');
+  });
+});
+
+describe('Oferta vigente (Diseño 3.1)', () => {
+  it('el sitio y los correos anuncian la misma oferta', async () => {
+    const sitio = await import('../data/promocion');
+    const api = await import('../../api/lib/aula/promocion.js');
+    expect(api.PROMOCION).toEqual(sitio.PROMOCION);
+  });
+
+  it('se apaga sola al vencer', async () => {
+    const { promoActiva, conCupon } = await import('../data/promocion');
+    expect(promoActiva(new Date('2026-11-30T23:00:00-05:00'))).toBe(true);
+    expect(promoActiva(new Date('2026-12-01T00:00:01-05:00'))).toBe(false);
+    const url = 'https://pay.hotmart.com/M108434287T?off=627c9uzi';
+    expect(new URL(conCupon(url, new Date('2026-11-20'))).searchParams.get('offDiscount')).toBe('EDVANTA20');
+    expect(conCupon(url, new Date('2026-12-02'))).toBe(url);
+    expect(conCupon('https://edvanta.co/cursos', new Date('2026-11-20'))).toBe('https://edvanta.co/cursos');
+  });
+
+  it('el cupón no está escrito a mano fuera de la oferta (no queda viejo al vencer)', () => {
+    const sospechosos = [];
+    const recorrer = (d) => {
+      for (const n of readdirSync(d)) {
+        const p = join(d, n);
+        if (statSync(p).isDirectory()) { if (n !== '__tests__') recorrer(p); } else if (/\.(jsx?|css)$/.test(n) && readFileSync(p, 'utf8').includes('EDVANTA20')) sospechosos.push(p);
+      }
+    };
+    recorrer(join(RAIZ, 'src'));
+    // Solo src/data/promocion.js puede nombrar el cupón: todo lo demás lo lee de ahí.
+    for (const p of sospechosos) expect(p.endsWith('promocion.js'), p).toBe(true);
+    expect(sospechosos.length).toBe(1);
   });
 });
