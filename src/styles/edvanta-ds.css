@@ -601,3 +601,10 @@ body:has(.ed-barra-movil) .ed-wa-flotante { bottom: 5.5rem; }
 }
 .ed-dolor:hover { transform: translateY(-3px); border-color: #C9D4E6; box-shadow: 0 18px 40px -26px rgba(3, 29, 92, .45); }
 .ed-dolor__n { font-family: Manrope, Inter, sans-serif; font-weight: 800; font-size: 2.25rem; line-height: 1; color: #E8EEFB; -webkit-text-stroke: 1.5px #8981CE; }
+
+/* ── Páginas de registro /unete ─────────────────────────────── */
+.ed-unete-foto img { animation: edAcercar 1.4s cubic-bezier(.2, .8, .2, 1) both; }
+.ed-unete-chip { animation: edSubir .6s cubic-bezier(.2, .8, .2, 1) both; }
+@keyframes edAcercar { from { transform: scale(1.06); } to { transform: scale(1); } }
+@keyframes edSubir { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .ed-unete-foto img, .ed-unete-chip { animation: none; } }

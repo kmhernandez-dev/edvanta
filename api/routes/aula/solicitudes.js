@@ -16,8 +16,13 @@ import express from 'express';
 import { id as idField, route, tooMany } from '../../lib/aula/http.js';
 import { clientIp, createRateLimiter } from '../../lib/aula/security.js';
 import {
-  actualizarSolicitud, avisoDeSolicitud, crearSolicitud, listarSolicitudes, leerSolicitud,
+  actualizarSolicitud, avisoDeSolicitud, clasificarPendientes, crearSolicitud, listarSolicitudes, leerSolicitud,
+  solicitudesCsv,
 } from '../../lib/aula/solicitudes.js';
+import { enviarCorreoEmbudo, plantillaDeRegistro } from '../../lib/aula/correos-embudo.js';
+
+/** Formularios del embudo: a quien los llena se le responde con su enlace. */
+const DEL_EMBUDO = /^(unete|encuesta|guia|cierre)-/;
 
 const UNA_HORA = 60 * 60 * 1000;
 
@@ -50,7 +55,19 @@ export function solicitudesRouter({ mailer, siteUrl, notifyEmail }) {
         console.error(JSON.stringify({ level: 'error', msg: 'No salió el aviso de solicitud', error: err.message }));
       }
     }
-    return res.status(201).json({ ok: true, id: solicitud.id });
+
+    // La respuesta a la persona: su enlace gratis o el paso siguiente.
+    // Una sola vez por correo y tipo de registro.
+    if (DEL_EMBUDO.test(solicitud.referencia || '')) {
+      const plantilla = plantillaDeRegistro(solicitud);
+      await enviarCorreoEmbudo(req.aula.db, mailer, {
+        correo: solicitud.correo,
+        plantilla,
+        clave: (solicitud.areas || [])[0] || '',
+        datos: { nombre: solicitud.nombre, area: (solicitud.areas || [])[0] || null, institucion: solicitud.institucion, siteUrl },
+      });
+    }
+    return res.status(201).json({ ok: true, id: solicitud.id, temperatura: solicitud.temperatura });
   }));
 
   return router;
@@ -61,11 +78,25 @@ export function adminSolicitudesRouter() {
 
   router.get('/solicitudes', route(async (req, res) => {
     const pagina = Number(req.query.pagina) > 0 ? Number(req.query.pagina) : 1;
+    const q = (k) => (req.query[k] ? String(req.query[k]) : null);
+    await clasificarPendientes(req.aula.db);
     res.json(await listarSolicitudes(req.aula.db, {
-      estado: req.query.estado ? String(req.query.estado) : null,
-      tipo: req.query.tipo ? String(req.query.tipo) : null,
+      estado: q('estado'),
+      tipo: q('tipo'),
+      publico: q('publico'),
+      temperatura: q('temperatura'),
+      interes: q('interes'),
       pagina,
     }));
+  }));
+
+  // El CRM en CSV: para Excel o para importar en la herramienta de correo.
+  router.get('/solicitudes.csv', route(async (req, res) => {
+    await clasificarPendientes(req.aula.db);
+    const csv = await solicitudesCsv(req.aula.db);
+    res.setHeader('Content-Type', 'text/csv; charset=utf-8');
+    res.setHeader('Content-Disposition', `attachment; filename="crm-edvanta-${new Date().toISOString().slice(0, 10)}.csv"`);
+    res.send(`﻿${csv}`);
   }));
 
   router.post('/solicitudes/:id', route(async (req, res) => {

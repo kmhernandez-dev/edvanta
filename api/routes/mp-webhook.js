@@ -9,7 +9,8 @@
 import { pool, query } from '../db.js';
 import { fromPgPool } from '../lib/aula/db.js';
 import { aprobarPagosDeCertificados } from '../lib/aula/checkout.js';
-import { sendEmail } from '../lib/resend.js';
+import { fromWithName, sendEmail } from '../lib/resend.js';
+import { enviarCorreoEmbudo } from '../lib/aula/correos-embudo.js';
 import { getDownload } from './create-preference.js';
 
 export async function mpWebhookRoute(req, res) {
@@ -160,6 +161,26 @@ export async function mpWebhookRoute(req, res) {
         externalReference, paymentId: pid, metadata: payment?.metadata || null,
       });
       if (aprobados.length) console.log(`[webhook] ${aprobados.length} certificado(s) pagado(s) con el pago ${pid}`);
+      // Correo «tu certificado ya está pagado» (una vez por curso).
+      const aulaDb = fromPgPool(pool);
+      const siteUrl = String(process.env.SITE_URL || 'https://edvanta.co').replace(/\/+$/, '');
+      const mailer = { send: ({ to, subject, html }) => sendEmail({ to, subject, html, from: fromWithName('Edvanta') || undefined }) };
+      for (const a of aprobados) {
+        const { rows } = await aulaDb.query(
+          `SELECT u.email, u.first_name, c.id AS course_id, c.title,
+                  (SELECT ps.slug FROM public_slugs ps WHERE ps.entity = 'aula' AND ps.entity_id = c.id AND ps.is_current LIMIT 1) AS slug
+             FROM aula_users u, aula_courses c WHERE u.id = $1 AND c.id = $2`,
+          [a.userId, a.courseId],
+        );
+        const f = rows[0];
+        if (!f) continue;
+        await enviarCorreoEmbudo(aulaDb, mailer, {
+          correo: f.email,
+          plantilla: 'certificado-pagado',
+          clave: String(f.course_id),
+          datos: { nombre: f.first_name, curso: f.title, cursoUrl: `${siteUrl}/aula/${f.slug || `curso/${f.course_id}`}`, siteUrl },
+        });
+      }
     } catch (e) {
       console.error('[webhook] Error aprobando certificados:', e.message);
     }

@@ -433,7 +433,7 @@ const FELIZ_SIN_TIROIDES = [
   fst('fst-recien-diagnosticados-hipotiroidismo', 'https://pay.hotmart.com/C107034583V?sck=HOTMART_PRODUCT_PAGE&hotfeature=32', 'https://go.hotmart.com/C107034583V?dp=1', {
     slug: 'guia-recien-diagnosticados-hipotiroidismo',
     h1: 'Acabas de recibir el diagnóstico de hipotiroidismo. Empieza con calma y con un plan.',
-    dolores: ['Saliste de la consulta con más dudas que respuestas.', 'No sabes qué controles vienen ni cada cuánto.', 'Te sientes abrumada con tanta información.'],
+    dolores: ['Saliste de la consulta con más dudas que respuestas.', 'No sabes qué controles vienen ni cada cuánto.', 'Tanta información te abruma.'],
     logros: ['Comprender tu diagnóstico en palabras sencillas.', 'Organizar tus controles.', 'Preparar las preguntas para tu próxima cita.'],
     paraQuien: ['Personas recién diagnosticadas con hipotiroidismo', 'Familiares que acompañan el diagnóstico'],
   }),
@@ -454,7 +454,7 @@ const FELIZ_SIN_TIROIDES = [
   fst('fst-insomnio-tiroides', 'https://pay.hotmart.com/A107036606X?sck=HOTMART_PRODUCT_PAGE&hotfeature=32', 'https://go.hotmart.com/A107036606X?dp=1', {
     slug: 'insomnio-y-tiroides',
     h1: 'Vuelve a descansar: una guía para el insomnio cuando vives con una condición tiroidea',
-    dolores: ['Te acuestas cansada y no logras dormir.', 'Despiertas varias veces y al día siguiente no rindes.', 'No sabes si es tu tiroides, tu rutina o algo más.'],
+    dolores: ['Te acuestas con cansancio y no logras dormir.', 'Despiertas varias veces y al día siguiente no rindes.', 'No sabes si es tu tiroides, tu rutina o algo más.'],
     logros: ['Observar tu descanso con un registro sencillo.', 'Construir una rutina nocturna.', 'Reconocer cuándo conviene consultar al equipo de salud.'],
     paraQuien: ['Pacientes tiroideos que duermen mal', ...PARA_PACIENTES.slice(1)],
   }),
@@ -495,7 +495,7 @@ const FELIZ_SIN_TIROIDES = [
   }),
   fst('fst-guia-definitiva-hipertiroidismo', 'https://pay.hotmart.com/E107037884A', 'https://go.hotmart.com/E107037884A?dp=1', {
     slug: 'guia-definitiva-hipertiroidismo',
-    h1: 'Comprende el hipertiroidismo y llega mejor preparada a cada consulta',
+    h1: 'Comprende el hipertiroidismo y llega con más claridad a cada consulta',
     dolores: ['Las palpitaciones, la ansiedad y el insomnio te descolocan.', 'No sabes qué cambios registrar ni cómo explicarlos.', 'Sales de la consulta sin haber preguntado lo importante.'],
     logros: ['Comprender el hipertiroidismo con información organizada.', 'Registrar tus cambios.', 'Preparar mejores conversaciones con tu equipo tratante.'],
     paraQuien: ['Personas con hipertiroidismo', ...PARA_PACIENTES.slice(1)],
@@ -523,7 +523,7 @@ const FELIZ_SIN_TIROIDES = [
   }),
   fst('fst-guia-ayunos', 'https://pay.hotmart.com/I103583345S', 'https://go.hotmart.com/I103583345S?dp=1', {
     slug: 'guia-completa-de-ayunos',
-    h1: 'Si piensas en ayunar, hazlo informada y cuidando tu tiroides',
+    h1: 'Si piensas en ayunar, hazlo con información y cuidando tu tiroides',
     dolores: ['Ves el ayuno en todas partes y no sabes si es para ti.', 'Te preocupa cómo se relaciona con tu medicación.', 'Quieres información clara antes de intentarlo.'],
     logros: ['Conocer los tipos de ayuno.', 'Entender cómo aplicarlo cuidando tu salud tiroidea.', 'Conversar la decisión con tu equipo de salud.'],
     paraQuien: PARA_PACIENTES,

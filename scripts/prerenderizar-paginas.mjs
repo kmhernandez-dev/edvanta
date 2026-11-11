@@ -165,7 +165,7 @@ for (const p of PRODUCTOS.filter((x) => x.tipo === 'curso_en_vivo' && x.to?.star
   enSitemap.push({ ruta: p.to, prioridad: '0.9' });
 }
 
-/* ── Páginas de venta de guías y encuestas por área ───────── */
+/* ── Páginas de venta de guías y registro para LinkedIn ──── */
 
 const { GUIAS_VENTA, MARCAS } = await importar('src/data/guiasVenta.js');
 for (const g of GUIAS_VENTA) {
@@ -202,23 +202,19 @@ for (const g of GUIAS_VENTA) {
   enSitemap.push({ ruta: `/guia/${g.slug}`, prioridad: '0.8' });
 }
 
-const ENCUESTAS_SEO = {
-  calidad: 'Encuesta de calidad farmacéutica: BPM, validaciones, CAPA y auditorías',
-  'farmacia-clinica': 'Encuesta de farmacia clínica: seguimiento, conciliación y farmacovigilancia',
-  farmacologia: 'Encuesta de farmacología: qué grupos de medicamentos quieres estudiar',
-  'asuntos-regulatorios': 'Encuesta de asuntos regulatorios: registro sanitario INVIMA y normativa',
-  webinars: 'Webinars de Edvanta para químicos farmacéuticos: vota el próximo tema',
-};
-for (const [area, titulo] of Object.entries(ENCUESTAS_SEO)) {
-  const canonical = `${SITIO}/encuesta/${area}`;
-  escribir(`encuesta/${area}.html`, pagina({
-    titulo: `${titulo} | Edvanta`,
-    descripcion: 'Responde tres preguntas en un minuto y sigue por WhatsApp: te recomendamos el curso o la guía para empezar.',
+// Páginas de registro para LinkedIn (/unete/…): sin índice ni sitemap,
+// pero con título e imagen para que la vista previa de LinkedIn se vea bien.
+const { UNETE } = await importar('src/data/embudoLinkedin.js');
+for (const [publico, u] of Object.entries(UNETE)) {
+  const canonical = `${SITIO}/unete/${publico}`;
+  escribir(`unete/${publico}.html`, pagina({
+    titulo: `${u.titulo} | Edvanta`,
+    descripcion: u.bajada,
     canonical,
-    jsonLd: [migas([['Inicio', `${SITIO}/`], ['Encuestas', `${SITIO}/encuesta/${area}`]])],
-    cuerpo: `<main><h1>${esc(titulo)}</h1><p>Responde tres preguntas y sigue por WhatsApp.</p></main>`,
+    imagen: `${SITIO}${u.og}`,
+    robots: 'noindex,follow',
+    cuerpo: `<main><h1>${esc(u.titulo)}</h1><p>${esc(u.bajada)}</p></main>`,
   }));
-  enSitemap.push({ ruta: `/encuesta/${area}`, prioridad: '0.5' });
 }
 
 

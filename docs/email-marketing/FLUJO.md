@@ -80,3 +80,62 @@ Los enlaces de compra llevan `src=edv-<guía>-<botón>`, así el informe de vent
 - **Herramienta de envío.** Brevo, MailerLite o Mailchimp: cualquiera importa estos HTML. Hay que elegir una y conectar el panel de solicitudes para que el flujo salga solo.
 - **Versión de los correos para pacientes**, en lenguaje de paciente.
 - **Guías duplicadas en Hotmart.** «20 trucos de Claude para aseguramiento» y «10 automatizaciones con Claude» tienen el mismo contenido que otras dos guías. Cada par tiene una sola página de venta, y el enlace alterno se conserva en los datos.
+
+## 7. LinkedIn → registro → CRM → correos (desde el 11-nov-2026)
+
+### Las 6 páginas de registro
+
+Cada página sirve para todas las áreas. El área va en el enlace: con `?area=calidad`, «Calidad y BPM» aparece ya marcada.
+
+| Página | Enlace base | Pide |
+|---|---|---|
+| Profesionales | `edvanta.co/unete/profesionales` | Nombre, correo, país, profesión, áreas y WhatsApp (opcional) |
+| Cursos | `edvanta.co/unete/cursos` | Lo mismo; al terminar ve el enlace a los cursos de su área |
+| Guías | `edvanta.co/unete/guias` | Lo mismo; al terminar ve la guía de su área |
+| Pacientes | `edvanta.co/unete/pacientes` | Nombre, correo, país, «soy…», temas y WhatsApp (opcional) |
+| Instituciones | `edvanta.co/unete/instituciones` | Nombre, correo, país, institución, cargo, áreas y WhatsApp (opcional) |
+| Asesorías | `edvanta.co/unete/asesorias` | Nombre, correo, país, profesión o paciente, tipo de asesoría y WhatsApp (obligatorio). Al enviar se abre WhatsApp para agendar |
+
+**Claves de área:** `calidad`, `control-de-calidad`, `farmacia-clinica`, `farmacologia`, `asuntos-regulatorios`, `farmacovigilancia`, `oncologia`, `ia`, `habilidades-blandas`, `marketing`, `carrera`, `webinars`. Para pacientes: `tiroides`, `diabetes`, `cardiovascular`, `renal`, `respiratorio`, `cancer`, `digestivo`, `emocional`, `alimentacion`.
+
+**Para generar el enlace de cada publicación**, usa `edvanta.co/admin/enlaces-linkedin`. Eliges la página, el área y el nombre de la publicación, y copias el enlace. El nombre viaja como `utm_campaign`, y el CRM muestra qué publicación trajo a cada persona.
+
+Ejemplo de publicación: «¿Quieres el curso de calidad gratis? Regístrate aquí: edvanta.co/unete/cursos?area=calidad&utm_source=linkedin&utm_campaign=post-calidad-nov».
+
+### El CRM: clasificación automática
+
+Cada registro llega al panel **Aula → Solicitudes · CRM** ya clasificado. El cálculo está en `api/lib/aula/clasificacion.js`:
+
+- **Público:** profesional, institución o paciente.
+- **Interés:** curso, guía, asesoría, propuesta o general.
+- **Puntaje (0–100)** según lo que pidió:
+  - Base: asesoría o propuesta 40, guía 30, curso 20.
+  - +15 si dejó WhatsApp.
+  - +10 si es química o químico farmacéutico, o regente.
+  - +10 por cada registro anterior con el mismo correo (máximo 20).
+  - +5 si aceptó novedades.
+  - +5 si llegó desde LinkedIn.
+- **Temperatura:** caliente (60 o más), tibio (35 a 59) o frío.
+- **Siguiente acción:** qué hacer hoy con esa persona.
+
+En el panel se filtra por temperatura, público e interés, y el CRM completo se descarga en CSV.
+
+### Correos automáticos del ciclo de vida
+
+Salen solos del servidor (Resend), una sola vez por persona. La vista previa está en `docs/email-marketing/ciclo/index.html`.
+
+| Momento | Correo |
+|---|---|
+| Se registra en una página `/unete` | El registro de su público, con su enlace gratis |
+| Se inscribe en un curso | «Ya estás dentro» |
+| Al día siguiente | Bienvenida al curso, con dos opciones: WhatsApp o estudiar con certificado |
+| Lleva 5 días sin empezar | Recordatorio |
+| Paga el certificado | «Tu certificado ya está pagado», con los pasos para emitirlo, verificarlo y agregarlo a LinkedIn |
+| Cada 30 días | Novedades, solo para quien aceptó recibirlas |
+
+**Cuidados**
+
+- Solo cuenta lo ocurrido desde el 11-nov-2026, así que las personas antiguas no reciben una avalancha de correos.
+- Las matrículas institucionales no reciben la venta del certificado.
+- Cada vuelta tiene un tope de envíos.
+- Para apagar los correos programados, configura `EMBUDO_PROGRAMADO=apagado` en el servidor. Los envíos dependen de `RESEND_API_KEY` y `FROM_EMAIL`, que ya existen.

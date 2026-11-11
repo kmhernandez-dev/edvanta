@@ -17,6 +17,7 @@ import {
   badRequest, bool, calendarDate, email, int, notFound, oneOf, str, strList,
 } from './http.js';
 import { audit } from './audit.js';
+import { INTERESES, PUBLICOS, TEMPERATURAS, clasificarSolicitud } from './clasificacion.js';
 
 export const TIPOS = ['interes', 'propuesta', 'contacto'];
 export const ESTADOS = ['nueva', 'en_conversacion', 'cerrada'];
@@ -116,7 +117,20 @@ export function leerSolicitud(body = {}) {
     mensaje,
     aceptaNovedades: bool(body.aceptaNovedades, 'aceptaNovedades', 'La autorización de novedades', { optional: true, fallback: false }),
     origen: str(body.origen, 'origen', 'La página de origen', { optional: true, max: 255 }),
+    profesion: str(body.profesion, 'profesion', 'La profesión', { optional: true, max: 80 }),
+    // De dónde vino: la publicación de LinkedIn, el correo o la campaña.
+    utmSource: utmCampo(body.utmSource),
+    utmMedium: utmCampo(body.utmMedium),
+    utmCampaign: utmCampo(body.utmCampaign),
+    utmContent: utmCampo(body.utmContent),
   };
+}
+
+/** Los utm llegan de la dirección: se limpian, no se rechazan. */
+function utmCampo(v) {
+  if (v === undefined || v === null) return null;
+  const limpio = String(v).toLowerCase().replace(/[^a-z0-9._-]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 80);
+  return limpio || null;
 }
 
 const fechaTexto = (v) => {
@@ -125,7 +139,15 @@ const fechaTexto = (v) => {
   return String(v).slice(0, 10);
 };
 
+/** Las solicitudes anteriores al CRM se clasifican al leerlas. */
+const crmDe = (r) => (r.segmento
+  ? { publico: r.publico, interes: r.interes, puntaje: r.puntaje, temperatura: r.temperatura, segmento: r.segmento, siguienteAccion: r.siguiente_accion }
+  : clasificarSolicitud(r));
+
 const aFila = (r) => ({
+  ...crmDe(r),
+  profesion: r.profesion || null,
+  utm: { source: r.utm_source || null, medium: r.utm_medium || null, campaign: r.utm_campaign || null, content: r.utm_content || null },
   id: r.id,
   tipo: r.tipo,
   referencia: r.referencia,
@@ -157,29 +179,45 @@ const aFila = (r) => ({
 });
 
 export async function crearSolicitud(db, s) {
+  // Quien vuelve a escribir está más cerca de comprar: el algoritmo lo cuenta.
+  const { rows: previas } = await db.query(
+    'SELECT COUNT(*)::int AS n FROM solicitudes WHERE lower(correo) = lower($1)',
+    [s.correo],
+  );
+  const crm = clasificarSolicitud(s, { repeticiones: previas[0]?.n || 0 });
   const { rows } = await db.query(
     `INSERT INTO solicitudes
        (tipo, referencia, nombre, correo, whatsapp, rol, institucion, tipo_institucion,
         cargo, areas, perfiles, participantes, modalidad, resultado_esperado, pais, ciudad,
-        fecha_tentativa, mensaje, acepta_tratamiento, acepta_novedades, origen)
+        fecha_tentativa, mensaje, acepta_tratamiento, acepta_novedades, origen,
+        profesion, publico, interes, puntaje, temperatura, segmento, siguiente_accion,
+        utm_source, utm_medium, utm_campaign, utm_content)
      VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16,
-             $17, $18, TRUE, $19, $20)
+             $17, $18, TRUE, $19, $20,
+             $21, $22, $23, $24, $25, $26, $27, $28, $29, $30, $31)
      RETURNING *`,
     [
       s.tipo, s.referencia, s.nombre, s.correo, s.whatsapp, s.rol, s.institucion,
       s.tipoInstitucion, s.cargo, s.areas, s.perfiles, s.participantes, s.modalidad,
       s.resultadoEsperado, s.pais, s.ciudad, s.fechaTentativa, s.mensaje,
       s.aceptaNovedades, s.origen,
+      s.profesion ?? null, crm.publico, crm.interes, crm.puntaje, crm.temperatura, crm.segmento, crm.siguienteAccion,
+      s.utmSource ?? null, s.utmMedium ?? null, s.utmCampaign ?? null, s.utmContent ?? null,
     ],
   );
   return aFila(rows[0]);
 }
 
-export async function listarSolicitudes(db, { estado, tipo, pagina = 1, tamano = 30 } = {}) {
+export async function listarSolicitudes(db, {
+  estado, tipo, publico, temperatura, interes, pagina = 1, tamano = 30,
+} = {}) {
   const filtros = [];
   const params = [];
   if (estado && ESTADOS.includes(estado)) { params.push(estado); filtros.push(`estado = $${params.length}`); }
   if (tipo && TIPOS.includes(tipo)) { params.push(tipo); filtros.push(`tipo = $${params.length}`); }
+  if (publico && PUBLICOS[publico]) { params.push(publico); filtros.push(`publico = $${params.length}`); }
+  if (temperatura && TEMPERATURAS.includes(temperatura)) { params.push(temperatura); filtros.push(`temperatura = $${params.length}`); }
+  if (interes && INTERESES[interes]) { params.push(interes); filtros.push(`interes = $${params.length}`); }
   const where = filtros.length ? `WHERE ${filtros.join(' AND ')}` : '';
 
   params.push(tamano + 1, (pagina - 1) * tamano);
@@ -194,12 +232,68 @@ export async function listarSolicitudes(db, { estado, tipo, pagina = 1, tamano =
   );
   const porEstado = Object.fromEntries(ESTADOS.map((e) => [e, 0]));
   for (const c of conteo) porEstado[c.estado] = c.n;
+  const { rows: temp } = await db.query(
+    "SELECT temperatura, COUNT(*)::int AS n FROM solicitudes WHERE estado <> 'cerrada' GROUP BY temperatura",
+  );
+  const porTemperatura = Object.fromEntries(TEMPERATURAS.map((t) => [t, 0]));
+  for (const c of temp) if (c.temperatura) porTemperatura[c.temperatura] = c.n;
 
   return {
     solicitudes: rows.slice(0, tamano).map(aFila),
     hayMas: rows.length > tamano,
     porEstado,
+    porTemperatura,
   };
+}
+
+/**
+ * Clasifica las solicitudes que llegaron antes del CRM (sin segmento),
+ * para que los filtros por público y temperatura las incluyan. Se corre
+ * al listar; cuando ya no quedan, no hace nada.
+ */
+export async function clasificarPendientes(db, { limite = 500 } = {}) {
+  const { rows } = await db.query(
+    'SELECT * FROM solicitudes WHERE segmento IS NULL ORDER BY id LIMIT $1',
+    [limite],
+  );
+  for (const r of rows) {
+    const { rows: previas } = await db.query(
+      'SELECT COUNT(*)::int AS n FROM solicitudes WHERE lower(correo) = lower($1) AND id < $2',
+      [r.correo, r.id],
+    );
+    const c = clasificarSolicitud(r, { repeticiones: previas[0]?.n || 0 });
+    await db.query(
+      `UPDATE solicitudes SET publico = $2, interes = $3, puntaje = $4, temperatura = $5,
+              segmento = $6, siguiente_accion = $7 WHERE id = $1`,
+      [r.id, c.publico, c.interes, c.puntaje, c.temperatura, c.segmento, c.siguienteAccion],
+    );
+  }
+  return rows.length;
+}
+
+const celda = (v) => {
+  const t = Array.isArray(v) ? v.join(' | ') : String(v ?? '');
+  return /[",\n;]/.test(t) ? `"${t.replaceAll('"', '""')}"` : t;
+};
+
+/** El CRM completo en CSV, para abrir en Excel o subir a la herramienta de correo. */
+export async function solicitudesCsv(db) {
+  const { rows } = await db.query('SELECT * FROM solicitudes ORDER BY created_at DESC LIMIT 20000');
+  const columnas = [
+    ['fecha', (s) => (s.fecha ? new Date(s.fecha).toISOString() : '')],
+    ['nombre', (s) => s.nombre], ['correo', (s) => s.correo], ['whatsapp', (s) => s.whatsapp],
+    ['pais', (s) => s.pais], ['profesion', (s) => s.profesion || s.rolTexto], ['institucion', (s) => s.institucion],
+    ['cargo', (s) => s.cargo], ['areas', (s) => s.areas],
+    ['publico', (s) => s.publico], ['interes', (s) => s.interes], ['segmento', (s) => s.segmento],
+    ['puntaje', (s) => s.puntaje], ['temperatura', (s) => s.temperatura], ['siguiente_accion', (s) => s.siguienteAccion],
+    ['acepta_novedades', (s) => (s.aceptaNovedades ? 'si' : 'no')], ['estado', (s) => s.estado],
+    ['referencia', (s) => s.referencia], ['origen', (s) => s.origen],
+    ['utm_source', (s) => s.utm.source], ['utm_campaign', (s) => s.utm.campaign], ['utm_content', (s) => s.utm.content],
+  ];
+  const filas = rows.map(aFila);
+  return [columnas.map(([n]) => n), ...filas.map((s) => columnas.map(([, f]) => f(s)))]
+    .map((linea) => linea.map(celda).join(','))
+    .join('\n');
 }
 
 export async function actualizarSolicitud(db, id, { estado, notaInterna }, { actor, ip } = {}) {
@@ -249,8 +343,13 @@ const TITULOS = {
 /** Aviso interno por correo. Si no sale, la solicitud igual quedó guardada. */
 export function avisoDeSolicitud(s, siteUrl) {
   const filas = [
+    ['Temperatura', s.temperatura ? `${s.temperatura} (${s.puntaje}/100)` : null],
+    ['Segmento', s.segmento],
+    ['Siguiente acción', s.siguienteAccion],
     ['Qué pidió', s.referencia],
     ['Nombre', s.nombre],
+    ['Profesión', s.profesion],
+    ['Campaña', [s.utm?.source, s.utm?.campaign, s.utm?.content].filter(Boolean).join(' · ')],
     ['Correo', s.correo],
     ['WhatsApp', s.whatsapp],
     ['Rol', s.rolTexto],

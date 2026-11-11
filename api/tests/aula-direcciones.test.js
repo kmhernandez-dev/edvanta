@@ -151,6 +151,23 @@ describe('aula · direcciones con nombre', () => {
     expect(despues.data.courseId).toBe(Number(deEdvanta.id));
   });
 
+  it('inscribirse manda su correo y al día siguiente la bienvenida con WhatsApp y certificado', async () => {
+    const inscripcion = t.mails.find((m) => /^Ya estás dentro/.test(m.subject));
+    expect(inscripcion).toBeTruthy();
+    expect(inscripcion.html).toContain('https://aula.test/aula/curso-de-gestion-de-calidad');
+
+    const { correrEmbudoProgramado } = await import('../lib/aula/embudo-programado.js');
+    const enviados = [];
+    const mailer = { send: async (m) => { enviados.push(m); return true; } };
+    const manana = new Date(Date.now() + 26 * 60 * 60 * 1000);
+    const r = await correrEmbudoProgramado(t.db, mailer, { now: manana, siteUrl: 'https://aula.test' });
+    expect(r.bienvenidas).toBe(1);
+    expect(enviados[0].subject).toMatch(/bienvenida/);
+    expect(enviados[0].html).toContain('wa.me/573006332244');
+    // La segunda vuelta no repite.
+    expect((await correrEmbudoProgramado(t.db, mailer, { now: manana, siteUrl: 'https://aula.test' })).bienvenidas).toBe(0);
+  });
+
   it('el aviso de asignación ya lleva la dirección con nombre', async () => {
     const { rows } = await t.db.query(
       `SELECT link FROM aula_notifications WHERE user_id = $1 AND type = 'asignacion'`,

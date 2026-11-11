@@ -11,6 +11,7 @@ import { certificadoDelCurso, emitirCertificado } from '../../lib/aula/certifica
 import { iniciarPago } from '../../lib/aula/checkout.js';
 import { crearPreferenciaMercadoPago } from '../../lib/pagos.js';
 import { resolverSlug } from '../../lib/slugs-publicos.js';
+import { enviarCorreoEmbudo } from '../../lib/aula/correos-embudo.js';
 
 const ids = (req) => ({
   courseId: idField(req.params.courseId, 'courseId', 'El curso'),
@@ -258,6 +259,15 @@ export function meRouter(deps = {}) {
       throw notFound('Este curso ya no está disponible para inscribirse.');
     }
     await enrollUsers(db, { course: curso, userIds: [user.id], now });
+    // Correo de inscripción (una vez por curso). La bienvenida con las dos
+    // opciones —WhatsApp o certificado— sale al día siguiente (embudo-programado).
+    const siteUrl = String(process.env.SITE_URL || deps.siteUrl || 'https://edvanta.co').replace(/\/+$/, '');
+    await enviarCorreoEmbudo(db, deps.mailer, {
+      correo: user.email,
+      plantilla: 'inscripcion-curso',
+      clave: String(curso.id),
+      datos: { nombre: user.firstName, curso: curso.title, cursoUrl: `${siteUrl}/aula/${curso.slug || `curso/${curso.id}`}`, siteUrl },
+    });
     return { courseId: curso.id, slug: curso.slug || null };
   };
 

@@ -37,7 +37,7 @@ const SIN_EMBUDO = [
   /^\/feliz-sin-tiroides/, /^\/fst-app/, /^\/atenfarmaclinic/, /^\/vida-360/, /^\/mi-espacio/, /^\/mi-cuidado/,
   /^\/app\//, /^\/nutrifst/, /^\/levotiroxina/, /^\/recurso\/levotiroxina/,
   // Las páginas de venta y las encuestas por área ya traen su propio cierre.
-  /^\/guia\//, /^\/encuesta\//,
+  /^\/guia\//, /^\/encuesta\//, /^\/unete/,
   /^\/(terminos|privacidad|tratamiento-de-datos|reembolsos|descargo-medico)\/?$/,
 ];
 

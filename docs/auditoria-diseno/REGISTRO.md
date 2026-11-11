@@ -86,3 +86,14 @@ En el servidor local los colores no se pueden medir con exactitud: la caché de 
 | E8 | Enlaces de compra con `src=edv-<guía>-<botón>` para atribuir cada venta | Prueba (conserva `off` y `sck`) | Hecho |
 
 **Indicadores** (línea base de dos semanas desde el despliegue): visitas a guías (`guia_vista`), clics de compra (`guia_compra_click`), datos dejados (`lead_enviado`), conversaciones (`whatsapp_click`) y ventas por `src` en Hotmart.
+
+### Embudo de LinkedIn y CRM · 11-nov-2026 (segunda entrega)
+
+| Id | Acción | Cómo se verifica | Estado |
+|---|---|---|---|
+| E9 | 6 páginas de registro `/unete/:publico` (profesionales, cursos, guías, pacientes, instituciones y asesorías). Una sola página por público; el área llega en el enlace | Prueba «embudo-ventas» y revisión en celular | Hecho |
+| E10 | **Decisión de la dueña:** fotos de personas generadas con IA en las páginas de registro. Recortes en retrato de 26–40 KB, para que carguen rápido | Revisión visual | Hecho |
+| E11 | CRM: cada solicitud se clasifica sola (público, interés, puntaje, temperatura, segmento y siguiente acción) y guarda profesión, país y `utm`. Filtros y descarga en CSV | Pruebas de la API «crm-embudo» | Hecho |
+| E12 | Correos automáticos: registro (5), inscripción, bienvenida, recordatorio, certificado pagado y novedades. Una sola vez por persona, sin avalanchas a contactos antiguos | Pruebas de la API (plantillas sin huecos, envío único, bienvenida al día siguiente) | Hecho |
+| E13 | Las encuestas por área de la primera entrega se unieron a `/unete` y la dirección vieja redirige | Prueba de redirección | Hecho |
+| E14 | El control de diseño detectó radios fuera de la escala en las páginas nuevas (14, 10 y 20 px) y se corrigieron antes de publicar | Prueba H6 | Cerrado |

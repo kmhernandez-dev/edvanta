@@ -20,6 +20,8 @@ const AdminDesign = lazy(() => import('./pages/AdminDesign'));
 const AdminAuditoriaDiseno = lazy(() => import('./pages/AdminAuditoriaDiseno'));
 const GuiaVenta = lazy(() => import('./pages/GuiaVenta'));
 const EncuestaArea = lazy(() => import('./pages/EncuestaArea'));
+const Unete = lazy(() => import('./pages/Unete'));
+const AdminEnlacesLinkedin = lazy(() => import('./pages/AdminEnlacesLinkedin'));
 const AdminIndex = lazy(() => import('./pages/AdminIndex'));
 const ArticuloPage = lazy(() => import('./pages/ArticuloPage'));
 const ArticulosIndex = lazy(() => import('./pages/ArticulosIndex'));
@@ -390,6 +392,9 @@ export default function App() {
         <Route path="/curso/:id" element={<FichaDeCurso modo="propio" />} />
         <Route path="/guia/:slug" element={<GuiaVenta />} />
         <Route path="/encuesta/:area" element={<EncuestaArea />} />
+        <Route path="/unete/:publico" element={<Unete />} />
+        <Route path="/unete" element={<Navigate to="/unete/profesionales" replace />} />
+        <Route path="/admin/enlaces-linkedin" element={<AdminEnlacesLinkedin />} />
         <Route path="/cursos/en-vivo/:slug" element={<CursoEnVivo />} />
         <Route path="/cursos" element={<CursosCatalog />} />
         <Route path="/cursos/coursera" element={<CursosCatalog defaultProvider="coursera" />} />

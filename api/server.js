@@ -62,6 +62,7 @@ import { fromPgPool } from './lib/aula/db.js';
 import { createDiskStorage } from './lib/aula/storage.js';
 import { parseAdminEmails, parseAdminHashes } from './lib/aula/accounts.js';
 import { sendEmail, fromWithName } from './lib/resend.js';
+import { correrEmbudoProgramado } from './lib/aula/embudo-programado.js';
 
 const PORT = parseInt(process.env.PORT || '3000', 10);
 const NODE_ENV = process.env.NODE_ENV || 'development';
@@ -335,6 +336,9 @@ app.use('/api', crearRutasPublicas({
 const aulaDb = fromPgPool(pool);
 const aulaStorage = createDiskStorage(process.env.AULA_STORAGE_DIR || './.data/aula');
 const aulaAdminHashes = parseAdminHashes(process.env.AULA_ADMIN_EMAIL_HASHES);
+const aulaMailer = {
+  send: ({ to, subject, html }) => sendEmail({ to, subject, html, from: fromWithName('Edvanta') || undefined }),
+};
 app.use('/api/aula', createAulaRouter({
   db: aulaDb,
   storage: aulaStorage,
@@ -343,9 +347,7 @@ app.use('/api/aula', createAulaRouter({
   adminEmailHashes: aulaAdminHashes,
   // A dónde llega el aviso de cada solicitud de la web (opcional).
   notifyEmail: process.env.NOTIFY_EMAIL || null,
-  mailer: {
-    send: ({ to, subject, html }) => sendEmail({ to, subject, html, from: fromWithName('Aula Edvanta') || undefined }),
-  },
+  mailer: aulaMailer,
 }));
 
 // La portada de un curso publicado es pública. Va aquí abajo porque
@@ -448,6 +450,21 @@ async function start() {
       routes: ['/health', '/api/health', '/api/health/db', '/api/create-preference', '/api/mp-webhook', '/api/lead-capture', '/api/list-orders'],
     }));
   });
+
+  // Correos programados del embudo (bienvenida, recordatorio, novedades).
+  // Se apagan con EMBUDO_PROGRAMADO=apagado sin tocar el código.
+  if (process.env.DATABASE_URL && process.env.EMBUDO_PROGRAMADO !== 'apagado') {
+    const vuelta = async () => {
+      try {
+        const r = await correrEmbudoProgramado(aulaDb, aulaMailer, { siteUrl: process.env.SITE_URL || 'https://edvanta.co' });
+        if (r.bienvenidas || r.recordatorios || r.novedades) console.log(JSON.stringify({ level: 'info', msg: 'Embudo programado', ...r }));
+      } catch (e) {
+        console.error(JSON.stringify({ level: 'error', msg: 'Falló el embudo programado', error: e.message }));
+      }
+    };
+    setTimeout(vuelta, 3 * 60 * 1000);
+    setInterval(vuelta, 60 * 60 * 1000);
+  }
 }
 
 // Capturar errores no manejados a nivel proceso (no matar la API).

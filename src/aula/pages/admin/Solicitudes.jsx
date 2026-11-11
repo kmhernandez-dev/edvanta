@@ -13,8 +13,8 @@
  */
 
 import { useCallback, useEffect, useState } from 'react';
-import { Mail, MessageCircle } from 'lucide-react';
-import { get, post } from '../../api';
+import { ArrowRight, Download, Flame, Mail, MessageCircle } from 'lucide-react';
+import { downloadFrom, get, post } from '../../api';
 import { PageHeader } from '../../ui/Page';
 import { Button } from '../../ui/Button';
 import { useAsync } from '../../hooks';
@@ -48,6 +48,15 @@ const fecha = (iso) => {
 
 const soloDigitos = (t) => String(t || '').replace(/[^\d]/g, '');
 
+/** Temperatura del CRM: qué tan cerca está de comprar (lo calcula el servidor). */
+const TEMPERATURAS = {
+  caliente: { label: 'Caliente', clase: 'bg-[#FEF3F2] text-[#B42318]' },
+  tibio: { label: 'Tibio', clase: 'bg-[#FFFAEB] text-[#B54708]' },
+  frio: { label: 'Frío', clase: 'bg-[#E8EEFB] text-[#082E86]' },
+};
+const PUBLICOS = { '': 'Todo público', profesional: 'Profesionales', institucion: 'Instituciones', paciente: 'Pacientes' };
+const INTERESES = { '': 'Todo interés', curso: 'Cursos', guia: 'Guías', asesoria: 'Asesorías', propuesta: 'Propuestas', general: 'General' };
+
 function Fila({ s, onCambio }) {
   const [nota, setNota] = useState(s.notaInterna || '');
   const [ocupado, setOcupado] = useState(false);
@@ -68,7 +77,8 @@ function Fila({ s, onCambio }) {
 
   const datos = [
     ['Qué pidió', s.referencia],
-    ['Rol', s.rolTexto],
+    ['Profesión', s.profesion || s.rolTexto],
+    ['Llegó desde', [s.utm?.source, s.utm?.campaign].filter(Boolean).join(' · ')],
     ['Institución', [s.institucion, s.tipoInstitucionTexto].filter(Boolean).join(' · ')],
     ['Cargo', s.cargo],
     ['Áreas de interés', (s.areas || []).join(', ')],
@@ -88,8 +98,15 @@ function Fila({ s, onCambio }) {
         <span className={`rounded-full px-2.5 py-1 font-bold ${s.estado === 'nueva' ? 'bg-amber-50 text-amber-800' : s.estado === 'cerrada' ? 'bg-[var(--aula-neutral-soft)] text-[var(--aula-muted)]' : 'bg-sky-50 text-sky-800'}`}>
           {ESTADOS[s.estado]}
         </span>
+        {s.temperatura && (
+          <span className={`inline-flex items-center gap-1 rounded-full px-2.5 py-1 font-bold ${TEMPERATURAS[s.temperatura]?.clase || ''}`}>
+            {s.temperatura === 'caliente' && <Flame className="h-3.5 w-3.5" aria-hidden="true" />}
+            {TEMPERATURAS[s.temperatura]?.label} · {s.puntaje}
+          </span>
+        )}
         <span className="text-[var(--aula-muted)]">{fecha(s.fecha)}</span>
       </div>
+      {s.segmento && <p className="mt-2 text-xs font-bold uppercase tracking-wide text-[var(--aula-secondary)]">{s.segmento}</p>}
 
       <p className="mt-2 text-base font-bold text-[var(--aula-text)]">{s.nombre}</p>
       <div className="mt-1 flex flex-wrap gap-x-4 gap-y-1 text-sm">
@@ -103,6 +120,12 @@ function Fila({ s, onCambio }) {
           </a>
         )}
       </div>
+
+      {s.siguienteAccion && s.estado !== 'cerrada' && (
+        <p className="mt-3 flex items-start gap-2 rounded-[var(--aula-radius-sm)] bg-[#F0FAF9] p-2.5 text-sm font-semibold text-[#0F7480]">
+          <ArrowRight className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" /> {s.siguienteAccion}
+        </p>
+      )}
 
       <dl className="mt-3 grid gap-x-6 gap-y-1 text-sm sm:grid-cols-2">
         {datos.map(([k, v]) => (
@@ -168,15 +191,23 @@ export default function Solicitudes() {
   const [estado, setEstado] = useState('nueva');
   const [pagina, setPagina] = useState(1);
   const [version, setVersion] = useState(0);
+  const [temperatura, setTemperatura] = useState('');
+  const [publico, setPublico] = useState('');
+  const [interes, setInteres] = useState('');
+  const [descargando, setDescargando] = useState(false);
 
   const cargar = useCallback(
-    ({ signal }) => get(`/admin/solicitudes?estado=${estado}&pagina=${pagina}`, { signal }),
+    ({ signal }) => get(`/admin/solicitudes?${new URLSearchParams({ estado, pagina, temperatura, publico, interes })}`, { signal }),
     // `version` fuerza la recarga después de cada cambio.
-    [estado, pagina, version],
+    [estado, pagina, temperatura, publico, interes, version],
   );
   const lista = useAsync(cargar, [cargar]);
 
-  useEffect(() => { setPagina(1); }, [estado]);
+  useEffect(() => { setPagina(1); }, [estado, temperatura, publico, interes]);
+  const descargar = async () => {
+    setDescargando(true);
+    try { await downloadFrom('/admin/solicitudes.csv', 'crm-edvanta.csv'); } finally { setDescargando(false); }
+  };
 
   const recargar = () => setVersion((v) => v + 1);
   const datos = lista.data;
@@ -184,9 +215,24 @@ export default function Solicitudes() {
   return (
     <>
       <PageHeader
-        title="Solicitudes"
-        description="Registros de interés, propuestas para instituciones y mensajes que llegan por la web. Lo nuevo va primero."
+        title="Solicitudes · CRM"
+        description="Cada registro llega clasificado: público, interés, temperatura y la siguiente acción. Atiende primero lo caliente."
+        actions={<Button variant="secondary" icon={Download} disabled={descargando} onClick={descargar}>Descargar CRM (CSV)</Button>}
       />
+      <div className="mb-3 flex flex-wrap items-center gap-2">
+        {[['', 'Todas las temperaturas'], ['caliente', 'Calientes'], ['tibio', 'Tibias'], ['frio', 'Frías']].map(([id, label]) => (
+          <button key={id || 'todas'} type="button" onClick={() => setTemperatura(id)} aria-pressed={temperatura === id}
+            className={`min-h-9 rounded-full px-3.5 text-sm font-bold transition ${temperatura === id ? 'bg-[var(--aula-text)] text-white' : 'bg-white text-[var(--aula-muted)] ring-1 ring-[var(--aula-border)] hover:text-[var(--aula-text)]'}`}>
+            {label}{id && datos?.porTemperatura?.[id] > 0 && <span className="ml-1.5 opacity-80">{datos.porTemperatura[id]}</span>}
+          </button>
+        ))}
+        <select value={publico} onChange={(e) => setPublico(e.target.value)} aria-label="Público" className="min-h-9 rounded-full border border-[var(--aula-border)] bg-white px-3 text-sm font-semibold text-[var(--aula-text)]">
+          {Object.entries(PUBLICOS).map(([k, v]) => <option key={k} value={k}>{v}</option>)}
+        </select>
+        <select value={interes} onChange={(e) => setInteres(e.target.value)} aria-label="Interés" className="min-h-9 rounded-full border border-[var(--aula-border)] bg-white px-3 text-sm font-semibold text-[var(--aula-text)]">
+          {Object.entries(INTERESES).map(([k, v]) => <option key={k} value={k}>{v}</option>)}
+        </select>
+      </div>
       <div className="flex flex-wrap items-center gap-2">
         {FILTROS.map((f) => (
           <button
