@@ -18,6 +18,8 @@ const AdminCommunityPage = lazy(() => import('./pages/AdminCommunityPage'));
 const AdminEdvantaContent = lazy(() => import('./pages/AdminEdvantaContent'));
 const AdminDesign = lazy(() => import('./pages/AdminDesign'));
 const AdminAuditoriaDiseno = lazy(() => import('./pages/AdminAuditoriaDiseno'));
+const GuiaVenta = lazy(() => import('./pages/GuiaVenta'));
+const EncuestaArea = lazy(() => import('./pages/EncuestaArea'));
 const AdminIndex = lazy(() => import('./pages/AdminIndex'));
 const ArticuloPage = lazy(() => import('./pages/ArticuloPage'));
 const ArticulosIndex = lazy(() => import('./pages/ArticulosIndex'));
@@ -386,6 +388,8 @@ export default function App() {
             nginx responde 301 y aquí se cambian solas por si llega un enlace
             dentro del sitio. */}
         <Route path="/curso/:id" element={<FichaDeCurso modo="propio" />} />
+        <Route path="/guia/:slug" element={<GuiaVenta />} />
+        <Route path="/encuesta/:area" element={<EncuestaArea />} />
         <Route path="/cursos/en-vivo/:slug" element={<CursoEnVivo />} />
         <Route path="/cursos" element={<CursosCatalog />} />
         <Route path="/cursos/coursera" element={<CursosCatalog defaultProvider="coursera" />} />

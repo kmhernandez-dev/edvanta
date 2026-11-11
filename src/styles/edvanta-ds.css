@@ -257,6 +257,51 @@
 /* Solo ícono: círculo, con nombre accesible obligatorio (aria-label). */
 .ed-btn--icon { --btn-px: 0; width: var(--btn-h); min-width: var(--btn-h); padding: 0; }
 .ed-btn--icon.ed-btn--sm { --btn-h: 40px; }
+/* ── Embudo: WhatsApp y cierre de venta ────────────────────────
+   El verde de WhatsApp es el único color fuera de la marca: se
+   reconoce de inmediato y eso convierte. Texto oscuro para contraste AA. */
+.ed-btn--whatsapp { background: #25D366; color: #052E28; box-shadow: 0 12px 26px -14px rgba(18, 140, 126, 0.75); }
+.ed-btn--whatsapp:hover:not(:disabled) { background: #1FBE5B; color: #052E28; box-shadow: 0 0 0 4px rgba(37, 211, 102, 0.18), 0 14px 28px -14px rgba(18, 140, 126, 0.8); }
+.ed-btn--whatsapp svg { width: 1.25rem; height: 1.25rem; }
+
+.ed-cierre {
+  position: relative; isolation: isolate; overflow: hidden;
+  border-radius: var(--ds-r-xl, 28px);
+  background: linear-gradient(135deg, #031D5C 0%, #082E86 62%, #0A3AA6 100%);
+  box-shadow: 0 30px 70px -36px rgba(3, 29, 92, 0.75);
+}
+.ed-cierre::before {
+  content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background:
+    radial-gradient(520px 320px at 100% 0%, rgba(137, 129, 206, 0.45), transparent 70%),
+    radial-gradient(460px 300px at 0% 100%, rgba(37, 167, 176, 0.35), transparent 70%);
+}
+
+.ed-wa-flotante {
+  position: fixed; right: 1rem; bottom: 1rem; z-index: 55;
+  display: inline-flex; align-items: center; gap: .55rem;
+  height: 56px; padding: 0 1.1rem 0 1rem; border-radius: 999px;
+  background: #25D366; color: #052E28; font-weight: 600; font-size: .95rem;
+  box-shadow: 0 16px 34px -14px rgba(18, 140, 126, 0.85);
+  animation: edWaEntra .45s cubic-bezier(.2, .8, .2, 1) both;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.ed-wa-flotante:hover { transform: translateY(-2px); box-shadow: 0 0 0 5px rgba(37, 211, 102, 0.2), 0 18px 38px -14px rgba(18, 140, 126, 0.9); }
+.ed-wa-flotante::after {
+  content: ''; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
+  box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.55); animation: edWaPulso 2.6s ease-out 1.2s 3;
+}
+@media (max-width: 639px) {
+  .ed-wa-flotante { width: 56px; padding: 0; justify-content: center; }
+  .ed-wa-flotante__texto { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+}
+/* Sobre las barras fijas del celular (ficha de curso, editor de hoja de vida). */
+body:has(.ed-barra-movil) .ed-wa-flotante { bottom: 5.5rem; }
+@media (min-width: 1024px) { body:has(.ed-barra-movil) .ed-wa-flotante { bottom: 1rem; } }
+@keyframes edWaEntra { from { opacity: 0; transform: translateY(16px) scale(.9); } to { opacity: 1; transform: none; } }
+@keyframes edWaPulso { 0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5); } 100% { box-shadow: 0 0 0 16px rgba(37, 211, 102, 0); } }
+@media (prefers-reduced-motion: reduce) { .ed-wa-flotante, .ed-wa-flotante::after { animation: none; } }
+
 
 /* ── Superficies ──────────────────────────────────────────────
    Se alternan según lo que dice cada bloque; ningún degradado cubre
@@ -526,3 +571,33 @@
 .edvanta-theme [tabindex='-1']:focus-visible,
 .aula-root [tabindex='-1']:focus,
 .aula-root [tabindex='-1']:focus-visible { outline: none; }
+
+/* ── Páginas de venta de guías (/guia/:slug) ───────────────────
+   La portada se presenta como un libro con volumen: lomo, sombra
+   larga y una inclinación que se endereza al pasar el cursor. */
+.ed-libro { perspective: 1600px; }
+.ed-libro__tapa {
+  position: relative; aspect-ratio: 4 / 5; overflow: hidden;
+  border-radius: 6px 14px 14px 6px; background: #F4F7FD;
+  transform: rotateY(-14deg) rotateX(3deg);
+  transform-origin: left center;
+  box-shadow: -1px 0 0 rgba(255, 255, 255, .6) inset, 18px 26px 50px -18px rgba(3, 29, 92, .45), 4px 6px 14px -6px rgba(3, 29, 92, .3);
+  transition: transform .6s cubic-bezier(.2, .8, .2, 1);
+}
+.ed-libro__tapa::before {
+  content: ''; position: absolute; inset: 0 auto 0 0; width: 14px; z-index: 1; pointer-events: none;
+  background: linear-gradient(90deg, rgba(0, 0, 0, .22), rgba(255, 255, 255, .18) 45%, transparent);
+}
+.ed-libro__tapa--imagen { aspect-ratio: auto; background: #FFFFFF; }
+.ed-libro:hover .ed-libro__tapa { transform: rotateY(-4deg) rotateX(0deg); }
+.ed-libro--grande .ed-libro__tapa { animation: edLibroFlota 6s ease-in-out infinite; }
+@keyframes edLibroFlota { 0%, 100% { translate: 0 0; } 50% { translate: 0 -8px; } }
+@media (prefers-reduced-motion: reduce) { .ed-libro__tapa { transform: none; } .ed-libro--grande .ed-libro__tapa { animation: none; } }
+
+.ed-dolor {
+  position: relative; padding: 1.5rem; border-radius: var(--ds-r-lg, 20px);
+  background: linear-gradient(180deg, #FFFFFF, #F6F8FC); border: 1px solid #E3E9F2;
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+.ed-dolor:hover { transform: translateY(-3px); border-color: #C9D4E6; box-shadow: 0 18px 40px -26px rgba(3, 29, 92, .45); }
+.ed-dolor__n { font-family: Manrope, Inter, sans-serif; font-weight: 800; font-size: 2.25rem; line-height: 1; color: #E8EEFB; -webkit-text-stroke: 1.5px #8981CE; }

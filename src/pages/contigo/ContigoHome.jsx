@@ -344,7 +344,7 @@ export default function ContigoHome() {
         <EncuestaRapida
           referencia="encuesta-inicio-pacientes"
           titulo="¿Sobre qué quieres aprender?"
-          desc="Tres preguntas rápidas. Con tus respuestas decidimos qué guías escribir primero, y te avisamos cuando salgan."
+          desc="Responde tres preguntas y sigue por WhatsApp: te orientamos sobre la guía o el curso que te sirve."
           temas={TEMAS_DE_LA_ENCUESTA}
           roles={ROLES_PACIENTES}
           modalidades={MODALIDADES_PACIENTES}

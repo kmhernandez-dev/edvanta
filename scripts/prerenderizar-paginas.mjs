@@ -165,6 +165,63 @@ for (const p of PRODUCTOS.filter((x) => x.tipo === 'curso_en_vivo' && x.to?.star
   enSitemap.push({ ruta: p.to, prioridad: '0.9' });
 }
 
+/* ── Páginas de venta de guías y encuestas por área ───────── */
+
+const { GUIAS_VENTA, MARCAS } = await importar('src/data/guiasVenta.js');
+for (const g of GUIAS_VENTA) {
+  const canonical = `${SITIO}/guia/${g.slug}`;
+  const marca = MARCAS[g.marca];
+  const curso = g.formato.startsWith('Curso');
+  escribir(`guia/${g.slug}.html`, pagina({
+    titulo: `${g.titulo} | ${marca.nombre}`,
+    descripcion: g.bajada.slice(0, 158),
+    canonical,
+    imagen: g.portada ? `${SITIO}${g.portada}` : `${SITIO}/img/og-edvanta.png`,
+    jsonLd: [
+      {
+        '@context': 'https://schema.org',
+        '@type': curso ? 'Course' : 'Book',
+        name: g.titulo,
+        description: g.bajada,
+        inLanguage: 'es',
+        url: canonical,
+        ...(g.portada ? { image: `${SITIO}${g.portada}` } : {}),
+        author: { '@type': 'Person', name: 'Karla Melissa Hernández Salcedo' },
+        publisher: { '@type': 'Organization', name: 'Edvanta', url: SITIO },
+        ...(curso ? { provider: { '@type': 'Organization', name: marca.nombre } } : { bookFormat: 'https://schema.org/EBook' }),
+      },
+      {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: (g.preguntas || []).map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })),
+      },
+      migas([['Inicio', `${SITIO}/`], [marca.nombre, `${SITIO}${marca.inicio}`], [g.titulo, canonical]]),
+    ],
+    cuerpo: `<main><h1>${esc(g.h1)}</h1><p>${esc(g.bajada)}</p><h2>¿Te pasa esto?</h2><ul>${g.dolores.map((d) => `<li>${esc(d)}</li>`).join('')}</ul><h2>Al terminar podrás</h2><ul>${g.logros.map((l) => `<li>${esc(l)}</li>`).join('')}</ul>${g.incluye ? `<h2>Qué incluye</h2>${g.incluye.map(([b, it]) => `<h3>${esc(b)}</h3><ul>${it.map((x) => `<li>${esc(x)}</li>`).join('')}</ul>`).join('')}` : ''}<h2>Para quién es</h2><ul>${g.paraQuien.map((p) => `<li>${esc(p)}</li>`).join('')}</ul><p><a href="${esc(g.venta || g.pago)}">Ver en Hotmart</a></p></main>`,
+  }));
+  enSitemap.push({ ruta: `/guia/${g.slug}`, prioridad: '0.8' });
+}
+
+const ENCUESTAS_SEO = {
+  calidad: 'Encuesta de calidad farmacéutica: BPM, validaciones, CAPA y auditorías',
+  'farmacia-clinica': 'Encuesta de farmacia clínica: seguimiento, conciliación y farmacovigilancia',
+  farmacologia: 'Encuesta de farmacología: qué grupos de medicamentos quieres estudiar',
+  'asuntos-regulatorios': 'Encuesta de asuntos regulatorios: registro sanitario INVIMA y normativa',
+  webinars: 'Webinars de Edvanta para químicos farmacéuticos: vota el próximo tema',
+};
+for (const [area, titulo] of Object.entries(ENCUESTAS_SEO)) {
+  const canonical = `${SITIO}/encuesta/${area}`;
+  escribir(`encuesta/${area}.html`, pagina({
+    titulo: `${titulo} | Edvanta`,
+    descripcion: 'Responde tres preguntas en un minuto y sigue por WhatsApp: te recomendamos el curso o la guía para empezar.',
+    canonical,
+    jsonLd: [migas([['Inicio', `${SITIO}/`], ['Encuestas', `${SITIO}/encuesta/${area}`]])],
+    cuerpo: `<main><h1>${esc(titulo)}</h1><p>Responde tres preguntas y sigue por WhatsApp.</p></main>`,
+  }));
+  enSitemap.push({ ruta: `/encuesta/${area}`, prioridad: '0.5' });
+}
+
+
 /* ── Sitemap ──────────────────────────────────────────────── */
 
 /* ── Escuela de Marketing y servicios ────────────────────── */

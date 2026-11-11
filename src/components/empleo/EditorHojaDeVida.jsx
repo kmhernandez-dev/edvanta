@@ -500,7 +500,7 @@ export default function EditorHojaDeVida({ disenoInicial = '' }) {
       </div>
 
       {/* ── Barra inferior en el celular ── */}
-      <div className="fixed inset-x-0 bottom-0 z-40 border-t border-edvanta-border bg-white/95 px-4 py-3 backdrop-blur lg:hidden">
+      <div className="ed-barra-movil fixed inset-x-0 bottom-0 z-40 border-t border-edvanta-border bg-white/95 px-4 py-3 backdrop-blur lg:hidden">
         <div className="mx-auto grid max-w-md grid-cols-2 gap-1.5 rounded-2xl bg-edvanta-bg p-1">
           {[['editar', 'Editar', PenLine], ['ver', 'Ver mi hoja', Eye]].map(([id, texto, Icono]) => (
             <button

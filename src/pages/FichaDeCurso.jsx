@@ -696,7 +696,7 @@ export default function FichaDeCurso({ modo = 'propio', slugPublico = '' }) {
 
       {/* En el teléfono: el botón siempre a mano cuando la tarjeta ya no se ve. */}
       {hayBoton && !tarjetaVisible && (
-        <div className="fixed inset-x-0 bottom-0 z-30 border-t border-edvanta-border bg-white/95 px-4 py-3 shadow-[0_-8px_24px_-12px_rgba(8,46,134,.25)] backdrop-blur lg:hidden">
+        <div className="ed-barra-movil fixed inset-x-0 bottom-0 z-30 border-t border-edvanta-border bg-white/95 px-4 py-3 shadow-[0_-8px_24px_-12px_rgba(8,46,134,.25)] backdrop-blur lg:hidden">
           <div className="mx-auto flex max-w-xl items-center gap-3">
             <p className="hidden min-w-0 flex-1 truncate text-sm font-bold text-edvanta-deep min-[420px]:block">
               {nombre}

@@ -14,6 +14,7 @@ import {
   EDVANTA_BRAND_FULL, EDVANTA_EMAIL, EDVANTA_LINKEDIN_URL, EDVANTA_WHATSAPP_URL,
 } from '../../config/links';
 import { FOOTER_COLUMNS, FOOTER_LEGAL } from '../../config/navEdvanta';
+import { BotonWhatsAppFlotante, CierreDeVenta } from './embudo';
 
 const logoVersion = '20260716-edvanta-logo';
 
@@ -21,6 +22,10 @@ export default function SiteFooter() {
   const year = new Date().getFullYear();
 
   return (
+    <>
+    {/* Toda página pública termina en una acción: oferta, botón principal y WhatsApp. */}
+    <CierreDeVenta />
+    <BotonWhatsAppFlotante />
     <footer id="contacto" className="border-t border-edvanta-border bg-edvanta-bg">
       <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
         <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,3fr)]">
@@ -116,5 +121,6 @@ export default function SiteFooter() {
         </div>
       </div>
     </footer>
+    </>
   );
 }

@@ -97,4 +97,22 @@ export const productosAtenFarma = [
     tag: 'Curso',
     hotmartUrl: 'https://go.hotmart.com/J107041157J?dp=1',
   },
+  {
+    id: 'afc-11',
+    name: 'Problemas Farmacoterapéuticos: Clasificación y Casos IESA',
+    category: 'Formación profesional · AtenFarmaClinic',
+    description: 'Identifica, clasifica y resuelve problemas farmacoterapéuticos por dimensión IESA (indicación, efectividad, seguridad y adherencia), con 6 casos clínicos resueltos.',
+    cover: { emoji: '🧩', gradient: 'from-deepblue-700 to-teal-500' },
+    tag: 'Ebook',
+    hotmartUrl: 'https://hotmart.com/es/marketplace/productos/problemas-farmacoterapeuticos-iesa/V105990886Q',
+  },
+  {
+    id: 'afc-12',
+    name: 'Farmacocinética Clínica Aplicada: Del Parámetro al Paciente',
+    category: 'Formación profesional · AtenFarmaClinic',
+    description: 'Seis módulos para llevar la farmacocinética a decisiones clínicas: biodisponibilidad, distribución, CYP, eliminación y ajuste de dosis, monitoreo terapéutico y bioequivalencia.',
+    cover: { emoji: '📈', gradient: 'from-teal-600 to-deepblue-800' },
+    tag: 'Ebook',
+    hotmartUrl: 'https://hotmart.com/es/marketplace/productos/farmacocinetica-clinica-aplicada-del-parametro-al-paciente/A105031729O',
+  },
 ];

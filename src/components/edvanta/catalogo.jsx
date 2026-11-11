@@ -35,6 +35,7 @@ import { portadaDeRuta } from '../../data/edvanta/imagenes';
 import { formatoPrecio } from '../../data/edvanta/productos';
 import { enviarSolicitud } from '../../lib/solicitudes';
 import { trackEvent } from '../../utils/analytics';
+import { BotonWhatsApp, enlaceWhatsApp, irAWhatsApp, prepararVentana } from './embudo';
 
 /* ── Datos ─────────────────────────────────────────────────── */
 
@@ -483,7 +484,7 @@ export function EncuestaRapida({
   const { pathname } = useLocation();
   const [paso, setPaso] = useState(0);
   const [datos, setDatos] = useState({
-    temas: [], modalidad: '', rol: '', mensaje: '', nombre: '', correo: '', aceptaTratamiento: false, aceptaNovedades: true, sitioWeb: '',
+    temas: [], modalidad: '', rol: '', mensaje: '', nombre: '', correo: '', whatsapp: '', aceptaTratamiento: false, aceptaNovedades: true, sitioWeb: '',
   });
   const [estado, setEstado] = useState('editando');
   const [error, setError] = useState(null);
@@ -497,15 +498,30 @@ export function EncuestaRapida({
     if (n === 1) trackEvent('encuesta_avanzo', { referencia, paso: n });
   };
 
+  /** El mensaje de WhatsApp lleva lo que la persona respondió: así la conversación empieza en su necesidad. */
+  const mensajeWhatsApp = () => {
+    const rol = datos.rol ? `, ${(ROTULOS_DE_ROL[datos.rol] || datos.rol).toLowerCase()}` : '';
+    const modalidad = modalidades.find(([k]) => k === datos.modalidad)?.[1];
+    return [
+      `Hola, equipo Edvanta. Soy ${datos.nombre.trim()}${rol}.`,
+      `Acabo de responder la encuesta. Me interesa: ${datos.temas.join(', ')}.`,
+      modalidad ? `Prefiero: ${modalidad.toLowerCase()}.` : '',
+      '¿Por dónde me recomiendan empezar?',
+    ].filter(Boolean).join(' ');
+  };
+
   const enviar = async (e) => {
     e.preventDefault();
     setEstado('enviando');
     setError(null);
+    // Se abre en el clic; si se espera al servidor, el navegador la bloquea.
+    const ventana = prepararVentana();
     const r = await enviarSolicitud({
       tipo: 'interes',
       referencia,
       nombre: datos.nombre,
       correo: datos.correo,
+      whatsapp: datos.whatsapp,
       rol: datos.rol || null,
       areas: datos.temas,
       modalidad: datos.modalidad || null,
@@ -518,9 +534,12 @@ export function EncuestaRapida({
     if (r.ok) {
       setEstado('listo');
       trackEvent('encuesta_enviada', { referencia, temas: datos.temas.length });
+      trackEvent('lead_enviado', { origen: 'encuesta', referencia });
+      irAWhatsApp(ventana, enlaceWhatsApp(mensajeWhatsApp()));
       inicio.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
       return;
     }
+    ventana?.close();
     setEstado('editando');
     setError(r.error);
   };
@@ -542,8 +561,9 @@ export function EncuestaRapida({
             <div className="ds-desplegado py-6 text-center">
               <p className="mt-4 font-display text-xl font-extrabold text-edvanta-deep">¡Gracias, {datos.nombre.split(' ')[0]}!</p>
               <p className="mx-auto mt-2 max-w-sm text-sm leading-6 text-edvanta-muted">
-                Ya tenemos tus respuestas. Te escribiremos a {datos.correo} cuando haya algo de {datos.temas.slice(0, 2).join(' y ').toLowerCase() || 'tu interés'}.
+                Guardamos tus respuestas y abrimos WhatsApp para recomendarte por dónde empezar con {datos.temas.slice(0, 2).join(' y ').toLowerCase() || 'tu interés'}. Si no se abrió, toca el botón.
               </p>
+              <BotonWhatsApp mensaje={mensajeWhatsApp()} origen={`${referencia}-listo`} className="mt-5">Abrir WhatsApp</BotonWhatsApp>
             </div>
           ) : (
             <form onSubmit={enviar} noValidate={false}>
@@ -599,8 +619,8 @@ export function EncuestaRapida({
 
               {paso === 2 && (
                 <div className="ds-desplegado mt-6 space-y-4">
-                  <p className="font-display text-lg font-extrabold text-edvanta-deep">¿A dónde te avisamos?</p>
-                  <div className="grid gap-4 sm:grid-cols-2">
+                  <p className="font-display text-lg font-extrabold text-edvanta-deep">¿A dónde te escribimos?</p>
+                  <div className="grid gap-4 sm:grid-cols-3">
                     <label className="block text-sm font-semibold text-edvanta-deep" htmlFor={`${base}-nombre`}>
                       Tu nombre
                       <input id={`${base}-nombre`} required maxLength={120} autoComplete="name" value={datos.nombre} onChange={(e) => poner('nombre', e.target.value)} className={campo} />
@@ -608,6 +628,10 @@ export function EncuestaRapida({
                     <label className="block text-sm font-semibold text-edvanta-deep" htmlFor={`${base}-correo`}>
                       Tu correo
                       <input id={`${base}-correo`} type="email" required maxLength={160} autoComplete="email" value={datos.correo} onChange={(e) => poner('correo', e.target.value)} className={campo} />
+                    </label>
+                    <label className="block text-sm font-semibold text-edvanta-deep" htmlFor={`${base}-whatsapp`}>
+                      Tu WhatsApp
+                      <input id={`${base}-whatsapp`} type="tel" required inputMode="tel" pattern="[+\d\s().-]{7,40}" maxLength={40} autoComplete="tel" placeholder="300 123 4567" value={datos.whatsapp} onChange={(e) => poner('whatsapp', e.target.value)} className={campo} />
                     </label>
                   </div>
                   {/* Trampa para robots: las personas no la ven. */}
@@ -623,8 +647,8 @@ export function EncuestaRapida({
                   {error && <p role="alert" className="rounded-[var(--ds-r-sm)] bg-red-50 px-3 py-2 text-sm font-semibold text-red-700">{error}</p>}
                   <div className="flex justify-between gap-3 pt-1">
                     <button type="button" onClick={() => ir(1)} className="ed-btn ed-btn--ghost"><ArrowLeft aria-hidden="true" /> Atrás</button>
-                    <button type="submit" disabled={estado === 'enviando'} aria-busy={estado === 'enviando' || undefined} className="ed-btn ed-btn--teal">
-                      {estado === 'enviando' ? 'Enviando…' : 'Enviar mis respuestas'} <Send aria-hidden="true" />
+                    <button type="submit" disabled={estado === 'enviando'} aria-busy={estado === 'enviando' || undefined} className="ed-btn ed-btn--whatsapp">
+                      {estado === 'enviando' ? 'Guardando…' : 'Enviar y seguir por WhatsApp'} <Send aria-hidden="true" />
                     </button>
                   </div>
                 </div>

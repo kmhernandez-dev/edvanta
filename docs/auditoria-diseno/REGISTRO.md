@@ -48,7 +48,7 @@ Trabajamos sobre datos: cada cambio visual responde a un hallazgo medido, tiene 
 | H15 | **Decisión de la dueña:** cada curso con el botón «Estudiar gratis» | La tarjeta no invitaba a actuar | Botón en cada tarjeta. El curso en vivo dice «Registrar mi interés» porque aún no tiene apertura ni precio. Los externos de pago conservan «Ver en plataforma» | Prueba de control | Cerrado |
 | H16 | **Decisión de la dueña:** el pie de página usaba solo el nombre, sin el arco | Se usaba el logotipo horizontal | Logo completo (arco + nombre), igual al del encabezado | Revisión visual | Cerrado |
 | H17 | **Decisión de la dueña:** botones genéricos | Botón rectangular estándar | Botones 3.0: píldora, luz al pasar, flecha en burbuja, filo de marca en el destacado; el aula usa la misma forma | Revisión visual | Cerrado |
-| H18 | Portadas en tres estilos (IA con persona, plano de marca, 3D) | Imágenes hechas en momentos distintos | Sistema único de portadas generado en código (siguiente entrega) | — | Abierto |
+| H18 | Portadas en tres estilos (IA con persona, plano de marca, 3D) | Imágenes hechas en momentos distintos | Se probó un sistema de portadas generado en código (arco + ícono). **La dueña lo rechazó por genérico (11-nov)**: se restauraron las 97 originales | Revisión de la dueña | Abierto: otra dirección de arte |
 | H19 | Alto del inicio: 8.461 px de filas iguales (meta: 6.800) | Una fila por área, todas con el mismo patrón | Bloques editoriales y filas agrupadas (siguiente entrega) | Inicio 1366: 9.069 px | Abierto |
 | H20 | Párrafos de lectura de menos de 13 px (2–4 por página) | Textos largos en `text-xs` | Revisión por página | — | Abierto |
 
@@ -69,3 +69,20 @@ Trabajamos sobre datos: cada cambio visual responde a un hallazgo medido, tiene 
 | Acceso · 1366 | 67,7 % | 1,1 % | **0** | 8 | 6 | 0 | 0 | 9/10 |
 
 En el servidor local los colores no se pueden medir con exactitud: la caché de Tailwind conservaba el color anterior. La compilación de producción ya trae los colores corregidos. Se verifican con la auditoría en edvanta.co.
+
+## Embudo de ventas · 11-nov-2026
+
+**Pedido de la dueña:** que cada página venda y recoja datos, que todo lleve a WhatsApp, una página de venta por guía, encuestas por área y correos de venta.
+
+| Id | Acción | Cómo se verifica | Estado |
+|---|---|---|---|
+| E1 | La encuesta del inicio pide WhatsApp, guarda la solicitud y abre WhatsApp con las respuestas | Prueba «embudo-ventas» | Hecho |
+| E2 | Cierre de venta antes del pie en toda página pública: oferta real por público, botón principal y WhatsApp. Si la página no tiene formulario propio, uno corto que guarda y abre WhatsApp | Prueba de rutas y oferta (COP 60.000) | Hecho |
+| E3 | Botón flotante de WhatsApp con el nombre de la página; se sube sobre las barras fijas del celular | Revisión visual | Hecho |
+| E4 | 38 páginas de venta `/guia/<slug>`: 5 de Edvanta, 12 de AtenFarmaClinic y 21 de Feliz Sin Tiroides. Contenido tomado de cada PDF o ficha; sin precios inventados | Prueba de datos (enlace real de Hotmart, 3 dolores, portadas) y prerender (38 en el sitemap) | Hecho |
+| E5 | Productos nuevos: 4 guías de Claude, el Método LinkedIn y 2 de AtenFarmaClinic. Enlazados 2 de Feliz Sin Tiroides que no tenían Hotmart | Prueba: todo producto con Hotmart tiene página | Hecho |
+| E6 | Encuestas por área: calidad, farmacia clínica, farmacología, asuntos regulatorios y webinars | Prueba | Hecho |
+| E7 | 5 correos HTML y su flujo (`docs/email-marketing/FLUJO.md`) | Revisión visual de las muestras | Hecho; falta conectar la herramienta de envío |
+| E8 | Enlaces de compra con `src=edv-<guía>-<botón>` para atribuir cada venta | Prueba (conserva `off` y `sck`) | Hecho |
+
+**Indicadores** (línea base de dos semanas desde el despliegue): visitas a guías (`guia_vista`), clics de compra (`guia_compra_click`), datos dejados (`lead_enviado`), conversaciones (`whatsapp_click`) y ventas por `src` en Hotmart.

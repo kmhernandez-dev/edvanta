@@ -43,6 +43,8 @@ export const COLORES_DEL_SISTEMA = [
   '#14233F', '#4A5A73', '#66738A', '#E3E9F2', '#C9D4E6',
   // Estados
   '#067647', '#ECFDF3', '#B54708', '#FFFAEB', '#B42318', '#FEF3F2', '#912018',
+  // Canal WhatsApp (decisión del embudo, 11-nov-2026): el verde se reconoce y convierte
+  '#25D366', '#1FBE5B', '#052E28',
   // Neutros para superposición
   '#000000',
 ];

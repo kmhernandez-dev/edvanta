@@ -28,7 +28,7 @@ import InicioEstudiante from '../components/InicioEstudiante';
 import ProductModal from '../components/ProductModal';
 import {
   AvisoNovedad, EncuestaRapida, FilaCargando, FilaDeCatalogo, TarjetaArticulo, TarjetaCurso, TarjetaGuia, TarjetaRuta,
-  useArticulosRecientes, useCursosConPortada, useRutasConPortada,
+  useArticulosRecientes, useCursosConPortada, useRutasConPortada, TarjetaLibro,
 } from '../components/edvanta/catalogo';
 import { useAuth } from '../context/AuthContext';
 import {
@@ -36,6 +36,12 @@ import {
 } from '../data/edvanta/catalogoInicio';
 import { KITS_PROFESIONALES, PRODUCTO_DESTACADO, productoPorSlug } from '../data/edvanta/productos';
 import { updatePageSeo } from '../utils/seo';
+import { GUIAS_VENTA, MARCAS } from '../data/guiasVenta';
+
+/** Guías profesionales que se venden en Hotmart: cada una abre su página de venta. */
+const GUIAS_PROFESIONALES = GUIAS_VENTA
+  .filter((g) => g.marca !== 'fst')
+  .map((g) => ({ id: g.slug, titulo: g.titulo, portada: g.portada, sello: MARCAS[g.marca].sello, to: `/guia/${g.slug}`, accion: 'Ver la guía', tono: g.marca === 'atenfarma' ? 1 : 0 }));
 
 const TEMAS_DE_LA_ENCUESTA = [
   'Farmacia clínica', 'Farmacología', 'Oncología', 'Calidad y BPM', 'Asuntos regulatorios',
@@ -143,6 +149,15 @@ export default function BibliotecaHome() {
         {/* Guías y artículos */}
         <div className="border-t border-edvanta-border bg-edvanta-bg pt-4">
           <FilaDeCatalogo
+            id="guias-profesionales"
+            titulo="Guías para químicos farmacéuticos"
+            subtitulo="IA con Claude, calidad, farmacia clínica y LinkedIn"
+            icono="Sparkles"
+            tono="violet"
+            items={GUIAS_PROFESIONALES}
+            render={(l) => <TarjetaLibro libro={l} fila="guias-profesionales" />}
+          />
+          <FilaDeCatalogo
             id="guias"
             titulo="Guías y kits para tu trabajo"
             subtitulo="Plantillas editables, listas para usar"
@@ -181,7 +196,7 @@ export default function BibliotecaHome() {
         <EncuestaRapida
           referencia="encuesta-inicio-profesionales"
           titulo="¿Qué quieres aprender ahora?"
-          desc="Tres preguntas rápidas. Con tus respuestas decidimos qué cursos y guías crear primero, y te avisamos cuando salgan."
+          desc="Responde tres preguntas y sigue por WhatsApp: te recomendamos el curso o la guía para empezar."
           temas={TEMAS_DE_LA_ENCUESTA}
           roles={ROLES_PROFESIONALES}
           modalidades={MODALIDADES_DE_APRENDER}

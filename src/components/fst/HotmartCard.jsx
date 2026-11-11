@@ -1,58 +1,42 @@
-import { waLink } from '../../config/links';
+import { Link } from 'react-router-dom';
+import { ArrowRight, Lock } from 'lucide-react';
+import { BotonWhatsApp } from '../edvanta/embudo';
+import { rutaDeGuia } from '../../data/guiasVenta';
 
 /**
- * Tarjeta para productos que se venden DIRECTO en Hotmart.
- * El botón "Comprar ahora" lleva a 'hotmartUrl' (Hotmart gestiona el pago).
+ * Tarjeta de un producto que se vende en Hotmart.
+ * Si el producto tiene página de venta (/guia/:slug), el botón lleva ahí:
+ * la persona ve primero para qué le sirve y después paga en Hotmart.
  */
 export default function HotmartCard({ product }) {
-  const waUrl = waLink(`Hola Karla, me interesa "${product.name}". ¿Me cuentas más?`);
+  const pagina = rutaDeGuia(product.id);
 
   return (
-    <div className={`bg-white rounded-3xl border shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col ${product.featured ? 'border-teal-300 ring-1 ring-teal-200' : 'border-edvanta-border'}`}>
-      {/* Cover */}
-      <div className={`relative aspect-[4/3] bg-gradient-to-br ${product.cover.gradient} flex items-center justify-center`}>
-        <span className="text-6xl drop-shadow-sm">{product.cover.emoji}</span>
-        {product.featured && (
-          <span className="absolute top-3 right-3 chip bg-white/90 text-teal-700 text-xs font-bold px-2.5 py-0.5 rounded-full">
-            ⭐ Destacado
-          </span>
-        )}
-        <span className="absolute bottom-3 left-3 chip bg-white/90 text-edvanta-deep text-xs font-semibold px-2 py-0.5 rounded-full">
-          {product.tag}
-        </span>
+    <div className="ds-card ds-card--interactive flex flex-col overflow-hidden">
+      <div className={`relative flex aspect-[4/3] items-center justify-center bg-gradient-to-br ${product.cover.gradient}`}>
+        <span className="text-6xl drop-shadow-sm" aria-hidden="true">{product.cover.emoji}</span>
+        <span className="absolute bottom-3 left-3 rounded-full bg-white/90 px-2.5 py-0.5 text-xs font-semibold text-edvanta-deep">{product.tag}</span>
       </div>
 
-      {/* Body */}
-      <div className="p-5 flex flex-col flex-1 gap-3">
-        <h3 className="font-display text-lg font-extrabold text-edvanta-deep leading-snug">{product.name}</h3>
-        <p className="text-sm text-edvanta-muted leading-relaxed flex-1">{product.description}</p>
+      <div className="flex flex-1 flex-col gap-3 p-5">
+        <h3 className="font-display text-lg font-bold leading-snug text-edvanta-deep">{product.name}</h3>
+        <p className="flex-1 text-sm leading-relaxed text-edvanta-muted">{product.description}</p>
 
-        {/* CTAs */}
-        <div className="flex flex-col gap-2 mt-1">
-          <a
-            href={product.hotmartUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-full inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-edvanta-blue hover:bg-[#031D5C] text-white text-sm font-semibold rounded-full transition-colors"
-          >
-            Comprar ahora
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-            </svg>
-          </a>
-          <a
-            href={waUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-full inline-flex items-center justify-center gap-1.5 px-5 py-2 text-teal-700 text-sm font-semibold rounded-full border border-teal-200 hover:bg-teal-50 transition-colors"
-          >
-            Preguntar por WhatsApp
-          </a>
+        <div className="mt-1 flex flex-col gap-2">
+          {pagina ? (
+            <Link to={pagina} className="ed-btn ed-btn--primary ed-btn--sm ed-btn--block">
+              Ver la guía <ArrowRight className="ed-btn__arrow" aria-hidden="true" />
+            </Link>
+          ) : (
+            <a href={product.hotmartUrl} target="_blank" rel="noopener noreferrer" className="ed-btn ed-btn--primary ed-btn--sm ed-btn--block">
+              Comprar ahora <ArrowRight className="ed-btn__arrow" aria-hidden="true" />
+            </a>
+          )}
+          <BotonWhatsApp mensaje={`Hola, me interesa «${product.name}». ¿Me cuentas más?`} origen="tarjeta-atenfarma" tamano="ed-btn--sm ed-btn--block">Preguntar por WhatsApp</BotonWhatsApp>
         </div>
 
-        <p className="text-xs text-edvanta-subtle text-center flex items-center justify-center gap-1">
-          <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>
-          Pago seguro en Hotmart
+        <p className="flex items-center justify-center gap-1 text-center text-xs text-edvanta-subtle">
+          <Lock className="h-3 w-3" aria-hidden="true" /> Pago seguro en Hotmart
         </p>
       </div>
     </div>

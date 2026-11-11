@@ -29,6 +29,7 @@ import {
   ArrowLink, Breadcrumb, Btn, IconButton, NavCard, Section, SectionHeading,
 } from '../components/edvanta/ui';
 import { ebooks } from '../data/fst';
+import { rutaDeGuia } from '../data/guiasVenta';
 import { FST_COMMUNITY_URL, FST_COLECCION_HOTMART, waLink } from '../config/links';
 import { updatePageSeo } from '../utils/seo';
 import { trackEvent } from '../utils/analytics';
@@ -79,7 +80,9 @@ function EbookCard({ e, onComprar }) {
         <p className="mt-2 flex-1 text-sm leading-6 text-edvanta-muted">{e.description}</p>
         <div className="mt-5 flex items-center justify-between gap-3">
           <span className="text-xs font-semibold text-edvanta-subtle">PDF · Hotmart</span>
-          <Btn href={buyUrl(e)} {...enHotmart} size="sm" onClick={() => onComprar(e)}>Ver más</Btn>
+          {rutaDeGuia(e.id)
+            ? <Btn to={rutaDeGuia(e.id)} size="sm" iconRight={ArrowRight} onClick={() => onComprar(e)}>Ver la guía</Btn>
+            : <Btn href={buyUrl(e)} {...enHotmart} size="sm" onClick={() => onComprar(e)}>Ver más</Btn>}
         </div>
       </div>
     </article>
