@@ -45,11 +45,11 @@ export default function ChallengeCard({ challenge, progress = null }) {
             <p className="mt-2 font-display text-lg font-extrabold text-edvanta-deep">{challenge.title}</p>
           </div>
         )}
-        <span className="absolute left-3 top-3 rounded-full bg-white/90 px-2.5 py-0.5 text-[11px] font-semibold text-edvanta-deep">
+        <span className="absolute left-3 top-3 rounded-full bg-white/90 px-2.5 py-0.5 text-xs font-semibold text-edvanta-deep">
           7 días
         </span>
         {challenge.featured && (
-          <span className="absolute right-3 top-3 rounded-full bg-edvanta-blue/90 px-2.5 py-0.5 text-[11px] font-semibold text-white">
+          <span className="absolute right-3 top-3 rounded-full bg-edvanta-blue/90 px-2.5 py-0.5 text-xs font-semibold text-white">
             Destacado
           </span>
         )}

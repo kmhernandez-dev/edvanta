@@ -158,7 +158,7 @@ export default function Vida360Pro() {
               <h1 className="text-4xl md:text-5xl lg:text-[56px] font-bold text-edvanta-deep leading-[1.08] mb-6 tracking-tight">
                 La plataforma que integra la{' '}
                 <span className="relative whitespace-nowrap">
-                  <span className="relative z-10 bg-gradient-to-r from-edvanta-tealdark to-edvanta-tealdark bg-clip-text text-transparent">salud tiroidea</span>
+                  <span className="relative z-10 text-edvanta-tealdark">salud tiroidea</span>
                   <span className="absolute bottom-1 left-0 right-0 h-3 bg-edvanta-teal/15 -z-0 rounded-full" />
                 </span>
                 {' '}en un solo lugar
@@ -204,16 +204,16 @@ export default function Vida360Pro() {
                     </div>
                     <span className="text-[12px] text-white/70 ml-2 font-medium">Vida 360 Pro</span>
                   </div>
-                  <span className="text-[10px] text-edvanta-teal font-semibold bg-edvanta-teal/15 px-2 py-0.5 rounded-full">v1.0</span>
+                  <span className="text-xs text-edvanta-teal font-semibold bg-edvanta-teal/15 px-2 py-0.5 rounded-full">v1.0</span>
                 </div>
 
                 <div className="p-5 space-y-4">
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-[11px] font-semibold text-edvanta-subtle uppercase tracking-wider">Paciente activo</p>
+                      <p className="text-xs font-semibold text-edvanta-subtle uppercase tracking-wider">Paciente activo</p>
                       <p className="text-sm font-bold text-edvanta-deep">Post-tiroidectomía · 42a</p>
                     </div>
-                    <span className="px-2 py-1 bg-amber-50 text-amber-700 text-[10px] font-semibold rounded-full border border-amber-200">En seguimiento</span>
+                    <span className="px-2 py-1 bg-amber-50 text-amber-700 text-xs font-semibold rounded-full border border-amber-200">En seguimiento</span>
                   </div>
 
                   <div className="grid grid-cols-4 gap-2">
@@ -222,7 +222,7 @@ export default function Vida360Pro() {
                       return (
                         <div key={d.id} className={`text-center p-2.5 rounded-xl ${c.light} border ${c.border}`}>
                           <Icon name={d.icon} className={`w-4 h-4 mx-auto mb-1 ${c.icon}`} />
-                          <p className="text-[9px] font-semibold text-edvanta-deep leading-tight">{d.shortName}</p>
+                          <p className="text-xs font-semibold text-edvanta-deep leading-tight">{d.shortName}</p>
                         </div>
                       );
                     })}
@@ -230,35 +230,35 @@ export default function Vida360Pro() {
 
                   <div className="grid grid-cols-2 gap-2">
                     <div className="bg-edvanta-bg rounded-xl p-3">
-                      <p className="text-[9px] text-edvanta-subtle uppercase tracking-wider font-semibold mb-2">Laboratorios</p>
+                      <p className="text-xs text-edvanta-subtle uppercase tracking-wider font-semibold mb-2">Laboratorios</p>
                       <div className="space-y-1.5">
-                        <div className="flex justify-between text-[10px]"><span className="text-edvanta-muted">TSH</span><span className="text-red-500 font-bold">6.2 ↑</span></div>
-                        <div className="flex justify-between text-[10px]"><span className="text-edvanta-muted">T4L</span><span className="text-emerald-500 font-bold">1.1</span></div>
-                        <div className="flex justify-between text-[10px]"><span className="text-edvanta-muted">Vit D</span><span className="text-red-500 font-bold">18 ↓</span></div>
-                        <div className="flex justify-between text-[10px]"><span className="text-edvanta-muted">Anti-TPO</span><span className="text-red-500 font-bold">450 ↑</span></div>
+                        <div className="flex justify-between text-xs"><span className="text-edvanta-muted">TSH</span><span className="text-red-500 font-bold">6.2 ↑</span></div>
+                        <div className="flex justify-between text-xs"><span className="text-edvanta-muted">T4L</span><span className="text-emerald-500 font-bold">1.1</span></div>
+                        <div className="flex justify-between text-xs"><span className="text-edvanta-muted">Vit D</span><span className="text-red-500 font-bold">18 ↓</span></div>
+                        <div className="flex justify-between text-xs"><span className="text-edvanta-muted">Anti-TPO</span><span className="text-red-500 font-bold">450 ↑</span></div>
                       </div>
                     </div>
                     <div className="bg-edvanta-bg rounded-xl p-3">
-                      <p className="text-[9px] text-edvanta-subtle uppercase tracking-wider font-semibold mb-2">Problemas</p>
+                      <p className="text-xs text-edvanta-subtle uppercase tracking-wider font-semibold mb-2">Problemas</p>
                       <div className="space-y-2">
                         <div className="space-y-1">
                           <div className="h-1.5 bg-red-200 rounded-full w-full" />
-                          <p className="text-[8px] text-red-600 font-medium">TSH fuera de meta</p>
+                          <p className="text-xs text-red-600 font-medium">TSH fuera de meta</p>
                         </div>
                         <div className="space-y-1">
                           <div className="h-1.5 bg-amber-200 rounded-full w-4/5" />
-                          <p className="text-[8px] text-amber-600 font-medium">Interacción café-levotiroxina</p>
+                          <p className="text-xs text-amber-600 font-medium">Interacción café-levotiroxina</p>
                         </div>
                         <div className="space-y-1">
                           <div className="h-1.5 bg-amber-200 rounded-full w-3/5" />
-                          <p className="text-[8px] text-amber-600 font-medium">Vitamina D insuficiente</p>
+                          <p className="text-xs text-amber-600 font-medium">Vitamina D insuficiente</p>
                         </div>
                       </div>
                     </div>
                   </div>
 
                   <div className="bg-gradient-to-r from-[#F0FAF9] to-edvanta-bg rounded-xl p-3">
-                    <p className="text-[9px] text-edvanta-subtle uppercase tracking-wider font-semibold mb-2">Plan integrado</p>
+                    <p className="text-xs text-edvanta-subtle uppercase tracking-wider font-semibold mb-2">Plan integrado</p>
                     <div className="space-y-1.5">
                       <div className="flex items-center gap-2">
                         <div className="w-1.5 h-1.5 rounded-full bg-edvanta-tealdark" />
@@ -312,7 +312,7 @@ export default function Vida360Pro() {
           <div className="grid lg:grid-cols-2 gap-8">
             {/* Patient portal */}
             <div className="group relative bg-gradient-to-br from-[#F0FAF9] to-[#F0FAF9] border border-edvanta-teal/20 rounded-2xl p-8 hover:shadow-lg transition-all">
-              <div className="absolute top-4 right-4 px-3 py-1 bg-edvanta-tealdark/10 text-edvanta-tealdark text-[11px] font-semibold rounded-full">Para pacientes</div>
+              <div className="absolute top-4 right-4 px-3 py-1 bg-edvanta-tealdark/10 text-edvanta-tealdark text-xs font-semibold rounded-full">Para pacientes</div>
               <div className="w-14 h-14 rounded-2xl bg-white shadow-sm border border-edvanta-teal/20 flex items-center justify-center mb-5">
                 <Icon name="heart" className="w-7 h-7 text-edvanta-tealdark" />
               </div>
@@ -334,7 +334,7 @@ export default function Vida360Pro() {
 
             {/* Professional workspace */}
             <div className="group relative bg-gradient-to-br from-edvanta-bg to-edvanta-bg border border-edvanta-deep/15 rounded-2xl p-8 hover:shadow-lg transition-all">
-              <div className="absolute top-4 right-4 px-3 py-1 bg-[#031D5C]/10 text-edvanta-deep text-[11px] font-semibold rounded-full">Para profesionales</div>
+              <div className="absolute top-4 right-4 px-3 py-1 bg-[#031D5C]/10 text-edvanta-deep text-xs font-semibold rounded-full">Para profesionales</div>
               <div className="w-14 h-14 rounded-2xl bg-white shadow-sm border border-edvanta-deep/10 flex items-center justify-center mb-5">
                 <Icon name="briefcase" className="w-7 h-7 text-edvanta-deep" />
               </div>
@@ -399,7 +399,7 @@ export default function Vida360Pro() {
                   <p className="text-[13px] text-edvanta-muted leading-relaxed mb-4">{d.description}</p>
                   <div className="flex items-center justify-between">
                     <span className="text-[12px] font-semibold text-edvanta-subtle">{d.tools.length} herramientas</span>
-                    <span className={`text-[11px] font-semibold ${c.text}`}>Ver →</span>
+                    <span className={`text-xs font-semibold ${c.text}`}>Ver →</span>
                   </div>
                 </div>
               );
@@ -439,12 +439,12 @@ export default function Vida360Pro() {
                           </div>
                           <div className="min-w-0">
                             <p className="text-[13px] font-semibold text-edvanta-deep leading-tight">{tool.name}</p>
-                            <span className="inline-block mt-1 text-[10px] font-semibold px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200">
+                            <span className="inline-block mt-1 text-xs font-semibold px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200">
                               {tool.status === 'demo' ? 'Demo disponible' : 'Próximamente'}
                             </span>
                           </div>
                         </div>
-                        <p className="text-[11px] text-edvanta-muted leading-relaxed">{tool.activity}</p>
+                        <p className="text-xs text-edvanta-muted leading-relaxed">{tool.activity}</p>
                       </div>
                     ))}
                   </div>
@@ -475,7 +475,7 @@ export default function Vida360Pro() {
                     <span className="text-sm font-bold text-edvanta-deep">{step.step}</span>
                   </div>
                   <p className="text-[13px] font-bold text-edvanta-deep mb-1">{step.name}</p>
-                  <p className="text-[11px] text-edvanta-subtle leading-tight hidden sm:block">{step.description}</p>
+                  <p className="text-xs text-edvanta-subtle leading-tight hidden sm:block">{step.description}</p>
                 </div>
               ))}
             </div>
@@ -495,7 +495,7 @@ export default function Vida360Pro() {
             {DEMO_CASES_V360.map(caseData => (
               <div key={caseData.id} className="bg-white border border-edvanta-border rounded-2xl p-6 hover:border-edvanta-teal/30 hover:shadow-lg transition-all flex flex-col group">
                 <div className="flex items-start justify-between mb-3">
-                  <span className={`text-[11px] font-semibold px-2.5 py-1 rounded-full border ${
+                  <span className={`text-xs font-semibold px-2.5 py-1 rounded-full border ${
                     caseData.level === 'Básico' ? 'bg-emerald-50 text-emerald-700 border-emerald-200' :
                     caseData.level === 'Intermedio' ? 'bg-edvanta-light text-edvanta-blue border-edvanta-light' :
                     'bg-amber-50 text-amber-700 border-amber-200'
@@ -509,7 +509,7 @@ export default function Vida360Pro() {
                     const disc = DISCIPLINES.find(dd => dd.id === d);
                     const col = DISCIPLINE_COLORS[d];
                     return (
-                      <span key={d} className={`text-[10px] font-medium px-2 py-0.5 rounded-full ${col?.bg} ${col?.text}`}>
+                      <span key={d} className={`text-xs font-medium px-2 py-0.5 rounded-full ${col?.bg} ${col?.text}`}>
                         {disc?.shortName || d}
                       </span>
                     );
@@ -517,10 +517,10 @@ export default function Vida360Pro() {
                 </div>
                 <div className="flex flex-wrap gap-1 mb-4">
                   {caseData.tags?.map(tag => (
-                    <span key={tag} className="text-[10px] bg-edvanta-soft text-edvanta-muted px-2 py-0.5 rounded-full">{tag}</span>
+                    <span key={tag} className="text-xs bg-edvanta-soft text-edvanta-muted px-2 py-0.5 rounded-full">{tag}</span>
                   ))}
                 </div>
-                <p className="text-[11px] text-amber-600 font-medium mb-4 italic">Caso ficticio con fines educativos</p>
+                <p className="text-xs text-amber-600 font-medium mb-4 italic">Caso ficticio con fines educativos</p>
                 <button
                   onClick={() => navigate(`/vida-360-pro/workspace?case=${caseData.id}`)}
                   className="w-full py-2.5 bg-[#031D5C] hover:bg-[#031D5C] text-white text-[13px] font-semibold rounded-xl transition-all min-h-[44px]"
@@ -548,13 +548,13 @@ export default function Vida360Pro() {
               return (
                 <div key={calc.id} className="bg-white border border-edvanta-border rounded-xl p-5 hover:border-edvanta-strong hover:shadow-sm transition-all group">
                   <div className="flex items-center gap-2 mb-3">
-                    <span className={`text-[10px] font-semibold px-2 py-0.5 rounded-full ${col?.bg} ${col?.text}`}>
+                    <span className={`text-xs font-semibold px-2 py-0.5 rounded-full ${col?.bg} ${col?.text}`}>
                       {disc?.shortName || calc.discipline}
                     </span>
                   </div>
                   <h3 className="text-sm font-bold text-edvanta-deep mb-2 group-hover:text-edvanta-tealdark transition-colors">{calc.name}</h3>
-                  <p className="text-[11px] text-edvanta-muted font-mono leading-relaxed mb-3 bg-edvanta-bg rounded-lg p-2.5">{calc.formula}</p>
-                  <p className="text-[11px] text-edvanta-subtle leading-relaxed">{calc.population}</p>
+                  <p className="text-xs text-edvanta-muted font-mono leading-relaxed mb-3 bg-edvanta-bg rounded-lg p-2.5">{calc.formula}</p>
+                  <p className="text-xs text-edvanta-subtle leading-relaxed">{calc.population}</p>
                 </div>
               );
             })}
@@ -578,7 +578,7 @@ export default function Vida360Pro() {
                   : 'border-edvanta-border bg-white hover:border-edvanta-strong hover:shadow-md'
               }`}>
                 {plan.highlighted && (
-                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 bg-edvanta-tealdark text-white text-[11px] font-bold rounded-full">
+                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 bg-edvanta-tealdark text-white text-xs font-bold rounded-full">
                     Más popular
                   </div>
                 )}
@@ -637,7 +637,7 @@ export default function Vida360Pro() {
                   {ebook.cover.emoji}
                 </div>
                 <p className="text-[13px] font-semibold text-edvanta-deep mb-1 group-hover:text-edvanta-tealdark transition-colors leading-snug">{ebook.name}</p>
-                <p className="text-[11px] text-edvanta-muted mb-3 line-clamp-2">{ebook.description}</p>
+                <p className="text-xs text-edvanta-muted mb-3 line-clamp-2">{ebook.description}</p>
                 {ebook.price && (
                   <p className="text-sm font-bold text-edvanta-deep">${ebook.price.toLocaleString('es-CO')} COP</p>
                 )}
@@ -655,7 +655,7 @@ export default function Vida360Pro() {
                       <Icon name={s.icon} className="w-5 h-5 text-edvanta-tealdark" />
                     </div>
                     <p className="text-sm font-bold text-edvanta-deep mb-1">{s.name}</p>
-                    <p className="text-[11px] text-edvanta-muted mb-1">{s.duration}</p>
+                    <p className="text-xs text-edvanta-muted mb-1">{s.duration}</p>
                     <p className="text-[12px] text-edvanta-muted leading-relaxed">{s.description}</p>
                   </div>
                 ))}

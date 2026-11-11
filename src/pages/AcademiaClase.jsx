@@ -38,7 +38,7 @@ function CommentActions({ comment, canInteract, onLike, onReply, isReply = false
           <Icon name="reply" className="h-4 w-4" /> Responder
         </button>
       )}
-      {!canInteract && <span className="text-[11px] text-edvanta-subtle">Inicia sesión para interactuar</span>}
+      {!canInteract && <span className="text-xs text-edvanta-subtle">Inicia sesión para interactuar</span>}
     </div>
   );
 }
@@ -395,7 +395,7 @@ export default function AcademiaClase() {
                             <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-edvanta-mint text-xs font-bold text-edvanta-tealdark">{comment.user_name?.charAt(0)?.toUpperCase() || '?'}</div>
                             <div className="min-w-0">
                               <p className="truncate text-sm font-semibold text-edvanta-deep">{comment.user_name}</p>
-                              <p className="text-[11px] text-edvanta-subtle">{formatDate(comment.created_at)}</p>
+                              <p className="text-xs text-edvanta-subtle">{formatDate(comment.created_at)}</p>
                             </div>
                           </div>
                           <p className="ml-10 mt-2 whitespace-pre-wrap text-sm leading-6 text-edvanta-deep">{comment.body}</p>
@@ -404,10 +404,10 @@ export default function AcademiaClase() {
                           {commentReplies.map(reply => (
                             <div key={reply.id} className="ml-10 mt-4 border-l-2 border-edvanta-mint pl-4">
                               <div className="flex items-center gap-2">
-                                <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-edvanta-soft text-[11px] font-bold text-edvanta-muted">{reply.user_name?.charAt(0)?.toUpperCase() || '?'}</div>
+                                <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-edvanta-soft text-xs font-bold text-edvanta-muted">{reply.user_name?.charAt(0)?.toUpperCase() || '?'}</div>
                                 <div>
                                   <p className="text-xs font-semibold text-edvanta-deep">{reply.user_name}</p>
-                                  <p className="text-[10px] text-edvanta-subtle">{formatDate(reply.created_at)}</p>
+                                  <p className="text-xs text-edvanta-subtle">{formatDate(reply.created_at)}</p>
                                 </div>
                               </div>
                               <p className="ml-8 mt-1 whitespace-pre-wrap text-sm leading-6 text-edvanta-muted">{reply.body}</p>
@@ -444,7 +444,7 @@ export default function AcademiaClase() {
                     if (!moduleLessons.length) return null;
                     return (
                       <div key={module.id} className="border-b border-edvanta-border last:border-0">
-                        <p className="bg-edvanta-bg px-4 py-2 text-[11px] font-bold uppercase tracking-[0.08em] text-edvanta-muted">{module.title}</p>
+                        <p className="bg-edvanta-bg px-4 py-2 text-xs font-bold uppercase tracking-[0.08em] text-edvanta-muted">{module.title}</p>
                         {moduleLessons.map((item) => {
                           const active = String(item.id) === lessonKey;
                           return (

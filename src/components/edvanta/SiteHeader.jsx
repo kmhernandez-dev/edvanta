@@ -89,7 +89,7 @@ function DesktopMenu({ menu, open, onToggle, onPick, pathname }) {
           <div className={menu.cols === 2 ? 'grid grid-cols-2 gap-x-2' : ''}>
             {menu.groups.map((g) => (
               <div key={g.title}>
-                <p className="px-3 pb-1 pt-2 text-[11px] font-bold uppercase tracking-[.12em] text-edvanta-muted">{g.title}</p>
+                <p className="px-3 pb-1 pt-2 text-xs font-bold uppercase tracking-[.12em] text-edvanta-muted">{g.title}</p>
                 {g.items.map((it) => <MenuItem key={it.label} item={it} onPick={onPick} />)}
               </div>
             ))}
@@ -260,7 +260,7 @@ export default function SiteHeader() {
             >
               <ShoppingCart className="h-5 w-5" strokeWidth={1.8} aria-hidden="true" />
               {count > 0 && (
-                <span className="absolute right-1 top-1 inline-flex h-[18px] min-w-[18px] items-center justify-center rounded-full bg-edvanta-teal px-1 text-[10px] font-bold text-white ring-2 ring-white">
+                <span className="absolute right-1 top-1 inline-flex h-[18px] min-w-[18px] items-center justify-center rounded-full bg-edvanta-teal px-1 text-xs font-bold text-white ring-2 ring-white">
                   {count}
                 </span>
               )}
@@ -300,7 +300,7 @@ export default function SiteHeader() {
           <Link to="/" className="flex min-h-12 items-center rounded-xl px-3 text-base font-semibold text-edvanta-blue">Inicio</Link>
           {enlacesDelContexto && (
             <div className="mb-2 rounded-2xl bg-edvanta-bg p-1.5">
-              <p className="px-3 pb-1 pt-2 text-[11px] font-bold uppercase tracking-[.12em] text-edvanta-muted">
+              <p className="px-3 pb-1 pt-2 text-xs font-bold uppercase tracking-[.12em] text-edvanta-muted">
                 {contexto === 'pacientes' ? 'Para pacientes' : 'Para instituciones'}
               </p>
               {enlacesDelContexto.map((l) => (
@@ -323,7 +323,7 @@ export default function SiteHeader() {
                 <div className="mb-2 rounded-2xl bg-edvanta-bg p-1.5">
                   {m.groups.map((g) => (
                     <div key={g.title}>
-                      <p className="px-3 pb-1 pt-2 text-[11px] font-bold uppercase tracking-[.12em] text-edvanta-muted">{g.title}</p>
+                      <p className="px-3 pb-1 pt-2 text-xs font-bold uppercase tracking-[.12em] text-edvanta-muted">{g.title}</p>
                       {g.items.map((it) => <MenuItem key={it.label} item={it} onPick={pick} />)}
                     </div>
                   ))}

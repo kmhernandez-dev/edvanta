@@ -25,7 +25,7 @@ export function TabNav({ items, label = 'Secciones', className = '' }) {
               {item.icon && <item.icon className="h-4 w-4" aria-hidden="true" />}
               {item.label}
               {item.badge ? (
-                <span className="rounded-full bg-[var(--aula-warning-soft)] px-1.5 text-[11px] font-bold text-[var(--aula-warning)]">
+                <span className="rounded-full bg-[var(--aula-warning-soft)] px-1.5 text-xs font-bold text-[var(--aula-warning)]">
                   {item.badge}
                 </span>
               ) : null}

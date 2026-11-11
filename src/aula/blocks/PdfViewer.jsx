@@ -205,7 +205,7 @@ export default function PdfViewer({ fileId, title, canDownload = false, mode = '
               value={pageInput}
               onChange={(e) => setPageInput(e.target.value.replace(/\D/g, ''))}
               onBlur={() => { const n = Number(pageInput); if (Number.isInteger(n) && n >= 1) go(n); else setPageInput(String(page)); }}
-              className="h-8 w-12 rounded-[6px] border border-[var(--aula-border-strong)] text-center text-sm tabular-nums text-[var(--aula-text)]"
+              className="h-8 w-12 rounded border border-[var(--aula-border-strong)] text-center text-sm tabular-nums text-[var(--aula-text)]"
             />
             <span>de {total}</span>
           </form>

@@ -39,10 +39,10 @@ const PRICE_TYPE_LABELS = {
 const PRICE_TYPE_STYLES = {
   free: 'bg-emerald-50 text-emerald-700 border-emerald-200',
   free_audit: 'bg-emerald-50 text-emerald-700 border-emerald-200',
-  paid: 'bg-amber-50 text-amber-700 border-amber-200',
+  paid: 'bg-[#FFFAEB] text-[#B54708] border-amber-200',
   subscription: 'bg-purple-50 text-purple-700 border-purple-200',
   financial_aid: 'bg-sky-50 text-sky-700 border-sky-200',
-  unknown: 'bg-gray-50 text-gray-600 border-gray-200',
+  unknown: 'bg-edvanta-bg text-edvanta-muted border-edvanta-border',
 };
 
 const LEVEL_LABELS = {
@@ -65,7 +65,7 @@ const MODALITY_LABELS = {
 
 export function PlatformBadge({ provider, size = 'sm' }) {
   const style = PLATFORM_STYLES[provider] || PLATFORM_STYLES.edutin;
-  const sizeClass = size === 'lg' ? 'px-3 py-1 text-xs' : 'px-2 py-0.5 text-[10px]';
+  const sizeClass = size === 'lg' ? 'px-3 py-1 text-xs' : 'px-2 py-0.5 text-xs';
 
   return (
     <span className={`inline-flex items-center gap-1 rounded-full border font-semibold ${sizeClass} ${style.bg} ${style.text} ${style.border}`}>
@@ -80,7 +80,7 @@ export function PriceTypeBadge({ priceType }) {
   const label = PRICE_TYPE_LABELS[priceType] || priceType;
 
   return (
-    <span className={`inline-flex items-center rounded-full border px-2 py-0.5 text-[10px] font-semibold ${style}`}>
+    <span className={`inline-flex items-center rounded-full border px-2 py-0.5 text-xs font-semibold ${style}`}>
       {label}
     </span>
   );
@@ -90,7 +90,7 @@ export function LevelBadge({ level }) {
   if (!level || level === 'unknown') return null;
   const label = LEVEL_LABELS[level] || level;
   return (
-    <span className="inline-flex items-center rounded-full bg-gray-100 text-gray-600 border border-gray-200 px-2 py-0.5 text-[10px] font-medium">
+    <span className="inline-flex items-center rounded-full bg-edvanta-bg text-edvanta-muted border border-edvanta-border px-2 py-0.5 text-xs font-medium">
       {label}
     </span>
   );
@@ -100,7 +100,7 @@ export function ModalityBadge({ modality }) {
   if (!modality || modality === 'unknown') return null;
   const label = MODALITY_LABELS[modality] || modality;
   return (
-    <span className="inline-flex items-center rounded-full bg-edvanta-soft text-edvanta-muted border border-edvanta-border px-2 py-0.5 text-[10px] font-medium">
+    <span className="inline-flex items-center rounded-full bg-edvanta-soft text-edvanta-muted border border-edvanta-border px-2 py-0.5 text-xs font-medium">
       {label}
     </span>
   );

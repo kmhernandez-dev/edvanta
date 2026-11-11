@@ -129,7 +129,7 @@ export default function AutorPage() {
               {AUTORA_PERFIL.bio.map((p) => (
                 <p key={p} className="mt-4 max-w-3xl text-base leading-8 text-edvanta-muted">{p}</p>
               ))}
-              <div className="mt-8 rounded-[16px] border border-edvanta-border bg-edvanta-bg p-5">
+              <div className="mt-8 rounded-xl border border-edvanta-border bg-edvanta-bg p-5">
                 <p className="flex items-center gap-2 text-sm font-bold text-edvanta-deep">
                   <ShieldCheck className="h-5 w-5 text-edvanta-teal" aria-hidden="true" />
                   Declaración de conflicto de interés
@@ -173,7 +173,7 @@ export default function AutorPage() {
           <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {publicacionesDeKarla.map((a) => (
               <Link key={a.slug} to={`/articulos/${a.slug}`} className="ds-card ds-card--interactive p-5">
-                <p className="text-[11px] font-bold uppercase tracking-[.12em] text-edvanta-tealdark">{a.category}</p>
+                <p className="text-xs font-bold uppercase tracking-[.12em] text-edvanta-tealdark">{a.category}</p>
                 <p className="mt-2 font-display text-lg font-bold leading-snug text-edvanta-deep">{a.title}</p>
                 <p className="mt-2 line-clamp-3 text-sm leading-6 text-edvanta-muted">{a.description}</p>
                 <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-edvanta-blue">
@@ -204,7 +204,7 @@ export default function AutorPage() {
               </Link>
             ))}
           </div>
-          <div className="mt-8 rounded-[16px] border border-amber-200 bg-amber-50 p-5 text-sm leading-7 text-amber-900">
+          <div className="mt-8 rounded-xl border border-amber-200 bg-amber-50 p-5 text-sm leading-7 text-amber-900">
             <p className="flex items-center gap-2 font-bold">
               <HeartPulse className="h-5 w-5" aria-hidden="true" />
               Educación, no atención clínica individual

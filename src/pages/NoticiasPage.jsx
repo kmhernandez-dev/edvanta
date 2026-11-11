@@ -73,9 +73,9 @@ export default function NoticiasPage() {
                     <div className="flex flex-1 flex-col p-5">
                       <div className="flex flex-wrap items-center justify-between gap-2">
                         <p className="text-xs font-bold uppercase text-edvanta-blue">{n.sourceEntity}</p>
-                        <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-edvanta-subtle"><CalendarDays className="h-3 w-3" />{fechaNoticia(n.date)}</span>
+                        <span className="inline-flex items-center gap-1 text-xs font-semibold text-edvanta-subtle"><CalendarDays className="h-3 w-3" />{fechaNoticia(n.date)}</span>
                       </div>
-                      <p className="mt-3 text-[11px] font-bold uppercase tracking-wide text-teal-700">{n.newsTopic}</p>
+                      <p className="mt-3 text-xs font-bold uppercase tracking-wide text-teal-700">{n.newsTopic}</p>
                       <h3 className="mt-1 text-base font-bold leading-snug text-edvanta-deep group-hover:text-edvanta-blue">{n.title}</h3>
                       <p className="mt-2 line-clamp-3 flex-1 text-sm leading-6 text-edvanta-muted">{n.description}</p>
                       <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-bold text-edvanta-blue">Leer análisis <ArrowRight className="h-4 w-4" aria-hidden="true" /></span>

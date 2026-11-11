@@ -46,7 +46,7 @@ const plantilla = readFileSync(path.join(dist, 'index.html'), 'utf8');
 const esc = (t) => String(t ?? '')
   .replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;');
 
-function pagina({ titulo, descripcion, canonical, imagen = `${SITIO}/img/edvanta-hero.webp`, jsonLd = [], cuerpo = '', robots = null }) {
+function pagina({ titulo, descripcion, canonical, imagen = `${SITIO}/img/og-edvanta.png`, jsonLd = [], cuerpo = '', robots = null }) {
   const t = esc(titulo);
   const d = esc(descripcion);
   let html = plantilla

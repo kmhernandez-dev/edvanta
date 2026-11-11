@@ -124,10 +124,10 @@ export function ResourceRow({ resource, moduleId, modules, base, onChanged, onEd
             <Badge tone={STATUS[resource.status]?.tone || 'neutral'}>{STATUS[resource.status]?.label || resource.status}</Badge>
             {resource.isRequired === false && <Badge>Opcional</Badge>}
             {resource.weight !== null && resource.weight !== undefined && (
-              <span className="text-[11px] font-semibold text-[var(--aula-muted)]">Peso {resource.weight} %</span>
+              <span className="text-xs font-semibold text-[var(--aula-muted)]">Peso {resource.weight} %</span>
             )}
           </div>
-          <p className="mt-0.5 text-[11px] text-[var(--aula-muted)]">
+          <p className="mt-0.5 text-xs text-[var(--aula-muted)]">
             Orden {position + 1} de {total}
             {resource.questionCount !== undefined ? ` · ${plural(resource.questionCount, 'pregunta')}` : ''}
             {resource.attemptCount ? ` · ${plural(resource.attemptCount, 'intento')}` : ''}

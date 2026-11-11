@@ -113,7 +113,7 @@ function Certificado({ ficha, nombre, accion, boton }) {
       <CursoSection id="certificado">
         <CursoHeading title="Certificado de aprobación" desc={c.nota} />
         <div className="curso-cert-grid">
-          <div className="curso-cert-diploma">
+          <div className="curso-cert-diploma" data-auditoria-ignorar="">
             <Diploma muestra curso={nombre} horas={c.horas} />
           </div>
           <div>

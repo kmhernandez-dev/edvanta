@@ -57,9 +57,9 @@ export default function BrandSwitch({ current }) {
                 <p className={`text-sm font-bold mb-1 ${isCurrent ? 'text-white' : 'text-navy-950'}`}>{b.name}</p>
                 <p className={`text-xs leading-snug ${isCurrent ? 'text-white/80' : 'text-edvanta-muted'}`}>{b.desc}</p>
                 {isCurrent ? (
-                  <span className="inline-block mt-3 text-[11px] font-semibold bg-white/20 px-2 py-0.5 rounded-full">Estás aquí</span>
+                  <span className="inline-block mt-3 text-xs font-semibold bg-white/20 px-2 py-0.5 rounded-full">Estás aquí</span>
                 ) : (
-                  <span className="inline-flex items-center gap-1 mt-3 text-[11px] font-semibold text-teal-600">
+                  <span className="inline-flex items-center gap-1 mt-3 text-xs font-semibold text-teal-600">
                     Visitar
                     <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />

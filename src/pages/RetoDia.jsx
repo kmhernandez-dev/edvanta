@@ -299,7 +299,7 @@ export default function RetoDia() {
                         className={`flex min-h-12 items-center gap-3 border-l-2 px-4 py-3 ${active ? 'border-teal-600 bg-teal-50/60' : 'border-transparent hover:bg-edvanta-bg'}`}
                         aria-current={active ? 'page' : undefined}
                       >
-                        <span className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-[11px] font-bold ${done ? 'bg-teal-600 text-white' : active ? 'bg-white text-teal-700' : 'bg-edvanta-bg text-edvanta-muted'}`}>
+                        <span className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-xs font-bold ${done ? 'bg-teal-600 text-white' : active ? 'bg-white text-teal-700' : 'bg-edvanta-bg text-edvanta-muted'}`}>
                           {done ? <Icon name="check" className="h-3.5 w-3.5" /> : item.day_number}
                         </span>
                         <span className={`min-w-0 truncate text-xs ${active ? 'font-semibold text-teal-800' : 'text-edvanta-deep'}`}>{item.title}</span>

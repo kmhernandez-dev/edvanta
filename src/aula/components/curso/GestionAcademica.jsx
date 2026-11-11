@@ -175,11 +175,11 @@ export function ReviewPanel({ courseId, base, modules = [] }) {
 function ResourceCols({ resources }) {
   return resources.map((r) => (
     <th key={`${r.type}-${r.id}`} className="min-w-[110px] p-2 align-bottom">
-      <span className="block text-[10px] font-bold uppercase tracking-wide text-[var(--aula-muted)]">
+      <span className="block text-xs font-bold uppercase tracking-wide text-[var(--aula-muted)]">
         {r.type === 'quiz' ? 'Quiz' : r.type === 'activity' ? 'Actividad' : 'Foro'}
       </span>
       <span className="block max-w-[140px] truncate font-semibold">{r.title}</span>
-      <span className="block text-[10px] font-normal text-[var(--aula-muted)]">Peso {r.weight ?? 0} %</span>
+      <span className="block text-xs font-normal text-[var(--aula-muted)]">Peso {r.weight ?? 0} %</span>
     </th>
   ));
 }
@@ -315,7 +315,7 @@ export function GradebookPanel({ courseId, base }) {
                       <th scope="row" className="sticky left-0 z-10 bg-white p-3 text-left font-semibold">
                         <p>{student.name}</p>
                         <p className="text-xs font-normal text-[var(--aula-muted)]">{student.email}</p>
-                        <p className="text-[10px] text-[var(--aula-muted)]">Matrícula #{student.enrollmentId}</p>
+                        <p className="text-xs text-[var(--aula-muted)]">Matrícula #{student.enrollmentId}</p>
                         <div className="mt-1 w-28"><ProgressBar value={student.progressPct} label={`Avance de ${student.name}`} size="sm" /></div>
                       </th>
                       {[
@@ -325,12 +325,12 @@ export function GradebookPanel({ courseId, base }) {
                       ].map((item) => (
                         <td key={`${item.kind}-${item.id}`} className="p-2">
                           <Score value={item.score} />
-                          {item.kind === 'quiz' && <span className="mt-0.5 block text-[10px] text-[var(--aula-muted)]">Mejor nota · {item.maxAttempts || '-'} intentos</span>}
+                          {item.kind === 'quiz' && <span className="mt-0.5 block text-xs text-[var(--aula-muted)]">Mejor nota · {item.maxAttempts || '-'} intentos</span>}
                           {item.kind === 'quiz' && item.attemptId && (
                             <button
                               type="button"
                               onClick={() => setRectify({ item, student })}
-                              className="mt-1 block text-[10px] font-semibold text-[var(--aula-primary)] underline"
+                              className="mt-1 block text-xs font-semibold text-[var(--aula-primary)] underline"
                             >
                               Rectificar
                             </button>
@@ -340,16 +340,16 @@ export function GradebookPanel({ courseId, base }) {
                       <td className="p-2">
                         <span className="font-bold tabular-nums">{student.finalScore === null ? 'Sin calificar' : Number(student.finalScore).toFixed(1)}</span>
                         {student.finalScore === null && student.accumulatedScore !== null && student.accumulatedScore !== undefined && (
-                          <span className="mt-1 block text-[10px] text-[var(--aula-muted)]">Acumulado {Number(student.accumulatedScore).toFixed(1)}</span>
+                          <span className="mt-1 block text-xs text-[var(--aula-muted)]">Acumulado {Number(student.accumulatedScore).toFixed(1)}</span>
                         )}
-                        {student.provisional && <span className="ml-1 block text-[10px] font-semibold text-[var(--aula-warning)]">provisional</span>}
+                        {student.provisional && <span className="ml-1 block text-xs font-semibold text-[var(--aula-warning)]">provisional</span>}
                       </td>
                       <td className="p-2">
                         <StatusBadge kind="enrollment" status={student.status} />
-                        <p className={`mt-1 text-[10px] font-semibold ${student.approved ? 'text-[var(--aula-success)]' : 'text-[var(--aula-muted)]'}`}>
+                        <p className={`mt-1 text-xs font-semibold ${student.approved ? 'text-[var(--aula-success)]' : 'text-[var(--aula-muted)]'}`}>
                           {student.approved ? 'Aprobado' : student.provisional ? 'Pendiente de calificar' : student.configured && student.configOk ? 'No aprobado' : 'Sin nota final'}
                         </p>
-                        {student.pending.length > 0 && <p className="text-[10px] text-[var(--aula-warning)]">{student.pending.length} pendientes</p>}
+                        {student.pending.length > 0 && <p className="text-xs text-[var(--aula-warning)]">{student.pending.length} pendientes</p>}
                       </td>
                     </tr>
                   ))}

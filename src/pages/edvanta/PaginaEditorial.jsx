@@ -117,7 +117,7 @@ export default function PaginaEditorial({ slug }) {
                   )}
                 </section>
               ))}
-              <div className="mt-6 rounded-[16px] border border-amber-200 bg-amber-50 p-5 text-sm leading-7 text-amber-900">
+              <div className="mt-6 rounded-xl border border-amber-200 bg-amber-50 p-5 text-sm leading-7 text-amber-900">
                 <p className="flex items-center gap-2 font-bold">
                   <ShieldCheck className="h-5 w-5" aria-hidden="true" />
                   Educación, no atención clínica individual

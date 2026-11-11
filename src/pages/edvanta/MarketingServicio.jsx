@@ -117,7 +117,7 @@ export default function MarketingServicio() {
               </h2>
               <p className="mt-4 text-base leading-8 text-edvanta-muted">{servicio.necesidad}</p>
               <div className="mt-6 rounded-2xl border border-edvanta-border bg-[#F8FAFD] p-5">
-                <p className="text-[11px] font-extrabold uppercase tracking-[.14em] text-edvanta-tealdark">Cómo se trabaja</p>
+                <p className="text-xs font-extrabold uppercase tracking-[.14em] text-edvanta-tealdark">Cómo se trabaja</p>
                 <p className="mt-2 text-sm leading-7 text-edvanta-deep">
                   No empezamos por una plantilla. Primero entendemos el objetivo, el público y las fuentes disponibles; después proponemos el alcance y las piezas.
                 </p>

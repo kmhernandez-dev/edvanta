@@ -24,7 +24,7 @@ function AreaCard({ area }) {
       <h3 className="mt-4 font-display text-xl font-extrabold leading-snug text-edvanta-deep">{area.nombre}</h3>
       <p className="mt-2 text-sm leading-6 text-edvanta-muted">{area.resumen}</p>
       <div className="mt-4 rounded-xl bg-edvanta-bg px-4 py-3">
-        <p className="text-[11px] font-bold uppercase tracking-[.12em] text-edvanta-subtle">Puede servir a</p>
+        <p className="text-xs font-bold uppercase tracking-[.12em] text-edvanta-subtle">Puede servir a</p>
         <p className="mt-1 text-[13px] leading-5 text-edvanta-deep">{area.dirigidoA.slice(0, 3).join(' · ')}</p>
       </div>
       <div className="mt-auto pt-5">

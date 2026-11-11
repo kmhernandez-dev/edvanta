@@ -160,7 +160,7 @@ export default function OfertasQFPage() {
             {porSeccion.map(({ seccion, ofertas }) => (
               <div key={seccion} className="mb-12 last:mb-0">
                 <h2 className="flex items-center gap-3 font-display text-xl font-extrabold text-edvanta-deep">
-                  <span className="inline-flex h-2.5 w-2.5 shrink-0 rounded-[3px] bg-edvanta-teal" aria-hidden="true" />
+                  <span className="inline-flex h-2.5 w-2.5 shrink-0 rounded bg-edvanta-teal" aria-hidden="true" />
                   <span className="min-w-0">{seccion}</span>
                   <span className="hidden h-px flex-1 bg-edvanta-border sm:block" aria-hidden="true" />
                   <span className="shrink-0 rounded-full bg-edvanta-light px-2.5 py-0.5 text-xs font-bold text-edvanta-blue">{ofertas.length}</span>
@@ -169,8 +169,8 @@ export default function OfertasQFPage() {
                   {ofertas.map((o) => (
                     <Card key={o.id} hover className="flex flex-col">
                       <div className="flex flex-wrap items-start justify-between gap-2">
-                        <span className="rounded-full bg-edvanta-light px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide text-edvanta-blue">{o.area}</span>
-                        {o.modalidad && <span className="rounded-full bg-edvanta-bg px-2.5 py-1 text-[10px] font-bold text-edvanta-muted">{o.modalidad}</span>}
+                        <span className="rounded-full bg-edvanta-light px-2.5 py-1 text-xs font-bold uppercase tracking-wide text-edvanta-blue">{o.area}</span>
+                        {o.modalidad && <span className="rounded-full bg-edvanta-bg px-2.5 py-1 text-xs font-bold text-edvanta-muted">{o.modalidad}</span>}
                       </div>
                       <h3 className="mt-3 text-lg font-bold leading-snug text-edvanta-deep">{o.cargo}</h3>
                       <p className="mt-1 flex items-center gap-1.5 text-sm font-semibold text-edvanta-blue">

@@ -90,7 +90,7 @@ function OptInForm({ name, setName, email, setEmail, state, error, onSubmit }) {
         {state === 'sending' ? 'Preparando tu descarga…' : 'Descargar la guía gratis'}
         <Svg d={I.download} className="h-4 w-4" />
       </button>
-      <p className="flex items-center justify-center gap-1.5 text-center text-[11px] text-edvanta-subtle">
+      <p className="flex items-center justify-center gap-1.5 text-center text-xs text-edvanta-subtle">
         <Svg d={I.lock} className="h-3.5 w-3.5" /> Descarga inmediata · Sin spam · Cancela cuando quieras
       </p>
     </form>

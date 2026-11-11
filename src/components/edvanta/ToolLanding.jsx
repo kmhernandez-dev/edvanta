@@ -30,14 +30,14 @@ function ToolPreview({ kind, Icon }) {
               </div>
               <div className="flex h-12 w-12 shrink-0 flex-col items-center justify-center rounded-xl bg-edvanta-mint text-edvanta-tealdark">
                 <span className="text-base font-extrabold leading-none">82</span>
-                <span className="text-[8px] font-bold uppercase">ATS</span>
+                <span className="text-xs font-bold uppercase">ATS</span>
               </div>
             </div>
             {['Perfil', 'Experiencia', 'Habilidades'].map((s, i) => (
               <div key={s} className="rounded-lg border border-edvanta-border bg-white p-2.5">
                 <div className="flex items-center justify-between">
-                  <span className="text-[11px] font-bold text-edvanta-deep">{s}</span>
-                  <span className="text-[10px] font-bold text-teal-600">{[100, 80, 60][i]}%</span>
+                  <span className="text-xs font-bold text-edvanta-deep">{s}</span>
+                  <span className="text-xs font-bold text-teal-600">{[100, 80, 60][i]}%</span>
                 </div>
                 <div className="mt-1.5 h-1.5 w-full rounded-full bg-edvanta-soft">
                   <div className="h-1.5 rounded-full bg-edvanta-blue" style={{ width: `${[100, 80, 60][i]}%` }} />
@@ -50,22 +50,22 @@ function ToolPreview({ kind, Icon }) {
         return (
           <div className="space-y-3">
             <div className="flex items-center justify-between rounded-lg bg-edvanta-mint p-3">
-              <span className="text-[11px] font-bold text-edvanta-tealdark">Compatibilidad con el cargo</span>
+              <span className="text-xs font-bold text-edvanta-tealdark">Compatibilidad con el cargo</span>
               <span className="text-xl font-extrabold text-edvanta-tealdark">78%</span>
             </div>
             <div>
-              <p className="mb-1.5 text-[10px] font-bold uppercase tracking-wide text-edvanta-subtle">Palabras clave encontradas</p>
+              <p className="mb-1.5 text-xs font-bold uppercase tracking-wide text-edvanta-subtle">Palabras clave encontradas</p>
               <div className="flex flex-wrap gap-1.5">
                 {['BPM', 'HPLC', 'Auditoría'].map((k) => (
-                  <span key={k} className="rounded-full bg-edvanta-mint px-2 py-0.5 text-[10px] font-bold text-edvanta-tealdark">{k}</span>
+                  <span key={k} className="rounded-full bg-edvanta-mint px-2 py-0.5 text-xs font-bold text-edvanta-tealdark">{k}</span>
                 ))}
               </div>
             </div>
             <div>
-              <p className="mb-1.5 text-[10px] font-bold uppercase tracking-wide text-edvanta-subtle">Faltantes (prioridad alta)</p>
+              <p className="mb-1.5 text-xs font-bold uppercase tracking-wide text-edvanta-subtle">Faltantes (prioridad alta)</p>
               <div className="flex flex-wrap gap-1.5">
                 {['CAPA', 'Validación'].map((k) => (
-                  <span key={k} className="rounded-full bg-amber-50 px-2 py-0.5 text-[10px] font-bold text-amber-700">{k}</span>
+                  <span key={k} className="rounded-full bg-amber-50 px-2 py-0.5 text-xs font-bold text-amber-700">{k}</span>
                 ))}
               </div>
             </div>
@@ -76,8 +76,8 @@ function ToolPreview({ kind, Icon }) {
           <div className="space-y-3">
             <div className="rounded-lg border border-edvanta-border bg-white p-3">
               <div className="mb-2 flex items-center justify-between">
-                <span className="text-[10px] font-bold uppercase tracking-wide text-edvanta-blue">Titular</span>
-                <span className="rounded bg-edvanta-light px-1.5 py-0.5 text-[9px] font-bold text-edvanta-blue">Copiar</span>
+                <span className="text-xs font-bold uppercase tracking-wide text-edvanta-blue">Titular</span>
+                <span className="rounded bg-edvanta-light px-1.5 py-0.5 text-xs font-bold text-edvanta-blue">Copiar</span>
               </div>
               <div className="space-y-1.5">
                 <div className="h-2 w-full rounded bg-edvanta-soft" />
@@ -87,7 +87,7 @@ function ToolPreview({ kind, Icon }) {
             {['Acerca de', 'Experiencia'].map((s) => (
               <div key={s} className="flex items-center gap-2 rounded-lg border border-edvanta-border bg-white p-2.5">
                 <Sparkles className="h-3.5 w-3.5 text-edvanta-blue" aria-hidden="true" />
-                <span className="text-[11px] font-bold text-edvanta-deep">{s}</span>
+                <span className="text-xs font-bold text-edvanta-deep">{s}</span>
               </div>
             ))}
           </div>
@@ -97,8 +97,8 @@ function ToolPreview({ kind, Icon }) {
           <div className="space-y-2.5">
             {['Elige tus intereses', 'Señala tus fortalezas', 'Explora tu resultado'].map((s, i) => (
               <div key={s} className="flex items-center gap-3 rounded-lg border border-edvanta-border bg-white p-2.5">
-                <span className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-[11px] font-extrabold ${i === 0 ? 'bg-edvanta-blue text-white' : 'bg-edvanta-soft text-edvanta-subtle'}`}>{i + 1}</span>
-                <span className={`text-[11px] font-bold ${i === 0 ? 'text-edvanta-deep' : 'text-edvanta-subtle'}`}>{s}</span>
+                <span className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-xs font-extrabold ${i === 0 ? 'bg-edvanta-blue text-white' : 'bg-edvanta-soft text-edvanta-subtle'}`}>{i + 1}</span>
+                <span className={`text-xs font-bold ${i === 0 ? 'text-edvanta-deep' : 'text-edvanta-subtle'}`}>{s}</span>
               </div>
             ))}
           </div>
@@ -109,8 +109,8 @@ function ToolPreview({ kind, Icon }) {
             {['Analista de calidad · Bogotá', 'Regente de farmacia · Medellín', 'Farmacovigilancia · Híbrido'].map((s) => (
               <div key={s} className="rounded-lg border border-edvanta-border bg-white p-2.5">
                 <div className="flex items-center justify-between">
-                  <span className="text-[11px] font-bold text-edvanta-deep">{s.split(' · ')[0]}</span>
-                  <span className="rounded-full bg-edvanta-soft px-1.5 py-0.5 text-[9px] font-bold text-edvanta-subtle">{s.split(' · ')[1]}</span>
+                  <span className="text-xs font-bold text-edvanta-deep">{s.split(' · ')[0]}</span>
+                  <span className="rounded-full bg-edvanta-soft px-1.5 py-0.5 text-xs font-bold text-edvanta-subtle">{s.split(' · ')[1]}</span>
                 </div>
               </div>
             ))}
@@ -139,7 +139,7 @@ function ToolPreview({ kind, Icon }) {
         <span className="h-2.5 w-2.5 rounded-full bg-slate-200" />
         <span className="h-2.5 w-2.5 rounded-full bg-slate-200" />
         <span className="h-2.5 w-2.5 rounded-full bg-slate-200" />
-        <span className="ml-2 inline-flex items-center gap-1 text-[10px] font-bold text-edvanta-subtle">
+        <span className="ml-2 inline-flex items-center gap-1 text-xs font-bold text-edvanta-subtle">
           <Icon className="h-3 w-3" aria-hidden="true" /> Vista previa
         </span>
       </div>
@@ -201,7 +201,7 @@ export default function ToolLanding({ tool }) {
           <div className="bg-dots pointer-events-none absolute inset-0 opacity-60" aria-hidden="true" />
           <div className="relative mx-auto grid max-w-7xl items-center gap-10 px-4 py-14 sm:px-6 lg:grid-cols-2 lg:px-8 lg:py-20">
             <div>
-              <span className="inline-flex items-center gap-1.5 rounded-full border border-edvanta-blue/20 bg-edvanta-light px-3 py-1 text-[11px] font-bold uppercase tracking-widest text-edvanta-blue">
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-edvanta-blue/20 bg-edvanta-light px-3 py-1 text-xs font-bold uppercase tracking-widest text-edvanta-blue">
                 <Icon className="h-3.5 w-3.5" aria-hidden="true" /> {tool.eyebrow}
               </span>
               <h1 className="mt-4 font-display text-3xl font-extrabold leading-tight text-edvanta-deep sm:text-4xl lg:text-[2.9rem]">
@@ -272,7 +272,7 @@ export default function ToolLanding({ tool }) {
               </ul>
             </div>
             <div className="flex flex-col justify-center rounded-2xl bg-gradient-to-br from-edvanta-deep to-edvanta-blue p-7 text-white">
-              <p className="text-[11px] font-bold uppercase tracking-widest text-white/70">Resultado</p>
+              <p className="text-xs font-bold uppercase tracking-widest text-white/70">Resultado</p>
               <p className="mt-3 text-lg font-semibold leading-8">{tool.outcome}</p>
               <Cta className="mt-6 inline-flex w-fit items-center gap-2 rounded-xl bg-white px-5 py-3 text-sm font-bold text-edvanta-deep transition hover:bg-edvanta-light">
                 {tool.cta.label} <ArrowRight className="h-4 w-4" aria-hidden="true" />

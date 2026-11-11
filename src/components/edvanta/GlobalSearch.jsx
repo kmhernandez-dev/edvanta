@@ -116,7 +116,7 @@ export default function GlobalSearch({ className = '' }) {
       >
         <Search className="h-4 w-4" aria-hidden="true" />
         <span className="hidden lg:inline">Buscar…</span>
-        <kbd className="ml-1 hidden rounded border border-edvanta-border bg-edvanta-bg px-1.5 py-0.5 text-[10px] font-semibold text-edvanta-subtle lg:inline">/</kbd>
+        <kbd className="ml-1 hidden rounded border border-edvanta-border bg-edvanta-bg px-1.5 py-0.5 text-xs font-semibold text-edvanta-subtle lg:inline">/</kbd>
       </button>
 
       {!open ? null : (
@@ -176,7 +176,7 @@ export default function GlobalSearch({ className = '' }) {
                     const Icon = TYPE_ICON[g.type] || FileText;
                     return (
                       <div key={g.type} className="mb-1">
-                        <p className="flex items-center gap-1.5 px-3 py-1.5 text-[11px] font-bold uppercase tracking-wide text-edvanta-subtle">
+                        <p className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold uppercase tracking-wide text-edvanta-subtle">
                           <Icon className="h-3 w-3" aria-hidden="true" /> {g.items[0].node.typeLabel}
                         </p>
                         {g.items.map(({ node }) => {

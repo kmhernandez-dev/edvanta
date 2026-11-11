@@ -32,9 +32,9 @@ const PRICE_TYPE_STYLES = {
   free: 'bg-emerald-100 text-emerald-800',
   free_audit: 'bg-teal-100 text-teal-800',
   paid: 'bg-edvanta-light text-edvanta-blue',
-  subscription: 'bg-indigo-100 text-indigo-800',
+  subscription: 'bg-edvanta-light text-edvanta-blue',
   financial_aid: 'bg-sky-100 text-sky-800',
-  unknown: 'bg-gray-100 text-gray-600',
+  unknown: 'bg-edvanta-bg text-edvanta-muted',
 };
 
 const LEVEL_LABELS = {
@@ -94,9 +94,9 @@ export default function ExternalCourseCard({ course, hideProvider = false }) {
   const { savedCourses, saveCourse, removeCourse } = useProfessional();
   const [saveStatus, setSaveStatus] = useState('');
   const providerLabel = PROVIDER_LABELS[course.provider] || course.provider;
-  const providerStyle = PROVIDER_STYLES[course.provider] || 'bg-gray-100 text-gray-600';
+  const providerStyle = PROVIDER_STYLES[course.provider] || 'bg-edvanta-bg text-edvanta-muted';
   const priceLabel = PRICE_TYPE_LABELS[course.price_type] || course.price_type;
-  const priceStyle = PRICE_TYPE_STYLES[course.price_type] || 'bg-gray-100 text-gray-600';
+  const priceStyle = PRICE_TYPE_STYLES[course.price_type] || 'bg-edvanta-bg text-edvanta-muted';
   const levelLabel = LEVEL_LABELS[course.level];
   const modalityLabel = MODALITY_LABELS[course.modality];
   const ctaUrl = course.affiliate_url || course.original_url;
@@ -119,7 +119,7 @@ export default function ExternalCourseCard({ course, hideProvider = false }) {
   };
 
   return (
-    <div className="group flex flex-col overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm transition duration-200 hover:-translate-y-0.5 hover:border-edvanta-teal hover:shadow-md">
+    <div className="group flex flex-col overflow-hidden rounded-lg border border-edvanta-border bg-white shadow-sm transition duration-200 hover:-translate-y-0.5 hover:border-edvanta-teal hover:shadow-md">
       {/* Image area */}
       <div className="relative flex aspect-[16/9] items-center justify-center overflow-hidden bg-edvanta-soft">
         {courseImageUrl ? (
@@ -130,14 +130,14 @@ export default function ExternalCourseCard({ course, hideProvider = false }) {
 
         {/* Provider badge */}
         {!hideProvider && (
-          <span className={`absolute top-3 left-3 text-[10px] font-bold px-2.5 py-1 rounded-full ${providerStyle}`}>
+          <span className={`absolute top-3 left-3 text-xs font-bold px-2.5 py-1 rounded-full ${providerStyle}`}>
             {providerLabel}
           </span>
         )}
 
         {/* Featured badge */}
         {course.featured && (
-          <span className="absolute top-3 right-3 text-[10px] font-bold px-2 py-0.5 rounded-full bg-gold-100 text-gold-800">
+          <span className="absolute top-3 right-3 text-xs font-bold px-2 py-0.5 rounded-full bg-gold-100 text-gold-800">
             Destacado
           </span>
         )}
@@ -147,7 +147,7 @@ export default function ExternalCourseCard({ course, hideProvider = false }) {
       <div className="p-4 flex flex-col flex-1 gap-2">
         {/* Category */}
         {course.category && (
-          <p className="line-clamp-1 text-[11px] font-bold uppercase text-edvanta-tealdark">
+          <p className="line-clamp-1 text-xs font-bold uppercase text-edvanta-tealdark">
             {course.category}
           </p>
         )}
@@ -159,31 +159,31 @@ export default function ExternalCourseCard({ course, hideProvider = false }) {
 
         {/* Institution / Instructor */}
         {(course.institution || course.instructor) && (
-          <p className="text-xs text-gray-400 line-clamp-1">
+          <p className="text-xs text-edvanta-subtle line-clamp-1">
             {course.institution || course.instructor}
           </p>
         )}
 
         {/* Meta row */}
         <div className="flex flex-wrap items-center gap-1.5 mt-auto pt-2">
-          <span className={`text-[10px] font-semibold px-2 py-0.5 rounded-full ${priceStyle}`}>
+          <span className={`text-xs font-semibold px-2 py-0.5 rounded-full ${priceStyle}`}>
             {priceLabel}
           </span>
 
           {levelLabel && (
-            <span className="text-[10px] text-gray-400 bg-gray-50 px-2 py-0.5 rounded-full">
+            <span className="text-xs text-edvanta-subtle bg-edvanta-bg px-2 py-0.5 rounded-full">
               {levelLabel}
             </span>
           )}
 
           {course.language && (
-            <span className="text-[10px] text-gray-400 bg-gray-50 px-2 py-0.5 rounded-full">
+            <span className="text-xs text-edvanta-subtle bg-edvanta-bg px-2 py-0.5 rounded-full">
               {course.language === 'Spanish' ? 'ES' : course.language === 'English' ? 'EN' : course.language}
             </span>
           )}
 
           {course.certificate_available && (
-            <span className="text-[10px] text-teal-600 bg-edvanta-mint px-2 py-0.5 rounded-full" title="Certificado disponible">
+            <span className="text-xs text-teal-600 bg-edvanta-mint px-2 py-0.5 rounded-full" title="Certificado disponible">
               Cert.
             </span>
           )}
@@ -195,7 +195,7 @@ export default function ExternalCourseCard({ course, hideProvider = false }) {
             <Star className="h-3.5 w-3.5 fill-current" aria-hidden="true" />
             <span className="font-semibold">{course.rating}</span>
             {course.review_count && (
-              <span className="text-gray-400">({course.review_count})</span>
+              <span className="text-edvanta-subtle">({course.review_count})</span>
             )}
           </div>
         )}
@@ -208,16 +208,15 @@ export default function ExternalCourseCard({ course, hideProvider = false }) {
               target="_blank"
               rel="sponsored noopener noreferrer"
               onClick={() => trackClick(course)}
-              className="flex min-h-10 flex-1 items-center justify-center px-3 py-2 bg-navy-900 text-white text-xs font-semibold rounded-lg hover:bg-navy-800 transition-colors"
+              className="ed-btn ed-btn--primary ed-btn--sm flex-1"
             >
-              {course.price_type === 'free' ? 'Acceder gratis' :
-               course.price_type === 'free_audit' ? 'Auditar curso' :
+              {course.price_type === 'free' || course.price_type === 'free_audit' ? 'Estudiar gratis' :
                course.price_type === 'subscription' ? 'Ver en plataforma' :
                'Ver curso'}
               <ExternalLink className="ml-1 inline-block h-3 w-3" aria-hidden="true" />
             </a>
           ) : (
-            <span className="block w-full text-center px-3 py-2 bg-gray-100 text-gray-400 text-xs font-semibold rounded-lg cursor-not-allowed">
+            <span className="block w-full text-center px-3 py-2 bg-edvanta-bg text-edvanta-subtle text-xs font-semibold rounded-lg cursor-not-allowed">
               Enlace no disponible
             </span>
           )}
@@ -226,11 +225,11 @@ export default function ExternalCourseCard({ course, hideProvider = false }) {
           </button>
         </div>
 
-        {saveStatus && <p className="text-[10px] leading-4 text-rose-700" role="alert">{saveStatus}</p>}
+        {saveStatus && <p className="text-xs leading-4 text-rose-700" role="alert">{saveStatus}</p>}
 
         {/* Affiliate disclosure */}
         {course.affiliate_url && (
-          <p className="text-[10px] text-gray-300 text-center mt-1">Enlace de afiliado</p>
+          <p className="text-xs text-edvanta-strong text-center mt-1">Enlace de afiliado</p>
         )}
       </div>
     </div>

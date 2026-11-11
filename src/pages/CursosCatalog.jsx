@@ -233,7 +233,7 @@ export default function CursosCatalog({ defaultProvider = '' }) {
           <section className="border-b border-edvanta-border bg-white">
             <div className="mx-auto flex max-w-7xl flex-col gap-4 px-4 py-6 sm:px-6 md:flex-row md:items-center md:justify-between lg:px-8">
               <div>
-                <p className="text-xs font-bold uppercase tracking-[.14em] text-amber-700">Curso en vivo · Próxima apertura</p>
+                <p className="text-xs font-bold uppercase tracking-[.14em] text-[#B54708]">Curso en vivo · Próxima apertura</p>
                 <p className="mt-1 text-lg font-bold text-edvanta-deep">{enVivo.nombre}</p>
                 <p className="mt-1 flex items-center gap-1.5 text-sm text-edvanta-muted"><CalendarClock className="h-4 w-4" aria-hidden="true" />Para auxiliares y regentes · fecha y valor por confirmar</p>
               </div>
@@ -285,7 +285,7 @@ export default function CursosCatalog({ defaultProvider = '' }) {
         )}
 
         {/* Filters */}
-        <section className="border-b border-gray-200 bg-white sticky top-16 z-30">
+        <section className="border-b border-edvanta-border bg-white sticky top-16 z-30">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-3">
             <div className="flex flex-col gap-3">
               {/* Search bar */}
@@ -296,7 +296,7 @@ export default function CursosCatalog({ defaultProvider = '' }) {
                   onChange={e => setSearch(e.target.value)}
                   onKeyDown={e => { if (e.key === 'Enter') { e.preventDefault(); setPage(1); syncUrl({ q: search, page: null }); } }}
                   placeholder="Buscar curso por título, categoría, instructor..."
-                  className="flex-1 min-w-0 rounded-xl border border-gray-200 bg-white px-4 py-2.5 text-sm outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-100"
+                  className="flex-1 min-w-0 rounded-xl border border-edvanta-border bg-white px-4 py-2.5 text-sm outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-100"
                 />
                 <button type="button" onClick={() => { setPage(1); syncUrl({ q: search, page: null }); }}
                   className="ed-btn ed-btn--teal shrink-0">
@@ -307,7 +307,7 @@ export default function CursosCatalog({ defaultProvider = '' }) {
               {/* Filter grid */}
               <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2">
                 <select aria-label="Filtrar por categoría" value={category} onChange={e => handleFilterChange(setCategory, 'category')(e.target.value)}
-                  className="text-xs border border-gray-200 rounded-lg px-3 py-2 bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-teal-400">
+                  className="text-xs border border-edvanta-border rounded-lg px-3 py-2 bg-white text-edvanta-deep focus:outline-none focus:ring-2 focus:ring-teal-400">
                   <option value="">Todas las categorías</option>
                   {filterOptions.categories.map(c => (
                     <option key={c} value={c}>{c}</option>
@@ -315,7 +315,7 @@ export default function CursosCatalog({ defaultProvider = '' }) {
                 </select>
 
                 <select aria-label="Filtrar por carrera" value={career} onChange={e => handleFilterChange(setCareer, 'career')(e.target.value)}
-                  className="text-xs border border-gray-200 rounded-lg px-3 py-2 bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-teal-400">
+                  className="text-xs border border-edvanta-border rounded-lg px-3 py-2 bg-white text-edvanta-deep focus:outline-none focus:ring-2 focus:ring-teal-400">
                   <option value="">Todas las carreras</option>
                   {(filterOptions.careers || []).map(item => (
                     <option key={item.slug} value={item.slug}>{item.name}</option>
@@ -323,7 +323,7 @@ export default function CursosCatalog({ defaultProvider = '' }) {
                 </select>
 
                 <select aria-label="Filtrar por competencia" value={skill} onChange={e => handleFilterChange(setSkill, 'skill')(e.target.value)}
-                  className="text-xs border border-gray-200 rounded-lg px-3 py-2 bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-teal-400">
+                  className="text-xs border border-edvanta-border rounded-lg px-3 py-2 bg-white text-edvanta-deep focus:outline-none focus:ring-2 focus:ring-teal-400">
                   <option value="">Todas las competencias</option>
                   {(filterOptions.skills || []).map(item => (
                     <option key={item.slug} value={item.slug}>{item.name}</option>
@@ -331,7 +331,7 @@ export default function CursosCatalog({ defaultProvider = '' }) {
                 </select>
 
                 <select aria-label="Filtrar por idioma" value={language} onChange={e => handleFilterChange(setLanguage, 'language')(e.target.value)}
-                  className="text-xs border border-gray-200 rounded-lg px-3 py-2 bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-teal-400">
+                  className="text-xs border border-edvanta-border rounded-lg px-3 py-2 bg-white text-edvanta-deep focus:outline-none focus:ring-2 focus:ring-teal-400">
                   <option value="">Todos los idiomas</option>
                   {filterOptions.languages.map(l => (
                     <option key={l} value={l}>{l}</option>
@@ -339,7 +339,7 @@ export default function CursosCatalog({ defaultProvider = '' }) {
                 </select>
 
                 <select aria-label="Filtrar por nivel" value={level} onChange={e => handleFilterChange(setLevel, 'level')(e.target.value)}
-                  className="text-xs border border-gray-200 rounded-lg px-3 py-2 bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-teal-400">
+                  className="text-xs border border-edvanta-border rounded-lg px-3 py-2 bg-white text-edvanta-deep focus:outline-none focus:ring-2 focus:ring-teal-400">
                   <option value="">Todos los niveles</option>
                   {filterOptions.levels.map(l => (
                     <option key={l} value={l}>{LEVEL_LABELS[l] || l}</option>
@@ -347,7 +347,7 @@ export default function CursosCatalog({ defaultProvider = '' }) {
                 </select>
 
                 <select aria-label="Filtrar por tipo de acceso" value={priceType} onChange={e => handleFilterChange(setPriceType, 'price_type')(e.target.value)}
-                  className="text-xs border border-gray-200 rounded-lg px-3 py-2 bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-teal-400">
+                  className="text-xs border border-edvanta-border rounded-lg px-3 py-2 bg-white text-edvanta-deep focus:outline-none focus:ring-2 focus:ring-teal-400">
                   <option value="">Todos los tipos de acceso</option>
                   {filterOptions.price_types.map(p => (
                     <option key={p} value={p}>{PRICE_TYPE_LABELS[p] || p}</option>
@@ -355,7 +355,7 @@ export default function CursosCatalog({ defaultProvider = '' }) {
                 </select>
 
                 <select aria-label="Filtrar por certificado" value={certificate} onChange={e => handleFilterChange(setCertificate, 'certificate')(e.target.value)}
-                  className="text-xs border border-gray-200 rounded-lg px-3 py-2 bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-teal-400">
+                  className="text-xs border border-edvanta-border rounded-lg px-3 py-2 bg-white text-edvanta-deep focus:outline-none focus:ring-2 focus:ring-teal-400">
                   <option value="">Certificado: todos</option>
                   <option value="true">Con certificado</option>
                 </select>
@@ -376,7 +376,7 @@ export default function CursosCatalog({ defaultProvider = '' }) {
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             {/* Count */}
             <div className="flex items-center justify-between mb-6">
-              <p className="text-sm text-gray-500">
+              <p className="text-sm text-edvanta-muted">
                 {loading ? 'Cargando...' : `${pagination.total} curso${pagination.total !== 1 ? 's' : ''} encontrado${pagination.total !== 1 ? 's' : ''}`}
               </p>
             </div>
@@ -384,21 +384,21 @@ export default function CursosCatalog({ defaultProvider = '' }) {
             {loading ? (
               <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                 {Array.from({ length: 8 }).map((_, i) => (
-                  <div key={i} className="animate-pulse overflow-hidden rounded-lg border border-gray-100 bg-white">
-                    <div className="aspect-[16/9] bg-gray-100" />
+                  <div key={i} className="animate-pulse overflow-hidden rounded-lg border border-edvanta-border bg-white">
+                    <div className="aspect-[16/9] bg-edvanta-bg" />
                     <div className="p-4 space-y-3">
-                      <div className="h-3 bg-gray-100 rounded w-1/3" />
-                      <div className="h-4 bg-gray-100 rounded w-3/4" />
-                      <div className="h-3 bg-gray-100 rounded w-1/2" />
+                      <div className="h-3 bg-edvanta-bg rounded w-1/3" />
+                      <div className="h-4 bg-edvanta-bg rounded w-3/4" />
+                      <div className="h-3 bg-edvanta-bg rounded w-1/2" />
                     </div>
                   </div>
                 ))}
               </div>
             ) : courses.length === 0 ? (
-              <div className="rounded-lg border border-gray-200 bg-edvanta-bg py-16 text-center">
+              <div className="rounded-lg border border-edvanta-border bg-edvanta-bg py-16 text-center">
                 <BookOpenCheck className="mx-auto mb-3 h-9 w-9 text-edvanta-tealdark" aria-hidden="true" />
                 <p className="font-semibold text-navy-950">No encontramos cursos con esos filtros.</p>
-                <p className="mt-1 text-sm text-gray-500">Prueba con otros filtros o una búsqueda más amplia.</p>
+                <p className="mt-1 text-sm text-edvanta-muted">Prueba con otros filtros o una búsqueda más amplia.</p>
                 {hasFilters && (
                   <button onClick={clearFilters} className="mt-4 text-sm font-semibold text-teal-600 hover:text-edvanta-tealdark">
                     Limpiar todos los filtros
@@ -419,15 +419,15 @@ export default function CursosCatalog({ defaultProvider = '' }) {
                 <button
                   onClick={() => { setPage(p => Math.max(1, p - 1)); syncUrl({ page: String(Math.max(1, page - 1)) }); }}
                   disabled={page === 1}
-                  className="rounded-xl border border-gray-200 px-5 py-2.5 text-sm font-semibold text-navy-900 disabled:opacity-40 hover:bg-gray-50"
+                  className="rounded-xl border border-edvanta-border px-5 py-2.5 text-sm font-semibold text-navy-900 disabled:opacity-40 hover:bg-edvanta-bg"
                 >
                   Anterior
                 </button>
-                <span className="text-sm text-gray-500">Página {pagination.page} de {pagination.totalPages}</span>
+                <span className="text-sm text-edvanta-muted">Página {pagination.page} de {pagination.totalPages}</span>
                 <button
                   onClick={() => { setPage(p => Math.min(pagination.totalPages, p + 1)); syncUrl({ page: String(Math.min(pagination.totalPages, page + 1)) }); }}
                   disabled={page === pagination.totalPages}
-                  className="rounded-xl border border-gray-200 px-5 py-2.5 text-sm font-semibold text-navy-900 disabled:opacity-40 hover:bg-gray-50"
+                  className="rounded-xl border border-edvanta-border px-5 py-2.5 text-sm font-semibold text-navy-900 disabled:opacity-40 hover:bg-edvanta-bg"
                 >
                   Siguiente
                 </button>
@@ -439,7 +439,7 @@ export default function CursosCatalog({ defaultProvider = '' }) {
         {/* Disclaimer */}
         <section className="pb-16">
           <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-            <div className="p-4 bg-amber-50 border border-amber-200 rounded-xl space-y-2">
+            <div className="p-4 bg-[#FFFAEB] border border-amber-200 rounded-xl space-y-2">
               <p className="text-xs text-edvanta-blue leading-relaxed">
                 <strong>Transparencia de afiliados:</strong> Algunos enlaces de esta página son enlaces de afiliado. Edvanta puede recibir una comisión si realizas una compra, sin costo adicional para ti.
               </p>

@@ -88,7 +88,7 @@ export default function MisCursos() {
                       ) : (
                         <span className="text-5xl">🎓</span>
                       )}
-                      <span className="absolute top-3 left-3 chip bg-white/90 text-edvanta-deep text-[11px] font-semibold px-2.5 py-0.5 rounded-full">
+                      <span className="absolute top-3 left-3 chip bg-white/90 text-edvanta-deep text-xs font-semibold px-2.5 py-0.5 rounded-full">
                         {course.category}
                       </span>
                     </div>

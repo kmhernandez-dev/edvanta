@@ -78,7 +78,7 @@ function AnilloDeAvance({ pct }) {
       </svg>
       <span className="absolute inset-0 flex flex-col items-center justify-center">
         <span className="font-[var(--aula-font-display)] text-2xl font-extrabold text-[var(--aula-primary)]">{Math.round(v)}%</span>
-        <span className="text-[10px] font-bold uppercase tracking-[0.1em] text-[var(--aula-muted)]">avance</span>
+        <span className="text-xs font-bold uppercase tracking-[0.1em] text-[var(--aula-muted)]">avance</span>
       </span>
     </div>
   );
@@ -155,7 +155,7 @@ export function CourseOverview({
                             {n === m.lessons.length && n > 0 ? <CheckCircle2 className="h-4 w-4" aria-hidden="true" /> : mi + 1}
                           </span>
                           <span className="min-w-0 flex-1">
-                            <span className="block text-[11px] font-bold uppercase tracking-[0.1em] text-[var(--aula-secondary)]">Módulo {mi + 1}</span>
+                            <span className="block text-xs font-bold uppercase tracking-[0.1em] text-[var(--aula-secondary)]">Módulo {mi + 1}</span>
                             <span className="block font-bold leading-snug">{m.title}</span>
                           </span>
                           <span className="hidden shrink-0 text-xs font-semibold text-[var(--aula-muted)] sm:block">{n}/{m.lessons.length}</span>
@@ -173,7 +173,7 @@ export function CourseOverview({
                               <>
                                 <Icon className={`h-4 w-4 shrink-0 ${meta.cls}`} aria-hidden="true" />
                                 <span className={`min-w-0 flex-1 text-sm ${esSiguiente ? 'font-bold text-[var(--aula-primary)]' : ''}`}>{l.title}</span>
-                                {esSiguiente && <span className="shrink-0 rounded-full bg-[var(--aula-secondary-soft)] px-2 py-0.5 text-[11px] font-bold text-[var(--aula-success)]">Siguiente</span>}
+                                {esSiguiente && <span className="shrink-0 rounded-full bg-[var(--aula-secondary-soft)] px-2 py-0.5 text-xs font-bold text-[var(--aula-success)]">Siguiente</span>}
                                 <span className="shrink-0 text-xs text-[var(--aula-muted)]">
                                   {[l.isRequired ? null : 'Opcional', l.durationMinutes ? fmtMinutes(l.durationMinutes) : null].filter(Boolean).join(' · ')}
                                 </span>

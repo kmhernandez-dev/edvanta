@@ -126,12 +126,12 @@ function FormItemCard({ item, badge }) {
     <article className="flex min-h-52 flex-col ds-card p-5 shadow-sm transition hover:-translate-y-0.5 hover:border-edvanta-teal hover:shadow-md">
       <div className="flex items-start justify-between gap-3">
         <p className="text-xs font-bold uppercase text-edvanta-tealdark">{badge}</p>
-        <span className="rounded-full bg-edvanta-soft px-2 py-0.5 text-[10px] font-bold text-edvanta-muted">{item.tipo === 'pública' ? 'Pública' : item.tipo === 'privada' ? 'Privada' : item.modalidad}</span>
+        <span className="rounded-full bg-edvanta-soft px-2 py-0.5 text-xs font-bold text-edvanta-muted">{item.tipo === 'pública' ? 'Pública' : item.tipo === 'privada' ? 'Privada' : item.modalidad}</span>
       </div>
       <h3 className="mt-3 text-lg font-bold leading-snug text-edvanta-deep">{item.nombre}</h3>
       <p className="mt-1 text-sm font-semibold text-edvanta-muted">{item.universidad || item.organizador}</p>
       <p className="mt-2 flex-1 text-sm leading-6 text-edvanta-muted">{item.resumen}</p>
-      <div className="mt-4 flex flex-wrap gap-2 text-[11px] font-semibold text-edvanta-subtle">
+      <div className="mt-4 flex flex-wrap gap-2 text-xs font-semibold text-edvanta-subtle">
         <span className="inline-flex items-center gap-1 rounded-full bg-edvanta-bg px-2 py-0.5"><CalendarDays className="h-3 w-3" />{item.modalidad}</span>
         {item.ciudad && <span className="rounded-full bg-edvanta-bg px-2 py-0.5">{item.ciudad}</span>}
       </div>

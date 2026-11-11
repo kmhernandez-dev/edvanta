@@ -76,11 +76,11 @@ function TarjetaPaquete({ paquete, onCotizar }) {
           className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.05]"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[#031D5C]/80 via-[#031D5C]/10 to-transparent" aria-hidden="true" />
-        {paquete.destacado && <span className="ds-insignia ds-insignia--nuevo absolute left-3 top-3">Para equipos</span>}
+
         <h3 className="absolute inset-x-4 bottom-3 font-display text-xl font-extrabold leading-tight text-white">{paquete.nombre}</h3>
       </Link>
       <div className="flex flex-1 flex-col p-4">
-        {paquete.lema && <p className="text-[11px] font-bold uppercase tracking-[.12em] text-edvanta-tealdark">{paquete.lema}</p>}
+        {paquete.lema && <p className="text-xs font-bold uppercase tracking-[.12em] text-edvanta-tealdark">{paquete.lema}</p>}
         <p className="mt-1 line-clamp-3 text-sm leading-6 text-edvanta-muted">{paquete.necesidad}</p>
         <div className="mt-auto flex flex-wrap gap-2 pt-4">
           <Btn to={paqueteTo(paquete.slug)} variant="secondary" size="sm" aria-label={`Conocer el paquete ${paquete.nombre}`}>Conocer</Btn>

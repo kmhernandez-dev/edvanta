@@ -79,7 +79,7 @@ export default function FstPastelLanding() {
                 <PastelButton href="#ebooks" className="border-[#7e7899] bg-transparent text-[#38305C] hover:border-[#7E63CE] hover:bg-white/60">Explorar contenido</PastelButton>
               </div>
             </div>
-            <div className="overflow-hidden rounded-[18px]">
+            <div className="overflow-hidden rounded-2xl">
               <img src="/img/fst-pastel-health-professional.jpg" alt="Profesional de la salud con bata blanca sosteniendo una tablet" width="900" height="900" loading="eager" decoding="async" className="aspect-square w-full object-cover" />
             </div>
           </div>
@@ -109,7 +109,7 @@ export default function FstPastelLanding() {
               {featured.map((book, index) => {
                 const colors = ['bg-[#F8EAF2]', 'bg-[#E9F4F1]', 'bg-[#FDEFD9]', 'bg-[#EEE9FB]'];
                 return (
-                  <article key={book.id} className="flex snap-start flex-col overflow-hidden rounded-[18px] border border-[#EDE9F8] bg-white transition hover:-translate-y-1 hover:shadow-[0_14px_34px_rgba(56,48,92,.08)]">
+                  <article key={book.id} className="flex snap-start flex-col overflow-hidden rounded-2xl border border-[#EDE9F8] bg-white transition hover:-translate-y-1 hover:shadow-[0_14px_34px_rgba(56,48,92,.08)]">
                     <div className={`flex aspect-[16/10] items-center justify-center ${colors[index]}`}><img src={book.cover.image} alt={`Portada de ${book.name}`} loading="lazy" className="h-full w-full object-contain" /></div>
                     <div className="flex flex-1 flex-col p-5">
                       <h3 className="text-lg font-semibold leading-snug text-[#38305C]">{book.name}</h3>
@@ -143,7 +143,7 @@ export default function FstPastelLanding() {
                 ].map(item => <li key={item} className="grid grid-cols-[30px_1fr] gap-3.5"><span className="mt-0.5 flex h-7 w-7 items-center justify-center rounded-full bg-[#B5DED2] text-sm font-bold text-[#3E8C77]">✓</span><p className="leading-7">{item}</p></li>)}
               </ul>
             </div>
-            <aside className="relative overflow-hidden rounded-[22px] border border-[#EDE9F8] bg-white p-7 shadow-[0_14px_34px_rgba(56,48,92,.08)]">
+            <aside className="relative overflow-hidden rounded-2xl border border-[#EDE9F8] bg-white p-7 shadow-[0_14px_34px_rgba(56,48,92,.08)]">
               <div className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-[#C7B6F5] via-[#F6BCCB] to-[#FDD9B0]" />
               <h3 className="text-xl font-semibold text-[#38305C]">Valoración inicial</h3>
               <p className="mt-1 text-sm text-[#9490AE]">Una videollamada para revisar y organizar tu caso de forma integral.</p>

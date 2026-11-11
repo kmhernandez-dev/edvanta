@@ -26,7 +26,7 @@ import { useCallback, useEffect, useId, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import {
   ArrowLeft, ArrowRight, Award, Bell, BookOpen, BrainCircuit, Briefcase, Check, ChevronDown, Clock, FileCheck2,
-  HardHat, HeartPulse, LibraryBig, MessagesSquare, Newspaper, PartyPopper, Pill, PlayCircle, Radio, Route, Salad, Send,
+  HardHat, HeartPulse, LibraryBig, MessagesSquare, Newspaper, Pill, PlayCircle, Radio, Route, Salad, Send,
   ShieldCheck, Sparkles, X, Zap,
 } from 'lucide-react';
 import { apiUrl } from '../../config/api';
@@ -137,7 +137,6 @@ const ICONOS = {
   ShieldCheck, Sparkles, Zap,
 };
 
-const TONOS_ICONO = { blue: '', teal: 'ds-icon-tile--teal', violet: 'ds-icon-tile--violet' };
 
 // Cuántas tarjetas se ven a la vez: en el celular se asoma la siguiente
 // para que se note que la fila se desliza.
@@ -172,7 +171,6 @@ export function FilaDeCatalogo({
   if (!items?.length) return null;
 
   const mover = (dir) => pista.current?.scrollBy({ left: dir * pista.current.clientWidth * 0.9, behavior: 'smooth' });
-  const Icono = ICONOS[icono];
   const flecha = 'inline-flex h-10 w-10 items-center justify-center rounded-full border border-edvanta-border bg-white text-edvanta-deep transition hover:-translate-y-0.5 hover:border-edvanta-blue/40 hover:text-edvanta-blue hover:shadow-[var(--ds-sh-sm)] disabled:pointer-events-none disabled:opacity-35';
 
   return (
@@ -180,11 +178,6 @@ export function FilaDeCatalogo({
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex items-end justify-between gap-4">
           <div className="flex min-w-0 items-center gap-3">
-            {Icono && (
-              <span className={`ds-icon-tile ${TONOS_ICONO[tono] || ''} h-10 w-10 shrink-0`}>
-                <Icono className="h-5 w-5" strokeWidth={1.9} aria-hidden="true" />
-              </span>
-            )}
             <div className="min-w-0">
               <h2 id={`${id}-titulo`} className="font-display text-xl font-extrabold leading-tight text-edvanta-deep sm:text-2xl">{titulo}</h2>
               {subtitulo && <p className="mt-0.5 truncate text-sm text-edvanta-muted">{subtitulo}</p>}
@@ -229,10 +222,6 @@ export function FilaDeCatalogo({
 
 /* ── Tarjetas ──────────────────────────────────────────────── */
 
-function Insignia({ children, tipo = '' }) {
-  return <span className={`ds-insignia ${tipo ? `ds-insignia--${tipo}` : ''}`}>{children}</span>;
-}
-
 export function TarjetaCurso({ curso, nuevo = false, fila }) {
   const area = areaPorId(curso.area);
   const etiqueta = curso.etiqueta || area?.corto;
@@ -253,29 +242,23 @@ export function TarjetaCurso({ curso, nuevo = false, fila }) {
           onError={ocultarSiFalla}
           className="h-full w-full object-cover transition duration-500 ease-out group-hover:scale-[1.06]"
         />
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#031D5C]/75 via-[#031D5C]/10 to-transparent opacity-0 transition duration-300 group-hover:opacity-100 group-focus-visible:opacity-100" aria-hidden="true" />
-        <div className="absolute left-2.5 top-2.5 flex flex-wrap gap-1.5">
-          {nuevo && <Insignia tipo="nuevo">Nuevo</Insignia>}
-          {curso.origen === 'en-vivo' && <Insignia tipo="vivo"><Radio className="h-3 w-3" aria-hidden="true" />En vivo</Insignia>}
-          {curso.origen === 'edutin' && <Insignia>Edutin</Insignia>}
-          {curso.origen === 'edvanta' && <Insignia tipo="edvanta">Edvanta</Insignia>}
-        </div>
-        <span className="absolute bottom-3 left-3 inline-flex translate-y-2 items-center gap-1.5 rounded-full bg-white px-3.5 py-1.5 text-xs font-bold text-edvanta-blue opacity-0 shadow-[var(--ds-sh-sm)] transition duration-300 group-hover:translate-y-0 group-hover:opacity-100 group-focus-visible:translate-y-0 group-focus-visible:opacity-100">
-          {curso.origen === 'en-vivo' ? 'Ver el curso en vivo' : 'Ver curso'} <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
-        </span>
       </div>
       <div className="flex flex-1 flex-col p-4">
-        {etiqueta && <p className="text-[11px] font-bold uppercase tracking-[.12em] text-edvanta-tealdark">{etiqueta}</p>}
-        <h3 className="mt-1 line-clamp-2 font-display text-[15.5px] font-extrabold leading-snug text-edvanta-deep transition-colors group-hover:text-edvanta-blue">
+        {etiqueta && <p className="text-xs font-semibold uppercase tracking-[.1em] text-edvanta-tealdark">{etiqueta}</p>}
+        <h3 className="mt-1 line-clamp-2 font-display text-base font-bold leading-snug text-edvanta-deep transition-colors group-hover:text-edvanta-blue">
           {curso.titulo}
         </h3>
-        <p className="mt-auto flex flex-wrap items-center gap-x-3 gap-y-1 pt-3 text-xs font-semibold text-edvanta-muted">
+        <p className="mt-auto flex flex-wrap items-center gap-x-3 gap-y-1 pt-3 text-[13px] text-edvanta-muted">
           {curso.horas > 0 && <span className="inline-flex items-center gap-1"><Clock className="h-3.5 w-3.5" aria-hidden="true" />{curso.horas} h</span>}
           {curso.clases > 0 && <span className="inline-flex items-center gap-1"><PlayCircle className="h-3.5 w-3.5" aria-hidden="true" />{curso.clases} clases</span>}
           {curso.certificado && <span className="inline-flex items-center gap-1 text-edvanta-tealdark"><Award className="h-3.5 w-3.5" aria-hidden="true" />Certificado</span>}
           {curso.detalle && <span>{curso.detalle}</span>}
           {curso.origen === 'edutin' && <span>Curso en Edutin</span>}
         </p>
+        <span className="ed-btn ed-btn--primary ed-btn--sm ed-btn--block mt-4">
+          {curso.origen === 'en-vivo' ? 'Registrar mi interés' : 'Estudiar gratis'}
+          <ArrowRight className="ed-btn__arrow" aria-hidden="true" />
+        </span>
       </div>
     </Link>
   );
@@ -295,7 +278,7 @@ export function PortadaGenerada({ titulo, sello, logo, tono = 0 }) {
       <span className="pointer-events-none absolute -right-10 -top-10 h-32 w-32 rounded-full bg-white/10 blur-xl" aria-hidden="true" />
       {logo ? <img src={logo} alt="" className="relative h-9 w-9 rounded-lg bg-white object-cover" /> : <span />}
       <p className="relative font-display text-[15px] font-extrabold leading-tight [text-wrap:balance] sm:text-base">{titulo}</p>
-      <p className="relative text-[10px] font-semibold uppercase tracking-[.14em] text-white/80">{sello}</p>
+      <p className="relative text-xs font-semibold uppercase tracking-[.14em] text-white/80">{sello}</p>
     </div>
   );
 }
@@ -310,9 +293,8 @@ export function TarjetaLibro({ libro, fila }) {
         ) : (
           <PortadaGenerada titulo={libro.titulo} sello={libro.sello} logo={libro.logo} tono={libro.tono} />
         )}
-        {libro.etiqueta && <span className="absolute left-2 top-2"><Insignia tipo={libro.gratis ? 'nuevo' : ''}>{libro.etiqueta}</Insignia></span>}
       </div>
-      <h3 className="mt-3 line-clamp-2 text-sm font-bold leading-snug text-edvanta-deep transition-colors group-hover:text-edvanta-blue">{libro.titulo}</h3>
+      <h3 className="mt-3 line-clamp-2 text-sm font-semibold leading-snug text-edvanta-deep transition-colors group-hover:text-edvanta-blue">{libro.titulo}</h3>
       <p className="mt-1 inline-flex items-center gap-1 text-xs font-bold text-edvanta-tealdark">
         {libro.accion || 'Ver la guía'} <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
       </p>
@@ -343,10 +325,9 @@ export function TarjetaGuia({ guia, onAbrir }) {
     >
       <div className="relative aspect-[4/3] w-full overflow-hidden bg-edvanta-bg">
         <img src={guia.imagen} alt="" width="640" height="480" loading="lazy" decoding="async" onError={ocultarSiFalla} className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.05]" />
-        <span className="absolute left-2.5 top-2.5"><Insignia>Kit editable</Insignia></span>
       </div>
       <div className="flex w-full flex-1 flex-col p-4">
-        <h3 className="line-clamp-2 font-display text-[15.5px] font-extrabold leading-snug text-edvanta-deep group-hover:text-edvanta-blue">{guia.nombre}</h3>
+        <h3 className="line-clamp-2 font-display text-base font-bold leading-snug text-edvanta-deep group-hover:text-edvanta-blue">{guia.nombre}</h3>
         {guia.kit?.category && <p className="mt-1 line-clamp-2 text-xs leading-5 text-edvanta-muted">{guia.kit.category}</p>}
         <span className="mt-auto flex items-center justify-between gap-2 pt-3">
           <span className="font-display text-base font-extrabold text-edvanta-blue">{formatoPrecio(guia.precio)}</span>
@@ -366,11 +347,10 @@ export function TarjetaArticulo({ articulo }) {
     >
       <div className="relative aspect-[16/9] overflow-hidden bg-edvanta-soft">
         <img src={portadaDeArticulo(articulo)} alt="" width="640" height="360" loading="lazy" decoding="async" onError={ocultarSiFalla} className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.05]" />
-        {articulo.category && <span className="absolute left-2.5 top-2.5"><Insignia>{articulo.category}</Insignia></span>}
       </div>
       <div className="flex flex-1 flex-col p-4">
-        <h3 className="line-clamp-3 font-display text-[15px] font-extrabold leading-snug text-edvanta-deep transition-colors group-hover:text-edvanta-blue">{articulo.title}</h3>
-        <p className="mt-auto inline-flex items-center gap-1.5 pt-3 text-xs font-semibold text-edvanta-muted">
+        <h3 className="line-clamp-3 font-display text-base font-bold leading-snug text-edvanta-deep transition-colors group-hover:text-edvanta-blue">{articulo.title}</h3>
+        <p className="mt-auto inline-flex items-center gap-1.5 pt-3 text-[13px] text-edvanta-muted">
           <Newspaper className="h-3.5 w-3.5" aria-hidden="true" /> Artículo{articulo.readingTime ? ` · ${articulo.readingTime} de lectura` : ''}
         </p>
       </div>
@@ -388,9 +368,8 @@ export function TarjetaRuta({ ruta }) {
     >
       {ruta.portada && <img src={ruta.portada} alt="" width="800" height="600" loading="lazy" decoding="async" onError={ocultarSiFalla} className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-[1.06]" />}
       <div className="absolute inset-0 bg-gradient-to-t from-[#031D5C]/92 via-[#031D5C]/35 to-transparent" aria-hidden="true" />
-      {ruta.insignia && <span className="absolute left-3 top-3"><Insignia>{ruta.insignia}</Insignia></span>}
       <div className="absolute inset-x-0 bottom-0 p-5 text-white">
-        {ruta.antetitulo && <p className="text-[11px] font-bold uppercase tracking-[.14em] text-edvanta-mint">{ruta.antetitulo}</p>}
+        {ruta.antetitulo && <p className="text-xs font-bold uppercase tracking-[.14em] text-edvanta-mint">{ruta.antetitulo}</p>}
         <h3 className="mt-1 font-display text-lg font-extrabold leading-tight sm:text-xl">{ruta.nombre}</h3>
         <p className="mt-2 inline-flex items-center gap-1.5 text-sm font-semibold text-white/90">
           {ruta.accion || 'Ver la ruta'} <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
@@ -561,7 +540,6 @@ export function EncuestaRapida({
         <div ref={inicio} className="ds-card scroll-mt-32 p-5 sm:p-7">
           {estado === 'listo' ? (
             <div className="ds-desplegado py-6 text-center">
-              <span className="ds-icon-tile ds-icon-tile--teal mx-auto h-14 w-14"><PartyPopper className="h-7 w-7" aria-hidden="true" /></span>
               <p className="mt-4 font-display text-xl font-extrabold text-edvanta-deep">¡Gracias, {datos.nombre.split(' ')[0]}!</p>
               <p className="mx-auto mt-2 max-w-sm text-sm leading-6 text-edvanta-muted">
                 Ya tenemos tus respuestas. Te escribiremos a {datos.correo} cuando haya algo de {datos.temas.slice(0, 2).join(' y ').toLowerCase() || 'tu interés'}.
@@ -574,7 +552,7 @@ export function EncuestaRapida({
                 {pasos.map((p, i) => (
                   <li key={p} className="flex flex-1 flex-col gap-1.5" aria-current={paso === i ? 'step' : undefined}>
                     <span className={`h-1.5 rounded-full transition-colors duration-300 ${i <= paso ? 'bg-edvanta-teal' : 'bg-edvanta-border'}`} />
-                    <span className={`text-[11px] font-bold uppercase tracking-[.1em] ${i === paso ? 'text-edvanta-tealdark' : 'text-edvanta-subtle'}`}>{p}</span>
+                    <span className={`text-xs font-bold uppercase tracking-[.1em] ${i === paso ? 'text-edvanta-tealdark' : 'text-edvanta-subtle'}`}>{p}</span>
                   </li>
                 ))}
               </ol>
@@ -694,10 +672,10 @@ export function AvisoNovedad({ clave, antetitulo = 'Nuevo en Edvanta', texto, to
       <div className="relative flex gap-3 rounded-2xl border border-edvanta-border bg-white p-3 pr-10 shadow-[0_18px_44px_rgba(23,34,59,.22)]">
         {imagen && <img src={imagen} alt="" className="h-16 w-24 shrink-0 rounded-lg object-cover" />}
         <div className="min-w-0">
-          <p className="flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-[.12em] text-edvanta-tealdark">
+          <p className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-[.12em] text-edvanta-tealdark">
             <Bell className="h-3.5 w-3.5" aria-hidden="true" /> {antetitulo}
           </p>
-          <p className="mt-0.5 line-clamp-2 text-sm font-bold leading-snug text-edvanta-deep">{texto}</p>
+          <p className="mt-0.5 line-clamp-2 text-sm font-semibold leading-snug text-edvanta-deep">{texto}</p>
           <Link to={to} onClick={() => { setVisible(false); trackEvent('aviso_novedad_click', { destino: to }); }} className="mt-1 inline-flex items-center gap-1 text-xs font-bold text-edvanta-blue hover:underline">
             {accion} <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
           </Link>

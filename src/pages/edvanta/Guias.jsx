@@ -34,8 +34,8 @@ function VistaBiblioteca() {
   return (
     <div className="flex h-full flex-col bg-[#F8FAFD] p-3 text-left sm:p-4" aria-hidden="true">
       <div className="flex items-center justify-between">
-        <span className="font-display text-[11px] font-extrabold text-edvanta-blue sm:text-sm">Guías y recursos</span>
-        <span className="rounded-full bg-edvanta-mint px-2 py-0.5 text-[9px] font-bold text-edvanta-tealdark sm:text-[11px]">{KITS_PROFESIONALES.length} kits</span>
+        <span className="font-display text-xs font-extrabold text-edvanta-blue sm:text-sm">Guías y recursos</span>
+        <span className="rounded-full bg-edvanta-mint px-2 py-0.5 text-xs font-bold text-edvanta-tealdark sm:text-xs">{KITS_PROFESIONALES.length} kits</span>
       </div>
       <div className="mt-2 grid flex-1 grid-cols-2 gap-2 sm:mt-3 sm:gap-2.5">
         {KITS_PROFESIONALES.slice(0, 4).map((k, i) => (
@@ -43,7 +43,7 @@ function VistaBiblioteca() {
             <span className={`inline-flex h-5 w-5 items-center justify-center rounded-md sm:h-7 sm:w-7 ${i % 2 ? 'bg-edvanta-lilac text-[#5E51A8]' : 'bg-edvanta-light text-edvanta-blue'}`}>
               <FileSpreadsheet className="h-3 w-3 sm:h-4 sm:w-4" />
             </span>
-            <span className="mt-1.5 line-clamp-2 text-[9px] font-bold leading-tight text-edvanta-deep sm:text-[11px]">{k.nombre}</span>
+            <span className="mt-1.5 line-clamp-2 text-xs font-bold leading-tight text-edvanta-deep sm:text-xs">{k.nombre}</span>
           </div>
         ))}
       </div>

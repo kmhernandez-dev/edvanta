@@ -7,14 +7,14 @@
  * ============================================================ */
 
 .contigo-page {
-  --contigo-ink: #233540;
-  --contigo-primary: #126f63;
+  --contigo-ink: #14233F;
+  --contigo-primary: #0F7480;
   --contigo-primary-strong: #0b5b51;
   --contigo-sage: #e8f1e7;
   --contigo-lavender: #eee8f6;
-  --contigo-mint: #eff8f2;
+  --contigo-mint: #F0FAF9;
   --contigo-border: #dce8e4;
-  --contigo-muted: #5d6b6a;
+  --contigo-muted: #4A5A73;
   background: #fff;
   color: var(--contigo-ink);
 }

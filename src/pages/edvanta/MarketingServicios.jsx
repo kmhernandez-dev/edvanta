@@ -203,7 +203,7 @@ export default function MarketingServicios() {
           <div className="mt-8 rounded-2xl border border-edvanta-border bg-[#F8FAFD] p-5 sm:p-6">
             <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
               <div>
-                <p className="text-[11px] font-extrabold uppercase tracking-[.14em] text-edvanta-tealdark">Formación para equipos comerciales</p>
+                <p className="text-xs font-extrabold uppercase tracking-[.14em] text-edvanta-tealdark">Formación para equipos comerciales</p>
                 <p className="mt-1 text-base font-bold text-edvanta-deep">¿Necesitas capacitar a un equipo de visita médica o marketing?</p>
                 <p className="mt-1 text-sm leading-6 text-edvanta-muted">
                   La línea de formación para empresas se diseña con el equipo y puede combinarse con estos servicios.
@@ -288,7 +288,7 @@ export default function MarketingServicios() {
         <section className="border-t border-edvanta-border bg-white">
           <div className="mx-auto flex w-full max-w-[1200px] flex-col gap-5 px-4 py-10 sm:px-6 md:flex-row md:items-center md:justify-between lg:px-8">
             <div>
-              <p className="text-[11px] font-extrabold uppercase tracking-[.14em] text-edvanta-tealdark">También puedes aprender</p>
+              <p className="text-xs font-extrabold uppercase tracking-[.14em] text-edvanta-tealdark">También puedes aprender</p>
               <p className="mt-1 font-display text-xl font-extrabold text-edvanta-deep">Conoce la Escuela de Marketing y Comunicación</p>
               <p className="mt-1 text-sm leading-6 text-edvanta-muted">Programas en desarrollo y una ruta para entender la comunicación desde la evidencia.</p>
             </div>

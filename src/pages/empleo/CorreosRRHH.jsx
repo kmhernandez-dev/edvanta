@@ -65,10 +65,10 @@ function Plantilla({ plantilla, datos }) {
         </div>
       </div>
 
-      <p className="mt-5 text-[11px] font-bold uppercase tracking-[.12em] text-edvanta-muted">Asunto</p>
+      <p className="mt-5 text-xs font-bold uppercase tracking-[.12em] text-edvanta-muted">Asunto</p>
       <p className="mt-1 rounded-xl border border-edvanta-border bg-edvanta-bg px-4 py-2.5 text-sm font-semibold text-edvanta-deep">{asunto}</p>
 
-      <p className="mt-4 text-[11px] font-bold uppercase tracking-[.12em] text-edvanta-muted">Mensaje</p>
+      <p className="mt-4 text-xs font-bold uppercase tracking-[.12em] text-edvanta-muted">Mensaje</p>
       <pre className="mt-1 whitespace-pre-wrap rounded-xl border border-edvanta-border bg-edvanta-bg p-4 font-sans text-sm leading-6 text-edvanta-deep">{cuerpo}</pre>
     </Card>
   );

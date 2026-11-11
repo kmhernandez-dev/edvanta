@@ -40,9 +40,9 @@ export function TalentCard({ t, preview = false }) {
           <UserRound className="h-5 w-5" aria-hidden="true" />
         </span>
         <div className="flex flex-wrap justify-end gap-1.5">
-          {t.destacado && <span className="rounded-full bg-edvanta-lilac px-2.5 py-1 text-[11px] font-bold text-[#5E51A8]">Destacado</span>}
-          {t.demo && <span className="rounded-full bg-edvanta-bg px-2.5 py-1 text-[11px] font-bold text-edvanta-muted">Ejemplo</span>}
-          {t.area && <span className="rounded-full bg-edvanta-mint px-2.5 py-1 text-[11px] font-bold text-edvanta-tealdark">{areaLabel(t.area)}</span>}
+          {t.destacado && <span className="rounded-full bg-edvanta-lilac px-2.5 py-1 text-xs font-bold text-[#5E51A8]">Destacado</span>}
+          {t.demo && <span className="rounded-full bg-edvanta-bg px-2.5 py-1 text-xs font-bold text-edvanta-muted">Ejemplo</span>}
+          {t.area && <span className="rounded-full bg-edvanta-mint px-2.5 py-1 text-xs font-bold text-edvanta-tealdark">{areaLabel(t.area)}</span>}
         </div>
       </div>
       <h3 className="mt-3 text-lg font-bold text-edvanta-deep">{t.nombre || 'Tu nombre'}</h3>
@@ -50,24 +50,24 @@ export function TalentCard({ t, preview = false }) {
       {(t.habilidades || []).length > 0 && (
         <div className="mt-3 flex flex-wrap gap-1.5">
           {t.habilidades.map((h) => (
-            <span key={h} className="rounded-full bg-edvanta-bg px-2.5 py-1 text-[11px] font-semibold text-edvanta-deep">{h}</span>
+            <span key={h} className="rounded-full bg-edvanta-bg px-2.5 py-1 text-xs font-semibold text-edvanta-deep">{h}</span>
           ))}
         </div>
       )}
       {(t.proyectos || []).length > 0 && (
         <div className="mt-3 border-t border-edvanta-border pt-3">
-          <p className="text-[11px] font-bold uppercase text-edvanta-muted">Proyectos y páginas</p>
+          <p className="text-xs font-bold uppercase text-edvanta-muted">Proyectos y páginas</p>
           <ul className="mt-1 space-y-1">{t.proyectos.map((p) => <li key={p} className="text-xs leading-5 text-edvanta-muted">· {p}</li>)}</ul>
         </div>
       )}
       {(t.articulos || []).length > 0 && (
         <div className="mt-2 border-t border-edvanta-border pt-2">
-          <p className="text-[11px] font-bold uppercase text-edvanta-muted">Artículos científicos</p>
+          <p className="text-xs font-bold uppercase text-edvanta-muted">Artículos científicos</p>
           <ul className="mt-1 space-y-1">{t.articulos.map((a) => <li key={a} className="text-xs leading-5 text-edvanta-muted">· {a}</li>)}</ul>
         </div>
       )}
       <div className="mt-auto flex items-center justify-between gap-3 pt-4">
-        <span className="text-[11px] font-bold text-edvanta-tealdark">{t.disponibilidad || 'Disponible'}</span>
+        <span className="text-xs font-bold text-edvanta-tealdark">{t.disponibilidad || 'Disponible'}</span>
         {t.linkedin
           ? (
             <a
@@ -368,7 +368,7 @@ export function TalentPublishForm({ titulo = 'Publica tu perfil profesional', de
       </form>
 
       <div className="mt-6 lg:sticky lg:top-28 lg:mt-0">
-        <p className="mb-2 flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wide text-edvanta-muted">
+        <p className="mb-2 flex items-center gap-1.5 text-xs font-bold uppercase tracking-wide text-edvanta-muted">
           <Eye className="h-3.5 w-3.5" aria-hidden="true" /> Así te verán las empresas
         </p>
         <TalentCard t={preview} preview />

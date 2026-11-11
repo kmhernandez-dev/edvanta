@@ -49,7 +49,7 @@ export default function LegalPage({ doc }) {
           </div>
           <aside className="mt-12 lg:mt-0">
             <nav aria-label="Otros documentos" className="lg:sticky lg:top-36">
-              <p className="mb-3 text-[11px] font-bold uppercase tracking-[.14em] text-edvanta-muted">Otros documentos</p>
+              <p className="mb-3 text-xs font-bold uppercase tracking-[.14em] text-edvanta-muted">Otros documentos</p>
               <ul className="space-y-1 border-l border-edvanta-border">
                 {FOOTER_LEGAL.map((l) => (
                   <li key={l.to}>

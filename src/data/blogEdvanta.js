@@ -211,7 +211,7 @@ export const BLOG_EDVANTA = [
  * cambia aquí `image` e `imageAlt`.
  */
 const SEO = {
-  'que-es-edvanta': ['¿Qué es Edvanta? Educación farmacéutica desde Medellín', 'Edvanta es una empresa colombiana de educación farmacéutica con sede en Medellín: escuelas para profesionales, pacientes e instituciones.', '/img/edvanta-hero.webp', 'Portada de Edvanta, plataforma de educación farmacéutica'],
+  'que-es-edvanta': ['¿Qué es Edvanta? Educación farmacéutica desde Medellín', 'Edvanta es una empresa colombiana de educación farmacéutica con sede en Medellín: escuelas para profesionales, pacientes e instituciones.', '/img/og-edvanta.png', 'Portada de Edvanta, plataforma de educación farmacéutica'],
   'historia-de-edvanta': ['Historia de Edvanta: químicos farmacéuticos de Medellín', 'La historia de Edvanta: un grupo de químicos farmacéuticos de Medellín, expertos en IA y marketing, que decidió enseñar a decidir y no a repetir.', '/img/comunidad/encuentro-comunidad-farmaceutica.webp', 'Químicos farmacéuticos conversando alrededor de una mesa'],
   'edvanta-e-inteligencia-artificial': ['Cómo usa Edvanta la inteligencia artificial', 'En Edvanta la IA ayuda a buscar, ordenar y redactar borradores; la verdad técnica la deciden químicos farmacéuticos con fuentes verificables.', '/img/clinico-digital.jpg', 'Profesional de la salud trabajando con herramientas digitales'],
   'marketing-farmaceutico-con-criterio': ['Marketing farmacéutico con ética: el criterio de Edvanta', 'Las reglas de comunicación de Edvanta: sin promesas de resultados, sin cifras ni testimonios inventados y con lo propio separado de lo ajeno.', '/img/escuelas/marketing.webp', 'Escuela de Marketing y Comunicación Farmacéutica de Edvanta'],

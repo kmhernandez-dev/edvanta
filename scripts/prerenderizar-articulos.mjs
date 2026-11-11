@@ -102,7 +102,7 @@ for (const art of articulos) {
   if (!existsSync(archivo)) { faltantes.push(art.slug); continue; }
   const md = readFileSync(archivo, 'utf8');
   const canonical = `${SITIO}/articulos/${art.slug}`;
-  const image = `${SITIO}${art.image || '/img/edvanta-hero.webp'}`;
+  const image = `${SITIO}${art.image || '/img/og-edvanta.png'}`;
   const imagenJsonLd = { '@type': 'ImageObject', url: image, caption: art.imageAlt || art.title };
   const autor = art.autor || (art.marca === 'fst' ? 'Karla Hernández' : 'Equipo editorial de Edvanta');
   const faq = preguntasFrecuentes(md);
@@ -181,7 +181,7 @@ let htmlIndice = conMeta(plantilla, {
   title: 'Artículos de salud, medicamentos y farmacia | Edvanta',
   description: 'Para qué sirve cada medicamento, síntomas de enfermedades, cómo bajar de peso, recetas, plantas medicinales, regulación y noticias farmacéuticas, en lenguaje claro.',
   canonical: `${SITIO}/articulos`,
-  image: `${SITIO}/img/edvanta-hero.webp`,
+  image: `${SITIO}/img/og-edvanta.png`,
   type: 'website',
 });
 htmlIndice = conCuerpo(htmlIndice, indice);

@@ -428,7 +428,7 @@ export default function EditorHojaDeVida({ disenoInicial = '' }) {
                       aria-current={activo ? 'step' : undefined}
                       className={`flex w-full items-center justify-center gap-2 whitespace-nowrap rounded-xl px-3 py-2.5 text-sm font-bold transition ${activo ? 'bg-edvanta-blue text-white shadow-[var(--ds-sh-btn)]' : 'text-edvanta-muted hover:bg-edvanta-bg hover:text-edvanta-deep'}`}
                     >
-                      <span className={`inline-flex h-5 w-5 items-center justify-center rounded-full text-[11px] ${activo ? 'bg-white/20' : hecho ? 'bg-edvanta-mint text-edvanta-tealdark' : 'bg-edvanta-bg text-edvanta-subtle'}`}>
+                      <span className={`inline-flex h-5 w-5 items-center justify-center rounded-full text-xs ${activo ? 'bg-white/20' : hecho ? 'bg-edvanta-mint text-edvanta-tealdark' : 'bg-edvanta-bg text-edvanta-subtle'}`}>
                         {hecho && !activo ? <Check className="h-3 w-3" aria-hidden="true" /> : i + 1}
                       </span>
                       {p.titulo}
@@ -478,7 +478,7 @@ export default function EditorHojaDeVida({ disenoInicial = '' }) {
             <div className="rounded-[var(--ds-r-lg)] bg-white p-3 shadow-[var(--ds-sh-sm)] ring-1 ring-edvanta-border">
               <div className="mb-3 flex items-center justify-between gap-2 px-1">
                 <div className="min-w-0">
-                  <p className="text-[11px] font-bold uppercase tracking-[.12em] text-edvanta-subtle">Diseño</p>
+                  <p className="text-xs font-bold uppercase tracking-[.12em] text-edvanta-subtle">Diseño</p>
                   <p className="truncate text-sm font-extrabold text-edvanta-deep">{diseno?.nombre}</p>
                 </div>
                 <button type="button" onClick={() => setPanel('disenos')} className="ed-btn ed-btn--secondary ed-btn--sm"><LayoutTemplate className="h-4 w-4" aria-hidden="true" /> Cambiar</button>

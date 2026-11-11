@@ -262,7 +262,7 @@ export default function EnfermedadPage({ slug: propSlug }) {
                   className="group flex flex-col bg-white rounded-2xl border border-edvanta-border shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden"
                 >
                   <div className="aspect-[16/9] bg-gradient-to-br from-teal-500 to-edvanta-violet flex items-end p-4">
-                    <span className="chip bg-white/90 text-edvanta-deep text-[11px] font-semibold px-2.5 py-0.5 rounded-full">{a.category}</span>
+                    <span className="chip bg-white/90 text-edvanta-deep text-xs font-semibold px-2.5 py-0.5 rounded-full">{a.category}</span>
                   </div>
                   <div className="p-5 flex flex-col flex-1 gap-2">
                     <h3 className="text-base font-bold text-edvanta-deep leading-snug group-hover:text-teal-700 transition-colors">{a.title}</h3>

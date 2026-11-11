@@ -98,10 +98,10 @@ export function VistaPreviaCv({
     <div className={className}>
       {etiqueta && (
         <div className="mb-2 flex items-center justify-between gap-2">
-          <p className="text-[11px] font-bold uppercase tracking-wide text-edvanta-muted">
+          <p className="text-xs font-bold uppercase tracking-wide text-edvanta-muted">
             Así se descarga · {diseno.nombre}
           </p>
-          <span className="text-[11px] font-semibold text-edvanta-subtle">
+          <span className="text-xs font-semibold text-edvanta-subtle">
             {estado === 'listo' || estado === 'actualizando' ? `${paginas} ${paginas === 1 ? 'página' : 'páginas'}` : ''}
           </span>
         </div>
@@ -148,7 +148,7 @@ function TarjetaDiseno({ diseno, imagen, seleccionado, onElegir, conFoto }) {
           </span>
         )}
         {diseno.etiqueta && (
-          <span className="absolute left-2 top-2 rounded-full bg-white/95 px-2 py-0.5 text-[10px] font-bold text-edvanta-blue shadow-sm">
+          <span className="absolute left-2 top-2 rounded-full bg-white/95 px-2 py-0.5 text-xs font-bold text-edvanta-blue shadow-sm">
             {diseno.etiqueta}
           </span>
         )}
@@ -157,13 +157,13 @@ function TarjetaDiseno({ diseno, imagen, seleccionado, onElegir, conFoto }) {
         <span className="flex items-center gap-1.5 text-sm font-bold text-edvanta-deep">
           {diseno.nombre}
           {diseno.foto && (
-            <span className={`inline-flex items-center gap-1 rounded-full px-1.5 py-px text-[10px] font-bold ${conFoto ? 'bg-edvanta-mint text-edvanta-tealdark' : 'bg-edvanta-lilac text-[#5E51A8]'}`}>
+            <span className={`inline-flex items-center gap-1 rounded-full px-1.5 py-px text-xs font-bold ${conFoto ? 'bg-edvanta-mint text-edvanta-tealdark' : 'bg-edvanta-lilac text-[#5E51A8]'}`}>
               <User className="h-2.5 w-2.5" aria-hidden="true" />
               {conFoto ? 'Con tu foto' : 'Admite foto'}
             </span>
           )}
         </span>
-        <span className="text-[11.5px] leading-4 text-edvanta-muted">{diseno.desc}</span>
+        <span className="text-xs leading-4 text-edvanta-muted">{diseno.desc}</span>
       </span>
     </button>
   );

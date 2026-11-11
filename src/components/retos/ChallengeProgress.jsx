@@ -41,7 +41,7 @@ export default function ChallengeProgress({ days, checkins }) {
               >
                 {done ? <Icon name="check" className="h-4 w-4" /> : day.day_number}
               </span>
-              <span className="text-[10px] font-medium text-edvanta-subtle">Día {day.day_number}</span>
+              <span className="text-xs font-medium text-edvanta-subtle">Día {day.day_number}</span>
             </div>
           );
         })}

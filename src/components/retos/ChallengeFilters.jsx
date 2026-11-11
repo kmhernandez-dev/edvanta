@@ -102,7 +102,7 @@ export default function ChallengeFilters({ filters, onChange, onClear, resultCou
         >
           <Icon name="list" className="h-4 w-4" /> Filtros
           {activeCount > 0 && (
-            <span className="flex h-5 w-5 items-center justify-center rounded-full bg-teal-600 text-[11px] font-bold text-white">{activeCount}</span>
+            <span className="flex h-5 w-5 items-center justify-center rounded-full bg-teal-600 text-xs font-bold text-white">{activeCount}</span>
           )}
         </button>
 

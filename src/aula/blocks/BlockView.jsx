@@ -396,7 +396,7 @@ function FilesBlock({ block, files }) {
           const file = fileOf(files, item.fileId);
           return (
             <li key={`${item.fileId}-${i}`} className="flex flex-wrap items-center gap-3 px-4 py-3">
-              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-[var(--aula-radius-sm)] bg-[var(--aula-primary-soft)] text-[10px] font-bold uppercase text-[var(--aula-primary)]">
+              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-[var(--aula-radius-sm)] bg-[var(--aula-primary-soft)] text-xs font-bold uppercase text-[var(--aula-primary)]">
                 {file?.extension || <FileText className="h-5 w-5" aria-hidden="true" />}
               </span>
               <div className="min-w-0 flex-1">

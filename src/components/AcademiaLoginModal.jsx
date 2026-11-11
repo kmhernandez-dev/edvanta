@@ -204,7 +204,7 @@ export default function AcademiaLoginModal({ isOpen, onClose }) {
               >
                 <GoogleIcon /> Continuar con Google
               </button>
-              <p className="text-center text-[10px] leading-4 text-edvanta-muted">
+              <p className="text-center text-xs leading-4 text-edvanta-muted">
                 Solo pedimos tu nombre y correo. Al continuar aceptas la{' '}
                 <Link to="/privacidad" target="_blank" className="font-semibold text-teal-700 hover:underline">política de privacidad</Link>.
               </p>
@@ -213,7 +213,7 @@ export default function AcademiaLoginModal({ isOpen, onClose }) {
                   Marca la aceptación de privacidad para activar el registro con Google.
                 </p>
               )}
-              <div className="flex items-center gap-3 text-[11px] uppercase text-edvanta-subtle">
+              <div className="flex items-center gap-3 text-xs uppercase text-edvanta-subtle">
                 <span className="h-px flex-1 bg-edvanta-border" />
                 <span>o continúa con correo</span>
                 <span className="h-px flex-1 bg-edvanta-border" />
@@ -228,7 +228,7 @@ export default function AcademiaLoginModal({ isOpen, onClose }) {
               ) : (
                 <div ref={googleButtonRef} className="flex min-h-11 w-full justify-center overflow-hidden" aria-label="Acceso con Google" />
               )}
-              <div className="flex items-center gap-3 text-[11px] uppercase text-edvanta-subtle">
+              <div className="flex items-center gap-3 text-xs uppercase text-edvanta-subtle">
                 <span className="h-px flex-1 bg-edvanta-border" />
                 <span>o continúa con correo</span>
                 <span className="h-px flex-1 bg-edvanta-border" />
@@ -330,7 +330,7 @@ export default function AcademiaLoginModal({ isOpen, onClose }) {
             )}
           </p>
 
-          <p className="text-[10px] text-edvanta-subtle text-center leading-snug">
+          <p className="text-xs text-edvanta-subtle text-center leading-snug">
             Tus datos se usan para gestionar tu acceso, progreso e interacciones en la academia.
           </p>
         </form>

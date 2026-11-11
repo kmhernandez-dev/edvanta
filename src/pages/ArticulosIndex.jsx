@@ -99,7 +99,7 @@ function Tarjeta({ a, destacada = false }) {
         </div>
       )}
       <div className="flex flex-1 flex-col p-5">
-        <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-[.12em]">
+        <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-[.12em]">
           <span className={pacientes ? 'text-edvanta-tealdark' : 'text-edvanta-blue'}>{a.category}</span>
         </div>
         <h3 className={`mt-2 font-display font-bold leading-snug text-edvanta-deep group-hover:text-edvanta-blue ${destacada ? 'text-xl' : 'text-[1.05rem]'}`}>{a.title}</h3>
@@ -322,7 +322,7 @@ export default function ArticulosIndex() {
           </div>
 
           {filtrados.length === 0 ? (
-            <div className="mt-8 rounded-[18px] border border-dashed border-edvanta-strong bg-edvanta-bg p-10 text-center">
+            <div className="mt-8 rounded-2xl border border-dashed border-edvanta-strong bg-edvanta-bg p-10 text-center">
               <p className="font-display text-lg font-bold text-edvanta-deep">No encontramos artículos con esa búsqueda</p>
               <p className="mt-2 text-sm text-edvanta-muted">Prueba con otra palabra, por ejemplo el nombre del medicamento sin la marca.</p>
               <button type="button" onClick={() => { setBusqueda(''); navigate('/articulos'); }} className="ed-btn ed-btn--primary mt-5">Ver todos</button>

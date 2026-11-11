@@ -69,7 +69,7 @@ function DietTags({ r }) {
   return (
     <div className="flex flex-wrap gap-1.5">
       {tags.map(t => (
-        <span key={t} className="rounded-full bg-teal-50 px-2.5 py-0.5 text-[11px] font-semibold text-teal-700">{t}</span>
+        <span key={t} className="rounded-full bg-teal-50 px-2.5 py-0.5 text-xs font-semibold text-teal-700">{t}</span>
       ))}
     </div>
   );
@@ -83,7 +83,7 @@ function RecipeModal({ recipe, cond, onClose }) {
       <div className="max-h-[92vh] w-full max-w-2xl overflow-y-auto rounded-t-3xl bg-white shadow-2xl sm:rounded-3xl" onClick={e => e.stopPropagation()}>
         <div className="sticky top-0 flex items-start justify-between gap-3 border-b border-edvanta-border bg-white px-5 py-4">
           <div>
-            <p className="text-[11px] font-bold uppercase tracking-widest text-teal-600">{recipe.tipo_comida}</p>
+            <p className="text-xs font-bold uppercase tracking-widest text-teal-600">{recipe.tipo_comida}</p>
             <h2 className="font-display text-xl font-extrabold text-edvanta-deep">{recipe.nombre}</h2>
           </div>
           <button onClick={onClose} aria-label="Cerrar" className="rounded-full p-2 text-edvanta-subtle hover:bg-edvanta-soft">
@@ -129,7 +129,7 @@ function RecipeModal({ recipe, cond, onClose }) {
                 return (
                   <div key={c.key} className={`flex items-start justify-between gap-2 rounded-lg px-2 py-1 ${highlight ? 'bg-white ring-1 ring-teal-200' : ''}`}>
                     <span className="text-sm text-edvanta-deep">{c.label}</span>
-                    <span className={`shrink-0 rounded-full px-2 py-0.5 text-[11px] font-bold ${BADGE[cl.code] || 'bg-edvanta-soft text-edvanta-muted'}`}>{CODE_LABEL[cl.code] || cl.code}</span>
+                    <span className={`shrink-0 rounded-full px-2 py-0.5 text-xs font-bold ${BADGE[cl.code] || 'bg-edvanta-soft text-edvanta-muted'}`}>{CODE_LABEL[cl.code] || cl.code}</span>
                   </div>
                 );
               })}
@@ -286,8 +286,8 @@ export default function RecetasFinder() {
                 <button key={r.recipe_id} onClick={() => setSelected(r)}
                   className="flex flex-col rounded-2xl border border-edvanta-border bg-white p-5 text-left shadow-sm transition hover:-translate-y-0.5 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-teal-400">
                   <div className="mb-2 flex items-center justify-between">
-                    <span className="rounded-full bg-edvanta-bg px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-edvanta-muted">{r.tipo_comida}</span>
-                    {cl && <span className={`rounded-full px-2.5 py-0.5 text-[11px] font-bold ${BADGE[cl.code] || 'bg-edvanta-soft text-edvanta-muted'}`}>{CODE_LABEL[cl.code] || cl.code}</span>}
+                    <span className="rounded-full bg-edvanta-bg px-2.5 py-0.5 text-xs font-semibold uppercase tracking-wide text-edvanta-muted">{r.tipo_comida}</span>
+                    {cl && <span className={`rounded-full px-2.5 py-0.5 text-xs font-bold ${BADGE[cl.code] || 'bg-edvanta-soft text-edvanta-muted'}`}>{CODE_LABEL[cl.code] || cl.code}</span>}
                   </div>
                   <h3 className="font-display text-lg font-extrabold leading-snug text-edvanta-deep">{r.nombre}</h3>
                   <p className="mt-1 line-clamp-2 text-sm text-edvanta-muted">{r.descripcion}</p>

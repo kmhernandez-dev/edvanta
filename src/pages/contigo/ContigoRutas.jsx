@@ -107,7 +107,7 @@ export default function ContigoRutas() {
         </ContigoSection>
 
         <ContigoSection tone="white">
-          <div className="flex flex-col gap-5 rounded-[22px] border border-[var(--contigo-border)] bg-[var(--contigo-mint)] p-6 sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex flex-col gap-5 rounded-2xl border border-[var(--contigo-border)] bg-[var(--contigo-mint)] p-6 sm:flex-row sm:items-center sm:justify-between">
             <div className="flex items-start gap-3">
               <ShieldCheck className="mt-0.5 h-5 w-5 shrink-0 text-[var(--contigo-primary)]" aria-hidden="true" />
               <div>

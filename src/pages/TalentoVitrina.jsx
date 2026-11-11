@@ -135,7 +135,7 @@ export default function TalentoVitrina() {
             </Card>
 
             <Card className="relative flex flex-col border-edvanta-blue/40 ring-1 ring-edvanta-blue/20">
-              <span className="absolute -top-3 left-6 rounded-full bg-edvanta-blue px-3 py-1 text-[11px] font-bold uppercase tracking-wide text-white">
+              <span className="absolute -top-3 left-6 rounded-full bg-edvanta-blue px-3 py-1 text-xs font-bold uppercase tracking-wide text-white">
                 Recomendado
               </span>
               <p className="text-xs font-bold uppercase tracking-[.14em] text-edvanta-blue">Perfil destacado</p>

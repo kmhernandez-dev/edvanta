@@ -123,7 +123,7 @@ export default function StudyTools({ slug }) {
                 <li key={i} className="flex items-start justify-between gap-2 text-sm text-teal-900 bg-white rounded-lg p-2.5 border border-teal-100">
                   <div className="flex-1">
                     <p>{n.text}</p>
-                    <p className="text-[10px] text-teal-400 mt-1">{new Date(n.date).toLocaleString('es-CO')}</p>
+                    <p className="text-xs text-teal-400 mt-1">{new Date(n.date).toLocaleString('es-CO')}</p>
                   </div>
                   <button onClick={() => removeNote(i)} className="text-teal-400 hover:text-red-500 shrink-0 text-xs">✕</button>
                 </li>

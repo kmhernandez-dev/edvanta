@@ -201,7 +201,7 @@ export default function EmpleoPage() {
                         <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
                       </a>
                     )}
-                    <p className="mt-2 text-[11px] text-edvanta-subtle">Fuente: {v.fuente}</p>
+                    <p className="mt-2 text-xs text-edvanta-subtle">Fuente: {v.fuente}</p>
                   </Card>
                 );
               })}

@@ -109,7 +109,7 @@ export default function MarketingEscuela() {
           <div className="grid gap-5 md:grid-cols-2">
             <Link
               to="#formacion"
-              className="group rounded-[22px] border border-edvanta-border bg-white p-6 transition hover:-translate-y-0.5 hover:border-edvanta-violet/50 hover:shadow-[0_18px_34px_-28px_rgba(8,46,134,0.35)] sm:p-8"
+              className="group rounded-2xl border border-edvanta-border bg-white p-6 transition hover:-translate-y-0.5 hover:border-edvanta-violet/50 hover:shadow-[0_18px_34px_-28px_rgba(8,46,134,0.35)] sm:p-8"
             >
               <span className="marketing-card__icon">
                 <GraduationCap className="h-5 w-5" aria-hidden="true" />
@@ -125,7 +125,7 @@ export default function MarketingEscuela() {
 
             <Link
               to="/empresas/marketing"
-              className="group rounded-[22px] border border-[#CDE8E3] bg-[#EFF8F2] p-6 transition hover:-translate-y-0.5 hover:border-edvanta-teal/50 hover:shadow-[0_18px_34px_-28px_rgba(8,46,134,0.35)] sm:p-8"
+              className="group rounded-2xl border border-[#CDE8E3] bg-[#EFF8F2] p-6 transition hover:-translate-y-0.5 hover:border-edvanta-teal/50 hover:shadow-[0_18px_34px_-28px_rgba(8,46,134,0.35)] sm:p-8"
             >
               <span className="marketing-card__icon bg-white">
                 <Building2 className="h-5 w-5" aria-hidden="true" />
@@ -194,7 +194,7 @@ export default function MarketingEscuela() {
           {destacadoCientifico && (
             <div className="mt-10 grid items-center gap-8 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)]">
               <div>
-                <p className="text-[11px] font-extrabold uppercase tracking-[.14em] text-edvanta-tealdark">Comunicación científica</p>
+                <p className="text-xs font-extrabold uppercase tracking-[.14em] text-edvanta-tealdark">Comunicación científica</p>
                 <h3 className="mt-2 font-display text-2xl font-extrabold text-edvanta-deep">Evidencia clara, con referencias y sin exageraciones</h3>
                 <p className="mt-3 text-sm leading-7 text-edvanta-muted">{destacadoCientifico.necesidad}</p>
                 <ul className="mt-5 space-y-2.5">
@@ -219,7 +219,7 @@ export default function MarketingEscuela() {
                 <EjemploEntregable ejemplo={{ titulo: 'Programa de formación', desc: 'Una secuencia de sesiones y materiales para un equipo.', variante: 'programa' }} />
               </div>
               <div className="order-1 lg:order-2">
-                <p className="text-[11px] font-extrabold uppercase tracking-[.14em] text-edvanta-tealdark">Formación de equipos</p>
+                <p className="text-xs font-extrabold uppercase tracking-[.14em] text-edvanta-tealdark">Formación de equipos</p>
                 <h3 className="mt-2 font-display text-2xl font-extrabold text-edvanta-deep">Criterios comunes para comunicar con consistencia</h3>
                 <p className="mt-3 text-sm leading-7 text-edvanta-muted">{destacadoEquipos.necesidad}</p>
                 <Btn to={`/empresas/marketing/${destacadoEquipos.slug}`} className="mt-6" variant="secondary" iconRight={ArrowRight}>
@@ -286,7 +286,7 @@ export default function MarketingEscuela() {
         <section className="border-t border-edvanta-border bg-[#F8FAFD]">
           <div className="mx-auto grid w-full max-w-[1200px] gap-6 px-4 py-12 sm:px-6 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center lg:px-8">
             <div>
-              <p className="text-[11px] font-extrabold uppercase tracking-[.14em] text-edvanta-tealdark">Dos caminos, una misma escuela</p>
+              <p className="text-xs font-extrabold uppercase tracking-[.14em] text-edvanta-tealdark">Dos caminos, una misma escuela</p>
               <h2 className="mt-2 font-display text-2xl font-extrabold text-edvanta-deep sm:text-3xl">
                 Aprende a comunicar o trabaja con nosotros para hacerlo.
               </h2>

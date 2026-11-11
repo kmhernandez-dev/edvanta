@@ -73,7 +73,7 @@ export default function CartDrawer() {
     <>
       {/* Overlay (backdrop-blur only while open to avoid constant GPU cost) */}
       <div
-        className={`fixed inset-0 z-[70] bg-navy-950/50 transition-opacity duration-300 ${
+        className={`fixed inset-0 z-[70] bg-[#031D5C]/50 transition-opacity duration-300 ${
           isOpen ? 'opacity-100 backdrop-blur-sm' : 'opacity-0 invisible pointer-events-none'
         }`}
         onClick={closeCart}
@@ -88,7 +88,7 @@ export default function CartDrawer() {
         aria-label="Carrito de compras"
       >
         {/* Header */}
-        <div className="flex items-center justify-between px-5 py-4 border-b border-gray-100 bg-gradient-to-r from-navy-950 to-navy-800">
+        <div className="flex items-center justify-between px-5 py-4 border-b border-edvanta-border bg-gradient-to-r from-[#031D5C] to-edvanta-blue">
           <div className="flex items-center gap-2.5">
             <div className="relative">
               <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -97,7 +97,7 @@ export default function CartDrawer() {
             </div>
             <div>
               <h2 className="text-sm font-bold text-white leading-none">Tu carrito</h2>
-              <p className="text-[11px] text-navy-200 mt-0.5">{count} {count === 1 ? 'producto' : 'productos'}</p>
+              <p className="text-xs text-white/75 mt-0.5">{count} {count === 1 ? 'producto' : 'productos'}</p>
             </div>
           </div>
           <button
@@ -114,14 +114,14 @@ export default function CartDrawer() {
         {/* Body */}
         {items.length === 0 ? (
           <div className="flex-1 flex flex-col items-center justify-center gap-4 px-6 text-center">
-            <div className="w-20 h-20 rounded-3xl bg-gray-50 flex items-center justify-center text-navy-800">
+            <div className="w-20 h-20 rounded-3xl bg-edvanta-bg flex items-center justify-center text-edvanta-blue">
               <svg className="w-9 h-9" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13 5.4 5M7 13l-2 2h13M9 20a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm8 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z" />
               </svg>
             </div>
             <div>
-              <p className="font-semibold text-navy-950 mb-1">Tu carrito está vacío</p>
-              <p className="text-sm text-gray-500">Agrega el certificado de un curso o un pack profesional.</p>
+              <p className="font-semibold text-edvanta-deep mb-1">Tu carrito está vacío</p>
+              <p className="text-sm text-edvanta-muted">Agrega el certificado de un curso o un pack profesional.</p>
             </div>
             <button onClick={closeCart} className="btn-primary text-sm mt-2">
               Explorar packs
@@ -131,36 +131,36 @@ export default function CartDrawer() {
           <>
             <div className="flex-1 overflow-y-auto px-5 py-4 space-y-3">
               {items.map(item => (
-                <div key={item.id} className="flex gap-3 p-3 rounded-xl border border-gray-100 bg-white hover:border-gray-200 transition-colors">
+                <div key={item.id} className="flex gap-3 p-3 rounded-xl border border-edvanta-border bg-white hover:border-edvanta-border transition-colors">
                   {/* Icon */}
-                  <div className="w-11 h-11 rounded-lg bg-gradient-to-br from-navy-100 to-teal-100 flex items-center justify-center text-lg shrink-0">
-                    <svg className="w-5 h-5 text-navy-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <div className="w-11 h-11 rounded-lg bg-gradient-to-br from-edvanta-light to-edvanta-mint flex items-center justify-center text-lg shrink-0">
+                    <svg className="w-5 h-5 text-edvanta-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M12 3 4 7.5v9L12 21l8-4.5v-9L12 3Zm0 0v18M4 7.5l8 4.5 8-4.5" />
                     </svg>
                   </div>
                   {/* Info */}
                   <div className="flex-1 min-w-0">
-                    <p className="text-sm font-semibold text-navy-950 leading-snug truncate">{item.name}</p>
-                    <p className="text-xs text-gray-400 mb-2">{formatPrice(item.price)} c/u</p>
+                    <p className="text-sm font-semibold text-edvanta-deep leading-snug truncate">{item.name}</p>
+                    <p className="text-xs text-edvanta-subtle mb-2">{formatPrice(item.price)} c/u</p>
                     {/* Qty controls (un certificado es único) */}
                     <div className="flex items-center gap-2">
                       {item.category === 'certificado' ? (
-                        <span className="text-[11px] font-semibold text-teal-700 bg-teal-50 rounded-md px-2 py-1">Certificado · se emite al completar el curso</span>
+                        <span className="text-xs font-semibold text-teal-700 bg-teal-50 rounded-md px-2 py-1">Certificado · se emite al completar el curso</span>
                       ) : (
-                      <div className="flex items-center border border-gray-200 rounded-lg overflow-hidden">
+                      <div className="flex items-center border border-edvanta-border rounded-lg overflow-hidden">
                         <button
                           onClick={() => decrement(item.id)}
-                          className="w-7 h-7 flex items-center justify-center text-gray-500 hover:bg-gray-50 transition-colors"
+                          className="w-7 h-7 flex items-center justify-center text-edvanta-muted hover:bg-edvanta-bg transition-colors"
                           aria-label="Disminuir"
                         >
                           <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M20 12H4" />
                           </svg>
                         </button>
-                        <span className="w-8 text-center text-sm font-semibold text-navy-950">{item.qty}</span>
+                        <span className="w-8 text-center text-sm font-semibold text-edvanta-deep">{item.qty}</span>
                         <button
                           onClick={() => increment(item.id)}
-                          className="w-7 h-7 flex items-center justify-center text-gray-500 hover:bg-gray-50 transition-colors"
+                          className="w-7 h-7 flex items-center justify-center text-edvanta-muted hover:bg-edvanta-bg transition-colors"
                           aria-label="Aumentar"
                         >
                           <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -171,7 +171,7 @@ export default function CartDrawer() {
                       )}
                       <button
                         onClick={() => removeItem(item.id)}
-                        className="text-xs text-gray-400 hover:text-red-500 transition-colors ml-auto"
+                        className="text-xs text-edvanta-subtle hover:text-[#B42318] transition-colors ml-auto"
                       >
                         Quitar
                       </button>
@@ -179,14 +179,14 @@ export default function CartDrawer() {
                   </div>
                   {/* Line total */}
                   <div className="text-right shrink-0">
-                    <p className="text-sm font-bold text-navy-950">{formatPrice(item.price * item.qty)}</p>
+                    <p className="text-sm font-bold text-edvanta-deep">{formatPrice(item.price * item.qty)}</p>
                   </div>
                 </div>
               ))}
 
               <button
                 onClick={clearCart}
-                className="text-xs text-gray-400 hover:text-red-500 transition-colors flex items-center gap-1 mt-2"
+                className="text-xs text-edvanta-subtle hover:text-[#B42318] transition-colors flex items-center gap-1 mt-2"
               >
                 <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
@@ -196,10 +196,10 @@ export default function CartDrawer() {
             </div>
 
             {/* Footer / Checkout */}
-            <div className="border-t border-gray-100 px-5 py-4 space-y-3 bg-gray-50/50">
+            <div className="border-t border-edvanta-border px-5 py-4 space-y-3 bg-edvanta-bg">
               <div className="flex items-center justify-between">
-                <span className="text-sm text-gray-500">Total</span>
-                <span className="text-xl font-bold text-navy-950">{formatPrice(total)}</span>
+                <span className="text-sm text-edvanta-muted">Total</span>
+                <span className="text-xl font-bold text-edvanta-deep">{formatPrice(total)}</span>
               </div>
 
               {pideCuenta && (
@@ -257,7 +257,7 @@ export default function CartDrawer() {
                 Prefiero coordinar por WhatsApp
               </a>
 
-              <p className="text-[11px] text-gray-400 text-center leading-snug">
+              <p className="text-xs text-edvanta-subtle text-center leading-snug">
                 {tieneCertificados
                   ? 'Pago seguro con Mercado Pago (tarjetas, PSE, Nequi y más). El certificado se emite desde tu aula al completar el curso.'
                   : 'Pago seguro con Mercado Pago (tarjetas, PSE, Nequi y más). Productos digitales descargables.'}

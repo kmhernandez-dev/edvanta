@@ -105,7 +105,7 @@ export default function NutriFstPublic() {
                 </span>
                 <div>
                   <p className="text-sm font-bold text-edvanta-deep">NutriFST IA</p>
-                  <p className="text-[10px] text-edvanta-muted">Asistente nutricional · respuestas deterministas</p>
+                  <p className="text-xs text-edvanta-muted">Asistente nutricional · respuestas deterministas</p>
                 </div>
               </div>
             </div>
@@ -119,7 +119,7 @@ export default function NutriFstPublic() {
                       : 'rounded-bl-md border border-edvanta-border bg-edvanta-bg text-edvanta-deep'
                   }`}>
                     {message.role === 'assistant' && (
-                      <p className="text-[10px] font-bold uppercase tracking-widest text-[#5E51A8]">NutriFST</p>
+                      <p className="text-xs font-bold uppercase tracking-widest text-[#5E51A8]">NutriFST</p>
                     )}
                     <p className="mt-0.5 whitespace-pre-line">{message.content}</p>
                     {message.role === 'assistant' && (

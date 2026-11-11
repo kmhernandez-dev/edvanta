@@ -135,7 +135,7 @@ export default function ContigoHome() {
           <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {SERVICIOS_FST.map((s) => (
               <article key={s.id} className="flex flex-col rounded-2xl border border-edvanta-border bg-white p-5">
-                <p className="text-[11px] font-bold uppercase tracking-[.12em] text-edvanta-tealdark">{s.duration}</p>
+                <p className="text-xs font-bold uppercase tracking-[.12em] text-edvanta-tealdark">{s.duration}</p>
                 <h3 className="mt-1 font-display text-base font-extrabold text-edvanta-deep">{s.name}</h3>
                 <p className="mt-2 flex-1 text-sm leading-6 text-edvanta-muted">{s.description}</p>
                 <Btn href={waLink(`Hola, quiero información sobre «${s.name}» de Feliz Sin Tiroides.`)} external variant="secondary" size="sm" icon={MessageCircle} className="mt-4 self-start">
@@ -175,7 +175,7 @@ export default function ContigoHome() {
             <li key={p.titulo} className="rounded-2xl border border-edvanta-border bg-white p-5">
               <div className="flex items-center gap-2">
                 <span className="contigo-icon !h-9 !w-9 !rounded-[10px]"><IconoContigo name={p.icono} className="h-4 w-4" /></span>
-                <span className="text-[10px] font-extrabold uppercase tracking-[.12em] text-edvanta-tealdark">Paso {i + 1}</span>
+                <span className="text-xs font-extrabold uppercase tracking-[.12em] text-edvanta-tealdark">Paso {i + 1}</span>
               </div>
               <h3 className="mt-3 font-display text-base font-extrabold text-edvanta-deep">{p.titulo}</h3>
               <p className="mt-1 text-xs leading-5 text-edvanta-muted">{p.desc}</p>

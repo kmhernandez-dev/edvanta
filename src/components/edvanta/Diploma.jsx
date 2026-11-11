@@ -70,9 +70,26 @@ function Fondo() {
   );
 }
 
+/**
+ * El diploma es lo único que usa Fraunces (serif). Se carga aquí, cuando hay
+ * un diploma en pantalla, y no en todas las páginas (auditoría 11-nov-2026).
+ */
+function useFuenteDelDiploma() {
+  useEffect(() => {
+    const id = 'fuente-diploma-fraunces';
+    if (document.getElementById(id)) return;
+    const link = document.createElement('link');
+    link.id = id;
+    link.rel = 'stylesheet';
+    link.href = 'https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap';
+    document.head.appendChild(link);
+  }, []);
+}
+
 export default function Diploma({
   titular, documento, curso, horas, modalidad = 'Virtual', fecha, codigo, muestra = false, previa = false, className = '',
 }) {
+  useFuenteDelDiploma();
   const [qr, setQr] = useState(null);
   const enlace = urlDeVerificacion(muestra || !codigo ? null : codigo);
   const sello = muestra ? 'Muestra' : previa ? 'Vista previa' : null;

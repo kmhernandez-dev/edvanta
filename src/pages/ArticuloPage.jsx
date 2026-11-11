@@ -214,7 +214,7 @@ function CitarArticulo({ art }) {
       <div className="mt-4 space-y-4">
         {estilos.map(([clave, nombre, uso]) => (
           <div key={clave}>
-            <p className="text-[11px] font-bold uppercase tracking-[.12em] text-edvanta-muted">{nombre} · {uso}</p>
+            <p className="text-xs font-bold uppercase tracking-[.12em] text-edvanta-muted">{nombre} · {uso}</p>
             <p className="mt-1 select-all break-words text-sm leading-6 text-edvanta-deep">{citas[clave]}</p>
             <button type="button" onClick={() => copiar(clave)} className="ed-btn ed-btn--secondary ed-btn--sm mt-2">
               {copiada === clave ? <Check className="h-4 w-4 text-edvanta-teal" aria-hidden="true" /> : <Link2 className="h-4 w-4 text-edvanta-blue" aria-hidden="true" />}
@@ -236,7 +236,7 @@ function TarjetaRelacionada({ a }) {
       to={`/articulos/${a.slug}`}
       className="group flex h-full flex-col rounded-[14px] border border-edvanta-border bg-white p-5 shadow-[0_1px_2px_rgba(23,34,59,.04)] transition duration-200 hover:-translate-y-0.5 hover:border-edvanta-blue/30 hover:shadow-[0_12px_36px_rgba(23,34,59,.12)]"
     >
-      <span className="text-[11px] font-bold uppercase tracking-[.12em] text-edvanta-tealdark">{a.category}</span>
+      <span className="text-xs font-bold uppercase tracking-[.12em] text-edvanta-tealdark">{a.category}</span>
       <span className="mt-2 font-display text-[1.05rem] font-bold leading-snug text-edvanta-deep group-hover:text-edvanta-blue">{a.title}</span>
       <span className="mt-auto inline-flex items-center gap-1.5 pt-4 text-sm font-bold text-edvanta-blue">
         Leer
@@ -415,7 +415,7 @@ function SiguientePaso({ art }) {
   const pacientes = art.publico === 'pacientes' || art.marca === 'fst' || art.marca === 'contigo';
   const paso = pacientes ? pasoPaciente(art) : (PASO_PRO[art.category] || PASO_PRO_DEFAULT);
   return (
-    <div className="ed-edge relative overflow-hidden rounded-[18px] bg-edvanta-blue p-6 text-white sm:p-8">
+    <div className="ed-edge relative overflow-hidden rounded-2xl bg-edvanta-blue p-6 text-white sm:p-8">
       <div className={`pointer-events-none absolute -right-16 -top-20 h-64 w-64 rounded-full blur-3xl ${pacientes ? 'bg-edvanta-teal/35' : 'bg-edvanta-violet/40'}`} aria-hidden="true" />
       <div className="relative">
         <p className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[.14em] text-white/80">
@@ -471,7 +471,7 @@ export default function ArticuloPage() {
   useEffect(() => {
     if (!art) return;
     const canonical = `https://edvanta.co/articulos/${art.slug}`;
-    const imagen = `https://edvanta.co${art.image || '/img/edvanta-hero.webp'}`;
+    const imagen = `https://edvanta.co${art.image || '/img/og-edvanta.png'}`;
     const imagenJsonLd = { '@type': 'ImageObject', url: imagen, caption: art.imageAlt || art.title };
     const autor = art.autor || (art.marca === 'fst' ? 'Karla Hernández' : 'Equipo editorial de Edvanta');
     const faq = texto ? preguntasFrecuentes(texto) : [];
@@ -578,7 +578,7 @@ export default function ArticuloPage() {
           <p className="hx-fade mt-4 max-w-3xl text-lg leading-8 text-edvanta-muted">{art.description}</p>
           <div className="hx-fade mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-edvanta-muted">
             <span className="inline-flex items-center gap-2 font-semibold text-edvanta-deep">
-              <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-edvanta-blue text-[11px] font-bold text-white">
+              <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-edvanta-blue text-xs font-bold text-white">
                 {autor.startsWith('Karla') ? 'KH' : 'ED'}
               </span>
               <Link to={esAutoraKarla(art) ? '/autores/karla-hernandez' : '/equipo-editorial'} className="underline decoration-edvanta-border underline-offset-4 hover:text-edvanta-blue">
@@ -605,7 +605,7 @@ export default function ArticuloPage() {
 
       {art.image && (
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-          <img src={art.image} alt={art.imageAlt || art.title} width="1200" height="600" loading="eager" decoding="async" className="aspect-[16/8] w-full rounded-[18px] object-cover shadow-[0_18px_44px_rgba(23,34,59,.12)]" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
+          <img src={art.image} alt={art.imageAlt || art.title} width="1200" height="600" loading="eager" decoding="async" className="aspect-[16/8] w-full rounded-2xl object-cover shadow-[0_18px_44px_rgba(23,34,59,.12)]" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
         </div>
       )}
 
@@ -693,12 +693,12 @@ export default function ArticuloPage() {
             <div className="sticky top-36 space-y-6">
               {indice.length > 2 && (
                 <nav aria-label="En este artículo">
-                  <p className="mb-3 text-[11px] font-bold uppercase tracking-[.14em] text-edvanta-muted">En este artículo</p>
+                  <p className="mb-3 text-xs font-bold uppercase tracking-[.14em] text-edvanta-muted">En este artículo</p>
                   <Indice items={indice} activa={activa} />
                 </nav>
               )}
               <div>
-                <p className="mb-3 text-[11px] font-bold uppercase tracking-[.14em] text-edvanta-muted">Compartir</p>
+                <p className="mb-3 text-xs font-bold uppercase tracking-[.14em] text-edvanta-muted">Compartir</p>
                 <Compartir titulo={art.title} url={url} />
               </div>
             </div>

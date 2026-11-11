@@ -69,12 +69,12 @@ export default function ContentNodeCard({ node, variant = 'card', onNavigate }) 
       )}
       <div className="flex flex-1 flex-col p-4">
         <div className="mb-2 flex items-center gap-2">
-          <span className={`inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[11px] font-bold ${meta.chip}`}>
+          <span className={`inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-xs font-bold ${meta.chip}`}>
             <Icon className="h-3 w-3" aria-hidden="true" />
             {node.typeLabel}
           </span>
           {node.areaLabels?.[0] && (
-            <span className="truncate text-[11px] font-semibold text-edvanta-subtle">{node.areaLabels[0]}</span>
+            <span className="truncate text-xs font-semibold text-edvanta-subtle">{node.areaLabels[0]}</span>
           )}
         </div>
         <h3 className="line-clamp-2 text-[15px] font-bold leading-snug text-edvanta-deep group-hover:text-edvanta-blue">

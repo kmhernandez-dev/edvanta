@@ -66,7 +66,7 @@ export default {
           blue:      '#082E86',
           bluedark:  '#0A3AA6',
           light:     '#E4EBFA',
-          soft:      '#EEF5FA',
+          soft:      '#F4F7FD',
           teal:      '#25A7B0',
           tealdark:  '#0F7480',
           mint:      '#DDF3F2',
@@ -81,11 +81,21 @@ export default {
           strong:    '#C9D4E6',
         },
       },
+      // H6 (auditoría 11-nov-2026): los radios de Tailwind caen en la escala del
+      // sistema (8 · 10 · 14 · 20 · 28 y completo) en lugar de sumar 4, 6, 12, 16 y 24.
+      borderRadius: {
+        DEFAULT: '8px',
+        sm: '8px',
+        md: '8px',
+        lg: '10px',
+        xl: '14px',
+        '2xl': '20px',
+        '3xl': '28px',
+      },
       fontFamily: {
         sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
         serif: ['Fraunces', 'Georgia', 'Cambria', 'serif'],
         display: ['Manrope', 'Inter', 'system-ui', 'sans-serif'],
-        hand: ['Patrick Hand', 'Comic Sans MS', 'cursive'],
       },
     },
   },

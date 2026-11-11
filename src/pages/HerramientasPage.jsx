@@ -37,7 +37,7 @@ function VistaHerramientas() {
     <div className="flex h-full flex-col bg-[#F8FAFD] p-3 sm:p-4" aria-hidden="true">
       <div className="flex items-center gap-2">
         <Wrench className="h-3.5 w-3.5 text-edvanta-blue sm:h-4 sm:w-4" />
-        <span className="font-display text-[11px] font-extrabold text-edvanta-blue sm:text-sm">Centro de herramientas</span>
+        <span className="font-display text-xs font-extrabold text-edvanta-blue sm:text-sm">Centro de herramientas</span>
       </div>
       <div className="mt-2 grid flex-1 grid-cols-3 gap-1.5 sm:mt-3 sm:gap-2">
         {HERRAMIENTAS.slice(0, 9).map((h) => {
@@ -45,7 +45,7 @@ function VistaHerramientas() {
           return (
             <div key={h.slug} className="flex flex-col items-start justify-between rounded-lg bg-white p-1.5 ring-1 ring-edvanta-border sm:p-2">
               <span className="inline-flex h-5 w-5 items-center justify-center rounded-md bg-edvanta-light text-edvanta-blue sm:h-6 sm:w-6"><I className="h-3 w-3 sm:h-3.5 sm:w-3.5" /></span>
-              <span className="mt-1 line-clamp-2 text-[8px] font-bold leading-tight text-edvanta-deep sm:text-[10px]">{h.nav}</span>
+              <span className="mt-1 line-clamp-2 text-xs font-semibold leading-tight text-edvanta-deep">{h.nav}</span>
             </div>
           );
         })}
@@ -165,7 +165,7 @@ export default function HerramientasPage() {
           <div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {clasificacionHerramientas.map((grupo) => (
               <Card key={grupo.categoria}>
-                <p className="text-[11px] font-bold uppercase tracking-[.14em] text-edvanta-tealdark">{grupo.categoria}</p>
+                <p className="text-xs font-bold uppercase tracking-[.14em] text-edvanta-tealdark">{grupo.categoria}</p>
                 <div className="mt-4 space-y-3">
                   {grupo.items.map((item) => (
                     <Link
@@ -206,10 +206,10 @@ export default function HerramientasPage() {
                   return (
                     <Card key={resourceId} className="flex min-h-48 flex-col">
                       <div className="flex items-start justify-between gap-3">
-                        <p className="text-[11px] font-bold uppercase tracking-wide text-edvanta-tealdark">
+                        <p className="text-xs font-bold uppercase tracking-wide text-edvanta-tealdark">
                           {resourceTypeLabels[resource.resource_type] || resource.resource_type || 'Recurso'}
                         </p>
-                        {isSaved && <span className="rounded-full bg-edvanta-mint px-2 py-0.5 text-[10px] font-bold text-edvanta-tealdark">Guardado</span>}
+                        {isSaved && <span className="rounded-full bg-edvanta-mint px-2 py-0.5 text-xs font-bold text-edvanta-tealdark">Guardado</span>}
                       </div>
                       <h3 className="mt-2 text-base font-bold text-edvanta-deep">{resource.title}</h3>
                       <p className="mt-2 flex-1 text-sm leading-6 text-edvanta-muted">{resource.excerpt}</p>

@@ -13,11 +13,11 @@ export default function HotmartCard({ product }) {
       <div className={`relative aspect-[4/3] bg-gradient-to-br ${product.cover.gradient} flex items-center justify-center`}>
         <span className="text-6xl drop-shadow-sm">{product.cover.emoji}</span>
         {product.featured && (
-          <span className="absolute top-3 right-3 chip bg-white/90 text-teal-700 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
+          <span className="absolute top-3 right-3 chip bg-white/90 text-teal-700 text-xs font-bold px-2.5 py-0.5 rounded-full">
             ⭐ Destacado
           </span>
         )}
-        <span className="absolute bottom-3 left-3 chip bg-white/90 text-edvanta-deep text-[11px] font-semibold px-2 py-0.5 rounded-full">
+        <span className="absolute bottom-3 left-3 chip bg-white/90 text-edvanta-deep text-xs font-semibold px-2 py-0.5 rounded-full">
           {product.tag}
         </span>
       </div>
@@ -50,7 +50,7 @@ export default function HotmartCard({ product }) {
           </a>
         </div>
 
-        <p className="text-[11px] text-edvanta-subtle text-center flex items-center justify-center gap-1">
+        <p className="text-xs text-edvanta-subtle text-center flex items-center justify-center gap-1">
           <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>
           Pago seguro en Hotmart
         </p>

@@ -80,7 +80,7 @@ export default function LeadForm({ buttonText = 'Quiero los recursos gratis' }) 
             </>
           ) : buttonText}
         </button>
-        <p className="text-[11px] text-gray-400 text-center">Sin spam. Puedes darte de baja cuando quieras.</p>
+        <p className="text-xs text-gray-400 text-center">Sin spam. Puedes darte de baja cuando quieras.</p>
       </div>
     </form>
   );

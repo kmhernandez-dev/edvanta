@@ -146,7 +146,7 @@ export function AdminShell() {
     <nav aria-label="Administración del aula" className="flex flex-col gap-5">
       {ADMIN_NAV.map((section) => (
         <div key={section.title}>
-          <p className="px-3 pb-1.5 text-[11px] font-bold uppercase tracking-[0.12em] text-[var(--aula-subtle)]">{section.title}</p>
+          <p className="px-3 pb-1.5 text-xs font-bold uppercase tracking-[0.12em] text-[var(--aula-subtle)]">{section.title}</p>
           <div className="flex flex-col gap-0.5">
             {section.items.map((item) => (
               <NavLink

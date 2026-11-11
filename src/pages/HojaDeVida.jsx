@@ -79,7 +79,7 @@ function AntesYDespues() {
             {linea('95%')}{linea('80%')}{linea('88%')}
           </div>
         </div>
-        <ul className="mt-3 space-y-1 text-[10px] font-semibold text-[#5E51A8]">
+        <ul className="mt-3 space-y-1 text-xs font-semibold text-[#5E51A8]">
           <li>· Tablas y cuadros</li><li>· Datos personales</li>
         </ul>
       </div>
@@ -88,11 +88,11 @@ function AntesYDespues() {
         <div className="space-y-1.5">{linea('70%', 'bg-edvanta-blue/70')}{linea('45%')}</div>
         {['Perfil', 'Experiencia', 'Formación', 'Habilidades'].map((s) => (
           <div key={s} className="mt-2.5">
-            <span className="block text-[10px] font-extrabold uppercase tracking-wide text-edvanta-tealdark">{s}</span>
+            <span className="block text-xs font-extrabold uppercase tracking-wide text-edvanta-tealdark">{s}</span>
             <div className="mt-1 space-y-1">{linea('95%')}{linea('78%')}</div>
           </div>
         ))}
-        <span className="mt-3 inline-flex items-center gap-1 text-[10px] font-bold text-edvanta-tealdark"><BadgeCheck className="h-3.5 w-3.5" />Formato ATS</span>
+        <span className="mt-3 inline-flex items-center gap-1 text-xs font-bold text-edvanta-tealdark"><BadgeCheck className="h-3.5 w-3.5" />Formato ATS</span>
       </div>
     </figure>
   );
@@ -151,7 +151,7 @@ function Portada() {
           <div className="absolute left-3 top-5 flex items-center gap-3 rounded-2xl bg-white/95 p-3 pr-4 shadow-[var(--ds-sh-md)] ring-1 ring-black/5 backdrop-blur sm:-left-6 sm:top-8">
             <AnilloPuntaje puntaje={muestra.puntaje} nivel={muestra.nivel} tam={48} />
             <span>
-              <span className="block text-[11px] font-bold uppercase tracking-[.12em] text-edvanta-subtle">Puntaje ATS del ejemplo</span>
+              <span className="block text-xs font-bold uppercase tracking-[.12em] text-edvanta-subtle">Puntaje ATS del ejemplo</span>
               <span className={`ds-chip mt-0.5 ${tono.fondo}`}>{tono.texto}</span>
             </span>
           </div>

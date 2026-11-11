@@ -92,7 +92,7 @@ export default function ContigoRedProfesional() {
               <ol className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
                 {RED_PROFESIONAL.pasos.map((x, i) => (
                   <li key={x} className="contigo-card p-5">
-                    <span className="text-[10px] font-extrabold uppercase tracking-[.12em] text-[var(--contigo-primary)]">Paso {i + 1}</span>
+                    <span className="text-xs font-extrabold uppercase tracking-[.12em] text-[var(--contigo-primary)]">Paso {i + 1}</span>
                     <p className="mt-2 text-sm font-semibold leading-6 text-edvanta-deep">{x}</p>
                   </li>
                 ))}

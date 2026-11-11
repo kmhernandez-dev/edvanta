@@ -110,7 +110,7 @@ export default function Prensa() {
           <div className="mt-6 grid gap-4 sm:grid-cols-2">
             {PRENSA.logos.map((l) => (
               <div key={l.src} className="ds-card flex flex-col gap-4 p-5">
-                <div className="flex h-28 items-center justify-center rounded-[12px] bg-edvanta-bg p-4">
+                <div className="flex h-28 items-center justify-center rounded-xl bg-edvanta-bg p-4">
                   <img src={l.src} alt={l.titulo} className="max-h-20 w-auto" loading="lazy" />
                 </div>
                 <div className="flex flex-wrap items-center justify-between gap-3">

@@ -396,7 +396,7 @@ export function HeroCorporativo({
             <div className="ds-rise-2 relative lg:pl-10">
               <Foto src={image} alt={imageAlt} position={imagePosition} ratio="aspect-[4/3]" />
               <PilaFlotante items={services} className="absolute -bottom-8 left-0 sm:left-4 lg:-left-6 lg:bottom-10" />
-              <span className="absolute -right-3 -top-3 hidden h-24 w-24 rounded-[22px] border-2 border-dashed border-edvanta-violet/40 lg:block" aria-hidden="true" />
+              <span className="absolute -right-3 -top-3 hidden h-24 w-24 rounded-2xl border-2 border-dashed border-edvanta-violet/40 lg:block" aria-hidden="true" />
             </div>
           )}
         </div>
@@ -465,7 +465,7 @@ export function HeroPaciente({
 export function Portatil({ children, className = '' }) {
   return (
     <div className={`relative ${className}`}>
-      <div className="rounded-[18px] border border-[#C9D4E6] bg-[#14233F] p-2 shadow-[var(--ds-sh-lg)]">
+      <div className="rounded-2xl border border-[#C9D4E6] bg-[#14233F] p-2 shadow-[var(--ds-sh-lg)]">
         <div className="flex items-center gap-1.5 px-2 pb-2 pt-0.5" aria-hidden="true">
           <span className="h-2 w-2 rounded-full bg-white/25" /><span className="h-2 w-2 rounded-full bg-white/25" /><span className="h-2 w-2 rounded-full bg-white/25" />
         </div>

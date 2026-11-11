@@ -219,7 +219,7 @@ export default function CareerPage() {
                     <div key={skill.slug} className="py-3 first:pt-0 last:pb-0">
                       <div className="flex items-start justify-between gap-3">
                         <p className="font-bold text-edvanta-deep">{skill.name}</p>
-                        <span className="shrink-0 rounded-full bg-edvanta-mint px-2 py-1 text-[11px] font-bold text-edvanta-tealdark">{levelLabels[skill.required_level] || skill.required_level}</span>
+                        <span className="shrink-0 rounded-full bg-edvanta-mint px-2 py-1 text-xs font-bold text-edvanta-tealdark">{levelLabels[skill.required_level] || skill.required_level}</span>
                       </div>
                       {skill.description && <p className="mt-1 text-sm leading-6 text-edvanta-muted">{skill.description}</p>}
                     </div>

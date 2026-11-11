@@ -163,7 +163,7 @@ export default function ProfessionalAccount() {
               <button type="button" onClick={handleGoogle} disabled={!supabaseConfigured || submitting} className="mt-6 inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-lg border border-edvanta-border bg-white px-4 text-sm font-bold text-edvanta-deep hover:bg-edvanta-bg disabled:cursor-not-allowed disabled:opacity-50">
                 <Globe2 className="h-5 w-5" aria-hidden="true" /> Continuar con Google
               </button>
-              <p className="mt-2 text-center text-[11px] leading-4 text-edvanta-subtle">
+              <p className="mt-2 text-center text-xs leading-4 text-edvanta-subtle">
                 Solo pedimos tu nombre y correo. Al continuar aceptas los{' '}
                 <Link to="/terminos" target="_blank" className="font-semibold text-edvanta-tealdark">términos</Link> y la{' '}
                 <Link to="/privacidad" target="_blank" className="font-semibold text-edvanta-tealdark">política de privacidad</Link>.

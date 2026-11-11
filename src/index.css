@@ -75,7 +75,7 @@
   --ed-surface: #FFFFFF;
   --ed-border: #E3E9F2;
   --ed-border-strong: #C9D4E6;
-  --ed-text: #17223B;
+  --ed-text: #14233F;
   --ed-muted: #65718A;
   --ed-subtle: #A6AEBE;
   --ed-radius-sm: 8px;
@@ -493,10 +493,10 @@
   color: #082E86; font-size: 1.6rem; line-height: 1.25; margin-top: 2.2em; padding-top: 0.2em; scroll-margin-top: 8.5rem;
 }
 .ed-prose h2::after { content: ''; display: block; width: 44px; height: 3px; margin-top: 0.55rem; border-radius: 3px; background: var(--ed-gradient-brand); }
-.ed-prose h3 { font-family: Manrope, Inter, system-ui, sans-serif; font-weight: 700; letter-spacing: -0.015em; color: #17223B; font-size: 1.2rem; margin-top: 1.8em; scroll-margin-top: 8.5rem; }
+.ed-prose h3 { font-family: Manrope, Inter, system-ui, sans-serif; font-weight: 700; letter-spacing: -0.015em; color: #14233F; font-size: 1.2rem; margin-top: 1.8em; scroll-margin-top: 8.5rem; }
 .ed-prose a { color: #0F7480; font-weight: 600; text-decoration: underline; text-decoration-color: rgba(37, 167, 176, 0.4); text-underline-offset: 3px; }
 .ed-prose a:hover { color: #082E86; text-decoration-color: #082E86; }
-.ed-prose strong { color: #17223B; font-weight: 700; }
+.ed-prose strong { color: #14233F; font-weight: 700; }
 .ed-prose ul, .ed-prose ol { padding-left: 1.4em; }
 .ed-prose ul { list-style: none; }
 .ed-prose ul > li { position: relative; }
@@ -506,7 +506,7 @@
 .ed-prose li + li { margin-top: 0.45em; }
 .ed-prose blockquote {
   border: 1px solid #E3E9F2; border-left: 4px solid #8981CE; border-radius: 14px;
-  background: linear-gradient(135deg, #F7F5FF 0%, #F1FAFA 100%); padding: 1.1rem 1.3rem; color: #17223B; font-style: normal;
+  background: linear-gradient(135deg, #F7F5FF 0%, #F1FAFA 100%); padding: 1.1rem 1.3rem; color: #14233F; font-style: normal;
 }
 .ed-prose blockquote > * + * { margin-top: 0.5em; }
 .ed-prose blockquote ul > li::before { background: #8981CE; }
@@ -516,7 +516,7 @@
 .ed-prose th, .ed-prose td { padding: 0.7rem 0.9rem; border-bottom: 1px solid #E3E9F2; vertical-align: top; }
 .ed-prose tr:last-child td { border-bottom: 0; }
 .ed-prose hr { border: 0; height: 1px; background: #E3E9F2; margin: 2.2em 0; }
-.ed-prose code { background: #EEF5FA; border-radius: 6px; padding: 0.1em 0.35em; font-size: 0.9em; }
+.ed-prose code { background: #F4F7FD; border-radius: 6px; padding: 0.1em 0.35em; font-size: 0.9em; }
 .ed-prose img { border-radius: 16px; }
 
 @media (prefers-reduced-motion: reduce) {

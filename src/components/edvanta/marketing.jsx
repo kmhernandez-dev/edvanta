@@ -40,7 +40,7 @@ export function MarketingSection({ id, tone = 'white', className = '', children 
 
 export function MarketingEyebrow({ children }) {
   return (
-    <p className="inline-flex items-center gap-2 text-[11px] font-extrabold uppercase tracking-[.16em] text-edvanta-tealdark">
+    <p className="inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-[.16em] text-edvanta-tealdark">
       <span className="h-0.5 w-6 rounded-full bg-gradient-to-r from-edvanta-violet to-edvanta-teal" aria-hidden="true" />
       {children}
     </p>
@@ -54,7 +54,7 @@ export function EstadoMarketing({ estado = 'en_desarrollo' }) {
   };
   const e = map[estado] || map.en_desarrollo;
   return (
-    <span className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[11px] font-bold ring-1 ring-inset ${e.clase}`}>
+    <span className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-bold ring-1 ring-inset ${e.clase}`}>
       <CircleDot className="h-3 w-3" aria-hidden="true" />
       {e.label}
     </span>
@@ -211,7 +211,7 @@ export function ProgramaMarketingCard({ programa, escuelaSlug }) {
     <article className="marketing-card flex h-full flex-col p-6">
       <div className="flex flex-wrap items-center gap-2">
         <EstadoMarketing estado="en_desarrollo" />
-        <span className="text-[11px] font-bold uppercase tracking-[.1em] text-edvanta-subtle">{programa.linea}</span>
+        <span className="text-xs font-bold uppercase tracking-[.1em] text-edvanta-subtle">{programa.linea}</span>
       </div>
       <h3 className="mt-4 font-display text-xl font-extrabold leading-snug text-edvanta-deep">{programa.nombre}</h3>
       <p className="mt-2 flex-1 text-sm leading-6 text-edvanta-muted">{programa.resumen}</p>

@@ -27,7 +27,7 @@ function ToolButton({ icon: Icon, label, active, disabled, onClick }) {
       disabled={disabled}
       onMouseDown={(e) => e.preventDefault()}
       onClick={onClick}
-      className={`inline-flex h-8 w-8 items-center justify-center rounded-[6px] transition-colors disabled:opacity-35 ${
+      className={`inline-flex h-8 w-8 items-center justify-center rounded transition-colors disabled:opacity-35 ${
         active ? 'bg-[var(--aula-primary-soft)] text-[var(--aula-primary)]' : 'text-[var(--aula-muted)] hover:bg-[var(--aula-neutral-soft)] hover:text-[var(--aula-text)]'
       }`}
     >

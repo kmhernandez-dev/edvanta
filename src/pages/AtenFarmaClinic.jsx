@@ -97,7 +97,7 @@ export default function AtenFarmaClinic() {
               </div>
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-edvanta-deep leading-tight mb-5">
                 Herramientas clínicas para{' '}
-                <span className="bg-gradient-to-r from-edvanta-blue to-teal-600 bg-clip-text text-transparent">
+                <span className="text-edvanta-tealdark">
                   analizar, documentar y dar seguimiento
                 </span>{' '}
                 a la farmacoterapia
@@ -133,36 +133,36 @@ export default function AtenFarmaClinic() {
                     <div className="w-2.5 h-2.5 rounded-full bg-amber-400" />
                     <div className="w-2.5 h-2.5 rounded-full bg-green-400" />
                   </div>
-                  <span className="text-[10px] text-white/60 ml-2 font-mono">Workspace clínico</span>
+                  <span className="text-xs text-white/60 ml-2 font-mono">Workspace clínico</span>
                 </div>
                 <div className="p-4 space-y-3">
                   <div className="flex items-center justify-between">
                     <div>
                       <p className="text-xs font-bold text-edvanta-deep">Caso demo: Paciente polimedicado</p>
-                      <p className="text-[10px] text-edvanta-subtle">En evaluación · Minnesota/CMM</p>
+                      <p className="text-xs text-edvanta-subtle">En evaluación · Minnesota/CMM</p>
                     </div>
-                    <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-teal-50 text-teal-700">Activo</span>
+                    <span className="text-xs font-semibold px-2 py-0.5 rounded-full bg-teal-50 text-teal-700">Activo</span>
                   </div>
                   <div className="grid grid-cols-2 gap-2">
                     <div className="bg-edvanta-bg rounded-lg p-2.5">
-                      <p className="text-[10px] font-semibold text-edvanta-muted mb-1">Medicamentos</p>
+                      <p className="text-xs font-semibold text-edvanta-muted mb-1">Medicamentos</p>
                       <p className="text-lg font-bold text-edvanta-deep">8</p>
                     </div>
                     <div className="bg-edvanta-bg rounded-lg p-2.5">
-                      <p className="text-[10px] font-semibold text-edvanta-muted mb-1">Problemas</p>
+                      <p className="text-xs font-semibold text-edvanta-muted mb-1">Problemas</p>
                       <p className="text-lg font-bold text-amber-600">3</p>
                     </div>
                     <div className="bg-edvanta-bg rounded-lg p-2.5">
-                      <p className="text-[10px] font-semibold text-edvanta-muted mb-1">Plan de cuidado</p>
+                      <p className="text-xs font-semibold text-edvanta-muted mb-1">Plan de cuidado</p>
                       <p className="text-lg font-bold text-teal-600">2</p>
                     </div>
                     <div className="bg-edvanta-bg rounded-lg p-2.5">
-                      <p className="text-[10px] font-semibold text-edvanta-muted mb-1">Seguimiento</p>
+                      <p className="text-xs font-semibold text-edvanta-muted mb-1">Seguimiento</p>
                       <p className="text-lg font-bold text-edvanta-blue">1</p>
                     </div>
                   </div>
                   <div className="bg-teal-50 rounded-lg p-2.5">
-                    <p className="text-[10px] text-teal-700">
+                    <p className="text-xs text-teal-700">
                       <span className="font-semibold">Último hallazgo:</span> Ibuprofeno + ERC etapa 3 — riesgo de deterioro de función renal.
                     </p>
                   </div>
@@ -379,7 +379,7 @@ export default function AtenFarmaClinic() {
                     <svg className="w-5 h-5 text-edvanta-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.6}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M12 5 2 9l10 4 10-4-10-4Zm0 4v0M6 11v4c0 1 2.7 2.5 6 2.5s6-1.5 6-2.5v-4" />
                     </svg>
-                    <span className="text-[10px] font-mono text-edvanta-subtle">{c.code}</span>
+                    <span className="text-xs font-mono text-edvanta-subtle">{c.code}</span>
                   </div>
                   <p className="text-sm font-semibold text-edvanta-deep group-hover:text-teal-700 transition-colors">{c.name}</p>
                 </a>

@@ -164,7 +164,7 @@ export default function AcademiaIndex() {
                     ) : (
                       <Icon name={CATEGORY_ICONS[course.category] || 'book'} className="h-14 w-14 text-white" />
                     )}
-                    <span className="absolute top-3 left-3 chip bg-white/90 text-edvanta-deep text-[11px] font-semibold px-2.5 py-0.5 rounded-full">
+                    <span className="absolute top-3 left-3 chip bg-white/90 text-edvanta-deep text-xs font-semibold px-2.5 py-0.5 rounded-full">
                       {course.category}
                     </span>
                   </div>

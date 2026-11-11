@@ -72,31 +72,51 @@
 
   /* Ritmo vertical de las secciones */
   --ds-section-y: clamp(3.25rem, 2.4rem + 3vw, 5rem);
+
+  /* Escala de lectura (3.0): 12 es el mínimo y solo para etiquetas. */
+  --ds-fs-xs: 0.75rem;     /* 12 · etiquetas e insignias */
+  --ds-fs-sm: 0.8125rem;   /* 13 · datos y metadatos */
+  --ds-fs-base: 0.9375rem; /* 15 · texto de tarjetas */
+  --ds-fs-md: 1.0625rem;   /* 17 · lectura */
+  --ds-fs-lg: 1.25rem;     /* 20 · subtítulos */
+
+  /* Estados (texto AA sobre su fondo) */
+  --ds-success: #067647; --ds-success-bg: #ECFDF3;
+  --ds-warning: #B54708; --ds-warning-bg: #FFFAEB;
+  --ds-danger: #B42318;  --ds-danger-bg: #FEF3F2;
+  --ds-info: #082E86;    --ds-info-bg: #E8EEFB;
+
+  /* Gráficas: seis series que se distinguen entre sí */
+  --ds-viz-1: #082E86; --ds-viz-2: #25A7B0; --ds-viz-3: #8981CE;
+  --ds-viz-4: #0F7480; --ds-viz-5: #5E51A8; --ds-viz-6: #C9D4E6;
 }
 
-/* ── Botones ──────────────────────────────────────────────────
-   Un solo botón con variantes. La forma, la altura y los estados son
-   los mismos en todo el sitio y en el aula; solo cambia el color. */
+/* ── Botones 3.0 ──────────────────────────────────────────────
+   Un solo botón con variantes. Píldora; luz que lo recorre al pasar;
+   la flecha vive en una burbuja que avanza; el destacado lleva el filo
+   de marca (lavanda → turquesa). Misma forma en el sitio y en el aula. */
 /* display va con :where() (especificidad cero): así `hidden`, `sm:flex` y
    compañía siguen mandando sobre el botón. */
 :where(.ed-btn) { display: inline-flex; }
 .ed-btn {
-  --btn-h: 46px;
-  --btn-px: 1.35rem;
+  --btn-h: 48px;
+  --btn-px: 1.4rem;
   --btn-fs: 0.9375rem;
   position: relative;
+  overflow: hidden;
+  isolation: isolate;
   align-items: center;
   justify-content: center;
-  gap: 0.55rem;
+  gap: 0.6rem;
   min-height: var(--btn-h);
   padding: 0 var(--btn-px);
   border: 1px solid transparent;
-  border-radius: var(--ds-r);
+  border-radius: 999px;
   font-family: var(--ds-font-body);
   font-size: var(--btn-fs);
-  font-weight: 650;
+  font-weight: 600;
   line-height: 1.15;
-  letter-spacing: -0.005em;
+  letter-spacing: -0.01em;
   text-align: center;
   text-decoration: none;
   white-space: nowrap;
@@ -112,85 +132,129 @@
 }
 .ed-btn svg { flex-shrink: 0; width: 1.1em; height: 1.1em; transition: transform var(--ds-dur-2) var(--ds-ease); }
 .ed-btn:hover:not(:disabled):not([aria-disabled='true']) { transform: translateY(-1px); }
-.ed-btn:hover:not(:disabled) .ed-btn__arrow { transform: translateX(3px); }
-.ed-btn:active:not(:disabled) { transform: translateY(0) scale(0.985); transition-duration: var(--ds-dur-1); }
-.ed-btn:focus-visible { outline: none; box-shadow: 0 0 0 3px #fff, 0 0 0 5px rgba(37, 167, 176, 0.75); }
+.ed-btn:active:not(:disabled) { transform: translateY(0) scale(0.98); transition-duration: var(--ds-dur-1); }
+.ed-btn:focus-visible { outline: none; box-shadow: 0 0 0 3px #fff, 0 0 0 5px rgba(37, 167, 176, 0.8); }
 .ed-btn:disabled,
-.ed-btn[aria-disabled='true'] { opacity: 0.55; cursor: not-allowed; transform: none; box-shadow: none; }
+.ed-btn[aria-disabled='true'] { opacity: 0.5; cursor: not-allowed; transform: none; box-shadow: none; }
 .ed-btn[aria-busy='true'] { cursor: progress; }
 
-.ed-btn--sm { --btn-h: 40px; --btn-px: 1rem; --btn-fs: 0.875rem; border-radius: var(--ds-r-sm); }
-.ed-btn--lg { --btn-h: 54px; --btn-px: 1.75rem; --btn-fs: 1rem; }
+/* La flecha en su burbuja: avanza al pasar. */
+.ed-btn .ed-btn__arrow {
+  width: 1.75em; height: 1.75em; padding: 0.38em;
+  margin-right: calc(var(--btn-px) * -0.55);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.16);
+  transition: transform var(--ds-dur-2) var(--ds-ease), background-color var(--ds-dur-2) var(--ds-ease);
+}
+.ed-btn:hover:not(:disabled) .ed-btn__arrow { transform: translateX(3px); background: rgba(255, 255, 255, 0.26); }
+
+/* Luz que recorre los botones llenos al pasar. */
+.ed-btn--primary::after,
+.ed-btn--gradient::after,
+.ed-btn--teal::after {
+  content: '';
+  position: absolute; inset: 0; z-index: -1; border-radius: inherit; pointer-events: none;
+  background: linear-gradient(110deg, transparent 32%, rgba(255, 255, 255, 0.24) 50%, transparent 68%);
+  transform: translateX(-130%);
+  transition: transform 0.75s var(--ds-ease);
+}
+.ed-btn--primary:hover::after,
+.ed-btn--gradient:hover::after,
+.ed-btn--teal:hover::after { transform: translateX(130%); }
+
+.ed-btn--sm { --btn-h: 40px; --btn-px: 1.05rem; --btn-fs: 0.875rem; }
+.ed-btn--lg { --btn-h: 56px; --btn-px: 1.8rem; --btn-fs: 1rem; }
 .ed-btn--block { width: 100%; }
 
 .ed-btn--primary {
-  background: var(--ds-navy);
+  background: linear-gradient(180deg, #0D3A9E 0%, var(--ds-navy) 100%);
   color: #fff;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14), var(--ds-sh-btn);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18), 0 1px 2px rgba(3, 29, 92, 0.25), 0 12px 24px -14px rgba(8, 46, 134, 0.8);
 }
-.ed-btn--primary:hover:not(:disabled) { background: var(--ds-navy-hover); color: #fff; box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14), 0 16px 28px -12px rgba(8, 46, 134, 0.65); }
+.ed-btn--primary:hover:not(:disabled) {
+  background: linear-gradient(180deg, #1145B3 0%, var(--ds-navy-hover) 100%);
+  color: #fff;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 2px 4px rgba(3, 29, 92, 0.2), 0 18px 32px -14px rgba(8, 46, 134, 0.75);
+}
 
+/* La acción destacada: azul profundo con el filo de marca. Una por pantalla. */
 .ed-btn--gradient {
-  background: var(--ds-grad-action);
-  background-size: 140% 100%;
-  background-position: 0% 50%;
+  border: 1.5px solid transparent;
+  background:
+    linear-gradient(180deg, #0A3593 0%, #062473 100%) padding-box,
+    linear-gradient(120deg, #8981CE 0%, #65A7C1 50%, #25A7B0 100%) border-box;
   color: #fff;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16), var(--ds-sh-btn);
-  transition-property: background-position, box-shadow, transform, color;
+  box-shadow: 0 0 0 4px rgba(137, 129, 206, 0.12), 0 14px 28px -14px rgba(8, 46, 134, 0.85);
 }
-.ed-btn--gradient:hover:not(:disabled) { background-position: 100% 50%; color: #fff; }
+.ed-btn--gradient:hover:not(:disabled) {
+  color: #fff;
+  box-shadow: 0 0 0 5px rgba(37, 167, 176, 0.16), 0 20px 36px -16px rgba(8, 46, 134, 0.8);
+}
+.ed-btn--gradient .ed-btn__arrow { background: linear-gradient(120deg, #8981CE, #25A7B0); }
+.ed-btn--gradient:hover:not(:disabled) .ed-btn__arrow { background: linear-gradient(120deg, #9C95DA, #2FBAC3); }
 
 .ed-btn--secondary {
-  background: #fff;
+  background: linear-gradient(180deg, #FFFFFF 0%, #F6F8FC 100%);
   color: var(--ds-navy);
   border-color: var(--ds-line-strong);
-  box-shadow: var(--ds-sh-xs);
+  box-shadow: inset 0 1px 0 #fff, 0 1px 2px rgba(20, 35, 63, 0.06);
 }
-.ed-btn--secondary:hover:not(:disabled) { background: var(--ds-aqua-soft); border-color: #8FD0D4; color: var(--ds-navy); }
+.ed-btn--secondary:hover:not(:disabled) { background: #fff; border-color: #8FD0D4; color: var(--ds-navy); box-shadow: 0 0 0 4px rgba(37, 167, 176, 0.12), 0 8px 18px -12px rgba(20, 35, 63, 0.35); }
+.ed-btn--secondary .ed-btn__arrow,
+.ed-btn--outline .ed-btn__arrow,
+.ed-btn--white .ed-btn__arrow { background: var(--ds-navy-soft); }
 
+/* Contorno que se invierte al pasar: de línea a lleno. */
 .ed-btn--outline {
   background: transparent;
   color: var(--ds-navy);
   border: 1.5px solid currentColor;
 }
-.ed-btn--outline:hover:not(:disabled) { background: var(--ds-navy-soft); }
+.ed-btn--outline:hover:not(:disabled) { background: var(--ds-navy); border-color: var(--ds-navy); color: #fff; }
+.ed-btn--outline:hover:not(:disabled) .ed-btn__arrow { background: rgba(255, 255, 255, 0.18); }
 
 .ed-btn--ghost { background: transparent; color: var(--ds-navy); }
 .ed-btn--ghost:hover:not(:disabled) { background: var(--ds-navy-soft); transform: none; }
 
 .ed-btn--teal {
-  background: var(--ds-teal-strong);
+  background: linear-gradient(180deg, #13838F 0%, var(--ds-teal-strong) 100%);
   color: #fff;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14), 0 10px 22px -10px rgba(15, 116, 128, 0.6);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18), 0 12px 24px -14px rgba(15, 116, 128, 0.8);
 }
-.ed-btn--teal:hover:not(:disabled) { background: #0B6670; color: #fff; }
+.ed-btn--teal:hover:not(:disabled) { background: linear-gradient(180deg, #0F7480 0%, #0B6670 100%); color: #fff; }
 
-.ed-btn--white { background: #fff; color: var(--ds-navy); box-shadow: 0 10px 24px -12px rgba(3, 29, 92, 0.55); }
+.ed-btn--white { background: #fff; color: var(--ds-navy); box-shadow: 0 12px 26px -14px rgba(3, 29, 92, 0.6); }
 .ed-btn--white:hover:not(:disabled) { background: var(--ds-aqua); color: var(--ds-navy-deep); }
 
 .ed-btn--outline-white { background: rgba(255, 255, 255, 0.06); color: #fff; border-color: rgba(255, 255, 255, 0.5); }
-.ed-btn--outline-white:hover:not(:disabled) { background: rgba(255, 255, 255, 0.14); border-color: #fff; color: #fff; }
+.ed-btn--outline-white:hover:not(:disabled) { background: #fff; border-color: #fff; color: var(--ds-navy); }
 
 .ed-btn--danger { background: #B42318; color: #fff; }
 .ed-btn--danger:hover:not(:disabled) { background: #912018; color: #fff; }
 
-/* Enlace con forma de acción: sin caja, con subrayado al pasar. */
+/* Enlace con forma de acción: sin caja, con subrayado que crece al pasar. */
 .ed-btn--link {
   --btn-h: auto;
   --btn-px: 0;
   min-height: 0;
+  overflow: visible;
   border: 0;
   border-radius: 4px;
   background: none;
   color: var(--ds-navy);
-  font-weight: 700;
-  text-decoration: underline;
-  text-decoration-color: transparent;
-  text-underline-offset: 4px;
+  font-weight: 650;
+  text-decoration: none;
+  background-image: linear-gradient(90deg, #8981CE, #25A7B0);
+  background-size: 0% 2px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  padding-bottom: 2px;
+  transition: background-size var(--ds-dur-3) var(--ds-ease), color var(--ds-dur-2) var(--ds-ease);
 }
-.ed-btn--link:hover:not(:disabled) { transform: none; color: var(--ds-navy-hover); text-decoration-color: rgba(8, 46, 134, 0.4); }
+.ed-btn--link:hover:not(:disabled) { transform: none; color: var(--ds-navy-hover); background-size: 100% 2px; }
+.ed-btn--link .ed-btn__arrow { width: 1.1em; height: 1.1em; padding: 0; margin: 0; background: none; }
 
-/* Solo ícono: cuadrado, con nombre accesible obligatorio (aria-label). */
+/* Solo ícono: círculo, con nombre accesible obligatorio (aria-label). */
 .ed-btn--icon { --btn-px: 0; width: var(--btn-h); min-width: var(--btn-h); padding: 0; }
 .ed-btn--icon.ed-btn--sm { --btn-h: 40px; }
 
@@ -343,8 +407,8 @@
 :where(.ds-insignia) { display: inline-flex; }
 .ds-insignia {
   align-items: center; gap: 0.3rem;
-  min-height: 22px; padding: 0 0.55rem; border-radius: 999px;
-  font-size: 0.68rem; font-weight: 700; letter-spacing: 0.02em; line-height: 1;
+  min-height: 24px; padding: 0 0.6rem; border-radius: 999px;
+  font-size: var(--ds-fs-xs); font-weight: 600; letter-spacing: 0.01em; line-height: 1;
   background: rgba(255, 255, 255, 0.94); color: var(--ds-navy);
   box-shadow: var(--ds-sh-xs);
 }
@@ -372,7 +436,7 @@
    `.edvanta-theme` (FST, AtenFarma) siguen como estaban. */
 .edvanta-theme .btn-edvanta,
 .edvanta-theme .btn-primary {
-  border-radius: var(--ds-r); font-weight: 650;
+  border-radius: 999px; font-weight: 600;
   background: var(--ds-navy); color: #fff; border: 1px solid transparent;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14), var(--ds-sh-btn);
   transition: background-color var(--ds-dur-2) var(--ds-ease), transform var(--ds-dur-2) var(--ds-ease), box-shadow var(--ds-dur-2) var(--ds-ease);
@@ -381,20 +445,74 @@
 .edvanta-theme .btn-primary:hover { background: var(--ds-navy-hover); transform: translateY(-1px); }
 .edvanta-theme .btn-edvanta-outline,
 .edvanta-theme .btn-secondary {
-  border-radius: var(--ds-r); font-weight: 650;
+  border-radius: 999px; font-weight: 600;
   background: #fff; color: var(--ds-navy); border: 1px solid var(--ds-line-strong); box-shadow: var(--ds-sh-xs);
   transition: background-color var(--ds-dur-2) var(--ds-ease), border-color var(--ds-dur-2) var(--ds-ease), transform var(--ds-dur-2) var(--ds-ease);
 }
 .edvanta-theme .btn-edvanta-outline:hover,
 .edvanta-theme .btn-secondary:hover { background: var(--ds-aqua-soft); border-color: #8FD0D4; transform: translateY(-1px); }
 .edvanta-theme .btn-teal {
-  border-radius: var(--ds-r); font-weight: 650;
+  border-radius: 999px; font-weight: 600;
   background: var(--ds-teal-strong); color: #fff;
 }
 .edvanta-theme .btn-teal:hover { background: #0B6670; }
 .edvanta-theme .btn-outline-teal {
-  border-radius: var(--ds-r); font-weight: 650;
+  border-radius: 999px; font-weight: 600;
   color: var(--ds-teal-strong); border: 1.5px solid currentColor; background: transparent;
+}
+
+/* ── Acciones correctivas de la auditoría del 11-nov-2026 ─────
+   Registro: docs/auditoria-diseno/REGISTRO.md. Medición: /admin/auditoria-diseno. */
+
+/* H1 · El 800 queda solo para el titular principal (antes, 18 % de los textos). */
+.edvanta-theme .font-extrabold,
+.edvanta-theme .font-black { font-weight: 700; }
+.edvanta-theme h1.font-extrabold,
+.edvanta-theme .ds-display { font-weight: 800; }
+
+/* H2 · La letra pequeña no va en negrilla: pesa sin jerarquizar. */
+.edvanta-theme .text-xs.font-semibold,
+.edvanta-theme .text-xs.font-medium { font-weight: 500; }
+.edvanta-theme .text-xs.font-bold,
+.edvanta-theme .text-xs.font-extrabold { font-weight: 600; }
+
+/* H8 · Sin texto con degradado: el énfasis va en turquesa sólido. */
+.edvanta-theme .ed-grad-text,
+.edvanta-theme .hx-grad {
+  background: none !important;
+  color: var(--ds-teal-strong) !important;
+  -webkit-text-fill-color: currentColor !important;
+}
+.edvanta-theme .hx-grad { animation: hxWordIn 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both !important; }
+
+/* H13 · Decisión de la dueña (11-nov-2026): fuera los íconos en ficha junto a
+   títulos y rasgos. Se quitaron del código en catálogo y héroe; esta regla
+   retira los que quedan mientras se limpian del resto de páginas. */
+.edvanta-theme .ds-icon-tile { display: none !important; }
+
+/* ── Firma visual 3.0: el arco del logo ─────────────────────────
+   Un arco de medio punto con el azul de la marca. Se usa en héroes y
+   piezas destacadas, no en cada caja. */
+.ed-arco {
+  border-radius: 999px 999px var(--ds-r-xl) var(--ds-r-xl);
+  background:
+    radial-gradient(ellipse 70% 45% at 50% 0%, rgba(137, 129, 206, 0.45), transparent 70%),
+    radial-gradient(ellipse 60% 50% at 50% 100%, rgba(37, 167, 176, 0.35), transparent 70%),
+    var(--ds-grad-navy);
+  box-shadow: var(--ds-sh-lg);
+  overflow: hidden;
+  isolation: isolate;
+}
+.ed-arco::before {
+  content: ''; position: absolute; inset: 14px; border-radius: inherit; z-index: -1;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+.ed-arco__luz {
+  position: absolute; inset: 0; z-index: -1; opacity: 0.55;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.18) 1px, transparent 1px);
+  background-size: 18px 18px;
+  -webkit-mask-image: radial-gradient(ellipse at 50% 30%, #000 0%, transparent 72%);
+  mask-image: radial-gradient(ellipse at 50% 30%, #000 0%, transparent 72%);
 }
 
 /* Foco visible en todo el sitio: anillo turquesa que se ve sobre blanco y sobre azul. */

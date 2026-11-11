@@ -79,7 +79,7 @@ export default function MarketingPrograma() {
               <div>
                 <div className="flex flex-wrap items-center gap-2">
                   <EstadoMarketing estado="en_desarrollo" />
-                  <span className="text-[11px] font-bold uppercase tracking-[.12em] text-edvanta-subtle">{programa.linea}</span>
+                  <span className="text-xs font-bold uppercase tracking-[.12em] text-edvanta-subtle">{programa.linea}</span>
                 </div>
                 <h1 className="mt-4 font-display text-[2.1rem] font-extrabold leading-[1.1] tracking-[-0.035em] text-edvanta-blue sm:text-[2.65rem] lg:text-[3rem]">
                   {programa.nombre}
@@ -100,7 +100,7 @@ export default function MarketingPrograma() {
                 <div>
                   <span className="marketing-area-visual__kicker">Propuesta de programa</span>
                   <p className="mt-4 font-display text-2xl font-extrabold leading-tight text-edvanta-deep">{programa.resultado}</p>
-                  <div className="mt-5 flex flex-wrap gap-2 text-[11px] font-bold text-edvanta-tealdark">
+                  <div className="mt-5 flex flex-wrap gap-2 text-xs font-bold text-edvanta-tealdark">
                     <span className="inline-flex items-center gap-1 rounded-full bg-white/80 px-2.5 py-1"><BookOpen className="h-3.5 w-3.5" />Contenido propuesto</span>
                     <span className="inline-flex items-center gap-1 rounded-full bg-white/80 px-2.5 py-1"><Clock className="h-3.5 w-3.5" />Sin fecha confirmada</span>
                   </div>

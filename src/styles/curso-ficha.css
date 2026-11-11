@@ -12,8 +12,8 @@
   --cf-primary-hover: #0a3aa6;
   --cf-teal: #25a7b0;
   --cf-teal-strong: #0f7480;
-  --cf-body: #344054;
-  --cf-muted: #667085;
+  --cf-body: #4A5A73;
+  --cf-muted: #66738A;
   --cf-border: #e4e9f2;
   --cf-benefit: #f2f8fa;
   --cf-soft-line: #eef1f5;
@@ -146,7 +146,7 @@
 
 .curso-objetivo p {
   margin: 6px 0 0;
-  color: #1d2939;
+  color: #14233F;
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.65;

@@ -70,7 +70,7 @@ function ResourceRows({ resources = [], resourceHref, onNavigate }) {
                 {' · '}{state.label}
               </span>
             </span>
-            <span className={`text-[11px] font-semibold ${state.tone}`}>{state.label}</span>
+            <span className={`text-xs font-semibold ${state.tone}`}>{state.label}</span>
           </>
         );
         const href = resourceHref?.(resource.type, resource.id);
@@ -308,7 +308,7 @@ export function CoursePlayer({
                   >
                     <ChevronLeft className="h-5 w-5 shrink-0 text-[var(--aula-primary)] transition-transform group-hover:-translate-x-0.5" aria-hidden="true" />
                     <span className="min-w-0">
-                      <span className="block text-[11px] font-bold uppercase tracking-[0.1em] text-[var(--aula-muted)]">Clase anterior</span>
+                      <span className="block text-xs font-bold uppercase tracking-[0.1em] text-[var(--aula-muted)]">Clase anterior</span>
                       <span className="block truncate text-sm font-semibold text-[var(--aula-text)]">{prev.title}</span>
                     </span>
                   </Link>
@@ -325,7 +325,7 @@ export function CoursePlayer({
                       className="group flex min-w-0 items-center justify-end gap-3 rounded-[var(--aula-radius-lg)] bg-[var(--aula-primary)] p-4 text-right text-white shadow-[0_14px_28px_-14px_rgba(8,46,134,.7)] transition hover:-translate-y-0.5 hover:bg-[var(--aula-primary-hover)]"
                     >
                       <span className="min-w-0">
-                        <span className="block text-[11px] font-bold uppercase tracking-[0.1em] text-white/75">Siguiente clase</span>
+                        <span className="block text-xs font-bold uppercase tracking-[0.1em] text-white/75">Siguiente clase</span>
                         <span className="block truncate text-sm font-semibold">{next.title}</span>
                       </span>
                       <ChevronRight className="h-5 w-5 shrink-0 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />

@@ -26,7 +26,7 @@ function PromptCard({ item, index }) {
     <article className="flex flex-col rounded-xl border border-edvanta-border bg-white p-5 shadow-sm transition hover:border-edvanta-border hover:shadow-md">
       <div className="flex items-start justify-between gap-3">
         <p className="text-xs font-bold uppercase text-edvanta-blue">{item.categoria}</p>
-        <span className="rounded-full bg-edvanta-soft px-2 py-0.5 text-[10px] font-bold text-edvanta-subtle">#{index + 1}</span>
+        <span className="rounded-full bg-edvanta-soft px-2 py-0.5 text-xs font-bold text-edvanta-subtle">#{index + 1}</span>
       </div>
       <h3 className="mt-2 text-base font-bold text-edvanta-deep">{item.titulo}</h3>
       <p className="mt-3 flex-1 rounded-lg bg-edvanta-bg p-3 text-sm leading-6 text-edvanta-muted">{item.prompt}</p>
