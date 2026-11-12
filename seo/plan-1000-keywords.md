@@ -38,6 +38,20 @@ Una página sólida, ya indexada y con unos meses, suele aparecer en 10 a 40 con
 | 12-nov | Blog «Mejores cursos» | 8 |
 | 12-nov | Guías editoriales de cursos curados, lote 2 (Coursera y Edutin de salud) | 12 fichas, de unas 165 a unas 500 palabras |
 
+| 12-nov | Enlaces de afiliado con `rel="sponsored nofollow"` en los artículos (Udemy, Coursera e Edutin) | Todo el blog |
+| 12-nov | Noticias reescritas, lote 3: pritelivir, Ort-Flx, Anktiva, Mynzepli y 4 alertas de productos con ingredientes ocultos | 8 (noindex: 88 → 80) |
+| 12-nov | Mejores cursos, lote 2, con enlaces de afiliado directos | 6 |
+
+**Riesgo resuelto (12-nov):** las noticias de pritelivir, Ort-Flx, Anktiva y Mynzepli ya posicionaban (posiciones 2 a 9) y seguían en noindex. Al rastrearlas de nuevo, Google las habría sacado del índice. Ya tienen contenido propio y `index,follow`. La de pritelivir se pidió a Search Console; la cuota del día se agotó.
+
+**Solicitudes pendientes de indexación (unas 10 por día):**
+
+1. Noticia de Ort-Flx.
+2. Noticia de Anktiva.
+3. Noticia de Mynzepli.
+4. Los 14 artículos de «Mejores cursos». Empezar por SST, carrera de Química Farmacéutica, IA para salud, farmacología gratis y cursos gratis con certificado.
+5. Las 19 guías de tema.
+
 ## Siguientes lotes, en orden de rendimiento esperado
 
 1. **Noticias de medicamentos nuevos.** Ya rinden en posiciones 2 a 9. Se reescriben las 65 que siguen en noindex, con fuente oficial y consecuencia para Colombia.
