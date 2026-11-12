@@ -7,8 +7,14 @@ import { AUTORA_PERFIL } from '../src/data/edvanta/eeat.js';
 import { tieneRevisionClinica } from '../src/lib/seo/indexabilidad.js';
 import {
   contenidoAlianzas, contenidoArea, contenidoAutora, contenidoContacto, contenidoEnfermedad, contenidoEscuela, contenidoEscuelas,
-  contenidoGuias, contenidoInstituciones, contenidoNoticias, contenidoPaquete, contenidoPrensa, contenidoSobreEdvanta,
+  contenidoGuias, contenidoInstituciones, contenidoNoticias, contenidoPaquete, contenidoPrensa, contenidoRecursosEstudiantes,
+  contenidoSobreEdvanta,
 } from './lib/contenido-paginas-fijas.mjs';
+import {
+  CURSOS_POR_AREA, HERRAMIENTAS_CARRERA, HTML_PARA_ENLAZAR, PREGUNTAS_RECURSOS, RECURSOS_ESTUDIANTES, RUTA_RECURSOS_ESTUDIANTES,
+  TEXTO_PARA_ENLAZAR, URL_RECURSOS_ESTUDIANTES,
+} from '../src/data/edvanta/recursosEstudiantes.js';
+import { INDUSTRIA_CURSOS_50 } from '../src/data/industriaCursos50.js';
 import { articulos as ARTICULOS } from '../src/data/articulos.js';
 import { REVISION_CLINICA } from '../src/data/revisionClinica.js';
 import { GUIAS_VENTA, rutaDeGuia } from '../src/data/guiasVenta.js';
@@ -94,6 +100,28 @@ add('/sobre-edvanta', 'Sobre Edvanta | Educación farmacéutica', 'Edvanta es un
 add('/contacto', 'Contacto | Edvanta', 'Escríbele a Edvanta por WhatsApp, por correo o con el formulario.', { tipo: 'ContactPage', seccion: 'Edvanta', enlaces: [['Sobre Edvanta', '/sobre-edvanta'], ['Instituciones', '/instituciones']], contenido: contenidoContacto(CONTACTO, { email: EDVANTA_EMAIL, whatsapp: EDVANTA_WHATSAPP_URL }) });
 
 add('/prensa', PRENSA.seoTitle, PRENSA.seoDescription, { tipo: 'WebPage', seccion: 'Edvanta', enlaces: [['Sobre Edvanta', '/sobre-edvanta'], ['Alianzas', '/alianzas'], ['Contacto', '/contacto']], h1: PRENSA.titulo, contenido: contenidoPrensa(PRENSA, AUTORA_PERFIL, { email: EDVANTA_EMAIL, whatsapp: EDVANTA_WHATSAPP_URL }) });
+
+// La página que se propone enlazar a facultades y gremios (kit de enlaces).
+add(RUTA_RECURSOS_ESTUDIANTES, RECURSOS_ESTUDIANTES.seoTitle, RECURSOS_ESTUDIANTES.seoDescription, {
+  tipo: 'CollectionPage',
+  seccion: 'Cursos',
+  h1: `${RECURSOS_ESTUDIANTES.titulo} ${RECURSOS_ESTUDIANTES.resaltado}`,
+  enlaces: [['Todos los cursos', '/cursos'], ['Alianzas académicas', '/alianzas'], ['Escuelas', '/escuelas']],
+  contenido: contenidoRecursosEstudiantes(RECURSOS_ESTUDIANTES, {
+    cursosPorArea: CURSOS_POR_AREA,
+    herramientas: HERRAMIENTAS_CARRERA,
+    guias: INDUSTRIA_CURSOS_50.filter((a) => a.contenidoPropio)
+      .map((a) => ({ nombre: a.tema, url: `/articulos/${a.slug}`, area: a.esArea })),
+    preguntas: PREGUNTAS_RECURSOS,
+    textoEnlace: TEXTO_PARA_ENLAZAR,
+    htmlEnlace: HTML_PARA_ENLAZAR,
+    url: URL_RECURSOS_ESTUDIANTES,
+  }),
+  extraJsonLd: [{
+    '@type': 'FAQPage',
+    mainEntity: PREGUNTAS_RECURSOS.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })),
+  }],
+});
 
 add('/alianzas', ALIANZAS.seoTitle, ALIANZAS.seoDescription, { tipo: 'WebPage', seccion: 'Edvanta', enlaces: [['Sobre Edvanta', '/sobre-edvanta'], ['Instituciones', '/instituciones'], ['Prensa y citas', '/prensa']], h1: ALIANZAS.titulo, contenido: contenidoAlianzas(ALIANZAS, { email: EDVANTA_EMAIL, whatsapp: EDVANTA_WHATSAPP_URL }) });
 

@@ -252,6 +252,36 @@ export function contenidoAlianzas(alianzas, { email, whatsapp } = {}) {
   ].join('');
 }
 
+/**
+ * /recursos-para-estudiantes-de-quimica-farmaceutica: los cursos gratis
+ * por área, las guías de carrera, las herramientas, el bloque para
+ * enlazar y las preguntas (src/data/edvanta/recursosEstudiantes.js).
+ *  guias  [{ nombre, url, area }] de industriaCursos50 con contenido propio
+ */
+export function contenidoRecursosEstudiantes(r, { cursosPorArea = [], herramientas = [], guias = [], preguntas: faq = [], textoEnlace = '', htmlEnlace = '', url = '' } = {}) {
+  const total = cursosPorArea.reduce((n, a) => n + a.cursos.length, 0);
+  return [
+    parrafo(r.lead),
+    seccion(`${total} cursos gratuitos con casos de Colombia, por área`, [
+      parrafo(r.certificado),
+      cursosPorArea.map((a) => `<h3>${esc(a.area)}</h3>${parrafo(a.para)}${enlaces(a.cursos.map(([to, nombre]) => ({ url: to, nombre })))}`).join(''),
+    ].join('')),
+    seccion('Guías de carrera: qué estudiar según el área en la que quieres trabajar', [
+      `<h3>Por área</h3>${enlaces(guias.filter((g) => g.area))}`,
+      `<h3>Por tema</h3>${enlaces(guias.filter((g) => !g.area))}`,
+    ].join('')),
+    seccion('Del primer semestre al primer empleo', enlacesConTexto(herramientas)),
+    seccion('Para docentes y oficinas de egresados', [
+      parrafo('Pegue este bloque en la sección de recursos o de egresados de su programa, en el aula virtual o en el boletín. Es gratuito y no requiere convenio.'),
+      `<p>${esc(textoEnlace)} <a href="${esc(url)}">${esc(url)}</a></p>`,
+      `<pre>${esc(htmlEnlace)}</pre>`,
+      '<p><a href="/alianzas">Charlas para semilleros y alianzas</a></p>',
+    ].join('')),
+    seccion('Preguntas frecuentes', preguntas(faq.map(([q, a]) => ({ q, a })))),
+    '<p>Revisión editorial: <a href="/autores/karla-hernandez">Karla Hernández</a>, química farmacéutica clínica. ¿Cómo citar a Edvanta? <a href="/prensa">Prensa y citas</a>.</p>',
+  ].join('');
+}
+
 /** /guias: kits, guías para pacientes, lecturas y herramientas. */
 export function contenidoGuias(guias, kits = [], paraPacientes = [], precio = (p) => String(p)) {
   const kit = (k) => `<li><strong>${esc(k.nombre)}</strong>${k.tipoTexto ? ` (${esc(k.tipoTexto.toLowerCase())})` : ''}: ${esc(k.objetivo || '')}${k.dirigidoA ? ` Para: ${esc(k.dirigidoA)}` : ''}${typeof k.precio === 'number' ? ` Valor: ${esc(precio(k.precio))}.` : ''}</li>`;

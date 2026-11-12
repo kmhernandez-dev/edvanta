@@ -103,6 +103,7 @@ const SobreEdvanta = lazy(() => import('./pages/edvanta/SobreEdvanta'));
 const Contacto = lazy(() => import('./pages/edvanta/Contacto'));
 const Prensa = lazy(() => import('./pages/edvanta/Prensa'));
 const Alianzas = lazy(() => import('./pages/edvanta/Alianzas'));
+const RecursosEstudiantes = lazy(() => import('./pages/edvanta/RecursosEstudiantes'));
 const AutorPage = lazy(() => import('./pages/edvanta/AutorPage'));
 const PaginaEditorial = lazy(() => import('./pages/edvanta/PaginaEditorial'));
 
@@ -283,6 +284,7 @@ export default function App() {
         <Route path="/contacto" element={<Contacto />} />
         <Route path="/prensa" element={<Prensa />} />
         <Route path="/alianzas" element={<Alianzas />} />
+        <Route path="/recursos-para-estudiantes-de-quimica-farmaceutica" element={<RecursosEstudiantes />} />
         <Route path="/autores/karla-hernandez" element={<AutorPage />} />
         <Route path="/politica-editorial" element={<PaginaEditorial slug="politica-editorial" />} />
         <Route path="/politica-de-revision-clinica" element={<PaginaEditorial slug="politica-de-revision-clinica" />} />

@@ -124,6 +124,7 @@ export const FOOTER_COLUMNS = [
     title: 'Aprende',
     links: [
       { label: 'Cursos', to: '/cursos' },
+      { label: 'Recursos para estudiantes', to: '/recursos-para-estudiantes-de-quimica-farmaceutica' },
       { label: 'Curso en vivo para auxiliares y regentes', to: '/curso-de-operacion-segura-del-servicio-farmaceutico' },
       { label: 'Guías y kits', to: '/guias' },
       { label: 'Artículos', to: '/articulos' },

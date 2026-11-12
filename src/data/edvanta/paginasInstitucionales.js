@@ -152,13 +152,14 @@ export const ALIANZAS = {
     'Fundaciones y comunidades de pacientes.',
   ],
   disponible: [
+    { to: '/recursos-para-estudiantes-de-quimica-farmaceutica', titulo: 'Recursos para estudiantes de Química Farmacéutica', desc: 'Los cursos gratuitos por área, las guías de carrera y las herramientas para el primer empleo en una sola página, con un bloque listo para enlazar desde su sitio.' },
     { to: '/cursos', titulo: 'Cursos propios gratuitos', desc: 'Buenas prácticas de manufactura, asuntos regulatorios, registro sanitario, farmacología y farmacoterapia, entre otros. El contenido es gratuito; el certificado verificable es opcional.' },
     { to: '/noticias', titulo: 'Noticias regulatorias con fuente oficial', desc: 'Alertas del INVIMA y de agencias de referencia explicadas para Colombia, útiles para clases y boletines.' },
     { to: '/articulos', titulo: 'Artículos con revisión clínica', desc: 'Lecturas para pacientes y profesionales, con autora, fuentes y cita lista para trabajos académicos.' },
     { to: '/herramientas', titulo: 'Herramientas para la carrera', desc: 'Hoja de vida, centro de empleo, rutas profesionales y otras herramientas gratuitas para estudiantes y egresados.' },
   ],
   formas: [
-    { t: 'Una página para su comunidad', d: 'Una selección de cursos y recursos de Edvanta pensada para su programa o sus asociados, a la que pueden enlazar desde su sitio.' },
+    { t: 'Una página para su comunidad', d: 'Una selección de cursos y recursos de Edvanta pensada para su programa o sus asociados, a la que pueden enlazar desde su sitio.', to: '/recursos-para-estudiantes-de-quimica-farmaceutica' },
     { t: 'Charlas y talleres virtuales', d: 'Sesiones para estudiantes, semilleros o asociados sobre temas como calidad, asuntos regulatorios, farmacovigilancia o uso seguro de medicamentos.' },
     { t: 'Contenido para sus canales', d: 'Resúmenes de alertas sanitarias y lecturas para boletines, carteleras o aulas virtuales, siempre con la fuente oficial.' },
     { t: 'Formación para equipos', d: 'Programas de capacitación para instituciones, con matrícula institucional.', to: '/instituciones' },
