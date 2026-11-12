@@ -690,6 +690,86 @@ export const NOTICIAS_REESCRITAS = {
     description: 'La Anvisa suspendió lotes de Simbeva y Abevmy por endotoxinas y retiró un lote de Ringer con lactato por partículas. Qué significa para la farmacia.',
     autor: 'Equipo editorial de Edvanta'
   },
+  'chmp-recomienda-navepegritide-para-acondroplasia-infantil': {
+    contenidoPropio: true,
+    mdPath: '/articulos/articulos_edvanta/noticias-internacionales/chmp-recomienda-navepegritide-para-acondroplasia-infantil.md',
+    updated: '2026-11-12',
+    readingTime: '3 min',
+    seoTitle: 'Navepegritide para acondroplasia: el CHMP lo recomienda',
+    seoDescription: 'El CHMP de la EMA recomendó Yuviwel (navepegritide), medicamento huérfano para niños con acondroplasia. Qué es la enfermedad y cómo actúa el tratamiento.',
+    description: 'El CHMP de la EMA recomendó Yuviwel (navepegritide), medicamento huérfano para niños con acondroplasia. Qué es la enfermedad y cómo actúa el tratamiento.',
+    autor: 'Equipo editorial de Edvanta'
+  },
+  'chmp-recomienda-biosimilar-de-ranibizumab-fovlussea': {
+    contenidoPropio: true,
+    mdPath: '/articulos/articulos_edvanta/noticias-internacionales/chmp-recomienda-biosimilar-de-ranibizumab-fovlussea.md',
+    updated: '2026-11-12',
+    readingTime: '3 min',
+    seoTitle: 'Fovlussea: biosimilar de ranibizumab recomendado',
+    seoDescription: 'El CHMP recomendó Fovlussea, biosimilar de ranibizumab para la degeneración macular húmeda y el edema macular diabético. Qué es un biosimilar.',
+    description: 'El CHMP recomendó Fovlussea, biosimilar de ranibizumab para la degeneración macular húmeda y el edema macular diabético. Qué es un biosimilar.',
+    autor: 'Equipo editorial de Edvanta'
+  },
+  'chmp-recomienda-biosimilar-de-filgrastim-neuzafy': {
+    contenidoPropio: true,
+    mdPath: '/articulos/articulos_edvanta/noticias-internacionales/chmp-recomienda-biosimilar-de-filgrastim-neuzafy.md',
+    updated: '2026-11-12',
+    readingTime: '3 min',
+    seoTitle: 'Neuzafy: biosimilar de filgrastim para neutropenia',
+    seoDescription: 'El CHMP recomendó Neuzafy, biosimilar de filgrastim para tratar la neutropenia en adultos y niños. Qué es el filgrastim y por qué importa.',
+    description: 'El CHMP recomendó Neuzafy, biosimilar de filgrastim para tratar la neutropenia en adultos y niños. Qué es el filgrastim y por qué importa.',
+    autor: 'Equipo editorial de Edvanta'
+  },
+  'chmp-recomienda-medicamento-hibrido-kizfizo-con-temozolomida': {
+    contenidoPropio: true,
+    mdPath: '/articulos/articulos_edvanta/noticias-internacionales/chmp-recomienda-medicamento-hibrido-kizfizo-con-temozolomida.md',
+    updated: '2026-11-12',
+    readingTime: '3 min',
+    seoTitle: 'Kizfizo: temozolomida híbrida para glioblastoma',
+    seoDescription: 'El CHMP recomendó Kizfizo (temozolomida), medicamento híbrido y huérfano para glioblastoma en adultos y glioma maligno en niños.',
+    description: 'El CHMP recomendó Kizfizo (temozolomida), medicamento híbrido y huérfano para glioblastoma en adultos y glioma maligno en niños.',
+    autor: 'Equipo editorial de Edvanta'
+  },
+  'chmp-publica-desenlace-de-reexamen-de-yartemlea': {
+    contenidoPropio: true,
+    mdPath: '/articulos/articulos_edvanta/noticias-internacionales/chmp-publica-desenlace-de-reexamen-de-yartemlea.md',
+    updated: '2026-11-12',
+    readingTime: '3 min',
+    seoTitle: 'Yartemlea (narsoplimab): la EMA confirma la negativa',
+    seoDescription: 'Tras un reexamen, el CHMP confirmó su recomendación de rechazar Yartemlea (narsoplimab) para la microangiopatía trombótica del trasplante.',
+    description: 'Tras un reexamen, el CHMP confirmó su recomendación de rechazar Yartemlea (narsoplimab) para la microangiopatía trombótica del trasplante.',
+    autor: 'Equipo editorial de Edvanta'
+  },
+  'solicitante-retira-ampliacion-de-indicacion-de-ibrance-en-la-ue': {
+    contenidoPropio: true,
+    mdPath: '/articulos/articulos_edvanta/noticias-internacionales/solicitante-retira-ampliacion-de-indicacion-de-ibrance-en-la-ue.md',
+    updated: '2026-11-12',
+    readingTime: '3 min',
+    seoTitle: 'Ibrance: retiran la solicitud de una nueva indicación',
+    seoDescription: 'La empresa retiró ante la EMA la solicitud para usar Ibrance (palbociclib) como mantenimiento en cáncer de mama HR+ y HER2+. Qué significa.',
+    description: 'La empresa retiró ante la EMA la solicitud para usar Ibrance (palbociclib) como mantenimiento en cáncer de mama HR+ y HER2+. Qué significa.',
+    autor: 'Equipo editorial de Edvanta'
+  },
+  'solicitante-retira-ampliacion-de-indicacion-de-truqap-en-la-ue': {
+    contenidoPropio: true,
+    mdPath: '/articulos/articulos_edvanta/noticias-internacionales/solicitante-retira-ampliacion-de-indicacion-de-truqap-en-la-ue.md',
+    updated: '2026-11-12',
+    readingTime: '3 min',
+    seoTitle: 'Truqap: retiran la solicitud en cáncer de próstata',
+    seoDescription: 'La empresa retiró ante la EMA la solicitud para usar Truqap (capivasertib) en cáncer de próstata sensible a hormonas con deficiencia de PTEN.',
+    description: 'La empresa retiró ante la EMA la solicitud para usar Truqap (capivasertib) en cáncer de próstata sensible a hormonas con deficiencia de PTEN.',
+    autor: 'Equipo editorial de Edvanta'
+  },
+  'chmp-decide-incorporar-datos-pediatricos-de-mylotarg-sin-recomendar-la-nueva-indicacion': {
+    contenidoPropio: true,
+    mdPath: '/articulos/articulos_edvanta/noticias-internacionales/chmp-decide-incorporar-datos-pediatricos-de-mylotarg-sin-recomendar-la-nueva-indicacion.md',
+    updated: '2026-11-12',
+    readingTime: '3 min',
+    seoTitle: 'Mylotarg en niños: la EMA agrega datos sin aprobar uso',
+    seoDescription: 'El CHMP no recomendó Mylotarg para niños con leucemia mieloide aguda, pero agregará los datos del estudio pediátrico a la ficha técnica.',
+    description: 'El CHMP no recomendó Mylotarg para niños con leucemia mieloide aguda, pero agregará los datos del estudio pediátrico a la ficha técnica.',
+    autor: 'Equipo editorial de Edvanta'
+  },
 };
 
 /** Las 100 noticias del paquete, con la versión reescrita donde la hay. */
