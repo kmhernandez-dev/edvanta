@@ -1,93 +1,100 @@
-# Cursos gratis de Regulación EMA: guía para químicos farmacéuticos
+# Cursos gratis de regulación EMA: procedimiento centralizado, CHMP, EPAR y GMP europeas
 
-La industria farmacéutica necesita profesionales que entiendan Regulación EMA y sepan aplicarlo en entornos regulados. Esta guía reúne cursos reales de Asuntos Regulatorios para que compares opciones, revises el temario y elijas con criterio.
+La Agencia Europea de Medicamentos (EMA) evalúa los medicamentos que se autorizan para toda la Unión Europea, y sus guías y decisiones son una referencia técnica en todo el mundo. En América Latina su influencia es directa: varias agencias de la región usan sus evaluaciones como referencia para decidir más rápido, como hizo la Anvisa de Brasil en 2026 con algunas aprobaciones. Esta guía explica cómo funciona la regulación europea de medicamentos y qué cursos te ayudan a dominarla.
 
-> **Contenido editorial:** algunos enlaces pueden ser de afiliado. Edvanta no dicta ni certifica esos cursos. Verifica el precio, el acceso y el certificado en la plataforma antes de inscribirte.
+> **En resumen**
+>
+> - La EMA evalúa, pero quien autoriza es la Comisión Europea, a partir de la opinión del comité CHMP.
+> - El procedimiento centralizado es obligatorio para biotecnológicos, terapias avanzadas, medicamentos huérfanos y nuevos principios activos para enfermedades como cáncer o diabetes.
+> - Las GMP europeas están en el volumen 4 de EudraLex, con anexos como el 1 (productos estériles) y el 15 (calificación y validación).
 
-**En resumen**
+## Cómo está organizada la EMA
 
-- Qué es Regulación EMA y por qué se pide en la industria farmacéutica.
-- Cursos reales de Asuntos Regulatorios con enlace directo a la plataforma.
-- Cómo elegir, qué roles existen y una ruta de aprendizaje de tres pasos.
-- Fuentes oficiales para verificar requisitos y actualizar el temario.
+La EMA trabaja con comités científicos formados por expertos de los Estados miembros:
 
-## Por qué importa Regulación EMA en 2026
+| Comité | Qué hace |
+|---|---|
+| CHMP | Evalúa los medicamentos de uso humano y emite la opinión sobre su autorización |
+| PRAC | Evalúa los riesgos y la farmacovigilancia |
+| COMP | Designa los medicamentos huérfanos |
+| PDCO | Revisa los planes de investigación pediátrica |
+| CAT | Evalúa las terapias avanzadas (génicas, celulares y de ingeniería de tejidos) |
+| HMPC | Se ocupa de los medicamentos a base de plantas |
 
-En Colombia y Latinoamérica, los laboratorios, las IPS, las empresas de dispositivos médicos y las autoridades sanitarias trabajan con estándares que cambian con frecuencia. Formarte en Regulación EMA te ayuda a leer esos requisitos, documentar decisiones y aportar en equipos multidisciplinarios.
+## Las cuatro vías para autorizar un medicamento en Europa
 
-## Qué aprenderás
+1. **Centralizada:** una sola solicitud ante la EMA y una autorización válida en todos los Estados miembros. Es obligatoria para biotecnológicos, terapias avanzadas, medicamentos huérfanos y nuevos principios activos para VIH, cáncer, diabetes, enfermedades neurodegenerativas, autoinmunes y virales.
+2. **Descentralizada:** se solicita a la vez en varios países que no tienen aún el producto autorizado.
+3. **Reconocimiento mutuo:** un país ya lo autorizó y otros reconocen esa autorización.
+4. **Nacional:** solo para un país.
 
-- Regulación EMA
-- Registro sanitario
-- Expediente CTD
-- Regulación FDA y EMA
-- Etiquetado
-- Variaciones
+## Los tiempos del procedimiento centralizado
 
-## Cursos recomendados de Asuntos Regulatorios
+La evaluación estándar del CHMP tiene un máximo de 210 días activos, sin contar las pausas en las que la empresa responde preguntas. Después, la Comisión Europea adopta la decisión. Para medicamentos de gran interés para la salud pública existe la evaluación acelerada, de 150 días, y el programa PRIME, que da apoyo científico temprano. También hay autorizaciones condicionales, cuando los datos aún no son completos pero el beneficio de tener el medicamento disponible supera el riesgo.
+
+## El EPAR: el informe público que vale oro
+
+Por cada medicamento autorizado por la vía centralizada, la EMA publica el EPAR (*European Public Assessment Report*): un informe con la evaluación científica, los datos de eficacia y seguridad, y la información del producto. Para un profesional regulatorio o de farmacovigilancia es una fuente de primera: muestra cómo razona un regulador, qué preguntas hizo y qué datos lo convencieron.
+
+## Las GMP europeas: EudraLex volumen 4
+
+Las buenas prácticas de manufactura de la Unión Europea están reunidas en el volumen 4 de EudraLex. Además de la parte general, tienen anexos que se citan en todo el mundo:
+
+- **Anexo 1:** fabricación de medicamentos estériles. Su revisión de 2022 reforzó la estrategia de control de la contaminación.
+- **Anexo 11:** sistemas computarizados.
+- **Anexo 15:** calificación y validación.
+- **Anexo 16:** certificación por la persona cualificada y liberación de lotes.
+
+## Cursos de regulación EMA
 
 | Curso | Plataforma | Enlace |
 |---|---|---|
-| Drug Development and Regulation | Coursera | [Ver curso](https://imp.i384100.net/MKjdrK) |
-| Regulatory Compliance Specialization | Coursera | [Ver curso](https://imp.i384100.net/KB9dRN) |
-| USFDA Regulations – New Drug Development Certificate Course | Udemy | [Ver curso](https://trk.udemy.com/gRNkVv) |
-| Basic Course in Drug Regulatory Affairs | Udemy | [Ver curso](https://trk.udemy.com/ZV43D0) |
 | Global Drug Regulatory Affairs: A Comprehensive Crash Course | Udemy | [Ver curso](https://trk.udemy.com/JkQyae) |
 | Master Drug Regulatory Affairs – With Certification | Udemy | [Ver curso](https://trk.udemy.com/oNJm2E) |
-| CTD, NeeS & eCTD Compilation and Submission of Dossiers | Udemy | [Ver curso](https://trk.udemy.com/X4E0Pb) |
-| Certificate Course in Drug Regulatory Affairs | Udemy | [Ver curso](https://trk.udemy.com/gR5Mz2) |
+| Drug Development and Regulation | Coursera | [Ver curso](https://imp.i384100.net/MKjdrK) |
 
-> El acceso gratuito, el certificado y las condiciones de cada curso dependen de la plataforma. Algunas opciones permiten aprender sin costo y cobran solo el certificado; otras tienen precio desde el inicio. Confirma antes de inscribirte.
+> **Contenido editorial:** algunos enlaces son de afiliado. Edvanta no dicta esos cursos; confirma condiciones y certificado en cada plataforma.
 
-## Cómo elegir un curso de Regulación EMA
+Para la parte local, los cursos gratuitos de Edvanta de [Asuntos Regulatorios Sanitarios ante el INVIMA](/curso-de-asuntos-regulatorios-sanitarios-ante-invima), [Regulación de Medicamentos Biosimilares](/curso-de-regulacion-de-medicamentos-biosimilares) y [Registro Sanitario de Medicamentos Biológicos](/curso-de-registro-sanitario-de-medicamentos-biologicos) ofrecen el contexto colombiano, con certificado opcional de COP 60.000.
 
-1. Revisa el temario y confirma que cubre Regulación EMA con profundidad.
-2. Verifica el nivel: introductorio, intermedio o avanzado.
-3. Confirma si el acceso es gratuito y si el certificado tiene costo.
-4. Revisa la duración, el idioma y la modalidad.
-5. Comprueba quién dicta el curso y si incluye casos, proyectos o evaluaciones.
+## Cómo seguir las decisiones de la EMA
 
-## Salidas laborales
+- **Los resúmenes mensuales de las reuniones del CHMP** cuentan qué medicamentos recibieron opinión favorable, qué ampliaciones de indicación se recomendaron y qué solicitudes se retiraron.
+- **Los resúmenes del PRAC** informan sobre nuevas señales y revisiones de seguridad.
+- **Los EPAR** documentan cada autorización.
 
-- Asistente regulatorio
-- Especialista en asuntos regulatorios
-- Analista de etiquetado
-- Coordinador de registros
+En la sección de noticias internacionales de Edvanta resumimos en español algunas de esas decisiones, como la [recomendación del daraxonrasib para el cáncer de páncreas](/articulos/chmp-recomienda-daraxonrasib-para-cancer-pancreatico-metastasico).
 
-## Ruta de aprendizaje en 3 pasos
+## Errores frecuentes al estudiar la regulación europea
 
-1. **Fundamentos:** empieza por un curso introductorio o por la guía de Asuntos Regulatorios para entender el vocabulario y el marco de trabajo.
-2. **Práctica:** elige un curso específico de Regulación EMA y aplícalo en un caso, un proyecto o una actividad de tu trabajo.
-3. **Especialización:** complementa con una certificación, una ruta de aprendizaje o un posgrado si el rol que buscas lo exige.
+- **Pensar que la EMA autoriza:** recomienda; la autorización la da la Comisión Europea.
+- **Suponer que todo pasa por la EMA:** muchos medicamentos se autorizan por vías nacionales o descentralizadas.
+- **Ignorar los anexos de las GMP:** en la práctica, son tan importantes como la parte general.
+- **No leer los EPAR:** son la mejor forma de aprender cómo se evalúa un expediente.
 
 ## Preguntas frecuentes
 
-### ¿Los cursos de Regulación EMA son gratis?
+### ¿Qué hace el CHMP?
 
-El acceso y el certificado dependen de cada plataforma. Algunas ofrecen contenido gratuito y certificado opcional de pago; otras cobran desde el inicio. Verifica el precio y las condiciones antes de inscribirte.
+Es el comité de la EMA que evalúa los medicamentos de uso humano y emite la opinión sobre su autorización. La decisión final la toma la Comisión Europea.
 
-### ¿Necesito experiencia previa en Regulación EMA?
+### ¿Cuánto tarda el procedimiento centralizado?
 
-No siempre. Hay cursos introductorios para estudiantes y profesionales que quieren actualizarse. Revisa el nivel y los requisitos en la ficha del curso.
+La evaluación estándar tiene un máximo de 210 días activos, sin contar las pausas para responder preguntas. La evaluación acelerada tiene 150 días.
 
-### ¿Estos cursos sirven para trabajar en la industria farmacéutica?
+### ¿Qué es un EPAR?
 
-Pueden ayudarte a construir competencias, pero no reemplazan la formación de base ni la experiencia. Úsalos como parte de una ruta y verifica que el temario se ajuste al rol que buscas.
+El informe público de evaluación que la EMA publica por cada medicamento autorizado por el procedimiento centralizado.
+
+### ¿Dónde están las GMP europeas?
+
+En el volumen 4 de EudraLex, con sus anexos, como el 1 para productos estériles y el 15 para calificación y validación.
+
+### ¿Por qué importa la EMA en Latinoamérica?
+
+Porque varias agencias de la región usan sus evaluaciones como referencia para sus propias decisiones, y sus guías técnicas se aplican en muchas empresas.
 
 ## Fuentes
 
-- [INVIMA](https://www.invima.gov.co)
-- [FDA](https://www.fda.gov)
-- [ICH](https://www.ich.org)
-- [Drug Development and Regulation](https://imp.i384100.net/MKjdrK)
-- [Regulatory Compliance Specialization](https://imp.i384100.net/KB9dRN)
-- [USFDA Regulations – New Drug Development Certificate Course](https://trk.udemy.com/gRNkVv)
-- [Basic Course in Drug Regulatory Affairs](https://trk.udemy.com/ZV43D0)
-
-## Contenido relacionado
-
-- [Cursos de Asuntos Regulatorios para químicos farmacéuticos](/articulos/cursos-de-asuntos-regulatorios)
-- [Cursos gratis de Desarrollo de medicamentos: guía para químicos farmacéuticos](/articulos/cursos-gratis-desarrollo-de-medicamentos)
-- [Cursos gratis de Regulación FDA: guía para químicos farmacéuticos](/articulos/cursos-gratis-regulacion-fda)
-
-> Este contenido es educativo y no constituye asesoría profesional individual.
+- **Reglamento (CE) n.º 726/2004, procedimientos comunitarios de autorización y control de los medicamentos y creación de la Agencia Europea de Medicamentos.** EUR-Lex. https://eur-lex.europa.eu/eli/reg/2004/726/oj (consultado el 12 de noviembre de 2026).
+- **EudraLex – Volume 4, Good Manufacturing Practice guidelines.** Comisión Europea. https://health.ec.europa.eu/medicinal-products/eudralex/eudralex-volume-4_en (consultado el 12 de noviembre de 2026).

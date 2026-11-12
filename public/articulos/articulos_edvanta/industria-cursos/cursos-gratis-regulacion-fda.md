@@ -1,93 +1,108 @@
-# Cursos gratis de Regulación FDA: guía para químicos farmacéuticos
+# Cursos gratis de regulación FDA: IND, NDA, ANDA, BLA y buenas prácticas de manufactura de Estados Unidos
 
-La industria farmacéutica necesita profesionales que entiendan Regulación FDA y sepan aplicarlo en entornos regulados. Esta guía reúne cursos reales de Asuntos Regulatorios para que compares opciones, revises el temario y elijas con criterio.
+La FDA (Food and Drug Administration) es la autoridad sanitaria de Estados Unidos y una de las referencias regulatorias más influyentes del mundo. Aunque trabajes en Colombia, entender cómo funciona sirve por varias razones: muchas empresas exportan o tienen casa matriz allí, las alertas de la FDA se replican en otros países, sus guías técnicas se usan como referencia y sus decisiones influyen en las de otras agencias. Esta guía explica los conceptos básicos de la regulación de medicamentos de la FDA y los cursos que te sirven para aprenderla.
 
-> **Contenido editorial:** algunos enlaces pueden ser de afiliado. Edvanta no dicta ni certifica esos cursos. Verifica el precio, el acceso y el certificado en la plataforma antes de inscribirte.
+> **En resumen**
+>
+> - Para investigar un medicamento nuevo en humanos se presenta un IND; para comercializarlo, una NDA (síntesis química) o una BLA (biológicos).
+> - Los genéricos se aprueban por la vía abreviada ANDA, creada por la ley Hatch-Waxman de 1984.
+> - Las buenas prácticas de manufactura de la FDA están en el título 21 del Código de Regulaciones Federales, partes 210 y 211.
 
-**En resumen**
+## Los centros de la FDA que regulan medicamentos
 
-- Qué es Regulación FDA y por qué se pide en la industria farmacéutica.
-- Cursos reales de Asuntos Regulatorios con enlace directo a la plataforma.
-- Cómo elegir, qué roles existen y una ruta de aprendizaje de tres pasos.
-- Fuentes oficiales para verificar requisitos y actualizar el temario.
+- **CDER (Center for Drug Evaluation and Research):** medicamentos de síntesis química y buena parte de los biológicos terapéuticos.
+- **CBER (Center for Biologics Evaluation and Research):** vacunas, sangre y hemoderivados, y terapias celulares y génicas.
+- **CDRH (Center for Devices and Radiological Health):** dispositivos médicos.
 
-## Por qué importa Regulación FDA en 2026
+## Las vías de autorización
 
-En Colombia y Latinoamérica, los laboratorios, las IPS, las empresas de dispositivos médicos y las autoridades sanitarias trabajan con estándares que cambian con frecuencia. Formarte en Regulación FDA te ayuda a leer esos requisitos, documentar decisiones y aportar en equipos multidisciplinarios.
+| Solicitud | Para qué | Base |
+|---|---|---|
+| IND (*Investigational New Drug*) | Iniciar ensayos clínicos en humanos | Datos preclínicos, protocolo y calidad del producto en investigación |
+| NDA 505(b)(1) | Medicamento nuevo con estudios propios completos | Desarrollo completo del solicitante |
+| NDA 505(b)(2) | Cambio sobre un medicamento conocido (nueva forma, dosis o combinación) | Parte de la evidencia viene de literatura o de otro producto |
+| ANDA (*Abbreviated NDA*) | Medicamento genérico | Equivalencia farmacéutica y bioequivalencia con el producto de referencia |
+| BLA 351(a) | Producto biológico nuevo | Desarrollo completo |
+| BLA 351(k) | Biosimilar | Comparabilidad con el producto de referencia |
 
-## Qué aprenderás
+## Programas para acelerar el desarrollo
 
-- Regulación FDA
-- Registro sanitario
-- Expediente CTD
-- Regulación FDA y EMA
-- Etiquetado
-- Variaciones
+La FDA tiene cuatro programas para enfermedades graves con necesidades no cubiertas:
 
-## Cursos recomendados de Asuntos Regulatorios
+1. **Fast Track:** comunicación más frecuente y revisión por partes del expediente.
+2. **Breakthrough Therapy:** para medicamentos que muestran una mejora sustancial temprana; incluye acompañamiento intensivo.
+3. **Accelerated Approval:** aprobación basada en una variable sustituta, con la obligación de confirmar el beneficio clínico después.
+4. **Priority Review:** una meta de revisión más corta. Según los compromisos de la ley de tarifas PDUFA, la meta es de unos 6 meses en revisión prioritaria y de unos 10 meses en revisión estándar.
+
+Cuando leas noticias de aprobaciones de la FDA, como las que publicamos en Edvanta, verás estas palabras con frecuencia.
+
+## Buenas prácticas de manufactura: 21 CFR
+
+Las reglas de manufactura de medicamentos en Estados Unidos están en el título 21 del Código de Regulaciones Federales (21 CFR):
+
+- **Partes 210 y 211:** buenas prácticas de manufactura vigentes (cGMP) para medicamentos terminados.
+- **Parte 11:** registros y firmas electrónicas.
+- **Parte 314:** solicitudes de aprobación de medicamentos.
+
+Cuando la FDA inspecciona una planta y encuentra incumplimientos, entrega un formulario 483 con las observaciones. Si los problemas son serios o no se corrigen, puede emitir una carta de advertencia (*Warning Letter*), que es pública. Leer cartas de advertencia es una de las mejores formas de aprender qué espera la FDA en la práctica.
+
+## Herramientas públicas que todo profesional regulatorio debería conocer
+
+- **Orange Book:** medicamentos aprobados y su equivalencia terapéutica.
+- **Purple Book:** productos biológicos y biosimilares.
+- **Drugs@FDA:** aprobaciones, cartas y revisiones.
+- **Base de guías de la FDA:** documentos técnicos sobre casi cualquier tema de desarrollo, calidad y seguridad.
+- **Base de cartas de advertencia.**
+
+## Cursos de regulación FDA
 
 | Curso | Plataforma | Enlace |
 |---|---|---|
 | Drug Development and Regulation | Coursera | [Ver curso](https://imp.i384100.net/MKjdrK) |
-| Regulatory Compliance Specialization | Coursera | [Ver curso](https://imp.i384100.net/KB9dRN) |
 | USFDA Regulations – New Drug Development Certificate Course | Udemy | [Ver curso](https://trk.udemy.com/gRNkVv) |
-| Basic Course in Drug Regulatory Affairs | Udemy | [Ver curso](https://trk.udemy.com/ZV43D0) |
-| Global Drug Regulatory Affairs: A Comprehensive Crash Course | Udemy | [Ver curso](https://trk.udemy.com/JkQyae) |
-| Master Drug Regulatory Affairs – With Certification | Udemy | [Ver curso](https://trk.udemy.com/oNJm2E) |
-| CTD, NeeS & eCTD Compilation and Submission of Dossiers | Udemy | [Ver curso](https://trk.udemy.com/X4E0Pb) |
-| Certificate Course in Drug Regulatory Affairs | Udemy | [Ver curso](https://trk.udemy.com/gR5Mz2) |
+| Regulatory Compliance Specialization | Coursera | [Ver curso](https://imp.i384100.net/KB9dRN) |
 
-> El acceso gratuito, el certificado y las condiciones de cada curso dependen de la plataforma. Algunas opciones permiten aprender sin costo y cobran solo el certificado; otras tienen precio desde el inicio. Confirma antes de inscribirte.
+> **Contenido editorial:** algunos enlaces son de afiliado. Edvanta no dicta esos cursos; confirma condiciones y certificado en cada plataforma.
 
-## Cómo elegir un curso de Regulación FDA
+## Cómo se conecta con Colombia
 
-1. Revisa el temario y confirma que cubre Regulación FDA con profundidad.
-2. Verifica el nivel: introductorio, intermedio o avanzado.
-3. Confirma si el acceso es gratuito y si el certificado tiene costo.
-4. Revisa la duración, el idioma y la modalidad.
-5. Comprueba quién dicta el curso y si incluye casos, proyectos o evaluaciones.
+El régimen colombiano es distinto, pero los conceptos se parecen: registro sanitario, evaluación farmacéutica y farmacológica, bioequivalencia y buenas prácticas de manufactura. Estos cursos gratuitos de Edvanta te dan la base local, con certificado opcional de COP 60.000:
 
-## Salidas laborales
+- [Asuntos Regulatorios Farmacéuticos en Colombia](/curso-de-asuntos-regulatorios-farmaceuticos-en-colombia)
+- [Registro Sanitario de Medicamentos ante el INVIMA](/curso-de-registro-sanitario-de-medicamentos-ante-el-invima)
+- [Bioequivalencia y Requisitos Regulatorios en Colombia](/curso-de-bioequivalencia-y-requisitos-regulatorios-en-colombia)
+- [Buenas Prácticas de Manufactura (BPM)](/curso-de-buenas-practicas-de-manufactura-bpm)
 
-- Asistente regulatorio
-- Especialista en asuntos regulatorios
-- Analista de etiquetado
-- Coordinador de registros
+## Errores frecuentes al estudiar la regulación de la FDA
 
-## Ruta de aprendizaje en 3 pasos
-
-1. **Fundamentos:** empieza por un curso introductorio o por la guía de Asuntos Regulatorios para entender el vocabulario y el marco de trabajo.
-2. **Práctica:** elige un curso específico de Regulación FDA y aplícalo en un caso, un proyecto o una actividad de tu trabajo.
-3. **Especialización:** complementa con una certificación, una ruta de aprendizaje o un posgrado si el rol que buscas lo exige.
+- **Confundir aprobación con autorización de uso de emergencia:** son figuras distintas.
+- **Creer que una guía de la FDA es obligatoria:** las guías expresan el criterio actual de la agencia, pero no son reglamento; el reglamento está en el CFR.
+- **Suponer que lo aprobado en Estados Unidos está aprobado en Colombia:** cada país exige su propio registro sanitario.
+- **Estudiar normas sin leer casos reales:** las cartas de advertencia y las revisiones publicadas muestran cómo se aplican.
 
 ## Preguntas frecuentes
 
-### ¿Los cursos de Regulación FDA son gratis?
+### ¿Qué diferencia hay entre una NDA y una ANDA?
 
-El acceso y el certificado dependen de cada plataforma. Algunas ofrecen contenido gratuito y certificado opcional de pago; otras cobran desde el inicio. Verifica el precio y las condiciones antes de inscribirte.
+La NDA es la solicitud para un medicamento nuevo con su desarrollo completo. La ANDA es la vía abreviada para un genérico, que demuestra equivalencia farmacéutica y bioequivalencia con el producto de referencia.
 
-### ¿Necesito experiencia previa en Regulación FDA?
+### ¿Qué es un IND?
 
-No siempre. Hay cursos introductorios para estudiantes y profesionales que quieren actualizarse. Revisa el nivel y los requisitos en la ficha del curso.
+La solicitud que se presenta a la FDA antes de iniciar ensayos clínicos en humanos con un medicamento en investigación.
 
-### ¿Estos cursos sirven para trabajar en la industria farmacéutica?
+### ¿Dónde están las buenas prácticas de manufactura de la FDA?
 
-Pueden ayudarte a construir competencias, pero no reemplazan la formación de base ni la experiencia. Úsalos como parte de una ruta y verifica que el temario se ajuste al rol que buscas.
+En el título 21 del Código de Regulaciones Federales, partes 210 y 211, para medicamentos terminados.
+
+### ¿Qué es un formulario 483?
+
+El documento en el que los inspectores de la FDA anotan las observaciones de incumplimiento al final de una inspección.
+
+### ¿Por qué estudiar la FDA si trabajo en Colombia?
+
+Porque sus guías se usan como referencia técnica, muchas empresas tienen operaciones o socios en Estados Unidos y sus decisiones influyen en otras agencias.
 
 ## Fuentes
 
-- [INVIMA](https://www.invima.gov.co)
-- [FDA](https://www.fda.gov)
-- [ICH](https://www.ich.org)
-- [Drug Development and Regulation](https://imp.i384100.net/MKjdrK)
-- [Regulatory Compliance Specialization](https://imp.i384100.net/KB9dRN)
-- [USFDA Regulations – New Drug Development Certificate Course](https://trk.udemy.com/gRNkVv)
-- [Basic Course in Drug Regulatory Affairs](https://trk.udemy.com/ZV43D0)
-
-## Contenido relacionado
-
-- [Cursos de Asuntos Regulatorios para químicos farmacéuticos](/articulos/cursos-de-asuntos-regulatorios)
-- [Cursos gratis de Desarrollo de medicamentos: guía para químicos farmacéuticos](/articulos/cursos-gratis-desarrollo-de-medicamentos)
-- [Cursos gratis de Regulación EMA: guía para químicos farmacéuticos](/articulos/cursos-gratis-regulacion-ema)
-
-> Este contenido es educativo y no constituye asesoría profesional individual.
+- **Development & Approval Process | Drugs.** U.S. Food and Drug Administration. https://www.fda.gov/drugs/development-approval-process-drugs (consultado el 12 de noviembre de 2026).
+- **21 CFR Part 211, Current Good Manufacturing Practice for Finished Pharmaceuticals.** eCFR. https://www.ecfr.gov/current/title-21/chapter-I/subchapter-C/part-211 (consultado el 12 de noviembre de 2026).

@@ -1,93 +1,112 @@
-# Cursos gratis de Dispositivos médicos: guía para químicos farmacéuticos
+# Cursos gratis de dispositivos médicos: clasificación por riesgo, registro sanitario y tecnovigilancia en Colombia
 
-La industria farmacéutica necesita profesionales que entiendan Dispositivos médicos y sepan aplicarlo en entornos regulados. Esta guía reúne cursos reales de Asuntos Regulatorios para que compares opciones, revises el temario y elijas con criterio.
+Jeringas, guantes, glucómetros, prótesis, marcapasos, equipos de rayos X y pruebas de laboratorio son dispositivos médicos. Su regulación es distinta a la de los medicamentos: no se evalúan por su acción farmacológica, sino por su riesgo, su desempeño y su seguridad en el uso. Es un sector con muchas oportunidades para químicos farmacéuticos, ingenieros biomédicos y profesionales de la salud, en asuntos regulatorios, calidad y tecnovigilancia.
 
-> **Contenido editorial:** algunos enlaces pueden ser de afiliado. Edvanta no dicta ni certifica esos cursos. Verifica el precio, el acceso y el certificado en la plataforma antes de inscribirte.
+> **En resumen**
+>
+> - En Colombia, el Decreto 4725 de 2005 regula el registro sanitario, el permiso de comercialización y la vigilancia sanitaria de los dispositivos médicos de uso humano.
+> - Los dispositivos se clasifican por riesgo en cuatro clases: I, IIa, IIb y III.
+> - La Resolución 4816 de 2008 reglamenta el Programa Nacional de Tecnovigilancia, el equivalente a la farmacovigilancia para dispositivos.
 
-**En resumen**
+## Qué es un dispositivo médico
 
-- Qué es Dispositivos médicos y por qué se pide en la industria farmacéutica.
-- Cursos reales de Asuntos Regulatorios con enlace directo a la plataforma.
-- Cómo elegir, qué roles existen y una ruta de aprendizaje de tres pasos.
-- Fuentes oficiales para verificar requisitos y actualizar el temario.
+Es un instrumento, aparato, material u otro artículo que se usa en seres humanos con fines de diagnóstico, prevención, tratamiento, alivio o control de una enfermedad, y que no logra su acción principal por medios farmacológicos, inmunológicos ni metabólicos. Esa última parte es la que lo distingue de un medicamento.
 
-## Por qué importa Dispositivos médicos en 2026
+## La clasificación por riesgo en Colombia
 
-En Colombia y Latinoamérica, los laboratorios, las IPS, las empresas de dispositivos médicos y las autoridades sanitarias trabajan con estándares que cambian con frecuencia. Formarte en Dispositivos médicos te ayuda a leer esos requisitos, documentar decisiones y aportar en equipos multidisciplinarios.
+El **Decreto 4725 de 2005** clasifica los dispositivos médicos según su riesgo:
 
-## Qué aprenderás
+| Clase | Riesgo | Ejemplos típicos |
+|---|---|---|
+| I | Bajo, sujeto a controles generales | Vendas, bajalenguas, muletas |
+| IIa | Moderado, con controles especiales en la fabricación | Agujas hipodérmicas, lentes de contacto, equipos de succión |
+| IIb | Alto, con controles especiales en el diseño y la fabricación | Equipos de rayos X, ventiladores, algunas suturas |
+| III | Muy alto, con controles especiales | Marcapasos, válvulas cardíacas, implantes |
 
-- Dispositivos médicos
-- Registro sanitario
-- Expediente CTD
-- Regulación FDA y EMA
-- Etiquetado
-- Variaciones
+La clase exacta se asigna con las reglas del propio decreto, que consideran factores como la duración del contacto con el cuerpo, si es invasivo, si es activo y qué órgano compromete.
 
-## Cursos recomendados de Asuntos Regulatorios
+## Registro sanitario y permiso de comercialización
+
+Según el Decreto 4725 de 2005:
+
+- Los dispositivos de **clases I y IIa** que no son de tecnología controlada obtienen un **registro sanitario automático**.
+- Los de **clases IIb y III** que no son de tecnología controlada requieren un **registro sanitario** con evaluación previa.
+- Los **equipos biomédicos de tecnología controlada** requieren un **permiso de comercialización**.
+
+El decreto ha tenido modificaciones posteriores, por lo que conviene revisar siempre su texto vigente en el normograma del INVIMA.
+
+## Tecnovigilancia
+
+La **Resolución 4816 de 2008** reglamentó el Programa Nacional de Tecnovigilancia, que busca proteger la salud y la seguridad de pacientes, operadores y demás personas que usan dispositivos médicos. Funciona de forma parecida a la farmacovigilancia:
+
+1. **Detectar** los eventos e incidentes adversos con dispositivos.
+2. **Reportar** a la autoridad en los formatos y plazos definidos.
+3. **Analizar** las causas: fallas del diseño, de la fabricación, del uso o del mantenimiento.
+4. **Tomar acciones** y hacer seguimiento.
+
+La resolución clasifica los eventos y los incidentes según su gravedad, y cada prestador de servicios de salud y cada fabricante o importador debe tener su programa institucional con un responsable.
+
+## Referencias internacionales
+
+- **Estados Unidos:** la FDA clasifica los dispositivos en clases I, II y III, con vías como el 510(k) y la aprobación previa (PMA).
+- **Unión Europea:** el Reglamento (UE) 2017/745 sobre productos sanitarios usa las clases I, IIa, IIb y III.
+- **Normas técnicas:** ISO 13485 para sistemas de gestión de calidad de dispositivos médicos e ISO 14971 para la gestión del riesgo.
+
+## Cursos de dispositivos médicos
 
 | Curso | Plataforma | Enlace |
 |---|---|---|
-| Drug Development and Regulation | Coursera | [Ver curso](https://imp.i384100.net/MKjdrK) |
+| Certification in Drug Regulatory Affairs & Medical Devices | Udemy | [Ver curso](https://trk.udemy.com/ZVEnkg) |
 | Regulatory Compliance Specialization | Coursera | [Ver curso](https://imp.i384100.net/KB9dRN) |
-| USFDA Regulations – New Drug Development Certificate Course | Udemy | [Ver curso](https://trk.udemy.com/gRNkVv) |
 | Basic Course in Drug Regulatory Affairs | Udemy | [Ver curso](https://trk.udemy.com/ZV43D0) |
-| Global Drug Regulatory Affairs: A Comprehensive Crash Course | Udemy | [Ver curso](https://trk.udemy.com/JkQyae) |
-| Master Drug Regulatory Affairs – With Certification | Udemy | [Ver curso](https://trk.udemy.com/oNJm2E) |
-| CTD, NeeS & eCTD Compilation and Submission of Dossiers | Udemy | [Ver curso](https://trk.udemy.com/X4E0Pb) |
-| Certificate Course in Drug Regulatory Affairs | Udemy | [Ver curso](https://trk.udemy.com/gR5Mz2) |
 
-> El acceso gratuito, el certificado y las condiciones de cada curso dependen de la plataforma. Algunas opciones permiten aprender sin costo y cobran solo el certificado; otras tienen precio desde el inicio. Confirma antes de inscribirte.
+> **Contenido editorial:** algunos enlaces son de afiliado. Edvanta no dicta esos cursos; confirma condiciones y certificado en cada plataforma.
 
-## Cómo elegir un curso de Dispositivos médicos
+Para el lado colombiano de los trámites y de la calidad, estos cursos gratuitos de Edvanta sirven también en dispositivos médicos, con certificado opcional de COP 60.000:
 
-1. Revisa el temario y confirma que cubre Dispositivos médicos con profundidad.
-2. Verifica el nivel: introductorio, intermedio o avanzado.
-3. Confirma si el acceso es gratuito y si el certificado tiene costo.
-4. Revisa la duración, el idioma y la modalidad.
-5. Comprueba quién dicta el curso y si incluye casos, proyectos o evaluaciones.
+- [Asuntos Regulatorios Sanitarios ante el INVIMA](/curso-de-asuntos-regulatorios-sanitarios-ante-invima)
+- [Gestión Documental de Trámites ante el INVIMA](/curso-de-gestion-documental-de-tramites-ante-el-invima)
+- [Gestión de Riesgos en la Calidad Farmacéutica](/curso-de-gestion-de-riesgos-en-la-calidad-farmaceutica)
+- [Gestión de Desviaciones y CAPA](/curso-de-gestion-de-desviaciones-y-capa)
 
-## Salidas laborales
+## Dónde trabaja un profesional de dispositivos médicos
 
-- Asistente regulatorio
-- Especialista en asuntos regulatorios
-- Analista de etiquetado
-- Coordinador de registros
+- **Asuntos regulatorios** en fabricantes, importadores y distribuidores.
+- **Tecnovigilancia** en hospitales y clínicas.
+- **Gestión de calidad** con ISO 13485.
+- **Ingeniería clínica** y mantenimiento de equipos biomédicos.
+- **Ventas técnicas** y soporte de aplicaciones.
 
-## Ruta de aprendizaje en 3 pasos
+## Errores frecuentes
 
-1. **Fundamentos:** empieza por un curso introductorio o por la guía de Asuntos Regulatorios para entender el vocabulario y el marco de trabajo.
-2. **Práctica:** elige un curso específico de Dispositivos médicos y aplícalo en un caso, un proyecto o una actividad de tu trabajo.
-3. **Especialización:** complementa con una certificación, una ruta de aprendizaje o un posgrado si el rol que buscas lo exige.
+- **Tratar un dispositivo como si fuera un medicamento:** los requisitos y la evidencia que se piden son distintos.
+- **Clasificar sin aplicar las reglas:** la clase define el trámite; una clase mal asignada puede invalidarlo.
+- **No reportar los incidentes:** un incidente sin daño también se reporta, porque puede anticipar un evento grave.
+- **Olvidar el mantenimiento:** muchos eventos con equipos se deben a fallas de mantenimiento o de calibración.
 
 ## Preguntas frecuentes
 
-### ¿Los cursos de Dispositivos médicos son gratis?
+### ¿Qué norma regula los dispositivos médicos en Colombia?
 
-El acceso y el certificado dependen de cada plataforma. Algunas ofrecen contenido gratuito y certificado opcional de pago; otras cobran desde el inicio. Verifica el precio y las condiciones antes de inscribirte.
+El Decreto 4725 de 2005, que regula el registro sanitario, el permiso de comercialización y la vigilancia sanitaria de los dispositivos médicos de uso humano, con sus modificaciones.
 
-### ¿Necesito experiencia previa en Dispositivos médicos?
+### ¿Cuáles son las clases de riesgo de los dispositivos médicos?
 
-No siempre. Hay cursos introductorios para estudiantes y profesionales que quieren actualizarse. Revisa el nivel y los requisitos en la ficha del curso.
+Clase I (bajo riesgo), IIa (riesgo moderado), IIb (riesgo alto) y III (muy alto riesgo).
 
-### ¿Estos cursos sirven para trabajar en la industria farmacéutica?
+### ¿Qué es la tecnovigilancia?
 
-Pueden ayudarte a construir competencias, pero no reemplazan la formación de base ni la experiencia. Úsalos como parte de una ruta y verifica que el temario se ajuste al rol que buscas.
+El conjunto de actividades para detectar, reportar, analizar y prevenir los eventos e incidentes adversos con dispositivos médicos. En Colombia la reglamenta la Resolución 4816 de 2008.
+
+### ¿Qué norma ISO se usa en dispositivos médicos?
+
+La ISO 13485 para el sistema de gestión de calidad y la ISO 14971 para la gestión del riesgo.
+
+### ¿Qué curso sirve para empezar en dispositivos médicos?
+
+Certification in Drug Regulatory Affairs & Medical Devices, en Udemy, complementado con los cursos regulatorios gratuitos de Edvanta.
 
 ## Fuentes
 
-- [INVIMA](https://www.invima.gov.co)
-- [FDA](https://www.fda.gov)
-- [ICH](https://www.ich.org)
-- [Drug Development and Regulation](https://imp.i384100.net/MKjdrK)
-- [Regulatory Compliance Specialization](https://imp.i384100.net/KB9dRN)
-- [USFDA Regulations – New Drug Development Certificate Course](https://trk.udemy.com/gRNkVv)
-- [Basic Course in Drug Regulatory Affairs](https://trk.udemy.com/ZV43D0)
-
-## Contenido relacionado
-
-- [Cursos de Asuntos Regulatorios para químicos farmacéuticos](/articulos/cursos-de-asuntos-regulatorios)
-- [Cursos gratis de Desarrollo de medicamentos: guía para químicos farmacéuticos](/articulos/cursos-gratis-desarrollo-de-medicamentos)
-- [Cursos gratis de Regulación FDA: guía para químicos farmacéuticos](/articulos/cursos-gratis-regulacion-fda)
-
-> Este contenido es educativo y no constituye asesoría profesional individual.
+- **Decreto 4725 de 2005.** Normograma del INVIMA. https://normograma.invima.gov.co/compilacion/docs/decreto_4725_2005.htm (consultado el 12 de noviembre de 2026).
+- **Resolución 4816 de 2008.** Normograma del INVIMA. https://normograma.invima.gov.co/compilacion/docs/resolucion_minproteccion_4816_2008.htm (consultado el 12 de noviembre de 2026).

@@ -420,6 +420,38 @@ const REESCRITOS = {
     description: 'Eventos adversos serios, SUSAR y sus plazos según ICH E2A, el DSUR, quién hace qué en un ensayo y cursos de seguridad clínica.',
     readingTime: '7 min',
   },
+  // Lote 4b (12-nov-2026): asuntos regulatorios. Normas verificadas: Decreto 4725
+  // de 2005, Resolución 4816 de 2008, Resolución 1896 de 2023 y Decreto 677 de 1995.
+  'cursos-gratis-regulacion-fda': {
+    title: 'Cursos gratis de regulación FDA: IND, NDA, ANDA, BLA y buenas prácticas de manufactura de Estados Unidos',
+    seoTitle: 'Regulación FDA: IND, NDA, ANDA y cursos gratis',
+    description: 'Las vías de autorización de la FDA, sus programas acelerados, el 21 CFR 210 y 211, el formulario 483 y cursos de regulación FDA.',
+    readingTime: '7 min',
+  },
+  'cursos-gratis-regulacion-ema': {
+    title: 'Cursos gratis de regulación EMA: procedimiento centralizado, CHMP, EPAR y GMP europeas',
+    seoTitle: 'Regulación EMA: procedimiento centralizado y cursos',
+    description: 'Cómo autoriza medicamentos la Unión Europea, qué hacen el CHMP y el PRAC, el EPAR, las GMP de EudraLex y cursos de regulación EMA.',
+    readingTime: '7 min',
+  },
+  'cursos-gratis-expediente-ctd': {
+    title: 'Cursos gratis de expediente CTD y eCTD: los cinco módulos del dossier de un medicamento',
+    seoTitle: 'Expediente CTD y eCTD: los 5 módulos y cursos',
+    description: 'Los cinco módulos del CTD, el módulo 3 de calidad por dentro, el eCTD, cómo se aplica en Colombia y cursos para armar un dossier.',
+    readingTime: '7 min',
+  },
+  'cursos-gratis-dispositivos-medicos': {
+    title: 'Cursos gratis de dispositivos médicos: clasificación por riesgo, registro sanitario y tecnovigilancia en Colombia',
+    seoTitle: 'Dispositivos médicos en Colombia: clases y cursos',
+    description: 'El Decreto 4725 de 2005, las clases I, IIa, IIb y III, el registro sanitario, la tecnovigilancia y cursos de dispositivos médicos.',
+    readingTime: '7 min',
+  },
+  'cursos-gratis-etiquetado-y-publicidad': {
+    title: 'Cursos gratis de etiquetado y publicidad de medicamentos: etiquetas, insertos y la Resolución 1896 de 2023',
+    seoTitle: 'Etiquetado y publicidad de medicamentos: cursos',
+    description: 'Etiquetas, insertos y publicidad de medicamentos, lo que exige la Resolución 1896 de 2023, cómo revisar una pieza y cursos gratis.',
+    readingTime: '7 min',
+  },
 };
 for (const a of todos) {
   const r = REESCRITOS[a.slug];
