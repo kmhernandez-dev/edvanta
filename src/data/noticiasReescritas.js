@@ -770,6 +770,86 @@ export const NOTICIAS_REESCRITAS = {
     description: 'El CHMP no recomendó Mylotarg para niños con leucemia mieloide aguda, pero agregará los datos del estudio pediátrico a la ficha técnica.',
     autor: 'Equipo editorial de Edvanta'
   },
+  'mhra-advierte-sobre-adsorcion-de-equinocandinas-en-filtros-pan-de-terapia-renal': {
+    contenidoPropio: true,
+    mdPath: '/articulos/articulos_edvanta/noticias-internacionales/mhra-advierte-sobre-adsorcion-de-equinocandinas-en-filtros-pan-de-terapia-renal.md',
+    updated: '2026-11-12',
+    readingTime: '3 min',
+    seoTitle: 'Caspofungina en terapia renal continua: alerta MHRA',
+    seoDescription: 'La MHRA advierte que la caspofungina y otras equinocandinas pueden adherirse a filtros PAN de terapia renal continua. Qué recomienda a los hospitales.',
+    description: 'La MHRA advierte que la caspofungina y otras equinocandinas pueden adherirse a filtros PAN de terapia renal continua. Qué recomienda a los hospitales.',
+    autor: 'Equipo editorial de Edvanta'
+  },
+  'mhra-retira-lotes-de-pedmarqsi-por-riesgo-de-particulas': {
+    contenidoPropio: true,
+    mdPath: '/articulos/articulos_edvanta/noticias-internacionales/mhra-retira-lotes-de-pedmarqsi-por-riesgo-de-particulas.md',
+    updated: '2026-11-12',
+    readingTime: '3 min',
+    seoTitle: 'Pedmarqsi: la MHRA retira dos lotes por partículas',
+    seoDescription: 'La MHRA retiró dos lotes de Pedmarqsi (tiosulfato de sodio) por riesgo de partículas detectado en estudios de estabilidad. Qué deben hacer los hospitales.',
+    description: 'La MHRA retiró dos lotes de Pedmarqsi (tiosulfato de sodio) por riesgo de partículas detectado en estudios de estabilidad. Qué deben hacer los hospitales.',
+    autor: 'Equipo editorial de Edvanta'
+  },
+  'mhra-alerta-por-fallas-de-control-en-tiras-statstrip-para-cetonas': {
+    contenidoPropio: true,
+    mdPath: '/articulos/articulos_edvanta/noticias-internacionales/mhra-alerta-por-fallas-de-control-en-tiras-statstrip-para-cetonas.md',
+    updated: '2026-11-12',
+    readingTime: '3 min',
+    seoTitle: 'Tiras StatStrip para cetonas: alerta de la MHRA',
+    seoDescription: 'La MHRA alertó sobre fallas de control de calidad en tiras StatStrip para cetonas en sangre y su desabastecimiento. Qué hacer ante la cetoacidosis.',
+    description: 'La MHRA alertó sobre fallas de control de calidad en tiras StatStrip para cetonas en sangre y su desabastecimiento. Qué hacer ante la cetoacidosis.',
+    autor: 'Equipo editorial de Edvanta'
+  },
+  'fda-finaliza-guia-sobre-aplicaciones-y-software-para-medicamentos-de-prescripcion': {
+    contenidoPropio: true,
+    mdPath: '/articulos/articulos_edvanta/noticias-internacionales/fda-finaliza-guia-sobre-aplicaciones-y-software-para-medicamentos-de-prescripcion.md',
+    updated: '2026-11-12',
+    readingTime: '3 min',
+    seoTitle: 'Apps de medicamentos: la FDA publica su guía final',
+    seoDescription: 'La FDA publicó su guía final sobre apps y software de medicamentos de prescripción: cuándo su contenido es etiquetado y cuándo es promoción.',
+    description: 'La FDA publicó su guía final sobre apps y software de medicamentos de prescripción: cuándo su contenido es etiquetado y cuándo es promoción.',
+    autor: 'Equipo editorial de Edvanta'
+  },
+  'anvisa-ordena-interdiccion-cautelar-de-una-farmacia-magistral': {
+    contenidoPropio: true,
+    mdPath: '/articulos/articulos_edvanta/noticias-internacionales/anvisa-ordena-interdiccion-cautelar-de-una-farmacia-magistral.md',
+    updated: '2026-11-12',
+    readingTime: '3 min',
+    seoTitle: 'Anvisa cierra preparaciones de una farmacia magistral',
+    seoDescription: 'La Anvisa suspendió por 90 días las preparaciones magistrales de la farmacia Formédica por riesgo de contaminación. Lecciones de BPE para Colombia.',
+    description: 'La Anvisa suspendió por 90 días las preparaciones magistrales de la farmacia Formédica por riesgo de contaminación. Lecciones de BPE para Colombia.',
+    autor: 'Equipo editorial de Edvanta'
+  },
+  'anvisa-prohibe-suplementos-alimentarios-de-origen-desconocido': {
+    contenidoPropio: true,
+    mdPath: '/articulos/articulos_edvanta/noticias-internacionales/anvisa-prohibe-suplementos-alimentarios-de-origen-desconocido.md',
+    updated: '2026-11-12',
+    readingTime: '3 min',
+    seoTitle: 'Anvisa incauta suplementos de origen desconocido',
+    seoDescription: 'La Anvisa ordenó incautar los productos de PSM Pennaforte: su dirección registrada era una vivienda. Cómo comprar suplementos seguros.',
+    description: 'La Anvisa ordenó incautar los productos de PSM Pennaforte: su dirección registrada era una vivienda. Cómo comprar suplementos seguros.',
+    autor: 'Equipo editorial de Edvanta'
+  },
+  'anvisa-suspende-publicidad-irregular-de-suplementos-alimentarios': {
+    contenidoPropio: true,
+    mdPath: '/articulos/articulos_edvanta/noticias-internacionales/anvisa-suspende-publicidad-irregular-de-suplementos-alimentarios.md',
+    updated: '2026-11-12',
+    readingTime: '3 min',
+    seoTitle: 'Glifit y Glicofit: Anvisa suspende su publicidad',
+    seoDescription: 'La Anvisa suspendió la publicidad de Glifit y Glicofit, suplementos que prometían controlar la glucosa. Por qué es peligroso para la diabetes.',
+    description: 'La Anvisa suspendió la publicidad de Glifit y Glicofit, suplementos que prometían controlar la glucosa. Por qué es peligroso para la diabetes.',
+    autor: 'Equipo editorial de Edvanta'
+  },
+  'prac-revisa-reacciones-alergicas-con-lotes-de-inmunoglobulina-humana-normal': {
+    contenidoPropio: true,
+    mdPath: '/articulos/articulos_edvanta/noticias-internacionales/prac-revisa-reacciones-alergicas-con-lotes-de-inmunoglobulina-humana-normal.md',
+    updated: '2026-11-12',
+    readingTime: '3 min',
+    seoTitle: 'Inmunoglobulina humana: la EMA revisa reacciones',
+    seoDescription: 'El PRAC revisa reacciones alérgicas con lotes de Flebogamma DIF, Yimmugo y Gamunex y abarca todas las inmunoglobulinas humanas normales.',
+    description: 'El PRAC revisa reacciones alérgicas con lotes de Flebogamma DIF, Yimmugo y Gamunex y abarca todas las inmunoglobulinas humanas normales.',
+    autor: 'Equipo editorial de Edvanta'
+  },
 };
 
 /** Las 100 noticias del paquete, con la versión reescrita donde la hay. */
