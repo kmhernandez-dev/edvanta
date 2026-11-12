@@ -279,6 +279,27 @@ describe('slugs de curso · base de datos y rutas', () => {
     expect(tabla.data.some((f) => f.antigua === '/curso-de-especializacion-en-excel')).toBe(true);
   });
 
+  it('el catálogo /cursos sale escrito con un enlace a cada curso público', async () => {
+    const r = await pedir('/api/paginas/catalogo');
+    expect(r.status).toBe(200);
+    const html = await r.text();
+    expect(html).toContain('<title>Cursos online de farmacia, calidad y regulatorios | Edvanta</title>');
+    expect(html).toContain('<link rel="canonical" href="https://edvanta.test/cursos" />');
+    expect(html).toContain('href="/curso-de-farmacoterapia-de-la-diabetes"');
+    expect(html).toContain('href="/curso-de-farmacologia-cardiovascular-en-edutin"');
+    // Su dirección cambió en una prueba anterior: el catálogo usa la vigente.
+    expect(html).toContain('href="/curso-de-especializacion-en-excel-de-coursera"');
+    expect(html).not.toContain('preparacion');
+    expect(html).toContain('"@type":"ItemList"');
+
+    const edutin = await (await pedir('/api/paginas/catalogo/edutin')).text();
+    expect(edutin).toContain('href="/curso-de-gestion-de-calidad"');
+    expect(edutin).not.toContain('href="/curso-de-especializacion-en-excel-de-coursera"');
+    expect(edutin).toContain('<link rel="canonical" href="https://edvanta.test/cursos/edutin" />');
+
+    expect((await pedir('/api/paginas/catalogo/otra')).status).toBe(404);
+  });
+
   it('traduce referencias internas a direcciones públicas', async () => {
     const mapa = await rutasDeReferencias(db, [`edvanta-${ids.cardio}`, 'gestion-de-calidad', 'no-existe']);
     expect(mapa.get(`edvanta-${ids.cardio}`)).toBe('/curso-de-farmacologia-cardiovascular');

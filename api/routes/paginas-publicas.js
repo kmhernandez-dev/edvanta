@@ -35,9 +35,10 @@ import {
 import { SQL_CURSO_PUBLICO, temarioPublico } from './courses.js';
 import { EMISOR, verificarCertificado } from '../lib/aula/certificados.js';
 import { cuerpoDeCurso, datosDeCurso } from '../lib/html-de-ficha.js';
+import { cuerpoDeCatalogo, cursosDelCatalogo, listaDeCursos } from '../lib/html-de-catalogo.js';
 import { cuerpoDePerfil, extrasDePerfil } from '../lib/html-de-perfil.js';
 import {
-  descripcionDeCurso, metaDeCarrera, metaDeCompetencia, metaDeRuta, tituloDeCurso,
+  META_CURSOS, descripcionDeCurso, metaDeCarrera, metaDeCompetencia, metaDeCursosDe, metaDeRuta, tituloDeCurso,
 } from '../lib/meta-seo.js';
 
 const esc = (t) => String(t ?? '')
@@ -457,6 +458,58 @@ export function crearRutasPublicas({ db, sitio = '', obtenerPlantilla = async ()
       console.error(JSON.stringify({ level: 'error', msg: 'sitemap profesional', error: e.message }));
       return res.status(503).type('text/plain').send('Sitemap no disponible');
     }
+  });
+
+  // /cursos y /cursos/<plataforma>: el catálogo completo ya escrito en el
+  // HTML (los buscadores que no ejecutan JavaScript no veían ni un enlace a
+  // las fichas). La aplicación lo reemplaza al cargar.
+  const NOMBRE_EN_TITULO = { coursera: 'Coursera', udemy: 'Udemy', edutin: 'Edutin' };
+  // Si algo falla, 503: nginx sirve entonces la página estática del build,
+  // que conserva su título y su descripción.
+  const paginaDeCatalogo = async (res, plataforma = '') => {
+    try {
+      const plantilla = await obtenerPlantilla();
+      if (!plantilla) return res.status(503).end();
+      await asegurarSlugsDeCursos(db);
+      const { rows } = await db.query(
+        `SELECT s.slug AS ruta, c.title AS titulo, 'edvanta' AS plataforma, c.category AS categoria,
+                c.short_description AS resumen, NULL AS acceso
+           FROM public_slugs s JOIN aula_courses c ON c.id = s.entity_id
+          WHERE s.entity = 'aula' AND s.is_current AND c.kind = 'edvanta' AND c.status = 'publicado' AND c.deleted_at IS NULL
+         UNION ALL
+         SELECT s.slug, c.title, c.provider, c.category, c.short_description, c.price_type
+           FROM public_slugs s JOIN courses c ON c.id = s.entity_id
+          WHERE s.entity = 'curado' AND s.is_current AND c.active = TRUE`,
+      );
+      const cursos = cursosDelCatalogo(rows);
+      const meta = plataforma ? metaDeCursosDe(NOMBRE_EN_TITULO[plataforma]) : META_CURSOS;
+      const canonical = absoluta(plataforma ? `/cursos/${plataforma}` : '/cursos');
+      const migas = [
+        { '@type': 'ListItem', position: 1, name: 'Inicio', item: absoluta('/') },
+        { '@type': 'ListItem', position: 2, name: 'Cursos', item: absoluta('/cursos') },
+        ...(plataforma ? [{ '@type': 'ListItem', position: 3, name: NOMBRE_EN_TITULO[plataforma], item: canonical }] : []),
+      ];
+      const html = conMetadatos(plantilla, {
+        titulo: meta.titulo,
+        descripcion: meta.descripcion,
+        canonical,
+        jsonLd: [
+          { '@context': 'https://schema.org', '@type': 'CollectionPage', name: meta.titulo, description: meta.descripcion, url: canonical },
+          listaDeCursos(cursos, { sitio, plataforma }),
+          { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: migas },
+        ],
+        cuerpo: cuerpoDeCatalogo(cursos, { plataforma }),
+      });
+      return aplicacion(res, 200, html);
+    } catch (e) {
+      console.error(JSON.stringify({ level: 'error', msg: 'catalogo de cursos', error: e.message }));
+      return res.status(503).end();
+    }
+  };
+  router.get('/paginas/catalogo', (_req, res) => paginaDeCatalogo(res));
+  router.get('/paginas/catalogo/:plataforma', (req, res) => {
+    const p = String(req.params.plataforma || '').toLowerCase();
+    return NOMBRE_EN_TITULO[p] ? paginaDeCatalogo(res, p) : noEncontrado(res);
   });
 
   // Todos los cursos públicos, con su dirección vigente.

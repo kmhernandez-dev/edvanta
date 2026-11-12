@@ -86,21 +86,8 @@ export const META_INSTITUCIONES = {
   descripcion: 'Capacitación para laboratorios, droguerías, hospitales, clínicas e IPS: calidad, asuntos regulatorios, farmacia y gestión, a la medida de tu equipo.',
 };
 
-export const META_CURSOS = {
-  titulo: 'Cursos online de farmacia, calidad y regulatorios | Edvanta',
-  descripcion: 'Cursos online para químicos farmacéuticos, regentes y equipos de salud: calidad, BPM, asuntos regulatorios, farmacología y más. Propios y seleccionados.',
-};
-
-/** /cursos/<plataforma>: los cursos de Coursera, Udemy o Edutin. */
-export function metaDeCursosDe(plataforma) {
-  return {
-    titulo: tituloQueCabe([`Cursos de ${plataforma} para farmacéuticos | Edvanta`, `Cursos de ${plataforma} | Edvanta`]),
-    descripcion: descripcionConCierre(
-      `Cursos de ${plataforma} seleccionados por Edvanta en farmacia, calidad, datos, IA y gestión de proyectos, organizados por área profesional.`,
-      ['Se estudian en la plataforma de origen.'],
-    ),
-  };
-}
+// El catálogo de cursos: la API escribe /cursos con los mismos títulos.
+export { META_CURSOS, metaDeCursosDe } from '../../../api/lib/meta-seo.js';
 
 export const META_NOTICIAS = {
   titulo: 'Noticias farmacéuticas y alertas del INVIMA | Edvanta',

@@ -105,6 +105,10 @@ function sinSubtitulo(t) {
  * puntos: «Curso para Hablar Frente a la Cámara: Oratoria Digital…».
  */
 export function tituloDeCurso(ficha, nombre) {
+  // La guía editorial de un curado puede traer su título de búsqueda en
+  // español («Curso de farmacovigilancia en inglés: …»), escrito a mano.
+  const elegido = limpio(ficha?.guia?.tituloSeo);
+  if (elegido) return tituloQueCabe([`${elegido} | Edvanta`, elegido]);
   const n = limpio(nombre || ficha?.titulo);
   const c = sinSubtitulo(n);
   if (esPropio(ficha)) {
@@ -116,10 +120,21 @@ export function tituloDeCurso(ficha, nombre) {
   return tituloQueCabe([...variantes(n), ...(c ? variantes(c) : [])]);
 }
 
-/** Un resumen que no diga nada propio («Curso del catálogo.») no sirve de base. */
-const resumenUtil = (r) => {
+/**
+ * Un resumen que no diga nada propio no sirve de base: «Curso del
+ * catálogo.» o la frase que trae igual cada curso de Edutin («Curso de X
+ * seleccionado para fortalecer competencias profesionales en Y»).
+ */
+export const resumenUtil = (r) => {
   const t = limpio(r);
-  return t.length >= 60 && !/^curso del cat[aá]logo/i.test(t) ? t : '';
+  return t.length >= 60 && !/^curso del cat[aá]logo/i.test(t) && !/seleccionado para fortalecer competencias/i.test(t) ? t : '';
+};
+
+/** La primera frase de un texto (para describir con la guía editorial). */
+const primeraFrase = (t) => {
+  const x = limpio(t);
+  const m = x.match(/^.+?[.!?](?=\s|$)/);
+  return m ? m[0] : x;
 };
 
 /** Descripción del curso con lo que la ficha sabe y una promesa verdadera. */
@@ -142,16 +157,42 @@ export function descripcionDeCurso(ficha, nombre) {
     ficha?.idioma && ficha.idioma !== 'Español' && `en ${ficha.idioma.toLowerCase()}`,
     ficha?.duracionTexto && `duración ${limpio(ficha.duracionTexto).toLowerCase()}`,
   ].filter(Boolean);
+  // La guía editorial puede traer su descripción escrita a mano.
+  const meta = limpio(ficha?.guia?.meta);
+  if (meta) return limpiarDescripcion(meta);
   const resumen = resumenUtil(ficha?.resumen);
   if (resumen) {
     // El resumen no nombra la plataforma: el cierre dice dónde se estudia.
     return descripcionConCierre(resumen, [prov && `Se estudia en ${prov}.`], { obligatorio: Boolean(prov) });
+  }
+  const porQue = primeraFrase(ficha?.guia?.porQue);
+  if (porQue) {
+    return descripcionConCierre(porQue, [prov && `${n} en ${prov}, con guía de Edvanta.`, prov && `Se estudia en ${prov}.`], { obligatorio: Boolean(prov) });
   }
   const base = [
     `${n}${prov ? ` en ${prov}` : ''}${habilidades.length ? `: ${habilidades.join(', ')}` : ''}.`,
     datos.length ? `${datos.join(', ').replace(/^./, (c) => c.toUpperCase())}.` : '',
   ].filter(Boolean).join(' ');
   return descripcionConCierre(base, ['Seleccionado por Edvanta para tu formación profesional.', 'Seleccionado por Edvanta.']);
+}
+
+/* ── Catálogo de cursos ──────────────────────────────────── */
+
+/** /cursos: lo usan la aplicación (CursosCatalog) y la página que escribe la API. */
+export const META_CURSOS = {
+  titulo: 'Cursos online de farmacia, calidad y regulatorios | Edvanta',
+  descripcion: 'Cursos online para químicos farmacéuticos, regentes y equipos de salud: calidad, BPM, asuntos regulatorios, farmacología y más. Propios y seleccionados.',
+};
+
+/** /cursos/<plataforma>: los cursos de Coursera, Udemy o Edutin. */
+export function metaDeCursosDe(plataforma) {
+  return {
+    titulo: tituloQueCabe([`Cursos de ${plataforma} para farmacéuticos | Edvanta`, `Cursos de ${plataforma} | Edvanta`]),
+    descripcion: descripcionConCierre(
+      `Cursos de ${plataforma} seleccionados por Edvanta en farmacia, calidad, datos, IA y gestión de proyectos, organizados por área profesional.`,
+      ['Se estudian en la plataforma de origen.'],
+    ),
+  };
 }
 
 /* ── Carreras, rutas y competencias ──────────────────────── */

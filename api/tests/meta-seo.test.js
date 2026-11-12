@@ -104,6 +104,32 @@ describe('cursos', () => {
     const corto = 'Curso de Oratoria: cómo hablar en público con seguridad';
     expect(tituloDeCurso(propio(), corto)).toBe(corto);
   });
+
+  it('curado con guía: el título y la descripción escritos a mano mandan', () => {
+    const f = curado({
+      proveedor: { nombre: 'Udemy' },
+      guia: { tituloSeo: 'Curso de farmacovigilancia en inglés: casos ICSR', meta: 'Aprende a procesar casos individuales de seguridad (ICSR), en inglés, con la guía de Edvanta para aplicarlo en Colombia.', porQue: 'x' },
+    });
+    expect(tituloDeCurso(f, 'Curso de Certificate Course in Pharmacovigilance: Practical ICSR')).toBe('Curso de farmacovigilancia en inglés: casos ICSR | Edvanta');
+    expect(descripcionDeCurso(f, 'Curso de X')).toBe(f.guia.meta);
+  });
+
+  it('curado sin descripción propia: usa la primera frase de la guía', () => {
+    const f = curado({ guia: { porQue: 'La farmacocinética explica por qué una dosis funciona en un paciente y no en otro. Segunda frase.' } });
+    const d = descripcionDeCurso(f, 'Curso de Pharmacokinetics');
+    expect(d).toBe('La farmacocinética explica por qué una dosis funciona en un paciente y no en otro. Curso de Pharmacokinetics en Coursera, con guía de Edvanta.');
+    expect(d.length).toBeLessThanOrEqual(155);
+  });
+
+  it('la frase igual de todos los cursos de Edutin no sirve de descripción', () => {
+    const f = curado({
+      proveedor: { nombre: 'Edutin Academy' },
+      idioma: 'Español',
+      resumen: 'Curso de Python seleccionado para fortalecer competencias profesionales en Tecnología.',
+      guia: { porQue: 'Python es el lenguaje más usado para analizar datos y automatizar tareas repetitivas.' },
+    });
+    expect(descripcionDeCurso(f, 'Curso de Python')).not.toMatch(/seleccionado para fortalecer/);
+  });
 });
 
 describe('carreras, rutas y competencias', () => {

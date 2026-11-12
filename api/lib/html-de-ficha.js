@@ -19,6 +19,8 @@
  * ============================================================
  */
 
+import { descripcionDeCurso, resumenUtil } from './meta-seo.js';
+
 const esc = (t) => String(t ?? '')
   .replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;');
 
@@ -160,9 +162,30 @@ export function cuerpoDeCurso(ficha, { nombre, relacionados = [], emisor = 'Edva
 }
 
 /**
+ * El modelo de acceso de un curado, según el catálogo (price_type), en
+ * las categorías de oferta que reconoce Google para los cursos. Edutin y
+ * la auditoría de Coursera se estudian sin costo con certificado de pago.
+ */
+const CATEGORIA_DE_OFERTA = {
+  free: 'Free',
+  free_audit: 'Partially Free',
+  subscription: 'Subscription',
+  paid: 'Paid',
+};
+
+/**
+ * La descripción del curso para los datos estructurados, nunca vacía:
+ * el resumen propio si dice algo, la guía editorial de Edvanta o, si no
+ * hay nada más, la misma descripción de la página.
+ */
+function descripcionParaDatos(ficha, nombre) {
+  return resumenUtil(ficha.resumen) || ficha.guia?.porQue || descripcionDeCurso(ficha, nombre);
+}
+
+/**
  * Datos del curso para Google (schema.org/Course). Solo lo que consta:
- * la oferta gratuita y la instancia en línea, solo en los propios, que
- * son los únicos de los que Edvanta sabe el precio y la modalidad.
+ * en los propios, la oferta gratuita y la instancia en línea; en los
+ * curados, el modelo de acceso que registra el catálogo y la modalidad.
  */
 export function datosDeCurso(ficha, { nombre, canonical, imagen, horas }) {
   const propio = ficha.dondeSeEstudia === 'edvanta';
@@ -170,7 +193,7 @@ export function datosDeCurso(ficha, { nombre, canonical, imagen, horas }) {
     '@context': 'https://schema.org',
     '@type': 'Course',
     name: nombre,
-    description: ficha.resumen || '',
+    description: descripcionParaDatos(ficha, nombre),
     url: canonical,
     inLanguage: ficha.idioma === 'Inglés' ? 'en' : ficha.idioma === 'Portugués' ? 'pt' : 'es',
     ...(imagen ? { image: imagen } : {}),
@@ -195,6 +218,11 @@ export function datosDeCurso(ficha, { nombre, canonical, imagen, horas }) {
     if (ficha.temario?.length) {
       datos.syllabusSections = ficha.temario.filter((u) => u?.title).map((u) => ({ '@type': 'Syllabus', name: u.title }));
     }
+  } else {
+    const categoria = CATEGORIA_DE_OFERTA[ficha.precio?.tipo];
+    if (categoria) datos.offers = { '@type': 'Offer', category: categoria, url: canonical };
+    // Edutin, Coursera y Udemy son plataformas en línea.
+    datos.hasCourseInstance = { '@type': 'CourseInstance', courseMode: 'Online' };
   }
   return datos;
 }
