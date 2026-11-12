@@ -1,93 +1,106 @@
-# Cursos gratis de Lean Six Sigma: guía para químicos farmacéuticos
+# Cursos gratis de Lean Six Sigma para químicos farmacéuticos
 
-La industria farmacéutica necesita profesionales que entiendan Lean Six Sigma y sepan aplicarlo en entornos regulados. Esta guía reúne cursos reales de Aseguramiento de Calidad para que compares opciones, revises el temario y elijas con criterio.
+Lean Six Sigma une dos ideas: **Lean** elimina lo que no agrega valor y **Six Sigma** reduce la variación para que el proceso dé siempre el mismo resultado. En una planta farmacéutica eso se traduce en menos tiempos muertos entre lotes, menos rechazos, liberaciones más rápidas y laboratorios menos congestionados. Para un químico farmacéutico, sumar Lean Six Sigma a la formación en BPM abre la puerta a cargos de excelencia operacional y mejora continua.
 
-> **Contenido editorial:** algunos enlaces pueden ser de afiliado. Edvanta no dicta ni certifica esos cursos. Verifica el precio, el acceso y el certificado en la plataforma antes de inscribirte.
+> **En resumen**
+>
+> - Six Sigma usa el ciclo DMAIC: definir, medir, analizar, mejorar y controlar.
+> - Los niveles de formación se nombran por cinturones: amarillo, verde y negro son los más comunes.
+> - En Edvanta encuentras cursos curados de Lean y de Lean Six Sigma, y una especialización Green Belt en otra plataforma.
 
-**En resumen**
+## Lean en lenguaje farmacéutico
 
-- Qué es Lean Six Sigma y por qué se pide en la industria farmacéutica.
-- Cursos reales de Aseguramiento de Calidad con enlace directo a la plataforma.
-- Cómo elegir, qué roles existen y una ruta de aprendizaje de tres pasos.
-- Fuentes oficiales para verificar requisitos y actualizar el temario.
+Lean nació en la manufactura automotriz, pero sus ideas encajan bien en una planta de medicamentos. Los desperdicios típicos que busca eliminar son:
 
-## Por qué importa Lean Six Sigma en 2026
+- **Esperas:** lotes detenidos por análisis o por la revisión de documentos.
+- **Sobreprocesamiento:** firmas y revisiones que no agregan control.
+- **Inventario:** materias primas y producto en cuarentena más tiempo del necesario.
+- **Movimientos y transporte:** recorridos innecesarios de personas y materiales.
+- **Defectos:** reprocesos, rechazos y desviaciones.
+- **Talento no aprovechado:** operarios con ideas que nadie escucha.
 
-En Colombia y Latinoamérica, los laboratorios, las IPS, las empresas de dispositivos médicos y las autoridades sanitarias trabajan con estándares que cambian con frecuencia. Formarte en Lean Six Sigma te ayuda a leer esos requisitos, documentar decisiones y aportar en equipos multidisciplinarios.
+Herramientas como 5S, el mapa de flujo de valor (VSM) y SMED (cambio rápido de formato) se aplican en líneas de empaque, en el laboratorio y en el área de documentación.
 
-## Qué aprenderás
+## Six Sigma y el ciclo DMAIC
 
-- Lean Six Sigma
-- Sistemas de gestión de calidad
-- ISO 9001
-- BPM/GMP
-- CAPA y no conformidades
-- Auditorías internas
+Six Sigma busca procesos tan estables que los defectos sean muy raros; el nivel seis sigma corresponde a unos 3,4 defectos por millón de oportunidades. El camino es el ciclo DMAIC:
 
-## Cursos recomendados de Aseguramiento de Calidad
+1. **Definir:** el problema, el cliente y el alcance del proyecto.
+2. **Medir:** cómo se comporta hoy el proceso, con datos confiables.
+3. **Analizar:** las causas raíz de la variación.
+4. **Mejorar:** probar y aplicar soluciones.
+5. **Controlar:** sostener la mejora con indicadores y procedimientos.
 
-| Curso | Plataforma | Enlace |
+En el sector farmacéutico, los cambios que surgen de un proyecto deben pasar por el control de cambios y, cuando corresponda, por una nueva validación.
+
+## Los niveles de cinturón
+
+| Cinturón | Para quién |
+|---|---|
+| Amarillo (Yellow Belt) | Personas que participan en proyectos y necesitan el lenguaje común |
+| Verde (Green Belt) | Profesionales que lideran proyectos de mejora en su área |
+| Negro (Black Belt) | Especialistas que lideran proyectos complejos y forman a otros |
+
+No existe un único organismo que certifique los cinturones: cada proveedor de formación define sus requisitos. Revisa si el curso exige un proyecto real y un examen.
+
+## Cursos de Lean y Lean Six Sigma en Edvanta
+
+| Curso | Dónde | Costo |
 |---|---|---|
-| Six Sigma Green Belt Specialization | Coursera | [Ver curso](https://imp.i384100.net/6kqMaq) |
-| Quality Improvement in Healthcare Specialization | Coursera | [Ver curso](https://imp.i384100.net/YVom5P) |
-| Quality in Pharmaceutical Industry: GMP, GLP, GHP | Udemy | [Ver curso](https://trk.udemy.com/YVK45B) |
-| ISO 9001 QMS Audit | Udemy | [Ver curso](https://trk.udemy.com/7XQ6M3) |
-| ISO 9001 Quality Management System with Full Template | Udemy | [Ver curso](https://trk.udemy.com/yZBKkD) |
-| Document Control & Good Documentation Practices (GDP) in GMP | Udemy | [Ver curso](https://trk.udemy.com/1GOQ36) |
-| Normas de Correcta Fabricación GMP | Udemy | [Ver curso](https://trk.udemy.com/aN6Qkq) |
-| Foundations of Pharmaceutical Quality Assurance and GMP | Udemy | [Ver curso](https://trk.udemy.com/5kLP3o) |
+| [Lean Six Sigma](/curso-de-lean-six-sigma) | Curso curado | Lo define la plataforma |
+| [Lean](/curso-de-lean) | Curso curado | Lo define la plataforma |
+| [Lean Six Sigma: 4 certificaciones](/curso-de-lean-six-sigma-4-certificaciones) | Curso curado | Lo define la plataforma |
+| [Especialización Six Sigma Green Belt](/curso-de-especializacion-six-sigma-green-belt) | Curso curado | Lo define la plataforma |
 
-> El acceso gratuito, el certificado y las condiciones de cada curso dependen de la plataforma. Algunas opciones permiten aprender sin costo y cobran solo el certificado; otras tienen precio desde el inicio. Confirma antes de inscribirte.
+Para usar bien Six Sigma necesitas datos. Los cursos de [análisis de datos](/curso-de-analisis-de-datos) y de [Power BI](/curso-de-analista-de-datos-con-power-bi) te dan la base para medir y mostrar resultados.
 
-## Cómo elegir un curso de Lean Six Sigma
+## Un proyecto Lean Six Sigma de ejemplo
 
-1. Revisa el temario y confirma que cubre Lean Six Sigma con profundidad.
-2. Verifica el nivel: introductorio, intermedio o avanzado.
-3. Confirma si el acceso es gratuito y si el certificado tiene costo.
-4. Revisa la duración, el idioma y la modalidad.
-5. Comprueba quién dicta el curso y si incluye casos, proyectos o evaluaciones.
+Problema: el tiempo entre el fin de la fabricación y la liberación del lote es de 21 días y el objetivo es 12.
 
-## Salidas laborales
+- **Medir:** se registra cuánto tarda cada etapa: análisis, revisión del registro de lote y liberación.
+- **Analizar:** el mapa de flujo de valor muestra que el registro de lote espera cinco días en una bandeja antes de su revisión.
+- **Mejorar:** se crea una revisión por etapas durante la fabricación y se corrigen los errores de registro más frecuentes.
+- **Controlar:** se mide cada semana el tiempo de liberación y se presenta en la revisión por la dirección.
 
-- Analista de calidad
-- Auditor interno
-- Coordinador de SGC
-- Especialista en BPM
+Un proyecto así, documentado con datos antes y después, es la mejor carta de presentación para un cargo de mejora continua.
 
-## Ruta de aprendizaje en 3 pasos
+## Cómo empezar aunque tu empresa no tenga un programa
 
-1. **Fundamentos:** empieza por un curso introductorio o por la guía de Aseguramiento de Calidad para entender el vocabulario y el marco de trabajo.
-2. **Práctica:** elige un curso específico de Lean Six Sigma y aplícalo en un caso, un proyecto o una actividad de tu trabajo.
-3. **Especialización:** complementa con una certificación, una ruta de aprendizaje o un posgrado si el rol que buscas lo exige.
+No necesitas un departamento de excelencia operacional para practicar:
+
+- **Aplica 5S en tu propia área:** clasificar, ordenar, limpiar, estandarizar y sostener. Toma fotos del antes y el después.
+- **Mide un tiempo que te moleste:** por ejemplo, cuánto tarda en llegar una muestra al laboratorio. Registra durante dos semanas.
+- **Haz un diagrama de Pareto** con las causas de rechazo o de reproceso más frecuentes del último trimestre.
+- **Propón una mejora pequeña** y mide si funcionó.
+- **Comparte el resultado** con tu jefe y con el equipo, aunque la mejora haya sido parcial: así se construye una cultura de mejora.
+
+Estas experiencias, aunque sean modestas, te dan algo concreto que contar en una entrevista y preparan el terreno para un proyecto Green Belt.
 
 ## Preguntas frecuentes
 
-### ¿Los cursos de Lean Six Sigma son gratis?
+### ¿Hay cursos gratis de Lean Six Sigma?
 
-El acceso y el certificado dependen de cada plataforma. Algunas ofrecen contenido gratuito y certificado opcional de pago; otras cobran desde el inicio. Verifica el precio y las condiciones antes de inscribirte.
+En Edvanta encuentras una selección curada de cursos de Lean y Lean Six Sigma; el acceso, el precio y el certificado los define cada plataforma. Revisa las condiciones antes de inscribirte.
 
-### ¿Necesito experiencia previa en Lean Six Sigma?
+### ¿Qué diferencia hay entre Lean y Six Sigma?
 
-No siempre. Hay cursos introductorios para estudiantes y profesionales que quieren actualizarse. Revisa el nivel y los requisitos en la ficha del curso.
+Lean se enfoca en eliminar desperdicios y acelerar el flujo. Six Sigma se enfoca en reducir la variación y los defectos. Combinados, buscan procesos rápidos y estables.
 
-### ¿Estos cursos sirven para trabajar en la industria farmacéutica?
+### ¿Qué cinturón me conviene si soy químico farmacéutico?
 
-Pueden ayudarte a construir competencias, pero no reemplazan la formación de base ni la experiencia. Úsalos como parte de una ruta y verifica que el temario se ajuste al rol que buscas.
+Si vas a liderar proyectos de mejora en tu área, el Green Belt es el punto de equilibrio. Si solo participarás en proyectos, un Yellow Belt te da el lenguaje común.
+
+### ¿Lean Six Sigma sirve en la industria farmacéutica?
+
+Sí. Se usa para reducir tiempos de liberación, rechazos, cambios de formato y desviaciones, siempre respetando las BPM y el control de cambios.
+
+### ¿Quién certifica los cinturones de Six Sigma?
+
+No hay un único organismo. Universidades, asociaciones profesionales y empresas de formación definen sus propios requisitos de examen y proyecto.
 
 ## Fuentes
 
-- [ISO](https://www.iso.org)
-- [FDA](https://www.fda.gov)
-- [INVIMA](https://www.invima.gov.co)
-- [Six Sigma Green Belt Specialization](https://imp.i384100.net/6kqMaq)
-- [Quality Improvement in Healthcare Specialization](https://imp.i384100.net/YVom5P)
-- [Quality in Pharmaceutical Industry: GMP, GLP, GHP](https://trk.udemy.com/YVK45B)
-- [ISO 9001 QMS Audit](https://trk.udemy.com/7XQ6M3)
-
-## Contenido relacionado
-
-- [Cursos de Aseguramiento de Calidad para químicos farmacéuticos](/articulos/cursos-de-aseguramiento-de-calidad)
-- [Cursos gratis de ISO 9001: guía para químicos farmacéuticos](/articulos/cursos-gratis-iso-9001)
-- [Cursos gratis de BPM y GMP: guía para químicos farmacéuticos](/articulos/cursos-gratis-bpm-gmp)
-
-> Este contenido es educativo y no constituye asesoría profesional individual.
+- [ASQ — Six Sigma: definiciones y método DMAIC](https://asq.org/quality-resources/six-sigma)
+- [ASQ — Lean](https://asq.org/quality-resources/lean)
+- [ICH — Guías de calidad (Q10, mejora continua en el sistema de calidad farmacéutica)](https://www.ich.org/page/quality-guidelines)

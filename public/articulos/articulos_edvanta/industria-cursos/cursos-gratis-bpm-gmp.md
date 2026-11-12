@@ -1,89 +1,104 @@
 # Cursos gratis de BPM y GMP: guía para químicos farmacéuticos
 
-La industria farmacéutica necesita profesionales que entiendan BPM y GMP y sepan aplicarlo en entornos regulados. Esta guía reúne cursos reales de Aseguramiento de Calidad para que compares opciones, revises el temario y elijas con criterio.
+BPM (Buenas Prácticas de Manufactura) y GMP (*Good Manufacturing Practices*) son lo mismo dicho en dos idiomas: el conjunto de requisitos que garantiza que un medicamento se fabrique siempre con la misma calidad. Es probablemente la formación más pedida en la industria farmacéutica, desde el operario de una línea hasta el director técnico. Si vas a trabajar en una planta, un curso de BPM no es opcional: es la puerta de entrada.
 
-> **Contenido editorial:** algunos enlaces pueden ser de afiliado. Edvanta no dicta ni certifica esos cursos. Verifica el precio, el acceso y el certificado en la plataforma antes de inscribirte.
+> **En resumen**
+>
+> - En Colombia, los manuales de BPM para medicamentos los establece la Resolución 1160 de 2016, con un manual general y otro para estériles.
+> - En Edvanta estudias gratis el Curso de Buenas Prácticas de Manufactura, además de BPL y BPE, con certificado verificable opcional.
+> - Las BPM no se aprenden memorizando: se aprenden entendiendo el riesgo que evita cada requisito.
 
-**En resumen**
+## Qué cubren las BPM
 
-- Qué es BPM y GMP y por qué se pide en la industria farmacéutica.
-- Cursos reales de Aseguramiento de Calidad con enlace directo a la plataforma.
-- Cómo elegir, qué roles existen y una ruta de aprendizaje de tres pasos.
-- Fuentes oficiales para verificar requisitos y actualizar el temario.
+Las BPM tocan todo lo que puede afectar la calidad del producto:
 
-## Por qué importa BPM y GMP en 2026
+- **Personal:** formación, higiene, vestimenta y responsabilidades claras.
+- **Instalaciones y equipos:** diseño que evite la contaminación, mantenimiento y calificación.
+- **Documentación:** procedimientos, registros de lote y especificaciones que permitan reconstruir lo que pasó.
+- **Producción:** control de materiales, prevención de mezclas y de contaminación cruzada, despeje de línea.
+- **Control de calidad:** muestreo, análisis y liberación.
+- **Quejas, retiros y autoinspecciones:** cómo reaccionar cuando algo falla y cómo detectarlo antes.
 
-En Colombia y Latinoamérica, los laboratorios, las IPS, las empresas de dispositivos médicos y las autoridades sanitarias trabajan con estándares que cambian con frecuencia. Formarte en BPM y GMP te ayuda a leer esos requisitos, documentar decisiones y aportar en equipos multidisciplinarios.
+## El marco en Colombia
 
-## Qué aprenderás
+La Resolución 1160 de 2016 del Ministerio de Salud y Protección Social adoptó el Manual de BPM para medicamentos con sus principios fundamentales y el Manual de BPM para medicamentos estériles, complementario del primero. La Resolución 2190 de 2020 modificó algunos artículos, entre ellos los relacionados con la validación de procesos de medicamentos no estériles. El INVIMA verifica su cumplimiento en las visitas de certificación.
 
-- BPM y GMP
-- Sistemas de gestión de calidad
-- ISO 9001
-- BPM/GMP
-- CAPA y no conformidades
-- Auditorías internas
+Las BPM tienen familia: las **Buenas Prácticas de Laboratorio (BPL)** para los laboratorios de análisis y las **Buenas Prácticas de Elaboración (BPE)** para las preparaciones magistrales y las centrales de mezclas de los servicios farmacéuticos.
 
-## Cursos recomendados de Aseguramiento de Calidad
+## Cursos de BPM gratis en Edvanta
+
+| Curso gratis | Para qué te sirve |
+|---|---|
+| [Buenas Prácticas de Manufactura — BPM](/curso-de-buenas-practicas-de-manufactura-bpm) | Los requisitos de BPM explicados con casos de planta |
+| [Buenas Prácticas de Laboratorio — BPL](/curso-de-buenas-practicas-de-laboratorio-bpl) | El equivalente en el laboratorio de control de calidad |
+| [BPE y Preparaciones Magistrales](/curso-de-bpe-y-preparaciones-magistrales) | La versión para servicios farmacéuticos |
+| [Central de Mezclas](/curso-de-central-de-mezclas) | Preparaciones estériles y gestión de la calidad |
+
+Los cuatro se estudian sin costo, a tu ritmo. El certificado verificable, si lo quieres, cuesta COP 60.000 por curso.
+
+## Cursos de GMP online en otras plataformas
 
 | Curso | Plataforma | Enlace |
 |---|---|---|
 | Quality in Pharmaceutical Industry: GMP, GLP, GHP | Udemy | [Ver curso](https://trk.udemy.com/YVK45B) |
-| Document Control & Good Documentation Practices (GDP) in GMP | Udemy | [Ver curso](https://trk.udemy.com/1GOQ36) |
 | Normas de Correcta Fabricación GMP | Udemy | [Ver curso](https://trk.udemy.com/aN6Qkq) |
 | Foundations of Pharmaceutical Quality Assurance and GMP | Udemy | [Ver curso](https://trk.udemy.com/5kLP3o) |
 
-> El acceso gratuito, el certificado y las condiciones de cada curso dependen de la plataforma. Algunas opciones permiten aprender sin costo y cobran solo el certificado; otras tienen precio desde el inicio. Confirma antes de inscribirte.
+> **Contenido editorial:** algunos enlaces pueden ser de afiliado. Edvanta no dicta esos cursos; su acceso, precio y certificado los define cada plataforma.
 
-## Cómo elegir un curso de BPM y GMP
+## Los errores de BPM que más se repiten
 
-1. Revisa el temario y confirma que cubre BPM y GMP con profundidad.
-2. Verifica el nivel: introductorio, intermedio o avanzado.
-3. Confirma si el acceso es gratuito y si el certificado tiene costo.
-4. Revisa la duración, el idioma y la modalidad.
-5. Comprueba quién dicta el curso y si incluye casos, proyectos o evaluaciones.
+Si estudias BPM pensando en lo que de verdad pasa en una planta, presta atención a estos temas, que suelen aparecer en hallazgos de inspección:
 
-## Salidas laborales
+1. **Registros incompletos o hechos después:** escribir al final del turno lo que pasó en la mañana.
+2. **Limpieza sin evidencia:** el equipo está limpio, pero no hay registro ni verificación.
+3. **Despeje de línea débil:** restos de un lote anterior que pueden terminar en el siguiente.
+4. **Capacitación que no se verifica:** el personal firmó la capacitación, pero no sabe aplicar el procedimiento.
+5. **Desviaciones sin investigación de fondo:** se cierran con «error humano» sin buscar la causa del sistema.
 
-- Analista de calidad
-- Auditor interno
-- Coordinador de SGC
-- Especialista en BPM
+Un buen curso de BPM te ayuda a reconocer estas situaciones y a explicar por qué importan.
 
-## Ruta de aprendizaje en 3 pasos
+## Cómo elegir tu curso de BPM y GMP
 
-1. **Fundamentos:** empieza por un curso introductorio o por la guía de Aseguramiento de Calidad para entender el vocabulario y el marco de trabajo.
-2. **Práctica:** elige un curso específico de BPM y GMP y aplícalo en un caso, un proyecto o una actividad de tu trabajo.
-3. **Especialización:** complementa con una certificación, una ruta de aprendizaje o un posgrado si el rol que buscas lo exige.
+- **Que incluya el marco colombiano:** muchos cursos internacionales hablan solo de la FDA o de la Unión Europea.
+- **Que distinga productos estériles y no estériles** si trabajas o quieres trabajar con inyectables.
+- **Que tenga casos de planta y quices:** las BPM se comprenden con situaciones, no con listas.
+- **Que el certificado se pueda verificar** si lo vas a presentar en una vacante.
+
+## Qué estudiar después de BPM
+
+Las BPM son la base; lo que te diferencia en una entrevista es lo que construyes encima. Según el cargo que buscas:
+
+- **Control de calidad:** sigue con [Control de Calidad de Medicamentos](/curso-de-control-de-calidad-de-medicamentos) y con la [validación de métodos analíticos](/curso-de-validacion-de-metodos-analiticos).
+- **Aseguramiento de la calidad:** suma [documentación farmacéutica](/curso-de-buenas-practicas-de-documentacion-farmaceutica) y [desviaciones y CAPA](/curso-de-gestion-de-desviaciones-y-capa).
+- **Producción:** profundiza en [BPM en la industria farmacéutica](/curso-de-bpm-en-la-industria-farmaceutica), un curso curado con enfoque de planta, y en [validaciones y calificaciones](/curso-de-validaciones-y-calificaciones).
+
+Con dos o tres de estos cursos y un ejemplo concreto de tu experiencia, tu perfil deja de ser «conozco las BPM» y pasa a ser «sé aplicarlas».
 
 ## Preguntas frecuentes
 
-### ¿Los cursos de BPM y GMP son gratis?
+### ¿Dónde hacer un curso de BPM gratis con certificado?
 
-El acceso y el certificado dependen de cada plataforma. Algunas ofrecen contenido gratuito y certificado opcional de pago; otras cobran desde el inicio. Verifica el precio y las condiciones antes de inscribirte.
+En Edvanta, el Curso de Buenas Prácticas de Manufactura se estudia gratis y el certificado verificable es opcional, por COP 60.000. Otras plataformas tienen sus propias condiciones.
 
-### ¿Necesito experiencia previa en BPM y GMP?
+### ¿BPM y GMP son lo mismo?
 
-No siempre. Hay cursos introductorios para estudiantes y profesionales que quieren actualizarse. Revisa el nivel y los requisitos en la ficha del curso.
+Sí. BPM es la sigla en español y GMP la sigla en inglés de *Good Manufacturing Practices*. Los contenidos pueden variar según el país que tome como referencia cada curso.
 
-### ¿Estos cursos sirven para trabajar en la industria farmacéutica?
+### ¿Quién otorga la certificación BPM en Colombia?
 
-Pueden ayudarte a construir competencias, pero no reemplazan la formación de base ni la experiencia. Úsalos como parte de una ruta y verifica que el temario se ajuste al rol que buscas.
+El INVIMA certifica a los establecimientos que fabrican medicamentos cuando verifica el cumplimiento de los manuales de BPM. La certificación es del establecimiento, no de las personas.
+
+### ¿Qué diferencia hay entre BPM, BPL y BPE?
+
+Las BPM aplican a la fabricación de medicamentos; las BPL, a los laboratorios de análisis; y las BPE, a la elaboración de preparaciones magistrales y mezclas en los servicios farmacéuticos.
+
+### ¿Un auxiliar de farmacia necesita un curso de BPM?
+
+Si trabaja en una planta de fabricación, sí. En un servicio farmacéutico le resulta más útil un curso de BPE o de buenas prácticas de almacenamiento y dispensación.
 
 ## Fuentes
 
-- [ISO](https://www.iso.org)
-- [FDA](https://www.fda.gov)
-- [INVIMA](https://www.invima.gov.co)
-- [Quality in Pharmaceutical Industry: GMP, GLP, GHP](https://trk.udemy.com/YVK45B)
-- [Document Control & Good Documentation Practices (GDP) in GMP](https://trk.udemy.com/1GOQ36)
-- [Normas de Correcta Fabricación GMP](https://trk.udemy.com/aN6Qkq)
-- [Foundations of Pharmaceutical Quality Assurance and GMP](https://trk.udemy.com/5kLP3o)
-
-## Contenido relacionado
-
-- [Cursos de Aseguramiento de Calidad para químicos farmacéuticos](/articulos/cursos-de-aseguramiento-de-calidad)
-- [Cursos gratis de ISO 9001: guía para químicos farmacéuticos](/articulos/cursos-gratis-iso-9001)
-- [Cursos gratis de GDP y documentación: guía para químicos farmacéuticos](/articulos/cursos-gratis-gdp-documentacion)
-
-> Este contenido es educativo y no constituye asesoría profesional individual.
+- [Normograma del INVIMA — Resolución 1160 de 2016](https://normograma.invima.gov.co/compilacion/docs/resolucion_minsaludps_1160_2016.htm)
+- [INVIMA — Certificaciones en buenas prácticas](https://www.invima.gov.co/productos-vigilados/medicamentos-y-productos-biologicos/medicamentos-de-sintesis-quimica-y-biologica/licenciamiento-auditorias-y-certificaciones/certificaciones-en-buenas-practicas)
+- [OMS — Buenas prácticas de manufactura](https://www.who.int/teams/health-product-and-policy-standards/standards-and-specifications/norms-and-standards/gmp)

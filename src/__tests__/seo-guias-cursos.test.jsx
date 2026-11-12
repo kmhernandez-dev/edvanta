@@ -25,7 +25,7 @@ describe('Guías de cursos por área', () => {
   const propias = INDUSTRIA_CURSOS_50.filter((a) => a.contenidoPropio);
 
   it('las reescritas con contenido propio se indexan; las de plantilla no', () => {
-    expect(propias.length).toBeGreaterThanOrEqual(8);
+    expect(propias.length).toBeGreaterThanOrEqual(16);
     for (const a of INDUSTRIA_CURSOS_50) expect(puedeIndexarse(a), a.slug).toBe(Boolean(a.contenidoPropio));
   });
 

@@ -272,11 +272,60 @@ const REESCRITOS = {
     seoTitle: 'Cursos de datos e IA para químicos farmacéuticos',
     description: 'Excel, Power BI, SQL, Python e IA con control humano: qué aprender, guías de Claude y certificados de datos para químicos farmacéuticos.',
   },
+  // Lote 2 (11-nov-2026): los ocho temas de calidad.
+  'cursos-gratis-iso-9001': {
+    title: 'Cursos gratis de ISO 9001: guía para químicos farmacéuticos',
+    seoTitle: 'Cursos de ISO 9001 gratis, online y con certificado',
+    description: 'Qué pide ISO 9001, cómo convive con las BPM, qué curso elegir (interpretación o auditor interno) y cursos de gestión de calidad gratis.',
+    readingTime: '6 min',
+  },
+  'cursos-gratis-bpm-gmp': {
+    title: 'Cursos gratis de BPM y GMP: guía para químicos farmacéuticos',
+    seoTitle: 'Cursos de BPM y GMP gratis con certificado',
+    description: 'Qué cubren las BPM, la Resolución 1160 de 2016, los errores que más se repiten en planta y cursos de BPM, BPL y BPE gratis con certificado.',
+    readingTime: '6 min',
+  },
+  'cursos-gratis-gdp-documentacion': {
+    title: 'Cursos gratis de buenas prácticas de documentación (GDP)',
+    seoTitle: 'Curso de buenas prácticas de documentación gratis',
+    description: 'ALCOA+, reglas para registrar y corregir, errores que ve un auditor y cómo escribir POE claros: cursos de documentación farmacéutica gratis.',
+    readingTime: '6 min',
+  },
+  'cursos-gratis-capa-desviaciones': {
+    title: 'Cursos gratis de CAPA y desviaciones: guía para químicos farmacéuticos',
+    seoTitle: 'Cursos de CAPA y desviaciones gratis y online',
+    description: 'Cómo investigar una desviación, herramientas de causa raíz, CAPA medibles e indicadores del sistema: cursos de CAPA y desviaciones gratis.',
+    readingTime: '6 min',
+  },
+  'cursos-gratis-gestion-de-riesgos': {
+    title: 'Cursos gratis de gestión de riesgos en calidad farmacéutica',
+    seoTitle: 'Cursos de gestión de riesgos ICH Q9 gratis',
+    description: 'ICH Q9(R1) explicada, FMEA con un ejemplo de planta, herramientas y errores comunes: cursos de gestión de riesgos en calidad farmacéutica.',
+    readingTime: '6 min',
+  },
+  'cursos-gratis-auditoria-farmaceutica': {
+    title: 'Cursos gratis de auditoría farmacéutica: cómo formarte como auditor',
+    seoTitle: 'Cursos de auditoría farmacéutica gratis y online',
+    description: 'Tipos de auditoría, ISO 19011, cómo redactar hallazgos y auditar proveedores: cursos de auditoría farmacéutica gratis con certificado.',
+    readingTime: '6 min',
+  },
+  'cursos-gratis-integridad-de-datos': {
+    title: 'Cursos gratis de integridad de datos farmacéutica: ALCOA+ y sistemas',
+    seoTitle: 'Cursos de integridad de datos y ALCOA+ gratis',
+    description: 'ALCOA+ con ejemplos, 21 CFR Part 11, Anexo 11 y GAMP 5, y una revisión rápida para tu laboratorio: cursos de integridad de datos.',
+    readingTime: '6 min',
+  },
+  'cursos-gratis-lean-six-sigma': {
+    title: 'Cursos de Lean Six Sigma para químicos farmacéuticos',
+    seoTitle: 'Cursos de Lean Six Sigma para químicos farmacéuticos',
+    description: 'DMAIC, desperdicios Lean en planta, niveles de cinturón y un proyecto de ejemplo: cursos de Lean Six Sigma para la industria farmacéutica.',
+    readingTime: '6 min',
+  },
 };
 for (const a of todos) {
   const r = REESCRITOS[a.slug];
   if (!r) continue;
-  Object.assign(a, r, { seoDescription: r.description, readingTime: '12 min', updated: '2026-11-11', contenidoPropio: true });
+  Object.assign(a, r, { seoDescription: r.description, readingTime: r.readingTime || '12 min', updated: '2026-11-11', contenidoPropio: true });
 }
 
 export const INDUSTRIA_CURSOS_50 = todos;

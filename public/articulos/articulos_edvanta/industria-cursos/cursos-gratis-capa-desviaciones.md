@@ -1,93 +1,107 @@
 # Cursos gratis de CAPA y desviaciones: guía para químicos farmacéuticos
 
-La industria farmacéutica necesita profesionales que entiendan CAPA y desviaciones y sepan aplicarlo en entornos regulados. Esta guía reúne cursos reales de Aseguramiento de Calidad para que compares opciones, revises el temario y elijas con criterio.
+Una desviación es cualquier cosa que se aparta de lo aprobado: una temperatura fuera de rango, un paso omitido, un equipo que se detuvo a mitad de un lote. CAPA (acciones correctivas y preventivas) es lo que se hace para que no vuelva a pasar. Juntas forman el sistema que más dice de la madurez de una empresa farmacéutica: una organización que investiga bien sus desviaciones aprende; una que las cierra con «error humano» repite los mismos problemas.
 
-> **Contenido editorial:** algunos enlaces pueden ser de afiliado. Edvanta no dicta ni certifica esos cursos. Verifica el precio, el acceso y el certificado en la plataforma antes de inscribirte.
+> **En resumen**
+>
+> - En Edvanta estudias gratis Gestión de Desviaciones y CAPA, con casos para practicar la investigación de principio a fin.
+> - La calidad de una CAPA se mide por su eficacia: si el problema no se repite, funcionó.
+> - «Error humano» casi nunca es la causa raíz; es el síntoma de algo en el sistema.
 
-**En resumen**
+## El recorrido de una desviación
 
-- Qué es CAPA y desviaciones y por qué se pide en la industria farmacéutica.
-- Cursos reales de Aseguramiento de Calidad con enlace directo a la plataforma.
-- Cómo elegir, qué roles existen y una ruta de aprendizaje de tres pasos.
-- Fuentes oficiales para verificar requisitos y actualizar el temario.
+1. **Detección y registro inmediato:** quien la ve la reporta, sin miedo a represalias.
+2. **Contención:** se protege el producto afectado, por ejemplo, poniendo el lote en cuarentena.
+3. **Clasificación por riesgo:** crítica, mayor o menor, según el impacto posible en el paciente y en el producto.
+4. **Investigación de causa raíz:** con método, no con suposiciones.
+5. **Evaluación del impacto:** ¿qué lotes, productos o procesos pudieron verse afectados?
+6. **Definición de CAPA:** acciones concretas, con responsable y fecha.
+7. **Verificación de eficacia:** después de un tiempo definido, se comprueba con datos que el problema no se repite.
 
-## Por qué importa CAPA y desviaciones en 2026
+## Herramientas de causa raíz que debes dominar
 
-En Colombia y Latinoamérica, los laboratorios, las IPS, las empresas de dispositivos médicos y las autoridades sanitarias trabajan con estándares que cambian con frecuencia. Formarte en CAPA y desviaciones te ayuda a leer esos requisitos, documentar decisiones y aportar en equipos multidisciplinarios.
+- **5 porqués:** preguntar «¿por qué?» hasta llegar a una causa del sistema que se pueda corregir.
+- **Diagrama de Ishikawa:** ordenar causas posibles por categorías (personas, métodos, máquinas, materiales, medición y entorno).
+- **Análisis de cambios:** ¿qué fue distinto esta vez?
+- **Línea de tiempo:** reconstruir los hechos en orden antes de sacar conclusiones.
+- **Diagrama de Pareto:** descubrir qué pocas causas explican la mayoría de las desviaciones de un periodo.
+- **Entrevistas sin culpa:** conversar con quienes estaban presentes buscando entender, no sancionar; así la gente cuenta lo que realmente pasó.
 
-## Qué aprenderás
+## Corrección, acción correctiva y acción preventiva
 
-- CAPA y desviaciones
-- Sistemas de gestión de calidad
-- ISO 9001
-- BPM/GMP
-- CAPA y no conformidades
-- Auditorías internas
+Son tres cosas distintas y una buena investigación las separa:
 
-## Cursos recomendados de Aseguramiento de Calidad
+- **Corrección:** arregla el efecto inmediato. Por ejemplo, reprocesar o rechazar el lote.
+- **Acción correctiva:** elimina la causa para que no se repita.
+- **Acción preventiva:** elimina la causa de un problema que todavía no ha ocurrido, por ejemplo, en otra línea con el mismo riesgo.
+
+El sistema CAPA forma parte del sistema de calidad farmacéutica que describe la guía ICH Q10, junto con el control de cambios y la revisión por la dirección.
+
+## Cursos de desviaciones y CAPA en Edvanta
+
+| Curso gratis | Para qué te sirve |
+|---|---|
+| [Gestión de Desviaciones y CAPA](/curso-de-gestion-de-desviaciones-y-capa) | Investigar, clasificar y cerrar desviaciones con eficacia |
+| [Gestión de Riesgos en la Calidad Farmacéutica](/curso-de-gestion-de-riesgos-en-la-calidad-farmaceutica) | Clasificar desviaciones según el riesgo |
+| [Aseguramiento de la Calidad Farmacéutica](/curso-de-aseguramiento-de-la-calidad-farmaceutica) | El sistema completo en el que vive la CAPA |
+
+Estudias gratis, a tu ritmo; el certificado verificable cuesta COP 60.000 por curso, solo si lo deseas.
+
+## Cursos complementarios en otras plataformas
 
 | Curso | Plataforma | Enlace |
 |---|---|---|
-| Six Sigma Green Belt Specialization | Coursera | [Ver curso](https://imp.i384100.net/6kqMaq) |
-| Quality Improvement in Healthcare Specialization | Coursera | [Ver curso](https://imp.i384100.net/YVom5P) |
-| Quality in Pharmaceutical Industry: GMP, GLP, GHP | Udemy | [Ver curso](https://trk.udemy.com/YVK45B) |
-| ISO 9001 QMS Audit | Udemy | [Ver curso](https://trk.udemy.com/7XQ6M3) |
-| ISO 9001 Quality Management System with Full Template | Udemy | [Ver curso](https://trk.udemy.com/yZBKkD) |
-| Document Control & Good Documentation Practices (GDP) in GMP | Udemy | [Ver curso](https://trk.udemy.com/1GOQ36) |
-| Normas de Correcta Fabricación GMP | Udemy | [Ver curso](https://trk.udemy.com/aN6Qkq) |
+| How to Perform Investigations in Pharmaceuticals | Udemy | [Ver curso](https://trk.udemy.com/KBEaRy) |
 | Foundations of Pharmaceutical Quality Assurance and GMP | Udemy | [Ver curso](https://trk.udemy.com/5kLP3o) |
 
-> El acceso gratuito, el certificado y las condiciones de cada curso dependen de la plataforma. Algunas opciones permiten aprender sin costo y cobran solo el certificado; otras tienen precio desde el inicio. Confirma antes de inscribirte.
+> **Contenido editorial:** algunos enlaces pueden ser de afiliado. Edvanta no dicta esos cursos; confirma condiciones y certificado en cada plataforma.
 
-## Cómo elegir un curso de CAPA y desviaciones
+## Cómo escribir una CAPA que funcione
 
-1. Revisa el temario y confirma que cubre CAPA y desviaciones con profundidad.
-2. Verifica el nivel: introductorio, intermedio o avanzado.
-3. Confirma si el acceso es gratuito y si el certificado tiene costo.
-4. Revisa la duración, el idioma y la modalidad.
-5. Comprueba quién dicta el curso y si incluye casos, proyectos o evaluaciones.
+Una CAPA débil dice «reentrenar al personal». Una CAPA fuerte cambia algo del sistema y se puede medir. Compara:
 
-## Salidas laborales
+- **Débil:** «Capacitar al operario en el procedimiento de limpieza».
+- **Fuerte:** «Agregar al registro de limpieza un paso de verificación por una segunda persona y medir durante tres meses las limpiezas rechazadas».
 
-- Analista de calidad
-- Auditor interno
-- Coordinador de SGC
-- Especialista en BPM
+Cada CAPA debería responder: ¿qué causa elimina?, ¿quién la ejecuta?, ¿para cuándo?, ¿cómo y cuándo sabremos que funcionó?
 
-## Ruta de aprendizaje en 3 pasos
+## Indicadores para saber si tu sistema funciona
 
-1. **Fundamentos:** empieza por un curso introductorio o por la guía de Aseguramiento de Calidad para entender el vocabulario y el marco de trabajo.
-2. **Práctica:** elige un curso específico de CAPA y desviaciones y aplícalo en un caso, un proyecto o una actividad de tu trabajo.
-3. **Especialización:** complementa con una certificación, una ruta de aprendizaje o un posgrado si el rol que buscas lo exige.
+Un sistema de desviaciones y CAPA sano se nota en sus números. Los indicadores más útiles son:
+
+- **Desviaciones cerradas dentro del plazo:** muestra si las investigaciones se están atendiendo a tiempo.
+- **Tiempo promedio de investigación:** si crece, hay falta de recursos o investigaciones mal enfocadas.
+- **Desviaciones recurrentes:** el mismo problema en el mismo proceso es la señal más clara de CAPA ineficaces.
+- **Porcentaje de CAPA eficaces:** cuántas superaron la verificación de eficacia.
+- **Proporción de causas clasificadas como error humano:** si es muy alta, probablemente la investigación se está quedando corta.
+
+Estos indicadores se presentan en la revisión por la dirección y ayudan a pedir recursos con argumentos.
+
+Si redactas desviaciones con frecuencia, la guía [Claude para químicos farmacéuticos en aseguramiento de la calidad](/guia/claude-aseguramiento-de-calidad-farmaceutica) dedica un bloque completo a descripciones sin juicios, clasificación por riesgo, el desafío al «error humano» y CAPA medibles.
 
 ## Preguntas frecuentes
 
-### ¿Los cursos de CAPA y desviaciones son gratis?
+### ¿Qué significa CAPA?
 
-El acceso y el certificado dependen de cada plataforma. Algunas ofrecen contenido gratuito y certificado opcional de pago; otras cobran desde el inicio. Verifica el precio y las condiciones antes de inscribirte.
+Son las acciones correctivas y preventivas: las acciones que eliminan la causa de un problema detectado (correctivas) o de un problema que podría ocurrir (preventivas).
 
-### ¿Necesito experiencia previa en CAPA y desviaciones?
+### ¿Qué es una desviación en la industria farmacéutica?
 
-No siempre. Hay cursos introductorios para estudiantes y profesionales que quieren actualizarse. Revisa el nivel y los requisitos en la ficha del curso.
+Es cualquier apartamiento de un procedimiento, una especificación o una instrucción aprobada. Debe registrarse, evaluarse por riesgo e investigarse.
 
-### ¿Estos cursos sirven para trabajar en la industria farmacéutica?
+### ¿Por qué «error humano» no es una causa raíz?
 
-Pueden ayudarte a construir competencias, pero no reemplazan la formación de base ni la experiencia. Úsalos como parte de una ruta y verifica que el temario se ajuste al rol que buscas.
+Porque casi siempre hay algo en el sistema que facilitó el error: un procedimiento confuso, una interfaz que induce a equivocarse, una carga de trabajo excesiva o una capacitación sin verificación. La investigación debe llegar hasta ahí.
+
+### ¿Dónde estudiar un curso de CAPA gratis?
+
+En Edvanta, Gestión de Desviaciones y CAPA se estudia gratis y en línea, con certificado verificable opcional por COP 60.000.
+
+### ¿Cómo se verifica la eficacia de una CAPA?
+
+Definiendo de antemano un indicador y un plazo, y comprobando con datos que el problema no se repitió. Si se repite, la investigación o la acción no fueron suficientes.
 
 ## Fuentes
 
-- [ISO](https://www.iso.org)
-- [FDA](https://www.fda.gov)
-- [INVIMA](https://www.invima.gov.co)
-- [Six Sigma Green Belt Specialization](https://imp.i384100.net/6kqMaq)
-- [Quality Improvement in Healthcare Specialization](https://imp.i384100.net/YVom5P)
-- [Quality in Pharmaceutical Industry: GMP, GLP, GHP](https://trk.udemy.com/YVK45B)
-- [ISO 9001 QMS Audit](https://trk.udemy.com/7XQ6M3)
-
-## Contenido relacionado
-
-- [Cursos de Aseguramiento de Calidad para químicos farmacéuticos](/articulos/cursos-de-aseguramiento-de-calidad)
-- [Cursos gratis de ISO 9001: guía para químicos farmacéuticos](/articulos/cursos-gratis-iso-9001)
-- [Cursos gratis de BPM y GMP: guía para químicos farmacéuticos](/articulos/cursos-gratis-bpm-gmp)
-
-> Este contenido es educativo y no constituye asesoría profesional individual.
+- [ICH — Guías de calidad (Q10, sistema de calidad farmacéutica)](https://www.ich.org/page/quality-guidelines)
+- [Normograma del INVIMA — Resolución 1160 de 2016](https://normograma.invima.gov.co/compilacion/docs/resolucion_minsaludps_1160_2016.htm)
