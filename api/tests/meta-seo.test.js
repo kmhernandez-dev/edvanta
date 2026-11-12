@@ -105,6 +105,12 @@ describe('cursos', () => {
     expect(tituloDeCurso(propio(), corto)).toBe(corto);
   });
 
+  it('propio de nombre largo sin subtítulo: usa su nombre corto', () => {
+    const f = propio({ url: '/curso-de-gestion-de-desviaciones-y-capa' });
+    expect(tituloDeCurso(f, 'Curso de Gestión de Desviaciones y Acciones Correctivas y Preventivas — CAPA'))
+      .toBe('Curso de Gestión de Desviaciones y CAPA gratis | Edvanta');
+  });
+
   it('curado con guía: el título y la descripción escritos a mano mandan', () => {
     const f = curado({
       proveedor: { nombre: 'Udemy' },

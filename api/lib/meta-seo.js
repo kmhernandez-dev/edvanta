@@ -100,6 +100,17 @@ function sinSubtitulo(t) {
 }
 
 /**
+ * Propios cuyo nombre completo no cabe en el título ni tiene subtítulo
+ * que recortar: el nombre corto que usa su dirección. La clave es la ruta.
+ */
+const NOMBRES_CORTOS_DE_PROPIOS = {
+  '/curso-de-bpe-y-preparaciones-magistrales': 'Curso de BPE y Preparaciones Magistrales',
+  '/curso-de-bpm-en-la-industria-farmaceutica': 'Curso de BPM en la Industria Farmacéutica',
+  '/curso-de-gestion-de-desviaciones-y-capa': 'Curso de Gestión de Desviaciones y CAPA',
+  '/curso-de-validaciones-y-calificaciones': 'Curso de Validaciones y Calificaciones',
+};
+
+/**
  * Título del curso: «gratis» en los propios; el proveedor en los curados.
  * Si el nombre completo no cabe, se prueba sin el subtítulo de los dos
  * puntos: «Curso para Hablar Frente a la Cámara: Oratoria Digital…».
@@ -113,7 +124,8 @@ export function tituloDeCurso(ficha, nombre) {
   const c = sinSubtitulo(n);
   if (esPropio(ficha)) {
     const variantes = (x) => [`${x} gratis | Edvanta`, `${x} gratis`, `${x} | Edvanta`, x];
-    return tituloQueCabe([...variantes(n), ...(c ? variantes(c) : [])]);
+    const corto = NOMBRES_CORTOS_DE_PROPIOS[ficha?.url];
+    return tituloQueCabe([...variantes(n), ...(c ? variantes(c) : []), ...(corto ? variantes(corto) : [])]);
   }
   const prov = limpio(ficha?.proveedor?.nombre);
   const variantes = (x) => [prov && `${x} en ${prov} | Edvanta`, prov && `${x} en ${prov}`, `${x} | Edvanta`, x];

@@ -197,6 +197,28 @@ describe('migraciones', () => {
     });
     await base.db.exec(`DELETE FROM courses WHERE slug LIKE 'prueba-%'`);
   });
+
+  it('los cuatro cursos propios de ficha corta quedan con descripción, público y resultados (117)', async () => {
+    const titulos = [
+      'Central de Mezclas: Preparaciones Estériles, BPE y Gestión de la Calidad',
+      'Validaciones y Calificaciones en la Industria Farmacéutica',
+      'Asuntos Regulatorios Sanitarios ante INVIMA',
+      'Autocuidado de la tiroides',
+    ];
+    const { rows } = await base.db.query(
+      `SELECT title, description_html, audience, prerequisites, learning_outcomes
+         FROM aula_courses WHERE kind = 'edvanta' AND deleted_at IS NULL AND title = ANY($1)`,
+      [titulos],
+    );
+    expect(rows.map((r) => r.title).sort()).toEqual([...titulos].sort());
+    for (const r of rows) {
+      expect(r.description_html.length, r.title).toBeGreaterThan(400);
+      expect(r.audience.length, r.title).toBeGreaterThan(60);
+      expect(r.prerequisites.length, r.title).toBeGreaterThan(20);
+      // El de la tiroides ya traía 4 resultados (033): la migración no los pisa.
+      expect(r.learning_outcomes.length, r.title).toBeGreaterThanOrEqual(4);
+    }
+  });
 });
 
 describe('ficha pública de curso · temario', () => {
