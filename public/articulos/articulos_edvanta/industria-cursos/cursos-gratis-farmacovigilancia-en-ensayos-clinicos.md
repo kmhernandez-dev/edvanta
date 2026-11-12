@@ -1,93 +1,109 @@
-# Cursos gratis de Farmacovigilancia en ensayos clínicos: guía para químicos farmacéuticos
+# Cursos gratis de farmacovigilancia en ensayos clínicos: eventos adversos serios, SUSAR y DSUR
 
-La industria farmacéutica necesita profesionales que entiendan Farmacovigilancia en ensayos clínicos y sepan aplicarlo en entornos regulados. Esta guía reúne cursos reales de Farmacovigilancia para que compares opciones, revises el temario y elijas con criterio.
+En un ensayo clínico, el medicamento todavía no está aprobado y su perfil de seguridad se está construyendo. Por eso la vigilancia de los eventos adversos es más estricta que después de la comercialización: cada evento se registra, los serios se reportan de inmediato y los inesperados que pueden estar relacionados con el producto se comunican a las autoridades en plazos cortos. Esta guía explica los conceptos clave de la farmacovigilancia en investigación clínica y los cursos que sirven para formarte en ella.
 
-> **Contenido editorial:** algunos enlaces pueden ser de afiliado. Edvanta no dicta ni certifica esos cursos. Verifica el precio, el acceso y el certificado en la plataforma antes de inscribirte.
+> **En resumen**
+>
+> - En un ensayo se registran todos los eventos adversos; los serios se notifican de inmediato al patrocinador.
+> - Una SUSAR es una sospecha de reacción adversa seria e inesperada; según la guía ICH E2A, las mortales o que amenazan la vida se reportan en un máximo de 7 días y las demás en 15.
+> - El DSUR (guía ICH E2F) es el informe anual de seguridad durante el desarrollo.
 
-**En resumen**
+## Conceptos clave
 
-- Qué es Farmacovigilancia en ensayos clínicos y por qué se pide en la industria farmacéutica.
-- Cursos reales de Farmacovigilancia con enlace directo a la plataforma.
-- Cómo elegir, qué roles existen y una ruta de aprendizaje de tres pasos.
-- Fuentes oficiales para verificar requisitos y actualizar el temario.
+| Término | Qué es |
+|---|---|
+| Evento adverso (EA) | Cualquier suceso médico desfavorable en un participante, tenga o no relación con el producto |
+| Evento adverso serio (EAS) | El que causa la muerte, amenaza la vida, requiere o prolonga la hospitalización, produce discapacidad, causa una anomalía congénita o es médicamente importante |
+| Reacción adversa | Evento en el que se sospecha una relación causal con el producto en investigación |
+| SUSAR | Sospecha de reacción adversa seria e inesperada |
+| Información de seguridad de referencia | La sección del manual del investigador que define qué reacciones son esperadas |
 
-## Por qué importa Farmacovigilancia en ensayos clínicos en 2026
+El carácter de **inesperado** se define frente al manual del investigador (*Investigator's Brochure*), no frente a la experiencia del médico.
 
-En Colombia y Latinoamérica, los laboratorios, las IPS, las empresas de dispositivos médicos y las autoridades sanitarias trabajan con estándares que cambian con frecuencia. Formarte en Farmacovigilancia en ensayos clínicos te ayuda a leer esos requisitos, documentar decisiones y aportar en equipos multidisciplinarios.
+## Quién hace qué
 
-## Qué aprenderás
+### El investigador
 
-- Farmacovigilancia en ensayos clínicos
-- Farmacovigilancia
-- Reporte de eventos adversos
-- Detección de señales
-- Gestión de riesgos
-- Seguridad en ensayos clínicos
+- Registra todos los eventos adversos en la historia y en el formulario de reporte de caso.
+- Evalúa la gravedad, la intensidad y la relación con el producto.
+- Notifica de inmediato al patrocinador los eventos adversos serios, como lo exige el protocolo.
+- Hace seguimiento hasta la resolución del evento.
 
-## Cursos recomendados de Farmacovigilancia
+### El patrocinador
+
+- Evalúa cada caso, incluida la expectativa frente al manual del investigador.
+- Reporta las SUSAR a las autoridades y a los comités de ética en los plazos aplicables.
+- Mantiene actualizada la información de seguridad de referencia.
+- Prepara el DSUR y comunica nueva información de seguridad a los investigadores.
+
+## Plazos de reporte de referencia internacional
+
+La guía **ICH E2A**, adoptada por las principales autoridades, establece los plazos de reporte acelerado de las SUSAR:
+
+- **Mortales o que amenazan la vida:** lo antes posible y a más tardar 7 días calendario desde que el patrocinador las conoce, con información de seguimiento dentro de los 8 días siguientes.
+- **Las demás SUSAR:** a más tardar 15 días calendario.
+
+Cada país puede tener requisitos adicionales sobre los formatos y destinatarios. En Colombia, la investigación con medicamentos en seres humanos se rige por las buenas prácticas clínicas de la Resolución 2378 de 2008, y el INVIMA certifica a las instituciones que las cumplen. Antes de reportar, revisa siempre los requisitos vigentes del INVIMA para investigación clínica.
+
+## El DSUR: el informe anual de seguridad
+
+El *Development Safety Update Report*, descrito en la guía **ICH E2F**, resume una vez al año la información de seguridad del producto en investigación: los nuevos hallazgos, el análisis de los casos serios, los cambios en el perfil de riesgo y las medidas tomadas. Es para el desarrollo lo que el PBRER es para el medicamento comercializado.
+
+## El comité de monitoreo de datos
+
+En muchos ensayos, un comité independiente de monitoreo de datos y seguridad revisa periódicamente los datos acumulados, incluso sin cegar los grupos. Puede recomendar continuar, modificar o detener el estudio si encuentra un riesgo inaceptable o un beneficio claro.
+
+## Cursos de farmacovigilancia en ensayos clínicos
 
 | Curso | Plataforma | Enlace |
 |---|---|---|
-| Drug Safety and Pharmacovigilance | Coursera | [Ver curso](https://imp.i384100.net/KB9dQx) |
-| Drug Utilization: Trends, Determinants and Consequences | Coursera | [Ver curso](https://imp.i384100.net/7Xx0Yy) |
-| Comparative Effectiveness and Real-World Evidence | Coursera | [Ver curso](https://imp.i384100.net/m4byQX) |
-| Drug Development and Pharmacoepidemiology Specialization | Coursera | [Ver curso](https://imp.i384100.net/L0rdvM) |
-| Fundamentals of Pharmacovigilance | Udemy | [Ver curso](https://trk.udemy.com/4aMRkr) |
-| Pharmacovigilance Research & Drug Safety Monitoring | Udemy | [Ver curso](https://trk.udemy.com/vDm1Ly) |
 | Comprehensive Clinical Research and Pharmacovigilance | Udemy | [Ver curso](https://trk.udemy.com/0GOD7Y) |
-| Certificate Course in Pharmacovigilance: Practical ICSR | Udemy | [Ver curso](https://trk.udemy.com/zzq93x) |
+| Pharmacovigilance Aggregate Writing for DSUR & PBRER | Udemy | [Ver curso](https://trk.udemy.com/n4VrO9) |
+| Fundamentals of Pharmacovigilance | Udemy | [Ver curso](https://trk.udemy.com/4aMRkr) |
+| Drug Development and Pharmacoepidemiology Specialization | Coursera | [Ver curso](https://imp.i384100.net/L0rdvM) |
 
-> El acceso gratuito, el certificado y las condiciones de cada curso dependen de la plataforma. Algunas opciones permiten aprender sin costo y cobran solo el certificado; otras tienen precio desde el inicio. Confirma antes de inscribirte.
+> **Contenido editorial:** algunos enlaces son de afiliado. Edvanta no dicta esos cursos; confirma condiciones y certificado en cada plataforma.
 
-## Cómo elegir un curso de Farmacovigilancia en ensayos clínicos
+Para el marco general de la investigación clínica, revisa la guía de [cursos de ensayos clínicos y buenas prácticas clínicas](/articulos/cursos-de-ensayos-clinicos-y-buenas-practicas-clinicas), que explica la ICH E6(R3) y la Resolución 2378 de 2008. Si te interesa coordinar estudios, la guía de [cursos de gestión de proyectos](/articulos/cursos-de-gestion-de-proyectos-con-certificado) incluye la especialización Clinical Project Management. Y para la redacción de los registros, el curso gratuito de [Buenas Prácticas de Documentación Farmacéutica](/curso-de-buenas-practicas-de-documentacion-farmaceutica) de Edvanta, con certificado opcional de COP 60.000.
 
-1. Revisa el temario y confirma que cubre Farmacovigilancia en ensayos clínicos con profundidad.
-2. Verifica el nivel: introductorio, intermedio o avanzado.
-3. Confirma si el acceso es gratuito y si el certificado tiene costo.
-4. Revisa la duración, el idioma y la modalidad.
-5. Comprueba quién dicta el curso y si incluye casos, proyectos o evaluaciones.
+## Errores frecuentes en la seguridad de un ensayo
 
-## Salidas laborales
+- **No registrar los eventos «sin importancia»:** todos los eventos adversos se registran; la evaluación viene después.
+- **Confundir grave con severo:** un evento puede ser severo en intensidad y no ser serio en sentido regulatorio.
+- **Notificar tarde al patrocinador:** el reloj del reporte acelerado empieza cuando el patrocinador conoce el caso.
+- **Evaluar la expectativa con la ficha técnica de otro producto:** la referencia es el manual del investigador vigente.
+- **Cerrar el caso sin seguimiento** del desenlace.
 
-- Analista de farmacovigilancia
-- Especialista en seguridad de medicamentos
-- Coordinador de PV
-- Analista de señales
+## Roles en esta área
 
-## Ruta de aprendizaje en 3 pasos
-
-1. **Fundamentos:** empieza por un curso introductorio o por la guía de Farmacovigilancia para entender el vocabulario y el marco de trabajo.
-2. **Práctica:** elige un curso específico de Farmacovigilancia en ensayos clínicos y aplícalo en un caso, un proyecto o una actividad de tu trabajo.
-3. **Especialización:** complementa con una certificación, una ruta de aprendizaje o un posgrado si el rol que buscas lo exige.
+- **Coordinador o coordinadora de estudios clínicos** en el centro de investigación.
+- **Monitor clínico** (CRA), que verifica la calidad de los datos, incluidos los de seguridad.
+- **Especialista en seguridad clínica** en el patrocinador o en una organización de investigación por contrato (CRO).
+- **Redactor médico** de informes agregados como el DSUR.
 
 ## Preguntas frecuentes
 
-### ¿Los cursos de Farmacovigilancia en ensayos clínicos son gratis?
+### ¿Qué es una SUSAR?
 
-El acceso y el certificado dependen de cada plataforma. Algunas ofrecen contenido gratuito y certificado opcional de pago; otras cobran desde el inicio. Verifica el precio y las condiciones antes de inscribirte.
+Una sospecha de reacción adversa seria e inesperada: un evento serio, posiblemente relacionado con el producto en investigación, que no está descrito en la información de seguridad de referencia.
 
-### ¿Necesito experiencia previa en Farmacovigilancia en ensayos clínicos?
+### ¿En cuánto tiempo se reporta una SUSAR?
 
-No siempre. Hay cursos introductorios para estudiantes y profesionales que quieren actualizarse. Revisa el nivel y los requisitos en la ficha del curso.
+Según la guía ICH E2A, las mortales o que amenazan la vida en un máximo de 7 días calendario, y las demás en un máximo de 15. Cada país puede tener requisitos adicionales.
 
-### ¿Estos cursos sirven para trabajar en la industria farmacéutica?
+### ¿Qué es el DSUR?
 
-Pueden ayudarte a construir competencias, pero no reemplazan la formación de base ni la experiencia. Úsalos como parte de una ruta y verifica que el temario se ajuste al rol que buscas.
+El informe anual de seguridad durante el desarrollo de un medicamento, descrito en la guía ICH E2F.
+
+### ¿Qué norma rige los ensayos clínicos en Colombia?
+
+La Resolución 2378 de 2008 adopta las buenas prácticas clínicas, y el INVIMA certifica a las instituciones que las cumplen.
+
+### ¿Qué curso sirve para empezar en seguridad clínica?
+
+Comprehensive Clinical Research and Pharmacovigilance, en Udemy, combina investigación clínica y farmacovigilancia.
 
 ## Fuentes
 
-- [OMS](https://www.who.int)
-- [EMA](https://www.ema.europa.eu)
-- [INVIMA](https://www.invima.gov.co)
-- [Drug Safety and Pharmacovigilance](https://imp.i384100.net/KB9dQx)
-- [Drug Utilization: Trends, Determinants and Consequences](https://imp.i384100.net/7Xx0Yy)
-- [Comparative Effectiveness and Real-World Evidence](https://imp.i384100.net/m4byQX)
-- [Drug Development and Pharmacoepidemiology Specialization](https://imp.i384100.net/L0rdvM)
-
-## Contenido relacionado
-
-- [Cursos de Farmacovigilancia para químicos farmacéuticos](/articulos/cursos-de-farmacovigilancia)
-- [Cursos gratis de Seguridad de medicamentos: guía para químicos farmacéuticos](/articulos/cursos-gratis-seguridad-de-medicamentos)
-- [Cursos gratis de Reporte de eventos adversos: guía para químicos farmacéuticos](/articulos/cursos-gratis-reporte-de-eventos-adversos)
-
-> Este contenido es educativo y no constituye asesoría profesional individual.
+- **ICH E2A, E2F y E6.** International Council for Harmonisation. https://www.ich.org/page/efficacy-guidelines (consultado el 12 de noviembre de 2026).
+- **Resolución 2378 de 2008.** Ministerio de la Protección Social, en el normograma del INVIMA. https://normograma.invima.gov.co/compilacion/docs/resolucion_minproteccion_2378_2008.htm (consultado el 12 de noviembre de 2026).

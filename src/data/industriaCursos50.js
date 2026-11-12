@@ -388,6 +388,38 @@ const REESCRITOS = {
     description: 'DQ, IQ, OQ y PQ, FAT y SAT, calificación de instrumentos analíticos y un ejemplo práctico: cursos de calificación de equipos gratis.',
     readingTime: '6 min',
   },
+  // Lote 4a (12-nov-2026): farmacovigilancia. Normas verificadas en el normograma
+  // del INVIMA: Resolución 2024015321 de 2024 y Resolución 213 de 2022.
+  'cursos-gratis-seguridad-de-medicamentos': {
+    title: 'Cursos gratis de seguridad de medicamentos: errores de medicación, medicamentos de alto riesgo y uso seguro',
+    seoTitle: 'Seguridad de medicamentos: cursos gratis y errores',
+    description: 'Errores de medicación, medicamentos de alto riesgo y de nombre parecido, cómo analizar un error y cursos gratis de seguridad de medicamentos.',
+    readingTime: '7 min',
+  },
+  'cursos-gratis-reporte-de-eventos-adversos': {
+    title: 'Cursos gratis de reporte de eventos adversos: casos individuales (ICSR), gravedad, causalidad y plazos en Colombia',
+    seoTitle: 'Reporte de eventos adversos: ICSR, plazos y cursos',
+    description: 'Los cuatro datos mínimos de un caso, gravedad y causalidad, los plazos de 15 y 90 días de la Resolución 2024015321 y cursos de ICSR.',
+    readingTime: '7 min',
+  },
+  'cursos-gratis-deteccion-de-senales': {
+    title: 'Cursos gratis de detección de señales en farmacovigilancia: de los casos a la decisión regulatoria',
+    seoTitle: 'Detección de señales en farmacovigilancia: cursos',
+    description: 'Qué es una señal, las etapas de su gestión, PRR, ROR e IC, lo que exige la norma colombiana y cursos de detección de señales.',
+    readingTime: '7 min',
+  },
+  'cursos-gratis-plan-de-gestion-de-riesgos': {
+    title: 'Cursos gratis de planes de gestión de riesgo (PGR) de medicamentos: qué son y cómo se elaboran en Colombia',
+    seoTitle: 'Plan de gestión de riesgo (PGR): guía y cursos',
+    description: 'La Resolución 213 de 2022, las partes de un PGR, las medidas de minimización de riesgos y cursos para aprender a elaborarlo.',
+    readingTime: '7 min',
+  },
+  'cursos-gratis-farmacovigilancia-en-ensayos-clinicos': {
+    title: 'Cursos gratis de farmacovigilancia en ensayos clínicos: eventos adversos serios, SUSAR y DSUR',
+    seoTitle: 'Farmacovigilancia en ensayos clínicos: SUSAR y DSUR',
+    description: 'Eventos adversos serios, SUSAR y sus plazos según ICH E2A, el DSUR, quién hace qué en un ensayo y cursos de seguridad clínica.',
+    readingTime: '7 min',
+  },
 };
 for (const a of todos) {
   const r = REESCRITOS[a.slug];
