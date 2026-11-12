@@ -11,7 +11,8 @@ const slugs = new Set(articulos.map((a) => a.slug));
 
 describe('SEO de los artículos', () => {
   it('cada artículo tiene metadatos SEO, imagen existente y texto alternativo', () => {
-    expect(articulos).toHaveLength(404);
+    // 404 hasta el 11-nov-2026 + 8 del blog «Mejores cursos» (12-nov-2026).
+    expect(articulos).toHaveLength(412);
     expect(Object.keys(SEO_ARTICULOS)).toHaveLength(308);
     for (const a of articulos) {
       const seo = SEO_ARTICULOS[a.slug] || {

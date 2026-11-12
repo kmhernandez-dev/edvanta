@@ -16,6 +16,7 @@ import { ARTICULOS_FST50 } from './articulosFst50.js';
 import { INDUSTRIA_CURSOS_50 } from './industriaCursos50.js';
 import { REVISION_CLINICA } from './revisionClinica.js';
 import { NOTICIAS_REESCRITAS } from './noticiasReescritas.js';
+import { BLOG_MEJORES_CURSOS } from './blogMejoresCursos.js';
 
 const BASE = '/articulos/articulos_edvanta';
 
@@ -1483,6 +1484,7 @@ const edvantaArticulos = [
 // Cada entrada recibe su capa SEO (título de búsqueda, descripción, imagen y alt)
 // sin cambiar el H1 ni la descripción visible del artículo.
 const ARTICULOS_BASE = [
+  ...BLOG_MEJORES_CURSOS,
   ...BLOG_EDVANTA,
   ...NOTICIAS_FARMACEUTICAS,
   ...articulosSalud,
