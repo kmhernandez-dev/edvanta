@@ -53,8 +53,9 @@ describe('indexabilidad de artículos', () => {
     expect(NOTICIAS_FARMACEUTICAS.every((n) => !puedeIndexarse(n))).toBe(true);
     const noticias = articulos.filter((a) => a.category === 'Noticias farmacéuticas');
     const reescritas = Object.keys(NOTICIAS_REESCRITAS);
-    // 15 del INVIMA y 20 internacionales (FDA, EMA, MHRA y Anvisa).
-    expect(reescritas).toHaveLength(35);
+    // 15 del INVIMA y 28 internacionales (FDA, EMA, MHRA y Anvisa): 20 el
+    // 9-nov y 8 el 12-nov (las que ya tenían impresiones en Search Console).
+    expect(reescritas).toHaveLength(43);
     const carpeta = (a) => a.mdPath.split('/')[3];
     // Las reescritas tienen texto propio y vuelven al índice; las demás del paquete no.
     for (const slug of reescritas) {
@@ -68,7 +69,7 @@ describe('indexabilidad de artículos', () => {
     }
     const porCarpeta = reescritas.map((s) => carpeta(NOTICIAS_REESCRITAS[s]));
     expect(porCarpeta.filter((c) => c === 'noticias-invima')).toHaveLength(15);
-    expect(porCarpeta.filter((c) => c === 'noticias-internacionales')).toHaveLength(20);
+    expect(porCarpeta.filter((c) => c === 'noticias-internacionales')).toHaveLength(28);
     expect(noticias.filter(esNoticiaDePlantilla)).toHaveLength(NOTICIAS_FARMACEUTICAS.length - reescritas.length);
     // Las notas escritas a mano no caen en la regla de plantilla.
     expect(noticias.length).toBeGreaterThan(NOTICIAS_FARMACEUTICAS.length);

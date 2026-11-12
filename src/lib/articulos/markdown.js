@@ -19,6 +19,29 @@
 const META = /^\s*\*\*(Breadcrumb|Categoría|Categoria|Autora|Autor|Autores|Publicación|Publicacion|Última actualización|Ultima actualización|Actualización|Tiempo de lectura|Fecha|Revisión|Revisado por):\*\*/i;
 const TOC = /^##\s+(Tabla de contenido|Tabla de contenidos|Índice|Indice|Contenido)\s*$/i;
 
+/**
+ * Enlaces de afiliado de Karla dentro de los artículos: Udemy
+ * (trk.udemy.com), Coursera por Impact (imp.i384100.net) y Edutin Academy
+ * (edutin.com/sh-…). Google pide marcarlos con rel="sponsored" para que no
+ * cuenten como enlaces editoriales; sin la marca, el sitio se arriesga a
+ * una acción manual por enlaces. Lo usan la página del artículo y el HTML
+ * que se genera para buscadores.
+ */
+const HOSTS_DE_AFILIADO = [/(^|\.)trk\.udemy\.com$/i, /(^|\.)imp\.i384100\.net$/i, /(^|\.)edutin\.com$/i];
+
+export function esEnlaceDeAfiliado(href = '') {
+  try {
+    return HOSTS_DE_AFILIADO.some((h) => h.test(new URL(href).hostname));
+  } catch {
+    return false;
+  }
+}
+
+/** El rel de un enlace externo: patrocinado si es de afiliado. */
+export function relDeEnlaceExterno(href = '') {
+  return esEnlaceDeAfiliado(href) ? 'sponsored nofollow noopener noreferrer' : 'noopener noreferrer';
+}
+
 /** «Qué es la PHVA?» → «que-es-la-phva». Igual en Node y en el navegador. */
 export function slugify(texto) {
   return String(texto)

@@ -33,7 +33,7 @@ import AffiliateCourseButton from '../components/AffiliateCourseButton';
 import { articulos, getArticulo } from '../data/articulos';
 import { getFeaturedCourse } from '../data/featuredCourses';
 import {
-  limpiarMarkdown, minutosDeLectura, preguntasFrecuentes, secciones, slugify,
+  limpiarMarkdown, minutosDeLectura, preguntasFrecuentes, relDeEnlaceExterno, secciones, slugify,
 } from '../lib/articulos/markdown';
 import { registrarLectura } from '../lib/articulos/lecturas';
 import { entidadAutor, entidadRevisor, esAutoraKarla } from '../lib/seo/autoria';
@@ -95,7 +95,7 @@ function crearComponentes(imagenes = []) {
     table: ({ children }) => <div className="ed-table"><table>{children}</table></div>,
     a: ({ href = '', children }) => (href.startsWith('/')
       ? <Link to={href}>{children}</Link>
-      : <a href={href} target="_blank" rel="noopener noreferrer">{children}</a>),
+      : <a href={href} target="_blank" rel={relDeEnlaceExterno(href)}>{children}</a>),
   };
 }
 

@@ -35,7 +35,9 @@ const SITIO = 'https://edvanta.co';
 const importar = (rel) => import(pathToFileURL(path.join(raiz, rel)).href);
 
 const { articulos } = await importar('src/data/articulos.js');
-const { limpiarMarkdown, preguntasFrecuentes, slugify, textoPlano } = await importar('src/lib/articulos/markdown.js');
+const {
+  limpiarMarkdown, preguntasFrecuentes, relDeEnlaceExterno, slugify, textoPlano,
+} = await importar('src/lib/articulos/markdown.js');
 const { puedeIndexarse, robotsDeArticulo, tieneRevisionClinica } = await importar('src/lib/seo/indexabilidad.js');
 const { entidadAutor, entidadRevisor, esAutoraKarla } = await importar('src/lib/seo/autoria.js');
 const { descripcionDeArticulo, tituloDeArticulo } = await importar('src/lib/seo/titulos.js');
@@ -83,6 +85,10 @@ function markdownAHtml(md) {
     h2: ({ children }) => React.createElement('h2', { id: id(textoDe(children)) }, children),
     h3: ({ children }) => React.createElement('h3', { id: slugify(textoDe(children)) }, children),
     table: ({ children }) => React.createElement('div', { className: 'ed-table' }, React.createElement('table', null, children)),
+    // Los mismos atributos que pone la página: los de afiliado, patrocinados.
+    a: ({ href = '', children }) => (href.startsWith('/') || href.startsWith('#')
+      ? React.createElement('a', { href }, children)
+      : React.createElement('a', { href, target: '_blank', rel: relDeEnlaceExterno(href) }, children)),
   };
   return renderToStaticMarkup(React.createElement(ReactMarkdown, { remarkPlugins: [remarkGfm], components }, md));
 }

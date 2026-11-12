@@ -385,6 +385,91 @@ export const NOTICIAS_REESCRITAS = {
     description: 'El CHMP recomendó que Nyxoid, naloxona en aerosol nasal para sobredosis de opioides, se venda sin receta en Europa. Qué es y qué hacer en Colombia.',
     autor: 'Equipo editorial de Edvanta'
   },
+
+  // ── Lote 3 (12-nov-2026): las que ya traían impresiones en Search
+  // Console (pritelivir, Ort-Flx, Anktiva, Mynzepli) y cuatro alertas de
+  // productos con ingredientes ocultos o falsificados. Verificadas contra
+  // la fuente oficial el 12-nov-2026.
+  'fda-aprueba-pritelivir-para-lesiones-por-herpes-simple-resistente': {
+    contenidoPropio: true,
+    mdPath: '/articulos/articulos_edvanta/noticias-internacionales/fda-aprueba-pritelivir-para-lesiones-por-herpes-simple-resistente.md',
+    updated: '2026-11-12',
+    readingTime: '3 min',
+    seoTitle: 'Pritelivir (Hovilpri): para qué sirve y aprobación FDA',
+    seoDescription: 'La FDA aprobó el pritelivir para herpes simple que no responde al aciclovir en adultos inmunocomprometidos. Para qué sirve, evidencia y Colombia.',
+    description: 'La FDA aprobó el pritelivir para herpes simple que no responde al aciclovir en adultos inmunocomprometidos. Para qué sirve, evidencia y Colombia.',
+    autor: 'Equipo editorial de Edvanta'
+  },
+  'fda-detecta-tres-farmacos-no-declarados-en-ort-flx': {
+    contenidoPropio: true,
+    mdPath: '/articulos/articulos_edvanta/noticias-internacionales/fda-detecta-tres-farmacos-no-declarados-en-ort-flx.md',
+    updated: '2026-11-12',
+    readingTime: '3 min',
+    seoTitle: 'Ort-Flx: la FDA halla diclofenaco y dexametasona ocultos',
+    seoDescription: 'Ort-Flx se vende para dolor y artritis, pero contiene diclofenaco, dexametasona y metocarbamol sin declarar. Riesgos y qué hacer si lo tomas.',
+    description: 'Ort-Flx se vende para dolor y artritis, pero contiene diclofenaco, dexametasona y metocarbamol sin declarar. Riesgos y qué hacer si lo tomas.',
+    autor: 'Equipo editorial de Edvanta'
+  },
+  'fda-amplia-indicacion-de-nogapendekin-alfa-inbakicept-en-cancer-de-vejiga': {
+    contenidoPropio: true,
+    mdPath: '/articulos/articulos_edvanta/noticias-internacionales/fda-amplia-indicacion-de-nogapendekin-alfa-inbakicept-en-cancer-de-vejiga.md',
+    updated: '2026-11-12',
+    readingTime: '3 min',
+    seoTitle: 'Anktiva (nogapendekin alfa): nueva indicación en vejiga',
+    seoDescription: 'La FDA amplió Anktiva con BCG a cáncer de vejiga no músculo invasivo papilar de alto grado que no responde a BCG. Evidencia y efectos adversos.',
+    description: 'La FDA amplió Anktiva con BCG a cáncer de vejiga no músculo invasivo papilar de alto grado que no responde a BCG. Evidencia y efectos adversos.',
+    autor: 'Equipo editorial de Edvanta'
+  },
+  'mhra-retira-lotes-de-mynzepli-40-mg-ml': {
+    contenidoPropio: true,
+    mdPath: '/articulos/articulos_edvanta/noticias-internacionales/mhra-retira-lotes-de-mynzepli-40-mg-ml.md',
+    updated: '2026-11-12',
+    readingTime: '3 min',
+    seoTitle: 'Mynzepli (aflibercept): la MHRA retira dos lotes',
+    seoDescription: 'Retiro preventivo de clase 2 de dos lotes de Mynzepli 40 mg/mL por una variación en el soporte de la jeringa. Qué hacer y qué enseña sobre calidad.',
+    description: 'Retiro preventivo de clase 2 de dos lotes de Mynzepli 40 mg/mL por una variación en el soporte de la jeringa. Qué hacer y qué enseña sobre calidad.',
+    autor: 'Equipo editorial de Edvanta'
+  },
+  'fda-advierte-sobre-ingrediente-oculto-en-demograss-premier': {
+    contenidoPropio: true,
+    mdPath: '/articulos/articulos_edvanta/noticias-internacionales/fda-advierte-sobre-ingrediente-oculto-en-demograss-premier.md',
+    updated: '2026-11-12',
+    readingTime: '2 min',
+    seoTitle: 'Demograss Premier: la FDA halla fenolftaleína oculta',
+    seoDescription: 'La FDA advierte que demograss Premier, vendido para bajar de peso, contiene fenolftaleína sin declarar. Por qué es riesgoso y cómo protegerte.',
+    description: 'La FDA advierte que demograss Premier, vendido para bajar de peso, contiene fenolftaleína sin declarar. Por qué es riesgoso y cómo protegerte.',
+    autor: 'Equipo editorial de Edvanta'
+  },
+  'anvisa-aclara-que-ashwagandha-no-tiene-registro-como-suplemento-en-brasil': {
+    contenidoPropio: true,
+    mdPath: '/articulos/articulos_edvanta/noticias-internacionales/anvisa-aclara-que-ashwagandha-no-tiene-registro-como-suplemento-en-brasil.md',
+    updated: '2026-11-12',
+    readingTime: '3 min',
+    seoTitle: 'Ashwagandha: la Anvisa la prohíbe como suplemento',
+    seoDescription: 'La Anvisa aclaró que la ashwagandha no tiene registro en Brasil y prohibió su venta y uso. Qué dijo, qué riesgos citó y qué hacer en Colombia.',
+    description: 'La Anvisa aclaró que la ashwagandha no tiene registro en Brasil y prohibió su venta y uso. Qué dijo, qué riesgos citó y qué hacer en Colombia.',
+    autor: 'Equipo editorial de Edvanta'
+  },
+  'anvisa-prohibe-tiras-de-glucemia-accu-chek-identificadas-en-la-medida': {
+    contenidoPropio: true,
+    mdPath: '/articulos/articulos_edvanta/noticias-internacionales/anvisa-prohibe-tiras-de-glucemia-accu-chek-identificadas-en-la-medida.md',
+    updated: '2026-11-12',
+    readingTime: '3 min',
+    seoTitle: 'Tiras Accu-Chek irregulares: alerta de la Anvisa',
+    seoDescription: 'La Anvisa prohibió tiras Accu-Chek Active vendidas en Amazon y un lote falsificado de NAC. Por qué importa y cómo comprar tiras seguras.',
+    description: 'La Anvisa prohibió tiras Accu-Chek Active vendidas en Amazon y un lote falsificado de NAC. Por qué importa y cómo comprar tiras seguras.',
+    autor: 'Equipo editorial de Edvanta'
+  },
+  'fda-advierte-sobre-ingredientes-ocultos-en-10-day-forecast': {
+    contenidoPropio: true,
+    mdPath: '/articulos/articulos_edvanta/noticias-internacionales/fda-advierte-sobre-ingredientes-ocultos-en-10-day-forecast.md',
+    updated: '2026-11-12',
+    readingTime: '2 min',
+    seoTitle: '10 Day Forecast: sildenafil y acetaminofén ocultos',
+    seoDescription: 'La FDA advierte que 10 Day Forecast, vendido para el desempeño sexual, contiene sildenafil y acetaminofén sin declarar. Riesgos y qué hacer.',
+    description: 'La FDA advierte que 10 Day Forecast, vendido para el desempeño sexual, contiene sildenafil y acetaminofén sin declarar. Riesgos y qué hacer.',
+    autor: 'Equipo editorial de Edvanta'
+  },
 };
 
 /** Las 100 noticias del paquete, con la versión reescrita donde la hay. */
