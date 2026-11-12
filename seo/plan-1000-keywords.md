@@ -47,6 +47,8 @@ Una página sólida, ya indexada y con unos meses, suele aparecer en 10 a 40 con
 | 12-nov | Mejores cursos, lote 4: urgencias y ACLS, talento humano, Facebook Ads y Canva, TCC, Claude Code y primera infancia | 6 |
 | 12-nov | Guías de tema, lote 4a: farmacovigilancia (seguridad, eventos adversos, señales, PGR y ensayos clínicos) | 5 (noindex: 66 → 61) |
 | 12-nov | Guías de tema, lote 4b: FDA, EMA, CTD, dispositivos médicos y etiquetado y publicidad | 5 (noindex: 61 → 56) |
+| 12-nov | Guías de tema, lote 4c: estériles, sólidas, empaque y serialización, transferencia y desarrollo de medicamentos | 5 (noindex: 56 → 51) |
+| 12-nov | Guías de tema, lote 5: descubrimiento, formulación, preclínicos, desarrollo analítico, Power BI, Python, IA y evidencia del mundo real. **Las 50 guías tienen texto propio.** | 8 (noindex: 51 → 43) |
 
 **Riesgo resuelto (12-nov):** las noticias de pritelivir, Ort-Flx, Anktiva y Mynzepli ya posicionaban (posiciones 2 a 9) y seguían en noindex. Al rastrearlas de nuevo, Google las habría sacado del índice. Ya tienen contenido propio y `index,follow`. La de pritelivir se pidió a Search Console; la cuota del día se agotó.
 
@@ -56,14 +58,14 @@ Una página sólida, ya indexada y con unos meses, suele aparecer en 10 a 40 con
 2. Noticia de Anktiva.
 3. Noticia de Mynzepli.
 4. Los 26 artículos de «Mejores cursos». Empezar por SST, carrera de Química Farmacéutica, IA para salud, farmacología gratis, cursos gratis con certificado, Excel y gestión de proyectos.
-6. Las 14 noticias de los lotes 4 y 5, y las 10 guías de tema de los lotes 4a y 4b.
+6. Las 14 noticias de los lotes 4 y 5, y las 23 guías de tema de los lotes 4 y 5.
 5. Las 19 guías de tema.
 
 ## Siguientes lotes, en orden de rendimiento esperado
 
 1. **Noticias de medicamentos nuevos.** Ya rinden en posiciones 2 a 9. Se reescriben las 43 que siguen en plantilla (noindex), con fuente oficial y consecuencia para Colombia, en lotes de 6 a 8.
 2. **Mejores cursos, lote 5** (6 artículos), con los cursos de afiliado que aún no aparecen en ningún artículo: microbiota y salud digestiva, contabilidad y administración de droguerías, gestión de calidad de Edutin por niveles, radiología e imágenes, y otros que encajen sin canibalizar.
-3. **Guías de tema, lotes 4c y 5.** Quedan 13 en plantilla: producción (estéril, sólidas, empaque y serialización, transferencia), I+D y datos.
+3. **Guías de tema:** terminadas (50 de 50). Lo que queda en noindex son las 43 noticias en plantilla.
 4. **Levotiroxina y tiroides.** Las preguntas concretas ya aparecen en posición 3. Cada artículo nuevo requiere la revisión clínica de Karla.
 5. **Guías editoriales de cursos curados.** Quedan unos 150, en lotes de 12.
 6. **Competencias.** 35 páginas de unas 40 palabras: escribir su contenido o sacarlas del índice.
