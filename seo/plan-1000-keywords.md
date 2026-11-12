@@ -41,6 +41,8 @@ Una página sólida, ya indexada y con unos meses, suele aparecer en 10 a 40 con
 | 12-nov | Enlaces de afiliado con `rel="sponsored nofollow"` en los artículos (Udemy, Coursera e Edutin) | Todo el blog |
 | 12-nov | Noticias reescritas, lote 3: pritelivir, Ort-Flx, Anktiva, Mynzepli y 4 alertas de productos con ingredientes ocultos | 8 (noindex: 88 → 80) |
 | 12-nov | Mejores cursos, lote 2, con enlaces de afiliado directos | 6 |
+| 12-nov | Noticias reescritas, lote 4: deuruxolitinib, Casgevy desde 5 años, Evrysdi Go, icotrokinra, plozasiran y daraxonrasib | 6 (noindex: 80 → 74) |
+| 12-nov | Mejores cursos, lote 3: nutrición, primeros auxilios y pediatría, Excel, marketing farmacéutico, gestión de proyectos y logística | 6 |
 
 **Riesgo resuelto (12-nov):** las noticias de pritelivir, Ort-Flx, Anktiva y Mynzepli ya posicionaban (posiciones 2 a 9) y seguían en noindex. Al rastrearlas de nuevo, Google las habría sacado del índice. Ya tienen contenido propio y `index,follow`. La de pritelivir se pidió a Search Console; la cuota del día se agotó.
 
@@ -49,22 +51,14 @@ Una página sólida, ya indexada y con unos meses, suele aparecer en 10 a 40 con
 1. Noticia de Ort-Flx.
 2. Noticia de Anktiva.
 3. Noticia de Mynzepli.
-4. Los 14 artículos de «Mejores cursos». Empezar por SST, carrera de Química Farmacéutica, IA para salud, farmacología gratis y cursos gratis con certificado.
+4. Los 20 artículos de «Mejores cursos». Empezar por SST, carrera de Química Farmacéutica, IA para salud, farmacología gratis, cursos gratis con certificado, Excel y gestión de proyectos.
+6. Las 6 noticias del lote 4.
 5. Las 19 guías de tema.
 
 ## Siguientes lotes, en orden de rendimiento esperado
 
-1. **Noticias de medicamentos nuevos.** Ya rinden en posiciones 2 a 9. Se reescriben las 65 que siguen en noindex, con fuente oficial y consecuencia para Colombia.
-2. **Mejores cursos, lote 2** (8 a 10 artículos):
-   - cursos para regentes de farmacia;
-   - cursos para auxiliares de farmacia;
-   - cursos de farmacología gratis;
-   - cursos de pediatría y primeros auxilios;
-   - cursos de nutrición;
-   - cursos de inglés para profesionales de la salud;
-   - cursos de inteligencia artificial para salud (con los cursos de Claude del catálogo);
-   - cursos de ensayos clínicos y buenas prácticas clínicas;
-   - cursos de Excel para el sector salud.
+1. **Noticias de medicamentos nuevos.** Ya rinden en posiciones 2 a 9. Se reescriben las 51 que siguen en plantilla (noindex), con fuente oficial y consecuencia para Colombia, en lotes de 6 a 8.
+2. **Mejores cursos, lote 4** (6 artículos), con enlaces de afiliado: enfermería, salud pública y epidemiología, Power BI avanzado y análisis de datos, ventas y servicio al cliente en farmacia, ISO 9001 y Lean Six Sigma, y cursos de Claude en español.
 3. **Guías de tema, lotes 4 y 5.** Quedan 23 en plantilla: regulatorios, farmacovigilancia, producción, I+D y datos.
 4. **Levotiroxina y tiroides.** Las preguntas concretas ya aparecen en posición 3. Cada artículo nuevo requiere la revisión clínica de Karla.
 5. **Guías editoriales de cursos curados.** Quedan unos 150, en lotes de 12.
