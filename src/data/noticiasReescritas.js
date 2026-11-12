@@ -850,6 +850,86 @@ export const NOTICIAS_REESCRITAS = {
     description: 'El PRAC revisa reacciones alérgicas con lotes de Flebogamma DIF, Yimmugo y Gamunex y abarca todas las inmunoglobulinas humanas normales.',
     autor: 'Equipo editorial de Edvanta'
   },
+  'anvisa-participa-en-operacion-contra-desvio-de-medicamentos-en-el-distrito-federal': {
+    contenidoPropio: true,
+    mdPath: '/articulos/articulos_edvanta/noticias-internacionales/anvisa-participa-en-operacion-contra-desvio-de-medicamentos-en-el-distrito-federal.md',
+    updated: '2026-11-12',
+    readingTime: '3 min',
+    seoTitle: 'Robo de medicamentos de alto costo: operación en Brasil',
+    seoDescription: 'La Anvisa participó en una operación contra el robo de medicamentos de alto costo para cáncer y trasplantes en Brasil. Riesgos y lecciones.',
+    description: 'La Anvisa participó en una operación contra el robo de medicamentos de alto costo para cáncer y trasplantes en Brasil. Riesgos y lecciones.',
+    autor: 'Equipo editorial de Edvanta'
+  },
+  'anvisa-publica-evaluacion-nacional-de-programas-de-uso-de-antimicrobianos-en-hospitales': {
+    contenidoPropio: true,
+    mdPath: '/articulos/articulos_edvanta/noticias-internacionales/anvisa-publica-evaluacion-nacional-de-programas-de-uso-de-antimicrobianos-en-hospitales.md',
+    updated: '2026-11-12',
+    readingTime: '3 min',
+    seoTitle: 'Programas de antimicrobianos: evaluación de la Anvisa',
+    seoDescription: 'La Anvisa abrió la evaluación 2026 de los programas de gestión de antimicrobianos en hospitales. Qué mostró la de 2024 y el papel de la farmacia.',
+    description: 'La Anvisa abrió la evaluación 2026 de los programas de gestión de antimicrobianos en hospitales. Qué mostró la de 2024 y el papel de la farmacia.',
+    autor: 'Equipo editorial de Edvanta'
+  },
+  'anvisa-prohibe-producto-para-unas-con-indicacion-terapeutica': {
+    contenidoPropio: true,
+    mdPath: '/articulos/articulos_edvanta/noticias-internacionales/anvisa-prohibe-producto-para-unas-con-indicacion-terapeutica.md',
+    updated: '2026-11-12',
+    readingTime: '3 min',
+    seoTitle: 'Producto para uñas que prometía matar hongos: Anvisa',
+    seoDescription: 'La Anvisa ordenó recoger cosméticos para uñas que prometían eliminar el 99 % de hongos y bacterias. Diferencia entre cosmético y medicamento.',
+    description: 'La Anvisa ordenó recoger cosméticos para uñas que prometían eliminar el 99 % de hongos y bacterias. Diferencia entre cosmético y medicamento.',
+    autor: 'Equipo editorial de Edvanta'
+  },
+  'anvisa-consulta-propuesta-de-sandbox-regulatorio': {
+    contenidoPropio: true,
+    mdPath: '/articulos/articulos_edvanta/noticias-internacionales/anvisa-consulta-propuesta-de-sandbox-regulatorio.md',
+    updated: '2026-11-12',
+    readingTime: '3 min',
+    seoTitle: 'Sandbox regulatorio: Anvisa abre consulta pública',
+    seoDescription: 'La Anvisa abrió una consulta para regular su sandbox: un ambiente controlado para probar innovaciones en salud. Qué propone y hasta cuándo.',
+    description: 'La Anvisa abrió una consulta para regular su sandbox: un ambiente controlado para probar innovaciones en salud. Qué propone y hasta cuándo.',
+    autor: 'Equipo editorial de Edvanta'
+  },
+  'anvisa-publica-modelos-especificos-para-evaluar-productos-biologicos': {
+    contenidoPropio: true,
+    mdPath: '/articulos/articulos_edvanta/noticias-internacionales/anvisa-publica-modelos-especificos-para-evaluar-productos-biologicos.md',
+    updated: '2026-11-12',
+    readingTime: '3 min',
+    seoTitle: 'Registro de biológicos: tres nuevos modelos de Anvisa',
+    seoDescription: 'La Anvisa reemplazó su modelo único de dictamen de biológicos por tres: vacunas, biosimilares y otros biológicos. Qué cambia para regulatorio.',
+    description: 'La Anvisa reemplazó su modelo único de dictamen de biológicos por tres: vacunas, biosimilares y otros biológicos. Qué cambia para regulatorio.',
+    autor: 'Equipo editorial de Edvanta'
+  },
+  'investigacion-de-mhra-avanza-vacuna-intranasal-sin-aguja-contra-estreptococo-a': {
+    contenidoPropio: true,
+    mdPath: '/articulos/articulos_edvanta/noticias-internacionales/investigacion-de-mhra-avanza-vacuna-intranasal-sin-aguja-contra-estreptococo-a.md',
+    updated: '2026-11-12',
+    readingTime: '3 min',
+    seoTitle: 'Vacuna sin aguja contra estreptococo A: avance MHRA',
+    seoDescription: 'Científicos de la MHRA probaron en ratones una vacuna nasal o sublingual contra el estreptococo A. No hay ninguna vacuna autorizada aún.',
+    description: 'Científicos de la MHRA probaron en ratones una vacuna nasal o sublingual contra el estreptococo A. No hay ninguna vacuna autorizada aún.',
+    autor: 'Equipo editorial de Edvanta'
+  },
+  'mhra-publica-estrategia-2030-para-ia-y-medicina-personalizada': {
+    contenidoPropio: true,
+    mdPath: '/articulos/articulos_edvanta/noticias-internacionales/mhra-publica-estrategia-2030-para-ia-y-medicina-personalizada.md',
+    updated: '2026-11-12',
+    readingTime: '3 min',
+    seoTitle: 'Estrategia 2030 de la MHRA: IA y regulación más rápida',
+    seoDescription: 'La MHRA publicó su Estrategia 2030: siete prioridades, IA y metas como evaluar en 14 días ciertos ensayos de fase 1. Qué significa.',
+    description: 'La MHRA publicó su Estrategia 2030: siete prioridades, IA y metas como evaluar en 14 días ciertos ensayos de fase 1. Qué significa.',
+    autor: 'Equipo editorial de Edvanta'
+  },
+  'reino-unido-adopta-recomendaciones-sobre-ia-sanitaria-y-abre-nueva-fase-de-ai-airlock': {
+    contenidoPropio: true,
+    mdPath: '/articulos/articulos_edvanta/noticias-internacionales/reino-unido-adopta-recomendaciones-sobre-ia-sanitaria-y-abre-nueva-fase-de-ai-airlock.md',
+    updated: '2026-11-12',
+    readingTime: '3 min',
+    seoTitle: 'IA en salud: Reino Unido acepta 44 recomendaciones',
+    seoDescription: 'El gobierno británico aceptó 44 recomendaciones sobre IA en salud y la MHRA abrió la tercera fase de AI Airlock. Qué cambia para los dispositivos.',
+    description: 'El gobierno británico aceptó 44 recomendaciones sobre IA en salud y la MHRA abrió la tercera fase de AI Airlock. Qué cambia para los dispositivos.',
+    autor: 'Equipo editorial de Edvanta'
+  },
 };
 
 /** Las 100 noticias del paquete, con la versión reescrita donde la hay. */
