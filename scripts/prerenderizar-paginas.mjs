@@ -37,8 +37,9 @@ const { DIRECCIONES_ANTIGUAS } = await importar('src/data/edvanta/direcciones.js
 const { nombreDeCurso, slugify } = await importar('src/lib/slug.js');
 const { RUTAS_FIJAS } = await importar('scripts/seo-rutas-fijas.mjs');
 const {
-  contenidoHerramienta, contenidoReto, contenidoRetos, contenidoServicioMarketing,
+  contenidoCategoria, contenidoHerramienta, contenidoReto, contenidoRetos, contenidoServicioMarketing,
 } = await importar('scripts/lib/contenido-paginas-fijas.mjs');
+const { categoriaIndexable } = await importar('src/lib/seo/indexabilidad.js');
 const { metaDeCategoria } = await importar('src/lib/seo/titulos.js');
 
 const plantilla = readFileSync(path.join(dist, 'index.html'), 'utf8');
@@ -122,21 +123,25 @@ for (const a of articulos) {
   if (f > c.fecha) c.fecha = f;
   categorias.set(slug, c);
 }
+// Las categorías con menos de 3 artículos indexables siguen enlazando
+// (noindex,follow), pero no van al sitemap (indexabilidad.js).
 for (const c of categorias.values()) {
   const nombre = [...c.nombres.entries()].sort((x, y) => y[1] - x[1])[0][0];
   const canonical = `${SITIO}/articulos/categoria/${c.slug}`;
   const n = c.lista.length;
+  const delgada = !categoriaIndexable(c.lista);
   escribir(`articulos/categoria/${c.slug}.html`, pagina({
     titulo: metaDeCategoria(nombre, n).titulo,
     descripcion: metaDeCategoria(nombre, n).descripcion,
     canonical,
+    robots: delgada ? 'noindex,follow' : null,
     jsonLd: [
       { '@context': 'https://schema.org', '@type': 'CollectionPage', name: `Artículos de ${nombre}`, url: canonical, publisher: { '@type': 'Organization', name: 'Edvanta' } },
       migas([['Inicio', `${SITIO}/`], ['Artículos', `${SITIO}/articulos`], [nombre, canonical]]),
     ],
-    cuerpo: `<main><h1>Artículos de ${esc(nombre.toLowerCase())}</h1><ul>${c.lista.map((a) => `<li><a href="/articulos/${a.slug}">${esc(a.title)}</a></li>`).join('')}</ul></main>`,
+    cuerpo: `<main><h1>Artículos de ${esc(nombre.toLowerCase())}</h1>${contenidoCategoria(nombre, c.lista)}</main>`,
   }));
-  enSitemap.push({ ruta: `/articulos/categoria/${c.slug}`, prioridad: '0.6', fecha: c.fecha });
+  if (!delgada) enSitemap.push({ ruta: `/articulos/categoria/${c.slug}`, prioridad: '0.6', fecha: c.fecha });
 }
 
 /* ── Cursos en vivo ───────────────────────────────────────── */

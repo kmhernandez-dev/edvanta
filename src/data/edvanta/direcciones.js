@@ -62,6 +62,17 @@ export const DIRECCIONES_ANTIGUAS = [
   { antigua: '/encuesta/farmacologia', nueva: '/unete/cursos?area=farmacologia', tipo: 'registro' },
   { antigua: '/encuesta/asuntos-regulatorios', nueva: '/unete/cursos?area=asuntos-regulatorios', tipo: 'registro' },
   { antigua: '/encuesta/webinars', nueva: '/unete/profesionales?area=webinars', tipo: 'registro' },
+  // Search Console (11-nov-2026): Google las conocía y daban 404.
+  // Las guías de Feliz Sin Tiroides viven en su página de venta (/guia/…).
+  { antigua: '/guias/autocuidado', nueva: '/guia/curso-autocuidado-de-la-tiroides', tipo: 'guía' },
+  { antigua: '/guias/jugos-funcionales', nueva: '/guia/jugos-digestivos-para-tu-tiroides', tipo: 'guía' },
+  { antigua: '/guias/dieta-antiinflamatoria', nueva: '/guia/alimentacion-antiinflamatoria', tipo: 'guía' },
+  { antigua: '/guias/comer-hipotiroidismo', nueva: '/guia/aprende-a-comer-con-hipotiroidismo', tipo: 'guía' },
+  { antigua: '/guias/coleccion-sana-tiroides', nueva: '/guia/coleccion-bienestar-tiroideo', tipo: 'guía' },
+  // Las categorías de artículos tienen su propia dirección.
+  { antigua: '/articulos/gestion-de-calidad', nueva: '/articulos/categoria/gestion-de-calidad', tipo: 'categoría' },
+  { antigua: '/articulos/feliz-sin-tiroides', nueva: '/articulos/categoria/feliz-sin-tiroides', tipo: 'categoría' },
+  { antigua: '/articulos/atencion-farmaceutica', nueva: '/articulos/categoria/atencion-farmaceutica', tipo: 'categoría' },
 ];
 
 /*

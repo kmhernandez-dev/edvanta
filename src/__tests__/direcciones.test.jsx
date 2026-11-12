@@ -19,6 +19,7 @@ import { articulos } from '../data/articulos';
 import { nombreDeCurso, rutaDeCategoria, rutaDeCurso, slugify } from '../lib/slug';
 import * as api from '../../api/lib/slugs-publicos.js';
 import { categoriasDe } from '../pages/ArticulosIndex';
+import { GUIAS_VENTA } from '../data/guiasVenta';
 
 const raiz = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', '..');
 const nginx = readFileSync(path.join(raiz, 'nginx.conf'), 'utf8');
@@ -49,6 +50,15 @@ describe('direcciones · redirecciones fijas', () => {
     for (const d of DIRECCIONES_ANTIGUAS.filter((x) => x.tipo === 'escuela')) expect(escuelas.has(d.nueva), d.nueva).toBe(true);
     const app = readFileSync(path.join(raiz, 'src', 'App.jsx'), 'utf8');
     for (const d of DIRECCIONES_ANTIGUAS.filter((x) => x.tipo === 'página')) expect(app.includes(`path="${d.nueva}"`), d.nueva).toBe(true);
+    const guias = new Set(GUIAS_VENTA.map((g) => `/guia/${g.slug}`));
+    for (const d of DIRECCIONES_ANTIGUAS.filter((x) => x.tipo === 'guía')) expect(guias.has(d.nueva), d.nueva).toBe(true);
+    const categorias = new Set(articulos.map((a) => `/articulos/categoria/${slugify(a.category)}`));
+    const slugsDeArticulos = new Set(articulos.map((a) => `/articulos/${a.slug}`));
+    for (const d of DIRECCIONES_ANTIGUAS.filter((x) => x.tipo === 'categoría')) {
+      expect(categorias.has(d.nueva), d.nueva).toBe(true);
+      // La dirección vieja no puede tapar un artículo que exista.
+      expect(slugsDeArticulos.has(d.antigua), d.antigua).toBe(false);
+    }
   });
 
   it('las escuelas y las páginas renombradas llevan a la nueva también dentro del sitio', () => {

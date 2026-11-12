@@ -311,6 +311,75 @@ export function contenidoReto(reto, dias = []) {
   ].join('');
 }
 
+/**
+ * /enfermedades/<slug> (y /levotiroxina, /nutricion-tiroidea): lo que pinta
+ * EnfermedadPage.jsx con src/data/enfermedades.js, revisado por Karla
+ * Hernández. Search Console las dejaba en «Descubierta» con 40 palabras.
+ *  guias      [{ nombre, url }] de las guías con página de venta
+ *  articulos  [{ nombre, url }] de los artículos que existen
+ */
+export function contenidoEnfermedad(e, { guias = [], articulos = [], pregunta = null } = {}) {
+  const i = e.intro || {};
+  const pasos = (e.learningPath || []).filter((p) => p && p.title);
+  const sub = (titulo, html) => (html ? `<h3>${esc(titulo)}</h3>${html}` : '');
+  const revision = e.revisor
+    ? `<p>Revisado por ${e.revisorUrl ? `<a href="${esc(e.revisorUrl)}" rel="author">${esc(e.revisor)}</a>` : esc(e.revisor)}${e.reviewedAt ? ` el ${esc(e.reviewedAt)}` : ''}. Autora: <a href="/autores/karla-hernandez">${esc(e.autor || 'Karla Hernández')}</a>.</p>`
+    : '';
+  return [
+    parrafo(e.heroText),
+    seccion(pregunta || `Qué debes saber: ${e.name}`, [
+      sub('Definición', parrafo(i.what)),
+      sub('Causas frecuentes', lista(i.causes)),
+      sub('Síntomas más comunes', lista(i.symptoms)),
+      sub('¿Cómo se diagnostica?', parrafo(i.diagnosis)),
+      sub('Tratamiento', parrafo(i.treatment)),
+      sub('Importancia del seguimiento médico', parrafo(i.followUp)),
+      sub('Errores frecuentes que cometen los pacientes', lista(i.commonMistakes)),
+      sub('¿Qué puedes aprender a gestionar?', parrafo(i.patientRole)),
+    ].join('')),
+    pasos.length
+      ? seccion('Ruta de aprendizaje sugerida', `<ol>${pasos.map((p) => `<li><strong>${p.link ? `<a href="${esc(p.link)}">${esc(p.title)}</a>` : esc(p.title)}.</strong> ${esc(p.desc || '')}</li>`).join('')}</ol>`)
+      : '',
+    seccion(`Recursos para ${String(e.name || '').toLowerCase()}`, enlaces(guias)),
+    seccion('Aprende más sobre este tema', enlaces(articulos)),
+    seccion('Recursos gratuitos', lista((e.recursosGratis || []).map((r) => r && r.title))),
+    seccion('Preguntas frecuentes', preguntas(e.faqs)),
+    revision,
+    '<p><strong>Descargo:</strong> esta información es educativa y no sustituye la consulta, el diagnóstico ni el tratamiento de un profesional de salud. <a href="/descargo-medico">Ver descargo médico</a></p>',
+  ].join('');
+}
+
+/**
+ * /autores/<slug>: la autora y revisora (src/data/edvanta/eeat.js), con
+ * los artículos que revisó. Era la página más delgada del sitio (51
+ * palabras) y es la que respalda la experiencia de todo el contenido.
+ *  revisados  [{ nombre, url }]
+ */
+export function contenidoAutora(autora, { revisados = [], totalRevisados = 0 } = {}) {
+  return [
+    `<p><strong>${esc(autora.profesion)}</strong> · ${esc(autora.universidad)} · ${esc(autora.ciudad)}</p>`,
+    (autora.bio || []).map(parrafo).join(''),
+    seccion('Áreas de trabajo', lista(autora.areas)),
+    seccion('Criterios de revisión', lista(autora.criterios)),
+    seccion('Declaración de conflictos de interés', parrafo(autora.conflicto)),
+    revisados.length
+      ? seccion(`Artículos revisados (${totalRevisados || revisados.length})`, enlaces(revisados))
+      : '',
+    autora.linkedin ? `<p><a href="${esc(autora.linkedin)}" rel="me">Perfil de LinkedIn</a></p>` : '',
+  ].join('');
+}
+
+/** /articulos/categoria/<slug>: cada artículo con su resumen. */
+export function contenidoCategoria(nombre, lista = []) {
+  const v = lista.filter((a) => a && a.slug && a.title);
+  return [
+    `<p>${v.length} ${v.length === 1 ? 'artículo' : 'artículos'} de ${esc(String(nombre).toLowerCase())} en Edvanta, escritos y revisados con fuentes verificables.</p>`,
+    v.length
+      ? `<ul>${v.map((a) => `<li><h2><a href="/articulos/${esc(a.slug)}">${esc(a.title)}</a></h2>${parrafo(a.description || a.seoDescription)}</li>`).join('')}</ul>`
+      : '',
+  ].join('');
+}
+
 /** /empresas/marketing/<slug>: un servicio de la Escuela de Marketing. */
 export function contenidoServicioMarketing(s) {
   return [

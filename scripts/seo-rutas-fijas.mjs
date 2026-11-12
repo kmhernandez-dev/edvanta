@@ -6,9 +6,12 @@ import { ebooks } from '../src/data/fst.js';
 import { AUTORA_PERFIL } from '../src/data/edvanta/eeat.js';
 import { tieneRevisionClinica } from '../src/lib/seo/indexabilidad.js';
 import {
-  contenidoAlianzas, contenidoArea, contenidoContacto, contenidoEscuela, contenidoEscuelas, contenidoGuias, contenidoInstituciones,
-  contenidoNoticias, contenidoPaquete, contenidoPrensa, contenidoSobreEdvanta,
+  contenidoAlianzas, contenidoArea, contenidoAutora, contenidoContacto, contenidoEnfermedad, contenidoEscuela, contenidoEscuelas,
+  contenidoGuias, contenidoInstituciones, contenidoNoticias, contenidoPaquete, contenidoPrensa, contenidoSobreEdvanta,
 } from './lib/contenido-paginas-fijas.mjs';
+import { articulos as ARTICULOS } from '../src/data/articulos.js';
+import { REVISION_CLINICA } from '../src/data/revisionClinica.js';
+import { GUIAS_VENTA, rutaDeGuia } from '../src/data/guiasVenta.js';
 import { AREAS_DEL_INICIO, CURSOS_EDUTIN } from '../src/data/edvanta/catalogoInicio.js';
 import {
   META_CURSOS, META_INSTITUCIONES, META_NOTICIAS, metaDeArea, metaDeCursosDe, metaDePaquete, tituloDeEnfermedad,
@@ -191,12 +194,27 @@ for (const [slug, title, description] of legales) {
   add(`/${slug}`, `${title} | Edvanta`, description, { tipo: 'WebPage', seccion: 'Información legal', enlaces: [['Información legal', '/privacidad'], ['Contacto', '/contacto'], ['Términos', '/terminos']] });
 }
 
+// Las guías y los artículos que la página de cada enfermedad enlaza, solo
+// si existen (la guía con su página de venta, el artículo publicado).
+const GUIA_POR_RUTA = new Map(GUIAS_VENTA.map((g) => [`/guia/${g.slug}`, g]));
+const ARTICULO_POR_SLUG = new Map(ARTICULOS.map((a) => [a.slug, a]));
+const extrasDeEnfermedad = (e) => ({
+  guias: (e.guias || []).map((id) => {
+    const url = rutaDeGuia(id);
+    const g = url && GUIA_POR_RUTA.get(url);
+    return g ? { nombre: g.titulo, url } : null;
+  }).filter(Boolean),
+  articulos: (e.articulos || []).map((slug) => ARTICULO_POR_SLUG.get(slug))
+    .filter(Boolean).map((a) => ({ nombre: a.title, url: `/articulos/${a.slug}` })),
+});
+
 for (const enfermedad of enfermedades) {
   add(`/enfermedades/${enfermedad.slug}`, tituloDeEnfermedad(enfermedad), enfermedad.seo.description, {
     tipo: 'MedicalWebPage',
     seccion: 'Feliz Sin Tiroides',
     robots: tieneRevisionClinica(enfermedad) ? 'index,follow' : 'noindex,follow',
     enlaces: [['Feliz Sin Tiroides', '/feliz-sin-tiroides'], ['Contigo', '/contigo/tiroides'], ['Artículos', '/articulos']],
+    contenido: contenidoEnfermedad(enfermedad, extrasDeEnfermedad(enfermedad)),
   });
 }
 
@@ -208,6 +226,7 @@ for (const slug of ['levotiroxina', 'nutricion-tiroidea']) {
     seccion: 'Feliz Sin Tiroides',
     robots: tieneRevisionClinica(enfermedad) ? 'index,follow' : 'noindex,follow',
     enlaces: [['Feliz Sin Tiroides', '/feliz-sin-tiroides'], ['Contigo', '/contigo/tiroides'], ['Artículos', '/articulos']],
+    contenido: contenidoEnfermedad(enfermedad, extrasDeEnfermedad(enfermedad)),
   });
 }
 
@@ -234,6 +253,11 @@ add('/autores/karla-hernandez', 'Karla Melissa Hernández Salcedo | Autora y rev
   seccion: 'Transparencia',
   mainEntity: { '@id': 'https://edvanta.co/autores/karla-hernandez#person' },
   enlaces: [['Política editorial', '/politica-editorial'], ['Política de revisión clínica', '/politica-de-revision-clinica'], ['Equipo editorial', '/equipo-editorial'], ['Fuentes', '/fuentes'], ['Metodología', '/metodologia']],
+  contenido: (() => {
+    const revisados = Object.keys(REVISION_CLINICA).map((slug) => ARTICULO_POR_SLUG.get(slug)).filter(Boolean)
+      .map((a) => ({ nombre: a.title, url: `/articulos/${a.slug}` }));
+    return contenidoAutora(AUTORA_PERFIL, { revisados, totalRevisados: revisados.length });
+  })(),
   extraJsonLd: [{
     '@type': 'Person',
     '@id': 'https://edvanta.co/autores/karla-hernandez#person',

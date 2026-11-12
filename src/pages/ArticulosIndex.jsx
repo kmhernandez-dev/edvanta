@@ -30,6 +30,7 @@ import { articulos, getArticulo } from '../data/articulos';
 import { lecturasRecientes } from '../lib/articulos/lecturas';
 import { updatePageSeo } from '../utils/seo';
 import { metaDeCategoria } from '../lib/seo/titulos';
+import { categoriaIndexable } from '../lib/seo/indexabilidad';
 import { rutaDeCategoria, slugify } from '../lib/slug';
 import NotFound from './NotFound';
 
@@ -170,6 +171,7 @@ export default function ArticulosIndex() {
         title: metaDeCategoria(actual.nombre, actual.total).titulo,
         description: metaDeCategoria(actual.nombre, actual.total).descripcion,
         canonical: url,
+        robots: categoriaIndexable(articulos.filter((a) => slugify(a.category) === slugCategoria)) ? 'index,follow' : 'noindex,follow',
         jsonLdId: 'articles-index',
         jsonLd: {
           '@context': 'https://schema.org',

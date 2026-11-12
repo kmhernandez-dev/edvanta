@@ -57,3 +57,15 @@ export function puedeIndexarse(articulo = {}) {
 export function robotsDeArticulo(articulo = {}) {
   return puedeIndexarse(articulo) ? 'index,follow' : 'noindex,follow';
 }
+
+/**
+ * Una categoría con menos de 3 artículos indexables es una lista de uno o
+ * dos enlaces (Search Console las dejaba en «Descubierta» con 22 a 46
+ * palabras). Sigue enlazando, pero no se indexa ni va al sitemap. La usan
+ * el prerender (scripts/prerenderizar-paginas.mjs) y la aplicación.
+ */
+export const MINIMO_POR_CATEGORIA = 3;
+
+export function categoriaIndexable(lista = []) {
+  return lista.filter(puedeIndexarse).length >= MINIMO_POR_CATEGORIA;
+}
