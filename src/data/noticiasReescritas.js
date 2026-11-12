@@ -470,6 +470,66 @@ export const NOTICIAS_REESCRITAS = {
     description: 'La FDA advierte que 10 Day Forecast, vendido para el desempeño sexual, contiene sildenafil y acetaminofén sin declarar. Riesgos y qué hacer.',
     autor: 'Equipo editorial de Edvanta'
   },
+  'mhra-aprueba-deuruxolitinib-para-alopecia-areata-grave': {
+    contenidoPropio: true,
+    mdPath: '/articulos/articulos_edvanta/noticias-internacionales/mhra-aprueba-deuruxolitinib-para-alopecia-areata-grave.md',
+    updated: '2026-11-12',
+    readingTime: '3 min',
+    seoTitle: 'Deuruxolitinib: la MHRA lo aprueba para alopecia areata',
+    seoDescription: 'La MHRA aprobó el deuruxolitinib (Leqselvi) en tabletas para la alopecia areata grave en adultos. Cómo actúa, qué lograron los estudios y sus riesgos.',
+    description: 'La MHRA aprobó el deuruxolitinib (Leqselvi) en tabletas para la alopecia areata grave en adultos. Cómo actúa, qué lograron los estudios y sus riesgos.',
+    autor: 'Equipo editorial de Edvanta'
+  },
+  'mhra-amplia-casgevy-a-ninos-desde-cinco-anos': {
+    contenidoPropio: true,
+    mdPath: '/articulos/articulos_edvanta/noticias-internacionales/mhra-amplia-casgevy-a-ninos-desde-cinco-anos.md',
+    updated: '2026-11-12',
+    readingTime: '3 min',
+    seoTitle: 'Casgevy: la MHRA lo amplía a niños desde los 5 años',
+    seoDescription: 'La MHRA amplió Casgevy, terapia de edición genética, a niños desde 5 años con anemia falciforme grave o beta talasemia. Cómo funciona y sus riesgos.',
+    description: 'La MHRA amplió Casgevy, terapia de edición genética, a niños desde 5 años con anemia falciforme grave o beta talasemia. Cómo funciona y sus riesgos.',
+    autor: 'Equipo editorial de Edvanta'
+  },
+  'anvisa-aprueba-evrysdi-go-para-atrofia-muscular-espinal': {
+    contenidoPropio: true,
+    mdPath: '/articulos/articulos_edvanta/noticias-internacionales/anvisa-aprueba-evrysdi-go-para-atrofia-muscular-espinal.md',
+    updated: '2026-11-12',
+    readingTime: '3 min',
+    seoTitle: 'Evrysdi Go: Anvisa aprueba risdiplam en comprimidos',
+    seoDescription: 'La Anvisa aprobó Evrysdi Go, risdiplam en comprimidos para la atrofia muscular espinal 5q, sin reconstitución ni nevera. Para quién es y qué cambia.',
+    description: 'La Anvisa aprobó Evrysdi Go, risdiplam en comprimidos para la atrofia muscular espinal 5q, sin reconstitución ni nevera. Para quién es y qué cambia.',
+    autor: 'Equipo editorial de Edvanta'
+  },
+  'mhra-aprueba-nuevo-tratamiento-oral-para-psoriasis-en-placas': {
+    contenidoPropio: true,
+    mdPath: '/articulos/articulos_edvanta/noticias-internacionales/mhra-aprueba-nuevo-tratamiento-oral-para-psoriasis-en-placas.md',
+    updated: '2026-11-12',
+    readingTime: '3 min',
+    seoTitle: 'Icotrokinra: la MHRA aprueba una tableta para psoriasis',
+    seoDescription: 'La MHRA autorizó el icotrokinra (Icotyde), una tableta diaria que bloquea el receptor de IL-23, para psoriasis en placas moderada a grave.',
+    description: 'La MHRA autorizó el icotrokinra (Icotyde), una tableta diaria que bloquea el receptor de IL-23, para psoriasis en placas moderada a grave.',
+    autor: 'Equipo editorial de Edvanta'
+  },
+  'mhra-autoriza-plozasiran-para-sindrome-de-quilomicronemia-familiar': {
+    contenidoPropio: true,
+    mdPath: '/articulos/articulos_edvanta/noticias-internacionales/mhra-autoriza-plozasiran-para-sindrome-de-quilomicronemia-familiar.md',
+    updated: '2026-11-12',
+    readingTime: '3 min',
+    seoTitle: 'Plozasiran: la MHRA lo autoriza para quilomicronemia',
+    seoDescription: 'La MHRA autorizó el plozasiran (Redemplo) para la quilomicronemia familiar: una inyección cada 3 meses que bajó cerca del 80 % los triglicéridos.',
+    description: 'La MHRA autorizó el plozasiran (Redemplo) para la quilomicronemia familiar: una inyección cada 3 meses que bajó cerca del 80 % los triglicéridos.',
+    autor: 'Equipo editorial de Edvanta'
+  },
+  'chmp-recomienda-daraxonrasib-para-cancer-pancreatico-metastasico': {
+    contenidoPropio: true,
+    mdPath: '/articulos/articulos_edvanta/noticias-internacionales/chmp-recomienda-daraxonrasib-para-cancer-pancreatico-metastasico.md',
+    updated: '2026-11-12',
+    readingTime: '4 min',
+    seoTitle: 'Daraxonrasib: la EMA lo recomienda en cáncer de páncreas',
+    seoDescription: 'El CHMP recomendó Rasonque (daraxonrasib), un inhibidor de RAS, para cáncer de páncreas metastásico tratado: 12,4 frente a 6,7 meses de supervivencia.',
+    description: 'El CHMP recomendó Rasonque (daraxonrasib), un inhibidor de RAS, para cáncer de páncreas metastásico tratado: 12,4 frente a 6,7 meses de supervivencia.',
+    autor: 'Equipo editorial de Edvanta'
+  },
 };
 
 /** Las 100 noticias del paquete, con la versión reescrita donde la hay. */
