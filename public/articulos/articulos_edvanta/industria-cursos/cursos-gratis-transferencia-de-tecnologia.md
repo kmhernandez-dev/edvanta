@@ -1,89 +1,102 @@
-# Cursos gratis de Transferencia de tecnología: guía para químicos farmacéuticos
+# Cursos gratis de transferencia de tecnología farmacéutica: cómo llevar un producto o un método de un sitio a otro
 
-La industria farmacéutica necesita profesionales que entiendan Transferencia de tecnología y sepan aplicarlo en entornos regulados. Esta guía reúne cursos reales de Producción Farmacéutica para que compares opciones, revises el temario y elijas con criterio.
+Un medicamento se desarrolla en un laboratorio, se escala en una planta piloto y se fabrica en una planta comercial, que a veces está en otro país. Cada vez que el proceso o un método analítico pasa de un lugar a otro hay que demostrar que el sitio que lo recibe obtiene los mismos resultados. Ese trabajo se llama transferencia de tecnología, y es uno de los proyectos más complejos de la industria: combina desarrollo, producción, calidad, regulatorio y gestión de proyectos.
 
-> **Contenido editorial:** algunos enlaces pueden ser de afiliado. Edvanta no dicta ni certifica esos cursos. Verifica el precio, el acceso y el certificado en la plataforma antes de inscribirte.
+> **En resumen**
+>
+> - La transferencia de tecnología es una de las etapas del ciclo de vida del producto según la guía ICH Q10.
+> - La OMS actualizó en 2022 su guía de transferencia de tecnología en la fabricación farmacéutica (anexo 4 del informe técnico 1044).
+> - Una transferencia exitosa se apoya en un análisis de brechas, un protocolo con criterios de aceptación y un informe que demuestra la equivalencia.
 
-**En resumen**
+## Cuándo hay una transferencia de tecnología
 
-- Qué es Transferencia de tecnología y por qué se pide en la industria farmacéutica.
-- Cursos reales de Producción Farmacéutica con enlace directo a la plataforma.
-- Cómo elegir, qué roles existen y una ruta de aprendizaje de tres pasos.
-- Fuentes oficiales para verificar requisitos y actualizar el temario.
+- **Del desarrollo a la producción comercial:** el escalado de un producto nuevo.
+- **Entre plantas de la misma empresa:** por consolidación o aumento de capacidad.
+- **A un fabricante por contrato:** cuando la empresa tercerizó la producción.
+- **De métodos analíticos:** cuando un laboratorio recibe un método de otro.
+- **Al cambiar de proveedor** de un principio activo o de un intermedio.
 
-## Por qué importa Transferencia de tecnología en 2026
+La guía de la OMS cubre las transferencias dentro de un mismo sitio o entre sitios, tanto de procesos de fabricación como de procedimientos analíticos, y aclara que pueden ocurrir antes o después de obtener la autorización de comercialización.
 
-En Colombia y Latinoamérica, los laboratorios, las IPS, las empresas de dispositivos médicos y las autoridades sanitarias trabajan con estándares que cambian con frecuencia. Formarte en Transferencia de tecnología te ayuda a leer esos requisitos, documentar decisiones y aportar en equipos multidisciplinarios.
+## Las fases de un proyecto de transferencia
 
-## Qué aprenderás
+| Fase | Qué se hace |
+|---|---|
+| Debida diligencia y análisis de brechas | Comparar equipos, instalaciones, capacidades y experiencia del sitio receptor con lo que el producto necesita |
+| Planeación | Definir el alcance, los responsables, el cronograma, los riesgos y los criterios de aceptación |
+| Transferencia de conocimiento | Entregar el paquete técnico: formulación, proceso, controles, especificaciones e historia del desarrollo |
+| Ejecución | Entrenar al personal, calificar los equipos, fabricar lotes y transferir los métodos |
+| Verificación | Comparar los resultados con los criterios definidos y documentar la equivalencia |
+| Cierre | Informe final, lecciones aprendidas y paso a la producción de rutina |
 
-- Transferencia de tecnología
-- Manufactura estéril
-- Formas sólidas
-- Empaque
-- Serialización
+## El paquete de conocimiento
 
-## Cursos recomendados de Producción Farmacéutica
+Muchas transferencias fallan porque el sitio emisor entrega «la receta», pero no el conocimiento detrás de ella. Un buen paquete incluye:
+
+- **Los parámetros críticos del proceso** y sus rangos, con la justificación.
+- **Los atributos críticos de calidad** del producto.
+- **La historia del desarrollo:** qué se probó, qué falló y por qué.
+- **Los problemas conocidos** del proceso y cómo se resolvieron.
+- **Los métodos analíticos validados** y los estándares de referencia.
+
+## Transferencia de métodos analíticos
+
+Para transferir un método, el laboratorio receptor demuestra que lo ejecuta con resultados equivalentes. Las estrategias más usadas son las pruebas comparativas (los dos laboratorios analizan las mismas muestras), la covalidación (el receptor participa en la validación) y la revalidación parcial. Los criterios de aceptación se fijan antes de empezar, en el protocolo.
+
+## La conexión con el ciclo de vida
+
+La guía **ICH Q10** sobre el sistema de calidad farmacéutica describe el ciclo de vida del producto en cuatro etapas: desarrollo farmacéutico, transferencia de tecnología, fabricación comercial y discontinuación. La transferencia no es un evento aislado: depende de lo que se aprendió en el desarrollo y alimenta la mejora continua de la fabricación. Después de la transferencia, los cambios se manejan con control de cambios y, si aplica, con los trámites regulatorios correspondientes.
+
+## Cursos de transferencia de tecnología
+
+En Edvanta, estos cursos gratuitos cubren las piezas que más se usan en una transferencia, con certificado opcional de COP 60.000:
+
+- [Validaciones y Calificaciones](/curso-de-validaciones-y-calificaciones)
+- [Validación de Métodos Analíticos](/curso-de-validacion-de-metodos-analiticos)
+- [Gestión de Riesgos en la Calidad Farmacéutica](/curso-de-gestion-de-riesgos-en-la-calidad-farmaceutica)
+- [Modificaciones al Registro Sanitario de Medicamentos](/curso-de-modificaciones-al-registro-sanitario-de-medicamentos)
 
 | Curso | Plataforma | Enlace |
 |---|---|---|
-| Introduction to the Pharmaceutical Industry | Coursera | [Ver curso](https://imp.i384100.net/7Xx0Ag) |
 | Introduction to Pharmaceutics and Biopharmaceutics | Udemy | [Ver curso](https://trk.udemy.com/n4bJ3R) |
-| Pharmaceutical Dosage Forms & Basics of Pharma Industry | Udemy | [Ver curso](https://trk.udemy.com/NGE1gb) |
 | GMP: Pharmaceutical Tablet Manufacturing | Udemy | [Ver curso](https://trk.udemy.com/dyrNx7) |
-| Sterile Drug Product Manufacturing in Pharma Industry | Udemy | [Ver curso](https://trk.udemy.com/vDmGXy) |
+| Introduction to the Pharmaceutical Industry | Coursera | [Ver curso](https://imp.i384100.net/7Xx0Ag) |
 
-> El acceso gratuito, el certificado y las condiciones de cada curso dependen de la plataforma. Algunas opciones permiten aprender sin costo y cobran solo el certificado; otras tienen precio desde el inicio. Confirma antes de inscribirte.
+> **Contenido editorial:** algunos enlaces son de afiliado. Edvanta no dicta esos cursos; confirma condiciones y certificado en cada plataforma.
 
-## Cómo elegir un curso de Transferencia de tecnología
+Una transferencia es, ante todo, un proyecto. La guía de [cursos de gestión de proyectos con certificado](/articulos/cursos-de-gestion-de-proyectos-con-certificado) complementa esta formación.
 
-1. Revisa el temario y confirma que cubre Transferencia de tecnología con profundidad.
-2. Verifica el nivel: introductorio, intermedio o avanzado.
-3. Confirma si el acceso es gratuito y si el certificado tiene costo.
-4. Revisa la duración, el idioma y la modalidad.
-5. Comprueba quién dicta el curso y si incluye casos, proyectos o evaluaciones.
+## Errores frecuentes
 
-## Salidas laborales
-
-- Supervisor de producción
-- Operador de manufactura
-- Especialista en empaque
-- Coordinador de transferencia
-
-## Ruta de aprendizaje en 3 pasos
-
-1. **Fundamentos:** empieza por un curso introductorio o por la guía de Producción Farmacéutica para entender el vocabulario y el marco de trabajo.
-2. **Práctica:** elige un curso específico de Transferencia de tecnología y aplícalo en un caso, un proyecto o una actividad de tu trabajo.
-3. **Especialización:** complementa con una certificación, una ruta de aprendizaje o un posgrado si el rol que buscas lo exige.
+- **Subestimar las diferencias de equipos:** dos mezcladores con el mismo volumen pueden mezclar distinto.
+- **Fijar los criterios de aceptación después de ver los resultados.**
+- **Transferir sin entrenar al personal** del sitio receptor.
+- **Olvidar los trámites regulatorios:** un cambio de sitio de fabricación suele requerir una modificación del registro sanitario.
+- **No documentar las lecciones aprendidas** para la siguiente transferencia.
 
 ## Preguntas frecuentes
 
-### ¿Los cursos de Transferencia de tecnología son gratis?
+### ¿Qué es la transferencia de tecnología farmacéutica?
 
-El acceso y el certificado dependen de cada plataforma. Algunas ofrecen contenido gratuito y certificado opcional de pago; otras cobran desde el inicio. Verifica el precio y las condiciones antes de inscribirte.
+El proceso de llevar un producto o un método analítico de un sitio a otro y demostrar que el sitio receptor obtiene resultados equivalentes.
 
-### ¿Necesito experiencia previa en Transferencia de tecnología?
+### ¿Qué guía internacional la describe?
 
-No siempre. Hay cursos introductorios para estudiantes y profesionales que quieren actualizarse. Revisa el nivel y los requisitos en la ficha del curso.
+La OMS tiene una guía específica, actualizada en 2022 en el anexo 4 de su informe técnico 1044, y la ICH Q10 la incluye como una etapa del ciclo de vida del producto.
 
-### ¿Estos cursos sirven para trabajar en la industria farmacéutica?
+### ¿Qué es un análisis de brechas?
 
-Pueden ayudarte a construir competencias, pero no reemplazan la formación de base ni la experiencia. Úsalos como parte de una ruta y verifica que el temario se ajuste al rol que buscas.
+La comparación entre lo que el producto necesita y lo que el sitio receptor tiene, para identificar qué hay que ajustar antes de transferir.
+
+### ¿Cómo se transfiere un método analítico?
+
+Con pruebas comparativas, covalidación o revalidación parcial, según un protocolo con criterios de aceptación definidos antes de empezar.
+
+### ¿Un cambio de planta requiere trámite ante el INVIMA?
+
+En general, sí: un cambio de sitio de fabricación suele requerir una modificación del registro sanitario. Revisa el trámite que aplica a cada caso.
 
 ## Fuentes
 
-- [FDA](https://www.fda.gov)
-- [EMA](https://www.ema.europa.eu)
-- [PIC/S](https://picscheme.org)
-- [Introduction to the Pharmaceutical Industry](https://imp.i384100.net/7Xx0Ag)
-- [Introduction to Pharmaceutics and Biopharmaceutics](https://trk.udemy.com/n4bJ3R)
-- [Pharmaceutical Dosage Forms & Basics of Pharma Industry](https://trk.udemy.com/NGE1gb)
-- [GMP: Pharmaceutical Tablet Manufacturing](https://trk.udemy.com/dyrNx7)
-
-## Contenido relacionado
-
-- [Cursos de Producción Farmacéutica para químicos farmacéuticos](/articulos/cursos-de-produccion-farmaceutica)
-- [Cursos gratis de Manufactura estéril: guía para químicos farmacéuticos](/articulos/cursos-gratis-manufactura-esteril)
-- [Cursos gratis de Formas sólidas: guía para químicos farmacéuticos](/articulos/cursos-gratis-formas-solidas)
-
-> Este contenido es educativo y no constituye asesoría profesional individual.
+- **TRS 1044, Annex 4: WHO guidelines on technology transfer in pharmaceutical manufacturing.** Organización Mundial de la Salud. https://www.who.int/publications/m/item/trs1044-annex4 (consultado el 12 de noviembre de 2026).
+- **ICH Q10: Pharmaceutical Quality System.** International Council for Harmonisation. https://www.ich.org/page/quality-guidelines (consultado el 12 de noviembre de 2026).

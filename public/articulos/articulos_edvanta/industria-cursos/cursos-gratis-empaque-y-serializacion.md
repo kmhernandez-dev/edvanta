@@ -1,90 +1,105 @@
-# Cursos gratis de Empaque y serialización: guía para químicos farmacéuticos
+# Cursos gratis de empaque y serialización de medicamentos: acondicionamiento, despeje de línea y trazabilidad
 
-La industria farmacéutica necesita profesionales que entiendan Empaque y serialización y sepan aplicarlo en entornos regulados. Esta guía reúne cursos reales de Producción Farmacéutica para que compares opciones, revises el temario y elijas con criterio.
+El empaque protege el medicamento de la luz, la humedad y los golpes, y además le dice al paciente qué es, cuánto contiene y hasta cuándo sirve. La serialización va un paso más allá: le da a cada caja un código único que permite seguirla en la cadena de distribución y detectar falsificaciones. Son dos temas que conectan producción, calidad, regulatorio y logística, y en los que se originan muchos de los retiros de producto del mercado.
 
-> **Contenido editorial:** algunos enlaces pueden ser de afiliado. Edvanta no dicta ni certifica esos cursos. Verifica el precio, el acceso y el certificado en la plataforma antes de inscribirte.
+> **En resumen**
+>
+> - El empaque primario está en contacto con el medicamento; el secundario lo agrupa y lleva la información para el usuario.
+> - El despeje de línea entre lotes es la barrera más importante contra las mezclas de productos y concentraciones.
+> - La serialización asigna un identificador único a cada unidad; en la Unión Europea es obligatoria desde 2019 para la mayoría de los medicamentos con fórmula médica.
 
-**En resumen**
+## Empaque primario, secundario y terciario
 
-- Qué es Empaque y serialización y por qué se pide en la industria farmacéutica.
-- Cursos reales de Producción Farmacéutica con enlace directo a la plataforma.
-- Cómo elegir, qué roles existen y una ruta de aprendizaje de tres pasos.
-- Fuentes oficiales para verificar requisitos y actualizar el temario.
+| Nivel | Qué es | Ejemplos |
+|---|---|---|
+| Primario | En contacto directo con el medicamento | Blíster, frasco, ampolla, vial, tubo |
+| Secundario | Contiene uno o más empaques primarios | Caja plegadiza con el inserto |
+| Terciario | Agrupa para el transporte | Corrugado, estiba |
 
-## Por qué importa Empaque y serialización en 2026
+El empaque primario es parte del producto: su material se estudia en el desarrollo y en la estabilidad, porque puede dejar pasar humedad u oxígeno, o liberar sustancias al medicamento. Cambiar el material del blíster o del frasco no es un cambio menor.
 
-En Colombia y Latinoamérica, los laboratorios, las IPS, las empresas de dispositivos médicos y las autoridades sanitarias trabajan con estándares que cambian con frecuencia. Formarte en Empaque y serialización te ayuda a leer esos requisitos, documentar decisiones y aportar en equipos multidisciplinarios.
+## El acondicionamiento y sus riesgos
 
-## Qué aprenderás
+En la línea de acondicionamiento se juntan el producto, los materiales impresos y las máquinas. Los riesgos típicos son:
 
-- Empaque y serialización
-- Manufactura estéril
-- Formas sólidas
-- Empaque
-- Serialización
-- Transferencia de tecnología
+- **Mezclas de producto o de concentración:** una tableta de otro producto o un blíster de otra concentración en la caja.
+- **Materiales impresos equivocados:** un inserto de otra versión o una caja de otro producto.
+- **Codificación ilegible o errónea** del lote y del vencimiento.
+- **Faltantes:** cajas sin inserto o blísteres incompletos.
 
-## Cursos recomendados de Producción Farmacéutica
+Un ejemplo real: en 2026, la MHRA del Reino Unido retiró un [lote de lercanidipino de 10 mg](/articulos/mhra-retira-un-lote-de-lercanidipino-por-mezcla-de-concentraciones) porque una caja traía un blíster de 20 mg.
+
+## El despeje de línea
+
+Antes de empezar un lote, y al terminarlo, se verifica que en la línea no quede nada del lote anterior: producto, materiales impresos, documentos ni residuos. Un buen despeje de línea:
+
+1. **Sigue una lista** de puntos a revisar, incluidos los lugares difíciles de ver.
+2. **Lo verifica una segunda persona** independiente.
+3. **Queda registrado** en el expediente del lote.
+4. **Se complementa con controles automáticos,** como lectores de código, sistemas de visión y control de peso.
+
+## Conciliación de materiales impresos
+
+Al final del lote se compara cuánto material impreso se entregó, cuánto se usó, cuánto se dañó y cuánto se devolvió. Si las cuentas no cuadran dentro de los límites, puede haber una caja con el material equivocado en el mercado, y se investiga antes de liberar el lote.
+
+## La serialización
+
+La serialización asigna a cada unidad de venta un identificador único, normalmente codificado en un código bidimensional GS1 DataMatrix que incluye el código del producto, un número de serie, el lote y el vencimiento. Así se puede verificar la autenticidad de cada caja y rastrearla.
+
+- **Unión Europea:** la Directiva 2011/62/UE sobre medicamentos falsificados y el Reglamento Delegado (UE) 2016/161 exigen, desde el 9 de febrero de 2019, un identificador único y un dispositivo contra manipulaciones en la mayoría de los medicamentos con fórmula médica. La farmacia verifica y da de baja cada código al dispensar.
+- **Estados Unidos:** la ley DSCSA de 2013 estableció la trazabilidad electrónica de los medicamentos de prescripción por unidad, implementada por etapas.
+
+En otros países, incluida Colombia, conviene revisar los requisitos vigentes de trazabilidad con la autoridad sanitaria, porque cambian con el tiempo.
+
+## Cursos de empaque y serialización
+
+En Edvanta, estos cursos gratuitos cubren la base de calidad y de información del producto, con certificado opcional de COP 60.000:
+
+- [Etiquetado e Insertos de Medicamentos](/curso-de-etiquetado-e-insertos-de-medicamentos)
+- [Buenas Prácticas de Manufactura (BPM)](/curso-de-buenas-practicas-de-manufactura-bpm)
+- [Buenas Prácticas de Documentación Farmacéutica](/curso-de-buenas-practicas-de-documentacion-farmaceutica)
+- [Estudios de Estabilidad de Medicamentos](/curso-de-estudios-de-estabilidad-de-medicamentos)
 
 | Curso | Plataforma | Enlace |
 |---|---|---|
-| Introduction to the Pharmaceutical Industry | Coursera | [Ver curso](https://imp.i384100.net/7Xx0Ag) |
-| Introduction to Pharmaceutics and Biopharmaceutics | Udemy | [Ver curso](https://trk.udemy.com/n4bJ3R) |
 | Pharmaceutical Dosage Forms & Basics of Pharma Industry | Udemy | [Ver curso](https://trk.udemy.com/NGE1gb) |
-| GMP: Pharmaceutical Tablet Manufacturing | Udemy | [Ver curso](https://trk.udemy.com/dyrNx7) |
-| Sterile Drug Product Manufacturing in Pharma Industry | Udemy | [Ver curso](https://trk.udemy.com/vDmGXy) |
+| Introduction to the Pharmaceutical Industry | Coursera | [Ver curso](https://imp.i384100.net/7Xx0Ag) |
 
-> El acceso gratuito, el certificado y las condiciones de cada curso dependen de la plataforma. Algunas opciones permiten aprender sin costo y cobran solo el certificado; otras tienen precio desde el inicio. Confirma antes de inscribirte.
+> **Contenido editorial:** algunos enlaces son de afiliado. Edvanta no dicta esos cursos; confirma condiciones y certificado en cada plataforma.
 
-## Cómo elegir un curso de Empaque y serialización
+Si te interesa la parte de distribución, revisa la guía de [cursos de logística farmacéutica y cadena de suministro](/articulos/cursos-de-logistica-farmaceutica-y-cadena-de-suministro).
 
-1. Revisa el temario y confirma que cubre Empaque y serialización con profundidad.
-2. Verifica el nivel: introductorio, intermedio o avanzado.
-3. Confirma si el acceso es gratuito y si el certificado tiene costo.
-4. Revisa la duración, el idioma y la modalidad.
-5. Comprueba quién dicta el curso y si incluye casos, proyectos o evaluaciones.
+## Errores frecuentes
 
-## Salidas laborales
-
-- Supervisor de producción
-- Operador de manufactura
-- Especialista en empaque
-- Coordinador de transferencia
-
-## Ruta de aprendizaje en 3 pasos
-
-1. **Fundamentos:** empieza por un curso introductorio o por la guía de Producción Farmacéutica para entender el vocabulario y el marco de trabajo.
-2. **Práctica:** elige un curso específico de Empaque y serialización y aplícalo en un caso, un proyecto o una actividad de tu trabajo.
-3. **Especialización:** complementa con una certificación, una ruta de aprendizaje o un posgrado si el rol que buscas lo exige.
+- **Hacer el despeje de línea de memoria,** sin lista ni verificación independiente.
+- **Guardar materiales impresos de varios productos juntos** en la línea.
+- **Cambiar el material de empaque primario sin estudios de estabilidad.**
+- **Aceptar una conciliación que no cuadra** sin investigar.
+- **Tratar la serialización solo como un tema de software:** también es de calidad y de datos maestros.
 
 ## Preguntas frecuentes
 
-### ¿Los cursos de Empaque y serialización son gratis?
+### ¿Qué es el empaque primario?
 
-El acceso y el certificado dependen de cada plataforma. Algunas ofrecen contenido gratuito y certificado opcional de pago; otras cobran desde el inicio. Verifica el precio y las condiciones antes de inscribirte.
+El que está en contacto directo con el medicamento, como el blíster, el frasco o la ampolla. Hace parte del producto y se evalúa en la estabilidad.
 
-### ¿Necesito experiencia previa en Empaque y serialización?
+### ¿Qué es el despeje de línea?
 
-No siempre. Hay cursos introductorios para estudiantes y profesionales que quieren actualizarse. Revisa el nivel y los requisitos en la ficha del curso.
+La verificación, antes y después de cada lote, de que en la línea no quedan productos, materiales impresos ni documentos del lote anterior.
 
-### ¿Estos cursos sirven para trabajar en la industria farmacéutica?
+### ¿Qué es la serialización de medicamentos?
 
-Pueden ayudarte a construir competencias, pero no reemplazan la formación de base ni la experiencia. Úsalos como parte de una ruta y verifica que el temario se ajuste al rol que buscas.
+La asignación de un identificador único a cada unidad de venta, normalmente en un código DataMatrix, para verificar su autenticidad y rastrearla.
+
+### ¿Desde cuándo es obligatoria la serialización en Europa?
+
+Desde el 9 de febrero de 2019, para la mayoría de los medicamentos con fórmula médica, según el Reglamento Delegado (UE) 2016/161.
+
+### ¿Qué curso sirve para aprender acondicionamiento?
+
+Los cursos gratuitos de BPM y de Etiquetado e Insertos de Edvanta, complementados con Pharmaceutical Dosage Forms & Basics of Pharma Industry en Udemy.
 
 ## Fuentes
 
-- [FDA](https://www.fda.gov)
-- [EMA](https://www.ema.europa.eu)
-- [PIC/S](https://picscheme.org)
-- [Introduction to the Pharmaceutical Industry](https://imp.i384100.net/7Xx0Ag)
-- [Introduction to Pharmaceutics and Biopharmaceutics](https://trk.udemy.com/n4bJ3R)
-- [Pharmaceutical Dosage Forms & Basics of Pharma Industry](https://trk.udemy.com/NGE1gb)
-- [GMP: Pharmaceutical Tablet Manufacturing](https://trk.udemy.com/dyrNx7)
-
-## Contenido relacionado
-
-- [Cursos de Producción Farmacéutica para químicos farmacéuticos](/articulos/cursos-de-produccion-farmaceutica)
-- [Cursos gratis de Manufactura estéril: guía para químicos farmacéuticos](/articulos/cursos-gratis-manufactura-esteril)
-- [Cursos gratis de Formas sólidas: guía para químicos farmacéuticos](/articulos/cursos-gratis-formas-solidas)
-
-> Este contenido es educativo y no constituye asesoría profesional individual.
+- **Reglamento Delegado (UE) 2016/161 sobre los dispositivos de seguridad de los medicamentos.** EUR-Lex. https://eur-lex.europa.eu/eli/reg_del/2016/161/oj (consultado el 12 de noviembre de 2026).
+- **Resolución 1160 de 2016.** Ministerio de Salud y Protección Social, en el normograma del INVIMA. https://normograma.invima.gov.co/compilacion/docs/resolucion_minsaludps_1160_2016.htm (consultado el 12 de noviembre de 2026).

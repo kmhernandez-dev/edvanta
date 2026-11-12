@@ -1,89 +1,108 @@
-# Cursos gratis de Formas sólidas: guía para químicos farmacéuticos
+# Cursos gratis de formas farmacéuticas sólidas: tabletas, cápsulas, granulación y controles en proceso
 
-La industria farmacéutica necesita profesionales que entiendan Formas sólidas y sepan aplicarlo en entornos regulados. Esta guía reúne cursos reales de Producción Farmacéutica para que compares opciones, revises el temario y elijas con criterio.
+Las tabletas y las cápsulas son la forma farmacéutica más usada en el mundo: son estables, fáciles de dosificar y de transportar, y los pacientes las prefieren. Detrás de cada tableta hay, sin embargo, una cadena de operaciones donde pequeños cambios (la humedad de un granulado, el tiempo de mezcla, la fuerza de compresión) pueden cambiar cómo se disuelve el medicamento en el cuerpo. Entender esa cadena es la base del trabajo en producción, desarrollo y calidad de sólidos.
 
-> **Contenido editorial:** algunos enlaces pueden ser de afiliado. Edvanta no dicta ni certifica esos cursos. Verifica el precio, el acceso y el certificado en la plataforma antes de inscribirte.
+> **En resumen**
+>
+> - Las vías de fabricación de tabletas son la compresión directa, la granulación húmeda y la granulación seca.
+> - Los controles en proceso más comunes son el peso, la dureza, la friabilidad, el espesor y la desintegración; en el producto terminado se suman la disolución y la uniformidad de contenido.
+> - En Colombia, la fabricación se rige por las buenas prácticas de manufactura de la Resolución 1160 de 2016.
 
-**En resumen**
+## Las tres vías para fabricar una tableta
 
-- Qué es Formas sólidas y por qué se pide en la industria farmacéutica.
-- Cursos reales de Producción Farmacéutica con enlace directo a la plataforma.
-- Cómo elegir, qué roles existen y una ruta de aprendizaje de tres pasos.
-- Fuentes oficiales para verificar requisitos y actualizar el temario.
+| Vía | Cómo funciona | Ventajas | Retos |
+|---|---|---|---|
+| Compresión directa | Se mezclan los polvos y se comprimen | Menos pasos, menos costo | Exige polvos que fluyan y se compriman bien |
+| Granulación húmeda | Se forma un granulado con un líquido aglutinante, se seca y se tamiza | Mejora el flujo y la uniformidad | Más pasos; no sirve para principios activos sensibles a la humedad o al calor |
+| Granulación seca | Se compacta el polvo (con rodillos) y se muele | Sin agua ni calor | Puede generar finos y afectar la compresibilidad |
 
-## Por qué importa Formas sólidas en 2026
+La elección depende de las propiedades del principio activo: su dosis, su flujo, su estabilidad frente a la humedad y el calor, y su tamaño de partícula.
 
-En Colombia y Latinoamérica, los laboratorios, las IPS, las empresas de dispositivos médicos y las autoridades sanitarias trabajan con estándares que cambian con frecuencia. Formarte en Formas sólidas te ayuda a leer esos requisitos, documentar decisiones y aportar en equipos multidisciplinarios.
+## Las operaciones unitarias
 
-## Qué aprenderás
+1. **Dispensación:** pesar cada material según la orden de producción, con doble verificación.
+2. **Tamizado y mezclado:** lograr una mezcla homogénea, sin segregación.
+3. **Granulación y secado,** cuando aplica.
+4. **Lubricación:** se agrega al final y por poco tiempo, porque un exceso de mezcla con el lubricante puede afectar la dureza y la disolución.
+5. **Compresión o encapsulado.**
+6. **Recubrimiento:** para proteger, enmascarar el sabor o controlar la liberación.
+7. **Acondicionamiento:** blíster, frasco y empaque secundario.
 
-- Formas sólidas
-- Manufactura estéril
-- Empaque
-- Serialización
-- Transferencia de tecnología
+## Controles en proceso y del producto terminado
 
-## Cursos recomendados de Producción Farmacéutica
+| Control | Qué detecta |
+|---|---|
+| Peso | Variaciones en el llenado de la matriz o de la cápsula |
+| Dureza | Tabletas demasiado blandas o demasiado duras |
+| Friabilidad | Tabletas que se desmoronan al manipularlas |
+| Espesor | Cambios en la compresión |
+| Desintegración | Tabletas que no se deshacen a tiempo |
+| Disolución | Cuánto principio activo se libera en el tiempo |
+| Uniformidad de contenido | Si cada unidad tiene la dosis declarada |
+
+Las farmacopeas, como la USP, describen los métodos de varias de estas pruebas. La disolución merece atención especial: es la prueba que mejor anticipa cómo se comportará el medicamento en el cuerpo, y es la base de la comparación de perfiles entre un genérico y su referencia.
+
+## Problemas típicos en la compresión
+
+- **Laminación o descabezado:** la tableta se separa en capas; suele deberse al aire atrapado o a un granulado muy seco.
+- **Adherencia a los punzones:** el polvo se pega a las herramientas; puede deberse a humedad o a poco lubricante.
+- **Variación de peso:** un flujo irregular del polvo en la tolva.
+- **Moteado:** distribución desigual de colorantes o del principio activo.
+
+Cada uno se investiga como una desviación, buscando la causa raíz y no solo el ajuste de la máquina.
+
+## Cursos de formas sólidas
+
+En Edvanta estudias gratis la base de calidad y producción, con certificado opcional de COP 60.000:
+
+- [Buenas Prácticas de Manufactura (BPM)](/curso-de-buenas-practicas-de-manufactura-bpm)
+- [BPM en la Industria Farmacéutica](/curso-de-bpm-en-la-industria-farmaceutica)
+- [Control de Calidad de Medicamentos](/curso-de-control-de-calidad-de-medicamentos)
+- [Bioequivalencia y Requisitos Regulatorios en Colombia](/curso-de-bioequivalencia-y-requisitos-regulatorios-en-colombia)
+- [Gestión de Desviaciones y CAPA](/curso-de-gestion-de-desviaciones-y-capa)
 
 | Curso | Plataforma | Enlace |
 |---|---|---|
-| Introduction to the Pharmaceutical Industry | Coursera | [Ver curso](https://imp.i384100.net/7Xx0Ag) |
-| Introduction to Pharmaceutics and Biopharmaceutics | Udemy | [Ver curso](https://trk.udemy.com/n4bJ3R) |
-| Pharmaceutical Dosage Forms & Basics of Pharma Industry | Udemy | [Ver curso](https://trk.udemy.com/NGE1gb) |
 | GMP: Pharmaceutical Tablet Manufacturing | Udemy | [Ver curso](https://trk.udemy.com/dyrNx7) |
-| Sterile Drug Product Manufacturing in Pharma Industry | Udemy | [Ver curso](https://trk.udemy.com/vDmGXy) |
+| Pharmaceutical Dosage Forms & Basics of Pharma Industry | Udemy | [Ver curso](https://trk.udemy.com/NGE1gb) |
+| Introduction to Pharmaceutics and Biopharmaceutics | Udemy | [Ver curso](https://trk.udemy.com/n4bJ3R) |
 
-> El acceso gratuito, el certificado y las condiciones de cada curso dependen de la plataforma. Algunas opciones permiten aprender sin costo y cobran solo el certificado; otras tienen precio desde el inicio. Confirma antes de inscribirte.
+> **Contenido editorial:** algunos enlaces son de afiliado. Edvanta no dicta esos cursos; confirma condiciones y certificado en cada plataforma.
 
-## Cómo elegir un curso de Formas sólidas
+## El marco colombiano
 
-1. Revisa el temario y confirma que cubre Formas sólidas con profundidad.
-2. Verifica el nivel: introductorio, intermedio o avanzado.
-3. Confirma si el acceso es gratuito y si el certificado tiene costo.
-4. Revisa la duración, el idioma y la modalidad.
-5. Comprueba quién dicta el curso y si incluye casos, proyectos o evaluaciones.
+La **Resolución 1160 de 2016** adopta los manuales de buenas prácticas de manufactura de medicamentos que deben cumplir los fabricantes que comercializan en Colombia, y el **Decreto 335 de 2022** regula el trámite de certificación ante el INVIMA. Para los genéricos, la demostración de equivalencia con el producto de referencia tiene requisitos propios, que se estudian en el curso de Bioequivalencia de Edvanta.
 
-## Salidas laborales
+## Errores frecuentes
 
-- Supervisor de producción
-- Operador de manufactura
-- Especialista en empaque
-- Coordinador de transferencia
-
-## Ruta de aprendizaje en 3 pasos
-
-1. **Fundamentos:** empieza por un curso introductorio o por la guía de Producción Farmacéutica para entender el vocabulario y el marco de trabajo.
-2. **Práctica:** elige un curso específico de Formas sólidas y aplícalo en un caso, un proyecto o una actividad de tu trabajo.
-3. **Especialización:** complementa con una certificación, una ruta de aprendizaje o un posgrado si el rol que buscas lo exige.
+- **Cambiar un excipiente o un proveedor sin evaluar el impacto** en la disolución.
+- **Ajustar la máquina para «sacar» el lote** sin investigar por qué se salió de rango.
+- **Mezclar de más con el lubricante.**
+- **No controlar la humedad del ambiente** con principios activos higroscópicos.
 
 ## Preguntas frecuentes
 
-### ¿Los cursos de Formas sólidas son gratis?
+### ¿Qué es la granulación húmeda?
 
-El acceso y el certificado dependen de cada plataforma. Algunas ofrecen contenido gratuito y certificado opcional de pago; otras cobran desde el inicio. Verifica el precio y las condiciones antes de inscribirte.
+Un proceso en el que se forma un granulado agregando un líquido aglutinante a la mezcla de polvos, que luego se seca y se tamiza, para mejorar el flujo y la uniformidad antes de comprimir.
 
-### ¿Necesito experiencia previa en Formas sólidas?
+### ¿Qué controles en proceso se hacen en la fabricación de tabletas?
 
-No siempre. Hay cursos introductorios para estudiantes y profesionales que quieren actualizarse. Revisa el nivel y los requisitos en la ficha del curso.
+Los más comunes son el peso, la dureza, la friabilidad, el espesor y la desintegración.
 
-### ¿Estos cursos sirven para trabajar en la industria farmacéutica?
+### ¿Por qué es tan importante la prueba de disolución?
 
-Pueden ayudarte a construir competencias, pero no reemplazan la formación de base ni la experiencia. Úsalos como parte de una ruta y verifica que el temario se ajuste al rol que buscas.
+Porque mide cuánto principio activo se libera con el tiempo y es la que mejor anticipa el comportamiento del medicamento en el cuerpo.
+
+### ¿Qué norma regula la fabricación de tabletas en Colombia?
+
+Las buenas prácticas de manufactura de la Resolución 1160 de 2016, con sus modificaciones; la certificación ante el INVIMA se rige por el Decreto 335 de 2022.
+
+### ¿Qué curso sirve para aprender fabricación de tabletas?
+
+GMP: Pharmaceutical Tablet Manufacturing, en Udemy, junto con el curso gratuito de BPM de Edvanta.
 
 ## Fuentes
 
-- [FDA](https://www.fda.gov)
-- [EMA](https://www.ema.europa.eu)
-- [PIC/S](https://picscheme.org)
-- [Introduction to the Pharmaceutical Industry](https://imp.i384100.net/7Xx0Ag)
-- [Introduction to Pharmaceutics and Biopharmaceutics](https://trk.udemy.com/n4bJ3R)
-- [Pharmaceutical Dosage Forms & Basics of Pharma Industry](https://trk.udemy.com/NGE1gb)
-- [GMP: Pharmaceutical Tablet Manufacturing](https://trk.udemy.com/dyrNx7)
-
-## Contenido relacionado
-
-- [Cursos de Producción Farmacéutica para químicos farmacéuticos](/articulos/cursos-de-produccion-farmaceutica)
-- [Cursos gratis de Manufactura estéril: guía para químicos farmacéuticos](/articulos/cursos-gratis-manufactura-esteril)
-- [Cursos gratis de Empaque y serialización: guía para químicos farmacéuticos](/articulos/cursos-gratis-empaque-y-serializacion)
-
-> Este contenido es educativo y no constituye asesoría profesional individual.
+- **Resolución 1160 de 2016.** Ministerio de Salud y Protección Social, en el normograma del INVIMA. https://normograma.invima.gov.co/compilacion/docs/resolucion_minsaludps_1160_2016.htm (consultado el 12 de noviembre de 2026).
+- **Decreto 335 de 2022.** Normograma del INVIMA. https://normograma.invima.gov.co/compilacion/docs/decreto_0335_2022.htm (consultado el 12 de noviembre de 2026).

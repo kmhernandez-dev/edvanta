@@ -452,6 +452,38 @@ const REESCRITOS = {
     description: 'Etiquetas, insertos y publicidad de medicamentos, lo que exige la Resolución 1896 de 2023, cómo revisar una pieza y cursos gratis.',
     readingTime: '7 min',
   },
+  // Lote 4c (12-nov-2026): producción y desarrollo. Normas verificadas: Resolución
+  // 1160 de 2016, Decreto 335 de 2022, Reglamento Delegado (UE) 2016/161 y OMS TRS 1044.
+  'cursos-gratis-manufactura-esteril': {
+    title: 'Cursos gratis de manufactura estéril: áreas limpias, llenado aséptico y la estrategia de control de la contaminación',
+    seoTitle: 'Manufactura estéril: áreas limpias y cursos gratis',
+    description: 'Esterilización terminal y procesamiento aséptico, grados de áreas limpias, el Anexo 1, la Resolución 1160 de 2016 y cursos de estériles.',
+    readingTime: '7 min',
+  },
+  'cursos-gratis-formas-solidas': {
+    title: 'Cursos gratis de formas farmacéuticas sólidas: tabletas, cápsulas, granulación y controles en proceso',
+    seoTitle: 'Formas sólidas: tabletas, granulación y cursos',
+    description: 'Compresión directa y granulación, operaciones unitarias, controles en proceso, problemas de compresión y cursos de formas sólidas.',
+    readingTime: '7 min',
+  },
+  'cursos-gratis-empaque-y-serializacion': {
+    title: 'Cursos gratis de empaque y serialización de medicamentos: acondicionamiento, despeje de línea y trazabilidad',
+    seoTitle: 'Empaque y serialización de medicamentos: cursos',
+    description: 'Empaque primario y secundario, despeje de línea, conciliación de impresos, serialización en Europa y Estados Unidos y cursos gratis.',
+    readingTime: '7 min',
+  },
+  'cursos-gratis-transferencia-de-tecnologia': {
+    title: 'Cursos gratis de transferencia de tecnología farmacéutica: cómo llevar un producto o un método de un sitio a otro',
+    seoTitle: 'Transferencia de tecnología farmacéutica: cursos',
+    description: 'Las fases de una transferencia, el paquete de conocimiento, la transferencia de métodos, la guía de la OMS e ICH Q10, y cursos gratis.',
+    readingTime: '7 min',
+  },
+  'cursos-gratis-desarrollo-de-medicamentos': {
+    title: 'Cursos gratis de desarrollo de medicamentos: del descubrimiento a la autorización y la vigilancia',
+    seoTitle: 'Desarrollo de medicamentos: etapas y cursos gratis',
+    description: 'Las etapas del desarrollo de un medicamento, el desarrollo farmacéutico, las guías ICH que lo ordenan y cursos para entender el proceso.',
+    readingTime: '7 min',
+  },
 };
 for (const a of todos) {
   const r = REESCRITOS[a.slug];
