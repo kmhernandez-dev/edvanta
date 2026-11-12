@@ -321,6 +321,73 @@ const REESCRITOS = {
     description: 'DMAIC, desperdicios Lean en planta, niveles de cinturón y un proyecto de ejemplo: cursos de Lean Six Sigma para la industria farmacéutica.',
     readingTime: '6 min',
   },
+  // Lote 3 (11-nov-2026): control de calidad y validaciones.
+  'cursos-gratis-hplc': {
+    title: 'Cursos gratis de HPLC para químicos farmacéuticos: de la teoría al laboratorio',
+    seoTitle: 'Cursos de HPLC gratis para químicos farmacéuticos',
+    description: 'Cómo funciona un HPLC, cálculos de valoración, aptitud del sistema y solución de problemas: cursos de HPLC gratis para control de calidad.',
+    readingTime: '6 min',
+  },
+  'cursos-gratis-validacion-metodos-analiticos': {
+    title: 'Cursos gratis de validación de métodos analíticos: ICH Q2(R2) y Q14',
+    seoTitle: 'Curso de validación de métodos analíticos gratis',
+    description: 'ICH Q2(R2) e ICH Q14 explicadas: parámetros, estadística, protocolo y métodos indicadores de estabilidad. Cursos de validación analítica gratis.',
+    readingTime: '6 min',
+  },
+  'cursos-gratis-estudios-de-estabilidad': {
+    title: 'Cursos gratis de estudios de estabilidad de medicamentos: guía para Colombia',
+    seoTitle: 'Curso de estudios de estabilidad de medicamentos gratis',
+    description: 'Zona IVb, Resolución 3157 de 2018, tipos de estudio, protocolo y vida útil: cursos de estudios de estabilidad de medicamentos gratis.',
+    readingTime: '6 min',
+  },
+  'cursos-gratis-microbiologia-farmaceutica': {
+    title: 'Cursos gratis de microbiología farmacéutica: control microbiológico y áreas limpias',
+    seoTitle: 'Cursos de microbiología farmacéutica gratis',
+    description: 'Pruebas microbiológicas farmacopeicas, endotoxinas, áreas limpias y monitoreo ambiental: cursos de microbiología farmacéutica gratis.',
+    readingTime: '6 min',
+  },
+  'cursos-gratis-investigaciones-de-laboratorio': {
+    title: 'Cursos gratis de investigaciones de laboratorio: resultados OOS y OOT',
+    seoTitle: 'Cursos de investigaciones OOS y OOT de laboratorio',
+    description: 'Cómo investigar resultados OOS y OOT: fase de laboratorio, fase completa, errores prohibidos e informe. Cursos de control de calidad gratis.',
+    readingTime: '6 min',
+  },
+  'cursos-gratis-analisis-farmaceutico': {
+    title: 'Cursos gratis de análisis farmacéutico: técnicas, farmacopeas y carrera',
+    seoTitle: 'Cursos de análisis farmacéutico gratis y online',
+    description: 'Identidad, contenido, pureza y disolución: técnicas analíticas, farmacopeas y salidas laborales. Cursos de análisis farmacéutico gratis.',
+    readingTime: '6 min',
+  },
+  'cursos-gratis-validacion-de-procesos': {
+    title: 'Cursos gratis de validación de procesos farmacéuticos: las tres etapas',
+    seoTitle: 'Cursos de validación de procesos farmacéuticos gratis',
+    description: 'Las tres etapas del ciclo de vida, lotes PPQ, protocolo y verificación continua: cursos de validación de procesos farmacéuticos gratis.',
+    readingTime: '6 min',
+  },
+  'cursos-gratis-validacion-de-limpieza': {
+    title: 'Cursos gratis de validación de limpieza: límites, muestreo y peor caso',
+    seoTitle: 'Curso de validación de limpieza farmacéutica gratis',
+    description: 'Límites basados en la salud (PDE), peor caso, hisopado y enjuague, y errores frecuentes: cursos de validación de limpieza gratis.',
+    readingTime: '6 min',
+  },
+  'cursos-gratis-csv-gamp5': {
+    title: 'Cursos gratis de CSV y GAMP 5: validación de sistemas computarizados',
+    seoTitle: 'Cursos de CSV y GAMP 5: validación de sistemas',
+    description: 'Categorías de software, ciclo de vida, Part 11 y Anexo 11, y pensamiento crítico de GAMP 5: cursos de validación de sistemas computarizados.',
+    readingTime: '6 min',
+  },
+  'cursos-gratis-calificacion-hvac': {
+    title: 'Cursos gratis de calificación de HVAC y áreas limpias',
+    seoTitle: 'Cursos de calificación de HVAC y áreas limpias',
+    description: 'Cómo funciona el HVAC farmacéutico, ISO 14644-1, grados A a D, pruebas de calificación y monitoreo: cursos de HVAC y áreas limpias.',
+    readingTime: '6 min',
+  },
+  'cursos-gratis-validacion-de-equipos': {
+    title: 'Cursos gratis de calificación y validación de equipos: DQ, IQ, OQ y PQ',
+    seoTitle: 'Validación de equipos: cursos de DQ, IQ, OQ y PQ',
+    description: 'DQ, IQ, OQ y PQ, FAT y SAT, calificación de instrumentos analíticos y un ejemplo práctico: cursos de calificación de equipos gratis.',
+    readingTime: '6 min',
+  },
 };
 for (const a of todos) {
   const r = REESCRITOS[a.slug];

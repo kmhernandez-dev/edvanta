@@ -1,93 +1,107 @@
-# Cursos gratis de Validación de métodos analíticos: guía para químicos farmacéuticos
+# Cursos gratis de validación de métodos analíticos: ICH Q2(R2) y Q14 explicadas
 
-La industria farmacéutica necesita profesionales que entiendan Validación de métodos analíticos y sepan aplicarlo en entornos regulados. Esta guía reúne cursos reales de Control de Calidad Farmacéutico para que compares opciones, revises el temario y elijas con criterio.
+Validar un método analítico es demostrar, con datos, que sirve para lo que se va a usar. Si un método de valoración no es exacto, el laboratorio puede liberar un lote subpotente sin saberlo. Por eso la validación es un requisito de las buenas prácticas de laboratorio y del registro sanitario, y es una de las competencias que más diferencian a un analista con experiencia de uno que apenas empieza.
 
-> **Contenido editorial:** algunos enlaces pueden ser de afiliado. Edvanta no dicta ni certifica esos cursos. Verifica el precio, el acceso y el certificado en la plataforma antes de inscribirte.
+> **En resumen**
+>
+> - Desde 2023, la referencia internacional son ICH Q2(R2), sobre la validación, e ICH Q14, sobre el desarrollo de procedimientos analíticos, con un enfoque de ciclo de vida.
+> - En Edvanta estudias gratis Validación de Métodos Analíticos: 33 clases en cinco unidades, con diseño experimental, estadística y casos.
+> - No todo método se valida completo: los métodos farmacopeicos se verifican y los transferidos se comparan.
 
-**En resumen**
+## Validar, verificar o transferir
 
-- Qué es Validación de métodos analíticos y por qué se pide en la industria farmacéutica.
-- Cursos reales de Control de Calidad Farmacéutico con enlace directo a la plataforma.
-- Cómo elegir, qué roles existen y una ruta de aprendizaje de tres pasos.
-- Fuentes oficiales para verificar requisitos y actualizar el temario.
+- **Validación completa:** para métodos desarrollados por el laboratorio o modificados de forma importante.
+- **Verificación:** para métodos farmacopeicos, como los de la USP o la Farmacopea Europea. Se demuestra que el método funciona en tu laboratorio, con tus equipos y tu producto. La USP lo describe en el capítulo <1226>.
+- **Transferencia:** cuando un método validado pasa de un laboratorio a otro, por ejemplo, del desarrollo a la planta o a un laboratorio contratado. La USP lo trata en el capítulo <1224>.
 
-## Por qué importa Validación de métodos analíticos en 2026
+Elegir bien el camino ahorra semanas de trabajo y evita observaciones en una inspección.
 
-En Colombia y Latinoamérica, los laboratorios, las IPS, las empresas de dispositivos médicos y las autoridades sanitarias trabajan con estándares que cambian con frecuencia. Formarte en Validación de métodos analíticos te ayuda a leer esos requisitos, documentar decisiones y aportar en equipos multidisciplinarios.
+## Los parámetros de desempeño
 
-## Qué aprenderás
+| Parámetro | La pregunta que responde |
+|---|---|
+| Especificidad o selectividad | ¿Mide el analito sin interferencia de excipientes, impurezas o productos de degradación? |
+| Linealidad y rango | ¿La respuesta es proporcional a la concentración en el intervalo de trabajo? |
+| Exactitud | ¿El resultado se acerca al valor verdadero? |
+| Precisión | ¿Los resultados se repiten entre réplicas, días, analistas y equipos? |
+| Límite de detección | ¿Cuál es la menor cantidad que se distingue del ruido? |
+| Límite de cuantificación | ¿Cuál es la menor cantidad que se mide con exactitud y precisión aceptables? |
+| Robustez | ¿El método tolera pequeños cambios en sus condiciones? |
 
-- Validación de métodos analíticos
-- Control de calidad
-- HPLC
-- Validación de métodos
-- Estudios de estabilidad
-- Microbiología
+Qué parámetros se evalúan depende del tipo de método. Una prueba de identificación necesita especificidad; una valoración necesita además exactitud, precisión y linealidad; una cuantificación de impurezas necesita, adicionalmente, el límite de cuantificación.
 
-## Cursos recomendados de Control de Calidad Farmacéutico
+## Qué cambió con ICH Q2(R2) e ICH Q14
+
+La revisión publicada en 2023 amplió el alcance a técnicas que la versión anterior no cubría bien, como los métodos multivariados y espectroscópicos, y conectó la validación con el desarrollo del método. ICH Q14 introduce ideas que vienen de la calidad por diseño: definir desde el principio el perfil objetivo del procedimiento analítico, conocer qué variables lo afectan y gestionar los cambios durante todo su ciclo de vida. En la práctica, la robustez se estudia durante el desarrollo, no al final.
+
+## Estadística que necesitas dominar
+
+No hace falta ser estadístico, pero sí entender:
+
+- **Regresión lineal** y qué dicen la pendiente, el intercepto y el coeficiente de determinación.
+- **Desviación estándar relativa** para expresar la precisión.
+- **Porcentaje de recuperación** y su intervalo de confianza para la exactitud.
+- **Pruebas de comparación**, como la prueba t y la prueba F, en transferencias y comparaciones de métodos.
+
+El curso de Edvanta dedica una unidad completa al diseño experimental y la estadística aplicada. Si quieres automatizar cálculos, el curso curado de [Python](/curso-de-python) es un buen complemento.
+
+## Cursos de validación de métodos en Edvanta
+
+| Curso | Dónde | Costo |
+|---|---|---|
+| [Validación de Métodos Analíticos](/curso-de-validacion-de-metodos-analiticos) | Aula Edvanta | Gratis; certificado opcional de COP 60.000 |
+| [Control de Calidad de Medicamentos](/curso-de-control-de-calidad-de-medicamentos) | Aula Edvanta | Gratis; certificado opcional de COP 60.000 |
+| [Estudios de Estabilidad de Medicamentos](/curso-de-estudios-de-estabilidad-de-medicamentos) | Aula Edvanta | Gratis; certificado opcional de COP 60.000 |
+| [Validaciones y Calificaciones](/curso-de-validaciones-y-calificaciones) | Aula Edvanta | Gratis; certificado opcional de COP 60.000 |
+
+## Cursos complementarios en otras plataformas
 
 | Curso | Plataforma | Enlace |
 |---|---|---|
-| Pharmaceutical Quality Control | Udemy | [Ver curso](https://trk.udemy.com/Gbq356) |
-| Learn HPLC Sample Preparations and Calculations | Udemy | [Ver curso](https://trk.udemy.com/L0EAvo) |
-| Detailed Introduction to Pharmaceutical Analysis | Udemy | [Ver curso](https://trk.udemy.com/m4196a) |
-| Statistical Evaluation of Stability Studies in Pharmaceuticals | Udemy | [Ver curso](https://trk.udemy.com/7XKRAd) |
-| How to Perform Investigations in Pharmaceuticals | Udemy | [Ver curso](https://trk.udemy.com/KBEaRy) |
-| Certificate Course in Pharmaceutical Microbiology | Udemy | [Ver curso](https://trk.udemy.com/yZoJDb) |
-| Quality Control Microbiology in Pharmaceuticals | Udemy | [Ver curso](https://trk.udemy.com/NGE1db) |
 | A Complete Guide to Analytical Method Validation | Udemy | [Ver curso](https://trk.udemy.com/OYEVNr) |
+| Detailed Introduction to Pharmaceutical Analysis | Udemy | [Ver curso](https://trk.udemy.com/m4196a) |
 
-> El acceso gratuito, el certificado y las condiciones de cada curso dependen de la plataforma. Algunas opciones permiten aprender sin costo y cobran solo el certificado; otras tienen precio desde el inicio. Confirma antes de inscribirte.
+> **Contenido editorial:** algunos enlaces pueden ser de afiliado. Edvanta no dicta esos cursos; confirma condiciones y certificado en cada plataforma.
 
-## Cómo elegir un curso de Validación de métodos analíticos
+## Cómo se arma un protocolo de validación
 
-1. Revisa el temario y confirma que cubre Validación de métodos analíticos con profundidad.
-2. Verifica el nivel: introductorio, intermedio o avanzado.
-3. Confirma si el acceso es gratuito y si el certificado tiene costo.
-4. Revisa la duración, el idioma y la modalidad.
-5. Comprueba quién dicta el curso y si incluye casos, proyectos o evaluaciones.
+1. **Objetivo y alcance:** qué método, para qué producto y para qué uso.
+2. **Responsables** y equipos que se usarán, con su calificación vigente.
+3. **Parámetros, diseño experimental y criterios de aceptación** definidos antes de empezar.
+4. **Materiales:** estándares de referencia, placebo y muestras.
+5. **Manejo de desviaciones** durante la ejecución.
+6. **Informe:** resultados, cumplimiento de cada criterio y conclusión sobre la aptitud del método.
 
-## Salidas laborales
+Un error común es fijar los criterios de aceptación después de ver los datos. Eso invalida el ejercicio.
 
-- Analista de control de calidad
-- Analista de HPLC
-- Especialista en estabilidad
-- Microbiólogo farmacéutico
+## Métodos indicadores de estabilidad
 
-## Ruta de aprendizaje en 3 pasos
-
-1. **Fundamentos:** empieza por un curso introductorio o por la guía de Control de Calidad Farmacéutico para entender el vocabulario y el marco de trabajo.
-2. **Práctica:** elige un curso específico de Validación de métodos analíticos y aplícalo en un caso, un proyecto o una actividad de tu trabajo.
-3. **Especialización:** complementa con una certificación, una ruta de aprendizaje o un posgrado si el rol que buscas lo exige.
+Un método indicador de estabilidad separa el principio activo de sus productos de degradación. Para demostrarlo se hacen estudios de degradación forzada: se somete la muestra a ácido, base, oxidación, calor y luz, y se comprueba que los picos de degradación no interfieren con el del analito. Es un requisito para los métodos que se usan en los [estudios de estabilidad](/articulos/cursos-gratis-estudios-de-estabilidad).
 
 ## Preguntas frecuentes
 
-### ¿Los cursos de Validación de métodos analíticos son gratis?
+### ¿Hay cursos de validación de métodos analíticos gratis?
 
-El acceso y el certificado dependen de cada plataforma. Algunas ofrecen contenido gratuito y certificado opcional de pago; otras cobran desde el inicio. Verifica el precio y las condiciones antes de inscribirte.
+Sí. En Edvanta, Validación de Métodos Analíticos se estudia gratis y en línea, con certificado verificable opcional por COP 60.000.
 
-### ¿Necesito experiencia previa en Validación de métodos analíticos?
+### ¿Qué guía rige la validación de métodos analíticos?
 
-No siempre. Hay cursos introductorios para estudiantes y profesionales que quieren actualizarse. Revisa el nivel y los requisitos en la ficha del curso.
+La referencia internacional es ICH Q2(R2), complementada por ICH Q14 para el desarrollo. En Colombia, las BPL de la Resolución 3619 de 2013 exigen que los procedimientos analíticos estén validados o verificados.
 
-### ¿Estos cursos sirven para trabajar en la industria farmacéutica?
+### ¿Cuál es la diferencia entre validación y verificación?
 
-Pueden ayudarte a construir competencias, pero no reemplazan la formación de base ni la experiencia. Úsalos como parte de una ruta y verifica que el temario se ajuste al rol que buscas.
+La validación demuestra que un método nuevo o modificado sirve para su uso. La verificación demuestra que un método ya validado, como uno farmacopeico, funciona en tu laboratorio.
+
+### ¿Qué es un método indicador de estabilidad?
+
+Es un método capaz de medir el principio activo sin interferencia de sus productos de degradación. Se demuestra con estudios de degradación forzada.
+
+### ¿Qué parámetros se validan en una valoración?
+
+Por lo general, especificidad, linealidad y rango, exactitud y precisión. La robustez se estudia preferiblemente durante el desarrollo del método.
 
 ## Fuentes
 
-- [FDA](https://www.fda.gov)
-- [EMA](https://www.ema.europa.eu)
-- [INVIMA](https://www.invima.gov.co)
-- [Pharmaceutical Quality Control](https://trk.udemy.com/Gbq356)
-- [Learn HPLC Sample Preparations and Calculations](https://trk.udemy.com/L0EAvo)
-- [Detailed Introduction to Pharmaceutical Analysis](https://trk.udemy.com/m4196a)
-- [Statistical Evaluation of Stability Studies in Pharmaceuticals](https://trk.udemy.com/7XKRAd)
-
-## Contenido relacionado
-
-- [Cursos de Control de Calidad Farmacéutico para químicos farmacéuticos](/articulos/cursos-de-control-de-calidad-farmaceutico)
-- [Cursos gratis de HPLC: guía para químicos farmacéuticos](/articulos/cursos-gratis-hplc)
-- [Cursos gratis de Estudios de estabilidad: guía para químicos farmacéuticos](/articulos/cursos-gratis-estudios-de-estabilidad)
-
-> Este contenido es educativo y no constituye asesoría profesional individual.
+- [ICH — Guías de calidad (Q2(R2) y Q14)](https://www.ich.org/page/quality-guidelines)
+- [EMA — ICH Q2(R2) Validation of analytical procedures](https://www.ema.europa.eu/en/ich-q2r2-validation-analytical-procedures-scientific-guideline)
+- [Normograma del INVIMA — Resolución 3619 de 2013 (BPL)](https://normograma.invima.gov.co/compilacion/docs/resolucion_minsaludps_3619_2013.htm)

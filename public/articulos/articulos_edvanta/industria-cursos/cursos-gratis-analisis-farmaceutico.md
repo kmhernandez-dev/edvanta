@@ -1,93 +1,108 @@
-# Cursos gratis de Análisis farmacéutico: guía para químicos farmacéuticos
+# Cursos gratis de análisis farmacéutico: técnicas, farmacopeas y carrera
 
-La industria farmacéutica necesita profesionales que entiendan Análisis farmacéutico y sepan aplicarlo en entornos regulados. Esta guía reúne cursos reales de Control de Calidad Farmacéutico para que compares opciones, revises el temario y elijas con criterio.
+El análisis farmacéutico es la disciplina que responde una pregunta sencilla: ¿este medicamento es lo que dice ser, en la cantidad que dice tener y con la calidad que debe tener? Para responderla se combinan técnicas clásicas, como la volumetría, con técnicas instrumentales, como la espectroscopía y la cromatografía. Es la base del trabajo en control de calidad, en desarrollo analítico y en laboratorios externos de análisis.
 
-> **Contenido editorial:** algunos enlaces pueden ser de afiliado. Edvanta no dicta ni certifica esos cursos. Verifica el precio, el acceso y el certificado en la plataforma antes de inscribirte.
+> **En resumen**
+>
+> - Un análisis farmacéutico completo verifica identidad, contenido, pureza y desempeño de la forma farmacéutica.
+> - Las monografías de las farmacopeas, como la USP y la Farmacopea Europea, dicen qué pruebas hacer y con qué criterios.
+> - En Edvanta estudias gratis Control de Calidad de Medicamentos, con unidades de especificaciones, farmacopeas y técnicas instrumentales.
 
-**En resumen**
+## Las cuatro preguntas de todo análisis
 
-- Qué es Análisis farmacéutico y por qué se pide en la industria farmacéutica.
-- Cursos reales de Control de Calidad Farmacéutico con enlace directo a la plataforma.
-- Cómo elegir, qué roles existen y una ruta de aprendizaje de tres pasos.
-- Fuentes oficiales para verificar requisitos y actualizar el temario.
+| Pregunta | Pruebas típicas |
+|---|---|
+| ¿Es lo que dice ser? (identidad) | Espectroscopía infrarroja, tiempo de retención en cromatografía, reacciones químicas |
+| ¿Cuánto tiene? (contenido) | Valoración por HPLC, volumetría o espectrofotometría ultravioleta |
+| ¿Qué más tiene? (pureza) | Sustancias relacionadas, solventes residuales, agua, metales |
+| ¿Funciona como forma farmacéutica? (desempeño) | Disolución, uniformidad de unidades de dosificación, dureza, friabilidad |
 
-## Por qué importa Análisis farmacéutico en 2026
+## Técnicas que conviene dominar
 
-En Colombia y Latinoamérica, los laboratorios, las IPS, las empresas de dispositivos médicos y las autoridades sanitarias trabajan con estándares que cambian con frecuencia. Formarte en Análisis farmacéutico te ayuda a leer esos requisitos, documentar decisiones y aportar en equipos multidisciplinarios.
+- **Volumetría:** titulaciones ácido base, redox y complejométricas. Siguen vigentes en muchas monografías de materias primas.
+- **Espectrofotometría ultravioleta-visible:** rápida y económica para valoraciones y disolución.
+- **Espectroscopía infrarroja:** la prueba de identidad más usada para materias primas.
+- **Cromatografía líquida (HPLC):** valoraciones e impurezas. La guía de [cursos de HPLC](/articulos/cursos-gratis-hplc) la explica en detalle.
+- **Cromatografía de gases:** solventes residuales.
+- **Titulación Karl Fischer:** determinación de agua.
+- **Disolución:** mide cuánto principio activo se libera en un tiempo dado; es clave para los productos sólidos orales.
 
-## Qué aprenderás
+## Farmacopeas y especificaciones
 
-- Análisis farmacéutico
-- Control de calidad
-- HPLC
-- Validación de métodos
-- Estudios de estabilidad
-- Microbiología
+Una farmacopea es un compendio oficial de monografías y métodos generales. Las más usadas en los laboratorios colombianos son la USP-NF y la Farmacopea Europea. Cada monografía describe las pruebas, los métodos y los criterios de aceptación para un principio activo o un producto. Los capítulos generales describen métodos comunes, como la disolución o la uniformidad de contenido.
 
-## Cursos recomendados de Control de Calidad Farmacéutico
+La especificación del producto puede ser más exigente que la farmacopea, nunca menos, y se aprueba en el registro sanitario. Un analista debe saber leer ambas y entender qué pasa cuando la farmacopea se actualiza.
+
+## Del análisis a la liberación del lote
+
+El resultado de un análisis no termina en el cuaderno del analista. Pasa por una revisión de datos, se consolida en un certificado de análisis y sirve para que la persona autorizada libere o rechace el lote. En cada paso cuentan:
+
+1. **Muestreo representativo**, según un plan definido.
+2. **Estándares de referencia** trazables y vigentes.
+3. **Equipos calificados y calibrados.**
+4. **Métodos validados o verificados.**
+5. **Registros completos y revisados por una segunda persona.**
+
+## Cursos de análisis farmacéutico en Edvanta
+
+| Curso | Dónde | Costo |
+|---|---|---|
+| [Control de Calidad de Medicamentos](/curso-de-control-de-calidad-de-medicamentos) | Aula Edvanta | Gratis; certificado opcional de COP 60.000 |
+| [Validación de Métodos Analíticos](/curso-de-validacion-de-metodos-analiticos) | Aula Edvanta | Gratis; certificado opcional de COP 60.000 |
+| [Buenas Prácticas de Laboratorio — BPL](/curso-de-buenas-practicas-de-laboratorio-bpl) | Aula Edvanta | Gratis; certificado opcional de COP 60.000 |
+| [Bioequivalencia y Requisitos Regulatorios en Colombia](/curso-de-bioequivalencia-y-requisitos-regulatorios-en-colombia) | Aula Edvanta | Gratis; certificado opcional de COP 60.000 |
+
+El curso de BPL dedica una unidad a instalaciones, equipos y metrología, y otra a reactivos, estándares, muestras e integridad de datos.
+
+## Cursos de análisis en otras plataformas
 
 | Curso | Plataforma | Enlace |
 |---|---|---|
-| Pharmaceutical Quality Control | Udemy | [Ver curso](https://trk.udemy.com/Gbq356) |
-| Learn HPLC Sample Preparations and Calculations | Udemy | [Ver curso](https://trk.udemy.com/L0EAvo) |
 | Detailed Introduction to Pharmaceutical Analysis | Udemy | [Ver curso](https://trk.udemy.com/m4196a) |
-| Statistical Evaluation of Stability Studies in Pharmaceuticals | Udemy | [Ver curso](https://trk.udemy.com/7XKRAd) |
-| How to Perform Investigations in Pharmaceuticals | Udemy | [Ver curso](https://trk.udemy.com/KBEaRy) |
-| Certificate Course in Pharmaceutical Microbiology | Udemy | [Ver curso](https://trk.udemy.com/yZoJDb) |
-| Quality Control Microbiology in Pharmaceuticals | Udemy | [Ver curso](https://trk.udemy.com/NGE1db) |
-| A Complete Guide to Analytical Method Validation | Udemy | [Ver curso](https://trk.udemy.com/OYEVNr) |
+| Pharmaceutical Quality Control | Udemy | [Ver curso](https://trk.udemy.com/Gbq356) |
+| Certificate Course in Pharmaceutical Quality Control (QC) | Udemy | [Ver curso](https://trk.udemy.com/0GzELE) |
 
-> El acceso gratuito, el certificado y las condiciones de cada curso dependen de la plataforma. Algunas opciones permiten aprender sin costo y cobran solo el certificado; otras tienen precio desde el inicio. Confirma antes de inscribirte.
+> **Contenido editorial:** algunos enlaces pueden ser de afiliado. Edvanta no dicta esos cursos; confirma condiciones y certificado en cada plataforma.
 
-## Cómo elegir un curso de Análisis farmacéutico
+## La disolución, una prueba que merece capítulo aparte
 
-1. Revisa el temario y confirma que cubre Análisis farmacéutico con profundidad.
-2. Verifica el nivel: introductorio, intermedio o avanzado.
-3. Confirma si el acceso es gratuito y si el certificado tiene costo.
-4. Revisa la duración, el idioma y la modalidad.
-5. Comprueba quién dicta el curso y si incluye casos, proyectos o evaluaciones.
+La disolución conecta el laboratorio con la eficacia del medicamento: si una tableta no libera el principio activo, no funciona aunque tenga la cantidad correcta. Además de su uso rutinario en la liberación de lotes, los perfiles de disolución comparativos se usan para sustentar cambios posteriores al registro y, en algunos casos, como parte de los requisitos de bioequivalencia. Entender los aparatos, los medios y el cálculo del factor de similitud f2 es una ventaja en entrevistas para control de calidad y desarrollo.
 
-## Salidas laborales
+## Salidas laborales del análisis farmacéutico
 
-- Analista de control de calidad
-- Analista de HPLC
-- Especialista en estabilidad
-- Microbiólogo farmacéutico
+- **Analista de control de calidad** en laboratorios fabricantes.
+- **Analista de desarrollo analítico**, creando y validando métodos para productos nuevos.
+- **Analista de estabilidad.**
+- **Laboratorios externos de análisis**, que prestan servicios a varias empresas.
+- **Revisión de datos y documentación analítica**, un rol que crece con las exigencias de integridad de datos.
+- **Asuntos regulatorios**, donde se revisan las especificaciones y los métodos analíticos que se presentan en los expedientes de registro sanitario.
 
-## Ruta de aprendizaje en 3 pasos
-
-1. **Fundamentos:** empieza por un curso introductorio o por la guía de Control de Calidad Farmacéutico para entender el vocabulario y el marco de trabajo.
-2. **Práctica:** elige un curso específico de Análisis farmacéutico y aplícalo en un caso, un proyecto o una actividad de tu trabajo.
-3. **Especialización:** complementa con una certificación, una ruta de aprendizaje o un posgrado si el rol que buscas lo exige.
+En todos estos cargos se valora lo mismo: rigor con los datos, buena redacción técnica y criterio para saber cuándo un resultado merece una segunda mirada.
 
 ## Preguntas frecuentes
 
-### ¿Los cursos de Análisis farmacéutico son gratis?
+### ¿Qué es el análisis farmacéutico?
 
-El acceso y el certificado dependen de cada plataforma. Algunas ofrecen contenido gratuito y certificado opcional de pago; otras cobran desde el inicio. Verifica el precio y las condiciones antes de inscribirte.
+Es el conjunto de métodos para comprobar la identidad, el contenido, la pureza y el desempeño de materias primas y medicamentos, de acuerdo con especificaciones aprobadas.
 
-### ¿Necesito experiencia previa en Análisis farmacéutico?
+### ¿Hay cursos de análisis farmacéutico gratis?
 
-No siempre. Hay cursos introductorios para estudiantes y profesionales que quieren actualizarse. Revisa el nivel y los requisitos en la ficha del curso.
+Sí. En Edvanta, Control de Calidad de Medicamentos y Validación de Métodos Analíticos se estudian gratis, con certificado verificable opcional por COP 60.000 cada uno.
 
-### ¿Estos cursos sirven para trabajar en la industria farmacéutica?
+### ¿Qué farmacopea se usa en Colombia?
 
-Pueden ayudarte a construir competencias, pero no reemplazan la formación de base ni la experiencia. Úsalos como parte de una ruta y verifica que el temario se ajuste al rol que buscas.
+En la práctica, las más usadas por los laboratorios son la USP-NF y la Farmacopea Europea. La especificación aprobada en el registro sanitario define cuál aplica a cada producto.
+
+### ¿Qué es una prueba de disolución?
+
+Es una prueba que mide cuánto principio activo se libera de una forma farmacéutica sólida en un medio y un tiempo definidos. Es esencial para tabletas y cápsulas.
+
+### ¿Qué técnica analítica debo aprender primero?
+
+La cromatografía líquida, porque se usa en valoraciones, impurezas y estabilidad. Después, la disolución y la espectroscopía infrarroja.
 
 ## Fuentes
 
-- [FDA](https://www.fda.gov)
-- [EMA](https://www.ema.europa.eu)
-- [INVIMA](https://www.invima.gov.co)
-- [Pharmaceutical Quality Control](https://trk.udemy.com/Gbq356)
-- [Learn HPLC Sample Preparations and Calculations](https://trk.udemy.com/L0EAvo)
-- [Detailed Introduction to Pharmaceutical Analysis](https://trk.udemy.com/m4196a)
-- [Statistical Evaluation of Stability Studies in Pharmaceuticals](https://trk.udemy.com/7XKRAd)
-
-## Contenido relacionado
-
-- [Cursos de Control de Calidad Farmacéutico para químicos farmacéuticos](/articulos/cursos-de-control-de-calidad-farmaceutico)
-- [Cursos gratis de HPLC: guía para químicos farmacéuticos](/articulos/cursos-gratis-hplc)
-- [Cursos gratis de Validación de métodos analíticos: guía para químicos farmacéuticos](/articulos/cursos-gratis-validacion-metodos-analiticos)
-
-> Este contenido es educativo y no constituye asesoría profesional individual.
+- [Normograma del INVIMA — Resolución 3619 de 2013 (BPL)](https://normograma.invima.gov.co/compilacion/docs/resolucion_minsaludps_3619_2013.htm)
+- [USP — Estándares farmacopeicos](https://www.usp.org)
+- [EDQM — Farmacopea Europea](https://www.edqm.eu/en/european-pharmacopoeia)

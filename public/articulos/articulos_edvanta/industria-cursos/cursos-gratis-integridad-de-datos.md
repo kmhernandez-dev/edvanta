@@ -55,7 +55,7 @@ La integridad de datos no es solo un tema de software. Los formatos en papel deb
 | [Buenas Prácticas de Documentación Farmacéutica](/curso-de-buenas-practicas-de-documentacion-farmaceutica) | Aula Edvanta | Gratis; certificado opcional de COP 60.000 |
 | [Buenas Prácticas de Laboratorio — BPL](/curso-de-buenas-practicas-de-laboratorio-bpl) | Aula Edvanta | Gratis; certificado opcional de COP 60.000 |
 | [Document Control and Good Documentation Practices in GMP](/curso-de-document-control-and-good-documentation-practices-in-gmp) | Curso curado | Lo define la plataforma |
-| [Validaciones y calificaciones](/curso-de-validaciones-y-calificaciones) | Curso curado | Lo define la plataforma |
+| [Validaciones y Calificaciones](/curso-de-validaciones-y-calificaciones) | Aula Edvanta | Gratis; certificado opcional de COP 60.000 |
 
 ## Validación de sistemas computarizados en otras plataformas
 

@@ -1,93 +1,110 @@
-# Cursos gratis de Calificación de HVAC: guía para químicos farmacéuticos
+# Cursos gratis de calificación de HVAC y áreas limpias para la industria farmacéutica
 
-La industria farmacéutica necesita profesionales que entiendan Calificación de HVAC y sepan aplicarlo en entornos regulados. Esta guía reúne cursos reales de Validaciones y Calificaciones para que compares opciones, revises el temario y elijas con criterio.
+El sistema de calefacción, ventilación y aire acondicionado (HVAC) es el que mantiene el aire de una planta farmacéutica limpio, a la temperatura y humedad correctas y con las presiones que evitan que los contaminantes pasen de un área a otra. Si el HVAC falla, falla la protección del producto. Por eso se diseña, se califica y se monitorea con el mismo rigor que un equipo de producción, y entenderlo es una ventaja para cualquier profesional de calidad, validaciones o ingeniería.
 
-> **Contenido editorial:** algunos enlaces pueden ser de afiliado. Edvanta no dicta ni certifica esos cursos. Verifica el precio, el acceso y el certificado en la plataforma antes de inscribirte.
+> **En resumen**
+>
+> - El HVAC controla partículas, presiones diferenciales, temperatura, humedad y flujos de aire entre áreas.
+> - La clasificación de salas limpias se hace con la norma ISO 14644-1, y en estériles con los grados A, B, C y D del Anexo 1 de las GMP de la Unión Europea.
+> - En Edvanta estudias gratis Validaciones y Calificaciones, que te da la base de calificación aplicable al HVAC.
 
-**En resumen**
+## Qué hace el HVAC en una planta farmacéutica
 
-- Qué es Calificación de HVAC y por qué se pide en la industria farmacéutica.
-- Cursos reales de Validaciones y Calificaciones con enlace directo a la plataforma.
-- Cómo elegir, qué roles existen y una ruta de aprendizaje de tres pasos.
-- Fuentes oficiales para verificar requisitos y actualizar el temario.
+- **Filtra el aire** con prefiltros y filtros de alta eficiencia (HEPA) para controlar las partículas.
+- **Mantiene presiones diferenciales** entre áreas: el aire fluye de lo más limpio a lo menos limpio, o se contiene cuando se manejan productos potentes.
+- **Renueva el aire** con un número definido de cambios por hora para diluir y retirar los contaminantes.
+- **Controla temperatura y humedad**, que afectan tanto al producto como a la comodidad del personal.
+- **Protege al operario** en procesos con polvos o principios activos peligrosos.
 
-## Por qué importa Calificación de HVAC en 2026
+La OMS publicó una guía de buenas prácticas para sistemas HVAC en productos no estériles, que es una referencia útil para plantas de formas sólidas y líquidas.
 
-En Colombia y Latinoamérica, los laboratorios, las IPS, las empresas de dispositivos médicos y las autoridades sanitarias trabajan con estándares que cambian con frecuencia. Formarte en Calificación de HVAC te ayuda a leer esos requisitos, documentar decisiones y aportar en equipos multidisciplinarios.
+## Clasificación de áreas limpias
 
-## Qué aprenderás
+| Referencia | Cómo clasifica |
+|---|---|
+| ISO 14644-1 | Por concentración máxima de partículas en el aire, en clases ISO 1 a 9 |
+| Anexo 1 de las GMP de la Unión Europea | Grados A, B, C y D para la fabricación de estériles, con límites de partículas y de microorganismos |
 
-- Calificación de HVAC
-- Validación de procesos
-- Validación de limpieza
-- CSV y GAMP 5
-- Calificación de equipos
-- Gestión de cambios
+Un área se clasifica en reposo, con los equipos instalados y sin personal, y en operación, con el proceso funcionando. El grado A corresponde a las zonas de operaciones de alto riesgo, como el llenado aséptico.
 
-## Cursos recomendados de Validaciones y Calificaciones
+## Las pruebas de calificación del HVAC
+
+1. **Caudal de aire y cambios por hora** en cada sala.
+2. **Presiones diferenciales** entre áreas y su estabilidad.
+3. **Integridad de los filtros HEPA instalados**, con un aerosol de prueba aguas arriba y un fotómetro o contador aguas abajo.
+4. **Conteo de partículas** para clasificar la sala.
+5. **Tiempo de recuperación:** cuánto tarda la sala en volver a su clase después de una contaminación.
+6. **Visualización de flujos de aire**, con humo, en las zonas críticas de estériles.
+7. **Temperatura y humedad** en los puntos representativos.
+
+Estas pruebas siguen la lógica general de calificación de diseño, instalación, operación y desempeño, explicada en la guía de [validación de equipos](/articulos/cursos-gratis-validacion-de-equipos).
+
+## Cursos de calificación y validación en Edvanta
+
+| Curso | Dónde | Costo |
+|---|---|---|
+| [Validaciones y Calificaciones](/curso-de-validaciones-y-calificaciones) | Aula Edvanta | Gratis; certificado opcional de COP 60.000 |
+| [BPM en la Industria Farmacéutica](/curso-de-bpm-en-la-industria-farmaceutica) | Aula Edvanta | Gratis; certificado opcional de COP 60.000 |
+| [Central de Mezclas](/curso-de-central-de-mezclas) | Aula Edvanta | Gratis; certificado opcional de COP 60.000 |
+
+El curso de Central de Mezclas es útil si trabajas con preparaciones estériles en un servicio farmacéutico, donde las áreas limpias y las cabinas también se califican.
+
+## Curso de HVAC en otra plataforma
 
 | Curso | Plataforma | Enlace |
 |---|---|---|
 | HVAC Design for Cleanroom Facilities | Udemy | [Ver curso](https://trk.udemy.com/Ag5xzN) |
-| Cleaning Validation in Pharmaceutical Industry | Udemy | [Ver curso](https://trk.udemy.com/aNDvJo) |
-| Computerised System Validation (CSV) as per GAMP 5 | Udemy | [Ver curso](https://trk.udemy.com/k4ADn3) |
-| Computer System Validation (CSV) Mastermind: Level 1 | Udemy | [Ver curso](https://trk.udemy.com/5kz2e3) |
-| Computer System Validation Introduction | Udemy | [Ver curso](https://trk.udemy.com/PznJLN) |
-| Validation Requirements for Pharmaceuticals | Udemy | [Ver curso](https://trk.udemy.com/rEWkvy) |
-| Quality in Pharmaceutical Industry: Process Validation | Udemy | [Ver curso](https://trk.udemy.com/9Vq41j) |
-| Process Validation for Pharmaceutical Industries | Udemy | [Ver curso](https://trk.udemy.com/QYEZqx) |
 
-> El acceso gratuito, el certificado y las condiciones de cada curso dependen de la plataforma. Algunas opciones permiten aprender sin costo y cobran solo el certificado; otras tienen precio desde el inicio. Confirma antes de inscribirte.
+> **Contenido editorial:** el enlace puede ser de afiliado. Edvanta no dicta ese curso; su acceso, precio y certificado los define la plataforma.
 
-## Cómo elegir un curso de Calificación de HVAC
+## Monitoreo: el HVAC se vigila todos los días
 
-1. Revisa el temario y confirma que cubre Calificación de HVAC con profundidad.
-2. Verifica el nivel: introductorio, intermedio o avanzado.
-3. Confirma si el acceso es gratuito y si el certificado tiene costo.
-4. Revisa la duración, el idioma y la modalidad.
-5. Comprueba quién dicta el curso y si incluye casos, proyectos o evaluaciones.
+La calificación demuestra que el sistema funciona; el monitoreo demuestra que sigue funcionando. Un programa típico incluye:
 
-## Salidas laborales
+- **Lectura continua o diaria de presiones diferenciales**, con alarmas.
+- **Registro de temperatura y humedad** en las áreas críticas.
+- **Monitoreo de partículas**, continuo en las zonas de grado A.
+- **Monitoreo microbiológico** del aire y las superficies, coordinado con el laboratorio de microbiología.
+- **Recalificación periódica**, con una frecuencia basada en el riesgo.
 
-- Especialista en validaciones
-- Ingeniero de calidad
-- Analista CSV
-- Coordinador de calificación
+Cuando una alarma salta, se evalúa el impacto en los productos fabricados durante el evento. La guía de [microbiología farmacéutica](/articulos/cursos-gratis-microbiologia-farmaceutica) explica cómo se investiga un resultado ambiental fuera de límite.
 
-## Ruta de aprendizaje en 3 pasos
+## Fallas que se encuentran en inspecciones
 
-1. **Fundamentos:** empieza por un curso introductorio o por la guía de Validaciones y Calificaciones para entender el vocabulario y el marco de trabajo.
-2. **Práctica:** elige un curso específico de Calificación de HVAC y aplícalo en un caso, un proyecto o una actividad de tu trabajo.
-3. **Especialización:** complementa con una certificación, una ruta de aprendizaje o un posgrado si el rol que buscas lo exige.
+- Presiones diferenciales invertidas durante el cambio de turno o al abrir puertas.
+- Filtros HEPA sin prueba de integridad después de un cambio.
+- Alarmas configuradas con límites que nadie justificó.
+- Mapeos de temperatura que no incluyen los puntos más calientes del almacén.
+- Cambios en el sistema sin control de cambios ni evaluación del impacto.
+
+## Para quién es un curso de HVAC
+
+Para químicos farmacéuticos de calidad y validaciones, ingenieros de mantenimiento y proyectos, y supervisores de producción en plantas de estériles. No necesitas diseñar el sistema, pero sí entender sus pruebas, leer sus informes y saber cuándo un cambio puede afectar el producto.
 
 ## Preguntas frecuentes
 
-### ¿Los cursos de Calificación de HVAC son gratis?
+### ¿Qué es la calificación de HVAC?
 
-El acceso y el certificado dependen de cada plataforma. Algunas ofrecen contenido gratuito y certificado opcional de pago; otras cobran desde el inicio. Verifica el precio y las condiciones antes de inscribirte.
+Es la evidencia documentada de que el sistema de aire de una planta farmacéutica está bien diseñado, instalado y funcionando, y que mantiene las condiciones de limpieza, presión, temperatura y humedad que requiere el proceso.
 
-### ¿Necesito experiencia previa en Calificación de HVAC?
+### ¿Qué norma clasifica las áreas limpias?
 
-No siempre. Hay cursos introductorios para estudiantes y profesionales que quieren actualizarse. Revisa el nivel y los requisitos en la ficha del curso.
+La norma ISO 14644-1 clasifica por concentración de partículas. Para estériles, el Anexo 1 de las GMP de la Unión Europea define los grados A, B, C y D.
 
-### ¿Estos cursos sirven para trabajar en la industria farmacéutica?
+### ¿Qué es la prueba de integridad de filtros HEPA?
 
-Pueden ayudarte a construir competencias, pero no reemplazan la formación de base ni la experiencia. Úsalos como parte de una ruta y verifica que el temario se ajuste al rol que buscas.
+Es la prueba que confirma que el filtro instalado y su sello no tienen fugas. Se hace al instalar el filtro y de forma periódica.
+
+### ¿Hay cursos gratis de calificación de HVAC?
+
+En Edvanta, Validaciones y Calificaciones te da la base de calificación y se estudia gratis, con certificado verificable opcional por COP 60.000. Para el diseño de HVAC existen cursos especializados en otras plataformas.
+
+### ¿Por qué importan las presiones diferenciales?
+
+Porque definen hacia dónde se mueve el aire. Una presión invertida puede llevar contaminantes de un área sucia a una limpia o liberar polvos potentes hacia los pasillos.
 
 ## Fuentes
 
-- [FDA](https://www.fda.gov)
-- [EMA](https://www.ema.europa.eu)
-- [PIC/S](https://picscheme.org)
-- [HVAC Design for Cleanroom Facilities](https://trk.udemy.com/Ag5xzN)
-- [Cleaning Validation in Pharmaceutical Industry](https://trk.udemy.com/aNDvJo)
-- [Computerised System Validation (CSV) as per GAMP 5](https://trk.udemy.com/k4ADn3)
-- [Computer System Validation (CSV) Mastermind: Level 1](https://trk.udemy.com/5kz2e3)
-
-## Contenido relacionado
-
-- [Cursos de Validaciones y Calificaciones para químicos farmacéuticos](/articulos/cursos-de-validaciones-y-calificaciones)
-- [Cursos gratis de Validación de procesos: guía para químicos farmacéuticos](/articulos/cursos-gratis-validacion-de-procesos)
-- [Cursos gratis de Validación de limpieza: guía para químicos farmacéuticos](/articulos/cursos-gratis-validacion-de-limpieza)
-
-> Este contenido es educativo y no constituye asesoría profesional individual.
+- [ISO — ISO 14644-1, clasificación de la limpieza del aire por concentración de partículas](https://www.iso.org/standard/53394.html)
+- [Comisión Europea — EudraLex volumen 4, GMP (Anexo 1)](https://health.ec.europa.eu/medicinal-products/eudralex/eudralex-volume-4_en)
+- [OMS — Guía de BPM para sistemas HVAC en productos farmacéuticos no estériles (TRS 1010, anexo 8)](https://www.who.int/publications/m/item/annex-8-trs-1010)

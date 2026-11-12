@@ -50,7 +50,7 @@ Imagina el paso de pesaje de materias primas. Un modo de falla es pesar la canti
 |---|---|---|
 | [Gestión de Riesgos en la Calidad Farmacéutica](/curso-de-gestion-de-riesgos-en-la-calidad-farmaceutica) | Aula Edvanta | Gratis; certificado opcional de COP 60.000 |
 | [Gestión de Desviaciones y CAPA](/curso-de-gestion-de-desviaciones-y-capa) | Aula Edvanta | Gratis; certificado opcional de COP 60.000 |
-| [Validaciones y calificaciones](/curso-de-validaciones-y-calificaciones) | Curso curado | Lo define la plataforma |
+| [Validaciones y Calificaciones](/curso-de-validaciones-y-calificaciones) | Aula Edvanta | Gratis; certificado opcional de COP 60.000 |
 | [Gestión del riesgo](/curso-de-gestion-del-riesgo) | Curso curado | Lo define la plataforma |
 
 ## Dónde aparece el riesgo en tu trabajo diario

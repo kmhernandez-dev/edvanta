@@ -71,7 +71,7 @@ Las BPM son la base; lo que te diferencia en una entrevista es lo que construyes
 
 - **Control de calidad:** sigue con [Control de Calidad de Medicamentos](/curso-de-control-de-calidad-de-medicamentos) y con la [validación de métodos analíticos](/curso-de-validacion-de-metodos-analiticos).
 - **Aseguramiento de la calidad:** suma [documentación farmacéutica](/curso-de-buenas-practicas-de-documentacion-farmaceutica) y [desviaciones y CAPA](/curso-de-gestion-de-desviaciones-y-capa).
-- **Producción:** profundiza en [BPM en la industria farmacéutica](/curso-de-bpm-en-la-industria-farmaceutica), un curso curado con enfoque de planta, y en [validaciones y calificaciones](/curso-de-validaciones-y-calificaciones).
+- **Producción:** profundiza en [BPM en la industria farmacéutica](/curso-de-bpm-en-la-industria-farmaceutica), un curso gratis de Edvanta con criterio de inspección y preparación de visitas del INVIMA, y en [validaciones y calificaciones](/curso-de-validaciones-y-calificaciones), también gratis.
 
 Con dos o tres de estos cursos y un ejemplo concreto de tu experiencia, tu perfil deja de ser «conozco las BPM» y pasa a ser «sé aplicarlas».
 

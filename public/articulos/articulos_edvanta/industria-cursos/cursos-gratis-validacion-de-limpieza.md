@@ -1,92 +1,102 @@
-# Cursos gratis de Validación de limpieza: guía para químicos farmacéuticos
+# Cursos gratis de validación de limpieza: límites, muestreo y peor caso
 
-La industria farmacéutica necesita profesionales que entiendan Validación de limpieza y sepan aplicarlo en entornos regulados. Esta guía reúne cursos reales de Validaciones y Calificaciones para que compares opciones, revises el temario y elijas con criterio.
+En una planta que fabrica varios productos en los mismos equipos, cada lote puede dejar restos para el siguiente. La validación de limpieza demuestra que el procedimiento de limpieza retira los residuos del producto anterior, de los agentes de limpieza y de los microorganismos hasta niveles seguros. Es una de las áreas donde más ha cambiado el criterio regulatorio en la última década, y por eso los cursos actualizados valen la pena.
 
-> **Contenido editorial:** algunos enlaces pueden ser de afiliado. Edvanta no dicta ni certifica esos cursos. Verifica el precio, el acceso y el certificado en la plataforma antes de inscribirte.
+> **En resumen**
+>
+> - Los límites modernos se basan en la toxicología: los límites de exposición basados en la salud, conocidos como HBEL o PDE.
+> - El muestreo combina hisopado de superficies y enjuague, con estudios de recuperación que demuestran que el método encuentra el residuo.
+> - En Edvanta estudias gratis Validaciones y Calificaciones, que incluye la validación de limpieza.
 
-**En resumen**
+## De los criterios clásicos a los límites basados en la salud
 
-- Qué es Validación de limpieza y por qué se pide en la industria farmacéutica.
-- Cursos reales de Validaciones y Calificaciones con enlace directo a la plataforma.
-- Cómo elegir, qué roles existen y una ruta de aprendizaje de tres pasos.
-- Fuentes oficiales para verificar requisitos y actualizar el temario.
+Durante años, los límites de residuo se fijaban con tres criterios: no más de 10 partes por millón del producto anterior en el siguiente, no más de una milésima de la dosis terapéutica, y equipo visualmente limpio. Son fáciles de calcular, pero no siempre protegen al paciente, sobre todo con principios activos muy potentes o tóxicos.
 
-## Por qué importa Validación de limpieza en 2026
+La guía de la EMA para establecer límites de exposición basados en la salud cambió el enfoque: el límite se calcula a partir de la exposición diaria permitida (PDE), que resulta de una evaluación toxicológica del principio activo. Con la PDE se calcula el arrastre máximo permitido de un producto a otro. Los criterios clásicos pueden seguir usándose si resultan más estrictos, pero la base de la decisión es la toxicología.
 
-En Colombia y Latinoamérica, los laboratorios, las IPS, las empresas de dispositivos médicos y las autoridades sanitarias trabajan con estándares que cambian con frecuencia. Formarte en Validación de limpieza te ayuda a leer esos requisitos, documentar decisiones y aportar en equipos multidisciplinarios.
+## Elegir el peor caso
 
-## Qué aprenderás
+Validar la limpieza de cada producto en cada equipo sería interminable. Por eso se agrupan productos y equipos y se elige el peor caso, considerando:
 
-- Validación de limpieza
-- Validación de procesos
-- CSV y GAMP 5
-- Calificación de equipos
-- Gestión de cambios
+- **Solubilidad:** el producto más difícil de disolver en el agente de limpieza.
+- **Toxicidad o potencia:** el que tiene la PDE más baja.
+- **Dificultad de limpieza observada** en la práctica.
+- **Equipos:** las superficies más difíciles de alcanzar, como válvulas, juntas o punzones.
 
-## Cursos recomendados de Validaciones y Calificaciones
+La elección del peor caso debe estar documentada y justificada con datos.
+
+## Muestreo y análisis
+
+| Método | Ventajas | Limitaciones |
+|---|---|---|
+| Hisopado de superficie | Muestra directamente las zonas difíciles | Depende de la técnica del muestreador |
+| Enjuague | Cubre superficies grandes o inaccesibles | Puede diluir el residuo y no detectar zonas puntuales |
+| Inspección visual | Rápida y obligatoria | No es suficiente por sí sola para residuos tóxicos |
+
+Los análisis pueden ser específicos, como HPLC para el principio activo, o no específicos, como el carbono orgánico total (TOC). Los métodos deben estar validados para los niveles de residuo esperados, y el estudio de recuperación demuestra cuánto del residuo realmente se recoge de cada material de superficie.
+
+## Tiempos que también se validan
+
+- **Tiempo de espera sucio:** cuánto puede esperar un equipo sucio antes de limpiarse sin que la limpieza se vuelva ineficaz.
+- **Tiempo de espera limpio:** cuánto puede permanecer un equipo limpio antes de usarse sin que se contamine.
+- **Campañas:** cuántos lotes del mismo producto se pueden fabricar seguidos antes de una limpieza completa.
+
+## Cursos de validación de limpieza en Edvanta
+
+| Curso | Dónde | Costo |
+|---|---|---|
+| [Validaciones y Calificaciones](/curso-de-validaciones-y-calificaciones) | Aula Edvanta | Gratis; certificado opcional de COP 60.000 |
+| [Validación de Métodos Analíticos](/curso-de-validacion-de-metodos-analiticos) | Aula Edvanta | Gratis; certificado opcional de COP 60.000 |
+| [BPM en la Industria Farmacéutica](/curso-de-bpm-en-la-industria-farmaceutica) | Aula Edvanta | Gratis; certificado opcional de COP 60.000 |
+
+Para formar a un equipo completo, existe la [capacitación institucional en validaciones](/empresas/validaciones-y-calificaciones).
+
+## Cursos de limpieza en otras plataformas
 
 | Curso | Plataforma | Enlace |
 |---|---|---|
-| HVAC Design for Cleanroom Facilities | Udemy | [Ver curso](https://trk.udemy.com/Ag5xzN) |
 | Cleaning Validation in Pharmaceutical Industry | Udemy | [Ver curso](https://trk.udemy.com/aNDvJo) |
-| Computerised System Validation (CSV) as per GAMP 5 | Udemy | [Ver curso](https://trk.udemy.com/k4ADn3) |
-| Computer System Validation (CSV) Mastermind: Level 1 | Udemy | [Ver curso](https://trk.udemy.com/5kz2e3) |
-| Computer System Validation Introduction | Udemy | [Ver curso](https://trk.udemy.com/PznJLN) |
 | Validation Requirements for Pharmaceuticals | Udemy | [Ver curso](https://trk.udemy.com/rEWkvy) |
-| Quality in Pharmaceutical Industry: Process Validation | Udemy | [Ver curso](https://trk.udemy.com/9Vq41j) |
-| Process Validation for Pharmaceutical Industries | Udemy | [Ver curso](https://trk.udemy.com/QYEZqx) |
 
-> El acceso gratuito, el certificado y las condiciones de cada curso dependen de la plataforma. Algunas opciones permiten aprender sin costo y cobran solo el certificado; otras tienen precio desde el inicio. Confirma antes de inscribirte.
+> **Contenido editorial:** algunos enlaces pueden ser de afiliado. Edvanta no dicta esos cursos; confirma condiciones y certificado en cada plataforma.
 
-## Cómo elegir un curso de Validación de limpieza
+## Errores frecuentes en la validación de limpieza
 
-1. Revisa el temario y confirma que cubre Validación de limpieza con profundidad.
-2. Verifica el nivel: introductorio, intermedio o avanzado.
-3. Confirma si el acceso es gratuito y si el certificado tiene costo.
-4. Revisa la duración, el idioma y la modalidad.
-5. Comprueba quién dicta el curso y si incluye casos, proyectos o evaluaciones.
+1. **Límites sin justificación toxicológica** para principios activos potentes.
+2. **Puntos de muestreo elegidos por comodidad** y no por dificultad de limpieza.
+3. **Estudios de recuperación ausentes** o hechos en un material distinto al del equipo.
+4. **Procedimientos de limpieza ambiguos:** «limpiar bien» no es una instrucción validable. Hay que fijar agentes, concentraciones, tiempos, temperaturas y la secuencia.
+5. **No considerar los agentes de limpieza** como residuos que también deben retirarse.
+6. **Olvidar la verificación periódica:** la limpieza validada se vigila con muestreos de rutina.
 
-## Salidas laborales
+## Contaminación cruzada y gestión de riesgos
 
-- Especialista en validaciones
-- Ingeniero de calidad
-- Analista CSV
-- Coordinador de calificación
-
-## Ruta de aprendizaje en 3 pasos
-
-1. **Fundamentos:** empieza por un curso introductorio o por la guía de Validaciones y Calificaciones para entender el vocabulario y el marco de trabajo.
-2. **Práctica:** elige un curso específico de Validación de limpieza y aplícalo en un caso, un proyecto o una actividad de tu trabajo.
-3. **Especialización:** complementa con una certificación, una ruta de aprendizaje o un posgrado si el rol que buscas lo exige.
+La validación de limpieza es una de las herramientas para controlar la contaminación cruzada, pero no la única. El diseño de las instalaciones, los flujos de personal y materiales, y el uso de equipos dedicados para productos de alto riesgo también cuentan. Todo se decide con una evaluación de riesgos; la guía de [gestión de riesgos](/articulos/cursos-gratis-gestion-de-riesgos) muestra cómo aplicar FMEA a este tipo de decisiones.
 
 ## Preguntas frecuentes
 
-### ¿Los cursos de Validación de limpieza son gratis?
+### ¿Qué es la validación de limpieza?
 
-El acceso y el certificado dependen de cada plataforma. Algunas ofrecen contenido gratuito y certificado opcional de pago; otras cobran desde el inicio. Verifica el precio y las condiciones antes de inscribirte.
+Es la evidencia documentada de que un procedimiento de limpieza retira de forma consistente los residuos de producto, de agentes de limpieza y de microorganismos hasta niveles aceptables y seguros.
 
-### ¿Necesito experiencia previa en Validación de limpieza?
+### ¿Qué es la PDE en validación de limpieza?
 
-No siempre. Hay cursos introductorios para estudiantes y profesionales que quieren actualizarse. Revisa el nivel y los requisitos en la ficha del curso.
+Es la exposición diaria permitida: la dosis de una sustancia que una persona podría recibir todos los días durante toda su vida sin efectos adversos. Se usa para calcular los límites de arrastre entre productos.
 
-### ¿Estos cursos sirven para trabajar en la industria farmacéutica?
+### ¿Qué diferencia hay entre hisopado y enjuague?
 
-Pueden ayudarte a construir competencias, pero no reemplazan la formación de base ni la experiencia. Úsalos como parte de una ruta y verifica que el temario se ajuste al rol que buscas.
+El hisopado toma la muestra directamente de una superficie definida. El enjuague recoge el residuo con un solvente que recorre el equipo. Se complementan.
+
+### ¿Hay un curso gratis de validación de limpieza?
+
+En Edvanta, Validaciones y Calificaciones incluye la validación de limpieza y se estudia gratis, con certificado verificable opcional por COP 60.000.
+
+### ¿Cada cuánto se revalida la limpieza?
+
+Cuando hay cambios en productos, equipos, agentes o procedimientos de limpieza, o cuando la verificación de rutina muestra resultados desfavorables. La frecuencia se define con base en el riesgo.
 
 ## Fuentes
 
-- [FDA](https://www.fda.gov)
-- [EMA](https://www.ema.europa.eu)
-- [PIC/S](https://picscheme.org)
-- [HVAC Design for Cleanroom Facilities](https://trk.udemy.com/Ag5xzN)
-- [Cleaning Validation in Pharmaceutical Industry](https://trk.udemy.com/aNDvJo)
-- [Computerised System Validation (CSV) as per GAMP 5](https://trk.udemy.com/k4ADn3)
-- [Computer System Validation (CSV) Mastermind: Level 1](https://trk.udemy.com/5kz2e3)
-
-## Contenido relacionado
-
-- [Cursos de Validaciones y Calificaciones para químicos farmacéuticos](/articulos/cursos-de-validaciones-y-calificaciones)
-- [Cursos gratis de Validación de procesos: guía para químicos farmacéuticos](/articulos/cursos-gratis-validacion-de-procesos)
-- [Cursos gratis de CSV y GAMP 5: guía para químicos farmacéuticos](/articulos/cursos-gratis-csv-gamp5)
-
-> Este contenido es educativo y no constituye asesoría profesional individual.
+- [EMA — Guía para establecer límites de exposición basados en la salud en instalaciones compartidas](https://www.ema.europa.eu/en/setting-health-based-exposure-limits-use-risk-identification-manufacture-different-medicinal-products-shared-facilities-scientific-guideline)
+- [Comisión Europea — EudraLex volumen 4, GMP (Anexo 15)](https://health.ec.europa.eu/medicinal-products/eudralex/eudralex-volume-4_en)
+- [Normograma del INVIMA — Resolución 1160 de 2016](https://normograma.invima.gov.co/compilacion/docs/resolucion_minsaludps_1160_2016.htm)

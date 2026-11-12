@@ -1,93 +1,103 @@
-# Cursos gratis de Validación de equipos: guía para químicos farmacéuticos
+# Cursos gratis de calificación y validación de equipos: DQ, IQ, OQ y PQ
 
-La industria farmacéutica necesita profesionales que entiendan Validación de equipos y sepan aplicarlo en entornos regulados. Esta guía reúne cursos reales de Validaciones y Calificaciones para que compares opciones, revises el temario y elijas con criterio.
+Antes de fabricar o analizar un medicamento con un equipo, hay que demostrar que ese equipo es el adecuado, que está bien instalado, que funciona dentro de sus rangos y que rinde de forma consistente en el proceso real. Ese ejercicio se llama calificación, y es el primer paso de cualquier validación: un proceso no se puede validar en equipos sin calificar. Es una tarea en la que trabajan juntos calidad, ingeniería, mantenimiento y el usuario del equipo.
 
-> **Contenido editorial:** algunos enlaces pueden ser de afiliado. Edvanta no dicta ni certifica esos cursos. Verifica el precio, el acceso y el certificado en la plataforma antes de inscribirte.
+> **En resumen**
+>
+> - La calificación tiene cuatro etapas: de diseño (DQ), de instalación (IQ), de operación (OQ) y de desempeño (PQ).
+> - Calibrar y calificar no son lo mismo: la calibración ajusta y compara un instrumento de medición; la calificación demuestra que el equipo completo es apto para su uso.
+> - En Edvanta estudias gratis Validaciones y Calificaciones y Buenas Prácticas de Laboratorio, que incluye una unidad de equipos y metrología.
 
-**En resumen**
+## Las cuatro etapas de la calificación
 
-- Qué es Validación de equipos y por qué se pide en la industria farmacéutica.
-- Cursos reales de Validaciones y Calificaciones con enlace directo a la plataforma.
-- Cómo elegir, qué roles existen y una ruta de aprendizaje de tres pasos.
-- Fuentes oficiales para verificar requisitos y actualizar el temario.
+| Etapa | Pregunta que responde | Ejemplos de verificaciones |
+|---|---|---|
+| Calificación de diseño (DQ) | ¿El equipo elegido cumple los requisitos del usuario? | Comparación de la especificación del proveedor con los requisitos |
+| Calificación de instalación (IQ) | ¿Se instaló como se especificó? | Modelo y serie, servicios conectados, materiales en contacto con el producto, documentación y planos |
+| Calificación de operación (OQ) | ¿Funciona en todo su rango de operación? | Velocidades, temperaturas, alarmas, controles de seguridad |
+| Calificación de desempeño (PQ) | ¿Rinde de forma consistente en las condiciones reales de uso? | Pruebas con producto o placebo, en condiciones de rutina |
 
-## Por qué importa Validación de equipos en 2026
+Todo empieza en los **requisitos de usuario (URS)**: un documento que dice qué necesita el proceso del equipo, en términos verificables. Un URS débil hace débil toda la calificación.
 
-En Colombia y Latinoamérica, los laboratorios, las IPS, las empresas de dispositivos médicos y las autoridades sanitarias trabajan con estándares que cambian con frecuencia. Formarte en Validación de equipos te ayuda a leer esos requisitos, documentar decisiones y aportar en equipos multidisciplinarios.
+## FAT y SAT: pruebas antes y después de llegar
 
-## Qué aprenderás
+- **FAT (prueba de aceptación en fábrica):** se hace en las instalaciones del proveedor antes del despacho. Permite corregir problemas cuando todavía es barato.
+- **SAT (prueba de aceptación en sitio):** se hace cuando el equipo ya está instalado en la planta.
 
-- Validación de equipos
-- Validación de procesos
-- Validación de limpieza
-- CSV y GAMP 5
-- Calificación de equipos
-- Gestión de cambios
+Si se planean bien, parte de las pruebas de FAT y SAT pueden aprovecharse en la IQ y la OQ, lo que ahorra tiempo sin perder rigor. El Anexo 15 de las GMP de la Unión Europea admite este aprovechamiento cuando está justificado.
 
-## Cursos recomendados de Validaciones y Calificaciones
+## Calificación de instrumentos analíticos
+
+En el laboratorio, la calificación sigue la misma lógica, con matices. La USP la describe en el capítulo <1058>, que agrupa los instrumentos según su complejidad:
+
+- **Grupo A:** equipos simples sin medición propia, como agitadores o vórtex. Basta con verificar su funcionamiento.
+- **Grupo B:** instrumentos con medición que se calibran o verifican, como balanzas, pH-metros o termómetros.
+- **Grupo C:** sistemas complejos con software, como cromatógrafos o espectrofotómetros. Requieren calificación completa y, a menudo, validación del software.
+
+La Resolución 3619 de 2013 de BPL exige la calibración, la verificación del desempeño y la calificación de equipos e instrumentos del laboratorio.
+
+## Cursos de calificación en Edvanta
+
+| Curso | Dónde | Costo |
+|---|---|---|
+| [Validaciones y Calificaciones](/curso-de-validaciones-y-calificaciones) | Aula Edvanta | Gratis; certificado opcional de COP 60.000 |
+| [Buenas Prácticas de Laboratorio — BPL](/curso-de-buenas-practicas-de-laboratorio-bpl) | Aula Edvanta | Gratis; certificado opcional de COP 60.000 |
+| [Buenas Prácticas de Manufactura — BPM](/curso-de-buenas-practicas-de-manufactura-bpm) | Aula Edvanta | Gratis; certificado opcional de COP 60.000 |
+
+Para formar a un equipo de planta o de laboratorio, Edvanta ofrece [capacitación institucional en validaciones y calificaciones](/empresas/validaciones-y-calificaciones).
+
+## Cursos de calificación en otras plataformas
 
 | Curso | Plataforma | Enlace |
 |---|---|---|
-| HVAC Design for Cleanroom Facilities | Udemy | [Ver curso](https://trk.udemy.com/Ag5xzN) |
-| Cleaning Validation in Pharmaceutical Industry | Udemy | [Ver curso](https://trk.udemy.com/aNDvJo) |
-| Computerised System Validation (CSV) as per GAMP 5 | Udemy | [Ver curso](https://trk.udemy.com/k4ADn3) |
-| Computer System Validation (CSV) Mastermind: Level 1 | Udemy | [Ver curso](https://trk.udemy.com/5kz2e3) |
-| Computer System Validation Introduction | Udemy | [Ver curso](https://trk.udemy.com/PznJLN) |
+| Validation Fundamentals in Pharma: IQ/OQ/PQ to Process | Udemy | [Ver curso](https://trk.udemy.com/qWo5RN) |
 | Validation Requirements for Pharmaceuticals | Udemy | [Ver curso](https://trk.udemy.com/rEWkvy) |
-| Quality in Pharmaceutical Industry: Process Validation | Udemy | [Ver curso](https://trk.udemy.com/9Vq41j) |
-| Process Validation for Pharmaceutical Industries | Udemy | [Ver curso](https://trk.udemy.com/QYEZqx) |
 
-> El acceso gratuito, el certificado y las condiciones de cada curso dependen de la plataforma. Algunas opciones permiten aprender sin costo y cobran solo el certificado; otras tienen precio desde el inicio. Confirma antes de inscribirte.
+> **Contenido editorial:** algunos enlaces pueden ser de afiliado. Edvanta no dicta esos cursos; confirma condiciones y certificado en cada plataforma.
 
-## Cómo elegir un curso de Validación de equipos
+## Un ejemplo: calificar una estufa de secado
 
-1. Revisa el temario y confirma que cubre Validación de equipos con profundidad.
-2. Verifica el nivel: introductorio, intermedio o avanzado.
-3. Confirma si el acceso es gratuito y si el certificado tiene costo.
-4. Revisa la duración, el idioma y la modalidad.
-5. Comprueba quién dicta el curso y si incluye casos, proyectos o evaluaciones.
+- **URS:** rango de 30 a 80 °C, uniformidad de ± 5 °C en toda la cámara, registro de temperatura y alarma por desviación.
+- **IQ:** se verifican modelo, serie, conexión eléctrica, ubicación de sensores, manuales y certificados de calibración de los instrumentos.
+- **OQ:** se prueba que alcanza y mantiene las temperaturas del rango, se hace un mapeo de temperatura en vacío y se comprueban las alarmas.
+- **PQ:** se hace un mapeo con carga real o representativa, en la configuración de uso, durante el tiempo del proceso.
 
-## Salidas laborales
+Si el mapeo muestra un punto frío, se define si se excluye de la zona de carga o si hay que ajustar el equipo, y se documenta la decisión.
 
-- Especialista en validaciones
-- Ingeniero de calidad
-- Analista CSV
-- Coordinador de calificación
+## Mantener el estado calificado
 
-## Ruta de aprendizaje en 3 pasos
+Un equipo calificado no queda así para siempre. Para mantener ese estado se necesitan:
 
-1. **Fundamentos:** empieza por un curso introductorio o por la guía de Validaciones y Calificaciones para entender el vocabulario y el marco de trabajo.
-2. **Práctica:** elige un curso específico de Validación de equipos y aplícalo en un caso, un proyecto o una actividad de tu trabajo.
-3. **Especialización:** complementa con una certificación, una ruta de aprendizaje o un posgrado si el rol que buscas lo exige.
+1. **Mantenimiento preventivo** con su programa y registros.
+2. **Calibración** de los instrumentos críticos, con trazabilidad.
+3. **Control de cambios** antes de cualquier modificación, reparación mayor o traslado.
+4. **Revisión periódica** del estado calificado, con una frecuencia basada en el riesgo.
+5. **Recalificación** cuando un cambio o una revisión lo exigen.
 
 ## Preguntas frecuentes
 
-### ¿Los cursos de Validación de equipos son gratis?
+### ¿Qué significan DQ, IQ, OQ y PQ?
 
-El acceso y el certificado dependen de cada plataforma. Algunas ofrecen contenido gratuito y certificado opcional de pago; otras cobran desde el inicio. Verifica el precio y las condiciones antes de inscribirte.
+Son las etapas de la calificación de equipos: de diseño, de instalación, de operación y de desempeño. Juntas demuestran que un equipo es apto para su uso previsto.
 
-### ¿Necesito experiencia previa en Validación de equipos?
+### ¿Cuál es la diferencia entre calibración y calificación?
 
-No siempre. Hay cursos introductorios para estudiantes y profesionales que quieren actualizarse. Revisa el nivel y los requisitos en la ficha del curso.
+La calibración compara un instrumento de medición con un patrón trazable y, si es necesario, lo ajusta. La calificación demuestra que el equipo completo está instalado, funciona y rinde para el proceso.
 
-### ¿Estos cursos sirven para trabajar en la industria farmacéutica?
+### ¿Qué es un URS?
 
-Pueden ayudarte a construir competencias, pero no reemplazan la formación de base ni la experiencia. Úsalos como parte de una ruta y verifica que el temario se ajuste al rol que buscas.
+Es la especificación de requisitos de usuario: el documento que describe lo que el proceso necesita del equipo, en términos verificables. Es la base de toda la calificación.
+
+### ¿Hay cursos gratis de calificación de equipos?
+
+Sí. En Edvanta, Validaciones y Calificaciones se estudia gratis, con certificado verificable opcional por COP 60.000.
+
+### ¿Cada cuánto se recalifica un equipo?
+
+Cuando hay cambios que pueden afectar su desempeño y según una revisión periódica definida por el riesgo. No hay una frecuencia única para todos los equipos.
 
 ## Fuentes
 
-- [FDA](https://www.fda.gov)
-- [EMA](https://www.ema.europa.eu)
-- [PIC/S](https://picscheme.org)
-- [HVAC Design for Cleanroom Facilities](https://trk.udemy.com/Ag5xzN)
-- [Cleaning Validation in Pharmaceutical Industry](https://trk.udemy.com/aNDvJo)
-- [Computerised System Validation (CSV) as per GAMP 5](https://trk.udemy.com/k4ADn3)
-- [Computer System Validation (CSV) Mastermind: Level 1](https://trk.udemy.com/5kz2e3)
-
-## Contenido relacionado
-
-- [Cursos de Validaciones y Calificaciones para químicos farmacéuticos](/articulos/cursos-de-validaciones-y-calificaciones)
-- [Cursos gratis de Validación de procesos: guía para químicos farmacéuticos](/articulos/cursos-gratis-validacion-de-procesos)
-- [Cursos gratis de Validación de limpieza: guía para químicos farmacéuticos](/articulos/cursos-gratis-validacion-de-limpieza)
-
-> Este contenido es educativo y no constituye asesoría profesional individual.
+- [Comisión Europea — EudraLex volumen 4, GMP (Anexo 15)](https://health.ec.europa.eu/medicinal-products/eudralex/eudralex-volume-4_en)
+- [Normograma del INVIMA — Resolución 3619 de 2013 (BPL)](https://normograma.invima.gov.co/compilacion/docs/resolucion_minsaludps_3619_2013.htm)
+- [USP — Estándares farmacopeicos](https://www.usp.org)

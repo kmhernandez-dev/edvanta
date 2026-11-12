@@ -1,92 +1,107 @@
-# Cursos gratis de CSV y GAMP 5: guía para químicos farmacéuticos
+# Cursos gratis de CSV y GAMP 5: validación de sistemas computarizados
 
-La industria farmacéutica necesita profesionales que entiendan CSV y GAMP 5 y sepan aplicarlo en entornos regulados. Esta guía reúne cursos reales de Validaciones y Calificaciones para que compares opciones, revises el temario y elijas con criterio.
+Hoy casi todo en una empresa farmacéutica pasa por un software: el cromatógrafo, el sistema de gestión del laboratorio, el ERP que controla inventarios, el sistema de gestión documental o la balanza conectada a la red. La validación de sistemas computarizados (CSV, por sus siglas en inglés) demuestra que esos sistemas hacen lo que deben, de forma confiable, y que protegen la integridad de los datos. Es un campo donde se cruzan la calidad y la tecnología, con buena demanda y pocos perfiles que entiendan ambos mundos.
 
-> **Contenido editorial:** algunos enlaces pueden ser de afiliado. Edvanta no dicta ni certifica esos cursos. Verifica el precio, el acceso y el certificado en la plataforma antes de inscribirte.
+> **En resumen**
+>
+> - GAMP 5, de la ISPE, es la guía de referencia; su segunda edición se publicó en 2022 y refuerza el pensamiento crítico y el enfoque basado en riesgos.
+> - El esfuerzo de validación se ajusta según la categoría del software y el impacto del sistema en el paciente, el producto y los datos.
+> - En Edvanta estudias gratis Validaciones y Calificaciones y Buenas Prácticas de Documentación Farmacéutica como base para el CSV.
 
-**En resumen**
+## Qué sistemas se validan
 
-- Qué es CSV y GAMP 5 y por qué se pide en la industria farmacéutica.
-- Cursos reales de Validaciones y Calificaciones con enlace directo a la plataforma.
-- Cómo elegir, qué roles existen y una ruta de aprendizaje de tres pasos.
-- Fuentes oficiales para verificar requisitos y actualizar el temario.
+Se validan los sistemas que tienen impacto en las buenas prácticas, es decir, los que afectan la calidad del producto, la seguridad del paciente o la integridad de los datos regulados. Algunos ejemplos:
 
-## Por qué importa CSV y GAMP 5 en 2026
+- Software de cromatografía y de otros equipos de laboratorio.
+- Sistemas de gestión de información de laboratorio (LIMS).
+- Sistemas de registros de lote electrónicos.
+- Sistemas de gestión documental y de capacitación.
+- Módulos del ERP que controlan el estado de los materiales, como cuarentena, aprobado o rechazado.
+- Sistemas de monitoreo de temperatura y humedad.
 
-En Colombia y Latinoamérica, los laboratorios, las IPS, las empresas de dispositivos médicos y las autoridades sanitarias trabajan con estándares que cambian con frecuencia. Formarte en CSV y GAMP 5 te ayuda a leer esos requisitos, documentar decisiones y aportar en equipos multidisciplinarios.
+## Las categorías de software de GAMP 5
 
-## Qué aprenderás
+| Categoría | Tipo | Esfuerzo típico |
+|---|---|---|
+| 1 | Infraestructura: sistemas operativos, bases de datos | Se califica y se controla, sin validar su funcionalidad |
+| 3 | Software no configurado, usado tal como viene | Verificar que cumple los requisitos de uso |
+| 4 | Software configurado para el proceso de la empresa | Verificar la configuración y los requisitos |
+| 5 | Software a la medida | Ciclo completo, incluida la revisión del diseño y del código |
 
-- CSV y GAMP 5
-- Validación de procesos
-- Validación de limpieza
-- Calificación de equipos
-- Gestión de cambios
+La categoría 2, de firmware, se retiró en versiones anteriores de la guía. Clasificar bien evita sobrevalidar sistemas simples y quedarse corto en los complejos.
 
-## Cursos recomendados de Validaciones y Calificaciones
+## El ciclo de vida de un sistema validado
+
+1. **Requisitos de usuario (URS):** qué necesita el proceso, escrito de forma verificable.
+2. **Evaluación de riesgos:** qué funciones son críticas y qué podría fallar.
+3. **Especificaciones** funcionales y de configuración, sobre todo en sistemas de categoría 4 y 5.
+4. **Verificación:** pruebas de instalación, de funcionamiento y de desempeño, enfocadas en las funciones de mayor riesgo.
+5. **Matriz de trazabilidad:** cada requisito enlazado con su prueba.
+6. **Informe de validación** y liberación para uso.
+7. **Operación:** control de cambios, gestión de incidentes, copias de seguridad, revisión periódica y, al final, retiro del sistema con la conservación de los datos.
+
+## El marco regulatorio que debes conocer
+
+- **21 CFR Part 11:** requisitos de la FDA para registros y firmas electrónicas.
+- **Anexo 11 de las GMP de la Unión Europea:** sistemas computarizados.
+- **Guías de integridad de datos** de la FDA, la MHRA y la OMS, que exigen rastros de auditoría, controles de acceso y revisión de datos.
+
+En Colombia, las BPM y las BPL exigen que los sistemas que generan o conservan registros sean confiables. La guía de [integridad de datos](/articulos/cursos-gratis-integridad-de-datos) explica los principios ALCOA+ que estos sistemas deben proteger.
+
+## Cursos de CSV y validación en Edvanta
+
+| Curso | Dónde | Costo |
+|---|---|---|
+| [Validaciones y Calificaciones](/curso-de-validaciones-y-calificaciones) | Aula Edvanta | Gratis; certificado opcional de COP 60.000 |
+| [Buenas Prácticas de Documentación Farmacéutica](/curso-de-buenas-practicas-de-documentacion-farmaceutica) | Aula Edvanta | Gratis; certificado opcional de COP 60.000 |
+| [Gestión de Riesgos en la Calidad Farmacéutica](/curso-de-gestion-de-riesgos-en-la-calidad-farmaceutica) | Aula Edvanta | Gratis; certificado opcional de COP 60.000 |
+
+## Cursos de CSV en otras plataformas
 
 | Curso | Plataforma | Enlace |
 |---|---|---|
-| HVAC Design for Cleanroom Facilities | Udemy | [Ver curso](https://trk.udemy.com/Ag5xzN) |
-| Cleaning Validation in Pharmaceutical Industry | Udemy | [Ver curso](https://trk.udemy.com/aNDvJo) |
 | Computerised System Validation (CSV) as per GAMP 5 | Udemy | [Ver curso](https://trk.udemy.com/k4ADn3) |
 | Computer System Validation (CSV) Mastermind: Level 1 | Udemy | [Ver curso](https://trk.udemy.com/5kz2e3) |
 | Computer System Validation Introduction | Udemy | [Ver curso](https://trk.udemy.com/PznJLN) |
-| Validation Requirements for Pharmaceuticals | Udemy | [Ver curso](https://trk.udemy.com/rEWkvy) |
-| Quality in Pharmaceutical Industry: Process Validation | Udemy | [Ver curso](https://trk.udemy.com/9Vq41j) |
-| Process Validation for Pharmaceutical Industries | Udemy | [Ver curso](https://trk.udemy.com/QYEZqx) |
 
-> El acceso gratuito, el certificado y las condiciones de cada curso dependen de la plataforma. Algunas opciones permiten aprender sin costo y cobran solo el certificado; otras tienen precio desde el inicio. Confirma antes de inscribirte.
+> **Contenido editorial:** algunos enlaces pueden ser de afiliado. Edvanta no dicta esos cursos; confirma condiciones y certificado en cada plataforma.
 
-## Cómo elegir un curso de CSV y GAMP 5
+## Del papel al pensamiento crítico
 
-1. Revisa el temario y confirma que cubre CSV y GAMP 5 con profundidad.
-2. Verifica el nivel: introductorio, intermedio o avanzado.
-3. Confirma si el acceso es gratuito y si el certificado tiene costo.
-4. Revisa la duración, el idioma y la modalidad.
-5. Comprueba quién dicta el curso y si incluye casos, proyectos o evaluaciones.
+Un problema histórico del CSV fue la documentación excesiva: cientos de páginas de pruebas con capturas de pantalla de funciones sin riesgo, mientras las funciones críticas se probaban poco. La segunda edición de GAMP 5 insiste en el pensamiento crítico: entender el proceso, enfocar las pruebas donde está el riesgo, aprovechar la documentación del proveedor cuando es confiable y usar herramientas automatizadas. Menos papel no significa menos control; significa control donde importa.
 
-## Salidas laborales
+## Cómo entrar al mundo del CSV
 
-- Especialista en validaciones
-- Ingeniero de calidad
-- Analista CSV
-- Coordinador de calificación
+- **Si vienes de calidad:** aprende los fundamentos de bases de datos, redes, usuarios y permisos, y cómo funcionan las copias de seguridad.
+- **Si vienes de sistemas:** aprende BPM, integridad de datos y la lógica de los procesos farmacéuticos.
+- **En ambos casos:** practica redactando requisitos de usuario verificables y casos de prueba con criterios claros.
 
-## Ruta de aprendizaje en 3 pasos
-
-1. **Fundamentos:** empieza por un curso introductorio o por la guía de Validaciones y Calificaciones para entender el vocabulario y el marco de trabajo.
-2. **Práctica:** elige un curso específico de CSV y GAMP 5 y aplícalo en un caso, un proyecto o una actividad de tu trabajo.
-3. **Especialización:** complementa con una certificación, una ruta de aprendizaje o un posgrado si el rol que buscas lo exige.
+El curso curado de [IA para gestión documental](/curso-de-ia-para-gestion-documental) y la guía [Claude para automatización de tareas farmacéuticas](/guia/claude-automatizacion-de-tareas-farmaceuticas) muestran cómo la tecnología cambia el trabajo documental, siempre con validación y revisión humana.
 
 ## Preguntas frecuentes
 
-### ¿Los cursos de CSV y GAMP 5 son gratis?
+### ¿Qué es CSV en la industria farmacéutica?
 
-El acceso y el certificado dependen de cada plataforma. Algunas ofrecen contenido gratuito y certificado opcional de pago; otras cobran desde el inicio. Verifica el precio y las condiciones antes de inscribirte.
+Es la validación de sistemas computarizados: la evidencia documentada de que un sistema hace lo que debe de forma confiable y protege la integridad de los datos regulados durante todo su ciclo de vida.
 
-### ¿Necesito experiencia previa en CSV y GAMP 5?
+### ¿Qué es GAMP 5?
 
-No siempre. Hay cursos introductorios para estudiantes y profesionales que quieren actualizarse. Revisa el nivel y los requisitos en la ficha del curso.
+Es la guía de la ISPE para gestionar y validar sistemas computarizados en entornos regulados con un enfoque basado en riesgos. Su segunda edición se publicó en 2022.
 
-### ¿Estos cursos sirven para trabajar en la industria farmacéutica?
+### ¿Qué categorías de software define GAMP 5?
 
-Pueden ayudarte a construir competencias, pero no reemplazan la formación de base ni la experiencia. Úsalos como parte de una ruta y verifica que el temario se ajuste al rol que buscas.
+Las categorías 1 (infraestructura), 3 (software no configurado), 4 (software configurado) y 5 (software a la medida). A mayor categoría y riesgo, mayor esfuerzo de validación.
+
+### ¿Hay cursos de CSV gratis?
+
+En Edvanta puedes empezar gratis con Validaciones y Calificaciones y Buenas Prácticas de Documentación Farmacéutica, con certificado verificable opcional por COP 60.000 cada uno.
+
+### ¿Un químico farmacéutico puede trabajar en CSV?
+
+Sí. Muchos especialistas en CSV vienen de calidad y aprenden la parte tecnológica. Su ventaja es entender el proceso y el riesgo para el paciente.
 
 ## Fuentes
 
-- [FDA](https://www.fda.gov)
-- [EMA](https://www.ema.europa.eu)
-- [PIC/S](https://picscheme.org)
-- [HVAC Design for Cleanroom Facilities](https://trk.udemy.com/Ag5xzN)
-- [Cleaning Validation in Pharmaceutical Industry](https://trk.udemy.com/aNDvJo)
-- [Computerised System Validation (CSV) as per GAMP 5](https://trk.udemy.com/k4ADn3)
-- [Computer System Validation (CSV) Mastermind: Level 1](https://trk.udemy.com/5kz2e3)
-
-## Contenido relacionado
-
-- [Cursos de Validaciones y Calificaciones para químicos farmacéuticos](/articulos/cursos-de-validaciones-y-calificaciones)
-- [Cursos gratis de Validación de procesos: guía para químicos farmacéuticos](/articulos/cursos-gratis-validacion-de-procesos)
-- [Cursos gratis de Validación de limpieza: guía para químicos farmacéuticos](/articulos/cursos-gratis-validacion-de-limpieza)
-
-> Este contenido es educativo y no constituye asesoría profesional individual.
+- [ISPE — GAMP 5](https://ispe.org)
+- [FDA — 21 CFR Part 11, registros y firmas electrónicas](https://www.ecfr.gov/current/title-21/chapter-I/subchapter-A/part-11)
+- [Comisión Europea — EudraLex volumen 4, GMP (Anexo 11)](https://health.ec.europa.eu/medicinal-products/eudralex/eudralex-volume-4_en)
