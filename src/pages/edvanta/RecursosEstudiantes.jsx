@@ -89,7 +89,7 @@ export default function RecursosEstudiantes() {
         <HeroCientifico
           breadcrumb={<Breadcrumb items={[{ label: 'Inicio', to: '/' }, { label: 'Cursos', to: '/cursos' }, { label: 'Recursos para estudiantes' }]} className="mb-8" />}
           eyebrow="Para estudiantes y egresados"
-          title={RECURSOS_ESTUDIANTES.titulo}
+          title={`${RECURSOS_ESTUDIANTES.titulo} ${RECURSOS_ESTUDIANTES.resaltado}`}
           highlight={RECURSOS_ESTUDIANTES.resaltado}
           lead={RECURSOS_ESTUDIANTES.lead}
           image="/img/escuelas/calidad.webp"
