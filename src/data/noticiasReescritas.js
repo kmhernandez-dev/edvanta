@@ -530,6 +530,86 @@ export const NOTICIAS_REESCRITAS = {
     description: 'El CHMP recomendó Rasonque (daraxonrasib), un inhibidor de RAS, para cáncer de páncreas metastásico tratado: 12,4 frente a 6,7 meses de supervivencia.',
     autor: 'Equipo editorial de Edvanta'
   },
+  'anvisa-aprueba-sugemalimab-para-primera-linea-de-cancer-de-pulmon-metastasico': {
+    contenidoPropio: true,
+    mdPath: '/articulos/articulos_edvanta/noticias-internacionales/anvisa-aprueba-sugemalimab-para-primera-linea-de-cancer-de-pulmon-metastasico.md',
+    updated: '2026-11-12',
+    readingTime: '3 min',
+    seoTitle: 'Sugemalimab: Anvisa lo aprueba en cáncer de pulmón',
+    seoDescription: 'La Anvisa aprobó el sugemalimab (Cejemly) con quimioterapia en primera línea del cáncer de pulmón metastásico sin EGFR, ALK, ROS1 ni RET alterados.',
+    description: 'La Anvisa aprobó el sugemalimab (Cejemly) con quimioterapia en primera línea del cáncer de pulmón metastásico sin EGFR, ALK, ROS1 ni RET alterados.',
+    autor: 'Equipo editorial de Edvanta'
+  },
+  'anvisa-aprueba-telisotuzumab-vedotina-para-cancer-de-pulmon-c-met-alto': {
+    contenidoPropio: true,
+    mdPath: '/articulos/articulos_edvanta/noticias-internacionales/anvisa-aprueba-telisotuzumab-vedotina-para-cancer-de-pulmon-c-met-alto.md',
+    updated: '2026-11-12',
+    readingTime: '3 min',
+    seoTitle: 'Telisotuzumab vedotina: Anvisa aprueba Emrelis',
+    seoDescription: 'La Anvisa aprobó Emrelis, un conjugado anticuerpo-fármaco contra c-Met para cáncer de pulmón no escamoso avanzado ya tratado. Qué mostró el estudio.',
+    description: 'La Anvisa aprobó Emrelis, un conjugado anticuerpo-fármaco contra c-Met para cáncer de pulmón no escamoso avanzado ya tratado. Qué mostró el estudio.',
+    autor: 'Equipo editorial de Edvanta'
+  },
+  'anvisa-aprueba-nuevo-medicamento-para-enfermedad-de-fabry': {
+    contenidoPropio: true,
+    mdPath: '/articulos/articulos_edvanta/noticias-internacionales/anvisa-aprueba-nuevo-medicamento-para-enfermedad-de-fabry.md',
+    updated: '2026-11-12',
+    readingTime: '3 min',
+    seoTitle: 'Elfabrio: Anvisa aprueba nuevo tratamiento para Fabry',
+    seoDescription: 'La Anvisa aprobó Elfabrio (pegunigalsidasa alfa), terapia de reemplazo enzimático para adultos con enfermedad de Fabry. Qué es la enfermedad y qué cambia.',
+    description: 'La Anvisa aprobó Elfabrio (pegunigalsidasa alfa), terapia de reemplazo enzimático para adultos con enfermedad de Fabry. Qué es la enfermedad y qué cambia.',
+    autor: 'Equipo editorial de Edvanta'
+  },
+  'anvisa-aprueba-tratamiento-para-enfermedad-injerto-contra-huesped': {
+    contenidoPropio: true,
+    mdPath: '/articulos/articulos_edvanta/noticias-internacionales/anvisa-aprueba-tratamiento-para-enfermedad-injerto-contra-huesped.md',
+    updated: '2026-11-12',
+    readingTime: '3 min',
+    seoTitle: 'Axatilimab: Anvisa lo aprueba para injerto contra huésped',
+    seoDescription: 'La Anvisa aprobó el axatilimab (Niktimvo) para la enfermedad injerto contra huésped crónica tras dos tratamientos fallidos: 73,8 % de respuesta.',
+    description: 'La Anvisa aprobó el axatilimab (Niktimvo) para la enfermedad injerto contra huésped crónica tras dos tratamientos fallidos: 73,8 % de respuesta.',
+    autor: 'Equipo editorial de Edvanta'
+  },
+  'fda-aprueba-nueva-gota-oftalmica-sin-prescripcion-para-enrojecimiento-ocular': {
+    contenidoPropio: true,
+    mdPath: '/articulos/articulos_edvanta/noticias-internacionales/fda-aprueba-nueva-gota-oftalmica-sin-prescripcion-para-enrojecimiento-ocular.md',
+    updated: '2026-11-12',
+    readingTime: '3 min',
+    seoTitle: 'Brytly: la FDA aprueba gotas de venta libre para ojo rojo',
+    seoDescription: 'La FDA aprobó Brytly, apraclonidina al 0,125 %, primera gota de venta libre con este activo para el ojo rojo. Cómo se usa y cuándo consultar.',
+    description: 'La FDA aprobó Brytly, apraclonidina al 0,125 %, primera gota de venta libre con este activo para el ojo rojo. Cómo se usa y cuándo consultar.',
+    autor: 'Equipo editorial de Edvanta'
+  },
+  'mhra-aprueba-triheptanoina-para-trastornos-hereditarios-de-oxidacion': {
+    contenidoPropio: true,
+    mdPath: '/articulos/articulos_edvanta/noticias-internacionales/mhra-aprueba-triheptanoina-para-trastornos-hereditarios-de-oxidacion.md',
+    updated: '2026-11-12',
+    readingTime: '3 min',
+    seoTitle: 'Triheptanoína: la MHRA aprueba Dojolvi',
+    seoDescription: 'La MHRA aprobó la triheptanoína (Dojolvi) para trastornos de oxidación de ácidos grasos de cadena larga en adultos y niños. Qué son y qué cambia.',
+    description: 'La MHRA aprobó la triheptanoína (Dojolvi) para trastornos de oxidación de ácidos grasos de cadena larga en adultos y niños. Qué son y qué cambia.',
+    autor: 'Equipo editorial de Edvanta'
+  },
+  'mhra-aprueba-catumaxomab-para-ascitis-maligna': {
+    contenidoPropio: true,
+    mdPath: '/articulos/articulos_edvanta/noticias-internacionales/mhra-aprueba-catumaxomab-para-ascitis-maligna.md',
+    updated: '2026-11-12',
+    readingTime: '3 min',
+    seoTitle: 'Catumaxomab: la MHRA lo aprueba para ascitis maligna',
+    seoDescription: 'La MHRA autorizó el catumaxomab (Korjuny) para la ascitis maligna: en el estudio, 46 días sin drenaje frente a 11 con solo paracentesis.',
+    description: 'La MHRA autorizó el catumaxomab (Korjuny) para la ascitis maligna: en el estudio, 46 días sin drenaje frente a 11 con solo paracentesis.',
+    autor: 'Equipo editorial de Edvanta'
+  },
+  'mhra-retira-un-lote-de-lercanidipino-por-mezcla-de-concentraciones': {
+    contenidoPropio: true,
+    mdPath: '/articulos/articulos_edvanta/noticias-internacionales/mhra-retira-un-lote-de-lercanidipino-por-mezcla-de-concentraciones.md',
+    updated: '2026-11-12',
+    readingTime: '3 min',
+    seoTitle: 'Lercanidipino: retiran un lote por mezcla de 10 y 20 mg',
+    seoDescription: 'La MHRA retiró el lote M2510877 de lercanidipino de 10 mg porque una caja traía un blíster de 20 mg. Riesgos y qué deben revisar los pacientes.',
+    description: 'La MHRA retiró el lote M2510877 de lercanidipino de 10 mg porque una caja traía un blíster de 20 mg. Riesgos y qué deben revisar los pacientes.',
+    autor: 'Equipo editorial de Edvanta'
+  },
 };
 
 /** Las 100 noticias del paquete, con la versión reescrita donde la hay. */
