@@ -610,6 +610,86 @@ export const NOTICIAS_REESCRITAS = {
     description: 'La MHRA retiró el lote M2510877 de lercanidipino de 10 mg porque una caja traía un blíster de 20 mg. Riesgos y qué deben revisar los pacientes.',
     autor: 'Equipo editorial de Edvanta'
   },
+  'fda-aprueba-talazoparib-con-enzalutamida-en-cancer-de-prostata-hrr-mutado': {
+    contenidoPropio: true,
+    mdPath: '/articulos/articulos_edvanta/noticias-internacionales/fda-aprueba-talazoparib-con-enzalutamida-en-cancer-de-prostata-hrr-mutado.md',
+    updated: '2026-11-12',
+    readingTime: '3 min',
+    seoTitle: 'Talazoparib con enzalutamida: la FDA lo aprueba',
+    seoDescription: 'La FDA aprobó talazoparib (Talzenna) con enzalutamida para cáncer de próstata metastásico con mutaciones HRR: redujo a la mitad el riesgo de progresión.',
+    description: 'La FDA aprobó talazoparib (Talzenna) con enzalutamida para cáncer de próstata metastásico con mutaciones HRR: redujo a la mitad el riesgo de progresión.',
+    autor: 'Equipo editorial de Edvanta'
+  },
+  'fda-aprueba-atezolizumab-adyuvante-para-cancer-de-colon-dmmr-estadio-iii': {
+    contenidoPropio: true,
+    mdPath: '/articulos/articulos_edvanta/noticias-internacionales/fda-aprueba-atezolizumab-adyuvante-para-cancer-de-colon-dmmr-estadio-iii.md',
+    updated: '2026-11-12',
+    readingTime: '3 min',
+    seoTitle: 'Atezolizumab adyuvante en cáncer de colon dMMR: FDA',
+    seoDescription: 'La FDA aprobó atezolizumab con quimioterapia después de la cirugía del cáncer de colon estadio III dMMR: redujo a la mitad el riesgo de recaída.',
+    description: 'La FDA aprobó atezolizumab con quimioterapia después de la cirugía del cáncer de colon estadio III dMMR: redujo a la mitad el riesgo de recaída.',
+    autor: 'Equipo editorial de Edvanta'
+  },
+  'fda-aprueba-tucatinib-con-trastuzumab-y-pertuzumab-como-mantenimiento': {
+    contenidoPropio: true,
+    mdPath: '/articulos/articulos_edvanta/noticias-internacionales/fda-aprueba-tucatinib-con-trastuzumab-y-pertuzumab-como-mantenimiento.md',
+    updated: '2026-11-12',
+    readingTime: '3 min',
+    seoTitle: 'Tucatinib de mantenimiento en cáncer de mama HER2+',
+    seoDescription: 'La FDA aprobó tucatinib (Tukysa) con trastuzumab y pertuzumab como mantenimiento en cáncer de mama HER2+: 24,9 frente a 16,3 meses sin progresión.',
+    description: 'La FDA aprobó tucatinib (Tukysa) con trastuzumab y pertuzumab como mantenimiento en cáncer de mama HER2+: 24,9 frente a 16,3 meses sin progresión.',
+    autor: 'Equipo editorial de Edvanta'
+  },
+  'fda-aprueba-pirtobrutinib-en-primera-linea-de-llc-o-linfoma-linfocitico': {
+    contenidoPropio: true,
+    mdPath: '/articulos/articulos_edvanta/noticias-internacionales/fda-aprueba-pirtobrutinib-en-primera-linea-de-llc-o-linfoma-linfocitico.md',
+    updated: '2026-11-12',
+    readingTime: '3 min',
+    seoTitle: 'Pirtobrutinib en primera línea de LLC: aprobación FDA',
+    seoDescription: 'La FDA aprobó pirtobrutinib (Jaypirca) como primer tratamiento de la leucemia linfocítica crónica: redujo cerca del 80 % el riesgo de progresión.',
+    description: 'La FDA aprobó pirtobrutinib (Jaypirca) como primer tratamiento de la leucemia linfocítica crónica: redujo cerca del 80 % el riesgo de progresión.',
+    autor: 'Equipo editorial de Edvanta'
+  },
+  'mhra-retira-liquidos-orales-de-clopidogrel-por-contenido-inferior-al-rotulado': {
+    contenidoPropio: true,
+    mdPath: '/articulos/articulos_edvanta/noticias-internacionales/mhra-retira-liquidos-orales-de-clopidogrel-por-contenido-inferior-al-rotulado.md',
+    updated: '2026-11-12',
+    readingTime: '3 min',
+    seoTitle: 'Clopidogrel líquido: retiro por dosis incompleta',
+    seoDescription: 'La MHRA retiró las soluciones orales de clopidogrel de Xeal Pharma porque tenían el 76 % de la dosis rotulada. Por qué no hay que suspenderlo solo.',
+    description: 'La MHRA retiró las soluciones orales de clopidogrel de Xeal Pharma porque tenían el 76 % de la dosis rotulada. Por qué no hay que suspenderlo solo.',
+    autor: 'Equipo editorial de Edvanta'
+  },
+  'mhra-retira-lotes-de-movicol-plain-por-cantidades-incorrectas-de-activos': {
+    contenidoPropio: true,
+    mdPath: '/articulos/articulos_edvanta/noticias-internacionales/mhra-retira-lotes-de-movicol-plain-por-cantidades-incorrectas-de-activos.md',
+    updated: '2026-11-12',
+    readingTime: '2 min',
+    seoTitle: 'Movicol: la MHRA retira dos lotes por precaución',
+    seoDescription: 'La MHRA retiró dos lotes de MOVICOL Plain 13,7 g porque algunas unidades podrían tener cantidades incorrectas de activos. Qué deben hacer pacientes.',
+    description: 'La MHRA retiró dos lotes de MOVICOL Plain 13,7 g porque algunas unidades podrían tener cantidades incorrectas de activos. Qué deben hacer pacientes.',
+    autor: 'Equipo editorial de Edvanta'
+  },
+  'mhra-consulta-uso-de-aerosoles-nasales-de-adrenalina-de-reserva-en-escuelas': {
+    contenidoPropio: true,
+    mdPath: '/articulos/articulos_edvanta/noticias-internacionales/mhra-consulta-uso-de-aerosoles-nasales-de-adrenalina-de-reserva-en-escuelas.md',
+    updated: '2026-11-12',
+    readingTime: '3 min',
+    seoTitle: 'Adrenalina nasal de reserva en colegios: consulta MHRA',
+    seoDescription: 'La MHRA propone que los colegios tengan adrenalina nasal de reserva para niños con riesgo de anafilaxia. Qué cambia y qué deben saber las familias.',
+    description: 'La MHRA propone que los colegios tengan adrenalina nasal de reserva para niños con riesgo de anafilaxia. Qué cambia y qué deben saber las familias.',
+    autor: 'Equipo editorial de Edvanta'
+  },
+  'anvisa-suspende-lotes-de-simbeva-abevmy-y-solucion-de-ringer': {
+    contenidoPropio: true,
+    mdPath: '/articulos/articulos_edvanta/noticias-internacionales/anvisa-suspende-lotes-de-simbeva-abevmy-y-solucion-de-ringer.md',
+    updated: '2026-11-12',
+    readingTime: '3 min',
+    seoTitle: 'Anvisa suspende lotes de Simbeva, Abevmy y Ringer',
+    seoDescription: 'La Anvisa suspendió lotes de Simbeva y Abevmy por endotoxinas y retiró un lote de Ringer con lactato por partículas. Qué significa para la farmacia.',
+    description: 'La Anvisa suspendió lotes de Simbeva y Abevmy por endotoxinas y retiró un lote de Ringer con lactato por partículas. Qué significa para la farmacia.',
+    autor: 'Equipo editorial de Edvanta'
+  },
 };
 
 /** Las 100 noticias del paquete, con la versión reescrita donde la hay. */
