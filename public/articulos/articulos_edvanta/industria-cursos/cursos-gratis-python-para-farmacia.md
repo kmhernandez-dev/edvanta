@@ -1,93 +1,105 @@
-# Cursos gratis de Python para farmacia: guía para químicos farmacéuticos
+# Cursos gratis de Python para farmacia: análisis de datos, automatización y quimioinformática
 
-La industria farmacéutica necesita profesionales que entiendan Python para farmacia y sepan aplicarlo en entornos regulados. Esta guía reúne cursos reales de Datos e Inteligencia Artificial en Farmacia para que compares opciones, revises el temario y elijas con criterio.
+Python es el lenguaje de programación más usado para analizar datos y automatizar tareas, y cada vez aparece más en las vacantes de la industria farmacéutica, la investigación clínica y la farmacoepidemiología. No hace falta ser ingeniero de software para aprovecharlo: con lo básico, un químico farmacéutico puede limpiar bases de datos, hacer estadística, generar gráficos e informes automáticos, y, si le interesa la investigación, trabajar con estructuras químicas.
 
-> **Contenido editorial:** algunos enlaces pueden ser de afiliado. Edvanta no dicta ni certifica esos cursos. Verifica el precio, el acceso y el certificado en la plataforma antes de inscribirte.
+> **En resumen**
+>
+> - Para empezar en español: el curso de Python de Edutin Academy.
+> - Para análisis de datos con certificado: el Certificado Profesional de Google Advanced Data Analytics o el de IBM Data Analyst, en Coursera.
+> - Las librerías que más se usan en farmacia son pandas, NumPy, Matplotlib, SciPy, scikit-learn y, en química, RDKit.
 
-**En resumen**
+## Para qué usa Python un profesional de farmacia
 
-- Qué es Python para farmacia y por qué se pide en la industria farmacéutica.
-- Cursos reales de Datos e Inteligencia Artificial en Farmacia con enlace directo a la plataforma.
-- Cómo elegir, qué roles existen y una ruta de aprendizaje de tres pasos.
-- Fuentes oficiales para verificar requisitos y actualizar el temario.
-
-## Por qué importa Python para farmacia en 2026
-
-En Colombia y Latinoamérica, los laboratorios, las IPS, las empresas de dispositivos médicos y las autoridades sanitarias trabajan con estándares que cambian con frecuencia. Formarte en Python para farmacia te ayuda a leer esos requisitos, documentar decisiones y aportar en equipos multidisciplinarios.
-
-## Qué aprenderás
-
-- Python para farmacia
-- Power BI
-- Python
-- SQL
-- IA aplicada
-- Evidencia del mundo real
-
-## Cursos recomendados de Datos e Inteligencia Artificial en Farmacia
-
-| Curso | Plataforma | Enlace |
+| Tarea | Ejemplo | Librerías |
 |---|---|---|
-| Google Data Analytics Professional Certificate | Coursera | [Ver curso](https://imp.i384100.net/VOVDrO) |
-| Excel Specialization | Coursera | [Ver curso](https://imp.i384100.net/B5AdWy) |
-| Microsoft Power BI Data Analyst Professional Certificate | Coursera | [Ver curso](https://imp.i384100.net/zzqmQr) |
-| Google Advanced Data Analytics Professional Certificate | Coursera | [Ver curso](https://imp.i384100.net/WOKQjA) |
-| Google Business Intelligence Professional Certificate | Coursera | [Ver curso](https://imp.i384100.net/E0Vdn2) |
-| Microsoft Business Analyst Professional Certificate | Coursera | [Ver curso](https://imp.i384100.net/bky1Zv) |
-| Excel Skills for Data Analytics and Visualization | Coursera | [Ver curso](https://imp.i384100.net/4aKnkn) |
-| IBM Data Analyst Professional Certificate | Coursera | [Ver curso](https://imp.i384100.net/NGPydV) |
+| Limpiar y unir datos | Juntar los informes mensuales de varias sedes en una sola tabla | pandas |
+| Estadística | Comparar lotes, calcular capacidad de proceso, analizar estabilidad | SciPy, statsmodels |
+| Gráficos | Tendencias de resultados de control de calidad | Matplotlib, seaborn |
+| Automatizar informes | Generar cada mes el mismo informe en Excel o PDF | pandas, openpyxl |
+| Modelos predictivos | Anticipar resultados fuera de tendencia | scikit-learn |
+| Quimioinformática | Calcular propiedades de moléculas o buscar estructuras similares | RDKit |
+| Farmacoepidemiología | Analizar bases de dispensación o de eventos adversos | pandas, statsmodels |
 
-> El acceso gratuito, el certificado y las condiciones de cada curso dependen de la plataforma. Algunas opciones permiten aprender sin costo y cobran solo el certificado; otras tienen precio desde el inicio. Confirma antes de inscribirte.
+## Por dónde empezar
 
-## Cómo elegir un curso de Python para farmacia
+1. **Lo básico del lenguaje:** variables, listas, diccionarios, condiciones, ciclos y funciones.
+2. **Jupyter Notebook:** un entorno donde el código, los resultados y las notas quedan juntos.
+3. **pandas:** leer archivos de Excel y CSV, filtrar, agrupar y unir tablas.
+4. **Gráficos** con Matplotlib.
+5. **Un proyecto propio** con datos reales de tu trabajo (anonimizados).
 
-1. Revisa el temario y confirma que cubre Python para farmacia con profundidad.
-2. Verifica el nivel: introductorio, intermedio o avanzado.
-3. Confirma si el acceso es gratuito y si el certificado tiene costo.
-4. Revisa la duración, el idioma y la modalidad.
-5. Comprueba quién dicta el curso y si incluye casos, proyectos o evaluaciones.
+El quinto paso es el que más enseña. Un buen primer proyecto: tomar los registros de temperatura de un año, marcar automáticamente las lecturas fuera de rango y graficar la tendencia por equipo.
 
-## Salidas laborales
+## Un ejemplo de estabilidad
 
-- Analista de datos
-- Especialista en BI
-- Consultor de IA farmacéutica
-- Analista de evidencia del mundo real
+En un estudio de estabilidad, el contenido del principio activo se mide a distintos tiempos. Con Python se puede ajustar una regresión, calcular el intervalo de confianza y estimar cuándo cruzaría el límite de especificación. La guía ICH Q1E describe la evaluación estadística de los datos de estabilidad, y el curso gratuito de [Estudios de Estabilidad de Medicamentos](/curso-de-estudios-de-estabilidad-de-medicamentos) de Edvanta explica el contexto regulatorio, con certificado opcional de COP 60.000.
 
-## Ruta de aprendizaje en 3 pasos
+## Cursos de Python
 
-1. **Fundamentos:** empieza por un curso introductorio o por la guía de Datos e Inteligencia Artificial en Farmacia para entender el vocabulario y el marco de trabajo.
-2. **Práctica:** elige un curso específico de Python para farmacia y aplícalo en un caso, un proyecto o una actividad de tu trabajo.
-3. **Especialización:** complementa con una certificación, una ruta de aprendizaje o un posgrado si el rol que buscas lo exige.
+| Curso | Plataforma | Idioma | Inscribirte |
+|---|---|---|---|
+| [Python](/curso-de-python) | Edutin Academy | Español | [Ver en Edutin](https://edutin.com/sh-16658) |
+| [Certificado Profesional de Análisis Avanzado de Datos de Google](/curso-de-certificado-profesional-de-analisis-avanzado-de-datos) | Coursera | Español | [Ver en Coursera](https://imp.i384100.net/WOKQjA) |
+| [Certificado Profesional de IBM Data Analyst](/curso-de-certificado-profesional-de-ibm-data-analyst) | Coursera | Inglés | [Ver en Coursera](https://imp.i384100.net/NGPydV) |
+| [Statistics, Biostatistics and Data Analysis from Scratch](/curso-de-statistics-biostatistics-and-data-analysis-from-scratch) | Udemy | Inglés | [Ver en Udemy](https://trk.udemy.com/bky9zm) |
+| [SQL Server](/curso-de-sql-server) | Edutin Academy | Español | [Ver en Edutin](https://edutin.com/sh-16657) |
+
+> **Contenido editorial:** algunos enlaces son de afiliado. Edvanta no dicta esos cursos; confirma condiciones y certificado en cada plataforma.
+
+SQL complementa muy bien a Python: la mayoría de los datos de una empresa viven en bases de datos, y SQL es la forma de consultarlos.
+
+## Python con inteligencia artificial
+
+Los asistentes de inteligencia artificial pueden escribir y explicar código de Python, lo que acelera mucho el aprendizaje. Si te interesa esta forma de trabajar, revisa la guía de [cursos de Claude Code](/articulos/cursos-de-claude-code). Pero la regla no cambia: hay que entender lo que hace el código y verificar los resultados, sobre todo si se usan para decisiones de calidad.
+
+## Buenas prácticas en entornos regulados
+
+- **Trabaja con datos anonimizados** cuando hay información de pacientes; los datos de salud son datos sensibles según la Ley 1581 de 2012.
+- **Guarda el código en un repositorio** con historial de cambios.
+- **Documenta** qué hace cada script, con qué datos y con qué versión de las librerías.
+- **Valida** los cálculos contra un método de referencia antes de usarlos en decisiones reguladas.
+- **No reemplaces un sistema validado** con un script personal sin pasar por el control de cambios.
+
+## Errores frecuentes al aprender Python
+
+- **Estudiar solo teoría** sin un proyecto propio.
+- **Copiar código sin entenderlo.**
+- **Modificar los datos originales** en lugar de trabajar sobre una copia.
+- **Abandonar en los errores:** leer el mensaje de error con calma suele mostrar la solución.
+
+## Cargos en los que se pide Python
+
+- **Analista de datos de calidad o de producción:** tendencias, capacidad de proceso y revisiones anuales de producto.
+- **Farmacoepidemiólogo o analista de evidencia del mundo real:** estudios con bases de dispensación, historias clínicas o reclamaciones. Lo explicamos en la guía de [evidencia del mundo real](/articulos/cursos-gratis-evidencia-del-mundo-real).
+- **Analista de farmacovigilancia:** consolidación de casos y estadísticas para la detección de señales.
+- **Científico de datos en investigación y desarrollo:** modelos predictivos y quimioinformática.
+- **Bioestadístico en investigación clínica:** análisis de ensayos, aunque en esta área también se usan mucho R y SAS.
+
+En las vacantes, Python suele pedirse junto con SQL, Excel avanzado y una herramienta de visualización, como Power BI.
 
 ## Preguntas frecuentes
 
-### ¿Los cursos de Python para farmacia son gratis?
+### ¿Para qué sirve Python en farmacia?
 
-El acceso y el certificado dependen de cada plataforma. Algunas ofrecen contenido gratuito y certificado opcional de pago; otras cobran desde el inicio. Verifica el precio y las condiciones antes de inscribirte.
+Para analizar y limpiar datos, hacer estadística, generar gráficos e informes automáticos, construir modelos predictivos y, en investigación, trabajar con estructuras químicas.
 
-### ¿Necesito experiencia previa en Python para farmacia?
+### ¿Hay un curso de Python gratis en español?
 
-No siempre. Hay cursos introductorios para estudiantes y profesionales que quieren actualizarse. Revisa el nivel y los requisitos en la ficha del curso.
+Sí. El curso de Python de Edutin Academy se toma sin costo y el certificado es de pago.
 
-### ¿Estos cursos sirven para trabajar en la industria farmacéutica?
+### ¿Necesito saber programar para empezar?
 
-Pueden ayudarte a construir competencias, pero no reemplazan la formación de base ni la experiencia. Úsalos como parte de una ruta y verifica que el temario se ajuste al rol que buscas.
+No. Los cursos introductorios empiezan desde cero; lo importante es practicar con un proyecto propio.
+
+### ¿Qué es RDKit?
+
+Una librería de código abierto de quimioinformática para trabajar con estructuras químicas en Python: calcular propiedades, comparar moléculas y buscar subestructuras.
+
+### ¿Qué es mejor aprender primero, Python o SQL?
+
+Se complementan. Python sirve para analizar y automatizar; SQL, para consultar las bases de datos donde están los datos.
 
 ## Fuentes
 
-- [Microsoft Learn](https://learn.microsoft.com)
-- [Python](https://www.python.org)
-- [FDA](https://www.fda.gov)
-- [Google Data Analytics Professional Certificate](https://imp.i384100.net/VOVDrO)
-- [Excel Specialization](https://imp.i384100.net/B5AdWy)
-- [Microsoft Power BI Data Analyst Professional Certificate](https://imp.i384100.net/zzqmQr)
-- [Google Advanced Data Analytics Professional Certificate](https://imp.i384100.net/WOKQjA)
-
-## Contenido relacionado
-
-- [Cursos de Datos e Inteligencia Artificial en Farmacia para químicos farmacéuticos](/articulos/cursos-de-datos-e-inteligencia-artificial)
-- [Cursos gratis de Power BI para farmacia: guía para químicos farmacéuticos](/articulos/cursos-gratis-power-bi-farmacia)
-- [Cursos gratis de IA en la industria farmacéutica: guía para químicos farmacéuticos](/articulos/cursos-gratis-ia-industria-farmaceutica)
-
-> Este contenido es educativo y no constituye asesoría profesional individual.
+- **ICH Q1E: Evaluation of Stability Data.** International Council for Harmonisation. https://www.ich.org/page/quality-guidelines (consultado el 12 de noviembre de 2026).
+- **Ley 1581 de 2012.** Régimen Legal de Bogotá (Secretaría Jurídica Distrital). https://www.alcaldiabogota.gov.co/sisjur/normas/Norma1.jsp?i=49981 (consultado el 12 de noviembre de 2026).

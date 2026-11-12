@@ -1,92 +1,93 @@
-# Cursos gratis de Evidencia del mundo real: guía para químicos farmacéuticos
+# Cursos gratis de evidencia del mundo real: datos de la práctica clínica, farmacoepidemiología y decisiones regulatorias
 
-La industria farmacéutica necesita profesionales que entiendan Evidencia del mundo real y sepan aplicarlo en entornos regulados. Esta guía reúne cursos reales de Datos e Inteligencia Artificial en Farmacia para que compares opciones, revises el temario y elijas con criterio.
+Los ensayos clínicos responden si un medicamento funciona en condiciones controladas, con pacientes seleccionados. Pero en la vida real los pacientes son mayores, tienen otras enfermedades, toman más medicamentos y no siempre siguen el tratamiento. Los datos del mundo real (historias clínicas electrónicas, bases de dispensación y de reclamaciones, registros de pacientes) permiten ver qué pasa en esa práctica. Cuando esos datos se analizan con métodos rigurosos, producen evidencia del mundo real, cada vez más usada por la industria, los sistemas de salud y las autoridades.
 
-> **Contenido editorial:** algunos enlaces pueden ser de afiliado. Edvanta no dicta ni certifica esos cursos. Verifica el precio, el acceso y el certificado en la plataforma antes de inscribirte.
+> **En resumen**
+>
+> - Los datos del mundo real son la materia prima; la evidencia del mundo real es lo que se obtiene al analizarlos con métodos adecuados.
+> - La FDA creó en 2018 un marco para su programa de evidencia del mundo real, a partir de la ley 21st Century Cures de 2016, y la EMA tiene la red DARWIN EU.
+> - El principal reto es el sesgo: los pacientes que reciben un tratamiento no son comparables, por azar, con los que no lo reciben.
 
-**En resumen**
+## Fuentes de datos del mundo real
 
-- Qué es Evidencia del mundo real y por qué se pide en la industria farmacéutica.
-- Cursos reales de Datos e Inteligencia Artificial en Farmacia con enlace directo a la plataforma.
-- Cómo elegir, qué roles existen y una ruta de aprendizaje de tres pasos.
-- Fuentes oficiales para verificar requisitos y actualizar el temario.
+| Fuente | Qué ofrece | Limitaciones |
+|---|---|---|
+| Historias clínicas electrónicas | Diagnósticos, resultados de laboratorio, evolución | Datos incompletos o no estructurados |
+| Bases de reclamaciones o de facturación | Diagnósticos, procedimientos y dispensaciones de grandes poblaciones | Pocos datos clínicos; codificación pensada para pagar, no para investigar |
+| Registros de pacientes | Seguimiento detallado de una enfermedad o un producto | Pueden no representar a todos los pacientes |
+| Bases de dispensación | Qué se entregó y cuándo | No confirman que el paciente lo tomó |
+| Datos generados por pacientes | Aplicaciones, dispositivos y encuestas | Calidad variable |
 
-## Por qué importa Evidencia del mundo real en 2026
+En Colombia, el SISPRO del Ministerio de Salud reúne información del sistema de salud, como los registros de prestación de servicios, que se usa en estudios de utilización de servicios y medicamentos.
 
-En Colombia y Latinoamérica, los laboratorios, las IPS, las empresas de dispositivos médicos y las autoridades sanitarias trabajan con estándares que cambian con frecuencia. Formarte en Evidencia del mundo real te ayuda a leer esos requisitos, documentar decisiones y aportar en equipos multidisciplinarios.
+## Para qué se usa la evidencia del mundo real
 
-## Qué aprenderás
+- **Seguridad poscomercialización:** estudiar eventos raros o tardíos que los ensayos no alcanzan a ver.
+- **Efectividad comparada:** comparar tratamientos en la práctica real.
+- **Utilización de medicamentos:** cómo, cuánto y en quién se usan.
+- **Grupos de control externos:** en enfermedades raras, donde no es posible un ensayo con placebo.
+- **Ampliaciones de indicación,** en ciertos casos y con métodos rigurosos.
+- **Decisiones de cobertura y precio** en los sistemas de salud.
 
-- Evidencia del mundo real
-- Power BI
-- Python
-- SQL
-- IA aplicada
+## El problema central: el sesgo de confusión
 
-## Cursos recomendados de Datos e Inteligencia Artificial en Farmacia
+En la práctica, los médicos eligen tratamientos según la gravedad, la edad o las otras enfermedades del paciente. Si se compara a quienes recibieron un medicamento con quienes no, las diferencias pueden deberse a esas características y no al medicamento. Algunas herramientas para controlarlo:
+
+1. **Diseño de usuarios nuevos con comparador activo:** comparar a quienes empiezan un medicamento con quienes empiezan otro para la misma indicación.
+2. **Puntajes de propensión:** equilibrar las características de los grupos.
+3. **Emulación de un ensayo objetivo:** diseñar el análisis como si fuera un ensayo clínico, con criterios de elegibilidad, tiempo cero y seguimiento definidos.
+4. **Análisis de sensibilidad:** comprobar si el resultado se mantiene con otros supuestos.
+
+## Qué hacen las autoridades
+
+- **FDA:** en 2018 publicó el marco de su programa de evidencia del mundo real, en respuesta a la ley 21st Century Cures de 2016, y desde entonces ha publicado guías sobre fuentes de datos y diseño de estudios.
+- **EMA:** coordina la red DARWIN EU, que permite hacer estudios con datos del mundo real de varios países europeos para apoyar decisiones regulatorias.
+- **Farmacovigilancia:** los estudios posautorización, que pueden pedir las autoridades, suelen usar datos del mundo real. En Colombia, la Resolución INVIMA 2024015321 de 2024 contempla los estudios posautorización.
+
+## Cursos de evidencia del mundo real
 
 | Curso | Plataforma | Enlace |
 |---|---|---|
-| Google Data Analytics Professional Certificate | Coursera | [Ver curso](https://imp.i384100.net/VOVDrO) |
-| Excel Specialization | Coursera | [Ver curso](https://imp.i384100.net/B5AdWy) |
-| Microsoft Power BI Data Analyst Professional Certificate | Coursera | [Ver curso](https://imp.i384100.net/zzqmQr) |
-| Google Advanced Data Analytics Professional Certificate | Coursera | [Ver curso](https://imp.i384100.net/WOKQjA) |
-| Google Business Intelligence Professional Certificate | Coursera | [Ver curso](https://imp.i384100.net/E0Vdn2) |
-| Microsoft Business Analyst Professional Certificate | Coursera | [Ver curso](https://imp.i384100.net/bky1Zv) |
-| Excel Skills for Data Analytics and Visualization | Coursera | [Ver curso](https://imp.i384100.net/4aKnkn) |
-| IBM Data Analyst Professional Certificate | Coursera | [Ver curso](https://imp.i384100.net/NGPydV) |
+| Comparative Effectiveness and Real-World Evidence | Coursera | [Ver curso](https://imp.i384100.net/m4byQX) |
+| Drug Utilization: Trends, Determinants and Consequences | Coursera | [Ver curso](https://imp.i384100.net/7Xx0Yy) |
+| Drug Development and Pharmacoepidemiology Specialization | Coursera | [Ver curso](https://imp.i384100.net/L0rdvM) |
+| [Certificado Profesional de Google Data Analytics](/curso-de-certificado-profesional-de-google-data-analytics) | Coursera | [Ver curso](https://imp.i384100.net/VOVDrO) |
 
-> El acceso gratuito, el certificado y las condiciones de cada curso dependen de la plataforma. Algunas opciones permiten aprender sin costo y cobran solo el certificado; otras tienen precio desde el inicio. Confirma antes de inscribirte.
+> **Contenido editorial:** algunos enlaces son de afiliado. Edvanta no dicta esos cursos; confirma condiciones y certificado en cada plataforma.
 
-## Cómo elegir un curso de Evidencia del mundo real
+Para manejar los datos, revisa las guías de [cursos gratis de Python para farmacia](/articulos/cursos-gratis-python-para-farmacia) y de [detección de señales en farmacovigilancia](/articulos/cursos-gratis-deteccion-de-senales). Para el contexto clínico, los cursos gratuitos de Edvanta de [Farmacoterapia de la Diabetes](/curso-de-farmacoterapia-de-la-diabetes) y [Farmacoterapia de la Hipertensión Arterial](/curso-de-farmacoterapia-de-la-hipertension-arterial) ayudan a entender los tratamientos que se analizan, con certificado opcional de COP 60.000.
 
-1. Revisa el temario y confirma que cubre Evidencia del mundo real con profundidad.
-2. Verifica el nivel: introductorio, intermedio o avanzado.
-3. Confirma si el acceso es gratuito y si el certificado tiene costo.
-4. Revisa la duración, el idioma y la modalidad.
-5. Comprueba quién dicta el curso y si incluye casos, proyectos o evaluaciones.
+## Errores frecuentes
 
-## Salidas laborales
-
-- Analista de datos
-- Especialista en BI
-- Consultor de IA farmacéutica
-- Analista de evidencia del mundo real
-
-## Ruta de aprendizaje en 3 pasos
-
-1. **Fundamentos:** empieza por un curso introductorio o por la guía de Datos e Inteligencia Artificial en Farmacia para entender el vocabulario y el marco de trabajo.
-2. **Práctica:** elige un curso específico de Evidencia del mundo real y aplícalo en un caso, un proyecto o una actividad de tu trabajo.
-3. **Especialización:** complementa con una certificación, una ruta de aprendizaje o un posgrado si el rol que buscas lo exige.
+- **Comparar usuarios y no usuarios** sin controlar las diferencias entre ellos.
+- **Definir mal el tiempo cero:** el inicio del seguimiento debe coincidir con el inicio del tratamiento.
+- **Ignorar la calidad de los datos** y su propósito original.
+- **Confundir asociación con causalidad.**
+- **No publicar el protocolo** antes del análisis, lo que facilita buscar el resultado deseado.
 
 ## Preguntas frecuentes
 
-### ¿Los cursos de Evidencia del mundo real son gratis?
+### ¿Qué es la evidencia del mundo real?
 
-El acceso y el certificado dependen de cada plataforma. Algunas ofrecen contenido gratuito y certificado opcional de pago; otras cobran desde el inicio. Verifica el precio y las condiciones antes de inscribirte.
+La evidencia sobre el uso, los beneficios y los riesgos de un medicamento que se obtiene al analizar datos de la práctica clínica real con métodos adecuados.
 
-### ¿Necesito experiencia previa en Evidencia del mundo real?
+### ¿Qué diferencia hay entre datos y evidencia del mundo real?
 
-No siempre. Hay cursos introductorios para estudiantes y profesionales que quieren actualizarse. Revisa el nivel y los requisitos en la ficha del curso.
+Los datos son la información recogida en la práctica (historias, dispensaciones, registros). La evidencia es la conclusión que se obtiene al analizarlos con rigor.
 
-### ¿Estos cursos sirven para trabajar en la industria farmacéutica?
+### ¿Las autoridades aceptan la evidencia del mundo real?
 
-Pueden ayudarte a construir competencias, pero no reemplazan la formación de base ni la experiencia. Úsalos como parte de una ruta y verifica que el temario se ajuste al rol que buscas.
+Sí, en ciertos contextos, sobre todo en seguridad, y cada vez más en otros usos, cuando la calidad de los datos y el diseño del estudio son adecuados.
+
+### ¿Qué es la emulación de un ensayo objetivo?
+
+Un enfoque que diseña un estudio con datos del mundo real como si fuera un ensayo clínico, con criterios de elegibilidad, tiempo cero y seguimiento definidos.
+
+### ¿Qué curso sirve para empezar en evidencia del mundo real?
+
+Comparative Effectiveness and Real-World Evidence, en Coursera, y la especialización en farmacoepidemiología.
 
 ## Fuentes
 
-- [Microsoft Learn](https://learn.microsoft.com)
-- [Python](https://www.python.org)
-- [FDA](https://www.fda.gov)
-- [Google Data Analytics Professional Certificate](https://imp.i384100.net/VOVDrO)
-- [Excel Specialization](https://imp.i384100.net/B5AdWy)
-- [Microsoft Power BI Data Analyst Professional Certificate](https://imp.i384100.net/zzqmQr)
-- [Google Advanced Data Analytics Professional Certificate](https://imp.i384100.net/WOKQjA)
-
-## Contenido relacionado
-
-- [Cursos de Datos e Inteligencia Artificial en Farmacia para químicos farmacéuticos](/articulos/cursos-de-datos-e-inteligencia-artificial)
-- [Cursos gratis de Power BI para farmacia: guía para químicos farmacéuticos](/articulos/cursos-gratis-power-bi-farmacia)
-- [Cursos gratis de Python para farmacia: guía para químicos farmacéuticos](/articulos/cursos-gratis-python-para-farmacia)
-
-> Este contenido es educativo y no constituye asesoría profesional individual.
+- **Real-World Evidence.** U.S. Food and Drug Administration. https://www.fda.gov/science-research/science-and-research-special-topics/real-world-evidence (consultado el 12 de noviembre de 2026).
+- **Resolución 2024015321 de 2024.** INVIMA, en su normograma. https://normograma.invima.gov.co/compilacion/docs/resolucion_invima_15321_2024.htm (consultado el 12 de noviembre de 2026).

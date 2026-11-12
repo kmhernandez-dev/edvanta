@@ -1,93 +1,108 @@
-# Cursos gratis de Formulación farmacéutica: guía para químicos farmacéuticos
+# Cursos gratis de formulación farmacéutica: preformulación, excipientes, clasificación biofarmacéutica y calidad por diseño
 
-La industria farmacéutica necesita profesionales que entiendan Formulación farmacéutica y sepan aplicarlo en entornos regulados. Esta guía reúne cursos reales de Investigación y Desarrollo Farmacéutico para que compares opciones, revises el temario y elijas con criterio.
+La formulación convierte un principio activo en un medicamento que se puede tomar, que llega a donde tiene que llegar y que se mantiene estable hasta su fecha de vencimiento. La misma molécula puede fracasar o tener éxito según cómo se formule: una tableta que no se disuelve no sirve, aunque el principio activo sea excelente. Por eso la formulación es una de las áreas más técnicas y creativas del trabajo del químico farmacéutico, en la industria y en la elaboración magistral.
 
-> **Contenido editorial:** algunos enlaces pueden ser de afiliado. Edvanta no dicta ni certifica esos cursos. Verifica el precio, el acceso y el certificado en la plataforma antes de inscribirte.
+> **En resumen**
+>
+> - La preformulación estudia las propiedades del principio activo antes de diseñar el producto: solubilidad, estabilidad, polimorfismo y tamaño de partícula.
+> - El Sistema de Clasificación Biofarmacéutica ordena los principios activos en cuatro clases según su solubilidad y su permeabilidad.
+> - La guía ICH Q8 propone desarrollar con calidad por diseño, partiendo del perfil del producto que se quiere lograr.
 
-**En resumen**
+## Preformulación: conocer el principio activo
 
-- Qué es Formulación farmacéutica y por qué se pide en la industria farmacéutica.
-- Cursos reales de Investigación y Desarrollo Farmacéutico con enlace directo a la plataforma.
-- Cómo elegir, qué roles existen y una ruta de aprendizaje de tres pasos.
-- Fuentes oficiales para verificar requisitos y actualizar el temario.
+Antes de escoger excipientes, el equipo caracteriza el principio activo:
 
-## Por qué importa Formulación farmacéutica en 2026
+| Propiedad | Por qué importa |
+|---|---|
+| Solubilidad | Un principio activo poco soluble puede no absorberse bien |
+| Estabilidad | Define si es sensible a la luz, la humedad, el calor o el oxígeno |
+| Polimorfismo | Distintas formas cristalinas pueden tener solubilidad y estabilidad diferentes |
+| Tamaño de partícula | Afecta la disolución, el flujo y la uniformidad de la mezcla |
+| Higroscopicidad | Un polvo que absorbe agua puede degradarse o apelmazarse |
+| Compatibilidad con excipientes | Algunos excipientes reaccionan con el principio activo |
 
-En Colombia y Latinoamérica, los laboratorios, las IPS, las empresas de dispositivos médicos y las autoridades sanitarias trabajan con estándares que cambian con frecuencia. Formarte en Formulación farmacéutica te ayuda a leer esos requisitos, documentar decisiones y aportar en equipos multidisciplinarios.
+## El Sistema de Clasificación Biofarmacéutica
 
-## Qué aprenderás
+El Sistema de Clasificación Biofarmacéutica (SCB o BCS, por su sigla en inglés) agrupa los principios activos según dos propiedades que controlan la absorción oral:
 
-- Formulación farmacéutica
-- Descubrimiento de fármacos
-- Formulación
-- Estudios preclínicos
-- Desarrollo analítico
-- Ensayos clínicos
+| Clase | Solubilidad | Permeabilidad | Reto típico de formulación |
+|---|---|---|---|
+| I | Alta | Alta | Pocos; la absorción suele ser buena |
+| II | Baja | Alta | Mejorar la disolución |
+| III | Alta | Baja | La absorción depende de la permeabilidad |
+| IV | Baja | Baja | Los más difíciles de formular |
 
-## Cursos recomendados de Investigación y Desarrollo Farmacéutico
+Además de orientar la formulación, la clasificación se usa en regulación: para ciertos principios activos permite justificar la exención de estudios de bioequivalencia en humanos con base en pruebas de disolución. La guía ICH M9 describe ese enfoque.
+
+## Estrategias para principios activos poco solubles
+
+- **Reducción del tamaño de partícula,** como la micronización.
+- **Formación de sales** o cocristales.
+- **Dispersiones sólidas amorfas.**
+- **Sistemas lipídicos** y autoemulsionables.
+- **Complejos con ciclodextrinas.**
+
+## Los excipientes no son «relleno»
+
+Cada excipiente cumple una función: diluyente, aglutinante, desintegrante, lubricante, recubrimiento, conservante o modificador de la liberación. Un cambio de proveedor o de grado de un excipiente puede alterar la disolución o la estabilidad, por lo que se controla como cualquier material crítico.
+
+## Calidad por diseño
+
+La guía **ICH Q8** propone empezar por el **perfil objetivo de calidad del producto**: qué forma farmacéutica, qué dosis, qué perfil de liberación y qué vida útil se buscan. A partir de ahí se identifican los **atributos críticos de calidad**, se estudia con experimentos diseñados cómo los afectan los materiales y el proceso, y se define un **espacio de diseño** dentro del cual el producto cumple. Un desarrollo así genera conocimiento, no solo un producto que «funcionó una vez».
+
+## Cursos de formulación farmacéutica
+
+En Edvanta, estos cursos gratuitos cubren piezas clave de la formulación, con certificado opcional de COP 60.000:
+
+- [BPE y Preparaciones Magistrales](/curso-de-bpe-y-preparaciones-magistrales): formulación en el servicio farmacéutico.
+- [Estudios de Estabilidad de Medicamentos](/curso-de-estudios-de-estabilidad-de-medicamentos)
+- [Bioequivalencia y Requisitos Regulatorios en Colombia](/curso-de-bioequivalencia-y-requisitos-regulatorios-en-colombia)
+- [Control de Calidad de Medicamentos](/curso-de-control-de-calidad-de-medicamentos)
 
 | Curso | Plataforma | Enlace |
 |---|---|---|
-| Drug Discovery | Coursera | [Ver curso](https://imp.i384100.net/OY5d7N) |
+| Introduction to Pharmaceutics and Biopharmaceutics | Udemy | [Ver curso](https://trk.udemy.com/n4bJ3R) |
+| Pharmaceutical Dosage Forms & Basics of Pharma Industry | Udemy | [Ver curso](https://trk.udemy.com/NGE1gb) |
 | Drug Development | Coursera | [Ver curso](https://imp.i384100.net/R0ad7g) |
-| Drug Discovery and Development | Coursera | [Ver curso](https://imp.i384100.net/NGPyjK) |
-| Drug Development Product Management Specialization | Coursera | [Ver curso](https://imp.i384100.net/m4by6M) |
-| Clinical Trials Operations Specialization | Coursera | [Ver curso](https://imp.i384100.net/xJb6x1) |
-| Clinical Trials: Good Clinical Practice Specialization | Coursera | [Ver curso](https://imp.i384100.net/rEbNvv) |
-| Clinical Project Management Specialization | Coursera | [Ver curso](https://imp.i384100.net/PzkdLe) |
-| Good Clinical Practice ICH-GCP E6(R2) | Udemy | [Ver curso](https://trk.udemy.com/WOK3aO) |
 
-> El acceso gratuito, el certificado y las condiciones de cada curso dependen de la plataforma. Algunas opciones permiten aprender sin costo y cobran solo el certificado; otras tienen precio desde el inicio. Confirma antes de inscribirte.
+> **Contenido editorial:** algunos enlaces son de afiliado. Edvanta no dicta esos cursos; confirma condiciones y certificado en cada plataforma.
 
-## Cómo elegir un curso de Formulación farmacéutica
+Para la etapa de fabricación, revisa la guía de [cursos gratis de formas farmacéuticas sólidas](/articulos/cursos-gratis-formas-solidas).
 
-1. Revisa el temario y confirma que cubre Formulación farmacéutica con profundidad.
-2. Verifica el nivel: introductorio, intermedio o avanzado.
-3. Confirma si el acceso es gratuito y si el certificado tiene costo.
-4. Revisa la duración, el idioma y la modalidad.
-5. Comprueba quién dicta el curso y si incluye casos, proyectos o evaluaciones.
+## Formulación en la industria y en la farmacia
 
-## Salidas laborales
+En la industria, la formulación se diseña para fabricar millones de unidades iguales. En el servicio farmacéutico, la preparación magistral adapta un medicamento a un paciente concreto: una suspensión para un niño que no traga tabletas o una concentración que no existe en el mercado. Los principios son los mismos (estabilidad, compatibilidad, dosis exacta), pero la escala y los controles son distintos.
 
-- Investigador de formulación
-- Analista de desarrollo
-- Asistente de I+D
-- Especialista en estudios preclínicos
+## Errores frecuentes
 
-## Ruta de aprendizaje en 3 pasos
-
-1. **Fundamentos:** empieza por un curso introductorio o por la guía de Investigación y Desarrollo Farmacéutico para entender el vocabulario y el marco de trabajo.
-2. **Práctica:** elige un curso específico de Formulación farmacéutica y aplícalo en un caso, un proyecto o una actividad de tu trabajo.
-3. **Especialización:** complementa con una certificación, una ruta de aprendizaje o un posgrado si el rol que buscas lo exige.
+- **Saltarse la preformulación** para ganar tiempo.
+- **Escoger excipientes por costumbre** sin estudiar la compatibilidad.
+- **Desarrollar con un solo lote de principio activo** y descubrir después que otros lotes se comportan distinto.
+- **Ignorar el polimorfismo:** una forma cristalina que cambia en la estabilidad puede alterar la disolución.
 
 ## Preguntas frecuentes
 
-### ¿Los cursos de Formulación farmacéutica son gratis?
+### ¿Qué es la preformulación?
 
-El acceso y el certificado dependen de cada plataforma. Algunas ofrecen contenido gratuito y certificado opcional de pago; otras cobran desde el inicio. Verifica el precio y las condiciones antes de inscribirte.
+El estudio de las propiedades del principio activo (solubilidad, estabilidad, polimorfismo, tamaño de partícula) antes de diseñar la formulación.
 
-### ¿Necesito experiencia previa en Formulación farmacéutica?
+### ¿Qué es el Sistema de Clasificación Biofarmacéutica?
 
-No siempre. Hay cursos introductorios para estudiantes y profesionales que quieren actualizarse. Revisa el nivel y los requisitos en la ficha del curso.
+Una clasificación de los principios activos en cuatro clases según su solubilidad y su permeabilidad, que orienta la formulación y algunas decisiones regulatorias.
 
-### ¿Estos cursos sirven para trabajar en la industria farmacéutica?
+### ¿Qué es la calidad por diseño?
 
-Pueden ayudarte a construir competencias, pero no reemplazan la formación de base ni la experiencia. Úsalos como parte de una ruta y verifica que el temario se ajuste al rol que buscas.
+Un enfoque, descrito en la guía ICH Q8, que parte del perfil de calidad buscado y diseña la formulación y el proceso para cumplirlo de forma consistente.
+
+### ¿Cómo se mejora la solubilidad de un principio activo?
+
+Con estrategias como la micronización, la formación de sales, las dispersiones sólidas amorfas, los sistemas lipídicos o las ciclodextrinas.
+
+### ¿Qué curso sirve para aprender formulación?
+
+Introduction to Pharmaceutics and Biopharmaceutics, en Udemy, junto con los cursos gratuitos de estabilidad y preparaciones magistrales de Edvanta.
 
 ## Fuentes
 
-- [PubMed](https://pubmed.ncbi.nlm.nih.gov)
-- [FDA](https://www.fda.gov)
-- [ICH](https://www.ich.org)
-- [Drug Discovery](https://imp.i384100.net/OY5d7N)
-- [Drug Development](https://imp.i384100.net/R0ad7g)
-- [Drug Discovery and Development](https://imp.i384100.net/NGPyjK)
-- [Drug Development Product Management Specialization](https://imp.i384100.net/m4by6M)
-
-## Contenido relacionado
-
-- [Cursos de Investigación y Desarrollo Farmacéutico para químicos farmacéuticos](/articulos/cursos-de-investigacion-y-desarrollo-farmaceutico)
-- [Cursos gratis de Descubrimiento de fármacos: guía para químicos farmacéuticos](/articulos/cursos-gratis-descubrimiento-de-farmacos)
-- [Cursos gratis de Estudios preclínicos: guía para químicos farmacéuticos](/articulos/cursos-gratis-estudios-preclinicos)
-
-> Este contenido es educativo y no constituye asesoría profesional individual.
+- **ICH Q8(R2): Pharmaceutical Development.** International Council for Harmonisation. https://www.ich.org/page/quality-guidelines (consultado el 12 de noviembre de 2026).
+- **ICH M9: Biopharmaceutics Classification System-based Biowaivers.** International Council for Harmonisation. https://www.ich.org/page/multidisciplinary-guidelines (consultado el 12 de noviembre de 2026).

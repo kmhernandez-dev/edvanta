@@ -1,87 +1,94 @@
-# Cursos gratis de IA en la industria farmacéutica: guía para químicos farmacéuticos
+# Cursos gratis de inteligencia artificial en la industria farmacéutica: usos reales, regulación y riesgos
 
-La industria farmacéutica necesita profesionales que entiendan IA en la industria farmacéutica y sepan aplicarlo en entornos regulados. Esta guía reúne cursos reales de Datos e Inteligencia Artificial en Farmacia para que compares opciones, revises el temario y elijas con criterio.
+La inteligencia artificial ya está en todas las etapas de la vida de un medicamento: ayuda a descubrir moléculas, a diseñar ensayos clínicos, a detectar defectos en una línea de producción, a revisar documentos y a encontrar señales de farmacovigilancia. Las autoridades sanitarias también se están organizando para evaluar cómo se usa. Esta guía resume los usos más extendidos en la industria, lo que dicen las agencias y los cursos que sirven para formarte con criterio.
 
-> **Contenido editorial:** algunos enlaces pueden ser de afiliado. Edvanta no dicta ni certifica esos cursos. Verifica el precio, el acceso y el certificado en la plataforma antes de inscribirte.
+> **En resumen**
+>
+> - La IA se usa en descubrimiento, desarrollo clínico, manufactura, calidad, farmacovigilancia y asuntos regulatorios.
+> - La FDA publicó en enero de 2025 un borrador de guía sobre el uso de IA para respaldar decisiones regulatorias de medicamentos, y la EMA adoptó en 2024 una reflexión sobre la IA en el ciclo de vida del medicamento.
+> - La clave es la credibilidad: definir para qué se usa el modelo, qué riesgo tiene y cómo se demuestra que funciona.
 
-**En resumen**
+## Dónde se usa la IA en la industria
 
-- Qué es IA en la industria farmacéutica y por qué se pide en la industria farmacéutica.
-- Cursos reales de Datos e Inteligencia Artificial en Farmacia con enlace directo a la plataforma.
-- Cómo elegir, qué roles existen y una ruta de aprendizaje de tres pasos.
-- Fuentes oficiales para verificar requisitos y actualizar el temario.
+| Etapa | Ejemplos de uso |
+|---|---|
+| Descubrimiento | Predicción de estructuras de proteínas, cribado virtual, diseño de moléculas |
+| Desarrollo clínico | Selección de centros, búsqueda de pacientes elegibles, análisis de imágenes |
+| Manufactura | Mantenimiento predictivo, inspección visual automatizada, control avanzado de procesos |
+| Calidad | Clasificación de desviaciones y reclamos, revisión de tendencias, apoyo en investigaciones |
+| Farmacovigilancia | Lectura y clasificación de reportes, codificación, búsqueda en literatura, detección de señales |
+| Asuntos regulatorios | Redacción y revisión de documentos, búsqueda de requisitos, comparación de versiones |
 
-## Por qué importa IA en la industria farmacéutica en 2026
+## Qué dicen las autoridades
 
-En Colombia y Latinoamérica, los laboratorios, las IPS, las empresas de dispositivos médicos y las autoridades sanitarias trabajan con estándares que cambian con frecuencia. Formarte en IA en la industria farmacéutica te ayuda a leer esos requisitos, documentar decisiones y aportar en equipos multidisciplinarios.
+- **FDA (Estados Unidos):** en enero de 2025 publicó un borrador de guía sobre consideraciones para el uso de la IA en apoyo de decisiones regulatorias sobre medicamentos y productos biológicos. Propone un marco basado en el riesgo para establecer la credibilidad del modelo según su contexto de uso.
+- **EMA (Unión Europea):** en septiembre de 2024 adoptó un documento de reflexión sobre el uso de la IA en el ciclo de vida del medicamento, que pide un enfoque centrado en el riesgo y en la validez de los datos.
+- **Unión Europea, en general:** el Reglamento (UE) 2024/1689, conocido como Ley de IA, regula los sistemas de inteligencia artificial según su nivel de riesgo.
 
-## Qué aprenderás
+La idea común es que no basta con que un modelo «funcione»: hay que definir su contexto de uso, entender qué pasa si se equivoca, demostrar su desempeño con datos adecuados y vigilarlo en el tiempo.
 
-- IA en la industria farmacéutica
-- Power BI
-- Python
-- SQL
-- IA aplicada
-- Evidencia del mundo real
+## La credibilidad de un modelo, en cinco preguntas
 
-## Cursos recomendados de Datos e Inteligencia Artificial en Farmacia
+1. **¿Para qué decisión se usa?** No es lo mismo sugerir una búsqueda bibliográfica que decidir la liberación de un lote.
+2. **¿Qué pasa si se equivoca?** El riesgo define cuánta evidencia se necesita.
+3. **¿Con qué datos se entrenó y se probó?** ¿Representan la población o el proceso real?
+4. **¿Cómo se mide su desempeño?** Con métricas definidas antes de evaluarlo.
+5. **¿Cómo se vigila después?** Los modelos pueden perder desempeño cuando cambian los datos.
 
-| Curso | Plataforma | Enlace |
-|---|---|---|
-| Excel Specialization | Coursera | [Ver curso](https://imp.i384100.net/B5AdWy) |
-| Healthcare IT Specialization | Coursera | [Ver curso](https://imp.i384100.net/k4b2nL) |
-| Excel Completo: Desde Principiante hasta Avanzado | Udemy | [Ver curso](https://trk.udemy.com/MKWPyY) |
+## IA generativa en el trabajo diario
 
-> El acceso gratuito, el certificado y las condiciones de cada curso dependen de la plataforma. Algunas opciones permiten aprender sin costo y cobran solo el certificado; otras tienen precio desde el inicio. Confirma antes de inscribirte.
+Los asistentes como Claude o ChatGPT ayudan a redactar, resumir, traducir y revisar documentos, y a escribir código. En un entorno regulado, hay que cuidar tres cosas:
 
-## Cómo elegir un curso de IA en la industria farmacéutica
+- **Confidencialidad:** no subir información confidencial ni datos de pacientes a herramientas no autorizadas por la empresa.
+- **Verificación:** los modelos pueden inventar referencias o datos; todo se verifica contra la fuente.
+- **Responsabilidad:** el documento firmado sigue siendo responsabilidad de quien lo firma.
 
-1. Revisa el temario y confirma que cubre IA en la industria farmacéutica con profundidad.
-2. Verifica el nivel: introductorio, intermedio o avanzado.
-3. Confirma si el acceso es gratuito y si el certificado tiene costo.
-4. Revisa la duración, el idioma y la modalidad.
-5. Comprueba quién dicta el curso y si incluye casos, proyectos o evaluaciones.
+Para aprender a usar estos asistentes, revisa la guía de [cursos de inteligencia artificial para profesionales de la salud](/articulos/cursos-de-inteligencia-artificial-para-profesionales-de-la-salud) y la de [cursos de Claude Code](/articulos/cursos-de-claude-code).
 
-## Salidas laborales
+## Cursos de inteligencia artificial
 
-- Analista de datos
-- Especialista en BI
-- Consultor de IA farmacéutica
-- Analista de evidencia del mundo real
+| Curso | Plataforma | Idioma | Inscribirte |
+|---|---|---|---|
+| [IA para análisis de datos](/curso-de-ia-para-analisis-de-datos) | Edutin Academy | Español | [Ver en Edutin](https://edutin.com/sh-14528) |
+| [IA para análisis de datos II](/curso-de-ia-para-analisis-de-datos-ii) | Edutin Academy | Español | [Ver en Edutin](https://edutin.com/sh-22406) |
+| [IA para gestión documental](/curso-de-ia-para-gestion-documental) | Edutin Academy | Español | [Ver en Edutin](https://edutin.com/sh-17245) |
+| [Especialización Healthcare IT](/curso-de-especializacion-healthcare-it) | Coursera | Inglés | [Ver en Coursera](https://imp.i384100.net/k4b2nL) |
 
-## Ruta de aprendizaje en 3 pasos
+> **Contenido editorial:** algunos enlaces son de afiliado. Edvanta no dicta esos cursos; confirma condiciones y certificado en cada plataforma.
 
-1. **Fundamentos:** empieza por un curso introductorio o por la guía de Datos e Inteligencia Artificial en Farmacia para entender el vocabulario y el marco de trabajo.
-2. **Práctica:** elige un curso específico de IA en la industria farmacéutica y aplícalo en un caso, un proyecto o una actividad de tu trabajo.
-3. **Especialización:** complementa con una certificación, una ruta de aprendizaje o un posgrado si el rol que buscas lo exige.
+Para el lado de la calidad, los cursos gratuitos de Edvanta de [Gestión de Riesgos en la Calidad Farmacéutica](/curso-de-gestion-de-riesgos-en-la-calidad-farmaceutica) y [Validaciones y Calificaciones](/curso-de-validaciones-y-calificaciones) dan la base para evaluar y validar sistemas, con certificado opcional de COP 60.000. Y si quieres programar tus propios análisis, revisa la guía de [cursos gratis de Python para farmacia](/articulos/cursos-gratis-python-para-farmacia).
+
+## Errores frecuentes
+
+- **Empezar por la herramienta y no por el problema.**
+- **Usar un modelo sin definir su contexto de uso** ni su nivel de riesgo.
+- **Confiar en una respuesta sin verificarla.**
+- **Subir datos confidenciales** a herramientas no autorizadas.
+- **Olvidar la vigilancia** del desempeño del modelo después de implementarlo.
 
 ## Preguntas frecuentes
 
-### ¿Los cursos de IA en la industria farmacéutica son gratis?
+### ¿Cómo se usa la IA en la industria farmacéutica?
 
-El acceso y el certificado dependen de cada plataforma. Algunas ofrecen contenido gratuito y certificado opcional de pago; otras cobran desde el inicio. Verifica el precio y las condiciones antes de inscribirte.
+En el descubrimiento de moléculas, el desarrollo clínico, la manufactura, la calidad, la farmacovigilancia y la redacción y revisión regulatoria.
 
-### ¿Necesito experiencia previa en IA en la industria farmacéutica?
+### ¿La FDA regula el uso de IA en medicamentos?
 
-No siempre. Hay cursos introductorios para estudiantes y profesionales que quieren actualizarse. Revisa el nivel y los requisitos en la ficha del curso.
+En enero de 2025 publicó un borrador de guía sobre el uso de IA para respaldar decisiones regulatorias, con un marco basado en el riesgo y en la credibilidad del modelo.
 
-### ¿Estos cursos sirven para trabajar en la industria farmacéutica?
+### ¿Qué es el contexto de uso de un modelo?
 
-Pueden ayudarte a construir competencias, pero no reemplazan la formación de base ni la experiencia. Úsalos como parte de una ruta y verifica que el temario se ajuste al rol que buscas.
+La definición de qué decisión apoya el modelo y en qué condiciones, que determina cuánta evidencia se necesita para confiar en él.
+
+### ¿Puedo usar ChatGPT o Claude en mi trabajo en la industria?
+
+Solo con las herramientas y las reglas que autorice tu empresa, sin información confidencial ni datos de pacientes, y verificando siempre los resultados.
+
+### ¿Qué curso sirve para empezar con IA en la industria?
+
+IA para análisis de datos, en Edutin Academy, en español, junto con los cursos de calidad de Edvanta.
 
 ## Fuentes
 
-- [Microsoft Learn](https://learn.microsoft.com)
-- [Python](https://www.python.org)
-- [FDA](https://www.fda.gov)
-- [Excel Specialization](https://imp.i384100.net/B5AdWy)
-- [Healthcare IT Specialization](https://imp.i384100.net/k4b2nL)
-- [Excel Completo: Desde Principiante hasta Avanzado](https://trk.udemy.com/MKWPyY)
-
-## Contenido relacionado
-
-- [Cursos de Datos e Inteligencia Artificial en Farmacia para químicos farmacéuticos](/articulos/cursos-de-datos-e-inteligencia-artificial)
-- [Cursos gratis de Power BI para farmacia: guía para químicos farmacéuticos](/articulos/cursos-gratis-power-bi-farmacia)
-- [Cursos gratis de Python para farmacia: guía para químicos farmacéuticos](/articulos/cursos-gratis-python-para-farmacia)
-
-> Este contenido es educativo y no constituye asesoría profesional individual.
+- **Considerations for the Use of Artificial Intelligence to Support Regulatory Decision-Making for Drug and Biological Products (borrador).** U.S. Food and Drug Administration. https://www.fda.gov/regulatory-information/search-fda-guidance-documents/considerations-use-artificial-intelligence-support-regulatory-decision-making-drug-and-biological (consultado el 12 de noviembre de 2026).
+- **Reglamento (UE) 2024/1689, Ley de Inteligencia Artificial.** EUR-Lex. https://eur-lex.europa.eu/eli/reg/2024/1689/oj (consultado el 12 de noviembre de 2026).

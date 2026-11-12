@@ -484,6 +484,56 @@ const REESCRITOS = {
     description: 'Las etapas del desarrollo de un medicamento, el desarrollo farmacéutico, las guías ICH que lo ordenan y cursos para entender el proceso.',
     readingTime: '7 min',
   },
+  // Lote 5 (12-nov-2026): I+D y datos. Fuentes verificadas: ICH (M3, S, Q8, Q14, Q2),
+  // FDA (integridad de datos, IA, RWE), EUR-Lex 2024/1689 y Res. INVIMA 2024015321.
+  'cursos-gratis-descubrimiento-de-farmacos': {
+    title: 'Cursos gratis de descubrimiento de fármacos: blancos terapéuticos, cribado, optimización de líderes y herramientas computacionales',
+    seoTitle: 'Descubrimiento de fármacos: etapas y cursos gratis',
+    description: 'Del blanco terapéutico al candidato, la regla de los cinco de Lipinski, ADME temprano, herramientas computacionales y cursos gratis.',
+    readingTime: '7 min',
+  },
+  'cursos-gratis-formulacion-farmaceutica': {
+    title: 'Cursos gratis de formulación farmacéutica: preformulación, excipientes, clasificación biofarmacéutica y calidad por diseño',
+    seoTitle: 'Formulación farmacéutica: preformulación y cursos',
+    description: 'Preformulación, el Sistema de Clasificación Biofarmacéutica, estrategias para activos poco solubles, calidad por diseño y cursos gratis.',
+    readingTime: '7 min',
+  },
+  'cursos-gratis-estudios-preclinicos': {
+    title: 'Cursos gratis de estudios preclínicos: farmacología de seguridad, toxicología y el paso a los ensayos en humanos',
+    seoTitle: 'Estudios preclínicos: toxicología, ICH M3 y cursos',
+    description: 'Qué responden los estudios preclínicos, las guías ICH M3 y S, la primera dosis en humanos, las BPL y las 3R, y cursos gratis.',
+    readingTime: '7 min',
+  },
+  'cursos-gratis-desarrollo-analitico': {
+    title: 'Cursos gratis de desarrollo analítico: perfil analítico objetivo, ICH Q14, ICH Q2(R2) y ciclo de vida del método',
+    seoTitle: 'Desarrollo analítico: ICH Q14, Q2(R2) y cursos',
+    description: 'El perfil analítico objetivo, los enfoques de la ICH Q14, la robustez, la validación según Q2(R2) y el ciclo de vida del método.',
+    readingTime: '7 min',
+  },
+  'cursos-gratis-power-bi-farmacia': {
+    title: 'Cursos gratis de Power BI para la industria farmacéutica: indicadores de calidad, producción y farmacovigilancia',
+    seoTitle: 'Power BI en la industria farmacéutica: cursos',
+    description: 'Tableros de calidad, producción y farmacovigilancia, integridad de datos ALCOA+, lo que hay que aprender de Power BI y cursos gratis.',
+    readingTime: '7 min',
+  },
+  'cursos-gratis-python-para-farmacia': {
+    title: 'Cursos gratis de Python para farmacia: análisis de datos, automatización y quimioinformática',
+    seoTitle: 'Python para farmacia: usos, librerías y cursos',
+    description: 'Para qué usa Python un profesional de farmacia, por dónde empezar, un ejemplo de estabilidad, buenas prácticas y cursos gratis.',
+    readingTime: '7 min',
+  },
+  'cursos-gratis-ia-industria-farmaceutica': {
+    title: 'Cursos gratis de inteligencia artificial en la industria farmacéutica: usos reales, regulación y riesgos',
+    seoTitle: 'IA en la industria farmacéutica: usos y cursos',
+    description: 'Dónde se usa la IA en la industria, qué dicen la FDA y la EMA, cómo evaluar la credibilidad de un modelo y cursos para formarte.',
+    readingTime: '7 min',
+  },
+  'cursos-gratis-evidencia-del-mundo-real': {
+    title: 'Cursos gratis de evidencia del mundo real: datos de la práctica clínica, farmacoepidemiología y decisiones regulatorias',
+    seoTitle: 'Evidencia del mundo real: fuentes, sesgos y cursos',
+    description: 'Fuentes de datos del mundo real, para qué se usan, cómo controlar el sesgo de confusión, qué hacen la FDA y la EMA y cursos gratis.',
+    readingTime: '7 min',
+  },
 };
 for (const a of todos) {
   const r = REESCRITOS[a.slug];
