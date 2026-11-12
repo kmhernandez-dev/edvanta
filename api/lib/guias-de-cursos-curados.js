@@ -27,6 +27,7 @@ import { GUIAS_LOTE_3 } from './guias-cursos/lote-3-industria.js';
 import { GUIAS_LOTE_4 } from './guias-cursos/lote-4-salud.js';
 import { GUIAS_LOTE_5A } from './guias-cursos/lote-5-ia.js';
 import { GUIAS_LOTE_5B } from './guias-cursos/lote-5-datos.js';
+import { GUIAS_LOTE_6 } from './guias-cursos/lote-6-gestion.js';
 
 const GUIAS_BASE = {
   'gestion-de-calidad': {
@@ -475,6 +476,7 @@ export const GUIAS_DE_CURSOS_CURADOS = {
   ...GUIAS_LOTE_4,
   ...GUIAS_LOTE_5A,
   ...GUIAS_LOTE_5B,
+  ...GUIAS_LOTE_6,
 };
 
 /** La guía editorial de un curso curado, por el slug de la tabla courses. */
