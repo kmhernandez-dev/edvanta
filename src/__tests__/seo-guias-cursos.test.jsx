@@ -12,6 +12,7 @@ import { describe, expect, it } from 'vitest';
 import { INDUSTRIA_CURSOS_50 } from '../data/industriaCursos50';
 import { puedeIndexarse } from '../lib/seo/indexabilidad';
 import { GUIAS_DE_CURSOS_CURADOS } from '../../api/lib/guias-de-cursos-curados.js';
+import { articulos } from '../data/articulos';
 
 const RAIZ = join(__dirname, '..', '..');
 const tejas = (texto) => {
@@ -65,7 +66,7 @@ describe('Guías de cursos por área', () => {
 describe('Guías de los cursos curados', () => {
   it('cada guía está completa y enlaza dentro del sitio', () => {
     const claves = Object.keys(GUIAS_DE_CURSOS_CURADOS);
-    expect(claves.length).toBeGreaterThanOrEqual(24);
+    expect(claves.length).toBeGreaterThanOrEqual(75);
     for (const [slug, g] of Object.entries(GUIAS_DE_CURSOS_CURADOS)) {
       expect(g.porQue.length, slug).toBeGreaterThan(120);
       expect(g.aplicaciones, slug).toHaveLength(3);
@@ -73,6 +74,30 @@ describe('Guías de los cursos curados', () => {
       expect(g.complementa.length, slug).toBeGreaterThanOrEqual(2);
       for (const [, url] of g.complementa) expect(url, slug).toMatch(/^\/(curso-|guia\/|articulos\/)/);
       expect(g.preguntas.length, slug).toBeGreaterThanOrEqual(2);
+    }
+  });
+
+  it('el título y la descripción escritos a mano caben y no se repiten', () => {
+    const titulos = [];
+    for (const [slug, g] of Object.entries(GUIAS_DE_CURSOS_CURADOS)) {
+      if (g.tituloSeo) {
+        expect(g.tituloSeo.length, slug).toBeLessThanOrEqual(60);
+        titulos.push(g.tituloSeo.toLowerCase());
+      }
+      if (g.meta) {
+        expect(g.meta.length, slug).toBeLessThanOrEqual(155);
+        expect(g.meta.length, slug).toBeGreaterThanOrEqual(70);
+      }
+    }
+    expect(new Set(titulos).size).toBe(titulos.length);
+  });
+
+  it('los artículos que enlazan las guías existen', () => {
+    const slugs = new Set(articulos.map((a) => a.slug));
+    for (const [slug, g] of Object.entries(GUIAS_DE_CURSOS_CURADOS)) {
+      for (const [, url] of g.complementa) {
+        if (url.startsWith('/articulos/')) expect(slugs.has(url.slice('/articulos/'.length)), `${slug} → ${url}`).toBe(true);
+      }
     }
   });
 

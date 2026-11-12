@@ -23,7 +23,10 @@
  * ============================================================
  */
 
-export const GUIAS_DE_CURSOS_CURADOS = {
+import { GUIAS_LOTE_3 } from './guias-cursos/lote-3-industria.js';
+import { GUIAS_LOTE_4 } from './guias-cursos/lote-4-salud.js';
+
+const GUIAS_BASE = {
   'gestion-de-calidad': {
     porQue: 'Un sistema de gestión de calidad es la columna vertebral de cualquier organización farmacéutica: laboratorios, distribuidoras, operadores logísticos y servicios farmacéuticos. Entender el enfoque por procesos, los indicadores y la mejora continua te permite participar en certificaciones y auditorías, y hablar el mismo idioma que el área de calidad.',
     aplicaciones: [
@@ -458,6 +461,16 @@ export const GUIAS_DE_CURSOS_CURADOS = {
       ['¿PRL y SST son lo mismo?', 'Se refieren al mismo objetivo. En Colombia la normativa usa el término seguridad y salud en el trabajo y el sistema se llama SG-SST.'],
     ],
   },
+};
+
+/**
+ * Todas las guías: las de los lotes 1 y 2 (arriba) y las de los lotes
+ * siguientes, cada uno en su archivo de api/lib/guias-cursos/.
+ */
+export const GUIAS_DE_CURSOS_CURADOS = {
+  ...GUIAS_BASE,
+  ...GUIAS_LOTE_3,
+  ...GUIAS_LOTE_4,
 };
 
 /** La guía editorial de un curso curado, por el slug de la tabla courses. */
