@@ -65,7 +65,7 @@ describe('Guías de cursos por área', () => {
 describe('Guías de los cursos curados', () => {
   it('cada guía está completa y enlaza dentro del sitio', () => {
     const claves = Object.keys(GUIAS_DE_CURSOS_CURADOS);
-    expect(claves.length).toBeGreaterThanOrEqual(12);
+    expect(claves.length).toBeGreaterThanOrEqual(24);
     for (const [slug, g] of Object.entries(GUIAS_DE_CURSOS_CURADOS)) {
       expect(g.porQue.length, slug).toBeGreaterThan(120);
       expect(g.aplicaciones, slug).toHaveLength(3);

@@ -240,6 +240,224 @@ export const GUIAS_DE_CURSOS_CURADOS = {
       ['¿Qué es el alcance de un proyecto?', 'Es lo que el proyecto va a entregar y lo que no. Definirlo bien desde el inicio evita cambios que retrasan y encarecen el trabajo.'],
     ],
   },
+
+  // ── Lote 2 (12-nov-2026): farmacia y salud en Coursera y Edutin ──
+  'coursera-pharmacokinetics': {
+    porQue: 'La farmacocinética explica por qué dos pacientes con la misma dosis tienen concentraciones distintas del medicamento. Entender absorción, distribución, metabolismo y eliminación con base cuantitativa es lo que separa al químico farmacéutico que valida una orden del que solo la transcribe, y es la base de cualquier ajuste de dosis.',
+    aplicaciones: [
+      'Explicar al equipo médico por qué un paciente con falla renal necesita otro intervalo de dosis.',
+      'Interpretar la vida media y el volumen de distribución en la ficha técnica de un medicamento nuevo.',
+      'Preparar los cálculos de dosis de carga y de mantenimiento en un caso de farmacia hospitalaria.',
+    ],
+    paraQuien: ['Químicos farmacéuticos de farmacia hospitalaria y clínica', 'Estudiantes que cursan biofarmacia o farmacocinética', 'Profesionales de desarrollo que diseñan estudios de bioequivalencia'],
+    complementa: [
+      ['Curso curado: Clinical Pharmacokinetics: Dosing and Monitoring', '/curso-de-clinical-pharmacokinetics-dosing-and-monitoring'],
+      ['Curso gratis: Bioequivalencia y Requisitos Regulatorios en Colombia', '/curso-de-bioequivalencia-y-requisitos-regulatorios-en-colombia'],
+      ['Guía: Farmacocinética clínica aplicada', '/guia/farmacocinetica-clinica-aplicada'],
+    ],
+    preguntas: [
+      ['¿Qué diferencia hay entre farmacocinética y farmacodinamia?', 'La farmacocinética estudia lo que el organismo le hace al medicamento (cómo lo absorbe, distribuye y elimina); la farmacodinamia, lo que el medicamento le hace al organismo.'],
+      ['¿Necesito matemáticas avanzadas para la farmacocinética?', 'Las bases se manejan con álgebra y logaritmos. Los modelos más complejos llegan en farmacocinética clínica y en el desarrollo de medicamentos.'],
+    ],
+  },
+  'coursera-clinical-pharmacokinetics-dosing-and-monitoring': {
+    porQue: 'La farmacocinética clínica lleva la teoría a la cama del paciente: cuándo medir concentraciones, cómo interpretarlas y cómo ajustar la dosis de medicamentos de margen terapéutico estrecho. En los hospitales es una de las intervenciones farmacéuticas con más impacto en seguridad y en resultados.',
+    aplicaciones: [
+      'Proponer el ajuste de un antibiótico según la función renal y los niveles medidos.',
+      'Definir el momento de toma de muestras para la monitorización de un medicamento de margen estrecho.',
+      'Documentar una intervención farmacéutica de ajuste de dosis con su justificación.',
+    ],
+    paraQuien: ['Químicos farmacéuticos hospitalarios', 'Profesionales que participan en programas de optimización de antimicrobianos', 'Estudiantes en prácticas clínicas'],
+    complementa: [
+      ['Curso curado: Pharmacokinetics', '/curso-de-pharmacokinetics'],
+      ['Curso gratis: Farmacología Renal', '/curso-de-farmacologia-renal'],
+      ['Artículo: farmacocinética clínica y ajuste de dosis', '/articulos/farmacocinetica-clinica-ajuste-de-dosis'],
+    ],
+    preguntas: [
+      ['¿Qué es la monitorización terapéutica de medicamentos?', 'Es medir la concentración de un medicamento en sangre para ajustar la dosis, sobre todo en medicamentos con margen terapéutico estrecho o con mucha variabilidad entre pacientes.'],
+      ['¿Quién ajusta la dosis en el hospital?', 'El médico tratante decide; el químico farmacéutico propone y justifica el ajuste con base en la farmacocinética y en los resultados del paciente.'],
+    ],
+  },
+  'coursera-drug-safety-and-pharmacovigilance': {
+    porQue: 'Ningún ensayo clínico detecta todas las reacciones adversas de un medicamento: muchas aparecen cuando ya lo usan miles de personas. La farmacovigilancia es el sistema que las detecta, evalúa y previene, y en Colombia es una obligación tanto de los titulares de registro sanitario como de los servicios farmacéuticos.',
+    aplicaciones: [
+      'Evaluar la causalidad de una sospecha de reacción adversa reportada en el servicio farmacéutico.',
+      'Preparar un reporte de evento adverso con la información mínima y de buena calidad.',
+      'Participar en la detección de señales a partir de los reportes acumulados de un producto.',
+    ],
+    paraQuien: ['Químicos farmacéuticos de farmacovigilancia en la industria o en hospitales', 'Profesionales de asuntos regulatorios', 'Estudiantes interesados en seguridad de medicamentos'],
+    complementa: [
+      ['Guía: cursos de farmacovigilancia', '/articulos/cursos-de-farmacovigilancia'],
+      ['Artículo: reporte de reacciones adversas paso a paso', '/articulos/farmacovigilancia-reporte-ram-paso-a-paso'],
+      ['Guía: Seguridad del medicamento', '/guia/seguridad-del-medicamento'],
+    ],
+    preguntas: [
+      ['¿Qué es una señal en farmacovigilancia?', 'Es información que sugiere una posible relación nueva, o un aspecto nuevo de una relación conocida, entre un medicamento y un evento adverso, y que merece ser investigada.'],
+      ['¿Este curso cubre la normativa colombiana?', 'Es un curso internacional. Para los requisitos del INVIMA conviene complementarlo con formación sobre la normativa nacional de farmacovigilancia.'],
+    ],
+  },
+  'coursera-antibioticos-uso-prudente': {
+    porQue: 'La resistencia a los antimicrobianos es una de las principales amenazas para la salud pública, y el uso inadecuado de antibióticos la acelera. Los químicos farmacéuticos son piezas clave de los programas de optimización de antimicrobianos: validan prescripciones, ajustan dosis y educan a pacientes y equipos. Este curso, en español, es una buena puerta de entrada.',
+    aplicaciones: [
+      'Revisar la duración y la indicación de los tratamientos antibióticos de un servicio.',
+      'Educar al paciente en el mostrador sobre por qué no debe automedicarse con antibióticos.',
+      'Participar en las rondas del programa de optimización de antimicrobianos del hospital.',
+    ],
+    paraQuien: ['Químicos farmacéuticos y regentes de farmacia', 'Personal de enfermería y medicina', 'Estudiantes de ciencias de la salud'],
+    complementa: [
+      ['Curso curado: Antibiotic Stewardship', '/curso-de-antibiotic-stewardship'],
+      ['Guía: Stewardship farmacéutico (PROA)', '/guia/stewardship-farmaceutico-proa'],
+      ['Artículo: interacciones medicamentosas', '/articulos/interacciones-medicamentosas-deteccion-manejo'],
+    ],
+    preguntas: [
+      ['¿Qué es un programa PROA?', 'Es un programa de optimización del uso de antimicrobianos en una institución de salud, con un equipo que revisa y mejora la prescripción de antibióticos.'],
+      ['¿Este curso está en español?', 'Sí. Es uno de los cursos de Coursera de esta área disponibles en español.'],
+    ],
+  },
+  'coursera-drug-development': {
+    porQue: 'Entender cómo una molécula llega a ser un medicamento aprobado da contexto a casi todos los cargos de la industria: calidad, asuntos regulatorios, producción e investigación. Quien conoce las fases del desarrollo entiende por qué se piden ciertos estudios, cuánto tardan y qué riesgos se controlan en cada etapa.',
+    aplicaciones: [
+      'Explicar en una entrevista cómo se relacionan los estudios preclínicos, clínicos y de estabilidad.',
+      'Leer un expediente de registro sabiendo de qué etapa del desarrollo viene cada documento.',
+      'Planear la transferencia de un producto del desarrollo a la planta.',
+    ],
+    paraQuien: ['Estudiantes y recién graduados que buscan entrar a la industria', 'Profesionales de asuntos regulatorios e I+D', 'Químicos farmacéuticos de calidad que quieren entender el ciclo completo'],
+    complementa: [
+      ['Guía: cursos de investigación y desarrollo farmacéutico', '/articulos/cursos-de-investigacion-y-desarrollo-farmaceutico'],
+      ['Curso gratis: Elaboración de Dossiers Farmacéuticos', '/curso-de-elaboracion-de-dossiers-farmaceuticos'],
+      ['Curso curado: Drug Discovery', '/curso-de-drug-discovery'],
+    ],
+    preguntas: [
+      ['¿Cuáles son las fases del desarrollo de un medicamento?', 'Descubrimiento, estudios preclínicos, ensayos clínicos en fases I, II y III, evaluación regulatoria y, después de la aprobación, vigilancia poscomercialización.'],
+      ['¿Sirve para trabajar en asuntos regulatorios?', 'Sí, como base. El trabajo regulatorio consiste en demostrar ante la autoridad lo que se hizo en cada etapa del desarrollo.'],
+    ],
+  },
+  'coursera-medication-prescribing': {
+    porQue: 'Revisar una prescripción no es solo comprobar que el medicamento exista: es verificar indicación, dosis, interacciones, contraindicaciones y adecuación al paciente. Entender cómo se razona una prescripción hace más útil la validación farmacéutica y mejora la conversación con el prescriptor.',
+    aplicaciones: [
+      'Validar órdenes médicas en un servicio farmacéutico hospitalario con criterios explícitos.',
+      'Detectar duplicidades e interacciones en pacientes polimedicados.',
+      'Preparar una sugerencia al prescriptor con la evidencia que la respalda.',
+    ],
+    paraQuien: ['Químicos farmacéuticos de servicio farmacéutico y farmacia clínica', 'Estudiantes de ciencias de la salud', 'Profesionales que hacen conciliación de medicamentos'],
+    complementa: [
+      ['Artículo: errores de medicación y su prevención', '/articulos/errores-medicacion-prevencion-sistemas'],
+      ['Curso gratis: Farmacología Cardiovascular', '/curso-de-farmacologia-cardiovascular'],
+      ['Guía: Pharmacotherapy Workup (Cipolle, Strand y Morley)', '/guia/pharmacotherapy-workup-cipolle-strand-morley'],
+    ],
+    preguntas: [
+      ['¿El químico farmacéutico puede modificar una prescripción?', 'No por su cuenta. Puede detectar problemas y proponer cambios al prescriptor, que es quien decide.'],
+      ['¿Qué se revisa al validar una prescripción?', 'Indicación, dosis, vía, frecuencia, duración, interacciones, contraindicaciones, alergias y la adecuación a la función renal o hepática del paciente.'],
+    ],
+  },
+  'diabetes-20358': {
+    porQue: 'La diabetes es una de las enfermedades crónicas más frecuentes en la consulta y en la farmacia, y su tratamiento cambió mucho con los agonistas del GLP-1 y los inhibidores de SGLT2. Un repaso general de la enfermedad ayuda a cualquier profesional de la salud a acompañar mejor al paciente y a detectar a tiempo los problemas del tratamiento.',
+    aplicaciones: [
+      'Explicar al paciente qué es la hemoglobina glicada y por qué se mide.',
+      'Reconocer y enseñar a manejar los síntomas de una hipoglucemia.',
+      'Identificar pacientes con baja adherencia y derivarlos a seguimiento.',
+    ],
+    paraQuien: ['Regentes y auxiliares de farmacia', 'Personal de enfermería', 'Profesionales que inician en la atención de pacientes crónicos'],
+    complementa: [
+      ['Curso gratis: Farmacoterapia de la Diabetes', '/curso-de-farmacoterapia-de-la-diabetes'],
+      ['Curso gratis: Farmacología Endocrina', '/curso-de-farmacologia-endocrina'],
+      ['Artículo: cursos de diabetes para profesionales de la salud', '/articulos/cursos-de-diabetes-para-profesionales-de-la-salud'],
+    ],
+    preguntas: [
+      ['¿Este curso sirve a un químico farmacéutico?', 'Como repaso general, sí. Para tomar decisiones de farmacoterapia con casos clínicos, el curso gratuito de Farmacoterapia de la Diabetes de Edvanta es más específico.'],
+      ['¿Qué es la hemoglobina glicada?', 'Es un examen que refleja el promedio de glucosa en sangre de los últimos dos a tres meses y se usa para seguir el control de la diabetes.'],
+    ],
+  },
+  'telesalud-y-telemedicina-22313': {
+    porQue: 'La atención a distancia ya es parte del sistema de salud colombiano, y desde el 31 de julio de 2026 tiene nuevas reglas: la Resolución 1644 del Ministerio de Salud, que derogó la 2654 de 2019 y define cuatro categorías de telemedicina. Formarse en telesalud permite ofrecer seguimiento, educación y orientación a pacientes que no pueden ir a la consulta.',
+    aplicaciones: [
+      'Diseñar un seguimiento farmacoterapéutico por videollamada para pacientes crónicos.',
+      'Educar a distancia sobre la técnica de inhaladores o la aplicación de insulina.',
+      'Organizar la teleorientación de un servicio farmacéutico con registro en la historia clínica.',
+    ],
+    paraQuien: ['Profesionales de la salud que atienden pacientes crónicos', 'Químicos farmacéuticos de atención farmacéutica', 'Coordinadores de servicios que implementan atención remota'],
+    complementa: [
+      ['Artículo: cursos de telemedicina y telesalud en Colombia', '/articulos/cursos-de-telemedicina-y-telesalud'],
+      ['Curso gratis: Servicio al Cliente y Comunicación con el Paciente', '/curso-de-servicio-al-cliente'],
+      ['Curso gratis: Hablar frente a la cámara', '/curso-para-hablar-frente-a-la-camara'],
+    ],
+    preguntas: [
+      ['¿Qué norma regula la telemedicina en Colombia?', 'La Ley 1419 de 2010 y la Resolución 1644 del 31 de julio de 2026 del Ministerio de Salud, que derogó la Resolución 2654 de 2019.'],
+      ['¿Qué categorías de telemedicina existen?', 'Telexperticia, teleconcepto, teleconsulta y telemonitoreo, según la Resolución 1644 de 2026.'],
+    ],
+  },
+  'farmacologia-clinica-7429': {
+    porQue: 'La farmacología clínica conecta lo que se aprende de cada medicamento con el paciente real: comorbilidades, otros tratamientos, edad y función de los órganos. Repasarla con enfoque clínico ayuda a prevenir errores de medicación y a participar con argumentos en las decisiones del equipo de salud.',
+    aplicaciones: [
+      'Revisar el tratamiento de un paciente polimedicado en busca de interacciones relevantes.',
+      'Ajustar la educación al paciente según los efectos adversos más probables de su tratamiento.',
+      'Preparar un caso clínico para una sesión académica del servicio.',
+    ],
+    paraQuien: ['Estudiantes de ciencias de la salud', 'Químicos farmacéuticos que vuelven a la práctica clínica', 'Personal de enfermería y regentes de farmacia'],
+    complementa: [
+      ['Curso gratis: Farmacología Cardiovascular', '/curso-de-farmacologia-cardiovascular'],
+      ['Curso gratis: Farmacología del Sistema Nervioso Central', '/curso-de-farmacologia-del-sistema-nervioso-central'],
+      ['Artículo: clasificación de PRM y RNM con ejemplos', '/articulos/clasificacion-prm-rnm-ejemplos-clinicos'],
+    ],
+    preguntas: [
+      ['¿Qué diferencia hay entre farmacología y farmacología clínica?', 'La farmacología estudia cómo actúan los medicamentos; la farmacología clínica aplica ese conocimiento al uso en pacientes reales, con su variabilidad y sus riesgos.'],
+      ['¿Qué cursos de farmacología gratis ofrece Edvanta?', 'Doce cursos por sistemas, desde farmacología cardiovascular y renal hasta oncológica y psicofarmacología, con contenido gratuito y certificado opcional.'],
+    ],
+  },
+  'excel-10219': {
+    porQue: 'Casi todos los cargos farmacéuticos trabajan con Excel: inventarios, indicadores de calidad, cronogramas de calibración, resultados de laboratorio o reportes de farmacovigilancia. Dominar tablas, filtros, fórmulas y tablas dinámicas ahorra horas cada semana y es requisito de muchas vacantes.',
+    aplicaciones: [
+      'Llevar el control de vencimientos y rotación de un inventario de medicamentos.',
+      'Calcular promedios, desviación estándar y tendencias de resultados analíticos.',
+      'Preparar los indicadores mensuales de un servicio farmacéutico con tablas dinámicas.',
+    ],
+    paraQuien: ['Estudiantes y recién graduados', 'Regentes y auxiliares de farmacia', 'Profesionales que van a dar el salto a Power BI'],
+    complementa: [
+      ['Curso curado: Power BI', '/curso-de-power-bi'],
+      ['Artículo: para qué sirve Power BI en salud y farmacia', '/articulos/power-bi-para-que-sirve-en-salud-y-farmacia'],
+      ['Guía: cursos de datos e IA para químicos farmacéuticos', '/articulos/cursos-de-datos-e-inteligencia-artificial'],
+    ],
+    preguntas: [
+      ['¿Qué nivel de Excel piden las vacantes farmacéuticas?', 'Lo más común es un nivel intermedio: tablas, filtros, funciones de búsqueda y tablas dinámicas. Los cargos de datos piden además Power BI.'],
+      ['¿Excel sirve para registros regulados?', 'Puede usarse, pero en entornos BPM las hojas de cálculo que generan datos regulados deben estar controladas y validadas para proteger la integridad de los datos.'],
+    ],
+  },
+  'manejo-de-sustancias-quimicas-peligrosas-7431': {
+    porQue: 'Laboratorios de control de calidad, plantas de producción y bodegas farmacéuticas manejan solventes inflamables, ácidos, bases y principios activos potentes. Saber clasificarlos, almacenarlos, rotularlos y actuar ante un derrame protege a las personas y evita hallazgos en auditorías de seguridad y de calidad.',
+    aplicaciones: [
+      'Organizar el almacenamiento de reactivos por compatibilidad química en el laboratorio.',
+      'Leer una ficha de datos de seguridad antes de usar un reactivo nuevo.',
+      'Preparar el plan de respuesta ante un derrame en la bodega de materias primas.',
+    ],
+    paraQuien: ['Analistas de laboratorio y químicos farmacéuticos de control de calidad', 'Personal de bodega y producción', 'Responsables de seguridad y salud en el trabajo'],
+    complementa: [
+      ['Artículo: cursos de seguridad y salud en el trabajo gratis', '/articulos/cursos-de-seguridad-y-salud-en-el-trabajo-sst-gratis'],
+      ['Curso gratis: Buenas Prácticas de Laboratorio — BPL', '/curso-de-buenas-practicas-de-laboratorio-bpl'],
+      ['Curso curado: Manejo de materiales peligrosos', '/curso-de-manejo-de-materiales-peligrosos'],
+    ],
+    preguntas: [
+      ['¿Qué es una ficha de datos de seguridad?', 'Es el documento del fabricante que describe los peligros de una sustancia, cómo manipularla, almacenarla y qué hacer en caso de emergencia.'],
+      ['¿Este curso reemplaza el curso de 50 horas del SG-SST?', 'No. El curso de 50 horas es el que exige la norma a los responsables del SG-SST; este curso lo complementa con el riesgo químico.'],
+    ],
+  },
+  'prevencion-de-riesgos-laborales-prl-13572': {
+    porQue: 'La prevención de riesgos laborales es la forma práctica de cuidar a quienes trabajan: identificar los peligros antes de que causen daño y aplicar controles en el orden correcto, de la eliminación a los elementos de protección personal. Para quien coordina personal en una farmacia, un laboratorio o una planta, es parte del trabajo diario.',
+    aplicaciones: [
+      'Hacer una inspección de seguridad de un área y priorizar los hallazgos.',
+      'Investigar un incidente sin buscar culpables, para evitar que se repita.',
+      'Incluir los riesgos laborales en la inducción del personal nuevo.',
+    ],
+    paraQuien: ['Coordinadores y jefes de área con personal a cargo', 'Miembros del COPASST o vigías de SST', 'Profesionales que inician en seguridad y salud en el trabajo'],
+    complementa: [
+      ['Curso curado: Seguridad y salud en el trabajo', '/curso-de-seguridad-y-salud-en-el-trabajo'],
+      ['Artículo: cursos de SST gratis y el curso de 50 horas', '/articulos/cursos-de-seguridad-y-salud-en-el-trabajo-sst-gratis'],
+      ['Curso gratis: Liderazgo y Trabajo en Equipo', '/curso-de-liderazgo-y-trabajo-en-equipo'],
+    ],
+    preguntas: [
+      ['¿Qué es la jerarquía de controles?', 'Es el orden en que se aplican los controles de un riesgo: eliminar el peligro, sustituirlo, aplicar controles de ingeniería, controles administrativos y, al final, elementos de protección personal.'],
+      ['¿PRL y SST son lo mismo?', 'Se refieren al mismo objetivo. En Colombia la normativa usa el término seguridad y salud en el trabajo y el sistema se llama SG-SST.'],
+    ],
+  },
 };
 
 /** La guía editorial de un curso curado, por el slug de la tabla courses. */
