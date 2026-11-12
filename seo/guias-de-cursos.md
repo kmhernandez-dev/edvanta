@@ -72,13 +72,26 @@ Todos los enlaces internos se comprobaron contra el catálogo real y los externo
 - Preguntas frecuentes y fuentes.
 - Guías curadas completas.
 
+## Lote 2 (hecho, 11-nov-2026)
+
+**Las 8 guías de tema de calidad:** ISO 9001, BPM y GMP, buenas prácticas de documentación, CAPA y desviaciones, gestión de riesgos, auditoría farmacéutica, integridad de datos y Lean Six Sigma.
+
+- Entre 1.017 y 1.072 palabras cada una, con tiempo de lectura de 6 minutos.
+- Cada una tiene una sección práctica propia del tema: el glosario de ISO 9001, qué estudiar después de BPM, los errores de documentación, los indicadores de CAPA, un FMEA de ejemplo, la auditoría a proveedores, el papel en la integridad de datos y un proyecto DMAIC.
+- Referencias: ICH Q9(R1) de 2023, ICH Q10, ISO 19011, ALCOA+, 21 CFR Part 11, Anexo 11 y GAMP 5 (segunda edición, 2022). La Resolución 1160 de 2016 y la 2190 de 2020 ya estaban verificadas en el normograma.
+- Las tablas de cursos solo traen los que corresponden al tema; ya no se repite la tabla genérica de 8 cursos.
+- Los 31 enlaces internos existen en los sitemaps de producción.
+- Similitud entre las 16 reescritas: media 0,01, máxima 0,05.
+- Las guías en `noindex` bajaron de 107 a 99 páginas (las 42 de plantilla pasaron a 34).
+
 ## Siguientes lotes
 
-1. **Lote 2:** las 8 guías de tema de calidad, de `cursos-gratis-iso-9001` a `cursos-gratis-lean-six-sigma`.
-2. **Lote 3:** control de calidad y validaciones (11).
-3. **Lote 4:** regulatorios, farmacovigilancia y producción (15).
-4. **Lote 5:** I+D y datos (8).
-5. **Cursos curados:** 32 de industria farmacéutica y 21 de salud, en lotes de 12.
+1. **Lote 3:** control de calidad y validaciones (11).
+2. **Lote 4:** regulatorios, farmacovigilancia y producción (15).
+3. **Lote 5:** I+D y datos (8).
+4. **Cursos curados:** 32 de industria farmacéutica y 21 de salud, en lotes de 12.
+
+**Indexación:** cuando haya más guías listas, se pide a Karla aprobar la solicitud en Search Console (unas 10 al día) y se toma la línea base en `seo/medicion.md`.
 
 **Regla:** solo se marca `contenidoPropio: true` cuando el texto es propio. Además:
 
