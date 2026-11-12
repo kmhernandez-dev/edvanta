@@ -518,6 +518,28 @@
 .ed-prose hr { border: 0; height: 1px; background: #E3E9F2; margin: 2.2em 0; }
 .ed-prose code { background: #F4F7FD; border-radius: 6px; padding: 0.1em 0.35em; font-size: 0.9em; }
 .ed-prose img { border-radius: 16px; }
+/* Detalles finos de lectura (11-nov-2026): tablas con filas alternas,
+   enlaces a cursos como píldoras y listas numeradas como pasos. */
+.ed-prose tbody tr:nth-child(even) td { background: #FAFBFE; }
+.ed-prose tbody tr { transition: background-color .15s ease; }
+.ed-prose tbody tr:hover td { background: #F4F7FD; }
+.ed-prose td:first-child { color: #14233F; font-weight: 600; }
+.ed-prose td a[href^="http"] {
+  display: inline-flex; align-items: center; gap: .3em; padding: .28em .8em; border-radius: 999px;
+  background: #E8EEFB; color: #082E86; font-size: .875rem; text-decoration: none; white-space: nowrap;
+  transition: background-color .2s ease, color .2s ease;
+}
+.ed-prose td a[href^="http"]::after { content: '→'; }
+.ed-prose td a[href^="http"]:hover { background: #082E86; color: #FFFFFF; }
+.ed-prose ol { list-style: none; counter-reset: paso; padding-left: 0; }
+.ed-prose ol > li { counter-increment: paso; position: relative; padding-left: 2.5em; }
+.ed-prose ol > li::before {
+  content: counter(paso); position: absolute; left: 0; top: .15em; width: 1.7em; height: 1.7em; border-radius: 999px;
+  display: grid; place-items: center; font-size: .82em; font-weight: 800; color: #FFFFFF;
+  background: linear-gradient(135deg, #8981CE, #25A7B0);
+}
+.ed-prose ol > li + li { margin-top: .7em; }
+
 
 @media (prefers-reduced-motion: reduce) {
   .ed-backdrop::before, .ed-backdrop::after { animation: none; }

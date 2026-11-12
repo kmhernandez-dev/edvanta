@@ -1,29 +1,50 @@
-# Cursos de Control de Calidad Farmacéutico para químicos farmacéuticos
+# Cursos de control de calidad farmacéutico: gratis, online y con certificado
 
-La industria farmacéutica necesita profesionales que entiendan Control de Calidad Farmacéutico y sepan aplicarlo en entornos regulados. Esta guía reúne cursos reales de Control de Calidad Farmacéutico para que compares opciones, revises el temario y elijas con criterio.
+En control de calidad nadie te pregunta si conoces la teoría del HPLC; te entregan un cromatograma y te preguntan **si el lote cumple**. Por eso los mejores cursos de control de calidad farmacéutico no se quedan en conceptos: te ponen a calcular, a interpretar resultados y a decidir qué hacer cuando un dato no cuadra.
 
-> **Contenido editorial:** algunos enlaces pueden ser de afiliado. Edvanta no dicta ni certifica esos cursos. Verifica el precio, el acceso y el certificado en la plataforma antes de inscribirte.
+Aquí encontrarás qué aprender para trabajar en un laboratorio de análisis, qué cursos existen (gratis en Edvanta y complementarios en otras plataformas) y una ruta práctica para llegar a tu primera entrevista con algo concreto que mostrar.
 
-**En resumen**
+> **En resumen**
+>
+> - En Edvanta estudias gratis Control de Calidad de Medicamentos, Validación de Métodos Analíticos, Buenas Prácticas de Laboratorio y Estudios de Estabilidad. El certificado verificable es opcional: COP 60.000.
+> - Lo que más se evalúa en entrevistas: cálculos farmacopeicos, cromatografía, validación de métodos, estabilidad e investigaciones fuera de especificación.
+> - La integridad de datos ya no es un tema de sistemas: es responsabilidad de cada analista.
 
-- Qué es Control de Calidad Farmacéutico y por qué se pide en la industria farmacéutica.
-- Cursos reales de Control de Calidad Farmacéutico con enlace directo a la plataforma.
-- Cómo elegir, qué roles existen y una ruta de aprendizaje de tres pasos.
-- Fuentes oficiales para verificar requisitos y actualizar el temario.
+## Qué hace un analista de control de calidad
 
-## Por qué importa Control de Calidad Farmacéutico en 2026
+El laboratorio de control de calidad decide, con datos, si un material o un producto puede seguir. Un día normal incluye:
 
-En Colombia y Latinoamérica, los laboratorios, las IPS, las empresas de dispositivos médicos y las autoridades sanitarias trabajan con estándares que cambian con frecuencia. Formarte en Control de Calidad Farmacéutico te ayuda a leer esos requisitos, documentar decisiones y aportar en equipos multidisciplinarios.
+- **Análisis de materias primas** antes de que entren a producción: identificación, pureza y ensayos de la monografía o de la especificación aprobada.
+- **Análisis de producto en proceso y terminado:** valoración, uniformidad de contenido, disolución, impurezas, humedad y límites microbianos.
+- **Estudios de estabilidad:** muestras que se analizan en tiempos definidos para sustentar la vida útil y las condiciones de almacenamiento.
+- **Calificación y verificación de equipos:** balanzas, cromatógrafos y disolutores que deben demostrar que funcionan antes de usarse.
+- **Investigaciones fuera de especificación (OOS):** cuando un resultado no cumple, el laboratorio debe demostrar si fue un error analítico o un problema real del producto, con un procedimiento definido.
 
-## Qué aprenderás
+Un buen analista no solo ejecuta: **revisa sus propios datos con escepticismo**. ¿La aptitud del sistema se cumplió? ¿La pesada está dentro del rango? ¿El integrador procesó todos los picos con el mismo criterio?
 
-- Control de calidad
-- HPLC
-- Validación de métodos
-- Estudios de estabilidad
-- Microbiología
+## Técnicas y normas que debes conocer
 
-## Cursos recomendados de Control de Calidad Farmacéutico
+- **Cromatografía líquida (HPLC):** la técnica más usada para valoración e impurezas. Debes entender la aptitud del sistema, el factor de respuesta y la integración de picos.
+- **Disolución:** ensayo clave para formas sólidas orales; incluye el cálculo con reposición de medio y la comparación de perfiles con el factor f2.
+- **Validación de métodos analíticos:** demuestra que un método es exacto, preciso, específico y lineal. La referencia internacional es la guía ICH Q2, complementada por ICH Q14 sobre el desarrollo de procedimientos analíticos.
+- **Estabilidad:** las guías ICH Q1 definen las condiciones y la frecuencia de los estudios.
+- **Farmacopeas:** las monografías y capítulos generales (por ejemplo, de la Farmacopea de los Estados Unidos) son la referencia de ensayos y límites.
+- **Integridad de datos (ALCOA+):** los resultados deben ser atribuibles, legibles, contemporáneos, originales y exactos, con trazabilidad completa en los sistemas cromatográficos.
+
+## Cursos de control de calidad farmacéutico gratis en Edvanta
+
+Estos cursos se estudian **gratis** en el aula de Edvanta, en línea y a tu ritmo, con casos, quices y foros. El certificado verificable cuesta COP 60.000 por curso, si lo quieres.
+
+| Curso gratis | Para qué te sirve |
+|---|---|
+| [Control de Calidad de Medicamentos](/curso-de-control-de-calidad-de-medicamentos) | El trabajo completo del laboratorio, de la muestra al certificado de análisis |
+| [Validación de Métodos Analíticos](/curso-de-validacion-de-metodos-analiticos) | Parámetros de validación y cómo documentarlos |
+| [Buenas Prácticas de Laboratorio — BPL](/curso-de-buenas-practicas-de-laboratorio-bpl) | Organización, registros y confiabilidad de los resultados |
+| [Estudios de Estabilidad](/curso-de-estudios-de-estabilidad-de-medicamentos) | Diseño de estudios y su uso en el registro sanitario |
+
+## Cursos de control de calidad online en otras plataformas
+
+Para profundizar en una técnica o practicar en inglés, esta selección cubre los temas más pedidos. Edvanta no dicta estos cursos.
 
 | Curso | Plataforma | Enlace |
 |---|---|---|
@@ -36,57 +57,66 @@ En Colombia y Latinoamérica, los laboratorios, las IPS, las empresas de disposi
 | Quality Control Microbiology in Pharmaceuticals | Udemy | [Ver curso](https://trk.udemy.com/NGE1db) |
 | A Complete Guide to Analytical Method Validation | Udemy | [Ver curso](https://trk.udemy.com/OYEVNr) |
 
-> El acceso gratuito, el certificado y las condiciones de cada curso dependen de la plataforma. Algunas opciones permiten aprender sin costo y cobran solo el certificado; otras tienen precio desde el inicio. Confirma antes de inscribirte.
+> **Contenido editorial:** algunos enlaces pueden ser de afiliado. El acceso, el precio y el certificado los define cada plataforma; verifícalos antes de inscribirte.
 
-## Cómo elegir un curso de Control de Calidad Farmacéutico
+## Los cálculos que más se preguntan en una entrevista
 
-1. Revisa el temario y confirma que cubre Control de Calidad Farmacéutico con profundidad.
-2. Verifica el nivel: introductorio, intermedio o avanzado.
-3. Confirma si el acceso es gratuito y si el certificado tiene costo.
-4. Revisa la duración, el idioma y la modalidad.
-5. Comprueba quién dicta el curso y si incluye casos, proyectos o evaluaciones.
+Si te preparas para una prueba técnica de analista, practica estos cinco hasta hacerlos sin dudar:
+
+1. **Valoración por HPLC con estándar externo:** relación de áreas, pesos, diluciones y potencia del estándar.
+2. **Uniformidad de contenido:** cálculo del valor de aceptación a partir de las unidades individuales.
+3. **Disolución con reposición de medio:** corrección por el volumen retirado en cada tiempo.
+4. **Humedad por Karl Fischer y conversión a base anhidra.**
+5. **Impurezas con factor de respuesta relativo.**
+
+Hazlos primero a mano o en una hoja de cálculo. Si después usas inteligencia artificial para revisarlos, compara siempre con tu resultado: la guía [Claude para control de calidad farmacéutica](/guia/claude-control-de-calidad-farmaceutica) trae 20 ejercicios con datos ficticios y una clave de respuestas calculada con código para practicar exactamente eso.
+
+## Cómo elegir un curso de control de calidad
+
+- **Busca ejercicios con números.** Un curso de control de calidad sin cálculos es un curso de definiciones.
+- **Revisa que hable de investigaciones.** Saber qué hacer ante un resultado fuera de especificación es lo que más diferencia a un analista junior de uno confiable.
+- **Confirma el enfoque de integridad de datos.** Las inspecciones actuales revisan los registros electrónicos, no solo el informe final.
+- **Prefiere cursos con evaluación.** Los quices te muestran qué no dominas antes de que lo descubra un supervisor.
+- **Si necesitas certificado, que sea verificable.** Un reclutador debe poder comprobarlo en línea.
+
+## Ruta de 90 días para tu primer cargo en control de calidad
+
+1. **Mes 1: las bases.** Estudia Control de Calidad de Medicamentos y Buenas Prácticas de Laboratorio. Meta: entender el recorrido de una muestra y cómo se documenta.
+2. **Mes 2: la técnica.** Practica los cinco cálculos de la sección anterior y estudia Validación de Métodos Analíticos. Meta: poder explicar qué es la aptitud del sistema y por qué importa.
+3. **Mes 3: la evidencia.** Completa Estudios de Estabilidad, saca tus certificados y prepara una historia breve de una investigación fuera de especificación (aunque sea con un caso de práctica) para contarla en la entrevista.
 
 ## Salidas laborales
 
-- Analista de control de calidad
-- Analista de HPLC
-- Especialista en estabilidad
-- Microbiólogo farmacéutico
-
-## Ruta de aprendizaje en 3 pasos
-
-1. **Fundamentos:** empieza por un curso introductorio o por la guía de Control de Calidad Farmacéutico para entender el vocabulario y el marco de trabajo.
-2. **Práctica:** elige un curso específico de Control de Calidad Farmacéutico y aplícalo en un caso, un proyecto o una actividad de tu trabajo.
-3. **Especialización:** complementa con una certificación, una ruta de aprendizaje o un posgrado si el rol que buscas lo exige.
+- **Analista de control de calidad fisicoquímico:** ensayos en materias primas, producto en proceso y terminado.
+- **Analista de HPLC:** especialista en cromatografía, con frecuencia el puesto más demandado del laboratorio.
+- **Analista de estabilidad:** planificación y seguimiento de los estudios que sustentan la vida útil.
+- **Analista de microbiología:** límites microbianos, monitoreo ambiental y esterilidad.
+- **Coordinador de laboratorio:** revisión de datos, liberación de resultados e investigaciones.
 
 ## Preguntas frecuentes
 
-### ¿Los cursos de Control de Calidad Farmacéutico son gratis?
+### ¿Hay cursos de control de calidad farmacéutico gratis con certificado?
 
-El acceso y el certificado dependen de cada plataforma. Algunas ofrecen contenido gratuito y certificado opcional de pago; otras cobran desde el inicio. Verifica el precio y las condiciones antes de inscribirte.
+Sí. En Edvanta los cursos de control de calidad se estudian gratis y el certificado verificable es opcional, por COP 60.000 por curso. En otras plataformas, el acceso gratuito y el certificado dependen de cada una.
 
-### ¿Necesito experiencia previa en Control de Calidad Farmacéutico?
+### ¿Qué debo aprender primero: HPLC o validación de métodos?
 
-No siempre. Hay cursos introductorios para estudiantes y profesionales que quieren actualizarse. Revisa el nivel y los requisitos en la ficha del curso.
+Primero las bases del laboratorio y el HPLC, porque la validación de métodos supone que ya entiendes cómo funciona el ensayo que vas a validar.
 
-### ¿Estos cursos sirven para trabajar en la industria farmacéutica?
+### ¿Un curso de control de calidad online reemplaza la práctica en laboratorio?
 
-Pueden ayudarte a construir competencias, pero no reemplazan la formación de base ni la experiencia. Úsalos como parte de una ruta y verifica que el temario se ajuste al rol que buscas.
+No. Te da el criterio y los cálculos, pero la destreza con los equipos se gana en el laboratorio. Usa el curso para llegar preparado a tus prácticas o a tu primer empleo.
+
+### ¿Qué es un resultado fuera de especificación (OOS)?
+
+Es un resultado analítico que no cumple la especificación aprobada. El laboratorio debe investigarlo con un procedimiento definido para determinar si hubo un error analítico o si el producto realmente no cumple.
+
+### ¿Control de calidad es lo mismo que aseguramiento de calidad?
+
+No. Control de calidad analiza y genera los datos; aseguramiento de calidad diseña y vigila el sistema que garantiza que todo el proceso, incluido el laboratorio, esté bajo control.
 
 ## Fuentes
 
-- [FDA](https://www.fda.gov)
-- [EMA](https://www.ema.europa.eu)
-- [INVIMA](https://www.invima.gov.co)
-- [Pharmaceutical Quality Control](https://trk.udemy.com/Gbq356)
-- [Learn HPLC Sample Preparations and Calculations](https://trk.udemy.com/L0EAvo)
-- [Detailed Introduction to Pharmaceutical Analysis](https://trk.udemy.com/m4196a)
-- [Statistical Evaluation of Stability Studies in Pharmaceuticals](https://trk.udemy.com/7XKRAd)
-
-## Contenido relacionado
-
-- [Cursos gratis de HPLC: guía para químicos farmacéuticos](/articulos/cursos-gratis-hplc)
-- [Cursos gratis de Validación de métodos analíticos: guía para químicos farmacéuticos](/articulos/cursos-gratis-validacion-metodos-analiticos)
-- [Cursos gratis de Estudios de estabilidad: guía para químicos farmacéuticos](/articulos/cursos-gratis-estudios-de-estabilidad)
-
-> Este contenido es educativo y no constituye asesoría profesional individual.
+- [ICH — Guías de calidad (Q1, Q2 y Q14)](https://www.ich.org/page/quality-guidelines)
+- [FDA — Investigating Out-of-Specification Test Results for Pharmaceutical Production](https://www.fda.gov/regulatory-information/search-fda-guidance-documents/investigating-out-specification-oos-test-results-pharmaceutical-production-level-2-revision)
+- [Normograma del INVIMA](https://normograma.invima.gov.co)

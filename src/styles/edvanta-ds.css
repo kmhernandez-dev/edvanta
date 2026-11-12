@@ -713,3 +713,18 @@ body:has(.ed-barra-movil) .ed-wa-flotante { bottom: 5.5rem; }
 
 .ed-tarjeta-brillo { position: relative; border: 2px solid transparent; background: linear-gradient(#fff, #fff) padding-box, linear-gradient(135deg, #8981CE, #25A7B0 55%, #FF5A3C) border-box; }
 @media (max-width: 639px) { .ed-sello { right: 4px; top: -12px; width: 78px; height: 78px; } .ed-sello b { font-size: 22px; } }
+
+/* ── Guía editorial de los cursos curados ───────────────────── */
+.ed-aplicacion {
+  position: relative; padding: 1.15rem 1.2rem 1.25rem; border-radius: var(--ds-r-lg, 20px);
+  background: linear-gradient(180deg, #FFFFFF, #F6F8FC); border: 1px solid #E3E9F2;
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+.ed-aplicacion:hover { transform: translateY(-2px); border-color: #C9D4E6; box-shadow: 0 16px 34px -26px rgba(3, 29, 92, .45); }
+.ed-aplicacion__n { font-family: Manrope, Inter, sans-serif; font-weight: 800; font-size: 1.5rem; line-height: 1; color: #E8EEFB; -webkit-text-stroke: 1.2px #8981CE; }
+.ed-complemento {
+  display: flex; align-items: center; justify-content: space-between; gap: .75rem; padding: .7rem .95rem;
+  border-radius: 14px; background: #F4F7FD; color: #14233F; font-size: 15px; font-weight: 600; line-height: 1.35;
+  transition: background .2s ease, box-shadow .2s ease;
+}
+.ed-complemento:hover { background: #FFFFFF; box-shadow: 0 0 0 1px #C9D4E6, 0 12px 26px -20px rgba(3, 29, 92, .5); }

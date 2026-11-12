@@ -19,7 +19,7 @@
  */
 
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { useLocation, useNavigate, useParams } from 'react-router-dom';
+import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import {
   ArrowRight, Award, BadgeCheck, BookOpen, Check, Clock, ExternalLink, FileText,
   GraduationCap, Layers, MessageCircle, MonitorSmartphone, QrCode, Share2, ShoppingCart, UserRound,
@@ -168,6 +168,54 @@ function Certificado({ ficha, nombre, accion, boton }) {
           Ver condiciones en {ficha.proveedor.nombre}
         </Btn>
       )}
+    </CursoSection>
+  );
+}
+
+/* ── Guía editorial de un curso curado ─────────────────────── */
+
+/**
+ * Para qué sirve el tema en el trabajo farmacéutico, cómo se aplica, para
+ * quién es y con qué cursos gratis de Edvanta se complementa. La escribe
+ * Edvanta (api/lib/guias-de-cursos-curados.js); no describe el temario del
+ * proveedor.
+ */
+function GuiaDelCurso({ guia }) {
+  return (
+    <CursoSection id="para-tu-trabajo">
+      <CursoHeading title="Para qué te sirve en el trabajo farmacéutico" />
+      <div className="mt-5 max-w-4xl">
+        <p className="text-[17px] leading-8 text-edvanta-deep">{guia.porQue}</p>
+        <ol className="mt-7 grid gap-4 md:grid-cols-3">
+          {guia.aplicaciones.map((t, i) => (
+            <li key={t} className="ed-aplicacion">
+              <span className="ed-aplicacion__n" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+              <p className="mt-2 text-[15px] leading-6 text-edvanta-deep">{t}</p>
+            </li>
+          ))}
+        </ol>
+        <div className="mt-7 grid gap-5 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
+          <div>
+            <h3 className="text-[13px] font-semibold uppercase tracking-[.12em] text-edvanta-tealdark">Para quién es</h3>
+            <ul className="mt-3 flex flex-wrap gap-2">
+              {guia.paraQuien.map((p) => <li key={p} className="rounded-full bg-edvanta-mint px-3 py-1.5 text-[13px] font-medium text-edvanta-tealdark">{p}</li>)}
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-[13px] font-semibold uppercase tracking-[.12em] text-edvanta-tealdark">Compleméntalo en Edvanta</h3>
+            <ul className="mt-3 space-y-2">
+              {guia.complementa.map(([t, u]) => (
+                <li key={u}>
+                  <Link to={u} className="ed-complemento group">
+                    <span>{t}</span>
+                    <ArrowRight className="h-4 w-4 shrink-0 text-edvanta-tealdark transition-transform group-hover:translate-x-1" aria-hidden="true" />
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
     </CursoSection>
   );
 }
@@ -542,6 +590,8 @@ export default function FichaDeCurso({ modo = 'propio', slugPublico = '' }) {
           </CursoSection>
         )}
 
+        {ficha.guia && <GuiaDelCurso guia={ficha.guia} />}
+
         {ficha.capacidades.verTemario && (
           <CursoSection id="contenido">
             <CursoHeading
@@ -640,6 +690,7 @@ export default function FichaDeCurso({ modo = 'propio', slugPublico = '' }) {
                 q: '¿Qué necesito para empezar?',
                 a: ficha.requisitos || 'No hay requisitos declarados para este curso.',
               },
+              ...(ficha.guia?.preguntas || []).map(([q, a]) => ({ q, a })),
               ...(propio ? [{
                 q: '¿Qué recursos incluye?',
                 a: 'Videos seleccionados, documentos oficiales de las entidades que los publican y textos de apoyo escritos para el curso. Cada recurso indica su fuente.',

@@ -83,6 +83,7 @@ export function preguntasDeCurso(ficha, emisor) {
     },
     ...(certificado ? [{ q: '¿Da certificado?', a: certificado }] : []),
     { q: '¿Qué necesito para empezar?', a: ficha.requisitos || 'No hay requisitos declarados para este curso.' },
+    ...(ficha.guia?.preguntas || []).map(([q, a]) => ({ q, a })),
     ...(propio ? [{
       q: '¿Qué recursos incluye?',
       a: 'Videos seleccionados, documentos oficiales de las entidades que los publican y textos de apoyo escritos para el curso. Cada recurso indica su fuente.',
@@ -133,6 +134,10 @@ export function cuerpoDeCurso(ficha, { nombre, relacionados = [], emisor = 'Edva
     ficha.resumen ? `<p>${esc(ficha.resumen)}</p>` : '',
     seccion('Este curso incluye', lista(datosClave(ficha))),
     ficha.queAprenderas?.length ? seccion('Qué aprenderás', lista(ficha.queAprenderas)) : '',
+    ficha.guia ? seccion('Para qué te sirve en el trabajo farmacéutico', `<p>${esc(ficha.guia.porQue)}</p>`) : '',
+    ficha.guia ? seccion('Cómo lo aplicas', lista(ficha.guia.aplicaciones)) : '',
+    ficha.guia ? seccion('Para quién es', lista(ficha.guia.paraQuien)) : '',
+    ficha.guia ? seccion('Compleméntalo en Edvanta', `<ul>${ficha.guia.complementa.map(([t, u]) => `<li><a href="${esc(u)}">${esc(t)}</a></li>`).join('')}</ul>`) : '',
     ficha.objetivo ? seccion('Objetivo del curso', `<p>${esc(ficha.objetivo)}</p>`) : '',
     descripcion.length ? seccion('Descripción', descripcion.map((p) => `<p>${esc(p)}</p>`).join('')) : '',
     ficha.publico ? seccion('¿A quién está dirigido?', `<p>${esc(ficha.publico)}</p>`) : '',

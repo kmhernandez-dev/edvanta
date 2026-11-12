@@ -219,4 +219,64 @@ for (const a of todos) {
   a.related = mismos.slice(0, 3).map((x) => x.slug);
 }
 
+/**
+ * Guías por área reescritas con contenido propio (11-nov-2026).
+ *
+ * Las 50 guías salieron de una sola plantilla y se parecían entre sí en
+ * promedio 0,45 (máximo 0,84, con tejas de 5 palabras). Indexadas así
+ * parecen contenido repetido a escala, como las noticias del paquete del
+ * 31-oct. Cada guía reescrita trae funciones reales del cargo, normas
+ * verificadas en el normograma del INVIMA, los cursos propios gratis de
+ * Edvanta del área, una ruta de 90 días y preguntas propias, y lleva
+ * `contenidoPropio: true`. Las demás quedan en noindex,follow
+ * (src/lib/seo/indexabilidad.js) hasta que se reescriban.
+ */
+const REESCRITOS = {
+  'cursos-de-aseguramiento-de-calidad': {
+    title: 'Cursos de aseguramiento de calidad para químicos farmacéuticos: gratis, online y con certificado',
+    seoTitle: 'Cursos de aseguramiento de calidad gratis y online',
+    description: 'Qué hace QA, qué normas dominar (BPM, ICH Q9 y Q10) y cursos de aseguramiento de calidad gratis con certificado opcional, más una ruta de 90 días.',
+  },
+  'cursos-de-control-de-calidad-farmaceutico': {
+    title: 'Cursos de control de calidad farmacéutico: gratis, online y con certificado',
+    seoTitle: 'Cursos de control de calidad farmacéutico gratis',
+    description: 'HPLC, disolución, validación de métodos y OOS: cursos de control de calidad farmacéutico gratis, los cálculos de entrevista y una ruta de 90 días.',
+  },
+  'cursos-de-validaciones-y-calificaciones': {
+    title: 'Cursos de validaciones y calificaciones farmacéuticas: gratis, online y con certificado',
+    seoTitle: 'Cursos de validaciones y calificaciones farmacéuticas',
+    description: 'DQ, IQ, OQ y PQ, validación de procesos, de limpieza y CSV con GAMP 5: cursos de validaciones gratis, cómo elegir y una ruta de 90 días.',
+  },
+  'cursos-de-asuntos-regulatorios': {
+    title: 'Cursos de asuntos regulatorios farmacéuticos: gratis, online y con certificado',
+    seoTitle: 'Cursos de asuntos regulatorios farmacéuticos gratis',
+    description: 'Registro sanitario, dossiers, requerimientos del INVIMA y etiquetado: más de diez cursos de asuntos regulatorios gratis y una ruta de 90 días.',
+  },
+  'cursos-de-farmacovigilancia': {
+    title: 'Cursos de farmacovigilancia: gratis, online y con certificado',
+    seoTitle: 'Cursos de farmacovigilancia gratis y online',
+    description: 'Qué hace un profesional de farmacovigilancia, causalidad, ICSR y señales, cómo reportar en Colombia y los cursos para formarte, gratis y online.',
+  },
+  'cursos-de-produccion-farmaceutica': {
+    title: 'Cursos de producción farmacéutica: gratis, online y con certificado',
+    seoTitle: 'Cursos de producción farmacéutica y BPM gratis',
+    description: 'BPM, manufactura de sólidos y estériles, controles en proceso y mejora continua: cursos de producción farmacéutica gratis y una ruta de 90 días.',
+  },
+  'cursos-de-investigacion-y-desarrollo-farmaceutico': {
+    title: 'Cursos de investigación y desarrollo farmacéutico: gratis, online y con certificado',
+    seoTitle: 'Cursos de investigación y desarrollo farmacéutico',
+    description: 'Preformulación, QbD, estabilidad, bioequivalencia e investigación clínica: cursos de I+D farmacéutico gratis y una ruta de 90 días.',
+  },
+  'cursos-de-datos-e-inteligencia-artificial': {
+    title: 'Cursos de datos e inteligencia artificial para químicos farmacéuticos',
+    seoTitle: 'Cursos de datos e IA para químicos farmacéuticos',
+    description: 'Excel, Power BI, SQL, Python e IA con control humano: qué aprender, guías de Claude y certificados de datos para químicos farmacéuticos.',
+  },
+};
+for (const a of todos) {
+  const r = REESCRITOS[a.slug];
+  if (!r) continue;
+  Object.assign(a, r, { seoDescription: r.description, readingTime: '12 min', updated: '2026-11-11', contenidoPropio: true });
+}
+
 export const INDUSTRIA_CURSOS_50 = todos;

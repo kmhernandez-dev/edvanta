@@ -38,8 +38,19 @@ export function esNoticiaDePlantilla(articulo = {}) {
     && !articulo.contenidoPropio;
 }
 
+/**
+ * Guías de cursos generadas con una sola plantilla (industriaCursos50.js):
+ * se parecían entre sí 0,45 en promedio (noviembre de 2026). Se leen igual,
+ * pero no se indexan hasta que se reescriben con contenido propio
+ * (`contenidoPropio: true`), como las noticias.
+ */
+export function esGuiaDeCursosDePlantilla(articulo = {}) {
+  return String(articulo.mdPath || '').includes('/industria-cursos/') && !articulo.contenidoPropio;
+}
+
 export function puedeIndexarse(articulo = {}) {
   if (esNoticiaDePlantilla(articulo)) return false;
+  if (esGuiaDeCursosDePlantilla(articulo)) return false;
   return !esContenidoDeSalud(articulo) || tieneRevisionClinica(articulo);
 }
 

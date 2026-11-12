@@ -20,6 +20,7 @@
  */
 
 import { EMISOR, horasDe } from './aula/certificados.js';
+import { guiaDeCursoCurado } from './guias-de-cursos-curados.js';
 
 /** Dónde se estudia de verdad el curso. */
 export const EN_EDVANTA = 'edvanta';
@@ -157,6 +158,8 @@ export function fichaDeCursoPropio(curso, temario) {
     valoraciones: { promedio: null, total: 0, distribucion: null },
     // De proveedor: no aplica en un curso propio.
     valoracionesDelProveedor: null,
+    // La guía editorial es de los curados: un curso propio ya trae su descripción.
+    guia: null,
   };
 }
 
@@ -205,6 +208,8 @@ export function fichaDeCursoCurado(curso) {
     valoraciones: { promedio: null, total: 0, distribucion: null },
     // rating y review_count están vacíos en los 176: no hay nada que atribuir.
     valoracionesDelProveedor: null,
+    // Guía editorial de Edvanta: para qué sirve el tema en el trabajo farmacéutico.
+    guia: guiaDeCursoCurado(curso.slug),
   };
 }
 
