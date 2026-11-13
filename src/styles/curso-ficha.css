@@ -662,6 +662,21 @@
   line-height: 1.5;
 }
 
+a.curso-lesson-link {
+  color: var(--cf-primary);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: rgba(8, 46, 134, 0.25);
+  text-underline-offset: 3px;
+}
+
+a.curso-lesson-link:hover { text-decoration-color: currentColor; }
+
+.curso-lesson-meta .curso-lesson-abierta {
+  color: #0f7480;
+  font-weight: 700;
+}
+
 .curso-lesson-meta {
   display: flex;
   flex-wrap: wrap;

@@ -146,7 +146,8 @@ export function cuerpoDeCurso(ficha, { nombre, relacionados = [], emisor = 'Edva
     ficha.requisitos ? seccion('Qué necesitas antes', `<p>${esc(ficha.requisitos)}</p>`) : '',
     temario.length
       ? seccion('Temario', `<ol>${temario.map((u) => `<li><h3>${esc(u.title)}</h3>${
-        (u.lessons || []).length ? lista(u.lessons.map((l) => l.title).filter(Boolean)) : ''}</li>`).join('')}</ol>`)
+        (u.lessons || []).length ? `<ul>${u.lessons.filter((l) => l.title).map((l) => `<li>${
+          l.ruta ? `<a href="${esc(l.ruta)}">${esc(l.title)}</a>` : esc(l.title)}</li>`).join('')}</ul>` : ''}</li>`).join('')}</ol>`)
       : '',
     certificado.nota
       ? seccion(certificado.estado === 'available' ? 'Certificado de aprobación' : `Certificado de ${ficha.proveedor.nombre}`,

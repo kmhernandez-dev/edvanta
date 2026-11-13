@@ -19,6 +19,7 @@ import { RichText } from '../ui/RichText';
 import { Spinner } from '../ui/States';
 
 const PdfViewer = lazy(() => import('./PdfViewer'));
+const ExperienciaDeClase = lazy(() => import('../../components/experiencia/ExperienciaDeClase'));
 
 const fileOf = (files, id) => (id ? files?.[id] || files?.[String(id)] || null : null);
 
@@ -456,7 +457,7 @@ function CalloutBlock({ block }) {
   );
 }
 
-export function BlockView({ block, files, onMedia, startAt }) {
+export function BlockView({ block, files, onMedia, startAt, modoAutoria }) {
   const { data } = block;
   switch (block.type) {
     case 'encabezado':
@@ -474,6 +475,12 @@ export function BlockView({ block, files, onMedia, startAt }) {
     case 'infografia': return <InfographicBlock block={block} files={files} />;
     case 'enlace': return <LinkBlock block={block} />;
     case 'destacado': return <CalloutBlock block={block} />;
+    case 'experiencia':
+      return (
+        <Suspense fallback={<div className="flex justify-center py-10"><Spinner /></div>}>
+          <ExperienciaDeClase data={data} idBase={`clase-${block.id}`} modoAutoria={Boolean(modoAutoria)} />
+        </Suspense>
+      );
     default:
       return (
         <p className="flex items-center gap-2 rounded-[var(--aula-radius)] border border-dashed border-[var(--aula-border-strong)] px-4 py-3 text-sm text-[var(--aula-muted)]">

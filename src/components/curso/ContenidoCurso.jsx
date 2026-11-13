@@ -7,7 +7,8 @@
  */
 
 import { useState } from 'react';
-import { ChevronDown, Clock, PlayCircle } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { BookOpenCheck, ChevronDown, Clock, PlayCircle } from 'lucide-react';
 
 function duracion(minutos) {
   const m = Number(minutos) || 0;
@@ -96,7 +97,9 @@ export default function ContenidoCurso({ modulos }) {
                   <div key={clase.id} className="curso-lesson">
                     <span className="curso-lesson-number" aria-hidden="true">{n + 1}</span>
                     <span className="min-w-0 flex-1">
-                      <span className="curso-lesson-title">{clase.title}</span>
+                      {clase.ruta
+                        ? <Link to={clase.ruta} className="curso-lesson-title curso-lesson-link">{clase.title}</Link>
+                        : <span className="curso-lesson-title">{clase.title}</span>}
                       <span className="curso-lesson-meta">
                         {clase.hasVideo && (
                           <span>
@@ -111,6 +114,12 @@ export default function ContenidoCurso({ modulos }) {
                           </span>
                         )}
                         {!clase.isRequired && <span>Opcional</span>}
+                        {clase.ruta && (
+                          <span className="curso-lesson-abierta">
+                            <BookOpenCheck className="h-3.5 w-3.5" aria-hidden="true" />
+                            Clase abierta
+                          </span>
+                        )}
                       </span>
                     </span>
                   </div>

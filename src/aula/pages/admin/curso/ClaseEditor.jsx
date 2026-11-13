@@ -165,7 +165,7 @@ function BlockCard({
           </div>
         ) : (
           <div className="flex flex-col gap-3">
-            <BlockView block={block} files={files} />
+            <BlockView block={block} files={files} modoAutoria />
             {HEAVY.has(block.type) && (
               <Button size="sm" variant="ghost" icon={EyeOff} className="self-end" onClick={() => setShowHeavy(false)}>Ocultar</Button>
             )}

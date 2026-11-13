@@ -33,6 +33,10 @@ import {
   asegurarSlugsDeCursos, nombreDeCurso, resolverSlug, rutaDeCursoCurado, rutaDeCursoPropio, slugify,
 } from '../lib/slugs-publicos.js';
 import { SQL_CURSO_PUBLICO, temarioPublico } from './courses.js';
+import {
+  clasePublica, clasesPublicas, cuerpoDeClase, datosDeClase, descripcionDeClase, resumenDeClase,
+  rutaDeClase, rutasDeClasesPublicas, tituloDeClase,
+} from '../lib/clase-publica.js';
 import { EMISOR, verificarCertificado } from '../lib/aula/certificados.js';
 import { cuerpoDeCurso, datosDeCurso } from '../lib/html-de-ficha.js';
 import { cuerpoDeCatalogo, cursosDelCatalogo, listaDeCursos } from '../lib/html-de-catalogo.js';
@@ -131,7 +135,9 @@ async function rutasFijas() {
 async function cursoDelSlug(db, entidad, id) {
   if (entidad === 'aula') {
     const { rows } = await db.query(SQL_CURSO_PUBLICO, [id]);
-    return rows[0] ? fichaDeCursoPropio(rows[0], temarioPublico(rows[0].snapshot)) : null;
+    if (!rows[0]) return null;
+    const rutas = await rutasDeClasesPublicas(db, id, rows[0].public_slug, rows[0].snapshot);
+    return fichaDeCursoPropio(rows[0], temarioPublico(rows[0].snapshot, rutas));
   }
   const { rows } = await db.query('SELECT * FROM courses WHERE id = $1 AND active = TRUE', [id]);
   return rows[0] ? fichaDeCursoCurado(rows[0]) : null;
@@ -246,6 +252,58 @@ export function crearRutasPublicas({ db, sitio = '', obtenerPlantilla = async ()
     } catch (e) {
       console.error(JSON.stringify({ level: 'error', msg: 'pagina de curso', error: e.message }));
       return aplicacion(res, 200, null);
+    }
+  });
+
+  // /curso-de-…/clase/… (clase abierta de un curso propio)
+  router.get('/paginas/slug/:slug/clase/:clase', async (req, res) => {
+    try {
+      const slug = String(req.params.slug || '').toLowerCase();
+      const claseSlug = String(req.params.clase || '').toLowerCase();
+      if (!/^curso-[a-z0-9-]+$/.test(slug) || !/^[a-z0-9-]+$/.test(claseSlug)) return noEncontrado(res);
+      const datos = await clasePublica(db, slug, claseSlug);
+      if (!datos) return noEncontrado(res);
+      if (datos.redirigir) return redirigir(req, res, datos.redirigir);
+      // El curso existe pero la clase no es abierta: al curso.
+      if (!datos.clase) return redirigir(req, res, `/${datos.curso.slug}`);
+      const ruta = rutaDeClase(datos.curso.slug, datos.clase.slug);
+      if (req.path !== `/paginas/slug${ruta}`) return redirigir(req, res, ruta);
+
+      const plantilla = await obtenerPlantilla();
+      if (!plantilla) return aplicacion(res, 200, null);
+      const canonical = absoluta(ruta);
+      const html = conMetadatos(plantilla, {
+        titulo: tituloDeClase(datos),
+        descripcion: descripcionDeClase(datos),
+        canonical,
+        tipo: 'article',
+        jsonLd: datosDeClase(datos, { canonical, cursoUrl: absoluta(`/${datos.curso.slug}`), inicio: absoluta('/') }),
+        cuerpo: cuerpoDeClase(datos),
+      });
+      return aplicacion(res, 200, html);
+    } catch (e) {
+      console.error(JSON.stringify({ level: 'error', msg: 'pagina de clase', error: e.message }));
+      return aplicacion(res, 200, null);
+    }
+  });
+
+  // La misma clase en JSON, para la página en React.
+  router.get('/clase-publica/:slug/:clase', async (req, res) => {
+    try {
+      const slug = String(req.params.slug || '').toLowerCase();
+      const claseSlug = String(req.params.clase || '').toLowerCase();
+      if (!/^curso-[a-z0-9-]+$/.test(slug) || !/^[a-z0-9-]+$/.test(claseSlug)) {
+        return res.status(404).json({ ok: false, error: 'Esta clase no está disponible' });
+      }
+      const datos = await clasePublica(db, slug, claseSlug);
+      if (!datos) return res.status(404).json({ ok: false, error: 'Esta clase no está disponible' });
+      if (datos.redirigir) return res.json({ ok: true, redirigir: datos.redirigir });
+      if (!datos.clase) return res.json({ ok: true, redirigir: `/${datos.curso.slug}` });
+      res.set('Cache-Control', 'public, max-age=300');
+      return res.json({ ok: true, data: resumenDeClase(datos) });
+    } catch (e) {
+      console.error(JSON.stringify({ level: 'error', msg: 'clase publica', error: e.message }));
+      return res.status(500).json({ ok: false, error: 'No pudimos cargar la clase' });
     }
   });
 
@@ -527,6 +585,20 @@ export function crearRutasPublicas({ db, sitio = '', obtenerPlantilla = async ()
           WHERE s.entity = 'curado' AND s.is_current AND c.active = TRUE
           ORDER BY 1`,
       );
+      // Las clases abiertas (con experiencia) de cada curso propio publicado.
+      const { rows: conClases } = await db.query(
+        `SELECT c.id, s.slug, v.snapshot, COALESCE(v.published_at, c.updated_at) AS fecha
+           FROM aula_courses c
+           JOIN aula_course_versions v ON v.id = c.current_version_id
+           JOIN public_slugs s ON s.entity = 'aula' AND s.entity_id = c.id AND s.is_current
+          WHERE c.kind = 'edvanta' AND c.status = 'publicado' AND c.deleted_at IS NULL
+            AND jsonb_path_exists(v.snapshot, '$.modules[*].lessons[*].blocks[*] ? (@.type == "experiencia")')`,
+      );
+      for (const c of conClases) {
+        for (const clase of await clasesPublicas(db, c.id, c.snapshot)) {
+          rows.push({ ruta: rutaDeClase(c.slug, clase.slug), fecha: c.fecha });
+        }
+      }
       const dia = (f) => (f ? new Date(f).toISOString().slice(0, 10) : null);
       const xml = [
         '<?xml version="1.0" encoding="UTF-8"?>',

@@ -1,7 +1,7 @@
 /** Nombres, iconos y ayudas de los bloques de una clase. */
 import {
   AlignLeft, FileText, FolderDown, GalleryHorizontal, Heading, Image, Link2, Megaphone, Music, PanelTop,
-  Presentation, Video,
+  Presentation, Sparkles, Video,
 } from 'lucide-react';
 
 export const BLOCK_META = {
@@ -17,6 +17,7 @@ export const BLOCK_META = {
   infografia: { label: 'Infografía', icon: PanelTop, description: 'Imagen ampliable con su descripción completa.' },
   enlace: { label: 'Enlace externo', icon: Link2, description: 'Tarjeta que abre otra página en una pestaña nueva.' },
   destacado: { label: 'Recuadro destacado', icon: Megaphone, description: 'Nota importante, advertencia o consejo.' },
+  experiencia: { label: 'Experiencia de clase', icon: Sparkles, description: 'Clase completa e interactiva: mapa conceptual, proceso, caso, repaso y referencias.' },
 };
 
 export const CALLOUT_TONES = [
@@ -52,6 +53,14 @@ export function emptyBlockData(type) {
     case 'infografia': return { fileId: null, alt: '', caption: '', longDescriptionHtml: '' };
     case 'enlace': return { url: '', title: '', description: '' };
     case 'destacado': return { tone: 'info', title: '', html: '' };
+    case 'experiencia': return {
+      gancho: { titulo: '', texto: '' },
+      objetivos: [''],
+      conceptos: [],
+      secciones: [{ titulo: '', parrafos: [''] }],
+      resumen: [''],
+      referencias: [{ cita: '', url: '' }],
+    };
     default: return {};
   }
 }

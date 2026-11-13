@@ -34,6 +34,7 @@ import { buffer as streamToBuffer } from 'node:stream/consumers';
 import { pool } from '../db.js';
 import { fichaDeCursoPropio, fichaDeCursoCurado, huecosDeLaFicha } from '../lib/ficha-de-curso.js';
 import { asegurarSlug, resolverSlug } from '../lib/slugs-publicos.js';
+import { rutasDeClasesPublicas } from '../lib/clase-publica.js';
 
 const ALLOWED_PROVIDERS = ['edutin', 'coursera', 'udemy'];
 const ALLOWED_PRICE_TYPES = ['free', 'free_audit', 'paid', 'subscription', 'financial_aid', 'unknown'];
@@ -410,7 +411,7 @@ export const SQL_CURSO_PUBLICO = `
      AND c.deleted_at IS NULL`;
 
 /** Del snapshot publicado al temario que se puede enseñar sin cuenta. */
-export function temarioPublico(snapshot) {
+export function temarioPublico(snapshot, rutas = new Map()) {
   const modulos = Array.isArray(snapshot?.modules) ? snapshot.modules : [];
   return modulos.map((m, i) => ({
     id: m.id,
@@ -424,6 +425,8 @@ export function temarioPublico(snapshot) {
       // Si la clase trae video se dice, porque cambia la expectativa de
       // quien decide si entrar. No se dice cuál ni dónde está.
       hasVideo: (l.blocks || []).some((b) => b.type === 'video'),
+      // Clase abierta (con experiencia): su página pública.
+      ...(rutas.has(Number(l.id)) ? { ruta: rutas.get(Number(l.id)) } : {}),
     })),
   }));
 }
@@ -625,7 +628,8 @@ export async function fichaDeCursoRoute(req, res) {
       if (!rows[0].public_slug) {
         rows[0].public_slug = await asegurarSlug(pool, { entidad: 'aula', id, titulo: rows[0].title, nivel: rows[0].level });
       }
-      const ficha = fichaDeCursoPropio(rows[0], temarioPublico(rows[0].snapshot));
+      const rutas = await rutasDeClasesPublicas(pool, id, rows[0].public_slug, rows[0].snapshot);
+      const ficha = fichaDeCursoPropio(rows[0], temarioPublico(rows[0].snapshot, rutas));
       return res.json({ ok: true, data: ficha, faltan: huecosDeLaFicha(ficha), relacionados: await relacionados(ficha) });
     }
 

@@ -6,7 +6,9 @@
  * `onFile` agrega los datos de un archivo recién subido.
  * `errors` trae errores por campo (del navegador o del servidor).
  */
+import { lazy, Suspense, useState } from 'react';
 import { ArrowDown, ArrowUp, Trash2 } from 'lucide-react';
+import { caracteresDeExperiencia, leerExperiencia } from '../../../api/lib/experiencia.js';
 import { fileUrl } from '../api';
 import { IconButton } from '../ui/Button';
 import { FileUploader } from '../ui/FileUploader';
@@ -15,6 +17,8 @@ import { RichTextField } from '../ui/RichTextField';
 import { Segmented } from '../ui/Tabs';
 import { moveBy } from '../ui/Sortable';
 import { BLOCK_ACCEPT, CALLOUT_TONES } from './meta';
+
+const ExperienciaDeClase = lazy(() => import('../../components/experiencia/ExperienciaDeClase'));
 
 const DOWNLOADABLE = {
   imagen: () => true,
@@ -109,6 +113,9 @@ export function validateBlock(type, d) {
       break;
     case 'destacado':
       if (isBlank(d.html)) e.html = 'Escribe el contenido del recuadro.';
+      break;
+    case 'experiencia':
+      try { leerExperiencia(d); } catch (err) { e.json = err.message; }
       break;
     default:
   }
@@ -344,6 +351,55 @@ function CalloutForm({ value, onChange, errors }) {
   );
 }
 
+/**
+ * La experiencia de clase se edita como JSON (estructura en
+ * api/lib/experiencia.js). Se valida con la misma función del servidor
+ * y se ve al lado tal como la verá el participante.
+ */
+function ExperienciaForm({ value, onChange, errors }) {
+  const [texto, setTexto] = useState(() => JSON.stringify(value || {}, null, 2));
+  const [error, setError] = useState(null);
+  const [vista, setVista] = useState(false);
+  let valida = null;
+  try { valida = leerExperiencia(value); } catch { valida = null; }
+  const cambiar = (t) => {
+    setTexto(t);
+    try {
+      const datos = JSON.parse(t);
+      setError(null);
+      onChange(datos);
+    } catch (err) {
+      setError(`El JSON no es válido: ${err.message}`);
+    }
+  };
+  const caracteres = valida ? caracteresDeExperiencia(valida) : 0;
+  return (
+    <div className="flex flex-col gap-4">
+      <TextArea
+        label="Contenido de la clase (JSON)"
+        hint="Situación, objetivos, conceptos, mapa, secciones, proceso, caso, errores, repaso, resumen, referencias, imágenes sugeridas y keywords."
+        value={texto}
+        onChange={(e) => cambiar(e.target.value)}
+        error={error || errors.json}
+        rows={18}
+        spellCheck={false}
+        className="font-mono text-xs"
+      />
+      <p className={`text-sm font-semibold ${caracteres >= 3000 ? 'text-[var(--aula-success)]' : 'text-[var(--aula-warning)]'}`}>
+        {valida ? `${caracteres.toLocaleString('es-CO')} caracteres de lectura${caracteres >= 3000 ? '' : ' (la meta es 3.000 o más)'}` : 'Completa la estructura para ver el conteo.'}
+      </p>
+      {valida && (
+        <Toggle label="Vista previa" description="Así la verá el participante (más las sugerencias de imagen, que solo ve autoría)." checked={vista} onChange={setVista} />
+      )}
+      {valida && vista && (
+        <div className="rounded-[var(--aula-radius)] border border-[var(--aula-border)] bg-[var(--aula-bg)] p-4">
+          <Suspense fallback={null}><ExperienciaDeClase data={valida} modoAutoria idBase="vista-previa" /></Suspense>
+        </div>
+      )}
+    </div>
+  );
+}
+
 const FORMS = {
   encabezado: HeadingForm,
   texto: TextForm,
@@ -357,6 +413,7 @@ const FORMS = {
   infografia: InfographicForm,
   enlace: LinkForm,
   destacado: CalloutForm,
+  experiencia: ExperienciaForm,
 };
 
 export function BlockForm({ type, value, onChange, errors = {}, files, onFile, allowDownload, onAllowDownload }) {

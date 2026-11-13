@@ -14,6 +14,7 @@ import { many } from './db.js';
 import { badRequest, bool, id as idField, int, oneOf, str } from './http.js';
 import { FILE_TYPES } from './storage.js';
 import { htmlToText, richText, sanitizeRichText } from './richtext.js';
+import { ErrorDeExperiencia, leerExperiencia } from '../experiencia.js';
 
 const IMAGE_EXT = ['png', 'jpg', 'jpeg', 'webp', 'gif'];
 const VIDEO_EXT = Object.keys(FILE_TYPES).filter((e) => FILE_TYPES[e].kind === 'video');
@@ -33,6 +34,7 @@ export const BLOCK_TYPES = {
   infografia: { label: 'Infografía', available: true, downloadable: true },
   enlace: { label: 'Enlace externo', available: true, downloadable: false },
   destacado: { label: 'Recuadro destacado', available: true, downloadable: false },
+  experiencia: { label: 'Experiencia de clase', available: true, downloadable: false },
   actividad: { label: 'Actividad', available: false, downloadable: false },
   quiz: { label: 'Evaluación', available: false, downloadable: false },
   foro: { label: 'Foro', available: false, downloadable: false },
@@ -280,6 +282,16 @@ const READERS = {
       files: [],
     };
   },
+
+  // La clase completa como datos (api/lib/experiencia.js).
+  experiencia(d) {
+    try {
+      return { data: leerExperiencia(d), files: [] };
+    } catch (e) {
+      if (e instanceof ErrorDeExperiencia) throw badRequest(e.message, { field: e.field });
+      throw e;
+    }
+  },
 };
 
 /** Valida el `data` de un bloque (sin consultar la base). */
@@ -353,6 +365,7 @@ export function blockSummary(type, data) {
     case 'encabezado': return d.text || '';
     case 'texto': return htmlToText(d.html).slice(0, 140);
     case 'destacado': return d.title || htmlToText(d.html).slice(0, 140);
+    case 'experiencia': return d.gancho?.titulo || '';
     case 'imagen': return d.caption || d.alt || '';
     case 'galeria': return `${(d.items || []).length} imágenes`;
     case 'archivos': return d.title || `${(d.items || []).length} archivos`;
