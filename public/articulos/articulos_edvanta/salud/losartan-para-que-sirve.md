@@ -20,7 +20,7 @@ Consejos prácticos:
 - No lo suspenda aunque su presión ya esté normal: está normal precisamente porque lo toma.
 
 ## Losartán con hidroclorotiazida: ¿por qué juntos?
-Muchas personas necesitan dos medicamentos para controlar la presión. El losartán se combina con frecuencia con la hidroclorotiazida, un diurético, porque actúan de forma diferente y se complementan. Existen tabletas que traen los dos medicamentos juntos, lo que facilita el tratamiento. Solo su médico puede indicar si usted necesita la combinación y en qué dosis. Si recibe la combinación, no tome además losartán solo, salvo que su médico lo haya indicado así expresamente: sería una duplicación.
+Muchas personas necesitan dos medicamentos para controlar la presión. El losartán se combina con frecuencia con la [hidroclorotiazida](/articulos/hidroclorotiazida-para-que-sirve), un diurético, porque actúan de forma diferente y se complementan. Existen tabletas que traen los dos medicamentos juntos, lo que facilita el tratamiento. Solo su médico puede indicar si usted necesita la combinación y en qué dosis. Si recibe la combinación, no tome además losartán solo, salvo que su médico lo haya indicado así expresamente: sería una duplicación.
 
 ## Efectos secundarios del losartán
 La mayoría de las personas lo tolera bien. Según la ficha técnica, en personas con presión alta los efectos frecuentes son:

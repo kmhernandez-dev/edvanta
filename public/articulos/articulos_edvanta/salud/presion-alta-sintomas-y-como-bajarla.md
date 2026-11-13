@@ -13,6 +13,8 @@ La presión se mide en milímetros de mercurio (mmHg). Las guías europeas de ca
 
 Las guías estadounidenses de 2025 hablan de hipertensión desde 130/80 mmHg. Por eso, su médico puede usar una u otra referencia según su caso. En casa los valores se interpretan distinto: un promedio de 135/85 mmHg o más en las mediciones domiciliarias se considera alto.
 
+Si quiere ver la tabla completa, incluidos los valores en niños y adolescentes, consulte [presión arterial normal por edad](/articulos/presion-arterial-normal-por-edad).
+
 Una sola medición alta no basta para hablar de hipertensión. La presión cambia durante el día y sube con el estrés, el café, el cigarrillo, el dolor o la prisa por llegar a la cita. El diagnóstico se confirma con varias mediciones.
 
 ## Síntomas: por qué la llaman «enemigo silencioso»
@@ -47,6 +49,8 @@ Los cambios de hábitos son parte del tratamiento para todas las personas, tomen
 
 Sobre la «sal con potasio» o «sal dietética»: puede ayudar a algunas personas, pero no es para todos. Si toma medicamentos para la presión como losartán o enalapril, diuréticos que ahorran potasio, o si tiene enfermedad de los riñones, consulte primero a su médico, porque puede subir demasiado el potasio en la sangre.
 
+Encontrará qué comer, la dieta DASH y cómo leer el sello «exceso en sodio» en [alimentos para bajar la presión alta](/articulos/alimentos-para-bajar-la-presion-alta).
+
 Desconfíe de productos «milagrosos» o remedios que prometen curar la hipertensión. No reemplazan el tratamiento indicado por su médico.
 
 ## Tratamiento con medicamentos: solo con fórmula médica
@@ -58,13 +62,15 @@ Muchas personas necesitan dos o más medicamentos, y hoy se usan con frecuencia 
 - No se automedique con antiinflamatorios para el dolor sin consultar.
 - Si nota efectos molestos, consulte a su médico o al químico farmacéutico: casi siempre hay alternativas.
 
+Cada grupo, con sus efectos secundarios, está explicado en [medicamentos para la presión alta](/articulos/medicamentos-para-la-presion-alta), y hay fichas del [amlodipino](/articulos/amlodipino-para-que-sirve) y de la [hidroclorotiazida](/articulos/hidroclorotiazida-para-que-sirve).
+
 ## Presión alta en el embarazo
 La presión alta durante el embarazo requiere control especializado, porque puede afectar a la madre y al bebé. Algunos medicamentos para la presión, como el enalapril o el losartán, no deben usarse durante el embarazo. Si toma uno de ellos y planea un embarazo, hable con su médico antes de buscarlo; si queda en embarazo, consulte de inmediato, sin suspender por su cuenta.
 
-Vaya a urgencias si en el embarazo presenta dolor de cabeza intenso, visión borrosa o luces, dolor en la parte alta del abdomen, hinchazón súbita de cara o manos, o dificultad para respirar.
+Vaya a urgencias si en el embarazo presenta dolor de cabeza intenso, visión borrosa o luces, dolor en la parte alta del abdomen, hinchazón súbita de cara o manos, o dificultad para respirar. Más información en [presión alta en el embarazo](/articulos/presion-alta-en-el-embarazo).
 
 ## Señales de alarma: cuándo ir a urgencias
-Busque atención inmediata si la presión está muy alta (por ejemplo, 180/110 mmHg o más) y además tiene dolor en el pecho, dificultad para respirar, debilidad o adormecimiento de un lado del cuerpo, dificultad para hablar, confusión, dolor de cabeza súbito e intenso o pérdida de visión. Si la presión está muy alta pero no tiene síntomas, consulte a su médico ese mismo día. No tome medicamentos debajo de la lengua para bajarla rápido: una caída brusca también puede ser peligrosa.
+Busque atención inmediata si la presión está muy alta (por ejemplo, 180/110 mmHg o más) y además tiene dolor en el pecho, dificultad para respirar, debilidad o adormecimiento de un lado del cuerpo, dificultad para hablar, confusión, dolor de cabeza súbito e intenso o pérdida de visión. Si la presión está muy alta pero no tiene síntomas, consulte a su médico ese mismo día. No tome medicamentos debajo de la lengua para bajarla rápido: una caída brusca también puede ser peligrosa. Le explicamos paso a paso qué hacer en [crisis hipertensiva: qué hacer](/articulos/crisis-hipertensiva-que-hacer).
 
 ## ¿«Presión alta en el ojo» es lo mismo?
 No. La «presión alta en el ojo» se refiere a la presión dentro del ojo (hipertensión ocular), relacionada con el glaucoma, y la mide el oftalmólogo. Es distinta de la presión arterial alta, aunque esta también puede dañar la retina con el tiempo.
@@ -75,6 +81,8 @@ No. La «presión alta en el ojo» se refiere a la presión dentro del ojo (hipe
 - No hable ni mire el celular durante la medición.
 - Tome dos medidas en la mañana y dos en la noche, antes de los medicamentos, durante los días que le indique su médico, y anótelas.
 - Lleve el registro a la consulta.
+
+La técnica completa, con los errores más comunes, está en [cómo tomar la presión arterial en casa](/articulos/como-tomar-la-presion-arterial-en-casa).
 
 ## Cuándo consultar a su médico o al químico farmacéutico
 Consulte si sus mediciones en casa están por encima de lo que le indicó el médico, si tiene efectos molestos con sus medicamentos, si va a iniciar otro medicamento (incluidos los de venta libre) o si planea un embarazo. El químico farmacéutico puede ayudarle a entender su tratamiento, revisar interacciones y enseñarle a medir la presión.

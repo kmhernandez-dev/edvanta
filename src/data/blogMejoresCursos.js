@@ -317,4 +317,15 @@ export const BLOG_MEJORES_CURSOS = [
     imageAlt: 'Bebé jugando con bloques de colores junto a su cuidadora',
     keywords: ['curso de estimulación temprana gratis', 'curso de primera infancia', 'curso de pedagogía infantil', 'ley 1804 de 2016', 'de cero a siempre', 'desarrollo infantil', 'curso para agentes educativos'],
   }),
+  // Grupo temático de presión alta (12-nov-2026): la pieza para profesionales.
+  post({
+    slug: 'cursos-de-hipertension-para-profesionales-de-la-salud',
+    title: 'Cursos de hipertensión arterial para profesionales de la salud: farmacoterapia, riesgo cardiovascular y seguimiento',
+    seoTitle: 'Cursos de hipertensión para profesionales de la salud',
+    description: 'Cursos de hipertensión arterial gratis y con certificado: farmacoterapia según las guías 2024 y 2025, farmacología cardiovascular y electrocardiograma.',
+    readingTime: '8 min',
+    image: '/img/escuelas/salud.webp',
+    imageAlt: 'Profesional de la salud midiendo la presión arterial a un paciente',
+    keywords: ['curso de hipertensión arterial', 'curso de hipertensión gratis', 'curso de farmacoterapia de la hipertensión', 'curso de hipertensión para profesionales de la salud', 'curso de riesgo cardiovascular', 'curso de farmacología cardiovascular', 'curso de hipertensión con certificado'],
+  }),
 ];

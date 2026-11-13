@@ -30,6 +30,15 @@ Sí, cuando el médico lo indica. Es una combinación frecuente porque los dos m
 ### ¿Qué pasa con la presión alta en el embarazo?
 Requiere control médico especializado, porque puede afectar a la madre y al bebé. Algunos medicamentos para la presión, como el losartán y el enalapril, no deben usarse en el embarazo. Si toma uno y planea un embarazo, hable antes con su médico; si queda embarazada, consulte de inmediato sin suspender por su cuenta. Vaya a urgencias si tiene dolor de cabeza intenso, visión borrosa, dolor en la parte alta del abdomen o hinchazón súbita.
 
+## Para leer más sobre la presión alta
+- [Presión arterial normal por edad](/articulos/presion-arterial-normal-por-edad)
+- [Cómo tomar la presión arterial en casa](/articulos/como-tomar-la-presion-arterial-en-casa)
+- [Alimentos para bajar la presión alta](/articulos/alimentos-para-bajar-la-presion-alta)
+- [Medicamentos para la presión alta](/articulos/medicamentos-para-la-presion-alta)
+- [Amlodipino: para qué sirve](/articulos/amlodipino-para-que-sirve) y [hidroclorotiazida: para qué sirve](/articulos/hidroclorotiazida-para-que-sirve)
+- [Crisis hipertensiva: qué hacer](/articulos/crisis-hipertensiva-que-hacer)
+- [Presión alta en el embarazo](/articulos/presion-alta-en-el-embarazo)
+
 Este contenido es educativo y no reemplaza la consulta con su médico o químico farmacéutico.
 
 ## Fuentes
