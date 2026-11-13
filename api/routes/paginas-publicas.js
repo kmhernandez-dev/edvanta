@@ -35,7 +35,7 @@ import {
 import { SQL_CURSO_PUBLICO, temarioPublico } from './courses.js';
 import {
   clasePublica, clasesPublicas, cuerpoDeClase, datosDeClase, descripcionDeClase, resumenDeClase,
-  rutaDeClase, rutasDeClasesPublicas, tituloDeClase,
+  rutaDeClase, tituloDeClase,
 } from '../lib/clase-publica.js';
 import { EMISOR, verificarCertificado } from '../lib/aula/certificados.js';
 import { cuerpoDeCurso, datosDeCurso } from '../lib/html-de-ficha.js';
@@ -135,9 +135,7 @@ async function rutasFijas() {
 async function cursoDelSlug(db, entidad, id) {
   if (entidad === 'aula') {
     const { rows } = await db.query(SQL_CURSO_PUBLICO, [id]);
-    if (!rows[0]) return null;
-    const rutas = await rutasDeClasesPublicas(db, id, rows[0].public_slug, rows[0].snapshot);
-    return fichaDeCursoPropio(rows[0], temarioPublico(rows[0].snapshot, rutas));
+    return rows[0] ? fichaDeCursoPropio(rows[0], temarioPublico(rows[0].snapshot)) : null;
   }
   const { rows } = await db.query('SELECT * FROM courses WHERE id = $1 AND active = TRUE', [id]);
   return rows[0] ? fichaDeCursoCurado(rows[0]) : null;

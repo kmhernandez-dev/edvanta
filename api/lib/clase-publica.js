@@ -55,13 +55,6 @@ export async function clasesPublicas(db, courseId, snapshot) {
   return salida;
 }
 
-/** Map(id de clase → ruta pública) para enlazar desde el temario del curso. */
-export async function rutasDeClasesPublicas(db, courseId, slugCurso, snapshot) {
-  if (!slugCurso) return new Map();
-  const clases = await clasesPublicas(db, courseId, snapshot);
-  return new Map(clases.map((c) => [Number(c.id), rutaDeClase(slugCurso, c.slug)]));
-}
-
 /**
  * Datos de una clase pública a partir de los slugs de la dirección.
  * Devuelve null si el curso no es propio y público. Si el slug del

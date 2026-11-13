@@ -15,7 +15,7 @@ import { pg_trgm } from '@electric-sql/pglite/contrib/pg_trgm';
 import { pgcrypto } from '@electric-sql/pglite/contrib/pgcrypto';
 import { unaccent } from '@electric-sql/pglite/contrib/unaccent';
 import { uuid_ossp } from '@electric-sql/pglite/contrib/uuid_ossp';
-import { readdirSync, readFileSync } from 'node:fs';
+import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
@@ -37,7 +37,7 @@ import { CLASES as CLASES_VALIDACIONES, CURSO as CURSO_VALIDACIONES } from '../.
 // Todos los cursos con experiencias (una carpeta por curso en contenido/experiencias).
 const raizContenido = path.join(path.dirname(fileURLToPath(import.meta.url)), '..', '..', 'contenido', 'experiencias');
 const PAQUETES = await Promise.all(readdirSync(raizContenido, { withFileTypes: true })
-  .filter((e) => e.isDirectory())
+  .filter((e) => e.isDirectory() && existsSync(path.join(raizContenido, e.name, 'index.mjs')))
   .map(async (e) => ({ clave: e.name, ...(await import(path.join(raizContenido, e.name, 'index.mjs'))) })));
 
 const dir = path.join(path.dirname(fileURLToPath(import.meta.url)), '..', 'migrations');
