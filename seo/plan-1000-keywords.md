@@ -31,16 +31,16 @@ Con 10 a 40 consultas por página fuerte indexada, 3.000 consultas piden entre 1
 **Registro de avisos a buscadores:**
 
 - **12-nov (noche), IndexNow:** 1.038 direcciones enviadas a Bing (HTTP 200). El primer envío dio 403 porque la clave aún no estaba verificada.
-- **12-nov (noche), Search Console:**  reenviado. Justo después de enviar figuró «No se ha podido obtener», que es el estado mientras Google lo procesa; el archivo responde 200 como XML.
+- **12-nov (noche), Search Console:** `sitemap.xml` reenviado. Justo después de enviar figuró «No se ha podido obtener», que es el estado mientras Google lo procesa; el archivo responde 200 como XML.
 - **12-nov (noche), indexación solicitada para 11 URL** antes de la cuota:
-  -  y los grupos de obesidad e hipertensión;
+  - `/vademecum` y los grupos de obesidad e hipertensión;
   - las monografías de semaglutida, tirzepatida, metformina, losartán y atorvastatina;
   - los artículos de presión arterial por edad y de medicamentos para la presión alta;
-  - , que **ya figura como «La URL está en Google»**.
+  - `/cursos`, que **ya figura como «La URL está en Google»**.
 - **Siguiente día:**
   - artículos: crisis hipertensiva (quedó sin pedir por la cuota), cómo tomar la presión en casa, alimentos para bajar la presión alta, amlodipino, hidroclorotiazida y presión alta en el embarazo;
   - grupos: diabetes, dislipidemia, anticoagulantes y oncología;
-  - ,  y .
+  - `/cursos/coursera`, `/cursos/edutin` y `/cursos/udemy`.
 
 ## Dónde estamos (28 días al 10-nov-2026)
 
