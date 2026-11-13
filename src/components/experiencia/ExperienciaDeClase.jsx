@@ -317,6 +317,37 @@ function Tarjetas({ items, onRepasado }) {
   );
 }
 
+// ── Ilustración de portada ───────────────────────────────────
+// Composición de marca hecha con los iconos de la propia clase: el del
+// primer paso del proceso (o del primer concepto) al centro y hasta seis
+// más en órbita. Es decorativa: no transmite información nueva.
+
+function iconosDeLaClase(d) {
+  const lista = [
+    ...(d.proceso?.pasos || []).map((p) => p.icono),
+    ...(d.conceptos || []).map((c) => c.icono),
+    ...(d.mapa?.ramas || []).map((r) => r.icono),
+  ].filter((n) => n && n !== 'Sparkles');
+  return [...new Set(lista)].slice(0, 7);
+}
+
+function IlustracionDePortada({ iconos }) {
+  if (iconos.length < 3) return null;
+  const [Centro, ...resto] = iconos.map(iconoDe);
+  return (
+    <div className="exp-arte" aria-hidden="true">
+      <span className="exp-arte__orbita exp-arte__orbita--externa" />
+      <span className="exp-arte__orbita" />
+      <span className="exp-arte__centro"><Centro size={44} strokeWidth={1.8} /></span>
+      {resto.map((Icono, i) => (
+        <span key={i} className={`exp-arte__satelite tono-${tono(i)}`} style={{ '--angulo': `${(360 / resto.length) * i - 90}deg`, '--retraso': `${i * -1.1}s` }}>
+          <Icono size={22} strokeWidth={2} />
+        </span>
+      ))}
+    </div>
+  );
+}
+
 // ── La clase completa ────────────────────────────────────────
 
 export default function ExperienciaDeClase({ data, modoAutoria = false, idBase = 'exp' }) {
@@ -376,15 +407,18 @@ export default function ExperienciaDeClase({ data, modoAutoria = false, idBase =
           </g>
           <g fill="currentColor"><circle cx="100" cy="20" r="4" /><circle cx="169" cy="60" r="4" /><circle cx="169" cy="140" r="4" /><circle cx="100" cy="180" r="4" /><circle cx="31" cy="140" r="4" /><circle cx="31" cy="60" r="4" /></g>
         </svg>
-        <p className="exp-eyebrow exp-eyebrow--hero"><Compass size={14} aria-hidden="true" /> Situación real</p>
-        <h2 id={`${ancla('situacion')}-t`} className="exp-hero__titulo"><Rico>{d.gancho.titulo}</Rico></h2>
-        <p className="exp-hero__texto"><Rico>{d.gancho.texto}</Rico></p>
-        <ul className="exp-hero__chips">
-          {d.duracion && <li><Clock3 size={14} aria-hidden="true" /> {d.duracion} min</li>}
-          {d.conceptos?.length > 0 && <li><Lightbulb size={14} aria-hidden="true" /> {d.conceptos.length} conceptos</li>}
-          {d.proceso && <li><Workflow size={14} aria-hidden="true" /> {d.proceso.pasos.length} pasos</li>}
-          {interactivos.length > 0 && <li><Sparkles size={14} aria-hidden="true" /> {interactivos.length} prácticas</li>}
-        </ul>
+        <div className="exp-hero__contenido">
+          <p className="exp-eyebrow exp-eyebrow--hero"><Compass size={14} aria-hidden="true" /> Situación real</p>
+          <h2 id={`${ancla('situacion')}-t`} className="exp-hero__titulo"><Rico>{d.gancho.titulo}</Rico></h2>
+          <p className="exp-hero__texto"><Rico>{d.gancho.texto}</Rico></p>
+          <ul className="exp-hero__chips">
+            {d.duracion && <li><Clock3 size={14} aria-hidden="true" /> {d.duracion} min</li>}
+            {d.conceptos?.length > 0 && <li><Lightbulb size={14} aria-hidden="true" /> {d.conceptos.length} conceptos</li>}
+            {d.proceso && <li><Workflow size={14} aria-hidden="true" /> {d.proceso.pasos.length} pasos</li>}
+            {interactivos.length > 0 && <li><Sparkles size={14} aria-hidden="true" /> {interactivos.length} prácticas</li>}
+          </ul>
+        </div>
+        <IlustracionDePortada iconos={iconosDeLaClase(d)} />
       </section>
 
       {/* Objetivos */}
