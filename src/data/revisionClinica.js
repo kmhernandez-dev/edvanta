@@ -224,9 +224,28 @@ const REVISADOS_POR_KARLA_2026_11_09 = [
   'vivir-sin-tiroides',
 ];
 
-export const REVISION_CLINICA = Object.fromEntries(
-  REVISADOS_POR_KARLA_2026_11_09.map((slug) => [slug, KARLA_2026_11_09]),
-);
+/**
+ * 12 de noviembre de 2026: Karla Hernández revisó el grupo temático de
+ * presión alta (8 artículos) y el vademécum, y respondió por escrito:
+ * «ya los leí y apruebo todos».
+ */
+const KARLA_2026_11_12 = { ...KARLA_2026_11_09, reviewedAt: '2026-11-12' };
+
+const REVISADOS_POR_KARLA_2026_11_12 = [
+  'presion-arterial-normal-por-edad',
+  'como-tomar-la-presion-arterial-en-casa',
+  'alimentos-para-bajar-la-presion-alta',
+  'amlodipino-para-que-sirve',
+  'hidroclorotiazida-para-que-sirve',
+  'crisis-hipertensiva-que-hacer',
+  'presion-alta-en-el-embarazo',
+  'medicamentos-para-la-presion-alta',
+];
+
+export const REVISION_CLINICA = Object.fromEntries([
+  ...REVISADOS_POR_KARLA_2026_11_09.map((slug) => [slug, KARLA_2026_11_09]),
+  ...REVISADOS_POR_KARLA_2026_11_12.map((slug) => [slug, KARLA_2026_11_12]),
+]);
 
 /**
  * Páginas de enfermedades tiroideas (src/data/enfermedades.js), también de
@@ -243,9 +262,19 @@ export const REVISION_ENFERMEDADES = Object.fromEntries([
  * Vademécum (src/data/vademecum/): grupos terapéuticos y monografías de
  * medicamentos. Mismas reglas: una línea por página, solo después de que
  * una química farmacéutica la lea completa y verifique dosis, indicaciones,
- * advertencias, interacciones y referencias. Vacío al crear el vademécum
- * (12-nov-2026): las páginas existen pero no se indexan.
+ * advertencias, interacciones y referencias.
  *
- *    'semaglutida': { revisor: '…', revisorUrl: '…', reviewedAt: 'AAAA-MM-DD' },
+ * 12-nov-2026: Karla aprobó por escrito los 6 grupos y las 22 monografías
+ * («ya los leí y apruebo todos»). Una página nueva del vademécum entra
+ * sin línea aquí, y por tanto sin índice, hasta su propia revisión.
  */
-export const REVISION_VADEMECUM = {};
+export const REVISION_VADEMECUM = Object.fromEntries([
+  'medicamentos-para-la-obesidad', 'medicamentos-para-la-hipertension-arterial', 'medicamentos-para-la-diabetes-tipo-2',
+  'medicamentos-oncologicos-de-alto-costo', 'medicamentos-para-la-dislipidemia', 'medicamentos-anticoagulantes',
+  'semaglutida', 'tirzepatida', 'liraglutida', 'orlistat', 'naltrexona-bupropion', 'setmelanotida',
+  'losartan', 'enalapril', 'amlodipino', 'hidroclorotiazida',
+  'metformina', 'empagliflozina', 'sitagliptina',
+  'trastuzumab', 'imatinib', 'pembrolizumab',
+  'atorvastatina', 'rosuvastatina', 'ezetimiba',
+  'warfarina', 'apixaban', 'rivaroxaban',
+].map((slug) => [slug, KARLA_2026_11_12]));
