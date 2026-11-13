@@ -37,10 +37,15 @@ Con 10 a 40 consultas por página fuerte indexada, 3.000 consultas piden entre 1
   - las monografías de semaglutida, tirzepatida, metformina, losartán y atorvastatina;
   - los artículos de presión arterial por edad y de medicamentos para la presión alta;
   - `/cursos`, que **ya figura como «La URL está en Google»**.
-- **Siguiente día:**
-  - artículos: crisis hipertensiva (quedó sin pedir por la cuota), cómo tomar la presión en casa, alimentos para bajar la presión alta, amlodipino, hidroclorotiazida y presión alta en el embarazo;
+- **13-nov, 9:30:** la cuota seguía agotada. Google cuenta 24 horas desde las solicitudes de la noche anterior, no desde la medianoche. La lista pasa a la noche del 13-nov o a la mañana del 14-nov.
+- **Lista pendiente:**
+  - artículos: crisis hipertensiva, cómo tomar la presión en casa, alimentos para bajar la presión alta, amlodipino, hidroclorotiazida y presión alta en el embarazo;
   - grupos: diabetes, dislipidemia, anticoagulantes y oncología;
   - `/cursos/coursera`, `/cursos/edutin` y `/cursos/udemy`.
+- **13-nov, datos estructurados:** Search Console marcaba como no válida la ProfilePage de la autora: `mainEntity` era solo un `@id`. Se corrigió (commit ae9c74e), junto con el FAQPage de recursos para estudiantes, que no tenía `@context`. Falta validar la corrección en Search Console.
+- **13-nov, contenido nuevo en noindex** hasta la revisión de Karla:
+  - el lote 1 de antimicrobianos: 7 fichas `/articulos/[dci]-para-que-sirve`;
+  - el grupo del vademécum «Antibióticos de uso ambulatorio», con 7 monografías.
 
 ## Dónde estamos (28 días al 10-nov-2026)
 
