@@ -1,6 +1,32 @@
-# Plan hacia 1.000 palabras clave
+# Plan hacia 3.000 palabras clave
 
-Meta de Karla (12-nov-2026): pasar de unas 54 a 1.000 consultas con impresiones en Search Console.
+Meta de Karla: pasar de unas 54 a 1.000 consultas con impresiones en Search Console (12-nov-2026), y luego a **3.000** (nueva meta, 12-nov-2026 por la noche).
+
+## Hacia 3.000: la cuenta nueva
+
+Con 10 a 40 consultas por página fuerte indexada, 3.000 consultas piden entre 100 y 300 páginas indexadas y con algunos meses de antigüedad. El sitio ya tiene unas 650 direcciones en el sitemap del frontend y 238 cursos en el de la API, pero Google tenía 309 indexadas el 8-nov. Por eso la meta se apoya en tres frentes:
+
+1. **Indexar lo que ya existe (lo más rápido).**
+   - Desde el 12-nov ya no queda ningún artículo en noindex por revisión: Karla aprobó el grupo de presión alta y el vademécum («ya los leí y apruebo todos»).
+   - Avisos a buscadores después de cada despliegue:
+     - sitemap reenviado en Search Console;
+     - unas 10 solicitudes diarias de indexación, por prioridad;
+     - IndexNow para Bing con todas las direcciones: `node scripts/indexnow.mjs`, o con `--desde=AAAA-MM-DD` para enviar solo las nuevas.
+2. **Escribir lo que más rinde.**
+   - El vademécum de antimicrobianos: 2.000 keywords en 93 páginas (ver el punto 7 de los siguientes lotes).
+   - Nuevos grupos del vademécum, siempre con revisión clínica.
+   - Las competencias y rutas que siguen delgadas.
+3. **Ganar autoridad.**
+   - El kit de enlaces para universidades, pendiente de enviar.
+   - Perfiles de marca con `sameAs`.
+
+**Orden de las solicitudes en Search Console (unas 10 por día):**
+
+1. `/vademecum`, los 6 grupos y las monografías de más búsqueda: semaglutida, tirzepatida, metformina, losartán y atorvastatina.
+2. Los 8 artículos de presión alta y las monografías restantes.
+3. `/cursos` y sus tres páginas por plataforma.
+4. Las 6 últimas noticias reescritas y los artículos de «Mejores cursos» sin pedir.
+5. Lo que el informe de Páginas siga mostrando como «Descubierta».
 
 ## Dónde estamos (28 días al 10-nov-2026)
 
@@ -70,11 +96,11 @@ Una página sólida, ya indexada y con unos meses, suele aparecer en 10 a 40 con
 2. Los 4 artículos del lote 5 de «Mejores cursos». Empezar por microbiota, contabilidad de droguerías y radiología.
 3. Los artículos de «Mejores cursos» de los lotes 1 a 4 que aún no se hayan pedido.
 4. Las 50 guías de tema y las 176 fichas de cursos curados, si no se pidieron en su momento.
-5. **No pedir** el vademécum ni el grupo de presión alta hasta que Karla anote la revisión clínica en `src/data/revisionClinica.js`.
+5. El vademécum (29 páginas con la portada) y el grupo de presión alta (8): revisados por Karla el 12-nov, ya indexables. Van primero en el orden de arriba.
 
 ## Siguientes lotes, en orden de rendimiento esperado
 
-1. **Revisión clínica y indexación.** Karla revisa el vademécum (28 páginas: seis grupos —obesidad, hipertensión, diabetes, oncología, dislipidemia y anticoagulación— y 22 monografías) y el grupo de presión alta (8). Cuando firme, se anota en `REVISION_VADEMECUM` y `REVISION_CLINICA`, y se piden a Search Console. Es el lote con más potencial: contenido profundo y búsquedas de medicamentos.
+1. **Hecho (12-nov): revisión clínica.** Karla aprobó el vademécum (28 páginas: seis grupos —obesidad, hipertensión, diabetes, oncología, dislipidemia y anticoagulación— y 22 monografías) y el grupo de presión alta (8). Quedó anotado en `REVISION_VADEMECUM` y `REVISION_CLINICA`; falta pedirlas en Search Console. Es el lote con más potencial: contenido profundo y búsquedas de medicamentos.
 2. **Competencias y rutas.** 50 competencias y 11 rutas con texto propio en `api/lib/textos-perfiles/` (las carreras ya lo tienen). Son páginas ya existentes y delgadas; darles texto mejora su indexación sin crear URLs nuevas.
 3. **Vademécum, nuevos grupos.** Presión baja y más monografías oncológicas, con el mismo estándar. Obesidad, hipertensión, diabetes, oncología, dislipidemia y anticoagulación ya están hechos. Cada grupo requiere revisión clínica antes de indexarse.
 4. **Mejores cursos, lote 6.** Completar los 2 temas que faltan del lote 5 y sumar los que no canibalicen: farmacia clínica para regentes, servicio al cliente en farmacia y cursos de hematología, entre otros.

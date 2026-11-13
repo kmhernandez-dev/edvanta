@@ -34,6 +34,18 @@ Datos clave:
 - [Del aula a LinkedIn](https://edvanta.co/articulos/certificado-edvanta-en-linkedin)
 - [Verificación pública de certificados](https://edvanta.co/certificados)
 
+## Vademécum
+
+Monografías para profesionales de la salud, revisadas por una química farmacéutica: farmacoquímica, farmacodinamia, farmacocinética, evidencia, situación regulatoria en Colombia (INVIMA) y atención farmacéutica con el modelo de Minnesota. Referencias en formato Vancouver.
+
+- [Vademécum de Edvanta](https://edvanta.co/vademecum)
+- [Medicamentos para la obesidad](https://edvanta.co/vademecum/medicamentos-para-la-obesidad): semaglutida, tirzepatida, liraglutida, orlistat, naltrexona/bupropión, setmelanotida.
+- [Medicamentos para la hipertensión arterial](https://edvanta.co/vademecum/medicamentos-para-la-hipertension-arterial): losartán, enalapril, amlodipino, hidroclorotiazida.
+- [Medicamentos para la diabetes tipo 2](https://edvanta.co/vademecum/medicamentos-para-la-diabetes-tipo-2): metformina, empagliflozina, sitagliptina.
+- [Medicamentos oncológicos de alto costo](https://edvanta.co/vademecum/medicamentos-oncologicos-de-alto-costo): trastuzumab, imatinib, pembrolizumab.
+- [Medicamentos para la dislipidemia](https://edvanta.co/vademecum/medicamentos-para-la-dislipidemia): atorvastatina, rosuvastatina, ezetimiba.
+- [Medicamentos anticoagulantes](https://edvanta.co/vademecum/medicamentos-anticoagulantes): warfarina, apixabán, rivaroxabán.
+
 ## Transparencia
 
 - [Autora y revisora clínica](https://edvanta.co/autores/karla-hernandez)

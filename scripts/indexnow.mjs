@@ -64,5 +64,7 @@ for (let i = 0; i < urls.length; i += 10000) {
     body: JSON.stringify({ host: 'edvanta.co', key: CLAVE, keyLocation: `${SITIO}/${CLAVE}.txt`, urlList: lote }),
   });
   // 200 o 202: recibido. 422: alguna dirección no es del sitio. 429: demasiadas solicitudes.
+  // 403: la clave aún no está verificada. Pasó en el primer envío (12-nov-2026): se
+  // envió una sola dirección por GET (que la verificó) y el envío completo dio 200.
   console.log(`Lote ${i / 10000 + 1}: ${lote.length} direcciones → HTTP ${r.status}`);
 }
