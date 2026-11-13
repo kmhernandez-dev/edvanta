@@ -1,0 +1,971 @@
+export const CURSO = 'Curso de Farmacoterapia de la Diabetes';
+export const MIGRACION = '124_experiencias_farmacoterapia_diabetes.sql';
+
+export const CLASES = [
+  {
+    titulo: 'Introducción al curso: la farmacoterapia de la diabetes en Colombia y el papel del QF',
+    duracion: 20,
+    gancho: {
+      titulo: 'La señora Rosa y la pregunta que nadie le hizo',
+      texto: 'Rosa tiene 58 años, vive en Sincelejo y hace tres meses le diagnosticaron diabetes tipo 2. En la farmacia pregunta si puede seguir tomando el “remedio para la presión” que le dio el vecino y si la metformina “daña el riñón”. Tiene tres medicamentos, dos controles pendientes y ninguna explicación clara. El Químico Farmacéutico que la atiende puede resolver esas dudas, detectar un problema de seguridad y ayudarla a llegar mejor a su próxima consulta. Esa es la farmacoterapia de la diabetes en la vida real.',
+    },
+    objetivos: [
+      'Describir el papel del Químico Farmacéutico en la farmacoterapia de la diabetes en Colombia.',
+      'Reconocer los problemas de seguridad y adherencia más frecuentes en la consulta farmacéutica.',
+      'Relacionar las metas glucémicas con la selección del tratamiento y el seguimiento.',
+      'Ubicar las cinco unidades del curso y los casos que se resolverán.',
+    ],
+    conceptos: [
+      { icono: 'Activity', termino: 'Diabetes tipo 2', definicion: 'Enfermedad crónica en la que la resistencia a la insulina y la disfunción de la célula beta elevan la glucosa. El tratamiento combina cambios de estilo de vida, medicamentos y seguimiento.' },
+      { icono: 'Pill', termino: 'Farmacoterapia', definicion: 'Selección, dosificación, educación y seguimiento de los medicamentos para alcanzar metas clínicas sin causar daño.' },
+      { icono: 'Users', termino: 'Atención farmacéutica', definicion: 'Proceso centrado en la persona que identifica, previene y resuelve problemas relacionados con los medicamentos.' },
+      { icono: 'Target', termino: 'Meta individualizada', definicion: 'Objetivo de HbA1c y de tiempo en rango adaptado a la edad, las comorbilidades, el riesgo de hipoglucemia y las preferencias.' },
+    ],
+    mapa: {
+      centro: 'El QF en la diabetes',
+      ramas: [
+        { titulo: 'Evaluar', icono: 'Search', nodos: ['Historia clínica y medicamentos', 'HbA1c, glucosa y función renal', 'Riesgo de hipoglucemia'] },
+        { titulo: 'Optimizar', icono: 'Target', nodos: ['Meta individualizada', 'Comorbilidad cardiorrenal', 'Costo y adherencia'] },
+        { titulo: 'Educar', icono: 'GraduationCap', nodos: ['Técnica de inyección', 'Hipoglucemia', 'Días de enfermedad'] },
+        { titulo: 'Vigilar', icono: 'LineChart', nodos: ['Efectos adversos', 'Interacciones', 'Farmacovigilancia'] },
+      ],
+    },
+    secciones: [
+      {
+        titulo: 'La diabetes no se trata solo con una pastilla',
+        parrafos: [
+          'La diabetes tipo 2 es una enfermedad progresiva. Al diagnóstico, la célula beta suele haber perdido parte de su función y la resistencia a la insulina ya lleva años. Por eso el tratamiento no es estático: cambia con la enfermedad, con el peso, con la función renal, con la aparición de enfermedad cardiovascular o insuficiencia cardíaca y con la edad. La farmacoterapia debe reevaluarse en cada control, no repetirse como una receta heredada.',
+          'En Colombia, la diabetes es una de las principales causas de enfermedad renal crónica, amputación y eventos cardiovasculares. El Químico Farmacéutico ve a la persona antes y después de la consulta, en la droguería, en el hospital o en el programa de crónicos. Esa posición permite detectar hipoglucemias, errores de dosis, interacciones y barreras de acceso que no siempre aparecen en la historia clínica.',
+        ],
+      },
+      {
+        titulo: 'Qué puede hacer el Químico Farmacéutico',
+        parrafos: [
+          'El QF puede revisar la indicación, la efectividad, la seguridad y la adherencia de cada medicamento. Puede verificar si la metformina está contraindicada por función renal, si el paciente usa insulina y no sabe corregir una hipoglucemia, si el agonista GLP-1 está guardado en el lugar equivocado o si un producto “natural” promete curar la diabetes. También puede educar sobre alimentación, actividad física, automonitoreo y vacunación.',
+          'La intervención no reemplaza al médico. Se documenta y se comunica con el equipo tratante. Un mensaje claro, con datos y una propuesta concreta, mejora la aceptación. Por ejemplo: “La paciente tiene TFG de 28 ml/min; propongo suspender metformina y revisar el esquema con un iSGLT2 ajustado”.',
+        ],
+      },
+      {
+        titulo: 'Cómo está organizado el curso',
+        parrafos: [
+          'La unidad 1 cubre fisiopatología, diagnóstico, metas y el algoritmo ADA 2026. La unidad 2 revisa metformina, iDPP-4, sulfonilureas y pioglitazona. La unidad 3 entra a los iSGLT2, los agonistas GLP-1 y tirzepatida. La unidad 4 trabaja insulinas, dispositivos, monitoreo continuo e hipoglucemia. La unidad 5 integra comorbilidad cardiorrenal, obesidad, seguimiento farmacoterapéutico y farmacovigilancia.',
+          'Cada clase trae un caso, un mapa conceptual y un proceso para practicar. Al final, un anexo con fichas de metformina, semaglutida, tirzepatida, dapagliflozina y liraglutida. La idea no es memorizar dosis aisladas, sino aprender a decidir con el paciente y con la evidencia.',
+        ],
+      },
+    ],
+    proceso: {
+      titulo: 'Cómo se aborda una persona con diabetes en la farmacia',
+      intro: 'Un orden sencillo evita olvidar lo importante.',
+      pasos: [
+        { titulo: 'Recibir y escuchar', detalle: 'Preguntar qué le preocupa, qué medicamentos usa y cómo los toma. Incluir productos naturales y medicamentos de venta libre.', icono: 'Users', evidencia: 'Entrevista documentada.' },
+        { titulo: 'Revisar datos', detalle: 'HbA1c, glucometrías, función renal, peso, presión y eventos de hipoglucemia.', icono: 'FileSearch', evidencia: 'Datos en la ficha farmacéutica.' },
+        { titulo: 'Detectar problemas', detalle: 'Identificar dosis inadecuadas, interacciones, barreras de acceso o falta de educación.', icono: 'AlertTriangle', evidencia: 'Problema relacionado con el medicamento.' },
+        { titulo: 'Intervenir y educar', detalle: 'Proponer un cambio al equipo y enseñar lo que el paciente necesita saber.', icono: 'Lightbulb', evidencia: 'Nota de intervención.' },
+        { titulo: 'Seguir', detalle: 'Acordar una fecha de control y revisar el efecto de la intervención.', icono: 'CalendarClock', evidencia: 'Seguimiento registrado.' },
+      ],
+    },
+    caso: {
+      titulo: 'La metformina y el riñón',
+      contexto: 'Rosa tiene TFG estimada de 36 ml/min/1,73 m² y toma metformina 1 g cada 12 horas. No tiene acidosis, pero refiere diarrea intermitente y no ha vuelto al control.',
+      pregunta: '¿Cuál es la intervención más razonable del Químico Farmacéutico?',
+      opciones: [
+        { texto: 'Suspender la metformina de inmediato y no comentar nada al médico.', correcta: false, retro: 'La suspensión puede ser necesaria, pero debe evaluarse y comunicarse. No se cambia un tratamiento crónico sin coordinación.' },
+        { texto: 'Revisar la dosis y la función renal, explicar los síntomas digestivos y proponer al médico ajustar el esquema y controlar la TFG.', correcta: true, retro: 'Con TFG entre 30 y 45 ml/min la metformina no se inicia y, si ya está en uso, se revisa la dosis y el riesgo. La intervención incluye educación y seguimiento.' },
+        { texto: 'Cambiar a glibenclamida porque no afecta el riñón.', correcta: false, retro: 'La glibenclamida puede causar hipoglucemia, sobre todo en enfermedad renal. No es un cambio automático ni seguro.' },
+      ],
+    },
+    errores: [
+      { error: 'Creer que la metformina “daña el riñón”.', correccion: 'La metformina no es nefrotóxica, pero se acumula si la función renal cae y aumenta el riesgo de acidosis láctica. Hay que ajustar o suspender según la TFG.' },
+      { error: 'Hablar solo de la glucosa y olvidar el riesgo cardiovascular y renal.', correccion: 'La selección del tratamiento depende también de la enfermedad cardiovascular, la insuficiencia cardíaca, la enfermedad renal y el peso.' },
+      { error: 'Entregar el medicamento sin preguntar cómo lo toma.', correccion: 'La técnica, el horario, la conservación y la comprensión son parte de la dispensación.' },
+    ],
+    comprueba: [
+      { pregunta: '¿Cuál es el papel central del QF en diabetes?', respuesta: 'Evaluar, optimizar, educar y vigilar la farmacoterapia, en coordinación con el equipo tratante.' },
+      { pregunta: '¿Por qué la diabetes exige reevaluar el tratamiento?', respuesta: 'Porque la función de la célula beta, la función renal, el peso y las comorbilidades cambian con el tiempo.' },
+      { pregunta: '¿Qué datos mínimos debe revisar antes de una intervención?', respuesta: 'HbA1c, glucometrías, función renal, peso, presión, medicamentos, eventos de hipoglucemia y adherencia.' },
+    ],
+    resumen: [
+      'La diabetes tipo 2 es **progresiva** y el tratamiento cambia con la persona.',
+      'El QF detecta problemas de **seguridad, adherencia y acceso** que impactan el control.',
+      'La intervención se documenta y se comunica con el equipo tratante.',
+      'El curso integra fisiopatología, fármacos, insulina, comorbilidad y seguimiento.',
+    ],
+    referencias: [
+      { cita: 'American Diabetes Association. Standards of Care in Diabetes—2026. Diabetes Care. 2026;49(Suppl 1).', url: 'https://diabetesjournals.org/care/issue/49/Supplement_1' },
+      { cita: 'AEMPS-CIMA. Ficha técnica de Metformina Cinfa 850 mg comprimidos recubiertos con película EFG.', url: 'https://cima.aemps.es/cima/dochtml/ft/68167/FT_68167.html' },
+      { cita: 'INVIMA. Código Único de Medicamentos vigentes (datos.gov.co).', url: 'https://www.datos.gov.co/d/i7cb-raxc' },
+    ],
+    imagenes: [
+      { ubicacion: 'Apertura de la clase', descripcion: 'Ilustración de una farmacia comunitaria con una paciente mayor y un Químico Farmacéutico revisando una caja de metformina y una libreta de glucometrías.', alt: 'Químico Farmacéutico revisando el tratamiento de una paciente con diabetes' },
+    ],
+    keywords: ['curso de farmacoterapia de la diabetes', 'diabetes tipo 2 farmacoterapia', 'rol del químico farmacéutico en diabetes', 'metformina y riñón', 'atención farmacéutica diabetes colombia', 'seguimiento farmacoterapéutico diabetes', 'educación al paciente con diabetes', 'ADA 2026 diabetes'],
+  },
+  {
+    titulo: 'Fisiopatología y clasificación de la diabetes: tipo 1, tipo 2 y otros tipos',
+    duracion: 20,
+    gancho: {
+      titulo: 'Dos pacientes, dos diabetes distintas',
+      texto: 'Andrés tiene 19 años, bajó 8 kg en dos meses y llegó con glucosa de 420 mg/dL y cetonas en orina. Doña Marta tiene 62 años, obesidad central, hipertensión y glucosa de 180 mg/dL sin cetonas. Los dos tienen diabetes, pero el mecanismo, el tratamiento inicial y el riesgo de complicaciones son distintos. Confundir el tipo puede llevar a una terapia insuficiente o a una hipoglucemia grave.',
+    },
+    objetivos: [
+      'Diferenciar diabetes tipo 1, tipo 2, gestacional y otros tipos específicos.',
+      'Explicar el papel de la resistencia a la insulina, la célula beta, el glucagón, el riñón y el intestino.',
+      'Relacionar el mecanismo fisiopatológico con la elección del tratamiento.',
+      'Reconocer cuándo sospechar una diabetes tipo 1 o un tipo monogénico.',
+    ],
+    conceptos: [
+      { icono: 'Activity', termino: 'Diabetes tipo 1', definicion: 'Destrucción autoinmunitaria de la célula beta que lleva a deficiencia absoluta de insulina y requiere insulina desde el inicio.' },
+      { icono: 'Pill', termino: 'Diabetes tipo 2', definicion: 'Combinación variable de resistencia a la insulina y disfunción progresiva de la célula beta, con múltiples mecanismos metabólicos.' },
+      { icono: 'Droplets', termino: 'Glucosa renal', definicion: 'El riñón reabsorbe glucosa; los iSGLT2 bloquean ese transporte y aumentan la glucosuria.' },
+      { icono: 'Wheat', termino: 'Incretinas', definicion: 'GLP-1 y GIP son hormonas intestinales que estimulan la insulina y frenan el glucagón; los agonistas GLP-1 y tirzepatida actúan sobre ellas.' },
+    ],
+    mapa: {
+      centro: 'Fisiopatología de la diabetes',
+      ramas: [
+        { titulo: 'Célula beta', icono: 'Activity', nodos: ['Disfunción progresiva', 'Deficiencia relativa o absoluta', 'Insulina e incretinas'] },
+        { titulo: 'Insulina', icono: 'Syringe', nodos: ['Resistencia hepática y muscular', 'Hiperinsulinemia compensadora', 'Glucosa no utilizada'] },
+        { titulo: 'Hígado y grasa', icono: 'Flame', nodos: ['Gluconeogénesis', 'Lipólisis', 'Inflamación de bajo grado'] },
+        { titulo: 'Riñón e intestino', icono: 'Droplets', nodos: ['Reabsorción de glucosa', 'Efecto incretina', 'Glucagón'] },
+      ],
+    },
+    secciones: [
+      {
+        titulo: 'Tipo 1: falta insulina',
+        parrafos: [
+          'La diabetes tipo 1 es una enfermedad autoinmunitaria en la que el sistema inmunitario destruye las células beta del páncreas. Aparece con mayor frecuencia en niños y adultos jóvenes, pero puede comenzar a cualquier edad. La deficiencia de insulina es absoluta: sin insulina exógena hay hiperglucemia, cetosis y riesgo de cetoacidosis. El tratamiento es insulina desde el diagnóstico, con educación intensiva y conteo de carbohidratos.',
+          'El inicio puede ser abrupto: poliuria, polidipsia, pérdida de peso, cansancio y visión borrosa. La presencia de cetonas y la ausencia de obesidad ayudan a sospechar, pero el diagnóstico definitivo es clínico y, en casos seleccionados, con autoanticuerpos. No se debe iniciar un tratamiento oral como sustituto de la insulina en diabetes tipo 1.',
+        ],
+      },
+      {
+        titulo: 'Tipo 2: resistencia y disfunción beta',
+        parrafos: [
+          'En la diabetes tipo 2, la resistencia a la insulina en músculo, hígado y tejido adiposo hace que la célula beta tenga que producir más insulina. Durante años lo logra, pero la función beta declina de forma progresiva. El resultado es un aumento de la producción hepática de glucosa, menor captación periférica y alteración del efecto incretina, del glucagón y de la reabsorción renal de glucosa.',
+          'La obesidad, el sedentarismo, la genética y el ambiente contribuyen. El tratamiento no es solo “bajar la glucosa”: también busca reducir el riesgo cardiovascular, proteger el riñón, manejar el peso y prevenir hipoglucemias. Esa visión explica por qué los iSGLT2 y los agonistas GLP-1 ocupan un lugar central en pacientes con comorbilidad.',
+        ],
+      },
+      {
+        titulo: 'Otros tipos y gestacional',
+        parrafos: [
+          'La diabetes gestacional aparece durante el embarazo y exige diagnóstico y tratamiento oportunos para reducir complicaciones maternas y fetales. Otros tipos incluyen diabetes monogénica (MODY), pancreatitis crónica, endocrinopatías, fibrosis quística y diabetes secundaria a medicamentos como los corticoides. La distinción importa porque el tratamiento y el pronóstico cambian.',
+          'Un adulto joven, delgado, con historia familiar fuerte y sin autoanticuerpos puede tener MODY. Un paciente con pancreatitis recurrente puede tener diabetes secundaria. Sospechar esos tipos evita años de tratamiento inadecuado y permite remitir a genética o a especializada cuando corresponde.',
+        ],
+      },
+    ],
+    proceso: {
+      titulo: 'Cómo orientar el tipo de diabetes en la consulta',
+      pasos: [
+        { titulo: 'Edad y forma de inicio', detalle: 'Inicio brusco, pérdida de peso y cetonas orientan a tipo 1; inicio gradual y obesidad, a tipo 2.', icono: 'CalendarClock', evidencia: 'Historia clínica.' },
+        { titulo: 'Antecedentes', detalle: 'Enfermedad autoinmunitaria, pancreatitis, medicamentos, embarazo y historia familiar.', icono: 'ClipboardList', evidencia: 'Anamnesis.' },
+        { titulo: 'Laboratorio', detalle: 'Glucosa, HbA1c, cetonas, función renal y, si hay duda, autoanticuerpos o péptido C.', icono: 'TestTube', evidencia: 'Resultados.' },
+        { titulo: 'Decisión terapéutica', detalle: 'Tipo 1: insulina. Tipo 2: enfoque integral. Gestacional: manejo obstétrico.', icono: 'Target', evidencia: 'Plan documentado.' },
+        { titulo: 'Derivación', detalle: 'Sospecha de tipo 1, MODY o diabetes secundaria: remitir al especialista.', icono: 'Route', evidencia: 'Remisión.' },
+      ],
+    },
+    caso: {
+      titulo: 'El joven que adelgazó',
+      contexto: 'Andrés, 19 años, glucosa 420 mg/dL, HbA1c 12,8 %, cetonas positivas, IMC 20, sin antecedentes familiares. Refiere sed intensa y pérdida de 8 kg.',
+      pregunta: '¿Cuál es la conducta más probable?',
+      opciones: [
+        { texto: 'Iniciar metformina y control en tres meses.', correcta: false, retro: 'La cetonuria y la pérdida de peso sugieren deficiencia de insulina. La metformina no trata la cetoacidosis ni la diabetes tipo 1.' },
+        { texto: 'Remitir de urgencia para evaluación de cetoacidosis e iniciar insulina.', correcta: true, retro: 'El cuadro es compatible con diabetes tipo 1 de debut. Requiere evaluación urgente, hidratación, insulina y educación.' },
+        { texto: 'Indicar solo cambios de alimentación.', correcta: false, retro: 'La hiperglucemia grave con cetonas no se maneja solo con dieta; hay riesgo de cetoacidosis.' },
+      ],
+    },
+    errores: [
+      { error: 'Asumir que todo adulto tiene diabetes tipo 2.', correccion: 'La diabetes tipo 1 y los tipos monogénicos también aparecen en adultos. La pérdida de peso, las cetonas y la necesidad de insulina son señales de alarma.' },
+      { error: 'Tratar la diabetes tipo 1 con antidiabéticos orales.', correccion: 'La diabetes tipo 1 requiere insulina desde el inicio; los orales no sustituyen la insulina.' },
+      { error: 'No buscar la causa en pacientes con pancreatitis o corticoides.', correccion: 'La diabetes secundaria exige tratar la causa y ajustar el tratamiento.' },
+    ],
+    comprueba: [
+      { pregunta: '¿Qué distingue la diabetes tipo 1 de la tipo 2?', respuesta: 'La tipo 1 tiene deficiencia absoluta de insulina por destrucción autoinmunitaria; la tipo 2 combina resistencia a la insulina y disfunción beta progresiva.' },
+      { pregunta: '¿Qué señales hacen sospechar diabetes tipo 1?', respuesta: 'Inicio brusco, pérdida de peso, cetonas, sed intensa y necesidad de insulina.' },
+      { pregunta: '¿Por qué importa clasificar bien la diabetes?', respuesta: 'Porque el tratamiento, el riesgo de cetoacidosis y las complicaciones cambian según el tipo.' },
+    ],
+    resumen: [
+      'La diabetes tipo 1 es **deficiencia absoluta de insulina**.',
+      'La tipo 2 combina **resistencia a la insulina y falla beta progresiva**.',
+      'La gestacional y las diabetes secundarias tienen **manejo específico**.',
+      'Clasificar bien evita tratamientos peligrosos o insuficientes.',
+    ],
+    referencias: [
+      { cita: 'American Diabetes Association. Standards of Care in Diabetes—2026. Diabetes Care. 2026;49(Suppl 1).', url: 'https://diabetesjournals.org/care/issue/49/Supplement_1' },
+      { cita: 'AEMPS-CIMA. Ficha técnica de Metformina Cinfa 850 mg comprimidos recubiertos con película EFG.', url: 'https://cima.aemps.es/cima/dochtml/ft/68167/FT_68167.html' },
+      { cita: 'Organización Mundial de la Salud. Diabetes: datos y cifras.', url: 'https://www.who.int/es/news-room/fact-sheets/detail/diabetes' },
+    ],
+    imagenes: [
+      { ubicacion: 'Después del gancho', descripcion: 'Dos siluetas contrapuestas: un joven delgado con cetonas y una persona con obesidad central y hipertensión, unidas por un glucómetro.', alt: 'Dos presentaciones clínicas distintas de diabetes' },
+    ],
+    keywords: ['fisiopatología de la diabetes', 'diabetes tipo 1 vs tipo 2', 'diabetes tipo 2 resistencia a la insulina', 'diabetes gestacional', 'MODY diabetes', 'clasificación de la diabetes', 'deficiencia de insulina', 'curso de diabetes para farmacéuticos'],
+  },
+  {
+    titulo: 'Criterios diagnósticos de diabetes y prediabetes, y tamizaje',
+    duracion: 20,
+    gancho: {
+      titulo: 'Una HbA1c de 6,2 % no es “normal”',
+      texto: 'Un hombre de 45 años con sobrepeso, padre con diabetes y presión de 138/88 mmHg recibe una HbA1c de 6,2 %. En la farmacia le dicen que “todavía no tiene diabetes” y que puede esperar. Es cierto que no cumple el criterio de diabetes, pero tiene prediabetes y un riesgo elevado. La intervención temprana puede retrasar la enfermedad y prevenir complicaciones.',
+    },
+    objetivos: [
+      'Aplicar los criterios diagnósticos de diabetes y prediabetes de la ADA 2026.',
+      'Identificar cuándo repetir una prueba y cuándo el diagnóstico es inequívoco.',
+      'Reconocer los factores de riesgo que justifican tamizaje.',
+      'Interpretar HbA1c, glucosa en ayunas y prueba de tolerancia oral.',
+    ],
+    conceptos: [
+      { icono: 'Target', termino: 'HbA1c', definicion: 'Promedio de glucosa de los últimos dos a tres meses. Un valor ≥6,5 % diagnostica diabetes; 5,7 a 6,4 % indica prediabetes.' },
+      { icono: 'Droplets', termino: 'Glucosa en ayunas', definicion: 'Glucosa medida tras al menos 8 horas de ayuno. ≥126 mg/dL en dos ocasiones o con síntomas diagnostica diabetes.' },
+      { icono: 'Timer', termino: 'Prueba de tolerancia oral', definicion: 'Glucosa a las 2 horas de una carga de 75 g. ≥200 mg/dL diagnostica diabetes; 140 a 199 mg/dL, intolerancia.' },
+      { icono: 'Search', termino: 'Tamizaje', definicion: 'Búsqueda de diabetes o prediabetes en personas asintomáticas con riesgo, para intervenir antes de las complicaciones.' },
+    ],
+    mapa: {
+      centro: 'Diagnóstico de diabetes',
+      ramas: [
+        { titulo: 'Criterios', icono: 'Target', nodos: ['HbA1c ≥6,5 %', 'Ayunas ≥126 mg/dL', '2 h ≥200 mg/dL', 'Glucosa aleatoria ≥200 con síntomas'] },
+        { titulo: 'Prediabetes', icono: 'AlertTriangle', nodos: ['HbA1c 5,7-6,4 %', 'Ayunas 100-125 mg/dL', '2 h 140-199 mg/dL'] },
+        { titulo: 'Confirmación', icono: 'Repeat', nodos: ['Repetir si no hay síntomas', 'Dos pruebas alteradas', 'Diagnóstico inequívoco con síntomas'] },
+        { titulo: 'Tamizaje', icono: 'Users', nodos: ['Edad ≥35 años', 'Sobrepeso u obesidad', 'Antecedente familiar', 'Riesgo cardiovascular'] },
+      ],
+    },
+    secciones: [
+      {
+        titulo: 'Los cuatro criterios',
+        parrafos: [
+          'La ADA acepta cuatro criterios para diagnosticar diabetes: HbA1c ≥6,5 %, glucosa en ayunas ≥126 mg/dL, glucosa a las 2 horas de una prueba de tolerancia oral ≥200 mg/dL, o glucosa aleatoria ≥200 mg/dL con síntomas clásicos. En ausencia de síntomas, el resultado debe confirmarse con una segunda prueba, preferiblemente la misma, en otra muestra.',
+          'La HbA1c puede ser engañosa en anemia, hemoglobinopatías, embarazo, enfermedad renal avanzada o después de una transfusión. En esos casos conviene usar glucosa en ayunas o prueba de tolerancia. La prueba de tolerancia es útil cuando la HbA1c y la glucosa en ayunas no coinciden o cuando se sospecha intolerancia a la glucosa.',
+        ],
+      },
+      {
+        titulo: 'Prediabetes: una ventana de oportunidad',
+        parrafos: [
+          'La prediabetes se define por HbA1c de 5,7 a 6,4 %, glucosa en ayunas de 100 a 125 mg/dL o glucosa a las 2 horas de 140 a 199 mg/dL. No es una enfermedad benigna: aumenta el riesgo de progresar a diabetes y de eventos cardiovasculares. La intervención con cambios de estilo de vida y, en algunos casos, metformina, reduce la progresión.',
+          'El farmacéutico puede reforzar la importancia de la pérdida de peso moderada, la actividad física y la alimentación. También puede revisar si hay medicamentos que elevan la glucosa, como corticoides, antipsicóticos o algunos diuréticos, y si hay factores de riesgo cardiovascular que merecen tratamiento.',
+        ],
+      },
+      {
+        titulo: 'A quién tamizar',
+        parrafos: [
+          'La ADA recomienda tamizar a todos los adultos desde los 35 años y a las personas con sobrepeso u obesidad que tengan uno o más factores de riesgo: antecedente familiar, hipertensión, dislipidemia, enfermedad cardiovascular, diabetes gestacional, síndrome de ovario poliquístico o pertenencia a grupos de alto riesgo. El tamizaje debe repetirse al menos cada tres años si es normal.',
+          'En personas con síntomas clásicos no se debe esperar el tamizaje: se mide la glucosa y se actúa. En el embarazo se usan criterios específicos y se tamiza entre las 24 y 28 semanas, o antes si hay factores de riesgo. El Químico Farmacéutico puede recordar estas indicaciones en la consulta y en la dispensación.',
+        ],
+      },
+    ],
+    proceso: {
+      titulo: 'Cómo interpretar una prueba de glucosa',
+      pasos: [
+        { titulo: 'Verificar la muestra', detalle: 'Confirmar ayuno, hora de la toma y condiciones de la prueba.', icono: 'ClipboardCheck', evidencia: 'Registro de la prueba.' },
+        { titulo: 'Comparar con el criterio', detalle: 'Clasificar como normal, prediabetes o diabetes según el valor y la prueba.', icono: 'Target', evidencia: 'Resultado clasificado.' },
+        { titulo: 'Buscar síntomas', detalle: 'Preguntar por sed, poliuria, pérdida de peso y visión borrosa.', icono: 'Search', evidencia: 'Anamnesis.' },
+        { titulo: 'Confirmar', detalle: 'Repetir en otra muestra si no hay síntomas ni valores inequívocos.', icono: 'Repeat', evidencia: 'Segunda prueba.' },
+        { titulo: 'Actuar', detalle: 'Educar, derivar y programar seguimiento según el resultado.', icono: 'CalendarClock', evidencia: 'Plan documentado.' },
+      ],
+    },
+    caso: {
+      titulo: 'La HbA1c limítrofe',
+      contexto: 'Mujer de 52 años, IMC 31, madre con diabetes, HbA1c 6,1 % y glucosa en ayunas 112 mg/dL. No tiene síntomas.',
+      pregunta: '¿Qué diagnóstico y conducta corresponden?',
+      opciones: [
+        { texto: 'Diabetes tipo 2; iniciar metformina de inmediato.', correcta: false, retro: 'Los valores están en rango de prediabetes, no de diabetes. La metformina puede considerarse en casos seleccionados, pero no es automática.' },
+        { texto: 'Prediabetes; intervención en estilo de vida, revisión de riesgo cardiovascular y seguimiento.', correcta: true, retro: 'HbA1c 6,1 % y ayunas 112 mg/dL corresponden a prediabetes. La prioridad es prevenir la progresión y evaluar el riesgo cardiometabólico.' },
+        { texto: 'Normal; no requiere seguimiento.', correcta: false, retro: 'Está en prediabetes y tiene factores de riesgo; requiere seguimiento y educación.' },
+      ],
+    },
+    errores: [
+      { error: 'Diagnosticar diabetes con una sola prueba en un paciente asintomático.', correccion: 'Confirmar con una segunda prueba, salvo que el cuadro sea inequívoco.' },
+      { error: 'Ignorar la prediabetes.', correccion: 'Es una oportunidad para intervenir y prevenir la progresión.' },
+      { error: 'No considerar anemia o hemoglobinopatías al interpretar HbA1c.', correccion: 'En esas condiciones usar glucosa en ayunas o prueba de tolerancia.' },
+    ],
+    comprueba: [
+      { pregunta: '¿Cuáles son los criterios de diabetes?', respuesta: 'HbA1c ≥6,5 %, ayunas ≥126 mg/dL, 2 h ≥200 mg/dL o glucosa aleatoria ≥200 mg/dL con síntomas.' },
+      { pregunta: '¿Qué valores definen prediabetes?', respuesta: 'HbA1c 5,7-6,4 %, ayunas 100-125 mg/dL o 2 h 140-199 mg/dL.' },
+      { pregunta: '¿Cuándo se repite la prueba?', respuesta: 'Cuando el paciente está asintomático y el resultado no es inequívoco.' },
+    ],
+    resumen: [
+      'El diagnóstico requiere **criterios definidos** y, sin síntomas, confirmación.',
+      'La **prediabetes** es una oportunidad de prevención.',
+      'El tamizaje empieza a los **35 años** o antes con factores de riesgo.',
+      'La HbA1c tiene limitaciones en anemia, embarazo y enfermedad renal.',
+    ],
+    referencias: [
+      { cita: 'American Diabetes Association. Standards of Care in Diabetes—2026. Diabetes Care. 2026;49(Suppl 1).', url: 'https://diabetesjournals.org/care/issue/49/Supplement_1' },
+      { cita: 'Organización Mundial de la Salud. Diabetes: datos y cifras.', url: 'https://www.who.int/es/news-room/fact-sheets/detail/diabetes' },
+    ],
+    imagenes: [
+      { ubicacion: 'Sección de criterios', descripcion: 'Tabla visual con cuatro pruebas y sus umbrales de normalidad, prediabetes y diabetes.', alt: 'Criterios diagnósticos de diabetes y prediabetes' },
+    ],
+    keywords: ['criterios diagnósticos de diabetes', 'prediabetes valores', 'HbA1c 6.5', 'glucosa en ayunas 126', 'tamizaje de diabetes', 'prueba de tolerancia oral', 'diagnóstico de diabetes ADA 2026', 'prediabetes tratamiento'],
+  },
+  {
+    titulo: 'Metas glucémicas individualizadas: HbA1c, tiempo en rango y metas de riesgo cardiovascular',
+    duracion: 20,
+    gancho: {
+      titulo: 'La meta que no es igual para todos',
+      texto: 'Dos personas con HbA1c de 8,2 % llegan a la farmacia. La primera tiene 42 años, diabetes reciente y ninguna complicación. La segunda tiene 82 años, enfermedad renal, dos hipoglucemias en el último mes y vive sola. La misma cifra no significa el mismo objetivo. Individualizar la meta evita tratar en exceso a quien no lo necesita y tratar en déficit a quien sí.',
+    },
+    objetivos: [
+      'Establecer metas de HbA1c individualizadas según edad, comorbilidad y riesgo de hipoglucemia.',
+      'Interpretar el tiempo en rango y los datos del monitoreo continuo.',
+      'Integrar metas de presión, lípidos y función renal en el seguimiento.',
+      'Reconocer los riesgos de la sobretratamiento y del infratratamiento.',
+    ],
+    conceptos: [
+      { icono: 'Target', termino: 'HbA1c', definicion: 'Promedio de glucosa de 2 a 3 meses. La meta general es <7 %, pero se ajusta según el paciente.' },
+      { icono: 'Timer', termino: 'Tiempo en rango', definicion: 'Porcentaje del día con glucosa entre 70 y 180 mg/dL. La meta habitual es >70 %, con <4 % por debajo de 70 y <1 % por debajo de 54.' },
+      { icono: 'AlertTriangle', termino: 'Hipoglucemia', definicion: 'Glucosa <70 mg/dL, con o sin síntomas. Es el principal límite para intensificar el tratamiento.' },
+      { icono: 'LineChart', termino: 'Riesgo cardiovascular', definicion: 'Probabilidad de infarto, ictus o muerte cardiovascular; se reduce con presión, lípidos, tabaco y fármacos con beneficio demostrado.' },
+    ],
+    mapa: {
+      centro: 'Meta individualizada',
+      ramas: [
+        { titulo: 'Más estricta', icono: 'Target', nodos: ['Joven', 'Diabetes reciente', 'Sin hipoglucemia', 'Buena adherencia'] },
+        { titulo: 'Menos estricta', icono: 'AlertTriangle', nodos: ['Edad avanzada', 'Comorbilidad grave', 'Hipoglucemias', 'Fragilidad'] },
+        { titulo: 'Más allá de HbA1c', icono: 'Activity', nodos: ['Tiempo en rango', 'Variabilidad', 'Peso', 'Presión y lípidos'] },
+        { titulo: 'Riesgo', icono: 'ShieldCheck', nodos: ['Cardiovascular', 'Renal', 'Hipoglucemia', 'Caídas'] },
+      ],
+    },
+    secciones: [
+      {
+        titulo: 'La HbA1c es un promedio, no toda la historia',
+        parrafos: [
+          'La HbA1c informa el promedio de glucosa, pero no dice si el paciente tuvo hipoglucemias, hiperglucemias posprandiales o una gran variabilidad. Dos personas con la misma HbA1c pueden tener perfiles muy distintos. El monitoreo continuo de glucosa permite ver el tiempo en rango, el tiempo por debajo y por encima, y la variabilidad glucémica.',
+          'La meta general de HbA1c es <7 % para la mayoría de los adultos no embarazados. Se puede buscar <6,5 % si se logra sin hipoglucemia ni otros efectos adversos, y se acepta <8 % en personas con comorbilidad grave, esperanza de vida limitada, fragilidad o alto riesgo de hipoglucemia. La meta debe acordarse con el paciente y revisarse con el tiempo.',
+        ],
+      },
+      {
+        titulo: 'Tiempo en rango y monitoreo continuo',
+        parrafos: [
+          'El tiempo en rango se define como el porcentaje de lecturas entre 70 y 180 mg/dL. La meta habitual es >70 %, con <4 % por debajo de 70 mg/dL y <1 % por debajo de 54 mg/dL. También se busca <25 % por encima de 180 mg/dL y <5 % por encima de 250 mg/dL. Estos objetivos son especialmente útiles en diabetes tipo 1 y en personas con insulina.',
+          'El reporte AGP muestra patrones por hora del día, lo que ayuda a ajustar insulina, alimentación y actividad. El Químico Farmacéutico puede enseñar a leerlo, identificar hipoglucemias nocturnas y detectar errores de técnica. No se trata solo de “bajar la glucosa”, sino de lograr un patrón seguro y estable.',
+        ],
+      },
+      {
+        titulo: 'Metas que van más allá de la glucosa',
+        parrafos: [
+          'La diabetes es un factor de riesgo cardiovascular y renal. El seguimiento debe incluir presión arterial, LDL, función renal, albuminuria, peso, tabaco y vacunación. En muchos pacientes, el beneficio de un iSGLT2 o un agonista GLP-1 sobre el corazón y el riñón es independiente de la HbA1c. La meta glucémica no debe hacer olvidar esos objetivos.',
+          'La individualización también considera el riesgo de hipoglucemia, las caídas, la carga de pastillas, el costo y la preferencia del paciente. Un esquema que logra una HbA1c perfecta pero produce hipoglucemias diarias no es un buen tratamiento. La meta es una vida más segura y sostenible, no una cifra aislada.',
+        ],
+      },
+    ],
+    proceso: {
+      titulo: 'Cómo acordar una meta glucémica',
+      pasos: [
+        { titulo: 'Evaluar el perfil', detalle: 'Edad, comorbilidades, fragilidad, esperanza de vida, riesgo de hipoglucemia y preferencias.', icono: 'Users', evidencia: 'Evaluación documentada.' },
+        { titulo: 'Revisar el control', detalle: 'HbA1c, tiempo en rango, glucometrías y eventos de hipoglucemia.', icono: 'LineChart', evidencia: 'Reporte glucémico.' },
+        { titulo: 'Definir la meta', detalle: 'HbA1c <7 % general; <6,5 % si es seguro; <8 % en pacientes de alto riesgo.', icono: 'Target', evidencia: 'Meta acordada.' },
+        { titulo: 'Alinear el tratamiento', detalle: 'Elegir fármacos que logren la meta sin hipoglucemia ni carga excesiva.', icono: 'Pill', evidencia: 'Plan ajustado.' },
+        { titulo: 'Revisar', detalle: 'Evaluar en 3 a 6 meses y ajustar según la evolución.', icono: 'CalendarClock', evidencia: 'Seguimiento.' },
+      ],
+    },
+    caso: {
+      titulo: 'La meta de doña Carmen',
+      contexto: 'Carmen tiene 82 años, diabetes de 20 años, TFG de 32 ml/min, dos hipoglucemias sintomáticas en el último mes y vive sola. Su HbA1c es 7,8 %.',
+      pregunta: '¿Cuál es la meta más razonable?',
+      opciones: [
+        { texto: 'HbA1c <6,5 % para prevenir complicaciones.', correcta: false, retro: 'En una persona mayor, con enfermedad renal y hipoglucemias, una meta tan estricta aumenta el riesgo de caídas, confusión y eventos graves.' },
+        { texto: 'HbA1c <8 % y evitar hipoglucemias, revisando el esquema que las causa.', correcta: true, retro: 'La meta menos estricta es apropiada en fragilidad y alto riesgo de hipoglucemia. Lo prioritario es la seguridad y la calidad de vida.' },
+        { texto: 'Suspender todo tratamiento y no volver a medir.', correcta: false, retro: 'La diabetes no tratada también causa daño. Se ajusta el esquema, no se abandona.' },
+      ],
+    },
+    errores: [
+      { error: 'Aplicar <7 % a todos los pacientes.', correccion: 'La meta depende de la edad, la comorbilidad, la fragilidad y el riesgo de hipoglucemia.' },
+      { error: 'Mirar solo la HbA1c e ignorar el tiempo en rango.', correccion: 'El tiempo en rango y las hipoglucias muestran lo que el promedio oculta.' },
+      { error: 'Intensificar el tratamiento sin revisar la adherencia y la técnica.', correccion: 'Antes de subir dosis, confirmar que el paciente toma y aplica bien el medicamento.' },
+    ],
+    comprueba: [
+      { pregunta: '¿Cuál es la meta general de HbA1c?', respuesta: '<7 % para la mayoría de los adultos, con ajustes individuales.' },
+      { pregunta: '¿Qué es el tiempo en rango?', respuesta: 'El porcentaje de tiempo con glucosa entre 70 y 180 mg/dL; la meta habitual es >70 %.' },
+      { pregunta: '¿Cuándo se acepta una meta menos estricta?', respuesta: 'En edad avanzada, fragilidad, comorbilidad grave, esperanza de vida limitada o alto riesgo de hipoglucemia.' },
+    ],
+    resumen: [
+      'La meta de HbA1c es **individualizada**, no universal.',
+      'El **tiempo en rango** completa la información del promedio.',
+      'La seguridad y la calidad de vida pesan tanto como la cifra.',
+      'La meta glucémica se integra con presión, lípidos, riñón y corazón.',
+    ],
+    referencias: [
+      { cita: 'American Diabetes Association. Standards of Care in Diabetes—2026. Diabetes Care. 2026;49(Suppl 1).', url: 'https://diabetesjournals.org/care/issue/49/Supplement_1' },
+      { cita: 'AEMPS-CIMA. Ficha técnica de Metformina Cinfa 850 mg comprimidos recubiertos con película EFG.', url: 'https://cima.aemps.es/cima/dochtml/ft/68167/FT_68167.html' },
+    ],
+    imagenes: [
+      { ubicacion: 'Sección de metas', descripcion: 'Pirámide de metas de HbA1c con tres niveles: estricta, habitual y flexible, y ejemplos de pacientes.', alt: 'Metas de HbA1c individualizadas en diabetes' },
+    ],
+    keywords: ['meta de HbA1c', 'tiempo en rango diabetes', 'metas glucémicas individualizadas', 'HbA1c 7 por ciento', 'hipoglucemia diabetes', 'monitoreo continuo de glucosa', 'ADA 2026 metas', 'diabetes en adultos mayores'],
+  },
+  {
+    titulo: 'Algoritmo de tratamiento de la DM2 según ADA 2026: selección por comorbilidad',
+    duracion: 25,
+    gancho: {
+      titulo: 'La elección empieza por el paciente, no por la pastilla',
+      texto: 'Un paciente con diabetes e insuficiencia cardíaca, otro con enfermedad renal y albuminuria y una mujer joven con obesidad y riesgo cardiovascular llegan a la misma farmacia. Los tres tienen diabetes tipo 2, pero el primer fármaco que más les beneficia no es el mismo. El algoritmo ADA 2026 organiza la decisión alrededor de la comorbilidad, el peso, el riesgo de hipoglucemia y el costo.',
+    },
+    objetivos: [
+      'Aplicar el algoritmo ADA 2026 para seleccionar el tratamiento inicial y las combinaciones.',
+      'Priorizar fármacos con beneficio cardiovascular, renal o de peso según el perfil.',
+      'Reconocer cuándo la metformina sigue siendo una opción y cuándo no es suficiente.',
+      'Ajustar el esquema según hipoglucemia, adherencia, costo y preferencias.',
+    ],
+    conceptos: [
+      { icono: 'Activity', termino: 'Enfermedad cardiovascular', definicion: 'Infarto, ictus, enfermedad arterial periférica o insuficiencia cardíaca. Los iSGLT2 y los agonistas GLP-1 tienen beneficios demostrados.' },
+      { icono: 'Droplets', termino: 'Enfermedad renal crónica', definicion: 'TFG <60 o albuminuria. Los iSGLT2 y algunos agonistas GLP-1 reducen la progresión.' },
+      { icono: 'Scale', termino: 'Peso', definicion: 'La obesidad es una comorbilidad que guía la elección de agonistas GLP-1 o tirzepatida cuando el objetivo incluye perder peso.' },
+      { icono: 'ShieldCheck', termino: 'Riesgo de hipoglucemia', definicion: 'Condiciona la elección de sulfonilureas o insulina y favorece fármacos con bajo riesgo.' },
+    ],
+    mapa: {
+      centro: 'Algoritmo ADA 2026',
+      ramas: [
+        { titulo: 'Corazón', icono: 'Activity', nodos: ['iSGLT2', 'Agonista GLP-1', 'Beneficio cardiovascular'] },
+        { titulo: 'Riñón', icono: 'Droplets', nodos: ['iSGLT2', 'Agonista GLP-1', 'Albuminuria'] },
+        { titulo: 'Peso', icono: 'Scale', nodos: ['Agonista GLP-1', 'Tirzepatida', 'Cirugía metabólica'] },
+        { titulo: 'Seguridad', icono: 'AlertTriangle', nodos: ['Evitar hipoglucemia', 'Ajustar por TFG', 'Costo y adherencia'] },
+      ],
+    },
+    secciones: [
+      {
+        titulo: 'La lógica del algoritmo',
+        parrafos: [
+          'La ADA 2026 no propone una secuencia rígida. Propone evaluar comorbilidades y objetivos: enfermedad cardiovascular, insuficiencia cardíaca, enfermedad renal crónica, obesidad, riesgo de hipoglucemia y costo. En pacientes con enfermedad cardiovascular aterosclerótica, insuficiencia cardíaca o enfermedad renal, los iSGLT2 y los agonistas GLP-1 con beneficio demostrado se prefieren independientemente de la HbA1c.',
+          'La metformina sigue siendo un fármaco útil, económico y con amplia experiencia, pero no es obligatoria antes de un fármaco con beneficio cardiorrenal. En un paciente con insuficiencia cardíaca y TFG baja, iniciar metformina y esperar tres meses antes de un iSGLT2 puede ser un error. La decisión se basa en el riesgo global, no en una jerarquía histórica.',
+        ],
+      },
+      {
+        titulo: 'Combinaciones y intensificación',
+        parrafos: [
+          'Si la HbA1c está muy por encima de la meta al diagnóstico, puede iniciarse una combinación desde el principio. Las combinaciones más usadas incluyen metformina con iSGLT2, metformina con agonista GLP-1 o iSGLT2 con agonista GLP-1. La insulina se reserva para pacientes con síntomas de catabolismo, hiperglucemia grave o cuando no se alcanza la meta con otras opciones.',
+          'La elección debe considerar la vía, la frecuencia, el costo, la cobertura y la preferencia. Un esquema de tres pastillas puede ser más barato que una inyectable, pero si la adherencia es baja o hay hipoglucemias, el resultado será peor. La simplificación y la educación son parte del algoritmo.',
+        ],
+      },
+      {
+        titulo: 'Cuándo reevaluar',
+        parrafos: [
+          'El tratamiento se revisa cada 3 a 6 meses y antes si hay síntomas, hipoglucemias, cambios de función renal, embarazo o nuevos eventos cardiovasculares. Un paciente que alcanzó la meta puede necesitar desintensificación si pierde peso, si la función renal empeora o si aparecen comorbilidades. La inercia terapéutica es tan problemática como la intensificación excesiva.',
+          'El Químico Farmacéutico puede preparar un resumen con la TFG, la albuminuria, la HbA1c, los eventos cardiovasculares y los medicamentos actuales. Esa información ayuda al médico a decidir y evita cambios basados solo en una cifra aislada.',
+        ],
+      },
+    ],
+    proceso: {
+      titulo: 'Cómo aplicar el algoritmo en la práctica',
+      pasos: [
+        { titulo: 'Definir la meta', detalle: 'HbA1c y objetivos de peso, corazón y riñón.', icono: 'Target', evidencia: 'Meta documentada.' },
+        { titulo: 'Evaluar comorbilidad', detalle: 'Enfermedad cardiovascular, insuficiencia cardíaca, TFG y albuminuria.', icono: 'FileSearch', evidencia: 'Datos clínicos.' },
+        { titulo: 'Elegir el fármaco', detalle: 'Priorizar beneficio cardiorrenal o de peso cuando esté indicado.', icono: 'Pill', evidencia: 'Selección justificada.' },
+        { titulo: 'Revisar seguridad', detalle: 'Hipoglucemia, función renal, efectos adversos e interacciones.', icono: 'ShieldCheck', evidencia: 'Revisión de seguridad.' },
+        { titulo: 'Acordar y seguir', detalle: 'Explicar el plan, el costo y el seguimiento.', icono: 'Users', evidencia: 'Plan acordado.' },
+      ],
+    },
+    caso: {
+      titulo: 'Insuficiencia cardíaca y diabetes',
+      contexto: 'Hombre de 68 años con diabetes tipo 2, insuficiencia cardíaca con fracción de eyección reducida, TFG de 42 ml/min y HbA1c de 7,9 %. Toma metformina y furosemida.',
+      pregunta: '¿Qué ajuste tiene más sentido?',
+      opciones: [
+        { texto: 'Aumentar la metformina porque es el fármaco de primera línea.', correcta: false, retro: 'La metformina no es el fármaco con mayor beneficio en insuficiencia cardíaca y puede no ser suficiente. Además, la TFG obliga a revisar la dosis.' },
+        { texto: 'Revisar la dosis de metformina y proponer un iSGLT2 con beneficio en insuficiencia cardíaca, además de optimizar el tratamiento de la IC.', correcta: true, retro: 'En insuficiencia cardíaca, los iSGLT2 reducen hospitalizaciones y eventos. La metformina se ajusta por TFG y se revisan interacciones.' },
+        { texto: 'Suspender todo y esperar la próxima consulta.', correcta: false, retro: 'La diabetes y la insuficiencia cardíaca requieren tratamiento continuo; la intervención debe ser coordinada y oportuna.' },
+      ],
+    },
+    errores: [
+      { error: 'Iniciar siempre metformina y esperar antes de un fármaco cardiorrenal.', correccion: 'En enfermedad cardiovascular, insuficiencia cardíaca o ERC, el fármaco con beneficio debe priorizarse.' },
+      { error: 'No revisar la función renal antes de elegir.', correccion: 'La TFG cambia la dosis y la seguridad de varios antidiabéticos.' },
+      { error: 'Ignorar el costo y la adherencia.', correccion: 'Un esquema inasequible o complejo no funciona; se debe simplificar y adaptar.' },
+    ],
+    comprueba: [
+      { pregunta: '¿Qué fármacos se priorizan en enfermedad cardiovascular o renal?', respuesta: 'iSGLT2 y agonistas GLP-1 con beneficio demostrado, según el perfil.' },
+      { pregunta: '¿La metformina es obligatoria antes de un iSGLT2?', respuesta: 'No. En pacientes con indicación cardiorrenal, el fármaco con beneficio puede iniciarse sin esperar.' },
+      { pregunta: '¿Cuándo se considera insulina?', respuesta: 'En hiperglucemia grave, catabolismo, síntomas marcados o cuando no se alcanza la meta con otras opciones.' },
+    ],
+    resumen: [
+      'El algoritmo ADA 2026 se organiza por **comorbilidad y objetivos**.',
+      'iSGLT2 y GLP-1 tienen beneficio **cardiorrenal** en pacientes seleccionados.',
+      'La metformina sigue siendo útil, pero no es un requisito universal.',
+      'La elección debe ser **segura, asequible y sostenible**.',
+    ],
+    referencias: [
+      { cita: 'American Diabetes Association. Standards of Care in Diabetes—2026. Diabetes Care. 2026;49(Suppl 1).', url: 'https://diabetesjournals.org/care/issue/49/Supplement_1' },
+      { cita: 'AEMPS-CIMA. Ficha técnica de Jardiance 10 mg comprimidos recubiertos con película.', url: 'https://cima.aemps.es/cima/dochtml/ft/114930014/FT_114930014.html' },
+      { cita: 'AEMPS-CIMA. Ficha técnica de Metformina Cinfa 850 mg comprimidos recubiertos con película EFG.', url: 'https://cima.aemps.es/cima/dochtml/ft/68167/FT_68167.html' },
+    ],
+    imagenes: [
+      { ubicacion: 'Sección del algoritmo', descripcion: 'Diagrama de flujo con tres ramas: corazón, riñón y peso, y los fármacos recomendados en cada una.', alt: 'Algoritmo ADA 2026 para el tratamiento de la diabetes tipo 2' },
+    ],
+    keywords: ['algoritmo ADA 2026 diabetes', 'tratamiento diabetes tipo 2 2026', 'iSGLT2 insuficiencia cardiaca', 'agonista GLP-1 enfermedad renal', 'metformina primera línea', 'selección de antidiabéticos', 'diabetes y comorbilidad', 'curso farmacoterapia diabetes'],
+  },
+  {
+    titulo: 'Caso: evaluación inicial de una persona con DM2 recién diagnosticada y albuminuria',
+    duracion: 25,
+    gancho: {
+      titulo: 'La albuminuria que cambió el plan',
+      texto: 'Don Jorge tiene 55 años, acaba de ser diagnosticado con diabetes tipo 2 y llega con HbA1c de 8,6 %, presión de 146/92 mmHg y una relación albúmina/creatinina de 85 mg/g. Se siente bien y cree que solo necesita “una pastilla para el azúcar”. La albuminuria indica daño renal temprano y cambia la prioridad: además de la glucosa, hay que proteger el riñón y el corazón.',
+    },
+    objetivos: [
+      'Realizar una evaluación farmacoterapéutica inicial completa en diabetes tipo 2.',
+      'Interpretar albuminuria y función renal en el contexto del tratamiento.',
+      'Seleccionar un esquema con beneficio cardiorrenal y ajustar según seguridad.',
+      'Diseñar un plan de educación y seguimiento para el paciente recién diagnosticado.',
+    ],
+    conceptos: [
+      { icono: 'Droplets', termino: 'Albuminuria', definicion: 'Presencia de albúmina en orina. Una relación albúmina/creatinina ≥30 mg/g indica daño renal y aumenta el riesgo cardiovascular.' },
+      { icono: 'ShieldCheck', termino: 'Nefroprotección', definicion: 'Estrategia para reducir la progresión de la enfermedad renal: control de presión, iSGLT2, IECA o ARA-II y control glucémico.' },
+      { icono: 'Target', termino: 'HbA1c inicial', definicion: 'Valor que orienta la intensidad del tratamiento. Si está muy por encima de la meta, puede requerir combinación o insulina.' },
+      { icono: 'ClipboardList', termino: 'Evaluación integral', definicion: 'Revisión de síntomas, complicaciones, medicamentos, vacunas, riesgo cardiovascular, función renal y barreras de acceso.' },
+    ],
+    mapa: {
+      centro: 'Evaluación inicial',
+      ramas: [
+        { titulo: 'Glucosa', icono: 'Target', nodos: ['HbA1c', 'Síntomas', 'Cetonas'] },
+        { titulo: 'Riñón', icono: 'Droplets', nodos: ['TFG', 'Albuminuria', 'Potasio'] },
+        { titulo: 'Corazón', icono: 'Activity', nodos: ['Presión', 'Lípidos', 'Tabaco'] },
+        { titulo: 'Persona', icono: 'Users', nodos: ['Adherencia', 'Costo', 'Educación'] },
+      ],
+    },
+    secciones: [
+      {
+        titulo: 'Qué revisar en la primera evaluación',
+        parrafos: [
+          'La evaluación inicial incluye síntomas de hiperglucemia, peso, presión, examen de pies, visión, vacunas y riesgo cardiovascular. En laboratorio: HbA1c, glucosa, creatinina con TFG, albuminuria, perfil lipídico, hemograma y pruebas hepáticas. También se revisan los medicamentos actuales, los productos naturales y las barreras de acceso.',
+          'La albuminuria debe confirmarse en dos de tres muestras en un período de tres a seis meses, salvo que haya una causa evidente. Una vez confirmada, indica nefroprotección. La presión debe controlarse, y se considera un IECA o ARA-II si hay albuminuria e hipertensión. Los iSGLT2 reducen la progresión renal y los eventos cardiovasculares.',
+        ],
+      },
+      {
+        titulo: 'Cómo elegir el tratamiento',
+        parrafos: [
+          'Con HbA1c de 8,6 %, albuminuria e hipertensión, el paciente necesita un enfoque combinado. La metformina puede ser parte del esquema si la TFG lo permite, pero el iSGLT2 tiene prioridad por el beneficio renal y cardiovascular. Si la HbA1c está lejos de la meta, puede considerarse un agonista GLP-1 o insulina basal según síntomas y preferencias.',
+          'La elección debe ser realista: costo, cobertura, vía de administración y adherencia. Un iSGLT2 oral una vez al día puede ser más fácil que una inyectable, pero si el paciente tiene enfermedad cardiovascular aterosclerótica y obesidad, un agonista GLP-1 puede ofrecer beneficios adicionales. La combinación de ambos puede ser razonable en alto riesgo.',
+        ],
+      },
+      {
+        titulo: 'Educación y seguimiento',
+        parrafos: [
+          'El paciente recién diagnosticado necesita entender qué es la diabetes, cuál es su meta, cómo tomar los medicamentos y qué efectos adversos vigilar. En el caso de un iSGLT2, hay que explicar la diuresis, el riesgo de infecciones genitales, la cetoacidosis euglucémica y las reglas de los días de enfermedad. En metformina, los síntomas digestivos y la vitamina B12.',
+          'El seguimiento debe incluir HbA1c a los tres meses, función renal, presión, peso y adherencia. También hay que revisar la técnica de automonitoreo si aplica, la alimentación y la actividad física. El Químico Farmacéutico puede coordinar con el médico y el programa de crónicos para evitar pérdidas entre consultas.',
+        ],
+      },
+    ],
+    proceso: {
+      titulo: 'Evaluación inicial en cinco pasos',
+      pasos: [
+        { titulo: 'Historia y medicamentos', detalle: 'Síntomas, comorbilidades, medicamentos, productos naturales y barreras.', icono: 'ClipboardList', evidencia: 'Ficha farmacéutica.' },
+        { titulo: 'Laboratorio', detalle: 'HbA1c, TFG, albuminuria, lípidos, potasio y hemograma.', icono: 'TestTube', evidencia: 'Resultados.' },
+        { titulo: 'Riesgo', detalle: 'Cardiovascular, renal, hipoglucemia y pie diabético.', icono: 'ShieldCheck', evidencia: 'Evaluación de riesgo.' },
+        { titulo: 'Plan', detalle: 'Seleccionar fármacos, ajustar dosis y educar.', icono: 'Pill', evidencia: 'Plan documentado.' },
+        { titulo: 'Seguimiento', detalle: 'HbA1c a los 3 meses, TFG, presión y adherencia.', icono: 'CalendarClock', evidencia: 'Cita programada.' },
+      ],
+    },
+    caso: {
+      titulo: 'El paciente con albuminuria',
+      contexto: 'Jorge, 55 años, HbA1c 8,6 %, TFG 72 ml/min, albúmina/creatinina 85 mg/g, presión 146/92 mmHg, IMC 31. Toma solo metformina 850 mg cada 12 horas.',
+      pregunta: '¿Qué intervención farmacéutica es más completa?',
+      opciones: [
+        { texto: 'Solo aumentar metformina a 1 g cada 12 horas.', correcta: false, retro: 'Aumentar metformina puede ayudar a la glucosa, pero no aborda la albuminuria ni el riesgo cardiovascular. La TFG permite la dosis, pero el plan debe ser integral.' },
+        { texto: 'Revisar el esquema con el médico: optimizar metformina, proponer iSGLT2 por albuminuria, controlar presión y educar sobre efectos adversos y seguimiento.', correcta: true, retro: 'La albuminuria exige nefroprotección. El iSGLT2 reduce la progresión renal y los eventos cardiovasculares; la presión y la educación completan el plan.' },
+        { texto: 'Suspender metformina y no iniciar nada hasta la próxima HbA1c.', correcta: false, retro: 'La metformina puede continuar con TFG 72. Suspenderla sin alternativa deja al paciente sin tratamiento.' },
+      ],
+    },
+    errores: [
+      { error: 'No medir albuminuria al diagnóstico.', correccion: 'La albuminuria detecta daño renal temprano y cambia el tratamiento.' },
+      { error: 'Elegir solo por HbA1c.', correccion: 'La comorbilidad cardiorrenal y el riesgo de hipoglucemia también guían la elección.' },
+      { error: 'No explicar los efectos adversos del iSGLT2.', correccion: 'La educación sobre diuresis, infecciones y cetoacidosis mejora la seguridad.' },
+    ],
+    comprueba: [
+      { pregunta: '¿Qué indica una albuminuria de 85 mg/g?', respuesta: 'Daño renal y mayor riesgo cardiovascular; requiere confirmación y nefroprotección.' },
+      { pregunta: '¿Qué fármaco tiene beneficio renal en este paciente?', respuesta: 'Un iSGLT2, además del control de presión y la educación.' },
+      { pregunta: '¿Qué seguimiento se programa?', respuesta: 'HbA1c a los 3 meses, TFG, albuminuria, presión, peso y adherencia.' },
+    ],
+    resumen: [
+      'La evaluación inicial es **integral**, no solo glucémica.',
+      'La albuminuria cambia la prioridad hacia la **nefroprotección**.',
+      'El iSGLT2 tiene beneficio renal y cardiovascular.',
+      'La educación y el seguimiento sostienen el plan.',
+    ],
+    referencias: [
+      { cita: 'American Diabetes Association. Standards of Care in Diabetes—2026. Diabetes Care. 2026;49(Suppl 1).', url: 'https://diabetesjournals.org/care/issue/49/Supplement_1' },
+      { cita: 'AEMPS-CIMA. Ficha técnica de Jardiance 10 mg comprimidos recubiertos con película.', url: 'https://cima.aemps.es/cima/dochtml/ft/114930014/FT_114930014.html' },
+      { cita: 'AEMPS-CIMA. Ficha técnica de Metformina Cinfa 850 mg comprimidos recubiertos con película EFG.', url: 'https://cima.aemps.es/cima/dochtml/ft/68167/FT_68167.html' },
+    ],
+    imagenes: [
+      { ubicacion: 'Sección del caso', descripcion: 'Expediente clínico con HbA1c, TFG y albuminuria destacadas, y una flecha hacia un iSGLT2.', alt: 'Evaluación inicial de diabetes con albuminuria' },
+    ],
+    keywords: ['evaluación inicial diabetes tipo 2', 'albuminuria diabetes tratamiento', 'iSGLT2 nefroprotección', 'caso clínico diabetes', 'metformina albuminuria', 'diabetes y enfermedad renal', 'seguimiento farmacoterapéutico diabetes'],
+  },
+  {
+    titulo: 'Introducción a la unidad: antidiabéticos orales clásicos y su lugar en 2026',
+    duracion: 20,
+    gancho: {
+      titulo: 'La caja vieja que sigue funcionando',
+      texto: 'En una droguería de Barranquilla, un paciente pide “la metformina de siempre” porque es lo único que su EPS cubre sin trámite. En otra farmacia, una paciente con insuficiencia cardíaca recibe un iSGLT2 y pregunta por qué ya no le dan metformina. Los antidiabéticos orales clásicos siguen siendo importantes, pero su lugar cambió: no son una receta única, sino opciones dentro de un algoritmo que mira el corazón, el riñón, el peso y el riesgo de hipoglucemia.',
+    },
+    objetivos: [
+      'Clasificar los antidiabéticos orales clásicos y sus mecanismos.',
+      'Reconocer el lugar de la metformina, los iDPP-4, las sulfonilureas y la pioglitazona en 2026.',
+      'Identificar los criterios que hacen preferir o evitar cada grupo.',
+      'Diseñar una combinación inicial razonable según el perfil del paciente.',
+    ],
+    conceptos: [
+      { icono: 'Pill', termino: 'Metformina', definicion: 'Biguanida que reduce la producción hepática de glucosa y mejora la sensibilidad; no causa hipoglucemia por sí sola.' },
+      { icono: 'Activity', termino: 'iDPP-4', definicion: 'Inhibidores de la dipeptidil peptidasa-4 que aumentan la incretina endógena; peso neutro y bajo riesgo de hipoglucemia.' },
+      { icono: 'Zap', termino: 'Sulfonilureas', definicion: 'Estimulan la secreción de insulina; son eficaces y económicas, pero causan hipoglucemia y aumento de peso.' },
+      { icono: 'Scale', termino: 'Pioglitazona', definicion: 'Agonista de PPARγ que mejora la sensibilidad a la insulina; útil en hígado graso, pero causa retención de líquidos y aumento de peso.' },
+    ],
+    mapa: {
+      centro: 'Orales clásicos',
+      ramas: [
+        { titulo: 'Metformina', icono: 'Pill', nodos: ['Hígado', 'Peso neutro', 'Función renal'] },
+        { titulo: 'iDPP-4', icono: 'Activity', nodos: ['Incretinas', 'Bajo riesgo de hipoglucemia', 'Poblaciones especiales'] },
+        { titulo: 'Sulfonilureas', icono: 'Zap', nodos: ['Secreción de insulina', 'Hipoglucemia', 'Costo'] },
+        { titulo: 'Pioglitazona', icono: 'Scale', nodos: ['Sensibilidad', 'Retención de líquidos', 'Hígado graso'] },
+      ],
+    },
+    secciones: [
+      {
+        titulo: 'Qué sigue vigente',
+        parrafos: [
+          'La metformina sigue siendo uno de los fármacos más usados por su eficacia, seguridad, bajo costo y amplia experiencia. No suele causar hipoglucemia y tiene un efecto neutro sobre el peso. Sin embargo, no debe usarse en insuficiencia renal avanzada ni en situaciones de acidosis, y su tolerancia digestiva puede limitar la adherencia. Su lugar en 2026 es el de un fármaco útil, pero no obligatorio antes de un iSGLT2 o un GLP-1 cuando hay indicación cardiorrenal.',
+          'Los iDPP-4 son una opción bien tolerada, con peso neutro y bajo riesgo de hipoglucemia. Son útiles en adultos mayores, en personas con riesgo de hipoglucemia o cuando se busca una opción oral sencilla. Su efecto sobre la HbA1c es modesto y no tienen beneficio cardiovascular o renal demostrado de forma consistente.',
+        ],
+      },
+      {
+        titulo: 'Qué debe usarse con cuidado',
+        parrafos: [
+          'Las sulfonilureas son eficaces y económicas, pero producen hipoglucemia, sobre todo en adultos mayores, insuficiencia renal, bajo peso o falta de adherencia a las comidas. La glibenclamida tiene mayor riesgo de hipoglucemia prolongada. La pioglitazona mejora la sensibilidad y puede ser útil en hígado graso, pero causa retención de líquidos, aumento de peso y no se recomienda en insuficiencia cardíaca.',
+          'La elección depende del paciente: un adulto joven con bajo riesgo de hipoglucemia y pocos recursos puede beneficiarse de una sulfonilurea; una persona mayor con TFG baja y riesgo de caídas probablemente no. La pioglitazona no es un fármaco de primera línea en insuficiencia cardíaca ni en osteoporosis avanzada.',
+        ],
+      },
+      {
+        titulo: 'Cómo combinarlos',
+        parrafos: [
+          'Las combinaciones deben buscar mecanismos complementarios y evitar efectos adversos aditivos. Metformina con iDPP-4 es una opción oral bien tolerada. Metformina con sulfonilurea es eficaz y económica, pero exige vigilancia de hipoglucemia. La triple terapia oral puede ser útil, aunque aumenta la carga de pastillas y el riesgo de efectos adversos.',
+          'Si la HbA1c está lejos de la meta o hay síntomas, la combinación con un fármaco inyectable o insulina puede ser más eficaz que sumar un tercer oral. La decisión debe ser individualizada y revisada en 3 a 6 meses.',
+        ],
+      },
+    ],
+    proceso: {
+      titulo: 'Cómo elegir un oral clásico',
+      pasos: [
+        { titulo: 'Definir la meta', detalle: 'HbA1c, peso, riesgo de hipoglucemia y comorbilidad.', icono: 'Target', evidencia: 'Meta acordada.' },
+        { titulo: 'Revisar la función renal', detalle: 'TFG para metformina y ajustes de otros fármacos.', icono: 'Droplets', evidencia: 'TFG documentada.' },
+        { titulo: 'Evaluar el riesgo', detalle: 'Hipoglucemia, insuficiencia cardíaca, hígado graso y peso.', icono: 'ShieldCheck', evidencia: 'Evaluación de riesgo.' },
+        { titulo: 'Elegir y combinar', detalle: 'Seleccionar el fármaco y la combinación con mecanismos complementarios.', icono: 'Pill', evidencia: 'Plan terapéutico.' },
+        { titulo: 'Seguir', detalle: 'Revisar HbA1c, tolerancia, adherencia y eventos adversos.', icono: 'CalendarClock', evidencia: 'Seguimiento.' },
+      ],
+    },
+    caso: {
+      titulo: 'El adulto mayor con hipoglucemias',
+      contexto: 'Mujer de 78 años, diabetes de 12 años, TFG 45 ml/min, HbA1c 7,4 %, dos episodios de sudoración y temblor en el último mes. Toma metformina 850 mg cada 12 horas y glibenclamida 5 mg al día.',
+      pregunta: '¿Qué revisión es prioritaria?',
+      opciones: [
+        { texto: 'Aumentar la metformina para bajar la HbA1c.', correcta: false, retro: 'La paciente ya tiene hipoglucemias y TFG reducida. Aumentar metformina no aborda el riesgo y puede empeorar la tolerancia digestiva.' },
+        { texto: 'Revisar la glibenclamida, que probablemente causa las hipoglucemias, y proponer al médico una alternativa con menor riesgo.', correcta: true, retro: 'Las sulfonilureas son una causa frecuente de hipoglucemia en adultos mayores con enfermedad renal. La intervención debe priorizar la seguridad.' },
+        { texto: 'Suspender todo tratamiento sin consultar.', correcta: false, retro: 'La diabetes requiere tratamiento; se ajusta el esquema, no se abandona.' },
+      ],
+    },
+    errores: [
+      { error: 'Creer que los orales clásicos son obsoletos.', correccion: 'Siguen siendo útiles en pacientes seleccionados, sobre todo por costo y accesibilidad.' },
+      { error: 'Usar sulfonilureas sin revisar el riesgo de hipoglucemia.', correccion: 'En adultos mayores, TFG baja o comidas irregulares, el riesgo es alto.' },
+      { error: 'Combinar fármacos sin revisar efectos adversos aditivos.', correccion: 'Evitar combinaciones que sumen hipoglucemia, retención de líquidos o molestias digestivas.' },
+    ],
+    comprueba: [
+      { pregunta: '¿Cuál es el principal riesgo de las sulfonilureas?', respuesta: 'La hipoglucemia, especialmente en adultos mayores y en insuficiencia renal.' },
+      { pregunta: '¿Qué ventaja tienen los iDPP-4?', respuesta: 'Peso neutro y bajo riesgo de hipoglucemia, con buena tolerancia.' },
+      { pregunta: '¿Cuándo se evita la pioglitazona?', respuesta: 'En insuficiencia cardíaca, retención de líquidos y osteoporosis avanzada.' },
+    ],
+    resumen: [
+      'Los orales clásicos siguen vigentes, pero **no son universales**.',
+      'La metformina es útil; las sulfonilureas exigen vigilancia de hipoglucemia.',
+      'Los iDPP-4 son seguros y bien tolerados, con efecto modesto.',
+      'La combinación se elige por **mecanismo y seguridad**.',
+    ],
+    referencias: [
+      { cita: 'American Diabetes Association. Standards of Care in Diabetes—2026. Diabetes Care. 2026;49(Suppl 1).', url: 'https://diabetesjournals.org/care/issue/49/Supplement_1' },
+      { cita: 'AEMPS-CIMA. Ficha técnica de Metformina Cinfa 850 mg comprimidos recubiertos con película EFG.', url: 'https://cima.aemps.es/cima/dochtml/ft/68167/FT_68167.html' },
+      { cita: 'AEMPS-CIMA. Ficha técnica de Sitagliptina Cinfamed 100 mg comprimidos recubiertos con película EFG.', url: 'https://cima.aemps.es/cima/dochtml/ft/86323/FT_86323.html' },
+    ],
+    imagenes: [
+      { ubicacion: 'Sección de clasificación', descripcion: 'Cuatro frascos rotulados (metformina, iDPP-4, sulfonilurea y pioglitazona) con iconos de hígado, incretina, insulina y sensibilidad.', alt: 'Antidiabéticos orales clásicos y sus mecanismos' },
+    ],
+    keywords: ['antidiabéticos orales', 'metformina 2026', 'iDPP-4', 'sulfonilureas hipoglucemia', 'pioglitazona', 'tratamiento diabetes tipo 2 oral', 'combinación antidiabética', 'curso farmacoterapia diabetes'],
+  },
+  {
+    titulo: 'Metformina: mecanismo, indicaciones, dosificación y ajuste por función renal',
+    duracion: 25,
+    gancho: {
+      titulo: 'La metformina que casi se suspende por una creatinina',
+      texto: 'Un paciente de 70 años llega con creatinina de 1,4 mg/dL y la farmacia le dice que “ya no puede tomar metformina porque tiene el riñón dañado”. En realidad, la creatinina aislada no basta: hay que estimar la TFG, revisar la dosis, la evolución y el riesgo de acidosis. Suspender un fármaco útil por una interpretación incompleta también es un error de seguridad.',
+    },
+    objetivos: [
+      'Explicar el mecanismo de la metformina y sus efectos metabólicos.',
+      'Aplicar la dosificación y el ajuste por función renal.',
+      'Reconocer las situaciones en las que se suspende temporal o definitivamente.',
+      'Diseñar un plan de inicio y titulación para mejorar la tolerancia.',
+    ],
+    conceptos: [
+      { icono: 'Pill', termino: 'Biguanida', definicion: 'Familia de la metformina; reduce la gluconeogénesis hepática y mejora la sensibilidad periférica sin estimular la insulina.' },
+      { icono: 'Droplets', termino: 'TFG estimada', definicion: 'Medida de la función renal que se usa para ajustar la metformina. No se debe usar solo la creatinina sérica.' },
+      { icono: 'AlertTriangle', termino: 'Acidosis láctica', definicion: 'Complicación rara pero grave de la metformina, favorecida por insuficiencia renal, hipoxia, sepsis, alcohol o contraste.' },
+      { icono: 'CalendarClock', termino: 'Titulación', definicion: 'Aumento gradual de la dosis para reducir los síntomas digestivos y mejorar la adherencia.' },
+    ],
+    mapa: {
+      centro: 'Metformina',
+      ramas: [
+        { titulo: 'Mecanismo', icono: 'Pill', nodos: ['Menos gluconeogénesis', 'Más sensibilidad', 'Sin hipoglucemia'] },
+        { titulo: 'Inicio', icono: 'CalendarClock', nodos: ['500 mg con comida', 'Aumento gradual', 'Tolerancia digestiva'] },
+        { titulo: 'Riñón', icono: 'Droplets', nodos: ['TFG 45-59: revisar', 'TFG 30-44: no iniciar', 'TFG <30: contraindicada'] },
+        { titulo: 'Suspensión', icono: 'AlertTriangle', nodos: ['Contraste', 'Cirugía', 'Sepsis o hipoxia'] },
+      ],
+    },
+    secciones: [
+      {
+        titulo: 'Cómo actúa',
+        parrafos: [
+          'La metformina reduce la producción hepática de glucosa, sobre todo la gluconeogénesis, y mejora la sensibilidad a la insulina en músculo y tejido adiposo. No estimula la secreción de insulina, por eso no causa hipoglucemia cuando se usa sola. También puede reducir la absorción intestinal de glucosa y favorecer un perfil lipídico más favorable.',
+          'Su efecto sobre la HbA1c es de aproximadamente 1 a 1,5 puntos porcentuales, variable según la dosis y el paciente. Es un fármaco útil, económico y con décadas de experiencia. No produce aumento de peso y puede tener un efecto neutro o ligeramente favorable sobre el peso.',
+        ],
+      },
+      {
+        titulo: 'Dosis y titulación',
+        parrafos: [
+          'Se inicia con 500 mg una o dos veces al día con las comidas, y se aumenta cada una o dos semanas según tolerancia y glucosa. La dosis habitual es de 1.000 a 2.000 mg al día, con un máximo de 2.550 mg en algunas formulaciones. La presentación de liberación prolongada puede mejorar la tolerancia digestiva y permitir una toma única.',
+          'La titulación lenta reduce la diarrea y las náuseas. Si los síntomas persisten, se puede reducir la dosis o cambiar a liberación prolongada. La adherencia mejora cuando se explica que los efectos digestivos suelen disminuir con el tiempo y que la toma con comida es importante.',
+        ],
+      },
+      {
+        titulo: 'Ajuste por función renal',
+        parrafos: [
+          'La metformina se elimina por el riñón. Con TFG ≥60 ml/min no requiere ajuste. Con TFG de 45 a 59 ml/min se revisa la dosis y el riesgo. Con TFG de 30 a 44 ml/min no se recomienda iniciar y, si ya está en uso, se reduce la dosis y se vigila estrechamente. Con TFG <30 ml/min está contraindicada. La creatinina aislada no es suficiente; se debe estimar la TFG.',
+          'Se suspende temporalmente antes de un estudio con contraste yodado o de una cirugía mayor, y se reinicia cuando la función renal se confirma estable. También se suspende en sepsis, deshidratación, hipoxia o insuficiencia cardíaca descompensada, porque aumentan el riesgo de acidosis láctica.',
+        ],
+      },
+    ],
+    proceso: {
+      titulo: 'Cómo iniciar metformina de forma segura',
+      pasos: [
+        { titulo: 'Confirmar indicación', detalle: 'Diabetes tipo 2, prediabetes seleccionada o síndrome de ovario poliquístico, según el caso.', icono: 'Target', evidencia: 'Indicación documentada.' },
+        { titulo: 'Calcular TFG', detalle: 'Usar creatinina y edad; no basarse solo en la creatinina.', icono: 'Calculator', evidencia: 'TFG registrada.' },
+        { titulo: 'Iniciar bajo', detalle: '500 mg con la comida y aumentar según tolerancia.', icono: 'Pill', evidencia: 'Dosis inicial.' },
+        { titulo: 'Educar', detalle: 'Explicar síntomas digestivos, B12, alcohol y suspensión antes de contraste.', icono: 'Users', evidencia: 'Educación documentada.' },
+        { titulo: 'Revisar', detalle: 'HbA1c, tolerancia y TFG al menos anual.', icono: 'CalendarClock', evidencia: 'Seguimiento.' },
+      ],
+    },
+    caso: {
+      titulo: 'TFG de 38 ml/min',
+      contexto: 'Hombre de 74 años, diabetes tipo 2, TFG 38 ml/min, HbA1c 7,6 %, toma metformina 1 g cada 12 horas. No tiene síntomas digestivos ni acidosis.',
+      pregunta: '¿Qué hacer con la metformina?',
+      opciones: [
+        { texto: 'Mantener la misma dosis porque la HbA1c está cerca de la meta.', correcta: false, retro: 'Con TFG 30-44 ml/min no se recomienda mantener dosis altas; se debe revisar y reducir, con vigilancia.' },
+        { texto: 'Revisar con el médico la reducción de la dosis o el cambio de esquema, y vigilar TFG y síntomas.', correcta: true, retro: 'La TFG obliga a ajustar. La metformina puede continuar en dosis menor si se justifica, con seguimiento estrecho.' },
+        { texto: 'Suspender de inmediato y no avisar al médico.', correcta: false, retro: 'La suspensión puede ser necesaria, pero debe coordinarse y acompañarse de una alternativa.' },
+      ],
+    },
+    errores: [
+      { error: 'Suspender metformina solo por una creatinina elevada.', correccion: 'Calcular la TFG y evaluar el contexto antes de decidir.' },
+      { error: 'Iniciar con dosis altas.', correccion: 'La titulación gradual mejora la tolerancia y la adherencia.' },
+      { error: 'No suspender antes de contraste o cirugía.', correccion: 'La suspensión temporal reduce el riesgo de acidosis láctica.' },
+    ],
+    comprueba: [
+      { pregunta: '¿Por qué la metformina no causa hipoglucemia sola?', respuesta: 'Porque no estimula la secreción de insulina; reduce la producción hepática y mejora la sensibilidad.' },
+      { pregunta: '¿Qué TFG contraindica la metformina?', respuesta: 'TFG <30 ml/min.' },
+      { pregunta: '¿Cuándo se suspende temporalmente?', respuesta: 'Antes de contraste yodado, cirugía mayor, sepsis, deshidratación o hipoxia.' },
+    ],
+    resumen: [
+      'La metformina reduce la **gluconeogénesis** y mejora la sensibilidad.',
+      'Se titula lento para tolerar los efectos digestivos.',
+      'La **TFG** guía el ajuste y la suspensión.',
+      'No causa hipoglucemia por sí sola, pero puede causar acidosis láctica en riesgo.',
+    ],
+    referencias: [
+      { cita: 'AEMPS-CIMA. Ficha técnica de Metformina Cinfa 850 mg comprimidos recubiertos con película EFG.', url: 'https://cima.aemps.es/cima/dochtml/ft/68167/FT_68167.html' },
+      { cita: 'American Diabetes Association. Standards of Care in Diabetes—2026. Diabetes Care. 2026;49(Suppl 1).', url: 'https://diabetesjournals.org/care/issue/49/Supplement_1' },
+    ],
+    imagenes: [
+      { ubicacion: 'Sección de ajuste renal', descripcion: 'Semáforo de TFG con tres colores y dosis de metformina correspondientes.', alt: 'Ajuste de metformina según la función renal' },
+    ],
+    keywords: ['metformina mecanismo de acción', 'metformina dosis', 'metformina función renal', 'metformina TFG 30', 'metformina acidosis láctica', 'metformina titulación', 'metformina antes de contraste', 'curso metformina diabetes'],
+  },
+  {
+    titulo: 'Seguridad de la metformina: efectos digestivos, vitamina B12, acidosis láctica, contraste y cirugía',
+    duracion: 20,
+    gancho: {
+      titulo: 'La diarrea que hizo abandonar el tratamiento',
+      texto: 'Una paciente de 61 años abandonó la metformina a la semana porque tenía diarrea y náuseas. Nunca le explicaron que los síntomas suelen mejorar si se empieza con dosis baja y se toma con comida. Meses después llegó con HbA1c de 9,2 %. La intolerancia digestiva es la causa más frecuente de abandono, y muchas veces se puede prevenir con educación y titulación.',
+    },
+    objetivos: [
+      'Prevenir y manejar los efectos digestivos de la metformina.',
+      'Reconocer el riesgo de déficit de vitamina B12 y cuándo medirla.',
+      'Identificar los factores que aumentan el riesgo de acidosis láctica.',
+      'Aplicar las reglas de suspensión antes de contraste, cirugía y enfermedad aguda.',
+    ],
+    conceptos: [
+      { icono: 'AlertTriangle', termino: 'Intolerancia digestiva', definicion: 'Diarrea, náuseas, dolor abdominal o sabor metálico; es la causa más frecuente de abandono de la metformina.' },
+      { icono: 'Droplets', termino: 'Vitamina B12', definicion: 'La metformina puede reducir su absorción con el uso prolongado y causar anemia o neuropatía.' },
+      { icono: 'Flame', termino: 'Acidosis láctica', definicion: 'Acumulación de lactato por hipoperfusión, hipoxia o falla renal; es rara pero grave.' },
+      { icono: 'ShieldCheck', termino: 'Reglas de días de enfermedad', definicion: 'Suspender metformina durante vómito, diarrea, fiebre alta, deshidratación o mala ingesta, y reiniciar al recuperarse.' },
+    ],
+    mapa: {
+      centro: 'Seguridad de la metformina',
+      ramas: [
+        { titulo: 'Digestivo', icono: 'AlertTriangle', nodos: ['Diarrea', 'Náuseas', 'Titulación lenta'] },
+        { titulo: 'B12', icono: 'Droplets', nodos: ['Uso prolongado', 'Anemia', 'Neuropatía'] },
+        { titulo: 'Láctico', icono: 'Flame', nodos: ['TFG baja', 'Sepsis', 'Hipoxia'] },
+        { titulo: 'Suspensión', icono: 'ShieldCheck', nodos: ['Contraste', 'Cirugía', 'Enfermedad aguda'] },
+      ],
+    },
+    secciones: [
+      {
+        titulo: 'Efectos digestivos',
+        parrafos: [
+          'La diarrea, las náuseas, el dolor abdominal y el sabor metálico son frecuentes al inicio. Suelen mejorar con la titulación gradual y la toma con alimentos. La formulación de liberación prolongada puede reducir la intolerancia. Si los síntomas son intensos o persistentes, se reduce la dosis o se cambia de presentación; no se debe abandonar sin alternativa.',
+          'La educación anticipatoria es clave: explicar que los síntomas suelen ser transitorios, que se debe empezar con dosis baja y que la toma con comida reduce el malestar. Si hay deshidratación por diarrea, se suspende temporalmente y se reinicia cuando el paciente esté estable.',
+        ],
+      },
+      {
+        titulo: 'Vitamina B12',
+        parrafos: [
+          'El uso prolongado de metformina se asocia con déficit de vitamina B12, sobre todo en personas mayores, vegetarianas o con anemia. El déficit puede causar anemia macrocítica, neuropatía periférica y síntomas cognitivos. La ADA recomienda medir B12 de forma periódica en pacientes con factores de riesgo o síntomas.',
+          'El Químico Farmacéutico puede preguntar por hormigueo, debilidad, palidez o fatiga y revisar el hemograma. Si se detecta déficit, se deriva para tratamiento y seguimiento. No se debe atribuir toda neuropatía a la diabetes sin descartar otras causas.',
+        ],
+      },
+      {
+        titulo: 'Acidosis láctica y situaciones de riesgo',
+        parrafos: [
+          'La acidosis láctica es rara, pero grave. Se favorece por insuficiencia renal, sepsis, hipoxia, insuficiencia cardíaca descompensada, alcoholismo, deshidratación y contraste yodado. Los síntomas incluyen malestar, dolor abdominal, respiración rápida, somnolencia y acidosis metabólica. Ante la sospecha, se suspende la metformina y se busca atención urgente.',
+          'Antes de un estudio con contraste se suspende la metformina y se reinicia cuando la función renal se confirma estable, según el protocolo. Antes de cirugía mayor también se suspende. En enfermedad aguda con vómito, diarrea o mala ingesta, se aplican las reglas de días de enfermedad.',
+        ],
+      },
+    ],
+    proceso: {
+      titulo: 'Reglas de seguridad con metformina',
+      pasos: [
+        { titulo: 'Iniciar bajo', detalle: '500 mg con comida y aumentar según tolerancia.', icono: 'Pill', evidencia: 'Dosis inicial.' },
+        { titulo: 'Anticipar síntomas', detalle: 'Explicar diarrea, náuseas y sabor metálico; cómo manejarlos.', icono: 'Users', evidencia: 'Educación.' },
+        { titulo: 'Revisar B12', detalle: 'En uso prolongado, anemia o neuropatía.', icono: 'Droplets', evidencia: 'Resultado de B12.' },
+        { titulo: 'Suspender en riesgo', detalle: 'Contraste, cirugía, sepsis, deshidratación o hipoxia.', icono: 'AlertTriangle', evidencia: 'Indicación registrada.' },
+        { titulo: 'Reiniciar', detalle: 'Cuando la función renal y el estado clínico sean estables.', icono: 'CheckCircle2', evidencia: 'Reinicio documentado.' },
+      ],
+    },
+    caso: {
+      titulo: 'Vómito y diarrea en un paciente con metformina',
+      contexto: 'Mujer de 68 años, diabetes tipo 2, TFG 52 ml/min, toma metformina 1 g cada 12 horas. Tiene gastroenteritis con vómito y no tolera líquidos.',
+      pregunta: '¿Qué conducta es más segura?',
+      opciones: [
+        { texto: 'Continuar la metformina porque la TFG es mayor de 30.', correcta: false, retro: 'La deshidratación y la mala ingesta aumentan el riesgo de acidosis láctica. Se suspende temporalmente.' },
+        { texto: 'Suspender la metformina durante la enfermedad aguda, hidratar y reiniciar cuando se recupere y la función renal sea estable.', correcta: true, retro: 'Las reglas de días de enfermedad indican suspender en vómito, diarrea o mala ingesta, y reiniciar al recuperarse.' },
+        { texto: 'Aumentar la dosis para compensar la glucosa.', correcta: false, retro: 'Aumentar la dosis durante una enfermedad aguda es peligroso.' },
+      ],
+    },
+    errores: [
+      { error: 'Abandonar la metformina por diarrea sin probar titulación.', correccion: 'La dosis baja, la toma con comida y la liberación prolongada pueden mejorar la tolerancia.' },
+      { error: 'No medir B12 en uso prolongado.', correccion: 'El déficit puede causar anemia y neuropatía; se debe buscar en pacientes de riesgo.' },
+      { error: 'Mantener metformina durante contraste o sepsis.', correccion: 'Se suspende temporalmente para prevenir acidosis láctica.' },
+    ],
+    comprueba: [
+      { pregunta: '¿Cómo se reducen los efectos digestivos?', respuesta: 'Iniciando con dosis baja, tomando con comida y titulando lentamente.' },
+      { pregunta: '¿Qué déficit puede causar la metformina a largo plazo?', respuesta: 'Déficit de vitamina B12.' },
+      { pregunta: '¿Cuándo se suspende la metformina?', respuesta: 'Antes de contraste, cirugía mayor, sepsis, deshidratación, hipoxia o enfermedad aguda con mala ingesta.' },
+    ],
+    resumen: [
+      'La **titulación** previene la intolerancia digestiva.',
+      'La **B12** se vigila en uso prolongado y grupos de riesgo.',
+      'La acidosis láctica es rara pero grave; se previene con reglas de suspensión.',
+      'Las **reglas de días de enfermedad** son parte de la educación.',
+    ],
+    referencias: [
+      { cita: 'AEMPS-CIMA. Ficha técnica de Metformina Cinfa 850 mg comprimidos recubiertos con película EFG.', url: 'https://cima.aemps.es/cima/dochtml/ft/68167/FT_68167.html' },
+      { cita: 'American Diabetes Association. Standards of Care in Diabetes—2026. Diabetes Care. 2026;49(Suppl 1).', url: 'https://diabetesjournals.org/care/issue/49/Supplement_1' },
+    ],
+    imagenes: [
+      { ubicacion: 'Sección de seguridad', descripcion: 'Infografía con cuatro señales de alarma y las reglas de suspensión de metformina.', alt: 'Seguridad y reglas de suspensión de la metformina' },
+    ],
+    keywords: ['metformina efectos secundarios', 'metformina diarrea', 'metformina vitamina B12', 'metformina acidosis láctica', 'metformina contraste', 'metformina cirugía', 'reglas de días de enfermedad diabetes', 'metformina seguridad'],
+  },
+  {
+    titulo: 'Inhibidores de la DPP-4: mecanismo, perfil de seguridad y uso en poblaciones especiales',
+    duracion: 20,
+    gancho: {
+      titulo: 'La opción oral para quien no puede fallar',
+      texto: 'Un paciente de 80 años, con TFG de 35 ml/min, vive solo y tiene riesgo de hipoglucemia. Necesita un fármaco oral sencillo, con bajo riesgo de hipoglucemia y buena tolerancia. Los iDPP-4 pueden encajar, pero no son iguales entre sí: algunos requieren ajuste renal, otros no, y su efecto sobre la glucosa es modesto. Elegir bien exige conocer sus diferencias.',
+    },
+    objetivos: [
+      'Explicar el mecanismo de los iDPP-4 y su efecto incretina.',
+      'Comparar sitagliptina, linagliptin, saxagliptin y alogliptin.',
+      'Aplicar el ajuste renal y reconocer las señales de seguridad.',
+      'Identificar al paciente en quien un iDPP-4 es una buena opción.',
+    ],
+    conceptos: [
+      { icono: 'Activity', termino: 'DPP-4', definicion: 'Enzima que degrada GLP-1 y GIP. Su inhibición prolonga la acción de las incretinas endógenas.' },
+      { icono: 'Pill', termino: 'Sitagliptina', definicion: 'iDPP-4 de una vez al día; requiere ajuste en insuficiencia renal moderada o grave.' },
+      { icono: 'ShieldCheck', termino: 'Linagliptina', definicion: 'iDPP-4 que se elimina por vía biliar y no requiere ajuste renal.' },
+      { icono: 'AlertTriangle', termino: 'Seguridad', definicion: 'Riesgo bajo de hipoglucemia; se vigilan pancreatitis, artralgias, penfigoide y, con saxagliptina, insuficiencia cardíaca.' },
+    ],
+    mapa: {
+      centro: 'iDPP-4',
+      ramas: [
+        { titulo: 'Mecanismo', icono: 'Activity', nodos: ['Inhiben DPP-4', 'Más GLP-1 y GIP', 'Insulina dependiente de glucosa'] },
+        { titulo: 'Efecto', icono: 'Target', nodos: ['HbA1c modesta', 'Peso neutro', 'Bajo riesgo de hipoglucemia'] },
+        { titulo: 'Riñón', icono: 'Droplets', nodos: ['Sitagliptina ajusta', 'Linagliptina no ajusta', 'Revisar TFG'] },
+        { titulo: 'Seguridad', icono: 'AlertTriangle', nodos: ['Pancreatitis', 'Artralgias', 'Penfigoide', 'Insuficiencia cardíaca'] },
+      ],
+    },
+    secciones: [
+      {
+        titulo: 'Cómo actúan',
+        parrafos: [
+          'Las incretinas GLP-1 y GIP se liberan después de comer y estimulan la insulina, frenan el glucagón y enlentecen el vaciamiento gástrico. La DPP-4 las degrada rápidamente. Los iDPP-4 prolongan su acción endógena, pero no sustituyen la deficiencia de incretinas como los agonistas GLP-1. Su efecto sobre la HbA1c es modesto, de aproximadamente 0,5 a 0,8 puntos porcentuales.',
+          'Como su efecto sobre la insulina depende de la glucosa, el riesgo de hipoglucemia es bajo cuando se usan solos. Son peso neutros y bien tolerados. No producen el efecto de saciedad ni la pérdida de peso de los agonistas GLP-1.',
+        ],
+      },
+      {
+        titulo: 'Diferencias entre fármacos',
+        parrafos: [
+          'La sitagliptina se administra una vez al día y requiere ajuste en insuficiencia renal moderada o grave. La linagliptina no requiere ajuste renal, lo que la hace útil en enfermedad renal avanzada. La saxagliptina se ajusta en insuficiencia renal y se ha asociado con un aumento de hospitalizaciones por insuficiencia cardíaca, por lo que se evita en esos pacientes. El alogliptin también requiere ajuste renal.',
+          'La elección depende de la TFG, la comorbilidad cardíaca, el costo y la cobertura. En un paciente con insuficiencia cardíaca, se prefiere evitar saxagliptina. En enfermedad renal avanzada, linagliptina es una opción sencilla. En todos los casos, el efecto glucémico es modesto y puede requerir combinación.',
+        ],
+      },
+      {
+        titulo: 'Seguridad y poblaciones especiales',
+        parrafos: [
+          'Los iDPP-4 son bien tolerados, pero se han descrito pancreatitis aguda, artralgias intensas y penfigoide bulloso. Ante dolor abdominal persistente, se suspende y se evalúa. En adultos mayores y en personas con riesgo de hipoglucemia son una opción atractiva, siempre que la meta glucémica sea alcanzable.',
+          'No se recomiendan como sustitutos de un agonista GLP-1 cuando el objetivo es pérdida de peso o beneficio cardiovascular. En insuficiencia cardíaca, se prefiere un iSGLT2. En enfermedad renal, linagliptina puede usarse sin ajuste, pero no reemplaza la nefroprotección con iSGLT2 cuando está indicada.',
+        ],
+      },
+    ],
+    proceso: {
+      titulo: 'Cómo elegir un iDPP-4',
+      pasos: [
+        { titulo: 'Definir el objetivo', detalle: 'Control glucémico moderado, bajo riesgo de hipoglucemia y peso neutro.', icono: 'Target', evidencia: 'Meta clínica.' },
+        { titulo: 'Revisar TFG', detalle: 'Elegir el fármaco y ajustar la dosis según la función renal.', icono: 'Droplets', evidencia: 'TFG registrada.' },
+        { titulo: 'Revisar corazón', detalle: 'Evitar saxagliptina en insuficiencia cardíaca; preferir iSGLT2 si hay indicación.', icono: 'Activity', evidencia: 'Evaluación cardíaca.' },
+        { titulo: 'Educar', detalle: 'Explicar el efecto modesto, la tolerancia y los signos de pancreatitis.', icono: 'Users', evidencia: 'Educación.' },
+        { titulo: 'Seguir', detalle: 'HbA1c a los 3-6 meses y revisión de efectos adversos.', icono: 'CalendarClock', evidencia: 'Seguimiento.' },
+      ],
+    },
+    caso: {
+      titulo: 'TFG 35 y alto riesgo de hipoglucemia',
+      contexto: 'Mujer de 80 años, diabetes tipo 2, TFG 35 ml/min, HbA1c 7,5 %, vive sola y ha tenido hipoglucemias con glibenclamida. No tiene insuficiencia cardíaca.',
+      pregunta: '¿Qué opción oral es más razonable?',
+      opciones: [
+        { texto: 'Saxagliptina 5 mg al día sin ajuste.', correcta: false, retro: 'La saxagliptina requiere ajuste renal y se asocia con insuficiencia cardíaca; no es la mejor opción.' },
+        { texto: 'Linagliptina 5 mg al día, con revisión de la meta y seguimiento.', correcta: true, retro: 'La linagliptina no requiere ajuste renal y tiene bajo riesgo de hipoglucemia, lo que encaja en esta paciente.' },
+        { texto: 'Glibenclamida a dosis más alta.', correcta: false, retro: 'La paciente ya tuvo hipoglucemias; aumentar la sulfonilurea es peligroso.' },
+      ],
+    },
+    errores: [
+      { error: 'Esperar una gran reducción de HbA1c con un iDPP-4.', correccion: 'Su efecto es modesto; si la meta está lejos, se necesita combinación o un fármaco con mayor potencia.' },
+      { error: 'Usar saxagliptina en insuficiencia cardíaca.', correccion: 'Se asocia con hospitalizaciones por insuficiencia cardíaca; se prefiere evitarla.' },
+      { error: 'Olvidar el ajuste renal de sitagliptina y alogliptin.', correccion: 'Revisar la TFG y ajustar según la ficha técnica.' },
+    ],
+    comprueba: [
+      { pregunta: '¿Cuál es el efecto de los iDPP-4 sobre el peso?', respuesta: 'Neutro.' },
+      { pregunta: '¿Qué iDPP-4 no requiere ajuste renal?', respuesta: 'Linagliptina.' },
+      { pregunta: '¿Qué efecto adverso raro se debe vigilar?', respuesta: 'Pancreatitis, artralgias y penfigoide bulloso.' },
+    ],
+    resumen: [
+      'Los iDPP-4 prolongan la acción de las **incretinas endógenas**.',
+      'Su efecto es **modesto**, con peso neutro y bajo riesgo de hipoglucemia.',
+      'La **TFG** y la insuficiencia cardíaca guían la elección.',
+      'No sustituyen a los agonistas GLP-1 cuando se busca pérdida de peso o beneficio cardiovascular.',
+    ],
+    referencias: [
+      { cita: 'AEMPS-CIMA. Ficha técnica de Sitagliptina Cinfamed 100 mg comprimidos recubiertos con película EFG.', url: 'https://cima.aemps.es/cima/dochtml/ft/86323/FT_86323.html' },
+      { cita: 'American Diabetes Association. Standards of Care in Diabetes—2026. Diabetes Care. 2026;49(Suppl 1).', url: 'https://diabetesjournals.org/care/issue/49/Supplement_1' },
+    ],
+    imagenes: [
+      { ubicacion: 'Sección de diferencias', descripcion: 'Tabla comparativa de sitagliptina, linagliptina, saxagliptina y alogliptin con ajuste renal y seguridad cardíaca.', alt: 'Diferencias entre los inhibidores de DPP-4' },
+    ],
+    keywords: ['inhibidores DPP-4', 'sitagliptina dosis renal', 'linagliptina función renal', 'saxagliptina insuficiencia cardiaca', 'iDPP-4 efectos adversos', 'diabetes adulto mayor', 'iDPP-4 vs GLP-1', 'curso farmacoterapia diabetes'],
+  },
+];
