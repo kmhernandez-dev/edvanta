@@ -50,6 +50,10 @@ Antes o después del curso, estas guías ordenan las familias y los mecanismos:
 - [Quinolonas: mecanismo, espectro y seguridad](/articulos/quinolonas-antibioticos)
 - [Tetraciclinas: mecanismo, espectro y precauciones](/articulos/tetraciclinas-antibioticos)
 - [Nitroimidazoles: metronidazol y secnidazol](/articulos/nitroimidazoles-metronidazol-secnidazol)
+- [Aminoglucósidos: mecanismo, espectro y toxicidad](/articulos/aminoglucosidos-antibioticos)
+- [Carbapenémicos: espectro, uso y resistencia](/articulos/carbapenemicos-antibioticos)
+- [Sulfonamidas: mecanismo, usos y seguridad](/articulos/sulfonamidas-antibioticos)
+- [Antibióticos de reserva: cuándo y cómo usarlos](/articulos/antibioticos-de-reserva)
 
 ## Formación de Edvanta que lo complementa
 

@@ -94,6 +94,10 @@ No es el tratamiento habitual. Su espectro se dirige a estafilococos de piel y t
 
 No todas las reacciones son alergia verdadera. Consulta para caracterizar la reacción y elegir una alternativa segura.
 
+## Términos clave
+
+- Penicilinasa, aminopenicilina, betalactamasa, PBP, piperacilina, alergia.
+
 ## Fichas relacionadas
 
 - [Dicloxacilina: para qué sirve](/articulos/dicloxacilina-para-que-sirve)

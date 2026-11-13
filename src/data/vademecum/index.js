@@ -47,6 +47,14 @@ import ezetimiba from './monografias/ezetimiba.js';
 import warfarina from './monografias/warfarina.js';
 import apixaban from './monografias/apixaban.js';
 import rivaroxaban from './monografias/rivaroxaban.js';
+import secnidazol from './monografias/secnidazol.js';
+import dicloxacilina from './monografias/dicloxacilina.js';
+import claritromicina from './monografias/claritromicina.js';
+import ceftriaxona from './monografias/ceftriaxona.js';
+import penicilinaBenzatinica from './monografias/penicilina-benzatinica.js';
+import levofloxacino from './monografias/levofloxacino.js';
+import doxiciclina from './monografias/doxiciclina.js';
+import fosfomicina from './monografias/fosfomicina.js';
 import antibioticos from './grupos/antibioticos.js';
 import amoxicilinaAcidoClavulanico from './monografias/amoxicilina-acido-clavulanico.js';
 import cefalexina from './monografias/cefalexina.js';
@@ -68,6 +76,7 @@ export const MONOGRAFIAS = [
   atorvastatina, rosuvastatina, ezetimiba,
   warfarina, apixaban, rivaroxaban,
   amoxicilinaAcidoClavulanico, cefalexina, clindamicina, ciprofloxacino, metronidazol, trimetoprimSulfametoxazol, nitrofurantoina,
+  secnidazol, dicloxacilina, claritromicina, ceftriaxona, penicilinaBenzatinica, levofloxacino, doxiciclina, fosfomicina,
 ].map(conRevision);
 
 export const PAGINAS_VADEMECUM = [...GRUPOS_VADEMECUM, ...MONOGRAFIAS];

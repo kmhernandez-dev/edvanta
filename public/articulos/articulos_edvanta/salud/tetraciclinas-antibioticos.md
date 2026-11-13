@@ -93,6 +93,10 @@ Sí, en tratamientos prolongados y con control médico. No se usa en monoterapia
 
 No. Permanece erguido al menos 30 minutos para evitar irritación del esófago.
 
+## Términos clave
+
+- Subunidad 30S, fotosensibilidad, esofagitis, cationes, rickettsia, doxiciclina.
+
 ## Fichas relacionadas
 
 - [Doxiciclina: para qué sirve](/articulos/doxiciclina-para-que-sirve)

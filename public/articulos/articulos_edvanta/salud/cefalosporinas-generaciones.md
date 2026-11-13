@@ -97,6 +97,10 @@ Depende del tipo de reacción. Consulta antes de usarla; no todas las alergias a
 
 Solo algunas. Ceftriaxona y cefotaxima alcanzan concentraciones útiles en líquido cefalorraquídeo. Ceftazidima y cefepime también se usan en esquemas hospitalarios.
 
+## Términos clave
+
+- Generación, espectro, BLEE, AmpC, LCR, *Pseudomonas*, alergia cruzada.
+
 ## Fichas relacionadas
 
 - [Cefalexina: para qué sirve](/articulos/cefalexina-para-que-sirve)

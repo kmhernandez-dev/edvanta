@@ -87,6 +87,10 @@ Depende del tipo de reacción y del fármaco. Consulta antes de usarlo; no todas
 
 Una molécula que bloquea algunas betalactamasas y protege al antibiótico. No se usa sola como tratamiento antibacteriano.
 
+## Términos clave
+
+- PBP, betalactamasa, BLEE, carbapenémico, monobactámico, inhibidor.
+
 ## Fichas relacionadas
 
 - [Cefalosporinas: generaciones](/articulos/cefalosporinas-generaciones)

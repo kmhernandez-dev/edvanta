@@ -99,6 +99,10 @@ Evita el ejercicio intenso y las cargas sobre el tendón de Aquiles. Si aparece 
 
 No hay una interacción directa grave descrita, pero el alcohol puede empeorar el mareo y la deshidratación. Pregunta a tu médico.
 
+## Términos clave
+
+- ADN girasa, topoisomerasa IV, tendinopatía, cationes, QT, resistencia.
+
 ## Fichas relacionadas
 
 - [Ciprofloxacino: para qué sirve](/articulos/ciprofloxacino-para-que-sirve)

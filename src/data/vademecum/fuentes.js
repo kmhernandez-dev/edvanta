@@ -206,6 +206,23 @@ export const F = {
   dmCiprofloxacino: dailymed('Ciprofloxacin tablet, film coated', '74e2dd24-5c6e-4dde-a2ab-f2d2e61734d8', '9 nov 2026'),
   dmMacrobid: dailymed('Macrobid (nitrofurantoin monohydrate/macrocrystalline) capsule', '8f270a9f-12a1-44d4-bc7e-873613555801', '12 oct 2026'),
   dmCleocin: dailymed('Cleocin Phosphate (clindamycin phosphate) injection, solution', '184acaee-6129-479e-850f-d89575b8b391', '29 oct 2026'),
+  // ── Antimicrobianos, lote 2 (13-nov-2026) ──
+  dmSecnidazol: dailymed('Solosec (secnidazole) granule, for oral solution', '056485b6-8bba-4a21-ae00-cdb4e7ae4bfa', '19 sep 2025'),
+  dmDicloxacilina: dailymed('Dicloxacillin sodium capsule', '24e821aa-85b8-4f5a-aa13-83ff132952ca', '3 mar 2025'),
+  ftClaritromicina: ft('Claritromicina Cinfa 500 mg comprimidos recubiertos con película EFG', '67639'),
+  ftCeftriaxona: ft('Ceftriaxona Normon 1000 mg polvo y disolvente para solución inyectable y para perfusión EFG', '62635'),
+  dmPenicilinaBenzatinica: dailymed('Bicillin L-A (penicillin G benzathine) injection, suspension', '012d46f1-d0a0-4676-a879-cd320297ab16', '12 dic 2024'),
+  ftLevofloxacino: ft('Levofloxacino Cinfa 500 mg comprimidos recubiertos con película EFG', '75614'),
+  ftDoxiciclina: ft('Doxiciclina Normon 100 mg comprimidos recubiertos', '47077'),
+  ftFosfomicina: ft('Fosfomicina Abamed 3 g granulado para solución oral en sobres EFG', '80903'),
+  whoAware2023: {
+    texto: 'Organización Mundial de la Salud. AWaRe classification of antibiotics for evaluation and monitoring of use, 2023 [Internet]. Ginebra: OMS; 2023 [citado 12 nov 2026]. Disponible en: https://www.who.int/publications/i/item/9789240080379',
+    url: 'https://www.who.int/publications/i/item/9789240080379',
+  },
+  fdaFluoroquinolonas: {
+    texto: 'Food and Drug Administration. FDA updates warnings for oral and intravenous fluoroquinolone antibiotics [Internet]. Silver Spring (MD): FDA; 2016 [citado 12 nov 2026]. Disponible en: https://www.fda.gov/drugs/drug-safety-and-availability/fda-updates-warnings-oral-and-intravenous-fluoroquinolone-antibiotics',
+    url: 'https://www.fda.gov/drugs/drug-safety-and-availability/fda-updates-warnings-oral-and-intravenous-fluoroquinolone-antibiotics',
+  },
   pubchemMetronidazol: pubchem('Metronidazole', 4173),
   pubchemCefalexina: pubchem('Cephalexin', 27447),
   pubchemAmoxicilina: pubchem('Amoxicillin', 33613),

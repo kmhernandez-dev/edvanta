@@ -3,7 +3,7 @@
 **Grupo farmacológico:** antibacterianos sistémicos (ATC J01) y nitroimidazoles (P01AB): 47 principios activos.
 **Asignado a:** Claude Code (13-nov-2026). Open Code trabaja otro grupo; ver `seo/vademecum-asignaciones.md`.
 **Datos:** `seo/vademecum-antimicrobianos-2000-keywords.csv` (2.000 filas). Para regenerar el archivo: `node scripts/generar-keywords-antimicrobianos.mjs`.
-**Estado 13-nov-2026:** lote 1 revisado por Karla y desplegado (7 fichas y 8 páginas del vademécum, indexables). Lote 2 escrito (8 fichas y 7 clases de antibióticos), en `noindex` hasta la revisión clínica.
+**Estado 13-nov-2026:** lote 1 y lote 2 revisados por Karla y desplegados. Lote 2 ampliado con 8 monografías, 4 clases nuevas y 3 artículos del lote 3, en `noindex` hasta la revisión clínica.
 
 ## Por qué este grupo
 
@@ -114,6 +114,6 @@ A los 45 días de indexar los lotes 1 y 2 (16 fichas):
 
 ## Siguiente paso
 
-1. **Karla:** revisar el lote 2 (8 fichas y 7 clases) y anotarlo en `src/data/revisionClinica.js`.
-2. **Claude Code:** pasar al lote 3 (venta profesional y BOFU): `farmacocinetica-pkpd-antibioticos`, curso PROA, stewardship, dispensación en droguería y casos.
+1. **Karla:** revisar las 8 monografías, las 4 clases nuevas y los 3 artículos del lote 3; anotarlo en `src/data/revisionClinica.js` y `REVISION_VADEMECUM`.
+2. **Claude Code:** lote 4 (pacientes transversales): pilar de antibióticos ya creado, cómo tomarlos, efectos secundarios y probióticos, alergia a la penicilina, garganta, muela, piel, otitis y vaginosis.
 3. **Open Code:** anotar su grupo en `seo/vademecum-asignaciones.md` antes de crear fichas.

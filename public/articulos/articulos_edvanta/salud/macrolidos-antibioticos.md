@@ -96,6 +96,10 @@ No. No actúan contra virus; se usan solo cuando hay una infección bacteriana q
 
 La azitromicina es la opción con más experiencia y se prefiere cuando está indicada. Consulta siempre con tu médico.
 
+## Términos clave
+
+- Subunidad 50S, CYP3A4, QT, atípicos, azitromicina, resistencia.
+
 ## Fichas relacionadas
 
 - [Claritromicina: para qué sirve](/articulos/claritromicina-para-que-sirve)

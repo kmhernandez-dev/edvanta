@@ -212,6 +212,10 @@ El curso de [Farmacología clínica de Edutin](https://edutin.com/sh-7429) profu
 - [Quinolonas: mecanismo, espectro y seguridad](/articulos/quinolonas-antibioticos)
 - [Tetraciclinas: mecanismo, espectro y precauciones](/articulos/tetraciclinas-antibioticos)
 - [Nitroimidazoles: metronidazol y secnidazol](/articulos/nitroimidazoles-metronidazol-secnidazol)
+- [Aminoglucósidos: mecanismo, espectro y toxicidad](/articulos/aminoglucosidos-antibioticos)
+- [Carbapenémicos: espectro, uso y resistencia](/articulos/carbapenemicos-antibioticos)
+- [Sulfonamidas: mecanismo, usos y seguridad](/articulos/sulfonamidas-antibioticos)
+- [Antibióticos de reserva: cuándo y cómo usarlos](/articulos/antibioticos-de-reserva)
 
 ## Artículos relacionados
 

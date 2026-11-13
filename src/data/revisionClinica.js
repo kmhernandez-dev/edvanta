@@ -259,10 +259,33 @@ const REVISADOS_POR_KARLA_2026_11_13 = [
   'clindamicina-para-que-sirve',
 ];
 
+/**
+ * 13 de noviembre de 2026: Karla revisó el lote 2 (8 fichas de antimicrobianos
+ * y las 7 clases de antibióticos) y aprobó su publicación.
+ */
+const REVISADOS_POR_KARLA_2026_11_13_LOTE2 = [
+  'secnidazol-para-que-sirve',
+  'dicloxacilina-para-que-sirve',
+  'claritromicina-para-que-sirve',
+  'ceftriaxona-para-que-sirve',
+  'penicilina-benzatinica-para-que-sirve',
+  'levofloxacino-para-que-sirve',
+  'doxiciclina-para-que-sirve',
+  'fosfomicina-para-que-sirve',
+  'cefalosporinas-generaciones',
+  'penicilinas-tipos-y-usos',
+  'macrolidos-antibioticos',
+  'quinolonas-antibioticos',
+  'tetraciclinas-antibioticos',
+  'nitroimidazoles-metronidazol-secnidazol',
+  'betalactamicos-clasificacion',
+];
+
 export const REVISION_CLINICA = Object.fromEntries([
   ...REVISADOS_POR_KARLA_2026_11_09.map((slug) => [slug, KARLA_2026_11_09]),
   ...REVISADOS_POR_KARLA_2026_11_12.map((slug) => [slug, KARLA_2026_11_12]),
   ...REVISADOS_POR_KARLA_2026_11_13.map((slug) => [slug, KARLA_2026_11_13]),
+  ...REVISADOS_POR_KARLA_2026_11_13_LOTE2.map((slug) => [slug, KARLA_2026_11_13]),
 ]);
 
 /**

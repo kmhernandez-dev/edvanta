@@ -45,7 +45,8 @@ Con 10 a 40 consultas por página fuerte indexada, 3.000 consultas piden entre 1
   - `/cursos/coursera`, `/cursos/edutin` y `/cursos/udemy`.
 - **13-nov, datos estructurados:** Search Console marcaba como no válida la ProfilePage de la autora: `mainEntity` era solo un `@id`. Se corrigió (commit ae9c74e), junto con el FAQPage de recursos para estudiantes, que no tenía `@context`. Falta validar la corrección en Search Console.
 - **13-nov, lote 1 de antimicrobianos revisado y aprobado por Karla:** 7 fichas `/articulos/[dci]-para-que-sirve` y 8 páginas del vademécum (grupo «Antibióticos de uso ambulatorio» y 7 monografías), ya indexables y en el sitemap. Se avisaron 17 URLs a Bing por IndexNow (HTTP 200), incluidas amoxicilina y azitromicina por los CTA nuevos. Quedan pendientes de Search Console cuando se restablezca la cuota.
-- **13-nov, lote 2 de antimicrobianos y clases:** 8 fichas nuevas (secnidazol, dicloxacilina, claritromicina, ceftriaxona, penicilina benzatínica, levofloxacino, doxiciclina y fosfomicina) y 7 clases de antibióticos (cefalosporinas, penicilinas, macrólidos, quinolonas, tetraciclinas, nitroimidazoles y betalactámicos). Son 15 páginas nuevas, **en noindex hasta la revisión clínica de Karla**. Las clases cubren las 188 keywords de «Clases de antibióticos» del CSV.
+- **13-nov, lote 2 de antimicrobianos y clases revisado por Karla:** 8 fichas nuevas y 7 clases de antibióticos, ya indexables. Las clases cubren las 188 keywords de «Clases de antibióticos» del CSV.
+- **13-nov, cierre del grupo y nuevas clases:** 8 monografías nuevas en el vademécum (secnidazol, dicloxacilina, claritromicina, ceftriaxona, penicilina benzatínica, levofloxacino, doxiciclina y fosfomicina), 4 clases nuevas (aminoglucósidos, carbapenémicos, sulfonamidas y antibióticos de reserva) y 3 artículos del lote 3 (PK/PD, dispensación en droguería y el pilar para pacientes). Las monografías y las 4 clases nuevas quedan en noindex hasta la revisión de Karla; los 3 artículos también.
 
 ## Dónde estamos (28 días al 10-nov-2026)
 
@@ -105,7 +106,8 @@ Una página sólida, ya indexada y con unos meses, suele aparecer en 10 a 40 con
 | 12-nov | Noticias reescritas: las últimas 6 (CHMP de Kyinsu, vacuna H5N1, Talvey, Tryngolza y Tukysa; informe ARC de la FDA) | 100 de 100; noindex por plantilla: 6 → 0 |
 | 12-nov | Mejores cursos, lote 5: microbiota y salud digestiva, contabilidad y administración de droguerías, gestión de calidad por niveles y radiología | 4 (31 en total) |
 | 13-nov | **Antimicrobianos, lote 1:** 7 fichas para pacientes y el grupo «Antibióticos de uso ambulatorio» con 7 monografías; CTA profesionales añadidos a amoxicilina y azitromicina. Revisado por Karla el 13-nov. | 15 páginas nuevas, indexables; 17 URLs avisadas por IndexNow |
-| 13-nov | **Antimicrobianos, lote 2 y clases:** 8 fichas (secnidazol, dicloxacilina, claritromicina, ceftriaxona, penicilina benzatínica, levofloxacino, doxiciclina y fosfomicina) y 7 clases de antibióticos con enlazado cruzado. | 15 páginas nuevas, en noindex hasta la revisión clínica de Karla |
+| 13-nov | **Antimicrobianos, lote 2 y clases:** 8 fichas y 7 clases de antibióticos con enlazado cruzado. Revisado por Karla el 13-nov. | 15 páginas indexables |
+| 13-nov | **Vademécum, lote 2:** 8 monografías nuevas y 4 clases adicionales (aminoglucósidos, carbapenémicos, sulfonamidas y reserva); 3 artículos del lote 3 (PK/PD, dispensación y pilar de pacientes). | 15 páginas nuevas, en noindex hasta la revisión de Karla |
 
 **Riesgo resuelto (12-nov):** las noticias de pritelivir, Ort-Flx, Anktiva y Mynzepli ya posicionaban (posiciones 2 a 9) y seguían en noindex. Al rastrearlas de nuevo, Google las habría sacado del índice. Ya tienen contenido propio y `index,follow`. La de pritelivir se pidió a Search Console; la cuota del día se agotó.
 
@@ -127,7 +129,7 @@ Una página sólida, ya indexada y con unos meses, suele aparecer en 10 a 40 con
 4. **Mejores cursos, lote 6.** Completar los 2 temas que faltan del lote 5 y sumar los que no canibalicen: farmacia clínica para regentes, servicio al cliente en farmacia y cursos de hematología, entre otros.
 5. **Levotiroxina y tiroides.** Las preguntas concretas ya aparecen en posición 3. Cada artículo nuevo requiere la revisión clínica de Karla.
 6. **Guías editoriales de cursos curados:** completadas (176 de 176). No queda pendiente.
-7. **Vademécum de antimicrobianos (J01).** Lote 1 indexado el 13-nov (15 páginas). Lote 2 escrito el 13-nov: 8 fichas y 7 clases de antibióticos, en noindex hasta la revisión de Karla. Cuando apruebe, se anotan en `revisionClinica.js` y se piden a Search Console. Sigue el lote 3 (venta profesional y BOFU) en `seo/vademecum-antimicrobianos.md`. Reparto con Open Code en `seo/vademecum-asignaciones.md`.
+7. **Vademécum de antimicrobianos (J01).** Lote 1 y lote 2 indexados el 13-nov. Lote 2 ampliado con 8 monografías y 4 clases nuevas, y lote 3 escrito (PK/PD, dispensación en droguería y pilar de pacientes). Pendiente la revisión de Karla para indexar las 15 páginas nuevas; después, lote 4 (pacientes transversales) y lote 5 (clases restantes). Reparto con Open Code en `seo/vademecum-asignaciones.md`.
 
 ## Cómo se mide
 

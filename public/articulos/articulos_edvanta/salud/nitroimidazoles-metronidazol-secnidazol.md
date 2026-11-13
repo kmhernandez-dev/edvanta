@@ -93,6 +93,10 @@ No son el tratamiento habitual de la cistitis. Para ese tema, revisa la guía de
 
 En la tricomoniasis sí. En la vaginosis bacteriana, sigue la indicación del médico.
 
+## Términos clave
+
+- Anaerobio, disulfiram, tricomoniasis, vaginosis, amebiasis, secnidazol.
+
 ## Fichas relacionadas
 
 - [Metronidazol: para qué sirve](/articulos/metronidazol-para-que-sirve)
