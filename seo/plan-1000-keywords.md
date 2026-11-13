@@ -73,6 +73,7 @@ Una página sólida, ya indexada y con unos meses, suele aparecer en 10 a 40 con
 5. **Guías editoriales de cursos curados.** Quedan unos 150, en lotes de 12.
 6. **Competencias y rutas.** 50 competencias de unas 35 palabras y 11 rutas de unas 120: escribir su texto en api/lib/textos-perfiles/ (las carreras ya lo tienen).
 7. **Presión alta.** Cuando Karla confirme la revisión clínica de los 8 artículos, anotarlos en revisionClinica.js y pedir su indexación. Siguientes temas del grupo: presión baja, valsartán, enalapril con hidroclorotiazida y metoprolol.
+8. **Vademécum de antimicrobianos (J01).** 2.000 keywords en 93 páginas, cada una conectada con el curso PROA, el ebook de farmacocinética o la capacitación B2B. Plan y lotes en `seo/vademecum-antimicrobianos.md`; reparto con Open Code en `seo/vademecum-asignaciones.md`.
 
 ## Cómo se mide
 
