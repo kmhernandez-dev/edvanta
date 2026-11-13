@@ -49,6 +49,9 @@ Una página sólida, ya indexada y con unos meses, suele aparecer en 10 a 40 con
 | 12-nov | Guías de tema, lote 4b: FDA, EMA, CTD, dispositivos médicos y etiquetado y publicidad | 5 (noindex: 61 → 56) |
 | 12-nov | Guías de tema, lote 4c: estériles, sólidas, empaque y serialización, transferencia y desarrollo de medicamentos | 5 (noindex: 56 → 51) |
 | 12-nov | Guías de tema, lote 5: descubrimiento, formulación, preclínicos, desarrollo analítico, Power BI, Python, IA y evidencia del mundo real. **Las 50 guías tienen texto propio.** | 8 (noindex: 51 → 43) |
+| 12-nov | Texto editorial de las 11 carreras (día a día, normas, cómo prepararse y FAQPage) | 11 páginas, de unas 150 a unas 430 palabras |
+| 12-nov | Grupo temático de presión alta: valores por edad, tomarla en casa, alimentos, amlodipino, hidroclorotiazida, crisis hipertensiva, embarazo y medicamentos, enlazados desde la guía principal | 8, **en noindex hasta la revisión clínica de Karla** |
+| 12-nov | Mejores cursos: cursos de hipertensión para profesionales de la salud | 1 (indexable) |
 
 **Riesgo resuelto (12-nov):** las noticias de pritelivir, Ort-Flx, Anktiva y Mynzepli ya posicionaban (posiciones 2 a 9) y seguían en noindex. Al rastrearlas de nuevo, Google las habría sacado del índice. Ya tienen contenido propio y `index,follow`. La de pritelivir se pidió a Search Console; la cuota del día se agotó.
 
@@ -68,7 +71,8 @@ Una página sólida, ya indexada y con unos meses, suele aparecer en 10 a 40 con
 3. **Guías de tema:** terminadas (50 de 50). Lo que queda en noindex son las 43 noticias en plantilla.
 4. **Levotiroxina y tiroides.** Las preguntas concretas ya aparecen en posición 3. Cada artículo nuevo requiere la revisión clínica de Karla.
 5. **Guías editoriales de cursos curados.** Quedan unos 150, en lotes de 12.
-6. **Competencias.** 35 páginas de unas 40 palabras: escribir su contenido o sacarlas del índice.
+6. **Competencias y rutas.** 50 competencias de unas 35 palabras y 11 rutas de unas 120: escribir su texto en api/lib/textos-perfiles/ (las carreras ya lo tienen).
+7. **Presión alta.** Cuando Karla confirme la revisión clínica de los 8 artículos, anotarlos en revisionClinica.js y pedir su indexación. Siguientes temas del grupo: presión baja, valsartán, enalapril con hidroclorotiazida y metoprolol.
 
 ## Cómo se mide
 
