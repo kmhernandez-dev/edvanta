@@ -282,14 +282,10 @@ add('/certificados', 'Verificar certificado | Edvanta', 'Verifica un certificado
 add('/autores/karla-hernandez', 'Karla Melissa Hernández Salcedo | Autora y revisora clínica | Edvanta', 'Perfil de Karla Melissa Hernández Salcedo, química farmacéutica clínica de la Universidad del Atlántico, autora y revisora clínica de Edvanta.', {
   tipo: 'ProfilePage',
   seccion: 'Transparencia',
-  mainEntity: { '@id': 'https://edvanta.co/autores/karla-hernandez#person' },
-  enlaces: [['Política editorial', '/politica-editorial'], ['Política de revisión clínica', '/politica-de-revision-clinica'], ['Equipo editorial', '/equipo-editorial'], ['Fuentes', '/fuentes'], ['Metodología', '/metodologia']],
-  contenido: (() => {
-    const revisados = Object.keys(REVISION_CLINICA).map((slug) => ARTICULO_POR_SLUG.get(slug)).filter(Boolean)
-      .map((a) => ({ nombre: a.title, url: `/articulos/${a.slug}` }));
-    return contenidoAutora(AUTORA_PERFIL, { revisados, totalRevisados: revisados.length });
-  })(),
-  extraJsonLd: [{
+  // La persona va completa dentro de mainEntity: Search Console marcaba el
+  // perfil como no válido («el tipo de objeto del campo mainEntity no es
+  // válido») cuando solo llevaba la referencia @id.
+  mainEntity: {
     '@type': 'Person',
     '@id': 'https://edvanta.co/autores/karla-hernandez#person',
     name: AUTORA_PERFIL.nombre,
@@ -301,7 +297,13 @@ add('/autores/karla-hernandez', 'Karla Melissa Hernández Salcedo | Autora y rev
     alumniOf: { '@type': 'CollegeOrUniversity', name: AUTORA_PERFIL.universidad },
     worksFor: { '@type': 'Organization', name: 'Edvanta', url: 'https://edvanta.co/' },
     knowsAbout: AUTORA_PERFIL.areas,
-  }],
+  },
+  enlaces: [['Política editorial', '/politica-editorial'], ['Política de revisión clínica', '/politica-de-revision-clinica'], ['Equipo editorial', '/equipo-editorial'], ['Fuentes', '/fuentes'], ['Metodología', '/metodologia']],
+  contenido: (() => {
+    const revisados = Object.keys(REVISION_CLINICA).map((slug) => ARTICULO_POR_SLUG.get(slug)).filter(Boolean)
+      .map((a) => ({ nombre: a.title, url: `/articulos/${a.slug}` }));
+    return contenidoAutora(AUTORA_PERFIL, { revisados, totalRevisados: revisados.length });
+  })(),
 });
 
 add('/politica-editorial', 'Política editorial | Edvanta', 'Cómo seleccionamos, escribimos, revisamos y actualizamos el contenido de Edvanta.', {
