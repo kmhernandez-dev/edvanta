@@ -81,6 +81,10 @@ El curso de Farmacoterapia de la Diabetes de Edvanta trabaja estos problemas con
 3. **Practica la educación al paciente:** explica la técnica de insulina o el manejo de una hipoglucemia en dos minutos y sin tecnicismos.
 4. **Actualízate cada año:** las guías de práctica clínica cambian con frecuencia.
 
+## Para profesionales de la salud
+
+El [vademécum de diabetes tipo 2](/vademecum/medicamentos-para-la-diabetes-tipo-2) complementa estos cursos con monografías de [metformina](/vademecum/metformina), [empagliflozina](/vademecum/empagliflozina) y [sitagliptina](/vademecum/sitagliptina): mecanismos, evidencia, ajuste renal, interacciones y atención farmacéutica con el modelo de Minnesota.
+
 ## Preguntas frecuentes
 
 ### ¿Hay cursos de diabetes gratis para profesionales de la salud?

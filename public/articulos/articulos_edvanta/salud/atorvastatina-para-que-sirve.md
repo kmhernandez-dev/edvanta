@@ -48,6 +48,10 @@ Informa siempre que tomas atorvastatina cuando te receten un medicamento nuevo.
 - Embarazadas o mujeres que buscan embarazo, y durante la lactancia.
 - Personas con enfermedad hepática activa.
 
+## Para profesionales de la salud
+
+La monografía de [atorvastatina](/vademecum/atorvastatina) en el vademécum de Edvanta desarrolla la farmacología, la miopatía, las interacciones, los ensayos ASCOT-LLA y TNT y la atención farmacéutica con el modelo de Minnesota. El grupo de [medicamentos para la dislipidemia](/vademecum/medicamentos-para-la-dislipidemia) la compara con la rosuvastatina y la ezetimiba.
+
 ## Preguntas frecuentes
 
 ### ¿La atorvastatina es para toda la vida?

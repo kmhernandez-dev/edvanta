@@ -61,6 +61,10 @@ La guía de [cursos de investigación y desarrollo farmacéutico](/articulos/cur
 
 > **Aviso de afiliados:** algunos enlaces de esta página son de afiliado de Edvanta; si te inscribes a través de ellos, Edvanta puede recibir una comisión sin costo adicional para ti. Edvanta no imparte los cursos de Coursera ni Udemy; confirma precio y certificado en cada plataforma.
 
+## Para profesionales de la salud
+
+El grupo de [medicamentos oncológicos de alto costo](/vademecum/medicamentos-oncologicos-de-alto-costo) complementa estos cursos con las monografías de [trastuzumab](/vademecum/trastuzumab), [imatinib](/vademecum/imatinib) y [pembrolizumab](/vademecum/pembrolizumab): dianas, evidencia, toxicidad y atención farmacéutica.
+
 ## Preguntas frecuentes
 
 ### ¿Qué son las buenas prácticas clínicas?

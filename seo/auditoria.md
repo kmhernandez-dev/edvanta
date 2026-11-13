@@ -33,6 +33,7 @@ Este informe es el diagnóstico de Fase 0. En el primer lote de Fase 1 ya se apl
 - Se añadieron `404.html`, `error_page 404`, redirects HTTP→HTTPS y `www`→apex, y ubicaciones explícitas para las rutas SPA que no tienen HTML prerenderizado.
 - Las páginas privadas llevan `X-Robots-Tag: noindex, nofollow`.
 - **E-E-A-T publicado:** `/autores/karla-hernandez`, política editorial, política de revisión clínica, equipo editorial, fuentes y metodología, enlazadas desde el footer y las fichas.
+- **Lote de 50 artículos de industria y cursos:** publicados e indexables por decisión del propietario, sin revisión clínica. Son páginas de industria/cursos, no de medicamentos; enlazan cursos reales del catálogo. Keywords objetivo en `seo/50-articulos-500-keywords.csv`. Medir indexación y podar si no rinden.
 - **Pendiente:** revisión clínica real de los 184 artículos, poda de las noticias casi duplicadas, Astro + PostgreSQL y auditoría de backlinks.
 
 ---

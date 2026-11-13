@@ -85,6 +85,10 @@ Según la ficha técnica consultada, está contraindicada en el embarazo y no de
 
 Este contenido es educativo y no reemplaza la consulta con su médico o químico farmacéutico.
 
+## Para profesionales de la salud
+
+La monografía de [hidroclorotiazida](/vademecum/hidroclorotiazida) en el vademécum de Edvanta desarrolla la farmacología, los electrolitos, las interacciones, la evidencia de las tiazidas y la atención farmacéutica con el modelo de Minnesota. El grupo de [medicamentos para la hipertensión](/vademecum/medicamentos-para-la-hipertension-arterial) permite compararla con los otros grupos de primera línea.
+
 ## Preguntas frecuentes
 
 ### ¿Para qué sirve la hidroclorotiazida de 25 mg?

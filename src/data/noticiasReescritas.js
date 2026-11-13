@@ -980,6 +980,66 @@ export const NOTICIAS_REESCRITAS = {
     description: 'La asesoría previa de ACT EU para solicitudes de ensayos clínicos en la Unión Europea será permanente desde enero de 2027. Qué significa.',
     autor: 'Equipo editorial de Edvanta'
   },
+  'chmp-recomienda-ampliar-la-indicacion-de-kyinsu': {
+    contenidoPropio: true,
+    mdPath: '/articulos/articulos_edvanta/noticias-internacionales/chmp-recomienda-ampliar-la-indicacion-de-kyinsu.md',
+    updated: '2026-11-12',
+    readingTime: '3 min',
+    seoTitle: 'Kyinsu: el CHMP amplía su indicación en diabetes tipo 2',
+    seoDescription: 'El CHMP recomienda ampliar Kyinsu a adultos con diabetes tipo 2 mal controlada con insulina basal o GLP-1. Qué cambia y qué falta.',
+    description: 'El CHMP recomienda ampliar Kyinsu a adultos con diabetes tipo 2 mal controlada con insulina basal o GLP-1. Qué cambia y qué falta.',
+    autor: 'Equipo editorial de Edvanta'
+  },
+  'chmp-recomienda-ampliar-indicacion-de-vacuna-pandemica-h5n1-de-astrazeneca': {
+    contenidoPropio: true,
+    mdPath: '/articulos/articulos_edvanta/noticias-internacionales/chmp-recomienda-ampliar-indicacion-de-vacuna-pandemica-h5n1-de-astrazeneca.md',
+    updated: '2026-11-12',
+    readingTime: '3 min',
+    seoTitle: 'Vacuna H5N1: el CHMP amplía su uso a niños y adolescentes',
+    seoDescription: 'El CHMP recomienda ampliar la vacuna pandémica H5N1 de AstraZeneca a niños desde los 12 meses. Qué significa y qué falta.',
+    description: 'El CHMP recomienda ampliar la vacuna pandémica H5N1 de AstraZeneca a niños desde los 12 meses. Qué significa y qué falta.',
+    autor: 'Equipo editorial de Edvanta'
+  },
+  'chmp-recomienda-ampliar-indicacion-de-talvey': {
+    contenidoPropio: true,
+    mdPath: '/articulos/articulos_edvanta/noticias-internacionales/chmp-recomienda-ampliar-indicacion-de-talvey.md',
+    updated: '2026-11-12',
+    readingTime: '3 min',
+    seoTitle: 'Talvey: el CHMP amplía su indicación en mieloma múltiple',
+    seoDescription: 'El CHMP recomienda usar Talvey con daratumumab en mieloma múltiple en recaída tras una terapia previa. Qué cambia y qué falta.',
+    description: 'El CHMP recomienda usar Talvey con daratumumab en mieloma múltiple en recaída tras una terapia previa. Qué cambia y qué falta.',
+    autor: 'Equipo editorial de Edvanta'
+  },
+  'chmp-recomienda-ampliar-indicacion-de-tryngolza': {
+    contenidoPropio: true,
+    mdPath: '/articulos/articulos_edvanta/noticias-internacionales/chmp-recomienda-ampliar-indicacion-de-tryngolza.md',
+    updated: '2026-11-12',
+    readingTime: '4 min',
+    seoTitle: 'Tryngolza: el CHMP amplía su uso a triglicéridos muy altos',
+    seoDescription: 'El CHMP recomienda ampliar Tryngolza a adultos con triglicéridos de 880 mg/dL o más. Qué muestran CORE y CORE2 y qué falta.',
+    description: 'El CHMP recomienda ampliar Tryngolza a adultos con triglicéridos de 880 mg/dL o más. Qué muestran CORE y CORE2 y qué falta.',
+    autor: 'Equipo editorial de Edvanta'
+  },
+  'chmp-recomienda-ampliar-indicacion-de-tukysa': {
+    contenidoPropio: true,
+    mdPath: '/articulos/articulos_edvanta/noticias-internacionales/chmp-recomienda-ampliar-indicacion-de-tukysa.md',
+    updated: '2026-11-12',
+    readingTime: '3 min',
+    seoTitle: 'Tukysa: el CHMP amplía su uso en cáncer de mama HER2',
+    seoDescription: 'El CHMP recomienda Tukysa con trastuzumab y pertuzumab como mantenimiento en cáncer de mama HER2 metastásico. Qué cambia.',
+    description: 'El CHMP recomienda Tukysa con trastuzumab y pertuzumab como mantenimiento en cáncer de mama HER2 metastásico. Qué cambia.',
+    autor: 'Equipo editorial de Edvanta'
+  },
+  'programa-arc-de-fda-publica-informe-anual-sobre-medicamentos-para-enfermedades-raras': {
+    contenidoPropio: true,
+    mdPath: '/articulos/articulos_edvanta/noticias-internacionales/programa-arc-de-fda-publica-informe-anual-sobre-medicamentos-para-enfermedades-raras.md',
+    updated: '2026-11-12',
+    readingTime: '4 min',
+    seoTitle: 'Programa ARC de la FDA: informe de su cuarto año',
+    seoDescription: 'La FDA publica el informe anual del programa ARC sobre enfermedades raras: plan 2025-2030, LEADER 3D, RDEA y participación de pacientes.',
+    description: 'La FDA publica el informe anual del programa ARC sobre enfermedades raras: plan 2025-2030, LEADER 3D, RDEA y participación de pacientes.',
+    autor: 'Equipo editorial de Edvanta'
+  },
 };
 
 /** Las 100 noticias del paquete, con la versión reescrita donde la hay. */

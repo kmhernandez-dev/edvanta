@@ -142,6 +142,10 @@ Síntomas musculares (mialgias, debilidad, calambres) atribuidos a estatinas, qu
 - Mialgias: resueltas con dosis reducida
 - CK normal
 
+## Para profesionales de la salud
+
+El [vademécum de dislipidemia](/vademecum/medicamentos-para-la-dislipidemia) reúne la farmacología, la evidencia y la atención farmacéutica de la [atorvastatina](/vademecum/atorvastatina), la [rosuvastatina](/vademecum/rosuvastatina) y la [ezetimiba](/vademecum/ezetimiba), con metas de LDL y seguridad muscular.
+
 ## Preguntas frecuentes
 
 ### ¿Las estatinas producen diabetes?

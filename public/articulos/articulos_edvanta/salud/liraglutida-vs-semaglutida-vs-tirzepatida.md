@@ -51,6 +51,10 @@ Ante cualquier sospecha: verificar lote y registro, no dispensar, educar y repor
 4. Educar en conservación, dosis olvidada y señales de alarma (dolor abdominal intenso, vómito persistente, pérdida súbita de visión).
 5. Hacer seguimiento y reportar eventos adversos.
 
+## Monografías completas
+
+Para la farmacoquímica, la farmacocinética, las reacciones adversas por frecuencia y la atención farmacéutica de cada uno, consulta las monografías de [liraglutida](/vademecum/liraglutida), [semaglutida](/vademecum/semaglutida) y [tirzepatida](/vademecum/tirzepatida) en el vademécum de Edvanta.
+
 ## Fuentes
 
 - [Saxenda (liraglutida) - Anexo I ficha técnica, EPAR (EMA, español) (EMA)](https://www.ema.europa.eu/es/documents/product-information/saxenda-epar-product-information_es.pdf)

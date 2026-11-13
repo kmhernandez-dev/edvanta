@@ -89,6 +89,10 @@ Consulte si sus mediciones en casa están por encima de lo que le indicó el mé
 
 Este contenido es educativo y no reemplaza la consulta médica.
 
+## Para profesionales de la salud
+
+El [vademécum de hipertensión](/vademecum/medicamentos-para-la-hipertension-arterial) reúne la farmacología, la evidencia y la atención farmacéutica de los cuatro grupos de primera línea. Las monografías de [losartán](/vademecum/losartan), [enalapril](/vademecum/enalapril), [amlodipino](/vademecum/amlodipino) e [hidroclorotiazida](/vademecum/hidroclorotiazida) incluyen dosis, interacciones y el modelo de Minnesota.
+
 ## Preguntas frecuentes
 
 ### ¿Puedo dejar el medicamento si mi presión ya está normal?

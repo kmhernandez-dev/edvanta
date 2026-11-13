@@ -37,7 +37,6 @@ Una página sólida, ya indexada y con unos meses, suele aparecer en 10 a 40 con
 | 11-nov | Recursos para estudiantes de Química Farmacéutica | 1 |
 | 12-nov | Blog «Mejores cursos» | 8 |
 | 12-nov | Guías editoriales de cursos curados, lote 2 (Coursera y Edutin de salud) | 12 fichas, de unas 165 a unas 500 palabras |
-
 | 12-nov | Enlaces de afiliado con `rel="sponsored nofollow"` en los artículos (Udemy, Coursera e Edutin) | Todo el blog |
 | 12-nov | Noticias reescritas, lote 3: pritelivir, Ort-Flx, Anktiva, Mynzepli y 4 alertas de productos con ingredientes ocultos | 8 (noindex: 88 → 80) |
 | 12-nov | Mejores cursos, lote 2, con enlaces de afiliado directos | 6 |
@@ -52,28 +51,36 @@ Una página sólida, ya indexada y con unos meses, suele aparecer en 10 a 40 con
 | 12-nov | Texto editorial de las 11 carreras (día a día, normas, cómo prepararse y FAQPage) | 11 páginas, de unas 150 a unas 430 palabras |
 | 12-nov | Grupo temático de presión alta: valores por edad, tomarla en casa, alimentos, amlodipino, hidroclorotiazida, crisis hipertensiva, embarazo y medicamentos, enlazados desde la guía principal | 8, **en noindex hasta la revisión clínica de Karla** |
 | 12-nov | Mejores cursos: cursos de hipertensión para profesionales de la salud | 1 (indexable) |
+| 12-nov | **Vademécum de Edvanta:** grupo de obesidad y 6 monografías (semaglutida, tirzepatida, liraglutida, orlistat, naltrexona/bupropión y setmelanotida), con farmacoquímica, farmacocinética, evidencia, regulación colombiana, atención farmacéutica de Minnesota y referencias Vancouver. Enlazado desde 6 artículos y el footer. | 7 páginas, **en noindex hasta la revisión clínica de Karla** |
+| 12-nov | **Vademécum, grupo de hipertensión:** 4 monografías (losartán, enalapril, amlodipino e hidroclorotiazida), con LIFE, RENAAL, SOLVD y ALLHAT, combinaciones, monitorización y atención farmacéutica. Enlazado desde 6 artículos de presión alta. | 5 páginas, **en noindex hasta la revisión clínica de Karla** |
+| 12-nov | **Vademécum, grupo de diabetes tipo 2:** 3 monografías (metformina, empagliflozina y sitagliptina), con UKPDS 34, EMPA-REG, EMPA-KIDNEY, EMPEROR y TECOS, ajuste renal y atención farmacéutica. Enlazado desde 4 artículos de diabetes. | 4 páginas, **en noindex hasta la revisión clínica de Karla** |
+| 12-nov | **Vademécum, grupo de oncología de alto costo:** 3 monografías (trastuzumab, imatinib y pembrolizumab), con evidencia de Slamon 2001, HERA, ToGA, IRIS, GIST, KEYNOTE-006, KEYNOTE-024 y KEYNOTE-189, trazabilidad y toxicidad. Enlazado desde 7 artículos de oncología. | 4 páginas, **en noindex hasta la revisión clínica de Karla** |
+| 12-nov | **Vademécum, grupo de dislipidemia:** 3 monografías (atorvastatina, rosuvastatina y ezetimiba), con ASCOT-LLA, TNT, JUPITER, IMPROVE-IT, SHARP y el metaanálisis CTT, metas de LDL y seguridad muscular. Enlazado desde 3 artículos de colesterol. | 4 páginas, **en noindex hasta la revisión clínica de Karla** |
+| 12-nov | **Vademécum, grupo de anticoagulación:** warfarina, apixabán y rivaroxabán, con el metaanálisis de Hart, ARISTOTLE, AVERROES, ROCKET AF, EINSTEIN-PE, la guía ACC/AHA 2023, control del INR, ajuste renal e interacciones. Enlazado desde 2 artículos de anticoagulación. | 4 páginas, **en noindex hasta la revisión clínica de Karla** |
+| 12-nov | Noticias reescritas: las últimas 6 (CHMP de Kyinsu, vacuna H5N1, Talvey, Tryngolza y Tukysa; informe ARC de la FDA) | 100 de 100; noindex por plantilla: 6 → 0 |
+| 12-nov | Mejores cursos, lote 5: microbiota y salud digestiva, contabilidad y administración de droguerías, gestión de calidad por niveles y radiología | 4 (31 en total) |
 
 **Riesgo resuelto (12-nov):** las noticias de pritelivir, Ort-Flx, Anktiva y Mynzepli ya posicionaban (posiciones 2 a 9) y seguían en noindex. Al rastrearlas de nuevo, Google las habría sacado del índice. Ya tienen contenido propio y `index,follow`. La de pritelivir se pidió a Search Console; la cuota del día se agotó.
 
+**Hito (12-nov):** las 100 noticias del paquete ya tienen contenido propio. No queda ninguna noticia en plantilla y noindex.
+
 **Solicitudes pendientes de indexación (unas 10 por día):**
 
-1. Noticia de Ort-Flx.
-2. Noticia de Anktiva.
-3. Noticia de Mynzepli.
-4. Los 26 artículos de «Mejores cursos». Empezar por SST, carrera de Química Farmacéutica, IA para salud, farmacología gratis, cursos gratis con certificado, Excel y gestión de proyectos.
-6. Las 14 noticias de los lotes 4 y 5, y las 23 guías de tema de los lotes 4 y 5.
-5. Las 19 guías de tema.
+1. Las 6 noticias recién reescritas: Kyinsu, H5N1, Talvey, Tryngolza, Tukysa y el informe ARC de la FDA.
+2. Los 4 artículos del lote 5 de «Mejores cursos». Empezar por microbiota, contabilidad de droguerías y radiología.
+3. Los artículos de «Mejores cursos» de los lotes 1 a 4 que aún no se hayan pedido.
+4. Las 50 guías de tema y las 176 fichas de cursos curados, si no se pidieron en su momento.
+5. **No pedir** el vademécum ni el grupo de presión alta hasta que Karla anote la revisión clínica en `src/data/revisionClinica.js`.
 
 ## Siguientes lotes, en orden de rendimiento esperado
 
-1. **Noticias de medicamentos nuevos.** Ya rinden en posiciones 2 a 9. Se reescriben las 43 que siguen en plantilla (noindex), con fuente oficial y consecuencia para Colombia, en lotes de 6 a 8.
-2. **Mejores cursos, lote 5** (6 artículos), con los cursos de afiliado que aún no aparecen en ningún artículo: microbiota y salud digestiva, contabilidad y administración de droguerías, gestión de calidad de Edutin por niveles, radiología e imágenes, y otros que encajen sin canibalizar.
-3. **Guías de tema:** terminadas (50 de 50). Lo que queda en noindex son las 43 noticias en plantilla.
-4. **Levotiroxina y tiroides.** Las preguntas concretas ya aparecen en posición 3. Cada artículo nuevo requiere la revisión clínica de Karla.
-5. **Guías editoriales de cursos curados.** Quedan unos 150, en lotes de 12.
-6. **Competencias y rutas.** 50 competencias de unas 35 palabras y 11 rutas de unas 120: escribir su texto en api/lib/textos-perfiles/ (las carreras ya lo tienen).
-7. **Presión alta.** Cuando Karla confirme la revisión clínica de los 8 artículos, anotarlos en revisionClinica.js y pedir su indexación. Siguientes temas del grupo: presión baja, valsartán, enalapril con hidroclorotiazida y metoprolol.
-8. **Vademécum de antimicrobianos (J01).** 2.000 keywords en 93 páginas, cada una conectada con el curso PROA, el ebook de farmacocinética o la capacitación B2B. Plan y lotes en `seo/vademecum-antimicrobianos.md`; reparto con Open Code en `seo/vademecum-asignaciones.md`.
+1. **Revisión clínica y indexación.** Karla revisa el vademécum (28 páginas: seis grupos —obesidad, hipertensión, diabetes, oncología, dislipidemia y anticoagulación— y 22 monografías) y el grupo de presión alta (8). Cuando firme, se anota en `REVISION_VADEMECUM` y `REVISION_CLINICA`, y se piden a Search Console. Es el lote con más potencial: contenido profundo y búsquedas de medicamentos.
+2. **Competencias y rutas.** 50 competencias y 11 rutas con texto propio en `api/lib/textos-perfiles/` (las carreras ya lo tienen). Son páginas ya existentes y delgadas; darles texto mejora su indexación sin crear URLs nuevas.
+3. **Vademécum, nuevos grupos.** Presión baja y más monografías oncológicas, con el mismo estándar. Obesidad, hipertensión, diabetes, oncología, dislipidemia y anticoagulación ya están hechos. Cada grupo requiere revisión clínica antes de indexarse.
+4. **Mejores cursos, lote 6.** Completar los 2 temas que faltan del lote 5 y sumar los que no canibalicen: farmacia clínica para regentes, servicio al cliente en farmacia y cursos de hematología, entre otros.
+5. **Levotiroxina y tiroides.** Las preguntas concretas ya aparecen en posición 3. Cada artículo nuevo requiere la revisión clínica de Karla.
+6. **Guías editoriales de cursos curados:** completadas (176 de 176). No queda pendiente.
+7. **Vademécum de antimicrobianos (J01).** 2.000 keywords en 93 páginas, cada una conectada con el curso PROA, el ebook de farmacocinética o la capacitación B2B. Plan y lotes en `seo/vademecum-antimicrobianos.md`; reparto con Open Code en `seo/vademecum-asignaciones.md`.
 
 ## Cómo se mide
 

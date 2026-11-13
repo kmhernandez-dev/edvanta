@@ -58,6 +58,10 @@ Pide una cita médica si:
 - Tienes diabetes, hipertensión, hígado graso o tomas medicamentos que pueden afectar el peso.
 - Has intentado varias veces sin resultados o tienes atracones.
 
+## Para profesionales de la salud
+
+El vademécum de Edvanta reúne la fisiopatología de la obesidad y las monografías de los [medicamentos para la obesidad](/vademecum/medicamentos-para-la-obesidad): semaglutida, tirzepatida, liraglutida, orlistat, naltrexona/bupropión y setmelanotida, con atención farmacéutica y referencias en formato Vancouver.
+
 ## Preguntas frecuentes
 
 ### ¿Cuánto peso es sano bajar en un mes?

@@ -68,6 +68,10 @@ Para entender la enfermedad de fondo, lea [presión alta: valores, síntomas y c
 
 Este contenido es educativo y no reemplaza la consulta con su médico o químico farmacéutico.
 
+## Para profesionales de la salud
+
+El [vademécum de hipertensión](/vademecum/medicamentos-para-la-hipertension-arterial) compara los cuatro grupos de primera línea y resume los ensayos que los respaldan. Cada monografía —[losartán](/vademecum/losartan), [enalapril](/vademecum/enalapril), [amlodipino](/vademecum/amlodipino) e [hidroclorotiazida](/vademecum/hidroclorotiazida)— trae farmacocinética, interacciones, reacciones adversas y atención farmacéutica.
+
 ## Preguntas frecuentes
 
 ### ¿Cuál es el mejor medicamento para la presión alta?

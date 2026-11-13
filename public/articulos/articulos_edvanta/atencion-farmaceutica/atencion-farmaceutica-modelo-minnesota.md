@@ -296,6 +296,10 @@ Aplicar este modelo exige método, formación continua y compromiso ético. No e
 - [Clasificación de PRM y RNM con ejemplos clínicos reales](/articulos/clasificacion-prm-rnm-ejemplos-clinicos)
 - [Qué es la atención farmacéutica](/articulos/que-es-atencion-farmaceutica)
 
+## El modelo aplicado a cada medicamento
+
+El [vademécum de Edvanta](/vademecum) aplica el proceso de atención del Modelo de Minnesota a cada monografía: valoración de la indicación, la efectividad, la seguridad y la adherencia, los problemas relacionados con la farmacoterapia más probables, el plan de cuidado y la experiencia farmacoterapéutica del paciente. Empieza por los [medicamentos para la obesidad](/vademecum/medicamentos-para-la-obesidad).
+
 ## Referencias
 
 1. Cipolle RJ, Strand LM, Morley PC. Pharmaceutical Care Practice: The Patient-Centered Approach to Medication Management. 3rd ed. New York: McGraw-Hill; 2012.

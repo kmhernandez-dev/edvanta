@@ -50,6 +50,10 @@ Un suplemento dietario con registro sanitario está autorizado para complementar
 
 Un plan de alimentación con déficit moderado, actividad física y buen sueño, y, cuando está indicado, medicamentos aprobados para la obesidad con seguimiento médico. Empieza por [cómo bajar de peso de forma saludable](/articulos/como-bajar-de-peso-de-forma-saludable).
 
+## Para profesionales de la salud
+
+Los medicamentos con evidencia para la obesidad, su situación regulatoria en Colombia y su atención farmacéutica están en el grupo de [medicamentos para la obesidad](/vademecum/medicamentos-para-la-obesidad) del vademécum de Edvanta.
+
 ## Preguntas frecuentes
 
 ### ¿Los tés para adelgazar funcionan?

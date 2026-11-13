@@ -1,5 +1,9 @@
 > **Importante:** Todos los medicamentos mencionados son de venta con fórmula médica.
 
+## Para profesionales de la salud
+
+El [vademécum de diabetes tipo 2](/vademecum/medicamentos-para-la-diabetes-tipo-2) desarrolla los mecanismos, la evidencia y la seguridad de la [metformina](/vademecum/metformina), la [empagliflozina](/vademecum/empagliflozina) y la [sitagliptina](/vademecum/sitagliptina), con ajuste renal y atención farmacéutica.
+
 ## Preguntas frecuentes
 
 ### ¿La diabetes tipo 2 tiene cura?
