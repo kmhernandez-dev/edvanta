@@ -13,6 +13,8 @@
  * ============================================================
  */
 
+import { htmlDeTextoDePerfil, textoDePerfil } from './textos-de-perfiles.js';
+
 const esc = (t) => String(t ?? '')
   .replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;');
 
@@ -178,6 +180,8 @@ export function cuerpoDePerfil(tipo, p, extras = {}, { carpeta, nombreSeccion } 
       extras.cursos?.length ? seccion('Cursos que la desarrollan', enlaces(extras.cursos)) : '',
     );
   }
+  // El texto editorial de Edvanta (textos-de-perfiles.js), si lo hay.
+  partes.push(htmlDeTextoDePerfil(textoDePerfil(tipo, p.slug)));
   partes.push(`<p><a href="/${esc(carpeta)}">Ver ${esc(nombreSeccion.toLowerCase())}</a> · <a href="/cursos">Ver todos los cursos</a></p>`);
   return `<main class="mx-auto max-w-3xl px-4 py-10"><div class="ed-prose">${partes.filter(Boolean).join('')}</div></main>`;
 }

@@ -3,9 +3,11 @@ import { Link, Navigate, useParams } from 'react-router-dom';
 import { ArrowLeft, ArrowRight, BookOpenCheck, Building2, CheckCircle2, Compass, RefreshCw, Target } from 'lucide-react';
 import SiteHeader from '../components/edvanta/SiteHeader';
 import SiteFooter from '../components/edvanta/SiteFooter';
+import TextoDePerfil from '../components/edvanta/TextoDePerfil';
 import { apiUrl } from '../config/api';
 import { updatePageSeo } from '../utils/seo';
 import { metaDeCarrera } from '../../api/lib/meta-seo.js';
+import { faqDeTextoDePerfil, textoDePerfil } from '../../api/lib/textos-de-perfiles.js';
 import { trackEvent } from '../utils/analytics';
 import { rutaDeCurso } from '../lib/slug';
 
@@ -68,7 +70,7 @@ export default function CareerPage() {
       canonical: `https://edvanta.co/carreras/${career.slug}`,
       keywords: [career.name, career.family?.name, ...(career.skills || []).slice(0, 5).map(skill => skill.name)],
       jsonLdId: 'career-detail',
-      jsonLd: {
+      jsonLd: [{
         '@context': 'https://schema.org',
         '@type': 'Occupation',
         name: career.name,
@@ -76,7 +78,7 @@ export default function CareerPage() {
         occupationalCategory: career.family?.name,
         skills: (career.skills || []).map(skill => skill.name).join(', '),
         url: `https://edvanta.co/carreras/${career.slug}`,
-      },
+      }, faqDeTextoDePerfil(textoDePerfil('carrera', career.slug))].filter(Boolean),
     });
   }, [career]);
 
@@ -277,6 +279,8 @@ export default function CareerPage() {
             </div>
           </div>
         </section>
+
+        <TextoDePerfil tipo="carrera" slug={career.slug} />
 
         <section className="mx-auto max-w-7xl px-4 py-9 text-xs leading-5 text-edvanta-subtle sm:px-6 lg:px-8">
           <p>Contenido de orientación educativa. Las funciones y requisitos concretos pueden variar según país, empresa, producto y nivel de responsabilidad. Edvanta no garantiza contratación, salario ni resultados profesionales.</p>
