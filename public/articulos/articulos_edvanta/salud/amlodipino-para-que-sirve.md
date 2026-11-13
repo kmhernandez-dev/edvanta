@@ -79,6 +79,10 @@ La ficha técnica indica que puede producir mareo, dolor de cabeza, cansancio o 
 
 Este contenido es educativo y no reemplaza la consulta con su médico o químico farmacéutico.
 
+## Para profesionales de la salud
+
+La monografía de [amlodipino](/vademecum/amlodipino) en el vademécum de Edvanta explica la farmacología, el edema, las interacciones, el ensayo ALLHAT y la atención farmacéutica con el modelo de Minnesota. El grupo de [medicamentos para la hipertensión](/vademecum/medicamentos-para-la-hipertension-arterial) permite compararlo con los otros grupos de primera línea.
+
 ## Preguntas frecuentes
 
 ### ¿Para qué sirve el amlodipino de 5 mg?

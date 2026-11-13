@@ -40,6 +40,8 @@ const CursoGratisRedirige = lazy(() => import('./pages/CursoGratisRedirige'));
 const CursosCatalog = lazy(() => import('./pages/CursosCatalog'));
 const CareersIndex = lazy(() => import('./pages/CareersIndex'));
 const CareerPage = lazy(() => import('./pages/CareerPage'));
+const VademecumIndex = lazy(() => import('./pages/VademecumIndex'));
+const VademecumPagina = lazy(() => import('./pages/VademecumPagina'));
 const EnfermedadPage = lazy(() => import('./pages/EnfermedadPage'));
 const AcademiaIndex = lazy(() => import('./pages/AcademiaIndex'));
 const AulaApp = lazy(() => import('./aula/AulaApp'));
@@ -414,6 +416,8 @@ export default function App() {
         <Route path="/rutas/:slug" element={<RutaProfesionalPage />} />
         <Route path="/carreras" element={<CareersIndex />} />
         <Route path="/carreras/:slug" element={<CareerPage />} />
+        <Route path="/vademecum" element={<VademecumIndex />} />
+        <Route path="/vademecum/:slug" element={<VademecumPagina />} />
         <Route path="/orientacion-vocacional" element={<Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-edvanta-bg text-sm font-semibold text-slate-600">Cargando orientación vocacional...</div>}><VocacionPage /></Suspense>} />
         <Route path="/empleo" element={<Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-edvanta-bg text-sm font-semibold text-slate-600">Cargando centro de empleo...</div>}><EmpleoPage /></Suspense>} />
         <Route path="/hoja-de-vida" element={<HojaDeVida />} />

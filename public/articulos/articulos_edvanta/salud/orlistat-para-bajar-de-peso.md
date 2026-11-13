@@ -44,6 +44,10 @@ Rara vez se han reportado daño hepático y piedras en el riñón. Consulta si n
 
 Personas con mala absorción crónica, enfermedad de la vesícula biliar con colestasis, embarazadas y mujeres en lactancia. Si tienes piedras en el riñón o enfermedad hepática, consúltalo antes.
 
+## Para profesionales de la salud
+
+La monografía de [orlistat](/vademecum/orlistat) en el vademécum de Edvanta explica su farmacoquímica (el anillo de β-lactona que se une a la lipasa), sus interacciones por menor absorción y la atención farmacéutica con el modelo de Minnesota.
+
 ## Preguntas frecuentes
 
 ### ¿El orlistat quita la grasa abdominal?

@@ -43,6 +43,10 @@ Es una tos seca, como un cosquilleo en la garganta, que puede empezar días o me
 
 Exámenes de función renal y potasio al inicio y periódicamente, y registro de la presión en casa.
 
+## Para profesionales de la salud
+
+La monografía de [enalapril](/vademecum/enalapril) en el vademécum de Edvanta reúne la farmacología, la tos, el angioedema, los ensayos SOLVD y la atención farmacéutica con el modelo de Minnesota. El grupo de [medicamentos para la hipertensión](/vademecum/medicamentos-para-la-hipertension-arterial) lo compara con los otros grupos de primera línea.
+
 ## Preguntas frecuentes
 
 ### ¿Enalapril o losartán?

@@ -50,6 +50,10 @@ Algunos productos enriquecidos con esteroles o estanoles vegetales pueden bajar 
 
 Si tienes diabetes, ya tuviste un infarto, tu LDL es muy alto o tienes antecedentes familiares de colesterol elevado, es probable que necesites medicamento. Las estatinas, como la [atorvastatina](/articulos/atorvastatina-para-que-sirve), reducen el riesgo de infarto. La alimentación sigue siendo importante aunque las tomes.
 
+## Para profesionales de la salud
+
+El [vademécum de dislipidemia](/vademecum/medicamentos-para-la-dislipidemia) reúne la farmacología y la evidencia de las estatinas y la ezetimiba, con metas de LDL y atención farmacéutica para acompañar la alimentación y el tratamiento.
+
 ## Preguntas frecuentes
 
 ### ¿En cuánto tiempo baja el colesterol con dieta?

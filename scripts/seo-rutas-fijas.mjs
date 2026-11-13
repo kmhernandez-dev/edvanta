@@ -32,6 +32,9 @@ import { EDVANTA_EMAIL, EDVANTA_WHATSAPP_URL } from '../src/config/links.js';
 import { NOTICIAS } from '../src/data/noticiasReescritas.js';
 import { fuentesNoticias } from '../src/data/careerHub.js';
 import { CURSOS_HABILIDADES_BLANDAS } from '../src/data/edvanta/cursosHabilidadesBlandas.js';
+import { GRUPOS_VADEMECUM, MONOGRAFIAS, META_VADEMECUM, grupoDe, monografiasDelGrupo } from '../src/data/vademecum/index.js';
+import { htmlDePagina, jsonLdDePagina } from '../src/lib/vademecum/html.js';
+import { robotsDePaginaDelVademecum, robotsDelVademecum, tituloDeVademecum } from '../src/lib/vademecum/indexable.js';
 
 const AREAS_POR_SLUG = new Map(AREAS_CAPACITACION.map((a) => [a.slug, a]));
 
@@ -331,5 +334,32 @@ add('/metodologia', 'Metodología editorial | Edvanta', 'Cómo investigamos, esc
   seccion: 'Transparencia',
   enlaces: [['Política editorial', '/politica-editorial'], ['Política de revisión clínica', '/politica-de-revision-clinica'], ['Fuentes', '/fuentes'], ['Equipo editorial', '/equipo-editorial']],
 });
+
+// ── Vademécum: grupos y monografías con su texto completo (src/data/vademecum) ──
+// Contenido clínico: noindex hasta que la revisión se anota en REVISION_VADEMECUM.
+add('/vademecum', META_VADEMECUM.titulo, META_VADEMECUM.descripcion, {
+  tipo: 'CollectionPage',
+  seccion: 'Vademécum',
+  h1: META_VADEMECUM.h1,
+  robots: robotsDelVademecum(),
+  enlaces: [...GRUPOS_VADEMECUM, ...MONOGRAFIAS].map((p) => [p.nombre, `/vademecum/${p.slug}`]),
+});
+
+for (const p of [...GRUPOS_VADEMECUM, ...MONOGRAFIAS]) {
+  const hijos = p.tipo === 'grupo' ? monografiasDelGrupo(p.slug) : [];
+  const grupo = p.tipo === 'medicamento' ? grupoDe(p) : null;
+  const { '@context': _contexto, ...entidad } = jsonLdDePagina(p, { hijos });
+  add(`/vademecum/${p.slug}`, tituloDeVademecum(p), p.seo.descripcion, {
+    tipo: 'MedicalWebPage',
+    seccion: 'Vademécum',
+    h1: p.titulo,
+    robots: robotsDePaginaDelVademecum(p),
+    fecha: p.actualizado,
+    mainEntity: entidad,
+    ...(p.revisor ? { reviewedBy: { '@type': 'Person', name: p.revisor, ...(p.revisorUrl ? { url: p.revisorUrl } : {}) } } : {}),
+    enlaces: [['Vademécum', '/vademecum'], ...(grupo ? [[grupo.nombre, `/vademecum/${grupo.slug}`]] : [])],
+    contenido: htmlDePagina(p, { hijos, enlaces: p.enlaces || [] }),
+  });
+}
 
 export const RUTAS_FIJAS = rutas;

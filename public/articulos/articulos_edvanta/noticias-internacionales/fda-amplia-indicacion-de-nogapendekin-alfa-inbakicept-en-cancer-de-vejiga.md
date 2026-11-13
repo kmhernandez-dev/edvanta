@@ -27,6 +27,10 @@ Cuando el cáncer de vejiga no músculo invasivo deja de responder a BCG, la opc
 
 La decisión de la FDA aplica en Estados Unidos. Para usar un medicamento en Colombia se necesita registro sanitario del INVIMA, que puede consultarse en la [base de registros](https://www.invima.gov.co/consulta-registros-sanitarios).
 
+## Para profesionales de la salud
+
+La monografía de [pembrolizumab](/vademecum/pembrolizumab) y el grupo de [medicamentos oncológicos de alto costo](/vademecum/medicamentos-oncologicos-de-alto-costo) ayudan a ubicar esta terapia dentro del manejo de la inmunoterapia en cáncer urotelial y de la vigilancia de sus toxicidades.
+
 ## Fuentes primarias
 
 - **FDA approves expanded indication for nogapendekin alfa inbakicept-pmln for BCG-unresponsive non-muscle invasive bladder cancer.** U.S. Food and Drug Administration. 14 de octubre de 2026. https://www.fda.gov/drugs/cancer-approvals/fda-approves-expanded-indication-nogapendekin-alfa-inbakicept-pmln-bcg-unresponsive-non-muscle (consultado el 12 de noviembre de 2026).

@@ -59,6 +59,10 @@ Informe si toma o va a tomar:
 - Lleve sus exámenes de riñón y de HbA1c a los controles.
 - Guarde las tabletas en su empaque original, fuera del alcance de los niños.
 
+## Para profesionales de la salud
+
+La monografía de [metformina](/vademecum/metformina) en el vademécum de Edvanta desarrolla la farmacocinética, la acidosis láctica, el déficit de vitamina B12, el ajuste según la TFG y la atención farmacéutica con el modelo de Minnesota. El grupo de [medicamentos para la diabetes tipo 2](/vademecum/medicamentos-para-la-diabetes-tipo-2) la compara con la empagliflozina y la sitagliptina.
+
 ## Preguntas frecuentes
 
 ### ¿La metformina es insulina?

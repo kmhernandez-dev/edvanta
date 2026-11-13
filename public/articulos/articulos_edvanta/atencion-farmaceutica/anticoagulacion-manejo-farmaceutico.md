@@ -201,6 +201,15 @@ El TRT es el porcentaje de tiempo que el paciente permanece con INR en rango. Es
 
 **Resultado:** INR a las 48 h: 3.1. Se reinicia warfarina a dosis reducida. INR a la semana: 2.4. Dolor controlado con paracetamol.
 
+## Para profesionales de la salud
+
+El vademécum de Edvanta reúne la farmacología, la evidencia y la atención farmacéutica de los anticoagulantes orales:
+
+- [Medicamentos anticoagulantes: grupo terapéutico](/vademecum/medicamentos-anticoagulantes)
+- [Warfarina: farmacología y control del INR](/vademecum/warfarina)
+- [Apixabán: inhibidor directo del factor Xa](/vademecum/apixaban)
+- [Rivaroxabán: inhibidor del factor Xa](/vademecum/rivaroxaban)
+
 ## Preguntas frecuentes
 
 ### ¿Puedo recomendar un ACOD en lugar de warfarina?

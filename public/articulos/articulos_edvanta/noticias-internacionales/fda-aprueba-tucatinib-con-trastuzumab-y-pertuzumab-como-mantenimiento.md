@@ -29,6 +29,10 @@ El medicamento tiene una advertencia destacada por hepatotoxicidad, y advertenci
 
 La aprobación de la FDA aplica en Estados Unidos. En Colombia, el registro sanitario de cada indicación se consulta en la [base del INVIMA](https://www.invima.gov.co/consulta-registros-sanitarios). Las pacientes deben revisar sus opciones con su oncólogo.
 
+## Para profesionales de la salud
+
+La monografía de [trastuzumab](/vademecum/trastuzumab) y el grupo de [medicamentos oncológicos de alto costo](/vademecum/medicamentos-oncologicos-de-alto-costo) desarrollan el mecanismo anti-HER2, la cardiotoxicidad y la atención farmacéutica de estos tratamientos.
+
 ## Preguntas frecuentes
 
 ### ¿Qué es el tucatinib?

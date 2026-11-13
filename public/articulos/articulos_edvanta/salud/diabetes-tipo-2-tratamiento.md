@@ -59,6 +59,10 @@ El INVIMA ha emitido alertas por productos fraudulentos o falsificados que se ve
 ## ¿Cuándo consultar al médico?
 Consulte si tiene glucosas muy altas o muy bajas con frecuencia, vómito persistente, dolor abdominal intenso, dificultad para respirar, heridas en los pies que no sanan o cambios en la visión. Ante una urgencia, acuda al servicio de urgencias.
 
+## Para profesionales de la salud
+
+El [vademécum de diabetes tipo 2](/vademecum/medicamentos-para-la-diabetes-tipo-2) reúne la farmacología, la evidencia y la atención farmacéutica de la metformina, la empagliflozina y la sitagliptina. Cada monografía —[metformina](/vademecum/metformina), [empagliflozina](/vademecum/empagliflozina) y [sitagliptina](/vademecum/sitagliptina)— incluye dosis, ajuste renal, interacciones y el modelo de Minnesota.
+
 ## Preguntas frecuentes
 
 ### ¿La diabetes tipo 2 se cura?

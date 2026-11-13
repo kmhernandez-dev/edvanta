@@ -5,7 +5,7 @@
 **Meta direccional:** pasar de 30 keywords a 500.000 en 24–36 meses, sin violar las políticas de spam de Google.  
 **Regla de oro:** primero se corrige, se revisa y se mide; después se escala. Ninguna página nueva se indexa sin quality gate.
 
-**Estado 7-nov-2026:** primer lote P0 ejecutado: 184 artículos de salud/medicamentos con `noindex`, sitemap index/segmentado, 404 real, redirects HTTP/www y prerender de rutas fijas. E-E-A-T publicado: autora, política editorial, revisión clínica, equipo, fuentes y metodología. Pendiente: revisión clínica, poda de noticias y Astro/PostgreSQL.
+**Estado 7-nov-2026:** primer lote P0 ejecutado: 184 artículos de salud/medicamentos con `noindex`, sitemap index/segmentado, 404 real, redirects HTTP/www y prerender de rutas fijas. E-E-A-T publicado: autora, política editorial, revisión clínica, equipo, fuentes y metodología. Se publicaron 50 artículos de industria y cursos gratis (500 keywords objetivo) por decisión del propietario, sin revisión clínica. Pendiente: revisión clínica, poda de noticias y Astro/PostgreSQL.
 
 ---
 

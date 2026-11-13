@@ -46,6 +46,10 @@ El INVIMA ha emitido alertas por productos que se venden como semaglutida —inc
 
 La semaglutida trata, no cura. Cuando se suspende, el apetito vuelve y la mayoría de las personas recupera parte del peso perdido si no consolidó cambios de alimentación y actividad durante el tratamiento.
 
+## Para profesionales de la salud
+
+La monografía de [semaglutida](/vademecum/semaglutida) en el vademécum de Edvanta reúne su farmacoquímica, farmacocinética, los ensayos STEP y SELECT y la atención farmacéutica con el modelo de Minnesota, con referencias en formato Vancouver.
+
 ## Preguntas frecuentes
 
 ### ¿Puedo pedir Ozempic en la droguería sin fórmula?

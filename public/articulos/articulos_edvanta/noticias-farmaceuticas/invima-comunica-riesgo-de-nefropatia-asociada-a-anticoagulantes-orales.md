@@ -28,6 +28,13 @@ Como control práctico, el profesional puede registrar la fecha de consulta, con
 
 El informe comunica un riesgo y no demuestra que todos los casos tengan causalidad confirmada. Este contenido es informativo y no constituye una recomendación terapéutica individual. Fue preparado con asistencia de inteligencia artificial y contrastado con la fuente primaria indicada; las decisiones profesionales deben basarse en el documento oficial completo y en la normativa aplicable.
 
+## Para profesionales de la salud
+
+- [Medicamentos anticoagulantes: grupo terapéutico](/vademecum/medicamentos-anticoagulantes)
+- [Warfarina: farmacología y control del INR](/vademecum/warfarina)
+- [Apixabán: inhibidor directo del factor Xa](/vademecum/apixaban)
+- [Rivaroxabán: inhibidor del factor Xa](/vademecum/rivaroxaban)
+
 ## Fuentes primarias
 
 - **Invima comunica riesgo de nefropatía asociada a anticoagulantes orales**. INVIMA. 2026-10-30. https://www.invima.gov.co/alertas-sanitarias/riesgo-de-nefropatia-asociada-a-anticoagulantes-orales

@@ -30,6 +30,10 @@ En Colombia, el INVIMA emitió en octubre de 2026 una alerta similar por unidade
 
 **Reportes:** eventos adversos y sospechas de falsificación al INVIMA, en el [formulario VigiFlow](https://vigiflow-eforms.who-umc.org/co/medicamentos) o en invimafv@invima.gov.co.
 
+## Para profesionales de la salud
+
+La monografía de [pembrolizumab](/vademecum/pembrolizumab) y el grupo de [medicamentos oncológicos de alto costo](/vademecum/medicamentos-oncologicos-de-alto-costo) explican la trazabilidad, la cadena de frío y la vigilancia de la toxicidad inmunomediada.
+
 ## Fuentes primarias
 
 - **Anvisa proíbe lotes falsificados do medicamento Keytruda.** Anvisa (Brasil). 19 de octubre de 2026. https://www.gov.br/anvisa/pt-br/assuntos/noticias-anvisa/2026/anvisa-proibe-lotes-falsificados-do-medicamento-keytruda (consultado el 9 de noviembre de 2026).

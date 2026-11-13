@@ -238,3 +238,14 @@ export const REVISION_ENFERMEDADES = Object.fromEntries([
   'hipotiroidismo', 'hipertiroidismo', 'hashimoto', 'nodulos-tiroideos', 'cancer-de-tiroides',
   'vivir-sin-tiroides', 'salud-metabolica', 'levotiroxina', 'nutricion-tiroidea',
 ].map((slug) => [slug, KARLA_2026_11_09]));
+
+/**
+ * Vademécum (src/data/vademecum/): grupos terapéuticos y monografías de
+ * medicamentos. Mismas reglas: una línea por página, solo después de que
+ * una química farmacéutica la lea completa y verifique dosis, indicaciones,
+ * advertencias, interacciones y referencias. Vacío al crear el vademécum
+ * (12-nov-2026): las páginas existen pero no se indexan.
+ *
+ *    'semaglutida': { revisor: '…', revisorUrl: '…', reviewedAt: 'AAAA-MM-DD' },
+ */
+export const REVISION_VADEMECUM = {};

@@ -34,6 +34,10 @@ Es uno de los cánceres con peor pronóstico, porque suele diagnosticarse cuando
 
 La recomendación del CHMP aplica en la Unión Europea y aún no es una autorización. En Colombia, cualquier medicamento nuevo necesita registro sanitario del INVIMA, que se consulta en la [base de registros](https://www.invima.gov.co/consulta-registros-sanitarios). Los pacientes deben revisar sus opciones de tratamiento y de ensayos clínicos con su oncólogo.
 
+## Para profesionales de la salud
+
+El grupo de [medicamentos oncológicos de alto costo](/vademecum/medicamentos-oncologicos-de-alto-costo) y la monografía de [imatinib](/vademecum/imatinib) explican cómo se usan los inhibidores de tirosina cinasa, sus interacciones y su seguimiento.
+
 ## Preguntas frecuentes
 
 ### ¿Qué es el daraxonrasib?

@@ -59,6 +59,10 @@ En 2021 el INVIMA publicó la alerta sanitaria 243-2021 sobre el retiro voluntar
 
 Este contenido es educativo y no reemplaza la consulta con su médico o químico farmacéutico.
 
+## Para profesionales de la salud
+
+La monografía de [losartán](/vademecum/losartan) en el vademécum de Edvanta desarrolla la farmacoquímica, la farmacocinética, las indicaciones, las interacciones, los ensayos LIFE y RENAAL y la atención farmacéutica con el modelo de Minnesota. El grupo de [medicamentos para la hipertensión](/vademecum/medicamentos-para-la-hipertension-arterial) permite compararlo con los otros grupos de primera línea.
+
 ## Preguntas frecuentes
 
 ### ¿Losartán y losartán potásico son lo mismo?

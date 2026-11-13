@@ -128,6 +128,7 @@ export const FOOTER_COLUMNS = [
       { label: 'Curso en vivo para auxiliares y regentes', to: '/curso-de-operacion-segura-del-servicio-farmaceutico' },
       { label: 'Guías y kits', to: '/guias' },
       { label: 'Artículos', to: '/articulos' },
+      { label: 'Vademécum', to: '/vademecum' },
       { label: 'Biblioteca de referencias', to: '/recursos' },
     ],
   },
