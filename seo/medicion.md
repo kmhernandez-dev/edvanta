@@ -142,4 +142,5 @@ Se anota una fila nueva en las tablas de arriba. El indicador principal es **pá
 - **IndexNow:** 17 URLs enviadas a Bing (HTTP 200): las 15 nuevas más amoxicilina y azitromicina por los CTA profesionales añadidos.
 - **Pendiente en Search Console:** las 15 páginas nuevas y las correcciones de datos estructurados. La cuota de solicitudes seguía agotada el 13-nov por la mañana; se reintenta en la ventana de 24 horas.
 - **Lote 2 y clases:** 8 fichas nuevas de antimicrobianos y 7 clases de antibióticos. Karla las revisó el 13-nov; pasan a `index,follow`. El sitemap queda en 483 artículos indexables.
+- **IndexNow:** 15 URLs del lote 2 revisado enviadas a Bing (HTTP 200).
 - **Cierre del grupo:** 8 monografías nuevas del vademécum, 4 clases adicionales (aminoglucósidos, carbapenémicos, sulfonamidas y reserva) y 3 artículos del lote 3 (PK/PD, dispensación y pilar de pacientes). Son 15 páginas en `noindex` hasta la revisión de Karla; el build queda en 472 artículos, 7 noindex por revisión y 679 URLs en sitemap.
