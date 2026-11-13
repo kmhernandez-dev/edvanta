@@ -41,6 +41,8 @@ export const ICONOS = [
   'Layers', 'Network', 'Zap', 'Sparkles', 'HardHat', 'Hand', 'Shirt', 'DoorOpen', 'Signature',
   'Percent', 'Flame', 'Snowflake', 'Sun', 'Clock', 'Award', 'Calculator', 'Atom',
   'Shuffle', 'Scan', 'Box', 'Hammer', 'Microchip', 'BadgeCheck', 'Stamp', 'MapPin',
+  'Archive', 'Waves', 'Droplet', 'Wheat', 'Leaf', 'Activity', 'FlaskRound', 'Pipette',
+  'Flag', 'Magnet', 'Radiation', 'Rainbow', 'ScanLine', 'Spline', 'Split', 'Container',
 ];
 
 const ICONO_POR_DEFECTO = 'Sparkles';

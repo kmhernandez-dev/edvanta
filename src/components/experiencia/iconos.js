@@ -11,7 +11,9 @@ import {
   Layers, Network, Zap, Sparkles, HardHat, Hand, Shirt, DoorOpen,
   Signature, Percent, Flame, Snowflake, Sun, Clock, Award, Calculator,
   Atom, Shuffle, Scan, Box, Hammer, Microchip, BadgeCheck, Stamp,
-  MapPin,
+  MapPin, Archive, Waves, Droplet, Wheat, Leaf, Activity, FlaskRound,
+  Pipette, Flag, Magnet, Radiation, Rainbow, ScanLine, Spline, Split,
+  Container,
 } from 'lucide-react';
 
 export const ICONO = {
@@ -26,7 +28,9 @@ export const ICONO = {
   Layers, Network, Zap, Sparkles, HardHat, Hand, Shirt, DoorOpen,
   Signature, Percent, Flame, Snowflake, Sun, Clock, Award, Calculator,
   Atom, Shuffle, Scan, Box, Hammer, Microchip, BadgeCheck, Stamp,
-  MapPin,
+  MapPin, Archive, Waves, Droplet, Wheat, Leaf, Activity, FlaskRound,
+  Pipette, Flag, Magnet, Radiation, Rainbow, ScanLine, Spline, Split,
+  Container,
 };
 
 export const iconoDe = (nombre) => ICONO[nombre] || Sparkles;
