@@ -1,0 +1,969 @@
+export const CURSO = 'Curso de Farmacoterapia de la Diabetes';
+export const MIGRACION = '125_experiencias_farmacoterapia_diabetes_2.sql';
+
+export const CLASES = [
+  {
+    titulo: 'Sulfonilureas y pioglitazona: eficacia, hipoglucemia, peso y desintensificación',
+    duracion: 20,
+    gancho: {
+      titulo: 'La pastilla barata que causó una caída',
+      texto: 'Doña Elvira tiene 76 años, vive en un municipio de Boyacá y toma glibenclamida 5 mg al día. Un domingo no desayunó, se sintió mareada y cayó en el baño. La glucosa era de 48 mg/dL. La sulfonilurea era eficaz y económica, pero no era segura para ella en ese contexto. Elegir un fármaco barato no es lo mismo que elegir el fármaco correcto.',
+    },
+    objetivos: [
+      'Explicar el mecanismo y el perfil de eficacia de las sulfonilureas y la pioglitazona.',
+      'Identificar los factores que aumentan el riesgo de hipoglucemia con sulfonilureas.',
+      'Reconocer cuándo la pioglitazona está contraindicada o requiere precaución.',
+      'Aplicar criterios de desintensificación en adultos mayores y pacientes frágiles.',
+    ],
+    conceptos: [
+      { icono: 'Zap', termino: 'Sulfonilurea', definicion: 'Fármaco que estimula la secreción de insulina por la célula beta. Es eficaz, económico y puede causar hipoglucemia y aumento de peso.' },
+      { icono: 'Scale', termino: 'Pioglitazona', definicion: 'Agonista de PPARγ que mejora la sensibilidad a la insulina. Útil en hígado graso, pero causa retención de líquidos y aumento de peso.' },
+      { icono: 'AlertTriangle', termino: 'Hipoglucemia', definicion: 'Glucosa <70 mg/dL. Con sulfonilureas puede ser prolongada y grave, sobre todo en insuficiencia renal o mala ingesta.' },
+      { icono: 'RefreshCw', termino: 'Desintensificación', definicion: 'Reducción o retiro de fármacos cuando el riesgo supera el beneficio, por edad, fragilidad, hipoglucemias o cambio de metas.' },
+    ],
+    mapa: {
+      centro: 'Sulfonilureas y pioglitazona',
+      ramas: [
+        { titulo: 'Sulfonilureas', icono: 'Zap', nodos: ['Secretagogos', 'Hipoglucemia', 'Aumento de peso', 'Bajo costo'] },
+        { titulo: 'Pioglitazona', icono: 'Scale', nodos: ['Sensibilidad', 'Retención de líquidos', 'Hígado graso', 'Insuficiencia cardíaca'] },
+        { titulo: 'Riesgo', icono: 'AlertTriangle', nodos: ['Edad avanzada', 'TFG baja', 'Comidas irregulares', 'Fragilidad'] },
+        { titulo: 'Decisión', icono: 'RefreshCw', nodos: ['Individualizar', 'Desintensificar', 'Educar', 'Seguir'] },
+      ],
+    },
+    secciones: [
+      {
+        titulo: 'Sulfonilureas: eficacia con un precio',
+        parrafos: [
+          'Las sulfonilureas estimulan la célula beta para secretar insulina, independientemente de la glucosa. Por eso son eficaces, rápidas y económicas, pero también pueden causar hipoglucemia, especialmente si el paciente no come, tiene insuficiencia renal o toma dosis altas. La glibenclamida tiene un riesgo particularmente alto de hipoglucemia prolongada en adultos mayores.',
+          'Su lugar en 2026 es limitado pero real: pacientes con bajo riesgo de hipoglucemia, acceso limitado a otras opciones y necesidad de un fármaco potente y barato. No son la mejor elección en personas mayores, frágiles, con TFG baja, con comidas irregulares o con antecedente de hipoglucemia grave.',
+        ],
+      },
+      {
+        titulo: 'Pioglitazona: sensibilidad y retención de líquidos',
+        parrafos: [
+          'La pioglitazona mejora la sensibilidad a la insulina en músculo, hígado y tejido adiposo. Puede ser útil en pacientes con hígado graso y resistencia a la insulina, y tiene un efecto favorable sobre los lípidos. Sin embargo, causa retención de líquidos, aumento de peso y edema, y no se recomienda en insuficiencia cardíaca.',
+          'También se asocia con un mayor riesgo de fracturas y, en algunos estudios, con cáncer de vejiga, aunque la evidencia es controvertida. No es un fármaco de primera línea en la mayoría de los pacientes y requiere revisar la función hepática y el riesgo cardiovascular.',
+        ],
+      },
+      {
+        titulo: 'Desintensificar también es tratar',
+        parrafos: [
+          'Cuando una persona mayor logra la meta con un esquema que causa hipoglucemias, el tratamiento debe simplificarse. La desintensificación puede consistir en reducir la sulfonilurea, retirar un fármaco que no aporta o cambiar a una opción con menor riesgo. La meta no es solo la HbA1c, sino evitar caídas, confusión y hospitalizaciones.',
+          'La decisión se acuerda con el paciente y la familia. Se explican los riesgos de la hipoglucemia, se revisan las comidas y se ajusta el esquema. El Químico Farmacéutico puede detectar la señal en la farmacia y comunicarla al equipo tratante con datos concretos.',
+        ],
+      },
+    ],
+    proceso: {
+      titulo: 'Cómo revisar una sulfonilurea o pioglitazona',
+      pasos: [
+        { titulo: 'Revisar la meta', detalle: 'Edad, fragilidad, comorbilidad y riesgo de hipoglucemia.', icono: 'Target', evidencia: 'Meta documentada.' },
+        { titulo: 'Revisar la TFG', detalle: 'Ajustar o evitar según la función renal y el fármaco.', icono: 'Droplets', evidencia: 'TFG registrada.' },
+        { titulo: 'Buscar hipoglucemias', detalle: 'Preguntar por sudoración, temblor, confusión o caídas.', icono: 'AlertTriangle', evidencia: 'Eventos registrados.' },
+        { titulo: 'Revisar comidas', detalle: 'Horarios, ayunos y tolerancia alimentaria.', icono: 'CalendarClock', evidencia: 'Entrevista.' },
+        { titulo: 'Proponer ajuste', detalle: 'Reducir, cambiar o desintensificar con el equipo.', icono: 'RefreshCw', evidencia: 'Intervención.' },
+      ],
+    },
+    caso: {
+      titulo: 'La caída de doña Elvira',
+      contexto: 'Mujer de 76 años, TFG 42 ml/min, HbA1c 7,2 %, glibenclamida 5 mg al día y metformina 850 mg cada 12 horas. Tuvo una hipoglucemia de 48 mg/dL tras un ayuno prolongado.',
+      pregunta: '¿Cuál es la intervención más segura?',
+      opciones: [
+        { texto: 'Mantener la glibenclamida y recomendarle que no ayune.', correcta: false, retro: 'La hipoglucemia ya ocurrió y el riesgo persiste. No basta con una recomendación aislada.' },
+        { texto: 'Proponer al médico reducir o retirar la glibenclamida y revisar el esquema, con educación sobre hipoglucemia.', correcta: true, retro: 'En una persona mayor con TFG baja e hipoglucemia, la sulfonilurea debe revisarse. La desintensificación es una intervención de seguridad.' },
+        { texto: 'Aumentar la metformina para compensar.', correcta: false, retro: 'Aumentar metformina no corrige el riesgo de hipoglucemia de la sulfonilurea y puede empeorar la tolerancia.' },
+      ],
+    },
+    errores: [
+      { error: 'Elegir sulfonilurea solo por costo.', correccion: 'El costo importa, pero la seguridad y el riesgo de hipoglucemia también. En pacientes de riesgo, una opción más segura puede evitar hospitalizaciones.' },
+      { error: 'Usar pioglitazona en insuficiencia cardíaca.', correccion: 'La retención de líquidos puede descompensar la insuficiencia cardíaca; está contraindicada en ese contexto.' },
+      { error: 'No preguntar por hipoglucemias en el control.', correccion: 'Las hipoglucemias pueden ser asintomáticas o atribuidas a otras causas; hay que buscarlas.' },
+    ],
+    comprueba: [
+      { pregunta: '¿Cuál es el principal riesgo de las sulfonilureas?', respuesta: 'La hipoglucemia, que puede ser prolongada y grave.' },
+      { pregunta: '¿Cuándo se evita la pioglitazona?', respuesta: 'En insuficiencia cardíaca, retención de líquidos y osteoporosis avanzada.' },
+      { pregunta: '¿Qué es desintensificar?', respuesta: 'Reducir o retirar fármacos cuando el riesgo supera el beneficio, con una meta más segura.' },
+    ],
+    resumen: [
+      'Las sulfonilureas son **eficaces y económicas**, pero causan hipoglucemia.',
+      'La pioglitazona mejora la sensibilidad, pero **retiene líquidos**.',
+      'En fragilidad, la **desintensificación** es una intervención de calidad.',
+      'La decisión se basa en el paciente, no solo en la HbA1c.',
+    ],
+    referencias: [
+      { cita: 'American Diabetes Association. Standards of Care in Diabetes—2026. Diabetes Care. 2026;49(Suppl 1).', url: 'https://diabetesjournals.org/care/issue/49/Supplement_1' },
+      { cita: 'AEMPS-CIMA. Ficha técnica de Metformina Cinfa 850 mg comprimidos recubiertos con película EFG.', url: 'https://cima.aemps.es/cima/dochtml/ft/68167/FT_68167.html' },
+    ],
+    imagenes: [
+      { ubicacion: 'Apertura de la clase', descripcion: 'Ilustración de una persona mayor en el baño con un glucómetro marcando 48 mg/dL y una caja de glibenclamida sobre el lavabo.', alt: 'Hipoglucemia por sulfonilurea en una persona mayor' },
+    ],
+    keywords: ['sulfonilureas hipoglucemia', 'glibenclamida adultos mayores', 'pioglitazona contraindicaciones', 'desintensificación diabetes', 'sulfonilurea insuficiencia renal', 'pioglitazona insuficiencia cardiaca', 'diabetes adulto mayor', 'curso farmacoterapia diabetes'],
+  },
+  {
+    titulo: 'Caso: adulto mayor con ERC en tratamiento con metformina y glibenclamida',
+    duracion: 25,
+    gancho: {
+      titulo: 'Dos fármacos, tres problemas',
+      texto: 'Don Hernando tiene 79 años, TFG de 28 ml/min, HbA1c de 7,1 %, metformina 1 g cada 12 horas y glibenclamida 5 mg al día. Ha tenido dos hipoglucemias y una infección urinaria reciente. La metformina está contraindicada por la TFG, la glibenclamida es peligrosa por la hipoglucemia y el paciente no tiene una meta clara. El caso reúne los errores más frecuentes en diabetes avanzada.',
+    },
+    objetivos: [
+      'Integrar función renal, riesgo de hipoglucemia y metas en un adulto mayor.',
+      'Aplicar criterios de suspensión y ajuste de metformina y sulfonilureas.',
+      'Proponer una alternativa segura y coordinada con el equipo tratante.',
+      'Diseñar un plan de educación y seguimiento para el paciente y su cuidador.',
+    ],
+    conceptos: [
+      { icono: 'Droplets', termino: 'ERC', definicion: 'Enfermedad renal crónica; la TFG <30 ml/min contraindica metformina y obliga a revisar muchos antidiabéticos.' },
+      { icono: 'AlertTriangle', termino: 'Hipoglucemia recurrente', definicion: 'Dos o más episodios exigen revisar el esquema, la alimentación y la educación.' },
+      { icono: 'Users', termino: 'Cuidador', definicion: 'Persona que apoya la administración y la alimentación; su comprensión es parte de la seguridad.' },
+      { icono: 'Target', termino: 'Meta realista', definicion: 'Objetivo glucémico adaptado a la fragilidad y a la esperanza de vida, priorizando evitar hipoglucemias.' },
+    ],
+    mapa: {
+      centro: 'Adulto mayor con ERC',
+      ramas: [
+        { titulo: 'Metformina', icono: 'Pill', nodos: ['TFG <30', 'Suspender', 'Riesgo de acidosis'] },
+        { titulo: 'Glibenclamida', icono: 'Zap', nodos: ['Hipoglucemia', 'TFG baja', 'Retirar o reducir'] },
+        { titulo: 'Meta', icono: 'Target', nodos: ['Menos estricta', 'Evitar caídas', 'Calidad de vida'] },
+        { titulo: 'Alternativa', icono: 'ShieldCheck', nodos: ['iSGLT2 si aplica', 'iDPP-4', 'Insulina si es necesaria'] },
+      ],
+    },
+    secciones: [
+      {
+        titulo: 'Qué está mal en el esquema',
+        parrafos: [
+          'La metformina está contraindicada con TFG <30 ml/min por el riesgo de acidosis láctica. La glibenclamida, en un paciente de 79 años con enfermedad renal, es una causa frecuente de hipoglucemia prolongada. Mantener ambos fármacos sin ajuste es un problema de seguridad, aunque la HbA1c parezca aceptable.',
+          'La meta de 7,1 % no justifica el riesgo. En un adulto mayor con ERC y hipoglucemias, una meta menos estricta y un esquema más seguro son prioritarios. El caso no se resuelve subiendo o bajando una dosis: requiere revisar el plan completo.',
+        ],
+      },
+      {
+        titulo: 'Cómo construir una alternativa',
+        parrafos: [
+          'Se suspende la metformina y se revisa la glibenclamida. Según la TFG, la comorbilidad y la cobertura, se puede considerar un iSGLT2 si hay indicación renal o cardíaca y la TFG lo permite, un iDPP-4 como linagliptina si se busca una opción oral sencilla, o insulina si hay hiperglucemia sintomática o catabolismo. La elección debe ser individualizada.',
+          'La educación incluye reconocer y tratar la hipoglucemia, revisar la alimentación, ajustar la técnica de medición y coordinar con el cuidador. También se revisan las interacciones y la función renal. El objetivo es un plan que el paciente pueda seguir sin caídas ni hospitalizaciones.',
+        ],
+      },
+      {
+        titulo: 'El papel del Químico Farmacéutico',
+        parrafos: [
+          'El QF puede documentar la TFG, los episodios de hipoglucemia, los medicamentos y las barreras. Con esa información, propone al médico un cambio concreto y verifica que la nueva fórmula sea segura. También puede contactar al cuidador y programar un seguimiento telefónico.',
+          'La intervención no termina en la nota. Se revisa la adherencia, la tolerancia y los nuevos eventos. Si el paciente no puede acceder al fármaco propuesto, se busca una alternativa cubierta o se ajusta el plan. La sostenibilidad es parte de la seguridad.',
+        ],
+      },
+    ],
+    proceso: {
+      titulo: 'Abordaje del adulto mayor con ERC',
+      pasos: [
+        { titulo: 'Calcular TFG', detalle: 'Confirmar la función renal y clasificar la ERC.', icono: 'Calculator', evidencia: 'TFG documentada.' },
+        { titulo: 'Revisar fármacos', detalle: 'Metformina, sulfonilureas, dosis y contraindicaciones.', icono: 'ClipboardList', evidencia: 'Lista de medicamentos.' },
+        { titulo: 'Evaluar hipoglucemias', detalle: 'Número, gravedad, horario y relación con comidas.', icono: 'AlertTriangle', evidencia: 'Registro de eventos.' },
+        { titulo: 'Proponer cambio', detalle: 'Suspender, ajustar o cambiar con el equipo.', icono: 'RefreshCw', evidencia: 'Intervención.' },
+        { titulo: 'Seguir', detalle: 'Revisar tolerancia, glucosa y eventos en 2 a 4 semanas.', icono: 'CalendarClock', evidencia: 'Seguimiento.' },
+      ],
+    },
+    caso: {
+      titulo: 'El esquema que hay que cambiar',
+      contexto: 'Hernando, 79 años, TFG 28 ml/min, HbA1c 7,1 %, metformina 1 g cada 12 horas, glibenclamida 5 mg al día, dos hipoglucemias en el último mes.',
+      pregunta: '¿Cuál es la conducta más adecuada?',
+      opciones: [
+        { texto: 'Mantener todo porque la HbA1c está cerca de la meta.', correcta: false, retro: 'La HbA1c no refleja el riesgo de hipoglucemia ni la contraindicación renal de la metformina.' },
+        { texto: 'Suspender metformina por TFG <30, revisar la glibenclamida y proponer un esquema individualizado con el médico.', correcta: true, retro: 'La metformina está contraindicada y la sulfonilurea causa hipoglucemias. Se requiere un cambio coordinado y educación.' },
+        { texto: 'Aumentar la glibenclamida para compensar la suspensión de metformina.', correcta: false, retro: 'Aumentar la sulfonilurea empeora el riesgo de hipoglucemia.' },
+      ],
+    },
+    errores: [
+      { error: 'Mantener metformina con TFG <30.', correccion: 'Está contraindicada; se suspende y se busca alternativa.' },
+      { error: 'Ignorar las hipoglucemias porque la HbA1c es buena.', correccion: 'Las hipoglucemias son un evento de seguridad y obligan a revisar el esquema.' },
+      { error: 'No involucrar al cuidador.', correccion: 'El cuidador administra y observa síntomas; su educación es clave.' },
+    ],
+    comprueba: [
+      { pregunta: '¿Qué hacer con la metformina si la TFG es 28?', respuesta: 'Suspenderla; está contraindicada por riesgo de acidosis láctica.' },
+      { pregunta: '¿Por qué la glibenclamida es peligrosa en este paciente?', respuesta: 'Porque causa hipoglucemia, sobre todo en adultos mayores con ERC.' },
+      { pregunta: '¿Qué meta priorizar?', respuesta: 'Evitar hipoglucemias y mantener la calidad de vida, con una meta menos estricta.' },
+    ],
+    resumen: [
+      'La **TFG** contraindica metformina por debajo de 30 ml/min.',
+      'Las sulfonilureas son una causa frecuente de hipoglucemia en ERC.',
+      'La **desintensificación** y la educación son parte del tratamiento.',
+      'El cambio debe ser coordinado y con seguimiento.',
+    ],
+    referencias: [
+      { cita: 'American Diabetes Association. Standards of Care in Diabetes—2026. Diabetes Care. 2026;49(Suppl 1).', url: 'https://diabetesjournals.org/care/issue/49/Supplement_1' },
+      { cita: 'AEMPS-CIMA. Ficha técnica de Metformina Cinfa 850 mg comprimidos recubiertos con película EFG.', url: 'https://cima.aemps.es/cima/dochtml/ft/68167/FT_68167.html' },
+    ],
+    imagenes: [
+      { ubicacion: 'Sección del caso', descripcion: 'Expediente con TFG 28, dos hipoglucemias y una caja de metformina tachada con una X.', alt: 'Caso de adulto mayor con ERC y hipoglucemias' },
+    ],
+    keywords: ['metformina TFG 28', 'glibenclamida hipoglucemia', 'diabetes adulto mayor ERC', 'desintensificación diabetes', 'caso clínico diabetes', 'metformina contraindicada', 'sulfonilurea insuficiencia renal'],
+  },
+  {
+    titulo: 'Introducción a la unidad: iSGLT2, agonistas GLP-1 y tirzepatida, más allá de la glucosa',
+    duracion: 20,
+    gancho: {
+      titulo: 'El fármaco que no solo baja el azúcar',
+      texto: 'Un paciente con diabetes, insuficiencia cardíaca y albuminuria pregunta por qué le cambian la metformina por un “medicamento nuevo”. La respuesta no es que la metformina sea mala, sino que el nuevo fármaco reduce hospitalizaciones por insuficiencia cardíaca y protege el riñón. En 2026, algunos antidiabéticos se eligen por sus beneficios en órganos, no solo por la glucosa.',
+    },
+    objetivos: [
+      'Diferenciar los iSGLT2, los agonistas GLP-1 y tirzepatida por mecanismo y efecto.',
+      'Reconocer los beneficios cardiorrenales y de peso que van más allá de la HbA1c.',
+      'Identificar los efectos adversos y las precauciones de cada grupo.',
+      'Seleccionar el grupo adecuado según el perfil del paciente.',
+    ],
+    conceptos: [
+      { icono: 'Droplets', termino: 'iSGLT2', definicion: 'Inhibidores del cotransportador sodio-glucosa tipo 2 que aumentan la glucosuria y reducen eventos cardiorrenales.' },
+      { icono: 'Activity', termino: 'Agonista GLP-1', definicion: 'Fármaco que imita la incretina GLP-1, estimula la insulina dependiente de glucosa, frena el glucagón y reduce el apetito.' },
+      { icono: 'Scale', termino: 'Tirzepatida', definicion: 'Agonista dual GIP/GLP-1 con mayor efecto sobre el peso y la HbA1c en muchos pacientes.' },
+      { icono: 'ShieldCheck', termino: 'Beneficio cardiorrenal', definicion: 'Reducción de eventos cardiovasculares, hospitalizaciones por insuficiencia cardíaca o progresión renal, demostrada en ensayos.' },
+    ],
+    mapa: {
+      centro: 'Más allá de la glucosa',
+      ramas: [
+        { titulo: 'iSGLT2', icono: 'Droplets', nodos: ['Glucosuria', 'Insuficiencia cardíaca', 'Riñón'] },
+        { titulo: 'GLP-1', icono: 'Activity', nodos: ['Incretina', 'Peso', 'Aterosclerosis'] },
+        { titulo: 'Tirzepatida', icono: 'Scale', nodos: ['GIP + GLP-1', 'Peso', 'HbA1c'] },
+        { titulo: 'Seguridad', icono: 'AlertTriangle', nodos: ['Cetoacidosis', 'Infecciones', 'Gastrointestinal', 'Tiroides'] },
+      ],
+    },
+    secciones: [
+      {
+        titulo: 'Tres grupos, tres lógicas',
+        parrafos: [
+          'Los iSGLT2 bloquean la reabsorción renal de glucosa y sodio. Su beneficio principal, además de reducir la glucosa, es disminuir las hospitalizaciones por insuficiencia cardíaca y la progresión de la enfermedad renal. No dependen de la insulina y tienen bajo riesgo de hipoglucemia, pero pueden causar infecciones genitales, depleción de volumen y cetoacidosis euglucémica.',
+          'Los agonistas GLP-1 aumentan la incretina, estimulan la insulina cuando hay glucosa, frenan el glucagón, enlentecen el vaciamiento gástrico y reducen el apetito. Algunos tienen beneficio cardiovascular y renal. La tirzepatida añade el efecto GIP y logra mayores reducciones de peso y HbA1c en muchos pacientes.',
+        ],
+      },
+      {
+        titulo: 'Qué paciente se beneficia',
+        parrafos: [
+          'Un paciente con insuficiencia cardíaca o enfermedad renal se beneficia de un iSGLT2. Un paciente con enfermedad cardiovascular aterosclerótica, obesidad o alto riesgo cardiovascular puede beneficiarse de un agonista GLP-1. Un paciente con obesidad y diabetes que necesita perder peso puede considerar tirzepatida o semaglutida, según disponibilidad y cobertura.',
+          'La elección no es excluyente: un paciente con insuficiencia cardíaca, enfermedad renal y obesidad puede recibir un iSGLT2 y un agonista GLP-1. La combinación depende del riesgo, la tolerancia, el costo y la preferencia. La meta es reducir eventos y mejorar la calidad de vida, no solo bajar la HbA1c.',
+        ],
+      },
+      {
+        titulo: 'Lo que hay que vigilar',
+        parrafos: [
+          'Los iSGLT2 requieren educación sobre hidratación, infecciones genitales, cetoacidosis y reglas de días de enfermedad. Los agonistas GLP-1 y tirzepatida se inician con dosis baja y titulación gradual para reducir náuseas y vómito; se vigilan pancreatitis, colelitiasis y síntomas tiroideos. La pérdida de peso debe ser gradual y acompañada de alimentación y actividad.',
+          'El Químico Farmacéutico puede revisar la técnica de inyección, la conservación, la cobertura y la adherencia. También puede detectar interacciones y educar sobre signos de alarma. La conversación sobre el costo y las expectativas evita abandonos.',
+        ],
+      },
+    ],
+    proceso: {
+      titulo: 'Cómo elegir entre los nuevos grupos',
+      pasos: [
+        { titulo: 'Evaluar el riesgo', detalle: 'Enfermedad cardiovascular, insuficiencia cardíaca, ERC y obesidad.', icono: 'ShieldCheck', evidencia: 'Evaluación de riesgo.' },
+        { titulo: 'Definir el objetivo', detalle: 'Reducir eventos, peso, HbA1c o síntomas.', icono: 'Target', evidencia: 'Meta acordada.' },
+        { titulo: 'Elegir el grupo', detalle: 'iSGLT2, GLP-1 o tirzepatida según el perfil.', icono: 'Pill', evidencia: 'Selección justificada.' },
+        { titulo: 'Revisar seguridad', detalle: 'Función renal, infecciones, gastrointestinal y tiroides.', icono: 'AlertTriangle', evidencia: 'Revisión.' },
+        { titulo: 'Educar y seguir', detalle: 'Titulación, técnica, efectos adversos y adherencia.', icono: 'Users', evidencia: 'Seguimiento.' },
+      ],
+    },
+    caso: {
+      titulo: 'Insuficiencia cardíaca y obesidad',
+      contexto: 'Mujer de 62 años, diabetes tipo 2, insuficiencia cardíaca con fracción de eyección reducida, IMC 35 y HbA1c 8,1 %. Toma metformina y furosemida.',
+      pregunta: '¿Qué grupo tiene prioridad?',
+      opciones: [
+        { texto: 'Solo aumentar la metformina.', correcta: false, retro: 'La metformina no es el fármaco con mayor beneficio en insuficiencia cardíaca y no aborda el riesgo de hospitalización.' },
+        { texto: 'Un iSGLT2 por el beneficio en insuficiencia cardíaca, y valorar un agonista GLP-1 o tirzepatida para el peso y la glucosa.', correcta: true, retro: 'El iSGLT2 reduce hospitalizaciones por insuficiencia cardíaca. El GLP-1 o tirzepatida pueden ayudar con el peso y la HbA1c, según el perfil.' },
+        { texto: 'Una sulfonilurea porque es más barata.', correcta: false, retro: 'La sulfonilurea no tiene beneficio en insuficiencia cardíaca y puede causar hipoglucemia.' },
+      ],
+    },
+    errores: [
+      { error: 'Pensar que los nuevos fármacos son solo para bajar la glucosa.', correccion: 'Los iSGLT2 y GLP-1 tienen beneficios cardiorrenales y de peso que guían la elección.' },
+      { error: 'Iniciar un GLP-1 a dosis alta.', correccion: 'La titulación gradual reduce los efectos gastrointestinales.' },
+      { error: 'No educar sobre cetoacidosis euglucémica con iSGLT2.', correccion: 'La educación sobre días de enfermedad y síntomas es esencial.' },
+    ],
+    comprueba: [
+      { pregunta: '¿Cuál es el beneficio principal de los iSGLT2?', respuesta: 'Reducir hospitalizaciones por insuficiencia cardíaca y la progresión renal.' },
+      { pregunta: '¿Qué efecto tiene un agonista GLP-1 sobre el apetito?', respuesta: 'Lo reduce, lo que ayuda a la pérdida de peso.' },
+      { pregunta: '¿Qué diferencia a tirzepatida?', respuesta: 'Es un agonista dual GIP/GLP-1 con mayor efecto sobre el peso y la HbA1c en muchos pacientes.' },
+    ],
+    resumen: [
+      'iSGLT2, GLP-1 y tirzepatida actúan en **lugares distintos**.',
+      'Sus beneficios van **más allá de la glucosa**.',
+      'La elección depende de corazón, riñón, peso y seguridad.',
+      'La **titulación y la educación** son parte del tratamiento.',
+    ],
+    referencias: [
+      { cita: 'American Diabetes Association. Standards of Care in Diabetes—2026. Diabetes Care. 2026;49(Suppl 1).', url: 'https://diabetesjournals.org/care/issue/49/Supplement_1' },
+      { cita: 'AEMPS-CIMA. Ficha técnica de Jardiance 10 mg comprimidos recubiertos con película.', url: 'https://cima.aemps.es/cima/dochtml/ft/114930014/FT_114930014.html' },
+      { cita: 'AEMPS-CIMA. Ficha técnica de Mounjaro 10 mg/dosis KwikPen solución inyectable en pluma precargada.', url: 'https://cima.aemps.es/cima/dochtml/ft/1221685055/FT_1221685055.html' },
+    ],
+    imagenes: [
+      { ubicacion: 'Sección de grupos', descripcion: 'Tres columnas con corazón, riñón y balanza, y los fármacos que actúan en cada una.', alt: 'iSGLT2, GLP-1 y tirzepatida más allá de la glucosa' },
+    ],
+    keywords: ['iSGLT2 GLP-1 tirzepatida', 'antidiabéticos beneficio cardiovascular', 'iSGLT2 insuficiencia cardiaca', 'GLP-1 peso', 'tirzepatida mecanismo', 'diabetes más allá de la glucosa', 'curso farmacoterapia diabetes'],
+  },
+  {
+    titulo: 'iSGLT2: mecanismo, indicaciones y beneficios en insuficiencia cardiaca y enfermedad renal',
+    duracion: 25,
+    gancho: {
+      titulo: 'La glucosa que se va por la orina',
+      texto: 'Un paciente pregunta por qué un medicamento para la diabetes “hace orinar azúcar” y por qué eso puede proteger el corazón y el riñón. La respuesta está en el túbulo proximal: los iSGLT2 bloquean la reabsorción de glucosa y sodio, aumentan la glucosuria y reducen la congestión. Ese mecanismo explica tanto los beneficios como los efectos adversos.',
+    },
+    objetivos: [
+      'Explicar el mecanismo renal de los iSGLT2.',
+      'Reconocer las indicaciones en diabetes, insuficiencia cardíaca y enfermedad renal.',
+      'Interpretar los beneficios cardiorrenales de los ensayos clínicos.',
+      'Ajustar la elección según la TFG y la comorbilidad.',
+    ],
+    conceptos: [
+      { icono: 'Droplets', termino: 'SGLT2', definicion: 'Cotransportador sodio-glucosa tipo 2 en el túbulo proximal; reabsorbe la mayor parte de la glucosa filtrada.' },
+      { icono: 'Activity', termino: 'Glucosuria', definicion: 'Pérdida de glucosa por la orina; reduce la glucosa y aporta un efecto diurético osmótico.' },
+      { icono: 'ShieldCheck', termino: 'Cardiorrenal', definicion: 'Beneficio sobre eventos cardiovasculares, insuficiencia cardíaca y progresión de la enfermedad renal.' },
+      { icono: 'Droplets', termino: 'TFG', definicion: 'La función renal guía el inicio y la continuación; los iSGLT2 pueden iniciarse con TFG baja en indicaciones específicas.' },
+    ],
+    mapa: {
+      centro: 'iSGLT2',
+      ramas: [
+        { titulo: 'Riñón', icono: 'Droplets', nodos: ['Bloqueo SGLT2', 'Glucosuria', 'Menos congestión'] },
+        { titulo: 'Corazón', icono: 'Activity', nodos: ['Menos hospitalizaciones', 'Mejor carga de volumen', 'Beneficio en IC'] },
+        { titulo: 'Glucosa', icono: 'Target', nodos: ['HbA1c modesta', 'Sin hipoglucemia sola', 'Peso ligeramente menor'] },
+        { titulo: 'Indicaciones', icono: 'ClipboardList', nodos: ['DM2', 'Insuficiencia cardíaca', 'ERC con albuminuria'] },
+      ],
+    },
+    secciones: [
+      {
+        titulo: 'Cómo funcionan',
+        parrafos: [
+          'En el túbulo proximal, el SGLT2 reabsorbe glucosa junto con sodio. Los iSGLT2 bloquean ese transportador, aumentan la glucosa en la orina y reducen la reabsorción de sodio. El efecto diurético osmótico disminuye la congestión y la presión intraglomerular, lo que ayuda a explicar el beneficio en insuficiencia cardíaca y enfermedad renal.',
+          'El efecto sobre la HbA1c es modesto, de aproximadamente 0,5 a 1 punto, y disminuye con la TFG. Sin embargo, el beneficio cardiorrenal se observa incluso con TFG baja y no depende solo de la glucosa. Por eso se usan en pacientes con insuficiencia cardíaca o ERC, tengan o no diabetes.',
+        ],
+      },
+      {
+        titulo: 'Indicaciones y evidencia',
+        parrafos: [
+          'Los iSGLT2 reducen hospitalizaciones por insuficiencia cardíaca y muerte cardiovascular en pacientes con insuficiencia cardíaca, independientemente de la diabetes. En enfermedad renal crónica con albuminuria, reducen la progresión y los eventos renales. En diabetes tipo 2 con alto riesgo cardiovascular, también reducen eventos.',
+          'La elección entre empagliflozina, dapagliflozina y otros depende de la indicación, la TFG, el costo y la cobertura. La evidencia no es idéntica para todos los fármacos y poblaciones, pero la clase comparte beneficios. La decisión debe basarse en el perfil y en la ficha técnica.',
+        ],
+      },
+      {
+        titulo: 'TFG y educación',
+        parrafos: [
+          'Los iSGLT2 pueden iniciarse con TFG ≥20 ml/min en muchas indicaciones, según el fármaco y la ficha técnica. La TFG puede disminuir de forma transitoria al inicio por el efecto hemodinámico; no es motivo de suspensión si es leve y estable. Se revisa la función renal después de iniciar.',
+          'La educación incluye hidratación, higiene genital, signos de infección, cetoacidosis euglucémica y reglas de días de enfermedad. El paciente debe saber que el efecto diurético puede aumentar la micción y que no debe suspenderlo por una infección leve sin consultar.',
+        ],
+      },
+    ],
+    proceso: {
+      titulo: 'Cómo iniciar un iSGLT2',
+      pasos: [
+        { titulo: 'Confirmar indicación', detalle: 'Diabetes, insuficiencia cardíaca o ERC con albuminuria.', icono: 'Target', evidencia: 'Indicación documentada.' },
+        { titulo: 'Revisar TFG', detalle: 'Verificar el umbral del fármaco y la función renal.', icono: 'Calculator', evidencia: 'TFG.' },
+        { titulo: 'Revisar volumen', detalle: 'Diuréticos, hipotensión y riesgo de depleción.', icono: 'Droplets', evidencia: 'Evaluación de volumen.' },
+        { titulo: 'Educar', detalle: 'Micción, infecciones, cetoacidosis y días de enfermedad.', icono: 'Users', evidencia: 'Educación.' },
+        { titulo: 'Seguir', detalle: 'TFG, presión, síntomas y adherencia.', icono: 'CalendarClock', evidencia: 'Seguimiento.' },
+      ],
+    },
+    caso: {
+      titulo: 'Insuficiencia cardíaca y TFG 32',
+      contexto: 'Hombre de 70 años, diabetes tipo 2, insuficiencia cardíaca con fracción de eyección reducida, TFG 32 ml/min y albuminuria. Toma furosemida y metformina.',
+      pregunta: '¿Cuál es la conducta más razonable?',
+      opciones: [
+        { texto: 'No usar iSGLT2 porque la TFG es baja.', correcta: false, retro: 'Los iSGLT2 tienen beneficio en insuficiencia cardíaca y pueden usarse con TFG baja, según el fármaco y la ficha técnica.' },
+        { texto: 'Proponer un iSGLT2 con beneficio en insuficiencia cardíaca, revisar volumen y función renal, y ajustar el resto del esquema.', correcta: true, retro: 'El beneficio cardiorrenal es independiente de la glucosa. Se revisa la diuresis, la presión y la TFG.' },
+        { texto: 'Sustituir la furosemida por el iSGLT2.', correcta: false, retro: 'El iSGLT2 no reemplaza al diurético; se añade y se ajusta el volumen según la respuesta.' },
+      ],
+    },
+    errores: [
+      { error: 'Suspender el iSGLT2 por una caída transitoria de la TFG.', correccion: 'La caída inicial puede ser hemodinámica y no siempre requiere suspensión; se evalúa.' },
+      { error: 'No revisar el volumen ni los diuréticos.', correccion: 'El efecto diurético puede causar hipotensión o deshidratación.' },
+      { error: 'Olvidar la cetoacidosis euglucémica.', correccion: 'Se educa sobre síntomas y reglas de días de enfermedad, aunque la glucosa no esté alta.' },
+    ],
+    comprueba: [
+      { pregunta: '¿Dónde actúan los iSGLT2?', respuesta: 'En el cotransportador sodio-glucosa tipo 2 del túbulo proximal renal.' },
+      { pregunta: '¿Cuál es su beneficio en insuficiencia cardíaca?', respuesta: 'Reducen hospitalizaciones y muerte cardiovascular.' },
+      { pregunta: '¿Qué efecto adverso grave se debe vigilar?', respuesta: 'La cetoacidosis euglucémica.' },
+    ],
+    resumen: [
+      'Los iSGLT2 bloquean la **reabsorción renal de glucosa y sodio**.',
+      'Reducen eventos de **insuficiencia cardíaca y progresión renal**.',
+      'El beneficio no depende solo de la HbA1c.',
+      'La educación sobre volumen, infecciones y cetoacidosis es clave.',
+    ],
+    referencias: [
+      { cita: 'AEMPS-CIMA. Ficha técnica de Jardiance 10 mg comprimidos recubiertos con película.', url: 'https://cima.aemps.es/cima/dochtml/ft/114930014/FT_114930014.html' },
+      { cita: 'American Diabetes Association. Standards of Care in Diabetes—2026. Diabetes Care. 2026;49(Suppl 1).', url: 'https://diabetesjournals.org/care/issue/49/Supplement_1' },
+    ],
+    imagenes: [
+      { ubicacion: 'Sección de mecanismo', descripcion: 'Nefrona simplificada con el túbulo proximal, el SGLT2 bloqueado y la glucosa saliendo en la orina.', alt: 'Mecanismo renal de los iSGLT2' },
+    ],
+    keywords: ['iSGLT2 mecanismo', 'dapagliflozina insuficiencia cardiaca', 'empagliflozina enfermedad renal', 'iSGLT2 TFG', 'glucosuria diabetes', 'beneficio cardiorrenal iSGLT2', 'curso farmacoterapia diabetes'],
+  },
+  {
+    titulo: 'Seguridad de los iSGLT2: cetoacidosis euglucémica, depleción de volumen, infecciones y reglas de días de enfermedad',
+    duracion: 20,
+    gancho: {
+      titulo: 'La cetoacidosis con glucosa de 180',
+      texto: 'Una paciente con diabetes tipo 2 y un iSGLT2 llega a urgencias con náuseas, dolor abdominal y respiración rápida. La glucosa es 180 mg/dL, no 500. El médico piensa en un cuadro viral, pero las cetonas están altas y el pH bajo. Es una cetoacidosis euglucémica, una complicación rara pero grave de los iSGLT2 que no se detecta mirando solo la glucosa.',
+    },
+    objetivos: [
+      'Reconocer la cetoacidosis euglucémica y sus desencadenantes.',
+      'Prevenir la depleción de volumen y las infecciones genitales.',
+      'Aplicar las reglas de días de enfermedad en pacientes con iSGLT2.',
+      'Educar al paciente y al cuidador sobre signos de alarma.',
+    ],
+    conceptos: [
+      { icono: 'AlertTriangle', termino: 'Cetoacidosis euglucémica', definicion: 'Acidosis con cetonas elevadas y glucosa no muy alta; puede ocurrir con iSGLT2 en cirugía, infección, ayuno o alcohol.' },
+      { icono: 'Droplets', termino: 'Depleción de volumen', definicion: 'Pérdida de líquidos por diuresis osmótica; aumenta con diuréticos, calor o baja ingesta.' },
+      { icono: 'Bug', termino: 'Infección genital', definicion: 'Candidiasis vulvovaginal o balanitis por glucosuria; se previene con higiene y se trata oportunamente.' },
+      { icono: 'ShieldCheck', termino: 'Días de enfermedad', definicion: 'Suspender el iSGLT2 durante enfermedad aguda, cirugía, ayuno prolongado o deshidratación, y reiniciar al recuperarse.' },
+    ],
+    mapa: {
+      centro: 'Seguridad iSGLT2',
+      ramas: [
+        { titulo: 'Cetoacidosis', icono: 'AlertTriangle', nodos: ['Glucosa no muy alta', 'Cetonas', 'Cirugía o infección'] },
+        { titulo: 'Volumen', icono: 'Droplets', nodos: ['Diuresis', 'Hipotensión', 'Diuréticos'] },
+        { titulo: 'Infecciones', icono: 'Bug', nodos: ['Candidiasis', 'Balanitis', 'Higiene'] },
+        { titulo: 'Suspensión', icono: 'ShieldCheck', nodos: ['Enfermedad aguda', 'Cirugía', 'Ayuno'] },
+      ],
+    },
+    secciones: [
+      {
+        titulo: 'Cetoacidosis euglucémica',
+        parrafos: [
+          'Los iSGLT2 pueden favorecer la cetogénesis, sobre todo en situaciones de estrés: cirugía, infección, infarto, ayuno prolongado, alcohol o reducción brusca de insulina. La glucosa puede estar solo moderadamente elevada, por debajo de 250 mg/dL, pero las cetonas y la acidosis están presentes. Los síntomas incluyen náuseas, vómito, dolor abdominal, sed, respiración rápida y confusión.',
+          'Ante la sospecha, se suspende el iSGLT2, se hidrata y se busca atención urgente. No se debe descartar por una glucosa “normal”. La educación debe incluir esta posibilidad, especialmente antes de cirugías o procedimientos.',
+        ],
+      },
+      {
+        titulo: 'Volumen e infecciones',
+        parrafos: [
+          'El efecto diurético puede causar hipotensión, mareo o deshidratación, sobre todo en personas mayores, con diuréticos o con baja ingesta. Se recomienda hidratación adecuada y revisión de la presión. En climas calurosos o durante el ejercicio intenso, el riesgo aumenta.',
+          'La glucosuria favorece las infecciones genitales por hongos. La higiene, la ropa adecuada y la consulta temprana ayudan. La balanitis en hombres y la vulvovaginitis en mujeres son las más frecuentes. No suelen requerir suspender el fármaco, pero deben tratarse.',
+        ],
+      },
+      {
+        titulo: 'Reglas de días de enfermedad',
+        parrafos: [
+          'Cuando el paciente tiene vómito, diarrea, fiebre alta, no puede comer o beber, o va a someterse a cirugía, se suspende el iSGLT2 temporalmente. Se reinicia cuando esté estable y haya recuperado la ingesta. El equipo tratante debe conocer la suspensión.',
+          'El Químico Farmacéutico puede entregar una tarjeta o un mensaje claro con las reglas: qué suspender, cuándo consultar y cuándo reiniciar. También puede revisar la medicación durante la dispensación y preguntar por procedimientos programados.',
+        ],
+      },
+    ],
+    proceso: {
+      titulo: 'Prevención de complicaciones con iSGLT2',
+      pasos: [
+        { titulo: 'Educar al inicio', detalle: 'Explicar cetoacidosis, volumen, infecciones y días de enfermedad.', icono: 'Users', evidencia: 'Educación documentada.' },
+        { titulo: 'Revisar volumen', detalle: 'Presión, diuréticos, calor y capacidad de hidratación.', icono: 'Droplets', evidencia: 'Evaluación.' },
+        { titulo: 'Antes de cirugía', detalle: 'Suspender según el protocolo y coordinar el reinicio.', icono: 'CalendarClock', evidencia: 'Indicación registrada.' },
+        { titulo: 'Enfermedad aguda', detalle: 'Suspender si hay vómito, diarrea, fiebre o mala ingesta.', icono: 'AlertTriangle', evidencia: 'Regla aplicada.' },
+        { titulo: 'Reiniciar', detalle: 'Cuando el paciente esté estable y tolerando líquidos.', icono: 'CheckCircle2', evidencia: 'Reinicio.' },
+      ],
+    },
+    caso: {
+      titulo: 'Náuseas y glucosa 190',
+      contexto: 'Mujer de 58 años con diabetes tipo 2, iSGLT2, infección urinaria y vómito. Glucosa 190 mg/dL, cetonas positivas, pH 7,28.',
+      pregunta: '¿Qué hacer?',
+      opciones: [
+        { texto: 'Descartar cetoacidosis porque la glucosa no es alta.', correcta: false, retro: 'La cetoacidosis euglucémica puede ocurrir con glucosa moderada. Las cetonas y el pH son clave.' },
+        { texto: 'Suspender el iSGLT2, hidratar y remitir a urgencias para manejo de la cetoacidosis.', correcta: true, retro: 'Es una emergencia. Se suspende el fármaco, se trata la infección y se corrige la acidosis.' },
+        { texto: 'Aumentar la insulina y continuar el iSGLT2.', correcta: false, retro: 'El iSGLT2 debe suspenderse durante la enfermedad aguda.' },
+      ],
+    },
+    errores: [
+      { error: 'Descartar cetoacidosis por glucosa <250.', correccion: 'La cetoacidosis euglucémica existe; hay que medir cetonas y valorar el pH.' },
+      { error: 'No suspender el iSGLT2 antes de cirugía.', correccion: 'Se suspende según el protocolo para reducir el riesgo de cetoacidosis.' },
+      { error: 'Ignorar la higiene genital.', correccion: 'La glucosuria favorece infecciones; la educación y el tratamiento oportuno son importantes.' },
+    ],
+    comprueba: [
+      { pregunta: '¿Qué es la cetoacidosis euglucémica?', respuesta: 'Una acidosis con cetonas elevadas y glucosa no muy alta, asociada a iSGLT2 en situaciones de estrés.' },
+      { pregunta: '¿Cuándo se suspende el iSGLT2?', respuesta: 'En enfermedad aguda, cirugía, ayuno prolongado o deshidratación.' },
+      { pregunta: '¿Qué infección es frecuente con iSGLT2?', respuesta: 'La candidiasis genital y la balanitis.' },
+    ],
+    resumen: [
+      'La cetoacidosis euglucémica es **rara pero grave**.',
+      'La glucosa normal no descarta el problema.',
+      'Las **reglas de días de enfermedad** son obligatorias.',
+      'La higiene y la hidratación reducen infecciones y deshidratación.',
+    ],
+    referencias: [
+      { cita: 'AEMPS-CIMA. Ficha técnica de Jardiance 10 mg comprimidos recubiertos con película.', url: 'https://cima.aemps.es/cima/dochtml/ft/114930014/FT_114930014.html' },
+      { cita: 'American Diabetes Association. Standards of Care in Diabetes—2026. Diabetes Care. 2026;49(Suppl 1).', url: 'https://diabetesjournals.org/care/issue/49/Supplement_1' },
+    ],
+    imagenes: [
+      { ubicacion: 'Sección de cetoacidosis', descripcion: 'Tira reactiva de cetonas positiva junto a un glucómetro que marca 190 mg/dL y una caja de iSGLT2.', alt: 'Cetoacidosis euglucémica por iSGLT2' },
+    ],
+    keywords: ['cetoacidosis euglucémica iSGLT2', 'iSGLT2 efectos adversos', 'iSGLT2 días de enfermedad', 'infección genital iSGLT2', 'iSGLT2 cirugía', 'dapagliflozina seguridad', 'empagliflozina seguridad'],
+  },
+  {
+    titulo: 'Liraglutida: mecanismo, esquemas de titulación y evidencia en diabetes tipo 2 y obesidad',
+    duracion: 20,
+    gancho: {
+      titulo: 'La pluma que se empieza despacio',
+      texto: 'Un paciente recibe liraglutida para diabetes y obesidad, se inyecta la dosis completa el primer día y a las pocas horas tiene náuseas intensas. La titulación gradual no es un capricho: reduce los efectos gastrointestinales y mejora la adherencia. La liraglutida puede ser muy útil, pero solo si se usa con el esquema correcto.',
+    },
+    objetivos: [
+      'Explicar el mecanismo de la liraglutida y su efecto sobre la glucosa y el peso.',
+      'Aplicar el esquema de titulación y la técnica de inyección.',
+      'Reconocer la evidencia en diabetes tipo 2 y obesidad.',
+      'Identificar los efectos adversos y las precauciones.',
+    ],
+    conceptos: [
+      { icono: 'Activity', termino: 'GLP-1', definicion: 'Incretina que estimula la insulina dependiente de glucosa, frena el glucagón y reduce el apetito.' },
+      { icono: 'Scale', termino: 'Peso', definicion: 'La liraglutida reduce el peso por menor ingesta y enlentecimiento del vaciamiento gástrico.' },
+      { icono: 'Syringe', termino: 'Titulación', definicion: 'Aumento gradual de la dosis para reducir náuseas, vómito y diarrea.' },
+      { icono: 'AlertTriangle', termino: 'Gastrointestinal', definicion: 'Náuseas, vómito, diarrea y estreñimiento son los efectos más frecuentes; suelen disminuir con el tiempo.' },
+    ],
+    mapa: {
+      centro: 'Liraglutida',
+      ramas: [
+        { titulo: 'Mecanismo', icono: 'Activity', nodos: ['Incretina', 'Insulina dependiente de glucosa', 'Menos apetito'] },
+        { titulo: 'Titulación', icono: 'Syringe', nodos: ['Inicio bajo', 'Aumento semanal', 'Dosis objetivo'] },
+        { titulo: 'Evidencia', icono: 'LineChart', nodos: ['HbA1c', 'Peso', 'Riesgo cardiovascular'] },
+        { titulo: 'Seguridad', icono: 'AlertTriangle', nodos: ['Náuseas', 'Pancreatitis', 'Colelitiasis', 'Tiroides'] },
+      ],
+    },
+    secciones: [
+      {
+        titulo: 'Cómo actúa y qué logra',
+        parrafos: [
+          'La liraglutida es un agonista del receptor GLP-1 que se administra una vez al día. Estimula la secreción de insulina cuando hay glucosa, reduce el glucagón, enlentece el vaciamiento gástrico y disminuye el apetito. El resultado es una reducción de la HbA1c y del peso, con bajo riesgo de hipoglucemia cuando se usa sola.',
+          'En diabetes tipo 2, la liraglutida reduce la HbA1c y el peso. En obesidad, la dosis de 3 mg al día ha demostrado pérdida de peso clínicamente significativa. La evidencia cardiovascular es favorable en pacientes con alto riesgo, aunque no es idéntica a la de otros agonistas GLP-1.',
+        ],
+      },
+      {
+        titulo: 'Titulación y técnica',
+        parrafos: [
+          'Se inicia con 0,6 mg al día durante una semana y se aumenta a 1,2 mg; si es necesario, se puede subir a 1,8 mg y luego a 2,4 o 3 mg. La titulación semanal reduce los síntomas digestivos. Si aparecen náuseas intensas, se puede mantener la dosis actual o reducir temporalmente.',
+          'La inyección se aplica por vía subcutánea en abdomen, muslo o brazo, rotando el sitio. La pluma se conserva refrigerada antes del primer uso y luego a temperatura ambiente según la ficha técnica. Se debe revisar la técnica, el horario y la adherencia.',
+        ],
+      },
+      {
+        titulo: 'Seguridad y poblaciones especiales',
+        parrafos: [
+          'Los efectos adversos más frecuentes son gastrointestinales. Se han descrito pancreatitis, colelitiasis y reacciones en el sitio de inyección. No se recomienda en antecedente personal o familiar de carcinoma medular de tiroides ni en síndrome de neoplasia endocrina múltiple tipo 2. En insuficiencia renal grave se usa con precaución.',
+          'No se recomienda en el embarazo ni en la lactancia. En adultos mayores, la pérdida de peso y la deshidratación pueden aumentar el riesgo de caídas. La educación sobre náuseas, hidratación y signos de pancreatitis es parte del tratamiento.',
+        ],
+      },
+    ],
+    proceso: {
+      titulo: 'Cómo iniciar liraglutida',
+      pasos: [
+        { titulo: 'Confirmar indicación', detalle: 'Diabetes tipo 2, obesidad o ambas, según la ficha técnica.', icono: 'Target', evidencia: 'Indicación.' },
+        { titulo: 'Revisar contraindicaciones', detalle: 'Tiroides, pancreatitis, embarazo y función renal.', icono: 'ShieldCheck', evidencia: 'Evaluación.' },
+        { titulo: 'Iniciar bajo', detalle: '0,6 mg al día durante una semana.', icono: 'Syringe', evidencia: 'Dosis inicial.' },
+        { titulo: 'Titular', detalle: 'Aumentar según tolerancia y objetivo.', icono: 'RefreshCw', evidencia: 'Esquema.' },
+        { titulo: 'Seguir', detalle: 'Peso, HbA1c, tolerancia y técnica.', icono: 'CalendarClock', evidencia: 'Seguimiento.' },
+      ],
+    },
+    caso: {
+      titulo: 'Náuseas en la primera semana',
+      contexto: 'Mujer de 45 años con diabetes tipo 2 y obesidad. Inició liraglutida 1,8 mg al día desde el primer día y consulta con náuseas intensas y vómito.',
+      pregunta: '¿Qué recomendar?',
+      opciones: [
+        { texto: 'Suspender definitivamente.', correcta: false, retro: 'La mayoría de los síntomas mejoran con titulación. Suspender sin intentar el esquema adecuado priva de un tratamiento útil.' },
+        { texto: 'Reducir a 0,6 mg, hidratar y volver a titular gradualmente.', correcta: true, retro: 'La titulación lenta reduce los síntomas. Si hay deshidratación o dolor abdominal intenso, se evalúa pancreatitis.' },
+        { texto: 'Aumentar la dosis para que el cuerpo se acostumbre.', correcta: false, retro: 'Aumentar la dosis empeora los síntomas gastrointestinales.' },
+      ],
+    },
+    errores: [
+      { error: 'Iniciar con la dosis objetivo.', correccion: 'Se empieza bajo y se titula semanalmente.' },
+      { error: 'No preguntar por antecedente de pancreatitis o tiroides.', correccion: 'Son contraindicaciones o precauciones importantes.' },
+      { error: 'No revisar la técnica de inyección.', correccion: 'La técnica y la conservación afectan la eficacia y la seguridad.' },
+    ],
+    comprueba: [
+      { pregunta: '¿Cómo se titula la liraglutida?', respuesta: 'Se inicia con 0,6 mg al día y se aumenta gradualmente según tolerancia.' },
+      { pregunta: '¿Cuál es el efecto adverso más frecuente?', respuesta: 'Náuseas y otros síntomas gastrointestinales.' },
+      { pregunta: '¿En quién se evita?', respuesta: 'En antecedente de carcinoma medular de tiroides, MEN2, embarazo o pancreatitis recurrente.' },
+    ],
+    resumen: [
+      'La liraglutida actúa sobre **GLP-1** y reduce glucosa y peso.',
+      'La **titulación** es clave para la tolerancia.',
+      'Se vigilan pancreatitis, colelitiasis y tiroides.',
+      'La técnica de inyección y la adherencia sostienen el resultado.',
+    ],
+    referencias: [
+      { cita: 'AEMPS-CIMA. Ficha técnica de Saxenda 6 mg/ml solución inyectable en pluma precargada.', url: 'https://cima.aemps.es/cima/dochtml/ft/115992002/FT_115992002.html' },
+      { cita: 'American Diabetes Association. Standards of Care in Diabetes—2026. Diabetes Care. 2026;49(Suppl 1).', url: 'https://diabetesjournals.org/care/issue/49/Supplement_1' },
+    ],
+    imagenes: [
+      { ubicacion: 'Sección de titulación', descripcion: 'Pluma de liraglutida con una flecha que sube en escalones semanales de 0,6 a 3 mg.', alt: 'Titulación de liraglutida' },
+    ],
+    keywords: ['liraglutida dosis', 'liraglutida titulación', 'liraglutida diabetes tipo 2', 'liraglutida obesidad', 'liraglutida efectos secundarios', 'GLP-1 liraglutida', 'curso farmacoterapia diabetes'],
+  },
+  {
+    titulo: 'Semaglutida subcutánea y oral: dosificación, evidencia cardiorrenal y seguridad',
+    duracion: 20,
+    gancho: {
+      titulo: 'La misma molécula, dos caminos',
+      texto: 'Una paciente pregunta si la semaglutida oral “es más suave” que la inyectable. La respuesta depende de la dosis, la absorción y la adherencia. La semaglutida oral tiene reglas estrictas de administración; la subcutánea tiene una titulación semanal. Ambas pueden ser eficaces, pero no son intercambiables sin criterio.',
+    },
+    objetivos: [
+      'Diferenciar la semaglutida subcutánea y oral en dosis y administración.',
+      'Explicar la evidencia cardiorrenal y de peso.',
+      'Reconocer los efectos adversos y las precauciones.',
+      'Elegir la formulación según el paciente y la cobertura.',
+    ],
+    conceptos: [
+      { icono: 'Activity', termino: 'Semaglutida', definicion: 'Agonista GLP-1 de acción prolongada que reduce HbA1c y peso, con beneficios cardiovasculares en pacientes de riesgo.' },
+      { icono: 'Syringe', termino: 'Subcutánea', definicion: 'Aplicación semanal con titulación gradual; no depende de la comida.' },
+      { icono: 'Pill', termino: 'Oral', definicion: 'Tableta diaria que debe tomarse en ayunas con poca agua y esperar al menos 30 minutos antes de comer.' },
+      { icono: 'ShieldCheck', termino: 'Cardiorrenal', definicion: 'Reducción de eventos cardiovasculares y posible beneficio renal en pacientes seleccionados.' },
+    ],
+    mapa: {
+      centro: 'Semaglutida',
+      ramas: [
+        { titulo: 'Subcutánea', icono: 'Syringe', nodos: ['Semanal', 'Titulación', 'No depende de comidas'] },
+        { titulo: 'Oral', icono: 'Pill', nodos: ['Diaria', 'Ayunas', '30 minutos'] },
+        { titulo: 'Efectos', icono: 'LineChart', nodos: ['HbA1c', 'Peso', 'Corazón'] },
+        { titulo: 'Seguridad', icono: 'AlertTriangle', nodos: ['Gastrointestinal', 'Pancreatitis', 'Tiroides', 'Embarazo'] },
+      ],
+    },
+    secciones: [
+      {
+        titulo: 'Dos formulaciones, reglas distintas',
+        parrafos: [
+          'La semaglutida subcutánea se administra una vez a la semana, con titulación gradual desde 0,25 mg hasta 0,5 o 1 mg, según el objetivo. La formulación oral se toma una vez al día en ayunas, con un máximo de 120 ml de agua, y no se debe comer ni tomar otros medicamentos durante al menos 30 minutos. Esas reglas son esenciales para la absorción.',
+          'La semaglutida oral y la subcutánea no son intercambiables miligramo a miligramo. La elección depende de la preferencia, la adherencia, la cobertura y la capacidad de seguir las instrucciones. La inyectable puede ser más cómoda para quien olvida la toma diaria; la oral puede ser preferida por quien evita las agujas.',
+        ],
+      },
+      {
+        titulo: 'Evidencia y beneficios',
+        parrafos: [
+          'La semaglutida reduce la HbA1c y el peso de forma significativa. En pacientes con diabetes tipo 2 y alto riesgo cardiovascular, la formulación subcutánea ha demostrado reducción de eventos cardiovasculares mayores. También se ha estudiado su beneficio en insuficiencia cardíaca y enfermedad renal, con resultados que dependen de la población y la formulación.',
+          'En obesidad, dosis más altas de semaglutida han mostrado pérdida de peso clínicamente relevante. La evidencia no convierte el fármaco en un tratamiento estético: se usa en personas con indicación clínica, acompañado de alimentación y actividad, y con seguimiento de efectos adversos.',
+        ],
+      },
+      {
+        titulo: 'Seguridad y educación',
+        parrafos: [
+          'Los efectos gastrointestinales son los más frecuentes: náuseas, vómito, diarrea, estreñimiento y dolor abdominal. Suelen mejorar con la titulación. Se han descrito pancreatitis, colelitiasis y complicaciones de la retinopatía en pacientes con diabetes y retinopatía preexistente, por lo que se recomienda vigilancia.',
+          'No se usa en embarazo ni lactancia. Se evita en antecedente de carcinoma medular de tiroides o MEN2. La educación incluye técnica de inyección, conservación, reglas de la formulación oral, hidratación y signos de alarma. El QF puede revisar la adherencia y la cobertura.',
+        ],
+      },
+    ],
+    proceso: {
+      titulo: 'Cómo elegir la formulación',
+      pasos: [
+        { titulo: 'Evaluar preferencia', detalle: 'Agujas, olvido de dosis, rutina y destreza.', icono: 'Users', evidencia: 'Entrevista.' },
+        { titulo: 'Revisar cobertura', detalle: 'Costo, disponibilidad y trámites.', icono: 'Calculator', evidencia: 'Acceso confirmado.' },
+        { titulo: 'Revisar seguridad', detalle: 'Tiroides, pancreatitis, retinopatía y embarazo.', icono: 'ShieldCheck', evidencia: 'Evaluación.' },
+        { titulo: 'Iniciar y titular', detalle: 'Dosis inicial y aumento gradual.', icono: 'Syringe', evidencia: 'Esquema.' },
+        { titulo: 'Seguir', detalle: 'HbA1c, peso, tolerancia y adherencia.', icono: 'CalendarClock', evidencia: 'Seguimiento.' },
+      ],
+    },
+    caso: {
+      titulo: 'La tableta que no funciona',
+      contexto: 'Paciente con semaglutida oral que la toma con el desayuno y café. HbA1c no mejora y refiere náuseas leves.',
+      pregunta: '¿Qué revisar primero?',
+      opciones: [
+        { texto: 'Aumentar la dosis.', correcta: false, retro: 'Antes de aumentar, hay que confirmar que la toma es correcta. Con comida o café la absorción disminuye.' },
+        { texto: 'Revisar la administración: ayunas, poca agua y 30 minutos antes de comer.', correcta: true, retro: 'La semaglutida oral tiene reglas estrictas. Si no se cumplen, la exposición puede ser insuficiente.' },
+        { texto: 'Cambiar a insulina de inmediato.', correcta: false, retro: 'La insulina no es el siguiente paso automático; primero se corrige la administración y se evalúa la respuesta.' },
+      ],
+    },
+    errores: [
+      { error: 'Tomar semaglutida oral con alimentos.', correccion: 'Se toma en ayunas, con poca agua, y se espera 30 minutos.' },
+      { error: 'Cambiar de formulación sin ajustar la dosis.', correccion: 'Las formulaciones no son intercambiables mg a mg; se sigue el esquema de cada una.' },
+      { error: 'No preguntar por retinopatía.', correccion: 'En pacientes con retinopatía preexistente se requiere vigilancia.' },
+    ],
+    comprueba: [
+      { pregunta: '¿Cómo se toma la semaglutida oral?', respuesta: 'En ayunas, con hasta 120 ml de agua, y sin comer ni tomar otros medicamentos durante 30 minutos.' },
+      { pregunta: '¿Cuál es la frecuencia de la subcutánea?', respuesta: 'Una vez a la semana, con titulación gradual.' },
+      { pregunta: '¿Qué beneficio cardiovascular tiene?', respuesta: 'Reduce eventos cardiovasculares mayores en pacientes de alto riesgo.' },
+    ],
+    resumen: [
+      'La semaglutida tiene **dos formulaciones** con reglas distintas.',
+      'La oral exige **ayunas y 30 minutos** antes de comer.',
+      'La subcutánea es **semanal** y se titula.',
+      'La evidencia incluye HbA1c, peso y eventos cardiovasculares.',
+    ],
+    referencias: [
+      { cita: 'AEMPS-CIMA. Ficha técnica de Wegovy 0,25 mg FlexTouch solución inyectable en pluma precargada.', url: 'https://cima.aemps.es/cima/dochtml/ft/1211608006/FT_1211608006.html' },
+      { cita: 'American Diabetes Association. Standards of Care in Diabetes—2026. Diabetes Care. 2026;49(Suppl 1).', url: 'https://diabetesjournals.org/care/issue/49/Supplement_1' },
+      { cita: 'INVIMA. Alerta sanitaria 090-2024: semaglutida + vitamina B12.', url: 'https://www.invima.gov.co/biblioteca/alerta-sanitaria-semglutida-vitamina-b12-090-2024' },
+    ],
+    imagenes: [
+      { ubicacion: 'Sección de formulaciones', descripcion: 'Dos caminos paralelos: una pluma semanal y una tableta con reloj de 30 minutos.', alt: 'Semaglutida subcutánea y oral' },
+    ],
+    keywords: ['semaglutida oral', 'semaglutida subcutánea', 'semaglutida dosis', 'semaglutida ayunas', 'semaglutida evidencia cardiovascular', 'semaglutida efectos secundarios', 'Ozempic Wegovy', 'curso farmacoterapia diabetes'],
+  },
+  {
+    titulo: 'Tirzepatida: agonista dual GIP/GLP-1, titulación, seguridad y alertas',
+    duracion: 20,
+    gancho: {
+      titulo: 'El doble agonista que cambió la conversación',
+      texto: 'Un paciente con diabetes y obesidad pregunta por tirzepatida porque “dicen que baja más el peso”. Es un agonista dual GIP/GLP-1 con resultados importantes en HbA1c y peso, pero no es un producto de estética ni una fórmula mágica. Requiere indicación, titulación, seguimiento y vigilancia de efectos adversos.',
+    },
+    objetivos: [
+      'Explicar el mecanismo dual GIP/GLP-1 de la tirzepatida.',
+      'Aplicar el esquema de titulación y la técnica de inyección.',
+      'Reconocer la evidencia en diabetes y obesidad.',
+      'Identificar las alertas regulatorias y las precauciones.',
+    ],
+    conceptos: [
+      { icono: 'Activity', termino: 'GIP', definicion: 'Polipéptido insulinotrópico dependiente de glucosa; su activación junto con GLP-1 aumenta el efecto metabólico.' },
+      { icono: 'Scale', termino: 'Peso', definicion: 'La tirzepatida reduce el peso de forma significativa, además de mejorar la HbA1c.' },
+      { icono: 'Syringe', termino: 'Titulación', definicion: 'Aumento gradual cada cuatro semanas para reducir náuseas y vómito.' },
+      { icono: 'AlertTriangle', termino: 'Seguridad', definicion: 'Se vigilan efectos gastrointestinales, pancreatitis, colelitiasis, tiroides y embarazo.' },
+    ],
+    mapa: {
+      centro: 'Tirzepatida',
+      ramas: [
+        { titulo: 'Mecanismo', icono: 'Activity', nodos: ['GIP', 'GLP-1', 'Insulina y apetito'] },
+        { titulo: 'Titulación', icono: 'Syringe', nodos: ['2,5 mg', 'Aumento cada 4 semanas', 'Dosis objetivo'] },
+        { titulo: 'Efectos', icono: 'Scale', nodos: ['HbA1c', 'Peso', 'Saciedad'] },
+        { titulo: 'Alertas', icono: 'AlertTriangle', nodos: ['Gastrointestinal', 'Pancreatitis', 'Tiroides', 'Productos falsos'] },
+      ],
+    },
+    secciones: [
+      {
+        titulo: 'Qué es y cómo actúa',
+        parrafos: [
+          'La tirzepatida es un agonista dual de los receptores GIP y GLP-1. Actúa sobre la secreción de insulina dependiente de glucosa, el glucagón, el vaciamiento gástrico y el apetito. En ensayos clínicos ha mostrado reducciones de HbA1c y peso superiores a las de algunos comparadores, con un perfil gastrointestinal característico.',
+          'No es un fármaco de primera línea para cualquier persona con sobrepeso. Se usa en diabetes tipo 2 y en obesidad, según la indicación aprobada, con evaluación clínica y seguimiento. La pérdida de peso debe acompañarse de alimentación adecuada y actividad física para preservar masa muscular.',
+        ],
+      },
+      {
+        titulo: 'Titulación y administración',
+        parrafos: [
+          'Se inicia con 2,5 mg una vez a la semana durante cuatro semanas y se aumenta a 5 mg; luego puede subirse a 7,5, 10, 12,5 o 15 mg, con incrementos de al menos cuatro semanas. La titulación lenta reduce los efectos gastrointestinales. La inyección es subcutánea, en abdomen, muslo o brazo, rotando el sitio.',
+          'La pluma se conserva refrigerada antes del primer uso y luego según la ficha técnica. Se revisa la técnica y la adherencia. Si se olvida una dosis, se sigue la indicación de la ficha técnica; no se duplica.',
+        ],
+      },
+      {
+        titulo: 'Seguridad y alertas',
+             parrafos: [
+          'Los efectos adversos más frecuentes son náuseas, diarrea, vómito, estreñimiento y dolor abdominal. Se han descrito pancreatitis, colelitiasis, reacciones en el sitio de inyección y hipoglucemia cuando se combina con insulina o sulfonilureas. No se recomienda en antecedente de carcinoma medular de tiroides o MEN2.',
+          'En Colombia, el INVIMA ha alertado sobre productos con tirzepatida sin registro sanitario. El QF debe verificar el registro, la cadena de suministro y la prescripción. La compra por internet o en lugares no autorizados es un riesgo para el paciente.',
+        ],
+      },
+    ],
+    proceso: {
+      titulo: 'Cómo iniciar tirzepatida',
+      pasos: [
+        { titulo: 'Confirmar indicación', detalle: 'Diabetes tipo 2 u obesidad, según la ficha técnica.', icono: 'Target', evidencia: 'Indicación.' },
+        { titulo: 'Revisar seguridad', detalle: 'Tiroides, pancreatitis, embarazo, función renal y medicamentos.', icono: 'ShieldCheck', evidencia: 'Evaluación.' },
+        { titulo: 'Iniciar 2,5 mg', detalle: 'Una vez a la semana durante cuatro semanas.', icono: 'Syringe', evidencia: 'Dosis inicial.' },
+        { titulo: 'Titular', detalle: 'Aumentar cada cuatro semanas según tolerancia.', icono: 'RefreshCw', evidencia: 'Esquema.' },
+        { titulo: 'Seguir', detalle: 'Peso, HbA1c, tolerancia y registro del producto.', icono: 'CalendarClock', evidencia: 'Seguimiento.' },
+      ],
+    },
+    caso: {
+      titulo: 'La pluma comprada por internet',
+      contexto: 'Paciente con obesidad y diabetes trae una pluma de tirzepatida comprada por internet, sin factura ni registro visible. Quiere empezar con 15 mg porque “así baja más rápido”.',
+      pregunta: '¿Qué debe hacer el QF?',
+      opciones: [
+        { texto: 'Aplicarla porque el paciente ya la compró.', correcta: false, retro: 'Un producto sin registro ni cadena de frío verificable es un riesgo. No se debe administrar.' },
+        { texto: 'No administrarla, verificar el registro, explicar la titulación y derivar a una fuente autorizada.', correcta: true, retro: 'La seguridad del producto y la dosis correcta son prioritarias. Se empieza con 2,5 mg y se titula.' },
+        { texto: 'Dividir la dosis de 15 mg para que dure más.', correcta: false, retro: 'Las plumas no están diseñadas para fraccionar dosis y el producto no es verificable.' },
+      ],
+    },
+    errores: [
+      { error: 'Iniciar con dosis altas para perder peso rápido.', correccion: 'Se empieza con 2,5 mg y se titula cada cuatro semanas.' },
+      { error: 'No verificar el registro sanitario.', correccion: 'El INVIMA ha alertado sobre productos falsificados; se verifica la cadena de suministro.' },
+      { error: 'No ajustar insulina o sulfonilurea.', correccion: 'La combinación puede causar hipoglucemia; se ajustan las dosis.' },
+    ],
+    comprueba: [
+      { pregunta: '¿Qué receptores activa la tirzepatida?', respuesta: 'GIP y GLP-1.' },
+      { pregunta: '¿Cómo se titula?', respuesta: '2,5 mg semanales durante cuatro semanas y aumentos graduales.' },
+      { pregunta: '¿Qué alerta regulatoria existe en Colombia?', respuesta: 'Productos con tirzepatida sin registro sanitario.' },
+    ],
+    resumen: [
+      'La tirzepatida es un **agonista dual GIP/GLP-1**.',
+      'Reduce HbA1c y peso, con titulación lenta.',
+      'Se vigilan **gastrointestinales, pancreatitis y tiroides**.',
+      'Verificar el **registro sanitario** es obligatorio.',
+    ],
+    referencias: [
+      { cita: 'AEMPS-CIMA. Ficha técnica de Mounjaro 10 mg/dosis KwikPen solución inyectable en pluma precargada.', url: 'https://cima.aemps.es/cima/dochtml/ft/1221685055/FT_1221685055.html' },
+      { cita: 'American Diabetes Association. Standards of Care in Diabetes—2026. Diabetes Care. 2026;49(Suppl 1).', url: 'https://diabetesjournals.org/care/issue/49/Supplement_1' },
+    ],
+    imagenes: [
+      { ubicacion: 'Sección de titulación', descripcion: 'Escalera de dosis de tirzepatida desde 2,5 hasta 15 mg con intervalos de cuatro semanas.', alt: 'Titulación de tirzepatida' },
+    ],
+    keywords: ['tirzepatida dosis', 'tirzepatida titulación', 'tirzepatida diabetes', 'tirzepatida obesidad', 'tirzepatida efectos secundarios', 'tirzepatida INVIMA', 'agonista dual GIP GLP-1'],
+  },
+  {
+    titulo: 'Cómo elegir entre iSGLT2, agonista GLP-1 y tirzepatida según el perfil del paciente',
+    duracion: 25,
+    gancho: {
+      titulo: 'Tres opciones, un paciente',
+      texto: 'Un hombre de 58 años con diabetes, obesidad, enfermedad coronaria y albuminuria pregunta cuál de los tres fármacos nuevos debe usar. La respuesta no es “el más nuevo” ni “el más caro”: es el que cubre el riesgo dominante, se tolera y se puede sostener. La elección combina evidencia, seguridad, acceso y preferencia.',
+    },
+    objetivos: [
+      'Comparar iSGLT2, GLP-1 y tirzepatida por beneficio y seguridad.',
+      'Seleccionar según enfermedad cardiovascular, insuficiencia cardíaca, ERC y obesidad.',
+      'Reconocer cuándo combinar y cuándo secuenciar.',
+      'Incorporar costo, adherencia y preferencias en la decisión.',
+    ],
+    conceptos: [
+      { icono: 'Activity', termino: 'Riesgo dominante', definicion: 'Problema que más amenaza al paciente: evento cardiovascular, insuficiencia cardíaca, progresión renal u obesidad.' },
+      { icono: 'Layers', termino: 'Combinación', definicion: 'Uso de fármacos con mecanismos complementarios para cubrir varios riesgos.' },
+      { icono: 'Calculator', termino: 'Costo-efectividad', definicion: 'Relación entre el beneficio clínico y el costo; importa para la sostenibilidad del tratamiento.' },
+      { icono: 'Users', termino: 'Preferencia', definicion: 'Lo que el paciente está dispuesto y puede hacer: vía, frecuencia, agujas, horario y costo.' },
+    ],
+    mapa: {
+      centro: 'Elección del fármaco',
+      ramas: [
+        { titulo: 'Corazón', icono: 'Activity', nodos: ['iSGLT2 en IC', 'GLP-1 en aterosclerosis', 'Riesgo cardiovascular'] },
+        { titulo: 'Riñón', icono: 'Droplets', nodos: ['iSGLT2', 'GLP-1 con evidencia', 'Albuminuria'] },
+        { titulo: 'Peso', icono: 'Scale', nodos: ['Tirzepatida', 'Semaglutida', 'Liraglutida'] },
+        { titulo: 'Persona', icono: 'Users', nodos: ['Costo', 'Adherencia', 'Preferencia', 'Tolerancia'] },
+      ],
+    },
+    secciones: [
+      {
+        titulo: 'Empezar por el riesgo dominante',
+        parrafos: [
+          'Si el paciente tiene insuficiencia cardíaca, el iSGLT2 es prioritario. Si tiene enfermedad cardiovascular aterosclerótica, un agonista GLP-1 con evidencia reduce eventos. Si tiene enfermedad renal con albuminuria, el iSGLT2 es la base y algunos GLP-1 añaden beneficio. Si la obesidad es el problema dominante, tirzepatida o semaglutida pueden ser más eficaces para el peso.',
+          'La decisión no se basa en una sola variable. Un paciente puede tener insuficiencia cardíaca, obesidad y albuminuria; en ese caso, la combinación de iSGLT2 y GLP-1 puede ser razonable. La secuencia depende de la urgencia, la tolerancia y el acceso.',
+        ],
+      },
+      {
+        titulo: 'Combinar y secuenciar',
+        parrafos: [
+          'Los iSGLT2 y los GLP-1 tienen mecanismos complementarios. La combinación puede mejorar la glucosa, el peso y los resultados cardiorrenales. Sin embargo, suma efectos adversos, costo y complejidad. Se recomienda iniciar uno, evaluar tolerancia y luego añadir el otro si está indicado.',
+          'La tirzepatida no se combina con otro agonista GLP-1. Si el paciente ya usa semaglutida o liraglutida, el cambio a tirzepatida debe ser una decisión médica, con titulación y seguimiento. La evidencia de combinación con iSGLT2 es favorable, pero requiere vigilancia de volumen y función renal.',
+        ],
+      },
+      {
+        titulo: 'El peso de la realidad',
+        parrafos: [
+          'El costo y la cobertura pueden limitar la elección. Un fármaco no disponible no es una opción, aunque tenga buena evidencia. El QF puede revisar alternativas cubiertas, trámites y programas de acceso. También puede ayudar a priorizar el fármaco con mayor beneficio para el riesgo dominante.',
+          'La preferencia del paciente importa: algunos prefieren una pastilla, otros una inyección semanal, otros evitar las agujas. La educación sobre expectativas, efectos adversos y duración del tratamiento mejora la adherencia. La meta es un plan realista y sostenible.',
+        ],
+      },
+    ],
+    proceso: {
+      titulo: 'Cómo decidir entre las opciones',
+      pasos: [
+        { titulo: 'Definir el riesgo', detalle: 'Cardiovascular, insuficiencia cardíaca, renal y obesidad.', icono: 'ShieldCheck', evidencia: 'Evaluación.' },
+        { titulo: 'Elegir el primero', detalle: 'Fármaco con mayor beneficio para el riesgo dominante.', icono: 'Target', evidencia: 'Selección.' },
+        { titulo: 'Revisar acceso', detalle: 'Costo, cobertura, disponibilidad y trámites.', icono: 'Calculator', evidencia: 'Acceso confirmado.' },
+        { titulo: 'Evaluar tolerancia', detalle: 'Efectos adversos, adherencia y técnica.', icono: 'Users', evidencia: 'Seguimiento.' },
+        { titulo: 'Combinar si hace falta', detalle: 'Añadir el segundo fármaco con seguimiento.', icono: 'Layers', evidencia: 'Plan ajustado.' },
+      ],
+    },
+    caso: {
+      titulo: 'Coronaria, obesidad y albuminuria',
+      contexto: 'Hombre de 58 años, diabetes tipo 2, enfermedad coronaria, IMC 34, albuminuria y HbA1c 8,3 %. Toma metformina y estatina.',
+      pregunta: '¿Qué estrategia es más integral?',
+      opciones: [
+        { texto: 'Solo aumentar metformina.', correcta: false, retro: 'No aborda el riesgo cardiovascular, renal ni el peso.' },
+        { texto: 'Iniciar un GLP-1 con beneficio cardiovascular y considerar un iSGLT2 por la albuminuria; revisar acceso y tolerancia.', correcta: true, retro: 'El GLP-1 cubre el riesgo aterosclerótico y el peso; el iSGLT2 cubre el riñón. La combinación puede ser razonable.' },
+        { texto: 'Tirzepatida sola aunque no haya evidencia cardiovascular específica.', correcta: false, retro: 'La tirzepatida es útil para peso y glucosa, pero en enfermedad coronaria se prefiere un fármaco con evidencia cardiovascular.' },
+      ],
+    },
+    errores: [
+      { error: 'Elegir solo por la HbA1c.', correccion: 'El riesgo cardiovascular, renal y el peso también guían la elección.' },
+      { error: 'Combinar GLP-1 y tirzepatida.', correccion: 'No se combinan; se elige uno.' },
+      { error: 'Ignorar el costo y la cobertura.', correccion: 'Un plan inasequible no se sostiene; hay que buscar alternativas.' },
+    ],
+    comprueba: [
+      { pregunta: '¿Qué fármaco se prioriza en insuficiencia cardíaca?', respuesta: 'Un iSGLT2.' },
+      { pregunta: '¿Qué fármaco se prioriza en obesidad y riesgo cardiovascular?', respuesta: 'Un agonista GLP-1 con evidencia, o tirzepatida según el perfil.' },
+      { pregunta: '¿Se pueden combinar GLP-1 y tirzepatida?', respuesta: 'No; se elige uno de los dos.' },
+    ],
+    resumen: [
+      'La elección empieza por el **riesgo dominante**.',
+      'iSGLT2 y GLP-1 pueden **combinarse** con seguimiento.',
+      'La tirzepatida no se combina con otro GLP-1.',
+      'El costo y la preferencia son parte de la decisión.',
+    ],
+    referencias: [
+      { cita: 'American Diabetes Association. Standards of Care in Diabetes—2026. Diabetes Care. 2026;49(Suppl 1).', url: 'https://diabetesjournals.org/care/issue/49/Supplement_1' },
+      { cita: 'AEMPS-CIMA. Ficha técnica de Jardiance 10 mg comprimidos recubiertos con película.', url: 'https://cima.aemps.es/cima/dochtml/ft/114930014/FT_114930014.html' },
+      { cita: 'AEMPS-CIMA. Ficha técnica de Mounjaro 10 mg/dosis KwikPen solución inyectable en pluma precargada.', url: 'https://cima.aemps.es/cima/dochtml/ft/1221685055/FT_1221685055.html' },
+    ],
+    imagenes: [
+      { ubicacion: 'Sección de decisión', descripcion: 'Matriz de cuatro cuadrantes: corazón, riñón, peso y acceso, con los fármacos recomendados.', alt: 'Cómo elegir entre iSGLT2, GLP-1 y tirzepatida' },
+    ],
+    keywords: ['elegir iSGLT2 o GLP-1', 'tirzepatida vs semaglutida', 'iSGLT2 GLP-1 combinación', 'diabetes obesidad enfermedad cardiovascular', 'albuminuria iSGLT2', 'tratamiento diabetes personalizado', 'curso farmacoterapia diabetes'],
+  },
+  {
+    titulo: 'Caso: inicio de iSGLT2 y agonista GLP-1 en una persona con insuficiencia cardiaca, ERC e insulina',
+    duracion: 25,
+    gancho: {
+      titulo: 'Cuatro enfermedades y una sola consulta',
+      texto: 'Doña Lucía tiene 64 años, diabetes tipo 2, insuficiencia cardíaca, ERC con albuminuria y usa insulina basal. Su HbA1c es 8,4 %, tiene edema leve y ha ganado peso. El caso exige combinar beneficios cardiorrenales, ajustar insulina, revisar volumen y educar. No se resuelve con una sola receta.',
+    },
+    objetivos: [
+      'Integrar iSGLT2, GLP-1 e insulina en un paciente con múltiples comorbilidades.',
+      'Ajustar la insulina y los diuréticos al iniciar nuevos fármacos.',
+      'Prevenir hipoglucemias, deshidratación y cetoacidosis.',
+      'Diseñar un plan de seguimiento y educación realista.',
+    ],
+    conceptos: [
+      { icono: 'Activity', termino: 'Insuficiencia cardíaca', definicion: 'Síndrome con congestión o bajo gasto; los iSGLT2 reducen hospitalizaciones y muerte cardiovascular.' },
+      { icono: 'Droplets', termino: 'ERC', definicion: 'TFG baja o albuminuria; requiere ajuste de fármacos y nefroprotección.' },
+      { icono: 'Syringe', termino: 'Insulina basal', definicion: 'Insulina de acción prolongada que controla la glucosa entre comidas y en ayunas; requiere titulación y educación.' },
+      { icono: 'Layers', termino: 'Combinación', definicion: 'Uso de fármacos con mecanismos complementarios, con revisión de volumen, glucosa y tolerancia.' },
+    ],
+    mapa: {
+      centro: 'Caso complejo',
+      ramas: [
+        { titulo: 'Corazón', icono: 'Activity', nodos: ['iSGLT2', 'Diurético', 'Congestión'] },
+        { titulo: 'Riñón', icono: 'Droplets', nodos: ['TFG', 'Albuminuria', 'Nefroprotección'] },
+        { titulo: 'Glucosa', icono: 'Target', nodos: ['Insulina', 'GLP-1', 'Hipoglucemia'] },
+        { titulo: 'Persona', icono: 'Users', nodos: ['Peso', 'Educación', 'Adherencia'] },
+      ],
+    },
+    secciones: [
+      {
+        titulo: 'El plan inicial',
+        parrafos: [
+          'En una paciente con insuficiencia cardíaca, ERC y albuminuria, el iSGLT2 tiene una indicación clara. El GLP-1 puede añadir beneficio cardiovascular y ayudar con el peso y la glucosa. La insulina basal se ajusta según las glucometrías y el riesgo de hipoglucemia. La combinación debe iniciarse de forma escalonada para distinguir efectos y tolerancia.',
+          'Antes de iniciar, se revisan la TFG, la presión, los diuréticos, el peso y las glucometrías. Se educa sobre cetoacidosis, infecciones, náuseas y hipoglucemia. Se acuerda un plan de seguimiento en dos a cuatro semanas.',
+        ],
+      },
+      {
+        titulo: 'Ajustes que evitan eventos',
+        parrafos: [
+          'El iSGLT2 puede aumentar la diuresis; si la paciente toma furosemida, se revisa la dosis y se vigilan signos de deshidratación. El GLP-1 puede reducir el apetito y la ingesta; si se combina con insulina o sulfonilurea, se reduce el riesgo de hipoglucemia ajustando dosis. La insulina se titula con glucometrías, no con una cifra aislada.',
+          'La educación incluye qué hacer si hay vómito, diarrea o fiebre; cuándo suspender el iSGLT2; cómo tratar una hipoglucemia; y cuándo consultar. El cuidador debe conocer el plan. La adherencia se revisa en cada contacto.',
+        ],
+      },
+      {
+        titulo: 'Seguimiento y metas',
+        parrafos: [
+          'La meta de HbA1c se individualiza. En una paciente con comorbilidad y riesgo de hipoglucemia, una meta menos estricta puede ser más segura. Se revisan peso, presión, TFG, albuminuria, eventos de hipoglucemia y efectos adversos. La revisión de la medicación completa evita duplicidades e interacciones.',
+          'El QF documenta la intervención y la comunica al equipo. Si el acceso a un fármaco es difícil, se busca una alternativa cubierta. La sostenibilidad del plan es parte del éxito clínico.',
+        ],
+      },
+    ],
+    proceso: {
+      titulo: 'Plan de inicio en el paciente complejo',
+      pasos: [
+        { titulo: 'Revisar comorbilidades', detalle: 'Insuficiencia cardíaca, ERC, albuminuria, peso y glucometrías.', icono: 'ClipboardList', evidencia: 'Evaluación.' },
+        { titulo: 'Iniciar iSGLT2', detalle: 'Revisar TFG, volumen y diuréticos.', icono: 'Droplets', evidencia: 'Inicio.' },
+        { titulo: 'Añadir GLP-1', detalle: 'Titular y ajustar insulina si hay riesgo de hipoglucemia.', icono: 'Syringe', evidencia: 'Esquema.' },
+        { titulo: 'Educar', detalle: 'Cetoacidosis, hipoglucemia, volumen y días de enfermedad.', icono: 'Users', evidencia: 'Educación.' },
+        { titulo: 'Seguir', detalle: 'TFG, peso, presión, HbA1c y eventos.', icono: 'CalendarClock', evidencia: 'Seguimiento.' },
+      ],
+    },
+    caso: {
+      titulo: 'Edema y glucemia 210',
+      contexto: 'Lucía, 64 años, insuficiencia cardíaca, ERC, albuminuria, insulina basal 30 UI, HbA1c 8,4 %, edema leve. Se inicia iSGLT2 y GLP-1.',
+      pregunta: '¿Qué revisar en el seguimiento?',
+      opciones: [
+        { texto: 'Solo la HbA1c en tres meses.', correcta: false, retro: 'La HbA1c no detecta hipoglucemias, deshidratación ni progresión renal.' },
+        { texto: 'Peso, presión, TFG, glucometrías, hipoglucemias, tolerancia gastrointestinal y adherencia.', correcta: true, retro: 'El seguimiento debe cubrir corazón, riñón, glucosa y tolerancia.' },
+        { texto: 'Suspender la insulina de inmediato.', correcta: false, retro: 'La insulina se ajusta, no se suspende automáticamente; la paciente puede necesitarla.' },
+      ],
+    },
+    errores: [
+      { error: 'Iniciar todo al mismo tiempo sin seguimiento.', correccion: 'La secuencia escalonada permite evaluar tolerancia y seguridad.' },
+      { error: 'No ajustar diuréticos o insulina.', correccion: 'El iSGLT2 puede deshidratar y el GLP-1 puede reducir la ingesta; se ajustan las dosis.' },
+      { error: 'No educar sobre días de enfermedad.', correccion: 'La suspensión temporal del iSGLT2 evita cetoacidosis.' },
+    ],
+    comprueba: [
+      { pregunta: '¿Por qué iniciar iSGLT2 en insuficiencia cardíaca?', respuesta: 'Porque reduce hospitalizaciones y muerte cardiovascular.' },
+      { pregunta: '¿Qué ajustar al añadir GLP-1?', respuesta: 'La insulina o sulfonilurea, para evitar hipoglucemia, y revisar la ingesta.' },
+      { pregunta: '¿Qué vigilar con el iSGLT2?', respuesta: 'Volumen, función renal, infecciones y cetoacidosis.' },
+    ],
+    resumen: [
+      'La combinación se inicia de forma **escalonada**.',
+      'Se ajustan **insulina y diuréticos** según la respuesta.',
+      'La educación cubre hipoglucemia, cetoacidosis y días de enfermedad.',
+      'El seguimiento es **cardiorrenal y glucémico**.',
+    ],
+    referencias: [
+      { cita: 'American Diabetes Association. Standards of Care in Diabetes—2026. Diabetes Care. 2026;49(Suppl 1).', url: 'https://diabetesjournals.org/care/issue/49/Supplement_1' },
+      { cita: 'AEMPS-CIMA. Ficha técnica de Jardiance 10 mg comprimidos recubiertos con película.', url: 'https://cima.aemps.es/cima/dochtml/ft/114930014/FT_114930014.html' },
+      { cita: 'AEMPS-CIMA. Ficha técnica de Wegovy 0,25 mg FlexTouch solución inyectable en pluma precargada.', url: 'https://cima.aemps.es/cima/dochtml/ft/1211608006/FT_1211608006.html' },
+    ],
+    imagenes: [
+      { ubicacion: 'Sección del caso', descripcion: 'Paciente con edema leve, insulina, iSGLT2 y GLP-1, y un plan de seguimiento con corazón, riñón y glucosa.', alt: 'Caso complejo de diabetes con insuficiencia cardíaca y ERC' },
+    ],
+    keywords: ['caso clínico diabetes insuficiencia cardiaca', 'iSGLT2 GLP-1 insulina', 'ERC albuminuria diabetes', 'cetoacidosis iSGLT2', 'seguimiento farmacoterapéutico diabetes', 'combinación antidiabética', 'curso farmacoterapia diabetes'],
+  },
+];
