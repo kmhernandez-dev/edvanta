@@ -51,6 +51,7 @@ Trabajamos sobre datos: cada cambio visual responde a un hallazgo medido, tiene 
 | H18 | Portadas en tres estilos (IA con persona, plano de marca, 3D) | Imágenes hechas en momentos distintos | Se probó un sistema de portadas generado en código (arco + ícono). **La dueña lo rechazó por genérico (11-nov)**: se restauraron las 97 originales | Revisión de la dueña | Abierto: otra dirección de arte |
 | H19 | Alto del inicio: 8.461 px de filas iguales (meta: 6.800) | Una fila por área, todas con el mismo patrón | Bloques editoriales y filas agrupadas (siguiente entrega) | Inicio 1366: 9.069 px | Abierto |
 | H20 | Párrafos de lectura de menos de 13 px (2–4 por página) | Textos largos en `text-xs` | Revisión por página | — | Abierto |
+| H21 | **Decisión de la dueña (13-nov-2026):** héroe del inicio con la pieza «Estudia gratis y certifica tus conocimientos» | Deja sin efecto H9 solo para el héroe del inicio | Imagen elegida por la dirección, sin el menú dibujado (el encabezado real no cambia); h1 oculto con el mismo texto, enlace sobre el botón dibujado y botón real en el celular. `og-edvanta.png` sigue sin personas | Revisión visual | Cerrado |
 
 ## Mediciones posteriores
 
