@@ -82,6 +82,17 @@ export async function republicarAprobadas(db, { now = new Date(), log = () => {}
         'UPDATE aula_republicaciones_aprobadas SET publicado_at = $2, version_id = $3, error = NULL WHERE id = $1',
         [p.id, now, version.id],
       );
+      // Quien ya estaba matriculado pasa a la versión recién publicada:
+      // los textos y experiencias nuevos deben verse en el aula, no solo
+      // en la página pública. El avance se conserva porque las clases
+      // mantienen su id.
+      await db.query(
+        `UPDATE aula_enrollments
+            SET course_version_id = $2, updated_at = $3
+          WHERE course_id = $1 AND withdrawn_at IS NULL
+            AND course_version_id IS DISTINCT FROM $2`,
+        [p.course_id, version.id, now],
+      );
       hechos.push(p.course_id);
       log({ msg: 'Nueva versión aprobada publicada', courseId: p.course_id, title: p.title, version: version.number });
     } catch (err) {
