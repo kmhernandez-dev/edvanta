@@ -45,6 +45,7 @@ Monografías para profesionales de la salud, revisadas por una química farmacé
 - [Medicamentos oncológicos de alto costo](https://edvanta.co/vademecum/medicamentos-oncologicos-de-alto-costo): trastuzumab, imatinib, pembrolizumab.
 - [Medicamentos para la dislipidemia](https://edvanta.co/vademecum/medicamentos-para-la-dislipidemia): atorvastatina, rosuvastatina, ezetimiba.
 - [Medicamentos anticoagulantes](https://edvanta.co/vademecum/medicamentos-anticoagulantes): warfarina, apixabán, rivaroxabán.
+- [Antibióticos de uso ambulatorio](https://edvanta.co/vademecum/antibioticos-de-uso-ambulatorio): amoxicilina con ácido clavulánico, cefalexina, clindamicina, ciprofloxacino, metronidazol, trimetoprim/sulfametoxazol, nitrofurantoína.
 
 ## Transparencia
 

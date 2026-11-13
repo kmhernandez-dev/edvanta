@@ -23,7 +23,8 @@ describe('vademécum', () => {
         'medicamentos-para-la-dislipidemia',
         'medicamentos-para-la-hipertension-arterial',
         'medicamentos-para-la-obesidad',
-      ],
+        'antibioticos-de-uso-ambulatorio',
+      ].sort(),
     );
     expect(MONOGRAFIAS.map((m) => m.slug).sort()).toEqual(
       [
@@ -31,7 +32,9 @@ describe('vademécum', () => {
         'imatinib', 'liraglutida', 'losartan', 'metformina', 'naltrexona-bupropion', 'orlistat',
         'pembrolizumab', 'rivaroxaban', 'rosuvastatina', 'semaglutida', 'setmelanotida', 'sitagliptina', 'tirzepatida',
         'trastuzumab', 'warfarina',
-      ],
+        'amoxicilina-acido-clavulanico', 'cefalexina', 'ciprofloxacino', 'clindamicina', 'metronidazol',
+        'nitrofurantoina', 'trimetoprim-sulfametoxazol',
+      ].sort(),
     );
     const slugs = PAGINAS_VADEMECUM.map((p) => p.slug);
     expect(new Set(slugs).size).toBe(slugs.length);

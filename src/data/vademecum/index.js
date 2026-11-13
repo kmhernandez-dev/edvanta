@@ -47,10 +47,18 @@ import ezetimiba from './monografias/ezetimiba.js';
 import warfarina from './monografias/warfarina.js';
 import apixaban from './monografias/apixaban.js';
 import rivaroxaban from './monografias/rivaroxaban.js';
+import antibioticos from './grupos/antibioticos.js';
+import amoxicilinaAcidoClavulanico from './monografias/amoxicilina-acido-clavulanico.js';
+import cefalexina from './monografias/cefalexina.js';
+import clindamicina from './monografias/clindamicina.js';
+import ciprofloxacino from './monografias/ciprofloxacino.js';
+import metronidazol from './monografias/metronidazol.js';
+import trimetoprimSulfametoxazol from './monografias/trimetoprim-sulfametoxazol.js';
+import nitrofurantoina from './monografias/nitrofurantoina.js';
 
 const conRevision = (p) => ({ ...p, ...(REVISION_VADEMECUM[p.slug] || {}) });
 
-export const GRUPOS_VADEMECUM = [obesidad, hipertension, diabetes, oncologiaAltoCosto, dislipidemia, anticoagulacion].map(conRevision);
+export const GRUPOS_VADEMECUM = [obesidad, hipertension, diabetes, oncologiaAltoCosto, dislipidemia, anticoagulacion, antibioticos].map(conRevision);
 
 export const MONOGRAFIAS = [
   semaglutida, tirzepatida, liraglutida, orlistat, naltrexonaBupropion, setmelanotida,
@@ -59,6 +67,7 @@ export const MONOGRAFIAS = [
   trastuzumab, imatinib, pembrolizumab,
   atorvastatina, rosuvastatina, ezetimiba,
   warfarina, apixaban, rivaroxaban,
+  amoxicilinaAcidoClavulanico, cefalexina, clindamicina, ciprofloxacino, metronidazol, trimetoprimSulfametoxazol, nitrofurantoina,
 ].map(conRevision);
 
 export const PAGINAS_VADEMECUM = [...GRUPOS_VADEMECUM, ...MONOGRAFIAS];

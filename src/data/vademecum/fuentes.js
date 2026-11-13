@@ -25,6 +25,10 @@ const dailymed = (producto, setid, actualizado) => ({
   url: `https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=${setid}`,
 });
 const pubmed = (texto, pmid) => ({ texto, url: `https://pubmed.ncbi.nlm.nih.gov/${pmid}/` });
+const pubchem = (compuesto, cid) => ({
+  texto: `National Center for Biotechnology Information. PubChem Compound Summary for CID ${cid}, ${compuesto} [Internet]. Bethesda (MD): National Library of Medicine (US); [${CITADO}]. Disponible en: https://pubchem.ncbi.nlm.nih.gov/compound/${cid}`,
+  url: `https://pubchem.ncbi.nlm.nih.gov/compound/${cid}`,
+});
 
 export const F = {
   // ── Fichas técnicas (CIMA) y etiquetas de la FDA (DailyMed) ──
@@ -187,4 +191,28 @@ export const F = {
   strand1990: pubmed('Strand LM, Morley PC, Cipolle RJ, Ramsey R, Lamsam GD. Drug-related problems: their structure and function. DICP. 1990;24(11):1093-7. doi:10.1177/106002809002401114', 2275235),
   ramalho2012: pubmed("Ramalho-de Oliveira D, Shoemaker SJ, Ekstrand M, Alves MR. Preventing and resolving drug therapy problems by understanding patients' medication experiences. J Am Pharm Assoc (2003). 2012;52(1):71-80. doi:10.1331/JAPhA.2012.10239", 22257619),
   ramalho2010: pubmed('Ramalho de Oliveira D, Brummel AR, Miller DB. Medication therapy management: 10 years of experience in a large integrated health care system. J Manag Care Pharm. 2010;16(3):185-95. doi:10.18553/jmcp.2010.16.3.185', 20331323),
+
+  // ── Antibióticos de uso ambulatorio (13-nov-2026) ──
+  ftMetronidazol: ft('Metronidazol Normon 250 mg comprimidos EFG', '62223'),
+  ftAmoxiClav: ft('Amoxicilina/Ácido clavulánico Normon 500 mg/125 mg comprimidos recubiertos con película EFG', '70189'),
+  ftSeptrin: ft('Septrin 80 mg/400 mg comprimidos', '58501'),
+  ftFurantoina: ft('Furantoína 50 mg comprimidos', '22974'),
+  ftCiprofloxacino: ft('Ciprofloxacino Normon comprimidos recubiertos con película EFG', '62300'),
+  ftDalacin: ft('Dalacin 150 mg cápsulas duras', '49152'),
+  dmCefalexina: dailymed('Cephalexin capsule', '2506895d-f3e0-4be9-95cb-7a6fd44de46d', '9 nov 2026'),
+  dmFlagyl: dailymed('Flagyl (metronidazole) capsule', 'a2883ca1-5a9a-4259-9d80-46ab67274384', '25 may 2026'),
+  dmAugmentin: dailymed('Augmentin (amoxicillin and clavulanate potassium) for suspension', '04a31a42-d79e-bbb4-e063-6394a90a63ee', '29 oct 2026'),
+  dmBactrim: dailymed('Bactrim DS (sulfamethoxazole and trimethoprim) tablet', 'f59d0c04-9c66-4d53-a0e1-cb55570deb62', '1 ene 2025'),
+  dmCiprofloxacino: dailymed('Ciprofloxacin tablet, film coated', '74e2dd24-5c6e-4dde-a2ab-f2d2e61734d8', '9 nov 2026'),
+  dmMacrobid: dailymed('Macrobid (nitrofurantoin monohydrate/macrocrystalline) capsule', '8f270a9f-12a1-44d4-bc7e-873613555801', '12 oct 2026'),
+  dmCleocin: dailymed('Cleocin Phosphate (clindamycin phosphate) injection, solution', '184acaee-6129-479e-850f-d89575b8b391', '29 oct 2026'),
+  pubchemMetronidazol: pubchem('Metronidazole', 4173),
+  pubchemCefalexina: pubchem('Cephalexin', 27447),
+  pubchemAmoxicilina: pubchem('Amoxicillin', 33613),
+  pubchemClavulanico: pubchem('Clavulanic acid', 5280980),
+  pubchemSulfametoxazol: pubchem('Sulfamethoxazole', 5329),
+  pubchemTrimetoprim: pubchem('Trimethoprim', 5578),
+  pubchemNitrofurantoina: pubchem('Nitrofurantoin', 6604200),
+  pubchemCiprofloxacino: pubchem('Ciprofloxacin', 2764),
+  pubchemClindamicina: pubchem('Clindamycin', 446598),
 };
