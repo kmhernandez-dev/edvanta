@@ -14,7 +14,7 @@ Este archivo evita que dos agentes (Claude Code y Open Code) escriban el mismo m
 
 | Grupo (ATC) | Agente | Desde | Plan de keywords | Estado |
 |---|---|---|---|---|
-| Antimicrobianos: antibacterianos sistémicos (J01) y nitroimidazoles (P01AB) | Claude Code | 13-nov-2026 | `seo/vademecum-antimicrobianos.md` y `seo/vademecum-antimicrobianos-2000-keywords.csv` | Lote 1 revisado por Karla y desplegado el 13-nov: 7 fichas `/articulos/[dci]-para-que-sirve` y el grupo del vademécum `antibioticos-de-uso-ambulatorio` con 7 monografías, indexables. Sigue el lote 2 |
+| Antimicrobianos: antibacterianos sistémicos (J01) y nitroimidazoles (P01AB) | Claude Code | 13-nov-2026 | `seo/vademecum-antimicrobianos.md` y `seo/vademecum-antimicrobianos-2000-keywords.csv` | Lote 1 revisado por Karla y desplegado el 13-nov (15 páginas indexables). Lote 2 escrito: 8 fichas y 7 clases de antibióticos, en noindex hasta la revisión de Karla. Sigue el lote 3 |
 | Antihipertensivos (C02, C03, C07, C08, C09) | Claude Code | 12-nov-2026 | Grupo de presión alta en `seo/plan-1000-keywords.md` | 8 artículos aprobados por Karla (12-nov) e indexables |
 | _Libre para Open Code_ | Open Code | — | — | Anotar aquí el grupo elegido |
 

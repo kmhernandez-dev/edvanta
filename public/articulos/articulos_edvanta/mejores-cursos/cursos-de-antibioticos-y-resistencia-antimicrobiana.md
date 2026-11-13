@@ -39,6 +39,18 @@ En algunos cursos de Coursera puedes ver parte o todo el material sin pagar; el 
 4. **Agrega farmacocinética clínica** si vas a ajustar dosis en el hospital.
 5. **Lee la dimensión social:** la resistencia no se resuelve solo con prescripción; también influyen el acceso, la cultura y la comunicación.
 
+## Clases de antibióticos para estudiar
+
+Antes o después del curso, estas guías ordenan las familias y los mecanismos:
+
+- [Betalactámicos: clasificación y mecanismo](/articulos/betalactamicos-clasificacion)
+- [Penicilinas: tipos, espectro y usos](/articulos/penicilinas-tipos-y-usos)
+- [Cefalosporinas: generaciones, espectro y usos](/articulos/cefalosporinas-generaciones)
+- [Macrólidos: mecanismo, espectro e interacciones](/articulos/macrolidos-antibioticos)
+- [Quinolonas: mecanismo, espectro y seguridad](/articulos/quinolonas-antibioticos)
+- [Tetraciclinas: mecanismo, espectro y precauciones](/articulos/tetraciclinas-antibioticos)
+- [Nitroimidazoles: metronidazol y secnidazol](/articulos/nitroimidazoles-metronidazol-secnidazol)
+
 ## Formación de Edvanta que lo complementa
 
 - La guía [Stewardship farmacéutico (PROA)](/guia/stewardship-farmaceutico-proa), con el trabajo del químico farmacéutico en estos programas.

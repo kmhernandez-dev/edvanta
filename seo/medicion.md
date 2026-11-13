@@ -141,3 +141,4 @@ Se anota una fila nueva en las tablas de arriba. El indicador principal es **pá
 - **Sitemap:** 664 URLs (186 páginas, 468 artículos, 10 herramientas), con las 15 páginas nuevas ya incluidas.
 - **IndexNow:** 17 URLs enviadas a Bing (HTTP 200): las 15 nuevas más amoxicilina y azitromicina por los CTA profesionales añadidos.
 - **Pendiente en Search Console:** las 15 páginas nuevas y las correcciones de datos estructurados. La cuota de solicitudes seguía agotada el 13-nov por la mañana; se reintenta en la ventana de 24 horas.
+- **Lote 2 y clases:** 8 fichas nuevas de antimicrobianos (secnidazol, dicloxacilina, claritromicina, ceftriaxona, penicilina benzatínica, levofloxacino, doxiciclina y fosfomicina) y 7 clases de antibióticos. Son 15 páginas en `noindex` hasta la revisión clínica de Karla; el build queda en 465 artículos y 15 noindex por revisión.

@@ -203,6 +203,16 @@ El curso de [Farmacología clínica de Edutin](https://edutin.com/sh-7429) profu
 - [ ] Documentar intervención
 - [ ] Comunicar recomendaciones al prescriptor
 
+## Clases de antibióticos
+
+- [Betalactámicos: clasificación y mecanismo](/articulos/betalactamicos-clasificacion)
+- [Penicilinas: tipos, espectro y usos](/articulos/penicilinas-tipos-y-usos)
+- [Cefalosporinas: generaciones, espectro y usos](/articulos/cefalosporinas-generaciones)
+- [Macrólidos: mecanismo, espectro e interacciones](/articulos/macrolidos-antibioticos)
+- [Quinolonas: mecanismo, espectro y seguridad](/articulos/quinolonas-antibioticos)
+- [Tetraciclinas: mecanismo, espectro y precauciones](/articulos/tetraciclinas-antibioticos)
+- [Nitroimidazoles: metronidazol y secnidazol](/articulos/nitroimidazoles-metronidazol-secnidazol)
+
 ## Artículos relacionados
 
 - [Ajuste de fármacos en insuficiencia renal](/articulos/insuficiencia-renal-ajuste-farmacos)

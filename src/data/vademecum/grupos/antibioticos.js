@@ -107,6 +107,13 @@ export default {
   enlaces: [
     ['Amoxicilina: para qué sirve', '/articulos/amoxicilina-para-que-sirve'],
     ['Azitromicina: para qué sirve', '/articulos/azitromicina-para-que-sirve'],
+    ['Cefalosporinas: generaciones, espectro y usos', '/articulos/cefalosporinas-generaciones'],
+    ['Penicilinas: tipos, espectro y usos', '/articulos/penicilinas-tipos-y-usos'],
+    ['Macrólidos: mecanismo, espectro e interacciones', '/articulos/macrolidos-antibioticos'],
+    ['Quinolonas: mecanismo, espectro y seguridad', '/articulos/quinolonas-antibioticos'],
+    ['Tetraciclinas: mecanismo, espectro y precauciones', '/articulos/tetraciclinas-antibioticos'],
+    ['Nitroimidazoles: metronidazol y secnidazol', '/articulos/nitroimidazoles-metronidazol-secnidazol'],
+    ['Betalactámicos: clasificación y mecanismo', '/articulos/betalactamicos-clasificacion'],
     ['Uso racional de antibióticos: el rol del farmacéutico clínico', '/articulos/antibioticos-uso-racional-resistencia'],
     ['Cursos de antibióticos y resistencia antimicrobiana', '/articulos/cursos-de-antibioticos-y-resistencia-antimicrobiana'],
   ],
