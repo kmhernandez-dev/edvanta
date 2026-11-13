@@ -1,5 +1,5 @@
 -- ============================================================
---  119_experiencias_validaciones.sql — Experiencias de clase: Validaciones y Calificaciones en la Industria Farmacéutica
+--  120_experiencias_validaciones.sql — Experiencias de clase: Validaciones y Calificaciones en la Industria Farmacéutica
 --
 --  Generado por scripts/generar-migracion-experiencias.mjs validaciones
 --  a partir de contenido/experiencias/validaciones. No editar a mano.
@@ -222,7 +222,7 @@ BEGIN
 
   IF v_n > 0 THEN
     INSERT INTO aula_republicaciones_aprobadas (course_id, aprobado_por, nota)
-    SELECT v_curso, 'Dirección académica de Edvanta', 'Clases ampliadas con experiencia interactiva (119_experiencias_validaciones.sql).'
+    SELECT v_curso, 'Dirección académica de Edvanta', 'Clases ampliadas con experiencia interactiva (120_experiencias_validaciones.sql).'
      WHERE EXISTS (SELECT 1 FROM aula_courses WHERE id = v_curso AND current_version_id IS NOT NULL);
   END IF;
 

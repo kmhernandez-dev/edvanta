@@ -1,5 +1,5 @@
 -- ============================================================
---  118_aula_bloque_experiencia.sql — Bloque «experiencia de clase»
+--  119_aula_bloque_experiencia.sql — Bloque «experiencia de clase»
 --
 --  Un bloque nuevo guarda la clase completa como datos estructurados:
 --  situación inicial, objetivos, conceptos con icono, mapa conceptual,

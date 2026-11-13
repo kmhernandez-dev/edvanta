@@ -7,8 +7,9 @@
  * <clave> es una carpeta de contenido/experiencias con un index.mjs que
  * exporta:
  *   CURSO     título exacto del curso en aula_courses
- *   MIGRACION nombre del archivo (por ejemplo '119_experiencias_validaciones.sql')
- *   CLASES    [{ titulo: <título exacto de la clase>, ...experiencia }]
+ *   MIGRACION nombre del archivo (por ejemplo '120_experiencias_validaciones.sql')
+ *   CLASES    [{ titulo: <título exacto de la clase>, unidad?: <título exacto
+ *             de la unidad, obligatorio si el título se repite>, ...experiencia }]
  *
  * Cada clase se valida con leerExperiencia (la misma regla del servidor)
  * y debe tener 3.000 caracteres de lectura o más.
@@ -41,10 +42,13 @@ const MINIMO = 3000;
 
 const errores = [];
 const titulos = new Set();
-const filas = CLASES.map(({ titulo, ...exp }, i) => {
+const repetidos = new Set(CLASES.map((c) => c.titulo).filter((t, i, a) => a.indexOf(t) !== i));
+const filas = CLASES.map(({ titulo, unidad, ...exp }, i) => {
   if (!titulo) errores.push(`Clase ${i + 1}: falta el título.`);
-  if (titulos.has(titulo)) errores.push(`Clase repetida: ${titulo}`);
-  titulos.add(titulo);
+  if (repetidos.has(titulo) && !unidad) errores.push(`«${titulo}» se repite: indica su unidad.`);
+  const clave = `${unidad || ''}|${titulo}`;
+  if (titulos.has(clave)) errores.push(`Clase repetida: ${titulo}`);
+  titulos.add(clave);
   let datos = null;
   try {
     datos = leerExperiencia(exp);
@@ -54,7 +58,7 @@ const filas = CLASES.map(({ titulo, ...exp }, i) => {
   }
   const n = caracteresDeExperiencia(datos);
   if (n < MINIMO) errores.push(`«${titulo}»: ${n} caracteres de lectura; la meta es ${MINIMO}.`);
-  return { titulo, datos, n };
+  return { titulo, unidad, datos, n };
 }).filter(Boolean);
 
 const total = filas.reduce((s, f) => s + f.n, 0);
@@ -74,9 +78,14 @@ const literal = (texto, etiqueta) => {
 const bloques = filas.map((f, i) => `
   -- ${String(i + 1).padStart(2, '0')}. ${f.titulo.replaceAll('\n', ' ')}
   v_data := ${literal(JSON.stringify(f.datos), 'j')}::jsonb;
-  SELECT id INTO v_clase FROM aula_lessons
+  ${f.unidad
+    ? `SELECT l.id INTO v_clase FROM aula_lessons l
+    JOIN aula_modules m ON m.id = l.module_id AND m.deleted_at IS NULL
+   WHERE l.course_id = v_curso AND l.title = ${literal(f.titulo, 't')} AND m.title = ${literal(f.unidad, 'u')} AND l.deleted_at IS NULL
+   ORDER BY l.id LIMIT 1;`
+    : `SELECT id INTO v_clase FROM aula_lessons
    WHERE course_id = v_curso AND title = ${literal(f.titulo, 't')} AND deleted_at IS NULL
-   ORDER BY id LIMIT 1;
+   ORDER BY id LIMIT 1;`}
   IF v_clase IS NULL THEN
     RAISE NOTICE 'Experiencias: no está la clase %. Se salta.', ${literal(f.titulo, 't')};
   ELSIF EXISTS (SELECT 1 FROM aula_lesson_blocks WHERE lesson_id = v_clase AND type = 'experiencia' AND deleted_at IS NULL) THEN

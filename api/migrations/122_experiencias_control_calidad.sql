@@ -1,5 +1,5 @@
 -- ============================================================
---  121_experiencias_control_calidad.sql — Experiencias de clase: Curso de Control de Calidad de Medicamentos
+--  122_experiencias_control_calidad.sql — Experiencias de clase: Curso de Control de Calidad de Medicamentos
 --
 --  Generado por scripts/generar-migracion-experiencias.mjs control-calidad
 --  a partir de contenido/experiencias/control-calidad. No editar a mano.
@@ -768,7 +768,7 @@ BEGIN
 
   IF v_n > 0 THEN
     INSERT INTO aula_republicaciones_aprobadas (course_id, aprobado_por, nota)
-    SELECT v_curso, 'Dirección académica de Edvanta', 'Clases ampliadas con experiencia interactiva (121_experiencias_control_calidad.sql).'
+    SELECT v_curso, 'Dirección académica de Edvanta', 'Clases ampliadas con experiencia interactiva (122_experiencias_control_calidad.sql).'
      WHERE EXISTS (SELECT 1 FROM aula_courses WHERE id = v_curso AND current_version_id IS NOT NULL);
   END IF;
 

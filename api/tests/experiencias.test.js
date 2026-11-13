@@ -87,7 +87,7 @@ describe('bloque experiencia', () => {
   });
 
   it.each(PAQUETES.map((p) => [p.clave, p]))('cada clase de %s pasa la validación y supera 3.000 caracteres de lectura', (_clave, paquete) => {
-    for (const { titulo, ...exp } of paquete.CLASES) {
+    for (const { titulo, unidad: _unidad, ...exp } of paquete.CLASES) {
       const d = leerExperiencia(exp);
       expect(caracteresDeExperiencia(d), titulo).toBeGreaterThanOrEqual(3000);
       expect(d.referencias.length, titulo).toBeGreaterThan(0);
@@ -162,20 +162,23 @@ describe('migraciones de experiencias y clases abiertas', () => {
     const id = await cursoId(paquete.CURSO);
     expect(id, paquete.CURSO).toBeTruthy();
     const filas = await many(db, `
-      SELECT l.title, count(b.id)::int AS n
+      SELECT l.id, l.title, m.title AS unidad, count(b.id)::int AS n
         FROM aula_lessons l
+        JOIN aula_modules m ON m.id = l.module_id
         LEFT JOIN aula_lesson_blocks b ON b.lesson_id = l.id AND b.type = 'experiencia' AND b.deleted_at IS NULL
        WHERE l.course_id = $1 AND l.deleted_at IS NULL
-       GROUP BY l.title`, [id]);
-    const porTitulo = new Map(filas.map((f) => [f.title, f.n]));
-    for (const c of paquete.CLASES) expect(porTitulo.get(c.titulo), c.titulo).toBe(1);
+       GROUP BY l.id, l.title, m.title`, [id]);
+    for (const c of paquete.CLASES) {
+      const f = filas.find((x) => x.title === c.titulo && (!c.unidad || x.unidad === c.unidad));
+      expect(f?.n, `${c.unidad || ''} ${c.titulo}`).toBe(1);
+    }
     const [v] = await many(db, 'SELECT v.snapshot FROM aula_courses c JOIN aula_course_versions v ON v.id = c.current_version_id WHERE c.id = $1', [id]);
     const publicadas = v.snapshot.modules.flatMap((m) => m.lessons).filter((l) => l.blocks.some((b) => b.type === 'experiencia'));
     expect(publicadas).toHaveLength(paquete.CLASES.length);
   });
 
   it('volver a aplicar la migración actualiza sin duplicar', async () => {
-    const f = readdirSync(dir).find((x) => x.startsWith('119_'));
+    const f = readdirSync(dir).find((x) => x.endsWith('_experiencias_validaciones.sql'));
     await pglite.exec(cleanMigrationSql(readFileSync(path.join(dir, f), 'utf8')));
     const id = await cursoId(CURSO_VALIDACIONES);
     const [{ n }] = await many(db, `

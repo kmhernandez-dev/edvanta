@@ -5,7 +5,7 @@
 import { REF } from '../referencias.mjs';
 
 export const CURSO = 'Validaciones y Calificaciones en la Industria Farmacéutica';
-export const MIGRACION = '119_experiencias_validaciones.sql';
+export const MIGRACION = '120_experiencias_validaciones.sql';
 
 export const CLASES = [
   // ── Unidad 1 · Calificar y validar no es lo mismo ─────────────

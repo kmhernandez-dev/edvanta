@@ -1,5 +1,5 @@
 -- ============================================================
---  120_experiencias_bpm.sql — Experiencias de clase: Curso de Buenas Prácticas de Manufactura — BPM
+--  121_experiencias_bpm.sql — Experiencias de clase: Curso de Buenas Prácticas de Manufactura — BPM
 --
 --  Generado por scripts/generar-migracion-experiencias.mjs bpm
 --  a partir de contenido/experiencias/bpm. No editar a mano.
@@ -768,7 +768,7 @@ BEGIN
 
   IF v_n > 0 THEN
     INSERT INTO aula_republicaciones_aprobadas (course_id, aprobado_por, nota)
-    SELECT v_curso, 'Dirección académica de Edvanta', 'Clases ampliadas con experiencia interactiva (120_experiencias_bpm.sql).'
+    SELECT v_curso, 'Dirección académica de Edvanta', 'Clases ampliadas con experiencia interactiva (121_experiencias_bpm.sql).'
      WHERE EXISTS (SELECT 1 FROM aula_courses WHERE id = v_curso AND current_version_id IS NOT NULL);
   END IF;
 
