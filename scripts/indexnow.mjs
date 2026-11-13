@@ -15,6 +15,8 @@
  *    node scripts/indexnow.mjs                 todas las direcciones
  *    node scripts/indexnow.mjs --desde=2026-11-12   solo las cambiadas desde esa fecha
  *    node scripts/indexnow.mjs --prueba        lista sin enviar
+ *    node scripts/indexnow.mjs --rutas=/vademecum/x,/articulos/y   solo esas direcciones
+ *                                              (deben estar en el sitemap, es decir, indexables)
  * ============================================================
  */
 
@@ -22,6 +24,8 @@ const SITIO = 'https://edvanta.co';
 const CLAVE = '99b4cfa71602533ad5100d7977e420fa';
 const prueba = process.argv.includes('--prueba');
 const desde = (process.argv.find((a) => a.startsWith('--desde=')) || '').slice('--desde='.length) || null;
+const rutas = (process.argv.find((a) => a.startsWith('--rutas=')) || '').slice('--rutas='.length)
+  .split(',').map((r) => r.trim()).filter(Boolean).map((r) => (r.startsWith('http') ? r : `${SITIO}${r}`));
 
 async function leer(url) {
   const r = await fetch(url, { headers: { 'User-Agent': 'edvanta-indexnow' }, signal: AbortSignal.timeout(20000) });
@@ -47,7 +51,14 @@ if (clave !== CLAVE) throw new Error('La clave publicada no coincide: despliega 
 
 let lista = await direccionesDe(`${SITIO}/sitemap-index.xml`);
 if (desde) lista = lista.filter((d) => !d.lastmod || d.lastmod.slice(0, 10) >= desde);
-const urls = [...new Set(lista.map((d) => d.loc))];
+let urls = [...new Set(lista.map((d) => d.loc))];
+if (rutas.length) {
+  // Solo se avisa de direcciones que el sitemap ya publica (indexables).
+  const enSitemap = new Set(urls);
+  const fuera = rutas.filter((u) => !enSitemap.has(u));
+  if (fuera.length) throw new Error(`No están en el sitemap (¿noindex o sin desplegar?): ${fuera.join(', ')}`);
+  urls = rutas;
+}
 console.log(`Direcciones: ${urls.length}${desde ? ` (cambiadas desde ${desde})` : ''}`);
 
 if (prueba) {

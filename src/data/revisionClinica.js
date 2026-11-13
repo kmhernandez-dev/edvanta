@@ -242,9 +242,27 @@ const REVISADOS_POR_KARLA_2026_11_12 = [
   'medicamentos-para-la-presion-alta',
 ];
 
+/**
+ * 13 de noviembre de 2026: Karla revisó el lote 1 de antimicrobianos (7 fichas
+ * para pacientes y el grupo de antibióticos del vademécum con 7 monografías)
+ * y respondió por escrito: «Revisadas, apruebo todo».
+ */
+const KARLA_2026_11_13 = { ...KARLA_2026_11_09, reviewedAt: '2026-11-13' };
+
+const REVISADOS_POR_KARLA_2026_11_13 = [
+  'metronidazol-para-que-sirve',
+  'cefalexina-para-que-sirve',
+  'amoxicilina-con-acido-clavulanico-para-que-sirve',
+  'trimetoprim-sulfametoxazol-para-que-sirve',
+  'nitrofurantoina-para-que-sirve',
+  'ciprofloxacino-para-que-sirve',
+  'clindamicina-para-que-sirve',
+];
+
 export const REVISION_CLINICA = Object.fromEntries([
   ...REVISADOS_POR_KARLA_2026_11_09.map((slug) => [slug, KARLA_2026_11_09]),
   ...REVISADOS_POR_KARLA_2026_11_12.map((slug) => [slug, KARLA_2026_11_12]),
+  ...REVISADOS_POR_KARLA_2026_11_13.map((slug) => [slug, KARLA_2026_11_13]),
 ]);
 
 /**
@@ -277,4 +295,9 @@ export const REVISION_VADEMECUM = Object.fromEntries([
   'trastuzumab', 'imatinib', 'pembrolizumab',
   'atorvastatina', 'rosuvastatina', 'ezetimiba',
   'warfarina', 'apixaban', 'rivaroxaban',
-].map((slug) => [slug, KARLA_2026_11_12]));
+].map((slug) => [slug, KARLA_2026_11_12]).concat([
+  // 13-nov-2026: grupo de antibióticos y sus 7 monografías («Revisadas, apruebo todo»).
+  'antibioticos-de-uso-ambulatorio',
+  'amoxicilina-acido-clavulanico', 'cefalexina', 'clindamicina', 'ciprofloxacino', 'metronidazol',
+  'trimetoprim-sulfametoxazol', 'nitrofurantoina',
+].map((slug) => [slug, KARLA_2026_11_13])));
