@@ -1,0 +1,65 @@
+-- 118_portadas_editoriales_2026.sql
+-- Portadas editoriales entregadas por la propietaria para los cursos propios.
+-- Una URL versionada evita que el navegador conserve la portada anterior.
+
+UPDATE aula_courses AS c
+   SET cover_url = v.url,
+       updated_at = now()
+  FROM (VALUES
+    ('Asuntos Regulatorios Sanitarios ante INVIMA',                              '/img/cursos/portadas-2026/asuntos-regulatorios-invima.webp'),
+    ('Curso de Bioequivalencia y Requisitos Regulatorios en Colombia',            '/img/cursos/portadas-2026/bioequivalencia.webp'),
+    ('Curso de Elaboración de Dossiers Farmacéuticos',                            '/img/cursos/portadas-2026/dossiers-farmaceuticos.webp'),
+    ('Curso de Estudios de Estabilidad para el Registro de Medicamentos',         '/img/cursos/portadas-2026/estudios-estabilidad.webp'),
+    ('Curso de Etiquetado e Insertos de Medicamentos',                            '/img/cursos/portadas-2026/etiquetado-insertos.webp'),
+    ('Curso de Gestión Documental de Trámites ante el INVIMA',                    '/img/cursos/portadas-2026/gestion-documental-invima.webp'),
+    ('Curso de Modificaciones al Registro Sanitario de Medicamentos',             '/img/cursos/portadas-2026/modificaciones-registro-sanitario.webp'),
+    ('Curso de Renovación de Registros Sanitarios de Medicamentos',               '/img/cursos/portadas-2026/renovacion-registros-sanitarios.webp'),
+    ('Curso de Respuesta a Requerimientos del INVIMA',                            '/img/cursos/portadas-2026/respuesta-requerimientos-invima.webp'),
+    ('Curso de Asuntos Regulatorios de Radiofármacos',                            '/img/cursos/portadas-2026/radiofarmacos.webp'),
+    ('Curso de Importación de Medicamentos Vitales No Disponibles',               '/img/cursos/portadas-2026/vitales-no-disponibles.webp'),
+    ('Curso de Registro Sanitario de Medicamentos Biológicos',                    '/img/cursos/portadas-2026/medicamentos-biologicos.webp'),
+    ('Curso de Registro Sanitario de Productos Fitoterapéuticos',                 '/img/cursos/portadas-2026/fitoterapeuticos.webp'),
+    ('Curso de Registro Sanitario de Suplementos Dietarios',                      '/img/cursos/portadas-2026/suplementos-dietarios.webp'),
+    ('Curso de Registro Sanitario de Vacunas',                                    '/img/cursos/portadas-2026/vacunas.webp'),
+    ('Curso de Regulación Sanitaria de Gases Medicinales',                        '/img/cursos/portadas-2026/gases-medicinales.webp'),
+    ('Curso de Regulación Sanitaria del Cannabis Medicinal en Colombia',          '/img/cursos/portadas-2026/cannabis-medicinal.webp'),
+    ('Curso de Regulación de Medicamentos Biosimilares',                          '/img/cursos/portadas-2026/biosimilares.webp'),
+    ('Curso de Regulación de Medicamentos Homeopáticos',                          '/img/cursos/portadas-2026/homeopaticos.webp'),
+    ('Curso de Aseguramiento de la Calidad Farmacéutica',                         '/img/cursos/portadas-2026/aseguramiento-calidad-farmaceutica.webp'),
+    ('Curso de Buenas Prácticas de Laboratorio — BPL',                            '/img/cursos/portadas-2026/buenas-practicas-laboratorio.webp'),
+    ('Curso de Buenas Prácticas de Manufactura — BPM',                            '/img/cursos/portadas-2026/buenas-practicas-manufactura.webp'),
+    ('Curso de Control de Calidad de Medicamentos',                               '/img/cursos/portadas-2026/control-calidad-medicamentos.webp'),
+    ('Curso de Gestión de Calidad Farmacéutica',                                  '/img/cursos/portadas-2026/gestion-calidad-farmaceutica.webp'),
+    ('Validaciones y Calificaciones en la Industria Farmacéutica',                '/img/cursos/portadas-2026/validaciones-calificaciones.webp'),
+    ('Buenas Prácticas de Elaboración (BPE) y Preparaciones Magistrales',         '/img/cursos/portadas-2026/bpe-preparaciones-magistrales.webp'),
+    ('Central de Mezclas: Preparaciones Estériles, BPE y Gestión de la Calidad',  '/img/cursos/portadas-2026/central-mezclas-esteriles.webp'),
+    ('Curso de Farmacología Cardiovascular',                                      '/img/cursos/portadas-2026/farmacologia-cardiovascular.webp'),
+    ('Curso de Farmacología Endocrina',                                           '/img/cursos/portadas-2026/farmacologia-endocrina.webp'),
+    ('Curso de Farmacología Gastrointestinal',                                    '/img/cursos/portadas-2026/farmacologia-gastrointestinal.webp'),
+    ('Curso de Farmacología Oncológica',                                          '/img/cursos/portadas-2026/farmacologia-oncologica.webp'),
+    ('Curso de Farmacología Renal',                                               '/img/cursos/portadas-2026/farmacologia-renal.webp'),
+    ('Curso de Farmacología Respiratoria',                                        '/img/cursos/portadas-2026/farmacologia-respiratoria.webp'),
+    ('Curso de Farmacología de Anticoagulantes y Antiagregantes',                 '/img/cursos/portadas-2026/farmacologia-anticoagulantes.webp'),
+    ('Curso de Farmacología del Sistema Nervioso Central',                        '/img/cursos/portadas-2026/farmacologia-sistema-nervioso-central.webp'),
+    ('Curso de Inmunoterapia Oncológica',                                         '/img/cursos/portadas-2026/inmunoterapia-oncologica.webp'),
+    ('Curso de Psicofarmacología',                                                '/img/cursos/portadas-2026/psicofarmacologia.webp'),
+    ('Curso de Quimioterapia Antineoplásica',                                     '/img/cursos/portadas-2026/quimioterapia-antineoplasica.webp'),
+    ('Curso de Terapias Dirigidas en Oncología',                                  '/img/cursos/portadas-2026/terapias-dirigidas-oncologia.webp'),
+    ('Curso de Farmacoterapia de la Diabetes',                                    '/img/cursos/portadas-2026/farmacoterapia-diabetes.webp'),
+    ('Curso de Farmacoterapia de la Hipertensión Arterial',                       '/img/cursos/portadas-2026/farmacoterapia-hipertension.webp'),
+    ('Curso de Farmacoterapia del Asma y la EPOC',                                '/img/cursos/portadas-2026/farmacoterapia-asma-epoc.webp'),
+    ('Curso de Comunicación Asertiva en el Trabajo',                              '/img/cursos/portadas-2026/comunicacion-asertiva.webp'),
+    ('Curso de Lenguaje Corporal y Comunicación No Verbal',                       '/img/cursos/portadas-2026/lenguaje-corporal.webp'),
+    ('Curso de Inteligencia Emocional en el Trabajo',                             '/img/cursos/portadas-2026/inteligencia-emocional.webp'),
+    ('Curso de Liderazgo y Trabajo en Equipo',                                    '/img/cursos/portadas-2026/liderazgo-trabajo-equipo.webp'),
+    ('Curso de Negociación y Persuasión',                                         '/img/cursos/portadas-2026/negociacion-persuasion.webp'),
+    ('Curso de Oratoria: cómo hablar en público con seguridad',                   '/img/cursos/portadas-2026/oratoria.webp'),
+    ('Curso de Presentaciones Efectivas y Storytelling',                          '/img/cursos/portadas-2026/presentaciones-efectivas.webp'),
+    ('Curso para Hablar Frente a la Cámara: Oratoria Digital para Videos y Videollamadas', '/img/cursos/portadas-2026/oratoria-digital-camara.webp'),
+    ('Curso para perder el miedo a hablar en público',                            '/img/cursos/portadas-2026/miedo-hablar-publico.webp'),
+    ('Curso de Servicio al Cliente y Comunicación con el Paciente',               '/img/cursos/portadas-2026/servicio-cliente-paciente.webp'),
+    ('Autocuidado de la tiroides',                                                '/img/cursos/portadas-2026/autocuidado-tiroides.webp')
+  ) AS v(title, url)
+ WHERE c.kind = 'edvanta'
+   AND c.deleted_at IS NULL
+   AND c.title = v.title;

@@ -243,6 +243,18 @@ describe('las categorías con las que se agrupan', () => {
     expect(new Set(urls).size).toBe(urls.length);
   });
 
+  it('asigna las 53 portadas editoriales entregadas a sus cursos', async () => {
+    const { rows } = await pglite.query(
+      `SELECT title, cover_url FROM aula_courses
+        WHERE kind = 'edvanta' AND deleted_at IS NULL
+          AND cover_url LIKE '/img/cursos/portadas-2026/%'
+        ORDER BY title`,
+    );
+
+    expect(rows).toHaveLength(53);
+    expect(new Set(rows.map((r) => r.cover_url)).size).toBe(53);
+  });
+
   it('los de farmacología y farmacoterapia tienen portada', async () => {
     const { rows } = await pglite.query(
       `SELECT title FROM aula_courses
