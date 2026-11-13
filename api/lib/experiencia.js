@@ -40,6 +40,7 @@ export const ICONOS = [
   'Package', 'PackageCheck', 'Boxes', 'Tag', 'Truck', 'Warehouse', 'Lightbulb', 'Puzzle',
   'Layers', 'Network', 'Zap', 'Sparkles', 'HardHat', 'Hand', 'Shirt', 'DoorOpen', 'Signature',
   'Percent', 'Flame', 'Snowflake', 'Sun', 'Clock', 'Award', 'Calculator', 'Atom',
+  'Shuffle', 'Scan', 'Box', 'Hammer', 'Microchip', 'BadgeCheck', 'Stamp', 'MapPin',
 ];
 
 const ICONO_POR_DEFECTO = 'Sparkles';

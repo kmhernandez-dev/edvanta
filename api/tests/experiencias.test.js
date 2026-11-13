@@ -34,6 +34,12 @@ import {
 } from '../lib/clase-publica.js';
 import { CLASES as CLASES_VALIDACIONES, CURSO as CURSO_VALIDACIONES } from '../../contenido/experiencias/validaciones/index.mjs';
 
+// Todos los cursos con experiencias (una carpeta por curso en contenido/experiencias).
+const raizContenido = path.join(path.dirname(fileURLToPath(import.meta.url)), '..', '..', 'contenido', 'experiencias');
+const PAQUETES = await Promise.all(readdirSync(raizContenido, { withFileTypes: true })
+  .filter((e) => e.isDirectory())
+  .map(async (e) => ({ clave: e.name, ...(await import(path.join(raizContenido, e.name, 'index.mjs'))) })));
+
 const dir = path.join(path.dirname(fileURLToPath(import.meta.url)), '..', 'migrations');
 const privada = (f) => f.includes('_evaluacion_') || f === '063_pedagogia_bpm.sql' || f === '067_pedagogia_bpe.sql';
 const CORTE = '077';
@@ -80,8 +86,8 @@ describe('bloque experiencia', () => {
     expect(html).toContain('&lt;b&gt;no&lt;/b&gt;');
   });
 
-  it('cada clase de Validaciones pasa la validación y supera 3.000 caracteres de lectura', () => {
-    for (const { titulo, ...exp } of CLASES_VALIDACIONES) {
+  it.each(PAQUETES.map((p) => [p.clave, p]))('cada clase de %s pasa la validación y supera 3.000 caracteres de lectura', (_clave, paquete) => {
+    for (const { titulo, ...exp } of paquete.CLASES) {
       const d = leerExperiencia(exp);
       expect(caracteresDeExperiencia(d), titulo).toBeGreaterThanOrEqual(3000);
       expect(d.referencias.length, titulo).toBeGreaterThan(0);
@@ -150,6 +156,22 @@ describe('migraciones de experiencias y clases abiertas', () => {
       expect(f.otros, f.title).toBeGreaterThan(0);
       expect(f.orden, f.title).toBe(0);
     }
+  });
+
+  it.each(PAQUETES.map((p) => [p.clave, p]))('%s: cada clase del contenido quedó con una sola experiencia, publicada', async (_clave, paquete) => {
+    const id = await cursoId(paquete.CURSO);
+    expect(id, paquete.CURSO).toBeTruthy();
+    const filas = await many(db, `
+      SELECT l.title, count(b.id)::int AS n
+        FROM aula_lessons l
+        LEFT JOIN aula_lesson_blocks b ON b.lesson_id = l.id AND b.type = 'experiencia' AND b.deleted_at IS NULL
+       WHERE l.course_id = $1 AND l.deleted_at IS NULL
+       GROUP BY l.title`, [id]);
+    const porTitulo = new Map(filas.map((f) => [f.title, f.n]));
+    for (const c of paquete.CLASES) expect(porTitulo.get(c.titulo), c.titulo).toBe(1);
+    const [v] = await many(db, 'SELECT v.snapshot FROM aula_courses c JOIN aula_course_versions v ON v.id = c.current_version_id WHERE c.id = $1', [id]);
+    const publicadas = v.snapshot.modules.flatMap((m) => m.lessons).filter((l) => l.blocks.some((b) => b.type === 'experiencia'));
+    expect(publicadas).toHaveLength(paquete.CLASES.length);
   });
 
   it('volver a aplicar la migración actualiza sin duplicar', async () => {

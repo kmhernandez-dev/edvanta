@@ -10,7 +10,8 @@ import {
   Package, PackageCheck, Boxes, Tag, Truck, Warehouse, Lightbulb, Puzzle,
   Layers, Network, Zap, Sparkles, HardHat, Hand, Shirt, DoorOpen,
   Signature, Percent, Flame, Snowflake, Sun, Clock, Award, Calculator,
-  Atom,
+  Atom, Shuffle, Scan, Box, Hammer, Microchip, BadgeCheck, Stamp,
+  MapPin,
 } from 'lucide-react';
 
 export const ICONO = {
@@ -24,7 +25,8 @@ export const ICONO = {
   Package, PackageCheck, Boxes, Tag, Truck, Warehouse, Lightbulb, Puzzle,
   Layers, Network, Zap, Sparkles, HardHat, Hand, Shirt, DoorOpen,
   Signature, Percent, Flame, Snowflake, Sun, Clock, Award, Calculator,
-  Atom,
+  Atom, Shuffle, Scan, Box, Hammer, Microchip, BadgeCheck, Stamp,
+  MapPin,
 };
 
 export const iconoDe = (nombre) => ICONO[nombre] || Sparkles;
