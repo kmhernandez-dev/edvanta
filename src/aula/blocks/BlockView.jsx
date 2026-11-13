@@ -17,6 +17,7 @@ import { Button, IconButton } from '../ui/Button';
 import { Modal } from '../ui/Dialog';
 import { RichText } from '../ui/RichText';
 import { Spinner } from '../ui/States';
+import { videosPrimero } from './orden';
 
 const PdfViewer = lazy(() => import('./PdfViewer'));
 const ExperienciaDeClase = lazy(() => import('../../components/experiencia/ExperienciaDeClase'));
@@ -494,7 +495,7 @@ export function BlockView({ block, files, onMedia, startAt, modoAutoria }) {
 export function BlockList({ blocks, files, onMedia, positions }) {
   return (
     <div className="flex flex-col gap-6">
-      {blocks.map((b) => (
+      {videosPrimero(blocks).map((b) => (
         <div key={b.id} id={`bloque-${b.id}`}>
           <BlockView block={b} files={files} onMedia={onMedia} startAt={positions?.[b.id]} />
         </div>

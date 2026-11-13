@@ -20,6 +20,7 @@ import { ProgressBar } from '../ui/Page';
 import PanelDelCurso from './PanelDelCurso';
 import ParticipacionDeClase from './ParticipacionDeClase';
 import '../aula-player.css';
+import { tituloDeUnidad } from '../labels';
 
 export function flattenLessons(snapshot) {
   return (snapshot?.modules || []).flatMap((m, mi) => m.lessons.map((l, li) => ({
@@ -98,7 +99,7 @@ function Outline({ snapshot, currentId, lessonHref, lessonState, onNavigate, res
           <details key={m.id} open={enCurso} className="aula-player-module">
             <summary>
               <span className="aula-player-module__num">{String(mi + 1).padStart(2, '0')}</span>
-              <span className="aula-player-module__title">Unidad {mi + 1}. {m.title}</span>
+              <span className="aula-player-module__title">Unidad {mi + 1}. {tituloDeUnidad(m.title)}</span>
               <span className="aula-player-module__count">{hechas}/{m.lessons.length}</span>
               <ChevronDown className="aula-player-module__chevron h-4 w-4" aria-hidden="true" />
             </summary>
@@ -277,7 +278,7 @@ export function CoursePlayer({
           <article className="aula-player__stage">
             <header className="aula-player__lesson">
               <p className="aula-player__module">
-                <span>Unidad {lesson.moduleIndex + 1} · {lesson.moduleTitle}</span>
+                <span>Unidad {lesson.moduleIndex + 1} · {tituloDeUnidad(lesson.moduleTitle)}</span>
               </p>
               <h1 className="aula-player__h1">{lesson.title}</h1>
               {lesson.subtitle && <p className="aula-player__subtitle">{lesson.subtitle}</p>}

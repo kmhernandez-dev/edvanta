@@ -82,3 +82,11 @@ export const fmtMinutes = (minutes) => {
   const rest = m % 60;
   return rest ? `${h} h ${rest} min` : `${h} h`;
 };
+
+/**
+ * Título de una unidad sin el «Unidad N.» que algunos cursos traen escrito
+ * en el título, para no mostrar «Unidad 1 · Unidad 1. Fundamentos».
+ */
+export function tituloDeUnidad(titulo = '') {
+  return String(titulo).replace(/^\s*unidad\s+\d+\s*[.:·\-–—]\s*/i, '').trim() || String(titulo);
+}

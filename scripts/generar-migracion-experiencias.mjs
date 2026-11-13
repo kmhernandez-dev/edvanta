@@ -95,11 +95,16 @@ const bloques = filas.map((f, i) => `
   ELSE
     UPDATE aula_lesson_blocks SET deleted_at = NOW(), updated_at = NOW()
      WHERE lesson_id = v_clase AND type = 'texto' AND deleted_at IS NULL;
-    UPDATE aula_lesson_blocks SET sort_order = sort_order + 1, updated_at = NOW()
-     WHERE lesson_id = v_clase AND deleted_at IS NULL;
     INSERT INTO aula_lesson_blocks (lesson_id, type, sort_order, data)
     VALUES (v_clase, 'experiencia', 0, v_data);
     v_n := v_n + 1;
+  END IF;
+  IF v_clase IS NOT NULL THEN
+    -- Videos arriba, la experiencia debajo y luego el resto (ver 123).
+    UPDATE aula_lesson_blocks b SET sort_order = o.pos, updated_at = NOW()
+      FROM (SELECT id, (row_number() OVER (ORDER BY CASE type WHEN 'video' THEN 0 WHEN 'experiencia' THEN 1 ELSE 2 END, sort_order, id) - 1)::int AS pos
+              FROM aula_lesson_blocks WHERE lesson_id = v_clase AND deleted_at IS NULL) o
+     WHERE b.id = o.id AND b.sort_order IS DISTINCT FROM o.pos;
   END IF;`).join('\n');
 
 const sql = `-- ============================================================

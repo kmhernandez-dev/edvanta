@@ -145,6 +145,7 @@ describe('migraciones de experiencias y clases abiertas', () => {
              count(*) FILTER (WHERE b.type = 'texto' AND b.deleted_at IS NULL)::int AS textos,
              count(*) FILTER (WHERE b.type = 'experiencia' AND b.deleted_at IS NULL)::int AS experiencias,
              count(*) FILTER (WHERE b.type IN ('enlace', 'destacado', 'video') AND b.deleted_at IS NULL)::int AS otros,
+             count(*) FILTER (WHERE b.type = 'video' AND b.deleted_at IS NULL)::int AS videos,
              min(b.sort_order) FILTER (WHERE b.type = 'experiencia' AND b.deleted_at IS NULL) AS orden
         FROM aula_lessons l JOIN aula_lesson_blocks b ON b.lesson_id = l.id
        WHERE l.course_id = $1 AND l.deleted_at IS NULL
@@ -154,8 +155,36 @@ describe('migraciones de experiencias y clases abiertas', () => {
       expect(f.textos, f.title).toBe(0);
       expect(f.experiencias, f.title).toBe(1);
       expect(f.otros, f.title).toBeGreaterThan(0);
-      expect(f.orden, f.title).toBe(0);
+      expect(f.orden, f.title).toBe(f.videos);
     }
+  });
+
+  it('en cada clase publicada con experiencia, los videos van arriba y la lectura debajo', async () => {
+    const versiones = await many(db, `
+      SELECT c.title, v.snapshot FROM aula_courses c JOIN aula_course_versions v ON v.id = c.current_version_id
+       WHERE jsonb_path_exists(v.snapshot, '$.modules[*].lessons[*].blocks[*] ? (@.type == "experiencia")')`);
+    expect(versiones.length).toBeGreaterThanOrEqual(PAQUETES.length);
+    let conVideo = 0;
+    for (const { title, snapshot } of versiones) {
+      for (const l of snapshot.modules.flatMap((m) => m.lessons)) {
+        const tipos = l.blocks.map((b) => b.type);
+        const exp = tipos.indexOf('experiencia');
+        if (exp < 0) continue;
+        const ultimoVideo = tipos.lastIndexOf('video');
+        if (ultimoVideo >= 0) conVideo += 1;
+        expect(ultimoVideo, `${title} · ${l.title}`).toBeLessThan(exp);
+        expect(tipos.slice(0, exp).every((t) => t === 'video'), `${title} · ${l.title}`).toBe(true);
+      }
+    }
+    expect(conVideo).toBeGreaterThan(0);
+  });
+
+  it('volver a aplicar el orden de video y lectura no cambia nada', async () => {
+    const f = readdirSync(dir).find((x) => x.endsWith('_aula_video_antes_de_la_lectura.sql'));
+    const [{ n: antes }] = await many(db, 'SELECT count(*)::int AS n FROM aula_republicaciones_aprobadas');
+    await pglite.exec(cleanMigrationSql(readFileSync(path.join(dir, f), 'utf8')));
+    const [{ n: despues }] = await many(db, 'SELECT count(*)::int AS n FROM aula_republicaciones_aprobadas');
+    expect(despues).toBe(antes);
   });
 
   it.each(PAQUETES.map((p) => [p.clave, p]))('%s: cada clase del contenido quedó con una sola experiencia, publicada', async (_clave, paquete) => {
