@@ -930,6 +930,56 @@ export const NOTICIAS_REESCRITAS = {
     description: 'El gobierno británico aceptó 44 recomendaciones sobre IA en salud y la MHRA abrió la tercera fase de AI Airlock. Qué cambia para los dispositivos.',
     autor: 'Equipo editorial de Edvanta'
   },
+  'fda-finaliza-preguntas-y-respuestas-e14-y-s7b-sobre-riesgo-qt-qtc': {
+    contenidoPropio: true,
+    mdPath: '/articulos/articulos_edvanta/noticias-internacionales/fda-finaliza-preguntas-y-respuestas-e14-y-s7b-sobre-riesgo-qt-qtc.md',
+    updated: '2026-11-12',
+    readingTime: '3 min',
+    seoTitle: 'Riesgo de QT largo: la FDA finaliza la guía E14 y S7B',
+    seoDescription: 'La FDA publicó la versión final de las preguntas y respuestas de las guías ICH E14 y S7B sobre el riesgo de prolongación del QT. Por qué importa.',
+    description: 'La FDA publicó la versión final de las preguntas y respuestas de las guías ICH E14 y S7B sobre el riesgo de prolongación del QT. Por qué importa.',
+    autor: 'Equipo editorial de Edvanta'
+  },
+  'fda-publica-borrador-sobre-desempeno-de-dispositivos-que-administran-medicamentos': {
+    contenidoPropio: true,
+    mdPath: '/articulos/articulos_edvanta/noticias-internacionales/fda-publica-borrador-sobre-desempeno-de-dispositivos-que-administran-medicamentos.md',
+    updated: '2026-11-12',
+    readingTime: '3 min',
+    seoTitle: 'Plumas, inhaladores e inyectores: borrador de la FDA',
+    seoDescription: 'La FDA publicó un borrador sobre el desempeño de los dispositivos que administran medicamentos y los productos combinados. Comentarios hasta 2027.',
+    description: 'La FDA publicó un borrador sobre el desempeño de los dispositivos que administran medicamentos y los productos combinados. Comentarios hasta 2027.',
+    autor: 'Equipo editorial de Edvanta'
+  },
+  'fda-finaliza-guia-para-estudiar-el-efecto-de-medicamentos-sobre-la-conduccion': {
+    contenidoPropio: true,
+    mdPath: '/articulos/articulos_edvanta/noticias-internacionales/fda-finaliza-guia-para-estudiar-el-efecto-de-medicamentos-sobre-la-conduccion.md',
+    updated: '2026-11-12',
+    readingTime: '3 min',
+    seoTitle: 'Medicamentos y conducción: guía final de la FDA',
+    seoDescription: 'La FDA publicó su guía final para presentar los estudios que evalúan si un medicamento afecta la capacidad de conducir. Qué medicamentos vigilar.',
+    description: 'La FDA publicó su guía final para presentar los estudios que evalúan si un medicamento afecta la capacidad de conducir. Qué medicamentos vigilar.',
+    autor: 'Equipo editorial de Edvanta'
+  },
+  'ama-y-ema-fijan-requisitos-para-ensayos-de-vacunas-contra-ebola-bundibugyo': {
+    contenidoPropio: true,
+    mdPath: '/articulos/articulos_edvanta/noticias-internacionales/ama-y-ema-fijan-requisitos-para-ensayos-de-vacunas-contra-ebola-bundibugyo.md',
+    updated: '2026-11-12',
+    readingTime: '3 min',
+    seoTitle: 'Vacunas contra ébola Bundibugyo: requisitos de AMA y EMA',
+    seoDescription: 'La EMA y la Agencia Africana de Medicamentos fijaron los requisitos mínimos para ensayos de vacunas contra el ébola por virus Bundibugyo.',
+    description: 'La EMA y la Agencia Africana de Medicamentos fijaron los requisitos mínimos para ensayos de vacunas contra el ébola por virus Bundibugyo.',
+    autor: 'Equipo editorial de Edvanta'
+  },
+  'asesoria-para-solicitudes-de-ensayos-clinicos-de-act-eu-sera-permanente': {
+    contenidoPropio: true,
+    mdPath: '/articulos/articulos_edvanta/noticias-internacionales/asesoria-para-solicitudes-de-ensayos-clinicos-de-act-eu-sera-permanente.md',
+    updated: '2026-11-12',
+    readingTime: '3 min',
+    seoTitle: 'ACT EU: asesoría para ensayos clínicos será permanente',
+    seoDescription: 'La asesoría previa de ACT EU para solicitudes de ensayos clínicos en la Unión Europea será permanente desde enero de 2027. Qué significa.',
+    description: 'La asesoría previa de ACT EU para solicitudes de ensayos clínicos en la Unión Europea será permanente desde enero de 2027. Qué significa.',
+    autor: 'Equipo editorial de Edvanta'
+  },
 };
 
 /** Las 100 noticias del paquete, con la versión reescrita donde la hay. */
