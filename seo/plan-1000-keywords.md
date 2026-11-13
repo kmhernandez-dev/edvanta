@@ -41,11 +41,10 @@ Con 10 a 40 consultas por página fuerte indexada, 3.000 consultas piden entre 1
 - **Lista pendiente:**
   - artículos: crisis hipertensiva, cómo tomar la presión en casa, alimentos para bajar la presión alta, amlodipino, hidroclorotiazida y presión alta en el embarazo;
   - grupos: diabetes, dislipidemia, anticoagulantes y oncología;
+  - lote 1 de antimicrobianos: 15 páginas nuevas (7 fichas y 8 del vademécum), revisadas el 13-nov;
   - `/cursos/coursera`, `/cursos/edutin` y `/cursos/udemy`.
 - **13-nov, datos estructurados:** Search Console marcaba como no válida la ProfilePage de la autora: `mainEntity` era solo un `@id`. Se corrigió (commit ae9c74e), junto con el FAQPage de recursos para estudiantes, que no tenía `@context`. Falta validar la corrección en Search Console.
-- **13-nov, contenido nuevo en noindex** hasta la revisión de Karla:
-  - el lote 1 de antimicrobianos: 7 fichas `/articulos/[dci]-para-que-sirve`;
-  - el grupo del vademécum «Antibióticos de uso ambulatorio», con 7 monografías.
+- **13-nov, lote 1 de antimicrobianos revisado y aprobado por Karla:** 7 fichas `/articulos/[dci]-para-que-sirve` y 8 páginas del vademécum (grupo «Antibióticos de uso ambulatorio» y 7 monografías), ya indexables y en el sitemap. Se avisaron 17 URLs a Bing por IndexNow (HTTP 200), incluidas amoxicilina y azitromicina por los CTA nuevos. Quedan pendientes de Search Console cuando se restablezca la cuota.
 
 ## Dónde estamos (28 días al 10-nov-2026)
 
@@ -104,6 +103,7 @@ Una página sólida, ya indexada y con unos meses, suele aparecer en 10 a 40 con
 | 12-nov | **Vademécum, grupo de anticoagulación:** warfarina, apixabán y rivaroxabán, con el metaanálisis de Hart, ARISTOTLE, AVERROES, ROCKET AF, EINSTEIN-PE, la guía ACC/AHA 2023, control del INR, ajuste renal e interacciones. Enlazado desde 2 artículos de anticoagulación. | 4 páginas, **en noindex hasta la revisión clínica de Karla** |
 | 12-nov | Noticias reescritas: las últimas 6 (CHMP de Kyinsu, vacuna H5N1, Talvey, Tryngolza y Tukysa; informe ARC de la FDA) | 100 de 100; noindex por plantilla: 6 → 0 |
 | 12-nov | Mejores cursos, lote 5: microbiota y salud digestiva, contabilidad y administración de droguerías, gestión de calidad por niveles y radiología | 4 (31 en total) |
+| 13-nov | **Antimicrobianos, lote 1:** 7 fichas para pacientes y el grupo «Antibióticos de uso ambulatorio» con 7 monografías; CTA profesionales añadidos a amoxicilina y azitromicina. Revisado por Karla el 13-nov. | 15 páginas nuevas, indexables; 17 URLs avisadas por IndexNow |
 
 **Riesgo resuelto (12-nov):** las noticias de pritelivir, Ort-Flx, Anktiva y Mynzepli ya posicionaban (posiciones 2 a 9) y seguían en noindex. Al rastrearlas de nuevo, Google las habría sacado del índice. Ya tienen contenido propio y `index,follow`. La de pritelivir se pidió a Search Console; la cuota del día se agotó.
 
@@ -125,7 +125,7 @@ Una página sólida, ya indexada y con unos meses, suele aparecer en 10 a 40 con
 4. **Mejores cursos, lote 6.** Completar los 2 temas que faltan del lote 5 y sumar los que no canibalicen: farmacia clínica para regentes, servicio al cliente en farmacia y cursos de hematología, entre otros.
 5. **Levotiroxina y tiroides.** Las preguntas concretas ya aparecen en posición 3. Cada artículo nuevo requiere la revisión clínica de Karla.
 6. **Guías editoriales de cursos curados:** completadas (176 de 176). No queda pendiente.
-7. **Vademécum de antimicrobianos (J01).** 2.000 keywords en 93 páginas, cada una conectada con el curso PROA, el ebook de farmacocinética o la capacitación B2B. Plan y lotes en `seo/vademecum-antimicrobianos.md`; reparto con Open Code en `seo/vademecum-asignaciones.md`.
+7. **Vademécum de antimicrobianos (J01).** Lote 1 hecho y revisado el 13-nov (15 páginas indexables). Sigue el lote 2 en `seo/vademecum-antimicrobianos.md`: secnidazol, dicloxacilina, claritromicina, ceftriaxona, penicilina benzatínica, levofloxacino, doxiciclina y fosfomicina. Reparto con Open Code en `seo/vademecum-asignaciones.md`.
 
 ## Cómo se mide
 

@@ -132,5 +132,12 @@ Se anota una fila nueva en las tablas de arriba. El indicador principal es **pá
 
 - **Noticias:** las 100 del paquete tienen contenido propio. Las 6 últimas (Kyinsu, H5N1, Talvey, Tryngolza, Tukysa y el informe ARC de la FDA) se reescribieron con fuente oficial. No queda ninguna noticia en plantilla.
 - **Mejores cursos:** 4 artículos nuevos (microbiota, contabilidad y administración de droguerías, gestión de calidad por niveles y radiología). El blog llega a 31 artículos.
-- **Vademécum:** 28 páginas nuevas (grupos de obesidad, hipertensión, diabetes, oncología, dislipidemia y anticoagulación y 22 monografías), en `noindex` hasta la revisión clínica de Karla. Se enlazan desde 28 artículos y el footer.
+- **Vademécum:** 28 páginas nuevas (grupos de obesidad, hipertensión, diabetes, oncología, dislipidemia y anticoagulación y 22 monografías), revisadas por Karla el 12-nov e indexables. Se enlazan desde 28 artículos y el footer.
 - **Siguiente medición:** lunes 16-nov, con el informe de 28 días y el número de páginas indexadas. Se comparan las consultas con impresiones frente a la línea base.
+
+## Lote del 13-nov-2026
+
+- **Antimicrobianos, lote 1:** 7 fichas nuevas (`/articulos/[dci]-para-que-sirve`) y 8 páginas del vademécum (grupo «Antibióticos de uso ambulatorio» y 7 monografías). Karla las revisó y aprobó el 13-nov; pasaron a `index,follow`.
+- **Sitemap:** 664 URLs (186 páginas, 468 artículos, 10 herramientas), con las 15 páginas nuevas ya incluidas.
+- **IndexNow:** 17 URLs enviadas a Bing (HTTP 200): las 15 nuevas más amoxicilina y azitromicina por los CTA profesionales añadidos.
+- **Pendiente en Search Console:** las 15 páginas nuevas y las correcciones de datos estructurados. La cuota de solicitudes seguía agotada el 13-nov por la mañana; se reintenta en la ventana de 24 horas.
