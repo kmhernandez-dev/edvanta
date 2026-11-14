@@ -3,7 +3,7 @@ export const MIGRACION = '154_experiencias_farmacologia_snc_4.sql';
 
 export const CLASES = [
   {
-    titulo: 'Tratamiento preventivo de la migraña: anticuerpos anti-CGRP y fármacos orales',
+    titulo: 'Tratamiento preventivo: anticuerpos anti-CGRP y fármacos orales',
     duracion: 20,
     gancho: {
       titulo: 'Prevenir en vez de apagar',
