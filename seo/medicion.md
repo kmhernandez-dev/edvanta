@@ -167,3 +167,8 @@ Se anota una fila nueva en las tablas de arriba. El indicador principal es **pá
   - `/articulos/diclofenaco-para-que-sirve` sigue en `index,follow` y ya enlaza al vademécum.
   - **Riesgo:** durante el redespliegue, todo el sitio respondió «404 page not found» del proxy de Coolify al menos 2 minutos (comprobado a las 14:17 y 14:19 UTC; a las 14:26 ya respondía). Cada push a `main` deja el sitio caído un rato y Google puede rastrear ese 404.
   - Conviene agrupar los despliegues y revisar en Coolify si el servicio puede actualizarse sin bajar el contenedor anterior (healthcheck y rolling update).
+- **Vademécum, 50 monografías interactivas (16-nov):**
+  - 50 monografías nuevas y 6 grupos nuevos (digestivo, corticoides, alergia y vías respiratorias, salud mental y SNC, antimicóticos y antiparasitarios, tiroides); hipertensión, antibióticos y dolor ganan una sección cada uno. Detalle en `seo/vademecum-50-monografias.md`.
+  - Formato visual nuevo: mapas conceptuales, triángulos, ciclos, barras animadas, semáforo, autoevaluación y tarjetas de curso y guía en cada monografía.
+  - Fuentes: fichas técnicas completas de CIMA descargadas directamente, CUM del INVIMA por ATC y el índice ATC de la OMS. Todo en `noindex` hasta la revisión de Karla.
+  - Línea base del proyecto en Semrush el mismo día: 347 keywords orgánicas, 816 visitas, 267 backlinks.

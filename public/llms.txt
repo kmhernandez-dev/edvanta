@@ -40,13 +40,19 @@ Monografías para profesionales de la salud, revisadas por una química farmacé
 
 - [Vademécum de Edvanta](https://edvanta.co/vademecum)
 - [Medicamentos para la obesidad](https://edvanta.co/vademecum/medicamentos-para-la-obesidad): semaglutida, tirzepatida, liraglutida, orlistat, naltrexona/bupropión, setmelanotida.
-- [Medicamentos para la hipertensión arterial](https://edvanta.co/vademecum/medicamentos-para-la-hipertension-arterial): losartán, enalapril, amlodipino, hidroclorotiazida.
+- [Medicamentos para la hipertensión arterial](https://edvanta.co/vademecum/medicamentos-para-la-hipertension-arterial): losartán, enalapril, amlodipino, hidroclorotiazida, valsartán, carvedilol, metoprolol, espironolactona y furosemida.
 - [Medicamentos para la diabetes tipo 2](https://edvanta.co/vademecum/medicamentos-para-la-diabetes-tipo-2): metformina, empagliflozina, sitagliptina.
 - [Medicamentos oncológicos de alto costo](https://edvanta.co/vademecum/medicamentos-oncologicos-de-alto-costo): trastuzumab, imatinib, pembrolizumab.
 - [Medicamentos para la dislipidemia](https://edvanta.co/vademecum/medicamentos-para-la-dislipidemia): atorvastatina, rosuvastatina, ezetimiba.
 - [Medicamentos anticoagulantes](https://edvanta.co/vademecum/medicamentos-anticoagulantes): warfarina, apixabán, rivaroxabán.
-- [Antibióticos de uso ambulatorio y hospitalario](https://edvanta.co/vademecum/antibioticos-de-uso-ambulatorio): amoxicilina con ácido clavulánico, cefalexina, clindamicina, ciprofloxacino, metronidazol, trimetoprim/sulfametoxazol, nitrofurantoína, secnidazol, dicloxacilina, claritromicina, ceftriaxona, penicilina benzatínica, levofloxacino, doxiciclina y fosfomicina.
-- [Medicamentos para el dolor y la inflamación](https://edvanta.co/vademecum/medicamentos-para-el-dolor-y-la-inflamacion): diclofenaco, ibuprofeno, naproxeno, meloxicam, etoricoxib, celecoxib, ketorolaco, acetaminofén, dipirona (metamizol), tramadol y metocarbamol.
+- [Antibióticos de uso ambulatorio y hospitalario](https://edvanta.co/vademecum/antibioticos-de-uso-ambulatorio): amoxicilina con ácido clavulánico, cefalexina, clindamicina, ciprofloxacino, metronidazol, trimetoprim/sulfametoxazol, nitrofurantoína, secnidazol, dicloxacilina, claritromicina, ceftriaxona, penicilina benzatínica, levofloxacino, doxiciclina, fosfomicina, amoxicilina y azitromicina.
+- [Medicamentos para el dolor y la inflamación](https://edvanta.co/vademecum/medicamentos-para-el-dolor-y-la-inflamacion): diclofenaco, ibuprofeno, naproxeno, meloxicam, etoricoxib, celecoxib, ketorolaco, acetaminofén, dipirona (metamizol), tramadol, metocarbamol, y para la gota alopurinol y colchicina.
+- [Medicamentos para el aparato digestivo](https://edvanta.co/vademecum/medicamentos-para-el-aparato-digestivo): omeprazol, esomeprazol, lansoprazol, metoclopramida, domperidona, ondansetrón, dimenhidrinato, butilescopolamina, simeticona, loperamida, bisacodilo y lactulosa.
+- [Corticoides sistémicos](https://edvanta.co/vademecum/corticoides-sistemicos): prednisona, prednisolona, dexametasona, betametasona e hidrocortisona.
+- [Alergia y vías respiratorias](https://edvanta.co/vademecum/alergia-y-vias-respiratorias): loratadina, cetirizina, desloratadina, clorfeniramina, hidroxizina, montelukast, salbutamol y acetilcisteína.
+- [Salud mental y sistema nervioso](https://edvanta.co/vademecum/salud-mental-y-sistema-nervioso): sertralina, fluoxetina, amitriptilina, trazodona, quetiapina, clonazepam, pregabalina y gabapentina.
+- [Antimicóticos, antivirales y antiparasitarios](https://edvanta.co/vademecum/antimicoticos-antivirales-y-antiparasitarios): fluconazol, clotrimazol, nistatina, ketoconazol, aciclovir, albendazol e ivermectina.
+- [Medicamentos para la tiroides](https://edvanta.co/vademecum/medicamentos-para-la-tiroides): levotiroxina.
 
 ## Transparencia
 
