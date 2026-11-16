@@ -8,6 +8,8 @@ Para cada URL, verificar que responda 200, con `index,follow` y canónica propia
 
 ## 2. IndexNow (Bing), un solo envío
 
+Se ejecuta desde un equipo que llegue a edvanta.co. El script lee el sitio, y el entorno de Claude Code en la nube no resuelve ese dominio.
+
 ```bash
 node scripts/indexnow.mjs --rutas=/vademecum/medicamentos-para-el-dolor-y-la-inflamacion,/vademecum/meloxicam,/vademecum/etoricoxib,/vademecum/celecoxib,/vademecum/ketorolaco,/vademecum/dipirona,/vademecum/tramadol,/vademecum/metocarbamol,/vademecum/diclofenaco,/vademecum/ibuprofeno,/vademecum/naproxeno,/vademecum/acetaminofen,/articulos/meloxicam-para-que-sirve,/articulos/etoricoxib-para-que-sirve,/articulos/celecoxib-para-que-sirve,/articulos/ketorolaco-para-que-sirve,/articulos/dipirona-para-que-sirve,/articulos/tramadol-para-que-sirve,/articulos/metocarbamol-para-que-sirve
 ```
