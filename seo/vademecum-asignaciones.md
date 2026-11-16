@@ -16,18 +16,19 @@ Este archivo evita que dos agentes (Claude Code y Open Code) escriban el mismo m
 |---|---|---|---|---|
 | Antimicrobianos: antibacterianos sistémicos (J01) y nitroimidazoles (P01AB) | Claude Code | 13-nov-2026 | `seo/vademecum-antimicrobianos.md` y `seo/vademecum-antimicrobianos-2000-keywords.csv` | Lote 1 y lote 2 revisados por Karla y desplegados el 13-nov. Lote 2 ampliado con 8 monografías y 4 clases nuevas, más 3 artículos del lote 3, en noindex hasta la revisión de Karla. Sigue el lote 4 |
 | Antihipertensivos (C02, C03, C07, C08, C09) | Claude Code | 12-nov-2026 | Grupo de presión alta en `seo/plan-1000-keywords.md` | 8 artículos aprobados por Karla (12-nov) e indexables |
+| Dolor e inflamación: AINE y coxibs (M01A), dipirona y tramadol (N02), metocarbamol (M03B) | Claude Code | 16-nov-2026 | `seo/vademecum-dolor-inflamacion.md` y `seo/vademecum-dolor-inflamacion-1000-keywords.csv` | Lote 1: grupo, 7 monografías y 7 fichas para pacientes (meloxicam, etoricoxib, celecoxib, ketorolaco, dipirona, tramadol, metocarbamol), en noindex hasta la revisión de Karla. Sigue el lote 2: monografías de diclofenaco, ibuprofeno, naproxeno y acetaminofén |
 | _Libre para Open Code_ | Open Code | — | — | Anotar aquí el grupo elegido |
 
 ## Fichas que ya existen (no duplicar)
 
 Antimicrobianos: amoxicilina, azitromicina, metronidazol, cefalexina, amoxicilina con ácido clavulánico, trimetoprim sulfametoxazol, nitrofurantoína, ciprofloxacino y clindamicina.
+Dolor e inflamación (16-nov): meloxicam, etoricoxib, celecoxib, ketorolaco, dipirona, tramadol y metocarbamol.
 Otros grupos: acetaminofén, ácido fólico, amlodipino, atorvastatina, Buscapina (butilescopolamina), diclofenaco, enalapril, furosemida, hidroclorotiazida, ibuprofeno, loratadina, losartán, metformina, naproxeno, omeprazol, sertralina.
 
 ## Grupos sugeridos para Open Code
 
 Sin solaparse con antimicrobianos ni antihipertensivos, y con demanda alta en Colombia:
 
-- **Analgésicos y antiinflamatorios (M01, N02)**: ya hay cinco fichas; faltan, por ejemplo, tramadol, ketorolaco, meloxicam, celecoxib y dipirona.
 - **Digestivos (A02, A03, A07)**: esomeprazol, ranitidina (retirada; nota de seguridad), loperamida, sales de rehidratación oral, simeticona.
 - **Antidiabéticos (A10)**: ya hay metformina; faltan insulinas, sitagliptina, empagliflozina, dapagliflozina, semaglutida y tirzepatida.
 - **Antihistamínicos y respiratorios (R03, R05, R06)**: cetirizina, desloratadina, salbutamol, beclometasona, montelukast.

@@ -63,10 +63,18 @@ import ciprofloxacino from './monografias/ciprofloxacino.js';
 import metronidazol from './monografias/metronidazol.js';
 import trimetoprimSulfametoxazol from './monografias/trimetoprim-sulfametoxazol.js';
 import nitrofurantoina from './monografias/nitrofurantoina.js';
+import dolorEInflamacion from './grupos/dolor-e-inflamacion.js';
+import meloxicam from './monografias/meloxicam.js';
+import etoricoxib from './monografias/etoricoxib.js';
+import celecoxib from './monografias/celecoxib.js';
+import ketorolaco from './monografias/ketorolaco.js';
+import dipirona from './monografias/dipirona.js';
+import tramadol from './monografias/tramadol.js';
+import metocarbamol from './monografias/metocarbamol.js';
 
 const conRevision = (p) => ({ ...p, ...(REVISION_VADEMECUM[p.slug] || {}) });
 
-export const GRUPOS_VADEMECUM = [obesidad, hipertension, diabetes, oncologiaAltoCosto, dislipidemia, anticoagulacion, antibioticos].map(conRevision);
+export const GRUPOS_VADEMECUM = [obesidad, hipertension, diabetes, oncologiaAltoCosto, dislipidemia, anticoagulacion, antibioticos, dolorEInflamacion].map(conRevision);
 
 export const MONOGRAFIAS = [
   semaglutida, tirzepatida, liraglutida, orlistat, naltrexonaBupropion, setmelanotida,
@@ -77,6 +85,7 @@ export const MONOGRAFIAS = [
   warfarina, apixaban, rivaroxaban,
   amoxicilinaAcidoClavulanico, cefalexina, clindamicina, ciprofloxacino, metronidazol, trimetoprimSulfametoxazol, nitrofurantoina,
   secnidazol, dicloxacilina, claritromicina, ceftriaxona, penicilinaBenzatinica, levofloxacino, doxiciclina, fosfomicina,
+  meloxicam, etoricoxib, celecoxib, ketorolaco, dipirona, tramadol, metocarbamol,
 ].map(conRevision);
 
 export const PAGINAS_VADEMECUM = [...GRUPOS_VADEMECUM, ...MONOGRAFIAS];

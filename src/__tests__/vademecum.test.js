@@ -24,6 +24,7 @@ describe('vademécum', () => {
         'medicamentos-para-la-hipertension-arterial',
         'medicamentos-para-la-obesidad',
         'antibioticos-de-uso-ambulatorio',
+        'medicamentos-para-el-dolor-y-la-inflamacion',
       ].sort(),
     );
     expect(MONOGRAFIAS.map((m) => m.slug).sort()).toEqual(
@@ -36,6 +37,7 @@ describe('vademécum', () => {
         'nitrofurantoina', 'trimetoprim-sulfametoxazol',
         'secnidazol', 'dicloxacilina', 'claritromicina', 'ceftriaxona', 'penicilina-benzatinica',
         'levofloxacino', 'doxiciclina', 'fosfomicina',
+        'meloxicam', 'etoricoxib', 'celecoxib', 'ketorolaco', 'dipirona', 'tramadol', 'metocarbamol',
       ].sort(),
     );
     const slugs = PAGINAS_VADEMECUM.map((p) => p.slug);

@@ -144,3 +144,17 @@ Se anota una fila nueva en las tablas de arriba. El indicador principal es **pá
 - **Lote 2 y clases:** 8 fichas nuevas de antimicrobianos y 7 clases de antibióticos. Karla las revisó el 13-nov; pasan a `index,follow`. El sitemap queda en 483 artículos indexables.
 - **IndexNow:** 15 URLs del lote 2 revisado enviadas a Bing (HTTP 200).
 - **Cierre del grupo:** 8 monografías nuevas del vademécum, 4 clases adicionales (aminoglucósidos, carbapenémicos, sulfonamidas y reserva) y 3 artículos del lote 3 (PK/PD, dispensación y pilar de pacientes). Son 15 páginas en `noindex` hasta la revisión de Karla; el build queda en 472 artículos, 7 noindex por revisión y 679 URLs en sitemap.
+
+## Lote del 16-nov-2026
+
+- **Semrush, base Colombia (16-nov):**
+  - edvanta.co posiciona unas 100 keywords en 40 páginas; el proyecto muestra 347 en total.
+  - La ficha de diclofenaco trae 605 de las 622 visitas orgánicas estimadas (97 %) y la de amoxicilina posiciona 15 keywords.
+  - Las páginas del vademécum ya aparecen: hipertensión y ezetimiba, con una keyword cada una.
+- **Dolor e inflamación, lote 1:**
+  - Página del grupo, 7 monografías y 7 fichas para pacientes: meloxicam, etoricoxib, celecoxib, ketorolaco, dipirona, tramadol y metocarbamol.
+  - Todo en `noindex` hasta la revisión de Karla.
+  - Plan de 1.000 keywords en `seo/vademecum-dolor-inflamacion-1000-keywords.csv`: 718 de Semrush, que suman 826.140 búsquedas al mes, y 282 términos profesionales.
+- **Pendiente para indexar:**
+  - Revisión de Karla de estas 15 páginas y de las 15 de antimicrobianos que siguen en `noindex`.
+  - Después, IndexNow y solicitudes en Search Console.

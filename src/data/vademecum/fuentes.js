@@ -30,6 +30,13 @@ const pubchem = (compuesto, cid) => ({
   url: `https://pubchem.ncbi.nlm.nih.gov/compound/${cid}`,
 });
 
+// Lote de dolor e inflamación (16-nov-2026): misma forma, con su fecha de consulta.
+const CITADO_16 = 'citado 16 nov 2026';
+const ft16 = (producto, nregistro) => ({
+  texto: `Agencia Española de Medicamentos y Productos Sanitarios (AEMPS). Ficha técnica de ${producto} [Internet]. Madrid: AEMPS; [${CITADO_16}]. Disponible en: https://cima.aemps.es/cima/dochtml/ft/${nregistro}/FT_${nregistro}.html`,
+  url: `https://cima.aemps.es/cima/dochtml/ft/${nregistro}/FT_${nregistro}.html`,
+});
+
 export const F = {
   // ── Fichas técnicas (CIMA) y etiquetas de la FDA (DailyMed) ──
   ftWegovy: ft('Wegovy 0,25 mg FlexTouch solución inyectable en pluma precargada', '1211608006'),
@@ -232,4 +239,20 @@ export const F = {
   pubchemNitrofurantoina: pubchem('Nitrofurantoin', 6604200),
   pubchemCiprofloxacino: pubchem('Ciprofloxacin', 2764),
   pubchemClindamicina: pubchem('Clindamycin', 446598),
+  // ── Dolor e inflamación (16-nov-2026) ──
+  ftMeloxicam: ft16('Meloxicam Cinfa 15 mg comprimidos EFG', '69094'),
+  ftEtoricoxib: ft16('Etoricoxib Cinfa 90 mg comprimidos recubiertos con película EFG', '80753'),
+  ftCelecoxib: ft16('Celecoxib Cinfa 200 mg cápsulas duras EFG', '78565'),
+  ftNolotil: ft16('Nolotil 575 mg cápsulas duras', '47633'),
+  ftTramadol: ft16('Tramadol Normon 50 mg cápsulas duras EFG', '63910'),
+  ftKetorolaco: ft16('Ketorolaco trometamol Qualigen 10 mg comprimidos recubiertos con película EFG', '70105'),
+  ftRobaxin: ft16('Robaxin 500 mg comprimidos', '32899'),
+  invimaCum16: {
+    texto: `Instituto Nacional de Vigilancia de Medicamentos y Alimentos (INVIMA). Código Único de Medicamentos vigentes [conjunto de datos en Internet]. Bogotá: Datos Abiertos Colombia; [${CITADO_16}]. Disponible en: https://www.datos.gov.co/d/i7cb-raxc`,
+    url: 'https://www.datos.gov.co/d/i7cb-raxc',
+  },
+  cnt2013: pubmed("Coxib and traditional NSAID Trialists' (CNT) Collaboration; Bhala N, Emberson J, Merhi A, Abramson S, Arber N, Baron JA, et al. Vascular and upper gastrointestinal effects of non-steroidal anti-inflammatory drugs: meta-analyses of individual participant data from randomised trials. Lancet. 2013;382(9894):769-79. doi:10.1016/S0140-6736(13)60900-9", 23726390),
+  precision: pubmed('Nissen SE, Yeomans ND, Solomon DH, Lüscher TF, Libby P, Husni ME, et al. Cardiovascular Safety of Celecoxib, Naproxen, or Ibuprofen for Arthritis. N Engl J Med. 2016;375(26):2519-29. doi:10.1056/NEJMoa1611593', 27959716),
+  medal: pubmed('Cannon CP, Curtis SP, FitzGerald GA, Krum H, Kaur A, Bolognese JA, et al. Cardiovascular outcomes with etoricoxib and diclofenac in patients with osteoarthritis and rheumatoid arthritis in the Multinational Etoricoxib and Diclofenac Arthritis Long-term (MEDAL) programme: a randomised comparison. Lancet. 2006;368(9549):1771-81. doi:10.1016/S0140-6736(06)69666-9', 17113426),
+  cashin2021: pubmed('Cashin AG, Folly T, Bagg MK, Wewege MA, Jones MD, Ferraro MC, et al. Efficacy, acceptability, and safety of muscle relaxants for adults with non-specific low back pain: systematic review and meta-analysis. BMJ. 2021;374:n1446. doi:10.1136/bmj.n1446', 34233900),
 };
