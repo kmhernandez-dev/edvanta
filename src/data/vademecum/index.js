@@ -120,6 +120,11 @@ import ketoconazol from './monografias/ketoconazol.js';
 import aciclovir from './monografias/aciclovir.js';
 import albendazol from './monografias/albendazol.js';
 import ivermectina from './monografias/ivermectina.js';
+import valsartan from './monografias/valsartan.js';
+import carvedilol from './monografias/carvedilol.js';
+import metoprolol from './monografias/metoprolol.js';
+import espironolactona from './monografias/espironolactona.js';
+import furosemida from './monografias/furosemida.js';
 
 const conRevision = (p) => ({ ...p, ...(REVISION_VADEMECUM[p.slug] || {}) });
 
@@ -141,6 +146,7 @@ export const MONOGRAFIAS = [
   loratadina, cetirizina, desloratadina, clorfeniramina, hidroxizina, montelukast, salbutamol, acetilcisteina,
   sertralina, fluoxetina, amitriptilina, trazodona, quetiapina, clonazepam, pregabalina, gabapentina,
   fluconazol, clotrimazol, nistatina, ketoconazol, aciclovir, albendazol, ivermectina,
+  valsartan, carvedilol, metoprolol, espironolactona, furosemida,
 ].map(conRevision);
 
 export const PAGINAS_VADEMECUM = [...GRUPOS_VADEMECUM, ...MONOGRAFIAS];

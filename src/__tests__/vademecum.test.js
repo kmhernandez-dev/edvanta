@@ -49,6 +49,7 @@ describe('vademécum', () => {
         'loratadina', 'cetirizina', 'desloratadina', 'clorfeniramina', 'hidroxizina', 'montelukast', 'salbutamol', 'acetilcisteina',
         'sertralina', 'fluoxetina', 'amitriptilina', 'trazodona', 'quetiapina', 'clonazepam', 'pregabalina', 'gabapentina',
         'fluconazol', 'clotrimazol', 'nistatina', 'ketoconazol', 'aciclovir', 'albendazol', 'ivermectina',
+        'valsartan', 'carvedilol', 'metoprolol', 'espironolactona', 'furosemida',
       ].sort(),
     );
     const slugs = PAGINAS_VADEMECUM.map((p) => p.slug);

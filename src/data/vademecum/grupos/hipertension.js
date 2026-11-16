@@ -11,7 +11,7 @@ export default {
   slug: 'medicamentos-para-la-hipertension-arterial',
   nombre: 'Medicamentos para la hipertensión arterial',
   titulo: 'Medicamentos para la hipertensión arterial: farmacología, evidencia y atención farmacéutica',
-  actualizado: '2026-11-12',
+  actualizado: '2026-11-16',
   resumen: 'La hipertensión arterial es el factor de riesgo modificable más importante de enfermedad cardiovascular y renal. Los cuatro grupos de primera línea actúan por vías distintas: los IECA reducen la formación de angiotensina II, los ARA-II bloquean su receptor, los calcioantagonistas relajan el músculo arterial y los diuréticos tiazídicos favorecen la eliminación de sodio. Este grupo reúne su farmacología, la evidencia de los ensayos pivotales, las combinaciones recomendadas, la monitorización de la seguridad y la atención farmacéutica con el modelo de Minnesota.',
   datosClave: [
     ['Grupos ATC', 'C09 (IECA y ARA-II), C08 (calcioantagonistas) y C03 (diuréticos)'],
@@ -90,6 +90,35 @@ export default {
       ],
     },
     {
+      id: 'betabloqueadores-y-otros-diureticos',
+      titulo: 'Betabloqueadores, antagonistas de la aldosterona y diuréticos de asa',
+      bloques: [
+        'Más allá de los cuatro grupos de primera línea, el tratamiento cardiovascular incluye un ARA-II con indicación en insuficiencia cardiaca (valsartán), dos betabloqueadores (carvedilol y metoprolol), un antagonista de la aldosterona (espironolactona) y un diurético de asa (furosemida). Cada uno tiene una regla de seguridad propia [13-17].',
+        { tabla: {
+          columnas: ['', 'Dosis de referencia', 'Regla de seguridad'],
+          filas: [
+            ['Valsartán', '80 a 320 mg al día en hipertensión [13]', 'Contraindicado en el 2.º y 3.er trimestre del embarazo [13]'],
+            ['Carvedilol', '3,125 mg dos veces al día al iniciar en insuficiencia cardiaca [14]', 'No suspender de golpe [14]'],
+            ['Metoprolol', '100 a 200 mg al día en hipertensión [15]', 'Contraindicado en asma y bloqueos AV [15]'],
+            ['Espironolactona', '25 mg al día en insuficiencia cardiaca [16]', 'Hiperpotasemia con IECA, ARA-II y AINE [16]'],
+            ['Furosemida', '20 a 80 mg al día al iniciar [17]', 'Electrolitos y deshidratación [17]'],
+          ],
+        } },
+        { barras: {
+          titulo: 'Registros sanitarios vigentes en Colombia por código ATC',
+          datos: [
+            { etiqueta: 'Valsartán', valor: 19 },
+            { etiqueta: 'Metoprolol', valor: 16 },
+            { etiqueta: 'Espironolactona', valor: 15 },
+            { etiqueta: 'Carvedilol', valor: 13 },
+            { etiqueta: 'Furosemida', valor: 10 },
+          ],
+          nota: 'CUM del INVIMA, consulta del 16-nov-2026 [18].',
+        } },
+        { alerta: { tono: 'alto', titulo: 'La combinación que más vigila el farmacéutico', texto: 'Espironolactona con un IECA o un ARA-II y un AINE: riesgo de hiperpotasemia grave [16].' } },
+      ],
+    },
+    {
       id: 'atencion-farmaceutica',
       titulo: 'Atención farmacéutica en hipertensión: el modelo de Minnesota',
       destacado: true,
@@ -133,6 +162,7 @@ export default {
   referencias: [
     F.omsHipertension, F.cacHipertension, F.invimaCum, F.escHipertension2024, F.life, F.renaal,
     F.solvdTratamiento, F.solvdPrevencion, F.allhat, F.wright2018, F.cipolle2012, F.ramalho2012,
+    F.ftValsartan, F.ftCarvedilol, F.ftMetoprolol, F.ftEspironolactona, F.ftFurosemida, F.invimaCum16,
   ],
   enlaces: [
     ['Presión alta: valores, síntomas y cómo bajarla', '/articulos/presion-alta-sintomas-y-como-bajarla'],

@@ -292,6 +292,11 @@ export const F = {
   ftAciclovir: ft16('Aciclovir Cinfa 800 mg comprimidos EFG', '85061'),
   ftAlbendazol: ft16('Eskazole 400 mg comprimidos', '60407'),
   ftIvermectina: ft16('Ivergalen 3 mg comprimidos EFG', '85728'),
+  ftValsartan: ft16('Diovan 160 mg comprimidos recubiertos con película', '64473'),
+  ftCarvedilol: ft16('Coropres 25 mg comprimidos', '59695'),
+  ftMetoprolol: ft16('Lopresor 100 mg comprimidos recubiertos con película', '54503'),
+  ftEspironolactona: ft16('Aldactone 25 mg comprimidos recubiertos con película', '39059'),
+  ftFurosemida: ft16('Seguril 40 mg comprimidos', '39969'),
   whoccAtc: {
     texto: `WHO Collaborating Centre for Drug Statistics Methodology. ATC/DDD Index [Internet]. Oslo: Norwegian Institute of Public Health; [${CITADO_16}]. Disponible en: https://atcddd.fhi.no/atc_ddd_index/`,
     url: 'https://atcddd.fhi.no/atc_ddd_index/',
