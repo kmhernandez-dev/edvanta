@@ -162,3 +162,8 @@ Se anota una fila nueva en las tablas de arriba. El indicador principal es **pá
   - Monografías de diclofenaco, ibuprofeno, naproxeno y acetaminofén, en `noindex` hasta la revisión.
   - La página del grupo pasa a 11 fármacos.
   - Las 4 fichas aprobadas de esos medicamentos ahora enlazan a su monografía, al grupo y al curso gratis de Farmacología del SNC; es el camino de rastreo desde la ficha de diclofenaco, la que más tráfico trae.
+- **Producción (16-nov, verificado con rastreo externo):**
+  - `/vademecum/meloxicam`, `/vademecum/diclofenaco` y `/articulos/meloxicam-para-que-sirve` responden 200 con `noindex,follow` y el contenido completo en el HTML.
+  - `/articulos/diclofenaco-para-que-sirve` sigue en `index,follow` y ya enlaza al vademécum.
+  - **Riesgo:** durante el redespliegue, todo el sitio respondió «404 page not found» del proxy de Coolify al menos 2 minutos (comprobado a las 14:17 y 14:19 UTC; a las 14:26 ya respondía). Cada push a `main` deja el sitio caído un rato y Google puede rastrear ese 404.
+  - Conviene agrupar los despliegues y revisar en Coolify si el servicio puede actualizarse sin bajar el contenedor anterior (healthcheck y rolling update).
