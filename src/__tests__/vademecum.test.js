@@ -28,6 +28,7 @@ describe('vademécum', () => {
         'medicamentos-para-el-aparato-digestivo',
         'corticoides-sistemicos',
         'alergia-y-vias-respiratorias',
+        'salud-mental-y-sistema-nervioso',
       ].sort(),
     );
     expect(MONOGRAFIAS.map((m) => m.slug).sort()).toEqual(
@@ -45,6 +46,7 @@ describe('vademécum', () => {
         'omeprazol', 'esomeprazol', 'lansoprazol', 'metoclopramida', 'domperidona', 'ondansetron', 'dimenhidrinato', 'butilescopolamina', 'simeticona', 'loperamida', 'bisacodilo', 'lactulosa',
         'prednisona', 'prednisolona', 'dexametasona', 'betametasona', 'hidrocortisona',
         'loratadina', 'cetirizina', 'desloratadina', 'clorfeniramina', 'hidroxizina', 'montelukast', 'salbutamol', 'acetilcisteina',
+        'sertralina', 'fluoxetina', 'amitriptilina', 'trazodona', 'quetiapina', 'clonazepam', 'pregabalina', 'gabapentina',
       ].sort(),
     );
     const slugs = PAGINAS_VADEMECUM.map((p) => p.slug);

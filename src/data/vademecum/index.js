@@ -103,10 +103,19 @@ import hidroxizina from './monografias/hidroxizina.js';
 import montelukast from './monografias/montelukast.js';
 import salbutamol from './monografias/salbutamol.js';
 import acetilcisteina from './monografias/acetilcisteina.js';
+import saludMentalYSistemaNervioso from './grupos/salud-mental-y-sistema-nervioso.js';
+import sertralina from './monografias/sertralina.js';
+import fluoxetina from './monografias/fluoxetina.js';
+import amitriptilina from './monografias/amitriptilina.js';
+import trazodona from './monografias/trazodona.js';
+import quetiapina from './monografias/quetiapina.js';
+import clonazepam from './monografias/clonazepam.js';
+import pregabalina from './monografias/pregabalina.js';
+import gabapentina from './monografias/gabapentina.js';
 
 const conRevision = (p) => ({ ...p, ...(REVISION_VADEMECUM[p.slug] || {}) });
 
-export const GRUPOS_VADEMECUM = [obesidad, hipertension, diabetes, oncologiaAltoCosto, dislipidemia, anticoagulacion, antibioticos, dolorEInflamacion, aparatoDigestivo, corticoidesSistemicos, alergiaYViasRespiratorias].map(conRevision);
+export const GRUPOS_VADEMECUM = [obesidad, hipertension, diabetes, oncologiaAltoCosto, dislipidemia, anticoagulacion, antibioticos, dolorEInflamacion, aparatoDigestivo, corticoidesSistemicos, alergiaYViasRespiratorias, saludMentalYSistemaNervioso].map(conRevision);
 
 export const MONOGRAFIAS = [
   semaglutida, tirzepatida, liraglutida, orlistat, naltrexonaBupropion, setmelanotida,
@@ -122,6 +131,7 @@ export const MONOGRAFIAS = [
   omeprazol, esomeprazol, lansoprazol, metoclopramida, domperidona, ondansetron, dimenhidrinato, butilescopolamina, simeticona, loperamida, bisacodilo, lactulosa,
   prednisona, prednisolona, dexametasona, betametasona, hidrocortisona,
   loratadina, cetirizina, desloratadina, clorfeniramina, hidroxizina, montelukast, salbutamol, acetilcisteina,
+  sertralina, fluoxetina, amitriptilina, trazodona, quetiapina, clonazepam, pregabalina, gabapentina,
 ].map(conRevision);
 
 export const PAGINAS_VADEMECUM = [...GRUPOS_VADEMECUM, ...MONOGRAFIAS];
