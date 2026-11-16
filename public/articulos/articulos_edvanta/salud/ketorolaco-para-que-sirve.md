@@ -75,6 +75,10 @@ No más de 7 días en total, contando la inyección y las tabletas.
 
 Para el dolor después de una cirugía, aplicado por personal de salud. En Colombia la mayoría de los registros de ketorolaco son soluciones inyectables [2]. La inyección tiene los mismos riesgos que las tabletas.
 
+### ¿Existe el ketorolaco sublingual?
+
+Sí. En Colombia hay registrada una tableta sublingual de ketorolaco, que se deja disolver debajo de la lengua [2]. Tiene las mismas precauciones que las demás presentaciones y el mismo límite de días.
+
 ## Fuentes
 
 1. Agencia Española de Medicamentos y Productos Sanitarios (AEMPS). Ficha técnica de Ketorolaco trometamol Qualigen 10 mg comprimidos recubiertos con película EFG, consultada el 16-nov-2026. [Ver fuente](https://cima.aemps.es/cima/dochtml/ft/70105/FT_70105.html)

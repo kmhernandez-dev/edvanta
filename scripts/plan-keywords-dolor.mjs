@@ -45,8 +45,7 @@ const EXCLUIR = [
 // Búsquedas del grupo que no responde esta página.
 const FUERA_DEL_GRUPO = /natural|dieta|alimentos|plantas|hierbas|frutas|desayunos|aceite|aromaticas|^te para|vitamina|jacobson|como relajar|aparatos|spray|crema|\bgel\b|pastas?\b|esteroideos$|infeccion urinaria|hemorroides|garganta|amigdalitis|herpes|fascitis|epicondilitis|ciatica|bruxismo|tizanidina|ciclobenzaprina|benzodiacepinas|bioflex|complejo b|odontologia|fibromialgia|torticolis|mandibula|cuello|para dormir|pastilla azul|para niños|dolor de muela|rodilla|buscapina|mejor antiinflamatorio para/;
 const PENDIENTE = [
-  ['verificar presentación sublingual en el CUM', /sublingual|debajo de la lengua/],
-  ['verificar combinación en el CUM antes de responder', /isometepteno|cafeina|dipirona compuesta|esomeprazol|dexametasona|ketorolaco (con )?tramadol|tramadol compuesto|metocarbamol compuesto/],
+  ['verificar combinación en el CUM antes de responder', /isometepteno|cafeina|dexametasona|ketorolaco (con )?tramadol/],
 ];
 const PROFESIONAL = /mecanismo|farmacocin|farmacodin|posologia|grupo farmacologico|que grupo pertenece|grupo pertenece|estructura|\bcox\b|clorhidrato|trometamina|tromethamine|vademecum|cuidados de enfermeria|categoria embarazo|via de administracion|intravenos[oa]|\biv\b|\bev\b|subcutaneo|intramuscular|concentracion|composicion|componentes?|que contiene|indicaciones del|efectos adversos|reacciones adversas|en ingles|es un opioide|opioide/;
 

@@ -68,6 +68,10 @@ En el primer y segundo trimestre no se recomienda; solo se acepta una dosis úni
 
 En Colombia hay productos que combinan la dipirona con butilescopolamina, también llamada hioscina, como la Buscapina Compositum [2]. La hioscina relaja el músculo del intestino y la dipirona calma el dolor, por eso la combinación se usa en cólicos. Suma los riesgos de ambos: la agranulocitosis y la presión baja de la dipirona, y la boca seca, las palpitaciones, la dificultad para orinar y el estreñimiento de la hioscina. No es intercambiable con la [Buscapina](/articulos/buscapina-para-que-sirve) sola, y no se toma junto con otra dipirona.
 
+## Otras combinaciones con dipirona
+
+Además de la combinación con hioscina, en Colombia hay productos que combinan la dipirona con otros principios activos, en tabletas y en solución oral [2]. Antes de tomar uno, revisa la caja: si ya tomas dipirona sola, no sumes otro producto que también la contenga.
+
 ## Dipirona en Colombia
 
 El Código Único de Medicamentos del INVIMA registra 29 registros sanitarios vigentes con dipirona o metamizol, la mayoría en solución inyectable y el resto en tabletas [2].

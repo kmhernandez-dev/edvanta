@@ -106,6 +106,10 @@ El sueño no está entre sus efectos frecuentes; el efecto frecuente del sistema
 
 No son sus indicaciones aprobadas [1]. Para un dolor ocasional, pregunta por opciones como el acetaminofén; para un dolor de muela, consulta al odontólogo.
 
+### ¿Hay meloxicam con protector gástrico?
+
+Sí. En Colombia hay productos que combinan el meloxicam con otros principios activos, entre ellos uno con esomeprazol, un protector del estómago [2]. El protector reduce la irritación del estómago, pero no quita los riesgos del meloxicam para el riñón, la presión y el corazón.
+
 ## Fuentes
 
 1. Agencia Española de Medicamentos y Productos Sanitarios (AEMPS). Ficha técnica de Meloxicam Cinfa 15 mg comprimidos EFG, consultada el 16-nov-2026. [Ver fuente](https://cima.aemps.es/cima/dochtml/ft/69094/FT_69094.html)
