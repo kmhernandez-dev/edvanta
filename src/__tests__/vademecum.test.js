@@ -29,6 +29,7 @@ describe('vademécum', () => {
         'corticoides-sistemicos',
         'alergia-y-vias-respiratorias',
         'salud-mental-y-sistema-nervioso',
+        'antimicoticos-antivirales-y-antiparasitarios',
       ].sort(),
     );
     expect(MONOGRAFIAS.map((m) => m.slug).sort()).toEqual(
@@ -47,6 +48,7 @@ describe('vademécum', () => {
         'prednisona', 'prednisolona', 'dexametasona', 'betametasona', 'hidrocortisona',
         'loratadina', 'cetirizina', 'desloratadina', 'clorfeniramina', 'hidroxizina', 'montelukast', 'salbutamol', 'acetilcisteina',
         'sertralina', 'fluoxetina', 'amitriptilina', 'trazodona', 'quetiapina', 'clonazepam', 'pregabalina', 'gabapentina',
+        'fluconazol', 'clotrimazol', 'nistatina', 'ketoconazol', 'aciclovir', 'albendazol', 'ivermectina',
       ].sort(),
     );
     const slugs = PAGINAS_VADEMECUM.map((p) => p.slug);

@@ -112,10 +112,18 @@ import quetiapina from './monografias/quetiapina.js';
 import clonazepam from './monografias/clonazepam.js';
 import pregabalina from './monografias/pregabalina.js';
 import gabapentina from './monografias/gabapentina.js';
+import antimicoticosAntiviralesYAntiparasitarios from './grupos/antimicoticos-antivirales-y-antiparasitarios.js';
+import fluconazol from './monografias/fluconazol.js';
+import clotrimazol from './monografias/clotrimazol.js';
+import nistatina from './monografias/nistatina.js';
+import ketoconazol from './monografias/ketoconazol.js';
+import aciclovir from './monografias/aciclovir.js';
+import albendazol from './monografias/albendazol.js';
+import ivermectina from './monografias/ivermectina.js';
 
 const conRevision = (p) => ({ ...p, ...(REVISION_VADEMECUM[p.slug] || {}) });
 
-export const GRUPOS_VADEMECUM = [obesidad, hipertension, diabetes, oncologiaAltoCosto, dislipidemia, anticoagulacion, antibioticos, dolorEInflamacion, aparatoDigestivo, corticoidesSistemicos, alergiaYViasRespiratorias, saludMentalYSistemaNervioso].map(conRevision);
+export const GRUPOS_VADEMECUM = [obesidad, hipertension, diabetes, oncologiaAltoCosto, dislipidemia, anticoagulacion, antibioticos, dolorEInflamacion, aparatoDigestivo, corticoidesSistemicos, alergiaYViasRespiratorias, saludMentalYSistemaNervioso, antimicoticosAntiviralesYAntiparasitarios].map(conRevision);
 
 export const MONOGRAFIAS = [
   semaglutida, tirzepatida, liraglutida, orlistat, naltrexonaBupropion, setmelanotida,
@@ -132,6 +140,7 @@ export const MONOGRAFIAS = [
   prednisona, prednisolona, dexametasona, betametasona, hidrocortisona,
   loratadina, cetirizina, desloratadina, clorfeniramina, hidroxizina, montelukast, salbutamol, acetilcisteina,
   sertralina, fluoxetina, amitriptilina, trazodona, quetiapina, clonazepam, pregabalina, gabapentina,
+  fluconazol, clotrimazol, nistatina, ketoconazol, aciclovir, albendazol, ivermectina,
 ].map(conRevision);
 
 export const PAGINAS_VADEMECUM = [...GRUPOS_VADEMECUM, ...MONOGRAFIAS];

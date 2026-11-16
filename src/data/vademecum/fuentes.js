@@ -285,6 +285,13 @@ export const F = {
   ftClonazepam: ft16('Rivotril 0,5 mg comprimidos', '52334'),
   ftPregabalina: ft16('Pregabalina Cinfa 75 mg cápsulas duras EFG', '79274'),
   ftGabapentina: ft16('Neurontin 300 mg cápsulas duras', '60621'),
+  ftFluconazol: ft16('Diflucan 150 mg cápsulas duras', '58766'),
+  ftClotrimazol: ft16('Canesten 10 mg/g crema', '52626'),
+  ftNistatina: ft16('Mycostatin 100.000 UI/ml suspensión oral', '28262'),
+  ftKetoconazol: ft16('Fungarest 20 mg/g crema', '57595'),
+  ftAciclovir: ft16('Aciclovir Cinfa 800 mg comprimidos EFG', '85061'),
+  ftAlbendazol: ft16('Eskazole 400 mg comprimidos', '60407'),
+  ftIvermectina: ft16('Ivergalen 3 mg comprimidos EFG', '85728'),
   whoccAtc: {
     texto: `WHO Collaborating Centre for Drug Statistics Methodology. ATC/DDD Index [Internet]. Oslo: Norwegian Institute of Public Health; [${CITADO_16}]. Disponible en: https://atcddd.fhi.no/atc_ddd_index/`,
     url: 'https://atcddd.fhi.no/atc_ddd_index/',
