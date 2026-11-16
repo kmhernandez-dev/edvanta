@@ -1,0 +1,958 @@
+export const CURSO = 'Curso de Farmacología Endocrina';
+export const MIGRACION = '147_experiencias_farmacologia_endocrina_1.sql';
+
+export const CLASES = [
+  {
+    titulo: 'Introducción al curso: farmacología endocrina para el QF en Colombia',
+    duracion: 20,
+    gancho: {
+      titulo: 'La hormona que se ajusta con datos',
+      texto: 'Una paciente con hipotiroidismo cambia de marca de levotiroxina y vuelve con TSH alta. La farmacología endocrina exige entender absorción, interacciones y metas. El químico farmacéutico puede detectar lo que la fórmula no dice.',
+    },
+    objetivos: [
+      'Reconocer el alcance de la farmacología endocrina.',
+      'Identificar el rol del QF.',
+      'Conocer las guías de referencia.',
+      'Aplicar el contexto colombiano.',
+    ],
+    conceptos: [
+      { icono: 'Activity', termino: 'Endocrinología', definicion: 'Hormonas, ejes y metabolismo.' },
+      { icono: 'Pill', termino: 'Farmacoterapia', definicion: 'Selección, ajuste y seguimiento.' },
+      { icono: 'Users', termino: 'Educación', definicion: 'Técnica, adherencia y autocuidado.' },
+      { icono: 'Landmark', termino: 'PBS', definicion: 'Cobertura de medicamentos en Colombia.' },
+    ],
+    mapa: {
+      centro: 'Farmacología endocrina',
+      ramas: [
+        { titulo: 'Diabetes', icono: 'TestTube', nodos: ['Insulina', 'Metformina', 'GLP-1', 'SGLT2'] },
+        { titulo: 'Tiroides', icono: 'Activity', nodos: ['Levotiroxina', 'Metimazol', 'PTU'] },
+        { titulo: 'Hueso', icono: 'ShieldCheck', nodos: ['Calcio', 'Bisfosfonatos', 'Denosumab'] },
+        { titulo: 'Hormonas', icono: 'Users', nodos: ['Glucocorticoides', 'Sexuales', 'Hipófisis'] },
+      ],
+    },
+    secciones: [
+      {
+        titulo: 'Por qué este curso',
+        parrafos: [
+          'La farmacología endocrina abarca la diabetes, la obesidad, las enfermedades tiroideas, los glucocorticoides, la osteoporosis, la hipófisis y las hormonas sexuales. Son tratamientos crónicos, con ajustes frecuentes y un alto impacto en la calidad de vida.',
+          'El curso integra las guías colombianas, la ADA Standards of Care 2026, la evidencia internacional y el contexto del PBS, MIPRES y la farmacovigilancia del INVIMA. Cada clase termina con un caso aplicado y una intervención del químico farmacéutico.',
+        ],
+      },
+      {
+        titulo: 'El rol del QF',
+        parrafos: [
+          'El QF participa en la dispensación informada, la educación sobre técnica y adherencia, la revisión de interacciones y el seguimiento farmacoterapéutico. En diabetes, ayuda con la insulina, los dispositivos y la hipoglucemia. En tiroides, con la absorción y las interacciones. En osteoporosis, con la adherencia y la secuencia.',
+          'También detecta problemas relacionados con medicamentos, propone ajustes y reporta reacciones adversas. La farmacología endocrina exige leer laboratorios y tendencias, no solo la receta del día.',
+        ],
+      },
+      {
+        titulo: 'Guías y contexto',
+        parrafos: [
+          'Las referencias son la Guía de Práctica Clínica de diabetes del Ministerio de Salud, la ADA Standards of Care 2026, las guías de tiroides y osteoporosis y las fichas técnicas aprobadas por el INVIMA. En Colombia se suman el PBS, los mecanismos de acceso y las rutas de atención.',
+          'La meta es formar criterio para elegir, ajustar y educar con seguridad. La endocrinología requiere paciencia y seguimiento: los cambios se miden en semanas o meses, y la adherencia es determinante.',
+        ],
+      },
+    ],
+    proceso: {
+      titulo: 'Cómo estudiar el curso',
+      pasos: [
+        { titulo: 'Contextualizar', detalle: 'Leer el caso y la meta.', icono: 'Target', evidencia: 'Meta.' },
+        { titulo: 'Comprender', detalle: 'Mecanismo y ejes.', icono: 'BookOpen', evidencia: 'Notas.' },
+        { titulo: 'Aplicar', detalle: 'Resolver el caso.', icono: 'Workflow', evidencia: 'Decisión.' },
+        { titulo: 'Verificar', detalle: 'Responder las comprobaciones.', icono: 'ClipboardCheck', evidencia: 'Resultado.' },
+        { titulo: 'Transferir', detalle: 'Llevarlo a la práctica.', icono: 'Repeat', evidencia: 'Plan.' },
+      ],
+    },
+    caso: {
+      titulo: 'Cambio de marca de levotiroxina',
+      contexto: 'Paciente con hipotiroidismo estable que cambia de marca y presenta TSH elevada.',
+      pregunta: '¿Qué revisa el QF?',
+      opciones: [
+        { texto: 'Solo la dosis.', correcta: false, retro: 'La absorción y la marca importan.' },
+        { texto: 'Absorción, interacciones y adherencia.', correcta: true, retro: 'Explica el cambio de TSH.' },
+        { texto: 'Suspender el tratamiento.', correcta: false, retro: 'Empeoraría el hipotiroidismo.' },
+      ],
+    },
+    errores: [
+      { error: 'Ver solo la receta.', correccion: 'La adherencia y la absorción importan.' },
+      { error: 'Ignorar el contexto de acceso.', correccion: 'El PBS condiciona la continuidad.' },
+      { error: 'No educar sobre técnica.', correccion: 'Es clave en insulina y osteo.' },
+    ],
+    comprueba: [
+      { pregunta: '¿Qué áreas cubre el curso?', respuesta: 'Diabetes, tiroides, hueso, hormonas y obesidad.' },
+      { pregunta: '¿Qué guía de diabetes se usa?', respuesta: 'La GPC MinSalud y ADA 2026.' },
+      { pregunta: '¿Qué aporta el QF?', respuesta: 'Educación, revisión y seguimiento.' },
+    ],
+    resumen: [
+      'La endocrinología es crónica y ajustable.',
+      'El QF interviene en todo el ciclo.',
+      'Las guías y el contexto colombiano se integran.',
+      'Cada clase termina en un caso.',
+    ],
+    referencias: [
+      { cita: 'American Diabetes Association. Standards of Care in Diabetes—2026. Diabetes Care. 2026;49(Suppl 1).', url: 'https://diabetesjournals.org/care/issue/49/Supplement_1' },
+      { cita: 'Ministerio de Salud y Protección Social. Guía de práctica clínica de diabetes mellitus tipo 2. Bogotá.', url: 'https://www.minsalud.gov.co/' },
+    ],
+    imagenes: [
+      { ubicacion: 'Introducción', descripcion: 'Farmacéutico revisando un esquema endocrino.', alt: 'Introducción a la farmacología endocrina' },
+    ],
+    keywords: ['farmacología endocrina', 'rol químico farmacéutico', 'diabetes', 'tiroides'],
+  },
+  {
+    titulo: 'Fisiopatología de la DM1 y DM2 y dianas farmacológicas',
+    duracion: 20,
+    gancho: {
+      titulo: 'Dos diabetes, dos lógicas',
+      texto: 'En la DM1 falta insulina por destrucción autoinmune; en la DM2 hay resistencia y falla progresiva de la célula beta. Entender la diferencia explica por qué la insulina es indispensable en una y no siempre en la otra.',
+    },
+    objetivos: [
+      'Diferenciar la DM1 y la DM2.',
+      'Reconocer las dianas farmacológicas.',
+      'Conectar fisiopatología y tratamiento.',
+      'Aplicar el concepto de falla progresiva.',
+    ],
+    conceptos: [
+      { icono: 'ShieldCheck', termino: 'DM1', definicion: 'Destrucción autoinmune de la célula beta.' },
+      { icono: 'Activity', termino: 'DM2', definicion: 'Resistencia a la insulina y falla beta.' },
+      { icono: 'Database', termino: 'Incretinas', definicion: 'GLP-1 y GIP; efecto sobre la insulina.' },
+      { icono: 'Droplets', termino: 'SGLT2', definicion: 'Reabsorción renal de glucosa.' },
+    ],
+    mapa: {
+      centro: 'Fisiopatología',
+      ramas: [
+        { titulo: 'DM1', icono: 'ShieldCheck', nodos: ['Autoinmune', 'Déficit absoluto', 'Insulina'] },
+        { titulo: 'DM2', icono: 'Activity', nodos: ['Resistencia', 'Falla beta', 'Incretinas'] },
+        { titulo: 'Hígado', icono: 'Database', nodos: ['Gluconeogénesis', 'Metformina'] },
+        { titulo: 'Riñón', icono: 'Droplets', nodos: ['SGLT2', 'Glucosuria', 'Beneficio'] },
+      ],
+    },
+    secciones: [
+      {
+        titulo: 'DM1',
+        parrafos: [
+          'La diabetes tipo 1 es una enfermedad autoinmune en la que las células beta del páncreas se destruyen y la insulina falta de forma absoluta. Puede presentarse con cetoacidosis. El tratamiento es la insulina desde el diagnóstico, con esquemas basal-bolo o bomba.',
+          'La fisiopatología explica la necesidad de contar carbohidratos, ajustar dosis y prevenir hipoglucemias. La educación y la tecnología son parte del tratamiento, no un complemento.',
+        ],
+      },
+      {
+        titulo: 'DM2',
+        parrafos: [
+          'La diabetes tipo 2 combina resistencia a la insulina en músculo, hígado y tejido adiposo con una falla progresiva de la célula beta. También hay defecto de incretinas, exceso de glucagón, mayor reabsorción renal de glucosa e inflamación. La enfermedad es heterogénea y cambia con el tiempo.',
+          'Las dianas farmacológicas reflejan esa fisiopatología: metformina reduce la producción hepática de glucosa; sulfonilureas estimulan la insulina; pioglitazona mejora la sensibilidad; los inhibidores de DPP-4 y los agonistas de GLP-1 actúan sobre las incretinas; los iSGLT2 aumentan la glucosuria; la insulina reemplaza la deficiencia.',
+        ],
+      },
+      {
+        titulo: 'Consecuencias clínicas',
+        parrafos: [
+          'La falla progresiva explica por qué muchos pacientes necesitan intensificar el tratamiento con el tiempo. No es un fracaso del paciente ni del médico. La elección se centra en las comorbilidades: enfermedad cardiovascular, insuficiencia cardíaca, enfermedad renal y obesidad.',
+          'El QF traduce la fisiopatología en educación: por qué se toma cada fármaco, qué esperar y cómo reconocer la hipoglucemia. La comprensión mejora la adherencia y la seguridad.',
+        ],
+      },
+    ],
+    proceso: {
+      titulo: 'Del mecanismo al fármaco',
+      pasos: [
+        { titulo: 'Tipo', detalle: 'DM1 o DM2.', icono: 'Search', evidencia: 'Diagnóstico.' },
+        { titulo: 'Mecanismo', detalle: 'Déficit o resistencia.', icono: 'BookOpen', evidencia: 'Notas.' },
+        { titulo: 'Diana', detalle: 'Hígado, beta, riñón o incretinas.', icono: 'Target', evidencia: 'Fármaco.' },
+        { titulo: 'Elegir', detalle: 'Comorbilidad y meta.', icono: 'Pill', evidencia: 'Fórmula.' },
+        { titulo: 'Educar', detalle: 'Propósito y seguridad.', icono: 'Users', evidencia: 'Consejería.' },
+      ],
+    },
+    caso: {
+      titulo: 'DM1 de inicio',
+      contexto: 'Joven con sed, poliuria, pérdida de peso y cetonas.',
+      pregunta: '¿Qué tratamiento es indispensable?',
+      opciones: [
+        { texto: 'Metformina.', correcta: false, retro: 'No reemplaza la insulina.' },
+        { texto: 'Insulina.', correcta: true, retro: 'Hay déficit absoluto.' },
+        { texto: 'Solo dieta.', correcta: false, retro: 'No es suficiente.' },
+      ],
+    },
+    errores: [
+      { error: 'Tratar la DM1 sin insulina.', correccion: 'Riesgo de cetoacidosis.' },
+      { error: 'Creer que la DM2 es estática.', correccion: 'Es progresiva.' },
+      { error: 'Elegir sin comorbilidad.', correccion: 'La diana importa.' },
+    ],
+    comprueba: [
+      { pregunta: '¿Qué falta en la DM1?', respuesta: 'Insulina de forma absoluta.' },
+      { pregunta: '¿Qué caracteriza la DM2?', respuesta: 'Resistencia y falla beta progresiva.' },
+      { pregunta: '¿Qué fármaco reduce la glucosa hepática?', respuesta: 'La metformina.' },
+    ],
+    resumen: [
+      'DM1 y DM2 tienen fisiopatologías distintas.',
+      'La DM2 es progresiva y heterogénea.',
+      'Las dianas explican los fármacos.',
+      'La educación traduce el mecanismo.',
+    ],
+    referencias: [
+      { cita: 'American Diabetes Association. 2. Diagnosis and Classification of Diabetes: Standards of Care in Diabetes—2026. Diabetes Care. 2026;49(Suppl 1).', url: 'https://diabetesjournals.org/care/issue/49/Supplement_1' },
+    ],
+    imagenes: [
+      { ubicacion: 'Fisiopatología', descripcion: 'Comparación de DM1 y DM2 con sus dianas.', alt: 'Fisiopatología de la diabetes tipo 1 y tipo 2' },
+    ],
+    keywords: ['fisiopatología diabetes', 'DM1', 'DM2', 'incretinas', 'SGLT2'],
+  },
+  {
+    titulo: 'Metas glucémicas y guías: GPC MinSalud/IETS y ADA Standards of Care 2026',
+    duracion: 20,
+    gancho: {
+      titulo: 'La meta no es la misma para todos',
+      texto: 'Un adulto joven sin complicaciones y un anciano frágil con hipoglucemias no comparten la misma meta de HbA1c. Individualizar evita el daño por sobretratamiento y por abandono.',
+    },
+    objetivos: [
+      'Aplicar metas individualizadas.',
+      'Interpretar HbA1c y tiempo en rango.',
+      'Reconocer las guías de referencia.',
+      'Ajustar según riesgo de hipoglucemia.',
+    ],
+    conceptos: [
+      { icono: 'Target', termino: 'HbA1c', definicion: 'Promedio de glucosa de 2-3 meses.' },
+      { icono: 'Timer', termino: 'Tiempo en rango', definicion: 'Porcentaje de glucosa entre 70 y 180.' },
+      { icono: 'Users', termino: 'Individualización', definicion: 'Meta según edad y comorbilidad.' },
+      { icono: 'AlertTriangle', termino: 'Hipoglucemia', definicion: 'Límite del tratamiento intensivo.' },
+    ],
+    mapa: {
+      centro: 'Metas glucémicas',
+      ramas: [
+        { titulo: 'HbA1c', icono: 'Target', nodos: ['<7 %', 'Individualizar', 'Riesgo'] },
+        { titulo: 'TIR', icono: 'Timer', nodos: ['>70 %', 'CGM', 'Variabilidad'] },
+        { titulo: 'Guías', icono: 'BookOpen', nodos: ['GPC MinSalud', 'ADA 2026'] },
+        { titulo: 'Poblaciones', icono: 'Users', nodos: ['Joven', 'Anciano', 'Frágil'] },
+      ],
+    },
+    secciones: [
+      {
+        titulo: 'Metas',
+        parrafos: [
+          'La meta general de HbA1c es menor de 7 % para muchos adultos no embarazadas. Se individualiza: más estricta en pacientes jóvenes, con poca comorbilidad y bajo riesgo de hipoglucemia; menos estricta en ancianos frágiles, con comorbilidades graves o hipoglucemias recurrentes. La meta se acuerda con el paciente.',
+          'El tiempo en rango, medido con monitorización continua, complementa la HbA1c. Un tiempo en rango mayor de 70 % entre 70 y 180 mg/dL se considera adecuado para muchos pacientes. La variabilidad y el tiempo en hipoglucemia también importan.',
+        ],
+      },
+      {
+        titulo: 'Guías',
+        parrafos: [
+          'La Guía de Práctica Clínica colombiana y la ADA Standards of Care 2026 coinciden en la individualización, el enfoque en comorbilidades y la importancia de la educación. La ADA actualiza cada año las recomendaciones de tratamiento y tecnología.',
+          'Las guías no sustituyen el juicio clínico. El QF revisa si la meta es realista, si el esquema puede alcanzarla sin hipoglucemia y si el paciente comprende el plan.',
+        ],
+      },
+      {
+        titulo: 'Aplicación',
+        parrafos: [
+          'El QF revisa la HbA1c, el tiempo en rango, el uso de rescate y las hipoglucemias. Si la meta no se alcanza, revisa adherencia, técnica, dosis y barreras. Si hay hipoglucemias, revisa el esquema y la educación antes de intensificar.',
+          'La meta debe medirse y reevaluarse. Un cambio de tratamiento sin seguimiento es una oportunidad perdida. La educación sobre qué significa la HbA1c mejora la participación del paciente.',
+        ],
+      },
+    ],
+    proceso: {
+      titulo: 'Definir la meta',
+      pasos: [
+        { titulo: 'Evaluar', detalle: 'Edad, comorbilidad y riesgo.', icono: 'ClipboardList', evidencia: 'Ficha.' },
+        { titulo: 'Medir', detalle: 'HbA1c y TIR.', icono: 'TestTube', evidencia: 'Laboratorio.' },
+        { titulo: 'Acordar', detalle: 'Meta realista.', icono: 'Users', evidencia: 'Acuerdo.' },
+        { titulo: 'Tratar', detalle: 'Esquema y educación.', icono: 'Pill', evidencia: 'Plan.' },
+        { titulo: 'Reevaluar', detalle: 'Control y ajuste.', icono: 'Repeat', evidencia: 'Seguimiento.' },
+      ],
+    },
+    caso: {
+      titulo: 'Anciano frágil',
+      contexto: 'Paciente de 84 años, frágil, con hipoglucemias recurrentes y HbA1c de 6,5 %.',
+      pregunta: '¿Qué hace el QF?',
+      opciones: [
+        { texto: 'Intensificar para bajar más.', correcta: false, retro: 'El riesgo de hipoglucemia es alto.' },
+        { texto: 'Relajar la meta y revisar el esquema.', correcta: true, retro: 'La seguridad es prioritaria.' },
+        { texto: 'Suspender todo tratamiento.', correcta: false, retro: 'Se pierde el control.' },
+      ],
+    },
+    errores: [
+      { error: 'Aplicar 7 % a todos.', correccion: 'La meta se individualiza.' },
+      { error: 'Ignorar las hipoglucemias.', correccion: 'Son un límite del tratamiento.' },
+      { error: 'No medir el tiempo en rango.', correccion: 'Complementa la HbA1c.' },
+    ],
+    comprueba: [
+      { pregunta: '¿Cuál es la meta general?', respuesta: 'HbA1c menor de 7 %.' },
+      { pregunta: '¿Qué es el tiempo en rango?', respuesta: 'Porcentaje entre 70 y 180 mg/dL.' },
+      { pregunta: '¿Qué población requiere metas menos estrictas?', respuesta: 'Ancianos frágiles o con hipoglucemias.' },
+    ],
+    resumen: [
+      'La meta se individualiza.',
+      'La HbA1c y el TIR se complementan.',
+      'Las guías orientan, no imponen.',
+      'La hipoglucemia limita la intensificación.',
+    ],
+    referencias: [
+      { cita: 'American Diabetes Association. 6. Glycemic Goals and Hypoglycemia: Standards of Care in Diabetes—2026. Diabetes Care. 2026;49(Suppl 1).', url: 'https://diabetesjournals.org/care/issue/49/Supplement_1' },
+    ],
+    imagenes: [
+      { ubicacion: 'Metas', descripcion: 'Metas de HbA1c según perfil del paciente.', alt: 'Metas glucémicas individualizadas' },
+    ],
+    keywords: ['HbA1c', 'metas glucémicas', 'tiempo en rango', 'ADA 2026'],
+  },
+  {
+    titulo: 'Tipos de insulina y perfiles de acción',
+    duracion: 20,
+    gancho: {
+      titulo: 'Rápida, basal o intermedia',
+      texto: 'Un paciente recibe insulina rápida en lugar de basal y presenta hipoglucemias nocturnas. El perfil de acción explica el error. Conocer inicio, pico y duración es indispensable para dispensar con seguridad.',
+    },
+    objetivos: [
+      'Clasificar las insulinas.',
+      'Aplicar inicio, pico y duración.',
+      'Elegir según el esquema.',
+      'Prevenir errores de dispensación.',
+    ],
+    conceptos: [
+      { icono: 'Zap', termino: 'Rápida', definicion: 'Análogos que actúan en minutos.' },
+      { icono: 'Timer', termino: 'Basal', definicion: 'Efecto estable y prolongado.' },
+      { icono: 'Pill', termino: 'NPH', definicion: 'Intermedia con pico.' },
+      { icono: 'Layers', termino: 'Premezclada', definicion: 'Combinación fija.' },
+    ],
+    mapa: {
+      centro: 'Insulinas',
+      ramas: [
+        { titulo: 'Rápidas', icono: 'Zap', nodos: ['Lispro', 'Asparta', 'Glulisina'] },
+        { titulo: 'Corta', icono: 'Pill', nodos: ['Regular', '30 min antes', 'IV'] },
+        { titulo: 'Basales', icono: 'Timer', nodos: ['Glargina', 'Detemir', 'Degludec'] },
+        { titulo: 'Intermedia', icono: 'Layers', nodos: ['NPH', 'Pico', 'Dos veces'] },
+      ],
+    },
+    secciones: [
+      {
+        titulo: 'Clasificación',
+        parrafos: [
+          'Las insulinas se clasifican por su inicio y duración. Los análogos de acción rápida (lispro, asparta, glulisina) empiezan en minutos y cubren las comidas. La insulina regular empieza más lento y se aplica unos 30 minutos antes; es la de uso intravenoso hospitalario.',
+          'La NPH es intermedia, tiene un pico y se usa una o dos veces al día, con riesgo de hipoglucemia nocturna. Los análogos basales (glargina, detemir, degludec) tienen un efecto más estable y prolongado, con menos hipoglucemia. Las premezcladas combinan una intermedia con una rápida en proporción fija.',
+        ],
+      },
+      {
+        titulo: 'Elección y seguridad',
+        parrafos: [
+          'En la diabetes tipo 1 se prefieren análogos rápidos y basales para reducir hipoglucemias. En la tipo 2, la NPH y la regular siguen siendo útiles por costo, con vigilancia. La concentración importa: existen insulinas de 100 U/mL y de 300 U/mL, y no son intercambiables sin ajuste.',
+          'El QF verifica el nombre, la concentración, la presentación y el dispositivo. Los errores entre insulinas de aspecto similar son frecuentes y peligrosos. La separación física y el rotulado por colores reducen el riesgo.',
+        ],
+      },
+      {
+        titulo: 'Educación',
+        parrafos: [
+          'El paciente debe saber qué insulina es basal y cuál es prandial, cuándo aplicarla y qué hacer si olvida una dosis. La educación se adapta al esquema y al dispositivo. La revisión de la técnica y de los sitios de inyección es parte del seguimiento.',
+          'La insulina es un medicamento de alto riesgo. La claridad en la dispensación y la verificación de la comprensión evitan eventos graves.',
+        ],
+      },
+    ],
+    proceso: {
+      titulo: 'Verificar la insulina',
+      pasos: [
+        { titulo: 'Tipo', detalle: 'Basal, rápida o intermedia.', icono: 'Search', evidencia: 'Fórmula.' },
+        { titulo: 'Concentración', detalle: '100 o 300 U/mL.', icono: 'AlertTriangle', evidencia: 'Etiqueta.' },
+        { titulo: 'Horario', detalle: 'Antes de comer o basal.', icono: 'Timer', evidencia: 'Esquema.' },
+        { titulo: 'Dispositivo', detalle: 'Pluma y aguja.', icono: 'Package', evidencia: 'Revisión.' },
+        { titulo: 'Educar', detalle: 'Dosis y olvidos.', icono: 'Users', evidencia: 'Consejería.' },
+      ],
+    },
+    caso: {
+      titulo: 'Rápida en lugar de basal',
+      contexto: 'Paciente que recibe insulina rápida en la noche por confusión con la basal.',
+      pregunta: '¿Qué riesgo presenta?',
+      opciones: [
+        { texto: 'Hiperglucemia leve.', correcta: false, retro: 'La rápida produce hipoglucemia.' },
+        { texto: 'Hipoglucemia nocturna grave.', correcta: true, retro: 'El pico ocurre en horas.' },
+        { texto: 'Ninguno.', correcta: false, retro: 'Es un error de alto riesgo.' },
+      ],
+    },
+    errores: [
+      { error: 'Confundir concentraciones.', correccion: '100 y 300 U/mL no son iguales.' },
+      { error: 'No revisar el horario.', correccion: 'La rápida se usa antes de comer.' },
+      { error: 'No separar insulinas similares.', correccion: 'Favorece errores.' },
+    ],
+    comprueba: [
+      { pregunta: '¿Qué insulina actúa en minutos?', respuesta: 'Los análogos rápidos.' },
+      { pregunta: '¿Qué insulina tiene pico?', respuesta: 'La NPH.' },
+      { pregunta: '¿Qué se verifica al dispensar?', respuesta: 'Tipo, concentración y dispositivo.' },
+    ],
+    resumen: [
+      'Cada insulina tiene un perfil distinto.',
+      'Las basales son estables; la NPH tiene pico.',
+      'La concentración no es intercambiable.',
+      'La verificación evita errores graves.',
+    ],
+    referencias: [
+      { cita: 'American Diabetes Association. 9. Pharmacologic Approaches to Glycemic Treatment: Standards of Care in Diabetes—2026. Diabetes Care. 2026;49(Suppl 1).', url: 'https://doi.org/10.2337/dc26-S009' },
+    ],
+    imagenes: [
+      { ubicacion: 'Insulinas', descripcion: 'Perfiles de acción de las insulinas.', alt: 'Tipos de insulina y perfiles de acción' },
+    ],
+    keywords: ['tipos de insulina', 'insulina basal', 'NPH', 'insulina rápida'],
+  },
+  {
+    titulo: 'Esquemas de insulinización: basal, basal-plus y basal-bolo',
+    duracion: 20,
+    gancho: {
+      titulo: 'Empezar por la basal',
+      texto: 'En la DM2, la insulina basal es el inicio más simple. En la DM1, el esquema basal-bolo es la norma. La elección depende del tipo de diabetes, la HbA1c y la capacidad del paciente.',
+    },
+    objetivos: [
+      'Aplicar los esquemas de insulinización.',
+      'Calcular dosis iniciales.',
+      'Titular según glucosa.',
+      'Elegir según el paciente.',
+    ],
+    conceptos: [
+      { icono: 'Timer', termino: 'Basal', definicion: 'Insulina de fondo, una o dos veces al día.' },
+      { icono: 'Layers', termino: 'Basal-plus', definicion: 'Basal más una dosis prandial.' },
+      { icono: 'Activity', termino: 'Basal-bolo', definicion: 'Basal más bolos en cada comida.' },
+      { icono: 'Calculator', termino: 'Titulación', definicion: 'Ajuste según glucosa.' },
+    ],
+    mapa: {
+      centro: 'Insulinización',
+      ramas: [
+        { titulo: 'Basal', icono: 'Timer', nodos: ['10 U', '0,1-0,2 U/kg', 'Titular'] },
+        { titulo: 'Basal-plus', icono: 'Layers', nodos: ['Una comida', 'Rescate', 'Simplificar'] },
+        { titulo: 'Basal-bolo', icono: 'Activity', nodos: ['50/50', 'Conteo', 'DM1'] },
+        { titulo: 'Titulación', icono: 'Calculator', nodos: ['Ayunas', 'Cada 3 días', 'Hipoglucemia'] },
+      ],
+    },
+    secciones: [
+      {
+        titulo: 'Esquemas',
+        parrafos: [
+          'En la DM2 con hiperglucemia, la insulina basal es el inicio habitual: 10 unidades al día o 0,1-0,2 U/kg, titulada según la glucosa de ayunas. Si la HbA1c está muy elevada o hay síntomas, se puede iniciar un esquema más intensivo. La combinación con agonistas GLP-1 reduce la dosis y el peso.',
+          'El basal-plus añade una dosis prandial a la comida principal. El basal-bolo usa insulina basal más bolos antes de cada comida y es el esquema de la DM1. La proporción inicial suele ser 50 % basal y 50 % prandial, con ajuste según el conteo de carbohidratos y la glucosa.',
+        ],
+      },
+      {
+        titulo: 'Titulación',
+        parrafos: [
+          'La insulina basal se titula cada tres días según la glucosa de ayunas, con ajustes de 2 unidades o 10-20 % hasta alcanzar la meta sin hipoglucemia. Los bolos se ajustan según la glucosa preprandial y posprandial, el conteo de carbohidratos y la actividad.',
+          'La hipoglucemia obliga a revisar la dosis y el horario. La educación sobre el conteo, la corrección y el ejercicio es esencial. La tecnología, como el monitoreo continuo, facilita la titulación.',
+        ],
+      },
+      {
+        titulo: 'Elección',
+        parrafos: [
+          'La elección depende del tipo de diabetes, la HbA1c, la edad, la capacidad de autocuidado y el soporte familiar. En la DM1 no se debe retrasar el esquema basal-bolo. En la DM2 se avanza según la respuesta y las preferencias.',
+          'El QF revisa la coherencia del esquema, la técnica y la comprensión. La insulina no es un castigo: es una herramienta eficaz cuando se usa con educación y seguimiento. La revisión periódica de la dosis y del registro de glucosa evita ajustes tardíos y mejora la seguridad.',
+        ],
+      },
+    ],
+    proceso: {
+      titulo: 'Iniciar insulina',
+      pasos: [
+        { titulo: 'Tipo', detalle: 'DM1 o DM2.', icono: 'Search', evidencia: 'Diagnóstico.' },
+        { titulo: 'Esquema', detalle: 'Basal o basal-bolo.', icono: 'Layers', evidencia: 'Plan.' },
+        { titulo: 'Dosis', detalle: 'Peso y glucosa.', icono: 'Calculator', evidencia: 'Fórmula.' },
+        { titulo: 'Titular', detalle: 'Cada 3 días.', icono: 'LineChart', evidencia: 'Registro.' },
+        { titulo: 'Educar', detalle: 'Hipoglucemia y técnica.', icono: 'Users', evidencia: 'Consejería.' },
+      ],
+    },
+    caso: {
+      titulo: 'DM2 con HbA1c alta',
+      contexto: 'Paciente con DM2, HbA1c de 10 % y síntomas, sin insulina.',
+      pregunta: '¿Qué esquema se considera?',
+      opciones: [
+        { texto: 'Insulina basal o esquema intensivo según el caso.', correcta: true, retro: 'La hiperglucemia grave lo requiere.' },
+        { texto: 'Solo metformina.', correcta: false, retro: 'No es suficiente.' },
+        { texto: 'Suspender el tratamiento.', correcta: false, retro: 'Empeora.' },
+      ],
+    },
+    errores: [
+      { error: 'No titular la basal.', correccion: 'Se queda corta.' },
+      { error: 'Usar basal-bolo sin educación.', correccion: 'Riesgo de hipoglucemia.' },
+      { error: 'Retrasar la insulina en DM1.', correccion: 'Riesgo de cetoacidosis.' },
+    ],
+    comprueba: [
+      { pregunta: '¿Dosis inicial de basal?', respuesta: '10 U o 0,1-0,2 U/kg.' },
+      { pregunta: '¿Cada cuánto se titula?', respuesta: 'Cada tres días.' },
+      { pregunta: '¿Qué esquema usa la DM1?', respuesta: 'Basal-bolo.' },
+    ],
+    resumen: [
+      'La basal es el inicio en DM2.',
+      'El basal-bolo es la norma en DM1.',
+      'La titulación es progresiva.',
+      'La educación sostiene el esquema.',
+    ],
+    referencias: [
+      { cita: 'American Diabetes Association. 9. Pharmacologic Approaches to Glycemic Treatment: Standards of Care in Diabetes—2026. Diabetes Care. 2026;49(Suppl 1).', url: 'https://doi.org/10.2337/dc26-S009' },
+    ],
+    imagenes: [
+      { ubicacion: 'Esquemas', descripcion: 'Comparación de basal, basal-plus y basal-bolo.', alt: 'Esquemas de insulinización' },
+    ],
+    keywords: ['insulinización', 'basal-bolo', 'basal-plus', 'titulación insulina'],
+  },
+  {
+    titulo: 'Dispositivos, técnica de inyección y conservación de la insulina',
+    duracion: 20,
+    gancho: {
+      titulo: 'La lipohipertrofia que cambia la absorción',
+      texto: 'Un paciente inyecta siempre en el mismo punto y desarrolla lipohipertrofia. La absorción se vuelve irregular y el control empeora. Rotar los sitios y revisar la técnica es parte del tratamiento.',
+    },
+    objetivos: [
+      'Aplicar la técnica de inyección.',
+      'Reconocer sitios y rotación.',
+      'Conservar la insulina correctamente.',
+      'Educar sobre dispositivos y residuos.',
+    ],
+    conceptos: [
+      { icono: 'Package', termino: 'Pluma', definicion: 'Dispositivo de dosis ajustable.' },
+      { icono: 'AlertTriangle', termino: 'Lipohipertrofia', definicion: 'Acumulación de grasa por repetición.' },
+      { icono: 'Timer', termino: 'Conservación', definicion: '2-8 °C sin congelar.' },
+      { icono: 'Users', termino: 'Rotación', definicion: 'Cambiar el sitio de inyección.' },
+    ],
+    mapa: {
+      centro: 'Técnica de insulina',
+      ramas: [
+        { titulo: 'Dispositivo', icono: 'Package', nodos: ['Pluma', 'Aguja', 'Dosis'] },
+        { titulo: 'Sitios', icono: 'Users', nodos: ['Abdomen', 'Muslo', 'Brazo', 'Rotación'] },
+        { titulo: 'Técnica', icono: 'Eye', nodos: ['Ángulo', 'Sostener', 'No masajear'] },
+        { titulo: 'Conservación', icono: 'Timer', nodos: ['2-8 °C', '28 días', 'No congelar'] },
+      ],
+    },
+    secciones: [
+      {
+        titulo: 'Técnica',
+        parrafos: [
+          'La insulina se inyecta en el tejido subcutáneo del abdomen, muslo, brazo o glúteo. Se recomienda aguja de 4-6 mm y ángulo de 90° o 45° según el grosor del tejido. Se debe sostener la aguja unos segundos después de la inyección y no masajear la zona.',
+          'La rotación de sitios dentro de la misma región previene la lipohipertrofia, que altera la absorción y produce hipoglucemias o hiperglucemias inexplicables. La revisión de los sitios es parte del seguimiento.',
+        ],
+      },
+      {
+        titulo: 'Dispositivos',
+        parrafos: [
+          'Las plumas son cómodas y precisas, pero requieren cebado, aguja nueva y verificación de la dosis. Las jeringas se usan cuando no hay pluma o en dosis especiales. Las bombas y los sistemas automatizados requieren educación avanzada.',
+          'El QF verifica que el paciente sepa cargar la pluma, cambiar la aguja y desecharla en un contenedor de punzantes. La técnica incorrecta es una causa frecuente de mal control.',
+        ],
+      },
+      {
+        titulo: 'Conservación',
+        parrafos: [
+          'La insulina sin abrir se conserva entre 2 y 8 °C, sin congelar. La pluma en uso puede mantenerse a temperatura ambiente por un período limitado, según la ficha técnica, y no debe exponerse al calor extremo ni al sol directo.',
+          'La insulina congelada o expuesta a altas temperaturas pierde efecto. El paciente debe revisar la apariencia y la fecha. La educación sobre conservación es especialmente importante en zonas con clima cálido. También se revisa que la pluma no esté caducada y que la aguja se cambie en cada aplicación.',
+        ],
+      },
+    ],
+    proceso: {
+      titulo: 'Enseñar la técnica',
+      pasos: [
+        { titulo: 'Dispositivo', detalle: 'Pluma y aguja.', icono: 'Package', evidencia: 'Revisión.' },
+        { titulo: 'Sitio', detalle: 'Rotación y revisión.', icono: 'Users', evidencia: 'Demostración.' },
+        { titulo: 'Inyección', detalle: 'Ángulo y sostén.', icono: 'Eye', evidencia: 'Práctica.' },
+        { titulo: 'Conservación', detalle: 'Temperatura y fecha.', icono: 'Timer', evidencia: 'Consejería.' },
+        { titulo: 'Residuos', detalle: 'Contenedor de punzantes.', icono: 'Trash2', evidencia: 'Entrega.' },
+      ],
+    },
+    caso: {
+      titulo: 'Siempre en el mismo punto',
+      contexto: 'Paciente con control irregular que inyecta siempre en la misma zona y tiene una zona indurada.',
+      pregunta: '¿Qué hace el QF?',
+      opciones: [
+        { texto: 'Aumentar la dosis.', correcta: false, retro: 'La absorción es irregular.' },
+        { texto: 'Enseñar rotación y revisar la técnica.', correcta: true, retro: 'Corrige la causa.' },
+        { texto: 'Suspender la insulina.', correcta: false, retro: 'No es seguro.' },
+      ],
+    },
+    errores: [
+      { error: 'No rotar los sitios.', correccion: 'Causa lipohipertrofia.' },
+      { error: 'Congelar la insulina.', correccion: 'Pierde efecto.' },
+      { error: 'Reutilizar agujas indefinidamente.', correccion: 'Dolor y lesión.' },
+    ],
+    comprueba: [
+      { pregunta: '¿Dónde se inyecta?', respuesta: 'Tejido subcutáneo.' },
+      { pregunta: '¿Qué causa no rotar?', respuesta: 'Lipohipertrofia.' },
+      { pregunta: '¿Cómo se conserva sin abrir?', respuesta: 'Entre 2 y 8 °C.' },
+    ],
+    resumen: [
+      'La técnica correcta mejora la absorción.',
+      'La rotación previene la lipohipertrofia.',
+      'La conservación mantiene la potencia.',
+      'Los residuos se desechan con seguridad.',
+    ],
+    referencias: [
+      { cita: 'American Diabetes Association. 7. Diabetes Technology: Standards of Care in Diabetes—2026. Diabetes Care. 2026;49(Suppl 1).', url: 'https://diabetesjournals.org/care/issue/49/Supplement_1' },
+    ],
+    imagenes: [
+      { ubicacion: 'Técnica', descripcion: 'Sitios de inyección y rotación.', alt: 'Técnica de inyección y conservación de insulina' },
+    ],
+    keywords: ['técnica insulina', 'lipohipertrofia', 'conservación insulina', 'pluma'],
+  },
+  {
+    titulo: 'Hipoglucemia: clasificación, causas farmacológicas y tratamiento',
+    duracion: 20,
+    gancho: {
+      titulo: 'La regla de los 15',
+      texto: 'Un paciente con glucosa de 55 mg/dL y temblor necesita 15 gramos de carbohidrato y reevaluación en 15 minutos. La hipoglucemia es el límite del tratamiento y una emergencia prevenible.',
+    },
+    objetivos: [
+      'Clasificar la hipoglucemia.',
+      'Reconocer causas farmacológicas.',
+      'Aplicar la regla de los 15.',
+      'Prevenir episodios graves.',
+    ],
+    conceptos: [
+      { icono: 'AlertTriangle', termino: 'Nivel 1', definicion: 'Glucosa menor de 70 mg/dL.' },
+      { icono: 'Timer', termino: 'Nivel 2', definicion: 'Glucosa menor de 54 mg/dL.' },
+      { icono: 'Pill', termino: 'Glucagón', definicion: 'Tratamiento de la hipoglucemia grave.' },
+      { icono: 'Users', termino: 'Prevención', definicion: 'Educación y ajuste del esquema.' },
+    ],
+    mapa: {
+      centro: 'Hipoglucemia',
+      ramas: [
+        { titulo: 'Niveles', icono: 'AlertTriangle', nodos: ['<70', '<54', 'Grave'] },
+        { titulo: 'Causas', icono: 'Pill', nodos: ['Insulina', 'Sulfonilurea', 'Ayuno', 'Alcohol'] },
+        { titulo: 'Tratamiento', icono: 'Zap', nodos: ['15 g', '15 min', 'Glucagón'] },
+        { titulo: 'Prevención', icono: 'Users', nodos: ['Educación', 'Ajuste', 'CGM'] },
+      ],
+    },
+    secciones: [
+      {
+        titulo: 'Clasificación',
+        parrafos: [
+          'La hipoglucemia se clasifica en nivel 1 (glucosa menor de 70 mg/dL), nivel 2 (menor de 54 mg/dL) y nivel 3 (evento grave con alteración del estado mental o necesidad de asistencia). Los síntomas incluyen temblor, sudoración, palpitaciones, hambre, confusión y, en casos graves, convulsiones o coma.',
+          'La hipoglucemia grave requiere asistencia de otra persona. La educación del paciente y la familia para reconocerla y tratarla es esencial.',
+        ],
+      },
+      {
+        titulo: 'Causas farmacológicas',
+        parrafos: [
+          'La insulina y las sulfonilureas son las causas farmacológicas más frecuentes. También contribuyen el ayuno, el alcohol, el ejercicio no planificado, la insuficiencia renal y las interacciones que aumentan la exposición a los antidiabéticos. Las sulfonilureas pueden causar hipoglucemias prolongadas.',
+          'El QF revisa el esquema, la dosis, el horario, la función renal y el consumo de alcohol. La hipoglucemia recurrente obliga a ajustar el tratamiento y revisar la educación.',
+        ],
+      },
+      {
+        titulo: 'Tratamiento y prevención',
+        parrafos: [
+          'En el paciente consciente se aplica la regla de los 15: 15 gramos de carbohidrato de acción rápida, reevaluar a los 15 minutos y repetir si persiste. En el paciente inconsciente se usa glucagón o atención de emergencia. No se debe dar líquidos por boca a una persona inconsciente.',
+          'La prevención incluye educación, ajuste del esquema, monitoreo continuo cuando está indicado y un plan de acción. La hipoglucemia no debe normalizarse: es una señal de que el tratamiento necesita revisión.',
+        ],
+      },
+    ],
+    proceso: {
+      titulo: 'Manejar la hipoglucemia',
+      pasos: [
+        { titulo: 'Reconocer', detalle: 'Síntomas y glucosa.', icono: 'AlertTriangle', evidencia: 'Glucómetro.' },
+        { titulo: 'Tratar', detalle: '15 g de carbohidrato.', icono: 'Zap', evidencia: 'Registro.' },
+        { titulo: 'Reevaluar', detalle: 'A los 15 minutos.', icono: 'Timer', evidencia: 'Glucosa.' },
+        { titulo: 'Grave', detalle: 'Glucagón o urgencia.', icono: 'Syringe', evidencia: 'Plan.' },
+        { titulo: 'Prevenir', detalle: 'Ajuste y educación.', icono: 'Users', evidencia: 'Seguimiento.' },
+      ],
+    },
+    caso: {
+      titulo: 'Glucosa de 55',
+      contexto: 'Paciente consciente con temblor y glucosa de 55 mg/dL.',
+      pregunta: '¿Qué hace el QF?',
+      opciones: [
+        { texto: '15 g de carbohidrato y reevaluar en 15 min.', correcta: true, retro: 'Es la regla de los 15.' },
+        { texto: 'Esperar a que pase.', correcta: false, retro: 'Puede empeorar.' },
+        { texto: 'Administrar insulina.', correcta: false, retro: 'Agravaría la hipoglucemia.' },
+      ],
+    },
+    errores: [
+      { error: 'No reevaluar la glucosa.', correccion: 'Puede persistir.' },
+      { error: 'Dar líquidos a un inconsciente.', correccion: 'Riesgo de aspiración.' },
+      { error: 'No ajustar el esquema.', correccion: 'La hipoglucemia recurre.' },
+    ],
+    comprueba: [
+      { pregunta: '¿Qué es la regla de los 15?', respuesta: '15 g y reevaluar en 15 minutos.' },
+      { pregunta: '¿Qué fármacos la causan?', respuesta: 'Insulina y sulfonilureas.' },
+      { pregunta: '¿Qué se usa en la grave?', respuesta: 'Glucagón o urgencia.' },
+    ],
+    resumen: [
+      'La hipoglucemia tiene tres niveles.',
+      'Insulina y sulfonilureas son causas frecuentes.',
+      'La regla de los 15 guía el tratamiento.',
+      'La prevención exige ajuste y educación.',
+    ],
+    referencias: [
+      { cita: 'American Diabetes Association. 6. Glycemic Goals and Hypoglycemia: Standards of Care in Diabetes—2026. Diabetes Care. 2026;49(Suppl 1).', url: 'https://diabetesjournals.org/care/issue/49/Supplement_1' },
+    ],
+    imagenes: [
+      { ubicacion: 'Hipoglucemia', descripcion: 'Síntomas, niveles y regla de los 15.', alt: 'Hipoglucemia y regla de los 15' },
+    ],
+    keywords: ['hipoglucemia', 'regla de los 15', 'glucagón', 'sulfonilureas'],
+  },
+  {
+    titulo: 'Caso: rol del QF en la educación del paciente con DM1 en insulinoterapia',
+    duracion: 25,
+    gancho: {
+      titulo: 'La educación que evita la próxima hipoglucemia',
+      texto: 'Una joven con DM1 tiene hipoglucemias nocturnas, errores de conteo y no lleva glucagón. La educación estructurada del QF puede cambiar su seguridad y su control. El caso integra técnica, conteo, hipoglucemia y sick day rules.',
+    },
+    objetivos: [
+      'Aplicar educación estructurada en DM1.',
+      'Corregir técnica y conteo.',
+      'Prevenir hipoglucemias.',
+      'Diseñar un plan de seguimiento.',
+    ],
+    conceptos: [
+      { icono: 'GraduationCap', termino: 'Educación', definicion: 'Conocimiento y habilidades prácticas.' },
+      { icono: 'Calculator', termino: 'Conteo', definicion: 'Relación insulina-carbohidrato.' },
+      { icono: 'AlertTriangle', termino: 'Hipoglucemia', definicion: 'Riesgo del esquema basal-bolo.' },
+      { icono: 'FileCheck', termino: 'Sick day', definicion: 'Plan para días de enfermedad.' },
+    ],
+    mapa: {
+      centro: 'Educación DM1',
+      ramas: [
+        { titulo: 'Técnica', icono: 'Eye', nodos: ['Inyección', 'Rotación', 'Pluma'] },
+        { titulo: 'Conteo', icono: 'Calculator', nodos: ['Carbohidratos', 'Corrección', 'Registro'] },
+        { titulo: 'Hipoglucemia', icono: 'AlertTriangle', nodos: ['Regla 15', 'Glucagón', 'Nocturna'] },
+        { titulo: 'Seguimiento', icono: 'CalendarClock', nodos: ['CGM', 'HbA1c', 'Plan'] },
+      ],
+    },
+    secciones: [
+      {
+        titulo: 'Evaluación',
+        parrafos: [
+          'La paciente tiene diabetes tipo 1, esquema basal-bolo, hipoglucemias nocturnas y errores en el conteo de carbohidratos. No lleva glucagón y no sabe qué hacer en días de enfermedad. La revisión de la técnica muestra que no rota los sitios y que a veces omite el bolo.',
+          'El QF evalúa conocimientos, habilidades y barreras. La educación debe ser práctica y adaptada a la edad y al estilo de vida. La participación de la familia o la pareja mejora la seguridad.',
+        ],
+      },
+      {
+        titulo: 'Intervención',
+        parrafos: [
+          'Se corrige la técnica, se acuerda la rotación de sitios y se revisa el conteo con ejemplos reales. Se ajusta el plan de hipoglucemia con la regla de los 15 y se prescribe glucagón. Se explican las reglas de días de enfermedad: nunca suspender la insulina basal, monitorear más y consultar si hay vómito o cetonas.',
+          'Se revisan las dosis con el equipo y se acuerda un registro de glucosa y carbohidratos. La educación se documenta y se refuerza en cada contacto.',
+        ],
+      },
+      {
+        titulo: 'Seguimiento',
+        parrafos: [
+          'El control incluye revisión de la glucosa, el tiempo en rango, las hipoglucemias y la técnica. La monitorización continua puede ayudar a identificar patrones nocturnos. La HbA1c se mide cada tres a seis meses.',
+          'El caso muestra que la educación no es un folleto: es una intervención clínica que reduce eventos y mejora la calidad de vida. El QF es un actor clave en ese proceso.',
+        ],
+      },
+    ],
+    proceso: {
+      titulo: 'Educación en DM1',
+      pasos: [
+        { titulo: 'Evaluar', detalle: 'Conocimientos y barreras.', icono: 'Users', evidencia: 'Entrevista.' },
+        { titulo: 'Corregir', detalle: 'Técnica y conteo.', icono: 'Eye', evidencia: 'Práctica.' },
+        { titulo: 'Prevenir', detalle: 'Hipoglucemia y glucagón.', icono: 'AlertTriangle', evidencia: 'Plan.' },
+        { titulo: 'Enfermedad', detalle: 'Reglas de días de enfermedad.', icono: 'FileCheck', evidencia: 'Consejería.' },
+        { titulo: 'Seguir', detalle: 'Registro y control.', icono: 'CalendarClock', evidencia: 'Consulta.' },
+      ],
+    },
+    caso: {
+      titulo: 'Hipoglucemias nocturnas',
+      contexto: 'Joven con DM1, basal-bolo, hipoglucemias nocturnas, errores de conteo y sin glucagón.',
+      pregunta: '¿Qué prioriza el QF?',
+      opciones: [
+        { texto: 'Solo aumentar la insulina.', correcta: false, retro: 'Empeora las hipoglucemias.' },
+        { texto: 'Técnica, conteo y plan de hipoglucemia.', correcta: true, retro: 'Aborda las causas y la seguridad.' },
+        { texto: 'Suspender la basal.', correcta: false, retro: 'Riesgo de cetoacidosis.' },
+      ],
+    },
+    errores: [
+      { error: 'No revisar la técnica.', correccion: 'Afecta la absorción.' },
+      { error: 'No prescribir glucagón.', correccion: 'Falta seguridad en la grave.' },
+      { error: 'Suspender la basal en enfermedad.', correccion: 'Riesgo de cetoacidosis.' },
+    ],
+    comprueba: [
+      { pregunta: '¿Qué es la regla de los 15?', respuesta: '15 g y reevaluar en 15 minutos.' },
+      { pregunta: '¿Se suspende la basal en enfermedad?', respuesta: 'No.' },
+      { pregunta: '¿Qué se revisa en el seguimiento?', respuesta: 'Glucosa, TIR y técnica.' },
+    ],
+    resumen: [
+      'La educación en DM1 es clínica.',
+      'La técnica y el conteo se revisan.',
+      'El glucagón es parte del plan.',
+      'El seguimiento refuerza la seguridad.',
+    ],
+    referencias: [
+      { cita: 'American Diabetes Association. 5. Facilitating Positive Health Behaviors and Well-being: Standards of Care in Diabetes—2026. Diabetes Care. 2026;49(Suppl 1).', url: 'https://diabetesjournals.org/care/issue/49/Supplement_1' },
+      { cita: 'American Diabetes Association. 7. Diabetes Technology: Standards of Care in Diabetes—2026. Diabetes Care. 2026;49(Suppl 1).', url: 'https://diabetesjournals.org/care/issue/49/Supplement_1' },
+    ],
+    imagenes: [
+      { ubicacion: 'Caso', descripcion: 'Plan educativo para una persona con DM1.', alt: 'Educación del paciente con DM1 en insulinoterapia' },
+    ],
+    keywords: ['educación DM1', 'insulinoterapia', 'conteo carbohidratos', 'glucagón'],
+  },
+  {
+    titulo: 'Introducción a la unidad: del control glucémico al beneficio cardiorrenal',
+    duracion: 15,
+    gancho: {
+      titulo: 'Más allá de la glucosa',
+      texto: 'Dos pacientes con la misma HbA1c pueden tener pronósticos distintos según su enfermedad cardiovascular, renal o cardíaca. La elección del antidiabético ya no depende solo de la glucosa: depende del riesgo.',
+    },
+    objetivos: [
+      'Reconocer el beneficio cardiorrenal.',
+      'Aplicar la elección por comorbilidad.',
+      'Ubicar los grupos de fármacos.',
+      'Conectar la evidencia con la práctica.',
+    ],
+    conceptos: [
+      { icono: 'Activity', termino: 'ASCVD', definicion: 'Enfermedad aterosclerótica.' },
+      { icono: 'Droplets', termino: 'ERC', definicion: 'Enfermedad renal crónica.' },
+      { icono: 'ShieldCheck', termino: 'IC', definicion: 'Insuficiencia cardíaca.' },
+      { icono: 'Target', termino: 'Elección', definicion: 'Según comorbilidad y meta.' },
+    ],
+    mapa: {
+      centro: 'Beneficio cardiorrenal',
+      ramas: [
+        { titulo: 'ASCVD', icono: 'Activity', nodos: ['GLP-1', 'SGLT2'] },
+        { titulo: 'IC', icono: 'ShieldCheck', nodos: ['SGLT2', 'GLP-1 en obesidad'] },
+        { titulo: 'ERC', icono: 'Droplets', nodos: ['SGLT2', 'GLP-1', 'Nefroprotección'] },
+        { titulo: 'Obesidad', icono: 'Scale', nodos: ['GLP-1', 'Tirzepatida'] },
+      ],
+    },
+    secciones: [
+      {
+        titulo: 'El cambio de paradigma',
+        parrafos: [
+          'La elección del tratamiento de la DM2 se centra en las comorbilidades. En enfermedad aterosclerótica o alto riesgo se usan agonistas GLP-1 y/o iSGLT2 con beneficio demostrado, independientemente de la HbA1c. En insuficiencia cardíaca se indica un iSGLT2. En enfermedad renal crónica con albuminuria se usan iSGLT2 y, según el caso, GLP-1.',
+          'La metformina sigue siendo útil, pero no es el único punto de partida. La evidencia de beneficio cardiorrenal cambió la forma de elegir y de educar.',
+        ],
+      },
+      {
+        titulo: 'Los grupos',
+        parrafos: [
+          'Los iSGLT2 reducen hospitalización por IC y progresión renal. Los agonistas GLP-1 reducen eventos cardiovasculares y peso; la semaglutida y la tirzepatida tienen evidencia destacada. Los inhibidores de DPP-4 son neutros desde el punto de vista cardiovascular y útiles en algunos perfiles. La insulina sigue siendo necesaria en muchos pacientes.',
+          'La elección depende del riesgo, la tolerancia, el costo y el acceso. El QF revisa la coherencia entre la comorbilidad y el fármaco.',
+        ],
+      },
+      {
+        titulo: 'Aplicación',
+        parrafos: [
+          'El QF identifica la comorbilidad, revisa si el paciente recibe el fármaco con beneficio y detecta barreras. También educa sobre los beneficios y los efectos adversos, y coordina el acceso.',
+          'La glucosa sigue importando, pero el riesgo cardiovascular y renal es el marco de la decisión. La unidad desarrolla esta lógica con casos y evidencia. La revisión debe actualizarse, porque las indicaciones y la cobertura cambian con el tiempo. El QF documenta la justificación de cada elección y facilita la continuidad entre niveles de atención.',
+        ],
+      },
+    ],
+    proceso: {
+      titulo: 'Elegir por comorbilidad',
+      pasos: [
+        { titulo: 'Riesgo', detalle: 'ASCVD, IC o ERC.', icono: 'ClipboardList', evidencia: 'Ficha.' },
+        { titulo: 'Meta', detalle: 'HbA1c y peso.', icono: 'Target', evidencia: 'Plan.' },
+        { titulo: 'Fármaco', detalle: 'Beneficio demostrado.', icono: 'Pill', evidencia: 'Fórmula.' },
+        { titulo: 'Acceso', detalle: 'Cobertura y costo.', icono: 'FileCheck', evidencia: 'Gestión.' },
+        { titulo: 'Seguir', detalle: 'Efecto y seguridad.', icono: 'CalendarClock', evidencia: 'Control.' },
+      ],
+    },
+    caso: {
+      titulo: 'DM2 con insuficiencia cardíaca',
+      contexto: 'Paciente con DM2 e insuficiencia cardíaca que solo recibe metformina.',
+      pregunta: '¿Qué fármaco aporta beneficio?',
+      opciones: [
+        { texto: 'Un iSGLT2.', correcta: true, retro: 'Reduce hospitalización por IC.' },
+        { texto: 'Una sulfonilurea.', correcta: false, retro: 'No tiene ese beneficio.' },
+        { texto: 'Suspender todo.', correcta: false, retro: 'Empeora.' },
+      ],
+    },
+    errores: [
+      { error: 'Elegir solo por HbA1c.', correccion: 'La comorbilidad importa.' },
+      { error: 'No revisar el acceso.', correccion: 'La continuidad depende de él.' },
+      { error: 'Ignorar la evidencia.', correccion: 'Los grupos no son equivalentes.' },
+    ],
+    comprueba: [
+      { pregunta: '¿Qué fármaco beneficia la IC?', respuesta: 'El iSGLT2.' },
+      { pregunta: '¿Qué grupo reduce eventos ateroscleróticos?', respuesta: 'Los agonistas GLP-1.' },
+      { pregunta: '¿Qué guía respalda la elección?', respuesta: 'La ADA 2026.' },
+    ],
+    resumen: [
+      'La elección depende de la comorbilidad.',
+      'Los iSGLT2 y GLP-1 tienen beneficio.',
+      'La metformina no es el único inicio.',
+      'El acceso condiciona la práctica.',
+    ],
+    referencias: [
+      { cita: 'American Diabetes Association. 9. Pharmacologic Approaches to Glycemic Treatment: Standards of Care in Diabetes—2026. Diabetes Care. 2026;49(Suppl 1).', url: 'https://doi.org/10.2337/dc26-S009' },
+    ],
+    imagenes: [
+      { ubicacion: 'Unidad 2', descripcion: 'Comorbilidad y fármaco con beneficio.', alt: 'Beneficio cardiorrenal de los antidiabéticos' },
+    ],
+    keywords: ['beneficio cardiorrenal', 'iSGLT2', 'GLP-1', 'elección DM2'],
+  },
+  {
+    titulo: 'Metformina: mecanismo, farmacocinética, función renal y seguridad',
+    duracion: 20,
+    gancho: {
+      titulo: 'La metformina y el contraste',
+      texto: 'Un paciente con ERC recibe metformina y se programa para una tomografía con contraste. La revisión de la función renal y la suspensión temporal previenen la acidosis láctica. La metformina es segura cuando se usa con criterio.',
+    },
+    objetivos: [
+      'Explicar el mecanismo.',
+      'Aplicar la dosis y el ajuste renal.',
+      'Reconocer la acidosis láctica.',
+      'Educar sobre efectos digestivos y B12.',
+    ],
+    conceptos: [
+      { icono: 'Database', termino: 'AMPK', definicion: 'Vía que reduce la gluconeogénesis.' },
+      { icono: 'Droplets', termino: 'TFG', definicion: 'Guía el ajuste y la suspensión.' },
+      { icono: 'AlertTriangle', termino: 'Acidosis', definicion: 'Rara pero grave.' },
+      { icono: 'TestTube', termino: 'B12', definicion: 'Puede reducirse con uso prolongado.' },
+    ],
+    mapa: {
+      centro: 'Metformina',
+      ramas: [
+        { titulo: 'Mecanismo', icono: 'Database', nodos: ['Hígado', 'AMPK', 'Gluconeogénesis'] },
+        { titulo: 'Dosis', icono: 'Pill', nodos: ['500 mg', '2000 mg', 'Con comida'] },
+        { titulo: 'Renal', icono: 'Droplets', nodos: ['TFG 45', 'TFG 30', 'Suspender'] },
+        { titulo: 'Seguridad', icono: 'AlertTriangle', nodos: ['Digestivo', 'B12', 'Láctica'] },
+      ],
+    },
+    secciones: [
+      {
+        titulo: 'Mecanismo y dosis',
+        parrafos: [
+          'La metformina reduce la producción hepática de glucosa y mejora la sensibilidad periférica. No estimula la secreción de insulina, por lo que rara vez causa hipoglucemia en monoterapia. Se inicia con 500 mg una o dos veces al día con las comidas y se titula hasta 2000 mg al día según tolerancia.',
+          'La presentación de liberación prolongada mejora los síntomas digestivos. La metformina es eficaz, económica y con amplia experiencia de uso.',
+        ],
+      },
+      {
+        titulo: 'Función renal',
+        parrafos: [
+          'La metformina se elimina por vía renal. Con TFG entre 30 y 45 mL/min se usa con precaución y dosis menores; con TFG menor de 30 se contraindica. Se suspende antes de estudios con contraste y en situaciones de riesgo de lesión renal aguda, y se reinicia cuando la función es estable.',
+          'La revisión de la TFG es obligatoria antes de iniciar y durante el seguimiento. El QF verifica la fecha del último laboratorio y las condiciones clínicas.',
+        ],
+      },
+      {
+        titulo: 'Seguridad',
+        parrafos: [
+          'Los efectos digestivos son frecuentes al inicio: diarrea, náuseas, dolor abdominal y sabor metálico. Suelen mejorar con titulación lenta y con la presentación de liberación prolongada. El uso prolongado puede reducir la vitamina B12 y causar anemia o neuropatía; se considera su medición en pacientes de riesgo.',
+          'La acidosis láctica es rara pero grave. Se sospecha en pacientes con deterioro renal, hipoxia, sepsis, alcoholismo o insuficiencia hepática. La educación incluye suspenderla en enfermedad aguda y consultar.',
+        ],
+      },
+    ],
+    proceso: {
+      titulo: 'Checklist de metformina',
+      pasos: [
+        { titulo: 'Indicación', detalle: 'DM2 y riesgo.', icono: 'Target', evidencia: 'Diagnóstico.' },
+        { titulo: 'Renal', detalle: 'TFG actual.', icono: 'Droplets', evidencia: 'Laboratorio.' },
+        { titulo: 'Dosis', detalle: 'Titulación lenta.', icono: 'Pill', evidencia: 'Esquema.' },
+        { titulo: 'Seguridad', detalle: 'Digestivo y B12.', icono: 'AlertTriangle', evidencia: 'Entrevista.' },
+        { titulo: 'Suspender', detalle: 'Contraste o enfermedad aguda.', icono: 'XCircle', evidencia: 'Plan.' },
+      ],
+    },
+    caso: {
+      titulo: 'Contraste y metformina',
+      contexto: 'Paciente con TFG de 40 y metformina programado para tomografía con contraste.',
+      pregunta: '¿Qué hace el QF?',
+      opciones: [
+        { texto: 'Mantener la metformina.', correcta: false, retro: 'Hay riesgo de lesión renal.' },
+        { texto: 'Suspender temporalmente y reiniciar si la función es estable.', correcta: true, retro: 'Previene la acidosis.' },
+        { texto: 'Duplicar la dosis.', correcta: false, retro: 'Nunca.' },
+      ],
+    },
+    errores: [
+      { error: 'No revisar la TFG.', correccion: 'La dosis depende de ella.' },
+      { error: 'Ignorar los síntomas digestivos.', correccion: 'Afectan la adherencia.' },
+      { error: 'No considerar la B12.', correccion: 'Puede causar anemia.' },
+    ],
+    comprueba: [
+      { pregunta: '¿Qué hace la metformina?', respuesta: 'Reduce la producción hepática de glucosa.' },
+      { pregunta: '¿Cuándo se contraindica?', respuesta: 'Con TFG menor de 30.' },
+      { pregunta: '¿Qué se suspende ante contraste?', respuesta: 'La metformina, temporalmente.' },
+    ],
+    resumen: [
+      'La metformina es eficaz y segura con criterio.',
+      'La TFG guía el ajuste.',
+      'La acidosis láctica es rara pero grave.',
+      'La B12 y los síntomas digestivos se vigilan.',
+    ],
+    referencias: [
+      { cita: 'American Diabetes Association. 9. Pharmacologic Approaches to Glycemic Treatment: Standards of Care in Diabetes—2026. Diabetes Care. 2026;49(Suppl 1).', url: 'https://doi.org/10.2337/dc26-S009' },
+      { cita: 'AEMPS-CIMA. Ficha técnica de Metformina Cinfa 850 mg comprimidos recubiertos con película EFG.', url: 'https://cima.aemps.es/cima/dochtml/ft/69294/FT_69294.html' },
+    ],
+    imagenes: [
+      { ubicacion: 'Metformina', descripcion: 'Ajuste renal y seguridad de la metformina.', alt: 'Metformina mecanismo y seguridad' },
+    ],
+    keywords: ['metformina', 'metformina TFG', 'acidosis láctica', 'vitamina B12'],
+  },
+];

@@ -1,0 +1,960 @@
+export const CURSO = 'Curso de Farmacoterapia de la Insuficiencia Cardíaca';
+export const MIGRACION = '133_experiencias_farmacoterapia_ic_1.sql';
+
+export const CLASES = [
+  {
+    titulo: 'Introducción al curso: farmacoterapia de la insuficiencia cardíaca en Colombia y guías vigentes a 2026',
+    duracion: 20,
+    gancho: {
+      titulo: 'La disnea que vuelve cada mes',
+      texto: 'Don Jaime tiene 70 años, vive en Barranquilla y ha ingresado tres veces en seis meses por falta de aire y edema. Toma furosemida, pero no recibe la terapia fundamental para la insuficiencia cardíaca con fracción de eyección reducida. Cada reingreso es una oportunidad perdida para iniciar o titular los fármacos que cambian el pronóstico. El Químico Farmacéutico puede detectar esa brecha y actuar.',
+    },
+    objetivos: [
+      'Describir el impacto de la insuficiencia cardíaca en Colombia.',
+      'Reconocer el papel del Químico Farmacéutico en la optimización del tratamiento.',
+      'Identificar las guías vigentes y los cuatro pilares de la IC con FEVI reducida.',
+      'Ubicar las unidades y los casos del curso.',
+    ],
+    conceptos: [
+      { icono: 'Activity', termino: 'Insuficiencia cardíaca', definicion: 'Síndrome clínico por disfunción cardíaca con síntomas, signos y evidencia de congestión o bajo gasto.' },
+      { icono: 'Pill', termino: 'Terapia fundamental', definicion: 'ARNI o IECA/ARA-II, betabloqueador, antagonista mineralocorticoide e iSGLT2 en FEVI reducida.' },
+      { icono: 'ShieldCheck', termino: 'Pronóstico', definicion: 'La terapia optimizada reduce hospitalizaciones y mortalidad.' },
+      { icono: 'Users', termino: 'Atención farmacéutica', definicion: 'Revisión, educación, titulación y seguimiento para mejorar la seguridad y la adherencia.' },
+    ],
+    mapa: {
+      centro: 'QF en insuficiencia cardíaca',
+      ramas: [
+        { titulo: 'Evaluar', icono: 'Search', nodos: ['FEVI', 'Síntomas', 'Congestión'] },
+        { titulo: 'Optimizar', icono: 'Pill', nodos: ['Cuatro pilares', 'Titulación', 'Metas'] },
+        { titulo: 'Seguridad', icono: 'AlertTriangle', nodos: ['Potasio', 'Función renal', 'Hipotensión'] },
+        { titulo: 'Educar', icono: 'Users', nodos: ['Peso', 'Sal', 'Signos de alarma'] },
+      ],
+    },
+    secciones: [
+      {
+        titulo: 'La IC es un síndrome crónico',
+        parrafos: [
+          'La insuficiencia cardíaca es una de las principales causas de hospitalización y mortalidad en adultos. Se produce por disfunción del corazón, que no puede bombear suficiente sangre o lo hace con presiones elevadas. Los síntomas incluyen disnea, fatiga, edema y limitación funcional. El tratamiento no se limita a los diuréticos: incluye fármacos que modifican el pronóstico.',
+          'En Colombia, muchos pacientes reciben solo furosemida y no la terapia fundamental. La brecha entre la evidencia y la práctica es una oportunidad para el Químico Farmacéutico, que puede revisar la fórmula, detectar omisiones y proponer optimización.',
+        ],
+      },
+      {
+        titulo: 'Qué puede hacer el QF',
+        parrafos: [
+          'El QF puede verificar la FEVI, la clase funcional, la función renal, el potasio y la presión. Puede detectar fármacos que empeoran la IC, revisar la adherencia, educar sobre peso y sal y coordinar la titulación con el equipo.',
+          'La intervención se documenta y se comunica. La meta es que el paciente reciba la terapia que cambia el pronóstico, en dosis toleradas y con seguimiento.',
+        ],
+      },
+      {
+        titulo: 'Cómo está organizado el curso',
+        parrafos: [
+          'La unidad 1 cubre fisiopatología, definición, clasificación y diagnóstico. La unidad 2 revisa los cuatro pilares: ARNI, IECA/ARA-II, betabloqueadores, antagonistas mineralocorticoides e iSGLT2. La unidad 3 trabaja secuenciación, titulación, diuréticos, resistencia diurética, potasio y función renal. La unidad 4 aborda descompensación, terapias adicionales, hierro y FEVI preservada. La unidad 5 cierra con seguridad, interacciones, seguimiento, educación y caso integrador.',
+          'Cada clase trae un caso, un mapa y un proceso. Al final, fichas de sacubitrilo/valsartán, dapagliflozina, espironolactona, furosemida y carvedilol.',
+        ],
+      },
+    ],
+    proceso: {
+      titulo: 'Cómo abordar la IC en la farmacia',
+      pasos: [
+        { titulo: 'Revisar', detalle: 'FEVI, síntomas, medicamentos y adherencia.', icono: 'Search', evidencia: 'Ficha.' },
+        { titulo: 'Detectar', detalle: 'Omisión de pilares, fármacos que empeoran, barreras.', icono: 'AlertTriangle', evidencia: 'Problema.' },
+        { titulo: 'Proponer', detalle: 'Optimización y titulación segura.', icono: 'Pill', evidencia: 'Nota.' },
+        { titulo: 'Educar', detalle: 'Peso, sal, signos de alarma y adherencia.', icono: 'Users', evidencia: 'Educación.' },
+        { titulo: 'Seguir', detalle: 'Presión, potasio, función renal y síntomas.', icono: 'CalendarClock', evidencia: 'Control.' },
+      ],
+    },
+    caso: {
+      titulo: 'Solo furosemida',
+      contexto: 'Jaime, 70 años, FEVI 30 %, disnea NYHA III, edemas, solo furosemida. Potasio 4,1, TFG 55.',
+      pregunta: '¿Cuál es la intervención más importante?',
+      opciones: [
+        { texto: 'Aumentar solo la furosemida.', correcta: false, retro: 'El diurético alivia la congestión, pero no cambia el pronóstico.' },
+        { texto: 'Revisar la terapia fundamental y proponer inicio de los pilares con titulación.', correcta: true, retro: 'La IC con FEVI reducida requiere terapia que reduce mortalidad y hospitalizaciones.' },
+        { texto: 'Suspender la furosemida.', correcta: false, retro: 'La congestión necesita tratamiento.' },
+      ],
+    },
+    errores: [
+      { error: 'Tratar solo la congestión.', correccion: 'La terapia fundamental cambia el pronóstico.' },
+      { error: 'No revisar la FEVI.', correccion: 'La clasificación guía el tratamiento.' },
+      { error: 'No educar sobre peso y sal.', correccion: 'El autocuidado reduce descompensaciones.' },
+    ],
+    comprueba: [
+      { pregunta: '¿Cuáles son los cuatro pilares?', respuesta: 'ARNI o IECA/ARA-II, betabloqueador, ARM e iSGLT2.' },
+      { pregunta: '¿Qué hace el QF?', respuesta: 'Revisa, detecta omisiones, educa y coordina la titulación.' },
+      { pregunta: '¿Qué guía se usa?', respuesta: 'Las guías ESC vigentes y las guías colombianas.' },
+    ],
+    resumen: [
+      'La IC es un síndrome crónico con alta mortalidad.',
+      'La terapia fundamental reduce eventos.',
+      'El QF puede cerrar la brecha.',
+      'El autocuidado es parte del tratamiento.',
+    ],
+    referencias: [
+      { cita: 'European Society of Cardiology. 2026 ESC Guidelines for the diagnosis and treatment of acute and chronic heart failure. Eur Heart J. 2026.', url: 'https://www.escardio.org/Guidelines/Clinical-Practice-Guidelines/Heart-Failure' },
+      { cita: 'AEMPS-CIMA. Ficha técnica de Entresto 24 mg/26 mg comprimidos recubiertos con película.', url: 'https://cima.aemps.es/cima/dochtml/ft/1151058001/FT_1151058001.html' },
+    ],
+    imagenes: [
+      { ubicacion: 'Apertura', descripcion: 'Paciente con disnea y edema en una farmacia, con un QF revisando la fórmula de furosemida.', alt: 'Químico Farmacéutico en insuficiencia cardíaca' },
+    ],
+    keywords: ['curso insuficiencia cardíaca', 'farmacoterapia insuficiencia cardíaca', 'rol del químico farmacéutico IC', 'cuatro pilares insuficiencia cardíaca'],
+  },
+  {
+    titulo: 'Fisiopatología de la insuficiencia cardíaca: activación neurohormonal, remodelado y congestión',
+    duracion: 20,
+    gancho: {
+      titulo: 'El círculo que empeora la IC',
+      texto: 'Cuando el gasto cardíaco cae, el cuerpo activa el sistema renina-angiotensina y el simpático para mantener la presión. Al principio ayuda, pero a largo plazo retiene sodio, contrae vasos y remodela el corazón. Ese círculo explica por qué los fármacos que bloquean estos sistemas mejoran el pronóstico.',
+    },
+    objetivos: [
+      'Explicar la activación neurohormonal en la IC.',
+      'Relacionar el remodelado con la progresión.',
+      'Reconocer los mecanismos de congestión.',
+      'Conectar la fisiopatología con los fármacos.',
+    ],
+    conceptos: [
+      { icono: 'Activity', termino: 'Remodelado', definicion: 'Cambios estructurales y funcionales del corazón que empeoran la función.' },
+      { icono: 'Droplets', termino: 'Congestión', definicion: 'Aumento de presiones y retención de sodio y agua.' },
+      { icono: 'Network', termino: 'Neurohormonal', definicion: 'Activación del SRAA, simpático y otras vías.' },
+      { icono: 'Pill', termino: 'Bloqueo', definicion: 'Los fármacos contrarrestan la activación y mejoran la supervivencia.' },
+    ],
+    mapa: {
+      centro: 'Fisiopatología de la IC',
+      ramas: [
+        { titulo: 'Bajo gasto', icono: 'Activity', nodos: ['Renina', 'Simpático', 'Vasoconstricción'] },
+        { titulo: 'Retención', icono: 'Droplets', nodos: ['Sodio', 'Agua', 'Congestión'] },
+        { titulo: 'Remodelado', icono: 'Network', nodos: ['Hipertrofia', 'Fibrosis', 'Dilatación'] },
+        { titulo: 'Fármacos', icono: 'Pill', nodos: ['ARNI', 'Beta', 'ARM', 'iSGLT2'] },
+      ],
+    },
+    secciones: [
+      {
+        titulo: 'La activación neurohormonal',
+        parrafos: [
+          'La caída del gasto cardíaco reduce la perfusión renal y activa la renina. La angiotensina II y la aldosterona retienen sodio y agua, contraen los vasos y favorecen la fibrosis. El sistema simpático aumenta la frecuencia y la contractilidad, pero también el consumo de oxígeno y la arritmia.',
+          'A corto plazo, estos mecanismos mantienen la presión. A largo plazo, empeoran la congestión y el remodelado. Los fármacos que bloquean el SRAA, el simpático y la aldosterona cambian la historia natural.',
+        ],
+      },
+      {
+        titulo: 'Remodelado y congestión',
+        parrafos: [
+          'El remodelado incluye hipertrofia, fibrosis, dilatación y pérdida de contractilidad. La retención de sodio y agua aumenta las presiones de llenado y produce disnea, edema y congestión pulmonar. Los péptidos natriuréticos se elevan como respuesta compensadora.',
+          'El tratamiento diurético alivia la congestión, pero no revierte el remodelado. La terapia fundamental lo modula y mejora la supervivencia.',
+        ],
+      },
+      {
+        titulo: 'Implicaciones farmacológicas',
+        parrafos: [
+          'El bloqueo del SRAA con ARNI, IECA o ARA-II, el betabloqueador, el antagonista mineralocorticoide y el iSGLT2 actúan en vías distintas. La combinación es aditiva. La titulación busca dosis toleradas y sostenidas.',
+          'El QF puede explicar al paciente por qué necesita varios fármacos aunque se sienta mejor. La adherencia es parte del efecto.',
+        ],
+      },
+    ],
+    proceso: {
+      titulo: 'Cómo explicar la IC al paciente',
+      pasos: [
+        { titulo: 'Gasto', detalle: 'El corazón bombea menos.', icono: 'Activity', evidencia: 'Explicación.' },
+        { titulo: 'Compensación', detalle: 'El cuerpo retiene líquido y contrae vasos.', icono: 'Droplets', evidencia: 'Esquema.' },
+        { titulo: 'Consecuencia', detalle: 'Congestión y remodelado.', icono: 'Network', evidencia: 'Síntomas.' },
+        { titulo: 'Tratamiento', detalle: 'Bloquear la activación y aliviar la congestión.', icono: 'Pill', evidencia: 'Plan.' },
+        { titulo: 'Adherencia', detalle: 'Explicar el beneficio a largo plazo.', icono: 'Users', evidencia: 'Educación.' },
+      ],
+    },
+    caso: {
+      titulo: 'Por qué varios fármacos',
+      contexto: 'Paciente que se siente mejor con furosemida y quiere suspender el resto.',
+      pregunta: '¿Qué explicar?',
+      opciones: [
+        { texto: 'Que el resto no sirve.', correcta: false, retro: 'Los pilares reducen mortalidad y hospitalizaciones.' },
+        { texto: 'Que el diurético alivia, pero los otros bloquean la progresión.', correcta: true, retro: 'La explicación fisiopatológica mejora la adherencia.' },
+        { texto: 'Que suspenda todo.', correcta: false, retro: 'Riesgo de descompensación.' },
+      ],
+    },
+    errores: [
+      { error: 'Creer que la IC es solo congestión.', correccion: 'La activación neurohormonal y el remodelado son centrales.' },
+      { error: 'No explicar el beneficio a largo plazo.', correccion: 'La adherencia depende de la comprensión.' },
+      { error: 'Suspender pilares por sentirse mejor.', correccion: 'El beneficio es crónico.' },
+    ],
+    comprueba: [
+      { pregunta: '¿Qué sistemas se activan?', respuesta: 'SRAA, simpático y aldosterona.' },
+      { pregunta: '¿Qué es remodelado?', respuesta: 'Cambios estructurales que empeoran la función.' },
+      { pregunta: '¿Qué hace el iSGLT2?', respuesta: 'Reduce eventos y congestión con un mecanismo distinto.' },
+    ],
+    resumen: [
+      'La IC activa sistemas compensadores que dañan.',
+      'El remodelado y la congestión progresan.',
+      'Los pilares bloquean vías distintas.',
+      'La educación mejora la adherencia.',
+    ],
+    referencias: [
+      { cita: 'European Society of Cardiology. 2026 ESC Guidelines for the diagnosis and treatment of acute and chronic heart failure. Eur Heart J. 2026.', url: 'https://www.escardio.org/Guidelines/Clinical-Practice-Guidelines/Heart-Failure' },
+    ],
+    imagenes: [
+      { ubicacion: 'Sección de fisiopatología', descripcion: 'Círculo vicioso con bajo gasto, SRAA, simpático, retención y remodelado.', alt: 'Fisiopatología de la insuficiencia cardíaca' },
+    ],
+    keywords: ['fisiopatología insuficiencia cardíaca', 'activación neurohormonal IC', 'remodelado cardíaco', 'congestión IC'],
+  },
+  {
+    titulo: 'Definición universal de la IC (2026), etapas A–D, clase funcional NYHA e IC izquierda y derecha',
+    duracion: 20,
+    gancho: {
+      titulo: 'No toda IC se ve igual',
+      texto: 'Un paciente tiene disnea y crepitantes por congestión pulmonar; otro tiene edema, hepatomegalia y yugulares distendidas. Ambos tienen insuficiencia cardíaca, pero el lado predominante y la etapa son distintos. Clasificar bien guía el tratamiento y el pronóstico.',
+    },
+    objetivos: [
+      'Aplicar la definición universal de IC.',
+      'Diferenciar las etapas A a D.',
+      'Clasificar la clase funcional NYHA.',
+      'Reconocer IC izquierda, derecha y biventricular.',
+    ],
+    conceptos: [
+      { icono: 'Activity', termino: 'Definición universal', definicion: 'Síntomas y signos de IC con evidencia de disfunción cardíaca, elevación de péptidos o congestión.' },
+      { icono: 'Layers', termino: 'Etapas A-D', definicion: 'Desde riesgo hasta IC avanzada.' },
+      { icono: 'Users', termino: 'NYHA', definicion: 'Clase funcional I-IV según limitación de la actividad.' },
+      { icono: 'Network', termino: 'Lado', definicion: 'Izquierda, derecha o biventricular según la congestión.' },
+    ],
+    mapa: {
+      centro: 'Clasificación de la IC',
+      ramas: [
+        { titulo: 'Etapas', icono: 'Layers', nodos: ['A riesgo', 'B preclínica', 'C sintomática', 'D avanzada'] },
+        { titulo: 'NYHA', icono: 'Users', nodos: ['I sin límite', 'II leve', 'III marcada', 'IV reposo'] },
+        { titulo: 'Lado', icono: 'Network', nodos: ['Izquierda', 'Derecha', 'Biventricular'] },
+        { titulo: 'FEVI', icono: 'Activity', nodos: ['Reducida', 'Levemente reducida', 'Preservada'] },
+      ],
+    },
+    secciones: [
+      {
+        titulo: 'Definición y etapas',
+        parrafos: [
+          'La definición universal de IC combina síntomas y signos con evidencia de disfunción cardíaca, elevación de péptidos natriuréticos o congestión. Las etapas A a D describen el riesgo y la progresión: A es riesgo, B es enfermedad cardíaca estructural sin síntomas, C es IC sintomática y D es IC avanzada.',
+          'La etapa no es lo mismo que la clase funcional. Un paciente en etapa C puede estar en NYHA II o III. La clasificación permite anticipar el tratamiento y el seguimiento.',
+        ],
+      },
+      {
+        titulo: 'NYHA y lado',
+        parrafos: [
+          'La clase NYHA va de I (sin limitación) a IV (síntomas en reposo). La IC izquierda predomina con disnea, ortopnea y crepitantes; la derecha con edema, hepatomegalia, ingurgitación yugular y ascitis. Muchos pacientes tienen congestión biventricular.',
+          'La FEVI clasifica la IC en reducida, levemente reducida y preservada. La terapia fundamental depende de la FEVI y de la comorbilidad.',
+        ],
+      },
+      {
+        titulo: 'Aplicación',
+        parrafos: [
+          'La clasificación se documenta en la historia y se revisa con los síntomas. La etapa A y B permiten prevención; la C y D requieren tratamiento y seguimiento estrecho.',
+          'El QF puede educar sobre la etapa y la clase funcional. La comprensión mejora la adherencia.',
+        ],
+      },
+    ],
+    proceso: {
+      titulo: 'Cómo clasificar la IC',
+      pasos: [
+        { titulo: 'Confirmar', detalle: 'Síntomas, signos y evidencia.', icono: 'Search', evidencia: 'Evaluación.' },
+        { titulo: 'Etapa', detalle: 'A, B, C o D.', icono: 'Layers', evidencia: 'Clasificación.' },
+        { titulo: 'NYHA', detalle: 'I a IV.', icono: 'Users', evidencia: 'Clase.' },
+        { titulo: 'FEVI', detalle: 'Reducida, levemente reducida o preservada.', icono: 'Activity', evidencia: 'Eco.' },
+        { titulo: 'Plan', detalle: 'Tratamiento y seguimiento.', icono: 'Target', evidencia: 'Plan.' },
+      ],
+    },
+    caso: {
+      titulo: 'Disnea y edemas',
+      contexto: 'Paciente con disnea a pequeños esfuerzos, edema y yugulares distendidas.',
+      pregunta: '¿Qué clasificación es más probable?',
+      opciones: [
+        { texto: 'NYHA I y etapa A.', correcta: false, retro: 'Hay síntomas y congestión.' },
+        { texto: 'NYHA III, etapa C, probable biventricular.', correcta: true, retro: 'Los síntomas limitan la actividad y hay congestión.' },
+        { texto: 'Sin IC.', correcta: false, retro: 'El cuadro es compatible con IC.' },
+      ],
+    },
+    errores: [
+      { error: 'Confundir etapa con NYHA.', correccion: 'Son clasificaciones distintas.' },
+      { error: 'No evaluar el lado predominante.', correccion: 'Guía el tratamiento de la congestión.' },
+      { error: 'No documentar la FEVI.', correccion: 'La terapia depende de ella.' },
+    ],
+    comprueba: [
+      { pregunta: '¿Qué es etapa C?', respuesta: 'IC sintomática con enfermedad estructural.' },
+      { pregunta: '¿Qué es NYHA III?', respuesta: 'Limitación marcada por síntomas con actividad leve.' },
+      { pregunta: '¿Qué diferencia IC izquierda y derecha?', respuesta: 'La congestión pulmonar versus sistémica.' },
+    ],
+    resumen: [
+      'La definición universal integra síntomas y evidencia.',
+      'Las etapas A-D describen progresión.',
+      'NYHA describe limitación funcional.',
+      'La FEVI guía la terapia.',
+    ],
+    referencias: [
+      { cita: 'European Society of Cardiology. 2026 ESC Guidelines for the diagnosis and treatment of acute and chronic heart failure. Eur Heart J. 2026.', url: 'https://www.escardio.org/Guidelines/Clinical-Practice-Guidelines/Heart-Failure' },
+    ],
+    imagenes: [
+      { ubicacion: 'Sección de clasificación', descripcion: 'Tabla de etapas A-D y clase NYHA I-IV con ejemplos.', alt: 'Clasificación de la insuficiencia cardíaca' },
+    ],
+    keywords: ['definición insuficiencia cardíaca', 'etapas A B C D IC', 'NYHA insuficiencia cardíaca', 'IC izquierda derecha'],
+  },
+  {
+    titulo: 'Clasificación por FEVI: FEVIr, FEVIlr, FEVIp y FEVI mejorada — de ESC 2021/2023 a ESC 2026',
+    duracion: 20,
+    gancho: {
+      titulo: 'La FEVI no es un número fijo',
+      texto: 'Un paciente tenía FEVI de 32 % y después del tratamiento llegó a 45 %. ¿Sigue teniendo IC con FEVI reducida? La categoría “FEVI mejorada” reconoce que la fracción puede recuperarse, pero el riesgo persiste. Clasificar correctamente evita suspender fármacos que siguen siendo necesarios.',
+    },
+    objetivos: [
+      'Diferenciar FEVI reducida, levemente reducida, preservada y mejorada.',
+      'Aplicar los puntos de corte.',
+      'Reconocer el significado pronóstico de la mejoría.',
+      'Relacionar la categoría con el tratamiento.',
+    ],
+    conceptos: [
+      { icono: 'Activity', termino: 'FEVIr', definicion: 'FEVI ≤40 %; terapia fundamental con evidencia.' },
+      { icono: 'Activity', termino: 'FEVIlr', definicion: 'FEVI 41-49 %; tratamiento individualizado.' },
+      { icono: 'Activity', termino: 'FEVIp', definicion: 'FEVI ≥50 %; iSGLT2 y manejo de comorbilidades.' },
+      { icono: 'RefreshCw', termino: 'FEVI mejorada', definicion: 'Aumento de al menos 10 puntos desde una FEVI reducida, con riesgo persistente.' },
+    ],
+    mapa: {
+      centro: 'Clasificación por FEVI',
+      ramas: [
+        { titulo: 'Reducida', icono: 'Activity', nodos: ['≤40 %', 'Cuatro pilares', 'Titular'] },
+        { titulo: 'Levemente reducida', icono: 'Activity', nodos: ['41-49 %', 'Individualizar', 'iSGLT2'] },
+        { titulo: 'Preservada', icono: 'Activity', nodos: ['≥50 %', 'iSGLT2', 'Comorbilidad'] },
+        { titulo: 'Mejorada', icono: 'RefreshCw', nodos: ['≥10 puntos', 'Mantener', 'Seguir'] },
+      ],
+    },
+    secciones: [
+      {
+        titulo: 'Puntos de corte',
+        parrafos: [
+          'La IC con FEVI reducida se define con FEVI ≤40 %. La levemente reducida, entre 41 y 49 %. La preservada, ≥50 %. La FEVI mejorada se describe cuando hay un aumento de al menos 10 puntos desde una FEVI reducida y ya no cumple el criterio de reducida, aunque el riesgo cardiovascular y de descompensación persiste.',
+          'Las guías ESC 2021 y 2023 consolidaron estas categorías; la ESC 2026 actualiza el enfoque y refuerza el tratamiento por comorbilidad. La clasificación no es solo académica: guía la elección y la titulación.',
+        ],
+      },
+      {
+        titulo: 'Implicaciones',
+        parrafos: [
+          'En FEVI reducida, los cuatro pilares tienen evidencia robusta. En FEVI levemente reducida, el tratamiento se individualiza y los iSGLT2 tienen un papel. En FEVI preservada, los iSGLT2 reducen hospitalizaciones y se tratan comorbilidades como obesidad, hipertensión, diabetes y fibrilación auricular.',
+          'En FEVI mejorada, no se deben suspender los fármacos que lograron la recuperación sin una evaluación cuidadosa. El riesgo de recaída existe.',
+        ],
+      },
+      {
+        titulo: 'Seguimiento',
+        parrafos: [
+          'La FEVI se reevalúa con ecocardiograma cuando hay cambios clínicos o después de un tiempo de tratamiento. La mejoría no significa curación. La educación y la adherencia siguen siendo clave.',
+          'El QF puede recordar la categoría y el plan en cada contacto.',
+        ],
+      },
+    ],
+    proceso: {
+      titulo: 'Cómo clasificar por FEVI',
+      pasos: [
+        { titulo: 'Medir', detalle: 'Ecocardiograma y FEVI.', icono: 'Activity', evidencia: 'Resultado.' },
+        { titulo: 'Clasificar', detalle: 'Reducida, levemente reducida o preservada.', icono: 'Layers', evidencia: 'Categoría.' },
+        { titulo: 'Reevaluar', detalle: 'Mejoría y cambios.', icono: 'RefreshCw', evidencia: 'Control.' },
+        { titulo: 'Tratar', detalle: 'Según categoría y comorbilidad.', icono: 'Pill', evidencia: 'Plan.' },
+        { titulo: 'Seguir', detalle: 'Síntomas y adherencia.', icono: 'CalendarClock', evidencia: 'Seguimiento.' },
+      ],
+    },
+    caso: {
+      titulo: 'FEVI 32 que subió a 45',
+      contexto: 'Paciente con FEVI inicial 32 %, tratamiento óptimo y FEVI actual 45 %, asintomático.',
+      pregunta: '¿Qué hacer con el tratamiento?',
+      opciones: [
+        { texto: 'Suspender todo porque mejoró.', correcta: false, retro: 'El riesgo persiste; la suspensión puede causar recaída.' },
+        { texto: 'Mantener la terapia y reevaluar, con seguimiento.', correcta: true, retro: 'La FEVI mejorada requiere continuidad.' },
+        { texto: 'Añadir un cuarto diurético.', correcta: false, retro: 'No es necesario.' },
+      ],
+    },
+    errores: [
+      { error: 'Suspender terapia por mejoría de FEVI.', correccion: 'El riesgo persiste.' },
+      { error: 'Confundir FEVI preservada con ausencia de IC.', correccion: 'La IC preservada es un síndrome.' },
+      { error: 'No reevaluar la FEVI.', correccion: 'La categoría puede cambiar.' },
+    ],
+    comprueba: [
+      { pregunta: '¿Qué FEVI define IC reducida?', respuesta: '≤40 %.' },
+      { pregunta: '¿Qué es FEVI mejorada?', respuesta: 'Aumento de al menos 10 puntos desde una FEVI reducida.' },
+      { pregunta: '¿Se suspende el tratamiento?', respuesta: 'No sin evaluación; el riesgo persiste.' },
+    ],
+    resumen: [
+      'La FEVI clasifica la IC.',
+      'La FEVI mejorada no es curación.',
+      'La terapia depende de la categoría.',
+      'La reevaluación es parte del seguimiento.',
+    ],
+    referencias: [
+      { cita: 'European Society of Cardiology. 2026 ESC Guidelines for the diagnosis and treatment of acute and chronic heart failure. Eur Heart J. 2026.', url: 'https://www.escardio.org/Guidelines/Clinical-Practice-Guidelines/Heart-Failure' },
+    ],
+    imagenes: [
+      { ubicacion: 'Sección de categorías', descripcion: 'Escala de FEVI con cuatro categorías y sus tratamientos.', alt: 'Clasificación de la insuficiencia cardíaca por FEVI' },
+    ],
+    keywords: ['FEVI reducida', 'FEVI preservada', 'FEVI levemente reducida', 'FEVI mejorada', 'clasificación insuficiencia cardíaca'],
+  },
+  {
+    titulo: 'Diagnóstico de la IC: síntomas y signos, péptidos natriuréticos, ECG, ecocardiograma y búsqueda de la causa',
+    duracion: 25,
+    gancho: {
+      titulo: 'La disnea que no era EPOC',
+      texto: 'Un paciente con disnea y sibilancias es tratado como EPOC durante meses. Un ecocardiograma revela disfunción ventricular y una FEVI de 28 %. El diagnóstico de insuficiencia cardíaca requiere síntomas, evidencia y búsqueda de la causa. Los péptidos natriuréticos y el ecocardiograma son claves.',
+    },
+    objetivos: [
+      'Reconocer síntomas y signos de IC.',
+      'Interpretar péptidos natriuréticos.',
+      'Aplicar ECG, ecocardiograma y estudios de causa.',
+      'Identificar diagnósticos diferenciales.',
+    ],
+    conceptos: [
+      { icono: 'Search', termino: 'Péptidos natriuréticos', definicion: 'BNP o NT-proBNP elevados apoyan el diagnóstico; valores bajos lo hacen improbable.' },
+      { icono: 'Activity', termino: 'Ecocardiograma', definicion: 'Evalúa FEVI, válvulas, paredes y presiones.' },
+      { icono: 'Network', termino: 'ECG', definicion: 'Puede mostrar hipertrofia, arritmia, isquemia o bloqueos.' },
+      { icono: 'Target', termino: 'Causa', definicion: 'Isquemia, valvulopatía, hipertensión, miocardiopatía o tóxicos.' },
+    ],
+    mapa: {
+      centro: 'Diagnóstico de IC',
+      ramas: [
+        { titulo: 'Síntomas', icono: 'Users', nodos: ['Disnea', 'Fatiga', 'Edema'] },
+        { titulo: 'Péptidos', icono: 'Search', nodos: ['BNP', 'NT-proBNP', 'Valorar'] },
+        { titulo: 'Imagen', icono: 'Activity', nodos: ['Eco', 'FEVI', 'Válvulas'] },
+        { titulo: 'Causa', icono: 'Target', nodos: ['Isquemia', 'Hipertensión', 'Tóxicos'] },
+      ],
+    },
+    secciones: [
+      {
+        titulo: 'Clínica y péptidos',
+        parrafos: [
+          'Los síntomas incluyen disnea, ortopnea, disnea paroxística nocturna, fatiga y edema. Los signos incluyen crepitantes, ingurgitación yugular, tercer ruido, edema y hepatomegalia. Ninguno es exclusivo; la combinación con evidencia objetiva es clave.',
+          'Los péptidos natriuréticos ayudan cuando el diagnóstico es incierto. Valores bajos hacen improbable la IC; valores altos apoyan pero no son específicos. La obesidad, la edad y la función renal modifican su interpretación.',
+        ],
+      },
+      {
+        titulo: 'Estudios',
+        parrafos: [
+          'El ECG puede mostrar hipertrofia, arritmia, isquemia o bloqueos. El ecocardiograma evalúa la FEVI, las válvulas, el grosor y las presiones. La radiografía puede mostrar congestión. La búsqueda de causa incluye isquemia, hipertensión, valvulopatía, miocardiopatía, alcohol, quimioterapia y enfermedades infiltrativas.',
+          'El diagnóstico temprano permite iniciar la terapia fundamental y evitar descompensaciones.',
+        ],
+      },
+      {
+        titulo: 'Diagnóstico diferencial',
+        parrafos: [
+          'La disnea puede deberse a EPOC, asma, anemia, obesidad, embolia pulmonar o enfermedad renal. La IC puede coexistir con otras condiciones. La evaluación integral evita tratamientos incorrectos.',
+          'El QF puede revisar los medicamentos que causan o empeoran la IC y educar sobre la importancia del ecocardiograma.',
+        ],
+      },
+    ],
+    proceso: {
+      titulo: 'Cómo diagnosticar la IC',
+      pasos: [
+        { titulo: 'Sospechar', detalle: 'Síntomas y signos.', icono: 'Search', evidencia: 'Clínica.' },
+        { titulo: 'Péptidos', detalle: 'BNP o NT-proBNP.', icono: 'TestTube', evidencia: 'Resultado.' },
+        { titulo: 'Imagen', detalle: 'Ecocardiograma.', icono: 'Activity', evidencia: 'FEVI.' },
+        { titulo: 'Causa', detalle: 'Isquemia, válvulas, tóxicos.', icono: 'Target', evidencia: 'Estudios.' },
+        { titulo: 'Clasificar', detalle: 'FEVI y etapa.', icono: 'Layers', evidencia: 'Diagnóstico.' },
+      ],
+    },
+    caso: {
+      titulo: 'Disnea y sibilancias',
+      contexto: 'Paciente con disnea, sibilancias y edema; tratamiento previo como EPOC sin mejoría.',
+      pregunta: '¿Qué estudio es clave?',
+      opciones: [
+        { texto: 'Solo aumentar el broncodilatador.', correcta: false, retro: 'Puede ser IC.' },
+        { texto: 'Ecocardiograma y péptidos natriuréticos.', correcta: true, retro: 'Confirman disfunción y apoyan el diagnóstico.' },
+        { texto: 'No hacer nada.', correcta: false, retro: 'El diagnóstico es necesario.' },
+      ],
+    },
+    errores: [
+      { error: 'Atribuir toda disnea a EPOC.', correccion: 'La IC puede simular EPOC.' },
+      { error: 'Interpretar péptidos sin contexto.', correccion: 'Obesidad y función renal afectan.' },
+      { error: 'No buscar la causa.', correccion: 'La causa guía el tratamiento.' },
+    ],
+    comprueba: [
+      { pregunta: '¿Qué péptido apoya el diagnóstico?', respuesta: 'BNP o NT-proBNP.' },
+      { pregunta: '¿Qué evalúa el ecocardiograma?', respuesta: 'FEVI, válvulas y presiones.' },
+      { pregunta: '¿Qué causas se buscan?', respuesta: 'Isquemia, hipertensión, valvulopatía, tóxicos.' },
+    ],
+    resumen: [
+      'La IC se diagnostica con clínica y evidencia.',
+      'Los péptidos ayudan en casos inciertos.',
+      'El ecocardiograma es clave.',
+      'La causa guía el tratamiento.',
+    ],
+    referencias: [
+      { cita: 'European Society of Cardiology. 2026 ESC Guidelines for the diagnosis and treatment of acute and chronic heart failure. Eur Heart J. 2026.', url: 'https://www.escardio.org/Guidelines/Clinical-Practice-Guidelines/Heart-Failure' },
+    ],
+    imagenes: [
+      { ubicacion: 'Sección de diagnóstico', descripcion: 'Paciente con disnea, ecocardiograma y resultado de BNP.', alt: 'Diagnóstico de insuficiencia cardíaca' },
+    ],
+    keywords: ['diagnóstico insuficiencia cardíaca', 'BNP NT-proBNP', 'ecocardiograma IC', 'disnea IC'],
+  },
+  {
+    titulo: 'Caso: mujer de 68 años en Barranquilla con disnea y edemas — del diagnóstico a la clasificación y la revisión de la fórmula',
+    duracion: 25,
+    gancho: {
+      titulo: 'La fórmula que no incluía la IC',
+      texto: 'Una mujer de 68 años llega con disnea, edemas y presión alta. Toma amlodipino, hidroclorotiazida y un AINE. El ecocardiograma muestra FEVI de 35 %. La fórmula no incluye ningún fármaco para la IC. El caso exige diagnosticar, clasificar y revisar la medicación completa. La intervención debe priorizar la suspensión del AINE y el inicio de la terapia fundamental, con educación y seguimiento.',
+    },
+    objetivos: [
+      'Integrar diagnóstico y clasificación en un caso real.',
+      'Revisar fármacos que empeoran la IC.',
+      'Proponer el inicio de la terapia fundamental.',
+      'Diseñar educación y seguimiento.',
+    ],
+    conceptos: [
+      { icono: 'Activity', termino: 'FEVI 35 %', definicion: 'IC con FEVI reducida.' },
+      { icono: 'AlertTriangle', termino: 'AINE', definicion: 'Retiene sodio y empeora la congestión y la función renal.' },
+      { icono: 'Pill', termino: 'Terapia fundamental', definicion: 'ARNI o IECA/ARA-II, beta, ARM e iSGLT2.' },
+      { icono: 'Users', termino: 'Educación', definicion: 'Peso, sal, signos de alarma y adherencia.' },
+    ],
+    mapa: {
+      centro: 'Caso Barranquilla',
+      ramas: [
+        { titulo: 'Diagnóstico', icono: 'Search', nodos: ['Disnea', 'Edema', 'FEVI 35'] },
+        { titulo: 'Fármacos', icono: 'AlertTriangle', nodos: ['AINE', 'Amlodipino', 'Tiazida'] },
+        { titulo: 'Tratamiento', icono: 'Pill', nodos: ['ARNI', 'Beta', 'ARM', 'iSGLT2'] },
+        { titulo: 'Seguimiento', icono: 'CalendarClock', nodos: ['Peso', 'Potasio', 'TFG'] },
+      ],
+    },
+    secciones: [
+      {
+        titulo: 'Evaluación',
+        parrafos: [
+          'La paciente tiene IC con FEVI reducida, clase funcional probablemente III por disnea y edemas. El AINE empeora la congestión y la función renal. La fórmula actual no incluye terapia fundamental. Se revisan presión, potasio, TFG y síntomas.',
+          'Se suspende el AINE y se propone iniciar los pilares de forma escalonada, con control de presión, potasio y función renal. La educación incluye peso diario y sal.',
+        ],
+      },
+      {
+        titulo: 'Plan',
+        parrafos: [
+          'Se puede iniciar un ARNI o IECA/ARA-II, un betabloqueador con evidencia, un ARM y un iSGLT2. La secuencia depende de la presión, la función renal y el potasio. La titulación se hace con seguimiento.',
+          'El QF documenta la intervención y coordina con el equipo. La paciente debe entender por qué necesita varios fármacos.',
+        ],
+      },
+      {
+        titulo: 'Seguimiento',
+        parrafos: [
+          'Se revisan peso, presión, síntomas, potasio y TFG. La adherencia y la educación son clave. La meta es reducir hospitalizaciones y mejorar la calidad de vida.',
+          'La revisión de la fórmula debe repetirse en cada contacto. La paciente debe conocer los signos de alarma, el peso diario y la importancia de no suspender los pilares sin consultar nunca.',
+        ],
+      },
+    ],
+    proceso: {
+      titulo: 'Abordaje del caso',
+      pasos: [
+        { titulo: 'Clasificar', detalle: 'FEVI 35, NYHA III, etapa C.', icono: 'Layers', evidencia: 'Diagnóstico.' },
+        { titulo: 'Revisar', detalle: 'AINE y fármacos actuales.', icono: 'Search', evidencia: 'Lista.' },
+        { titulo: 'Iniciar', detalle: 'Pilares escalonados.', icono: 'Pill', evidencia: 'Plan.' },
+        { titulo: 'Educar', detalle: 'Peso, sal y signos de alarma.', icono: 'Users', evidencia: 'Educación.' },
+        { titulo: 'Seguir', detalle: 'Potasio, TFG y síntomas.', icono: 'CalendarClock', evidencia: 'Control.' },
+      ],
+    },
+    caso: {
+      titulo: 'AINE y FEVI 35',
+      contexto: 'Mujer de 68 años, FEVI 35 %, disnea y edemas, toma AINE y no tiene terapia fundamental.',
+      pregunta: '¿Qué hacer primero?',
+      opciones: [
+        { texto: 'Aumentar la tiazida.', correcta: false, retro: 'No aborda la IC ni el AINE.' },
+        { texto: 'Suspender el AINE y proponer inicio de la terapia fundamental.', correcta: true, retro: 'Se trata la causa de empeoramiento y se optimiza.' },
+        { texto: 'Solo diurético.', correcta: false, retro: 'No cambia el pronóstico.' },
+      ],
+    },
+    errores: [
+      { error: 'Mantener AINE.', correccion: 'Empeora la congestión y el riñón.' },
+      { error: 'No iniciar pilares.', correccion: 'La FEVI reducida los requiere.' },
+      { error: 'No educar.', correccion: 'El autocuidado es clave.' },
+    ],
+    comprueba: [
+      { pregunta: '¿Qué fármaco empeora la IC?', respuesta: 'El AINE.' },
+      { pregunta: '¿Qué pilares se inician?', respuesta: 'ARNI/IECA/ARA-II, beta, ARM e iSGLT2.' },
+      { pregunta: '¿Qué se controla?', respuesta: 'Peso, presión, potasio y TFG.' },
+    ],
+    resumen: [
+      'La FEVI 35 define IC reducida.',
+      'El AINE se suspende.',
+      'Los pilares se inician de forma escalonada.',
+      'El seguimiento es clave.',
+    ],
+    referencias: [
+      { cita: 'European Society of Cardiology. 2026 ESC Guidelines for the diagnosis and treatment of acute and chronic heart failure. Eur Heart J. 2026.', url: 'https://www.escardio.org/Guidelines/Clinical-Practice-Guidelines/Heart-Failure' },
+      { cita: 'AEMPS-CIMA. Ficha técnica de Entresto 24 mg/26 mg comprimidos recubiertos con película.', url: 'https://cima.aemps.es/cima/dochtml/ft/1151058001/FT_1151058001.html' },
+    ],
+    imagenes: [
+      { ubicacion: 'Sección del caso', descripcion: 'Paciente con edemas, ecocardiograma con FEVI 35 y fórmula sin pilares.', alt: 'Caso de insuficiencia cardíaca en Barranquilla' },
+    ],
+    keywords: ['caso insuficiencia cardíaca', 'FEVI 35 tratamiento', 'AINE insuficiencia cardíaca', 'terapia fundamental IC'],
+  },
+  {
+    titulo: 'Introducción a la unidad: la terapia médica fundamental de la IC con FEVI reducida (los cuatro pilares)',
+    duracion: 20,
+    gancho: {
+      titulo: 'Cuatro pilares, no uno',
+      texto: 'Durante años, la IC con FEVI reducida se trataba con un IECA y un betabloqueador. Hoy la evidencia muestra que ARNI o IECA/ARA-II, betabloqueador, antagonista mineralocorticoide e iSGLT2 reducen mortalidad y hospitalizaciones. La combinación es el estándar, no la excepción.',
+    },
+    objetivos: [
+      'Identificar los cuatro pilares.',
+      'Reconocer el beneficio de cada grupo.',
+      'Aplicar criterios de inicio y titulación.',
+      'Reconocer barreras y soluciones.',
+    ],
+    conceptos: [
+      { icono: 'Pill', termino: 'ARNI', definicion: 'Sacubitrilo/valsartán; preferido en FEVI reducida cuando es posible.' },
+      { icono: 'Activity', termino: 'Betabloqueador', definicion: 'Bisoprolol, carvedilol, metoprolol succinato o nebivolol con evidencia.' },
+      { icono: 'Droplets', termino: 'ARM', definicion: 'Espironolactona, eplerenona o finerenona.' },
+      { icono: 'Gauge', termino: 'iSGLT2', definicion: 'Dapagliflozina o empagliflozina; reducen eventos y congestión.' },
+    ],
+    mapa: {
+      centro: 'Cuatro pilares',
+      ramas: [
+        { titulo: 'ARNI/IECA', icono: 'Pill', nodos: ['Sacubitrilo/valsartán', 'Enalapril', 'Losartán'] },
+        { titulo: 'Beta', icono: 'Activity', nodos: ['Bisoprolol', 'Carvedilol', 'Metoprolol'] },
+        { titulo: 'ARM', icono: 'Droplets', nodos: ['Espironolactona', 'Eplerenona', 'Finerenona'] },
+        { titulo: 'iSGLT2', icono: 'Gauge', nodos: ['Dapagliflozina', 'Empagliflozina'] },
+      ],
+    },
+    secciones: [
+      {
+        titulo: 'Los cuatro pilares',
+        parrafos: [
+          'El primer pilar es el bloqueo del sistema renina-angiotensina con ARNI o, si no está disponible, IECA o ARA-II. El segundo es un betabloqueador con evidencia. El tercero es un antagonista mineralocorticoide. El cuarto es un iSGLT2. Cada uno reduce mortalidad y hospitalizaciones, y sus efectos son aditivos.',
+          'La terapia debe iniciarse en dosis bajas y titularse. La secuencia puede ser simultánea o escalonada, según la presión, la función renal, el potasio y la tolerancia.',
+        ],
+      },
+      {
+        titulo: 'Barreras',
+        parrafos: [
+          'Las barreras incluyen hipotensión, bradicardia, hiperpotasemia, deterioro renal, costo y falta de coordinación. La mayoría se manejan con titulación cuidadosa y seguimiento, no con abandono del fármaco.',
+          'El QF puede detectar barreras y proponer soluciones. La educación sobre el beneficio a largo plazo mejora la adherencia.',
+        ],
+      },
+      {
+        titulo: 'Metas',
+        parrafos: [
+          'La meta es alcanzar dosis toleradas de los cuatro pilares y controlar la congestión. La FEVI puede mejorar, pero el tratamiento no se suspende automáticamente.',
+          'La revisión periódica y la comunicación con el equipo son esenciales.',
+        ],
+      },
+    ],
+    proceso: {
+      titulo: 'Cómo iniciar los pilares',
+      pasos: [
+        { titulo: 'Evaluar', detalle: 'Presión, TFG, potasio y síntomas.', icono: 'Search', evidencia: 'Evaluación.' },
+        { titulo: 'Iniciar', detalle: 'Dosis bajas de los pilares.', icono: 'Pill', evidencia: 'Plan.' },
+        { titulo: 'Titular', detalle: 'Cada 2-4 semanas.', icono: 'RefreshCw', evidencia: 'Esquema.' },
+        { titulo: 'Controlar', detalle: 'Potasio, TFG, presión y síntomas.', icono: 'LineChart', evidencia: 'Resultados.' },
+        { titulo: 'Mantener', detalle: 'Dosis toleradas y adherencia.', icono: 'CalendarClock', evidencia: 'Seguimiento.' },
+      ],
+    },
+    caso: {
+      titulo: 'Solo IECA y beta',
+      contexto: 'Paciente con FEVI 30 %, IECA y betabloqueador, sin ARM ni iSGLT2.',
+      pregunta: '¿Qué hacer?',
+      opciones: [
+        { texto: 'Mantener solo dos pilares.', correcta: false, retro: 'Faltan ARM e iSGLT2, con beneficio demostrado.' },
+        { texto: 'Añadir ARM e iSGLT2 si no hay contraindicación.', correcta: true, retro: 'La combinación completa mejora el pronóstico.' },
+        { texto: 'Suspender el beta.', correcta: false, retro: 'El beta tiene beneficio.' },
+      ],
+    },
+    errores: [
+      { error: 'Quedarse con dos pilares.', correccion: 'Los cuatro son el estándar.' },
+      { error: 'No titular.', correccion: 'La dosis baja no alcanza el beneficio completo.' },
+      { error: 'Suspender por una barrera manejable.', correccion: 'Se ajusta y se sigue.' },
+    ],
+    comprueba: [
+      { pregunta: '¿Cuáles son los cuatro pilares?', respuesta: 'ARNI/IECA/ARA-II, beta, ARM e iSGLT2.' },
+      { pregunta: '¿Cómo se titulan?', respuesta: 'Dosis bajas y aumento gradual con control.' },
+      { pregunta: '¿Qué barreras son frecuentes?', respuesta: 'Hipotensión, bradicardia, hiperpotasemia yTFG.' },
+    ],
+    resumen: [
+      'La IC reducida requiere cuatro pilares.',
+      'El beneficio es aditivo.',
+      'La titulación es segura con control.',
+      'No se abandona por barreras manejables.',
+    ],
+    referencias: [
+      { cita: 'European Society of Cardiology. 2026 ESC Guidelines for the diagnosis and treatment of acute and chronic heart failure. Eur Heart J. 2026.', url: 'https://www.escardio.org/Guidelines/Clinical-Practice-Guidelines/Heart-Failure' },
+    ],
+    imagenes: [
+      { ubicacion: 'Sección de pilares', descripcion: 'Cuatro columnas con ARNI/IECA, beta, ARM e iSGLT2.', alt: 'Cuatro pilares del tratamiento de la IC con FEVI reducida' },
+    ],
+    keywords: ['cuatro pilares insuficiencia cardíaca', 'terapia fundamental IC', 'ARNI beta ARM iSGLT2'],
+  },
+  {
+    titulo: 'ARNI: sacubitrilo/valsartán — mecanismo, inicio, titulación y transición desde IECA',
+    duracion: 25,
+    gancho: {
+      titulo: 'El cambio que exige esperar 36 horas',
+      texto: 'Un paciente con enalapril y FEVI reducida va a cambiar a sacubitrilo/valsartán. El cambio no es inmediato: hay que suspender el IECA y esperar al menos 36 horas para evitar angioedema. La transición mal hecha puede ser peligrosa. Respetar el intervalo y controlar la presión y el potasio evita complicaciones.',
+    },
+    objetivos: [
+      'Explicar el mecanismo del ARNI.',
+      'Aplicar el inicio y la titulación.',
+      'Realizar la transición desde IECA de forma segura.',
+      'Reconocer efectos adversos y controles.',
+    ],
+    conceptos: [
+      { icono: 'Pill', termino: 'Sacubitrilo', definicion: 'Inhibe la neprilisina y aumenta los péptidos natriuréticos.' },
+      { icono: 'Activity', termino: 'Valsartán', definicion: 'Bloquea el receptor AT1 y contrarresta la angiotensina II.' },
+      { icono: 'Timer', termino: '36 horas', definicion: 'Espera mínima tras suspender un IECA antes de iniciar el ARNI.' },
+      { icono: 'AlertTriangle', termino: 'Angioedema', definicion: 'Riesgo si no se respeta la transición.' },
+    ],
+    mapa: {
+      centro: 'ARNI',
+      ramas: [
+        { titulo: 'Mecanismo', icono: 'Pill', nodos: ['Neprilisina', 'Péptidos', 'AT1'] },
+        { titulo: 'Inicio', icono: 'CalendarClock', nodos: ['24/26 mg', 'Cada 12 h', 'Titular'] },
+        { titulo: 'Transición', icono: 'Timer', nodos: ['Suspender IECA', '36 h', 'Iniciar'] },
+        { titulo: 'Seguridad', icono: 'AlertTriangle', nodos: ['Hipotensión', 'Potasio', 'TFG'] },
+      ],
+    },
+    secciones: [
+      {
+        titulo: 'Mecanismo y beneficio',
+        parrafos: [
+          'El sacubitrilo inhibe la neprilisina, que degrada los péptidos natriuréticos, y el valsartán bloquea el receptor AT1. El resultado es vasodilatación, menos retención de sodio y menor remodelado. En FEVI reducida, el ARNI reduce mortalidad y hospitalizaciones más que un IECA.',
+          'Se prefiere en pacientes que toleran un IECA o ARA-II y tienen FEVI reducida. No se combina con IECA.',
+        ],
+      },
+      {
+        titulo: 'Inicio y transición',
+        parrafos: [
+          'Se inicia con 24/26 mg cada 12 horas en pacientes estables con presión adecuada. La dosis se titula cada dos a cuatro semanas hasta 97/103 mg cada 12 horas, según tolerancia. En hipotensión, se ajustan diuréticos y otras dosis.',
+          'Si el paciente viene de un IECA, se suspende y se espera al menos 36 horas antes de iniciar el ARNI. Si viene de un ARA-II, no se requiere esa espera. Se controlan presión, potasio y función renal.',
+        ],
+      },
+      {
+        titulo: 'Seguridad',
+        parrafos: [
+          'Los efectos adversos incluyen hipotensión, hiperpotasemia, deterioro renal y angioedema. Se controlan potasio y creatinina. No se usa en embarazo ni en antecedente de angioedema relacionado con IECA.',
+          'La educación incluye no combinar con IECA y reportar hinchazón de labios o lengua.',
+        ],
+      },
+    ],
+    proceso: {
+      titulo: 'Cómo iniciar ARNI',
+      pasos: [
+        { titulo: 'Confirmar', detalle: 'FEVI reducida y tolerancia a IECA/ARA-II.', icono: 'Target', evidencia: 'Indicación.' },
+        { titulo: 'Suspender IECA', detalle: 'Esperar 36 horas.', icono: 'Timer', evidencia: 'Registro.' },
+        { titulo: 'Iniciar', detalle: '24/26 mg cada 12 horas.', icono: 'Pill', evidencia: 'Dosis.' },
+        { titulo: 'Titular', detalle: 'Cada 2-4 semanas.', icono: 'RefreshCw', evidencia: 'Esquema.' },
+        { titulo: 'Controlar', detalle: 'Presión, potasio y TFG.', icono: 'LineChart', evidencia: 'Control.' },
+      ],
+    },
+    caso: {
+      titulo: 'Cambio desde enalapril',
+      contexto: 'Paciente con enalapril, FEVI 28 % y presión 118/72. Se decide cambiar a ARNI.',
+      pregunta: '¿Qué hacer?',
+      opciones: [
+        { texto: 'Iniciar ARNI el mismo día.', correcta: false, retro: 'Debe esperar 36 horas tras suspender el IECA.' },
+        { texto: 'Suspender enalapril, esperar 36 horas e iniciar ARNI con titulación.', correcta: true, retro: 'La transición segura evita angioedema.' },
+        { texto: 'Combinar enalapril y ARNI.', correcta: false, retro: 'No se combinan.' },
+      ],
+    },
+    errores: [
+      { error: 'Combinar IECA y ARNI.', correccion: 'Contraindicado.' },
+      { error: 'No esperar 36 horas.', correccion: 'Riesgo de angioedema.' },
+      { error: 'Titular sin controlar presión.', correccion: 'Riesgo de hipotensión.' },
+    ],
+    comprueba: [
+      { pregunta: '¿Qué inhibe el sacubitrilo?', respuesta: 'La neprilisina.' },
+      { pregunta: '¿Cuánto esperar tras IECA?', respuesta: 'Al menos 36 horas.' },
+      { pregunta: '¿Qué se controla?', respuesta: 'Presión, potasio y función renal.' },
+    ],
+    resumen: [
+      'ARNI: neprilisina + AT1.',
+      'Reduce mortalidad y hospitalizaciones.',
+      'Esperar 36 horas tras IECA.',
+      'Titular con control.',
+    ],
+    referencias: [
+      { cita: 'AEMPS-CIMA. Ficha técnica de Entresto 24 mg/26 mg comprimidos recubiertos con película.', url: 'https://cima.aemps.es/cima/dochtml/ft/1151058001/FT_1151058001.html' },
+      { cita: 'European Society of Cardiology. 2026 ESC Guidelines for the diagnosis and treatment of acute and chronic heart failure. Eur Heart J. 2026.', url: 'https://www.escardio.org/Guidelines/Clinical-Practice-Guidelines/Heart-Failure' },
+    ],
+    imagenes: [
+      { ubicacion: 'Sección de transición', descripcion: 'Reloj de 36 horas entre un IECA y el ARNI.', alt: 'Transición de IECA a sacubitrilo/valsartán' },
+    ],
+    keywords: ['sacubitrilo valsartán', 'ARNI insuficiencia cardíaca', 'transición IECA ARNI', 'Entresto dosis'],
+  },
+  {
+    titulo: 'IECA y ARA-II en la IC con FEVI reducida: cuándo usarlos, dosis objetivo y efectos adversos',
+    duracion: 20,
+    gancho: {
+      titulo: 'Cuando el ARNI no está disponible',
+      texto: 'No todos los pacientes pueden acceder al ARNI. Los IECA y ARA-II siguen siendo pilares cuando el ARNI no está disponible o no se tolera. La dosis objetivo y el control de potasio y función renal son parte del tratamiento. La titulación debe ser gradual y sostenida, con educación sobre tos, angioedema y adherencia.',
+    },
+    objetivos: [
+      'Reconocer el lugar de IECA y ARA-II.',
+      'Aplicar dosis objetivo y titulación.',
+      'Manejar tos, angioedema e hiperpotasemia.',
+      'Elegir según tolerancia y acceso.',
+    ],
+    conceptos: [
+      { icono: 'Pill', termino: 'IECA', definicion: 'Enalapril, lisinopril, ramipril; reducen mortalidad en FEVI reducida.' },
+      { icono: 'Pill', termino: 'ARA-II', definicion: 'Losartán, valsartán, candesartán; alternativa si hay tos.' },
+      { icono: 'Target', termino: 'Dosis objetivo', definicion: 'Dosis tolerada que ha demostrado beneficio.' },
+      { icono: 'AlertTriangle', termino: 'Efectos', definicion: 'Tos, angioedema, hiperpotasemia y deterioro renal.' },
+    ],
+    mapa: {
+      centro: 'IECA/ARA-II',
+      ramas: [
+        { titulo: 'IECA', icono: 'Pill', nodos: ['Enalapril', 'Lisinopril', 'Ramipril'] },
+        { titulo: 'ARA-II', icono: 'Pill', nodos: ['Losartán', 'Valsartán', 'Candesartán'] },
+        { titulo: 'Dosis', icono: 'Target', nodos: ['Inicio bajo', 'Titular', 'Dosis objetivo'] },
+        { titulo: 'Seguridad', icono: 'AlertTriangle', nodos: ['Tos', 'Angioedema', 'Potasio'] },
+      ],
+    },
+    secciones: [
+      {
+        titulo: 'Cuándo usarlos',
+        parrafos: [
+          'En FEVI reducida, un IECA o ARA-II es parte de la terapia fundamental cuando no se usa ARNI. El ARNI se prefiere si el paciente es elegible. No se combinan IECA y ARA-II. Se controlan potasio y función renal.',
+          'La dosis se titula hasta la dosis objetivo tolerada. La evidencia depende de alcanzar dosis adecuadas, no solo de iniciar.',
+        ],
+      },
+      {
+        titulo: 'Efectos adversos',
+        parrafos: [
+          'La tos seca es frecuente con IECA; el angioedema es raro pero grave. La hiperpotasemia y el deterioro renal requieren control. En insuficiencia renal o deshidratación, el riesgo aumenta.',
+          'Si hay tos intolerable, se cambia a ARA-II. Si hay angioedema, se suspende y no se reintroduce un IECA.',
+        ],
+      },
+      {
+        titulo: 'Acceso y adherencia',
+        parrafos: [
+          'El costo y la cobertura influyen. El QF puede revisar alternativas y educar. La adherencia es clave para el beneficio.',
+          'La titulación debe ser gradual y con seguimiento. La educación incluye reconocer la tos, el angioedema y la hiperpotasemia, y no combinar IECA con ARA-II. La revisión debe incluir potasio, creatinina y presión, y la dosis se ajusta según la tolerancia. La adherencia y la educación sobre efectos adversos son parte del éxito. La revisión periódica permite ajustar la dosis objetivo.',
+        ],
+      },
+    ],
+    proceso: {
+      titulo: 'Cómo titular IECA/ARA-II',
+      pasos: [
+        { titulo: 'Iniciar', detalle: 'Dosis baja.', icono: 'Pill', evidencia: 'Esquema.' },
+        { titulo: 'Controlar', detalle: 'Presión, potasio y TFG.', icono: 'LineChart', evidencia: 'Resultados.' },
+        { titulo: 'Titular', detalle: 'Cada 1-2 semanas.', icono: 'RefreshCw', evidencia: 'Ajuste.' },
+        { titulo: 'Manejar', detalle: 'Tos, angioedema o hiperpotasemia.', icono: 'AlertTriangle', evidencia: 'Intervención.' },
+        { titulo: 'Mantener', detalle: 'Dosis objetivo tolerada.', icono: 'CalendarClock', evidencia: 'Seguimiento.' },
+      ],
+    },
+    caso: {
+      titulo: 'Tos con enalapril',
+      contexto: 'Paciente con FEVI reducida y tos seca con enalapril.',
+      pregunta: '¿Qué hacer?',
+      opciones: [
+        { texto: 'Aumentar enalapril.', correcta: false, retro: 'Empeora la tos.' },
+        { texto: 'Cambiar a ARA-II y mantener el bloqueo.', correcta: true, retro: 'Se conserva el beneficio con menos tos.' },
+        { texto: 'Suspender el bloqueo.', correcta: false, retro: 'La FEVI reducida lo requiere.' },
+      ],
+    },
+    errores: [
+      { error: 'No alcanzar dosis objetivo.', correccion: 'La titulación es parte del beneficio.' },
+      { error: 'Combinar IECA y ARA-II.', correccion: 'No se recomienda.' },
+      { error: 'No controlar potasio.', correccion: 'Riesgo de hiperpotasemia.' },
+    ],
+    comprueba: [
+      { pregunta: '¿Cuándo se prefiere ARNI?', respuesta: 'Cuando el paciente es elegible y tiene acceso.' },
+      { pregunta: '¿Qué alternativa si hay tos?', respuesta: 'Un ARA-II.' },
+      { pregunta: '¿Qué se controla?', respuesta: 'Potasio y función renal.' },
+    ],
+    resumen: [
+      'IECA/ARA-II son pilares si no hay ARNI.',
+      'La dosis objetivo importa.',
+      'La tos se maneja con ARA-II.',
+      'Potasio y TFG se controlan.',
+    ],
+    referencias: [
+      { cita: 'AEMPS-CIMA. Ficha técnica de Enalapril maleato.', url: 'https://cima.aemps.es/cima/dochtml/ft/73300/FT_73300.html' },
+      { cita: 'European Society of Cardiology. 2026 ESC Guidelines for the diagnosis and treatment of acute and chronic heart failure. Eur Heart J. 2026.', url: 'https://www.escardio.org/Guidelines/Clinical-Practice-Guidelines/Heart-Failure' },
+    ],
+    imagenes: [
+      { ubicacion: 'Sección de elección', descripcion: 'Comparación ARNI, IECA y ARA-II en FEVI reducida.', alt: 'IECA y ARA-II en insuficiencia cardíaca' },
+    ],
+    keywords: ['IECA insuficiencia cardíaca', 'ARA-II insuficiencia cardíaca', 'dosis objetivo enalapril', 'tos IECA IC'],
+  },
+  {
+    titulo: 'Betabloqueadores con evidencia en IC: bisoprolol, carvedilol, metoprolol succinato y nebivolol',
+    duracion: 20,
+    gancho: {
+      titulo: 'No cualquier betabloqueador',
+      texto: 'No todos los betabloqueadores tienen la misma evidencia en insuficiencia cardíaca. Bisoprolol, carvedilol, metoprolol succinato y nebivolol han demostrado beneficio en FEVI reducida. Usar atenolol o propranolol no es equivalente. La elección importa. El inicio debe ser gradual, con vigilancia de frecuencia, presión y síntomas, y sin suspensión brusca.',
+    },
+    objetivos: [
+      'Identificar los betabloqueadores con evidencia.',
+      'Aplicar inicio y titulación.',
+      'Reconocer efectos adversos y precauciones.',
+      'Elegir según comorbilidad.',
+    ],
+    conceptos: [
+      { icono: 'Activity', termino: 'Bisoprolol', definicion: 'Cardioselectivo con evidencia en IC.' },
+      { icono: 'Gauge', termino: 'Carvedilol', definicion: 'Bloqueo beta y alfa; evidencia en IC.' },
+      { icono: 'Target', termino: 'Metoprolol succinato', definicion: 'Formulación de liberación prolongada con evidencia.' },
+      { icono: 'AlertTriangle', termino: 'Bradicardia', definicion: 'Límite para titulación.' },
+    ],
+    mapa: {
+      centro: 'Betabloqueadores en IC',
+      ramas: [
+        { titulo: 'Con evidencia', icono: 'Activity', nodos: ['Bisoprolol', 'Carvedilol', 'Metoprolol succinato', 'Nebivolol'] },
+        { titulo: 'Inicio', icono: 'CalendarClock', nodos: ['Dosis baja', 'Estable', 'Titular'] },
+        { titulo: 'Seguridad', icono: 'AlertTriangle', nodos: ['Bradicardia', 'Hipotensión', 'Fatiga'] },
+        { titulo: 'Precaución', icono: 'Wind', nodos: ['Asma', 'Bradicardia', 'Bloqueo'] },
+      ],
+    },
+    secciones: [
+      {
+        titulo: 'Evidencia',
+        parrafos: [
+          'Bisoprolol, carvedilol, metoprolol succinato y nebivolol han demostrado reducir mortalidad o hospitalizaciones en IC con FEVI reducida. La evidencia no se extrapola a todos los betabloqueadores. La elección depende de la comorbilidad y la tolerancia.',
+          'Se inician en dosis baja cuando el paciente está estable, sin congestión aguda. La titulación se hace cada dos a cuatro semanas.',
+        ],
+      },
+      {
+        titulo: 'Seguridad',
+        parrafos: [
+          'Pueden causar bradicardia, hipotensión, fatiga y broncoespasmo. Se usan con precaución en asma y bloqueo AV. No se suspenden bruscamente.',
+          'En insuficiencia cardíaca descompensada, no se inician hasta estabilizar.',
+        ],
+      },
+      {
+        titulo: 'Educación',
+        parrafos: [
+          'La educación incluye tomar a la misma hora, no suspender y reportar mareo o falta de aire. La adherencia es clave.',
+          'El QF puede revisar la frecuencia y la presión en cada contacto. La educación incluye no suspender bruscamente, reportar mareo o falta de aire y mantener la adherencia. La revisión debe incluir frecuencia, presión y síntomas de congestión. La adherencia y la educación sobre efectos adversos son parte del seguimiento. La revisión periódica permite mantener la dosis tolerada.',
+        ],
+      },
+    ],
+    proceso: {
+      titulo: 'Cómo iniciar un betabloqueador',
+      pasos: [
+        { titulo: 'Estabilizar', detalle: 'Sin congestión aguda.', icono: 'ShieldCheck', evidencia: 'Evaluación.' },
+        { titulo: 'Iniciar', detalle: 'Dosis baja.', icono: 'Pill', evidencia: 'Esquema.' },
+        { titulo: 'Titular', detalle: 'Cada 2-4 semanas.', icono: 'RefreshCw', evidencia: 'Ajuste.' },
+        { titulo: 'Controlar', detalle: 'Frecuencia, presión y síntomas.', icono: 'LineChart', evidencia: 'Resultados.' },
+        { titulo: 'Mantener', detalle: 'Dosis tolerada.', icono: 'CalendarClock', evidencia: 'Seguimiento.' },
+      ],
+    },
+    caso: {
+      titulo: 'Atenolol en IC',
+      contexto: 'Paciente con FEVI reducida y atenolol.',
+      pregunta: '¿Qué hacer?',
+      opciones: [
+        { texto: 'Mantener atenolol.', correcta: false, retro: 'No tiene la misma evidencia en IC.' },
+        { texto: 'Cambiar a bisoprolol, carvedilol o metoprolol succinato.', correcta: true, retro: 'Se elige un betabloqueador con evidencia.' },
+        { texto: 'Suspender sin alternativa.', correcta: false, retro: 'El beta tiene beneficio.' },
+      ],
+    },
+    errores: [
+      { error: 'Usar cualquier betabloqueador.', correccion: 'Solo los que tienen evidencia.' },
+      { error: 'Iniciar en descompensación.', correccion: 'Se estabiliza primero.' },
+      { error: 'Suspender bruscamente.', correccion: 'Riesgo de rebote.' },
+    ],
+    comprueba: [
+      { pregunta: '¿Cuáles tienen evidencia?', respuesta: 'Bisoprolol, carvedilol, metoprolol succinato y nebivolol.' },
+      { pregunta: '¿Cuándo se inician?', respuesta: 'Cuando el paciente está estable.' },
+      { pregunta: '¿Qué se controla?', respuesta: 'Frecuencia, presión y síntomas.' },
+    ],
+    resumen: [
+      'No todos los betabloqueadores son iguales.',
+      'Los cuatro con evidencia son la base.',
+      'Se inician estables y se titulan.',
+      'No se suspenden bruscamente.',
+    ],
+    referencias: [
+      { cita: 'AEMPS-CIMA. Ficha técnica de Bisoprolol Cinfa 10 mg comprimidos EFG.', url: 'https://cima.aemps.es/cima/dochtml/ft/78905/FT_78905.html' },
+      { cita: 'AEMPS-CIMA. Ficha técnica de Carvedilol Cinfa 25 mg comprimidos EFG.', url: 'https://cima.aemps.es/cima/dochtml/ft/68328/FT_68328.html' },
+    ],
+    imagenes: [
+      { ubicacion: 'Sección de evidencia', descripcion: 'Lista de betabloqueadores con evidencia y advertencia sobre los que no la tienen.', alt: 'Betabloqueadores con evidencia en insuficiencia cardíaca' },
+    ],
+    keywords: ['betabloqueadores insuficiencia cardíaca', 'bisoprolol IC', 'carvedilol IC', 'metoprolol succinato IC'],
+  },
+];

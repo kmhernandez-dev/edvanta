@@ -14,13 +14,13 @@ Este archivo evita que dos agentes (Claude Code y Open Code) escriban el mismo m
 
 | Grupo (ATC) | Agente | Desde | Plan de keywords | Estado |
 |---|---|---|---|---|
-| Antimicrobianos: antibacterianos sistémicos (J01) y nitroimidazoles (P01AB) | Claude Code | 13-nov-2026 | `seo/vademecum-antimicrobianos.md` y `seo/vademecum-antimicrobianos-2000-keywords.csv` | Plan listo; fichas por lotes |
-| Antihipertensivos (C02, C03, C07, C08, C09) | Claude Code | 12-nov-2026 | Grupo de presión alta en `seo/plan-1000-keywords.md` | 8 artículos en noindex, esperando revisión clínica |
+| Antimicrobianos: antibacterianos sistémicos (J01) y nitroimidazoles (P01AB) | Claude Code | 13-nov-2026 | `seo/vademecum-antimicrobianos.md` y `seo/vademecum-antimicrobianos-2000-keywords.csv` | Lote 1 y lote 2 revisados por Karla y desplegados el 13-nov. Lote 2 ampliado con 8 monografías y 4 clases nuevas, más 3 artículos del lote 3, en noindex hasta la revisión de Karla. Sigue el lote 4 |
+| Antihipertensivos (C02, C03, C07, C08, C09) | Claude Code | 12-nov-2026 | Grupo de presión alta en `seo/plan-1000-keywords.md` | 8 artículos aprobados por Karla (12-nov) e indexables |
 | _Libre para Open Code_ | Open Code | — | — | Anotar aquí el grupo elegido |
 
 ## Fichas que ya existen (no duplicar)
 
-Antimicrobianos: amoxicilina, azitromicina.
+Antimicrobianos: amoxicilina, azitromicina, metronidazol, cefalexina, amoxicilina con ácido clavulánico, trimetoprim sulfametoxazol, nitrofurantoína, ciprofloxacino y clindamicina.
 Otros grupos: acetaminofén, ácido fólico, amlodipino, atorvastatina, Buscapina (butilescopolamina), diclofenaco, enalapril, furosemida, hidroclorotiazida, ibuprofeno, loratadina, losartán, metformina, naproxeno, omeprazol, sertralina.
 
 ## Grupos sugeridos para Open Code

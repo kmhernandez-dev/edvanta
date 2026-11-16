@@ -46,6 +46,10 @@ Si alguna vez tuviste ronchas, hinchazón o dificultad para respirar con una pen
 - **Warfarina:** puede aumentar su efecto; requiere control.
 - **Alopurinol:** aumenta la probabilidad de erupción en la piel.
 
+## Para profesionales
+
+La amoxicilina forma parte del grupo [Antibióticos de uso ambulatorio](/vademecum/antibioticos-de-uso-ambulatorio) del vademécum. Para la combinación con ácido clavulánico, revisa su [monografía](/vademecum/amoxicilina-acido-clavulanico); para intervenir en la prescripción, el curso *Stewardship Farmacéutico: PROA* y el artículo sobre [uso racional de antibióticos](/articulos/antibioticos-uso-racional-resistencia).
+
 ## Preguntas frecuentes
 
 ### ¿Puedo tomar alcohol con amoxicilina?

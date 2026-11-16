@@ -39,6 +39,10 @@ Consulta de inmediato si tienes palpitaciones, desmayo, piel u ojos amarillos, a
 - **Warfarina:** puede aumentar su efecto.
 - **Antiácidos con aluminio o magnesio:** reducen su absorción si se toman al mismo tiempo.
 
+## Para profesionales
+
+La azitromicina se estudia dentro del grupo [Antibióticos de uso ambulatorio](/vademecum/antibioticos-de-uso-ambulatorio) del vademécum. Para profundizar en el uso racional y la resistencia, revisa el artículo sobre [uso racional de antibióticos](/articulos/antibioticos-uso-racional-resistencia) y el curso *Stewardship Farmacéutico: PROA*.
+
 ## Preguntas frecuentes
 
 ### ¿Por qué la azitromicina se toma solo 3 días?

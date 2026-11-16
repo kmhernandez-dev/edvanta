@@ -1,0 +1,955 @@
+export const CURSO = 'Curso de Farmacología del Sistema Nervioso Central';
+export const MIGRACION = '151_experiencias_farmacologia_snc_1.sql';
+
+export const CLASES = [
+  {
+    titulo: 'Introducción al curso: el químico farmacéutico frente a la farmacología del SNC',
+    duracion: 20,
+    gancho: {
+      titulo: 'Un medicamento que llega al cerebro',
+      texto: 'Un paciente con epilepsia recibe un antiepiléptico que interactúa con su anticoagulante. La farmacología del SNC no termina en el receptor: incluye absorción, barrera hematoencefálica, interacciones y dispensación segura. El químico farmacéutico puede detectarlo.',
+    },
+    objetivos: [
+      'Reconocer el alcance de la farmacología del SNC.',
+      'Identificar el rol del QF.',
+      'Conocer el marco colombiano.',
+      'Aplicar el enfoque del curso.',
+    ],
+    conceptos: [
+      { icono: 'Network', termino: 'SNC', definicion: 'Cerebro y médula espinal; alta complejidad.' },
+      { icono: 'ShieldCheck', termino: 'Control especial', definicion: 'Medicamentos con regulación adicional.' },
+      { icono: 'Users', termino: 'Rol del QF', definicion: 'Dispensación, educación y seguimiento.' },
+      { icono: 'Activity', termino: 'Neurofarmacología', definicion: 'Estudio de los fármacos que actúan en el SNC.' },
+    ],
+    mapa: {
+      centro: 'Farmacología del SNC',
+      ramas: [
+        { titulo: 'Bases', icono: 'Network', nodos: ['Neurotransmisión', 'Barrera', 'Farmacocinética'] },
+        { titulo: 'Dolor', icono: 'Activity', nodos: ['Opioides', 'AINE', 'Adyuvantes'] },
+        { titulo: 'Epilepsia', icono: 'Zap', nodos: ['Clásicos', 'Nuevos', 'Interacciones'] },
+        { titulo: 'Neurodegeneración', icono: 'Timer', nodos: ['Parkinson', 'Demencias', 'Migraña'] },
+      ],
+    },
+    secciones: [
+      {
+        titulo: 'Por qué este curso',
+        parrafos: [
+          'Los fármacos del sistema nervioso central incluyen anestésicos, analgésicos, antiepilépticos, antiparkinsonianos, fármacos para las demencias, tratamientos de la migraña y de la esclerosis múltiple. Son medicamentos con márgenes terapéuticos estrechos, interacciones frecuentes y un alto impacto en la calidad de vida.',
+          'Este curso es neurológico, no psiquiátrico. La salud mental se aborda en otro curso. El enfoque es aplicado: mecanismo, farmacocinética, seguridad, interacciones y dispensación, con casos colombianos y herramientas para el seguimiento farmacoterapéutico.',
+        ],
+      },
+      {
+        titulo: 'El rol del QF',
+        parrafos: [
+          'El QF participa en la dispensación informada, la revisión de interacciones, la educación sobre adherencia y efectos adversos, y la farmacovigilancia. En los medicamentos de control especial, verifica la normativa, la fórmula y el registro.',
+          'También detecta problemas relacionados con medicamentos, propone ajustes y acompaña la titulación. La farmacología del SNC exige leer la historia, el laboratorio y el contexto del paciente.',
+        ],
+      },
+      {
+        titulo: 'Marco colombiano',
+        parrafos: [
+          'En Colombia, los medicamentos de control especial se regulan por el Fondo Nacional de Estupefacientes y las resoluciones del Ministerio de Salud. La dispensación exige fórmula, registro y trazabilidad. El QF es responsable de cumplir estos requisitos y de educar al paciente.',
+          'Las guías de práctica clínica, las fichas técnicas del INVIMA y la evidencia internacional complementan el marco normativo. La meta es un uso seguro, eficaz y accesible.',
+        ],
+      },
+    ],
+    proceso: {
+      titulo: 'Cómo estudiar el curso',
+      pasos: [
+        { titulo: 'Contextualizar', detalle: 'Leer el caso y la meta.', icono: 'Target', evidencia: 'Meta.' },
+        { titulo: 'Comprender', detalle: 'Mecanismo y farmacocinética.', icono: 'BookOpen', evidencia: 'Notas.' },
+        { titulo: 'Aplicar', detalle: 'Resolver el caso.', icono: 'Workflow', evidencia: 'Decisión.' },
+        { titulo: 'Verificar', detalle: 'Comprobar lo aprendido.', icono: 'ClipboardCheck', evidencia: 'Resultado.' },
+        { titulo: 'Transferir', detalle: 'Llevarlo a la práctica.', icono: 'Repeat', evidencia: 'Plan.' },
+      ],
+    },
+    caso: {
+      titulo: 'Antiepiléptico e interacción',
+      contexto: 'Paciente con epilepsia que recibe un antiepiléptico inductor y un anticoagulante.',
+      pregunta: '¿Qué revisa el QF?',
+      opciones: [
+        { texto: 'Solo la dosis del antiepiléptico.', correcta: false, retro: 'La interacción cambia el anticoagulante.' },
+        { texto: 'La interacción y el control del efecto.', correcta: true, retro: 'La seguridad es prioritaria.' },
+        { texto: 'Suspender todo sin consultar.', correcta: false, retro: 'Puede descompensar.' },
+      ],
+    },
+    errores: [
+      { error: 'Ver solo la receta.', correccion: 'La interacción está en la lista completa.' },
+      { error: 'Ignorar la normativa de control especial.', correccion: 'Es obligatoria.' },
+      { error: 'No educar sobre adherencia.', correccion: 'Afecta el control.' },
+    ],
+    comprueba: [
+      { pregunta: '¿Qué áreas cubre el curso?', respuesta: 'Anestesia, dolor, epilepsia y neurodegeneración.' },
+      { pregunta: '¿Qué norma regula los controlados?', respuesta: 'El FNE y las resoluciones del Ministerio.' },
+      { pregunta: '¿Qué aporta el QF?', respuesta: 'Dispensación segura, educación y seguimiento.' },
+    ],
+    resumen: [
+      'El SNC concentra fármacos de alto riesgo.',
+      'El curso es neurológico, no psiquiátrico.',
+      'La normativa colombiana es parte del manejo.',
+      'Cada clase termina en un caso aplicado.',
+    ],
+    referencias: [
+      { cita: 'Ministerio de Salud y Protección Social. Fondo Nacional de Estupefacientes: normativa de medicamentos de control especial. Bogotá.', url: 'https://www.minsalud.gov.co/' },
+    ],
+    imagenes: [
+      { ubicacion: 'Introducción', descripcion: 'Farmacéutico revisando medicación neurológica.', alt: 'Introducción a la farmacología del SNC' },
+    ],
+    keywords: ['farmacología SNC', 'rol químico farmacéutico', 'control especial', 'neurología'],
+  },
+  {
+    titulo: 'Neurotransmisores y receptores: dianas de los fármacos del SNC',
+    duracion: 20,
+    gancho: {
+      titulo: 'Cada fármaco tiene una diana',
+      texto: 'El GABA, el glutamato, la dopamina, la serotonina y los opioides son dianas de los fármacos del SNC. Conocer el receptor explica el efecto y el efecto adverso. La farmacología es un mapa de receptores.',
+    },
+    objetivos: [
+      'Reconocer los principales neurotransmisores.',
+      'Diferenciar receptores ionotrópicos y metabotrópicos.',
+      'Relacionar dianas y fármacos.',
+      'Aplicar el concepto de agonista y antagonista.',
+    ],
+    conceptos: [
+      { icono: 'Zap', termino: 'Glutamato', definicion: 'Principal excitador; receptores NMDA y AMPA.' },
+      { icono: 'ShieldCheck', termino: 'GABA', definicion: 'Principal inhibidor; receptor GABA-A.' },
+      { icono: 'Activity', termino: 'Dopamina', definicion: 'Movimiento, recompensa y motivación.' },
+      { icono: 'Network', termino: 'Receptor', definicion: 'Ionotrópico o metabotrópico.' },
+    ],
+    mapa: {
+      centro: 'Neurotransmisión',
+      ramas: [
+        { titulo: 'Excitadores', icono: 'Zap', nodos: ['Glutamato', 'NMDA', 'AMPA'] },
+        { titulo: 'Inhibidores', icono: 'ShieldCheck', nodos: ['GABA', 'GABA-A', 'Glicina'] },
+        { titulo: 'Monoaminas', icono: 'Activity', nodos: ['Dopamina', 'Serotonina', 'Noradrenalina'] },
+        { titulo: 'Otros', icono: 'Network', nodos: ['Acetilcolina', 'Opioides', 'Adenosina'] },
+      ],
+    },
+    secciones: [
+      {
+        titulo: 'Neurotransmisores',
+        parrafos: [
+          'El glutamato es el principal neurotransmisor excitador y actúa sobre receptores NMDA, AMPA y metabotrópicos. El GABA es el principal inhibidor y actúa sobre receptores GABA-A y GABA-B. El equilibrio entre ambos es fundamental para la excitabilidad neuronal.',
+          'La dopamina regula el movimiento, la recompensa y la motivación; la serotonina, el ánimo, el sueño y la nocicepción; la noradrenalina, la atención y la respuesta al estrés. La acetilcolina participa en la memoria y el sistema autónomo. Los opioides endógenos modulan el dolor.',
+        ],
+      },
+      {
+        titulo: 'Receptores',
+        parrafos: [
+          'Los receptores ionotrópicos son canales que se abren al unir el neurotransmisor y producen respuestas rápidas. Los metabotrópicos activan proteínas G y segundas vías, con respuestas más lentas y moduladoras. El tipo de receptor explica la latencia y la duración del efecto.',
+          'Los fármacos pueden ser agonistas completos, agonistas parciales, antagonistas o moduladores alostéricos. Las benzodiacepinas, por ejemplo, aumentan la apertura del canal GABA-A sin sustituir al GABA.',
+        ],
+      },
+      {
+        titulo: 'Dianas y fármacos',
+        parrafos: [
+          'Los anestésicos inhalados y el propofol potencian el GABA-A; la ketamina bloquea el NMDA. Los antiepilépticos actúan sobre canales de sodio, calcio o GABA. Los antipsicóticos bloquean receptores dopaminérgicos D2. Los opioides activan receptores mu, kappa y delta.',
+          'El QF usa este mapa para predecir efectos adversos: el bloqueo muscarínico causa boca seca y estreñimiento; el bloqueo alfa-1, hipotensión; el bloqueo histamínico, sedación. La farmacología se vuelve predecible.',
+        ],
+      },
+    ],
+    proceso: {
+      titulo: 'Analizar una diana',
+      pasos: [
+        { titulo: 'Neurotransmisor', detalle: 'Excitador o inhibidor.', icono: 'Zap', evidencia: 'Mapa.' },
+        { titulo: 'Receptor', detalle: 'Ionotrópico o metabotrópico.', icono: 'Network', evidencia: 'Ficha.' },
+        { titulo: 'Acción', detalle: 'Agonista o antagonista.', icono: 'Target', evidencia: 'Mecanismo.' },
+        { titulo: 'Efecto', detalle: 'Terapéutico y adverso.', icono: 'Activity', evidencia: 'Predicción.' },
+        { titulo: 'Aplicar', detalle: 'Educación y seguimiento.', icono: 'Users', evidencia: 'Consejería.' },
+      ],
+    },
+    caso: {
+      titulo: 'Benzodiacepina y GABA',
+      contexto: 'Paciente que recibe una benzodiacepina y presenta sedación.',
+      pregunta: '¿Cuál es el mecanismo?',
+      opciones: [
+        { texto: 'Potenciación del GABA-A.', correcta: true, retro: 'Aumenta la inhibición.' },
+        { texto: 'Bloqueo del NMDA.', correcta: false, retro: 'Es el mecanismo de la ketamina.' },
+        { texto: 'Bloqueo dopaminérgico.', correcta: false, retro: 'Es el de los antipsicóticos.' },
+      ],
+    },
+    errores: [
+      { error: 'Confundir agonista con antagonista.', correccion: 'El efecto puede ser opuesto.' },
+      { error: 'Ignorar los receptores secundarios.', correccion: 'Explican los efectos adversos.' },
+      { error: 'No revisar la dosis.', correccion: 'La respuesta depende de ella.' },
+    ],
+    comprueba: [
+      { pregunta: '¿Cuál es el principal inhibidor?', respuesta: 'El GABA.' },
+      { pregunta: '¿Qué receptor bloquea la ketamina?', respuesta: 'El NMDA.' },
+      { pregunta: '¿Qué hace una benzodiacepina?', respuesta: 'Potencia el GABA-A.' },
+    ],
+    resumen: [
+      'Los neurotransmisores son las dianas.',
+      'Los receptores determinan la respuesta.',
+      'Los efectos adversos se predicen por el receptor.',
+      'El mapa guía la práctica.',
+    ],
+    referencias: [
+      { cita: 'Katzung BG, Vanderah TW. Basic and Clinical Pharmacology. 15.ª ed. McGraw-Hill; 2021.', url: 'https://accessmedicine.mhmedical.com/book.aspx?bookid=2988' },
+    ],
+    imagenes: [
+      { ubicacion: 'Neurotransmisión', descripcion: 'Neurotransmisores, receptores y fármacos.', alt: 'Neurotransmisores y receptores del SNC' },
+    ],
+    keywords: ['neurotransmisores', 'receptores SNC', 'GABA', 'glutamato', 'dopamina'],
+  },
+  {
+    titulo: 'Barrera hematoencefálica y farmacocinética en el SNC',
+    duracion: 20,
+    gancho: {
+      titulo: 'La barrera que decide',
+      texto: 'La dopamina no atraviesa la barrera hematoencefálica, pero la levodopa sí. Esa diferencia explica el tratamiento del Parkinson. La farmacocinética del SNC depende de la lipofilia, los transportadores y la barrera.',
+    },
+    objetivos: [
+      'Explicar la barrera hematoencefálica.',
+      'Reconocer los factores que permiten el paso al SNC.',
+      'Interpretar el papel de la gp-P.',
+      'Aplicar el concepto a fármacos concretos.',
+    ],
+    conceptos: [
+      { icono: 'ShieldCheck', termino: 'BHE', definicion: 'Barrera que regula el paso al cerebro.' },
+      { icono: 'Droplets', termino: 'Lipofilia', definicion: 'Facilita la difusión pasiva.' },
+      { icono: 'Network', termino: 'gp-P', definicion: 'Transportador de eflujo que expulsa fármacos.' },
+      { icono: 'Route', termino: 'Transporte', definicion: 'LAT1 para levodopa.' },
+    ],
+    mapa: {
+      centro: 'BHE',
+      ramas: [
+        { titulo: 'Estructura', icono: 'ShieldCheck', nodos: ['Uniones estrechas', 'Astrocitos', 'Pericitos'] },
+        { titulo: 'Paso', icono: 'Droplets', nodos: ['Lipofilia', 'Tamaño', 'Carga'] },
+        { titulo: 'Transporte', icono: 'Route', nodos: ['LAT1', 'gp-P', 'OATP'] },
+        { titulo: 'Fármacos', icono: 'Pill', nodos: ['Levodopa', 'Loperamida', 'Naloxona'] },
+      ],
+    },
+    secciones: [
+      {
+        titulo: 'La barrera',
+        parrafos: [
+          'La barrera hematoencefálica está formada por células endoteliales con uniones estrechas, astrocitos y pericitos. Regula el paso de sustancias y protege al cerebro. La inflamación, la isquemia y algunas enfermedades alteran su permeabilidad.',
+          'Los fármacos lipofílicos, pequeños y no cargados atraviesan con más facilidad. Los hidrofílicos necesitan transportadores. La gp-P, presente en la barrera, expulsa muchos fármacos y limita su concentración cerebral.',
+        ],
+      },
+      {
+        titulo: 'Aplicaciones',
+        parrafos: [
+          'La dopamina no atraviesa la barrera, por eso se usa levodopa, que se transporta por el transportador de aminoácidos LAT1 y luego se convierte en dopamina. La loperamida es un opioide que no cruza la barrera en condiciones normales, lo que explica su efecto intestinal.',
+          'La naloxona cruza la barrera y revierte la depresión respiratoria. La naltrexona también. Los inhibidores de la gp-P pueden aumentar la exposición cerebral de algunos fármacos y sus efectos adversos.',
+        ],
+      },
+      {
+        titulo: 'Implicaciones clínicas',
+        parrafos: [
+          'La edad, la enfermedad y la polifarmacia modifican la barrera y el metabolismo. Los efectos centrales, como la sedación o la confusión, son más frecuentes en adultos mayores. La revisión de la medicación debe considerar estos factores.',
+          'El QF educa sobre el paso al SNC y los efectos esperados. También revisa interacciones que afectan el transporte y el metabolismo, y detecta signos de toxicidad central.',
+        ],
+      },
+    ],
+    proceso: {
+      titulo: 'Analizar el paso al SNC',
+      pasos: [
+        { titulo: 'Propiedad', detalle: 'Lipofilia y carga.', icono: 'Droplets', evidencia: 'Ficha.' },
+        { titulo: 'Transporte', detalle: 'LAT1 o gp-P.', icono: 'Route', evidencia: 'Mecanismo.' },
+        { titulo: 'Barrera', detalle: 'Edad y enfermedad.', icono: 'ShieldCheck', evidencia: 'Contexto.' },
+        { titulo: 'Efecto', detalle: 'Central o periférico.', icono: 'Activity', evidencia: 'Predicción.' },
+        { titulo: 'Revisar', detalle: 'Interacciones y toxicidad.', icono: 'AlertTriangle', evidencia: 'Seguimiento.' },
+      ],
+    },
+    caso: {
+      titulo: 'Levodopa y dopamina',
+      contexto: 'Paciente con Parkinson que pregunta por qué no se usa dopamina directamente.',
+      pregunta: '¿Cuál es la explicación?',
+      opciones: [
+        { texto: 'La dopamina no atraviesa la barrera.', correcta: true, retro: 'La levodopa sí lo hace.' },
+        { texto: 'La dopamina es demasiado potente.', correcta: false, retro: 'El problema es la barrera.' },
+        { texto: 'La levodopa es un antagonista.', correcta: false, retro: 'Es un precursor.' },
+      ],
+    },
+    errores: [
+      { error: 'Asumir que todo fármaco llega al cerebro.', correccion: 'La BHE lo impide.' },
+      { error: 'Ignorar la gp-P.', correccion: 'Limita la exposición.' },
+      { error: 'No considerar la edad.', correccion: 'Más efectos centrales.' },
+    ],
+    comprueba: [
+      { pregunta: '¿Qué transporta la levodopa?', respuesta: 'El transportador LAT1.' },
+      { pregunta: '¿Qué hace la gp-P?', respuesta: 'Expulsa fármacos de la célula.' },
+      { pregunta: '¿Por qué la loperamida no seda?', respuesta: 'No cruza la barrera.' },
+    ],
+    resumen: [
+      'La BHE regula el paso de fármacos.',
+      'La lipofilia y los transportadores importan.',
+      'La levodopa usa LAT1.',
+      'La gp-P limita la exposición cerebral.',
+    ],
+    referencias: [
+      { cita: 'Katzung BG, Vanderah TW. Basic and Clinical Pharmacology. 15.ª ed. McGraw-Hill; 2021.', url: 'https://accessmedicine.mhmedical.com/book.aspx?bookid=2988' },
+    ],
+    imagenes: [
+      { ubicacion: 'BHE', descripcion: 'Barrera hematoencefálica y transportadores.', alt: 'Barrera hematoencefálica y farmacocinética' },
+    ],
+    keywords: ['barrera hematoencefálica', 'farmacocinética SNC', 'gp-P', 'levodopa LAT1'],
+  },
+  {
+    titulo: 'Anestésicos generales inhalados e intravenosos',
+    duracion: 20,
+    gancho: {
+      titulo: 'El paciente que despierta tarde',
+      texto: 'Un paciente mayor tarda en despertar tras la anestesia. La edad, la polifarmacia y la liposolubilidad del anestésico influyen en la recuperación. Conocer los agentes permite anticipar y prevenir.',
+    },
+    objetivos: [
+      'Diferenciar los anestésicos generales.',
+      'Explicar sus mecanismos y efectos.',
+      'Reconocer los riesgos.',
+      'Aplicar la monitorización.',
+    ],
+    conceptos: [
+      { icono: 'Wind', termino: 'Inhalado', definicion: 'Sevoflurano, desflurano e isoflurano.' },
+      { icono: 'Syringe', termino: 'Intravenoso', definicion: 'Propofol, etomidato y ketamina.' },
+      { icono: 'Gauge', termino: 'MAC', definicion: 'Concentración alveolar mínima.' },
+      { icono: 'AlertTriangle', termino: 'Hipertermia', definicion: 'Riesgo con volátiles y succinilcolina.' },
+    ],
+    mapa: {
+      centro: 'Anestesia general',
+      ramas: [
+        { titulo: 'Inhalados', icono: 'Wind', nodos: ['Sevoflurano', 'Desflurano', 'Isoflurano'] },
+        { titulo: 'Intravenosos', icono: 'Syringe', nodos: ['Propofol', 'Etomidato', 'Ketamina'] },
+        { titulo: 'Mecanismo', icono: 'Network', nodos: ['GABA-A', 'NMDA', 'Canales'] },
+        { titulo: 'Riesgos', icono: 'AlertTriangle', nodos: ['Hipotensión', 'PONV', 'Hipertermia'] },
+      ],
+    },
+    secciones: [
+      {
+        titulo: 'Inhalados',
+        parrafos: [
+          'Los anestésicos inhalados, como sevoflurano, desflurano e isoflurano, producen inconsciencia y amnesia. Su potencia se mide con la concentración alveolar mínima (MAC). El sevoflurano es útil en la inducción por su tolerancia; el desflurano tiene recuperación rápida; el isoflurano es económico.',
+          'Pueden causar hipotensión, depresión respiratoria, náuseas y vómito. El óxido nitroso se usa como coadyuvante. La hipertermia maligna es una reacción grave asociada a los volátiles y a la succinilcolina.',
+        ],
+      },
+      {
+        titulo: 'Intravenosos',
+        parrafos: [
+          'El propofol potencia el GABA-A, produce hipnosis rápida y antiemesis; puede causar hipotensión y dolor en la inyección. El etomidato es estable hemodinámicamente pero puede suprimir la suprarrenal. La ketamina bloquea el NMDA, produce analgesia y disociación, y puede causar alucinaciones.',
+          'La dexmedetomidina es un agonista alfa-2 que produce sedación sin depresión respiratoria marcada. La elección depende del paciente, la cirugía y la hemodinamia.',
+        ],
+      },
+      {
+        titulo: 'Seguridad',
+        parrafos: [
+          'La monitorización incluye saturación, capnografía, presión, ECG y temperatura. La prevención de náuseas y vómito, la hidratación y el control del dolor mejoran la recuperación. El QF revisa la medicación habitual y las interacciones.',
+          'La educación preanestésica incluye el ayuno, los medicamentos que se continúan o se suspenden y los signos de alarma. La seguridad anestésica es un trabajo de equipo.',
+        ],
+      },
+    ],
+    proceso: {
+      titulo: 'Revisión preanestésica',
+      pasos: [
+        { titulo: 'Medicación', detalle: 'Antihipertensivos y anticoagulantes.', icono: 'ClipboardList', evidencia: 'Lista.' },
+        { titulo: 'Riesgo', detalle: 'Edad y comorbilidad.', icono: 'Gauge', evidencia: 'Evaluación.' },
+        { titulo: 'Elegir', detalle: 'Inhalado o intravenoso.', icono: 'Syringe', evidencia: 'Plan.' },
+        { titulo: 'Monitorizar', detalle: 'Signos y temperatura.', icono: 'Activity', evidencia: 'Registro.' },
+        { titulo: 'Recuperación', detalle: 'Dolor y náuseas.', icono: 'Users', evidencia: 'Seguimiento.' },
+      ],
+    },
+    caso: {
+      titulo: 'Rigidez e hipertermia',
+      contexto: 'Paciente que durante la anestesia con volátiles y succinilcolina presenta rigidez, hipercapnia e hipertermia.',
+      pregunta: '¿Qué sospecha el equipo?',
+      opciones: [
+        { texto: 'Hipertermia maligna.', correcta: true, retro: 'Requiere dantroleno urgente.' },
+        { texto: 'Reacción alérgica leve.', correcta: false, retro: 'El cuadro es grave.' },
+        { texto: 'Hipotensión por propofol.', correcta: false, retro: 'No explica la rigidez.' },
+      ],
+    },
+    errores: [
+      { error: 'No revisar la medicación crónica.', correccion: 'Hay interacciones.' },
+      { error: 'Ignorar la temperatura.', correccion: 'La hipertermia es grave.' },
+      { error: 'No prevenir náuseas.', correccion: 'Afecta la recuperación.' },
+    ],
+    comprueba: [
+      { pregunta: '¿Qué mide la MAC?', respuesta: 'La potencia del inhalado.' },
+      { pregunta: '¿Qué mecanismo tiene el propofol?', respuesta: 'Potencia el GABA-A.' },
+      { pregunta: '¿Qué fármaco revierte la hipertermia maligna?', respuesta: 'El dantroleno.' },
+    ],
+    resumen: [
+      'Inhalados e intravenosos tienen perfiles distintos.',
+      'La MAC mide la potencia.',
+      'La hipertermia maligna es una emergencia.',
+      'La revisión preanestésica es clave.',
+    ],
+    referencias: [
+      { cita: 'Katzung BG, Vanderah TW. Basic and Clinical Pharmacology. 15.ª ed. McGraw-Hill; 2021.', url: 'https://accessmedicine.mhmedical.com/book.aspx?bookid=2988' },
+    ],
+    imagenes: [
+      { ubicacion: 'Anestesia', descripcion: 'Anestésicos inhalados e intravenosos.', alt: 'Anestésicos generales' },
+    ],
+    keywords: ['anestésicos generales', 'propofol', 'sevoflurano', 'hipertermia maligna'],
+  },
+  {
+    titulo: 'Anestésicos locales: mecanismo, tipos y toxicidad',
+    duracion: 20,
+    gancho: {
+      titulo: 'El bloqueo que se vuelve sistémico',
+      texto: 'Una infiltración con bupivacaína produce convulsiones y arritmias. La toxicidad sistémica de los anestésicos locales es una emergencia. Conocer el mecanismo y el tratamiento salva vidas.',
+    },
+    objetivos: [
+      'Explicar el mecanismo de los anestésicos locales.',
+      'Diferenciar ésteres y amidas.',
+      'Reconocer la toxicidad.',
+      'Aplicar el tratamiento de la LAST.',
+    ],
+    conceptos: [
+      { icono: 'Zap', termino: 'Canal de sodio', definicion: 'Diana del anestésico local.' },
+      { icono: 'Pill', termino: 'Amida', definicion: 'Lidocaína, bupivacaína y ropivacaína.' },
+      { icono: 'AlertTriangle', termino: 'LAST', definicion: 'Toxicidad sistémica por anestésico local.' },
+      { icono: 'Droplets', termino: 'Lípido', definicion: 'Emulsión lipídica en el tratamiento.' },
+    ],
+    mapa: {
+      centro: 'Anestésicos locales',
+      ramas: [
+        { titulo: 'Mecanismo', icono: 'Zap', nodos: ['Na', 'Bloqueo', 'Fibra'] },
+        { titulo: 'Tipos', icono: 'Pill', nodos: ['Éster', 'Amida', 'Duración'] },
+        { titulo: 'Toxicidad', icono: 'AlertTriangle', nodos: ['SNC', 'Cardíaca', 'Metahemoglobina'] },
+        { titulo: 'Tratamiento', icono: 'Droplets', nodos: ['Vía aérea', 'Lípido', 'Soporte'] },
+      ],
+    },
+    secciones: [
+      {
+        titulo: 'Mecanismo y tipos',
+        parrafos: [
+          'Los anestésicos locales bloquean los canales de sodio dependientes de voltaje y reducen la conducción nerviosa. Son bases débiles y su efecto depende del pH. Las amidas, como lidocaína, bupivacaína y ropivacaína, se metabolizan en el hígado; los ésteres, como la procaína, se hidrolizan por esterasas plasmáticas.',
+          'La afinidad por el canal, la liposolubilidad y la unión a proteínas determinan la potencia y la duración. La adrenalina prolonga el efecto y reduce la absorción sistémica en algunos casos.',
+        ],
+      },
+      {
+        titulo: 'Toxicidad',
+        parrafos: [
+          'La toxicidad sistémica comienza con síntomas del SNC: adormecimiento perioral, mareo, tinnitus, agitación y convulsiones. Después aparecen arritmias y depresión miocárdica, especialmente con bupivacaína. La metahemoglobinemia es una complicación de la benzocaína y la prilocaína.',
+          'El tratamiento incluye detener la inyección, asegurar la vía aérea, administrar oxígeno, controlar las convulsiones y usar emulsión lipídica al 20 % en la toxicidad grave. La reanimación puede ser prolongada.',
+        ],
+      },
+      {
+        titulo: 'Prevención',
+        parrafos: [
+          'La dosis máxima, la aspiración antes de inyectar y la monitorización reducen el riesgo. La elección del anestésico depende del procedimiento y del paciente. La alergia a las amidas es rara; a los ésteres, más frecuente.',
+          'El QF revisa la historia de alergias y la medicación. La educación del paciente sobre los síntomas y el cuidado posterior es parte de la seguridad.',
+        ],
+      },
+    ],
+    proceso: {
+      titulo: 'Checklist de anestésico local',
+      pasos: [
+        { titulo: 'Tipo', detalle: 'Éster o amida.', icono: 'Pill', evidencia: 'Ficha.' },
+        { titulo: 'Dosis', detalle: 'Máxima por peso.', icono: 'Calculator', evidencia: 'Cálculo.' },
+        { titulo: 'Riesgo', detalle: 'Cardíaco y alergias.', icono: 'AlertTriangle', evidencia: 'Historia.' },
+        { titulo: 'Toxicidad', detalle: 'SNC y arritmias.', icono: 'Zap', evidencia: 'Vigilancia.' },
+        { titulo: 'Tratar', detalle: 'Lípido y soporte.', icono: 'Droplets', evidencia: 'Protocolo.' },
+      ],
+    },
+    caso: {
+      titulo: 'Bupivacaína y convulsión',
+      contexto: 'Paciente que tras una infiltración con bupivacaína presenta convulsiones y arritmia.',
+      pregunta: '¿Qué hace el equipo?',
+      opciones: [
+        { texto: 'Suspender la inyección, soporte y emulsión lipídica.', correcta: true, retro: 'Es el manejo de la LAST.' },
+        { texto: 'Administrar más anestésico.', correcta: false, retro: 'Agrava la toxicidad.' },
+        { texto: 'Esperar sin monitorizar.', correcta: false, retro: 'Es una emergencia.' },
+      ],
+    },
+    errores: [
+      { error: 'Exceder la dosis máxima.', correccion: 'Toxicidad sistémica.' },
+      { error: 'No aspirar antes de inyectar.', correccion: 'Inyección intravascular.' },
+      { error: 'No reconocer la LAST.', correccion: 'Retrasa el tratamiento.' },
+    ],
+    comprueba: [
+      { pregunta: '¿Qué canal bloquean?', respuesta: 'El canal de sodio.' },
+      { pregunta: '¿Qué síntomas iniciales hay?', respuesta: 'Perioral, tinnitus y agitación.' },
+      { pregunta: '¿Qué se usa en la LAST grave?', respuesta: 'Emulsión lipídica al 20 %.' },
+    ],
+    resumen: [
+      'Los anestésicos locales bloquean el sodio.',
+      'Amidas y ésteres difieren en metabolismo.',
+      'La LAST es una emergencia.',
+      'La dosis y la aspiración previenen.',
+    ],
+    referencias: [
+      { cita: 'Katzung BG, Vanderah TW. Basic and Clinical Pharmacology. 15.ª ed. McGraw-Hill; 2021.', url: 'https://accessmedicine.mhmedical.com/book.aspx?bookid=2988' },
+    ],
+    imagenes: [
+      { ubicacion: 'Anestésicos locales', descripcion: 'Mecanismo, tipos y toxicidad.', alt: 'Anestésicos locales' },
+    ],
+    keywords: ['anestésicos locales', 'lidocaína', 'bupivacaína', 'LAST'],
+  },
+  {
+    titulo: 'Caso clínico: toxicidad sistémica por anestésicos locales e hipertermia maligna',
+    duracion: 25,
+    gancho: {
+      titulo: 'Dos emergencias del quirófano',
+      texto: 'La toxicidad por anestésico local y la hipertermia maligna son emergencias con tratamiento específico. Reconocerlas y actuar rápido marca la diferencia. El caso integra mecanismo, clínica y manejo.',
+    },
+    objetivos: [
+      'Reconocer la LAST.',
+      'Aplicar el tratamiento con lípido.',
+      'Reconocer la hipertermia maligna.',
+      'Coordinar la respuesta del equipo.',
+    ],
+    conceptos: [
+      { icono: 'AlertTriangle', termino: 'LAST', definicion: 'Toxicidad sistémica por anestésico local.' },
+      { icono: 'Flame', termino: 'Hipertermia', definicion: 'Reacción grave a volátiles y succinilcolina.' },
+      { icono: 'Droplets', termino: 'Lípido', definicion: 'Antídoto de la LAST.' },
+      { icono: 'Syringe', termino: 'Dantroleno', definicion: 'Tratamiento de la hipertermia maligna.' },
+    ],
+    mapa: {
+      centro: 'Emergencias',
+      ramas: [
+        { titulo: 'LAST', icono: 'AlertTriangle', nodos: ['Convulsión', 'Arritmia', 'Lípido'] },
+        { titulo: 'Hipertermia', icono: 'Flame', nodos: ['Rigidez', 'Hipercapnia', 'Dantroleno'] },
+        { titulo: 'Soporte', icono: 'Activity', nodos: ['Vía aérea', 'Oxígeno', 'Monitor'] },
+        { titulo: 'Prevención', icono: 'ShieldCheck', nodos: ['Dosis', 'Historia', 'Protocolo'] },
+      ],
+    },
+    secciones: [
+      {
+        titulo: 'Toxicidad por anestésico local',
+        parrafos: [
+          'La LAST se presenta con síntomas neurológicos que progresan a convulsiones y, después, a arritmias y colapso cardiovascular. La bupivacaína es especialmente cardiotóxica. El manejo incluye detener la inyección, asegurar la vía aérea, oxigenar, controlar las convulsiones y administrar emulsión lipídica en los casos graves.',
+          'La emulsión lipídica actúa como un sumidero de lípidos y reduce la concentración del anestésico en el tejido cardíaco. La reanimación puede requerir tiempo prolongado. El equipo debe tener un protocolo disponible.',
+        ],
+      },
+      {
+        titulo: 'Hipertermia maligna',
+        parrafos: [
+          'La hipertermia maligna es una reacción farmacogenética a los anestésicos volátiles y a la succinilcolina. Se manifiesta con hipercapnia, rigidez muscular, taquicardia e hipertermia. El tratamiento es el dantroleno, junto con enfriamiento, soporte y corrección de electrolitos.',
+          'La sospecha debe ser inmediata. La demora aumenta la mortalidad. El antecedente familiar y la evaluación preanestésica ayudan a prevenir.',
+        ],
+      },
+      {
+        titulo: 'Coordinación',
+        parrafos: [
+          'El QF participa en la preparación de los medicamentos de emergencia, la disponibilidad del dantroleno y la emulsión lipídica, y la revisión de protocolos. También documenta el evento y participa en la farmacovigilancia.',
+          'La educación y el entrenamiento del equipo son parte de la seguridad. Las emergencias se manejan con roles claros y comunicación.',
+        ],
+      },
+    ],
+    proceso: {
+      titulo: 'Responder a la emergencia',
+      pasos: [
+        { titulo: 'Reconocer', detalle: 'Signos y contexto.', icono: 'AlertTriangle', evidencia: 'Clínica.' },
+        { titulo: 'Detener', detalle: 'Suspender el fármaco.', icono: 'XCircle', evidencia: 'Acción.' },
+        { titulo: 'Soporte', detalle: 'Vía aérea y oxígeno.', icono: 'Activity', evidencia: 'Monitor.' },
+        { titulo: 'Antídoto', detalle: 'Lípido o dantroleno.', icono: 'Syringe', evidencia: 'Protocolo.' },
+        { titulo: 'Documentar', detalle: 'Reporte y análisis.', icono: 'FileCheck', evidencia: 'Registro.' },
+      ],
+    },
+    caso: {
+      titulo: 'Rigidez e hipercapnia',
+      contexto: 'Paciente anestesiado con sevoflurano y succinilcolina que presenta rigidez, hipercapnia y fiebre.',
+      pregunta: '¿Qué sospecha el equipo?',
+      opciones: [
+        { texto: 'Hipertermia maligna.', correcta: true, retro: 'Requiere dantroleno.' },
+        { texto: 'LAST.', correcta: false, retro: 'El contexto es otro.' },
+        { texto: 'Reacción alérgica.', correcta: false, retro: 'No explica la rigidez.' },
+      ],
+    },
+    errores: [
+      { error: 'Retrasar el dantroleno.', correccion: 'Aumenta la mortalidad.' },
+      { error: 'No tener protocolo de LAST.', correccion: 'Retrasa el lípido.' },
+      { error: 'No documentar.', correccion: 'Se pierde el aprendizaje.' },
+    ],
+    comprueba: [
+      { pregunta: '¿Qué fármaco trata la hipertermia maligna?', respuesta: 'El dantroleno.' },
+      { pregunta: '¿Qué se usa en la LAST grave?', respuesta: 'Emulsión lipídica.' },
+      { pregunta: '¿Qué fármacos desencadenan la hipertermia?', respuesta: 'Volátiles y succinilcolina.' },
+    ],
+    resumen: [
+      'La LAST y la hipertermia son emergencias.',
+      'El tratamiento es específico y urgente.',
+      'La preparación del equipo salva vidas.',
+      'La documentación cierra el ciclo.',
+    ],
+    referencias: [
+      { cita: 'Katzung BG, Vanderah TW. Basic and Clinical Pharmacology. 15.ª ed. McGraw-Hill; 2021.', url: 'https://accessmedicine.mhmedical.com/book.aspx?bookid=2988' },
+    ],
+    imagenes: [
+      { ubicacion: 'Caso', descripcion: 'Protocolo de LAST e hipertermia maligna.', alt: 'Toxicidad por anestésicos e hipertermia maligna' },
+    ],
+    keywords: ['LAST', 'hipertermia maligna', 'emulsión lipídica', 'dantroleno'],
+  },
+  {
+    titulo: 'Introducción a la unidad: fisiopatología del dolor y analgesia',
+    duracion: 15,
+    gancho: {
+      titulo: 'El dolor no es solo una señal',
+      texto: 'El dolor tiene componentes sensoriales, emocionales y sociales. Su tratamiento combina fármacos con mecanismos distintos. Entender la vía nociceptiva permite elegir la analgesia y evitar el sufrimiento.',
+    },
+    objetivos: [
+      'Describir la vía nociceptiva.',
+      'Diferenciar dolor nociceptivo y neuropático.',
+      'Aplicar la analgesia multimodal.',
+      'Reconocer los objetivos del tratamiento.',
+    ],
+    conceptos: [
+      { icono: 'Zap', termino: 'Nocicepción', definicion: 'Transducción, transmisión y percepción.' },
+      { icono: 'Network', termino: 'Modulación', definicion: 'Vías descendentes y locales.' },
+      { icono: 'Pill', termino: 'Multimodal', definicion: 'Varios mecanismos a la vez.' },
+      { icono: 'Activity', termino: 'Neuropático', definicion: 'Dolor por lesión del sistema nervioso.' },
+    ],
+    mapa: {
+      centro: 'Dolor',
+      ramas: [
+        { titulo: 'Vía', icono: 'Zap', nodos: ['Nociceptor', 'Médula', 'Cerebro'] },
+        { titulo: 'Tipos', icono: 'Activity', nodos: ['Nociceptivo', 'Neuropático', 'Mixto'] },
+        { titulo: 'Fármacos', icono: 'Pill', nodos: ['AINE', 'Opioides', 'Adyuvantes'] },
+        { titulo: 'Objetivos', icono: 'Target', nodos: ['Alivio', 'Función', 'Calidad'] },
+      ],
+    },
+    secciones: [
+      {
+        titulo: 'Vía nociceptiva',
+        parrafos: [
+          'La nocicepción comienza con la activación de nociceptores periféricos, sigue con la transmisión por la médula espinal y termina en la percepción cerebral. Las vías descendentes modulan la señal y pueden amplificarla o inhibirla. La inflamación y la lesión nerviosa alteran este sistema.',
+          'El dolor nociceptivo responde a AINE y opioides. El neuropático responde a antidepresivos, anticonvulsivos y otros adyuvantes. El dolor mixto requiere combinar mecanismos.',
+        ],
+      },
+      {
+        titulo: 'Analgesia multimodal',
+        parrafos: [
+          'La analgesia multimodal combina fármacos con mecanismos distintos para mejorar el alivio y reducir los efectos adversos. Por ejemplo, paracetamol, un AINE y un opioide en dosis bajas. La elección depende del tipo de dolor, la comorbilidad y el contexto.',
+          'La escalera analgésica de la OMS sigue siendo una guía, pero el enfoque moderno es mecanístico. El dolor oncológico y el postoperatorio requieren planes específicos.',
+        ],
+      },
+      {
+        titulo: 'Objetivos',
+        parrafos: [
+          'El objetivo no siempre es el dolor cero: es mejorar la función y la calidad de vida con la menor toxicidad. La evaluación incluye intensidad, localización, características y respuesta al tratamiento.',
+          'El QF revisa la adherencia, las interacciones y los efectos adversos. La educación sobre el uso correcto y la prevención del estreñimiento por opioides es parte del manejo.',
+        ],
+      },
+    ],
+    proceso: {
+      titulo: 'Evaluar el dolor',
+      pasos: [
+        { titulo: 'Caracterizar', detalle: 'Tipo e intensidad.', icono: 'ClipboardList', evidencia: 'Escala.' },
+        { titulo: 'Mecanismo', detalle: 'Nociceptivo o neuropático.', icono: 'Search', evidencia: 'Juicio.' },
+        { titulo: 'Elegir', detalle: 'Fármacos y combinación.', icono: 'Pill', evidencia: 'Plan.' },
+        { titulo: 'Revisar', detalle: 'Efecto y toxicidad.', icono: 'Activity', evidencia: 'Seguimiento.' },
+        { titulo: 'Educar', detalle: 'Uso y prevención.', icono: 'Users', evidencia: 'Consejería.' },
+      ],
+    },
+    caso: {
+      titulo: 'Dolor neuropático',
+      contexto: 'Paciente con dolor quemante y hormigueo tras una lesión nerviosa.',
+      pregunta: '¿Qué tratamiento es más adecuado?',
+      opciones: [
+        { texto: 'Un adyuvante como gabapentina o antidepresivo.', correcta: true, retro: 'El dolor neuropático responde a adyuvantes.' },
+        { texto: 'Solo AINE.', correcta: false, retro: 'No es el mecanismo principal.' },
+        { texto: 'Solo opioide.', correcta: false, retro: 'No es la primera elección.' },
+      ],
+    },
+    errores: [
+      { error: 'Tratar todo dolor igual.', correccion: 'El mecanismo importa.' },
+      { error: 'No prevenir el estreñimiento.', correccion: 'Es frecuente con opioides.' },
+      { error: 'Buscar siempre dolor cero.', correccion: 'La función es la meta.' },
+    ],
+    comprueba: [
+      { pregunta: '¿Cuáles son las fases de la nocicepción?', respuesta: 'Transducción, transmisión y percepción.' },
+      { pregunta: '¿Qué fármacos tratan el dolor neuropático?', respuesta: 'Adyuvantes como gabapentina.' },
+      { pregunta: '¿Qué es la analgesia multimodal?', respuesta: 'Combinar mecanismos distintos.' },
+    ],
+    resumen: [
+      'El dolor tiene una vía compleja.',
+      'Nociceptivo y neuropático difieren.',
+      'La analgesia multimodal es la base.',
+      'La meta es función y calidad de vida.',
+    ],
+    referencias: [
+      { cita: 'Organización Mundial de la Salud. Directrices sobre el tratamiento farmacológico del dolor persistente en niños con enfermedades médicas. Ginebra: OMS.', url: 'https://www.who.int/' },
+    ],
+    imagenes: [
+      { ubicacion: 'Unidad 2', descripcion: 'Vía nociceptiva y dianas analgésicas.', alt: 'Fisiopatología del dolor' },
+    ],
+    keywords: ['fisiopatología dolor', 'nocicepción', 'dolor neuropático', 'analgesia multimodal'],
+  },
+  {
+    titulo: 'Receptores opioides, agonistas y agonistas parciales',
+    duracion: 20,
+    gancho: {
+      titulo: 'El receptor mu y la respiración',
+      texto: 'La activación del receptor mu produce analgesia, pero también depresión respiratoria y estreñimiento. Conocer los receptores explica por qué los opioides alivian y por qué pueden ser peligrosos.',
+    },
+    objetivos: [
+      'Diferenciar los receptores opioides.',
+      'Clasificar los agonistas.',
+      'Reconocer los efectos adversos.',
+      'Aplicar el concepto de agonista parcial.',
+    ],
+    conceptos: [
+      { icono: 'Target', termino: 'Mu', definicion: 'Analgesia, depresión respiratoria y euforia.' },
+      { icono: 'Activity', termino: 'Kappa', definicion: 'Analgesia y efectos disfóricos.' },
+      { icono: 'ShieldCheck', termino: 'Parcial', definicion: 'Buprenorfina; efecto techo respiratorio.' },
+      { icono: 'Network', termino: 'Delta', definicion: 'Modulación del dolor y el ánimo.' },
+    ],
+    mapa: {
+      centro: 'Opioides',
+      ramas: [
+        { titulo: 'Receptores', icono: 'Target', nodos: ['Mu', 'Kappa', 'Delta'] },
+        { titulo: 'Agonistas', icono: 'Pill', nodos: ['Morfina', 'Fentanilo', 'Tramadol'] },
+        { titulo: 'Parciales', icono: 'ShieldCheck', nodos: ['Buprenorfina', 'Techo'] },
+        { titulo: 'Efectos', icono: 'AlertTriangle', nodos: ['Respiración', 'Constipación', 'Euforia'] },
+      ],
+    },
+    secciones: [
+      {
+        titulo: 'Receptores',
+        parrafos: [
+          'Los receptores opioides mu, kappa y delta son metabotrópicos y modulan la transmisión del dolor. El mu es el principal responsable de la analgesia, la depresión respiratoria, la euforia y la dependencia. El kappa produce analgesia y efectos disfóricos. El delta modula el dolor y el ánimo.',
+          'Los opioides endógenos, como las endorfinas, actúan sobre estos receptores. Los fármacos exógenos reproducen y amplifican sus efectos.',
+        ],
+      },
+      {
+        titulo: 'Agonistas',
+        parrafos: [
+          'La morfina, la oxicodona, la hidromorfona y el fentanilo son agonistas mu. El tramadol y el tapentadol tienen mecanismos mixtos. La codeína es un profármaco que requiere CYP2D6 para convertirse en morfina. La buprenorfina es un agonista parcial con alta afinidad y efecto techo en la depresión respiratoria.',
+          'Los agonistas parciales pueden precipitar abstinencia en pacientes dependientes. La elección depende del dolor, la vía, la duración y el perfil del paciente.',
+        ],
+      },
+      {
+        titulo: 'Efectos adversos',
+        parrafos: [
+          'Los efectos adversos incluyen estreñimiento, náuseas, somnolencia, prurito, retención urinaria y depresión respiratoria. La tolerancia se desarrolla para algunos efectos, pero no para el estreñimiento. La prevención del estreñimiento es obligatoria al iniciar opioides.',
+          'La depresión respiratoria es el efecto más grave. El riesgo aumenta con dosis altas, combinación con benzodiacepinas, alcohol, apnea del sueño y enfermedad renal. La educación y la monitorización reducen el riesgo.',
+        ],
+      },
+    ],
+    proceso: {
+      titulo: 'Elegir un opioide',
+      pasos: [
+        { titulo: 'Dolor', detalle: 'Intensidad y tipo.', icono: 'ClipboardList', evidencia: 'Evaluación.' },
+        { titulo: 'Receptor', detalle: 'Agonista o parcial.', icono: 'Target', evidencia: 'Mecanismo.' },
+        { titulo: 'Vía', detalle: 'Oral, IV o transdérmica.', icono: 'Pill', evidencia: 'Fórmula.' },
+        { titulo: 'Riesgo', detalle: 'Respiratorio y renal.', icono: 'AlertTriangle', evidencia: 'Evaluación.' },
+        { titulo: 'Educar', detalle: 'Estreñimiento y alarma.', icono: 'Users', evidencia: 'Consejería.' },
+      ],
+    },
+    caso: {
+      titulo: 'Buprenorfina en dependencia',
+      contexto: 'Paciente con dependencia a opioides que recibe buprenorfina.',
+      pregunta: '¿Qué riesgo existe?',
+      opciones: [
+        { texto: 'Precipitar abstinencia.', correcta: true, retro: 'Es un agonista parcial.' },
+        { texto: 'Depresión respiratoria grave.', correcta: false, retro: 'Tiene efecto techo.' },
+        { texto: 'Ninguno.', correcta: false, retro: 'Hay riesgo de abstinencia.' },
+      ],
+    },
+    errores: [
+      { error: 'No prevenir el estreñimiento.', correccion: 'Es universal.' },
+      { error: 'Combinar con benzodiacepinas sin control.', correccion: 'Depresión respiratoria.' },
+      { error: 'Ignorar el CYP2D6.', correccion: 'Codeína y tramadol.' },
+    ],
+    comprueba: [
+      { pregunta: '¿Qué receptor media la depresión respiratoria?', respuesta: 'El mu.' },
+      { pregunta: '¿Qué opioide es parcial?', respuesta: 'La buprenorfina.' },
+      { pregunta: '¿Qué efecto no desarrolla tolerancia?', respuesta: 'El estreñimiento.' },
+    ],
+    resumen: [
+      'Los receptores opioides explican los efectos.',
+      'La buprenorfina es parcial.',
+      'El estreñimiento requiere prevención.',
+      'La depresión respiratoria es el riesgo grave.',
+    ],
+    referencias: [
+      { cita: 'Katzung BG, Vanderah TW. Basic and Clinical Pharmacology. 15.ª ed. McGraw-Hill; 2021.', url: 'https://accessmedicine.mhmedical.com/book.aspx?bookid=2988' },
+    ],
+    imagenes: [
+      { ubicacion: 'Opioides', descripcion: 'Receptores y efectos de los opioides.', alt: 'Receptores opioides' },
+    ],
+    keywords: ['receptores opioides', 'morfina', 'buprenorfina', 'depresión respiratoria'],
+  },
+  {
+    titulo: 'Farmacocinética de los opioides y particularidades por molécula',
+    duracion: 20,
+    gancho: {
+      titulo: 'La morfina que se acumula en el riñón',
+      texto: 'Un paciente con enfermedad renal recibe morfina y presenta somnolencia y depresión respiratoria. Los metabolitos se acumulan. La elección de la molécula y el ajuste renal son parte de la seguridad.',
+    },
+    objetivos: [
+      'Comparar la farmacocinética de los opioides.',
+      'Aplicar el ajuste renal.',
+      'Reconocer las interacciones.',
+      'Realizar una rotación segura.',
+    ],
+    conceptos: [
+      { icono: 'Droplets', termino: 'Renal', definicion: 'La morfina acumula metabolitos activos.' },
+      { icono: 'Database', termino: 'CYP', definicion: 'Metabolismo variable entre opioides.' },
+      { icono: 'Calculator', termino: 'Equivalencia', definicion: 'Conversión entre opioides.' },
+      { icono: 'Repeat', termino: 'Rotación', definicion: 'Cambio por efecto o toxicidad.' },
+    ],
+    mapa: {
+      centro: 'Farmacocinética',
+      ramas: [
+        { titulo: 'Morfina', icono: 'Pill', nodos: ['Glucuronidación', 'M6G', 'Renal'] },
+        { titulo: 'Fentanilo', icono: 'Syringe', nodos: ['CYP3A4', 'Transdérmico', 'Rápido'] },
+        { titulo: 'Tramadol', icono: 'Database', nodos: ['CYP2D6', 'Serotonina', 'Convulsión'] },
+        { titulo: 'Rotación', icono: 'Calculator', nodos: ['Equivalencia', 'Reevaluar', 'Titular'] },
+      ],
+    },
+    secciones: [
+      {
+        titulo: 'Metabolismo',
+        parrafos: [
+          'La morfina se metaboliza por glucuronidación y produce morfina-6-glucurónido, activo, que se acumula en la enfermedad renal. El fentanilo se metaboliza por CYP3A4 y tiene una vida media corta por vía intravenosa. La oxicodona depende de CYP3A4 y CYP2D6. El tramadol y la codeína requieren CYP2D6 para su efecto.',
+          'Las variantes genéticas del CYP2D6 pueden producir falta de analgesia o toxicidad. Las interacciones con inhibidores o inductores modifican la exposición.',
+        ],
+      },
+      {
+        titulo: 'Ajuste y rotación',
+        parrafos: [
+          'En la enfermedad renal se evitan la morfina y la codeína; se prefieren fentanilo, hidromorfona o metadona con precaución. La rotación de opioides se usa cuando hay falta de eficacia o efectos adversos. Se calcula la dosis equianalgésica y se reduce un 25-50 % por tolerancia incompleta.',
+          'La rotación requiere seguimiento estrecho. La dosis se titula según el dolor y los efectos adversos. La educación del paciente y la familia es esencial.',
+        ],
+      },
+      {
+        titulo: 'Interacciones y seguridad',
+        parrafos: [
+          'Los inhibidores del CYP3A4, como los azoles y los macrólidos, aumentan la exposición al fentanilo y a la oxicodona. Los inductores la reducen. La combinación con benzodiacepinas, alcohol o gabapentinoides aumenta el riesgo de depresión respiratoria.',
+          'El QF revisa la lista completa, la función renal y hepática, y los signos de toxicidad. La documentación de la rotación y de la educación es parte de la dispensación segura.',
+        ],
+      },
+    ],
+    proceso: {
+      titulo: 'Rotar un opioide',
+      pasos: [
+        { titulo: 'Calcular', detalle: 'Dosis equianalgésica.', icono: 'Calculator', evidencia: 'Tabla.' },
+        { titulo: 'Ajustar', detalle: 'Reducir por tolerancia.', icono: 'Settings', evidencia: 'Cálculo.' },
+        { titulo: 'Elegir', detalle: 'Molécula y vía.', icono: 'Pill', evidencia: 'Fórmula.' },
+        { titulo: 'Monitorizar', detalle: 'Dolor y toxicidad.', icono: 'Activity', evidencia: 'Seguimiento.' },
+        { titulo: 'Educar', detalle: 'Rescate y alarma.', icono: 'Users', evidencia: 'Consejería.' },
+      ],
+    },
+    caso: {
+      titulo: 'Morfina en ERC',
+      contexto: 'Paciente con enfermedad renal avanzada que recibe morfina y presenta somnolencia.',
+      pregunta: '¿Qué hace el QF?',
+      opciones: [
+        { texto: 'Mantener la morfina.', correcta: false, retro: 'Los metabolitos se acumulan.' },
+        { texto: 'Alertar y proponer un opioide con menor acumulación.', correcta: true, retro: 'Evita la toxicidad.' },
+        { texto: 'Duplicar la dosis.', correcta: false, retro: 'Empeora.' },
+      ],
+    },
+    errores: [
+      { error: 'Usar morfina en ERC avanzada.', correccion: 'Acumula metabolitos activos.' },
+      { error: 'Rotar sin calcular equivalencia.', correccion: 'Riesgo de toxicidad o dolor.' },
+      { error: 'No revisar inhibidores del CYP3A4.', correccion: 'Aumentan la exposición.' },
+    ],
+    comprueba: [
+      { pregunta: '¿Qué opioide se acumula en ERC?', respuesta: 'La morfina.' },
+      { pregunta: '¿Qué enzima metaboliza el fentanilo?', respuesta: 'CYP3A4.' },
+      { pregunta: '¿Cómo se rota?', respuesta: 'Con dosis equianalgésica y reducción inicial.' },
+    ],
+    resumen: [
+      'La farmacocinética varía entre opioides.',
+      'La morfina se acumula en ERC.',
+      'La rotación exige cálculo y seguimiento.',
+      'Las interacciones modifican la exposición.',
+    ],
+    referencias: [
+      { cita: 'Katzung BG, Vanderah TW. Basic and Clinical Pharmacology. 15.ª ed. McGraw-Hill; 2021.', url: 'https://accessmedicine.mhmedical.com/book.aspx?bookid=2988' },
+    ],
+    imagenes: [
+      { ubicacion: 'Farmacocinética', descripcion: 'Metabolismo y rotación de opioides.', alt: 'Farmacocinética de los opioides' },
+    ],
+    keywords: ['farmacocinética opioides', 'morfina ERC', 'rotación opioides', 'fentanilo CYP3A4'],
+  },
+  {
+    titulo: 'Antagonistas opioides: naloxona, naltrexona y antagonistas periféricos',
+    duracion: 20,
+    gancho: {
+      titulo: 'La naloxona que despierta',
+      texto: 'Un paciente con depresión respiratoria por opioides mejora con naloxona, pero la dosis debe titularse. Revertir por completo puede causar dolor intenso y abstinencia. La clave es recuperar la respiración, no despertar al paciente.',
+    },
+    objetivos: [
+      'Diferenciar los antagonistas.',
+      'Aplicar la naloxona con titulación.',
+      'Reconocer la naltrexona y los periféricos.',
+      'Educar sobre el riesgo.',
+    ],
+    conceptos: [
+      { icono: 'Syringe', termino: 'Naloxona', definicion: 'Antagonista competitivo de acción corta.' },
+      { icono: 'ShieldCheck', termino: 'Naltrexona', definicion: 'Antagonista de acción prolongada.' },
+      { icono: 'Droplets', termino: 'Periférico', definicion: 'Metilnaltrexona para constipación.' },
+      { icono: 'AlertTriangle', termino: 'Abstinencia', definicion: 'Riesgo al revertir en dependientes.' },
+    ],
+    mapa: {
+      centro: 'Antagonistas',
+      ramas: [
+        { titulo: 'Naloxona', icono: 'Syringe', nodos: ['IV/IM', 'Corta', 'Titular'] },
+        { titulo: 'Naltrexona', icono: 'ShieldCheck', nodos: ['Oral', 'Larga', 'Alcohol'] },
+        { titulo: 'Periféricos', icono: 'Droplets', nodos: ['Metilnaltrexona', 'Constipación'] },
+        { titulo: 'Seguridad', icono: 'AlertTriangle', nodos: ['Abstinencia', 'Dolor', 'Renarcotización'] },
+      ],
+    },
+    secciones: [
+      {
+        titulo: 'Naloxona',
+        parrafos: [
+          'La naloxona es un antagonista competitivo de los receptores opioides. Se usa en la depresión respiratoria por opioides. Se administra por vía intravenosa o intramuscular y se titula hasta recuperar la respiración, no hasta despertar por completo. En pacientes dependientes, la reversión total precipita abstinencia y dolor.',
+          'Su acción dura menos que la de muchos opioides, por lo que puede requerir repetición o infusión. La observación posterior es obligatoria. La naloxona también se usa en la intoxicación por buprenorfina y en otros escenarios.',
+        ],
+      },
+      {
+        titulo: 'Naltrexona y periféricos',
+        parrafos: [
+          'La naltrexona es un antagonista oral de acción prolongada que se usa en el trastorno por consumo de alcohol y en la dependencia a opioides. Puede causar hepatotoxicidad y no se usa con opioides. Requiere una evaluación previa.',
+          'La metilnaltrexona y el alvimopan son antagonistas periféricos que no cruzan la barrera hematoencefálica y se usan para la constipación inducida por opioides. No revierten la analgesia central.',
+        ],
+      },
+      {
+        titulo: 'Educación y seguridad',
+        parrafos: [
+          'El QF educa sobre el riesgo de sobredosis, la importancia de no combinar opioides con alcohol o benzodiacepinas y el acceso a naloxona en pacientes de riesgo. También revisa la adherencia y los signos de depresión respiratoria.',
+          'La naloxona es una herramienta de emergencia, no un tratamiento de la dependencia. La comunicación con el equipo y la familia es clave.',
+        ],
+      },
+    ],
+    proceso: {
+      titulo: 'Revertir la depresión',
+      pasos: [
+        { titulo: 'Reconocer', detalle: 'Respiración y conciencia.', icono: 'AlertTriangle', evidencia: 'Evaluación.' },
+        { titulo: 'Titular', detalle: 'Naloxona hasta respirar.', icono: 'Syringe', evidencia: 'Respuesta.' },
+        { titulo: 'Observar', detalle: 'Renarcotización.', icono: 'Timer', evidencia: 'Monitor.' },
+        { titulo: 'Educar', detalle: 'Riesgo y prevención.', icono: 'Users', evidencia: 'Consejería.' },
+        { titulo: 'Documentar', detalle: 'Evento y reporte.', icono: 'FileCheck', evidencia: 'Registro.' },
+      ],
+    },
+    caso: {
+      titulo: 'Reversión total',
+      contexto: 'Paciente dependiente de opioides con depresión respiratoria que recibe naloxona hasta despertar.',
+      pregunta: '¿Qué riesgo presenta?',
+      opciones: [
+        { texto: 'Abstinencia y dolor intenso.', correcta: true, retro: 'La reversión total los precipita.' },
+        { texto: 'Ninguno.', correcta: false, retro: 'La titulación es necesaria.' },
+        { texto: 'Hipertermia maligna.', correcta: false, retro: 'No es el contexto.' },
+      ],
+    },
+    errores: [
+      { error: 'Revertir por completo.', correccion: 'Abstinencia y dolor.' },
+      { error: 'No observar la renarcotización.', correccion: 'La naloxona dura poco.' },
+      { error: 'Usar naltrexona con opioides.', correccion: 'Precipita abstinencia.' },
+    ],
+    comprueba: [
+      { pregunta: '¿Hasta dónde se titula la naloxona?', respuesta: 'Hasta recuperar la respiración.' },
+      { pregunta: '¿Qué antagonista es periférico?', respuesta: 'La metilnaltrexona.' },
+      { pregunta: '¿Qué riesgo tiene la reversión total?', respuesta: 'Abstinencia y dolor.' },
+    ],
+    resumen: [
+      'La naloxona revierte la depresión respiratoria.',
+      'Se titula y se observa.',
+      'La naltrexona es de acción prolongada.',
+      'Los periféricos tratan la constipación.',
+    ],
+    referencias: [
+      { cita: 'Katzung BG, Vanderah TW. Basic and Clinical Pharmacology. 15.ª ed. McGraw-Hill; 2021.', url: 'https://accessmedicine.mhmedical.com/book.aspx?bookid=2988' },
+    ],
+    imagenes: [
+      { ubicacion: 'Antagonistas', descripcion: 'Naloxona, naltrexona y antagonistas periféricos.', alt: 'Antagonistas opioides' },
+    ],
+    keywords: ['naloxona', 'naltrexona', 'metilnaltrexona', 'depresión respiratoria'],
+  },
+];

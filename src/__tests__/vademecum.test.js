@@ -23,7 +23,8 @@ describe('vademécum', () => {
         'medicamentos-para-la-dislipidemia',
         'medicamentos-para-la-hipertension-arterial',
         'medicamentos-para-la-obesidad',
-      ],
+        'antibioticos-de-uso-ambulatorio',
+      ].sort(),
     );
     expect(MONOGRAFIAS.map((m) => m.slug).sort()).toEqual(
       [
@@ -31,7 +32,11 @@ describe('vademécum', () => {
         'imatinib', 'liraglutida', 'losartan', 'metformina', 'naltrexona-bupropion', 'orlistat',
         'pembrolizumab', 'rivaroxaban', 'rosuvastatina', 'semaglutida', 'setmelanotida', 'sitagliptina', 'tirzepatida',
         'trastuzumab', 'warfarina',
-      ],
+        'amoxicilina-acido-clavulanico', 'cefalexina', 'ciprofloxacino', 'clindamicina', 'metronidazol',
+        'nitrofurantoina', 'trimetoprim-sulfametoxazol',
+        'secnidazol', 'dicloxacilina', 'claritromicina', 'ceftriaxona', 'penicilina-benzatinica',
+        'levofloxacino', 'doxiciclina', 'fosfomicina',
+      ].sort(),
     );
     const slugs = PAGINAS_VADEMECUM.map((p) => p.slug);
     expect(new Set(slugs).size).toBe(slugs.length);
@@ -88,6 +93,7 @@ describe('vademécum', () => {
   it('los enlaces a artículos existen', () => {
     for (const p of PAGINAS_VADEMECUM) {
       for (const [, url] of p.enlaces || []) {
+        if (!url.startsWith('/articulos/')) continue;
         expect(slugsDeArticulos.has(url.replace('/articulos/', '')), `${p.slug} → ${url}`).toBe(true);
       }
     }

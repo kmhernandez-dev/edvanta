@@ -600,7 +600,9 @@ for (const r of RUTAS_FIJAS) {
     },
     migas([['Inicio', `${SITIO}/`], [seccion, `${SITIO}/`], [h1, canonical]]),
   ];
-  if (r.extraJsonLd) grafo.push(...r.extraJsonLd);
+  // Cada bloque va en su propio <script>: sin @context, Google lo ignora
+  // (pasó con el FAQPage de recursos para estudiantes y la Person del perfil).
+  if (r.extraJsonLd) grafo.push(...r.extraJsonLd.map((j) => ({ '@context': 'https://schema.org', ...j })));
   const html = pagina({
     titulo: r.titulo,
     descripcion: r.descripcion,

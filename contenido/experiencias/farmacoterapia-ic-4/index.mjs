@@ -1,0 +1,878 @@
+export const CURSO = 'Curso de Farmacoterapia de la Insuficiencia Cardíaca';
+export const MIGRACION = '136_experiencias_farmacoterapia_ic_4.sql';
+
+export const CLASES = [
+  {
+    titulo: 'Interacciones clínicamente relevantes en IC y notificación de eventos adversos al INVIMA',
+    duracion: 20,
+    gancho: {
+      titulo: 'La interacción que descompensó al paciente',
+      texto: 'Un paciente con IC estable empieza un AINE y un antiarrítmico. A los días vuelve con edema, bradicardia y potasio alto. Las interacciones en IC pueden ser graves y difíciles de detectar. Revisarlas en la dispensación y notificar los eventos al INVIMA es parte de la seguridad.',
+    },
+    objetivos: [
+      'Reconocer interacciones relevantes en IC.',
+      'Priorizar las de mayor riesgo.',
+      'Aplicar medidas de prevención.',
+      'Notificar eventos adversos al INVIMA.',
+    ],
+    conceptos: [
+      { icono: 'AlertTriangle', termino: 'Interacción', definicion: 'Cambio en el efecto de un fármaco por otro, la dieta o una enfermedad.' },
+      { icono: 'Pill', termino: 'AINE', definicion: 'Retiene sodio y empeora la función renal.' },
+      { icono: 'Activity', termino: 'Antiarrítmico', definicion: 'Puede causar bradicardia o proarritmia.' },
+      { icono: 'FileCheck', termino: 'Notificación', definicion: 'Reporte de sospecha al programa o al INVIMA.' },
+    ],
+    mapa: {
+      centro: 'Interacciones en IC',
+      ramas: [
+        { titulo: 'Fármacos', icono: 'Pill', nodos: ['AINE', 'Antiarrítmicos', 'Corticoides'] },
+        { titulo: 'Electrolitos', icono: 'Droplets', nodos: ['Potasio', 'Sodio', 'Renal'] },
+        { titulo: 'Ritmo', icono: 'Activity', nodos: ['Bradicardia', 'QT', 'Arritmia'] },
+        { titulo: 'Reporte', icono: 'FileCheck', nodos: ['INVIMA', 'Documentar', 'Seguir'] },
+      ],
+    },
+    secciones: [
+      {
+        titulo: 'Interacciones frecuentes',
+        parrafos: [
+          'Los AINE con IECA/ARA-II y diuréticos aumentan el riesgo de daño renal e hiperpotasemia. Los antiarrítmicos pueden causar bradicardia o proarritmia. Los corticoides retienen líquidos. Los suplementos de potasio y las sales de reemplazo pueden elevar el potasio.',
+          'Se revisan también las interacciones con digoxina, warfarina y fármacos que prolongan el QT.',
+        ],
+      },
+      {
+        titulo: 'Prevención',
+        parrafos: [
+          'La revisión de la medicación completa en cada contacto detecta interacciones. Se proponen alternativas y se controlan electrolitos y función renal.',
+          'La comunicación con el equipo es clave.',
+        ],
+      },
+      {
+        titulo: 'Notificación',
+        parrafos: [
+          'Las sospechas de reacciones adversas o problemas de calidad se notifican al programa de farmacovigilancia o al INVIMA. No se requiere certeza.',
+          'La documentación permite seguir y prevenir.',
+          'Para notificar se reúnen datos del paciente, el fármaco implicado, la reacción, la cronología y la evolución. En Colombia, el programa de farmacovigilancia del INVIMA recibe reportes de profesionales y pacientes. La notificación no implica culpa y ayuda a generar alertas. En IC, las combinaciones de AINE, IECA/ARA-II, diuréticos y espironolactona concentran la mayor parte de los eventos graves. También se revisan productos naturales, sales de reemplazo y suplementos de potasio, que el paciente no siempre menciona. La conciliación en cada transición reduce reingresos y permite educar con ejemplos concretos.',
+        ],
+      },
+    ],
+    proceso: {
+      titulo: 'Cómo revisar interacciones',
+      pasos: [
+        { titulo: 'Listar', detalle: 'Todos los medicamentos y suplementos.', icono: 'ClipboardList', evidencia: 'Lista.' },
+        { titulo: 'Priorizar', detalle: 'Riesgo renal, potasio y ritmo.', icono: 'AlertTriangle', evidencia: 'Evaluación.' },
+        { titulo: 'Intervenir', detalle: 'Alternativa o ajuste.', icono: 'Pill', evidencia: 'Nota.' },
+        { titulo: 'Controlar', detalle: 'Electrolitos y renal.', icono: 'LineChart', evidencia: 'Resultados.' },
+        { titulo: 'Reportar', detalle: 'Sospecha al INVIMA.', icono: 'FileCheck', evidencia: 'Reporte.' },
+      ],
+    },
+    caso: {
+      titulo: 'AINE y antiarrítmico',
+      contexto: 'Paciente con IC que inicia AINE y antiarrítmico, con edema, bradicardia y potasio alto.',
+      pregunta: '¿Qué hacer?',
+      opciones: [
+        { texto: 'Mantener ambos.', correcta: false, retro: 'Pueden empeorar la IC.' },
+        { texto: 'Revisar interacciones, suspender lo riesgoso y notificar.', correcta: true, retro: 'La seguridad es prioritaria.' },
+        { texto: 'Aumentar el diurético sin revisar.', correcta: false, retro: 'No es suficiente.' },
+      ],
+    },
+    errores: [
+      { error: 'No preguntar por venta libre.', correccion: 'AINE y suplementos son frecuentes.' },
+      { error: 'No controlar potasio.', correccion: 'Riesgo de arritmias.' },
+      { error: 'No notificar.', correccion: 'La farmacovigilancia protege.' },
+    ],
+    comprueba: [
+      { pregunta: '¿Qué interacción es peligrosa?', respuesta: 'AINE con IECA/ARA-II y diurético.' },
+      { pregunta: '¿Qué se controla?', respuesta: 'Potasio, renal y ritmo.' },
+      { pregunta: '¿Dónde se notifica?', respuesta: 'Al programa o al INVIMA.' },
+    ],
+    resumen: [
+      'Las interacciones en IC pueden ser graves.',
+      'La revisión completa las detecta.',
+      'El control de electrolitos es clave.',
+      'La notificación es parte de la seguridad.',
+    ],
+    referencias: [
+      { cita: 'European Society of Cardiology. 2026 ESC Guidelines for the diagnosis and treatment of acute and chronic heart failure. Eur Heart J. 2026.', url: 'https://www.escardio.org/Guidelines/Clinical-Practice-Guidelines/Heart-Failure' },
+      { cita: 'INVIMA. Alertas sanitarias.', url: 'https://www.invima.gov.co/alertas-sanitarias' },
+    ],
+    imagenes: [
+      { ubicacion: 'Sección de interacciones', descripcion: 'Paciente con IC y varios medicamentos, con alertas de potasio, renal y ritmo.', alt: 'Interacciones en insuficiencia cardíaca' },
+    ],
+    keywords: ['interacciones insuficiencia cardíaca', 'AINE IC', 'farmacovigilancia IC', 'notificación INVIMA'],
+  },
+  {
+    titulo: 'Seguimiento farmacoterapéutico del paciente con IC: parámetros, adherencia, polifarmacia y continuidad',
+    duracion: 25,
+    gancho: {
+      titulo: 'El seguimiento que sostiene el tratamiento',
+      texto: 'La IC requiere ajustes frecuentes, educación y revisión de la medicación. Un paciente con cinco fármacos, ERC y dos hospitalizaciones necesita un seguimiento estructurado. El QF puede detectar problemas antes de que causen una descompensación.',
+    },
+    objetivos: [
+      'Aplicar el seguimiento farmacoterapéutico en IC.',
+      'Reconocer parámetros clave.',
+      'Manejar polifarmacia y adherencia.',
+      'Asegurar continuidad.',
+    ],
+    conceptos: [
+      { icono: 'Users', termino: 'Seguimiento', definicion: 'Evaluación continua de la farmacoterapia.' },
+      { icono: 'ClipboardList', termino: 'Parámetros', definicion: 'Peso, presión, síntomas, renal y potasio.' },
+      { icono: 'Layers', termino: 'Polifarmacia', definicion: 'Múltiples fármacos con riesgo de interacciones.' },
+      { icono: 'CalendarClock', termino: 'Continuidad', definicion: 'Coordinación entre niveles y acceso.' },
+    ],
+    mapa: {
+      centro: 'Seguimiento en IC',
+      ramas: [
+        { titulo: 'Clínico', icono: 'Users', nodos: ['Peso', 'Disnea', 'Edema'] },
+        { titulo: 'Laboratorio', icono: 'TestTube', nodos: ['Renal', 'Potasio', 'Hemoglobina'] },
+        { titulo: 'Medicación', icono: 'Pill', nodos: ['Adherencia', 'Interacciones', 'Dosis'] },
+        { titulo: 'Continuidad', icono: 'CalendarClock', nodos: ['Citas', 'Acceso', 'Educación'] },
+      ],
+    },
+    secciones: [
+      {
+        titulo: 'Parámetros',
+        parrafos: [
+          'El seguimiento incluye peso, síntomas, presión, frecuencia, función renal, potasio y hemoglobina. La revisión de la medicación detecta omisiones, duplicidades e interacciones.',
+          'La documentación permite comparar y ajustar.',
+          'Los controles suelen ser frecuentes al inicio y tras cada cambio: a la una o dos semanas para presión, potasio y creatinina, y luego cada uno a tres meses según estabilidad. La clase funcional y la calidad de vida se documentan con instrumentos breves como la escala NYHA y el cuestionario KCCQ, que ayudan a detectar deterioro antes de la consulta. Se revisan también síntomas de hipotensión, mareo, tos o edema. La frecuencia se individualiza: más estrecha en enfermedad renal, adultos mayores y polifarmacia. En Colombia, las barreras de acceso, el copago y la entrega fraccionada afectan la continuidad; el QF puede anticipar fórmulas, verificar disponibilidad y proponer alternativas dentro del plan. Un buen seguimiento convierte datos aislados en decisiones oportunas y demuestra su valor con registros claros. La revisión tras la hospitalización debe ocurrir en la primera semana.',
+        ],
+      },
+      {
+        titulo: 'Adherencia y polifarmacia',
+        parrafos: [
+          'La polifarmacia es frecuente. Se simplifica cuando es posible y se revisan barreras. La educación y los recordatorios mejoran la adherencia.',
+          'El QF puede detectar problemas y proponer cambios.',
+        ],
+      },
+      {
+        titulo: 'Continuidad',
+        parrafos: [
+          'La coordinación entre hospital, farmacia y atención primaria evita interrupciones. La revisión temprana después de una hospitalización es clave.',
+          'La meta es un plan sostenible.',
+        ],
+      },
+    ],
+    proceso: {
+      titulo: 'Ciclo de seguimiento',
+      pasos: [
+        { titulo: 'Evaluar', detalle: 'Síntomas y parámetros.', icono: 'Search', evidencia: 'Ficha.' },
+        { titulo: 'Revisar', detalle: 'Medicación y adherencia.', icono: 'Pill', evidencia: 'Lista.' },
+        { titulo: 'Intervenir', detalle: 'Ajuste o educación.', icono: 'Lightbulb', evidencia: 'Nota.' },
+        { titulo: 'Documentar', detalle: 'Registrar y comunicar.', icono: 'FileCheck', evidencia: 'Registro.' },
+        { titulo: 'Seguir', detalle: 'Programar control.', icono: 'CalendarClock', evidencia: 'Cita.' },
+      ],
+    },
+    caso: {
+      titulo: 'Cinco fármacos y ERC',
+      contexto: 'Paciente con IC, ERC y cinco fármacos, mala adherencia y dos hospitalizaciones.',
+      pregunta: '¿Qué hacer?',
+      opciones: [
+        { texto: 'Solo dispensar.', correcta: false, retro: 'Se pierden oportunidades.' },
+        { texto: 'Revisar medicación, adherencia y parámetros, y coordinar.', correcta: true, retro: 'El seguimiento mejora resultados.' },
+        { texto: 'Aumentar todos los fármacos.', correcta: false, retro: 'No es seguro.' },
+      ],
+    },
+    errores: [
+      { error: 'No revisar polifarmacia.', correccion: 'Interacciones y duplicidades.' },
+      { error: 'No medir adherencia.', correccion: 'Es parte del problema.' },
+      { error: 'No coordinar.', correccion: 'La continuidad es clave.' },
+    ],
+    comprueba: [
+      { pregunta: '¿Qué parámetros se revisan?', respuesta: 'Peso, presión, renal, potasio y síntomas.' },
+      { pregunta: '¿Qué es polifarmacia?', respuesta: 'Uso de múltiples fármacos.' },
+      { pregunta: '¿Cómo se asegura la continuidad?', respuesta: 'Coordinación y seguimiento.' },
+    ],
+    resumen: [
+      'El seguimiento es estructurado.',
+      'La polifarmacia se revisa.',
+      'La adherencia se mide.',
+      'La continuidad es clave.',
+    ],
+    referencias: [
+      { cita: 'Cipolle RJ, Strand LM, Morley PC. Pharmaceutical care practice: the patient-centered approach to medication management services. 3.ª ed. Nueva York: McGraw-Hill Medical; 2012.', url: 'https://www.mhprofessional.com/pharmaceutical-care-practice-9780071759029-usa' },
+      { cita: 'European Society of Cardiology. 2026 ESC Guidelines for the diagnosis and treatment of acute and chronic heart failure. Eur Heart J. 2026.', url: 'https://www.escardio.org/Guidelines/Clinical-Practice-Guidelines/Heart-Failure' },
+    ],
+    imagenes: [
+      { ubicacion: 'Sección del ciclo', descripcion: 'Ciclo de seguimiento con ficha, medicación y parámetros.', alt: 'Seguimiento farmacoterapéutico en IC' },
+    ],
+    keywords: ['seguimiento farmacoterapéutico IC', 'polifarmacia insuficiencia cardíaca', 'adherencia IC'],
+  },
+  {
+    titulo: 'Educación al paciente con IC y autocuidado: signos de alarma, peso diario, sal, adherencia y vacunación',
+    duracion: 20,
+    gancho: {
+      titulo: 'El peso que avisa antes de la disnea',
+      texto: 'Un paciente con IC sube 2 kg en tres días y no consulta porque no tiene disnea. Al quinto día llega con edema y crepitantes. El peso diario es un signo temprano de congestión. La educación al paciente puede prevenir la hospitalización.',
+    },
+    objetivos: [
+      'Enseñar el autocuidado en IC.',
+      'Reconocer signos de alarma.',
+      'Aplicar el peso diario y la restricción de sal.',
+      'Reforzar adherencia y vacunación.',
+    ],
+    conceptos: [
+      { icono: 'Scale', termino: 'Peso diario', definicion: 'Aumento de 2 kg en 2-3 días sugiere retención.' },
+      { icono: 'Wheat', termino: 'Sal', definicion: 'Su reducción ayuda a la congestión.' },
+      { icono: 'AlertTriangle', termino: 'Alarma', definicion: 'Disnea, edema, ganancia de peso o mareo.' },
+      { icono: 'ShieldCheck', termino: 'Vacunas', definicion: 'Influenza, neumococo y COVID según indicación.' },
+    ],
+    mapa: {
+      centro: 'Autocuidado en IC',
+      ramas: [
+        { titulo: 'Peso', icono: 'Scale', nodos: ['Diario', '2 kg', 'Consultar'] },
+        { titulo: 'Sal', icono: 'Wheat', nodos: ['Etiquetas', 'Procesados', 'Cocina'] },
+        { titulo: 'Alarma', icono: 'AlertTriangle', nodos: ['Disnea', 'Edema', 'Mareo'] },
+        { titulo: 'Prevención', icono: 'ShieldCheck', nodos: ['Vacunas', 'Adherencia', 'Control'] },
+      ],
+    },
+    secciones: [
+      {
+        titulo: 'Peso y sal',
+        parrafos: [
+          'El paciente debe pesarse a la misma hora y con la misma ropa. Un aumento de 2 kg en dos o tres días justifica consultar. La reducción de sal y de alimentos procesados ayuda a la congestión.',
+          'La educación debe ser práctica y adaptada a la cultura y al presupuesto.',
+        ],
+      },
+      {
+        titulo: 'Signos de alarma',
+        parrafos: [
+          'La disnea en reposo o al esfuerzo, el edema creciente, el aumento de peso, el mareo, la palpitación o la disminución de la diuresis requieren consulta. El paciente debe tener un plan escrito.',
+          'La adherencia y la vacunación son parte del autocuidado.',
+        ],
+      },
+      {
+        titulo: 'Vacunación',
+        parrafos: [
+          'La vacunación contra influenza, neumococo y COVID según indicación reduce complicaciones. El QF puede revisar el esquema.',
+          'La educación se refuerza en cada contacto.',
+          'La técnica teach-back, en la que el paciente explica con sus palabras qué hará, confirma la comprensión mejor que repetir instrucciones. Un plan escrito con metas pequeñas, horarios y teléfonos de contacto facilita la adherencia. Se adapta el lenguaje y se involucra al cuidador cuando hay deterioro cognitivo o visual. En la práctica colombiana conviene revisar la sal oculta en caldos, embutidos, quesos y alimentos enlatados, y proponer alternativas con especias y limón. La educación debe celebrar los logros y evitar mensajes culpabilizantes: el objetivo es sostener el autocuidado, no perfeccionarlo. Cada consulta es una oportunidad para reforzar un solo mensaje clave y verificar que se entendió. La familia y la red de apoyo también reciben orientación práctica.',
+        ],
+      },
+    ],
+    proceso: {
+      titulo: 'Plan educativo',
+      pasos: [
+        { titulo: 'Evaluar', detalle: 'Conocimientos y barreras.', icono: 'Users', evidencia: 'Entrevista.' },
+        { titulo: 'Enseñar', detalle: 'Peso, sal y alarma.', icono: 'GraduationCap', evidencia: 'Educación.' },
+        { titulo: 'Acordar', detalle: 'Una meta pequeña.', icono: 'Target', evidencia: 'Acuerdo.' },
+        { titulo: 'Registrar', detalle: 'Peso y síntomas.', icono: 'ClipboardList', evidencia: 'Registro.' },
+        { titulo: 'Revisar', detalle: 'Progreso y vacunas.', icono: 'CalendarClock', evidencia: 'Seguimiento.' },
+      ],
+    },
+    caso: {
+      titulo: 'Dos kilos en tres días',
+      contexto: 'Paciente con IC que sube 2 kg y no tiene disnea.',
+      pregunta: '¿Qué hacer?',
+      opciones: [
+        { texto: 'Esperar a que aparezca disnea.', correcta: false, retro: 'La ganancia de peso es un signo temprano.' },
+        { texto: 'Consultar y revisar adherencia, sal y diurético.', correcta: true, retro: 'Se previene la descompensación.' },
+        { texto: 'Aumentar la sal.', correcta: false, retro: 'Empeora.' },
+      ],
+    },
+    errores: [
+      { error: 'No pesar todos los días.', correccion: 'Es un signo temprano.' },
+      { error: 'No revisar sal oculta.', correccion: 'Es la principal fuente.' },
+      { error: 'No revisar vacunas.', correccion: 'Prevención de infecciones.' },
+    ],
+    comprueba: [
+      { pregunta: '¿Cuánto peso justifica consultar?', respuesta: '2 kg en 2-3 días.' },
+      { pregunta: '¿Qué signos alarman?', respuesta: 'Disnea, edema, mareo y menor diuresis.' },
+      { pregunta: '¿Qué vacunas se revisan?', respuesta: 'Influenza, neumococo y COVID según indicación.' },
+    ],
+    resumen: [
+      'El peso diario detecta congestión.',
+      'La sal se reduce.',
+      'Los signos de alarma se conocen.',
+      'La vacunación previene complicaciones.',
+    ],
+    referencias: [
+      { cita: 'European Society of Cardiology. 2026 ESC Guidelines for the diagnosis and treatment of acute and chronic heart failure. Eur Heart J. 2026.', url: 'https://www.escardio.org/Guidelines/Clinical-Practice-Guidelines/Heart-Failure' },
+    ],
+    imagenes: [
+      { ubicacion: 'Sección de autocuidado', descripcion: 'Paciente pesándose y revisando etiquetas de sal.', alt: 'Educación y autocuidado en insuficiencia cardíaca' },
+    ],
+    keywords: ['educación insuficiencia cardíaca', 'peso diario IC', 'sal IC', 'vacunación IC'],
+  },
+  {
+    titulo: 'Caso integrador: hombre de 72 años en Bogotá reingresado por IC descompensada, con polifarmacia, ERC y automedicación',
+    duracion: 30,
+    gancho: {
+      titulo: 'El reingreso que se podía evitar',
+      texto: 'Un hombre de 72 años en Bogotá reingresa por disnea y edema. Toma nueve medicamentos, un AINE para el dolor y un producto natural. La FEVI es 32 %, la TFG 35 y el potasio 5,4. El caso integra IC, ERC, polifarmacia, automedicación y educación.',
+    },
+    objetivos: [
+      'Integrar los conocimientos del curso.',
+      'Priorizar problemas de seguridad.',
+      'Ajustar el esquema en ERC.',
+      'Diseñar educación y seguimiento.',
+    ],
+    conceptos: [
+      { icono: 'Layers', termino: 'Polifarmacia', definicion: 'Múltiples fármacos con riesgo de interacciones.' },
+      { icono: 'AlertTriangle', termino: 'Automedicación', definicion: 'Uso de AINE o productos sin control.' },
+      { icono: 'Droplets', termino: 'ERC', definicion: 'Requiere ajuste y control de potasio.' },
+      { icono: 'Users', termino: 'Educación', definicion: 'Peso, sal, alarma y adherencia.' },
+    ],
+    mapa: {
+      centro: 'Caso integrador',
+      ramas: [
+        { titulo: 'IC', icono: 'Activity', nodos: ['FEVI 32', 'Congestión', 'Pilares'] },
+        { titulo: 'Riñón', icono: 'Droplets', nodos: ['TFG 35', 'Potasio', 'Ajuste'] },
+        { titulo: 'Fármacos', icono: 'AlertTriangle', nodos: ['AINE', 'Natural', 'Interacciones'] },
+        { titulo: 'Seguimiento', icono: 'CalendarClock', nodos: ['Adherencia', 'Peso', 'Control'] },
+      ],
+    },
+    secciones: [
+      {
+        titulo: 'Evaluación',
+        parrafos: [
+          'Se revisan congestión, presión, función renal, potasio y medicamentos. El AINE y el producto natural son riesgos. La polifarmacia exige revisar duplicidades e interacciones.',
+          'La meta es estabilizar y optimizar la terapia fundamental.',
+        ],
+      },
+      {
+        titulo: 'Intervención',
+        parrafos: [
+          'Se suspende el AINE y el producto no verificado. Se ajustan los pilares según presión, renal y potasio. Se revisan diuréticos y educación.',
+          'El QF documenta y coordina.',
+        ],
+      },
+      {
+        titulo: 'Seguimiento',
+        parrafos: [
+          'Se revisan peso, presión, potasio, TFG y adherencia. La educación y el seguimiento temprano reducen reingresos.',
+          'La continuidad es clave.',
+          'El plan integrador incluye control presencial a la semana con peso, presión, potasio y creatinina, y contacto telefónico a las 48 horas para verificar adherencia y síntomas. Se acuerda con el médico tratante la secuencia de titulación y se deja por escrito qué hacer si el peso sube, si aparece mareo o si el potasio se eleva. Se revisan vacunas, acceso a medicamentos y apoyo familiar. La automedicación se aborda sin juicios, explicando por qué el AINE y el producto natural son riesgosos y ofreciendo alternativas para el dolor. El caso enseña que la seguridad en IC se construye con revisiones sistemáticas, comunicación entre niveles y educación sostenida, no con una sola intervención aislada. Documentar cada decisión y su justificación permite que cualquier profesional continúe el plan sin perder información.',
+        ],
+      },
+    ],
+    proceso: {
+      titulo: 'Abordaje integrador',
+      pasos: [
+        { titulo: 'Revisar', detalle: 'Medicación y productos.', icono: 'ClipboardList', evidencia: 'Lista.' },
+        { titulo: 'Priorizar', detalle: 'Seguridad y congestión.', icono: 'AlertTriangle', evidencia: 'Prioridad.' },
+        { titulo: 'Ajustar', detalle: 'Pilares y diurético.', icono: 'Pill', evidencia: 'Plan.' },
+        { titulo: 'Educar', detalle: 'Peso, sal y alarma.', icono: 'Users', evidencia: 'Educación.' },
+        { titulo: 'Seguir', detalle: 'Renal, potasio y adherencia.', icono: 'CalendarClock', evidencia: 'Control.' },
+      ],
+    },
+    caso: {
+      titulo: 'Nueve fármacos y un AINE',
+      contexto: 'Paciente de 72 años con IC, ERC, nueve fármacos, AINE y producto natural.',
+      pregunta: '¿Qué prioridad?',
+      opciones: [
+        { texto: 'Añadir otro fármaco.', correcta: false, retro: 'Primero hay que revisar.' },
+        { texto: 'Suspender AINE y producto no verificado, ajustar pilares y educar.', correcta: true, retro: 'La seguridad es primero.' },
+        { texto: 'Mantener todo.', correcta: false, retro: 'Riesgo de reingreso.' },
+      ],
+    },
+    errores: [
+      { error: 'No revisar productos naturales.', correccion: 'Pueden interactuar.' },
+      { error: 'No ajustar por TFG.', correccion: 'Riesgo de toxicidad.' },
+      { error: 'No educar.', correccion: 'La automedicación continúa.' },
+    ],
+    comprueba: [
+      { pregunta: '¿Qué se suspende?', respuesta: 'AINE y producto no verificado.' },
+      { pregunta: '¿Qué se ajusta?', respuesta: 'Pilares y diurético según renal y potasio.' },
+      { pregunta: '¿Qué se controla?', respuesta: 'Peso, presión, potasio y TFG.' },
+    ],
+    resumen: [
+      'La polifarmacia exige revisión.',
+      'La automedicación es un riesgo.',
+      'El ajuste renal es clave.',
+      'La educación previene reingresos.',
+    ],
+    referencias: [
+      { cita: 'European Society of Cardiology. 2026 ESC Guidelines for the diagnosis and treatment of acute and chronic heart failure. Eur Heart J. 2026.', url: 'https://www.escardio.org/Guidelines/Clinical-Practice-Guidelines/Heart-Failure' },
+      { cita: 'INVIMA. Alertas sanitarias.', url: 'https://www.invima.gov.co/alertas-sanitarias' },
+    ],
+    imagenes: [
+      { ubicacion: 'Sección del caso', descripcion: 'Paciente mayor con nueve medicamentos, AINE y un producto natural.', alt: 'Caso integrador de insuficiencia cardíaca' },
+    ],
+    keywords: ['caso integrador insuficiencia cardíaca', 'polifarmacia IC', 'automedicación IC', 'ERC IC'],
+  },
+  {
+    titulo: 'Ficha: Sacubitrilo/valsartán',
+    duracion: 15,
+    gancho: {
+      titulo: 'La ficha del ARNI',
+      texto: 'Sacubitrilo/valsartán es un pilar en la IC con FEVI reducida. Esta ficha resume inicio, titulación, transición desde IECA y seguridad para la dispensación.',
+    },
+    objetivos: [
+      'Recordar dosis e indicaciones.',
+      'Aplicar la transición desde IECA.',
+      'Reconocer efectos adversos.',
+      'Educar al paciente.',
+    ],
+    conceptos: [
+      { icono: 'Pill', termino: 'ARNI', definicion: 'Sacubitrilo y valsartán.' },
+      { icono: 'Timer', termino: '36 horas', definicion: 'Espera tras IECA.' },
+      { icono: 'Target', termino: 'Dosis', definicion: '24/26 mg cada 12 horas, titulación.' },
+      { icono: 'AlertTriangle', termino: 'Seguridad', definicion: 'Hipotensión, potasio y angioedema.' },
+    ],
+    mapa: {
+      centro: 'Sacubitrilo/valsartán',
+      ramas: [
+        { titulo: 'Dosis', icono: 'Pill', nodos: ['24/26 mg', 'Cada 12 h', 'Titular'] },
+        { titulo: 'Transición', icono: 'Timer', nodos: ['Suspender IECA', '36 h', 'Iniciar'] },
+        { titulo: 'Seguridad', icono: 'AlertTriangle', nodos: ['Presión', 'Potasio', 'Angioedema'] },
+        { titulo: 'Educación', icono: 'Users', nodos: ['No IECA', 'Adherencia', 'Control'] },
+      ],
+    },
+    secciones: [
+      {
+        titulo: 'Dosis',
+        parrafos: [
+          'Se inicia con 24/26 mg cada 12 horas y se titula cada dos a cuatro semanas hasta 97/103 mg cada 12 horas, según tolerancia. Se controlan presión, potasio y función renal.',
+          'Se usa en FEVI reducida en pacientes que toleran IECA/ARA-II.',
+          'El estudio PARADIGM-HF mostró reducción de hospitalización y muerte cardiovascular frente a enalapril en IC con FEVI reducida. No se inicia si hay hipotensión sintomática, potasio mayor de 5,5 mEq/L, TFG menor de 30 o antecedente de angioedema. En adultos mayores y en pacientes con presión limítrofe se prefiere la dosis baja y una titulación más lenta. La evidencia en FEVI preservada es limitada; la elección depende del fenotipo. El costo y la disponibilidad pueden dificultar la continuidad, por lo que el QF verifica el acceso y evita interrupciones. Se recomienda control de presión, potasio y creatinina entre una y dos semanas después de cada ajuste, y educación sobre el riesgo de angioedema y la prohibición de combinar con IECA. La transición debe quedar registrada en la historia clínica y en la fórmula para evitar duplicidades. Si el paciente olvida una dosis, se indica no duplicar y continuar el esquema habitual. La dosis se ajusta también si aparece hipotensión ortostática o deterioro renal.',
+        ],
+      },
+      {
+        titulo: 'Transición',
+        parrafos: [
+          'Si viene de IECA, se suspende y se espera al menos 36 horas. Si viene de ARA-II, no se requiere esa espera. No se combina con IECA.',
+          'La educación sobre angioedema es obligatoria.',
+        ],
+      },
+      {
+        titulo: 'Seguridad',
+        parrafos: [
+          'Puede causar hipotensión, hiperpotasemia y deterioro renal. Se controlan electrolitos y función renal. Está contraindicado en embarazo y antecedente de angioedema por IECA.',
+          'La revisión de la adherencia y del acceso es parte del plan.',
+        ],
+      },
+    ],
+    proceso: {
+      titulo: 'Checklist de dispensación',
+      pasos: [
+        { titulo: 'Indicación', detalle: 'FEVI reducida.', icono: 'Target', evidencia: 'Fórmula.' },
+        { titulo: 'Transición', detalle: '36 horas si venía de IECA.', icono: 'Timer', evidencia: 'Registro.' },
+        { titulo: 'Dosis', detalle: '24/26 mg cada 12 h.', icono: 'Pill', evidencia: 'Esquema.' },
+        { titulo: 'Educación', detalle: 'Angioedema y control.', icono: 'Users', evidencia: 'Consejería.' },
+        { titulo: 'Seguimiento', detalle: 'Presión, potasio y renal.', icono: 'CalendarClock', evidencia: 'Control.' },
+      ],
+    },
+    caso: {
+      titulo: 'Cambio desde enalapril',
+      contexto: 'Paciente con enalapril que cambia a ARNI.',
+      pregunta: '¿Qué hacer?',
+      opciones: [
+        { texto: 'Iniciar el mismo día.', correcta: false, retro: 'Debe esperar 36 horas.' },
+        { texto: 'Suspender IECA, esperar 36 horas e iniciar.', correcta: true, retro: 'Transición segura.' },
+        { texto: 'Combinar ambos.', correcta: false, retro: 'No se combinan.' },
+      ],
+    },
+    errores: [
+      { error: 'No esperar 36 horas.', correccion: 'Riesgo de angioedema.' },
+      { error: 'Combinar con IECA.', correccion: 'Contraindicado.' },
+      { error: 'No controlar potasio.', correccion: 'Riesgo de hiperpotasemia.' },
+    ],
+    comprueba: [
+      { pregunta: '¿Dosis inicial?', respuesta: '24/26 mg cada 12 horas.' },
+      { pregunta: '¿Cuánto esperar tras IECA?', respuesta: '36 horas.' },
+      { pregunta: '¿Qué se controla?', respuesta: 'Presión, potasio y renal.' },
+    ],
+    resumen: [
+      'ARNI: pilar en FEVI reducida.',
+      'Esperar 36 horas tras IECA.',
+      'Controlar presión y potasio.',
+      'Educar sobre angioedema.',
+    ],
+    referencias: [
+      { cita: 'AEMPS-CIMA. Ficha técnica de Entresto 24 mg/26 mg comprimidos recubiertos con película.', url: 'https://cima.aemps.es/cima/dochtml/ft/1151058001/FT_1151058001.html' },
+    ],
+    imagenes: [
+      { ubicacion: 'Ficha', descripcion: 'Tarjeta con dosis, transición y seguridad.', alt: 'Ficha rápida de sacubitrilo/valsartán' },
+    ],
+    keywords: ['sacubitrilo valsartán ficha', 'Entresto dosis', 'transición IECA ARNI'],
+  },
+  {
+    titulo: 'Ficha: Dapagliflozina',
+    duracion: 15,
+    gancho: {
+      titulo: 'La ficha de dapagliflozina',
+      texto: 'Dapagliflozina es un iSGLT2 con beneficio en IC. Esta ficha resume dosis, seguridad y educación.',
+    },
+    objetivos: [
+      'Recordar dosis e indicaciones.',
+      'Reconocer efectos adversos.',
+      'Aplicar reglas de días de enfermedad.',
+      'Educar al paciente.',
+    ],
+    conceptos: [
+      { icono: 'Gauge', termino: 'iSGLT2', definicion: 'Inhibidor renal.' },
+      { icono: 'Target', termino: 'Dosis', definicion: '10 mg al día.' },
+      { icono: 'AlertTriangle', termino: 'Seguridad', definicion: 'Infecciones, volumen y cetoacidosis.' },
+      { icono: 'ShieldCheck', termino: 'Días de enfermedad', definicion: 'Suspender en cirugía o enfermedad aguda.' },
+    ],
+    mapa: {
+      centro: 'Dapagliflozina',
+      ramas: [
+        { titulo: 'Dosis', icono: 'Pill', nodos: ['10 mg', 'Una vez', 'Sin ajuste'] },
+        { titulo: 'Beneficio', icono: 'Activity', nodos: ['Hospitalización', 'Mortalidad', 'Riñón'] },
+        { titulo: 'Seguridad', icono: 'AlertTriangle', nodos: ['Infecciones', 'Volumen', 'Cetoacidosis'] },
+        { titulo: 'Educación', icono: 'Users', nodos: ['Hidratación', 'Higiene', 'Suspensión'] },
+      ],
+    },
+    secciones: [
+      {
+        titulo: 'Dosis',
+        parrafos: [
+          'La dosis es 10 mg una vez al día. Se usa en IC con FEVI reducida, levemente reducida y preservada, y en enfermedad renal. Requiere revisar la TFG y el volumen.',
+          'El beneficio no depende de la diabetes.',
+          'Los ensayos DAPA-HF y DELIVER demostraron menos deterioro, hospitalización y muerte cardiovascular en FEVI reducida y preservada. El inicio no exige una TFG alta: puede comenzar con TFG desde 20-25 mL/min y mantenerse hasta el inicio de diálisis, según ficha técnica. El efecto diurético es leve, pero en pacientes con volumen límite puede requerir ajuste del diurético de asa. No se recomienda combinarla con otro iSGLT2. La evidencia es consistente en diabetes y sin ella, y el beneficio aparece en semanas. El QF revisa hidratación, presión y diuréticos, y refuerza la higiene genital. La suspensión perioperatoria suele indicarse tres a cuatro días antes según protocolo institucional, y se reinicia cuando el paciente tolera la vía oral y está estable.',
+        ],
+      },
+      {
+        titulo: 'Seguridad',
+        parrafos: [
+          'Puede causar infecciones genitales, depleción de volumen y cetoacidosis euglucémica. Se suspende en cirugía, enfermedad aguda o ayuno prolongado. Se revisan diuréticos y presión.',
+          'La higiene y la hidratación reducen complicaciones.',
+        ],
+      },
+      {
+        titulo: 'Educación',
+        parrafos: [
+          'El paciente debe saber que el fármaco protege el corazón y que debe reportar signos de infección o cetoacidosis. La adherencia y el control son parte del plan.',
+          'Se explica al paciente que el fármaco no es solo para la diabetes y que debe continuarlo aunque la glucosa sea normal. Se advierte sobre signos de cetoacidosis: náuseas, dolor abdominal, respiración rápida y malestar general, incluso con glucosa normal. También se enseñan signos de infección genital o urinaria y la importancia de la hidratación. En días de enfermedad con vómito, diarrea o ayuno se suspende temporalmente y se consulta. Estas instrucciones se entregan por escrito y se verifican con teach-back. La adherencia se revisa en cada entrega y se resuelven dudas sobre el uso conjunto con otros pilares.',
+          'La ficha resumen no sustituye la ficha técnica.',
+        ],
+      },
+    ],
+    proceso: {
+      titulo: 'Checklist de dispensación',
+      pasos: [
+        { titulo: 'Indicación', detalle: 'IC o ERC.', icono: 'Target', evidencia: 'Fórmula.' },
+        { titulo: 'Dosis', detalle: '10 mg al día.', icono: 'Pill', evidencia: 'Esquema.' },
+        { titulo: 'Seguridad', detalle: 'Volumen e infecciones.', icono: 'AlertTriangle', evidencia: 'Revisión.' },
+        { titulo: 'Educación', detalle: 'Días de enfermedad.', icono: 'Users', evidencia: 'Consejería.' },
+        { titulo: 'Seguimiento', detalle: 'TFG y síntomas.', icono: 'CalendarClock', evidencia: 'Control.' },
+      ],
+    },
+    caso: {
+      titulo: 'Cirugía programada',
+      contexto: 'Paciente con dapagliflozina y cirugía.',
+      pregunta: '¿Qué hacer?',
+      opciones: [
+        { texto: 'Continuar hasta el día de la cirugía.', correcta: false, retro: 'Se suspende según protocolo.' },
+        { texto: 'Suspender antes y reiniciar cuando esté estable.', correcta: true, retro: 'Evita cetoacidosis.' },
+        { texto: 'Duplicar la dosis.', correcta: false, retro: 'Nunca.' },
+      ],
+    },
+    errores: [
+      { error: 'No revisar TFG.', correccion: 'Ajuste y seguridad.' },
+      { error: 'No educar sobre cetoacidosis.', correccion: 'Rara pero grave.' },
+      { error: 'No revisar volumen.', correccion: 'Hipotensión.' },
+    ],
+    comprueba: [
+      { pregunta: '¿Dosis?', respuesta: '10 mg al día.' },
+      { pregunta: '¿Beneficio?', respuesta: 'Menos hospitalizaciones y muerte cardiovascular.' },
+      { pregunta: '¿Cuándo suspender?', respuesta: 'En cirugía o enfermedad aguda.' },
+    ],
+    resumen: [
+      'Dapagliflozina: 10 mg/día.',
+      'Beneficio cardiorrenal.',
+      'Vigilar volumen e infecciones.',
+      'Reglas de días de enfermedad.',
+    ],
+    referencias: [
+      { cita: 'AEMPS-CIMA. Ficha técnica de Dapagliflozina Aurovitas 10 mg comprimidos recubiertos con película EFG.', url: 'https://cima.aemps.es/cima/dochtml/ft/89963/FT_89963.html' },
+    ],
+    imagenes: [
+      { ubicacion: 'Ficha', descripcion: 'Tarjeta con dosis, beneficio y seguridad.', alt: 'Ficha rápida de dapagliflozina' },
+    ],
+    keywords: ['dapagliflozina ficha', 'dapagliflozina IC', 'dapagliflozina dosis'],
+  },
+  {
+    titulo: 'Ficha: Espironolactona',
+    duracion: 15,
+    gancho: {
+      titulo: 'La ficha de espironolactona',
+      texto: 'Espironolactona es un ARM con beneficio en IC. Esta ficha resume dosis, potasio y educación.',
+    },
+    objetivos: [
+      'Recordar dosis e indicaciones.',
+      'Aplicar control de potasio.',
+      'Reconocer efectos adversos.',
+      'Educar al paciente.',
+    ],
+    conceptos: [
+      { icono: 'Droplets', termino: 'ARM', definicion: 'Antagonista mineralocorticoide.' },
+      { icono: 'Target', termino: 'Dosis', definicion: '25 mg al día, hasta 50 mg.' },
+      { icono: 'AlertTriangle', termino: 'Potasio', definicion: 'Riesgo de hiperpotasemia.' },
+      { icono: 'Users', termino: 'Educación', definicion: 'Control y adherencia.' },
+    ],
+    mapa: {
+      centro: 'Espironolactona',
+      ramas: [
+        { titulo: 'Dosis', icono: 'Pill', nodos: ['25 mg', '50 mg', 'Una vez'] },
+        { titulo: 'Indicación', icono: 'Target', nodos: ['FEVI reducida', 'IC', 'HTA resistente'] },
+        { titulo: 'Seguridad', icono: 'AlertTriangle', nodos: ['Potasio', 'TFG', 'Ginecomastia'] },
+        { titulo: 'Educación', icono: 'Users', nodos: ['No suplementos', 'Control', 'Adherencia'] },
+      ],
+    },
+    secciones: [
+      {
+        titulo: 'Dosis',
+        parrafos: [
+          'Se inicia con 25 mg al día y se puede aumentar a 50 mg si se tolera. Se usa en FEVI reducida y en HTA resistente. Se controlan potasio y creatinina.',
+          'La dosis se ajusta según la función renal y el potasio.',
+          'El estudio RALES demostró menor mortalidad en IC con FEVI reducida; en FEVI preservada el beneficio es incierto y el uso se individualiza. No se inicia con potasio mayor de 5 mEq/L, TFG menor de 30 ni creatinina elevada sin valoración. Se controla potasio y creatinina a la semana, al mes y luego cada tres a seis meses, y después de cualquier cambio de dosis o de la función renal. La dosis puede reducirse a 12,5 mg o interrumpirse si el potasio sube. La eplerenona es una alternativa con menos ginecomastia. Se revisan suplementos de potasio, sales de reemplazo, trimetoprim, AINE y otros fármacos que retienen potasio. La educación incluye reconocer debilidad, palpitaciones o parestesias, y no automedicarse.',
+        ],
+      },
+      {
+        titulo: 'Seguridad',
+        parrafos: [
+          'La hiperpotasemia es el riesgo principal. La ginecomastia y las alteraciones menstruales son frecuentes. Se revisan suplementos y fármacos que retienen potasio.',
+          'No se inicia con potasio alto o TFG muy baja.',
+          'En pacientes con IECA o ARA-II, la combinación es estándar pero exige control cercano. La diarrea, la deshidratación y los cambios de diurético alteran el potasio y obligan a revisar el esquema. La ginecomastia dolorosa afecta la adherencia y justifica cambiar a eplerenona. El QF documenta cada control y coordina con el médico antes de suspender. En la dispensación se verifica que la fórmula no duplique diuréticos ahorradores de potasio y que el paciente entienda la diferencia entre este fármaco y un suplemento. También se revisa el potasio de los alimentos y las sales de reemplazo.',
+        ],
+      },
+      {
+        titulo: 'Educación',
+        parrafos: [
+          'El paciente debe conocer los síntomas de hiperpotasemia y la importancia de los controles. La adherencia es clave.',
+          'La ficha resumen no sustituye la ficha técnica.',
+        ],
+      },
+    ],
+    proceso: {
+      titulo: 'Checklist de dispensación',
+      pasos: [
+        { titulo: 'Indicación', detalle: 'FEVI reducida.', icono: 'Target', evidencia: 'Fórmula.' },
+        { titulo: 'Potasio', detalle: 'Revisar antes.', icono: 'Droplets', evidencia: 'Resultado.' },
+        { titulo: 'Dosis', detalle: '25 mg al día.', icono: 'Pill', evidencia: 'Esquema.' },
+        { titulo: 'Educación', detalle: 'No suplementos.', icono: 'Users', evidencia: 'Consejería.' },
+        { titulo: 'Seguimiento', detalle: 'Potasio y renal.', icono: 'CalendarClock', evidencia: 'Control.' },
+      ],
+    },
+    caso: {
+      titulo: 'Potasio alto',
+      contexto: 'Paciente con espironolactona y potasio 5,6.',
+      pregunta: '¿Qué hacer?',
+      opciones: [
+        { texto: 'Aumentar la dosis.', correcta: false, retro: 'Empeora.' },
+        { texto: 'Reducir o suspender y controlar.', correcta: true, retro: 'Seguridad primero.' },
+        { texto: 'Añadir potasio.', correcta: false, retro: 'Peligroso.' },
+      ],
+    },
+    errores: [
+      { error: 'No controlar potasio.', correccion: 'Riesgo de arritmias.' },
+      { error: 'No revisar ginecomastia.', correccion: 'Afecta la adherencia.' },
+      { error: 'No revisar la TFG.', correccion: 'Riesgo de acumulación.' },
+    ],
+    comprueba: [
+      { pregunta: '¿Dosis inicial?', respuesta: '25 mg al día.' },
+      { pregunta: '¿Riesgo principal?', respuesta: 'Hiperpotasemia.' },
+      { pregunta: '¿Qué se controla?', respuesta: 'Potasio y creatinina.' },
+    ],
+    resumen: [
+      'Espironolactona: ARM.',
+      '25-50 mg al día.',
+      'Controlar potasio.',
+      'Ginecomastia frecuente.',
+    ],
+    referencias: [
+      { cita: 'AEMPS-CIMA. Ficha técnica de Espironolactona Accord 25 mg comprimidos recubiertos con película EFG.', url: 'https://cima.aemps.es/cima/dochtml/ft/81034/FT_81034.html' },
+    ],
+    imagenes: [
+      { ubicacion: 'Ficha', descripcion: 'Tarjeta con dosis, potasio y ginecomastia.', alt: 'Ficha rápida de espironolactona' },
+    ],
+    keywords: ['espironolactona ficha', 'espironolactona IC', 'espironolactona potasio'],
+  },
+  {
+    titulo: 'Ficha: Furosemida',
+    duracion: 15,
+    gancho: {
+      titulo: 'La ficha de furosemida',
+      texto: 'Furosemida es el diurético de asa más usado en IC. Esta ficha resume dosis, ajuste y educación.',
+    },
+    objetivos: [
+      'Recordar dosis y vías.',
+      'Aplicar ajuste según congestión.',
+      'Reconocer efectos adversos.',
+      'Educar al paciente.',
+    ],
+    conceptos: [
+      { icono: 'Droplets', termino: 'Asa', definicion: 'Diurético potente.' },
+      { icono: 'Target', termino: 'Dosis', definicion: 'Individualizada según congestión.' },
+      { icono: 'AlertTriangle', termino: 'Seguridad', definicion: 'Hipopotasemia, volumen y renal.' },
+      { icono: 'Users', termino: 'Educación', definicion: 'Peso y síntomas.' },
+    ],
+    mapa: {
+      centro: 'Furosemida',
+      ramas: [
+        { titulo: 'Dosis', icono: 'Pill', nodos: ['Oral', 'IV', 'Ajuste'] },
+        { titulo: 'Indicación', icono: 'Target', nodos: ['Congestión', 'Edema', 'IC'] },
+        { titulo: 'Seguridad', icono: 'AlertTriangle', nodos: ['Potasio', 'Presión', 'Renal'] },
+        { titulo: 'Educación', icono: 'Users', nodos: ['Peso', 'Alarma', 'Adherencia'] },
+      ],
+    },
+    secciones: [
+      {
+        titulo: 'Dosis',
+        parrafos: [
+          'La dosis es individualizada. La vía oral se usa si hay absorción; la intravenosa en congestión grave o resistencia. Se ajusta según peso, diuresis y síntomas.',
+          'Se controlan potasio, presión y función renal.',
+          'La biodisponibilidad oral es variable, cercana al 50 %, por lo que una dosis intravenosa equivale aproximadamente al doble por vía oral. En la descompensación aguda se prefiere la vía intravenosa y se ajusta según diuresis, peso y síntomas. La resistencia diurética se maneja aumentando la dosis, fraccionando la administración o combinando con una tiazida como la metolazona, siempre con control estrecho. No se usa de rutina si no hay congestión, porque puede causar deshidratación y deterioro renal. Se controlan potasio, magnesio, creatinina y presión, y se revisa la adherencia y la ingesta de sal.',
+        ],
+      },
+      {
+        titulo: 'Seguridad',
+        parrafos: [
+          'Puede causar hipopotasemia, hipotensión, deshidratación y deterioro renal. La ototoxicidad es rara con dosis altas. Se revisan electrolitos.',
+          'La educación sobre peso y síntomas es parte del plan.',
+          'La hipopotasemia favorece arritmias y requiere reposición o ajuste. La deshidratación y la hipotensión son frecuentes en adultos mayores y en combinación con iSGLT2 u otros diuréticos. La ototoxicidad aparece con dosis altas y administración rápida por vía intravenosa, por lo que se infunde lentamente. En la dispensación se verifica la indicación, la dosis acumulada y el control de electrolitos. El paciente debe saber que la furosemida no reemplaza la restricción de sal y que el peso diario guía los ajustes. Se documenta el plan y se coordina con el equipo para evitar duplicidades.',
+        ],
+      },
+      {
+        titulo: 'Educación',
+        parrafos: [
+          'El paciente debe registrar el peso y consultar si aumenta o si aparece disnea. La adherencia y el ajuste acordado son clave.',
+          'Se entrega un esquema por escrito con la dosis, los horarios y qué hacer si sube el peso. Se advierte que la toma nocturna puede fragmentar el sueño y que la pérdida excesiva de orina con mareo requiere consulta. La revisión periódica del botiquín detecta duplicidades y productos con efecto diurético.',
+          'La ficha resumen no sustituye la ficha técnica.',
+        ],
+      },
+    ],
+    proceso: {
+      titulo: 'Checklist de dispensación',
+      pasos: [
+        { titulo: 'Indicación', detalle: 'Congestión.', icono: 'Target', evidencia: 'Fórmula.' },
+        { titulo: 'Dosis', detalle: 'Individualizada.', icono: 'Pill', evidencia: 'Esquema.' },
+        { titulo: 'Seguridad', detalle: 'Potasio y renal.', icono: 'AlertTriangle', evidencia: 'Revisión.' },
+        { titulo: 'Educación', detalle: 'Peso y alarma.', icono: 'Users', evidencia: 'Consejería.' },
+        { titulo: 'Seguimiento', detalle: 'Síntomas y electrolitos.', icono: 'CalendarClock', evidencia: 'Control.' },
+      ],
+    },
+    caso: {
+      titulo: 'Edema persistente',
+      contexto: 'Paciente con furosemida y edema.',
+      pregunta: '¿Qué hacer?',
+      opciones: [
+        { texto: 'Mantener la dosis.', correcta: false, retro: 'La congestión persiste.' },
+        { texto: 'Revisar dosis, adherencia y renal, y ajustar.', correcta: true, retro: 'La respuesta guía.' },
+        { texto: 'Suspender.', correcta: false, retro: 'Empeora.' },
+      ],
+    },
+    errores: [
+      { error: 'No controlar potasio.', correccion: 'Hipopotasemia.' },
+      { error: 'No revisar peso.', correccion: 'Clave para ajuste.' },
+      { error: 'No educar.', correccion: 'Adherencia.' },
+    ],
+    comprueba: [
+      { pregunta: '¿Vías?', respuesta: 'Oral e intravenosa.' },
+      { pregunta: '¿Qué se controla?', respuesta: 'Potasio, presión y renal.' },
+      { pregunta: '¿Qué educar?', respuesta: 'Peso y síntomas.' },
+    ],
+    resumen: [
+      'Furosemida: diurético de asa.',
+      'Dosis individualizada.',
+      'Controlar electrolitos.',
+      'Educar sobre peso.',
+    ],
+    referencias: [
+      { cita: 'AEMPS-CIMA. Ficha técnica de Furosemida Cinfa 40 mg comprimidos EFG.', url: 'https://cima.aemps.es/cima/dochtml/ft/22974/FT_22974.html' },
+    ],
+    imagenes: [
+      { ubicacion: 'Ficha', descripcion: 'Tarjeta con dosis, electrolitos y peso.', alt: 'Ficha rápida de furosemida' },
+    ],
+    keywords: ['furosemida ficha', 'furosemida IC', 'furosemida dosis'],
+  },
+  {
+    titulo: 'Ficha: Carvedilol',
+    duracion: 15,
+    gancho: {
+      titulo: 'La ficha de carvedilol',
+      texto: 'Carvedilol es un betabloqueador con efecto alfa y evidencia en IC. Esta ficha resume dosis, titulación y seguridad.',
+    },
+    objetivos: [
+      'Recordar dosis e indicaciones.',
+      'Aplicar titulación.',
+      'Reconocer efectos adversos.',
+      'Educar al paciente.',
+    ],
+    conceptos: [
+      { icono: 'Activity', termino: 'Betabloqueador', definicion: 'Bloquea beta y alfa.' },
+      { icono: 'Target', termino: 'Dosis', definicion: '3,125 mg cada 12 horas, titulación.' },
+      { icono: 'AlertTriangle', termino: 'Seguridad', definicion: 'Bradicardia, hipotensión y fatiga.' },
+      { icono: 'Users', termino: 'Educación', definicion: 'No suspender bruscamente.' },
+    ],
+    mapa: {
+      centro: 'Carvedilol',
+      ramas: [
+        { titulo: 'Dosis', icono: 'Pill', nodos: ['3,125 mg', 'Cada 12 h', 'Titular'] },
+        { titulo: 'Indicación', icono: 'Target', nodos: ['FEVI reducida', 'IC', 'Postinfarto'] },
+        { titulo: 'Seguridad', icono: 'AlertTriangle', nodos: ['Bradicardia', 'Hipotensión', 'Fatiga'] },
+        { titulo: 'Educación', icono: 'Users', nodos: ['No suspender', 'Adherencia', 'Control'] },
+      ],
+    },
+    secciones: [
+      {
+        titulo: 'Dosis',
+        parrafos: [
+          'Se inicia con 3,125 mg cada 12 horas y se titula cada dos semanas hasta la dosis tolerada. Se usa en FEVI reducida y postinfarto. Se controlan frecuencia y presión.',
+          'La titulación es gradual.',
+          'Los ensayos COPERNICUS y US Carvedilol demostraron menor mortalidad en IC con FEVI reducida. No se inicia durante la descompensación con congestión o inestabilidad; se espera a que el paciente esté estable y sin necesidad de diurético intravenoso. La dosis objetivo es 25 mg cada 12 horas, o 50 mg cada 12 horas si pesa más de 85 kg. La titulación se hace cada dos semanas si no hay bradicardia, hipotensión sintomática ni empeoramiento de la IC. Se administra con alimentos para reducir la hipotensión ortostática. La suspensión brusca puede precipitar angina o arritmias, por lo que se retira de forma gradual.',
+        ],
+      },
+      {
+        titulo: 'Seguridad',
+        parrafos: [
+          'Puede causar bradicardia, hipotensión, fatiga y broncoespasmo. Se usa con precaución en asma. No se suspende bruscamente.',
+          'La educación es parte del plan.',
+          'Se usa con precaución en asma y EPOC por riesgo de broncoespasmo, y se evita combinar con verapamilo o diltiazem por bradicardia e hipotensión. En diabetes puede enmascarar los síntomas de hipoglucemia, por lo que se educa al paciente. Se revisan frecuencia, presión y síntomas en cada ajuste. La fatiga transitoria no siempre obliga a suspender; se distingue del empeoramiento de la IC. En la dispensación se verifica que no haya otro betabloqueador duplicado y que el paciente sepa que no debe suspenderlo sin indicación médica.',
+        ],
+      },
+      {
+        titulo: 'Educación',
+        parrafos: [
+          'El paciente debe reportar mareo, fatiga o falta de aire. La adherencia y el control son clave.',
+          'Se explica que el beneficio aparece con el tiempo y que la sensación de cansancio inicial suele mejorar. Se recomienda levantarse despacio para evitar mareo y reportar pulso lento, falta de aire o aumento de peso.',
+          'La ficha resumen no sustituye la ficha técnica.',
+        ],
+      },
+    ],
+    proceso: {
+      titulo: 'Checklist de dispensación',
+      pasos: [
+        { titulo: 'Indicación', detalle: 'FEVI reducida.', icono: 'Target', evidencia: 'Fórmula.' },
+        { titulo: 'Dosis', detalle: '3,125 mg cada 12 h.', icono: 'Pill', evidencia: 'Esquema.' },
+        { titulo: 'Seguridad', detalle: 'Frecuencia y presión.', icono: 'AlertTriangle', evidencia: 'Revisión.' },
+        { titulo: 'Educación', detalle: 'No suspender.', icono: 'Users', evidencia: 'Consejería.' },
+        { titulo: 'Seguimiento', detalle: 'Síntomas y tolerancia.', icono: 'CalendarClock', evidencia: 'Control.' },
+      ],
+    },
+    caso: {
+      titulo: 'Bradicardia',
+      contexto: 'Paciente con carvedilol y frecuencia 50.',
+      pregunta: '¿Qué hacer?',
+      opciones: [
+        { texto: 'Aumentar la dosis.', correcta: false, retro: 'Empeora.' },
+        { texto: 'Revisar síntomas y ajustar la dosis.', correcta: true, retro: 'Seguridad primero.' },
+        { texto: 'Suspender bruscamente.', correcta: false, retro: 'Riesgo de rebote.' },
+      ],
+    },
+    errores: [
+      { error: 'Suspender bruscamente.', correccion: 'Riesgo de rebote.' },
+      { error: 'No controlar frecuencia.', correccion: 'Bradicardia.' },
+      { error: 'No revisar asma.', correccion: 'Broncoespasmo.' },
+    ],
+    comprueba: [
+      { pregunta: '¿Dosis inicial?', respuesta: '3,125 mg cada 12 horas.' },
+      { pregunta: '¿Qué se controla?', respuesta: 'Frecuencia y presión.' },
+      { pregunta: '¿Se suspende bruscamente?', respuesta: 'No.' },
+    ],
+    resumen: [
+      'Carvedilol: beta y alfa.',
+      'Inicio 3,125 mg cada 12 h.',
+      'Titulación gradual.',
+      'No suspender bruscamente.',
+    ],
+    referencias: [
+      { cita: 'AEMPS-CIMA. Ficha técnica de Carvedilol Cinfa 25 mg comprimidos EFG.', url: 'https://cima.aemps.es/cima/dochtml/ft/68328/FT_68328.html' },
+    ],
+    imagenes: [
+      { ubicacion: 'Ficha', descripcion: 'Tarjeta con dosis, frecuencia y educación.', alt: 'Ficha rápida de carvedilol' },
+    ],
+    keywords: ['carvedilol ficha', 'carvedilol IC', 'carvedilol dosis'],
+  },
+];
