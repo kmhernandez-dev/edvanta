@@ -27,6 +27,7 @@ describe('vademécum', () => {
         'medicamentos-para-el-dolor-y-la-inflamacion',
         'medicamentos-para-el-aparato-digestivo',
         'corticoides-sistemicos',
+        'alergia-y-vias-respiratorias',
       ].sort(),
     );
     expect(MONOGRAFIAS.map((m) => m.slug).sort()).toEqual(
@@ -43,6 +44,7 @@ describe('vademécum', () => {
         'diclofenaco', 'ibuprofeno', 'naproxeno', 'acetaminofen',
         'omeprazol', 'esomeprazol', 'lansoprazol', 'metoclopramida', 'domperidona', 'ondansetron', 'dimenhidrinato', 'butilescopolamina', 'simeticona', 'loperamida', 'bisacodilo', 'lactulosa',
         'prednisona', 'prednisolona', 'dexametasona', 'betametasona', 'hidrocortisona',
+        'loratadina', 'cetirizina', 'desloratadina', 'clorfeniramina', 'hidroxizina', 'montelukast', 'salbutamol', 'acetilcisteina',
       ].sort(),
     );
     const slugs = PAGINAS_VADEMECUM.map((p) => p.slug);

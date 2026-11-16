@@ -94,10 +94,19 @@ import prednisolona from './monografias/prednisolona.js';
 import dexametasona from './monografias/dexametasona.js';
 import betametasona from './monografias/betametasona.js';
 import hidrocortisona from './monografias/hidrocortisona.js';
+import alergiaYViasRespiratorias from './grupos/alergia-y-vias-respiratorias.js';
+import loratadina from './monografias/loratadina.js';
+import cetirizina from './monografias/cetirizina.js';
+import desloratadina from './monografias/desloratadina.js';
+import clorfeniramina from './monografias/clorfeniramina.js';
+import hidroxizina from './monografias/hidroxizina.js';
+import montelukast from './monografias/montelukast.js';
+import salbutamol from './monografias/salbutamol.js';
+import acetilcisteina from './monografias/acetilcisteina.js';
 
 const conRevision = (p) => ({ ...p, ...(REVISION_VADEMECUM[p.slug] || {}) });
 
-export const GRUPOS_VADEMECUM = [obesidad, hipertension, diabetes, oncologiaAltoCosto, dislipidemia, anticoagulacion, antibioticos, dolorEInflamacion, aparatoDigestivo, corticoidesSistemicos].map(conRevision);
+export const GRUPOS_VADEMECUM = [obesidad, hipertension, diabetes, oncologiaAltoCosto, dislipidemia, anticoagulacion, antibioticos, dolorEInflamacion, aparatoDigestivo, corticoidesSistemicos, alergiaYViasRespiratorias].map(conRevision);
 
 export const MONOGRAFIAS = [
   semaglutida, tirzepatida, liraglutida, orlistat, naltrexonaBupropion, setmelanotida,
@@ -112,6 +121,7 @@ export const MONOGRAFIAS = [
   diclofenaco, ibuprofeno, naproxeno, acetaminofen,
   omeprazol, esomeprazol, lansoprazol, metoclopramida, domperidona, ondansetron, dimenhidrinato, butilescopolamina, simeticona, loperamida, bisacodilo, lactulosa,
   prednisona, prednisolona, dexametasona, betametasona, hidrocortisona,
+  loratadina, cetirizina, desloratadina, clorfeniramina, hidroxizina, montelukast, salbutamol, acetilcisteina,
 ].map(conRevision);
 
 export const PAGINAS_VADEMECUM = [...GRUPOS_VADEMECUM, ...MONOGRAFIAS];
