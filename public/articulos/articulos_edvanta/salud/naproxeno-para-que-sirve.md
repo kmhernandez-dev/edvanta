@@ -50,6 +50,10 @@ Anticoagulantes y antiagregantes, otros AINE, corticoides, antidepresivos ISRS (
 
 Ardor, dolor de estómago, náuseas, mareo, somnolencia y retención de líquidos. Suspende y consulta si aparecen heces negras, vómito con sangre, dolor en el pecho, falta de aire, hinchazón de piernas o reacciones en la piel.
 
+## Para profesionales
+
+Si eres profesional de la salud, consulta la [monografía de naproxeno](/vademecum/naproxeno) del vademécum de Edvanta, con farmacocinética, interacciones, evidencia y atención farmacéutica, y el grupo de [medicamentos para el dolor y la inflamación](/vademecum/medicamentos-para-el-dolor-y-la-inflamacion). El [curso gratis de Farmacología del Sistema Nervioso Central](/curso-de-farmacologia-del-sistema-nervioso-central) incluye la clase «AINE y paracetamol en el manejo del dolor: visión desde el SNC».
+
 ## Preguntas frecuentes
 
 ### ¿El naproxeno sirve para el dolor de muela?

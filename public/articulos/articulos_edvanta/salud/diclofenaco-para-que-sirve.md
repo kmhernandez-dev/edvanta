@@ -47,6 +47,10 @@ Son frecuentes en algunas droguerías, pero tienen los mismos riesgos de las tab
 
 Ardor, dolor de estómago, náuseas, diarrea, mareo y dolor de cabeza. Suspende y consulta si tienes heces negras, vómito con sangre, hinchazón, dolor en el pecho, falta de aire o ronchas.
 
+## Para profesionales
+
+Si eres profesional de la salud, consulta la [monografía de diclofenaco](/vademecum/diclofenaco) del vademécum de Edvanta, con farmacocinética, interacciones, evidencia y atención farmacéutica, y el grupo de [medicamentos para el dolor y la inflamación](/vademecum/medicamentos-para-el-dolor-y-la-inflamacion). El [curso gratis de Farmacología del Sistema Nervioso Central](/curso-de-farmacologia-del-sistema-nervioso-central) incluye la clase «AINE y paracetamol en el manejo del dolor: visión desde el SNC».
+
 ## Preguntas frecuentes
 
 ### ¿Diclofenaco o ibuprofeno?

@@ -1,9 +1,10 @@
 # Vademécum Edvanta: dolor e inflamación (1.000 keywords)
 
-**Estado 16-nov-2026:** lote 1 escrito.
-- 1 página de grupo, 7 monografías y 7 fichas para pacientes.
-- Todo está en `noindex` hasta la revisión clínica de Karla.
-- Las 7 fichas ya están en la cola `seo/revision-clinica/pre-revision.md`.
+**Estado 16-nov-2026:**
+- **Lote 1, desplegado:** 1 página de grupo, 7 monografías y 7 fichas para pacientes.
+- **Lote 2:** monografías de diclofenaco, ibuprofeno, naproxeno y acetaminofén, y la página del grupo ampliada a 11 fármacos.
+- Todo lo nuevo está en `noindex` hasta la revisión clínica de Karla. Las 7 fichas del lote 1 ya están en la cola `seo/revision-clinica/pre-revision.md`.
+- Las fichas de diclofenaco, ibuprofeno, naproxeno y acetaminofén, que ya están aprobadas e indexadas, ganaron una sección «Para profesionales». Solo tiene enlaces a su monografía, al grupo y al curso; el texto clínico no cambió.
 
 ## Por qué este grupo
 
@@ -115,7 +116,8 @@
 ## Siguiente paso
 
 1. **Karla:** revisar las 7 fichas (cola en `seo/revision-clinica/pre-revision.md`), las 7 monografías y la página del grupo. Anotar la revisión en `src/data/revisionClinica.js` y en `REVISION_VADEMECUM`.
-2. **Claude Code:**
-   - lote 2: monografías de diclofenaco, ibuprofeno, naproxeno y acetaminofén, que ya tienen ficha para pacientes que posiciona;
-   - verificar las 12 búsquedas pendientes.
-3. **Despliegue:** al aprobarse, enviar IndexNow y pedir la indexación en Search Console.
+2. **Karla:** revisar también las 4 monografías del lote 2: diclofenaco, ibuprofeno, naproxeno y acetaminofén.
+3. **Claude Code:**
+   - verificar las 12 búsquedas pendientes;
+   - proponer el siguiente grupo: corticoides, con prednisona y prednisolona.
+4. **Indexación:** al aprobarse, enviar IndexNow y pedir la indexación en Search Console.

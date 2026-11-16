@@ -247,6 +247,10 @@ export const F = {
   ftTramadol: ft16('Tramadol Normon 50 mg cápsulas duras EFG', '63910'),
   ftKetorolaco: ft16('Ketorolaco trometamol Qualigen 10 mg comprimidos recubiertos con película EFG', '70105'),
   ftRobaxin: ft16('Robaxin 500 mg comprimidos', '32899'),
+  ftDiclofenaco: ft16('Diclofenaco Normon 50 mg comprimidos gastrorresistentes EFG', '62439'),
+  ftIbuprofeno: ft16('Ibuprofeno Cinfamed 400 mg comprimidos recubiertos con película EFG', '67278'),
+  ftNaproxeno: ft16('Naproxeno Normon 500 mg comprimidos EFG', '68435'),
+  ftParacetamol: ft16('Paracetamol Normon 500 mg comprimidos EFG', '68330'),
   invimaCum16: {
     texto: `Instituto Nacional de Vigilancia de Medicamentos y Alimentos (INVIMA). Código Único de Medicamentos vigentes [conjunto de datos en Internet]. Bogotá: Datos Abiertos Colombia; [${CITADO_16}]. Disponible en: https://www.datos.gov.co/d/i7cb-raxc`,
     url: 'https://www.datos.gov.co/d/i7cb-raxc',

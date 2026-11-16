@@ -71,6 +71,10 @@ import ketorolaco from './monografias/ketorolaco.js';
 import dipirona from './monografias/dipirona.js';
 import tramadol from './monografias/tramadol.js';
 import metocarbamol from './monografias/metocarbamol.js';
+import diclofenaco from './monografias/diclofenaco.js';
+import ibuprofeno from './monografias/ibuprofeno.js';
+import naproxeno from './monografias/naproxeno.js';
+import acetaminofen from './monografias/acetaminofen.js';
 
 const conRevision = (p) => ({ ...p, ...(REVISION_VADEMECUM[p.slug] || {}) });
 
@@ -86,6 +90,7 @@ export const MONOGRAFIAS = [
   amoxicilinaAcidoClavulanico, cefalexina, clindamicina, ciprofloxacino, metronidazol, trimetoprimSulfametoxazol, nitrofurantoina,
   secnidazol, dicloxacilina, claritromicina, ceftriaxona, penicilinaBenzatinica, levofloxacino, doxiciclina, fosfomicina,
   meloxicam, etoricoxib, celecoxib, ketorolaco, dipirona, tramadol, metocarbamol,
+  diclofenaco, ibuprofeno, naproxeno, acetaminofen,
 ].map(conRevision);
 
 export const PAGINAS_VADEMECUM = [...GRUPOS_VADEMECUM, ...MONOGRAFIAS];

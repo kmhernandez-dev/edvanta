@@ -52,6 +52,10 @@ En dosis correctas es bien tolerado. Rara vez produce reacciones alérgicas o re
 
 El [ibuprofeno](/articulos/ibuprofeno-para-que-sirve) desinflama y suele ser mejor para el dolor menstrual o por golpes, pero irrita el estómago y no se usa en el dengue. El acetaminofén es más suave con el estómago y el riñón.
 
+## Para profesionales
+
+Si eres profesional de la salud, consulta la [monografía de acetaminofén](/vademecum/acetaminofen) del vademécum de Edvanta, con farmacocinética, interacciones, evidencia y atención farmacéutica, y el grupo de [medicamentos para el dolor y la inflamación](/vademecum/medicamentos-para-el-dolor-y-la-inflamacion). El [curso gratis de Farmacología del Sistema Nervioso Central](/curso-de-farmacologia-del-sistema-nervioso-central) incluye la clase «AINE y paracetamol en el manejo del dolor: visión desde el SNC».
+
 ## Preguntas frecuentes
 
 ### ¿Cuántas pastillas de acetaminofén puedo tomar al día?

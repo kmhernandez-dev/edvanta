@@ -158,3 +158,7 @@ Se anota una fila nueva en las tablas de arriba. El indicador principal es **pá
 - **Pendiente para indexar:**
   - Revisión de Karla de estas 15 páginas y de las 15 de antimicrobianos que siguen en `noindex`.
   - Después, IndexNow y solicitudes en Search Console.
+- **Dolor e inflamación, lote 2 (16-nov):**
+  - Monografías de diclofenaco, ibuprofeno, naproxeno y acetaminofén, en `noindex` hasta la revisión.
+  - La página del grupo pasa a 11 fármacos.
+  - Las 4 fichas aprobadas de esos medicamentos ahora enlazan a su monografía, al grupo y al curso gratis de Farmacología del SNC; es el camino de rastreo desde la ficha de diclofenaco, la que más tráfico trae.

@@ -51,6 +51,10 @@ El ibuprofeno es un antiinflamatorio no esteroideo (AINE) que sirve para aliviar
 
 El ibuprofeno tiene efecto antiinflamatorio; el [acetaminofén](/articulos/acetaminofen-para-que-sirve) no, pero es más suave con el estómago y es el indicado en el dengue. Para dolor con inflamación (golpe, dolor menstrual) el ibuprofeno suele ser más útil.
 
+## Para profesionales
+
+Si eres profesional de la salud, consulta la [monografía de ibuprofeno](/vademecum/ibuprofeno) del vademécum de Edvanta, con farmacocinética, interacciones, evidencia y atención farmacéutica, y el grupo de [medicamentos para el dolor y la inflamación](/vademecum/medicamentos-para-el-dolor-y-la-inflamacion). El [curso gratis de Farmacología del Sistema Nervioso Central](/curso-de-farmacologia-del-sistema-nervioso-central) incluye la clase «AINE y paracetamol en el manejo del dolor: visión desde el SNC».
+
 ## Preguntas frecuentes
 
 ### ¿Cada cuánto se puede tomar ibuprofeno?

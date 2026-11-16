@@ -38,6 +38,7 @@ describe('vademécum', () => {
         'secnidazol', 'dicloxacilina', 'claritromicina', 'ceftriaxona', 'penicilina-benzatinica',
         'levofloxacino', 'doxiciclina', 'fosfomicina',
         'meloxicam', 'etoricoxib', 'celecoxib', 'ketorolaco', 'dipirona', 'tramadol', 'metocarbamol',
+        'diclofenaco', 'ibuprofeno', 'naproxeno', 'acetaminofen',
       ].sort(),
     );
     const slugs = PAGINAS_VADEMECUM.map((p) => p.slug);
