@@ -25,6 +25,8 @@ describe('vademécum', () => {
         'medicamentos-para-la-obesidad',
         'antibioticos-de-uso-ambulatorio',
         'medicamentos-para-el-dolor-y-la-inflamacion',
+        'medicamentos-para-el-aparato-digestivo',
+        'corticoides-sistemicos',
       ].sort(),
     );
     expect(MONOGRAFIAS.map((m) => m.slug).sort()).toEqual(
@@ -39,6 +41,8 @@ describe('vademécum', () => {
         'levofloxacino', 'doxiciclina', 'fosfomicina',
         'meloxicam', 'etoricoxib', 'celecoxib', 'ketorolaco', 'dipirona', 'tramadol', 'metocarbamol',
         'diclofenaco', 'ibuprofeno', 'naproxeno', 'acetaminofen',
+        'omeprazol', 'esomeprazol', 'lansoprazol', 'metoclopramida', 'domperidona', 'ondansetron', 'dimenhidrinato', 'butilescopolamina', 'simeticona', 'loperamida', 'bisacodilo', 'lactulosa',
+        'prednisona', 'prednisolona', 'dexametasona', 'betametasona', 'hidrocortisona',
       ].sort(),
     );
     const slugs = PAGINAS_VADEMECUM.map((p) => p.slug);

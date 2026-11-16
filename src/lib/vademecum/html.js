@@ -10,6 +10,10 @@
  *    secciones: [{ id, titulo, destacado?, bloques }]
  *    bloques:   'párrafo' | { subtitulo } | { lista } | { pasos }
  *               | { tabla: { columnas, filas } } | { nota }
+ *               Visuales (src/components/vademecum/Visuales.jsx), que aquí
+ *               se escriben como texto equivalente para los buscadores:
+ *               { mapa } | { triangulo } | { ciclo } | { barras } | { claves }
+ *               | { alerta } | { quiz } | { cta }
  *  Las citas van en el texto como [1], [2,3] o [1-3] y apuntan a la
  *  lista de referencias de la página (formato Vancouver).
  * ============================================================
@@ -31,6 +35,12 @@ const esc = (t) => String(t ?? '')
   .replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;');
 
 /** Los números que cita un texto: «[2,4-6]» → [2, 4, 5, 6]. */
+/** Unidad de una barra: acepta 'mg' o ['semana', 'semanas']. */
+function unidadBarra(unidad, valor) {
+  if (!unidad) return '';
+  return ` ${Array.isArray(unidad) ? (valor === 1 ? unidad[0] : unidad[1]) : unidad}`;
+}
+
 export function numerosDeCita(grupo) {
   return grupo.split(',').flatMap((parte) => {
     const [a, b] = parte.split(/[–-]/).map((n) => Number(n.trim()));
@@ -49,9 +59,23 @@ export function textosDe(pagina) {
       else if (b.nota) textos.push(b.nota);
       else if (b.lista || b.pasos) textos.push(...(b.lista || b.pasos));
       else if (b.tabla) textos.push(...b.tabla.columnas, ...b.tabla.filas.flat());
+      else textos.push(...textosDeVisual(b));
     }
   }
   return textos.filter(Boolean).map(String);
+}
+
+/** Los textos de un bloque visual (mapa, triángulo, ciclo, barras, claves, alerta, quiz o cta). */
+export function textosDeVisual(b) {
+  if (b.mapa) return [b.mapa.centro, ...b.mapa.ramas.flatMap((r) => [r.titulo, ...r.nodos])];
+  if (b.triangulo) return [b.triangulo.titulo, b.triangulo.centro, ...b.triangulo.vertices.flatMap((v) => [v.titulo, v.texto])];
+  if (b.ciclo) return [b.ciclo.titulo, b.ciclo.centro, ...b.ciclo.pasos.flatMap((x) => [x.titulo, x.texto])];
+  if (b.barras) return [b.barras.titulo, b.barras.nota, ...b.barras.datos.flatMap((d) => [d.etiqueta, d.texto])];
+  if (b.claves) return b.claves.flatMap((c) => [c.titulo, c.texto]);
+  if (b.alerta) return [b.alerta.titulo, b.alerta.texto];
+  if (b.quiz) return [b.quiz.pregunta, ...b.quiz.opciones.flatMap((o) => [o.texto, o.retro])];
+  if (b.cta) return [b.cta.titulo, b.cta.texto];
+  return [];
 }
 
 /** Los números de referencia citados en la página, sin repetir. */
@@ -72,6 +96,29 @@ function htmlDeBloque(b) {
   if (b.nota) return `<p><strong>${conCitas(b.nota)}</strong></p>`;
   if (b.lista) return `<ul>${b.lista.map((t) => `<li>${conCitas(t)}</li>`).join('')}</ul>`;
   if (b.pasos) return `<ol>${b.pasos.map((t) => `<li>${conCitas(t)}</li>`).join('')}</ol>`;
+  if (b.mapa) {
+    const ramas = b.mapa.ramas.map((r) => `<li><strong>${conCitas(r.titulo)}</strong><ul>${r.nodos.map((x) => `<li>${conCitas(x)}</li>`).join('')}</ul></li>`).join('');
+    return `<figure><figcaption>Mapa conceptual: ${conCitas(b.mapa.centro)}</figcaption><ul>${ramas}</ul></figure>`;
+  }
+  if (b.triangulo) {
+    const v = b.triangulo.vertices.map((x) => `<li><strong>${conCitas(x.titulo)}:</strong> ${conCitas(x.texto)}</li>`).join('');
+    return `<figure><figcaption>${conCitas(b.triangulo.titulo || b.triangulo.centro)}</figcaption><p>${conCitas(b.triangulo.centro)}</p><ul>${v}</ul></figure>`;
+  }
+  if (b.ciclo) {
+    const pasos = b.ciclo.pasos.map((x) => `<li><strong>${conCitas(x.titulo)}:</strong> ${conCitas(x.texto)}</li>`).join('');
+    return `<figure><figcaption>${conCitas(b.ciclo.titulo || b.ciclo.centro)}</figcaption><ol>${pasos}</ol></figure>`;
+  }
+  if (b.barras) {
+    const filas = b.barras.datos.map((d) => `<tr><td>${conCitas(d.etiqueta)}</td><td>${esc(d.valor)}${esc(unidadBarra(b.barras.unidad, d.valor))}</td><td>${conCitas(d.texto || '')}</td></tr>`).join('');
+    return `<figure><figcaption>${conCitas(b.barras.titulo)}</figcaption><table><tbody>${filas}</tbody></table>${b.barras.nota ? `<p>${conCitas(b.barras.nota)}</p>` : ''}</figure>`;
+  }
+  if (b.claves) return `<ul>${b.claves.map((c) => `<li><strong>${conCitas(c.titulo)}:</strong> ${conCitas(c.texto)}</li>`).join('')}</ul>`;
+  if (b.alerta) return `<aside><p><strong>${conCitas(b.alerta.titulo)}</strong></p><p>${conCitas(b.alerta.texto)}</p></aside>`;
+  if (b.quiz) {
+    const correcta = b.quiz.opciones.find((o) => o.correcta);
+    return `<section><h3>Ponte a prueba</h3><p>${conCitas(b.quiz.pregunta)}</p><ol>${b.quiz.opciones.map((o) => `<li>${conCitas(o.texto)}</li>`).join('')}</ol>${correcta ? `<p>Respuesta: ${conCitas(correcta.texto)}. ${conCitas(correcta.retro)}</p>` : ''}</section>`;
+  }
+  if (b.cta) return `<p><a href="${esc(b.cta.url)}">${esc(b.cta.titulo)}</a>: ${esc(b.cta.texto)}</p>`;
   if (b.tabla) {
     const cab = b.tabla.columnas.map((c) => `<th>${conCitas(c)}</th>`).join('');
     const filas = b.tabla.filas.map((f) => `<tr>${f.map((c) => `<td>${conCitas(c)}</td>`).join('')}</tr>`).join('');

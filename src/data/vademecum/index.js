@@ -75,10 +75,29 @@ import diclofenaco from './monografias/diclofenaco.js';
 import ibuprofeno from './monografias/ibuprofeno.js';
 import naproxeno from './monografias/naproxeno.js';
 import acetaminofen from './monografias/acetaminofen.js';
+import aparatoDigestivo from './grupos/aparato-digestivo.js';
+import omeprazol from './monografias/omeprazol.js';
+import esomeprazol from './monografias/esomeprazol.js';
+import lansoprazol from './monografias/lansoprazol.js';
+import metoclopramida from './monografias/metoclopramida.js';
+import domperidona from './monografias/domperidona.js';
+import ondansetron from './monografias/ondansetron.js';
+import dimenhidrinato from './monografias/dimenhidrinato.js';
+import butilescopolamina from './monografias/butilescopolamina.js';
+import simeticona from './monografias/simeticona.js';
+import loperamida from './monografias/loperamida.js';
+import bisacodilo from './monografias/bisacodilo.js';
+import lactulosa from './monografias/lactulosa.js';
+import corticoidesSistemicos from './grupos/corticoides-sistemicos.js';
+import prednisona from './monografias/prednisona.js';
+import prednisolona from './monografias/prednisolona.js';
+import dexametasona from './monografias/dexametasona.js';
+import betametasona from './monografias/betametasona.js';
+import hidrocortisona from './monografias/hidrocortisona.js';
 
 const conRevision = (p) => ({ ...p, ...(REVISION_VADEMECUM[p.slug] || {}) });
 
-export const GRUPOS_VADEMECUM = [obesidad, hipertension, diabetes, oncologiaAltoCosto, dislipidemia, anticoagulacion, antibioticos, dolorEInflamacion].map(conRevision);
+export const GRUPOS_VADEMECUM = [obesidad, hipertension, diabetes, oncologiaAltoCosto, dislipidemia, anticoagulacion, antibioticos, dolorEInflamacion, aparatoDigestivo, corticoidesSistemicos].map(conRevision);
 
 export const MONOGRAFIAS = [
   semaglutida, tirzepatida, liraglutida, orlistat, naltrexonaBupropion, setmelanotida,
@@ -91,6 +110,8 @@ export const MONOGRAFIAS = [
   secnidazol, dicloxacilina, claritromicina, ceftriaxona, penicilinaBenzatinica, levofloxacino, doxiciclina, fosfomicina,
   meloxicam, etoricoxib, celecoxib, ketorolaco, dipirona, tramadol, metocarbamol,
   diclofenaco, ibuprofeno, naproxeno, acetaminofen,
+  omeprazol, esomeprazol, lansoprazol, metoclopramida, domperidona, ondansetron, dimenhidrinato, butilescopolamina, simeticona, loperamida, bisacodilo, lactulosa,
+  prednisona, prednisolona, dexametasona, betametasona, hidrocortisona,
 ].map(conRevision);
 
 export const PAGINAS_VADEMECUM = [...GRUPOS_VADEMECUM, ...MONOGRAFIAS];

@@ -1,13 +1,39 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, Navigate, useParams } from 'react-router-dom';
 import SiteHeader from '../components/edvanta/SiteHeader';
 import SiteFooter from '../components/edvanta/SiteFooter';
 import Bloques, { ConCitas } from '../components/vademecum/Bloques';
+import { Icono, iconoDeDato } from '../components/vademecum/Visuales';
+import '../styles/vademecum-visual.css';
 import { grupoDe, monografiasDelGrupo, paginaDelVademecum } from '../data/vademecum';
 import { jsonLdDePagina, SITIO } from '../lib/vademecum/html.js';
 import { tieneRevisionClinica } from '../lib/seo/indexabilidad';
 import { tituloDeVademecum } from '../lib/vademecum/indexable.js';
 import { updatePageSeo } from '../utils/seo';
+
+/** Ícono de cada sección de la monografía. */
+const ICONO_SECCION = {
+  farmacoquimica: 'Atom', farmacodinamia: 'Target', farmacocinetica: 'Activity', indicaciones: 'Stethoscope',
+  posologia: 'Pill', 'contraindicaciones-y-advertencias': 'ShieldAlert', interacciones: 'Network',
+  'reacciones-adversas': 'AlertTriangle', 'embarazo-y-lactancia': 'Baby', evidencia: 'BarChart3',
+  regulacion: 'Landmark', 'atencion-farmaceutica': 'HeartPulse', 'experiencia-farmacoterapeutica': 'Users',
+};
+
+/** Barra fina que muestra cuánto se ha leído de la página. */
+function ProgresoDeLectura() {
+  const [p, setP] = useState(0);
+  useEffect(() => {
+    const alMover = () => {
+      const h = document.documentElement;
+      const max = h.scrollHeight - h.clientHeight;
+      setP(max > 0 ? Math.min(1, h.scrollTop / max) : 0);
+    };
+    alMover();
+    window.addEventListener('scroll', alMover, { passive: true });
+    return () => window.removeEventListener('scroll', alMover);
+  }, []);
+  return <div className="vd-progreso" style={{ width: '100%', transform: `scaleX(${p})` }} aria-hidden="true" />;
+}
 
 const fecha = (iso) => new Date(`${iso}T12:00:00`).toLocaleDateString('es-CO', { day: 'numeric', month: 'long', year: 'numeric' });
 
@@ -58,6 +84,7 @@ export default function VademecumPagina() {
 
   return (
     <div className="min-h-screen bg-white">
+      <ProgresoDeLectura />
       <SiteHeader />
       <main>
         <section className="border-b border-edvanta-border bg-edvanta-mint/40">
@@ -94,11 +121,14 @@ export default function VademecumPagina() {
 
           <div className="min-w-0 space-y-12">
             {p.datosClave?.length > 0 && (
-              <dl className="grid gap-px overflow-hidden rounded-2xl border border-edvanta-border bg-edvanta-border sm:grid-cols-2">
+              <dl className="vd-datos">
                 {p.datosClave.map(([k, v]) => (
-                  <div key={k} className="bg-white px-4 py-3">
-                    <dt className="text-xs font-semibold uppercase tracking-wide text-edvanta-tealdark">{k}</dt>
-                    <dd className="mt-1 text-[15px] leading-6 text-edvanta-ink"><ConCitas texto={v} /></dd>
+                  <div key={k}>
+                    <span className="vd-datos__icono"><Icono nombre={iconoDeDato(k)} /></span>
+                    <span className="min-w-0">
+                      <dt className="text-xs font-semibold uppercase tracking-wide text-edvanta-tealdark">{k}</dt>
+                      <dd className="mt-1 text-[15px] leading-6 text-edvanta-ink"><ConCitas texto={v} /></dd>
+                    </span>
                   </div>
                 ))}
               </dl>
@@ -107,7 +137,10 @@ export default function VademecumPagina() {
             {p.secciones.map((s) => (
               <section key={s.id} id={s.id} className={s.destacado ? 'scroll-mt-24 rounded-2xl border-2 border-edvanta-tealdark/30 bg-edvanta-mint/30 p-6' : 'scroll-mt-24'}>
                 {s.destacado && <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-edvanta-tealdark">Aporte de Edvanta · Modelo de Minnesota</p>}
-                <h2 className="mb-4 text-2xl font-semibold tracking-tight text-edvanta-deep">{s.titulo}</h2>
+                <h2 className="mb-4 flex items-center text-2xl font-semibold tracking-tight text-edvanta-deep">
+                  <span className="vd-seccion-icono"><Icono nombre={ICONO_SECCION[s.id] || 'Sparkles'} className="h-5 w-5" /></span>
+                  {s.titulo}
+                </h2>
                 <Bloques bloques={s.bloques} />
               </section>
             ))}
