@@ -125,10 +125,16 @@ import carvedilol from './monografias/carvedilol.js';
 import metoprolol from './monografias/metoprolol.js';
 import espironolactona from './monografias/espironolactona.js';
 import furosemida from './monografias/furosemida.js';
+import tiroides from './grupos/tiroides.js';
+import amoxicilina from './monografias/amoxicilina.js';
+import azitromicina from './monografias/azitromicina.js';
+import alopurinol from './monografias/alopurinol.js';
+import colchicina from './monografias/colchicina.js';
+import levotiroxina from './monografias/levotiroxina.js';
 
 const conRevision = (p) => ({ ...p, ...(REVISION_VADEMECUM[p.slug] || {}) });
 
-export const GRUPOS_VADEMECUM = [obesidad, hipertension, diabetes, oncologiaAltoCosto, dislipidemia, anticoagulacion, antibioticos, dolorEInflamacion, aparatoDigestivo, corticoidesSistemicos, alergiaYViasRespiratorias, saludMentalYSistemaNervioso, antimicoticosAntiviralesYAntiparasitarios].map(conRevision);
+export const GRUPOS_VADEMECUM = [obesidad, hipertension, diabetes, oncologiaAltoCosto, dislipidemia, anticoagulacion, antibioticos, dolorEInflamacion, aparatoDigestivo, corticoidesSistemicos, alergiaYViasRespiratorias, saludMentalYSistemaNervioso, antimicoticosAntiviralesYAntiparasitarios, tiroides].map(conRevision);
 
 export const MONOGRAFIAS = [
   semaglutida, tirzepatida, liraglutida, orlistat, naltrexonaBupropion, setmelanotida,
@@ -147,6 +153,7 @@ export const MONOGRAFIAS = [
   sertralina, fluoxetina, amitriptilina, trazodona, quetiapina, clonazepam, pregabalina, gabapentina,
   fluconazol, clotrimazol, nistatina, ketoconazol, aciclovir, albendazol, ivermectina,
   valsartan, carvedilol, metoprolol, espironolactona, furosemida,
+  amoxicilina, azitromicina, alopurinol, colchicina, levotiroxina,
 ].map(conRevision);
 
 export const PAGINAS_VADEMECUM = [...GRUPOS_VADEMECUM, ...MONOGRAFIAS];

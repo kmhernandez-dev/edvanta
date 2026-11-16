@@ -94,6 +94,21 @@ export default {
       ],
     },
     {
+      id: 'gota',
+      titulo: 'Gota: el ataque y la prevención',
+      bloques: [
+        'La gota tiene dos tiempos. En el ataque agudo, la colchicina reduce la inflamación que producen los cristales de urato; entre ataques, el alopurinol baja la producción de ácido úrico. Se combinan con cuidado: el alopurinol no se inicia durante un ataque, y la colchicina a dosis bajas previene los ataques del inicio [19,20].',
+        { tabla: {
+          columnas: ['', 'Para qué', 'Dosis de referencia', 'Regla de oro'],
+          filas: [
+            ['Colchicina', 'Ataque agudo y prevención [20]', '1 mg al inicio; máximo 2 mg en 24 horas [20]', 'Nunca con claritromicina ni azoles [20]'],
+            ['Alopurinol', 'Bajar el ácido úrico [19]', 'Iniciar con 100 mg al día [19]', 'Suspender ante cualquier erupción [19]'],
+          ],
+        } },
+        { alerta: { tono: 'alto', titulo: 'Colchicina: margen estrecho', texto: 'La sobredosis es extremadamente tóxica y puede ser mortal; dosis mayores de 2 mg al día no son más eficaces [20].' } },
+      ],
+    },
+    {
       id: 'atencion-farmaceutica',
       titulo: 'Atención farmacéutica en el dolor',
       destacado: true,
@@ -116,6 +131,7 @@ export default {
     F.ftMeloxicam, F.ftEtoricoxib, F.ftCelecoxib, F.ftKetorolaco, F.ftNolotil, F.ftTramadol, F.ftRobaxin,
     F.invimaCum16, F.cnt2013, F.precision, F.medal, F.cashin2021, F.cipolle2012, F.ramalho2012,
     F.ftDiclofenaco, F.ftIbuprofeno, F.ftNaproxeno, F.ftParacetamol,
+    F.ftAlopurinol, F.ftColchicina,
   ],
   enlaces: [
     ['Diclofenaco: para qué sirve', '/articulos/diclofenaco-para-que-sirve'],

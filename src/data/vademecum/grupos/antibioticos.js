@@ -82,6 +82,28 @@ export default {
       ],
     },
     {
+      id: 'amoxicilina-y-azitromicina',
+      titulo: 'Amoxicilina y azitromicina: los dos más pedidos',
+      bloques: [
+        'La amoxicilina y la azitromicina son de los antibióticos con más registros vigentes en Colombia, y de los que más se piden sin fórmula. Sus fichas técnicas marcan límites claros [11-13].',
+        { tabla: {
+          columnas: ['', 'Pauta de referencia en adultos', 'Semivida', 'Alerta principal'],
+          filas: [
+            ['Amoxicilina', '250 a 500 mg cada 8 horas o 750 mg a 1 g cada 12 horas [11]', 'Cerca de 1 hora [11]', 'Alergia a betalactámicos; ajuste renal [11]'],
+            ['Azitromicina', '500 mg al día 3 días [12]', 'Unas 68 horas [12]', 'QT y resistencias [12]'],
+          ],
+        } },
+        { barras: {
+          titulo: 'Registros sanitarios vigentes en Colombia por código ATC',
+          datos: [
+            { etiqueta: 'Amoxicilina', valor: 72 },
+            { etiqueta: 'Azitromicina', valor: 63 },
+          ],
+          nota: 'CUM del INVIMA, consulta del 16-nov-2026 [13].',
+        } },
+      ],
+    },
+    {
       id: 'atencion-farmaceutica',
       titulo: 'Atención farmacéutica con antibióticos: el modelo de Minnesota',
       destacado: true,
@@ -103,6 +125,7 @@ export default {
   referencias: [
     F.ftAmoxiClav, F.dmCefalexina, F.ftDalacin, F.ftCiprofloxacino, F.ftMetronidazol, F.ftSeptrin, F.ftFurantoina,
     F.invimaCum, F.cipolle2012, F.ramalho2012,
+    F.ftAmoxicilina, F.ftAzitromicina, F.invimaCum16,
   ],
   enlaces: [
     ['Amoxicilina: para qué sirve', '/articulos/amoxicilina-para-que-sirve'],

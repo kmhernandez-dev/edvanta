@@ -297,6 +297,11 @@ export const F = {
   ftMetoprolol: ft16('Lopresor 100 mg comprimidos recubiertos con película', '54503'),
   ftEspironolactona: ft16('Aldactone 25 mg comprimidos recubiertos con película', '39059'),
   ftFurosemida: ft16('Seguril 40 mg comprimidos', '39969'),
+  ftAmoxicilina: ft16('Clamoxyl 500 mg cápsulas duras', '50239'),
+  ftAzitromicina: ft16('Zitromax 500 mg comprimidos recubiertos con película', '61272'),
+  ftAlopurinol: ft16('Zyloric 100 mg comprimidos', '43775'),
+  ftColchicina: ft16('Colchicina Seid 1 mg comprimidos', '33720'),
+  ftLevotiroxina: ft16('Eutirox 50 microgramos comprimidos', '64012'),
   whoccAtc: {
     texto: `WHO Collaborating Centre for Drug Statistics Methodology. ATC/DDD Index [Internet]. Oslo: Norwegian Institute of Public Health; [${CITADO_16}]. Disponible en: https://atcddd.fhi.no/atc_ddd_index/`,
     url: 'https://atcddd.fhi.no/atc_ddd_index/',

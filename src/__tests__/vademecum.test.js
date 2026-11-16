@@ -30,6 +30,7 @@ describe('vademécum', () => {
         'alergia-y-vias-respiratorias',
         'salud-mental-y-sistema-nervioso',
         'antimicoticos-antivirales-y-antiparasitarios',
+        'medicamentos-para-la-tiroides',
       ].sort(),
     );
     expect(MONOGRAFIAS.map((m) => m.slug).sort()).toEqual(
@@ -50,6 +51,7 @@ describe('vademécum', () => {
         'sertralina', 'fluoxetina', 'amitriptilina', 'trazodona', 'quetiapina', 'clonazepam', 'pregabalina', 'gabapentina',
         'fluconazol', 'clotrimazol', 'nistatina', 'ketoconazol', 'aciclovir', 'albendazol', 'ivermectina',
         'valsartan', 'carvedilol', 'metoprolol', 'espironolactona', 'furosemida',
+        'amoxicilina', 'azitromicina', 'alopurinol', 'colchicina', 'levotiroxina',
       ].sort(),
     );
     const slugs = PAGINAS_VADEMECUM.map((p) => p.slug);
