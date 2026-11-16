@@ -771,7 +771,7 @@ export const CLASES = [
     keywords: ['diabetes comorbilidades', 'síndrome cardiometabólico', 'polifarmacia diabetes', 'diabetes insuficiencia cardiaca ERC', 'prioridades diabetes', 'curso farmacoterapia diabetes'],
   },
   {
-    titulo: 'Diabetes, enfermedad cardiovascular e insuficiencia cardíaca: manejo farmacológico integral',
+    titulo: 'Diabetes, enfermedad cardiovascular e insuficiencia cardiaca: manejo farmacológico integral',
     duracion: 25,
     gancho: {
       titulo: 'El mismo paciente, dos riesgos',

@@ -163,7 +163,7 @@ describe('migraciones de experiencias y clases abiertas', () => {
     const versiones = await many(db, `
       SELECT c.title, v.snapshot FROM aula_courses c JOIN aula_course_versions v ON v.id = c.current_version_id
        WHERE jsonb_path_exists(v.snapshot, '$.modules[*].lessons[*].blocks[*] ? (@.type == "experiencia")')`);
-    expect(versiones.length).toBeGreaterThanOrEqual(PAQUETES.length);
+    expect(versiones.length).toBeGreaterThanOrEqual(new Set(PAQUETES.map((p) => p.CURSO)).size);
     let conVideo = 0;
     for (const { title, snapshot } of versiones) {
       for (const l of snapshot.modules.flatMap((m) => m.lessons)) {
@@ -201,9 +201,18 @@ describe('migraciones de experiencias y clases abiertas', () => {
       const f = filas.find((x) => x.title === c.titulo && (!c.unidad || x.unidad === c.unidad));
       expect(f?.n, `${c.unidad || ''} ${c.titulo}`).toBe(1);
     }
+    // Un curso puede venir en varios paquetes (por ejemplo, farmacologia-snc-1 a 5):
+    // cada clase de este paquete debe estar publicada con su experiencia.
     const [v] = await many(db, 'SELECT v.snapshot FROM aula_courses c JOIN aula_course_versions v ON v.id = c.current_version_id WHERE c.id = $1', [id]);
-    const publicadas = v.snapshot.modules.flatMap((m) => m.lessons).filter((l) => l.blocks.some((b) => b.type === 'experiencia'));
-    expect(publicadas).toHaveLength(paquete.CLASES.length);
+    const publicadas = v.snapshot.modules.flatMap((m) => m.lessons.map((l) => ({ ...l, unidad: m.title })))
+      .filter((l) => l.blocks.some((b) => b.type === 'experiencia'));
+    for (const c of paquete.CLASES) {
+      const l = publicadas.find((x) => x.title === c.titulo && (!c.unidad || x.unidad === c.unidad));
+      expect(l, `publicada: ${c.unidad || ''} ${c.titulo}`).toBeTruthy();
+    }
+    const delCurso = PAQUETES.filter((p) => p.CURSO === paquete.CURSO).reduce((n, p) => n + p.CLASES.length, 0);
+    expect(publicadas.length).toBeGreaterThanOrEqual(paquete.CLASES.length);
+    expect(publicadas.length).toBeLessThanOrEqual(delCurso);
   });
 
   it('volver a aplicar la migración actualiza sin duplicar', async () => {

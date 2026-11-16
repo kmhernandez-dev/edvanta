@@ -131,6 +131,6 @@ export default {
   ],
   seo: {
     titulo: 'Antibióticos: vademécum farmacológico',
-    descripcion: 'Mecanismos, farmacocinética, resistencia y seguridad de 15 antibióticos de uso ambulatorio y hospitalario, con atención farmacéutica según el modelo de Minnesota.',
+    descripcion: 'Mecanismos, farmacocinética, resistencia y seguridad de 15 antibióticos de uso ambulatorio y hospitalario, con atención farmacéutica (Minnesota).',
   },
 };
