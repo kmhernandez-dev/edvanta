@@ -79,7 +79,10 @@ Con 10 a 40 consultas por página fuerte indexada, 3.000 consultas piden entre 1
   - **Sitemap reenviado e indexación solicitada para:**
     - `/vademecum/antibioticos-de-uso-ambulatorio` y `/vademecum/medicamentos-para-el-dolor-y-la-inflamacion`;
     - los artículos antibióticos para qué sirven, metronidazol, amoxicilina con ácido clavulánico, crisis hipertensiva y cefalexina;
-    - la ficha del curso de diabetes.
+    - las fichas de los cursos de diabetes, hipertensión y BPM, que ya enlazan a sus clases.
+
+    Son 10 en total, el cupo del día. Siguen las otras 8 fichas de curso y una clase por curso, en el orden de `seo/estrategia-clases.md`.
+  - **Caída al desplegar, medida después del cambio:** 38 s de 404 (16:38:39 a 16:39:17); antes pasaba de 2 minutos. Para llegar a cero hay que configurar Coolify para que no baje el contenedor viejo antes de que el nuevo esté sano.
 - **17-nov (noche), clases de los cursos propios** (commit f0fd131):
   - verificación de Karla;
   - licencia estándar de YouTube;
