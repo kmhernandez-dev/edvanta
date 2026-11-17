@@ -153,6 +153,9 @@ const retos = [
   ['full-body-girl', 'Full Body Girl', 'Una semana para mover todo tu cuerpo. Entrenamientos full body para activar todos los grupos musculares y sentir tu cuerpo completo en movimiento.'],
   ['dumbbell-girl', 'Dumbbell Girl', 'Tu semana de fuerza en casa. Fuerza con mancuernas para entrenar en casa con progresión, incluyendo brazos y upper body.'],
   ['soft-girl-reset', 'Soft Girl Reset', 'Baja el ritmo. Sigue moviéndote. Stretching, yoga, movilidad, recuperación y Pilates suave para resetear tu cuerpo sin dejar de moverte.'],
+  // Publicado en la base (migración 022) pero faltaba aquí: sin HTML, nginx
+  // respondía 404 y Search Console lo reportó el 17-nov-2026.
+  ['activa-quema', 'Activa & Quema', '7 días para volver a moverte: cuerpo completo, caminata, Pilates, cardio de bajo impacto, fuerza, baile y recuperación, con una misión cada día.'],
 ];
 
 for (const [slug, title, description] of retos) {

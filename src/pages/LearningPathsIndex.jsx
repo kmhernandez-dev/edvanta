@@ -7,11 +7,16 @@ import SiteHeader from '../components/edvanta/SiteHeader';
 import SiteFooter from '../components/edvanta/SiteFooter';
 import { apiUrl } from '../config/api';
 import { learningRoutes } from '../data/featuredCourses';
+import { direccionNueva } from '../data/edvanta/direcciones';
 import { portadaDeRuta } from '../data/edvanta/imagenes';
 import { updatePageSeo } from '../utils/seo';
 
+// Respaldo cuando la API no responde. Sus slugs no están en la base: cada
+// tarjeta enlaza a su página vigente (src/data/edvanta/direcciones.js), no a
+// /rutas/<slug>, que da 404 (Search Console, 17-nov-2026).
 const fallbackPaths = learningRoutes.map((path) => ({
   ...path,
+  to: direccionNueva(`/rutas/${path.slug}`) || '/rutas',
   name: path.title,
   estimated_duration: 'Ruta flexible',
   step_count: path.courseSlugs.length,
@@ -149,7 +154,7 @@ export default function LearningPathsIndex() {
           ) : visiblePaths.length ? (
             <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
               {visiblePaths.map((path) => (
-                <Link key={path.slug} to={`/rutas/${path.slug}`} className="group flex min-h-64 flex-col overflow-hidden rounded-2xl border border-edvanta-border bg-white shadow-[0_1px_2px_rgba(23,34,59,.04)] transition duration-200 hover:-translate-y-0.5 hover:border-edvanta-blue/30 hover:shadow-[0_12px_36px_rgba(23,34,59,.12)]">
+                <Link key={path.slug} to={path.to || `/rutas/${path.slug}`} className="group flex min-h-64 flex-col overflow-hidden rounded-2xl border border-edvanta-border bg-white shadow-[0_1px_2px_rgba(23,34,59,.04)] transition duration-200 hover:-translate-y-0.5 hover:border-edvanta-blue/30 hover:shadow-[0_12px_36px_rgba(23,34,59,.12)]">
                   {portadaDeRuta(path.slug) && (
                     <div className="aspect-[3/2] overflow-hidden bg-edvanta-bg">
                       <img src={portadaDeRuta(path.slug)} alt={`Ruta de aprendizaje: ${path.name || path.title}`} width="1200" height="800" loading="lazy" decoding="async" className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.03]" />

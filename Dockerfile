@@ -40,7 +40,11 @@ COPY --from=builder /app/dist /usr/share/nginx/html
 
 EXPOSE 80
 
-HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --retries=3 \
+# Traefik no envía tráfico a un contenedor hasta su primer chequeo sano, y
+# Docker hace ese primer chequeo a los --interval segundos. Con 30 s, cada
+# despliegue dejaba el sitio en «404 page not found» al menos medio minuto
+# y Search Console registraba 404 en páginas que existen (17-nov-2026).
+HEALTHCHECK --interval=5s --timeout=3s --start-period=10s --retries=3 \
   CMD wget -q -O - http://127.0.0.1/health >/dev/null || exit 1
 
 CMD ["nginx", "-g", "daemon off;"]
