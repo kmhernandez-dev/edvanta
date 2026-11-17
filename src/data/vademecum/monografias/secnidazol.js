@@ -40,7 +40,7 @@ export default {
       titulo: 'Farmacodinamia',
       bloques: [
         'El secnidazol es un profármaco que se activa por reducción del grupo nitro dentro de microorganismos con metabolismo anaerobio. Los metabolitos reactivos dañan el ADN y otras macromoléculas, e inhiben la síntesis de ácidos nucleicos [1,2].',
-        'Su actividad se dirige a bacterias anaerobias y a protozoos como *Trichomonas vaginalis*, *Entamoeba histolytica* y *Giardia lamblia*. No tiene actividad relevante frente a bacterias aerobias [1,2].',
+        'Su actividad se dirige a bacterias anaerobias y a protozoos como Trichomonas vaginalis, Entamoeba histolytica y Giardia lamblia. No tiene actividad relevante frente a bacterias aerobias [1,2].',
       ],
     },
     {

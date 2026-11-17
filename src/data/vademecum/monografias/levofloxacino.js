@@ -31,7 +31,7 @@ export default {
       id: 'farmacoquimica',
       titulo: 'Farmacoquímica',
       bloques: [
-        'El levofloxacino es el enantiómero levógiro del ofloxacino. Su fórmula es C18H20FN3O4 y su peso molecular es 361,37 [1,2].',
+        'El levofloxacino es el enantiómero levógiro del ofloxacino. Se usa como hemihidrato: C18H20FN3O4·½H2O, con peso molecular de 370,38 [2].',
         'El átomo de flúor y el grupo piperazínico aumentan la penetración en gramnegativos y la afinidad por la ADN girasa [1].',
       ],
     },
@@ -40,7 +40,7 @@ export default {
       titulo: 'Farmacodinamia',
       bloques: [
         'Inhibe la ADN girasa (topoisomerasa II) y la topoisomerasa IV, enzimas que controlan el superenrollamiento y la separación del ADN. El complejo fármaco-enzima-ADN bloquea la replicación y activa la muerte celular [1,2].',
-        'Es bactericida y su efecto depende de la concentración. Cubre gramnegativos, *Streptococcus pneumoniae*, atípicos y algunas enterobacterias; no cubre *Pseudomonas* de forma confiable [1].',
+        'Es bactericida y su efecto depende de la concentración. Cubre gramnegativos, Streptococcus pneumoniae, atípicos y algunas enterobacterias; no cubre Pseudomonas de forma confiable [1].',
       ],
     },
     {
@@ -112,7 +112,7 @@ export default {
           'Prolongación del QT, hipopotasemia o uso de otros fármacos que prolongan el QT.',
           'Embarazo, lactancia y menores de 18 años: solo en indicaciones específicas.',
         ] },
-        'Advertencias: tendinitis y rotura de tendones, neuropatía periférica, reacciones del sistema nervioso central, disglucemia, aneurisma y disección de aorta, colitis por *C. difficile* y reacciones cutáneas graves [1,2].',
+        'Advertencias: tendinitis y rotura de tendones, neuropatía periférica, reacciones del sistema nervioso central, disglucemia, aneurisma y disección de aorta, colitis por C. difficile y reacciones cutáneas graves [1,2].',
       ],
     },
     {

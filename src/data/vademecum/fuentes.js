@@ -226,9 +226,12 @@ export const F = {
     texto: 'Organización Mundial de la Salud. AWaRe classification of antibiotics for evaluation and monitoring of use, 2023 [Internet]. Ginebra: OMS; 2023 [citado 12 nov 2026]. Disponible en: https://www.who.int/publications/i/item/9789240080379',
     url: 'https://www.who.int/publications/i/item/9789240080379',
   },
+  // 17-nov-2026: el comunicado de la FDA de 2016 ya no existe (404 en todas sus
+  // direcciones); se reemplazó por la etiqueta vigente de levofloxacino, que trae
+  // el recuadro de advertencia de reacciones graves e incapacitantes.
   fdaFluoroquinolonas: {
-    texto: 'Food and Drug Administration. FDA updates warnings for oral and intravenous fluoroquinolone antibiotics [Internet]. Silver Spring (MD): FDA; 2016 [citado 12 nov 2026]. Disponible en: https://www.fda.gov/drugs/drug-safety-and-availability/fda-updates-warnings-oral-and-intravenous-fluoroquinolone-antibiotics',
-    url: 'https://www.fda.gov/drugs/drug-safety-and-availability/fda-updates-warnings-oral-and-intravenous-fluoroquinolone-antibiotics',
+    texto: 'National Library of Medicine (US). DailyMed: Levofloxacin tablet, film coated (etiqueta de la FDA con recuadro de advertencia sobre reacciones adversas graves) [Internet]. Bethesda (MD): NLM; [actualizado 9 nov 2026; citado 17 nov 2026]. Disponible en: https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=814450ae-439e-4a5d-8c60-9b21b6f14be5',
+    url: 'https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=814450ae-439e-4a5d-8c60-9b21b6f14be5',
   },
   pubchemMetronidazol: pubchem('Metronidazole', 4173),
   pubchemCefalexina: pubchem('Cephalexin', 27447),

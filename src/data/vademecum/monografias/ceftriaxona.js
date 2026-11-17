@@ -40,7 +40,7 @@ export default {
       titulo: 'Farmacodinamia',
       bloques: [
         'Se une a las proteínas fijadoras de penicilina e inhibe la transpeptidación del peptidoglucano. La bacteria se lisa y muere; el efecto es bactericida y depende del tiempo por encima de la CMI (T > CMI) [1,2].',
-        'Su espectro incluye *Streptococcus pneumoniae*, *Haemophilus influenzae*, *Neisseria*, enterobacterias y *Treponema pallidum*. No cubre *Pseudomonas*, enterococos, *Listeria* ni anaerobios de forma confiable [1].',
+        'Su espectro incluye Streptococcus pneumoniae, Haemophilus influenzae, Neisseria, enterobacterias y Treponema pallidum. No cubre Pseudomonas, enterococos, Listeria ni anaerobios de forma confiable [1].',
       ],
     },
     {
@@ -114,7 +114,7 @@ export default {
           'Neonatos con hiperbilirrubinemia, hipoalbuminemia o acidosis.',
           'Neonatos que reciben soluciones intravenosas con calcio.',
         ] },
-        'Advertencias: reacciones anafilácticas, anemia hemolítica, encefalopatía, litiasis biliar y renal, pancreatitis, colitis por *C. difficile* y reacción de Jarisch-Herxheimer [1].',
+        'Advertencias: reacciones anafilácticas, anemia hemolítica, encefalopatía, litiasis biliar y renal, pancreatitis, colitis por C. difficile y reacción de Jarisch-Herxheimer [1].',
       ],
     },
     {

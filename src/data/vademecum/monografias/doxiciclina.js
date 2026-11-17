@@ -40,7 +40,7 @@ export default {
       titulo: 'Farmacodinamia',
       bloques: [
         'Se une a la subunidad ribosomal 30S e impide la unión del aminoacil-ARNt al sitio A, lo que bloquea la elongación de la proteína. Es bacteriostática [1,2].',
-        'Cubre rickettsias, *Mycoplasma*, *Chlamydia*, espiroquetas, *Helicobacter pylori* y algunos grampositivos y gramnegativos. La resistencia es frecuente en muchas bacterias [1,2].',
+        'Cubre rickettsias, Mycoplasma, Chlamydia, espiroquetas, Helicobacter pylori y algunos grampositivos y gramnegativos. La resistencia es frecuente en muchas bacterias [1,2].',
       ],
     },
     {
@@ -69,12 +69,12 @@ export default {
         { lista: [
           'Rickettsiosis y otras infecciones transmitidas por garrapatas.',
           'Enfermedad de Lyme y otras infecciones por espiroquetas.',
-          'Infecciones respiratorias por *Mycoplasma* y *Chlamydia*.',
+          'Infecciones respiratorias por Mycoplasma y Chlamydia.',
           'Acné inflamatorio y rosácea.',
-          'Infecciones por *Chlamydia trachomatis*.',
+          'Infecciones por Chlamydia trachomatis.',
           'Sífilis en alérgicos a penicilina, según el esquema médico.',
           'Malaria: prevención y tratamiento en combinación.',
-          'Algunas infecciones por *Staphylococcus* resistente a meticilina, en combinación.',
+          'Algunas infecciones por Staphylococcus resistente a meticilina, en combinación.',
         ] },
       ],
     },
@@ -111,7 +111,7 @@ export default {
           'Insuficiencia hepática o renal grave: valorar ajuste.',
           'Miastenia grave: puede empeorar.',
         ] },
-        'Advertencias: fotosensibilidad, esofagitis, hipertensión intracraneal, coloración dental, hepatotoxicidad y colitis por *C. difficile* [1,2].',
+        'Advertencias: fotosensibilidad, esofagitis, hipertensión intracraneal, coloración dental, hepatotoxicidad y colitis por C. difficile [1,2].',
       ],
     },
     {

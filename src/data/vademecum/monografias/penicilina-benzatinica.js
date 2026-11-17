@@ -40,7 +40,7 @@ export default {
       titulo: 'Farmacodinamia',
       bloques: [
         'La penicilina G se une a las proteínas fijadoras de penicilina e inhibe la transpeptidación del peptidoglucano. La bacteria se lisa y muere; el efecto es bactericida y depende del tiempo por encima de la CMI [1,2].',
-        'Es activa frente a *Treponema pallidum*, *Streptococcus pyogenes* y otros estreptococos sensibles. No cubre estafilococos productores de penicilinasa ni gramnegativos [1].',
+        'Es activa frente a Treponema pallidum, Streptococcus pyogenes y otros estreptococos sensibles. No cubre estafilococos productores de penicilinasa ni gramnegativos [1].',
       ],
     },
     {
