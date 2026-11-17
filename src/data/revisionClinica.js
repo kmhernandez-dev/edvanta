@@ -281,11 +281,39 @@ const REVISADOS_POR_KARLA_2026_11_13_LOTE2 = [
   'betalactamicos-clasificacion',
 ];
 
+/**
+ * 17 de noviembre de 2026: se le presentaron a Karla las 90 páginas que
+ * seguían en noindex (14 artículos y 76 del vademécum, listadas en
+ * seo/plan-1000-keywords.md) y respondió por escrito: «apruebo, ya las leí y
+ * todo está bien».
+ */
+const KARLA_2026_11_17 = { ...KARLA_2026_11_09, reviewedAt: '2026-11-17' };
+
+const REVISADOS_POR_KARLA_2026_11_17 = [
+  // Clases de antibióticos, pilar para pacientes y artículos para profesionales.
+  'aminoglucosidos-antibioticos',
+  'carbapenemicos-antibioticos',
+  'sulfonamidas-antibioticos',
+  'antibioticos-de-reserva',
+  'antibioticos-para-que-sirven-tipos',
+  'farmacocinetica-pkpd-antibioticos',
+  'dispensacion-de-antibioticos-en-drogueria',
+  // Fichas de dolor e inflamación.
+  'meloxicam-para-que-sirve',
+  'etoricoxib-para-que-sirve',
+  'celecoxib-para-que-sirve',
+  'dipirona-para-que-sirve',
+  'tramadol-para-que-sirve',
+  'ketorolaco-para-que-sirve',
+  'metocarbamol-para-que-sirve',
+];
+
 export const REVISION_CLINICA = Object.fromEntries([
   ...REVISADOS_POR_KARLA_2026_11_09.map((slug) => [slug, KARLA_2026_11_09]),
   ...REVISADOS_POR_KARLA_2026_11_12.map((slug) => [slug, KARLA_2026_11_12]),
   ...REVISADOS_POR_KARLA_2026_11_13.map((slug) => [slug, KARLA_2026_11_13]),
   ...REVISADOS_POR_KARLA_2026_11_13_LOTE2.map((slug) => [slug, KARLA_2026_11_13]),
+  ...REVISADOS_POR_KARLA_2026_11_17.map((slug) => [slug, KARLA_2026_11_17]),
 ]);
 
 /**
@@ -323,4 +351,26 @@ export const REVISION_VADEMECUM = Object.fromEntries([
   'antibioticos-de-uso-ambulatorio',
   'amoxicilina-acido-clavulanico', 'cefalexina', 'clindamicina', 'ciprofloxacino', 'metronidazol',
   'trimetoprim-sulfametoxazol', 'nitrofurantoina',
-].map((slug) => [slug, KARLA_2026_11_13])));
+].map((slug) => [slug, KARLA_2026_11_13])).concat([
+  // 17-nov-2026: 7 grupos y 69 monografías («apruebo, ya las leí y todo está bien»).
+  'medicamentos-para-el-dolor-y-la-inflamacion',
+  'meloxicam', 'etoricoxib', 'celecoxib', 'ketorolaco', 'dipirona', 'tramadol', 'metocarbamol',
+  'diclofenaco', 'ibuprofeno', 'naproxeno', 'acetaminofen', 'alopurinol', 'colchicina',
+  'medicamentos-para-el-aparato-digestivo',
+  'omeprazol', 'esomeprazol', 'lansoprazol', 'metoclopramida', 'domperidona', 'ondansetron',
+  'dimenhidrinato', 'butilescopolamina', 'simeticona', 'loperamida', 'bisacodilo', 'lactulosa',
+  'corticoides-sistemicos',
+  'prednisona', 'prednisolona', 'dexametasona', 'betametasona', 'hidrocortisona',
+  'alergia-y-vias-respiratorias',
+  'loratadina', 'cetirizina', 'desloratadina', 'clorfeniramina', 'hidroxizina', 'montelukast', 'salbutamol', 'acetilcisteina',
+  'salud-mental-y-sistema-nervioso',
+  'sertralina', 'fluoxetina', 'amitriptilina', 'trazodona', 'quetiapina', 'clonazepam', 'pregabalina', 'gabapentina',
+  'antimicoticos-antivirales-y-antiparasitarios',
+  'fluconazol', 'clotrimazol', 'nistatina', 'ketoconazol', 'aciclovir', 'albendazol', 'ivermectina',
+  'medicamentos-para-la-tiroides',
+  'levotiroxina',
+  // Monografías nuevas dentro de grupos ya revisados.
+  'secnidazol', 'dicloxacilina', 'claritromicina', 'ceftriaxona', 'penicilina-benzatinica',
+  'levofloxacino', 'doxiciclina', 'fosfomicina', 'amoxicilina', 'azitromicina',
+  'valsartan', 'carvedilol', 'metoprolol', 'espironolactona', 'furosemida',
+].map((slug) => [slug, KARLA_2026_11_17])));
