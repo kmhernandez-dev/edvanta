@@ -47,6 +47,26 @@ Con 10 a 40 consultas por página fuerte indexada, 3.000 consultas piden entre 1
 - **13-nov, lote 1 de antimicrobianos revisado y aprobado por Karla:** 7 fichas `/articulos/[dci]-para-que-sirve` y 8 páginas del vademécum (grupo «Antibióticos de uso ambulatorio» y 7 monografías), ya indexables y en el sitemap. Se avisaron 17 URLs a Bing por IndexNow (HTTP 200), incluidas amoxicilina y azitromicina por los CTA nuevos. Quedan pendientes de Search Console cuando se restablezca la cuota.
 - **13-nov, lote 2 de antimicrobianos y clases revisado por Karla:** 8 fichas nuevas y 7 clases de antibióticos, ya indexables. Las clases cubren las 188 keywords de «Clases de antibióticos» del CSV. Se avisaron 15 URLs a Bing por IndexNow (HTTP 200).
 - **13-nov, cierre del grupo y nuevas clases:** 8 monografías nuevas en el vademécum (secnidazol, dicloxacilina, claritromicina, ceftriaxona, penicilina benzatínica, levofloxacino, doxiciclina y fosfomicina), 4 clases nuevas (aminoglucósidos, carbapenémicos, sulfonamidas y antibióticos de reserva) y 3 artículos del lote 3 (PK/PD, dispensación en droguería y el pilar para pacientes). Las monografías y las 4 clases nuevas quedan en noindex hasta la revisión de Karla; los 3 artículos también.
+- **17-nov, revisión general antes de indexar:**
+  - verificar-fuentes: 184 fuentes de 108 artículos y 197 del vademécum. La única caída era el comunicado de la FDA de 2016 sobre fluoroquinolonas (404 en todas sus direcciones). Se reemplazó por la etiqueta vigente de levofloxacino en DailyMed, que trae el recuadro de advertencia, en el artículo de quinolonas y en el vademécum. Levofloxacino también pasó a la fórmula del hemihidrato (C18H20FN3O4·½H2O, 370,38). Commit ce7dfbe.
+  - 8 monografías mostraban cursivas de markdown con asteriscos literales (*Pseudomonas*). Se limpiaron.
+  - 0 títulos SEO repetidos y 0 bloques JSON-LD sin `@context`. Pruebas: 225 del front y 439 de la API, todas en verde; build con 679 URLs en el sitemap.
+  - Producción verificada con curl: las páginas revisadas salen `index,follow`; las pendientes (p. ej. `/vademecum/levofloxacino`, `/articulos/meloxicam-para-que-sirve`) salen `noindex,follow` y no están en el sitemap.
+- **17-nov, IndexNow:** sitemap completo, 1.356 direcciones de los 5 sitemaps (páginas 186, artículos 483, herramientas 10, cursos 605, profesional 72), HTTP 200. Incluye las noticias regulatorias, las guías de cursos y las clases de antibióticos que otras sesiones publicaron después del 12-nov.
+- **17-nov, Search Console:** la sesión de Google expiró, así que no se pudo enviar nada. Cuando Karla vuelva a entrar: reenviar `sitemap.xml`, pedir la indexación de la lista pendiente (empezando por `/vademecum/antibioticos-de-uso-ambulatorio`, las 7 fichas del lote 1 y crisis hipertensiva) y validar la corrección de la ProfilePage.
+- **Pendiente de revisión clínica de Karla (17-nov): 90 páginas en noindex.**
+  - 14 artículos: aminoglucósidos, carbapenémicos, sulfonamidas, antibióticos de reserva, antibióticos para qué sirven (pilar), PK/PD de antibióticos, dispensación de antibióticos en droguería, y las fichas de meloxicam, etoricoxib, celecoxib, dipirona, tramadol, ketorolaco y metocarbamol.
+  - 7 grupos del vademécum, con sus monografías (69 en total, contando las de los grupos ya revisados):
+    - dolor e inflamación (13);
+    - aparato digestivo (12);
+    - corticoides sistémicos (5);
+    - alergia y vías respiratorias (8);
+    - salud mental y sistema nervioso (8);
+    - antimicóticos, antivirales y antiparasitarios (7);
+    - tiroides (levotiroxina).
+  - Monografías nuevas dentro de grupos ya revisados:
+    - antibióticos: secnidazol, dicloxacilina, claritromicina, ceftriaxona, penicilina benzatínica, levofloxacino, doxiciclina, fosfomicina, amoxicilina y azitromicina;
+    - hipertensión: valsartán, carvedilol, metoprolol, espironolactona y furosemida.
 
 ## Dónde estamos (28 días al 10-nov-2026)
 
