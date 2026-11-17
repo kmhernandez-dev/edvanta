@@ -191,6 +191,17 @@
   margin: 12px 0 0;
 }
 
+/* Quién verificó la clase (api/lib/revision-de-clases.js). */
+.aula-player__revision {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 10px 0 0;
+  color: var(--aula-muted);
+  font-size: 0.8125rem;
+}
+.aula-player__revision svg { flex-shrink: 0; color: var(--aula-primary, #0f7480); }
+
 .aula-player__meta span {
   display: inline-flex;
   align-items: center;

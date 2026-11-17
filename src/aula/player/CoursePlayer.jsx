@@ -11,7 +11,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
-  ArrowLeft, CheckCircle2, ChevronDown, ChevronLeft, ChevronRight, Circle, CircleDot, ClipboardCheck,
+  ArrowLeft, BadgeCheck, CheckCircle2, ChevronDown, ChevronLeft, ChevronRight, Circle, CircleDot, ClipboardCheck,
   Clock, FileText, Lock, Menu, MessageSquare, PlayCircle, X,
 } from 'lucide-react';
 import { fmtMinutes } from '../labels';
@@ -289,6 +289,12 @@ export function CoursePlayer({
                 ) : null}
                 <span>{lesson.isRequired ? 'Obligatoria' : 'Opcional'}</span>
               </p>
+              {snapshot?.course?.revision && (
+                <p className="aula-player__revision">
+                  <BadgeCheck className="h-4 w-4" aria-hidden="true" />
+                  Verificada por {snapshot.course.revision.nombre}, {snapshot.course.revision.profesion.toLowerCase()}
+                </p>
+              )}
             </header>
 
             <BlockList

@@ -14,7 +14,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import {
-  ArrowLeft, ArrowRight, Award, BookOpenCheck, ChevronDown, GraduationCap, ListOrdered, Sparkles,
+  ArrowLeft, ArrowRight, Award, BadgeCheck, BookOpenCheck, ChevronDown, GraduationCap, ListOrdered, Play, Sparkles,
 } from 'lucide-react';
 import SiteHeader from '../components/edvanta/SiteHeader';
 import SiteFooter from '../components/edvanta/SiteFooter';
@@ -22,6 +22,7 @@ import ExperienciaDeClase from '../components/experiencia/ExperienciaDeClase';
 import { apiUrl } from '../config/api';
 import { updatePageSeo } from '../utils/seo';
 import { faqDeExperiencia, textoDeExperiencia } from '../../api/lib/experiencia.js';
+import { REVISION_DE_CLASES, fechaLarga } from '../../api/lib/revision-de-clases.js';
 import '../styles/clase-publica.css';
 
 const SITIO = 'https://edvanta.co';
@@ -31,6 +32,55 @@ function descripcion(exp) {
   if (t.length <= 155) return t;
   const c = t.slice(0, 152);
   return `${c.slice(0, c.lastIndexOf(' '))}…`;
+}
+
+/** Quién verificó la clase (Karla Hernández, química farmacéutica) y cuándo. */
+function Revision({ revision = REVISION_DE_CLASES }) {
+  return (
+    <p className="cp-revision">
+      <BadgeCheck size={17} aria-hidden="true" />
+      <span>Verificada por <Link to={revision.perfil}>{revision.nombre}</Link>, {revision.profesion.toLowerCase()}</span>
+      <span className="cp-revision__fecha">· Última revisión: <time dateTime={revision.fecha}>{fechaLarga(revision.fecha)}</time></span>
+    </p>
+  );
+}
+
+/**
+ * El video de la clase. Primero la miniatura (no carga el reproductor de
+ * YouTube hasta que la persona lo pide: la página abre más rápido) y debajo
+ * el crédito: el canal, YouTube y la licencia estándar de YouTube.
+ */
+function VideoDeClase({ video }) {
+  const [activo, setActivo] = useState(false);
+  return (
+    <figure className="cp-video">
+      {activo ? (
+        <div className="cp-video__marco">
+          <iframe
+            src={`https://www.youtube-nocookie.com/embed/${video.videoId}?rel=0&autoplay=1`}
+            title={video.titulo}
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+            allowFullScreen
+            referrerPolicy="strict-origin-when-cross-origin"
+          />
+        </div>
+      ) : (
+        <button type="button" className="cp-video__marco" onClick={() => setActivo(true)} aria-label={`Reproducir el video: ${video.titulo}`}>
+          <img src={video.miniatura} alt="" width="480" height="360" loading="lazy" decoding="async" />
+          <span className="cp-video__play"><Play size={30} aria-hidden="true" /></span>
+        </button>
+      )}
+      <figcaption className="cp-video__credito">
+        Video: <strong>«{video.titulo}»</strong>, de{' '}
+        {video.canal
+          ? (video.canalUrl ? <a href={video.canalUrl} target="_blank" rel="nofollow noopener noreferrer">{video.canal}</a> : video.canal)
+          : 'su autor'}{' '}
+        en YouTube. <a href={video.licenciaUrl} target="_blank" rel="nofollow noopener noreferrer">{video.licencia}</a>.
+        {' '}Se reproduce con el reproductor oficial de YouTube; los derechos del video son de su autor.{' '}
+        <a href={video.verEnYoutube} target="_blank" rel="nofollow noopener noreferrer">Ver en YouTube</a>
+      </figcaption>
+    </figure>
+  );
 }
 
 function Indice({ indice, actual }) {
@@ -87,8 +137,20 @@ export default function ClasePublica() {
     const cursoUrl = `${SITIO}/${d.curso.slug}`;
     const exp = d.clase.experiencia;
     const titulo = `${d.clase.titulo} | ${d.curso.nombre} gratis`;
-    updatePageSeo({
-      title: titulo.length <= 68 ? titulo : `${d.clase.titulo} | Edvanta`,
+    // La API manda el mismo título, descripción y datos estructurados que
+    // escribe en el HTML del servidor (api/lib/clase-publica.js). Lo de abajo
+    // es solo el respaldo si la respuesta no los trae.
+    updatePageSeo(d.seo ? {
+      title: d.seo.titulo,
+      description: d.seo.descripcion,
+      canonical,
+      image: d.seo.imagen || undefined,
+      type: 'article',
+      keywords: exp.keywords,
+      jsonLdId: `clase-${d.clase.id}`,
+      jsonLd: d.seo.jsonLd,
+    } : {
+      title: titulo.length <= 60 ? titulo : `${d.clase.titulo} | Edvanta`,
       description: descripcion(exp),
       canonical,
       type: 'article',
@@ -157,6 +219,7 @@ export default function ClasePublica() {
                 <p className="cp-eyebrow"><BookOpenCheck size={15} aria-hidden="true" /> Clase abierta · {d.clase.unidad}</p>
                 <h1 className="cp-titulo">{d.clase.titulo}</h1>
                 <p className="cp-sub">Clase {d.numero} de {d.total} clases abiertas del <Link to={`/${d.curso.slug}`}>{d.curso.nombre}</Link>.</p>
+                <Revision revision={d.revision || REVISION_DE_CLASES} />
                 <div className="cp-acciones">
                   <Link to={`/${d.curso.slug}`} className="cp-boton"><GraduationCap size={18} aria-hidden="true" /> Inscríbete gratis al curso</Link>
                   <a href="#indice-de-clases" className="cp-boton cp-boton--suave"><ListOrdered size={18} aria-hidden="true" /> Ver todas las clases</a>
@@ -178,6 +241,7 @@ export default function ClasePublica() {
               </aside>
 
               <article className="cp-clase">
+                {(d.clase.videos || []).map((v) => <VideoDeClase key={v.videoId} video={v} />)}
                 <ExperienciaDeClase key={d.clase.id} data={d.clase.experiencia} idBase={`clase-${d.clase.id}`} />
 
                 <nav className="cp-pasos" aria-label="Otras clases">
@@ -199,7 +263,10 @@ export default function ClasePublica() {
                   <Sparkles size={22} aria-hidden="true" />
                   <div>
                     <h2 id="cp-cta-titulo">Sigue el curso completo, gratis</h2>
-                    <p>En el aula guardas tu avance, tomas apuntes, presentas quizzes, actividades y foros, y al terminar emites tu certificado del {d.curso.nombre}.</p>
+                    <p>
+                      {d.curso.clases ? `El ${d.curso.nombre} tiene ${d.curso.clases} clases${d.curso.unidades ? ` en ${d.curso.unidades} unidades` : ''}. ` : ''}
+                      En el aula guardas tu avance, tomas apuntes, presentas quizzes, actividades y foros, y al terminar emites tu certificado del {d.curso.nombre}.
+                    </p>
                   </div>
                   <Link to={`/${d.curso.slug}`} className="cp-boton">Inscribirme gratis</Link>
                 </section>

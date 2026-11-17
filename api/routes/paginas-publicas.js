@@ -34,9 +34,10 @@ import {
 } from '../lib/slugs-publicos.js';
 import { SQL_CURSO_PUBLICO, temarioPublico } from './courses.js';
 import {
-  clasePublica, clasesPublicas, cuerpoDeClase, datosDeClase, descripcionDeClase, resumenDeClase,
-  rutaDeClase, tituloDeClase,
+  clasePublica, clasesPublicas, cuerpoDeClase, datosDeClase, descripcionDeClase, enlazarTemario, imagenDeClase,
+  resumenDeClase, rutaDeClase, rutasDeClasesAbiertas, tituloDeClase,
 } from '../lib/clase-publica.js';
+import { REVISION_DE_CLASES } from '../lib/revision-de-clases.js';
 import { EMISOR, verificarCertificado } from '../lib/aula/certificados.js';
 import { cuerpoDeCurso, datosDeCurso } from '../lib/html-de-ficha.js';
 import { cuerpoDeCatalogo, cursosDelCatalogo, listaDeCursos } from '../lib/html-de-catalogo.js';
@@ -135,7 +136,11 @@ async function rutasFijas() {
 async function cursoDelSlug(db, entidad, id) {
   if (entidad === 'aula') {
     const { rows } = await db.query(SQL_CURSO_PUBLICO, [id]);
-    return rows[0] ? fichaDeCursoPropio(rows[0], temarioPublico(rows[0].snapshot)) : null;
+    if (!rows[0]) return null;
+    // Cada clase abierta del temario enlaza a su página: así la ficha (la
+    // página que vende) reparte autoridad a sus clases y Google las descubre.
+    const rutas = await rutasDeClasesAbiertas(db, id, rows[0].snapshot, rows[0].public_slug);
+    return fichaDeCursoPropio(rows[0], enlazarTemario(temarioPublico(rows[0].snapshot), rutas));
   }
   const { rows } = await db.query('SELECT * FROM courses WHERE id = $1 AND active = TRUE', [id]);
   return rows[0] ? fichaDeCursoCurado(rows[0]) : null;
@@ -274,6 +279,7 @@ export function crearRutasPublicas({ db, sitio = '', obtenerPlantilla = async ()
         titulo: tituloDeClase(datos),
         descripcion: descripcionDeClase(datos),
         canonical,
+        imagen: imagenDeClase(datos, absoluta('/')),
         tipo: 'article',
         jsonLd: datosDeClase(datos, { canonical, cursoUrl: absoluta(`/${datos.curso.slug}`), inicio: absoluta('/') }),
         cuerpo: cuerpoDeClase(datos),
@@ -298,7 +304,10 @@ export function crearRutasPublicas({ db, sitio = '', obtenerPlantilla = async ()
       if (datos.redirigir) return res.json({ ok: true, redirigir: datos.redirigir });
       if (!datos.clase) return res.json({ ok: true, redirigir: `/${datos.curso.slug}` });
       res.set('Cache-Control', 'public, max-age=300');
-      return res.json({ ok: true, data: resumenDeClase(datos) });
+      // El mismo título, descripción y datos estructurados que el HTML del servidor.
+      const ruta = rutaDeClase(datos.curso.slug, datos.clase.slug);
+      const urls = { canonical: absoluta(ruta), cursoUrl: absoluta(`/${datos.curso.slug}`), inicio: absoluta('/') };
+      return res.json({ ok: true, data: resumenDeClase(datos, urls) });
     } catch (e) {
       console.error(JSON.stringify({ level: 'error', msg: 'clase publica', error: e.message }));
       return res.status(500).json({ ok: false, error: 'No pudimos cargar la clase' });
@@ -592,9 +601,13 @@ export function crearRutasPublicas({ db, sitio = '', obtenerPlantilla = async ()
           WHERE c.kind = 'edvanta' AND c.status = 'publicado' AND c.deleted_at IS NULL
             AND jsonb_path_exists(v.snapshot, '$.modules[*].lessons[*].blocks[*] ? (@.type == "experiencia")')`,
       );
+      // La fecha es la más reciente entre la versión publicada y la última
+      // revisión de las clases (revision-de-clases.js): cambia lo que se ve.
+      const revisadas = new Date(`${REVISION_DE_CLASES.fecha}T00:00:00Z`);
       for (const c of conClases) {
+        const fecha = c.fecha && new Date(c.fecha) > revisadas ? c.fecha : revisadas;
         for (const clase of await clasesPublicas(db, c.id, c.snapshot)) {
-          rows.push({ ruta: rutaDeClase(c.slug, clase.slug), fecha: c.fecha });
+          rows.push({ ruta: rutaDeClase(c.slug, clase.slug), fecha });
         }
       }
       const dia = (f) => (f ? new Date(f).toISOString().slice(0, 10) : null);

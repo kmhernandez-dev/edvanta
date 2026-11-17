@@ -11,6 +11,8 @@ import { AulaError, badRequest, conflict, notFound } from './http.js';
 import { requireOpenEnrollment } from './access.js';
 import { recomputeEnrollment } from './progress.js';
 import { pedagogyProgress } from './pedagogia-core.js';
+import { conCreditoDeVideo } from '../videos-youtube.js';
+import { REVISION_DE_CLASES } from '../revision-de-clases.js';
 
 const MAX_TIME_REPORT_S = 60;
 const MAX_VIDEO_SECONDS = 24 * 60 * 60;
@@ -156,7 +158,7 @@ export async function courseForParticipant(db, user, courseId, { now = new Date(
   const live = await one(
     db,
     `SELECT c.title, c.short_description, c.description_html, c.cover_file_id, c.objective, c.learning_outcomes,
-            c.audience, c.prerequisites, c.duration_minutes, c.resources_enabled, co.name AS company_name
+            c.audience, c.prerequisites, c.duration_minutes, c.resources_enabled, c.kind, co.name AS company_name
        FROM aula_courses c LEFT JOIN aula_companies co ON co.id = c.company_id WHERE c.id = $1`,
     [courseId],
   );
@@ -176,6 +178,8 @@ export async function courseForParticipant(db, user, courseId, { now = new Date(
       audience: live.audience || '',
       prerequisites: live.prerequisites || '',
       durationMinutes: live.duration_minutes,
+      // Solo los cursos de Edvanta: los de una empresa no los revisa Karla.
+      revision: live.kind === 'edvanta' ? REVISION_DE_CLASES : null,
     },
   };
   // Las direcciones del aula (/aula/curso-de-…/clase/<clase>) salen de las
@@ -187,9 +191,16 @@ export async function courseForParticipant(db, user, courseId, { now = new Date(
   );
   const clases = await many(db, 'SELECT id, slug FROM aula_lessons WHERE course_id = $1 AND slug IS NOT NULL', [courseId]);
   const slugDe = new Map(clases.map((c) => [Number(c.id), c.slug]));
+  // En los cursos de Edvanta, cada video de YouTube lleva su crédito (canal y
+  // licencia estándar de YouTube) y si sigue disponible (videos-youtube.js).
+  const deEdvanta = live.kind === 'edvanta';
   snapshot.modules = (snapshot.modules || []).map((m) => ({
     ...m,
-    lessons: (m.lessons || []).map((l) => ({ ...l, slug: slugDe.get(Number(l.id)) || null })),
+    lessons: (m.lessons || []).map((l) => ({
+      ...l,
+      slug: slugDe.get(Number(l.id)) || null,
+      blocks: deEdvanta ? conCreditoDeVideo(l.blocks) : l.blocks,
+    })),
   }));
   // Si ya pidió su certificado, la portada lo enlaza.
   const cert = await one(
