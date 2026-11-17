@@ -67,6 +67,26 @@ Con 10 a 40 consultas por página fuerte indexada, 3.000 consultas piden entre 1
   - Monografías nuevas dentro de grupos ya revisados:
     - antibióticos: secnidazol, dicloxacilina, claritromicina, ceftriaxona, penicilina benzatínica, levofloxacino, doxiciclina, fosfomicina, amoxicilina y azitromicina;
     - hipertensión: valsartán, carvedilol, metoprolol, espironolactona y furosemida.
+- **17-nov (tarde), Karla aprobó las 90 páginas** («apruebo, ya las leí y todo está bien»). Commit 21c340e. Ya son indexables y entraron al sitemap, que subió de 679 a 769 URLs. Se avisaron las 90 a Bing por IndexNow (HTTP 200).
+- **17-nov (tarde), Search Console**, con Karla de nuevo en sesión. Estado: 581 indexadas y 570 sin indexar.
+  - **404 (5):** dos ya respondían 200 y la tercera falla venía de rutas del catálogo de respaldo de `/rutas`. Esas 4 rutas antiguas tienen ahora 301, y a `/academia/retos/activa-quema` le faltaba su página prerenderizada (commit 152b4a6). Validación iniciada.
+  - **noindex (72):** 57 ya son indexables (noticias reescritas y artículos de tiroides revisados) y 13 son redirecciones. Solo la herramienta de hoja de vida y la categoría «lean» siguen en noindex, a propósito. Validación iniciada.
+  - **Duplicada (18):** todas responden ahora 301 a su página vigente. La validación ya estaba en curso.
+  - **Bloqueada por robots.txt (7):** son privadas a propósito, salvo la portada de un curso propio. `robots.txt` ahora deja pasar `/api/cursos-edvanta/*/portada`.
+  - **Rastreada sin indexar (117):** 58 son clases de cursos propios; el plan está en `seo/estrategia-clases.md`. Validación reiniciada.
+  - **Caída al desplegar:** el healthcheck del contenedor web pasa de 30 a 5 s, porque Traefik deja el sitio en «404 page not found» hasta el primer chequeo sano.
+  - **ProfilePage:** validación correcta, 0 no válidas.
+  - **Sitemap reenviado e indexación solicitada para:**
+    - `/vademecum/antibioticos-de-uso-ambulatorio` y `/vademecum/medicamentos-para-el-dolor-y-la-inflamacion`;
+    - los artículos antibióticos para qué sirven, metronidazol, amoxicilina con ácido clavulánico, crisis hipertensiva y cefalexina;
+    - la ficha del curso de diabetes.
+- **17-nov (noche), clases de los cursos propios** (commit f0fd131):
+  - verificación de Karla;
+  - licencia estándar de YouTube;
+  - títulos de 60 caracteres como máximo;
+  - la ficha del curso enlaza las clases.
+
+  Se avisaron a Bing las 367 clases y las 11 fichas (378 URLs, HTTP 200). `scripts/indexnow.mjs` acepta ahora `--archivo=lista.txt`.
 
 ## Dónde estamos (28 días al 10-nov-2026)
 
