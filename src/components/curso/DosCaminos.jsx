@@ -95,7 +95,9 @@ export function ComparativaCaminos({
     document.body.style.overflow = 'hidden';
     const onKey = (e) => { if (e.key === 'Escape') onCerrar(); };
     window.addEventListener('keydown', onKey);
-    ref.current?.querySelector(`[data-camino="${foco}"]`)?.focus();
+    // El foco va al botón del camino elegido, sin bajar: la ventana abre arriba.
+    ref.current?.querySelector(`[data-camino="${foco}"]`)?.focus({ preventScroll: true });
+    if (ref.current) ref.current.scrollTop = 0;
     return () => {
       document.body.style.overflow = '';
       window.removeEventListener('keydown', onKey);

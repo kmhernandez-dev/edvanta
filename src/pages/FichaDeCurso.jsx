@@ -521,21 +521,6 @@ export default function FichaDeCurso({ modo = 'propio', slugPublico = '' }) {
           </div>
         </main>
         <SiteFooter />
-
-      {/* Al presionar cualquiera de los dos botones: la comparativa, y la persona elige. */}
-      {conCaminos && (
-        <ComparativaCaminos
-          abierta={Boolean(comparativa)}
-          foco={comparativa || 'certificado'}
-          oferta={oferta || { precio: precioVisible }}
-          nombre={nombre}
-          onCertificado={estudiarConCertificado}
-          onGratis={estudiarGratis}
-          onCerrar={cerrarComparativa}
-          trabajando={camino}
-          error={error}
-        />
-      )}
       </div>
     );
   }
@@ -823,6 +808,21 @@ export default function FichaDeCurso({ modo = 'propio', slugPublico = '' }) {
       </main>
 
       <SiteFooter />
+
+      {/* Al presionar cualquiera de los dos botones: la comparativa, y la persona elige. */}
+      {conCaminos && (
+        <ComparativaCaminos
+          abierta={Boolean(comparativa)}
+          foco={comparativa || 'certificado'}
+          oferta={oferta || { precio: precioVisible }}
+          nombre={nombre}
+          onCertificado={estudiarConCertificado}
+          onGratis={estudiarGratis}
+          onCerrar={cerrarComparativa}
+          trabajando={camino}
+          error={error}
+        />
+      )}
 
       {/* En el teléfono: el botón siempre a mano cuando la tarjeta ya no se ve. */}
       {hayBoton && !tarjetaVisible && (
