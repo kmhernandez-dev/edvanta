@@ -85,28 +85,24 @@ El camino es:
 - **Bing.** IndexNow con todas las clases, que ya están en el sitemap con fecha nueva.
 - **Validaciones.** La validación de «Rastreada: actualmente sin indexar» se inició el 17 de noviembre. Se revisa cada semana.
 
-### Semanas 2 a 4: enlaces desde lo que ya posiciona
+### Semanas 2 a 4: enlaces desde lo que ya posiciona — hecho el 17 de noviembre
 
-El vademécum (112 páginas) y los artículos de salud ya están indexados y reciben impresiones. Cada uno debe enlazar a la clase que enseña lo mismo, con el nombre de la clase como texto del enlace. Las parejas más claras:
+El vademécum y los artículos de salud ya están indexados y reciben impresiones. Ahora cada uno enlaza a la clase gratuita que enseña lo mismo, con el nombre de la clase como texto del enlace. La clase enlaza de vuelta.
 
-| Página que ya existe | Clase a la que enlaza |
-|---|---|
-| `/vademecum/metformina` | Metformina: mecanismo, indicaciones, dosificación y ajuste renal |
-| `/vademecum/losartan`, `/vademecum/enalapril`, `/vademecum/valsartan` | IECA y ARA-II (curso de hipertensión) |
-| `/vademecum/amlodipino` | Calcioantagonistas en hipertensión: amlodipino |
-| `/vademecum/hidroclorotiazida` | Tiazidas y similares: hidroclorotiazida, clortalidona |
-| `/vademecum/furosemida` | Diuréticos de asa en IC: furosemida, torasemida y bumetanida |
-| `/vademecum/espironolactona` | Ficha: espironolactona (curso de insuficiencia cardiaca) |
-| `/vademecum/empagliflozina`, `/vademecum/semaglutida`, `/vademecum/liraglutida`, `/vademecum/tirzepatida` | Cómo elegir entre iSGLT2, agonista GLP-1 y tirzepatida |
-| `/vademecum/salbutamol`, `/vademecum/montelukast` | Agonistas beta-2: SABA y LABA · Ficha: montelukast sódico oral |
-| `/vademecum/sertralina`, `/vademecum/fluoxetina`, `/vademecum/amitriptilina` | las clases de antidepresivos (sistema nervioso central) |
-| `/vademecum/levotiroxina` | la clase de tiroides (farmacología endocrina) |
-| artículos de presión alta | las clases del curso de hipertensión: medición, crisis hipertensivas, adherencia |
+**Lo que quedó publicado** (commit 086c636, «SEO: enlaces entre vademécum, artículos y clases abiertas»):
 
-Se programa como un archivo de parejas (página → clase), con una prueba que verifique que cada enlace existe. Además:
+- **Parejas.** Están en `api/lib/enlaces-de-salud.js`: 49 monografías, 11 grupos del vademécum y 41 artículos enlazan a **121 clases distintas** de 8 cursos de salud. Una pareja solo entra si la clase nombra el medicamento en su título o lo trata a fondo en su texto. Se comprobó contando menciones en el texto de las 367 clases de producción.
+- **Vademécum.** Cada página tiene la sección «Apréndelo en clase, gratis», con sus clases y los cursos completos. Los grupos ponen primero el curso que enseña el tema (por ejemplo, diabetes tipo 2 lleva al Curso de Farmacoterapia de la Diabetes y al de Farmacología Endocrina).
+- **Artículos.** Llevan la sección «Para profesionales de la salud: clases gratuitas», con 1 a 3 clases y sus cursos. Entre ellos: los 8 de presión alta, las fichas `…-para-que-sirve` de medicamentos con clase, diabetes, insuficiencia cardiaca, asma, EPOC, inhaladores, levotiroxina y las guías «Cursos de hipertensión» y «Cursos de diabetes para profesionales».
+- **Clases.** Llevan la sección «Para profundizar» con tres bloques: «En el vademécum de Edvanta», «Para explicarle al paciente» y «Lecturas relacionadas».
+- **Datos estructurados.** Las tres páginas declaran `relatedLink` con las direcciones que enlazan.
+- **Prueba.** `src/__tests__/enlaces-de-salud.test.js` compara cada clase con `src/data/clases-abiertas.json`, la lista de producción. Esa lista se regenera con `node scripts/clases-abiertas.mjs` después de publicar, renombrar o retirar clases. Si una clase cambia de nombre o de dirección, la prueba falla hasta corregir la pareja.
 
-- las guías «Mejores cursos de…» y «Cursos de hipertensión para profesionales» enlazan a la ficha del curso propio y a dos o tres clases;
-- cada grupo del vademécum enlaza al curso que lo enseña.
+**Pendiente:**
+
+- **Sin clase propia que enlazar:** antidepresivos y ansiolíticos (sertralina, fluoxetina, trazodona, quetiapina, clonazepam), antibióticos ambulatorios, aparato digestivo, antimicóticos y antiparasitarios, oncología y anticoagulantes directos (apixabán, rivaroxabán). Se enlazarán cuando haya clases de esos temas.
+- **Clases de salud sin ningún enlace entrante:** 167 de 288, sobre todo introducciones de unidad, casos y temas sin página en el vademécum. Los artículos nuevos deberían apuntar a ellas.
+- **Monografías y artículos que otra sesión agregó el 17-nov y aún no tienen commit:** dapagliflozina, finerenona, gliclazida, el grupo de enfermedad renal crónica y 9 artículos (colesterol, triglicéridos, estatinas, artrosis, rodilla, fibromialgia, fibrilación auricular, anticoagulantes y warfarina). Sus parejas ya están escritas en el archivo en disco y suben junto con esas páginas.
 
 ### Mes 2: contenido y formato
 

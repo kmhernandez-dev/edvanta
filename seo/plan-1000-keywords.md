@@ -90,6 +90,11 @@ Con 10 a 40 consultas por página fuerte indexada, 3.000 consultas piden entre 1
   - la ficha del curso enlaza las clases.
 
   Se avisaron a Bing las 367 clases y las 11 fichas (378 URLs, HTTP 200). `scripts/indexnow.mjs` acepta ahora `--archivo=lista.txt`.
+- **17-nov (noche), enlaces entre vademécum, artículos y clases** (commit 086c636). Es el plan «Semanas 2 a 4» de `seo/estrategia-clases.md`:
+  - 49 monografías, 11 grupos del vademécum y 41 artículos enlazan a 121 clases abiertas, con el nombre de la clase como texto del enlace;
+  - cada clase enlaza de vuelta a su monografía y a la lectura para el paciente;
+  - `relatedLink` en el JSON-LD de las tres páginas;
+  - las parejas están en `api/lib/enlaces-de-salud.js` y la prueba compara cada clase con la lista de producción (`node scripts/clases-abiertas.mjs`).
 
 ## Dónde estamos (28 días al 10-nov-2026)
 
@@ -151,6 +156,7 @@ Una página sólida, ya indexada y con unos meses, suele aparecer en 10 a 40 con
 | 13-nov | **Antimicrobianos, lote 1:** 7 fichas para pacientes y el grupo «Antibióticos de uso ambulatorio» con 7 monografías; CTA profesionales añadidos a amoxicilina y azitromicina. Revisado por Karla el 13-nov. | 15 páginas nuevas, indexables; 17 URLs avisadas por IndexNow |
 | 13-nov | **Antimicrobianos, lote 2 y clases:** 8 fichas y 7 clases de antibióticos con enlazado cruzado. Revisado por Karla el 13-nov. | 15 páginas indexables |
 | 13-nov | **Vademécum, lote 2:** 8 monografías nuevas y 4 clases adicionales (aminoglucósidos, carbapenémicos, sulfonamidas y reserva); 3 artículos del lote 3 (PK/PD, dispensación y pilar de pacientes). | 15 páginas nuevas, en noindex hasta la revisión de Karla |
+| 17-nov | **Enlaces de salud:** el vademécum y los artículos enlazan a las clases abiertas que enseñan lo mismo, y cada clase enlaza de vuelta. Solo enlaces: no agrega texto clínico. | 60 páginas del vademécum y 41 artículos con enlaces nuevos; 121 clases con enlaces de vuelta |
 
 **Riesgo resuelto (12-nov):** las noticias de pritelivir, Ort-Flx, Anktiva y Mynzepli ya posicionaban (posiciones 2 a 9) y seguían en noindex. Al rastrearlas de nuevo, Google las habría sacado del índice. Ya tienen contenido propio y `index,follow`. La de pritelivir se pidió a Search Console; la cuota del día se agotó.
 
