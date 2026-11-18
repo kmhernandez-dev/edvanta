@@ -1,0 +1,142 @@
+import { F } from '../../vademecum/fuentes.js';
+import { FC } from '../fuentes.js';
+
+export default {
+  slug: 'pielonefritis',
+  titulo: 'Caso clínico de pielonefritis aguda',
+  enfermedad: 'Pielonefritis aguda',
+  area: 'infecciosas',
+  nivel: 'Intermedio',
+  minutos: 13,
+  actualizado: '2026-11-17',
+  seo: {
+    titulo: 'Caso clínico de pielonefritis con preguntas',
+    descripcion: 'Caso clínico de pielonefritis aguda: urocultivo, ciprofloxacino por 7 días, ceftriaxona, interacción con calcio y hierro, embarazo. Con respuestas.',
+    palabrasClave: ['caso clínico de pielonefritis', 'pielonefritis tratamiento preguntas', 'ciprofloxacino interacciones', 'infección urinaria alta caso clínico'],
+  },
+  objetivos: [
+    'Reconocer la pielonefritis y pedir el urocultivo.',
+    'Elegir el tratamiento ambulatorio y su duración.',
+    'Prevenir interacciones y usos inseguros de las quinolonas.',
+  ],
+  presentacion: 'Mónica tiene 34 años y consulta por fiebre de 38,9 °C, escalofríos, dolor lumbar derecho y ardor al orinar desde hace dos días. La puñopercusión derecha es positiva. Tolera la vía oral, no está embarazada y la función renal es normal. Toma carbonato de calcio y sulfato ferroso con el desayuno, y tizanidina por una contractura.',
+  datos: [
+    ['Temperatura', '38,9 °C con escalofríos'],
+    ['Examen', 'Puñopercusión renal derecha positiva'],
+    ['Uroanálisis', 'Leucocituria y nitritos positivos'],
+    ['Vía oral', 'Tolera, sin vómito'],
+    ['Embarazo', 'No'],
+    ['Medicamentos', 'Carbonato de calcio, sulfato ferroso, tizanidina'],
+  ],
+  preguntas: [
+    {
+      tipo: 'opcion',
+      enunciado: '¿Qué se hace antes de iniciar el antibiótico?',
+      opciones: ['Nada más', 'Urocultivo con antibiograma', 'Tomografía de abdomen siempre', 'Prueba de embarazo solo si hay retraso'],
+      correcta: 1,
+      explicacion: 'En la pielonefritis se pide urocultivo con antibiograma para ajustar el tratamiento al resultado [1].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: '¿Cuál es un tratamiento ambulatorio adecuado si la resistencia local a quinolonas es baja?',
+      opciones: ['Nitrofurantoína por 5 días', 'Ciprofloxacino 500 mg cada 12 horas por 7 días', 'Fosfomicina en dosis única', 'Amoxicilina 500 mg por 3 días'],
+      correcta: 1,
+      explicacion: 'La guía propone ciprofloxacino por 7 días cuando la resistencia local es menor de 10 %; si es mayor, se agrega una dosis inicial parenteral, como 1 g de ceftriaxona [1]. La OMS clasifica las quinolonas como antibióticos de Vigilancia [5].',
+    },
+    {
+      tipo: 'completar',
+      enunciado: 'El ciprofloxacino para la pielonefritis no complicada se indica por ___ días.',
+      respuestas: ['7', 'siete'],
+      pista: 'Una semana.',
+      explicacion: 'Siete días de ciprofloxacino son suficientes en la pielonefritis no complicada con buena respuesta [1].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: '¿Cómo debe tomar el ciprofloxacino respecto al calcio y al hierro?',
+      opciones: [
+        'Todo junto con el desayuno',
+        'El ciprofloxacino 1 a 2 horas antes o al menos 4 horas después del calcio y el hierro',
+        'Con leche para proteger el estómago',
+        'Da igual',
+      ],
+      correcta: 1,
+      explicacion: 'Los cationes como el calcio, el magnesio, el aluminio y el hierro forman quelatos con el ciprofloxacino y reducen su absorción; la ficha indica tomarlo 1 a 2 horas antes o al menos 4 horas después [2].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: '¿Qué problema hay con la tizanidina?',
+      opciones: [
+        'Ninguno',
+        'Está contraindicada con ciprofloxacino: aumenta mucho su concentración y causa hipotensión y somnolencia',
+        'La tizanidina anula el antibiótico',
+        'Causa orina anaranjada',
+      ],
+      correcta: 1,
+      explicacion: 'El ciprofloxacino inhibe CYP1A2 y eleva la tizanidina; la combinación está contraindicada [2].',
+    },
+    {
+      tipo: 'relacionar',
+      enunciado: 'Relaciona cada antibiótico con su precaución.',
+      pares: [
+        ['Ciprofloxacino', 'Tendinitis y rotura de tendones'],
+        ['Ceftriaxona', 'No mezclar con soluciones intravenosas que contienen calcio'],
+        ['Trimetoprim/sulfametoxazol', 'Hiperpotasemia'],
+        ['Nitrofurantoína', 'No sirve para la pielonefritis'],
+      ],
+      explicacion: 'Las quinolonas pueden causar tendinopatía [2]; la ceftriaxona puede precipitar con calcio [3]; el cotrimoxazol puede elevar el potasio [4]; la nitrofurantoína no alcanza el riñón [1].',
+    },
+    {
+      tipo: 'completar',
+      enunciado: 'La ceftriaxona es una cefalosporina de ___ generación.',
+      respuestas: ['tercera', '3', '3a', '3.a'],
+      pista: 'Después de la segunda.',
+      explicacion: 'La ceftriaxona es una cefalosporina de tercera generación de administración parenteral [3].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: 'Si Mónica estuviera embarazada, ¿qué cambia?',
+      opciones: [
+        'Nada',
+        'Se hospitaliza y se usa un betalactámico parenteral, como ceftriaxona; el ciprofloxacino se evita en el embarazo',
+        'Se usa nitrofurantoína',
+        'Se trata solo con líquidos',
+      ],
+      correcta: 1,
+      explicacion: 'La ficha del ciprofloxacino recomienda evitarlo en el embarazo [2]; la pielonefritis gestacional suele requerir hospitalización y un betalactámico parenteral como la ceftriaxona [3].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: 'A las 72 horas Mónica sigue con fiebre alta. ¿Qué haces?',
+      opciones: [
+        'Esperar a que termine el antibiótico',
+        'Reevaluar: revisar el urocultivo, buscar obstrucción o absceso con imágenes y ajustar el antibiótico',
+        'Agregar acetaminofén y ya',
+        'Suspender el antibiótico',
+      ],
+      correcta: 1,
+      explicacion: 'La falta de respuesta en 48 a 72 horas obliga a revisar el antibiograma y a buscar complicaciones como obstrucción o absceso [1].',
+    },
+    {
+      tipo: 'relacionar',
+      enunciado: 'Relaciona cada dato con la conducta.',
+      pares: [
+        ['Vómito persistente o sepsis', 'Hospitalizar'],
+        ['Urocultivo con E. coli resistente al ciprofloxacino', 'Cambiar según el antibiograma'],
+        ['Mejoría clínica en 48 horas', 'Completar el esquema'],
+      ],
+      explicacion: 'La intolerancia oral o la sepsis requieren manejo hospitalario, y el tratamiento se ajusta siempre al antibiograma [1].',
+    },
+  ],
+  claves: [
+    'Pielonefritis: urocultivo antes del antibiótico [1].',
+    'Ciprofloxacino 7 días si la resistencia local es baja; si no, una dosis inicial de ceftriaxona [1].',
+    'Ciprofloxacino: separar de calcio y hierro (1 a 2 h antes o 4 h después); contraindicado con tizanidina [2].',
+    'Reevaluar si no mejora en 48 a 72 horas [1].',
+  ],
+  referencias: [FC.idsaCistitis2011, F.ftCiprofloxacino, F.ftCeftriaxona, F.ftSeptrin, F.whoAware2023],
+  enlaces: [
+    ['Ciprofloxacino', '/vademecum/ciprofloxacino', 'Vademécum'],
+    ['Ceftriaxona', '/vademecum/ceftriaxona', 'Vademécum'],
+    ['Infección urinaria: síntomas y tratamiento', '/articulos/infeccion-urinaria-sintomas-tratamiento', 'Artículo'],
+  ],
+};

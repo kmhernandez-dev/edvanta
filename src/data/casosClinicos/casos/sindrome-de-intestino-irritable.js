@@ -1,0 +1,137 @@
+import { F } from '../../vademecum/fuentes.js';
+import { FC } from '../fuentes.js';
+
+export default {
+  slug: 'sindrome-de-intestino-irritable',
+  titulo: 'Caso clínico de síndrome de intestino irritable',
+  enfermedad: 'Síndrome de intestino irritable',
+  area: 'digestivo',
+  nivel: 'Intermedio',
+  minutos: 12,
+  actualizado: '2026-11-17',
+  seo: {
+    titulo: 'Caso clínico de colon irritable con preguntas',
+    descripcion: 'Caso clínico de síndrome de intestino irritable: criterios de Roma IV, signos de alarma, fibra soluble, dieta baja en FODMAP y amitriptilina.',
+    palabrasClave: ['caso clínico de colon irritable', 'síndrome de intestino irritable tratamiento', 'dieta baja en FODMAP', 'butilescopolamina'],
+  },
+  objetivos: [
+    'Hacer un diagnóstico positivo y reconocer los signos de alarma.',
+    'Elegir medidas dietarias y farmacológicas según el síntoma.',
+    'Conocer las precauciones de los fármacos usados.',
+  ],
+  presentacion: 'Natalia tiene 29 años y desde hace 8 meses tiene dolor abdominal tipo cólico que mejora al defecar, con heces blandas y distensión, sobre todo en épocas de estrés. No tiene sangrado, pérdida de peso, anemia ni síntomas nocturnos, y no hay antecedente familiar de cáncer de colon. Toma loperamida y butilescopolamina por su cuenta, con alivio parcial. Tiene glaucoma de ángulo cerrado en estudio.',
+  datos: [
+    ['Dolor', 'Cólico, recurrente, mejora al defecar'],
+    ['Deposiciones', 'Blandas, con distensión'],
+    ['Duración', '8 meses'],
+    ['Signos de alarma', 'Ninguno'],
+    ['Automedicación', 'Loperamida y butilescopolamina'],
+    ['Antecedente', 'Glaucoma de ángulo cerrado en estudio'],
+  ],
+  preguntas: [
+    {
+      tipo: 'opcion',
+      enunciado: 'Sin signos de alarma, ¿cómo se aborda el diagnóstico?',
+      opciones: [
+        'Con una estrategia diagnóstica positiva basada en los criterios de Roma IV, sin estudios exhaustivos',
+        'Con colonoscopia obligatoria a toda edad',
+        'Con tomografía de abdomen cada año',
+        'Con antibióticos de prueba',
+      ],
+      correcta: 0,
+      explicacion: 'La guía del ACG recomienda un enfoque diagnóstico positivo, en lugar de una estrategia de exclusión, en pacientes sin signos de alarma [1].',
+    },
+    {
+      tipo: 'relacionar',
+      enunciado: 'Relaciona cada hallazgo con su significado.',
+      pares: [
+        ['Dolor relacionado con la defecación', 'Criterio de Roma IV'],
+        ['Sangrado rectal', 'Signo de alarma que obliga a estudiar'],
+        ['Pérdida de peso no intencional', 'Signo de alarma de enfermedad orgánica'],
+      ],
+      explicacion: 'Los criterios de Roma IV se basan en el dolor relacionado con la defecación y el cambio en la forma o la frecuencia de las heces; el sangrado y la pérdida de peso son signos de alarma [1].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: '¿Qué tipo de fibra se recomienda?',
+      opciones: ['Fibra insoluble, como el salvado', 'Fibra soluble, como el psyllium', 'Ninguna', 'Solo fibra en cápsulas de carbón'],
+      correcta: 1,
+      explicacion: 'El ACG sugiere la fibra soluble para los síntomas globales; la insoluble puede empeorar la distensión [1].',
+    },
+    {
+      tipo: 'completar',
+      enunciado: 'El ACG sugiere una prueba limitada de dieta baja en ___ para mejorar los síntomas.',
+      respuestas: ['fodmap', 'fodmaps'],
+      pista: 'Sigla de carbohidratos fermentables.',
+      explicacion: 'La dieta baja en FODMAP, idealmente guiada por un nutricionista y por tiempo limitado, mejora los síntomas globales [1].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: '¿Qué fármaco recomienda el ACG para los síntomas globales del SII?',
+      opciones: ['Antibióticos de amplio espectro', 'Antidepresivos tricíclicos en dosis bajas', 'Corticoides', 'Opioides'],
+      correcta: 1,
+      explicacion: 'Los antidepresivos tricíclicos, como la amitriptilina en dosis bajas, actúan como neuromoduladores del eje intestino-cerebro y mejoran los síntomas globales [1]. Tienen efectos anticolinérgicos [4].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: '¿Por qué preocupa la butilescopolamina en Natalia?',
+      opciones: [
+        'Porque produce diarrea',
+        'Porque es un anticolinérgico contraindicado en el glaucoma de ángulo cerrado',
+        'Porque sube la glucosa',
+        'No hay problema',
+      ],
+      correcta: 1,
+      explicacion: 'La butilescopolamina es un antiespasmódico anticolinérgico; su ficha la contraindica en el glaucoma de ángulo cerrado [3].',
+    },
+    {
+      tipo: 'completar',
+      enunciado: 'La butilescopolamina está contraindicada en el glaucoma de ángulo ___.',
+      respuestas: ['cerrado', 'estrecho'],
+      pista: 'Lo contrario de abierto.',
+      explicacion: 'Los anticolinérgicos pueden precipitar una crisis de glaucoma de ángulo cerrado [3].',
+    },
+    {
+      tipo: 'relacionar',
+      enunciado: 'Relaciona cada medicamento con su papel.',
+      pares: [
+        ['Loperamida', 'Reduce la frecuencia de las deposiciones, no el dolor'],
+        ['Butilescopolamina', 'Antiespasmódico anticolinérgico'],
+        ['Amitriptilina en dosis bajas', 'Neuromodulador para los síntomas globales'],
+        ['Rifaximina', 'Antibiótico no absorbible para el SII con diarrea'],
+      ],
+      explicacion: 'La loperamida mejora la frecuencia de las deposiciones [2]; la butilescopolamina relaja el músculo liso [3]; la amitriptilina y la rifaximina tienen recomendación del ACG para síntomas globales y SII con diarrea, respectivamente [1].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: 'Natalia nota que el estrés empeora sus síntomas. ¿Qué intervención tiene evidencia?',
+      opciones: ['Psicoterapia dirigida al intestino o terapia cognitivo-conductual', 'Ayuno prolongado', 'Laxantes estimulantes diarios', 'Ninguna'],
+      correcta: 0,
+      explicacion: 'El ACG sugiere las psicoterapias dirigidas al intestino para los síntomas globales del SII [1].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: '¿Qué le explicas sobre la evolución del SII?',
+      opciones: [
+        'Que se cura con un antibiótico',
+        'Que es un trastorno crónico de la interacción intestino-cerebro; el tratamiento busca controlar los síntomas',
+        'Que siempre evoluciona a cáncer',
+        'Que se debe operar',
+      ],
+      correcta: 1,
+      explicacion: 'El SII es un trastorno crónico; el objetivo es mejorar los síntomas y la calidad de vida con medidas escalonadas [1].',
+    },
+  ],
+  claves: [
+    'Diagnóstico positivo con Roma IV si no hay alarma [1].',
+    'Fibra soluble y prueba limitada de dieta baja en FODMAP [1].',
+    'Tricíclicos en dosis bajas para síntomas globales [1].',
+    'Butilescopolamina: contraindicada en el glaucoma de ángulo cerrado [3].',
+  ],
+  referencias: [FC.acgSii2021, F.ftLoperamida, F.ftButilescopolamina, F.ftAmitriptilina],
+  enlaces: [
+    ['Butilescopolamina', '/vademecum/butilescopolamina', 'Vademécum'],
+    ['Loperamida', '/vademecum/loperamida', 'Vademécum'],
+    ['Medicamentos para el aparato digestivo', '/vademecum/medicamentos-para-el-aparato-digestivo', 'Vademécum'],
+  ],
+};

@@ -129,6 +129,7 @@ export const FOOTER_COLUMNS = [
       { label: 'Guías y kits', to: '/guias' },
       { label: 'Artículos', to: '/articulos' },
       { label: 'Vademécum', to: '/vademecum' },
+      { label: 'Casos clínicos para practicar', to: '/casos-clinicos' },
       { label: 'Biblioteca de referencias', to: '/recursos' },
     ],
   },

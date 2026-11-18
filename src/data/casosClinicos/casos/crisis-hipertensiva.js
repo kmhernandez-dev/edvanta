@@ -1,0 +1,143 @@
+import { F } from '../../vademecum/fuentes.js';
+import { FC } from '../fuentes.js';
+
+export default {
+  slug: 'crisis-hipertensiva',
+  titulo: 'Caso clínico de crisis hipertensiva',
+  enfermedad: 'Crisis hipertensiva',
+  area: 'cardiovascular',
+  nivel: 'Intermedio',
+  minutos: 13,
+  actualizado: '2026-11-17',
+  seo: {
+    titulo: 'Caso clínico de crisis hipertensiva: urgencia o emergencia',
+    descripcion: 'Caso clínico de crisis hipertensiva: diferencia entre urgencia y emergencia, daño agudo de órgano, labetalol y cuánto bajar la presión. Con respuestas.',
+    palabrasClave: ['caso clínico crisis hipertensiva', 'urgencia y emergencia hipertensiva', 'preguntas crisis hipertensiva', 'labetalol crisis hipertensiva'],
+  },
+  objetivos: [
+    'Distinguir la urgencia de la emergencia hipertensiva por el daño agudo de órgano.',
+    'Saber cuánto y qué tan rápido bajar la presión.',
+    'Reconocer los fármacos y sus contraindicaciones.',
+  ],
+  presentacion: 'Gloria tiene 66 años y llega a urgencias de un hospital de Cali con cefalea leve. Su presión es 196/118 mmHg en tres tomas. Es hipertensa y tomaba losartán 50 mg al día, pero lo dejó hace dos semanas porque «ya se sentía bien». No tiene dolor torácico, disnea ni síntomas neurológicos; el electrocardiograma no muestra isquemia, la creatinina es normal y el fondo de ojo no tiene hemorragias. Pide «una pastilla debajo de la lengua» para bajarla rápido, como le dieron a una vecina.',
+  datos: [
+    ['Presión arterial', '196/118 mmHg (tres tomas)'],
+    ['Síntomas', 'Cefalea leve; sin dolor torácico, disnea ni déficit neurológico'],
+    ['Electrocardiograma', 'Sin cambios isquémicos agudos'],
+    ['Creatinina', '0,9 mg/dL (igual a la previa)'],
+    ['Fondo de ojo', 'Sin hemorragias ni papiledema'],
+    ['Tratamiento previo', 'Losartán 50 mg al día, suspendido hace 2 semanas'],
+  ],
+  preguntas: [
+    {
+      tipo: 'opcion',
+      enunciado: '¿Cómo se clasifica el cuadro de Gloria?',
+      opciones: [
+        'Emergencia hipertensiva',
+        'Hipertensión grave sin daño agudo de órgano (urgencia hipertensiva)',
+        'Presión arterial normal alta',
+        'Hipotensión ortostática',
+      ],
+      correcta: 1,
+      explicacion: 'La emergencia exige daño agudo de órgano (cerebro, corazón, riñón, retina, grandes vasos). Gloria tiene una presión muy alta, pero sin daño agudo: es una urgencia hipertensiva [1].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: '¿A partir de qué cifra se suele hablar de hipertensión grave al evaluar una crisis?',
+      opciones: ['140/90 mmHg', '160/100 mmHg', '180/110 mmHg', '220/140 mmHg'],
+      correcta: 2,
+      explicacion: 'Las crisis hipertensivas se evalúan, por lo general, con cifras de 180/110 mmHg o más; lo que separa la urgencia de la emergencia no es la cifra sino el daño agudo de órgano [1].',
+    },
+    {
+      tipo: 'relacionar',
+      enunciado: 'Relaciona cada hallazgo con el daño agudo de órgano que sugiere (y que convertiría el cuadro en emergencia).',
+      pares: [
+        ['Déficit neurológico focal', 'Ictus o encefalopatía hipertensiva'],
+        ['Dolor torácico con cambios en el ECG', 'Síndrome coronario agudo'],
+        ['Disnea con crepitantes', 'Edema pulmonar agudo'],
+        ['Creatinina que sube de forma aguda', 'Lesión renal aguda'],
+      ],
+      explicacion: 'La guía enumera como daño agudo de órgano la afectación cerebral, cardiaca, pulmonar, renal, retiniana y aórtica; cualquiera de ellas convierte la crisis en emergencia [1].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: '¿Cuál es el manejo adecuado para Gloria?',
+      opciones: [
+        'Labetalol intravenoso en unidad de cuidados intensivos',
+        'Reiniciar el tratamiento oral y bajar la presión de forma gradual en horas a días, con control cercano',
+        'Nifedipino sublingual para normalizarla en minutos',
+        'Darla de alta sin tratamiento',
+      ],
+      correcta: 1,
+      explicacion: 'En la urgencia hipertensiva se reinicia o ajusta el tratamiento oral y la presión se baja de forma progresiva, con seguimiento cercano. Los fármacos intravenosos se reservan para la emergencia [1].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: '¿Por qué no se recomienda bajar la presión de golpe?',
+      opciones: [
+        'Porque produce hiperpotasemia',
+        'Porque el cerebro, el corazón y el riñón están adaptados a presiones altas y un descenso brusco puede causar isquemia',
+        'Porque produce tos',
+        'Porque los medicamentos orales no funcionan',
+      ],
+      correcta: 1,
+      explicacion: 'En la hipertensión crónica la autorregulación del flujo cerebral, coronario y renal se desplaza hacia presiones más altas; un descenso brusco puede provocar isquemia [1].',
+    },
+    {
+      tipo: 'completar',
+      enunciado: 'En la mayoría de las emergencias hipertensivas se busca bajar la presión arterial media no más de un ___ % en las primeras horas.',
+      respuestas: ['25', '25 %', 'veinticinco'],
+      pista: 'Es un cuarto.',
+      explicacion: 'La meta habitual es reducir la presión arterial media hasta un 25 % en las primeras horas. Las excepciones son la disección aórtica, la preeclampsia grave y algunos casos de ictus, que tienen metas propias [1].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: 'Si Gloria tuviera una emergencia, ¿en qué paciente estaría contraindicado el labetalol?',
+      opciones: ['En el asmático con broncoespasmo', 'En la embarazada', 'En el diabético', 'En el adulto mayor'],
+      correcta: 0,
+      explicacion: 'El labetalol bloquea receptores alfa y beta no selectivos; está contraindicado en el asma bronquial, la bradicardia importante y el bloqueo auriculoventricular [2]. En la embarazada es de primera línea.',
+    },
+    {
+      tipo: 'relacionar',
+      enunciado: 'Relaciona cada medicamento con su papel en la crisis.',
+      pares: [
+        ['Labetalol intravenoso', 'Bloqueo alfa y beta para la emergencia'],
+        ['Nitroglicerina intravenosa', 'Edema pulmonar o síndrome coronario agudo'],
+        ['Sulfato de magnesio', 'Prevención de la eclampsia, no como antihipertensivo'],
+      ],
+      explicacion: 'El labetalol es un bloqueador alfa y beta útil en varias emergencias [2]. La guía prefiere la nitroglicerina cuando hay edema pulmonar o síndrome coronario [1]. El sulfato de magnesio se usa para prevenir las convulsiones de la eclampsia [4].',
+    },
+    {
+      tipo: 'completar',
+      enunciado: 'Adalat Oros es nifedipino de liberación ___: no se debe partir, masticar ni triturar.',
+      respuestas: ['prolongada', 'controlada', 'sostenida', 'modificada'],
+      pista: 'Libera el medicamento poco a poco durante el día.',
+      explicacion: 'El comprimido OROS libera nifedipino de forma prolongada durante 24 horas y debe tragarse entero; partirlo rompe ese sistema [3].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: 'Gloria dejó el losartán «porque se sentía bien». ¿Qué es lo más útil antes de su alta?',
+      opciones: [
+        'Cambiarle el losartán por un remedio natural',
+        'Explicarle que la hipertensión no da síntomas, que el losartán alcanza su efecto completo en 3 a 6 semanas y no debe suspenderse, y programar control cercano',
+        'Recomendarle tomarlo solo cuando tenga cefalea',
+        'Indicarle duplicar la dosis cuando se sienta mal',
+      ],
+      correcta: 1,
+      explicacion: 'El abandono del tratamiento es una causa frecuente de crisis. La ficha técnica describe que el efecto antihipertensivo máximo del losartán se alcanza en 3 a 6 semanas [5], así que se toma todos los días, con o sin síntomas [1].',
+    },
+  ],
+  claves: [
+    'Urgencia frente a emergencia: lo que decide es el daño agudo de órgano, no la cifra [1].',
+    'Urgencia: tratamiento oral y descenso gradual; emergencia: tratamiento intravenoso y monitorización [1].',
+    'En la emergencia, bajar la presión arterial media hasta 25 % en las primeras horas, salvo excepciones [1].',
+    'Labetalol: contraindicado en asma y bradicardia [2]; Adalat Oros no se parte [3].',
+  ],
+  referencias: [F.escHipertension2024, FC.ftLabetalol, FC.ftAdalatOros, FC.ftSulfatoMagnesio, F.ftLosartan],
+  enlaces: [
+    ['Crisis hipertensiva: qué hacer si la presión está muy alta', '/articulos/crisis-hipertensiva-que-hacer', 'Artículo'],
+    ['Losartán', '/vademecum/losartan', 'Vademécum'],
+    ['Medicamentos para la hipertensión arterial', '/vademecum/medicamentos-para-la-hipertension-arterial', 'Vademécum'],
+    ['Curso de Farmacoterapia de la Hipertensión Arterial', '/curso-de-farmacoterapia-de-la-hipertension-arterial', 'Curso gratis'],
+  ],
+};

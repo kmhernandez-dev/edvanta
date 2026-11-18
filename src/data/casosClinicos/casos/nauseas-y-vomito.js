@@ -1,0 +1,133 @@
+import { F } from '../../vademecum/fuentes.js';
+import { FC } from '../fuentes.js';
+
+export default {
+  slug: 'nauseas-y-vomito',
+  titulo: 'Caso clínico de náuseas, vómito y antieméticos',
+  enfermedad: 'Náuseas y vómito agudos',
+  area: 'digestivo',
+  nivel: 'Intermedio',
+  minutos: 12,
+  actualizado: '2026-11-17',
+  seo: {
+    titulo: 'Caso clínico de distonía por metoclopramida',
+    descripcion: 'Caso clínico de vómito y antieméticos: distonía aguda por metoclopramida, dosis y duración máximas, ondansetrón, domperidona y dimenhidrinato.',
+    palabrasClave: ['caso clínico metoclopramida', 'distonía aguda por metoclopramida', 'antieméticos preguntas', 'ondansetrón QT'],
+  },
+  objetivos: [
+    'Reconocer la distonía aguda por metoclopramida y tratarla.',
+    'Respetar la dosis y la duración máximas de los antieméticos.',
+    'Elegir el antiemético según el riesgo de cada paciente.',
+  ],
+  presentacion: 'Juliana tiene 19 años y consulta por gastroenteritis con vómito. Le formulan metoclopramida 10 mg cada 8 horas. Al día siguiente presenta tortícolis, la mirada fija hacia arriba y contracción de la mandíbula, y la familia cree que es una convulsión. Su hermana, que viaja mañana en bus a la costa, quiere dimenhidrinato para el mareo y piensa conducir al llegar.',
+  datos: [
+    ['Cuadro', 'Gastroenteritis con vómito'],
+    ['Antiemético', 'Metoclopramida 10 mg cada 8 horas'],
+    ['Síntomas nuevos', 'Tortícolis, crisis oculógira y trismus a las 24 h'],
+    ['Edad', '19 años'],
+    ['Hermana', 'Mareo en viajes; conducirá al llegar'],
+  ],
+  preguntas: [
+    {
+      tipo: 'opcion',
+      enunciado: '¿Qué le está pasando a Juliana?',
+      opciones: ['Una crisis epiléptica', 'Una distonía aguda, un efecto extrapiramidal de la metoclopramida', 'Una meningitis', 'Una reacción a la gastroenteritis'],
+      correcta: 1,
+      explicacion: 'La metoclopramida bloquea receptores D2 y puede causar reacciones extrapiramidales agudas, más frecuentes en jóvenes [2].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: '¿Qué se hace ante la distonía de Juliana?',
+      opciones: [
+        'Seguir con la metoclopramida',
+        'Suspenderla; los síntomas suelen ceder y, si es necesario, se tratan con un anticolinérgico antiparkinsoniano',
+        'Duplicar la dosis',
+        'Dar un antibiótico',
+      ],
+      correcta: 1,
+      explicacion: 'Los síntomas extrapiramidales desaparecen al suspender el fármaco y pueden tratarse con anticolinérgicos antiparkinsonianos en adultos o benzodiacepinas en niños [2].',
+    },
+    {
+      tipo: 'completar',
+      enunciado: 'La duración máxima del tratamiento con metoclopramida es de ___ días.',
+      respuestas: ['5', 'cinco'],
+      pista: 'Menos de una semana.',
+      explicacion: 'La EMA restringió la metoclopramida a un máximo de 5 días por el riesgo de efectos neurológicos [1,2].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: '¿Cuál es la dosis máxima diaria de metoclopramida en adultos?',
+      opciones: ['10 mg', '30 mg o 0,5 mg/kg', '60 mg', '100 mg'],
+      correcta: 1,
+      explicacion: 'La ficha fija la dosis máxima diaria en 30 mg o 0,5 mg/kg de peso, con dosis de 10 mg hasta tres veces al día [2].',
+    },
+    {
+      tipo: 'relacionar',
+      enunciado: 'Relaciona cada antiemético con su riesgo principal.',
+      pares: [
+        ['Metoclopramida', 'Distonía aguda y discinesia tardía'],
+        ['Ondansetrón', 'Prolongación del QT y estreñimiento'],
+        ['Domperidona', 'Prolongación del QT; uso máximo de 7 días'],
+        ['Dimenhidrinato', 'Somnolencia'],
+      ],
+      explicacion: 'Las fichas describen los efectos extrapiramidales de la metoclopramida [2], el QT y el estreñimiento del ondansetrón [3], el riesgo cardiaco de la domperidona con su duración máxima [4] y la somnolencia del dimenhidrinato [5].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: '¿En qué población está contraindicada la metoclopramida?',
+      opciones: ['En adultos mayores de 40 años', 'En niños menores de 1 año', 'En embarazadas siempre', 'En hombres'],
+      correcta: 1,
+      explicacion: 'La ficha la contraindica en menores de 1 año por el riesgo aumentado de trastornos extrapiramidales [2].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: '¿Cuándo debe tomar el dimenhidrinato la hermana y qué le adviertes?',
+      opciones: [
+        'Al llegar, para manejar descansada',
+        'Antes del viaje, porque actúa a los 15 a 30 minutos, y advertirle que produce somnolencia: no debe conducir bajo su efecto',
+        'Con alcohol para potenciarlo',
+        'Solo si vomita',
+      ],
+      correcta: 1,
+      explicacion: 'El efecto antiemético comienza a los 15 a 30 minutos; la somnolencia es frecuente y afecta la capacidad de conducir [5].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: 'En la gastroenteritis, ¿qué es lo primero además del antiemético?',
+      opciones: ['Antibiótico', 'Rehidratación oral', 'Ayuno de 3 días', 'Laxante'],
+      correcta: 1,
+      explicacion: 'La rehidratación es la base del manejo de la gastroenteritis aguda [6].',
+    },
+    {
+      tipo: 'completar',
+      enunciado: 'La domperidona no debe usarse por más de ___ días por su riesgo cardiaco.',
+      respuestas: ['7', 'siete'],
+      pista: 'Una semana.',
+      explicacion: 'La ficha limita la domperidona a la dosis más baja eficaz durante el menor tiempo, en general no más de 7 días [4].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: '¿Por qué la EMA restringió la metoclopramida en 2013?',
+      opciones: [
+        'Por falta de eficacia en todo uso',
+        'Por el riesgo de efectos neurológicos, incluida la discinesia tardía potencialmente irreversible, con dosis altas o uso prolongado',
+        'Por hepatotoxicidad',
+        'Por su costo',
+      ],
+      correcta: 1,
+      explicacion: 'La revisión de la EMA concluyó que los riesgos neurológicos superaban los beneficios en el uso prolongado o a dosis altas, y limitó la dosis y la duración [1].',
+    },
+  ],
+  claves: [
+    'Metoclopramida: máximo 30 mg o 0,5 mg/kg al día y 5 días; contraindicada en menores de 1 año [1,2].',
+    'Distonía aguda: suspender; anticolinérgicos si es necesario [2].',
+    'Ondansetrón y domperidona: QT; domperidona hasta 7 días [3,4].',
+    'Dimenhidrinato: tomarlo antes del viaje; no conducir [5].',
+  ],
+  referencias: [FC.emaMetoclopramida, F.ftMetoclopramida, F.ftOndansetron, F.ftDomperidona, F.ftDimenhidrinato, FC.acgDiarrea2016],
+  enlaces: [
+    ['Metoclopramida', '/vademecum/metoclopramida', 'Vademécum'],
+    ['Ondansetrón', '/vademecum/ondansetron', 'Vademécum'],
+    ['Dimenhidrinato', '/vademecum/dimenhidrinato', 'Vademécum'],
+  ],
+};

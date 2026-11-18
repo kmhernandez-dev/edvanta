@@ -1,0 +1,122 @@
+import { F } from '../../vademecum/fuentes.js';
+import { FC } from '../fuentes.js';
+
+export default {
+  slug: 'esquizofrenia',
+  titulo: 'Caso clínico de esquizofrenia y antipsicóticos',
+  enfermedad: 'Esquizofrenia',
+  area: 'neurologia',
+  nivel: 'Avanzado',
+  minutos: 14,
+  actualizado: '2026-11-17',
+  seo: {
+    titulo: 'Caso clínico de esquizofrenia y antipsicóticos',
+    descripcion: 'Caso clínico de esquizofrenia: risperidona, hiperprolactinemia, efectos extrapiramidales, síndrome metabólico, neuroléptico maligno y clozapina.',
+    palabrasClave: ['caso clínico de esquizofrenia', 'antipsicóticos efectos adversos', 'síndrome neuroléptico maligno caso clínico', 'risperidona prolactina'],
+  },
+  objetivos: [
+    'Relacionar cada antipsicótico con sus efectos adversos.',
+    'Vigilar el riesgo metabólico y reconocer el síndrome neuroléptico maligno.',
+    'Apoyar la adherencia con las opciones disponibles.',
+  ],
+  presentacion: 'Santiago tiene 24 años y tuvo un primer episodio psicótico con alucinaciones auditivas e ideas de persecución. Inició risperidona 4 mg al día. A los 3 meses ha subido 6 kg, tiene secreción por el pezón y dejó de tomarla varios días porque «se siente lento». Su mamá pregunta si hay una inyección «para no tener que darle pastillas». En la consulta tiene rigidez leve en los brazos.',
+  datos: [
+    ['Diagnóstico', 'Primer episodio de esquizofrenia'],
+    ['Tratamiento', 'Risperidona 4 mg al día por 3 meses'],
+    ['Peso', '+6 kg en 3 meses'],
+    ['Síntoma nuevo', 'Galactorrea'],
+    ['Examen', 'Rigidez leve en los brazos'],
+    ['Adherencia', 'Omisiones de varios días'],
+  ],
+  preguntas: [
+    {
+      tipo: 'opcion',
+      enunciado: '¿Cuál es el tratamiento farmacológico de base de la esquizofrenia?',
+      opciones: ['Benzodiacepinas', 'Antipsicóticos', 'Antidepresivos solos', 'Estabilizadores del ánimo solos'],
+      correcta: 1,
+      explicacion: 'La guía de la APA recomienda tratar la esquizofrenia con un antipsicótico y mantenerlo cuando hay respuesta [1].',
+    },
+    {
+      tipo: 'relacionar',
+      enunciado: 'Relaciona cada antipsicótico con su efecto adverso característico.',
+      pares: [
+        ['Risperidona', 'Hiperprolactinemia: galactorrea y ginecomastia'],
+        ['Haloperidol', 'Síntomas extrapiramidales y prolongación del QT'],
+        ['Quetiapina', 'Sedación, aumento de peso y de la glucosa'],
+        ['Clozapina', 'Reservada a la esquizofrenia resistente, con vigilancia de neutrófilos'],
+      ],
+      explicacion: 'La risperidona eleva la prolactina [2]; el haloperidol produce efectos extrapiramidales y puede prolongar el QT [3]; la quetiapina se asocia a cambios metabólicos [4]; la clozapina se reserva a la esquizofrenia resistente y requiere controlar los neutrófilos [1].',
+    },
+    {
+      tipo: 'completar',
+      enunciado: 'La galactorrea por risperidona se debe al aumento de la ___.',
+      respuestas: ['prolactina'],
+      pista: 'Hormona de la lactancia.',
+      explicacion: 'El bloqueo de los receptores D2 en la vía tuberoinfundibular eleva la prolactina; la ficha describe galactorrea, ginecomastia y alteraciones menstruales [2].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: 'Con un aumento de 6 kg en 3 meses, ¿qué se debe vigilar?',
+      opciones: ['Solo el peso', 'El peso, la cintura, la glucosa, los lípidos y la presión arterial', 'Nada', 'La audición'],
+      correcta: 1,
+      explicacion: 'La APA recomienda vigilar el riesgo metabólico durante el tratamiento antipsicótico: peso, glucosa, lípidos y presión arterial [1,2].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: 'Si Santiago presentara fiebre alta, rigidez intensa, confusión y CK muy elevada, ¿qué sospechas?',
+      opciones: ['Gripe', 'Síndrome neuroléptico maligno: suspender el antipsicótico y atención urgente', 'Deshidratación leve', 'Ansiedad'],
+      correcta: 1,
+      explicacion: 'Es un cuadro grave asociado a los antipsicóticos; las fichas indican suspenderlos y tratar de inmediato [2,3].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: 'La mamá pregunta por una inyección. ¿Qué opción existe para mejorar la adherencia?',
+      opciones: ['Ninguna', 'Antipsicóticos inyectables de acción prolongada', 'Una benzodiacepina inyectable diaria', 'Vitamina B12 inyectada'],
+      correcta: 1,
+      explicacion: 'La APA sugiere los antipsicóticos inyectables de acción prolongada cuando el paciente los prefiere o hay antecedentes de baja adherencia [1].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: 'Si aparece una distonía aguda (contracción del cuello o de los ojos) tras una dosis, ¿qué se usa?',
+      opciones: ['Un anticolinérgico', 'Más antipsicótico', 'Un AINE', 'Un antibiótico'],
+      correcta: 0,
+      explicacion: 'La APA recomienda un anticolinérgico para la distonía aguda inducida por antipsicóticos [1].',
+    },
+    {
+      tipo: 'completar',
+      enunciado: 'La clozapina se reserva para la esquizofrenia ___ al tratamiento.',
+      respuestas: ['resistente', 'refractaria'],
+      pista: 'Que no respondió a dos antipsicóticos.',
+      explicacion: 'La APA recomienda clozapina en la esquizofrenia resistente, definida por falta de respuesta a al menos dos antipsicóticos adecuados [1].',
+    },
+    {
+      tipo: 'relacionar',
+      enunciado: 'Relaciona cada síntoma con su tipo.',
+      pares: [
+        ['Alucinaciones e ideas delirantes', 'Síntomas positivos'],
+        ['Apatía y aislamiento social', 'Síntomas negativos'],
+        ['Dificultad de atención y memoria', 'Síntomas cognitivos'],
+      ],
+      explicacion: 'La esquizofrenia combina síntomas positivos, negativos y cognitivos; los antipsicóticos actúan sobre todo en los positivos [1].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: 'Si se usara haloperidol, ¿qué precaución cardiaca tendrías?',
+      opciones: ['Ninguna', 'Vigilar el QT con electrocardiograma y evitar otros fármacos que lo prolonguen', 'Tomarlo con café', 'Duplicar la dosis en la noche'],
+      correcta: 1,
+      explicacion: 'El haloperidol puede prolongar el intervalo QT; la ficha recomienda precaución, electrocardiograma y evitar otros fármacos que lo prolonguen [3].',
+    },
+  ],
+  claves: [
+    'Antipsicótico como base; inyectables de acción prolongada para la adherencia [1].',
+    'Risperidona: prolactina; haloperidol: extrapiramidales y QT; quetiapina: metabólicos [2,3,4].',
+    'Vigilar peso, glucosa, lípidos y presión [1].',
+    'Síndrome neuroléptico maligno: suspender y urgencias [2,3]. Clozapina: esquizofrenia resistente [1].',
+  ],
+  referencias: [FC.apaEsquizofrenia2020, FC.ftRisperidona, FC.ftHaloperidol, F.ftQuetiapina],
+  enlaces: [
+    ['Quetiapina', '/vademecum/quetiapina', 'Vademécum'],
+    ['Salud mental y sistema nervioso', '/vademecum/salud-mental-y-sistema-nervioso', 'Vademécum'],
+    ['Curso de Farmacología del Sistema Nervioso Central', '/curso-de-farmacologia-del-sistema-nervioso-central', 'Curso gratis'],
+  ],
+};

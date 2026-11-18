@@ -1,0 +1,132 @@
+import { F } from '../../vademecum/fuentes.js';
+import { FC } from '../fuentes.js';
+
+export default {
+  slug: 'angina-estable',
+  titulo: 'Caso clínico de angina estable',
+  enfermedad: 'Síndrome coronario crónico (angina estable)',
+  area: 'cardiovascular',
+  nivel: 'Intermedio',
+  minutos: 14,
+  actualizado: '2026-11-17',
+  seo: {
+    titulo: 'Caso clínico de angina estable con preguntas',
+    descripcion: 'Caso clínico de angina estable: betabloqueador, nitroglicerina sublingual, sildenafil, clopidogrel con omeprazol y prevención secundaria. Tipo parcial.',
+    palabrasClave: ['caso clínico de angina estable', 'síndrome coronario crónico caso clínico', 'preguntas de antianginosos', 'nitroglicerina sublingual'],
+  },
+  objetivos: [
+    'Elegir el tratamiento antianginoso y el de prevención de eventos.',
+    'Enseñar el uso correcto de la nitroglicerina sublingual.',
+    'Reconocer interacciones graves: nitratos con sildenafil y clopidogrel con omeprazol.',
+  ],
+  presentacion: 'Mauricio tiene 59 años, fuma 10 cigarrillos al día y es hipertenso. Desde hace dos meses siente opresión en el pecho al subir las escaleras de su trabajo, que cede en 3 minutos al detenerse. La prueba de esfuerzo confirma isquemia y el cardiólogo diagnostica un síndrome coronario crónico. Toma losartán y, de vez en cuando, sildenafil. Le formulan nitroglicerina sublingual y pregunta si puede seguir con «la pastilla azul».',
+  datos: [
+    ['Síntoma', 'Opresión torácica con el esfuerzo, cede con el reposo en 3 min'],
+    ['Factores de riesgo', 'Tabaquismo, hipertensión, LDL 130 mg/dL'],
+    ['Pulso y presión', '84 lpm · 138/84 mmHg'],
+    ['Prueba de esfuerzo', 'Positiva para isquemia'],
+    ['Medicamentos', 'Losartán 50 mg; sildenafil ocasional'],
+  ],
+  preguntas: [
+    {
+      tipo: 'opcion',
+      enunciado: '¿Qué antianginoso de primera línea es adecuado para Mauricio?',
+      opciones: ['Un betabloqueador, como bisoprolol', 'Furosemida', 'Digoxina', 'Ácido acetilsalicílico'],
+      correcta: 0,
+      explicacion: 'La guía ESC 2024 recomienda como primera línea un betabloqueador o un calcioantagonista, según el perfil del paciente, además de nitratos de acción corta para las crisis [1]. El bisoprolol reduce la frecuencia cardiaca y el consumo de oxígeno del miocardio [5].',
+    },
+    {
+      tipo: 'completar',
+      enunciado: 'Ante la crisis de angina, el comprimido de nitroglicerina se coloca debajo de la ___.',
+      respuestas: ['lengua'],
+      pista: 'Por eso se llama sublingual.',
+      explicacion: 'El comprimido sublingual se deja disolver debajo de la lengua, sin tragarlo, y conviene estar sentado por el riesgo de mareo [2].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: '¿Puede Mauricio usar sildenafil junto con nitroglicerina?',
+      opciones: [
+        'Sí, sin restricciones',
+        'Sí, si los toma con 1 hora de diferencia',
+        'No: la combinación puede causar hipotensión grave; está contraindicada',
+        'Solo si duplica la dosis de nitroglicerina',
+      ],
+      correcta: 2,
+      explicacion: 'Los inhibidores de la fosfodiesterasa 5, como el sildenafil, potencian el efecto hipotensor de los nitratos; la combinación está contraindicada [2].',
+    },
+    {
+      tipo: 'relacionar',
+      enunciado: 'Relaciona cada medicamento con su objetivo en el síndrome coronario crónico.',
+      pares: [
+        ['Ácido acetilsalicílico 100 mg', 'Prevenir eventos trombóticos'],
+        ['Atorvastatina 80 mg', 'Bajar el LDL y estabilizar la placa'],
+        ['Bisoprolol', 'Reducir la frecuencia y el consumo de oxígeno'],
+        ['Nitroglicerina sublingual', 'Aliviar la crisis de angina'],
+      ],
+      explicacion: 'La prevención de eventos combina un antiagregante [1,3] y una estatina de alta intensidad [1,7]; el control de los síntomas, un betabloqueador [5] y nitratos de acción corta para las crisis [2].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: 'Mauricio es alérgico al ácido acetilsalicílico. ¿Qué antiagregante se usa?',
+      opciones: ['Clopidogrel 75 mg al día', 'Warfarina', 'Ibuprofeno', 'Ninguno'],
+      correcta: 0,
+      explicacion: 'En pacientes que no toleran la aspirina, la guía propone clopidogrel 75 mg al día como alternativa [1,4].',
+    },
+    {
+      tipo: 'completar',
+      enunciado: 'El omeprazol inhibe la CYP2C19 y puede reducir la activación del ___, por lo que se evita esa combinación.',
+      respuestas: ['clopidogrel'],
+      pista: 'Es un profármaco antiagregante.',
+      explicacion: 'El clopidogrel es un profármaco que se activa en parte por CYP2C19. La ficha técnica desaconseja combinarlo con omeprazol o esomeprazol [4].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: 'Con nitratos de acción prolongada, ¿cómo se evita la tolerancia?',
+      opciones: [
+        'Duplicando la dosis cada semana',
+        'Dejando un intervalo libre de nitratos cada día',
+        'Tomándolos con leche',
+        'Combinándolos con sildenafil',
+      ],
+      correcta: 1,
+      explicacion: 'El uso continuo de nitratos genera tolerancia; se recomienda un intervalo diario libre de nitratos con las formas de acción prolongada [1].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: '¿Qué medida de estilo de vida tiene más impacto en el pronóstico de Mauricio?',
+      opciones: ['Tomar suplementos de omega 3', 'Dejar de fumar', 'Evitar los lácteos', 'Dormir más de 10 horas'],
+      correcta: 1,
+      explicacion: 'Dejar de fumar es una de las intervenciones de mayor beneficio en la enfermedad coronaria y la guía la recomienda con apoyo farmacológico y conductual [1].',
+    },
+    {
+      tipo: 'relacionar',
+      enunciado: 'Relaciona cada situación con la conducta correcta.',
+      pares: [
+        ['Dolor en reposo, que dura más de 20 minutos o no cede con la nitroglicerina', 'Ir a urgencias de inmediato'],
+        ['Cefalea después de la nitroglicerina', 'Efecto adverso frecuente por vasodilatación'],
+        ['Mareo al usar la nitroglicerina de pie', 'Sentarse antes de tomarla'],
+        ['Meta de LDL en enfermedad coronaria', 'Menos de 55 mg/dL'],
+      ],
+      explicacion: 'El dolor prolongado o en reposo sugiere un síndrome coronario agudo [1]. La cefalea y la hipotensión son efectos frecuentes de la nitroglicerina [2]. En la enfermedad coronaria establecida la meta de LDL es menor de 55 mg/dL [1,6].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: '¿Qué estatina y dosis son adecuadas para su prevención secundaria?',
+      opciones: ['Atorvastatina 80 mg', 'Atorvastatina 10 mg', 'Ninguna, el LDL es de solo 130', 'Simvastatina 5 mg'],
+      correcta: 0,
+      explicacion: 'Con enfermedad coronaria se indica una estatina de alta intensidad, como atorvastatina 40 a 80 mg, para llegar a la meta de LDL [1,6,7].',
+    },
+  ],
+  claves: [
+    'Primera línea antianginosa: betabloqueador o calcioantagonista, más nitroglicerina sublingual para las crisis [1].',
+    'Prevención de eventos: antiagregante y estatina de alta intensidad [1].',
+    'Nitratos con sildenafil: contraindicado [2]. Clopidogrel con omeprazol: evitar [4].',
+    'Dolor en reposo o prolongado: urgencias [1].',
+  ],
+  referencias: [FC.escCoronario2024, FC.ftSolinitrina, FC.ftAdiro, FC.ftClopidogrel, FC.ftBisoprolol, F.escDislipidemia2019, F.ftAtorvastatina],
+  enlaces: [
+    ['Atorvastatina', '/vademecum/atorvastatina', 'Vademécum'],
+    ['Medicamentos para la dislipidemia', '/vademecum/medicamentos-para-la-dislipidemia', 'Vademécum'],
+    ['Curso de Farmacología Cardiovascular', '/curso-de-farmacologia-cardiovascular', 'Curso gratis'],
+  ],
+};

@@ -1,0 +1,137 @@
+import { F } from '../../vademecum/fuentes.js';
+import { FC } from '../fuentes.js';
+
+export default {
+  slug: 'hipertiroidismo',
+  titulo: 'Caso clínico de hipertiroidismo por enfermedad de Graves',
+  enfermedad: 'Hipertiroidismo (enfermedad de Graves)',
+  area: 'endocrino',
+  nivel: 'Intermedio',
+  minutos: 14,
+  actualizado: '2026-11-17',
+  seo: {
+    titulo: 'Caso clínico de hipertiroidismo y metimazol',
+    descripcion: 'Caso clínico de enfermedad de Graves: metimazol, betabloqueador, agranulocitosis, propiltiouracilo en el embarazo y yodo radiactivo. Con respuestas.',
+    palabrasClave: ['caso clínico de hipertiroidismo', 'caso clínico enfermedad de Graves', 'metimazol agranulocitosis', 'preguntas de antitiroideos'],
+  },
+  objetivos: [
+    'Elegir el antitiroideo y controlar los síntomas adrenérgicos.',
+    'Vigilar la agranulocitosis y la hepatotoxicidad.',
+    'Manejar el hipertiroidismo en una mujer que planea embarazo.',
+  ],
+  presentacion: 'Camila tiene 32 años y desde hace dos meses tiene palpitaciones, temblor, intolerancia al calor y pérdida de 6 kg. Su pulso es de 112 lpm. La TSH está suprimida, la T4 libre alta y los anticuerpos contra el receptor de TSH (TRAb) positivos: enfermedad de Graves. El endocrinólogo inicia tiamazol (metimazol) y un betabloqueador. Tres semanas después consulta por fiebre de 39 °C y dolor de garganta.',
+  datos: [
+    ['TSH', 'Menor de 0,01 mUI/L'],
+    ['T4 libre', '3,8 ng/dL (alta)'],
+    ['TRAb', 'Positivos'],
+    ['Frecuencia cardiaca', '112 lpm'],
+    ['Tratamiento', 'Tiamazol 20 mg al día y metoprolol'],
+    ['Síntoma nuevo', 'Fiebre y odinofagia a las 3 semanas'],
+  ],
+  preguntas: [
+    {
+      tipo: 'opcion',
+      enunciado: '¿Qué antitiroideo se prefiere para Camila, que no está embarazada?',
+      opciones: ['Propiltiouracilo', 'Tiamazol (metimazol)', 'Yoduro de potasio solo', 'Levotiroxina'],
+      correcta: 1,
+      explicacion: 'La ATA recomienda el metimazol como antitiroideo de elección, salvo en el primer trimestre del embarazo, la tormenta tiroidea y la intolerancia al metimazol [1,2].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: '¿Para qué sirve el betabloqueador en el hipertiroidismo?',
+      opciones: [
+        'Para normalizar la T4 libre',
+        'Para controlar las palpitaciones, el temblor y la taquicardia mientras actúa el antitiroideo',
+        'Para curar la enfermedad de Graves',
+        'Para prevenir la agranulocitosis',
+      ],
+      correcta: 1,
+      explicacion: 'Los betabloqueadores alivian los síntomas adrenérgicos del hipertiroidismo sintomático [1]. El metoprolol tiene esta indicación como coadyuvante [3].',
+    },
+    {
+      tipo: 'completar',
+      enunciado: 'Si aparece fiebre o dolor de garganta con el tiamazol, se suspende y se pide de inmediato un ___.',
+      respuestas: ['hemograma', 'cuadro hematico', 'hemograma completo', 'recuento de leucocitos', 'leucograma'],
+      pista: 'El examen que cuenta los glóbulos blancos.',
+      explicacion: 'La fiebre y la odinofagia pueden ser el primer signo de agranulocitosis. Se suspende el antitiroideo y se mide el recuento de leucocitos y neutrófilos [1,2].',
+    },
+    {
+      tipo: 'relacionar',
+      enunciado: 'Relaciona cada efecto adverso de los antitiroideos con su dato clave.',
+      pares: [
+        ['Agranulocitosis', 'Suspender y no cambiar a otro antitiroideo'],
+        ['Hepatotoxicidad grave', 'Más asociada al propiltiouracilo'],
+        ['Erupción cutánea leve', 'Antihistamínico sin suspender'],
+        ['Malformaciones congénitas', 'Riesgo del tiamazol en el primer trimestre'],
+      ],
+      explicacion: 'La ATA desaconseja pasar al otro antitiroideo tras una agranulocitosis por el riesgo de reacción cruzada; asocia la hepatotoxicidad grave sobre todo al propiltiouracilo; trata las reacciones cutáneas leves con antihistamínicos y señala la embriopatía del metimazol en el primer trimestre [1,2].',
+    },
+    {
+      tipo: 'completar',
+      enunciado: 'Antes de iniciar el antitiroideo se recomienda un hemograma y pruebas de función ___.',
+      respuestas: ['hepatica', 'del higado', 'hepaticas'],
+      pista: 'Del órgano que metaboliza el fármaco.',
+      explicacion: 'La ATA sugiere un hemograma con diferencial y un perfil hepático antes de comenzar, como referencia para vigilar los efectos adversos [1].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: 'Si Camila quedara embarazada, ¿qué antitiroideo se prefiere en el primer trimestre?',
+      opciones: ['Tiamazol', 'Propiltiouracilo, y pasar a tiamazol después del primer trimestre', 'Yodo radiactivo', 'Ninguno'],
+      correcta: 1,
+      explicacion: 'Por el riesgo de embriopatía del metimazol, en el primer trimestre se prefiere el propiltiouracilo, y luego se considera volver al metimazol por la hepatotoxicidad del propiltiouracilo [1,2].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: '¿Cuánto dura habitualmente el tratamiento con antitiroideos en la enfermedad de Graves?',
+      opciones: ['2 semanas', '12 a 18 meses, y luego se valora suspender según TSH y TRAb', 'Toda la vida siempre', '3 días'],
+      correcta: 1,
+      explicacion: 'La ATA propone de 12 a 18 meses de tratamiento y considerar suspenderlo si la TSH es normal y los TRAb son negativos [1].',
+    },
+    {
+      tipo: 'relacionar',
+      enunciado: 'Relaciona cada resultado con su interpretación.',
+      pares: [
+        ['TSH suprimida y T4 libre alta', 'Hipertiroidismo'],
+        ['TRAb positivos', 'Enfermedad de Graves'],
+        ['TSH alta y T4 libre baja durante el tratamiento', 'Exceso de antitiroideo'],
+      ],
+      explicacion: 'La TSH suprimida con T4 libre alta confirma el hipertiroidismo y los TRAb identifican la enfermedad de Graves [1]. Si durante el tratamiento aparece hipotiroidismo, la dosis del antitiroideo es excesiva y se reduce [1,2].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: 'Si se elige yodo radiactivo como tratamiento definitivo, ¿qué es cierto?',
+      opciones: [
+        'Se puede usar en el embarazo',
+        'Está contraindicado en el embarazo y la lactancia; se recomienda posponer el embarazo unos meses después',
+        'No requiere seguimiento',
+        'Cura el hipotiroidismo',
+      ],
+      correcta: 1,
+      explicacion: 'El yodo radiactivo está contraindicado en el embarazo y la lactancia, y se aconseja esperar al menos 6 meses para concebir [1].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: 'Camila llega con fiebre y odinofagia. ¿Cuál es la conducta inmediata?',
+      opciones: [
+        'Iniciar un antibiótico y seguir con el tiamazol',
+        'Suspender el tiamazol, pedir hemograma urgente y consultar',
+        'Duplicar el tiamazol',
+        'Tomar acetaminofén y esperar una semana',
+      ],
+      correcta: 1,
+      explicacion: 'Es una urgencia hasta descartar agranulocitosis: se suspende el antitiroideo y se pide un recuento de leucocitos de inmediato [1,2].',
+    },
+  ],
+  claves: [
+    'Metimazol de elección; propiltiouracilo en el primer trimestre del embarazo [1].',
+    'Betabloqueador para los síntomas adrenérgicos [1,3].',
+    'Fiebre o dolor de garganta: suspender y pedir hemograma por posible agranulocitosis [1,2].',
+    'Tratamiento de 12 a 18 meses; yodo radiactivo contraindicado en embarazo y lactancia [1].',
+  ],
+  referencias: [FC.ataHipertiroidismo2016, FC.ftTirodril, F.ftMetoprolol],
+  enlaces: [
+    ['Medicamentos para la tiroides', '/vademecum/medicamentos-para-la-tiroides', 'Vademécum'],
+    ['Diferencia entre hipotiroidismo e hipertiroidismo', '/articulos/diferencia-hipotiroidismo-e-hipertiroidismo', 'Artículo'],
+    ['Curso de Farmacología Endocrina', '/curso-de-farmacologia-endocrina', 'Curso gratis'],
+  ],
+};

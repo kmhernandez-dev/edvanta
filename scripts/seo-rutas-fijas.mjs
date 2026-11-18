@@ -4,6 +4,9 @@ import { PAQUETES } from '../src/data/edvanta/servicios.js';
 import { enfermedades } from '../src/data/enfermedades.js';
 import { ebooks } from '../src/data/fst.js';
 import { AUTORA_PERFIL } from '../src/data/edvanta/eeat.js';
+import { CASOS, META_CASOS, areaDe, siguienteCaso } from '../src/data/casosClinicos/index.js';
+import { htmlDeCaso, jsonLdDeCaso, robotsDeCaso, rutaDeCaso, tituloDeCaso } from '../src/lib/casosClinicos/motor.js';
+import { htmlDelCatalogo, PREGUNTAS_CASOS, robotsDelCatalogo } from '../src/lib/casosClinicos/catalogo.js';
 import { tieneRevisionClinica } from '../src/lib/seo/indexabilidad.js';
 import {
   contenidoAlianzas, contenidoArea, contenidoAutora, contenidoContacto, contenidoEnfermedad, contenidoEscuela, contenidoEscuelas,
@@ -328,6 +331,34 @@ add('/equipo-editorial', 'Equipo editorial | Edvanta', 'Quién dirige, escribe y
   seccion: 'Transparencia',
   enlaces: [['Autora y revisora', '/autores/karla-hernandez'], ['Política editorial', '/politica-editorial'], ['Política de revisión clínica', '/politica-de-revision-clinica']],
 });
+
+// ── Casos clínicos: exámenes de práctica tipo parcial (src/data/casosClinicos) ──
+// Contenido clínico: noindex hasta que la revisión de Karla se anota en revision.js.
+add('/casos-clinicos', META_CASOS.titulo, META_CASOS.descripcion, {
+  tipo: 'CollectionPage',
+  seccion: 'Casos clínicos',
+  h1: META_CASOS.h1,
+  robots: robotsDelCatalogo(),
+  contenido: htmlDelCatalogo(),
+  enlaces: [['Vademécum', '/vademecum'], ['Cursos gratis', '/cursos']],
+  extraJsonLd: [{ '@type': 'FAQPage', mainEntity: PREGUNTAS_CASOS.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) }],
+});
+
+for (const c of CASOS) {
+  const area = areaDe(c);
+  const relacionados = (c.enlaces || []).map(([titulo, ruta, tipo]) => ({ titulo, ruta, tipo }));
+  add(rutaDeCaso(c), tituloDeCaso(c), c.seo.descripcion, {
+    tipo: 'WebPage',
+    seccion: 'Casos clínicos',
+    h1: c.titulo,
+    robots: robotsDeCaso(c),
+    fecha: c.actualizado,
+    mainEntity: jsonLdDeCaso(c, { area }),
+    ...(c.revisor ? { reviewedBy: { '@type': 'Person', name: c.revisor, ...(c.revisorUrl ? { url: c.revisorUrl } : {}) } } : {}),
+    enlaces: [['Casos clínicos', '/casos-clinicos']],
+    contenido: htmlDeCaso(c, { area, relacionados, siguiente: siguienteCaso(c) }),
+  });
+}
 
 add('/fuentes', 'Fuentes y criterios de verificación | Edvanta', 'Qué fuentes usa Edvanta, cómo las verifica y cómo las cita.', {
   tipo: 'WebPage',

@@ -1,0 +1,133 @@
+import { F } from '../../vademecum/fuentes.js';
+import { FC } from '../fuentes.js';
+
+export default {
+  slug: 'faringoamigdalitis',
+  titulo: 'Caso clínico de faringoamigdalitis estreptocócica',
+  enfermedad: 'Faringoamigdalitis por estreptococo del grupo A',
+  area: 'infecciosas',
+  nivel: 'Básico',
+  minutos: 12,
+  actualizado: '2026-11-17',
+  seo: {
+    titulo: 'Caso clínico de faringoamigdalitis estreptocócica',
+    descripcion: 'Caso clínico de faringoamigdalitis en un niño: signos virales, amoxicilina por 10 días, penicilina benzatínica, alergia y fiebre reumática. Con respuestas.',
+    palabrasClave: ['caso clínico de faringoamigdalitis', 'amigdalitis estreptocócica caso clínico', 'penicilina benzatínica dosis', 'faringitis preguntas'],
+  },
+  objetivos: [
+    'Distinguir la faringitis viral de la estreptocócica.',
+    'Elegir el antibiótico, la dosis y la duración.',
+    'Administrar con seguridad la penicilina benzatínica.',
+  ],
+  presentacion: 'Samuel tiene 9 años y pesa 30 kg. Desde ayer tiene fiebre de 39 °C, dolor de garganta y dolor al tragar. Tiene amígdalas con exudado y ganglios cervicales anteriores dolorosos; no tiene tos ni mocos. La prueba rápida para estreptococo es positiva. Su mamá pide «la azitromicina de 3 días que le dieron la vez pasada» porque no quiere inyecciones. No tiene alergias conocidas.',
+  datos: [
+    ['Edad y peso', '9 años · 30 kg'],
+    ['Síntomas', 'Fiebre de 39 °C, odinofagia'],
+    ['Examen', 'Exudado amigdalino, adenopatías cervicales dolorosas'],
+    ['Tos y rinorrea', 'No'],
+    ['Prueba rápida de estreptococo', 'Positiva'],
+    ['Alergias', 'Ninguna conocida'],
+  ],
+  preguntas: [
+    {
+      tipo: 'opcion',
+      enunciado: '¿Qué hallazgo habría orientado a una causa viral y a no hacer la prueba?',
+      opciones: ['Exudado amigdalino', 'Tos, rinorrea y disfonía', 'Fiebre alta', 'Ganglios cervicales dolorosos'],
+      correcta: 1,
+      explicacion: 'La tos, la rinorrea, la disfonía o las úlceras orales sugieren una infección viral; la guía no recomienda hacer la prueba en esos casos [1].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: '¿Cuál es el tratamiento de elección?',
+      opciones: [
+        'Azitromicina por 3 días',
+        'Amoxicilina por 10 días o penicilina benzatínica intramuscular en dosis única',
+        'Ciprofloxacino por 5 días',
+        'Solo acetaminofén',
+      ],
+      correcta: 1,
+      explicacion: 'La penicilina o la amoxicilina por 10 días, o la penicilina benzatínica en una dosis, son de elección por su eficacia, espectro estrecho y bajo costo [1,3]. La amoxicilina pertenece al grupo de Acceso de la OMS [4].',
+    },
+    {
+      tipo: 'completar',
+      enunciado: 'El tratamiento oral con amoxicilina para la faringitis estreptocócica dura ___ días.',
+      respuestas: ['10', 'diez'],
+      pista: 'Más de una semana.',
+      explicacion: 'La guía recomienda 10 días de tratamiento oral para erradicar el estreptococo y prevenir la fiebre reumática [1].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: 'Si se elige penicilina benzatínica, ¿qué dosis le corresponde a Samuel (30 kg)?',
+      opciones: ['600.000 U intramuscular', '1.200.000 U intramuscular en dosis única', '2.400.000 U intravenosa', '300.000 U oral'],
+      correcta: 1,
+      explicacion: 'Con 27 kg o más corresponde 1.200.000 U por vía intramuscular profunda en dosis única; por debajo de 27 kg, 600.000 U [1,2].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: '¿Qué es indispensable al aplicar la penicilina benzatínica?',
+      opciones: [
+        'Diluirla en suero y pasarla por vena',
+        'Aplicarla solo por vía intramuscular profunda: por vía intravenosa puede causar paro cardiaco y muerte',
+        'Aplicarla en el brazo con aguja corta por vía subcutánea',
+        'Mezclarla con lidocaína intravenosa',
+      ],
+      correcta: 1,
+      explicacion: 'La etiqueta advierte en recuadro que no debe administrarse por vía intravenosa: se han descrito paro cardiorrespiratorio y muerte [2].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: '¿Por qué no se le da la azitromicina de 3 días?',
+      opciones: [
+        'Porque la azitromicina es de primera elección',
+        'Porque los macrólidos se reservan para la alergia a la penicilina y hay resistencia del estreptococo a ellos',
+        'Porque la azitromicina no existe en jarabe',
+        'Porque produce orina naranja',
+      ],
+      correcta: 1,
+      explicacion: 'La guía reserva los macrólidos para pacientes alérgicos a la penicilina; la resistencia del estreptococo a macrólidos es variable [1].',
+    },
+    {
+      tipo: 'relacionar',
+      enunciado: 'Relaciona cada complicación con lo que se sabe de ella.',
+      pares: [
+        ['Fiebre reumática', 'El tratamiento antibiótico adecuado la previene'],
+        ['Absceso periamigdalino', 'Complicación supurativa local'],
+        ['Glomerulonefritis postestreptocócica', 'El antibiótico no la previene de forma fiable'],
+      ],
+      explicacion: 'El principal beneficio del tratamiento es prevenir la fiebre reumática; también reduce las complicaciones supurativas [1].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: 'Si Samuel fuera alérgico a la penicilina con urticaria leve (no anafilaxia), ¿qué se usa?',
+      opciones: ['Ceftriaxona intravenosa', 'Cefalexina por 10 días', 'Amoxicilina con antihistamínico', 'Ningún antibiótico'],
+      correcta: 1,
+      explicacion: 'En la alergia no anafiláctica la guía acepta una cefalosporina de primera generación como cefalexina por 10 días; si hubo anafilaxia, clindamicina o un macrólido [1].',
+    },
+    {
+      tipo: 'completar',
+      enunciado: 'El objetivo principal del antibiótico en esta infección es prevenir la fiebre ___.',
+      respuestas: ['reumatica'],
+      pista: 'Afecta el corazón y las articulaciones.',
+      explicacion: 'La prevención de la fiebre reumática aguda es la razón principal para tratar la faringitis estreptocócica [1].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: 'Si Samuel termina el tratamiento sin síntomas, ¿hay que repetir la prueba?',
+      opciones: ['Sí, siempre', 'No, la prueba de control no se recomienda de rutina en pacientes asintomáticos', 'Sí, dos veces', 'Solo si tiene hermanos'],
+      correcta: 1,
+      explicacion: 'La guía no recomienda pruebas de control después del tratamiento en pacientes asintomáticos [1].',
+    },
+  ],
+  claves: [
+    'Tos, rinorrea o disfonía sugieren virus: no se hace la prueba [1].',
+    'Amoxicilina o penicilina por 10 días, o penicilina benzatínica en dosis única [1].',
+    'Penicilina benzatínica: 1.200.000 U con 27 kg o más; solo intramuscular profunda, nunca intravenosa [1,2].',
+    'Macrólidos solo en alergia a la penicilina [1].',
+  ],
+  referencias: [FC.idsaFaringitis2012, F.dmPenicilinaBenzatinica, F.ftAmoxicilina, F.whoAware2023],
+  enlaces: [
+    ['Penicilina benzatínica', '/vademecum/penicilina-benzatinica', 'Vademécum'],
+    ['Amoxicilina', '/vademecum/amoxicilina', 'Vademécum'],
+    ['Amoxicilina: para qué sirve', '/articulos/amoxicilina-para-que-sirve', 'Artículo'],
+  ],
+};

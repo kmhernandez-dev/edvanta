@@ -1,0 +1,133 @@
+import { F } from '../../vademecum/fuentes.js';
+import { FC } from '../fuentes.js';
+
+export default {
+  slug: 'otitis-media-aguda',
+  titulo: 'Caso clínico de otitis media aguda en pediatría',
+  enfermedad: 'Otitis media aguda',
+  area: 'infecciosas',
+  nivel: 'Intermedio',
+  minutos: 13,
+  actualizado: '2026-11-17',
+  seo: {
+    titulo: 'Caso clínico de otitis media aguda en un niño',
+    descripcion: 'Caso clínico de otitis media aguda: diagnóstico, analgesia, observación, dosis de amoxicilina por kilo, cálculo y cuándo usar clavulánico. Con respuestas.',
+    palabrasClave: ['caso clínico de otitis media aguda', 'dosis de amoxicilina en niños', 'otitis media preguntas', 'cálculo de dosis pediátrica'],
+  },
+  objetivos: [
+    'Confirmar el diagnóstico de otitis media aguda.',
+    'Decidir entre antibiótico y observación.',
+    'Calcular la dosis pediátrica de amoxicilina.',
+  ],
+  presentacion: 'Isabella tiene 3 años y pesa 15 kg. Desde ayer se toca el oído izquierdo, llora en la noche y tiene fiebre de 38,3 °C. En la otoscopia la membrana timpánica izquierda está abombada y enrojecida, sin otorrea. No ha recibido amoxicilina en el último mes ni tiene alergias. Los padres fuman dentro de la casa.',
+  datos: [
+    ['Edad y peso', '3 años · 15 kg'],
+    ['Síntomas', 'Otalgia de 1 día, fiebre de 38,3 °C'],
+    ['Otoscopia', 'Membrana timpánica izquierda abombada'],
+    ['Otorrea', 'No'],
+    ['Amoxicilina en el último mes', 'No'],
+    ['Exposición', 'Humo de tabaco en casa'],
+  ],
+  preguntas: [
+    {
+      tipo: 'opcion',
+      enunciado: '¿Qué hallazgo confirma el diagnóstico de otitis media aguda?',
+      opciones: ['La fiebre', 'El abombamiento moderado o grave de la membrana timpánica', 'El llanto nocturno', 'La congestión nasal'],
+      correcta: 1,
+      explicacion: 'La guía de la AAP basa el diagnóstico en el abombamiento moderado o grave de la membrana timpánica o en la otorrea nueva no explicada por otitis externa [1].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: '¿Qué se indica siempre, con o sin antibiótico?',
+      opciones: ['Gotas de antibiótico', 'Analgesia, por ejemplo con ibuprofeno o acetaminofén', 'Antihistamínico', 'Descongestionante'],
+      correcta: 1,
+      explicacion: 'El dolor debe tratarse siempre; el ibuprofeno y el acetaminofén son las opciones habituales [1,4].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: 'Isabella tiene más de 2 años, otitis unilateral, fiebre menor de 39 °C y otalgia leve de menos de 48 horas. ¿Qué es válido?',
+      opciones: [
+        'Solo antibiótico intravenoso',
+        'Antibiótico o, decidido con los padres, observación con control asegurado a las 48 a 72 horas',
+        'Ningún seguimiento',
+        'Gotas óticas con corticoide',
+      ],
+      correcta: 1,
+      explicacion: 'En niños de 2 años o más con otitis no grave, la AAP acepta iniciar antibiótico u ofrecer observación con seguimiento seguro, y dar antibiótico si no mejora en 48 a 72 horas [1].',
+    },
+    {
+      tipo: 'completar',
+      enunciado: 'La dosis alta de amoxicilina para la otitis media aguda es de 80 a ___ mg/kg/día, dividida en dos tomas.',
+      respuestas: ['90', 'noventa'],
+      pista: 'Diez más que 80.',
+      explicacion: 'La AAP recomienda amoxicilina de 80 a 90 mg/kg/día en dos dosis para cubrir neumococos con sensibilidad disminuida [1,2].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: 'Con 90 mg/kg/día y 15 kg de peso, ¿cuánto recibe Isabella en cada toma?',
+      opciones: ['225 mg cada 12 horas', '675 mg cada 12 horas', '1.350 mg cada 12 horas', '450 mg cada 8 horas'],
+      correcta: 1,
+      explicacion: '90 mg × 15 kg = 1.350 mg al día; repartidos en dos tomas, 675 mg cada 12 horas [1].',
+    },
+    {
+      tipo: 'relacionar',
+      enunciado: 'Relaciona cada situación con el tratamiento.',
+      pares: [
+        ['Primer episodio, sin amoxicilina reciente', 'Amoxicilina en dosis alta'],
+        ['Amoxicilina en los últimos 30 días', 'Amoxicilina/clavulánico'],
+        ['Sin mejoría a las 48 a 72 horas', 'Reevaluar y cambiar el antibiótico'],
+      ],
+      explicacion: 'La amoxicilina es de primera elección; se prefiere amoxicilina/clavulánico si recibió amoxicilina en los últimos 30 días, tiene conjuntivitis purulenta o no responde [1,3].',
+    },
+    {
+      tipo: 'completar',
+      enunciado: 'En niños de 2 a 5 años con otitis no grave, el antibiótico suele darse por ___ días.',
+      respuestas: ['7', 'siete'],
+      pista: 'Una semana.',
+      explicacion: 'La AAP propone 10 días en menores de 2 años o con síntomas graves, 7 días entre 2 y 5 años y de 5 a 7 días desde los 6 años [1].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: 'Si recibe amoxicilina/clavulánico, ¿cómo se reduce la intolerancia digestiva?',
+      opciones: ['Dándolo al acostarse', 'Dándolo al comienzo de las comidas', 'Con un antiácido', 'Partiendo la dosis en cuatro'],
+      correcta: 1,
+      explicacion: 'La ficha recomienda administrarlo al comienzo de las comidas para reducir la intolerancia gastrointestinal [3].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: '¿Cuándo se considera la colocación de tubos de ventilación?',
+      opciones: [
+        'Desde el primer episodio',
+        'Con otitis recurrente: 3 episodios en 6 meses o 4 en un año con uno en los últimos 6 meses',
+        'Nunca',
+        'Solo si hay fiebre mayor de 40 °C',
+      ],
+      correcta: 1,
+      explicacion: 'La AAP define la otitis recurrente con esos criterios y dice que se pueden ofrecer tubos de ventilación [1].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: '¿Qué medida de prevención le recomiendas a la familia?',
+      opciones: [
+        'Antibiótico preventivo cada mes',
+        'Evitar el humo de tabaco, mantener las vacunas al día (neumococo e influenza) y promover la lactancia materna en los lactantes',
+        'Gotas en los oídos todas las noches',
+        'Bañarla menos',
+      ],
+      correcta: 1,
+      explicacion: 'La AAP recomienda las vacunas antineumocócica e influenza, la lactancia materna y evitar la exposición al humo de tabaco [1].',
+    },
+  ],
+  claves: [
+    'Diagnóstico: abombamiento de la membrana timpánica o otorrea nueva [1].',
+    'Analgesia siempre; observación posible en casos no graves seleccionados [1].',
+    'Amoxicilina de 80 a 90 mg/kg/día en dos tomas; clavulánico si recibió amoxicilina en 30 días [1].',
+    'Duración: 10 días en menores de 2 años; 7 días de 2 a 5 años [1].',
+  ],
+  referencias: [FC.aapOtitis2013, F.ftAmoxicilina, F.ftAmoxiClav, F.ftIbuprofeno],
+  enlaces: [
+    ['Amoxicilina', '/vademecum/amoxicilina', 'Vademécum'],
+    ['Amoxicilina con ácido clavulánico', '/vademecum/amoxicilina-acido-clavulanico', 'Vademécum'],
+    ['Ibuprofeno', '/vademecum/ibuprofeno', 'Vademécum'],
+  ],
+};

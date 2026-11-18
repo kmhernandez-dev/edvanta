@@ -1,0 +1,148 @@
+import { F } from '../../vademecum/fuentes.js';
+import { FC } from '../fuentes.js';
+
+export default {
+  slug: 'diabetes-tipo-1',
+  titulo: 'Caso clínico de diabetes tipo 1 e insulinoterapia',
+  enfermedad: 'Diabetes mellitus tipo 1',
+  area: 'endocrino',
+  nivel: 'Intermedio',
+  minutos: 15,
+  actualizado: '2026-11-17',
+  seo: {
+    titulo: 'Caso clínico de diabetes tipo 1 e insulina',
+    descripcion: 'Caso clínico de diabetes tipo 1: esquema basal-bolo, glargina y aspart, conservación de la insulina, lipohipertrofia e hipoglucemia. Con respuestas.',
+    palabrasClave: ['caso clínico de diabetes tipo 1', 'caso clínico insulina', 'preguntas de insulinoterapia', 'esquema basal bolo'],
+  },
+  objetivos: [
+    'Explicar el esquema basal-bolo y el papel de cada insulina.',
+    'Enseñar la conservación y la técnica de inyección.',
+    'Prevenir y tratar la hipoglucemia.',
+  ],
+  presentacion: 'Valentina tiene 19 años, estudia en Medellín y le diagnosticaron diabetes tipo 1 hace 6 meses. Usa insulina glargina 18 unidades en la noche e insulina aspart antes de cada comida. Va al gimnasio en la tarde y ha tenido tres hipoglucemias allí. Se inyecta siempre en el mismo lado del abdomen, donde tiene un abultamiento blando, y deja las plumas en el carro. Una amiga le dijo que mezcle las dos insulinas en una jeringa para pincharse menos.',
+  datos: [
+    ['Edad', '19 años, diagnóstico hace 6 meses'],
+    ['Insulina basal', 'Glargina 18 U en la noche'],
+    ['Insulina prandial', 'Aspart antes de las comidas, según conteo de carbohidratos'],
+    ['HbA1c', '7,8 %'],
+    ['Hipoglucemias', '3 en el último mes, durante el ejercicio'],
+    ['Examen físico', 'Abultamiento blando en el sitio de inyección abdominal'],
+  ],
+  preguntas: [
+    {
+      tipo: 'opcion',
+      enunciado: '¿Cuál es el tratamiento estándar en la diabetes tipo 1?',
+      opciones: [
+        'Metformina sola',
+        'Insulina en múltiples dosis (basal más bolos) o en bomba, de preferencia con análogos',
+        'Una sola dosis de insulina NPH al día',
+        'Dieta sin carbohidratos y sin insulina',
+      ],
+      correcta: 1,
+      explicacion: 'La ADA recomienda tratar la diabetes tipo 1 con múltiples inyecciones diarias de insulina basal y prandial o con infusión subcutánea continua, usando análogos para reducir la hipoglucemia [1].',
+    },
+    {
+      tipo: 'relacionar',
+      enunciado: 'Relaciona cada insulina o situación con su dato clave.',
+      pares: [
+        ['Glargina', 'Insulina basal: una inyección al día, a la misma hora'],
+        ['Aspart', 'Insulina rápida: justo antes de comer'],
+        ['Pluma sin abrir', 'En la nevera, entre 2 y 8 °C, sin congelar'],
+      ],
+      explicacion: 'La glargina se administra una vez al día a la misma hora [2]. La aspart, de acción rápida, se inyecta inmediatamente antes de la comida [3]. Las plumas sin abrir se guardan en nevera, sin congelar [2,3].',
+    },
+    {
+      tipo: 'completar',
+      enunciado: 'Una pluma de insulina en uso puede conservarse a temperatura ambiente (máximo 30 °C) hasta ___ semanas.',
+      respuestas: ['4', 'cuatro'],
+      pista: 'Más o menos un mes.',
+      explicacion: 'Las fichas de glargina y aspart permiten conservar la pluma en uso hasta 4 semanas a temperatura ambiente, por debajo de 30 °C [2,3]. Dentro de un carro al sol la insulina se degrada.',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: '¿Puede Valentina mezclar la glargina con la aspart en la misma jeringa?',
+      opciones: [
+        'Sí, así se pincha menos',
+        'Sí, si la mezcla se usa de inmediato',
+        'No: la glargina no se debe mezclar ni diluir con otras insulinas',
+        'Solo en la mañana',
+      ],
+      correcta: 2,
+      explicacion: 'La ficha técnica de la glargina prohíbe mezclarla o diluirla con otra insulina: se altera su perfil de acción y puede precipitar [2].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: '¿Qué hacer con el abultamiento en el sitio de inyección?',
+      opciones: [
+        'Seguir inyectando allí porque duele menos',
+        'Rotar los sitios de inyección; al cambiar a piel sana puede requerir ajuste de dosis por mejor absorción',
+        'Aplicar hielo antes de cada dosis',
+        'Inyectar la insulina en el músculo',
+      ],
+      correcta: 1,
+      explicacion: 'La lipohipertrofia altera la absorción. Se rotan los sitios; al pasar de una zona con lipodistrofia a piel sana la absorción mejora y puede aparecer hipoglucemia, por lo que se vigila la glucosa [2].',
+    },
+    {
+      tipo: 'completar',
+      enunciado: 'Ante una glucosa menor de 70 mg/dL se toman 15 a 20 g de carbohidratos rápidos y se mide de nuevo a los ___ minutos.',
+      respuestas: ['15', 'quince'],
+      pista: 'Es la «regla de los 15».',
+      explicacion: 'La regla recomendada: 15 a 20 g de glucosa o carbohidratos de absorción rápida, esperar 15 minutos y medir; repetir si sigue baja [4].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: 'En el gimnasio, Valentina queda confusa y no puede tragar. ¿Qué se usa?',
+      opciones: ['Jugo de naranja a la fuerza', 'Glucagón, por ejemplo nasal de 3 mg', 'Más insulina aspart', 'Agua con sal'],
+      correcta: 1,
+      explicacion: 'En la hipoglucemia grave, si la persona no puede tragar, no se le da nada por boca: se usa glucagón [4]. El glucagón nasal de 3 mg puede aplicarlo un acompañante entrenado [5].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: 'Valentina tiene gastroenteritis y casi no come. ¿Qué es lo correcto?',
+      opciones: [
+        'Suspender toda la insulina hasta que vuelva a comer',
+        'No suspender la insulina basal, medir glucosa y cetonas con frecuencia y consultar si vomita o tiene cetonas',
+        'Duplicar la aspart',
+        'Tomar solo agua y esperar',
+      ],
+      correcta: 1,
+      explicacion: 'Suspender la insulina es una causa frecuente de cetoacidosis diabética. Ante una enfermedad intercurrente se mantiene la basal, se vigilan glucosa y cetonas y se busca atención si hay vómito persistente [6].',
+    },
+    {
+      tipo: 'relacionar',
+      enunciado: 'Relaciona cada grupo de síntomas con su causa probable.',
+      pares: [
+        ['Temblor, sudoración y palpitaciones', 'Hipoglucemia (síntomas adrenérgicos)'],
+        ['Confusión o convulsión', 'Hipoglucemia grave'],
+        ['Náuseas, dolor abdominal y respiración rápida', 'Cetoacidosis diabética'],
+      ],
+      explicacion: 'Los síntomas adrenérgicos son la alarma temprana de la hipoglucemia y la confusión indica gravedad [4]. Náuseas, dolor abdominal y respiración de Kussmaul orientan a cetoacidosis [6].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: '¿Por qué no debe dejar las plumas dentro del carro?',
+      opciones: [
+        'Porque se cargan de electricidad',
+        'Porque el calor degrada la insulina y pierde eficacia',
+        'Porque cambian de color a propósito',
+        'Porque se congelan con el aire acondicionado',
+      ],
+      correcta: 1,
+      explicacion: 'La insulina no debe exponerse al calor excesivo ni a la luz; fuera del rango de conservación pierde potencia y la glucosa sube sin explicación aparente [2,3].',
+    },
+  ],
+  claves: [
+    'Diabetes tipo 1: basal más bolos o bomba, con análogos [1].',
+    'Glargina: no se mezcla con otras insulinas [2].',
+    'Pluma en uso: hasta 4 semanas a menos de 30 °C; sin abrir, en nevera [2,3].',
+    'Regla de los 15; si no puede tragar, glucagón [4,5].',
+    'Nunca suspender la insulina basal cuando está enferma [6].',
+  ],
+  referencias: [F.adaDiabetes2026, FC.ftLantus, FC.ftNovorapid, FC.niddkHipoglucemia, FC.ftBaqsimi, FC.crisisHiperglucemicas2024],
+  enlaces: [
+    ['Diabetes tipo 2: tratamiento', '/articulos/diabetes-tipo-2-tratamiento', 'Artículo'],
+    ['Medicamentos para la diabetes tipo 2', '/vademecum/medicamentos-para-la-diabetes-tipo-2', 'Vademécum'],
+    ['Curso de Farmacoterapia de la Diabetes', '/curso-de-farmacoterapia-de-la-diabetes', 'Curso gratis'],
+    ['Curso de Farmacología Endocrina', '/curso-de-farmacologia-endocrina', 'Curso gratis'],
+  ],
+};

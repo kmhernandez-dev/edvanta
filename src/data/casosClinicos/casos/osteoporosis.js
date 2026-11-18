@@ -1,0 +1,147 @@
+import { F } from '../../vademecum/fuentes.js';
+import { FC } from '../fuentes.js';
+
+export default {
+  slug: 'osteoporosis',
+  titulo: 'Caso clínico de osteoporosis',
+  enfermedad: 'Osteoporosis posmenopáusica',
+  area: 'endocrino',
+  nivel: 'Básico',
+  minutos: 12,
+  actualizado: '2026-11-17',
+  seo: {
+    titulo: 'Caso clínico de osteoporosis y alendronato',
+    descripcion: 'Caso clínico de osteoporosis con fractura vertebral: cómo tomar el alendronato, efectos adversos, corticoides, calcio y vitamina D. Con respuestas.',
+    palabrasClave: ['caso clínico de osteoporosis', 'cómo tomar alendronato', 'preguntas de osteoporosis', 'bisfosfonatos caso clínico'],
+  },
+  objetivos: [
+    'Indicar un bisfosfonato en la osteoporosis de alto riesgo.',
+    'Enseñar la toma correcta del alendronato.',
+    'Reconocer los efectos adversos y el papel de los corticoides.',
+  ],
+  presentacion: 'Teresa tiene 67 años, llegó a la menopausia a los 49 y tuvo una fractura vertebral por un esfuerzo mínimo. La densitometría muestra un T-score de −3,0 en columna. Toma prednisona 7,5 mg al día desde hace 8 meses por una polimialgia reumática. Tiene reflujo ocasional. Su médico le formula ácido alendrónico 70 mg semanal y ella pregunta si puede tomarlo con el desayuno y acostarse un rato después.',
+  datos: [
+    ['Edad', '67 años, posmenopáusica'],
+    ['Fractura', 'Vertebral por fragilidad'],
+    ['T-score columna', '−3,0'],
+    ['Corticoide', 'Prednisona 7,5 mg al día por 8 meses'],
+    ['25-OH vitamina D', '18 ng/mL'],
+    ['Antecedente', 'Reflujo gastroesofágico ocasional'],
+  ],
+  preguntas: [
+    {
+      tipo: 'opcion',
+      enunciado: '¿Qué tratamiento inicial recomienda la guía para Teresa, con fractura por fragilidad?',
+      opciones: ['Solo calcio', 'Un bisfosfonato, como el alendronato', 'Ningún fármaco', 'Vitamina C'],
+      correcta: 1,
+      explicacion: 'En mujeres posmenopáusicas con alto riesgo de fractura, la Endocrine Society recomienda los bisfosfonatos como tratamiento inicial [1].',
+    },
+    {
+      tipo: 'completar',
+      enunciado: 'El alendronato se toma en ayunas con un vaso lleno de agua sola, de al menos ___ mL.',
+      respuestas: ['200', '200 ml'],
+      pista: 'Un vaso normal.',
+      explicacion: 'La ficha técnica indica tomarlo con un vaso lleno de agua del grifo (no menos de 200 mL), nunca con café, jugo o leche [2].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: '¿Puede Teresa tomarlo con el desayuno y acostarse después?',
+      opciones: [
+        'Sí, así le cae mejor',
+        'No: debe tomarlo en ayunas y permanecer erguida al menos 30 minutos, sin comer ni tomar otros medicamentos',
+        'Sí, si lo mastica',
+        'Solo los domingos',
+      ],
+      correcta: 1,
+      explicacion: 'La comida reduce casi a cero su absorción y acostarse aumenta el riesgo de esofagitis. Debe tomarse en ayunas, de pie o sentada, y esperar al menos 30 minutos antes de comer o tomar otros medicamentos [2].',
+    },
+    {
+      tipo: 'relacionar',
+      enunciado: 'Relaciona cada efecto adverso o advertencia con su dato.',
+      pares: [
+        ['Esofagitis', 'Por tomarlo mal o acostarse después'],
+        ['Osteonecrosis de la mandíbula', 'Rara; revisar la salud dental'],
+        ['Hipocalcemia', 'Corregirla antes de iniciar'],
+        ['Fractura atípica de fémur', 'Rara, con el uso prolongado'],
+      ],
+      explicacion: 'La ficha advierte sobre reacciones esofágicas, osteonecrosis mandibular, fracturas atípicas de fémur y la necesidad de corregir la hipocalcemia antes de iniciar [2]. La guía discute estos riesgos con el uso prolongado [1].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: '¿Qué papel tiene la prednisona en la osteoporosis de Teresa?',
+      opciones: [
+        'La protege del hueso',
+        'Los glucocorticoides prolongados aumentan la pérdida ósea y el riesgo de fractura',
+        'No tiene relación',
+        'Aumenta la absorción del alendronato',
+      ],
+      correcta: 1,
+      explicacion: 'El uso prolongado de glucocorticoides es una causa frecuente de osteoporosis secundaria; la ficha de la prednisona la incluye entre sus efectos adversos [3].',
+    },
+    {
+      tipo: 'completar',
+      enunciado: 'Después de tomar el alendronato, Teresa debe esperar al menos ___ minutos antes del desayuno.',
+      respuestas: ['30', 'treinta', 'media hora'],
+      pista: 'Media hora.',
+      explicacion: 'Se esperan al menos 30 minutos antes de la primera comida, bebida u otro medicamento del día [2].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: 'Con un T-score bajo y vitamina D de 18 ng/mL, ¿qué más se indica?',
+      opciones: [
+        'Nada más',
+        'Corregir la vitamina D y asegurar un aporte adecuado de calcio',
+        'Suspender el alendronato',
+        'Dieta sin lácteos',
+      ],
+      correcta: 1,
+      explicacion: 'La guía recomienda asegurar calcio y vitamina D suficientes junto con el tratamiento antirresortivo [1]; la ficha pide corregir la hipocalcemia y los trastornos del metabolismo mineral antes de iniciar [2].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: '¿Qué es la «vacación terapéutica» con bisfosfonatos?',
+      opciones: [
+        'Tomarlos solo en vacaciones',
+        'Suspenderlos temporalmente tras 3 a 5 años en pacientes cuyo riesgo de fractura ya no es alto, y reevaluar',
+        'Duplicar la dosis en diciembre',
+        'Cambiar a calcio solo para siempre',
+      ],
+      correcta: 1,
+      explicacion: 'Por su permanencia en el hueso, la Endocrine Society propone reevaluar a los 3 a 5 años y considerar una pausa en quienes ya no tienen riesgo alto [1].',
+    },
+    {
+      tipo: 'relacionar',
+      enunciado: 'Relaciona cada situación con la indicación.',
+      pares: [
+        ['Olvidó la dosis semanal', 'Tomarla la mañana siguiente y volver a su día habitual'],
+        ['Reflujo activo o problemas para tragar', 'Advertir: riesgo de lesión esofágica'],
+        ['Tratamiento dental invasivo', 'Avisar al odontólogo que toma bisfosfonato'],
+      ],
+      explicacion: 'Si se olvida la dosis semanal, se toma la mañana siguiente al recordarlo y luego se vuelve al día habitual, sin tomar dos el mismo día. La ficha advierte sobre los trastornos esofágicos y la osteonecrosis con procedimientos dentales [2].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: '¿Qué medida no farmacológica reduce las fracturas en Teresa?',
+      opciones: [
+        'Reposo absoluto',
+        'Prevenir caídas y hacer ejercicio de fuerza y equilibrio',
+        'Evitar el sol por completo',
+        'Dormir sentada',
+      ],
+      correcta: 1,
+      explicacion: 'La prevención de caídas y el ejercicio de resistencia y equilibrio forman parte del manejo recomendado de la osteoporosis [1].',
+    },
+  ],
+  claves: [
+    'Bisfosfonato como tratamiento inicial en alto riesgo de fractura [1].',
+    'Alendronato: en ayunas, con 200 mL de agua sola, erguida y sin comer al menos 30 minutos [2].',
+    'Riesgos: esofagitis, osteonecrosis mandibular y fractura atípica (raras) [2].',
+    'Los glucocorticoides prolongados causan osteoporosis [3].',
+  ],
+  referencias: [FC.endocrineOsteoporosis2019, FC.ftAlendronico, F.ftPrednisona],
+  enlaces: [
+    ['Prednisona', '/vademecum/prednisona', 'Vademécum'],
+    ['Corticoides sistémicos', '/vademecum/corticoides-sistemicos', 'Vademécum'],
+    ['Curso de Farmacología Endocrina', '/curso-de-farmacologia-endocrina', 'Curso gratis'],
+  ],
+};

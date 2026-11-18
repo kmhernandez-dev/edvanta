@@ -1,0 +1,137 @@
+import { F } from '../../vademecum/fuentes.js';
+import { FC } from '../fuentes.js';
+
+export default {
+  slug: 'vaginosis-bacteriana',
+  titulo: 'Caso clínico de vaginosis bacteriana',
+  enfermedad: 'Vaginosis bacteriana',
+  area: 'infecciosas',
+  nivel: 'Básico',
+  minutos: 12,
+  actualizado: '2026-11-17',
+  seo: {
+    titulo: 'Caso clínico de vaginosis bacteriana y metronidazol',
+    descripcion: 'Caso clínico de vaginosis bacteriana: criterios, metronidazol por 7 días, alcohol, secnidazol, diferencia con candidiasis y tricomoniasis. Con respuestas.',
+    palabrasClave: ['caso clínico de vaginosis bacteriana', 'metronidazol y alcohol', 'flujo vaginal preguntas', 'vaginosis candidiasis tricomoniasis'],
+  },
+  objetivos: [
+    'Diferenciar la vaginosis bacteriana de la candidiasis y la tricomoniasis.',
+    'Elegir el tratamiento y su duración.',
+    'Explicar las precauciones del metronidazol.',
+  ],
+  presentacion: 'Laura tiene 26 años y desde hace una semana tiene flujo vaginal grisáceo y homogéneo con mal olor «a pescado», que empeora después de las relaciones. No tiene prurito ni ardor. En la consulta, el pH vaginal es 5,0, la prueba de aminas es positiva y en el microscopio hay células clave. Quiere comprar fluconazol «porque eso es hongo» y le cuenta al químico farmacéutico que este fin de semana tiene un matrimonio.',
+  datos: [
+    ['Flujo', 'Gris, homogéneo, con olor a pescado'],
+    ['Prurito o ardor', 'No'],
+    ['pH vaginal', '5,0'],
+    ['Prueba de aminas', 'Positiva'],
+    ['Microscopia', 'Células clave'],
+    ['Embarazo', 'No'],
+  ],
+  preguntas: [
+    {
+      tipo: 'relacionar',
+      enunciado: 'Relaciona cada infección vaginal con su presentación típica.',
+      pares: [
+        ['Vaginosis bacteriana', 'Flujo gris con olor a pescado y pH mayor de 4,5'],
+        ['Candidiasis vulvovaginal', 'Flujo blanco grumoso con prurito y pH normal'],
+        ['Tricomoniasis', 'Flujo espumoso amarillo-verdoso; es de transmisión sexual'],
+      ],
+      explicacion: 'Las tres causas de flujo se diferencian por la clínica, el pH y la microscopia; la tricomoniasis es una infección de transmisión sexual [1].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: '¿Cuál es el diagnóstico de Laura?',
+      opciones: ['Candidiasis', 'Vaginosis bacteriana', 'Gonorrea', 'Flujo normal'],
+      correcta: 1,
+      explicacion: 'Cumple los criterios de Amsel: flujo homogéneo, pH mayor de 4,5, prueba de aminas positiva y células clave; con tres de cuatro se diagnostica vaginosis bacteriana [1].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: '¿Qué tratamiento se recomienda?',
+      opciones: ['Fluconazol 150 mg en dosis única', 'Metronidazol 500 mg cada 12 horas por 7 días', 'Amoxicilina por 3 días', 'Duchas vaginales'],
+      correcta: 1,
+      explicacion: 'El esquema recomendado es metronidazol oral 500 mg cada 12 horas por 7 días; las alternativas incluyen metronidazol o clindamicina vaginales [1,2].',
+    },
+    {
+      tipo: 'completar',
+      enunciado: 'Durante el metronidazol y hasta 48 horas después de terminarlo, Laura no debe tomar ___.',
+      respuestas: ['alcohol', 'bebidas alcoholicas', 'licor', 'trago'],
+      pista: 'Lo que habrá en el matrimonio.',
+      explicacion: 'La ficha recomienda no consumir alcohol durante el tratamiento y al menos 48 horas después por el riesgo de una reacción tipo disulfiram: rubor, náuseas, vómito y taquicardia [2].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: '¿Le sirve el fluconazol que quiere comprar?',
+      opciones: [
+        'Sí, es el tratamiento de elección',
+        'No: el cuadro es una vaginosis bacteriana, no una candidiasis; el fluconazol no la trata',
+        'Sí, si lo toma con metronidazol siempre',
+        'Solo si lo toma por 10 días',
+      ],
+      correcta: 1,
+      explicacion: 'El fluconazol trata la candidiasis vulvovaginal [4], pero la vaginosis bacteriana es una alteración de la flora bacteriana que requiere metronidazol o clindamicina [1].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: '¿Hay que tratar a la pareja sexual masculina en la vaginosis bacteriana?',
+      opciones: ['Sí, siempre', 'No: el tratamiento de la pareja no reduce las recurrencias; en la tricomoniasis sí se trata', 'Solo con fluconazol', 'Solo si tiene síntomas urinarios'],
+      correcta: 1,
+      explicacion: 'Tratar a la pareja masculina no cambia la respuesta ni las recurrencias de la vaginosis; en la tricomoniasis, en cambio, se tratan las parejas [1].',
+    },
+    {
+      tipo: 'completar',
+      enunciado: 'El secnidazol es una alternativa que se toma en una dosis única de ___ g.',
+      respuestas: ['2', 'dos'],
+      pista: 'Un sobre de granulado.',
+      explicacion: 'El secnidazol se administra como dosis única oral de 2 g [3].',
+    },
+    {
+      tipo: 'relacionar',
+      enunciado: 'Relaciona cada medicamento con su dato clave.',
+      pares: [
+        ['Metronidazol', 'Reacción tipo disulfiram con alcohol'],
+        ['Fluconazol', '150 mg en dosis única en la candidiasis no complicada'],
+        ['Clindamicina en crema vaginal', 'Puede debilitar los condones de látex'],
+        ['Secnidazol', 'Dosis única oral'],
+      ],
+      explicacion: 'Además de la interacción del metronidazol con el alcohol [2] y la dosis única de fluconazol [4], la guía advierte que la crema de clindamicina, de base oleosa, puede debilitar los condones de látex [1]; el secnidazol se da en dosis única [3].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: 'Laura nota sabor metálico con el metronidazol. ¿Qué le dices?',
+      opciones: [
+        'Que suspenda el tratamiento',
+        'Que es un efecto conocido y pasajero, y que complete los 7 días',
+        'Que es una reacción alérgica grave',
+        'Que tome alcohol para quitarlo',
+      ],
+      correcta: 1,
+      explicacion: 'Las alteraciones del gusto son un efecto adverso conocido del metronidazol; no obligan a suspenderlo [2].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: '¿Qué le recomiendas para después del tratamiento?',
+      opciones: [
+        'Duchas vaginales frecuentes',
+        'Consultar si los síntomas persisten o reaparecen, porque la vaginosis recurre con frecuencia; evitar las duchas vaginales',
+        'Repetir el metronidazol cada mes sin consultar',
+        'Usar antibióticos preventivos',
+      ],
+      correcta: 1,
+      explicacion: 'La vaginosis bacteriana recurre con frecuencia; la guía recomienda consultar si los síntomas vuelven y no promueve las duchas vaginales [1].',
+    },
+  ],
+  claves: [
+    'Vaginosis: flujo gris, olor a pescado, pH mayor de 4,5, aminas y células clave (Amsel) [1].',
+    'Metronidazol 500 mg cada 12 horas por 7 días [1,2].',
+    'Sin alcohol durante el metronidazol y 48 horas después [2].',
+    'No se trata a la pareja en la vaginosis; sí en la tricomoniasis [1].',
+  ],
+  referencias: [FC.cdcIts2021, F.ftMetronidazol, F.dmSecnidazol, F.ftFluconazol],
+  enlaces: [
+    ['Metronidazol', '/vademecum/metronidazol', 'Vademécum'],
+    ['Secnidazol', '/vademecum/secnidazol', 'Vademécum'],
+    ['Fluconazol', '/vademecum/fluconazol', 'Vademécum'],
+  ],
+};

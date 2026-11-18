@@ -1,0 +1,142 @@
+import { F } from '../../vademecum/fuentes.js';
+import { FC } from '../fuentes.js';
+
+export default {
+  slug: 'cetoacidosis-diabetica',
+  titulo: 'Caso clínico de cetoacidosis diabética',
+  enfermedad: 'Cetoacidosis diabética',
+  area: 'endocrino',
+  nivel: 'Avanzado',
+  minutos: 16,
+  actualizado: '2026-11-17',
+  seo: {
+    titulo: 'Caso clínico de cetoacidosis diabética resuelto',
+    descripcion: 'Caso clínico de cetoacidosis diabética: criterios, líquidos, potasio antes de la insulina, dextrosa y paso a insulina subcutánea. Examen interactivo.',
+    palabrasClave: ['caso clínico de cetoacidosis diabética', 'cetoacidosis diabética preguntas', 'manejo de cetoacidosis', 'insulina en cetoacidosis'],
+  },
+  objetivos: [
+    'Diagnosticar la cetoacidosis con los criterios del consenso de 2024.',
+    'Ordenar el tratamiento: líquidos, potasio, insulina y dextrosa.',
+    'Hacer la transición segura a la insulina subcutánea.',
+  ],
+  presentacion: 'Andrés tiene 22 años y diabetes tipo 1. Hace tres días tiene vómito y dejó de aplicarse la insulina «porque no estaba comiendo». Llega a urgencias deshidratado, con dolor abdominal y respiración rápida y profunda. La glucosa es 420 mg/dL, el pH venoso 7,12, el bicarbonato 9 mmol/L, el beta-hidroxibutirato 5,1 mmol/L y el potasio 4,2 mEq/L.',
+  datos: [
+    ['Glucosa', '420 mg/dL'],
+    ['pH venoso', '7,12'],
+    ['Bicarbonato', '9 mmol/L'],
+    ['Beta-hidroxibutirato', '5,1 mmol/L'],
+    ['Potasio', '4,2 mEq/L'],
+    ['Signos', 'Taquicardia, mucosas secas, respiración de Kussmaul'],
+  ],
+  preguntas: [
+    {
+      tipo: 'relacionar',
+      enunciado: 'Relaciona cada criterio diagnóstico de la cetoacidosis con su valor.',
+      pares: [
+        ['Glucosa', '200 mg/dL o más, o diabetes conocida'],
+        ['Beta-hidroxibutirato', '3,0 mmol/L o más'],
+        ['pH venoso', 'Menor de 7,3'],
+        ['Bicarbonato', 'Menor de 18 mmol/L'],
+      ],
+      explicacion: 'El consenso internacional de 2024 define la cetoacidosis por hiperglucemia (o diabetes conocida), cetosis (beta-hidroxibutirato de 3,0 mmol/L o más) y acidosis (pH menor de 7,3 o bicarbonato menor de 18 mmol/L) [1].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: '¿Qué precipitó la cetoacidosis de Andrés?',
+      opciones: ['La deshidratación por calor', 'La omisión de la insulina', 'Exceso de ejercicio', 'Un medicamento para el vómito'],
+      correcta: 1,
+      explicacion: 'Las infecciones y la omisión de la insulina son los desencadenantes más frecuentes [1]. Sin insulina aumentan la lipólisis y la producción de cuerpos cetónicos.',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: '¿Con qué se empieza el tratamiento?',
+      opciones: [
+        'Bicarbonato intravenoso',
+        'Líquidos intravenosos isotónicos y medición del potasio',
+        'Insulina subcutánea rápida en bolo',
+        'Furosemida',
+      ],
+      correcta: 1,
+      explicacion: 'La reposición de volumen con cristaloides isotónicos es el primer paso; antes de la insulina se conoce el potasio [1].',
+    },
+    {
+      tipo: 'completar',
+      enunciado: 'Si el potasio es menor de ___ mEq/L, se repone potasio y se retrasa la insulina.',
+      respuestas: ['3,5', '3.5', '3,5 meq/l'],
+      pista: 'Un poco por debajo del límite inferior normal.',
+      explicacion: 'La insulina mete el potasio a la célula y puede causar una hipopotasemia peligrosa. Con potasio menor de 3,5 mEq/L se repone primero y se difiere la insulina [1].',
+    },
+    {
+      tipo: 'completar',
+      enunciado: 'La infusión de insulina regular intravenosa suele iniciarse a ___ U/kg/h.',
+      respuestas: ['0,1', '0.1'],
+      pista: 'Una décima de unidad por kilo.',
+      explicacion: 'El consenso propone una infusión intravenosa de insulina a dosis fija de 0,1 U/kg/h [1].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: 'La glucosa bajó a 240 mg/dL, pero el pH sigue en 7,22. ¿Qué haces?',
+      opciones: [
+        'Suspender la insulina',
+        'Agregar dextrosa a los líquidos y mantener la insulina hasta resolver la cetoacidosis',
+        'Pasar a insulina subcutánea y dar de alta',
+        'Administrar bicarbonato',
+      ],
+      correcta: 1,
+      explicacion: 'La glucosa se corrige antes que la cetosis. Al llegar a unos 250 mg/dL se agrega dextrosa y la insulina continúa hasta que la cetoacidosis se resuelve [1].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: '¿Cuándo se considera el bicarbonato?',
+      opciones: ['En todos los casos', 'Solo con pH menor de 7,0', 'Con glucosa mayor de 300', 'Cuando el potasio es normal'],
+      correcta: 1,
+      explicacion: 'El bicarbonato no mejora los desenlaces en la mayoría de los casos; el consenso lo reserva para la acidosis muy grave, con pH menor de 7,0 [1].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: 'Resuelta la cetoacidosis, ¿cómo se pasa a la insulina subcutánea?',
+      opciones: [
+        'Se suspende la infusión y al día siguiente se inicia la basal',
+        'Se aplica la insulina basal subcutánea 1 a 2 horas antes de suspender la infusión',
+        'Se da solo insulina rápida con las comidas',
+        'Se pasa a metformina',
+      ],
+      correcta: 1,
+      explicacion: 'Para evitar el rebote de la cetosis, la insulina basal subcutánea se aplica antes de suspender la infusión intravenosa, superponiéndolas unas horas [1,2].',
+    },
+    {
+      tipo: 'relacionar',
+      enunciado: 'Relaciona cada situación con el riesgo que conlleva.',
+      pares: [
+        ['Inhibidor de SGLT2 y enfermedad aguda', 'Cetoacidosis con glucosa casi normal'],
+        ['Suspender la basal por no comer', 'Cetoacidosis'],
+        ['Iniciar insulina con potasio bajo', 'Hipopotasemia grave y arritmias'],
+      ],
+      explicacion: 'Los inhibidores de SGLT2 pueden causar cetoacidosis con glucosa poco elevada [3]. La omisión de la insulina precipita cetoacidosis y la insulina con potasio bajo puede causar arritmias [1].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: 'Antes del alta, ¿qué educación previene un nuevo episodio?',
+      opciones: [
+        'Suspender la insulina cuando no coma',
+        'Reglas de días de enfermedad: no suspender la basal, medir cetonas y glucosa con frecuencia y consultar a tiempo',
+        'Tomar bicarbonato en casa',
+        'Usar solo insulina rápida',
+      ],
+      correcta: 1,
+      explicacion: 'La educación en días de enfermedad y el acceso a la insulina previenen las recurrencias [1]. La ADA recomienda que toda persona con diabetes tipo 1 tenga un plan de insulina basal y prandial [4].',
+    },
+  ],
+  claves: [
+    'Criterios 2024: glucosa de 200 mg/dL o más (o diabetes conocida), beta-hidroxibutirato de 3,0 o más y pH menor de 7,3 o bicarbonato menor de 18 [1].',
+    'Primero líquidos; potasio menor de 3,5: reponer antes de la insulina [1].',
+    'Insulina IV a 0,1 U/kg/h; dextrosa al llegar a unos 250 mg/dL, sin suspender la insulina [1].',
+    'Basal subcutánea antes de suspender la infusión [1,2].',
+  ],
+  referencias: [FC.crisisHiperglucemicas2024, FC.ftLantus, F.ftEmpagliflozina, F.adaDiabetes2026],
+  enlaces: [
+    ['Medicamentos para la diabetes tipo 2: preguntas frecuentes', '/articulos/medicamentos-diabetes-tipo-2-preguntas-frecuentes', 'Artículo'],
+    ['Empagliflozina', '/vademecum/empagliflozina', 'Vademécum'],
+    ['Curso de Farmacoterapia de la Diabetes', '/curso-de-farmacoterapia-de-la-diabetes', 'Curso gratis'],
+  ],
+};

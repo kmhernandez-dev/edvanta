@@ -1,0 +1,147 @@
+import { F } from '../../vademecum/fuentes.js';
+import { FC } from '../fuentes.js';
+
+export default {
+  slug: 'infeccion-urinaria',
+  titulo: 'Caso clínico de infección urinaria (cistitis)',
+  enfermedad: 'Cistitis aguda no complicada',
+  area: 'infecciosas',
+  nivel: 'Básico',
+  minutos: 12,
+  actualizado: '2026-11-17',
+  seo: {
+    titulo: 'Caso clínico de infección urinaria con preguntas',
+    descripcion: 'Caso clínico de cistitis no complicada: nitrofurantoína, fosfomicina, cotrimoxazol, por qué no usar el ciprofloxacino sobrante y cómo tomarlos.',
+    palabrasClave: ['caso clínico de infección urinaria', 'caso clínico cistitis', 'antibióticos para infección urinaria preguntas', 'fosfomicina cómo tomar'],
+  },
+  objetivos: [
+    'Diferenciar la cistitis de la pielonefritis.',
+    'Elegir el antibiótico de primera línea y su duración.',
+    'Enseñar la toma correcta y las precauciones.',
+  ],
+  presentacion: 'Daniela tiene 28 años, no está embarazada y desde hace dos días tiene ardor al orinar, ganas frecuentes y urgencia. No tiene fiebre, dolor lumbar ni flujo vaginal. Es la primera infección del año. Quiere tomar unas tabletas de ciprofloxacino que le sobraron de su mamá y pregunta si con un día basta. Su función renal es normal.',
+  datos: [
+    ['Síntomas', 'Disuria, polaquiuria y urgencia desde hace 2 días'],
+    ['Fiebre y dolor lumbar', 'No'],
+    ['Flujo vaginal', 'No'],
+    ['Embarazo', 'No'],
+    ['Función renal', 'Normal'],
+    ['Antibióticos disponibles en casa', 'Ciprofloxacino sobrante'],
+  ],
+  preguntas: [
+    {
+      tipo: 'opcion',
+      enunciado: '¿Cuál es el diagnóstico más probable?',
+      opciones: ['Pielonefritis aguda', 'Cistitis aguda no complicada', 'Vaginitis', 'Cólico renal'],
+      correcta: 1,
+      explicacion: 'Disuria, polaquiuria y urgencia en una mujer no embarazada, sin fiebre ni dolor lumbar, corresponden a una cistitis aguda no complicada [1].',
+    },
+    {
+      tipo: 'relacionar',
+      enunciado: 'Relaciona cada antibiótico de primera línea con su esquema.',
+      pares: [
+        ['Fosfomicina trometamol', '3 g en dosis única'],
+        ['Nitrofurantoína', 'Curso corto de 5 a 7 días'],
+        ['Trimetoprim/sulfametoxazol', '160/800 mg cada 12 horas por 3 días, si la resistencia local es baja'],
+      ],
+      explicacion: 'La guía propone nitrofurantoína, cotrimoxazol (si la resistencia local es menor de 20 %) o fosfomicina en dosis única como primera línea [1]. La ficha de la nitrofurantoína indica cursos de 5 a 7 días [3] y la de fosfomicina, una dosis única de 3 g [4].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: '¿Por qué no debe usar el ciprofloxacino sobrante?',
+      opciones: [
+        'Porque no sirve contra E. coli',
+        'Porque las fluoroquinolonas se reservan para otras infecciones por sus efectos adversos graves y la resistencia, y un sobrante no es una dosis ni un esquema adecuados',
+        'Porque solo se usa en niños',
+        'Porque es de venta libre',
+      ],
+      correcta: 1,
+      explicacion: 'La guía desaconseja las fluoroquinolonas como primera línea en la cistitis no complicada [1]; tienen advertencias por reacciones graves [5] y la OMS las clasifica como antibióticos de Vigilancia [2].',
+    },
+    {
+      tipo: 'completar',
+      enunciado: 'La fosfomicina trometamol se toma en una dosis única de ___ g.',
+      respuestas: ['3', 'tres'],
+      pista: 'Un sobre.',
+      explicacion: 'La dosis en la cistitis no complicada de la mujer es un sobre de 3 g en toma única [4].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: '¿Cómo se toma la fosfomicina?',
+      opciones: [
+        'Con el almuerzo y un jugo',
+        'Disuelta en un vaso de agua, con el estómago vacío, de preferencia antes de acostarse y después de orinar',
+        'Masticada, sin agua',
+        'Dividida en tres tomas al día',
+      ],
+      correcta: 1,
+      explicacion: 'Se disuelve en agua y se toma de inmediato, con el estómago vacío (2 a 3 horas lejos de las comidas), preferiblemente antes de acostarse y tras vaciar la vejiga [4].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: '¿Por qué la nitrofurantoína no sirve si hay pielonefritis?',
+      opciones: [
+        'Porque no alcanza concentraciones adecuadas en el tejido renal ni en la sangre',
+        'Porque es muy tóxica para el riñón',
+        'Porque solo actúa sobre hongos',
+        'Porque no se absorbe',
+      ],
+      correcta: 0,
+      explicacion: 'La nitrofurantoína se concentra en la orina pero no en el riñón ni en la sangre; por eso se reserva para la cistitis [1].',
+    },
+    {
+      tipo: 'completar',
+      enunciado: 'La nitrofurantoína está contraindicada con un aclaramiento de creatinina menor de ___ mL/min.',
+      respuestas: ['45', 'cuarenta y cinco'],
+      pista: 'Entre 40 y 50.',
+      explicacion: 'La ficha técnica la contraindica por debajo de 45 mL/min; entre 30 y 44 solo se considera en casos seleccionados [3].',
+    },
+    {
+      tipo: 'relacionar',
+      enunciado: 'Relaciona cada cuadro con su diagnóstico probable.',
+      pares: [
+        ['Disuria y polaquiuria sin fiebre', 'Cistitis'],
+        ['Fiebre, escalofríos y dolor lumbar', 'Pielonefritis'],
+        ['Flujo vaginal con prurito', 'Vaginitis'],
+      ],
+      explicacion: 'La fiebre y el dolor en el flanco orientan a pielonefritis, que necesita otro tratamiento; el flujo vaginal sugiere vaginitis [1].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: 'Con nitrofurantoína la orina se le pone amarilla oscura o marrón. ¿Qué le dices?',
+      opciones: [
+        'Que suspenda el antibiótico',
+        'Que es un cambio de color esperado y no es grave',
+        'Que es sangre',
+        'Que tome más agua para que se quite el efecto',
+      ],
+      correcta: 1,
+      explicacion: 'La ficha describe que la orina puede tomar un color amarillento o marrón durante el tratamiento [3].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: 'Durante la nitrofurantoína, Daniela presenta tos, fiebre y dificultad para respirar. ¿Qué haces?',
+      opciones: [
+        'Le das un jarabe para la tos',
+        'Recomiendas suspenderla y consultar: puede ser una reacción pulmonar al medicamento',
+        'Le dices que duplique la dosis',
+        'Nada',
+      ],
+      correcta: 1,
+      explicacion: 'La nitrofurantoína puede causar reacciones pulmonares agudas; ante síntomas respiratorios se suspende y se consulta [3].',
+    },
+  ],
+  claves: [
+    'Cistitis no complicada: nitrofurantoína, fosfomicina en dosis única o cotrimoxazol si la resistencia local es baja [1].',
+    'Evitar fluoroquinolonas en la cistitis no complicada; nunca usar sobrantes [1,2].',
+    'Nitrofurantoína: no sirve en pielonefritis y está contraindicada con aclaramiento menor de 45 mL/min [1,3].',
+    'Fosfomicina: 3 g en ayunas, antes de acostarse y tras orinar [4].',
+  ],
+  referencias: [FC.idsaCistitis2011, F.whoAware2023, F.ftFurantoina, F.ftFosfomicina, F.dmCiprofloxacino],
+  enlaces: [
+    ['Nitrofurantoína', '/vademecum/nitrofurantoina', 'Vademécum'],
+    ['Fosfomicina', '/vademecum/fosfomicina', 'Vademécum'],
+    ['Infección urinaria: síntomas y tratamiento', '/articulos/infeccion-urinaria-sintomas-tratamiento', 'Artículo'],
+    ['Antibióticos de uso ambulatorio', '/vademecum/antibioticos-de-uso-ambulatorio', 'Vademécum'],
+  ],
+};
