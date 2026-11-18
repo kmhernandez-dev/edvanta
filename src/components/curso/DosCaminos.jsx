@@ -1,17 +1,19 @@
 /**
- * Los dos caminos de inscripción de un curso propio con certificado:
+ * Los dos caminos de inscripción de un curso propio con certificado.
  *
- *  · «Estudiar con certificado» (destacado): inscribe y lleva al pago
- *    con Mercado Pago. Muestra el precio que cobrará el servidor para el
- *    país de quien mira y, solo si existe una oferta real con plazo, el
- *    precio de lista tachado y hasta cuándo rige.
- *  · «Estudiar gratis»: inscribe sin certificado. Puede pasarse después.
+ *  · En la tarjeta del curso solo van los dos botones, sin texto: la
+ *    portada queda limpia (pedido de Karla, 18-nov).
+ *  · Al presionar cualquiera se abre la comparativa: qué incluye cada
+ *    camino, el precio para el país de quien mira y, si hay una oferta
+ *    real con plazo, el precio de lista tachado y hasta cuándo rige. La
+ *    persona elige ahí.
  */
 
-import { ArrowRight, BadgeCheck, Check, ShieldCheck } from 'lucide-react';
+import { useEffect, useRef } from 'react';
+import { ArrowRight, BadgeCheck, Check, Minus, ShieldCheck, X } from 'lucide-react';
 import { Btn } from '../edvanta/ui';
 import { formatPrice } from '../../utils/format';
-import { beneficiosVigentes } from '../../data/beneficiosCertificado';
+import { COMPARATIVA_CAMINOS } from '../../data/beneficiosCertificado';
 
 const fechaCorta = (iso) => {
   try {
@@ -45,53 +47,142 @@ export function PrecioCertificado({ oferta, compacto = false }) {
   );
 }
 
-export default function DosCaminos({ oferta, onCertificado, onGratis, trabajando = null, error = '' }) {
-  const beneficios = beneficiosVigentes();
+/** En la tarjeta: solo los dos botones. Ambos abren la comparativa. */
+export default function DosCaminos({ onAbrir, trabajando = null, error = '' }) {
   return (
     <div className="curso-caminos">
-      <div className="curso-camino curso-camino--certificado">
-        <p className="curso-camino-insignia"><BadgeCheck className="h-4 w-4" aria-hidden="true" /> Recomendado</p>
-        <p className="curso-camino-titulo">Estudia con certificado</p>
-        <PrecioCertificado oferta={oferta} />
-        <ul className="curso-camino-lista">
-          {beneficios.map((b) => (
-            <li key={b.id}>
-              <Check className="h-4 w-4" strokeWidth={2.4} aria-hidden="true" />
-              <span><b>{b.titulo}.</b> {b.texto}</span>
-            </li>
-          ))}
-        </ul>
-        <Btn
-          variant="primary"
-          size="lg"
-          className="curso-cta"
-          onClick={onCertificado}
-          loading={trabajando === 'certificado'}
-          loadingLabel="Un momento…"
-          disabled={Boolean(trabajando)}
-          iconRight={ArrowRight}
-        >
-          {trabajando === 'certificado' ? 'Un momento…' : 'Estudiar con certificado'}
-        </Btn>
-        <p className="curso-camino-seguro"><ShieldCheck className="h-3.5 w-3.5" aria-hidden="true" /> Pago seguro: tarjetas, PSE, Nequi y más</p>
-      </div>
-
-      <div className="curso-camino curso-camino--gratis">
-        <Btn
-          variant="secondary"
-          size="lg"
-          className="curso-cta"
-          onClick={onGratis}
-          loading={trabajando === 'gratis'}
-          loadingLabel="Un momento…"
-          disabled={Boolean(trabajando)}
-        >
-          {trabajando === 'gratis' ? 'Un momento…' : 'Estudiar gratis'}
-        </Btn>
-        <p className="curso-card-note">Todo el contenido, sin certificado. Puedes pasarte al certificado cuando quieras.</p>
-      </div>
-
+      <Btn
+        variant="primary"
+        size="lg"
+        className="curso-cta"
+        onClick={() => onAbrir('certificado')}
+        loading={trabajando === 'certificado'}
+        loadingLabel="Un momento…"
+        disabled={Boolean(trabajando)}
+        iconRight={ArrowRight}
+      >
+        Estudiar con certificado
+      </Btn>
+      <Btn
+        variant="secondary"
+        size="lg"
+        className="curso-cta"
+        onClick={() => onAbrir('gratis')}
+        loading={trabajando === 'gratis'}
+        loadingLabel="Un momento…"
+        disabled={Boolean(trabajando)}
+      >
+        Estudiar gratis
+      </Btn>
       {error && <p role="alert" className="curso-card-error">{error}</p>}
+    </div>
+  );
+}
+
+const Marca = ({ si }) => (si
+  ? <Check className="curso-comp-si" strokeWidth={2.6} aria-label="Incluido" />
+  : <Minus className="curso-comp-no" strokeWidth={2.4} aria-label="No incluido" />);
+
+/** La comparativa: la persona elige su camino. */
+export function ComparativaCaminos({
+  abierta, foco = 'certificado', oferta, nombre, onCertificado, onGratis, onCerrar, trabajando = null, error = '',
+}) {
+  const ref = useRef(null);
+
+  useEffect(() => {
+    if (!abierta) return undefined;
+    const previo = document.activeElement;
+    document.body.style.overflow = 'hidden';
+    const onKey = (e) => { if (e.key === 'Escape') onCerrar(); };
+    window.addEventListener('keydown', onKey);
+    ref.current?.querySelector(`[data-camino="${foco}"]`)?.focus();
+    return () => {
+      document.body.style.overflow = '';
+      window.removeEventListener('keydown', onKey);
+      previo?.focus?.();
+    };
+  }, [abierta, foco, onCerrar]);
+
+  if (!abierta) return null;
+
+  return (
+    <div className="curso-comp-fondo" onClick={onCerrar} role="presentation">
+      <div
+        ref={ref}
+        className="curso-comp"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="curso-comp-titulo"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <button type="button" className="curso-comp-cerrar" onClick={onCerrar} aria-label="Cerrar">
+          <X className="h-5 w-5" aria-hidden="true" />
+        </button>
+        <p className="curso-comp-ante">{nombre}</p>
+        <h2 id="curso-comp-titulo" className="curso-comp-titulo">¿Cómo quieres estudiar?</h2>
+
+        <div className="curso-comp-columnas">
+          <div className="curso-comp-col curso-comp-col--certificado">
+            <p className="curso-camino-insignia"><BadgeCheck className="h-4 w-4" aria-hidden="true" /> Recomendado</p>
+            <p className="curso-comp-nombre">Con certificado</p>
+            <PrecioCertificado oferta={oferta} compacto />
+          </div>
+          <div className="curso-comp-col">
+            <p className="curso-comp-nombre curso-comp-nombre--gratis">Gratis</p>
+            <p className="curso-camino-monto curso-comp-cero">$ 0 <span>COP</span></p>
+            <p className="curso-camino-condicion">Sin certificado. Puedes pasarte cuando quieras.</p>
+          </div>
+        </div>
+
+        <table className="curso-comp-tabla">
+          <caption className="sr-only">Qué incluye cada forma de estudiar</caption>
+          <thead>
+            <tr><th scope="col">Incluye</th><th scope="col">Con certificado</th><th scope="col">Gratis</th></tr>
+          </thead>
+          <tbody>
+            {COMPARATIVA_CAMINOS.map((f) => (
+              <tr key={f.id}>
+                <th scope="row">
+                  <span className="curso-comp-fila">{f.titulo}</span>
+                  {f.detalle && <span className="curso-comp-detalle">{f.detalle}</span>}
+                </th>
+                <td><Marca si={f.certificado} /></td>
+                <td><Marca si={f.gratis} /></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+
+        <div className="curso-comp-acciones">
+          <Btn
+            data-camino="certificado"
+            variant="primary"
+            size="lg"
+            className="curso-cta"
+            onClick={onCertificado}
+            loading={trabajando === 'certificado'}
+            loadingLabel="Un momento…"
+            disabled={Boolean(trabajando)}
+            iconRight={ArrowRight}
+          >
+            Elegir con certificado
+          </Btn>
+          <Btn
+            data-camino="gratis"
+            variant="secondary"
+            size="lg"
+            className="curso-cta"
+            onClick={onGratis}
+            loading={trabajando === 'gratis'}
+            loadingLabel="Un momento…"
+            disabled={Boolean(trabajando)}
+          >
+            Elegir gratis
+          </Btn>
+        </div>
+        <p className="curso-camino-seguro"><ShieldCheck className="h-3.5 w-3.5" aria-hidden="true" /> Pago seguro con Mercado Pago: tarjetas, PSE, Nequi y más</p>
+        {error && <p role="alert" className="curso-card-error">{error}</p>}
+      </div>
     </div>
   );
 }

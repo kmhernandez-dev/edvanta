@@ -44,3 +44,18 @@ export const BENEFICIOS_CERTIFICADO = [
 ];
 
 export const beneficiosVigentes = () => BENEFICIOS_CERTIFICADO.filter((b) => b.confirmado);
+
+/**
+ * La comparativa que ve la persona al elegir cómo estudiar. Lo de
+ * «gratis» es lo que el aula permite de verdad: contenido y quices; la
+ * revisión docente de actividades es del camino con certificado.
+ */
+export const COMPARATIVA_CAMINOS = [
+  { id: 'contenido', titulo: 'Todas las clases del curso', detalle: 'A tu ritmo, en el celular o el computador', certificado: true, gratis: true },
+  { id: 'quices', titulo: 'Quices automáticos', detalle: 'Te dicen qué repasar antes de seguir', certificado: true, gratis: true },
+  { id: 'revision', titulo: 'Revisión de tus actividades', detalle: 'Un docente revisa tus entregas y te da retroalimentación', certificado: true, gratis: false },
+  { id: 'acompanamiento', titulo: 'Acompañamiento personalizado', detalle: 'Por WhatsApp con Karla o un docente, en 48 horas hábiles', certificado: true, gratis: false },
+  { id: 'certificado', titulo: 'Certificado de aprobación de Edvanta', detalle: 'Con tu nombre, el curso y sus horas', certificado: true, gratis: false },
+  { id: 'verificable', titulo: 'Código y QR verificables', detalle: 'Cualquier empleador lo comprueba en edvanta.co/certificados', certificado: true, gratis: false },
+  { id: 'linkedin', titulo: 'PDF y LinkedIn', detalle: 'Lo descargas y lo agregas a tu perfil', certificado: true, gratis: false },
+];

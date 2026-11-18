@@ -35,7 +35,7 @@ import { useCart } from '../context/CartContext';
 import { formatPrice } from '../utils/format';
 import { nombreDeCurso } from '../lib/slug';
 import { miAula, inscribirme, pagarCertificado, precioDelCertificado } from '../lib/misCursos';
-import { PrecioCertificado } from '../components/curso/DosCaminos';
+import { ComparativaCaminos, PrecioCertificado } from '../components/curso/DosCaminos';
 import { EMISOR, textoDeHoras } from '../lib/certificado/formato';
 import {
   borrarComentario, comentarEnCurso, comentariosDeCurso, editarComentario,
@@ -317,6 +317,8 @@ export default function FichaDeCurso({ modo = 'propio', slugPublico = '' }) {
   const [estadoListo, setEstadoListo] = useState(false);
   const [oferta, setOferta] = useState(null);
   const [camino, setCamino] = useState(null); // certificado | gratis mientras trabaja
+  const [comparativa, setComparativa] = useState(null); // abierta con el foco en: certificado | gratis
+  const cerrarComparativa = useCallback(() => setComparativa(null), []);
   const caminoAuto = useRef(false);
   const [trabajando, setTrabajando] = useState(false);
   const [error, setError] = useState('');
@@ -519,6 +521,21 @@ export default function FichaDeCurso({ modo = 'propio', slugPublico = '' }) {
           </div>
         </main>
         <SiteFooter />
+
+      {/* Al presionar cualquiera de los dos botones: la comparativa, y la persona elige. */}
+      {conCaminos && (
+        <ComparativaCaminos
+          abierta={Boolean(comparativa)}
+          foco={comparativa || 'certificado'}
+          oferta={oferta || { precio: precioVisible }}
+          nombre={nombre}
+          onCertificado={estudiarConCertificado}
+          onGratis={estudiarGratis}
+          onCerrar={cerrarComparativa}
+          trabajando={camino}
+          error={error}
+        />
+      )}
       </div>
     );
   }
@@ -545,7 +562,7 @@ export default function FichaDeCurso({ modo = 'propio', slugPublico = '' }) {
   // Dos caminos: solo en los propios con certificado de pago y para quien aún no está dentro.
   const conCaminos = propio && precioVisible > 0 && estado !== 'dentro';
   const caminos = conCaminos
-    ? { oferta: oferta || { precio: precioVisible }, onCertificado: estudiarConCertificado, onGratis: estudiarGratis, trabajando: camino }
+    ? { onAbrir: setComparativa, trabajando: camino }
     : null;
   const notaCertificado = {
     available: precioVisible > 0
@@ -750,7 +767,7 @@ export default function FichaDeCurso({ modo = 'propio', slugPublico = '' }) {
           nombre={nombre}
           accion={accion}
           boton={propio && !conCaminos ? boton() : null}
-          compra={conCaminos ? { oferta: caminos.oferta, onComprar: estudiarConCertificado, ocupado: camino === 'certificado' } : {}}
+          compra={conCaminos ? { oferta: oferta || { precio: precioVisible }, onComprar: () => setComparativa('certificado'), ocupado: camino === 'certificado' } : {}}
         />
 
         <CursoSection id="preguntas-frecuentes">
@@ -819,12 +836,12 @@ export default function FichaDeCurso({ modo = 'propio', slugPublico = '' }) {
                 size="sm"
                 variant="primary"
                 className="w-full shrink-0 min-[420px]:w-auto"
-                onClick={estudiarConCertificado}
+                onClick={() => setComparativa('certificado')}
                 loading={camino === 'certificado'}
                 loadingLabel="Un momento…"
                 iconRight={ArrowRight}
               >
-                Con certificado · {formatPrice(precioVisible)}
+                Estudiar con certificado
               </Btn>
             ) : (
               <Btn

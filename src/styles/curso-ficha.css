@@ -259,7 +259,129 @@
 
 /* ── Dos caminos: con certificado (destacado) o gratis ─────── */
 
-.curso-caminos { display: flex; flex-direction: column; gap: 12px; }
+.curso-caminos { display: flex; flex-direction: column; gap: 10px; }
+
+/* ── Comparativa de los dos caminos (ventana) ─────────────── */
+
+.curso-comp-fondo {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  background: rgba(3, 29, 92, 0.55);
+  padding: 0;
+}
+
+@media (min-width: 640px) {
+  .curso-comp-fondo { align-items: center; padding: 24px; }
+}
+
+.curso-comp {
+  --cf-primary: #082e86;
+  --cf-teal-strong: #0f7480;
+  --cf-body: #4A5A73;
+  --cf-muted: #66738A;
+  --cf-border: #e4e9f2;
+  position: relative;
+  width: 100%;
+  max-width: 640px;
+  max-height: 92vh;
+  overflow-y: auto;
+  border-radius: 18px 18px 0 0;
+  background: #fff;
+  padding: 24px 20px 20px;
+  color: var(--cf-body);
+  box-shadow: 0 24px 60px -20px rgba(3, 29, 92, 0.45);
+}
+
+@media (min-width: 640px) {
+  .curso-comp { border-radius: 18px; padding: 28px; }
+}
+
+.curso-comp-cerrar {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  border-radius: 999px;
+  padding: 6px;
+  color: var(--cf-muted);
+}
+
+.curso-comp-cerrar:hover { background: #f2f5fa; }
+
+.curso-comp-ante { margin: 0; padding-right: 36px; color: var(--cf-muted); font-size: 0.8rem; font-weight: 600; }
+.curso-comp-titulo { margin: 4px 0 0; color: var(--cf-primary); font-size: 1.4rem; font-weight: 800; }
+
+.curso-comp-columnas {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.curso-comp-col {
+  border: 1px solid var(--cf-border);
+  border-radius: 14px;
+  padding: 14px;
+}
+
+.curso-comp-col--certificado {
+  border: 2px solid var(--cf-primary);
+  background: linear-gradient(180deg, #f3f7ff 0%, #fff 80%);
+}
+
+.curso-comp-nombre { margin: 8px 0 2px; color: var(--cf-primary); font-size: 1.05rem; font-weight: 800; }
+.curso-comp-nombre--gratis { margin-top: 0; padding-top: 30px; }
+.curso-comp-cero { color: var(--cf-body); }
+
+.curso-comp-tabla {
+  width: 100%;
+  margin-top: 16px;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+.curso-comp-tabla th,
+.curso-comp-tabla td {
+  border-bottom: 1px solid var(--cf-border);
+  padding: 9px 6px;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.curso-comp-tabla thead th {
+  color: var(--cf-muted);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.curso-comp-tabla td,
+.curso-comp-tabla thead th:not(:first-child) { width: 92px; text-align: center; }
+.curso-comp-fila { display: block; color: var(--cf-primary); font-weight: 700; }
+.curso-comp-detalle { display: block; margin-top: 1px; color: var(--cf-muted); font-size: 0.75rem; font-weight: 400; }
+.curso-comp-si { display: inline-block; width: 20px; height: 20px; color: var(--cf-teal-strong); }
+.curso-comp-no { display: inline-block; width: 18px; height: 18px; color: #b8c2d3; }
+
+.curso-comp-acciones {
+  display: grid;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+@media (min-width: 640px) {
+  .curso-comp-acciones { grid-template-columns: 1fr 1fr; }
+}
+
+.curso-comp .curso-cta {
+  width: 100%;
+  min-height: 52px;
+  border-radius: 10px;
+  font-size: 1rem;
+}
 
 .curso-camino--certificado {
   border: 2px solid var(--cf-primary);
