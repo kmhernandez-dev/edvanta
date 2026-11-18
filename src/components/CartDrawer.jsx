@@ -2,24 +2,21 @@
  * ============================================================
  *  CartDrawer.jsx — El carrito de Edvanta
  *
- *  Un panel lateral limpio, en la línea del sistema de diseño:
- *   · encabezado blanco con los tres pasos (carrito → pago → acceso);
- *   · cada producto en una tarjeta con su ícono, lo que incluye y su precio;
- *   · los certificados muestran el precio que cobrará el servidor para el
- *     país de quien compra (con el de lista tachado si hay oferta real);
- *   · un resumen con el total, el botón de Mercado Pago y las señales de
- *     confianza que son ciertas (medios de pago, pago seguro, WhatsApp).
+ *  Hecho con el sistema de diseño 2.0 (edvanta-ds.css): tokens --ds-*,
+ *  Manrope para títulos, botones .ed-btn y superficies suaves. Sin
+ *  íconos genéricos: cada producto se ve con su portada real; si no la
+ *  tiene, con un sello tipográfico (pedido de Karla, 18-nov).
+ *
+ *  Vive fuera de .edvanta-theme (StoreGlobals en App.jsx), así que el
+ *  panel lleva esa clase para tener los tokens.
  *
  *  La lógica de pago no cambia: certificados por /api/aula/me/checkout
- *  (con la cuenta del aula) y productos por /api/create-preference.
+ *  (con la cuenta del aula) y productos por /api/create-preference. El
+ *  precio de cada certificado lo dice el servidor (país y plazo).
  * ============================================================
  */
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import {
-  ArrowRight, Award, BookOpen, Check, CreditCard, Lock, Loader2, MessageCircle, Minus, Package, Plus,
-  ShieldCheck, ShoppingBag, Trash2, X,
-} from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import { formatPrice } from '../utils/format';
 import { waLink } from '../config/links';
@@ -28,65 +25,51 @@ import { precioDelCertificado } from '../lib/misCursos';
 
 const ID_CERTIFICADO = /^certificado-(\d+)$/;
 const INCLUYE_CERTIFICADO = ['Certificado verificable con código y QR', 'Revisión docente de tus actividades', 'Acompañamiento por WhatsApp'];
+const ETIQUETA = { certificado: 'Certificado', guia: 'Guía', pack: 'Pack' };
+const ruta = (u) => (u && u.startsWith('/api') ? apiUrl(u) : u);
 
-function Pasos() {
-  const pasos = ['Carrito', 'Pago', 'Acceso'];
+function Portada({ src, tipo }) {
+  const [rota, setRota] = useState(false);
+  useEffect(() => { setRota(false); }, [src]);
+  if (src && !rota) {
+    return <img className="carrito-portada" src={ruta(src)} alt="" loading="lazy" onError={() => setRota(true)} />;
+  }
+  // Sin portada: un sello tipográfico, no un ícono.
   return (
-    <ol className="carrito-pasos" aria-label="Pasos de la compra">
-      {pasos.map((p, i) => (
-        <li key={p} className={i === 0 ? 'is-activo' : ''}>
-          <span aria-hidden="true">{i + 1}</span>{p}
-        </li>
-      ))}
-    </ol>
+    <span className="carrito-portada carrito-portada--sello" aria-hidden="true">
+      <span>{ETIQUETA[tipo] || 'Edvanta'}</span>
+    </span>
   );
 }
 
 function Producto({ item, oferta, onMas, onMenos, onQuitar }) {
   const certificado = item.category === 'certificado';
   const precio = certificado && oferta?.precio ? oferta.precio : item.price;
-  const Icono = certificado ? Award : item.category === 'guia' ? BookOpen : Package;
+  const nombre = item.name.replace(/^Certificado · /, '');
   return (
     <li className="carrito-item">
-      <div className={`carrito-item__icono ${certificado ? 'is-certificado' : ''}`} aria-hidden="true">
-        <Icono className="h-5 w-5" />
-      </div>
+      <Portada src={item.image || oferta?.portada} tipo={item.category} />
       <div className="carrito-item__cuerpo">
-        <div className="carrito-item__fila">
-          <p className="carrito-item__nombre">{item.name.replace(/^Certificado · /, '')}</p>
-          <button type="button" className="carrito-item__quitar" onClick={onQuitar} aria-label={`Quitar ${item.name}`}>
-            <Trash2 className="h-4 w-4" aria-hidden="true" />
-          </button>
-        </div>
-        {certificado ? (
-          <>
-            <p className="carrito-item__tipo">Certificado de aprobación · se emite al completar el curso</p>
-            <ul className="carrito-item__incluye">
-              {INCLUYE_CERTIFICADO.map((t) => (
-                <li key={t}><Check className="h-3.5 w-3.5" strokeWidth={2.6} aria-hidden="true" />{t}</li>
-              ))}
-            </ul>
-          </>
-        ) : (
-          <p className="carrito-item__tipo">{formatPrice(item.price)} c/u · producto digital</p>
+        <p className="carrito-item__tipo">{certificado ? 'Estudiar con certificado' : (ETIQUETA[item.category] || 'Producto digital')}</p>
+        <p className="carrito-item__nombre">{nombre}</p>
+        {certificado && (
+          <ul className="carrito-item__incluye">
+            {INCLUYE_CERTIFICADO.map((t) => <li key={t}>{t}</li>)}
+          </ul>
         )}
-        <div className="carrito-item__fila carrito-item__fila--pie">
+        <div className="carrito-item__pie">
           {certificado ? (
-            <span className="carrito-item__unico">Pago único</span>
+            <button type="button" className="carrito-enlace" onClick={onQuitar}>Quitar</button>
           ) : (
-            <div className="carrito-cantidad" role="group" aria-label="Cantidad">
-              <button type="button" onClick={onMenos} aria-label="Disminuir"><Minus className="h-3.5 w-3.5" /></button>
+            <div className="carrito-cantidad" role="group" aria-label={`Cantidad de ${nombre}`}>
+              <button type="button" onClick={onMenos} aria-label="Uno menos">−</button>
               <span aria-live="polite">{item.qty}</span>
-              <button type="button" onClick={onMas} aria-label="Aumentar"><Plus className="h-3.5 w-3.5" /></button>
+              <button type="button" onClick={onMas} aria-label="Uno más">+</button>
+              <button type="button" className="carrito-enlace" onClick={onQuitar}>Quitar</button>
             </div>
           )}
           <p className="carrito-item__precio">
-            {certificado && oferta?.conDescuento && oferta.lista && (
-              <>
-                <s>{formatPrice(oferta.lista)}</s>
-                <span className="carrito-item__pct">−{oferta.descuentoPct} %</span>
-              </>
-            )}
+            {certificado && oferta?.conDescuento && oferta.lista && <s>{formatPrice(oferta.lista)}</s>}
             <b>{formatPrice(precio * item.qty)}</b>
           </p>
         </div>
@@ -104,7 +87,6 @@ export default function CartDrawer() {
 
   const tieneCertificados = items.some((i) => i.category === 'certificado');
 
-  // El precio de cada certificado lo dice el servidor (país y plazo de la oferta).
   const idsCert = items.filter((i) => i.category === 'certificado').map((i) => i.id).join(',');
   useEffect(() => {
     if (!isOpen || !idsCert) return undefined;
@@ -122,10 +104,8 @@ export default function CartDrawer() {
     const o = i.category === 'certificado' ? ofertas[i.id] : null;
     return s + (o?.conDescuento && o.lista ? (o.lista - o.precio) * i.qty : 0);
   }, 0);
+  const vence = Object.values(ofertas).find((o) => o?.conDescuento && o.venceEl)?.venceEl;
 
-  // Crea la preferencia en Mercado Pago y redirige al checkout.
-  // Los certificados se pagan con la cuenta del aula: el pago queda a
-  // nombre de quien va a emitirlo.
   const payWithMercadoPago = async () => {
     setPaying(true);
     setPayError('');
@@ -161,7 +141,6 @@ export default function CartDrawer() {
     }
   };
 
-  // Bloquea el scroll de la página y cierra con Escape.
   useEffect(() => {
     if (!isOpen) return undefined;
     document.body.style.overflow = 'hidden';
@@ -179,51 +158,40 @@ export default function CartDrawer() {
     `\n\n*Total: ${formatPrice(total)}*\n\n¿Cómo continúo con el pago?`;
 
   return (
-    <>
-      <div
-        className={`carrito-velo ${isOpen ? 'is-abierto' : ''}`}
-        onClick={closeCart}
-        aria-hidden="true"
-      />
+    <div className="edvanta-theme">
+      <div className={`carrito-velo ${isOpen ? 'is-abierto' : ''}`} onClick={closeCart} aria-hidden="true" />
 
       <aside
         className={`carrito ${isOpen ? 'is-abierto' : ''}`}
         role="dialog"
         aria-modal="true"
-        aria-label="Carrito de compras"
+        aria-labelledby="carrito-titulo"
         aria-hidden={!isOpen}
       >
         <header className="carrito-cabeza">
-          <div className="carrito-cabeza__fila">
-            <div className="carrito-cabeza__titulo">
-              <span className="carrito-cabeza__icono" aria-hidden="true"><ShoppingBag className="h-5 w-5" /></span>
-              <div>
-                <h2>Tu carrito</h2>
-                <p>{count} {count === 1 ? 'producto' : 'productos'}</p>
-              </div>
-            </div>
-            <button type="button" onClick={closeCart} className="carrito-cerrar" aria-label="Cerrar carrito">
-              <X className="h-5 w-5" aria-hidden="true" />
-            </button>
+          <div>
+            <p className="carrito-ante">Tu compra en Edvanta</p>
+            <h2 id="carrito-titulo" className="carrito-titulo">Tu carrito</h2>
           </div>
-          {items.length > 0 && <Pasos />}
+          <button type="button" onClick={closeCart} className="carrito-cerrar" aria-label="Cerrar carrito">
+            <span aria-hidden="true">×</span>
+          </button>
         </header>
 
         {items.length === 0 ? (
           <div className="carrito-vacio">
-            <div className="carrito-vacio__icono" aria-hidden="true"><ShoppingBag className="h-9 w-9" /></div>
-            <p className="carrito-vacio__titulo">Tu carrito está vacío</p>
+            <p className="carrito-ante">Aún no hay nada aquí</p>
+            <p className="carrito-vacio__titulo">Empieza por lo que quieres aprender</p>
             <p className="carrito-vacio__texto">Estudia un curso con certificado o lleva una guía escrita por una química farmacéutica.</p>
             <div className="carrito-vacio__acciones">
-              <Link to="/cursos" onClick={closeCart} className="carrito-boton carrito-boton--principal">
-                Ver cursos <ArrowRight className="h-4 w-4" aria-hidden="true" />
-              </Link>
-              <Link to="/guias" onClick={closeCart} className="carrito-boton carrito-boton--secundario">Ver guías</Link>
+              <Link to="/cursos" onClick={closeCart} className="ed-btn ed-btn--gradient ed-btn--block">Ver cursos</Link>
+              <Link to="/guias" onClick={closeCart} className="ed-btn ed-btn--outline ed-btn--block">Ver guías</Link>
             </div>
           </div>
         ) : (
           <>
-            <div className="carrito-lista-zona">
+            <div className="carrito-zona">
+              <p className="carrito-cuenta">{count} {count === 1 ? 'producto' : 'productos'}</p>
               <ul className="carrito-lista">
                 {items.map((item) => (
                   <Producto
@@ -236,64 +204,55 @@ export default function CartDrawer() {
                   />
                 ))}
               </ul>
-              <button type="button" onClick={clearCart} className="carrito-vaciar">
-                <Trash2 className="h-3.5 w-3.5" aria-hidden="true" /> Vaciar carrito
-              </button>
+              {items.length > 1 && (
+                <button type="button" onClick={clearCart} className="carrito-enlace carrito-vaciar">Vaciar carrito</button>
+              )}
             </div>
 
             <footer className="carrito-pie">
               <dl className="carrito-resumen">
                 {ahorro > 0 && (
-                  <div className="carrito-resumen__ahorro">
-                    <dt>Ahorras</dt>
-                    <dd>{formatPrice(ahorro)}</dd>
+                  <div className="carrito-resumen__linea">
+                    <dt>Descuento</dt>
+                    <dd className="carrito-resumen__ahorro">−{formatPrice(ahorro)}</dd>
                   </div>
                 )}
-                <div className="carrito-resumen__total">
+                <div className="carrito-resumen__linea carrito-resumen__linea--total">
                   <dt>Total</dt>
                   <dd>{formatPrice(total)} <span>COP</span></dd>
                 </div>
               </dl>
+              {vence && (
+                <p className="carrito-nota">
+                  Precio con descuento hasta el {new Date(vence).toLocaleDateString('es-CO', { day: 'numeric', month: 'long', timeZone: 'America/Bogota' })}.
+                </p>
+              )}
 
               {pideCuenta && (
                 <div className="carrito-aviso">
-                  <p><b>Entra a tu aula para pagar el certificado.</b></p>
-                  <p>El pago queda a tu nombre y lo usas para emitir tu certificado al completar el curso. Tu carrito se conserva.</p>
+                  <p><b>Entra a tu aula para pagar el certificado.</b> El pago queda a tu nombre y tu carrito se conserva.</p>
                   <a href="/aula/entrar">Entrar o crear mi cuenta</a>
                 </div>
               )}
-
               {payError && <p role="alert" className="carrito-error">{payError}</p>}
 
-              <button type="button" onClick={payWithMercadoPago} disabled={paying} className="carrito-pagar">
-                {paying ? (
-                  <><Loader2 className="h-5 w-5 animate-spin" aria-hidden="true" /> Abriendo Mercado Pago…</>
-                ) : (
-                  <><Lock className="h-4 w-4" aria-hidden="true" /> Pagar {formatPrice(total)} con Mercado Pago</>
-                )}
+              <button
+                type="button"
+                onClick={payWithMercadoPago}
+                disabled={paying}
+                className="ed-btn ed-btn--gradient ed-btn--lg ed-btn--block"
+              >
+                {paying ? 'Abriendo Mercado Pago…' : 'Ir a pagar'}
               </button>
 
-              <ul className="carrito-confianza" aria-label="Medios de pago">
-                <li><CreditCard className="h-3.5 w-3.5" aria-hidden="true" /> Tarjetas</li>
-                <li>PSE</li>
-                <li>Nequi</li>
-                <li>Efecty</li>
-              </ul>
-
-              <p className="carrito-seguro">
-                <ShieldCheck className="h-4 w-4" aria-hidden="true" />
-                {tieneCertificados
-                  ? 'Pago seguro. Tu certificado queda a tu nombre en el aula.'
-                  : 'Pago seguro. Recibes el acceso en tu correo.'}
-              </p>
-
-              <a href={waLink(checkoutMessage)} target="_blank" rel="noopener noreferrer" className="carrito-whatsapp">
-                <MessageCircle className="h-4 w-4" aria-hidden="true" /> ¿Prefieres pagar con ayuda? Escríbenos por WhatsApp
+              <p className="carrito-medios">Pago seguro con Mercado Pago · tarjeta, PSE, Nequi o Efecty</p>
+              <a href={waLink(checkoutMessage)} target="_blank" rel="noopener noreferrer" className="carrito-enlace carrito-ayuda">
+                ¿Prefieres pagar con ayuda? Escríbenos por WhatsApp
               </a>
             </footer>
           </>
         )}
       </aside>
-    </>
+    </div>
   );
 }

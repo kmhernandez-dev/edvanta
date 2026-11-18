@@ -21,6 +21,7 @@ function cartReducer(state, action) {
         name: action.product.name,
         price: action.product.price,
         category: action.product.category,
+        image: action.product.image || null,
         qty: 1,
       }];
     }

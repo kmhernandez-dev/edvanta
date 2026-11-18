@@ -83,7 +83,7 @@ function CompraCertificado({ ficha, nombre, oferta, onComprar, ocupado }) {
   const id = `certificado-${cursoId}`;
   const enCarrito = items.some((i) => i.id === id);
   const agregar = () => {
-    if (!enCarrito) addItem({ id, name: `Certificado · ${nombre}`, price: precio, category: 'certificado' });
+    if (!enCarrito) addItem({ id, name: `Certificado · ${nombre}`, price: precio, category: 'certificado', image: imagen(ficha.portada) });
     openCart();
   };
   if (onComprar) {

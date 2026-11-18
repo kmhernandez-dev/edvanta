@@ -19,7 +19,7 @@ export function precioPublicoRouter({ db, tasas = process.env.VITEST ? async () 
     const courseId = idField(req.params.courseId, 'courseId', 'El curso');
     const curso = await one(
       db,
-      `SELECT id, certificate_price FROM aula_courses
+      `SELECT id, certificate_price, cover_file_id, cover_url FROM aula_courses
         WHERE id = $1 AND kind = 'edvanta' AND status = 'publicado' AND deleted_at IS NULL`,
       [courseId],
     );
@@ -35,7 +35,9 @@ export function precioPublicoRouter({ db, tasas = process.env.VITEST ? async () 
     res.set('Cache-Control', 'private, no-store');
     // Equivalente aproximado en la moneda local (fuera de Colombia). Se cobra en COP.
     const equivalente = oferta.pais && oferta.pais !== 'CO' ? equivalenteLocal(oferta.precio, oferta.pais, await tasas()) : null;
-    res.json({ cursoId: Number(curso.id), ...oferta, equivalente, institucion: Boolean(matricula?.assignment_id) });
+    // La portada, para que el carrito muestre el curso y no un ícono.
+    const portada = curso.cover_file_id ? `/api/cursos-edvanta/${curso.id}/portada` : (curso.cover_url || null);
+    res.json({ cursoId: Number(curso.id), ...oferta, equivalente, portada, institucion: Boolean(matricula?.assignment_id) });
   }));
   return router;
 }
