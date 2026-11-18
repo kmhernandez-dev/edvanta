@@ -29,3 +29,16 @@ Fuentes: Semrush (cuenta gratuita de Karla, Colombia, 18-nov; agotó sus 10 cons
 Con la cuenta gratuita de Semrush (10 consultas al día) se puede seguir mañana: «curso de 50 horas», «curso de
 primeros auxilios» exacto, farmacovigilancia en México y España, y los mismos temas en México, Perú, Chile y
 Argentina. Con el plan Pro (USD 139,95 al mes, decisión de Karla) se mediría todo en un solo día.
+
+## Estado al 18-nov: Manipulación de alimentos (2cc2213)
+
+- Curso creado en **borrador** (migraciones 161 y 162):
+  - 5 unidades, 15 clases y 10 horas;
+  - un quiz de 4 preguntas, una actividad con rúbrica y un foro por unidad;
+  - certificado de COP 60.000 con la oferta vigente.
+  - Fuentes: Res. 2674 de 2013 (arts. 11 a 14 y 26), concepto INVIMA 2036144 de 2018 y manual de las cinco claves de la OMS (2007).
+  - Contenido en `scripts/datos/manipulacion-alimentos.mjs` (se regenera con `node scripts/generar-manipulacion-alimentos.mjs`).
+- **Falta:**
+  1. Revisión de Karla y aprobación para publicar.
+  2. Portada (no se generan portadas en código).
+  3. Al publicar, que el curso propio tome `/curso-de-manipulacion-de-alimentos`. Hoy esa dirección la tiene el curso curado de Edutin, que pasaría a `/curso-de-manipulacion-de-alimentos-en-edutin`. El cambio se hace con migración el mismo día de la publicación, para no dejar la dirección vacía.
