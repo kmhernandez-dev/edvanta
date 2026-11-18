@@ -57,7 +57,7 @@ Monografías para profesionales de la salud, revisadas por una química farmacé
 <!-- cursos:inicio (scripts/llms-cursos.mjs) -->
 ## Cursos de Edvanta
 
-62 cursos propios en línea, en español, para químicos farmacéuticos, regentes, profesionales de la salud y de la industria (y uno para pacientes). Cada curso tiene clases cortas, quices, un caso y un proyecto; se estudia a tu ritmo en el aula de Edvanta.
+63 cursos propios en línea, en español, para químicos farmacéuticos, regentes, profesionales de la salud y de la industria (y uno para pacientes). Cada curso tiene clases cortas, quices, un caso y un proyecto; se estudia a tu ritmo en el aula de Edvanta.
 
 - Hay dos formas de estudiar cada curso: gratis (todo el contenido y quices automáticos) o con certificado (además, revisión docente de actividades, acompañamiento por WhatsApp y certificado verificable).
 - Precio del certificado: lista COP 199.000; quien lo toma al inscribirse o en sus primeros 7 días paga COP 60.000 en Colombia o COP 65.000 desde otros países (pago único con Mercado Pago).
@@ -115,6 +115,7 @@ Monografías para profesionales de la salud, revisadas por una química farmacé
 - [Curso de Gestión de Calidad Farmacéutica](https://edvanta.co/curso-de-gestion-de-calidad-farmaceutica): Curso para diseñar, implementar y mejorar sistemas de gestión de calidad (SGC) en la industria y los servicios farmacéuticos colombianos. 35 clases, 20 horas, nivel intermedio. Contenido gratis; certificado opcional.
 - [Curso de Gestión de Desviaciones y Acciones Correctivas y Preventivas — CAPA](https://edvanta.co/curso-de-gestion-de-desviaciones-y-capa): Curso práctico para gestionar desviaciones, investigar su causa raíz y diseñar acciones correctivas y preventivas efectivas en la industria farmacéutica colombiana. 35 clases, 20 horas, nivel intermedio. Contenido gratis; certificado opcional.
 - [Curso de Gestión de Riesgos en la Calidad Farmacéutica](https://edvanta.co/curso-de-gestion-de-riesgos-en-la-calidad-farmaceutica): Curso práctico sobre gestión de riesgos para la calidad (QRM) según ICH Q9(R1) 2023, la guía de la OMS (TRS 981, Anexo 2) e ISO 31000, aplicado a la normativa colombiana (INVIMA, Resolución 1160 de 2016). 33 clases, 20 horas, nivel intermedio. Contenido gratis; certificado opcional.
+- [Curso de Manipulación de Alimentos](https://edvanta.co/curso-de-manipulacion-de-alimentos): Curso para manipuladores de alimentos de restaurantes, cafeterías, servicios de alimentación, droguerías con alimentos y la industria: higiene personal, las cinco claves de la OMS, temperaturas seguras, limpieza y… 15 clases, 10 horas, nivel básico. Contenido gratis; certificado opcional.
 - [Curso de Validación de Métodos Analíticos](https://edvanta.co/curso-de-validacion-de-metodos-analiticos): Curso práctico para demostrar que los métodos analíticos farmacéuticos son aptos para su uso previsto, conforme a ICH Q2(R2), ICH Q14, USP y la normativa colombiana del INVIMA. 33 clases, 20 horas, nivel intermedio. Contenido gratis; certificado opcional.
 - [Validaciones y Calificaciones en la Industria Farmacéutica](https://edvanta.co/curso-de-validaciones-y-calificaciones): Calificación de equipos e instalaciones y validación de procesos, limpieza y métodos analíticos, con enfoque de ciclo de vida. 9 clases, nivel avanzado. Contenido gratis; certificado opcional.
 
