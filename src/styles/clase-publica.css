@@ -196,6 +196,16 @@
 .cp-paso__dir { display: inline-flex; align-items: center; gap: 6px; color: var(--cp-turquesa); font-size: 0.78rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; }
 .cp-paso__titulo { color: var(--cp-azul-hondo); font-family: 'Manrope', 'Inter', sans-serif; font-weight: 800; line-height: 1.35; }
 
+/* Para profundizar: vademécum y lecturas que enlazan a esta clase (enlaces-de-salud.js) */
+.cp-lecturas { margin-top: 24px; padding: 22px; border: 1px solid var(--cp-borde); border-radius: 20px; background: #fff; }
+.cp-lecturas h2 { margin: 0 0 14px; color: var(--cp-azul-hondo); font-family: 'Manrope', 'Inter', sans-serif; font-size: 1.25rem; font-weight: 800; }
+.cp-lecturas__grupos { display: grid; gap: 18px; }
+@media (min-width: 760px) { .cp-lecturas__grupos { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); } }
+.cp-lecturas__grupo h3 { display: flex; align-items: center; gap: 8px; margin: 0 0 8px; color: var(--cp-turquesa); font-size: 0.78rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; }
+.cp-lecturas__grupo ul { display: grid; gap: 6px; margin: 0; padding: 0; list-style: none; }
+.cp-lecturas__grupo a { color: var(--cp-azul); font-weight: 700; line-height: 1.45; text-decoration: none; }
+.cp-lecturas__grupo a:hover { text-decoration: underline; }
+
 .cp-cta {
   display: grid;
   gap: 14px;

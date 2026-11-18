@@ -42,6 +42,7 @@ const { puedeIndexarse, robotsDeArticulo, tieneRevisionClinica } = await importa
 const { entidadAutor, entidadRevisor, esAutoraKarla } = await importar('src/lib/seo/autoria.js');
 const { descripcionDeArticulo, tituloDeArticulo } = await importar('src/lib/seo/titulos.js');
 const { citasDeArticulo } = await importar('src/lib/seo/citas.js');
+const { clasesDelArticulo, htmlDeClasesDelArticulo, urlsAbsolutas } = await importar('api/lib/enlaces-de-salud.js');
 
 const plantilla = readFileSync(path.join(dist, 'index.html'), 'utf8');
 const SALUD = ['fst', 'contigo', 'atenfarma'];
@@ -115,6 +116,9 @@ for (const art of articulos) {
   const relacionados = articulos.filter((a) => a.slug !== art.slug && a.category === art.category).slice(0, 4);
   // Sin fecha de consulta: la pone quien cita.
   const citas = citasDeArticulo(art);
+  // Las clases gratuitas que enseñan lo mismo (api/lib/enlaces-de-salud.js).
+  const clasesPro = clasesDelArticulo(art.slug);
+  const relatedLink = urlsAbsolutas([...clasesPro.clases, ...clasesPro.cursos]);
 
   const grafo = [
     {
@@ -132,6 +136,7 @@ for (const art of articulos) {
       dateModified: art.updated || art.date,
       publisher: { '@type': 'Organization', name: 'Edvanta', url: SITIO, logo: { '@type': 'ImageObject', url: `${SITIO}/img/logo-edvanta.png` } },
       mainEntityOfPage: { '@type': 'WebPage', '@id': canonical },
+      ...(relatedLink.length ? { relatedLink } : {}),
     },
     {
       '@type': 'BreadcrumbList',
@@ -159,6 +164,7 @@ for (const art of articulos) {
     <p><a href="${esAutoraKarla(art) ? '/autores/karla-hernandez' : '/equipo-editorial'}">${esc(autor)}</a>${art.revisor ? ` · Revisado por ${art.revisorUrl ? `<a href="${esc(art.revisorUrl)}" rel="noopener">${esc(art.revisor)}</a>` : esc(art.revisor)}${tieneRevisionClinica(art) ? ` el ${esc(fecha(art.reviewedAt || art.reviewed_at || art.fechaRevision))}` : ' · fecha de revisión pendiente'}` : ''} · Actualizado el ${esc(fecha(art.updated || art.date))}</p>
     <div class="ed-prose">${markdownAHtml(limpiarMarkdown(md))}</div>
   </article>
+  ${htmlDeClasesDelArticulo(art.slug)}
   <p><a href="/politica-de-revision-clinica">Cómo se revisa</a> · <a href="/fuentes">Fuentes</a> · <a href="/politica-editorial">Política editorial</a></p>
   <section><h2>Cómo citar este artículo</h2><p>Vancouver: ${esc(citas.vancouver)}</p><p>APA 7: ${esc(citas.apa)}</p></section>
   ${relacionados.length ? `<aside><h2>Sigue leyendo</h2><ul>${relacionados.map((r) => `<li><a href="/articulos/${r.slug}">${esc(r.title)}</a></li>`).join('')}</ul></aside>` : ''}

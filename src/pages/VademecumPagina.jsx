@@ -6,7 +6,8 @@ import Bloques, { ConCitas } from '../components/vademecum/Bloques';
 import { Icono, iconoDeDato } from '../components/vademecum/Visuales';
 import '../styles/vademecum-visual.css';
 import { grupoDe, monografiasDelGrupo, paginaDelVademecum } from '../data/vademecum';
-import { jsonLdDePagina, SITIO } from '../lib/vademecum/html.js';
+import { jsonLdDePagina, SITIO, TEXTO_CLASES_VADEMECUM } from '../lib/vademecum/html.js';
+import { clasesDelVademecum, urlsAbsolutas } from '../../api/lib/enlaces-de-salud.js';
 import { tieneRevisionClinica } from '../lib/seo/indexabilidad';
 import { tituloDeVademecum } from '../lib/vademecum/indexable.js';
 import { updatePageSeo } from '../utils/seo';
@@ -44,6 +45,8 @@ export default function VademecumPagina() {
   const grupo = p?.tipo === 'medicamento' ? grupoDe(p) : null;
   const hijos = p?.tipo === 'grupo' ? monografiasDelGrupo(p.slug) : [];
   const revisada = p ? tieneRevisionClinica(p) : false;
+  // Las clases gratuitas que enseñan lo mismo (api/lib/enlaces-de-salud.js).
+  const clases = clasesDelVademecum(slug);
 
   useEffect(() => { window.scrollTo(0, 0); }, [slug]);
 
@@ -51,6 +54,8 @@ export default function VademecumPagina() {
     if (!p) return undefined;
     const url = `${SITIO}/vademecum/${p.slug}`;
     const migas = [['Inicio', `${SITIO}/`], ['Vademécum', `${SITIO}/vademecum`], ...(grupo ? [[grupo.nombre, `${SITIO}/vademecum/${grupo.slug}`]] : []), [p.nombre, url]];
+    const relacionadas = clasesDelVademecum(p.slug);
+    const relatedLink = urlsAbsolutas([...relacionadas.clases, ...relacionadas.cursos]);
     return updatePageSeo({
       title: tituloDeVademecum(p),
       description: p.seo.descripcion,
@@ -69,6 +74,7 @@ export default function VademecumPagina() {
           audience: { '@type': 'MedicalAudience', audienceType: 'Profesionales de la salud' },
           dateModified: p.actualizado,
           ...(revisada ? { lastReviewed: p.reviewedAt, reviewedBy: { '@type': 'Person', name: p.revisor, ...(p.revisorUrl ? { url: p.revisorUrl } : {}) } } : {}),
+          ...(relatedLink.length ? { relatedLink } : {}),
           about: jsonLdDePagina(p, { hijos }),
         },
         {
@@ -114,6 +120,9 @@ export default function VademecumPagina() {
                 {p.secciones.map((s) => (
                   <li key={s.id}><a href={`#${s.id}`} className={`hover:underline ${s.destacado ? 'font-semibold text-edvanta-tealdark' : 'text-edvanta-ink/80'}`}>{s.titulo}</a></li>
                 ))}
+                {(clases.clases.length > 0 || clases.cursos.length > 0) && (
+                  <li><a href="#clases" className="font-semibold text-edvanta-tealdark hover:underline">Clases gratis</a></li>
+                )}
                 <li><a href="#referencias" className="text-edvanta-ink/80 hover:underline">Referencias</a></li>
               </ol>
             </nav>
@@ -158,6 +167,35 @@ export default function VademecumPagina() {
                     </li>
                   ))}
                 </ul>
+              </section>
+            )}
+
+            {(clases.clases.length > 0 || clases.cursos.length > 0) && (
+              <section id="clases" className="scroll-mt-24 rounded-2xl border border-edvanta-border bg-edvanta-mint/30 p-6">
+                <h2 className="mb-2 text-2xl font-semibold tracking-tight text-edvanta-deep">Apréndelo en clase, gratis</h2>
+                <p className="mb-4 text-[15px] leading-6 text-edvanta-ink/80">{TEXTO_CLASES_VADEMECUM}</p>
+                {clases.clases.length > 0 && (
+                  <ul className="space-y-3">
+                    {clases.clases.map((c) => (
+                      <li key={c.ruta}>
+                        <Link to={c.ruta} className="font-semibold text-edvanta-tealdark hover:underline">{c.titulo}</Link>
+                        {c.curso && <span className="block text-sm text-edvanta-ink/70">Clase abierta · {c.curso.nombre}</span>}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+                {clases.cursos.length > 0 && (
+                  <p className="mt-5 text-[15px] leading-6 text-edvanta-ink">
+                    Cursos completos:{' '}
+                    {clases.cursos.map((c, i) => (
+                      <span key={c.ruta}>
+                        {i > 0 && ', '}
+                        <Link to={c.ruta} className="font-semibold text-edvanta-tealdark hover:underline">{c.nombre}</Link>
+                      </span>
+                    ))}
+                    .
+                  </p>
+                )}
               </section>
             )}
 

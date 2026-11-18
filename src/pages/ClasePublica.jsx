@@ -14,7 +14,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import {
-  ArrowLeft, ArrowRight, Award, BadgeCheck, BookOpenCheck, ChevronDown, GraduationCap, ListOrdered, Play, Sparkles,
+  ArrowLeft, ArrowRight, Award, BadgeCheck, BookOpen, BookOpenCheck, ChevronDown, GraduationCap, HeartPulse, ListOrdered, Pill, Play, Sparkles,
 } from 'lucide-react';
 import SiteHeader from '../components/edvanta/SiteHeader';
 import SiteFooter from '../components/edvanta/SiteFooter';
@@ -23,7 +23,38 @@ import { apiUrl } from '../config/api';
 import { updatePageSeo } from '../utils/seo';
 import { faqDeExperiencia, textoDeExperiencia } from '../../api/lib/experiencia.js';
 import { REVISION_DE_CLASES, fechaLarga } from '../../api/lib/revision-de-clases.js';
+import { TITULOS_DE_LECTURAS } from '../../api/lib/enlaces-de-salud.js';
 import '../styles/clase-publica.css';
+
+/**
+ * Lo que enlaza a esta clase (api/lib/enlaces-de-salud.js): la monografía
+ * del vademécum y la lectura para explicarle al paciente.
+ */
+function Lecturas({ lecturas }) {
+  const vademecum = lecturas?.vademecum || [];
+  const articulos = lecturas?.articulos || [];
+  if (!vademecum.length && !articulos.length) return null;
+  const grupos = [
+    { titulo: TITULOS_DE_LECTURAS.vademecum, Icono: Pill, items: vademecum.map((x) => ({ ruta: x.ruta, texto: x.nombre })) },
+    { titulo: TITULOS_DE_LECTURAS.pacientes, Icono: HeartPulse, items: articulos.filter((a) => a.paciente).map((x) => ({ ruta: x.ruta, texto: x.titulo })) },
+    { titulo: TITULOS_DE_LECTURAS.otras, Icono: BookOpen, items: articulos.filter((a) => !a.paciente).map((x) => ({ ruta: x.ruta, texto: x.titulo })) },
+  ].filter((g) => g.items.length);
+  return (
+    <section className="cp-lecturas" id="para-profundizar" aria-labelledby="cp-lecturas-titulo">
+      <h2 id="cp-lecturas-titulo">{TITULOS_DE_LECTURAS.seccion}</h2>
+      <div className="cp-lecturas__grupos">
+        {grupos.map(({ titulo, Icono, items }) => (
+          <div key={titulo} className="cp-lecturas__grupo">
+            <h3><Icono size={16} aria-hidden="true" /> {titulo}</h3>
+            <ul>
+              {items.map((x) => <li key={x.ruta}><Link to={x.ruta}>{x.texto}</Link></li>)}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
 
 const SITIO = 'https://edvanta.co';
 
@@ -258,6 +289,8 @@ export default function ClasePublica() {
                     </Link>
                   )}
                 </nav>
+
+                <Lecturas lecturas={d.lecturas} />
 
                 <section className="cp-cta" aria-labelledby="cp-cta-titulo">
                   <Sparkles size={22} aria-hidden="true" />

@@ -597,6 +597,7 @@ for (const r of RUTAS_FIJAS) {
       publisher: { '@type': 'Organization', name: 'Edvanta', url: SITIO },
       ...(r.mainEntity ? { mainEntity: r.mainEntity } : {}),
       ...(r.reviewedBy ? { reviewedBy: r.reviewedBy } : {}),
+      ...(r.relatedLink?.length ? { relatedLink: r.relatedLink } : {}),
     },
     migas([['Inicio', `${SITIO}/`], [seccion, `${SITIO}/`], [h1, canonical]]),
   ];

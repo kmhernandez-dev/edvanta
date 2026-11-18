@@ -30,7 +30,7 @@ import {
   ErrorDeExperiencia, caracteresDeExperiencia, htmlDeExperiencia, leerExperiencia,
 } from '../lib/experiencia.js';
 import {
-  clasePublica, cuerpoDeClase, datosDeClase, descripcionDeClase, enlazarTemario, recortarFrase, rutasDeClasesAbiertas,
+  clasePublica, cuerpoDeClase, datosDeClase, descripcionDeClase, enlazarTemario, recortarFrase, resumenDeClase, rutasDeClasesAbiertas,
   tituloDeClase,
 } from '../lib/clase-publica.js';
 import { datosDeVideoYoutube } from '../lib/videos-youtube.js';
@@ -284,6 +284,36 @@ describe('migraciones de experiencias y clases abiertas', () => {
     expect(pagina.lastReviewed).toMatch(/^\d{4}-\d{2}-\d{2}$/);
     // Los videos que YouTube reporta retirados o sin inserción no se muestran.
     for (const v of datos.clase.videos) expect(datosDeVideoYoutube(v.videoId)?.estado ?? 'disponible').toBe('disponible');
+  });
+
+  it('la clase abierta enlaza de vuelta al vademécum y a la lectura para el paciente', async () => {
+    const id = await cursoId(CURSO_VALIDACIONES);
+    const [{ slug }] = await many(db, "SELECT slug FROM public_slugs WHERE entity = 'aula' AND entity_id = $1 AND is_current", [id]);
+    const [{ slug: claseSlug }] = await many(db, 'SELECT slug FROM aula_lessons WHERE course_id = $1 AND title = $2', [id, 'DQ, IQ, OQ y PQ']);
+    const datos = await clasePublica(db, slug, claseSlug);
+    // Validaciones no tiene páginas de salud que la enlacen: no hay sección.
+    expect(datos.lecturas).toEqual({ vademecum: [], articulos: [] });
+    expect(cuerpoDeClase(datos)).not.toContain('id="para-profundizar"');
+
+    // La misma clase con la dirección de la clase de metformina (api/lib/enlaces-de-salud.js).
+    const comoMetformina = {
+      ...datos,
+      lecturas: undefined,
+      curso: { ...datos.curso, slug: 'curso-de-farmacoterapia-de-la-diabetes' },
+      clase: { ...datos.clase, slug: 'metformina-mecanismo-indicaciones-dosificacion-y-ajuste' },
+    };
+    const html = cuerpoDeClase(comoMetformina);
+    expect(html).toContain('id="para-profundizar"');
+    expect(html).toContain('<a href="/vademecum/metformina">Metformina</a>');
+    expect(html).toContain('<h3>Para explicarle al paciente</h3>');
+    expect(html).toContain('href="/articulos/metformina-para-que-sirve"');
+    expect(html).toContain('<h3>Lecturas relacionadas</h3>');
+
+    const canonical = 'https://edvanta.co/curso-de-farmacoterapia-de-la-diabetes/clase/metformina-mecanismo-indicaciones-dosificacion-y-ajuste';
+    const [pagina] = datosDeClase(comoMetformina, { canonical, cursoUrl: 'https://edvanta.co/curso-de-farmacoterapia-de-la-diabetes', inicio: 'https://edvanta.co/' });
+    expect(pagina.relatedLink).toContain('https://edvanta.co/vademecum/metformina');
+    expect(pagina.relatedLink).toContain('https://edvanta.co/articulos/metformina-para-que-sirve');
+    expect(resumenDeClase(comoMetformina).lecturas.vademecum[0]).toEqual({ nombre: 'Metformina', ruta: '/vademecum/metformina' });
   });
 
   it('la ficha del curso enlaza cada clase abierta de su temario', async () => {

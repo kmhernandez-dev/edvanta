@@ -28,11 +28,19 @@ import { nombreDeCurso, resolverSlug } from './slugs-publicos.js';
 import { caracteresDeExperiencia, faqDeExperiencia, htmlDeExperiencia, textoDeExperiencia } from './experiencia.js';
 import { videosDeClase } from './videos-youtube.js';
 import { REVISION_DE_CLASES, fechaLarga, personaRevisora } from './revision-de-clases.js';
+import { htmlDeLecturasDeClase, lecturasDeClase, urlsAbsolutas } from './enlaces-de-salud.js';
 
 const esc = (t) => String(t ?? '')
   .replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;');
 
 export const rutaDeClase = (slugCurso, slugClase) => `/${slugCurso}/clase/${slugClase}`;
+
+/**
+ * Las páginas del vademécum y los artículos que enlazan a esta clase
+ * (enlaces-de-salud.js), para enlazarlos de vuelta desde ella.
+ */
+export const lecturasDe = (datos) => datos.lecturas
+  || lecturasDeClase(rutaDeClase(datos.curso.slug, datos.clase.slug));
 
 const experienciaDe = (leccion) => (leccion.blocks || []).find((b) => b.type === 'experiencia')?.data || null;
 
@@ -127,6 +135,7 @@ export async function clasePublica(db, slugCurso, slugClase) {
     anterior: clases[i - 1] ? { titulo: clases[i - 1].titulo, ruta: rutaDeClase(vigente, clases[i - 1].slug) } : null,
     siguiente: clases[i + 1] ? { titulo: clases[i + 1].titulo, ruta: rutaDeClase(vigente, clases[i + 1].slug) } : null,
     indice: clases.map((c) => ({ titulo: c.titulo, unidad: c.unidad, ruta: rutaDeClase(vigente, c.slug) })),
+    lecturas: lecturasDeClase(rutaDeClase(vigente, clases[i].slug)),
   };
 }
 
@@ -250,6 +259,8 @@ export function datosDeClase(datos, { canonical, cursoUrl, inicio }) {
   const exp = datos.clase.experiencia;
   const sitio = String(inicio).replace(/\/$/, '');
   const imagen = imagenDeClase(datos, inicio);
+  const { vademecum, articulos } = lecturasDe(datos);
+  const relacionadas = urlsAbsolutas([...vademecum, ...articulos], sitio);
   const pagina = {
     '@context': 'https://schema.org',
     '@type': 'WebPage',
@@ -263,6 +274,7 @@ export function datosDeClase(datos, { canonical, cursoUrl, inicio }) {
     reviewedBy: personaRevisora(sitio),
     lastReviewed: REVISION_DE_CLASES.fecha,
     primaryImageOfPage: imagen ? { '@type': 'ImageObject', url: imagen } : undefined,
+    relatedLink: relacionadas.length ? relacionadas : undefined,
   };
   const recurso = {
     '@context': 'https://schema.org',
@@ -328,6 +340,7 @@ export function cuerpoDeClase(datos) {
     (clase.videos || []).length ? `<section id="video"><h2>Video de la clase</h2>${clase.videos.map(htmlDeVideo).join('')}</section>` : '',
     htmlDeExperiencia(clase.experiencia),
     `<nav aria-label="Otras clases">${datos.anterior ? `<a href="${esc(datos.anterior.ruta)}" rel="prev">Clase anterior: ${esc(datos.anterior.titulo)}</a>` : ''} ${datos.siguiente ? `<a href="${esc(datos.siguiente.ruta)}" rel="next">Clase siguiente: ${esc(datos.siguiente.titulo)}</a>` : ''}</nav>`,
+    htmlDeLecturasDeClase(lecturasDe(datos)),
     `<section id="curso-completo"><h2>Sigue el ${esc(curso.nombre)} completo, gratis</h2><p>El curso tiene ${esc(tamano)}${curso.unidades ? ` en ${curso.unidades} unidades` : ''}. En el aula guardas tu avance, presentas quizzes, actividades y foros, y al terminar emites tu certificado verificable.</p><p><a href="${esc(cursoRuta)}">Inscribirme gratis al ${esc(curso.nombre)}</a></p></section>`,
     `<section><h2>Todas las clases abiertas del curso</h2><ol>${datos.indice.map((c) => `<li><a href="${esc(c.ruta)}">${esc(c.titulo)}</a></li>`).join('')}</ol></section>`,
   ].join('');
@@ -347,6 +360,7 @@ export function resumenDeClase(datos, urls = null) {
     anterior: datos.anterior,
     siguiente: datos.siguiente,
     indice: datos.indice,
+    lecturas: lecturasDe(datos),
     caracteres: caracteresDeExperiencia(datos.clase.experiencia),
     seo: urls ? {
       titulo: tituloDeClase(datos),

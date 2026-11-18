@@ -34,6 +34,7 @@ import { fuentesNoticias } from '../src/data/careerHub.js';
 import { CURSOS_HABILIDADES_BLANDAS } from '../src/data/edvanta/cursosHabilidadesBlandas.js';
 import { GRUPOS_VADEMECUM, MONOGRAFIAS, META_VADEMECUM, grupoDe, monografiasDelGrupo } from '../src/data/vademecum/index.js';
 import { htmlDePagina, jsonLdDePagina } from '../src/lib/vademecum/html.js';
+import { clasesDelVademecum, urlsAbsolutas } from '../api/lib/enlaces-de-salud.js';
 import { robotsDePaginaDelVademecum, robotsDelVademecum, tituloDeVademecum } from '../src/lib/vademecum/indexable.js';
 
 const AREAS_POR_SLUG = new Map(AREAS_CAPACITACION.map((a) => [a.slug, a]));
@@ -353,6 +354,8 @@ add('/vademecum', META_VADEMECUM.titulo, META_VADEMECUM.descripcion, {
 for (const p of [...GRUPOS_VADEMECUM, ...MONOGRAFIAS]) {
   const hijos = p.tipo === 'grupo' ? monografiasDelGrupo(p.slug) : [];
   const grupo = p.tipo === 'medicamento' ? grupoDe(p) : null;
+  // Las clases gratuitas que enseñan lo mismo (api/lib/enlaces-de-salud.js).
+  const clases = clasesDelVademecum(p.slug);
   const { '@context': _contexto, ...entidad } = jsonLdDePagina(p, { hijos });
   add(`/vademecum/${p.slug}`, tituloDeVademecum(p), p.seo.descripcion, {
     tipo: 'MedicalWebPage',
@@ -363,7 +366,8 @@ for (const p of [...GRUPOS_VADEMECUM, ...MONOGRAFIAS]) {
     mainEntity: entidad,
     ...(p.revisor ? { reviewedBy: { '@type': 'Person', name: p.revisor, ...(p.revisorUrl ? { url: p.revisorUrl } : {}) } } : {}),
     enlaces: [['Vademécum', '/vademecum'], ...(grupo ? [[grupo.nombre, `/vademecum/${grupo.slug}`]] : [])],
-    contenido: htmlDePagina(p, { hijos, enlaces: p.enlaces || [] }),
+    relatedLink: urlsAbsolutas([...clases.clases, ...clases.cursos]),
+    contenido: htmlDePagina(p, { hijos, enlaces: p.enlaces || [], clases }),
   });
 }
 

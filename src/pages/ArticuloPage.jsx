@@ -33,6 +33,9 @@ import AffiliateCourseButton from '../components/AffiliateCourseButton';
 import { articulos, getArticulo } from '../data/articulos';
 import { getFeaturedCourse } from '../data/featuredCourses';
 import {
+  TEXTO_CLASES_DEL_ARTICULO, TITULO_CLASES_DEL_ARTICULO, clasesDelArticulo, urlsAbsolutas,
+} from '../../api/lib/enlaces-de-salud.js';
+import {
   limpiarMarkdown, minutosDeLectura, preguntasFrecuentes, relDeEnlaceExterno, secciones, slugify,
 } from '../lib/articulos/markdown';
 import { registrarLectura } from '../lib/articulos/lecturas';
@@ -475,6 +478,8 @@ export default function ArticuloPage() {
     const imagenJsonLd = { '@type': 'ImageObject', url: imagen, caption: art.imageAlt || art.title };
     const autor = art.autor || (art.marca === 'fst' ? 'Karla Hernández' : 'Equipo editorial de Edvanta');
     const faq = texto ? preguntasFrecuentes(texto) : [];
+    const clasesPro = clasesDelArticulo(art.slug);
+    const relatedLink = urlsAbsolutas([...clasesPro.clases, ...clasesPro.cursos]);
     const grafo = [
       {
         '@type': SALUD.includes(art.marca) ? 'MedicalWebPage' : 'Article',
@@ -491,6 +496,7 @@ export default function ArticuloPage() {
         dateModified: art.updated || art.date,
         publisher: { '@type': 'Organization', name: 'Edvanta', url: 'https://edvanta.co', logo: { '@type': 'ImageObject', url: 'https://edvanta.co/img/logo-edvanta.png' } },
         mainEntityOfPage: { '@type': 'WebPage', '@id': canonical },
+        ...(relatedLink.length ? { relatedLink } : {}),
       },
       {
         '@type': 'BreadcrumbList',
@@ -547,6 +553,8 @@ export default function ArticuloPage() {
   const relatedCourse = art.courseSlug ? getFeaturedCourse(art.courseSlug) : null;
   const url = `https://edvanta.co/articulos/${art.slug}`;
   const esSalud = SALUD.includes(art.marca);
+  // Las clases gratuitas que enseñan lo mismo (api/lib/enlaces-de-salud.js).
+  const clasesPro = clasesDelArticulo(art.slug);
 
   return (
     <div className="min-h-screen bg-white">
@@ -666,6 +674,37 @@ export default function ArticuloPage() {
               <p className="text-sm font-semibold text-edvanta-deep">¿Le sirve a alguien que conoces?</p>
               <Compartir titulo={art.title} url={url} />
             </div>
+
+            {clasesPro.clases.length > 0 && (
+              <section id="clases-para-profesionales" className="mt-10 rounded-[14px] border border-edvanta-border bg-edvanta-bg p-5">
+                <p className="text-xs font-bold uppercase tracking-[.12em] text-edvanta-tealdark">Clases abiertas · Edvanta</p>
+                <h2 className="mt-2 font-display text-xl font-bold text-edvanta-deep">{TITULO_CLASES_DEL_ARTICULO}</h2>
+                <p className="mt-2 text-sm leading-6 text-edvanta-muted">{TEXTO_CLASES_DEL_ARTICULO}</p>
+                <ul className="mt-4 space-y-3">
+                  {clasesPro.clases.map((c) => (
+                    <li key={c.ruta}>
+                      <Link to={c.ruta} className="inline-flex items-start gap-2 font-semibold text-edvanta-blue hover:underline">
+                        <BookOpen className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
+                        <span>{c.titulo}</span>
+                      </Link>
+                      {c.curso && <span className="block pl-6 text-xs text-edvanta-muted">{c.curso.nombre}</span>}
+                    </li>
+                  ))}
+                </ul>
+                {clasesPro.cursos.length > 0 && (
+                  <p className="mt-4 text-sm leading-6 text-edvanta-ink">
+                    Cursos completos, gratis:{' '}
+                    {clasesPro.cursos.map((c, i) => (
+                      <span key={c.ruta}>
+                        {i > 0 && ', '}
+                        <Link to={c.ruta} className="font-semibold text-edvanta-blue underline">{c.nombre}</Link>
+                      </span>
+                    ))}
+                    .
+                  </p>
+                )}
+              </section>
+            )}
 
             {relatedCourse && (
               <div className="mt-10 rounded-[14px] border border-edvanta-border bg-edvanta-bg p-5">
