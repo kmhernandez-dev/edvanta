@@ -4,12 +4,15 @@
  * el contenido: dice el precio real, hasta cuándo rige el descuento de
  * esa persona y abre la misma comparativa de la ficha del curso.
  *
+ * Sistema de diseño 2.0 (styles/caminos.css): degradado suave del
+ * sistema, texto fino y botón .ed-btn. Sin íconos.
+ *
  * No aparece si el certificado está pagado, en proceso, emitido o si el
  * curso no lo cobra.
  */
 import { useCallback, useEffect, useState } from 'react';
-import { Award } from 'lucide-react';
 import { ComparativaCaminos } from '../../components/curso/DosCaminos';
+import { Btn } from '../../components/edvanta/ui';
 import { estadoDelCertificado, estudiaGratis, pagarCertificado } from '../certificadoEstado';
 
 const pesos = (n) => `$${Number(n).toLocaleString('es-CO')}`;
@@ -45,22 +48,18 @@ export default function BarraCertificado({ courseId, curso, volverA }) {
   return (
     <>
       <div className="aula-barra-cert" role="region" aria-label="Estudia con certificado">
-        <Award className="aula-barra-cert__icono" aria-hidden="true" />
         <p className="aula-barra-cert__texto">
           <b>Estás estudiando gratis.</b>{' '}
-          {p.conDescuento && p.lista ? (
+          <span className="aula-barra-cert__detalle">Certificado, revisión de actividades y acompañamiento por </span>
+          <b>{pesos(p.precio)}</b>
+          {p.conDescuento && p.lista && (
             <>
-              Certificado, revisión de actividades y acompañamiento por <b>{pesos(p.precio)}</b>{' '}
-              <s>{pesos(p.lista)}</s> <span className="aula-barra-cert__pct">−{p.descuentoPct} %</span>
-              {p.venceEl && <span className="aula-barra-cert__vence"> hasta el {fecha(p.venceEl)}</span>}
+              {' '}<s>{pesos(p.lista)}</s> <span className="aula-barra-cert__pct">−{p.descuentoPct} %</span>
+              {p.venceEl && <span className="aula-barra-cert__vence"> · hasta el {fecha(p.venceEl)}</span>}
             </>
-          ) : (
-            <>Certificado, revisión de actividades y acompañamiento por <b>{pesos(p.precio)}</b></>
           )}
         </p>
-        <button type="button" className="aula-barra-cert__boton" onClick={() => setAbierta(true)}>
-          Estudiar con certificado
-        </button>
+        <Btn variant="gradient" size="sm" onClick={() => setAbierta(true)}>Estudiar con certificado</Btn>
       </div>
       <ComparativaCaminos
         abierta={abierta}

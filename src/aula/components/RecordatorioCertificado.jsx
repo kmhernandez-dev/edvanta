@@ -1,24 +1,21 @@
 /**
- * Recordatorio bajo la clase para quien estudia gratis un curso con
+ * Tarjeta bajo la clase para quien estudia gratis un curso con
  * certificado de pago: qué gana con el certificado, cuánto cuesta para
  * su país y un botón directo a Mercado Pago.
  *
  * La barra de arriba (BarraCertificado) está siempre; esta tarjeta sale
  * en el momento de logro: al completar una clase, con su avance. Así no
  * cansa en cada pantalla. En una actividad bloqueada (`fijo`) sale siempre.
+ * Quien ya pagó ve aquí su canal de acompañamiento por WhatsApp.
  *
- * No aparece si el certificado ya está pagado, emitido, en proceso de
- * pago o si el curso no lo cobra. Se puede cerrar: vuelve en la próxima
- * visita, no en cada clase de la misma sesión.
+ * Sistema de diseño 2.0 (styles/caminos.css). Sin íconos.
  */
 import { useEffect, useState } from 'react';
-import { Award, Check, CreditCard, MessageCircle, X } from 'lucide-react';
 import { waLink } from '../../config/links';
-import { estadoDelCertificado, pagarCertificado } from '../certificadoEstado';
-import { Button } from '../ui/Button';
+import { Btn } from '../../components/edvanta/ui';
+import { PrecioCertificado } from '../../components/curso/DosCaminos';
 import { beneficiosVigentes } from '../../data/beneficiosCertificado';
-
-const pesos = (n) => new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP', maximumFractionDigits: 0 }).format(n);
+import { estadoDelCertificado, pagarCertificado } from '../certificadoEstado';
 
 const clave = (courseId) => `edv-recordatorio-certificado-${courseId}`;
 
@@ -45,15 +42,17 @@ export default function RecordatorioCertificado({
   // Quien ya pagó: su canal de acompañamiento, en cada clase.
   if (!fijo && pago?.requerido && pago.estado === 'pagado') {
     return (
-      <a
-        href={waLink(`Hola, equipo Edvanta. Estudio con certificado el curso «${curso}» y tengo una duda: `)}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="mt-4 flex items-center gap-2 rounded-[var(--aula-radius-lg)] border border-[var(--aula-border)] bg-white p-3 text-sm font-semibold text-[var(--aula-primary)] hover:bg-[#f3f7ff]"
-      >
-        <MessageCircle className="h-4 w-4 flex-none" aria-hidden="true" />
-        Tu acompañamiento: escríbenos por WhatsApp. Karla o un docente te responde en 48 horas hábiles.
-      </a>
+      <div className="aula-cert-acompanamiento">
+        <p className="m-0"><b>Tu acompañamiento.</b> Karla o un docente te responde por WhatsApp en 48 horas hábiles.</p>
+        <Btn
+          variant="teal"
+          size="sm"
+          href={waLink(`Hola, equipo Edvanta. Estudio con certificado el curso «${curso}» y tengo una duda: `)}
+          external
+        >
+          Escribir
+        </Btn>
+      </div>
     );
   }
   if (cerrado || !pago?.requerido || pago.estado === 'pagado') return null;
@@ -79,44 +78,24 @@ export default function RecordatorioCertificado({
   };
 
   return (
-    <aside
-      aria-label="Estudia con certificado"
-      className="relative mt-4 flex flex-col gap-3 rounded-[var(--aula-radius-lg)] border-2 border-[var(--aula-primary)] bg-[#f3f7ff] p-4"
-    >
+    <aside aria-label="Estudia con certificado" className="aula-cert-tarjeta">
       {!fijo && (
-      <button
-        type="button"
-        onClick={cerrar}
-        className="absolute right-2 top-2 rounded-full p-1.5 text-[var(--aula-muted)] hover:bg-white"
-        aria-label="Cerrar el recordatorio"
-      >
-        <X className="h-4 w-4" aria-hidden="true" />
-      </button>
+        <button type="button" onClick={cerrar} className="camino-cerrar" aria-label="Cerrar el recordatorio">
+          <span aria-hidden="true">×</span>
+        </button>
       )}
-      <p className="flex items-center gap-2 pr-8 text-base font-extrabold text-[var(--aula-primary)]">
-        <Award className="h-5 w-5 flex-none" aria-hidden="true" /> {tituloVisible}
-      </p>
-      <ul className="grid gap-1.5 text-sm">
+      <span className="ds-insignia ds-insignia--edvanta">Estudiar con certificado</span>
+      <p className="aula-cert-tarjeta__titulo">{tituloVisible}</p>
+      <ul className="aula-cert-tarjeta__lista">
         {beneficiosVigentes().map((b) => (
-          <li key={b.id} className="flex gap-2">
-            <Check className="mt-0.5 h-4 w-4 flex-none text-[var(--aula-success)]" aria-hidden="true" />
-            <span><b>{b.titulo}.</b> {b.texto}</span>
-          </li>
+          <li key={b.id}><b>{b.titulo}.</b> {b.texto}</li>
         ))}
       </ul>
-      <p className="text-sm">
-        <span className="text-xl font-extrabold text-[var(--aula-primary)]">{pesos(pago.precio)}</span>
-        {pago.conDescuento && pago.lista && (
-          <> <s className="text-[var(--aula-muted)]">{pesos(pago.lista)}</s> <b className="text-[#b42318]">−{pago.descuentoPct} %</b></>
-        )}
-        <span className="text-[var(--aula-muted)]"> · pago único con Mercado Pago{pago.conDescuento && pago.venceEl ? ` · descuento hasta el ${new Date(pago.venceEl).toLocaleDateString('es-CO', { day: 'numeric', month: 'long', timeZone: 'America/Bogota' })}` : ''}</span>
-      </p>
-      {error && <p role="alert" className="text-sm font-semibold text-[var(--aula-danger)]">{error.message}</p>}
-      <div>
-        <Button icon={CreditCard} onClick={pagar} loading={pagando} loadingLabel="Abriendo Mercado Pago…">
-          Estudiar con certificado
-        </Button>
-      </div>
+      <PrecioCertificado oferta={pago} compacto />
+      {error && <p role="alert" className="aula-cert-tarjeta__error">{error.message}</p>}
+      <Btn variant="gradient" onClick={pagar} loading={pagando} loadingLabel="Abriendo Mercado Pago…">
+        Estudiar con certificado
+      </Btn>
     </aside>
   );
 }

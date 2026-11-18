@@ -86,7 +86,7 @@ function PagoDelCertificado({ pago, courseId }) {
       <p className="text-sm font-bold">Precio del certificado</p>
       <p className="text-2xl font-extrabold text-[var(--aula-primary)]">{pesos(pago.precio)} <span className="text-sm font-semibold text-[var(--aula-muted)]">COP · pago único</span>
         {pago.conDescuento && pago.lista && (
-          <span className="ml-2 text-base"><s className="font-semibold text-[var(--aula-muted)]">{pesos(pago.lista)}</s> <b className="text-[#b42318]">−{pago.descuentoPct} %</b></span>
+          <span className="ml-2 text-base"><s className="font-semibold text-[var(--aula-muted)]">{pesos(pago.lista)}</s> <b className="text-[var(--ds-teal-strong)]">−{pago.descuentoPct} %</b></span>
         )}
       </p>
       {pago.conDescuento && pago.venceEl && (
