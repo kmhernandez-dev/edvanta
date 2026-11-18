@@ -62,3 +62,29 @@ documento separa lo que ya está hecho de lo que depende de terceros.
 - `sitemap-cursos.xml`: leído el 18-nov, 605 direcciones, correcto.
 - `/curso-de-oratoria`: Google aún no la conoce (ya tenía indexación solicitada). `/curso-de-liderazgo-y-trabajo-en-equipo`: indexada.
 - IndexNow: 65 direcciones (62 cursos, /cursos, /escuelas y /escuelas/habilidades-blandas), HTTP 200.
+
+## Dimensión de la meta con datos de Semrush (18-nov)
+
+Datos en `seo/semrush/cursos-2026-11-18.md`. Cuenta gratuita: 10 filas por consulta.
+
+- Todo lo que se busca con «curso farmacia» en Colombia suma **2.970 al mes**; «curso servicio al cliente», 1.980;
+  «cursos gratis con certificado», 10.360. «Curso oratoria» suma 5.450 en México, y «curso de oratoria» exacto,
+  880 en Colombia y 1.900 en México.
+- Regla de cálculo (estimación, no dato): con los temas en las 3 primeras posiciones, un sitio capta del 15 al
+  25 % de lo que se busca en ellos. Para **100.000 visitas** hacen falta temas que sumen entre **400.000 y
+  700.000 búsquedas al mes**.
+- Con el catálogo actual sumamos, en orden de magnitud:
+  - farmacéuticos: pocos miles en Colombia;
+  - 10 de habilidades blandas: entre 2.000 y 6.000 cada uno por país;
+  - «cursos gratis con certificado»: unos 10.000 en Colombia.
+  - Extendido a México, Perú, Argentina, Chile, Ecuador y España, el universo queda entre **150.000 y 250.000**:
+    entre 25.000 y 50.000 visitas si se gana el top 3, algo que toma de 6 a 12 meses y exige enlaces.
+- **Conclusión:** 100.000 al mes no salen solo de los 62 cursos actuales y solo de Colombia. Hacen falta tres
+  palancas a la vez:
+  1. **Toda Latinoamérica y España,** no solo Colombia (los títulos ya son neutros; faltan contenidos y ejemplos
+     regionales).
+  2. **Cursos en temas de mucho volumen** que la gente ya busca: auxiliar de farmacia (185 variantes en
+     Colombia), farmacovigilancia, «cursos gratis en salud con certificado» y más habilidades blandas
+     (Excel, atención al paciente, primeros auxilios). Esta decisión de catálogo le toca a Karla.
+  3. **Autoridad:** los enlaces externos. Las búsquedas de KD 50 o más («curso de oratoria» en México,
+     «cursos gratis con certificado») no se ganan con 3 enlaces.
