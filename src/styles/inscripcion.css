@@ -215,3 +215,6 @@
 .ins-barra__precio { margin: 0; color: var(--ds-navy); font-family: var(--ds-font-display); font-size: 1.15rem; font-weight: 700; }
 .ins-barra__precio s { margin-left: 6px; color: var(--ds-text-3); font-family: var(--ds-font-body); font-size: var(--ds-fs-xs); font-weight: 500; }
 .ins-barra__nota { margin: 0; color: var(--ds-text-3); font-size: var(--ds-fs-xs); }
+
+/* Solo en el teléfono: en computador los botones ya están a la vista. */
+@media (min-width: 1024px) { .ins-barra { display: none; } .ins { padding-bottom: 0; } }
