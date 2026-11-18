@@ -229,7 +229,7 @@ export default function ClaseParticipante() {
             )}
           </>
         )}
-        banner={<BarraCertificado courseId={courseId} curso={data.snapshot.course.title} volverA={rutas.certificado} />}
+        banner={<BarraCertificado courseId={courseId} cursoSlug={data.courseSlug} />}
         footerActions={(
           <>
             <Button

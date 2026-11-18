@@ -34,6 +34,7 @@ const VolviendoDeAcceso = lazy(() => import('./pages/VolviendoDeAcceso'));
 const FichaDeCurso = lazy(() => import('./pages/FichaDeCurso'));
 const PaginaPublica = lazy(() => import('./pages/PaginaPublica'));
 const ClasePublica = lazy(() => import('./pages/ClasePublica'));
+const InscripcionCurso = lazy(() => import('./pages/InscripcionCurso'));
 const VerificarCertificado = lazy(() => import('./pages/VerificarCertificado'));
 const Diagnostico = lazy(() => import('./pages/Diagnostico'));
 const CursoGratisRedirige = lazy(() => import('./pages/CursoGratisRedirige'));
@@ -515,6 +516,8 @@ export default function App() {
         {/* 404 — página no encontrada */}
         {/* Direcciones de un tramo: los cursos (/curso-de-…). Lo demás, 404. */}
         <Route path="/:slugPublico/clase/:claseSlug" element={<ClasePublica />} />
+        {/* La landing de inscripción: con certificado o gratis. */}
+        <Route path="/:slugPublico/inscripcion" element={<InscripcionCurso />} />
         <Route path="/:slugPublico" element={<PaginaPublica />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
