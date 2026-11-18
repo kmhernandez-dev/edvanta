@@ -19,6 +19,11 @@ import diabetesTipo2 from './diabetes-tipo-2.js';
 import antibioticos from './antibioticos.js';
 import atencionFarmaceutica from './atencion-farmaceutica.js';
 import farmacovigilancia from './farmacovigilancia.js';
+import calidadFarmaceutica from './calidad-farmaceutica.js';
+import insuficienciaCardiaca from './insuficiencia-cardiaca.js';
+import asmaYEpoc from './asma-y-epoc.js';
+import farmacologiaCardiovascular from './farmacologia-cardiovascular.js';
+import asuntosRegulatorios from './asuntos-regulatorios.js';
 
 export const EXAMENES = [
   farmacologiaGeneral,
@@ -27,6 +32,11 @@ export const EXAMENES = [
   antibioticos,
   atencionFarmaceutica,
   farmacovigilancia,
+  calidadFarmaceutica,
+  insuficienciaCardiaca,
+  asmaYEpoc,
+  farmacologiaCardiovascular,
+  asuntosRegulatorios,
 ].map((e) => ({ ...e, ruta: `/examenes/${e.slug}` }));
 
 export const EXAMEN_POR_SLUG = new Map(EXAMENES.map((e) => [e.slug, e]));
@@ -52,6 +62,9 @@ export const REVISION_EXAMENES = {
   'examen-de-antibioticos': { revisor: 'Karla Hernández, Química Farmacéutica', reviewedAt: '2026-11-18' },
   'examen-de-atencion-farmaceutica': { revisor: 'Karla Hernández, Química Farmacéutica', reviewedAt: '2026-11-18' },
   'examen-de-farmacovigilancia': { revisor: 'Karla Hernández, Química Farmacéutica', reviewedAt: '2026-11-18' },
+  // Examen no clínico: se publica con revisión editorial.
+  'examen-de-calidad-farmaceutica': { revisor: 'Equipo editorial de Edvanta', reviewedAt: '2026-11-18' },
+  'examen-de-asuntos-regulatorios': { revisor: 'Equipo editorial de Edvanta', reviewedAt: '2026-11-18' },
 };
 
 export const examenRevisado = (slug) => Boolean(REVISION_EXAMENES[slug]);

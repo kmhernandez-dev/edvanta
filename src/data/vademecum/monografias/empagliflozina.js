@@ -244,6 +244,7 @@ export default {
     F.invimaCum, F.cipolle2012, F.ramalho2012,
   ],
   enlaces: [
+    ['Empagliflozina: para qué sirve y efectos secundarios', '/articulos/empagliflozina-para-que-sirve'],
     ['Diabetes tipo 2: tratamiento y seguimiento', '/articulos/diabetes-tipo-2-tratamiento'],
     ['Medicamentos para la diabetes tipo 2: preguntas frecuentes', '/articulos/medicamentos-diabetes-tipo-2-preguntas-frecuentes'],
     ['Cursos de diabetes para profesionales de la salud', '/articulos/cursos-de-diabetes-para-profesionales-de-la-salud'],

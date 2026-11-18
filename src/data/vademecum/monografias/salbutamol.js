@@ -110,7 +110,7 @@ export default crearMonografia({
   },
   ofertas: [CURSOS.asma, GUIAS.problemas],
   refs: { FT: F.ftSalbutamol, CUM: F.invimaCum16, MN: F.cipolle2012, EX: F.ramalho2012 },
-  enlaces: [['Montelukast: farmacología', '/vademecum/montelukast'], ['Prednisolona: farmacología', '/vademecum/prednisolona'], ['Alergia y vías respiratorias', '/vademecum/alergia-y-vias-respiratorias']],
+  enlaces: [['Salbutamol: para qué sirve y cómo usarlo', '/articulos/salbutamol-para-que-sirve'], ['Montelukast: farmacología', '/vademecum/montelukast'], ['Prednisolona: farmacología', '/vademecum/prednisolona'], ['Alergia y vías respiratorias', '/vademecum/alergia-y-vias-respiratorias']],
   seo: {
     titulo: 'Salbutamol inhalado: dosis, técnica y consejería',
     descripcion: 'Salbutamol inhalado: broncodilatador de rescate, dosis en adultos y niños, inicio en 5 minutos, señal de mal control del asma y técnica de inhalación.',

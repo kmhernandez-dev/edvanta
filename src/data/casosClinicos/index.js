@@ -68,6 +68,22 @@ import anemiaFerropenica from './casos/anemia-ferropenica.js';
 import intoxicacionPorAcetaminofen from './casos/intoxicacion-por-acetaminofen.js';
 import anafilaxia from './casos/anafilaxia.js';
 import artrosis from './casos/artrosis.js';
+import sindromeCoronarioAgudo from './casos/sindrome-coronario-agudo.js';
+import trombosisVenosaProfunda from './casos/trombosis-venosa-profunda.js';
+import emboliaPulmonar from './casos/embolia-pulmonar.js';
+import diabetesGestacional from './casos/diabetes-gestacional.js';
+import sindromeMetabolico from './casos/sindrome-metabolico.js';
+import sinusitisAguda from './casos/sinusitis-aguda.js';
+import bronquiolitis from './casos/bronquiolitis.js';
+import sepsis from './casos/sepsis.js';
+import pancreatitisAguda from './casos/pancreatitis-aguda.js';
+import calculosRenales from './casos/calculos-renales.js';
+import acvIsquemico from './casos/acv-isquemico.js';
+import meningitisBacteriana from './casos/meningitis-bacteriana.js';
+import hepatitisC from './casos/hepatitis-c.js';
+import dengue from './casos/dengue.js';
+import cirrosis from './casos/cirrosis.js';
+import apneaDelSueno from './casos/apnea-del-sueno.js';
 
 /** Áreas del catálogo, con su color (lo usa la página para las tarjetas). */
 export const AREAS = [
@@ -133,6 +149,22 @@ export const CASOS = [
   intoxicacionPorAcetaminofen,
   anafilaxia,
   artrosis,
+  sindromeCoronarioAgudo,
+  trombosisVenosaProfunda,
+  emboliaPulmonar,
+  diabetesGestacional,
+  sindromeMetabolico,
+  sinusitisAguda,
+  bronquiolitis,
+  sepsis,
+  pancreatitisAguda,
+  calculosRenales,
+  acvIsquemico,
+  meningitisBacteriana,
+  hepatitisC,
+  dengue,
+  cirrosis,
+  apneaDelSueno,
 ].map(conRevision);
 
 export const casoPorSlug = (slug) => CASOS.find((c) => c.slug === slug) || null;

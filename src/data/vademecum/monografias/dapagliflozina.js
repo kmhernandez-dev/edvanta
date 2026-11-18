@@ -245,6 +245,7 @@ export default {
     F.invimaCum17, F.cipolle2012, F.ramalho2012,
   ],
   enlaces: [
+    ['Dapagliflozina: para qué sirve y efectos secundarios', '/articulos/dapagliflozina-para-que-sirve'],
     ['Diabetes tipo 2: tratamiento y seguimiento', '/articulos/diabetes-tipo-2-tratamiento'],
     ['Medicamentos para la diabetes tipo 2: preguntas frecuentes', '/articulos/medicamentos-diabetes-tipo-2-preguntas-frecuentes'],
     ['Insuficiencia cardíaca: síntomas y tratamiento', '/articulos/insuficiencia-cardiaca-sintomas-y-tratamiento'],

@@ -16,7 +16,7 @@ const CURSOS_PROPIOS = [
   '/curso-de-farmacologia-respiratoria', '/curso-de-farmacoterapia-del-asma-y-la-epoc',
 ];
 
-const META = 50;
+const META = 66;
 
 describe('catálogo de casos clínicos', () => {
   it(`tiene los ${META} casos, sin slugs, títulos ni descripciones repetidos`, () => {

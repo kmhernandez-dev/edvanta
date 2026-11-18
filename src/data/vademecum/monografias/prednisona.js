@@ -160,7 +160,7 @@ export default crearMonografia({
   },
   ofertas: [CURSOS.endocrina, GUIAS.seguridad],
   refs: { FT: F.ftPrednisona, CUM: F.invimaCum16, MN: F.cipolle2012, EX: F.ramalho2012 },
-  enlaces: [['Prednisolona: farmacología', '/vademecum/prednisolona'], ['Dexametasona: farmacología', '/vademecum/dexametasona'], ['Corticoides sistémicos', '/vademecum/corticoides-sistemicos']],
+  enlaces: [['Prednisona: para qué sirve y efectos', '/articulos/prednisona-para-que-sirve'], ['Prednisolona: farmacología', '/vademecum/prednisolona'], ['Dexametasona: farmacología', '/vademecum/dexametasona'], ['Corticoides sistémicos', '/vademecum/corticoides-sistemicos']],
   seo: {
     titulo: 'Prednisona: dosis, retirada y atención farmacéutica',
     descripcion: 'Prednisona: mecanismo, conversión a prednisolona, dosis, esquema de retirada gradual, equivalencias, efectos adversos y atención farmacéutica.',

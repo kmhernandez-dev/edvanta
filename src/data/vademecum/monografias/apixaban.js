@@ -254,6 +254,7 @@ export default {
   ],
   referencias: [F.ftApixaban, F.invimaCum, F.aristotle, F.averroes, F.accAhaAf2023, F.cipolle2012, F.ramalho2012],
   enlaces: [
+    ['Apixabán: para qué sirve, riesgos y cuidados', '/articulos/apixaban-para-que-sirve'],
     ['Anticoagulación: manejo farmacéutico', '/articulos/anticoagulacion-manejo-farmaceutico'],
     ['INVIMA: nefropatía asociada a anticoagulantes orales', '/articulos/invima-comunica-riesgo-de-nefropatia-asociada-a-anticoagulantes-orales'],
     ['Cursos de farmacología gratis', '/articulos/cursos-de-farmacologia-gratis'],

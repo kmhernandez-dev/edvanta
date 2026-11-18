@@ -41,6 +41,7 @@ import { clasesDelVademecum, urlsAbsolutas } from '../api/lib/enlaces-de-salud.j
 import { robotsDePaginaDelVademecum, robotsDelVademecum, tituloDeVademecum } from '../src/lib/vademecum/indexable.js';
 import { COMUNIDADES, META_COMUNIDADES } from '../src/data/comunidadesSalud.js';
 import { EXAMENES, META_EXAMENES, robotsDeExamen } from '../src/data/examenes/index.js';
+import { FICHAS, META_FICHAS, robotsDeFicha } from '../src/data/medicamentos/fichas.js';
 
 const AREAS_POR_SLUG = new Map(AREAS_CAPACITACION.map((a) => [a.slug, a]));
 
@@ -117,6 +118,15 @@ const jsonLdExamen = (e) => ({
 
 const contenidoExamenes = () => `<section><h2>Exámenes disponibles</h2><ul>${EXAMENES.map((e) => `<li><a href="${e.ruta}">${e.titulo}</a>: ${e.descripcion}</li>`).join('')}</ul></section>
 <section><h2>Cómo funciona</h2><ol><li>Respondes las preguntas sin registro.</li><li>Pulsas corregir y ves tu puntaje.</li><li>Lees la explicación de cada respuesta y sigues con el curso o la guía.</li></ol><p>Práctica educativa: no genera certificado ni reemplaza una evaluación de curso.</p></section>`;
+
+const contenidoFicha = (f) => `<section><h2>Para qué sirve</h2><p>${f.nombre} pertenece al grupo de ${f.clase.toLowerCase()}. ${f.para}</p></section>
+<section><h2>Cuidados importantes</h2><ul>${f.cuidados.map((t) => `<li>${t}</li>`).join('')}</ul></section>
+<section><h2>Efectos secundarios frecuentes</h2><ul>${f.efectos.map((t) => `<li>${t}</li>`).join('')}</ul><p>No es una lista completa. Consulta el prospecto y avisa a tu equipo de salud.</p></section>
+<section><h2>Cuándo consultar</h2><p>Consulta si tienes una reacción intensa, un síntoma nuevo, fiebre, dificultad para respirar, sangrado o desmayo. No cambies la dosis ni suspendas por tu cuenta.</p></section>
+<section><h2>Fuentes para ampliar</h2><p>Consulta la ficha técnica y el prospecto autorizado en tu país: CIMA, DailyMed y MedlinePlus.</p></section>
+<p>Información educativa. No es consejo médico ni ficha técnica.</p>`;
+
+const contenidoFichas = () => `<section><h2>Fichas disponibles</h2><ul>${FICHAS.map((f) => `<li><a href="/medicamentos/${f.slug}">${f.nombre}</a>: ${f.para}</li>`).join('')}</ul></section>`;
 
 add('/escuelas', 'Escuelas de Edvanta | Formación farmacéutica y habilidades', 'Cinco escuelas: Salud y Farmacia Clínica, Calidad y Producción, Asuntos Regulatorios, Habilidades Blandas, y Marketing y Comunicación.', { tipo: 'CollectionPage', seccion: 'Escuelas', enlaces: ESCUELAS.map((e) => [e.nombre, `/escuelas/${e.slug}`]), contenido: contenidoEscuelas(ESCUELAS) });
 
@@ -363,6 +373,28 @@ for (const e of EXAMENES) {
     enlaces: [['Todos los exámenes', '/examenes'], ['Cursos gratis', '/cursos'], ['Vademécum', '/vademecum']],
     contenido: contenidoExamen(e),
     extraJsonLd: [jsonLdExamen(e)],
+  });
+}
+
+// Fichas rápidas de medicamentos para pacientes. El hub es indexable;
+// cada ficha espera la revisión clínica (REVISION_FICHAS).
+add('/medicamentos', META_FICHAS.titulo, META_FICHAS.descripcion, {
+  tipo: 'CollectionPage',
+  seccion: 'Medicamentos',
+  seccionUrl: '/medicamentos',
+  h1: META_FICHAS.h1,
+  enlaces: [['Vademécum', '/vademecum'], ['Artículos', '/articulos'], ['Cursos gratis', '/cursos']],
+  contenido: contenidoFichas(),
+});
+for (const f of FICHAS) {
+  add(`/medicamentos/${f.slug}`, `${f.nombre}: para qué sirve, cuidados y efectos | Edvanta`, `${f.nombre}: ${f.para} Cuidados, efectos secundarios y cuándo consultar. Información educativa.`, {
+    tipo: 'WebPage',
+    seccion: 'Medicamentos',
+    seccionUrl: '/medicamentos',
+    robots: robotsDeFicha(f.slug),
+    h1: `${f.nombre}: para qué sirve y cuidados`,
+    enlaces: [['Todas las fichas', '/medicamentos'], ['Vademécum', '/vademecum'], ['Artículos', '/articulos']],
+    contenido: contenidoFicha(f),
   });
 }
 

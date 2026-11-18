@@ -18,8 +18,8 @@ const slugsDeComunidades = new Set(COMUNIDADES.map((c) => c.slug));
 const slugsDeVademecum = new Set(PAGINAS_VADEMECUM.map((p) => p.slug));
 
 describe('exámenes interactivos', () => {
-  it('hay seis exámenes con slug único', () => {
-    expect(EXAMENES).toHaveLength(6);
+  it('hay once exámenes con slug único', () => {
+    expect(EXAMENES).toHaveLength(11);
     expect(new Set(EXAMENES.map((e) => e.slug)).size).toBe(EXAMENES.length);
     for (const e of EXAMENES) {
       expect(e.ruta).toBe(`/examenes/${e.slug}`);

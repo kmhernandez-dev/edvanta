@@ -183,6 +183,62 @@ export const F = {
     texto: 'Kidney Disease: Improving Global Outcomes (KDIGO) CKD Work Group. KDIGO 2024 Clinical Practice Guideline for the Evaluation and Management of Chronic Kidney Disease. Kidney Int. 2024;105(4S):S117-S314. doi:10.1016/j.kint.2023.10.018',
     url: 'https://kdigo.org/guidelines/ckd-evaluation-and-management/',
   },
+  escAcs2023: {
+    texto: 'Byrne RA, Rossello X, Coughlan JJ, Barbato E, Berry C, Chieffo A, et al. 2023 ESC Guidelines for the management of acute coronary syndromes. Eur Heart J. 2023;44(38):3720-3826. doi:10.1093/eurheartj/ehad191',
+    url: 'https://www.escardio.org/Guidelines/Clinical-Practice-Guidelines/Acute-Coronary-Syndromes-ACS',
+  },
+  chestVte2021: {
+    texto: 'Stevens SM, Woller SC, Kreuziger LB, Bounameaux H, Doerschug K, Geersing GJ, et al. Antithrombotic Therapy for VTE Disease: Second Update of the CHEST Guideline and Expert Panel Report. Chest. 2021;160(6):e545-e608. doi:10.1016/j.chest.2021.07.055',
+    url: 'https://journal.chestnet.org/article/S0012-3692(21)01574-1/fulltext',
+  },
+  acogGdm: {
+    texto: 'American College of Obstetricians and Gynecologists. Gestational Diabetes Mellitus: ACOG Practice Bulletin, Number 190. Obstet Gynecol. 2018;131(2):e49-e64. (Vigente con actualizaciones de la ADA 2026.)',
+    url: 'https://www.acog.org/clinical/clinical-guidance/practice-bulletin/articles/2018/02/gestational-diabetes-mellitus',
+  },
+  eposSinusitis2020: {
+    texto: 'Fokkens WJ, Lund VJ, Hopkins C, Hellings PW, Kern R, Reitsma S, et al. European Position Paper on Rhinosinusitis and Nasal Polyps 2020. Rhinology. 2020;58(Suppl S29):1-464. doi:10.4193/Rhin20.600',
+    url: 'https://www.rhinologyjournal.com/',
+  },
+  niceBronchiolitis2023: {
+    texto: 'National Institute for Health and Care Excellence. Bronchiolitis in children: diagnosis and management. NICE guideline NG9. Actualizada en 2023.',
+    url: 'https://www.nice.org.uk/guidance/ng9',
+  },
+  sscSepsis2021: {
+    texto: 'Evans L, Rhodes A, Alhazzani W, Antonelli M, Coopersmith CM, French C, et al. Surviving Sepsis Campaign: International Guidelines for Management of Sepsis and Septic Shock 2021. Crit Care Med. 2021;49(11):e1063-e1143. doi:10.1097/CCM.0000000000005337',
+    url: 'https://www.sccm.org/SurvivingSepsisCampaign/Guidelines/Adult-Patients',
+  },
+  acgPancreatitis2024: {
+    texto: 'Tenner S, Vege SS, Sheth SG, Sauer B, Yang YX, Barshop K, et al. American College of Gastroenterology Guidelines: Management of Acute Pancreatitis. Am J Gastroenterol. 2024;119(3):419-437. doi:10.14309/ajg.0000000000002645',
+    url: 'https://gi.org/guideline/acute-pancreatitis/',
+  },
+  eauUrolithiasis2024: {
+    texto: 'European Association of Urology. EAU Guidelines on Urolithiasis. 2024.',
+    url: 'https://uroweb.org/guidelines/urolithiasis',
+  },
+  ahaStroke2019: {
+    texto: 'Powers WJ, Rabinstein AA, Ackerson T, Adeoye OM, Bambakidis NC, Becker K, et al. Guidelines for the Early Management of Patients With Acute Ischemic Stroke: 2019 Update to the 2018 Guidelines. Stroke. 2019;50(12):e344-e418. doi:10.1161/STR.0000000000000211',
+    url: 'https://www.ahajournals.org/doi/10.1161/STR.0000000000000211',
+  },
+  idsaMeningitis2017: {
+    texto: 'Tunkel AR, Hasbun R, Bhimraj A, Byers K, Kaplan SL, Scheld WM, et al. 2017 Infectious Diseases Society of America Clinical Practice Guidelines for Healthcare-Associated Ventriculitis and Meningitis. Clin Infect Dis. 2017;64(6):e34-e65. doi:10.1093/cid/ciw861',
+    url: 'https://academic.oup.com/cid/article/64/6/e34/3050217',
+  },
+  aasldHcv2023: {
+    texto: 'Bhattacharya D, Aronsohn A, Price J, Lo Re V. Hepatitis C Guidance 2023 Update: AASLD-IDSA Recommendations for Testing, Managing, and Treating Hepatitis C Virus Infection. Clin Infect Dis. 2023;ciad319. doi:10.1093/cid/ciad319',
+    url: 'https://www.hcvguidelines.org/',
+  },
+  whoDengue2024: {
+    texto: 'World Health Organization. Dengue: guidelines for diagnosis, treatment, prevention and control. Actualización 2024.',
+    url: 'https://www.who.int/news-room/fact-sheets/detail/dengue-and-severe-dengue',
+  },
+  aasldCirrhosis2023: {
+    texto: 'American Association for the Study of Liver Diseases. AASLD Practice Guidance: Management of Cirrhosis. Hepatology. 2023.',
+    url: 'https://www.aasld.org/practice-guidelines',
+  },
+  aasmOsa2023: {
+    texto: 'American Academy of Sleep Medicine. Clinical Practice Guideline for the Treatment of Obstructive Sleep Apnea and Snoring with Oral Appliance Therapy. 2023 update.',
+    url: 'https://aasm.org/clinical-resources/practice-standards/practice-guidelines/',
+  },
   tecos: pubmed('Green JB, Bethel MA, Armstrong PW, Buse JB, Engel SS, Garg J, et al. Effect of sitagliptin on cardiovascular outcomes in type 2 diabetes. N Engl J Med. 2015;373(3):232-42. doi:10.1056/NEJMoa1501352', 26052984),
 
   // ── Oncología de alto costo: ensayos pivotales ──

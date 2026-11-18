@@ -244,6 +244,7 @@ export default {
     F.ftMounjaro, F.dmZepbound, F.coskun2018, F.surmount1, F.surmount4, F.invimaCum, F.cipolle2012, F.ramalho2012,
   ],
   enlaces: [
+    ['Tirzepatida: para qué sirve y cómo se usa', '/articulos/tirzepatida-para-que-sirve'],
     ['Liraglutida, semaglutida y tirzepatida: comparación para el QF', '/articulos/liraglutida-vs-semaglutida-vs-tirzepatida'],
     ['Ozempic, Wegovy y Mounjaro en Colombia', '/articulos/ozempic-wegovy-mounjaro-aprobados-colombia'],
   ],

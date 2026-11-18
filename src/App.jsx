@@ -83,6 +83,8 @@ const ComunidadesIndex = lazy(() => import('./pages/ComunidadesIndex'));
 const ComunidadDetalle = lazy(() => import('./pages/ComunidadDetalle'));
 const ExamenesIndex = lazy(() => import('./pages/ExamenesIndex'));
 const ExamenDetalle = lazy(() => import('./pages/ExamenDetalle'));
+const MedicamentosIndex = lazy(() => import('./pages/MedicamentosIndex'));
+const MedicamentoFicha = lazy(() => import('./pages/MedicamentoFicha'));
 const HerramientaLandingPage = lazy(() => import('./pages/HerramientaLandingPage'));
 
 // Arquitectura de escuelas: una página por puerta de entrada.
@@ -315,6 +317,10 @@ export default function App() {
         {/* Exámenes interactivos públicos */}
         <Route path="/examenes" element={<ExamenesIndex />} />
         <Route path="/examenes/:slug" element={<ExamenDetalle />} />
+
+        {/* Fichas rápidas de medicamentos para pacientes */}
+        <Route path="/medicamentos" element={<MedicamentosIndex />} />
+        <Route path="/medicamentos/:slug" element={<MedicamentoFicha />} />
 
         {/* Marca: Feliz Sin Tiroides (pacientes) */}
         <Route path="/feliz-sin-tiroides" element={<FelizSinTiroides />} />

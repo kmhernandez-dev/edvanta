@@ -1,6 +1,6 @@
 # Revisión clínica · exámenes interactivos (18-nov-2026)
 
-Los seis exámenes públicos tienen **60 preguntas** con respuesta correcta, explicación y fuente. La página del examen y el hub están creados; los exámenes están en **`noindex,follow`** hasta que Karla revise las preguntas y se anoten en `REVISION_EXAMENES` (`src/data/examenes/index.js`). El hub `/examenes` sí es indexable.
+**Estado:** los seis primeros exámenes (farmacología, hipertensión, diabetes, antibióticos, atención farmacéutica y farmacovigilancia) fueron aprobados por Karla y ya están indexados. Los exámenes de **insuficiencia cardíaca, asma/EPOC y farmacología cardiovascular** siguen en **`noindex,follow`** hasta su revisión. Los exámenes de **calidad farmacéutica** y **asuntos regulatorios** son no clínicos y se publican con revisión editorial. El hub `/examenes` es indexable.
 
 ## Qué revisar
 
@@ -12,6 +12,11 @@ Los seis exámenes públicos tienen **60 preguntas** con respuesta correcta, exp
 | `examen-de-antibioticos` | 10 | Mecanismos, resistencia, alergias, duración, stewardship | OMS AWaRe 2023; OMS RAM; FDA |
 | `examen-de-atencion-farmaceutica` | 10 | Minnesota, PRM/RNM, entrevista, conciliación, seguimiento | Cipolle 2012; PCNE 2020; FIP 2023 |
 | `examen-de-farmacovigilancia` | 10 | RAM, reporte, causalidad, señales, plazos INVIMA | Resolución INVIMA 2024015321/2024; OMS |
+| `examen-de-insuficiencia-cardiaca` | 10 | FEVI, cuatro pilares, diuréticos, hierro, HFpEF | ESC 2023; AHA/ACC/HFSA 2022 |
+| `examen-de-asma-y-epoc` | 10 | GINA 2026, MART, técnica inhalatoria, GOLD 2026 | GINA 2026; GOLD 2026 |
+| `examen-de-farmacologia-cardiovascular` | 10 | Estatinas, SRAA, antiarrítmicos, anticoagulación | ESC 2023-2024; AHA/ACC 2023-2025 |
+| `examen-de-calidad-farmaceutica` | 10 | ISO 9001, CAPA, OOS, ALCOA+, validación | ICH Q9(R1) 2023; PIC/S 2023 |
+| `examen-de-asuntos-regulatorios` | 10 | Registro, CTD, variaciones, etiquetado, BPM | ICH M4/M8; INVIMA 2024; PIC/S |
 
 ## Puntos de mayor cuidado
 
