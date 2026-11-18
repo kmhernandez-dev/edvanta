@@ -117,9 +117,9 @@ describe('cursos', () => {
     expect(tituloDeCurso(f, 'Curso de Gestión de Calidad')).toBe('Curso de Gestión de Calidad gratis | Edvanta');
   });
 
-  it('las 62 búsquedas principales son únicas y caben en el título', () => {
+  it('las búsquedas principales (62 cursos + manipulación de alimentos) son únicas y caben en el título', () => {
     const claves = Object.values(PALABRA_CLAVE_DE_PROPIOS).map((c) => c.toLowerCase());
-    expect(claves).toHaveLength(62);
+    expect(claves).toHaveLength(63);
     expect(new Set(claves).size).toBe(claves.length);
     for (const url of Object.keys(PALABRA_CLAVE_DE_PROPIOS)) {
       const t = tituloDeCurso(propio({ url }), 'Curso de un nombre cualquiera bastante largo para la prueba');

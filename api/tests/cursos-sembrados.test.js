@@ -215,7 +215,7 @@ describe('las categorías con las que se agrupan', () => {
     const areas = rows.map((r) => r.area).filter(Boolean).sort();
     expect(areas).toEqual(['Asuntos Regulatorios', 'Calidad', 'Farmacología', 'Habilidades Blandas']);
 
-    expect(porArea['Calidad']).toBe(14);               // 10 sembrados + 4 anteriores
+    expect(porArea['Calidad']).toBe(15);               // 10 sembrados + 4 anteriores + manipulación de alimentos (161)
     expect(porArea['Asuntos Regulatorios']).toBe(21);  // 10 + 10 + el que ya existía
     expect(porArea['Farmacología']).toBe(16);          // 12 de farmacología + 4 de farmacoterapia
     expect(porArea['Habilidades Blandas']).toBe(10);   // la escuela de la migración 075

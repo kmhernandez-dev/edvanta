@@ -51,6 +51,8 @@ export const PALABRA_CLAVE_DE_PROPIOS = {
   '/curso-de-inteligencia-emocional': 'Curso de inteligencia emocional',
   '/curso-de-lenguaje-corporal-y-comunicacion-no-verbal': 'Curso de lenguaje corporal',
   '/curso-de-liderazgo-y-trabajo-en-equipo': 'Curso de liderazgo',
+  // Nuevo (161, 18-nov): 19.090 búsquedas al mes en Colombia (Semrush). Borrador hasta la revisión de Karla.
+  '/curso-de-manipulacion-de-alimentos': 'Curso de manipulación de alimentos',
   '/curso-de-medicamentos-vitales-no-disponibles': 'Curso de medicamentos vitales no disponibles',
   '/curso-de-modificaciones-al-registro-sanitario-de-medicamentos': 'Curso de modificaciones al registro sanitario',
   '/curso-de-negociacion-y-persuasion': 'Curso de negociación',
