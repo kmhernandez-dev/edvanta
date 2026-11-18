@@ -60,3 +60,11 @@ fecha real de cada persona.
 4. **Correo `certificado-por-vencer`**: una sola vez, cuando faltan 48 horas o menos para que venza el
    descuento de esa inscripción, con sus precios y su fecha.
 5. Sin contadores falsos, sin ventanas que se abren solas, sin bloquear el contenido gratis.
+
+## Landing de inscripción (18-nov, tercera parte)
+
+`/curso-de-…/inscripcion` (`src/pages/InscripcionCurso.jsx`): héroe con los datos del curso, plazo real del
+descuento, dos planes con chulos verdes, «Lo que cambia cuando estudias con certificado», el diploma de
+muestra, la comparativa completa, preguntas frecuentes y un cierre. No se indexa (meta y `X-Robots-Tag`).
+Los botones de la ficha, la barra del teléfono y la barra del aula llevan aquí. Los 10 cursos de Habilidades
+Blandas cobran el certificado desde la migración 160.
