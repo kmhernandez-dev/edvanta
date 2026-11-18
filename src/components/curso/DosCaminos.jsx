@@ -133,12 +133,12 @@ export function ComparativaCaminos({
 
         <div className="camino-columnas">
           <div className="camino-col camino-col--certificado">
-            <span className="ds-insignia ds-insignia--edvanta">Recomendado</span>
+            <p className="camino-etiqueta">Recomendado</p>
             <p className="camino-col__nombre">Con certificado</p>
             <PrecioCertificado oferta={oferta} compacto />
           </div>
           <div className="camino-col">
-            <span className="ds-insignia camino-col__insignia-gratis">Sin costo</span>
+            <p className="camino-etiqueta camino-etiqueta--suave">Sin costo</p>
             <p className="camino-col__nombre">Gratis</p>
             <div className="camino-precio camino-precio--compacto">
               <p className="camino-precio__monto">$ 0 <span>COP</span></p>

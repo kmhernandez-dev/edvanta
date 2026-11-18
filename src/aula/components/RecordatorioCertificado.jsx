@@ -84,7 +84,7 @@ export default function RecordatorioCertificado({
           <span aria-hidden="true">×</span>
         </button>
       )}
-      <span className="ds-insignia ds-insignia--edvanta">Estudiar con certificado</span>
+      <p className="camino-etiqueta">Estudiar con certificado</p>
       <p className="aula-cert-tarjeta__titulo">{tituloVisible}</p>
       <ul className="aula-cert-tarjeta__lista">
         {beneficiosVigentes().map((b) => (
