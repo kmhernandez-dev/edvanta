@@ -158,6 +158,10 @@ Doce exámenes de **120 preguntas** construidos a partir de los bloques del mate
 
 **Estado:** los 12 exámenes están registrados en `REVISION_EXAMENES`, salen `index,follow`, entran al sitemap y se enlazan entre sí. El hub `/examenes` muestra los 23 exámenes y el `Quiz` JSON-LD de cada página incluye las 10 preguntas.
 
+### Modo de quiz en grupos
+
+Cada examen tiene dos formas de práctica en la misma página: **individual** y **quiz en grupos**. El modo grupal permite 2 a 4 equipos, nombres propios, turnos rotativos, temporizador de 20/30/45 segundos, marcador en vivo, explicación después de cada respuesta y ranking final con opción de compartir por WhatsApp. No requiere registro y no guarda datos personales.
+
 ## Riesgos y reglas que no se rompen
 
 - No se inventan URLs de grupos de WhatsApp que no existen. Donde no hay grupo, el botón abre el WhatsApp de Karla con un mensaje de bienvenida y ella incorpora a la persona.

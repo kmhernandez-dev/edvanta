@@ -101,6 +101,7 @@ const contenidoExamen = (e) => {
   return `<section><h2>Qué evalúa</h2><ul>${e.temas.map((t) => `<li>${t}</li>`).join('')}</ul></section>
 <section><h2>Preguntas y respuestas explicadas</h2><ol>${preguntas}</ol></section>
 <section><h2>Para seguir estudiando</h2><ul>${enlaces}</ul></section>
+<section><h2>Practicar en grupos</h2><p>La página incluye un modo de quiz grupal para 2 a 4 equipos: reparte turnos, lleva el marcador, permite tiempo por pregunta y muestra la explicación después de cada respuesta. Es una actividad educativa, no una evaluación oficial.</p></section>
 <section><h2>Fuentes</h2><ul>${(e.fuentes || []).map((f) => `<li>${f.texto} <a href="${f.url}">Ver fuente</a></li>`).join('')}</ul></section>`;
 };
 
@@ -120,7 +121,8 @@ const jsonLdExamen = (e) => ({
 });
 
 const contenidoExamenes = () => `<section><h2>Exámenes disponibles</h2><ul>${EXAMENES.map((e) => `<li><a href="${e.ruta}">${e.titulo}</a>: ${e.descripcion}</li>`).join('')}</ul></section>
-<section><h2>Cómo funciona</h2><ol><li>Respondes las preguntas sin registro.</li><li>Pulsas corregir y ves tu puntaje.</li><li>Lees la explicación de cada respuesta y sigues con el curso o la guía.</li></ol><p>Práctica educativa: no genera certificado ni reemplaza una evaluación de curso.</p></section>`;
+<section><h2>Cómo funciona</h2><ol><li>Respondes las preguntas sin registro.</li><li>Pulsas corregir y ves tu puntaje.</li><li>Lees la explicación de cada respuesta y sigues con el curso o la guía.</li></ol><p>Práctica educativa: no genera certificado ni reemplaza una evaluación de curso.</p></section>
+<section><h2>Quiz en grupos</h2><p>Cada examen tiene un modo para 2 a 4 equipos: turnos, temporizador opcional, marcador y explicación después de cada respuesta. Sirve para repasar en clase, con compañeros o en un grupo de estudio.</p></section>`;
 
 const contenidoFicha = (f) => `<section><h2>Para qué sirve</h2><p>${f.nombre} pertenece al grupo de ${f.clase.toLowerCase()}. ${f.para}</p></section>
 <section><h2>Cuidados importantes</h2><ul>${f.cuidados.map((t) => `<li>${t}</li>`).join('')}</ul></section>

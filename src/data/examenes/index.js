@@ -129,5 +129,5 @@ export const examenDeArticulo = (slug) => ARTICULO_A_EXAMEN.get(slug) || null;
 export const META_EXAMENES = {
   titulo: 'Exámenes interactivos de farmacia y salud | Edvanta',
   h1: 'Exámenes interactivos para estudiar y repasar',
-  descripcion: 'Exámenes de farmacología, cardiología, oncología, antibacterianos, diabetes, asma y hemostasia, con respuestas explicadas y enlaces a cursos gratis.',
+  descripcion: 'Exámenes de farmacología, cardiología, oncología, antibacterianos, diabetes, asma y hemostasia, con respuestas y modo de quiz en grupos.',
 };

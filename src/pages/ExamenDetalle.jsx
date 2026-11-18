@@ -6,7 +6,7 @@
  * corrige en el navegador y no guarda datos personales.
  */
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import {
   ArrowRight, BookOpen, BookOpenCheck, CheckCircle2, Clock3, GraduationCap, ShieldCheck, Users,
@@ -15,6 +15,7 @@ import SiteHeader from '../components/edvanta/SiteHeader';
 import SiteFooter from '../components/edvanta/SiteFooter';
 import { Breadcrumb } from '../components/edvanta/ui';
 import ExamenInteractivo from '../components/examenes/ExamenInteractivo';
+import QuizGrupal from '../components/examenes/QuizGrupal';
 import { EXAMENES, examenPorSlug, examenRevisado, robotsDeExamen } from '../data/examenes';
 import { getArticulo } from '../data/articulos';
 import { updatePageSeo } from '../utils/seo';
@@ -25,6 +26,11 @@ const SITIO = 'https://edvanta.co';
 export default function ExamenDetalle() {
   const { slug } = useParams();
   const examen = examenPorSlug(slug);
+  const [modo, setModo] = useState('individual');
+
+  useEffect(() => {
+    setModo('individual');
+  }, [slug]);
 
   useEffect(() => {
     if (!examen) return undefined;
@@ -135,7 +141,36 @@ export default function ExamenDetalle() {
               </div>
 
               <div className="mt-8">
-                <ExamenInteractivo examen={examen} />
+                <p className="text-sm leading-6 text-edvanta-muted">
+                  Resuélvelo solo o juega en grupos: el modo grupal reparte turnos, lleva puntaje y muestra la
+                  explicación después de cada respuesta.
+                </p>
+                <div className="mt-3 inline-flex rounded-xl border border-edvanta-border bg-white p-1" role="tablist" aria-label="Modo de práctica">
+                  <button
+                    type="button"
+                    role="tab"
+                    aria-selected={modo === 'individual'}
+                    onClick={() => setModo('individual')}
+                    className={`inline-flex min-h-10 items-center gap-2 rounded-lg px-4 text-sm font-bold transition ${modo === 'individual' ? 'bg-edvanta-blue text-white' : 'text-edvanta-deep hover:bg-edvanta-bg'}`}
+                  >
+                    <BookOpenCheck className="h-4 w-4" aria-hidden="true" />
+                    Individual
+                  </button>
+                  <button
+                    type="button"
+                    role="tab"
+                    aria-selected={modo === 'grupo'}
+                    onClick={() => setModo('grupo')}
+                    className={`inline-flex min-h-10 items-center gap-2 rounded-lg px-4 text-sm font-bold transition ${modo === 'grupo' ? 'bg-edvanta-blue text-white' : 'text-edvanta-deep hover:bg-edvanta-bg'}`}
+                  >
+                    <Users className="h-4 w-4" aria-hidden="true" />
+                    En grupos
+                  </button>
+                </div>
+
+                <div className="mt-5">
+                  {modo === 'individual' ? <ExamenInteractivo examen={examen} /> : <QuizGrupal examen={examen} />}
+                </div>
               </div>
 
               <details className="mt-10 rounded-2xl border border-edvanta-border bg-white p-5">

@@ -7,7 +7,7 @@
 
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, BookOpenCheck, Clock3, GraduationCap, ListChecks } from 'lucide-react';
+import { ArrowRight, BookOpenCheck, Clock3, GraduationCap, ListChecks, Users } from 'lucide-react';
 import SiteHeader from '../components/edvanta/SiteHeader';
 import SiteFooter from '../components/edvanta/SiteFooter';
 import { Breadcrumb } from '../components/edvanta/ui';
@@ -95,6 +95,7 @@ export default function ExamenesIndex() {
                   <span className="inline-flex items-center gap-1.5"><ListChecks className="h-4 w-4" aria-hidden="true" />{e.preguntas.length} preguntas</span>
                   <span className="inline-flex items-center gap-1.5"><Clock3 className="h-4 w-4" aria-hidden="true" />{e.duracion}</span>
                   <span>{e.nivel}</span>
+                  <span className="inline-flex items-center gap-1.5"><Users className="h-4 w-4" aria-hidden="true" />Individual o en grupos</span>
                 </div>
                 <div className="mt-auto pt-5">
                   <Link to={e.ruta} className="inline-flex items-center gap-1.5 text-sm font-bold text-edvanta-blue hover:underline">
