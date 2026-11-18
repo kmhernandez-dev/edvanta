@@ -15,7 +15,7 @@ import SiteHeader from '../components/edvanta/SiteHeader';
 import SiteFooter from '../components/edvanta/SiteFooter';
 import { Breadcrumb } from '../components/edvanta/ui';
 import ExamenInteractivo from '../components/examenes/ExamenInteractivo';
-import { examenPorSlug, examenRevisado, robotsDeExamen } from '../data/examenes';
+import { EXAMENES, examenPorSlug, examenRevisado, robotsDeExamen } from '../data/examenes';
 import { getArticulo } from '../data/articulos';
 import { updatePageSeo } from '../utils/seo';
 import { trackEvent } from '../utils/analytics';
@@ -89,6 +89,7 @@ export default function ExamenDetalle() {
   const relacionados = examen.articulos
     .map((s) => getArticulo(s))
     .filter(Boolean);
+  const avanzados = EXAMENES.filter((e) => e.nivel === 'Avanzado' && e.slug !== examen.slug).slice(0, 4);
 
   return (
     <div className="min-h-screen bg-white">
@@ -202,6 +203,21 @@ export default function ExamenDetalle() {
                       </li>
                     ))}
                   </ul>
+                </div>
+              )}
+
+              {avanzados.length > 0 && (
+                <div className="mt-8 rounded-2xl border border-edvanta-border bg-edvanta-bg/60 p-5">
+                  <h2 className="font-display text-xl font-extrabold text-edvanta-deep">Más exámenes avanzados</h2>
+                  <p className="mt-1 text-sm leading-6 text-edvanta-muted">Sigue con otro bloque de práctica del mismo nivel.</p>
+                  <div className="mt-4 grid gap-3 sm:grid-cols-2">
+                    {avanzados.map((e) => (
+                      <Link key={e.slug} to={e.ruta} className="group rounded-xl border border-edvanta-border bg-white p-4 transition hover:border-edvanta-teal/40 hover:shadow-sm">
+                        <p className="text-xs font-bold uppercase tracking-[.12em] text-edvanta-tealdark">{e.categoria}</p>
+                        <p className="mt-1.5 font-display text-base font-bold leading-snug text-edvanta-deep group-hover:text-edvanta-blue">{e.titulo}</p>
+                      </Link>
+                    ))}
+                  </div>
                 </div>
               )}
 

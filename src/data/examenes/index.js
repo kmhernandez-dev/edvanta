@@ -24,6 +24,18 @@ import insuficienciaCardiaca from './insuficiencia-cardiaca.js';
 import asmaYEpoc from './asma-y-epoc.js';
 import farmacologiaCardiovascular from './farmacologia-cardiovascular.js';
 import asuntosRegulatorios from './asuntos-regulatorios.js';
+import farmacologiaCardiovascularAvanzada from './farmacologia-cardiovascular-avanzada.js';
+import farmacologiaOncologicaAvanzada from './farmacologia-oncologica-avanzada.js';
+import antibacterianosAvanzado from './antibacterianos-avanzado.js';
+import diabetesAvanzado from './diabetes-avanzado.js';
+import asmaAvanzado from './asma-avanzado.js';
+import hemostasiaAvanzada from './hemostasia-avanzada.js';
+import cardiologiaAgudaAvanzada from './cardiologia-aguda-avanzada.js';
+import oncologiaSoporteAvanzada from './oncologia-soporte-avanzada.js';
+import infeccionesBacterianasAvanzado from './infecciones-bacterianas-avanzado.js';
+import diabetesComorbilidadesAvanzado from './diabetes-comorbilidades-avanzado.js';
+import asmaEpocAvanzado from './asma-epoc-avanzado.js';
+import trombosisAnticoagulacionAvanzada from './trombosis-anticoagulacion-avanzada.js';
 
 export const EXAMENES = [
   farmacologiaGeneral,
@@ -37,6 +49,18 @@ export const EXAMENES = [
   asmaYEpoc,
   farmacologiaCardiovascular,
   asuntosRegulatorios,
+  farmacologiaCardiovascularAvanzada,
+  farmacologiaOncologicaAvanzada,
+  antibacterianosAvanzado,
+  diabetesAvanzado,
+  asmaAvanzado,
+  hemostasiaAvanzada,
+  cardiologiaAgudaAvanzada,
+  oncologiaSoporteAvanzada,
+  infeccionesBacterianasAvanzado,
+  diabetesComorbilidadesAvanzado,
+  asmaEpocAvanzado,
+  trombosisAnticoagulacionAvanzada,
 ].map((e) => ({ ...e, ruta: `/examenes/${e.slug}` }));
 
 export const EXAMEN_POR_SLUG = new Map(EXAMENES.map((e) => [e.slug, e]));
@@ -69,6 +93,19 @@ export const REVISION_EXAMENES = {
   'examen-de-insuficiencia-cardiaca': { revisor: 'Karla Hernández, Química Farmacéutica', reviewedAt: '2026-11-18' },
   'examen-de-asma-y-epoc': { revisor: 'Karla Hernández, Química Farmacéutica', reviewedAt: '2026-11-18' },
   'examen-de-farmacologia-cardiovascular': { revisor: 'Karla Hernández, Química Farmacéutica', reviewedAt: '2026-11-18' },
+  // Lote avanzado del parcial final: 12 exámenes, indexados a pedido de Karla.
+  'examen-avanzado-de-farmacologia-cardiovascular': { revisor: 'Karla Hernández, Química Farmacéutica', reviewedAt: '2026-11-18' },
+  'examen-avanzado-de-farmacologia-oncologica': { revisor: 'Karla Hernández, Química Farmacéutica', reviewedAt: '2026-11-18' },
+  'examen-avanzado-de-antibacterianos': { revisor: 'Karla Hernández, Química Farmacéutica', reviewedAt: '2026-11-18' },
+  'examen-avanzado-de-diabetes': { revisor: 'Karla Hernández, Química Farmacéutica', reviewedAt: '2026-11-18' },
+  'examen-avanzado-de-asma': { revisor: 'Karla Hernández, Química Farmacéutica', reviewedAt: '2026-11-18' },
+  'examen-avanzado-de-hemostasia': { revisor: 'Karla Hernández, Química Farmacéutica', reviewedAt: '2026-11-18' },
+  'examen-avanzado-de-cardiologia-aguda': { revisor: 'Karla Hernández, Química Farmacéutica', reviewedAt: '2026-11-18' },
+  'examen-avanzado-de-oncologia-de-soporte': { revisor: 'Karla Hernández, Química Farmacéutica', reviewedAt: '2026-11-18' },
+  'examen-avanzado-de-infecciones-bacterianas': { revisor: 'Karla Hernández, Química Farmacéutica', reviewedAt: '2026-11-18' },
+  'examen-avanzado-de-diabetes-y-comorbilidades': { revisor: 'Karla Hernández, Química Farmacéutica', reviewedAt: '2026-11-18' },
+  'examen-avanzado-de-asma-y-epoc': { revisor: 'Karla Hernández, Química Farmacéutica', reviewedAt: '2026-11-18' },
+  'examen-avanzado-de-trombosis-y-anticoagulacion': { revisor: 'Karla Hernández, Química Farmacéutica', reviewedAt: '2026-11-18' },
 };
 
 export const examenRevisado = (slug) => Boolean(REVISION_EXAMENES[slug]);
@@ -92,5 +129,5 @@ export const examenDeArticulo = (slug) => ARTICULO_A_EXAMEN.get(slug) || null;
 export const META_EXAMENES = {
   titulo: 'Exámenes interactivos de farmacia y salud | Edvanta',
   h1: 'Exámenes interactivos para estudiar y repasar',
-  descripcion: 'Exámenes de farmacología, hipertensión, diabetes, antibióticos, atención farmacéutica y farmacovigilancia, con respuestas explicadas y enlaces a cursos gratis.',
+  descripcion: 'Exámenes de farmacología, cardiología, oncología, antibacterianos, diabetes, asma y hemostasia, con respuestas explicadas y enlaces a cursos gratis.',
 };

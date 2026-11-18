@@ -103,7 +103,7 @@ Todos los artículos de salud entran en `noindex,follow` hasta que Karla anote s
 
 Karla respondió por escrito: «He revisado y apruebo, indexa y enlaza». Se registraron los **28 artículos** de los clústeres nuevos y las **4 páginas del vademécum** (grupo renal, finerenona, dapagliflozina y gliclazida) en `revisionClinica.js`.
 
-El mismo 18-nov-2026 aprobó el lote completo: **200 artículos de la biblioteca de salud**, **10 fichas «para qué sirve»**, **16 casos clínicos nuevos** y **3 exámenes clínicos**. El build quedó con **1.217 URLs** en los sitemaps: **535 artículos** y **672 páginas**. Todo sale `index,follow`, con revisor y fecha.
+El mismo 18-nov-2026 aprobó el lote completo: **200 artículos de la biblioteca de salud**, **10 fichas «para qué sirve»**, **16 casos clínicos nuevos**, **3 exámenes clínicos** y **12 exámenes avanzados**. El build quedó con **1.229 URLs** en los sitemaps: **535 artículos** y **684 páginas**. Todo sale `index,follow`, con revisor y fecha.
 
 Falta el paso de producción: desplegar, verificar las URLs con `curl`, enviar el sitemap a Search Console y avisar a Bing con `node scripts/indexnow.mjs --desde=2026-11-17`. No se envía IndexNow antes de desplegar para no avisar de URLs que aún no existen en `edvanta.co`.
 
@@ -138,6 +138,25 @@ Cada ficha sigue el mismo molde: qué es, para qué sirve, cómo se usa, efectos
 - **110 preguntas** con fuente y `Quiz` en datos estructurados. Los artículos enlazan al examen de su tema y los exámenes enlazan de vuelta.
 - Keywords objetivo: «examen de farmacología», «preguntas de hipertensión con respuestas», «test de diabetes», «examen de antibióticos», «examen de insuficiencia cardíaca», «examen de asma y EPOC», «examen de calidad farmacéutica», «examen de asuntos regulatorios».
 - Estado: los once exámenes están aprobados e indexados. Calidad farmacéutica y asuntos regulatorios son no clínicos y se publican con revisión editorial; el resto lleva revisión clínica de Karla. La hoja está en `seo/revision-clinica/examenes-18-nov-2026.md`.
+
+## Exámenes avanzados del parcial final de farmacología (18-nov-2026)
+
+Doce exámenes de **120 preguntas** construidos a partir de los bloques del material de clase:
+
+- `examen-avanzado-de-farmacologia-cardiovascular`: insuficiencia cardíaca, digoxina, diuréticos, nitratos, SRAA, betabloqueantes y anticoagulación.
+- `examen-avanzado-de-farmacologia-oncologica`: antimetabolitos, tubulina, topoisomerasas, alquilantes, platinos, terapia dirigida e inmunoterapia.
+- `examen-avanzado-de-antibacterianos`: betalactámicos, síntesis proteica, quinolonas, antifolatos, polimixinas y resistencia.
+- `examen-avanzado-de-diabetes`: insulinas, sulfonilureas, metformina, glitazonas, incretinas, iSGLT2 y cetoacidosis.
+- `examen-avanzado-de-asma`: beta-2 agonistas, corticoides, teofilina, antileucotrienos, omalizumab y exacerbación grave.
+- `examen-avanzado-de-hemostasia`: antiagregantes, warfarina, heparinas, fondaparinux, trombolíticos y reversión.
+- `examen-avanzado-de-cardiologia-aguda`: síndrome coronario agudo, edema pulmonar, arritmias, crisis hipertensiva e inotrópicos.
+- `examen-avanzado-de-oncologia-de-soporte`: neutropenia febril, lisis tumoral, antieméticos, extravasación e inmunoterapia.
+- `examen-avanzado-de-infecciones-bacterianas`: sepsis, meningitis, endocarditis, neumonía hospitalaria, PK/PD y resistencia.
+- `examen-avanzado-de-diabetes-y-comorbilidades`: enfermedad renal, insuficiencia cardíaca, embarazo, glucocorticoides y cetoacidosis.
+- `examen-avanzado-de-asma-y-epoc`: MART, biológicos, EPOC estable y exacerbado, técnica inhalatoria y corticoides.
+- `examen-avanzado-de-trombosis-y-anticoagulacion`: TVP, cáncer, embarazo, prótesis valvular, perioperatorio y reversión.
+
+**Estado:** los 12 exámenes están registrados en `REVISION_EXAMENES`, salen `index,follow`, entran al sitemap y se enlazan entre sí. El hub `/examenes` muestra los 23 exámenes y el `Quiz` JSON-LD de cada página incluye las 10 preguntas.
 
 ## Riesgos y reglas que no se rompen
 

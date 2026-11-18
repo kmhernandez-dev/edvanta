@@ -95,6 +95,8 @@ const contenidoExamen = (e) => {
     e.guia ? `<li><a href="${e.guia.ruta}">Guía: ${e.guia.nombre}</a></li>` : '',
     ...(e.articulos || []).map((s) => `<li><a href="/articulos/${s}">Artículo: ${s}</a></li>`),
     ...(e.vademecum || []).map((v) => `<li><a href="${v.ruta}">Vademécum: ${v.nombre}</a></li>`),
+    ...EXAMENES.filter((x) => x.nivel === 'Avanzado' && x.slug !== e.slug).slice(0, 4)
+      .map((x) => `<li><a href="${x.ruta}">Examen avanzado: ${x.titulo}</a></li>`),
   ].filter(Boolean).join('');
   return `<section><h2>Qué evalúa</h2><ul>${e.temas.map((t) => `<li>${t}</li>`).join('')}</ul></section>
 <section><h2>Preguntas y respuestas explicadas</h2><ol>${preguntas}</ol></section>

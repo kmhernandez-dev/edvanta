@@ -49,3 +49,24 @@ Después:
 4. Pedir en Search Console las seis URLs de examen.
 
 Mientras no haya revisión, los exámenes se pueden usar y enlazar, pero no compiten en Google.
+
+## Lote avanzado del parcial final (18-nov-2026)
+
+Se añadieron doce exámenes avanzados de 10 preguntas cada uno, basados en los bloques del parcial final de farmacología y en casos clínicos integradores:
+
+| Examen | Preguntas | Bloques |
+|---|---|---|
+| `examen-avanzado-de-farmacologia-cardiovascular` | 10 | Insuficiencia cardíaca, digoxina, diuréticos, nitratos, SRAA, betabloqueantes, anticoagulación |
+| `examen-avanzado-de-farmacologia-oncologica` | 10 | Citotóxicos, terapia dirigida, inmunoterapia, hormonoterapia |
+| `examen-avanzado-de-antibacterianos` | 10 | Betalactámicos, síntesis proteica, quinolonas, antifolatos, resistencia |
+| `examen-avanzado-de-diabetes` | 10 | Insulinas, antidiabéticos orales, incretinas, iSGLT2, cetoacidosis |
+| `examen-avanzado-de-asma` | 10 | Beta-2 agonistas, corticoides, teofilina, antileucotrienos, omalizumab |
+| `examen-avanzado-de-hemostasia` | 10 | Antiagregantes, anticoagulantes, trombolíticos, reversión |
+| `examen-avanzado-de-cardiologia-aguda` | 10 | Síndrome coronario, edema pulmonar, arritmias, crisis hipertensiva, inotrópicos |
+| `examen-avanzado-de-oncologia-de-soporte` | 10 | Neutropenia febril, lisis tumoral, antieméticos, extravasación, inmunoterapia |
+| `examen-avanzado-de-infecciones-bacterianas` | 10 | Sepsis, meningitis, endocarditis, neumonía hospitalaria, PK/PD, resistencia |
+| `examen-avanzado-de-diabetes-y-comorbilidades` | 10 | Enfermedad renal, insuficiencia cardíaca, embarazo, glucocorticoides, cetoacidosis |
+| `examen-avanzado-de-asma-y-epoc` | 10 | MART, biológicos, EPOC estable y exacerbado, inhaladores, corticoides |
+| `examen-avanzado-de-trombosis-y-anticoagulacion` | 10 | TVP, cáncer, embarazo, prótesis valvular, perioperatorio, reversión |
+
+**Estado:** los doce exámenes están registrados en `REVISION_EXAMENES`, salen `index,follow`, entran al sitemap y se enlazan entre sí.
