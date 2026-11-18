@@ -87,4 +87,22 @@ describe('Curso de Manipulación de Alimentos', () => {
     }
     expect(porPosicion).toEqual([5, 5, 5, 5]);
   });
+
+  it('163: queda aprobado para publicar y toma la dirección principal; el curado de Edutin estrena la suya', async () => {
+    // Producción: la principal es hoy del curado de Edutin (id 150) y el propio aún no tiene
+    // dirección (la prueba de publicar de arriba se la asignó: se deja como en producción).
+    await t.db.query("DELETE FROM public_slugs WHERE entity = 'aula' AND entity_id = $1", [curso.id]);
+    await t.db.query("INSERT INTO public_slugs (slug, entity, entity_id, is_current) VALUES ('curso-de-manipulacion-de-alimentos', 'curado', 150, TRUE)");
+    const sql = cleanMigrationSql(readFileSync(path.join(dir, '163_publicar_manipulacion_de_alimentos.sql'), 'utf8'));
+    await t.pglite.exec(sql);
+    await t.pglite.exec(sql); // idempotente
+    const { rows } = await t.db.query('SELECT slug, entity, entity_id, is_current FROM public_slugs ORDER BY slug');
+    expect(rows).toEqual([
+      { slug: 'curso-de-manipulacion-de-alimentos', entity: 'aula', entity_id: curso.id, is_current: true },
+      { slug: 'curso-de-manipulacion-de-alimentos-en-edutin', entity: 'curado', entity_id: 150, is_current: true },
+    ]);
+    const ap = await t.db.query('SELECT course_id FROM aula_publicaciones_aprobadas WHERE course_id = $1', [curso.id]);
+    // Ya estaba publicado por la prueba anterior: la aprobación solo se registra si sigue en borrador.
+    expect(ap.rows.length).toBeLessThanOrEqual(1);
+  });
 });

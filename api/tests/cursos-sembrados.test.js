@@ -305,10 +305,10 @@ describe('farmacoterapia: lo que se ve no trae marcas de trabajo', () => {
 
 // Va al final: publica de verdad, y lo de arriba revisa los borradores.
 describe('publicación aprobada al arrancar', () => {
-  it('publica los catorce cursos aprobados con el mismo camino del botón', async () => {
-    // 4 de farmacoterapia (055) + 10 de habilidades blandas (075).
+  it('publica los quince cursos aprobados con el mismo camino del botón', async () => {
+    // 4 de farmacoterapia (055) + 10 de habilidades blandas (075) + manipulación de alimentos (163).
     const hechos = await publicarAprobados(db);
-    expect(hechos).toHaveLength(14);
+    expect(hechos).toHaveLength(15);
 
     const { rows } = await pglite.query(
       `SELECT c.title, c.status, v.version_number, v.snapshot->'totals'->>'lessons' AS clases, p.error
@@ -344,7 +344,7 @@ describe('publicación aprobada al arrancar', () => {
     const [{ n }] = (await pglite.query(
       "SELECT count(*)::int AS n FROM aula_audit_log WHERE action = 'curso.publicar'",
     )).rows;
-    expect(n).toBe(14);
+    expect(n).toBe(15);
   }, 240_000);
 
   it('al volver a arrancar no publica nada otra vez', async () => {
