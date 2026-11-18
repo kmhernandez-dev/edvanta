@@ -1,3 +1,5 @@
+> Plan vigente hacia 10.000 keywords: [seo/plan-10000-keywords.md](./plan-10000-keywords.md). Este documento conserva el registro histórico.
+
 # Plan hacia 3.000 palabras clave
 
 Meta de Karla: pasar de unas 54 a 1.000 consultas con impresiones en Search Console (12-nov-2026), y luego a **3.000** (nueva meta, 12-nov-2026 por la noche).

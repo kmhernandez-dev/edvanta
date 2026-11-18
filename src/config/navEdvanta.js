@@ -23,7 +23,7 @@
  */
 
 import {
-  BookOpen, Briefcase, Compass, FileCheck2, FileText, GraduationCap,
+  BookOpen, BookOpenCheck, Briefcase, Compass, FileCheck2, FileText, GraduationCap,
   HeartPulse, Library, Megaphone, MessagesSquare, Newspaper, Route, ShieldCheck, Sparkles,
 } from 'lucide-react';
 import { ESCUELAS } from '../data/edvanta/escuelas';
@@ -49,6 +49,7 @@ export const RECURSOS_GROUPS = [
     title: 'Para estudiar y trabajar',
     items: [
       { label: 'Guías y kits', desc: 'Guías, e-books y plantillas de Edvanta', to: '/guias', icon: BookOpen },
+      { label: 'Exámenes interactivos', desc: 'Practica con preguntas y respuestas explicadas', to: '/examenes', icon: BookOpenCheck },
       { label: 'Artículos', desc: 'Lecturas del sector farmacéutico', to: '/articulos', icon: Newspaper },
       { label: 'Biblioteca de referencias', desc: 'Normativa, lecturas y fuentes', to: '/recursos', icon: Library },
       { label: 'Rutas y competencias', desc: 'Qué aprender, en qué orden', to: '/rutas', icon: Route },
@@ -68,6 +69,7 @@ export const RECURSOS_GROUPS = [
 /* ── Enlaces directos de la barra principal (profesionales) ── */
 export const MAIN_LINKS = [
   { label: 'Cursos', to: '/cursos' },
+  { label: 'Exámenes', to: '/examenes' },
   { label: 'Artículos', to: '/articulos' },
 ];
 
@@ -85,7 +87,7 @@ export const PUBLICOS_NAV = [
 const FST = /^\/(feliz-sin-tiroides|academia|recetas|nutrifst|recurso|enfermedades|levotiroxina|nutricion-tiroidea)(\/|$)/;
 
 export const contextoDe = (pathname) => {
-  if (/^\/(pacientes|contigo|mi-cuidado)(\/|$)/.test(pathname) || FST.test(pathname)) return 'pacientes';
+  if (/^\/(pacientes|contigo|mi-cuidado|comunidades)(\/|$)/.test(pathname) || FST.test(pathname)) return 'pacientes';
   if (/^\/(instituciones|empresas)(\/|$)/.test(pathname)) return 'instituciones';
   return 'profesionales';
 };
@@ -93,6 +95,7 @@ export const contextoDe = (pathname) => {
 export const NAV_PACIENTES = [
   { label: 'Edvanta Contigo', to: '/contigo' },
   { label: 'Salud tiroidea', to: '/contigo/tiroides' },
+  { label: 'Comunidades', to: '/comunidades' },
   { label: 'Mi cuidado', to: '/mi-cuidado' },
   { label: 'Planes', to: '/contigo/planes' },
 ];
@@ -124,6 +127,7 @@ export const FOOTER_COLUMNS = [
     title: 'Aprende',
     links: [
       { label: 'Cursos', to: '/cursos' },
+      { label: 'Exámenes interactivos', to: '/examenes' },
       { label: 'Recursos para estudiantes', to: '/recursos-para-estudiantes-de-quimica-farmaceutica' },
       { label: 'Curso en vivo para auxiliares y regentes', to: '/curso-de-operacion-segura-del-servicio-farmaceutico' },
       { label: 'Guías y kits', to: '/guias' },
@@ -138,6 +142,7 @@ export const FOOTER_COLUMNS = [
     links: [
       { label: 'Edvanta Contigo', to: '/contigo' },
       { label: 'Salud tiroidea', to: '/contigo/tiroides' },
+      { label: 'Comunidades por enfermedad', to: '/comunidades' },
       { label: 'Mi cuidado', to: '/mi-cuidado' },
       { label: 'Planes', to: '/contigo/planes' },
       { label: 'Feliz Sin Tiroides', to: '/feliz-sin-tiroides' },

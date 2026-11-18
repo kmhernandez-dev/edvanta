@@ -599,7 +599,7 @@ for (const r of RUTAS_FIJAS) {
       ...(r.reviewedBy ? { reviewedBy: r.reviewedBy } : {}),
       ...(r.relatedLink?.length ? { relatedLink: r.relatedLink } : {}),
     },
-    migas([['Inicio', `${SITIO}/`], [seccion, `${SITIO}/`], [h1, canonical]]),
+    migas([['Inicio', `${SITIO}/`], [seccion, `${SITIO}${r.seccionUrl || '/'}`], [h1, canonical]]),
   ];
   // Cada bloque va en su propio <script>: sin @context, Google lo ignora
   // (pasó con el FAQPage de recursos para estudiantes y la Person del perfil).

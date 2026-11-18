@@ -78,6 +78,10 @@ const HojaDeVidaCrear = lazy(() => import('./pages/HojaDeVidaCrear'));
 const CorreosRRHH = lazy(() => import('./pages/empleo/CorreosRRHH'));
 const BuscarPage = lazy(() => import('./pages/BuscarPage'));
 const ComunidadPage = lazy(() => import('./pages/ComunidadPage'));
+const ComunidadesIndex = lazy(() => import('./pages/ComunidadesIndex'));
+const ComunidadDetalle = lazy(() => import('./pages/ComunidadDetalle'));
+const ExamenesIndex = lazy(() => import('./pages/ExamenesIndex'));
+const ExamenDetalle = lazy(() => import('./pages/ExamenDetalle'));
 const HerramientaLandingPage = lazy(() => import('./pages/HerramientaLandingPage'));
 
 // Arquitectura de escuelas: una página por puerta de entrada.
@@ -302,6 +306,14 @@ export default function App() {
 
         {/* Landing de la comunidad QF */}
         <Route path="/comunidad" element={<ComunidadPage />} />
+
+        {/* Una comunidad por enfermedad (pacientes y cuidadores) */}
+        <Route path="/comunidades" element={<ComunidadesIndex />} />
+        <Route path="/comunidades/:slug" element={<ComunidadDetalle />} />
+
+        {/* Exámenes interactivos públicos */}
+        <Route path="/examenes" element={<ExamenesIndex />} />
+        <Route path="/examenes/:slug" element={<ExamenDetalle />} />
 
         {/* Marca: Feliz Sin Tiroides (pacientes) */}
         <Route path="/feliz-sin-tiroides" element={<FelizSinTiroides />} />

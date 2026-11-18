@@ -22,5 +22,62 @@ export const revisadoPorKarla = (fecha) => ({
   reviewedAt: fecha,
 });
 
-/** slug → { revisor, revisorUrl, reviewedAt }. Vacío hasta la aprobación de Karla. */
-export const REVISION_CASOS = {};
+/**
+ * 18 de noviembre de 2026: Karla revisó los 50 casos y escribió
+ * «Ya están revisados! Indexa… todo está aprobado».
+ */
+const REVISADOS_2026_11_18 = [
+  'anafilaxia',
+  'anemia-ferropenica',
+  'angina-estable',
+  'ansiedad',
+  'anticoagulacion-con-warfarina',
+  'artritis-reumatoide',
+  'artrosis',
+  'asma',
+  'celulitis',
+  'cetoacidosis-diabetica',
+  'crisis-hipertensiva',
+  'depresion',
+  'diabetes-tipo-1',
+  'diabetes-tipo-2',
+  'diarrea-aguda',
+  'dislipidemia',
+  'dolor-neuropatico',
+  'enfermedad-renal-cronica',
+  'epilepsia',
+  'epoc',
+  'esquizofrenia',
+  'estrenimiento',
+  'faringoamigdalitis',
+  'fibrilacion-auricular',
+  'gota',
+  'helicobacter-pylori',
+  'herpes-zoster',
+  'hipertension-arterial',
+  'hipertiroidismo',
+  'hipoglucemia',
+  'hipotiroidismo',
+  'infeccion-urinaria',
+  'insomnio',
+  'insuficiencia-cardiaca',
+  'insuficiencia-suprarrenal',
+  'intoxicacion-por-acetaminofen',
+  'migrana',
+  'nauseas-y-vomito',
+  'neumonia-adquirida-en-la-comunidad',
+  'obesidad',
+  'osteoporosis',
+  'otitis-media-aguda',
+  'parkinson',
+  'pielonefritis',
+  'preeclampsia',
+  'reflujo-gastroesofagico',
+  'rinitis-alergica',
+  'sindrome-de-intestino-irritable',
+  'tuberculosis',
+  'vaginosis-bacteriana',
+];
+
+/** slug → { revisor, revisorUrl, reviewedAt } */
+export const REVISION_CASOS = Object.fromEntries(REVISADOS_2026_11_18.map((slug) => [slug, revisadoPorKarla('2026-11-18')]));

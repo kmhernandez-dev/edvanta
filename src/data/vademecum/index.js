@@ -37,6 +37,9 @@ import amlodipino from './monografias/amlodipino.js';
 import hidroclorotiazida from './monografias/hidroclorotiazida.js';
 import metformina from './monografias/metformina.js';
 import empagliflozina from './monografias/empagliflozina.js';
+import dapagliflozina from './monografias/dapagliflozina.js';
+import gliclazida from './monografias/gliclazida.js';
+import finerenona from './monografias/finerenona.js';
 import sitagliptina from './monografias/sitagliptina.js';
 import trastuzumab from './monografias/trastuzumab.js';
 import imatinib from './monografias/imatinib.js';
@@ -126,6 +129,7 @@ import metoprolol from './monografias/metoprolol.js';
 import espironolactona from './monografias/espironolactona.js';
 import furosemida from './monografias/furosemida.js';
 import tiroides from './grupos/tiroides.js';
+import enfermedadRenalCronica from './grupos/enfermedad-renal-cronica.js';
 import amoxicilina from './monografias/amoxicilina.js';
 import azitromicina from './monografias/azitromicina.js';
 import alopurinol from './monografias/alopurinol.js';
@@ -134,12 +138,13 @@ import levotiroxina from './monografias/levotiroxina.js';
 
 const conRevision = (p) => ({ ...p, ...(REVISION_VADEMECUM[p.slug] || {}) });
 
-export const GRUPOS_VADEMECUM = [obesidad, hipertension, diabetes, oncologiaAltoCosto, dislipidemia, anticoagulacion, antibioticos, dolorEInflamacion, aparatoDigestivo, corticoidesSistemicos, alergiaYViasRespiratorias, saludMentalYSistemaNervioso, antimicoticosAntiviralesYAntiparasitarios, tiroides].map(conRevision);
+export const GRUPOS_VADEMECUM = [obesidad, hipertension, diabetes, oncologiaAltoCosto, dislipidemia, anticoagulacion, antibioticos, dolorEInflamacion, aparatoDigestivo, corticoidesSistemicos, alergiaYViasRespiratorias, saludMentalYSistemaNervioso, antimicoticosAntiviralesYAntiparasitarios, tiroides, enfermedadRenalCronica].map(conRevision);
 
 export const MONOGRAFIAS = [
   semaglutida, tirzepatida, liraglutida, orlistat, naltrexonaBupropion, setmelanotida,
   losartan, enalapril, amlodipino, hidroclorotiazida,
-  metformina, empagliflozina, sitagliptina,
+  metformina, empagliflozina, dapagliflozina, gliclazida, sitagliptina,
+  finerenona,
   trastuzumab, imatinib, pembrolizumab,
   atorvastatina, rosuvastatina, ezetimiba,
   warfarina, apixaban, rivaroxaban,

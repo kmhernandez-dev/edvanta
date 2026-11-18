@@ -39,6 +39,8 @@ import { GRUPOS_VADEMECUM, MONOGRAFIAS, META_VADEMECUM, grupoDe, monografiasDelG
 import { htmlDePagina, jsonLdDePagina } from '../src/lib/vademecum/html.js';
 import { clasesDelVademecum, urlsAbsolutas } from '../api/lib/enlaces-de-salud.js';
 import { robotsDePaginaDelVademecum, robotsDelVademecum, tituloDeVademecum } from '../src/lib/vademecum/indexable.js';
+import { COMUNIDADES, META_COMUNIDADES } from '../src/data/comunidadesSalud.js';
+import { EXAMENES, META_EXAMENES, robotsDeExamen } from '../src/data/examenes/index.js';
 
 const AREAS_POR_SLUG = new Map(AREAS_CAPACITACION.map((a) => [a.slug, a]));
 
@@ -65,6 +67,56 @@ const add = (ruta, titulo, descripcion, extra = {}) => {
 };
 
 const cursoAutocuidado = ebooks.find((c) => c.id === 'fst-autocuidado');
+
+/** HTML de una comunidad, el mismo contenido que muestra la página. */
+const contenidoComunidad = (c) => {
+  const porSlug = new Map(ARTICULOS.map((a) => [a.slug, a]));
+  const articulos = c.articulos.map((s) => porSlug.get(s)).filter(Boolean)
+    .map((a) => `<li><a href="/articulos/${a.slug}">${a.title}</a></li>`).join('');
+  const curso = c.curso ? `<p>Curso gratis para profesionales: <a href="${c.curso.ruta}">${c.curso.nombre}</a>.</p>` : '';
+  const guia = c.guiaPro ? `<p>Guía profesional: <a href="${c.guiaPro.ruta}">${c.guiaPro.nombre}</a>.</p>` : '';
+  const guiaPaciente = c.guia?.publico === 'pacientes' ? `<p>Guía para pacientes: <a href="${c.guia.ruta}">${c.guia.nombre}</a>.</p>` : '';
+  return `<section><h2>Qué encontrarás</h2><ul>${c.queEncuentras.map((t) => `<li>${t}</li>`).join('')}</ul></section>
+<section><h2>Reglas</h2><ol>${c.reglas.map((t) => `<li>${t}</li>`).join('')}</ol><p>${c.noEs}</p></section>
+${articulos ? `<section><h2>Artículos para empezar</h2><ul>${articulos}</ul></section>` : ''}
+<section><h2>Cómo entrar</h2><p>Escribe por WhatsApp y pide entrar a la comunidad de ${c.nombre}. <a href="${c.whatsapp}">Abrir WhatsApp</a>.</p>${curso}${guia}${guiaPaciente}</section>`;
+};
+
+const contenidoComunidades = () => `<section><h2>Comunidades por enfermedad</h2><ul>${COMUNIDADES.map((c) => `<li><a href="${c.ruta}">${c.titulo}</a>: ${c.resumen}</li>`).join('')}</ul></section>
+<section><h2>Cómo funciona</h2><ol><li>Escribes por WhatsApp y dices qué comunidad te interesa.</li><li>Recibes las reglas y la bienvenida.</li><li>Participas a tu ritmo; no hay ventas dentro del grupo.</li></ol></section>`;
+
+/** HTML de un examen: preguntas, opciones y clave de respuestas visible. */
+const contenidoExamen = (e) => {
+  const preguntas = e.preguntas.map((p, i) => `<li><p><strong>${i + 1}. ${p.enunciado}</strong></p><ol type="a">${p.opciones.map((o, n) => `<li>${o}${n === p.correcta ? ' (correcta)' : ''}</li>`).join('')}</ol><p>${p.explicacion}</p><p><small>Fuente: ${p.fuente}</small></p></li>`).join('');
+  const enlaces = [
+    e.curso ? `<li><a href="${e.curso.ruta}">Curso gratis: ${e.curso.nombre}</a></li>` : '',
+    e.guia ? `<li><a href="${e.guia.ruta}">Guía: ${e.guia.nombre}</a></li>` : '',
+    ...(e.articulos || []).map((s) => `<li><a href="/articulos/${s}">Artículo: ${s}</a></li>`),
+    ...(e.vademecum || []).map((v) => `<li><a href="${v.ruta}">Vademécum: ${v.nombre}</a></li>`),
+  ].filter(Boolean).join('');
+  return `<section><h2>Qué evalúa</h2><ul>${e.temas.map((t) => `<li>${t}</li>`).join('')}</ul></section>
+<section><h2>Preguntas y respuestas explicadas</h2><ol>${preguntas}</ol></section>
+<section><h2>Para seguir estudiando</h2><ul>${enlaces}</ul></section>
+<section><h2>Fuentes</h2><ul>${(e.fuentes || []).map((f) => `<li>${f.texto} <a href="${f.url}">Ver fuente</a></li>`).join('')}</ul></section>`;
+};
+
+const jsonLdExamen = (e) => ({
+  '@type': 'Quiz',
+  name: e.titulo,
+  description: e.seo.descripcion,
+  url: `https://edvanta.co${e.ruta}`,
+  inLanguage: 'es-CO',
+  educationalLevel: e.nivel,
+  about: e.temas,
+  hasPart: e.preguntas.map((p) => ({
+    '@type': 'Question',
+    name: p.enunciado,
+    acceptedAnswer: { '@type': 'Answer', text: p.opciones[p.correcta] },
+  })),
+});
+
+const contenidoExamenes = () => `<section><h2>Exámenes disponibles</h2><ul>${EXAMENES.map((e) => `<li><a href="${e.ruta}">${e.titulo}</a>: ${e.descripcion}</li>`).join('')}</ul></section>
+<section><h2>Cómo funciona</h2><ol><li>Respondes las preguntas sin registro.</li><li>Pulsas corregir y ves tu puntaje.</li><li>Lees la explicación de cada respuesta y sigues con el curso o la guía.</li></ol><p>Práctica educativa: no genera certificado ni reemplaza una evaluación de curso.</p></section>`;
 
 add('/escuelas', 'Escuelas de Edvanta | Formación farmacéutica y habilidades', 'Cinco escuelas: Salud y Farmacia Clínica, Calidad y Producción, Asuntos Regulatorios, Habilidades Blandas, y Marketing y Comunicación.', { tipo: 'CollectionPage', seccion: 'Escuelas', enlaces: ESCUELAS.map((e) => [e.nombre, `/escuelas/${e.slug}`]), contenido: contenidoEscuelas(ESCUELAS) });
 
@@ -271,6 +323,48 @@ for (const slug of ['levotiroxina', 'nutricion-tiroidea']) {
 add('/buscar', 'Buscar en Edvanta | Edvanta', 'Busca artículos, cursos, herramientas y recursos de Edvanta.', { tipo: 'SearchResultsPage', seccion: 'Edvanta', robots: 'noindex,follow', enlaces: [['Artículos', '/articulos'], ['Cursos', '/cursos'], ['Herramientas', '/herramientas']] });
 
 add('/comunidad', 'Comunidad de químicos farmacéuticos | Edvanta', 'Un espacio para conectar con otros profesionales farmacéuticos, compartir experiencias y encontrar oportunidades.', { tipo: 'WebPage', seccion: 'Comunidad', robots: 'noindex,follow', enlaces: [['Conecta', '/conecta'], ['Empleo', '/empleo'], ['Recursos', '/recursos']] });
+
+// Comunidades de pacientes y cuidadores, una por enfermedad.
+add('/comunidades', META_COMUNIDADES.titulo, META_COMUNIDADES.descripcion, {
+  tipo: 'CollectionPage',
+  seccion: 'Comunidades',
+  seccionUrl: '/comunidades',
+  h1: META_COMUNIDADES.h1,
+  enlaces: [['Edvanta Contigo', '/contigo'], ['Artículos', '/articulos'], ['Cursos gratis', '/cursos']],
+  contenido: contenidoComunidades(),
+});
+for (const c of COMUNIDADES) {
+  add(c.ruta, `Comunidad de ${c.nombre} | Edvanta`, c.resumen, {
+    tipo: 'WebPage',
+    seccion: 'Comunidades',
+    seccionUrl: '/comunidades',
+    h1: c.titulo,
+    enlaces: [['Todas las comunidades', '/comunidades'], ['Artículos', '/articulos'], ['Cursos gratis', '/cursos']],
+    contenido: contenidoComunidad(c),
+  });
+}
+
+// Exámenes interactivos públicos: preguntas, respuestas y enlaces de estudio.
+add('/examenes', META_EXAMENES.titulo, META_EXAMENES.descripcion, {
+  tipo: 'CollectionPage',
+  seccion: 'Exámenes',
+  seccionUrl: '/examenes',
+  h1: META_EXAMENES.h1,
+  enlaces: [['Cursos gratis', '/cursos'], ['Artículos', '/articulos'], ['Vademécum', '/vademecum']],
+  contenido: contenidoExamenes(),
+});
+for (const e of EXAMENES) {
+  add(e.ruta, e.seo.titulo, e.seo.descripcion, {
+    tipo: 'WebPage',
+    seccion: 'Exámenes',
+    seccionUrl: '/examenes',
+    robots: robotsDeExamen(e.slug),
+    h1: e.titulo,
+    enlaces: [['Todos los exámenes', '/examenes'], ['Cursos gratis', '/cursos'], ['Vademécum', '/vademecum']],
+    contenido: contenidoExamen(e),
+    extraJsonLd: [jsonLdExamen(e)],
+  });
+}
 
 add('/nutrifst', 'NutriFST | Feliz Sin Tiroides', 'Conoce NutriFST, el asistente educativo de nutrición tiroidea de Feliz Sin Tiroides.', { tipo: 'WebPage', seccion: 'Feliz Sin Tiroides', robots: 'noindex,follow', enlaces: [['FST App', '/fst-app'], ['Feliz Sin Tiroides', '/feliz-sin-tiroides'], ['Recetas', '/recetas']] });
 

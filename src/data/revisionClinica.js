@@ -308,12 +308,55 @@ const REVISADOS_POR_KARLA_2026_11_17 = [
   'metocarbamol-para-que-sirve',
 ];
 
+/**
+ * 18 de noviembre de 2026: Karla revisó y aprobó los 28 artículos de los
+ * clústeres nuevos (colesterol, digestivo, dolor, gota, riñón, arritmias,
+ * salud mental, piel, hueso y cálculos renales) y las páginas nuevas del
+ * vademécum. Respondió por escrito: «He revisado y apruebo, indexa y enlaza».
+ */
+const KARLA_2026_11_18 = { ...KARLA_2026_11_09, reviewedAt: '2026-11-18' };
+
+const REVISADOS_POR_KARLA_2026_11_18 = [
+  // Colesterol, digestivo, dolor y gota.
+  'colesterol-alto-sintomas-y-causas',
+  'trigliceridos-altos-que-hacer',
+  'estatinas-efectos-secundarios',
+  'reflujo-gastroesofagico-sintomas',
+  'colon-irritable-sintomas-y-dieta',
+  'estrenimiento-cronico-que-hacer',
+  'artrosis-sintomas-y-tratamiento',
+  'dolor-de-rodilla-causas-y-cuidados',
+  'fibromialgia-sintomas-y-tratamiento',
+  'gota-sintomas-y-tratamiento',
+  'alopurinol-para-que-sirve',
+  // Riñón, arritmias, salud mental y piel.
+  'enfermedad-renal-cronica-sintomas-y-etapas',
+  'creatinina-alta-que-significa',
+  'dieta-para-enfermedad-renal-cronica',
+  'fibrilacion-auricular-sintomas-y-tratamiento',
+  'anticoagulantes-cuidados-y-riesgos',
+  'warfarina-dieta-e-inr',
+  'depresion-sintomas-y-tratamiento',
+  'insomnio-que-hacer',
+  'ataque-de-panico-sintomas',
+  'acne-sintomas-y-tratamiento',
+  'dermatitis-atopica-sintomas-y-cuidados',
+  'hongos-en-la-piel-sintomas-y-tratamiento',
+  // Hueso, menopausia y cálculos renales.
+  'osteoporosis-sintomas-y-tratamiento',
+  'menopausia-sintomas-y-cuidados',
+  'calcio-y-vitamina-d-osteoporosis',
+  'calculos-renales-sintomas-y-tratamiento',
+  'dieta-para-calculos-renales',
+];
+
 export const REVISION_CLINICA = Object.fromEntries([
   ...REVISADOS_POR_KARLA_2026_11_09.map((slug) => [slug, KARLA_2026_11_09]),
   ...REVISADOS_POR_KARLA_2026_11_12.map((slug) => [slug, KARLA_2026_11_12]),
   ...REVISADOS_POR_KARLA_2026_11_13.map((slug) => [slug, KARLA_2026_11_13]),
   ...REVISADOS_POR_KARLA_2026_11_13_LOTE2.map((slug) => [slug, KARLA_2026_11_13]),
   ...REVISADOS_POR_KARLA_2026_11_17.map((slug) => [slug, KARLA_2026_11_17]),
+  ...REVISADOS_POR_KARLA_2026_11_18.map((slug) => [slug, KARLA_2026_11_18]),
 ]);
 
 /**
@@ -373,4 +416,8 @@ export const REVISION_VADEMECUM = Object.fromEntries([
   'secnidazol', 'dicloxacilina', 'claritromicina', 'ceftriaxona', 'penicilina-benzatinica',
   'levofloxacino', 'doxiciclina', 'fosfomicina', 'amoxicilina', 'azitromicina',
   'valsartan', 'carvedilol', 'metoprolol', 'espironolactona', 'furosemida',
-].map((slug) => [slug, KARLA_2026_11_17])));
+].map((slug) => [slug, KARLA_2026_11_17])).concat([
+  // 18-nov-2026: grupo renal, finerenona y las monografías de diabetes.
+  'medicamentos-para-la-enfermedad-renal-cronica',
+  'finerenona', 'dapagliflozina', 'gliclazida',
+].map((slug) => [slug, KARLA_2026_11_18])));
