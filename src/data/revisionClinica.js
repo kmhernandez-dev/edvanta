@@ -348,6 +348,17 @@ const REVISADOS_POR_KARLA_2026_11_18 = [
   'calcio-y-vitamina-d-osteoporosis',
   'calculos-renales-sintomas-y-tratamiento',
   'dieta-para-calculos-renales',
+  // Lote «para qué sirve»: aprobado junto con la biblioteca de salud.
+  'semaglutida-para-que-sirve',
+  'tirzepatida-para-que-sirve',
+  'empagliflozina-para-que-sirve',
+  'dapagliflozina-para-que-sirve',
+  'rosuvastatina-para-que-sirve',
+  'apixaban-para-que-sirve',
+  'prednisona-para-que-sirve',
+  'salbutamol-para-que-sirve',
+  'fluconazol-para-que-sirve',
+  'levotiroxina-para-que-sirve',
 ];
 
 export const REVISION_CLINICA = Object.fromEntries([

@@ -23,8 +23,8 @@ export const revisadoPorKarla = (fecha) => ({
 });
 
 /**
- * 18 de noviembre de 2026: Karla revisó los 50 casos y escribió
- * «Ya están revisados! Indexa… todo está aprobado».
+ * 18 de noviembre de 2026: Karla revisó los 66 casos y escribió
+ * «Aprobado todo junto con los 200 artículos, despliega».
  */
 const REVISADOS_2026_11_18 = [
   'anafilaxia',
@@ -77,6 +77,23 @@ const REVISADOS_2026_11_18 = [
   'sindrome-de-intestino-irritable',
   'tuberculosis',
   'vaginosis-bacteriana',
+  // Lote cardiovascular, metabólico, respiratorio e infeccioso.
+  'sindrome-coronario-agudo',
+  'trombosis-venosa-profunda',
+  'embolia-pulmonar',
+  'diabetes-gestacional',
+  'sindrome-metabolico',
+  'sinusitis-aguda',
+  'bronquiolitis',
+  'sepsis',
+  'pancreatitis-aguda',
+  'calculos-renales',
+  'acv-isquemico',
+  'meningitis-bacteriana',
+  'hepatitis-c',
+  'dengue',
+  'cirrosis',
+  'apnea-del-sueno',
 ];
 
 /** slug → { revisor, revisorUrl, reviewedAt } */

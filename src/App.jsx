@@ -85,6 +85,8 @@ const ExamenesIndex = lazy(() => import('./pages/ExamenesIndex'));
 const ExamenDetalle = lazy(() => import('./pages/ExamenDetalle'));
 const MedicamentosIndex = lazy(() => import('./pages/MedicamentosIndex'));
 const MedicamentoFicha = lazy(() => import('./pages/MedicamentoFicha'));
+const BibliotecaSaludIndex = lazy(() => import('./pages/BibliotecaSaludIndex'));
+const BibliotecaSaludArticulo = lazy(() => import('./pages/BibliotecaSaludArticulo'));
 const HerramientaLandingPage = lazy(() => import('./pages/HerramientaLandingPage'));
 
 // Arquitectura de escuelas: una página por puerta de entrada.
@@ -321,6 +323,10 @@ export default function App() {
         {/* Fichas rápidas de medicamentos para pacientes */}
         <Route path="/medicamentos" element={<MedicamentosIndex />} />
         <Route path="/medicamentos/:slug" element={<MedicamentoFicha />} />
+
+        {/* Biblioteca de salud: 200 artículos «para qué sirve» */}
+        <Route path="/salud" element={<BibliotecaSaludIndex />} />
+        <Route path="/salud/:slug" element={<BibliotecaSaludArticulo />} />
 
         {/* Marca: Feliz Sin Tiroides (pacientes) */}
         <Route path="/feliz-sin-tiroides" element={<FelizSinTiroides />} />

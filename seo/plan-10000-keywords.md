@@ -101,9 +101,18 @@ Todos los artículos de salud entran en `noindex,follow` hasta que Karla anote s
 
 ### 18-nov-2026: aprobado e indexable
 
-Karla respondió por escrito: «He revisado y apruebo, indexa y enlaza». Se registraron los **28 artículos** de los clústeres nuevos y las **4 páginas del vademécum** (grupo renal, finerenona, dapagliflozina y gliclazida) en `revisionClinica.js`. El build quedó con **987 URLs** en los sitemaps: **525 artículos** y **452 páginas**. Ya salen `index,follow`, tienen revisor y fecha, y están enlazadas desde su comunidad, el hub `/comunidades`, los artículos relacionados y el vademécum.
+Karla respondió por escrito: «He revisado y apruebo, indexa y enlaza». Se registraron los **28 artículos** de los clústeres nuevos y las **4 páginas del vademécum** (grupo renal, finerenona, dapagliflozina y gliclazida) en `revisionClinica.js`.
+
+El mismo 18-nov-2026 aprobó el lote completo: **200 artículos de la biblioteca de salud**, **10 fichas «para qué sirve»**, **16 casos clínicos nuevos** y **3 exámenes clínicos**. El build quedó con **1.217 URLs** en los sitemaps: **535 artículos** y **672 páginas**. Todo sale `index,follow`, con revisor y fecha.
 
 Falta el paso de producción: desplegar, verificar las URLs con `curl`, enviar el sitemap a Search Console y avisar a Bing con `node scripts/indexnow.mjs --desde=2026-11-17`. No se envía IndexNow antes de desplegar para no avisar de URLs que aún no existen en `edvanta.co`.
+
+## Biblioteca de salud: 200 artículos «para qué sirve» (18-nov-2026)
+
+- **Hub `/salud`** indexable y **200 artículos**: 70 plantas medicinales, 20 vitaminas y minerales, 46 suplementos, 44 medicamentos y 20 productos de cuidado.
+- Cada artículo responde «para qué sirve», precauciones, evidencia disponible, cuándo consultar y fuentes para ampliar. Sin dosis ni promesas de cura.
+- **Estado:** los 200 artículos fueron aprobados por Karla el 18-nov-2026, salen `index,follow` y están en el sitemap (`REVISION_BIBLIOTECA` en `src/data/salud/biblioteca.js`).
+- **Keywords objetivo:** «[planta] para qué sirve», «[vitamina] para qué sirve», «[medicamento] para qué sirve», «[suplemento] para qué sirve» y «[producto] para qué sirve».
 
 ## Fichas rápidas de medicamentos (18-nov-2026)
 
@@ -120,7 +129,7 @@ El patrón que mejor rinde es la ficha «[medicamento] para qué sirve»: la de 
 - rosuvastatina, apixabán y prednisona;
 - salbutamol, fluconazol y levotiroxina.
 
-Cada ficha sigue el mismo molde: qué es, para qué sirve, cómo se usa, efectos adversos, interacciones, embarazo, cuándo consultar, preguntas frecuentes y fuentes. Enlazan al vademécum, al curso, a la guía, al examen y a la comunidad del tema. Están en `noindex,follow` hasta la revisión clínica.
+Cada ficha sigue el mismo molde: qué es, para qué sirve, cómo se usa, efectos adversos, interacciones, embarazo, cuándo consultar, preguntas frecuentes y fuentes. Enlazan al vademécum, al curso, a la guía, al examen y a la comunidad del tema. **Estado:** aprobadas por Karla el 18-nov-2026; salen `index,follow` y están en el sitemap.
 
 ## Capa de exámenes interactivos (18-nov-2026)
 
@@ -128,7 +137,7 @@ Cada ficha sigue el mismo molde: qué es, para qué sirve, cómo se usa, efectos
 - Cada examen tiene corrección en el navegador, puntaje, explicación por pregunta, clave de respuestas visible para estudiar y enlaces al curso, la guía, los artículos y el vademécum.
 - **110 preguntas** con fuente y `Quiz` en datos estructurados. Los artículos enlazan al examen de su tema y los exámenes enlazan de vuelta.
 - Keywords objetivo: «examen de farmacología», «preguntas de hipertensión con respuestas», «test de diabetes», «examen de antibióticos», «examen de insuficiencia cardíaca», «examen de asma y EPOC», «examen de calidad farmacéutica», «examen de asuntos regulatorios».
-- Estado: los seis primeros exámenes están aprobados e indexados. Calidad farmacéutica y asuntos regulatorios son no clínicos y se publican con revisión editorial. Insuficiencia cardíaca, asma/EPOC y farmacología cardiovascular siguen en `noindex,follow` hasta la revisión clínica. La hoja está en `seo/revision-clinica/examenes-18-nov-2026.md`.
+- Estado: los once exámenes están aprobados e indexados. Calidad farmacéutica y asuntos regulatorios son no clínicos y se publican con revisión editorial; el resto lleva revisión clínica de Karla. La hoja está en `seo/revision-clinica/examenes-18-nov-2026.md`.
 
 ## Riesgos y reglas que no se rompen
 

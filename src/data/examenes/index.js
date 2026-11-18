@@ -52,8 +52,8 @@ export const EXAMEN_POR_SLUG = new Map(EXAMENES.map((e) => [e.slug, e]));
  *   },
  */
 /**
- * 18 de noviembre de 2026: Karla revisó las 60 preguntas y escribió
- * «Ya están revisados! Indexa… todo está aprobado».
+ * 18 de noviembre de 2026: Karla revisó las preguntas, aprobó los once
+ * exámenes y pidió indexarlos junto con la biblioteca de salud.
  */
 export const REVISION_EXAMENES = {
   'examen-de-farmacologia-general': { revisor: 'Karla Hernández, Química Farmacéutica', reviewedAt: '2026-11-18' },
@@ -65,6 +65,10 @@ export const REVISION_EXAMENES = {
   // Examen no clínico: se publica con revisión editorial.
   'examen-de-calidad-farmaceutica': { revisor: 'Equipo editorial de Edvanta', reviewedAt: '2026-11-18' },
   'examen-de-asuntos-regulatorios': { revisor: 'Equipo editorial de Edvanta', reviewedAt: '2026-11-18' },
+  // Lote clínico aprobado junto con la biblioteca de salud.
+  'examen-de-insuficiencia-cardiaca': { revisor: 'Karla Hernández, Química Farmacéutica', reviewedAt: '2026-11-18' },
+  'examen-de-asma-y-epoc': { revisor: 'Karla Hernández, Química Farmacéutica', reviewedAt: '2026-11-18' },
+  'examen-de-farmacologia-cardiovascular': { revisor: 'Karla Hernández, Química Farmacéutica', reviewedAt: '2026-11-18' },
 };
 
 export const examenRevisado = (slug) => Boolean(REVISION_EXAMENES[slug]);

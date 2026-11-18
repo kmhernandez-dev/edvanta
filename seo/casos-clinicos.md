@@ -35,15 +35,15 @@
 - **Enlaces:** las 177 URL de las referencias respondían el 18-nov.
 - **Herramientas:** `src/data/casosClinicos/fuentes.js` es el banco de referencias. La prueba `src/__tests__/casos-clinicos.test.js` hace 470 comprobaciones sobre los 66 casos: 10 preguntas con los tres tipos, cada cita con su referencia, cada referencia citada, enlaces internos existentes y títulos y descripciones dentro de los límites.
 
-## Indexación: lote 1 aprobado, lote 2 pendiente
+## Indexación: los 66 casos aprobados
 
-Los primeros **50 casos** fueron aprobados por Karla el 18-nov-2026 y ya salen `index,follow`; el catálogo también se indexa. Los **16 casos nuevos** (síndrome coronario agudo, trombosis venosa profunda, embolia pulmonar, diabetes gestacional, síndrome metabólico, sinusitis aguda, bronquiolitis, sepsis, pancreatitis aguda, cálculos renales, ACV isquémico, meningitis bacteriana, hepatitis C, dengue, cirrosis y apnea del sueño) están en vivo, pero con `noindex,follow` hasta que Karla los lea.
+Karla aprobó los **66 casos** el 18-nov-2026 junto con la biblioteca de salud. Los 16 casos nuevos (síndrome coronario agudo, trombosis venosa profunda, embolia pulmonar, diabetes gestacional, síndrome metabólico, sinusitis aguda, bronquiolitis, sepsis, pancreatitis aguda, cálculos renales, ACV isquémico, meningitis bacteriana, hepatitis C, dengue, cirrosis y apnea del sueño) salen `index,follow` y están en el sitemap; el catálogo también se indexa.
 
-Para indexar el lote 2, en `src/data/casosClinicos/revision.js` se anota cada slug con `revisadoPorKarla('AAAA-MM-DD')`. Después:
+Cada slug queda registrado en `src/data/casosClinicos/revision.js` con `revisadoPorKarla('2026-11-18')`. Para un caso nuevo, se repite el mismo registro y se compila:
 
 1. `npm.cmd run build`.
 2. IndexNow con las URL aprobadas.
-3. Solicitudes en Search Console para los 10 casos nuevos.
+3. Solicitudes en Search Console para los casos nuevos.
 
 ## Búsquedas objetivo
 

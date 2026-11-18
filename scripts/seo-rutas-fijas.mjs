@@ -42,6 +42,7 @@ import { robotsDePaginaDelVademecum, robotsDelVademecum, tituloDeVademecum } fro
 import { COMUNIDADES, META_COMUNIDADES } from '../src/data/comunidadesSalud.js';
 import { EXAMENES, META_EXAMENES, robotsDeExamen } from '../src/data/examenes/index.js';
 import { FICHAS, META_FICHAS, robotsDeFicha } from '../src/data/medicamentos/fichas.js';
+import { BIBLIOTECA_SALUD, CATEGORIAS_SALUD, META_BIBLIOTECA, robotsDeArticuloSalud } from '../src/data/salud/biblioteca.js';
 
 const AREAS_POR_SLUG = new Map(AREAS_CAPACITACION.map((a) => [a.slug, a]));
 
@@ -127,6 +128,15 @@ const contenidoFicha = (f) => `<section><h2>Para qué sirve</h2><p>${f.nombre} p
 <p>Información educativa. No es consejo médico ni ficha técnica.</p>`;
 
 const contenidoFichas = () => `<section><h2>Fichas disponibles</h2><ul>${FICHAS.map((f) => `<li><a href="/medicamentos/${f.slug}">${f.nombre}</a>: ${f.para}</li>`).join('')}</ul></section>`;
+
+const contenidoBibliotecaArticulo = (a) => `<section><h2>Para qué sirve</h2><p>${a.para}</p></section>
+<section><h2>Precauciones</h2><p>${a.precauciones}</p></section>
+<section><h2>Qué dice la evidencia</h2><p>${a.evidencia}</p></section>
+<section><h2>Cuándo consultar</h2><p>Consulta si tienes una reacción intensa, un síntoma nuevo, fiebre, dificultad para respirar, sangrado o desmayo. No suspendas ni cambies un medicamento por tu cuenta.</p></section>
+<section><h2>Fuentes para ampliar</h2><p>Consulta CIMA, DailyMed, MedlinePlus, NCCIH y la Oficina de Suplementos Dietéticos de los NIH.</p></section>
+<p>Información educativa. No es consejo médico ni ficha técnica.</p>`;
+
+const contenidoBiblioteca = () => `<section><h2>Artículos disponibles</h2><ul>${BIBLIOTECA_SALUD.map((a) => `<li><a href="/salud/${a.slug}">${a.nombre}: para qué sirve</a> — ${a.para}</li>`).join('')}</ul></section>`;
 
 add('/escuelas', 'Escuelas de Edvanta | Formación farmacéutica y habilidades', 'Cinco escuelas: Salud y Farmacia Clínica, Calidad y Producción, Asuntos Regulatorios, Habilidades Blandas, y Marketing y Comunicación.', { tipo: 'CollectionPage', seccion: 'Escuelas', enlaces: ESCUELAS.map((e) => [e.nombre, `/escuelas/${e.slug}`]), contenido: contenidoEscuelas(ESCUELAS) });
 
@@ -395,6 +405,28 @@ for (const f of FICHAS) {
     h1: `${f.nombre}: para qué sirve y cuidados`,
     enlaces: [['Todas las fichas', '/medicamentos'], ['Vademécum', '/vademecum'], ['Artículos', '/articulos']],
     contenido: contenidoFicha(f),
+  });
+}
+
+// Biblioteca de salud: 200 artículos «para qué sirve». El hub es
+// indexable; cada artículo espera la revisión clínica.
+add('/salud', META_BIBLIOTECA.titulo, META_BIBLIOTECA.descripcion, {
+  tipo: 'CollectionPage',
+  seccion: 'Biblioteca de salud',
+  seccionUrl: '/salud',
+  h1: META_BIBLIOTECA.h1,
+  enlaces: [['Medicamentos', '/medicamentos'], ['Vademécum', '/vademecum'], ['Artículos', '/articulos']],
+  contenido: contenidoBiblioteca(),
+});
+for (const a of BIBLIOTECA_SALUD) {
+  add(`/salud/${a.slug}`, `${a.nombre}: para qué sirve y precauciones | Edvanta`, `${a.nombre}: ${a.para} Precauciones y evidencia disponible. Información educativa.`, {
+    tipo: 'WebPage',
+    seccion: 'Biblioteca de salud',
+    seccionUrl: '/salud',
+    robots: robotsDeArticuloSalud(a.slug),
+    h1: `${a.nombre}: para qué sirve`,
+    enlaces: [['Biblioteca de salud', '/salud'], ['Medicamentos', '/medicamentos'], ['Artículos', '/articulos']],
+    contenido: contenidoBibliotecaArticulo(a),
   });
 }
 

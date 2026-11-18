@@ -1,6 +1,6 @@
 # Revisión clínica · exámenes interactivos (18-nov-2026)
 
-**Estado:** los seis primeros exámenes (farmacología, hipertensión, diabetes, antibióticos, atención farmacéutica y farmacovigilancia) fueron aprobados por Karla y ya están indexados. Los exámenes de **insuficiencia cardíaca, asma/EPOC y farmacología cardiovascular** siguen en **`noindex,follow`** hasta su revisión. Los exámenes de **calidad farmacéutica** y **asuntos regulatorios** son no clínicos y se publican con revisión editorial. El hub `/examenes` es indexable.
+**Estado:** los once exámenes están aprobados e indexados. Karla aprobó el 18-nov-2026 también **insuficiencia cardíaca, asma/EPOC y farmacología cardiovascular**. Los exámenes de **calidad farmacéutica** y **asuntos regulatorios** son no clínicos y se publican con revisión editorial. El hub `/examenes` es indexable.
 
 ## Qué revisar
 

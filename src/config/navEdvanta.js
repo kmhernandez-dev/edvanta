@@ -51,6 +51,7 @@ export const RECURSOS_GROUPS = [
       { label: 'Guías y kits', desc: 'Guías, e-books y plantillas de Edvanta', to: '/guias', icon: BookOpen },
       { label: 'Exámenes interactivos', desc: 'Practica con preguntas y respuestas explicadas', to: '/examenes', icon: BookOpenCheck },
       { label: 'Fichas de medicamentos', desc: 'Para qué sirve cada medicamento, en lenguaje claro', to: '/medicamentos', icon: BookOpenCheck },
+      { label: 'Biblioteca de salud', desc: 'Plantas, vitaminas, suplementos y cuidados', to: '/salud', icon: BookOpenCheck },
       { label: 'Artículos', desc: 'Lecturas del sector farmacéutico', to: '/articulos', icon: Newspaper },
       { label: 'Biblioteca de referencias', desc: 'Normativa, lecturas y fuentes', to: '/recursos', icon: Library },
       { label: 'Rutas y competencias', desc: 'Qué aprender, en qué orden', to: '/rutas', icon: Route },
@@ -88,7 +89,7 @@ export const PUBLICOS_NAV = [
 const FST = /^\/(feliz-sin-tiroides|academia|recetas|nutrifst|recurso|enfermedades|levotiroxina|nutricion-tiroidea)(\/|$)/;
 
 export const contextoDe = (pathname) => {
-  if (/^\/(pacientes|contigo|mi-cuidado|comunidades|medicamentos)(\/|$)/.test(pathname) || FST.test(pathname)) return 'pacientes';
+  if (/^\/(pacientes|contigo|mi-cuidado|comunidades|medicamentos|salud)(\/|$)/.test(pathname) || FST.test(pathname)) return 'pacientes';
   if (/^\/(instituciones|empresas)(\/|$)/.test(pathname)) return 'instituciones';
   return 'profesionales';
 };
@@ -98,6 +99,7 @@ export const NAV_PACIENTES = [
   { label: 'Salud tiroidea', to: '/contigo/tiroides' },
   { label: 'Comunidades', to: '/comunidades' },
   { label: 'Medicamentos', to: '/medicamentos' },
+  { label: 'Biblioteca de salud', to: '/salud' },
   { label: 'Mi cuidado', to: '/mi-cuidado' },
   { label: 'Planes', to: '/contigo/planes' },
 ];
@@ -146,6 +148,7 @@ export const FOOTER_COLUMNS = [
       { label: 'Salud tiroidea', to: '/contigo/tiroides' },
       { label: 'Comunidades por enfermedad', to: '/comunidades' },
       { label: 'Fichas de medicamentos', to: '/medicamentos' },
+      { label: 'Biblioteca de salud', to: '/salud' },
       { label: 'Mi cuidado', to: '/mi-cuidado' },
       { label: 'Planes', to: '/contigo/planes' },
       { label: 'Feliz Sin Tiroides', to: '/feliz-sin-tiroides' },
