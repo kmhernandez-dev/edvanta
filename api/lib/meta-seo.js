@@ -17,6 +17,7 @@
  *     lo son; el certificado se anuncia como opcional cuando se paga.
  * ============================================================
  */
+import { palabraClaveDe } from './seo-cursos-propios.js';
 
 export const MAX_TITULO = 60;
 export const MAX_DESCRIPCION = 155;
@@ -91,6 +92,7 @@ export function descripcionConCierre(base, cierres = [], { max = MAX_DESCRIPCION
 
 /* ── Cursos ──────────────────────────────────────────────── */
 
+
 const esPropio = (ficha) => ficha?.dondeSeEstudia === 'edvanta';
 
 /** «Título: subtítulo» → «Título», si lo de antes tiene al menos tres palabras. */
@@ -123,9 +125,12 @@ export function tituloDeCurso(ficha, nombre) {
   const n = limpio(nombre || ficha?.titulo);
   const c = sinSubtitulo(n);
   if (esPropio(ficha)) {
+    // Primero la búsqueda principal del curso (seo-cursos-propios.js).
+    const clave = palabraClaveDe(ficha);
+    const deClave = clave ? [`${clave} online gratis | Edvanta`, `${clave} online gratis`, `${clave} gratis | Edvanta`, `${clave} gratis`] : [];
     const variantes = (x) => [`${x} gratis | Edvanta`, `${x} gratis`, `${x} | Edvanta`, x];
     const corto = NOMBRES_CORTOS_DE_PROPIOS[ficha?.url];
-    return tituloQueCabe([...variantes(n), ...(c ? variantes(c) : []), ...(corto ? variantes(corto) : [])]);
+    return tituloQueCabe([...deClave, ...variantes(n), ...(c ? variantes(c) : []), ...(corto ? variantes(corto) : [])]);
   }
   const prov = limpio(ficha?.proveedor?.nombre);
   const variantes = (x) => [prov && `${x} en ${prov} | Edvanta`, prov && `${x} en ${prov}`, `${x} | Edvanta`, x];
@@ -158,7 +163,19 @@ export function descripcionDeCurso(ficha, nombre) {
     const certificado = ficha.certificado?.estado === 'available'
       ? ` y con certificado verificable${precio > 0 ? ' opcional' : ''}`
       : '';
-    const base = resumenUtil(ficha.resumen)
+    // La descripción empieza por la búsqueda principal si el resumen no la nombra.
+    const clave = palabraClaveDe(ficha);
+    const resumen = resumenUtil(ficha.resumen);
+    const nombraLaClave = clave && resumen && resumen.toLowerCase().includes(clave.toLowerCase().replace(/^curso (de|para) /, ''));
+    // «Curso práctico para aprender…» → «Curso de oratoria online y gratis para aprender…».
+    const conClave = () => {
+      const cola = resumen.replace(/^curso\s+(?:\p{L}+\s+)?(?=(?:para|sobre|de|en|que)\s)/iu, '');
+      return cola !== resumen ? `${clave} online y gratis ${cola}` : `${clave} online y gratis. ${resumen}`;
+    };
+    if (clave && resumen && !nombraLaClave) {
+      return descripcionConCierre(conClave(), [`Certificado verificable opcional${ritmo}.`, 'Certificado verificable opcional.', 'Certificado opcional.'], { obligatorio: true });
+    }
+    const base = resumen
       || `${n}: ${[ficha.unidades && `${ficha.unidades} unidades`, ficha.clases && `${ficha.clases} clases`, ficha.nivel && `nivel ${ficha.nivel.toLowerCase()}`].filter(Boolean).join(', ') || 'formación farmacéutica en línea'}.`;
     return descripcionConCierre(base, [`Gratis${ritmo}${certificado}.`, `Curso gratis${ritmo}.`, 'Curso gratis.'], { obligatorio: true });
   }

@@ -12,6 +12,7 @@ import {
   descripcionConCierre, descripcionDeCurso, limpiarDescripcion, metaDeCarrera, metaDeCompetencia, metaDeRuta,
   recortarDescripcion, tituloConMarca, tituloDeCurso, tituloQueCabe,
 } from '../lib/meta-seo.js';
+import { PALABRA_CLAVE_DE_PROPIOS } from '../lib/seo-cursos-propios.js';
 
 const propio = (extra = {}) => ({
   dondeSeEstudia: 'edvanta',
@@ -105,10 +106,31 @@ describe('cursos', () => {
     expect(tituloDeCurso(propio(), corto)).toBe(corto);
   });
 
-  it('propio de nombre largo sin subtítulo: usa su nombre corto', () => {
+  it('propio de nombre largo: el título lleva su búsqueda principal', () => {
     const f = propio({ url: '/curso-de-gestion-de-desviaciones-y-capa' });
     expect(tituloDeCurso(f, 'Curso de Gestión de Desviaciones y Acciones Correctivas y Preventivas — CAPA'))
-      .toBe('Curso de Gestión de Desviaciones y CAPA gratis | Edvanta');
+      .toBe('Curso de desviaciones y CAPA online gratis | Edvanta');
+  });
+
+  it('propio sin palabra clave registrada: usa su nombre corto', () => {
+    const f = propio({ url: '/curso-de-prueba-sin-clave' });
+    expect(tituloDeCurso(f, 'Curso de Gestión de Calidad')).toBe('Curso de Gestión de Calidad gratis | Edvanta');
+  });
+
+  it('las 62 búsquedas principales son únicas y caben en el título', () => {
+    const claves = Object.values(PALABRA_CLAVE_DE_PROPIOS).map((c) => c.toLowerCase());
+    expect(claves).toHaveLength(62);
+    expect(new Set(claves).size).toBe(claves.length);
+    for (const url of Object.keys(PALABRA_CLAVE_DE_PROPIOS)) {
+      const t = tituloDeCurso(propio({ url }), 'Curso de un nombre cualquiera bastante largo para la prueba');
+      expect(t.length, url).toBeLessThanOrEqual(60);
+      expect(t.toLowerCase(), url).toContain(PALABRA_CLAVE_DE_PROPIOS[url].toLowerCase());
+    }
+  });
+
+  it('la descripción de un propio empieza por su búsqueda principal sin repetir «Curso»', () => {
+    const f = propio({ url: '/curso-de-oratoria', resumen: 'Curso práctico para aprender a hablar en público con claridad, estructura y seguridad.' });
+    expect(descripcionDeCurso(f, 'Curso de Oratoria')).toMatch(/^Curso de oratoria online y gratis para aprender a hablar en público/);
   });
 
   it('curado con guía: el título y la descripción escritos a mano mandan', () => {
