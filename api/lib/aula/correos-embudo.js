@@ -217,6 +217,29 @@ export const PLANTILLAS = {
     ].join(''),
   }),
 
+  // Faltan 48 horas o menos para que venza el descuento de ESTA inscripción
+  // (lib/precio-certificado.js). La fecha y los precios son los reales.
+  'certificado-por-vencer': ({ nombre, curso, cursoUrl, precio, precioLista, venceEl }) => ({
+    asunto: `${primerNombre(nombre)}, tu certificado de ${curso} con descuento vence pronto`,
+    pre: precio && precioLista && venceEl
+      ? `Hasta el ${fechaLarga(venceEl)} lo tienes por ${pesos(precio)}; después, ${pesos(precioLista)}.`
+      : 'Estudia con certificado, revisión de actividades y acompañamiento.',
+    encabezado: ['Estudia con certificado', esc(curso)],
+    cuerpo: [
+      saludo(primerNombre(nombre)),
+      parrafo(precio && precioLista && venceEl
+        ? `Al inscribirte en ${destacado(esc(curso))} tienes 7 días para tomar el certificado con descuento: ${destacado(pesos(precio))} en Colombia en lugar de ${pesos(precioLista)}. Ese plazo termina el ${destacado(fechaLarga(venceEl))}.`
+        : `Puedes estudiar ${destacado(esc(curso))} con certificado cuando quieras.`),
+      lista([
+        `${destacado('Certificado de aprobación de Edvanta')}, con código y QR que cualquier empleador verifica.`,
+        `${destacado('Revisión de tus actividades')} por un docente, con retroalimentación.`,
+        `${destacado('Acompañamiento por WhatsApp')} con Karla o un docente, en 48 horas hábiles.`,
+      ]),
+      boton('Estudiar con certificado', conUtm(cursoUrl, 'ciclo', 'certificado-por-vencer')),
+      enlace('¿Tienes dudas? Escríbenos por WhatsApp', wa(`Hola, soy ${primerNombre(nombre)}. Tengo una pregunta sobre el certificado de ${curso}.`), { centro: true }),
+    ].join(''),
+  }),
+
   'recordatorio-curso': ({ nombre, curso, cursoUrl }) => ({
     asunto: `${primerNombre(nombre)}, tu curso te espera`,
     pre: 'Retoma donde quedaste: una lección hoy es suficiente.',

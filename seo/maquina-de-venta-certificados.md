@@ -44,3 +44,19 @@ reinicia; y la página dice cuándo vence y cuánto se paga después.
   página. Precios en `src/data/preciosGuias.js`, generados por `node scripts/precios-guias-hotmart.mjs`
   (38/38 el 18-nov). **Volver a correrlo cuando cambie un precio en Hotmart.** El HTML prerenderizado muestra
   además preguntas frecuentes, autora, formato y guías relacionadas.
+
+## Embudo dentro del aula (18-nov, segunda parte)
+
+Estrategia: presencia constante pero sin cansar, mensajes en los momentos de logro y urgencia solo con la
+fecha real de cada persona.
+
+1. **Barra fija arriba de cada clase** (`src/aula/components/BarraCertificado.jsx`, en el `banner` del
+   reproductor): «Estás estudiando gratis. Certificado, revisión de actividades y acompañamiento por $60.000
+   ~~$199.000~~ −70 % hasta el <su fecha>» + «Estudiar con certificado», que abre la misma comparativa de la ficha.
+2. **Tarjeta en el momento de logro**: bajo la clase solo cuando la persona la completó («¡Clase completada!
+   Llevas el X % del curso…»), no en cada pantalla.
+3. **Actividad bloqueada**: al intentar enviar una actividad, la tarjeta explica que la revisión docente es del
+   camino con certificado.
+4. **Correo `certificado-por-vencer`**: una sola vez, cuando faltan 48 horas o menos para que venza el
+   descuento de esa inscripción, con sus precios y su fecha.
+5. Sin contadores falsos, sin ventanas que se abren solas, sin bloquear el contenido gratis.

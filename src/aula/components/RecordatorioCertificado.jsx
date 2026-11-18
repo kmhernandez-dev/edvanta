@@ -1,7 +1,11 @@
 /**
- * Recordatorio dentro de cada clase para quien estudia gratis un curso
- * con certificado de pago: qué gana con el certificado, cuánto cuesta
- * para su país y un botón directo a Mercado Pago.
+ * Recordatorio bajo la clase para quien estudia gratis un curso con
+ * certificado de pago: qué gana con el certificado, cuánto cuesta para
+ * su país y un botón directo a Mercado Pago.
+ *
+ * La barra de arriba (BarraCertificado) está siempre; esta tarjeta sale
+ * en el momento de logro: al completar una clase, con su avance. Así no
+ * cansa en cada pantalla. En una actividad bloqueada (`fijo`) sale siempre.
  *
  * No aparece si el certificado ya está pagado, emitido, en proceso de
  * pago o si el curso no lo cobra. Se puede cerrar: vuelve en la próxima
@@ -10,7 +14,7 @@
 import { useEffect, useState } from 'react';
 import { Award, Check, CreditCard, MessageCircle, X } from 'lucide-react';
 import { waLink } from '../../config/links';
-import { get, post } from '../api';
+import { estadoDelCertificado, pagarCertificado } from '../certificadoEstado';
 import { Button } from '../ui/Button';
 import { beneficiosVigentes } from '../../data/beneficiosCertificado';
 
@@ -22,7 +26,10 @@ function cerradoEnEstaSesion(courseId) {
   try { return window.sessionStorage.getItem(clave(courseId)) === '1'; } catch { return false; }
 }
 
-export default function RecordatorioCertificado({ courseId, volverA, fijo = false, titulo = 'Estás estudiando gratis. Pásate al certificado', curso = '' }) {
+export default function RecordatorioCertificado({
+  courseId, volverA, fijo = false, titulo = 'Estás estudiando gratis. Pásate al certificado', curso = '',
+  claseCompletada = false, avance = null,
+}) {
   const [pago, setPago] = useState(null);
   const [cerrado, setCerrado] = useState(() => !fijo && cerradoEnEstaSesion(courseId));
   const [pagando, setPagando] = useState(false);
@@ -30,11 +37,9 @@ export default function RecordatorioCertificado({ courseId, volverA, fijo = fals
 
   useEffect(() => {
     if (cerrado) return undefined;
-    const ctrl = new AbortController();
-    get(`/me/courses/${courseId}/certificate`, { signal: ctrl.signal })
-      .then((d) => setPago(d?.certificado ? null : d?.pago || null))
-      .catch(() => {});
-    return () => ctrl.abort();
+    let vivo = true;
+    estadoDelCertificado(courseId).then((d) => { if (vivo) setPago(d?.certificado ? null : d?.pago || null); });
+    return () => { vivo = false; };
   }, [courseId, cerrado]);
 
   // Quien ya pagó: su canal de acompañamiento, en cada clase.
@@ -53,6 +58,10 @@ export default function RecordatorioCertificado({ courseId, volverA, fijo = fals
   }
   if (cerrado || !pago?.requerido || pago.estado === 'pagado') return null;
   if (!fijo && pago.estado !== 'sin_pagar') return null;
+  // Fuera de una actividad bloqueada, solo en el momento de logro.
+  if (!fijo && !claseCompletada) return null;
+  const tituloVisible = fijo ? titulo
+    : `¡Clase completada!${avance ? ` Llevas el ${Math.round(avance)} % del curso.` : ''} Que tu esfuerzo quede certificado`;
 
   const cerrar = () => {
     try { window.sessionStorage.setItem(clave(courseId), '1'); } catch { /* sin almacenamiento */ }
@@ -62,9 +71,7 @@ export default function RecordatorioCertificado({ courseId, volverA, fijo = fals
     setPagando(true);
     setError(null);
     try {
-      const res = await post('/me/checkout', { items: [{ id: `certificado-${courseId}` }], volverA });
-      if (res.initPoint) window.location.href = res.initPoint;
-      else throw new Error('No se pudo abrir Mercado Pago. Intenta de nuevo.');
+      await pagarCertificado(courseId, volverA);
     } catch (err) {
       setError(err);
       setPagando(false);
@@ -87,7 +94,7 @@ export default function RecordatorioCertificado({ courseId, volverA, fijo = fals
       </button>
       )}
       <p className="flex items-center gap-2 pr-8 text-base font-extrabold text-[var(--aula-primary)]">
-        <Award className="h-5 w-5" aria-hidden="true" /> {titulo}
+        <Award className="h-5 w-5 flex-none" aria-hidden="true" /> {tituloVisible}
       </p>
       <ul className="grid gap-1.5 text-sm">
         {beneficiosVigentes().map((b) => (
@@ -102,7 +109,7 @@ export default function RecordatorioCertificado({ courseId, volverA, fijo = fals
         {pago.conDescuento && pago.lista && (
           <> <s className="text-[var(--aula-muted)]">{pesos(pago.lista)}</s> <b className="text-[#b42318]">−{pago.descuentoPct} %</b></>
         )}
-        <span className="text-[var(--aula-muted)]"> · pago único con Mercado Pago</span>
+        <span className="text-[var(--aula-muted)]"> · pago único con Mercado Pago{pago.conDescuento && pago.venceEl ? ` · descuento hasta el ${new Date(pago.venceEl).toLocaleDateString('es-CO', { day: 'numeric', month: 'long', timeZone: 'America/Bogota' })}` : ''}</span>
       </p>
       {error && <p role="alert" className="text-sm font-semibold text-[var(--aula-danger)]">{error.message}</p>}
       <div>

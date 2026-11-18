@@ -86,6 +86,7 @@ const Marca = ({ si }) => (si
 /** La comparativa: la persona elige su camino. */
 export function ComparativaCaminos({
   abierta, foco = 'certificado', oferta, nombre, onCertificado, onGratis, onCerrar, trabajando = null, error = '',
+  textoGratis = 'Elegir gratis',
 }) {
   const ref = useRef(null);
 
@@ -179,7 +180,7 @@ export function ComparativaCaminos({
             loadingLabel="Un momento…"
             disabled={Boolean(trabajando)}
           >
-            Elegir gratis
+            {textoGratis}
           </Btn>
         </div>
         <p className="curso-camino-seguro"><ShieldCheck className="h-3.5 w-3.5" aria-hidden="true" /> Pago seguro con Mercado Pago: tarjetas, PSE, Nequi y más</p>

@@ -10,6 +10,9 @@
  *   2. recordatorio-curso a quien lleva 5 días en el curso y no ha empezado.
  *   3. novedades          una vez al mes a quien aceptó recibir novedades
  *                         (y solo a esas personas).
+ *   4. certificado-por-vencer  a quien estudia gratis un curso con certificado
+ *                         de pago cuando faltan 48 horas o menos para que venza
+ *                         SU descuento (7 días desde la inscripción).
  *
  *  Cuidados:
  *   · Solo cuenta lo que pasó desde INICIO_DEL_EMBUDO: las matrículas y
@@ -32,9 +35,9 @@ const urlDelCurso = (siteUrl, f) => `${siteUrl}/aula/${f.slug || `curso/${f.cour
 const SLUG = `(SELECT ps.slug FROM public_slugs ps WHERE ps.entity = 'aula' AND ps.entity_id = c.id AND ps.is_current LIMIT 1)`;
 
 export async function correrEmbudoProgramado(db, mailer, { now = new Date(), siteUrl = 'https://edvanta.co', tope = 60 } = {}) {
-  if (!mailer) return { bienvenidas: 0, recordatorios: 0, novedades: 0 };
+  if (!mailer) return { bienvenidas: 0, recordatorios: 0, novedades: 0, porVencer: 0 };
   const sitio = String(siteUrl).replace(/\/+$/, '');
-  const hecho = { bienvenidas: 0, recordatorios: 0, novedades: 0 };
+  const hecho = { bienvenidas: 0, recordatorios: 0, novedades: 0, porVencer: 0 };
   const yaEnviado = (plantilla) => `NOT EXISTS (SELECT 1 FROM embudo_correos ec
       WHERE ec.correo = lower(u.email) AND ec.plantilla = '${plantilla}' AND ec.clave = c.id::text)`;
 
@@ -79,6 +82,32 @@ export async function correrEmbudoProgramado(db, mailer, { now = new Date(), sit
       datos: { nombre: f.first_name, curso: f.title, cursoUrl: urlDelCurso(sitio, f), siteUrl: sitio },
     });
     if (ok) hecho.recordatorios += 1;
+  }
+
+  // 4 · El descuento del certificado está por vencer (48 horas o menos).
+  const { rows: porVencer } = await db.query(
+    `SELECT u.email, u.first_name, c.id AS course_id, c.title, c.certificate_price, e.assigned_at, ${SLUG} AS slug
+       FROM aula_enrollments e
+       JOIN aula_users u ON u.id = e.user_id AND u.deleted_at IS NULL AND u.status = 'active'
+       JOIN aula_courses c ON c.id = e.course_id AND c.kind = 'edvanta' AND c.certificate_price > 0
+      WHERE e.withdrawn_at IS NULL AND e.assignment_id IS NULL
+        AND e.assigned_at >= $1 AND e.assigned_at >= $2
+        AND NOT EXISTS (SELECT 1 FROM aula_certificate_payments p
+                         WHERE p.user_id = e.user_id AND p.course_id = c.id AND p.status IN ('aprobado', 'pendiente'))
+        AND NOT EXISTS (SELECT 1 FROM aula_certificates x WHERE x.enrollment_id = e.id AND x.status = 'emitido')
+        AND ${yaEnviado('certificado-por-vencer')}
+      ORDER BY e.assigned_at LIMIT $3`,
+    [INICIO_DEL_EMBUDO, new Date(now - 30 * DIA), tope],
+  );
+  for (const f of porVencer) {
+    const oferta = precioDelCertificado(f, { pais: 'CO', inscritoEl: f.assigned_at, ahora: now });
+    const quedan = oferta.venceEl ? new Date(oferta.venceEl) - now : -1;
+    if (!oferta.conDescuento || quedan <= 0 || quedan > 2 * DIA) continue;
+    const ok = await enviarCorreoEmbudo(db, mailer, {
+      correo: f.email, plantilla: 'certificado-por-vencer', clave: String(f.course_id),
+      datos: { nombre: f.first_name, curso: f.title, cursoUrl: urlDelCurso(sitio, f), precio: oferta.precio, precioLista: oferta.lista, venceEl: oferta.venceEl, siteUrl: sitio },
+    });
+    if (ok) hecho.porVencer += 1;
   }
 
   // 3 · Novedades del mes, solo con autorización, a partir de 7 días del registro.

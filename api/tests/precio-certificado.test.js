@@ -137,6 +137,26 @@ describe('precio por país en la API y en el checkout', () => {
     expect(preferencias.at(-1).items[0].unit_price).toBe(199000);
   });
 
+  it('el correo de vencimiento sale una vez, con 48 horas o menos de plazo y con los precios reales', async () => {
+    const { correrEmbudoProgramado } = await import('../lib/aula/embudo-programado.js');
+    const u = await seedUser(t.db, { email: 'vence@correo.co', firstName: 'Paula' });
+    const c = t.client();
+    await c.login(u.email, u.password);
+    await c.post(`/me/catalog/${cursoId}/enroll`, {});
+    const enviados = [];
+    const mailer = { send: async (m) => { enviados.push(m); return true; } };
+    const dia = 24 * 60 * 60 * 1000;
+    // A los 3 días todavía no.
+    expect((await correrEmbudoProgramado(t.db, mailer, { now: new Date(Date.now() + 3 * dia) })).porVencer).toBe(0);
+    // A los 6 días (queda 1): sí, una sola vez.
+    const seis = new Date(Date.now() + 6 * dia);
+    expect((await correrEmbudoProgramado(t.db, mailer, { now: seis })).porVencer).toBe(1);
+    const correo = enviados.find((m) => /vence pronto/.test(m.subject));
+    expect(correo.html).toContain('COP 60.000');
+    expect(correo.html).toContain('COP 199.000');
+    expect((await correrEmbudoProgramado(t.db, mailer, { now: seis })).porVencer).toBe(0);
+  });
+
   it('la revisión de actividades es del camino con certificado: gratis no, pagado sí', async () => {
     const u = await seedUser(t.db, { email: 'sofia@correo.co' });
     const c = t.client();

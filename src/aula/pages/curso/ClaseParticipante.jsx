@@ -12,6 +12,7 @@ import { useActiveTime, useVideoTracker } from '../../player/tracking';
 import { buscarClase } from '../../rutas';
 import { useCourseData } from './CursoParticipante';
 import RecordatorioCertificado from '../../components/RecordatorioCertificado';
+import BarraCertificado from '../../components/BarraCertificado';
 
 const clock = (seconds) => {
   const s = Math.max(0, Math.ceil(seconds));
@@ -228,6 +229,7 @@ export default function ClaseParticipante() {
             )}
           </>
         )}
+        banner={<BarraCertificado courseId={courseId} curso={data.snapshot.course.title} volverA={rutas.certificado} />}
         footerActions={(
           <>
             <Button
@@ -256,7 +258,13 @@ export default function ClaseParticipante() {
               courseCompleted={data.enrollment.status === 'completado'}
             />
             {/* Quien estudia gratis ve, en cada clase, cómo pasarse al certificado. */}
-            <RecordatorioCertificado courseId={courseId} volverA={rutas.certificado} curso={data.snapshot.course.title} />
+            <RecordatorioCertificado
+              courseId={courseId}
+              volverA={rutas.certificado}
+              curso={data.snapshot.course.title}
+              claseCompletada={(data.lessonStates[current.id] || {}).status === 'completado'}
+              avance={data.enrollment.progressPct}
+            />
           </>
         )}
       />
