@@ -54,3 +54,11 @@ documento separa lo que ya está hecho de lo que depende de terceros.
 4. Enlaces internos desde las 367 clases abiertas, el vademécum y los casos clínicos hacia la ficha y la
    inscripción.
 5. Medición semanal: clics a `/curso-de-*` en Search Console, inscripciones y certificados pagados.
+
+## Medición del 18-nov (Search Console, 28 días)
+
+- Páginas de curso (`/curso-*`): **6 clics, 104 impresiones**, posición media 16,8, en 44 páginas.
+- Todo el sitio: 581 páginas indexadas y 570 sin indexar (eran 235 y 662 el 5-nov).
+- `sitemap-cursos.xml`: leído el 18-nov, 605 direcciones, correcto.
+- `/curso-de-oratoria`: Google aún no la conoce (ya tenía indexación solicitada). `/curso-de-liderazgo-y-trabajo-en-equipo`: indexada.
+- IndexNow: 65 direcciones (62 cursos, /cursos, /escuelas y /escuelas/habilidades-blandas), HTTP 200.
