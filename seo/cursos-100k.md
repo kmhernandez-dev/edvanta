@@ -88,3 +88,21 @@ Datos en `seo/semrush/cursos-2026-11-18.md`. Cuenta gratuita: 10 filas por consu
      (Excel, atención al paciente, primeros auxilios). Esta decisión de catálogo le toca a Karla.
   3. **Autoridad:** los enlaces externos. Las búsquedas de KD 50 o más («curso de oratoria» en México,
      «cursos gratis con certificado») no se ganan con 3 enlaces.
+
+## Search Console, 18-nov (tarde)
+
+- **Sitemaps reenviados:** `sitemap.xml` (índice, 1.356 páginas, leído el 18-nov) y `sitemap-cursos.xml` (606 direcciones con el curso de manipulación de alimentos). Ambos «Correcto».
+- **Indexación solicitada:** `/curso-de-manipulacion-de-alimentos`. Estaba indexada con el contenido del curado de Edutin; la solicitud es para que Google lea el curso propio.
+- **Cuota diaria agotada** en la segunda solicitud (otras sesiones la usaron el mismo día).
+- **Pendientes para pedir a partir del 19-nov** (unas 10 al día, en este orden):
+  1. `/curso-de-servicio-al-cliente`: indexada; título nuevo.
+  2. `/curso-de-oratoria`: Google aún no la conocía; ya tenía una solicitud previa.
+  3. `/curso-de-inteligencia-emocional`
+  4. `/curso-de-liderazgo-y-trabajo-en-equipo`: indexada; título nuevo.
+  5. `/curso-de-comunicacion-asertiva`
+  6. `/curso-de-negociacion-y-persuasion`
+  7. `/curso-de-registro-sanitario-de-medicamentos-ante-el-invima`: la que más clics trae.
+  8. `/curso-de-buenas-practicas-de-manufactura-bpm`
+  9. `/curso-de-manipulacion-de-alimentos-en-edutin`: dirección nueva del curado.
+  10. `/examenes/examen-avanzado-de-farmacologia-cardiovascular` (y luego los otros 11 avanzados).
+- La inspección mostró «Un archivo bloquea el robot de Google» en el renderizado: es `/api/` (Disallow en robots.txt), que la aplicación pide al cargar. No afecta la indexación, porque el HTML del servidor ya trae el contenido completo.
