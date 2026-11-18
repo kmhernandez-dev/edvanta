@@ -11,6 +11,7 @@ import {
   pedagogyOverview, saveActivityDraft, saveAttempt, startAttempt, submitActivity, submitAttempt,
   createForumPost, replyForumPost,
 } from '../../lib/aula/pedagogia.js';
+import { exigirRevisionIncluida, revisionIncluida } from '../../lib/aula/checkout.js';
 
 const courseIdOf = (req) => idField(req.params.courseId, 'courseId', 'El curso');
 const idOf = (req, name) => idField(req.params[name], name, 'El identificador');
@@ -71,12 +72,15 @@ export function pedagogiaRouter() {
 
   // ── Actividades ──────────────────────────────────────────────────────
   router.get('/courses/:courseId/activities/:activityId', route(async (req, res) => {
-    res.json(await activityForStudent(
+    const actividad = await activityForStudent(
       req.aula.db, req.aula.user, courseIdOf(req), idOf(req, 'activityId'), { now: req.aula.now },
-    ));
+    );
+    // Si no está incluida, la página muestra cómo pasarse al certificado.
+    res.json({ ...actividad, revisionIncluida: await revisionIncluida(req.aula.db, req.aula.user.id, courseIdOf(req)) });
   }));
 
   router.put('/courses/:courseId/activities/:activityId/draft', route(async (req, res) => {
+    await exigirRevisionIncluida(req.aula.db, req.aula.user.id, courseIdOf(req));
     res.json(await saveActivityDraft(
       req.aula.db, req.aula.user, courseIdOf(req), idOf(req, 'activityId'), req.body,
       { now: req.aula.now },
@@ -84,6 +88,7 @@ export function pedagogiaRouter() {
   }));
 
   router.post('/courses/:courseId/activities/:activityId/submissions', route(async (req, res) => {
+    await exigirRevisionIncluida(req.aula.db, req.aula.user.id, courseIdOf(req));
     res.status(201).json(await submitActivity(
       req.aula.db, req.aula.user, courseIdOf(req), idOf(req, 'activityId'), req.body,
       { now: req.aula.now },

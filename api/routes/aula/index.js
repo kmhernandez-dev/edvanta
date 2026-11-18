@@ -23,6 +23,7 @@ import { opinionesRouter } from './opiniones.js';
 import { adminModeracionRouter } from './admin-moderacion.js';
 import { adminSolicitudesRouter, solicitudesRouter } from './solicitudes.js';
 import { attachSession, requireAdmin, requireDocente, requireUser } from './middleware.js';
+import { precioPublicoRouter } from './precio-publico.js';
 
 export function createAulaRouter({
   db,
@@ -55,6 +56,8 @@ export function createAulaRouter({
   router.use('/docente', requireUser, requireDocente, docenteRouter(deps));
   // Leer opiniones y preguntas es público; escribir se comprueba dentro.
   router.use('/opiniones', opinionesRouter(deps));
+  // Precio del certificado para quien mira (país y plazo de la oferta).
+  router.use('/precio-certificado', precioPublicoRouter(deps));
   // Interés, propuestas y contacto: se envían sin cuenta.
   router.use('/solicitudes', solicitudesRouter(deps));
 

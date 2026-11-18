@@ -84,7 +84,16 @@ function PagoDelCertificado({ pago, courseId }) {
   return (
     <div className="flex flex-col gap-3 rounded-[var(--aula-radius-lg)] border border-[var(--aula-border)] bg-white p-5">
       <p className="text-sm font-bold">Precio del certificado</p>
-      <p className="text-2xl font-extrabold text-[var(--aula-primary)]">{pesos(pago.precio)} <span className="text-sm font-semibold text-[var(--aula-muted)]">COP · pago único</span></p>
+      <p className="text-2xl font-extrabold text-[var(--aula-primary)]">{pesos(pago.precio)} <span className="text-sm font-semibold text-[var(--aula-muted)]">COP · pago único</span>
+        {pago.conDescuento && pago.lista && (
+          <span className="ml-2 text-base"><s className="font-semibold text-[var(--aula-muted)]">{pesos(pago.lista)}</s> <b className="text-[#b42318]">−{pago.descuentoPct} %</b></span>
+        )}
+      </p>
+      {pago.conDescuento && pago.venceEl && (
+        <p className="text-xs text-[var(--aula-muted)]">
+          Precio con descuento hasta el {new Date(pago.venceEl).toLocaleDateString('es-CO', { day: 'numeric', month: 'long', timeZone: 'America/Bogota' })}. Después rige el precio de lista.
+        </p>
+      )}
       <p className="text-sm leading-6 text-[var(--aula-muted)]">
         El curso es gratis; el certificado tiene costo. Puedes pagarlo ahora o cuando termines. Al completar el curso lo emites aquí mismo.
       </p>

@@ -257,6 +257,66 @@
   padding: 20px;
 }
 
+/* ── Dos caminos: con certificado (destacado) o gratis ─────── */
+
+.curso-caminos { display: flex; flex-direction: column; gap: 12px; }
+
+.curso-camino--certificado {
+  border: 2px solid var(--cf-primary);
+  border-radius: 14px;
+  background: linear-gradient(180deg, #f3f7ff 0%, #fff 70%);
+  padding: 16px;
+}
+
+.curso-camino-insignia {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin: 0;
+  border-radius: 999px;
+  background: var(--cf-primary);
+  padding: 3px 10px;
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.curso-camino-titulo { margin: 10px 0 0; color: var(--cf-primary); font-size: 1.15rem; font-weight: 800; }
+.curso-camino-precio { margin-top: 6px; }
+.curso-camino-monto { margin: 0; color: var(--cf-primary); font-size: 1.6rem; font-weight: 800; line-height: 1.2; }
+.curso-camino-precio--compacto .curso-camino-monto { font-size: 1.25rem; }
+.curso-camino-monto span { color: var(--cf-muted); font-size: 0.85rem; font-weight: 700; }
+.curso-camino-monto s { color: var(--cf-muted); font-size: 0.95rem; font-weight: 600; }
+
+.curso-camino-descuento {
+  display: inline-block;
+  border-radius: 6px;
+  background: #fde8e7;
+  padding: 1px 6px;
+  color: #b42318;
+  font-size: 0.85rem;
+  font-weight: 800;
+  vertical-align: middle;
+}
+
+.curso-camino-condicion { margin: 4px 0 0; color: var(--cf-muted); font-size: 0.75rem; line-height: 1.45; }
+.curso-camino-lista { display: grid; gap: 7px; margin: 12px 0 14px; padding: 0; list-style: none; }
+.curso-camino-lista li { display: flex; gap: 7px; color: var(--cf-body); font-size: 0.82rem; line-height: 1.45; }
+.curso-camino-lista svg { flex: none; margin-top: 2px; color: var(--cf-teal-strong); }
+.curso-camino-lista b { color: var(--cf-primary); }
+
+.curso-camino-seguro {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  margin: 9px 0 0;
+  color: var(--cf-muted);
+  font-size: 0.72rem;
+}
+
 .curso-ficha .curso-cta {
   width: 100%;
   min-height: 52px;

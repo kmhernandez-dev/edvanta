@@ -22,6 +22,7 @@
  * ============================================================
  */
 import { enviarCorreoEmbudo } from './correos-embudo.js';
+import { precioDelCertificado } from '../precio-certificado.js';
 
 export const INICIO_DEL_EMBUDO = '2026-11-11T00:00:00Z';
 const HORA = 60 * 60 * 1000;
@@ -39,7 +40,7 @@ export async function correrEmbudoProgramado(db, mailer, { now = new Date(), sit
 
   // 1 · Bienvenida al curso, al día siguiente de inscribirse.
   const { rows: nuevos } = await db.query(
-    `SELECT u.email, u.first_name, c.id AS course_id, c.title, c.certificate_price, ${SLUG} AS slug
+    `SELECT u.email, u.first_name, c.id AS course_id, c.title, c.certificate_price, e.assigned_at, ${SLUG} AS slug
        FROM aula_enrollments e
        JOIN aula_users u ON u.id = e.user_id AND u.deleted_at IS NULL AND u.status = 'active'
        JOIN aula_courses c ON c.id = e.course_id AND c.kind = 'edvanta'
@@ -50,9 +51,11 @@ export async function correrEmbudoProgramado(db, mailer, { now = new Date(), sit
     [INICIO_DEL_EMBUDO, new Date(now - 20 * HORA), tope],
   );
   for (const f of nuevos) {
+    // El precio de Colombia y hasta cuándo rige para esta inscripción.
+    const oferta = precioDelCertificado(f, { pais: 'CO', inscritoEl: f.assigned_at, ahora: now });
     const ok = await enviarCorreoEmbudo(db, mailer, {
       correo: f.email, plantilla: 'bienvenida-curso', clave: String(f.course_id),
-      datos: { nombre: f.first_name, curso: f.title, cursoUrl: urlDelCurso(sitio, f), precio: Number(f.certificate_price) || 0, siteUrl: sitio },
+      datos: { nombre: f.first_name, curso: f.title, cursoUrl: urlDelCurso(sitio, f), precio: oferta.precio, precioLista: oferta.lista, venceEl: oferta.venceEl, siteUrl: sitio },
     });
     if (ok) hecho.bienvenidas += 1;
   }

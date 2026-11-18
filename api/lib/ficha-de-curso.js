@@ -21,6 +21,7 @@
 
 import { EMISOR, horasDe } from './aula/certificados.js';
 import { guiaDeCursoCurado } from './guias-de-cursos-curados.js';
+import { precioDelCertificado } from './precio-certificado.js';
 
 /** Dónde se estudia de verdad el curso. */
 export const EN_EDVANTA = 'edvanta';
@@ -76,7 +77,9 @@ function certificado({ propio, curso }) {
   if (propio) {
     // El aula lo emite al completar el curso (lib/aula/certificados.js):
     // con código, QR y verificación pública en /certificados/<código>.
-    const precio = Number(curso.certificate_price) || 0;
+    // El precio para Colombia (donde se cobra); la ficha pide luego el del
+    // país de quien mira a /api/aula/precio-certificado.
+    const precio = precioDelCertificado(curso, { pais: 'CO' }).precio;
     return {
       estado: 'available',
       emisor: `${EMISOR.nombre} (NIT ${EMISOR.nit})`,

@@ -66,7 +66,9 @@ const PORTADA_DE_GUIA = {
 };
 const portadaGuia = (siteUrl, slug, url) => (PORTADA_DE_GUIA[slug] ? portada(`${siteUrl}/img/guias/correo/${PORTADA_DE_GUIA[slug]}.jpg`, url) : '');
 
-const CERT_TEXTO = (precio) => (precio ? `el certificado verificable cuesta ${pesos(precio)}, en un solo pago` : 'el certificado verificable lo pides desde el aula');
+// Precio con descuento en Colombia, dentro de los 7 días desde la inscripción (lib/precio-certificado.js).
+const CERT_TEXTO = (precio) => (precio ? `el certificado verificable cuesta ${pesos(precio)} en Colombia si lo tomas en tus primeros 7 días, en un solo pago` : 'el certificado verificable lo pides desde el aula');
+const fechaLarga = (iso) => new Date(iso).toLocaleDateString('es-CO', { day: 'numeric', month: 'long', timeZone: 'America/Bogota' });
 const pdOferta = (siteUrl, contenido) => (promoActiva()
   ? posdata(`Este mes, todas las guías tienen ${PROMOCION.porcentaje}&nbsp;% de descuento con el cupón ${destacado(PROMOCION.codigo)}, hasta el ${PROMOCION.fechaTexto}. <a href="${esc(conUtm(`${siteUrl}/ofertas`, 'ciclo', contenido))}" style="color:#0B1F4D;">Ver la colección</a>.`)
   : '');
@@ -190,7 +192,7 @@ export const PLANTILLAS = {
     ].join(''),
   }),
 
-  'bienvenida-curso': ({ nombre, curso, cursoUrl, precio }) => ({
+  'bienvenida-curso': ({ nombre, curso, cursoUrl, precio, precioLista, venceEl }) => ({
     asunto: `Te damos la bienvenida a ${curso}`,
     pre: 'Cómo sacarle el máximo al curso y tus dos caminos: acompañamiento o certificado.',
     encabezado: ['Bienvenida al curso', esc(curso)],
@@ -206,7 +208,11 @@ export const PLANTILLAS = {
       divisor(),
       dosCaminos(
         { etiqueta: 'Acompañamiento', titulo: '¿Tienes una pregunta?', texto: 'Escríbenos y te respondemos por WhatsApp.', accion: 'Escribir', url: wa(`Hola, soy ${primerNombre(nombre)} y estoy en el curso ${curso}. Tengo una pregunta.`) },
-        { etiqueta: 'Certificación', titulo: 'Estudia con certificado', texto: precio ? `Certificado verificable por ${pesos(precio)}, en un solo pago.` : 'Pide tu certificado verificable desde el aula.', accion: 'Quiero el certificado', url: conUtm(cursoUrl, 'ciclo', 'bienvenida-curso-certificado'), principal: true },
+        { etiqueta: 'Certificación', titulo: 'Estudia con certificado', texto: precio
+          ? (precioLista && venceEl
+            ? `Certificado verificable por ${pesos(precio)} en Colombia (precio de lista ${pesos(precioLista)}), en un solo pago, hasta el ${fechaLarga(venceEl)}.`
+            : `Certificado verificable por ${pesos(precio)}, en un solo pago.`)
+          : 'Pide tu certificado verificable desde el aula.', accion: 'Quiero el certificado', url: conUtm(cursoUrl, 'ciclo', 'bienvenida-curso-certificado'), principal: true },
       ),
     ].join(''),
   }),

@@ -172,29 +172,20 @@ for (const p of PRODUCTOS.filter((x) => x.tipo === 'curso_en_vivo' && x.to?.star
 
 /* ── Páginas de venta de guías y registro para LinkedIn ──── */
 
-const { GUIAS_VENTA, MARCAS } = await importar('src/data/guiasVenta.js');
+const { GUIAS_VENTA, MARCAS, datosDeGuia, guiasRelacionadas } = await importar('src/data/guiasVenta.js');
+// El precio del JSON-LD también se ve en la página.
+const precioVisible = (o) => (o ? `<p>Precio en Hotmart para Colombia: $${Number(o.price).toLocaleString('es-CO')} ${o.priceCurrency}.</p>` : '');
 for (const g of GUIAS_VENTA) {
   const canonical = `${SITIO}/guia/${g.slug}`;
   const marca = MARCAS[g.marca];
-  const curso = g.formato.startsWith('Curso');
   escribir(`guia/${g.slug}.html`, pagina({
     titulo: `${g.titulo} | ${marca.nombre}`,
     descripcion: g.bajada.slice(0, 158),
     canonical,
     imagen: g.portada ? `${SITIO}${g.portada}` : `${SITIO}/img/og-edvanta.png`,
     jsonLd: [
-      {
-        '@context': 'https://schema.org',
-        '@type': curso ? 'Course' : 'Book',
-        name: g.titulo,
-        description: g.bajada,
-        inLanguage: 'es',
-        url: canonical,
-        ...(g.portada ? { image: `${SITIO}${g.portada}` } : {}),
-        author: { '@type': 'Person', name: 'Karla Melissa Hernández Salcedo' },
-        publisher: { '@type': 'Organization', name: 'Edvanta', url: SITIO },
-        ...(curso ? { provider: { '@type': 'Organization', name: marca.nombre } } : { bookFormat: 'https://schema.org/EBook' }),
-      },
+      // Con el precio verificado de Hotmart (preciosGuias.js), igual que la página.
+      datosDeGuia(g, { canonical, sitio: SITIO }),
       {
         '@context': 'https://schema.org',
         '@type': 'FAQPage',
@@ -202,7 +193,7 @@ for (const g of GUIAS_VENTA) {
       },
       migas([['Inicio', `${SITIO}/`], [marca.nombre, `${SITIO}${marca.inicio}`], [g.titulo, canonical]]),
     ],
-    cuerpo: `<main><h1>${esc(g.h1)}</h1><p>${esc(g.bajada)}</p><h2>¿Te pasa esto?</h2><ul>${g.dolores.map((d) => `<li>${esc(d)}</li>`).join('')}</ul><h2>Al terminar podrás</h2><ul>${g.logros.map((l) => `<li>${esc(l)}</li>`).join('')}</ul>${g.incluye ? `<h2>Qué incluye</h2>${g.incluye.map(([b, it]) => `<h3>${esc(b)}</h3><ul>${it.map((x) => `<li>${esc(x)}</li>`).join('')}</ul>`).join('')}` : ''}<h2>Para quién es</h2><ul>${g.paraQuien.map((p) => `<li>${esc(p)}</li>`).join('')}</ul><p><a href="${esc(g.venta || g.pago)}">Ver en Hotmart</a></p></main>`,
+    cuerpo: `<main><h1>${esc(g.h1)}</h1><p>${esc(g.bajada)}</p><h2>¿Te pasa esto?</h2><ul>${g.dolores.map((d) => `<li>${esc(d)}</li>`).join('')}</ul><h2>Al terminar podrás</h2><ul>${g.logros.map((l) => `<li>${esc(l)}</li>`).join('')}</ul>${g.incluye ? `<h2>Qué incluye</h2>${g.incluye.map(([b, it]) => `<h3>${esc(b)}</h3><ul>${it.map((x) => `<li>${esc(x)}</li>`).join('')}</ul>`).join('')}` : ''}<h2>Para quién es</h2><ul>${g.paraQuien.map((p) => `<li>${esc(p)}</li>`).join('')}</ul><p>Formato: ${esc(g.formato)}.</p>${precioVisible(datosDeGuia(g, { canonical, sitio: SITIO }).offers)}<p><a href="${esc(g.venta || g.pago)}">Ver en Hotmart</a></p>${marca.autora ? `<h2>Quién la escribió</h2><p>${esc(marca.autora)}</p>` : ''}${(g.preguntas || []).length ? `<h2>Preguntas frecuentes</h2>${g.preguntas.map(([q, a]) => `<h3>${esc(q)}</h3><p>${esc(a)}</p>`).join('')}` : ''}${guiasRelacionadas(g, 4).length ? `<h2>Otras guías</h2><ul>${guiasRelacionadas(g, 4).map((r) => `<li><a href="/guia/${r.slug}">${esc(r.titulo)}</a></li>`).join('')}</ul>` : ''}<p><a href="/guias">Ver todas las guías</a></p></main>`,
   }));
   enSitemap.push({ ruta: `/guia/${g.slug}`, prioridad: '0.8' });
 }

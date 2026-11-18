@@ -13,6 +13,7 @@ import { RichText } from '../../ui/RichText';
 import { Alert, ErrorState, LoadingBlock } from '../../ui/States';
 import { useToast } from '../../ui/Toast';
 import { useCourseData } from './CursoParticipante';
+import RecordatorioCertificado from '../../components/RecordatorioCertificado';
 import { CursoPage } from './CursoPage';
 
 const STATUS = {
@@ -209,7 +210,14 @@ export default function ActividadCurso() {
             </section>
           )}
 
-          {editable ? (
+          {editable && detail.data?.revisionIncluida === false ? (
+            <RecordatorioCertificado
+              courseId={courseId}
+              volverA={rutas.certificado}
+              fijo
+              titulo="Para enviar esta actividad, estudia con certificado"
+            />
+          ) : editable ? (
             <section className="rounded-[var(--aula-radius-lg)] border border-[var(--aula-border)] bg-white p-5">
               <h2 className="text-lg font-bold">{submission ? 'Corregir y volver a enviar' : 'Tu entrega'}</h2>
               <p className="mt-1 text-sm text-[var(--aula-muted)]">Puedes guardar un borrador y volver después. El envío queda registrado en el servidor.</p>

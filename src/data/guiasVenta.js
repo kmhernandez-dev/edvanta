@@ -10,7 +10,8 @@
  *   · Lo que dice cada guía sale de su propio PDF (índice, «para quién
  *     es», «al terminar podrás») o de su ficha en fst.js / atenfarma.js.
  *     Nada de páginas, cifras, testimonios ni precios inventados.
- *   · El precio lo muestra Hotmart al pagar: aquí no se escribe.
+ *   · El precio sale de Hotmart (preciosGuias.js, con fecha de verificación):
+ *     se declara en el JSON-LD de cada guía. No se escribe a mano.
  *   · En salud, todo es educativo y no reemplaza al equipo tratante.
  *
  *  Enlaces de Hotmart: los entregó la dueña el 11-nov-2026. `pago` es
@@ -20,6 +21,7 @@
 
 import { ebooks as EBOOKS_FST } from './fst.js';
 import { productosAtenFarma } from './atenfarma.js';
+import { PRECIOS_GUIAS } from './preciosGuias.js';
 
 export const MARCAS = {
   edvanta: {
@@ -591,6 +593,39 @@ const POR_PRODUCTO = Object.fromEntries(GUIAS_VENTA.filter((g) => g.productoId).
 export const rutaDeGuia = (productoId) => (POR_PRODUCTO[productoId] ? `/guia/${POR_PRODUCTO[productoId]}` : null);
 
 /** Otras guías de la misma marca, primero las del mismo tema. */
+/**
+ * Datos para Google de una guía, con su oferta si Hotmart tiene precio
+ * verificado. Los usan la página (/guia/:slug) y su HTML prerenderizado.
+ */
+export function datosDeGuia(guia, { canonical, sitio = 'https://edvanta.co' }) {
+  const marca = MARCAS[guia.marca];
+  const curso = guia.formato.startsWith('Curso');
+  const precio = PRECIOS_GUIAS[guia.slug];
+  const oferta = precio?.valor > 0 && precio.verificadoEl ? {
+    '@type': 'Offer',
+    price: precio.valor,
+    priceCurrency: precio.moneda,
+    availability: 'https://schema.org/InStock',
+    url: canonical,
+    seller: { '@type': 'Organization', name: marca.nombre },
+  } : null;
+  return {
+    '@context': 'https://schema.org',
+    // Un ebook con precio es también un producto: así Google puede mostrar su precio.
+    '@type': curso ? 'Course' : (oferta ? ['Book', 'Product'] : 'Book'),
+    name: guia.titulo,
+    description: guia.bajada,
+    inLanguage: 'es',
+    url: canonical,
+    ...(guia.portada ? { image: `${sitio}${guia.portada}` } : {}),
+    author: { '@type': 'Person', name: 'Karla Melissa Hernández Salcedo', jobTitle: 'Química Farmacéutica Clínica' },
+    publisher: { '@type': 'Organization', name: 'Edvanta', url: sitio },
+    ...(curso ? { provider: { '@type': 'Organization', name: marca.nombre } } : { bookFormat: 'https://schema.org/EBook' }),
+    ...(oferta && !curso ? { brand: { '@type': 'Brand', name: marca.nombre } } : {}),
+    ...(oferta ? { offers: oferta } : {}),
+  };
+}
+
 export function guiasRelacionadas(guia, n = 3) {
   return GUIAS_VENTA
     .filter((g) => g.slug !== guia.slug && g.marca === guia.marca)

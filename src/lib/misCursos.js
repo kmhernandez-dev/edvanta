@@ -127,3 +127,41 @@ export async function inscribirme(courseId) {
   } catch { /* el cuerpo puede venir vacío */ }
   return { ok: false, motivo: 'error', mensaje };
 }
+
+/**
+ * Cuánto pagaría quien mira por el certificado de un curso propio: el
+ * servidor decide según su país y el plazo de la oferta. null si falla.
+ */
+export async function precioDelCertificado(courseId) {
+  try {
+    const res = await fetch(apiUrl(`/api/aula/precio-certificado/${Number(courseId)}`), {
+      credentials: 'include',
+      headers: { Accept: 'application/json' },
+    });
+    if (!res.ok) return null;
+    return await res.json();
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * Inicia el pago del certificado con Mercado Pago y devuelve el enlace
+ * de pago. `volverA` es la página del sitio a la que vuelve al pagar.
+ */
+export async function pagarCertificado(courseId, volverA) {
+  const res = await conSesion('/me/checkout', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ items: [{ id: `certificado-${Number(courseId)}` }], volverA }),
+  });
+  if (!res) return { ok: false, motivo: 'sin_sesion' };
+  let datos = null;
+  try { datos = await res.json(); } catch { /* sin cuerpo */ }
+  if (res.ok && datos?.initPoint) return { ok: true, initPoint: datos.initPoint };
+  return {
+    ok: false,
+    motivo: datos?.error?.code || 'error',
+    mensaje: datos?.error?.message || 'No pudimos iniciar el pago. Intenta de nuevo en un momento.',
+  };
+}

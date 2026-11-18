@@ -23,7 +23,7 @@ function resumenDePortada(resumen) {
 
 export default function FichaCursoHero({
   ficha, nombre, propio, horas, resumenOpiniones, textoBoton, notaAcceso,
-  hayBoton, onAccion, trabajando, error, tarjetaRef,
+  hayBoton, onAccion, trabajando, error, tarjetaRef, caminos = null,
 }) {
   const resumen = resumenDePortada(ficha.resumen);
   const totalClases = ficha.clases;
@@ -119,6 +119,7 @@ export default function FichaCursoHero({
             onAccion={onAccion}
             trabajando={trabajando}
             error={error}
+            caminos={caminos}
           />
         </div>
       </div>

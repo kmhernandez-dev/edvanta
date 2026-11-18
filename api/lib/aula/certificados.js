@@ -73,7 +73,7 @@ function vista(c) {
 async function matriculaDe(db, userId, courseId) {
   return one(
     db,
-    `SELECT e.id, e.effective_status, e.assignment_id, c.id AS course_id, c.title, c.duration_minutes, c.modality,
+    `SELECT e.id, e.effective_status, e.assignment_id, e.assigned_at, c.id AS course_id, c.title, c.duration_minutes, c.modality,
             c.certificate_price
        FROM aula_enrollments_v e JOIN aula_courses c ON c.id = e.course_id
       WHERE e.user_id = $1 AND e.course_id = $2 AND e.withdrawn_at IS NULL
@@ -83,12 +83,12 @@ async function matriculaDe(db, userId, courseId) {
 }
 
 /** Su certificado en un curso: si ya lo tiene, o si puede pedirlo. */
-export async function certificadoDelCurso(db, user, courseId) {
+export async function certificadoDelCurso(db, user, courseId, ctx = {}) {
   const m = await matriculaDe(db, user.id, courseId);
   if (!m) throw notFound('No encontramos este curso entre los que tienes asignados.');
   const c = await one(db, 'SELECT * FROM aula_certificates WHERE enrollment_id = $1', [m.id]);
   const persona = await one(db, 'SELECT first_name, last_name FROM aula_users WHERE id = $1', [user.id]);
-  const pago = await pagoDelCertificado(db, user.id, { id: m.course_id, certificate_price: m.certificate_price }, m);
+  const pago = await pagoDelCertificado(db, user.id, { id: m.course_id, certificate_price: m.certificate_price }, m, ctx);
   return {
     elegible: m.effective_status === 'completado',
     // El certificado ya emitido no se cobra de nuevo.
