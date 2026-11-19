@@ -1,0 +1,176 @@
+{
+  "curso": "Curso de Psicofarmacología",
+  "migracion": "167_videos_psicofarmacologia.sql",
+  "verificadoEl": "2026-11-19",
+  "criterio": "Por pedido de la dirección, primero los videos del canal de Edutin Academy (Curso de farmacología clínica: 9 clases). Donde Edutin no tiene el tema, videos en español de universidades (Valladolid, Miguel Hernández), hospitales (Sant Joan de Déu), servicios de salud (Salud Navarra, OMS/OPS) y docentes de medicina. Las 5 clases de caso no llevan video, como en el curso de Farmacoterapia de la Diabetes. Cada video respondió 200 en el oEmbed de YouTube.",
+  "videos": [
+    {
+      "clase": "Introducción al curso: el QF en la atención de la salud mental",
+      "videoId": "6l3sd199sLM",
+      "titulo": "Introducción a la psicofarmacología - Curso de farmacología clínica",
+      "canal": "Edutin Academy"
+    },
+    {
+      "clase": "Monoaminas: serotonina, noradrenalina y dopamina",
+      "videoId": "86LcsZlDdRw",
+      "titulo": "Principios de psicofarmacología - Curso de farmacología clínica",
+      "canal": "Edutin Academy"
+    },
+    {
+      "clase": "Glutamato y GABA: el equilibrio excitación-inhibición",
+      "videoId": "xT7p8ugKJnA",
+      "titulo": "Mecanismo de acción del GABA",
+      "canal": "Grupo SM Chile"
+    },
+    {
+      "clase": "Ley 1616 de 2013 de salud mental y sus modificaciones",
+      "videoId": "B8qRmYtMJ-E",
+      "titulo": "Ley 1616 de 2013",
+      "canal": "Motiva tu Bienestar"
+    },
+    {
+      "clase": "Medicamentos de control especial y monopolio del Estado",
+      "videoId": "9d9Va_xQoxw",
+      "titulo": "Webinar: Registro y reporte de medicamentos de control especial",
+      "canal": "Coopiradio"
+    },
+    {
+      "clase": "Introducción a la unidad: depresión y abordaje farmacológico",
+      "videoId": "HZW6m2jAHuw",
+      "titulo": "OMS: Depresión – Hablemos",
+      "canal": "World Health Organization (WHO)"
+    },
+    {
+      "clase": "ISRS e IRSN",
+      "videoId": "xpYuR3UI_Ig",
+      "titulo": "Clasificación de los antidepresivos - Curso de farmacología clínica",
+      "canal": "Edutin Academy"
+    },
+    {
+      "clase": "Tricíclicos e IMAO",
+      "videoId": "CPJdk22iou4",
+      "titulo": "Antidepresivos tricíclicos: ¿por qué aún se usan? Mecanismo, usos y riesgos",
+      "canal": "El Profe Andrés"
+    },
+    {
+      "clase": "Bupropión, mirtazapina, vortioxetina y esketamina",
+      "videoId": "juENEo3fmLs",
+      "titulo": "Farmacología de antidepresivos",
+      "canal": "Academia Cares by Sinapsis EMP"
+    },
+    {
+      "clase": "Síndrome serotoninérgico",
+      "videoId": "ITi81UC-W7U",
+      "titulo": "Caso 4. Síndrome serotoninérgico",
+      "canal": "Universidad Miguel Hernández de Elche"
+    },
+    {
+      "clase": "Síndrome de discontinuación y advertencia de riesgo suicida en jóvenes",
+      "videoId": "xDgUp7gh53A",
+      "titulo": "Diagnóstico del retiro de antidepresivos: cómo distinguirlo de la recaída",
+      "canal": "Instituto de Psicofarmacología"
+    },
+    {
+      "clase": "GPC de depresión de MinSalud: selección del antidepresivo",
+      "videoId": "Hcih_mFONdE",
+      "titulo": "Cómo seleccionar antidepresivos - Curso de farmacología clínica",
+      "canal": "Edutin Academy"
+    },
+    {
+      "clase": "Introducción a la unidad: ansiedad, insomnio y uso racional",
+      "videoId": "DfWgNsBlpjs",
+      "titulo": "Cómo usar ansiolíticos - Curso de farmacología clínica",
+      "canal": "Edutin Academy"
+    },
+    {
+      "clase": "Benzodiacepinas: mecanismo y farmacocinética",
+      "videoId": "0CkWM4ITMI4",
+      "titulo": "Mecanismo de acción de los ansiolíticos - Curso de farmacología clínica",
+      "canal": "Edutin Academy"
+    },
+    {
+      "clase": "Dependencia, abstinencia y desprescripción de benzodiacepinas",
+      "videoId": "GBRcf2B6BC4",
+      "titulo": "Estrategias para reducir el consumo de benzodiacepinas",
+      "canal": "Centro de Salud Profesor Jesús Marín"
+    },
+    {
+      "clase": "Fármacos Z y buspirona",
+      "videoId": "t4OPU_2wFZ0",
+      "titulo": "Tema 19. Fármacos hipnóticos y sedantes",
+      "canal": "SalusPlay"
+    },
+    {
+      "clase": "Introducción a la unidad: esquizofrenia, trastorno bipolar y la GPC colombiana",
+      "videoId": "rOnyXng1aR8",
+      "titulo": "Fármacos para el tratamiento de personas con esquizofrenia. Segunda parte",
+      "canal": "Ayuda de Familiares de personas con Esquizofrenia"
+    },
+    {
+      "clase": "Antipsicóticos típicos y atípicos",
+      "videoId": "jZjEcMglSGk",
+      "titulo": "Tipos de antipsicóticos - Curso de farmacología clínica",
+      "canal": "Edutin Academy"
+    },
+    {
+      "clase": "Síntomas extrapiramidales y síndrome neuroléptico maligno",
+      "videoId": "ZdEQzJf9RTA",
+      "titulo": "Diagnóstico diferencial: síndrome neuroléptico maligno vs. síndrome serotoninérgico",
+      "canal": "MIR Asturias"
+    },
+    {
+      "clase": "Síndrome metabólico, QT y clozapina con monitorización de neutrófilos",
+      "videoId": "njL-tcvFL5M",
+      "titulo": "Cómo seleccionar antipsicóticos para receta médica - Curso de farmacología clínica",
+      "canal": "Edutin Academy"
+    },
+    {
+      "clase": "Tratamiento de mantenimiento, antipsicóticos de depósito e interacciones",
+      "videoId": "ima6Zc_XQK0",
+      "titulo": "Prescripción y administración de inyectables antipsicóticos de acción prolongada",
+      "canal": "Salud Navarra"
+    },
+    {
+      "clase": "Litio: farmacología y niveles séricos",
+      "videoId": "qmcQ-seoanI",
+      "titulo": "Farmacología y usos del litio",
+      "canal": "Sinapsis EMP"
+    },
+    {
+      "clase": "Valproato y lamotrigina",
+      "videoId": "AmZ5pMbAu0g",
+      "titulo": "Fármacos antipsicóticos, antidepresivos y antimaníacos",
+      "canal": "UVa_Online"
+    },
+    {
+      "clase": "Introducción a la unidad: grupos de riesgo y prioridades en salud mental",
+      "videoId": "T1ysvMHuV-Y",
+      "titulo": "Hablemos de Salud Ep 14 - Adolescentes y salud mental",
+      "canal": "PAHO TV"
+    },
+    {
+      "clase": "TDAH: metilfenidato y atomoxetina",
+      "videoId": "4aLBd25eyrA",
+      "titulo": "Mitos y realidades del tratamiento farmacológico del TDAH",
+      "canal": "Hospital Sant Joan de Déu Barcelona"
+    },
+    {
+      "clase": "Farmacoterapia de las adicciones: visión general",
+      "videoId": "x-HDuBr9f_4",
+      "titulo": "Trastorno por consumo de alcohol: bloqueo del refuerzo con naltrexona",
+      "canal": "USMLE DREAMERS"
+    },
+    {
+      "clase": "Embarazo y lactancia",
+      "videoId": "WvFvRULifUI",
+      "titulo": "Embarazo, lactancia y fármacos psiquiátricos (antidepresivos, ansiolíticos, etc.)",
+      "canal": "Víctor Navarro, Psiquiatra"
+    },
+    {
+      "clase": "Adulto mayor: criterios de Beers y STOPP/START",
+      "videoId": "UMPFtRk5qVE",
+      "titulo": "Criterios STOPP-START",
+      "canal": "Kabilia"
+    }
+  ]
+}

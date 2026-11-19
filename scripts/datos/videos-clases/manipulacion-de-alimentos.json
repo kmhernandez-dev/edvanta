@@ -1,0 +1,98 @@
+{
+  "curso": "Curso de Manipulación de Alimentos",
+  "migracion": "166_videos_manipulacion_de_alimentos.sql",
+  "verificadoEl": "2026-11-19",
+  "criterio": "Por pedido de la dirección, primero Edutin Academy: su único video del tema (el curso completo, 24 min) va en la clase 1.1. Edutin no tiene clases por tema, así que las demás llevan videos en español de fuentes institucionales: Secretaría de Salud de Zipaquirá (serie Claves de la Inocuidad), Municipalidad de Salta, Universidad Nacional del Litoral y asociaciones del sector. Cada video respondió 200 en el oEmbed de YouTube (disponible e insertable).",
+  "videos": [
+    {
+      "clase": "Qué es la inocuidad y por qué un alimento enferma",
+      "videoId": "Zw2MvnDy6rA",
+      "titulo": "Curso de Manipulación de alimentos [Gratis y certificado] - Edutin Academy",
+      "canal": "Edutin Academy"
+    },
+    {
+      "clase": "La Resolución 2674 de 2013: obligaciones del manipulador y de la empresa",
+      "videoId": "chSIjthSZ48",
+      "titulo": "Modulo1. Normatividad Sanitaria",
+      "canal": "Escuela de alimentos Mercedes Pinilla"
+    },
+    {
+      "clase": "Estado de salud del manipulador",
+      "videoId": "by1Qq-ujdao",
+      "titulo": "Tema 5. Reglas higiénicas del manipulador de alimentos.",
+      "canal": "Asonaman - Certificado Manipulador Alimentos"
+    },
+    {
+      "clase": "Lavado de manos: cuándo y cómo",
+      "videoId": "rBslsGtnNcg",
+      "titulo": "Manipulador de alimentos - El lavado de manos",
+      "canal": "Nuttralia, Dietistas-Nutricionistas Valencia"
+    },
+    {
+      "clase": "Dotación y presentación personal",
+      "videoId": "Dbhi2xy-324",
+      "titulo": "4.1 – Higiene personal de los Manipuladores.",
+      "canal": "FEHGRA"
+    },
+    {
+      "clase": "Guantes, tapabocas y comportamientos prohibidos",
+      "videoId": "E40w_vOmk7w",
+      "titulo": "Hábitos y buenas prácticas de higiene - Crecemos Juntos",
+      "canal": "Alicorp Oficial"
+    },
+    {
+      "clase": "Separe crudos y cocinados: la contaminación cruzada",
+      "videoId": "07XQSjlsGU0",
+      "titulo": "Claves de la Inocuidad - #2 Separe Alimentos Crudos de los Cocinados",
+      "canal": "Secretaría de Salud Zipaquirá"
+    },
+    {
+      "clase": "Cocine completamente: 70 °C y el recalentado",
+      "videoId": "pdetLw5nnZ8",
+      "titulo": "Claves de la Inocuidad - #3 Cocine Completamente",
+      "canal": "Secretaría de Salud Zipaquirá"
+    },
+    {
+      "clase": "Temperaturas seguras: la zona de peligro",
+      "videoId": "53eBk8Aw600",
+      "titulo": "Claves de la Inocuidad - #4 Mantenga Los Alimentos a Temperaturas Seguras",
+      "canal": "Secretaría de Salud Zipaquirá"
+    },
+    {
+      "clase": "Limpieza y desinfección",
+      "videoId": "T6r1q8Z6K3s",
+      "titulo": "Video 03. Manipulación segura de alimentos: limpieza y desinfección",
+      "canal": "Municipalidad de Salta"
+    },
+    {
+      "clase": "Residuos sólidos y control integrado de plagas",
+      "videoId": "wbSTjoj03YM",
+      "titulo": "Saneamiento: Control integral de plagas en el sector alimentario",
+      "canal": "UNL Virtual"
+    },
+    {
+      "clase": "Agua potable y materias primas seguras",
+      "videoId": "k5bv1pPzmYw",
+      "titulo": "Claves de la Inocuidad - #5 Use Agua y Materias Primas Seguras",
+      "canal": "Secretaría de Salud Zipaquirá"
+    },
+    {
+      "clase": "Recepción de materias primas",
+      "videoId": "WryCT_Df7Ic",
+      "titulo": "Curso de manipulación de alimentos: aprende cómo comprar y almacenar los alimentos",
+      "canal": "A&J Seguridad Alimentaria"
+    },
+    {
+      "clase": "Almacenamiento seco, refrigerado y congelado",
+      "videoId": "rMpPP5UDzZk",
+      "titulo": "Manipulación de alimentos: condiciones de almacenamiento y temperaturas",
+      "canal": "auditor en salud"
+    },
+    {
+      "clase": "Registros, autocontrol y caso integrador",
+      "videoId": "Sv0Z1SLGZ0c",
+      "titulo": "Visitantes, registros y trazabilidad: la evidencia de las BPM",
+      "canal": "El ing"
+    }
+  ]
+}
