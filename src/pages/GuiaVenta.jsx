@@ -26,7 +26,7 @@ import { BotonWhatsApp, enlaceWhatsApp, irAWhatsApp, prepararVentana } from '../
 import { CuentaRegresiva, CuponCopiable, InsigniaDescuento } from '../components/edvanta/promo';
 import { PROMOCION, conCupon, promoActiva } from '../data/promocion';
 import { useRevelar } from '../hooks/useRevelar';
-import { GUIAS_VENTA, MARCAS, datosDeGuia, guiaPorSlug, guiasRelacionadas } from '../data/guiasVenta';
+import { GUIAS_VENTA, MARCAS, datosDeGuia, guiaPorSlug, guiasRelacionadas, tituloSeoDeGuia } from '../data/guiasVenta';
 import { PRECIOS_GUIAS } from '../data/preciosGuias';
 import { enviarSolicitud } from '../lib/solicitudes';
 import { trackEvent } from '../utils/analytics';
@@ -180,7 +180,7 @@ export default function GuiaVenta() {
     const marca = MARCAS[guia.marca];
     const url = `${SITIO}/guia/${guia.slug}`;
     updatePageSeo({
-      title: `${guia.titulo} | ${marca.nombre}`,
+      title: tituloSeoDeGuia(guia),
       description: guia.bajada.slice(0, 158),
       canonical: url,
       image: guia.portada ? `${SITIO}${guia.portada}` : `${SITIO}/img/og-edvanta.png`,

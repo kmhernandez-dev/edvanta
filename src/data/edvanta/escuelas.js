@@ -189,3 +189,72 @@ export const escuelaDelArea = (area) => ESCUELAS.find((e) => e.catalogo?.area ==
 /** Una escuela está «en desarrollo» si ninguna de sus áreas tiene algo listo. */
 export const escuelaEnDesarrollo = (escuela) => escuela.recorridos
   .every((r) => r.areas.every((a) => a.estado === 'en_desarrollo' || a.estado === 'a_solicitud'));
+
+/**
+ * Lo que cada escuela dice en Google. Las escuelas son las páginas pilar
+ * para las búsquedas amplias: la búsqueda principal va al inicio del
+ * título (60 caracteres o menos) y de la descripción (70 a 160).
+ *
+ * Reglas (seo/agente-crecimiento.md):
+ *  - «gratis» se refiere al contenido; el certificado es opcional y tiene
+ *    costo. Nunca «gratis con certificado» (Ley 1480).
+ *  - Sin precios escritos aquí: el precio vigente vive en
+ *    api/lib/precio-certificado.js y se muestra en cada curso.
+ *
+ * La misma fuente alimenta la página (Escuela.jsx) y el HTML del
+ * servidor (scripts/seo-rutas-fijas.mjs).
+ */
+export const SEO_ESCUELAS = {
+  'salud-y-farmacia-clinica': {
+    busqueda: 'cursos de farmacología',
+    titulo: 'Cursos de farmacología y farmacia clínica gratis | Edvanta',
+    descripcion: 'Cursos online gratis de farmacología, farmacoterapia, oncología y farmacia hospitalaria para químicos farmacéuticos. Certificado verificable opcional.',
+    tituloCursos: 'Cursos de farmacología, farmacoterapia y farmacia clínica',
+    intro: 'Cursos de farmacología por sistemas, farmacoterapia de las enfermedades crónicas más frecuentes, oncología, central de mezclas y preparaciones magistrales. Cada curso aplica el contenido a casos de atención farmacéutica y se estudia en línea, a tu ritmo.',
+    preguntas: [
+      { q: '¿Para quién son los cursos de farmacología y farmacia clínica?', a: 'Para químicos farmacéuticos, regentes de farmacia, personal de servicios farmacéuticos hospitalarios y ambulatorios, y estudiantes de últimos semestres que necesitan repasar o actualizar farmacoterapia.' },
+    ],
+  },
+  'calidad-y-produccion-farmaceutica': {
+    busqueda: 'cursos de BPM',
+    titulo: 'Cursos de BPM y calidad farmacéutica gratis | Edvanta',
+    descripcion: 'Cursos online gratis de BPM, aseguramiento y control de calidad, validaciones, CAPA y auditoría farmacéutica. Certificado verificable opcional.',
+    tituloCursos: 'Cursos de BPM, calidad y producción farmacéutica',
+    intro: 'Cursos de buenas prácticas de manufactura, laboratorio y documentación, aseguramiento y control de calidad, gestión de desviaciones y CAPA, riesgos, validaciones y auditoría. Están pensados para laboratorios, plantas y servicios farmacéuticos.',
+    preguntas: [
+      { q: '¿Para quién son los cursos de BPM y calidad farmacéutica?', a: 'Para químicos farmacéuticos, analistas, supervisores de producción y personal de aseguramiento y control de calidad de laboratorios y plantas, y para quienes se preparan para trabajar en la industria.' },
+    ],
+  },
+  'asuntos-regulatorios': {
+    busqueda: 'cursos de asuntos regulatorios',
+    titulo: 'Cursos de asuntos regulatorios e INVIMA gratis | Edvanta',
+    descripcion: 'Cursos online gratis de asuntos regulatorios: registro sanitario, trámites ante el INVIMA, dossier y etiquetado. Certificado verificable opcional.',
+    tituloCursos: 'Cursos de asuntos regulatorios y registro sanitario',
+    intro: 'Cursos de registro sanitario de medicamentos, biológicos, vacunas, fitoterapéuticos y suplementos dietarios, trámites y requerimientos del INVIMA, dossier, etiquetado, estabilidad, bioequivalencia y regulación de productos especiales en Colombia.',
+    preguntas: [
+      { q: '¿Para quién son los cursos de asuntos regulatorios?', a: 'Para químicos farmacéuticos y profesionales de asuntos regulatorios de laboratorios, importadores y titulares de registros, y para quienes quieren empezar a trabajar en el área.' },
+    ],
+  },
+  'habilidades-blandas': {
+    busqueda: 'cursos de habilidades blandas',
+    titulo: 'Cursos de habilidades blandas online gratis | Edvanta',
+    descripcion: 'Cursos online gratis de oratoria, comunicación asertiva, liderazgo, negociación e inteligencia emocional. Certificado verificable opcional.',
+    tituloCursos: 'Cursos de habilidades blandas',
+    intro: 'Cursos de oratoria, comunicación asertiva, lenguaje corporal, liderazgo y trabajo en equipo, negociación, inteligencia emocional, servicio al cliente y presentaciones. Cada técnica se practica con situaciones reales del trabajo en salud y farmacia.',
+    preguntas: [
+      { q: '¿Para quién son los cursos de habilidades blandas?', a: 'Para cualquier persona que quiera comunicarse, liderar y negociar mejor en su trabajo. Los ejemplos vienen del sector salud y farmacéutico, pero las técnicas sirven en cualquier área.' },
+    ],
+  },
+};
+
+/** Preguntas de la escuela: las propias y las comunes a todas. */
+export function preguntasDeEscuela(slug) {
+  const seo = SEO_ESCUELAS[slug];
+  if (!seo) return [];
+  return [
+    { q: `¿Los ${seo.busqueda} de Edvanta son gratis?`, a: 'Sí. El contenido de los cursos propios de Edvanta se estudia gratis, en línea y a tu ritmo. Solo necesitas crear tu cuenta en el aula.' },
+    { q: '¿Dan certificado?', a: 'Sí, es opcional y tiene costo. Al aprobar el curso emites desde el aula el certificado de aprobación de Edvanta S.A.S., con código y QR verificables en edvanta.co/certificados. El precio vigente aparece en cada curso antes de pagar.' },
+    ...seo.preguntas,
+    { q: '¿Puedo capacitar a mi equipo con estos cursos?', a: 'Sí. Edvanta capacita equipos de droguerías, laboratorios, IPS y servicios farmacéuticos bajo propuesta. Escríbenos desde la página de instituciones.' },
+  ];
+}

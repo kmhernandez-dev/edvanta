@@ -588,6 +588,28 @@ export const GUIAS_VENTA = [...EDVANTA, ...ATENFARMA, ...FELIZ_SIN_TIROIDES].map
 
 export const guiaPorSlug = (slug) => GUIAS_VENTA.find((g) => g.slug === slug) || null;
 
+/**
+ * Títulos cortos para Google cuando el título de la guía no cabe en 60
+ * caracteres ni sin la marca. Dicen lo mismo que el producto, más corto.
+ */
+const TITULOS_SEO = {
+  'claude-aseguramiento-de-calidad-farmaceutica': 'Claude para aseguramiento de la calidad farmacéutica',
+  'claude-farmacia-asistencial': '20 prompts de Claude para farmacia asistencial',
+  'terapia-de-reemplazo-enzimatico': 'Terapia de reemplazo enzimático: guía farmacéutica',
+};
+
+/**
+ * <title> de /guia/<slug>: 60 caracteres o menos para que Google no lo
+ * corte (hallazgo `titulo-largo` del Agente de Crecimiento, 19-nov).
+ * Primero con la marca de la guía; si no cabe, con «Edvanta»; si tampoco,
+ * solo el título.
+ */
+export function tituloSeoDeGuia(guia) {
+  const base = TITULOS_SEO[guia.slug] || guia.titulo;
+  const marca = MARCAS[guia.marca]?.nombre || 'Edvanta';
+  return [`${base} | ${marca}`, `${base} | Edvanta`, base].find((t) => t.length <= 60) || base;
+}
+
 /** La página de venta de un producto de fst.js o atenfarma.js, si tiene. */
 const POR_PRODUCTO = Object.fromEntries(GUIAS_VENTA.filter((g) => g.productoId).map((g) => [g.productoId, g.slug]));
 export const rutaDeGuia = (productoId) => (POR_PRODUCTO[productoId] ? `/guia/${POR_PRODUCTO[productoId]}` : null);

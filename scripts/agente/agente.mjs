@@ -33,6 +33,8 @@ import { PALABRA_CLAVE_DE_PROPIOS } from '../../api/lib/seo-cursos-propios.js';
 import { OFERTA_CERTIFICADO } from '../../api/lib/precio-certificado.js';
 import { PRECIOS_GUIAS } from '../../src/data/preciosGuias.js';
 import { PROMOCION } from '../../src/data/promocion.js';
+import { SEO_ESCUELAS } from '../../src/data/edvanta/escuelas.js';
+import { cursosPropiosDeEscuela } from '../lib/cursos-por-escuela.mjs';
 import { acciones as agruparAcciones, auditar, resumenPorTipo, rotacionDelDia } from './lib/auditar.mjs';
 import { calcularEmbudo, META, precioPromedioGuias, SUPUESTOS, tasasEfectivas } from './lib/embudo.mjs';
 import { enlacesInternos, rutaDe, senalesDePagina } from './lib/extraer.mjs';
@@ -95,9 +97,10 @@ async function diario() {
     const m = ruta.match(/^(\/curso-[^/]+)\/clase\//);
     if (m) clasesPorCurso.set(m[1], (clasesPorCurso.get(m[1]) || 0) + 1);
   }
-  const objetivo = [...rutasSitemap].filter((r) => r === '/cursos' || r.startsWith('/guia/') || /^\/curso-[^/]+$/.test(r) || (args['con-clases'] && /^\/curso-[^/]+\/clase\//.test(r)));
+  const esEscuela = (r) => /^\/escuelas\/[^/]+$/.test(r);
+  const objetivo = [...rutasSitemap].filter((r) => r === '/cursos' || esEscuela(r) || r.startsWith('/guia/') || /^\/curso-[^/]+$/.test(r) || (args['con-clases'] && /^\/curso-[^/]+\/clase\//.test(r)));
   // Primero lo que vende: propios, guías, catálogo; luego curados y clases.
-  const peso = (r) => (PALABRA_CLAVE_DE_PROPIOS[r] || r.startsWith('/guia/') || r === '/cursos' ? 0 : 1);
+  const peso = (r) => (PALABRA_CLAVE_DE_PROPIOS[r] || r.startsWith('/guia/') || r === '/cursos' || esEscuela(r) ? 0 : 1);
   objetivo.sort((a, b) => peso(a) - peso(b) || a.localeCompare(b));
   const lista = objetivo.slice(0, limite);
   console.log(`   ${rutasSitemap.size} direcciones en los sitemaps; se rastrean ${lista.length}.`);
@@ -128,6 +131,7 @@ async function diario() {
     // Con --limite no se rastrea todo: no se puede afirmar que falte algo.
     enlazadosDesdeCatalogo,
     rutasSitemap: Number.isFinite(limite) ? null : rutasSitemap,
+    cursosPorEscuela: Object.fromEntries(Object.keys(SEO_ESCUELAS).map((slug) => [`/escuelas/${slug}`, cursosPropiosDeEscuela(slug).map((c) => c.ruta)])),
     hoy,
   });
   const lasAcciones = agruparAcciones(hallazgos);
@@ -140,7 +144,7 @@ async function diario() {
   });
 
   const graves = new Set(hallazgos.filter((h) => h.severidad === 'alta').map((h) => h.ruta));
-  const vendedoras = paginas.filter((p) => p.indexable && (p.tipo === 'curso-propio' || p.tipo === 'guia' || p.tipo === 'catalogo'));
+  const vendedoras = paginas.filter((p) => p.indexable && ['curso-propio', 'guia', 'catalogo', 'escuela'].includes(p.tipo));
   const indexarHoy = rotacionDelDia(vendedoras.filter((p) => !graves.has(p.ruta)).map((p) => p.url), 10, hoy);
   const indexNow = vendedoras.map((p) => p.url);
 

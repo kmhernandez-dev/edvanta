@@ -150,15 +150,22 @@ async function cursoDelSlug(db, entidad, id) {
  * Hasta seis cursos públicos de la misma área, con su dirección vigente:
  * enlaces internos que los buscadores siguen sin ejecutar JavaScript.
  * Los propios enlazan primero a otros propios; los curados, a curados.
+ *
+ * Propios: primero los de la misma categoría y, si no alcanzan, los de la
+ * misma área grande (Calidad, Farmacología…). Así ninguna ficha propia
+ * queda con menos de tres enlaces cuando su categoría es pequeña
+ * (hallazgo `pocos-enlaces-cursos` del Agente de Crecimiento, 19-nov).
  */
 async function relacionadosDe(db, entidad, id, categoria) {
-  if (!categoria) return [];
+  if (!categoria && entidad !== 'aula') return [];
   const sql = entidad === 'aula'
     ? `SELECT s.slug, c.title FROM aula_courses c
          JOIN public_slugs s ON s.entity = 'aula' AND s.entity_id = c.id AND s.is_current
         WHERE c.kind = 'edvanta' AND c.status = 'publicado' AND c.deleted_at IS NULL
-          AND c.category = $1 AND c.id <> $2
-        ORDER BY c.published_at DESC NULLS LAST, c.id LIMIT 6`
+          AND c.id <> $2
+          AND (c.category = $1
+               OR (c.area IS NOT NULL AND c.area = (SELECT area FROM aula_courses WHERE id = $2)))
+        ORDER BY (c.category IS NOT DISTINCT FROM $1) DESC, c.published_at DESC NULLS LAST, c.id LIMIT 6`
     : `SELECT s.slug, c.title FROM courses c
          JOIN public_slugs s ON s.entity = 'curado' AND s.entity_id = c.id AND s.is_current
         WHERE c.active = TRUE AND c.category = $1 AND c.id <> $2

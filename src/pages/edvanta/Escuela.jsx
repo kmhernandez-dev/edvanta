@@ -24,13 +24,13 @@ import SiteHeader from '../../components/edvanta/SiteHeader';
 import SiteFooter from '../../components/edvanta/SiteFooter';
 import CourseCarousel from '../../components/CourseCarousel';
 import ProductModal from '../../components/ProductModal';
-import { Breadcrumb, Btn, Card, Section, SectionHeading } from '../../components/edvanta/ui';
+import { Breadcrumb, Btn, Card, Faq, Section, SectionHeading } from '../../components/edvanta/ui';
 import { HeroEditorial } from '../../components/edvanta/heroes';
 import {
   ICONOS_ESCUELA, ListaDeAreas, ProductoCard, PublicoBadge, useCursosPropios,
 } from '../../components/edvanta/oferta';
 import FormularioSolicitud from '../../components/formularios/FormularioSolicitud';
-import { cursoEnEscuela, escuelaPorSlug } from '../../data/edvanta/escuelas';
+import { SEO_ESCUELAS, cursoEnEscuela, escuelaPorSlug, preguntasDeEscuela } from '../../data/edvanta/escuelas';
 import { PROGRAMAS } from '../../data/edvanta/programas';
 import { productosDeEscuela } from '../../data/edvanta/productos';
 import { updatePageSeo } from '../../utils/seo';
@@ -65,15 +65,18 @@ export default function Escuela() {
 
   useEffect(() => {
     if (!escuela) return;
+    const seo = SEO_ESCUELAS[escuela.slug];
     updatePageSeo({
-      title: `${escuela.nombre} | Edvanta`,
-      description: escuela.resumen,
+      title: seo?.titulo || `${escuela.nombre} | Edvanta`,
+      description: seo?.descripcion || escuela.resumen,
       canonical: `https://edvanta.co/escuelas/${escuela.slug}`,
     });
   }, [escuela]);
 
   if (!escuela) return <NotFound />;
 
+  const seo = SEO_ESCUELAS[escuela.slug] || null;
+  const faq = preguntasDeEscuela(escuela.slug);
   const Icono = ICONOS_ESCUELA[escuela.icono];
   const programas = escuela.programas.map((p) => PROGRAMAS[p]).filter(Boolean);
   const sinCatalogo = !escuela.catalogo;
@@ -123,6 +126,12 @@ export default function Escuela() {
 
         {!sinCatalogo && (
           <section id="cursos" className="ds-surface-ice scroll-mt-28 border-y border-edvanta-border">
+            {seo?.intro && (
+              <div className="mx-auto max-w-7xl px-4 pt-12 sm:px-6 lg:px-8">
+                <h2 className="font-display text-2xl font-extrabold text-edvanta-deep">{seo.tituloCursos}</h2>
+                <p className="mt-3 max-w-3xl text-[15px] leading-7 text-edvanta-muted">{seo.intro}</p>
+              </div>
+            )}
             {cursos.length > 0 ? (
               <CourseCarousel title={`Cursos virtuales de ${escuela.corto}`} courses={cursos} sectionKey={`escuela_${escuela.slug}`} />
             ) : (
@@ -174,6 +183,16 @@ export default function Escuela() {
                 </Link>
               ))}
             </div>
+          </Section>
+        )}
+
+        {faq.length > 0 && (
+          <Section>
+            <SectionHeading eyebrow="Preguntas frecuentes" title={`Sobre los ${seo?.busqueda || 'cursos'} de Edvanta`} />
+            <Faq items={faq} className="mt-8 max-w-3xl" />
+            <p className="mt-6 text-sm text-edvanta-muted">
+              <Link to="/instituciones" className="font-semibold text-edvanta-blue hover:underline">Capacitación para equipos e instituciones</Link>
+            </p>
           </Section>
         )}
 

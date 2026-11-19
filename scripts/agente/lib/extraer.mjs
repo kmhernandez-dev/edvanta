@@ -116,6 +116,7 @@ export const rutaDe = (url, sitio = 'https://edvanta.co') => {
 export function tipoDePagina(ruta, propios = new Set()) {
   const set = propios instanceof Set ? propios : new Set(propios);
   if (ruta === '/cursos') return 'catalogo';
+  if (/^\/escuelas\/[^/]+$/.test(ruta)) return 'escuela';
   if (ruta.startsWith('/guia/')) return 'guia';
   if (/^\/curso-[^/]+\/clase\/[^/]+$/.test(ruta)) return 'clase';
   if (/^\/curso-[^/]+$/.test(ruta)) return set.has(ruta) ? 'curso-propio' : 'curso-curado';

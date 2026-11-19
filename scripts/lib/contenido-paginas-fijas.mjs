@@ -47,6 +47,9 @@ const ESTADO = { disponible: 'Disponible', proxima_apertura: 'próxima apertura'
  *  extras.areas      [{ titulo, subtitulo }]
  *  extras.cursos     [{ titulo, to }]
  *  extras.productos  [{ nombre, to, necesidad }]
+ *  extras.propios    [{ ruta, busqueda }]  todos los cursos propios (pilar SEO)
+ *  extras.seo        SEO_ESCUELAS[slug]: intro y título de la lista
+ *  extras.faq        [{ q, a }]
  */
 export function contenidoEscuela(escuela, extras = {}) {
   const recorridos = (escuela.recorridos || []).map((r) => {
@@ -56,15 +59,24 @@ export function contenidoEscuela(escuela, extras = {}) {
       : ''}</section>`;
   }).join('');
   const areas = (extras.areas || []).filter((a) => a && a.titulo);
-  const cursos = (extras.cursos || []).filter((c) => c && c.titulo && c.to);
+  const propios = (extras.propios || []).filter((c) => c && c.ruta && c.busqueda);
+  const yaEnlazados = new Set(propios.map((c) => c.ruta));
+  const cursos = (extras.cursos || []).filter((c) => c && c.titulo && c.to && !yaEnlazados.has(c.to));
   const productos = (extras.productos || []).filter((p) => p && p.nombre);
+  const seo = extras.seo || null;
   return [
+    seo?.intro ? parrafo(seo.intro) : '',
+    // Pilar SEO: todos los cursos propios con su búsqueda como texto del enlace.
+    propios.length
+      ? seccion(seo?.tituloCursos || 'Cursos de la escuela', `<p>${propios.length} cursos online, gratis y a tu ritmo, con certificado verificable opcional.</p>${enlaces(propios.map((c) => ({ nombre: c.busqueda, url: c.ruta })))}`)
+      : '',
     recorridos,
     areas.length ? seccion('Áreas del catálogo', `<ul>${areas.map((a) => `<li><strong>${esc(a.titulo)}</strong>${a.subtitulo ? `: ${esc(a.subtitulo)}` : ''}</li>`).join('')}</ul>`) : '',
     cursos.length ? seccion('Cursos seleccionados', enlaces(cursos.map((c) => ({ nombre: c.titulo, url: c.to })))) : '',
     productos.length
       ? seccion('Cursos en vivo, guías y kits', `<ul>${productos.map((p) => `<li>${p.to ? `<a href="${esc(p.to)}">${esc(p.nombre)}</a>` : `<strong>${esc(p.nombre)}</strong>`}${p.necesidad ? `: ${esc(p.necesidad)}` : ''}</li>`).join('')}</ul>`)
       : '',
+    seccion('Preguntas frecuentes', preguntas(extras.faq)),
   ].join('');
 }
 

@@ -109,3 +109,58 @@ Base de comparación (`seo/cursos-100k.md`):
 - No rastrea datos personales ni sitios privados.
 - No anuncia precios ni descuentos sin verificarlos (Ley 1480).
 - No toma decisiones comerciales: las propone con datos.
+
+---
+
+## 7. Plan de posiciones: aparecer de primero en Google (19-nov, segunda parte)
+
+Pedido de Karla: posicionar Edvanta lo más rápido posible para salir de primeros cuando la gente busque cursos.
+
+Nadie controla el primer lugar de Google. Sí se controla qué tan fácil se lo dejamos. En la primera corrida, la parte técnica salió sana: las fichas son indexables, tienen canónica, Course con precio y unas 950 palabras. Lo que frena el posicionamiento son tres cosas:
+
+1. Las páginas que deberían ganar las búsquedas amplias estaban vacías.
+2. Faltan enlaces internos.
+3. Hay solo 3 enlaces externos (autoridad).
+
+### Lo que quedó hecho en esta rama (se ve en Google después de desplegar)
+
+| Cambio | Antes, en producción (agente, 19-nov) | Después, en el build |
+|---|---|---|
+| **Escuelas como páginas pilar** (`SEO_ESCUELAS` en `src/data/edvanta/escuelas.js`, `scripts/lib/cursos-por-escuela.mjs`) | Título «Escuela de Salud y Farmacia Clínica \| Edvanta». Unas 150 palabras sin JavaScript. 3 de 5 escuelas no enlazaban ninguno de sus cursos propios. | Título con la búsqueda («Cursos de farmacología y farmacia clínica gratis \| Edvanta»). Los 63 cursos propios enlazados desde su escuela, con su búsqueda como texto del enlace. Introducción, preguntas frecuentes, `ItemList` y `FAQPage`. Farmacia clínica pasa de 3 a 22 cursos enlazados y de 387 a 657 palabras. |
+| **Fichas propias con 3 o más cursos relacionados** (`api/routes/paginas-publicas.js`) | 12 fichas enlazaban de 0 a 2 cursos. | Si la categoría no alcanza, se completa con cursos de la misma área. |
+| **Títulos de guías de 60 caracteres o menos** (`tituloSeoDeGuia` en `src/data/guiasVenta.js`) | 20 guías con el título cortado en Google. | Todos caben; la marca se acorta antes que el título. |
+| **El agente vigila las escuelas** | — | Reglas nuevas: `escuela-sin-sus-cursos` y `enlace-a-curso-inexistente`. |
+
+Pruebas nuevas:
+
+- `src/__tests__/escuelas-pilar.test.js`
+- `src/__tests__/guias-titulo-seo.test.js`
+- `api/tests/fichas-relacionadas.test.js`
+
+### Metas por nivel de dificultad
+
+Datos de Semrush del 18-nov (`seo/semrush/cursos-2026-11-18.md`). KD es la dificultad de 0 a 100.
+
+| Nivel | Búsquedas | Dificultad | Meta | Cuándo |
+|---|---|---|---|---|
+| **1. Nicho farmacéutico** | La búsqueda principal de cada uno de los 63 cursos propios: «curso de bioequivalencia», «curso de central de mezclas», «curso de radiofármacos», «curso de registro sanitario INVIMA»… | Baja: casi nadie tiene un curso propio de esos temas en español | Top 3 en 40 de las 63 | 4 a 8 semanas después de que Google indexe la ficha |
+| **2. Escuelas y temas medianos** | «cursos de farmacología», «cursos de BPM», «cursos de asuntos regulatorios», «cursos de habilidades blandas», «curso de oratoria» en Colombia (880 al mes, KD 26), «cursos de farmacia» (140, KD 30), «curso de servicio al cliente» (260, KD 33) | Media | Primera página | 2 a 4 meses, con enlaces externos |
+| **3. Búsquedas grandes** | «cursos gratis con certificado» (2.400, KD 66), «curso de manipulación de alimentos» (8.100, KD 51), «curso de oratoria» en México (1.900, KD 52) | Alta | Primera página | 6 a 12 meses. Exige autoridad: decenas de enlaces de calidad |
+
+El nivel 1 casi no trae volumen, pero trae a quien ya quiere ese curso exacto: es el que más convierte en certificado. Los niveles 2 y 3 traen el volumen.
+
+### Lo que acelera más fuera del código, en orden
+
+1. **Desplegar** y pedir en Search Console la indexación de las 4 escuelas y de /cursos el mismo día. Después, las 10 direcciones diarias del reporte. **Responsable:** Karla.
+2. **IndexNow** con `seo/agente/datos/<fecha>/indexnow.txt` justo después del despliegue. Llega a Bing, Copilot y la búsqueda de ChatGPT en horas. **Responsable:** Claude, si edvanta.co y api.indexnow.org están permitidos en el entorno.
+3. **Enlaces externos.** Es el cuello de botella de los niveles 2 y 3. **Responsable:** Karla. El agente prepara textos y listas.
+   - El kit de 7 correos a universidades y gremios ya está escrito (`seo/PLAN-AUTORIDAD-ENLACES.md`) y sigue sin enviarse.
+   - Perfil de empresa en Google, LinkedIn de Edvanta, canal de YouTube con las clases y descripciones que enlacen a cada curso.
+   - Alianzas académicas que publiquen el curso en su sitio.
+4. **Primeros estudiantes y opiniones reales.** Google premia las fichas que la gente usa. Aplica la bandeja de Edvanta Assist y los correos automáticos que ya existen.
+5. **Contenido de las guías (trabajo editorial).** 33 de 38 guías tienen menos de 400 palabras en sus datos: las de AtenFarmaClinic no tienen preguntas frecuentes y las de Feliz Sin Tiroides tienen una. El agente puede redactar borradores de preguntas y temario. Son temas clínicos y de nutrición, así que **cada borrador pasa por la revisión de Karla antes de publicarse** (`docs/CLINICAL_SAFETY.md`).
+
+### Cómo se mide
+
+- **Cada lunes:** Search Console › Rendimiento, filtrado por página `/curso-` y por `/escuelas/`. Se miran clics, impresiones, posición media y cuántas de las 63 búsquedas principales están en el top 3.
+- **Cada día:** el agente revisa que ninguna escuela pierda sus enlaces y que ninguna ficha caiga a menos de 3 cursos relacionados.

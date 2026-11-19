@@ -172,14 +172,14 @@ for (const p of PRODUCTOS.filter((x) => x.tipo === 'curso_en_vivo' && x.to?.star
 
 /* ── Páginas de venta de guías y registro para LinkedIn ──── */
 
-const { GUIAS_VENTA, MARCAS, datosDeGuia, guiasRelacionadas } = await importar('src/data/guiasVenta.js');
+const { GUIAS_VENTA, MARCAS, datosDeGuia, guiasRelacionadas, tituloSeoDeGuia } = await importar('src/data/guiasVenta.js');
 // El precio del JSON-LD también se ve en la página.
 const precioVisible = (o) => (o ? `<p>Precio en Hotmart para Colombia: $${Number(o.price).toLocaleString('es-CO')} ${o.priceCurrency}.</p>` : '');
 for (const g of GUIAS_VENTA) {
   const canonical = `${SITIO}/guia/${g.slug}`;
   const marca = MARCAS[g.marca];
   escribir(`guia/${g.slug}.html`, pagina({
-    titulo: `${g.titulo} | ${marca.nombre}`,
+    titulo: tituloSeoDeGuia(g),
     descripcion: g.bajada.slice(0, 158),
     canonical,
     imagen: g.portada ? `${SITIO}${g.portada}` : `${SITIO}/img/og-edvanta.png`,

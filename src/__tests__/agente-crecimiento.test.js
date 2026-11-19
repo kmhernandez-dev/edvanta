@@ -124,6 +124,18 @@ describe('auditar', () => {
     expect(lista[0].tipo).toBe('curso-propio');
   });
 
+  it('escuela pilar: avisa si no enlaza sus cursos o si enlaza una ficha que no existe', () => {
+    const html = `${ficha({ canonica: 'https://edvanta.co/escuelas/habilidades-blandas' })}<a href="/curso-de-oratoria">o</a><a href="/curso-de-borrador">b</a>`;
+    const e = senalesDePagina(html, { url: 'https://edvanta.co/escuelas/habilidades-blandas' });
+    expect(e.tipo).toBe('escuela');
+    const h = auditar([e], {
+      rutasSitemap: new Set(['/curso-de-oratoria', '/curso-de-liderazgo']),
+      cursosPorEscuela: { '/escuelas/habilidades-blandas': ['/curso-de-oratoria', '/curso-de-liderazgo'] },
+    });
+    expect(h.find((x) => x.regla === 'escuela-sin-sus-cursos').problema).toContain('/curso-de-liderazgo');
+    expect(h.find((x) => x.regla === 'enlace-a-curso-inexistente').problema).toContain('/curso-de-borrador');
+  });
+
   it('la rotación de Search Console da 10 distintas y cambia de un día a otro', () => {
     const urls = Array.from({ length: 30 }, (_, i) => `https://edvanta.co/curso-${String(i).padStart(2, '0')}`);
     const hoy = rotacionDelDia(urls, 10, new Date('2026-11-19T12:00:00Z'));

@@ -15,6 +15,7 @@ const ETIQUETA_TIPO = {
   'curso-curado': 'Cursos curados',
   guia: 'Guías y ebooks',
   catalogo: 'Catálogo /cursos',
+  escuela: 'Escuelas (páginas pilar)',
   clase: 'Clases abiertas',
   otra: 'Otras',
 };

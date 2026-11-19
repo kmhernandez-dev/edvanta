@@ -14,6 +14,7 @@ export const VALOR_DE_PAGINA = {
   'curso-propio': 3, // vende el certificado
   guia: 3, // vende la guía
   catalogo: 3, // reparte autoridad a todas las fichas
+  escuela: 3, // página pilar de las búsquedas amplias («cursos de farmacología»)
   'curso-curado': 1, // tráfico; la venta es de terceros (afiliado)
   clase: 1,
   otra: 1,
@@ -45,6 +46,7 @@ const DIA = 24 * 60 * 60 * 1000;
  * @param {Map<string,number>} [ctx.clasesPorCurso]      ruta de ficha → clases abiertas en el sitemap
  * @param {Set<string>|null} [ctx.enlazadosDesdeCatalogo] rutas enlazadas desde /cursos
  * @param {Set<string>|null} [ctx.rutasSitemap]          rutas de los sitemaps
+ * @param {Record<string,string[]>} [ctx.cursosPorEscuela] /escuelas/<slug> → rutas de sus cursos propios
  * @param {Date} [ctx.hoy]
  */
 export function auditar(paginas, ctx = {}) {
@@ -55,6 +57,7 @@ export function auditar(paginas, ctx = {}) {
     clasesPorCurso = new Map(),
     enlazadosDesdeCatalogo = null,
     rutasSitemap = null,
+    cursosPorEscuela = {},
     hoy = new Date(),
   } = ctx;
   const hallazgos = [];
@@ -112,14 +115,41 @@ export function auditar(paginas, ctx = {}) {
     if (p.cantidadH1 !== 1) {
       agregar(p, { regla: 'h1', severidad: 'baja', area: 'contenido', problema: `${p.cantidadH1} H1 en el HTML del servidor.`, accion: 'Un solo H1 por página.', archivo: ARCHIVOS.fichaPropia, responsable: 'Claude' });
     }
-    const minimo = p.tipo === 'curso-propio' || p.tipo === 'guia' ? 400 : 200;
+    const minimo = p.tipo === 'curso-propio' || p.tipo === 'guia' || p.tipo === 'escuela' ? 400 : 200;
     if (p.palabras < minimo && p.tipo !== 'catalogo') {
       agregar(p, {
-        regla: 'contenido-delgado', severidad: p.tipo === 'curso-propio' || p.tipo === 'guia' ? 'media' : 'baja', area: 'contenido',
+        regla: 'contenido-delgado', severidad: ['curso-propio', 'guia', 'escuela'].includes(p.tipo) ? 'media' : 'baja', area: 'contenido',
         problema: `${p.palabras} palabras visibles sin JavaScript (mínimo sugerido: ${minimo}).`,
         accion: 'Llevar al HTML del servidor el temario, un caso aplicado y las preguntas frecuentes.',
-        archivo: p.tipo === 'guia' ? ARCHIVOS.prerender : ARCHIVOS.fichaPropia, responsable: 'Claude',
+        archivo: { guia: ARCHIVOS.prerender, escuela: 'src/data/edvanta/escuelas.js' }[p.tipo] || ARCHIVOS.fichaPropia, responsable: 'Claude',
       });
+    }
+
+    // ── Enlaces a fichas que no existen (catálogo y escuelas) ──
+    if (rutasSitemap && (p.tipo === 'escuela' || p.tipo === 'catalogo')) {
+      const rotos = p.enlacesACursos.filter((r) => !rutasSitemap.has(r));
+      if (rotos.length) {
+        agregar(p, {
+          regla: 'enlace-a-curso-inexistente', severidad: 'alta', area: 'autoridad interna',
+          problema: `Enlaza ${rotos.length} ficha(s) que no están en el sitemap: ${rotos.slice(0, 3).join(', ')}.`,
+          accion: 'Quitar el enlace o publicar el curso; si es borrador, quitarle la palabra clave en seo-cursos-propios.js.',
+          archivo: ARCHIVOS.claves, responsable: 'Claude',
+        });
+      }
+    }
+
+    // ── Escuelas: páginas pilar ──
+    if (p.tipo === 'escuela' && cursosPorEscuela[p.ruta]) {
+      const enlazados = new Set(p.enlacesACursos);
+      const faltan = cursosPorEscuela[p.ruta].filter((r) => !enlazados.has(r));
+      if (faltan.length) {
+        agregar(p, {
+          regla: 'escuela-sin-sus-cursos', severidad: 'alta', area: 'autoridad interna',
+          problema: `No enlaza ${faltan.length} de sus ${cursosPorEscuela[p.ruta].length} cursos propios (p. ej. ${faltan[0]}).`,
+          accion: 'Enlazar todos los cursos propios de la escuela en el HTML del servidor, con su búsqueda como texto.',
+          archivo: 'scripts/lib/cursos-por-escuela.mjs', responsable: 'Claude',
+        });
+      }
     }
 
     // ── Cursos propios: aquí se vende el certificado ──

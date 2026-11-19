@@ -1,4 +1,5 @@
-import { ESCUELAS } from '../src/data/edvanta/escuelas.js';
+import { ESCUELAS, SEO_ESCUELAS, preguntasDeEscuela } from '../src/data/edvanta/escuelas.js';
+import { cursosPropiosDeEscuela } from './lib/cursos-por-escuela.mjs';
 import { AREAS_CAPACITACION } from '../src/data/edvanta/capacitacion.js';
 import { PAQUETES } from '../src/data/edvanta/servicios.js';
 import { enfermedades } from '../src/data/enfermedades.js';
@@ -146,11 +147,29 @@ add('/escuelas', 'Escuelas de Edvanta | Formación farmacéutica y habilidades',
 
 for (const escuela of ESCUELAS) {
   if (escuela.slug === 'marketing-y-comunicacion-farmaceutica') continue;
-  add(`/escuelas/${escuela.slug}`, `${escuela.nombre} | Edvanta`, escuela.resumen, {
+  // Página pilar: búsqueda en el título, todos los cursos propios
+  // enlazados y preguntas frecuentes (SEO_ESCUELAS, seo/agente-crecimiento.md).
+  const seo = SEO_ESCUELAS[escuela.slug] || null;
+  const propios = cursosPropiosDeEscuela(escuela.slug);
+  const faq = preguntasDeEscuela(escuela.slug);
+  add(`/escuelas/${escuela.slug}`, seo?.titulo || `${escuela.nombre} | Edvanta`, seo?.descripcion || escuela.resumen, {
     tipo: 'CollectionPage',
     seccion: 'Escuelas',
+    seccionUrl: '/escuelas',
+    h1: escuela.nombre,
     enlaces: [['Todas las escuelas', '/escuelas'], ['Cursos profesionales', '/cursos'], ['Instituciones', '/instituciones']],
-    contenido: contenidoEscuela(escuela, extrasDeEscuela(escuela.slug)),
+    contenido: contenidoEscuela(escuela, { ...extrasDeEscuela(escuela.slug), seo, propios, faq }),
+    extraJsonLd: [
+      ...(propios.length ? [{
+        '@type': 'ItemList',
+        name: seo?.tituloCursos || escuela.nombre,
+        itemListElement: propios.map((c, i) => ({ '@type': 'ListItem', position: i + 1, url: `https://edvanta.co${c.ruta}` })),
+      }] : []),
+      ...(faq.length ? [{
+        '@type': 'FAQPage',
+        mainEntity: faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+      }] : []),
+    ],
   });
 }
 
