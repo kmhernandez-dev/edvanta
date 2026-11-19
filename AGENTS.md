@@ -108,6 +108,16 @@ Windows note: use `npm.cmd` if PowerShell blocks `npm.ps1`.
 | `api/migrations/019_retos_fst.sql` | Retos FST tables (`fst_challenges`, `fst_challenge_days`, `fst_user_challenges`, `fst_challenge_checkins`) |
 | `api/migrations/020_retos_fst_seed.sql` | Retos FST seed: 12 retos × 7 días (48 YouTube videos, URLs only) |
 | `api/migrations/021_retos_fst_metadata.sql` | Verified video metadata (titles, channels, durations from YouTube public pages) |
+| `api/migrations/164-173_*experiencias*.sql` | Generated class experiences for the Edvanta catalog (1,184 classes) |
+| `api/migrations/174_videos_catalogo.sql` | Curated YouTube videos for classes without video (32 verified) |
+| `api/migrations/176_renombrar_clases_homonimas.sql` | Unique class titles for public SEO pages |
+| `api/migrations/177_experiencias_alimentos_quiz.sql` | Quiz, activity and forum in the food-handling course experiences |
+| `api/migrations/178_videos_cursos_sin_video.sql` | Unit-level videos for the eight courses that had none |
+| `api/migrations/179_ajustes_experiencias.sql` | Grammar and clinical/aseptic/food case-option fixes for generated experiences |
+| `scripts/auditar-catalogo-aula.mjs` | Reproducible catalog audit (text, experiences, videos, assessments) |
+| `scripts/generar-experiencias-catalogo.mjs` | Builds class experiences from summaries, quizzes, activities and verified links |
+| `scripts/curar-videos-aula.mjs` | YouTube search + oEmbed verification for missing class videos |
+| `scripts/lib/experiencias-automaticas.mjs` | Pedagogical builder used by the experience generator |
 | `src/lib/retos.js` | Retos FST helpers: filters, progress, streak, YouTube, WhatsApp |
 | `src/components/retos/*` | Retos FST components (Card, Filters, GoalSelector, Progress, Video, Checkin, Completion, NutriFitCTA) |
 | `src/components/admin/RetosAdmin.jsx` | Retos FST admin UI (tab in `/admin/academia`) |

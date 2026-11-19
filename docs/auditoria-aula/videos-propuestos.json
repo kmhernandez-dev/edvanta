@@ -1,0 +1,1146 @@
+{
+  "generado": "2026-11-19T16:58:30.682Z",
+  "total_clases_sin_video": 880,
+  "procesadas": 100,
+  "propuestas": 32,
+  "descartadas": 68,
+  "videos": [
+    {
+      "clase_id": 10,
+      "curso_id": 2,
+      "curso": "Buenas Prácticas de Manufactura (BPM) en la Industria Farmacéutica",
+      "unidad": "De dónde salen las BPM",
+      "clase": "El marco normativo en Colombia",
+      "query": "El marco normativo en Colombia BPM buenas prácticas manufactura farmacéutica INVIMA",
+      "video": {
+        "id": "BTjUjZiBkwU",
+        "titulo": "Normatividad y buenas prácticas ,del servicio farmacéutico en Colombia Cenproef",
+        "canal": "Farmaliz ",
+        "canalUrl": "https://www.youtube.com/@YeimyGiron-xr2yf",
+        "duracion": "21:57",
+        "score": 10.666666666666666,
+        "cobertura": 0.67,
+        "coincidencias": [
+          "normativo",
+          "colombia"
+        ]
+      }
+    },
+    {
+      "clase_id": 11,
+      "curso_id": 2,
+      "curso": "Buenas Prácticas de Manufactura (BPM) en la Industria Farmacéutica",
+      "unidad": "De dónde salen las BPM",
+      "clase": "A quién obligan y qué certifica el INVIMA",
+      "query": "A quién obligan y qué certifica el INVIMA BPM buenas prácticas manufactura farmacéutica INVIMA",
+      "video": {
+        "id": "G0597qCFHN4",
+        "titulo": "Al día con Invima - Capítulo 5",
+        "canal": "Invima Colombia",
+        "canalUrl": "https://www.youtube.com/@InvimaColombiaOficial",
+        "duracion": "5:52",
+        "score": 6.5,
+        "cobertura": 0.25,
+        "coincidencias": [
+          "invima"
+        ]
+      }
+    },
+    {
+      "clase_id": 13,
+      "curso_id": 2,
+      "curso": "Buenas Prácticas de Manufactura (BPM) en la Industria Farmacéutica",
+      "unidad": "Las BPM en la planta",
+      "clase": "Instalaciones, áreas y equipos",
+      "query": "Instalaciones, áreas y equipos BPM buenas prácticas manufactura farmacéutica INVIMA",
+      "video": {
+        "id": "6qtIq5eqV5U",
+        "titulo": "Gestión de las BPM - 8 - Instalaciones",
+        "canal": "Margarita García",
+        "canalUrl": "https://www.youtube.com/@margaritagarcia8722",
+        "duracion": "30:58",
+        "score": 7.333333333333333,
+        "cobertura": 0.33,
+        "coincidencias": [
+          "instalaciones"
+        ]
+      }
+    },
+    {
+      "clase_id": 14,
+      "curso_id": 2,
+      "curso": "Buenas Prácticas de Manufactura (BPM) en la Industria Farmacéutica",
+      "unidad": "Las BPM en la planta",
+      "clase": "Documentación: lo que no está escrito no ocurrió",
+      "query": "Documentación: lo que no está escrito no ocurrió BPM buenas prácticas manufactura farmacéutica INVIMA",
+      "video": {
+        "id": "v1qiK65r9j4",
+        "titulo": "Buenas Practicas Documentación",
+        "canal": "Universidad Corporativa Farmaenlace",
+        "canalUrl": "https://www.youtube.com/@universidadcorporativafarm6454",
+        "duracion": "3:24",
+        "score": 7.333333333333333,
+        "cobertura": 0.33,
+        "coincidencias": [
+          "documentacion"
+        ]
+      }
+    },
+    {
+      "clase_id": 15,
+      "curso_id": 2,
+      "curso": "Buenas Prácticas de Manufactura (BPM) en la Industria Farmacéutica",
+      "unidad": "Sostener el cumplimiento",
+      "clase": "Desviaciones, cambios y CAPA",
+      "query": "Desviaciones, cambios y CAPA BPM buenas prácticas manufactura farmacéutica INVIMA",
+      "video": {
+        "id": "lxB9J8-NVzQ",
+        "titulo": "Guía de inspección BPM - Desviaciones - Digemid - Perú",
+        "canal": "Margarita García",
+        "canalUrl": "https://www.youtube.com/@margaritagarcia8722",
+        "duracion": "32:02",
+        "score": 7.333333333333333,
+        "cobertura": 0.33,
+        "coincidencias": [
+          "desviaciones"
+        ]
+      }
+    },
+    {
+      "clase_id": 25,
+      "curso_id": 3,
+      "curso": "Buenas Prácticas de Elaboración (BPE) y Preparaciones Magistrales",
+      "unidad": "Qué es una preparación magistral",
+      "clase": "El marco normativo colombiano",
+      "query": "El marco normativo colombiano preparaciones magistrales buenas prácticas elaboración farmacéutica",
+      "video": {
+        "id": "BTjUjZiBkwU",
+        "titulo": "Normatividad y buenas prácticas ,del servicio farmacéutico en Colombia Cenproef",
+        "canal": "Farmaliz ",
+        "canalUrl": "https://www.youtube.com/@YeimyGiron-xr2yf",
+        "duracion": "21:57",
+        "score": 10.666666666666666,
+        "cobertura": 0.67,
+        "coincidencias": [
+          "normativo",
+          "colombiano"
+        ]
+      }
+    },
+    {
+      "clase_id": 26,
+      "curso_id": 3,
+      "curso": "Buenas Prácticas de Elaboración (BPE) y Preparaciones Magistrales",
+      "unidad": "Qué es una preparación magistral",
+      "clase": "Qué no se puede preparar",
+      "query": "Qué no se puede preparar preparaciones magistrales buenas prácticas elaboración farmacéutica",
+      "video": {
+        "id": "iq-1XOICI6s",
+        "titulo": "¿Qué son las preparaciones magistrales?",
+        "canal": "Hospital Clínica Bíblica",
+        "canalUrl": "https://www.youtube.com/@hospitalclinicabiblica2876",
+        "duracion": "2:32",
+        "score": 8,
+        "cobertura": 0.5,
+        "coincidencias": [
+          "preparar"
+        ]
+      }
+    },
+    {
+      "clase_id": 23,
+      "curso_id": 3,
+      "curso": "Buenas Prácticas de Elaboración (BPE) y Preparaciones Magistrales",
+      "unidad": "El establecimiento y el proceso",
+      "clase": "La guía de elaboración y el etiquetado",
+      "query": "La guía de elaboración y el etiquetado preparaciones magistrales buenas prácticas elaboración farmacéutica",
+      "video": {
+        "id": "itf2TBE7XrQ",
+        "titulo": "Entrevista Alvin López  - Buenas prácticas de elaboración de medicamentos",
+        "canal": "Udearroba",
+        "canalUrl": "https://www.youtube.com/@udearrobaeducacionvirtual",
+        "duracion": "4:17",
+        "score": 7.333333333333333,
+        "cobertura": 0.33,
+        "coincidencias": [
+          "elaboracion"
+        ]
+      }
+    },
+    {
+      "clase_id": 31,
+      "curso_id": 4,
+      "curso": "Central de Mezclas: Preparaciones Estériles, BPE y Gestión de la Calidad",
+      "unidad": "Por qué lo estéril es distinto",
+      "clase": "Normativa aplicable",
+      "query": "Normativa aplicable preparaciones magistrales buenas prácticas elaboración farmacéutica",
+      "video": {
+        "id": "qwEhvdkNlyA",
+        "titulo": "📜 Normatividad aplicable a la industria farmacéutica 🏭💊 #Regulada #NormasFarmacéuticas",
+        "canal": "CEFIIN",
+        "canalUrl": "https://www.youtube.com/@cefiin",
+        "duracion": "10:17",
+        "score": 14,
+        "cobertura": 1,
+        "coincidencias": [
+          "normativa",
+          "aplicable"
+        ]
+      }
+    },
+    {
+      "clase_id": 32,
+      "curso_id": 4,
+      "curso": "Central de Mezclas: Preparaciones Estériles, BPE y Gestión de la Calidad",
+      "unidad": "Por qué lo estéril es distinto",
+      "clase": "Niveles de riesgo de una preparación",
+      "query": "Niveles de riesgo de una preparación preparaciones magistrales buenas prácticas elaboración farmacéutica",
+      "video": {
+        "id": "qfMHiBpiDbs",
+        "titulo": "ELABORACIÓN DE PREPARADOS FARMACÉUTICOS - PARTE 1",
+        "canal": "Hospital II-1 Rioja",
+        "canalUrl": "https://www.youtube.com/@hospitalii-1rioja320",
+        "duracion": "41:38",
+        "score": 7.333333333333333,
+        "cobertura": 0.33,
+        "coincidencias": [
+          "preparacion"
+        ]
+      }
+    },
+    {
+      "clase_id": 34,
+      "curso_id": 4,
+      "curso": "Central de Mezclas: Preparaciones Estériles, BPE y Gestión de la Calidad",
+      "unidad": "Áreas limpias y técnica aséptica",
+      "clase": "Cabinas de seguridad y flujo laminar",
+      "query": "Cabinas de seguridad y flujo laminar preparaciones magistrales buenas prácticas elaboración farmacéutica",
+      "video": {
+        "id": "ypWotK2hYOI",
+        "titulo": "GMP en la Industria Farmacéutica 🏭 | Agua Purificada, Vapor y Flujo Laminar con Filtros HEPA",
+        "canal": "Mantenimiento Farmacéutico con Michael",
+        "canalUrl": "https://www.youtube.com/@MichaelCastrillon-e9e",
+        "duracion": "4:46",
+        "score": 9,
+        "cobertura": 0.5,
+        "coincidencias": [
+          "flujo",
+          "laminar"
+        ]
+      }
+    },
+    {
+      "clase_id": 35,
+      "curso_id": 4,
+      "curso": "Central de Mezclas: Preparaciones Estériles, BPE y Gestión de la Calidad",
+      "unidad": "Áreas limpias y técnica aséptica",
+      "clase": "Técnica aséptica y su validación",
+      "query": "Técnica aséptica y su validación preparaciones magistrales buenas prácticas elaboración farmacéutica",
+      "video": {
+        "id": "PIY_lVJ99v0",
+        "titulo": "WEBINAR - Validación de Desinfectantes: Requisitos reales y prácticas habituales de la industria",
+        "canal": "Bioanálisis Farmacéuticos SAS",
+        "canalUrl": "https://www.youtube.com/@bioanalisisfarmaceuticossa1269",
+        "duracion": "49:34",
+        "score": 7.333333333333333,
+        "cobertura": 0.33,
+        "coincidencias": [
+          "validacion"
+        ]
+      }
+    },
+    {
+      "clase_id": 28,
+      "curso_id": 4,
+      "curso": "Central de Mezclas: Preparaciones Estériles, BPE y Gestión de la Calidad",
+      "unidad": "Gestión de la calidad en la central",
+      "clase": "Estabilidad, trazabilidad y documentación",
+      "query": "Estabilidad, trazabilidad y documentación preparaciones magistrales buenas prácticas elaboración farmacéutica",
+      "video": {
+        "id": "SbVIdMRM_vw",
+        "titulo": "Curso-Taller  #02 ¿Cómo aplicar las buenas practicas de documentación en la farmacia?",
+        "canal": "CEFIIN",
+        "canalUrl": "https://www.youtube.com/@cefiin",
+        "duracion": "29:45",
+        "score": 7.333333333333333,
+        "cobertura": 0.33,
+        "coincidencias": [
+          "documentacion"
+        ]
+      }
+    },
+    {
+      "clase_id": 29,
+      "curso_id": 4,
+      "curso": "Central de Mezclas: Preparaciones Estériles, BPE y Gestión de la Calidad",
+      "unidad": "Gestión de la calidad en la central",
+      "clase": "Mezclas oncológicas y seguridad de quien prepara",
+      "query": "Mezclas oncológicas y seguridad de quien prepara preparaciones magistrales buenas prácticas elaboración farmacéutica",
+      "video": {
+        "id": "ffUV0-UJ0t0",
+        "titulo": "Farmacia oncológica: Preparación del campo de trabajo",
+        "canal": "Instituto Nacional del Cáncer Argentina",
+        "canalUrl": "https://www.youtube.com/@InstNacCancerArg",
+        "duracion": "6:50",
+        "score": 8,
+        "cobertura": 0.4,
+        "coincidencias": [
+          "oncologicas",
+          "prepara"
+        ]
+      }
+    },
+    {
+      "clase_id": 42,
+      "curso_id": 5,
+      "curso": "Asuntos Regulatorios Sanitarios ante INVIMA",
+      "unidad": "El sistema sanitario colombiano",
+      "clase": "Qué es el INVIMA y qué vigila",
+      "query": "Qué es el INVIMA y qué vigila INVIMA regulación farmacéutica Colombia",
+      "video": {
+        "id": "LGXqG2NyF28",
+        "titulo": "El Invima prorroga plan de contingencia para trámites de registro sanitario de medicamentos",
+        "canal": "Invima Colombia",
+        "canalUrl": "https://www.youtube.com/@InvimaColombiaOficial",
+        "duracion": "4:25",
+        "score": 9,
+        "cobertura": 0.5,
+        "coincidencias": [
+          "invima"
+        ]
+      }
+    },
+    {
+      "clase_id": 40,
+      "curso_id": 5,
+      "curso": "Asuntos Regulatorios Sanitarios ante INVIMA",
+      "unidad": "El registro sanitario, paso a paso",
+      "clase": "Evaluación farmacológica y farmacéutica",
+      "query": "Evaluación farmacológica y farmacéutica INVIMA regulación farmacéutica Colombia",
+      "video": {
+        "id": "HFCtUib-hSI",
+        "titulo": "SESIÓN 1. LEGISLACION FARMACÉUTICA COLOMBIA",
+        "canal": "Escuela Latinoamericana de Farmacia",
+        "canalUrl": "https://www.youtube.com/@escuelafarmaceutica",
+        "duracion": "37:45",
+        "score": 10.666666666666666,
+        "cobertura": 0.67,
+        "coincidencias": [
+          "farmacologica",
+          "farmaceutica"
+        ]
+      }
+    },
+    {
+      "clase_id": 41,
+      "curso_id": 5,
+      "curso": "Asuntos Regulatorios Sanitarios ante INVIMA",
+      "unidad": "El registro sanitario, paso a paso",
+      "clase": "Requerimientos y cómo responderlos",
+      "query": "Requerimientos y cómo responderlos INVIMA regulación farmacéutica Colombia",
+      "video": {
+        "id": "q-SAATlgzdQ",
+        "titulo": "Subsanar y responder requerimientos.",
+        "canal": "Invima Colombia",
+        "canalUrl": "https://www.youtube.com/@InvimaColombiaOficial",
+        "duracion": "14:38",
+        "score": 14,
+        "cobertura": 1,
+        "coincidencias": [
+          "requerimientos",
+          "responderlos"
+        ]
+      }
+    },
+    {
+      "clase_id": 36,
+      "curso_id": 5,
+      "curso": "Asuntos Regulatorios Sanitarios ante INVIMA",
+      "unidad": "Después del registro",
+      "clase": "Modificaciones y renovaciones",
+      "query": "Modificaciones y renovaciones INVIMA regulación farmacéutica Colombia",
+      "video": {
+        "id": "0ea3MUoaeuc",
+        "titulo": "Webinar: Módulo de modificaciones",
+        "canal": "Invima Colombia",
+        "canalUrl": "https://www.youtube.com/@InvimaColombiaOficial",
+        "duracion": "1:08:56",
+        "score": 9,
+        "cobertura": 0.5,
+        "coincidencias": [
+          "modificaciones"
+        ]
+      }
+    },
+    {
+      "clase_id": 37,
+      "curso_id": 5,
+      "curso": "Asuntos Regulatorios Sanitarios ante INVIMA",
+      "unidad": "Después del registro",
+      "clase": "Farmacovigilancia y poscomercialización",
+      "query": "Farmacovigilancia y poscomercialización INVIMA regulación farmacéutica Colombia",
+      "video": {
+        "id": "9dEGNB5MlsA",
+        "titulo": "Capacitación Farmacovigilancia",
+        "canal": "Hospital Departamental de Villavicencio E.S.E.",
+        "canalUrl": "https://www.youtube.com/@hospvillavo",
+        "duracion": "4:44",
+        "score": 9,
+        "cobertura": 0.5,
+        "coincidencias": [
+          "farmacovigilancia"
+        ]
+      }
+    },
+    {
+      "clase_id": 38,
+      "curso_id": 5,
+      "curso": "Asuntos Regulatorios Sanitarios ante INVIMA",
+      "unidad": "Después del registro",
+      "clase": "Publicidad, visitas y sanciones",
+      "query": "Publicidad, visitas y sanciones INVIMA regulación farmacéutica Colombia",
+      "video": {
+        "id": "_xzXiFf-urk",
+        "titulo": "#Entérate de todo lo que debes saber sobre la publicidad de 💊 medicamentos de venta libre☝️",
+        "canal": "Invima Colombia",
+        "canalUrl": "https://www.youtube.com/@InvimaColombiaOficial",
+        "duracion": "3:32",
+        "score": 7.333333333333333,
+        "cobertura": 0.33,
+        "coincidencias": [
+          "publicidad"
+        ]
+      }
+    },
+    {
+      "clase_id": 50,
+      "curso_id": 6,
+      "curso": "Validaciones y Calificaciones en la Industria Farmacéutica",
+      "unidad": "Calificar y validar no es lo mismo",
+      "clase": "El enfoque de ciclo de vida y el Plan Maestro",
+      "query": "El enfoque de ciclo de vida y el Plan Maestro validación calificación equipos procesos farmacéutica",
+      "video": {
+        "id": "DVBN_Gft3uI",
+        "titulo": "Plan Maestro de Validación",
+        "canal": "QFB Farma",
+        "canalUrl": "https://www.youtube.com/@qfbfarma8040",
+        "duracion": "9:55",
+        "score": 8,
+        "cobertura": 0.4,
+        "coincidencias": [
+          "plan",
+          "maestro"
+        ]
+      }
+    },
+    {
+      "clase_id": 53,
+      "curso_id": 6,
+      "curso": "Validaciones y Calificaciones en la Industria Farmacéutica",
+      "unidad": "Validación de procesos, limpieza y métodos",
+      "clase": "Validación de métodos analíticos",
+      "query": "Validación de métodos analíticos validación calificación equipos procesos farmacéutica",
+      "video": {
+        "id": "HwLpG1YL7UY",
+        "titulo": "Validación de Métodos Analíticos",
+        "canal": "AP Resolve Industria Farmacéutica y de la Salud",
+        "canalUrl": "https://www.youtube.com/@apresolveindustriafarmaceu3454",
+        "duracion": "44:31",
+        "score": 14,
+        "cobertura": 1,
+        "coincidencias": [
+          "validacion",
+          "metodos",
+          "analiticos"
+        ]
+      }
+    },
+    {
+      "clase_id": 79,
+      "curso_id": 7,
+      "curso": "Curso de Gestión de Calidad Farmacéutica",
+      "unidad": "Unidad 4. Enfoque por procesos, indicadores y revisión por la dirección",
+      "clase": "Métricas de calidad farmacéutica: lotes rechazados, quejas, desviaciones y CAPA",
+      "query": "Métricas de calidad farmacéutica: lotes rechazados, quejas, desviaciones y CAPA calidad farmacéutica laboratorio",
+      "video": {
+        "id": "ssFIvywjmZs",
+        "titulo": "Manejo de Desviaciones",
+        "canal": "QFB Farma",
+        "canalUrl": "https://www.youtube.com/@qfbfarma8040",
+        "duracion": "8:18",
+        "score": 5.25,
+        "cobertura": 0.13,
+        "coincidencias": [
+          "desviaciones"
+        ]
+      }
+    },
+    {
+      "clase_id": 92,
+      "curso_id": 8,
+      "curso": "Curso de Aseguramiento de la Calidad Farmacéutica",
+      "unidad": "Unidad 1. Fundamentos del Aseguramiento de la Calidad farmacéutica y marco normativo colombiano",
+      "clase": "QA dentro del Sistema de Calidad Farmacéutico (ICH Q10)",
+      "query": "QA dentro del Sistema de Calidad Farmacéutico (ICH Q10) calidad farmacéutica laboratorio",
+      "video": {
+        "id": "fz1Ljvf8aoY",
+        "titulo": "ICH Q10 Pharmaceutical Quality System PQS",
+        "canal": "Pharma Learning In Depth",
+        "canalUrl": "https://www.youtube.com/@vijayagrawal2628",
+        "duracion": "7:16",
+        "score": 11.5,
+        "cobertura": 0.75,
+        "coincidencias": [
+          "sistema",
+          "calidad",
+          "farmaceutico"
+        ]
+      }
+    },
+    {
+      "clase_id": 127,
+      "curso_id": 9,
+      "curso": "Curso de Control de Calidad de Medicamentos",
+      "unidad": "Unidad 1. El laboratorio de control de calidad y su marco normativo en Colombia",
+      "clase": "Resolución 3619 de 2013: BPL para laboratorios de control de calidad",
+      "query": "Resolución 3619 de 2013: BPL para laboratorios de control de calidad calidad farmacéutica laboratorio",
+      "video": {
+        "id": "6E6Yz_GOPc8",
+        "titulo": "Laboratorio de Control de Calidad, Buenas Prácticas de Fabricación de Dispositivos Médicos",
+        "canal": "AP Resolve Industria Farmacéutica y de la Salud",
+        "canalUrl": "https://www.youtube.com/@apresolveindustriafarmaceu3454",
+        "duracion": "15:42",
+        "score": 9,
+        "cobertura": 0.5,
+        "coincidencias": [
+          "laboratorios",
+          "control",
+          "calidad"
+        ]
+      }
+    },
+    {
+      "clase_id": 132,
+      "curso_id": 9,
+      "curso": "Curso de Control de Calidad de Medicamentos",
+      "unidad": "Unidad 2. Especificaciones, farmacopeas, muestreo y estándares de referencia",
+      "clase": "Establecimiento de especificaciones (ICH Q6A)",
+      "query": "Establecimiento de especificaciones (ICH Q6A) calidad farmacéutica laboratorio",
+      "video": {
+        "id": "Ov9SHN1jGzc",
+        "titulo": "ICH Q6 Explained: Specifications, Q6A vs. Q6B, and the Q6(R1) Update",
+        "canal": "Let's Combinate: Pharma + Medical Devices",
+        "canalUrl": "https://www.youtube.com/@LetsCombinate",
+        "duracion": "6:58",
+        "score": 9,
+        "cobertura": 0.5,
+        "coincidencias": [
+          "especificaciones"
+        ]
+      }
+    },
+    {
+      "clase_id": 153,
+      "curso_id": 9,
+      "curso": "Curso de Control de Calidad de Medicamentos",
+      "unidad": "Unidad 4. Control microbiológico y estudios de estabilidad",
+      "clase": "Zona climática IVb, normativa colombiana y vida útil",
+      "query": "Zona climática IVb, normativa colombiana y vida útil calidad farmacéutica laboratorio",
+      "video": {
+        "id": "HFCtUib-hSI",
+        "titulo": "SESIÓN 1. LEGISLACION FARMACÉUTICA COLOMBIA",
+        "canal": "Escuela Latinoamericana de Farmacia",
+        "canalUrl": "https://www.youtube.com/@escuelafarmaceutica",
+        "duracion": "37:45",
+        "score": 5.666666666666666,
+        "cobertura": 0.17,
+        "coincidencias": [
+          "colombiana"
+        ]
+      }
+    },
+    {
+      "clase_id": 164,
+      "curso_id": 10,
+      "curso": "Curso de Buenas Prácticas de Manufactura — BPM",
+      "unidad": "Unidad 1. Fundamentos y marco regulatorio de las BPM en Colombia",
+      "clase": "Resolución 1160 de 2016: manuales y guías de inspección",
+      "query": "Resolución 1160 de 2016: manuales y guías de inspección BPM buenas prácticas manufactura farmacéutica INVIMA",
+      "video": {
+        "id": "UXasLRL4dNo",
+        "titulo": "Guía inspección BPM - Digemid - Perú",
+        "canal": "Margarita García",
+        "canalUrl": "https://www.youtube.com/@margaritagarcia8722",
+        "duracion": "43:34",
+        "score": 5.666666666666666,
+        "cobertura": 0.17,
+        "coincidencias": [
+          "inspeccion"
+        ]
+      }
+    },
+    {
+      "clase_id": 169,
+      "curso_id": 10,
+      "curso": "Curso de Buenas Prácticas de Manufactura — BPM",
+      "unidad": "Unidad 2. Personal, instalaciones, equipos y sistemas de apoyo crítico",
+      "clase": "Diseño de instalaciones: flujos, esclusas y acabados sanitarios",
+      "query": "Diseño de instalaciones: flujos, esclusas y acabados sanitarios BPM buenas prácticas manufactura farmacéutica INVIMA",
+      "video": {
+        "id": "6qtIq5eqV5U",
+        "titulo": "Gestión de las BPM - 8 - Instalaciones",
+        "canal": "Margarita García",
+        "canalUrl": "https://www.youtube.com/@margaritagarcia8722",
+        "duracion": "30:58",
+        "score": 5.666666666666666,
+        "cobertura": 0.17,
+        "coincidencias": [
+          "instalaciones"
+        ]
+      }
+    },
+    {
+      "clase_id": 172,
+      "curso_id": 10,
+      "curso": "Curso de Buenas Prácticas de Manufactura — BPM",
+      "unidad": "Unidad 2. Personal, instalaciones, equipos y sistemas de apoyo crítico",
+      "clase": "Sistemas HVAC: presiones diferenciales, filtración y renovaciones de aire",
+      "query": "Sistemas HVAC: presiones diferenciales, filtración y renovaciones de aire BPM buenas prácticas manufactura farmacéutica INVIMA",
+      "video": {
+        "id": "PeCSt7uSu5E",
+        "titulo": "𝐂𝐡𝐚𝐫𝐥𝐚: Balance de Caudales y presiones diferenciales en Laboratorios | 𝐈𝐧𝐠. 𝐌𝐚𝐧𝐮𝐞𝐥 𝐀𝐳𝐚𝐡𝐮𝐚𝐧𝐜𝐡𝐞 𝐀𝐬𝐦𝐚𝐭",
+        "canal": "Instituto Internacional de Climatización",
+        "canalUrl": "https://www.youtube.com/@institutointernacionaldecl6557",
+        "duracion": "1:27:30",
+        "score": 6.857142857142857,
+        "cobertura": 0.29,
+        "coincidencias": [
+          "presiones",
+          "diferenciales"
+        ]
+      }
+    },
+    {
+      "clase_id": 173,
+      "curso_id": 10,
+      "curso": "Curso de Buenas Prácticas de Manufactura — BPM",
+      "unidad": "Unidad 2. Personal, instalaciones, equipos y sistemas de apoyo crítico",
+      "clase": "Clasificación de áreas limpias: ISO 14644 y grados OMS/GMP",
+      "query": "Clasificación de áreas limpias: ISO 14644 y grados OMS/GMP BPM buenas prácticas manufactura farmacéutica INVIMA",
+      "video": {
+        "id": "DhR5I6iwnV4",
+        "titulo": "Cleanrooms: Classification, GMP Standards, Grades A B C D, ISO 14644 in Pharma Industry ",
+        "canal": "GMP GUIDE",
+        "canalUrl": "https://www.youtube.com/@GMPGUIDE",
+        "duracion": "8:16",
+        "score": 12,
+        "cobertura": 0.8,
+        "coincidencias": [
+          "clasificacion",
+          "limpias",
+          "14644",
+          "grados"
+        ]
+      }
+    },
+    {
+      "clase_id": 184,
+      "curso_id": 10,
+      "curso": "Curso de Buenas Prácticas de Manufactura — BPM",
+      "unidad": "Unidad 4. Productos estériles (Anexo 1)",
+      "clase": "Grados A-D, monitoreo ambiental y estrategia de control de la contaminación (CCS)",
+      "query": "Grados A-D, monitoreo ambiental y estrategia de control de la contaminación (CCS) BPM buenas prácticas manufactura farmacéutica IN",
+      "video": {
+        "id": "z-f-UCThi0o",
+        "titulo": "WEBINAR - Monitoreo Ambiental en Áreas Limpias: Guía de Cumplimiento Normativo",
+        "canal": "Bioanálisis Farmacéuticos SAS",
+        "canalUrl": "https://www.youtube.com/@bioanalisisfarmaceuticossa1269",
+        "duracion": "1:08:44",
+        "score": 7.333333333333333,
+        "cobertura": 0.33,
+        "coincidencias": [
+          "monitoreo",
+          "ambiental"
+        ]
+      }
+    }
+  ],
+  "sin_video": [
+    {
+      "clase_id": 16,
+      "curso": "Buenas Prácticas de Manufactura (BPM) en la Industria Farmacéutica",
+      "clase": "Autoinspección y gestión de riesgos",
+      "query": "Autoinspección y gestión de riesgos BPM buenas prácticas manufactura farmacéutica INVIMA",
+      "motivo": "sin candidato con coincidencia y canal confiable"
+    },
+    {
+      "clase_id": 17,
+      "curso": "Buenas Prácticas de Manufactura (BPM) en la Industria Farmacéutica",
+      "clase": "Cómo se prepara una visita del INVIMA",
+      "query": "Cómo se prepara una visita del INVIMA BPM buenas prácticas manufactura farmacéutica INVIMA",
+      "motivo": "sin candidato con coincidencia y canal confiable"
+    },
+    {
+      "clase_id": 21,
+      "curso": "Buenas Prácticas de Elaboración (BPE) y Preparaciones Magistrales",
+      "clase": "Áreas, equipos y condiciones",
+      "query": "Áreas, equipos y condiciones preparaciones magistrales buenas prácticas elaboración farmacéutica",
+      "motivo": "sin candidato con coincidencia y canal confiable"
+    },
+    {
+      "clase_id": 22,
+      "curso": "Buenas Prácticas de Elaboración (BPE) y Preparaciones Magistrales",
+      "clase": "Materias primas y agua",
+      "query": "Materias primas y agua preparaciones magistrales buenas prácticas elaboración farmacéutica",
+      "motivo": "sin candidato con coincidencia y canal confiable"
+    },
+    {
+      "clase_id": 18,
+      "curso": "Buenas Prácticas de Elaboración (BPE) y Preparaciones Magistrales",
+      "clase": "Controles de calidad posibles",
+      "query": "Controles de calidad posibles preparaciones magistrales buenas prácticas elaboración farmacéutica",
+      "motivo": "sin candidato con coincidencia y canal confiable"
+    },
+    {
+      "clase_id": 19,
+      "curso": "Buenas Prácticas de Elaboración (BPE) y Preparaciones Magistrales",
+      "clase": "Estabilidad y fecha límite de uso",
+      "query": "Estabilidad y fecha límite de uso preparaciones magistrales buenas prácticas elaboración farmacéutica",
+      "motivo": "sin candidato con coincidencia y canal confiable"
+    },
+    {
+      "clase_id": 30,
+      "curso": "Central de Mezclas: Preparaciones Estériles, BPE y Gestión de la Calidad",
+      "clase": "El riesgo que se está conteniendo",
+      "query": "El riesgo que se está conteniendo preparaciones magistrales buenas prácticas elaboración farmacéutica",
+      "motivo": "sin candidato con coincidencia y canal confiable"
+    },
+    {
+      "clase_id": 27,
+      "curso": "Central de Mezclas: Preparaciones Estériles, BPE y Gestión de la Calidad",
+      "clase": "Controles ambientales y de personal",
+      "query": "Controles ambientales y de personal preparaciones magistrales buenas prácticas elaboración farmacéutica",
+      "motivo": "sin candidato con coincidencia y canal confiable"
+    },
+    {
+      "clase_id": 43,
+      "curso": "Asuntos Regulatorios Sanitarios ante INVIMA",
+      "clase": "Cómo se clasifica un producto",
+      "query": "Cómo se clasifica un producto INVIMA regulación farmacéutica Colombia",
+      "motivo": "sin candidato con coincidencia y canal confiable"
+    },
+    {
+      "clase_id": 39,
+      "curso": "Asuntos Regulatorios Sanitarios ante INVIMA",
+      "clase": "Qué lleva el expediente",
+      "query": "Qué lleva el expediente INVIMA regulación farmacéutica Colombia",
+      "motivo": "sin candidato con coincidencia y canal confiable"
+    },
+    {
+      "clase_id": 48,
+      "curso": "Validaciones y Calificaciones en la Industria Farmacéutica",
+      "clase": "Los dos conceptos y su diferencia",
+      "query": "Los dos conceptos y su diferencia validación calificación equipos procesos farmacéutica",
+      "motivo": "sin candidato con coincidencia y canal confiable"
+    },
+    {
+      "clase_id": 49,
+      "curso": "Validaciones y Calificaciones en la Industria Farmacéutica",
+      "clase": "De dónde viene la exigencia",
+      "query": "De dónde viene la exigencia validación calificación equipos procesos farmacéutica",
+      "motivo": "sin candidato con coincidencia y canal confiable"
+    },
+    {
+      "clase_id": 45,
+      "curso": "Validaciones y Calificaciones en la Industria Farmacéutica",
+      "clase": "DQ, IQ, OQ y PQ",
+      "query": "DQ, IQ, OQ y PQ validación calificación equipos procesos farmacéutica",
+      "motivo": "sin candidato con coincidencia y canal confiable"
+    },
+    {
+      "clase_id": 47,
+      "curso": "Validaciones y Calificaciones en la Industria Farmacéutica",
+      "clase": "Protocolos, desviaciones y recalificación",
+      "query": "Protocolos, desviaciones y recalificación validación calificación equipos procesos farmacéutica",
+      "motivo": "sin candidato con coincidencia y canal confiable"
+    },
+    {
+      "clase_id": 62,
+      "curso": "Curso de Gestión de Calidad Farmacéutica",
+      "clase": "Cambios con impacto en la calidad y su trámite ante el INVIMA",
+      "query": "Cambios con impacto en la calidad y su trámite ante el INVIMA calidad farmacéutica laboratorio",
+      "motivo": "sin candidato con coincidencia y canal confiable"
+    },
+    {
+      "clase_id": 70,
+      "curso": "Curso de Gestión de Calidad Farmacéutica",
+      "clase": "Los cuatro elementos del PQS y su equivalente en las BPM europeas/PIC/S",
+      "query": "Los cuatro elementos del PQS y su equivalente en las BPM europeas/PIC/S calidad farmacéutica laboratorio",
+      "motivo": "sin candidato con coincidencia y canal confiable"
+    },
+    {
+      "clase_id": 95,
+      "curso": "Curso de Aseguramiento de la Calidad Farmacéutica",
+      "clase": "Referentes internacionales: OMS, PIC/S, ICH, FDA y EMA",
+      "query": "Referentes internacionales: OMS, PIC/S, ICH, FDA y EMA calidad farmacéutica laboratorio",
+      "motivo": "sin candidato con coincidencia y canal confiable"
+    },
+    {
+      "clase_id": 112,
+      "curso": "Curso de Aseguramiento de la Calidad Farmacéutica",
+      "clase": "Introducción: demostrar que el proceso y los datos son confiables",
+      "query": "Introducción: demostrar que el proceso y los datos son confiables calidad farmacéutica laboratorio",
+      "motivo": "sin candidato con coincidencia y canal confiable"
+    },
+    {
+      "clase_id": 128,
+      "curso": "Curso de Control de Calidad de Medicamentos",
+      "clase": "Requisitos de control de calidad en las BPM (Res. 1160/2016) y en el registro sanitario",
+      "query": "Requisitos de control de calidad en las BPM (Res. 1160/2016) y en el registro sanitario calidad farmacéutica laboratorio",
+      "motivo": "sin candidato con coincidencia y canal confiable"
+    },
+    {
+      "clase_id": 161,
+      "curso": "Curso de Buenas Prácticas de Manufactura — BPM",
+      "clase": "Informes técnicos de la OMS: Informe 32 (TRS 823), TRS 961 y TRS 986",
+      "query": "Informes técnicos de la OMS: Informe 32 (TRS 823), TRS 961 y TRS 986 BPM buenas prácticas manufactura farmacéutica INVIMA",
+      "motivo": "sin candidato con coincidencia y canal confiable"
+    },
+    {
+      "clase_id": 162,
+      "curso": "Curso de Buenas Prácticas de Manufactura — BPM",
+      "clase": "PIC/S y la convergencia regulatoria internacional",
+      "query": "PIC/S y la convergencia regulatoria internacional BPM buenas prácticas manufactura farmacéutica INVIMA",
+      "motivo": "sin candidato con coincidencia y canal confiable"
+    },
+    {
+      "clase_id": 163,
+      "curso": "Curso de Buenas Prácticas de Manufactura — BPM",
+      "clase": "Decreto 677 de 1995 y Decreto 549 de 2001: base legal de la fabricación y la certificación",
+      "query": "Decreto 677 de 1995 y Decreto 549 de 2001: base legal de la fabricación y la certificación BPM buenas prácticas manufactura farmac",
+      "motivo": "sin candidato con coincidencia y canal confiable"
+    },
+    {
+      "clase_id": 165,
+      "curso": "Curso de Buenas Prácticas de Manufactura — BPM",
+      "clase": "Normas especiales: Res. 3028/2008 (áreas especiales), fitoterapéuticos (Res. 3131/1998, Decreto 2266/2004)",
+      "query": "Normas especiales: Res. 3028/2008 (áreas especiales), fitoterapéuticos (Res. 3131/1998, Decreto 2266/2004) BPM buenas prácticas ma",
+      "motivo": "sin candidato con coincidencia y canal confiable"
+    },
+    {
+      "clase_id": 176,
+      "curso": "Curso de Buenas Prácticas de Manufactura — BPM",
+      "clase": "Áreas y productos de alto riesgo: betalactámicos, hormonas y citostáticos",
+      "query": "Áreas y productos de alto riesgo: betalactámicos, hormonas y citostáticos BPM buenas prácticas manufactura farmacéutica INVIMA",
+      "motivo": "sin candidato con coincidencia y canal confiable"
+    },
+    {
+      "clase_id": 180,
+      "curso": "Curso de Buenas Prácticas de Manufactura — BPM",
+      "clase": "Recepción, cuarentena, muestreo y liberación de materias primas",
+      "query": "Recepción, cuarentena, muestreo y liberación de materias primas BPM buenas prácticas manufactura farmacéutica INVIMA",
+      "motivo": "sin candidato con coincidencia y canal confiable"
+    },
+    {
+      "clase_id": 182,
+      "curso": "Curso de Buenas Prácticas de Manufactura — BPM",
+      "clase": "Introducción a la unidad: por qué los estériles son distintos",
+      "query": "por qué los estériles son distintos BPM buenas prácticas manufactura farmacéutica INVIMA",
+      "motivo": "sin candidato con coincidencia y canal confiable"
+    },
+    {
+      "clase_id": 183,
+      "curso": "Curso de Buenas Prácticas de Manufactura — BPM",
+      "clase": "Anexo 1 (2022) y TRS 1044: principales cambios",
+      "query": "Anexo 1 (2022) y TRS 1044: principales cambios BPM buenas prácticas manufactura farmacéutica INVIMA",
+      "motivo": "sin candidato con coincidencia y canal confiable"
+    },
+    {
+      "clase_id": 187,
+      "curso": "Curso de Buenas Prácticas de Manufactura — BPM",
+      "clase": "Introducción a la unidad: del cumplimiento interno a la certificación",
+      "query": "del cumplimiento interno a la certificación BPM buenas prácticas manufactura farmacéutica INVIMA",
+      "motivo": "sin candidato con coincidencia y canal confiable"
+    },
+    {
+      "clase_id": 188,
+      "curso": "Curso de Buenas Prácticas de Manufactura — BPM",
+      "clase": "Requisitos BPM para la fabricación y el análisis por contrato",
+      "query": "Requisitos BPM para la fabricación y el análisis por contrato BPM buenas prácticas manufactura farmacéutica INVIMA",
+      "motivo": "sin candidato con coincidencia y canal confiable"
+    },
+    {
+      "clase_id": 192,
+      "curso": "Curso de Buenas Prácticas de Manufactura — BPM",
+      "clase": "Procedimiento de certificación: Decreto 335 de 2022",
+      "query": "Procedimiento de certificación: Decreto 335 de 2022 BPM buenas prácticas manufactura farmacéutica INVIMA",
+      "motivo": "sin candidato con coincidencia y canal confiable"
+    },
+    {
+      "clase_id": 195,
+      "curso": "Curso de Buenas Prácticas de Laboratorio — BPL",
+      "clase": "Resolución 3619 de 2013: estructura y alcance",
+      "query": "Resolución 3619 de 2013: estructura y alcance calidad farmacéutica laboratorio",
+      "motivo": "sin candidato con coincidencia y canal confiable"
+    },
+    {
+      "clase_id": 197,
+      "curso": "Curso de Buenas Prácticas de Laboratorio — BPL",
+      "clase": "Principios BPL de la OCDE para estudios no clínicos",
+      "query": "Principios BPL de la OCDE para estudios no clínicos calidad farmacéutica laboratorio",
+      "motivo": "sin candidato con coincidencia y canal confiable"
+    },
+    {
+      "clase_id": 203,
+      "curso": "Curso de Buenas Prácticas de Laboratorio — BPL",
+      "clase": "Ensayos de aptitud y comparaciones interlaboratorio",
+      "query": "Ensayos de aptitud y comparaciones interlaboratorio calidad farmacéutica laboratorio",
+      "motivo": "sin candidato con coincidencia y canal confiable"
+    },
+    {
+      "clase_id": 205,
+      "curso": "Curso de Buenas Prácticas de Laboratorio — BPL",
+      "clase": "Organización, responsabilidades y control documental del laboratorio",
+      "query": "Organización, responsabilidades y control documental del laboratorio calidad farmacéutica laboratorio",
+      "motivo": "sin candidato con coincidencia y canal confiable"
+    },
+    {
+      "clase_id": 214,
+      "curso": "Curso de Buenas Prácticas de Laboratorio — BPL",
+      "clase": "Introducción a la unidad: materiales y datos confiables",
+      "query": "materiales y datos confiables calidad farmacéutica laboratorio",
+      "motivo": "sin candidato con coincidencia y canal confiable"
+    },
+    {
+      "clase_id": 221,
+      "curso": "Curso de Buenas Prácticas de Laboratorio — BPL",
+      "clase": "Introducción a la unidad: laboratorio seguro, ambientalmente responsable y certificable",
+      "query": "laboratorio seguro, ambientalmente responsable y certificable calidad farmacéutica laboratorio",
+      "motivo": "sin candidato con coincidencia y canal confiable"
+    },
+    {
+      "clase_id": 226,
+      "curso": "Curso de Buenas Prácticas de Laboratorio — BPL",
+      "clase": "Proceso de certificación BPL y guía de evaluación",
+      "query": "Proceso de certificación BPL y guía de evaluación calidad farmacéutica laboratorio",
+      "motivo": "sin candidato con coincidencia y canal confiable"
+    },
+    {
+      "clase_id": 227,
+      "curso": "Curso de Buenas Prácticas de Laboratorio — BPL",
+      "clase": "Clasificación de no conformidades basada en riesgo",
+      "query": "Clasificación de no conformidades basada en riesgo calidad farmacéutica laboratorio",
+      "motivo": "sin candidato con coincidencia y canal confiable"
+    },
+    {
+      "clase_id": 233,
+      "curso": "Curso de Buenas Prácticas de Documentación Farmacéutica",
+      "clase": "Referentes internacionales: OMS, PIC/S, FDA y EMA",
+      "query": "Referentes internacionales: OMS, PIC/S, FDA y EMA calidad farmacéutica laboratorio",
+      "motivo": "sin candidato con coincidencia y canal confiable"
+    },
+    {
+      "clase_id": 253,
+      "curso": "Curso de Buenas Prácticas de Documentación Farmacéutica",
+      "clase": "Introducción a la unidad",
+      "query": " calidad farmacéutica laboratorio",
+      "motivo": "sin candidato con coincidencia y canal confiable"
+    },
+    {
+      "clase_id": 262,
+      "curso": "Curso de Auditoría de Calidad Farmacéutica",
+      "clase": "Resoluciones 1160 de 2016 y 3619 de 2013 como criterios de auditoría",
+      "query": "Resoluciones 1160 de 2016 y 3619 de 2013 como criterios de auditoría calidad farmacéutica laboratorio",
+      "motivo": "sin candidato con coincidencia y canal confiable"
+    },
+    {
+      "clase_id": 264,
+      "curso": "Curso de Auditoría de Calidad Farmacéutica",
+      "clase": "La inspección INVIMA: certificaciones, actas y medidas sanitarias",
+      "query": "La inspección INVIMA: certificaciones, actas y medidas sanitarias calidad farmacéutica laboratorio",
+      "motivo": "sin candidato con coincidencia y canal confiable"
+    },
+    {
+      "clase_id": 278,
+      "curso": "Curso de Auditoría de Calidad Farmacéutica",
+      "clase": "Introducción a la unidad: de la evidencia a la mejora",
+      "query": "de la evidencia a la mejora calidad farmacéutica laboratorio",
+      "motivo": "sin candidato con coincidencia y canal confiable"
+    },
+    {
+      "clase_id": 280,
+      "curso": "Curso de Auditoría de Calidad Farmacéutica",
+      "clase": "Clasificación de hallazgos: crítico, mayor y menor",
+      "query": "Clasificación de hallazgos: crítico, mayor y menor calidad farmacéutica laboratorio",
+      "motivo": "sin candidato con coincidencia y canal confiable"
+    },
+    {
+      "clase_id": 296,
+      "curso": "Curso de Gestión de Riesgos en la Calidad Farmacéutica",
+      "clase": "Integración de la QRM con ICH Q8 (desarrollo) e ICH Q10 (sistema de calidad farmacéutico)",
+      "query": "Integración de la QRM con ICH Q8 (desarrollo) e ICH Q10 (sistema de calidad farmacéutico) calidad farmacéutica laboratorio",
+      "motivo": "sin candidato con coincidencia y canal confiable"
+    },
+    {
+      "clase_id": 301,
+      "curso": "Curso de Gestión de Riesgos en la Calidad Farmacéutica",
+      "clase": "Comunicación y revisión del riesgo",
+      "query": "Comunicación y revisión del riesgo calidad farmacéutica laboratorio",
+      "motivo": "sin candidato con coincidencia y canal confiable"
+    },
+    {
+      "clase_id": 302,
+      "curso": "Curso de Gestión de Riesgos en la Calidad Farmacéutica",
+      "clase": "Gestión de la subjetividad y elección del nivel de formalidad en la práctica",
+      "query": "Gestión de la subjetividad y elección del nivel de formalidad en la práctica calidad farmacéutica laboratorio",
+      "motivo": "sin candidato con coincidencia y canal confiable"
+    },
+    {
+      "clase_id": 310,
+      "curso": "Curso de Gestión de Riesgos en la Calidad Farmacéutica",
+      "clase": "Cómo seleccionar y combinar herramientas de riesgo",
+      "query": "Cómo seleccionar y combinar herramientas de riesgo calidad farmacéutica laboratorio",
+      "motivo": "sin candidato con coincidencia y canal confiable"
+    },
+    {
+      "clase_id": 319,
+      "curso": "Curso de Gestión de Riesgos en la Calidad Farmacéutica",
+      "clase": "Introducción a la unidad: de la teoría a la práctica regulatoria",
+      "query": "de la teoría a la práctica regulatoria calidad farmacéutica laboratorio",
+      "motivo": "sin candidato con coincidencia y canal confiable"
+    },
+    {
+      "clase_id": 322,
+      "curso": "Curso de Gestión de Riesgos en la Calidad Farmacéutica",
+      "clase": "Caso integrador: introducción de un nuevo producto en una planta multiproducto",
+      "query": "introducción de un nuevo producto en una planta multiproducto calidad farmacéutica laboratorio",
+      "motivo": "sin candidato con coincidencia y canal confiable"
+    },
+    {
+      "clase_id": 323,
+      "curso": "Curso de Gestión de Riesgos en la Calidad Farmacéutica",
+      "clase": "Diseño del programa de QRM de la empresa e informe de evaluación de riesgos",
+      "query": "Diseño del programa de QRM de la empresa e informe de evaluación de riesgos calidad farmacéutica laboratorio",
+      "motivo": "sin candidato con coincidencia y canal confiable"
+    },
+    {
+      "clase_id": 330,
+      "curso": "Curso de Gestión de Desviaciones y Acciones Correctivas y Preventivas — CAPA",
+      "clase": "Introducción a la unidad: las primeras 24 horas de una desviación",
+      "query": "las primeras 24 horas de una desviación calidad farmacéutica laboratorio",
+      "motivo": "sin candidato con coincidencia y canal confiable"
+    },
+    {
+      "clase_id": 342,
+      "curso": "Curso de Gestión de Desviaciones y Acciones Correctivas y Preventivas — CAPA",
+      "clase": "Factores humanos: tipos de error y condiciones que los provocan",
+      "query": "Factores humanos: tipos de error y condiciones que los provocan calidad farmacéutica laboratorio",
+      "motivo": "sin candidato con coincidencia y canal confiable"
+    },
+    {
+      "clase_id": 345,
+      "curso": "Curso de Gestión de Desviaciones y Acciones Correctivas y Preventivas — CAPA",
+      "clase": "Fase I: investigación de laboratorio",
+      "query": "Fase I: investigación de laboratorio calidad farmacéutica laboratorio",
+      "motivo": "sin candidato con coincidencia y canal confiable"
+    },
+    {
+      "clase_id": 348,
+      "curso": "Curso de Gestión de Desviaciones y Acciones Correctivas y Preventivas — CAPA",
+      "clase": "Gestión e investigación de quejas de calidad",
+      "query": "Gestión e investigación de quejas de calidad calidad farmacéutica laboratorio",
+      "motivo": "sin candidato con coincidencia y canal confiable"
+    },
+    {
+      "clase_id": 362,
+      "curso": "Curso de Validación de Métodos Analíticos",
+      "clase": "Normativa colombiana: Res. 3619 de 2013 y requisitos INVIMA",
+      "query": "Normativa colombiana: Res. 3619 de 2013 y requisitos INVIMA validación calificación equipos procesos farmacéutica",
+      "motivo": "sin candidato con coincidencia y canal confiable"
+    },
+    {
+      "clase_id": 392,
+      "curso": "Curso de Asuntos Regulatorios Farmacéuticos en Colombia",
+      "clase": "Introducción al curso: el mapa de los asuntos regulatorios en Colombia",
+      "query": "el mapa de los asuntos regulatorios en Colombia INVIMA regulación farmacéutica Colombia",
+      "motivo": "sin candidato con coincidencia y canal confiable"
+    },
+    {
+      "clase_id": 393,
+      "curso": "Curso de Asuntos Regulatorios Farmacéuticos en Colombia",
+      "clase": "¿Qué son los asuntos regulatorios y por qué existen?",
+      "query": "¿Qué son los asuntos regulatorios y por qué existen? INVIMA regulación farmacéutica Colombia",
+      "motivo": "sin candidato con coincidencia y canal confiable"
+    },
+    {
+      "clase_id": 394,
+      "curso": "Curso de Asuntos Regulatorios Farmacéuticos en Colombia",
+      "clase": "Rol, competencias y responsabilidades del QF en asuntos regulatorios",
+      "query": "Rol, competencias y responsabilidades del QF en asuntos regulatorios INVIMA regulación farmacéutica Colombia",
+      "motivo": "sin candidato con coincidencia y canal confiable"
+    },
+    {
+      "clase_id": 395,
+      "curso": "Curso de Asuntos Regulatorios Farmacéuticos en Colombia",
+      "clase": "Ciencia regulatoria y tendencias de transformación del INVIMA",
+      "query": "Ciencia regulatoria y tendencias de transformación del INVIMA INVIMA regulación farmacéutica Colombia",
+      "motivo": "sin candidato con coincidencia y canal confiable"
+    },
+    {
+      "clase_id": 396,
+      "curso": "Curso de Asuntos Regulatorios Farmacéuticos en Colombia",
+      "clase": "Caso: diseño del mapa funcional de un departamento de asuntos regulatorios",
+      "query": "diseño del mapa funcional de un departamento de asuntos regulatorios INVIMA regulación farmacéutica Colombia",
+      "motivo": "sin candidato con coincidencia y canal confiable"
+    },
+    {
+      "clase_id": 397,
+      "curso": "Curso de Asuntos Regulatorios Farmacéuticos en Colombia",
+      "clase": "Introducción a la unidad: quién regula qué en Colombia",
+      "query": "quién regula qué en Colombia INVIMA regulación farmacéutica Colombia",
+      "motivo": "sin candidato con coincidencia y canal confiable"
+    },
+    {
+      "clase_id": 398,
+      "curso": "Curso de Asuntos Regulatorios Farmacéuticos en Colombia",
+      "clase": "Ministerio de Salud y Ley Estatutaria 1751 de 2015: rector de la política farmacéutica",
+      "query": "Ministerio de Salud y Ley Estatutaria 1751 de 2015: rector de la política farmacéutica INVIMA regulación farmacéutica Colombia",
+      "motivo": "sin candidato con coincidencia y canal confiable"
+    },
+    {
+      "clase_id": 399,
+      "curso": "Curso de Asuntos Regulatorios Farmacéuticos en Colombia",
+      "clase": "INVIMA: naturaleza, funciones, direcciones y servicios",
+      "query": "INVIMA: naturaleza, funciones, direcciones y servicios INVIMA regulación farmacéutica Colombia",
+      "motivo": "sin candidato con coincidencia y canal confiable"
+    },
+    {
+      "clase_id": 400,
+      "curso": "Curso de Asuntos Regulatorios Farmacéuticos en Colombia",
+      "clase": "La Comisión Revisora y sus salas especializadas (incluida la Sala Especializada de Medicamentos)",
+      "query": "La Comisión Revisora y sus salas especializadas (incluida la Sala Especializada de Medicamentos) INVIMA regulación farmacéutica Co",
+      "motivo": "sin candidato con coincidencia y canal confiable"
+    },
+    {
+      "clase_id": 401,
+      "curso": "Curso de Asuntos Regulatorios Farmacéuticos en Colombia",
+      "clase": "Secretarías de salud, Supersalud y SIC en la vigilancia de productos farmacéuticos",
+      "query": "Secretarías de salud, Supersalud y SIC en la vigilancia de productos farmacéuticos INVIMA regulación farmacéutica Colombia",
+      "motivo": "sin candidato con coincidencia y canal confiable"
+    },
+    {
+      "clase_id": 402,
+      "curso": "Curso de Asuntos Regulatorios Farmacéuticos en Colombia",
+      "clase": "INVIMA como Autoridad Reguladora Nacional de Referencia Regional (nivel IV OPS)",
+      "query": "INVIMA como Autoridad Reguladora Nacional de Referencia Regional (nivel IV OPS) INVIMA regulación farmacéutica Colombia",
+      "motivo": "sin candidato con coincidencia y canal confiable"
+    },
+    {
+      "clase_id": 403,
+      "curso": "Curso de Asuntos Regulatorios Farmacéuticos en Colombia",
+      "clase": "Caso: búsqueda de un concepto de la Comisión Revisora para soportar un trámite",
+      "query": "búsqueda de un concepto de la Comisión Revisora para soportar un trámite INVIMA regulación farmacéutica Colombia",
+      "motivo": "sin candidato con coincidencia y canal confiable"
+    }
+  ]
+}

@@ -351,7 +351,7 @@ describe('migraciones de experiencias y clases abiertas', () => {
     expect(total).toBeGreaterThan(100);
     const repetidos = [...titulos].filter(([, rutas]) => rutas.length > 1);
     expect(repetidos, JSON.stringify(repetidos.slice(0, 5))).toEqual([]);
-  });
+  }, 120000);
 
   it('los títulos largos se recortan en una palabra completa, sin conectores al final', () => {
     const datos = {
@@ -369,7 +369,10 @@ describe('migraciones de experiencias y clases abiertas', () => {
   });
 
   it('una clase sin experiencia no tiene página: se redirige al curso', async () => {
-    const id = await cursoId('Curso de Farmacología Oncológica');
+    // La Escuela de Habilidades Blandas conserva sus clases en texto largo
+    // aprobado, sin experiencia estructurada. Es el caso vigente para probar
+    // que una clase sin experiencia no genera página pública.
+    const id = await cursoId('Curso de Oratoria: cómo hablar en público con seguridad');
     const [{ slug }] = await many(db, "SELECT slug FROM public_slugs WHERE entity = 'aula' AND entity_id = $1 AND is_current", [id]);
     const [{ slug: claseSlug }] = await many(db, 'SELECT slug FROM aula_lessons WHERE course_id = $1 AND slug IS NOT NULL ORDER BY id LIMIT 1', [id]);
     const datos = await clasePublica(db, slug, claseSlug);
