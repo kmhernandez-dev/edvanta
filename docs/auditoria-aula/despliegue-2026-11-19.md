@@ -27,6 +27,7 @@ El despliegue publica el contenido y las migraciones del catálogo. Las migracio
 
 - `174_videos_catalogo.sql`: **32 videos por clase** verificados con oEmbed.
 - `178_videos_cursos_sin_video.sql`: **video de unidad** para los 8 cursos que no tenían ningún video (Asuntos Regulatorios Farmacéuticos, Bioequivalencia, Fitoterapéuticos, Homeopáticos, Gases Medicinales, Vitales No Disponibles, Psicofarmacología y Manipulación de Alimentos).
+- `180_corregir_videos_unidad.sql`: corrige la asignación de esos videos. La 178 usó IDs de módulo de una base local; la 180 retira esos videos y los vuelve a insertar buscando la unidad por su título, que es estable entre bases.
 - `api/lib/videos-youtube.json`: canal, URL y fecha de consulta de los videos nuevos.
 
 ### SEO y títulos
@@ -51,7 +52,7 @@ El despliegue publica el contenido y las migraciones del catálogo. Las migracio
 
 | Verificación | Resultado |
 |---|---|
-| Migraciones aplicadas en PostgreSQL en memoria | 177 |
+| Migraciones aplicadas en PostgreSQL en memoria | 178 |
 | Cursos | 63 |
 | Unidades | 297 |
 | Clases | 1.714 |

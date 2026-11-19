@@ -33,7 +33,7 @@ No se inventaron normas, artículos, cifras ni referencias. Las afirmaciones nor
 
 ## 2. Qué se hizo
 
-1. **Auditoría reproducible.** `scripts/auditar-catalogo-aula.mjs` levanta un PostgreSQL en memoria, aplica las 177 migraciones y mide cursos, unidades, clases, texto, experiencias, videos, evaluaciones, actividades y foros. Genera `inventario-cursos.md`, `inventario-clases.csv` e `inventario.json`.
+1. **Auditoría reproducible.** `scripts/auditar-catalogo-aula.mjs` levanta un PostgreSQL en memoria, aplica las 178 migraciones y mide cursos, unidades, clases, texto, experiencias, videos, evaluaciones, actividades y foros. Genera `inventario-cursos.md`, `inventario-clases.csv` e `inventario.json`.
 2. **Contenido completo para las clases cortas.** `scripts/generar-experiencias-catalogo.mjs` construyó 1.184 experiencias de clase a partir de: el resumen de la clase, el quiz y su explicación, la actividad de la unidad, el foro y los enlaces ya verificados. Cada experiencia incluye gancho, objetivos, conceptos, mapa, desarrollo, proceso, caso con retroalimentación, errores, comprobaciones, resumen y referencias.
 3. **Contenido preservado.** No se sobrescribieron las 367 experiencias escritas a mano ni los 163 textos largos aprobados. Se conservaron videos, enlaces y destacados.
 4. **Videos nuevos verificados.** `scripts/curar-videos-aula.mjs` busca videos por el tema de la clase, exige un canal educativo o institucional y verifica el oEmbed oficial de YouTube. La migración `174_videos_catalogo.sql` agregó 32 videos por clase y la `178_videos_cursos_sin_video.sql` agregó un video de unidad a los 8 cursos que no tenían ninguno. Los 866 videos únicos previos se auditaron en `api/lib/videos-youtube.json`: 859 disponibles y 7 marcados como no disponibles.
