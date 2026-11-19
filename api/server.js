@@ -22,8 +22,11 @@ import 'dotenv/config';
 import express from 'express';
 import cors from 'cors';
 
+import cluster from 'node:cluster';
+import { procesosDeLaApi } from './lib/procesos.js';
 import { runMigrations } from './lib/migrate.js';
-import { pool } from './db.js';
+import { pool, POOL_MAX } from './db.js';
+import { CANDADOS, conCandado } from './lib/candado.js';
 import { createPreferenceRoute } from './routes/create-preference.js';
 import { mpWebhookRoute } from './routes/mp-webhook.js';
 import { leadCaptureRoute } from './routes/lead-capture.js';
@@ -76,6 +79,16 @@ const ALLOWED_ORIGINS = (process.env.CORS_ORIGINS || 'https://edvanta.co,https:/
 const VERSION = '1.0.0';
 const STARTED_AT = new Date().toISOString();
 
+// Procesos de la API (núcleos que usa). 1 = como siempre. Con más, el
+// proceso principal reparte las conexiones entre N copias de la API:
+// el inicio de sesión (bcrypt) y armar páginas usan CPU, y un solo
+// proceso de Node usa un solo núcleo. «auto» = un proceso por núcleo.
+// Las tareas únicas (migraciones, correos programados, limpieza) llevan
+// candado en PostgreSQL (lib/candado.js): corren en uno solo.
+const PROCESOS = procesosDeLaApi();
+// Número de este proceso (1..N) cuando hay varios; null con uno solo.
+const PROCESO = cluster.isWorker ? Number(process.env.API_PROCESO) || cluster.worker.id : null;
+
 const app = express();
 app.disable('x-powered-by');
 
@@ -95,14 +108,32 @@ app.use(cors({
   methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
 }));
 
-// Logger mínimo estructurado
-app.use((req, _res, next) => {
-  console.log(JSON.stringify({
-    at: new Date().toISOString(),
-    method: req.method,
-    path: req.path,
-    ip: req.ip,
-  }));
+// Registro de peticiones. Con 100.000 visitas al día, una línea por
+// petición son millones de líneas: los registros del contenedor rotan
+// (10 MB × 3) y lo importante se perdía en minutos entre los GET normales.
+// Siempre se registra lo que sirve para diagnosticar (errores, lentas,
+// escrituras) con su estado y su duración; del resto, una muestra.
+//   LOG_PETICIONES=todas     → como antes, todas
+//   LOG_MUESTRA=0.02         → fracción de los GET normales (2 % por defecto)
+// Sin la consulta (?…): puede traer correos u otros datos personales.
+const LOG_TODAS = process.env.LOG_PETICIONES === 'todas';
+const LOG_MUESTRA = Math.min(1, Math.max(0, Number(process.env.LOG_MUESTRA ?? 0.02) || 0));
+app.use((req, res, next) => {
+  const t0 = process.hrtime.bigint();
+  res.on('finish', () => {
+    const ms = Number(process.hrtime.bigint() - t0) / 1e6;
+    const importante = res.statusCode >= 400 || ms >= 1000 || req.method !== 'GET';
+    if (!LOG_TODAS && !importante && Math.random() >= LOG_MUESTRA) return;
+    console.log(JSON.stringify({
+      at: new Date().toISOString(),
+      method: req.method,
+      path: (req.originalUrl || req.url || '').split('?')[0],
+      status: res.statusCode,
+      ms: Math.round(ms),
+      ip: req.ip,
+      ...(PROCESO ? { proceso: PROCESO } : {}),
+    }));
+  });
   next();
 });
 
@@ -127,6 +158,15 @@ app.get('/api/health', (_req, res) => {
     started_at: STARTED_AT,
     uptime_sec: Math.floor(process.uptime()),
     env: NODE_ENV,
+    // Capacidad: cuántos procesos atienden y cuántas conexiones a la base
+    // tiene cada uno (y cuántas están en uso en este proceso ahora).
+    capacidad: {
+      procesos: PROCESOS,
+      proceso: PROCESO,
+      conexiones_por_proceso: POOL_MAX,
+      conexiones_en_uso: pool.totalCount - pool.idleCount,
+      peticiones_en_espera: pool.waitingCount,
+    },
     database: process.env.DATABASE_URL ? 'configured' : 'missing',
     mercado_pago: process.env.MP_ACCESS_TOKEN ? 'configured' : 'missing',
     resend: process.env.RESEND_API_KEY ? 'configured' : 'missing',
@@ -400,31 +440,38 @@ async function start() {
       console.log(JSON.stringify({ level: 'info', msg: 'Probando conexión a base de datos...' }));
       await pool.query('SELECT 1');
       console.log(JSON.stringify({ level: 'info', msg: 'Conexión a base de datos OK' }));
-      await runMigrations();
-      // Cada curso público con su dirección descriptiva. Los que ya la tienen
-      // no se tocan: una dirección publicada no cambia.
-      try {
-        const nuevos = await asegurarSlugsDeCursos(pool);
-        // Y cada clase del aula con su nombre (/aula/curso-de-…/clase/<clase>).
-        const clases = await asegurarSlugsDeClases(pool);
-        console.log(JSON.stringify({ level: 'info', msg: 'Direcciones públicas de cursos', nuevas: nuevos.length, clases }));
-      } catch (e) {
-        console.error(JSON.stringify({ level: 'error', msg: 'No se pudieron asignar las direcciones de cursos', error: e.message }));
-      }
-      try {
-        await startAula({
-          db: aulaDb,
-          storage: aulaStorage,
-          adminEmails: parseAdminEmails(process.env.AULA_ADMIN_EMAILS),
-          adminHashes: aulaAdminHashes,
-          log: (entry) => console.log(JSON.stringify({ level: 'info', ns: 'aula', ...entry })),
-        });
-      } catch (e) {
-        console.error(JSON.stringify({
-          level: 'error', ns: 'aula', msg: 'El aula no pudo arrancar', error: e.message, code: e.code,
-          hint: 'Revisa que AULA_STORAGE_DIR exista y sea escribible, y que la migración 029 se haya aplicado.',
-        }));
-      }
+      // Un proceso a la vez: con varios procesos o réplicas, el primero hace
+      // las migraciones y el arranque del aula; los demás esperan y, al
+      // entrar, encuentran todo hecho (cada paso es idempotente).
+      await conCandado(pool, CANDADOS.ARRANQUE, async (conexion) => {
+        await runMigrations(conexion);
+        // Cada curso público con su dirección descriptiva. Los que ya la tienen
+        // no se tocan: una dirección publicada no cambia.
+        try {
+          const nuevos = await asegurarSlugsDeCursos(pool);
+          // Y cada clase del aula con su nombre (/aula/curso-de-…/clase/<clase>).
+          const clases = await asegurarSlugsDeClases(pool);
+          console.log(JSON.stringify({ level: 'info', msg: 'Direcciones públicas de cursos', nuevas: nuevos.length, clases }));
+        } catch (e) {
+          console.error(JSON.stringify({ level: 'error', msg: 'No se pudieron asignar las direcciones de cursos', error: e.message }));
+        }
+        try {
+          await startAula({
+            db: aulaDb,
+            storage: aulaStorage,
+            adminEmails: parseAdminEmails(process.env.AULA_ADMIN_EMAILS),
+            adminHashes: aulaAdminHashes,
+            log: (entry) => console.log(JSON.stringify({ level: 'info', ns: 'aula', ...entry })),
+            // La limpieza de subidas abandonadas, en un solo proceso por hora.
+            envolverLimpieza: (limpiar) => conCandado(pool, CANDADOS.LIMPIEZA_SUBIDAS, limpiar).then((r) => (r.corrio ? r.resultado : 0)),
+          });
+        } catch (e) {
+          console.error(JSON.stringify({
+            level: 'error', ns: 'aula', msg: 'El aula no pudo arrancar', error: e.message, code: e.code,
+            hint: 'Revisa que AULA_STORAGE_DIR exista y sea escribible, y que la migración 029 se haya aplicado.',
+          }));
+        }
+      }, { esperar: true });
     } catch (e) {
       // NO matamos el proceso: el healthcheck reporta unhealthy pero
       // el contenedor sigue vivo y Coolify puede observar.
@@ -456,8 +503,11 @@ async function start() {
   if (process.env.DATABASE_URL && process.env.EMBUDO_PROGRAMADO !== 'apagado') {
     const vuelta = async () => {
       try {
-        const r = await correrEmbudoProgramado(aulaDb, aulaMailer, { siteUrl: process.env.SITE_URL || 'https://edvanta.co' });
-        if (r.bienvenidas || r.recordatorios || r.novedades) console.log(JSON.stringify({ level: 'info', msg: 'Embudo programado', ...r }));
+        // Un solo proceso manda los correos de esta hora; si otro ya los está
+        // mandando, este no hace nada (sin candado saldrían repetidos).
+        const { corrio, resultado: r } = await conCandado(pool, CANDADOS.EMBUDO,
+          () => correrEmbudoProgramado(aulaDb, aulaMailer, { siteUrl: process.env.SITE_URL || 'https://edvanta.co' }));
+        if (corrio && Object.values(r).some(Boolean)) console.log(JSON.stringify({ level: 'info', msg: 'Embudo programado', ...r }));
       } catch (e) {
         console.error(JSON.stringify({ level: 'error', msg: 'Falló el embudo programado', error: e.message }));
       }
@@ -475,4 +525,22 @@ process.on('uncaughtException', (err) => {
   console.error(JSON.stringify({ level: 'error', msg: 'Uncaught exception', error: err.message, stack: err.stack }));
 });
 
-start();
+if (PROCESOS > 1 && cluster.isPrimary) {
+  // Proceso principal: no atiende peticiones, solo mantiene vivas N copias.
+  // Todas escuchan el mismo puerto y Node reparte las conexiones.
+  console.log(JSON.stringify({ level: 'info', msg: 'API en varios procesos', procesos: PROCESOS, conexiones_por_proceso: POOL_MAX }));
+  const numeroDe = new Map();
+  const lanzar = (numero) => {
+    const w = cluster.fork({ API_PROCESO: String(numero) });
+    numeroDe.set(w.id, numero);
+  };
+  for (let i = 1; i <= PROCESOS; i += 1) lanzar(i);
+  cluster.on('exit', (worker, code, signal) => {
+    const numero = numeroDe.get(worker.id);
+    numeroDe.delete(worker.id);
+    console.error(JSON.stringify({ level: 'error', msg: 'Un proceso de la API terminó; se relanza', proceso: numero, code, signal }));
+    setTimeout(() => lanzar(numero), 1000);
+  });
+} else {
+  start();
+}

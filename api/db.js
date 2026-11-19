@@ -46,9 +46,18 @@ if (connectionString) {
   }));
 }
 
+// Conexiones por proceso. Con API_PROCESOS=4 y PG_POOL_MAX=15 la API usa
+// hasta 60 conexiones: debe quedar por debajo de max_connections de
+// PostgreSQL (100 por defecto) con margen para el panel y las copias.
+const enteroEntre = (valor, def, min, max) => {
+  const n = parseInt(valor, 10);
+  return Number.isFinite(n) ? Math.min(max, Math.max(min, n)) : def;
+};
+export const POOL_MAX = enteroEntre(process.env.PG_POOL_MAX, 15, 2, 80);
+
 export const pool = new Pool({
   connectionString,
-  max: 10,
+  max: POOL_MAX,
   idleTimeoutMillis: 30_000,
   connectionTimeoutMillis: 5_000,
   // statement_timeout previene queries colgadas que llenen el pool.

@@ -16,6 +16,11 @@
  *   certificado-pagado cuando se aprueba el pago del certificado.
  *   novedades          cada 30 días, solo a quien aceptó novedades.
  *
+ *  Venta automática (desde el 19-nov-2026, embudo-programado.js):
+ *   pago-pendiente     empezó a pagar el certificado y no terminó (2 h).
+ *   curso-completado   terminó el curso y aún no tiene el certificado.
+ *   reactivacion-curso lleva 10 días quieto a mitad de curso.
+ *
  *  El diseño (blanco, degradados y píldoras) vive en
  *  correo-diseno.js y es el mismo de los correos de venta.
  *
@@ -34,7 +39,7 @@ import {
   parrafo, portada, posdata, recuadro, saludo, subtitulo,
 } from './correo-diseno.js';
 
-const WA_NUMERO = '573006332244';
+export const WA_NUMERO = '573006332244';
 const wa = (mensaje) => `https://wa.me/${WA_NUMERO}?text=${encodeURIComponent(mensaje)}`;
 const primerNombre = (n) => String(n || '').trim().split(/\s+/)[0] || '';
 const pesos = (n) => `COP ${Number(n).toLocaleString('es-CO')}`;
@@ -271,6 +276,62 @@ export const PLANTILLAS = {
       pdOferta(siteUrl, 'certificado-pagado'),
     ].join(''),
     despedida: 'Con orgullo,',
+  }),
+
+  // Empezó el pago del certificado y no lo terminó. Sin presión: puede
+  // haber fallado la tarjeta o el banco. Si ya pagó, la confirmación tarda.
+  'pago-pendiente': ({ nombre, curso, cursoUrl, pagarUrl = cursoUrl, precio }) => ({
+    asunto: `${primerNombre(nombre)}, tu certificado de ${curso} quedó a un paso`,
+    pre: 'Tu pago no se completó. Lo retomas cuando quieras, en un minuto.',
+    encabezado: ['Tu pago quedó pendiente', esc(curso)],
+    cuerpo: [
+      saludo(primerNombre(nombre)),
+      parrafo(`Empezaste el pago del certificado de ${destacado(esc(curso))} y no se completó. Suele pasar: la tarjeta, el banco o la conexión. Lo retomas desde el aula${precio ? `, por ${destacado(pesos(precio))} en un solo pago` : ''}.`),
+      boton('Completar el pago', conUtm(pagarUrl, 'ciclo', 'pago-pendiente')),
+      enlace('¿Tuviste un problema con el pago? Escríbenos por WhatsApp', wa(`Hola, soy ${primerNombre(nombre)}. Intenté pagar el certificado de ${curso} y no se completó.`), { centro: true }),
+      nota('Si ya lo pagaste, no hagas nada: la confirmación del banco puede tardar unos minutos.'),
+    ].join(''),
+  }),
+
+  // Terminó el curso (todas sus clases y requisitos) y no tiene certificado.
+  // El precio y la fecha son los reales de ESTA inscripción.
+  'curso-completado': ({ nombre, curso, cursoUrl, certificadoUrl = cursoUrl, precio, precioLista, venceEl }) => ({
+    asunto: `Terminaste ${curso}: tu certificado te espera`,
+    pre: precio ? `Llévate el certificado verificable por ${pesos(precio)}.` : 'Llévate el certificado verificable de tu curso.',
+    encabezado: ['Curso terminado', esc(curso)],
+    cuerpo: [
+      saludo(primerNombre(nombre)),
+      parrafo(`Felicitaciones: terminaste ${destacado(esc(curso))}. Ese esfuerzo merece quedar a la vista de quien te contrate.`),
+      lista([
+        `${destacado('Certificado de aprobación de Edvanta')}, con código y QR que cualquier empleador verifica.`,
+        `${destacado('Agrégalo a LinkedIn')} en «Licencias y certificaciones» y a tu hoja de vida.`,
+        `${destacado('Revisión de tus actividades')} por un docente y acompañamiento por WhatsApp.`,
+      ]),
+      parrafo(precio
+        ? (precioLista && venceEl
+          ? `Hasta el ${destacado(fechaLarga(venceEl))} lo tienes por ${destacado(pesos(precio))} en Colombia (precio de lista ${pesos(precioLista)}), en un solo pago.`
+          : `Cuesta ${destacado(pesos(precio))} en Colombia, en un solo pago.`)
+        : 'Lo pides desde el aula.'),
+      boton('Obtener mi certificado', conUtm(certificadoUrl, 'ciclo', 'curso-completado')),
+      enlace('¿Tienes dudas? Escríbenos por WhatsApp', wa(`Hola, soy ${primerNombre(nombre)}. Terminé ${curso} y tengo una pregunta sobre el certificado.`), { centro: true }),
+    ].join(''),
+    despedida: 'Con orgullo,',
+  }),
+
+  // Iba a mitad de curso y lleva 10 días sin entrar.
+  'reactivacion-curso': ({ nombre, curso, cursoUrl, avance }) => ({
+    asunto: Number.isFinite(avance)
+      ? `${primerNombre(nombre)}, vas en el ${avance} % de ${curso}`
+      : `${primerNombre(nombre)}, tu avance en ${curso} te espera`,
+    pre: 'Retoma donde quedaste: lo que ya avanzaste sigue guardado.',
+    encabezado: ['Tu avance te espera', esc(curso)],
+    cuerpo: [
+      saludo(primerNombre(nombre)),
+      parrafo(`${Number.isFinite(avance) ? `Llevas ${destacado(`${avance} %`)} de` : 'Ya empezaste'} ${destacado(esc(curso))} y todo lo que avanzaste sigue guardado. Retomas exactamente donde quedaste.`),
+      cita('Terminar lo que empezaste vale más que empezar algo nuevo.'),
+      boton('Retomar donde quedé', conUtm(cursoUrl, 'ciclo', 'reactivacion-curso')),
+      enlace('¿Algo te frena? Cuéntanos por WhatsApp', wa(`Hola, soy ${primerNombre(nombre)}. Quiero ayuda para terminar ${curso}.`), { centro: true }),
+    ].join(''),
   }),
 
   novedades: ({ nombre, area, siteUrl }) => {
