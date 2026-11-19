@@ -38,6 +38,7 @@ import { CURSOS_HABILIDADES_BLANDAS } from '../src/data/edvanta/cursosHabilidade
 import { GRUPOS_VADEMECUM, MONOGRAFIAS, META_VADEMECUM, grupoDe, monografiasDelGrupo } from '../src/data/vademecum/index.js';
 import { htmlDePagina, jsonLdDePagina } from '../src/lib/vademecum/html.js';
 import { clasesDelVademecum, urlsAbsolutas } from '../api/lib/enlaces-de-salud.js';
+import { casosDeVademecum, htmlDeCasos } from '../src/lib/casosClinicos/enlacesInversos.js';
 import { robotsDePaginaDelVademecum, robotsDelVademecum, tituloDeVademecum } from '../src/lib/vademecum/indexable.js';
 import { COMUNIDADES, META_COMUNIDADES } from '../src/data/comunidadesSalud.js';
 import { EXAMENES, META_EXAMENES, robotsDeExamen } from '../src/data/examenes/index.js';
@@ -560,7 +561,7 @@ for (const p of [...GRUPOS_VADEMECUM, ...MONOGRAFIAS]) {
     ...(p.revisor ? { reviewedBy: { '@type': 'Person', name: p.revisor, ...(p.revisorUrl ? { url: p.revisorUrl } : {}) } } : {}),
     enlaces: [['Vademécum', '/vademecum'], ...(grupo ? [[grupo.nombre, `/vademecum/${grupo.slug}`]] : [])],
     relatedLink: urlsAbsolutas([...clases.clases, ...clases.cursos]),
-    contenido: htmlDePagina(p, { hijos, enlaces: p.enlaces || [], clases }),
+    contenido: htmlDePagina(p, { hijos, enlaces: p.enlaces || [], clases, casosHtml: htmlDeCasos(casosDeVademecum(p.slug)) }),
   });
 }
 

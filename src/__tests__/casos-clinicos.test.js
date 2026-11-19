@@ -7,6 +7,9 @@ import {
   ordenDerecha, ordenOpciones, puntosDePregunta, resultado, robotsDeCaso, tituloDeCaso,
 } from '../lib/casosClinicos/motor.js';
 import { htmlDelCatalogo, robotsDelCatalogo } from '../lib/casosClinicos/catalogo.js';
+import { calcularEnlacesInversos } from '../lib/casosClinicos/calcularEnlaces.js';
+import { ENLACES_INVERSOS } from '../data/casosClinicos/enlaces-inversos.js';
+import { casosDeArticulo, casosDeVademecum, htmlDeCasos } from '../lib/casosClinicos/enlacesInversos.js';
 
 /** Cursos propios con clases abiertas (sitemap-cursos.xml de producción, 17-nov-2026). */
 const CURSOS_PROPIOS = [
@@ -140,6 +143,23 @@ describe.each(CASOS.map((c) => [c.slug, c]))('caso %s', (_slug, c) => {
       expect([...orden].sort()).toEqual(p.pares.map((_, k) => k));
       expect(ordenDerecha(c, i)).toEqual(orden);
     });
+  });
+});
+
+describe('enlaces de vuelta a los casos clínicos', () => {
+  it('el mapa generado coincide con los casos (si falla: node scripts/casos-enlaces-inversos.mjs)', () => {
+    expect(ENLACES_INVERSOS).toEqual(calcularEnlacesInversos(CASOS));
+  });
+
+  it('enlaza desde páginas que existen y hacia casos que existen', () => {
+    const vad = new Set(PAGINAS_VADEMECUM.map((p) => p.slug));
+    const art = new Set(articulos.map((a) => a.slug));
+    for (const s of Object.keys(ENLACES_INVERSOS.vademecum)) expect(vad.has(s)).toBe(true);
+    for (const s of Object.keys(ENLACES_INVERSOS.articulos)) expect(art.has(s)).toBe(true);
+    expect(casosDeVademecum('metformina').map((c) => c.ruta)).toContain('/casos-clinicos/diabetes-tipo-2');
+    expect(casosDeArticulo('crisis-hipertensiva-que-hacer').map((c) => c.ruta)).toContain('/casos-clinicos/crisis-hipertensiva');
+    expect(htmlDeCasos(casosDeVademecum('metformina'))).toContain('href="/casos-clinicos/diabetes-tipo-2"');
+    expect(htmlDeCasos([])).toBe('');
   });
 });
 

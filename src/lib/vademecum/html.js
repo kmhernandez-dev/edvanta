@@ -142,7 +142,7 @@ export function htmlDeClases({ clases = [], cursos = [] } = {}) {
 }
 
 /** Cuerpo HTML de una página del vademécum (sin el h1, que pone el prerender). */
-export function htmlDePagina(pagina, { hijos = [], enlaces = [], clases = null } = {}) {
+export function htmlDePagina(pagina, { hijos = [], enlaces = [], clases = null, casosHtml = '' } = {}) {
   const partes = [];
   if (pagina.datosClave?.length) {
     partes.push(`<table><tbody>${pagina.datosClave.map(([k, v]) => `<tr><th>${conCitas(k)}</th><td>${conCitas(v)}</td></tr>`).join('')}</tbody></table>`);
@@ -155,6 +155,7 @@ export function htmlDePagina(pagina, { hijos = [], enlaces = [], clases = null }
     partes.push(`<section id="monografias"><h2>Monografías del grupo</h2><ul>${hijos.map((h) => `<li><a href="/vademecum/${esc(h.slug)}">${esc(h.nombre)}</a>: ${esc(h.resumenCorto || '')}</li>`).join('')}</ul></section>`);
   }
   if (clases) partes.push(htmlDeClases(clases));
+  if (casosHtml) partes.push(casosHtml);
   if (enlaces.length) {
     partes.push(`<section><h2>Para seguir leyendo</h2><ul>${enlaces.map(([t, u]) => `<li><a href="${esc(u)}">${esc(t)}</a></li>`).join('')}</ul></section>`);
   }

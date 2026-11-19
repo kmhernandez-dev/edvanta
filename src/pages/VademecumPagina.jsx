@@ -8,6 +8,7 @@ import '../styles/vademecum-visual.css';
 import { grupoDe, monografiasDelGrupo, paginaDelVademecum } from '../data/vademecum';
 import { jsonLdDePagina, SITIO, TEXTO_CLASES_VADEMECUM } from '../lib/vademecum/html.js';
 import { clasesDelVademecum, urlsAbsolutas } from '../../api/lib/enlaces-de-salud.js';
+import { TEXTO_CASOS, TITULO_CASOS, casosDeVademecum } from '../lib/casosClinicos/enlacesInversos.js';
 import { tieneRevisionClinica } from '../lib/seo/indexabilidad';
 import { tituloDeVademecum } from '../lib/vademecum/indexable.js';
 import { updatePageSeo } from '../utils/seo';
@@ -47,6 +48,7 @@ export default function VademecumPagina() {
   const revisada = p ? tieneRevisionClinica(p) : false;
   // Las clases gratuitas que enseñan lo mismo (api/lib/enlaces-de-salud.js).
   const clases = clasesDelVademecum(slug);
+  const casosPractica = casosDeVademecum(slug);
 
   useEffect(() => { window.scrollTo(0, 0); }, [slug]);
 
@@ -196,6 +198,21 @@ export default function VademecumPagina() {
                     .
                   </p>
                 )}
+              </section>
+            )}
+
+
+            {casosPractica.length > 0 && (
+              <section id="casos-clinicos" className="rounded-[14px] border border-edvanta-border bg-edvanta-lilac/40 p-5">
+                <p className="text-xs font-bold uppercase tracking-[.12em] text-edvanta-violet">Examen interactivo · Gratis</p>
+                <h2 className="mt-2 font-display text-xl font-bold text-edvanta-deep">{TITULO_CASOS}</h2>
+                <p className="mt-2 text-sm leading-6 text-edvanta-muted">{TEXTO_CASOS}</p>
+                <ul className="mt-4 space-y-2">
+                  {casosPractica.map((c) => (
+                    <li key={c.ruta}><Link to={c.ruta} className="font-semibold text-edvanta-blue hover:underline">{c.titulo}</Link></li>
+                  ))}
+                </ul>
+                <p className="mt-3 text-sm"><Link to="/casos-clinicos" className="font-semibold text-edvanta-blue underline">Ver todos los casos clínicos</Link></p>
               </section>
             )}
 

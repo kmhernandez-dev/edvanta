@@ -43,6 +43,7 @@ const { entidadAutor, entidadRevisor, esAutoraKarla } = await importar('src/lib/
 const { descripcionDeArticulo, tituloDeArticulo } = await importar('src/lib/seo/titulos.js');
 const { citasDeArticulo } = await importar('src/lib/seo/citas.js');
 const { clasesDelArticulo, htmlDeClasesDelArticulo, urlsAbsolutas } = await importar('api/lib/enlaces-de-salud.js');
+const { casosDeArticulo, htmlDeCasos } = await importar('src/lib/casosClinicos/enlacesInversos.js');
 const { comunidadDeArticulo } = await importar('src/data/comunidadesSalud.js');
 const { examenDeArticulo } = await importar('src/data/examenes/index.js');
 
@@ -170,6 +171,7 @@ for (const art of articulos) {
     ${comunidad ? `<section><h2>Comunidad de ${esc(comunidad.nombre)}</h2><p>${esc(comunidad.intro[0])}</p><ul>${comunidad.queEncuentras.map((t) => `<li>${esc(t)}</li>`).join('')}</ul><p><a href="${esc(comunidad.ruta)}">Conocer la comunidad</a> · <a href="${esc(comunidad.whatsapp)}">Entrar por WhatsApp</a>${comunidad.curso ? ` · <a href="${esc(comunidad.curso.ruta)}">Curso gratis: ${esc(comunidad.curso.nombre)}</a>` : ''}${comunidad.guiaPro ? ` · <a href="${esc(comunidad.guiaPro.ruta)}">Guía: ${esc(comunidad.guiaPro.nombre)}</a>` : ''}${comunidad.guia?.publico === 'pacientes' ? ` · <a href="${esc(comunidad.guia.ruta)}">Guía para pacientes: ${esc(comunidad.guia.nombre)}</a>` : ''}</p><p>Contenido educativo. No diagnostica ni prescribe.</p></section>` : ''}
     ${examen ? `<section><h2>Practica lo que acabas de leer</h2><p><a href="${esc(examen.ruta)}">${esc(examen.titulo)}</a>: ${esc(examen.descripcion)}</p><p>${examen.preguntas.length} preguntas con corrección y explicación. Sin registro.</p></section>` : ''}
   </article>
+  ${htmlDeCasos(casosDeArticulo(art.slug))}
   ${htmlDeClasesDelArticulo(art.slug)}
   <p><a href="/politica-de-revision-clinica">Cómo se revisa</a> · <a href="/fuentes">Fuentes</a> · <a href="/politica-editorial">Política editorial</a></p>
   <section><h2>Cómo citar este artículo</h2><p>Vancouver: ${esc(citas.vancouver)}</p><p>APA 7: ${esc(citas.apa)}</p></section>

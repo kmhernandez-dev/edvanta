@@ -25,6 +25,7 @@ import {
   ArrowRight, BookOpen, BookOpenCheck, CalendarDays, Check, Clock, HeartPulse, Link2, ListOrdered, MessageCircle, ShieldCheck,
 } from 'lucide-react';
 import SiteHeader from '../components/edvanta/SiteHeader';
+import { TEXTO_CASOS, TITULO_CASOS, casosDeArticulo } from '../lib/casosClinicos/enlacesInversos.js';
 import SiteFooter from '../components/edvanta/SiteFooter';
 import { Breadcrumb } from '../components/edvanta/ui';
 import StudyTools from '../components/articulos/HerramientasDeEstudio';
@@ -584,6 +585,7 @@ export default function ArticuloPage() {
   const esSalud = SALUD.includes(art.marca);
   // Las clases gratuitas que enseñan lo mismo (api/lib/enlaces-de-salud.js).
   const clasesPro = clasesDelArticulo(art.slug);
+  const casosPractica = casosDeArticulo(art.slug);
 
   return (
     <div className="min-h-screen bg-white">
@@ -742,6 +744,21 @@ export default function ArticuloPage() {
               <p className="text-sm font-semibold text-edvanta-deep">¿Le sirve a alguien que conoces?</p>
               <Compartir titulo={art.title} url={url} />
             </div>
+
+
+            {casosPractica.length > 0 && (
+              <section id="casos-clinicos" className="mt-10 rounded-[14px] border border-edvanta-border bg-edvanta-lilac/40 p-5">
+                <p className="text-xs font-bold uppercase tracking-[.12em] text-edvanta-violet">Examen interactivo · Gratis</p>
+                <h2 className="mt-2 font-display text-xl font-bold text-edvanta-deep">{TITULO_CASOS}</h2>
+                <p className="mt-2 text-sm leading-6 text-edvanta-muted">{TEXTO_CASOS}</p>
+                <ul className="mt-4 space-y-2">
+                  {casosPractica.map((c) => (
+                    <li key={c.ruta}><Link to={c.ruta} className="font-semibold text-edvanta-blue hover:underline">{c.titulo}</Link></li>
+                  ))}
+                </ul>
+                <p className="mt-3 text-sm"><Link to="/casos-clinicos" className="font-semibold text-edvanta-blue underline">Ver todos los casos clínicos</Link></p>
+              </section>
+            )}
 
             {clasesPro.clases.length > 0 && (
               <section id="clases-para-profesionales" className="mt-10 rounded-[14px] border border-edvanta-border bg-edvanta-bg p-5">
