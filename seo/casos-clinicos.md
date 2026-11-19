@@ -69,7 +69,7 @@ Cada uno se escribe con el mismo estándar: 10 preguntas, tres tipos, referencia
 ## Siguientes pasos
 
 - Revisión de Karla e indexación por lotes.
-- Enlazar cada monografía del vademécum y cada artículo de enfermedad con su caso clínico. Hoy el caso enlaza a la monografía, pero no al revés.
+- **Hecho 19-nov (03a7861):** 79 páginas del vademécum y 40 artículos muestran «Practica con un caso clínico» (servidor y React). El mapa se regenera con `node scripts/casos-enlaces-inversos.mjs` al agregar casos; la prueba falla si no coincide. IndexNow: 119 URL, HTTP 200.
 - Agregar el catálogo a `/recursos-para-estudiantes-de-quimica-farmaceutica`.
 - Medir en Search Console, con la página filtrada por `/casos-clinicos/`.
 - Más casos con fuentes verificables: dengue, VIH, malaria e insulinoterapia hospitalaria. Necesitan guías de la OPS/OMS verificadas primero.
