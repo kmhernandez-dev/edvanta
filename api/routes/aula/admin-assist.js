@@ -8,7 +8,10 @@
  *   POST /persona/recordatorio-pago    { correo, courseId }  correo «pago-pendiente»
  *   POST /persona/oferta-certificado   { correo, courseId }  correo «curso-completado»
  *   GET  /bandeja                      listas de trabajo del día
- *   GET  /ventas?dias=30               embudo, ingresos y recuperación
+ *   GET  /ventas?dias=30               embudo, ingresos, metas de hoy y recuperación
+ *   POST /servicios                    { correo, servicio, valor, moneda?, nota? }
+ *   POST /servicios/:id/anular
+ *   GET  /metas · PUT /metas           { certificados?, guias?, servicios? } por día
  *
  * Los correos manuales usan las mismas plantillas que los automáticos y
  * el mismo registro (embudo_correos): si el automático aún no salió, el
@@ -26,9 +29,12 @@ import { one } from '../../lib/aula/db.js';
 import { urlDelCertificado } from '../../lib/aula/embudo-programado.js';
 import { accessLink, inviteEmail, resetEmail } from '../../lib/aula/emails.js';
 import {
-  badRequest, bogotaYmd, conflict, email as emailField, id as idField, notFound, route, str,
+  badRequest, bogotaYmd, conflict, email as emailField, id as idField, int, notFound, num, oneOf, route, str,
 } from '../../lib/aula/http.js';
 import { precioDelCertificado } from '../../lib/precio-certificado.js';
+import {
+  SERVICIOS_SUGERIDOS, anularVentaServicio, guardarMetas, metasDiarias, registrarVentaServicio,
+} from '../../lib/ventas.js';
 import { actorOf } from './middleware.js';
 
 const SLUG = `(SELECT ps.slug FROM public_slugs ps WHERE ps.entity = 'aula' AND ps.entity_id = c.id AND ps.is_current LIMIT 1)`;
@@ -157,6 +163,62 @@ export function adminAssistRouter({ mailer, siteUrl, adminEmailHashes = [] }) {
       summary: `Oferta del certificado de «${f.title}» a ${correo}${enviado ? '' : ' (el correo no salió)'}`, ip,
     });
     res.json({ enviado });
+  }));
+
+  /* ── Servicios vendidos (se cierran por WhatsApp) ──────────── */
+
+  router.get('/servicios/sugeridos', route(async (_req, res) => {
+    res.json({ items: SERVICIOS_SUGERIDOS });
+  }));
+
+  router.post('/servicios', route(async (req, res) => {
+    const { db, ip, now } = req.aula;
+    const correo = emailField(req.body?.correo, 'correo');
+    const servicio = str(req.body?.servicio, 'servicio', 'El servicio', { min: 2, max: 160 });
+    const valor = num(req.body?.valor, 'valor', 'El valor', { min: 0, max: 1_000_000_000 });
+    const moneda = oneOf(req.body?.moneda ?? 'COP', 'moneda', 'La moneda', ['COP', 'USD', 'MXN', 'EUR', 'PEN', 'CLP', 'ARS']);
+    const nota = str(req.body?.nota, 'nota', 'La nota', { max: 1000, optional: true });
+    const nombre = str(req.body?.nombre, 'nombre', 'El nombre', { max: 160, optional: true });
+    const fila = await registrarVentaServicio(db, { correo, nombre, servicio, valor, moneda, nota, vendidaEl: now, actor: actorOf(req) });
+    await audit(db, {
+      actor: actorOf(req), action: 'assist.servicio', entityType: 'venta_servicio', entityId: fila.id,
+      summary: `Venta de servicio «${servicio}» a ${correo} por ${valor} ${moneda}`, ip,
+    });
+    res.status(201).json({
+      id: Number(fila.id), servicio: fila.servicio, valor: Number(fila.valor), moneda: fila.moneda,
+      nota: fila.nota, fecha: fila.vendida_el, anulada: null,
+    });
+  }));
+
+  router.post('/servicios/:id/anular', route(async (req, res) => {
+    const { db, ip, now } = req.aula;
+    const id = idField(req.params.id);
+    const fila = await anularVentaServicio(db, id, now);
+    if (!fila) throw notFound('No encontramos esa venta, o ya estaba anulada.');
+    await audit(db, {
+      actor: actorOf(req), action: 'assist.servicio_anular', entityType: 'venta_servicio', entityId: id,
+      summary: `Venta de servicio «${fila.servicio}» a ${fila.correo} anulada`, ip,
+    });
+    res.json({ ok: true });
+  }));
+
+  /* ── Metas diarias ────────────────────────────────────────── */
+
+  router.get('/metas', route(async (req, res) => {
+    res.json(await metasDiarias(req.aula.db));
+  }));
+
+  router.put('/metas', route(async (req, res) => {
+    const { db, ip } = req.aula;
+    const metas = {};
+    for (const clave of ['certificados', 'guias', 'servicios']) {
+      if (req.body?.[clave] !== undefined) metas[clave] = int(req.body[clave], clave, 'La meta', { min: 0, max: 100000 });
+    }
+    const resultado = await guardarMetas(db, metas, actorOf(req));
+    await audit(db, {
+      actor: actorOf(req), action: 'assist.metas', entityType: 'metas', summary: `Metas diarias: ${JSON.stringify(resultado)}`, ip,
+    });
+    res.json(resultado);
   }));
 
   router.get('/bandeja', route(async (req, res) => {

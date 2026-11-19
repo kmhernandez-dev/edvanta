@@ -66,6 +66,7 @@ import { createDiskStorage } from './lib/aula/storage.js';
 import { parseAdminEmails, parseAdminHashes } from './lib/aula/accounts.js';
 import { sendEmail, fromWithName } from './lib/resend.js';
 import { correrEmbudoProgramado } from './lib/aula/embudo-programado.js';
+import { crearWebhookHotmart } from './routes/hotmart-webhook.js';
 
 const PORT = parseInt(process.env.PORT || '3000', 10);
 const NODE_ENV = process.env.NODE_ENV || 'development';
@@ -170,6 +171,8 @@ app.get('/api/health', (_req, res) => {
     database: process.env.DATABASE_URL ? 'configured' : 'missing',
     mercado_pago: process.env.MP_ACCESS_TOKEN ? 'configured' : 'missing',
     resend: process.env.RESEND_API_KEY ? 'configured' : 'missing',
+    // Ventas de guías: sin el hottok, Hotmart no puede avisar las compras.
+    hotmart_webhook: process.env.HOTMART_HOTTOK ? 'configured' : 'missing',
     // Solo dice si está puesta, nunca su valor. Sin esto, cuando el token
     // falta en el servidor los paneles responden «token no válido» a
     // cualquier intento y no hay forma de distinguirlo de teclearlo mal.
@@ -389,6 +392,10 @@ app.use('/api/aula', createAulaRouter({
   notifyEmail: process.env.NOTIFY_EMAIL || null,
   mailer: aulaMailer,
 }));
+
+// Ventas de guías: Hotmart avisa compras, reembolsos y carritos
+// abandonados (HOTMART_HOTTOK en Coolify; ver routes/hotmart-webhook.js).
+app.use('/api/hotmart/webhook', crearWebhookHotmart({ db: aulaDb }));
 
 // La portada de un curso publicado es pública. Va aquí abajo porque
 // necesita el almacenamiento del aula, que se crea unas líneas antes.

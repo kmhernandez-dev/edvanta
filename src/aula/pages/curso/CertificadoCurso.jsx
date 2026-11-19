@@ -11,8 +11,9 @@
 import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import {
-  ArrowLeft, Award, Check, Copy, CreditCard, Download, ExternalLink, Share2, ShieldCheck,
+  ArrowLeft, Award, Check, Copy, CreditCard, Download, ExternalLink, Share2, ShieldCheck, Star,
 } from 'lucide-react';
+import GuiaRecomendada from '../../../components/curso/GuiaRecomendada';
 import { get, post } from '../../api';
 import { useAsync } from '../../hooks';
 import { Button } from '../../ui/Button';
@@ -58,6 +59,29 @@ function Emitido({ c, onDescargar, descargando }) {
         Código {c.codigo}. Cualquiera puede comprobarlo con el QR o en edvanta.co/certificados; de tu documento solo se muestran los últimos cuatro caracteres.
       </p>
     </div>
+  );
+}
+
+/**
+ * Después de emitir: pedir la valoración (las estrellas en Google y la
+ * confianza de quien duda salen de valoraciones reales) y ofrecer la guía
+ * que lleva el curso a la práctica.
+ */
+function SiguientePaso({ titulo, slug }) {
+  return (
+    <section aria-labelledby="siguiente-paso" className="mt-8 flex flex-col gap-4">
+      <h2 id="siguiente-paso" className="text-lg font-extrabold text-[var(--aula-primary)]">Tu siguiente paso</h2>
+      {slug && (
+        <div className="flex flex-wrap items-center justify-between gap-3 rounded-[var(--aula-radius-lg)] border border-[var(--aula-border)] bg-white p-5">
+          <div className="min-w-0">
+            <p className="flex items-center gap-2 font-bold"><Star className="h-4 w-4 text-[var(--ds-oro)]" aria-hidden="true" /> ¿Qué te pareció el curso?</p>
+            <p className="mt-1 text-sm leading-6 text-[var(--aula-muted)]">Tu valoración ayuda a otros profesionales a decidir. Toma un minuto.</p>
+          </div>
+          <Button variant="secondary" href={`/${slug}#valoraciones`}>Calificar el curso</Button>
+        </div>
+      )}
+      <GuiaRecomendada curso={{ titulo }} origen="aula-certificado" />
+    </section>
   );
 }
 
@@ -178,6 +202,9 @@ export default function CertificadoCurso() {
           )}
 
           {d?.certificado && <Emitido c={d.certificado} onDescargar={descargar} descargando={descargando} />}
+          {d?.certificado?.estado === 'vigente' && (
+            <SiguientePaso titulo={data.snapshot.course.title} slug={data.courseSlug} />
+          )}
 
           {d && !d.certificado && !d.elegible && (
             <div className="flex flex-col gap-5">

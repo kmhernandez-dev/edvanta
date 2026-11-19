@@ -28,7 +28,7 @@
  */
 import { many, one } from './db.js';
 import { precioDelCertificado } from '../precio-certificado.js';
-import { WA_NUMERO } from './correos-embudo.js';
+import { ventasDeHoy } from '../ventas.js';
 
 const HORA = 60 * 60 * 1000;
 const DIA = 24 * HORA;
@@ -201,10 +201,25 @@ export async function fichaDePersona(db, correo, { now = new Date(), siteUrl = '
     [email],
   );
 
-  if (!cuenta && !solicitudes.length && !correos.length && !notas.length) return null;
+  // Guías compradas (o dejadas en el carrito) en Hotmart y servicios vendidos.
+  const guias = await many(
+    db,
+    `SELECT id, estado, producto, valor, moneda, origen_src, telefono, comprador_nombre, comprada_el, aprobada_el, created_at
+       FROM ventas_guias WHERE lower(comprador_correo) = $1 ORDER BY created_at DESC LIMIT 30`,
+    [email],
+  );
+  const servicios = await many(
+    db,
+    `SELECT id, servicio, valor, moneda, nota, vendida_el, anulada_el
+       FROM ventas_servicios WHERE correo = $1 ORDER BY vendida_el DESC LIMIT 30`,
+    [email],
+  );
 
-  const whatsapp = solicitudes.find((s) => numeroWhatsApp(s.whatsapp))?.whatsapp || null;
-  const nombre = (cuenta && nombreDe(cuenta)) || solicitudes[0]?.nombre || email;
+  if (!cuenta && !solicitudes.length && !correos.length && !notas.length && !guias.length && !servicios.length) return null;
+
+  const whatsapp = solicitudes.find((s) => numeroWhatsApp(s.whatsapp))?.whatsapp
+    || guias.find((g) => numeroWhatsApp(g.telefono))?.telefono || null;
+  const nombre = (cuenta && nombreDe(cuenta)) || solicitudes[0]?.nombre || guias[0]?.comprador_nombre || email;
 
   const cursos = matriculas.map((m) => {
     const aprobado = pagos.find((p) => Number(p.course_id) === Number(m.course_id) && p.status === 'aprobado');
@@ -267,8 +282,18 @@ export async function fichaDePersona(db, correo, { now = new Date(), siteUrl = '
     })),
     correos: correos.map((c) => ({ plantilla: c.plantilla, clave: c.clave, enviado: c.enviado, fecha: c.created_at })),
     notas: notas.map((n) => ({ id: Number(n.id), nota: n.nota, autor: n.autor_email, fecha: n.created_at })),
+    guias: guias.map((g) => ({
+      id: Number(g.id), estado: g.estado, producto: g.producto, valor: num(g.valor), moneda: g.moneda,
+      origen: g.origen_src, fecha: g.aprobada_el || g.comprada_el || g.created_at,
+    })),
+    servicios: servicios.map((s) => ({
+      id: Number(s.id), servicio: s.servicio, valor: num(s.valor), moneda: s.moneda, nota: s.nota,
+      fecha: s.vendida_el, anulada: s.anulada_el,
+    })),
     valor: {
       pagado: pagos.filter((p) => p.status === 'aprobado').reduce((s, p) => s + (Number(p.amount) || 0), 0),
+      guias: guias.filter((g) => g.estado === 'aprobada' && g.moneda === 'COP').reduce((s, g) => s + (Number(g.valor) || 0), 0),
+      servicios: servicios.filter((s) => !s.anulada_el && s.moneda === 'COP').reduce((s, x) => s + (Number(x.valor) || 0), 0),
       certificados: cursos.filter((c) => c.certificado.estado === 'emitido').length,
     },
   };
@@ -346,6 +371,22 @@ export function siguientesAcciones(persona, { now = new Date() } = {}) {
     }
   }
 
+  // Dejó una guía en el carrito de Hotmart (últimos 7 días) y no la compró.
+  const guias = persona.guias || [];
+  const compradas = new Set(guias.filter((g) => g.estado === 'aprobada').map((g) => g.producto));
+  const vistos = new Set();
+  for (const g of guias) {
+    if (g.estado !== 'carrito_abandonado' || compradas.has(g.producto) || vistos.has(g.producto)) continue;
+    if (now - new Date(g.fecha) > 7 * DIA) continue;
+    vistos.add(g.producto);
+    acciones.push({
+      clave: `guia-${g.id}`, prioridad: 'alta', tipo: 'recuperar-guia',
+      titulo: `Recuperar la compra de «${g.producto || 'una guía'}»`,
+      detalle: `La dejó en el carrito de Hotmart ${hace(g.fecha, now)} y no terminó la compra.`,
+      whatsapp: wa(`${saludo} Vimos que te interesó la guía ${g.producto || ''} y la compra no se completó. ¿Te ayudamos a terminarla?`),
+    });
+  }
+
   if (persona.cuenta && persona.cuenta.estado === 'invited' && !persona.cuenta.ultimaEntrada
       && dias(persona.cuenta.creada, now) >= UMBRALES.invitadoSinEntrarDias) {
     acciones.push({
@@ -404,6 +445,23 @@ export async function bandejaDeAtencion(db, { now = new Date(), limite = 50 } = 
     [ventana, new Date(now - UMBRALES.pagoAbandonadoHoras * HORA)], limite,
     (r) => ({ correo: r.correo, nombre: nombreDe(r), detalle: r.title, courseId: Number(r.course_id), fecha: r.created_at, recordado: r.recordado }));
 
+  // Guías que se quedaron en el carrito de Hotmart (7 días) sin compra después.
+  const carritoSinCompra = `v.estado = 'carrito_abandonado' AND v.comprador_correo IS NOT NULL
+        AND NOT EXISTS (SELECT 1 FROM ventas_guias a WHERE a.estado = 'aprobada'
+                         AND lower(a.comprador_correo) = lower(v.comprador_correo)
+                         AND a.producto IS NOT DISTINCT FROM v.producto)`;
+  const carritosDeGuias = await grupo(db,
+    `FROM (SELECT DISTINCT lower(v.comprador_correo), v.producto FROM ventas_guias v
+            WHERE ${carritoSinCompra} AND COALESCE(v.comprada_el, v.created_at) >= $1) t`,
+    `SELECT DISTINCT ON (lower(v.comprador_correo), v.producto)
+            lower(v.comprador_correo) AS correo, v.comprador_nombre, v.producto, v.telefono,
+            COALESCE(v.comprada_el, v.created_at) AS created_at
+       FROM ventas_guias v
+      WHERE ${carritoSinCompra} AND COALESCE(v.comprada_el, v.created_at) >= $2
+      ORDER BY lower(v.comprador_correo), v.producto, COALESCE(v.comprada_el, v.created_at) DESC LIMIT $1`,
+    [new Date(now - 7 * DIA)], limite,
+    (r) => ({ correo: r.correo, nombre: r.comprador_nombre, detalle: r.producto || 'Guía en Hotmart', fecha: r.created_at, whatsapp: numeroWhatsApp(r.telefono) }));
+
   const terminaronSinCertificado = await grupo(db,
     `FROM aula_enrollments e
        JOIN aula_courses c ON c.id = e.course_id AND c.kind = 'edvanta' AND c.certificate_price > 0
@@ -458,7 +516,7 @@ export async function bandejaDeAtencion(db, { now = new Date(), limite = 50 } = 
     generada: now.toISOString(),
     umbrales: UMBRALES,
     grupos: {
-      solicitudesNuevas, pagosSinTerminar, terminaronSinCertificado, inactivos, invitadosSinEntrar,
+      solicitudesNuevas, pagosSinTerminar, carritosDeGuias, terminaronSinCertificado, inactivos, invitadosSinEntrar,
     },
     entregasPorRevisar: entregas?.n || 0,
   };
@@ -560,8 +618,57 @@ export async function resumenDeVentas(db, { dias: periodo = 30, now = new Date()
     `SELECT ${zona('created_at')} AS dia, count(*)::int AS n FROM aula_users
       WHERE deleted_at IS NULL AND role = 'participant' AND NOT is_demo AND created_at >= $1 AND created_at <= $2 GROUP BY 1`, p);
 
+  // Guías (Hotmart) y servicios.
+  const guiasTotales = await one(
+    db,
+    `SELECT count(*) FILTER (WHERE estado = 'aprobada' AND aprobada_el >= $1 AND aprobada_el <= $2)::int AS vendidas,
+            COALESCE(sum(valor) FILTER (WHERE estado = 'aprobada' AND moneda = 'COP' AND aprobada_el >= $1 AND aprobada_el <= $2), 0)::float AS cop,
+            count(*) FILTER (WHERE estado = 'carrito_abandonado' AND COALESCE(comprada_el, created_at) >= $1
+                                AND COALESCE(comprada_el, created_at) <= $2)::int AS carritos,
+            count(*) FILTER (WHERE estado IN ('reembolsada', 'contracargo') AND updated_at >= $1 AND updated_at <= $2)::int AS reembolsos
+       FROM ventas_guias`,
+    p,
+  );
+  const guiasTop = await many(
+    db,
+    `SELECT COALESCE(producto, 'Sin nombre') AS producto, count(*)::int AS ventas,
+            COALESCE(sum(valor) FILTER (WHERE moneda = 'COP'), 0)::float AS cop
+       FROM ventas_guias WHERE estado = 'aprobada' AND aprobada_el >= $1 AND aprobada_el <= $2
+      GROUP BY 1 ORDER BY ventas DESC, cop DESC LIMIT 15`,
+    p,
+  );
+  // Qué página y qué botón vendió: el «src» de los enlaces (edv-<página>-<botón>).
+  const guiasPorOrigen = await many(
+    db,
+    `SELECT COALESCE(origen_src, 'sin origen') AS origen, count(*)::int AS ventas,
+            COALESCE(sum(valor) FILTER (WHERE moneda = 'COP'), 0)::float AS cop
+       FROM ventas_guias WHERE estado = 'aprobada' AND aprobada_el >= $1 AND aprobada_el <= $2
+      GROUP BY 1 ORDER BY ventas DESC LIMIT 15`,
+    p,
+  );
+  const serviciosTotales = await one(
+    db,
+    `SELECT count(*)::int AS vendidos, COALESCE(sum(valor) FILTER (WHERE moneda = 'COP'), 0)::float AS cop
+       FROM ventas_servicios WHERE anulada_el IS NULL AND vendida_el >= $1 AND vendida_el <= $2`,
+    p,
+  );
+  const serviciosTop = await many(
+    db,
+    `SELECT servicio, count(*)::int AS ventas, COALESCE(sum(valor) FILTER (WHERE moneda = 'COP'), 0)::float AS cop
+       FROM ventas_servicios WHERE anulada_el IS NULL AND vendida_el >= $1 AND vendida_el <= $2
+      GROUP BY 1 ORDER BY ventas DESC LIMIT 10`,
+    p,
+  );
+  const serieGuias = await many(db,
+    `SELECT ${zona('aprobada_el')} AS dia, count(*)::int AS n FROM ventas_guias
+      WHERE estado = 'aprobada' AND aprobada_el >= $1 AND aprobada_el <= $2 GROUP BY 1`, p);
+  const serieServicios = await many(db,
+    `SELECT ${zona('vendida_el')} AS dia, count(*)::int AS n FROM ventas_servicios
+      WHERE anulada_el IS NULL AND vendida_el >= $1 AND vendida_el <= $2 GROUP BY 1`, p);
+
   const mapa = (rows) => new Map(rows.map((r) => [r.dia, r]));
   const [mi, mp, mc] = [mapa(serieInscripciones), mapa(seriePagos), mapa(serieCuentas)];
+  const [mg, ms] = [mapa(serieGuias), mapa(serieServicios)];
   const serie = [];
   for (let i = n - 1; i >= 0; i -= 1) {
     const dia = new Date(now - i * DIA).toLocaleDateString('en-CA', { timeZone: 'America/Bogota' });
@@ -571,6 +678,8 @@ export async function resumenDeVentas(db, { dias: periodo = 30, now = new Date()
       inscripciones: mi.get(dia)?.n || 0,
       pagos: mp.get(dia)?.n || 0,
       ingresos: mp.get(dia)?.total || 0,
+      guias: mg.get(dia)?.n || 0,
+      servicios: ms.get(dia)?.n || 0,
     });
   }
 
@@ -592,7 +701,19 @@ export async function resumenDeVentas(db, { dias: periodo = 30, now = new Date()
       certificados: t.certificados,
       ingresosCop,
       ticketPromedioCop: t.pagos_aprobados > 0 ? Math.round(ingresosCop / t.pagos_aprobados) : null,
+      guiasVendidas: guiasTotales.vendidas,
+      guiasCop: guiasTotales.cop,
+      guiasCarritos: guiasTotales.carritos,
+      guiasReembolsos: guiasTotales.reembolsos,
+      serviciosVendidos: serviciosTotales.vendidos,
+      serviciosCop: serviciosTotales.cop,
+      // Las tres ventas en pesos colombianos (lo cobrado en otra moneda va aparte en `ingresos`).
+      ingresosTotalCop: ingresosCop + guiasTotales.cop + serviciosTotales.cop,
     },
+    hoy: await ventasDeHoy(db, { now }),
+    guiasTop,
+    guiasPorOrigen,
+    serviciosTop,
     conversion: {
       inscripcionAPago: tasa(t.pagos_aprobados, t.inscripciones_propias),
       inicioDePagoAPago: tasa(t.pagos_aprobados, t.pagos_iniciados),

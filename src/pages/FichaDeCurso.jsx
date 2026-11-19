@@ -51,6 +51,8 @@ import { datosDeCurso, preguntasDeCurso } from '../../api/lib/html-de-ficha.js';
 import { EDVANTA_WHATSAPP_URL } from '../config/links';
 import FichaCursoHero from '../components/curso/FichaCursoHero';
 import ContenidoCurso from '../components/curso/ContenidoCurso';
+import GuiaRecomendada from '../components/curso/GuiaRecomendada';
+import { guiasParaCurso } from '../data/guiaParaCurso';
 import {
   BeneficioCurso, CursoHeading, CursoSection, DatoCurso, ResultadosCurso,
 } from '../components/curso/PiezasCurso';
@@ -236,6 +238,16 @@ function GuiaDelCurso({ guia }) {
 }
 
 /* ── Valoraciones y preguntas ───────────────────────────────── */
+
+function GuiaDelTema({ curso }) {
+  if (!guiasParaCurso(curso, 1).length) return null;
+  return (
+    <CursoSection id="guia-recomendada">
+      <CursoHeading title="Complementa el curso con una guía práctica" desc="Material de Edvanta para aplicar lo que aprendes en tu trabajo, desde el primer día." />
+      <GuiaRecomendada curso={curso} origen="ficha-curso" className="mt-6 max-w-4xl" />
+    </CursoSection>
+  );
+}
 
 function Participacion({ ficha, refCurso, datos }) {
   const puedo = datos?.puedo || { opinar: false, comentar: false, moderar: false };
@@ -754,6 +766,9 @@ export default function FichaDeCurso({ modo = 'propio', slugPublico = '' }) {
           boton={propio && !conCaminos ? boton() : null}
           compra={conCaminos ? { oferta: oferta || { precio: precioVisible }, onComprar: irAInscripcion, ocupado: camino === 'certificado' } : {}}
         />
+
+        {/* La guía que lleva el curso a la práctica (Hotmart). Solo si hay una de verdad relacionada. */}
+        <GuiaDelTema curso={ficha} />
 
         <CursoSection id="preguntas-frecuentes">
           <CursoHeading title="Preguntas frecuentes" />

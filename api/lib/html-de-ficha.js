@@ -213,6 +213,17 @@ export function datosDeCurso(ficha, { nombre, canonical, imagen, horas }) {
     provider: { '@type': 'Organization', name: ficha.proveedor.nombre, ...(propio ? { sameAs: 'https://edvanta.co' } : {}) },
     ...(ficha.nivel ? { educationalLevel: ficha.nivel } : {}),
     ...(ficha.queAprenderas?.length ? { teaches: ficha.queAprenderas.slice(0, 12) } : {}),
+    // Estrellas en Google: solo con valoraciones reales y publicadas de
+    // Edvanta, que la ficha muestra en «Valoraciones de estudiantes».
+    ...(ficha.valoraciones?.total > 0 && ficha.valoraciones.promedio >= 1 ? {
+      aggregateRating: {
+        '@type': 'AggregateRating',
+        ratingValue: ficha.valoraciones.promedio,
+        ratingCount: ficha.valoraciones.total,
+        bestRating: 5,
+        worstRating: 1,
+      },
+    } : {}),
   };
   if (propio) {
     const h = Number(horas);

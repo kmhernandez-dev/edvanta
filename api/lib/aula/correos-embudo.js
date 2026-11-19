@@ -258,7 +258,11 @@ export const PLANTILLAS = {
     ].join(''),
   }),
 
-  'certificado-pagado': ({ nombre, curso, cursoUrl, siteUrl }) => ({
+  'certificado-pagado': ({ nombre, curso, cursoUrl, siteUrl }) => {
+    // Quien acaba de comprar es quien más compra: la guía de su tema, si la hay.
+    const r = recomendacionDeArea(curso);
+    const urlGuia = r.guia ? conUtm(`${siteUrl}/guia/${r.guia}`, 'ciclo', 'certificado-pagado-guia') : null;
+    return {
     asunto: `Tu certificado de ${curso} ya está pagado`,
     pre: 'Así lo emites, lo verificas y lo agregas a LinkedIn.',
     encabezado: ['Pago aprobado', 'Tu certificado está listo para emitir'],
@@ -273,10 +277,13 @@ export const PLANTILLAS = {
       boton('Ir a mi curso', conUtm(cursoUrl, 'ciclo', 'certificado-pagado')),
       divisor(),
       recuadro([etiqueta('Tu siguiente paso'), parrafo('Sigue con otro curso gratis de tu área y suma certificados a tu perfil profesional.', 'margin:0;'), enlace('Ver más cursos', conUtm(`${siteUrl}/cursos`, 'ciclo', 'certificado-pagado'))].join('')),
+      urlGuia ? portadaGuia(siteUrl, r.guia, urlGuia) : '',
+      urlGuia ? recuadro([etiqueta('Llévalo a la práctica'), subtitulo(esc(r.guiaTitulo)), enlace('Conocer la guía', urlGuia)].join('')) : '',
       pdOferta(siteUrl, 'certificado-pagado'),
     ].join(''),
     despedida: 'Con orgullo,',
-  }),
+    };
+  },
 
   // Empezó el pago del certificado y no lo terminó. Sin presión: puede
   // haber fallado la tarjeta o el banco. Si ya pagó, la confirmación tarda.

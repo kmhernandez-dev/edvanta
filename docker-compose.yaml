@@ -60,6 +60,9 @@ services:
       # LOG_PETICIONES=todas para ver cada petición mientras se diagnostica.
       LOG_PETICIONES: "${LOG_PETICIONES:-muestra}"
       LOG_MUESTRA: "${LOG_MUESTRA:-0.02}"
+      # Ventas de guías: el «hottok» de Hotmart (Herramientas → Webhook).
+      # Sin él, /api/hotmart/webhook responde 503 y no guarda nada.
+      HOTMART_HOTTOK: "${HOTMART_HOTTOK:-}"
       CORS_ORIGINS: "http://edvanta.co,https://edvanta.co,http://www.edvanta.co,https://www.edvanta.co"
       SITE_URL: "https://edvanta.co"
       API_URL: "https://edvanta.co"

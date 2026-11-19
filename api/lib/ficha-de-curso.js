@@ -124,6 +124,26 @@ function capacidades({ propio, temario, curso }) {
   };
 }
 
+/**
+ * Valoraciones publicadas de un curso (opiniones_curso), para los datos
+ * estructurados: con ellas, Google puede mostrar las estrellas. Solo lo
+ * publicado; si la tabla no existe o falla, null (la ficha sale igual).
+ */
+export async function valoracionesPublicas(db, entidad, id) {
+  const columna = entidad === 'aula' ? 'aula_course_id' : 'curso_id';
+  try {
+    const { rows } = await db.query(
+      `SELECT COUNT(*)::int AS total, ROUND(AVG(puntuacion)::numeric, 1) AS promedio
+         FROM opiniones_curso WHERE ${columna} = $1 AND estado = 'publicada'`,
+      [id],
+    );
+    const r = rows[0];
+    return r && r.total > 0 ? { total: r.total, promedio: Number(r.promedio) } : null;
+  } catch {
+    return null;
+  }
+}
+
 /** Un curso propio (aula_courses + su snapshot publicado) → ficha. */
 export function fichaDeCursoPropio(curso, temario) {
   const clases = temario.reduce((n, u) => n + u.lessons.length, 0);

@@ -28,7 +28,7 @@
  * ============================================================
  */
 import { Router } from 'express';
-import { fichaDeCursoCurado, fichaDeCursoPropio } from '../lib/ficha-de-curso.js';
+import { fichaDeCursoCurado, fichaDeCursoPropio, valoracionesPublicas } from '../lib/ficha-de-curso.js';
 import {
   asegurarSlugsDeCursos, nombreDeCurso, resolverSlug, rutaDeCursoCurado, rutaDeCursoPropio, slugify,
 } from '../lib/slugs-publicos.js';
@@ -140,10 +140,16 @@ async function cursoDelSlug(db, entidad, id) {
     // Cada clase abierta del temario enlaza a su página: así la ficha (la
     // página que vende) reparte autoridad a sus clases y Google las descubre.
     const rutas = await rutasDeClasesAbiertas(db, id, rows[0].snapshot, rows[0].public_slug);
-    return fichaDeCursoPropio(rows[0], enlazarTemario(temarioPublico(rows[0].snapshot), rutas));
+    const ficha = fichaDeCursoPropio(rows[0], enlazarTemario(temarioPublico(rows[0].snapshot), rutas));
+    // Las valoraciones publicadas: con ellas, las estrellas en Google.
+    ficha.valoraciones = await valoracionesPublicas(db, 'aula', id);
+    return ficha;
   }
   const { rows } = await db.query('SELECT * FROM courses WHERE id = $1 AND active = TRUE', [id]);
-  return rows[0] ? fichaDeCursoCurado(rows[0]) : null;
+  if (!rows[0]) return null;
+  const ficha = fichaDeCursoCurado(rows[0]);
+  ficha.valoraciones = await valoracionesPublicas(db, 'curado', id);
+  return ficha;
 }
 
 /**

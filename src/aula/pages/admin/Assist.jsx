@@ -12,10 +12,10 @@
 import { useMemo, useState } from 'react';
 import { Link, Outlet, useSearchParams } from 'react-router-dom';
 import {
-  Award, BadgeCheck, ClipboardCheck, Clock, CreditCard, GraduationCap, Hourglass, Inbox, KeyRound,
-  Mail, MessageCircle, Percent, Search, Send, StickyNote, TrendingUp, UserPlus, Users, Wallet,
+  Award, BadgeCheck, BookOpen, Briefcase, ClipboardCheck, Clock, CreditCard, GraduationCap, Hourglass, Inbox, KeyRound,
+  Mail, MessageCircle, Percent, Search, Send, ShoppingCart, StickyNote, Target, TrendingUp, UserPlus, Users, Wallet,
 } from 'lucide-react';
-import { get, post } from '../../api';
+import { get, post, put } from '../../api';
 import { useAsync } from '../../hooks';
 import { Badge, StatusBadge } from '../../ui/Badge';
 import { Button } from '../../ui/Button';
@@ -89,6 +89,8 @@ export default function AssistLayout() {
 const GRUPOS = [
   { clave: 'pagosSinTerminar', titulo: 'Pagos sin terminar', icono: CreditCard, tono: 'danger',
     ayuda: 'Empezaron a pagar el certificado hace más de 2 horas y no terminaron. El correo automático sale solo; si no responden, escríbeles.' },
+  { clave: 'carritosDeGuias', titulo: 'Guías en el carrito', icono: ShoppingCart, tono: 'danger',
+    ayuda: 'Dejaron una guía en el carrito de Hotmart en los últimos 7 días y no la compraron. Escríbeles por WhatsApp.' },
   { clave: 'terminaronSinCertificado', titulo: 'Terminaron sin certificado', icono: Award, tono: 'warning',
     ayuda: 'Completaron un curso con certificado de pago y aún no lo tienen. Es la venta más fácil del día.' },
   { clave: 'solicitudesNuevas', titulo: 'Solicitudes nuevas', icono: Inbox, tono: 'primary',
@@ -277,7 +279,7 @@ export function AssistPersona() {
         <dl className="mt-5 grid gap-4 text-sm sm:grid-cols-2 lg:grid-cols-4">
           <Dato titulo="Cuenta creada" valor={p.cuenta ? fecha(p.cuenta.creada) : '—'} />
           <Dato titulo="Última entrada" valor={p.cuenta?.ultimaEntrada ? hace(p.cuenta.ultimaEntrada) : 'Nunca'} />
-          <Dato titulo="Ha pagado" valor={`${cop(p.valor.pagado)} COP`} />
+          <Dato titulo="Ha comprado (COP)" valor={cop(p.valor.pagado + p.valor.guias + p.valor.servicios)} />
           <Dato titulo="Certificados emitidos" valor={p.valor.certificados} />
         </dl>
       </Card>
@@ -382,6 +384,24 @@ export function AssistPersona() {
           )}
         </Card>
 
+        <Card title={`Guías en Hotmart · ${p.guias.length}`} description="Compras, reembolsos y carritos que avisa Hotmart.">
+          {p.guias.length === 0 ? <p className="text-sm text-[var(--aula-muted)]">Sin compras de guías registradas con este correo.</p> : (
+            <ul className="space-y-2 text-sm">
+              {p.guias.map((g) => (
+                <li key={g.id} className="flex flex-wrap items-center justify-between gap-2">
+                  <span className="min-w-0 flex-1 truncate">{g.producto || 'Guía'}</span>
+                  <Badge tone={ESTADO_GUIA[g.estado]?.tone || 'neutral'}>{ESTADO_GUIA[g.estado]?.label || g.estado}</Badge>
+                  <span className="tabular-nums">{g.valor ? `${cop(g.valor)} ${g.moneda}` : '—'}</span>
+                  <span className="w-full text-xs text-[var(--aula-muted)]">{fechaHora(g.fecha)}{g.origen ? ` · desde ${g.origen}` : ''}</span>
+                </li>
+              ))}
+            </ul>
+          )}
+        </Card>
+
+        <ServiciosDePersona correo={p.correo} nombre={p.nombre} servicios={p.servicios}
+          onCambio={(servicios) => ficha.setData((d) => ({ ...d, servicios }))} />
+
         <Card title={`Correos que recibió · ${p.correos.length}`}>
           {p.correos.length === 0 ? <p className="text-sm text-[var(--aula-muted)]">Ningún correo automático todavía.</p> : (
             <ul className="space-y-2 text-sm">
@@ -413,6 +433,93 @@ export function AssistPersona() {
         </Card>
       </div>
     </div>
+  );
+}
+
+const ESTADO_GUIA = {
+  aprobada: { tone: 'success', label: 'comprada' },
+  pendiente: { tone: 'warning', label: 'pendiente' },
+  carrito_abandonado: { tone: 'danger', label: 'en el carrito' },
+  cancelada: { tone: 'neutral', label: 'cancelada' },
+  reembolsada: { tone: 'neutral', label: 'reembolsada' },
+  contracargo: { tone: 'neutral', label: 'contracargo' },
+};
+
+/** Servicios vendidos a la persona (se cierran por WhatsApp) y el formulario para registrar uno. */
+function ServiciosDePersona({ correo, nombre, servicios, onCambio }) {
+  const toast = useToast();
+  const [abierto, setAbierto] = useState(false);
+  const [form, setForm] = useState({ servicio: '', valor: '', nota: '' });
+  const [guardando, setGuardando] = useState(false);
+  const sugeridos = useAsync(({ signal }) => get('/admin/assist/servicios/sugeridos', { signal }), []);
+  const cambiar = (k) => (e) => setForm((f) => ({ ...f, [k]: e.target.value }));
+
+  const guardar = async (e) => {
+    e.preventDefault();
+    setGuardando(true);
+    try {
+      const s = await post('/admin/assist/servicios', {
+        correo, nombre, servicio: form.servicio.trim(), valor: Number(String(form.valor).replace(/[^\d]/g, '')), nota: form.nota.trim() || undefined,
+      });
+      onCambio([s, ...servicios]);
+      setForm({ servicio: '', valor: '', nota: '' });
+      setAbierto(false);
+      toast.success('Venta de servicio registrada.');
+    } catch (err) {
+      toast.error(err.message);
+    } finally {
+      setGuardando(false);
+    }
+  };
+  const anular = async (s) => {
+    if (!window.confirm(`¿Anular la venta de «${s.servicio}»? Deja de contar en las ventas.`)) return;
+    try {
+      await post(`/admin/assist/servicios/${s.id}/anular`, {});
+      onCambio(servicios.map((x) => (x.id === s.id ? { ...x, anulada: new Date().toISOString() } : x)));
+      toast.success('Venta anulada.');
+    } catch (err) {
+      toast.error(err.message);
+    }
+  };
+
+  return (
+    <Card title={`Servicios · ${servicios.filter((s) => !s.anulada).length}`} description="Asesorías, paquetes y cursos en vivo que se cierran por WhatsApp."
+      actions={!abierto && <Button size="sm" variant="soft" icon={Briefcase} onClick={() => setAbierto(true)}>Registrar venta</Button>}>
+      {abierto && (
+        <form onSubmit={guardar} className="mb-4 space-y-3 rounded-[var(--aula-radius)] bg-[var(--aula-surface-muted)] p-4">
+          <label className="flex flex-col gap-1 text-sm font-semibold">
+            Servicio
+            <input list="servicios-sugeridos" required minLength={2} maxLength={160} value={form.servicio} onChange={cambiar('servicio')}
+              className="h-11 rounded-[var(--aula-radius)] border border-[var(--aula-border-strong)] bg-white px-3 font-normal" />
+            <datalist id="servicios-sugeridos">{(sugeridos.data?.items || []).map((s) => <option key={s} value={s} />)}</datalist>
+          </label>
+          <label className="flex flex-col gap-1 text-sm font-semibold">
+            Valor (COP)
+            <input inputMode="numeric" required value={form.valor} onChange={cambiar('valor')} placeholder="Ej.: 80000"
+              className="h-11 rounded-[var(--aula-radius)] border border-[var(--aula-border-strong)] bg-white px-3 font-normal" />
+          </label>
+          <TextArea label="Nota (opcional)" rows={2} maxLength={1000} value={form.nota} onChange={cambiar('nota')} placeholder="Cómo pagó, qué incluye…" />
+          <div className="flex gap-2">
+            <Button type="submit" size="sm" loading={guardando}>Guardar venta</Button>
+            <Button size="sm" variant="ghost" onClick={() => setAbierto(false)}>Cancelar</Button>
+          </div>
+        </form>
+      )}
+      {servicios.length === 0 ? <p className="text-sm text-[var(--aula-muted)]">Sin servicios vendidos.</p> : (
+        <ul className="space-y-2 text-sm">
+          {servicios.map((s) => (
+            <li key={s.id} className={`flex flex-wrap items-center justify-between gap-2 ${s.anulada ? 'opacity-60' : ''}`}>
+              <span className="min-w-0 flex-1 truncate">{s.servicio}</span>
+              <span className="tabular-nums">{cop(s.valor)} {s.moneda}</span>
+              {s.anulada
+                ? <Badge>anulada</Badge>
+                : <button type="button" onClick={() => anular(s)} className="text-xs font-semibold text-[var(--aula-danger)] hover:underline">Anular</button>}
+              <span className="w-full text-xs text-[var(--aula-muted)]">{fechaHora(s.fecha)}{s.nota ? ` · ${s.nota}` : ''}</span>
+            </li>
+          ))}
+        </ul>
+      )}
+    </Card>
   );
 }
 
@@ -462,11 +569,19 @@ export function AssistVentas() {
       {ventas.loading && !v && <LoadingBlock rows={4} label="Calculando ventas" />}
       {v && (
         <>
+          <MetasDeHoy hoy={v.hoy} onGuardado={ventas.reload} />
+
           <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-            <StatCard label="Ingresos (COP)" value={cop(v.totales.ingresosCop)} icon={Wallet} tone="success"
-              hint={v.totales.ticketPromedioCop ? `Ticket promedio ${cop(v.totales.ticketPromedioCop)}` : 'Certificados pagados'} />
+            <StatCard label="Ingresos del periodo (COP)" value={cop(v.totales.ingresosTotalCop)} icon={Wallet} tone="success"
+              hint={`Certificados ${cop(v.totales.ingresosCop)} · guías ${cop(v.totales.guiasCop)} · servicios ${cop(v.totales.serviciosCop)}`} />
             <StatCard label="Certificados pagados" value={v.totales.pagosAprobados} icon={Award} tone="primary"
               hint={`${v.totales.pagosIniciados} personas empezaron a pagar`} />
+            <StatCard label="Guías vendidas" value={v.totales.guiasVendidas} icon={BookOpen} tone="primary"
+              hint={`${v.totales.guiasCarritos} carritos abandonados${v.totales.guiasReembolsos ? ` · ${v.totales.guiasReembolsos} reembolsos` : ''}`} />
+            <StatCard label="Servicios vendidos" value={v.totales.serviciosVendidos} icon={Briefcase} tone="primary"
+              hint="Registrados en la ficha de cada persona" />
+          </div>
+          <div className="grid gap-4 sm:grid-cols-2">
             <StatCard label="Inscripciones" value={v.totales.inscripciones} icon={GraduationCap}
               hint={`${v.totales.inscripcionesPropias} por su cuenta · ${v.totales.terminados} terminaron`} />
             <StatCard label="Cuentas nuevas" value={v.totales.cuentas} icon={Users}
@@ -510,6 +625,13 @@ export function AssistVentas() {
             </Card>
 
             <div className="grid gap-6 lg:grid-cols-2">
+              <ListaDeVentas titulo="Guías más vendidas" vacio="Aún no llegan ventas de Hotmart en este periodo. ¿Ya configuraste el webhook?"
+                filas={v.guiasTop.map((g) => ({ clave: g.producto, nombre: g.producto, ventas: g.ventas, cop: g.cop }))} />
+              <ListaDeVentas titulo="Qué página vende las guías" descripcion="El «src» de cada enlace de compra: edv-<guía>-<lugar>."
+                vacio="Sin ventas de guías en el periodo."
+                filas={v.guiasPorOrigen.map((g) => ({ clave: g.origen, nombre: g.origen, ventas: g.ventas, cop: g.cop }))} />
+              <ListaDeVentas titulo="Servicios" vacio="Sin servicios registrados en el periodo."
+                filas={v.serviciosTop.map((s) => ({ clave: s.servicio, nombre: s.servicio, ventas: s.ventas, cop: s.cop }))} />
               <Card title="La venta automática" description="Pagos aprobados que llegaron después de un correo automático del mismo curso. Un pago puede contar en más de un correo.">
                 {v.recuperadas.length === 0 ? <p className="text-sm text-[var(--aula-muted)]">Aún no hay pagos después de un correo en este periodo.</p> : (
                   <ul className="space-y-2 text-sm">
@@ -539,6 +661,96 @@ export function AssistVentas() {
         </>
       )}
     </div>
+  );
+}
+
+function ListaDeVentas({ titulo, descripcion, filas, vacio }) {
+  return (
+    <Card title={titulo} description={descripcion}>
+      {filas.length === 0 ? <p className="text-sm text-[var(--aula-muted)]">{vacio}</p> : (
+        <ul className="space-y-2 text-sm">
+          {filas.map((f) => (
+            <li key={f.clave} className="flex items-center justify-between gap-3">
+              <span className="min-w-0 flex-1 truncate">{f.nombre}</span>
+              <span className="whitespace-nowrap tabular-nums">{f.ventas} {f.ventas === 1 ? 'venta' : 'ventas'} · {cop(f.cop)}</span>
+            </li>
+          ))}
+        </ul>
+      )}
+    </Card>
+  );
+}
+
+const LINEAS_DE_META = [
+  { clave: 'certificados', titulo: 'Certificados', icono: Award },
+  { clave: 'guias', titulo: 'Guías y ebooks', icono: BookOpen },
+  { clave: 'servicios', titulo: 'Servicios', icono: Briefcase },
+];
+
+/**
+ * Lo vendido hoy (hora de Colombia) contra la meta diaria de cada venta,
+ * con el ritmo: cuánto se esperaría a esta hora repartiendo la meta entre
+ * las 6:00 y la medianoche. Las metas se editan aquí.
+ */
+function MetasDeHoy({ hoy, onGuardado }) {
+  const toast = useToast();
+  const [editando, setEditando] = useState(false);
+  const [metas, setMetas] = useState(() => Object.fromEntries(LINEAS_DE_META.map((l) => [l.clave, hoy[l.clave].meta])));
+  const [guardando, setGuardando] = useState(false);
+  const guardar = async (e) => {
+    e.preventDefault();
+    setGuardando(true);
+    try {
+      await put('/admin/assist/metas', Object.fromEntries(Object.entries(metas).map(([k, v]) => [k, Number(v)])));
+      toast.success('Metas guardadas.');
+      setEditando(false);
+      onGuardado?.();
+    } catch (err) {
+      toast.error(err.message);
+    } finally {
+      setGuardando(false);
+    }
+  };
+
+  return (
+    <Card title="Hoy" description={`Desde la medianoche de Colombia · ingresos de hoy ${cop(hoy.ingresosCop)} COP`}
+      actions={!editando && <Button size="sm" variant="ghost" icon={Target} onClick={() => setEditando(true)}>Editar metas</Button>}>
+      {editando ? (
+        <form onSubmit={guardar} className="flex flex-wrap items-end gap-4">
+          {LINEAS_DE_META.map((l) => (
+            <label key={l.clave} className="flex flex-col gap-1 text-sm font-semibold">
+              {l.titulo} por día
+              <input type="number" min={0} max={100000} required value={metas[l.clave]}
+                onChange={(e) => setMetas((m) => ({ ...m, [l.clave]: e.target.value }))}
+                className="h-11 w-32 rounded-[var(--aula-radius)] border border-[var(--aula-border-strong)] px-3 font-normal tabular-nums" />
+            </label>
+          ))}
+          <div className="flex gap-2">
+            <Button type="submit" size="sm" loading={guardando}>Guardar</Button>
+            <Button size="sm" variant="ghost" onClick={() => setEditando(false)}>Cancelar</Button>
+          </div>
+        </form>
+      ) : (
+        <div className="grid gap-5 sm:grid-cols-3">
+          {LINEAS_DE_META.map((l) => {
+            const x = hoy[l.clave];
+            const vaBien = x.vendidas >= x.esperadoAEstaHora;
+            return (
+              <div key={l.clave}>
+                <p className="flex items-center gap-2 text-sm text-[var(--aula-muted)]"><l.icono className="h-4 w-4" aria-hidden="true" />{l.titulo}</p>
+                <p className="mt-1 font-[family-name:var(--aula-font-display)] text-3xl font-extrabold tabular-nums text-[var(--aula-primary)]">
+                  {x.vendidas}<span className="text-base font-semibold text-[var(--aula-muted)]"> / {x.meta}</span>
+                </p>
+                <div className="mt-2"><ProgressBar value={x.pct ?? 0} label={`${l.titulo}: ${x.vendidas} de ${x.meta}`} tone={vaBien ? 'success' : 'secondary'} /></div>
+                <p className="mt-1.5 text-xs text-[var(--aula-muted)]">
+                  {cop(x.cop)} COP · {x.meta > 0 ? (vaBien ? 'al ritmo de la meta' : `a esta hora irían ${x.esperadoAEstaHora}`) : 'sin meta'}
+                </p>
+              </div>
+            );
+          })}
+        </div>
+      )}
+    </Card>
   );
 }
 

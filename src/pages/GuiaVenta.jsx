@@ -30,6 +30,7 @@ import { GUIAS_VENTA, MARCAS, datosDeGuia, guiaPorSlug, guiasRelacionadas } from
 import { PRECIOS_GUIAS } from '../data/preciosGuias';
 import { enviarSolicitud } from '../lib/solicitudes';
 import { trackEvent } from '../utils/analytics';
+import { conOrigen } from '../lib/hotmart';
 import { updatePageSeo } from '../utils/seo';
 
 const SITIO = 'https://edvanta.co';
@@ -51,19 +52,9 @@ function Portada({ guia, grande = false, sello = false }) {
   );
 }
 
-/**
- * Enlace de Hotmart con `src`: el informe de ventas de Hotmart dice de qué
- * página y de qué botón vino cada venta. Se agrega sin tocar `off` ni `sck`.
- */
-export function conOrigen(url, slug, origen) {
-  try {
-    const u = new URL(url);
-    u.searchParams.set('src', `edv-${slug}-${origen}`.slice(0, 60));
-    return u.toString();
-  } catch {
-    return url;
-  }
-}
+// Enlace de Hotmart con `src` (de qué página y botón vino la venta). Vive
+// en lib/hotmart.js para que la ficha de curso lo use sin cargar esta página.
+export { conOrigen };
 
 function BotonComprar({ guia, origen, className = '', children, tamano = 'ed-btn--lg' }) {
   const oferta = promoActiva();

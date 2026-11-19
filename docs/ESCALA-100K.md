@@ -133,7 +133,43 @@ Se suman a los que ya existían: bienvenida, recordatorio a los 5 días, descuen
 
 ---
 
-## 5. Cómo verificar después de desplegar
+## 5. Máquina de ventas: 100 certificados, 100 guías y servicios al día
+
+Fase 2, escrita el 19-nov-2026.
+
+### Lo que quedó hecho
+
+| Pieza | Dónde | Para qué |
+|---|---|---|
+| **Webhook de Hotmart** | `POST /api/hotmart/webhook`, en `api/routes/hotmart-webhook.js` | Cada compra, reembolso y carrito abandonado de las guías llega a la tabla `ventas_guias`, junto con el `src` del enlace (qué página y qué botón vendió). |
+| **Ventas de servicios** | Assist → ficha de la persona → «Registrar venta» | Asesorías, paquetes y cursos en vivo cerrados por WhatsApp. Se pueden anular. |
+| **Metas del día** | Assist → Ventas → «Hoy» | Certificados, guías y servicios vendidos hoy, contra la meta (100 cada uno; se edita ahí mismo), con el ritmo esperado a esa hora. |
+| **Carritos abandonados de guías** | Bandeja y ficha | Quien dejó una guía en el carrito de Hotmart aparece con su WhatsApp y un mensaje ya escrito. |
+| **Guía en la ficha del curso** | Sección «Complementa el curso con una guía práctica» | Cada curso ofrece la guía de su tema: precio real y compra directa en Hotmart (`src=edv-<guía>-ficha-curso`). Si no hay una guía de verdad relacionada, no sale nada. Mapa en `src/data/guiaParaCurso.js`. |
+| **Guía y valoración al emitir el certificado** | Aula → «Tu certificado» → «Tu siguiente paso» | Pide calificar el curso y ofrece la guía (`src=edv-<guía>-aula-certificado`). |
+| **Guía en el correo «certificado pagado»** | `correos-embudo.js` | Quien acaba de comprar recibe la guía de su tema. |
+| **Estrellas en Google** | `aggregateRating` del Course JSON-LD | Solo con valoraciones reales y publicadas. Hoy hay 0, así que todavía no aparecen. Se activan solas con la primera. |
+
+### Lo que debe hacer Karla para que cuenten las guías
+
+1. **Hotmart:** Herramientas → Webhook (API y notificaciones) → nueva configuración.
+   - URL: `https://edvanta.co/api/hotmart/webhook`.
+   - Versión: **2.0.0**.
+   - Eventos: compra aprobada, completa, cancelada, reembolsada, contracargo, en espera y **abandono de carrito**.
+2. **Coolify** (servicio `api`): copiar el **hottok** que muestra Hotmart en la variable `HOTMART_HOTTOK` y volver a desplegar.
+3. **Verificar:** `https://edvanta.co/api/health` debe decir `"hotmart_webhook": "configured"`. Hotmart tiene un botón para enviar un evento de prueba.
+
+### Cuánto tráfico exige la meta
+
+Son **estimaciones de diseño** para orientar decisiones, no datos medidos.
+
+- **100 certificados al día.** Si de cada 100 visitas a una ficha se vende entre 0,5 y 1 certificado (inscripción, avance, pago), hacen falta **10.000 a 20.000 visitas diarias a las fichas**: 300.000 a 600.000 al mes. Hoy Google trae unos 6 clics a los cursos cada 28 días. Según Semrush, con el catálogo actual el techo realista es de 25.000 a 50.000 visitas al mes, y llegar a él toma de 6 a 12 meses. **El SEO solo no alcanza para la meta.** Hacen falta otras dos fuentes:
+  - **Instituciones:** un convenio de 100 personas son 100 certificados. Hay que hacer prospección en Assist y registrar cada cierre.
+  - **Pauta pagada:** Meta Ads o Google Ads, medida con el `src` y con Ventas.
+- **100 guías al día.** Con un 2 % de conversión en la página de la guía, hacen falta unas 5.000 visitas diarias a las guías. La venta cruzada nueva (ficha, aula y correo) aprovecha el tráfico que ya existe. «Qué página vende las guías», en Ventas, dirá qué funciona.
+- **Servicios.** Salen de las solicitudes y de WhatsApp. Lo que no se registra en Assist no se ve.
+
+## 6. Cómo verificar después de desplegar
 
 1. `https://edvanta.co/api/health` → `capacidad.procesos` debe decir 2 (o lo que pongas).
 2. Abrir dos veces seguidas una ficha `/curso-de-…`. La segunda carga no debe aparecer en el registro de la API, porque la sirvió nginx.
