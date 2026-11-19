@@ -139,15 +139,35 @@ describe('registro desde una página /unete', () => {
   });
 });
 
-describe('estilo moderno de los correos (11-nov-2026)', () => {
+describe('estilo corporativo de los correos (19-nov-2026)', () => {
   const datos = { nombre: 'Laura', area: 'Calidad y BPM', curso: 'Gestión de calidad', cursoUrl: 'https://edvanta.co/aula', precio: 60000, siteUrl: 'https://edvanta.co' };
 
-  it('todos los correos usan el mismo diseño: blanco, degradados y firma', () => {
+  it('todos los correos usan el mismo diseño sobrio: banda azul marino, sin degradados, y firma', () => {
     for (const nombre of Object.keys(PLANTILLAS)) {
       const { html } = armarCorreo(nombre, datos);
-      expect(html, nombre).toContain('linear-gradient(135deg,#5B53C9');
-      expect(html, nombre).toContain('border-radius:28px');
+      expect(html, nombre).toContain('#0F2557');
+      expect(html, nombre).not.toMatch(/linear-gradient|radial-gradient|box-shadow/);
       expect(html, nombre).toContain('Karla Hernández');
+      expect(html, nombre).toContain('logo-edvanta-wordmark.png');
+    }
+  });
+
+  it('todos los correos ofrecen estudiar con certificado y escribir por WhatsApp', () => {
+    for (const nombre of Object.keys(PLANTILLAS)) {
+      const { html } = armarCorreo(nombre, datos);
+      expect(html, nombre).toContain('Tus opciones con Edvanta');
+      expect(html, nombre).toMatch(/certificado/i);
+      expect(html, nombre).toContain('wa.me/573006332244');
+    }
+  });
+
+  it('el precio de 60.000 nunca se anuncia sin su condición de los primeros 7 días o su fecha', () => {
+    for (const nombre of Object.keys(PLANTILLAS)) {
+      const { html } = armarCorreo(nombre, datos);
+      const texto = html.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ');
+      for (const m of texto.matchAll(/COP 60\.000[^.]{0,160}/g)) {
+        expect(m[0], nombre).toMatch(/7 días|hasta el|Colombia|un solo pago/);
+      }
     }
   });
 
