@@ -89,4 +89,40 @@ El despliegue publica el contenido y las migraciones del catálogo. Las migracio
 
 ## 6. Resultado
 
-Se registra al finalizar la verificación posterior al despliegue: ID de despliegue, estado, salud de la API y primera clase pública comprobada.
+### Despliegues
+
+| Despliegue | Commit | Estado | Inicio | Fin |
+|---|---|---|---|---|
+| `sb7zvwaqd3og3odcwivkqhi6` | `4003d35` | `finished` | 21:03:57 | 21:05:08 |
+| `ddxkpbusl0xbghcioybiwphc` | `f49ff14` | `finished` | 21:08:36 | 21:09:45 |
+
+El segundo despliegue aplica `180_corregir_videos_unidad.sql`. La primera versión había asignado un video de la unidad 3 a la unidad 1 porque los IDs de módulo de la base local no coincidían con producción. La corrección busca la unidad por su título.
+
+### Salud posterior
+
+| Verificación | Resultado |
+|---|---|
+| `https://edvanta.co/health` | 200 · API Edvanta, uptime correcto |
+| `https://edvanta.co/api/health` | 200 · base configurada, Mercado Pago y Resend configurados |
+| `https://edvanta.co/api/health/db` | 200 · PostgreSQL 16.14, `biblioteca_kh`, latencia 1 ms |
+| Clase pública de Asuntos Regulatorios | 200 · experiencia, caso y video `isHsjEdza8s` de RESEARCH PRO |
+| Título renombrado | Visible: «Tiazidas y similares en la enfermedad renal» |
+| Video corregido | Visible en la unidad 1 de Asuntos Regulatorios |
+
+### Qué quedó en producción
+
+- Las 1.184 experiencias nuevas y las 367 experiencias escritas a mano.
+- Los 32 videos por clase de la migración 174.
+- Los videos de unidad de los 8 cursos, ya corregidos por título en la 180.
+- Los títulos únicos de la 176.
+- El quiz, la actividad y el foro de Manipulación de Alimentos.
+- Los informes y scripts de auditoría en el repositorio.
+
+### Qué sigue pendiente
+
+1. Revisión académica de las experiencias generadas antes de una campaña de venta.
+2. 601 clases sin video; priorizar los cursos que se van a lanzar.
+3. Publicar los cursos que sigan en borrador y definir precios.
+4. Revisar los 7 videos no disponibles y los PDF con 404 documentados.
+5. Decidir si las 163 clases de texto largo de Habilidades Blandas, Auditoría, Riesgos y BPM/BPE se convierten a experiencia para tener página pública de clase.
+
