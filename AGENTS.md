@@ -101,6 +101,10 @@ Windows note: use `npm.cmd` if PowerShell blocks `npm.ps1`.
 | `api/routes/mp-webhook.js` | Payment confirmation, order log, download email |
 | `api/routes/lead-capture.js` | Lead capture endpoint |
 | `api/routes/list-orders.js` | Admin order listing with `ADMIN_TOKEN` |
+| `api/lib/agente-tablero.js` | Growth agent dashboard: certificates and guides sold per day vs. the 100 + 100 goal (`GET /api/admin/agente/tablero`, `ADMIN_TOKEN`) |
+| `api/routes/hotmart-webhook.js` | Hotmart Webhook 2.0: records each approved guide sale once (`HOTMART_HOTTOK`) |
+| `scripts/agente/agente.mjs` | Growth agent: crawl, audit, sales, funnel and daily report (`seo/agente-crecimiento.md`) |
+| `.claude/agents/director-crecimiento.md` | Claude growth agent role and rules; `/crecimiento-diario` runs its daily cycle |
 | `api/routes/fst-app.js` | FST App state sync (real mode, gated by `VIDA360_REAL_DATA_ENABLED`) |
 | `api/routes/retos.js` | Retos FST public/auth API (list, weekly, detail, join, mine, checkin) |
 | `api/routes/admin-retos.js` | Retos FST admin API (CRUD retos/días, YouTube validation, duplicate) |
@@ -230,6 +234,7 @@ Backend runtime:
 - `FROM_EMAIL`
 - `NOTIFY_EMAIL`
 - `ADMIN_TOKEN`
+- `HOTMART_HOTTOK` (optional: Hotmart webhook)
 
 Never commit real values.
 

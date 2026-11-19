@@ -55,6 +55,9 @@ import communityRoutes from './routes/community.js';
 import cvRoutes from './routes/cv.js';
 import cvIaRoutes from './routes/cv-ia.js';
 import { crearRutasPublicas, plantillaDelSitio } from './routes/paginas-publicas.js';
+import { crearWebhookHotmart } from './routes/hotmart-webhook.js';
+import { tableroDelAgente } from './lib/agente-tablero.js';
+import { adminMiddleware } from './lib/auth.js';
 import { asegurarSlugsDeClases, asegurarSlugsDeCursos } from './lib/slugs-publicos.js';
 import articleCommentsRoutes from './routes/article-comments.js';
 import fstClicksRoutes from './routes/fst-clicks.js';
@@ -213,6 +216,9 @@ app.post('/api/mp-webhook',         mpWebhookRoute);
 app.post('/api/lead-capture',       leadCaptureRoute);
 app.post('/api/lead-events',        leadEventsRoute);
 app.get('/api/list-orders',         listOrdersRoute);
+
+// Ventas de guías y ebooks en Hotmart (Webhook 2.0, cabecera X-HOTMART-HOTTOK).
+app.post('/api/hotmart-webhook', crearWebhookHotmart({ db: pool, hottok: () => process.env.HOTMART_HOTTOK }));
 
 // Catálogo multi-plataforma de cursos
 app.get('/api/courses',              listCoursesRoute);
@@ -389,6 +395,19 @@ app.use('/api/aula', createAulaRouter({
   notifyEmail: process.env.NOTIFY_EMAIL || null,
   mailer: aulaMailer,
 }));
+
+// Tablero del Agente de Crecimiento: certificados y guías vendidos por día
+// frente a la meta de 100 + 100 (x-admin-token). Ver seo/agente-crecimiento.md.
+app.get('/api/admin/agente/tablero', adminMiddleware, async (req, res) => {
+  try {
+    const dias = Math.min(90, Math.max(1, parseInt(req.query.dias, 10) || 7));
+    res.set('Cache-Control', 'no-store');
+    res.json(await tableroDelAgente(aulaDb, { dias }));
+  } catch (e) {
+    console.error(JSON.stringify({ level: 'error', msg: 'tablero del agente', error: e.message }));
+    res.status(500).json({ error: 'No fue posible armar el tablero.' });
+  }
+});
 
 // La portada de un curso publicado es pública. Va aquí abajo porque
 // necesita el almacenamiento del aula, que se crea unas líneas antes.

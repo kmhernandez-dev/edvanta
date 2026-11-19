@@ -30,6 +30,7 @@ import { GUIAS_VENTA, MARCAS, datosDeGuia, guiaPorSlug, guiasRelacionadas } from
 import { PRECIOS_GUIAS } from '../data/preciosGuias';
 import { enviarSolicitud } from '../lib/solicitudes';
 import { trackEvent } from '../utils/analytics';
+import { trackLeadEvent } from '../lib/leadEvents';
 import { updatePageSeo } from '../utils/seo';
 
 const SITIO = 'https://edvanta.co';
@@ -74,7 +75,11 @@ function BotonComprar({ guia, origen, className = '', children, tamano = 'ed-btn
       href={url}
       target="_blank"
       rel="noopener noreferrer"
-      onClick={() => trackEvent('guia_compra_click', { slug: guia.slug, marca: guia.marca, origen, cupon: oferta ? PROMOCION.codigo : null })}
+      onClick={() => {
+        trackEvent('guia_compra_click', { slug: guia.slug, marca: guia.marca, origen, cupon: oferta ? PROMOCION.codigo : null });
+        // En el servidor, para el tablero del agente: clics de compra por guía.
+        trackLeadEvent('hotmart_clicked', { resourceSlug: guia.slug, resourceName: guia.titulo, productId: guia.slug, source: `guia_${origen}` });
+      }}
       className={`ed-btn ${oferta ? 'ed-btn--promo' : 'ed-btn--gradient'} ${tamano} ${className}`}
     >
       {texto}

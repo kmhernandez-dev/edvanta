@@ -70,6 +70,9 @@ services:
       NOTIFY_EMAIL: "${NOTIFY_EMAIL:-${FROM_EMAIL}}"
       ADMIN_TOKEN: "${ADMIN_TOKEN:?ADMIN_TOKEN is required}"
       JWT_SECRET: "${JWT_SECRET:?JWT_SECRET is required}"
+      # Webhook de Hotmart (ventas de guías). Opcional: sin él, /api/hotmart-webhook
+      # responde 503 y las ventas de Hotmart no llegan al tablero del agente.
+      HOTMART_HOTTOK: "${HOTMART_HOTTOK:-}"
       GOOGLE_CLIENT_ID: "${GOOGLE_CLIENT_ID:-}"
       VIDA360_REAL_DATA_ENABLED: "${VIDA360_REAL_DATA_ENABLED:-false}"
       # Revisión de hojas de vida con IA (/api/cv-ia). Opcional: sin clave,

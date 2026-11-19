@@ -46,6 +46,7 @@ node --check server.js
 - `api/routes/create-preference.js`: Mercado Pago preference + paid download map.
 - `api/routes/mp-webhook.js`: payment confirmation, DB log, download email.
 - `api/routes/list-orders.js`: admin order listing.
+- `scripts/agente/agente.mjs`: growth agent (100 certificates + 100 guides/day). Role in `.claude/agents/director-crecimiento.md`, daily cycle `/crecimiento-diario`, plan in `seo/agente-crecimiento.md`.
 - `api/migrations/001_orders.sql`: orders schema.
 - `docker-compose.yaml`: Coolify stack.
 - `nginx.conf`: SPA fallback and API proxy.

@@ -55,3 +55,6 @@ contenido/aula/catalogo/
 api/migrations/*_evaluacion_*.sql
 api/tests/catalogo-evaluacion.test.js
 docs/auditoria-aula/evaluacion-*-vista-previa.html
+
+# Agente de Crecimiento: datos crudos de cada corrida (el reporte sí va al repositorio)
+seo/agente/datos/
