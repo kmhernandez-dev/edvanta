@@ -124,4 +124,4 @@ Datos en `seo/semrush/cursos-2026-11-18.md`. Cuenta gratuita: 10 filas por consu
 - **Pendientes para el 20-nov:**
   1. `/examenes/examen-avanzado-de-diabetes`
   2. `/examenes/examen-avanzado-de-antibacterianos`
-  3. Los otros 10 exámenes avanzados.
+  3. Los otros 9 exámenes avanzados.
