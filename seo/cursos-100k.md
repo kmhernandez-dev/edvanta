@@ -106,3 +106,22 @@ Datos en `seo/semrush/cursos-2026-11-18.md`. Cuenta gratuita: 10 filas por consu
   9. `/curso-de-manipulacion-de-alimentos-en-edutin`: dirección nueva del curado.
   10. `/examenes/examen-avanzado-de-farmacologia-cardiovascular` (y luego los otros 11 avanzados).
 - La inspección mostró «Un archivo bloquea el robot de Google» en el renderizado: es `/api/` (Disallow en robots.txt), que la aplicación pide al cargar. No afecta la indexación, porque el HTML del servidor ya trae el contenido completo.
+
+## Search Console, 19-nov
+
+- **Indexación solicitada** (10, todas confirmadas con «Se ha solicitado la indexación»):
+  1. `/curso-de-servicio-al-cliente`: ya indexada.
+  2. `/curso-de-oratoria`: no indexada («Descubierta: actualmente sin indexar»).
+  3. `/curso-de-inteligencia-emocional`: no indexada («Rastreada: actualmente sin indexar»; último rastreo 18-nov).
+  4. `/curso-de-liderazgo-y-trabajo-en-equipo`: ya indexada.
+  5. `/curso-de-comunicacion-asertiva`: **Google no reconoce esta URL** y no la ve en ningún sitemap. Revisar que esté en `sitemap-cursos.xml`. El primer intento dio «Se ha producido un error»; el segundo funcionó.
+  6. `/curso-de-negociacion-y-persuasion`: no indexada («Rastreada: actualmente sin indexar»).
+  7. `/curso-de-registro-sanitario-de-medicamentos-ante-el-invima`: ya indexada.
+  8. `/curso-de-buenas-practicas-de-manufactura-bpm`: ya indexada.
+  9. `/curso-de-manipulacion-de-alimentos-en-edutin`: no indexada, **«Duplicada: Google ha elegido una versión canónica diferente a la del usuario»**. Revisar la canónica frente a `/curso-de-manipulacion-de-alimentos`.
+  10. `/examenes/examen-avanzado-de-farmacologia-cardiovascular`: **Google no reconoce esta URL** y no la ve en ningún sitemap.
+- **Cuota superada** en la solicitud 11, `/examenes/examen-avanzado-de-diabetes` (Google la conoce por `sitemap.xml`: «Descubierta: actualmente sin indexar»).
+- **Pendientes para el 20-nov:**
+  1. `/examenes/examen-avanzado-de-diabetes`
+  2. `/examenes/examen-avanzado-de-antibacterianos`
+  3. Los otros 10 exámenes avanzados.
