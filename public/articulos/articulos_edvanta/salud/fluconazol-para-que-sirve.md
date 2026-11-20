@@ -12,16 +12,16 @@ Es eficaz en candidiasis vaginal, oral y esofágica, y en profilaxis o tratamien
 
 ## Cómo funciona
 
-Inhibe la desmetilación del 14-alfa-lanosterol mediada por el citocromo P450 del hongo, etapa fundamental de la síntesis del ergosterol [1].
+Inhibe la desmetilación del 14-alfa-lanosterol mediada por el citocromo P450 del hongo, etapa fundamental de la síntesis del ergosterol.
 
 ## Cuánto tarda en hacer efecto
 
 | Parámetro | Valor |
 | --- | --- |
-| Biodisponibilidad oral | Más del 90 %; los alimentos no la afectan [1] |
-| Concentración máxima | 0,5 a 1,5 horas en ayunas [1] |
-| Semivida | Unas 30 horas [1] |
-| Eliminación | Renal: 80 % sin modificar [1] |
+| Biodisponibilidad oral | Más del 90 %; los alimentos no la afectan  |
+| Concentración máxima | 0,5 a 1,5 horas en ayunas  |
+| Semivida | Unas 30 horas  |
+| Eliminación | Renal: 80 % sin modificar  |
 
 ## Cómo se toma
 
@@ -39,7 +39,7 @@ Inhibe la desmetilación del 14-alfa-lanosterol mediada por el citocromo P450 de
 - Prolongación del QT y arritmias en personas de riesgo.
 - Reacciones cutáneas graves, muy raras.
 
-Frecuentes: cefalea, dolor abdominal, diarrea, náuseas, vómitos, elevación de transaminasas y fosfatasa alcalina y erupción. Se ha notificado DRESS [1].
+Frecuentes: cefalea, dolor abdominal, diarrea, náuseas, vómitos, elevación de transaminasas y fosfatasa alcalina y erupción. Se ha notificado DRESS.
 
 ## Interacciones
 
@@ -51,22 +51,22 @@ Frecuentes: cefalea, dolor abdominal, diarrea, náuseas, vómitos, elevación de
 
 | Medicamento | Efecto | Qué hacer |
 | --- | --- | --- |
-| Cisaprida, pimozida, quinidina, eritromicina | Prolongación del QT y arritmias | Contraindicado [1] |
-| Warfarina y otros anticoagulantes | Más tiempo de protrombina y sangrado | Vigilar el INR [1] |
-| Rifampicina | Reduce el área bajo la curva un 25 % | Considerar más dosis de fluconazol [1] |
+| Cisaprida, pimozida, quinidina, eritromicina | Prolongación del QT y arritmias | Contraindicado  |
+| Warfarina y otros anticoagulantes | Más tiempo de protrombina y sangrado | Vigilar el INR  |
+| Rifampicina | Reduce el área bajo la curva un 25 % | Considerar más dosis de fluconazol  |
 
 ## Quién no debe tomarlo
 
-Contraindicado en hipersensibilidad a fluconazol u otros azoles; con terfenadina si se usan dosis múltiples de 400 mg o más; y con fármacos que prolongan el QT metabolizados por el CYP3A4, como cisaprida, astemizol, pimozida, quinidina y eritromicina [1].
+Contraindicado en hipersensibilidad a fluconazol u otros azoles; con terfenadina si se usan dosis múltiples de 400 mg o más; y con fármacos que prolongan el QT metabolizados por el CYP3A4, como cisaprida, astemizol, pimozida, quinidina y eritromicina.
 
 ## Embarazo, lactancia y niños
 
-- Informar a la mujer en edad fértil del posible riesgo para el feto. Tras una dosis única se recomienda esperar una semana (5 a 6 semividas) antes de buscar un embarazo [1].
+- Informar a la mujer en edad fértil del posible riesgo para el feto. Tras una dosis única se recomienda esperar una semana (5 a 6 semividas) antes de buscar un embarazo.
 
 ## Evidencia y situación en Colombia
 
-- Colombia: 39 registros sanitarios vigentes con el código ATC J02AC01; consulta del 16-nov-2026 [2].
-- España: autorizado como Diflucan cápsulas y otras presentaciones [1].
+- Colombia: 39 registros sanitarios vigentes con el código ATC J02AC01; consulta del 16-nov-2026.
+- España: autorizado como Diflucan cápsulas y otras presentaciones.
 
 ## Candidiasis vaginal: qué esperar del tratamiento
 
@@ -123,15 +123,15 @@ Depende de la infección. La candidiasis vaginal puede mejorar en pocos días; l
 
 ### ¿Cuánto tarda en hacer efecto Fluconazol?
 
-0,5 a 1,5 horas en ayunas [1] Su efecto se mantiene mientras el medicamento permanece en el cuerpo; la semivida es de unas 30 horas [1]. La respuesta completa depende de la indicación y del paciente, así que el seguimiento lo define el profesional.
+0,5 a 1,5 horas en ayunas  Su efecto se mantiene mientras el medicamento permanece en el cuerpo; la semivida es de unas 30 horas. La respuesta completa depende de la indicación y del paciente, así que el seguimiento lo define el profesional.
 
 ### ¿Se puede usar Fluconazol en el embarazo?
 
-- Informar a la mujer en edad fértil del posible riesgo para el feto. Tras una dosis única se recomienda esperar una semana (5 a 6 semividas) antes de buscar un embarazo [1].
+- Informar a la mujer en edad fértil del posible riesgo para el feto. Tras una dosis única se recomienda esperar una semana (5 a 6 semividas) antes de buscar un embarazo.
 
 ### ¿Qué efectos secundarios de Fluconazol son graves?
 
-Frecuentes: cefalea, dolor abdominal, diarrea, náuseas, vómitos, elevación de transaminasas y fosfatasa alcalina y erupción. Se ha notificado DRESS [1].
+Frecuentes: cefalea, dolor abdominal, diarrea, náuseas, vómitos, elevación de transaminasas y fosfatasa alcalina y erupción. Se ha notificado DRESS.
 
 ## Artículos relacionados
 

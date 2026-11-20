@@ -10,15 +10,15 @@ La furosemida es un diurético potente. Según su ficha técnica, se usa para tr
 
 ## Cómo funciona
 
-Bloquea el cotransporte de Na+, K+ y 2Cl− en la membrana luminal de la rama ascendente del asa de Henle, con una diuresis de inicio rápido y corta duración [1].
+Bloquea el cotransporte de Na+, K+ y 2Cl− en la membrana luminal de la rama ascendente del asa de Henle, con una diuresis de inicio rápido y corta duración.
 
 ## Cuánto tarda en hacer efecto
 
 | Parámetro | Valor |
 | --- | --- |
-| Concentración máxima | 1 a 1,5 horas con comprimidos [1] |
-| Biodisponibilidad | 50 % a 70 %, muy variable [1] |
-| Duración del efecto | Unas 3 a 6 horas tras la dosis oral [1] |
+| Concentración máxima | 1 a 1,5 horas con comprimidos  |
+| Biodisponibilidad | 50 % a 70 %, muy variable  |
+| Duración del efecto | Unas 3 a 6 horas tras la dosis oral  |
 
 ## Cómo se toma
 
@@ -32,19 +32,19 @@ La ficha técnica describe como muy frecuentes las alteraciones de las sales del
 
 | Medicamento | Efecto | Qué hacer |
 | --- | --- | --- |
-| Aminoglucósidos y otros ototóxicos | Más ototoxicidad, a veces irreversible | Combinación no recomendada [1] |
-| Alimentos | Afectan la absorción según la forma | Tomar en ayunas [1] |
+| Aminoglucósidos y otros ototóxicos | Más ototoxicidad, a veces irreversible | Combinación no recomendada  |
+| Alimentos | Afectan la absorción según la forma | Tomar en ayunas  |
 
 ## Quién no debe tomarlo
 
-Contraindicada en hipersensibilidad (posible sensibilidad cruzada con sulfonamidas), hipovolemia o deshidratación, insuficiencia renal anúrica sin respuesta, hipopotasemia grave e hiponatremia grave, entre otras [1].
+Contraindicada en hipersensibilidad (posible sensibilidad cruzada con sulfonamidas), hipovolemia o deshidratación, insuficiencia renal anúrica sin respuesta, hipopotasemia grave e hiponatremia grave, entre otras.
 
 ## Embarazo, lactancia y niños
 
 Según sus fichas técnicas, la furosemida no debe usarse en el embarazo salvo que el médico lo considere necesario, y no se debe amamantar durante el tratamiento. La espironolactona no debe usarse en el embarazo salvo que el estado clínico lo requiera, y en la lactancia el médico debe valorar si continuar el medicamento. Si está embarazada, planea estarlo o está lactando, consúltelo antes de seguir cualquier tratamiento.
 
-- Embarazo: atraviesa la placenta; solo por razones médicas y con control del crecimiento fetal [1].
-- Lactancia: pasa a la leche y puede inhibirla; no amamantar durante el tratamiento [1].
+- Embarazo: atraviesa la placenta; solo por razones médicas y con control del crecimiento fetal.
+- Lactancia: pasa a la leche y puede inhibirla; no amamantar durante el tratamiento.
 
 ## Dos medicamentos que a menudo van juntos
 
@@ -65,10 +65,10 @@ Este contenido es educativo y no reemplaza la consulta médica.
 
 ## Evidencia y situación en Colombia
 
-La ficha técnica pide la dosis más baja suficiente para el efecto deseado y supervisión médica regular, en especial en hipotensión o riesgo de caídas de presión [1].
+La ficha técnica pide la dosis más baja suficiente para el efecto deseado y supervisión médica regular, en especial en hipotensión o riesgo de caídas de presión.
 
-- Colombia: 10 registros sanitarios vigentes con el código ATC C03CA01; consulta del 16-nov-2026 [2].
-- España: autorizada como Seguril 40 mg comprimidos e inyectable [1].
+- Colombia: 10 registros sanitarios vigentes con el código ATC C03CA01; consulta del 16-nov-2026.
+- España: autorizada como Seguril 40 mg comprimidos e inyectable.
 
 ## Errores frecuentes
 
@@ -108,11 +108,11 @@ Solo si el médico los indica después de revisar tus exámenes. No uses supleme
 
 ### ¿Cuánto tarda en hacer efecto Furosemida?
 
-1 a 1,5 horas con comprimidos [1] La respuesta completa depende de la indicación y del paciente, así que el seguimiento lo define el profesional.
+1 a 1,5 horas con comprimidos  La respuesta completa depende de la indicación y del paciente, así que el seguimiento lo define el profesional.
 
 ### ¿Se puede usar Furosemida en el embarazo?
 
-- Embarazo: atraviesa la placenta; solo por razones médicas y con control del crecimiento fetal [1]. - Lactancia: pasa a la leche y puede inhibirla; no amamantar durante el tratamiento [1].
+- Embarazo: atraviesa la placenta; solo por razones médicas y con control del crecimiento fetal. - Lactancia: pasa a la leche y puede inhibirla; no amamantar durante el tratamiento.
 
 ### ¿Qué efectos secundarios de Furosemida son graves?
 

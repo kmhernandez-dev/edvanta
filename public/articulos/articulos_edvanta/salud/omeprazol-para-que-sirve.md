@@ -22,17 +22,17 @@ Pertenece al grupo farmacológico de Inhibidor de la bomba de protones.
 
 ## Cómo funciona
 
-Reduce la secreción ácida al inhibir de forma específica y reversible la bomba de protones (H+/K+-ATPasa) en los canalículos de la célula parietal, el último paso de la producción de ácido [1].
+Reduce la secreción ácida al inhibir de forma específica y reversible la bomba de protones (H+/K+-ATPasa) en los canalículos de la célula parietal, el último paso de la producción de ácido.
 
 ## Cuánto tarda en hacer efecto
 
 | Parámetro | Valor |
 | --- | --- |
-| Concentración máxima | 1 a 2 horas [1] |
-| Unión a proteínas | 97 % [1] |
-| Metabolismo | Completo por citocromo P450, sobre todo CYP2C19 y luego CYP3A4 [1] |
-| Semivida | Menos de una hora [1] |
-| Eliminación | Cerca del 80 % como metabolitos en orina; el resto en heces por vía biliar [1] |
+| Concentración máxima | 1 a 2 horas  |
+| Unión a proteínas | 97 %  |
+| Metabolismo | Completo por citocromo P450, sobre todo CYP2C19 y luego CYP3A4  |
+| Semivida | Menos de una hora  |
+| Eliminación | Cerca del 80 % como metabolitos en orina; el resto en heces por vía biliar  |
 
 ## Cómo se toma
 
@@ -45,9 +45,9 @@ Reduce la secreción ácida al inhibir de forma específica y reversible la bomb
 
 Dolor de cabeza, náuseas, diarrea, estreñimiento y gases son los más comunes. Consulta si tienes diarrea intensa y persistente, calambres o palpitaciones (posible magnesio bajo) o ronchas.
 
-Frecuentes: cefalea, dolor abdominal, estreñimiento, diarrea, flatulencia, náuseas o vómito y pólipos benignos de glándulas fúndicas [1].
+Frecuentes: cefalea, dolor abdominal, estreñimiento, diarrea, flatulencia, náuseas o vómito y pólipos benignos de glándulas fúndicas.
 
-- Graves y raras: agranulocitosis, shock anafiláctico, insuficiencia hepática, nefritis tubulointersticial, síndrome de Stevens-Johnson y necrólisis epidérmica tóxica [1].
+- Graves y raras: agranulocitosis, shock anafiláctico, insuficiencia hepática, nefritis tubulointersticial, síndrome de Stevens-Johnson y necrólisis epidérmica tóxica.
 
 ## Interacciones
 
@@ -57,23 +57,23 @@ Frecuentes: cefalea, dolor abdominal, estreñimiento, diarrea, flatulencia, náu
 
 | Medicamento | Efecto | Qué hacer |
 | --- | --- | --- |
-| Nelfinavir | Baja su concentración | Contraindicado [1] |
-| Atazanavir | Reduce su exposición | No se recomienda [1] |
-| Clopidogrel | Menos metabolito activo | Desaconsejado; valorar alternativa [1] |
-| Warfarina, cilostazol, diazepam, fenitoína | Más exposición por inhibición del CYP2C19 | Vigilar efecto y niveles [1] |
-| Posaconazol, erlotinib, ketoconazol, itraconazol | Menos absorción | Evitar con posaconazol y erlotinib [1] |
-| Digoxina | Biodisponibilidad 10 % mayor | Vigilar en mayores [1] |
+| Nelfinavir | Baja su concentración | Contraindicado  |
+| Atazanavir | Reduce su exposición | No se recomienda  |
+| Clopidogrel | Menos metabolito activo | Desaconsejado; valorar alternativa  |
+| Warfarina, cilostazol, diazepam, fenitoína | Más exposición por inhibición del CYP2C19 | Vigilar efecto y niveles  |
+| Posaconazol, erlotinib, ketoconazol, itraconazol | Menos absorción | Evitar con posaconazol y erlotinib  |
+| Digoxina | Biodisponibilidad 10 % mayor | Vigilar en mayores  |
 
 ## Quién no debe tomarlo
 
-Está contraindicado en hipersensibilidad al omeprazol o a los benzimidazoles sustituidos, y con nelfinavir [1].
+Está contraindicado en hipersensibilidad al omeprazol o a los benzimidazoles sustituidos, y con nelfinavir.
 
-Advertencias: se han descrito reacciones cutáneas graves (síndrome de Stevens-Johnson, necrólisis epidérmica tóxica, DRESS y pustulosis exantemática) [1].
+Advertencias: se han descrito reacciones cutáneas graves (síndrome de Stevens-Johnson, necrólisis epidérmica tóxica, DRESS y pustulosis exantemática).
 
 ## Embarazo, lactancia y niños
 
-- Embarazo: los estudios no muestran efectos adversos sobre el embarazo ni sobre el feto o el recién nacido; puede usarse [1].
-- Lactancia: pasa a la leche, pero no es probable que afecte al niño a dosis terapéuticas [1].
+- Embarazo: los estudios no muestran efectos adversos sobre el embarazo ni sobre el feto o el recién nacido; puede usarse.
+- Lactancia: pasa a la leche, pero no es probable que afecte al niño a dosis terapéuticas.
 
 ## Cuánto tiempo se puede tomar
 
@@ -92,10 +92,10 @@ Si tienes señales de alarma —heces negras, vómito con sangre, pérdida de pe
 
 ## Evidencia y situación en Colombia
 
-La ficha técnica respalda cada indicación con una dosis y una duración concretas. El reto en la práctica no es su eficacia sino el uso sin fecha de fin [1].
+La ficha técnica respalda cada indicación con una dosis y una duración concretas. El reto en la práctica no es su eficacia sino el uso sin fecha de fin.
 
-- Colombia: el CUM del INVIMA registra 36 registros sanitarios vigentes con el código ATC A02BC01, consulta del 16-nov-2026 [2].
-- España: autorizado en cápsulas gastrorresistentes de 20 mg para las indicaciones descritas [1].
+- Colombia: el CUM del INVIMA registra 36 registros sanitarios vigentes con el código ATC A02BC01, consulta del 16-nov-2026.
+- España: autorizado en cápsulas gastrorresistentes de 20 mg para las indicaciones descritas.
 
 ## Errores frecuentes
 
@@ -131,15 +131,15 @@ No si existe una indicación y el médico lo revisa periódicamente. El problema
 
 ### ¿Cuánto tarda en hacer efecto Omeprazol?
 
-1 a 2 horas [1] Su efecto se mantiene mientras el medicamento permanece en el cuerpo; la semivida es de menos de una hora [1]. La respuesta completa depende de la indicación y del paciente, así que el seguimiento lo define el profesional.
+1 a 2 horas  Su efecto se mantiene mientras el medicamento permanece en el cuerpo; la semivida es de menos de una hora. La respuesta completa depende de la indicación y del paciente, así que el seguimiento lo define el profesional.
 
 ### ¿Se puede usar Omeprazol en el embarazo?
 
-- Embarazo: los estudios no muestran efectos adversos sobre el embarazo ni sobre el feto o el recién nacido; puede usarse [1]. - Lactancia: pasa a la leche, pero no es probable que afecte al niño a dosis terapéuticas [1].
+- Embarazo: los estudios no muestran efectos adversos sobre el embarazo ni sobre el feto o el recién nacido; puede usarse. - Lactancia: pasa a la leche, pero no es probable que afecte al niño a dosis terapéuticas.
 
 ### ¿Qué efectos secundarios de Omeprazol son graves?
 
-Frecuentes: cefalea, dolor abdominal, estreñimiento, diarrea, flatulencia, náuseas o vómito y pólipos benignos de glándulas fúndicas [1]. - Graves y raras: agranulocitosis, shock anafiláctico, insuficiencia hepática, nefritis tubulointersticial, síndrome de Stevens-Johnson y necrólisis epidérmica tóxica [1].
+Frecuentes: cefalea, dolor abdominal, estreñimiento, diarrea, flatulencia, náuseas o vómito y pólipos benignos de glándulas fúndicas. - Graves y raras: agranulocitosis, shock anafiláctico, insuficiencia hepática, nefritis tubulointersticial, síndrome de Stevens-Johnson y necrólisis epidérmica tóxica.
 
 ## Artículos relacionados
 

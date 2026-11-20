@@ -15,7 +15,7 @@ Pertenece al grupo farmacológico de Nitroimidazol (antibacteriano y antiprotozo
 
 ## ¿Para qué sirve el metronidazol?
 
-Según su ficha técnica, el metronidazol se usa en adultos y niños para [1]:
+Según su ficha técnica, el metronidazol se usa en adultos y niños para:
 
 - Infecciones por bacterias anaerobias sensibles: peritonitis, abscesos, osteomielitis, fiebre puerperal e infecciones de heridas después de una cirugía.
 - Prevención de infecciones por anaerobias después de cirugías ginecológicas y colorrectales.
@@ -27,26 +27,26 @@ Según su ficha técnica, el metronidazol se usa en adultos y niños para [1]:
 
 ## Cómo funciona
 
-El metronidazol no es activo en sí mismo. En condiciones anaerobias, la piruvato-ferredoxina oxidorreductasa lo reduce a radicales nitrosos que forman aductos con las bases del ADN, rompen la cadena y causan la muerte celular [1].
+El metronidazol no es activo en sí mismo. En condiciones anaerobias, la piruvato-ferredoxina oxidorreductasa lo reduce a radicales nitrosos que forman aductos con las bases del ADN, rompen la cadena y causan la muerte celular.
 
-Su acción depende de la concentración: la eficacia se relaciona sobre todo con el cociente entre la concentración máxima y la concentración mínima inhibitoria [1]. No tiene actividad bactericida directa contra bacterias aerobias ni anaerobias facultativas [1].
+Su acción depende de la concentración: la eficacia se relaciona sobre todo con el cociente entre la concentración máxima y la concentración mínima inhibitoria. No tiene actividad bactericida directa contra bacterias aerobias ni anaerobias facultativas.
 
 ## Cuánto tarda en hacer efecto
 
 | Parámetro | Valor |
 | --- | --- |
-| Absorción | Rápida, al menos el 80 % en menos de 1 hora; biodisponibilidad del 100 % [1] |
-| Concentración máxima | Unos 10 µg/ml una hora después de 500 mg [1] |
-| Unión a proteínas | Menos del 20 % [1] |
-| Volumen de distribución | Unos 40 l (0,65 l/kg); difunde a pulmón, riñón, hígado, piel, bilis, saliva, secreciones vaginales y líquido seminal [1] |
-| Metabolismo | Hepático; el metabolito «alcohol» conserva cerca del 30 % de la actividad y tiene una semivida de unas 11 horas [1] |
-| Semivida | 8 a 10 horas [1] |
+| Absorción | Rápida, al menos el 80 % en menos de 1 hora; biodisponibilidad del 100 %  |
+| Concentración máxima | Unos 10 µg/ml una hora después de 500 mg  |
+| Unión a proteínas | Menos del 20 %  |
+| Volumen de distribución | Unos 40 l (0,65 l/kg); difunde a pulmón, riñón, hígado, piel, bilis, saliva, secreciones vaginales y líquido seminal  |
+| Metabolismo | Hepático; el metabolito «alcohol» conserva cerca del 30 % de la actividad y tiene una semivida de unas 11 horas  |
+| Semivida | 8 a 10 horas  |
 
-En la encefalopatía hepática puede acumularse; el fenobarbital acelera su metabolismo y acorta su semivida a unas 3 horas [1].
+En la encefalopatía hepática puede acumularse; el fenobarbital acelera su metabolismo y acorta su semivida a unas 3 horas.
 
 ## Cómo se toma
 
-La dosis y la duración dependen de la infección, y las define tu médico. Como referencia, la ficha técnica describe para adultos [1]:
+La dosis y la duración dependen de la infección, y las define tu médico. Como referencia, la ficha técnica describe para adultos:
 
 | Infección | Esquema habitual en adultos |
 |---|---|
@@ -56,85 +56,85 @@ La dosis y la duración dependen de la infección, y las define tu médico. Como
 | Giardiasis | 250 mg tres veces al día durante 5 a 7 días, o 2 g una vez al día durante 3 días |
 | *Helicobacter pylori* | 500 mg dos o tres veces al día durante 7 a 14 días, con otros medicamentos |
 
-- Su absorción es casi completa y la comida no la altera de forma importante [1].
-- El tratamiento no debe pasar de 10 días, salvo casos justificados y con controles [1].
+- Su absorción es casi completa y la comida no la altera de forma importante.
+- El tratamiento no debe pasar de 10 días, salvo casos justificados y con controles.
 - Termina el tratamiento aunque te sientas mejor antes, y no lo repitas por tu cuenta.
 
 ## Efectos secundarios
 
-- Sabor alterado (disgeusia), inflamación de la lengua y de la boca, lengua vellosa, náuseas, vómito, dolor abdominal y diarrea [1].
-- Candidiasis, por ejemplo genital, como sobreinfección [1].
-- Orina más oscura, que se debe a los metabolitos y no es peligrosa [1].
-- Raros pero importantes: hormigueo o adormecimiento de manos y pies (neuropatía), convulsiones, confusión, reacciones graves de la piel, alteraciones del hígado y diarrea intensa y persistente por colitis [1].
+- Sabor alterado (disgeusia), inflamación de la lengua y de la boca, lengua vellosa, náuseas, vómito, dolor abdominal y diarrea.
+- Candidiasis, por ejemplo genital, como sobreinfección.
+- Orina más oscura, que se debe a los metabolitos y no es peligrosa.
+- Raros pero importantes: hormigueo o adormecimiento de manos y pies (neuropatía), convulsiones, confusión, reacciones graves de la piel, alteraciones del hígado y diarrea intensa y persistente por colitis.
 
 Suspende y consulta de inmediato si aparecen ampollas o descamación de la piel, dificultad para respirar, hormigueo persistente, confusión o diarrea grave.
 
-- Frecuentes: sobreinfección por cándida; ardor uretral, disuria [1].
-- De frecuencia no conocida: disgeusia, glositis, estomatitis, náuseas, vómito, dolor abdominal y diarrea [1].
-- Raras o muy raras: colitis seudomembranosa, anafilaxia, agranulocitosis, encefalopatía, hepatitis y pancreatitis [1].
+- Frecuentes: sobreinfección por cándida; ardor uretral, disuria.
+- De frecuencia no conocida: disgeusia, glositis, estomatitis, náuseas, vómito, dolor abdominal y diarrea.
+- Raras o muy raras: colitis seudomembranosa, anafilaxia, agranulocitosis, encefalopatía, hepatitis y pancreatitis.
 
 ## Interacciones
 
 | Medicamento o sustancia | Qué pasa |
 |---|---|
-| Alcohol | Reacción tipo disulfiram (mareo, vómito) [1] |
-| Disulfiram | Confusión o reacciones psicóticas [1] |
-| Warfarina y otros anticoagulantes orales | Más efecto anticoagulante y riesgo de sangrado; puede requerir ajuste [1] |
-| Litio | Sube su concentración; requiere controles [1] |
-| Amiodarona | Riesgo de alteraciones del ritmo cardiaco (QT prolongado) [1] |
-| Carbamazepina y busulfán | Suben sus concentraciones [1] |
+| Alcohol | Reacción tipo disulfiram (mareo, vómito)  |
+| Disulfiram | Confusión o reacciones psicóticas  |
+| Warfarina y otros anticoagulantes orales | Más efecto anticoagulante y riesgo de sangrado; puede requerir ajuste  |
+| Litio | Sube su concentración; requiere controles  |
+| Amiodarona | Riesgo de alteraciones del ritmo cardiaco (QT prolongado)  |
+| Carbamazepina y busulfán | Suben sus concentraciones  |
 
 | Fármaco | Efecto | Manejo |
 | --- | --- | --- |
-| Alcohol | Reacción tipo disulfiram | Evitar durante el tratamiento y 48 h después [1] |
-| Disulfiram | Confusión y reacciones psicóticas | No combinar [1] |
-| Warfarina y anticoagulantes orales | Potencia el efecto y el riesgo de hemorragia | Vigilar y ajustar [1] |
-| Litio | Sube su concentración | Reducir o suspender el litio antes; vigilar litio, creatinina y electrolitos [1] |
-| Amiodarona | QT prolongado y torsade de pointes | Considerar ECG [1] |
-| Busulfán | Toxicidad grave por niveles altos | Evitar [1] |
-| Carbamazepina | Sube su concentración | Vigilar [1] |
+| Alcohol | Reacción tipo disulfiram | Evitar durante el tratamiento y 48 h después  |
+| Disulfiram | Confusión y reacciones psicóticas | No combinar  |
+| Warfarina y anticoagulantes orales | Potencia el efecto y el riesgo de hemorragia | Vigilar y ajustar  |
+| Litio | Sube su concentración | Reducir o suspender el litio antes; vigilar litio, creatinina y electrolitos  |
+| Amiodarona | QT prolongado y torsade de pointes | Considerar ECG  |
+| Busulfán | Toxicidad grave por niveles altos | Evitar  |
+| Carbamazepina | Sube su concentración | Vigilar  |
 
 ## Quién no debe tomarlo
 
-- Alergia al metronidazol u otros nitroimidazoles (como el secnidazol o el tinidazol) [1].
-- Primer trimestre del embarazo [1].
-- Enfermedad grave del hígado, encefalopatía hepática o alteraciones de la sangre: solo si el beneficio supera claramente el riesgo [1].
-- Síndrome de Cockayne: se han descrito casos graves de daño hepático [1].
+- Alergia al metronidazol u otros nitroimidazoles (como el secnidazol o el tinidazol).
+- Primer trimestre del embarazo.
+- Enfermedad grave del hígado, encefalopatía hepática o alteraciones de la sangre: solo si el beneficio supera claramente el riesgo.
+- Síndrome de Cockayne: se han descrito casos graves de daño hepático.
 
-Contraindicado con hipersensibilidad a nitroimidazoles y en el primer trimestre del embarazo [1].
+Contraindicado con hipersensibilidad a nitroimidazoles y en el primer trimestre del embarazo.
 
-- Duración no mayor de 10 días, salvo casos justificados con seguimiento: no puede excluirse actividad mutagénica [1].
-- Neurotoxicidad: neuropatía periférica, convulsiones, encefalopatía y síndrome cerebeloso [1].
-- Reacciones cutáneas graves: Stevens-Johnson, necrólisis epidérmica tóxica y pustulosis exantemática generalizada aguda [1].
-- Hepatotoxicidad grave, a veces mortal, en el síndrome de Cockayne [1].
-- Hemograma en dosis altas, tratamientos prolongados o antecedentes de discrasias [1].
-- Orina oscura por metabolitos [1].
+- Duración no mayor de 10 días, salvo casos justificados con seguimiento: no puede excluirse actividad mutagénica.
+- Neurotoxicidad: neuropatía periférica, convulsiones, encefalopatía y síndrome cerebeloso.
+- Reacciones cutáneas graves: Stevens-Johnson, necrólisis epidérmica tóxica y pustulosis exantemática generalizada aguda.
+- Hepatotoxicidad grave, a veces mortal, en el síndrome de Cockayne.
+- Hemograma en dosis altas, tratamientos prolongados o antecedentes de discrasias.
+- Orina oscura por metabolitos.
 
 ## Embarazo, lactancia y niños
 
-Está contraindicado en el primer trimestre. En el segundo y el tercero solo se usa si el beneficio supera el riesgo. Pasa a la leche materna en concentraciones parecidas a las de la sangre, por lo que no debe usarse durante la lactancia; si es necesario, la lactancia se interrumpe [1].
+Está contraindicado en el primer trimestre. En el segundo y el tercero solo se usa si el beneficio supera el riesgo. Pasa a la leche materna en concentraciones parecidas a las de la sangre, por lo que no debe usarse durante la lactancia; si es necesario, la lactancia se interrumpe.
 
-Contraindicado en el primer trimestre; en el segundo y el tercero, solo si el beneficio supera el riesgo. Pasa a la leche en concentraciones similares a las plasmáticas: no se usa durante la lactancia o se interrumpe la lactancia [1].
+Contraindicado en el primer trimestre; en el segundo y el tercero, solo si el beneficio supera el riesgo. Pasa a la leche en concentraciones similares a las plasmáticas: no se usa durante la lactancia o se interrumpe la lactancia.
 
 ## Cómo actúa
 
-El metronidazol entra al microorganismo y, en ausencia de oxígeno, se transforma en radicales que dañan su ADN y lo destruyen. Por eso funciona contra bacterias anaerobias y protozoos, pero no contra bacterias que necesitan oxígeno [1].
+El metronidazol entra al microorganismo y, en ausencia de oxígeno, se transforma en radicales que dañan su ADN y lo destruyen. Por eso funciona contra bacterias anaerobias y protozoos, pero no contra bacterias que necesitan oxígeno.
 
 ## El alcohol: la advertencia que más importa
 
-La ficha técnica pide no tomar alcohol durante el tratamiento y **durante al menos 48 horas después de terminarlo**, por el riesgo de una reacción tipo disulfiram: mareo, vómito y malestar [1]. Revisa también los jarabes, enjuagues y otros productos que contengan alcohol.
+La ficha técnica pide no tomar alcohol durante el tratamiento y **durante al menos 48 horas después de terminarlo**, por el riesgo de una reacción tipo disulfiram: mareo, vómito y malestar. Revisa también los jarabes, enjuagues y otros productos que contengan alcohol.
 
 ## Metronidazol en Colombia
 
-El Código Único de Medicamentos del INVIMA registra 71 registros sanitarios vigentes con metronidazol, en suspensión oral, óvulos, cápsulas, tabletas, crema vaginal y solución inyectable [2]. Compra solo productos con registro sanitario y con fórmula médica.
+El Código Único de Medicamentos del INVIMA registra 71 registros sanitarios vigentes con metronidazol, en suspensión oral, óvulos, cápsulas, tabletas, crema vaginal y solución inyectable. Compra solo productos con registro sanitario y con fórmula médica.
 
 ## Evidencia y situación en Colombia
 
-El efecto del metronidazol depende de la concentración (Cmáx/CMI) [1], y la ficha técnica incluye pautas de dosis única de 2 g en la tricomoniasis y la vaginosis bacteriana [1]. Su espectro se limita a anaerobios y protozoos; en una infección mixta debe combinarse con un antibiótico activo contra aerobios [1].
+El efecto del metronidazol depende de la concentración (Cmáx/CMI), y la ficha técnica incluye pautas de dosis única de 2 g en la tricomoniasis y la vaginosis bacteriana. Su espectro se limita a anaerobios y protozoos; en una infección mixta debe combinarse con un antibiótico activo contra aerobios.
 
-La gonorrea puede persistir aunque se haya eliminado la tricomona, por lo que no sustituye el estudio de otras infecciones de transmisión sexual [1].
+La gonorrea puede persistir aunque se haya eliminado la tricomona, por lo que no sustituye el estudio de otras infecciones de transmisión sexual.
 
-Colombia: 71 registros sanitarios vigentes en suspensión oral, óvulos, cápsulas, tabletas, crema vaginal y solución inyectable [4]. En Estados Unidos se comercializa como Flagyl [2].
+Colombia: 71 registros sanitarios vigentes en suspensión oral, óvulos, cápsulas, tabletas, crema vaginal y solución inyectable. En Estados Unidos se comercializa como Flagyl.
 
 ## Errores frecuentes
 
@@ -174,15 +174,15 @@ En la tricomoniasis sí: la ficha técnica indica tratar a las parejas sexuales 
 
 ### ¿Cuánto tarda en hacer efecto Metronidazol?
 
-Unos 10 µg/ml una hora después de 500 mg [1] Su efecto se mantiene mientras el medicamento permanece en el cuerpo; la semivida es de 8 a 10 horas [1]. La respuesta completa depende de la indicación y del paciente, así que el seguimiento lo define el profesional.
+Unos 10 µg/ml una hora después de 500 mg  Su efecto se mantiene mientras el medicamento permanece en el cuerpo; la semivida es de 8 a 10 horas. La respuesta completa depende de la indicación y del paciente, así que el seguimiento lo define el profesional.
 
 ### ¿Se puede usar Metronidazol en el embarazo?
 
-Contraindicado en el primer trimestre; en el segundo y el tercero, solo si el beneficio supera el riesgo. Pasa a la leche en concentraciones similares a las plasmáticas: no se usa durante la lactancia o se interrumpe la lactancia [1].
+Contraindicado en el primer trimestre; en el segundo y el tercero, solo si el beneficio supera el riesgo. Pasa a la leche en concentraciones similares a las plasmáticas: no se usa durante la lactancia o se interrumpe la lactancia.
 
 ### ¿Qué efectos secundarios de Metronidazol son graves?
 
-- Frecuentes: sobreinfección por cándida; ardor uretral, disuria [1]. - De frecuencia no conocida: disgeusia, glositis, estomatitis, náuseas, vómito, dolor abdominal y diarrea [1]. - Raras o muy raras: colitis seudomembranosa, anafilaxia, agranulocitosis, encefalopatía, hepatitis y pancreatitis [1].
+- Frecuentes: sobreinfección por cándida; ardor uretral, disuria. - De frecuencia no conocida: disgeusia, glositis, estomatitis, náuseas, vómito, dolor abdominal y diarrea. - Raras o muy raras: colitis seudomembranosa, anafilaxia, agranulocitosis, encefalopatía, hepatitis y pancreatitis.
 
 ## Artículos relacionados
 

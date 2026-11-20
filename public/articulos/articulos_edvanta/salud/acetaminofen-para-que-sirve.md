@@ -23,20 +23,20 @@ Pertenece al grupo farmacológico de Analgésico y antipirético no opioide.
 
 ## Cómo funciona
 
-Es un analgésico con propiedades antipiréticas. Su mecanismo de acción analgésica no está totalmente determinado [1].
+Es un analgésico con propiedades antipiréticas. Su mecanismo de acción analgésica no está totalmente determinado.
 
-La ficha técnica lo describe como analgésico y antipirético, no como antiinflamatorio, y no incluye las advertencias de sangrado digestivo ni de riesgo trombótico que sí traen las fichas de los AINE [1].
+La ficha técnica lo describe como analgésico y antipirético, no como antiinflamatorio, y no incluye las advertencias de sangrado digestivo ni de riesgo trombótico que sí traen las fichas de los AINE.
 
 ## Cuánto tarda en hacer efecto
 
 | Parámetro | Valor |
 | --- | --- |
-| Absorción | Rápida y completa por vía oral [1] |
-| Concentración máxima | En promedio a los 30 minutos [1] |
-| Unión a proteínas | Cerca del 10 % [1] |
-| Metabolismo | Hepático (90 % a 95 %); dosis altas saturan las vías habituales y forman metabolitos hepatotóxicos por agotamiento del glutatión [1] |
-| Semivida | 1,5 a 3 horas [1] |
-| Eliminación | Orina, sobre todo como glucurónido; menos del 5 % inalterado [1] |
+| Absorción | Rápida y completa por vía oral  |
+| Concentración máxima | En promedio a los 30 minutos  |
+| Unión a proteínas | Cerca del 10 %  |
+| Metabolismo | Hepático (90 % a 95 %); dosis altas saturan las vías habituales y forman metabolitos hepatotóxicos por agotamiento del glutatión  |
+| Semivida | 1,5 a 3 horas  |
+| Eliminación | Orina, sobre todo como glucurónido; menos del 5 % inalterado  |
 
 ## Cómo se toma
 
@@ -50,20 +50,20 @@ La ficha técnica lo describe como analgésico y antipirético, no como antiinfl
 
 En dosis correctas es bien tolerado. Rara vez produce reacciones alérgicas o reacciones graves de la piel: si aparecen ampollas o descamación, suspéndelo y consulta de inmediato.
 
-A dosis terapéuticas las reacciones son raras: malestar, aumento de transaminasas e hipotensión [1].
+A dosis terapéuticas las reacciones son raras: malestar, aumento de transaminasas e hipotensión.
 
-- Muy raras: hepatotoxicidad con ictericia, hipersensibilidad hasta shock anafiláctico, alteraciones hematológicas, hipoglucemia y reacciones graves de la piel [1].
+- Muy raras: hepatotoxicidad con ictericia, hipersensibilidad hasta shock anafiláctico, alteraciones hematológicas, hipoglucemia y reacciones graves de la piel.
 
 ## Interacciones
 
 | Medicamento o sustancia | Efecto | Qué hacer |
 | --- | --- | --- |
-| Warfarina, acenocumarol | Más efecto anticoagulante con más de 2 g al día | Controlar el INR [1] |
-| Alcohol | Más toxicidad hepática | Evitar; máximo 2 g al día en consumo habitual [1] |
-| Fenitoína, fenobarbital, primidona, rifampicina | Menos efecto y más hepatotoxicidad en sobredosis | Vigilar [1] |
-| Isoniazida | Más acción o toxicidad del paracetamol | Vigilar [1] |
-| Flucloxacilina | Acidosis metabólica con anión gap alto | Vigilar en pacientes de riesgo [1] |
-| Lamotrigina | Baja su exposición | Vigilar eficacia [1] |
+| Warfarina, acenocumarol | Más efecto anticoagulante con más de 2 g al día | Controlar el INR  |
+| Alcohol | Más toxicidad hepática | Evitar; máximo 2 g al día en consumo habitual  |
+| Fenitoína, fenobarbital, primidona, rifampicina | Menos efecto y más hepatotoxicidad en sobredosis | Vigilar  |
+| Isoniazida | Más acción o toxicidad del paracetamol | Vigilar  |
+| Flucloxacilina | Acidosis metabólica con anión gap alto | Vigilar en pacientes de riesgo  |
+| Lamotrigina | Baja su exposición | Vigilar eficacia  |
 
 ## Quién no debe tomarlo
 
@@ -74,14 +74,14 @@ A dosis terapéuticas las reacciones son raras: malestar, aumento de transaminas
 
 En el embarazo es el analgésico de elección en la mayoría de los casos, usado en la dosis más baja efectiva y por el menor tiempo, siguiendo la indicación del médico.
 
-Contraindicado en hipersensibilidad y en enfermedad hepática, con o sin insuficiencia, o hepatitis viral [1].
+Contraindicado en hipersensibilidad y en enfermedad hepática, con o sin insuficiencia, o hepatitis viral.
 
-Advertencias: precaución en anemia, enfermedad cardiaca o pulmonar y disfunción renal grave; daño hepático con consumo habitual de alcohol; broncoespasmo leve en asmáticos sensibles a la aspirina; y acidosis metabólica con anión gap alto (acidosis piroglutámica) en pacientes graves, desnutridos o con déficit de glutatión, o con flucloxacilina [1].
+Advertencias: precaución en anemia, enfermedad cardiaca o pulmonar y disfunción renal grave; daño hepático con consumo habitual de alcohol; broncoespasmo leve en asmáticos sensibles a la aspirina; y acidosis metabólica con anión gap alto (acidosis piroglutámica) en pacientes graves, desnutridos o con déficit de glutatión, o con flucloxacilina.
 
 ## Embarazo, lactancia y niños
 
-- Embarazo: los datos en gran cantidad de embarazadas no muestran toxicidad fetal ni malformaciones; si es necesario, usar la dosis mínima eficaz, el menor tiempo y con la menor frecuencia [1].
-- Lactancia: pasa a la leche, pero no se ha detectado en la orina de los lactantes; no se han descrito problemas [1].
+- Embarazo: los datos en gran cantidad de embarazadas no muestran toxicidad fetal ni malformaciones; si es necesario, usar la dosis mínima eficaz, el menor tiempo y con la menor frecuencia.
+- Lactancia: pasa a la leche, pero no se ha detectado en la orina de los lactantes; no se han descrito problemas.
 
 ## El riesgo para el hígado
 
@@ -110,12 +110,12 @@ El [ibuprofeno](/articulos/ibuprofeno-para-que-sirve) desinflama y suele ser mej
 
 ## Evidencia y situación en Colombia
 
-Su seguridad depende de la dosis. La ficha técnica sitúa la dosis tóxica mínima por encima de 6 g en una toma en adultos (más de 100 mg/kg en niños) y considera potencialmente mortales las dosis de 20 a 25 g [1].
+Su seguridad depende de la dosis. La ficha técnica sitúa la dosis tóxica mínima por encima de 6 g en una toma en adultos (más de 100 mg/kg en niños) y considera potencialmente mortales las dosis de 20 a 25 g.
 
-La sobredosis pasa por fases: síntomas digestivos en las primeras 24 horas, una mejoría aparente con ascenso de transaminasas entre las 24 y 48 horas, y el pico de hepatotoxicidad a las 72 a 96 horas. El antídoto es la N-acetilcisteína [1].
+La sobredosis pasa por fases: síntomas digestivos en las primeras 24 horas, una mejoría aparente con ascenso de transaminasas entre las 24 y 48 horas, y el pico de hepatotoxicidad a las 72 a 96 horas. El antídoto es la N-acetilcisteína.
 
-- Colombia: el CUM del INVIMA registra 313 registros sanitarios vigentes que contienen acetaminofén o paracetamol, solo o en combinación. Con el código ATC N02BE01 hay tabletas, jarabe, solución oral, suspensión e inyectables. Consulta del 16-nov-2026 [2].
-- España: la ficha técnica de referencia fija el máximo en adultos en 3 g cada 24 horas [1].
+- Colombia: el CUM del INVIMA registra 313 registros sanitarios vigentes que contienen acetaminofén o paracetamol, solo o en combinación. Con el código ATC N02BE01 hay tabletas, jarabe, solución oral, suspensión e inyectables. Consulta del 16-nov-2026.
+- España: la ficha técnica de referencia fija el máximo en adultos en 3 g cada 24 horas.
 
 ## Errores frecuentes
 
@@ -151,15 +151,15 @@ No es recomendable: el alcohol aumenta el riesgo de daño hepático.
 
 ### ¿Cuánto tarda en hacer efecto Acetaminofén (paracetamol)?
 
-En promedio a los 30 minutos [1] Su efecto se mantiene mientras el medicamento permanece en el cuerpo; la semivida es de 1,5 a 3 horas [1]. La respuesta completa depende de la indicación y del paciente, así que el seguimiento lo define el profesional.
+En promedio a los 30 minutos  Su efecto se mantiene mientras el medicamento permanece en el cuerpo; la semivida es de 1,5 a 3 horas. La respuesta completa depende de la indicación y del paciente, así que el seguimiento lo define el profesional.
 
 ### ¿Se puede usar Acetaminofén (paracetamol) en el embarazo?
 
-- Embarazo: los datos en gran cantidad de embarazadas no muestran toxicidad fetal ni malformaciones; si es necesario, usar la dosis mínima eficaz, el menor tiempo y con la menor frecuencia [1]. - Lactancia: pasa a la leche, pero no se ha detectado en la orina de los lactantes; no se han descrito problemas [1].
+- Embarazo: los datos en gran cantidad de embarazadas no muestran toxicidad fetal ni malformaciones; si es necesario, usar la dosis mínima eficaz, el menor tiempo y con la menor frecuencia. - Lactancia: pasa a la leche, pero no se ha detectado en la orina de los lactantes; no se han descrito problemas.
 
 ### ¿Qué efectos secundarios de Acetaminofén (paracetamol) son graves?
 
-A dosis terapéuticas las reacciones son raras: malestar, aumento de transaminasas e hipotensión [1]. - Muy raras: hepatotoxicidad con ictericia, hipersensibilidad hasta shock anafiláctico, alteraciones hematológicas, hipoglucemia y reacciones graves de la piel [1].
+A dosis terapéuticas las reacciones son raras: malestar, aumento de transaminasas e hipotensión. - Muy raras: hepatotoxicidad con ictericia, hipersensibilidad hasta shock anafiláctico, alteraciones hematológicas, hipoglucemia y reacciones graves de la piel.
 
 ## Artículos relacionados
 

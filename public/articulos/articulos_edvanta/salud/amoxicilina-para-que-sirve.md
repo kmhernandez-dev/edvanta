@@ -26,16 +26,16 @@ La amoxicilina con ácido clavulánico es una combinación diferente, que amplí
 
 ## Cómo funciona
 
-Inhibe una o más proteínas de unión a penicilinas en la ruta biosintética del peptidoglicano, componente estructural de la pared bacteriana, lo que debilita la pared y lleva a la lisis [1].
+Inhibe una o más proteínas de unión a penicilinas en la ruta biosintética del peptidoglicano, componente estructural de la pared bacteriana, lo que debilita la pared y lleva a la lisis.
 
 ## Cuánto tarda en hacer efecto
 
 | Parámetro | Valor |
 | --- | --- |
-| Biodisponibilidad oral | Cerca del 70 % [1] |
-| Concentración máxima | Cerca de 1 hora [1] |
-| Semivida | Cerca de 1 hora [1] |
-| Eliminación | Renal: 60 % a 70 % sin cambios [1] |
+| Biodisponibilidad oral | Cerca del 70 %  |
+| Concentración máxima | Cerca de 1 hora  |
+| Semivida | Cerca de 1 hora  |
+| Eliminación | Renal: 60 % a 70 % sin cambios  |
 
 ## Efectos secundarios
 
@@ -43,7 +43,7 @@ Inhibe una o más proteínas de unión a penicilinas en la ruta biosintética de
 - **Menos frecuentes:** infecciones por hongos (vaginales o en la boca).
 - **Graves:** diarrea intensa, con sangre o con fiebre (puede ser una colitis por *Clostridioides difficile*), reacciones alérgicas, ampollas en la piel.
 
-Las más frecuentes son diarrea, náuseas y erupción cutánea [1].
+Las más frecuentes son diarrea, náuseas y erupción cutánea.
 
 ## Interacciones
 
@@ -53,17 +53,17 @@ Las más frecuentes son diarrea, náuseas y erupción cutánea [1].
 
 | Medicamento | Efecto | Qué hacer |
 | --- | --- | --- |
-| Probenecid | Aumenta y prolonga los niveles de amoxicilina | No recomendado [1] |
-| Alopurinol | Más reacciones alérgicas en la piel | Vigilar [1] |
-| Tetraciclinas y bacteriostáticos | Pueden interferir con su efecto bactericida | Evitar la combinación [1] |
+| Probenecid | Aumenta y prolonga los niveles de amoxicilina | No recomendado  |
+| Alopurinol | Más reacciones alérgicas en la piel | Vigilar  |
+| Tetraciclinas y bacteriostáticos | Pueden interferir con su efecto bactericida | Evitar la combinación  |
 
 ## Quién no debe tomarlo
 
-Contraindicada en hipersensibilidad a la amoxicilina o a cualquier penicilina, y si hubo una reacción inmediata grave (como anafilaxia) a otro betalactámico: cefalosporinas, carbapenémicos o monobactámicos [1].
+Contraindicada en hipersensibilidad a la amoxicilina o a cualquier penicilina, y si hubo una reacción inmediata grave (como anafilaxia) a otro betalactámico: cefalosporinas, carbapenémicos o monobactámicos.
 
 ## Embarazo, lactancia y niños
 
-- Embarazo: los datos no indican más malformaciones; puede usarse si el beneficio supera el riesgo [1].
+- Embarazo: los datos no indican más malformaciones; puede usarse si el beneficio supera el riesgo.
 
 ## Por qué no sirve para la gripa
 
@@ -83,8 +83,8 @@ Si alguna vez tuviste ronchas, hinchazón o dificultad para respirar con una pen
 
 ## Evidencia y situación en Colombia
 
-- Colombia: 72 registros sanitarios vigentes con el código ATC J01CA04; consulta del 16-nov-2026 [2].
-- España: autorizada como Clamoxyl cápsulas y comprimidos [1].
+- Colombia: 72 registros sanitarios vigentes con el código ATC J01CA04; consulta del 16-nov-2026.
+- España: autorizada como Clamoxyl cápsulas y comprimidos.
 
 ## Errores frecuentes
 
@@ -120,15 +120,15 @@ En las infecciones en las que está indicada, se suele notar mejoría en 48 a 72
 
 ### ¿Cuánto tarda en hacer efecto Amoxicilina?
 
-Cerca de 1 hora [1] Su efecto se mantiene mientras el medicamento permanece en el cuerpo; la semivida es de cerca de 1 hora [1]. La respuesta completa depende de la indicación y del paciente, así que el seguimiento lo define el profesional.
+Cerca de 1 hora  Su efecto se mantiene mientras el medicamento permanece en el cuerpo; la semivida es de cerca de 1 hora. La respuesta completa depende de la indicación y del paciente, así que el seguimiento lo define el profesional.
 
 ### ¿Se puede usar Amoxicilina en el embarazo?
 
-- Embarazo: los datos no indican más malformaciones; puede usarse si el beneficio supera el riesgo [1].
+- Embarazo: los datos no indican más malformaciones; puede usarse si el beneficio supera el riesgo.
 
 ### ¿Qué efectos secundarios de Amoxicilina son graves?
 
-Las más frecuentes son diarrea, náuseas y erupción cutánea [1].
+Las más frecuentes son diarrea, náuseas y erupción cutánea.
 
 ## Artículos relacionados
 

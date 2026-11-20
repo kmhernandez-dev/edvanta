@@ -12,17 +12,17 @@ No es un tratamiento para bajar de peso en personas sin hipotiroidismo. Usarla c
 
 ## Cómo funciona
 
-Tiene un efecto idéntico a la hormona natural: se transforma en T3 en los órganos periféricos y actúa sobre los receptores de T3. El organismo no distingue la levotiroxina sintética de la endógena [1].
+Tiene un efecto idéntico a la hormona natural: se transforma en T3 en los órganos periféricos y actúa sobre los receptores de T3. El organismo no distingue la levotiroxina sintética de la endógena.
 
 ## Cuánto tarda en hacer efecto
 
 | Parámetro | Valor |
 | --- | --- |
-| Absorción | Hasta un 80 %, en la parte alta del intestino delgado [1] |
-| Concentración máxima | 5 a 6 horas [1] |
-| Inicio de la acción | 3 a 5 días [1] |
-| Unión a proteínas | Cerca del 99,97 % [1] |
-| Semivida | Unos 7 días; 9 a 10 en hipotiroidismo y 3 a 4 en hipertiroidismo [1] |
+| Absorción | Hasta un 80 %, en la parte alta del intestino delgado  |
+| Concentración máxima | 5 a 6 horas  |
+| Inicio de la acción | 3 a 5 días  |
+| Unión a proteínas | Cerca del 99,97 %  |
+| Semivida | Unos 7 días; 9 a 10 en hipotiroidismo y 3 a 4 en hipertiroidismo  |
 
 ## Cómo se toma
 
@@ -38,7 +38,7 @@ Tiene un efecto idéntico a la hormona natural: se transforma en T3 en los órga
 - Riesgo de arritmias y osteoporosis en sobredosis crónica.
 - Si la dosis es baja: fatiga, frío, estreñimiento, piel seca y aumento de peso.
 
-Bien tolerada a la dosis adecuada. Con exceso de dosis o aumentos rápidos: arritmias como fibrilación auricular, taquicardia, palpitaciones, angina, cefalea, debilidad muscular y calambres [1].
+Bien tolerada a la dosis adecuada. Con exceso de dosis o aumentos rápidos: arritmias como fibrilación auricular, taquicardia, palpitaciones, angina, cefalea, debilidad muscular y calambres.
 
 ## Interacciones
 
@@ -51,25 +51,25 @@ Bien tolerada a la dosis adecuada. Con exceso de dosis o aumentos rápidos: arri
 
 | Medicamento | Efecto | Qué hacer |
 | --- | --- | --- |
-| Calcio, hierro, antiácidos con aluminio, sucralfato | Menor absorción | Levotiroxina al menos 2 horas antes [1] |
-| Colestiramina, colestipol | Inhiben la absorción | Levotiroxina 4 a 5 horas antes [1] |
-| Antidiabéticos | Menor efecto hipoglucemiante | Controlar la glucemia al iniciar [1] |
-| Anticoagulantes cumarínicos | Más efecto y riesgo de sangrado | Vigilar el INR [1] |
+| Calcio, hierro, antiácidos con aluminio, sucralfato | Menor absorción | Levotiroxina al menos 2 horas antes  |
+| Colestiramina, colestipol | Inhiben la absorción | Levotiroxina 4 a 5 horas antes  |
+| Antidiabéticos | Menor efecto hipoglucemiante | Controlar la glucemia al iniciar  |
+| Anticoagulantes cumarínicos | Más efecto y riesgo de sangrado | Vigilar el INR  |
 
 ## Quién no debe tomarlo
 
-Contraindicada en hipersensibilidad, insuficiencia suprarrenal, hipofisaria o tirotoxicosis no tratadas, y no se inicia en el infarto agudo, la miocarditis o la pancarditis agudas [1].
+Contraindicada en hipersensibilidad, insuficiencia suprarrenal, hipofisaria o tirotoxicosis no tratadas, y no se inicia en el infarto agudo, la miocarditis o la pancarditis agudas.
 
 ## Embarazo, lactancia y niños
 
-- Embarazo y lactancia: el tratamiento debe continuar y puede requerir más dosis; controlar la TSH en cada trimestre [1].
+- Embarazo y lactancia: el tratamiento debe continuar y puede requerir más dosis; controlar la TSH en cada trimestre.
 
 ## Evidencia y situación en Colombia
 
-Su ficha técnica señala la TSH como el parámetro más fiable para ajustar la dosis, que se sube progresivamente cada 2 a 4 semanas hasta la sustitución completa [1].
+Su ficha técnica señala la TSH como el parámetro más fiable para ajustar la dosis, que se sube progresivamente cada 2 a 4 semanas hasta la sustitución completa.
 
-- Colombia: 50 registros sanitarios vigentes con el código ATC H03AA01; consulta del 16-nov-2026 [2].
-- España: autorizada como Eutirox de 25 a 200 microgramos [1].
+- Colombia: 50 registros sanitarios vigentes con el código ATC H03AA01; consulta del 16-nov-2026.
+- España: autorizada como Eutirox de 25 a 200 microgramos.
 
 ## Errores frecuentes
 
@@ -114,15 +114,15 @@ Tómala si lo recuerdas pronto; si ya pasó mucho tiempo, espera a la siguiente.
 
 ### ¿Cuánto tarda en hacer efecto Levotiroxina?
 
-5 a 6 horas [1] Su efecto se mantiene mientras el medicamento permanece en el cuerpo; la semivida es de unos 7 días; 9 a 10 en hipotiroidismo y 3 a 4 en hipertiroidismo [1]. La respuesta completa depende de la indicación y del paciente, así que el seguimiento lo define el profesional.
+5 a 6 horas  Su efecto se mantiene mientras el medicamento permanece en el cuerpo; la semivida es de unos 7 días; 9 a 10 en hipotiroidismo y 3 a 4 en hipertiroidismo. La respuesta completa depende de la indicación y del paciente, así que el seguimiento lo define el profesional.
 
 ### ¿Se puede usar Levotiroxina en el embarazo?
 
-- Embarazo y lactancia: el tratamiento debe continuar y puede requerir más dosis; controlar la TSH en cada trimestre [1].
+- Embarazo y lactancia: el tratamiento debe continuar y puede requerir más dosis; controlar la TSH en cada trimestre.
 
 ### ¿Qué efectos secundarios de Levotiroxina son graves?
 
-Bien tolerada a la dosis adecuada. Con exceso de dosis o aumentos rápidos: arritmias como fibrilación auricular, taquicardia, palpitaciones, angina, cefalea, debilidad muscular y calambres [1].
+Bien tolerada a la dosis adecuada. Con exceso de dosis o aumentos rápidos: arritmias como fibrilación auricular, taquicardia, palpitaciones, angina, cefalea, debilidad muscular y calambres.
 
 ## Artículos relacionados
 

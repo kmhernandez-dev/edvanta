@@ -15,22 +15,22 @@ No sirve para «bajar la presión rápido»: la ficha técnica aclara que no se 
 
 ## Cómo funciona
 
-El amlodipino bloquea la entrada de calcio a través de los canales tipo L del músculo liso vascular. Al reducir el calcio intracelular, el músculo se relaja y las arteriolas periféricas se dilatan; baja la resistencia periférica y, con ella, la presión arterial [1].
+El amlodipino bloquea la entrada de calcio a través de los canales tipo L del músculo liso vascular. Al reducir el calcio intracelular, el músculo se relaja y las arteriolas periféricas se dilatan; baja la resistencia periférica y, con ella, la presión arterial.
 
-En la angina, la vasodilatación reduce la poscarga y el consumo de oxígeno del miocardio, y dilata las arterias coronarias, lo que mejora el aporte en la angina vasoespástica. No deprime la función cardíaca de forma significativa a las dosis terapéuticas [1].
+En la angina, la vasodilatación reduce la poscarga y el consumo de oxígeno del miocardio, y dilata las arterias coronarias, lo que mejora el aporte en la angina vasoespástica. No deprime la función cardíaca de forma significativa a las dosis terapéuticas.
 
-El amlodipino no tiene un efecto metabólico adverso relevante sobre los lípidos o la glucemia y puede usarse en personas con asma, diabetes o gota [1].
+El amlodipino no tiene un efecto metabólico adverso relevante sobre los lípidos o la glucemia y puede usarse en personas con asma, diabetes o gota.
 
 ## Cuánto tarda en hacer efecto
 
 | Parámetro | Valor |
 | --- | --- |
-| Absorción | Oral, biodisponibilidad del 64 al 80 %; los alimentos no la afectan de forma clínica [1] |
-| Concentración máxima | De 6 a 12 horas después de la dosis [1] |
-| Semivida de eliminación | De 35 a 50 horas [1] |
-| Distribución | Volumen de distribución de unos 21 l/kg; unión a proteínas del 97,5 % [1] |
-| Metabolismo | Hepático, con metabolitos inactivos [1] |
-| Eliminación | Renal: 10 % sin cambios y 60 % como metabolitos [1] |
+| Absorción | Oral, biodisponibilidad del 64 al 80 %; los alimentos no la afectan de forma clínica  |
+| Concentración máxima | De 6 a 12 horas después de la dosis  |
+| Semivida de eliminación | De 35 a 50 horas  |
+| Distribución | Volumen de distribución de unos 21 l/kg; unión a proteínas del 97,5 %  |
+| Metabolismo | Hepático, con metabolitos inactivos  |
+| Eliminación | Renal: 10 % sin cambios y 60 % como metabolitos  |
 
 ## Cómo se toma
 
@@ -66,14 +66,14 @@ Es el efecto más conocido del amlodipino y depende de la dosis. No se debe a qu
 
 Busque atención de inmediato si tiene dolor en el pecho que no cede, hinchazón de la cara, los labios o la garganta, dificultad para respirar, o si se desmaya.
 
-Las reacciones más frecuentes son edema, cefalea, rubefacción, palpitaciones, mareo, náuseas, dolor abdominal y fatiga [1].
+Las reacciones más frecuentes son edema, cefalea, rubefacción, palpitaciones, mareo, náuseas, dolor abdominal y fatiga.
 
 - Muy frecuentes: edema.
 - Frecuentes: somnolencia, mareo, cefalea (sobre todo al inicio), palpitaciones, rubefacción, disnea, dolor abdominal, náuseas, dispepsia, alteración del tránsito intestinal, hinchazón de tobillos, calambres musculares, fatiga y astenia.
 - Poco frecuentes: depresión, ansiedad, insomnio, temblor, disgeusia, síncope, parestesia, acúfenos, arritmias, hipotensión, tos, rinitis, vómitos, sequedad de boca, alopecia, púrpura, prurito, erupción, urticaria, artralgia, mialgia, dolor de espalda, trastornos urinarios, impotencia, ginecomastia, dolor torácico y cambios de peso.
 - Muy raras: leucopenia, trombocitopenia, hiperglucemia, hipertonía, neuropatía periférica, infarto de miocardio, vasculitis, pancreatitis, gastritis, hiperplasia gingival, hepatitis, ictericia, angioedema, eritema multiforme, dermatitis exfoliativa, síndrome de Stevens-Johnson, fotosensibilidad y necrólisis epidérmica tóxica.
 
-El edema suele ser bilateral, dependiente de la gravedad y más frecuente en mujeres y en dosis de 10 mg. Si es intenso o asimétrico, hay que descartar otras causas [1].
+El edema suele ser bilateral, dependiente de la gravedad y más frecuente en mujeres y en dosis de 10 mg. Si es intenso o asimétrico, hay que descartar otras causas.
 
 ## Interacciones
 
@@ -88,19 +88,19 @@ Si toma estatinas para el colesterol, como la [atorvastatina](/articulos/atorvas
 
 | Medicamento | Efecto | Qué hacer |
 | --- | --- | --- |
-| Inhibidores del CYP3A4 (azoles, macrólidos, verapamilo, diltiazem, inhibidores de la proteasa) | Aumentan la exposición al amlodipino y el riesgo de hipotensión | Vigilar la presión y ajustar la dosis [1] |
-| Inductores del CYP3A4 (rifampicina, hierba de San Juan) | Reducen las concentraciones de amlodipino | Vigilar la presión durante y después del tratamiento [1] |
-| Zumo de pomelo | Aumenta la biodisponibilidad y el efecto antihipertensivo | Evitar o vigilar [1] |
-| Simvastatina | Aumenta su exposición; el límite recomendado es 20 mg al día con amlodipino | Ajustar la dosis de simvastatina [1] |
-| Tacrolimus | Puede aumentar las concentraciones de tacrolimus | Monitorizar los niveles de tacrolimus [1] |
-| Ciclosporina | Puede aumentar sus concentraciones | Vigilar los niveles y ajustar [1] |
-| Inhibidores de mTOR (sirolimus, everolimus, temsirolimus) | Amlodipino inhibe débilmente el CYP3A y puede aumentar su exposición | Vigilar y ajustar [1] |
-| Dantroleno intravenoso | Riesgo de hiperpotasemia y colapso cardiovascular | Evitar la combinación [1] |
-| Otros antihipertensivos | Suma hipotensión | Ajustar y advertir al paciente [1] |
+| Inhibidores del CYP3A4 (azoles, macrólidos, verapamilo, diltiazem, inhibidores de la proteasa) | Aumentan la exposición al amlodipino y el riesgo de hipotensión | Vigilar la presión y ajustar la dosis  |
+| Inductores del CYP3A4 (rifampicina, hierba de San Juan) | Reducen las concentraciones de amlodipino | Vigilar la presión durante y después del tratamiento  |
+| Zumo de pomelo | Aumenta la biodisponibilidad y el efecto antihipertensivo | Evitar o vigilar  |
+| Simvastatina | Aumenta su exposición; el límite recomendado es 20 mg al día con amlodipino | Ajustar la dosis de simvastatina  |
+| Tacrolimus | Puede aumentar las concentraciones de tacrolimus | Monitorizar los niveles de tacrolimus  |
+| Ciclosporina | Puede aumentar sus concentraciones | Vigilar los niveles y ajustar  |
+| Inhibidores de mTOR (sirolimus, everolimus, temsirolimus) | Amlodipino inhibe débilmente el CYP3A y puede aumentar su exposición | Vigilar y ajustar  |
+| Dantroleno intravenoso | Riesgo de hiperpotasemia y colapso cardiovascular | Evitar la combinación  |
+| Otros antihipertensivos | Suma hipotensión | Ajustar y advertir al paciente  |
 
 ## Quién no debe tomarlo
 
-Contraindicaciones de la ficha técnica [1]:
+Contraindicaciones de la ficha técnica:
 
 - Hipersensibilidad al amlodipino, a otras dihidropiridinas o a los excipientes.
 - Hipotensión grave.
@@ -108,21 +108,21 @@ Contraindicaciones de la ficha técnica [1]:
 - Obstrucción del tracto de salida del ventrículo izquierdo, como estenosis aórtica grave.
 - Insuficiencia cardíaca hemodinámicamente inestable después de un infarto agudo de miocardio.
 
-Advertencias principales [1]:
+Advertencias principales:
 
 - Insuficiencia cardíaca: usar con precaución; en la insuficiencia cardíaca grave se ha descrito más edema pulmonar con amlodipino que con placebo.
 - Insuficiencia hepática: la semivida se prolonga y el AUC aumenta; iniciar con la dosis más baja y subir despacio.
 - Edad avanzada: los aumentos de dosis deben ser cautelosos.
 - Edema periférico: es frecuente, depende de la dosis y no siempre refleja retención de líquidos; puede confundirse con insuficiencia cardíaca.
-- No se ha establecido la seguridad y eficacia en crisis hipertensivas [1].
+- No se ha establecido la seguridad y eficacia en crisis hipertensivas.
 
 ## Embarazo, lactancia y niños
 
 Según la ficha técnica, no se ha establecido su seguridad en el embarazo, y solo se usa cuando no hay una alternativa más segura y la enfermedad representa un riesgo mayor. El amlodipino pasa a la leche materna; si está lactando, el médico decide si continuar el medicamento o la lactancia. Si planea un embarazo o queda en embarazo, consulte pronto, sin suspender por su cuenta. Más información en [presión alta en el embarazo](/articulos/presion-alta-en-el-embarazo).
 
-- Embarazo: no se ha establecido la seguridad en humanos. Se usa solo si no hay una alternativa más segura y si la enfermedad materna justifica el riesgo [1].
-- Lactancia: el amlodipino pasa a la leche materna en una proporción estimada del 3 al 7 % de la dosis materna, con un máximo del 15 %. Se desconoce el efecto en el lactante; decidir caso por caso [1].
-- Fertilidad: se han descrito cambios bioquímicos reversibles en la cabeza del espermatozoide con algunos calcioantagonistas; los datos clínicos con amlodipino son insuficientes [1].
+- Embarazo: no se ha establecido la seguridad en humanos. Se usa solo si no hay una alternativa más segura y si la enfermedad materna justifica el riesgo.
+- Lactancia: el amlodipino pasa a la leche materna en una proporción estimada del 3 al 7 % de la dosis materna, con un máximo del 15 %. Se desconoce el efecto en el lactante; decidir caso por caso.
+- Fertilidad: se han descrito cambios bioquímicos reversibles en la cabeza del espermatozoide con algunos calcioantagonistas; los datos clínicos con amlodipino son insuficientes.
 
 ## ¿Quiénes no deben tomar amlodipino?
 
@@ -153,21 +153,21 @@ Este contenido es educativo y no reemplaza la consulta con su médico o químico
 
 ## Evidencia y situación en Colombia
 
-El ensayo ALLHAT comparó amlodipino, lisinopril y clortalidona en 33.357 pacientes hipertensos de 55 años o más con al menos otro factor de riesgo cardiovascular, durante una media de 4,9 años [2].
+El ensayo ALLHAT comparó amlodipino, lisinopril y clortalidona en 33.357 pacientes hipertensos de 55 años o más con al menos otro factor de riesgo cardiovascular, durante una media de 4,9 años.
 
 | Resultado | Amlodipino frente a clortalidona |
 | --- | --- |
-| Enfermedad coronaria mortal o infarto de miocardio no mortal | Sin diferencia significativa (RR 0,98; IC 95 % 0,90-1,07) [2] |
-| Insuficiencia cardíaca | Mayor con amlodipino (10,2 % frente a 7,7 %; RR 1,38) [2] |
-| Mortalidad por todas las causas | Sin diferencia significativa (RR 0,96; IC 95 % 0,89-1,02) [2] |
+| Enfermedad coronaria mortal o infarto de miocardio no mortal | Sin diferencia significativa (RR 0,98; IC 95 % 0,90-1,07)  |
+| Insuficiencia cardíaca | Mayor con amlodipino (10,2 % frente a 7,7 %; RR 1,38)  |
+| Mortalidad por todas las causas | Sin diferencia significativa (RR 0,96; IC 95 % 0,89-1,02)  |
 
-ALLHAT no comparó amlodipino con placebo y estudió una población de alto riesgo; sus resultados no significan que el amlodipino no sirva, sino que la clortalidona fue superior para prevenir insuficiencia cardíaca en esa población. La elección depende del perfil del paciente y de las comorbilidades [2].
+ALLHAT no comparó amlodipino con placebo y estudió una población de alto riesgo; sus resultados no significan que el amlodipino no sirva, sino que la clortalidona fue superior para prevenir insuficiencia cardíaca en esa población. La elección depende del perfil del paciente y de las comorbilidades.
 
-La ficha técnica también resume el estudio CAMELOT, en el que el amlodipino redujo el objetivo compuesto de eventos cardiovasculares, las hospitalizaciones por angina y las revascularizaciones frente a placebo en pacientes con enfermedad coronaria [1].
+La ficha técnica también resume el estudio CAMELOT, en el que el amlodipino redujo el objetivo compuesto de eventos cardiovasculares, las hospitalizaciones por angina y las revascularizaciones frente a placebo en pacientes con enfermedad coronaria.
 
-- Colombia: el CUM registra múltiples presentaciones de amlodipino, solo y en combinaciones con otros antihipertensivos [3].
-- Unión Europea: el amlodipino está autorizado para hipertensión y angina [1].
-- Estados Unidos: la FDA tiene etiquetas vigentes de amlodipino y de sus combinaciones; las indicaciones pueden variar [1].
+- Colombia: el CUM registra múltiples presentaciones de amlodipino, solo y en combinaciones con otros antihipertensivos.
+- Unión Europea: el amlodipino está autorizado para hipertensión y angina.
+- Estados Unidos: la FDA tiene etiquetas vigentes de amlodipino y de sus combinaciones; las indicaciones pueden variar.
 
 ## Errores frecuentes
 
@@ -211,15 +211,15 @@ Según su ficha técnica, en las personas con enfermedad renal se usan las dosis
 
 ### ¿Cuánto tarda en hacer efecto Amlodipino?
 
-De 6 a 12 horas después de la dosis [1] Su efecto se mantiene mientras el medicamento permanece en el cuerpo; la semivida es de de 35 a 50 horas [1]. La respuesta completa depende de la indicación y del paciente, así que el seguimiento lo define el profesional.
+De 6 a 12 horas después de la dosis  Su efecto se mantiene mientras el medicamento permanece en el cuerpo; la semivida es de de 35 a 50 horas. La respuesta completa depende de la indicación y del paciente, así que el seguimiento lo define el profesional.
 
 ### ¿Se puede usar Amlodipino en el embarazo?
 
-- Embarazo: no se ha establecido la seguridad en humanos. Se usa solo si no hay una alternativa más segura y si la enfermedad materna justifica el riesgo [1]. - Lactancia: el amlodipino pasa a la leche materna en una proporción estimada del 3 al 7 % de la dosis materna, con un máximo del 15 %. Se desconoce el efecto en el lactante; decidir caso por caso [1]. - Fertilidad: se han descrito cambios bioquímicos reversibles en la cabeza del espermatozoide con algunos calcioantagonistas; los datos clínicos con amlodipino son insuficientes [1].
+- Embarazo: no se ha establecido la seguridad en humanos. Se usa solo si no hay una alternativa más segura y si la enfermedad materna justifica el riesgo. - Lactancia: el amlodipino pasa a la leche materna en una proporción estimada del 3 al 7 % de la dosis materna, con un máximo del 15 %. Se desconoce el efecto en el lactante; decidir caso por caso. - Fertilidad: se han descrito cambios bioquímicos reversibles en la cabeza del espermatozoide con algunos calcioantagonistas; los datos clínicos con amlodipino son insuficientes.
 
 ### ¿Qué efectos secundarios de Amlodipino son graves?
 
-Las reacciones más frecuentes son edema, cefalea, rubefacción, palpitaciones, mareo, náuseas, dolor abdominal y fatiga [1]. - Muy frecuentes: edema. - Frecuentes: somnolencia, mareo, cefalea (sobre todo al inicio), palpitaciones, rubefacción, disnea, dolor abdominal, náuseas, dispepsia, alteración del tránsito intestinal, hinchazón de tobillos, calambres musculares, fatiga y astenia. - Poco frecuentes: depresión, ansiedad, insomnio, temblor, disgeusia, síncope, parestesia, acúfenos, arritmias, hipotensión, tos, rinitis, vómitos, sequedad de boca, alopecia, púrpura, prurito, erupción,…
+Las reacciones más frecuentes son edema, cefalea, rubefacción, palpitaciones, mareo, náuseas, dolor abdominal y fatiga. - Muy frecuentes: edema. - Frecuentes: somnolencia, mareo, cefalea (sobre todo al inicio), palpitaciones, rubefacción, disnea, dolor abdominal, náuseas, dispepsia, alteración del tránsito intestinal, hinchazón de tobillos, calambres musculares, fatiga y astenia. - Poco frecuentes: depresión, ansiedad, insomnio, temblor, disgeusia, síncope, parestesia, acúfenos, arritmias, hipotensión, tos, rinitis, vómitos, sequedad de boca, alopecia, púrpura, prurito, erupción,…
 
 ## Artículos relacionados
 

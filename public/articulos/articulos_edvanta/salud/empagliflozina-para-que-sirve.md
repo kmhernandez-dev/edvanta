@@ -12,22 +12,22 @@ No es un diurético para bajar de peso ni un tratamiento de venta libre. En pers
 
 ## Cómo funciona
 
-La inhibición del SGLT2 reduce la reabsorción renal de glucosa y sodio. El resultado es una glucosuria que arrastra agua por diuresis osmótica, una reducción del volumen intravascular y un aumento de la llegada de sodio al túbulo distal. Esos cambios explican parte de sus efectos cardiovasculares y renales [1].
+La inhibición del SGLT2 reduce la reabsorción renal de glucosa y sodio. El resultado es una glucosuria que arrastra agua por diuresis osmótica, una reducción del volumen intravascular y un aumento de la llegada de sodio al túbulo distal. Esos cambios explican parte de sus efectos cardiovasculares y renales.
 
-La empagliflozina reduce la presión arterial de forma moderada, disminuye la precarga y la poscarga, y se asocia con una reducción de la presión intraglomerular. También aumenta el hematocrito y produce una pérdida modesta de peso, sobre todo de grasa corporal [1].
+La empagliflozina reduce la presión arterial de forma moderada, disminuye la precarga y la poscarga, y se asocia con una reducción de la presión intraglomerular. También aumenta el hematocrito y produce una pérdida modesta de peso, sobre todo de grasa corporal.
 
-El efecto glucosúrico depende de la glucosa en sangre y de la TFG: es menor en la insuficiencia renal y puede desaparecer con TFG muy baja. Los beneficios cardiovasculares y renales se observan incluso en personas sin diabetes, lo que indica mecanismos que van más allá de la glucosa [1].
+El efecto glucosúrico depende de la glucosa en sangre y de la TFG: es menor en la insuficiencia renal y puede desaparecer con TFG muy baja. Los beneficios cardiovasculares y renales se observan incluso en personas sin diabetes, lo que indica mecanismos que van más allá de la glucosa.
 
 ## Cuánto tarda en hacer efecto
 
 | Parámetro | Valor |
 | --- | --- |
-| Absorción | Oral, biodisponibilidad de aproximadamente 78 %; los alimentos no afectan de forma clínica [1] |
-| Concentración máxima | Alrededor de 1,5 horas después de la dosis [1] |
-| Distribución | Unión a proteínas del 86 %; volumen de distribución de unos 73 l [1] |
-| Metabolismo | Glucuronidación por UGT1A3, UGT1A8, UGT1A9 y UGT2B7 [1] |
-| Semivida | Aproximadamente 12,4 horas [1] |
-| Eliminación | Renal y fecal; alrededor del 54 % se elimina por la orina y el 41 % por las heces [1] |
+| Absorción | Oral, biodisponibilidad de aproximadamente 78 %; los alimentos no afectan de forma clínica  |
+| Concentración máxima | Alrededor de 1,5 horas después de la dosis  |
+| Distribución | Unión a proteínas del 86 %; volumen de distribución de unos 73 l  |
+| Metabolismo | Glucuronidación por UGT1A3, UGT1A8, UGT1A9 y UGT2B7  |
+| Semivida | Aproximadamente 12,4 horas  |
+| Eliminación | Renal y fecal; alrededor del 54 % se elimina por la orina y el 41 % por las heces  |
 
 ## Cómo se toma
 
@@ -45,14 +45,14 @@ El efecto glucosúrico depende de la glucosa en sangre y de la TFG: es menor en 
 - Fascitis necrosante perineal: muy rara y grave.
 - Aumento inicial de creatinina y hematocrito.
 
-Las reacciones más frecuentes son las infecciones genitales por hongos, el aumento de la micción y, cuando se combina con sulfonilureas o insulina, la hipoglucemia [1].
+Las reacciones más frecuentes son las infecciones genitales por hongos, el aumento de la micción y, cuando se combina con sulfonilureas o insulina, la hipoglucemia.
 
 - Frecuentes: moniliasis vaginal, vulvovaginitis, balanitis y otras infecciones genitales; infección del tracto urinario; hipoglucemia en combinación con sulfonilurea o insulina; aumento de la micción; disuria; sed; estreñimiento; prurito; exantema; urticaria; aumento de lípidos, creatinina y hematocrito.
 - Poco frecuentes: hipovolemia, disuria y otras reacciones urinarias.
 - Raras: fascitis necrosante del perineo (gangrena de Fournier), cetoacidosis, nefritis tubulointersticial, angioedema.
 - Frecuencia no conocida: aumento del hematocrito, lesión hepática y otras reacciones poscomercialización.
 
-En los estudios EMPEROR, la hipovolemia fue la reacción adversa más frecuente: 11,4 % con empagliflozina frente a 9,7 % con placebo [1].
+En los estudios EMPEROR, la hipovolemia fue la reacción adversa más frecuente: 11,4 % con empagliflozina frente a 9,7 % con placebo.
 
 ## Interacciones
 
@@ -65,31 +65,31 @@ En los estudios EMPEROR, la hipovolemia fue la reacción adversa más frecuente:
 
 | Medicamento | Efecto | Qué hacer |
 | --- | --- | --- |
-| Diuréticos tiazídicos o del asa | Aumentan el riesgo de deshidratación e hipotensión | Vigilar la volemia y ajustar [1] |
-| Insulina y sulfonilureas | Aumentan el riesgo de hipoglucemia | Considerar reducir la dosis del secretagogo o de la insulina [1] |
-| Inductores de UGT (rifampicina, fenitoína) | Pueden reducir la eficacia | Vigilar el control glucémico [1] |
-| Litio | Puede aumentar la excreción renal de litio y reducir sus niveles | Monitorizar el litio al iniciar o cambiar la dosis [1] |
-| Probenecid, gemfibrozilo, rifampicina | Aumentan la exposición a empagliflozina de forma modesta | No se considera clínicamente relevante en la mayoría de los casos [1] |
+| Diuréticos tiazídicos o del asa | Aumentan el riesgo de deshidratación e hipotensión | Vigilar la volemia y ajustar  |
+| Insulina y sulfonilureas | Aumentan el riesgo de hipoglucemia | Considerar reducir la dosis del secretagogo o de la insulina  |
+| Inductores de UGT (rifampicina, fenitoína) | Pueden reducir la eficacia | Vigilar el control glucémico  |
+| Litio | Puede aumentar la excreción renal de litio y reducir sus niveles | Monitorizar el litio al iniciar o cambiar la dosis  |
+| Probenecid, gemfibrozilo, rifampicina | Aumentan la exposición a empagliflozina de forma modesta | No se considera clínicamente relevante en la mayoría de los casos  |
 
-La empagliflozina no inhibe ni induce las principales isoformas del CYP450 y tiene un bajo potencial de interacciones farmacocinéticas con metformina, sitagliptina, warfarina, ramipril, simvastatina o hidroclorotiazida [1].
+La empagliflozina no inhibe ni induce las principales isoformas del CYP450 y tiene un bajo potencial de interacciones farmacocinéticas con metformina, sitagliptina, warfarina, ramipril, simvastatina o hidroclorotiazida.
 
 ## Quién no debe tomarlo
 
-La única contraindicación de la ficha técnica es la hipersensibilidad al principio activo o a los excipientes [1]. Las advertencias son las que concentran el riesgo:
+La única contraindicación de la ficha técnica es la hipersensibilidad al principio activo o a los excipientes. Las advertencias son las que concentran el riesgo:
 
-- Cetoacidosis: puede aparecer con glucosa solo moderadamente elevada. Suspender ante náuseas, vómitos, dolor abdominal, sed intensa, disnea, confusión o fatiga inusual; valorar cetonas en sangre y suspender el tratamiento [1].
-- Hipovolemia: la diuresis osmótica puede bajar la presión, sobre todo en personas mayores de 75 años, con enfermedad cardiovascular o con diuréticos. Vigilar la hidratación y suspender temporalmente si hay pérdidas [1].
-- Infecciones genitales por hongos y del tracto urinario, incluidas pielonefritis y urosepsis. Valorar la suspensión temporal en infecciones complicadas [1].
-- Fascitis necrosante del perineo (gangrena de Fournier): rara, grave y potencialmente mortal; requiere cirugía y antibióticos urgentes [1].
-- Amputaciones de miembros inferiores: se observó un aumento con otro inhibidor de SGLT2; se desconoce si es un efecto de clase. Recomendar cuidado de los pies [1].
-- Lesión hepática, aumento del hematocrito y alteraciones iniciales de la creatinina, que suelen ser transitorias [1].
-- La glucosa en orina será positiva por el mecanismo de acción; no usar la prueba de 1,5-anhidroglucitol para monitorizar el control [1].
+- Cetoacidosis: puede aparecer con glucosa solo moderadamente elevada. Suspender ante náuseas, vómitos, dolor abdominal, sed intensa, disnea, confusión o fatiga inusual; valorar cetonas en sangre y suspender el tratamiento.
+- Hipovolemia: la diuresis osmótica puede bajar la presión, sobre todo en personas mayores de 75 años, con enfermedad cardiovascular o con diuréticos. Vigilar la hidratación y suspender temporalmente si hay pérdidas.
+- Infecciones genitales por hongos y del tracto urinario, incluidas pielonefritis y urosepsis. Valorar la suspensión temporal en infecciones complicadas.
+- Fascitis necrosante del perineo (gangrena de Fournier): rara, grave y potencialmente mortal; requiere cirugía y antibióticos urgentes.
+- Amputaciones de miembros inferiores: se observó un aumento con otro inhibidor de SGLT2; se desconoce si es un efecto de clase. Recomendar cuidado de los pies.
+- Lesión hepática, aumento del hematocrito y alteraciones iniciales de la creatinina, que suelen ser transitorias.
+- La glucosa en orina será positiva por el mecanismo de acción; no usar la prueba de 1,5-anhidroglucitol para monitorizar el control.
 
 ## Embarazo, lactancia y niños
 
-- Embarazo: no hay datos en humanos. Los estudios en animales muestran efectos adversos en el desarrollo posnatal; como medida de precaución, se prefiere evitar su uso durante el embarazo [1].
-- Lactancia: se desconoce si pasa a la leche humana; en animales se excreta en la leche y no se puede excluir el riesgo en el lactante. No debe usarse durante la lactancia [1].
-- Fertilidad: los estudios en animales no sugieren efectos perjudiciales directos; no hay estudios en humanos [1].
+- Embarazo: no hay datos en humanos. Los estudios en animales muestran efectos adversos en el desarrollo posnatal; como medida de precaución, se prefiere evitar su uso durante el embarazo.
+- Lactancia: se desconoce si pasa a la leche humana; en animales se excreta en la leche y no se puede excluir el riesgo en el lactante. No debe usarse durante la lactancia.
+- Fertilidad: los estudios en animales no sugieren efectos perjudiciales directos; no hay estudios en humanos.
 
 ## Evidencia y situación en Colombia
 
@@ -97,21 +97,21 @@ La empagliflozina tiene uno de los programas de evidencia más amplios entre los
 
 ### EMPA-REG OUTCOME: diabetes y enfermedad cardiovascular
 
-En 7.020 adultos con diabetes tipo 2 y enfermedad cardiovascular establecida, la empagliflozina redujo el objetivo compuesto de muerte cardiovascular, infarto de miocardio no mortal o accidente cerebrovascular no mortal (10,5 % frente a 12,1 %; HR 0,86). La muerte cardiovascular bajó de 5,9 % a 3,7 % (HR 0,62), la hospitalización por insuficiencia cardíaca de 4,1 % a 2,7 % (HR 0,65) y la muerte por cualquier causa de 8,3 % a 5,7 % (HR 0,68) [2].
+En 7.020 adultos con diabetes tipo 2 y enfermedad cardiovascular establecida, la empagliflozina redujo el objetivo compuesto de muerte cardiovascular, infarto de miocardio no mortal o accidente cerebrovascular no mortal (10,5 % frente a 12,1 %; HR 0,86). La muerte cardiovascular bajó de 5,9 % a 3,7 % (HR 0,62), la hospitalización por insuficiencia cardíaca de 4,1 % a 2,7 % (HR 0,65) y la muerte por cualquier causa de 8,3 % a 5,7 % (HR 0,68).
 
 ### EMPA-KIDNEY: enfermedad renal crónica
 
-En 6.609 adultos con enfermedad renal crónica, con o sin diabetes, la empagliflozina redujo el objetivo de progresión renal o muerte cardiovascular en un 28 % (HR 0,72) [3].
+En 6.609 adultos con enfermedad renal crónica, con o sin diabetes, la empagliflozina redujo el objetivo de progresión renal o muerte cardiovascular en un 28 % (HR 0,72).
 
 ### EMPEROR: insuficiencia cardíaca
 
-En 3.730 pacientes con insuficiencia cardíaca y fracción de eyección reducida, la empagliflozina redujo el objetivo de muerte cardiovascular u hospitalización por insuficiencia cardíaca (HR 0,75) [4]. En 5.988 pacientes con fracción de eyección preservada, el objetivo compuesto también se redujo (HR 0,79) [5].
+En 3.730 pacientes con insuficiencia cardíaca y fracción de eyección reducida, la empagliflozina redujo el objetivo de muerte cardiovascular u hospitalización por insuficiencia cardíaca (HR 0,75). En 5.988 pacientes con fracción de eyección preservada, el objetivo compuesto también se redujo (HR 0,79).
 
-Estos resultados no significan que la empagliflozina sustituya a otros tratamientos de la insuficiencia cardíaca o de la enfermedad renal. Significan que, en las poblaciones estudiadas, añadirla reduce eventos importantes [2-5].
+Estos resultados no significan que la empagliflozina sustituya a otros tratamientos de la insuficiencia cardíaca o de la enfermedad renal. Significan que, en las poblaciones estudiadas, añadirla reduce eventos importantes.
 
-- Colombia: el CUM registra presentaciones de empagliflozina sola y en combinación con metformina [6].
-- Unión Europea: Jardiance está autorizado para diabetes tipo 2, insuficiencia cardíaca crónica sintomática y enfermedad renal crónica [1].
-- Estados Unidos: la FDA tiene etiquetas vigentes para diabetes tipo 2, insuficiencia cardíaca y enfermedad renal crónica; las indicaciones pueden variar [1].
+- Colombia: el CUM registra presentaciones de empagliflozina sola y en combinación con metformina.
+- Unión Europea: Jardiance está autorizado para diabetes tipo 2, insuficiencia cardíaca crónica sintomática y enfermedad renal crónica.
+- Estados Unidos: la FDA tiene etiquetas vigentes para diabetes tipo 2, insuficiencia cardíaca y enfermedad renal crónica; las indicaciones pueden variar.
 
 ## Errores frecuentes
 
@@ -156,15 +156,15 @@ Produce una pérdida modesta; no es un tratamiento para obesidad por sí sola.
 
 ### ¿Cuánto tarda en hacer efecto Empagliflozina?
 
-Alrededor de 1,5 horas después de la dosis [1] Su efecto se mantiene mientras el medicamento permanece en el cuerpo; la semivida es de aproximadamente 12,4 horas [1]. La respuesta completa depende de la indicación y del paciente, así que el seguimiento lo define el profesional.
+Alrededor de 1,5 horas después de la dosis  Su efecto se mantiene mientras el medicamento permanece en el cuerpo; la semivida es de aproximadamente 12,4 horas. La respuesta completa depende de la indicación y del paciente, así que el seguimiento lo define el profesional.
 
 ### ¿Se puede usar Empagliflozina en el embarazo?
 
-- Embarazo: no hay datos en humanos. Los estudios en animales muestran efectos adversos en el desarrollo posnatal; como medida de precaución, se prefiere evitar su uso durante el embarazo [1]. - Lactancia: se desconoce si pasa a la leche humana; en animales se excreta en la leche y no se puede excluir el riesgo en el lactante. No debe usarse durante la lactancia [1]. - Fertilidad: los estudios en animales no sugieren efectos perjudiciales directos; no hay estudios en humanos [1].
+- Embarazo: no hay datos en humanos. Los estudios en animales muestran efectos adversos en el desarrollo posnatal; como medida de precaución, se prefiere evitar su uso durante el embarazo. - Lactancia: se desconoce si pasa a la leche humana; en animales se excreta en la leche y no se puede excluir el riesgo en el lactante. No debe usarse durante la lactancia. - Fertilidad: los estudios en animales no sugieren efectos perjudiciales directos; no hay estudios en humanos.
 
 ### ¿Qué efectos secundarios de Empagliflozina son graves?
 
-Las reacciones más frecuentes son las infecciones genitales por hongos, el aumento de la micción y, cuando se combina con sulfonilureas o insulina, la hipoglucemia [1]. - Frecuentes: moniliasis vaginal, vulvovaginitis, balanitis y otras infecciones genitales; infección del tracto urinario; hipoglucemia en combinación con sulfonilurea o insulina; aumento de la micción; disuria; sed; estreñimiento; prurito; exantema; urticaria; aumento de lípidos, creatinina y hematocrito. - Poco frecuentes: hipovolemia, disuria y otras reacciones urinarias. - Raras: fascitis necrosante del perineo (gangrena de…
+Las reacciones más frecuentes son las infecciones genitales por hongos, el aumento de la micción y, cuando se combina con sulfonilureas o insulina, la hipoglucemia. - Frecuentes: moniliasis vaginal, vulvovaginitis, balanitis y otras infecciones genitales; infección del tracto urinario; hipoglucemia en combinación con sulfonilurea o insulina; aumento de la micción; disuria; sed; estreñimiento; prurito; exantema; urticaria; aumento de lípidos, creatinina y hematocrito. - Poco frecuentes: hipovolemia, disuria y otras reacciones urinarias. - Raras: fascitis necrosante del perineo (gangrena de…
 
 ## Artículos relacionados
 

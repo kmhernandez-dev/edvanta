@@ -21,15 +21,15 @@ Pertenece al grupo farmacológico de Antihistamínico H1 de segunda generación.
 
 ## Cómo funciona
 
-Bloquea de forma selectiva los receptores H1 periféricos de la histamina, lo que alivia los síntomas de la rinitis alérgica [1].
+Bloquea de forma selectiva los receptores H1 periféricos de la histamina, lo que alivia los síntomas de la rinitis alérgica.
 
 ## Cuánto tarda en hacer efecto
 
 | Parámetro | Valor |
 | --- | --- |
-| Inicio del efecto | 1 a 3 horas [1] |
-| Metabolismo | CYP3A4 y CYP2D6; metabolito activo: desloratadina [1] |
-| Semivida | 8,4 horas la loratadina y 28 horas la desloratadina [1] |
+| Inicio del efecto | 1 a 3 horas  |
+| Metabolismo | CYP3A4 y CYP2D6; metabolito activo: desloratadina  |
+| Semivida | 8,4 horas la loratadina y 28 horas la desloratadina  |
 
 ## Efectos secundarios
 
@@ -39,18 +39,18 @@ Dolor de cabeza, cansancio, boca seca y, ocasionalmente, malestar estomacal. Son
 
 | Medicamento | Efecto | Qué hacer |
 | --- | --- | --- |
-| Ketoconazol, eritromicina, cimetidina | Suben sus concentraciones, sin cambios clínicos significativos en los estudios | Vigilar [1] |
-| Otros inhibidores del CYP3A4 o del CYP2D6 | Posible aumento de concentraciones | Vigilar [1] |
-| Alcohol | Sin potenciación en los estudios | Sin restricción específica [1] |
+| Ketoconazol, eritromicina, cimetidina | Suben sus concentraciones, sin cambios clínicos significativos en los estudios | Vigilar  |
+| Otros inhibidores del CYP3A4 o del CYP2D6 | Posible aumento de concentraciones | Vigilar  |
+| Alcohol | Sin potenciación en los estudios | Sin restricción específica  |
 
 ## Quién no debe tomarlo
 
-Contraindicada en hipersensibilidad al principio activo o a los excipientes. Contiene lactosa [1].
+Contraindicada en hipersensibilidad al principio activo o a los excipientes. Contiene lactosa.
 
 ## Embarazo, lactancia y niños
 
-- Embarazo: evitar como precaución [1].
-- Lactancia: pasa a la leche; no se recomienda [1].
+- Embarazo: evitar como precaución.
+- Lactancia: pasa a la leche; no se recomienda.
 
 ## Cómo tomarla
 
@@ -81,10 +81,10 @@ Consulta también si las ronchas duran más de seis semanas, si la alergia nasal
 
 ## Evidencia y situación en Colombia
 
-Su ficha técnica la sitúa como un antihistamínico con influencia nula o insignificante sobre la conducción, aunque muy raramente puede causar somnolencia [1].
+Su ficha técnica la sitúa como un antihistamínico con influencia nula o insignificante sobre la conducción, aunque muy raramente puede causar somnolencia.
 
-- Colombia: 33 registros sanitarios vigentes con el código ATC R06AX13; consulta del 16-nov-2026 [2].
-- España: autorizada como Clarityne 10 mg comprimidos [1].
+- Colombia: 33 registros sanitarios vigentes con el código ATC R06AX13; consulta del 16-nov-2026.
+- España: autorizada como Clarityne 10 mg comprimidos.
 
 ## Errores frecuentes
 
@@ -120,7 +120,7 @@ Consulta antes. En algunos casos el médico considera aceptable su uso, pero la 
 
 ### ¿Se puede usar Loratadina en el embarazo?
 
-- Embarazo: evitar como precaución [1]. - Lactancia: pasa a la leche; no se recomienda [1].
+- Embarazo: evitar como precaución. - Lactancia: pasa a la leche; no se recomienda.
 
 ### ¿Qué efectos secundarios de Loratadina son graves?
 

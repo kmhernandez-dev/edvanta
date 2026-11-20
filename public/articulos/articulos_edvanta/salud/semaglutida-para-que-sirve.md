@@ -12,26 +12,26 @@ Actúa imitando una hormona intestinal que aumenta la insulina cuando hay glucos
 
 ## Cómo funciona
 
-La semaglutida se une de forma selectiva al receptor de GLP-1 y lo activa [1]. El GLP-1 regula de forma fisiológica el apetito y la ingesta, y su receptor está en el hipotálamo y el tronco encefálico, que controlan la ingesta homeostática [1,4].
+La semaglutida se une de forma selectiva al receptor de GLP-1 y lo activa. El GLP-1 regula de forma fisiológica el apetito y la ingesta, y su receptor está en el hipotálamo y el tronco encefálico, que controlan la ingesta homeostática.
 
-En los ensayos clínicos la semaglutida redujo la ingesta calórica, aumentó la saciedad, la plenitud y el control de la ingesta, y redujo el hambre y la frecuencia e intensidad del ansia de comer, además de la preferencia por alimentos ricos en grasa. También actúa sobre áreas del sistema de recompensa como el septo, el tálamo y la amígdala [1].
+En los ensayos clínicos la semaglutida redujo la ingesta calórica, aumentó la saciedad, la plenitud y el control de la ingesta, y redujo el hambre y la frecuencia e intensidad del ansia de comer, además de la preferencia por alimentos ricos en grasa. También actúa sobre áreas del sistema de recompensa como el septo, el tálamo y la amígdala.
 
-Reduce la glucemia de forma dependiente de la glucosa: estimula la secreción de insulina y disminuye la de glucagón cuando la glucemia está alta. Durante una hipoglucemia disminuye la secreción de insulina y no afecta la de glucagón; el riesgo de hipoglucemia aparece sobre todo cuando se combina con sulfonilureas o insulina [1].
+Reduce la glucemia de forma dependiente de la glucosa: estimula la secreción de insulina y disminuye la de glucagón cuando la glucemia está alta. Durante una hipoglucemia disminuye la secreción de insulina y no afecta la de glucagón; el riesgo de hipoglucemia aparece sobre todo cuando se combina con sulfonilureas o insulina.
 
-El receptor de GLP-1 se expresa también en el corazón, los vasos, el sistema inmunitario y los riñones. La semaglutida mejora los lípidos plasmáticos, baja la presión arterial sistólica y reduce la inflamación (proteína C reactiva de alta sensibilidad). Su efecto en la reducción del riesgo cardiovascular es probablemente multifactorial y su mecanismo exacto no se ha establecido [1].
+El receptor de GLP-1 se expresa también en el corazón, los vasos, el sistema inmunitario y los riñones. La semaglutida mejora los lípidos plasmáticos, baja la presión arterial sistólica y reduce la inflamación (proteína C reactiva de alta sensibilidad). Su efecto en la reducción del riesgo cardiovascular es probablemente multifactorial y su mecanismo exacto no se ha establecido.
 
 ## Cuánto tarda en hacer efecto
 
 | Parámetro | Valor en adultos con sobrepeso u obesidad |
 | --- | --- |
-| Biodisponibilidad absoluta (subcutánea) | 89 % [1] |
-| Concentración media en estado estacionario | Unos 75 nmol/l con 2,4 mg y 236 nmol/l con 7,2 mg [1] |
-| Linealidad | Exposición proporcional a la dosis entre 0,25 y 7,2 mg semanales [1] |
-| Volumen de distribución | Unos 12,4 l [1] |
-| Unión a proteínas | Más del 99 %, sobre todo a albúmina [1] |
-| Metabolismo | Proteólisis del esqueleto peptídico y β-oxidación secuencial del ácido graso; participa la endopeptidasa neutra [1] |
+| Biodisponibilidad absoluta (subcutánea) | 89 %  |
+| Concentración media en estado estacionario | Unos 75 nmol/l con 2,4 mg y 236 nmol/l con 7,2 mg  |
+| Linealidad | Exposición proporcional a la dosis entre 0,25 y 7,2 mg semanales  |
+| Volumen de distribución | Unos 12,4 l  |
+| Unión a proteínas | Más del 99 %, sobre todo a albúmina  |
+| Metabolismo | Proteólisis del esqueleto peptídico y β-oxidación secuencial del ácido graso; participa la endopeptidasa neutra  |
 
-El lugar de inyección (abdomen, muslo o brazo) no cambia la exposición. El peso corporal sí: una diferencia del 20 % en el peso se traduce en una diferencia aproximada del 18 % en la exposición, aunque las dosis de 2,4 y 7,2 mg dieron exposiciones adecuadas entre 54,4 y 251,2 kg. La edad, el sexo, la raza, la etnia y la insuficiencia renal o hepática no tuvieron un efecto clínicamente relevante [1].
+El lugar de inyección (abdomen, muslo o brazo) no cambia la exposición. El peso corporal sí: una diferencia del 20 % en el peso se traduce en una diferencia aproximada del 18 % en la exposición, aunque las dosis de 2,4 y 7,2 mg dieron exposiciones adecuadas entre 54,4 y 251,2 kg. La edad, el sexo, la raza, la etnia y la insuficiencia renal o hepática no tuvieron un efecto clínicamente relevante.
 
 ## Cómo se toma
 
@@ -55,20 +55,20 @@ La dosis concreta la define el médico. No la ajustes por tu cuenta.
 
 Se han descrito tumores de células C del tiroides en roedores. No se ha demostrado la misma relación en humanos, pero no se recomienda en personas con antecedente personal o familiar de carcinoma medular de tiroides o neoplasia endocrina múltiple tipo 2.
 
-Las más frecuentes son gastrointestinales y aparecen sobre todo durante el escalado [1].
+Las más frecuentes son gastrointestinales y aparecen sobre todo durante el escalado.
 
 | Frecuencia | Reacciones adversas (ficha técnica de Wegovy) |
 | --- | --- |
-| Muy frecuentes (≥1/10) | Cefalea, náuseas, vómitos, diarrea, estreñimiento, dolor abdominal, fatiga [1] |
-| Frecuentes (≥1/100 a <1/10) | Mareo, disgeusia, disestesia, gastritis, reflujo gastroesofágico, dispepsia, eructos, flatulencia, distensión abdominal, colelitiasis, pérdida de cabello, reacciones en el lugar de inyección; en diabetes tipo 2, hipoglucemia y retinopatía diabética [1] |
-| Poco frecuentes (≥1/1.000 a <1/100) | Aumento de la frecuencia cardiaca, hipotensión, hipotensión ortostática, pancreatitis aguda, vaciamiento gástrico retardado, aumento de amilasa y lipasa [1] |
-| Raras (≥1/10.000 a <1/1.000) | Reacción anafiláctica, angioedema [1] |
-| Muy raras (<1/10.000) | Neuropatía óptica isquémica anterior no arterítica [1] |
-| Frecuencia no conocida | Obstrucción intestinal [1] |
+| Muy frecuentes (≥1/10) | Cefalea, náuseas, vómitos, diarrea, estreñimiento, dolor abdominal, fatiga  |
+| Frecuentes (≥1/100 a <1/10) | Mareo, disgeusia, disestesia, gastritis, reflujo gastroesofágico, dispepsia, eructos, flatulencia, distensión abdominal, colelitiasis, pérdida de cabello, reacciones en el lugar de inyección; en diabetes tipo 2, hipoglucemia y retinopatía diabética  |
+| Poco frecuentes (≥1/1.000 a <1/100) | Aumento de la frecuencia cardiaca, hipotensión, hipotensión ortostática, pancreatitis aguda, vaciamiento gástrico retardado, aumento de amilasa y lipasa  |
+| Raras (≥1/10.000 a <1/1.000) | Reacción anafiláctica, angioedema  |
+| Muy raras (<1/10.000) | Neuropatía óptica isquémica anterior no arterítica  |
+| Frecuencia no conocida | Obstrucción intestinal  |
 
-En los ensayos STEP de 68 semanas se presentaron náuseas en el 43,9 % de los pacientes (16,1 % con placebo), diarrea en el 29,7 % (15,9 %), vómitos en el 24,5 % (6,3 %), estreñimiento en el 24,2 % (11,1 %) y dolor abdominal en el 19,7 % (10 %). La mediana de duración fue de 8 días para las náuseas, 2 para los vómitos, 3 para la diarrea y 47 para el estreñimiento. El 4,3 % suspendió por efectos gastrointestinales [1].
+En los ensayos STEP de 68 semanas se presentaron náuseas en el 43,9 % de los pacientes (16,1 % con placebo), diarrea en el 29,7 % (15,9 %), vómitos en el 24,5 % (6,3 %), estreñimiento en el 24,2 % (11,1 %) y dolor abdominal en el 19,7 % (10 %). La mediana de duración fue de 8 días para las náuseas, 2 para los vómitos, 3 para la diarrea y 47 para el estreñimiento. El 4,3 % suspendió por efectos gastrointestinales.
 
-Se notificó colelitiasis en el 1,6 % (colecistitis en el 0,6 %) y pérdida de cabello en el 2,5 % (5,3 % con 7,2 mg), más frecuente con mayor pérdida de peso y en general recuperable sin suspender. La sobredosis produce síntomas gastrointestinales y deshidratación y se trata con medidas de soporte [1].
+Se notificó colelitiasis en el 1,6 % (colecistitis en el 0,6 %) y pérdida de cabello en el 2,5 % (5,3 % con 7,2 mg), más frecuente con mayor pérdida de peso y en general recuperable sin suspender. La sobredosis produce síntomas gastrointestinales y deshidratación y se trata con medidas de soporte.
 
 ## Interacciones
 
@@ -79,15 +79,15 @@ Se notificó colelitiasis en el 1,6 % (colecistitis en el 0,6 %) y pérdida de c
 - Evitar en pancreatitis previa sin evaluación.
 - No combinar con otro agonista de GLP-1 ni con inhibidores de DPP-4.
 
-- Medicamentos orales: la semaglutida retrasa el vaciamiento gástrico y podría cambiar su absorción. Con 2,4 mg no se observó un efecto clínicamente relevante, probablemente por tolerancia; con 7,2 mg no se ha estudiado. Precaución con medicamentos orales que requieren absorción rápida [1].
-- Paracetamol: con semaglutida 1 mg, su AUC de la primera hora y su Cmáx bajaron un 27 % y un 23 %, sin cambio en la exposición total ni necesidad de ajuste [1].
-- Anticonceptivos orales: no se espera que la semaglutida reduzca su eficacia [1].
-- Sulfonilureas e insulina: más riesgo de hipoglucemia; reducir su dosis al iniciar [1].
-- Otros agonistas del receptor de GLP-1: no deben combinarse [1].
+- Medicamentos orales: la semaglutida retrasa el vaciamiento gástrico y podría cambiar su absorción. Con 2,4 mg no se observó un efecto clínicamente relevante, probablemente por tolerancia; con 7,2 mg no se ha estudiado. Precaución con medicamentos orales que requieren absorción rápida.
+- Paracetamol: con semaglutida 1 mg, su AUC de la primera hora y su Cmáx bajaron un 27 % y un 23 %, sin cambio en la exposición total ni necesidad de ajuste.
+- Anticonceptivos orales: no se espera que la semaglutida reduzca su eficacia.
+- Sulfonilureas e insulina: más riesgo de hipoglucemia; reducir su dosis al iniciar.
+- Otros agonistas del receptor de GLP-1: no deben combinarse.
 
 ## Quién no debe tomarlo
 
-La única contraindicación es la hipersensibilidad al principio activo o a los excipientes [1]. Las advertencias de la ficha técnica son [1]:
+La única contraindicación es la hipersensibilidad al principio activo o a los excipientes. Las advertencias de la ficha técnica son:
 
 - Aspiración pulmonar con anestesia general o sedación profunda, por el vaciamiento gástrico retardado: el equipo de anestesia debe saber que el paciente la usa.
 - Efectos gastrointestinales y deshidratación, que en casos raros deterioran la función renal.
@@ -100,10 +100,10 @@ La única contraindicación es la hipersensibilidad al principio activo o a los 
 
 ## Embarazo, lactancia y niños
 
-- Se recomienda anticoncepción en mujeres en edad fértil durante el tratamiento [1].
-- No debe usarse en el embarazo: los estudios en animales mostraron toxicidad reproductiva. Se suspende si la paciente desea un embarazo o queda en embarazo, y al menos 2 meses antes de un embarazo planeado por su larga semivida [1].
-- No debe usarse durante la lactancia: en ratas se excretó en la leche [1].
-- Se desconoce su efecto sobre la fertilidad humana [1].
+- Se recomienda anticoncepción en mujeres en edad fértil durante el tratamiento.
+- No debe usarse en el embarazo: los estudios en animales mostraron toxicidad reproductiva. Se suspende si la paciente desea un embarazo o queda en embarazo, y al menos 2 meses antes de un embarazo planeado por su larga semivida.
+- No debe usarse durante la lactancia: en ratas se excretó en la leche.
+- Se desconoce su efecto sobre la fertilidad humana.
 
 ## Presentaciones y usos
 
@@ -117,15 +117,15 @@ La indicación depende de la aprobación de cada país y del criterio del equipo
 
 | Ensayo | Diseño | Resultado principal |
 | --- | --- | --- |
-| STEP 1 [5] | 1.961 adultos sin diabetes con IMC de 30 o más (27 o más con comorbilidad), 68 semanas, 2:1 frente a placebo | Peso −14,9 % frente a −2,4 %; el 86,4 % perdió al menos el 5 % (31,5 % con placebo) y el 50,5 % al menos el 15 % (4,9 %) [5] |
-| STEP 4 [6] | 803 adultos que bajaron un 10,6 % en 20 semanas de preinclusión y luego continuaron o pasaron a placebo | De la semana 20 a la 68: −7,9 % con semaglutida frente a +6,9 % con placebo [6] |
-| Extensión de STEP 1 [7] | 327 participantes seguidos un año después de suspender | Recuperaron 11,6 puntos porcentuales del peso perdido (dos tercios) y los marcadores cardiometabólicos volvieron hacia el inicio [7] |
-| SELECT [8] | 17.604 adultos con enfermedad cardiovascular previa y sobrepeso u obesidad, sin diabetes; seguimiento medio de 39,8 meses | Muerte cardiovascular, infarto o ACV no mortales: 6,5 % frente a 8,0 % (HR 0,80; IC 95 % 0,72-0,90). Suspensión por eventos adversos: 16,6 % frente a 8,2 % [8] |
+| STEP 1  | 1.961 adultos sin diabetes con IMC de 30 o más (27 o más con comorbilidad), 68 semanas, 2:1 frente a placebo | Peso −14,9 % frente a −2,4 %; el 86,4 % perdió al menos el 5 % (31,5 % con placebo) y el 50,5 % al menos el 15 % (4,9 %)  |
+| STEP 4  | 803 adultos que bajaron un 10,6 % en 20 semanas de preinclusión y luego continuaron o pasaron a placebo | De la semana 20 a la 68: −7,9 % con semaglutida frente a +6,9 % con placebo  |
+| Extensión de STEP 1  | 327 participantes seguidos un año después de suspender | Recuperaron 11,6 puntos porcentuales del peso perdido (dos tercios) y los marcadores cardiometabólicos volvieron hacia el inicio  |
+| SELECT  | 17.604 adultos con enfermedad cardiovascular previa y sobrepeso u obesidad, sin diabetes; seguimiento medio de 39,8 meses | Muerte cardiovascular, infarto o ACV no mortales: 6,5 % frente a 8,0 % (HR 0,80; IC 95 % 0,72-0,90). Suspensión por eventos adversos: 16,6 % frente a 8,2 %  |
 
-- Colombia: Wegovy (Novo Nordisk Colombia) tiene cuatro registros sanitarios vigentes expedidos en diciembre de 2024, con plumas de 0,25-0,5, 0,5-1,0, 1,7 y 2,4 mg por dosis. La semaglutida también tiene registro como Ozempic y como Rybelsus (comprimidos de 3, 7 y 14 mg) [9].
-- Unión Europea: Wegovy está autorizado para el control del peso en adultos y adolescentes, con dosis de mantenimiento de 2,4 y 7,2 mg [1].
-- Estados Unidos: la etiqueta de Wegovy incluye la solución inyectable y una presentación en comprimidos [2].
-- Productos ilegales: el INVIMA alertó en 2024 por la venta de una supuesta «semaglutida + vitamina B12» sin registro sanitario [10].
+- Colombia: Wegovy (Novo Nordisk Colombia) tiene cuatro registros sanitarios vigentes expedidos en diciembre de 2024, con plumas de 0,25-0,5, 0,5-1,0, 1,7 y 2,4 mg por dosis. La semaglutida también tiene registro como Ozempic y como Rybelsus (comprimidos de 3, 7 y 14 mg).
+- Unión Europea: Wegovy está autorizado para el control del peso en adultos y adolescentes, con dosis de mantenimiento de 2,4 y 7,2 mg.
+- Estados Unidos: la etiqueta de Wegovy incluye la solución inyectable y una presentación en comprimidos.
+- Productos ilegales: el INVIMA alertó en 2024 por la venta de una supuesta «semaglutida + vitamina B12» sin registro sanitario.
 
 ## Errores frecuentes
 
@@ -171,11 +171,11 @@ En roedores se observaron tumores de células C; en humanos no se ha confirmado 
 
 ### ¿Se puede usar Semaglutida en el embarazo?
 
-- Se recomienda anticoncepción en mujeres en edad fértil durante el tratamiento [1]. - No debe usarse en el embarazo: los estudios en animales mostraron toxicidad reproductiva. Se suspende si la paciente desea un embarazo o queda en embarazo, y al menos 2 meses antes de un embarazo planeado por su larga semivida [1]. - No debe usarse durante la lactancia: en ratas se excretó en la leche [1]. - Se desconoce su efecto sobre la fertilidad humana [1].
+- Se recomienda anticoncepción en mujeres en edad fértil durante el tratamiento. - No debe usarse en el embarazo: los estudios en animales mostraron toxicidad reproductiva. Se suspende si la paciente desea un embarazo o queda en embarazo, y al menos 2 meses antes de un embarazo planeado por su larga semivida. - No debe usarse durante la lactancia: en ratas se excretó en la leche. - Se desconoce su efecto sobre la fertilidad humana.
 
 ### ¿Qué efectos secundarios de Semaglutida son graves?
 
-Las más frecuentes son gastrointestinales y aparecen sobre todo durante el escalado [1]. | Frecuencia | Reacciones adversas (ficha técnica de Wegovy) | | --- | --- | | Muy frecuentes (≥1/10) | Cefalea, náuseas, vómitos, diarrea, estreñimiento, dolor abdominal, fatiga [1] | | Frecuentes (≥1/100 a <1/10) | Mareo, disgeusia, disestesia, gastritis, reflujo gastroesofágico, dispepsia, eructos, flatulencia, distensión abdominal, colelitiasis, pérdida de cabello, reacciones en el lugar de inyección; en diabetes tipo 2, hipoglucemia y retinopatía diabética [1] | | Poco frecuentes (≥1/1.000 a <1/100)…
+Las más frecuentes son gastrointestinales y aparecen sobre todo durante el escalado. | Frecuencia | Reacciones adversas (ficha técnica de Wegovy) | | --- | --- | | Muy frecuentes (≥1/10) | Cefalea, náuseas, vómitos, diarrea, estreñimiento, dolor abdominal, fatiga  | | Frecuentes (≥1/100 a <1/10) | Mareo, disgeusia, disestesia, gastritis, reflujo gastroesofágico, dispepsia, eructos, flatulencia, distensión abdominal, colelitiasis, pérdida de cabello, reacciones en el lugar de inyección; en diabetes tipo 2, hipoglucemia y retinopatía diabética  | | Poco frecuentes (≥1/1.000 a <1/100)…
 
 ## Artículos relacionados
 

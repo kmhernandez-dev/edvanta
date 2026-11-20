@@ -15,7 +15,7 @@ Pertenece al grupo farmacológico de Tetraciclina.
 
 ## ¿Para qué sirve la doxiciclina?
 
-La doxiciclina está indicada en [1,2]:
+La doxiciclina está indicada en:
 
 - Infecciones por rickettsias, como la fiebre manchada y el tifus.
 - Enfermedad de Lyme y otras infecciones por espiroquetas.
@@ -30,24 +30,24 @@ No sirve para infecciones virales ni para la mayoría de las faringitis.
 
 ## Cómo funciona
 
-Se une a la subunidad ribosomal 30S e impide la unión del aminoacil-ARNt al sitio A, lo que bloquea la elongación de la proteína. Es bacteriostática [1,2].
+Se une a la subunidad ribosomal 30S e impide la unión del aminoacil-ARNt al sitio A, lo que bloquea la elongación de la proteína. Es bacteriostática.
 
-Cubre rickettsias, Mycoplasma, Chlamydia, espiroquetas, Helicobacter pylori y algunos grampositivos y gramnegativos. La resistencia es frecuente en muchas bacterias [1,2].
+Cubre rickettsias, Mycoplasma, Chlamydia, espiroquetas, Helicobacter pylori y algunos grampositivos y gramnegativos. La resistencia es frecuente en muchas bacterias.
 
 ## Cuánto tarda en hacer efecto
 
 | Parámetro | Valor |
 | --- | --- |
-| Absorción | Oral, rápida; disminuye con alimentos ricos en calcio, hierro o antiácidos [1] |
-| Concentración máxima | 2 a 3 horas [1] |
-| Unión a proteínas | Alta [1] |
-| Metabolismo | Hepático parcial [1] |
-| Semivida | 16 a 22 horas [1] |
-| Eliminación | Biliar y renal [1] |
+| Absorción | Oral, rápida; disminuye con alimentos ricos en calcio, hierro o antiácidos  |
+| Concentración máxima | 2 a 3 horas  |
+| Unión a proteínas | Alta  |
+| Metabolismo | Hepático parcial  |
+| Semivida | 16 a 22 horas  |
+| Eliminación | Biliar y renal  |
 
 ## Cómo se toma
 
-La dosis la define el médico según la infección y el peso. Como referencia en adultos [1,2]:
+La dosis la define el médico según la infección y el peso. Como referencia en adultos:
 
 | Indicación | Dosis orientativa |
 |---|---|
@@ -65,14 +65,14 @@ La dosis la define el médico según la infección y el peso. Como referencia en
 
 ## Efectos secundarios
 
-- Náuseas, diarrea, dolor abdominal y pérdida del apetito [1,2].
+- Náuseas, diarrea, dolor abdominal y pérdida del apetito.
 - Fotosensibilidad: enrojecimiento o quemadura fácil con el sol.
 - Esofagitis y úlceras esofágicas si se toma sin agua o acostado.
 - Candidiasis oral o vaginal.
 - Coloración amarillenta o marrón de los dientes en niños pequeños.
 - Raros pero graves: hipertensión intracraneal, reacciones cutáneas graves, colitis por *C. difficile* y hepatotoxicidad.
 
-Las más frecuentes son náuseas, diarrea, dolor abdominal y pérdida del apetito [1,2].
+Las más frecuentes son náuseas, diarrea, dolor abdominal y pérdida del apetito.
 
 - Frecuentes: fotosensibilidad, candidiasis y esofagitis.
 - Poco frecuentes: coloración dental, elevación de transaminasas y rash.
@@ -82,31 +82,31 @@ Las más frecuentes son náuseas, diarrea, dolor abdominal y pérdida del apetit
 
 | Medicamento o sustancia | Qué puede pasar |
 |---|---|
-| Antiácidos, hierro, calcio, zinc | Reducen la absorción; separar 2 horas [1] |
-| Warfarina | Aumento del INR; controlar [1] |
-| Fenitoína, carbamazepina, rifampicina | Reducen la concentración de doxiciclina [1] |
-| Isotretinoína | Mayor riesgo de hipertensión intracraneal [1] |
-| Penicilinas | Posible antagonismo; evitar combinación innecesaria [2] |
+| Antiácidos, hierro, calcio, zinc | Reducen la absorción; separar 2 horas  |
+| Warfarina | Aumento del INR; controlar  |
+| Fenitoína, carbamazepina, rifampicina | Reducen la concentración de doxiciclina  |
+| Isotretinoína | Mayor riesgo de hipertensión intracraneal  |
+| Penicilinas | Posible antagonismo; evitar combinación innecesaria  |
 | Alcohol | Puede reducir la absorción y aumentar la irritación gástrica |
 
 | Medicamento o sustancia | Efecto | Qué hacer |
 | --- | --- | --- |
-| Antiácidos, hierro, calcio, zinc | Reducen la absorción | Separar al menos 2 horas [1] |
-| Warfarina | Aumento del INR | Controlar el INR [1] |
-| Fenitoína, carbamazepina, rifampicina | Reducen la concentración de doxiciclina | Vigilar eficacia [1] |
-| Isotretinoína | Mayor riesgo de hipertensión intracraneal | Evitar combinación [1] |
-| Penicilinas | Posible antagonismo | Evitar combinaciones innecesarias [2] |
+| Antiácidos, hierro, calcio, zinc | Reducen la absorción | Separar al menos 2 horas  |
+| Warfarina | Aumento del INR | Controlar el INR  |
+| Fenitoína, carbamazepina, rifampicina | Reducen la concentración de doxiciclina | Vigilar eficacia  |
+| Isotretinoína | Mayor riesgo de hipertensión intracraneal | Evitar combinación  |
+| Penicilinas | Posible antagonismo | Evitar combinaciones innecesarias  |
 
 ## Quién no debe tomarlo
 
-- Alergia a las tetraciclinas [1,2].
+- Alergia a las tetraciclinas.
 - Embarazo: contraindicada, salvo infecciones graves como rickettsiosis o Lyme donde el beneficio supere el riesgo.
 - Lactancia: se excreta en la leche; consultar.
 - Menores de 8 años: evitar, salvo infecciones graves sin alternativa.
 - Insuficiencia hepática o renal: puede requerir ajuste.
 - Miastenia grave: puede empeorar.
 
-Contraindicaciones y precauciones [1,2]:
+Contraindicaciones y precauciones:
 
 - Hipersensibilidad a tetraciclinas.
 - Embarazo, salvo infecciones graves sin alternativa.
@@ -114,35 +114,35 @@ Contraindicaciones y precauciones [1,2]:
 - Insuficiencia hepática o renal grave: valorar ajuste.
 - Miastenia grave: puede empeorar.
 
-Advertencias: fotosensibilidad, esofagitis, hipertensión intracraneal, coloración dental, hepatotoxicidad y colitis por C. difficile [1,2].
+Advertencias: fotosensibilidad, esofagitis, hipertensión intracraneal, coloración dental, hepatotoxicidad y colitis por C. difficile.
 
 ## Embarazo, lactancia y niños
 
-La doxiciclina se acumula en huesos y dientes en formación. En el embarazo se evita, salvo infecciones graves en las que no hay alternativa. Durante la lactancia se excreta en la leche en pequeñas cantidades; la decisión debe ser médica [1,2].
+La doxiciclina se acumula en huesos y dientes en formación. En el embarazo se evita, salvo infecciones graves en las que no hay alternativa. Durante la lactancia se excreta en la leche en pequeñas cantidades; la decisión debe ser médica.
 
-- Embarazo: se evita por el riesgo de afectación ósea y dental fetal; se usa solo en infecciones graves sin alternativa [1,2].
-- Lactancia: pasa en pequeñas cantidades; la decisión debe ser médica [1].
-- Niños menores de 8 años: evitar salvo indicaciones graves [1,2].
+- Embarazo: se evita por el riesgo de afectación ósea y dental fetal; se usa solo en infecciones graves sin alternativa.
+- Lactancia: pasa en pequeñas cantidades; la decisión debe ser médica.
+- Niños menores de 8 años: evitar salvo indicaciones graves.
 
 ## Cómo actúa
 
-La doxiciclina se une a la subunidad ribosomal 30S e impide la síntesis de proteínas bacterianas. Es bacteriostática, aunque en algunos microorganismos puede tener efecto bactericida. Su alta liposolubilidad le permite penetrar bien en tejidos y células [1,2].
+La doxiciclina se une a la subunidad ribosomal 30S e impide la síntesis de proteínas bacterianas. Es bacteriostática, aunque en algunos microorganismos puede tener efecto bactericida. Su alta liposolubilidad le permite penetrar bien en tejidos y células.
 
 ## Doxiciclina en Colombia
 
-El CUM del INVIMA registra doxiciclina en cápsulas y tabletas. Verifica el registro y la concentración antes de dispensar [3]. Es un medicamento de prescripción médica.
+El CUM del INVIMA registra doxiciclina en cápsulas y tabletas. Verifica el registro y la concentración antes de dispensar. Es un medicamento de prescripción médica.
 
 ## Evidencia y situación en Colombia
 
-La doxiciclina es el tratamiento de elección para la mayoría de las rickettsiosis y una opción clave en la enfermedad de Lyme y en infecciones por atípicos [1,2].
+La doxiciclina es el tratamiento de elección para la mayoría de las rickettsiosis y una opción clave en la enfermedad de Lyme y en infecciones por atípicos.
 
-En acné, las dosis bajas y el uso limitado en el tiempo reducen la resistencia y los efectos adversos [1].
+En acné, las dosis bajas y el uso limitado en el tiempo reducen la resistencia y los efectos adversos.
 
-En malaria, se usa como profilaxis y en combinación para el tratamiento, según las guías y la resistencia local [2].
+En malaria, se usa como profilaxis y en combinación para el tratamiento, según las guías y la resistencia local.
 
-- Colombia: el CUM registra doxiciclina en cápsulas y tabletas [3].
-- Unión Europea: la doxiciclina está autorizada para las indicaciones descritas [1].
-- Estados Unidos: la FDA mantiene etiquetas vigentes de doxiciclina [1].
+- Colombia: el CUM registra doxiciclina en cápsulas y tabletas.
+- Unión Europea: la doxiciclina está autorizada para las indicaciones descritas.
+- Estados Unidos: la FDA mantiene etiquetas vigentes de doxiciclina.
 
 ## Errores frecuentes
 
@@ -182,15 +182,15 @@ No. Permanece erguido al menos 30 minutos para evitar irritación del esófago.
 
 ### ¿Cuánto tarda en hacer efecto Doxiciclina?
 
-2 a 3 horas [1] Su efecto se mantiene mientras el medicamento permanece en el cuerpo; la semivida es de 16 a 22 horas [1]. La respuesta completa depende de la indicación y del paciente, así que el seguimiento lo define el profesional.
+2 a 3 horas  Su efecto se mantiene mientras el medicamento permanece en el cuerpo; la semivida es de 16 a 22 horas. La respuesta completa depende de la indicación y del paciente, así que el seguimiento lo define el profesional.
 
 ### ¿Se puede usar Doxiciclina en el embarazo?
 
-- Embarazo: se evita por el riesgo de afectación ósea y dental fetal; se usa solo en infecciones graves sin alternativa [1,2]. - Lactancia: pasa en pequeñas cantidades; la decisión debe ser médica [1]. - Niños menores de 8 años: evitar salvo indicaciones graves [1,2].
+- Embarazo: se evita por el riesgo de afectación ósea y dental fetal; se usa solo en infecciones graves sin alternativa. - Lactancia: pasa en pequeñas cantidades; la decisión debe ser médica. - Niños menores de 8 años: evitar salvo indicaciones graves.
 
 ### ¿Qué efectos secundarios de Doxiciclina son graves?
 
-Las más frecuentes son náuseas, diarrea, dolor abdominal y pérdida del apetito [1,2]. - Frecuentes: fotosensibilidad, candidiasis y esofagitis. - Poco frecuentes: coloración dental, elevación de transaminasas y rash. - Raras: hipertensión intracraneal, pancreatitis, hepatotoxicidad, Stevens-Johnson y colitis pseudomembranosa.
+Las más frecuentes son náuseas, diarrea, dolor abdominal y pérdida del apetito. - Frecuentes: fotosensibilidad, candidiasis y esofagitis. - Poco frecuentes: coloración dental, elevación de transaminasas y rash. - Raras: hipertensión intracraneal, pancreatitis, hepatotoxicidad, Stevens-Johnson y colitis pseudomembranosa.
 
 ## Artículos relacionados
 

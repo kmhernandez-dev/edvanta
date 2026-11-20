@@ -15,7 +15,7 @@ Pertenece al grupo farmacológico de Fluoroquinolona.
 
 ## ¿Para qué sirve el levofloxacino?
 
-Según la ficha técnica, está indicado en adultos para [1]:
+Según la ficha técnica, está indicado en adultos para:
 
 - Sinusitis bacteriana aguda, cuando otras opciones no son apropiadas.
 - Exacerbación aguda de bronquitis crónica.
@@ -30,24 +30,24 @@ No es un antibiótico para gripas, faringitis virales ni infecciones por hongos.
 
 ## Cómo funciona
 
-Inhibe la ADN girasa (topoisomerasa II) y la topoisomerasa IV, enzimas que controlan el superenrollamiento y la separación del ADN. El complejo fármaco-enzima-ADN bloquea la replicación y activa la muerte celular [1,2].
+Inhibe la ADN girasa (topoisomerasa II) y la topoisomerasa IV, enzimas que controlan el superenrollamiento y la separación del ADN. El complejo fármaco-enzima-ADN bloquea la replicación y activa la muerte celular.
 
-Es bactericida y su efecto depende de la concentración. Cubre gramnegativos, Streptococcus pneumoniae, atípicos y algunas enterobacterias; no cubre Pseudomonas de forma confiable [1].
+Es bactericida y su efecto depende de la concentración. Cubre gramnegativos, Streptococcus pneumoniae, atípicos y algunas enterobacterias; no cubre Pseudomonas de forma confiable.
 
 ## Cuánto tarda en hacer efecto
 
 | Parámetro | Valor |
 | --- | --- |
-| Absorción | Oral, rápida y casi completa [1] |
-| Concentración máxima | 1 a 2 horas [1] |
-| Unión a proteínas | 24 a 38 % [1] |
-| Metabolismo | Mínimo; se elimina principalmente sin cambios [1] |
-| Semivida | 6 a 8 horas [1] |
-| Eliminación | Renal, por filtración y secreción tubular [1] |
+| Absorción | Oral, rápida y casi completa  |
+| Concentración máxima | 1 a 2 horas  |
+| Unión a proteínas | 24 a 38 %  |
+| Metabolismo | Mínimo; se elimina principalmente sin cambios  |
+| Semivida | 6 a 8 horas  |
+| Eliminación | Renal, por filtración y secreción tubular  |
 
 ## Cómo se toma
 
-La dosis la define el médico según la infección y la función renal. Como referencia en adultos [1]:
+La dosis la define el médico según la infección y la función renal. Como referencia en adultos:
 
 | Infección | Dosis orientativa |
 |---|---|
@@ -63,7 +63,7 @@ La dosis la define el médico según la infección y la función renal. Como ref
 
 ## Efectos secundarios
 
-- Náuseas, diarrea, estreñimiento, dolor abdominal y dolor de cabeza [1].
+- Náuseas, diarrea, estreñimiento, dolor abdominal y dolor de cabeza.
 - Mareo, insomnio y alteración del gusto.
 - Tendinitis y rotura de tendones, especialmente el de Aquiles; el riesgo aumenta con edad avanzada, corticoides y trasplante.
 - Neuropatía periférica: hormigueo, adormecimiento o dolor en manos y pies.
@@ -75,7 +75,7 @@ La dosis la define el médico según la infección y la función renal. Como ref
 
 Suspende y consulta de inmediato si aparecen dolor o hinchazón de un tendón, hormigueo persistente, confusión, palpitaciones o una reacción cutánea grave.
 
-Las más frecuentes son náuseas, diarrea, estreñimiento, dolor abdominal y cefalea [1].
+Las más frecuentes son náuseas, diarrea, estreñimiento, dolor abdominal y cefalea.
 
 - Frecuentes: mareo, insomnio, alteración del gusto y rash.
 - Poco frecuentes: tendinitis, neuropatía, ansiedad, confusión, palpitaciones y alteraciones de la glucemia.
@@ -85,26 +85,26 @@ Las más frecuentes son náuseas, diarrea, estreñimiento, dolor abdominal y cef
 
 | Medicamento o sustancia | Qué puede pasar |
 |---|---|
-| Antiácidos, hierro, calcio, zinc, sucralfato | Reducen la absorción; separar al menos 2 horas [1] |
-| Warfarina | Aumento del INR y del riesgo de sangrado [1] |
-| Corticoides | Mayor riesgo de tendinopatía [1] |
-| Fármacos que prolongan el QT | Mayor riesgo de arritmias [1] |
-| Antidiabéticos | Alteraciones de la glucemia; vigilar [1] |
-| AINE | Mayor riesgo de convulsiones [1] |
-| Teofilina | Aumento de sus concentraciones [1] |
+| Antiácidos, hierro, calcio, zinc, sucralfato | Reducen la absorción; separar al menos 2 horas  |
+| Warfarina | Aumento del INR y del riesgo de sangrado  |
+| Corticoides | Mayor riesgo de tendinopatía  |
+| Fármacos que prolongan el QT | Mayor riesgo de arritmias  |
+| Antidiabéticos | Alteraciones de la glucemia; vigilar  |
+| AINE | Mayor riesgo de convulsiones  |
+| Teofilina | Aumento de sus concentraciones  |
 
 | Medicamento o sustancia | Efecto | Qué hacer |
 | --- | --- | --- |
-| Antiácidos, hierro, calcio, zinc, sucralfato | Reducen la absorción | Separar al menos 2 horas [1] |
-| Warfarina | Aumento del INR | Controlar el INR [1] |
-| Corticoides | Mayor riesgo de tendinopatía | Vigilar [1] |
-| Fármacos que prolongan el QT | Mayor riesgo de arritmias | Evitar combinaciones de riesgo [1] |
-| Antidiabéticos | Disglucemia | Vigilar glucemia [1] |
-| AINE | Mayor riesgo de convulsiones | Precaución [1] |
+| Antiácidos, hierro, calcio, zinc, sucralfato | Reducen la absorción | Separar al menos 2 horas  |
+| Warfarina | Aumento del INR | Controlar el INR  |
+| Corticoides | Mayor riesgo de tendinopatía | Vigilar  |
+| Fármacos que prolongan el QT | Mayor riesgo de arritmias | Evitar combinaciones de riesgo  |
+| Antidiabéticos | Disglucemia | Vigilar glucemia  |
+| AINE | Mayor riesgo de convulsiones | Precaución  |
 
 ## Quién no debe tomarlo
 
-- Alergia a quinolonas [1].
+- Alergia a quinolonas.
 - Antecedente de tendinopatía por quinolonas.
 - Miastenia grave: puede empeorar.
 - Epilepsia o trastornos convulsivos.
@@ -113,7 +113,7 @@ Las más frecuentes son náuseas, diarrea, estreñimiento, dolor abdominal y cef
 - Embarazo y lactancia: no se recomienda salvo que no haya alternativa.
 - Menores de 18 años: solo en indicaciones específicas y con valoración especializada.
 
-Contraindicaciones y precauciones [1,2]:
+Contraindicaciones y precauciones:
 
 - Hipersensibilidad a quinolonas.
 - Antecedente de tendinopatía por quinolonas.
@@ -122,35 +122,35 @@ Contraindicaciones y precauciones [1,2]:
 - Prolongación del QT, hipopotasemia o uso de otros fármacos que prolongan el QT.
 - Embarazo, lactancia y menores de 18 años: solo en indicaciones específicas.
 
-Advertencias: tendinitis y rotura de tendones, neuropatía periférica, reacciones del sistema nervioso central, disglucemia, aneurisma y disección de aorta, colitis por C. difficile y reacciones cutáneas graves [1,2].
+Advertencias: tendinitis y rotura de tendones, neuropatía periférica, reacciones del sistema nervioso central, disglucemia, aneurisma y disección de aorta, colitis por C. difficile y reacciones cutáneas graves.
 
 ## Embarazo, lactancia y niños
 
-No se recomienda en el embarazo ni en la lactancia, salvo que no exista una alternativa y el beneficio supere el riesgo. Se excreta en la leche materna [1]. En niños y adolescentes se reserva para indicaciones específicas.
+No se recomienda en el embarazo ni en la lactancia, salvo que no exista una alternativa y el beneficio supere el riesgo. Se excreta en la leche materna. En niños y adolescentes se reserva para indicaciones específicas.
 
-- Embarazo: no se recomienda salvo que no exista alternativa y el beneficio supere el riesgo [1].
-- Lactancia: se excreta en la leche; evitar o suspender la lactancia durante el tratamiento [1].
-- Niños y adolescentes: reservado para indicaciones específicas y valoración especializada [1,2].
+- Embarazo: no se recomienda salvo que no exista alternativa y el beneficio supere el riesgo.
+- Lactancia: se excreta en la leche; evitar o suspender la lactancia durante el tratamiento.
+- Niños y adolescentes: reservado para indicaciones específicas y valoración especializada.
 
 ## Cómo actúa
 
-El levofloxacino inhibe la ADN girasa y la topoisomerasa IV, enzimas que controlan el superenrollamiento y la separación del ADN bacteriano. Al bloquearlas, impide la replicación y causa la muerte de la bacteria. Es bactericida y su efecto depende de la concentración [1].
+El levofloxacino inhibe la ADN girasa y la topoisomerasa IV, enzimas que controlan el superenrollamiento y la separación del ADN bacteriano. Al bloquearlas, impide la replicación y causa la muerte de la bacteria. Es bactericida y su efecto depende de la concentración.
 
 ## Levofloxacino en Colombia
 
-El CUM del INVIMA registra levofloxacino en tabletas, solución inyectable y solución oral. Es un medicamento de prescripción médica; verifica el registro y la concentración [2]. Las autoridades sanitarias han emitido alertas sobre sus reacciones adversas incapacitantes; úsalo solo con indicación médica.
+El CUM del INVIMA registra levofloxacino en tabletas, solución inyectable y solución oral. Es un medicamento de prescripción médica; verifica el registro y la concentración. Las autoridades sanitarias han emitido alertas sobre sus reacciones adversas incapacitantes; úsalo solo con indicación médica.
 
 ## Evidencia y situación en Colombia
 
-El levofloxacino tiene eficacia demostrada en neumonía adquirida en la comunidad, sinusitis, pielonefritis y prostatitis crónica, con la ventaja de una dosis diaria y buena penetración tisular [1,2].
+El levofloxacino tiene eficacia demostrada en neumonía adquirida en la comunidad, sinusitis, pielonefritis y prostatitis crónica, con la ventaja de una dosis diaria y buena penetración tisular.
 
-Su uso se ha restringido en infecciones leves porque las fluoroquinolonas pueden causar reacciones adversas graves e incapacitantes. Las agencias reguladoras recomiendan reservarlas para situaciones sin alternativas [2,3].
+Su uso se ha restringido en infecciones leves porque las fluoroquinolonas pueden causar reacciones adversas graves e incapacitantes. Las agencias reguladoras recomiendan reservarlas para situaciones sin alternativas.
 
-En infecciones urinarias complicadas, la elección debe guiarse por el antibiograma y la resistencia local a fluoroquinolonas [1].
+En infecciones urinarias complicadas, la elección debe guiarse por el antibiograma y la resistencia local a fluoroquinolonas.
 
-- Colombia: el CUM registra levofloxacino en tabletas, solución oral y solución inyectable [4].
-- Unión Europea: el levofloxacino está autorizado con advertencias sobre reacciones incapacitantes [1].
-- Estados Unidos: la FDA mantiene alertas sobre tendinopatía, neuropatía y otros efectos graves [2].
+- Colombia: el CUM registra levofloxacino en tabletas, solución oral y solución inyectable.
+- Unión Europea: el levofloxacino está autorizado con advertencias sobre reacciones incapacitantes.
+- Estados Unidos: la FDA mantiene alertas sobre tendinopatía, neuropatía y otros efectos graves.
 
 ## Errores frecuentes
 
@@ -190,15 +190,15 @@ No hay una interacción directa grave descrita, pero el alcohol puede empeorar e
 
 ### ¿Cuánto tarda en hacer efecto Levofloxacino?
 
-1 a 2 horas [1] Su efecto se mantiene mientras el medicamento permanece en el cuerpo; la semivida es de 6 a 8 horas [1]. La respuesta completa depende de la indicación y del paciente, así que el seguimiento lo define el profesional.
+1 a 2 horas  Su efecto se mantiene mientras el medicamento permanece en el cuerpo; la semivida es de 6 a 8 horas. La respuesta completa depende de la indicación y del paciente, así que el seguimiento lo define el profesional.
 
 ### ¿Se puede usar Levofloxacino en el embarazo?
 
-- Embarazo: no se recomienda salvo que no exista alternativa y el beneficio supere el riesgo [1]. - Lactancia: se excreta en la leche; evitar o suspender la lactancia durante el tratamiento [1]. - Niños y adolescentes: reservado para indicaciones específicas y valoración especializada [1,2].
+- Embarazo: no se recomienda salvo que no exista alternativa y el beneficio supere el riesgo. - Lactancia: se excreta en la leche; evitar o suspender la lactancia durante el tratamiento. - Niños y adolescentes: reservado para indicaciones específicas y valoración especializada.
 
 ### ¿Qué efectos secundarios de Levofloxacino son graves?
 
-Las más frecuentes son náuseas, diarrea, estreñimiento, dolor abdominal y cefalea [1]. - Frecuentes: mareo, insomnio, alteración del gusto y rash. - Poco frecuentes: tendinitis, neuropatía, ansiedad, confusión, palpitaciones y alteraciones de la glucemia. - Raras: rotura de tendón, aneurisma de aorta, convulsiones, hepatitis, pancreatitis, Stevens-Johnson y colitis pseudomembranosa.
+Las más frecuentes son náuseas, diarrea, estreñimiento, dolor abdominal y cefalea. - Frecuentes: mareo, insomnio, alteración del gusto y rash. - Poco frecuentes: tendinitis, neuropatía, ansiedad, confusión, palpitaciones y alteraciones de la glucemia. - Raras: rotura de tendón, aneurisma de aorta, convulsiones, hepatitis, pancreatitis, Stevens-Johnson y colitis pseudomembranosa.
 
 ## Artículos relacionados
 

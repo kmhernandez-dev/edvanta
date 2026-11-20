@@ -14,24 +14,24 @@ Es uno de los medicamentos más usados en el mundo para la diabetes tipo 2 y lle
 
 ## Cómo funciona
 
-La metformina reduce la glucosa plasmática en ayunas y después de las comidas mediante tres mecanismos principales [1]:
+La metformina reduce la glucosa plasmática en ayunas y después de las comidas mediante tres mecanismos principales:
 
 - Disminuye la producción hepática de glucosa al inhibir la gluconeogénesis y la glucogenólisis.
 - Aumenta la sensibilidad a la insulina en el músculo y mejora la captación y utilización periférica de glucosa.
 - Retrasa la absorción intestinal de glucosa.
 
-No estimula la secreción de insulina, por lo que no produce hipoglucemia cuando se usa sola. Puede reducir el colesterol total, el LDL y los triglicéridos, y se asocia con mantenimiento o ligera disminución del peso corporal [1].
+No estimula la secreción de insulina, por lo que no produce hipoglucemia cuando se usa sola. Puede reducir el colesterol total, el LDL y los triglicéridos, y se asocia con mantenimiento o ligera disminución del peso corporal.
 
 ## Cuánto tarda en hacer efecto
 
 | Parámetro | Valor |
 | --- | --- |
-| Absorción | Oral, biodisponibilidad del 50 al 60 %; la absorción es saturable e incompleta [1] |
-| Concentración máxima | Aproximadamente 2,5 horas después de la dosis [1] |
-| Distribución | Se difunde a los eritrocitos; unión a proteínas despreciable [1] |
-| Metabolismo | No se metaboliza; se excreta sin cambios por la orina [1] |
-| Semivida | Aproximadamente 6,5 horas [1] |
-| Eliminación | Renal, por filtración glomerular y secreción tubular [1] |
+| Absorción | Oral, biodisponibilidad del 50 al 60 %; la absorción es saturable e incompleta  |
+| Concentración máxima | Aproximadamente 2,5 horas después de la dosis  |
+| Distribución | Se difunde a los eritrocitos; unión a proteínas despreciable  |
+| Metabolismo | No se metaboliza; se excreta sin cambios por la orina  |
+| Semivida | Aproximadamente 6,5 horas  |
+| Eliminación | Renal, por filtración glomerular y secreción tubular  |
 
 ## Cómo se toma
 
@@ -47,13 +47,13 @@ Con el uso prolongado, la metformina puede disminuir la absorción de vitamina B
 
 Un efecto muy raro pero grave es la acidosis láctica. Es más probable si los riñones dejan de funcionar bien de repente, por ejemplo por deshidratación. Sus señales son falta de aire, dolor abdominal, calambres, debilidad intensa y sensación de frío. Si las presenta, busque atención médica de inmediato.
 
-Las reacciones adversas más frecuentes son gastrointestinales y aparecen al inicio del tratamiento: náuseas, vómitos, diarrea, dolor abdominal y pérdida de apetito. Suelen mejorar con el tiempo, con tomas más frecuentes y con un aumento lento de la dosis [1].
+Las reacciones adversas más frecuentes son gastrointestinales y aparecen al inicio del tratamiento: náuseas, vómitos, diarrea, dolor abdominal y pérdida de apetito. Suelen mejorar con el tiempo, con tomas más frecuentes y con un aumento lento de la dosis.
 
 - Muy frecuentes: trastornos gastrointestinales como náuseas, vómitos, diarrea, dolor abdominal y pérdida de apetito.
 - Frecuentes: alteraciones del gusto.
 - Muy raras: acidosis láctica, reducción de la absorción de vitamina B12, alteración de las pruebas hepáticas o hepatitis, eritema, prurito y urticaria.
 
-La acidosis láctica es una urgencia médica. Se sospecha con síntomas inespecíficos en un paciente de riesgo y se confirma con pH bajo, lactato elevado y alteración del equilibrio ácido-base [1].
+La acidosis láctica es una urgencia médica. Se sospecha con síntomas inespecíficos en un paciente de riesgo y se confirma con pH bajo, lactato elevado y alteración del equilibrio ácido-base.
 
 ## Interacciones
 
@@ -65,13 +65,13 @@ Informe si toma o va a tomar:
 
 | Medicamento o situación | Efecto | Qué hacer |
 | --- | --- | --- |
-| Alcohol | Aumenta el riesgo de acidosis láctica, sobre todo con ayuno o enfermedad hepática | Evitar el consumo excesivo [1] |
-| Medios de contraste yodados | Pueden precipitar nefropatía y acumulación de metformina | Suspender antes o en el momento y reanudar tras 48 horas con función renal estable [1] |
-| Antiinflamatorios, IECA, ARA-II, diuréticos | Pueden alterar la función renal y aumentar el riesgo de acidosis láctica | Vigilar la función renal al iniciarlos o cambiar la dosis [1] |
-| Glucocorticoides y simpaticomiméticos | Aumentan la glucosa | Controlar más frecuentemente y ajustar si hace falta [1] |
-| Inhibidores de OCT1 (verapamilo) | Pueden reducir la eficacia de la metformina | Vigilar la respuesta glucémica [1] |
-| Inductores de OCT1 (rifampicina) | Pueden aumentar la absorción y la eficacia | Vigilar la glucemia [1] |
-| Inhibidores de OCT2 (cimetidina, dolutegravir, ranolazina, trimetoprim, vandetanib, isavuconazol) | Pueden reducir la eliminación de metformina y aumentar sus concentraciones | Precaución, sobre todo en insuficiencia renal; considerar ajuste [1] |
+| Alcohol | Aumenta el riesgo de acidosis láctica, sobre todo con ayuno o enfermedad hepática | Evitar el consumo excesivo  |
+| Medios de contraste yodados | Pueden precipitar nefropatía y acumulación de metformina | Suspender antes o en el momento y reanudar tras 48 horas con función renal estable  |
+| Antiinflamatorios, IECA, ARA-II, diuréticos | Pueden alterar la función renal y aumentar el riesgo de acidosis láctica | Vigilar la función renal al iniciarlos o cambiar la dosis  |
+| Glucocorticoides y simpaticomiméticos | Aumentan la glucosa | Controlar más frecuentemente y ajustar si hace falta  |
+| Inhibidores de OCT1 (verapamilo) | Pueden reducir la eficacia de la metformina | Vigilar la respuesta glucémica  |
+| Inductores de OCT1 (rifampicina) | Pueden aumentar la absorción y la eficacia | Vigilar la glucemia  |
+| Inhibidores de OCT2 (cimetidina, dolutegravir, ranolazina, trimetoprim, vandetanib, isavuconazol) | Pueden reducir la eliminación de metformina y aumentar sus concentraciones | Precaución, sobre todo en insuficiencia renal; considerar ajuste  |
 
 ## Quién no debe tomarlo
 
@@ -84,7 +84,7 @@ La ficha técnica indica que no se debe usar en estos casos:
 - Enfermedad del hígado, intoxicación por alcohol o alcoholismo.
 Por eso su médico revisará la función de sus riñones antes de iniciarla y al menos una vez al año.
 
-Contraindicaciones de la ficha técnica [1]:
+Contraindicaciones de la ficha técnica:
 
 - Hipersensibilidad a la metformina o a los excipientes.
 - Acidosis metabólica aguda de cualquier tipo, incluida la acidosis láctica y la cetoacidosis diabética.
@@ -94,7 +94,7 @@ Contraindicaciones de la ficha técnica [1]:
 - Enfermedad que pueda provocar hipoxia tisular: insuficiencia cardíaca descompensada, insuficiencia respiratoria, infarto de miocardio reciente, shock.
 - Insuficiencia hepática, intoxicación alcohólica aguda y alcoholismo.
 
-Advertencias principales [1]:
+Advertencias principales:
 
 - Acidosis láctica: muy rara pero grave; puede aparecer con empeoramiento agudo de la función renal, enfermedad cardiorrespiratoria o sepsis. Síntomas como disnea, dolor abdominal, calambres, astenia e hipotermia obligan a suspender y buscar atención inmediata.
 - Función renal: evaluar la TFG antes de iniciar y al menos una vez al año; con mayor frecuencia en personas mayores o con riesgo de progresión renal.
@@ -107,8 +107,8 @@ Advertencias principales [1]:
 
 Si está embarazada o planea estarlo, consulte a su médico: la ficha técnica recomienda usar insulina para controlar la glucosa durante el embarazo. La metformina pasa a la leche materna y la ficha técnica no recomienda la lactancia durante el tratamiento. Su médico le indicará qué hacer en su caso.
 
-- Embarazo: la información limitada no sugiere un aumento de malformaciones, pero se recomienda tratar la diabetes con insulina durante el embarazo para mantener la glucosa lo más cerca posible de la normalidad [1].
-- Lactancia: la metformina pasa a la leche materna; no se han observado efectos adversos en los lactantes, pero la información es limitada y no se recomienda la lactancia durante el tratamiento [1].
+- Embarazo: la información limitada no sugiere un aumento de malformaciones, pero se recomienda tratar la diabetes con insulina durante el embarazo para mantener la glucosa lo más cerca posible de la normalidad.
+- Lactancia: la metformina pasa a la leche materna; no se han observado efectos adversos en los lactantes, pero la información es limitada y no se recomienda la lactancia durante el tratamiento.
 
 ## ¿Cómo actúa la metformina?
 
@@ -139,20 +139,20 @@ La metformina no es un medicamento para bajar de peso. Su indicación es la diab
 
 ## Evidencia y situación en Colombia
 
-El estudio UKPDS 34 evaluó a adultos con diabetes tipo 2 y sobrepeso que no lograban el control con dieta sola. La metformina redujo, frente a la dieta sola [2]:
+El estudio UKPDS 34 evaluó a adultos con diabetes tipo 2 y sobrepeso que no lograban el control con dieta sola. La metformina redujo, frente a la dieta sola:
 
 | Resultado | Metformina | Dieta sola |
 | --- | --- | --- |
-| Complicaciones relacionadas con la diabetes | 29,8 casos por 1.000 pacientes-año | 43,3 casos por 1.000 pacientes-año [2] |
-| Mortalidad relacionada con la diabetes | 7,5 casos por 1.000 pacientes-año | 12,7 casos por 1.000 pacientes-año [2] |
-| Mortalidad por cualquier causa | 13,5 casos por 1.000 pacientes-año | 20,6 casos por 1.000 pacientes-año [2] |
-| Infarto de miocardio | 11 casos por 1.000 pacientes-año | 18 casos por 1.000 pacientes-año [2] |
+| Complicaciones relacionadas con la diabetes | 29,8 casos por 1.000 pacientes-año | 43,3 casos por 1.000 pacientes-año  |
+| Mortalidad relacionada con la diabetes | 7,5 casos por 1.000 pacientes-año | 12,7 casos por 1.000 pacientes-año  |
+| Mortalidad por cualquier causa | 13,5 casos por 1.000 pacientes-año | 20,6 casos por 1.000 pacientes-año  |
+| Infarto de miocardio | 11 casos por 1.000 pacientes-año | 18 casos por 1.000 pacientes-año  |
 
-El beneficio se observó en el grupo con sobrepeso tratado como primera línea; no se demostró el mismo efecto cuando la metformina se usó como segunda línea después de una sulfonilurea [1]. Ese matiz es importante para interpretar la evidencia y para elegir el momento de inicio.
+El beneficio se observó en el grupo con sobrepeso tratado como primera línea; no se demostró el mismo efecto cuando la metformina se usó como segunda línea después de una sulfonilurea. Ese matiz es importante para interpretar la evidencia y para elegir el momento de inicio.
 
-- Colombia: el CUM registra múltiples presentaciones de metformina, sola y en combinaciones con otros antidiabéticos [3].
-- Unión Europea: la metformina está autorizada para las indicaciones descritas en la ficha técnica [1].
-- Estados Unidos: la FDA tiene etiquetas vigentes de metformina y de sus combinaciones; las indicaciones pueden variar [1].
+- Colombia: el CUM registra múltiples presentaciones de metformina, sola y en combinaciones con otros antidiabéticos.
+- Unión Europea: la metformina está autorizada para las indicaciones descritas en la ficha técnica.
+- Estados Unidos: la FDA tiene etiquetas vigentes de metformina y de sus combinaciones; las indicaciones pueden variar.
 
 ## Errores frecuentes
 
@@ -192,15 +192,15 @@ No es un medicamento indicado para bajar de peso. Su uso es para la diabetes tip
 
 ### ¿Cuánto tarda en hacer efecto Metformina?
 
-Aproximadamente 2,5 horas después de la dosis [1] Su efecto se mantiene mientras el medicamento permanece en el cuerpo; la semivida es de aproximadamente 6,5 horas [1]. La respuesta completa depende de la indicación y del paciente, así que el seguimiento lo define el profesional.
+Aproximadamente 2,5 horas después de la dosis  Su efecto se mantiene mientras el medicamento permanece en el cuerpo; la semivida es de aproximadamente 6,5 horas. La respuesta completa depende de la indicación y del paciente, así que el seguimiento lo define el profesional.
 
 ### ¿Se puede usar Metformina en el embarazo?
 
-- Embarazo: la información limitada no sugiere un aumento de malformaciones, pero se recomienda tratar la diabetes con insulina durante el embarazo para mantener la glucosa lo más cerca posible de la normalidad [1]. - Lactancia: la metformina pasa a la leche materna; no se han observado efectos adversos en los lactantes, pero la información es limitada y no se recomienda la lactancia durante el tratamiento [1].
+- Embarazo: la información limitada no sugiere un aumento de malformaciones, pero se recomienda tratar la diabetes con insulina durante el embarazo para mantener la glucosa lo más cerca posible de la normalidad. - Lactancia: la metformina pasa a la leche materna; no se han observado efectos adversos en los lactantes, pero la información es limitada y no se recomienda la lactancia durante el tratamiento.
 
 ### ¿Qué efectos secundarios de Metformina son graves?
 
-Las reacciones adversas más frecuentes son gastrointestinales y aparecen al inicio del tratamiento: náuseas, vómitos, diarrea, dolor abdominal y pérdida de apetito. Suelen mejorar con el tiempo, con tomas más frecuentes y con un aumento lento de la dosis [1]. - Muy frecuentes: trastornos gastrointestinales como náuseas, vómitos, diarrea, dolor abdominal y pérdida de apetito. - Frecuentes: alteraciones del gusto. - Muy raras: acidosis láctica, reducción de la absorción de vitamina B12, alteración de las pruebas hepáticas o hepatitis, eritema, prurito y urticaria. La acidosis láctica es una…
+Las reacciones adversas más frecuentes son gastrointestinales y aparecen al inicio del tratamiento: náuseas, vómitos, diarrea, dolor abdominal y pérdida de apetito. Suelen mejorar con el tiempo, con tomas más frecuentes y con un aumento lento de la dosis. - Muy frecuentes: trastornos gastrointestinales como náuseas, vómitos, diarrea, dolor abdominal y pérdida de apetito. - Frecuentes: alteraciones del gusto. - Muy raras: acidosis láctica, reducción de la absorción de vitamina B12, alteración de las pruebas hepáticas o hepatitis, eritema, prurito y urticaria. La acidosis láctica es una…
 
 ## Artículos relacionados
 

@@ -14,22 +14,22 @@ No sirve para «bajar la presión rápido» en una crisis ni para tomarlo solo c
 
 ## Cómo funciona
 
-La angiotensina II es un vasoconstrictor potente y un estimulante de la secreción de aldosterona. El losartán bloquea el receptor AT1 y reduce sus efectos: baja la resistencia vascular periférica, disminuye la aldosterona y, con ello, la retención de sodio y agua [1].
+La angiotensina II es un vasoconstrictor potente y un estimulante de la secreción de aldosterona. El losartán bloquea el receptor AT1 y reduce sus efectos: baja la resistencia vascular periférica, disminuye la aldosterona y, con ello, la retención de sodio y agua.
 
-A diferencia de los IECA, el losartán no inhibe la ECA, la enzima que degrada la bradicinina. Por eso no produce el aumento de bradicinina que se asocia con la tos seca de los IECA y tiene una incidencia mucho menor de tos [1].
+A diferencia de los IECA, el losartán no inhibe la ECA, la enzima que degrada la bradicinina. Por eso no produce el aumento de bradicinina que se asocia con la tos seca de los IECA y tiene una incidencia mucho menor de tos.
 
-El bloqueo del receptor produce un aumento compensador de la renina y de la angiotensina II, pero la presión arterial se mantiene baja porque el receptor sigue bloqueado. La supresión del losartán no provoca un rebote de la presión [1].
+El bloqueo del receptor produce un aumento compensador de la renina y de la angiotensina II, pero la presión arterial se mantiene baja porque el receptor sigue bloqueado. La supresión del losartán no provoca un rebote de la presión.
 
 ## Cuánto tarda en hacer efecto
 
 | Parámetro | Valor |
 | --- | --- |
-| Absorción | Oral, con una biodisponibilidad de aproximadamente 33 %; los alimentos no afectan de forma clínicamente relevante la absorción [1] |
-| Metabolismo | Primer paso hepático; CYP2C9 y CYP3A4 producen el metabolito activo E-3174 [1] |
-| Concentración máxima | Alrededor de 1 hora para el losartán y 3 a 4 horas para el metabolito [1] |
-| Semivida | Unas 2 horas el losartán y 6 a 9 horas el metabolito activo [1] |
-| Eliminación | Renal y biliar; cerca del 35 % se elimina por la orina y el resto por las heces [1] |
-| Insuficiencia renal | No requiere ajuste de la dosis inicial; en diálisis no se elimina de forma significativa [1] |
+| Absorción | Oral, con una biodisponibilidad de aproximadamente 33 %; los alimentos no afectan de forma clínicamente relevante la absorción  |
+| Metabolismo | Primer paso hepático; CYP2C9 y CYP3A4 producen el metabolito activo E-3174  |
+| Concentración máxima | Alrededor de 1 hora para el losartán y 3 a 4 horas para el metabolito  |
+| Semivida | Unas 2 horas el losartán y 6 a 9 horas el metabolito activo  |
+| Eliminación | Renal y biliar; cerca del 35 % se elimina por la orina y el resto por las heces  |
+| Insuficiencia renal | No requiere ajuste de la dosis inicial; en diálisis no se elimina de forma significativa  |
 
 ## Cómo se toma
 
@@ -51,14 +51,14 @@ En otras situaciones (insuficiencia cardiaca o enfermedad renal con diabetes) pu
 
 Busque atención de urgencias si presenta hinchazón de la cara, los labios, la lengua o la garganta, o dificultad para respirar o tragar: es una reacción poco frecuente pero grave llamada angioedema.
 
-En los ensayos clínicos, la reacción adversa más frecuente fue el mareo. Las frecuencias varían según la indicación y la población [1]:
+En los ensayos clínicos, la reacción adversa más frecuente fue el mareo. Las frecuencias varían según la indicación y la población:
 
 - Frecuentes: mareo, hipotensión (especialmente en insuficiencia cardíaca o depleción de volumen), hiperpotasemia, alteración de la función renal, anemia, astenia y fatiga.
 - Poco frecuentes: somnolencia, cefalea, insomnio, palpitaciones, angina, disnea, dolor abdominal, estreñimiento, diarrea, náuseas, vómitos, urticaria, prurito, erupción, edema y malestar general.
 - Raras: angioedema, vasculitis, hepatitis, pancreatitis, trombocitopenia, síncope, fibrilación auricular y accidente cerebrovascular.
 - Frecuencia no conocida: depresión, parestesia, migraña, disgeusia, acúfenos, fotosensibilidad, mialgia, artralgia, rabdomiólisis, disfunción eréctil, hiponatremia y angioedema intestinal.
 
-La hiperpotasemia es más frecuente en pacientes con diabetes y nefropatía: en el estudio RENAAL, el 9,9 % de los tratados con losartán y el 3,4 % de los que recibieron placebo presentaron potasio superior a 5,5 mmol/l [1].
+La hiperpotasemia es más frecuente en pacientes con diabetes y nefropatía: en el estudio RENAAL, el 9,9 % de los tratados con losartán y el 3,4 % de los que recibieron placebo presentaron potasio superior a 5,5 mmol/l.
 
 ## Interacciones
 
@@ -72,24 +72,24 @@ Su médico le pedirá exámenes de potasio y de función renal, sobre todo al in
 
 | Medicamento | Efecto | Qué hacer |
 | --- | --- | --- |
-| Suplementos de potasio, ahorradores de potasio, sustitutos de la sal con potasio | Aumentan el riesgo de hiperpotasemia | Evitar o monitorizar el potasio [1] |
-| Antiinflamatorios no esteroideos, incluidos los COX-2 | Reducen el efecto antihipertensivo y aumentan el riesgo de daño renal e hiperpotasemia | Usar con precaución, hidratar y vigilar la función renal [1] |
-| Litio | Aumenta las concentraciones de litio y su toxicidad | Evitar si es posible; si se usa, monitorizar el litio [1] |
-| Fluconazol | Inhibe la CYP2C9 y reduce la exposición al metabolito activo | Considerar la relevancia clínica y vigilar la presión [1] |
-| Rifampicina | Induce enzimas y reduce la concentración del metabolito activo | Vigilar la respuesta antihipertensiva [1] |
-| Aliskirén | Bloqueo dual del SRAA con más hiperpotasemia y daño renal | Contraindicado en diabetes o insuficiencia renal; evitar en general [1] |
-| Otros antihipertensivos, antidepresivos tricíclicos, antipsicóticos, baclofeno | Pueden sumar hipotensión | Ajustar y advertir al paciente [1] |
+| Suplementos de potasio, ahorradores de potasio, sustitutos de la sal con potasio | Aumentan el riesgo de hiperpotasemia | Evitar o monitorizar el potasio  |
+| Antiinflamatorios no esteroideos, incluidos los COX-2 | Reducen el efecto antihipertensivo y aumentan el riesgo de daño renal e hiperpotasemia | Usar con precaución, hidratar y vigilar la función renal  |
+| Litio | Aumenta las concentraciones de litio y su toxicidad | Evitar si es posible; si se usa, monitorizar el litio  |
+| Fluconazol | Inhibe la CYP2C9 y reduce la exposición al metabolito activo | Considerar la relevancia clínica y vigilar la presión  |
+| Rifampicina | Induce enzimas y reduce la concentración del metabolito activo | Vigilar la respuesta antihipertensiva  |
+| Aliskirén | Bloqueo dual del SRAA con más hiperpotasemia y daño renal | Contraindicado en diabetes o insuficiencia renal; evitar en general  |
+| Otros antihipertensivos, antidepresivos tricíclicos, antipsicóticos, baclofeno | Pueden sumar hipotensión | Ajustar y advertir al paciente  |
 
 ## Quién no debe tomarlo
 
-Contraindicaciones de la ficha técnica [1]:
+Contraindicaciones de la ficha técnica:
 
 - Hipersensibilidad al losartán o a los excipientes.
 - Segundo y tercer trimestre del embarazo.
 - Insuficiencia hepática grave.
 - Uso concomitante con aliskirén en pacientes con diabetes o insuficiencia renal (filtrado glomerular menor de 60 ml/min/1,73 m²).
 
-Advertencias principales [1]:
+Advertencias principales:
 
 - Angioedema: se ha descrito en cara, labios, garganta, lengua y, rara vez, en el intestino. Suspender y no reintroducir si ocurre.
 - Hipotensión y alteraciones hidroelectrolíticas en pacientes con depleción de volumen o sodio; corregir antes de iniciar o usar una dosis menor.
@@ -102,10 +102,10 @@ Advertencias principales [1]:
 
 El losartán no debe iniciarse durante el embarazo y está contraindicado en el segundo y tercer trimestre. Si usted lo toma y planea un embarazo, hable con su médico antes de buscarlo para cambiarlo por otro medicamento. Si queda embarazada, consulte de inmediato sin suspender por su cuenta. Durante la lactancia no se recomienda; el médico escogerá una alternativa.
 
-- Embarazo: no se recomienda en el primer trimestre y está contraindicado en el segundo y tercero. La exposición fetal a los ARA-II en el segundo y tercer trimestre puede causar disminución de la función renal, oligohidramnios, retraso de la osificación del cráneo e hipotensión, insuficiencia renal e hiperpotasemia en el recién nacido [1].
-- Lactancia: no hay información suficiente; no se recomienda y se prefieren alternativas con mejor perfil de seguridad, sobre todo en recién nacidos o prematuros [1].
+- Embarazo: no se recomienda en el primer trimestre y está contraindicado en el segundo y tercero. La exposición fetal a los ARA-II en el segundo y tercer trimestre puede causar disminución de la función renal, oligohidramnios, retraso de la osificación del cráneo e hipotensión, insuficiencia renal e hiperpotasemia en el recién nacido.
+- Lactancia: no hay información suficiente; no se recomienda y se prefieren alternativas con mejor perfil de seguridad, sobre todo en recién nacidos o prematuros.
 
-Las pacientes que planean un embarazo deben cambiar a un antihipertensivo con perfil de seguridad establecido para el embarazo antes de la concepción, no cuando el embarazo ya está confirmado [1].
+Las pacientes que planean un embarazo deben cambiar a un antihipertensivo con perfil de seguridad establecido para el embarazo antes de la concepción, no cuando el embarazo ya está confirmado.
 
 ## Losartán con hidroclorotiazida: ¿por qué juntos?
 
@@ -137,21 +137,21 @@ El losartán tiene dos ensayos pivotales que marcaron su lugar en la práctica:
 
 ### LIFE: hipertensión con hipertrofia ventricular izquierda
 
-El estudio LIFE aleatorizó a 9.193 pacientes hipertensos de 55 a 80 años con hipertrofia ventricular izquierda confirmada por electrocardiograma a losartán 50 mg o atenolol 50 mg, con hidroclorotiazida y otros antihipertensivos si hacían falta. La presión arterial bajó de forma similar en los dos grupos. Después de 4,8 años, el losartán redujo el objetivo combinado de muerte cardiovascular, accidente cerebrovascular e infarto de miocardio en un 13 % frente a atenolol, y el accidente cerebrovascular en un 25 % [2].
+El estudio LIFE aleatorizó a 9.193 pacientes hipertensos de 55 a 80 años con hipertrofia ventricular izquierda confirmada por electrocardiograma a losartán 50 mg o atenolol 50 mg, con hidroclorotiazida y otros antihipertensivos si hacían falta. La presión arterial bajó de forma similar en los dos grupos. Después de 4,8 años, el losartán redujo el objetivo combinado de muerte cardiovascular, accidente cerebrovascular e infarto de miocardio en un 13 % frente a atenolol, y el accidente cerebrovascular en un 25 %.
 
-Un matiz importante: en el subgrupo de pacientes de raza negra, el losartán no mostró el mismo beneficio frente a atenolol y el riesgo de eventos fue mayor. Los resultados de LIFE no se pueden extrapolar sin más a todos los pacientes [1,2].
+Un matiz importante: en el subgrupo de pacientes de raza negra, el losartán no mostró el mismo beneficio frente a atenolol y el riesgo de eventos fue mayor. Los resultados de LIFE no se pueden extrapolar sin más a todos los pacientes.
 
 ### RENAAL: nefropatía diabética
 
-El estudio RENAAL incluyó a 1.513 adultos con diabetes tipo 2 y proteinuria, con o sin hipertensión, y los aleatorizó a losartán 50 a 100 mg o placebo, además del tratamiento antihipertensivo convencional. Durante un seguimiento medio de 3,4 años, el losartán redujo el objetivo combinado de duplicación de la creatinina, insuficiencia renal terminal o muerte en un 16,1 %. La progresión a insuficiencia renal terminal bajó un 28,6 % y la duplicación de la creatinina, un 25,3 %. La mortalidad total no cambió [3].
+El estudio RENAAL incluyó a 1.513 adultos con diabetes tipo 2 y proteinuria, con o sin hipertensión, y los aleatorizó a losartán 50 a 100 mg o placebo, además del tratamiento antihipertensivo convencional. Durante un seguimiento medio de 3,4 años, el losartán redujo el objetivo combinado de duplicación de la creatinina, insuficiencia renal terminal o muerte en un 16,1 %. La progresión a insuficiencia renal terminal bajó un 28,6 % y la duplicación de la creatinina, un 25,3 %. La mortalidad total no cambió.
 
-Estos resultados no significan que el losartán sea superior a otros ARA-II o a los IECA en todas las personas. Significan que, en las poblaciones estudiadas, el bloqueo del receptor AT1 produjo beneficios cardiovasculares y renales que hoy sostienen las recomendaciones de las guías [4].
+Estos resultados no significan que el losartán sea superior a otros ARA-II o a los IECA en todas las personas. Significan que, en las poblaciones estudiadas, el bloqueo del receptor AT1 produjo beneficios cardiovasculares y renales que hoy sostienen las recomendaciones de las guías.
 
-- Colombia: el CUM registra múltiples presentaciones de losartán, solo y en combinación con hidroclorotiazida, de distintos titulares [4].
-- Unión Europea: el losartán está autorizado para las indicaciones descritas en la ficha técnica [1].
-- Estados Unidos: la FDA tiene etiquetas vigentes de losartán y de sus combinaciones; las indicaciones pueden variar respecto a Europa [1].
+- Colombia: el CUM registra múltiples presentaciones de losartán, solo y en combinación con hidroclorotiazida, de distintos titulares.
+- Unión Europea: el losartán está autorizado para las indicaciones descritas en la ficha técnica.
+- Estados Unidos: la FDA tiene etiquetas vigentes de losartán y de sus combinaciones; las indicaciones pueden variar respecto a Europa.
 
-La disponibilidad de genéricos hace que el precio varíe; la equivalencia terapéutica entre presentaciones autorizadas es responsabilidad del regulador, no del mostrador [4].
+La disponibilidad de genéricos hace que el precio varíe; la equivalencia terapéutica entre presentaciones autorizadas es responsabilidad del regulador, no del mostrador.
 
 ## Errores frecuentes
 
@@ -191,15 +191,15 @@ No tomes una dosis doble. Consulta a tu médico o químico farmacéutico para sa
 
 ### ¿Cuánto tarda en hacer efecto Losartán?
 
-Alrededor de 1 hora para el losartán y 3 a 4 horas para el metabolito [1] Su efecto se mantiene mientras el medicamento permanece en el cuerpo; la semivida es de unas 2 horas el losartán y 6 a 9 horas el metabolito activo [1]. La respuesta completa depende de la indicación y del paciente, así que el seguimiento lo define el profesional.
+Alrededor de 1 hora para el losartán y 3 a 4 horas para el metabolito  Su efecto se mantiene mientras el medicamento permanece en el cuerpo; la semivida es de unas 2 horas el losartán y 6 a 9 horas el metabolito activo. La respuesta completa depende de la indicación y del paciente, así que el seguimiento lo define el profesional.
 
 ### ¿Se puede usar Losartán en el embarazo?
 
-- Embarazo: no se recomienda en el primer trimestre y está contraindicado en el segundo y tercero. La exposición fetal a los ARA-II en el segundo y tercer trimestre puede causar disminución de la función renal, oligohidramnios, retraso de la osificación del cráneo e hipotensión, insuficiencia renal e hiperpotasemia en el recién nacido [1]. - Lactancia: no hay información suficiente; no se recomienda y se prefieren alternativas con mejor perfil de seguridad, sobre todo en recién nacidos o prematuros [1]. Las pacientes que planean un embarazo deben cambiar a un antihipertensivo con perfil de…
+- Embarazo: no se recomienda en el primer trimestre y está contraindicado en el segundo y tercero. La exposición fetal a los ARA-II en el segundo y tercer trimestre puede causar disminución de la función renal, oligohidramnios, retraso de la osificación del cráneo e hipotensión, insuficiencia renal e hiperpotasemia en el recién nacido. - Lactancia: no hay información suficiente; no se recomienda y se prefieren alternativas con mejor perfil de seguridad, sobre todo en recién nacidos o prematuros. Las pacientes que planean un embarazo deben cambiar a un antihipertensivo con perfil de…
 
 ### ¿Qué efectos secundarios de Losartán son graves?
 
-En los ensayos clínicos, la reacción adversa más frecuente fue el mareo. Las frecuencias varían según la indicación y la población [1]: - Frecuentes: mareo, hipotensión (especialmente en insuficiencia cardíaca o depleción de volumen), hiperpotasemia, alteración de la función renal, anemia, astenia y fatiga. - Poco frecuentes: somnolencia, cefalea, insomnio, palpitaciones, angina, disnea, dolor abdominal, estreñimiento, diarrea, náuseas, vómitos, urticaria, prurito, erupción, edema y malestar general. - Raras: angioedema, vasculitis, hepatitis, pancreatitis, trombocitopenia, síncope,…
+En los ensayos clínicos, la reacción adversa más frecuente fue el mareo. Las frecuencias varían según la indicación y la población: - Frecuentes: mareo, hipotensión (especialmente en insuficiencia cardíaca o depleción de volumen), hiperpotasemia, alteración de la función renal, anemia, astenia y fatiga. - Poco frecuentes: somnolencia, cefalea, insomnio, palpitaciones, angina, disnea, dolor abdominal, estreñimiento, diarrea, náuseas, vómitos, urticaria, prurito, erupción, edema y malestar general. - Raras: angioedema, vasculitis, hepatitis, pancreatitis, trombocitopenia, síncope,…
 
 ## Artículos relacionados
 

@@ -22,22 +22,22 @@ La alimentación sigue siendo importante: mira [alimentos para bajar el colester
 
 ## Cómo funciona
 
-La HMG-CoA reductasa es la enzima limitante de la sÃ­ntesis de colesterol. La atorvastatina la inhibe de forma competitiva y reduce la producciÃ³n hepÃ¡tica de colesterol. Como respuesta, el hepatocito aumenta la expresiÃ³n de receptores LDL en su superficie y capta mÃ¡s LDL del plasma [1].
+La HMG-CoA reductasa es la enzima limitante de la sÃ­ntesis de colesterol. La atorvastatina la inhibe de forma competitiva y reduce la producciÃ³n hepÃ¡tica de colesterol. Como respuesta, el hepatocito aumenta la expresiÃ³n de receptores LDL en su superficie y capta mÃ¡s LDL del plasma.
 
-El resultado es una reducciÃ³n del colesterol LDL, del colesterol total, de la apolipoproteÃ­na B y de los triglicÃ©ridos, con un aumento variable del colesterol HDL. La reducciÃ³n del LDL se observa a las 2 semanas y alcanza su mÃ¡ximo a las 4 semanas [1].
+El resultado es una reducciÃ³n del colesterol LDL, del colesterol total, de la apolipoproteÃ­na B y de los triglicÃ©ridos, con un aumento variable del colesterol HDL. La reducciÃ³n del LDL se observa a las 2 semanas y alcanza su mÃ¡ximo a las 4 semanas.
 
-La magnitud del descenso depende de la dosis: la atorvastatina 10 mg reduce el LDL alrededor de 39 % y la de 80 mg alrededor de 50 a 60 % en los estudios de dosis-respuesta [1].
+La magnitud del descenso depende de la dosis: la atorvastatina 10 mg reduce el LDL alrededor de 39 % y la de 80 mg alrededor de 50 a 60 % en los estudios de dosis-respuesta.
 
 ## Cuánto tarda en hacer efecto
 
 | ParÃ¡metro | Valor |
 | --- | --- |
-| AbsorciÃ³n | Oral, rÃ¡pida; la biodisponibilidad sistÃ©mica es baja por el primer paso hepÃ¡tico [1] |
-| ConcentraciÃ³n mÃ¡xima | Alrededor de 1 a 2 horas [1] |
-| Metabolismo | HepÃ¡tico, principalmente por CYP3A4; metabolitos activos [1] |
-| Semivida | Aproximadamente 14 horas; la actividad inhibidora se prolonga por los metabolitos [1] |
-| EliminaciÃ³n | Biliar y fecal; menos del 2 % por la orina [1] |
-| Alimentos | No modifican de forma clÃ­nicamente relevante la exposiciÃ³n [1] |
+| AbsorciÃ³n | Oral, rÃ¡pida; la biodisponibilidad sistÃ©mica es baja por el primer paso hepÃ¡tico  |
+| ConcentraciÃ³n mÃ¡xima | Alrededor de 1 a 2 horas  |
+| Metabolismo | HepÃ¡tico, principalmente por CYP3A4; metabolitos activos  |
+| Semivida | Aproximadamente 14 horas; la actividad inhibidora se prolonga por los metabolitos  |
+| EliminaciÃ³n | Biliar y fecal; menos del 2 % por la orina  |
+| Alimentos | No modifican de forma clÃ­nicamente relevante la exposiciÃ³n  |
 
 ## Efectos secundarios
 
@@ -53,7 +53,7 @@ Algunas personas sienten dolor, cansancio o calambres musculares. Si es leve, el
 - Aumento leve de las enzimas del hígado.
 - Un pequeño aumento del azúcar en sangre en personas con riesgo de diabetes; el beneficio cardiovascular suele ser mayor que este riesgo.
 
-Las reacciones mÃ¡s frecuentes son mialgia, artralgia, diarrea, dispepsia, nÃ¡useas, estreÃ±imiento, cefalea y elevaciÃ³n de transaminasas [1].
+Las reacciones mÃ¡s frecuentes son mialgia, artralgia, diarrea, dispepsia, nÃ¡useas, estreÃ±imiento, cefalea y elevaciÃ³n de transaminasas.
 
 - Frecuentes: nasofaringitis, reacciones alÃ©rgicas, hiperglucemia, cefalea, dolor faringolarÃ­ngeo, epistaxis, estreÃ±imiento, flatulencia, dispepsia, nÃ¡useas, diarrea, mialgia, artralgia, espasmos musculares, dolor de espalda, fatiga y pruebas hepÃ¡ticas anormales.
 - Poco frecuentes: hipoglucemia, aumento de peso, pesadillas, insomnio, mareo, parestesia, disgeusia, visiÃ³n borrosa, acÃºfenos, vÃ³mitos, pancreatitis, hepatitis, urticaria, alopecia, dolor de cuello y edema perifÃ©rico.
@@ -71,29 +71,29 @@ Informa siempre que tomas atorvastatina cuando te receten un medicamento nuevo.
 
 | Medicamento | Efecto | QuÃ© hacer |
 | --- | --- | --- |
-| Inhibidores potentes de CYP3A4 (claritromicina, itraconazol, ritonavir, ciclosporina) | Aumentan la exposiciÃ³n a atorvastatina y el riesgo de miopatÃ­a | Evitar o reducir la dosis y vigilar [1] |
-| Gemfibrozilo y otros fibratos | Aumentan el riesgo de miopatÃ­a | Usar la dosis mÃ¡s baja posible y vigilar [1] |
-| Ezetimiba | Puede aumentar el riesgo de eventos musculares | Vigilancia clÃ­nica [1] |
-| Ãcido fusÃ­dico sistÃ©mico | Riesgo de rabdomiÃ³lisis, incluso mortal | Suspender la estatina durante el tratamiento y 7 dÃ­as despuÃ©s [1] |
-| Colchicina y daptomicina | Mayor riesgo de miopatÃ­a | PrecauciÃ³n y vigilancia [1] |
-| Warfarina | Puede alterar el tiempo de protrombina | Controlar el INR al iniciar o cambiar la dosis [1] |
-| Digoxina | Aumento leve de su concentraciÃ³n | Vigilar [1] |
-| Anticonceptivos orales | Aumento de noretindrona y etinilestradiol | Considerar la relevancia clÃ­nica [1] |
-| Zumo de pomelo en grandes cantidades | Aumenta la exposiciÃ³n a atorvastatina | Evitar grandes cantidades [1] |
+| Inhibidores potentes de CYP3A4 (claritromicina, itraconazol, ritonavir, ciclosporina) | Aumentan la exposiciÃ³n a atorvastatina y el riesgo de miopatÃ­a | Evitar o reducir la dosis y vigilar  |
+| Gemfibrozilo y otros fibratos | Aumentan el riesgo de miopatÃ­a | Usar la dosis mÃ¡s baja posible y vigilar  |
+| Ezetimiba | Puede aumentar el riesgo de eventos musculares | Vigilancia clÃ­nica  |
+| Ãcido fusÃ­dico sistÃ©mico | Riesgo de rabdomiÃ³lisis, incluso mortal | Suspender la estatina durante el tratamiento y 7 dÃ­as despuÃ©s  |
+| Colchicina y daptomicina | Mayor riesgo de miopatÃ­a | PrecauciÃ³n y vigilancia  |
+| Warfarina | Puede alterar el tiempo de protrombina | Controlar el INR al iniciar o cambiar la dosis  |
+| Digoxina | Aumento leve de su concentraciÃ³n | Vigilar  |
+| Anticonceptivos orales | Aumento de noretindrona y etinilestradiol | Considerar la relevancia clÃ­nica  |
+| Zumo de pomelo en grandes cantidades | Aumenta la exposiciÃ³n a atorvastatina | Evitar grandes cantidades  |
 
 ## Quién no debe tomarlo
 
 - Embarazadas o mujeres que buscan embarazo, y durante la lactancia.
 - Personas con enfermedad hepática activa.
 
-Contraindicaciones de la ficha tÃ©cnica [1]:
+Contraindicaciones de la ficha tÃ©cnica:
 
 - Hipersensibilidad a la atorvastatina o a los excipientes.
 - Enfermedad hepÃ¡tica activa o elevaciÃ³n persistente e injustificada de transaminasas superior a 3 veces el lÃ­mite superior normal.
 - Embarazo, lactancia y mujeres en edad fÃ©rtil sin anticoncepciÃ³n adecuada.
 - Tratamiento concomitante con glecaprevir/pibrentasvir.
 
-Advertencias principales [1]:
+Advertencias principales:
 
 - MiopatÃ­a y rabdomiÃ³lisis: raras, pero potencialmente graves. El riesgo aumenta con dosis altas, insuficiencia renal, hipotiroidismo, edad avanzada, alcohol, ejercicio extremo y ciertas interacciones.
 - MiopatÃ­a necrosante inmunomediada: debilidad proximal persistente con CK elevada que no mejora al suspender la estatina.
@@ -104,9 +104,9 @@ Advertencias principales [1]:
 
 ## Embarazo, lactancia y niños
 
-- Embarazo: contraindicada. El colesterol es esencial para el desarrollo fetal y la inhibiciÃ³n de la HMG-CoA reductasa puede afectarlo; suspender antes de la concepciÃ³n o al confirmar el embarazo [1].
-- Lactancia: contraindicada; se desconoce si pasa a la leche humana y podrÃ­a causar reacciones graves en el lactante [1].
-- Fertilidad: los estudios en animales no muestran efectos sobre la fertilidad [1].
+- Embarazo: contraindicada. El colesterol es esencial para el desarrollo fetal y la inhibiciÃ³n de la HMG-CoA reductasa puede afectarlo; suspender antes de la concepciÃ³n o al confirmar el embarazo.
+- Lactancia: contraindicada; se desconoce si pasa a la leche humana y podrÃ­a causar reacciones graves en el lactante.
+- Fertilidad: los estudios en animales no muestran efectos sobre la fertilidad.
 
 ## Cómo tomarla
 
@@ -118,17 +118,17 @@ Advertencias principales [1]:
 
 ### PrevenciÃ³n primaria en hipertensiÃ³n: ASCOT-LLA
 
-En el estudio ASCOT-LLA, 10.305 pacientes hipertensos con colesterol promedio o inferior al promedio y otros factores de riesgo recibieron atorvastatina 10 mg o placebo. El estudio se detuvo antes de lo previsto porque la atorvastatina redujo de forma significativa los eventos coronarios y los accidentes cerebrovasculares [2].
+En el estudio ASCOT-LLA, 10.305 pacientes hipertensos con colesterol promedio o inferior al promedio y otros factores de riesgo recibieron atorvastatina 10 mg o placebo. El estudio se detuvo antes de lo previsto porque la atorvastatina redujo de forma significativa los eventos coronarios y los accidentes cerebrovasculares.
 
 ### PrevenciÃ³n secundaria: TNT
 
-El estudio TNT incluyÃ³ a 10.001 pacientes con enfermedad coronaria estable y los aleatorizÃ³ a atorvastatina 80 mg o 10 mg. La dosis intensiva redujo los eventos cardiovasculares mayores frente a la dosis baja durante un seguimiento medio de 4,9 aÃ±os [3].
+El estudio TNT incluyÃ³ a 10.001 pacientes con enfermedad coronaria estable y los aleatorizÃ³ a atorvastatina 80 mg o 10 mg. La dosis intensiva redujo los eventos cardiovasculares mayores frente a la dosis baja durante un seguimiento medio de 4,9 aÃ±os.
 
-Estos ensayos, junto con el metaanÃ¡lisis de CTT, sostienen la idea de que â€œmÃ¡s descenso de LDL, mÃ¡s beneficioâ€ en pacientes de riesgo, siempre que se tolere y se mantenga la adherencia [2,3,7].
+Estos ensayos, junto con el metaanÃ¡lisis de CTT, sostienen la idea de que â€œmÃ¡s descenso de LDL, mÃ¡s beneficioâ€ en pacientes de riesgo, siempre que se tolere y se mantenga la adherencia.
 
-- Colombia: el CUM registra mÃºltiples presentaciones de atorvastatina, sola y en combinaciones [4].
-- UniÃ³n Europea: la atorvastatina estÃ¡ autorizada para las indicaciones descritas [1].
-- Estados Unidos: la FDA tiene etiquetas vigentes de atorvastatina y de sus combinaciones [1].
+- Colombia: el CUM registra mÃºltiples presentaciones de atorvastatina, sola y en combinaciones.
+- UniÃ³n Europea: la atorvastatina estÃ¡ autorizada para las indicaciones descritas.
+- Estados Unidos: la FDA tiene etiquetas vigentes de atorvastatina y de sus combinaciones.
 
 ## Errores frecuentes
 
@@ -164,11 +164,11 @@ Ambas son estatinas potentes. La elección depende de la meta de colesterol, la 
 
 ### ¿Se puede usar Atorvastatina en el embarazo?
 
-- Embarazo: contraindicada. El colesterol es esencial para el desarrollo fetal y la inhibiciÃ³n de la HMG-CoA reductasa puede afectarlo; suspender antes de la concepciÃ³n o al confirmar el embarazo [1]. - Lactancia: contraindicada; se desconoce si pasa a la leche humana y podrÃ­a causar reacciones graves en el lactante [1]. - Fertilidad: los estudios en animales no muestran efectos sobre la fertilidad [1].
+- Embarazo: contraindicada. El colesterol es esencial para el desarrollo fetal y la inhibiciÃ³n de la HMG-CoA reductasa puede afectarlo; suspender antes de la concepciÃ³n o al confirmar el embarazo. - Lactancia: contraindicada; se desconoce si pasa a la leche humana y podrÃ­a causar reacciones graves en el lactante. - Fertilidad: los estudios en animales no muestran efectos sobre la fertilidad.
 
 ### ¿Qué efectos secundarios de Atorvastatina son graves?
 
-Las reacciones mÃ¡s frecuentes son mialgia, artralgia, diarrea, dispepsia, nÃ¡useas, estreÃ±imiento, cefalea y elevaciÃ³n de transaminasas [1]. - Frecuentes: nasofaringitis, reacciones alÃ©rgicas, hiperglucemia, cefalea, dolor faringolarÃ­ngeo, epistaxis, estreÃ±imiento, flatulencia, dispepsia, nÃ¡useas, diarrea, mialgia, artralgia, espasmos musculares, dolor de espalda, fatiga y pruebas hepÃ¡ticas anormales. - Poco frecuentes: hipoglucemia, aumento de peso, pesadillas, insomnio, mareo, parestesia, disgeusia, visiÃ³n borrosa, acÃºfenos, vÃ³mitos, pancreatitis, hepatitis, urticaria, alopecia,…
+Las reacciones mÃ¡s frecuentes son mialgia, artralgia, diarrea, dispepsia, nÃ¡useas, estreÃ±imiento, cefalea y elevaciÃ³n de transaminasas. - Frecuentes: nasofaringitis, reacciones alÃ©rgicas, hiperglucemia, cefalea, dolor faringolarÃ­ngeo, epistaxis, estreÃ±imiento, flatulencia, dispepsia, nÃ¡useas, diarrea, mialgia, artralgia, espasmos musculares, dolor de espalda, fatiga y pruebas hepÃ¡ticas anormales. - Poco frecuentes: hipoglucemia, aumento de peso, pesadillas, insomnio, mareo, parestesia, disgeusia, visiÃ³n borrosa, acÃºfenos, vÃ³mitos, pancreatitis, hepatitis, urticaria, alopecia,…
 
 ## Artículos relacionados
 

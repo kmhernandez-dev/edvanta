@@ -15,7 +15,7 @@ Pertenece al grupo farmacológico de Lincosamida.
 
 ## ¿Para qué sirve la clindamicina?
 
-Según su ficha técnica, la clindamicina oral se usa en adultos para infecciones graves por microorganismos sensibles [1]:
+Según su ficha técnica, la clindamicina oral se usa en adultos para infecciones graves por microorganismos sensibles:
 
 - Neumonía adquirida en la comunidad por *Staphylococcus aureus*, neumonía por aspiración, empiema y absceso pulmonar.
 - Faringoamigdalitis aguda por estreptococo del grupo A.
@@ -25,83 +25,83 @@ Según su ficha técnica, la clindamicina oral se usa en adultos para infeccione
 - Vaginosis bacteriana y enfermedad inflamatoria pélvica.
 - Neumonía por *Pneumocystis jirovecii* y encefalitis por toxoplasma en personas con VIH.
 
-En niños mayores de 1 mes también se usa, por ejemplo, en la sinusitis aguda [1].
+En niños mayores de 1 mes también se usa, por ejemplo, en la sinusitis aguda.
 
 ## Cómo funciona
 
-Se une a la subunidad 50S del ribosoma bacteriano e inhibe las primeras etapas de la síntesis proteica, bloqueando la unión del ribosoma y la traducción [1].
+Se une a la subunidad 50S del ribosoma bacteriano e inhibe las primeras etapas de la síntesis proteica, bloqueando la unión del ribosoma y la traducción.
 
-También tiene propiedades bloqueantes neuromusculares, que pueden potenciar otros bloqueantes [1].
+También tiene propiedades bloqueantes neuromusculares, que pueden potenciar otros bloqueantes.
 
 ## Cuánto tarda en hacer efecto
 
-- Absorción oral no influida de forma cuantificable por los alimentos, aunque la comida la retrasa algo [1].
-- Semivida de 1,5 a 3,5 horas, que puede prolongarse en la insuficiencia renal o hepática grave [1].
-- Concentraciones respecto al suero: cerca del 40 % en hueso, 50 % en líquido sinovial, 50 a 90 % en líquido pleural y 50 a 100 % en leche materna [1].
+- Absorción oral no influida de forma cuantificable por los alimentos, aunque la comida la retrasa algo.
+- Semivida de 1,5 a 3,5 horas, que puede prolongarse en la insuficiencia renal o hepática grave.
+- Concentraciones respecto al suero: cerca del 40 % en hueso, 50 % en líquido sinovial, 50 a 90 % en líquido pleural y 50 a 100 % en leche materna.
 
 ## Cómo se toma
 
-La dosis la define tu médico. Como referencia, en adultos la ficha técnica indica de 600 a 1.800 mg al día repartidos en 2, 3 o 4 tomas, según la gravedad y el lugar de la infección, durante 7 a 14 días en general. En la faringoamigdalitis por estreptococo se usan 300 mg dos veces al día durante 10 días [1].
+La dosis la define tu médico. Como referencia, en adultos la ficha técnica indica de 600 a 1.800 mg al día repartidos en 2, 3 o 4 tomas, según la gravedad y el lugar de la infección, durante 7 a 14 días en general. En la faringoamigdalitis por estreptococo se usan 300 mg dos veces al día durante 10 días.
 
-- Traga la cápsula entera con un vaso lleno de agua y espera al menos 30 minutos antes de acostarte, para evitar esofagitis y úlceras del esófago [1].
-- Se puede tomar con las comidas: los alimentos casi no cambian su absorción [1].
+- Traga la cápsula entera con un vaso lleno de agua y espera al menos 30 minutos antes de acostarte, para evitar esofagitis y úlceras del esófago.
+- Se puede tomar con las comidas: los alimentos casi no cambian su absorción.
 
 ## Efectos secundarios
 
-- Frecuentes: diarrea, dolor abdominal, colitis seudomembranosa y erupción en la piel [1].
-- Menos frecuentes: náuseas, vómito, ronchas [1].
-- Raros pero graves: reacciones graves de la piel (síndrome de Stevens-Johnson, necrólisis epidérmica tóxica, DRESS), úlcera del esófago y alteraciones de la sangre [1].
+- Frecuentes: diarrea, dolor abdominal, colitis seudomembranosa y erupción en la piel.
+- Menos frecuentes: náuseas, vómito, ronchas.
+- Raros pero graves: reacciones graves de la piel (síndrome de Stevens-Johnson, necrólisis epidérmica tóxica, DRESS), úlcera del esófago y alteraciones de la sangre.
 
-Las más comunes son diarrea, dolor abdominal, colitis seudomembranosa y erupción maculopapular; también náuseas, vómito y urticaria. Son graves y menos frecuentes las reacciones cutáneas severas, la esofagitis y las alteraciones hematológicas [1].
+Las más comunes son diarrea, dolor abdominal, colitis seudomembranosa y erupción maculopapular; también náuseas, vómito y urticaria. Son graves y menos frecuentes las reacciones cutáneas severas, la esofagitis y las alteraciones hematológicas.
 
 ## Interacciones
 
 | Medicamento | Qué pasa |
 |---|---|
-| Relajantes musculares de la anestesia (bloqueantes neuromusculares) | La clindamicina puede potenciar su efecto [1] |
-| Rifampicina y otros inductores potentes de la CYP3A4 | Pueden reducir su eficacia [1] |
+| Relajantes musculares de la anestesia (bloqueantes neuromusculares) | La clindamicina puede potenciar su efecto  |
+| Rifampicina y otros inductores potentes de la CYP3A4 | Pueden reducir su eficacia  |
 
 | Fármaco | Efecto | Manejo |
 | --- | --- | --- |
-| Bloqueantes neuromusculares | Potenciación del bloqueo | Precaución en anestesia [1] |
-| Inductores potentes de la CYP3A4 (rifampicina) | Posible pérdida de eficacia | Vigilar la respuesta [1] |
+| Bloqueantes neuromusculares | Potenciación del bloqueo | Precaución en anestesia  |
+| Inductores potentes de la CYP3A4 (rifampicina) | Posible pérdida de eficacia | Vigilar la respuesta  |
 
 ## Quién no debe tomarlo
 
-- Alergia a la clindamicina o a la lincomicina [1].
-- Antecedente de colitis asociada a antibióticos [1].
-- Precaución en enfermedad inflamatoria intestinal (Crohn o colitis ulcerosa) [1].
+- Alergia a la clindamicina o a la lincomicina.
+- Antecedente de colitis asociada a antibióticos.
+- Precaución en enfermedad inflamatoria intestinal (Crohn o colitis ulcerosa).
 
-Contraindicada con hipersensibilidad a clindamicina o lincomicina y con antecedente de colitis asociada a antibióticos [1].
+Contraindicada con hipersensibilidad a clindamicina o lincomicina y con antecedente de colitis asociada a antibióticos.
 
-- Diarrea asociada a Clostridioides difficile, desde leve hasta colitis mortal; suspender ante la sospecha [1].
-- Esofagitis y úlcera esofágica si no se sigue la forma de administración [1].
-- Reacciones cutáneas graves: Stevens-Johnson, necrólisis epidérmica tóxica, DRESS y pustulosis exantemática aguda generalizada [1].
-- Precaución en enfermedad inflamatoria intestinal [1].
+- Diarrea asociada a Clostridioides difficile, desde leve hasta colitis mortal; suspender ante la sospecha.
+- Esofagitis y úlcera esofágica si no se sigue la forma de administración.
+- Reacciones cutáneas graves: Stevens-Johnson, necrólisis epidérmica tóxica, DRESS y pustulosis exantemática aguda generalizada.
+- Precaución en enfermedad inflamatoria intestinal.
 
 ## Embarazo, lactancia y niños
 
-Atraviesa la placenta. En el segundo y el tercer trimestre no se ha asociado con más malformaciones, pero no hay estudios suficientes en el primer trimestre, por lo que solo se usa en el embarazo si es estrictamente necesaria. Pasa a la leche materna y puede causar diarrea, sangre en las heces o erupción en el bebé; no obliga a suspender la lactancia, pero es preferible otro medicamento si es posible [1].
+Atraviesa la placenta. En el segundo y el tercer trimestre no se ha asociado con más malformaciones, pero no hay estudios suficientes en el primer trimestre, por lo que solo se usa en el embarazo si es estrictamente necesaria. Pasa a la leche materna y puede causar diarrea, sangre en las heces o erupción en el bebé; no obliga a suspender la lactancia, pero es preferible otro medicamento si es posible.
 
-Atraviesa la placenta. En el segundo y el tercer trimestre no se ha asociado con más anomalías congénitas, pero faltan estudios en el primero: solo se usa si es estrictamente necesaria. Pasa a la leche y puede afectar la flora del lactante; no obliga a suspender la lactancia, pero es preferible otra opción [1].
+Atraviesa la placenta. En el segundo y el tercer trimestre no se ha asociado con más anomalías congénitas, pero faltan estudios en el primero: solo se usa si es estrictamente necesaria. Pasa a la leche y puede afectar la flora del lactante; no obliga a suspender la lactancia, pero es preferible otra opción.
 
 ## Cómo actúa
 
-Se une a la subunidad 50S del ribosoma bacteriano y bloquea las primeras etapas de la síntesis de proteínas [1].
+Se une a la subunidad 50S del ribosoma bacteriano y bloquea las primeras etapas de la síntesis de proteínas.
 
 ## La diarrea: cuándo preocuparse
 
-Todos los antibióticos alteran la flora del intestino, y la clindamicina puede favorecer el crecimiento de *Clostridioides difficile*, que produce toxinas y una colitis que puede ser grave, también después de terminar el tratamiento [1]. Si aparece diarrea intensa, con sangre o moco, fiebre o dolor abdominal, suspende y consulta de inmediato. No tomes antidiarreicos por tu cuenta.
+Todos los antibióticos alteran la flora del intestino, y la clindamicina puede favorecer el crecimiento de *Clostridioides difficile*, que produce toxinas y una colitis que puede ser grave, también después de terminar el tratamiento. Si aparece diarrea intensa, con sangre o moco, fiebre o dolor abdominal, suspende y consulta de inmediato. No tomes antidiarreicos por tu cuenta.
 
 ## En Colombia
 
-El Código Único de Medicamentos del INVIMA registra 61 registros sanitarios vigentes que contienen clindamicina, sola o combinada, en crema vaginal, óvulos, cápsulas, solución inyectable y gel tópico [2].
+El Código Único de Medicamentos del INVIMA registra 61 registros sanitarios vigentes que contienen clindamicina, sola o combinada, en crema vaginal, óvulos, cápsulas, solución inyectable y gel tópico.
 
 ## Evidencia y situación en Colombia
 
-El principal mecanismo de resistencia es la mutación o la metilación del ARN 23S de la subunidad 50S, el sitio de unión del antibiótico; con menos frecuencia, la modificación del fármaco y las bombas de expulsión [1]. Alcanza en hueso cerca del 40 % de la concentración sérica, y la ficha técnica la indica en osteomielitis e infecciones odontógenas [1].
+El principal mecanismo de resistencia es la mutación o la metilación del ARN 23S de la subunidad 50S, el sitio de unión del antibiótico; con menos frecuencia, la modificación del fármaco y las bombas de expulsión. Alcanza en hueso cerca del 40 % de la concentración sérica, y la ficha técnica la indica en osteomielitis e infecciones odontógenas.
 
-Colombia: 61 registros sanitarios vigentes que contienen clindamicina, sola o combinada (por ejemplo, con clotrimazol), en crema vaginal, óvulos, cápsulas, solución inyectable y gel tópico [4]. En Estados Unidos se comercializa como Cleocin [2].
+Colombia: 61 registros sanitarios vigentes que contienen clindamicina, sola o combinada (por ejemplo, con clotrimazol), en crema vaginal, óvulos, cápsulas, solución inyectable y gel tópico. En Estados Unidos se comercializa como Cleocin.
 
 ## Errores frecuentes
 
@@ -141,11 +141,11 @@ Puede ser una alternativa en algunas infecciones, pero el médico debe decidir s
 
 ### ¿Se puede usar Clindamicina en el embarazo?
 
-Atraviesa la placenta. En el segundo y el tercer trimestre no se ha asociado con más anomalías congénitas, pero faltan estudios en el primero: solo se usa si es estrictamente necesaria. Pasa a la leche y puede afectar la flora del lactante; no obliga a suspender la lactancia, pero es preferible otra opción [1].
+Atraviesa la placenta. En el segundo y el tercer trimestre no se ha asociado con más anomalías congénitas, pero faltan estudios en el primero: solo se usa si es estrictamente necesaria. Pasa a la leche y puede afectar la flora del lactante; no obliga a suspender la lactancia, pero es preferible otra opción.
 
 ### ¿Qué efectos secundarios de Clindamicina son graves?
 
-Las más comunes son diarrea, dolor abdominal, colitis seudomembranosa y erupción maculopapular; también náuseas, vómito y urticaria. Son graves y menos frecuentes las reacciones cutáneas severas, la esofagitis y las alteraciones hematológicas [1].
+Las más comunes son diarrea, dolor abdominal, colitis seudomembranosa y erupción maculopapular; también náuseas, vómito y urticaria. Son graves y menos frecuentes las reacciones cutáneas severas, la esofagitis y las alteraciones hematológicas.
 
 ## Artículos relacionados
 

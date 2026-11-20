@@ -15,7 +15,7 @@ Pertenece al grupo farmacológico de Derivado del ácido fosfónico.
 
 ## ¿Para qué sirve la fosfomicina?
 
-La fosfomicina trometamol está indicada en [1,2]:
+La fosfomicina trometamol está indicada en:
 
 - Cistitis aguda no complicada en la mujer.
 - Tratamiento de la bacteriuria asintomática en el embarazo, según el criterio médico y el antibiograma.
@@ -26,24 +26,24 @@ No se usa para pielonefritis, prostatitis, infecciones complicadas ni infeccione
 
 ## Cómo funciona
 
-Inhibe la enzima MurA (UDP-N-acetilglucosamina enolpiruvil transferasa), que cataliza la primera etapa de la síntesis del peptidoglucano. El bloqueo detiene la formación de la pared y causa la lisis bacteriana [1,2].
+Inhibe la enzima MurA (UDP-N-acetilglucosamina enolpiruvil transferasa), que cataliza la primera etapa de la síntesis del peptidoglucano. El bloqueo detiene la formación de la pared y causa la lisis bacteriana.
 
-Es bactericida frente a Escherichia coli, Enterococcus faecalis y otras bacterias urinarias sensibles. Su mecanismo es único, lo que limita la resistencia cruzada [1].
+Es bactericida frente a Escherichia coli, Enterococcus faecalis y otras bacterias urinarias sensibles. Su mecanismo es único, lo que limita la resistencia cruzada.
 
 ## Cuánto tarda en hacer efecto
 
 | Parámetro | Valor |
 | --- | --- |
-| Absorción | Oral; biodisponibilidad de aproximadamente 30 a 40 % [1] |
-| Concentración máxima | 2 a 3 horas [1] |
-| Unión a proteínas | Baja [1] |
-| Metabolismo | No se metaboliza de forma relevante [1] |
-| Semivida | 5 a 6 horas [1] |
-| Eliminación | Renal, principalmente sin cambios [1] |
+| Absorción | Oral; biodisponibilidad de aproximadamente 30 a 40 %  |
+| Concentración máxima | 2 a 3 horas  |
+| Unión a proteínas | Baja  |
+| Metabolismo | No se metaboliza de forma relevante  |
+| Semivida | 5 a 6 horas  |
+| Eliminación | Renal, principalmente sin cambios  |
 
 ## Cómo se toma
 
-La dosis habitual en adultos es de 3 g en una sola dosis [1,2]:
+La dosis habitual en adultos es de 3 g en una sola dosis:
 
 - Disuelve el contenido del sobre en un vaso de agua y tómalo inmediatamente.
 - Preferiblemente por la noche, antes de acostarte y después de vaciar la vejiga.
@@ -53,13 +53,13 @@ La dosis habitual en adultos es de 3 g en una sola dosis [1,2]:
 
 ## Efectos secundarios
 
-- Diarrea, náuseas, dolor abdominal y vómito [1,2].
+- Diarrea, náuseas, dolor abdominal y vómito.
 - Dolor de cabeza y mareo.
 - Vaginitis, vulvovaginitis y candidiasis.
 - Erupción cutánea y picazón.
 - Raros pero graves: colitis por *C. difficile*, reacciones alérgicas graves y alteraciones de la sangre.
 
-Las más frecuentes son diarrea, náuseas, dolor abdominal, cefalea y vaginitis [1,2].
+Las más frecuentes son diarrea, náuseas, dolor abdominal, cefalea y vaginitis.
 
 - Frecuentes: diarrea, náuseas, cefalea y candidiasis vaginal.
 - Poco frecuentes: vómito, dolor abdominal, rash y mareo.
@@ -69,62 +69,62 @@ Las más frecuentes son diarrea, náuseas, dolor abdominal, cefalea y vaginitis 
 
 | Medicamento | Qué puede pasar |
 |---|---|
-| Metoclopramida | Reduce la absorción de fosfomicina; evitar [1] |
-| Antiácidos con aluminio o magnesio | Pueden reducir la absorción; separar [1] |
+| Metoclopramida | Reduce la absorción de fosfomicina; evitar  |
+| Antiácidos con aluminio o magnesio | Pueden reducir la absorción; separar  |
 | Otros antibióticos | No se combinan sin indicación; pueden alterar la flora |
-| Warfarina | No se ha descrito una interacción relevante, pero vigilar si hay cambios [2] |
+| Warfarina | No se ha descrito una interacción relevante, pero vigilar si hay cambios  |
 
 | Medicamento | Efecto | Qué hacer |
 | --- | --- | --- |
-| Metoclopramida | Reduce la absorción de fosfomicina | Evitar o separar [1] |
-| Antiácidos con aluminio o magnesio | Pueden reducir la absorción | Separar [1] |
-| Warfarina | No se ha descrito una interacción relevante | Vigilar si hay cambios [2] |
-| Otros antibióticos | Pueden alterar la flora | No combinar sin indicación [1] |
+| Metoclopramida | Reduce la absorción de fosfomicina | Evitar o separar  |
+| Antiácidos con aluminio o magnesio | Pueden reducir la absorción | Separar  |
+| Warfarina | No se ha descrito una interacción relevante | Vigilar si hay cambios  |
+| Otros antibióticos | Pueden alterar la flora | No combinar sin indicación  |
 
 ## Quién no debe tomarlo
 
-- Alergia a la fosfomicina [1,2].
+- Alergia a la fosfomicina.
 - Insuficiencia renal grave: consultar antes de usarla.
 - Embarazo y lactancia: se usa en el embarazo cuando está indicada; en lactancia consultar.
 - Niños: la indicación y la dosis dependen de la edad y el peso.
 - Pacientes con diarrea grave o colitis: evitar hasta evaluar.
 
-Contraindicaciones y precauciones [1,2]:
+Contraindicaciones y precauciones:
 
 - Hipersensibilidad a fosfomicina.
 - Insuficiencia renal grave: valorar antes de usar.
 - Diarrea grave o colitis: evitar hasta evaluar.
 - Embarazo y lactancia: consultar; se usa en el embarazo cuando está indicada.
 
-Advertencias: colitis por C. difficile, reacciones alérgicas graves, alteraciones hematológicas y falta de eficacia en infecciones del tracto urinario alto [1,2].
+Advertencias: colitis por C. difficile, reacciones alérgicas graves, alteraciones hematológicas y falta de eficacia en infecciones del tracto urinario alto.
 
 ## Embarazo, lactancia y niños
 
-La fosfomicina trometamol se ha usado en el embarazo para infecciones urinarias, con indicación médica. Pasa a la leche en pequeñas cantidades; se considera compatible en tratamientos cortos, pero consulta siempre [1,2].
+La fosfomicina trometamol se ha usado en el embarazo para infecciones urinarias, con indicación médica. Pasa a la leche en pequeñas cantidades; se considera compatible en tratamientos cortos, pero consulta siempre.
 
-- Embarazo: se ha usado para infecciones urinarias con indicación médica; no usar por cuenta propia [1,2].
-- Lactancia: pasa en pequeñas cantidades; se considera compatible en tratamientos cortos, pero consultar [1].
-- Fertilidad: no se han descrito efectos adversos [2].
+- Embarazo: se ha usado para infecciones urinarias con indicación médica; no usar por cuenta propia.
+- Lactancia: pasa en pequeñas cantidades; se considera compatible en tratamientos cortos, pero consultar.
+- Fertilidad: no se han descrito efectos adversos.
 
 ## Cómo actúa
 
-La fosfomicina inhibe la enzima MurA, que participa en la primera etapa de la síntesis del peptidoglicano de la pared bacteriana. Es bactericida frente a muchas bacterias gramnegativas y grampositivas, incluida *Escherichia coli*, y tiene un mecanismo distinto al de otros antibióticos, lo que limita la resistencia cruzada [1,2].
+La fosfomicina inhibe la enzima MurA, que participa en la primera etapa de la síntesis del peptidoglicano de la pared bacteriana. Es bactericida frente a muchas bacterias gramnegativas y grampositivas, incluida *Escherichia coli*, y tiene un mecanismo distinto al de otros antibióticos, lo que limita la resistencia cruzada.
 
 ## Fosfomicina en Colombia
 
-El CUM del INVIMA registra fosfomicina trometamol en granulado para solución oral. Verifica el registro y la concentración antes de dispensar [3]. Es un medicamento de prescripción médica.
+El CUM del INVIMA registra fosfomicina trometamol en granulado para solución oral. Verifica el registro y la concentración antes de dispensar. Es un medicamento de prescripción médica.
 
 ## Evidencia y situación en Colombia
 
-La fosfomicina trometamol en dosis única de 3 g tiene eficacia demostrada en cistitis no complicada, con una respuesta clínica y microbiológica comparable a otros antibióticos de varios días [1,2].
+La fosfomicina trometamol en dosis única de 3 g tiene eficacia demostrada en cistitis no complicada, con una respuesta clínica y microbiológica comparable a otros antibióticos de varios días.
 
-Su ventaja es la simplicidad del esquema y la baja propensión a resistencia cruzada, aunque la resistencia está aumentando en algunas regiones [1].
+Su ventaja es la simplicidad del esquema y la baja propensión a resistencia cruzada, aunque la resistencia está aumentando en algunas regiones.
 
-No debe usarse en pielonefritis porque las concentraciones séricas son bajas y no cubren la infección del parénquima renal [1,2].
+No debe usarse en pielonefritis porque las concentraciones séricas son bajas y no cubren la infección del parénquima renal.
 
-- Colombia: el CUM registra fosfomicina trometamol en granulado para solución oral [3].
-- Unión Europea: la fosfomicina está autorizada para cistitis no complicada [1].
-- Estados Unidos: la FDA mantiene etiquetas de fosfomicina trometamol [1].
+- Colombia: el CUM registra fosfomicina trometamol en granulado para solución oral.
+- Unión Europea: la fosfomicina está autorizada para cistitis no complicada.
+- Estados Unidos: la FDA mantiene etiquetas de fosfomicina trometamol.
 
 ## Errores frecuentes
 
@@ -164,15 +164,15 @@ Sí, bajo indicación médica y cuando el antibiograma o la situación lo justif
 
 ### ¿Cuánto tarda en hacer efecto Fosfomicina?
 
-2 a 3 horas [1] Su efecto se mantiene mientras el medicamento permanece en el cuerpo; la semivida es de 5 a 6 horas [1]. La respuesta completa depende de la indicación y del paciente, así que el seguimiento lo define el profesional.
+2 a 3 horas  Su efecto se mantiene mientras el medicamento permanece en el cuerpo; la semivida es de 5 a 6 horas. La respuesta completa depende de la indicación y del paciente, así que el seguimiento lo define el profesional.
 
 ### ¿Se puede usar Fosfomicina en el embarazo?
 
-- Embarazo: se ha usado para infecciones urinarias con indicación médica; no usar por cuenta propia [1,2]. - Lactancia: pasa en pequeñas cantidades; se considera compatible en tratamientos cortos, pero consultar [1]. - Fertilidad: no se han descrito efectos adversos [2].
+- Embarazo: se ha usado para infecciones urinarias con indicación médica; no usar por cuenta propia. - Lactancia: pasa en pequeñas cantidades; se considera compatible en tratamientos cortos, pero consultar. - Fertilidad: no se han descrito efectos adversos.
 
 ### ¿Qué efectos secundarios de Fosfomicina son graves?
 
-Las más frecuentes son diarrea, náuseas, dolor abdominal, cefalea y vaginitis [1,2]. - Frecuentes: diarrea, náuseas, cefalea y candidiasis vaginal. - Poco frecuentes: vómito, dolor abdominal, rash y mareo. - Raras: colitis pseudomembranosa, anafilaxia y alteraciones hematológicas.
+Las más frecuentes son diarrea, náuseas, dolor abdominal, cefalea y vaginitis. - Frecuentes: diarrea, náuseas, cefalea y candidiasis vaginal. - Poco frecuentes: vómito, dolor abdominal, rash y mareo. - Raras: colitis pseudomembranosa, anafilaxia y alteraciones hematológicas.
 
 ## Artículos relacionados
 

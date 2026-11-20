@@ -12,24 +12,24 @@ Al activar dos vías hormonales intestinales, retrasa el vaciamiento gástrico, 
 
 ## Cómo funciona
 
-La tirzepatida es un agonista de acción prolongada, muy selectivo por los receptores humanos de GIP y de GLP-1. Su actividad sobre el receptor de GIP es similar a la del GIP nativo; sobre el receptor de GLP-1 es menor que la del GLP-1 nativo [1].
+La tirzepatida es un agonista de acción prolongada, muy selectivo por los receptores humanos de GIP y de GLP-1. Su actividad sobre el receptor de GIP es similar a la del GIP nativo; sobre el receptor de GLP-1 es menor que la del GLP-1 nativo.
 
-Los dos receptores están en las células alfa y beta del páncreas, el corazón, los vasos, los leucocitos, el intestino y el riñón, y en áreas del cerebro que regulan el apetito. El receptor de GIP también está en los adipocitos: en adipocitos humanos in vitro, la tirzepatida regula la captación de glucosa y modula la captación de lípidos y la lipólisis [1].
+Los dos receptores están en las células alfa y beta del páncreas, el corazón, los vasos, los leucocitos, el intestino y el riñón, y en áreas del cerebro que regulan el apetito. El receptor de GIP también está en los adipocitos: en adipocitos humanos in vitro, la tirzepatida regula la captación de glucosa y modula la captación de lípidos y la lipólisis.
 
-Reduce el peso sobre todo a expensas de la masa grasa. Disminuye la ingesta y el apetito, aumenta la saciedad y la plenitud, reduce el hambre y la intensidad del ansia de comer. En diabetes tipo 2 baja la glucosa en ayunas y posprandial por varios mecanismos [1].
+Reduce el peso sobre todo a expensas de la masa grasa. Disminuye la ingesta y el apetito, aumenta la saciedad y la plenitud, reduce el hambre y la intensidad del ansia de comer. En diabetes tipo 2 baja la glucosa en ayunas y posprandial por varios mecanismos.
 
 ## Cuánto tarda en hacer efecto
 
 | Parámetro | Valor |
 | --- | --- |
-| Tiempo hasta la concentración máxima | 8 a 72 horas [1] |
-| Estado estacionario | Tras 4 semanas de aplicación semanal; exposición proporcional a la dosis [1] |
-| Biodisponibilidad absoluta (subcutánea) | 80 %; similar en abdomen, muslo o brazo [1] |
-| Volumen de distribución aparente | Unos 10,3 l en diabetes tipo 2 y 9,7 l en obesidad [1] |
-| Unión a proteínas | 99 % a la albúmina [1] |
-| Metabolismo | Escisión proteolítica del esqueleto peptídico, β-oxidación del diácido graso C20 e hidrólisis de amida [1] |
+| Tiempo hasta la concentración máxima | 8 a 72 horas  |
+| Estado estacionario | Tras 4 semanas de aplicación semanal; exposición proporcional a la dosis  |
+| Biodisponibilidad absoluta (subcutánea) | 80 %; similar en abdomen, muslo o brazo  |
+| Volumen de distribución aparente | Unos 10,3 l en diabetes tipo 2 y 9,7 l en obesidad  |
+| Unión a proteínas | 99 % a la albúmina  |
+| Metabolismo | Escisión proteolítica del esqueleto peptídico, β-oxidación del diácido graso C20 e hidrólisis de amida  |
 
-La edad, el sexo, la raza, la etnia, el peso corporal y la insuficiencia renal o hepática (incluida la enfermedad renal terminal) no tuvieron un efecto clínicamente relevante sobre su farmacocinética [1].
+La edad, el sexo, la raza, la etnia, el peso corporal y la insuficiencia renal o hepática (incluida la enfermedad renal terminal) no tuvieron un efecto clínicamente relevante sobre su farmacocinética.
 
 ## Cómo se toma
 
@@ -51,14 +51,14 @@ La edad, el sexo, la raza, la etnia, el peso corporal y la insuficiencia renal o
 
 Como con otros agonistas de GLP-1, se han observado tumores de células C en roedores; no se recomienda en personas con antecedente de carcinoma medular de tiroides o MEN2.
 
-En 13 estudios de fase 3 con 8.522 adultos, las reacciones más frecuentes fueron gastrointestinales, en su mayoría leves o moderadas, más frecuentes durante el escalado y decrecientes con el tiempo [1].
+En 13 estudios de fase 3 con 8.522 adultos, las reacciones más frecuentes fueron gastrointestinales, en su mayoría leves o moderadas, más frecuentes durante el escalado y decrecientes con el tiempo.
 
 | Frecuencia | Reacciones adversas (ficha técnica de Mounjaro) |
 | --- | --- |
-| Muy frecuentes (≥1/10) | Náuseas, diarrea, vómitos, dolor abdominal y estreñimiento (en los ensayos de control del peso); hipoglucemia con sulfonilurea o insulina [1] |
-| Frecuentes (≥1/100 a <1/10) | Reacciones de hipersensibilidad, mareos, hipotensión, dispepsia, distensión abdominal, eructos, flatulencia, reflujo gastroesofágico, pérdida de cabello, fatiga, reacciones en la zona de inyección, aumento de la frecuencia cardiaca, de la lipasa, de la amilasa y de la calcitonina [1] |
-| Poco frecuentes (≥1/1.000 a <1/100) | Colelitiasis, colecistitis, pancreatitis aguda, retraso del vaciado gástrico [1] |
-| Raras (≥1/10.000 a <1/1.000) | Reacción anafiláctica y angioedema, notificados después de la comercialización [1] |
+| Muy frecuentes (≥1/10) | Náuseas, diarrea, vómitos, dolor abdominal y estreñimiento (en los ensayos de control del peso); hipoglucemia con sulfonilurea o insulina  |
+| Frecuentes (≥1/100 a <1/10) | Reacciones de hipersensibilidad, mareos, hipotensión, dispepsia, distensión abdominal, eructos, flatulencia, reflujo gastroesofágico, pérdida de cabello, fatiga, reacciones en la zona de inyección, aumento de la frecuencia cardiaca, de la lipasa, de la amilasa y de la calcitonina  |
+| Poco frecuentes (≥1/1.000 a <1/100) | Colelitiasis, colecistitis, pancreatitis aguda, retraso del vaciado gástrico  |
+| Raras (≥1/10.000 a <1/1.000) | Reacción anafiláctica y angioedema, notificados después de la comercialización  |
 
 ## Interacciones
 
@@ -69,14 +69,14 @@ En 13 estudios de fase 3 con 8.522 adultos, las reacciones más frecuentes fuero
 - Evitar en pancreatitis previa sin evaluación.
 - No combinar con otro GLP-1 ni con inhibidores de DPP-4.
 
-- Medicamentos orales: la tirzepatida retrasa el vaciamiento gástrico, baja la Cmáx y retrasa el tmáx, sobre todo al inicio. Se recomienda vigilar los medicamentos de margen terapéutico estrecho (por ejemplo, warfarina y digoxina) al iniciar y después de cada aumento de dosis, y considerar el retraso del efecto de los que necesitan acción rápida [1].
-- Paracetamol: tras una dosis de 5 mg su Cmáx bajó un 50 % y el tmáx se retrasó 1 hora; tras cuatro dosis semanales no hubo efecto y no requiere ajuste [1].
-- Anticonceptivos orales: tras una dosis única de 5 mg, la Cmáx del etinilestradiol bajó un 59 % y su AUC un 20 %; la ficha europea no considera clínicamente relevante esta reducción y no pide ajuste [1].
-- Sulfonilureas e insulina: más riesgo de hipoglucemia [1].
+- Medicamentos orales: la tirzepatida retrasa el vaciamiento gástrico, baja la Cmáx y retrasa el tmáx, sobre todo al inicio. Se recomienda vigilar los medicamentos de margen terapéutico estrecho (por ejemplo, warfarina y digoxina) al iniciar y después de cada aumento de dosis, y considerar el retraso del efecto de los que necesitan acción rápida.
+- Paracetamol: tras una dosis de 5 mg su Cmáx bajó un 50 % y el tmáx se retrasó 1 hora; tras cuatro dosis semanales no hubo efecto y no requiere ajuste.
+- Anticonceptivos orales: tras una dosis única de 5 mg, la Cmáx del etinilestradiol bajó un 59 % y su AUC un 20 %; la ficha europea no considera clínicamente relevante esta reducción y no pide ajuste.
+- Sulfonilureas e insulina: más riesgo de hipoglucemia.
 
 ## Quién no debe tomarlo
 
-La única contraindicación es la hipersensibilidad al principio activo o a los excipientes [1]. Advertencias de la ficha técnica [1]:
+La única contraindicación es la hipersensibilidad al principio activo o a los excipientes. Advertencias de la ficha técnica:
 
 - Pancreatitis aguda: no se ha estudiado en personas con antecedentes; suspender ante la sospecha y no reanudar si se confirma. Las enzimas pancreáticas elevadas, sin otros signos, no predicen pancreatitis.
 - Hipoglucemia con secretagogos de insulina o insulina.
@@ -88,20 +88,20 @@ La única contraindicación es la hipersensibilidad al principio activo o a los 
 
 ## Embarazo, lactancia y niños
 
-- Se recomienda anticoncepción en mujeres en edad fértil [1].
-- No se recomienda en el embarazo: los estudios en animales mostraron toxicidad reproductiva. Se suspende si la paciente desea un embarazo o queda en embarazo, y al menos 1 mes antes de un embarazo planificado por su larga semivida [1].
-- Lactancia: tras una dosis única de 5 mg, la concentración en la leche fue de indetectable a muy baja; se desconoce si la menor ingesta materna cambia la composición de la leche [1].
+- Se recomienda anticoncepción en mujeres en edad fértil.
+- No se recomienda en el embarazo: los estudios en animales mostraron toxicidad reproductiva. Se suspende si la paciente desea un embarazo o queda en embarazo, y al menos 1 mes antes de un embarazo planificado por su larga semivida.
+- Lactancia: tras una dosis única de 5 mg, la concentración en la leche fue de indetectable a muy baja; se desconoce si la menor ingesta materna cambia la composición de la leche.
 
 ## Evidencia y situación en Colombia
 
 | Ensayo | Diseño | Resultado principal |
 | --- | --- | --- |
-| SURMOUNT-1 [4] | 2.539 adultos con IMC de 30 o más (27 o más con una complicación), sin diabetes; 5, 10 o 15 mg frente a placebo durante 72 semanas | Peso −15,0 %, −19,5 % y −20,9 % frente a −3,1 %. Al menos el 20 % de pérdida: 50 % y 57 % con 10 y 15 mg frente a 3 %. Suspensión por eventos adversos: 4,3 %, 7,1 % y 6,2 % frente a 2,6 % [4] |
-| SURMOUNT-4 [5] | 670 adultos que bajaron un 20,9 % en 36 semanas de preinclusión y luego continuaron o pasaron a placebo | De la semana 36 a la 88: −5,5 % con tirzepatida frente a +14,0 % con placebo; el 89,5 % mantuvo al menos el 80 % de su pérdida frente al 16,6 % [5] |
+| SURMOUNT-1  | 2.539 adultos con IMC de 30 o más (27 o más con una complicación), sin diabetes; 5, 10 o 15 mg frente a placebo durante 72 semanas | Peso −15,0 %, −19,5 % y −20,9 % frente a −3,1 %. Al menos el 20 % de pérdida: 50 % y 57 % con 10 y 15 mg frente a 3 %. Suspensión por eventos adversos: 4,3 %, 7,1 % y 6,2 % frente a 2,6 %  |
+| SURMOUNT-4  | 670 adultos que bajaron un 20,9 % en 36 semanas de preinclusión y luego continuaron o pasaron a placebo | De la semana 36 a la 88: −5,5 % con tirzepatida frente a +14,0 % con placebo; el 89,5 % mantuvo al menos el 80 % de su pérdida frente al 16,6 %  |
 
-- Colombia: Mounjaro (Eli Lilly) tiene seis registros sanitarios vigentes, de 2,5 a 15 mg por 0,5 ml, expedidos en febrero y marzo de 2025. El CUM no informa la indicación aprobada: verifíquela en el registro sanitario antes de dispensar para el control del peso [6].
-- Unión Europea: Mounjaro está autorizado para la diabetes tipo 2 y el control del peso [1].
-- Estados Unidos: la indicación de control del peso se comercializa como Zepbound [2].
+- Colombia: Mounjaro (Eli Lilly) tiene seis registros sanitarios vigentes, de 2,5 a 15 mg por 0,5 ml, expedidos en febrero y marzo de 2025. El CUM no informa la indicación aprobada: verifíquela en el registro sanitario antes de dispensar para el control del peso.
+- Unión Europea: Mounjaro está autorizado para la diabetes tipo 2 y el control del peso.
+- Estados Unidos: la indicación de control del peso se comercializa como Zepbound.
 
 ## Errores frecuentes
 
@@ -147,15 +147,15 @@ En roedores se observaron tumores de células C; en humanos no se ha confirmado 
 
 ### ¿Cuánto tarda en hacer efecto Tirzepatida?
 
-8 a 72 horas [1] Su efecto se mantiene mientras el medicamento permanece en el cuerpo; la semivida es de unos 5 días [1]. La respuesta completa depende de la indicación y del paciente, así que el seguimiento lo define el profesional.
+8 a 72 horas  Su efecto se mantiene mientras el medicamento permanece en el cuerpo; la semivida es de unos 5 días. La respuesta completa depende de la indicación y del paciente, así que el seguimiento lo define el profesional.
 
 ### ¿Se puede usar Tirzepatida en el embarazo?
 
-- Se recomienda anticoncepción en mujeres en edad fértil [1]. - No se recomienda en el embarazo: los estudios en animales mostraron toxicidad reproductiva. Se suspende si la paciente desea un embarazo o queda en embarazo, y al menos 1 mes antes de un embarazo planificado por su larga semivida [1]. - Lactancia: tras una dosis única de 5 mg, la concentración en la leche fue de indetectable a muy baja; se desconoce si la menor ingesta materna cambia la composición de la leche [1].
+- Se recomienda anticoncepción en mujeres en edad fértil. - No se recomienda en el embarazo: los estudios en animales mostraron toxicidad reproductiva. Se suspende si la paciente desea un embarazo o queda en embarazo, y al menos 1 mes antes de un embarazo planificado por su larga semivida. - Lactancia: tras una dosis única de 5 mg, la concentración en la leche fue de indetectable a muy baja; se desconoce si la menor ingesta materna cambia la composición de la leche.
 
 ### ¿Qué efectos secundarios de Tirzepatida son graves?
 
-En 13 estudios de fase 3 con 8.522 adultos, las reacciones más frecuentes fueron gastrointestinales, en su mayoría leves o moderadas, más frecuentes durante el escalado y decrecientes con el tiempo [1]. | Frecuencia | Reacciones adversas (ficha técnica de Mounjaro) | | --- | --- | | Muy frecuentes (≥1/10) | Náuseas, diarrea, vómitos, dolor abdominal y estreñimiento (en los ensayos de control del peso); hipoglucemia con sulfonilurea o insulina [1] | | Frecuentes (≥1/100 a <1/10) | Reacciones de hipersensibilidad, mareos, hipotensión, dispepsia, distensión abdominal, eructos, flatulencia,…
+En 13 estudios de fase 3 con 8.522 adultos, las reacciones más frecuentes fueron gastrointestinales, en su mayoría leves o moderadas, más frecuentes durante el escalado y decrecientes con el tiempo. | Frecuencia | Reacciones adversas (ficha técnica de Mounjaro) | | --- | --- | | Muy frecuentes (≥1/10) | Náuseas, diarrea, vómitos, dolor abdominal y estreñimiento (en los ensayos de control del peso); hipoglucemia con sulfonilurea o insulina  | | Frecuentes (≥1/100 a <1/10) | Reacciones de hipersensibilidad, mareos, hipotensión, dispepsia, distensión abdominal, eructos, flatulencia,…
 
 ## Artículos relacionados
 

@@ -22,29 +22,29 @@ Pertenece al grupo farmacológico de AINE.
 
 ## Cómo funciona
 
-Es un compuesto no esteroideo con marcadas propiedades antiinflamatorias, analgésicas y antipiréticas. La inhibición de la biosíntesis de prostaglandinas se considera clave en su mecanismo [1].
+Es un compuesto no esteroideo con marcadas propiedades antiinflamatorias, analgésicas y antipiréticas. La inhibición de la biosíntesis de prostaglandinas se considera clave en su mecanismo.
 
-También inhibe de forma temporal la agregación plaquetaria [1]. En el metaanálisis CNT, el diclofenaco aumentó los eventos coronarios mayores en un grado similar al de los coxibs [3].
+También inhibe de forma temporal la agregación plaquetaria. En el metaanálisis CNT, el diclofenaco aumentó los eventos coronarios mayores en un grado similar al de los coxibs.
 
 ## Cuánto tarda en hacer efecto
 
 | Parámetro | Valor |
 | --- | --- |
-| Absorción | Completa; cerca de la mitad sufre efecto de primer paso hepático [1] |
-| Concentración máxima | A las 2 horas de un comprimido de 50 mg [1] |
-| Unión a proteínas | 99,7 % [1] |
-| Metabolismo | Glucuronidación e hidroxilación; interviene el CYP2C9 [1] |
-| Semivida | 1 a 2 horas; metabolitos de 1 a 3 horas [1] |
-| Eliminación | Cerca del 60 % en orina como conjugados y metabolitos; el resto por bilis [1] |
+| Absorción | Completa; cerca de la mitad sufre efecto de primer paso hepático  |
+| Concentración máxima | A las 2 horas de un comprimido de 50 mg  |
+| Unión a proteínas | 99,7 %  |
+| Metabolismo | Glucuronidación e hidroxilación; interviene el CYP2C9  |
+| Semivida | 1 a 2 horas; metabolitos de 1 a 3 horas  |
+| Eliminación | Cerca del 60 % en orina como conjugados y metabolitos; el resto por bilis  |
 
 ## Efectos secundarios
 
 Ardor, dolor de estómago, náuseas, diarrea, mareo y dolor de cabeza. Suspende y consulta si tienes heces negras, vómito con sangre, hinchazón, dolor en el pecho, falta de aire o ronchas.
 
-Frecuentes: cefalea, mareo, vértigo, náuseas, vómito, diarrea, dispepsia, dolor abdominal, flatulencia, menos apetito, aumento de transaminasas y erupción [1].
+Frecuentes: cefalea, mareo, vértigo, náuseas, vómito, diarrea, dispepsia, dolor abdominal, flatulencia, menos apetito, aumento de transaminasas y erupción.
 
-- Graves: infarto de miocardio, insuficiencia cardiaca, accidente cerebrovascular, hemorragia y perforación digestiva, hepatitis fulminante, agranulocitosis, anafilaxia, síndrome de Stevens-Johnson y fallo renal agudo [1].
-- En el metaanálisis CNT, las complicaciones digestivas altas aumentaron con el diclofenaco (razón de tasas 1,89) [3].
+- Graves: infarto de miocardio, insuficiencia cardiaca, accidente cerebrovascular, hemorragia y perforación digestiva, hepatitis fulminante, agranulocitosis, anafilaxia, síndrome de Stevens-Johnson y fallo renal agudo.
+- En el metaanálisis CNT, las complicaciones digestivas altas aumentaron con el diclofenaco (razón de tasas 1,89).
 
 ## Interacciones
 
@@ -52,13 +52,13 @@ Las mismas de otros AINE: anticoagulantes, antiagregantes, otros antiinflamatori
 
 | Medicamento | Efecto | Qué hacer |
 | --- | --- | --- |
-| Anticoagulantes, antiagregantes, ISRS | Más riesgo de hemorragia | Evitar o vigilar estrechamente [1] |
-| Otros AINE, corticoides | Más efectos digestivos | No combinar AINE [1] |
-| Diuréticos, betabloqueadores, IECA | Menos efecto antihipertensivo y más nefrotoxicidad | Controlar presión y función renal [1] |
-| Litio, digoxina, metotrexato, fenitoína | Aumentan sus concentraciones o su toxicidad | Vigilar niveles [1] |
-| Ahorradores de potasio, ciclosporina, tacrolimus, trimetoprim | Hiperpotasemia | Controlar el potasio [1] |
-| Voriconazol (inhibidor del CYP2C9) | Aumenta mucho el diclofenaco | Reducir la dosis [1] |
-| Quinolonas | Casos aislados de convulsiones | Precaución [1] |
+| Anticoagulantes, antiagregantes, ISRS | Más riesgo de hemorragia | Evitar o vigilar estrechamente  |
+| Otros AINE, corticoides | Más efectos digestivos | No combinar AINE  |
+| Diuréticos, betabloqueadores, IECA | Menos efecto antihipertensivo y más nefrotoxicidad | Controlar presión y función renal  |
+| Litio, digoxina, metotrexato, fenitoína | Aumentan sus concentraciones o su toxicidad | Vigilar niveles  |
+| Ahorradores de potasio, ciclosporina, tacrolimus, trimetoprim | Hiperpotasemia | Controlar el potasio  |
+| Voriconazol (inhibidor del CYP2C9) | Aumenta mucho el diclofenaco | Reducir la dosis  |
+| Quinolonas | Casos aislados de convulsiones | Precaución  |
 
 ## Quién no debe tomarlo
 
@@ -70,7 +70,7 @@ Las mismas de otros AINE: anticoagulantes, antiagregantes, otros antiinflamatori
 - Embarazo, especialmente desde la semana 20.
 - Asma que empeora con antiinflamatorios.
 
-Está contraindicado en [1]:
+Está contraindicado en:
 
 - Asma, urticaria o rinitis aguda desencadenadas por ácido acetilsalicílico u otros AINE.
 - Enfermedad de Crohn o colitis ulcerosa activas; úlcera, hemorragia o perforación digestiva activa o previa por AINE.
@@ -78,13 +78,13 @@ Está contraindicado en [1]:
 - Insuficiencia cardiaca NYHA II-IV, cardiopatía isquémica, enfermedad arterial periférica o cerebrovascular.
 - Tercer trimestre del embarazo.
 
-Advertencias: hemorragia, úlcera o perforación digestiva en cualquier momento; aumento del riesgo trombótico arterial; retención de líquidos y edema; elevación de enzimas hepáticas; reacciones cutáneas graves muy raras; y exacerbación del asma [1].
+Advertencias: hemorragia, úlcera o perforación digestiva en cualquier momento; aumento del riesgo trombótico arterial; retención de líquidos y edema; elevación de enzimas hepáticas; reacciones cutáneas graves muy raras; y exacerbación del asma.
 
 ## Embarazo, lactancia y niños
 
-- Primer y segundo trimestre: solo si es estrictamente necesario, con la menor dosis y duración; desde la semana 20 puede causar oligohidramnios [1].
-- Tercer trimestre: contraindicado [1].
-- Lactancia: no se recomienda; pasa a la leche en pequeñas cantidades [1].
+- Primer y segundo trimestre: solo si es estrictamente necesario, con la menor dosis y duración; desde la semana 20 puede causar oligohidramnios.
+- Tercer trimestre: contraindicado.
+- Lactancia: no se recomienda; pasa a la leche en pequeñas cantidades.
 
 ## Gel o tabletas
 
@@ -103,14 +103,14 @@ Son frecuentes en algunas droguerías, pero tienen los mismos riesgos de las tab
 
 ## Evidencia y situación en Colombia
 
-En el metaanálisis CNT, el diclofenaco aumentó los eventos vasculares mayores (razón de tasas 1,41) y los coronarios mayores (1,70), en un grado similar al de los coxibs [3].
+En el metaanálisis CNT, el diclofenaco aumentó los eventos vasculares mayores (razón de tasas 1,41) y los coronarios mayores (1,70), en un grado similar al de los coxibs.
 
-En el programa MEDAL, con 34.701 pacientes, diclofenaco 150 mg y etoricoxib tuvieron tasas similares de eventos trombóticos; el diclofenaco produjo más eventos digestivos altos [4].
+En el programa MEDAL, con 34.701 pacientes, diclofenaco 150 mg y etoricoxib tuvieron tasas similares de eventos trombóticos; el diclofenaco produjo más eventos digestivos altos.
 
-La conclusión práctica: el diclofenaco oral no es una opción «suave» para el corazón. En Colombia también está registrado en gel tópico, una alternativa a valorar en el dolor localizado [2].
+La conclusión práctica: el diclofenaco oral no es una opción «suave» para el corazón. En Colombia también está registrado en gel tópico, una alternativa a valorar en el dolor localizado.
 
-- Colombia: el CUM del INVIMA registra 82 registros sanitarios vigentes que contienen diclofenaco (código ATC M01AB05). Con ese código predominan las soluciones inyectables, seguidas de gel tópico, tabletas y cápsulas de liberación prolongada. Consulta del 16-nov-2026 [2].
-- España: autorizado en comprimidos gastrorresistentes de 50 mg para las indicaciones descritas [1].
+- Colombia: el CUM del INVIMA registra 82 registros sanitarios vigentes que contienen diclofenaco (código ATC M01AB05). Con ese código predominan las soluciones inyectables, seguidas de gel tópico, tabletas y cápsulas de liberación prolongada. Consulta del 16-nov-2026.
+- España: autorizado en comprimidos gastrorresistentes de 50 mg para las indicaciones descritas.
 
 ## Errores frecuentes
 
@@ -146,15 +146,15 @@ En artrosis de manos o rodillas, el médico puede indicarlo de forma regular. Us
 
 ### ¿Cuánto tarda en hacer efecto Diclofenaco?
 
-A las 2 horas de un comprimido de 50 mg [1] Su efecto se mantiene mientras el medicamento permanece en el cuerpo; la semivida es de 1 a 2 horas; metabolitos de 1 a 3 horas [1]. La respuesta completa depende de la indicación y del paciente, así que el seguimiento lo define el profesional.
+A las 2 horas de un comprimido de 50 mg  Su efecto se mantiene mientras el medicamento permanece en el cuerpo; la semivida es de 1 a 2 horas; metabolitos de 1 a 3 horas. La respuesta completa depende de la indicación y del paciente, así que el seguimiento lo define el profesional.
 
 ### ¿Se puede usar Diclofenaco en el embarazo?
 
-- Primer y segundo trimestre: solo si es estrictamente necesario, con la menor dosis y duración; desde la semana 20 puede causar oligohidramnios [1]. - Tercer trimestre: contraindicado [1]. - Lactancia: no se recomienda; pasa a la leche en pequeñas cantidades [1].
+- Primer y segundo trimestre: solo si es estrictamente necesario, con la menor dosis y duración; desde la semana 20 puede causar oligohidramnios. - Tercer trimestre: contraindicado. - Lactancia: no se recomienda; pasa a la leche en pequeñas cantidades.
 
 ### ¿Qué efectos secundarios de Diclofenaco son graves?
 
-Frecuentes: cefalea, mareo, vértigo, náuseas, vómito, diarrea, dispepsia, dolor abdominal, flatulencia, menos apetito, aumento de transaminasas y erupción [1]. - Graves: infarto de miocardio, insuficiencia cardiaca, accidente cerebrovascular, hemorragia y perforación digestiva, hepatitis fulminante, agranulocitosis, anafilaxia, síndrome de Stevens-Johnson y fallo renal agudo [1]. - En el metaanálisis CNT, las complicaciones digestivas altas aumentaron con el diclofenaco (razón de tasas 1,89) [3].
+Frecuentes: cefalea, mareo, vértigo, náuseas, vómito, diarrea, dispepsia, dolor abdominal, flatulencia, menos apetito, aumento de transaminasas y erupción. - Graves: infarto de miocardio, insuficiencia cardiaca, accidente cerebrovascular, hemorragia y perforación digestiva, hepatitis fulminante, agranulocitosis, anafilaxia, síndrome de Stevens-Johnson y fallo renal agudo. - En el metaanálisis CNT, las complicaciones digestivas altas aumentaron con el diclofenaco (razón de tasas 1,89).
 
 ## Artículos relacionados
 

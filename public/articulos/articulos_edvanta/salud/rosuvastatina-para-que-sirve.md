@@ -12,22 +12,22 @@ No es una pastilla para bajar de peso ni un sustituto de los cambios de estilo d
 
 ## Cómo funciona
 
-La rosuvastatina inhibe de forma competitiva y selectiva la HMG-CoA reductasa, la enzima limitante de la síntesis de colesterol. Al reducir la síntesis hepática, aumenta la expresión de receptores LDL y la captación de LDL circulante [1].
+La rosuvastatina inhibe de forma competitiva y selectiva la HMG-CoA reductasa, la enzima limitante de la síntesis de colesterol. Al reducir la síntesis hepática, aumenta la expresión de receptores LDL y la captación de LDL circulante.
 
-Su potencia es mayor que la de otras estatinas: la dosis de 10 mg reduce el LDL alrededor de 45 a 52 % y la de 40 mg alrededor de 55 a 63 % en los estudios de dosis-respuesta [1].
+Su potencia es mayor que la de otras estatinas: la dosis de 10 mg reduce el LDL alrededor de 45 a 52 % y la de 40 mg alrededor de 55 a 63 % en los estudios de dosis-respuesta.
 
-El efecto sobre el LDL se observa en la primera semana y alcanza su máximo a las 4 semanas. También reduce el colesterol total, la apolipoproteína B y los triglicéridos, y aumenta el HDL [1].
+El efecto sobre el LDL se observa en la primera semana y alcanza su máximo a las 4 semanas. También reduce el colesterol total, la apolipoproteína B y los triglicéridos, y aumenta el HDL.
 
 ## Cuánto tarda en hacer efecto
 
 | Parámetro | Valor |
 | --- | --- |
-| Absorción | Oral, con una biodisponibilidad de aproximadamente 20 % [1] |
-| Concentración máxima | Alrededor de 3 a 5 horas [1] |
-| Metabolismo | Hepático limitado; no depende de forma importante de CYP3A4 [1] |
-| Transportadores | Sustrato de OATP1B1 y BCRP; las interacciones con estos transportadores aumentan la exposición [1] |
-| Semivida | Aproximadamente 19 horas [1] |
-| Eliminación | Principalmente fecal, con una fracción renal; la insuficiencia renal grave aumenta la exposición [1] |
+| Absorción | Oral, con una biodisponibilidad de aproximadamente 20 %  |
+| Concentración máxima | Alrededor de 3 a 5 horas  |
+| Metabolismo | Hepático limitado; no depende de forma importante de CYP3A4  |
+| Transportadores | Sustrato de OATP1B1 y BCRP; las interacciones con estos transportadores aumentan la exposición  |
+| Semivida | Aproximadamente 19 horas  |
+| Eliminación | Principalmente fecal, con una fracción renal; la insuficiencia renal grave aumenta la exposición  |
 
 ## Cómo se toma
 
@@ -44,14 +44,14 @@ El efecto sobre el LDL se observa en la primera semana y alcanza su máximo a la
 - Aumento leve de glucosa y riesgo de diabetes en personas predispuestas.
 - Rabdomiólisis, muy rara, con dolor intenso y orina oscura.
 
-Las reacciones más frecuentes son cefalea, mialgia, estreñimiento, náuseas, dolor abdominal, astenia y elevación de transaminasas [1].
+Las reacciones más frecuentes son cefalea, mialgia, estreñimiento, náuseas, dolor abdominal, astenia y elevación de transaminasas.
 
 - Frecuentes: cefalea, mialgia, estreñimiento, náuseas, dolor abdominal, astenia, diabetes mellitus y aumento de transaminasas.
 - Poco frecuentes: mareo, pancreatitis, diarrea, prurito, exantema, urticaria, artralgia y proteinuria.
 - Raras: trombocitopenia, hipersensibilidad, polineuropatía, pérdida de memoria, ictericia, hepatitis, síndrome de Stevens-Johnson, DRESS y rabdomiólisis.
 - Muy raras o de frecuencia no conocida: miopatía necrosante inmunomediada, síndrome tipo lupus, rotura muscular, miastenia grave, hematuria y ginecomastia.
 
-La incidencia de rabdomiólisis, eventos renales graves y eventos hepáticos graves es mayor con la dosis de 40 mg que con las dosis menores [1].
+La incidencia de rabdomiólisis, eventos renales graves y eventos hepáticos graves es mayor con la dosis de 40 mg que con las dosis menores.
 
 ## Interacciones
 
@@ -63,18 +63,18 @@ La incidencia de rabdomiólisis, eventos renales graves y eventos hepáticos gra
 
 | Medicamento | Efecto | Qué hacer |
 | --- | --- | --- |
-| Ciclosporina | Aumenta la exposición a rosuvastatina unas 7 veces | Contraindicada [1] |
-| Inhibidores de la proteasa (atazanavir/ritonavir, lopinavir/ritonavir) | Aumentan la exposición a rosuvastatina | Ajustar la dosis o evitar según el caso [1] |
-| Gemfibrozilo y otros fibratos | Aumentan el riesgo de miopatía | Evitar gemfibrozilo; con fenofibrato, dosis inicial 5 mg [1] |
-| Ezetimiba | Aumento modesto de la exposición y posible interacción farmacodinámica | Vigilancia clínica [1] |
-| Antiácidos con aluminio y magnesio | Reducen la absorción de rosuvastatina | Separar al menos 2 horas [1] |
-| Ticagrelor | Puede aumentar la exposición y el riesgo renal y muscular | Vigilar función renal y CK [1] |
-| Warfarina y cumarínicos | Puede aumentar el INR al iniciar o cambiar la dosis | Controlar el INR [1] |
-| Anticonceptivos orales | Aumentan etinilestradiol y norgestrel | Considerar la relevancia clínica [1] |
+| Ciclosporina | Aumenta la exposición a rosuvastatina unas 7 veces | Contraindicada  |
+| Inhibidores de la proteasa (atazanavir/ritonavir, lopinavir/ritonavir) | Aumentan la exposición a rosuvastatina | Ajustar la dosis o evitar según el caso  |
+| Gemfibrozilo y otros fibratos | Aumentan el riesgo de miopatía | Evitar gemfibrozilo; con fenofibrato, dosis inicial 5 mg  |
+| Ezetimiba | Aumento modesto de la exposición y posible interacción farmacodinámica | Vigilancia clínica  |
+| Antiácidos con aluminio y magnesio | Reducen la absorción de rosuvastatina | Separar al menos 2 horas  |
+| Ticagrelor | Puede aumentar la exposición y el riesgo renal y muscular | Vigilar función renal y CK  |
+| Warfarina y cumarínicos | Puede aumentar el INR al iniciar o cambiar la dosis | Controlar el INR  |
+| Anticonceptivos orales | Aumentan etinilestradiol y norgestrel | Considerar la relevancia clínica  |
 
 ## Quién no debe tomarlo
 
-Contraindicaciones de la ficha técnica [1]:
+Contraindicaciones de la ficha técnica:
 
 - Hipersensibilidad a la rosuvastatina o a los excipientes.
 - Enfermedad hepática activa o elevación persistente de transaminasas superior a 3 veces el límite superior normal.
@@ -83,9 +83,9 @@ Contraindicaciones de la ficha técnica [1]:
 - Tratamiento concomitante con sofosbuvir/velpatasvir/voxilaprevir o ciclosporina.
 - Embarazo, lactancia y mujeres en edad fértil sin anticoncepción adecuada.
 
-La dosis de 40 mg está además contraindicada en insuficiencia renal moderada, hipotiroidismo, antecedentes de toxicidad muscular, alcoholismo, origen asiático y uso concomitante de fibratos [1].
+La dosis de 40 mg está además contraindicada en insuficiencia renal moderada, hipotiroidismo, antecedentes de toxicidad muscular, alcoholismo, origen asiático y uso concomitante de fibratos.
 
-Advertencias principales [1]:
+Advertencias principales:
 
 - Miopatía y rabdomiólisis, con riesgo mayor a dosis altas y en pacientes predispuestos.
 - Proteinuria tubular, generalmente transitoria, más frecuente con 40 mg; evaluar la función renal en seguimiento.
@@ -96,21 +96,21 @@ Advertencias principales [1]:
 
 ## Embarazo, lactancia y niños
 
-- Embarazo: contraindicada. El colesterol es esencial para el desarrollo fetal; suspender si se produce un embarazo [1].
-- Lactancia: contraindicada; se desconoce si pasa a la leche humana [1].
-- Fertilidad: no hay datos en humanos; los estudios en animales no sugieren efectos [1].
+- Embarazo: contraindicada. El colesterol es esencial para el desarrollo fetal; suspender si se produce un embarazo.
+- Lactancia: contraindicada; se desconoce si pasa a la leche humana.
+- Fertilidad: no hay datos en humanos; los estudios en animales no sugieren efectos.
 
 ## Evidencia y situación en Colombia
 
-El estudio JUPITER evaluó a 17.802 hombres de 50 años o más y mujeres de 60 años o más sin enfermedad cardiovascular conocida, con LDL inferior a 130 mg/dL y proteína C reactiva de alta sensibilidad elevada. Los participantes recibieron rosuvastatina 20 mg o placebo durante una mediana de 2 años [2].
+El estudio JUPITER evaluó a 17.802 hombres de 50 años o más y mujeres de 60 años o más sin enfermedad cardiovascular conocida, con LDL inferior a 130 mg/dL y proteína C reactiva de alta sensibilidad elevada. Los participantes recibieron rosuvastatina 20 mg o placebo durante una mediana de 2 años.
 
-La rosuvastatina redujo el LDL un 45 % y disminuyó de forma significativa los eventos vasculares mayores frente a placebo (HR 0,56). También se observó un pequeño aumento de la diabetes diagnosticada, principalmente en personas con glucemia basal alterada [2].
+La rosuvastatina redujo el LDL un 45 % y disminuyó de forma significativa los eventos vasculares mayores frente a placebo (HR 0,56). También se observó un pequeño aumento de la diabetes diagnosticada, principalmente en personas con glucemia basal alterada.
 
-JUPITER respalda el uso de estatinas en prevención primaria en personas con inflamación sistémica y LDL no muy elevado, pero no significa que todas las personas sin enfermedad cardiovascular deban recibir una estatina. La decisión depende del riesgo global [2,6].
+JUPITER respalda el uso de estatinas en prevención primaria en personas con inflamación sistémica y LDL no muy elevado, pero no significa que todas las personas sin enfermedad cardiovascular deban recibir una estatina. La decisión depende del riesgo global.
 
-- Colombia: el CUM registra múltiples presentaciones de rosuvastatina, sola y en combinaciones [3].
-- Unión Europea: la rosuvastatina está autorizada para las indicaciones descritas [1].
-- Estados Unidos: la FDA tiene etiquetas vigentes de rosuvastatina y de sus combinaciones [1].
+- Colombia: el CUM registra múltiples presentaciones de rosuvastatina, sola y en combinaciones.
+- Unión Europea: la rosuvastatina está autorizada para las indicaciones descritas.
+- Estados Unidos: la FDA tiene etiquetas vigentes de rosuvastatina y de sus combinaciones.
 
 ## Errores frecuentes
 
@@ -154,15 +154,15 @@ No sin hablar con el médico. Al suspenderla, el LDL vuelve a subir y el riesgo 
 
 ### ¿Cuánto tarda en hacer efecto Rosuvastatina?
 
-Alrededor de 3 a 5 horas [1] Su efecto se mantiene mientras el medicamento permanece en el cuerpo; la semivida es de aproximadamente 19 horas [1]. La respuesta completa depende de la indicación y del paciente, así que el seguimiento lo define el profesional.
+Alrededor de 3 a 5 horas  Su efecto se mantiene mientras el medicamento permanece en el cuerpo; la semivida es de aproximadamente 19 horas. La respuesta completa depende de la indicación y del paciente, así que el seguimiento lo define el profesional.
 
 ### ¿Se puede usar Rosuvastatina en el embarazo?
 
-- Embarazo: contraindicada. El colesterol es esencial para el desarrollo fetal; suspender si se produce un embarazo [1]. - Lactancia: contraindicada; se desconoce si pasa a la leche humana [1]. - Fertilidad: no hay datos en humanos; los estudios en animales no sugieren efectos [1].
+- Embarazo: contraindicada. El colesterol es esencial para el desarrollo fetal; suspender si se produce un embarazo. - Lactancia: contraindicada; se desconoce si pasa a la leche humana. - Fertilidad: no hay datos en humanos; los estudios en animales no sugieren efectos.
 
 ### ¿Qué efectos secundarios de Rosuvastatina son graves?
 
-Las reacciones más frecuentes son cefalea, mialgia, estreñimiento, náuseas, dolor abdominal, astenia y elevación de transaminasas [1]. - Frecuentes: cefalea, mialgia, estreñimiento, náuseas, dolor abdominal, astenia, diabetes mellitus y aumento de transaminasas. - Poco frecuentes: mareo, pancreatitis, diarrea, prurito, exantema, urticaria, artralgia y proteinuria. - Raras: trombocitopenia, hipersensibilidad, polineuropatía, pérdida de memoria, ictericia, hepatitis, síndrome de Stevens-Johnson, DRESS y rabdomiólisis. - Muy raras o de frecuencia no conocida: miopatía necrosante inmunomediada,…
+Las reacciones más frecuentes son cefalea, mialgia, estreñimiento, náuseas, dolor abdominal, astenia y elevación de transaminasas. - Frecuentes: cefalea, mialgia, estreñimiento, náuseas, dolor abdominal, astenia, diabetes mellitus y aumento de transaminasas. - Poco frecuentes: mareo, pancreatitis, diarrea, prurito, exantema, urticaria, artralgia y proteinuria. - Raras: trombocitopenia, hipersensibilidad, polineuropatía, pérdida de memoria, ictericia, hepatitis, síndrome de Stevens-Johnson, DRESS y rabdomiólisis. - Muy raras o de frecuencia no conocida: miopatía necrosante inmunomediada,…
 
 ## Artículos relacionados
 

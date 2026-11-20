@@ -15,64 +15,64 @@ Pertenece al grupo farmacológico de AINE (inhibidor de la ciclooxigenasa).
 
 ## ¿Para qué sirve el ketorolaco?
 
-Según su ficha técnica, el ketorolaco en tabletas está indicado para el tratamiento a corto plazo del dolor leve o moderado después de una cirugía [1]. En Colombia también existe en solución inyectable, que se aplica en servicios de salud [2].
+Según su ficha técnica, el ketorolaco en tabletas está indicado para el tratamiento a corto plazo del dolor leve o moderado después de una cirugía. En Colombia también existe en solución inyectable, que se aplica en servicios de salud.
 
 ## Cómo funciona
 
-Inhibe la actividad de la ciclooxigenasa y, por tanto, la síntesis de prostaglandinas [1].
+Inhibe la actividad de la ciclooxigenasa y, por tanto, la síntesis de prostaglandinas.
 
-Inhibe la agregación plaquetaria y puede prolongar el tiempo de sangría; por eso está contraindicado como analgésico profiláctico antes o durante la cirugía [1].
+Inhibe la agregación plaquetaria y puede prolongar el tiempo de sangría; por eso está contraindicado como analgésico profiláctico antes o durante la cirugía.
 
 ## Cuánto tarda en hacer efecto
 
 | Parámetro | Valor |
 | --- | --- |
-| Absorción | Rápida y completa por vía oral y parenteral [1] |
-| Concentración máxima | En promedio 44 minutos tras 10 mg orales [1] |
-| Unión a proteínas | Más del 99 % [1] |
-| Semivida | Unas 5 horas en adultos; 7 horas en personas mayores [1] |
-| Eliminación | Sobre todo en orina (91,4 %) y el resto en heces [1] |
+| Absorción | Rápida y completa por vía oral y parenteral  |
+| Concentración máxima | En promedio 44 minutos tras 10 mg orales  |
+| Unión a proteínas | Más del 99 %  |
+| Semivida | Unas 5 horas en adultos; 7 horas en personas mayores  |
+| Eliminación | Sobre todo en orina (91,4 %) y el resto en heces  |
 
 ## Cómo se toma
 
-La dosis la define tu médico. Como referencia, la ficha técnica indica 10 mg cada 4 a 6 horas, sin pasar de 40 mg al día por vía oral. La duración total no debe superar 7 días [1].
+La dosis la define tu médico. Como referencia, la ficha técnica indica 10 mg cada 4 a 6 horas, sin pasar de 40 mg al día por vía oral. La duración total no debe superar 7 días.
 
-- En personas mayores se usan las dosis más bajas [1].
-- Si recibiste ketorolaco inyectado y sigues con tabletas, la suma no debe pasar de 90 mg al día (60 mg en personas mayores) [1].
+- En personas mayores se usan las dosis más bajas.
+- Si recibiste ketorolaco inyectado y sigues con tabletas, la suma no debe pasar de 90 mg al día (60 mg en personas mayores).
 
 ## Efectos secundarios
 
-Los más frecuentes son las molestias digestivas: indigestión, náuseas, dolor abdominal, diarrea o estreñimiento. También puede causar úlcera y sangrado del estómago [1].
+Los más frecuentes son las molestias digestivas: indigestión, náuseas, dolor abdominal, diarrea o estreñimiento. También puede causar úlcera y sangrado del estómago.
 
-Busca atención de inmediato si tienes heces negras, vómito con sangre, orinas muy poco, se te hinchan las piernas, te falta el aire o aparecen ronchas o ampollas [1].
+Busca atención de inmediato si tienes heces negras, vómito con sangre, orinas muy poco, se te hinchan las piernas, te falta el aire o aparecen ronchas o ampollas.
 
-Las más frecuentes son digestivas: dispepsia, náuseas, dolor abdominal, diarrea, estreñimiento, úlcera y hemorragia digestiva [1].
+Las más frecuentes son digestivas: dispepsia, náuseas, dolor abdominal, diarrea, estreñimiento, úlcera y hemorragia digestiva.
 
-- Graves: insuficiencia renal aguda, nefritis intersticial, insuficiencia cardiaca, infarto o ictus, broncoespasmo, hepatitis, anafilaxia, síndrome de Stevens-Johnson y convulsiones [1].
+- Graves: insuficiencia renal aguda, nefritis intersticial, insuficiencia cardiaca, infarto o ictus, broncoespasmo, hepatitis, anafilaxia, síndrome de Stevens-Johnson y convulsiones.
 
 ## Interacciones
 
 | Medicamento | Qué puede pasar |
 |---|---|
-| Otros antiinflamatorios ([ibuprofeno](/articulos/ibuprofeno-para-que-sirve), [diclofenaco](/articulos/diclofenaco-para-que-sirve), [naproxeno](/articulos/naproxeno-para-que-sirve)) o aspirina | Úlcera y sangrado; combinación contraindicada [1] |
-| Anticoagulantes | Sangrado grave [1] |
-| Antidepresivos como la [sertralina](/articulos/sertralina-para-que-sirve) | Más sangrado digestivo [1] |
-| Medicamentos para la presión ([losartán](/articulos/losartan-para-que-sirve), [enalapril](/articulos/enalapril-para-que-sirve)) y diuréticos | Menos efecto y riesgo de daño renal [1] |
-| Litio | Sube el litio; combinación contraindicada [1] |
+| Otros antiinflamatorios ([ibuprofeno](/articulos/ibuprofeno-para-que-sirve), [diclofenaco](/articulos/diclofenaco-para-que-sirve), [naproxeno](/articulos/naproxeno-para-que-sirve)) o aspirina | Úlcera y sangrado; combinación contraindicada  |
+| Anticoagulantes | Sangrado grave  |
+| Antidepresivos como la [sertralina](/articulos/sertralina-para-que-sirve) | Más sangrado digestivo  |
+| Medicamentos para la presión ([losartán](/articulos/losartan-para-que-sirve), [enalapril](/articulos/enalapril-para-que-sirve)) y diuréticos | Menos efecto y riesgo de daño renal  |
+| Litio | Sube el litio; combinación contraindicada  |
 
 | Medicamento | Efecto | Qué hacer |
 | --- | --- | --- |
-| Otros AINE, ácido acetilsalicílico | Más úlcera y hemorragia | Contraindicado [1] |
-| Anticoagulantes a dosis plenas, pentoxifilina | Sangrado grave | Contraindicado [1] |
-| Antiagregantes, ISRS, IRSN, corticoides | Más sangrado digestivo | Precaución [1] |
-| Probenecid | Sube los niveles de ketorolaco | Contraindicado [1] |
-| Litio | Sube el litio | Contraindicado [1] |
-| Metotrexato | Aumenta su toxicidad | Extremar precauciones [1] |
-| IECA, ARA-II, diuréticos, betabloqueadores | Menos efecto y riesgo de insuficiencia renal | Vigilar presión y función renal [1] |
+| Otros AINE, ácido acetilsalicílico | Más úlcera y hemorragia | Contraindicado  |
+| Anticoagulantes a dosis plenas, pentoxifilina | Sangrado grave | Contraindicado  |
+| Antiagregantes, ISRS, IRSN, corticoides | Más sangrado digestivo | Precaución  |
+| Probenecid | Sube los niveles de ketorolaco | Contraindicado  |
+| Litio | Sube el litio | Contraindicado  |
+| Metotrexato | Aumenta su toxicidad | Extremar precauciones  |
+| IECA, ARA-II, diuréticos, betabloqueadores | Menos efecto y riesgo de insuficiencia renal | Vigilar presión y función renal  |
 
 ## Quién no debe tomarlo
 
-No lo tomes si [1]:
+No lo tomes si:
 
 - Tienes o tuviste úlcera, sangrado o perforación del estómago o del intestino.
 - Tienes asma, pólipos nasales o te dio alergia con otro antiinflamatorio o con aspirina.
@@ -81,7 +81,7 @@ No lo tomes si [1]:
 - Tomas otro antiinflamatorio, aspirina, litio, probenecid o pentoxifilina.
 - Estás embarazada, en trabajo de parto o lactando.
 
-Está contraindicado en [1]:
+Está contraindicado en:
 
 - Úlcera péptica activa o cualquier antecedente de úlcera, sangrado o perforación digestiva.
 - Hipersensibilidad a otros AINE, asma, pólipos nasales, angioedema o broncoespasmo.
@@ -90,27 +90,27 @@ Está contraindicado en [1]:
 - Uso con otros AINE, ácido acetilsalicílico, anticoagulantes a dosis plenas, probenecid, litio o pentoxifilina.
 - Embarazo, parto y lactancia; uso profiláctico antes o durante la cirugía.
 
-Advertencias: toxicidad digestiva grave en cualquier momento; aumento de urea y creatinina; retención de líquidos y edema; prolongación del tiempo de sangría; elevación de transaminasas; reacciones cutáneas graves muy raras; y mayor sensibilidad en personas mayores [1].
+Advertencias: toxicidad digestiva grave en cualquier momento; aumento de urea y creatinina; retención de líquidos y edema; prolongación del tiempo de sangría; elevación de transaminasas; reacciones cutáneas graves muy raras; y mayor sensibilidad en personas mayores.
 
 ## Embarazo, lactancia y niños
 
-Está contraindicado en el embarazo, el parto y la lactancia. Puede afectar la fertilidad, por lo que no se recomienda si buscas un embarazo [1].
+Está contraindicado en el embarazo, el parto y la lactancia. Puede afectar la fertilidad, por lo que no se recomienda si buscas un embarazo.
 
-- Contraindicado en el embarazo, el parto y la lactancia [1].
-- Puede afectar la fertilidad; no se recomienda en mujeres que buscan un embarazo [1].
+- Contraindicado en el embarazo, el parto y la lactancia.
+- Puede afectar la fertilidad; no se recomienda en mujeres que buscan un embarazo.
 
 ## Ketorolaco en Colombia
 
-El Código Único de Medicamentos del INVIMA registra 8 registros sanitarios vigentes que contienen ketorolaco; predominan las soluciones inyectables [2].
+El Código Único de Medicamentos del INVIMA registra 8 registros sanitarios vigentes que contienen ketorolaco; predominan las soluciones inyectables.
 
 ## Evidencia y situación en Colombia
 
-El ketorolaco es útil cuando se necesita un analgésico no opioide potente por pocos días tras una cirugía. Las restricciones de dosis y duración de su ficha técnica responden a su perfil de sangrado digestivo y daño renal [1].
+El ketorolaco es útil cuando se necesita un analgésico no opioide potente por pocos días tras una cirugía. Las restricciones de dosis y duración de su ficha técnica responden a su perfil de sangrado digestivo y daño renal.
 
-Fuera del posoperatorio a corto plazo, su relación beneficio-riesgo es desfavorable frente a otros analgésicos [1].
+Fuera del posoperatorio a corto plazo, su relación beneficio-riesgo es desfavorable frente a otros analgésicos.
 
-- Colombia: el CUM del INVIMA registra 8 registros sanitarios vigentes que contienen ketorolaco; con el código ATC M01AB15 predominan las soluciones inyectables. Consulta del 16-nov-2026 [2].
-- España: autorizado en comprimidos de 10 mg para el dolor posoperatorio a corto plazo [1].
+- Colombia: el CUM del INVIMA registra 8 registros sanitarios vigentes que contienen ketorolaco; con el código ATC M01AB15 predominan las soluciones inyectables. Consulta del 16-nov-2026.
+- España: autorizado en comprimidos de 10 mg para el dolor posoperatorio a corto plazo.
 
 ## Errores frecuentes
 
@@ -146,23 +146,23 @@ No más de 7 días en total, contando la inyección y las tabletas.
 
 ### ¿Para qué sirve el ketorolaco en ampolla?
 
-Para el dolor después de una cirugía, aplicado por personal de salud. En Colombia la mayoría de los registros de ketorolaco son soluciones inyectables [2]. La inyección tiene los mismos riesgos que las tabletas.
+Para el dolor después de una cirugía, aplicado por personal de salud. En Colombia la mayoría de los registros de ketorolaco son soluciones inyectables. La inyección tiene los mismos riesgos que las tabletas.
 
 ### ¿Existe el ketorolaco sublingual?
 
-Sí. En Colombia hay registrada una tableta sublingual de ketorolaco, que se deja disolver debajo de la lengua [2]. Tiene las mismas precauciones que las demás presentaciones y el mismo límite de días.
+Sí. En Colombia hay registrada una tableta sublingual de ketorolaco, que se deja disolver debajo de la lengua. Tiene las mismas precauciones que las demás presentaciones y el mismo límite de días.
 
 ### ¿Cuánto tarda en hacer efecto Ketorolaco?
 
-En promedio 44 minutos tras 10 mg orales [1] Su efecto se mantiene mientras el medicamento permanece en el cuerpo; la semivida es de unas 5 horas en adultos; 7 horas en personas mayores [1]. La respuesta completa depende de la indicación y del paciente, así que el seguimiento lo define el profesional.
+En promedio 44 minutos tras 10 mg orales  Su efecto se mantiene mientras el medicamento permanece en el cuerpo; la semivida es de unas 5 horas en adultos; 7 horas en personas mayores. La respuesta completa depende de la indicación y del paciente, así que el seguimiento lo define el profesional.
 
 ### ¿Se puede usar Ketorolaco en el embarazo?
 
-- Contraindicado en el embarazo, el parto y la lactancia [1]. - Puede afectar la fertilidad; no se recomienda en mujeres que buscan un embarazo [1].
+- Contraindicado en el embarazo, el parto y la lactancia. - Puede afectar la fertilidad; no se recomienda en mujeres que buscan un embarazo.
 
 ### ¿Qué efectos secundarios de Ketorolaco son graves?
 
-Las más frecuentes son digestivas: dispepsia, náuseas, dolor abdominal, diarrea, estreñimiento, úlcera y hemorragia digestiva [1]. - Graves: insuficiencia renal aguda, nefritis intersticial, insuficiencia cardiaca, infarto o ictus, broncoespasmo, hepatitis, anafilaxia, síndrome de Stevens-Johnson y convulsiones [1].
+Las más frecuentes son digestivas: dispepsia, náuseas, dolor abdominal, diarrea, estreñimiento, úlcera y hemorragia digestiva. - Graves: insuficiencia renal aguda, nefritis intersticial, insuficiencia cardiaca, infarto o ictus, broncoespasmo, hepatitis, anafilaxia, síndrome de Stevens-Johnson y convulsiones.
 
 ## Artículos relacionados
 

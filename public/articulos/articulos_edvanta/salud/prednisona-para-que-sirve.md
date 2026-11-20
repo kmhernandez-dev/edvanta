@@ -12,17 +12,17 @@ No es un antibiótico ni un analgésico común. Su efecto puede ser rápido, per
 
 ## Cómo funciona
 
-Tiene acción antiinflamatoria, inmunosupresora y metabólica: inhibe la quimiotaxis y la liberación de mediadores de la inflamación [1].
+Tiene acción antiinflamatoria, inmunosupresora y metabólica: inhibe la quimiotaxis y la liberación de mediadores de la inflamación.
 
 ## Cuánto tarda en hacer efecto
 
 | Parámetro | Valor |
 | --- | --- |
-| Absorción oral | Rápida y casi completa; concentración máxima en 1 a 3 horas [1] |
-| Activación | El 80 % al 100 % pasa a prednisolona en el primer paso hepático [1] |
-| Semivida plasmática | Unas 3 horas [1] |
-| Semivida biológica | 12 a 36 horas [1] |
-| Eliminación | Renal, casi toda como metabolitos [1] |
+| Absorción oral | Rápida y casi completa; concentración máxima en 1 a 3 horas  |
+| Activación | El 80 % al 100 % pasa a prednisolona en el primer paso hepático  |
+| Semivida plasmática | Unas 3 horas  |
+| Semivida biológica | 12 a 36 horas  |
+| Eliminación | Renal, casi toda como metabolitos  |
 
 ## Cómo se toma
 
@@ -42,7 +42,7 @@ Tiene acción antiinflamatoria, inmunosupresora y metabólica: inhibe la quimiot
 - Cataratas, glaucoma y adelgazamiento de la piel.
 - Supresión suprarrenal con el uso prolongado.
 
-Dependen de la dosis y la duración [1]:
+Dependen de la dosis y la duración:
 
 ## Interacciones
 
@@ -55,30 +55,30 @@ Dependen de la dosis y la duración [1]:
 
 | Medicamento | Efecto | Qué hacer |
 | --- | --- | --- |
-| AINE | Más riesgo de úlcera y sangrado digestivo | Evitar o proteger el estómago [1] |
-| Insulina y antidiabéticos | Menor efecto hipoglucemiante | Vigilar la glucemia [1] |
-| Rifampicina, fenitoína, carbamazepina, barbitúricos | Inducen el CYP3A4 y reducen el efecto | Puede requerir más dosis [1] |
-| Ketoconazol, itraconazol | Inhiben el CYP3A y aumentan los efectos adversos | Vigilar [1] |
-| Digoxina, diuréticos, laxantes | Más pérdida de potasio | Vigilar potasio [1] |
-| Antiácidos | Menor absorción | Separar las tomas [1] |
+| AINE | Más riesgo de úlcera y sangrado digestivo | Evitar o proteger el estómago  |
+| Insulina y antidiabéticos | Menor efecto hipoglucemiante | Vigilar la glucemia  |
+| Rifampicina, fenitoína, carbamazepina, barbitúricos | Inducen el CYP3A4 y reducen el efecto | Puede requerir más dosis  |
+| Ketoconazol, itraconazol | Inhiben el CYP3A y aumentan los efectos adversos | Vigilar  |
+| Digoxina, diuréticos, laxantes | Más pérdida de potasio | Vigilar potasio  |
+| Antiácidos | Menor absorción | Separar las tomas  |
 
 ## Quién no debe tomarlo
 
-Contraindicada en hipersensibilidad. En tratamientos prolongados, además, en infecciones víricas agudas (herpes, varicela) y desde 8 semanas antes hasta 2 semanas después de una vacuna profiláctica [1].
+Contraindicada en hipersensibilidad. En tratamientos prolongados, además, en infecciones víricas agudas (herpes, varicela) y desde 8 semanas antes hasta 2 semanas después de una vacuna profiláctica.
 
-La ficha técnica pide precaución, entre otras, en osteoporosis, diabetes grave, psicosis, úlcera péptica y tuberculosis activa [1].
+La ficha técnica pide precaución, entre otras, en osteoporosis, diabetes grave, psicosis, úlcera péptica y tuberculosis activa.
 
 ## Embarazo, lactancia y niños
 
-- Embarazo: evaluar riesgo y beneficio; en tratamientos prolongados hay riesgo de retraso del crecimiento intrauterino y de atrofia suprarrenal fetal [1].
-- Lactancia: pasa a la leche; con dosis altas se recomienda interrumpir la lactancia [1].
+- Embarazo: evaluar riesgo y beneficio; en tratamientos prolongados hay riesgo de retraso del crecimiento intrauterino y de atrofia suprarrenal fetal.
+- Lactancia: pasa a la leche; con dosis altas se recomienda interrumpir la lactancia.
 
 ## Evidencia y situación en Colombia
 
-La ficha técnica respalda su uso en un abanico amplio de enfermedades inflamatorias y autoinmunes, y como sustitución en la insuficiencia suprarrenal. El reto clínico no es la eficacia sino usar la menor dosis por el menor tiempo [1].
+La ficha técnica respalda su uso en un abanico amplio de enfermedades inflamatorias y autoinmunes, y como sustitución en la insuficiencia suprarrenal. El reto clínico no es la eficacia sino usar la menor dosis por el menor tiempo.
 
-- Colombia: en la consulta del CUM de registros vigentes del 16-nov-2026 aparece 1 registro con el código ATC H02AB07 [2].
-- España: autorizada, entre otros, como Dacortin 2,5 mg, 5 mg y 30 mg comprimidos [1].
+- Colombia: en la consulta del CUM de registros vigentes del 16-nov-2026 aparece 1 registro con el código ATC H02AB07.
+- España: autorizada, entre otros, como Dacortin 2,5 mg, 5 mg y 30 mg comprimidos.
 
 ## Errores frecuentes
 
@@ -124,11 +124,11 @@ Con moderación y según la enfermedad; el alcohol puede empeorar la gastritis, 
 
 ### ¿Se puede usar Prednisona en el embarazo?
 
-- Embarazo: evaluar riesgo y beneficio; en tratamientos prolongados hay riesgo de retraso del crecimiento intrauterino y de atrofia suprarrenal fetal [1]. - Lactancia: pasa a la leche; con dosis altas se recomienda interrumpir la lactancia [1].
+- Embarazo: evaluar riesgo y beneficio; en tratamientos prolongados hay riesgo de retraso del crecimiento intrauterino y de atrofia suprarrenal fetal. - Lactancia: pasa a la leche; con dosis altas se recomienda interrumpir la lactancia.
 
 ### ¿Qué efectos secundarios de Prednisona son graves?
 
-Dependen de la dosis y la duración [1]:
+Dependen de la dosis y la duración:
 
 ## Artículos relacionados
 

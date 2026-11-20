@@ -23,19 +23,19 @@ Pertenece al grupo farmacológico de AINE.
 
 ## Cómo funciona
 
-Inhibe la prostaglandina sintetasa; tiene una actividad antiinflamatoria elevada con propiedades analgésicas y antipiréticas [1].
+Inhibe la prostaglandina sintetasa; tiene una actividad antiinflamatoria elevada con propiedades analgésicas y antipiréticas.
 
-Reduce la agregación plaquetaria y prolonga el tiempo de hemorragia [1].
+Reduce la agregación plaquetaria y prolonga el tiempo de hemorragia.
 
 ## Cuánto tarda en hacer efecto
 
 | Parámetro | Valor |
 | --- | --- |
-| Absorción | Completa por vía oral [1] |
-| Concentración máxima | 2 a 4 horas, según la comida [1] |
-| Unión a proteínas | Más del 99 % a la albúmina [1] |
-| Semivida | Unas 13 horas [1] |
-| Eliminación | Cerca del 95 % en orina, inalterado o como conjugados [1] |
+| Absorción | Completa por vía oral  |
+| Concentración máxima | 2 a 4 horas, según la comida  |
+| Unión a proteínas | Más del 99 % a la albúmina  |
+| Semivida | Unas 13 horas  |
+| Eliminación | Cerca del 95 % en orina, inalterado o como conjugados  |
 
 ## Cómo se toma
 
@@ -48,9 +48,9 @@ Reduce la agregación plaquetaria y prolonga el tiempo de hemorragia [1].
 
 Ardor, dolor de estómago, náuseas, mareo, somnolencia y retención de líquidos. Suspende y consulta si aparecen heces negras, vómito con sangre, dolor en el pecho, falta de aire, hinchazón de piernas o reacciones en la piel.
 
-Las más frecuentes son digestivas: náuseas, vómito, diarrea, estreñimiento, dispepsia, dolor abdominal, úlcera y hemorragia [1].
+Las más frecuentes son digestivas: náuseas, vómito, diarrea, estreñimiento, dispepsia, dolor abdominal, úlcera y hemorragia.
 
-- Graves: agranulocitosis y anemia aplásica, anafilaxia, meningitis aséptica, convulsiones, insuficiencia cardiaca, hipertensión, hepatitis, síndrome de Stevens-Johnson, DRESS, nefritis intersticial e insuficiencia renal [1].
+- Graves: agranulocitosis y anemia aplásica, anafilaxia, meningitis aséptica, convulsiones, insuficiencia cardiaca, hipertensión, hepatitis, síndrome de Stevens-Johnson, DRESS, nefritis intersticial e insuficiencia renal.
 
 ## Interacciones
 
@@ -58,13 +58,13 @@ Anticoagulantes y antiagregantes, otros AINE, corticoides, antidepresivos ISRS (
 
 | Medicamento | Efecto | Qué hacer |
 | --- | --- | --- |
-| Ácido acetilsalicílico a dosis bajas | Más de un día de uso conjunto puede inhibir su efecto antiplaquetario | Evitar el uso continuo conjunto [1] |
-| Anticoagulantes, antiagregantes, ISRS, corticoides | Más sangrado o úlcera | Evitar o vigilar [1] |
-| Otros AINE, incluidos coxibs | Más toxicidad digestiva | No combinar [1] |
-| Furosemida, betabloqueadores, IECA | Menos efecto y riesgo renal | Vigilar presión y función renal [1] |
-| Litio, metotrexato | Aumentan sus niveles o toxicidad | Vigilar [1] |
-| Probenecid | Sube el naproxeno y alarga su semivida | Ajustar [1] |
-| Antiácidos, colestiramina | Retrasan su absorción | Separar tomas [1] |
+| Ácido acetilsalicílico a dosis bajas | Más de un día de uso conjunto puede inhibir su efecto antiplaquetario | Evitar el uso continuo conjunto  |
+| Anticoagulantes, antiagregantes, ISRS, corticoides | Más sangrado o úlcera | Evitar o vigilar  |
+| Otros AINE, incluidos coxibs | Más toxicidad digestiva | No combinar  |
+| Furosemida, betabloqueadores, IECA | Menos efecto y riesgo renal | Vigilar presión y función renal  |
+| Litio, metotrexato | Aumentan sus niveles o toxicidad | Vigilar  |
+| Probenecid | Sube el naproxeno y alarga su semivida | Ajustar  |
+| Antiácidos, colestiramina | Retrasan su absorción | Separar tomas  |
 
 ## Quién no debe tomarlo
 
@@ -75,20 +75,20 @@ Anticoagulantes y antiagregantes, otros AINE, corticoides, antidepresivos ISRS (
 - Embarazo, especialmente desde la semana 20.
 - Mayores de 65 años o personas que toman anticoagulantes.
 
-Está contraindicado en [1]:
+Está contraindicado en:
 
 - Reacciones alérgicas graves previas a otros AINE.
 - Hemorragia o perforación digestiva previa por AINE; úlcera o hemorragia activa o recidivante.
 - Insuficiencia cardiaca grave; colitis ulcerosa; insuficiencia hepática o renal grave.
 - Tercer trimestre del embarazo y menores de 2 años.
 
-Advertencias: hemorragia, úlcera y perforación digestiva; aumento moderado del riesgo aterotrombótico con dosis altas y tratamientos largos; reacciones cutáneas graves; efectos renales; reacciones hepáticas raras; trastornos oculares raros; y mayor riesgo en personas mayores [1].
+Advertencias: hemorragia, úlcera y perforación digestiva; aumento moderado del riesgo aterotrombótico con dosis altas y tratamientos largos; reacciones cutáneas graves; efectos renales; reacciones hepáticas raras; trastornos oculares raros; y mayor riesgo en personas mayores.
 
 ## Embarazo, lactancia y niños
 
-- Primer y segundo trimestre: solo si es claramente necesario; desde la semana 20 puede causar oligohidramnios y constricción del ductus arterioso [1].
-- Tercer trimestre: contraindicado [1].
-- Lactancia: pasa a la leche (cerca del 1 % de la concentración plasmática); no se recomienda [1].
+- Primer y segundo trimestre: solo si es claramente necesario; desde la semana 20 puede causar oligohidramnios y constricción del ductus arterioso.
+- Tercer trimestre: contraindicado.
+- Lactancia: pasa a la leche (cerca del 1 % de la concentración plasmática); no se recomienda.
 
 ## Naproxeno o ibuprofeno
 
@@ -103,14 +103,14 @@ La elección depende de la persona y de sus otras enfermedades. Ninguno es «má
 
 ## Evidencia y situación en Colombia
 
-En el metaanálisis CNT, el naproxeno no aumentó significativamente los eventos vasculares mayores (razón de tasas 0,93), a diferencia de los coxibs y el diclofenaco; pero aumentó las complicaciones digestivas altas (4,22) [3].
+En el metaanálisis CNT, el naproxeno no aumentó significativamente los eventos vasculares mayores (razón de tasas 0,93), a diferencia de los coxibs y el diclofenaco; pero aumentó las complicaciones digestivas altas (4,22).
 
-En PRECISION, con una dosis media de 852 mg al día, el desenlace cardiovascular ocurrió en el 2,5 % de los pacientes con naproxeno y hubo más eventos digestivos que con celecoxib [4].
+En PRECISION, con una dosis media de 852 mg al día, el desenlace cardiovascular ocurrió en el 2,5 % de los pacientes con naproxeno y hubo más eventos digestivos que con celecoxib.
 
-Estos datos sirven para elegir el AINE según el riesgo de cada paciente: el naproxeno mostró menos señal cardiovascular y más complicaciones digestivas; el celecoxib, menos eventos digestivos [3,4].
+Estos datos sirven para elegir el AINE según el riesgo de cada paciente: el naproxeno mostró menos señal cardiovascular y más complicaciones digestivas; el celecoxib, menos eventos digestivos.
 
-- Colombia: el CUM del INVIMA registra 85 registros sanitarios vigentes que contienen naproxeno (código ATC M01AE02 para el naproxeno solo), en tabletas, cápsulas y suspensión oral. Consulta del 16-nov-2026 [2].
-- España: autorizado en comprimidos de 500 mg para las indicaciones descritas [1].
+- Colombia: el CUM del INVIMA registra 85 registros sanitarios vigentes que contienen naproxeno (código ATC M01AE02 para el naproxeno solo), en tabletas, cápsulas y suspensión oral. Consulta del 16-nov-2026.
+- España: autorizado en comprimidos de 500 mg para las indicaciones descritas.
 
 ## Errores frecuentes
 
@@ -146,15 +146,15 @@ Puede producir somnolencia o mareo en algunas personas.
 
 ### ¿Cuánto tarda en hacer efecto Naproxeno?
 
-2 a 4 horas, según la comida [1] Su efecto se mantiene mientras el medicamento permanece en el cuerpo; la semivida es de unas 13 horas [1]. La respuesta completa depende de la indicación y del paciente, así que el seguimiento lo define el profesional.
+2 a 4 horas, según la comida  Su efecto se mantiene mientras el medicamento permanece en el cuerpo; la semivida es de unas 13 horas. La respuesta completa depende de la indicación y del paciente, así que el seguimiento lo define el profesional.
 
 ### ¿Se puede usar Naproxeno en el embarazo?
 
-- Primer y segundo trimestre: solo si es claramente necesario; desde la semana 20 puede causar oligohidramnios y constricción del ductus arterioso [1]. - Tercer trimestre: contraindicado [1]. - Lactancia: pasa a la leche (cerca del 1 % de la concentración plasmática); no se recomienda [1].
+- Primer y segundo trimestre: solo si es claramente necesario; desde la semana 20 puede causar oligohidramnios y constricción del ductus arterioso. - Tercer trimestre: contraindicado. - Lactancia: pasa a la leche (cerca del 1 % de la concentración plasmática); no se recomienda.
 
 ### ¿Qué efectos secundarios de Naproxeno son graves?
 
-Las más frecuentes son digestivas: náuseas, vómito, diarrea, estreñimiento, dispepsia, dolor abdominal, úlcera y hemorragia [1]. - Graves: agranulocitosis y anemia aplásica, anafilaxia, meningitis aséptica, convulsiones, insuficiencia cardiaca, hipertensión, hepatitis, síndrome de Stevens-Johnson, DRESS, nefritis intersticial e insuficiencia renal [1].
+Las más frecuentes son digestivas: náuseas, vómito, diarrea, estreñimiento, dispepsia, dolor abdominal, úlcera y hemorragia. - Graves: agranulocitosis y anemia aplásica, anafilaxia, meningitis aséptica, convulsiones, insuficiencia cardiaca, hipertensión, hepatitis, síndrome de Stevens-Johnson, DRESS, nefritis intersticial e insuficiencia renal.
 
 ## Artículos relacionados
 

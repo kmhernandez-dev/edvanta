@@ -15,7 +15,7 @@ Pertenece al grupo farmacológico de Inhibidor selectivo de la COX-2 (coxib).
 
 ## ¿Para qué sirve el celecoxib?
 
-Según su ficha técnica, está indicado en adultos para el alivio de los síntomas de [1]:
+Según su ficha técnica, está indicado en adultos para el alivio de los síntomas de:
 
 - Artrosis.
 - Artritis reumatoide.
@@ -23,63 +23,63 @@ Según su ficha técnica, está indicado en adultos para el alivio de los sínto
 
 ## Cómo funciona
 
-Inhibe de forma selectiva la COX-2 en el intervalo de 200 a 400 mg al día; en voluntarios sanos no se observó inhibición significativa de la COX-1 a esas dosis [1].
+Inhibe de forma selectiva la COX-2 en el intervalo de 200 a 400 mg al día; en voluntarios sanos no se observó inhibición significativa de la COX-1 a esas dosis.
 
-La selectividad reduce las complicaciones digestivas frente a los AINE clásicos, pero la ficha técnica advierte un aumento de eventos cardiovasculares graves, sobre todo infarto, por lo que se usa la dosis eficaz más baja durante el menor tiempo [1,4].
+La selectividad reduce las complicaciones digestivas frente a los AINE clásicos, pero la ficha técnica advierte un aumento de eventos cardiovasculares graves, sobre todo infarto, por lo que se usa la dosis eficaz más baja durante el menor tiempo.
 
 ## Cuánto tarda en hacer efecto
 
 | Parámetro | Valor |
 | --- | --- |
-| Absorción | Aumenta cerca de un 20 % con comidas ricas en grasas [1] |
-| Concentración máxima | 2 a 3 horas; unas 4 horas con alimentos [1] |
-| Unión a proteínas | 97 % [1] |
-| Metabolismo | Principalmente por CYP2C9 [1] |
-| Semivida | 8 a 12 horas [1] |
-| Eliminación | Por metabolismo; menos del 1 % inalterado en orina [1] |
+| Absorción | Aumenta cerca de un 20 % con comidas ricas en grasas  |
+| Concentración máxima | 2 a 3 horas; unas 4 horas con alimentos  |
+| Unión a proteínas | 97 %  |
+| Metabolismo | Principalmente por CYP2C9  |
+| Semivida | 8 a 12 horas  |
+| Eliminación | Por metabolismo; menos del 1 % inalterado en orina  |
 
 ## Cómo se toma
 
-La dosis la define tu médico. Como referencia, la ficha técnica indica 200 mg al día, en una o dos tomas, que pueden subir hasta 200 mg dos veces al día; el máximo es de 400 mg al día. Si a las 2 semanas no hay más beneficio, el médico debe considerar otra opción [1].
+La dosis la define tu médico. Como referencia, la ficha técnica indica 200 mg al día, en una o dos tomas, que pueden subir hasta 200 mg dos veces al día; el máximo es de 400 mg al día. Si a las 2 semanas no hay más beneficio, el médico debe considerar otra opción.
 
-- En personas mayores se empieza con 200 mg al día [1].
-- En enfermedad moderada del hígado se empieza con la mitad de la dosis [1].
+- En personas mayores se empieza con 200 mg al día.
+- En enfermedad moderada del hígado se empieza con la mitad de la dosis.
 
 ## Efectos secundarios
 
-Los frecuentes son indigestión, dolor abdominal, diarrea, náuseas, mareo, dolor de cabeza, insomnio, hinchazón de las piernas, presión alta y erupción en la piel [1].
+Los frecuentes son indigestión, dolor abdominal, diarrea, náuseas, mareo, dolor de cabeza, insomnio, hinchazón de las piernas, presión alta y erupción en la piel.
 
-Busca atención de inmediato si tienes dolor de pecho, falta de aire, heces negras, vómito con sangre, piel amarilla, fiebre con ampollas o manchas en la piel [1].
+Busca atención de inmediato si tienes dolor de pecho, falta de aire, heces negras, vómito con sangre, piel amarilla, fiebre con ampollas o manchas en la piel.
 
-Frecuentes: infecciones respiratorias altas, sinusitis, faringitis, infección urinaria, insomnio, mareo, cefalea, hipertensión, dispepsia, dolor abdominal, diarrea, náuseas, erupción, edema periférico y retención de líquidos [1].
+Frecuentes: infecciones respiratorias altas, sinusitis, faringitis, infección urinaria, insomnio, mareo, cefalea, hipertensión, dispepsia, dolor abdominal, diarrea, náuseas, erupción, edema periférico y retención de líquidos.
 
-- La ficha técnica incluye el infarto de miocardio entre las reacciones frecuentes de los ensayos [1].
-- Graves: hemorragia y perforación digestiva, hepatitis e insuficiencia hepática, insuficiencia renal aguda, insuficiencia cardiaca, anafilaxia, síndrome de Stevens-Johnson, necrólisis epidérmica tóxica y DRESS [1].
+- La ficha técnica incluye el infarto de miocardio entre las reacciones frecuentes de los ensayos.
+- Graves: hemorragia y perforación digestiva, hepatitis e insuficiencia hepática, insuficiencia renal aguda, insuficiencia cardiaca, anafilaxia, síndrome de Stevens-Johnson, necrólisis epidérmica tóxica y DRESS.
 
 ## Interacciones
 
 | Medicamento | Qué puede pasar |
 |---|---|
-| Warfarina | Sangrados graves [1] |
-| Fluconazol | Sube mucho el celecoxib en la sangre [1] |
-| Metoprolol, algunos antidepresivos y el dextrometorfano | El celecoxib sube sus niveles [1] |
-| Medicamentos para la presión ([losartán](/articulos/losartan-para-que-sirve), [enalapril](/articulos/enalapril-para-que-sirve)) y diuréticos | Menos efecto y más riesgo para el riñón [1] |
-| Litio | Sube el litio [1] |
+| Warfarina | Sangrados graves  |
+| Fluconazol | Sube mucho el celecoxib en la sangre  |
+| Metoprolol, algunos antidepresivos y el dextrometorfano | El celecoxib sube sus niveles  |
+| Medicamentos para la presión ([losartán](/articulos/losartan-para-que-sirve), [enalapril](/articulos/enalapril-para-que-sirve)) y diuréticos | Menos efecto y más riesgo para el riñón  |
+| Litio | Sube el litio  |
 
 No lo combines con otro antiinflamatorio como [ibuprofeno](/articulos/ibuprofeno-para-que-sirve), [naproxeno](/articulos/naproxeno-para-que-sirve) o [diclofenaco](/articulos/diclofenaco-para-que-sirve).
 
 | Medicamento | Efecto | Qué hacer |
 | --- | --- | --- |
-| Warfarina | INR más alto y hemorragias graves | Controlar el INR [1] |
-| Fluconazol (inhibidor del CYP2C9) | Celecoxib: Cmáx +60 % y AUC +130 % | Iniciar con la dosis más baja [1] |
-| Rifampicina, carbamazepina, barbitúricos | Bajan el celecoxib | Vigilar eficacia [1] |
-| Sustratos del CYP2D6 (metoprolol, dextrometorfano, antidepresivos) | Suben sus concentraciones | Puede requerir reducir su dosis [1] |
-| IECA, ARA-II, diuréticos, betabloqueadores | Menos efecto antihipertensivo y riesgo renal | Vigilar presión y función renal [1] |
-| Litio | Litio: Cmáx +16 % y AUC +18 % | Vigilar litemia [1] |
+| Warfarina | INR más alto y hemorragias graves | Controlar el INR  |
+| Fluconazol (inhibidor del CYP2C9) | Celecoxib: Cmáx +60 % y AUC +130 % | Iniciar con la dosis más baja  |
+| Rifampicina, carbamazepina, barbitúricos | Bajan el celecoxib | Vigilar eficacia  |
+| Sustratos del CYP2D6 (metoprolol, dextrometorfano, antidepresivos) | Suben sus concentraciones | Puede requerir reducir su dosis  |
+| IECA, ARA-II, diuréticos, betabloqueadores | Menos efecto antihipertensivo y riesgo renal | Vigilar presión y función renal  |
+| Litio | Litio: Cmáx +16 % y AUC +18 % | Vigilar litemia  |
 
 ## Quién no debe tomarlo
 
-No lo tomes si [1]:
+No lo tomes si:
 
 - Eres alérgico a las sulfas o sulfamidas (por ejemplo, al antibiótico trimetoprim sulfametoxazol).
 - Tienes úlcera o sangrado del estómago, colitis ulcerosa o enfermedad de Crohn.
@@ -88,7 +88,7 @@ No lo tomes si [1]:
 - Estás embarazada, puedes quedar embarazada sin usar anticoncepción o estás lactando.
 - Tienes enfermedad grave del hígado o del riñón.
 
-Está contraindicado en [1]:
+Está contraindicado en:
 
 - Hipersensibilidad conocida a sulfamidas.
 - Úlcera péptica activa o hemorragia digestiva; enfermedad inflamatoria intestinal.
@@ -97,33 +97,33 @@ Está contraindicado en [1]:
 - Insuficiencia hepática grave y aclaramiento de creatinina <30 ml/min.
 - Insuficiencia cardiaca NYHA II-IV, cardiopatía isquémica, enfermedad arterial periférica o cerebrovascular establecidas.
 
-Advertencias: complicaciones digestivas altas y bajas; eventos cardiovasculares graves; retención de líquidos, edema e hipertensión; toxicidad renal y reacciones hepáticas graves; reacciones cutáneas graves muy raras, incluido DRESS; puede enmascarar la fiebre; y hemorragias graves con warfarina [1].
+Advertencias: complicaciones digestivas altas y bajas; eventos cardiovasculares graves; retención de líquidos, edema e hipertensión; toxicidad renal y reacciones hepáticas graves; reacciones cutáneas graves muy raras, incluido DRESS; puede enmascarar la fiebre; y hemorragias graves con warfarina.
 
 ## Embarazo, lactancia y niños
 
-Está contraindicado en el embarazo y en mujeres que pueden quedar embarazadas sin un método anticonceptivo eficaz. Quien lo toma no debe amamantar [1].
+Está contraindicado en el embarazo y en mujeres que pueden quedar embarazadas sin un método anticonceptivo eficaz. Quien lo toma no debe amamantar.
 
-- Embarazo: contraindicado, también en mujeres que puedan quedar embarazadas sin anticoncepción eficaz; en el segundo y tercer trimestre puede producir cierre prematuro del ductus arterioso y disfunción renal fetal [1].
-- Lactancia: pasa en muy baja proporción, pero quienes lo toman no deben amamantar [1].
+- Embarazo: contraindicado, también en mujeres que puedan quedar embarazadas sin anticoncepción eficaz; en el segundo y tercer trimestre puede producir cierre prematuro del ductus arterioso y disfunción renal fetal.
+- Lactancia: pasa en muy baja proporción, pero quienes lo toman no deben amamantar.
 
 ## ¿Es seguro para el corazón?
 
-En un ensayo con más de 24.000 personas con artritis y riesgo cardiovascular aumentado, el celecoxib a dosis moderadas no tuvo más eventos cardiovasculares que el ibuprofeno o el naproxeno, y causó menos problemas del estómago [3]. Eso no lo hace inocuo: en personas con enfermedad del corazón establecida sigue contraindicado [1].
+En un ensayo con más de 24.000 personas con artritis y riesgo cardiovascular aumentado, el celecoxib a dosis moderadas no tuvo más eventos cardiovasculares que el ibuprofeno o el naproxeno, y causó menos problemas del estómago. Eso no lo hace inocuo: en personas con enfermedad del corazón establecida sigue contraindicado.
 
 ## Celecoxib en Colombia
 
-El Código Único de Medicamentos del INVIMA registra 13 registros sanitarios vigentes con celecoxib, en cápsulas [2].
+El Código Único de Medicamentos del INVIMA registra 13 registros sanitarios vigentes con celecoxib, en cápsulas.
 
 ## Evidencia y situación en Colombia
 
-PRECISION aleatorizó a 24.081 pacientes con artrosis o artritis reumatoide y riesgo cardiovascular aumentado a celecoxib (dosis media 209 mg al día), naproxeno (852 mg) o ibuprofeno (2.045 mg), con un seguimiento medio de 34 meses [3].
+PRECISION aleatorizó a 24.081 pacientes con artrosis o artritis reumatoide y riesgo cardiovascular aumentado a celecoxib (dosis media 209 mg al día), naproxeno (852 mg) o ibuprofeno (2.045 mg), con un seguimiento medio de 34 meses.
 
-El desenlace cardiovascular primario ocurrió en 2,3 % con celecoxib, 2,5 % con naproxeno y 2,7 % con ibuprofeno; el celecoxib fue no inferior a ambos. Los eventos digestivos fueron menos con celecoxib que con naproxeno o ibuprofeno, y los renales, menos que con ibuprofeno [3].
+El desenlace cardiovascular primario ocurrió en 2,3 % con celecoxib, 2,5 % con naproxeno y 2,7 % con ibuprofeno; el celecoxib fue no inferior a ambos. Los eventos digestivos fueron menos con celecoxib que con naproxeno o ibuprofeno, y los renales, menos que con ibuprofeno.
 
-El metaanálisis CNT mostró que los coxibs aumentan los eventos vasculares mayores frente a placebo [4]. La lectura conjunta: a dosis moderadas, el celecoxib no es más riesgoso para el corazón que el ibuprofeno o el naproxeno a dosis plenas, pero ninguno es inocuo.
+El metaanálisis CNT mostró que los coxibs aumentan los eventos vasculares mayores frente a placebo. La lectura conjunta: a dosis moderadas, el celecoxib no es más riesgoso para el corazón que el ibuprofeno o el naproxeno a dosis plenas, pero ninguno es inocuo.
 
-- Colombia: el CUM del INVIMA registra 13 registros sanitarios vigentes con celecoxib (código ATC M01AH01), consulta del 16-nov-2026 [2].
-- Unión Europea: autorizado en adultos para artrosis, artritis reumatoide y espondilitis anquilosante [1].
+- Colombia: el CUM del INVIMA registra 13 registros sanitarios vigentes con celecoxib (código ATC M01AH01), consulta del 16-nov-2026.
+- Unión Europea: autorizado en adultos para artrosis, artritis reumatoide y espondilitis anquilosante.
 
 ## Errores frecuentes
 
@@ -159,19 +159,19 @@ No es su indicación. Para dolores ocasionales, pregunta por opciones como el [a
 
 ### ¿Para qué sirve el celecoxib de 200 mg?
 
-Es la presentación más registrada en Colombia [2] y la dosis de inicio habitual para la artrosis, la artritis reumatoide y la espondilitis anquilosante: 200 mg al día en una o dos tomas, con un máximo de 400 mg al día [1].
+Es la presentación más registrada en Colombia  y la dosis de inicio habitual para la artrosis, la artritis reumatoide y la espondilitis anquilosante: 200 mg al día en una o dos tomas, con un máximo de 400 mg al día.
 
 ### ¿Cuánto tarda en hacer efecto Celecoxib?
 
-2 a 3 horas; unas 4 horas con alimentos [1] Su efecto se mantiene mientras el medicamento permanece en el cuerpo; la semivida es de 8 a 12 horas [1]. La respuesta completa depende de la indicación y del paciente, así que el seguimiento lo define el profesional.
+2 a 3 horas; unas 4 horas con alimentos  Su efecto se mantiene mientras el medicamento permanece en el cuerpo; la semivida es de 8 a 12 horas. La respuesta completa depende de la indicación y del paciente, así que el seguimiento lo define el profesional.
 
 ### ¿Se puede usar Celecoxib en el embarazo?
 
-- Embarazo: contraindicado, también en mujeres que puedan quedar embarazadas sin anticoncepción eficaz; en el segundo y tercer trimestre puede producir cierre prematuro del ductus arterioso y disfunción renal fetal [1]. - Lactancia: pasa en muy baja proporción, pero quienes lo toman no deben amamantar [1].
+- Embarazo: contraindicado, también en mujeres que puedan quedar embarazadas sin anticoncepción eficaz; en el segundo y tercer trimestre puede producir cierre prematuro del ductus arterioso y disfunción renal fetal. - Lactancia: pasa en muy baja proporción, pero quienes lo toman no deben amamantar.
 
 ### ¿Qué efectos secundarios de Celecoxib son graves?
 
-Frecuentes: infecciones respiratorias altas, sinusitis, faringitis, infección urinaria, insomnio, mareo, cefalea, hipertensión, dispepsia, dolor abdominal, diarrea, náuseas, erupción, edema periférico y retención de líquidos [1]. - La ficha técnica incluye el infarto de miocardio entre las reacciones frecuentes de los ensayos [1]. - Graves: hemorragia y perforación digestiva, hepatitis e insuficiencia hepática, insuficiencia renal aguda, insuficiencia cardiaca, anafilaxia, síndrome de Stevens-Johnson, necrólisis epidérmica tóxica y DRESS [1].
+Frecuentes: infecciones respiratorias altas, sinusitis, faringitis, infección urinaria, insomnio, mareo, cefalea, hipertensión, dispepsia, dolor abdominal, diarrea, náuseas, erupción, edema periférico y retención de líquidos. - La ficha técnica incluye el infarto de miocardio entre las reacciones frecuentes de los ensayos. - Graves: hemorragia y perforación digestiva, hepatitis e insuficiencia hepática, insuficiencia renal aguda, insuficiencia cardiaca, anafilaxia, síndrome de Stevens-Johnson, necrólisis epidérmica tóxica y DRESS.
 
 ## Artículos relacionados
 

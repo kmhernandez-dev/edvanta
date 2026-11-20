@@ -23,19 +23,19 @@ Pertenece al grupo farmacológico de AINE.
 
 ## Cómo funciona
 
-Su mecanismo se basa en la inhibición de la síntesis de prostaglandinas, que tienen un papel esencial en la fiebre, el dolor y la inflamación [1].
+Su mecanismo se basa en la inhibición de la síntesis de prostaglandinas, que tienen un papel esencial en la fiebre, el dolor y la inflamación.
 
-Puede inhibir de forma competitiva el efecto del ácido acetilsalicílico a dosis bajas sobre la agregación plaquetaria, lo que podría reducir su efecto cardioprotector con el uso habitual [1].
+Puede inhibir de forma competitiva el efecto del ácido acetilsalicílico a dosis bajas sobre la agregación plaquetaria, lo que podría reducir su efecto cardioprotector con el uso habitual.
 
 ## Cuánto tarda en hacer efecto
 
 | Parámetro | Valor |
 | --- | --- |
-| Absorción | Cerca del 80 % por vía digestiva; los alimentos retrasan la absorción [1] |
-| Concentración máxima | 1 a 2 horas [1] |
-| Unión a proteínas | Cerca del 99 % [1] |
-| Metabolismo | Hepático por hidroxilación y carboxilación, a través del CYP2C9 y el CYP2C8 [1] |
-| Eliminación | Renal, completa a las 24 horas; 10 % inalterado y 90 % como metabolitos inactivos [1] |
+| Absorción | Cerca del 80 % por vía digestiva; los alimentos retrasan la absorción  |
+| Concentración máxima | 1 a 2 horas  |
+| Unión a proteínas | Cerca del 99 %  |
+| Metabolismo | Hepático por hidroxilación y carboxilación, a través del CYP2C9 y el CYP2C8  |
+| Eliminación | Renal, completa a las 24 horas; 10 % inalterado y 90 % como metabolitos inactivos  |
 
 ## Cómo se toma
 
@@ -50,9 +50,9 @@ Puede inhibir de forma competitiva el efecto del ácido acetilsalicílico a dosi
 - **Frecuentes:** ardor, dolor de estómago, náuseas, diarrea o estreñimiento.
 - **Importantes:** heces negras o vómito con sangre, hinchazón, orinar poco, reacción alérgica (ronchas, hinchazón de cara o labios, dificultad para respirar). Suspéndelo y consulta de inmediato.
 
-Frecuentes: cefalea, mareo, dispepsia, diarrea, náuseas, vómito, dolor abdominal, flatulencia, estreñimiento, fatiga y hemorragia digestiva [1].
+Frecuentes: cefalea, mareo, dispepsia, diarrea, náuseas, vómito, dolor abdominal, flatulencia, estreñimiento, fatiga y hemorragia digestiva.
 
-- Graves: úlcera y perforación digestiva, reacciones cutáneas graves (síndrome de Stevens-Johnson, DRESS), anafilaxia, meningitis aséptica, alteraciones hematológicas, insuficiencia cardiaca, infarto, insuficiencia renal y lesión hepática [1].
+- Graves: úlcera y perforación digestiva, reacciones cutáneas graves (síndrome de Stevens-Johnson, DRESS), anafilaxia, meningitis aséptica, alteraciones hematológicas, insuficiencia cardiaca, infarto, insuficiencia renal y lesión hepática.
 
 ## Interacciones
 
@@ -64,12 +64,12 @@ Frecuentes: cefalea, mareo, dispepsia, diarrea, náuseas, vómito, dolor abdomin
 
 | Medicamento | Efecto | Qué hacer |
 | --- | --- | --- |
-| Ácido acetilsalicílico a dosis bajas | Puede reducir su efecto antiagregante | Evitar el uso habitual conjunto [1] |
-| Warfarina, antiagregantes, ISRS, corticoides | Más hemorragia o úlcera | Evitar o vigilar [1] |
-| Otros AINE, incluidos coxibs | Más úlcera y hemorragia | No combinar [1] |
-| IECA, betabloqueadores, diuréticos | Menos efecto antihipertensivo y riesgo renal | Vigilar presión y función renal [1] |
-| Litio, metotrexato, digoxina, fenitoína | Aumentan sus niveles | Vigilar [1] |
-| Quinolonas | Más riesgo de convulsiones | Precaución [1] |
+| Ácido acetilsalicílico a dosis bajas | Puede reducir su efecto antiagregante | Evitar el uso habitual conjunto  |
+| Warfarina, antiagregantes, ISRS, corticoides | Más hemorragia o úlcera | Evitar o vigilar  |
+| Otros AINE, incluidos coxibs | Más úlcera y hemorragia | No combinar  |
+| IECA, betabloqueadores, diuréticos | Menos efecto antihipertensivo y riesgo renal | Vigilar presión y función renal  |
+| Litio, metotrexato, digoxina, fenitoína | Aumentan sus niveles | Vigilar  |
+| Quinolonas | Más riesgo de convulsiones | Precaución  |
 
 ## Quién no debe tomarlo
 
@@ -82,7 +82,7 @@ Frecuentes: cefalea, mareo, dispepsia, diarrea, náuseas, vómito, dolor abdomin
 - Embarazo, especialmente a partir de la semana 20, salvo indicación médica.
 - Mayores de 65 años, que tienen más riesgo de efectos adversos.
 
-Está contraindicado en [1]:
+Está contraindicado en:
 
 - Asma, rinitis, urticaria o angioedema tras ácido acetilsalicílico u otros AINE.
 - Úlcera o hemorragia digestiva activa o recidivante, o previa por AINE.
@@ -91,13 +91,13 @@ Está contraindicado en [1]:
 - Deshidratación grave por vómito, diarrea o poca ingesta de líquidos.
 - Tercer trimestre del embarazo.
 
-Advertencias: puede enmascarar los síntomas de una infección; más hemorragia digestiva en personas mayores; pequeño aumento del riesgo trombótico arterial con 2.400 mg al día; reacciones cutáneas graves; y precaución en asma, enfermedad cardiaca, hepática o renal y con diuréticos [1].
+Advertencias: puede enmascarar los síntomas de una infección; más hemorragia digestiva en personas mayores; pequeño aumento del riesgo trombótico arterial con 2.400 mg al día; reacciones cutáneas graves; y precaución en asma, enfermedad cardiaca, hepática o renal y con diuréticos.
 
 ## Embarazo, lactancia y niños
 
-- Primer y segundo trimestre: solo si es estrictamente necesario; desde la semana 20 puede causar oligohidramnios y constricción del ductus arterioso [1].
-- Tercer trimestre: contraindicado [1].
-- Lactancia: no se recomienda por el riesgo de inhibir la síntesis de prostaglandinas en el neonato [1].
+- Primer y segundo trimestre: solo si es estrictamente necesario; desde la semana 20 puede causar oligohidramnios y constricción del ductus arterioso.
+- Tercer trimestre: contraindicado.
+- Lactancia: no se recomienda por el riesgo de inhibir la síntesis de prostaglandinas en el neonato.
 
 ## Ibuprofeno o acetaminofén
 
@@ -105,14 +105,14 @@ El ibuprofeno tiene efecto antiinflamatorio; el [acetaminofén](/articulos/aceta
 
 ## Evidencia y situación en Colombia
 
-En el metaanálisis CNT, el ibuprofeno en dosis altas aumentó los eventos coronarios mayores (razón de tasas 2,22) y las complicaciones digestivas altas (3,97) frente a placebo [3].
+En el metaanálisis CNT, el ibuprofeno en dosis altas aumentó los eventos coronarios mayores (razón de tasas 2,22) y las complicaciones digestivas altas (3,97) frente a placebo.
 
-En PRECISION, con una dosis media de 2.045 mg al día, el desenlace cardiovascular ocurrió en el 2,7 % de los pacientes con ibuprofeno; tuvo más eventos digestivos y renales que el celecoxib [4].
+En PRECISION, con una dosis media de 2.045 mg al día, el desenlace cardiovascular ocurrió en el 2,7 % de los pacientes con ibuprofeno; tuvo más eventos digestivos y renales que el celecoxib.
 
-A dosis analgésicas bajas y por pocos días, el riesgo es menor; el problema aparece con dosis plenas y uso prolongado [1,3].
+A dosis analgésicas bajas y por pocos días, el riesgo es menor; el problema aparece con dosis plenas y uso prolongado.
 
-- Colombia: el CUM del INVIMA registra 169 registros sanitarios vigentes que contienen ibuprofeno, solo o en combinación (código ATC M01AE01 para el ibuprofeno solo). Hay tabletas, suspensión oral, cápsulas blandas y solución inyectable. Consulta del 16-nov-2026 [2].
-- España: autorizado en adultos y adolescentes para las indicaciones descritas [1].
+- Colombia: el CUM del INVIMA registra 169 registros sanitarios vigentes que contienen ibuprofeno, solo o en combinación (código ATC M01AE01 para el ibuprofeno solo). Hay tabletas, suspensión oral, cápsulas blandas y solución inyectable. Consulta del 16-nov-2026.
+- España: autorizado en adultos y adolescentes para las indicaciones descritas.
 
 ## Errores frecuentes
 
@@ -148,15 +148,15 @@ Puede elevarla y reducir el efecto de los medicamentos para la hipertensión, so
 
 ### ¿Cuánto tarda en hacer efecto Ibuprofeno?
 
-1 a 2 horas [1] La respuesta completa depende de la indicación y del paciente, así que el seguimiento lo define el profesional.
+1 a 2 horas  La respuesta completa depende de la indicación y del paciente, así que el seguimiento lo define el profesional.
 
 ### ¿Se puede usar Ibuprofeno en el embarazo?
 
-- Primer y segundo trimestre: solo si es estrictamente necesario; desde la semana 20 puede causar oligohidramnios y constricción del ductus arterioso [1]. - Tercer trimestre: contraindicado [1]. - Lactancia: no se recomienda por el riesgo de inhibir la síntesis de prostaglandinas en el neonato [1].
+- Primer y segundo trimestre: solo si es estrictamente necesario; desde la semana 20 puede causar oligohidramnios y constricción del ductus arterioso. - Tercer trimestre: contraindicado. - Lactancia: no se recomienda por el riesgo de inhibir la síntesis de prostaglandinas en el neonato.
 
 ### ¿Qué efectos secundarios de Ibuprofeno son graves?
 
-Frecuentes: cefalea, mareo, dispepsia, diarrea, náuseas, vómito, dolor abdominal, flatulencia, estreñimiento, fatiga y hemorragia digestiva [1]. - Graves: úlcera y perforación digestiva, reacciones cutáneas graves (síndrome de Stevens-Johnson, DRESS), anafilaxia, meningitis aséptica, alteraciones hematológicas, insuficiencia cardiaca, infarto, insuficiencia renal y lesión hepática [1].
+Frecuentes: cefalea, mareo, dispepsia, diarrea, náuseas, vómito, dolor abdominal, flatulencia, estreñimiento, fatiga y hemorragia digestiva. - Graves: úlcera y perforación digestiva, reacciones cutáneas graves (síndrome de Stevens-Johnson, DRESS), anafilaxia, meningitis aséptica, alteraciones hematológicas, insuficiencia cardiaca, infarto, insuficiencia renal y lesión hepática.
 
 ## Artículos relacionados
 

@@ -12,14 +12,14 @@ Alivia rápido, pero no trata la inflamación. En asma, el tratamiento de fondo 
 
 ## Cómo funciona
 
-Agonista selectivo de los receptores beta-2 adrenérgicos del músculo liso bronquial [1].
+Agonista selectivo de los receptores beta-2 adrenérgicos del músculo liso bronquial.
 
 ## Cuánto tarda en hacer efecto
 
 | Parámetro | Valor |
 | --- | --- |
-| Inicio del efecto | En 5 minutos [1] |
-| Duración | 4 a 6 horas [1] |
+| Inicio del efecto | En 5 minutos  |
+| Duración | 4 a 6 horas  |
 
 ## Cómo se toma
 
@@ -48,21 +48,21 @@ Agonista selectivo de los receptores beta-2 adrenérgicos del músculo liso bron
 
 | Medicamento | Efecto | Qué hacer |
 | --- | --- | --- |
-| Betabloqueadores no selectivos (propranolol) | Antagonizan su efecto | No suelen prescribirse juntos [1] |
-| Diuréticos | Más hipopotasemia | Vigilar potasio [1] |
-| Corticoides | Más hipopotasemia | Vigilar potasio [1] |
+| Betabloqueadores no selectivos (propranolol) | Antagonizan su efecto | No suelen prescribirse juntos  |
+| Diuréticos | Más hipopotasemia | Vigilar potasio  |
+| Corticoides | Más hipopotasemia | Vigilar potasio  |
 
 ## Embarazo, lactancia y niños
 
-- Embarazo: solo si el beneficio para la madre supera el riesgo para el feto [1].
-- Lactancia: probablemente pasa a la leche; no se recomienda salvo que el beneficio supere el riesgo [1].
+- Embarazo: solo si el beneficio para la madre supera el riesgo para el feto.
+- Lactancia: probablemente pasa a la leche; no se recomienda salvo que el beneficio supere el riesgo.
 
 ## Evidencia y situación en Colombia
 
-La ficha técnica convierte la frecuencia de uso en un indicador clínico: más de dos usos a demanda por semana obligan a revisar el control del asma [1].
+La ficha técnica convierte la frecuencia de uso en un indicador clínico: más de dos usos a demanda por semana obligan a revisar el control del asma.
 
-- Colombia: 13 registros sanitarios vigentes con el código ATC R03AC02 (inhalado) y 2 con R03CC02 (sistémico); consulta del 16-nov-2026 [2].
-- España: autorizado como Ventolin 100 microgramos/inhalación suspensión para inhalación en envase a presión [1].
+- Colombia: 13 registros sanitarios vigentes con el código ATC R03AC02 (inhalado) y 2 con R03CC02 (sistémico); consulta del 16-nov-2026.
+- España: autorizado como Ventolin 100 microgramos/inhalación suspensión para inhalación en envase a presión.
 
 ## Quién no debe usar salbutamol sin control médico
 
@@ -125,7 +125,7 @@ Sí, puede acelerar el corazón y producir temblor. Si es intenso o hay dolor to
 
 ### ¿Se puede usar Salbutamol en el embarazo?
 
-- Embarazo: solo si el beneficio para la madre supera el riesgo para el feto [1]. - Lactancia: probablemente pasa a la leche; no se recomienda salvo que el beneficio supere el riesgo [1].
+- Embarazo: solo si el beneficio para la madre supera el riesgo para el feto. - Lactancia: probablemente pasa a la leche; no se recomienda salvo que el beneficio supere el riesgo.
 
 ### ¿Qué efectos secundarios de Salbutamol son graves?
 

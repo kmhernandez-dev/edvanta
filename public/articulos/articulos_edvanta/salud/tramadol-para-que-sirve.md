@@ -15,66 +15,66 @@ Pertenece al grupo farmacológico de Analgésico opioide de acción central.
 
 ## ¿Para qué sirve el tramadol?
 
-Según su ficha técnica, se usa para el tratamiento del dolor moderado a intenso en adultos y adolescentes a partir de 12 años [1]. Se formula, por ejemplo, después de una cirugía o en dolores que no ceden con analgésicos comunes como el [acetaminofén](/articulos/acetaminofen-para-que-sirve).
+Según su ficha técnica, se usa para el tratamiento del dolor moderado a intenso en adultos y adolescentes a partir de 12 años. Se formula, por ejemplo, después de una cirugía o en dolores que no ceden con analgésicos comunes como el [acetaminofén](/articulos/acetaminofen-para-que-sirve).
 
 ## Cómo funciona
 
-Es un analgésico de acción central y un agonista opioide puro, no selectivo, sobre los receptores μ, δ y κ, con mayor afinidad por los μ [1].
+Es un analgésico de acción central y un agonista opioide puro, no selectivo, sobre los receptores μ, δ y κ, con mayor afinidad por los μ.
 
-El metabolito O-desmetiltramadol, formado por el CYP2D6, participa en el efecto. En los metabolizadores ultrarrápidos del CYP2D6 hay riesgo de toxicidad opioide incluso a dosis habituales [1].
+El metabolito O-desmetiltramadol, formado por el CYP2D6, participa en el efecto. En los metabolizadores ultrarrápidos del CYP2D6 hay riesgo de toxicidad opioide incluso a dosis habituales.
 
 ## Cuánto tarda en hacer efecto
 
 | Parámetro | Valor |
 | --- | --- |
-| Biodisponibilidad oral | 70 % a 90 % con 50 a 100 mg; más del 90 % con dosis repetidas [1] |
-| Concentración máxima | Unas 2 horas tras 100 mg orales [1] |
-| Unión a proteínas | Alrededor del 20 % [1] |
-| Metabolismo | O-desmetilación (CYP3A4 y CYP2D6), N-desmetilación y glucuronidación [1] |
-| Semivida | Unas 6 horas [1] |
-| Eliminación | Casi completa por vía renal (90 %) [1] |
+| Biodisponibilidad oral | 70 % a 90 % con 50 a 100 mg; más del 90 % con dosis repetidas  |
+| Concentración máxima | Unas 2 horas tras 100 mg orales  |
+| Unión a proteínas | Alrededor del 20 %  |
+| Metabolismo | O-desmetilación (CYP3A4 y CYP2D6), N-desmetilación y glucuronidación  |
+| Semivida | Unas 6 horas  |
+| Eliminación | Casi completa por vía renal (90 %)  |
 
 ## Cómo se toma
 
-La dosis la define tu médico. Como referencia, la ficha técnica indica para adultos 50 a 100 mg al inicio, y luego 50 o 100 mg cada 4 a 6 horas, sin pasar de 400 mg al día [1].
+La dosis la define tu médico. Como referencia, la ficha técnica indica para adultos 50 a 100 mg al inicio, y luego 50 o 100 mg cada 4 a 6 horas, sin pasar de 400 mg al día.
 
-- En mayores de 75 años y en personas con enfermedad del riñón o del hígado, las tomas se espacian más [1].
+- En mayores de 75 años y en personas con enfermedad del riñón o del hígado, las tomas se espacian más.
 - Si lo tomas por varios días o semanas, no lo suspendas de golpe: el médico te indicará cómo bajarlo.
 - No manejes ni operes máquinas si te produce sueño o mareo.
 
 ## Efectos secundarios
 
-Los más frecuentes son náuseas, mareo, dolor de cabeza, sueño, estreñimiento, boca seca, vómito, sudoración y cansancio [1].
+Los más frecuentes son náuseas, mareo, dolor de cabeza, sueño, estreñimiento, boca seca, vómito, sudoración y cansancio.
 
-Busca atención de inmediato si tienes dificultad para respirar, mucho sueño difícil de despertar, convulsiones, confusión, agitación con temblor y fiebre, o una reacción alérgica [1].
+Busca atención de inmediato si tienes dificultad para respirar, mucho sueño difícil de despertar, convulsiones, confusión, agitación con temblor y fiebre, o una reacción alérgica.
 
-Frecuentes: náuseas, mareo, cefalea, somnolencia, estreñimiento, sequedad de boca, vómito, sudoración y fatiga [1].
+Frecuentes: náuseas, mareo, cefalea, somnolencia, estreñimiento, sequedad de boca, vómito, sudoración y fatiga.
 
-- Graves: depresión respiratoria, convulsiones, síndrome serotoninérgico, anafilaxia, colapso cardiovascular, alucinaciones, confusión y delirio [1].
-- Con el uso prolongado: tolerancia, dependencia y abstinencia al suspender [1].
+- Graves: depresión respiratoria, convulsiones, síndrome serotoninérgico, anafilaxia, colapso cardiovascular, alucinaciones, confusión y delirio.
+- Con el uso prolongado: tolerancia, dependencia y abstinencia al suspender.
 
 ## Interacciones
 
 | Medicamento | Qué puede pasar |
 |---|---|
-| Pastillas para dormir o para la ansiedad (benzodiacepinas como el clonazepam), gabapentina, pregabalina, alcohol | Sueño profundo, dificultad para respirar, coma [1] |
-| Antidepresivos como la [sertralina](/articulos/sertralina-para-que-sirve) o la fluoxetina | Síndrome serotoninérgico (agitación, temblor, fiebre, sudoración) y convulsiones [1] |
-| Warfarina | Sube el INR con riesgo de sangrado [1] |
-| Carbamazepina | El tramadol pierde efecto [1] |
+| Pastillas para dormir o para la ansiedad (benzodiacepinas como el clonazepam), gabapentina, pregabalina, alcohol | Sueño profundo, dificultad para respirar, coma  |
+| Antidepresivos como la [sertralina](/articulos/sertralina-para-que-sirve) o la fluoxetina | Síndrome serotoninérgico (agitación, temblor, fiebre, sudoración) y convulsiones  |
+| Warfarina | Sube el INR con riesgo de sangrado  |
+| Carbamazepina | El tramadol pierde efecto  |
 
 | Medicamento | Efecto | Qué hacer |
 | --- | --- | --- |
-| Inhibidores de la MAO | Interacciones con riesgo vital | Contraindicado [1] |
-| Benzodiacepinas, gabapentina, pregabalina, alcohol | Sedación, depresión respiratoria, coma o muerte | Evitar; si es inevitable, dosis mínimas y vigilancia [1] |
-| ISRS, IRSN, tricíclicos, mirtazapina | Síndrome serotoninérgico y convulsiones | Vigilar agitación, temblor, fiebre [1] |
-| Antipsicóticos y fármacos que bajan el umbral convulsivo | Más convulsiones | Evitar en epilepsia [1] |
-| Warfarina | INR más alto con hemorragias | Controlar el INR [1] |
-| Carbamazepina | Menos efecto y duración | Considerar otra opción [1] |
-| Inhibidores del CYP2D6 y CYP3A4 (fluoxetina, paroxetina, ketoconazol) | Alteran el metabolismo del tramadol | Vigilar eficacia y toxicidad [1] |
+| Inhibidores de la MAO | Interacciones con riesgo vital | Contraindicado  |
+| Benzodiacepinas, gabapentina, pregabalina, alcohol | Sedación, depresión respiratoria, coma o muerte | Evitar; si es inevitable, dosis mínimas y vigilancia  |
+| ISRS, IRSN, tricíclicos, mirtazapina | Síndrome serotoninérgico y convulsiones | Vigilar agitación, temblor, fiebre  |
+| Antipsicóticos y fármacos que bajan el umbral convulsivo | Más convulsiones | Evitar en epilepsia  |
+| Warfarina | INR más alto con hemorragias | Controlar el INR  |
+| Carbamazepina | Menos efecto y duración | Considerar otra opción  |
+| Inhibidores del CYP2D6 y CYP3A4 (fluoxetina, paroxetina, ketoconazol) | Alteran el metabolismo del tramadol | Vigilar eficacia y toxicidad  |
 
 ## Quién no debe tomarlo
 
-No lo tomes si [1]:
+No lo tomes si:
 
 - Tomaste alcohol en exceso, pastillas para dormir u otros opioides.
 - Tomas o tomaste en los últimos 14 días un antidepresivo inhibidor de la MAO.
@@ -82,55 +82,55 @@ No lo tomes si [1]:
 
 Avísale al médico si tienes problemas para respirar, enfermedad del hígado o del riñón, antecedente de convulsiones o de consumo problemático de alcohol o medicamentos.
 
-Está contraindicado en [1]:
+Está contraindicado en:
 
 - Intoxicación aguda por alcohol, hipnóticos, analgésicos, opioides u otros psicótropos.
 - Tratamiento con inhibidores de la MAO o en los 14 días siguientes.
 - Epilepsia no controlada.
 - Tratamiento del síndrome de abstinencia a opiáceos.
 
-Advertencias: tolerancia, dependencia física y psicológica y trastorno por consumo de opioides; depresión respiratoria con dosis altas o con depresores centrales; convulsiones con dosis altas o fármacos que bajan el umbral convulsivo; síndrome serotoninérgico, incluso en monoterapia; toxicidad en metabolizadores ultrarrápidos del CYP2D6; y sedación, coma o muerte con benzodiacepinas [1].
+Advertencias: tolerancia, dependencia física y psicológica y trastorno por consumo de opioides; depresión respiratoria con dosis altas o con depresores centrales; convulsiones con dosis altas o fármacos que bajan el umbral convulsivo; síndrome serotoninérgico, incluso en monoterapia; toxicidad en metabolizadores ultrarrápidos del CYP2D6; y sedación, coma o muerte con benzodiacepinas.
 
 ## Embarazo, lactancia y niños
 
-No debe usarse en el embarazo: no hay datos suficientes y el uso prolongado puede causar abstinencia en el recién nacido. En la lactancia no se recomienda; después de una dosis única no suele ser necesario suspenderla [1].
+No debe usarse en el embarazo: no hay datos suficientes y el uso prolongado puede causar abstinencia en el recién nacido. En la lactancia no se recomienda; después de una dosis única no suele ser necesario suspenderla.
 
-- Embarazo: atraviesa la placenta; no hay datos suficientes y no debe usarse. El uso crónico puede causar abstinencia neonatal [1].
-- Lactancia: pasa cerca del 0,1 % de la dosis materna; no usar o suspender la lactancia durante el tratamiento (no suele ser necesario tras una dosis única) [1].
+- Embarazo: atraviesa la placenta; no hay datos suficientes y no debe usarse. El uso crónico puede causar abstinencia neonatal.
+- Lactancia: pasa cerca del 0,1 % de la dosis materna; no usar o suspender la lactancia durante el tratamiento (no suele ser necesario tras una dosis única).
 
 ## Cómo actúa
 
-Es un opioide: se une a los receptores del cerebro que controlan el dolor. Una parte de su efecto depende de que el hígado lo transforme en otra sustancia; por eso hay personas a las que les hace poco efecto y otras que son muy sensibles a la misma dosis [1].
+Es un opioide: se une a los receptores del cerebro que controlan el dolor. Una parte de su efecto depende de que el hígado lo transforme en otra sustancia; por eso hay personas a las que les hace poco efecto y otras que son muy sensibles a la misma dosis.
 
 ## Dependencia
 
-Con el uso repetido, el cuerpo se acostumbra al tramadol: puede necesitarse más dosis para el mismo efecto y aparecer síntomas al suspenderlo. Úsalo solo el tiempo indicado y comenta con tu médico si sientes que lo necesitas cada vez más [1].
+Con el uso repetido, el cuerpo se acostumbra al tramadol: puede necesitarse más dosis para el mismo efecto y aparecer síntomas al suspenderlo. Úsalo solo el tiempo indicado y comenta con tu médico si sientes que lo necesitas cada vez más.
 
 ## Tramadol con acetaminofén o con diclofenaco
 
-En Colombia hay productos que combinan el tramadol con acetaminofén y otros que lo combinan con diclofenaco, además de otras combinaciones [2]. Cada combinación suma los riesgos de sus componentes:
+En Colombia hay productos que combinan el tramadol con acetaminofén y otros que lo combinan con diclofenaco, además de otras combinaciones. Cada combinación suma los riesgos de sus componentes:
 
 - Con [acetaminofén](/articulos/acetaminofen-para-que-sirve): no tomes otro producto con acetaminofén al mismo tiempo, para no superar su dosis máxima.
 - Con [diclofenaco](/articulos/diclofenaco-para-que-sirve): no tomes otro antiinflamatorio aparte y ten en cuenta sus riesgos para el estómago, el riñón y el corazón.
 
-La combinación no elimina las precauciones del tramadol: el sueño, la dependencia y las interacciones siguen presentes [1].
+La combinación no elimina las precauciones del tramadol: el sueño, la dependencia y las interacciones siguen presentes.
 
 ## Tramadol en gotas
 
-El tramadol también existe en solución oral, conocida como gotas [2]. La cantidad de gotas depende de la concentración del producto y la indica el médico; no la calcules por tu cuenta ni la cambies por cucharadas.
+El tramadol también existe en solución oral, conocida como gotas. La cantidad de gotas depende de la concentración del producto y la indica el médico; no la calcules por tu cuenta ni la cambies por cucharadas.
 
 ## Tramadol en Colombia
 
-El Código Único de Medicamentos del INVIMA registra 61 registros sanitarios vigentes que contienen tramadol, en solución oral, solución inyectable, cápsulas y tabletas, incluidas las de liberación prolongada [2].
+El Código Único de Medicamentos del INVIMA registra 61 registros sanitarios vigentes que contienen tramadol, en solución oral, solución inyectable, cápsulas y tabletas, incluidas las de liberación prolongada.
 
 ## Evidencia y situación en Colombia
 
-El tramadol ocupa un lugar intermedio entre los analgésicos no opioides y los opioides potentes. Su eficacia depende en parte del CYP2D6, lo que explica por qué unos pacientes no responden y otros presentan toxicidad con la misma dosis [1].
+El tramadol ocupa un lugar intermedio entre los analgésicos no opioides y los opioides potentes. Su eficacia depende en parte del CYP2D6, lo que explica por qué unos pacientes no responden y otros presentan toxicidad con la misma dosis.
 
-Las advertencias actuales de la ficha técnica sobre dependencia, uso con benzodiacepinas y gabapentinoides, y síndrome serotoninérgico obligan a revisar toda la medicación del sistema nervioso central antes de iniciarlo [1].
+Las advertencias actuales de la ficha técnica sobre dependencia, uso con benzodiacepinas y gabapentinoides, y síndrome serotoninérgico obligan a revisar toda la medicación del sistema nervioso central antes de iniciarlo.
 
-- Colombia: el CUM del INVIMA registra 61 registros sanitarios vigentes que contienen tramadol, en solución oral, solución inyectable, cápsulas y tabletas, incluidas las de liberación prolongada. Consulta del 16-nov-2026 [2].
-- Unión Europea: autorizado para el dolor moderado a intenso en adultos y mayores de 12 años [1].
+- Colombia: el CUM del INVIMA registra 61 registros sanitarios vigentes que contienen tramadol, en solución oral, solución inyectable, cápsulas y tabletas, incluidas las de liberación prolongada. Consulta del 16-nov-2026.
+- Unión Europea: autorizado para el dolor moderado a intenso en adultos y mayores de 12 años.
 
 ## Errores frecuentes
 
@@ -166,15 +166,15 @@ Solo si tu médico lo sabe y lo indica, porque la combinación puede causar sín
 
 ### ¿Cuánto tarda en hacer efecto Tramadol?
 
-Unas 2 horas tras 100 mg orales [1] Su efecto se mantiene mientras el medicamento permanece en el cuerpo; la semivida es de unas 6 horas [1]. La respuesta completa depende de la indicación y del paciente, así que el seguimiento lo define el profesional.
+Unas 2 horas tras 100 mg orales  Su efecto se mantiene mientras el medicamento permanece en el cuerpo; la semivida es de unas 6 horas. La respuesta completa depende de la indicación y del paciente, así que el seguimiento lo define el profesional.
 
 ### ¿Se puede usar Tramadol en el embarazo?
 
-- Embarazo: atraviesa la placenta; no hay datos suficientes y no debe usarse. El uso crónico puede causar abstinencia neonatal [1]. - Lactancia: pasa cerca del 0,1 % de la dosis materna; no usar o suspender la lactancia durante el tratamiento (no suele ser necesario tras una dosis única) [1].
+- Embarazo: atraviesa la placenta; no hay datos suficientes y no debe usarse. El uso crónico puede causar abstinencia neonatal. - Lactancia: pasa cerca del 0,1 % de la dosis materna; no usar o suspender la lactancia durante el tratamiento (no suele ser necesario tras una dosis única).
 
 ### ¿Qué efectos secundarios de Tramadol son graves?
 
-Frecuentes: náuseas, mareo, cefalea, somnolencia, estreñimiento, sequedad de boca, vómito, sudoración y fatiga [1]. - Graves: depresión respiratoria, convulsiones, síndrome serotoninérgico, anafilaxia, colapso cardiovascular, alucinaciones, confusión y delirio [1]. - Con el uso prolongado: tolerancia, dependencia y abstinencia al suspender [1].
+Frecuentes: náuseas, mareo, cefalea, somnolencia, estreñimiento, sequedad de boca, vómito, sudoración y fatiga. - Graves: depresión respiratoria, convulsiones, síndrome serotoninérgico, anafilaxia, colapso cardiovascular, alucinaciones, confusión y delirio. - Con el uso prolongado: tolerancia, dependencia y abstinencia al suspender.
 
 ## Artículos relacionados
 

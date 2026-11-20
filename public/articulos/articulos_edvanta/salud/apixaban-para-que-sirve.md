@@ -12,24 +12,24 @@ No es aspirina ni clopidogrel. Su efecto es distinto y no se puede sustituir por
 
 ## Cómo funciona
 
-El factor Xa es la enzima que convierte la protrombina en trombina. El apixabán se une de forma directa, selectiva y reversible al sitio activo del factor Xa libre y del factor Xa unido al coágulo, e inhibe la actividad del complejo protrombinasa [1].
+El factor Xa es la enzima que convierte la protrombina en trombina. El apixabán se une de forma directa, selectiva y reversible al sitio activo del factor Xa libre y del factor Xa unido al coágulo, e inhibe la actividad del complejo protrombinasa.
 
-Al reducir la generación de trombina, disminuye la formación de fibrina y la agregación plaquetaria inducida por trombina, sin inhibir directamente las plaquetas [1].
+Al reducir la generación de trombina, disminuye la formación de fibrina y la agregación plaquetaria inducida por trombina, sin inhibir directamente las plaquetas.
 
-El efecto anticoagulante es dosis dependiente. Prolonga el tiempo de protrombina, el tiempo de tromboplastina parcial activada y el tiempo de coagulación, pero esas pruebas no son adecuadas para monitorizar la intensidad del efecto. La actividad anti-Xa calibrada permite medirla en situaciones especiales [1].
+El efecto anticoagulante es dosis dependiente. Prolonga el tiempo de protrombina, el tiempo de tromboplastina parcial activada y el tiempo de coagulación, pero esas pruebas no son adecuadas para monitorizar la intensidad del efecto. La actividad anti-Xa calibrada permite medirla en situaciones especiales.
 
 ## Cuánto tarda en hacer efecto
 
 | Parámetro | Valor |
 | --- | --- |
-| Absorción | Oral; biodisponibilidad de aproximadamente 50 % [1] |
-| Concentración máxima | Aproximadamente 3 a 4 horas [1] |
-| Unión a proteínas | Cerca del 87 % [1] |
-| Metabolismo | CYP3A4/5 y P-gp; sin metabolitos activos relevantes [1] |
-| Semivida | Aproximadamente 12 horas [1] |
-| Eliminación | 27 % renal y 56 % fecal [1] |
+| Absorción | Oral; biodisponibilidad de aproximadamente 50 %  |
+| Concentración máxima | Aproximadamente 3 a 4 horas  |
+| Unión a proteínas | Cerca del 87 %  |
+| Metabolismo | CYP3A4/5 y P-gp; sin metabolitos activos relevantes  |
+| Semivida | Aproximadamente 12 horas  |
+| Eliminación | 27 % renal y 56 % fecal  |
 
-La administración dos veces al día mantiene concentraciones con menor fluctuación que una pauta diaria y explica la importancia de no olvidar dosis [1].
+La administración dos veces al día mantiene concentraciones con menor fluctuación que una pauta diaria y explica la importancia de no olvidar dosis.
 
 ## Cómo se toma
 
@@ -45,13 +45,13 @@ La administración dos veces al día mantiene concentraciones con menor fluctuac
 - Náuseas y molestias digestivas.
 - Sangrado grave o intracraneal, poco frecuente pero serio.
 
-La hemorragia es la reacción más importante. Las más frecuentes son epistaxis, equimosis, hematuria, menorragia y sangrado gastrointestinal [1].
+La hemorragia es la reacción más importante. Las más frecuentes son epistaxis, equimosis, hematuria, menorragia y sangrado gastrointestinal.
 
 - Frecuentes: anemia, hemorragia, hematoma, epistaxis, náuseas y aumento de transaminasas.
 - Poco frecuentes: trombocitopenia, urticaria, prurito, elevación de bilirrubina y hemorragia intracraneal.
 - Raras: reacciones anafilácticas, angioedema, hemorragia retroperitoneal y hemorragia fatal.
 
-Ante un sangrado que no cede, un traumatismo craneal o una caída con golpe en la cabeza, se requiere evaluación urgente [1].
+Ante un sangrado que no cede, un traumatismo craneal o una caída con golpe en la cabeza, se requiere evaluación urgente.
 
 ## Interacciones
 
@@ -64,16 +64,16 @@ Ante un sangrado que no cede, un traumatismo craneal o una caída con golpe en l
 
 | Medicamento | Efecto | Qué hacer |
 | --- | --- | --- |
-| Ketoconazol, itraconazol, voriconazol, posaconazol | Inhiben CYP3A4 y P-gp y aumentan la exposición | No se recomienda su uso conjunto [1] |
-| Ritonavir y otros inhibidores potentes de la proteasa | Aumentan la exposición | No se recomienda su uso conjunto [1] |
-| Rifampicina, carbamazepina, fenitoína, hierba de San Juan | Inducen CYP3A4 y P-gp y reducen la exposición | Evitar; si no es posible, valorar otra anticoagulación [1] |
-| AINE y ácido acetilsalicílico | Aumentan el riesgo de sangrado | Evitar o usar con precaución [1] |
-| Clopidogrel y otros antiplaquetarios | Mayor riesgo de sangrado | Valorar el balance y la duración [1] |
-| ISRS e IRSN | Mayor riesgo de sangrado | Vigilar y considerar alternativas [1] |
+| Ketoconazol, itraconazol, voriconazol, posaconazol | Inhiben CYP3A4 y P-gp y aumentan la exposición | No se recomienda su uso conjunto  |
+| Ritonavir y otros inhibidores potentes de la proteasa | Aumentan la exposición | No se recomienda su uso conjunto  |
+| Rifampicina, carbamazepina, fenitoína, hierba de San Juan | Inducen CYP3A4 y P-gp y reducen la exposición | Evitar; si no es posible, valorar otra anticoagulación  |
+| AINE y ácido acetilsalicílico | Aumentan el riesgo de sangrado | Evitar o usar con precaución  |
+| Clopidogrel y otros antiplaquetarios | Mayor riesgo de sangrado | Valorar el balance y la duración  |
+| ISRS e IRSN | Mayor riesgo de sangrado | Vigilar y considerar alternativas  |
 
 ## Quién no debe tomarlo
 
-Contraindicaciones de la ficha técnica [1]:
+Contraindicaciones de la ficha técnica:
 
 - Hipersensibilidad al apixabán o a los excipientes.
 - Hemorragia activa clínicamente significativa.
@@ -81,39 +81,39 @@ Contraindicaciones de la ficha técnica [1]:
 - Lesiones con alto riesgo de sangrado, como úlcera gastrointestinal activa o hemorragia intracraneal reciente.
 - Embarazo y lactancia.
 
-Advertencias principales [1]:
+Advertencias principales:
 
 - Hemorragia: puede ser grave o fatal. Valorar el riesgo y suspender ante sangrado significativo.
 - Anemia: puede aparecer o empeorar; controlar hemograma si hay síntomas.
 - Cirugía y anestesia neuraxial: suspender antes de procedimientos según el riesgo y el aclaramiento; un hematoma espinal puede causar parálisis.
 - Insuficiencia renal: revisar el aclaramiento antes de iniciar y al menos una vez al año.
 - Prótesis valvulares mecánicas: no usar; el estudio en esa población se detuvo por un exceso de eventos.
-- Síndrome antifosfolípido triple positivo: evitar por posible aumento de trombosis [3].
-- Interacciones con inhibidores o inductores potentes de CYP3A4 y P-gp [1].
+- Síndrome antifosfolípido triple positivo: evitar por posible aumento de trombosis.
+- Interacciones con inhibidores o inductores potentes de CYP3A4 y P-gp.
 
 ## Embarazo, lactancia y niños
 
-- Embarazo: contraindicado. Los datos en humanos son limitados y el fármaco atraviesa la placenta; se prefiere un anticoagulante con más experiencia, como la heparina de bajo peso molecular [1].
-- Lactancia: contraindicado; se desconoce si pasa a la leche humana y no se puede excluir un riesgo para el lactante [1].
-- Fertilidad: los estudios en animales no muestran efectos sobre la fertilidad [1].
+- Embarazo: contraindicado. Los datos en humanos son limitados y el fármaco atraviesa la placenta; se prefiere un anticoagulante con más experiencia, como la heparina de bajo peso molecular.
+- Lactancia: contraindicado; se desconoce si pasa a la leche humana y no se puede excluir un riesgo para el lactante.
+- Fertilidad: los estudios en animales no muestran efectos sobre la fertilidad.
 
 ## Evidencia y situación en Colombia
 
 ### ARISTOTLE: apixabán frente a warfarina
 
-ARISTOTLE incluyó a 18.201 pacientes con fibrilación auricular y riesgo de ictus. El apixabán redujo el ictus o la embolia sistémica (1,27 % frente a 1,60 % por año; HR 0,79), el sangrado mayor (2,13 % frente a 3,09 % por año; HR 0,69) y la mortalidad (3,52 % frente a 3,94 % por año; HR 0,89) en comparación con warfarina [3].
+ARISTOTLE incluyó a 18.201 pacientes con fibrilación auricular y riesgo de ictus. El apixabán redujo el ictus o la embolia sistémica (1,27 % frente a 1,60 % por año; HR 0,79), el sangrado mayor (2,13 % frente a 3,09 % por año; HR 0,69) y la mortalidad (3,52 % frente a 3,94 % por año; HR 0,89) en comparación con warfarina.
 
 ### AVERROES: apixabán frente a aspirina
 
-AVERROES incluyó a 5.599 pacientes con fibrilación auricular que no eran aptos para antagonistas de vitamina K. El apixabán redujo el ictus o la embolia sistémica (1,6 % frente a 3,7 % por año; HR 0,45) sin un aumento significativo del sangrado mayor (1,4 % frente a 1,2 % por año; HR 1,13) frente a aspirina [4].
+AVERROES incluyó a 5.599 pacientes con fibrilación auricular que no eran aptos para antagonistas de vitamina K. El apixabán redujo el ictus o la embolia sistémica (1,6 % frente a 3,7 % por año; HR 0,45) sin un aumento significativo del sangrado mayor (1,4 % frente a 1,2 % por año; HR 1,13) frente a aspirina.
 
 ### Guías
 
-La guía ACC/AHA de 2023 prefiere los anticoagulantes directos sobre la warfarina en la mayoría de los adultos con fibrilación auricular que los pueden tomar [5].
+La guía ACC/AHA de 2023 prefiere los anticoagulantes directos sobre la warfarina en la mayoría de los adultos con fibrilación auricular que los pueden tomar.
 
-- Colombia: el CUM registra apixabán en varias presentaciones; consultar la vigencia y la concentración [2].
-- Unión Europea: el apixabán está autorizado para las indicaciones descritas [1].
-- Estados Unidos: la FDA mantiene etiquetas vigentes de apixabán [1].
+- Colombia: el CUM registra apixabán en varias presentaciones; consultar la vigencia y la concentración.
+- Unión Europea: el apixabán está autorizado para las indicaciones descritas.
+- Estados Unidos: la FDA mantiene etiquetas vigentes de apixabán.
 
 ## Errores frecuentes
 
@@ -159,15 +159,15 @@ Solo con un plan del equipo. Algunos procedimientos no requieren suspenderlo; ot
 
 ### ¿Cuánto tarda en hacer efecto Apixabán?
 
-Aproximadamente 3 a 4 horas [1] Su efecto se mantiene mientras el medicamento permanece en el cuerpo; la semivida es de aproximadamente 12 horas [1]. La respuesta completa depende de la indicación y del paciente, así que el seguimiento lo define el profesional.
+Aproximadamente 3 a 4 horas  Su efecto se mantiene mientras el medicamento permanece en el cuerpo; la semivida es de aproximadamente 12 horas. La respuesta completa depende de la indicación y del paciente, así que el seguimiento lo define el profesional.
 
 ### ¿Se puede usar Apixabán en el embarazo?
 
-- Embarazo: contraindicado. Los datos en humanos son limitados y el fármaco atraviesa la placenta; se prefiere un anticoagulante con más experiencia, como la heparina de bajo peso molecular [1]. - Lactancia: contraindicado; se desconoce si pasa a la leche humana y no se puede excluir un riesgo para el lactante [1]. - Fertilidad: los estudios en animales no muestran efectos sobre la fertilidad [1].
+- Embarazo: contraindicado. Los datos en humanos son limitados y el fármaco atraviesa la placenta; se prefiere un anticoagulante con más experiencia, como la heparina de bajo peso molecular. - Lactancia: contraindicado; se desconoce si pasa a la leche humana y no se puede excluir un riesgo para el lactante. - Fertilidad: los estudios en animales no muestran efectos sobre la fertilidad.
 
 ### ¿Qué efectos secundarios de Apixabán son graves?
 
-La hemorragia es la reacción más importante. Las más frecuentes son epistaxis, equimosis, hematuria, menorragia y sangrado gastrointestinal [1]. - Frecuentes: anemia, hemorragia, hematoma, epistaxis, náuseas y aumento de transaminasas. - Poco frecuentes: trombocitopenia, urticaria, prurito, elevación de bilirrubina y hemorragia intracraneal. - Raras: reacciones anafilácticas, angioedema, hemorragia retroperitoneal y hemorragia fatal. Ante un sangrado que no cede, un traumatismo craneal o una caída con golpe en la cabeza, se requiere evaluación urgente [1].
+La hemorragia es la reacción más importante. Las más frecuentes son epistaxis, equimosis, hematuria, menorragia y sangrado gastrointestinal. - Frecuentes: anemia, hemorragia, hematoma, epistaxis, náuseas y aumento de transaminasas. - Poco frecuentes: trombocitopenia, urticaria, prurito, elevación de bilirrubina y hemorragia intracraneal. - Raras: reacciones anafilácticas, angioedema, hemorragia retroperitoneal y hemorragia fatal. Ante un sangrado que no cede, un traumatismo craneal o una caída con golpe en la cabeza, se requiere evaluación urgente.
 
 ## Artículos relacionados
 

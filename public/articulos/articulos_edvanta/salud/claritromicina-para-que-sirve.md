@@ -15,7 +15,7 @@ Pertenece al grupo farmacológico de Macrólido.
 
 ## ¿Para qué sirve la claritromicina?
 
-Según la ficha técnica, está indicada en adultos y adolescentes desde los 12 años para [1]:
+Según la ficha técnica, está indicada en adultos y adolescentes desde los 12 años para:
 
 - Infecciones respiratorias altas: faringitis, amigdalitis y sinusitis diagnosticadas.
 - Infecciones respiratorias bajas: bronquitis aguda, exacerbación de bronquitis crónica y neumonía bacteriana.
@@ -23,33 +23,33 @@ Según la ficha técnica, está indicada en adultos y adolescentes desde los 12 
 - Infecciones por micobacterias, como *Mycobacterium avium* complex, en combinación con otros fármacos.
 - Úlcera gástrica o duodenal asociada a *Helicobacter pylori*, siempre en combinación.
 
-No sirve para infecciones virales. En neumonía e infecciones de piel es importante confirmar la sensibilidad, porque la resistencia de *Streptococcus pneumoniae* y *Staphylococcus aureus* a los macrólidos es frecuente [1].
+No sirve para infecciones virales. En neumonía e infecciones de piel es importante confirmar la sensibilidad, porque la resistencia de *Streptococcus pneumoniae* y *Staphylococcus aureus* a los macrólidos es frecuente.
 
 ## Cómo funciona
 
-Se une de forma reversible a la subunidad ribosomal 50S y bloquea la translocación del péptido en crecimiento. El resultado es la inhibición de la síntesis de proteínas y, en la mayoría de los casos, un efecto bacteriostático [1,2].
+Se une de forma reversible a la subunidad ribosomal 50S y bloquea la translocación del péptido en crecimiento. El resultado es la inhibición de la síntesis de proteínas y, en la mayoría de los casos, un efecto bacteriostático.
 
-Su actividad depende de la concentración y del tiempo; alcanza concentraciones altas en tejido pulmonar, tonsilas y piel, lo que explica su uso en infecciones respiratorias y cutáneas [1].
+Su actividad depende de la concentración y del tiempo; alcanza concentraciones altas en tejido pulmonar, tonsilas y piel, lo que explica su uso en infecciones respiratorias y cutáneas.
 
 ## Cuánto tarda en hacer efecto
 
 | Parámetro | Valor |
 | --- | --- |
-| Absorción | Oral; biodisponibilidad de aproximadamente 50 a 55 % [1] |
-| Concentración máxima | 2 a 3 horas [1] |
-| Unión a proteínas | 65 a 75 % [1] |
-| Metabolismo | Hepático, CYP3A4; metabolito activo 14-hidroxiclaritromicina [1] |
-| Semivida | 3 a 4 horas; más larga en insuficiencia renal [1] |
-| Eliminación | Renal y biliar [1] |
+| Absorción | Oral; biodisponibilidad de aproximadamente 50 a 55 %  |
+| Concentración máxima | 2 a 3 horas  |
+| Unión a proteínas | 65 a 75 %  |
+| Metabolismo | Hepático, CYP3A4; metabolito activo 14-hidroxiclaritromicina  |
+| Semivida | 3 a 4 horas; más larga en insuficiencia renal  |
+| Eliminación | Renal y biliar  |
 
 ## Cómo se toma
 
 | Contexto | Dosis habitual en adultos |
 |---|---|
-| Infección respiratoria o de piel | 250 mg cada 12 horas; en infecciones graves, 500 mg cada 12 horas [1] |
-| *Helicobacter pylori* | 500 mg cada 12 horas, con amoxicilina o metronidazol y un inhibidor de bomba de protones, durante 7 a 14 días [1] |
-| Micobacterias | 500 mg cada 12 horas, en combinación [1] |
-| Insuficiencia renal grave | Ajustar según la ficha técnica; no usar presentaciones de liberación modificada si el aclaramiento es menor de 30 ml/min [1] |
+| Infección respiratoria o de piel | 250 mg cada 12 horas; en infecciones graves, 500 mg cada 12 horas  |
+| *Helicobacter pylori* | 500 mg cada 12 horas, con amoxicilina o metronidazol y un inhibidor de bomba de protones, durante 7 a 14 días  |
+| Micobacterias | 500 mg cada 12 horas, en combinación  |
+| Insuficiencia renal grave | Ajustar según la ficha técnica; no usar presentaciones de liberación modificada si el aclaramiento es menor de 30 ml/min  |
 
 - Se puede tomar con o sin alimentos.
 - Termina el esquema completo.
@@ -57,7 +57,7 @@ Su actividad depende de la concentración y del tiempo; alcanza concentraciones 
 
 ## Efectos secundarios
 
-- Náuseas, diarrea, dolor abdominal, vómito y sabor alterado [1].
+- Náuseas, diarrea, dolor abdominal, vómito y sabor alterado.
 - Dolor de cabeza y mareo.
 - Candidiasis.
 - Elevación de enzimas hepáticas y, rara vez, hepatitis grave.
@@ -66,7 +66,7 @@ Su actividad depende de la concentración y del tiempo; alcanza concentraciones 
 
 Busca atención urgente si tienes palpitaciones, desmayo, ictericia, dolor abdominal intenso, diarrea con sangre o una erupción grave.
 
-Las más frecuentes son diarrea, náuseas, vómito, dolor abdominal y alteración del gusto [1].
+Las más frecuentes son diarrea, náuseas, vómito, dolor abdominal y alteración del gusto.
 
 - Frecuentes: cefalea, insomnio, rash, hiperhidrosis y pruebas hepáticas alteradas.
 - Poco frecuentes: candidiasis, leucopenia, ansiedad, mareo, tinnitus y palpitaciones.
@@ -76,35 +76,35 @@ Las más frecuentes son diarrea, náuseas, vómito, dolor abdominal y alteració
 
 | Medicamento | Qué puede pasar |
 |---|---|
-| Simvastatina y lovastatina | Aumento del riesgo de miopatía y rabdomiólisis; combinación contraindicada [1] |
-| Warfarina y anticoagulantes directos | Aumento del riesgo de sangrado; monitorizar [1] |
-| Digoxina | Aumento de sus niveles y toxicidad [1] |
-| Colchicina | Toxicidad grave; contraindicada [1] |
-| Midazolam oral, triazolam | Sedación prolongada [1] |
-| Ergotamina | Vasoespasmo; contraindicada [1] |
-| Estatinas metabolizadas por CYP3A4 | Miopatía; revisar el esquema [1] |
-| Fármacos que prolongan el QT | Mayor riesgo de torsades de pointes [1] |
+| Simvastatina y lovastatina | Aumento del riesgo de miopatía y rabdomiólisis; combinación contraindicada  |
+| Warfarina y anticoagulantes directos | Aumento del riesgo de sangrado; monitorizar  |
+| Digoxina | Aumento de sus niveles y toxicidad  |
+| Colchicina | Toxicidad grave; contraindicada  |
+| Midazolam oral, triazolam | Sedación prolongada  |
+| Ergotamina | Vasoespasmo; contraindicada  |
+| Estatinas metabolizadas por CYP3A4 | Miopatía; revisar el esquema  |
+| Fármacos que prolongan el QT | Mayor riesgo de torsades de pointes  |
 
 | Medicamento | Efecto | Qué hacer |
 | --- | --- | --- |
-| Simvastatina y lovastatina | Miopatía y rabdomiólisis | Suspender la estatina o cambiar el antibiótico [1] |
-| Warfarina y anticoagulantes directos | Mayor riesgo de sangrado | Monitorizar INR o vigilar sangrado [1] |
-| Digoxina | Aumento de niveles y toxicidad | Monitorizar digoxina [1] |
-| Colchicina | Toxicidad grave | Contraindicada [1] |
-| Midazolam oral y triazolam | Sedación prolongada | Evitar o ajustar [1] |
-| Fármacos que prolongan el QT | Torsades de pointes | Evitar combinaciones de riesgo [1] |
-| Tacrolimus y ciclosporina | Aumento de niveles | Monitorizar concentraciones [1] |
+| Simvastatina y lovastatina | Miopatía y rabdomiólisis | Suspender la estatina o cambiar el antibiótico  |
+| Warfarina y anticoagulantes directos | Mayor riesgo de sangrado | Monitorizar INR o vigilar sangrado  |
+| Digoxina | Aumento de niveles y toxicidad | Monitorizar digoxina  |
+| Colchicina | Toxicidad grave | Contraindicada  |
+| Midazolam oral y triazolam | Sedación prolongada | Evitar o ajustar  |
+| Fármacos que prolongan el QT | Torsades de pointes | Evitar combinaciones de riesgo  |
+| Tacrolimus y ciclosporina | Aumento de niveles | Monitorizar concentraciones  |
 
 ## Quién no debe tomarlo
 
-- Alergia a la claritromicina o a otros macrólidos [1].
-- Antecedente de prolongación del QT, arritmias ventriculares o hipopotasemia/hipomagnesemia no corregida [1].
+- Alergia a la claritromicina o a otros macrólidos.
+- Antecedente de prolongación del QT, arritmias ventriculares o hipopotasemia/hipomagnesemia no corregida.
 - Insuficiencia hepática grave, especialmente si hay también insuficiencia renal.
-- Embarazo, sobre todo el primer trimestre: solo si el beneficio supera el riesgo [1].
-- Lactancia: se excreta en la leche y se recomienda suspenderla durante el tratamiento [1].
+- Embarazo, sobre todo el primer trimestre: solo si el beneficio supera el riesgo.
+- Lactancia: se excreta en la leche y se recomienda suspenderla durante el tratamiento.
 - Insuficiencia renal con aclaramiento menor de 30 ml/min: ajuste obligatorio.
 
-Contraindicaciones principales [1]:
+Contraindicaciones principales:
 
 - Hipersensibilidad a claritromicina o a otros macrólidos.
 - Prolongación congénita o adquirida del QT, arritmias ventriculares o antecedente de torsades de pointes.
@@ -112,35 +112,35 @@ Contraindicaciones principales [1]:
 - Uso concomitante con astemizol, cisaprida, domperidona, pimozida, terfenadina, ergotamina, midazolam oral, lovastatina, simvastatina, colchicina, ticagrelor, ivabradina o ranolazina.
 - Insuficiencia hepática grave con insuficiencia renal.
 
-Advertencias: hepatotoxicidad, colitis por C. difficile, prolongación del QT, hipoglucemia con antidiabéticos, miopatía con estatinas y reacciones cutáneas graves [1].
+Advertencias: hepatotoxicidad, colitis por C. difficile, prolongación del QT, hipoglucemia con antidiabéticos, miopatía con estatinas y reacciones cutáneas graves.
 
 ## Embarazo, lactancia y niños
 
-No se ha establecido la seguridad en el embarazo. Se usa solo si el beneficio supera el riesgo, con especial cautela en el primer trimestre. Pasa a la leche materna en pequeñas cantidades; la ficha técnica recomienda interrumpir la lactancia durante el tratamiento [1].
+No se ha establecido la seguridad en el embarazo. Se usa solo si el beneficio supera el riesgo, con especial cautela en el primer trimestre. Pasa a la leche materna en pequeñas cantidades; la ficha técnica recomienda interrumpir la lactancia durante el tratamiento.
 
-- Embarazo: no se recomienda sin una evaluación cuidadosa; se han descrito resultados contradictorios y posible aumento del riesgo de aborto [1].
-- Lactancia: se excreta en la leche; la ficha técnica recomienda interrumpir la lactancia durante el tratamiento [1].
-- Fertilidad: los estudios en animales no muestran efectos adversos [1].
+- Embarazo: no se recomienda sin una evaluación cuidadosa; se han descrito resultados contradictorios y posible aumento del riesgo de aborto.
+- Lactancia: se excreta en la leche; la ficha técnica recomienda interrumpir la lactancia durante el tratamiento.
+- Fertilidad: los estudios en animales no muestran efectos adversos.
 
 ## Cómo actúa
 
-La claritromicina se une a la subunidad ribosomal 50S y bloquea la síntesis de proteínas bacterianas. Es bacteriostática en la mayoría de los casos, aunque puede ser bactericida frente a algunos microorganismos a concentraciones altas [1].
+La claritromicina se une a la subunidad ribosomal 50S y bloquea la síntesis de proteínas bacterianas. Es bacteriostática en la mayoría de los casos, aunque puede ser bactericida frente a algunos microorganismos a concentraciones altas.
 
 ## Claritromicina en Colombia
 
-El CUM del INVIMA registra claritromicina en tabletas, suspensión y presentaciones de liberación modificada. Verifica el registro y la concentración antes de dispensar [2]. Es un medicamento de prescripción médica.
+El CUM del INVIMA registra claritromicina en tabletas, suspensión y presentaciones de liberación modificada. Verifica el registro y la concentración antes de dispensar. Es un medicamento de prescripción médica.
 
 ## Evidencia y situación en Colombia
 
-La claritromicina tiene eficacia demostrada en infecciones respiratorias, de piel y en la erradicación de H. pylori cuando se combina con amoxicilina o metronidazol y un inhibidor de bomba de protones [1,2].
+La claritromicina tiene eficacia demostrada en infecciones respiratorias, de piel y en la erradicación de H. pylori cuando se combina con amoxicilina o metronidazol y un inhibidor de bomba de protones.
 
-En neumonía adquirida en la comunidad, su cobertura de atípicos la hace útil en esquemas combinados, pero la resistencia de S. pneumoniae obliga a confirmar sensibilidad en infecciones graves [1].
+En neumonía adquirida en la comunidad, su cobertura de atípicos la hace útil en esquemas combinados, pero la resistencia de S. pneumoniae obliga a confirmar sensibilidad en infecciones graves.
 
-La evidencia también respalda su papel en la profilaxis de Mycobacterium avium complex en pacientes con VIH y CD4 bajo, siempre con vigilancia de interacciones [1].
+La evidencia también respalda su papel en la profilaxis de Mycobacterium avium complex en pacientes con VIH y CD4 bajo, siempre con vigilancia de interacciones.
 
-- Colombia: el CUM registra claritromicina en tabletas, suspensión y liberación modificada; verificar registro y concentración [3].
-- Unión Europea: la claritromicina está autorizada para las indicaciones descritas [1].
-- Estados Unidos: la FDA mantiene etiquetas vigentes de claritromicina [1].
+- Colombia: el CUM registra claritromicina en tabletas, suspensión y liberación modificada; verificar registro y concentración.
+- Unión Europea: la claritromicina está autorizada para las indicaciones descritas.
+- Estados Unidos: la FDA mantiene etiquetas vigentes de claritromicina.
 
 ## Errores frecuentes
 
@@ -180,15 +180,15 @@ No hay una interacción directa grave descrita, pero el alcohol puede empeorar l
 
 ### ¿Cuánto tarda en hacer efecto Claritromicina?
 
-2 a 3 horas [1] Su efecto se mantiene mientras el medicamento permanece en el cuerpo; la semivida es de 3 a 4 horas; más larga en insuficiencia renal [1]. La respuesta completa depende de la indicación y del paciente, así que el seguimiento lo define el profesional.
+2 a 3 horas  Su efecto se mantiene mientras el medicamento permanece en el cuerpo; la semivida es de 3 a 4 horas; más larga en insuficiencia renal. La respuesta completa depende de la indicación y del paciente, así que el seguimiento lo define el profesional.
 
 ### ¿Se puede usar Claritromicina en el embarazo?
 
-- Embarazo: no se recomienda sin una evaluación cuidadosa; se han descrito resultados contradictorios y posible aumento del riesgo de aborto [1]. - Lactancia: se excreta en la leche; la ficha técnica recomienda interrumpir la lactancia durante el tratamiento [1]. - Fertilidad: los estudios en animales no muestran efectos adversos [1].
+- Embarazo: no se recomienda sin una evaluación cuidadosa; se han descrito resultados contradictorios y posible aumento del riesgo de aborto. - Lactancia: se excreta en la leche; la ficha técnica recomienda interrumpir la lactancia durante el tratamiento. - Fertilidad: los estudios en animales no muestran efectos adversos.
 
 ### ¿Qué efectos secundarios de Claritromicina son graves?
 
-Las más frecuentes son diarrea, náuseas, vómito, dolor abdominal y alteración del gusto [1]. - Frecuentes: cefalea, insomnio, rash, hiperhidrosis y pruebas hepáticas alteradas. - Poco frecuentes: candidiasis, leucopenia, ansiedad, mareo, tinnitus y palpitaciones. - Raras: pancreatitis, hepatitis, insuficiencia hepática, convulsiones, torsades de pointes, Stevens-Johnson, necrólisis epidérmica tóxica y colitis pseudomembranosa.
+Las más frecuentes son diarrea, náuseas, vómito, dolor abdominal y alteración del gusto. - Frecuentes: cefalea, insomnio, rash, hiperhidrosis y pruebas hepáticas alteradas. - Poco frecuentes: candidiasis, leucopenia, ansiedad, mareo, tinnitus y palpitaciones. - Raras: pancreatitis, hepatitis, insuficiencia hepática, convulsiones, torsades de pointes, Stevens-Johnson, necrólisis epidérmica tóxica y colitis pseudomembranosa.
 
 ## Artículos relacionados
 

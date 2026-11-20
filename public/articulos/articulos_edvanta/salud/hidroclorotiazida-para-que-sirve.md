@@ -13,22 +13,22 @@ Algunas fichas técnicas incluyen otros usos, como la prevención de cálculos r
 
 ## Cómo funciona
 
-La hidroclorotiazida actúa en el túbulo contorneado distal del riñón, donde inhibe el cotransportador de sodio y cloro. Al reducir la reabsorción de sodio, aumenta la excreción de sodio, cloro y agua, y en menor medida la de potasio, magnesio y bicarbonato [1].
+La hidroclorotiazida actúa en el túbulo contorneado distal del riñón, donde inhibe el cotransportador de sodio y cloro. Al reducir la reabsorción de sodio, aumenta la excreción de sodio, cloro y agua, y en menor medida la de potasio, magnesio y bicarbonato.
 
-El efecto antihipertensivo tiene dos componentes: al inicio, la reducción del volumen plasmático y del gasto cardíaco; después, una disminución de la resistencia vascular periférica que se mantiene aunque el volumen se recupere parcialmente. El efecto completo tarda de 3 a 4 semanas [1].
+El efecto antihipertensivo tiene dos componentes: al inicio, la reducción del volumen plasmático y del gasto cardíaco; después, una disminución de la resistencia vascular periférica que se mantiene aunque el volumen se recupere parcialmente. El efecto completo tarda de 3 a 4 semanas.
 
-Por encima de una dosis determinada, el efecto diurético y antihipertensivo alcanza una meseta, mientras que los efectos adversos metabólicos siguen aumentando. Por eso, si la presión no baja con 25 o 50 mg, no se recomienda seguir subiendo la dosis: se añade otro grupo [1].
+Por encima de una dosis determinada, el efecto diurético y antihipertensivo alcanza una meseta, mientras que los efectos adversos metabólicos siguen aumentando. Por eso, si la presión no baja con 25 o 50 mg, no se recomienda seguir subiendo la dosis: se añade otro grupo.
 
 ## Cuánto tarda en hacer efecto
 
 | Parámetro | Valor |
 | --- | --- |
-| Absorción | Oral, biodisponibilidad del 65 al 80 %; los alimentos retrasan la absorción [1] |
-| Concentración máxima | De 1 a 5 horas [1] |
-| Inicio y duración | Diuresis a las 2 horas, máximo a las 4 horas y duración de 6 a 12 horas [1] |
-| Distribución | Volumen de 4 a 8 l/kg; unión a proteínas del 40 al 68 % [1] |
-| Metabolismo | No se metaboliza de forma significativa [1] |
-| Eliminación | Renal; más del 95 % se excreta sin cambios, al menos el 61 % en 24 horas [1] |
+| Absorción | Oral, biodisponibilidad del 65 al 80 %; los alimentos retrasan la absorción  |
+| Concentración máxima | De 1 a 5 horas  |
+| Inicio y duración | Diuresis a las 2 horas, máximo a las 4 horas y duración de 6 a 12 horas  |
+| Distribución | Volumen de 4 a 8 l/kg; unión a proteínas del 40 al 68 %  |
+| Metabolismo | No se metaboliza de forma significativa  |
+| Eliminación | Renal; más del 95 % se excreta sin cambios, al menos el 61 % en 24 horas  |
 
 ## Cómo se toma
 
@@ -66,13 +66,13 @@ También puede subir el azúcar en la sangre. Por eso, si tiene diabetes, mida s
 
 Consulte si tiene calambres, debilidad muscular, palpitaciones, mucha sed, confusión o un dolor intenso en una articulación, como el dedo gordo del pie.
 
-Las reacciones más frecuentes son hipopotasemia, aumento de lípidos, hiponatremia, hipomagnesemia, hiperuricemia, urticaria, erupción, disminución del apetito, náuseas leves, vómitos, hipotensión ortostática e impotencia [1].
+Las reacciones más frecuentes son hipopotasemia, aumento de lípidos, hiponatremia, hipomagnesemia, hiperuricemia, urticaria, erupción, disminución del apetito, náuseas leves, vómitos, hipotensión ortostática e impotencia.
 
 - Raras: trombocitopenia, cefalea, mareo, trastornos del sueño, depresión, parestesia, insuficiencia visual, fotosensibilidad, malestar abdominal, estreñimiento, diarrea, colestasis, ictericia, arritmias, hipercalcemia, hiperglucemia, glucosuria y empeoramiento del control diabético.
 - Muy raras: leucopenia, agranulocitosis, anemia hemolítica, reacciones de hipersensibilidad, neumonitis, edema pulmonar, alcalosis hipoclorémica, vasculitis necrotizante, necrólisis epidérmica tóxica, lupus cutáneo, pancreatitis y SDRA.
 - Frecuencia no conocida: cáncer de piel no melanoma, derrame coroideo, glaucoma de ángulo cerrado, insuficiencia renal aguda y anemia aplásica.
 
-El riesgo de cáncer de piel no melanoma se ha asociado con dosis acumuladas altas. No es una razón para suspender la tiazida en todos los pacientes, pero sí para revisar la piel, recomendar protección solar y elegir otra alternativa cuando el riesgo dermatológico sea alto [1].
+El riesgo de cáncer de piel no melanoma se ha asociado con dosis acumuladas altas. No es una razón para suspender la tiazida en todos los pacientes, pero sí para revisar la piel, recomendar protección solar y elegir otra alternativa cuando el riesgo dermatológico sea alto.
 
 ## Interacciones
 
@@ -84,26 +84,26 @@ El riesgo de cáncer de piel no melanoma se ha asociado con dosis acumuladas alt
 
 | Medicamento | Efecto | Qué hacer |
 | --- | --- | --- |
-| Litio | Aumenta las concentraciones de litio y su toxicidad | Monitorizar el litio [1] |
-| Otros antihipertensivos | Potencian la hipotensión | Ajustar y vigilar [1] |
-| Relajantes musculares | Potencian el bloqueo neuromuscular | Vigilar [1] |
-| Corticosteroides, ACTH, anfotericina, penicilina G, salicilatos | Aumentan la pérdida de potasio | Monitorizar el potasio [1] |
-| Antidepresivos, antipsicóticos, antiepilépticos | Pueden aumentar la hiponatremia | Vigilar el sodio [1] |
-| Insulina y antidiabéticos | Pueden requerir ajuste por el efecto hiperglucemiante | Monitorizar la glucemia [1] |
-| Digitálicos | La hipopotasemia y la hipomagnesemia favorecen la toxicidad | Corregir electrolitos y vigilar [1] |
-| Antiinflamatorios no esteroideos | Reducen el efecto diurético y antihipertensivo y pueden dañar el riñón | Usar con precaución [1] |
-| Alopurinol | Más reacciones de hipersensibilidad | Vigilar [1] |
-| Amantadina | Más efectos adversos | Vigilar [1] |
+| Litio | Aumenta las concentraciones de litio y su toxicidad | Monitorizar el litio  |
+| Otros antihipertensivos | Potencian la hipotensión | Ajustar y vigilar  |
+| Relajantes musculares | Potencian el bloqueo neuromuscular | Vigilar  |
+| Corticosteroides, ACTH, anfotericina, penicilina G, salicilatos | Aumentan la pérdida de potasio | Monitorizar el potasio  |
+| Antidepresivos, antipsicóticos, antiepilépticos | Pueden aumentar la hiponatremia | Vigilar el sodio  |
+| Insulina y antidiabéticos | Pueden requerir ajuste por el efecto hiperglucemiante | Monitorizar la glucemia  |
+| Digitálicos | La hipopotasemia y la hipomagnesemia favorecen la toxicidad | Corregir electrolitos y vigilar  |
+| Antiinflamatorios no esteroideos | Reducen el efecto diurético y antihipertensivo y pueden dañar el riñón | Usar con precaución  |
+| Alopurinol | Más reacciones de hipersensibilidad | Vigilar  |
+| Amantadina | Más efectos adversos | Vigilar  |
 
 ## Quién no debe tomarlo
 
-Contraindicaciones de la ficha técnica [1]:
+Contraindicaciones de la ficha técnica:
 
 - Hipersensibilidad a la hidroclorotiazida o a los excipientes.
 - Anuria.
 - Hipertensión durante el embarazo.
 
-Advertencias principales [1]:
+Advertencias principales:
 
 - Hipopotasemia: puede ser grave y favorecer arritmias, sobre todo con digitálicos. Controlar el potasio al inicio y a las 3 o 4 semanas, y luego de forma periódica.
 - Hiponatremia: puede causar náuseas, desorientación, apatía y convulsiones; vigilar el sodio, especialmente en personas mayores, con ascitis o con edema por síndrome nefrótico.
@@ -118,8 +118,8 @@ Advertencias principales [1]:
 
 Según la ficha técnica consultada, está contraindicada en el embarazo y no debe usarse para tratar la presión alta de las gestantes. Pasa a la leche materna y puede disminuir la producción de leche, por lo que se debe evitar durante la lactancia. Si planea un embarazo o queda en embarazo, consulte pronto a su médico, sin suspender por su cuenta. Más información en [presión alta en el embarazo](/articulos/presion-alta-en-el-embarazo).
 
-- Embarazo: la hipertensión durante el embarazo es una contraindicación. Las tiazidas pueden reducir la perfusión placentaria y se han asociado con ictericia y trombocitopenia en el recién nacido; no se usan para tratar la preeclampsia [1].
-- Lactancia: la hidroclorotiazida pasa a la leche y puede inhibir la lactancia; se debe evitar en madres lactantes [1].
+- Embarazo: la hipertensión durante el embarazo es una contraindicación. Las tiazidas pueden reducir la perfusión placentaria y se han asociado con ictericia y trombocitopenia en el recién nacido; no se usan para tratar la preeclampsia.
+- Lactancia: la hidroclorotiazida pasa a la leche y puede inhibir la lactancia; se debe evitar en madres lactantes.
 
 ## Hidroclorotiazida combinada: losartán, enalapril y otros
 
@@ -162,15 +162,15 @@ Este contenido es educativo y no reemplaza la consulta con su médico o químico
 
 La evidencia de las tiazidas en hipertensión es amplia, pero conviene precisar qué se estudió:
 
-- ALLHAT comparó clortalidona, un diurético tiazídico similar, con amlodipino y lisinopril en 33.357 pacientes de alto riesgo. La clortalidona fue superior a amlodipino para prevenir insuficiencia cardíaca y superior a lisinopril en algunos desenlaces combinados; no hubo diferencia en el objetivo coronario principal [2].
-- La revisión sistemática Cochrane de 2018 concluyó que los diuréticos tiazídicos reducen la mortalidad y los eventos cardiovasculares en hipertensión y son una opción de primera línea, con un perfil de efectos adversos predecible [3].
-- El metaanálisis de 147 ensayos de Law y colaboradores mostró que la reducción de la presión arterial explica la mayor parte del beneficio cardiovascular, independientemente del grupo farmacológico [4].
+- ALLHAT comparó clortalidona, un diurético tiazídico similar, con amlodipino y lisinopril en 33.357 pacientes de alto riesgo. La clortalidona fue superior a amlodipino para prevenir insuficiencia cardíaca y superior a lisinopril en algunos desenlaces combinados; no hubo diferencia en el objetivo coronario principal.
+- La revisión sistemática Cochrane de 2018 concluyó que los diuréticos tiazídicos reducen la mortalidad y los eventos cardiovasculares en hipertensión y son una opción de primera línea, con un perfil de efectos adversos predecible.
+- El metaanálisis de 147 ensayos de Law y colaboradores mostró que la reducción de la presión arterial explica la mayor parte del beneficio cardiovascular, independientemente del grupo farmacológico.
 
-La hidroclorotiazida no tiene un ensayo pivotal propio con desenlaces cardiovasculares comparable a LIFE o SOLVD. Su lugar se sostiene por la evidencia de clase de las tiazidas, su eficacia antihipertensiva y su uso extendido en combinaciones [2-4].
+La hidroclorotiazida no tiene un ensayo pivotal propio con desenlaces cardiovasculares comparable a LIFE o SOLVD. Su lugar se sostiene por la evidencia de clase de las tiazidas, su eficacia antihipertensiva y su uso extendido en combinaciones.
 
-- Colombia: el CUM registra múltiples presentaciones de hidroclorotiazida, sola y en combinaciones con IECA, ARA-II y otros antihipertensivos [5].
-- Unión Europea: la hidroclorotiazida está autorizada para las indicaciones descritas [1].
-- Estados Unidos: la FDA tiene etiquetas vigentes de hidroclorotiazida y de sus combinaciones; las indicaciones pueden variar [1].
+- Colombia: el CUM registra múltiples presentaciones de hidroclorotiazida, sola y en combinaciones con IECA, ARA-II y otros antihipertensivos.
+- Unión Europea: la hidroclorotiazida está autorizada para las indicaciones descritas.
+- Estados Unidos: la FDA tiene etiquetas vigentes de hidroclorotiazida y de sus combinaciones; las indicaciones pueden variar.
 
 ## Errores frecuentes
 
@@ -214,15 +214,15 @@ Según la ficha técnica consultada, no: está contraindicada en el embarazo. Si
 
 ### ¿Cuánto tarda en hacer efecto Hidroclorotiazida?
 
-De 1 a 5 horas [1] Su efecto se mantiene mientras el medicamento permanece en el cuerpo; la semivida es de muy variable, de 5 a 25 horas; aumenta en insuficiencia renal [1]. La respuesta completa depende de la indicación y del paciente, así que el seguimiento lo define el profesional.
+De 1 a 5 horas  Su efecto se mantiene mientras el medicamento permanece en el cuerpo; la semivida es de muy variable, de 5 a 25 horas; aumenta en insuficiencia renal. La respuesta completa depende de la indicación y del paciente, así que el seguimiento lo define el profesional.
 
 ### ¿Se puede usar Hidroclorotiazida en el embarazo?
 
-- Embarazo: la hipertensión durante el embarazo es una contraindicación. Las tiazidas pueden reducir la perfusión placentaria y se han asociado con ictericia y trombocitopenia en el recién nacido; no se usan para tratar la preeclampsia [1]. - Lactancia: la hidroclorotiazida pasa a la leche y puede inhibir la lactancia; se debe evitar en madres lactantes [1].
+- Embarazo: la hipertensión durante el embarazo es una contraindicación. Las tiazidas pueden reducir la perfusión placentaria y se han asociado con ictericia y trombocitopenia en el recién nacido; no se usan para tratar la preeclampsia. - Lactancia: la hidroclorotiazida pasa a la leche y puede inhibir la lactancia; se debe evitar en madres lactantes.
 
 ### ¿Qué efectos secundarios de Hidroclorotiazida son graves?
 
-Las reacciones más frecuentes son hipopotasemia, aumento de lípidos, hiponatremia, hipomagnesemia, hiperuricemia, urticaria, erupción, disminución del apetito, náuseas leves, vómitos, hipotensión ortostática e impotencia [1]. - Raras: trombocitopenia, cefalea, mareo, trastornos del sueño, depresión, parestesia, insuficiencia visual, fotosensibilidad, malestar abdominal, estreñimiento, diarrea, colestasis, ictericia, arritmias, hipercalcemia, hiperglucemia, glucosuria y empeoramiento del control diabético. - Muy raras: leucopenia, agranulocitosis, anemia hemolítica, reacciones de…
+Las reacciones más frecuentes son hipopotasemia, aumento de lípidos, hiponatremia, hipomagnesemia, hiperuricemia, urticaria, erupción, disminución del apetito, náuseas leves, vómitos, hipotensión ortostática e impotencia. - Raras: trombocitopenia, cefalea, mareo, trastornos del sueño, depresión, parestesia, insuficiencia visual, fotosensibilidad, malestar abdominal, estreñimiento, diarrea, colestasis, ictericia, arritmias, hipercalcemia, hiperglucemia, glucosuria y empeoramiento del control diabético. - Muy raras: leucopenia, agranulocitosis, anemia hemolítica, reacciones de…
 
 ## Artículos relacionados
 

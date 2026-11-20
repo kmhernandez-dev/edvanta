@@ -15,7 +15,7 @@ Pertenece al grupo farmacológico de Fluoroquinolona.
 
 ## ¿Para qué sirve el ciprofloxacino?
 
-Según su ficha técnica, en adultos está indicado, entre otras, para [1]:
+Según su ficha técnica, en adultos está indicado, entre otras, para:
 
 - Infecciones de las vías respiratorias bajas por bacterias gramnegativas, incluida la neumonía y las infecciones en la fibrosis quística o las bronquiectasias.
 - Cistitis aguda no complicada (solo si otros antibióticos recomendados no son apropiados), pielonefritis e infecciones urinarias complicadas.
@@ -24,72 +24,72 @@ Según su ficha técnica, en adultos está indicado, entre otras, para [1]:
 
 ## Cómo funciona
 
-Es bactericida: inhibe la topoisomerasa de tipo II (ADN girasa) y la topoisomerasa de tipo IV, enzimas necesarias para la replicación, la transcripción, la reparación y la recombinación del ADN bacteriano [1].
+Es bactericida: inhibe la topoisomerasa de tipo II (ADN girasa) y la topoisomerasa de tipo IV, enzimas necesarias para la replicación, la transcripción, la reparación y la recombinación del ADN bacteriano.
 
 ## Cuánto tarda en hacer efecto
 
-- Biodisponibilidad absoluta de 70 a 80 % [1].
-- Semivida de 4 a 7 horas con función renal normal, y de hasta 12 horas en la insuficiencia renal grave [1].
-- Los cationes multivalentes, el sevelamer, el sucralfato y los antiácidos reducen su absorción; el calcio de una comida normal no la afecta de forma significativa [1].
-- Inhibe la CYP1A2 [1].
+- Biodisponibilidad absoluta de 70 a 80 %.
+- Semivida de 4 a 7 horas con función renal normal, y de hasta 12 horas en la insuficiencia renal grave.
+- Los cationes multivalentes, el sevelamer, el sucralfato y los antiácidos reducen su absorción; el calcio de una comida normal no la afecta de forma significativa.
+- Inhibe la CYP1A2.
 
 ## Cómo se toma
 
-La dosis y la duración dependen de la infección y las define el médico. Como referencia, en la cistitis aguda no complicada la ficha técnica indica 250 a 500 mg dos veces al día durante 3 días [1].
+La dosis y la duración dependen de la infección y las define el médico. Como referencia, en la cistitis aguda no complicada la ficha técnica indica 250 a 500 mg dos veces al día durante 3 días.
 
-- **Separa el ciprofloxacino de los minerales:** antiácidos, calcio, magnesio, aluminio, hierro, zinc y sucralfato reducen su absorción. Tómalo 1 a 2 horas antes o al menos 4 horas después de ellos [1].
-- No lo tomes con leche, yogur ni jugos enriquecidos con calcio; el calcio de una comida normal no afecta de forma importante su absorción [1].
-- Si a los 3 días no hay mejoría, el médico debe replantear el tratamiento [1].
+- **Separa el ciprofloxacino de los minerales:** antiácidos, calcio, magnesio, aluminio, hierro, zinc y sucralfato reducen su absorción. Tómalo 1 a 2 horas antes o al menos 4 horas después de ellos.
+- No lo tomes con leche, yogur ni jugos enriquecidos con calcio; el calcio de una comida normal no afecta de forma importante su absorción.
+- Si a los 3 días no hay mejoría, el médico debe replantear el tratamiento.
 
 ## Efectos secundarios
 
-Los más frecuentes son náuseas y diarrea [1].
+Los más frecuentes son náuseas y diarrea.
 
-Las más notificadas son náuseas y diarrea [1]. Las graves se describen en las advertencias.
+Las más notificadas son náuseas y diarrea. Las graves se describen en las advertencias.
 
 ## Interacciones
 
 | Medicamento | Qué pasa |
 |---|---|
-| Tizanidina | Contraindicado: su concentración se multiplica y produce hipotensión y sedación [1] |
-| Teofilina | Sube su concentración y puede producir toxicidad grave; hay que vigilarla [1] |
-| Clozapina, olanzapina, duloxetina y otros metabolizados por la CYP1A2 | Pueden aumentar sus concentraciones [1] |
-| Antiácidos, calcio, magnesio, hierro, zinc, sucralfato | Reducen la absorción del ciprofloxacino [1] |
-| Medicamentos que prolongan el QT (algunos antiarrítmicos, antidepresivos tricíclicos, macrólidos, antipsicóticos) | Más riesgo de arritmias [1] |
-| Corticoides | Más riesgo de rotura de tendones y de problemas de la aorta [1] |
+| Tizanidina | Contraindicado: su concentración se multiplica y produce hipotensión y sedación  |
+| Teofilina | Sube su concentración y puede producir toxicidad grave; hay que vigilarla  |
+| Clozapina, olanzapina, duloxetina y otros metabolizados por la CYP1A2 | Pueden aumentar sus concentraciones  |
+| Antiácidos, calcio, magnesio, hierro, zinc, sucralfato | Reducen la absorción del ciprofloxacino  |
+| Medicamentos que prolongan el QT (algunos antiarrítmicos, antidepresivos tricíclicos, macrólidos, antipsicóticos) | Más riesgo de arritmias  |
+| Corticoides | Más riesgo de rotura de tendones y de problemas de la aorta  |
 
 | Fármaco | Efecto | Manejo |
 | --- | --- | --- |
-| Tizanidina | Cmáx 7 veces y AUC 10 veces mayores; hipotensión y sedación | Contraindicado [1] |
-| Teofilina | Concentraciones más altas, con toxicidad potencialmente mortal | Vigilar niveles y ajustar [1] |
-| Clozapina, olanzapina, ropinirol, duloxetina | Mayor concentración por inhibición de la CYP1A2 | Vigilar [1] |
-| Cationes multivalentes, sevelamer, sucralfato, antiácidos | Menor absorción del ciprofloxacino | Separar las tomas [1] |
-| Fármacos que prolongan el QT | Más riesgo de arritmias | Precaución [1] |
-| Corticoides sistémicos | Más tendinopatía y riesgo aórtico | Precaución [1] |
+| Tizanidina | Cmáx 7 veces y AUC 10 veces mayores; hipotensión y sedación | Contraindicado  |
+| Teofilina | Concentraciones más altas, con toxicidad potencialmente mortal | Vigilar niveles y ajustar  |
+| Clozapina, olanzapina, ropinirol, duloxetina | Mayor concentración por inhibición de la CYP1A2 | Vigilar  |
+| Cationes multivalentes, sevelamer, sucralfato, antiácidos | Menor absorción del ciprofloxacino | Separar las tomas  |
+| Fármacos que prolongan el QT | Más riesgo de arritmias | Precaución  |
+| Corticoides sistémicos | Más tendinopatía y riesgo aórtico | Precaución  |
 
 ## Quién no debe tomarlo
 
-Contraindicado con hipersensibilidad a quinolonas y junto con tizanidina [1].
+Contraindicado con hipersensibilidad a quinolonas y junto con tizanidina.
 
-- Reacciones graves, incapacitantes, prolongadas y potencialmente irreversibles en tendones, articulaciones, nervios, psiquis y sentidos [1].
-- Tendinitis y rotura de tendones, desde las primeras 48 horas y hasta meses después; más riesgo en ancianos, insuficiencia renal, trasplante y uso de corticoides [1].
-- Aneurisma y disección aórticos, y regurgitación valvular cardiaca [1].
-- Prolongación del QT y torsade de pointes [1].
-- Disglucemias: hipoglucemia e hiperglucemia [1].
+- Reacciones graves, incapacitantes, prolongadas y potencialmente irreversibles en tendones, articulaciones, nervios, psiquis y sentidos.
+- Tendinitis y rotura de tendones, desde las primeras 48 horas y hasta meses después; más riesgo en ancianos, insuficiencia renal, trasplante y uso de corticoides.
+- Aneurisma y disección aórticos, y regurgitación valvular cardiaca.
+- Prolongación del QT y torsade de pointes.
+- Disglucemias: hipoglucemia e hiperglucemia.
 
 ## Embarazo, lactancia y niños
 
-Por precaución, es preferible evitarlo en el embarazo, porque en animales jóvenes las quinolonas afectan el cartílago en formación. Pasa a la leche materna y no debe usarse durante la lactancia [1].
+Por precaución, es preferible evitarlo en el embarazo, porque en animales jóvenes las quinolonas afectan el cartílago en formación. Pasa a la leche materna y no debe usarse durante la lactancia.
 
-Los datos en embarazadas no muestran toxicidad malformativa, pero por el daño en el cartílago inmaduro observado en animales es preferible evitarlo en el embarazo. Pasa a la leche y no debe usarse durante la lactancia [1].
+Los datos en embarazadas no muestran toxicidad malformativa, pero por el daño en el cartílago inmaduro observado en animales es preferible evitarlo en el embarazo. Pasa a la leche y no debe usarse durante la lactancia.
 
 ## Cómo actúa
 
-Es bactericida: inhibe dos enzimas que la bacteria necesita para copiar y reparar su ADN, la ADN girasa (topoisomerasa II) y la topoisomerasa IV [1].
+Es bactericida: inhibe dos enzimas que la bacteria necesita para copiar y reparar su ADN, la ADN girasa (topoisomerasa II) y la topoisomerasa IV.
 
 ## Advertencias importantes
 
-La ficha técnica describe efectos graves que conviene conocer antes de tomarlo [1]:
+La ficha técnica describe efectos graves que conviene conocer antes de tomarlo:
 
 - **Tendones:** tendinitis y rotura de tendones, sobre todo del tendón de Aquiles, a veces desde las primeras 48 horas y hasta meses después de terminar. El riesgo es mayor en personas mayores, con enfermedad renal, trasplante de órganos o que toman corticoides.
 - **Efectos incapacitantes y duraderos:** casos muy raros que afectan a la vez tendones, articulaciones, nervios (hormigueo, dolor), el sueño, el ánimo, la memoria, la audición, la visión, el gusto y el olfato.
@@ -101,13 +101,13 @@ Suspende y consulta de inmediato ante dolor o inflamación de un tendón, hormig
 
 ## En Colombia
 
-El Código Único de Medicamentos del INVIMA registra 27 registros sanitarios vigentes con ciprofloxacino, en tabletas, solución oftálmica, gotas óticas y solución inyectable [2].
+El Código Único de Medicamentos del INVIMA registra 27 registros sanitarios vigentes con ciprofloxacino, en tabletas, solución oftálmica, gotas óticas y solución inyectable.
 
 ## Evidencia y situación en Colombia
 
-La ficha técnica actual restringe su uso en la cistitis no complicada y en la exacerbación de la EPOC a los casos en que no es apropiado otro antibacteriano recomendado, por el balance entre beneficio y efectos adversos graves de las quinolonas [1]. Antes de iniciar pide considerar la información de resistencia disponible [1].
+La ficha técnica actual restringe su uso en la cistitis no complicada y en la exacerbación de la EPOC a los casos en que no es apropiado otro antibacteriano recomendado, por el balance entre beneficio y efectos adversos graves de las quinolonas. Antes de iniciar pide considerar la información de resistencia disponible.
 
-Colombia: 27 registros sanitarios vigentes, en tabletas, solución oftálmica, solución ótica y solución inyectable [4].
+Colombia: 27 registros sanitarios vigentes, en tabletas, solución oftálmica, solución ótica y solución inyectable.
 
 ## Errores frecuentes
 
@@ -147,11 +147,11 @@ Solo en situaciones específicas y bajo indicación médica, por el riesgo sobre
 
 ### ¿Se puede usar Ciprofloxacino en el embarazo?
 
-Los datos en embarazadas no muestran toxicidad malformativa, pero por el daño en el cartílago inmaduro observado en animales es preferible evitarlo en el embarazo. Pasa a la leche y no debe usarse durante la lactancia [1].
+Los datos en embarazadas no muestran toxicidad malformativa, pero por el daño en el cartílago inmaduro observado en animales es preferible evitarlo en el embarazo. Pasa a la leche y no debe usarse durante la lactancia.
 
 ### ¿Qué efectos secundarios de Ciprofloxacino son graves?
 
-Las más notificadas son náuseas y diarrea [1]. Las graves se describen en las advertencias.
+Las más notificadas son náuseas y diarrea. Las graves se describen en las advertencias.
 
 ## Artículos relacionados
 

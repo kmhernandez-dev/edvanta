@@ -15,7 +15,7 @@ Pertenece al grupo farmacológico de Nitroimidazol antiparasitario y antibacteri
 
 ## ¿Para qué sirve el secnidazol?
 
-El secnidazol pertenece a la familia del metronidazol y comparte sus indicaciones principales [1,2]:
+El secnidazol pertenece a la familia del metronidazol y comparte sus indicaciones principales:
 
 - Vaginosis bacteriana.
 - Tricomoniasis urogenital, incluida la que requiere tratar a la pareja.
@@ -27,24 +27,24 @@ No es un antibiótico para infecciones urinarias comunes, faringitis, gripa ni i
 
 ## Cómo funciona
 
-El secnidazol es un profármaco que se activa por reducción del grupo nitro dentro de microorganismos con metabolismo anaerobio. Los metabolitos reactivos dañan el ADN y otras macromoléculas, e inhiben la síntesis de ácidos nucleicos [1,2].
+El secnidazol es un profármaco que se activa por reducción del grupo nitro dentro de microorganismos con metabolismo anaerobio. Los metabolitos reactivos dañan el ADN y otras macromoléculas, e inhiben la síntesis de ácidos nucleicos.
 
-Su actividad se dirige a bacterias anaerobias y a protozoos como Trichomonas vaginalis, Entamoeba histolytica y Giardia lamblia. No tiene actividad relevante frente a bacterias aerobias [1,2].
+Su actividad se dirige a bacterias anaerobias y a protozoos como Trichomonas vaginalis, Entamoeba histolytica y Giardia lamblia. No tiene actividad relevante frente a bacterias aerobias.
 
 ## Cuánto tarda en hacer efecto
 
 | Parámetro | Valor |
 | --- | --- |
-| Absorción | Oral, rápida y casi completa [1,2] |
-| Concentración máxima | Aproximadamente 1 a 2 horas [1,2] |
-| Unión a proteínas | Baja [1] |
-| Metabolismo | Hepático [1,2] |
-| Semivida | 17 a 29 horas [1,2] |
-| Eliminación | Renal y biliar [1,2] |
+| Absorción | Oral, rápida y casi completa  |
+| Concentración máxima | Aproximadamente 1 a 2 horas  |
+| Unión a proteínas | Baja  |
+| Metabolismo | Hepático  |
+| Semivida | 17 a 29 horas  |
+| Eliminación | Renal y biliar  |
 
 ## Cómo se toma
 
-La dosis y la duración las define el médico según la infección. Como referencia, en adultos se han utilizado esquemas de 2 g en dosis única para vaginosis bacteriana y tricomoniasis, y pautas de varios días para algunas parasitosis [1,2].
+La dosis y la duración las define el médico según la infección. Como referencia, en adultos se han utilizado esquemas de 2 g en dosis única para vaginosis bacteriana y tricomoniasis, y pautas de varios días para algunas parasitosis.
 
 - Se puede tomar con alimentos para reducir las molestias digestivas.
 - No fracciones ni dupliques la dosis sin indicación.
@@ -53,7 +53,7 @@ La dosis y la duración las define el médico según la infección. Como referen
 
 ## Efectos secundarios
 
-- Náuseas, dolor abdominal, diarrea, estreñimiento y sabor metálico o alterado [1,2].
+- Náuseas, dolor abdominal, diarrea, estreñimiento y sabor metálico o alterado.
 - Dolor de cabeza y mareo.
 - Candidiasis vaginal como sobreinfección.
 - Orina oscura, un cambio esperado y generalmente inofensivo.
@@ -61,7 +61,7 @@ La dosis y la duración las define el médico según la infección. Como referen
 
 Suspende y consulta de inmediato si aparecen ampollas, descamación, dificultad para respirar, confusión o diarrea intensa.
 
-Las más frecuentes son náuseas, dolor abdominal, diarrea, estreñimiento, sabor metálico y cefalea [1,2].
+Las más frecuentes son náuseas, dolor abdominal, diarrea, estreñimiento, sabor metálico y cefalea.
 
 - Frecuentes: náuseas, vómito, diarrea, dolor abdominal, cefalea y candidiasis.
 - Poco frecuentes: mareo, sequedad de boca, insomnio y erupción cutánea.
@@ -71,28 +71,28 @@ Las más frecuentes son náuseas, dolor abdominal, diarrea, estreñimiento, sabo
 
 | Medicamento o sustancia | Qué puede pasar |
 |---|---|
-| Alcohol | Reacción tipo disulfiram: mareo, vómito y malestar [1,2] |
-| Warfarina | Aumento del efecto anticoagulante y del riesgo de sangrado [2] |
-| Litio | Aumento de sus concentraciones [1] |
-| Disulfiram | Confusión o reacciones psicóticas [1] |
+| Alcohol | Reacción tipo disulfiram: mareo, vómito y malestar  |
+| Warfarina | Aumento del efecto anticoagulante y del riesgo de sangrado  |
+| Litio | Aumento de sus concentraciones  |
+| Disulfiram | Confusión o reacciones psicóticas  |
 | Otros nitroimidazoles | No se combinan entre sí |
 
 | Medicamento o sustancia | Efecto | Qué hacer |
 | --- | --- | --- |
-| Alcohol | Reacción tipo disulfiram: rubor, náuseas, vómito y taquicardia | Evitar durante el tratamiento y 48 horas después [1,2] |
-| Warfarina | Aumento del INR y del riesgo de sangrado | Controlar el INR [2] |
-| Litio | Aumento de sus concentraciones | Vigilar niveles y signos de toxicidad [1] |
-| Disulfiram | Confusión o reacciones psicóticas | Evitar la combinación [1] |
-| Otros nitroimidazoles | Duplicación del efecto y de la toxicidad | No combinar [1,2] |
+| Alcohol | Reacción tipo disulfiram: rubor, náuseas, vómito y taquicardia | Evitar durante el tratamiento y 48 horas después  |
+| Warfarina | Aumento del INR y del riesgo de sangrado | Controlar el INR  |
+| Litio | Aumento de sus concentraciones | Vigilar niveles y signos de toxicidad  |
+| Disulfiram | Confusión o reacciones psicóticas | Evitar la combinación  |
+| Otros nitroimidazoles | Duplicación del efecto y de la toxicidad | No combinar  |
 
 ## Quién no debe tomarlo
 
 - Alergia al secnidazol u otros nitroimidazoles.
-- Primer trimestre del embarazo; en el segundo y tercero solo si el beneficio supera el riesgo [1,2].
+- Primer trimestre del embarazo; en el segundo y tercero solo si el beneficio supera el riesgo.
 - Enfermedad hepática grave, alteraciones sanguíneas o enfermedad del sistema nervioso: requiere valoración médica.
 - Lactancia: consulta antes de usarlo; puede ser necesario suspenderla durante el tratamiento.
 
-Contraindicaciones y precauciones principales [1,2]:
+Contraindicaciones y precauciones principales:
 
 - Hipersensibilidad al secnidazol u otros nitroimidazoles.
 - Primer trimestre del embarazo.
@@ -100,38 +100,38 @@ Contraindicaciones y precauciones principales [1,2]:
 - Enfermedad neurológica activa o antecedente de neuropatía por nitroimidazoles.
 - Lactancia: individualizar y valorar la suspensión temporal.
 
-Advertencias: evitar el alcohol durante el tratamiento y al menos 48 horas después; vigilar síntomas neurológicos en tratamientos prolongados; puede oscurecer la orina [1,2].
+Advertencias: evitar el alcohol durante el tratamiento y al menos 48 horas después; vigilar síntomas neurológicos en tratamientos prolongados; puede oscurecer la orina.
 
 ## Embarazo, lactancia y niños
 
-En el embarazo se evita el primer trimestre. En el segundo y el tercero se usa solo cuando el médico considera que el beneficio supera el riesgo. Durante la lactancia se debe individualizar la decisión [1,2].
+En el embarazo se evita el primer trimestre. En el segundo y el tercero se usa solo cuando el médico considera que el beneficio supera el riesgo. Durante la lactancia se debe individualizar la decisión.
 
-- Embarazo: evitar en el primer trimestre. En el segundo y el tercero se usa solo si el beneficio supera el riesgo [1,2].
-- Lactancia: se excreta en la leche; se debe individualizar y, en algunos casos, suspender la lactancia durante el tratamiento [1].
-- Fertilidad: no se han descrito efectos relevantes en humanos [2].
+- Embarazo: evitar en el primer trimestre. En el segundo y el tercero se usa solo si el beneficio supera el riesgo.
+- Lactancia: se excreta en la leche; se debe individualizar y, en algunos casos, suspender la lactancia durante el tratamiento.
+- Fertilidad: no se han descrito efectos relevantes en humanos.
 
 ## Cómo actúa
 
-Dentro del microorganismo, el secnidazol se reduce y forma compuestos reactivos que dañan el ADN. Ese mecanismo funciona en ambientes con poco oxígeno, propios de las bacterias anaerobias y de algunos parásitos [1,2].
+Dentro del microorganismo, el secnidazol se reduce y forma compuestos reactivos que dañan el ADN. Ese mecanismo funciona en ambientes con poco oxígeno, propios de las bacterias anaerobias y de algunos parásitos.
 
 ## Alcohol: la advertencia principal
 
-Al igual que el metronidazol, el secnidazol puede producir una reacción desagradable con el alcohol: mareo, náuseas, vómito, rubor y dolor de cabeza. Evita bebidas alcohólicas, jarabes y enjuagues con alcohol durante el tratamiento y al menos 48 horas después [1,2].
+Al igual que el metronidazol, el secnidazol puede producir una reacción desagradable con el alcohol: mareo, náuseas, vómito, rubor y dolor de cabeza. Evita bebidas alcohólicas, jarabes y enjuagues con alcohol durante el tratamiento y al menos 48 horas después.
 
 ## Secnidazol en Colombia
 
-El CUM del INVIMA registra presentaciones de secnidazol, solo y en combinaciones. Compra solo productos con registro sanitario vigente y fórmula médica [3]. La disponibilidad y las presentaciones cambian; verifica el registro antes de dispensar.
+El CUM del INVIMA registra presentaciones de secnidazol, solo y en combinaciones. Compra solo productos con registro sanitario vigente y fórmula médica. La disponibilidad y las presentaciones cambian; verifica el registro antes de dispensar.
 
 ## Evidencia y situación en Colombia
 
-La eficacia del secnidazol en vaginosis bacteriana y tricomoniasis está respaldada por ensayos clínicos y por su uso extendido dentro de la familia de los nitroimidazoles [1,2].
+La eficacia del secnidazol en vaginosis bacteriana y tricomoniasis está respaldada por ensayos clínicos y por su uso extendido dentro de la familia de los nitroimidazoles.
 
-La etiqueta de Solosec describe su uso en vaginosis bacteriana en mujeres adultas, con una dosis única de 2 g y una respuesta clínica comparable a otros nitroimidazoles [1]. En tricomoniasis, la guía de práctica clínica recomienda tratar a la pareja sexual para evitar la reinfección [2].
+La etiqueta de Solosec describe su uso en vaginosis bacteriana en mujeres adultas, con una dosis única de 2 g y una respuesta clínica comparable a otros nitroimidazoles. En tricomoniasis, la guía de práctica clínica recomienda tratar a la pareja sexual para evitar la reinfección.
 
-La vida media prolongada permite esquemas más cortos, lo que puede mejorar la adherencia, pero no sustituye la evaluación clínica ni el diagnóstico microbiológico [1,2].
+La vida media prolongada permite esquemas más cortos, lo que puede mejorar la adherencia, pero no sustituye la evaluación clínica ni el diagnóstico microbiológico.
 
-- Colombia: el CUM registra secnidazol en tabletas y suspensiones; consultar la vigencia y la concentración [3].
-- Estados Unidos: la FDA aprobó Solosec (secnidazol) para vaginosis bacteriana [1].
+- Colombia: el CUM registra secnidazol en tabletas y suspensiones; consultar la vigencia y la concentración.
+- Estados Unidos: la FDA aprobó Solosec (secnidazol) para vaginosis bacteriana.
 - La disponibilidad de presentaciones varía entre países; verificar el registro antes de dispensar.
 
 ## Errores frecuentes
@@ -172,15 +172,15 @@ En la tricomoniasis sí. En la vaginosis bacteriana, sigue la indicación del m�
 
 ### ¿Cuánto tarda en hacer efecto Secnidazol?
 
-Aproximadamente 1 a 2 horas [1,2] Su efecto se mantiene mientras el medicamento permanece en el cuerpo; la semivida es de 17 a 29 horas [1,2]. La respuesta completa depende de la indicación y del paciente, así que el seguimiento lo define el profesional.
+Aproximadamente 1 a 2 horas  Su efecto se mantiene mientras el medicamento permanece en el cuerpo; la semivida es de 17 a 29 horas. La respuesta completa depende de la indicación y del paciente, así que el seguimiento lo define el profesional.
 
 ### ¿Se puede usar Secnidazol en el embarazo?
 
-- Embarazo: evitar en el primer trimestre. En el segundo y el tercero se usa solo si el beneficio supera el riesgo [1,2]. - Lactancia: se excreta en la leche; se debe individualizar y, en algunos casos, suspender la lactancia durante el tratamiento [1]. - Fertilidad: no se han descrito efectos relevantes en humanos [2].
+- Embarazo: evitar en el primer trimestre. En el segundo y el tercero se usa solo si el beneficio supera el riesgo. - Lactancia: se excreta en la leche; se debe individualizar y, en algunos casos, suspender la lactancia durante el tratamiento. - Fertilidad: no se han descrito efectos relevantes en humanos.
 
 ### ¿Qué efectos secundarios de Secnidazol son graves?
 
-Las más frecuentes son náuseas, dolor abdominal, diarrea, estreñimiento, sabor metálico y cefalea [1,2]. - Frecuentes: náuseas, vómito, diarrea, dolor abdominal, cefalea y candidiasis. - Poco frecuentes: mareo, sequedad de boca, insomnio y erupción cutánea. - Raras: neuropatía periférica, convulsiones, encefalopatía, pancreatitis y reacciones cutáneas graves.
+Las más frecuentes son náuseas, dolor abdominal, diarrea, estreñimiento, sabor metálico y cefalea. - Frecuentes: náuseas, vómito, diarrea, dolor abdominal, cefalea y candidiasis. - Poco frecuentes: mareo, sequedad de boca, insomnio y erupción cutánea. - Raras: neuropatía periférica, convulsiones, encefalopatía, pancreatitis y reacciones cutáneas graves.
 
 ## Artículos relacionados
 

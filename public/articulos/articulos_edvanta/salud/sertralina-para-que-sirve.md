@@ -23,16 +23,16 @@ Pertenece al grupo farmacológico de Antidepresivo inhibidor selectivo de la rec
 
 ## Cómo funciona
 
-Inhibe de forma potente y selectiva la recaptación neuronal de serotonina; su efecto sobre la recaptación de noradrenalina y dopamina es muy leve [1].
+Inhibe de forma potente y selectiva la recaptación neuronal de serotonina; su efecto sobre la recaptación de noradrenalina y dopamina es muy leve.
 
 ## Cuánto tarda en hacer efecto
 
 | Parámetro | Valor |
 | --- | --- |
-| Concentración máxima | 4,5 a 8,4 horas [1] |
-| Alimentos | No modifican la biodisponibilidad [1] |
-| Unión a proteínas | Cerca del 98 % [1] |
-| Semivida | 24 horas: los cambios de dosis se hacen cada semana o más [1] |
+| Concentración máxima | 4,5 a 8,4 horas  |
+| Alimentos | No modifican la biodisponibilidad  |
+| Unión a proteínas | Cerca del 98 %  |
+| Semivida | 24 horas: los cambios de dosis se hacen cada semana o más  |
 
 ## Efectos secundarios
 
@@ -45,7 +45,7 @@ Inhibe de forma potente y selectiva la recaptación neuronal de serotonina; su e
 
 En niños, adolescentes y adultos jóvenes, los antidepresivos pueden aumentar los pensamientos suicidas al inicio del tratamiento o al cambiar la dosis. Si aparecen ideas de hacerse daño, agitación intensa o cambios bruscos de conducta, consulta de inmediato.
 
-Las náuseas son la reacción adversa más frecuente. En la ansiedad social, la insuficiencia eyaculatoria apareció en el 14 % de los hombres con sertralina frente al 0 % con placebo. Muchas reacciones dependen de la dosis y son transitorias [1].
+Las náuseas son la reacción adversa más frecuente. En la ansiedad social, la insuficiencia eyaculatoria apareció en el 14 % de los hombres con sertralina frente al 0 % con placebo. Muchas reacciones dependen de la dosis y son transitorias.
 
 ## Interacciones
 
@@ -56,19 +56,19 @@ Las náuseas son la reacción adversa más frecuente. En la ansiedad social, la 
 
 | Medicamento | Efecto | Qué hacer |
 | --- | --- | --- |
-| IMAO irreversibles (selegilina) | Síndrome serotoninérgico | Contraindicado [1] |
-| Moclobemida y otros serotoninérgicos | Síndrome serotoninérgico | Evitar o vigilar de cerca [1] |
-| Triptanes, opioides, anfetaminas | Más riesgo serotoninérgico | Vigilar signos [1] |
-| AINE, anticoagulantes, antiagregantes | Más riesgo de sangrado | Vigilar [1] |
+| IMAO irreversibles (selegilina) | Síndrome serotoninérgico | Contraindicado  |
+| Moclobemida y otros serotoninérgicos | Síndrome serotoninérgico | Evitar o vigilar de cerca  |
+| Triptanes, opioides, anfetaminas | Más riesgo serotoninérgico | Vigilar signos  |
+| AINE, anticoagulantes, antiagregantes | Más riesgo de sangrado | Vigilar  |
 
 ## Quién no debe tomarlo
 
-Contraindicada en hipersensibilidad y con IMAO irreversibles: no iniciarla hasta 14 días después de suspender un IMAO irreversible, y suspenderla al menos 7 días antes de iniciar uno [1].
+Contraindicada en hipersensibilidad y con IMAO irreversibles: no iniciarla hasta 14 días después de suspender un IMAO irreversible, y suspenderla al menos 7 días antes de iniciar uno.
 
 ## Embarazo, lactancia y niños
 
-- Embarazo: no hay estudios bien controlados; una cantidad importante de datos no mostró malformaciones atribuibles a la sertralina [1].
-- Los ISRS pueden aumentar el riesgo de hemorragia posparto [1].
+- Embarazo: no hay estudios bien controlados; una cantidad importante de datos no mostró malformaciones atribuibles a la sertralina.
+- Los ISRS pueden aumentar el riesgo de hemorragia posparto.
 
 ## Cómo tomarla
 
@@ -83,10 +83,10 @@ Siempre con el médico y de forma gradual. Suspenderla de golpe puede causar mar
 
 ## Evidencia y situación en Colombia
 
-Su ficha técnica respalda un abanico amplio de trastornos depresivos y de ansiedad, con inicio a dosis bajas en los trastornos de ansiedad para mejorar la tolerancia [1].
+Su ficha técnica respalda un abanico amplio de trastornos depresivos y de ansiedad, con inicio a dosis bajas en los trastornos de ansiedad para mejorar la tolerancia.
 
-- Colombia: 33 registros sanitarios vigentes con el código ATC N06AB06; consulta del 16-nov-2026 [2].
-- España: autorizada como Besitran 50 mg y 100 mg comprimidos y 20 mg/ml concentrado oral [1].
+- Colombia: 33 registros sanitarios vigentes con el código ATC N06AB06; consulta del 16-nov-2026.
+- España: autorizada como Besitran 50 mg y 100 mg comprimidos y 20 mg/ml concentrado oral.
 
 ## Errores frecuentes
 
@@ -122,15 +122,15 @@ El médico a veces los combina al inicio, por poco tiempo. El clonazepam sí gen
 
 ### ¿Cuánto tarda en hacer efecto Sertralina?
 
-4,5 a 8,4 horas [1] Su efecto se mantiene mientras el medicamento permanece en el cuerpo; la semivida es de 24 horas: los cambios de dosis se hacen cada semana o más [1]. La respuesta completa depende de la indicación y del paciente, así que el seguimiento lo define el profesional.
+4,5 a 8,4 horas  Su efecto se mantiene mientras el medicamento permanece en el cuerpo; la semivida es de 24 horas: los cambios de dosis se hacen cada semana o más. La respuesta completa depende de la indicación y del paciente, así que el seguimiento lo define el profesional.
 
 ### ¿Se puede usar Sertralina en el embarazo?
 
-- Embarazo: no hay estudios bien controlados; una cantidad importante de datos no mostró malformaciones atribuibles a la sertralina [1]. - Los ISRS pueden aumentar el riesgo de hemorragia posparto [1].
+- Embarazo: no hay estudios bien controlados; una cantidad importante de datos no mostró malformaciones atribuibles a la sertralina. - Los ISRS pueden aumentar el riesgo de hemorragia posparto.
 
 ### ¿Qué efectos secundarios de Sertralina son graves?
 
-Las náuseas son la reacción adversa más frecuente. En la ansiedad social, la insuficiencia eyaculatoria apareció en el 14 % de los hombres con sertralina frente al 0 % con placebo. Muchas reacciones dependen de la dosis y son transitorias [1].
+Las náuseas son la reacción adversa más frecuente. En la ansiedad social, la insuficiencia eyaculatoria apareció en el 14 % de los hombres con sertralina frente al 0 % con placebo. Muchas reacciones dependen de la dosis y son transitorias.
 
 ## Artículos relacionados
 

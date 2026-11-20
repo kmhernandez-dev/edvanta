@@ -15,7 +15,7 @@ Pertenece al grupo farmacológico de Cefalosporina (betalactámico).
 
 ## ¿Para qué sirve la cefalexina?
 
-Según su etiqueta aprobada por la FDA, la cefalexina se usa para tratar infecciones causadas por bacterias sensibles en [1]:
+Según su etiqueta aprobada por la FDA, la cefalexina se usa para tratar infecciones causadas por bacterias sensibles en:
 
 - Vías respiratorias.
 - Oído (otitis media).
@@ -23,89 +23,89 @@ Según su etiqueta aprobada por la FDA, la cefalexina se usa para tratar infecci
 - Huesos.
 - Vías genitourinarias.
 
-Solo debe usarse cuando la infección es bacteriana, comprobada o con alta sospecha, para no favorecer la resistencia a los antibióticos [1].
+Solo debe usarse cuando la infección es bacteriana, comprobada o con alta sospecha, para no favorecer la resistencia a los antibióticos.
 
 ## Cómo funciona
 
-Es bactericida: inhibe la síntesis de la pared celular bacteriana [1].
+Es bactericida: inhibe la síntesis de la pared celular bacteriana.
 
-No es activa frente a estafilococos resistentes a la meticilina, la mayoría de los enterococos, la mayoría de Enterobacter, Morganella morganii y Proteus vulgaris, ni frente a Pseudomonas o Acinetobacter [1].
+No es activa frente a estafilococos resistentes a la meticilina, la mayoría de los enterococos, la mayoría de Enterobacter, Morganella morganii y Proteus vulgaris, ni frente a Pseudomonas o Acinetobacter.
 
 ## Cuánto tarda en hacer efecto
 
 | Parámetro | Valor |
 | --- | --- |
-| Absorción | Estable en ácido; puede tomarse sin relación con las comidas [1] |
-| Concentración máxima | Unos 9, 18 y 32 µg/ml tras 250 mg, 500 mg y 1 g, a la hora [1] |
-| Unión a proteínas | 10 a 15 % [1] |
-| Eliminación | Filtración glomerular y secreción tubular; más del 90 % sin cambios en la orina en 8 horas [1] |
-| Concentración urinaria | Unos 1.000, 2.200 y 5.000 µg/ml tras 250 mg, 500 mg y 1 g [1] |
+| Absorción | Estable en ácido; puede tomarse sin relación con las comidas  |
+| Concentración máxima | Unos 9, 18 y 32 µg/ml tras 250 mg, 500 mg y 1 g, a la hora  |
+| Unión a proteínas | 10 a 15 %  |
+| Eliminación | Filtración glomerular y secreción tubular; más del 90 % sin cambios en la orina en 8 horas  |
+| Concentración urinaria | Unos 1.000, 2.200 y 5.000 µg/ml tras 250 mg, 500 mg y 1 g  |
 
-Los niveles séricos siguen siendo detectables 6 horas después de la dosis [1].
+Los niveles séricos siguen siendo detectables 6 horas después de la dosis.
 
 ## Cómo se toma
 
-La dosis la define tu médico. Como referencia, la etiqueta indica para adultos y mayores de 15 años 250 mg cada 6 horas, o 500 mg cada 12 horas, durante 7 a 14 días; en infecciones más graves pueden necesitarse dosis mayores, hasta 4 g al día. En niños mayores de 1 año la dosis se calcula por peso: 25 a 50 mg/kg al día repartidos en varias tomas [1].
+La dosis la define tu médico. Como referencia, la etiqueta indica para adultos y mayores de 15 años 250 mg cada 6 horas, o 500 mg cada 12 horas, durante 7 a 14 días; en infecciones más graves pueden necesitarse dosis mayores, hasta 4 g al día. En niños mayores de 1 año la dosis se calcula por peso: 25 a 50 mg/kg al día repartidos en varias tomas.
 
-- Se puede tomar con o sin alimentos, porque es estable en el ácido del estómago [1].
-- En personas con enfermedad renal el médico ajusta la dosis [1].
+- Se puede tomar con o sin alimentos, porque es estable en el ácido del estómago.
+- En personas con enfermedad renal el médico ajusta la dosis.
 - Completa el tratamiento indicado aunque te sientas mejor antes.
 
 ## Efectos secundarios
 
-- El más frecuente es la diarrea; también náuseas, vómito, indigestión, gastritis y dolor abdominal [1].
-- Picazón genital o anal, candidiasis genital y vaginitis [1].
-- Reacciones alérgicas: desde ronchas hasta, rara vez, reacciones graves de la piel como el síndrome de Stevens-Johnson [1].
-- Diarrea grave por *Clostridioides difficile*, que puede aparecer durante o después del tratamiento [1].
+- El más frecuente es la diarrea; también náuseas, vómito, indigestión, gastritis y dolor abdominal.
+- Picazón genital o anal, candidiasis genital y vaginitis.
+- Reacciones alérgicas: desde ronchas hasta, rara vez, reacciones graves de la piel como el síndrome de Stevens-Johnson.
+- Diarrea grave por *Clostridioides difficile*, que puede aparecer durante o después del tratamiento.
 
 Si tienes diarrea con sangre, fiebre o dolor abdominal intenso, consulta de inmediato y no tomes antidiarreicos por tu cuenta.
 
-En los ensayos clínicos, la más frecuente fue la diarrea; también náuseas, vómito, dispepsia, gastritis y dolor abdominal. Se han descrito hepatitis transitoria e ictericia colestásica, prurito genital y anal, candidiasis genital y vaginitis [1].
+En los ensayos clínicos, la más frecuente fue la diarrea; también náuseas, vómito, dispepsia, gastritis y dolor abdominal. Se han descrito hepatitis transitoria e ictericia colestásica, prurito genital y anal, candidiasis genital y vaginitis.
 
 ## Interacciones
 
 | Medicamento | Qué pasa |
 |---|---|
-| Metformina | La cefalexina sube su concentración en sangre; se recomienda vigilar y ajustar la metformina [1] |
-| Probenecid | Frena la eliminación de la cefalexina; no se recomienda combinarlos [1] |
+| Metformina | La cefalexina sube su concentración en sangre; se recomienda vigilar y ajustar la metformina  |
+| Probenecid | Frena la eliminación de la cefalexina; no se recomienda combinarlos  |
 
 | Fármaco | Efecto | Manejo |
 | --- | --- | --- |
-| Metformina | Cmáx +34 % y AUC +24 %; aclaramiento renal de metformina −14 % (dosis únicas) | Vigilar y ajustar la metformina [1] |
-| Probenecid | Inhibe la excreción renal de cefalexina | No se recomienda combinarlos [1] |
+| Metformina | Cmáx +34 % y AUC +24 %; aclaramiento renal de metformina −14 % (dosis únicas) | Vigilar y ajustar la metformina  |
+| Probenecid | Inhibe la excreción renal de cefalexina | No se recomienda combinarlos  |
 
 ## Quién no debe tomarlo
 
-Contraindicada con hipersensibilidad a la cefalexina u otras cefalosporinas [1].
+Contraindicada con hipersensibilidad a la cefalexina u otras cefalosporinas.
 
-- Alergia cruzada: puede presentarse hasta en el 10 % de los pacientes con antecedente de alergia a la penicilina; preguntar siempre antes de iniciar [1].
-- Reacciones de hipersensibilidad: urticaria, angioedema, anafilaxia, eritema multiforme, Stevens-Johnson y necrólisis epidérmica tóxica [1].
-- Diarrea asociada a Clostridioides difficile [1].
-- Seroconversión de la prueba de Coombs directa, potencial convulsivo y tiempo de protrombina prolongado [1].
+- Alergia cruzada: puede presentarse hasta en el 10 % de los pacientes con antecedente de alergia a la penicilina; preguntar siempre antes de iniciar.
+- Reacciones de hipersensibilidad: urticaria, angioedema, anafilaxia, eritema multiforme, Stevens-Johnson y necrólisis epidérmica tóxica.
+- Diarrea asociada a Clostridioides difficile.
+- Seroconversión de la prueba de Coombs directa, potencial convulsivo y tiempo de protrombina prolongado.
 
 ## Embarazo, lactancia y niños
 
-Décadas de uso en el embarazo no han mostrado un riesgo asociado de malformaciones, abortos ni otros desenlaces adversos, aunque los estudios tienen limitaciones. La cefalexina pasa a la leche materna en cantidades muy bajas (menos del 1 % de la dosis materna ajustada por peso) [1]. La decisión siempre la toma el médico.
+Décadas de uso en el embarazo no han mostrado un riesgo asociado de malformaciones, abortos ni otros desenlaces adversos, aunque los estudios tienen limitaciones. La cefalexina pasa a la leche materna en cantidades muy bajas (menos del 1 % de la dosis materna ajustada por peso). La decisión siempre la toma el médico.
 
-Los datos epidemiológicos de décadas de uso no han establecido un riesgo asociado de defectos congénitos mayores, aborto ni desenlaces adversos, con limitaciones metodológicas. Pasa a la leche con una dosis relativa en el lactante menor del 1 % [1].
+Los datos epidemiológicos de décadas de uso no han establecido un riesgo asociado de defectos congénitos mayores, aborto ni desenlaces adversos, con limitaciones metodológicas. Pasa a la leche con una dosis relativa en el lactante menor del 1 %.
 
 ## Cómo actúa
 
-La cefalexina es bactericida: impide que la bacteria construya su pared celular. No actúa contra los estafilococos resistentes a la meticilina, la mayoría de los enterococos ni *Pseudomonas* [1].
+La cefalexina es bactericida: impide que la bacteria construya su pared celular. No actúa contra los estafilococos resistentes a la meticilina, la mayoría de los enterococos ni *Pseudomonas*.
 
 ## Alergia a la penicilina
 
-Antes de iniciarla, el médico debe preguntar por alergias a la cefalexina, a otras cefalosporinas y a las penicilinas: la reacción cruzada entre betalactámicos puede presentarse hasta en el 10 % de las personas con antecedente de alergia a la penicilina [1]. Si sabes que eres alérgico, dilo siempre. Si aparecen ronchas, hinchazón de la cara o dificultad para respirar, suspende y busca atención inmediata.
+Antes de iniciarla, el médico debe preguntar por alergias a la cefalexina, a otras cefalosporinas y a las penicilinas: la reacción cruzada entre betalactámicos puede presentarse hasta en el 10 % de las personas con antecedente de alergia a la penicilina. Si sabes que eres alérgico, dilo siempre. Si aparecen ronchas, hinchazón de la cara o dificultad para respirar, suspende y busca atención inmediata.
 
 ## Cefalexina en Colombia
 
-El Código Único de Medicamentos del INVIMA registra 45 registros sanitarios vigentes con cefalexina, sobre todo en cápsulas de 500 mg y en polvo para suspensión oral para niños [2].
+El Código Único de Medicamentos del INVIMA registra 45 registros sanitarios vigentes con cefalexina, sobre todo en cápsulas de 500 mg y en polvo para suspensión oral para niños.
 
 ## Evidencia y situación en Colombia
 
-La utilidad de la cefalexina depende del patógeno: su espectro no incluye estafilococos resistentes a la meticilina, enterococos ni Pseudomonas [1]. Su eliminación urinaria casi completa y sin cambios explica las concentraciones urinarias muy altas que alcanza [1].
+La utilidad de la cefalexina depende del patógeno: su espectro no incluye estafilococos resistentes a la meticilina, enterococos ni Pseudomonas. Su eliminación urinaria casi completa y sin cambios explica las concentraciones urinarias muy altas que alcanza.
 
-Colombia: 45 registros sanitarios vigentes, sobre todo cápsulas y polvo para suspensión oral [3]. En Estados Unidos se comercializa como Keflex y como genérico [1].
+Colombia: 45 registros sanitarios vigentes, sobre todo cápsulas y polvo para suspensión oral. En Estados Unidos se comercializa como Keflex y como genérico.
 
 ## Errores frecuentes
 
@@ -145,15 +145,15 @@ Sí. La cefalexina se puede tomar con o sin alimentos.
 
 ### ¿Cuánto tarda en hacer efecto Cefalexina?
 
-Unos 9, 18 y 32 µg/ml tras 250 mg, 500 mg y 1 g, a la hora [1] La respuesta completa depende de la indicación y del paciente, así que el seguimiento lo define el profesional.
+Unos 9, 18 y 32 µg/ml tras 250 mg, 500 mg y 1 g, a la hora  La respuesta completa depende de la indicación y del paciente, así que el seguimiento lo define el profesional.
 
 ### ¿Se puede usar Cefalexina en el embarazo?
 
-Los datos epidemiológicos de décadas de uso no han establecido un riesgo asociado de defectos congénitos mayores, aborto ni desenlaces adversos, con limitaciones metodológicas. Pasa a la leche con una dosis relativa en el lactante menor del 1 % [1].
+Los datos epidemiológicos de décadas de uso no han establecido un riesgo asociado de defectos congénitos mayores, aborto ni desenlaces adversos, con limitaciones metodológicas. Pasa a la leche con una dosis relativa en el lactante menor del 1 %.
 
 ### ¿Qué efectos secundarios de Cefalexina son graves?
 
-En los ensayos clínicos, la más frecuente fue la diarrea; también náuseas, vómito, dispepsia, gastritis y dolor abdominal. Se han descrito hepatitis transitoria e ictericia colestásica, prurito genital y anal, candidiasis genital y vaginitis [1].
+En los ensayos clínicos, la más frecuente fue la diarrea; también náuseas, vómito, dispepsia, gastritis y dolor abdominal. Se han descrito hepatitis transitoria e ictericia colestásica, prurito genital y anal, candidiasis genital y vaginitis.
 
 ## Artículos relacionados
 

@@ -15,51 +15,51 @@ Pertenece al grupo farmacológico de Nitrofurano (antiséptico urinario).
 
 ## ¿Para qué sirve la nitrofurantoína?
 
-Según su ficha técnica, la nitrofurantoína está indicada para el tratamiento de la cistitis aguda en mujeres adultas, adolescentes y niñas mayores de 6 años [1]. Mantiene con frecuencia su actividad contra bacterias resistentes a otros antibióticos, como las enterobacterias productoras de betalactamasas de espectro extendido (BLEE) [1].
+Según su ficha técnica, la nitrofurantoína está indicada para el tratamiento de la cistitis aguda en mujeres adultas, adolescentes y niñas mayores de 6 años. Mantiene con frecuencia su actividad contra bacterias resistentes a otros antibióticos, como las enterobacterias productoras de betalactamasas de espectro extendido (BLEE).
 
 Si tienes fiebre, dolor en la espalda o escalofríos, la infección puede haber llegado al riñón y necesitas otro tratamiento. Lee sobre la [infección urinaria](/articulos/infeccion-urinaria-sintomas-tratamiento) y consulta.
 
 ## Cómo funciona
 
-Es bactericida. Su mecanismo no está bien establecido: inhibe varios sistemas enzimáticos bacterianos de gramnegativos y grampositivos. Tampoco están bien definidos los mecanismos de resistencia [1].
+Es bactericida. Su mecanismo no está bien establecido: inhibe varios sistemas enzimáticos bacterianos de gramnegativos y grampositivos. Tampoco están bien definidos los mecanismos de resistencia.
 
-Mantiene su actividad con frecuencia frente a bacterias con mecanismos de multirresistencia: enterobacterias productoras de BLEE, serinocarbapenemasas como KPC, metalobetalactamasas de clase B o cefalosporinasas AmpC, y Enterococcus [1].
+Mantiene su actividad con frecuencia frente a bacterias con mecanismos de multirresistencia: enterobacterias productoras de BLEE, serinocarbapenemasas como KPC, metalobetalactamasas de clase B o cefalosporinasas AmpC, y Enterococcus.
 
 ## Cuánto tarda en hacer efecto
 
-- Absorción oral rápida, aumentada por los alimentos [1].
-- Cerca del 40 % de la dosis absorbida se recupera en la orina como fármaco activo sin cambios [1].
-- Atraviesa la placenta y pasa en trazas a la leche materna [1].
-- La orina puede tomar color amarillo o marrón [1].
+- Absorción oral rápida, aumentada por los alimentos.
+- Cerca del 40 % de la dosis absorbida se recupera en la orina como fármaco activo sin cambios.
+- Atraviesa la placenta y pasa en trazas a la leche materna.
+- La orina puede tomar color amarillo o marrón.
 
-Con función renal disminuida aumenta el riesgo de efectos adversos como la neuropatía periférica, y la ficha técnica fija un límite de aclaramiento de creatinina [1].
+Con función renal disminuida aumenta el riesgo de efectos adversos como la neuropatía periférica, y la ficha técnica fija un límite de aclaramiento de creatinina.
 
 ## Cómo se toma
 
-La dosis la define tu médico. Como referencia, la ficha técnica española indica en mujeres adultas 50 a 100 mg cada 8 horas durante 5 a 7 días [1]. En Colombia las presentaciones registradas son de 100 mg [2], así que sigue exactamente lo que dice tu fórmula.
+La dosis la define tu médico. Como referencia, la ficha técnica española indica en mujeres adultas 50 a 100 mg cada 8 horas durante 5 a 7 días. En Colombia las presentaciones registradas son de 100 mg, así que sigue exactamente lo que dice tu fórmula.
 
-- Tómala con alimentos: la comida aumenta su absorción [1].
-- No la uses más de 7 días: los tratamientos prolongados, continuos o intermitentes, están contraindicados [1].
-- La orina puede volverse amarillenta o marrón durante el tratamiento [1].
+- Tómala con alimentos: la comida aumenta su absorción.
+- No la uses más de 7 días: los tratamientos prolongados, continuos o intermitentes, están contraindicados.
+- La orina puede volverse amarillenta o marrón durante el tratamiento.
 
 ## Efectos secundarios
 
-- Frecuentes: náuseas, vómito, dolor abdominal y diarrea; mareo; reacciones alérgicas de la piel (picazón, ronchas) [1].
-- Neuropatía periférica (hormigueo o adormecimiento), sobre todo con enfermedad renal, diabetes, consumo de alcohol, edad avanzada o tratamientos largos [1].
-- Con tratamientos prolongados: reacciones pulmonares graves (neumonitis, fibrosis) y hepáticas graves (hepatitis, cirrosis) [1].
+- Frecuentes: náuseas, vómito, dolor abdominal y diarrea; mareo; reacciones alérgicas de la piel (picazón, ronchas).
+- Neuropatía periférica (hormigueo o adormecimiento), sobre todo con enfermedad renal, diabetes, consumo de alcohol, edad avanzada o tratamientos largos.
+- Con tratamientos prolongados: reacciones pulmonares graves (neumonitis, fibrosis) y hepáticas graves (hepatitis, cirrosis).
 
-Consulta de inmediato si aparece tos, falta de aire, fiebre o dolor en el pecho durante o después del tratamiento: las reacciones pulmonares deben reconocerse pronto [1].
+Consulta de inmediato si aparece tos, falta de aire, fiebre o dolor en el pecho durante o después del tratamiento: las reacciones pulmonares deben reconocerse pronto.
 
-- Frecuentes: náuseas, vómito, dolor abdominal y diarrea; mareo; neuropatía periférica en pacientes de riesgo; reacciones cutáneas alérgicas y manifestaciones seudolúpicas [1].
-- Con tratamientos prolongados: fibrosis pulmonar, hepatitis crónica, cirrosis y hepatitis autoinmune [1].
+- Frecuentes: náuseas, vómito, dolor abdominal y diarrea; mareo; neuropatía periférica en pacientes de riesgo; reacciones cutáneas alérgicas y manifestaciones seudolúpicas.
+- Con tratamientos prolongados: fibrosis pulmonar, hepatitis crónica, cirrosis y hepatitis autoinmune.
 
 ## Interacciones
 
-La ficha técnica consultada no destaca interacciones de manejo frecuente; los alimentos aumentan su absorción [1]. Revisar siempre la función renal y otros fármacos con potencial neurotóxico o hepatotóxico.
+La ficha técnica consultada no destaca interacciones de manejo frecuente; los alimentos aumentan su absorción. Revisar siempre la función renal y otros fármacos con potencial neurotóxico o hepatotóxico.
 
 ## Quién no debe tomarlo
 
-Según la ficha técnica [1]:
+Según la ficha técnica:
 
 - Alergia a la nitrofurantoína u otros nitrofuranos.
 - Tratamientos prolongados (más de 7 días), continuos o intermitentes.
@@ -68,30 +68,30 @@ Según la ficha técnica [1]:
 - Deficiencia de glucosa-6-fosfato deshidrogenasa.
 - Las dos últimas semanas del embarazo y los bebés menores de 3 meses, por riesgo de anemia hemolítica.
 
-- Contraindicada con hipersensibilidad a nitrofuranos, tratamientos de más de 7 días (continuos o intermitentes), aclaramiento menor de 45 ml/min, porfiria aguda, deficiencia de glucosa-6-fosfato deshidrogenasa, las dos últimas semanas del embarazo y menores de 3 meses [1].
-- Reacciones pulmonares agudas, subagudas y crónicas (neumonitis, fibrosis); la función pulmonar puede quedar comprometida de forma permanente [1].
-- Hepatotoxicidad grave con tratamientos prolongados [1].
-- Neuropatía periférica, sobre todo con insuficiencia renal, diabetes, alcoholismo o edad avanzada [1].
+- Contraindicada con hipersensibilidad a nitrofuranos, tratamientos de más de 7 días (continuos o intermitentes), aclaramiento menor de 45 ml/min, porfiria aguda, deficiencia de glucosa-6-fosfato deshidrogenasa, las dos últimas semanas del embarazo y menores de 3 meses.
+- Reacciones pulmonares agudas, subagudas y crónicas (neumonitis, fibrosis); la función pulmonar puede quedar comprometida de forma permanente.
+- Hepatotoxicidad grave con tratamientos prolongados.
+- Neuropatía periférica, sobre todo con insuficiencia renal, diabetes, alcoholismo o edad avanzada.
 
 ## Embarazo, lactancia y niños
 
-No se han demostrado efectos teratógenos, pero se evita en las dos últimas semanas del embarazo por el riesgo de anemia hemolítica en el feto. Pasa en pequeñas cantidades a la leche materna; se evita si el bebé tiene menos de 3 meses o si se sospecha deficiencia de glucosa-6-fosfato deshidrogenasa [1].
+No se han demostrado efectos teratógenos, pero se evita en las dos últimas semanas del embarazo por el riesgo de anemia hemolítica en el feto. Pasa en pequeñas cantidades a la leche materna; se evita si el bebé tiene menos de 3 meses o si se sospecha deficiencia de glucosa-6-fosfato deshidrogenasa.
 
-No se han demostrado efectos teratógenos, pero se evita en las dos últimas semanas del embarazo por el riesgo de anemia hemolítica fetal. En la lactancia se evita si el niño tiene menos de 3 meses o hay sospecha de deficiencia de glucosa-6-fosfato deshidrogenasa [1].
+No se han demostrado efectos teratógenos, pero se evita en las dos últimas semanas del embarazo por el riesgo de anemia hemolítica fetal. En la lactancia se evita si el niño tiene menos de 3 meses o hay sospecha de deficiencia de glucosa-6-fosfato deshidrogenasa.
 
 ## Cómo actúa
 
-Su mecanismo no está del todo establecido: inhibe varios sistemas enzimáticos de las bacterias, tanto gramnegativas como grampositivas. Cerca del 40 % de la dosis absorbida se elimina activa en la orina, que es donde ejerce su efecto [1].
+Su mecanismo no está del todo establecido: inhibe varios sistemas enzimáticos de las bacterias, tanto gramnegativas como grampositivas. Cerca del 40 % de la dosis absorbida se elimina activa en la orina, que es donde ejerce su efecto.
 
 ## En Colombia
 
-El Código Único de Medicamentos del INVIMA registra 5 registros sanitarios vigentes de nitrofurantoína, todos de 100 mg en cápsulas o tabletas [2].
+El Código Único de Medicamentos del INVIMA registra 5 registros sanitarios vigentes de nitrofurantoína, todos de 100 mg en cápsulas o tabletas.
 
 ## Evidencia y situación en Colombia
 
-Su principal valor clínico es conservar actividad frente a uropatógenos multirresistentes, incluidos productores de BLEE y carbapenemasas, en la cistitis [1]. Ese valor depende de respetar su indicación (cistitis), la duración corta y el límite de función renal [1].
+Su principal valor clínico es conservar actividad frente a uropatógenos multirresistentes, incluidos productores de BLEE y carbapenemasas, en la cistitis. Ese valor depende de respetar su indicación (cistitis), la duración corta y el límite de función renal.
 
-Colombia: 5 registros sanitarios vigentes, en cápsulas y tabletas de 100 mg [3]. En Estados Unidos existe como macrocristales y monohidrato (Macrobid) [4].
+Colombia: 5 registros sanitarios vigentes, en cápsulas y tabletas de 100 mg. En Estados Unidos existe como macrocristales y monohidrato (Macrobid).
 
 ## Errores frecuentes
 
@@ -131,11 +131,11 @@ Con comida: los alimentos aumentan su absorción.
 
 ### ¿Se puede usar Nitrofurantoína en el embarazo?
 
-No se han demostrado efectos teratógenos, pero se evita en las dos últimas semanas del embarazo por el riesgo de anemia hemolítica fetal. En la lactancia se evita si el niño tiene menos de 3 meses o hay sospecha de deficiencia de glucosa-6-fosfato deshidrogenasa [1].
+No se han demostrado efectos teratógenos, pero se evita en las dos últimas semanas del embarazo por el riesgo de anemia hemolítica fetal. En la lactancia se evita si el niño tiene menos de 3 meses o hay sospecha de deficiencia de glucosa-6-fosfato deshidrogenasa.
 
 ### ¿Qué efectos secundarios de Nitrofurantoína son graves?
 
-- Frecuentes: náuseas, vómito, dolor abdominal y diarrea; mareo; neuropatía periférica en pacientes de riesgo; reacciones cutáneas alérgicas y manifestaciones seudolúpicas [1]. - Con tratamientos prolongados: fibrosis pulmonar, hepatitis crónica, cirrosis y hepatitis autoinmune [1].
+- Frecuentes: náuseas, vómito, dolor abdominal y diarrea; mareo; neuropatía periférica en pacientes de riesgo; reacciones cutáneas alérgicas y manifestaciones seudolúpicas. - Con tratamientos prolongados: fibrosis pulmonar, hepatitis crónica, cirrosis y hepatitis autoinmune.
 
 ## Artículos relacionados
 

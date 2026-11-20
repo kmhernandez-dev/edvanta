@@ -21,32 +21,32 @@ Pertenece al grupo farmacológico de Antiespasmódico antimuscarínico.
 
 ## Cómo funciona
 
-Ejerce una acción espasmolítica sobre el músculo liso gastrointestinal, biliar y genitourinario mediante bloqueo ganglionar visceral y actividad antimuscarínica [1].
+Ejerce una acción espasmolítica sobre el músculo liso gastrointestinal, biliar y genitourinario mediante bloqueo ganglionar visceral y actividad antimuscarínica.
 
 ## Cuánto tarda en hacer efecto
 
 | Parámetro | Valor |
 | --- | --- |
-| Absorción oral | Cerca del 8 %; biodisponibilidad absoluta menor del 1 % [1] |
-| Semivida terminal | 6,2 a 10,6 horas [1] |
-| Eliminación | Cerca del 90 % en heces; 2 % a 5 % por orina tras la vía oral [1] |
+| Absorción oral | Cerca del 8 %; biodisponibilidad absoluta menor del 1 %  |
+| Semivida terminal | 6,2 a 10,6 horas  |
+| Eliminación | Cerca del 90 % en heces; 2 % a 5 % por orina tras la vía oral  |
 
 ## Efectos secundarios
 
 Boca seca, palpitaciones, dificultad para orinar, visión borrosa y estreñimiento. Con la versión Compositum, además, los riesgos del metamizol.
 
-Poco frecuentes: reacciones cutáneas, urticaria, prurito, taquicardia, boca seca y sudoración anormal [1].
+Poco frecuentes: reacciones cutáneas, urticaria, prurito, taquicardia, boca seca y sudoración anormal.
 
-- Raras: retención urinaria [1].
-- Frecuencia no conocida: shock anafiláctico, disnea e hipersensibilidad [1].
+- Raras: retención urinaria.
+- Frecuencia no conocida: shock anafiláctico, disnea e hipersensibilidad.
 
 ## Interacciones
 
 | Medicamento | Efecto | Qué hacer |
 | --- | --- | --- |
-| Tricíclicos, antihistamínicos, antipsicóticos, quinidina, amantadina, disopiramida | Suma efecto anticolinérgico | Vigilar [1] |
-| Metoclopramida | Se reduce el efecto de ambos sobre el tubo digestivo | Evitar la combinación [1] |
-| Betaadrenérgicos | Más taquicardia | Vigilar [1] |
+| Tricíclicos, antihistamínicos, antipsicóticos, quinidina, amantadina, disopiramida | Suma efecto anticolinérgico | Vigilar  |
+| Metoclopramida | Se reduce el efecto de ambos sobre el tubo digestivo | Evitar la combinación  |
+| Betaadrenérgicos | Más taquicardia | Vigilar  |
 
 ## Quién no debe tomarlo
 
@@ -58,7 +58,7 @@ Poco frecuentes: reacciones cutáneas, urticaria, prurito, taquicardia, boca sec
 - Alergia a sus componentes; en la versión Compositum, alergia o problemas previos con el metamizol.
 - Embarazo y lactancia: solo con indicación médica.
 
-Contraindicada en [1]:
+Contraindicada en:
 
 - Glaucoma de ángulo estrecho no tratado.
 - Hiperplasia prostática o retención urinaria por enfermedad uretroprostática.
@@ -67,7 +67,7 @@ Contraindicada en [1]:
 
 ## Embarazo, lactancia y niños
 
-- Embarazo y lactancia: evitar como precaución por datos limitados [1].
+- Embarazo y lactancia: evitar como precaución por datos limitados.
 
 ## Cómo actúa
 
@@ -95,10 +95,10 @@ Busca atención urgente si el dolor abdominal es muy intenso, se concentra en un
 
 ## Evidencia y situación en Colombia
 
-La ficha técnica sustenta su uso en el dolor espasmódico; su baja absorción oral explica el perfil de efectos sistémicos limitado, pero no elimina las contraindicaciones anticolinérgicas [1].
+La ficha técnica sustenta su uso en el dolor espasmódico; su baja absorción oral explica el perfil de efectos sistémicos limitado, pero no elimina las contraindicaciones anticolinérgicas.
 
-- Colombia: 20 registros sanitarios vigentes con el código ATC A03BB01; hay además productos que la combinan con dipirona. Consulta del 16-nov-2026 [2].
-- España: autorizada como Buscapina 10 mg comprimidos recubiertos [1].
+- Colombia: 20 registros sanitarios vigentes con el código ATC A03BB01; hay además productos que la combinan con dipirona. Consulta del 16-nov-2026.
+- España: autorizada como Buscapina 10 mg comprimidos recubiertos.
 
 ## Errores frecuentes
 
@@ -134,11 +134,11 @@ La butilescopolamina rara vez da sueño. Puede causar visión borrosa, así que 
 
 ### ¿Se puede usar Butilescopolamina (hioscina) en el embarazo?
 
-- Embarazo y lactancia: evitar como precaución por datos limitados [1].
+- Embarazo y lactancia: evitar como precaución por datos limitados.
 
 ### ¿Qué efectos secundarios de Butilescopolamina (hioscina) son graves?
 
-Poco frecuentes: reacciones cutáneas, urticaria, prurito, taquicardia, boca seca y sudoración anormal [1]. - Raras: retención urinaria [1]. - Frecuencia no conocida: shock anafiláctico, disnea e hipersensibilidad [1].
+Poco frecuentes: reacciones cutáneas, urticaria, prurito, taquicardia, boca seca y sudoración anormal. - Raras: retención urinaria. - Frecuencia no conocida: shock anafiláctico, disnea e hipersensibilidad.
 
 ## Artículos relacionados
 

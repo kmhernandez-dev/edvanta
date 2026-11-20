@@ -21,22 +21,22 @@ Pertenece al grupo farmacológico de Inhibidor de la enzima convertidora de angi
 
 ## Cómo funciona
 
-Al inhibir la ECA, el enalapril reduce la angiotensina II y, con ella, la vasoconstricción y la secreción de aldosterona. El resultado es una disminución de la resistencia vascular periférica, una reducción de la retención de sodio y agua y un descenso de la presión arterial sin un aumento reflejo significativo de la frecuencia cardíaca [1].
+Al inhibir la ECA, el enalapril reduce la angiotensina II y, con ella, la vasoconstricción y la secreción de aldosterona. El resultado es una disminución de la resistencia vascular periférica, una reducción de la retención de sodio y agua y un descenso de la presión arterial sin un aumento reflejo significativo de la frecuencia cardíaca.
 
-La ECA es la misma enzima que degrada la bradicinina, un péptido vasodilatador. Al inhibirla, el enalapril aumenta la bradicinina, lo que contribuye a su efecto vasodilatador pero también explica la tos seca y el angioedema que aparecen en algunos pacientes [1].
+La ECA es la misma enzima que degrada la bradicinina, un péptido vasodilatador. Al inhibirla, el enalapril aumenta la bradicinina, lo que contribuye a su efecto vasodilatador pero también explica la tos seca y el angioedema que aparecen en algunos pacientes.
 
-En la insuficiencia cardíaca, el enalapril reduce la poscarga y la precarga, mejora la fracción de eyección y disminuye la activación neurohormonal que perpetúa la enfermedad [1].
+En la insuficiencia cardíaca, el enalapril reduce la poscarga y la precarga, mejora la fracción de eyección y disminuye la activación neurohormonal que perpetúa la enfermedad.
 
 ## Cuánto tarda en hacer efecto
 
 | Parámetro | Valor |
 | --- | --- |
-| Absorción | Oral, alrededor del 60 %; los alimentos no afectan la absorción [1] |
-| Conversión | Se hidroliza a enalaprilat, el inhibidor activo de la ECA [1] |
-| Concentración máxima | Enalapril hacia 1 hora; enalaprilat hacia 4 horas [1] |
-| Semivida efectiva | Unas 11 horas para la acumulación de enalaprilat [1] |
-| Eliminación | Principalmente renal; el enalaprilato representa cerca del 40 % de la dosis en orina [1] |
-| Insuficiencia renal | Requiere ajuste de dosis según el aclaramiento de creatinina [1] |
+| Absorción | Oral, alrededor del 60 %; los alimentos no afectan la absorción  |
+| Conversión | Se hidroliza a enalaprilat, el inhibidor activo de la ECA  |
+| Concentración máxima | Enalapril hacia 1 hora; enalaprilat hacia 4 horas  |
+| Semivida efectiva | Unas 11 horas para la acumulación de enalaprilat  |
+| Eliminación | Principalmente renal; el enalaprilato representa cerca del 40 % de la dosis en orina  |
+| Insuficiencia renal | Requiere ajuste de dosis según el aclaramiento de creatinina  |
 
 ## Cómo se toma
 
@@ -51,14 +51,14 @@ En la insuficiencia cardíaca, el enalapril reduce la poscarga y la precarga, me
 - **Importantes:** potasio alto, alteración de la función renal.
 - **Urgentes:** hinchazón de cara, labios, lengua o garganta (angioedema), con o sin dificultad para respirar. Busca atención de inmediato y no vuelvas a tomar ningún IECA.
 
-Las reacciones adversas más frecuentes son mareo, cefalea, astenia, hipotensión, tos y elevación del potasio [1].
+Las reacciones adversas más frecuentes son mareo, cefalea, astenia, hipotensión, tos y elevación del potasio.
 
 - Frecuentes: mareo, cefalea, síncope, alteración del gusto, hipotensión, tos, disnea, náuseas, diarrea, dolor abdominal, erupción, calambres musculares, fatiga e hiperpotasemia.
 - Poco frecuentes: hipotensión ortostática, palpitaciones, angina, infarto o accidente cerebrovascular por hipotensión excesiva, íleo, pancreatitis, vómitos, dispepsia, estreñimiento, sequedad de boca, prurito, urticaria, alopecia, disfunción renal, proteinuria e impotencia.
 - Raras: neutropenia, trombocitopenia, anemia hemolítica, angioedema, broncoespasmo, neumonía eosinofílica, insuficiencia hepática, hepatitis, ictericia, eritema multiforme, síndrome de Stevens-Johnson, necrólisis epidérmica tóxica, pénfigo y ginecomastia.
 - Muy raras: angioedema intestinal, SIADH y reacciones anafilactoides en diálisis con membranas de alto flujo.
 
-La tos aparece en una proporción variable de pacientes, es seca, persistente y desaparece al suspender el medicamento. No es una alergia y no contraindica el uso de un ARA-II si se necesita bloquear el SRAA [1].
+La tos aparece en una proporción variable de pacientes, es seca, persistente y desaparece al suspender el medicamento. No es una alergia y no contraindica el uso de un ARA-II si se necesita bloquear el SRAA.
 
 ## Interacciones
 
@@ -71,19 +71,19 @@ La tos aparece en una proporción variable de pacientes, es seca, persistente y 
 
 | Medicamento | Efecto | Qué hacer |
 | --- | --- | --- |
-| Suplementos de potasio, ahorradores de potasio, sustitutos de la sal | Aumentan el riesgo de hiperpotasemia | Evitar o monitorizar el potasio [1] |
-| Diuréticos tiazídicos o del asa | Pueden sumar hipotensión al inicio | Reducir o suspender el diurético antes de iniciar [1] |
-| Antiinflamatorios no esteroideos | Reducen el efecto antihipertensivo y aumentan el riesgo renal y de hiperpotasemia | Usar con precaución y vigilar la función renal [1] |
-| Litio | Aumenta el litio y su toxicidad | Evitar si es posible; si se usa, monitorizar [1] |
-| Sacubitrilo/valsartán | Riesgo de angioedema por inhibición dual de neprilisina y ECA | Contraindicado; respetar 36 horas entre uno y otro [1] |
-| Inhibidores de mTOR (sirolimus, everolimus, temsirolimus) | Mayor riesgo de angioedema | Vigilar y advertir [1] |
-| Oro inyectable | Reacciones nitritoides | Evitar o vigilar [1] |
-| Insulina y antidiabéticos orales | Pueden aumentar el efecto hipoglucemiante | Vigilar la glucemia al inicio [1] |
-| Alcohol | Potencia la hipotensión | Advertir al paciente [1] |
+| Suplementos de potasio, ahorradores de potasio, sustitutos de la sal | Aumentan el riesgo de hiperpotasemia | Evitar o monitorizar el potasio  |
+| Diuréticos tiazídicos o del asa | Pueden sumar hipotensión al inicio | Reducir o suspender el diurético antes de iniciar  |
+| Antiinflamatorios no esteroideos | Reducen el efecto antihipertensivo y aumentan el riesgo renal y de hiperpotasemia | Usar con precaución y vigilar la función renal  |
+| Litio | Aumenta el litio y su toxicidad | Evitar si es posible; si se usa, monitorizar  |
+| Sacubitrilo/valsartán | Riesgo de angioedema por inhibición dual de neprilisina y ECA | Contraindicado; respetar 36 horas entre uno y otro  |
+| Inhibidores de mTOR (sirolimus, everolimus, temsirolimus) | Mayor riesgo de angioedema | Vigilar y advertir  |
+| Oro inyectable | Reacciones nitritoides | Evitar o vigilar  |
+| Insulina y antidiabéticos orales | Pueden aumentar el efecto hipoglucemiante | Vigilar la glucemia al inicio  |
+| Alcohol | Potencia la hipotensión | Advertir al paciente  |
 
 ## Quién no debe tomarlo
 
-Contraindicaciones de la ficha técnica [1]:
+Contraindicaciones de la ficha técnica:
 
 - Hipersensibilidad al enalapril, a otros IECA o a los excipientes.
 - Antecedentes de angioedema asociado con un IECA.
@@ -92,7 +92,7 @@ Contraindicaciones de la ficha técnica [1]:
 - Uso concomitante con aliskirén en diabetes o insuficiencia renal (filtrado glomerular menor de 60 ml/min/1,73 m²).
 - Uso con sacubitrilo/valsartán, o dentro de las 36 horas siguientes a su suspensión, por el riesgo de angioedema.
 
-Advertencias principales [1]:
+Advertencias principales:
 
 - Hipotensión sintomática, sobre todo con depleción de volumen, insuficiencia cardíaca grave o dosis altas de diuréticos.
 - Deterioro de la función renal en estenosis bilateral de la arteria renal, insuficiencia cardíaca grave o deshidratación.
@@ -105,8 +105,8 @@ Advertencias principales [1]:
 
 ## Embarazo, lactancia y niños
 
-- Embarazo: no se recomienda en el primer trimestre y está contraindicado en el segundo y tercero. La exposición fetal puede causar disminución de la función renal, oligohidramnios, retraso de la osificación del cráneo e hipotensión, insuficiencia renal e hiperpotasemia en el recién nacido [1].
-- Lactancia: pasa en concentraciones muy bajas a la leche. No se recomienda en prematuros ni en las primeras semanas posparto; en lactantes mayores puede considerarse si el tratamiento es necesario para la madre, con observación del niño [1].
+- Embarazo: no se recomienda en el primer trimestre y está contraindicado en el segundo y tercero. La exposición fetal puede causar disminución de la función renal, oligohidramnios, retraso de la osificación del cráneo e hipotensión, insuficiencia renal e hiperpotasemia en el recién nacido.
+- Lactancia: pasa en concentraciones muy bajas a la leche. No se recomienda en prematuros ni en las primeras semanas posparto; en lactantes mayores puede considerarse si el tratamiento es necesario para la madre, con observación del niño.
 
 ## La tos del enalapril
 
@@ -122,17 +122,17 @@ El enalapril cuenta con dos ensayos de la misma familia, SOLVD, que cambiaron el
 
 ### SOLVD tratamiento
 
-En 2.569 pacientes con insuficiencia cardíaca sintomática y fracción de eyección de 35 % o menos, el enalapril redujo la mortalidad total en un 16 % frente a placebo (35,2 % frente a 39,7 %) y la mortalidad cardiovascular en un 18 %. También redujo las muertes por insuficiencia cardíaca progresiva y las hospitalizaciones por empeoramiento de la enfermedad [2].
+En 2.569 pacientes con insuficiencia cardíaca sintomática y fracción de eyección de 35 % o menos, el enalapril redujo la mortalidad total en un 16 % frente a placebo (35,2 % frente a 39,7 %) y la mortalidad cardiovascular en un 18 %. También redujo las muertes por insuficiencia cardíaca progresiva y las hospitalizaciones por empeoramiento de la enfermedad.
 
 ### SOLVD prevención
 
-En 4.228 pacientes con disfunción ventricular izquierda asintomática, el enalapril redujo la aparición de insuficiencia cardíaca o la muerte en un 29 % (29,8 % frente a 38,6 %), y la muerte o hospitalización por insuficiencia cardíaca nueva o empeorada en un 20 % [3].
+En 4.228 pacientes con disfunción ventricular izquierda asintomática, el enalapril redujo la aparición de insuficiencia cardíaca o la muerte en un 29 % (29,8 % frente a 38,6 %), y la muerte o hospitalización por insuficiencia cardíaca nueva o empeorada en un 20 %.
 
-Estos resultados son la base de la recomendación de los IECA en la insuficiencia cardíaca con fracción de eyección reducida. En hipertensión, el enalapril reduce la presión y los eventos cardiovasculares, pero no es el único IECA ni el único grupo de primera línea [1].
+Estos resultados son la base de la recomendación de los IECA en la insuficiencia cardíaca con fracción de eyección reducida. En hipertensión, el enalapril reduce la presión y los eventos cardiovasculares, pero no es el único IECA ni el único grupo de primera línea.
 
-- Colombia: el CUM registra múltiples presentaciones de enalapril, solo y en combinación con hidroclorotiazida [4].
-- Unión Europea: el enalapril está autorizado para las indicaciones descritas en la ficha técnica [1].
-- Estados Unidos: la FDA tiene etiquetas vigentes de enalapril y de sus combinaciones; las indicaciones pueden variar [1].
+- Colombia: el CUM registra múltiples presentaciones de enalapril, solo y en combinación con hidroclorotiazida.
+- Unión Europea: el enalapril está autorizado para las indicaciones descritas en la ficha técnica.
+- Estados Unidos: la FDA tiene etiquetas vigentes de enalapril y de sus combinaciones; las indicaciones pueden variar.
 
 ## Errores frecuentes
 
@@ -168,15 +168,15 @@ Comienza a actuar en horas, pero el efecto completo puede tardar algunas semanas
 
 ### ¿Cuánto tarda en hacer efecto Enalapril?
 
-Enalapril hacia 1 hora; enalaprilat hacia 4 horas [1] Su efecto se mantiene mientras el medicamento permanece en el cuerpo; la semivida es de unas 11 horas para la acumulación de enalaprilat [1]. La respuesta completa depende de la indicación y del paciente, así que el seguimiento lo define el profesional.
+Enalapril hacia 1 hora; enalaprilat hacia 4 horas  Su efecto se mantiene mientras el medicamento permanece en el cuerpo; la semivida es de unas 11 horas para la acumulación de enalaprilat. La respuesta completa depende de la indicación y del paciente, así que el seguimiento lo define el profesional.
 
 ### ¿Se puede usar Enalapril en el embarazo?
 
-- Embarazo: no se recomienda en el primer trimestre y está contraindicado en el segundo y tercero. La exposición fetal puede causar disminución de la función renal, oligohidramnios, retraso de la osificación del cráneo e hipotensión, insuficiencia renal e hiperpotasemia en el recién nacido [1]. - Lactancia: pasa en concentraciones muy bajas a la leche. No se recomienda en prematuros ni en las primeras semanas posparto; en lactantes mayores puede considerarse si el tratamiento es necesario para la madre, con observación del niño [1].
+- Embarazo: no se recomienda en el primer trimestre y está contraindicado en el segundo y tercero. La exposición fetal puede causar disminución de la función renal, oligohidramnios, retraso de la osificación del cráneo e hipotensión, insuficiencia renal e hiperpotasemia en el recién nacido. - Lactancia: pasa en concentraciones muy bajas a la leche. No se recomienda en prematuros ni en las primeras semanas posparto; en lactantes mayores puede considerarse si el tratamiento es necesario para la madre, con observación del niño.
 
 ### ¿Qué efectos secundarios de Enalapril son graves?
 
-Las reacciones adversas más frecuentes son mareo, cefalea, astenia, hipotensión, tos y elevación del potasio [1]. - Frecuentes: mareo, cefalea, síncope, alteración del gusto, hipotensión, tos, disnea, náuseas, diarrea, dolor abdominal, erupción, calambres musculares, fatiga e hiperpotasemia. - Poco frecuentes: hipotensión ortostática, palpitaciones, angina, infarto o accidente cerebrovascular por hipotensión excesiva, íleo, pancreatitis, vómitos, dispepsia, estreñimiento, sequedad de boca, prurito, urticaria, alopecia, disfunción renal, proteinuria e impotencia. - Raras: neutropenia,…
+Las reacciones adversas más frecuentes son mareo, cefalea, astenia, hipotensión, tos y elevación del potasio. - Frecuentes: mareo, cefalea, síncope, alteración del gusto, hipotensión, tos, disnea, náuseas, diarrea, dolor abdominal, erupción, calambres musculares, fatiga e hiperpotasemia. - Poco frecuentes: hipotensión ortostática, palpitaciones, angina, infarto o accidente cerebrovascular por hipotensión excesiva, íleo, pancreatitis, vómitos, dispepsia, estreñimiento, sequedad de boca, prurito, urticaria, alopecia, disfunción renal, proteinuria e impotencia. - Raras: neutropenia,…
 
 ## Artículos relacionados
 

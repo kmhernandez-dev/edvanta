@@ -12,7 +12,7 @@ No es un analgésico. No alivia la crisis de gota que ya empezó; su función es
 
 ## Cómo funciona
 
-Inhibe la xantina oxidasa, enzima que oxida la hipoxantina a xantina y la xantina a ácido úrico; así baja el ácido úrico en plasma y orina [1].
+Inhibe la xantina oxidasa, enzima que oxida la hipoxantina a xantina y la xantina a ácido úrico; así baja el ácido úrico en plasma y orina.
 
 ## Cómo se toma
 
@@ -35,7 +35,7 @@ La dosis concreta la define el médico. No la cambies por tu cuenta.
 
 El riesgo de reacciones graves es mayor en personas con insuficiencia renal, en quienes empiezan con dosis altas y en portadores del alelo **HLA-B*58:01**. Las guías recomiendan considerar la prueba de HLA-B*58:01 en poblaciones de alto riesgo (por ejemplo, personas de origen han chino, tailandés o coreano) antes de iniciar.
 
-La ficha técnica no dispone de documentación clínica moderna para estimar frecuencias; la reacción que obliga a actuar es la erupción cutánea, que puede anunciar hipersensibilidad grave [1].
+La ficha técnica no dispone de documentación clínica moderna para estimar frecuencias; la reacción que obliga a actuar es la erupción cutánea, que puede anunciar hipersensibilidad grave.
 
 ## Interacciones
 
@@ -50,25 +50,25 @@ Si tomas varios medicamentos, lleva la lista completa a la consulta y a la farma
 
 | Medicamento | Efecto | Qué hacer |
 | --- | --- | --- |
-| Azatioprina, 6-mercaptopurina | Niveles tóxicos y mielosupresión | Ajuste obligatorio o evitar [1] |
-| Amoxicilina, ampicilina | Más erupciones cutáneas | Vigilar [1] |
+| Azatioprina, 6-mercaptopurina | Niveles tóxicos y mielosupresión | Ajuste obligatorio o evitar  |
+| Amoxicilina, ampicilina | Más erupciones cutáneas | Vigilar  |
 
 ## Quién no debe tomarlo
 
-Contraindicado en hipersensibilidad al alopurinol [1].
+Contraindicado en hipersensibilidad al alopurinol.
 
 ## Embarazo, lactancia y niños
 
 No hay datos suficientes para asegurar su seguridad en el embarazo. Se usa solo cuando no hay una alternativa más segura y cuando la enfermedad lo justifica. Pasa a la leche materna, por lo que no se recomienda durante la lactancia.
 
-- Embarazo: solo si no hay alternativa más segura y la enfermedad es un riesgo mayor [1].
+- Embarazo: solo si no hay alternativa más segura y la enfermedad es un riesgo mayor.
 
 ## Evidencia y situación en Colombia
 
-Su ficha técnica respalda el inicio con dosis bajas y el ajuste guiado por el urato para reducir las reacciones adversas [1].
+Su ficha técnica respalda el inicio con dosis bajas y el ajuste guiado por el urato para reducir las reacciones adversas.
 
-- Colombia: 9 registros sanitarios vigentes con el código ATC M04AA01; consulta del 16-nov-2026 [2].
-- España: autorizado como Zyloric 100 mg y 300 mg comprimidos [1].
+- Colombia: 9 registros sanitarios vigentes con el código ATC M04AA01; consulta del 16-nov-2026.
+- España: autorizado como Zyloric 100 mg y 300 mg comprimidos.
 
 ## Errores frecuentes
 
@@ -118,15 +118,15 @@ La ficha técnica recomienda tomarlo después de comer para reducir las molestia
 
 ### ¿Cuánto tarda en hacer efecto Alopurinol?
 
-Cerca de 1,5 horas [1] Su efecto se mantiene mientras el medicamento permanece en el cuerpo; la semivida es de 0,5 a 1,5 horas [1]. La respuesta completa depende de la indicación y del paciente, así que el seguimiento lo define el profesional.
+Cerca de 1,5 horas  Su efecto se mantiene mientras el medicamento permanece en el cuerpo; la semivida es de 0,5 a 1,5 horas. La respuesta completa depende de la indicación y del paciente, así que el seguimiento lo define el profesional.
 
 ### ¿Se puede usar Alopurinol en el embarazo?
 
-- Embarazo: solo si no hay alternativa más segura y la enfermedad es un riesgo mayor [1].
+- Embarazo: solo si no hay alternativa más segura y la enfermedad es un riesgo mayor.
 
 ### ¿Qué efectos secundarios de Alopurinol son graves?
 
-La ficha técnica no dispone de documentación clínica moderna para estimar frecuencias; la reacción que obliga a actuar es la erupción cutánea, que puede anunciar hipersensibilidad grave [1].
+La ficha técnica no dispone de documentación clínica moderna para estimar frecuencias; la reacción que obliga a actuar es la erupción cutánea, que puede anunciar hipersensibilidad grave.
 
 ## Artículos relacionados
 

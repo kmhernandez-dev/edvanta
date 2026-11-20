@@ -15,7 +15,7 @@ Pertenece al grupo farmacológico de Penicilina natural de depósito.
 
 ## ¿Para qué sirve la penicilina benzatínica?
 
-Está indicada en [1,2]:
+Está indicada en:
 
 - Sífilis primaria, secundaria y latente, según el esquema indicado por el médico.
 - Sífilis tardía benigna y neurosífilis, en esquemas específicos.
@@ -26,30 +26,30 @@ No se usa para infecciones virales ni para infecciones que requieren penicilina 
 
 ## Cómo funciona
 
-La penicilina G se une a las proteínas fijadoras de penicilina e inhibe la transpeptidación del peptidoglucano. La bacteria se lisa y muere; el efecto es bactericida y depende del tiempo por encima de la CMI [1,2].
+La penicilina G se une a las proteínas fijadoras de penicilina e inhibe la transpeptidación del peptidoglucano. La bacteria se lisa y muere; el efecto es bactericida y depende del tiempo por encima de la CMI.
 
-Es activa frente a Treponema pallidum, Streptococcus pyogenes y otros estreptococos sensibles. No cubre estafilococos productores de penicilinasa ni gramnegativos [1].
+Es activa frente a Treponema pallidum, Streptococcus pyogenes y otros estreptococos sensibles. No cubre estafilococos productores de penicilinasa ni gramnegativos.
 
 ## Cuánto tarda en hacer efecto
 
 | Parámetro | Valor |
 | --- | --- |
-| Absorción | Intramuscular; liberación lenta desde el depósito [1] |
-| Concentración máxima | A las 12 a 24 horas de la inyección [1] |
-| Unión a proteínas | Alta [1] |
-| Metabolismo | Hepático parcial [1] |
-| Semivida | La sal de depósito mantiene niveles detectables durante 2 a 4 semanas [1] |
-| Eliminación | Renal [1] |
+| Absorción | Intramuscular; liberación lenta desde el depósito  |
+| Concentración máxima | A las 12 a 24 horas de la inyección  |
+| Unión a proteínas | Alta  |
+| Metabolismo | Hepático parcial  |
+| Semivida | La sal de depósito mantiene niveles detectables durante 2 a 4 semanas  |
+| Eliminación | Renal  |
 
 ## Efectos secundarios
 
-- Dolor, inflamación y endurecimiento en el sitio de la inyección [1,2].
+- Dolor, inflamación y endurecimiento en el sitio de la inyección.
 - Fiebre, escalofríos, malestar y dolor de cabeza.
 - Erupción cutánea, urticaria y picazón.
 - Reacción de Jarisch-Herxheimer: fiebre, escalofríos, dolor muscular y taquicardia en las primeras horas del tratamiento de la sífilis; suele ser autolimitada.
 - Raros pero graves: anafilaxia, reacciones cutáneas graves, convulsiones por dosis altas o insuficiencia renal, y reacción de Hoigné (ansiedad, alucinaciones y alteraciones del ritmo cardiaco por inyección accidental en un vaso).
 
-Las más frecuentes son dolor, inflamación y endurecimiento en el sitio de la inyección [1,2].
+Las más frecuentes son dolor, inflamación y endurecimiento en el sitio de la inyección.
 
 - Frecuentes: dolor local, fiebre, malestar y cefalea.
 - Poco frecuentes: urticaria, rash y reacción de Jarisch-Herxheimer.
@@ -59,50 +59,50 @@ Las más frecuentes son dolor, inflamación y endurecimiento en el sitio de la i
 
 | Medicamento | Qué puede pasar |
 |---|---|
-| Warfarina | Puede alterar el INR; controlar [2] |
-| Metotrexato | Aumenta su toxicidad [2] |
-| Probenecid | Aumenta y prolonga la concentración de penicilina [2] |
-| Tetraciclinas y cloranfenicol | Pueden antagonizar el efecto [2] |
-| Aminoglucósidos | No se mezclan en la misma jeringa; pueden inactivarse [2] |
+| Warfarina | Puede alterar el INR; controlar  |
+| Metotrexato | Aumenta su toxicidad  |
+| Probenecid | Aumenta y prolonga la concentración de penicilina  |
+| Tetraciclinas y cloranfenicol | Pueden antagonizar el efecto  |
+| Aminoglucósidos | No se mezclan en la misma jeringa; pueden inactivarse  |
 
 | Medicamento | Efecto | Qué hacer |
 | --- | --- | --- |
-| Warfarina | Puede alterar el INR | Controlar el INR [2] |
-| Metotrexato | Aumenta su toxicidad | Vigilar y ajustar [2] |
-| Probenecid | Aumenta y prolonga la penicilina | Considerar la interacción [2] |
-| Tetraciclinas y cloranfenicol | Posible antagonismo | Evitar combinaciones innecesarias [2] |
-| Aminoglucósidos | No mezclar en la misma jeringa | Administrar por separado [2] |
+| Warfarina | Puede alterar el INR | Controlar el INR  |
+| Metotrexato | Aumenta su toxicidad | Vigilar y ajustar  |
+| Probenecid | Aumenta y prolonga la penicilina | Considerar la interacción  |
+| Tetraciclinas y cloranfenicol | Posible antagonismo | Evitar combinaciones innecesarias  |
+| Aminoglucósidos | No mezclar en la misma jeringa | Administrar por separado  |
 
 ## Quién no debe tomarlo
 
-- Alergia a la penicilina o a otros betalactámicos [1,2].
+- Alergia a la penicilina o a otros betalactámicos.
 - Antecedente de anafilaxia con penicilina.
 - Insuficiencia renal grave: puede requerir ajuste.
 - Embarazo: es el tratamiento de elección para la sífilis en el embarazo, con supervisión médica.
 - Lactancia: compatible; vigilar diarrea o candidiasis en el bebé.
 
-Contraindicaciones [1,2]:
+Contraindicaciones:
 
 - Hipersensibilidad a penicilina o a otros betalactámicos.
 - Antecedente de anafilaxia con penicilina.
 
-Advertencias: anafilaxia, reacción de Jarisch-Herxheimer, reacción de Hoigné por inyección intravascular accidental, neurotoxicidad con dosis altas o insuficiencia renal, y dolor local intenso [1,2].
+Advertencias: anafilaxia, reacción de Jarisch-Herxheimer, reacción de Hoigné por inyección intravascular accidental, neurotoxicidad con dosis altas o insuficiencia renal, y dolor local intenso.
 
 ## Embarazo, lactancia y niños
 
-La penicilina benzatínica es el tratamiento de elección para la sífilis en el embarazo, porque previene la sífilis congénita. Pasa a la leche en pequeñas cantidades y se considera compatible con la lactancia [1,2]. Si hay alergia, el médico debe evaluar la desensibilización o una alternativa.
+La penicilina benzatínica es el tratamiento de elección para la sífilis en el embarazo, porque previene la sífilis congénita. Pasa a la leche en pequeñas cantidades y se considera compatible con la lactancia. Si hay alergia, el médico debe evaluar la desensibilización o una alternativa.
 
-- Embarazo: es el tratamiento de elección para la sífilis y previene la sífilis congénita [1,2].
-- Lactancia: pasa en pequeñas cantidades y se considera compatible; vigilar diarrea o candidiasis en el bebé [1].
-- Fertilidad: no se han descrito efectos adversos [2].
+- Embarazo: es el tratamiento de elección para la sífilis y previene la sífilis congénita.
+- Lactancia: pasa en pequeñas cantidades y se considera compatible; vigilar diarrea o candidiasis en el bebé.
+- Fertilidad: no se han descrito efectos adversos.
 
 ## Cómo actúa
 
-La penicilina benzatínica es una sal de penicilina G que se absorbe lentamente desde el músculo. Libera penicilina durante un período prolongado, lo que mantiene concentraciones útiles y permite esquemas de una inyección o de inyecciones espaciadas. Inhibe la síntesis de la pared bacteriana y es bactericida frente a *Treponema pallidum* y estreptococos sensibles [1,2].
+La penicilina benzatínica es una sal de penicilina G que se absorbe lentamente desde el músculo. Libera penicilina durante un período prolongado, lo que mantiene concentraciones útiles y permite esquemas de una inyección o de inyecciones espaciadas. Inhibe la síntesis de la pared bacteriana y es bactericida frente a *Treponema pallidum* y estreptococos sensibles.
 
 ## Cómo se administra
 
-La dosis y el intervalo los define el médico. Como referencia [1,2]:
+La dosis y el intervalo los define el médico. Como referencia:
 
 | Indicación | Esquema orientativo en adultos |
 |---|---|
@@ -118,19 +118,19 @@ La dosis y el intervalo los define el médico. Como referencia [1,2]:
 
 ## Penicilina benzatínica en Colombia
 
-El CUM del INVIMA registra penicilina benzatínica en polvo para suspensión inyectable. Es un medicamento de uso institucional y requiere fórmula médica y personal entrenado para la administración [3].
+El CUM del INVIMA registra penicilina benzatínica en polvo para suspensión inyectable. Es un medicamento de uso institucional y requiere fórmula médica y personal entrenado para la administración.
 
 ## Evidencia y situación en Colombia
 
-La penicilina benzatínica sigue siendo el estándar para la sífilis porque mantiene concentraciones treponemicidas durante el tiempo necesario y previene la transmisión maternoinfantil [1,2].
+La penicilina benzatínica sigue siendo el estándar para la sífilis porque mantiene concentraciones treponemicidas durante el tiempo necesario y previene la transmisión maternoinfantil.
 
-En la profilaxis de la fiebre reumática, las inyecciones cada 3 a 4 semanas reducen las recurrencias y la progresión de la valvulopatía [1].
+En la profilaxis de la fiebre reumática, las inyecciones cada 3 a 4 semanas reducen las recurrencias y la progresión de la valvulopatía.
 
-La adherencia a la profilaxis es un determinante mayor de la eficacia; la atención farmacéutica puede mejorar el cumplimiento y la continuidad [1,2].
+La adherencia a la profilaxis es un determinante mayor de la eficacia; la atención farmacéutica puede mejorar el cumplimiento y la continuidad.
 
-- Colombia: el CUM registra penicilina benzatínica en polvo para suspensión inyectable [3].
-- Estados Unidos: la FDA mantiene la etiqueta de Bicillin L-A [1].
-- Es un medicamento de uso institucional y requiere personal entrenado [1,2].
+- Colombia: el CUM registra penicilina benzatínica en polvo para suspensión inyectable.
+- Estados Unidos: la FDA mantiene la etiqueta de Bicillin L-A.
+- Es un medicamento de uso institucional y requiere personal entrenado.
 
 ## Errores frecuentes
 
@@ -170,15 +170,15 @@ Puede ser parte de la reacción de Jarisch-Herxheimer en el tratamiento de la s�
 
 ### ¿Cuánto tarda en hacer efecto Penicilina benzatínica?
 
-A las 12 a 24 horas de la inyección [1] Su efecto se mantiene mientras el medicamento permanece en el cuerpo; la semivida es de la sal de depósito mantiene niveles detectables durante 2 a 4 semanas [1]. La respuesta completa depende de la indicación y del paciente, así que el seguimiento lo define el profesional.
+A las 12 a 24 horas de la inyección  Su efecto se mantiene mientras el medicamento permanece en el cuerpo; la semivida es de la sal de depósito mantiene niveles detectables durante 2 a 4 semanas. La respuesta completa depende de la indicación y del paciente, así que el seguimiento lo define el profesional.
 
 ### ¿Se puede usar Penicilina benzatínica en el embarazo?
 
-- Embarazo: es el tratamiento de elección para la sífilis y previene la sífilis congénita [1,2]. - Lactancia: pasa en pequeñas cantidades y se considera compatible; vigilar diarrea o candidiasis en el bebé [1]. - Fertilidad: no se han descrito efectos adversos [2].
+- Embarazo: es el tratamiento de elección para la sífilis y previene la sífilis congénita. - Lactancia: pasa en pequeñas cantidades y se considera compatible; vigilar diarrea o candidiasis en el bebé. - Fertilidad: no se han descrito efectos adversos.
 
 ### ¿Qué efectos secundarios de Penicilina benzatínica son graves?
 
-Las más frecuentes son dolor, inflamación y endurecimiento en el sitio de la inyección [1,2]. - Frecuentes: dolor local, fiebre, malestar y cefalea. - Poco frecuentes: urticaria, rash y reacción de Jarisch-Herxheimer. - Raras: anafilaxia, reacción de Hoigné, convulsiones, neuropatía y reacciones cutáneas graves.
+Las más frecuentes son dolor, inflamación y endurecimiento en el sitio de la inyección. - Frecuentes: dolor local, fiebre, malestar y cefalea. - Poco frecuentes: urticaria, rash y reacción de Jarisch-Herxheimer. - Raras: anafilaxia, reacción de Hoigné, convulsiones, neuropatía y reacciones cutáneas graves.
 
 ## Artículos relacionados
 

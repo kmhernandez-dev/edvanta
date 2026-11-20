@@ -15,7 +15,7 @@ Pertenece al grupo farmacológico de Penicilina resistente a la penicilinasa.
 
 ## ¿Para qué sirve la dicloxacilina?
 
-La dicloxacilina está indicada en infecciones causadas por cepas sensibles de estafilococos productores de penicilinasa [1,2]:
+La dicloxacilina está indicada en infecciones causadas por cepas sensibles de estafilococos productores de penicilinasa:
 
 - Infecciones de la piel y de los tejidos blandos: celulitis, abscesos, forúnculos, impétigo y heridas infectadas.
 - Infecciones óseas y articulares por estafilococos sensibles.
@@ -26,24 +26,24 @@ No cubre bacterias gramnegativas, anaerobias ni *Pseudomonas*. Por eso no se usa
 
 ## Cómo funciona
 
-Como todas las penicilinas, se une a las proteínas fijadoras de penicilina (PBP) e inhibe la transpeptidación del peptidoglucano. La bacteria se lisa por activación de autolisinas [1,2].
+Como todas las penicilinas, se une a las proteínas fijadoras de penicilina (PBP) e inhibe la transpeptidación del peptidoglucano. La bacteria se lisa por activación de autolisinas.
 
-Es bactericida y su efecto depende del tiempo que la concentración libre se mantiene por encima de la CMI. Su espectro se limita sobre todo a estafilococos y estreptococos sensibles [1,2].
+Es bactericida y su efecto depende del tiempo que la concentración libre se mantiene por encima de la CMI. Su espectro se limita sobre todo a estafilococos y estreptococos sensibles.
 
 ## Cuánto tarda en hacer efecto
 
 | Parámetro | Valor |
 | --- | --- |
-| Absorción | Oral; se reduce con alimentos [1,2] |
-| Concentración máxima | Aproximadamente 0,5 a 1 hora [1] |
-| Unión a proteínas | Alta, principalmente albúmina [1] |
-| Metabolismo | Hepático parcial [1] |
-| Semivida | Aproximadamente 0,7 horas [1] |
-| Eliminación | Renal, principalmente por secreción tubular [1,2] |
+| Absorción | Oral; se reduce con alimentos  |
+| Concentración máxima | Aproximadamente 0,5 a 1 hora  |
+| Unión a proteínas | Alta, principalmente albúmina  |
+| Metabolismo | Hepático parcial  |
+| Semivida | Aproximadamente 0,7 horas  |
+| Eliminación | Renal, principalmente por secreción tubular  |
 
 ## Cómo se toma
 
-La dosis la define el médico según el peso, la infección y la función renal. Como referencia, en adultos se usan 250 a 500 mg cada 6 horas; en niños, la dosis se calcula por peso y se reparte cada 6 horas [1,2].
+La dosis la define el médico según el peso, la infección y la función renal. Como referencia, en adultos se usan 250 a 500 mg cada 6 horas; en niños, la dosis se calcula por peso y se reparte cada 6 horas.
 
 - Tómala con el estómago vacío, al menos 1 hora antes o 2 horas después de comer.
 - Con el estómago lleno se absorbe menos y puede fallar.
@@ -52,7 +52,7 @@ La dosis la define el médico según el peso, la infección y la función renal.
 
 ## Efectos secundarios
 
-- Náuseas, vómito, diarrea, dolor abdominal y flatulencia [1,2].
+- Náuseas, vómito, diarrea, dolor abdominal y flatulencia.
 - Erupción cutánea, urticaria y picazón.
 - Candidiasis oral o vaginal.
 - Elevación de transaminasas.
@@ -60,7 +60,7 @@ La dosis la define el médico según el peso, la infección y la función renal.
 
 Consulta de inmediato si aparecen dificultad para respirar, hinchazón de la cara o la garganta, ampollas, descamación, diarrea intensa o moretones sin causa.
 
-Las más frecuentes son náuseas, vómito, diarrea, dolor abdominal, flatulencia y erupción cutánea [1,2].
+Las más frecuentes son náuseas, vómito, diarrea, dolor abdominal, flatulencia y erupción cutánea.
 
 - Frecuentes: molestias digestivas, rash, urticaria y candidiasis.
 - Poco frecuentes: elevación de transaminasas, eosinofilia y anemia.
@@ -70,61 +70,61 @@ Las más frecuentes son náuseas, vómito, diarrea, dolor abdominal, flatulencia
 
 | Medicamento o sustancia | Qué puede pasar |
 |---|---|
-| Warfarina | Puede aumentar el INR y el riesgo de sangrado [1] |
-| Metotrexato | Aumenta su toxicidad [1] |
-| Probenecid | Aumenta la concentración de dicloxacilina [1] |
-| Antiácidos y alimentos | Reducen la absorción; separar la toma [1] |
-| Tetraciclinas y cloranfenicol | Pueden antagonizar el efecto antibacteriano [2] |
+| Warfarina | Puede aumentar el INR y el riesgo de sangrado  |
+| Metotrexato | Aumenta su toxicidad  |
+| Probenecid | Aumenta la concentración de dicloxacilina  |
+| Antiácidos y alimentos | Reducen la absorción; separar la toma  |
+| Tetraciclinas y cloranfenicol | Pueden antagonizar el efecto antibacteriano  |
 
 | Medicamento | Efecto | Qué hacer |
 | --- | --- | --- |
-| Warfarina | Puede aumentar el INR | Controlar el INR [1] |
-| Metotrexato | Aumenta su toxicidad | Vigilar y ajustar [1] |
-| Probenecid | Aumenta la concentración de dicloxacilina | Considerar la interacción [1] |
-| Tetraciclinas y cloranfenicol | Posible antagonismo | Evitar combinaciones innecesarias [2] |
-| Antiácidos y alimentos | Reducen la absorción | Separar la toma [1] |
+| Warfarina | Puede aumentar el INR | Controlar el INR  |
+| Metotrexato | Aumenta su toxicidad | Vigilar y ajustar  |
+| Probenecid | Aumenta la concentración de dicloxacilina | Considerar la interacción  |
+| Tetraciclinas y cloranfenicol | Posible antagonismo | Evitar combinaciones innecesarias  |
+| Antiácidos y alimentos | Reducen la absorción | Separar la toma  |
 
 ## Quién no debe tomarlo
 
-- Alergia a la dicloxacilina, a otras penicilinas o a los betalactámicos [1,2].
+- Alergia a la dicloxacilina, a otras penicilinas o a los betalactámicos.
 - Antecedente de anafilaxia con penicilinas: no usar sin evaluación especializada.
 - Insuficiencia renal o hepática: puede requerir ajuste.
 - Embarazo y lactancia: consultar; se usa si el beneficio supera el riesgo.
 - Mononucleosis infecciosa: mayor riesgo de erupción cutánea.
 
-Contraindicaciones [1,2]:
+Contraindicaciones:
 
 - Hipersensibilidad a dicloxacilina, penicilinas u otros betalactámicos.
 - Antecedente de anafilaxia con penicilinas.
 
-Advertencias: mayor riesgo de erupción en mononucleosis infecciosa; vigilar colitis por C. difficile, nefritis intersticial y alteraciones hematológicas; la absorción incompleta con alimentos puede causar fallo terapéutico [1,2].
+Advertencias: mayor riesgo de erupción en mononucleosis infecciosa; vigilar colitis por C. difficile, nefritis intersticial y alteraciones hematológicas; la absorción incompleta con alimentos puede causar fallo terapéutico.
 
 ## Embarazo, lactancia y niños
 
-Atraviesa la placenta y pasa a la leche materna en pequeñas cantidades. Se considera una opción cuando el beneficio supera el riesgo, pero la decisión es médica [1,2]. En lactancia, vigilar diarrea o candidiasis en el bebé.
+Atraviesa la placenta y pasa a la leche materna en pequeñas cantidades. Se considera una opción cuando el beneficio supera el riesgo, pero la decisión es médica. En lactancia, vigilar diarrea o candidiasis en el bebé.
 
-- Embarazo: se considera compatible cuando está indicada; consultar siempre [1,2].
-- Lactancia: pasa a la leche en pequeñas cantidades; vigilar diarrea o candidiasis en el bebé [1].
-- Fertilidad: no se han descrito efectos adversos [2].
+- Embarazo: se considera compatible cuando está indicada; consultar siempre.
+- Lactancia: pasa a la leche en pequeñas cantidades; vigilar diarrea o candidiasis en el bebé.
+- Fertilidad: no se han descrito efectos adversos.
 
 ## Cómo actúa
 
-La dicloxacilina se une a las proteínas fijadoras de penicilina e impide la síntesis de la pared bacteriana. La bacteria se lisa y muere. Su cadena lateral la protege de la penicilinasa que producen muchos estafilococos, lo que la hace útil frente a *S. aureus* sensible a meticilina [1,2].
+La dicloxacilina se une a las proteínas fijadoras de penicilina e impide la síntesis de la pared bacteriana. La bacteria se lisa y muere. Su cadena lateral la protege de la penicilinasa que producen muchos estafilococos, lo que la hace útil frente a *S. aureus* sensible a meticilina.
 
 ## Dicloxacilina en Colombia
 
-El CUM del INVIMA registra dicloxacilina en cápsulas y suspensiones. Verifica siempre el registro sanitario y la concentración antes de dispensar [3]. Es un medicamento de prescripción médica.
+El CUM del INVIMA registra dicloxacilina en cápsulas y suspensiones. Verifica siempre el registro sanitario y la concentración antes de dispensar. Es un medicamento de prescripción médica.
 
 ## Evidencia y situación en Colombia
 
-La dicloxacilina ha sido un pilar del tratamiento de infecciones estafilocócicas de piel y tejidos blandos desde antes de la era de la resistencia a meticilina [1,2].
+La dicloxacilina ha sido un pilar del tratamiento de infecciones estafilocócicas de piel y tejidos blandos desde antes de la era de la resistencia a meticilina.
 
-Su eficacia depende de la sensibilidad del S. aureus: en cepas resistentes a meticilina (MRSA) no es activa y se requieren alternativas como clindamicina, trimetoprim-sulfametoxazol o vancomicina según la gravedad [1,2].
+Su eficacia depende de la sensibilidad del S. aureus: en cepas resistentes a meticilina (MRSA) no es activa y se requieren alternativas como clindamicina, trimetoprim-sulfametoxazol o vancomicina según la gravedad.
 
-La toma con el estómago vacío es determinante: los alimentos reducen la absorción y pueden explicar fallos terapéuticos en infecciones cutáneas [1].
+La toma con el estómago vacío es determinante: los alimentos reducen la absorción y pueden explicar fallos terapéuticos en infecciones cutáneas.
 
-- Colombia: el CUM registra dicloxacilina en cápsulas y suspensiones; verificar registro y concentración [3].
-- Estados Unidos: la FDA mantiene etiquetas vigentes de dicloxacilina sódica [1].
+- Colombia: el CUM registra dicloxacilina en cápsulas y suspensiones; verificar registro y concentración.
+- Estados Unidos: la FDA mantiene etiquetas vigentes de dicloxacilina sódica.
 - Es un medicamento de prescripción médica.
 
 ## Errores frecuentes
@@ -165,15 +165,15 @@ No hay una interacción directa grave descrita, pero el alcohol puede empeorar l
 
 ### ¿Cuánto tarda en hacer efecto Dicloxacilina?
 
-Aproximadamente 0,5 a 1 hora [1] Su efecto se mantiene mientras el medicamento permanece en el cuerpo; la semivida es de aproximadamente 0,7 horas [1]. La respuesta completa depende de la indicación y del paciente, así que el seguimiento lo define el profesional.
+Aproximadamente 0,5 a 1 hora  Su efecto se mantiene mientras el medicamento permanece en el cuerpo; la semivida es de aproximadamente 0,7 horas. La respuesta completa depende de la indicación y del paciente, así que el seguimiento lo define el profesional.
 
 ### ¿Se puede usar Dicloxacilina en el embarazo?
 
-- Embarazo: se considera compatible cuando está indicada; consultar siempre [1,2]. - Lactancia: pasa a la leche en pequeñas cantidades; vigilar diarrea o candidiasis en el bebé [1]. - Fertilidad: no se han descrito efectos adversos [2].
+- Embarazo: se considera compatible cuando está indicada; consultar siempre. - Lactancia: pasa a la leche en pequeñas cantidades; vigilar diarrea o candidiasis en el bebé. - Fertilidad: no se han descrito efectos adversos.
 
 ### ¿Qué efectos secundarios de Dicloxacilina son graves?
 
-Las más frecuentes son náuseas, vómito, diarrea, dolor abdominal, flatulencia y erupción cutánea [1,2]. - Frecuentes: molestias digestivas, rash, urticaria y candidiasis. - Poco frecuentes: elevación de transaminasas, eosinofilia y anemia. - Raras: anafilaxia, síndrome de Stevens-Johnson, necrólisis epidérmica tóxica, nefritis intersticial y colitis pseudomembranosa.
+Las más frecuentes son náuseas, vómito, diarrea, dolor abdominal, flatulencia y erupción cutánea. - Frecuentes: molestias digestivas, rash, urticaria y candidiasis. - Poco frecuentes: elevación de transaminasas, eosinofilia y anemia. - Raras: anafilaxia, síndrome de Stevens-Johnson, necrólisis epidérmica tóxica, nefritis intersticial y colitis pseudomembranosa.
 
 ## Artículos relacionados
 

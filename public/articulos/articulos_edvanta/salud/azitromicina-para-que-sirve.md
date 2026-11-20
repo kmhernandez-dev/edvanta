@@ -23,15 +23,15 @@ Pertenece al grupo farmacológico de Antibiótico macrólido.
 
 ## Cómo funciona
 
-Inhibe la síntesis de proteínas bacterianas uniéndose a la subunidad 50S del ribosoma y bloqueando la translocación de péptidos [1].
+Inhibe la síntesis de proteínas bacterianas uniéndose a la subunidad 50S del ribosoma y bloqueando la translocación de péptidos.
 
 ## Cuánto tarda en hacer efecto
 
 | Parámetro | Valor |
 | --- | --- |
-| Concentración máxima | 2 a 3 horas [1] |
-| Semivida terminal | Unas 68 horas [1] |
-| Alimentos | Los comprimidos pueden tomarse con o sin comida [1] |
+| Concentración máxima | 2 a 3 horas  |
+| Semivida terminal | Unas 68 horas  |
+| Alimentos | Los comprimidos pueden tomarse con o sin comida  |
 
 ## Efectos secundarios
 
@@ -40,7 +40,7 @@ Inhibe la síntesis de proteínas bacterianas uniéndose a la subunidad 50S del 
 
 Consulta de inmediato si tienes palpitaciones, desmayo, piel u ojos amarillos, ampollas en la piel o dificultad para respirar.
 
-Las más frecuentes son diarrea, cefalea, vómitos, dolor abdominal y náuseas. Entre las graves figuran anafilaxia, torsade de pointes, colitis pseudomembranosa e insuficiencia hepática [1].
+Las más frecuentes son diarrea, cefalea, vómitos, dolor abdominal y náuseas. Entre las graves figuran anafilaxia, torsade de pointes, colitis pseudomembranosa e insuficiencia hepática.
 
 ## Interacciones
 
@@ -50,17 +50,17 @@ Las más frecuentes son diarrea, cefalea, vómitos, dolor abdominal y náuseas. 
 
 | Medicamento | Efecto | Qué hacer |
 | --- | --- | --- |
-| Digoxina, colchicina (sustratos de glicoproteína P) | Aumenta su exposición | Vigilar toxicidad [1] |
-| Sustratos del CYP3A4 de margen estrecho | Posible inhibición débil | Precaución [1] |
-| Fármacos que prolongan el QT | Más riesgo de arritmia | Precaución [1] |
+| Digoxina, colchicina (sustratos de glicoproteína P) | Aumenta su exposición | Vigilar toxicidad  |
+| Sustratos del CYP3A4 de margen estrecho | Posible inhibición débil | Precaución  |
+| Fármacos que prolongan el QT | Más riesgo de arritmia | Precaución  |
 
 ## Quién no debe tomarlo
 
-Contraindicada en hipersensibilidad a la azitromicina, la eritromicina u otros macrólidos o cetólidos [1].
+Contraindicada en hipersensibilidad a la azitromicina, la eritromicina u otros macrólidos o cetólidos.
 
 ## Embarazo, lactancia y niños
 
-- Embarazo: no hay estudios bien controlados, pero en estudios observacionales con más de 7.000 embarazos expuestos la mayoría no sugiere más malformaciones importantes [1].
+- Embarazo: no hay estudios bien controlados, pero en estudios observacionales con más de 7.000 embarazos expuestos la mayoría no sugiere más malformaciones importantes.
 
 ## Por qué no es para la gripa
 
@@ -75,10 +75,10 @@ La gripa, el resfriado y el COVID-19 son infecciones virales. La azitromicina no
 
 ## Evidencia y situación en Colombia
 
-Su ficha técnica es explícita en el uso racional: se reserva para cuando las pautas preferidas no estén indicadas, por su capacidad de favorecer resistencias [1].
+Su ficha técnica es explícita en el uso racional: se reserva para cuando las pautas preferidas no estén indicadas, por su capacidad de favorecer resistencias.
 
-- Colombia: 63 registros sanitarios vigentes con el código ATC J01FA10; consulta del 16-nov-2026 [2].
-- España: autorizada como Zitromax comprimidos, cápsulas y suspensión [1].
+- Colombia: 63 registros sanitarios vigentes con el código ATC J01FA10; consulta del 16-nov-2026.
+- España: autorizada como Zitromax comprimidos, cápsulas y suspensión.
 
 ## Errores frecuentes
 
@@ -114,15 +114,15 @@ No hay una interacción directa grave, pero puede empeorar los efectos digestivo
 
 ### ¿Cuánto tarda en hacer efecto Azitromicina?
 
-2 a 3 horas [1] Su efecto se mantiene mientras el medicamento permanece en el cuerpo; la semivida es de unas 68 horas [1]. La respuesta completa depende de la indicación y del paciente, así que el seguimiento lo define el profesional.
+2 a 3 horas  Su efecto se mantiene mientras el medicamento permanece en el cuerpo; la semivida es de unas 68 horas. La respuesta completa depende de la indicación y del paciente, así que el seguimiento lo define el profesional.
 
 ### ¿Se puede usar Azitromicina en el embarazo?
 
-- Embarazo: no hay estudios bien controlados, pero en estudios observacionales con más de 7.000 embarazos expuestos la mayoría no sugiere más malformaciones importantes [1].
+- Embarazo: no hay estudios bien controlados, pero en estudios observacionales con más de 7.000 embarazos expuestos la mayoría no sugiere más malformaciones importantes.
 
 ### ¿Qué efectos secundarios de Azitromicina son graves?
 
-Las más frecuentes son diarrea, cefalea, vómitos, dolor abdominal y náuseas. Entre las graves figuran anafilaxia, torsade de pointes, colitis pseudomembranosa e insuficiencia hepática [1].
+Las más frecuentes son diarrea, cefalea, vómitos, dolor abdominal y náuseas. Entre las graves figuran anafilaxia, torsade de pointes, colitis pseudomembranosa e insuficiencia hepática.
 
 ## Artículos relacionados
 

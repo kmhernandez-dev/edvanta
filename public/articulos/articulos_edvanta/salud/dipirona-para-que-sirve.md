@@ -15,70 +15,70 @@ Pertenece al grupo farmacológico de Pirazolona analgésica no opioide.
 
 ## ¿Para qué sirve la dipirona (metamizol)?
 
-Según la ficha técnica de referencia, el metamizol está indicado para [1]:
+Según la ficha técnica de referencia, el metamizol está indicado para:
 
 - Dolor agudo moderado o intenso después de una cirugía o un trauma.
 - Dolor de tipo cólico.
 - Dolor de origen tumoral.
 - Fiebre alta que no responde a otras medidas, incluidos los antipiréticos de primera elección como el [acetaminofén](/articulos/acetaminofen-para-que-sirve).
 
-Además de calmar el dolor y bajar la fiebre, tiene un efecto relajante sobre los espasmos, por eso se usa en los cólicos [1].
+Además de calmar el dolor y bajar la fiebre, tiene un efecto relajante sobre los espasmos, por eso se usa en los cólicos.
 
 ## Cómo funciona
 
-Tiene efectos analgésicos, antipiréticos y espasmolíticos. Su mecanismo no se comprende del todo; los datos sugieren que el metamizol y su metabolito principal, la 4-metilaminoantipirina, actúan de forma combinada central y periférica [1].
+Tiene efectos analgésicos, antipiréticos y espasmolíticos. Su mecanismo no se comprende del todo; los datos sugieren que el metamizol y su metabolito principal, la 4-metilaminoantipirina, actúan de forma combinada central y periférica.
 
-A diferencia de los AINE clásicos, su acción espasmolítica lo hace útil en el dolor de tipo cólico [1].
+A diferencia de los AINE clásicos, su acción espasmolítica lo hace útil en el dolor de tipo cólico.
 
 ## Cuánto tarda en hacer efecto
 
 | Parámetro | Valor |
 | --- | --- |
-| Absorción | Se hidroliza en el jugo gástrico a 4-MAA, que se absorbe casi por completo [1] |
-| Metabolitos | 4-MAA (activo) y 4-aminoantipirina; además 4-formil y 4-acetilaminoantipirina [1] |
-| Unión a proteínas | 4-MAA 58 %; otros metabolitos 14 % a 48 % [1] |
-| Semivida | 4-MAA 2,7 horas; otros metabolitos 3,7 a 11,2 horas [1] |
-| Eliminación | Más del 90 % de la dosis en orina a los 7 días [1] |
+| Absorción | Se hidroliza en el jugo gástrico a 4-MAA, que se absorbe casi por completo  |
+| Metabolitos | 4-MAA (activo) y 4-aminoantipirina; además 4-formil y 4-acetilaminoantipirina  |
+| Unión a proteínas | 4-MAA 58 %; otros metabolitos 14 % a 48 %  |
+| Semivida | 4-MAA 2,7 horas; otros metabolitos 3,7 a 11,2 horas  |
+| Eliminación | Más del 90 % de la dosis en orina a los 7 días  |
 
 ## Cómo se toma
 
-La dosis la define tu médico y depende de la presentación (tabletas o inyección) y de la sal del producto. Como referencia, la ficha técnica de las cápsulas de 575 mg indica para adultos y mayores de 15 años (más de 53 kg) una cápsula cada 4 a 6 horas, sin pasar de 6 cápsulas al día [1].
+La dosis la define tu médico y depende de la presentación (tabletas o inyección) y de la sal del producto. Como referencia, la ficha técnica de las cápsulas de 575 mg indica para adultos y mayores de 15 años (más de 53 kg) una cápsula cada 4 a 6 horas, sin pasar de 6 cápsulas al día.
 
-- Es un medicamento para uso de pocos días [1].
-- En personas mayores y en quienes tienen enfermedad del riñón o del hígado, se usan dosis menores [1].
+- Es un medicamento para uso de pocos días.
+- En personas mayores y en quienes tienen enfermedad del riñón o del hígado, se usan dosis menores.
 - Las inyecciones solo debe aplicarlas personal de salud.
 
 ## Efectos secundarios
 
-El efecto frecuente es la presión baja. Los graves, poco frecuentes, son la agranulocitosis, otras alteraciones de la sangre, reacciones alérgicas graves, reacciones graves de la piel, daño del riñón y del hígado [1].
+El efecto frecuente es la presión baja. Los graves, poco frecuentes, son la agranulocitosis, otras alteraciones de la sangre, reacciones alérgicas graves, reacciones graves de la piel, daño del riñón y del hígado.
 
-La reacción adversa frecuente es la hipotensión [1].
+La reacción adversa frecuente es la hipotensión.
 
-- Graves: agranulocitosis (con casos mortales), trombocitopenia, anemia aplásica y pancitopenia [1].
-- Shock anafiláctico, síndrome de Stevens-Johnson, necrólisis epidérmica tóxica y DRESS [1].
-- Insuficiencia renal aguda, nefritis intersticial, hemorragia digestiva y lesión hepática inducida por fármacos [1].
+- Graves: agranulocitosis (con casos mortales), trombocitopenia, anemia aplásica y pancitopenia.
+- Shock anafiláctico, síndrome de Stevens-Johnson, necrólisis epidérmica tóxica y DRESS.
+- Insuficiencia renal aguda, nefritis intersticial, hemorragia digestiva y lesión hepática inducida por fármacos.
 
 ## Interacciones
 
 | Medicamento | Qué puede pasar |
 |---|---|
-| Metotrexato y otros medicamentos para el cáncer | Más daño a la sangre [1] |
-| Aspirina para prevenir infartos | La dipirona puede reducir su efecto protector [1] |
-| [Sertralina](/articulos/sertralina-para-que-sirve), bupropión, valproato, ciclosporina | Pueden perder efecto [1] |
-| Clorpromazina | Baja peligrosa de la temperatura [1] |
-| Alcohol | Se potencian los efectos [1] |
+| Metotrexato y otros medicamentos para el cáncer | Más daño a la sangre  |
+| Aspirina para prevenir infartos | La dipirona puede reducir su efecto protector  |
+| [Sertralina](/articulos/sertralina-para-que-sirve), bupropión, valproato, ciclosporina | Pueden perder efecto  |
+| Clorpromazina | Baja peligrosa de la temperatura  |
+| Alcohol | Se potencian los efectos  |
 
 | Medicamento | Efecto | Qué hacer |
 | --- | --- | --- |
-| Metotrexato y otros antineoplásicos | Más toxicidad sanguínea | Evitar, sobre todo en mayores [1] |
-| Clorpromazina | Hipotermia grave | Evitar la combinación [1] |
-| Ácido acetilsalicílico como antiagregante | Menos efecto antiplaquetario | Valorar si el paciente lo usa como prevención [1] |
-| Bupropión, efavirenz, metadona, valproato, ciclosporina, tacrolimus, sertralina | Bajan sus concentraciones | Vigilar la eficacia [1] |
-| Alcohol | Potenciación mutua | Evitar [1] |
+| Metotrexato y otros antineoplásicos | Más toxicidad sanguínea | Evitar, sobre todo en mayores  |
+| Clorpromazina | Hipotermia grave | Evitar la combinación  |
+| Ácido acetilsalicílico como antiagregante | Menos efecto antiplaquetario | Valorar si el paciente lo usa como prevención  |
+| Bupropión, efavirenz, metadona, valproato, ciclosporina, tacrolimus, sertralina | Bajan sus concentraciones | Vigilar la eficacia  |
+| Alcohol | Potenciación mutua | Evitar  |
 
 ## Quién no debe tomarlo
 
-No la tomes si [1]:
+No la tomes si:
 
 - Tuviste agranulocitosis o alguna reacción a la dipirona u otras pirazolonas.
 - Tienes problemas de la médula ósea o estás en quimioterapia.
@@ -86,7 +86,7 @@ No la tomes si [1]:
 - Tienes porfiria o déficit de glucosa-6-fosfato deshidrogenasa.
 - Estás en el tercer trimestre del embarazo.
 
-Está contraindicado en [1]:
+Está contraindicado en:
 
 - Agranulocitosis previa por metamizol u otras pirazolonas o pirazolidinas.
 - Alteraciones de la médula ósea (por ejemplo, durante o después de quimioterapia) o enfermedades hematopoyéticas.
@@ -95,19 +95,19 @@ Está contraindicado en [1]:
 - Porfiria hepática intermitente aguda y déficit de glucosa-6-fosfato deshidrogenasa.
 - Tercer trimestre del embarazo y antecedente de reacción cutánea grave.
 
-Advertencias: la agranulocitosis es idiosincrática, no depende de la dosis y puede ser mortal; puede causar hipotensión grave, más probable con hipovolemia, deshidratación o fiebre alta; y se han notificado casos de lesión hepática, incluida hepatitis aguda [1].
+Advertencias: la agranulocitosis es idiosincrática, no depende de la dosis y puede ser mortal; puede causar hipotensión grave, más probable con hipovolemia, deshidratación o fiebre alta; y se han notificado casos de lesión hepática, incluida hepatitis aguda.
 
 ## Embarazo, lactancia y niños
 
-En el primer y segundo trimestre no se recomienda; solo se acepta una dosis única cuando no hay otra opción. En el tercer trimestre está contraindicada. En la lactancia se evita el uso repetido; tras una dosis única, se recomienda desechar la leche durante 48 horas [1].
+En el primer y segundo trimestre no se recomienda; solo se acepta una dosis única cuando no hay otra opción. En el tercer trimestre está contraindicada. En la lactancia se evita el uso repetido; tras una dosis única, se recomienda desechar la leche durante 48 horas.
 
-- Primer y segundo trimestre: en general no se recomienda; solo dosis únicas cuando no hay otra opción [1].
-- Tercer trimestre: contraindicado por fetotoxicidad (insuficiencia renal y constricción del ductus arterioso) [1].
-- Lactancia: sus productos de degradación pasan a la leche en cantidades considerables; evitar el uso repetido y, tras una dosis única, desechar la leche durante 48 horas [1].
+- Primer y segundo trimestre: en general no se recomienda; solo dosis únicas cuando no hay otra opción.
+- Tercer trimestre: contraindicado por fetotoxicidad (insuficiencia renal y constricción del ductus arterioso).
+- Lactancia: sus productos de degradación pasan a la leche en cantidades considerables; evitar el uso repetido y, tras una dosis única, desechar la leche durante 48 horas.
 
 ## La señal de alarma que debes conocer
 
-La agranulocitosis puede aparecer con cualquier dosis y en cualquier momento, aunque la hayas tomado antes sin problema. Suspende la dipirona y consulta el mismo día si tienes [1]:
+La agranulocitosis puede aparecer con cualquier dosis y en cualquier momento, aunque la hayas tomado antes sin problema. Suspende la dipirona y consulta el mismo día si tienes:
 
 - Fiebre o escalofríos.
 - Dolor de garganta.
@@ -117,24 +117,24 @@ Si alguna vez tuviste agranulocitosis con metamizol, no debes volver a tomarlo.
 
 ## Hioscina con dipirona
 
-En Colombia hay productos que combinan la dipirona con butilescopolamina, también llamada hioscina, como la Buscapina Compositum [2]. La hioscina relaja el músculo del intestino y la dipirona calma el dolor, por eso la combinación se usa en cólicos. Suma los riesgos de ambos: la agranulocitosis y la presión baja de la dipirona, y la boca seca, las palpitaciones, la dificultad para orinar y el estreñimiento de la hioscina. No es intercambiable con la [Buscapina](/articulos/buscapina-para-que-sirve) sola, y no se toma junto con otra dipirona.
+En Colombia hay productos que combinan la dipirona con butilescopolamina, también llamada hioscina, como la Buscapina Compositum. La hioscina relaja el músculo del intestino y la dipirona calma el dolor, por eso la combinación se usa en cólicos. Suma los riesgos de ambos: la agranulocitosis y la presión baja de la dipirona, y la boca seca, las palpitaciones, la dificultad para orinar y el estreñimiento de la hioscina. No es intercambiable con la [Buscapina](/articulos/buscapina-para-que-sirve) sola, y no se toma junto con otra dipirona.
 
 ## Otras combinaciones con dipirona
 
-Además de la combinación con hioscina, en Colombia hay productos que combinan la dipirona con otros principios activos, en tabletas y en solución oral [2]. Antes de tomar uno, revisa la caja: si ya tomas dipirona sola, no sumes otro producto que también la contenga.
+Además de la combinación con hioscina, en Colombia hay productos que combinan la dipirona con otros principios activos, en tabletas y en solución oral. Antes de tomar uno, revisa la caja: si ya tomas dipirona sola, no sumes otro producto que también la contenga.
 
 ## Dipirona en Colombia
 
-El Código Único de Medicamentos del INVIMA registra 29 registros sanitarios vigentes con dipirona o metamizol, la mayoría en solución inyectable y el resto en tabletas [2].
+El Código Único de Medicamentos del INVIMA registra 29 registros sanitarios vigentes con dipirona o metamizol, la mayoría en solución inyectable y el resto en tabletas.
 
 ## Evidencia y situación en Colombia
 
-La ficha técnica respalda su uso a corto plazo en el dolor agudo moderado o intenso y en la fiebre refractaria, con un efecto espasmolítico que lo distingue de los AINE [1].
+La ficha técnica respalda su uso a corto plazo en el dolor agudo moderado o intenso y en la fiebre refractaria, con un efecto espasmolítico que lo distingue de los AINE.
 
-La seguridad es el eje de la decisión: la agranulocitosis no depende de la dosis, por lo que no existe una dosis «segura» que la evite. La vigilancia de los síntomas de alarma es la medida que protege al paciente [1].
+La seguridad es el eje de la decisión: la agranulocitosis no depende de la dosis, por lo que no existe una dosis «segura» que la evite. La vigilancia de los síntomas de alarma es la medida que protege al paciente.
 
-- Colombia: el CUM del INVIMA registra 29 registros sanitarios vigentes con dipirona o metamizol (código ATC N02BB02), en sales sódicas y magnésicas; la mayoría son soluciones inyectables y el resto tabletas. Consulta del 16-nov-2026 [2].
-- España: autorizado como Nolotil y genéricos, con advertencias reforzadas sobre agranulocitosis en la ficha técnica y el prospecto [1].
+- Colombia: el CUM del INVIMA registra 29 registros sanitarios vigentes con dipirona o metamizol (código ATC N02BB02), en sales sódicas y magnésicas; la mayoría son soluciones inyectables y el resto tabletas. Consulta del 16-nov-2026.
+- España: autorizado como Nolotil y genéricos, con advertencias reforzadas sobre agranulocitosis en la ficha técnica y el prospecto.
 
 ## Errores frecuentes
 
@@ -174,15 +174,15 @@ Pocos días y solo con indicación médica. Mientras la tomes, vigila la fiebre,
 
 ### ¿Se puede dar dipirona a los niños?
 
-Solo si el médico la indica y calcula la dosis por el peso. Las presentaciones para adultos, como las cápsulas de 575 mg, no se recomiendan en menores de 15 años [1].
+Solo si el médico la indica y calcula la dosis por el peso. Las presentaciones para adultos, como las cápsulas de 575 mg, no se recomiendan en menores de 15 años.
 
 ### ¿Se puede usar Dipirona (metamizol) en el embarazo?
 
-- Primer y segundo trimestre: en general no se recomienda; solo dosis únicas cuando no hay otra opción [1]. - Tercer trimestre: contraindicado por fetotoxicidad (insuficiencia renal y constricción del ductus arterioso) [1]. - Lactancia: sus productos de degradación pasan a la leche en cantidades considerables; evitar el uso repetido y, tras una dosis única, desechar la leche durante 48 horas [1].
+- Primer y segundo trimestre: en general no se recomienda; solo dosis únicas cuando no hay otra opción. - Tercer trimestre: contraindicado por fetotoxicidad (insuficiencia renal y constricción del ductus arterioso). - Lactancia: sus productos de degradación pasan a la leche en cantidades considerables; evitar el uso repetido y, tras una dosis única, desechar la leche durante 48 horas.
 
 ### ¿Qué efectos secundarios de Dipirona (metamizol) son graves?
 
-La reacción adversa frecuente es la hipotensión [1]. - Graves: agranulocitosis (con casos mortales), trombocitopenia, anemia aplásica y pancitopenia [1]. - Shock anafiláctico, síndrome de Stevens-Johnson, necrólisis epidérmica tóxica y DRESS [1]. - Insuficiencia renal aguda, nefritis intersticial, hemorragia digestiva y lesión hepática inducida por fármacos [1].
+La reacción adversa frecuente es la hipotensión. - Graves: agranulocitosis (con casos mortales), trombocitopenia, anemia aplásica y pancitopenia. - Shock anafiláctico, síndrome de Stevens-Johnson, necrólisis epidérmica tóxica y DRESS. - Insuficiencia renal aguda, nefritis intersticial, hemorragia digestiva y lesión hepática inducida por fármacos.
 
 ## Artículos relacionados
 

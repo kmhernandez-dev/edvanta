@@ -15,7 +15,7 @@ Pertenece al grupo farmacológico de Penicilina con inhibidor de betalactamasas.
 
 ## ¿Para qué sirve la amoxicilina con ácido clavulánico?
 
-Según su ficha técnica, está indicada en adultos y niños para [1]:
+Según su ficha técnica, está indicada en adultos y niños para:
 
 - Sinusitis bacteriana aguda y otitis media aguda.
 - Exacerbación aguda de la bronquitis crónica y neumonía adquirida en la comunidad.
@@ -25,90 +25,90 @@ Según su ficha técnica, está indicada en adultos y niños para [1]:
 
 ## Cómo funciona
 
-La amoxicilina inhibe una o más proteínas de unión a la penicilina de la vía de síntesis del peptidoglicano, componente estructural de la pared bacteriana [1].
+La amoxicilina inhibe una o más proteínas de unión a la penicilina de la vía de síntesis del peptidoglicano, componente estructural de la pared bacteriana.
 
-El ácido clavulánico protege a la amoxicilina de las betalactamasas que puede inhibir. No sirve cuando la resistencia se debe a otros mecanismos distintos de esas betalactamasas [1].
+El ácido clavulánico protege a la amoxicilina de las betalactamasas que puede inhibir. No sirve cuando la resistencia se debe a otros mecanismos distintos de esas betalactamasas.
 
 ## Cuánto tarda en hacer efecto
 
 | Parámetro | Amoxicilina | Ácido clavulánico |
 | --- | --- | --- |
-| Biodisponibilidad oral | Cerca del 70 % [1] | Cerca del 70 % [1] |
-| Tmáx | Unas 1,5 horas [1] | Unas 1,5 horas [1] |
-| Cmáx (500/125 mg) | 7,19 µg/ml [1] | 2,40 µg/ml [1] |
-| Semivida | 1,15 a 1,19 horas [1] | — |
+| Biodisponibilidad oral | Cerca del 70 %  | Cerca del 70 %  |
+| Tmáx | Unas 1,5 horas  | Unas 1,5 horas  |
+| Cmáx (500/125 mg) | 7,19 µg/ml  | 2,40 µg/ml  |
+| Semivida | 1,15 a 1,19 horas  | — |
 
-La absorción es óptima cuando se toma al principio de las comidas [1].
+La absorción es óptima cuando se toma al principio de las comidas.
 
 ## Cómo se toma
 
-La dosis y la presentación las elige el médico según la infección, la edad, el peso y la función renal. Como referencia, en adultos y niños de 40 kg o más la ficha técnica describe [1]:
+La dosis y la presentación las elige el médico según la infección, la edad, el peso y la función renal. Como referencia, en adultos y niños de 40 kg o más la ficha técnica describe:
 
 | Presentación | Dosis habitual |
 |---|---|
 | 500 mg/125 mg | Un comprimido tres veces al día |
 | 875 mg/125 mg | Un comprimido dos veces al día; tres veces al día en algunas infecciones (otitis, sinusitis, vías respiratorias bajas y urinarias) |
 
-- Tómala **al comienzo de una comida**: así se absorbe mejor [1].
-- El tratamiento no debería pasar de 14 días sin una revisión médica [1].
+- Tómala **al comienzo de una comida**: así se absorbe mejor.
+- El tratamiento no debería pasar de 14 días sin una revisión médica.
 - En niños se usa la suspensión, con la dosis calculada por peso.
-- Con dosis altas, bebe suficiente líquido [1].
+- Con dosis altas, bebe suficiente líquido.
 
 ## Efectos secundarios
 
-- Frecuentes: diarrea, náuseas, vómito y candidiasis de piel y mucosas [1].
+- Frecuentes: diarrea, náuseas, vómito y candidiasis de piel y mucosas.
 - Reacciones alérgicas, desde ronchas hasta reacciones graves.
-- Alteraciones del hígado, incluida la ictericia, casi siempre en personas con enfermedades graves o que toman otros medicamentos que afectan el hígado [1].
-- Colitis asociada a antibióticos, que puede ir de leve a grave: si aparece diarrea intensa o con sangre, se suspende y se consulta [1].
+- Alteraciones del hígado, incluida la ictericia, casi siempre en personas con enfermedades graves o que toman otros medicamentos que afectan el hígado.
+- Colitis asociada a antibióticos, que puede ir de leve a grave: si aparece diarrea intensa o con sangre, se suspende y se consulta.
 
-Las más notificadas son diarrea, náuseas y vómito; también es frecuente la candidiasis mucocutánea. Son posibles las reacciones alérgicas, la hepatitis colestásica y la colitis asociada a antibióticos [1].
+Las más notificadas son diarrea, náuseas y vómito; también es frecuente la candidiasis mucocutánea. Son posibles las reacciones alérgicas, la hepatitis colestásica y la colitis asociada a antibióticos.
 
 ## Interacciones
 
 | Medicamento | Qué pasa |
 |---|---|
-| Warfarina y otros anticoagulantes orales | Puede requerir ajustar la dosis del anticoagulante [1] |
-| Alopurinol | Más probabilidad de reacciones alérgicas en la piel [1] |
-| Metotrexato | Las penicilinas pueden reducir su eliminación y aumentar su toxicidad [1] |
-| Micofenolato de mofetilo | Su metabolito activo puede bajar cerca de un 50 % [1] |
+| Warfarina y otros anticoagulantes orales | Puede requerir ajustar la dosis del anticoagulante  |
+| Alopurinol | Más probabilidad de reacciones alérgicas en la piel  |
+| Metotrexato | Las penicilinas pueden reducir su eliminación y aumentar su toxicidad  |
+| Micofenolato de mofetilo | Su metabolito activo puede bajar cerca de un 50 %  |
 
 | Fármaco | Efecto | Manejo |
 | --- | --- | --- |
-| Anticoagulantes orales | Puede alterar el INR | Ajustar la dosis si hace falta [1] |
-| Alopurinol | Más reacciones alérgicas cutáneas | Vigilar [1] |
-| Metotrexato | Menor excreción y más toxicidad | Vigilar [1] |
-| Micofenolato de mofetilo | Ácido micofenólico −50 % aproximadamente | Vigilar la respuesta [1] |
+| Anticoagulantes orales | Puede alterar el INR | Ajustar la dosis si hace falta  |
+| Alopurinol | Más reacciones alérgicas cutáneas | Vigilar  |
+| Metotrexato | Menor excreción y más toxicidad | Vigilar  |
+| Micofenolato de mofetilo | Ácido micofenólico −50 % aproximadamente | Vigilar la respuesta  |
 
 ## Quién no debe tomarlo
 
-- Alergia a la amoxicilina, al ácido clavulánico o a cualquier penicilina [1].
-- Antecedente de reacción alérgica grave e inmediata (como anafilaxia) a otro betalactámico: cefalosporinas, carbapenémicos o monobactámicos [1].
-- Antecedente de ictericia o daño hepático por amoxicilina con ácido clavulánico [1].
+- Alergia a la amoxicilina, al ácido clavulánico o a cualquier penicilina.
+- Antecedente de reacción alérgica grave e inmediata (como anafilaxia) a otro betalactámico: cefalosporinas, carbapenémicos o monobactámicos.
+- Antecedente de ictericia o daño hepático por amoxicilina con ácido clavulánico.
 
-- Contraindicada con hipersensibilidad a penicilinas, reacción inmediata grave a otro betalactámico, o ictericia o daño hepático previos por esta combinación [1].
-- Hepatotoxicidad: precaución en insuficiencia hepática y control de la función hepática; casi siempre en pacientes con enfermedades graves o fármacos hepatotóxicos [1].
-- Colitis asociada a antibióticos: suspender si aparece [1].
-- Cristaluria con dosis altas: mantener hidratación y diuresis [1].
+- Contraindicada con hipersensibilidad a penicilinas, reacción inmediata grave a otro betalactámico, o ictericia o daño hepático previos por esta combinación.
+- Hepatotoxicidad: precaución en insuficiencia hepática y control de la función hepática; casi siempre en pacientes con enfermedades graves o fármacos hepatotóxicos.
+- Colitis asociada a antibióticos: suspender si aparece.
+- Cristaluria con dosis altas: mantener hidratación y diuresis.
 
 ## Embarazo, lactancia y niños
 
-Los datos en humanos no muestran más malformaciones, pero un estudio en mujeres con rotura prematura de membranas encontró más riesgo de enterocolitis necrosante en los recién nacidos. Por eso la ficha técnica pide evitarla en el embarazo salvo que el médico la considere esencial. Ambos componentes pasan a la leche materna y pueden causar diarrea o candidiasis en el lactante [1].
+Los datos en humanos no muestran más malformaciones, pero un estudio en mujeres con rotura prematura de membranas encontró más riesgo de enterocolitis necrosante en los recién nacidos. Por eso la ficha técnica pide evitarla en el embarazo salvo que el médico la considere esencial. Ambos componentes pasan a la leche materna y pueden causar diarrea o candidiasis en el lactante.
 
-Debe evitarse en el embarazo salvo que el médico lo considere esencial, por un estudio que asoció su uso en rotura prematura de membranas con más enterocolitis necrosante neonatal. Ambos componentes pasan a la leche y pueden causar diarrea o candidiasis en el lactante [1].
+Debe evitarse en el embarazo salvo que el médico lo considere esencial, por un estudio que asoció su uso en rotura prematura de membranas con más enterocolitis necrosante neonatal. Ambos componentes pasan a la leche y pueden causar diarrea o candidiasis en el lactante.
 
 ## Por qué lleva ácido clavulánico
 
-La amoxicilina actúa sobre unas enzimas de la bacteria (las proteínas de unión a la penicilina) que construyen su pared celular. Algunas bacterias producen betalactamasas, enzimas que destruyen la amoxicilina. El ácido clavulánico bloquea esas enzimas y así la amoxicilina conserva su efecto [1].
+La amoxicilina actúa sobre unas enzimas de la bacteria (las proteínas de unión a la penicilina) que construyen su pared celular. Algunas bacterias producen betalactamasas, enzimas que destruyen la amoxicilina. El ácido clavulánico bloquea esas enzimas y así la amoxicilina conserva su efecto.
 
 ## En Colombia
 
-El Código Único de Medicamentos del INVIMA registra 30 registros sanitarios vigentes con ácido clavulánico, en tabletas recubiertas y polvo para suspensión oral [2]. Hay presentaciones con distintas proporciones de amoxicilina y ácido clavulánico, que no son intercambiables entre sí sin indicación médica.
+El Código Único de Medicamentos del INVIMA registra 30 registros sanitarios vigentes con ácido clavulánico, en tabletas recubiertas y polvo para suspensión oral. Hay presentaciones con distintas proporciones de amoxicilina y ácido clavulánico, que no son intercambiables entre sí sin indicación médica.
 
 ## Evidencia y situación en Colombia
 
-El valor del clavulánico es inhibir betalactamasas: frente a bacterias cuya resistencia se debe a otros mecanismos, la combinación no aporta [1]. Por eso la ficha técnica pide tener en cuenta las recomendaciones oficiales de uso de antibacterianos y la sensibilidad esperada [1].
+El valor del clavulánico es inhibir betalactamasas: frente a bacterias cuya resistencia se debe a otros mecanismos, la combinación no aporta. Por eso la ficha técnica pide tener en cuenta las recomendaciones oficiales de uso de antibacterianos y la sensibilidad esperada.
 
-Colombia: 30 registros sanitarios vigentes con ácido clavulánico, en tabletas recubiertas y polvo para suspensión, con varias proporciones de amoxicilina y clavulánico [5]. En Estados Unidos se comercializa como Augmentin [2].
+Colombia: 30 registros sanitarios vigentes con ácido clavulánico, en tabletas recubiertas y polvo para suspensión, con varias proporciones de amoxicilina y clavulánico. En Estados Unidos se comercializa como Augmentin.
 
 ## Errores frecuentes
 
@@ -148,11 +148,11 @@ La ficha técnica no describe una interacción específica con el alcohol, pero 
 
 ### ¿Se puede usar Amoxicilina con ácido clavulánico en el embarazo?
 
-Debe evitarse en el embarazo salvo que el médico lo considere esencial, por un estudio que asoció su uso en rotura prematura de membranas con más enterocolitis necrosante neonatal. Ambos componentes pasan a la leche y pueden causar diarrea o candidiasis en el lactante [1].
+Debe evitarse en el embarazo salvo que el médico lo considere esencial, por un estudio que asoció su uso en rotura prematura de membranas con más enterocolitis necrosante neonatal. Ambos componentes pasan a la leche y pueden causar diarrea o candidiasis en el lactante.
 
 ### ¿Qué efectos secundarios de Amoxicilina con ácido clavulánico son graves?
 
-Las más notificadas son diarrea, náuseas y vómito; también es frecuente la candidiasis mucocutánea. Son posibles las reacciones alérgicas, la hepatitis colestásica y la colitis asociada a antibióticos [1].
+Las más notificadas son diarrea, náuseas y vómito; también es frecuente la candidiasis mucocutánea. Son posibles las reacciones alérgicas, la hepatitis colestásica y la colitis asociada a antibióticos.
 
 ## Artículos relacionados
 
