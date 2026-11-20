@@ -6,13 +6,85 @@ El diclofenaco es un antiinflamatorio no esteroideo (AINE) que sirve para alivia
 > - No lo uses si se sospecha dengue, si tienes úlcera, enfermedad renal o del corazón sin consultar.
 > - Evita las inyecciones sin indicación médica.
 
-## Para qué sirve
+## ¿Qué es el diclofenaco?
+
+El diclofenaco es un AINE con efecto antiinflamatorio, analgésico y antipirético, indicado en enfermedades reumáticas, gota aguda, dismenorrea e inflamación postraumática. En Colombia existe en tabletas, cápsulas de liberación prolongada, solución inyectable y gel. Por vía oral, el metaanálisis CNT lo sitúa con los coxibs en riesgo de eventos vasculares mayores, y la ficha técnica lo contraindica en cardiopatía isquémica, insuficiencia cardiaca y enfermedad arterial periférica o cerebrovascular. La atención farmacéutica se centra en el riesgo cardiovascular, digestivo y renal, en el uso innecesario de inyecciones y en la duplicidad con otros AINE.
+
+Pertenece al grupo farmacológico de AINE.
+
+## ¿Para qué sirve el diclofenaco?
 
 - Dolor y desinflamación por golpes, esguinces y tendinitis.
 - Dolor de espalda y cuello.
 - Dolor por artrosis y artritis.
 - Dolor menstrual.
 - Dolor después de procedimientos, por indicación médica.
+
+## Cómo funciona
+
+Es un compuesto no esteroideo con marcadas propiedades antiinflamatorias, analgésicas y antipiréticas. La inhibición de la biosíntesis de prostaglandinas se considera clave en su mecanismo [1].
+
+También inhibe de forma temporal la agregación plaquetaria [1]. En el metaanálisis CNT, el diclofenaco aumentó los eventos coronarios mayores en un grado similar al de los coxibs [3].
+
+## Cuánto tarda en hacer efecto
+
+| Parámetro | Valor |
+| --- | --- |
+| Absorción | Completa; cerca de la mitad sufre efecto de primer paso hepático [1] |
+| Concentración máxima | A las 2 horas de un comprimido de 50 mg [1] |
+| Unión a proteínas | 99,7 % [1] |
+| Metabolismo | Glucuronidación e hidroxilación; interviene el CYP2C9 [1] |
+| Semivida | 1 a 2 horas; metabolitos de 1 a 3 horas [1] |
+| Eliminación | Cerca del 60 % en orina como conjugados y metabolitos; el resto por bilis [1] |
+
+## Efectos secundarios
+
+Ardor, dolor de estómago, náuseas, diarrea, mareo y dolor de cabeza. Suspende y consulta si tienes heces negras, vómito con sangre, hinchazón, dolor en el pecho, falta de aire o ronchas.
+
+Frecuentes: cefalea, mareo, vértigo, náuseas, vómito, diarrea, dispepsia, dolor abdominal, flatulencia, menos apetito, aumento de transaminasas y erupción [1].
+
+- Graves: infarto de miocardio, insuficiencia cardiaca, accidente cerebrovascular, hemorragia y perforación digestiva, hepatitis fulminante, agranulocitosis, anafilaxia, síndrome de Stevens-Johnson y fallo renal agudo [1].
+- En el metaanálisis CNT, las complicaciones digestivas altas aumentaron con el diclofenaco (razón de tasas 1,89) [3].
+
+## Interacciones
+
+Las mismas de otros AINE: anticoagulantes, antiagregantes, otros antiinflamatorios, corticoides, antidepresivos como la sertralina (más sangrado), y medicamentos para la presión como el [losartán](/articulos/losartan-para-que-sirve) o el [enalapril](/articulos/enalapril-para-que-sirve) (menos efecto y más riesgo para el riñón). No combines dos antiinflamatorios.
+
+| Medicamento | Efecto | Qué hacer |
+| --- | --- | --- |
+| Anticoagulantes, antiagregantes, ISRS | Más riesgo de hemorragia | Evitar o vigilar estrechamente [1] |
+| Otros AINE, corticoides | Más efectos digestivos | No combinar AINE [1] |
+| Diuréticos, betabloqueadores, IECA | Menos efecto antihipertensivo y más nefrotoxicidad | Controlar presión y función renal [1] |
+| Litio, digoxina, metotrexato, fenitoína | Aumentan sus concentraciones o su toxicidad | Vigilar niveles [1] |
+| Ahorradores de potasio, ciclosporina, tacrolimus, trimetoprim | Hiperpotasemia | Controlar el potasio [1] |
+| Voriconazol (inhibidor del CYP2C9) | Aumenta mucho el diclofenaco | Reducir la dosis [1] |
+| Quinolonas | Casos aislados de convulsiones | Precaución [1] |
+
+## Quién no debe tomarlo
+
+- Personas con enfermedad del corazón (infarto, angina, insuficiencia cardiaca) o accidente cerebrovascular previo.
+- Hipertensión no controlada.
+- Úlcera o sangrado digestivo, o [gastritis](/articulos/gastritis-sintomas-causas-tratamiento) activa.
+- Enfermedad renal o hepática.
+- Sospecha de [dengue](/articulos/dengue-sintomas-de-alarma).
+- Embarazo, especialmente desde la semana 20.
+- Asma que empeora con antiinflamatorios.
+
+Está contraindicado en [1]:
+
+- Asma, urticaria o rinitis aguda desencadenadas por ácido acetilsalicílico u otros AINE.
+- Enfermedad de Crohn o colitis ulcerosa activas; úlcera, hemorragia o perforación digestiva activa o previa por AINE.
+- Insuficiencia hepática o renal grave y trastornos de la coagulación.
+- Insuficiencia cardiaca NYHA II-IV, cardiopatía isquémica, enfermedad arterial periférica o cerebrovascular.
+- Tercer trimestre del embarazo.
+
+Advertencias: hemorragia, úlcera o perforación digestiva en cualquier momento; aumento del riesgo trombótico arterial; retención de líquidos y edema; elevación de enzimas hepáticas; reacciones cutáneas graves muy raras; y exacerbación del asma [1].
+
+## Embarazo, lactancia y niños
+
+- Primer y segundo trimestre: solo si es estrictamente necesario, con la menor dosis y duración; desde la semana 20 puede causar oligohidramnios [1].
+- Tercer trimestre: contraindicado [1].
+- Lactancia: no se recomienda; pasa a la leche en pequeñas cantidades [1].
 
 ## Gel o tabletas
 
@@ -25,27 +97,34 @@ El diclofenaco es un antiinflamatorio no esteroideo (AINE) que sirve para alivia
 
 Con el gel: no lo apliques en heridas, no cubras la zona con vendajes apretados ni la expongas al sol, y no lo combines con calor local.
 
-## Quién no debe usar las tabletas sin consultar
-
-- Personas con enfermedad del corazón (infarto, angina, insuficiencia cardiaca) o accidente cerebrovascular previo.
-- Hipertensión no controlada.
-- Úlcera o sangrado digestivo, o [gastritis](/articulos/gastritis-sintomas-causas-tratamiento) activa.
-- Enfermedad renal o hepática.
-- Sospecha de [dengue](/articulos/dengue-sintomas-de-alarma).
-- Embarazo, especialmente desde la semana 20.
-- Asma que empeora con antiinflamatorios.
-
-## Interacciones
-
-Las mismas de otros AINE: anticoagulantes, antiagregantes, otros antiinflamatorios, corticoides, antidepresivos como la sertralina (más sangrado), y medicamentos para la presión como el [losartán](/articulos/losartan-para-que-sirve) o el [enalapril](/articulos/enalapril-para-que-sirve) (menos efecto y más riesgo para el riñón). No combines dos antiinflamatorios.
-
 ## Las inyecciones de diclofenaco
 
 Son frecuentes en algunas droguerías, pero tienen los mismos riesgos de las tabletas y, además, riesgo de reacciones alérgicas, abscesos y lesiones en el sitio de la inyección. Solo deben aplicarse por indicación médica y por personal capacitado.
 
-## Efectos secundarios
+## Evidencia y situación en Colombia
 
-Ardor, dolor de estómago, náuseas, diarrea, mareo y dolor de cabeza. Suspende y consulta si tienes heces negras, vómito con sangre, hinchazón, dolor en el pecho, falta de aire o ronchas.
+En el metaanálisis CNT, el diclofenaco aumentó los eventos vasculares mayores (razón de tasas 1,41) y los coronarios mayores (1,70), en un grado similar al de los coxibs [3].
+
+En el programa MEDAL, con 34.701 pacientes, diclofenaco 150 mg y etoricoxib tuvieron tasas similares de eventos trombóticos; el diclofenaco produjo más eventos digestivos altos [4].
+
+La conclusión práctica: el diclofenaco oral no es una opción «suave» para el corazón. En Colombia también está registrado en gel tópico, una alternativa a valorar en el dolor localizado [2].
+
+- Colombia: el CUM del INVIMA registra 82 registros sanitarios vigentes que contienen diclofenaco (código ATC M01AB05). Con ese código predominan las soluciones inyectables, seguidas de gel tópico, tabletas y cápsulas de liberación prolongada. Consulta del 16-nov-2026 [2].
+- España: autorizado en comprimidos gastrorresistentes de 50 mg para las indicaciones descritas [1].
+
+## Errores frecuentes
+
+- **Automedicarse o repetir la dosis antes de tiempo** para buscar un efecto más rápido. Más dosis no significa más beneficio y sí puede significar más riesgo.
+- **Suspenderlo sin consultar** cuando la indicación exige completar un tiempo o un tratamiento. La duración la define el profesional.
+- **No contar los otros productos que toma**: antigripales, suplementos, plantas medicinales y medicamentos de venta libre también interactúan.
+- **Confundir alivio con cura**: si el síntoma mejora, no necesariamente desapareció la causa. Si el problema vuelve o empeora, hay que evaluarlo.
+- **No revisar la técnica de uso** cuando se trata de un inhalador, una crema, gotas o un dispositivo: una técnica incorrecta hace que el medicamento no llegue donde debe.
+
+## Cuándo consultar
+
+Consulta si el síntoma no mejora en el plazo esperado, si empeora rápido o si aparece un signo de alarma: dificultad para respirar, dolor en el pecho, desmayo, sangrado, hinchazón de cara o garganta, confusión, fiebre alta persistente o reducción de la orina.
+
+Si estás embarazada, en lactancia, tienes enfermedad renal o hepática, tomas anticoagulantes o tienes varias enfermedades crónicas, consulta antes de empezar cualquier medicamento.
 
 ## Para profesionales
 
@@ -65,7 +144,38 @@ Sin indicación médica, solo unos pocos días. Si el dolor persiste, consulta.
 
 En artrosis de manos o rodillas, el médico puede indicarlo de forma regular. Usa la cantidad indicada y no lo apliques en zonas extensas.
 
+### ¿Cuánto tarda en hacer efecto Diclofenaco?
+
+A las 2 horas de un comprimido de 50 mg [1] Su efecto se mantiene mientras el medicamento permanece en el cuerpo; la semivida es de 1 a 2 horas; metabolitos de 1 a 3 horas [1]. La respuesta completa depende de la indicación y del paciente, así que el seguimiento lo define el profesional.
+
+### ¿Se puede usar Diclofenaco en el embarazo?
+
+- Primer y segundo trimestre: solo si es estrictamente necesario, con la menor dosis y duración; desde la semana 20 puede causar oligohidramnios [1]. - Tercer trimestre: contraindicado [1]. - Lactancia: no se recomienda; pasa a la leche en pequeñas cantidades [1].
+
+### ¿Qué efectos secundarios de Diclofenaco son graves?
+
+Frecuentes: cefalea, mareo, vértigo, náuseas, vómito, diarrea, dispepsia, dolor abdominal, flatulencia, menos apetito, aumento de transaminasas y erupción [1]. - Graves: infarto de miocardio, insuficiencia cardiaca, accidente cerebrovascular, hemorragia y perforación digestiva, hepatitis fulminante, agranulocitosis, anafilaxia, síndrome de Stevens-Johnson y fallo renal agudo [1]. - En el metaanálisis CNT, las complicaciones digestivas altas aumentaron con el diclofenaco (razón de tasas 1,89) [3].
+
+## Artículos relacionados
+
+- [Monografía de Diclofenaco en el vademécum](/vademecum/diclofenaco)
+- [Diclofenaco: para qué sirve](/articulos/diclofenaco-para-que-sirve)
+- [Etoricoxib: farmacología](/vademecum/etoricoxib)
+- [Medicamentos para el dolor y la inflamación](/vademecum/medicamentos-para-el-dolor-y-la-inflamacion)
+- [Curso gratis: Farmacología del Sistema Nervioso Central](/curso-de-farmacologia-del-sistema-nervioso-central)
+
 ## Fuentes
 
 - MedlinePlus en español. [Diclofenaco](https://medlineplus.gov/spanish/druginfo/meds/a689002-es.html).
 - MedlinePlus en español. [Diclofenaco tópico](https://medlineplus.gov/spanish/druginfo/meds/a611002-es.html).
+
+- Agencia Española de Medicamentos y Productos Sanitarios (AEMPS). Ficha técnica de Diclofenaco Normon 50 mg comprimidos gastrorresistentes EFG [Internet]. Madrid: AEMPS; [citado 16 nov 2026]. Disponible en: https://cima.aemps.es/cima/dochtml/ft/62439/FT_62439.html
+- Instituto Nacional de Vigilancia de Medicamentos y Alimentos (INVIMA). Código Único de Medicamentos vigentes [conjunto de datos en Internet]. Bogotá: Datos Abiertos Colombia; [citado 16 nov 2026]. Disponible en: https://www.datos.gov.co/d/i7cb-raxc
+- Coxib and traditional NSAID Trialists' (CNT) Collaboration; Bhala N, Emberson J, Merhi A, Abramson S, Arber N, Baron JA, et al. Vascular and upper gastrointestinal effects of non-steroidal anti-inflammatory drugs: meta-analyses of individual participant data from randomised trials. Lancet. 2013;382(9894):769-79. doi:10.1016/S0140-6736(13)60900-9
+- Cannon CP, Curtis SP, FitzGerald GA, Krum H, Kaur A, Bolognese JA, et al. Cardiovascular outcomes with etoricoxib and diclofenac in patients with osteoarthritis and rheumatoid arthritis in the Multinational Etoricoxib and Diclofenac Arthritis Long-term (MEDAL) programme: a randomised comparison. Lancet. 2006;368(9549):1771-81. doi:10.1016/S0140-6736(06)69666-9
+
+## Sobre este artículo
+
+Este artículo es información educativa y no reemplaza la consulta con un profesional de la salud. No es una fórmula médica ni una recomendación de tratamiento para una persona concreta.
+
+**Autor:** Equipo editorial de Edvanta. **Revisión clínica:** pendiente de asignación. Si encuentras un error o una fuente desactualizada, escríbenos para corregirlo.

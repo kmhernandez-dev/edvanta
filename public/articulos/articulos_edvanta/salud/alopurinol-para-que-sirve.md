@@ -1,8 +1,18 @@
+## ¿Qué es el alopurinol?
+
+El alopurinol reduce la producción de ácido úrico: él y su metabolito principal, el oxipurinol, inhiben la xantina oxidasa. Su ficha técnica lo indica cuando la dieta y el control de la causa no bastan, en la gota, la litiasis y la nefropatía por ácido úrico, entre otras. Se inicia a dosis bajas, por ejemplo 100 mg al día, y se ajusta según el urato: 100 a 200 mg en alteraciones leves, 300 a 600 en moderadas y 700 a 900 en graves. Tres reglas lo definen: no se empieza hasta que el ataque agudo haya pasado; se suspende de inmediato ante cualquier erupción en la piel; y nunca se combina sin ajuste con azatioprina o mercaptopurina, por casos mortales.
+
+Pertenece al grupo farmacológico de Inhibidor de la xantina oxidasa (antigotoso).
+
 ## ¿Para qué sirve el alopurinol?
 
 El alopurinol reduce el ácido úrico en sangre y en orina. Inhibe la xantina oxidasa, la enzima que produce ácido úrico a partir de las purinas. Se usa para prevenir las crisis de gota, los cálculos de ácido úrico y las complicaciones de la hiperuricemia, y en situaciones de destrucción celular rápida, como algunos tratamientos oncológicos.
 
 No es un analgésico. No alivia la crisis de gota que ya empezó; su función es prevenir las siguientes. Por eso se toma todos los días, aunque no duela.
+
+## Cómo funciona
+
+Inhibe la xantina oxidasa, enzima que oxida la hipoxantina a xantina y la xantina a ácido úrico; así baja el ácido úrico en plasma y orina [1].
 
 ## Cómo se toma
 
@@ -13,12 +23,6 @@ No es un analgésico. No alivia la crisis de gota que ya empezó; su función es
 - No se debe iniciar durante una crisis aguda de gota sin indicación médica: el cambio de urato puede prolongarla. Si ya lo tomas, en general no se suspende durante una crisis.
 
 La dosis concreta la define el médico. No la cambies por tu cuenta.
-
-## ¿Cuánto tarda en funcionar?
-
-El ácido úrico tarda semanas en bajar de forma estable. Se controla con análisis de sangre y se ajusta la dosis hasta llegar a la meta, que en la mayoría de las personas con gota es inferior a 6 mg/dl (360 µmol/l). Si hay tofos o crisis frecuentes, la meta puede ser más baja.
-
-Durante los primeros meses de tratamiento pueden aparecer crisis, porque los depósitos de urato se movilizan. Por eso el médico suele indicar colchicina a dosis baja o un antiinflamatorio como prevención.
 
 ## Efectos secundarios
 
@@ -31,7 +35,9 @@ Durante los primeros meses de tratamiento pueden aparecer crisis, porque los dep
 
 El riesgo de reacciones graves es mayor en personas con insuficiencia renal, en quienes empiezan con dosis altas y en portadores del alelo **HLA-B*58:01**. Las guías recomiendan considerar la prueba de HLA-B*58:01 en poblaciones de alto riesgo (por ejemplo, personas de origen han chino, tailandés o coreano) antes de iniciar.
 
-## Interacciones importantes
+La ficha técnica no dispone de documentación clínica moderna para estimar frecuencias; la reacción que obliga a actuar es la erupción cutánea, que puede anunciar hipersensibilidad grave [1].
+
+## Interacciones
 
 - **Azatioprina y mercaptopurina:** el alopurinol aumenta sus niveles y puede causar toxicidad grave de la médula ósea. Se evita la combinación; si es imprescindible, se reduce la dosis a una cuarta parte y se vigila la sangre.
 - **Warfarina:** puede aumentar el efecto anticoagulante. Se controla el INR.
@@ -42,9 +48,35 @@ El riesgo de reacciones graves es mayor en personas con insuficiencia renal, en 
 
 Si tomas varios medicamentos, lleva la lista completa a la consulta y a la farmacia.
 
-## Embarazo y lactancia
+| Medicamento | Efecto | Qué hacer |
+| --- | --- | --- |
+| Azatioprina, 6-mercaptopurina | Niveles tóxicos y mielosupresión | Ajuste obligatorio o evitar [1] |
+| Amoxicilina, ampicilina | Más erupciones cutáneas | Vigilar [1] |
+
+## Quién no debe tomarlo
+
+Contraindicado en hipersensibilidad al alopurinol [1].
+
+## Embarazo, lactancia y niños
 
 No hay datos suficientes para asegurar su seguridad en el embarazo. Se usa solo cuando no hay una alternativa más segura y cuando la enfermedad lo justifica. Pasa a la leche materna, por lo que no se recomienda durante la lactancia.
+
+- Embarazo: solo si no hay alternativa más segura y la enfermedad es un riesgo mayor [1].
+
+## Evidencia y situación en Colombia
+
+Su ficha técnica respalda el inicio con dosis bajas y el ajuste guiado por el urato para reducir las reacciones adversas [1].
+
+- Colombia: 9 registros sanitarios vigentes con el código ATC M04AA01; consulta del 16-nov-2026 [2].
+- España: autorizado como Zyloric 100 mg y 300 mg comprimidos [1].
+
+## Errores frecuentes
+
+- **Automedicarse o repetir la dosis antes de tiempo** para buscar un efecto más rápido. Más dosis no significa más beneficio y sí puede significar más riesgo.
+- **Suspenderlo sin consultar** cuando la indicación exige completar un tiempo o un tratamiento. La duración la define el profesional.
+- **No contar los otros productos que toma**: antigripales, suplementos, plantas medicinales y medicamentos de venta libre también interactúan.
+- **Confundir alivio con cura**: si el síntoma mejora, no necesariamente desapareció la causa. Si el problema vuelve o empeora, hay que evaluarlo.
+- **No revisar la técnica de uso** cuando se trata de un inhalador, una crema, gotas o un dispositivo: una técnica incorrecta hace que el medicamento no llegue donde debe.
 
 ## Cuándo consultar
 
@@ -57,6 +89,10 @@ No hay datos suficientes para asegurar su seguridad en el embarazo. Se usa solo 
 - Si olvidas dosis con frecuencia.
 
 Este contenido es educativo y no reemplaza la consulta médica. No inicies, cambies ni suspendas el alopurinol sin indicación.
+
+## Para profesionales
+
+Si eres profesional de la salud, consulta la [monografía de Alopurinol](/vademecum/alopurinol) del vademécum de Edvanta, con farmacología, interacciones, evidencia y atención farmacéutica. También puedes revisar el [grupo terapéutico](/vademecum/medicamentos-para-el-dolor-y-la-inflamacion) y los cursos de farmacología clínica.
 
 ## Preguntas frecuentes
 
@@ -80,9 +116,38 @@ El alcohol, sobre todo la cerveza, sube el ácido úrico y puede favorecer crisi
 
 La ficha técnica recomienda tomarlo después de comer para reducir las molestias digestivas. Si tu médico indicó otra pauta, sigue esa indicación.
 
+### ¿Cuánto tarda en hacer efecto Alopurinol?
+
+Cerca de 1,5 horas [1] Su efecto se mantiene mientras el medicamento permanece en el cuerpo; la semivida es de 0,5 a 1,5 horas [1]. La respuesta completa depende de la indicación y del paciente, así que el seguimiento lo define el profesional.
+
+### ¿Se puede usar Alopurinol en el embarazo?
+
+- Embarazo: solo si no hay alternativa más segura y la enfermedad es un riesgo mayor [1].
+
+### ¿Qué efectos secundarios de Alopurinol son graves?
+
+La ficha técnica no dispone de documentación clínica moderna para estimar frecuencias; la reacción que obliga a actuar es la erupción cutánea, que puede anunciar hipersensibilidad grave [1].
+
+## Artículos relacionados
+
+- [Monografía de Alopurinol en el vademécum](/vademecum/alopurinol)
+- [Colchicina: farmacología](/vademecum/colchicina)
+- [Dieta para el ácido úrico](/articulos/dieta-para-el-acido-urico)
+- [Medicamentos para el dolor y la inflamación](/vademecum/medicamentos-para-el-dolor-y-la-inflamacion)
+
 ## Fuentes
 
 - Agencia Española de Medicamentos y Productos Sanitarios. Ficha técnica de Zyloric 100 mg comprimidos. [Ver fuente](https://cima.aemps.es/cima/dochtml/ft/43775/FT_43775.html)
 - American College of Rheumatology. 2020 Guideline for the Management of Gout. [Ver fuente](https://rheumatology.org/gout-guideline)
-- European League Against Rheumatism. 2016 EULAR recommendations for the management of gout. [Ver fuente](https://www.eular.org/recommendations_management_gout)
 - National Institute of Arthritis and Musculoskeletal and Skin Diseases. Gout. [Ver fuente](https://www.niams.nih.gov/health-topics/gout)
+
+- Agencia Española de Medicamentos y Productos Sanitarios (AEMPS). Ficha técnica de Zyloric 100 mg comprimidos [Internet]. Madrid: AEMPS; [citado 16 nov 2026]. Disponible en: https://cima.aemps.es/cima/dochtml/ft/43775/FT_43775.html
+- Instituto Nacional de Vigilancia de Medicamentos y Alimentos (INVIMA). Código Único de Medicamentos vigentes [conjunto de datos en Internet]. Bogotá: Datos Abiertos Colombia; [citado 16 nov 2026]. Disponible en: https://www.datos.gov.co/d/i7cb-raxc
+- Cipolle RJ, Strand LM, Morley PC. Pharmaceutical care practice: the patient-centered approach to medication management services. 3.ª ed. Nueva York: McGraw-Hill Medical; 2012.
+- Ramalho-de Oliveira D, Shoemaker SJ, Ekstrand M, Alves MR. Preventing and resolving drug therapy problems by understanding patients' medication experiences. J Am Pharm Assoc (2003). 2012;52(1):71-80. doi:10.1331/JAPhA.2012.10239
+
+## Sobre este artículo
+
+Este artículo es información educativa y no reemplaza la consulta con un profesional de la salud. No es una fórmula médica ni una recomendación de tratamiento para una persona concreta.
+
+**Autor:** Equipo editorial de Edvanta. **Revisión clínica:** pendiente de asignación. Si encuentras un error o una fuente desactualizada, escríbenos para corregirlo.

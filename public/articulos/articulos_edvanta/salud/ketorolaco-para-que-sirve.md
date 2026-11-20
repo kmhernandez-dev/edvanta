@@ -7,9 +7,31 @@ El ketorolaco es un antiinflamatorio no esteroideo (AINE) con un efecto analgés
 > - No se usa si has tenido úlcera, sangrado, enfermedad renal o asma.
 > - Está contraindicado en el embarazo, el parto y la lactancia.
 
-## Para qué sirve el ketorolaco
+## ¿Qué es el ketorolaco?
+
+El ketorolaco es un AINE con un efecto analgésico potente, indicado a corto plazo en el dolor leve o moderado posoperatorio. Su ficha técnica es de las más restrictivas del grupo: duración máxima de 7 días, dosis oral máxima de 40 mg al día y una larga lista de contraindicaciones por riesgo de sangrado digestivo, renal y hemorrágico. No debe combinarse con otro AINE ni con anticoagulantes a dosis plenas. La atención farmacéutica se centra en respetar la duración, la dosis y las contraindicaciones.
+
+Pertenece al grupo farmacológico de AINE (inhibidor de la ciclooxigenasa).
+
+## ¿Para qué sirve el ketorolaco?
 
 Según su ficha técnica, el ketorolaco en tabletas está indicado para el tratamiento a corto plazo del dolor leve o moderado después de una cirugía [1]. En Colombia también existe en solución inyectable, que se aplica en servicios de salud [2].
+
+## Cómo funciona
+
+Inhibe la actividad de la ciclooxigenasa y, por tanto, la síntesis de prostaglandinas [1].
+
+Inhibe la agregación plaquetaria y puede prolongar el tiempo de sangría; por eso está contraindicado como analgésico profiláctico antes o durante la cirugía [1].
+
+## Cuánto tarda en hacer efecto
+
+| Parámetro | Valor |
+| --- | --- |
+| Absorción | Rápida y completa por vía oral y parenteral [1] |
+| Concentración máxima | En promedio 44 minutos tras 10 mg orales [1] |
+| Unión a proteínas | Más del 99 % [1] |
+| Semivida | Unas 5 horas en adultos; 7 horas en personas mayores [1] |
+| Eliminación | Sobre todo en orina (91,4 %) y el resto en heces [1] |
 
 ## Cómo se toma
 
@@ -17,6 +39,36 @@ La dosis la define tu médico. Como referencia, la ficha técnica indica 10 mg c
 
 - En personas mayores se usan las dosis más bajas [1].
 - Si recibiste ketorolaco inyectado y sigues con tabletas, la suma no debe pasar de 90 mg al día (60 mg en personas mayores) [1].
+
+## Efectos secundarios
+
+Los más frecuentes son las molestias digestivas: indigestión, náuseas, dolor abdominal, diarrea o estreñimiento. También puede causar úlcera y sangrado del estómago [1].
+
+Busca atención de inmediato si tienes heces negras, vómito con sangre, orinas muy poco, se te hinchan las piernas, te falta el aire o aparecen ronchas o ampollas [1].
+
+Las más frecuentes son digestivas: dispepsia, náuseas, dolor abdominal, diarrea, estreñimiento, úlcera y hemorragia digestiva [1].
+
+- Graves: insuficiencia renal aguda, nefritis intersticial, insuficiencia cardiaca, infarto o ictus, broncoespasmo, hepatitis, anafilaxia, síndrome de Stevens-Johnson y convulsiones [1].
+
+## Interacciones
+
+| Medicamento | Qué puede pasar |
+|---|---|
+| Otros antiinflamatorios ([ibuprofeno](/articulos/ibuprofeno-para-que-sirve), [diclofenaco](/articulos/diclofenaco-para-que-sirve), [naproxeno](/articulos/naproxeno-para-que-sirve)) o aspirina | Úlcera y sangrado; combinación contraindicada [1] |
+| Anticoagulantes | Sangrado grave [1] |
+| Antidepresivos como la [sertralina](/articulos/sertralina-para-que-sirve) | Más sangrado digestivo [1] |
+| Medicamentos para la presión ([losartán](/articulos/losartan-para-que-sirve), [enalapril](/articulos/enalapril-para-que-sirve)) y diuréticos | Menos efecto y riesgo de daño renal [1] |
+| Litio | Sube el litio; combinación contraindicada [1] |
+
+| Medicamento | Efecto | Qué hacer |
+| --- | --- | --- |
+| Otros AINE, ácido acetilsalicílico | Más úlcera y hemorragia | Contraindicado [1] |
+| Anticoagulantes a dosis plenas, pentoxifilina | Sangrado grave | Contraindicado [1] |
+| Antiagregantes, ISRS, IRSN, corticoides | Más sangrado digestivo | Precaución [1] |
+| Probenecid | Sube los niveles de ketorolaco | Contraindicado [1] |
+| Litio | Sube el litio | Contraindicado [1] |
+| Metotrexato | Aumenta su toxicidad | Extremar precauciones [1] |
+| IECA, ARA-II, diuréticos, betabloqueadores | Menos efecto y riesgo de insuficiencia renal | Vigilar presión y función renal [1] |
 
 ## Quién no debe tomarlo
 
@@ -29,29 +81,50 @@ No lo tomes si [1]:
 - Tomas otro antiinflamatorio, aspirina, litio, probenecid o pentoxifilina.
 - Estás embarazada, en trabajo de parto o lactando.
 
-## Interacciones
+Está contraindicado en [1]:
 
-| Medicamento | Qué puede pasar |
-|---|---|
-| Otros antiinflamatorios ([ibuprofeno](/articulos/ibuprofeno-para-que-sirve), [diclofenaco](/articulos/diclofenaco-para-que-sirve), [naproxeno](/articulos/naproxeno-para-que-sirve)) o aspirina | Úlcera y sangrado; combinación contraindicada [1] |
-| Anticoagulantes | Sangrado grave [1] |
-| Antidepresivos como la [sertralina](/articulos/sertralina-para-que-sirve) | Más sangrado digestivo [1] |
-| Medicamentos para la presión ([losartán](/articulos/losartan-para-que-sirve), [enalapril](/articulos/enalapril-para-que-sirve)) y diuréticos | Menos efecto y riesgo de daño renal [1] |
-| Litio | Sube el litio; combinación contraindicada [1] |
+- Úlcera péptica activa o cualquier antecedente de úlcera, sangrado o perforación digestiva.
+- Hipersensibilidad a otros AINE, asma, pólipos nasales, angioedema o broncoespasmo.
+- Insuficiencia cardiaca grave, insuficiencia renal moderada o grave, hipovolemia o deshidratación.
+- Trastornos de la coagulación, hemorragia cerebral o cirugía con alto riesgo de sangrado.
+- Uso con otros AINE, ácido acetilsalicílico, anticoagulantes a dosis plenas, probenecid, litio o pentoxifilina.
+- Embarazo, parto y lactancia; uso profiláctico antes o durante la cirugía.
 
-## Efectos secundarios
+Advertencias: toxicidad digestiva grave en cualquier momento; aumento de urea y creatinina; retención de líquidos y edema; prolongación del tiempo de sangría; elevación de transaminasas; reacciones cutáneas graves muy raras; y mayor sensibilidad en personas mayores [1].
 
-Los más frecuentes son las molestias digestivas: indigestión, náuseas, dolor abdominal, diarrea o estreñimiento. También puede causar úlcera y sangrado del estómago [1].
-
-Busca atención de inmediato si tienes heces negras, vómito con sangre, orinas muy poco, se te hinchan las piernas, te falta el aire o aparecen ronchas o ampollas [1].
-
-## Embarazo y lactancia
+## Embarazo, lactancia y niños
 
 Está contraindicado en el embarazo, el parto y la lactancia. Puede afectar la fertilidad, por lo que no se recomienda si buscas un embarazo [1].
+
+- Contraindicado en el embarazo, el parto y la lactancia [1].
+- Puede afectar la fertilidad; no se recomienda en mujeres que buscan un embarazo [1].
 
 ## Ketorolaco en Colombia
 
 El Código Único de Medicamentos del INVIMA registra 8 registros sanitarios vigentes que contienen ketorolaco; predominan las soluciones inyectables [2].
+
+## Evidencia y situación en Colombia
+
+El ketorolaco es útil cuando se necesita un analgésico no opioide potente por pocos días tras una cirugía. Las restricciones de dosis y duración de su ficha técnica responden a su perfil de sangrado digestivo y daño renal [1].
+
+Fuera del posoperatorio a corto plazo, su relación beneficio-riesgo es desfavorable frente a otros analgésicos [1].
+
+- Colombia: el CUM del INVIMA registra 8 registros sanitarios vigentes que contienen ketorolaco; con el código ATC M01AB15 predominan las soluciones inyectables. Consulta del 16-nov-2026 [2].
+- España: autorizado en comprimidos de 10 mg para el dolor posoperatorio a corto plazo [1].
+
+## Errores frecuentes
+
+- **Automedicarse o repetir la dosis antes de tiempo** para buscar un efecto más rápido. Más dosis no significa más beneficio y sí puede significar más riesgo.
+- **Suspenderlo sin consultar** cuando la indicación exige completar un tiempo o un tratamiento. La duración la define el profesional.
+- **No contar los otros productos que toma**: antigripales, suplementos, plantas medicinales y medicamentos de venta libre también interactúan.
+- **Confundir alivio con cura**: si el síntoma mejora, no necesariamente desapareció la causa. Si el problema vuelve o empeora, hay que evaluarlo.
+- **No revisar la técnica de uso** cuando se trata de un inhalador, una crema, gotas o un dispositivo: una técnica incorrecta hace que el medicamento no llegue donde debe.
+
+## Cuándo consultar
+
+Consulta si el síntoma no mejora en el plazo esperado, si empeora rápido o si aparece un signo de alarma: dificultad para respirar, dolor en el pecho, desmayo, sangrado, hinchazón de cara o garganta, confusión, fiebre alta persistente o reducción de la orina.
+
+Si estás embarazada, en lactancia, tienes enfermedad renal o hepática, tomas anticoagulantes o tienes varias enfermedades crónicas, consulta antes de empezar cualquier medicamento.
 
 ## Para profesionales
 
@@ -79,7 +152,38 @@ Para el dolor después de una cirugía, aplicado por personal de salud. En Colom
 
 Sí. En Colombia hay registrada una tableta sublingual de ketorolaco, que se deja disolver debajo de la lengua [2]. Tiene las mismas precauciones que las demás presentaciones y el mismo límite de días.
 
+### ¿Cuánto tarda en hacer efecto Ketorolaco?
+
+En promedio 44 minutos tras 10 mg orales [1] Su efecto se mantiene mientras el medicamento permanece en el cuerpo; la semivida es de unas 5 horas en adultos; 7 horas en personas mayores [1]. La respuesta completa depende de la indicación y del paciente, así que el seguimiento lo define el profesional.
+
+### ¿Se puede usar Ketorolaco en el embarazo?
+
+- Contraindicado en el embarazo, el parto y la lactancia [1]. - Puede afectar la fertilidad; no se recomienda en mujeres que buscan un embarazo [1].
+
+### ¿Qué efectos secundarios de Ketorolaco son graves?
+
+Las más frecuentes son digestivas: dispepsia, náuseas, dolor abdominal, diarrea, estreñimiento, úlcera y hemorragia digestiva [1]. - Graves: insuficiencia renal aguda, nefritis intersticial, insuficiencia cardiaca, infarto o ictus, broncoespasmo, hepatitis, anafilaxia, síndrome de Stevens-Johnson y convulsiones [1].
+
+## Artículos relacionados
+
+- [Monografía de Ketorolaco en el vademécum](/vademecum/ketorolaco)
+- [Ketorolaco: para qué sirve](/articulos/ketorolaco-para-que-sirve)
+- [Ibuprofeno: para qué sirve](/articulos/ibuprofeno-para-que-sirve)
+- [Medicamentos para el dolor y la inflamación](/vademecum/medicamentos-para-el-dolor-y-la-inflamacion)
+- [Curso gratis: Farmacología del Sistema Nervioso Central](/curso-de-farmacologia-del-sistema-nervioso-central)
+
 ## Fuentes
 
 1. Agencia Española de Medicamentos y Productos Sanitarios (AEMPS). Ficha técnica de Ketorolaco trometamol Qualigen 10 mg comprimidos recubiertos con película EFG, consultada el 16-nov-2026. [Ver fuente](https://cima.aemps.es/cima/dochtml/ft/70105/FT_70105.html)
 2. INVIMA. Código Único de Medicamentos vigentes (datos.gov.co), consultado el 16-nov-2026. [Ver fuente](https://www.datos.gov.co/d/i7cb-raxc)
+
+- Agencia Española de Medicamentos y Productos Sanitarios (AEMPS). Ficha técnica de Ketorolaco trometamol Qualigen 10 mg comprimidos recubiertos con película EFG [Internet]. Madrid: AEMPS; [citado 16 nov 2026]. Disponible en: https://cima.aemps.es/cima/dochtml/ft/70105/FT_70105.html
+- Instituto Nacional de Vigilancia de Medicamentos y Alimentos (INVIMA). Código Único de Medicamentos vigentes [conjunto de datos en Internet]. Bogotá: Datos Abiertos Colombia; [citado 16 nov 2026]. Disponible en: https://www.datos.gov.co/d/i7cb-raxc
+- Cipolle RJ, Strand LM, Morley PC. Pharmaceutical care practice: the patient-centered approach to medication management services. 3.ª ed. Nueva York: McGraw-Hill Medical; 2012.
+- Ramalho-de Oliveira D, Shoemaker SJ, Ekstrand M, Alves MR. Preventing and resolving drug therapy problems by understanding patients' medication experiences. J Am Pharm Assoc (2003). 2012;52(1):71-80. doi:10.1331/JAPhA.2012.10239
+
+## Sobre este artículo
+
+Este artículo es información educativa y no reemplaza la consulta con un profesional de la salud. No es una fórmula médica ni una recomendación de tratamiento para una persona concreta.
+
+**Autor:** Equipo editorial de Edvanta. **Revisión clínica:** pendiente de asignación. Si encuentras un error o una fuente desactualizada, escríbenos para corregirlo.

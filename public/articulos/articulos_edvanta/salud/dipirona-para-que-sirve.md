@@ -7,7 +7,13 @@ La dipirona, también llamada metamizol, es un analgésico y antipirético que s
 > - Puede bajar la presión, sobre todo si estás deshidratado o con fiebre alta.
 > - No se usa en el tercer trimestre del embarazo.
 
-## Para qué sirve la dipirona
+## ¿Qué es la dipirona (metamizol)?
+
+La dipirona, también llamada metamizol, es una pirazolona analgésica, antipirética y espasmolítica. Se usa a corto plazo en el dolor agudo moderado o intenso (posoperatorio, postraumático, cólico o tumoral) y en la fiebre alta que no responde a otras medidas. Su riesgo más grave es la agranulocitosis, idiosincrática e independiente de la dosis, que puede ser mortal; también puede causar hipotensión y daño hepático. La atención farmacéutica se centra en educar sobre los síntomas de alarma, limitar la duración y revisar contraindicaciones.
+
+Pertenece al grupo farmacológico de Pirazolona analgésica no opioide.
+
+## ¿Para qué sirve la dipirona (metamizol)?
 
 Según la ficha técnica de referencia, el metamizol está indicado para [1]:
 
@@ -18,6 +24,22 @@ Según la ficha técnica de referencia, el metamizol está indicado para [1]:
 
 Además de calmar el dolor y bajar la fiebre, tiene un efecto relajante sobre los espasmos, por eso se usa en los cólicos [1].
 
+## Cómo funciona
+
+Tiene efectos analgésicos, antipiréticos y espasmolíticos. Su mecanismo no se comprende del todo; los datos sugieren que el metamizol y su metabolito principal, la 4-metilaminoantipirina, actúan de forma combinada central y periférica [1].
+
+A diferencia de los AINE clásicos, su acción espasmolítica lo hace útil en el dolor de tipo cólico [1].
+
+## Cuánto tarda en hacer efecto
+
+| Parámetro | Valor |
+| --- | --- |
+| Absorción | Se hidroliza en el jugo gástrico a 4-MAA, que se absorbe casi por completo [1] |
+| Metabolitos | 4-MAA (activo) y 4-aminoantipirina; además 4-formil y 4-acetilaminoantipirina [1] |
+| Unión a proteínas | 4-MAA 58 %; otros metabolitos 14 % a 48 % [1] |
+| Semivida | 4-MAA 2,7 horas; otros metabolitos 3,7 a 11,2 horas [1] |
+| Eliminación | Más del 90 % de la dosis en orina a los 7 días [1] |
+
 ## Cómo se toma
 
 La dosis la define tu médico y depende de la presentación (tabletas o inyección) y de la sal del producto. Como referencia, la ficha técnica de las cápsulas de 575 mg indica para adultos y mayores de 15 años (más de 53 kg) una cápsula cada 4 a 6 horas, sin pasar de 6 cápsulas al día [1].
@@ -26,25 +48,15 @@ La dosis la define tu médico y depende de la presentación (tabletas o inyecci�
 - En personas mayores y en quienes tienen enfermedad del riñón o del hígado, se usan dosis menores [1].
 - Las inyecciones solo debe aplicarlas personal de salud.
 
-## La señal de alarma que debes conocer
+## Efectos secundarios
 
-La agranulocitosis puede aparecer con cualquier dosis y en cualquier momento, aunque la hayas tomado antes sin problema. Suspende la dipirona y consulta el mismo día si tienes [1]:
+El efecto frecuente es la presión baja. Los graves, poco frecuentes, son la agranulocitosis, otras alteraciones de la sangre, reacciones alérgicas graves, reacciones graves de la piel, daño del riñón y del hígado [1].
 
-- Fiebre o escalofríos.
-- Dolor de garganta.
-- Llagas dolorosas en la boca, la nariz, la garganta o la zona genital o anal.
+La reacción adversa frecuente es la hipotensión [1].
 
-Si alguna vez tuviste agranulocitosis con metamizol, no debes volver a tomarlo.
-
-## Quién no debe tomarla
-
-No la tomes si [1]:
-
-- Tuviste agranulocitosis o alguna reacción a la dipirona u otras pirazolonas.
-- Tienes problemas de la médula ósea o estás en quimioterapia.
-- Te da asma, ronchas o hinchazón con aspirina, acetaminofén, ibuprofeno, naproxeno o diclofenaco.
-- Tienes porfiria o déficit de glucosa-6-fosfato deshidrogenasa.
-- Estás en el tercer trimestre del embarazo.
+- Graves: agranulocitosis (con casos mortales), trombocitopenia, anemia aplásica y pancitopenia [1].
+- Shock anafiláctico, síndrome de Stevens-Johnson, necrólisis epidérmica tóxica y DRESS [1].
+- Insuficiencia renal aguda, nefritis intersticial, hemorragia digestiva y lesión hepática inducida por fármacos [1].
 
 ## Interacciones
 
@@ -56,13 +68,52 @@ No la tomes si [1]:
 | Clorpromazina | Baja peligrosa de la temperatura [1] |
 | Alcohol | Se potencian los efectos [1] |
 
-## Efectos secundarios
+| Medicamento | Efecto | Qué hacer |
+| --- | --- | --- |
+| Metotrexato y otros antineoplásicos | Más toxicidad sanguínea | Evitar, sobre todo en mayores [1] |
+| Clorpromazina | Hipotermia grave | Evitar la combinación [1] |
+| Ácido acetilsalicílico como antiagregante | Menos efecto antiplaquetario | Valorar si el paciente lo usa como prevención [1] |
+| Bupropión, efavirenz, metadona, valproato, ciclosporina, tacrolimus, sertralina | Bajan sus concentraciones | Vigilar la eficacia [1] |
+| Alcohol | Potenciación mutua | Evitar [1] |
 
-El efecto frecuente es la presión baja. Los graves, poco frecuentes, son la agranulocitosis, otras alteraciones de la sangre, reacciones alérgicas graves, reacciones graves de la piel, daño del riñón y del hígado [1].
+## Quién no debe tomarlo
 
-## Embarazo y lactancia
+No la tomes si [1]:
+
+- Tuviste agranulocitosis o alguna reacción a la dipirona u otras pirazolonas.
+- Tienes problemas de la médula ósea o estás en quimioterapia.
+- Te da asma, ronchas o hinchazón con aspirina, acetaminofén, ibuprofeno, naproxeno o diclofenaco.
+- Tienes porfiria o déficit de glucosa-6-fosfato deshidrogenasa.
+- Estás en el tercer trimestre del embarazo.
+
+Está contraindicado en [1]:
+
+- Agranulocitosis previa por metamizol u otras pirazolonas o pirazolidinas.
+- Alteraciones de la médula ósea (por ejemplo, durante o después de quimioterapia) o enfermedades hematopoyéticas.
+- Hipersensibilidad o reacciones hematológicas previas a pirazolonas (propifenazona, fenazona, fenilbutazona).
+- Asma por analgésicos o intolerancia tipo urticaria-angioedema a salicilatos, paracetamol, diclofenaco, ibuprofeno o naproxeno.
+- Porfiria hepática intermitente aguda y déficit de glucosa-6-fosfato deshidrogenasa.
+- Tercer trimestre del embarazo y antecedente de reacción cutánea grave.
+
+Advertencias: la agranulocitosis es idiosincrática, no depende de la dosis y puede ser mortal; puede causar hipotensión grave, más probable con hipovolemia, deshidratación o fiebre alta; y se han notificado casos de lesión hepática, incluida hepatitis aguda [1].
+
+## Embarazo, lactancia y niños
 
 En el primer y segundo trimestre no se recomienda; solo se acepta una dosis única cuando no hay otra opción. En el tercer trimestre está contraindicada. En la lactancia se evita el uso repetido; tras una dosis única, se recomienda desechar la leche durante 48 horas [1].
+
+- Primer y segundo trimestre: en general no se recomienda; solo dosis únicas cuando no hay otra opción [1].
+- Tercer trimestre: contraindicado por fetotoxicidad (insuficiencia renal y constricción del ductus arterioso) [1].
+- Lactancia: sus productos de degradación pasan a la leche en cantidades considerables; evitar el uso repetido y, tras una dosis única, desechar la leche durante 48 horas [1].
+
+## La señal de alarma que debes conocer
+
+La agranulocitosis puede aparecer con cualquier dosis y en cualquier momento, aunque la hayas tomado antes sin problema. Suspende la dipirona y consulta el mismo día si tienes [1]:
+
+- Fiebre o escalofríos.
+- Dolor de garganta.
+- Llagas dolorosas en la boca, la nariz, la garganta o la zona genital o anal.
+
+Si alguna vez tuviste agranulocitosis con metamizol, no debes volver a tomarlo.
 
 ## Hioscina con dipirona
 
@@ -75,6 +126,29 @@ Además de la combinación con hioscina, en Colombia hay productos que combinan 
 ## Dipirona en Colombia
 
 El Código Único de Medicamentos del INVIMA registra 29 registros sanitarios vigentes con dipirona o metamizol, la mayoría en solución inyectable y el resto en tabletas [2].
+
+## Evidencia y situación en Colombia
+
+La ficha técnica respalda su uso a corto plazo en el dolor agudo moderado o intenso y en la fiebre refractaria, con un efecto espasmolítico que lo distingue de los AINE [1].
+
+La seguridad es el eje de la decisión: la agranulocitosis no depende de la dosis, por lo que no existe una dosis «segura» que la evite. La vigilancia de los síntomas de alarma es la medida que protege al paciente [1].
+
+- Colombia: el CUM del INVIMA registra 29 registros sanitarios vigentes con dipirona o metamizol (código ATC N02BB02), en sales sódicas y magnésicas; la mayoría son soluciones inyectables y el resto tabletas. Consulta del 16-nov-2026 [2].
+- España: autorizado como Nolotil y genéricos, con advertencias reforzadas sobre agranulocitosis en la ficha técnica y el prospecto [1].
+
+## Errores frecuentes
+
+- **Automedicarse o repetir la dosis antes de tiempo** para buscar un efecto más rápido. Más dosis no significa más beneficio y sí puede significar más riesgo.
+- **Suspenderlo sin consultar** cuando la indicación exige completar un tiempo o un tratamiento. La duración la define el profesional.
+- **No contar los otros productos que toma**: antigripales, suplementos, plantas medicinales y medicamentos de venta libre también interactúan.
+- **Confundir alivio con cura**: si el síntoma mejora, no necesariamente desapareció la causa. Si el problema vuelve o empeora, hay que evaluarlo.
+- **No revisar la técnica de uso** cuando se trata de un inhalador, una crema, gotas o un dispositivo: una técnica incorrecta hace que el medicamento no llegue donde debe.
+
+## Cuándo consultar
+
+Consulta si el síntoma no mejora en el plazo esperado, si empeora rápido o si aparece un signo de alarma: dificultad para respirar, dolor en el pecho, desmayo, sangrado, hinchazón de cara o garganta, confusión, fiebre alta persistente o reducción de la orina.
+
+Si estás embarazada, en lactancia, tienes enfermedad renal o hepática, tomas anticoagulantes o tienes varias enfermedades crónicas, consulta antes de empezar cualquier medicamento.
 
 ## Para profesionales
 
@@ -102,7 +176,34 @@ Pocos días y solo con indicación médica. Mientras la tomes, vigila la fiebre,
 
 Solo si el médico la indica y calcula la dosis por el peso. Las presentaciones para adultos, como las cápsulas de 575 mg, no se recomiendan en menores de 15 años [1].
 
+### ¿Se puede usar Dipirona (metamizol) en el embarazo?
+
+- Primer y segundo trimestre: en general no se recomienda; solo dosis únicas cuando no hay otra opción [1]. - Tercer trimestre: contraindicado por fetotoxicidad (insuficiencia renal y constricción del ductus arterioso) [1]. - Lactancia: sus productos de degradación pasan a la leche en cantidades considerables; evitar el uso repetido y, tras una dosis única, desechar la leche durante 48 horas [1].
+
+### ¿Qué efectos secundarios de Dipirona (metamizol) son graves?
+
+La reacción adversa frecuente es la hipotensión [1]. - Graves: agranulocitosis (con casos mortales), trombocitopenia, anemia aplásica y pancitopenia [1]. - Shock anafiláctico, síndrome de Stevens-Johnson, necrólisis epidérmica tóxica y DRESS [1]. - Insuficiencia renal aguda, nefritis intersticial, hemorragia digestiva y lesión hepática inducida por fármacos [1].
+
+## Artículos relacionados
+
+- [Monografía de Dipirona (metamizol) en el vademécum](/vademecum/dipirona)
+- [Dipirona: para qué sirve](/articulos/dipirona-para-que-sirve)
+- [Acetaminofén: para qué sirve](/articulos/acetaminofen-para-que-sirve)
+- [Medicamentos para el dolor y la inflamación](/vademecum/medicamentos-para-el-dolor-y-la-inflamacion)
+- [Curso gratis: Farmacología del Sistema Nervioso Central](/curso-de-farmacologia-del-sistema-nervioso-central)
+
 ## Fuentes
 
 1. Agencia Española de Medicamentos y Productos Sanitarios (AEMPS). Ficha técnica de Nolotil 575 mg cápsulas duras (metamizol magnésico), consultada el 16-nov-2026. [Ver fuente](https://cima.aemps.es/cima/dochtml/ft/47633/FT_47633.html)
 2. INVIMA. Código Único de Medicamentos vigentes (datos.gov.co), consultado el 16-nov-2026. [Ver fuente](https://www.datos.gov.co/d/i7cb-raxc)
+
+- Agencia Española de Medicamentos y Productos Sanitarios (AEMPS). Ficha técnica de Nolotil 575 mg cápsulas duras [Internet]. Madrid: AEMPS; [citado 16 nov 2026]. Disponible en: https://cima.aemps.es/cima/dochtml/ft/47633/FT_47633.html
+- Instituto Nacional de Vigilancia de Medicamentos y Alimentos (INVIMA). Código Único de Medicamentos vigentes [conjunto de datos en Internet]. Bogotá: Datos Abiertos Colombia; [citado 16 nov 2026]. Disponible en: https://www.datos.gov.co/d/i7cb-raxc
+- Cipolle RJ, Strand LM, Morley PC. Pharmaceutical care practice: the patient-centered approach to medication management services. 3.ª ed. Nueva York: McGraw-Hill Medical; 2012.
+- Ramalho-de Oliveira D, Shoemaker SJ, Ekstrand M, Alves MR. Preventing and resolving drug therapy problems by understanding patients' medication experiences. J Am Pharm Assoc (2003). 2012;52(1):71-80. doi:10.1331/JAPhA.2012.10239
+
+## Sobre este artículo
+
+Este artículo es información educativa y no reemplaza la consulta con un profesional de la salud. No es una fórmula médica ni una recomendación de tratamiento para una persona concreta.
+
+**Autor:** Equipo editorial de Edvanta. **Revisión clínica:** pendiente de asignación. Si encuentras un error o una fuente desactualizada, escríbenos para corregirlo.

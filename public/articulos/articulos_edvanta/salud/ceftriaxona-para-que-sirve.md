@@ -7,7 +7,13 @@ La ceftriaxona es una cefalosporina de tercera generación que se administra por
 > - Puede producir diarrea, erupción, alteraciones del hemograma y, rara vez, complicaciones biliares o renales.
 > - No sirve para virus ni para infecciones que no responden a cefalosporinas.
 
-## Para qué sirve la ceftriaxona
+## ¿Qué es la ceftriaxona?
+
+La ceftriaxona es una cefalosporina de tercera generación que se administra por vía intravenosa o intramuscular. Se usa en meningitis, neumonía, pielonefritis, infecciones intraabdominales, gonorrea y sífilis. Su vida media prolongada permite una dosis diaria en muchas indicaciones. Las precauciones principales son la alergia a betalactámicos, la precipitación con calcio en neonatos, la litiasis biliar y la anemia hemolítica. La atención farmacéutica incluye la reconstitución, la estabilidad, la compatibilidad y la vigilancia clínica.
+
+Pertenece al grupo farmacológico de Cefalosporina de tercera generación.
+
+## ¿Para qué sirve la ceftriaxona?
 
 La ficha técnica la indica en adultos y niños para [1]:
 
@@ -21,6 +27,84 @@ La ficha técnica la indica en adultos y niños para [1]:
 - Gonorrea y sífilis.
 - Endocarditis bacteriana.
 - Exacerbaciones de EPOC, enfermedad de Lyme diseminada, profilaxis quirúrgica y fiebre en pacientes neutropénicos [1].
+
+## Cómo funciona
+
+Se une a las proteínas fijadoras de penicilina e inhibe la transpeptidación del peptidoglucano. La bacteria se lisa y muere; el efecto es bactericida y depende del tiempo por encima de la CMI (T > CMI) [1,2].
+
+Su espectro incluye Streptococcus pneumoniae, Haemophilus influenzae, Neisseria, enterobacterias y Treponema pallidum. No cubre Pseudomonas, enterococos, Listeria ni anaerobios de forma confiable [1].
+
+## Cuánto tarda en hacer efecto
+
+| Parámetro | Valor |
+| --- | --- |
+| Absorción | No oral; se administra por vía intravenosa o intramuscular [1] |
+| Concentración máxima | Al final de la perfusión o 1 a 2 horas tras la inyección IM [1] |
+| Unión a proteínas | Alta, principalmente albúmina [1] |
+| Metabolismo | No depende del CYP450; se elimina sin cambios y como metabolitos [1] |
+| Semivida | 6 a 9 horas [1] |
+| Eliminación | Renal y biliar; no requiere ajuste en insuficiencia renal leve o moderada [1] |
+
+## Efectos secundarios
+
+- Diarrea, heces blandas, náuseas y vómito [1].
+- Erupción cutánea, prurito y reacciones en el sitio de inyección.
+- Eosinofilia, leucopenia y trombocitopenia.
+- Elevación de enzimas hepáticas.
+- Candidiasis genital.
+- Raros pero graves: anafilaxia, reacciones cutáneas graves, anemia hemolítica, encefalopatía, pancreatitis, cálculos biliares por precipitación y precipitación renal.
+
+Las más frecuentes son eosinofilia, leucopenia, trombocitopenia, diarrea, rash y elevación de enzimas hepáticas [1].
+
+- Frecuentes: diarrea, heces blandas, náuseas, vómito y reacciones en el sitio de inyección.
+- Poco frecuentes: candidiasis genital, cefalea, mareo, prurito y aumento de creatinina.
+- Raras: anafilaxia, anemia hemolítica, encefalopatía, pancreatitis, colelitiasis, precipitación renal y reacciones cutáneas graves.
+
+## Interacciones
+
+| Medicamento o situación | Qué puede pasar |
+|---|---|
+| Soluciones con calcio | Precipitación de ceftriaxona cálcica; no mezclar [1] |
+| Warfarina | Aumento del efecto anticoagulante; controlar el INR [1] |
+| Aminoglucósidos | Posible mayor toxicidad renal; vigilar función renal [1] |
+| Cloranfenicol | Antagonismo in vitro; evitar combinación si es posible [1] |
+| Probenecid | No reduce la eliminación de ceftriaxona [1] |
+
+| Medicamento o situación | Efecto | Qué hacer |
+| --- | --- | --- |
+| Soluciones con calcio | Precipitación de ceftriaxona cálcica | No mezclar; en neonatos evitar [1] |
+| Warfarina | Aumento del INR | Controlar el INR [1] |
+| Aminoglucósidos | Posible mayor toxicidad renal | Vigilar función renal [1] |
+| Cloranfenicol | Antagonismo in vitro | Evitar si es posible [1] |
+| Probenecid | No reduce la eliminación de ceftriaxona | Sin ajuste [1] |
+
+## Quién no debe tomarlo
+
+- Alergia a la ceftriaxona o a otras cefalosporinas [1].
+- Antecedente de reacción anafiláctica a cualquier betalactámico.
+- Neonatos prematuros hasta las 41 semanas de edad posmenstrual.
+- Neonatos con hiperbilirrubinemia, hipoalbuminemia o acidosis.
+- Neonatos que reciben soluciones intravenosas con calcio.
+- Insuficiencia renal y hepática graves: vigilancia estrecha.
+- Embarazo y lactancia: valorar beneficio y riesgo [1].
+
+Contraindicaciones [1]:
+
+- Hipersensibilidad a ceftriaxona o a otras cefalosporinas.
+- Antecedente de hipersensibilidad grave a cualquier betalactámico.
+- Neonatos prematuros hasta las 41 semanas de edad posmenstrual.
+- Neonatos con hiperbilirrubinemia, hipoalbuminemia o acidosis.
+- Neonatos que reciben soluciones intravenosas con calcio.
+
+Advertencias: reacciones anafilácticas, anemia hemolítica, encefalopatía, litiasis biliar y renal, pancreatitis, colitis por C. difficile y reacción de Jarisch-Herxheimer [1].
+
+## Embarazo, lactancia y niños
+
+Atraviesa la placenta. Los datos en embarazo son limitados; se usa si el beneficio supera el riesgo. Pasa a la leche en concentraciones bajas; se puede considerar la lactancia según el caso, vigilando diarrea o candidiasis en el bebé [1].
+
+- Embarazo: atraviesa la placenta; los datos son limitados y se usa si el beneficio supera el riesgo [1].
+- Lactancia: pasa a la leche en concentraciones bajas; se puede considerar, vigilando diarrea o candidiasis en el bebé [1].
+- Fertilidad: los estudios en animales no muestran efectos adversos [1].
 
 ## Cómo actúa
 
@@ -43,42 +127,35 @@ La dosis la define el médico según la infección, la edad, el peso y la funci�
 - En insuficiencia renal con aclaramiento menor de 10 ml/min no se deben superar 2 g al día [1].
 - No requiere ajuste en diálisis.
 
-## Efectos secundarios
-
-- Diarrea, heces blandas, náuseas y vómito [1].
-- Erupción cutánea, prurito y reacciones en el sitio de inyección.
-- Eosinofilia, leucopenia y trombocitopenia.
-- Elevación de enzimas hepáticas.
-- Candidiasis genital.
-- Raros pero graves: anafilaxia, reacciones cutáneas graves, anemia hemolítica, encefalopatía, pancreatitis, cálculos biliares por precipitación y precipitación renal.
-
-## Quién no debe recibirla o necesita precaución
-
-- Alergia a la ceftriaxona o a otras cefalosporinas [1].
-- Antecedente de reacción anafiláctica a cualquier betalactámico.
-- Neonatos prematuros hasta las 41 semanas de edad posmenstrual.
-- Neonatos con hiperbilirrubinemia, hipoalbuminemia o acidosis.
-- Neonatos que reciben soluciones intravenosas con calcio.
-- Insuficiencia renal y hepática graves: vigilancia estrecha.
-- Embarazo y lactancia: valorar beneficio y riesgo [1].
-
-## Interacciones
-
-| Medicamento o situación | Qué puede pasar |
-|---|---|
-| Soluciones con calcio | Precipitación de ceftriaxona cálcica; no mezclar [1] |
-| Warfarina | Aumento del efecto anticoagulante; controlar el INR [1] |
-| Aminoglucósidos | Posible mayor toxicidad renal; vigilar función renal [1] |
-| Cloranfenicol | Antagonismo in vitro; evitar combinación si es posible [1] |
-| Probenecid | No reduce la eliminación de ceftriaxona [1] |
-
-## Embarazo y lactancia
-
-Atraviesa la placenta. Los datos en embarazo son limitados; se usa si el beneficio supera el riesgo. Pasa a la leche en concentraciones bajas; se puede considerar la lactancia según el caso, vigilando diarrea o candidiasis en el bebé [1].
-
 ## Ceftriaxona en Colombia
 
 El CUM del INVIMA registra ceftriaxona en polvo para solución inyectable, sola y con lidocaína. Es de uso hospitalario o ambulatorio supervisado; verifica el registro y la forma de reconstitución [2].
+
+## Evidencia y situación en Colombia
+
+La ceftriaxona es un pilar del tratamiento empírico de la meningitis bacteriana y de muchas infecciones graves por gramnegativos, con una cobertura predecible y una posología cómoda [1,2].
+
+En gonorrea, la dosis única intramuscular de 500 mg ha sido eficaz, aunque las guías actuales ajustan la dosis según el peso y la resistencia local [1].
+
+En sífilis, la ceftriaxona es una alternativa en pacientes alérgicos a penicilina, con esquemas prolongados para neurosífilis [1].
+
+- Colombia: el CUM registra ceftriaxona en polvo para solución inyectable, sola y con lidocaína [3].
+- Unión Europea: la ceftriaxona está autorizada para las indicaciones descritas [1].
+- Estados Unidos: la FDA mantiene etiquetas vigentes de ceftriaxona [1].
+
+## Errores frecuentes
+
+- **Automedicarse o repetir la dosis antes de tiempo** para buscar un efecto más rápido. Más dosis no significa más beneficio y sí puede significar más riesgo.
+- **Suspenderlo sin consultar** cuando la indicación exige completar un tiempo o un tratamiento. La duración la define el profesional.
+- **No contar los otros productos que toma**: antigripales, suplementos, plantas medicinales y medicamentos de venta libre también interactúan.
+- **Confundir alivio con cura**: si el síntoma mejora, no necesariamente desapareció la causa. Si el problema vuelve o empeora, hay que evaluarlo.
+- **No revisar la técnica de uso** cuando se trata de un inhalador, una crema, gotas o un dispositivo: una técnica incorrecta hace que el medicamento no llegue donde debe.
+
+## Cuándo consultar
+
+Consulta si el síntoma no mejora en el plazo esperado, si empeora rápido o si aparece un signo de alarma: dificultad para respirar, dolor en el pecho, desmayo, sangrado, hinchazón de cara o garganta, confusión, fiebre alta persistente o reducción de la orina.
+
+Si estás embarazada, en lactancia, tienes enfermedad renal o hepática, tomas anticoagulantes o tienes varias enfermedades crónicas, consulta antes de empezar cualquier medicamento.
 
 ## Para profesionales
 
@@ -102,7 +179,37 @@ No hay una interacción directa grave descrita, pero durante una infección grav
 
 Puede ocurrir por el medicamento o por la infección. Si hay dolor, fiebre o sangrado, consulta.
 
+### ¿Cuánto tarda en hacer efecto Ceftriaxona?
+
+Al final de la perfusión o 1 a 2 horas tras la inyección IM [1] Su efecto se mantiene mientras el medicamento permanece en el cuerpo; la semivida es de 6 a 9 horas [1]. La respuesta completa depende de la indicación y del paciente, así que el seguimiento lo define el profesional.
+
+### ¿Se puede usar Ceftriaxona en el embarazo?
+
+- Embarazo: atraviesa la placenta; los datos son limitados y se usa si el beneficio supera el riesgo [1]. - Lactancia: pasa a la leche en concentraciones bajas; se puede considerar, vigilando diarrea o candidiasis en el bebé [1]. - Fertilidad: los estudios en animales no muestran efectos adversos [1].
+
+### ¿Qué efectos secundarios de Ceftriaxona son graves?
+
+Las más frecuentes son eosinofilia, leucopenia, trombocitopenia, diarrea, rash y elevación de enzimas hepáticas [1]. - Frecuentes: diarrea, heces blandas, náuseas, vómito y reacciones en el sitio de inyección. - Poco frecuentes: candidiasis genital, cefalea, mareo, prurito y aumento de creatinina. - Raras: anafilaxia, anemia hemolítica, encefalopatía, pancreatitis, colelitiasis, precipitación renal y reacciones cutáneas graves.
+
+## Artículos relacionados
+
+- [Monografía de Ceftriaxona en el vademécum](/vademecum/ceftriaxona)
+- [Ceftriaxona: para qué sirve](/articulos/ceftriaxona-para-que-sirve)
+- [Cefalosporinas: generaciones](/articulos/cefalosporinas-generaciones)
+- [Betalactámicos: clasificación](/articulos/betalactamicos-clasificacion)
+
 ## Fuentes
 
 1. AEMPS-CIMA. Ficha técnica de Ceftriaxona Normon 1000 mg polvo y disolvente para solución inyectable y para perfusión EFG. [Ver fuente](https://cima.aemps.es/cima/dochtml/ft/62635/FT_62635.html)
 2. INVIMA. Código Único de Medicamentos vigentes (datos.gov.co), consultado el 13-nov-2026. [Ver fuente](https://www.datos.gov.co/d/i7cb-raxc)
+
+- Agencia Española de Medicamentos y Productos Sanitarios (AEMPS). Ficha técnica de Ceftriaxona Normon 1000 mg polvo y disolvente para solución inyectable y para perfusión EFG [Internet]. Madrid: AEMPS; [citado 12 nov 2026]. Disponible en: https://cima.aemps.es/cima/dochtml/ft/62635/FT_62635.html
+- Organización Mundial de la Salud. AWaRe classification of antibiotics for evaluation and monitoring of use, 2023 [Internet]. Ginebra: OMS; 2023 [citado 12 nov 2026]. Disponible en: https://www.who.int/publications/i/item/9789240080379
+- Instituto Nacional de Vigilancia de Medicamentos y Alimentos (INVIMA). Código Único de Medicamentos vigentes [conjunto de datos en Internet]. Bogotá: Datos Abiertos Colombia; [citado 12 nov 2026]. Disponible en: https://www.datos.gov.co/d/i7cb-raxc
+- Cipolle RJ, Strand LM, Morley PC. Pharmaceutical care practice: the patient-centered approach to medication management services. 3.ª ed. Nueva York: McGraw-Hill Medical; 2012.
+
+## Sobre este artículo
+
+Este artículo es información educativa y no reemplaza la consulta con un profesional de la salud. No es una fórmula médica ni una recomendación de tratamiento para una persona concreta.
+
+**Autor:** Equipo editorial de Edvanta. **Revisión clínica:** pendiente de asignación. Si encuentras un error o una fuente desactualizada, escríbenos para corregirlo.

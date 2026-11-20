@@ -7,7 +7,13 @@ El secnidazol es un antibiótico y antiparasitario del grupo de los nitroimidazo
 > - Evita el alcohol durante el tratamiento y al menos 48 horas después.
 > - No se recomienda en el primer trimestre del embarazo.
 
-## Para qué sirve el secnidazol
+## ¿Qué es el secnidazol?
+
+El secnidazol es un nitroimidazol con actividad frente a bacterias anaerobias y protozoos. Su vida media más larga que la del metronidazol permite esquemas de dosis única en vaginosis bacteriana, tricomoniasis, amebiasis y giardiasis. Comparte con el metronidazol la interacción con el alcohol, el riesgo de neuropatía y las precauciones en el embarazo. La atención farmacéutica se centra en la adherencia, la pareja sexual, el alcohol y la identificación de infecciones que requieren otro tratamiento.
+
+Pertenece al grupo farmacológico de Nitroimidazol antiparasitario y antibacteriano.
+
+## ¿Para qué sirve el secnidazol?
 
 El secnidazol pertenece a la familia del metronidazol y comparte sus indicaciones principales [1,2]:
 
@@ -19,9 +25,22 @@ El secnidazol pertenece a la familia del metronidazol y comparte sus indicacione
 
 No es un antibiótico para infecciones urinarias comunes, faringitis, gripa ni infecciones por virus.
 
-## Cómo actúa
+## Cómo funciona
 
-Dentro del microorganismo, el secnidazol se reduce y forma compuestos reactivos que dañan el ADN. Ese mecanismo funciona en ambientes con poco oxígeno, propios de las bacterias anaerobias y de algunos parásitos [1,2].
+El secnidazol es un profármaco que se activa por reducción del grupo nitro dentro de microorganismos con metabolismo anaerobio. Los metabolitos reactivos dañan el ADN y otras macromoléculas, e inhiben la síntesis de ácidos nucleicos [1,2].
+
+Su actividad se dirige a bacterias anaerobias y a protozoos como Trichomonas vaginalis, Entamoeba histolytica y Giardia lamblia. No tiene actividad relevante frente a bacterias aerobias [1,2].
+
+## Cuánto tarda en hacer efecto
+
+| Parámetro | Valor |
+| --- | --- |
+| Absorción | Oral, rápida y casi completa [1,2] |
+| Concentración máxima | Aproximadamente 1 a 2 horas [1,2] |
+| Unión a proteínas | Baja [1] |
+| Metabolismo | Hepático [1,2] |
+| Semivida | 17 a 29 horas [1,2] |
+| Eliminación | Renal y biliar [1,2] |
 
 ## Cómo se toma
 
@@ -31,10 +50,6 @@ La dosis y la duración las define el médico según la infección. Como referen
 - No fracciones ni dupliques la dosis sin indicación.
 - Termina el esquema aunque te sientas mejor.
 - En tricomoniasis, la pareja sexual también debe recibir tratamiento para evitar la reinfección.
-
-## Alcohol: la advertencia principal
-
-Al igual que el metronidazol, el secnidazol puede producir una reacción desagradable con el alcohol: mareo, náuseas, vómito, rubor y dolor de cabeza. Evita bebidas alcohólicas, jarabes y enjuagues con alcohol durante el tratamiento y al menos 48 horas después [1,2].
 
 ## Efectos secundarios
 
@@ -46,12 +61,11 @@ Al igual que el metronidazol, el secnidazol puede producir una reacción desagra
 
 Suspende y consulta de inmediato si aparecen ampollas, descamación, dificultad para respirar, confusión o diarrea intensa.
 
-## Quién no debe tomarlo o necesita precaución
+Las más frecuentes son náuseas, dolor abdominal, diarrea, estreñimiento, sabor metálico y cefalea [1,2].
 
-- Alergia al secnidazol u otros nitroimidazoles.
-- Primer trimestre del embarazo; en el segundo y tercero solo si el beneficio supera el riesgo [1,2].
-- Enfermedad hepática grave, alteraciones sanguíneas o enfermedad del sistema nervioso: requiere valoración médica.
-- Lactancia: consulta antes de usarlo; puede ser necesario suspenderla durante el tratamiento.
+- Frecuentes: náuseas, vómito, diarrea, dolor abdominal, cefalea y candidiasis.
+- Poco frecuentes: mareo, sequedad de boca, insomnio y erupción cutánea.
+- Raras: neuropatía periférica, convulsiones, encefalopatía, pancreatitis y reacciones cutáneas graves.
 
 ## Interacciones
 
@@ -63,13 +77,76 @@ Suspende y consulta de inmediato si aparecen ampollas, descamación, dificultad 
 | Disulfiram | Confusión o reacciones psicóticas [1] |
 | Otros nitroimidazoles | No se combinan entre sí |
 
-## Embarazo y lactancia
+| Medicamento o sustancia | Efecto | Qué hacer |
+| --- | --- | --- |
+| Alcohol | Reacción tipo disulfiram: rubor, náuseas, vómito y taquicardia | Evitar durante el tratamiento y 48 horas después [1,2] |
+| Warfarina | Aumento del INR y del riesgo de sangrado | Controlar el INR [2] |
+| Litio | Aumento de sus concentraciones | Vigilar niveles y signos de toxicidad [1] |
+| Disulfiram | Confusión o reacciones psicóticas | Evitar la combinación [1] |
+| Otros nitroimidazoles | Duplicación del efecto y de la toxicidad | No combinar [1,2] |
+
+## Quién no debe tomarlo
+
+- Alergia al secnidazol u otros nitroimidazoles.
+- Primer trimestre del embarazo; en el segundo y tercero solo si el beneficio supera el riesgo [1,2].
+- Enfermedad hepática grave, alteraciones sanguíneas o enfermedad del sistema nervioso: requiere valoración médica.
+- Lactancia: consulta antes de usarlo; puede ser necesario suspenderla durante el tratamiento.
+
+Contraindicaciones y precauciones principales [1,2]:
+
+- Hipersensibilidad al secnidazol u otros nitroimidazoles.
+- Primer trimestre del embarazo.
+- Enfermedad hepática grave o alteraciones hematológicas: valorar riesgo-beneficio.
+- Enfermedad neurológica activa o antecedente de neuropatía por nitroimidazoles.
+- Lactancia: individualizar y valorar la suspensión temporal.
+
+Advertencias: evitar el alcohol durante el tratamiento y al menos 48 horas después; vigilar síntomas neurológicos en tratamientos prolongados; puede oscurecer la orina [1,2].
+
+## Embarazo, lactancia y niños
 
 En el embarazo se evita el primer trimestre. En el segundo y el tercero se usa solo cuando el médico considera que el beneficio supera el riesgo. Durante la lactancia se debe individualizar la decisión [1,2].
+
+- Embarazo: evitar en el primer trimestre. En el segundo y el tercero se usa solo si el beneficio supera el riesgo [1,2].
+- Lactancia: se excreta en la leche; se debe individualizar y, en algunos casos, suspender la lactancia durante el tratamiento [1].
+- Fertilidad: no se han descrito efectos relevantes en humanos [2].
+
+## Cómo actúa
+
+Dentro del microorganismo, el secnidazol se reduce y forma compuestos reactivos que dañan el ADN. Ese mecanismo funciona en ambientes con poco oxígeno, propios de las bacterias anaerobias y de algunos parásitos [1,2].
+
+## Alcohol: la advertencia principal
+
+Al igual que el metronidazol, el secnidazol puede producir una reacción desagradable con el alcohol: mareo, náuseas, vómito, rubor y dolor de cabeza. Evita bebidas alcohólicas, jarabes y enjuagues con alcohol durante el tratamiento y al menos 48 horas después [1,2].
 
 ## Secnidazol en Colombia
 
 El CUM del INVIMA registra presentaciones de secnidazol, solo y en combinaciones. Compra solo productos con registro sanitario vigente y fórmula médica [3]. La disponibilidad y las presentaciones cambian; verifica el registro antes de dispensar.
+
+## Evidencia y situación en Colombia
+
+La eficacia del secnidazol en vaginosis bacteriana y tricomoniasis está respaldada por ensayos clínicos y por su uso extendido dentro de la familia de los nitroimidazoles [1,2].
+
+La etiqueta de Solosec describe su uso en vaginosis bacteriana en mujeres adultas, con una dosis única de 2 g y una respuesta clínica comparable a otros nitroimidazoles [1]. En tricomoniasis, la guía de práctica clínica recomienda tratar a la pareja sexual para evitar la reinfección [2].
+
+La vida media prolongada permite esquemas más cortos, lo que puede mejorar la adherencia, pero no sustituye la evaluación clínica ni el diagnóstico microbiológico [1,2].
+
+- Colombia: el CUM registra secnidazol en tabletas y suspensiones; consultar la vigencia y la concentración [3].
+- Estados Unidos: la FDA aprobó Solosec (secnidazol) para vaginosis bacteriana [1].
+- La disponibilidad de presentaciones varía entre países; verificar el registro antes de dispensar.
+
+## Errores frecuentes
+
+- **Automedicarse o repetir la dosis antes de tiempo** para buscar un efecto más rápido. Más dosis no significa más beneficio y sí puede significar más riesgo.
+- **Suspenderlo sin consultar** cuando la indicación exige completar un tiempo o un tratamiento. La duración la define el profesional.
+- **No contar los otros productos que toma**: antigripales, suplementos, plantas medicinales y medicamentos de venta libre también interactúan.
+- **Confundir alivio con cura**: si el síntoma mejora, no necesariamente desapareció la causa. Si el problema vuelve o empeora, hay que evaluarlo.
+- **No revisar la técnica de uso** cuando se trata de un inhalador, una crema, gotas o un dispositivo: una técnica incorrecta hace que el medicamento no llegue donde debe.
+
+## Cuándo consultar
+
+Consulta si el síntoma no mejora en el plazo esperado, si empeora rápido o si aparece un signo de alarma: dificultad para respirar, dolor en el pecho, desmayo, sangrado, hinchazón de cara o garganta, confusión, fiebre alta persistente o reducción de la orina.
+
+Si estás embarazada, en lactancia, tienes enfermedad renal o hepática, tomas anticoagulantes o tienes varias enfermedades crónicas, consulta antes de empezar cualquier medicamento.
 
 ## Para profesionales
 
@@ -93,8 +170,38 @@ No es el tratamiento habitual de la cistitis. Para ese tema, revisa la guía de 
 
 En la tricomoniasis sí. En la vaginosis bacteriana, sigue la indicación del médico.
 
+### ¿Cuánto tarda en hacer efecto Secnidazol?
+
+Aproximadamente 1 a 2 horas [1,2] Su efecto se mantiene mientras el medicamento permanece en el cuerpo; la semivida es de 17 a 29 horas [1,2]. La respuesta completa depende de la indicación y del paciente, así que el seguimiento lo define el profesional.
+
+### ¿Se puede usar Secnidazol en el embarazo?
+
+- Embarazo: evitar en el primer trimestre. En el segundo y el tercero se usa solo si el beneficio supera el riesgo [1,2]. - Lactancia: se excreta en la leche; se debe individualizar y, en algunos casos, suspender la lactancia durante el tratamiento [1]. - Fertilidad: no se han descrito efectos relevantes en humanos [2].
+
+### ¿Qué efectos secundarios de Secnidazol son graves?
+
+Las más frecuentes son náuseas, dolor abdominal, diarrea, estreñimiento, sabor metálico y cefalea [1,2]. - Frecuentes: náuseas, vómito, diarrea, dolor abdominal, cefalea y candidiasis. - Poco frecuentes: mareo, sequedad de boca, insomnio y erupción cutánea. - Raras: neuropatía periférica, convulsiones, encefalopatía, pancreatitis y reacciones cutáneas graves.
+
+## Artículos relacionados
+
+- [Monografía de Secnidazol en el vademécum](/vademecum/secnidazol)
+- [Secnidazol: para qué sirve](/articulos/secnidazol-para-que-sirve)
+- [Nitroimidazoles: metronidazol y secnidazol](/articulos/nitroimidazoles-metronidazol-secnidazol)
+- [Antibióticos de uso ambulatorio](/vademecum/antibioticos-de-uso-ambulatorio)
+
 ## Fuentes
 
 1. AEMPS-CIMA. Ficha técnica de metronidazol, nitroimidazol de referencia. [Ver fuente](https://cima.aemps.es/cima/dochtml/ft/62223/FT_62223.html)
 2. DailyMed. Solosec (secnidazole) granule, for oral solution. [Ver fuente](https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=056485b6-8bba-4a21-ae00-cdb4e7ae4bfa)
 3. INVIMA. Código Único de Medicamentos vigentes (datos.gov.co), consultado el 13-nov-2026. [Ver fuente](https://www.datos.gov.co/d/i7cb-raxc)
+
+- National Library of Medicine (US). DailyMed: Solosec (secnidazole) granule, for oral solution [Internet]. Bethesda (MD): NLM; [actualizado 19 sep 2025; citado 12 nov 2026]. Disponible en: https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=056485b6-8bba-4a21-ae00-cdb4e7ae4bfa
+- Organización Mundial de la Salud. AWaRe classification of antibiotics for evaluation and monitoring of use, 2023 [Internet]. Ginebra: OMS; 2023 [citado 12 nov 2026]. Disponible en: https://www.who.int/publications/i/item/9789240080379
+- Instituto Nacional de Vigilancia de Medicamentos y Alimentos (INVIMA). Código Único de Medicamentos vigentes [conjunto de datos en Internet]. Bogotá: Datos Abiertos Colombia; [citado 12 nov 2026]. Disponible en: https://www.datos.gov.co/d/i7cb-raxc
+- Cipolle RJ, Strand LM, Morley PC. Pharmaceutical care practice: the patient-centered approach to medication management services. 3.ª ed. Nueva York: McGraw-Hill Medical; 2012.
+
+## Sobre este artículo
+
+Este artículo es información educativa y no reemplaza la consulta con un profesional de la salud. No es una fórmula médica ni una recomendación de tratamiento para una persona concreta.
+
+**Autor:** Equipo editorial de Edvanta. **Revisión clínica:** pendiente de asignación. Si encuentras un error o una fuente desactualizada, escríbenos para corregirlo.

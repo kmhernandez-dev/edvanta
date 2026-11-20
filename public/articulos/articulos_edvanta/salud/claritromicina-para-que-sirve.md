@@ -7,7 +7,13 @@ La claritromicina es un antibiótico macrólido que se usa para infecciones resp
 > - Puede prolongar el intervalo QT y causar arritmias en personas de riesgo.
 > - Interactúa con simvastatina, lovastatina, warfarina, digoxina, colchicina y muchos otros fármacos.
 
-## Para qué sirve la claritromicina
+## ¿Qué es la claritromicina?
+
+La claritromicina es un macrólido usado en infecciones respiratorias, de piel, por Helicobacter pylori y por micobacterias. Su eficacia frente a atípicos y su buena absorción oral se compensan con un perfil de interacciones amplio, porque inhibe CYP3A4 y la glicoproteína P, y con el riesgo de prolongación del QT. La atención farmacéutica se centra en revisar el esquema, las estatinas, los anticoagulantes, la función renal y los factores de riesgo cardiaco.
+
+Pertenece al grupo farmacológico de Macrólido.
+
+## ¿Para qué sirve la claritromicina?
 
 Según la ficha técnica, está indicada en adultos y adolescentes desde los 12 años para [1]:
 
@@ -19,9 +25,22 @@ Según la ficha técnica, está indicada en adultos y adolescentes desde los 12 
 
 No sirve para infecciones virales. En neumonía e infecciones de piel es importante confirmar la sensibilidad, porque la resistencia de *Streptococcus pneumoniae* y *Staphylococcus aureus* a los macrólidos es frecuente [1].
 
-## Cómo actúa
+## Cómo funciona
 
-La claritromicina se une a la subunidad ribosomal 50S y bloquea la síntesis de proteínas bacterianas. Es bacteriostática en la mayoría de los casos, aunque puede ser bactericida frente a algunos microorganismos a concentraciones altas [1].
+Se une de forma reversible a la subunidad ribosomal 50S y bloquea la translocación del péptido en crecimiento. El resultado es la inhibición de la síntesis de proteínas y, en la mayoría de los casos, un efecto bacteriostático [1,2].
+
+Su actividad depende de la concentración y del tiempo; alcanza concentraciones altas en tejido pulmonar, tonsilas y piel, lo que explica su uso en infecciones respiratorias y cutáneas [1].
+
+## Cuánto tarda en hacer efecto
+
+| Parámetro | Valor |
+| --- | --- |
+| Absorción | Oral; biodisponibilidad de aproximadamente 50 a 55 % [1] |
+| Concentración máxima | 2 a 3 horas [1] |
+| Unión a proteínas | 65 a 75 % [1] |
+| Metabolismo | Hepático, CYP3A4; metabolito activo 14-hidroxiclaritromicina [1] |
+| Semivida | 3 a 4 horas; más larga en insuficiencia renal [1] |
+| Eliminación | Renal y biliar [1] |
 
 ## Cómo se toma
 
@@ -47,14 +66,11 @@ La claritromicina se une a la subunidad ribosomal 50S y bloquea la síntesis de 
 
 Busca atención urgente si tienes palpitaciones, desmayo, ictericia, dolor abdominal intenso, diarrea con sangre o una erupción grave.
 
-## Quién no debe tomarla o necesita precaución
+Las más frecuentes son diarrea, náuseas, vómito, dolor abdominal y alteración del gusto [1].
 
-- Alergia a la claritromicina o a otros macrólidos [1].
-- Antecedente de prolongación del QT, arritmias ventriculares o hipopotasemia/hipomagnesemia no corregida [1].
-- Insuficiencia hepática grave, especialmente si hay también insuficiencia renal.
-- Embarazo, sobre todo el primer trimestre: solo si el beneficio supera el riesgo [1].
-- Lactancia: se excreta en la leche y se recomienda suspenderla durante el tratamiento [1].
-- Insuficiencia renal con aclaramiento menor de 30 ml/min: ajuste obligatorio.
+- Frecuentes: cefalea, insomnio, rash, hiperhidrosis y pruebas hepáticas alteradas.
+- Poco frecuentes: candidiasis, leucopenia, ansiedad, mareo, tinnitus y palpitaciones.
+- Raras: pancreatitis, hepatitis, insuficiencia hepática, convulsiones, torsades de pointes, Stevens-Johnson, necrólisis epidérmica tóxica y colitis pseudomembranosa.
 
 ## Interacciones
 
@@ -69,13 +85,76 @@ Busca atención urgente si tienes palpitaciones, desmayo, ictericia, dolor abdom
 | Estatinas metabolizadas por CYP3A4 | Miopatía; revisar el esquema [1] |
 | Fármacos que prolongan el QT | Mayor riesgo de torsades de pointes [1] |
 
-## Embarazo y lactancia
+| Medicamento | Efecto | Qué hacer |
+| --- | --- | --- |
+| Simvastatina y lovastatina | Miopatía y rabdomiólisis | Suspender la estatina o cambiar el antibiótico [1] |
+| Warfarina y anticoagulantes directos | Mayor riesgo de sangrado | Monitorizar INR o vigilar sangrado [1] |
+| Digoxina | Aumento de niveles y toxicidad | Monitorizar digoxina [1] |
+| Colchicina | Toxicidad grave | Contraindicada [1] |
+| Midazolam oral y triazolam | Sedación prolongada | Evitar o ajustar [1] |
+| Fármacos que prolongan el QT | Torsades de pointes | Evitar combinaciones de riesgo [1] |
+| Tacrolimus y ciclosporina | Aumento de niveles | Monitorizar concentraciones [1] |
+
+## Quién no debe tomarlo
+
+- Alergia a la claritromicina o a otros macrólidos [1].
+- Antecedente de prolongación del QT, arritmias ventriculares o hipopotasemia/hipomagnesemia no corregida [1].
+- Insuficiencia hepática grave, especialmente si hay también insuficiencia renal.
+- Embarazo, sobre todo el primer trimestre: solo si el beneficio supera el riesgo [1].
+- Lactancia: se excreta en la leche y se recomienda suspenderla durante el tratamiento [1].
+- Insuficiencia renal con aclaramiento menor de 30 ml/min: ajuste obligatorio.
+
+Contraindicaciones principales [1]:
+
+- Hipersensibilidad a claritromicina o a otros macrólidos.
+- Prolongación congénita o adquirida del QT, arritmias ventriculares o antecedente de torsades de pointes.
+- Hipopotasemia o hipomagnesemia no corregidas.
+- Uso concomitante con astemizol, cisaprida, domperidona, pimozida, terfenadina, ergotamina, midazolam oral, lovastatina, simvastatina, colchicina, ticagrelor, ivabradina o ranolazina.
+- Insuficiencia hepática grave con insuficiencia renal.
+
+Advertencias: hepatotoxicidad, colitis por C. difficile, prolongación del QT, hipoglucemia con antidiabéticos, miopatía con estatinas y reacciones cutáneas graves [1].
+
+## Embarazo, lactancia y niños
 
 No se ha establecido la seguridad en el embarazo. Se usa solo si el beneficio supera el riesgo, con especial cautela en el primer trimestre. Pasa a la leche materna en pequeñas cantidades; la ficha técnica recomienda interrumpir la lactancia durante el tratamiento [1].
+
+- Embarazo: no se recomienda sin una evaluación cuidadosa; se han descrito resultados contradictorios y posible aumento del riesgo de aborto [1].
+- Lactancia: se excreta en la leche; la ficha técnica recomienda interrumpir la lactancia durante el tratamiento [1].
+- Fertilidad: los estudios en animales no muestran efectos adversos [1].
+
+## Cómo actúa
+
+La claritromicina se une a la subunidad ribosomal 50S y bloquea la síntesis de proteínas bacterianas. Es bacteriostática en la mayoría de los casos, aunque puede ser bactericida frente a algunos microorganismos a concentraciones altas [1].
 
 ## Claritromicina en Colombia
 
 El CUM del INVIMA registra claritromicina en tabletas, suspensión y presentaciones de liberación modificada. Verifica el registro y la concentración antes de dispensar [2]. Es un medicamento de prescripción médica.
+
+## Evidencia y situación en Colombia
+
+La claritromicina tiene eficacia demostrada en infecciones respiratorias, de piel y en la erradicación de H. pylori cuando se combina con amoxicilina o metronidazol y un inhibidor de bomba de protones [1,2].
+
+En neumonía adquirida en la comunidad, su cobertura de atípicos la hace útil en esquemas combinados, pero la resistencia de S. pneumoniae obliga a confirmar sensibilidad en infecciones graves [1].
+
+La evidencia también respalda su papel en la profilaxis de Mycobacterium avium complex en pacientes con VIH y CD4 bajo, siempre con vigilancia de interacciones [1].
+
+- Colombia: el CUM registra claritromicina en tabletas, suspensión y liberación modificada; verificar registro y concentración [3].
+- Unión Europea: la claritromicina está autorizada para las indicaciones descritas [1].
+- Estados Unidos: la FDA mantiene etiquetas vigentes de claritromicina [1].
+
+## Errores frecuentes
+
+- **Automedicarse o repetir la dosis antes de tiempo** para buscar un efecto más rápido. Más dosis no significa más beneficio y sí puede significar más riesgo.
+- **Suspenderlo sin consultar** cuando la indicación exige completar un tiempo o un tratamiento. La duración la define el profesional.
+- **No contar los otros productos que toma**: antigripales, suplementos, plantas medicinales y medicamentos de venta libre también interactúan.
+- **Confundir alivio con cura**: si el síntoma mejora, no necesariamente desapareció la causa. Si el problema vuelve o empeora, hay que evaluarlo.
+- **No revisar la técnica de uso** cuando se trata de un inhalador, una crema, gotas o un dispositivo: una técnica incorrecta hace que el medicamento no llegue donde debe.
+
+## Cuándo consultar
+
+Consulta si el síntoma no mejora en el plazo esperado, si empeora rápido o si aparece un signo de alarma: dificultad para respirar, dolor en el pecho, desmayo, sangrado, hinchazón de cara o garganta, confusión, fiebre alta persistente o reducción de la orina.
+
+Si estás embarazada, en lactancia, tienes enfermedad renal o hepática, tomas anticoagulantes o tienes varias enfermedades crónicas, consulta antes de empezar cualquier medicamento.
 
 ## Para profesionales
 
@@ -99,7 +178,37 @@ Puede usarse en faringitis o amigdalitis, pero la penicilina sigue siendo la pri
 
 No hay una interacción directa grave descrita, pero el alcohol puede empeorar las náuseas y la deshidratación. Pregunta a tu médico.
 
+### ¿Cuánto tarda en hacer efecto Claritromicina?
+
+2 a 3 horas [1] Su efecto se mantiene mientras el medicamento permanece en el cuerpo; la semivida es de 3 a 4 horas; más larga en insuficiencia renal [1]. La respuesta completa depende de la indicación y del paciente, así que el seguimiento lo define el profesional.
+
+### ¿Se puede usar Claritromicina en el embarazo?
+
+- Embarazo: no se recomienda sin una evaluación cuidadosa; se han descrito resultados contradictorios y posible aumento del riesgo de aborto [1]. - Lactancia: se excreta en la leche; la ficha técnica recomienda interrumpir la lactancia durante el tratamiento [1]. - Fertilidad: los estudios en animales no muestran efectos adversos [1].
+
+### ¿Qué efectos secundarios de Claritromicina son graves?
+
+Las más frecuentes son diarrea, náuseas, vómito, dolor abdominal y alteración del gusto [1]. - Frecuentes: cefalea, insomnio, rash, hiperhidrosis y pruebas hepáticas alteradas. - Poco frecuentes: candidiasis, leucopenia, ansiedad, mareo, tinnitus y palpitaciones. - Raras: pancreatitis, hepatitis, insuficiencia hepática, convulsiones, torsades de pointes, Stevens-Johnson, necrólisis epidérmica tóxica y colitis pseudomembranosa.
+
+## Artículos relacionados
+
+- [Monografía de Claritromicina en el vademécum](/vademecum/claritromicina)
+- [Claritromicina: para qué sirve](/articulos/claritromicina-para-que-sirve)
+- [Macrólidos: mecanismo, espectro e interacciones](/articulos/macrolidos-antibioticos)
+- [Antibióticos de uso ambulatorio](/vademecum/antibioticos-de-uso-ambulatorio)
+
 ## Fuentes
 
 1. AEMPS-CIMA. Ficha técnica de Claritromicina Cinfa 500 mg comprimidos recubiertos con película EFG. [Ver fuente](https://cima.aemps.es/cima/dochtml/ft/67639/FT_67639.html)
 2. INVIMA. Código Único de Medicamentos vigentes (datos.gov.co), consultado el 13-nov-2026. [Ver fuente](https://www.datos.gov.co/d/i7cb-raxc)
+
+- Agencia Española de Medicamentos y Productos Sanitarios (AEMPS). Ficha técnica de Claritromicina Cinfa 500 mg comprimidos recubiertos con película EFG [Internet]. Madrid: AEMPS; [citado 12 nov 2026]. Disponible en: https://cima.aemps.es/cima/dochtml/ft/67639/FT_67639.html
+- Organización Mundial de la Salud. AWaRe classification of antibiotics for evaluation and monitoring of use, 2023 [Internet]. Ginebra: OMS; 2023 [citado 12 nov 2026]. Disponible en: https://www.who.int/publications/i/item/9789240080379
+- Instituto Nacional de Vigilancia de Medicamentos y Alimentos (INVIMA). Código Único de Medicamentos vigentes [conjunto de datos en Internet]. Bogotá: Datos Abiertos Colombia; [citado 12 nov 2026]. Disponible en: https://www.datos.gov.co/d/i7cb-raxc
+- Cipolle RJ, Strand LM, Morley PC. Pharmaceutical care practice: the patient-centered approach to medication management services. 3.ª ed. Nueva York: McGraw-Hill Medical; 2012.
+
+## Sobre este artículo
+
+Este artículo es información educativa y no reemplaza la consulta con un profesional de la salud. No es una fórmula médica ni una recomendación de tratamiento para una persona concreta.
+
+**Autor:** Equipo editorial de Edvanta. **Revisión clínica:** pendiente de asignación. Si encuentras un error o una fuente desactualizada, escríbenos para corregirlo.
