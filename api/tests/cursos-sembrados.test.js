@@ -303,7 +303,7 @@ describe('farmacoterapia: lo que se ve no trae marcas de trabajo', () => {
   });
 });
 
-describe('gestión de calidad con las normas ISO vigentes (188 y 190)', () => {
+describe('gestión de calidad con las normas ISO vigentes (188, 190 y 191)', () => {
   it('la unidad 3 y su quiz citan ISO 9001:2026, sin duplicados', async () => {
     const { rows } = await pglite.query(
       `SELECT m.title AS unidad, a.title AS quiz
@@ -329,6 +329,21 @@ describe('gestión de calidad con las normas ISO vigentes (188 y 190)', () => {
         WHERE c.title = 'Curso de Gestión de Calidad Farmacéutica' AND b.deleted_at IS NULL AND b.name LIKE '%9001:2015%'`,
     );
     expect(viejos).toEqual([]);
+  });
+
+  it('las fuentes de sus actividades citan ISO 9000:2026 e ISO 9001:2026 (191)', async () => {
+    const { rows } = await pglite.query(
+      `SELECT a.title,
+              a.support_html LIKE '%ISO 9000:2026 e ISO 9001:2026%' AS cita_2026,
+              a.support_html LIKE '%9001:2015%' OR a.support_html LIKE '%9000:2015%' AS cita_2015
+         FROM aula_activities a
+         JOIN aula_courses c ON c.id = a.course_id
+        WHERE c.kind = 'edvanta' AND c.title = 'Curso de Gestión de Calidad Farmacéutica'
+          AND c.deleted_at IS NULL AND a.deleted_at IS NULL
+        ORDER BY a.sort_order, a.id`,
+    );
+    expect(rows.filter((r) => r.cita_2026)).toHaveLength(5);
+    expect(rows.filter((r) => r.cita_2015)).toEqual([]);
   });
 });
 
