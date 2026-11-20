@@ -87,3 +87,11 @@ Las clases son de otro bloque; aquí solo se documenta lo encontrado al verifica
 | Endocrina: «Sulfonilureas y pioglitazona…» | Glibenclamida Normon, CIMA 58304 | La ficha da 404 |
 | Endocrina: «Calcio, vitamina D y bisfosfonatos» | Alendronato semanal Normon, CIMA 65647 | La ficha da 404; una vigente es la 70911 |
 | Respiratoria y asma/EPOC: GPC de EPOC | `GPC_Comp_EPOC.pdf` de MinSalud | La dirección da 404 |
+
+## 20-nov: del caso al certificado (commit 001e5b6)
+
+- 23 casos sin curso enlazan ahora a su curso propio: Farmacología Respiratoria, Renal, Gastrointestinal, Anticoagulantes y Antiagregantes, Farmacoterapia de la Diabetes y Farmacología del SNC. Los 10 sin curso propio (celulitis, vaginosis, herpes zóster, sepsis, meningitis, dengue, gota, artritis reumatoide, anemia y anafilaxia) llevan a la Escuela de Salud.
+- Bloque «Estudiar con certificado» al inicio y al final del examen: acompañamiento por WhatsApp, revisión de actividades, certificado verificable y «desde COP 60.000 los primeros 7 días». El botón va a la ficha con ?camino=certificado, que lleva al pago a quien tiene sesión.
+- El HTML para Google de cada caso enlaza el curso del tema.
+- IndexNow: 67 URL.
+- **Falta:** cursos propios de infecciosas (antibióticos e infecciones de piel o ITS), reumatología y urgencias, que cerrarían la venta de esos 10 casos. Medir en Search Console los clics de /casos-clinicos/ y las compras con origen en un caso.
