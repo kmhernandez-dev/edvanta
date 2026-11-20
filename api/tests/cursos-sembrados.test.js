@@ -305,10 +305,20 @@ describe('farmacoterapia: lo que se ve no trae marcas de trabajo', () => {
 
 // Va al final: publica de verdad, y lo de arriba revisa los borradores.
 describe('publicación aprobada al arrancar', () => {
-  it('publica los quince cursos aprobados con el mismo camino del botón', async () => {
-    // 4 de farmacoterapia (055) + 10 de habilidades blandas (075) + manipulación de alimentos (163).
+  it('publica todo el catálogo aprobado con el mismo camino del botón', async () => {
+    // Desde 183 se aprueba el catálogo completo de Edvanta (antes eran 15:
+    // 4 de farmacoterapia, 10 de habilidades blandas y manipulación de
+    // alimentos). Todos deben pasar la validación del botón «Publicar».
+    const [{ total }] = (await pglite.query(
+      "SELECT count(*)::int AS total FROM aula_courses WHERE kind = 'edvanta' AND deleted_at IS NULL",
+    )).rows;
+    expect(total).toBeGreaterThanOrEqual(15);
     const hechos = await publicarAprobados(db);
-    expect(hechos).toHaveLength(15);
+    expect(hechos).toHaveLength(total);
+    const { rows: conError } = await pglite.query(
+      'SELECT course_id, error FROM aula_publicaciones_aprobadas WHERE error IS NOT NULL',
+    );
+    expect(conError).toEqual([]);
 
     const { rows } = await pglite.query(
       `SELECT c.title, c.status, v.version_number, v.snapshot->'totals'->>'lessons' AS clases, p.error
@@ -344,7 +354,7 @@ describe('publicación aprobada al arrancar', () => {
     const [{ n }] = (await pglite.query(
       "SELECT count(*)::int AS n FROM aula_audit_log WHERE action = 'curso.publicar'",
     )).rows;
-    expect(n).toBe(15);
+    expect(n).toBe(total);
   }, 240_000);
 
   it('al volver a arrancar no publica nada otra vez', async () => {
