@@ -306,3 +306,6 @@
 @media (prefers-reduced-motion: reduce) {
   .camino-ventana { animation: none; }
 }
+
+.aula-barra-cert__texto a { color: var(--ds-navy); font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
+.aula-barra-cert__error { color: var(--ds-danger); font-weight: 600; }

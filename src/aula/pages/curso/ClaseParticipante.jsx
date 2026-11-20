@@ -229,7 +229,7 @@ export default function ClaseParticipante() {
             )}
           </>
         )}
-        banner={<BarraCertificado courseId={courseId} cursoSlug={data.courseSlug} />}
+        banner={<BarraCertificado courseId={courseId} cursoSlug={data.courseSlug} volverA={rutas.certificado} />}
         footerActions={(
           <>
             <Button

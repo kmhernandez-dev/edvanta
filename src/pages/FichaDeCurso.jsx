@@ -559,7 +559,9 @@ export default function FichaDeCurso({ modo = 'propio', slugPublico = '' }) {
   // Dos caminos: solo en los propios con certificado de pago y para quien aún no está dentro.
   const conCaminos = propio && precioVisible > 0 && estado !== 'dentro';
   const caminos = conCaminos
-    ? { onAbrir: irAInscripcion, trabajando: camino }
+    // «Con certificado» va directo a la compra (cuenta → inscripción → Mercado
+    // Pago); «Gratis» lleva a la comparativa de la landing (pedido de Karla, 20-nov).
+    ? { onAbrir: (c) => (c === 'certificado' ? estudiarConCertificado() : irAInscripcion()), trabajando: camino }
     : null;
   const notaCertificado = {
     available: precioVisible > 0
@@ -764,7 +766,7 @@ export default function FichaDeCurso({ modo = 'propio', slugPublico = '' }) {
           nombre={nombre}
           accion={accion}
           boton={propio && !conCaminos ? boton() : null}
-          compra={conCaminos ? { oferta: oferta || { precio: precioVisible }, onComprar: irAInscripcion, ocupado: camino === 'certificado' } : {}}
+          compra={conCaminos ? { oferta: oferta || { precio: precioVisible }, onComprar: estudiarConCertificado, ocupado: camino === 'certificado' } : {}}
         />
 
         {/* La guía que lleva el curso a la práctica (Hotmart). Solo si hay una de verdad relacionada. */}
@@ -837,7 +839,7 @@ export default function FichaDeCurso({ modo = 'propio', slugPublico = '' }) {
                 size="sm"
                 variant="primary"
                 className="w-full shrink-0 min-[420px]:w-auto"
-                onClick={irAInscripcion}
+                onClick={estudiarConCertificado}
                 loading={camino === 'certificado'}
                 loadingLabel="Un momento…"
                 iconRight={ArrowRight}

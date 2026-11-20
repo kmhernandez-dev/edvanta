@@ -161,6 +161,11 @@ export default function ClasePublica() {
 
   const d = estado.datos;
   const ruta = d ? `/${d.curso.slug}/clase/${d.clase.slug}` : '';
+  // Si el curso cobra el certificado, el botón principal lleva directo a la
+  // compra: la inscripción con «?camino=certificado» crea la cuenta si hace
+  // falta, inscribe y abre Mercado Pago (pedido de Karla, 20-nov).
+  const conCertificado = Number(d?.curso?.precioCertificado) > 0;
+  const compraDirecta = d ? `/${d.curso.slug}/inscripcion?camino=certificado` : '';
 
   useEffect(() => {
     if (!d) return;
@@ -252,8 +257,17 @@ export default function ClasePublica() {
                 <p className="cp-sub">Clase {d.numero} de {d.total} clases abiertas del <Link to={`/${d.curso.slug}`}>{d.curso.nombre}</Link>.</p>
                 <Revision revision={d.revision || REVISION_DE_CLASES} />
                 <div className="cp-acciones">
-                  <Link to={`/${d.curso.slug}`} className="cp-boton"><GraduationCap size={18} aria-hidden="true" /> Inscríbete gratis al curso</Link>
-                  <a href="#indice-de-clases" className="cp-boton cp-boton--suave"><ListOrdered size={18} aria-hidden="true" /> Ver todas las clases</a>
+                  {conCertificado ? (
+                    <>
+                      <Link to={compraDirecta} className="cp-boton"><Award size={18} aria-hidden="true" /> Estudiar con certificado</Link>
+                      <Link to={`/${d.curso.slug}`} className="cp-boton cp-boton--suave"><GraduationCap size={18} aria-hidden="true" /> Inscribirme gratis</Link>
+                    </>
+                  ) : (
+                    <>
+                      <Link to={`/${d.curso.slug}`} className="cp-boton"><GraduationCap size={18} aria-hidden="true" /> Inscríbete gratis al curso</Link>
+                      <a href="#indice-de-clases" className="cp-boton cp-boton--suave"><ListOrdered size={18} aria-hidden="true" /> Ver todas las clases</a>
+                    </>
+                  )}
                 </div>
               </div>
             </header>
@@ -266,8 +280,8 @@ export default function ClasePublica() {
                 </details>
                 <div className="cp-certificado">
                   <Award size={22} aria-hidden="true" />
-                  <p><strong>Certifica lo que aprendes.</strong> Inscríbete gratis, presenta las evaluaciones y obtén tu certificado verificable.</p>
-                  <Link to={`/${d.curso.slug}`} className="cp-enlace">Ir al curso <ArrowRight size={14} aria-hidden="true" /></Link>
+                  <p><strong>Certifica lo que aprendes.</strong> Con el certificado, un docente revisa tus actividades, tienes acompañamiento por WhatsApp y al terminar emites tu certificado verificable.</p>
+                  <Link to={conCertificado ? compraDirecta : `/${d.curso.slug}`} className="cp-enlace">{conCertificado ? 'Estudiar con certificado' : 'Ir al curso'} <ArrowRight size={14} aria-hidden="true" /></Link>
                 </div>
               </aside>
 
@@ -295,13 +309,20 @@ export default function ClasePublica() {
                 <section className="cp-cta" aria-labelledby="cp-cta-titulo">
                   <Sparkles size={22} aria-hidden="true" />
                   <div>
-                    <h2 id="cp-cta-titulo">Sigue el curso completo, gratis</h2>
+                    <h2 id="cp-cta-titulo">{conCertificado ? 'Sigue el curso completo y certifícate' : 'Sigue el curso completo, gratis'}</h2>
                     <p>
                       {d.curso.clases ? `El ${d.curso.nombre} tiene ${d.curso.clases} clases${d.curso.unidades ? ` en ${d.curso.unidades} unidades` : ''}. ` : ''}
                       En el aula guardas tu avance, tomas apuntes, presentas quizzes, actividades y foros, y al terminar emites tu certificado del {d.curso.nombre}.
                     </p>
                   </div>
-                  <Link to={`/${d.curso.slug}`} className="cp-boton">Inscribirme gratis</Link>
+                  {conCertificado ? (
+                    <div className="cp-acciones">
+                      <Link to={compraDirecta} className="cp-boton">Estudiar con certificado</Link>
+                      <Link to={`/${d.curso.slug}`} className="cp-boton cp-boton--suave">Inscribirme gratis</Link>
+                    </div>
+                  ) : (
+                    <Link to={`/${d.curso.slug}`} className="cp-boton">Inscribirme gratis</Link>
+                  )}
                 </section>
               </article>
             </div>

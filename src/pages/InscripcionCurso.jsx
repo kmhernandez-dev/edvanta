@@ -100,13 +100,16 @@ export default function InscripcionCurso() {
     });
   }, [ficha, nombre]);
 
-  // Volvió de crear la cuenta: sigue con el camino que había elegido.
+  // Llega con «?camino=certificado» (botón de compra de una clase abierta o
+  // de la ficha) o vuelve de crear la cuenta: sigue directo con ese camino.
+  // Un visitante que quiere el certificado va de una vez a crear su cuenta.
   const camino = new URLSearchParams(search).get('camino');
   const [hecho, setHecho] = useState(false);
   useEffect(() => {
-    if (!ficha || !ins.listo || hecho || !camino || ins.estado === 'visitante') return;
+    if (!ficha || !ins.listo || hecho || !camino) return;
+    if (ins.estado === 'visitante' && camino !== 'certificado') return;
     setHecho(true);
-    navigate(`/${slug}/inscripcion`, { replace: true });
+    if (ins.estado !== 'visitante') navigate(`/${slug}/inscripcion`, { replace: true });
     if (camino === 'certificado') ins.conCertificado();
     else if (camino === 'gratis') ins.gratis();
   }, [ficha, ins.listo, ins.estado, hecho, camino, navigate, slug, ins]);
@@ -117,11 +120,16 @@ export default function InscripcionCurso() {
   if (ficha && (!ficha.capacidades?.inscribirse || !(Number(ficha.certificado?.precio) > 0))) {
     return <Navigate to={ficha.url || `/${slug}`} replace />;
   }
-  if (!ficha) {
+  // Camino directo a la compra: sin mostrar la landing mientras se crea la
+  // cuenta o se abre Mercado Pago.
+  const preparandoPago = !ins.error && (camino === 'certificado' || ins.trabajando === 'certificado');
+  if (!ficha || preparandoPago) {
     return (
       <div className="min-h-screen bg-white">
         <SiteHeader />
-        <p className="py-24 text-center text-sm font-semibold text-edvanta-muted">Cargando…</p>
+        <p className="py-24 text-center text-sm font-semibold text-edvanta-muted" role="status">
+          {preparandoPago ? 'Preparando tu pago seguro con Mercado Pago…' : 'Cargando…'}
+        </p>
       </div>
     );
   }
