@@ -129,5 +129,6 @@ export default {
     ['Penicilina benzatínica', '/vademecum/penicilina-benzatinica', 'Vademécum'],
     ['Amoxicilina', '/vademecum/amoxicilina', 'Vademécum'],
     ['Amoxicilina: para qué sirve', '/articulos/amoxicilina-para-que-sirve', 'Artículo'],
+    ['Curso de Farmacología Respiratoria', '/curso-de-farmacologia-respiratoria', 'Curso gratis'],
   ],
 };

@@ -135,5 +135,6 @@ export default {
     ['Bisacodilo', '/vademecum/bisacodilo', 'Vademécum'],
     ['Estreñimiento e hipotiroidismo', '/articulos/estrenimiento-e-hipotiroidismo', 'Artículo'],
     ['Medicamentos para el aparato digestivo', '/vademecum/medicamentos-para-el-aparato-digestivo', 'Vademécum'],
+    ['Curso de Farmacología Gastrointestinal', '/curso-de-farmacologia-gastrointestinal', 'Curso gratis'],
   ],
 };

@@ -236,6 +236,10 @@ export function htmlDeCaso(caso, { area, relacionados = [], siguiente = null } =
   partes.push(`<section id="respuestas"><h2>Respuestas y explicación</h2><ol>${caso.preguntas.map((p, i) => `<li><p><strong>Respuesta:</strong> ${p.tipo === 'opcion' ? `${letraDeOpcion(caso, i, p.correcta).toLowerCase()}) ` : ''}${conCitas(respuestaCorrecta(p))}</p><p>${conCitas(p.explicacion)}</p></li>`).join('')}</ol></section>`);
   if (caso.claves?.length) partes.push(`<section id="claves"><h2>Puntos clave para el parcial</h2><ul>${caso.claves.map((c) => `<li>${conCitas(c)}</li>`).join('')}</ul></section>`);
   if (relacionados.length) partes.push(`<section id="profundiza"><h2>Para profundizar</h2><ul>${relacionados.map((e) => `<li><a href="${esc(e.ruta)}">${esc(e.titulo)}</a>${e.tipo ? ` · ${esc(e.tipo)}` : ''}</li>`).join('')}</ul></section>`);
+  const curso = (caso.enlaces || []).find((e) => e[2] === 'Curso gratis');
+  partes.push(curso
+    ? `<section id="certificado"><h2>Estudia el tema con certificado</h2><p>El <a href="${esc(curso[1])}">${esc(curso[0])}</a> de Edvanta se puede estudiar gratis o con certificado verificable, acompañamiento por WhatsApp y revisión de actividades.</p></section>`
+    : '<section id="certificado"><h2>Estudia con certificado</h2><p>Los cursos de la <a href="/escuelas/salud-y-farmacia-clinica">Escuela de Salud y Farmacia Clínica</a> se pueden estudiar gratis o con certificado verificable.</p></section>');
   if (siguiente) partes.push(`<p>Siguiente caso: <a href="${esc(rutaDeCaso(siguiente))}">${esc(siguiente.titulo)}</a> · <a href="${RUTA_BASE}">Todos los casos clínicos</a></p>`);
   partes.push(`<section id="referencias"><h2>Referencias</h2><ol>${caso.referencias.map((r, i) => `<li id="ref-${i + 1}">${esc(r.texto)}</li>`).join('')}</ol></section>`);
   partes.push('<p>Material educativo para estudiantes y profesionales de la salud. Los casos son ficticios y no reemplazan las guías vigentes ni el criterio clínico.</p>');

@@ -303,3 +303,13 @@
   .cc *, .cc *::before, .cc *::after { animation: none !important; transition: none !important; }
   .cc-confeti { display: none; }
 }
+
+/* ── Del caso al certificado ── */
+.cc-cta--certificado { border-color: #f4c46b; background: linear-gradient(135deg, #fff8ea 0%, #f3f0ff 100%); }
+.cc-cta--certificado > svg { color: #d9930d; }
+.cc-beneficios { display: grid; gap: 6px; margin: 10px 0 0; padding: 0; list-style: none; font-size: 0.9rem; color: var(--cc-tinta); }
+.cc-beneficios li { display: flex; gap: 8px; align-items: flex-start; line-height: 1.45; }
+.cc-beneficios svg { flex-shrink: 0; margin-top: 2px; color: var(--cc-verde); }
+.cc-cta__botones { display: grid; gap: 8px; justify-items: center; }
+.cc-enlace-suave { font-size: 0.875rem; font-weight: 600; color: var(--cc-muted); }
+.cc a.cc-enlace-suave { color: var(--cc-muted); }

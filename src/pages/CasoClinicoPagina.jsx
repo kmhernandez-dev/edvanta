@@ -203,6 +203,45 @@ function Relacionar({ p, orden, valor = {}, onCambio, revelar }) {
   );
 }
 
+const ESCUELA_SALUD = ['Escuela de Salud y Farmacia Clínica', '/escuelas/salud-y-farmacia-clinica'];
+
+/**
+ * Del caso al curso y al certificado: lo que vende. Los beneficios y el
+ * precio son los del camino «Estudiar con certificado» de la ficha
+ * (COP 60.000 en Colombia y 65.000 en otros países, con descuento, si
+ * se compra al inscribirse o en los primeros 7 días).
+ */
+function CertificadoCta({ curso, final = null }) {
+  const destino = curso || ESCUELA_SALUD;
+  const aprobado = final && final.nota >= NOTA_APROBATORIA;
+  const titulo = final
+    ? (aprobado ? `Aprobaste el caso con ${notaEscrita(final.nota)}. Ahora certifícalo` : 'Refuerza el tema y certifícate')
+    : 'Lleva este tema a tu hoja de vida';
+  return (
+    <div className="cc-cta cc-cta--certificado">
+      <Award size={30} aria-hidden="true" />
+      <div>
+        <h3>{titulo}</h3>
+        <p>
+          {curso ? <>Estudia el <strong>{curso[0]}</strong> con certificado verificable de Edvanta.</> : <>Elige un curso de la {ESCUELA_SALUD[0]} y estúdialo con certificado verificable.</>}
+        </p>
+        <ul className="cc-beneficios">
+          <li><Check size={16} aria-hidden="true" /> Acompañamiento personalizado por WhatsApp (respuesta en 48 horas hábiles)</li>
+          <li><Check size={16} aria-hidden="true" /> Revisión de tus actividades por una química farmacéutica o un docente</li>
+          <li><Check size={16} aria-hidden="true" /> Certificado con código de verificación para tu hoja de vida</li>
+          <li><Check size={16} aria-hidden="true" /> Desde COP 60.000 si lo eliges al inscribirte o en tus primeros 7 días</li>
+        </ul>
+      </div>
+      <div className="cc-cta__botones">
+        <Link to={curso ? `${curso[1]}?camino=certificado` : destino[1]} className="cc-boton">
+          <GraduationCap size={18} aria-hidden="true" /> {curso ? 'Estudiar con certificado' : 'Ver cursos con certificado'}
+        </Link>
+        {curso && <Link to={curso[1]} className="cc-enlace-suave">o estudiar gratis</Link>}
+      </div>
+    </div>
+  );
+}
+
 /** Lo que respondió la persona, en texto (para el repaso). */
 function respuestaEscrita(p, r) {
   if (r == null || r === '') return 'Sin responder';
@@ -383,6 +422,7 @@ export default function CasoClinicoPagina() {
                     <span>{caso.minutos} minutos, sin ayudas. La nota y las respuestas, al entregar.</span>
                   </button>
                 </div>
+                <div style={{ marginTop: 20 }}><CertificadoCta curso={curso} /></div>
                 {mejor && (
                   <p className="cc-mejor"><Trophy size={16} aria-hidden="true" /> Tu mejor resultado: {notaEscrita(mejor.nota)} ({mejor.mejor} %) en {mejor.intentos} {mejor.intentos === 1 ? 'intento' : 'intentos'}. ¿Lo superas?</p>
                 )}
@@ -502,16 +542,7 @@ export default function CasoClinicoPagina() {
                   </div>
                 </section>
 
-                {curso && (
-                  <div className="cc-cta">
-                    <GraduationCap size={28} aria-hidden="true" />
-                    <div>
-                      <h3>Domina el tema con el {curso[0]}</h3>
-                      <p>Curso gratuito con clases verificadas por una química farmacéutica. Al terminar puedes obtener tu certificado.</p>
-                    </div>
-                    <Link to={curso[1]} className="cc-boton">Inscribirme gratis</Link>
-                  </div>
-                )}
+                <CertificadoCta curso={curso} final={final} />
 
                 <section className="cc-panel cc-repaso" style={{ marginTop: 16 }}>
                   <h2>Repaso de tus respuestas</h2>

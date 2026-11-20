@@ -17,6 +17,8 @@ const CURSOS_PROPIOS = [
   '/curso-de-farmacoterapia-de-la-hipertension-arterial', '/curso-de-farmacoterapia-de-la-insuficiencia-cardiaca',
   '/curso-de-farmacologia-cardiovascular', '/curso-de-farmacologia-del-sistema-nervioso-central',
   '/curso-de-farmacologia-respiratoria', '/curso-de-farmacoterapia-del-asma-y-la-epoc',
+  '/curso-de-farmacologia-renal', '/curso-de-farmacologia-gastrointestinal', '/curso-de-anticoagulantes-y-antiagregantes',
+  '/curso-de-psicofarmacologia', '/curso-de-farmacologia-oncologica',
 ];
 
 const META = 66;

@@ -129,5 +129,6 @@ export default {
     ['Acetaminofén (paracetamol)', '/vademecum/acetaminofen', 'Vademécum'],
     ['Acetaminofén: para qué sirve', '/articulos/acetaminofen-para-que-sirve', 'Artículo'],
     ['Acetilcisteína', '/vademecum/acetilcisteina', 'Vademécum'],
+    ['Curso de Farmacología del Sistema Nervioso Central', '/curso-de-farmacologia-del-sistema-nervioso-central', 'Curso gratis'],
   ],
 };

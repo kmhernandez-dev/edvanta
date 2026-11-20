@@ -138,5 +138,6 @@ export default {
     ['Ciprofloxacino', '/vademecum/ciprofloxacino', 'Vademécum'],
     ['Ceftriaxona', '/vademecum/ceftriaxona', 'Vademécum'],
     ['Infección urinaria: síntomas y tratamiento', '/articulos/infeccion-urinaria-sintomas-tratamiento', 'Artículo'],
+    ['Curso de Farmacología Renal', '/curso-de-farmacologia-renal', 'Curso gratis'],
   ],
 };

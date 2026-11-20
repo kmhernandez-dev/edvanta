@@ -149,5 +149,6 @@ export default {
     ['Omeprazol', '/vademecum/omeprazol', 'Vademécum'],
     ['Claritromicina', '/vademecum/claritromicina', 'Vademécum'],
     ['Gastritis: síntomas, causas y tratamiento', '/articulos/gastritis-sintomas-causas-tratamiento', 'Artículo'],
+    ['Curso de Farmacología Gastrointestinal', '/curso-de-farmacologia-gastrointestinal', 'Curso gratis'],
   ],
 };

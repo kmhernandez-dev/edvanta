@@ -129,5 +129,6 @@ export default {
     ['Metoclopramida', '/vademecum/metoclopramida', 'Vademécum'],
     ['Ondansetrón', '/vademecum/ondansetron', 'Vademécum'],
     ['Dimenhidrinato', '/vademecum/dimenhidrinato', 'Vademécum'],
+    ['Curso de Farmacología Gastrointestinal', '/curso-de-farmacologia-gastrointestinal', 'Curso gratis'],
   ],
 };

@@ -126,5 +126,6 @@ export default {
     ['Medicamentos para la hipertensión arterial', '/vademecum/medicamentos-para-la-hipertension-arterial', 'Vademécum'],
     ['Metformina', '/vademecum/metformina', 'Vademécum'],
     ['Resistencia a la insulina: síntomas', '/articulos/resistencia-a-la-insulina-sintomas', 'Artículo'],
+    ['Curso de Farmacoterapia de la Diabetes', '/curso-de-farmacoterapia-de-la-diabetes', 'Curso gratis'],
   ],
 };

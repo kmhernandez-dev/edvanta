@@ -121,5 +121,6 @@ export default {
     ['Espironolactona', '/vademecum/espironolactona', 'Vademécum'],
     ['Lactulosa', '/vademecum/lactulosa', 'Vademécum'],
     ['Medicamentos para el aparato digestivo', '/vademecum/medicamentos-para-el-aparato-digestivo', 'Vademécum'],
+    ['Curso de Farmacología Gastrointestinal', '/curso-de-farmacologia-gastrointestinal', 'Curso gratis'],
   ],
 };

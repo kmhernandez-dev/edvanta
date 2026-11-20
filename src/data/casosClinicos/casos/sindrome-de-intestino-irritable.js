@@ -133,5 +133,6 @@ export default {
     ['Butilescopolamina', '/vademecum/butilescopolamina', 'Vademécum'],
     ['Loperamida', '/vademecum/loperamida', 'Vademécum'],
     ['Medicamentos para el aparato digestivo', '/vademecum/medicamentos-para-el-aparato-digestivo', 'Vademécum'],
+    ['Curso de Farmacología Gastrointestinal', '/curso-de-farmacologia-gastrointestinal', 'Curso gratis'],
   ],
 };

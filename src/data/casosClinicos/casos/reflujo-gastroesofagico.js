@@ -128,5 +128,6 @@ export default {
     ['Esomeprazol', '/vademecum/esomeprazol', 'Vademécum'],
     ['Omeprazol: para qué sirve', '/articulos/omeprazol-para-que-sirve', 'Artículo'],
     ['Medicamentos para el aparato digestivo', '/vademecum/medicamentos-para-el-aparato-digestivo', 'Vademécum'],
+    ['Curso de Farmacología Gastrointestinal', '/curso-de-farmacologia-gastrointestinal', 'Curso gratis'],
   ],
 };
