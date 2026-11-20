@@ -303,6 +303,35 @@ describe('farmacoterapia: lo que se ve no trae marcas de trabajo', () => {
   });
 });
 
+describe('gestión de calidad con las normas ISO vigentes (188 y 190)', () => {
+  it('la unidad 3 y su quiz citan ISO 9001:2026, sin duplicados', async () => {
+    const { rows } = await pglite.query(
+      `SELECT m.title AS unidad, a.title AS quiz
+         FROM aula_assessments a
+         JOIN aula_modules m ON m.id = a.module_id
+         JOIN aula_courses c ON c.id = a.course_id
+        WHERE c.kind = 'edvanta' AND c.title = 'Curso de Gestión de Calidad Farmacéutica'
+          AND c.deleted_at IS NULL AND a.deleted_at IS NULL
+          AND a.title LIKE 'Evaluación de la Unidad 3 %'`,
+    );
+    expect(rows).toEqual([{
+      unidad: 'Unidad 3. Modelos de sistema de gestión de calidad: ICH Q10 e ISO 9001:2026',
+      quiz: 'Evaluación de la Unidad 3 · Modelos de sistema de gestión de calidad: ICH Q10 e ISO 9001:2026',
+    }]);
+
+    const { rows: viejos } = await pglite.query(
+      `SELECT 'quiz' AS tipo, a.title AS nombre FROM aula_assessments a
+         JOIN aula_courses c ON c.id = a.course_id
+        WHERE c.title = 'Curso de Gestión de Calidad Farmacéutica' AND a.deleted_at IS NULL AND a.title LIKE '%9001:2015%'
+       UNION ALL
+       SELECT 'banco', b.name FROM aula_question_banks b
+         JOIN aula_courses c ON c.id = b.course_id
+        WHERE c.title = 'Curso de Gestión de Calidad Farmacéutica' AND b.deleted_at IS NULL AND b.name LIKE '%9001:2015%'`,
+    );
+    expect(viejos).toEqual([]);
+  });
+});
+
 // Va al final: publica de verdad, y lo de arriba revisa los borradores.
 describe('publicación aprobada al arrancar', () => {
   it('publica todo el catálogo aprobado con el mismo camino del botón', async () => {
