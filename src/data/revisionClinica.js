@@ -361,6 +361,69 @@ const REVISADOS_POR_KARLA_2026_11_18 = [
   'levotiroxina-para-que-sirve',
 ];
 
+/**
+ * 20 de noviembre de 2026: Karla Hernández revisó y aprobó la ampliación
+ * SEO de las guías «para qué sirve». La revisión cubre indicaciones, dosis,
+ * advertencias, interacciones, embarazo, efectos adversos y fuentes.
+ */
+const KARLA_2026_11_20 = { ...KARLA_2026_11_09, reviewedAt: '2026-11-20' };
+
+const REVISADOS_POR_KARLA_2026_11_20 = [
+  'acetaminofen-para-que-sirve',
+  'acido-folico-para-que-sirve',
+  'alopurinol-para-que-sirve',
+  'amlodipino-para-que-sirve',
+  'amoxicilina-con-acido-clavulanico-para-que-sirve',
+  'amoxicilina-para-que-sirve',
+  'antibioticos-para-que-sirven-tipos',
+  'apixaban-para-que-sirve',
+  'atorvastatina-para-que-sirve',
+  'azitromicina-para-que-sirve',
+  'buscapina-para-que-sirve',
+  'cefalexina-para-que-sirve',
+  'ceftriaxona-para-que-sirve',
+  'celecoxib-para-que-sirve',
+  'ciprofloxacino-para-que-sirve',
+  'claritromicina-para-que-sirve',
+  'clindamicina-para-que-sirve',
+  'dapagliflozina-para-que-sirve',
+  'diclofenaco-para-que-sirve',
+  'dicloxacilina-para-que-sirve',
+  'dipirona-para-que-sirve',
+  'doxiciclina-para-que-sirve',
+  'empagliflozina-para-que-sirve',
+  'enalapril-para-que-sirve',
+  'etoricoxib-para-que-sirve',
+  'fluconazol-para-que-sirve',
+  'fosfomicina-para-que-sirve',
+  'furosemida-para-que-sirve',
+  'hidroclorotiazida-para-que-sirve',
+  'ibuprofeno-para-que-sirve',
+  'ketorolaco-para-que-sirve',
+  'levofloxacino-para-que-sirve',
+  'levotiroxina-para-que-sirve',
+  'loratadina-para-que-sirve',
+  'losartan-para-que-sirve',
+  'manzanilla-para-que-sirve',
+  'meloxicam-para-que-sirve',
+  'metformina-para-que-sirve',
+  'metocarbamol-para-que-sirve',
+  'metronidazol-para-que-sirve',
+  'naproxeno-para-que-sirve',
+  'nitrofurantoina-para-que-sirve',
+  'omeprazol-para-que-sirve',
+  'penicilina-benzatinica-para-que-sirve',
+  'prednisona-para-que-sirve',
+  'rosuvastatina-para-que-sirve',
+  'salbutamol-para-que-sirve',
+  'secnidazol-para-que-sirve',
+  'semaglutida-para-que-sirve',
+  'sertralina-para-que-sirve',
+  'tirzepatida-para-que-sirve',
+  'tramadol-para-que-sirve',
+  'trimetoprim-sulfametoxazol-para-que-sirve',
+];
+
 export const REVISION_CLINICA = Object.fromEntries([
   ...REVISADOS_POR_KARLA_2026_11_09.map((slug) => [slug, KARLA_2026_11_09]),
   ...REVISADOS_POR_KARLA_2026_11_12.map((slug) => [slug, KARLA_2026_11_12]),
@@ -368,6 +431,7 @@ export const REVISION_CLINICA = Object.fromEntries([
   ...REVISADOS_POR_KARLA_2026_11_13_LOTE2.map((slug) => [slug, KARLA_2026_11_13]),
   ...REVISADOS_POR_KARLA_2026_11_17.map((slug) => [slug, KARLA_2026_11_17]),
   ...REVISADOS_POR_KARLA_2026_11_18.map((slug) => [slug, KARLA_2026_11_18]),
+  ...REVISADOS_POR_KARLA_2026_11_20.map((slug) => [slug, KARLA_2026_11_20]),
 ]);
 
 /**

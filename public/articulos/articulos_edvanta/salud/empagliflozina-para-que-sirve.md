@@ -187,4 +187,4 @@ Las reacciones más frecuentes son las infecciones genitales por hongos, el aume
 
 Este artículo es información educativa y no reemplaza la consulta con un profesional de la salud. No es una fórmula médica ni una recomendación de tratamiento para una persona concreta.
 
-**Autor:** Equipo editorial de Edvanta. **Revisión clínica:** pendiente de asignación. Si encuentras un error o una fuente desactualizada, escríbenos para corregirlo.
+**Autora y revisora:** Karla Hernández, Química Farmacéutica. **Revisado:** 20 de noviembre de 2026. Si encuentras un error o una fuente desactualizada, escríbenos para corregirlo.
