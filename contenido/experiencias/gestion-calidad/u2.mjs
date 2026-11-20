@@ -61,7 +61,7 @@ export default [
       opciones: [
         { texto: 'Solo la Resolución 1160 de 2016, porque es la de calidad.', correcta: false, retro: 'Esa norma rige la fabricación. El servicio farmacéutico tiene su propio marco (Decreto 780 de 2016 y Resolución 1403 de 2007).' },
         { texto: 'Decreto 677 de 1995 y Resolución 1160 de 2016 para la planta; Decreto 780 de 2016 (Decreto 2200 de 2005 compilado) y Resolución 1403 de 2007 para el servicio farmacéutico; y la Resolución 3619 de 2013 si tiene laboratorio de control de calidad.', correcta: true, retro: 'Exacto: cada actividad tiene su norma y su autoridad, y la matriz las integra en un solo sistema.' },
-        { texto: 'ISO 9001:2015, porque reemplaza a las normas colombianas.', correcta: false, retro: 'ISO 9001 es voluntaria y complementa, pero no reemplaza, los requisitos legales obligatorios.' },
+        { texto: 'ISO 9001:2026, porque reemplaza a las normas colombianas.', correcta: false, retro: 'ISO 9001 es voluntaria y complementa, pero no reemplaza, los requisitos legales obligatorios.' },
       ],
     },
     errores: [

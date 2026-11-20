@@ -13,7 +13,7 @@ export default [
     },
     objetivos: [
       'Explicar qué es un sistema de gestión de calidad (SGC) y por qué una organización farmacéutica lo necesita además de cumplir especificaciones.',
-      'Ubicar los tres marcos que integra el curso: ICH Q10, ISO 9001:2015 y la normativa colombiana del INVIMA y el Ministerio de Salud.',
+      'Ubicar los tres marcos que integra el curso: ICH Q10, ISO 9001:2026 y la normativa colombiana del INVIMA y el Ministerio de Salud.',
       'Reconocer la ruta del curso y cómo se conecta con los cursos de BPM, CAPA, auditoría, riesgos y documentación.',
     ],
     conceptos: [
@@ -26,7 +26,7 @@ export default [
       centro: 'SGC farmacéutico',
       ramas: [
         { titulo: 'ICH Q10', icono: 'Globe', nodos: ['Modelo de sistema de calidad farmacéutico', 'Ciclo de vida del producto', 'Responsabilidad de la dirección'] },
-        { titulo: 'ISO 9001:2015', icono: 'Award', nodos: ['Enfoque por procesos', 'Pensamiento basado en riesgos', 'Ciclo PHVA'] },
+        { titulo: 'ISO 9001:2026', icono: 'Award', nodos: ['Enfoque por procesos', 'Pensamiento basado en riesgos', 'Ciclo PHVA'] },
         { titulo: 'Colombia', icono: 'Landmark', nodos: ['Decreto 677 de 1995', 'BPM por Resolución 1160 de 2016', 'Servicio farmacéutico: Decreto 780 de 2016 y Resolución 1403 de 2007'] },
         { titulo: 'Herramientas', icono: 'Wrench', nodos: ['Procesos e indicadores', 'Gestión del cambio', 'Revisión por la dirección'] },
       ],
@@ -43,14 +43,14 @@ export default [
         titulo: 'Tres marcos que se integran',
         parrafos: [
           '**ICH Q10**, la guía armonizada del Consejo Internacional de Armonización, describe un modelo de **sistema de calidad farmacéutico** para todo el ciclo de vida del producto: desarrollo, transferencia de tecnología, fabricación comercial y discontinuación. Se apoya en las BPM y agrega elementos de gestión como la revisión por la dirección, la gestión del conocimiento y la gestión de riesgos.',
-          '**ISO 9001:2015** es la norma internacional de requisitos para un SGC aplicable a cualquier organización. Aporta la estructura de gestión: contexto de la organización, liderazgo, planificación con base en riesgos, apoyo, operación, evaluación del desempeño y mejora. Muchas droguerías, distribuidores, laboratorios de análisis y prestadores de servicio farmacéutico la usan para certificarse.',
+          '**ISO 9001:2026**, sexta edición publicada en septiembre de 2026 que reemplazó a la de 2015, es la norma internacional de requisitos para un SGC aplicable a cualquier organización. Aporta la estructura de gestión: contexto de la organización, liderazgo, planificación con base en riesgos, apoyo, operación, evaluación del desempeño y mejora. Muchas droguerías, distribuidores, laboratorios de análisis y prestadores de servicio farmacéutico la usan para certificarse.',
           'La **normativa colombiana** es la obligatoria. El Decreto 677 de 1995 regula los registros sanitarios y el control de calidad de los medicamentos; la Resolución 1160 de 2016 adopta los manuales de BPM y las guías de inspección que aplica el INVIMA; y para el servicio farmacéutico, el Decreto 780 de 2016 (que compila el Decreto 2200 de 2005) y la Resolución 1403 de 2007 exigen un sistema de gestión de calidad propio. En este curso aprenderás a integrar los tres marcos en un solo sistema, sin duplicar documentos.',
         ],
       },
       {
         titulo: 'La ruta del curso',
         parrafos: [
-          'El curso tiene cinco unidades. La **unidad 1** construye los fundamentos: historia de la calidad, aportes de los grandes autores, por qué el medicamento exige un sistema propio, los siete principios de ISO 9000 y el vocabulario básico. La **unidad 2** recorre el marco normativo colombiano. La **unidad 3** compara los modelos ICH Q10 e ISO 9001:2015. La **unidad 4** baja el sistema a procesos, indicadores y revisión por la dirección. La **unidad 5** cierra con mejora continua, gestión del cambio y cultura de calidad, y una hoja de ruta para implementar o fortalecer un SGC.',
+          'El curso tiene cinco unidades. La **unidad 1** construye los fundamentos: historia de la calidad, aportes de los grandes autores, por qué el medicamento exige un sistema propio, los siete principios de ISO 9000 y el vocabulario básico. La **unidad 2** recorre el marco normativo colombiano. La **unidad 3** compara los modelos ICH Q10 e ISO 9001:2026. La **unidad 4** baja el sistema a procesos, indicadores y revisión por la dirección. La **unidad 5** cierra con mejora continua, gestión del cambio y cultura de calidad, y una hoja de ruta para implementar o fortalecer un SGC.',
           'Este curso es la columna vertebral de la línea de calidad farmacéutica de Edvanta. Los temas que aquí se presentan como parte del sistema se profundizan en cursos hermanos: **BPM**, **gestión de desviaciones y CAPA**, **auditoría de calidad**, **gestión de riesgos** y **buenas prácticas de documentación**. Cuando un tema aparezca aquí de forma general, sabrás dónde estudiarlo a fondo.',
         ],
       },
@@ -77,7 +77,7 @@ export default [
     ],
     resumen: [
       'Un SGC hace que el buen resultado sea **consecuencia del sistema**, no de la suerte.',
-      'El curso integra **ICH Q10**, **ISO 9001:2015** y la **normativa colombiana** en un solo sistema.',
+      'El curso integra **ICH Q10**, **ISO 9001:2026** y la **normativa colombiana** en un solo sistema.',
       'La calidad se **construye** en el proceso; el análisis final no la crea.',
     ],
     referencias: [R.ichQ10, R.iso9001, R.res1160Compilada, R.res1403],
@@ -125,7 +125,7 @@ export default [
         titulo: 'Del aseguramiento a la gestión total',
         parrafos: [
           'Después de la guerra apareció el **aseguramiento de la calidad**: si se planifica, se documenta y se controla cada actividad que influye en la calidad, se puede dar confianza de que el producto cumplirá antes de fabricarlo. Las normas de proveedores de los sectores militar y nuclear exigían manuales, procedimientos y registros. Esa lógica es la base de las BPM: procedimientos escritos, personal capacitado, registros de cada operación y una función de calidad independiente de producción.',
-          'En Japón, con el aporte de Deming, Juran e Ishikawa, y en Estados Unidos con Feigenbaum, la calidad pasó a ser **responsabilidad de toda la organización**: la **calidad total**. Ya no bastaba con que un departamento controlara; la dirección, las compras, el diseño y cada operario participaban en la mejora continua. En 1987 se publicó la primera serie de normas **ISO 9000**, que llevó esos principios a un modelo de sistema certificable; su versión vigente es la de 2015.',
+          'En Japón, con el aporte de Deming, Juran e Ishikawa, y en Estados Unidos con Feigenbaum, la calidad pasó a ser **responsabilidad de toda la organización**: la **calidad total**. Ya no bastaba con que un departamento controlara; la dirección, las compras, el diseño y cada operario participaban en la mejora continua. En 1987 se publicó la primera serie de normas **ISO 9000**, que llevó esos principios a un modelo de sistema certificable; su edición vigente, la sexta, se publicó en septiembre de 2026 y reemplazó a la de 2015.',
         ],
       },
       {
@@ -332,14 +332,14 @@ export default [
     keywords: ['calidad del medicamento', 'atributos de calidad de un medicamento', 'por qué las bpm son obligatorias', 'dietilenglicol jarabes oms', 'liberación de lotes farmacéuticos', 'sistema de calidad farmacéutico'],
   },
   {
-    titulo: 'Los siete principios de la gestión de la calidad (ISO 9000:2015)',
+    titulo: 'Los siete principios de la gestión de la calidad (ISO 9000:2026)',
     duracion: 25,
     gancho: {
       titulo: 'Un sistema sin principios se vuelve papeleo',
-      texto: 'Una droguería obtuvo la certificación ISO 9001 hace tres años. Tiene procedimientos para todo, pero las quejas de los clientes no llegan a la dirección, cada área mide lo que quiere y los proveedores cambian sin evaluación. El sistema existe en papel y no en las decisiones. ISO 9000:2015 propone siete principios precisamente para evitar eso: son la lógica que debe estar detrás de cada procedimiento.',
+      texto: 'Una droguería obtuvo la certificación ISO 9001 hace tres años. Tiene procedimientos para todo, pero las quejas de los clientes no llegan a la dirección, cada área mide lo que quiere y los proveedores cambian sin evaluación. El sistema existe en papel y no en las decisiones. ISO 9000 propone siete principios precisamente para evitar eso: son la lógica que debe estar detrás de cada procedimiento.',
     },
     objetivos: [
-      'Enumerar y explicar los siete principios de la gestión de la calidad de ISO 9000:2015.',
+      'Enumerar y explicar los siete principios de la gestión de la calidad de ISO 9000:2026.',
       'Dar ejemplos de cada principio en una planta, un laboratorio o un servicio farmacéutico.',
       'Diagnosticar qué principio falla en una situación concreta.',
     ],
@@ -364,7 +364,7 @@ export default [
       {
         titulo: 'De dónde salen y para qué sirven',
         parrafos: [
-          'ISO 9000:2015, la norma de fundamentos y vocabulario, describe **siete principios de la gestión de la calidad**: enfoque al cliente, liderazgo, compromiso de las personas, enfoque a procesos, mejora, toma de decisiones basada en la evidencia y gestión de las relaciones. No son requisitos auditables por sí mismos; son la base sobre la que se escribieron los requisitos de ISO 9001:2015. Cuando un requisito parece arbitrario, casi siempre se entiende al buscar el principio que lo sostiene.',
+          'ISO 9000, la norma de fundamentos y vocabulario, cuya quinta edición se publicó en mayo de 2026, describe **siete principios de la gestión de la calidad**: enfoque al cliente, liderazgo, compromiso de las personas, enfoque a procesos, mejora, toma de decisiones basada en la evidencia y gestión de las relaciones. No son requisitos auditables por sí mismos; son la base sobre la que se escribieron los requisitos de ISO 9001. Cuando un requisito parece arbitrario, casi siempre se entiende al buscar el principio que lo sostiene. La edición 2026 conserva los siete principios y actualiza su redacción para alinearla con ISO 9001:2026.',
           'ISO publica además un documento divulgativo sobre los principios, en el que cada uno se presenta con su declaración, su fundamento, sus beneficios y las acciones que una organización puede tomar. En este curso los usarás como herramienta de diagnóstico: cuando un sistema no funciona, suele haber un principio que se está ignorando.',
         ],
       },
@@ -400,29 +400,29 @@ export default [
     ],
     comprueba: [
       { pregunta: 'Nombra los siete principios.', respuesta: 'Enfoque al cliente, liderazgo, compromiso de las personas, enfoque a procesos, mejora, toma de decisiones basada en la evidencia y gestión de las relaciones.' },
-      { pregunta: '¿Los principios son requisitos auditables?', respuesta: 'No directamente: son la base de los requisitos de ISO 9001:2015, que sí se auditan.' },
+      { pregunta: '¿Los principios son requisitos auditables?', respuesta: 'No directamente: son la base de los requisitos de ISO 9001, que sí se auditan.' },
       { pregunta: '¿Qué principio se aplica al calificar a un laboratorio contratado?', respuesta: 'Gestión de las relaciones, junto con la toma de decisiones basada en la evidencia.' },
     ],
     resumen: [
-      'Los **siete principios** de ISO 9000:2015 son la lógica detrás de cada requisito de ISO 9001.',
+      'Los **siete principios** de ISO 9000, que la edición 2026 conserva, son la lógica detrás de cada requisito de ISO 9001.',
       'En farmacia, el **cliente** incluye al paciente y a la autoridad sanitaria.',
       'Usa los principios como **diagnóstico**: el que no tiene evidencia muestra dónde mejorar.',
     ],
     referencias: [R.iso9000, R.isoPrincipios, R.iso9001, R.ichQ10],
     imagenes: [
-      { ubicacion: 'Junto a los conceptos', descripcion: 'Rueda ilustrada con los siete principios de la gestión de la calidad, cada uno con un icono, en la paleta de Edvanta.', alt: 'Los siete principios de la gestión de la calidad según ISO 9000:2015' },
+      { ubicacion: 'Junto a los conceptos', descripcion: 'Rueda ilustrada con los siete principios de la gestión de la calidad, cada uno con un icono, en la paleta de Edvanta.', alt: 'Los siete principios de la gestión de la calidad según ISO 9000' },
     ],
-    keywords: ['7 principios de la gestión de la calidad', 'principios iso 9000 2015', 'enfoque al cliente liderazgo compromiso', 'principios de calidad iso 9001', 'gestión de las relaciones iso', 'toma de decisiones basada en la evidencia'],
+    keywords: ['7 principios de la gestión de la calidad', 'principios iso 9000 2026', 'enfoque al cliente liderazgo compromiso', 'principios de calidad iso 9001', 'gestión de las relaciones iso', 'toma de decisiones basada en la evidencia'],
   },
   {
     titulo: 'Vocabulario esencial del SGC: requisito, conformidad, proceso, eficacia, eficiencia',
     duracion: 20,
     gancho: {
       titulo: 'Dos personas, dos significados',
-      texto: 'En una auditoría, el auditor pregunta si la acción correctiva fue eficaz. La jefa del área responde que sí, que se hizo rápido y sin costo. El auditor insiste: ¿se eliminó la causa y el problema no volvió a ocurrir? Ella hablaba de eficiencia; él, de eficacia. Muchas discusiones en calidad son, en el fondo, malentendidos de vocabulario. ISO 9000:2015 define los términos para que todos hablen el mismo idioma.',
+      texto: 'En una auditoría, el auditor pregunta si la acción correctiva fue eficaz. La jefa del área responde que sí, que se hizo rápido y sin costo. El auditor insiste: ¿se eliminó la causa y el problema no volvió a ocurrir? Ella hablaba de eficiencia; él, de eficacia. Muchas discusiones en calidad son, en el fondo, malentendidos de vocabulario. ISO 9000 define los términos para que todos hablen el mismo idioma.',
     },
     objetivos: [
-      'Definir con precisión los términos básicos de un SGC según ISO 9000:2015.',
+      'Definir con precisión los términos básicos de un SGC según ISO 9000.',
       'Distinguir pares que se confunden: eficacia y eficiencia, corrección y acción correctiva, conformidad y no conformidad.',
       'Usar el vocabulario correcto al redactar hallazgos, desviaciones e indicadores.',
     ],
@@ -433,13 +433,13 @@ export default [
       { icono: 'Target', termino: 'Eficacia', definicion: 'Grado en el que se realizan las actividades planificadas y se logran los resultados planificados.' },
       { icono: 'Gauge', termino: 'Eficiencia', definicion: 'Relación entre el resultado alcanzado y los recursos utilizados.' },
       { icono: 'Wrench', termino: 'Corrección y acción correctiva', definicion: 'La corrección elimina una no conformidad detectada; la acción correctiva elimina la causa para evitar que vuelva a ocurrir.' },
-      { icono: 'FileText', termino: 'Información documentada', definicion: 'Información que una organización debe controlar y mantener, y el medio que la contiene. Reemplaza en ISO 9001:2015 a «documentos» y «registros».' },
+      { icono: 'FileText', termino: 'Información documentada', definicion: 'Información que una organización debe controlar y mantener, y el medio que la contiene. Desde la edición 2015 de ISO 9001 reemplaza a «documentos» y «registros».' },
     ],
     secciones: [
       {
         titulo: 'Requisito, conformidad y calidad',
         parrafos: [
-          'ISO 9000:2015 define la **calidad** como el grado en el que un conjunto de características inherentes de un objeto cumple con los requisitos. La definición tiene dos consecuencias prácticas. La primera: la calidad siempre se mide contra un **requisito**; sin especificación no hay forma de decir si algo es de calidad. La segunda: el requisito puede ser **establecido** (escrito en una especificación, un contrato o una norma), **implícito** (lo que es práctica habitual, como que un medicamento esté libre de partículas visibles) u **obligatorio** (lo que exige la ley o el registro sanitario).',
+          'ISO 9000 define la **calidad**, en la redacción de su edición 2015, como el grado en el que un conjunto de características inherentes de un objeto cumple con los requisitos. La definición tiene dos consecuencias prácticas. La primera: la calidad siempre se mide contra un **requisito**; sin especificación no hay forma de decir si algo es de calidad. La segunda: el requisito puede ser **establecido** (escrito en una especificación, un contrato o una norma), **implícito** (lo que es práctica habitual, como que un medicamento esté libre de partículas visibles) u **obligatorio** (lo que exige la ley o el registro sanitario).',
           'Cuando se cumple un requisito hay **conformidad**; cuando no, **no conformidad**. En el lenguaje de BPM, la no conformidad de un proceso se llama con frecuencia **desviación**, y la de un resultado analítico, **resultado fuera de especificación**. Lo importante es que toda no conformidad se registra, se evalúa y se trata.',
         ],
       },
@@ -453,8 +453,8 @@ export default [
       {
         titulo: 'Corrección, acción correctiva e información documentada',
         parrafos: [
-          'La **corrección** actúa sobre la no conformidad ya detectada: reetiquetar unas cajas mal identificadas, separar un lote en cuarentena. La **acción correctiva** actúa sobre la **causa**: modificar el procedimiento de etiquetado, agregar una verificación o rediseñar el formato. Confundirlas es uno de los errores más frecuentes: muchas «acciones correctivas» son en realidad correcciones que dejan la causa intacta. ISO 9001:2015 eliminó el requisito separado de acción preventiva porque el pensamiento basado en riesgos ya lo integra, mientras que las BPM y ICH Q10 siguen hablando de CAPA.',
-          'ISO 9001:2015 habla de **información documentada**. Cuando pide «mantener» información documentada se refiere a documentos como procedimientos o la política; cuando pide «conservar», a registros que sirven de evidencia. En el mundo farmacéutico se sigue distinguiendo entre documentos (instrucciones) y registros (evidencia), con reglas estrictas de integridad de datos.',
+          'La **corrección** actúa sobre la no conformidad ya detectada: reetiquetar unas cajas mal identificadas, separar un lote en cuarentena. La **acción correctiva** actúa sobre la **causa**: modificar el procedimiento de etiquetado, agregar una verificación o rediseñar el formato. Confundirlas es uno de los errores más frecuentes: muchas «acciones correctivas» son en realidad correcciones que dejan la causa intacta. Desde la edición 2015, ISO 9001 no tiene un requisito separado de acción preventiva porque el pensamiento basado en riesgos ya lo integra, mientras que las BPM y ICH Q10 siguen hablando de CAPA.',
+          'Desde la edición 2015, ISO 9001 habla de **información documentada**. En esa edición, «mantener» información documentada se refería a documentos como procedimientos o la política, y «conservar», a registros que sirven de evidencia; la edición 2026 conserva el concepto con ajustes de redacción, por lo que conviene revisar el texto vigente al actualizar los procedimientos. En el mundo farmacéutico se sigue distinguiendo entre documentos (instrucciones) y registros (evidencia), con reglas estrictas de integridad de datos.',
         ],
       },
     ],
@@ -474,7 +474,7 @@ export default [
       { error: 'Redactar hallazgos sin el requisito que se incumple.', correccion: 'Toda no conformidad cita el requisito, la evidencia y el incumplimiento.' },
     ],
     comprueba: [
-      { pregunta: '¿Cómo define ISO 9000:2015 la calidad?', respuesta: 'Como el grado en el que un conjunto de características inherentes de un objeto cumple con los requisitos.' },
+      { pregunta: '¿Cómo define la calidad la redacción de ISO 9000:2015?', respuesta: 'Como el grado en el que un conjunto de características inherentes de un objeto cumple con los requisitos.' },
       { pregunta: '¿Cuál es la diferencia entre corrección y acción correctiva?', respuesta: 'La corrección elimina la no conformidad detectada; la acción correctiva elimina su causa para que no vuelva a ocurrir.' },
       { pregunta: '¿Qué significa «conservar información documentada»?', respuesta: 'Guardar registros que sirven como evidencia de lo realizado.' },
     ],

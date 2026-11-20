@@ -9,8 +9,9 @@ const r = (cita, url = '') => ({ cita, url });
 
 export const R = {
   ...REF,
-  iso9000: r('ISO. ISO 9000:2015 Sistemas de gestión de la calidad — Fundamentos y vocabulario.', 'https://www.iso.org/standard/45481.html'),
-  iso9001: r('ISO. ISO 9001:2015 Sistemas de gestión de la calidad — Requisitos.', 'https://www.iso.org/standard/62085.html'),
+  // 19-nov-2026: ISO retiró las ediciones de 2015 (verificado en iso.org).
+  iso9000: r('ISO. ISO 9000:2026 Gestión de la calidad — Fundamentos y vocabulario (5.ª edición, mayo de 2026; reemplaza a la ISO 9000:2015).', 'https://www.iso.org/standard/9000'),
+  iso9001: r('ISO. ISO 9001:2026 Sistemas de gestión de la calidad — Requisitos (6.ª edición, 16 de septiembre de 2026; reemplaza a la ISO 9001:2015).', 'https://www.iso.org/standard/9001'),
   isoPrincipios: r('ISO. Quality management principles (los siete principios de la gestión de la calidad).', 'https://www.iso.org/quality-management/principles'),
   ichQ12: r('ICH. Q12 Technical and Regulatory Considerations for Pharmaceutical Product Lifecycle Management (2019).', 'https://database.ich.org/sites/default/files/Q12_Guideline_Step4_2019_1119.pdf'),
   eudralexCap1: r('Comisión Europea. EudraLex Vol. 4, Capítulo 1: Pharmaceutical Quality System (2013).', 'https://health.ec.europa.eu/system/files/2016-11/vol4-chap1_2013-01_en_0.pdf'),

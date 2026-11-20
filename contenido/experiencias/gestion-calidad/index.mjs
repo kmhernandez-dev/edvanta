@@ -14,6 +14,7 @@ import u4 from './u4.mjs';
 import u5 from './u5.mjs';
 
 export const CURSO = 'Curso de Gestión de Calidad Farmacéutica';
-// Reemplaza las experiencias generadas por plantilla (164_experiencias_calidad_1.sql).
-export const MIGRACION = '181_experiencias_gestion_calidad.sql';
+// 181 reemplazó las experiencias generadas por plantilla (164_experiencias_calidad_1.sql).
+// 189: actualización a ISO 9001:2026 e ISO 9000:2026 (los títulos los cambia 188).
+export const MIGRACION = '189_experiencias_gestion_calidad_iso_2026.sql';
 export const CLASES = [...u1, ...u2, ...u3, ...u4, ...u5];

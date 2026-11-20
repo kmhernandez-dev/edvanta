@@ -98,7 +98,7 @@ export default [
         titulo: 'Origen y lógica del ciclo',
         parrafos: [
           'El ciclo de mejora nació con Walter Shewhart y lo difundió W. Edwards Deming, que más tarde prefirió hablar de **estudiar** en lugar de verificar para subrayar que se trata de aprender. En español se conoce como **PHVA**: planificar, hacer, verificar y actuar. Su lógica es la del método científico: plantear una hipótesis (si hacemos esto, mejorará aquello), probarla, observar el resultado y decidir.',
-          'ISO 9001:2015 se organiza alrededor del ciclo PHVA: planificar con el contexto, el liderazgo y la planificación; hacer con el apoyo y la operación; verificar con la evaluación del desempeño, y actuar con la mejora. Las **CAPA** también son un PHVA: investigar y planificar la acción, implementarla, verificar su eficacia y estandarizar.',
+          'ISO 9001:2026 se organiza alrededor del ciclo PHVA: planificar con el contexto, el liderazgo y la planificación; hacer con el apoyo y la operación; verificar con la evaluación del desempeño, y actuar con la mejora. Las **CAPA** también son un PHVA: investigar y planificar la acción, implementarla, verificar su eficacia y estandarizar.',
         ],
       },
       {

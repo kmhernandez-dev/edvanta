@@ -73,7 +73,7 @@ export default [
       texto: 'La recepción de materias primas involucra a compras, al almacén, a control de calidad y a aseguramiento. Cuando un material queda en cuarentena por dos semanas porque falta un certificado, cada área dice que hizo su parte. ISO 9001 pide, para cada proceso, entradas y salidas definidas, criterios de control, recursos, responsables y riesgos. Esta clase te enseña a describir un proceso completo para que tenga dueño y no se pierda entre las áreas.',
     },
     objetivos: [
-      'Describir los elementos que ISO 9001:2015 exige para cada proceso del SGC.',
+      'Describir los elementos que ISO 9001:2026 exige para cada proceso del SGC.',
       'Identificar entradas, salidas, proveedores, clientes e interacciones de un proceso farmacéutico.',
       'Asignar responsabilidad y autoridad al dueño del proceso.',
     ],
@@ -87,7 +87,7 @@ export default [
       {
         titulo: 'Lo que ISO 9001 pide para cada proceso',
         parrafos: [
-          'La cláusula 4.4 de ISO 9001:2015 pide determinar, para cada proceso del SGC: las **entradas** requeridas y las **salidas** esperadas; la **secuencia e interacción** con otros procesos; los **criterios y métodos** (seguimiento, mediciones e indicadores) para asegurar su operación y control eficaces; los **recursos**; las **responsabilidades y autoridades**; los **riesgos y oportunidades**; cómo **evaluarlos** e implementar cambios; y cómo **mejorarlos**. Además, pide mantener la información documentada necesaria para apoyar su operación.',
+          'La cláusula 4.4 de ISO 9001:2026 pide determinar, para cada proceso del SGC: las **entradas** requeridas y las **salidas** esperadas; la **secuencia e interacción** con otros procesos; los **criterios y métodos** (seguimiento, mediciones e indicadores) para asegurar su operación y control eficaces; los **recursos**; las **responsabilidades y autoridades**; los **riesgos y oportunidades**; cómo **evaluarlos** e implementar cambios; y cómo **mejorarlos**. Además, pide mantener la información documentada necesaria para apoyar su operación.',
           'Esta lista es, en la práctica, una plantilla de diseño de procesos. Si un proceso no tiene definido alguno de estos elementos, es probable que ahí esté la causa de sus problemas recurrentes.',
         ],
       },
@@ -388,7 +388,7 @@ export default [
       texto: 'Cada semestre, la dirección de un laboratorio se reúne dos horas para la revisión por la dirección. Se proyectan cuarenta diapositivas, todos asienten y el acta dice «se revisaron los indicadores». Un auditor pregunta qué recursos se asignaron, qué mejoras se aprobaron y qué pasó con las decisiones de la revisión anterior. No hay respuesta. La revisión por la dirección es el momento más importante del SGC, y el más desperdiciado.',
     },
     objetivos: [
-      'Enumerar las entradas y salidas de la revisión por la dirección según ISO 9001:2015.',
+      'Enumerar las entradas y salidas de la revisión por la dirección según ISO 9001:2026.',
       'Describir lo que pide ICH Q10 para la revisión por la dirección.',
       'Preparar una revisión por la dirección orientada a decisiones.',
     ],
@@ -402,7 +402,7 @@ export default [
       {
         titulo: 'Lo que pide ISO 9001',
         parrafos: [
-          'La cláusula 9.3 de ISO 9001:2015 pide que la alta dirección revise el SGC a **intervalos planificados** para asegurar su conveniencia, adecuación, eficacia y alineación con la dirección estratégica. Las **entradas** deben incluir: el estado de las acciones de revisiones previas; los cambios en las cuestiones externas e internas; la información sobre el desempeño y la eficacia del sistema, incluidas las tendencias de satisfacción del cliente y retroalimentación de las partes interesadas, el logro de los objetivos de calidad, el desempeño de los procesos y la conformidad de los productos, las no conformidades y acciones correctivas, los resultados de seguimiento y medición, los resultados de las auditorías y el desempeño de los proveedores externos; la adecuación de los recursos; la eficacia de las acciones tomadas para abordar riesgos y oportunidades; y las oportunidades de mejora.',
+          'La cláusula 9.3 de ISO 9001 pide que la alta dirección revise el SGC a **intervalos planificados** para asegurar su conveniencia, adecuación, eficacia y alineación con la dirección estratégica. En la edición 2015, las **entradas** debían incluir: el estado de las acciones de revisiones previas; los cambios en las cuestiones externas e internas; la información sobre el desempeño y la eficacia del sistema, incluidas las tendencias de satisfacción del cliente y retroalimentación de las partes interesadas, el logro de los objetivos de calidad, el desempeño de los procesos y la conformidad de los productos, las no conformidades y acciones correctivas, los resultados de seguimiento y medición, los resultados de las auditorías y el desempeño de los proveedores externos; la adecuación de los recursos; la eficacia de las acciones tomadas para abordar riesgos y oportunidades; y las oportunidades de mejora. La edición 2026 mantiene esta lógica y, en coherencia con la separación entre riesgos y oportunidades, pide revisar por separado la eficacia de las acciones sobre unos y otras; al actualizar el formato del acta, revisa el texto vigente de la norma.',
           'Las **salidas** deben incluir decisiones y acciones relacionadas con las oportunidades de mejora, cualquier necesidad de cambio en el SGC y las necesidades de recursos. La organización debe conservar información documentada como evidencia.',
         ],
       },

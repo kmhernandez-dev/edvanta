@@ -1,5 +1,5 @@
 /**
- * Unidad 3. Modelos de sistema de gestión de calidad: ICH Q10 e ISO 9001:2015 (8 clases).
+ * Unidad 3. Modelos de sistema de gestión de calidad: ICH Q10 e ISO 9001:2026 (8 clases).
  */
 import { R } from './refs.mjs';
 
@@ -12,13 +12,13 @@ export default [
       texto: 'Una empresa farmacéutica recibe en el mismo mes una auditoría de su cliente internacional, que pregunta por el sistema de calidad farmacéutico de ICH Q10, y la auditoría de certificación ISO 9001 de su distribuidora. El equipo de calidad siente que debe mantener dos sistemas. No es así: los dos modelos describen el mismo sistema con énfasis distintos. Esta unidad te enseña a leerlos juntos.',
     },
     objetivos: [
-      'Presentar los dos modelos de SGC más usados en el sector: ICH Q10 e ISO 9001:2015.',
+      'Presentar los dos modelos de SGC más usados en el sector: ICH Q10 e ISO 9001:2026.',
       'Explicar el propósito y el alcance de cada modelo y su relación con las BPM.',
       'Anticipar la ruta de la unidad hacia un sistema integrado.',
     ],
     conceptos: [
       { icono: 'Globe', termino: 'ICH Q10', definicion: 'Guía armonizada que describe un modelo de sistema de calidad farmacéutico para todo el ciclo de vida del producto, complementaria a las BPM. Fue aprobada por el ICH en 2008.' },
-      { icono: 'Award', termino: 'ISO 9001:2015', definicion: 'Norma internacional de requisitos para un sistema de gestión de la calidad, aplicable a cualquier organización y certificable por organismos acreditados.' },
+      { icono: 'Award', termino: 'ISO 9001:2026', definicion: 'Norma internacional de requisitos para un sistema de gestión de la calidad, aplicable a cualquier organización y certificable por organismos acreditados. Su sexta edición se publicó en septiembre de 2026 y reemplazó a la de 2015.' },
       { icono: 'Factory', termino: 'BPM', definicion: 'Requisitos obligatorios de fabricación y control de medicamentos. En Colombia, los adoptados por la Resolución 1160 de 2016.' },
       { icono: 'Puzzle', termino: 'Sistema integrado', definicion: 'Un solo sistema de procesos, documentos y responsables que cumple los requisitos de varias normas a la vez, sin duplicar.' },
     ],
@@ -31,16 +31,17 @@ export default [
         ],
       },
       {
-        titulo: 'ISO 9001:2015: el modelo general',
+        titulo: 'ISO 9001:2026: el modelo general',
         parrafos: [
-          'ISO 9001:2015 es la norma de requisitos de sistemas de gestión de la calidad más usada en el mundo. Usa la **estructura de alto nivel** común a las normas ISO de sistemas de gestión, con diez cláusulas, y se basa en el enfoque a procesos, el ciclo PHVA y el pensamiento basado en riesgos. Su fortaleza está en la gestión: contexto, partes interesadas, liderazgo, objetivos, competencia, comunicación, auditoría interna y revisión por la dirección.',
+          'ISO 9001 es la norma de requisitos de sistemas de gestión de la calidad más usada en el mundo; su edición vigente es la de 2026, publicada el 16 de septiembre. Usa la **estructura armonizada** (antes llamada estructura de alto nivel) común a las normas ISO de sistemas de gestión, con diez cláusulas, y se basa en el enfoque a procesos, el ciclo PHVA y el pensamiento basado en riesgos. Su fortaleza está en la gestión: contexto, partes interesadas, liderazgo, objetivos, competencia, comunicación, auditoría interna y revisión por la dirección.',
           'En el sector farmacéutico, ISO 9001 se usa con frecuencia en distribuidores, operadores logísticos, laboratorios de servicios, proveedores de materiales y servicios farmacéuticos. En las plantas fabricantes, complementa a las BPM y a ICH Q10 con herramientas de gestión.',
+          'La edición 2026 es una evolución, no una reescritura. Según ISO, mejora la claridad de los requisitos, enfatiza la **cultura de la calidad** y el liderazgo, separa los **riesgos** de las **oportunidades** para que se actúe de forma proactiva sobre ambos y mejora la alineación con otras normas de sistemas de gestión. Las organizaciones certificadas con la edición 2015 deben hacer la transición en el plazo que fije su ciclo de certificación; los organismos de certificación hablan de un periodo de tres años, hasta alrededor de septiembre de 2029, y conviene confirmarlo con el propio organismo.',
         ],
       },
       {
         titulo: 'La ruta de la unidad',
         parrafos: [
-          'Recorrerás primero ICH Q10: sus objetivos y la responsabilidad de la dirección, sus habilitadores y sus cuatro elementos, con su equivalente en las BPM europeas y de PIC/S. Luego ISO 9001: estructura de alto nivel, contexto y partes interesadas; liderazgo, política y objetivos; y pensamiento basado en riesgos. La unidad cierra con una comparación y un modelo de integración.',
+          'Recorrerás primero ICH Q10: sus objetivos y la responsabilidad de la dirección, sus habilitadores y sus cuatro elementos, con su equivalente en las BPM europeas y de PIC/S. Luego ISO 9001:2026: estructura armonizada, contexto y partes interesadas; liderazgo, política y objetivos; y pensamiento basado en riesgos. La unidad cierra con una comparación y un modelo de integración.',
           'Al terminar podrás explicar a un auditor de cualquiera de los dos marcos cómo tu sistema cumple sus requisitos, señalando los mismos procesos y la misma evidencia.',
         ],
       },
@@ -65,7 +66,7 @@ export default [
     ],
     resumen: [
       '**ICH Q10**: sistema de calidad farmacéutico para el ciclo de vida.',
-      '**ISO 9001:2015**: requisitos generales de gestión, certificables.',
+      '**ISO 9001:2026**: requisitos generales de gestión, certificables.',
       'Un solo **sistema integrado** puede cumplir ambos, junto con las BPM.',
     ],
     referencias: [R.ichQ10, R.iso9001, R.res1160Compilada],
@@ -316,25 +317,25 @@ export default [
     keywords: ['elementos del sistema de calidad farmacéutico', 'ich q10 capa gestión del cambio', 'monitoreo del desempeño del proceso', 'eudralex capítulo 1 sistema de calidad', 'pics gmp capítulo 1', 'revisión por la dirección ich q10'],
   },
   {
-    titulo: 'Estructura de alto nivel de ISO 9001:2015, contexto y partes interesadas',
+    titulo: 'Estructura armonizada de ISO 9001:2026, contexto y partes interesadas',
     duracion: 25,
     gancho: {
       titulo: 'Diez cláusulas que se repiten en todas las normas',
-      texto: 'Una empresa certificada en ISO 9001 decide certificarse también en ISO 14001 (ambiente) e ISO 45001 (seguridad y salud en el trabajo). Descubre con alivio que las tres normas tienen la misma estructura de diez cláusulas, los mismos términos básicos y requisitos comunes de contexto, liderazgo, planificación, apoyo, operación, evaluación y mejora. Esa estructura de alto nivel es la puerta de entrada a ISO 9001:2015.',
+      texto: 'Una empresa certificada en ISO 9001 decide certificarse también en ISO 14001 (ambiente) e ISO 45001 (seguridad y salud en el trabajo). Descubre con alivio que las tres normas tienen la misma estructura de diez cláusulas, los mismos términos básicos y requisitos comunes de contexto, liderazgo, planificación, apoyo, operación, evaluación y mejora. Esa estructura común, que ISO llama hoy **estructura armonizada**, es la puerta de entrada a ISO 9001:2026.',
     },
     objetivos: [
-      'Describir la estructura de alto nivel de diez cláusulas de ISO 9001:2015.',
+      'Describir la estructura armonizada de diez cláusulas de ISO 9001:2026.',
       'Explicar los requisitos de contexto de la organización y partes interesadas.',
       'Aplicar el análisis de contexto a una organización farmacéutica.',
     ],
     conceptos: [
-      { icono: 'Layers', termino: 'Estructura de alto nivel', definicion: 'Estructura común de diez cláusulas, con texto y términos básicos idénticos, que usan las normas ISO de sistemas de gestión para facilitar su integración.' },
+      { icono: 'Layers', termino: 'Estructura armonizada', definicion: 'Estructura común de diez cláusulas, con texto y términos básicos comunes, que usan las normas ISO de sistemas de gestión para facilitar su integración. Antes se llamaba estructura de alto nivel.' },
       { icono: 'Globe', termino: 'Contexto de la organización', definicion: 'Las cuestiones externas e internas pertinentes para el propósito y la dirección estratégica de la organización, que afectan su capacidad de lograr los resultados del SGC.' },
       { icono: 'Users', termino: 'Partes interesadas', definicion: 'Personas u organizaciones que pueden afectar, verse afectadas o percibirse afectadas por una decisión o actividad, como pacientes, clientes, autoridad sanitaria, proveedores y empleados.' },
       { icono: 'Crosshair', termino: 'Alcance del SGC', definicion: 'Los límites y la aplicabilidad del sistema: productos, servicios, sedes y procesos que cubre.' },
     ],
     mapa: {
-      centro: 'ISO 9001:2015',
+      centro: 'ISO 9001:2026',
       ramas: [
         { titulo: 'Cláusulas 1 a 3', icono: 'BookOpen', nodos: ['Objeto y campo de aplicación', 'Referencias normativas', 'Términos y definiciones'] },
         { titulo: 'Planificar', icono: 'Target', nodos: ['4. Contexto de la organización', '5. Liderazgo', '6. Planificación'] },
@@ -346,14 +347,14 @@ export default [
       {
         titulo: 'Las diez cláusulas',
         parrafos: [
-          'ISO 9001:2015 sigue la **estructura de alto nivel** de las normas ISO de sistemas de gestión. Las cláusulas 1 a 3 son introductorias: objeto y campo de aplicación, referencias normativas y términos y definiciones. Los requisitos auditables están en las cláusulas 4 a 10: **4. Contexto de la organización**, **5. Liderazgo**, **6. Planificación**, **7. Apoyo** (recursos, competencia, toma de conciencia, comunicación e información documentada), **8. Operación**, **9. Evaluación del desempeño** (seguimiento, medición, auditoría interna y revisión por la dirección) y **10. Mejora**.',
+          'ISO 9001:2026 sigue la **estructura armonizada** de las normas ISO de sistemas de gestión. Las cláusulas 1 a 3 son introductorias: objeto y campo de aplicación, referencias normativas y términos y definiciones; una novedad de 2026 es que la cláusula 3 incluye un grupo limitado de términos básicos, aunque ISO 9000 sigue siendo la referencia del vocabulario. Los requisitos auditables están en las cláusulas 4 a 10: **4. Contexto de la organización**, **5. Liderazgo**, **6. Planificación**, **7. Apoyo** (recursos, competencia, toma de conciencia, comunicación e información documentada), **8. Operación**, **9. Evaluación del desempeño** (seguimiento, medición, auditoría interna y revisión por la dirección) y **10. Mejora**.',
           'Las cláusulas siguen el ciclo **PHVA**: planificar (4, 5 y 6), hacer (7 y 8), verificar (9) y actuar (10). Gracias a la estructura común, una organización puede integrar en un solo sistema los requisitos de calidad, ambiente y seguridad y salud en el trabajo.',
         ],
       },
       {
         titulo: 'Contexto y partes interesadas',
         parrafos: [
-          'La cláusula 4.1 pide determinar las **cuestiones externas e internas** pertinentes: externas como la regulación, el mercado, la competencia, la tecnología o el entorno económico; internas como la cultura, la capacidad instalada, el conocimiento o los recursos. La cláusula 4.2 pide determinar las **partes interesadas** pertinentes y sus **requisitos**. En 2024, ISO publicó una enmienda que agrega a ambas cláusulas la consideración de si el **cambio climático** es una cuestión pertinente y si las partes interesadas tienen requisitos relacionados con él.',
+          'La cláusula 4.1 pide determinar las **cuestiones externas e internas** pertinentes: externas como la regulación, el mercado, la competencia, la tecnología o el entorno económico; internas como la cultura, la capacidad instalada, el conocimiento o los recursos. La cláusula 4.2 pide determinar las **partes interesadas** pertinentes y sus **requisitos**. En 2024, ISO publicó una enmienda que agrega a ambas cláusulas la consideración de si el **cambio climático** es una cuestión pertinente y si las partes interesadas tienen requisitos relacionados con él; la edición 2026 incorpora esa enmienda en su texto.',
           'En una organización farmacéutica, la autoridad sanitaria es una parte interesada de primer nivel y sus requisitos son obligatorios. Otras son los pacientes, los prescriptores, los clientes institucionales, los proveedores de materiales y servicios, los empleados y la comunidad. Herramientas frecuentes para documentar el contexto son el análisis DOFA o PESTEL y una matriz de partes interesadas con sus requisitos y cómo se atienden.',
         ],
       },
@@ -368,7 +369,7 @@ export default [
     caso: {
       titulo: 'El contexto que nadie actualizó',
       contexto: 'Un distribuidor farmacéutico certificado en ISO 9001 tiene un análisis de contexto de hace cuatro años. Desde entonces cambió la norma de un tipo de producto que distribuye y perdió a su principal proveedor de transporte refrigerado.',
-      pregunta: '¿Qué debe hacer según ISO 9001:2015?',
+      pregunta: '¿Qué debe hacer según ISO 9001:2026?',
       opciones: [
         { texto: 'Nada, porque el análisis de contexto se hace una vez al certificarse.', correcta: false, retro: 'La norma pide hacer seguimiento y revisar la información sobre las cuestiones externas e internas y las partes interesadas.' },
         { texto: 'Actualizar el contexto y las partes interesadas, revisar los riesgos asociados (cumplimiento regulatorio y cadena de frío) y llevarlo a la revisión por la dirección.', correcta: true, retro: 'El contexto alimenta la planificación; los cambios deben traducirse en riesgos, objetivos y acciones.' },
@@ -381,19 +382,19 @@ export default [
       { error: 'Excluir requisitos sin justificación.', correccion: 'Justifica por escrito por qué un requisito no aplica y verifica que no afecte la conformidad del producto o servicio.' },
     ],
     comprueba: [
-      { pregunta: '¿Qué cláusulas de ISO 9001:2015 contienen los requisitos?', respuesta: 'De la 4 a la 10: contexto, liderazgo, planificación, apoyo, operación, evaluación del desempeño y mejora.' },
+      { pregunta: '¿Qué cláusulas de ISO 9001:2026 contienen los requisitos?', respuesta: 'De la 4 a la 10: contexto, liderazgo, planificación, apoyo, operación, evaluación del desempeño y mejora.' },
       { pregunta: '¿Qué agregó la enmienda de 2024 a las cláusulas 4.1 y 4.2?', respuesta: 'La consideración de si el cambio climático es una cuestión pertinente y si las partes interesadas tienen requisitos relacionados.' },
     ],
     resumen: [
-      'ISO 9001:2015 usa la **estructura de alto nivel**: diez cláusulas, requisitos en la 4 a la 10.',
+      'ISO 9001:2026 usa la **estructura armonizada**: diez cláusulas, requisitos en la 4 a la 10.',
       'El **contexto** y las **partes interesadas** se revisan y alimentan la planificación.',
       'El **alcance** y los **procesos** se definen a partir del contexto.',
     ],
     referencias: [R.iso9001, R.iso9000, R.isoPrincipios],
     imagenes: [
-      { ubicacion: 'Junto al mapa conceptual', descripcion: 'Ciclo PHVA ilustrado con las cláusulas 4 a 10 de ISO 9001:2015 ubicadas en cada fase.', alt: 'Estructura de alto nivel de ISO 9001:2015 y el ciclo PHVA' },
+      { ubicacion: 'Junto al mapa conceptual', descripcion: 'Ciclo PHVA ilustrado con las cláusulas 4 a 10 de ISO 9001:2026 ubicadas en cada fase.', alt: 'Estructura armonizada de ISO 9001:2026 y el ciclo PHVA' },
     ],
-    keywords: ['estructura de alto nivel iso 9001', 'cláusulas iso 9001 2015', 'contexto de la organización iso 9001', 'partes interesadas iso 9001', 'iso 9001 cláusula 4', 'iso 9001 enmienda 2024 cambio climático'],
+    keywords: ['estructura de alto nivel iso 9001', 'cláusulas iso 9001 2026', 'estructura armonizada iso 9001', 'contexto de la organización iso 9001', 'partes interesadas iso 9001', 'iso 9001 cláusula 4', 'iso 9001 enmienda 2024 cambio climático'],
   },
   {
     titulo: 'Liderazgo, política y objetivos de calidad',
@@ -403,7 +404,7 @@ export default [
       texto: 'En una auditoría, la auditora le pide a un operario de empaque que le cuente qué dice la política de calidad. El operario señala el cuadro de la pared y lee la primera línea. Luego la auditora pregunta qué hace él, en su puesto, para cumplirla. El operario no sabe qué responder. Una política que no se traduce en objetivos y en comportamientos no dirige nada.',
     },
     objetivos: [
-      'Explicar los requisitos de liderazgo y compromiso de ISO 9001:2015.',
+      'Explicar los requisitos de liderazgo y compromiso de ISO 9001:2026, incluida la cultura de la calidad.',
       'Redactar una política de calidad pertinente para una organización farmacéutica.',
       'Formular objetivos de calidad medibles y planificar cómo lograrlos.',
     ],
@@ -417,7 +418,7 @@ export default [
       {
         titulo: 'Liderazgo que se ve',
         parrafos: [
-          'La cláusula 5.1 de ISO 9001:2015 pide que la alta dirección **demuestre** liderazgo y compromiso: rindiendo cuentas de la eficacia del sistema, asegurando la política y los objetivos, integrando los requisitos del SGC en los procesos del negocio, promoviendo el enfoque a procesos y el pensamiento basado en riesgos, asegurando los recursos, comunicando la importancia de la calidad y apoyando a otros roles de liderazgo. La cláusula 5.1.2 agrega el **enfoque al cliente**: cumplir sus requisitos y los legales, gestionar los riesgos que afectan la conformidad y mantener el foco en su satisfacción.',
+          'La cláusula 5.1 de ISO 9001:2026 pide que la alta dirección **demuestre** liderazgo y compromiso: rindiendo cuentas de la eficacia del sistema, asegurando la política y los objetivos, integrando los requisitos del SGC en los procesos del negocio, promoviendo el enfoque a procesos y el pensamiento basado en riesgos, asegurando los recursos, comunicando la importancia de la calidad y apoyando a otros roles de liderazgo. La cláusula 5.1.2 agrega el **enfoque al cliente**: cumplir sus requisitos y los legales, gestionar los riesgos que afectan la conformidad y mantener el foco en su satisfacción. La edición 2026 refuerza este punto: incorpora de forma explícita la **cultura de la calidad** y el **comportamiento ético**, que la dirección debe promover y que la norma relaciona también con la toma de conciencia del personal y con el ambiente en que se operan los procesos.',
           'ICH Q10 pide lo mismo con otras palabras. La diferencia entre un liderazgo de papel y uno real se ve en la agenda: ¿cuánto tiempo dedica la dirección a revisar indicadores de calidad, recorrer las áreas y decidir sobre problemas escalados?',
         ],
       },
@@ -471,10 +472,10 @@ export default [
     duracion: 25,
     gancho: {
       titulo: 'La acción preventiva que desapareció',
-      texto: 'Al revisar la versión 2015 de ISO 9001, un coordinador de calidad no encuentra la cláusula de acciones preventivas y se alarma: ¿ya no hay que prevenir? Al contrario. ISO eliminó la cláusula separada porque decidió que todo el sistema debe ser preventivo. El pensamiento basado en riesgos está en la planificación, en los procesos y en las decisiones de cada día.',
+      texto: 'Al pasar de la versión 2008 a la 2015 de ISO 9001, un coordinador de calidad no encontró la cláusula de acciones preventivas y se alarmó: ¿ya no hay que prevenir? Al contrario. ISO eliminó la cláusula separada porque decidió que todo el sistema debe ser preventivo. El pensamiento basado en riesgos está en la planificación, en los procesos y en las decisiones de cada día.',
     },
     objetivos: [
-      'Explicar el pensamiento basado en riesgos de ISO 9001:2015 y su relación con la acción preventiva.',
+      'Explicar el pensamiento basado en riesgos de ISO 9001 y su relación con la acción preventiva, incluida la separación entre riesgos y oportunidades de la edición 2026.',
       'Planificar acciones para abordar riesgos y oportunidades (cláusula 6.1).',
       'Relacionar el enfoque de ISO 9001 con la gestión de riesgos para la calidad de ICH Q9.',
     ],
@@ -499,7 +500,7 @@ export default [
         titulo: 'De la acción preventiva al pensamiento basado en riesgos',
         parrafos: [
           'En las versiones anteriores de ISO 9001, la acción preventiva era una cláusula separada que muchas organizaciones usaban poco. En 2015, la norma integró la prevención en todo el sistema mediante el **pensamiento basado en riesgos**: considerar los riesgos y las oportunidades al planificar el sistema, al definir los procesos y al tomar decisiones. La cláusula 6.1 pide determinar los riesgos y oportunidades que es necesario abordar para asegurar que el sistema logre sus resultados, aumentar los efectos deseables, prevenir o reducir los no deseados y lograr la mejora.',
-          'ISO 9001 no exige un método formal de gestión de riesgos ni un proceso documentado de gestión de riesgos. La organización elige el método. Muchas usan la norma ISO 31000 como guía; en el sector farmacéutico, la referencia obligada para los riesgos sobre el producto es **ICH Q9(R1)**.',
+          'La edición 2026 da un paso más: **separa los riesgos de las oportunidades** en requisitos distintos, para que la organización no solo se defienda de lo que puede salir mal, sino que también identifique, evalúe y aproveche de forma deliberada las oportunidades. ISO 9001 no exige un método formal de gestión de riesgos ni un proceso documentado de gestión de riesgos. La organización elige el método. Muchas usan la norma ISO 31000 como guía; en el sector farmacéutico, la referencia obligada para los riesgos sobre el producto es **ICH Q9(R1)**.',
         ],
       },
       {
@@ -533,7 +534,7 @@ export default [
       { error: 'Usar ISO 9001 como sustituto de ICH Q9 para riesgos del producto.', correccion: 'Para riesgos sobre la calidad del producto, aplica la metodología de ICH Q9(R1).' },
     ],
     comprueba: [
-      { pregunta: '¿Por qué ISO 9001:2015 eliminó la cláusula de acción preventiva?', respuesta: 'Porque integró la prevención en todo el sistema mediante el pensamiento basado en riesgos.' },
+      { pregunta: '¿Por qué ISO 9001 eliminó en 2015 la cláusula de acción preventiva?', respuesta: 'Porque integró la prevención en todo el sistema mediante el pensamiento basado en riesgos.' },
       { pregunta: '¿Exige ISO 9001 un método formal de gestión de riesgos?', respuesta: 'No; la organización elige el método, de forma proporcional.' },
     ],
     resumen: [
@@ -545,7 +546,7 @@ export default [
     imagenes: [
       { ubicacion: 'En la sección de los dos enfoques', descripcion: 'Dos niveles conectados: riesgos del sistema y del negocio arriba, riesgos del producto y del paciente abajo.', alt: 'Pensamiento basado en riesgos de ISO 9001 y gestión de riesgos de ICH Q9' },
     ],
-    keywords: ['pensamiento basado en riesgos iso 9001', 'riesgos y oportunidades iso 9001 6.1', 'acción preventiva iso 9001 2015', 'matriz de riesgos sistema de gestión de calidad', 'ejemplos de riesgos y oportunidades', 'iso 9001 vs ich q9'],
+    keywords: ['pensamiento basado en riesgos iso 9001', 'riesgos y oportunidades iso 9001 6.1', 'riesgos y oportunidades iso 9001 2026', 'matriz de riesgos sistema de gestión de calidad', 'ejemplos de riesgos y oportunidades', 'iso 9001 vs ich q9'],
   },
   {
     titulo: 'ICH Q10 vs. ISO 9001 vs. BPM: comparación e integración',

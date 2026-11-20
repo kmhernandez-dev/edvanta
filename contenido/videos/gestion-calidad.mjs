@@ -12,6 +12,10 @@
  *    sorprenda (la clase en texto explica todo en español).
  *  · Ninguna clase queda con más de dos videos.
  *
+ * 19-nov-2026 (más tarde): 188_gestion_calidad_iso_2026.sql renombró los
+ * videos de Edutin sobre ISO 9001 para aclarar que explican la edición 2015
+ * (ISO 9001:2026 se publicó el 16-sep-2026). No regenerar 182.
+ *
  * Ver scripts/generar-migracion-videos.mjs.
  */
 export const CURSO = 'Curso de Gestión de Calidad Farmacéutica';
