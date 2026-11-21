@@ -17,7 +17,7 @@ export default {
   mecanismo: 'Se une a las proteínas fijadoras de penicilina e inhibe la síntesis de la pared bacteriana; su cadena lateral la protege de la penicilinasa estafilocócica.',
   actualizado: '2026-11-13',
   resumenCorto: 'penicilina resistente a penicilinasa para infecciones de piel y tejidos blandos por estafilococos sensibles.',
-  resumen: 'La dicloxacilina es una penicilina resistente a la penicilinasa que se usa en infecciones de piel, tejidos blandos y hueso causadas por *Staphylococcus aureus* sensible a meticilina. Se absorbe por vía oral y debe tomarse con el estómago vacío. Su espectro es estrecho y no cubre gramnegativos ni anaerobios. La atención farmacéutica se centra en la adherencia, la toma correcta, la alergia a betalactámicos y la vigilancia de reacciones cutáneas.',
+  resumen: 'La dicloxacilina es una penicilina resistente a la penicilinasa que se usa en infecciones de piel, tejidos blandos y hueso causadas por Staphylococcus aureus sensible a meticilina. Se absorbe por vía oral y debe tomarse con el estómago vacío. Su espectro es estrecho y no cubre gramnegativos ni anaerobios. La atención farmacéutica se centra en la adherencia, la toma correcta, la alergia a betalactámicos y la vigilancia de reacciones cutáneas.',
   datosClave: [
     ['Clase', 'Penicilina resistente a la penicilinasa [1,2]'],
     ['Código ATC', 'J01CF01 [1]'],
@@ -72,7 +72,7 @@ export default {
           'Neumonía estafilocócica, en esquemas hospitalarios.',
           'Otras infecciones por grampositivos sensibles cuando el antibiograma lo respalda.',
         ] },
-        'No cubre *Pseudomonas*, anaerobios ni la mayoría de gramnegativos.',
+        'No cubre Pseudomonas, anaerobios ni la mayoría de gramnegativos.',
       ],
     },
     {
@@ -103,7 +103,7 @@ export default {
           'Hipersensibilidad a dicloxacilina, penicilinas u otros betalactámicos.',
           'Antecedente de anafilaxia con penicilinas.',
         ] },
-        'Advertencias: mayor riesgo de erupción en mononucleosis infecciosa; vigilar colitis por *C. difficile*, nefritis intersticial y alteraciones hematológicas; la absorción incompleta con alimentos puede causar fallo terapéutico [1,2].',
+        'Advertencias: mayor riesgo de erupción en mononucleosis infecciosa; vigilar colitis por C. difficile, nefritis intersticial y alteraciones hematológicas; la absorción incompleta con alimentos puede causar fallo terapéutico [1,2].',
       ],
     },
     {
@@ -150,7 +150,7 @@ export default {
       titulo: 'Evidencia clínica',
       bloques: [
         'La dicloxacilina ha sido un pilar del tratamiento de infecciones estafilocócicas de piel y tejidos blandos desde antes de la era de la resistencia a meticilina [1,2].',
-        'Su eficacia depende de la sensibilidad del *S. aureus*: en cepas resistentes a meticilina (MRSA) no es activa y se requieren alternativas como clindamicina, trimetoprim-sulfametoxazol o vancomicina según la gravedad [1,2].',
+        'Su eficacia depende de la sensibilidad del S. aureus: en cepas resistentes a meticilina (MRSA) no es activa y se requieren alternativas como clindamicina, trimetoprim-sulfametoxazol o vancomicina según la gravedad [1,2].',
         'La toma con el estómago vacío es determinante: los alimentos reducen la absorción y pueden explicar fallos terapéuticos en infecciones cutáneas [1].',
       ],
     },

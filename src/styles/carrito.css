@@ -1,0 +1,324 @@
+/* ============================================================
+ *  carrito.css — El carrito de Edvanta (CartDrawer.jsx)
+ *  Con los tokens del sistema de diseño 2.0 (--ds-*): blanco, líneas
+ *  finas, Manrope para títulos y el botón .ed-btn--gradient. Sin íconos.
+ * ============================================================ */
+
+.carrito-velo {
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  background: rgba(3, 29, 92, 0.32);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--ds-dur-3) var(--ds-ease), visibility var(--ds-dur-3);
+}
+
+.carrito-velo.is-abierto { opacity: 1; visibility: visible; backdrop-filter: blur(2px); }
+
+.carrito {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 80;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 420px;
+  height: 100%;
+  background: var(--ds-white);
+  color: var(--ds-text);
+  font-family: var(--ds-font-body);
+  box-shadow: var(--ds-sh-lg);
+  transform: translateX(100%);
+  transition: transform var(--ds-dur-3) var(--ds-ease);
+}
+
+.carrito.is-abierto { transform: translateX(0); }
+
+@media (min-width: 480px) {
+  .carrito { top: 12px; right: 12px; height: calc(100% - 24px); border: 1px solid var(--ds-line); border-radius: var(--ds-r-xl); overflow: hidden; }
+  .carrito:not(.is-abierto) { transform: translateX(calc(100% + 24px)); }
+}
+
+/* Cabeza */
+.carrito-cabeza {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 26px 26px 18px;
+}
+
+.carrito-ante {
+  margin: 0;
+  color: var(--ds-teal-strong);
+  font-size: var(--ds-fs-xs);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.carrito-titulo {
+  margin: 6px 0 0;
+  color: var(--ds-navy);
+  font-family: var(--ds-font-display);
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.carrito-cerrar {
+  display: inline-flex;
+  width: 38px;
+  height: 38px;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--ds-line);
+  border-radius: 999px;
+  color: var(--ds-text-2);
+  font-size: 1.35rem;
+  font-weight: 300;
+  line-height: 1;
+  transition: border-color var(--ds-dur-1), color var(--ds-dur-1);
+}
+
+.carrito-cerrar:hover { border-color: var(--ds-line-strong); color: var(--ds-navy); }
+
+/* Lista */
+.carrito-zona { flex: 1; overflow-y: auto; padding: 0 26px 18px; }
+
+.carrito-cuenta {
+  margin: 0 0 4px;
+  border-bottom: 1px solid var(--ds-line);
+  padding-bottom: 12px;
+  color: var(--ds-text-3);
+  font-size: var(--ds-fs-sm);
+}
+
+.carrito-lista { margin: 0; padding: 0; list-style: none; }
+
+.carrito-item {
+  display: flex;
+  gap: 16px;
+  border-bottom: 1px solid var(--ds-line);
+  padding: 18px 0;
+}
+
+.carrito-portada {
+  width: 84px;
+  height: 84px;
+  flex: none;
+  border-radius: var(--ds-r);
+  object-fit: cover;
+  background: var(--ds-ice);
+}
+
+.carrito-portada--sello {
+  display: inline-flex;
+  align-items: flex-end;
+  padding: 10px;
+  background: var(--ds-grad-hero);
+}
+
+.carrito-portada--sello span {
+  color: var(--ds-navy);
+  font-family: var(--ds-font-display);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.carrito-item__cuerpo { flex: 1; min-width: 0; }
+
+.carrito-item__tipo {
+  margin: 0;
+  color: var(--ds-teal-strong);
+  font-size: var(--ds-fs-xs);
+  font-weight: 600;
+}
+
+.carrito-item__nombre {
+  display: -webkit-box;
+  margin: 4px 0 0;
+  overflow: hidden;
+  color: var(--ds-text);
+  font-family: var(--ds-font-display);
+  font-size: var(--ds-fs-base);
+  font-weight: 700;
+  line-height: 1.35;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.carrito-item__incluye {
+  display: grid;
+  gap: 2px;
+  margin: 8px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.carrito-item__incluye li {
+  position: relative;
+  padding-left: 12px;
+  color: var(--ds-text-2);
+  font-size: var(--ds-fs-sm);
+  line-height: 1.5;
+}
+
+.carrito-item__incluye li::before {
+  content: '';
+  position: absolute;
+  top: 0.62em;
+  left: 0;
+  width: 4px;
+  height: 4px;
+  border-radius: 999px;
+  background: var(--ds-teal);
+}
+
+.carrito-item__pie {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.carrito-item__precio {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin: 0;
+  white-space: nowrap;
+}
+
+.carrito-item__precio s { color: var(--ds-text-3); font-size: var(--ds-fs-sm); }
+
+.carrito-item__precio b {
+  color: var(--ds-navy);
+  font-family: var(--ds-font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.carrito-cantidad { display: inline-flex; align-items: center; gap: 4px; }
+
+.carrito-cantidad > button:not(.carrito-enlace) {
+  width: 28px;
+  height: 28px;
+  border: 1px solid var(--ds-line);
+  border-radius: 999px;
+  color: var(--ds-text-2);
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.carrito-cantidad > button:not(.carrito-enlace):hover { border-color: var(--ds-line-strong); color: var(--ds-navy); }
+.carrito-cantidad > span { min-width: 22px; color: var(--ds-text); font-size: var(--ds-fs-sm); font-weight: 600; text-align: center; }
+.carrito-cantidad .carrito-enlace { margin-left: 8px; }
+
+.carrito-enlace {
+  color: var(--ds-text-3);
+  font-size: var(--ds-fs-sm);
+  text-decoration: underline;
+  text-decoration-color: var(--ds-line-strong);
+  text-underline-offset: 3px;
+  transition: color var(--ds-dur-1);
+}
+
+.carrito-enlace:hover { color: var(--ds-navy); }
+.carrito-vaciar { margin-top: 14px; }
+
+/* Pie */
+.carrito-pie { border-top: 1px solid var(--ds-line); background: var(--ds-bg); padding: 20px 26px 24px; }
+.carrito-resumen { margin: 0; }
+
+.carrito-resumen__linea {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 3px 0;
+}
+
+.carrito-resumen dt { color: var(--ds-text-2); font-size: var(--ds-fs-sm); }
+.carrito-resumen dd { margin: 0; }
+.carrito-resumen__ahorro { color: var(--ds-teal-strong); font-size: var(--ds-fs-sm); font-weight: 600; }
+.carrito-resumen__linea--total { margin-top: 4px; }
+.carrito-resumen__linea--total dt { color: var(--ds-text); font-size: var(--ds-fs-base); font-weight: 600; }
+
+.carrito-resumen__linea--total dd {
+  color: var(--ds-navy);
+  font-family: var(--ds-font-display);
+  font-size: 1.65rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.carrito-resumen__linea--total dd span { color: var(--ds-text-3); font-family: var(--ds-font-body); font-size: var(--ds-fs-xs); font-weight: 600; }
+
+.carrito-nota { margin: 2px 0 0; color: var(--ds-text-3); font-size: var(--ds-fs-xs); text-align: right; }
+.carrito-pie .ed-btn { margin-top: 16px; }
+
+.carrito-medios {
+  margin: 12px 0 0;
+  color: var(--ds-text-3);
+  font-size: var(--ds-fs-xs);
+  text-align: center;
+}
+
+.carrito-ayuda { display: block; margin-top: 8px; color: var(--ds-teal-strong); font-size: var(--ds-fs-xs); text-align: center; }
+
+.carrito-aviso {
+  margin-top: 14px;
+  border: 1px solid var(--ds-line);
+  border-radius: var(--ds-r);
+  background: var(--ds-white);
+  padding: 12px 14px;
+  color: var(--ds-text-2);
+  font-size: var(--ds-fs-sm);
+  line-height: 1.5;
+}
+
+.carrito-aviso p { margin: 0 0 4px; }
+.carrito-aviso b { color: var(--ds-text); }
+.carrito-aviso a { color: var(--ds-navy); font-weight: 600; text-decoration: underline; }
+
+.carrito-error {
+  margin: 14px 0 0;
+  border-radius: var(--ds-r-sm);
+  background: var(--ds-danger-bg);
+  padding: 8px 12px;
+  color: var(--ds-danger);
+  font-size: var(--ds-fs-sm);
+}
+
+/* Vacío */
+.carrito-vacio {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 26px 40px;
+}
+
+.carrito-vacio__titulo {
+  margin: 8px 0 0;
+  color: var(--ds-navy);
+  font-family: var(--ds-font-display);
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.carrito-vacio__texto { margin: 10px 0 0; color: var(--ds-text-2); font-size: var(--ds-fs-base); line-height: 1.55; }
+.carrito-vacio__acciones { display: grid; gap: 10px; margin-top: 24px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .carrito, .carrito-velo { transition: none; }
+}

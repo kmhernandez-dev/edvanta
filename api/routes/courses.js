@@ -32,8 +32,9 @@ import fsp from 'node:fs/promises';
 import path from 'node:path';
 import { buffer as streamToBuffer } from 'node:stream/consumers';
 import { pool } from '../db.js';
-import { fichaDeCursoPropio, fichaDeCursoCurado, huecosDeLaFicha } from '../lib/ficha-de-curso.js';
+import { fichaDeCursoPropio, fichaDeCursoCurado, huecosDeLaFicha, valoracionesPublicas } from '../lib/ficha-de-curso.js';
 import { asegurarSlug, resolverSlug } from '../lib/slugs-publicos.js';
+import { enlazarTemario, rutasDeClasesAbiertas } from '../lib/clase-publica.js';
 
 const ALLOWED_PROVIDERS = ['edutin', 'coursera', 'udemy'];
 const ALLOWED_PRICE_TYPES = ['free', 'free_audit', 'paid', 'subscription', 'financial_aid', 'unknown'];
@@ -625,7 +626,10 @@ export async function fichaDeCursoRoute(req, res) {
       if (!rows[0].public_slug) {
         rows[0].public_slug = await asegurarSlug(pool, { entidad: 'aula', id, titulo: rows[0].title, nivel: rows[0].level });
       }
-      const ficha = fichaDeCursoPropio(rows[0], temarioPublico(rows[0].snapshot));
+      // Las clases abiertas del temario llevan su ruta: la ficha las enlaza.
+      const rutas = await rutasDeClasesAbiertas(pool, id, rows[0].snapshot, rows[0].public_slug);
+      const ficha = fichaDeCursoPropio(rows[0], enlazarTemario(temarioPublico(rows[0].snapshot), rutas));
+      ficha.valoraciones = await valoracionesPublicas(pool, 'aula', id);
       return res.json({ ok: true, data: ficha, faltan: huecosDeLaFicha(ficha), relacionados: await relacionados(ficha) });
     }
 
@@ -645,6 +649,7 @@ export async function fichaDeCursoRoute(req, res) {
       c.public_slug = await asegurarSlug(pool, { entidad: 'curado', id: c.id, titulo: c.title, proveedor: c.provider, nivel: c.level });
     }
     const ficha = fichaDeCursoCurado(rows[0]);
+    ficha.valoraciones = await valoracionesPublicas(pool, 'curado', rows[0].id);
     return res.json({ ok: true, data: ficha, faltan: huecosDeLaFicha(ficha), relacionados: await relacionados(ficha) });
   } catch (e) {
     console.error(JSON.stringify({ level: 'error', msg: 'Error cargando la ficha', error: e.message }));

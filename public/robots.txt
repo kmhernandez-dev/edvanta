@@ -3,6 +3,9 @@ Allow: /
 Disallow: /admin
 Disallow: /admin-paneles
 Disallow: /api/
+# Las portadas de los cursos propios son la imagen de su ficha (og:image y
+# Course.image): Google tiene que poder leerlas. La regla más larga gana.
+Allow: /api/cursos-edvanta/*/portada
 Disallow: /aula
 Disallow: /fst-app
 Disallow: /mi-espacio

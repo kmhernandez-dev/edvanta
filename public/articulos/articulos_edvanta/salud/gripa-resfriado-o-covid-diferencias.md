@@ -54,6 +54,14 @@ Para la influenza y el COVID-19 existen antivirales que el médico puede indicar
 - Lavarte las manos con frecuencia.
 - Cubrirte al toser o estornudar y quedarte en casa si estás enfermo.
 
+## ¿Quiénes deben tener más cuidado?
+
+La mayoría de las personas se recuperan de la gripe en una semana sin atención médica. Sin embargo, puede ser grave en embarazadas, niños menores de 5 años, personas de 65 años o más, personas con enfermedades crónicas, quienes reciben quimioterapia y quienes tienen las defensas bajas, por ejemplo por VIH. En ellas puede complicarse con neumonía o sepsis y empeorar sus otras enfermedades.
+
+## Para estudiantes y profesionales de la salud
+
+Si estudias o trabajas en salud, pon a prueba lo que sabes con el [caso clínico de neumonía adquirida en la comunidad](/casos-clinicos/neumonia-adquirida-en-la-comunidad): un examen interactivo tipo parcial con explicaciones y nota de 0 a 5.
+
 ## Preguntas frecuentes
 
 ### ¿Cuánto dura una gripa?
@@ -67,6 +75,14 @@ No previene los resfriados en la mayoría de las personas y su efecto sobre la d
 ### ¿Cómo sé si es COVID?
 
 Con una prueba de antígeno o PCR. Los síntomas por sí solos no permiten distinguirlo con certeza.
+
+### ¿Cuándo empiezan los síntomas de la gripe?
+
+Por lo general, unos dos días después del contagio. La gripe se transmite con facilidad cuando una persona infectada tose o estornuda.
+
+### ¿Cuál es la mejor forma de prevenir la gripe?
+
+La vacunación anual, sobre todo en las personas con mayor riesgo de complicaciones.
 
 ## Fuentes
 

@@ -11,8 +11,8 @@
  *   6. Si aún duda: deja tus datos y seguimos por WhatsApp.
  *   7. Preguntas frecuentes y otras guías.
  *
- *  Los datos salen de data/guiasVenta.js. Aquí no se escribe ni un
- *  precio ni una cifra: el precio lo muestra Hotmart al pagar.
+ *  Los datos salen de data/guiasVenta.js. El precio sale de Hotmart
+ *  (data/preciosGuias.js, con fecha de verificación); aquí no se escribe.
  * ============================================================
  */
 
@@ -26,9 +26,11 @@ import { BotonWhatsApp, enlaceWhatsApp, irAWhatsApp, prepararVentana } from '../
 import { CuentaRegresiva, CuponCopiable, InsigniaDescuento } from '../components/edvanta/promo';
 import { PROMOCION, conCupon, promoActiva } from '../data/promocion';
 import { useRevelar } from '../hooks/useRevelar';
-import { GUIAS_VENTA, MARCAS, guiaPorSlug, guiasRelacionadas } from '../data/guiasVenta';
+import { GUIAS_VENTA, MARCAS, datosDeGuia, guiaPorSlug, guiasRelacionadas } from '../data/guiasVenta';
+import { PRECIOS_GUIAS } from '../data/preciosGuias';
 import { enviarSolicitud } from '../lib/solicitudes';
 import { trackEvent } from '../utils/analytics';
+import { conOrigen } from '../lib/hotmart';
 import { updatePageSeo } from '../utils/seo';
 
 const SITIO = 'https://edvanta.co';
@@ -50,19 +52,9 @@ function Portada({ guia, grande = false, sello = false }) {
   );
 }
 
-/**
- * Enlace de Hotmart con `src`: el informe de ventas de Hotmart dice de qué
- * página y de qué botón vino cada venta. Se agrega sin tocar `off` ni `sck`.
- */
-export function conOrigen(url, slug, origen) {
-  try {
-    const u = new URL(url);
-    u.searchParams.set('src', `edv-${slug}-${origen}`.slice(0, 60));
-    return u.toString();
-  } catch {
-    return url;
-  }
-}
+// Enlace de Hotmart con `src` (de qué página y botón vino la venta). Vive
+// en lib/hotmart.js para que la ficha de curso lo use sin cargar esta página.
+export { conOrigen };
 
 function BotonComprar({ guia, origen, className = '', children, tamano = 'ed-btn--lg' }) {
   const oferta = promoActiva();
@@ -182,18 +174,8 @@ export default function GuiaVenta() {
       type: 'product',
       keywords: guia.keywords,
       jsonLdId: 'guia',
-      jsonLd: {
-        '@context': 'https://schema.org',
-        '@type': guia.formato.startsWith('Curso') ? 'Course' : 'Book',
-        name: guia.titulo,
-        description: guia.bajada,
-        url,
-        image: guia.portada ? `${SITIO}${guia.portada}` : undefined,
-        inLanguage: 'es',
-        author: { '@type': 'Person', name: 'Karla Melissa Hernández Salcedo', jobTitle: 'Química Farmacéutica Clínica' },
-        publisher: { '@type': 'Organization', name: 'Edvanta', url: SITIO },
-        ...(guia.formato.startsWith('Curso') ? { provider: { '@type': 'Organization', name: marca.nombre } } : { bookFormat: 'https://schema.org/EBook' }),
-      },
+      // Lo mismo que el HTML prerenderizado, con el precio verificado de Hotmart.
+      jsonLd: datosDeGuia(guia, { canonical: url, sitio: SITIO }),
     });
     trackEvent('guia_vista', { slug: guia.slug, marca: guia.marca });
   }, [guia]);
@@ -202,6 +184,8 @@ export default function GuiaVenta() {
   if (!guia) return <Navigate to="/" replace />;
   const marca = MARCAS[guia.marca];
   const oferta = promoActiva();
+  // Precio real en Hotmart (el mismo que va en el JSON-LD).
+  const precioGuia = PRECIOS_GUIAS[guia.slug] || null;
   const cinta = [
     oferta && `${PROMOCION.porcentaje} % OFF con ${PROMOCION.codigo}`, 'Pago seguro en Hotmart', 'Garantía de reembolso de Hotmart',
     'Acceso por correo al comprar', 'Escrita por una química farmacéutica clínica', guia.formato,
@@ -376,6 +360,12 @@ export default function GuiaVenta() {
             <div>
               <p className="text-xs font-semibold uppercase tracking-[.16em] text-[#DDF3F2]">{oferta ? `Oferta · ${PROMOCION.porcentaje} % OFF hasta el ${PROMOCION.fechaTexto}` : marca.nombre}</p>
               <h2 className="mt-2 font-display text-2xl font-bold leading-tight text-white sm:text-3xl">{guia.titulo}</h2>
+              {precioGuia && (
+                <p className="mt-3 text-white">
+                  <span className="font-display text-3xl font-bold">${precioGuia.valor.toLocaleString('es-CO')}</span>{' '}
+                  <span className="text-sm text-[#E8EEFB]">{precioGuia.moneda} · precio en Hotmart para Colombia{oferta ? `, antes del cupón ${PROMOCION.codigo}` : ''}</span>
+                </p>
+              )}
               <ul className="mt-5 space-y-2">
                 {recibes.map((r) => <li key={r} className="flex items-start gap-2.5 text-[15px] leading-6 text-white"><Check className="mt-1 h-4 w-4 shrink-0 text-[#25A7B0]" aria-hidden="true" />{r}</li>)}
               </ul>

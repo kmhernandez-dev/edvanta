@@ -23,7 +23,8 @@ Este archivo evita que dos agentes (Claude Code y Open Code) escriban el mismo m
 | Salud mental y SNC (N03, N05, N06, N02BF) | Claude Code | 16-nov-2026 | `seo/vademecum-50-monografias.md` | Grupo y 8 monografías en noindex |
 | Antimicóticos, antivirales y antiparasitarios (J02, D01, A07AA, J05, P02) | Claude Code | 16-nov-2026 | `seo/vademecum-50-monografias.md` | Grupo y 7 monografías en noindex |
 | Tiroides (H03AA) | Claude Code | 16-nov-2026 | `seo/vademecum-50-monografias.md` | Grupo y monografía de levotiroxina en noindex |
-| _Libre para Open Code_ | Open Code | — | — | Anotar aquí el grupo elegido |
+| Antidiabéticos orales: dapagliflozina y gliclazida (A10BK01 y A10BB09) | Open Code | 17-nov-2026 | `seo/plan-10000-keywords.md` | 2 monografías nuevas en el grupo de diabetes tipo 2, con ficha CIMA, evidencia DECLARE, DAPA-HF, DELIVER, DAPA-CKD y ADVANCE. En noindex hasta la revisión de Karla. |
+| Enfermedad renal crónica: finerenona (C03DA05) | Open Code | 17-nov-2026 | `seo/plan-10000-keywords.md` | Nuevo grupo y monografía de finerenona con CIMA, KDIGO 2024, FIDELIO-DKD, FIGARO-DKD y FINEARTS-HF. En noindex hasta la revisión de Karla. |
 
 ## Fichas que ya existen (no duplicar)
 

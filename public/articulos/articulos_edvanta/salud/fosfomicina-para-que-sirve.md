@@ -7,9 +7,15 @@ La fosfomicina es un antibiótico que se usa sobre todo para la cistitis no comp
 > - Puede causar diarrea, náuseas, dolor de cabeza y vaginitis.
 > - No se debe tomar con metoclopramida, porque reduce su absorción.
 
-## Para qué sirve la fosfomicina
+## ¿Qué es la fosfomicina?
 
-La fosfomicina trometamol está indicada en [1,2]:
+La fosfomicina trometamol es un antibiótico oral que se usa en dosis única de 3 g para la cistitis no complicada. Inhibe la síntesis de la pared bacteriana por un mecanismo distinto al de los betalactámicos y alcanza concentraciones urinarias altas. No es adecuada para infecciones del riñón ni sistémicas. La atención farmacéutica se centra en la indicación, la administración nocturna, la hidratación, la adherencia y la prevención de resistencias.
+
+Pertenece al grupo farmacológico de Derivado del ácido fosfónico.
+
+## ¿Para qué sirve la fosfomicina?
+
+La fosfomicina trometamol está indicada en:
 
 - Cistitis aguda no complicada en la mujer.
 - Tratamiento de la bacteriuria asintomática en el embarazo, según el criterio médico y el antibiograma.
@@ -18,13 +24,26 @@ La fosfomicina trometamol está indicada en [1,2]:
 
 No se usa para pielonefritis, prostatitis, infecciones complicadas ni infecciones sistémicas, porque alcanza concentraciones altas en la orina pero no en la sangre.
 
-## Cómo actúa
+## Cómo funciona
 
-La fosfomicina inhibe la enzima MurA, que participa en la primera etapa de la síntesis del peptidoglicano de la pared bacteriana. Es bactericida frente a muchas bacterias gramnegativas y grampositivas, incluida *Escherichia coli*, y tiene un mecanismo distinto al de otros antibióticos, lo que limita la resistencia cruzada [1,2].
+Inhibe la enzima MurA (UDP-N-acetilglucosamina enolpiruvil transferasa), que cataliza la primera etapa de la síntesis del peptidoglucano. El bloqueo detiene la formación de la pared y causa la lisis bacteriana.
+
+Es bactericida frente a Escherichia coli, Enterococcus faecalis y otras bacterias urinarias sensibles. Su mecanismo es único, lo que limita la resistencia cruzada.
+
+## Cuánto tarda en hacer efecto
+
+| Parámetro | Valor |
+| --- | --- |
+| Absorción | Oral; biodisponibilidad de aproximadamente 30 a 40 %  |
+| Concentración máxima | 2 a 3 horas  |
+| Unión a proteínas | Baja  |
+| Metabolismo | No se metaboliza de forma relevante  |
+| Semivida | 5 a 6 horas  |
+| Eliminación | Renal, principalmente sin cambios  |
 
 ## Cómo se toma
 
-La dosis habitual en adultos es de 3 g en una sola dosis [1,2]:
+La dosis habitual en adultos es de 3 g en una sola dosis:
 
 - Disuelve el contenido del sobre en un vaso de agua y tómalo inmediatamente.
 - Preferiblemente por la noche, antes de acostarte y después de vaciar la vejiga.
@@ -34,36 +53,92 @@ La dosis habitual en adultos es de 3 g en una sola dosis [1,2]:
 
 ## Efectos secundarios
 
-- Diarrea, náuseas, dolor abdominal y vómito [1,2].
+- Diarrea, náuseas, dolor abdominal y vómito.
 - Dolor de cabeza y mareo.
 - Vaginitis, vulvovaginitis y candidiasis.
 - Erupción cutánea y picazón.
 - Raros pero graves: colitis por *C. difficile*, reacciones alérgicas graves y alteraciones de la sangre.
 
-## Quién no debe tomarla o necesita precaución
+Las más frecuentes son diarrea, náuseas, dolor abdominal, cefalea y vaginitis.
 
-- Alergia a la fosfomicina [1,2].
-- Insuficiencia renal grave: consultar antes de usarla.
-- Embarazo y lactancia: se usa en el embarazo cuando está indicada; en lactancia consultar.
-- Niños: la indicación y la dosis dependen de la edad y el peso.
-- Pacientes con diarrea grave o colitis: evitar hasta evaluar.
+- Frecuentes: diarrea, náuseas, cefalea y candidiasis vaginal.
+- Poco frecuentes: vómito, dolor abdominal, rash y mareo.
+- Raras: colitis pseudomembranosa, anafilaxia y alteraciones hematológicas.
 
 ## Interacciones
 
 | Medicamento | Qué puede pasar |
 |---|---|
-| Metoclopramida | Reduce la absorción de fosfomicina; evitar [1] |
-| Antiácidos con aluminio o magnesio | Pueden reducir la absorción; separar [1] |
+| Metoclopramida | Reduce la absorción de fosfomicina; evitar  |
+| Antiácidos con aluminio o magnesio | Pueden reducir la absorción; separar  |
 | Otros antibióticos | No se combinan sin indicación; pueden alterar la flora |
-| Warfarina | No se ha descrito una interacción relevante, pero vigilar si hay cambios [2] |
+| Warfarina | No se ha descrito una interacción relevante, pero vigilar si hay cambios  |
 
-## Embarazo y lactancia
+| Medicamento | Efecto | Qué hacer |
+| --- | --- | --- |
+| Metoclopramida | Reduce la absorción de fosfomicina | Evitar o separar  |
+| Antiácidos con aluminio o magnesio | Pueden reducir la absorción | Separar  |
+| Warfarina | No se ha descrito una interacción relevante | Vigilar si hay cambios  |
+| Otros antibióticos | Pueden alterar la flora | No combinar sin indicación  |
 
-La fosfomicina trometamol se ha usado en el embarazo para infecciones urinarias, con indicación médica. Pasa a la leche en pequeñas cantidades; se considera compatible en tratamientos cortos, pero consulta siempre [1,2].
+## Quién no debe tomarlo
+
+- Alergia a la fosfomicina.
+- Insuficiencia renal grave: consultar antes de usarla.
+- Embarazo y lactancia: se usa en el embarazo cuando está indicada; en lactancia consultar.
+- Niños: la indicación y la dosis dependen de la edad y el peso.
+- Pacientes con diarrea grave o colitis: evitar hasta evaluar.
+
+Contraindicaciones y precauciones:
+
+- Hipersensibilidad a fosfomicina.
+- Insuficiencia renal grave: valorar antes de usar.
+- Diarrea grave o colitis: evitar hasta evaluar.
+- Embarazo y lactancia: consultar; se usa en el embarazo cuando está indicada.
+
+Advertencias: colitis por C. difficile, reacciones alérgicas graves, alteraciones hematológicas y falta de eficacia en infecciones del tracto urinario alto.
+
+## Embarazo, lactancia y niños
+
+La fosfomicina trometamol se ha usado en el embarazo para infecciones urinarias, con indicación médica. Pasa a la leche en pequeñas cantidades; se considera compatible en tratamientos cortos, pero consulta siempre.
+
+- Embarazo: se ha usado para infecciones urinarias con indicación médica; no usar por cuenta propia.
+- Lactancia: pasa en pequeñas cantidades; se considera compatible en tratamientos cortos, pero consultar.
+- Fertilidad: no se han descrito efectos adversos.
+
+## Cómo actúa
+
+La fosfomicina inhibe la enzima MurA, que participa en la primera etapa de la síntesis del peptidoglicano de la pared bacteriana. Es bactericida frente a muchas bacterias gramnegativas y grampositivas, incluida *Escherichia coli*, y tiene un mecanismo distinto al de otros antibióticos, lo que limita la resistencia cruzada.
 
 ## Fosfomicina en Colombia
 
-El CUM del INVIMA registra fosfomicina trometamol en granulado para solución oral. Verifica el registro y la concentración antes de dispensar [3]. Es un medicamento de prescripción médica.
+El CUM del INVIMA registra fosfomicina trometamol en granulado para solución oral. Verifica el registro y la concentración antes de dispensar. Es un medicamento de prescripción médica.
+
+## Evidencia y situación en Colombia
+
+La fosfomicina trometamol en dosis única de 3 g tiene eficacia demostrada en cistitis no complicada, con una respuesta clínica y microbiológica comparable a otros antibióticos de varios días.
+
+Su ventaja es la simplicidad del esquema y la baja propensión a resistencia cruzada, aunque la resistencia está aumentando en algunas regiones.
+
+No debe usarse en pielonefritis porque las concentraciones séricas son bajas y no cubren la infección del parénquima renal.
+
+- Colombia: el CUM registra fosfomicina trometamol en granulado para solución oral.
+- Unión Europea: la fosfomicina está autorizada para cistitis no complicada.
+- Estados Unidos: la FDA mantiene etiquetas de fosfomicina trometamol.
+
+## Errores frecuentes
+
+- **Automedicarse o repetir la dosis antes de tiempo** para buscar un efecto más rápido. Más dosis no significa más beneficio y sí puede significar más riesgo.
+- **Suspenderlo sin consultar** cuando la indicación exige completar un tiempo o un tratamiento. La duración la define el profesional.
+- **No contar los otros productos que toma**: antigripales, suplementos, plantas medicinales y medicamentos de venta libre también interactúan.
+- **Confundir alivio con cura**: si el síntoma mejora, no necesariamente desapareció la causa. Si el problema vuelve o empeora, hay que evaluarlo.
+- **No revisar la técnica de uso** cuando se trata de un inhalador, una crema, gotas o un dispositivo: una técnica incorrecta hace que el medicamento no llegue donde debe.
+
+## Cuándo consultar
+
+Consulta si el síntoma no mejora en el plazo esperado, si empeora rápido o si aparece un signo de alarma: dificultad para respirar, dolor en el pecho, desmayo, sangrado, hinchazón de cara o garganta, confusión, fiebre alta persistente o reducción de la orina.
+
+Si estás embarazada, en lactancia, tienes enfermedad renal o hepática, tomas anticoagulantes o tienes varias enfermedades crónicas, consulta antes de empezar cualquier medicamento.
 
 ## Para profesionales
 
@@ -87,8 +162,38 @@ No hay una interacción directa grave descrita, pero el alcohol puede empeorar l
 
 Sí, bajo indicación médica y cuando el antibiograma o la situación lo justifican. No la uses por tu cuenta.
 
+### ¿Cuánto tarda en hacer efecto Fosfomicina?
+
+2 a 3 horas  Su efecto se mantiene mientras el medicamento permanece en el cuerpo; la semivida es de 5 a 6 horas. La respuesta completa depende de la indicación y del paciente, así que el seguimiento lo define el profesional.
+
+### ¿Se puede usar Fosfomicina en el embarazo?
+
+- Embarazo: se ha usado para infecciones urinarias con indicación médica; no usar por cuenta propia. - Lactancia: pasa en pequeñas cantidades; se considera compatible en tratamientos cortos, pero consultar. - Fertilidad: no se han descrito efectos adversos.
+
+### ¿Qué efectos secundarios de Fosfomicina son graves?
+
+Las más frecuentes son diarrea, náuseas, dolor abdominal, cefalea y vaginitis. - Frecuentes: diarrea, náuseas, cefalea y candidiasis vaginal. - Poco frecuentes: vómito, dolor abdominal, rash y mareo. - Raras: colitis pseudomembranosa, anafilaxia y alteraciones hematológicas.
+
+## Artículos relacionados
+
+- [Monografía de Fosfomicina en el vademécum](/vademecum/fosfomicina)
+- [Fosfomicina: para qué sirve](/articulos/fosfomicina-para-que-sirve)
+- [Infección urinaria: síntomas y tratamiento](/articulos/infeccion-urinaria-sintomas-tratamiento)
+- [Antibióticos de uso ambulatorio](/vademecum/antibioticos-de-uso-ambulatorio)
+
 ## Fuentes
 
 1. AEMPS-CIMA. Ficha técnica de Fosfomicina Abamed 3 g granulado para solución oral en sobres EFG. [Ver fuente](https://cima.aemps.es/cima/dochtml/ft/80903/FT_80903.html)
 2. DailyMed. Fosfomycin tromethamine for oral solution. [Ver fuente](https://dailymed.nlm.nih.gov/dailymed/search.cfm?labeltype=all&query=fosfomycin)
 3. INVIMA. Código Único de Medicamentos vigentes (datos.gov.co), consultado el 13-nov-2026. [Ver fuente](https://www.datos.gov.co/d/i7cb-raxc)
+
+- Agencia Española de Medicamentos y Productos Sanitarios (AEMPS). Ficha técnica de Fosfomicina Abamed 3 g granulado para solución oral en sobres EFG [Internet]. Madrid: AEMPS; [citado 12 nov 2026]. Disponible en: https://cima.aemps.es/cima/dochtml/ft/80903/FT_80903.html
+- Organización Mundial de la Salud. AWaRe classification of antibiotics for evaluation and monitoring of use, 2023 [Internet]. Ginebra: OMS; 2023 [citado 12 nov 2026]. Disponible en: https://www.who.int/publications/i/item/9789240080379
+- Instituto Nacional de Vigilancia de Medicamentos y Alimentos (INVIMA). Código Único de Medicamentos vigentes [conjunto de datos en Internet]. Bogotá: Datos Abiertos Colombia; [citado 12 nov 2026]. Disponible en: https://www.datos.gov.co/d/i7cb-raxc
+- Cipolle RJ, Strand LM, Morley PC. Pharmaceutical care practice: the patient-centered approach to medication management services. 3.ª ed. Nueva York: McGraw-Hill Medical; 2012.
+
+## Sobre este artículo
+
+Este artículo es información educativa y no reemplaza la consulta con un profesional de la salud. No es una fórmula médica ni una recomendación de tratamiento para una persona concreta.
+
+**Autora y revisora:** Karla Hernández, Química Farmacéutica. **Revisado:** 20 de noviembre de 2026. Si encuentras un error o una fuente desactualizada, escríbenos para corregirlo.

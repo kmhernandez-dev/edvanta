@@ -18,6 +18,7 @@ import { Router } from 'express';
 import Anthropic from '@anthropic-ai/sdk';
 import { optionalAuthMiddleware } from '../lib/auth.js';
 import { clienteIa, ErrorIa, MAX_TEXTO, revisarHojaDeVida } from '../lib/cv-ia.js';
+import { topePorProceso } from '../lib/procesos.js';
 
 const router = Router();
 router.use(optionalAuthMiddleware);
@@ -43,7 +44,9 @@ export function revisarLimite(clave, maximo, ahora = Date.now()) {
 function topeDiario() {
   const hoy = new Date().toISOString().slice(0, 10);
   if (dia.fecha !== hoy) dia = { fecha: hoy, total: 0 };
-  const tope = parseInt(process.env.CV_IA_TOPE_DIARIO || '400', 10);
+  // El contador vive en la memoria de cada proceso: con API_PROCESOS=4,
+  // cada uno se queda con la cuarta parte, y el total del día no pasa del tope.
+  const tope = topePorProceso(parseInt(process.env.CV_IA_TOPE_DIARIO || '400', 10));
   return dia.total >= tope;
 }
 

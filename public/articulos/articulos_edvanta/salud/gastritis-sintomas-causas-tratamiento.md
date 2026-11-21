@@ -44,6 +44,14 @@ Según la edad y los síntomas, el médico puede pedir una prueba para *H. pylor
 - Dificultad o dolor para tragar.
 - Anemia o cansancio progresivo.
 
+## Únete a la comunidad
+
+En la [comunidad de gastritis y reflujo](/comunidades/gastritis-y-reflujo) de Edvanta, pacientes y cuidadores comparten dudas, guías y experiencias, con moderación y reglas claras. La comunidad no diagnostica ni reemplaza al equipo de salud: te ayuda a llegar mejor preparado a la consulta.
+
+## Para estudiantes y profesionales de la salud
+
+Si estudias o trabajas en salud, pon a prueba lo que sabes con el [caso clínico de Helicobacter pylori](/casos-clinicos/helicobacter-pylori): un examen interactivo tipo parcial con explicaciones y nota de 0 a 5.
+
 ## Preguntas frecuentes
 
 ### ¿La gastritis se cura?
@@ -57,6 +65,18 @@ El [acetaminofén](/articulos/acetaminofen-para-que-sirve) no irrita el estómag
 ### ¿La gastritis da dolor de espalda?
 
 Puede irradiarse, pero un dolor intenso que va del abdomen a la espalda también puede deberse a otras causas, como el páncreas o la vesícula, y debe valorarse.
+
+### ¿Cuál es la causa más frecuente de la gastritis?
+
+La infección por la bacteria *Helicobacter pylori* es la causa más común. También la producen el uso frecuente de antiinflamatorios, como el ibuprofeno, y el consumo de alcohol.
+
+### ¿Qué exámenes confirman la gastritis?
+
+El médico puede pedir una endoscopia con biopsias, que permite ver el estómago, confirmar la causa y descartar complicaciones. Según el caso, también pide análisis de sangre, de heces o de aliento para buscar *Helicobacter pylori*.
+
+### ¿Se puede tener gastritis sin síntomas?
+
+Sí. Muchas personas con gastritis no tienen ningún síntoma. Cuando aparecen, lo más frecuente es la indigestión; a veces la gastritis causa sangrado, que se manifiesta con vómito con sangre o heces negras y requiere atención inmediata.
 
 ## Fuentes
 

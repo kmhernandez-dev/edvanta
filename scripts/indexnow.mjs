@@ -17,15 +17,24 @@
  *    node scripts/indexnow.mjs --prueba        lista sin enviar
  *    node scripts/indexnow.mjs --rutas=/vademecum/x,/articulos/y   solo esas direcciones
  *                                              (deben estar en el sitemap, es decir, indexables)
+ *    node scripts/indexnow.mjs --archivo=lista.txt   las direcciones de un archivo, una por línea
+ *                                              (para listas largas que no caben en la línea de comandos)
+ *
+ *  En Git Bash, una ruta que empieza por «/» se convierte en ruta de Windows:
+ *  usa MSYS_NO_PATHCONV=1 con --rutas, o --archivo.
  * ============================================================
  */
+import { readFileSync } from 'node:fs';
 
 const SITIO = 'https://edvanta.co';
 const CLAVE = '99b4cfa71602533ad5100d7977e420fa';
 const prueba = process.argv.includes('--prueba');
 const desde = (process.argv.find((a) => a.startsWith('--desde=')) || '').slice('--desde='.length) || null;
-const rutas = (process.argv.find((a) => a.startsWith('--rutas=')) || '').slice('--rutas='.length)
-  .split(',').map((r) => r.trim()).filter(Boolean).map((r) => (r.startsWith('http') ? r : `${SITIO}${r}`));
+const archivo = (process.argv.find((a) => a.startsWith('--archivo=')) || '').slice('--archivo='.length) || null;
+const rutas = [
+  ...(process.argv.find((a) => a.startsWith('--rutas=')) || '').slice('--rutas='.length).split(','),
+  ...(archivo ? readFileSync(archivo, 'utf8').split(/\r?\n/) : []),
+].map((r) => r.trim()).filter(Boolean).map((r) => (r.startsWith('http') ? r : `${SITIO}${r}`));
 
 async function leer(url) {
   const r = await fetch(url, { headers: { 'User-Agent': 'edvanta-indexnow' }, signal: AbortSignal.timeout(20000) });

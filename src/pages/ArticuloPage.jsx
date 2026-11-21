@@ -22,16 +22,25 @@ import { Link, useParams } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import {
-  ArrowRight, BookOpen, CalendarDays, Check, Clock, HeartPulse, Link2, ListOrdered, MessageCircle, ShieldCheck,
+  ArrowRight, BookOpen, BookOpenCheck, CalendarDays, Check, Clock, HeartPulse, Link2, ListOrdered, MessageCircle, ShieldCheck,
 } from 'lucide-react';
 import SiteHeader from '../components/edvanta/SiteHeader';
+import { TEXTO_CASOS, TITULO_CASOS, casosDeArticulo } from '../lib/casosClinicos/enlacesInversos.js';
 import SiteFooter from '../components/edvanta/SiteFooter';
 import { Breadcrumb } from '../components/edvanta/ui';
 import StudyTools from '../components/articulos/HerramientasDeEstudio';
 import ArticleComments from '../components/articulos/ComentariosDeArticulo';
+import HerramientaArticulo from '../components/articulos/HerramientaArticulo';
+import BloqueComunidad from '../components/comunidad/BloqueComunidad';
 import AffiliateCourseButton from '../components/AffiliateCourseButton';
 import { articulos, getArticulo } from '../data/articulos';
+import { comunidadDeArticulo } from '../data/comunidadesSalud';
+import { examenDeArticulo } from '../data/examenes';
+import { trackEvent } from '../utils/analytics';
 import { getFeaturedCourse } from '../data/featuredCourses';
+import {
+  TEXTO_CLASES_DEL_ARTICULO, TITULO_CLASES_DEL_ARTICULO, clasesDelArticulo, urlsAbsolutas,
+} from '../../api/lib/enlaces-de-salud.js';
 import {
   limpiarMarkdown, minutosDeLectura, preguntasFrecuentes, relDeEnlaceExterno, secciones, slugify,
 } from '../lib/articulos/markdown';
@@ -66,6 +75,20 @@ function textoDe(children) {
     if (isValidElement(c)) return textoDe(c.props.children);
     return '';
   }).join('');
+}
+
+/**
+ * Parte el cuerpo en dos antes de una sección (H2), para insertar la
+ * herramienta interactiva en medio de la lectura. Si el título no está
+ * en ese artículo, devuelve todo el cuerpo en la primera parte.
+ */
+function partirAntesDe(md, titulo) {
+  if (!md || !titulo) return [md, ''];
+  const lineas = md.split('\n');
+  const objetivo = slugify(titulo);
+  const i = lineas.findIndex((l) => /^##\s/.test(l) && slugify(l.replace(/^##\s+/, '')) === objetivo);
+  if (i < 0) return [md, ''];
+  return [lineas.slice(0, i).join('\n'), lineas.slice(i).join('\n')];
 }
 
 // El id sale solo del texto del título: sin contadores, para que no
@@ -454,8 +477,18 @@ export default function ArticuloPage() {
     return () => { vivo = false; };
   }, [art]);
 
+  const comunidad = useMemo(() => (art ? comunidadDeArticulo(art.slug) : null), [art]);
+  const examen = useMemo(() => (art ? examenDeArticulo(art.slug) : null), [art]);
+  const herramienta = comunidad?.herramienta || null;
   const cuerpo = useMemo(() => limpiarMarkdown(texto), [texto]);
-  const indice = useMemo(() => (texto ? secciones(texto) : []), [texto]);
+  const [cuerpoAntes, cuerpoDespues] = useMemo(
+    () => partirAntesDe(cuerpo, herramienta?.antesDe),
+    [cuerpo, herramienta],
+  );
+  const indice = useMemo(() => {
+    const propios = texto ? secciones(texto) : [];
+    return herramienta ? [...propios, { texto: herramienta.titulo, id: 'herramienta' }] : propios;
+  }, [texto, herramienta]);
   const ids = useMemo(() => indice.map((s) => s.id), [indice]);
   const activa = useSeccionActiva(estado === 'ok' ? ids : []);
   const componentes = useMemo(() => crearComponentes(art?.imagenes), [cuerpo, art]);
@@ -475,6 +508,8 @@ export default function ArticuloPage() {
     const imagenJsonLd = { '@type': 'ImageObject', url: imagen, caption: art.imageAlt || art.title };
     const autor = art.autor || (art.marca === 'fst' ? 'Karla Hernández' : 'Equipo editorial de Edvanta');
     const faq = texto ? preguntasFrecuentes(texto) : [];
+    const clasesPro = clasesDelArticulo(art.slug);
+    const relatedLink = urlsAbsolutas([...clasesPro.clases, ...clasesPro.cursos]);
     const grafo = [
       {
         '@type': SALUD.includes(art.marca) ? 'MedicalWebPage' : 'Article',
@@ -491,6 +526,7 @@ export default function ArticuloPage() {
         dateModified: art.updated || art.date,
         publisher: { '@type': 'Organization', name: 'Edvanta', url: 'https://edvanta.co', logo: { '@type': 'ImageObject', url: 'https://edvanta.co/img/logo-edvanta.png' } },
         mainEntityOfPage: { '@type': 'WebPage', '@id': canonical },
+        ...(relatedLink.length ? { relatedLink } : {}),
       },
       {
         '@type': 'BreadcrumbList',
@@ -547,6 +583,9 @@ export default function ArticuloPage() {
   const relatedCourse = art.courseSlug ? getFeaturedCourse(art.courseSlug) : null;
   const url = `https://edvanta.co/articulos/${art.slug}`;
   const esSalud = SALUD.includes(art.marca);
+  // Las clases gratuitas que enseñan lo mismo (api/lib/enlaces-de-salud.js).
+  const clasesPro = clasesDelArticulo(art.slug);
+  const casosPractica = casosDeArticulo(art.slug);
 
   return (
     <div className="min-h-screen bg-white">
@@ -631,9 +670,23 @@ export default function ArticuloPage() {
               <p className="rounded-[14px] bg-red-50 p-5 text-sm font-semibold text-red-700">No pudimos cargar el artículo. Recarga la página en un momento.</p>
             )}
             {estado === 'ok' && (
-              <div className="ed-prose">
-                <ReactMarkdown remarkPlugins={[remarkGfm]} components={componentes}>{cuerpo}</ReactMarkdown>
-              </div>
+              <>
+                <div className="ed-prose">
+                  <ReactMarkdown remarkPlugins={[remarkGfm]} components={componentes}>{cuerpoAntes}</ReactMarkdown>
+                </div>
+                {herramienta && (
+                  <HerramientaArticulo
+                    herramienta={herramienta}
+                    comunidad={comunidad}
+                    articuloSlug={art.slug}
+                  />
+                )}
+                {cuerpoDespues && (
+                  <div className="ed-prose">
+                    <ReactMarkdown remarkPlugins={[remarkGfm]} components={componentes}>{cuerpoDespues}</ReactMarkdown>
+                  </div>
+                )}
+              </>
             )}
 
             {esSalud && (
@@ -643,6 +696,31 @@ export default function ArticuloPage() {
                   Este contenido es educativo y no reemplaza la consulta, el diagnóstico ni el tratamiento de un profesional de la salud.
                   No inicies, cambies ni suspendas un medicamento sin indicación. <Link to="/descargo-medico" className="font-semibold underline">Descargo médico</Link>.
                 </p>
+              </div>
+            )}
+
+            {comunidad && (
+              <BloqueComunidad comunidad={comunidad} articuloSlug={art.slug} origen="articulo" />
+            )}
+
+            {examen && (
+              <div className="mt-10 flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-edvanta-border bg-white p-5">
+                <div>
+                  <p className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[.12em] text-edvanta-tealdark">
+                    <BookOpenCheck className="h-4 w-4" aria-hidden="true" />
+                    Practica lo que acabas de leer
+                  </p>
+                  <p className="mt-2 font-display text-lg font-bold text-edvanta-deep">{examen.titulo}</p>
+                  <p className="mt-1 text-sm leading-6 text-edvanta-muted">{examen.preguntas.length} preguntas con corrección y explicación. Sin registro.</p>
+                </div>
+                <Link
+                  to={examen.ruta}
+                  onClick={() => trackEvent('exam_clicked', { origen: 'articulo', articulo: art.slug, examen: examen.slug })}
+                  className="inline-flex min-h-11 items-center gap-2 rounded-xl bg-edvanta-blue px-5 text-sm font-bold text-white transition hover:bg-edvanta-bluedark"
+                >
+                  Hacer el examen
+                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                </Link>
               </div>
             )}
 
@@ -666,6 +744,52 @@ export default function ArticuloPage() {
               <p className="text-sm font-semibold text-edvanta-deep">¿Le sirve a alguien que conoces?</p>
               <Compartir titulo={art.title} url={url} />
             </div>
+
+
+            {casosPractica.length > 0 && (
+              <section id="casos-clinicos" className="mt-10 rounded-[14px] border border-edvanta-border bg-edvanta-lilac/40 p-5">
+                <p className="text-xs font-bold uppercase tracking-[.12em] text-edvanta-violet">Examen interactivo · Gratis</p>
+                <h2 className="mt-2 font-display text-xl font-bold text-edvanta-deep">{TITULO_CASOS}</h2>
+                <p className="mt-2 text-sm leading-6 text-edvanta-muted">{TEXTO_CASOS}</p>
+                <ul className="mt-4 space-y-2">
+                  {casosPractica.map((c) => (
+                    <li key={c.ruta}><Link to={c.ruta} className="font-semibold text-edvanta-blue hover:underline">{c.titulo}</Link></li>
+                  ))}
+                </ul>
+                <p className="mt-3 text-sm"><Link to="/casos-clinicos" className="font-semibold text-edvanta-blue underline">Ver todos los casos clínicos</Link></p>
+              </section>
+            )}
+
+            {clasesPro.clases.length > 0 && (
+              <section id="clases-para-profesionales" className="mt-10 rounded-[14px] border border-edvanta-border bg-edvanta-bg p-5">
+                <p className="text-xs font-bold uppercase tracking-[.12em] text-edvanta-tealdark">Clases abiertas · Edvanta</p>
+                <h2 className="mt-2 font-display text-xl font-bold text-edvanta-deep">{TITULO_CLASES_DEL_ARTICULO}</h2>
+                <p className="mt-2 text-sm leading-6 text-edvanta-muted">{TEXTO_CLASES_DEL_ARTICULO}</p>
+                <ul className="mt-4 space-y-3">
+                  {clasesPro.clases.map((c) => (
+                    <li key={c.ruta}>
+                      <Link to={c.ruta} className="inline-flex items-start gap-2 font-semibold text-edvanta-blue hover:underline">
+                        <BookOpen className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
+                        <span>{c.titulo}</span>
+                      </Link>
+                      {c.curso && <span className="block pl-6 text-xs text-edvanta-muted">{c.curso.nombre}</span>}
+                    </li>
+                  ))}
+                </ul>
+                {clasesPro.cursos.length > 0 && (
+                  <p className="mt-4 text-sm leading-6 text-edvanta-ink">
+                    Cursos completos:{' '}
+                    {clasesPro.cursos.map((c, i) => (
+                      <span key={c.ruta}>
+                        {i > 0 && ', '}
+                        <Link to={c.ruta} className="font-semibold text-edvanta-blue underline">{c.nombre}</Link>
+                      </span>
+                    ))}
+                    .
+                  </p>
+                )}
+              </section>
+            )}
 
             {relatedCourse && (
               <div className="mt-10 rounded-[14px] border border-edvanta-border bg-edvanta-bg p-5">

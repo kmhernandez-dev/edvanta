@@ -13,17 +13,34 @@
  *  anterior, a la siguiente y al curso. Solo se publica lo que ya está
  *  en la versión publicada del curso: lo que quien estudia ve en el aula.
  *
+ *  Cada clase abierta muestra (17-nov-2026, pedido de Karla Hernández):
+ *    - quién la verificó: Karla Hernández, química farmacéutica
+ *      (revision-de-clases.js), también en WebPage.reviewedBy;
+ *    - su video de YouTube con el crédito al canal y la licencia
+ *      estándar de YouTube (videos-youtube.js);
+ *    - la invitación al curso completo, que es donde está el certificado.
+ *
  *  Las clases sin experiencia no tienen página pública: siguen siendo
  *  del aula.
  * ============================================================
  */
 import { nombreDeCurso, resolverSlug } from './slugs-publicos.js';
 import { caracteresDeExperiencia, faqDeExperiencia, htmlDeExperiencia, textoDeExperiencia } from './experiencia.js';
+import { videosDeClase } from './videos-youtube.js';
+import { REVISION_DE_CLASES, fechaLarga, personaRevisora } from './revision-de-clases.js';
+import { htmlDeLecturasDeClase, lecturasDeClase, urlsAbsolutas } from './enlaces-de-salud.js';
 
 const esc = (t) => String(t ?? '')
   .replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;');
 
 export const rutaDeClase = (slugCurso, slugClase) => `/${slugCurso}/clase/${slugClase}`;
+
+/**
+ * Las páginas del vademécum y los artículos que enlazan a esta clase
+ * (enlaces-de-salud.js), para enlazarlos de vuelta desde ella.
+ */
+export const lecturasDe = (datos) => datos.lecturas
+  || lecturasDeClase(rutaDeClase(datos.curso.slug, datos.clase.slug));
 
 const experienciaDe = (leccion) => (leccion.blocks || []).find((b) => b.type === 'experiencia')?.data || null;
 
@@ -48,11 +65,33 @@ export async function clasesPublicas(db, courseId, snapshot) {
       const exp = experienciaDe(l);
       const slug = slugs.get(Number(l.id));
       if (exp && slug) {
-        salida.push({ id: l.id, titulo: l.title, slug, unidad: m.title, unidadNumero: mi + 1, experiencia: exp });
+        salida.push({
+          id: l.id, titulo: l.title, slug, unidad: m.title, unidadNumero: mi + 1, experiencia: exp,
+          videos: videosDeClase(l.blocks),
+        });
       }
     });
   });
   return salida;
+}
+
+/**
+ * Rutas de las clases abiertas de un curso: Map(id de la clase → ruta).
+ * La ficha del curso las usa para enlazar cada clase de su temario.
+ */
+export async function rutasDeClasesAbiertas(db, courseId, snapshot, slugCurso) {
+  if (!slugCurso) return new Map();
+  const clases = await clasesPublicas(db, courseId, snapshot);
+  return new Map(clases.map((c) => [Number(c.id), rutaDeClase(slugCurso, c.slug)]));
+}
+
+/** El temario con la ruta de cada clase abierta (las demás quedan sin enlace). */
+export function enlazarTemario(temario, rutas) {
+  if (!rutas?.size) return temario;
+  return (temario || []).map((u) => ({
+    ...u,
+    lessons: (u.lessons || []).map((l) => (rutas.has(Number(l.id)) ? { ...l, ruta: rutas.get(Number(l.id)) } : l)),
+  }));
 }
 
 /**
@@ -73,6 +112,8 @@ export async function clasePublica(db, slugCurso, slugClase) {
   const i = clases.findIndex((c) => c.slug === slugClase);
   if (i < 0) return { curso: { id: curso.id, slug: vigente }, clase: null };
   if (!r.esVigente) return { redirigir: rutaDeClase(vigente, slugClase) };
+  const modulos = curso.snapshot?.modules || [];
+  const totalDelCurso = modulos.reduce((n, m) => n + (m.lessons || []).length, 0);
   return {
     curso: {
       id: curso.id,
@@ -82,35 +123,159 @@ export async function clasePublica(db, slugCurso, slugClase) {
       categoria: curso.category,
       nivel: curso.level,
       resumen: curso.short_description || '',
+      portada: curso.cover_file_id ? `/api/cursos-edvanta/${curso.id}/portada` : (curso.cover_url || null),
+      clases: totalDelCurso || null,
+      unidades: modulos.length || null,
       precioCertificado: curso.certificate_price == null ? null : Number(curso.certificate_price),
     },
     clase: clases[i],
     numero: i + 1,
     total: clases.length,
+    revision: REVISION_DE_CLASES,
     anterior: clases[i - 1] ? { titulo: clases[i - 1].titulo, ruta: rutaDeClase(vigente, clases[i - 1].slug) } : null,
     siguiente: clases[i + 1] ? { titulo: clases[i + 1].titulo, ruta: rutaDeClase(vigente, clases[i + 1].slug) } : null,
     indice: clases.map((c) => ({ titulo: c.titulo, unidad: c.unidad, ruta: rutaDeClase(vigente, c.slug) })),
+    lecturas: lecturasDeClase(rutaDeClase(vigente, clases[i].slug)),
   };
 }
 
-/** Título para buscadores: la clase y el curso, sin pasar de ~65 caracteres si se puede. */
-export function tituloDeClase(datos) {
-  const clase = datos.clase.titulo;
-  const largo = `${clase} | ${datos.curso.nombre} gratis`;
-  return largo.length <= 68 ? largo : `${clase} | Edvanta`;
+// ── Título y descripción para buscadores ─────────────────────
+
+const MAX_TITULO = 60;
+const MAX_DESCRIPCION = 155;
+const PALABRAS_DE_ENLACE = new Set(['y', 'e', 'o', 'u', 'no', 'de', 'del', 'la', 'las', 'el', 'los', 'en', 'con', 'por', 'para', 'a', 'al', 'según', 'sin', 'frente', 'vs', 'vs.', 'un', 'una', 'su', 'sus', 'que', 'como', 'entre']);
+
+/**
+ * Recorta en una palabra completa, sin dejar una palabra de enlace, un
+ * paréntesis abierto ni puntuación al final.
+ */
+export function recortarFrase(texto, max) {
+  const t = String(texto || '').replace(/\s+/g, ' ').trim();
+  if (t.length <= max) return t;
+  let corte = t.slice(0, max + 1);
+  corte = corte.slice(0, corte.lastIndexOf(' ') > 0 ? corte.lastIndexOf(' ') : max);
+  // Un paréntesis que no alcanza a cerrarse se quita completo.
+  const abierto = corte.lastIndexOf('(');
+  if (abierto > corte.lastIndexOf(')')) corte = corte.slice(0, abierto);
+  const palabras = corte.trim().split(' ');
+  while (palabras.length) {
+    const ultima = palabras[palabras.length - 1].replace(/[,;:·—–(-]+$/, '');
+    if (!ultima || PALABRAS_DE_ENLACE.has(ultima.toLowerCase())) { palabras.pop(); continue; }
+    palabras[palabras.length - 1] = ultima;
+    break;
+  }
+  return palabras.join(' ');
 }
 
-/** Descripción: la situación inicial recortada a 155 caracteres. */
+/**
+ * Títulos escritos a mano para clases de dos cursos cuyos nombres solo se
+ * distinguen después del carácter 60: recortados quedarían iguales.
+ * La prueba «ningún título repetido» (api/tests/experiencias.test.js)
+ * avisa cuando aparece otro caso.
+ */
+const TITULOS_DISTINTOS = {
+  'curso-de-farmacologia-cardiovascular/calcioantagonistas-dihidropiridinicos-y-no': 'Calcioantagonistas DHP y no DHP: farmacología',
+  'curso-de-farmacoterapia-de-la-hipertension-arterial/calcioantagonistas-dihidropiridinicos-y-no': 'Calcioantagonistas en hipertensión: amlodipino',
+  'curso-de-farmacoterapia-de-la-diabetes/sulfonilureas-y-pioglitazona-eficacia-hipoglucemia-peso': 'Sulfonilureas y pioglitazona: desintensificación',
+  'curso-de-farmacologia-endocrina/sulfonilureas-y-pioglitazona-eficacia-hipoglucemia-peso': 'Sulfonilureas y pioglitazona: eficacia y riesgos',
+};
+
+/**
+ * Título de 60 caracteres como máximo (la regla del sitio, src/lib/seo/titulos.js).
+ * En orden: la clase con su curso; con el curso sin «Curso de» (dos cursos
+ * pueden tener una clase con el mismo nombre); con la marca; lo mismo sin
+ * lo que va entre paréntesis. Si nada cabe, la clase sola recortada en una
+ * palabra completa: los 60 caracteres son para lo que distingue a la clase
+ * (Google ya muestra el nombre del sitio).
+ */
+export function tituloDeClase(datos) {
+  const propio = TITULOS_DISTINTOS[`${datos.curso.slug}/${datos.clase.slug}`];
+  if (propio) return propio;
+  const clase = String(datos.clase.titulo).replace(/\s+/g, ' ').trim();
+  const sinParentesis = clase.replace(/\s*\([^)]*\)/g, '').trim();
+  const curso = String(datos.curso.nombre || '').trim();
+  const corto = curso.replace(/^curso\s+(de|del|en)\s+/i, '');
+  const conSufijos = (t) => (curso ? [`${t} | ${curso}`, `${t} | ${corto}`, `${t} | Edvanta`] : [`${t} | Edvanta`]);
+  for (const t of [...conSufijos(clase), clase, ...conSufijos(sinParentesis), sinParentesis]) {
+    if (t.length <= MAX_TITULO) return t;
+  }
+  return recortarFrase(sinParentesis, MAX_TITULO);
+}
+
+const sinMarcas = (t) => String(t || '').replaceAll('**', '').replace(/\s+/g, ' ').trim();
+const conPunto = (t) => (/[.!?…]$/.test(t) ? t : `${t}.`);
+
+/** «Explicar el mecanismo» → «explicar el mecanismo» (si empieza con un verbo en infinitivo). */
+function comoInfinitivo(objetivo) {
+  const [primera, ...resto] = objetivo.split(' ');
+  if (!/^[A-ZÁÉÍÓÚ][a-záéíóúñ]+(ar|er|ir)(lo|la|los|las|se)?$/.test(primera)) return null;
+  return [primera.toLowerCase(), ...resto].join(' ');
+}
+
+/**
+ * Descripción de 155 caracteres como máximo: el tema de la clase, lo que se
+ * aprende (su primer objetivo), de qué curso es y quién la verificó. Se
+ * prueban frases de la más completa a la más corta y se usa la primera que cabe.
+ */
 export function descripcionDeClase(datos) {
-  const base = textoDeExperiencia(datos.clase.experiencia);
-  if (base.length <= 155) return base;
-  const corte = base.slice(0, 152);
+  const exp = datos.clase.experiencia;
+  const clase = sinMarcas(datos.clase.titulo).replace(/[.;:]+$/, '');
+  const objetivo = sinMarcas(exp.objetivos?.[0]).replace(/[.;:]+$/, '');
+  const verbo = objetivo ? comoInfinitivo(objetivo) : null;
+  const aprende = verbo
+    ? `${clase}${clase.includes(':') ? '. Aprende a' : ': aprende a'} ${verbo}.`
+    : (objetivo ? `${clase}. ${conPunto(objetivo)}` : `${clase}.`);
+  const delCurso = `Clase del ${datos.curso.nombre}, verificada por una química farmacéutica.`;
+  const gratis = 'Clase verificada por una química farmacéutica.';
+  const opciones = [
+    `${aprende} ${delCurso}`,
+    `${aprende} ${gratis}`,
+    `${clase}. ${delCurso}`,
+    `${clase}. ${gratis}`,
+  ];
+  for (const d of opciones) {
+    if (d.length <= MAX_DESCRIPCION && d.length >= 70) return d;
+  }
+  // Un título muy largo: recortado en palabra completa, con el cierre.
+  const recortada = `${recortarFrase(clase, MAX_DESCRIPCION - gratis.length - 2)}. ${gratis}`;
+  if (recortada.length >= 70) return recortada;
+  const base = textoDeExperiencia(exp);
+  if (base.length <= MAX_DESCRIPCION) return base;
+  const corte = base.slice(0, MAX_DESCRIPCION - 3);
   return `${corte.slice(0, corte.lastIndexOf(' '))}…`;
 }
 
-/** Datos estructurados: LearningResource dentro del curso, migas y repaso. */
+/** Imagen de la clase: la portada del curso o, si no hay, la miniatura de su video. */
+export function imagenDeClase(datos, inicio) {
+  const portada = datos.curso.portada;
+  if (portada) return portada.startsWith('/') ? `${String(inicio).replace(/\/$/, '')}${portada}` : portada;
+  return datos.clase.videos?.[0]?.miniatura || null;
+}
+
+// ── Datos estructurados ─────────────────────────────────────
+
+/** WebPage (con quién la verificó), LearningResource dentro del curso, migas y repaso. */
 export function datosDeClase(datos, { canonical, cursoUrl, inicio }) {
   const exp = datos.clase.experiencia;
+  const sitio = String(inicio).replace(/\/$/, '');
+  const imagen = imagenDeClase(datos, inicio);
+  const { vademecum, articulos } = lecturasDe(datos);
+  const relacionadas = urlsAbsolutas([...vademecum, ...articulos], sitio);
+  const pagina = {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    '@id': `${canonical}#pagina`,
+    url: canonical,
+    name: tituloDeClase(datos),
+    description: descripcionDeClase(datos),
+    inLanguage: 'es-CO',
+    mainEntity: { '@id': `${canonical}#clase` },
+    breadcrumb: { '@id': `${canonical}#migas` },
+    reviewedBy: personaRevisora(sitio),
+    lastReviewed: REVISION_DE_CLASES.fecha,
+    primaryImageOfPage: imagen ? { '@type': 'ImageObject', url: imagen } : undefined,
+    relatedLink: relacionadas.length ? relacionadas : undefined,
+  };
   const recurso = {
     '@context': 'https://schema.org',
     '@type': 'LearningResource',
@@ -118,55 +283,90 @@ export function datosDeClase(datos, { canonical, cursoUrl, inicio }) {
     name: datos.clase.titulo,
     description: descripcionDeClase(datos),
     url: canonical,
+    image: imagen || undefined,
     inLanguage: 'es-CO',
     learningResourceType: 'Clase',
     educationalLevel: datos.curso.nivel || undefined,
     isAccessibleForFree: true,
     timeRequired: exp.duracion ? `PT${exp.duracion}M` : undefined,
-    teaches: exp.objetivos,
+    teaches: exp.objetivos?.map(sinMarcas),
     keywords: exp.keywords?.length ? exp.keywords.join(', ') : undefined,
+    position: datos.numero,
     isPartOf: { '@type': 'Course', '@id': `${cursoUrl}#curso`, name: datos.curso.nombre, url: cursoUrl },
-    provider: { '@type': 'Organization', name: 'Edvanta', url: `${inicio}` },
+    provider: { '@type': 'Organization', name: 'Edvanta', url: inicio },
     citation: exp.referencias.filter((r) => r.url).map((r) => ({ '@type': 'CreativeWork', name: r.cita, url: r.url })),
   };
   const migas = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
+    '@id': `${canonical}#migas`,
     itemListElement: [
       { '@type': 'ListItem', position: 1, name: 'Inicio', item: inicio },
-      { '@type': 'ListItem', position: 2, name: 'Cursos', item: `${inicio}cursos` },
+      { '@type': 'ListItem', position: 2, name: 'Cursos', item: `${sitio}/cursos` },
       { '@type': 'ListItem', position: 3, name: datos.curso.nombre, item: cursoUrl },
       { '@type': 'ListItem', position: 4, name: datos.clase.titulo, item: canonical },
     ],
   };
-  return [recurso, migas, faqDeExperiencia(exp, canonical)].filter(Boolean);
+  return [pagina, recurso, migas, faqDeExperiencia(exp, canonical)].filter(Boolean);
+}
+
+// ── HTML del servidor ───────────────────────────────────────
+
+/** Verificación: quién revisó la clase y cuándo. */
+export function htmlDeRevision(revision = REVISION_DE_CLASES) {
+  return `<p class="revision">Verificada por <a href="${esc(revision.perfil)}">${esc(revision.nombre)}</a>, ${esc(revision.profesion.toLowerCase())} · Última revisión: <time datetime="${esc(revision.fecha)}">${esc(fechaLarga(revision.fecha))}</time></p>`;
+}
+
+/** El video con su crédito: canal, YouTube y la licencia estándar de YouTube. */
+export function htmlDeVideo(v) {
+  const canal = v.canal
+    ? (v.canalUrl ? `<a href="${esc(v.canalUrl)}" rel="nofollow noopener" target="_blank">${esc(v.canal)}</a>` : esc(v.canal))
+    : 'su autor';
+  return `<figure class="video"><iframe src="https://www.youtube-nocookie.com/embed/${esc(v.videoId)}?rel=0" title="${esc(v.titulo)}" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>`
+    + `<figcaption>Video: «${esc(v.titulo)}», de ${canal} en YouTube. <a href="${esc(v.licenciaUrl)}" rel="nofollow noopener" target="_blank">${esc(v.licencia)}</a>. Se reproduce con el reproductor oficial de YouTube; los derechos del video son de su autor. <a href="${esc(v.verEnYoutube)}" rel="nofollow noopener" target="_blank">Ver en YouTube</a></figcaption></figure>`;
 }
 
 /** La página completa en HTML (la reemplaza la aplicación al cargar). */
 export function cuerpoDeClase(datos) {
   const { curso, clase } = datos;
   const cursoRuta = `/${curso.slug}`;
+  const tamano = curso.clases ? `${curso.clases} clases` : `${datos.total} clases abiertas`;
   return [
     `<nav aria-label="Ruta de navegación"><a href="/">Inicio</a> › <a href="/cursos">Cursos</a> › <a href="${esc(cursoRuta)}">${esc(curso.nombre)}</a> › <span>${esc(clase.titulo)}</span></nav>`,
     `<p>${esc(clase.unidad)} · Clase ${datos.numero} de ${datos.total}</p>`,
     `<h1>${esc(clase.titulo)}</h1>`,
-    `<p>Clase gratuita del <a href="${esc(cursoRuta)}">${esc(curso.nombre)}</a> de Edvanta. Inscríbete gratis para seguir tu avance, presentar las evaluaciones y obtener tu certificado.</p>`,
+    htmlDeRevision(datos.revision),
+    `<p>Clase del <a href="${esc(cursoRuta)}">${esc(curso.nombre)}</a> de Edvanta. Inscríbete para seguir tu avance, presentar las evaluaciones y obtener tu certificado verificable; la primera unidad del curso es gratis.</p>`,
+    (clase.videos || []).length ? `<section id="video"><h2>Video de la clase</h2>${clase.videos.map(htmlDeVideo).join('')}</section>` : '',
     htmlDeExperiencia(clase.experiencia),
     `<nav aria-label="Otras clases">${datos.anterior ? `<a href="${esc(datos.anterior.ruta)}" rel="prev">Clase anterior: ${esc(datos.anterior.titulo)}</a>` : ''} ${datos.siguiente ? `<a href="${esc(datos.siguiente.ruta)}" rel="next">Clase siguiente: ${esc(datos.siguiente.titulo)}</a>` : ''}</nav>`,
+    htmlDeLecturasDeClase(lecturasDe(datos)),
+    `<section id="curso-completo"><h2>Sigue el ${esc(curso.nombre)} completo y certifícate</h2><p>El curso tiene ${esc(tamano)}${curso.unidades ? ` en ${curso.unidades} unidades` : ''}. En el aula guardas tu avance, presentas quizzes, actividades y foros, y al terminar emites tu certificado verificable.</p><p>Con el certificado tienes acompañamiento por WhatsApp y revisión de tus actividades. <a href="${esc(cursoRuta)}">Inscribirme al ${esc(curso.nombre)}</a></p></section>`,
     `<section><h2>Todas las clases abiertas del curso</h2><ol>${datos.indice.map((c) => `<li><a href="${esc(c.ruta)}">${esc(c.titulo)}</a></li>`).join('')}</ol></section>`,
   ].join('');
 }
 
-/** Para el JSON de la página en React. */
-export function resumenDeClase(datos) {
+/** Para el JSON de la página en React: los datos y el mismo SEO que el HTML del servidor. */
+export function resumenDeClase(datos, urls = null) {
   return {
     curso: datos.curso,
-    clase: { id: datos.clase.id, titulo: datos.clase.titulo, slug: datos.clase.slug, unidad: datos.clase.unidad, unidadNumero: datos.clase.unidadNumero, experiencia: datos.clase.experiencia },
+    clase: {
+      id: datos.clase.id, titulo: datos.clase.titulo, slug: datos.clase.slug, unidad: datos.clase.unidad,
+      unidadNumero: datos.clase.unidadNumero, experiencia: datos.clase.experiencia, videos: datos.clase.videos || [],
+    },
     numero: datos.numero,
     total: datos.total,
+    revision: datos.revision,
     anterior: datos.anterior,
     siguiente: datos.siguiente,
     indice: datos.indice,
+    lecturas: lecturasDe(datos),
     caracteres: caracteresDeExperiencia(datos.clase.experiencia),
+    seo: urls ? {
+      titulo: tituloDeClase(datos),
+      descripcion: descripcionDeClase(datos),
+      imagen: imagenDeClase(datos, urls.inicio),
+      jsonLd: datosDeClase(datos, urls),
+    } : null,
   };
 }

@@ -1,0 +1,147 @@
+import { F } from '../../vademecum/fuentes.js';
+import { FC } from '../fuentes.js';
+
+export default {
+  slug: 'insuficiencia-suprarrenal',
+  titulo: 'Caso clínico de insuficiencia suprarrenal por corticoides',
+  enfermedad: 'Insuficiencia suprarrenal',
+  area: 'endocrino',
+  nivel: 'Avanzado',
+  minutos: 14,
+  actualizado: '2026-11-17',
+  seo: {
+    titulo: 'Caso clínico de insuficiencia suprarrenal por prednisona',
+    descripcion: 'Caso clínico de insuficiencia suprarrenal tras suspender la prednisona: crisis suprarrenal, hidrocortisona y dosis de estrés. Con respuestas.',
+    palabrasClave: ['caso clínico insuficiencia suprarrenal', 'retiro de corticoides caso clínico', 'crisis suprarrenal hidrocortisona', 'preguntas de glucocorticoides'],
+  },
+  objetivos: [
+    'Reconocer la insuficiencia suprarrenal por retiro brusco de glucocorticoides.',
+    'Tratar la crisis suprarrenal.',
+    'Enseñar el retiro gradual y las dosis de estrés.',
+  ],
+  presentacion: 'Germán tiene 60 años y tomó prednisona 20 mg al día durante 4 meses por una enfermedad pulmonar. Hace 10 días la suspendió de golpe porque «ya estaba bien». Llega con debilidad intensa, náuseas, mareo al ponerse de pie y presión de 86/54 mmHg. El sodio es 129 mEq/L y la glucosa 64 mg/dL; el potasio es normal y no tiene hiperpigmentación.',
+  datos: [
+    ['Glucocorticoide', 'Prednisona 20 mg al día por 4 meses, suspendida de golpe'],
+    ['Presión arterial', '86/54 mmHg'],
+    ['Sodio', '129 mEq/L'],
+    ['Potasio', '4,3 mEq/L'],
+    ['Glucosa', '64 mg/dL'],
+    ['Piel', 'Sin hiperpigmentación'],
+  ],
+  preguntas: [
+    {
+      tipo: 'opcion',
+      enunciado: '¿Cuál es el diagnóstico más probable?',
+      opciones: [
+        'Enfermedad de Addison autoinmune',
+        'Insuficiencia suprarrenal por supresión del eje hipotálamo-hipófisis-suprarrenal tras suspender la prednisona',
+        'Hipertiroidismo',
+        'Síndrome de Cushing',
+      ],
+      correcta: 1,
+      explicacion: 'Los glucocorticoides prolongados suprimen el eje; suspenderlos de golpe puede causar insuficiencia adrenocortical aguda y síndrome de retirada [2].',
+    },
+    {
+      tipo: 'relacionar',
+      enunciado: 'Relaciona cada hallazgo con su explicación.',
+      pares: [
+        ['Hiperpigmentación', 'ACTH alta: sugiere insuficiencia primaria'],
+        ['Hiperpotasemia', 'Falta de aldosterona: sugiere insuficiencia primaria'],
+        ['Potasio normal tras retirar prednisona', 'Insuficiencia secundaria: la aldosterona se conserva'],
+      ],
+      explicacion: 'En la insuficiencia primaria se pierden cortisol y aldosterona, y la ACTH alta pigmenta la piel; en la secundaria por glucocorticoides la ACTH está baja y la aldosterona se conserva [1].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: 'Germán está hipotenso y con hipoglucemia. ¿Qué se administra de inmediato?',
+      opciones: [
+        'Fludrocortisona oral',
+        'Hidrocortisona intravenosa en bolo y líquidos isotónicos',
+        'Dexametasona en gotas',
+        'Insulina',
+      ],
+      correcta: 1,
+      explicacion: 'La crisis suprarrenal se trata sin esperar resultados con hidrocortisona parenteral y reposición de volumen [1,3].',
+    },
+    {
+      tipo: 'completar',
+      enunciado: 'En la crisis suprarrenal del adulto se aplica hidrocortisona ___ mg por vía intravenosa en bolo.',
+      respuestas: ['100', 'cien'],
+      pista: 'Un número redondo de tres cifras.',
+      explicacion: 'La Endocrine Society recomienda hidrocortisona 100 mg intravenosa en bolo, seguida de 200 mg en 24 horas, con líquidos [1].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: '¿Cómo debió suspenderse la prednisona después de 4 meses?',
+      opciones: ['De golpe, al mejorar', 'De forma gradual, según la dosis y la duración', 'Cambiándola por un AINE', 'Duplicándola una semana antes'],
+      correcta: 1,
+      explicacion: 'Después de un tratamiento prolongado, la retirada debe ser gradual para permitir la recuperación del eje [2].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: 'Si Germán quedara con reemplazo de glucocorticoide, ¿qué hace cuando tenga fiebre?',
+      opciones: [
+        'Suspender el glucocorticoide',
+        'Duplicar o triplicar la dosis mientras dure la fiebre (dosis de estrés) y consultar si vomita',
+        'Mantener la dosis igual',
+        'Tomar solo acetaminofén',
+      ],
+      correcta: 1,
+      explicacion: 'Las «reglas de días de enfermedad» indican aumentar la dosis de glucocorticoide durante la fiebre o la enfermedad y usar la vía parenteral si hay vómito [1].',
+    },
+    {
+      tipo: 'completar',
+      enunciado: 'El reemplazo diario habitual con hidrocortisona en adultos es de 15 a ___ mg, repartidos en 2 o 3 tomas.',
+      respuestas: ['25', 'veinticinco'],
+      pista: 'Un cuarto de cien.',
+      explicacion: 'La Endocrine Society sugiere 15 a 25 mg de hidrocortisona al día en 2 o 3 dosis, la mayor en la mañana [1].',
+    },
+    {
+      tipo: 'relacionar',
+      enunciado: 'Relaciona cada glucocorticoide con su característica.',
+      pares: [
+        ['Hidrocortisona', 'Acción glucocorticoide y mineralocorticoide'],
+        ['Dexametasona', 'Acción prolongada sin efecto mineralocorticoide relevante'],
+        ['Prednisona', 'Profármaco que el hígado convierte en prednisolona'],
+      ],
+      explicacion: 'La hidrocortisona conserva actividad mineralocorticoide [3]; la dexametasona es potente, de acción prolongada y casi sin efecto mineralocorticoide [4]; la prednisona se activa en el hígado a prednisolona [2].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: '¿Qué educación es clave antes del alta?',
+      opciones: [
+        'No contarle a nadie que toma corticoides',
+        'Llevar una identificación médica y un plan de emergencia con hidrocortisona inyectable',
+        'Suspender el tratamiento los fines de semana',
+        'Tomar la dosis en la noche',
+      ],
+      correcta: 1,
+      explicacion: 'La guía recomienda que el paciente lleve una tarjeta o pulsera de alerta y tenga hidrocortisona inyectable para emergencias, con instrucción a la familia [1].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: 'Germán empieza rifampicina por una tuberculosis. ¿Qué pasa con su glucocorticoide?',
+      opciones: [
+        'Nada',
+        'La rifampicina induce su metabolismo y puede requerir aumentar la dosis',
+        'Se debe suspender',
+        'Se potencia y hay que bajarla',
+      ],
+      correcta: 1,
+      explicacion: 'Los inductores enzimáticos como la rifampicina aceleran el metabolismo de los glucocorticoides y disminuyen su efecto [2]; la guía advierte ajustar la dosis de reemplazo [1].',
+    },
+  ],
+  claves: [
+    'Glucocorticoides prolongados suprimen el eje: retirada gradual [2].',
+    'Crisis suprarrenal: hidrocortisona 100 mg IV en bolo y líquidos, sin esperar resultados [1].',
+    'Reemplazo: 15 a 25 mg de hidrocortisona al día; duplicar o triplicar con fiebre [1].',
+    'Secundaria: potasio normal y sin hiperpigmentación [1].',
+  ],
+  referencias: [FC.insuficienciaSuprarrenal2016, F.ftPrednisona, F.ftHidrocortisona, F.ftDexametasona],
+  enlaces: [
+    ['Prednisona', '/vademecum/prednisona', 'Vademécum'],
+    ['Hidrocortisona', '/vademecum/hidrocortisona', 'Vademécum'],
+    ['Corticoides sistémicos', '/vademecum/corticoides-sistemicos', 'Vademécum'],
+    ['Curso de Farmacología Endocrina', '/curso-de-farmacologia-endocrina', 'Curso'],
+  ],
+};

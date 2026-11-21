@@ -34,6 +34,7 @@ const VolviendoDeAcceso = lazy(() => import('./pages/VolviendoDeAcceso'));
 const FichaDeCurso = lazy(() => import('./pages/FichaDeCurso'));
 const PaginaPublica = lazy(() => import('./pages/PaginaPublica'));
 const ClasePublica = lazy(() => import('./pages/ClasePublica'));
+const InscripcionCurso = lazy(() => import('./pages/InscripcionCurso'));
 const VerificarCertificado = lazy(() => import('./pages/VerificarCertificado'));
 const Diagnostico = lazy(() => import('./pages/Diagnostico'));
 const CursoGratisRedirige = lazy(() => import('./pages/CursoGratisRedirige'));
@@ -42,6 +43,8 @@ const CareersIndex = lazy(() => import('./pages/CareersIndex'));
 const CareerPage = lazy(() => import('./pages/CareerPage'));
 const VademecumIndex = lazy(() => import('./pages/VademecumIndex'));
 const VademecumPagina = lazy(() => import('./pages/VademecumPagina'));
+const CasosClinicosIndex = lazy(() => import('./pages/CasosClinicosIndex'));
+const CasoClinicoPagina = lazy(() => import('./pages/CasoClinicoPagina'));
 const EnfermedadPage = lazy(() => import('./pages/EnfermedadPage'));
 const AcademiaIndex = lazy(() => import('./pages/AcademiaIndex'));
 const AulaApp = lazy(() => import('./aula/AulaApp'));
@@ -76,6 +79,14 @@ const HojaDeVidaCrear = lazy(() => import('./pages/HojaDeVidaCrear'));
 const CorreosRRHH = lazy(() => import('./pages/empleo/CorreosRRHH'));
 const BuscarPage = lazy(() => import('./pages/BuscarPage'));
 const ComunidadPage = lazy(() => import('./pages/ComunidadPage'));
+const ComunidadesIndex = lazy(() => import('./pages/ComunidadesIndex'));
+const ComunidadDetalle = lazy(() => import('./pages/ComunidadDetalle'));
+const ExamenesIndex = lazy(() => import('./pages/ExamenesIndex'));
+const ExamenDetalle = lazy(() => import('./pages/ExamenDetalle'));
+const MedicamentosIndex = lazy(() => import('./pages/MedicamentosIndex'));
+const MedicamentoFicha = lazy(() => import('./pages/MedicamentoFicha'));
+const BibliotecaSaludIndex = lazy(() => import('./pages/BibliotecaSaludIndex'));
+const BibliotecaSaludArticulo = lazy(() => import('./pages/BibliotecaSaludArticulo'));
 const HerramientaLandingPage = lazy(() => import('./pages/HerramientaLandingPage'));
 
 // Arquitectura de escuelas: una página por puerta de entrada.
@@ -305,6 +316,22 @@ export default function App() {
         {/* Landing de la comunidad QF */}
         <Route path="/comunidad" element={<ComunidadPage />} />
 
+        {/* Una comunidad por enfermedad (pacientes y cuidadores) */}
+        <Route path="/comunidades" element={<ComunidadesIndex />} />
+        <Route path="/comunidades/:slug" element={<ComunidadDetalle />} />
+
+        {/* Exámenes interactivos públicos */}
+        <Route path="/examenes" element={<ExamenesIndex />} />
+        <Route path="/examenes/:slug" element={<ExamenDetalle />} />
+
+        {/* Fichas rápidas de medicamentos para pacientes */}
+        <Route path="/medicamentos" element={<MedicamentosIndex />} />
+        <Route path="/medicamentos/:slug" element={<MedicamentoFicha />} />
+
+        {/* Biblioteca de salud: 200 artículos «para qué sirve» */}
+        <Route path="/salud" element={<BibliotecaSaludIndex />} />
+        <Route path="/salud/:slug" element={<BibliotecaSaludArticulo />} />
+
         {/* Marca: Feliz Sin Tiroides (pacientes) */}
         <Route path="/feliz-sin-tiroides" element={<FelizSinTiroides />} />
         <Route path="/feliz-sin-tiroides/guias" element={<Navigate to="/feliz-sin-tiroides#ebooks" replace />} />
@@ -422,6 +449,8 @@ export default function App() {
         <Route path="/carreras/:slug" element={<CareerPage />} />
         <Route path="/vademecum" element={<VademecumIndex />} />
         <Route path="/vademecum/:slug" element={<VademecumPagina />} />
+        <Route path="/casos-clinicos" element={<CasosClinicosIndex />} />
+        <Route path="/casos-clinicos/:slug" element={<CasoClinicoPagina />} />
         <Route path="/orientacion-vocacional" element={<Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-edvanta-bg text-sm font-semibold text-slate-600">Cargando orientación vocacional...</div>}><VocacionPage /></Suspense>} />
         <Route path="/empleo" element={<Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-edvanta-bg text-sm font-semibold text-slate-600">Cargando centro de empleo...</div>}><EmpleoPage /></Suspense>} />
         <Route path="/hoja-de-vida" element={<HojaDeVida />} />
@@ -503,6 +532,8 @@ export default function App() {
         {/* 404 — página no encontrada */}
         {/* Direcciones de un tramo: los cursos (/curso-de-…). Lo demás, 404. */}
         <Route path="/:slugPublico/clase/:claseSlug" element={<ClasePublica />} />
+        {/* La landing de inscripción: con certificado o gratis. */}
+        <Route path="/:slugPublico/inscripcion" element={<InscripcionCurso />} />
         <Route path="/:slugPublico" element={<PaginaPublica />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

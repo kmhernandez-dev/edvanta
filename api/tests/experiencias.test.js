@@ -30,8 +30,11 @@ import {
   ErrorDeExperiencia, caracteresDeExperiencia, htmlDeExperiencia, leerExperiencia,
 } from '../lib/experiencia.js';
 import {
-  clasePublica, cuerpoDeClase, datosDeClase, descripcionDeClase, tituloDeClase,
+  clasePublica, cuerpoDeClase, datosDeClase, descripcionDeClase, enlazarTemario, recortarFrase, resumenDeClase, rutasDeClasesAbiertas,
+  tituloDeClase,
 } from '../lib/clase-publica.js';
+import { datosDeVideoYoutube } from '../lib/videos-youtube.js';
+import { temarioPublico } from '../routes/courses.js';
 import { CLASES as CLASES_VALIDACIONES, CURSO as CURSO_VALIDACIONES } from '../../contenido/experiencias/validaciones/index.mjs';
 
 // Todos los cursos con experiencias (una carpeta por curso en contenido/experiencias).
@@ -245,13 +248,131 @@ describe('migraciones de experiencias y clases abiertas', () => {
 
     const canonical = `https://edvanta.co/${slug}/clase/${claseSlug}`;
     const jsonLd = datosDeClase(datos, { canonical, cursoUrl: `https://edvanta.co/${slug}`, inicio: 'https://edvanta.co/' });
-    expect(jsonLd.map((x) => x['@type'])).toEqual(['LearningResource', 'BreadcrumbList', 'FAQPage']);
-    expect(tituloDeClase(datos).length).toBeLessThanOrEqual(80);
-    expect(descripcionDeClase(datos).length).toBeLessThanOrEqual(156);
+    expect(jsonLd.map((x) => x['@type'])).toEqual(['WebPage', 'LearningResource', 'BreadcrumbList', 'FAQPage']);
+    expect(tituloDeClase(datos).length).toBeLessThanOrEqual(60);
+    expect(descripcionDeClase(datos).length).toBeLessThanOrEqual(155);
+  });
+
+  it('cada clase abierta dice quién la verificó y da el crédito y la licencia de su video', async () => {
+    // Una clase abierta (con experiencia) que tenga video de YouTube.
+    const [fila] = await many(db, `
+      SELECT ps.slug, l.slug AS clase
+        FROM aula_courses c
+        JOIN aula_course_versions v ON v.id = c.current_version_id
+        JOIN public_slugs ps ON ps.entity = 'aula' AND ps.entity_id = c.id AND ps.is_current
+        JOIN LATERAL jsonb_array_elements(v.snapshot->'modules') m ON TRUE
+        JOIN LATERAL jsonb_array_elements(m->'lessons') le ON TRUE
+        JOIN aula_lessons l ON l.id = (le->>'id')::int AND l.slug IS NOT NULL
+       WHERE jsonb_path_exists(le, '$.blocks[*] ? (@.type == "experiencia")')
+         AND jsonb_path_exists(le, '$.blocks[*] ? (@.type == "video" && @.data.provider == "youtube")')
+       ORDER BY c.id, l.id LIMIT 1`);
+    expect(fila).toBeTruthy();
+    const datos = await clasePublica(db, fila.slug, fila.clase);
+    const { slug } = fila;
+    const claseSlug = fila.clase;
+
+    const html = cuerpoDeClase(datos);
+    expect(html).toContain('Verificada por <a href="/autores/karla-hernandez">Karla Hernández</a>, química farmacéutica');
+    expect(datos.clase.videos.length).toBeGreaterThan(0);
+    expect(html).toContain('Licencia estándar de YouTube');
+    expect(html).toContain(`https://www.youtube-nocookie.com/embed/${datos.clase.videos[0].videoId}`);
+    expect(html).toContain('id="curso-completo"');
+
+    const canonical = `https://edvanta.co/${slug}/clase/${claseSlug}`;
+    const [pagina] = datosDeClase(datos, { canonical, cursoUrl: `https://edvanta.co/${slug}`, inicio: 'https://edvanta.co/' });
+    expect(pagina.reviewedBy).toMatchObject({ '@type': 'Person', '@id': 'https://edvanta.co/autores/karla-hernandez#person', jobTitle: 'Química farmacéutica' });
+    expect(pagina.lastReviewed).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+    // Los videos que YouTube reporta retirados o sin inserción no se muestran.
+    for (const v of datos.clase.videos) expect(datosDeVideoYoutube(v.videoId)?.estado ?? 'disponible').toBe('disponible');
+  });
+
+  it('la clase abierta enlaza de vuelta al vademécum y a la lectura para el paciente', async () => {
+    const id = await cursoId(CURSO_VALIDACIONES);
+    const [{ slug }] = await many(db, "SELECT slug FROM public_slugs WHERE entity = 'aula' AND entity_id = $1 AND is_current", [id]);
+    const [{ slug: claseSlug }] = await many(db, 'SELECT slug FROM aula_lessons WHERE course_id = $1 AND title = $2', [id, 'DQ, IQ, OQ y PQ']);
+    const datos = await clasePublica(db, slug, claseSlug);
+    // Validaciones no tiene páginas de salud que la enlacen: no hay sección.
+    expect(datos.lecturas).toEqual({ vademecum: [], articulos: [] });
+    expect(cuerpoDeClase(datos)).not.toContain('id="para-profundizar"');
+
+    // La misma clase con la dirección de la clase de metformina (api/lib/enlaces-de-salud.js).
+    const comoMetformina = {
+      ...datos,
+      lecturas: undefined,
+      curso: { ...datos.curso, slug: 'curso-de-farmacoterapia-de-la-diabetes' },
+      clase: { ...datos.clase, slug: 'metformina-mecanismo-indicaciones-dosificacion-y-ajuste' },
+    };
+    const html = cuerpoDeClase(comoMetformina);
+    expect(html).toContain('id="para-profundizar"');
+    expect(html).toContain('<a href="/vademecum/metformina">Metformina</a>');
+    expect(html).toContain('<h3>Para explicarle al paciente</h3>');
+    expect(html).toContain('href="/articulos/metformina-para-que-sirve"');
+    expect(html).toContain('<h3>Lecturas relacionadas</h3>');
+
+    const canonical = 'https://edvanta.co/curso-de-farmacoterapia-de-la-diabetes/clase/metformina-mecanismo-indicaciones-dosificacion-y-ajuste';
+    const [pagina] = datosDeClase(comoMetformina, { canonical, cursoUrl: 'https://edvanta.co/curso-de-farmacoterapia-de-la-diabetes', inicio: 'https://edvanta.co/' });
+    expect(pagina.relatedLink).toContain('https://edvanta.co/vademecum/metformina');
+    expect(pagina.relatedLink).toContain('https://edvanta.co/articulos/metformina-para-que-sirve');
+    expect(resumenDeClase(comoMetformina).lecturas.vademecum[0]).toEqual({ nombre: 'Metformina', ruta: '/vademecum/metformina' });
+  });
+
+  it('la ficha del curso enlaza cada clase abierta de su temario', async () => {
+    const id = await cursoId(CURSO_VALIDACIONES);
+    const [{ slug }] = await many(db, "SELECT slug FROM public_slugs WHERE entity = 'aula' AND entity_id = $1 AND is_current", [id]);
+    const [{ snapshot }] = await many(db, 'SELECT v.snapshot FROM aula_courses c JOIN aula_course_versions v ON v.id = c.current_version_id WHERE c.id = $1', [id]);
+    const rutas = await rutasDeClasesAbiertas(db, id, snapshot, slug);
+    expect(rutas.size).toBe(CLASES_VALIDACIONES.length);
+    const temario = enlazarTemario(temarioPublico(snapshot), rutas);
+    const enlazadas = temario.flatMap((u) => u.lessons).filter((l) => l.ruta);
+    expect(enlazadas.length).toBe(CLASES_VALIDACIONES.length);
+    for (const l of enlazadas) expect(l.ruta).toMatch(new RegExp(`^/${slug}/clase/[a-z0-9-]+$`));
+  });
+
+  it('todas las clases abiertas: título ≤ 60, descripción ≤ 155 y ningún título repetido', async () => {
+    const cursos = await many(db, `
+      SELECT ps.slug, c.id, v.snapshot FROM aula_courses c
+        JOIN aula_course_versions v ON v.id = c.current_version_id
+        JOIN public_slugs ps ON ps.entity = 'aula' AND ps.entity_id = c.id AND ps.is_current
+       WHERE c.kind = 'edvanta' AND c.status = 'publicado' AND c.deleted_at IS NULL`);
+    const titulos = new Map();
+    let total = 0;
+    for (const c of cursos) {
+      for (const ruta of (await rutasDeClasesAbiertas(db, c.id, c.snapshot, c.slug)).values()) {
+        const datos = await clasePublica(db, c.slug, ruta.split('/clase/')[1]);
+        const t = tituloDeClase(datos);
+        const d = descripcionDeClase(datos);
+        expect(t.length, t).toBeLessThanOrEqual(60);
+        expect(d.length, d).toBeLessThanOrEqual(155);
+        expect(d.length, d).toBeGreaterThanOrEqual(70);
+        titulos.set(t, [...(titulos.get(t) || []), ruta]);
+        total += 1;
+      }
+    }
+    expect(total).toBeGreaterThan(100);
+    const repetidos = [...titulos].filter(([, rutas]) => rutas.length > 1);
+    expect(repetidos, JSON.stringify(repetidos.slice(0, 5))).toEqual([]);
+  }, 120000);
+
+  it('los títulos largos se recortan en una palabra completa, sin conectores al final', () => {
+    const datos = {
+      curso: { nombre: 'Curso de Farmacoterapia de la Diabetes' },
+      clase: { titulo: 'Metformina: mecanismo, indicaciones, dosificación y ajuste por función renal', experiencia: { objetivos: [] } },
+    };
+    const t = tituloDeClase(datos);
+    expect(t.length).toBeLessThanOrEqual(60);
+    expect(t.startsWith('Metformina: mecanismo, indicaciones, dosificación')).toBe(true);
+    expect(t).not.toMatch(/\s(y|de|por|la)$/);
+    // Si cabe, el curso sin «Curso de» distingue clases homónimas de dos cursos.
+    expect(tituloDeClase({ curso: { nombre: 'Curso de Farmacoterapia de la Diabetes' }, clase: { titulo: 'Ficha: Dapagliflozina' } }))
+      .toBe('Ficha: Dapagliflozina | Farmacoterapia de la Diabetes');
+    expect(recortarFrase('Equipos: calificación (DQ/IQ/OQ/PQ), limpieza, mantenimiento y calibración', 40)).toBe('Equipos: calificación (DQ/IQ/OQ/PQ)');
   });
 
   it('una clase sin experiencia no tiene página: se redirige al curso', async () => {
-    const id = await cursoId('Curso de Farmacología Oncológica');
+    // La Escuela de Habilidades Blandas conserva sus clases en texto largo
+    // aprobado, sin experiencia estructurada. Es el caso vigente para probar
+    // que una clase sin experiencia no genera página pública.
+    const id = await cursoId('Curso de Oratoria: cómo hablar en público con seguridad');
     const [{ slug }] = await many(db, "SELECT slug FROM public_slugs WHERE entity = 'aula' AND entity_id = $1 AND is_current", [id]);
     const [{ slug: claseSlug }] = await many(db, 'SELECT slug FROM aula_lessons WHERE course_id = $1 AND slug IS NOT NULL ORDER BY id LIMIT 1', [id]);
     const datos = await clasePublica(db, slug, claseSlug);

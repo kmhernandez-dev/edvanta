@@ -1,3 +1,5 @@
+> Plan vigente hacia 10.000 keywords: [seo/plan-10000-keywords.md](./plan-10000-keywords.md). Este documento conserva el registro histórico.
+
 # Plan hacia 3.000 palabras clave
 
 Meta de Karla: pasar de unas 54 a 1.000 consultas con impresiones en Search Console (12-nov-2026), y luego a **3.000** (nueva meta, 12-nov-2026 por la noche).
@@ -47,6 +49,54 @@ Con 10 a 40 consultas por página fuerte indexada, 3.000 consultas piden entre 1
 - **13-nov, lote 1 de antimicrobianos revisado y aprobado por Karla:** 7 fichas `/articulos/[dci]-para-que-sirve` y 8 páginas del vademécum (grupo «Antibióticos de uso ambulatorio» y 7 monografías), ya indexables y en el sitemap. Se avisaron 17 URLs a Bing por IndexNow (HTTP 200), incluidas amoxicilina y azitromicina por los CTA nuevos. Quedan pendientes de Search Console cuando se restablezca la cuota.
 - **13-nov, lote 2 de antimicrobianos y clases revisado por Karla:** 8 fichas nuevas y 7 clases de antibióticos, ya indexables. Las clases cubren las 188 keywords de «Clases de antibióticos» del CSV. Se avisaron 15 URLs a Bing por IndexNow (HTTP 200).
 - **13-nov, cierre del grupo y nuevas clases:** 8 monografías nuevas en el vademécum (secnidazol, dicloxacilina, claritromicina, ceftriaxona, penicilina benzatínica, levofloxacino, doxiciclina y fosfomicina), 4 clases nuevas (aminoglucósidos, carbapenémicos, sulfonamidas y antibióticos de reserva) y 3 artículos del lote 3 (PK/PD, dispensación en droguería y el pilar para pacientes). Las monografías y las 4 clases nuevas quedan en noindex hasta la revisión de Karla; los 3 artículos también.
+- **17-nov, revisión general antes de indexar:**
+  - verificar-fuentes: 184 fuentes de 108 artículos y 197 del vademécum. La única caída era el comunicado de la FDA de 2016 sobre fluoroquinolonas (404 en todas sus direcciones). Se reemplazó por la etiqueta vigente de levofloxacino en DailyMed, que trae el recuadro de advertencia, en el artículo de quinolonas y en el vademécum. Levofloxacino también pasó a la fórmula del hemihidrato (C18H20FN3O4·½H2O, 370,38). Commit ce7dfbe.
+  - 8 monografías mostraban cursivas de markdown con asteriscos literales (*Pseudomonas*). Se limpiaron.
+  - 0 títulos SEO repetidos y 0 bloques JSON-LD sin `@context`. Pruebas: 225 del front y 439 de la API, todas en verde; build con 679 URLs en el sitemap.
+  - Producción verificada con curl: las páginas revisadas salen `index,follow`; las pendientes (p. ej. `/vademecum/levofloxacino`, `/articulos/meloxicam-para-que-sirve`) salen `noindex,follow` y no están en el sitemap.
+- **17-nov, IndexNow:** sitemap completo, 1.356 direcciones de los 5 sitemaps (páginas 186, artículos 483, herramientas 10, cursos 605, profesional 72), HTTP 200. Incluye las noticias regulatorias, las guías de cursos y las clases de antibióticos que otras sesiones publicaron después del 12-nov.
+- **17-nov, Search Console:** la sesión de Google expiró, así que no se pudo enviar nada. Cuando Karla vuelva a entrar: reenviar `sitemap.xml`, pedir la indexación de la lista pendiente (empezando por `/vademecum/antibioticos-de-uso-ambulatorio`, las 7 fichas del lote 1 y crisis hipertensiva) y validar la corrección de la ProfilePage.
+- **Pendiente de revisión clínica de Karla (17-nov): 90 páginas en noindex.**
+  - 14 artículos: aminoglucósidos, carbapenémicos, sulfonamidas, antibióticos de reserva, antibióticos para qué sirven (pilar), PK/PD de antibióticos, dispensación de antibióticos en droguería, y las fichas de meloxicam, etoricoxib, celecoxib, dipirona, tramadol, ketorolaco y metocarbamol.
+  - 7 grupos del vademécum, con sus monografías (69 en total, contando las de los grupos ya revisados):
+    - dolor e inflamación (13);
+    - aparato digestivo (12);
+    - corticoides sistémicos (5);
+    - alergia y vías respiratorias (8);
+    - salud mental y sistema nervioso (8);
+    - antimicóticos, antivirales y antiparasitarios (7);
+    - tiroides (levotiroxina).
+  - Monografías nuevas dentro de grupos ya revisados:
+    - antibióticos: secnidazol, dicloxacilina, claritromicina, ceftriaxona, penicilina benzatínica, levofloxacino, doxiciclina, fosfomicina, amoxicilina y azitromicina;
+    - hipertensión: valsartán, carvedilol, metoprolol, espironolactona y furosemida.
+- **17-nov (tarde), Karla aprobó las 90 páginas** («apruebo, ya las leí y todo está bien»). Commit 21c340e. Ya son indexables y entraron al sitemap, que subió de 679 a 769 URLs. Se avisaron las 90 a Bing por IndexNow (HTTP 200).
+- **17-nov (tarde), Search Console**, con Karla de nuevo en sesión. Estado: 581 indexadas y 570 sin indexar.
+  - **404 (5):** dos ya respondían 200 y la tercera falla venía de rutas del catálogo de respaldo de `/rutas`. Esas 4 rutas antiguas tienen ahora 301, y a `/academia/retos/activa-quema` le faltaba su página prerenderizada (commit 152b4a6). Validación iniciada.
+  - **noindex (72):** 57 ya son indexables (noticias reescritas y artículos de tiroides revisados) y 13 son redirecciones. Solo la herramienta de hoja de vida y la categoría «lean» siguen en noindex, a propósito. Validación iniciada.
+  - **Duplicada (18):** todas responden ahora 301 a su página vigente. La validación ya estaba en curso.
+  - **Bloqueada por robots.txt (7):** son privadas a propósito, salvo la portada de un curso propio. `robots.txt` ahora deja pasar `/api/cursos-edvanta/*/portada`.
+  - **Rastreada sin indexar (117):** 58 son clases de cursos propios; el plan está en `seo/estrategia-clases.md`. Validación reiniciada.
+  - **Caída al desplegar:** el healthcheck del contenedor web pasa de 30 a 5 s, porque Traefik deja el sitio en «404 page not found» hasta el primer chequeo sano.
+  - **ProfilePage:** validación correcta, 0 no válidas.
+  - **Sitemap reenviado e indexación solicitada para:**
+    - `/vademecum/antibioticos-de-uso-ambulatorio` y `/vademecum/medicamentos-para-el-dolor-y-la-inflamacion`;
+    - los artículos antibióticos para qué sirven, metronidazol, amoxicilina con ácido clavulánico, crisis hipertensiva y cefalexina;
+    - las fichas de los cursos de diabetes, hipertensión y BPM, que ya enlazan a sus clases.
+
+    Son 10 en total, el cupo del día. Siguen las otras 8 fichas de curso y una clase por curso, en el orden de `seo/estrategia-clases.md`.
+  - **Caída al desplegar, medida después del cambio:** 38 s de 404 (16:38:39 a 16:39:17); antes pasaba de 2 minutos. Para llegar a cero hay que configurar Coolify para que no baje el contenedor viejo antes de que el nuevo esté sano.
+- **17-nov (noche), clases de los cursos propios** (commit f0fd131):
+  - verificación de Karla;
+  - licencia estándar de YouTube;
+  - títulos de 60 caracteres como máximo;
+  - la ficha del curso enlaza las clases.
+
+  Se avisaron a Bing las 367 clases y las 11 fichas (378 URLs, HTTP 200). `scripts/indexnow.mjs` acepta ahora `--archivo=lista.txt`.
+- **17-nov (noche), enlaces entre vademécum, artículos y clases** (commit 086c636). Es el plan «Semanas 2 a 4» de `seo/estrategia-clases.md`:
+  - 49 monografías, 11 grupos del vademécum y 41 artículos enlazan a 121 clases abiertas, con el nombre de la clase como texto del enlace;
+  - cada clase enlaza de vuelta a su monografía y a la lectura para el paciente;
+  - `relatedLink` en el JSON-LD de las tres páginas;
+  - las parejas están en `api/lib/enlaces-de-salud.js` y la prueba compara cada clase con la lista de producción (`node scripts/clases-abiertas.mjs`).
 
 ## Dónde estamos (28 días al 10-nov-2026)
 
@@ -108,6 +158,7 @@ Una página sólida, ya indexada y con unos meses, suele aparecer en 10 a 40 con
 | 13-nov | **Antimicrobianos, lote 1:** 7 fichas para pacientes y el grupo «Antibióticos de uso ambulatorio» con 7 monografías; CTA profesionales añadidos a amoxicilina y azitromicina. Revisado por Karla el 13-nov. | 15 páginas nuevas, indexables; 17 URLs avisadas por IndexNow |
 | 13-nov | **Antimicrobianos, lote 2 y clases:** 8 fichas y 7 clases de antibióticos con enlazado cruzado. Revisado por Karla el 13-nov. | 15 páginas indexables |
 | 13-nov | **Vademécum, lote 2:** 8 monografías nuevas y 4 clases adicionales (aminoglucósidos, carbapenémicos, sulfonamidas y reserva); 3 artículos del lote 3 (PK/PD, dispensación y pilar de pacientes). | 15 páginas nuevas, en noindex hasta la revisión de Karla |
+| 17-nov | **Enlaces de salud:** el vademécum y los artículos enlazan a las clases abiertas que enseñan lo mismo, y cada clase enlaza de vuelta. Solo enlaces: no agrega texto clínico. | 60 páginas del vademécum y 41 artículos con enlaces nuevos; 121 clases con enlaces de vuelta |
 
 **Riesgo resuelto (12-nov):** las noticias de pritelivir, Ort-Flx, Anktiva y Mynzepli ya posicionaban (posiciones 2 a 9) y seguían en noindex. Al rastrearlas de nuevo, Google las habría sacado del índice. Ya tienen contenido propio y `index,follow`. La de pritelivir se pidió a Search Console; la cuota del día se agotó.
 

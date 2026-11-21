@@ -64,6 +64,18 @@ Si el médico confirma anemia por falta de hierro, indicará un suplemento por v
 - Si tienes menstruaciones muy abundantes.
 - De inmediato si tienes heces negras, sangre en las heces, dolor en el pecho o falta de aire en reposo.
 
+## ¿Quiénes tienen más riesgo?
+
+La anemia es más frecuente en niños pequeños, en mujeres embarazadas y en mujeres de 15 a 49 años. Puede deberse a mala alimentación, infecciones, enfermedades crónicas, menstruaciones abundantes, problemas del embarazo o antecedentes familiares, aunque la causa más común es la falta de hierro.
+
+## ¿Por qué importa tratarla?
+
+En los niños, la anemia puede afectar el desarrollo cognitivo y motor; en el embarazo puede causar problemas a la madre y al bebé. En los adultos produce cansancio y baja el rendimiento. Por eso se busca siempre la causa, además de corregir el hierro.
+
+## Para estudiantes y profesionales de la salud
+
+Si estudias o trabajas en salud, pon a prueba lo que sabes con el [caso clínico de anemia ferropénica](/casos-clinicos/anemia-ferropenica): un examen interactivo tipo parcial con explicaciones y nota de 0 a 5.
+
 ## Preguntas frecuentes
 
 ### ¿La remolacha sube la hemoglobina?
@@ -77,6 +89,10 @@ Suele empezar a subir en unas semanas, pero hay que continuar el tratamiento var
 ### ¿La anemia engorda o adelgaza?
 
 No directamente, aunque el cansancio puede reducir la actividad física.
+
+### ¿Las menstruaciones abundantes pueden causar anemia?
+
+Sí. Las pérdidas menstruales abundantes son una causa frecuente de anemia por falta de hierro en mujeres jóvenes. Si tus menstruaciones son muy abundantes y te sientes cansada, consulta para revisar la hemoglobina y la ferritina.
 
 ## Fuentes
 

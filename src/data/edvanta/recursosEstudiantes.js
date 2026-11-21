@@ -24,10 +24,10 @@ export const URL_RECURSOS_ESTUDIANTES = `https://edvanta.co${RUTA_RECURSOS_ESTUD
 
 export const RECURSOS_ESTUDIANTES = {
   seoTitle: 'Recursos gratis para estudiantes de Química Farmacéutica',
-  seoDescription: '61 cursos gratis de calidad, asuntos regulatorios, farmacología y farmacoterapia, guías de carrera, alertas del INVIMA y herramientas de empleo.',
+  seoDescription: '61 cursos de calidad, asuntos regulatorios, farmacología y farmacoterapia, guías de carrera, alertas del INVIMA y herramientas de empleo.',
   titulo: 'Recursos gratuitos para estudiantes de',
   resaltado: 'Química Farmacéutica y Farmacia',
-  lead: 'Cursos gratuitos con casos de Colombia, guías para elegir tu área, alertas sanitarias con fuente oficial y herramientas para tu primer empleo. Para estudiantes y egresados de Química Farmacéutica, Farmacia y Regencia de Farmacia.',
+  lead: 'Cursos con casos de Colombia y la primera unidad abierta, guías para elegir tu área, alertas sanitarias con fuente oficial y herramientas para tu primer empleo. Para estudiantes y egresados de Química Farmacéutica, Farmacia y Regencia de Farmacia.',
   certificado: 'El contenido de los cursos es gratuito. Si necesitas el certificado verificable para tu hoja de vida, es opcional y cuesta COP 60.000 por curso.',
 };
 

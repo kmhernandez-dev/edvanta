@@ -129,7 +129,7 @@ export default crearMonografia({
   },
   ofertas: [CURSOS.tiroides, GUIAS.levotiroxina],
   refs: { FT: F.ftLevotiroxina, CUM: F.invimaCum16, MN: F.cipolle2012, EX: F.ramalho2012 },
-  enlaces: [['Guía gratuita: levotiroxina', '/recurso/levotiroxina'], ['Medicamentos para la tiroides', '/vademecum/medicamentos-para-la-tiroides']],
+  enlaces: [['Levotiroxina: para qué sirve y cómo tomarla', '/articulos/levotiroxina-para-que-sirve'], ['Guía gratuita: levotiroxina', '/recurso/levotiroxina'], ['Medicamentos para la tiroides', '/vademecum/medicamentos-para-la-tiroides']],
   seo: {
     titulo: 'Levotiroxina: cómo tomarla, dosis e interacciones',
     descripcion: 'Levotiroxina: hormona tiroidea, toma en ayunas, dosis en hipotiroidismo, separación de calcio, hierro y resinas, TSH, embarazo y consejería.',

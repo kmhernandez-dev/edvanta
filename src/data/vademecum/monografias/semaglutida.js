@@ -265,6 +265,7 @@ export default {
     F.invimaCum, F.invimaAlertaSemaglutida, F.cipolle2012, F.ramalho2012,
   ],
   enlaces: [
+    ['Semaglutida: para qué sirve, dosis y efectos', '/articulos/semaglutida-para-que-sirve'],
     ['Ozempic para bajar de peso: lo que debes saber', '/articulos/ozempic-para-bajar-de-peso'],
     ['Liraglutida, semaglutida y tirzepatida: comparación para el QF', '/articulos/liraglutida-vs-semaglutida-vs-tirzepatida'],
     ['Ozempic, Wegovy y Mounjaro en Colombia', '/articulos/ozempic-wegovy-mounjaro-aprobados-colombia'],

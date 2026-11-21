@@ -21,6 +21,7 @@
 
 import { EMISOR, horasDe } from './aula/certificados.js';
 import { guiaDeCursoCurado } from './guias-de-cursos-curados.js';
+import { precioDelCertificado } from './precio-certificado.js';
 
 /** Dónde se estudia de verdad el curso. */
 export const EN_EDVANTA = 'edvanta';
@@ -76,7 +77,9 @@ function certificado({ propio, curso }) {
   if (propio) {
     // El aula lo emite al completar el curso (lib/aula/certificados.js):
     // con código, QR y verificación pública en /certificados/<código>.
-    const precio = Number(curso.certificate_price) || 0;
+    // El precio para Colombia (donde se cobra); la ficha pide luego el del
+    // país de quien mira a /api/aula/precio-certificado.
+    const precio = precioDelCertificado(curso, { pais: 'CO' }).precio;
     return {
       estado: 'available',
       emisor: `${EMISOR.nombre} (NIT ${EMISOR.nit})`,
@@ -84,10 +87,11 @@ function certificado({ propio, curso }) {
         ? 'Completa todas las clases obligatorias del curso, paga el certificado y pídelo desde tu aula.'
         : 'Completa todas las clases obligatorias del curso y pídelo desde tu aula.',
       horas: horasDe(curso.duration_minutes),
-      // Precio en pesos colombianos; 0 = sin costo. El contenido es gratis.
+      // Precio en pesos colombianos; 0 = sin costo. Con precio, el pago da
+      // el curso completo con el certificado incluido (acceso-pago.js).
       precio,
       nota: precio > 0
-        ? 'El contenido del curso es gratis. El certificado tiene un costo único: lo pagas cuando quieras y lo emites al completar el curso, con tu nombre, sus horas y un código para verificarlo.'
+        ? 'La primera unidad es abierta. El curso completo tiene un pago único que incluye el certificado: lo emites al completar el curso, con tu nombre, sus horas y un código para verificarlo.'
         : 'Al completar el curso, Edvanta te expide tu certificado de aprobación: con tu nombre, el curso, sus horas y un código para verificarlo.',
     };
   }
@@ -119,6 +123,26 @@ function capacidades({ propio, temario, curso }) {
     // Un externo sin enlace no tiene a dónde mandar a nadie.
     irAlProveedor: !propio && Boolean(texto(curso.affiliate_url) || texto(curso.original_url)),
   };
+}
+
+/**
+ * Valoraciones publicadas de un curso (opiniones_curso), para los datos
+ * estructurados: con ellas, Google puede mostrar las estrellas. Solo lo
+ * publicado; si la tabla no existe o falla, null (la ficha sale igual).
+ */
+export async function valoracionesPublicas(db, entidad, id) {
+  const columna = entidad === 'aula' ? 'aula_course_id' : 'curso_id';
+  try {
+    const { rows } = await db.query(
+      `SELECT COUNT(*)::int AS total, ROUND(AVG(puntuacion)::numeric, 1) AS promedio
+         FROM opiniones_curso WHERE ${columna} = $1 AND estado = 'publicada'`,
+      [id],
+    );
+    const r = rows[0];
+    return r && r.total > 0 ? { total: r.total, promedio: Number(r.promedio) } : null;
+  } catch {
+    return null;
+  }
 }
 
 /** Un curso propio (aula_courses + su snapshot publicado) → ficha. */

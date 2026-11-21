@@ -10,6 +10,7 @@ import { participantResources } from '../../lib/aula/resources.js';
 import { certificadoDelCurso, emitirCertificado } from '../../lib/aula/certificados.js';
 import { iniciarPago } from '../../lib/aula/checkout.js';
 import { crearPreferenciaMercadoPago } from '../../lib/pagos.js';
+import { paisDeSolicitud } from '../../lib/precio-certificado.js';
 import { resolverSlug } from '../../lib/slugs-publicos.js';
 import { enviarCorreoEmbudo } from '../../lib/aula/correos-embudo.js';
 
@@ -45,7 +46,7 @@ export function meRouter(deps = {}) {
     const apiUrl = process.env.API_URL || siteUrl;
     const crearPreferencia = deps.crearPreferencia || crearPreferenciaMercadoPago(process.env.MP_ACCESS_TOKEN);
     const pago = await iniciarPago(req.aula.db, req.aula.user, req.body?.items, {
-      crearPreferencia, siteUrl, apiUrl, volverA: req.body?.volverA,
+      crearPreferencia, siteUrl, apiUrl, volverA: req.body?.volverA, pais: paisDeSolicitud(req),
     });
     res.status(201).json(pago);
   }));
@@ -113,7 +114,7 @@ export function meRouter(deps = {}) {
   // ── Certificado de aprobación ─────────────────────────────
   router.get('/courses/:courseId/certificate', route(async (req, res) => {
     const { courseId } = ids(req);
-    res.json(await certificadoDelCurso(req.aula.db, req.aula.user, courseId));
+    res.json(await certificadoDelCurso(req.aula.db, req.aula.user, courseId, { pais: paisDeSolicitud(req), ahora: req.aula.now }));
   }));
 
   router.post('/courses/:courseId/certificate', route(async (req, res) => {

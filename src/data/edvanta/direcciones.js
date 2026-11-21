@@ -73,12 +73,22 @@ export const DIRECCIONES_ANTIGUAS = [
   { antigua: '/articulos/gestion-de-calidad', nueva: '/articulos/categoria/gestion-de-calidad', tipo: 'categoría' },
   { antigua: '/articulos/feliz-sin-tiroides', nueva: '/articulos/categoria/feliz-sin-tiroides', tipo: 'categoría' },
   { antigua: '/articulos/atencion-farmaceutica', nueva: '/articulos/categoria/atencion-farmaceutica', tipo: 'categoría' },
+  // Search Console (17-nov-2026): rutas del catálogo de respaldo anterior
+  // (learningRoutes en src/data/featuredCourses.js) que nunca pasaron a la
+  // base. /rutas las mostraba cuando la API no respondía y daban 404.
+  // Dos tienen ruta equivalente; las otras dos, su guía de cursos.
+  { antigua: '/rutas/calidad-y-auditoria', nueva: '/rutas/aseguramiento-de-calidad-desde-cero', tipo: 'ruta' },
+  { antigua: '/rutas/datos-y-power-bi', nueva: '/rutas/datos-para-la-industria-farmaceutica', tipo: 'ruta' },
+  { antigua: '/rutas/seguridad-ambiente-y-sostenibilidad', nueva: '/articulos/cursos-de-seguridad-y-salud-en-el-trabajo-sst-gratis', tipo: 'ruta' },
+  { antigua: '/rutas/proyectos-y-mejora-de-procesos', nueva: '/articulos/cursos-de-gestion-de-proyectos-con-certificado', tipo: 'ruta' },
 ];
 
 /*
  * Las carreras, rutas y competencias (/carreras/…, /rutas/…, /competencias/…)
  * tampoco están aquí: salen de la base, y sus nombres anteriores viven en
  * la tabla slugs_anteriores (migración 060). La API responde el 301.
+ * Excepción: las rutas del catálogo de respaldo, que nunca estuvieron en la
+ * base y pueden llevar a un artículo; nginx las atiende antes que la API.
  */
 
 /** Nueva dirección de una antigua, o null. */

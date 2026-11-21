@@ -31,11 +31,12 @@ describe('vademécum', () => {
         'salud-mental-y-sistema-nervioso',
         'antimicoticos-antivirales-y-antiparasitarios',
         'medicamentos-para-la-tiroides',
+        'medicamentos-para-la-enfermedad-renal-cronica',
       ].sort(),
     );
     expect(MONOGRAFIAS.map((m) => m.slug).sort()).toEqual(
       [
-        'amlodipino', 'apixaban', 'atorvastatina', 'empagliflozina', 'enalapril', 'ezetimiba', 'hidroclorotiazida',
+        'amlodipino', 'apixaban', 'atorvastatina', 'dapagliflozina', 'empagliflozina', 'enalapril', 'ezetimiba', 'gliclazida', 'hidroclorotiazida',
         'imatinib', 'liraglutida', 'losartan', 'metformina', 'naltrexona-bupropion', 'orlistat',
         'pembrolizumab', 'rivaroxaban', 'rosuvastatina', 'semaglutida', 'setmelanotida', 'sitagliptina', 'tirzepatida',
         'trastuzumab', 'warfarina',
@@ -51,7 +52,7 @@ describe('vademécum', () => {
         'sertralina', 'fluoxetina', 'amitriptilina', 'trazodona', 'quetiapina', 'clonazepam', 'pregabalina', 'gabapentina',
         'fluconazol', 'clotrimazol', 'nistatina', 'ketoconazol', 'aciclovir', 'albendazol', 'ivermectina',
         'valsartan', 'carvedilol', 'metoprolol', 'espironolactona', 'furosemida',
-        'amoxicilina', 'azitromicina', 'alopurinol', 'colchicina', 'levotiroxina',
+        'amoxicilina', 'azitromicina', 'alopurinol', 'colchicina', 'levotiroxina', 'finerenona',
       ].sort(),
     );
     const slugs = PAGINAS_VADEMECUM.map((p) => p.slug);

@@ -1,0 +1,133 @@
+import { F } from '../../vademecum/fuentes.js';
+import { FC } from '../fuentes.js';
+
+export default {
+  slug: 'enfermedad-renal-cronica',
+  titulo: 'Caso clínico de enfermedad renal crónica y ajuste de dosis',
+  enfermedad: 'Enfermedad renal crónica',
+  area: 'renal-y-otros',
+  nivel: 'Avanzado',
+  minutos: 15,
+  actualizado: '2026-11-17',
+  seo: {
+    titulo: 'Caso clínico de enfermedad renal crónica y fármacos',
+    descripcion: 'Caso clínico de enfermedad renal crónica: estadios KDIGO, ajuste de metformina, iSGLT2, AINE, días de enfermedad y fármacos que se ajustan. Con respuestas.',
+    palabrasClave: ['caso clínico de enfermedad renal crónica', 'ajuste de dosis en insuficiencia renal', 'KDIGO 2024 preguntas', 'fármacos y riñón'],
+  },
+  objetivos: [
+    'Clasificar la enfermedad renal crónica por TFG y albuminuria.',
+    'Ajustar o suspender los fármacos según la función renal.',
+    'Aplicar los tratamientos nefroprotectores y las reglas de días de enfermedad.',
+  ],
+  presentacion: 'Rodrigo tiene 66 años, diabetes tipo 2 e hipertensión. En dos controles con 4 meses de diferencia su TFGe fue 38 mL/min/1,73 m² y el cociente albúmina/creatinina, 350 mg/g. Toma metformina 1.000 mg cada 12 horas, losartán 50 mg, gabapentina 300 mg cada 8 horas por dolor en los pies e ibuprofeno casi a diario por una rodilla. El potasio es 5,1 mEq/L.',
+  datos: [
+    ['TFGe', '38 mL/min/1,73 m² (dos veces, con 4 meses de diferencia)'],
+    ['Albúmina/creatinina', '350 mg/g'],
+    ['Potasio', '5,1 mEq/L'],
+    ['Comorbilidades', 'Diabetes tipo 2, hipertensión'],
+    ['Medicamentos', 'Metformina 2.000 mg/día, losartán 50 mg, gabapentina 900 mg/día, ibuprofeno'],
+  ],
+  preguntas: [
+    {
+      tipo: 'completar',
+      enunciado: 'Se diagnostica enfermedad renal crónica cuando la TFG es menor de 60 o hay marcadores de daño durante más de ___ meses.',
+      respuestas: ['3', 'tres'],
+      pista: 'Un trimestre.',
+      explicacion: 'KDIGO define la enfermedad renal crónica por alteraciones de la estructura o la función renal presentes por más de 3 meses [1].',
+    },
+    {
+      tipo: 'relacionar',
+      enunciado: 'Relaciona cada categoría KDIGO con su valor.',
+      pares: [
+        ['G3b', 'TFG de 30 a 44'],
+        ['G4', 'TFG de 15 a 29'],
+        ['A3', 'Albúmina/creatinina mayor de 300 mg/g'],
+        ['A2', 'Albúmina/creatinina de 30 a 300 mg/g'],
+      ],
+      explicacion: 'KDIGO clasifica por TFG (G1 a G5) y por albuminuria (A1 a A3). Rodrigo está en G3b A3, de riesgo muy alto [1].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: 'Con TFGe de 38, ¿qué se hace con la metformina?',
+      opciones: ['Mantener 2.000 mg/día', 'Reducir a un máximo de 1.000 mg/día', 'Duplicarla', 'Suspenderla siempre'],
+      correcta: 1,
+      explicacion: 'Con TFG de 30 a 44 la dosis máxima es 1.000 mg al día; por debajo de 30 está contraindicada [1,2].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: '¿Qué tratamiento nefroprotector se agrega?',
+      opciones: ['Un AINE', 'Un inhibidor de SGLT2, como empagliflozina', 'Una sulfonilurea', 'Ninguno'],
+      correcta: 1,
+      explicacion: 'KDIGO 2024 recomienda un inhibidor de SGLT2 en la enfermedad renal crónica con diabetes y TFG de 20 o más [1]. En EMPA-KIDNEY, la empagliflozina redujo la progresión renal o la muerte cardiovascular [4].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: '¿Qué haces con el ibuprofeno diario?',
+      opciones: ['Nada', 'Recomendar evitarlo: los AINE prolongados empeoran la función renal y elevan el potasio', 'Duplicarlo', 'Cambiarlo por otro AINE'],
+      correcta: 1,
+      explicacion: 'KDIGO recomienda evitar el uso prolongado de AINE en la enfermedad renal crónica [1]; la ficha advierte el riesgo de deterioro renal, sobre todo con antihipertensivos [3].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: 'Rodrigo tiene vómito y diarrea por dos días. ¿Qué le indicas según las reglas de días de enfermedad?',
+      opciones: [
+        'Seguir igual con todo',
+        'Suspender temporalmente la metformina, el inhibidor de SGLT2, el losartán y los diuréticos mientras no tolere líquidos, y consultar',
+        'Tomar más ibuprofeno',
+        'Duplicar el losartán',
+      ],
+      correcta: 1,
+      explicacion: 'KDIGO 2024 sugiere planes de días de enfermedad que suspenden de forma temporal los fármacos que empeoran o se acumulan con la deshidratación [1].',
+    },
+    {
+      tipo: 'completar',
+      enunciado: 'Los inhibidores de SGLT2 pueden iniciarse con una TFGe de ___ mL/min/1,73 m² o más.',
+      respuestas: ['20', 'veinte'],
+      pista: 'Dos decenas.',
+      explicacion: 'KDIGO 2024 recomienda iniciarlos con TFGe de 20 o más y mantenerlos aunque baje después, salvo intolerancia o diálisis [1].',
+    },
+    {
+      tipo: 'relacionar',
+      enunciado: 'Relaciona cada medicamento con su ajuste en la enfermedad renal.',
+      pares: [
+        ['Metformina', 'Máximo 1.000 mg/día con TFG de 30 a 44'],
+        ['Gabapentina', 'Reducir la dosis según el aclaramiento'],
+        ['Nitrofurantoína', 'Contraindicada con aclaramiento menor de 45'],
+        ['Empagliflozina', 'Se mantiene por su beneficio renal'],
+      ],
+      explicacion: 'Las fichas ajustan la metformina [2] y la gabapentina [6] a la función renal y contraindican la nitrofurantoína por debajo de 45 mL/min [5]; el inhibidor de SGLT2 se mantiene por su efecto nefroprotector [1,7].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: 'Con potasio de 5,1 mEq/L y losartán, ¿qué es lo adecuado?',
+      opciones: [
+        'Suspender el losartán de inmediato',
+        'Mantener el losartán, revisar la dieta y los fármacos que suben el potasio y vigilarlo',
+        'Agregar un suplemento de potasio',
+        'Duplicar el losartán sin control',
+      ],
+      correcta: 1,
+      explicacion: 'KDIGO recomienda no suspender de forma prematura el bloqueo del sistema renina-angiotensina por una hiperpotasemia leve, sino manejarla y vigilarla [1].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: '¿A qué dosis se lleva el losartán en un paciente con albuminuria A3?',
+      opciones: ['A la dosis máxima tolerada', 'A la mínima posible', 'Se suspende', 'Solo en días alternos'],
+      correcta: 0,
+      explicacion: 'KDIGO recomienda titular el IECA o ARA-II hasta la dosis máxima aprobada que se tolere en la enfermedad renal crónica con albuminuria [1].',
+    },
+  ],
+  claves: [
+    'ERC: alteración por más de 3 meses; clasificar por G y A [1].',
+    'Metformina: máximo 1.000 mg con TFG de 30 a 44; contraindicada con menos de 30 [1,2].',
+    'iSGLT2 desde TFGe de 20; IECA o ARA-II a dosis máxima tolerada con albuminuria [1].',
+    'Evitar AINE; reglas de días de enfermedad [1,3].',
+  ],
+  referencias: [FC.kdigoErc2024, F.ftMetformina, F.ftIbuprofeno, F.empaKidney, F.ftFurantoina, F.ftGabapentina, F.ftEmpagliflozina],
+  enlaces: [
+    ['Insuficiencia renal: ajuste de fármacos', '/articulos/insuficiencia-renal-ajuste-farmacos', 'Artículo'],
+    ['Metformina', '/vademecum/metformina', 'Vademécum'],
+    ['Empagliflozina', '/vademecum/empagliflozina', 'Vademécum'],
+    ['Curso de Farmacoterapia de la Diabetes', '/curso-de-farmacoterapia-de-la-diabetes', 'Curso'],
+  ],
+};

@@ -1,0 +1,133 @@
+import { F } from '../../vademecum/fuentes.js';
+import { FC } from '../fuentes.js';
+
+export default {
+  slug: 'reflujo-gastroesofagico',
+  titulo: 'Caso clínico de reflujo gastroesofágico',
+  enfermedad: 'Enfermedad por reflujo gastroesofágico',
+  area: 'digestivo',
+  nivel: 'Básico',
+  minutos: 12,
+  actualizado: '2026-11-17',
+  seo: {
+    titulo: 'Caso clínico de reflujo gastroesofágico e IBP',
+    descripcion: 'Caso clínico de reflujo gastroesofágico: prueba con IBP por 8 semanas, cómo tomar el omeprazol, signos de alarma, clopidogrel y riesgos del uso prolongado.',
+    palabrasClave: ['caso clínico de reflujo gastroesofágico', 'omeprazol cómo tomarlo', 'ERGE preguntas', 'inhibidores de la bomba de protones'],
+  },
+  objetivos: [
+    'Indicar la prueba empírica con IBP y la toma correcta.',
+    'Reconocer los signos de alarma que piden endoscopia.',
+    'Prevenir interacciones y riesgos del uso prolongado.',
+  ],
+  presentacion: 'Hernán tiene 48 años, sobrepeso y pirosis tres veces por semana, con regurgitación cuando se acuesta. Cena a las 10 p. m. y se acuesta enseguida. Toma omeprazol 20 mg en la noche, después de la comida, «cuando se acuerda», además de antiácidos. Hace 6 meses le pusieron un stent coronario y toma clopidogrel. No tiene dificultad para tragar ni pérdida de peso.',
+  datos: [
+    ['Síntomas', 'Pirosis 3 veces por semana y regurgitación nocturna'],
+    ['Peso', 'IMC 29'],
+    ['Hábito', 'Cena tarde y se acuesta enseguida'],
+    ['Omeprazol', '20 mg después de la comida de la noche, irregular'],
+    ['Otros medicamentos', 'Clopidogrel 75 mg por stent coronario'],
+    ['Signos de alarma', 'Ninguno'],
+  ],
+  preguntas: [
+    {
+      tipo: 'opcion',
+      enunciado: 'Sin signos de alarma, ¿cuál es el enfoque inicial recomendado?',
+      opciones: ['Endoscopia inmediata', 'Prueba empírica con un IBP una vez al día durante 8 semanas', 'Cirugía antirreflujo', 'Antibióticos'],
+      correcta: 1,
+      explicacion: 'Con síntomas típicos y sin alarma, la guía del ACG recomienda una prueba empírica de 8 semanas con un IBP una vez al día [1].',
+    },
+    {
+      tipo: 'completar',
+      enunciado: 'El IBP se toma de 30 a ___ minutos antes del desayuno.',
+      respuestas: ['60', 'sesenta'],
+      pista: 'Una hora.',
+      explicacion: 'Los IBP actúan mejor cuando se toman 30 a 60 minutos antes de una comida, en general el desayuno [1].',
+    },
+    {
+      tipo: 'relacionar',
+      enunciado: 'Relaciona cada signo de alarma con lo que puede indicar.',
+      pares: [
+        ['Dificultad para tragar', 'Posible estenosis o neoplasia esofágica'],
+        ['Sangrado o anemia', 'Posible esofagitis grave o úlcera'],
+        ['Pérdida de peso no intencional', 'Posible enfermedad maligna'],
+      ],
+      explicacion: 'Los signos de alarma justifican una endoscopia en lugar de una prueba empírica [1].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: '¿Qué problema hay entre el omeprazol y el clopidogrel?',
+      opciones: [
+        'Ninguno',
+        'El omeprazol inhibe la CYP2C19 y reduce la activación del clopidogrel; se evita la combinación',
+        'El clopidogrel anula el omeprazol',
+        'Producen hipoglucemia',
+      ],
+      correcta: 1,
+      explicacion: 'Las fichas desaconsejan combinar clopidogrel con omeprazol o esomeprazol por la menor formación del metabolito activo del clopidogrel [2,3,4]. Si necesita un IBP, el médico elige uno con menos interacción.',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: 'Para la regurgitación nocturna, ¿qué medidas ayudan?',
+      opciones: ['Acostarse justo después de comer', 'Elevar la cabecera de la cama y no comer 2 a 3 horas antes de acostarse', 'Tomar más café en la noche', 'Comer más grasa'],
+      correcta: 1,
+      explicacion: 'La guía recomienda elevar la cabecera y evitar las comidas 2 a 3 horas antes de acostarse en quienes tienen síntomas nocturnos [1].',
+    },
+    {
+      tipo: 'completar',
+      enunciado: 'La prueba empírica con IBP dura ___ semanas.',
+      respuestas: ['8', 'ocho'],
+      pista: 'Dos meses.',
+      explicacion: 'Se evalúa la respuesta después de 8 semanas de tratamiento [1].',
+    },
+    {
+      tipo: 'relacionar',
+      enunciado: 'Relaciona cada riesgo del IBP con su dato.',
+      pares: [
+        ['Hipomagnesemia', 'Con el uso prolongado; puede causar arritmias y tetania'],
+        ['Fracturas', 'Con dosis altas y uso prolongado'],
+        ['Clopidogrel', 'Interacción por CYP2C19'],
+      ],
+      explicacion: 'La ficha del omeprazol advierte sobre la hipomagnesemia y el riesgo de fracturas con el uso prolongado, y sobre la interacción con el clopidogrel [2].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: 'Si mejora a las 8 semanas, ¿qué sigue?',
+      opciones: ['Seguir indefinidamente a dosis doble', 'Intentar suspender o usar la dosis mínima eficaz', 'Agregar antibióticos', 'Pasar a antiácidos cada hora'],
+      correcta: 1,
+      explicacion: 'Tras una buena respuesta, la guía recomienda intentar suspender el IBP o reducirlo a la dosis más baja eficaz [1].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: '¿Qué medida de estilo de vida tiene evidencia en un paciente con sobrepeso?',
+      opciones: ['Bajar de peso', 'Dejar todas las frutas', 'Dormir sentado siempre', 'Tomar leche en la noche'],
+      correcta: 0,
+      explicacion: 'La pérdida de peso se recomienda en pacientes con sobrepeso u obesidad y reflujo [1].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: 'Hernán toma el omeprazol en la noche después de comer y de forma irregular. ¿Qué le corriges?',
+      opciones: [
+        'Nada',
+        'Tomarlo todos los días, antes del desayuno, para que actúe sobre las bombas de protones activadas por la comida',
+        'Tomarlo solo con dolor',
+        'Masticarlo',
+      ],
+      correcta: 1,
+      explicacion: 'El IBP inhibe las bombas de protones activas; tomarlo antes de la comida y de forma diaria mejora su efecto [1,2].',
+    },
+  ],
+  claves: [
+    'Sin alarma: IBP una vez al día por 8 semanas, 30 a 60 minutos antes del desayuno [1].',
+    'Disfagia, sangrado, anemia o pérdida de peso: endoscopia [1].',
+    'Omeprazol y esomeprazol con clopidogrel: evitar [2,3,4].',
+    'Uso prolongado: hipomagnesemia y fracturas; buscar la dosis mínima eficaz [1,2].',
+  ],
+  referencias: [FC.acgErge2022, F.ftOmeprazol, F.ftEsomeprazol, FC.ftClopidogrel],
+  enlaces: [
+    ['Omeprazol', '/vademecum/omeprazol', 'Vademécum'],
+    ['Esomeprazol', '/vademecum/esomeprazol', 'Vademécum'],
+    ['Omeprazol: para qué sirve', '/articulos/omeprazol-para-que-sirve', 'Artículo'],
+    ['Medicamentos para el aparato digestivo', '/vademecum/medicamentos-para-el-aparato-digestivo', 'Vademécum'],
+    ['Curso de Farmacología Gastrointestinal', '/curso-de-farmacologia-gastrointestinal', 'Curso'],
+  ],
+};

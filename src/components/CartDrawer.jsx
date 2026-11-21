@@ -1,20 +1,111 @@
+/**
+ * ============================================================
+ *  CartDrawer.jsx — El carrito de Edvanta
+ *
+ *  Hecho con el sistema de diseño 2.0 (edvanta-ds.css): tokens --ds-*,
+ *  Manrope para títulos, botones .ed-btn y superficies suaves. Sin
+ *  íconos genéricos: cada producto se ve con su portada real; si no la
+ *  tiene, con un sello tipográfico (pedido de Karla, 18-nov).
+ *
+ *  Vive fuera de .edvanta-theme (StoreGlobals en App.jsx), así que el
+ *  panel lleva esa clase para tener los tokens.
+ *
+ *  La lógica de pago no cambia: certificados por /api/aula/me/checkout
+ *  (con la cuenta del aula) y productos por /api/create-preference. El
+ *  precio de cada certificado lo dice el servidor (país y plazo).
+ * ============================================================
+ */
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import { formatPrice } from '../utils/format';
 import { waLink } from '../config/links';
 import { apiUrl } from '../config/api';
+import { precioDelCertificado } from '../lib/misCursos';
+
+const ID_CERTIFICADO = /^certificado-(\d+)$/;
+const INCLUYE_CERTIFICADO = ['Certificado verificable con código y QR', 'Revisión docente de tus actividades', 'Acompañamiento por WhatsApp'];
+const ETIQUETA = { certificado: 'Certificado', guia: 'Guía', pack: 'Pack' };
+const ruta = (u) => (u && u.startsWith('/api') ? apiUrl(u) : u);
+
+function Portada({ src, tipo }) {
+  const [rota, setRota] = useState(false);
+  useEffect(() => { setRota(false); }, [src]);
+  if (src && !rota) {
+    return <img className="carrito-portada" src={ruta(src)} alt="" loading="lazy" onError={() => setRota(true)} />;
+  }
+  // Sin portada: un sello tipográfico, no un ícono.
+  return (
+    <span className="carrito-portada carrito-portada--sello" aria-hidden="true">
+      <span>{ETIQUETA[tipo] || 'Edvanta'}</span>
+    </span>
+  );
+}
+
+function Producto({ item, oferta, onMas, onMenos, onQuitar }) {
+  const certificado = item.category === 'certificado';
+  const precio = certificado && oferta?.precio ? oferta.precio : item.price;
+  const nombre = item.name.replace(/^Certificado · /, '');
+  return (
+    <li className="carrito-item">
+      <Portada src={item.image || oferta?.portada} tipo={item.category} />
+      <div className="carrito-item__cuerpo">
+        <p className="carrito-item__tipo">{certificado ? 'Estudiar con certificado' : (ETIQUETA[item.category] || 'Producto digital')}</p>
+        <p className="carrito-item__nombre">{nombre}</p>
+        {certificado && (
+          <ul className="carrito-item__incluye">
+            {INCLUYE_CERTIFICADO.map((t) => <li key={t}>{t}</li>)}
+          </ul>
+        )}
+        <div className="carrito-item__pie">
+          {certificado ? (
+            <button type="button" className="carrito-enlace" onClick={onQuitar}>Quitar</button>
+          ) : (
+            <div className="carrito-cantidad" role="group" aria-label={`Cantidad de ${nombre}`}>
+              <button type="button" onClick={onMenos} aria-label="Uno menos">−</button>
+              <span aria-live="polite">{item.qty}</span>
+              <button type="button" onClick={onMas} aria-label="Uno más">+</button>
+              <button type="button" className="carrito-enlace" onClick={onQuitar}>Quitar</button>
+            </div>
+          )}
+          <p className="carrito-item__precio">
+            {certificado && oferta?.conDescuento && oferta.lista && <s>{formatPrice(oferta.lista)}</s>}
+            <b>{formatPrice(precio * item.qty)}</b>
+          </p>
+        </div>
+      </div>
+    </li>
+  );
+}
 
 export default function CartDrawer() {
-  const { items, total, count, isOpen, closeCart, increment, decrement, removeItem, clearCart } = useCart();
-  const [paying, setPaying]   = useState(false);
+  const { items, count, isOpen, closeCart, increment, decrement, removeItem, clearCart } = useCart();
+  const [paying, setPaying] = useState(false);
   const [payError, setPayError] = useState('');
-
-  const tieneCertificados = items.some(i => i.category === 'certificado');
   const [pideCuenta, setPideCuenta] = useState(false);
+  const [ofertas, setOfertas] = useState({}); // id de certificado → precio del servidor
 
-  // Crea la preferencia en Mercado Pago y redirige al checkout.
-  // Los certificados se pagan con la cuenta del aula: el pago queda a
-  // nombre de quien va a emitirlo.
+  const tieneCertificados = items.some((i) => i.category === 'certificado');
+
+  const idsCert = items.filter((i) => i.category === 'certificado').map((i) => i.id).join(',');
+  useEffect(() => {
+    if (!isOpen || !idsCert) return undefined;
+    let vivo = true;
+    Promise.all(idsCert.split(',').map(async (id) => {
+      const curso = ID_CERTIFICADO.exec(id)?.[1];
+      return [id, curso ? await precioDelCertificado(curso) : null];
+    })).then((pares) => { if (vivo) setOfertas(Object.fromEntries(pares)); });
+    return () => { vivo = false; };
+  }, [isOpen, idsCert]);
+
+  const precioDe = (i) => (i.category === 'certificado' && ofertas[i.id]?.precio ? ofertas[i.id].precio : i.price);
+  const total = items.reduce((s, i) => s + precioDe(i) * i.qty, 0);
+  const ahorro = items.reduce((s, i) => {
+    const o = i.category === 'certificado' ? ofertas[i.id] : null;
+    return s + (o?.conDescuento && o.lista ? (o.lista - o.precio) * i.qty : 0);
+  }, 0);
+  const vence = Object.values(ofertas).find((o) => o?.conDescuento && o.venceEl)?.venceEl;
+
   const payWithMercadoPago = async () => {
     setPaying(true);
     setPayError('');
@@ -26,7 +117,7 @@ export default function CartDrawer() {
           credentials: 'include',
           // El aula solo acepta cambios que traen esta cabecera (protección CSRF).
           headers: { 'content-type': 'application/json', 'X-Aula-Request': '1' },
-          body: JSON.stringify({ items: items.map(i => ({ id: i.id, qty: i.qty })), volverA: '/?tipo=certificado' }),
+          body: JSON.stringify({ items: items.map((i) => ({ id: i.id, qty: i.qty })), volverA: '/aula' }),
         })
         : await fetch(apiUrl('/api/create-preference'), {
           method: 'POST',
@@ -50,222 +141,118 @@ export default function CartDrawer() {
     }
   };
 
-  // Lock body scroll while open
   useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = 'hidden';
-      const onKey = e => e.key === 'Escape' && closeCart();
-      window.addEventListener('keydown', onKey);
-      return () => {
-        document.body.style.overflow = '';
-        window.removeEventListener('keydown', onKey);
-      };
-    }
+    if (!isOpen) return undefined;
+    document.body.style.overflow = 'hidden';
+    const onKey = (e) => e.key === 'Escape' && closeCart();
+    window.addEventListener('keydown', onKey);
+    return () => {
+      document.body.style.overflow = '';
+      window.removeEventListener('keydown', onKey);
+    };
   }, [isOpen, closeCart]);
 
-  // Build WhatsApp checkout message
   const checkoutMessage =
-    `Hola, equipo Edvanta. Quiero comprar estos recursos:\n\n` +
-    items.map(i => `- ${i.name} (x${i.qty}) - ${formatPrice(i.price * i.qty)}`).join('\n') +
+    'Hola, equipo Edvanta. Quiero comprar:\n\n' +
+    items.map((i) => `- ${i.name} (x${i.qty}) - ${formatPrice(precioDe(i) * i.qty)}`).join('\n') +
     `\n\n*Total: ${formatPrice(total)}*\n\n¿Cómo continúo con el pago?`;
 
   return (
-    <>
-      {/* Overlay (backdrop-blur only while open to avoid constant GPU cost) */}
-      <div
-        className={`fixed inset-0 z-[70] bg-[#031D5C]/50 transition-opacity duration-300 ${
-          isOpen ? 'opacity-100 backdrop-blur-sm' : 'opacity-0 invisible pointer-events-none'
-        }`}
-        onClick={closeCart}
-      />
+    <div className="edvanta-theme">
+      <div className={`carrito-velo ${isOpen ? 'is-abierto' : ''}`} onClick={closeCart} aria-hidden="true" />
 
-      {/* Drawer */}
       <aside
-        className={`fixed top-0 right-0 z-[80] h-full w-full max-w-md bg-white shadow-2xl flex flex-col transition-transform duration-300 ease-out ${
-          isOpen ? 'translate-x-0' : 'translate-x-full'
-        }`}
+        className={`carrito ${isOpen ? 'is-abierto' : ''}`}
         role="dialog"
-        aria-label="Carrito de compras"
+        aria-modal="true"
+        aria-labelledby="carrito-titulo"
+        aria-hidden={!isOpen}
       >
-        {/* Header */}
-        <div className="flex items-center justify-between px-5 py-4 border-b border-edvanta-border bg-gradient-to-r from-[#031D5C] to-edvanta-blue">
-          <div className="flex items-center gap-2.5">
-            <div className="relative">
-              <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-              </svg>
-            </div>
-            <div>
-              <h2 className="text-sm font-bold text-white leading-none">Tu carrito</h2>
-              <p className="text-xs text-white/75 mt-0.5">{count} {count === 1 ? 'producto' : 'productos'}</p>
-            </div>
+        <header className="carrito-cabeza">
+          <div>
+            <p className="carrito-ante">Tu compra en Edvanta</p>
+            <h2 id="carrito-titulo" className="carrito-titulo">Tu carrito</h2>
           </div>
-          <button
-            onClick={closeCart}
-            className="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors"
-            aria-label="Cerrar carrito"
-          >
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-            </svg>
+          <button type="button" onClick={closeCart} className="carrito-cerrar" aria-label="Cerrar carrito">
+            <span aria-hidden="true">×</span>
           </button>
-        </div>
+        </header>
 
-        {/* Body */}
         {items.length === 0 ? (
-          <div className="flex-1 flex flex-col items-center justify-center gap-4 px-6 text-center">
-            <div className="w-20 h-20 rounded-3xl bg-edvanta-bg flex items-center justify-center text-edvanta-blue">
-              <svg className="w-9 h-9" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13 5.4 5M7 13l-2 2h13M9 20a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm8 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z" />
-              </svg>
+          <div className="carrito-vacio">
+            <p className="carrito-ante">Aún no hay nada aquí</p>
+            <p className="carrito-vacio__titulo">Empieza por lo que quieres aprender</p>
+            <p className="carrito-vacio__texto">Estudia un curso con certificado o lleva una guía escrita por una química farmacéutica.</p>
+            <div className="carrito-vacio__acciones">
+              <Link to="/cursos" onClick={closeCart} className="ed-btn ed-btn--gradient ed-btn--block">Ver cursos</Link>
+              <Link to="/guias" onClick={closeCart} className="ed-btn ed-btn--outline ed-btn--block">Ver guías</Link>
             </div>
-            <div>
-              <p className="font-semibold text-edvanta-deep mb-1">Tu carrito está vacío</p>
-              <p className="text-sm text-edvanta-muted">Agrega el certificado de un curso o un pack profesional.</p>
-            </div>
-            <button onClick={closeCart} className="btn-primary text-sm mt-2">
-              Explorar packs
-            </button>
           </div>
         ) : (
           <>
-            <div className="flex-1 overflow-y-auto px-5 py-4 space-y-3">
-              {items.map(item => (
-                <div key={item.id} className="flex gap-3 p-3 rounded-xl border border-edvanta-border bg-white hover:border-edvanta-border transition-colors">
-                  {/* Icon */}
-                  <div className="w-11 h-11 rounded-lg bg-gradient-to-br from-edvanta-light to-edvanta-mint flex items-center justify-center text-lg shrink-0">
-                    <svg className="w-5 h-5 text-edvanta-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M12 3 4 7.5v9L12 21l8-4.5v-9L12 3Zm0 0v18M4 7.5l8 4.5 8-4.5" />
-                    </svg>
-                  </div>
-                  {/* Info */}
-                  <div className="flex-1 min-w-0">
-                    <p className="text-sm font-semibold text-edvanta-deep leading-snug truncate">{item.name}</p>
-                    <p className="text-xs text-edvanta-subtle mb-2">{formatPrice(item.price)} c/u</p>
-                    {/* Qty controls (un certificado es único) */}
-                    <div className="flex items-center gap-2">
-                      {item.category === 'certificado' ? (
-                        <span className="text-xs font-semibold text-teal-700 bg-teal-50 rounded-md px-2 py-1">Certificado · se emite al completar el curso</span>
-                      ) : (
-                      <div className="flex items-center border border-edvanta-border rounded-lg overflow-hidden">
-                        <button
-                          onClick={() => decrement(item.id)}
-                          className="w-7 h-7 flex items-center justify-center text-edvanta-muted hover:bg-edvanta-bg transition-colors"
-                          aria-label="Disminuir"
-                        >
-                          <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M20 12H4" />
-                          </svg>
-                        </button>
-                        <span className="w-8 text-center text-sm font-semibold text-edvanta-deep">{item.qty}</span>
-                        <button
-                          onClick={() => increment(item.id)}
-                          className="w-7 h-7 flex items-center justify-center text-edvanta-muted hover:bg-edvanta-bg transition-colors"
-                          aria-label="Aumentar"
-                        >
-                          <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 4v16m8-8H4" />
-                          </svg>
-                        </button>
-                      </div>
-                      )}
-                      <button
-                        onClick={() => removeItem(item.id)}
-                        className="text-xs text-edvanta-subtle hover:text-[#B42318] transition-colors ml-auto"
-                      >
-                        Quitar
-                      </button>
-                    </div>
-                  </div>
-                  {/* Line total */}
-                  <div className="text-right shrink-0">
-                    <p className="text-sm font-bold text-edvanta-deep">{formatPrice(item.price * item.qty)}</p>
-                  </div>
-                </div>
-              ))}
-
-              <button
-                onClick={clearCart}
-                className="text-xs text-edvanta-subtle hover:text-[#B42318] transition-colors flex items-center gap-1 mt-2"
-              >
-                <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                </svg>
-                Vaciar carrito
-              </button>
+            <div className="carrito-zona">
+              <p className="carrito-cuenta">{count} {count === 1 ? 'producto' : 'productos'}</p>
+              <ul className="carrito-lista">
+                {items.map((item) => (
+                  <Producto
+                    key={item.id}
+                    item={item}
+                    oferta={ofertas[item.id]}
+                    onMas={() => increment(item.id)}
+                    onMenos={() => decrement(item.id)}
+                    onQuitar={() => removeItem(item.id)}
+                  />
+                ))}
+              </ul>
+              {items.length > 1 && (
+                <button type="button" onClick={clearCart} className="carrito-enlace carrito-vaciar">Vaciar carrito</button>
+              )}
             </div>
 
-            {/* Footer / Checkout */}
-            <div className="border-t border-edvanta-border px-5 py-4 space-y-3 bg-edvanta-bg">
-              <div className="flex items-center justify-between">
-                <span className="text-sm text-edvanta-muted">Total</span>
-                <span className="text-xl font-bold text-edvanta-deep">{formatPrice(total)}</span>
-              </div>
+            <footer className="carrito-pie">
+              <dl className="carrito-resumen">
+                {ahorro > 0 && (
+                  <div className="carrito-resumen__linea">
+                    <dt>Descuento</dt>
+                    <dd className="carrito-resumen__ahorro">−{formatPrice(ahorro)}</dd>
+                  </div>
+                )}
+                <div className="carrito-resumen__linea carrito-resumen__linea--total">
+                  <dt>Total</dt>
+                  <dd>{formatPrice(total)} <span>COP</span></dd>
+                </div>
+              </dl>
+              {vence && (
+                <p className="carrito-nota">
+                  Precio con descuento hasta el {new Date(vence).toLocaleDateString('es-CO', { day: 'numeric', month: 'long', timeZone: 'America/Bogota' })}.
+                </p>
+              )}
 
               {pideCuenta && (
-                <div className="p-3 bg-amber-50 border border-amber-200 rounded-lg text-xs text-amber-900 leading-snug">
-                  <p className="font-semibold">Entra a tu aula para pagar el certificado.</p>
-                  <p className="mt-1">El pago queda a tu nombre y lo usas para emitir tu certificado al completar el curso. Tu carrito se conserva.</p>
-                  <a href="/aula/entrar" className="mt-2 inline-block font-semibold underline">Entrar o crear mi cuenta</a>
+                <div className="carrito-aviso">
+                  <p><b>Entra a tu aula para pagar el certificado.</b> El pago queda a tu nombre y tu carrito se conserva.</p>
+                  <a href="/aula/entrar">Entrar o crear mi cuenta</a>
                 </div>
               )}
+              {payError && <p role="alert" className="carrito-error">{payError}</p>}
 
-              {/* Error message */}
-              {payError && (
-                <div className="flex items-start gap-2 p-2.5 bg-red-50 border border-red-200 rounded-lg">
-                  <svg className="w-4 h-4 text-red-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                  <p className="text-xs text-red-700 leading-snug">{payError}</p>
-                </div>
-              )}
-
-              {/* Primary: Mercado Pago checkout */}
               <button
+                type="button"
                 onClick={payWithMercadoPago}
                 disabled={paying}
-                className="w-full inline-flex items-center justify-center gap-2 px-5 py-3 bg-[#009ee3] hover:bg-[#008fcc] text-white text-sm font-semibold rounded-lg transition-colors disabled:opacity-70 disabled:cursor-wait shadow-sm"
+                className="ed-btn ed-btn--gradient ed-btn--lg ed-btn--block"
               >
-                {paying ? (
-                  <>
-                    <svg className="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
-                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
-                    </svg>
-                    Redirigiendo a Mercado Pago...
-                  </>
-                ) : (
-                  <>
-                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M12 2C6.48 2 2 6.03 2 11c0 2.8 1.42 5.3 3.64 6.94L5 22l4.32-2.07c.85.21 1.75.32 2.68.32 5.52 0 10-4.03 10-9s-4.48-9-10-9z" />
-                    </svg>
-                    Pagar con Mercado Pago
-                  </>
-                )}
+                {paying ? 'Abriendo Mercado Pago…' : 'Ir a pagar'}
               </button>
 
-              {/* Secondary: WhatsApp */}
-              <a
-                href={waLink(checkoutMessage)}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-outline-teal w-full text-sm py-2.5"
-              >
-                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
-                </svg>
-                Prefiero coordinar por WhatsApp
+              <p className="carrito-medios">Pago seguro con Mercado Pago · tarjeta, PSE, Nequi o Efecty</p>
+              <a href={waLink(checkoutMessage)} target="_blank" rel="noopener noreferrer" className="carrito-enlace carrito-ayuda">
+                ¿Prefieres pagar con ayuda? Escríbenos por WhatsApp
               </a>
-
-              <p className="text-xs text-edvanta-subtle text-center leading-snug">
-                {tieneCertificados
-                  ? 'Pago seguro con Mercado Pago (tarjetas, PSE, Nequi y más). El certificado se emite desde tu aula al completar el curso.'
-                  : 'Pago seguro con Mercado Pago (tarjetas, PSE, Nequi y más). Productos digitales descargables.'}
-              </p>
-            </div>
+            </footer>
           </>
         )}
       </aside>
-    </>
+    </div>
   );
 }

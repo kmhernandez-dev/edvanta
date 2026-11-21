@@ -7,9 +7,15 @@ La doxiciclina es un antibiótico de la familia de las tetraciclinas. Se usa par
 > - No se recomienda en el embarazo ni en menores de 8 años, salvo indicaciones graves.
 > - Sepárala de antiácidos, hierro, calcio y multivitamínicos.
 
-## Para qué sirve la doxiciclina
+## ¿Qué es la doxiciclina?
 
-La doxiciclina está indicada en [1,2]:
+La doxiciclina es una tetraciclina de amplio espectro con excelente penetración tisular. Se usa en infecciones por rickettsias, enfermedad de Lyme, bacterias atípicas, acné, clamidia y malaria. Sus principales riesgos son la fotosensibilidad, la esofagitis, la interacción con cationes y la contraindicación en el embarazo y en menores de 8 años. La atención farmacéutica se centra en la administración correcta, la adherencia y la prevención de efectos adversos.
+
+Pertenece al grupo farmacológico de Tetraciclina.
+
+## ¿Para qué sirve la doxiciclina?
+
+La doxiciclina está indicada en:
 
 - Infecciones por rickettsias, como la fiebre manchada y el tifus.
 - Enfermedad de Lyme y otras infecciones por espiroquetas.
@@ -22,13 +28,26 @@ La doxiciclina está indicada en [1,2]:
 
 No sirve para infecciones virales ni para la mayoría de las faringitis.
 
-## Cómo actúa
+## Cómo funciona
 
-La doxiciclina se une a la subunidad ribosomal 30S e impide la síntesis de proteínas bacterianas. Es bacteriostática, aunque en algunos microorganismos puede tener efecto bactericida. Su alta liposolubilidad le permite penetrar bien en tejidos y células [1,2].
+Se une a la subunidad ribosomal 30S e impide la unión del aminoacil-ARNt al sitio A, lo que bloquea la elongación de la proteína. Es bacteriostática.
+
+Cubre rickettsias, Mycoplasma, Chlamydia, espiroquetas, Helicobacter pylori y algunos grampositivos y gramnegativos. La resistencia es frecuente en muchas bacterias.
+
+## Cuánto tarda en hacer efecto
+
+| Parámetro | Valor |
+| --- | --- |
+| Absorción | Oral, rápida; disminuye con alimentos ricos en calcio, hierro o antiácidos  |
+| Concentración máxima | 2 a 3 horas  |
+| Unión a proteínas | Alta  |
+| Metabolismo | Hepático parcial  |
+| Semivida | 16 a 22 horas  |
+| Eliminación | Biliar y renal  |
 
 ## Cómo se toma
 
-La dosis la define el médico según la infección y el peso. Como referencia en adultos [1,2]:
+La dosis la define el médico según la infección y el peso. Como referencia en adultos:
 
 | Indicación | Dosis orientativa |
 |---|---|
@@ -46,40 +65,98 @@ La dosis la define el médico según la infección y el peso. Como referencia en
 
 ## Efectos secundarios
 
-- Náuseas, diarrea, dolor abdominal y pérdida del apetito [1,2].
+- Náuseas, diarrea, dolor abdominal y pérdida del apetito.
 - Fotosensibilidad: enrojecimiento o quemadura fácil con el sol.
 - Esofagitis y úlceras esofágicas si se toma sin agua o acostado.
 - Candidiasis oral o vaginal.
 - Coloración amarillenta o marrón de los dientes en niños pequeños.
 - Raros pero graves: hipertensión intracraneal, reacciones cutáneas graves, colitis por *C. difficile* y hepatotoxicidad.
 
-## Quién no debe tomarla o necesita precaución
+Las más frecuentes son náuseas, diarrea, dolor abdominal y pérdida del apetito.
 
-- Alergia a las tetraciclinas [1,2].
+- Frecuentes: fotosensibilidad, candidiasis y esofagitis.
+- Poco frecuentes: coloración dental, elevación de transaminasas y rash.
+- Raras: hipertensión intracraneal, pancreatitis, hepatotoxicidad, Stevens-Johnson y colitis pseudomembranosa.
+
+## Interacciones
+
+| Medicamento o sustancia | Qué puede pasar |
+|---|---|
+| Antiácidos, hierro, calcio, zinc | Reducen la absorción; separar 2 horas  |
+| Warfarina | Aumento del INR; controlar  |
+| Fenitoína, carbamazepina, rifampicina | Reducen la concentración de doxiciclina  |
+| Isotretinoína | Mayor riesgo de hipertensión intracraneal  |
+| Penicilinas | Posible antagonismo; evitar combinación innecesaria  |
+| Alcohol | Puede reducir la absorción y aumentar la irritación gástrica |
+
+| Medicamento o sustancia | Efecto | Qué hacer |
+| --- | --- | --- |
+| Antiácidos, hierro, calcio, zinc | Reducen la absorción | Separar al menos 2 horas  |
+| Warfarina | Aumento del INR | Controlar el INR  |
+| Fenitoína, carbamazepina, rifampicina | Reducen la concentración de doxiciclina | Vigilar eficacia  |
+| Isotretinoína | Mayor riesgo de hipertensión intracraneal | Evitar combinación  |
+| Penicilinas | Posible antagonismo | Evitar combinaciones innecesarias  |
+
+## Quién no debe tomarlo
+
+- Alergia a las tetraciclinas.
 - Embarazo: contraindicada, salvo infecciones graves como rickettsiosis o Lyme donde el beneficio supere el riesgo.
 - Lactancia: se excreta en la leche; consultar.
 - Menores de 8 años: evitar, salvo infecciones graves sin alternativa.
 - Insuficiencia hepática o renal: puede requerir ajuste.
 - Miastenia grave: puede empeorar.
 
-## Interacciones
+Contraindicaciones y precauciones:
 
-| Medicamento o sustancia | Qué puede pasar |
-|---|---|
-| Antiácidos, hierro, calcio, zinc | Reducen la absorción; separar 2 horas [1] |
-| Warfarina | Aumento del INR; controlar [1] |
-| Fenitoína, carbamazepina, rifampicina | Reducen la concentración de doxiciclina [1] |
-| Isotretinoína | Mayor riesgo de hipertensión intracraneal [1] |
-| Penicilinas | Posible antagonismo; evitar combinación innecesaria [2] |
-| Alcohol | Puede reducir la absorción y aumentar la irritación gástrica |
+- Hipersensibilidad a tetraciclinas.
+- Embarazo, salvo infecciones graves sin alternativa.
+- Menores de 8 años, salvo indicaciones graves.
+- Insuficiencia hepática o renal grave: valorar ajuste.
+- Miastenia grave: puede empeorar.
 
-## Embarazo y lactancia
+Advertencias: fotosensibilidad, esofagitis, hipertensión intracraneal, coloración dental, hepatotoxicidad y colitis por C. difficile.
 
-La doxiciclina se acumula en huesos y dientes en formación. En el embarazo se evita, salvo infecciones graves en las que no hay alternativa. Durante la lactancia se excreta en la leche en pequeñas cantidades; la decisión debe ser médica [1,2].
+## Embarazo, lactancia y niños
+
+La doxiciclina se acumula en huesos y dientes en formación. En el embarazo se evita, salvo infecciones graves en las que no hay alternativa. Durante la lactancia se excreta en la leche en pequeñas cantidades; la decisión debe ser médica.
+
+- Embarazo: se evita por el riesgo de afectación ósea y dental fetal; se usa solo en infecciones graves sin alternativa.
+- Lactancia: pasa en pequeñas cantidades; la decisión debe ser médica.
+- Niños menores de 8 años: evitar salvo indicaciones graves.
+
+## Cómo actúa
+
+La doxiciclina se une a la subunidad ribosomal 30S e impide la síntesis de proteínas bacterianas. Es bacteriostática, aunque en algunos microorganismos puede tener efecto bactericida. Su alta liposolubilidad le permite penetrar bien en tejidos y células.
 
 ## Doxiciclina en Colombia
 
-El CUM del INVIMA registra doxiciclina en cápsulas y tabletas. Verifica el registro y la concentración antes de dispensar [3]. Es un medicamento de prescripción médica.
+El CUM del INVIMA registra doxiciclina en cápsulas y tabletas. Verifica el registro y la concentración antes de dispensar. Es un medicamento de prescripción médica.
+
+## Evidencia y situación en Colombia
+
+La doxiciclina es el tratamiento de elección para la mayoría de las rickettsiosis y una opción clave en la enfermedad de Lyme y en infecciones por atípicos.
+
+En acné, las dosis bajas y el uso limitado en el tiempo reducen la resistencia y los efectos adversos.
+
+En malaria, se usa como profilaxis y en combinación para el tratamiento, según las guías y la resistencia local.
+
+- Colombia: el CUM registra doxiciclina en cápsulas y tabletas.
+- Unión Europea: la doxiciclina está autorizada para las indicaciones descritas.
+- Estados Unidos: la FDA mantiene etiquetas vigentes de doxiciclina.
+
+## Errores frecuentes
+
+- **Automedicarse o repetir la dosis antes de tiempo** para buscar un efecto más rápido. Más dosis no significa más beneficio y sí puede significar más riesgo.
+- **Suspenderlo sin consultar** cuando la indicación exige completar un tiempo o un tratamiento. La duración la define el profesional.
+- **No contar los otros productos que toma**: antigripales, suplementos, plantas medicinales y medicamentos de venta libre también interactúan.
+- **Confundir alivio con cura**: si el síntoma mejora, no necesariamente desapareció la causa. Si el problema vuelve o empeora, hay que evaluarlo.
+- **No revisar la técnica de uso** cuando se trata de un inhalador, una crema, gotas o un dispositivo: una técnica incorrecta hace que el medicamento no llegue donde debe.
+
+## Cuándo consultar
+
+Consulta si el síntoma no mejora en el plazo esperado, si empeora rápido o si aparece un signo de alarma: dificultad para respirar, dolor en el pecho, desmayo, sangrado, hinchazón de cara o garganta, confusión, fiebre alta persistente o reducción de la orina.
+
+Si estás embarazada, en lactancia, tienes enfermedad renal o hepática, tomas anticoagulantes o tienes varias enfermedades crónicas, consulta antes de empezar cualquier medicamento.
 
 ## Para profesionales
 
@@ -103,8 +180,38 @@ Sí, en tratamientos prolongados y con control médico. No se usa en monoterapia
 
 No. Permanece erguido al menos 30 minutos para evitar irritación del esófago.
 
+### ¿Cuánto tarda en hacer efecto Doxiciclina?
+
+2 a 3 horas  Su efecto se mantiene mientras el medicamento permanece en el cuerpo; la semivida es de 16 a 22 horas. La respuesta completa depende de la indicación y del paciente, así que el seguimiento lo define el profesional.
+
+### ¿Se puede usar Doxiciclina en el embarazo?
+
+- Embarazo: se evita por el riesgo de afectación ósea y dental fetal; se usa solo en infecciones graves sin alternativa. - Lactancia: pasa en pequeñas cantidades; la decisión debe ser médica. - Niños menores de 8 años: evitar salvo indicaciones graves.
+
+### ¿Qué efectos secundarios de Doxiciclina son graves?
+
+Las más frecuentes son náuseas, diarrea, dolor abdominal y pérdida del apetito. - Frecuentes: fotosensibilidad, candidiasis y esofagitis. - Poco frecuentes: coloración dental, elevación de transaminasas y rash. - Raras: hipertensión intracraneal, pancreatitis, hepatotoxicidad, Stevens-Johnson y colitis pseudomembranosa.
+
+## Artículos relacionados
+
+- [Monografía de Doxiciclina en el vademécum](/vademecum/doxiciclina)
+- [Doxiciclina: para qué sirve](/articulos/doxiciclina-para-que-sirve)
+- [Tetraciclinas: mecanismo, espectro y precauciones](/articulos/tetraciclinas-antibioticos)
+- [Antibióticos de uso ambulatorio](/vademecum/antibioticos-de-uso-ambulatorio)
+
 ## Fuentes
 
 1. AEMPS-CIMA. Ficha técnica de Doxiciclina Normon 100 mg comprimidos recubiertos. [Ver fuente](https://cima.aemps.es/cima/dochtml/ft/47077/FT_47077.html)
 2. DailyMed. Doxycycline hyclate capsules and tablets. [Ver fuente](https://dailymed.nlm.nih.gov/dailymed/search.cfm?labeltype=all&query=doxycycline)
 3. INVIMA. Código Único de Medicamentos vigentes (datos.gov.co), consultado el 13-nov-2026. [Ver fuente](https://www.datos.gov.co/d/i7cb-raxc)
+
+- Agencia Española de Medicamentos y Productos Sanitarios (AEMPS). Ficha técnica de Doxiciclina Normon 100 mg comprimidos recubiertos [Internet]. Madrid: AEMPS; [citado 12 nov 2026]. Disponible en: https://cima.aemps.es/cima/dochtml/ft/47077/FT_47077.html
+- Organización Mundial de la Salud. AWaRe classification of antibiotics for evaluation and monitoring of use, 2023 [Internet]. Ginebra: OMS; 2023 [citado 12 nov 2026]. Disponible en: https://www.who.int/publications/i/item/9789240080379
+- Instituto Nacional de Vigilancia de Medicamentos y Alimentos (INVIMA). Código Único de Medicamentos vigentes [conjunto de datos en Internet]. Bogotá: Datos Abiertos Colombia; [citado 12 nov 2026]. Disponible en: https://www.datos.gov.co/d/i7cb-raxc
+- Cipolle RJ, Strand LM, Morley PC. Pharmaceutical care practice: the patient-centered approach to medication management services. 3.ª ed. Nueva York: McGraw-Hill Medical; 2012.
+
+## Sobre este artículo
+
+Este artículo es información educativa y no reemplaza la consulta con un profesional de la salud. No es una fórmula médica ni una recomendación de tratamiento para una persona concreta.
+
+**Autora y revisora:** Karla Hernández, Química Farmacéutica. **Revisado:** 20 de noviembre de 2026. Si encuentras un error o una fuente desactualizada, escríbenos para corregirlo.

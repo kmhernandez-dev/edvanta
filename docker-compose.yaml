@@ -51,6 +51,18 @@ services:
     environment:
       NODE_ENV: production
       PORT: "3000"
+      # Capacidad (docs/ESCALA-100K.md). Procesos de la API (núcleos que usa;
+      # «auto» = uno por núcleo) y conexiones a PostgreSQL por proceso:
+      # procesos × conexiones debe quedar bajo max_connections (100).
+      API_PROCESOS: "${API_PROCESOS:-2}"
+      PG_POOL_MAX: "${PG_POOL_MAX:-15}"
+      # Registro: errores, lentas y escrituras siempre; 2 % del resto.
+      # LOG_PETICIONES=todas para ver cada petición mientras se diagnostica.
+      LOG_PETICIONES: "${LOG_PETICIONES:-muestra}"
+      LOG_MUESTRA: "${LOG_MUESTRA:-0.02}"
+      # Ventas de guías: el «hottok» de Hotmart (Herramientas → Webhook).
+      # Sin él, /api/hotmart/webhook responde 503 y no guarda nada.
+      HOTMART_HOTTOK: "${HOTMART_HOTTOK:-}"
       CORS_ORIGINS: "http://edvanta.co,https://edvanta.co,http://www.edvanta.co,https://www.edvanta.co"
       SITE_URL: "https://edvanta.co"
       API_URL: "https://edvanta.co"

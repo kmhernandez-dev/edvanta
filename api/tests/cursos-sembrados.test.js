@@ -215,7 +215,7 @@ describe('las categorías con las que se agrupan', () => {
     const areas = rows.map((r) => r.area).filter(Boolean).sort();
     expect(areas).toEqual(['Asuntos Regulatorios', 'Calidad', 'Farmacología', 'Habilidades Blandas']);
 
-    expect(porArea['Calidad']).toBe(14);               // 10 sembrados + 4 anteriores
+    expect(porArea['Calidad']).toBe(15);               // 10 sembrados + 4 anteriores + manipulación de alimentos (161)
     expect(porArea['Asuntos Regulatorios']).toBe(21);  // 10 + 10 + el que ya existía
     expect(porArea['Farmacología']).toBe(16);          // 12 de farmacología + 4 de farmacoterapia
     expect(porArea['Habilidades Blandas']).toBe(10);   // la escuela de la migración 075
@@ -303,12 +303,66 @@ describe('farmacoterapia: lo que se ve no trae marcas de trabajo', () => {
   });
 });
 
+describe('gestión de calidad con las normas ISO vigentes (188, 190 y 191)', () => {
+  it('la unidad 3 y su quiz citan ISO 9001:2026, sin duplicados', async () => {
+    const { rows } = await pglite.query(
+      `SELECT m.title AS unidad, a.title AS quiz
+         FROM aula_assessments a
+         JOIN aula_modules m ON m.id = a.module_id
+         JOIN aula_courses c ON c.id = a.course_id
+        WHERE c.kind = 'edvanta' AND c.title = 'Curso de Gestión de Calidad Farmacéutica'
+          AND c.deleted_at IS NULL AND a.deleted_at IS NULL
+          AND a.title LIKE 'Evaluación de la Unidad 3 %'`,
+    );
+    expect(rows).toEqual([{
+      unidad: 'Unidad 3. Modelos de sistema de gestión de calidad: ICH Q10 e ISO 9001:2026',
+      quiz: 'Evaluación de la Unidad 3 · Modelos de sistema de gestión de calidad: ICH Q10 e ISO 9001:2026',
+    }]);
+
+    const { rows: viejos } = await pglite.query(
+      `SELECT 'quiz' AS tipo, a.title AS nombre FROM aula_assessments a
+         JOIN aula_courses c ON c.id = a.course_id
+        WHERE c.title = 'Curso de Gestión de Calidad Farmacéutica' AND a.deleted_at IS NULL AND a.title LIKE '%9001:2015%'
+       UNION ALL
+       SELECT 'banco', b.name FROM aula_question_banks b
+         JOIN aula_courses c ON c.id = b.course_id
+        WHERE c.title = 'Curso de Gestión de Calidad Farmacéutica' AND b.deleted_at IS NULL AND b.name LIKE '%9001:2015%'`,
+    );
+    expect(viejos).toEqual([]);
+  });
+
+  it('las fuentes de sus actividades citan ISO 9000:2026 e ISO 9001:2026 (191)', async () => {
+    const { rows } = await pglite.query(
+      `SELECT a.title,
+              a.support_html LIKE '%ISO 9000:2026 e ISO 9001:2026%' AS cita_2026,
+              a.support_html LIKE '%9001:2015%' OR a.support_html LIKE '%9000:2015%' AS cita_2015
+         FROM aula_activities a
+         JOIN aula_courses c ON c.id = a.course_id
+        WHERE c.kind = 'edvanta' AND c.title = 'Curso de Gestión de Calidad Farmacéutica'
+          AND c.deleted_at IS NULL AND a.deleted_at IS NULL
+        ORDER BY a.sort_order, a.id`,
+    );
+    expect(rows.filter((r) => r.cita_2026)).toHaveLength(5);
+    expect(rows.filter((r) => r.cita_2015)).toEqual([]);
+  });
+});
+
 // Va al final: publica de verdad, y lo de arriba revisa los borradores.
 describe('publicación aprobada al arrancar', () => {
-  it('publica los catorce cursos aprobados con el mismo camino del botón', async () => {
-    // 4 de farmacoterapia (055) + 10 de habilidades blandas (075).
+  it('publica todo el catálogo aprobado con el mismo camino del botón', async () => {
+    // Desde 183 se aprueba el catálogo completo de Edvanta (antes eran 15:
+    // 4 de farmacoterapia, 10 de habilidades blandas y manipulación de
+    // alimentos). Todos deben pasar la validación del botón «Publicar».
+    const [{ total }] = (await pglite.query(
+      "SELECT count(*)::int AS total FROM aula_courses WHERE kind = 'edvanta' AND deleted_at IS NULL",
+    )).rows;
+    expect(total).toBeGreaterThanOrEqual(15);
     const hechos = await publicarAprobados(db);
-    expect(hechos).toHaveLength(14);
+    expect(hechos).toHaveLength(total);
+    const { rows: conError } = await pglite.query(
+      'SELECT course_id, error FROM aula_publicaciones_aprobadas WHERE error IS NOT NULL',
+    );
+    expect(conError).toEqual([]);
 
     const { rows } = await pglite.query(
       `SELECT c.title, c.status, v.version_number, v.snapshot->'totals'->>'lessons' AS clases, p.error
@@ -344,7 +398,7 @@ describe('publicación aprobada al arrancar', () => {
     const [{ n }] = (await pglite.query(
       "SELECT count(*)::int AS n FROM aula_audit_log WHERE action = 'curso.publicar'",
     )).rows;
-    expect(n).toBe(14);
+    expect(n).toBe(total);
   }, 240_000);
 
   it('al volver a arrancar no publica nada otra vez', async () => {

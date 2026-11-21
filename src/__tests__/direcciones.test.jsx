@@ -59,6 +59,11 @@ describe('direcciones · redirecciones fijas', () => {
       // La dirección vieja no puede tapar un artículo que exista.
       expect(slugsDeArticulos.has(d.antigua), d.antigua).toBe(false);
     }
+    // Las rutas antiguas llevan a una ruta de la base o a un artículo que existe.
+    for (const d of DIRECCIONES_ANTIGUAS.filter((x) => x.tipo === 'ruta')) {
+      if (d.nueva.startsWith('/articulos/')) expect(slugsDeArticulos.has(d.nueva), d.nueva).toBe(true);
+      else expect(d.nueva, d.antigua).toMatch(/^\/rutas\/[a-z0-9-]+$/);
+    }
   });
 
   it('las escuelas y las páginas renombradas llevan a la nueva también dentro del sitio', () => {

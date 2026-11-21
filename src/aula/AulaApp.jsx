@@ -27,6 +27,12 @@ import { ToastProvider } from './ui/Toast';
 // se descarga solo cuando un administrador lo abre.
 const Cursos = lazy(() => import('./pages/admin/Cursos'));
 const Seguimiento = lazy(() => import('./pages/admin/Seguimiento'));
+// Edvanta Assist: un solo archivo, cargado solo cuando se abre.
+const AssistLayout = lazy(() => import('./pages/admin/Assist'));
+const AssistBandeja = lazy(() => import('./pages/admin/Assist').then((m) => ({ default: m.AssistBandeja })));
+const AssistPersonas = lazy(() => import('./pages/admin/Assist').then((m) => ({ default: m.AssistPersonas })));
+const AssistPersona = lazy(() => import('./pages/admin/Assist').then((m) => ({ default: m.AssistPersona })));
+const AssistVentas = lazy(() => import('./pages/admin/Assist').then((m) => ({ default: m.AssistVentas })));
 const CursoLayout = lazy(() => import('./pages/admin/curso/CursoLayout'));
 const Contenido = lazy(() => import('./pages/admin/curso/Contenido'));
 const ClaseEditor = lazy(() => import('./pages/admin/curso/ClaseEditor'));
@@ -76,6 +82,8 @@ const TITLES = [
   [/^\/aula\/recuperar/, 'Crear o restablecer contraseña'],
   [/^\/aula\/acceso/, 'Crear contraseña'],
   [/^\/aula\/cuenta/, 'Mi cuenta'],
+  [/^\/aula\/admin\/assist\/ventas/, 'Ventas · Edvanta Assist'],
+  [/^\/aula\/admin\/assist/, 'Edvanta Assist'],
   [/^\/aula\/admin\/auditoria/, 'Bitácora'],
   [/^\/aula\/admin\/solicitudes/, 'Solicitudes'],
   [/^\/aula\/admin\/cursos\/\d+\/vista-previa/, 'Vista previa'],
@@ -164,6 +172,12 @@ export default function AulaApp() {
 
           <Route path="admin" element={<RequireAula role="admin"><AdminShell /></RequireAula>}>
             <Route index element={<Resumen />} />
+            <Route path="assist" element={<AssistLayout />}>
+              <Route index element={<AssistBandeja />} />
+              <Route path="personas" element={<AssistPersonas />} />
+              <Route path="persona" element={<AssistPersona />} />
+              <Route path="ventas" element={<AssistVentas />} />
+            </Route>
             <Route path="empresas" element={<Empresas />} />
             <Route path="empresas/:id" element={<EmpresaDetalle />} />
             <Route path="grupos" element={<Grupos />} />

@@ -11,6 +11,8 @@ import { CoursePlayer, flattenLessons } from '../../player/CoursePlayer';
 import { useActiveTime, useVideoTracker } from '../../player/tracking';
 import { buscarClase } from '../../rutas';
 import { useCourseData } from './CursoParticipante';
+import RecordatorioCertificado from '../../components/RecordatorioCertificado';
+import BarraCertificado from '../../components/BarraCertificado';
 
 const clock = (seconds) => {
   const s = Math.max(0, Math.ceil(seconds));
@@ -227,6 +229,7 @@ export default function ClaseParticipante() {
             )}
           </>
         )}
+        banner={<BarraCertificado courseId={courseId} cursoSlug={data.courseSlug} volverA={rutas.certificado} />}
         footerActions={(
           <>
             <Button
@@ -241,18 +244,28 @@ export default function ClaseParticipante() {
           </>
         )}
         renderCompletion={(current) => (
-          <CompletionPanel
-            lesson={current}
-            state={data.lessonStates[current.id] || { status: 'pendiente' }}
-            rules={data.snapshot.rules}
-            activeSeconds={activeSeconds}
-            watchedPct={watchedPct}
-            videoCount={videos.length}
-            onComplete={complete}
-            busy={busy}
-            error={completeError}
-            courseCompleted={data.enrollment.status === 'completado'}
-          />
+          <>
+            <CompletionPanel
+              lesson={current}
+              state={data.lessonStates[current.id] || { status: 'pendiente' }}
+              rules={data.snapshot.rules}
+              activeSeconds={activeSeconds}
+              watchedPct={watchedPct}
+              videoCount={videos.length}
+              onComplete={complete}
+              busy={busy}
+              error={completeError}
+              courseCompleted={data.enrollment.status === 'completado'}
+            />
+            {/* Quien estudia gratis ve, en cada clase, cómo pasarse al certificado. */}
+            <RecordatorioCertificado
+              courseId={courseId}
+              volverA={rutas.certificado}
+              curso={data.snapshot.course.title}
+              claseCompletada={(data.lessonStates[current.id] || {}).status === 'completado'}
+              avance={data.enrollment.progressPct}
+            />
+          </>
         )}
       />
       <p className="sr-only" aria-live="polite">{announce}</p>

@@ -12,6 +12,7 @@ import {
   descripcionConCierre, descripcionDeCurso, limpiarDescripcion, metaDeCarrera, metaDeCompetencia, metaDeRuta,
   recortarDescripcion, tituloConMarca, tituloDeCurso, tituloQueCabe,
 } from '../lib/meta-seo.js';
+import { PALABRA_CLAVE_DE_PROPIOS } from '../lib/seo-cursos-propios.js';
 
 const propio = (extra = {}) => ({
   dondeSeEstudia: 'edvanta',
@@ -63,11 +64,12 @@ describe('reglas generales', () => {
 });
 
 describe('cursos', () => {
-  it('propio: «gratis» en el título y certificado opcional en la descripción', () => {
+  it('propio de pago (desde el 20-nov): «con certificado», nunca «gratis»', () => {
     const f = propio({ resumen: 'Aprende a diseñar y mejorar un sistema de gestión de calidad en tu empresa farmacéutica.' });
-    expect(tituloDeCurso(f, 'Curso de Gestión de Calidad Farmacéutica')).toBe('Curso de Gestión de Calidad Farmacéutica gratis | Edvanta');
+    expect(tituloDeCurso(f, 'Curso de Gestión de Calidad Farmacéutica')).toBe('Curso de Gestión de Calidad Farmacéutica con certificado');
     const d = descripcionDeCurso(f, 'Curso de Gestión de Calidad Farmacéutica');
-    expect(d).toBe('Aprende a diseñar y mejorar un sistema de gestión de calidad en tu empresa farmacéutica. Gratis, a tu ritmo y con certificado verificable opcional.');
+    expect(d).toBe('Aprende a diseñar y mejorar un sistema de gestión de calidad en tu empresa farmacéutica. Con certificado verificable, a tu ritmo. Primera unidad abierta.');
+    expect(`${tituloDeCurso(f, 'Curso de X')} ${d}`).not.toMatch(/gratis/i);
   });
 
   it('propio con resumen largo: el resumen casi entero y un cierre corto', () => {
@@ -75,7 +77,7 @@ describe('cursos', () => {
     const d = descripcionDeCurso(f, 'Curso de Gestión de Calidad Farmacéutica');
     expect(d.length).toBeLessThanOrEqual(155);
     // El resumen completo y el cierre más largo que todavía cabe.
-    expect(d).toBe(`${f.resumen} Curso gratis.`);
+    expect(d).toBe(`${f.resumen} Con certificado.`);
     expect(d).not.toMatch(/…/);
   });
 
@@ -99,16 +101,37 @@ describe('cursos', () => {
 
   it('un nombre largo con subtítulo se queda con lo de antes de los dos puntos', () => {
     const n = 'Curso para Hablar Frente a la Cámara: Oratoria Digital para Videos y Videollamadas';
-    expect(tituloDeCurso(propio(), n)).toBe('Curso para Hablar Frente a la Cámara gratis | Edvanta');
+    expect(tituloDeCurso(propio(), n)).toBe('Curso para Hablar Frente a la Cámara con certificado');
     // Si el nombre completo cabe, se conserva con su subtítulo.
     const corto = 'Curso de Oratoria: cómo hablar en público con seguridad';
     expect(tituloDeCurso(propio(), corto)).toBe(corto);
   });
 
-  it('propio de nombre largo sin subtítulo: usa su nombre corto', () => {
+  it('propio de nombre largo: el título lleva su búsqueda principal', () => {
     const f = propio({ url: '/curso-de-gestion-de-desviaciones-y-capa' });
     expect(tituloDeCurso(f, 'Curso de Gestión de Desviaciones y Acciones Correctivas y Preventivas — CAPA'))
-      .toBe('Curso de Gestión de Desviaciones y CAPA gratis | Edvanta');
+      .toBe('Curso de desviaciones y CAPA online con certificado');
+  });
+
+  it('propio sin palabra clave registrada: usa su nombre corto', () => {
+    const f = propio({ url: '/curso-de-prueba-sin-clave' });
+    expect(tituloDeCurso(f, 'Curso de Gestión de Calidad')).toBe('Curso de Gestión de Calidad con certificado | Edvanta');
+  });
+
+  it('las búsquedas principales (62 cursos + manipulación de alimentos) son únicas y caben en el título', () => {
+    const claves = Object.values(PALABRA_CLAVE_DE_PROPIOS).map((c) => c.toLowerCase());
+    expect(claves).toHaveLength(63);
+    expect(new Set(claves).size).toBe(claves.length);
+    for (const url of Object.keys(PALABRA_CLAVE_DE_PROPIOS)) {
+      const t = tituloDeCurso(propio({ url }), 'Curso de un nombre cualquiera bastante largo para la prueba');
+      expect(t.length, url).toBeLessThanOrEqual(60);
+      expect(t.toLowerCase(), url).toContain(PALABRA_CLAVE_DE_PROPIOS[url].toLowerCase());
+    }
+  });
+
+  it('la descripción de un propio empieza por su búsqueda principal sin repetir «Curso»', () => {
+    const f = propio({ url: '/curso-de-oratoria', resumen: 'Curso práctico para aprender a hablar en público con claridad, estructura y seguridad.' });
+    expect(descripcionDeCurso(f, 'Curso de Oratoria')).toMatch(/^Curso de oratoria online para aprender a hablar en público/);
   });
 
   it('curado con guía: el título y la descripción escritos a mano mandan', () => {

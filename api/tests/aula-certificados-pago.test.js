@@ -73,7 +73,8 @@ describe('certificados con costo', () => {
     expect((await c.post(`/me/catalog/${curso.id}/enroll`, {})).status).toBeLessThan(300);
 
     const antes = await c.get(`/me/courses/${curso.id}/certificate`);
-    expect(antes.data.pago).toEqual({ requerido: true, precio: 60000, estado: 'sin_pagar' });
+    // Sin país (Cloudflare no está en las pruebas) se cobra el de Colombia, dentro del plazo.
+    expect(antes.data.pago).toMatchObject({ requerido: true, precio: 60000, estado: 'sin_pagar', lista: 199000, conDescuento: true });
 
     await completar(c);
     const sinPago = await c.post(`/me/courses/${curso.id}/certificate`, {});

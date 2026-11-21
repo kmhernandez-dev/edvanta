@@ -57,8 +57,8 @@ function siguienteAccion({ publico, interes, temperatura, whatsapp }) {
       ? `Escribir hoy ${canal} con el enlace de la guía`
       : 'Seguir con el correo de la guía recomendada';
   }
-  if (interes === 'curso') return 'Enviar el enlace del curso gratis y ofrecer el certificado';
-  return 'Recomendar un curso gratis según su área';
+  if (interes === 'curso') return 'Enviar el enlace del curso para probar la primera unidad y ofrecer el curso completo';
+  return 'Recomendar un curso según su área';
 }
 
 /**

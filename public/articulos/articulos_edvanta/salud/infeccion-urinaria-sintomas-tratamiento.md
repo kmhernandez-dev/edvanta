@@ -49,6 +49,22 @@ Mientras tanto, beber agua y usar analgésicos como el [acetaminofén](/articulo
 
 ¿Y el arándano? Una revisión Cochrane de 2023 encontró que los productos de arándano pueden reducir el riesgo de infecciones repetidas en algunas mujeres, niños y personas con intervenciones urinarias. No sirve para tratar una infección activa.
 
+## ¿Quiénes tienen más riesgo?
+
+Cualquier persona puede tener una infección urinaria, pero las mujeres la sufren unas cuatro veces más que los hombres. El riesgo también es mayor en personas con diabetes, con sonda en la vejiga o con lesión de la médula espinal.
+
+## Cómo se confirma
+
+El médico confirma la infección con una prueba de orina y, según el caso, con un urocultivo para saber qué bacteria la causa y qué antibiótico funciona. Por eso es importante consultar antes de tomar cualquier antibiótico.
+
+## Únete a la comunidad
+
+En la [comunidad de infección urinaria](/comunidades/infeccion-urinaria) de Edvanta, pacientes y cuidadores comparten dudas, guías y experiencias, con moderación y reglas claras. La comunidad no diagnostica ni reemplaza al equipo de salud: te ayuda a llegar mejor preparado a la consulta.
+
+## Para estudiantes y profesionales de la salud
+
+Si estudias o trabajas en salud, pon a prueba lo que sabes con el [caso clínico de infección urinaria](/casos-clinicos/infeccion-urinaria): un examen interactivo tipo parcial con explicaciones y nota de 0 a 5.
+
 ## Preguntas frecuentes
 
 ### ¿La infección urinaria se quita sola?
@@ -62,6 +78,10 @@ No sin valoración: las bacterias pueden ser distintas o resistentes.
 ### ¿Es peligrosa una infección urinaria en el embarazo?
 
 Sí puede tener complicaciones. Toda embarazada con síntomas urinarios debe consultar.
+
+### ¿La orina turbia o con mal olor es señal de infección?
+
+Puede serlo. La orina turbia, rojiza o con mal olor, junto con ardor al orinar o ganas frecuentes, sugiere una infección urinaria. Si además hay fiebre, escalofríos o dolor en la espalda baja, la infección puede haber llegado al riñón y se debe consultar pronto.
 
 ## Fuentes
 

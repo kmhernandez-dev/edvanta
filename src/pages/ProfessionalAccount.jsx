@@ -41,13 +41,18 @@ export default function ProfessionalAccount() {
     () => safeNextPath(searchParams.get('next'), '/app'),
     [searchParams],
   );
+  // Viene a comprar el certificado de un curso: la página habla de eso y
+  // de nada más, y al terminar vuelve directo al pago (pedido de Karla, 20-nov).
+  const compra = /[?&]camino=certificado\b/.test(nextPath);
+  // Al confirmar el correo, el enlace también vuelve a donde iba la persona.
+  const regreso = nextPath !== '/app' ? `/app?next=${encodeURIComponent(nextPath)}` : '/app';
 
   useEffect(() => updatePageSeo({
-    title: 'Crea tu perfil profesional | Edvanta',
+    title: compra ? 'Paga tu certificado | Edvanta' : 'Crea tu perfil profesional | Edvanta',
     description: 'Crea un perfil privado para guardar cursos, seguir rutas y organizar tu crecimiento profesional en la industria farmacéutica.',
     canonical: 'https://edvanta.co/cuenta',
     robots: 'noindex,nofollow',
-  }), []);
+  }), [compra]);
 
   useEffect(() => {
     if (!authLoading && !workspaceLoading && user) {
@@ -85,14 +90,16 @@ export default function ProfessionalAccount() {
             email: email.trim(),
             password,
             privacyAccepted,
-            redirectPath: '/app',
+            redirectPath: regreso,
             consentScope: 'professional',
           })
         : await login(email.trim(), password);
       if (result?.error) throw new Error(result.error);
       if (mode === 'register') trackEvent('signup_completed', { method: 'email', account_scope: 'professional' });
       if (mode === 'register' && !result?.session) {
-        setSuccess('Revisa tu correo y confirma la cuenta para entrar.');
+        setSuccess(compra
+          ? 'Revisa tu correo y confirma la cuenta: el enlace te trae de vuelta al pago de tu certificado.'
+          : 'Revisa tu correo y confirma la cuenta para entrar.');
       }
     } catch (error) {
       setFormError(friendlyAuthError(error.message));
@@ -104,10 +111,9 @@ export default function ProfessionalAccount() {
   const handleGoogle = async () => {
     setFormError('');
     setAuthError('');
-    if (mode === 'register' && !privacyAccepted) {
-      setFormError('Debes aceptar los términos y la política de privacidad antes de crear la cuenta con Google.');
-      return;
-    }
+    // Con Google, el texto bajo el botón dice que al continuar se aceptan los
+    // términos y la política: no se pide además la casilla (era un paso que
+    // frenaba y contradecía ese mismo texto).
     setSubmitting(true);
     // En registro, si no venía de una página concreta, la primera parada
     // es completar el perfil. En ingreso se vuelve al panel.
@@ -128,15 +134,21 @@ export default function ProfessionalAccount() {
         <section className="relative overflow-hidden border-b border-edvanta-border"><div className="ed-backdrop" aria-hidden="true" /><div className="ed-grid" aria-hidden="true" />
           <div className="relative mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:px-6 lg:grid-cols-[minmax(0,1fr)_440px] lg:px-8 lg:py-16">
             <div className="max-w-2xl self-center">
-              <p className="ed-eyebrow">Tu espacio profesional</p>
-              <h1 className="mt-3 text-4xl font-extrabold leading-[1.08] tracking-[-0.03em] text-edvanta-blue sm:text-5xl">Convierte tus intereses en un plan que puedas seguir</h1>
-              <p className="mt-5 text-lg leading-8 text-edvanta-muted">Guarda cursos, organiza rutas y concentra en un solo lugar las decisiones que fortalecen tu perfil.</p>
+              <p className="ed-eyebrow">{compra ? 'Tu certificado' : 'Tu espacio profesional'}</p>
+              <h1 className="mt-3 text-4xl font-extrabold leading-[1.08] tracking-[-0.03em] text-edvanta-blue sm:text-5xl">{compra ? 'Un paso y pasas al pago' : 'Convierte tus intereses en un plan que puedas seguir'}</h1>
+              <p className="mt-5 text-lg leading-8 text-edvanta-muted">{compra
+                ? 'Crea tu cuenta o entra para que el certificado quede a tu nombre. Después vas directo al pago seguro con Mercado Pago: tarjeta, PSE, Nequi o Efecty.'
+                : 'Guarda cursos, organiza rutas y concentra en un solo lugar las decisiones que fortalecen tu perfil.'}</p>
               <div className="mt-8 grid gap-4 sm:grid-cols-3">
-                {[
+                {(compra ? [
+                  [CheckCircle2, 'Certificado a tu nombre'],
+                  [CheckCircle2, 'Pago seguro con Mercado Pago'],
+                  [CheckCircle2, 'Acompañamiento por WhatsApp'],
+                ] : [
                   [BriefcaseBusiness, 'Define una carrera objetivo'],
                   [CheckCircle2, 'Sigue tu avance real'],
                   [LockKeyhole, 'Datos privados por defecto'],
-                ].map(([Icon, label]) => (
+                ]).map(([Icon, label]) => (
                   <div key={label} className="border-l-2 border-teal-500 pl-3">
                     <Icon className="h-5 w-5 text-edvanta-tealdark" aria-hidden="true" />
                     <p className="mt-2 text-sm font-semibold leading-5 text-edvanta-muted">{label}</p>
@@ -151,8 +163,8 @@ export default function ProfessionalAccount() {
                 <button type="button" onClick={() => switchMode('register')} className={`min-h-11 flex-1 border-b-2 px-3 text-sm font-bold ${mode === 'register' ? 'border-edvanta-teal text-edvanta-tealdark' : 'border-transparent text-edvanta-subtle'}`}>Crear cuenta</button>
               </div>
 
-              <h2 className="mt-6 text-2xl font-bold text-edvanta-deep">{mode === 'login' ? 'Continúa con tu plan' : 'Crea tu perfil profesional'}</h2>
-              <p className="mt-2 text-sm leading-6 text-edvanta-muted">{mode === 'login' ? 'Accede a tus cursos guardados y rutas activas.' : 'La configuración inicial toma menos de tres minutos.'}</p>
+              <h2 className="mt-6 text-2xl font-bold text-edvanta-deep">{compra ? (mode === 'login' ? 'Entra para pagar tu certificado' : 'Crea tu cuenta para pagar') : (mode === 'login' ? 'Continúa con tu plan' : 'Crea tu perfil profesional')}</h2>
+              <p className="mt-2 text-sm leading-6 text-edvanta-muted">{compra ? 'Toma menos de un minuto. Luego vas directo a Mercado Pago.' : (mode === 'login' ? 'Accede a tus cursos guardados y rutas activas.' : 'La configuración inicial toma menos de tres minutos.')}</p>
 
               {!supabaseConfigured && (
                 <div className="mt-5 rounded-lg border border-amber-200 bg-amber-50 p-3 text-sm leading-6 text-amber-900">El registro todavía no está configurado en este entorno.</div>
@@ -189,7 +201,7 @@ export default function ProfessionalAccount() {
                   </label>
                 )}
                 <button type="submit" disabled={!supabaseConfigured || submitting} className="ed-btn ed-btn--primary w-full">
-                  {submitting ? 'Procesando...' : mode === 'login' ? 'Ingresar a mi panel' : 'Crear mi perfil'} <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                  {submitting ? 'Procesando...' : compra ? (mode === 'login' ? 'Entrar y pagar' : 'Crear cuenta y pagar') : mode === 'login' ? 'Ingresar a mi panel' : 'Crear mi perfil'} <ArrowRight className="h-4 w-4" aria-hidden="true" />
                 </button>
               </form>
             </div>

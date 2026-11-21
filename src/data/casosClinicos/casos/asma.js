@@ -1,0 +1,143 @@
+import { F } from '../../vademecum/fuentes.js';
+import { FC } from '../fuentes.js';
+
+export default {
+  slug: 'asma',
+  titulo: 'Caso clínico de asma',
+  enfermedad: 'Asma',
+  area: 'respiratorio',
+  nivel: 'Intermedio',
+  minutos: 14,
+  actualizado: '2026-11-17',
+  seo: {
+    titulo: 'Caso clínico de asma con preguntas resueltas',
+    descripcion: 'Caso clínico de asma no controlada: por qué no usar solo salbutamol, MART con budesonida/formoterol, técnica del inhalador y montelukast. Tipo parcial.',
+    palabrasClave: ['caso clínico de asma', 'caso clínico asma resuelto', 'preguntas de asma farmacología', 'MART budesonida formoterol'],
+  },
+  objetivos: [
+    'Evaluar el control del asma.',
+    'Aplicar la vía preferida de GINA con budesonida/formoterol.',
+    'Enseñar la técnica inhalatoria y los riesgos de cada medicamento.',
+  ],
+  presentacion: 'Juliana tiene 24 años y asma desde la infancia. Usa salbutamol inhalado 3 o 4 veces por semana y se despierta por tos y ahogo dos noches a la semana. El año pasado fue a urgencias por una crisis. No usa corticoide inhalado porque «engorda y daña los huesos». Le formulan budesonida/formoterol en Turbuhaler como mantenimiento y rescate. Una amiga le recomienda montelukast «que es en pastilla y no tiene corticoide».',
+  datos: [
+    ['Uso de aliviador', 'Salbutamol 3 a 4 veces por semana'],
+    ['Síntomas nocturnos', '2 noches por semana'],
+    ['Exacerbaciones', '1 visita a urgencias en el último año'],
+    ['Controlador', 'Ninguno (rechaza el corticoide inhalado)'],
+    ['Nueva fórmula', 'Budesonida/formoterol 160/4,5 µg Turbuhaler'],
+  ],
+  preguntas: [
+    {
+      tipo: 'opcion',
+      enunciado: 'Según GINA, ¿cómo está el control del asma de Juliana?',
+      opciones: ['Bien controlada', 'Parcialmente controlada', 'No controlada', 'En remisión'],
+      correcta: 2,
+      explicacion: 'GINA evalúa cuatro aspectos en las últimas 4 semanas: síntomas diurnos más de 2 veces por semana, despertares nocturnos, uso de aliviador más de 2 veces por semana y limitación de la actividad. Con 3 o 4 presentes, el asma no está controlada [1].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: '¿Por qué GINA no recomienda tratar a adolescentes y adultos solo con salbutamol?',
+      opciones: [
+        'Porque el salbutamol es muy costoso',
+        'Porque usar solo un broncodilatador de acción corta aumenta el riesgo de crisis graves y muerte; el asma necesita tratamiento antiinflamatorio',
+        'Porque el salbutamol no broncodilata',
+        'Porque el salbutamol causa osteoporosis',
+      ],
+      correcta: 1,
+      explicacion: 'GINA desaconseja el tratamiento solo con SABA en adolescentes y adultos: no trata la inflamación y se asocia con más exacerbaciones graves. Prefiere un aliviador con corticoide inhalado y formoterol [1].',
+    },
+    {
+      tipo: 'relacionar',
+      enunciado: 'Relaciona cada medicamento con su función.',
+      pares: [
+        ['Budesonida/formoterol', 'Mantenimiento y alivio con el mismo inhalador'],
+        ['Salbutamol', 'Broncodilatador de acción corta para el alivio'],
+        ['Montelukast', 'Antileucotrieno oral, alternativa menos eficaz'],
+        ['Corticoide inhalado', 'Tratamiento antiinflamatorio de base'],
+      ],
+      explicacion: 'La budesonida/formoterol puede usarse como mantenimiento y como aliviador [2]; el salbutamol es un agonista beta-2 de acción corta [3]; el montelukast es una alternativa menos eficaz que el corticoide inhalado [1,4].',
+    },
+    {
+      tipo: 'completar',
+      enunciado: 'Con Symbicort 160/4,5 como mantenimiento y alivio, la dosis total puede llegar temporalmente a ___ inhalaciones al día.',
+      respuestas: ['12', 'doce'],
+      pista: 'Una docena.',
+      explicacion: 'Normalmente no se necesitan más de 8 inhalaciones al día; puede usarse hasta 12 por un tiempo limitado, y quien necesita más de 8 debe consultar [2].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: '¿Qué debe hacer Juliana después de usar el inhalador con corticoide?',
+      opciones: ['Nada', 'Enjuagarse la boca con agua para reducir la candidiasis oral', 'Beber leche', 'Acostarse'],
+      correcta: 1,
+      explicacion: 'Enjuagarse la boca después de la dosis de mantenimiento reduce el riesgo de candidiasis orofaríngea [2].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: '¿Qué advertencia debes darle sobre el montelukast?',
+      opciones: [
+        'Que produce hipoglucemia',
+        'Que se han reportado reacciones neuropsiquiátricas (pesadillas, cambios de ánimo, ideas suicidas) y hay que vigilarlas',
+        'Que causa tos seca',
+        'Que es igual de eficaz que el corticoide inhalado',
+      ],
+      correcta: 1,
+      explicacion: 'La ficha y el INVIMA advierten sobre eventos neuropsiquiátricos con montelukast; ante síntomas se consulta y se reevalúa el tratamiento [4,5].',
+    },
+    {
+      tipo: 'completar',
+      enunciado: 'El formoterol es un agonista beta-2 de acción ___, pero de inicio rápido.',
+      respuestas: ['prolongada', 'larga'],
+      pista: 'Lo contrario de corta.',
+      explicacion: 'El formoterol tiene un efecto prolongado y comienza a actuar en pocos minutos, por eso sirve también como aliviador combinado con budesonida [2].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: 'Juliana teme que el corticoide inhalado «engorde y dañe los huesos». ¿Qué le explicas?',
+      opciones: [
+        'Que tiene razón y no debe usarlo',
+        'Que a las dosis inhaladas el efecto sistémico es mucho menor que el de los corticoides orales y que controlar el asma evita crisis y ciclos de prednisona',
+        'Que lo use solo cuando tenga crisis',
+        'Que lo cambie por remedios caseros',
+      ],
+      correcta: 1,
+      explicacion: 'Las dosis bajas a moderadas de corticoide inhalado tienen poco efecto sistémico y reducen las exacerbaciones; los ciclos repetidos de corticoide oral son los que más efectos adversos causan [1].',
+    },
+    {
+      tipo: 'relacionar',
+      enunciado: 'Relaciona cada señal con su significado.',
+      pares: [
+        ['Usa el aliviador más de 2 veces por semana', 'Asma no controlada'],
+        ['Se despierta por el asma', 'Asma no controlada en la noche'],
+        ['No puede hablar frases completas y no mejora con el aliviador', 'Crisis grave: urgencias'],
+      ],
+      explicacion: 'El uso frecuente del aliviador y los despertares indican mal control [1]. La dificultad para hablar y la falta de respuesta al aliviador son signos de una crisis grave que requiere atención urgente [1].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: '¿Cómo se inhala correctamente desde el Turbuhaler?',
+      opciones: [
+        'Despacio y sin esfuerzo, como con un inhalador presurizado',
+        'Con una inspiración fuerte y profunda por la boquilla',
+        'Por la nariz',
+        'Soplando dentro del dispositivo',
+      ],
+      correcta: 1,
+      explicacion: 'El Turbuhaler es un inhalador de polvo seco: necesita una inspiración fuerte y profunda; no se debe soplar dentro de él [2].',
+    },
+  ],
+  claves: [
+    'Control: síntomas diurnos, despertares, aliviador más de 2 veces por semana y limitación; con 3 o 4, no controlada [1].',
+    'GINA desaconseja el tratamiento solo con salbutamol en adolescentes y adultos [1].',
+    'Budesonida/formoterol como mantenimiento y alivio; hasta 12 inhalaciones al día por un tiempo limitado [2].',
+    'Enjuagar la boca tras el corticoide inhalado; montelukast con alerta neuropsiquiátrica [2,4,5].',
+  ],
+  referencias: [FC.gina2026, FC.ftSymbicort, F.ftSalbutamol, F.ftMontelukast, FC.invimaMontelukast],
+  enlaces: [
+    ['Salbutamol', '/vademecum/salbutamol', 'Vademécum'],
+    ['Montelukast', '/vademecum/montelukast', 'Vademécum'],
+    ['Asma bronquial: síntomas y tratamiento', '/articulos/asma-bronquial-sintomas-y-tratamiento', 'Artículo'],
+    ['Inhaladores para el asma: preguntas frecuentes', '/articulos/inhaladores-para-el-asma-preguntas-frecuentes', 'Artículo'],
+    ['Curso de Farmacoterapia del Asma y la EPOC', '/curso-de-farmacoterapia-del-asma-y-la-epoc', 'Curso'],
+  ],
+};

@@ -247,6 +247,7 @@ export default {
   referencias: [F.ftRosuvastatina, F.jupiter, F.invimaCum, F.cipolle2012, F.ramalho2012, F.escDislipidemia2019],
   enlaces: [
     ['Dislipidemias: manejo farmacológico', '/articulos/dislipidemias-manejo-farmacologico'],
+    ['Rosuvastatina: para qué sirve y efectos secundarios', '/articulos/rosuvastatina-para-que-sirve'],
     ['Atorvastatina: para qué sirve', '/articulos/atorvastatina-para-que-sirve'],
     ['Alimentos para bajar el colesterol', '/articulos/alimentos-para-bajar-el-colesterol'],
   ],

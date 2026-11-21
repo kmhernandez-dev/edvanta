@@ -1,0 +1,152 @@
+import { F } from '../../vademecum/fuentes.js';
+import { FC } from '../fuentes.js';
+
+export default {
+  slug: 'depresion',
+  titulo: 'Caso clínico de depresión y antidepresivos',
+  enfermedad: 'Trastorno depresivo mayor',
+  area: 'neurologia',
+  nivel: 'Intermedio',
+  minutos: 14,
+  actualizado: '2026-11-17',
+  seo: {
+    titulo: 'Caso clínico de depresión con sertralina',
+    descripcion: 'Caso clínico de depresión: latencia de los ISRS, ideación suicida en jóvenes, síndrome serotoninérgico con tramadol y suspensión gradual. Con respuestas.',
+    palabrasClave: ['caso clínico de depresión', 'antidepresivos preguntas', 'síndrome serotoninérgico caso clínico', 'sertralina caso clínico'],
+  },
+  objetivos: [
+    'Explicar la latencia y la vigilancia al iniciar un ISRS.',
+    'Reconocer el síndrome serotoninérgico y sus fármacos causantes.',
+    'Prevenir los síntomas de retirada.',
+  ],
+  presentacion: 'Mariana tiene 23 años, estudia medicina y desde hace dos meses tiene ánimo bajo, pérdida de interés, insomnio y dificultad para concentrarse. Su psiquiatra diagnostica un episodio depresivo moderado e inicia sertralina 50 mg al día. A la semana vuelve a la droguería: dice que «no le hace nada» y que quiere dejarla en vacaciones. Además, el odontólogo le formuló tramadol por una cordal.',
+  datos: [
+    ['Diagnóstico', 'Episodio depresivo moderado'],
+    ['Tratamiento', 'Sertralina 50 mg al día, hace 7 días'],
+    ['Queja', '«No le hace nada»'],
+    ['Medicamento nuevo', 'Tramadol formulado por el odontólogo'],
+    ['Edad', '23 años'],
+  ],
+  preguntas: [
+    {
+      tipo: 'opcion',
+      enunciado: '¿Qué le explicas sobre el tiempo de respuesta de la sertralina?',
+      opciones: [
+        'Que si no funcionó en una semana nunca funcionará',
+        'Que el efecto antidepresivo suele tardar varias semanas y debe continuarla como se formuló',
+        'Que debe duplicar la dosis ya',
+        'Que funciona en horas',
+      ],
+      correcta: 1,
+      explicacion: 'La mejoría de los síntomas depresivos con los ISRS aparece de forma gradual, a lo largo de varias semanas [2].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: '¿Qué vigilancia es especialmente importante en una persona de 23 años al iniciar un antidepresivo?',
+      opciones: [
+        'La glucosa',
+        'La aparición o el aumento de ideas suicidas o de conductas de riesgo, sobre todo al inicio',
+        'La presión arterial cada hora',
+        'El color de la orina',
+      ],
+      correcta: 1,
+      explicacion: 'La ficha advierte un mayor riesgo de pensamientos y conductas suicidas en adultos jóvenes al inicio del tratamiento y pide vigilancia estrecha [2].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: '¿Qué riesgo tiene tomar tramadol con sertralina?',
+      opciones: [
+        'Ninguno',
+        'Síndrome serotoninérgico y mayor riesgo de convulsiones',
+        'Hipoglucemia',
+        'Disminuye el efecto del tramadol sin otros riesgos',
+      ],
+      correcta: 1,
+      explicacion: 'El tramadol inhibe la recaptación de serotonina; con ISRS puede causar síndrome serotoninérgico y baja el umbral convulsivo [3,4].',
+    },
+    {
+      tipo: 'relacionar',
+      enunciado: 'Relaciona cada fármaco con su contribución al síndrome serotoninérgico.',
+      pares: [
+        ['Sertralina', 'Inhibe la recaptación de serotonina'],
+        ['Tramadol', 'Opioide que también inhibe la recaptación de serotonina'],
+        ['Linezolid', 'Inhibe la monoaminooxidasa'],
+        ['Sumatriptán', 'Agonista de receptores 5-HT1B/1D'],
+      ],
+      explicacion: 'El síndrome aparece al combinar fármacos que aumentan la serotonina por distintos mecanismos: recaptación, metabolismo o estimulación de receptores [4].',
+    },
+    {
+      tipo: 'completar',
+      enunciado: 'La dosis inicial habitual de sertralina en la depresión del adulto es de ___ mg al día.',
+      respuestas: ['50', 'cincuenta'],
+      pista: 'Medio centenar.',
+      explicacion: 'La ficha indica iniciar con 50 mg al día y ajustar después según la respuesta [2].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: 'Mariana quiere dejar la sertralina de golpe en vacaciones. ¿Qué le dices?',
+      opciones: [
+        'Que puede dejarla cuando quiera',
+        'Que no la suspenda de golpe: puede tener síntomas de retirada; cualquier retiro debe ser gradual y acordado con su médico',
+        'Que la tome solo los fines de semana',
+        'Que la cambie por tramadol',
+      ],
+      correcta: 1,
+      explicacion: 'La interrupción brusca de los ISRS puede causar mareo, alteraciones sensoriales, ansiedad e insomnio; la ficha recomienda reducir la dosis de forma gradual [2].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: '¿Qué concluyó el metaanálisis de Cipriani sobre 21 antidepresivos?',
+      opciones: [
+        'Que ninguno supera al placebo',
+        'Que todos fueron más eficaces que el placebo en la depresión mayor del adulto, con diferencias en eficacia y aceptabilidad',
+        'Que solo funcionan en adolescentes',
+        'Que todos son iguales en efectos adversos',
+      ],
+      correcta: 1,
+      explicacion: 'Los 21 antidepresivos fueron más eficaces que el placebo en adultos con depresión mayor; algunos, como el escitalopram y la sertralina, combinaron buena eficacia y aceptabilidad [1].',
+    },
+    {
+      tipo: 'completar',
+      enunciado: 'El ISRS con la vida media más larga, que reduce los síntomas de retirada pero prolonga las interacciones, es la ___.',
+      respuestas: ['fluoxetina'],
+      pista: 'Su metabolito activo es la norfluoxetina.',
+      explicacion: 'La fluoxetina y su metabolito tienen una semivida muy prolongada, lo que atenúa la retirada y alarga las interacciones después de suspenderla [5].',
+    },
+    {
+      tipo: 'relacionar',
+      enunciado: 'Relaciona cada antidepresivo con su dato clave.',
+      pares: [
+        ['Escitalopram', 'Prolongación del QT dependiente de la dosis'],
+        ['Fluoxetina', 'Vida media muy larga'],
+        ['Sertralina', 'Inicio con 50 mg al día'],
+      ],
+      explicacion: 'El escitalopram puede prolongar el intervalo QT [6]; la fluoxetina tiene una semivida prolongada [5]; la sertralina se inicia con 50 mg [2].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: 'Mariana nota disminución del deseo sexual. ¿Qué le recomiendas?',
+      opciones: [
+        'Suspender la sertralina por su cuenta',
+        'Que es un efecto adverso conocido de los ISRS y debe conversarlo con su médico, sin suspender por su cuenta',
+        'Que tome tramadol',
+        'Que duplique la dosis',
+      ],
+      correcta: 1,
+      explicacion: 'La disfunción sexual es un efecto adverso conocido de la sertralina; se maneja con el médico, que puede ajustar el tratamiento [2].',
+    },
+  ],
+  claves: [
+    'Los ISRS tardan semanas en hacer efecto [2].',
+    'Vigilar ideas suicidas al inicio, sobre todo en jóvenes [2].',
+    'Tramadol, triptanes, linezolid e ISRS: riesgo de síndrome serotoninérgico [3,4].',
+    'No suspender de golpe: riesgo de síntomas de retirada [2].',
+  ],
+  referencias: [FC.cipriani2018, F.ftSertralina, F.ftTramadol, FC.sindromeSerotoninergico, F.ftFluoxetina, FC.ftEscitalopram],
+  enlaces: [
+    ['Sertralina', '/vademecum/sertralina', 'Vademécum'],
+    ['Salud mental y sistema nervioso', '/vademecum/salud-mental-y-sistema-nervioso', 'Vademécum'],
+    ['Sertralina: para qué sirve', '/articulos/sertralina-para-que-sirve', 'Artículo'],
+    ['Curso de Farmacología del Sistema Nervioso Central', '/curso-de-farmacologia-del-sistema-nervioso-central', 'Curso'],
+  ],
+};

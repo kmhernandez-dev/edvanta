@@ -54,6 +54,18 @@ Dormir menos de seis horas empeora la respuesta a la insulina.
 
 En algunos casos, sobre todo con prediabetes y otros factores de riesgo o con síndrome de ovario poliquístico, el médico puede indicar [metformina](/articulos/metformina-para-que-sirve). No reemplaza los cambios de hábitos.
 
+## Una señal en la piel
+
+Algunas personas con resistencia a la insulina o prediabetes tienen la piel oscurecida en las axilas o en la parte de atrás y los lados del cuello. Esta afección se llama acantosis nigricans y es un motivo para consultar y medir la glucosa.
+
+## ¿Quiénes tienen más riesgo?
+
+El riesgo aumenta con el sobrepeso, la inactividad física, los antecedentes familiares de diabetes y en algunos grupos de población, entre ellos las personas hispanas o latinas.
+
+## Para estudiantes y profesionales de la salud
+
+Si estudias o trabajas en salud, pon a prueba lo que sabes con el [caso clínico de síndrome metabólico](/casos-clinicos/sindrome-metabolico): un examen interactivo tipo parcial con explicaciones y nota de 0 a 5.
+
 ## Preguntas frecuentes
 
 ### ¿La resistencia a la insulina engorda?
@@ -67,6 +79,10 @@ No. Las frutas enteras aportan fibra. Evita los jugos y controla las porciones.
 ### ¿Cuánto tarda en mejorar?
 
 Con ejercicio regular, la sensibilidad a la insulina puede mejorar en pocas semanas; los cambios en los exámenes suelen verse en dos a tres meses.
+
+### ¿La resistencia a la insulina es lo mismo que la prediabetes?
+
+No exactamente. La resistencia a la insulina ocurre cuando el cuerpo no responde bien a la insulina; con el tiempo puede elevar la glucosa hasta la prediabetes y luego la diabetes tipo 2. La buena noticia es que ambas pueden mejorar con cambios en el estilo de vida.
 
 ## Fuentes
 

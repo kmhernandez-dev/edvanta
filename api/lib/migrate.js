@@ -24,7 +24,23 @@ const MIGRATIONS_DIR = path.join(__dirname, '..', 'migrations');
 const log = (level, msg, extra = {}) =>
   console.log(JSON.stringify({ level, msg, ns: 'migrate', ...extra }));
 
-export async function runMigrations() {
+/**
+ * `conexion`: un cliente dedicado (pool.connect()). Las migraciones
+ * DEBEN ir por una sola conexión: con pool.query, el BEGIN, la migración
+ * y el COMMIT podían caer en conexiones distintas del pool, y entonces la
+ * migración no quedaba dentro de su transacción. Sin conexión dada, se
+ * toma una y se devuelve al terminar.
+ */
+export async function runMigrations(conexion = null) {
+  if (!conexion) {
+    const client = await pool.connect();
+    try {
+      return await runMigrations(client);
+    } finally {
+      client.release();
+    }
+  }
+  const db = conexion;
   let files;
   try {
     files = readdirSync(MIGRATIONS_DIR)
@@ -41,14 +57,14 @@ export async function runMigrations() {
   }
 
   log('info', 'Asegurando tabla de control _migrations');
-  await pool.query(`
+  await db.query(`
     CREATE TABLE IF NOT EXISTS _migrations (
       name        TEXT PRIMARY KEY,
       run_at      TIMESTAMPTZ NOT NULL DEFAULT NOW()
     );
   `);
 
-  const { rows: done } = await pool.query('SELECT name FROM _migrations');
+  const { rows: done } = await db.query('SELECT name FROM _migrations');
   const doneSet = new Set(done.map(r => r.name));
 
   const pending = files.filter(f => !doneSet.has(f));
@@ -67,13 +83,16 @@ export async function runMigrations() {
     const sql = cleanMigrationSql(readFileSync(path.join(MIGRATIONS_DIR, file), 'utf8'));
     log('info', `Corriendo ${file}`);
     try {
-      await pool.query('BEGIN');
-      await pool.query(sql);
-      await pool.query('INSERT INTO _migrations (name) VALUES ($1)', [file]);
-      await pool.query('COMMIT');
+      await db.query('BEGIN');
+      // Las migraciones de contenido (cursos sembrados) son largas: sin
+      // límite de tiempo SOLO dentro de esta transacción (LOCAL).
+      await db.query('SET LOCAL statement_timeout = 0');
+      await db.query(sql);
+      await db.query('INSERT INTO _migrations (name) VALUES ($1)', [file]);
+      await db.query('COMMIT');
       log('info', `OK ${file}`);
     } catch (e) {
-      await pool.query('ROLLBACK');
+      await db.query('ROLLBACK').catch(() => {});
       log('error', `ERROR en ${file}`, { error: e.message, code: e.code });
       throw e;
     }

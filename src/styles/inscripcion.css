@@ -1,0 +1,220 @@
+/* ============================================================
+ *  inscripcion.css — /curso-de-…/inscripcion (InscripcionCurso.jsx)
+ *  Sistema de diseño 2.0 (--ds-*). Chulos verdes en círculo suave.
+ * ============================================================ */
+
+.ins { color: var(--ds-text); font-family: var(--ds-font-body); }
+
+.ins-contenedor { width: 100%; max-width: 1180px; margin-inline: auto; padding-inline: 20px; }
+@media (min-width: 1024px) { .ins-contenedor { padding-inline: 32px; } }
+
+.ins-ante {
+  margin: 0;
+  color: var(--ds-teal-strong);
+  font-size: var(--ds-fs-xs);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.ins-h2 {
+  margin: 8px 0 0;
+  color: var(--ds-navy);
+  font-family: var(--ds-font-display);
+  font-size: var(--ds-fs-h2);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+/* Chulo verde */
+.ins-chulo {
+  display: inline-flex;
+  width: 22px;
+  height: 22px;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: #D1FADF;
+  color: #067647;
+}
+
+.ins-chulo svg { width: 13px; height: 13px; }
+.ins-chulo--no { background: var(--ds-ice); color: var(--ds-text-3); }
+
+/* Héroe */
+.ins-hero { background: var(--ds-grad-hero); padding: 28px 0 40px; }
+.ins-hero__grid { display: grid; gap: 28px; align-items: center; }
+@media (min-width: 900px) { .ins-hero__grid { grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 48px; } }
+
+.ins-migas { margin-bottom: 18px; color: var(--ds-text-3); font-size: var(--ds-fs-sm); }
+.ins-migas a { color: var(--ds-text-2); }
+.ins-migas a:hover { color: var(--ds-navy); text-decoration: underline; }
+
+.ins-titulo {
+  margin: 10px 0 0;
+  color: var(--ds-navy);
+  font-family: var(--ds-font-display);
+  font-size: clamp(1.9rem, 1.4rem + 2vw, 2.9rem);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.08;
+}
+
+.ins-lead { max-width: 60ch; margin: 16px 0 0; color: var(--ds-text-2); font-size: var(--ds-fs-lead); line-height: 1.6; }
+.ins-datos { display: flex; flex-wrap: wrap; gap: 10px 22px; margin: 22px 0 0; padding: 0; list-style: none; }
+.ins-datos li { display: inline-flex; align-items: center; gap: 8px; color: var(--ds-text); font-size: var(--ds-fs-sm); font-weight: 600; }
+
+.ins-hero__portada {
+  width: 100%;
+  height: auto;
+  border-radius: var(--ds-r-xl);
+  box-shadow: var(--ds-sh-lg);
+  object-fit: cover;
+  aspect-ratio: 8 / 5;
+}
+
+/* Plazo del descuento */
+.ins-plazo {
+  margin: -20px auto 0;
+  position: relative;
+  max-width: 760px;
+  border: 1px solid var(--ds-line);
+  border-radius: 999px;
+  background: var(--ds-white);
+  padding: 12px 22px;
+  color: var(--ds-text-2);
+  font-size: var(--ds-fs-sm);
+  text-align: center;
+  box-shadow: var(--ds-sh-sm);
+}
+
+.ins-plazo b { color: var(--ds-navy); }
+
+/* Planes */
+.ins-planes { display: grid; gap: 18px; padding-block: 36px 56px; }
+@media (min-width: 860px) { .ins-planes { grid-template-columns: 1.08fr 1fr; align-items: start; } }
+
+.ins-plan {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--ds-line);
+  border-radius: var(--ds-r-xl);
+  background: var(--ds-white);
+  padding: 28px;
+  box-shadow: var(--ds-sh-sm);
+}
+
+.ins-plan--certificado {
+  border: 2px solid transparent;
+  background:
+    linear-gradient(180deg, var(--ds-navy-soft) 0%, #fff 45%) padding-box,
+    linear-gradient(120deg, #8981CE 0%, #65A7C1 50%, #25A7B0 100%) border-box;
+  box-shadow: var(--ds-sh-lg);
+}
+
+.ins-plan__etiqueta { margin: 0; color: var(--ds-teal-strong); font-size: var(--ds-fs-xs); font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; }
+.ins-plan__etiqueta--suave { color: var(--ds-text-3); }
+
+.ins-plan__nombre {
+  margin: 10px 0 0;
+  color: var(--ds-navy);
+  font-family: var(--ds-font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.ins-plan__precio {
+  margin: 12px 0 0;
+  color: var(--ds-navy);
+  font-family: var(--ds-font-display);
+  font-size: 2.6rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+.ins-plan__precio span { color: var(--ds-text-3); font-family: var(--ds-font-body); font-size: var(--ds-fs-sm); font-weight: 600; letter-spacing: 0; }
+.ins-plan__lista { margin: 10px 0 0; color: var(--ds-text-3); font-size: var(--ds-fs-sm); }
+.ins-plan__lista b { margin-left: 6px; border-radius: 999px; background: #D1FADF; padding: 3px 10px; color: #067647; font-weight: 700; }
+.ins-plan__nota { margin: 10px 0 0; color: var(--ds-text-3); font-size: var(--ds-fs-sm); }
+
+.ins-plan__lista-beneficios { display: grid; gap: 12px; margin: 22px 0 24px; padding: 18px 0 0; border-top: 1px solid var(--ds-line); list-style: none; }
+.ins-plan__lista-beneficios li { display: flex; align-items: flex-start; gap: 10px; color: var(--ds-text-2); font-size: var(--ds-fs-sm); line-height: 1.5; }
+.ins-plan__lista-beneficios li b { color: var(--ds-text); font-weight: 600; }
+.ins-plan__lista-beneficios li.is-no { color: var(--ds-text-3); }
+.ins-plan__lista-beneficios li.is-no b { color: var(--ds-text-3); font-weight: 500; text-decoration: line-through; text-decoration-color: var(--ds-line-strong); }
+.ins-plan .ed-btn { margin-top: auto; }
+.ins-plan__seguro { margin: 12px 0 0; color: var(--ds-text-3); font-size: var(--ds-fs-xs); text-align: center; }
+.ins-error { margin: 0; border-radius: var(--ds-r); background: var(--ds-danger-bg); padding: 10px 14px; color: var(--ds-danger); font-size: var(--ds-fs-sm); font-weight: 600; }
+
+/* Secciones */
+.ins-seccion { padding-block: var(--ds-section-y); }
+.ins-seccion--suave { background: var(--ds-bg); }
+
+.ins-razones { display: grid; gap: 16px; margin-top: 28px; }
+@media (min-width: 720px) { .ins-razones { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1080px) { .ins-razones { grid-template-columns: repeat(4, 1fr); } }
+
+.ins-razon { border: 1px solid var(--ds-line); border-radius: var(--ds-r-lg); background: var(--ds-white); padding: 22px; box-shadow: var(--ds-sh-xs); }
+.ins-razon .ins-chulo { width: 30px; height: 30px; }
+.ins-razon .ins-chulo svg { width: 16px; height: 16px; }
+.ins-razon h3 { margin: 14px 0 0; color: var(--ds-navy); font-family: var(--ds-font-display); font-size: var(--ds-fs-md); font-weight: 700; }
+.ins-razon p { margin: 8px 0 0; color: var(--ds-text-2); font-size: var(--ds-fs-sm); line-height: 1.6; }
+
+.ins-diploma { display: grid; gap: 32px; align-items: center; }
+@media (min-width: 960px) { .ins-diploma { grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: 56px; } }
+.ins-lista { display: grid; gap: 12px; margin: 22px 0 0; padding: 0; list-style: none; }
+.ins-lista li { display: flex; align-items: flex-start; gap: 10px; color: var(--ds-text-2); font-size: var(--ds-fs-base); line-height: 1.55; }
+.ins-diploma__boton { max-width: 360px; margin-top: 26px; }
+.ins-diploma__muestra { border-radius: var(--ds-r-lg); background: var(--ds-white); box-shadow: var(--ds-sh-lg); overflow: hidden; }
+
+.ins-tabla-marco { margin-top: 24px; overflow-x: auto; border: 1px solid var(--ds-line); border-radius: var(--ds-r-lg); background: var(--ds-white); box-shadow: var(--ds-sh-sm); }
+.ins-tabla { width: 100%; min-width: 520px; border-collapse: collapse; }
+.ins-tabla th, .ins-tabla td { border-bottom: 1px solid var(--ds-line); padding: 14px 18px; text-align: left; vertical-align: middle; }
+.ins-tabla thead th { background: var(--ds-ice); color: var(--ds-text-2); font-size: var(--ds-fs-xs); font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; }
+.ins-tabla td, .ins-tabla thead th:not(:first-child) { width: 150px; text-align: center; }
+.ins-tabla tbody th b { display: block; color: var(--ds-text); font-size: var(--ds-fs-sm); font-weight: 600; }
+.ins-tabla tbody th span { display: block; margin-top: 2px; color: var(--ds-text-3); font-size: var(--ds-fs-xs); font-weight: 400; }
+.ins-tabla__precio td { color: var(--ds-navy); font-family: var(--ds-font-display); font-size: var(--ds-fs-md); font-weight: 700; }
+.ins-tabla tr:last-child th, .ins-tabla tr:last-child td { border-bottom: 0; }
+
+.ins-faq { max-width: 860px; }
+.ins-faq > div { margin-top: 20px; }
+.ins-ayuda { margin: 20px 0 0; color: var(--ds-text-2); font-size: var(--ds-fs-sm); }
+.ins-ayuda a { color: var(--ds-teal-strong); font-weight: 600; text-decoration: underline; }
+
+/* Cierre */
+.ins-cierre { background: var(--ds-grad-navy); padding-block: 56px; color: #fff; }
+.ins-cierre__grid { display: grid; gap: 24px; align-items: center; }
+@media (min-width: 860px) { .ins-cierre__grid { grid-template-columns: 1.3fr 1fr; } }
+.ins-cierre h2 { margin: 0; font-family: var(--ds-font-display); font-size: var(--ds-fs-h2); font-weight: 700; letter-spacing: -0.02em; line-height: 1.15; }
+.ins-cierre p { margin: 10px 0 0; color: #DDE6FA; font-size: var(--ds-fs-md); }
+.ins-cierre__botones { display: grid; gap: 12px; }
+.ins-cierre__gratis { color: #DDE6FA; font-size: var(--ds-fs-sm); text-decoration: underline; text-underline-offset: 3px; }
+.ins-cierre__gratis:hover { color: #fff; }
+
+/* Barra en el teléfono */
+.ins-barra {
+  position: fixed;
+  inset: auto 0 0 0;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border-top: 1px solid var(--ds-line);
+  background: rgba(255, 255, 255, 0.96);
+  padding: 10px 16px;
+  box-shadow: 0 -8px 24px -12px rgba(8, 46, 134, 0.25);
+  backdrop-filter: blur(6px);
+}
+
+.ins-barra__precio { margin: 0; color: var(--ds-navy); font-family: var(--ds-font-display); font-size: 1.15rem; font-weight: 700; }
+.ins-barra__precio s { margin-left: 6px; color: var(--ds-text-3); font-family: var(--ds-font-body); font-size: var(--ds-fs-xs); font-weight: 500; }
+.ins-barra__nota { margin: 0; color: var(--ds-text-3); font-size: var(--ds-fs-xs); }
+
+/* Solo en el teléfono: en computador los botones ya están a la vista. */
+@media (min-width: 1024px) { .ins-barra { display: none; } .ins { padding-bottom: 0; } }

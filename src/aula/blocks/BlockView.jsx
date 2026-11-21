@@ -189,6 +189,29 @@ function EmbeddedVideo({ block, onMedia, startAt = 0 }) {
   );
 }
 
+/**
+ * Crédito de un video de YouTube: el canal (si la API lo trae) y la
+ * licencia estándar de YouTube (api/lib/videos-youtube.js).
+ */
+function CreditoYoutube({ data }) {
+  const c = data.credito || {};
+  const enlace = 'underline underline-offset-2';
+  return (
+    <p className="text-xs leading-5 text-[var(--aula-muted,#5b6475)]">
+      {data.disponible === false && <strong className="mr-1 text-[var(--aula-danger,#b42318)]">Este video no está disponible en YouTube.</strong>}
+      Video de{' '}
+      {c.canal
+        ? (c.canalUrl ? <a className={enlace} href={c.canalUrl} target="_blank" rel="nofollow noopener noreferrer">{c.canal}</a> : c.canal)
+        : 'su autor'}{' '}
+      en YouTube ·{' '}
+      <a className={enlace} href={c.licenciaUrl || 'https://www.youtube.com/t/terms'} target="_blank" rel="nofollow noopener noreferrer">
+        {c.licencia || 'Licencia estándar de YouTube'}
+      </a>
+      {' '}· Los derechos del video son de su autor.
+    </p>
+  );
+}
+
 function VideoBlock({ block, files, onMedia, startAt }) {
   const { data } = block;
   const file = fileOf(files, data.fileId);
@@ -203,6 +226,7 @@ function VideoBlock({ block, files, onMedia, startAt }) {
           {block.allowDownload && data.source === 'archivo' && <DownloadButton fileId={data.fileId} file={file} />}
         </figcaption>
       )}
+      {data.provider === 'youtube' && data.credito && <CreditoYoutube data={data} />}
       <Transcript html={data.transcriptHtml} />
     </figure>
   );

@@ -31,7 +31,7 @@ export default {
       id: 'farmacoquimica',
       titulo: 'Farmacoquímica',
       bloques: [
-        'La fosfomicina es un derivado del ácido fosfónico producido originalmente por *Streptomyces*. La forma oral es fosfomicina trometamol, una sal que mejora la absorción [1,2].',
+        'La fosfomicina es un derivado del ácido fosfónico producido originalmente por Streptomyces. La forma oral es fosfomicina trometamol, una sal que mejora la absorción [1,2].',
         'Su fórmula es C3H7O4P y su peso molecular es 138,06 para la fosfomicina libre; la sal trometamol tiene mayor peso y solubilidad [1].',
       ],
     },
@@ -40,7 +40,7 @@ export default {
       titulo: 'Farmacodinamia',
       bloques: [
         'Inhibe la enzima MurA (UDP-N-acetilglucosamina enolpiruvil transferasa), que cataliza la primera etapa de la síntesis del peptidoglucano. El bloqueo detiene la formación de la pared y causa la lisis bacteriana [1,2].',
-        'Es bactericida frente a *Escherichia coli*, *Enterococcus faecalis* y otras bacterias urinarias sensibles. Su mecanismo es único, lo que limita la resistencia cruzada [1].',
+        'Es bactericida frente a Escherichia coli, Enterococcus faecalis y otras bacterias urinarias sensibles. Su mecanismo es único, lo que limita la resistencia cruzada [1].',
       ],
     },
     {
@@ -106,7 +106,7 @@ export default {
           'Diarrea grave o colitis: evitar hasta evaluar.',
           'Embarazo y lactancia: consultar; se usa en el embarazo cuando está indicada.',
         ] },
-        'Advertencias: colitis por *C. difficile*, reacciones alérgicas graves, alteraciones hematológicas y falta de eficacia en infecciones del tracto urinario alto [1,2].',
+        'Advertencias: colitis por C. difficile, reacciones alérgicas graves, alteraciones hematológicas y falta de eficacia en infecciones del tracto urinario alto [1,2].',
       ],
     },
     {

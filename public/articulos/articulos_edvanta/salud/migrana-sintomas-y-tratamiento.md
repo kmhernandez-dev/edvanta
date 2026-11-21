@@ -52,6 +52,22 @@ Si tienes crisis frecuentes (por ejemplo, cuatro o más al mes) o muy incapacita
 - Primer dolor de cabeza intenso después de los 50 años.
 - Dolor de cabeza en el embarazo o posparto con presión alta.
 
+## ¿Quiénes la sufren más?
+
+La migraña suele aparecer en la pubertad, afecta sobre todo a personas de 35 a 45 años y es más frecuente en las mujeres, probablemente por influencias hormonales. En los niños, las crisis suelen durar menos y los síntomas abdominales son más marcados. Según la OMS, en 2021 la migraña fue la tercera enfermedad neurológica que más carga de enfermedad causó en el mundo.
+
+## ¿Qué es el aura?
+
+Algunas personas tienen, antes o durante el dolor, una fase llamada aura: ven luces intermitentes o brillantes, o líneas en zigzag, y pueden sentir debilidad u hormigueo. Si es la primera vez que te ocurre, consulta para que el médico la evalúe.
+
+## Únete a la comunidad
+
+En la [comunidad de migraña](/comunidades/migrana) de Edvanta, pacientes y cuidadores comparten dudas, guías y experiencias, con moderación y reglas claras. La comunidad no diagnostica ni reemplaza al equipo de salud: te ayuda a llegar mejor preparado a la consulta.
+
+## Para estudiantes y profesionales de la salud
+
+Si estudias o trabajas en salud, pon a prueba lo que sabes con el [caso clínico de migraña](/casos-clinicos/migrana): un examen interactivo tipo parcial con explicaciones y nota de 0 a 5.
+
 ## Preguntas frecuentes
 
 ### ¿La migraña es hereditaria?
@@ -65,6 +81,10 @@ La cafeína puede potenciar algunos analgésicos, pero su consumo excesivo o su 
 ### ¿La migraña tiene cura?
 
 No se cura, pero con tratamiento y manejo de desencadenantes la mayoría de las personas reduce mucho sus crisis.
+
+### ¿Tomar analgésicos todos los días empeora la migraña?
+
+Sí, puede hacerlo. El consumo frecuente de analgésicos para el dolor de cabeza produce la cefalea por uso excesivo de medicamentos, o cefalea de rebote, la forma más común de cefalea secundaria. Si necesitas analgésicos varios días a la semana, consulta: puede que necesites tratamiento preventivo.
 
 ## Fuentes
 

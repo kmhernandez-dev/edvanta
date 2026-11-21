@@ -4,7 +4,7 @@
  *
  *  Una clase abierta de un curso propio: la experiencia completa
  *  (ExperienciaDeClase), el índice de clases abiertas del curso y la
- *  invitación a inscribirse gratis para seguir el avance, presentar
+ *  invitación a inscribirse para seguir el avance, presentar
  *  evaluaciones y obtener el certificado.
  *
  *  La API escribe esta misma clase en el HTML (api/lib/clase-publica.js)
@@ -14,7 +14,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import {
-  ArrowLeft, ArrowRight, Award, BookOpenCheck, ChevronDown, GraduationCap, ListOrdered, Sparkles,
+  ArrowLeft, ArrowRight, Award, BadgeCheck, BookOpen, BookOpenCheck, ChevronDown, GraduationCap, HeartPulse, ListOrdered, Pill, Play, Sparkles,
 } from 'lucide-react';
 import SiteHeader from '../components/edvanta/SiteHeader';
 import SiteFooter from '../components/edvanta/SiteFooter';
@@ -22,7 +22,39 @@ import ExperienciaDeClase from '../components/experiencia/ExperienciaDeClase';
 import { apiUrl } from '../config/api';
 import { updatePageSeo } from '../utils/seo';
 import { faqDeExperiencia, textoDeExperiencia } from '../../api/lib/experiencia.js';
+import { REVISION_DE_CLASES, fechaLarga } from '../../api/lib/revision-de-clases.js';
+import { TITULOS_DE_LECTURAS } from '../../api/lib/enlaces-de-salud.js';
 import '../styles/clase-publica.css';
+
+/**
+ * Lo que enlaza a esta clase (api/lib/enlaces-de-salud.js): la monografía
+ * del vademécum y la lectura para explicarle al paciente.
+ */
+function Lecturas({ lecturas }) {
+  const vademecum = lecturas?.vademecum || [];
+  const articulos = lecturas?.articulos || [];
+  if (!vademecum.length && !articulos.length) return null;
+  const grupos = [
+    { titulo: TITULOS_DE_LECTURAS.vademecum, Icono: Pill, items: vademecum.map((x) => ({ ruta: x.ruta, texto: x.nombre })) },
+    { titulo: TITULOS_DE_LECTURAS.pacientes, Icono: HeartPulse, items: articulos.filter((a) => a.paciente).map((x) => ({ ruta: x.ruta, texto: x.titulo })) },
+    { titulo: TITULOS_DE_LECTURAS.otras, Icono: BookOpen, items: articulos.filter((a) => !a.paciente).map((x) => ({ ruta: x.ruta, texto: x.titulo })) },
+  ].filter((g) => g.items.length);
+  return (
+    <section className="cp-lecturas" id="para-profundizar" aria-labelledby="cp-lecturas-titulo">
+      <h2 id="cp-lecturas-titulo">{TITULOS_DE_LECTURAS.seccion}</h2>
+      <div className="cp-lecturas__grupos">
+        {grupos.map(({ titulo, Icono, items }) => (
+          <div key={titulo} className="cp-lecturas__grupo">
+            <h3><Icono size={16} aria-hidden="true" /> {titulo}</h3>
+            <ul>
+              {items.map((x) => <li key={x.ruta}><Link to={x.ruta}>{x.texto}</Link></li>)}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
 
 const SITIO = 'https://edvanta.co';
 
@@ -31,6 +63,55 @@ function descripcion(exp) {
   if (t.length <= 155) return t;
   const c = t.slice(0, 152);
   return `${c.slice(0, c.lastIndexOf(' '))}…`;
+}
+
+/** Quién verificó la clase (Karla Hernández, química farmacéutica) y cuándo. */
+function Revision({ revision = REVISION_DE_CLASES }) {
+  return (
+    <p className="cp-revision">
+      <BadgeCheck size={17} aria-hidden="true" />
+      <span>Verificada por <Link to={revision.perfil}>{revision.nombre}</Link>, {revision.profesion.toLowerCase()}</span>
+      <span className="cp-revision__fecha">· Última revisión: <time dateTime={revision.fecha}>{fechaLarga(revision.fecha)}</time></span>
+    </p>
+  );
+}
+
+/**
+ * El video de la clase. Primero la miniatura (no carga el reproductor de
+ * YouTube hasta que la persona lo pide: la página abre más rápido) y debajo
+ * el crédito: el canal, YouTube y la licencia estándar de YouTube.
+ */
+function VideoDeClase({ video }) {
+  const [activo, setActivo] = useState(false);
+  return (
+    <figure className="cp-video">
+      {activo ? (
+        <div className="cp-video__marco">
+          <iframe
+            src={`https://www.youtube-nocookie.com/embed/${video.videoId}?rel=0&autoplay=1`}
+            title={video.titulo}
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+            allowFullScreen
+            referrerPolicy="strict-origin-when-cross-origin"
+          />
+        </div>
+      ) : (
+        <button type="button" className="cp-video__marco" onClick={() => setActivo(true)} aria-label={`Reproducir el video: ${video.titulo}`}>
+          <img src={video.miniatura} alt="" width="480" height="360" loading="lazy" decoding="async" />
+          <span className="cp-video__play"><Play size={30} aria-hidden="true" /></span>
+        </button>
+      )}
+      <figcaption className="cp-video__credito">
+        Video: <strong>«{video.titulo}»</strong>, de{' '}
+        {video.canal
+          ? (video.canalUrl ? <a href={video.canalUrl} target="_blank" rel="nofollow noopener noreferrer">{video.canal}</a> : video.canal)
+          : 'su autor'}{' '}
+        en YouTube. <a href={video.licenciaUrl} target="_blank" rel="nofollow noopener noreferrer">{video.licencia}</a>.
+        {' '}Se reproduce con el reproductor oficial de YouTube; los derechos del video son de su autor.{' '}
+        <a href={video.verEnYoutube} target="_blank" rel="nofollow noopener noreferrer">Ver en YouTube</a>
+      </figcaption>
+    </figure>
+  );
 }
 
 function Indice({ indice, actual }) {
@@ -80,15 +161,32 @@ export default function ClasePublica() {
 
   const d = estado.datos;
   const ruta = d ? `/${d.curso.slug}/clase/${d.clase.slug}` : '';
+  // Si el curso cobra el certificado, el botón principal lleva directo a la
+  // compra: la inscripción con «?camino=certificado» crea la cuenta si hace
+  // falta, inscribe y abre Mercado Pago (pedido de Karla, 20-nov).
+  const conCertificado = Number(d?.curso?.precioCertificado) > 0;
+  const compraDirecta = d ? `/${d.curso.slug}/inscripcion?camino=certificado` : '';
 
   useEffect(() => {
     if (!d) return;
     const canonical = `${SITIO}${ruta}`;
     const cursoUrl = `${SITIO}/${d.curso.slug}`;
     const exp = d.clase.experiencia;
-    const titulo = `${d.clase.titulo} | ${d.curso.nombre} gratis`;
-    updatePageSeo({
-      title: titulo.length <= 68 ? titulo : `${d.clase.titulo} | Edvanta`,
+    const titulo = `${d.clase.titulo} | ${d.curso.nombre}`;
+    // La API manda el mismo título, descripción y datos estructurados que
+    // escribe en el HTML del servidor (api/lib/clase-publica.js). Lo de abajo
+    // es solo el respaldo si la respuesta no los trae.
+    updatePageSeo(d.seo ? {
+      title: d.seo.titulo,
+      description: d.seo.descripcion,
+      canonical,
+      image: d.seo.imagen || undefined,
+      type: 'article',
+      keywords: exp.keywords,
+      jsonLdId: `clase-${d.clase.id}`,
+      jsonLd: d.seo.jsonLd,
+    } : {
+      title: titulo.length <= 60 ? titulo : `${d.clase.titulo} | Edvanta`,
       description: descripcion(exp),
       canonical,
       type: 'article',
@@ -157,9 +255,19 @@ export default function ClasePublica() {
                 <p className="cp-eyebrow"><BookOpenCheck size={15} aria-hidden="true" /> Clase abierta · {d.clase.unidad}</p>
                 <h1 className="cp-titulo">{d.clase.titulo}</h1>
                 <p className="cp-sub">Clase {d.numero} de {d.total} clases abiertas del <Link to={`/${d.curso.slug}`}>{d.curso.nombre}</Link>.</p>
+                <Revision revision={d.revision || REVISION_DE_CLASES} />
                 <div className="cp-acciones">
-                  <Link to={`/${d.curso.slug}`} className="cp-boton"><GraduationCap size={18} aria-hidden="true" /> Inscríbete gratis al curso</Link>
-                  <a href="#indice-de-clases" className="cp-boton cp-boton--suave"><ListOrdered size={18} aria-hidden="true" /> Ver todas las clases</a>
+                  {conCertificado ? (
+                    <>
+                      <Link to={compraDirecta} className="cp-boton"><Award size={18} aria-hidden="true" /> Estudiar con certificado</Link>
+                      <Link to={`/${d.curso.slug}`} className="cp-boton cp-boton--suave"><GraduationCap size={18} aria-hidden="true" /> Empezar la primera unidad gratis</Link>
+                    </>
+                  ) : (
+                    <>
+                      <Link to={`/${d.curso.slug}`} className="cp-boton"><GraduationCap size={18} aria-hidden="true" /> Inscríbete al curso</Link>
+                      <a href="#indice-de-clases" className="cp-boton cp-boton--suave"><ListOrdered size={18} aria-hidden="true" /> Ver todas las clases</a>
+                    </>
+                  )}
                 </div>
               </div>
             </header>
@@ -172,12 +280,13 @@ export default function ClasePublica() {
                 </details>
                 <div className="cp-certificado">
                   <Award size={22} aria-hidden="true" />
-                  <p><strong>Certifica lo que aprendes.</strong> Inscríbete gratis, presenta las evaluaciones y obtén tu certificado verificable.</p>
-                  <Link to={`/${d.curso.slug}`} className="cp-enlace">Ir al curso <ArrowRight size={14} aria-hidden="true" /></Link>
+                  <p><strong>Certifica lo que aprendes.</strong> Con el certificado, un docente revisa tus actividades, tienes acompañamiento por WhatsApp y al terminar emites tu certificado verificable.</p>
+                  <Link to={conCertificado ? compraDirecta : `/${d.curso.slug}`} className="cp-enlace">{conCertificado ? 'Estudiar con certificado' : 'Ir al curso'} <ArrowRight size={14} aria-hidden="true" /></Link>
                 </div>
               </aside>
 
               <article className="cp-clase">
+                {(d.clase.videos || []).map((v) => <VideoDeClase key={v.videoId} video={v} />)}
                 <ExperienciaDeClase key={d.clase.id} data={d.clase.experiencia} idBase={`clase-${d.clase.id}`} />
 
                 <nav className="cp-pasos" aria-label="Otras clases">
@@ -195,13 +304,25 @@ export default function ClasePublica() {
                   )}
                 </nav>
 
+                <Lecturas lecturas={d.lecturas} />
+
                 <section className="cp-cta" aria-labelledby="cp-cta-titulo">
                   <Sparkles size={22} aria-hidden="true" />
                   <div>
-                    <h2 id="cp-cta-titulo">Sigue el curso completo, gratis</h2>
-                    <p>En el aula guardas tu avance, tomas apuntes, presentas quizzes, actividades y foros, y al terminar emites tu certificado del {d.curso.nombre}.</p>
+                    <h2 id="cp-cta-titulo">{conCertificado ? 'Sigue el curso completo y certifícate' : 'Sigue el curso completo'}</h2>
+                    <p>
+                      {d.curso.clases ? `El ${d.curso.nombre} tiene ${d.curso.clases} clases${d.curso.unidades ? ` en ${d.curso.unidades} unidades` : ''}. ` : ''}
+                      En el aula guardas tu avance, tomas apuntes, presentas quizzes, actividades y foros, y al terminar emites tu certificado del {d.curso.nombre}.
+                    </p>
                   </div>
-                  <Link to={`/${d.curso.slug}`} className="cp-boton">Inscribirme gratis</Link>
+                  {conCertificado ? (
+                    <div className="cp-acciones">
+                      <Link to={compraDirecta} className="cp-boton">Estudiar con certificado</Link>
+                      <Link to={`/${d.curso.slug}`} className="cp-boton cp-boton--suave">Empezar la primera unidad gratis</Link>
+                    </div>
+                  ) : (
+                    <Link to={`/${d.curso.slug}`} className="cp-boton">Inscribirme al curso</Link>
+                  )}
                 </section>
               </article>
             </div>

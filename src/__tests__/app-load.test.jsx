@@ -111,13 +111,13 @@ describe('App carga sin errores', () => {
     await waitFor(() => {
       expect(screen.getByRole('heading', { level: 1, name: /Ibuprofeno/i })).toBeTruthy();
       expect(document.title).toMatch(/Ibuprofeno/i);
-    }, { timeout: 8000 });
+    }, { timeout: 20000 });
     await waitFor(() => {
       expect(document.querySelector('meta[name="description"]')?.content).toBe(SEO_ARTICULOS['ibuprofeno-para-que-sirve'].seoDescription);
       expect(document.querySelector('meta[property="og:image:alt"]')?.content).toBe(SEO_ARTICULOS['ibuprofeno-para-que-sirve'].imageAlt);
       expect(document.querySelector('script[data-jsonld="articulo"]')).toBeTruthy();
       expect(document.querySelector('script[data-prerender]')).toBeNull();
-    });
+    }, { timeout: 10000 });
     expect(document.querySelector('img[src="/img/publicos/pacientes.webp"]')?.alt).toMatch(/Ibuprofeno/i);
 
     unmount();

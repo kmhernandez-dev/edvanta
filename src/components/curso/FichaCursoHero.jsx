@@ -23,7 +23,7 @@ function resumenDePortada(resumen) {
 
 export default function FichaCursoHero({
   ficha, nombre, propio, horas, resumenOpiniones, textoBoton, notaAcceso,
-  hayBoton, onAccion, trabajando, error, tarjetaRef,
+  hayBoton, onAccion, trabajando, error, tarjetaRef, caminos = null,
 }) {
   const resumen = resumenDePortada(ficha.resumen);
   const totalClases = ficha.clases;
@@ -82,7 +82,7 @@ export default function FichaCursoHero({
                 {propio && (
                   <li>
                     <CheckCircle2 className="h-4 w-4" aria-hidden="true" />
-                    Acceso gratis al contenido
+                    {Number(ficha.certificado?.precio) > 0 ? 'Primera unidad abierta' : 'Acceso gratis al contenido'}
                   </li>
                 )}
                 {horas && (
@@ -119,6 +119,7 @@ export default function FichaCursoHero({
             onAccion={onAccion}
             trabajando={trabajando}
             error={error}
+            caminos={caminos}
           />
         </div>
       </div>

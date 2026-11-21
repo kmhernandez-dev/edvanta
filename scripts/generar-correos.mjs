@@ -36,6 +36,11 @@ const SITIO = 'https://edvanta.co';
 const CAMPANA = 'flujo-ventas';
 const WA = 'https://wa.me/573006332244?text=';
 const u = (url, correo) => conUtm(url, CAMPANA, correo);
+// Enlace de WhatsApp que conserva las variables {{…}} sin codificar: así la
+// herramienta de envío las reemplaza (codificadas, llegaban como «{{nombre}}»).
+const waVar = (texto) => `${WA}${texto.split(/({{\w+}})/).map((p) => (/^{{\w+}}$/.test(p) ? p : encodeURIComponent(p))).join('')}`;
+// Precio real del certificado (api/lib/precio-certificado.js, decisión del 18-nov-2026).
+const CERTIFICADO = 'cuesta COP 60.000 en Colombia si lo tomas en tus primeros 7 días (precio de lista COP 199.000), en un solo pago';
 const oferta = promoActiva();
 
 const CORREOS = [
@@ -48,10 +53,13 @@ const CORREOS = [
     cuerpo: (c) => [
       saludo('{{nombre}}'),
       parrafo('Gracias por contarnos qué quieres aprender. Con tus respuestas elegimos el mejor punto de partida para ti:'),
-      recuadro([etiqueta('Tu curso para empezar'), subtitulo('{{curso_titulo}}'), parrafo('Lo estudias gratis en el aula, a tu ritmo, con casos reales y quices. Si deseas el certificado verificable, cuesta COP 60.000 en un solo pago.', 'margin:0;')].join('')),
+      recuadro([etiqueta('Tu curso para empezar'), subtitulo('{{curso_titulo}}'), parrafo(`Lo estudias gratis en el aula, a tu ritmo, con casos reales y quices. Si deseas el certificado verificable, ${CERTIFICADO}.`, 'margin:0;')].join('')),
       boton('Comenzar el curso gratis', u('{{curso_url}}', c)),
-      enlace('¿Prefieres que te orientemos? Escríbenos por WhatsApp', `${WA}${encodeURIComponent('Hola, equipo Edvanta. Soy {{nombre}} y quiero ayuda para elegir mi curso.')}`, { centro: true }),
     ].join(''),
+    opciones: {
+      certificado: { url: '{{curso_url}}' },
+      whatsapp: { titulo: '¿Prefieres que te orientemos?', url: waVar('Hola, equipo Edvanta. Soy {{nombre}} y quiero ayuda para elegir mi curso.') },
+    },
   },
   {
     archivo: '02-valor-caso-practico.html',
@@ -68,12 +76,16 @@ const CORREOS = [
       boton('Conocer la guía para {{area}}', u('{{guia_url}}', c)),
       oferta ? posdata(`Este mes la guía tiene ${PROMOCION.porcentaje}&nbsp;% de descuento con el cupón ${destacado(PROMOCION.codigo)}, hasta el ${PROMOCION.fechaTexto}.`) : '',
     ].join(''),
+    opciones: {
+      certificado: { url: '{{curso_url}}' },
+      whatsapp: { url: waVar('Hola, equipo Edvanta. Soy {{nombre}} y quiero saber qué curso o guía me sirve para {{area}}.') },
+    },
   },
   {
     archivo: '03-oferta-curso-y-certificado.html',
     dia: 'Día 4 · el curso y el certificado',
     asunto: 'Estudia sin costo. Certifícate cuando lo necesites.',
-    preencabezado: 'El contenido es gratis. El certificado verificable cuesta COP 60.000.',
+    preencabezado: 'El contenido es gratis. El certificado verificable, desde COP 60.000 en tus primeros 7 días.',
     encabezado: ['Así funciona Edvanta', 'Estudia gratis. Certifícate si lo deseas.'],
     cuerpo: (c) => [
       saludo('{{nombre}}'),
@@ -81,14 +93,18 @@ const CORREOS = [
       lista([
         `${destacado('Contenido gratis')} en todos los cursos propios.`,
         `${destacado('Casos reales y quices')} para practicar en el aula.`,
-        `${destacado('Certificado verificable')} por COP 60.000, en un solo pago.`,
-        `${destacado('Verificación pública:')} quien revise tu hoja de vida puede comprobarlo.`,
+        `${destacado('Certificado verificable:')} ${CERTIFICADO}.`,
+        `${destacado('Verificación pública:')} quien revise tu hoja de vida puede comprobarlo con su código y QR.`,
       ]),
       boton('Continuar con {{curso_titulo}}', u('{{curso_url}}', c)),
       enlace('Ver todos los cursos gratis', u(`${SITIO}/cursos`, c), { centro: true }),
       divisor(),
       beneficio(SITIO, CAMPANA, c, { titulo: 'Y para tu trabajo diario, guías' }),
     ].join(''),
+    opciones: {
+      certificado: { url: '{{curso_url}}' },
+      whatsapp: { url: waVar('Hola, equipo Edvanta. Soy {{nombre}} y quiero estudiar {{curso_titulo}} con certificado.') },
+    },
   },
   {
     archivo: '04-guia-recomendada.html',
@@ -106,10 +122,13 @@ const CORREOS = [
         'Acceso por correo al comprar en Hotmart.',
       ]),
       beneficio(SITIO, CAMPANA, c, { titulo: 'Tu beneficio' }),
-      boton(oferta ? `Obtener la guía con ${PROMOCION.porcentaje}&nbsp;%` : 'Conocer la guía', u('{{guia_url}}', c), { variante: oferta ? 'oferta' : 'principal' }),
-      nota('Pago seguro en Hotmart, con su garantía de reembolso.'),
-      oferta ? posdata(`El cupón ${destacado(PROMOCION.codigo)} vence el ${PROMOCION.fechaTexto} a las 11:59 p. m. (hora de Colombia).`) : '',
+      boton(oferta ? `Obtener la guía con ${PROMOCION.porcentaje}&nbsp;% de descuento` : 'Conocer la guía', u('{{guia_url}}', c)),
+      nota(oferta ? `Pago seguro en Hotmart, con su garantía de reembolso. El cupón vence el ${PROMOCION.fechaTexto} a las 11:59 p. m. (hora de Colombia).` : 'Pago seguro en Hotmart, con su garantía de reembolso.'),
     ].join(''),
+    opciones: {
+      certificado: { url: '{{curso_url}}' },
+      whatsapp: { titulo: '¿Dudas sobre la guía?', url: waVar('Hola, equipo Edvanta. Soy {{nombre}} y tengo dudas sobre {{guia_titulo}}.') },
+    },
   },
   {
     archivo: '05-preguntas-y-ultimo-paso.html',
@@ -123,10 +142,14 @@ const CORREOS = [
       recuadro([subtitulo('¿Cómo recibo la guía?'), parrafo('Pagas en Hotmart y recibes el acceso en el correo con el que compraste. También queda en tu cuenta de Hotmart.', 'margin:0;')].join('')),
       recuadro([subtitulo('¿Y si no es lo que esperaba?'), parrafo('La compra está protegida por la garantía de Hotmart: puedes pedir el reembolso dentro del plazo que indica la página de pago.', 'margin:0;')].join('')),
       recuadro([subtitulo('¿Es para mí?'), parrafo('Escríbenos con tu cargo y lo que quieres resolver. Te diremos con honestidad si la guía te sirve o si te conviene empezar por un curso gratis.', 'margin:0;')].join('')),
-      boton('Resolver mis dudas por WhatsApp', `${WA}${encodeURIComponent('Hola, equipo Edvanta. Soy {{nombre}} y tengo dudas sobre {{guia_titulo}}.')}`),
+      boton('Resolver mis dudas por WhatsApp', waVar('Hola, equipo Edvanta. Soy {{nombre}} y tengo dudas sobre {{guia_titulo}}.'), { variante: 'whatsapp' }),
       enlace('Volver a la guía', u('{{guia_url}}', c), { centro: true }),
       beneficio(SITIO, CAMPANA, c, { titulo: 'Tu cupón sigue activo' }),
     ].join(''),
+    opciones: {
+      certificado: { url: '{{curso_url}}' },
+      whatsapp: { url: waVar('Hola, equipo Edvanta. Soy {{nombre}} y tengo dudas sobre {{guia_titulo}}.') },
+    },
   },
 ];
 
@@ -150,7 +173,7 @@ for (const [i, c] of CORREOS.entries()) {
   const id = c.archivo.replace('.html', '');
   const html = cartaCorreo({
     siteUrl: SITIO, asunto: c.asunto, pre: c.preencabezado, encabezado: c.encabezado, cuerpo: c.cuerpo(id),
-    campana: CAMPANA, contenido: id, marketing: true, bajaUrl: '{{baja_url}}',
+    campana: CAMPANA, contenido: id, marketing: true, bajaUrl: '{{baja_url}}', despedida: 'Cordialmente,', opciones: c.opciones,
   });
   writeFileSync(join(SALIDA, c.archivo), html);
   writeFileSync(join(SALIDA, 'muestras', c.archivo), llenar(html));

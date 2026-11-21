@@ -42,6 +42,10 @@ const { puedeIndexarse, robotsDeArticulo, tieneRevisionClinica } = await importa
 const { entidadAutor, entidadRevisor, esAutoraKarla } = await importar('src/lib/seo/autoria.js');
 const { descripcionDeArticulo, tituloDeArticulo } = await importar('src/lib/seo/titulos.js');
 const { citasDeArticulo } = await importar('src/lib/seo/citas.js');
+const { clasesDelArticulo, htmlDeClasesDelArticulo, urlsAbsolutas } = await importar('api/lib/enlaces-de-salud.js');
+const { casosDeArticulo, htmlDeCasos } = await importar('src/lib/casosClinicos/enlacesInversos.js');
+const { comunidadDeArticulo } = await importar('src/data/comunidadesSalud.js');
+const { examenDeArticulo } = await importar('src/data/examenes/index.js');
 
 const plantilla = readFileSync(path.join(dist, 'index.html'), 'utf8');
 const SALUD = ['fst', 'contigo', 'atenfarma'];
@@ -113,8 +117,13 @@ for (const art of articulos) {
   const autor = art.autor || (art.marca === 'fst' ? 'Karla Hernández' : 'Equipo editorial de Edvanta');
   const faq = preguntasFrecuentes(md);
   const relacionados = articulos.filter((a) => a.slug !== art.slug && a.category === art.category).slice(0, 4);
+  const comunidad = comunidadDeArticulo(art.slug);
+  const examen = examenDeArticulo(art.slug);
   // Sin fecha de consulta: la pone quien cita.
   const citas = citasDeArticulo(art);
+  // Las clases gratuitas que enseñan lo mismo (api/lib/enlaces-de-salud.js).
+  const clasesPro = clasesDelArticulo(art.slug);
+  const relatedLink = urlsAbsolutas([...clasesPro.clases, ...clasesPro.cursos]);
 
   const grafo = [
     {
@@ -132,6 +141,7 @@ for (const art of articulos) {
       dateModified: art.updated || art.date,
       publisher: { '@type': 'Organization', name: 'Edvanta', url: SITIO, logo: { '@type': 'ImageObject', url: `${SITIO}/img/logo-edvanta.png` } },
       mainEntityOfPage: { '@type': 'WebPage', '@id': canonical },
+      ...(relatedLink.length ? { relatedLink } : {}),
     },
     {
       '@type': 'BreadcrumbList',
@@ -158,7 +168,11 @@ for (const art of articulos) {
     <p>${esc(art.description)}</p>
     <p><a href="${esAutoraKarla(art) ? '/autores/karla-hernandez' : '/equipo-editorial'}">${esc(autor)}</a>${art.revisor ? ` · Revisado por ${art.revisorUrl ? `<a href="${esc(art.revisorUrl)}" rel="noopener">${esc(art.revisor)}</a>` : esc(art.revisor)}${tieneRevisionClinica(art) ? ` el ${esc(fecha(art.reviewedAt || art.reviewed_at || art.fechaRevision))}` : ' · fecha de revisión pendiente'}` : ''} · Actualizado el ${esc(fecha(art.updated || art.date))}</p>
     <div class="ed-prose">${markdownAHtml(limpiarMarkdown(md))}</div>
+    ${comunidad ? `<section><h2>Comunidad de ${esc(comunidad.nombre)}</h2><p>${esc(comunidad.intro[0])}</p><ul>${comunidad.queEncuentras.map((t) => `<li>${esc(t)}</li>`).join('')}</ul><p><a href="${esc(comunidad.ruta)}">Conocer la comunidad</a> · <a href="${esc(comunidad.whatsapp)}">Entrar por WhatsApp</a>${comunidad.curso ? ` · <a href="${esc(comunidad.curso.ruta)}">Curso gratis: ${esc(comunidad.curso.nombre)}</a>` : ''}${comunidad.guiaPro ? ` · <a href="${esc(comunidad.guiaPro.ruta)}">Guía: ${esc(comunidad.guiaPro.nombre)}</a>` : ''}${comunidad.guia?.publico === 'pacientes' ? ` · <a href="${esc(comunidad.guia.ruta)}">Guía para pacientes: ${esc(comunidad.guia.nombre)}</a>` : ''}</p><p>Contenido educativo. No diagnostica ni prescribe.</p></section>` : ''}
+    ${examen ? `<section><h2>Practica lo que acabas de leer</h2><p><a href="${esc(examen.ruta)}">${esc(examen.titulo)}</a>: ${esc(examen.descripcion)}</p><p>${examen.preguntas.length} preguntas con corrección y explicación. Sin registro.</p></section>` : ''}
   </article>
+  ${htmlDeCasos(casosDeArticulo(art.slug))}
+  ${htmlDeClasesDelArticulo(art.slug)}
   <p><a href="/politica-de-revision-clinica">Cómo se revisa</a> · <a href="/fuentes">Fuentes</a> · <a href="/politica-editorial">Política editorial</a></p>
   <section><h2>Cómo citar este artículo</h2><p>Vancouver: ${esc(citas.vancouver)}</p><p>APA 7: ${esc(citas.apa)}</p></section>
   ${relacionados.length ? `<aside><h2>Sigue leyendo</h2><ul>${relacionados.map((r) => `<li><a href="/articulos/${r.slug}">${esc(r.title)}</a></li>`).join('')}</ul></aside>` : ''}

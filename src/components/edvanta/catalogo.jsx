@@ -258,7 +258,7 @@ export function TarjetaCurso({ curso, nuevo = false, fila }) {
           {curso.origen === 'edutin' && <span>Curso en Edutin</span>}
         </p>
         <span className="ed-btn ed-btn--primary ed-btn--sm ed-btn--block mt-4">
-          {curso.origen === 'en-vivo' ? 'Registrar mi interés' : 'Estudiar gratis'}
+          {curso.origen === 'en-vivo' ? 'Registrar mi interés' : curso.origen === 'edutin' ? 'Estudiar gratis' : 'Ver el curso'}
           <ArrowRight className="ed-btn__arrow" aria-hidden="true" />
         </span>
       </div>

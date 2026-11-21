@@ -17,7 +17,7 @@ export default {
   mecanismo: 'Se une a la subunidad ribosomal 50S e inhibe la translocación durante la síntesis de proteínas bacterianas.',
   actualizado: '2026-11-13',
   resumenCorto: 'macrólido con buena cobertura de atípicos; inhibe CYP3A4 y puede prolongar el QT.',
-  resumen: 'La claritromicina es un macrólido usado en infecciones respiratorias, de piel, por *Helicobacter pylori* y por micobacterias. Su eficacia frente a atípicos y su buena absorción oral se compensan con un perfil de interacciones amplio, porque inhibe CYP3A4 y la glicoproteína P, y con el riesgo de prolongación del QT. La atención farmacéutica se centra en revisar el esquema, las estatinas, los anticoagulantes, la función renal y los factores de riesgo cardiaco.',
+  resumen: 'La claritromicina es un macrólido usado en infecciones respiratorias, de piel, por Helicobacter pylori y por micobacterias. Su eficacia frente a atípicos y su buena absorción oral se compensan con un perfil de interacciones amplio, porque inhibe CYP3A4 y la glicoproteína P, y con el riesgo de prolongación del QT. La atención farmacéutica se centra en revisar el esquema, las estatinas, los anticoagulantes, la función renal y los factores de riesgo cardiaco.',
   datosClave: [
     ['Clase', 'Macrólido [1,2]'],
     ['Código ATC', 'J01FA09 [1]'],
@@ -71,8 +71,8 @@ export default {
           'Bronquitis aguda, exacerbación de bronquitis crónica y neumonía bacteriana.',
           'Infecciones de piel y tejidos blandos: foliculitis, celulitis y erisipela.',
           'Infecciones por micobacterias, en combinación.',
-          'Erradicación de *Helicobacter pylori*, con amoxicilina o metronidazol y un inhibidor de bomba de protones.',
-          'Profilaxis de infecciones diseminadas por *Mycobacterium avium* complex en pacientes con VIH.',
+          'Erradicación de Helicobacter pylori, con amoxicilina o metronidazol y un inhibidor de bomba de protones.',
+          'Profilaxis de infecciones diseminadas por Mycobacterium avium complex en pacientes con VIH.',
         ] },
       ],
     },
@@ -108,7 +108,7 @@ export default {
           'Uso concomitante con astemizol, cisaprida, domperidona, pimozida, terfenadina, ergotamina, midazolam oral, lovastatina, simvastatina, colchicina, ticagrelor, ivabradina o ranolazina.',
           'Insuficiencia hepática grave con insuficiencia renal.',
         ] },
-        'Advertencias: hepatotoxicidad, colitis por *C. difficile*, prolongación del QT, hipoglucemia con antidiabéticos, miopatía con estatinas y reacciones cutáneas graves [1].',
+        'Advertencias: hepatotoxicidad, colitis por C. difficile, prolongación del QT, hipoglucemia con antidiabéticos, miopatía con estatinas y reacciones cutáneas graves [1].',
       ],
     },
     {
@@ -156,9 +156,9 @@ export default {
       id: 'evidencia',
       titulo: 'Evidencia clínica',
       bloques: [
-        'La claritromicina tiene eficacia demostrada en infecciones respiratorias, de piel y en la erradicación de *H. pylori* cuando se combina con amoxicilina o metronidazol y un inhibidor de bomba de protones [1,2].',
-        'En neumonía adquirida en la comunidad, su cobertura de atípicos la hace útil en esquemas combinados, pero la resistencia de *S. pneumoniae* obliga a confirmar sensibilidad en infecciones graves [1].',
-        'La evidencia también respalda su papel en la profilaxis de *Mycobacterium avium* complex en pacientes con VIH y CD4 bajo, siempre con vigilancia de interacciones [1].',
+        'La claritromicina tiene eficacia demostrada en infecciones respiratorias, de piel y en la erradicación de H. pylori cuando se combina con amoxicilina o metronidazol y un inhibidor de bomba de protones [1,2].',
+        'En neumonía adquirida en la comunidad, su cobertura de atípicos la hace útil en esquemas combinados, pero la resistencia de S. pneumoniae obliga a confirmar sensibilidad en infecciones graves [1].',
+        'La evidencia también respalda su papel en la profilaxis de Mycobacterium avium complex en pacientes con VIH y CD4 bajo, siempre con vigilancia de interacciones [1].',
       ],
     },
     {

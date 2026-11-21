@@ -62,7 +62,7 @@ describe('datos del curso (schema.org/Course)', () => {
       temario: [],
       queAprenderas: [],
     }, { ...base, horas: 20 });
-    expect(d.offers.category).toBe('Partially Free');
+    expect(d.offers).toMatchObject({ category: 'Partially Free', price: 60000, priceCurrency: 'COP' });
     expect(d.isAccessibleForFree).toBe(true);
     expect(d.hasCourseInstance.courseWorkload).toBe('PT1200M');
   });

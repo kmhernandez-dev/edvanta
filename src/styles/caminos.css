@@ -1,0 +1,311 @@
+/* ============================================================
+ *  caminos.css — Estudiar con certificado o gratis
+ *
+ *  Los dos botones de la ficha, la comparativa (ventana), la barra y la
+ *  tarjeta del aula. Todo con los tokens del sistema de diseño 2.0
+ *  (--ds-*), Manrope en títulos y precios, líneas finas, sin íconos.
+ *  Sirve en .edvanta-theme (sitio) y .aula-root (aula).
+ * ============================================================ */
+
+/* ── Botones de la tarjeta del curso ─────────────────────────── */
+.curso-caminos { display: grid; gap: 10px; }
+
+/* ── Precio ─────────────────────────────────────────────────── */
+.camino-precio { margin-top: 8px; }
+
+.camino-precio__monto {
+  margin: 0;
+  color: var(--ds-navy);
+  font-family: var(--ds-font-display);
+  font-size: 1.9rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.camino-precio--compacto .camino-precio__monto { font-size: 1.55rem; }
+
+.camino-precio__monto span {
+  color: var(--ds-text-3);
+  font-family: var(--ds-font-body);
+  font-size: var(--ds-fs-xs);
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
+.camino-precio__lista { margin: 4px 0 0; color: var(--ds-text-3); font-size: var(--ds-fs-sm); }
+.camino-precio__lista span { color: var(--ds-teal-strong); font-weight: 600; }
+
+.camino-precio__condicion {
+  margin: 8px 0 0;
+  color: var(--ds-text-2);
+  font-size: var(--ds-fs-xs);
+  line-height: 1.55;
+}
+
+/* ── Comparativa (ventana) ──────────────────────────────────── */
+.camino-fondo {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  background: rgba(3, 29, 92, 0.32);
+  backdrop-filter: blur(2px);
+}
+
+@media (min-width: 640px) {
+  .camino-fondo { align-items: center; padding: 24px; }
+}
+
+.camino-ventana {
+  position: relative;
+  width: 100%;
+  max-width: 620px;
+  max-height: 92vh;
+  overflow-y: auto;
+  border-radius: var(--ds-r-xl) var(--ds-r-xl) 0 0;
+  background: var(--ds-white);
+  padding: 28px 22px 0;
+  color: var(--ds-text);
+  font-family: var(--ds-font-body);
+  box-shadow: var(--ds-sh-lg);
+  animation: caminoEntra var(--ds-dur-3) var(--ds-ease) both;
+}
+
+@media (min-width: 640px) {
+  .camino-ventana { border: 1px solid var(--ds-line); border-radius: var(--ds-r-xl); padding: 32px 32px 0; }
+}
+
+@keyframes caminoEntra {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: none; }
+}
+
+.camino-cerrar {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  display: inline-flex;
+  width: 38px;
+  height: 38px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--ds-line);
+  border-radius: 999px;
+  background: var(--ds-white);
+  color: var(--ds-text-2);
+  font-size: 1.35rem;
+  font-weight: 300;
+  line-height: 1;
+}
+
+.camino-cerrar:hover { border-color: var(--ds-line-strong); color: var(--ds-navy); }
+
+.camino-ante {
+  margin: 0;
+  padding-right: 44px;
+  color: var(--ds-teal-strong);
+  font-size: var(--ds-fs-xs);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.camino-titulo {
+  margin: 8px 0 0;
+  color: var(--ds-navy);
+  font-family: var(--ds-font-display);
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+.camino-columnas {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.camino-col {
+  border: 1px solid var(--ds-line);
+  border-radius: var(--ds-r-lg);
+  background: var(--ds-white);
+  padding: 16px;
+}
+
+.camino-col--certificado {
+  border: 1.5px solid transparent;
+  background:
+    linear-gradient(180deg, var(--ds-navy-soft) 0%, #fff 70%) padding-box,
+    linear-gradient(120deg, #8981CE 0%, #65A7C1 50%, #25A7B0 100%) border-box;
+  box-shadow: var(--ds-sh-sm);
+}
+
+.camino-etiqueta { margin: 0; color: var(--ds-teal-strong); font-size: var(--ds-fs-xs); font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; }
+.camino-etiqueta--suave { color: var(--ds-text-3); }
+
+.camino-col__nombre {
+  margin: 12px 0 0;
+  color: var(--ds-navy);
+  font-family: var(--ds-font-display);
+  font-size: var(--ds-fs-md);
+  font-weight: 700;
+}
+
+.camino-tabla {
+  width: 100%;
+  margin-top: 20px;
+  border-collapse: collapse;
+}
+
+.camino-tabla th,
+.camino-tabla td {
+  border-bottom: 1px solid var(--ds-line);
+  padding: 11px 4px;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.camino-tabla thead th {
+  color: var(--ds-text-3);
+  font-size: var(--ds-fs-xs);
+  font-weight: 600;
+}
+
+.camino-tabla td,
+.camino-tabla thead th:not(:first-child) { width: 96px; text-align: center; }
+
+.camino-tabla__fila { display: block; color: var(--ds-text); font-size: var(--ds-fs-sm); font-weight: 600; }
+.camino-tabla__detalle { display: block; margin-top: 2px; color: var(--ds-text-3); font-size: var(--ds-fs-xs); font-weight: 400; line-height: 1.45; }
+
+/* Incluido: punto turquesa con halo. No incluido: guion fino. */
+.camino-marca { display: inline-block; vertical-align: middle; }
+.camino-marca--si { width: 10px; height: 10px; border-radius: 999px; background: var(--ds-teal); box-shadow: 0 0 0 4px var(--ds-aqua); }
+.camino-marca--no { width: 14px; height: 1.5px; border-radius: 2px; background: var(--ds-line-strong); }
+
+/* Los botones para elegir, siempre a la vista. */
+.camino-acciones {
+  position: sticky;
+  bottom: 0;
+  display: grid;
+  gap: 10px;
+  margin: 20px -22px 0;
+  border-top: 1px solid var(--ds-line);
+  background: var(--ds-white);
+  padding: 14px 22px 20px;
+}
+
+@media (min-width: 640px) {
+  .camino-acciones { grid-template-columns: 1fr 1fr; margin-inline: -32px; padding: 16px 32px 24px; }
+  .camino-seguro { grid-column: 1 / -1; }
+}
+
+.camino-seguro { margin: 2px 0 0; color: var(--ds-text-3); font-size: var(--ds-fs-xs); text-align: center; }
+
+/* ── Aula: barra fija «Estás estudiando gratis» ─────────────── */
+.aula-barra-cert {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  border-top: 1px solid var(--ds-line);
+  background: var(--ds-grad-hero);
+  padding: 8px 20px;
+}
+
+.aula-barra-cert__texto {
+  flex: 1;
+  min-width: 0;
+  margin: 0;
+  color: var(--ds-text-2);
+  font-size: var(--ds-fs-sm);
+  line-height: 1.4;
+}
+
+.aula-barra-cert__texto b { color: var(--ds-navy); font-weight: 600; }
+.aula-barra-cert__texto s { color: var(--ds-text-3); }
+.aula-barra-cert__pct { color: var(--ds-teal-strong); font-weight: 600; }
+
+@media (max-width: 640px) {
+  .aula-barra-cert { gap: 10px; padding: 8px 14px; }
+  .aula-barra-cert__vence, .aula-barra-cert__detalle { display: none; }
+  .aula-barra-cert__texto { font-size: var(--ds-fs-xs); }
+}
+
+/* ── Aula: tarjeta bajo la clase ────────────────────────────── */
+.aula-cert-tarjeta {
+  position: relative;
+  margin-top: 16px;
+  border: 1.5px solid transparent;
+  border-radius: var(--ds-r-lg);
+  background:
+    linear-gradient(180deg, var(--ds-navy-soft) 0%, #fff 60%) padding-box,
+    linear-gradient(120deg, #8981CE 0%, #65A7C1 50%, #25A7B0 100%) border-box;
+  padding: 20px;
+  box-shadow: var(--ds-sh-sm);
+}
+
+.aula-cert-tarjeta__titulo {
+  margin: 6px 0 0;
+  padding-right: 36px;
+  color: var(--ds-navy);
+  font-family: var(--ds-font-display);
+  font-size: var(--ds-fs-lg);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+}
+
+.aula-cert-tarjeta__lista { display: grid; gap: 4px; margin: 12px 0 0; padding: 0; list-style: none; }
+
+.aula-cert-tarjeta__lista li {
+  position: relative;
+  padding-left: 14px;
+  color: var(--ds-text-2);
+  font-size: var(--ds-fs-sm);
+  line-height: 1.5;
+}
+
+.aula-cert-tarjeta__lista li::before {
+  content: '';
+  position: absolute;
+  top: 0.6em;
+  left: 0;
+  width: 5px;
+  height: 5px;
+  border-radius: 999px;
+  background: var(--ds-teal);
+}
+
+.aula-cert-tarjeta__lista b { color: var(--ds-text); font-weight: 600; }
+.aula-cert-tarjeta .camino-precio { margin-top: 14px; }
+.aula-cert-tarjeta .ed-btn { margin-top: 14px; }
+.aula-cert-tarjeta .camino-cerrar { top: 12px; right: 12px; width: 32px; height: 32px; font-size: 1.15rem; }
+.aula-cert-tarjeta__error { margin: 10px 0 0; color: var(--ds-danger); font-size: var(--ds-fs-sm); font-weight: 600; }
+
+.aula-cert-acompanamiento {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 16px;
+  border: 1px solid var(--ds-line);
+  border-radius: var(--ds-r-lg);
+  background: var(--ds-aqua-soft);
+  padding: 14px 16px;
+  color: var(--ds-text-2);
+  font-size: var(--ds-fs-sm);
+  line-height: 1.45;
+}
+
+.aula-cert-acompanamiento b { color: var(--ds-navy); font-weight: 600; }
+
+@media (prefers-reduced-motion: reduce) {
+  .camino-ventana { animation: none; }
+}
+
+.aula-barra-cert__texto a { color: var(--ds-navy); font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
+.aula-barra-cert__error { color: var(--ds-danger); font-weight: 600; }

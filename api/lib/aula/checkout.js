@@ -14,6 +14,7 @@ import { audit } from './audit.js';
 import { many, one } from './db.js';
 import { AulaError, badRequest, notFound, normalizeEmail } from './http.js';
 import { getServerProduct } from '../catalog.js';
+import { precioDelCertificado } from '../precio-certificado.js';
 
 export const PREFIJO_CERTIFICADO = 'certificado-';
 const ID_CERTIFICADO = /^certificado-(\d{1,12})$/;
@@ -28,10 +29,14 @@ export const pesos = (n) => `$${Number(n).toLocaleString('es-CO')} COP`;
  *  pendiente   → se inició un pago que Mercado Pago aún no confirma.
  *  sin_pagar   → nada de lo anterior.
  */
-export async function pagoDelCertificado(db, userId, curso, matricula = null) {
-  const precio = Number(curso?.certificate_price) || 0;
+export async function pagoDelCertificado(db, userId, curso, matricula = null, ctx = {}) {
+  // El precio que paga esta persona (país, plazo de la oferta): precio-certificado.js.
+  const oferta = precioDelCertificado(curso, { pais: ctx.pais || null, inscritoEl: matricula?.assigned_at || null, ahora: ctx.ahora || new Date() });
+  const precio = oferta.precio;
   if (precio <= 0) return { requerido: false, precio: 0, estado: 'sin_costo' };
-  if (matricula?.assignment_id) return { requerido: false, precio, estado: 'institucion' };
+  // El precio de lista y el plazo solo viajan cuando hay una oferta real.
+  const extra = !oferta.lista ? {} : { lista: oferta.lista, descuentoPct: oferta.descuentoPct, conDescuento: oferta.conDescuento, venceEl: oferta.venceEl };
+  if (matricula?.assignment_id) return { requerido: false, precio, ...extra, estado: 'institucion' };
   const fila = await one(
     db,
     `SELECT status FROM aula_certificate_payments
@@ -40,12 +45,12 @@ export async function pagoDelCertificado(db, userId, curso, matricula = null) {
       LIMIT 1`,
     [userId, curso.id],
   );
-  if (fila?.status === 'aprobado') return { requerido: true, precio, estado: 'pagado' };
-  return { requerido: true, precio, estado: fila ? 'pendiente' : 'sin_pagar' };
+  if (fila?.status === 'aprobado') return { requerido: true, precio, ...extra, estado: 'pagado' };
+  return { requerido: true, precio, ...extra, estado: fila ? 'pendiente' : 'sin_pagar' };
 }
 
 /** Convierte lo que manda el carrito en ítems con precio del servidor. */
-export async function resolverCarrito(db, user, rawItems) {
+export async function resolverCarrito(db, user, rawItems, ctx = {}) {
   const lista = Array.isArray(rawItems) ? rawItems : [];
   if (!lista.length) throw badRequest('El carrito está vacío.', { field: 'items' });
   if (lista.length > 30) throw badRequest('El carrito admite como máximo 30 productos.', { field: 'items' });
@@ -75,16 +80,23 @@ export async function resolverCarrito(db, user, rawItems) {
         [user.id, curso.id],
       );
       if (emitido) throw new AulaError(409, 'certificado_emitido', `Ya tienes el certificado de «${curso.title}». Quítalo del carrito.`);
-      const pago = await pagoDelCertificado(db, user.id, curso);
+      const matricula = await one(
+        db,
+        `SELECT assigned_at, assignment_id FROM aula_enrollments
+          WHERE user_id = $1 AND course_id = $2 AND withdrawn_at IS NULL
+          ORDER BY assigned_at DESC LIMIT 1`,
+        [user.id, curso.id],
+      );
+      const pago = await pagoDelCertificado(db, user.id, curso, matricula ? { assigned_at: matricula.assigned_at } : null, ctx);
       if (pago.estado === 'pagado') throw new AulaError(409, 'certificado_pagado', `Ya pagaste el certificado de «${curso.title}». Quítalo del carrito.`);
       items.push({
         id,
         title: `Certificado · ${curso.title}`.slice(0, 250),
         quantity: 1,
-        unit_price: Number(curso.certificate_price),
+        unit_price: pago.precio,
         currency_id: 'COP',
       });
-      certificados.push({ courseId: Number(curso.id), precio: Number(curso.certificate_price) });
+      certificados.push({ courseId: Number(curso.id), precio: pago.precio });
       continue;
     }
     const producto = getServerProduct(id);
@@ -103,11 +115,11 @@ const rutaSegura = (r) => (typeof r === 'string' && /^\/(?![/\\])[\w\-/.%~]*$/.t
  * Crea la preferencia de pago y deja los certificados como pendientes.
  * `crearPreferencia` es null cuando Mercado Pago no está configurado.
  */
-export async function iniciarPago(db, user, rawItems, { crearPreferencia, siteUrl, apiUrl, volverA } = {}) {
+export async function iniciarPago(db, user, rawItems, { crearPreferencia, siteUrl, apiUrl, volverA, pais = null } = {}) {
   if (!crearPreferencia) {
     throw new AulaError(503, 'pagos_inactivos', 'El pago en línea aún no está activo. Escríbenos por WhatsApp y te ayudamos a completar la compra.');
   }
-  const { items, certificados, productos } = await resolverCarrito(db, user, rawItems);
+  const { items, certificados, productos } = await resolverCarrito(db, user, rawItems, { pais });
   const externalReference = randomUUID();
   const volver = rutaSegura(volverA);
   const url = (estado) => `${siteUrl}${volver}${volver.includes('?') ? '&' : '?'}pago=${estado}`;
@@ -248,4 +260,40 @@ export async function pagosDeCertificadosDelCurso(db, courseId) {
     creadoEl: f.created_at, aprobadoEl: f.approved_at, correo: f.email,
     nombre: `${f.first_name || ''} ${f.last_name || ''}`.trim(),
   }));
+}
+
+/**
+ * ¿La revisión docente de actividades está incluida para esta persona?
+ * Decisión de la propietaria (18-nov-2026): en los cursos con certificado
+ * de pago, quien estudia gratis queda con los quices automáticos; la
+ * revisión de actividades es parte del camino con certificado. Sin costo,
+ * matrícula institucional, certificado pagado o ya emitido: incluida.
+ */
+export async function revisionIncluida(db, userId, courseId) {
+  const fila = await one(
+    db,
+    `SELECT c.certificate_price, e.assignment_id,
+            EXISTS (SELECT 1 FROM aula_certificate_payments p
+                     WHERE p.user_id = e.user_id AND p.course_id = c.id AND p.status = 'aprobado') AS pagado,
+            EXISTS (SELECT 1 FROM aula_certificates x
+                     WHERE x.enrollment_id = e.id AND x.status = 'emitido') AS emitido
+       FROM aula_courses c
+       LEFT JOIN aula_enrollments e ON e.course_id = c.id AND e.user_id = $1 AND e.withdrawn_at IS NULL
+      WHERE c.id = $2
+      LIMIT 1`,
+    [userId, courseId],
+  );
+  if (!fila) return true;
+  if (!(Number(fila.certificate_price) > 0)) return true;
+  return Boolean(fila.assignment_id || fila.pagado || fila.emitido);
+}
+
+/** Corta el envío de actividades a quien estudia gratis un curso con certificado de pago. */
+export async function exigirRevisionIncluida(db, userId, courseId) {
+  if (await revisionIncluida(db, userId, courseId)) return;
+  throw new AulaError(
+    402,
+    'actividad_con_certificado',
+    'La revisión docente de actividades es parte del camino con certificado. Pásate al certificado para enviar tus actividades y recibir retroalimentación.',
+  );
 }

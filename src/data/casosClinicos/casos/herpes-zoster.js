@@ -1,0 +1,138 @@
+import { F } from '../../vademecum/fuentes.js';
+import { FC } from '../fuentes.js';
+
+export default {
+  slug: 'herpes-zoster',
+  titulo: 'Caso clínico de herpes zóster',
+  enfermedad: 'Herpes zóster',
+  area: 'infecciosas',
+  nivel: 'Intermedio',
+  minutos: 12,
+  actualizado: '2026-11-17',
+  seo: {
+    titulo: 'Caso clínico de herpes zóster y antivirales',
+    descripcion: 'Caso clínico de herpes zóster: antiviral en las primeras 72 horas, aciclovir o valaciclovir, ajuste renal, neuralgia posherpética y contagio.',
+    palabrasClave: ['caso clínico de herpes zóster', 'herpes zóster tratamiento preguntas', 'valaciclovir dosis', 'neuralgia posherpética'],
+  },
+  objetivos: [
+    'Iniciar el antiviral a tiempo y con la dosis correcta.',
+    'Ajustar los antivirales a la función renal.',
+    'Prevenir y tratar la neuralgia posherpética.',
+  ],
+  presentacion: 'Mercedes tiene 67 años, diabetes tipo 2 y enfermedad renal crónica con TFGe de 40 mL/min. Hace 3 días siente ardor y dolor en el costado derecho del tórax y hace 36 horas le aparecieron vesículas agrupadas sobre piel roja, en banda, que no cruzan la línea media. Cuida a su nieto de 8 meses, que todavía no ha recibido la vacuna de la varicela.',
+  datos: [
+    ['Lesiones', 'Vesículas agrupadas en un dermatoma torácico derecho'],
+    ['Tiempo desde las lesiones', '36 horas'],
+    ['Dolor', 'Quemante, 8/10'],
+    ['TFGe', '40 mL/min/1,73 m²'],
+    ['Comorbilidad', 'Diabetes tipo 2'],
+    ['Contacto', 'Nieto de 8 meses sin vacuna de varicela'],
+  ],
+  preguntas: [
+    {
+      tipo: 'opcion',
+      enunciado: '¿Cuál es el diagnóstico más probable?',
+      opciones: ['Dermatitis de contacto', 'Herpes zóster', 'Impétigo', 'Varicela primaria'],
+      correcta: 1,
+      explicacion: 'El dolor previo y las vesículas agrupadas en un dermatoma, sin cruzar la línea media, son típicos del herpes zóster, la reactivación del virus varicela-zóster [1].',
+    },
+    {
+      tipo: 'completar',
+      enunciado: 'El antiviral es más útil si se inicia en las primeras ___ horas desde la aparición de las lesiones.',
+      respuestas: ['72', 'setenta y dos'],
+      pista: 'Tres días.',
+      explicacion: 'Iniciar el antiviral en las primeras 72 horas acorta la duración de las lesiones y del dolor agudo [1].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: 'Con función renal normal, ¿cuál es un esquema adecuado?',
+      opciones: ['Valaciclovir 1 g cada 8 horas por 7 días', 'Aciclovir 200 mg al día por 3 días', 'Fluconazol 150 mg', 'Amoxicilina por 7 días'],
+      correcta: 0,
+      explicacion: 'Para el zóster se usan valaciclovir 1 g cada 8 horas o aciclovir 800 mg cinco veces al día, por 7 días [1,2,3].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: 'Mercedes tiene una TFGe de 40 mL/min. ¿Qué se hace?',
+      opciones: [
+        'Nada: la dosis es la misma',
+        'Ajustar la dosis del antiviral a la función renal y asegurar buena hidratación',
+        'Suspender el antiviral',
+        'Duplicar la dosis',
+      ],
+      correcta: 1,
+      explicacion: 'El aciclovir y el valaciclovir se eliminan por el riñón; en la insuficiencia renal se ajusta la dosis porque se acumulan y pueden causar efectos neurológicos [2,3].',
+    },
+    {
+      tipo: 'relacionar',
+      enunciado: 'Relaciona cada medicamento con su dato clave.',
+      pares: [
+        ['Aciclovir', '800 mg cinco veces al día en el zóster'],
+        ['Valaciclovir', 'Profármaco del aciclovir: menos tomas al día'],
+        ['Pregabalina', 'Dolor neuropático; se ajusta en la insuficiencia renal'],
+      ],
+      explicacion: 'El aciclovir requiere cinco tomas diarias [2]; el valaciclovir se convierte en aciclovir y permite tres tomas [3]; la pregabalina trata el dolor neuropático y su dosis depende del aclaramiento de creatinina [4,5].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: '¿Puede contagiar a su nieto?',
+      opciones: [
+        'No, el zóster no se contagia',
+        'Sí: el contacto con las vesículas puede causar varicela en quien no es inmune, hasta que las lesiones formen costra',
+        'Solo por el aire a distancia, nunca por contacto',
+        'Solo si el niño ya tuvo varicela',
+      ],
+      correcta: 1,
+      explicacion: 'El líquido de las vesículas contiene virus; una persona no inmune puede adquirir varicela por contacto hasta que las lesiones estén en costra. Se recomienda cubrirlas [1].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: 'Si las lesiones estuvieran en la frente y la punta de la nariz, ¿qué harías?',
+      opciones: [
+        'Nada diferente',
+        'Remitir de urgencia a oftalmología por posible zóster oftálmico',
+        'Aplicar crema de corticoide',
+        'Esperar a que se seque',
+      ],
+      correcta: 1,
+      explicacion: 'El compromiso de la rama oftálmica, sugerido por lesiones en la punta de la nariz, puede afectar el ojo y requiere evaluación urgente [1].',
+    },
+    {
+      tipo: 'completar',
+      enunciado: 'La complicación crónica más frecuente del herpes zóster es la neuralgia ___.',
+      respuestas: ['posherpetica', 'postherpetica'],
+      pista: 'Dolor que persiste después del herpes.',
+      explicacion: 'La neuralgia posherpética es el dolor que persiste después de la curación de las lesiones; es más frecuente en mayores [1].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: 'Si Mercedes desarrolla neuralgia posherpética, ¿qué fármacos son de primera línea?',
+      opciones: [
+        'AINE a dosis altas',
+        'Gabapentinoides (pregabalina o gabapentina) o antidepresivos tricíclicos, con ajuste renal',
+        'Antibióticos',
+        'Corticoides por meses',
+      ],
+      correcta: 1,
+      explicacion: 'Para el dolor neuropático se recomiendan como primera línea los gabapentinoides, los antidepresivos tricíclicos y los IRSN [5]; la pregabalina se ajusta a la función renal [4].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: '¿Qué medida reduce el riesgo de zóster y de neuralgia posherpética en adultos mayores?',
+      opciones: ['Tomar aciclovir todo el año', 'La vacunación contra el herpes zóster', 'Evitar el sol', 'Tomar vitamina C'],
+      correcta: 1,
+      explicacion: 'La vacunación reduce la incidencia de herpes zóster y de neuralgia posherpética en adultos mayores [1].',
+    },
+  ],
+  claves: [
+    'Antiviral en las primeras 72 horas: valaciclovir 1 g cada 8 h o aciclovir 800 mg 5 veces al día por 7 días [1,2,3].',
+    'Ajustar la dosis a la función renal [2,3].',
+    'Contagia varicela a no inmunes hasta que las lesiones formen costra [1].',
+    'Neuralgia posherpética: gabapentinoides o tricíclicos [5].',
+  ],
+  referencias: [FC.zoster2013, F.ftAciclovir, FC.ftValaciclovir, F.ftPregabalina, FC.dolorNeuropatico2015],
+  enlaces: [
+    ['Aciclovir', '/vademecum/aciclovir', 'Vademécum'],
+    ['Pregabalina', '/vademecum/pregabalina', 'Vademécum'],
+    ['Antimicóticos, antivirales y antiparasitarios', '/vademecum/antimicoticos-antivirales-y-antiparasitarios', 'Vademécum'],
+  ],
+};

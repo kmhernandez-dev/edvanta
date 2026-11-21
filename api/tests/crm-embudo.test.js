@@ -18,10 +18,10 @@ describe('algoritmo de clasificación', () => {
     expect(c.siguienteAccion).toMatch(/WhatsApp/);
   });
 
-  it('un registro a cursos sin WhatsApp es frío y se le envía el curso gratis', () => {
+  it('un registro a cursos sin WhatsApp es frío y se le envía el curso para probarlo', () => {
     const c = clasificarSolicitud({ tipo: 'interes', referencia: 'unete-cursos', areas: ['Calidad y BPM'] });
     expect(c).toMatchObject({ interes: 'curso', puntaje: 20, temperatura: 'frio', segmento: 'Profesional · Calidad y BPM · Cursos' });
-    expect(c.siguienteAccion).toMatch(/curso gratis/);
+    expect(c.siguienteAccion).toMatch(/primera unidad/);
   });
 
   it('quien vuelve a escribir sube de temperatura', () => {
@@ -106,10 +106,10 @@ describe('registro desde una página /unete', () => {
     });
   });
 
-  it('le envía su enlace gratis una sola vez', async () => {
+  it('le envía su enlace a los cursos una sola vez', async () => {
     const paraElla = t.mails.filter((m) => m.to === 'laura@prueba.co');
     expect(paraElla).toHaveLength(1);
-    expect(paraElla[0].subject).toMatch(/enlace gratis/);
+    expect(paraElla[0].subject).toMatch(/aquí están tus cursos/);
     await t.client().post('/solicitudes', registro);
     expect(t.mails.filter((m) => m.to === 'laura@prueba.co')).toHaveLength(1);
   });
@@ -139,15 +139,35 @@ describe('registro desde una página /unete', () => {
   });
 });
 
-describe('estilo moderno de los correos (11-nov-2026)', () => {
+describe('estilo corporativo de los correos (19-nov-2026)', () => {
   const datos = { nombre: 'Laura', area: 'Calidad y BPM', curso: 'Gestión de calidad', cursoUrl: 'https://edvanta.co/aula', precio: 60000, siteUrl: 'https://edvanta.co' };
 
-  it('todos los correos usan el mismo diseño: blanco, degradados y firma', () => {
+  it('todos los correos usan el mismo diseño sobrio: banda azul marino, sin degradados, y firma', () => {
     for (const nombre of Object.keys(PLANTILLAS)) {
       const { html } = armarCorreo(nombre, datos);
-      expect(html, nombre).toContain('linear-gradient(135deg,#5B53C9');
-      expect(html, nombre).toContain('border-radius:28px');
+      expect(html, nombre).toContain('#0F2557');
+      expect(html, nombre).not.toMatch(/linear-gradient|radial-gradient|box-shadow/);
       expect(html, nombre).toContain('Karla Hernández');
+      expect(html, nombre).toContain('logo-edvanta-wordmark.png');
+    }
+  });
+
+  it('todos los correos ofrecen estudiar con certificado y escribir por WhatsApp', () => {
+    for (const nombre of Object.keys(PLANTILLAS)) {
+      const { html } = armarCorreo(nombre, datos);
+      expect(html, nombre).toContain('Tus opciones con Edvanta');
+      expect(html, nombre).toMatch(/certificado/i);
+      expect(html, nombre).toContain('wa.me/573006332244');
+    }
+  });
+
+  it('el precio de 60.000 nunca se anuncia sin su condición de los primeros 7 días o su fecha', () => {
+    for (const nombre of Object.keys(PLANTILLAS)) {
+      const { html } = armarCorreo(nombre, datos);
+      const texto = html.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ');
+      for (const m of texto.matchAll(/COP 60\.000[^.]{0,160}/g)) {
+        expect(m[0], nombre).toMatch(/7 días|hasta el|Colombia|un solo pago/);
+      }
     }
   });
 

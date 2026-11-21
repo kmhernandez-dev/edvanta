@@ -12,12 +12,13 @@ import { ArrowRight, ExternalLink, GraduationCap } from 'lucide-react';
 import { Btn } from '../edvanta/ui';
 import { apiUrl } from '../../config/api';
 import { DatoCurso } from './PiezasCurso';
+import DosCaminos from './DosCaminos';
 
 const imagen = (url) => (url && url.startsWith('/api') ? apiUrl(url) : url);
 
 const AccesoCurso = forwardRef(function AccesoCurso({
   portada, titulo, propio, hayBoton, textoBoton, nota, hechos = [],
-  onAccion, trabajando = false, error = '',
+  onAccion, trabajando = false, error = '', caminos = null,
 }, ref) {
   const [errorImagen, setErrorImagen] = useState(false);
   const src = imagen(portada);
@@ -48,7 +49,9 @@ const AccesoCurso = forwardRef(function AccesoCurso({
         </div>
 
         <div className="curso-card-body">
-          {hayBoton ? (
+          {caminos ? (
+            <DosCaminos {...caminos} error={error} />
+          ) : hayBoton ? (
             <Btn
               variant="primary"
               size="lg"
@@ -66,9 +69,9 @@ const AccesoCurso = forwardRef(function AccesoCurso({
             </p>
           )}
 
-          {nota && <p className="curso-card-note">{nota}</p>}
+          {!caminos && nota && <p className="curso-card-note">{nota}</p>}
 
-          {error && (
+          {!caminos && error && (
             <p role="alert" className="curso-card-error">
               {error}
             </p>

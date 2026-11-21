@@ -45,6 +45,13 @@ export const AUDIT_ACTIONS = {
   'demo.eliminar': 'Datos demostrativos eliminados',
   'demo.crear': 'Datos demostrativos creados',
   'solicitud.atender': 'Solicitud atendida',
+  'assist.nota': 'Nota de atención (Assist)',
+  'assist.enlace': 'Enlace de acceso enviado (Assist)',
+  'assist.recordatorio': 'Recordatorio de pago enviado (Assist)',
+  'assist.oferta': 'Oferta de certificado enviada (Assist)',
+  'assist.servicio': 'Venta de servicio registrada (Assist)',
+  'assist.servicio_anular': 'Venta de servicio anulada (Assist)',
+  'assist.metas': 'Metas diarias de venta (Assist)',
 };
 
 export async function audit(db, {

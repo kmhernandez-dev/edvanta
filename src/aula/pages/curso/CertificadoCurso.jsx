@@ -11,8 +11,9 @@
 import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import {
-  ArrowLeft, Award, Check, Copy, CreditCard, Download, ExternalLink, Share2, ShieldCheck,
+  ArrowLeft, Award, Check, Copy, CreditCard, Download, ExternalLink, Share2, ShieldCheck, Star,
 } from 'lucide-react';
+import GuiaRecomendada from '../../../components/curso/GuiaRecomendada';
 import { get, post } from '../../api';
 import { useAsync } from '../../hooks';
 import { Button } from '../../ui/Button';
@@ -61,6 +62,29 @@ function Emitido({ c, onDescargar, descargando }) {
   );
 }
 
+/**
+ * Después de emitir: pedir la valoración (las estrellas en Google y la
+ * confianza de quien duda salen de valoraciones reales) y ofrecer la guía
+ * que lleva el curso a la práctica.
+ */
+function SiguientePaso({ titulo, slug }) {
+  return (
+    <section aria-labelledby="siguiente-paso" className="mt-8 flex flex-col gap-4">
+      <h2 id="siguiente-paso" className="text-lg font-extrabold text-[var(--aula-primary)]">Tu siguiente paso</h2>
+      {slug && (
+        <div className="flex flex-wrap items-center justify-between gap-3 rounded-[var(--aula-radius-lg)] border border-[var(--aula-border)] bg-white p-5">
+          <div className="min-w-0">
+            <p className="flex items-center gap-2 font-bold"><Star className="h-4 w-4 text-[var(--ds-oro)]" aria-hidden="true" /> ¿Qué te pareció el curso?</p>
+            <p className="mt-1 text-sm leading-6 text-[var(--aula-muted)]">Tu valoración ayuda a otros profesionales a decidir. Toma un minuto.</p>
+          </div>
+          <Button variant="secondary" href={`/${slug}#valoraciones`}>Calificar el curso</Button>
+        </div>
+      )}
+      <GuiaRecomendada curso={{ titulo }} origen="aula-certificado" />
+    </section>
+  );
+}
+
 const pesos = (n) => new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP', maximumFractionDigits: 0 }).format(n);
 
 /** Pago del certificado: precio, estado y botón a Mercado Pago. */
@@ -84,7 +108,16 @@ function PagoDelCertificado({ pago, courseId }) {
   return (
     <div className="flex flex-col gap-3 rounded-[var(--aula-radius-lg)] border border-[var(--aula-border)] bg-white p-5">
       <p className="text-sm font-bold">Precio del certificado</p>
-      <p className="text-2xl font-extrabold text-[var(--aula-primary)]">{pesos(pago.precio)} <span className="text-sm font-semibold text-[var(--aula-muted)]">COP · pago único</span></p>
+      <p className="text-2xl font-extrabold text-[var(--aula-primary)]">{pesos(pago.precio)} <span className="text-sm font-semibold text-[var(--aula-muted)]">COP · pago único</span>
+        {pago.conDescuento && pago.lista && (
+          <span className="ml-2 text-base"><s className="font-semibold text-[var(--aula-muted)]">{pesos(pago.lista)}</s> <b className="text-[var(--ds-teal-strong)]">−{pago.descuentoPct} %</b></span>
+        )}
+      </p>
+      {pago.conDescuento && pago.venceEl && (
+        <p className="text-xs text-[var(--aula-muted)]">
+          Precio con descuento hasta el {new Date(pago.venceEl).toLocaleDateString('es-CO', { day: 'numeric', month: 'long', timeZone: 'America/Bogota' })}. Después rige el precio de lista.
+        </p>
+      )}
       <p className="text-sm leading-6 text-[var(--aula-muted)]">
         El curso es gratis; el certificado tiene costo. Puedes pagarlo ahora o cuando termines. Al completar el curso lo emites aquí mismo.
       </p>
@@ -169,6 +202,9 @@ export default function CertificadoCurso() {
           )}
 
           {d?.certificado && <Emitido c={d.certificado} onDescargar={descargar} descargando={descargando} />}
+          {d?.certificado?.estado === 'vigente' && (
+            <SiguientePaso titulo={data.snapshot.course.title} slug={data.courseSlug} />
+          )}
 
           {d && !d.certificado && !d.elegible && (
             <div className="flex flex-col gap-5">

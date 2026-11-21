@@ -119,7 +119,7 @@ export default crearMonografia({
   },
   ofertas: [GUIAS.proa, GUIAS.problemas],
   refs: { FT: F.ftFluconazol, CUM: F.invimaCum16, MN: F.cipolle2012, EX: F.ramalho2012 },
-  enlaces: [['Clotrimazol: farmacología', '/vademecum/clotrimazol'], ['Warfarina: farmacología', '/vademecum/warfarina'], ['Antimicóticos, antivirales y antiparasitarios', '/vademecum/antimicoticos-antivirales-y-antiparasitarios']],
+  enlaces: [['Fluconazol: para qué sirve y efectos', '/articulos/fluconazol-para-que-sirve'], ['Clotrimazol: farmacología', '/vademecum/clotrimazol'], ['Warfarina: farmacología', '/vademecum/warfarina'], ['Antimicóticos, antivirales y antiparasitarios', '/vademecum/antimicoticos-antivirales-y-antiparasitarios']],
   seo: {
     titulo: 'Fluconazol: dosis, interacciones y consejería',
     descripcion: 'Fluconazol: mecanismo, dosis única de 150 mg, candidiasis recurrente, ajuste renal, interacciones con anticoagulantes y QT, y atención farmacéutica.',

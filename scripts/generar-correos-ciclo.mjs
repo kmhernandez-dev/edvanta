@@ -18,7 +18,8 @@ import { armarCorreo } from '../api/lib/aula/correos-embudo.js';
 
 const RAIZ = join(dirname(fileURLToPath(import.meta.url)), '..');
 const SALIDA = join(RAIZ, 'docs', 'email-marketing', 'ciclo');
-const comun = { siteUrl: 'https://edvanta.co', nombre: 'Laura Gómez', curso: 'Gestión de calidad', cursoUrl: 'https://edvanta.co/aula/curso-de-gestion-de-calidad', precio: 60000 };
+// Precio real de ejemplo: COP 60.000 en los primeros 7 días; lista COP 199.000 (lib/precio-certificado.js).
+const comun = { siteUrl: 'https://edvanta.co', nombre: 'Laura Gómez', curso: 'Gestión de calidad', cursoUrl: 'https://edvanta.co/aula/curso-de-gestion-de-calidad', precio: 60000, precioLista: 199000, venceEl: '2026-11-26T23:59:00-05:00' };
 
 const CICLO = [
   ['01-registro-profesional', 'Registro · profesionales y cursos', 'Al registrarse en /unete/profesionales o /unete/cursos', { area: 'Calidad y BPM' }],
@@ -31,11 +32,16 @@ const CICLO = [
   ['08-recordatorio-curso', 'Recordatorio', 'A los 5 días, si no ha empezado', {}],
   ['09-certificado-pagado', 'Certificado pagado', 'Cuando Mercado Pago aprueba el pago', {}],
   ['10-novedades', 'Novedades del mes', 'Cada 30 días, solo a quien aceptó novedades', { area: 'Farmacia clínica' }],
+  ['11-certificado-por-vencer', 'Certificado con descuento por vencer', 'Cuando faltan 48 horas para que venza el precio de los 7 días', {}],
+  ['12-pago-pendiente', 'Pago pendiente', 'Dos horas después de un pago del certificado que no se completó', {}],
+  ['13-curso-completado', 'Curso terminado sin certificado', 'Al completar el curso sin haber pagado el certificado', {}],
+  ['14-reactivacion-curso', 'Reactivación', 'A los 10 días sin entrar, a mitad del curso', { avance: 45 }],
 ];
 const PLANTILLA = {
   '01-registro-profesional': 'registro-profesional', '02-registro-guia': 'registro-guia', '03-registro-paciente': 'registro-paciente',
   '04-registro-institucion': 'registro-institucion', '05-registro-asesoria': 'registro-asesoria', '06-inscripcion-curso': 'inscripcion-curso',
   '07-bienvenida-curso': 'bienvenida-curso', '08-recordatorio-curso': 'recordatorio-curso', '09-certificado-pagado': 'certificado-pagado', '10-novedades': 'novedades',
+  '11-certificado-por-vencer': 'certificado-por-vencer', '12-pago-pendiente': 'pago-pendiente', '13-curso-completado': 'curso-completado', '14-reactivacion-curso': 'reactivacion-curso',
 };
 
 mkdirSync(SALIDA, { recursive: true });
@@ -46,6 +52,6 @@ for (const [archivo, nombre, cuando, extra] of CICLO) {
   tarjetas.push(`<section><p class="dia">${cuando}</p><h2>${nombre}</h2><p class="pre">Asunto: ${m.subject}</p><iframe src="${archivo}.html" title="${nombre}" loading="lazy"></iframe></section>`);
 }
 writeFileSync(join(SALIDA, 'index.html'), `<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Correos automáticos · Edvanta</title>
-<style>body{margin:0;background:#F5F7FC;font-family:Inter,Segoe UI,Arial,sans-serif;color:#14233F}h1{max-width:1320px;margin:32px auto 0;padding:0 16px;font-size:28px}p.lead{max-width:1320px;margin:8px auto 0;padding:0 16px;color:#4A5A73}main{max-width:1320px;margin:0 auto;padding:24px 16px;display:grid;grid-template-columns:repeat(auto-fill,minmax(380px,1fr));gap:24px}section{background:#fff;border:1px solid #EAEEF6;border-radius:24px;padding:18px}.dia{margin:0;font-size:12px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:#5B53C9}h2{margin:6px 0 4px;font-size:18px}.pre{margin:0 0 12px;font-size:14px;color:#4A5A73}iframe{width:100%;height:900px;border:0;border-radius:16px;background:#F5F7FC}</style></head>
+<style>body{margin:0;background:#F2F4F7;font-family:Inter,Segoe UI,Arial,sans-serif;color:#14213D}h1{max-width:1320px;margin:32px auto 0;padding:0 16px;font-size:28px}p.lead{max-width:1320px;margin:8px auto 0;padding:0 16px;color:#3C4658}main{max-width:1320px;margin:0 auto;padding:24px 16px;display:grid;grid-template-columns:repeat(auto-fill,minmax(380px,1fr));gap:24px}section{background:#fff;border:1px solid #E3E7EE;border-radius:10px;padding:18px}.dia{margin:0;font-size:12px;font-weight:600;letter-spacing:1.4px;text-transform:uppercase;color:#2B8A92}h2{margin:6px 0 4px;font-size:18px}.pre{margin:0 0 12px;font-size:14px;color:#3C4658}iframe{width:100%;height:900px;border:0;border-radius:8px;background:#F2F4F7}</style></head>
 <body><h1>Correos automáticos del ciclo de vida</h1><p class="lead">Salen solos desde el servidor. Cada uno se envía una sola vez por persona.</p><main>${tarjetas.join('')}</main></body></html>`);
 console.log(`Vista previa del ciclo: ${CICLO.length} correos en docs/email-marketing/ciclo/`);

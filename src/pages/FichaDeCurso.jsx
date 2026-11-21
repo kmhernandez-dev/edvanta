@@ -34,7 +34,8 @@ import { apiUrl } from '../config/api';
 import { useCart } from '../context/CartContext';
 import { formatPrice } from '../utils/format';
 import { nombreDeCurso } from '../lib/slug';
-import { miAula, inscribirme } from '../lib/misCursos';
+import { miAula, inscribirme, pagarCertificado, precioDelCertificado } from '../lib/misCursos';
+import { PrecioCertificado } from '../components/curso/DosCaminos';
 import { EMISOR, textoDeHoras } from '../lib/certificado/formato';
 import {
   borrarComentario, comentarEnCurso, comentariosDeCurso, editarComentario,
@@ -46,10 +47,12 @@ import { updatePageSeo } from '../utils/seo';
 // Los mismos títulos, descripción y datos estructurados que escribe la API
 // en el HTML (api/routes/paginas-publicas.js): un solo origen.
 import { descripcionDeCurso, tituloDeCurso } from '../../api/lib/meta-seo.js';
-import { datosDeCurso } from '../../api/lib/html-de-ficha.js';
+import { datosDeCurso, preguntasDeCurso } from '../../api/lib/html-de-ficha.js';
 import { EDVANTA_WHATSAPP_URL } from '../config/links';
 import FichaCursoHero from '../components/curso/FichaCursoHero';
 import ContenidoCurso from '../components/curso/ContenidoCurso';
+import GuiaRecomendada from '../components/curso/GuiaRecomendada';
+import { guiasParaCurso } from '../data/guiaParaCurso';
 import {
   BeneficioCurso, CursoHeading, CursoSection, DatoCurso, ResultadosCurso,
 } from '../components/curso/PiezasCurso';
@@ -70,27 +73,41 @@ const imagen = (url) => (url && url.startsWith('/api') ? apiUrl(url) : url);
 /* ── Certificado ──────────────────────────────────────────── */
 
 /**
- * El contenido de los cursos propios es gratis; el certificado tiene un
- * precio único que pone el servidor (aula_courses.certificate_price).
- * Se puede pagar antes o después de terminar: se emite al completar.
+ * Desde el 20-nov-2026 los cursos propios con precio se venden completos:
+ * la primera unidad es abierta y el pago (aula_courses.certificate_price)
+ * da el curso completo con el certificado incluido (acceso-pago.js).
  */
-function CompraCertificado({ ficha, nombre }) {
+function CompraCertificado({ ficha, nombre, oferta, onComprar, ocupado }) {
   const { items, addItem, openCart } = useCart();
-  const precio = Number(ficha.certificado?.precio) || 0;
+  const precio = Number(oferta?.precio ?? ficha.certificado?.precio) || 0;
   const cursoId = /^edvanta-(\d+)$/.exec(ficha.id || '')?.[1];
   if (!precio || !cursoId) return null;
   const id = `certificado-${cursoId}`;
   const enCarrito = items.some((i) => i.id === id);
   const agregar = () => {
-    if (!enCarrito) addItem({ id, name: `Certificado · ${nombre}`, price: precio, category: 'certificado' });
+    if (!enCarrito) addItem({ id, name: `Curso completo con certificado · ${nombre}`, price: precio, category: 'certificado', image: imagen(ficha.portada) });
     openCart();
   };
+  if (onComprar) {
+    return (
+      <div className="curso-cert-compra">
+        <p className="curso-cert-label">Curso completo con certificado</p>
+        <PrecioCertificado oferta={oferta || { precio }} compacto />
+        <p className="curso-cert-conditions">
+          Todas las clases, evaluaciones, revisión docente y el certificado. La primera unidad la puedes probar antes de pagar.
+        </p>
+        <Btn variant="primary" className="mt-4 w-full" onClick={onComprar} loading={ocupado} loadingLabel="Un momento…" iconRight={ArrowRight}>
+          Estudiar con certificado
+        </Btn>
+      </div>
+    );
+  }
   return (
     <div className="curso-cert-compra">
       <p className="curso-cert-label">Precio del certificado</p>
       <p className="curso-cert-precio">{formatPrice(precio)} <span>COP · pago único</span></p>
       <p className="curso-cert-conditions">
-        El contenido es gratis. Paga el certificado cuando quieras con Mercado Pago y emítelo desde tu aula al completar el curso.
+        La primera unidad es abierta. Paga el curso completo con Mercado Pago: incluye el certificado, que emites desde tu aula al terminar.
       </p>
       <Btn variant="secondary" className="mt-4 w-full" onClick={agregar} icon={ShoppingCart}>
         {enCarrito ? 'Ver mi carrito' : 'Agregar certificado al carrito'}
@@ -105,7 +122,7 @@ function CompraCertificado({ ficha, nombre }) {
  * como sale al aprobar; en los de otras plataformas, con lo que se sabe
  * del certificado del proveedor (el diploma de Edvanta no aplica ahí).
  */
-function Certificado({ ficha, nombre, accion, boton }) {
+function Certificado({ ficha, nombre, accion, boton, compra = {} }) {
   const c = ficha.certificado;
 
   if (c.estado === 'available') {
@@ -142,7 +159,7 @@ function Certificado({ ficha, nombre, accion, boton }) {
               <p className="curso-cert-conditions">{c.condiciones}</p>
             </div>
 
-            <CompraCertificado ficha={ficha} nombre={nombre} />
+            <CompraCertificado ficha={ficha} nombre={nombre} {...compra} />
 
             {boton && <div className="curso-cert-cta">{boton}</div>}
           </div>
@@ -222,6 +239,16 @@ function GuiaDelCurso({ guia }) {
 
 /* ── Valoraciones y preguntas ───────────────────────────────── */
 
+function GuiaDelTema({ curso }) {
+  if (!guiasParaCurso(curso, 1).length) return null;
+  return (
+    <CursoSection id="guia-recomendada">
+      <CursoHeading title="Complementa el curso con una guía práctica" desc="Material de Edvanta para aplicar lo que aprendes en tu trabajo, desde el primer día." />
+      <GuiaRecomendada curso={curso} origen="ficha-curso" className="mt-6 max-w-4xl" />
+    </CursoSection>
+  );
+}
+
 function Participacion({ ficha, refCurso, datos }) {
   const puedo = datos?.puedo || { opinar: false, comentar: false, moderar: false };
 
@@ -299,6 +326,12 @@ export default function FichaDeCurso({ modo = 'propio', slugPublico = '' }) {
   const [relacionados, setRelacionados] = useState([]);
   const [fallo, setFallo] = useState(null);
   const [estado, setEstado] = useState('visitante'); // visitante | fuera | dentro
+  const [estadoListo, setEstadoListo] = useState(false);
+  const [oferta, setOferta] = useState(null);
+  const [camino, setCamino] = useState(null); // certificado | gratis mientras trabaja
+  // Los dos botones llevan a la landing de inscripción del curso.
+  const irAInscripcion = useCallback(() => { if (ficha?.url) navigate(`${ficha.url}/inscripcion`); }, [ficha, navigate]);
+  const caminoAuto = useRef(false);
   const [trabajando, setTrabajando] = useState(false);
   const [error, setError] = useState('');
   const [opiniones, setOpiniones] = useState(null);
@@ -345,12 +378,22 @@ export default function FichaDeCurso({ modo = 'propio', slugPublico = '' }) {
     let vivo = true;
     miAula().then(({ sesion, cursos }) => {
       if (!vivo) return;
+      setEstadoListo(true);
       if (!sesion) { setEstado('visitante'); return; }
       const id = Number(String(ficha.id).replace('edvanta-', ''));
       setEstado(cursos.some((c) => Number(c.courseId) === id) ? 'dentro' : 'fuera');
     });
     return () => { vivo = false; };
   }, [ficha]);
+
+  // El precio del certificado lo dice el servidor: según el país de quien
+  // mira y, si hay una oferta con plazo, desde cuándo cuenta.
+  useEffect(() => {
+    if (!ficha?.capacidades.inscribirse || !(Number(ficha.certificado?.precio) > 0)) { setOferta(null); return undefined; }
+    let vivo = true;
+    precioDelCertificado(String(ficha.id).replace('edvanta-', '')).then((o) => { if (vivo) setOferta(o); });
+    return () => { vivo = false; };
+  }, [ficha, estado]);
 
   // Las opiniones: el resumen va en el encabezado y el detalle más abajo.
   const refCurso = ficha ? (ficha.dondeSeEstudia === 'edvanta' ? ficha.id : (ficha.referencia || ref)) : null;
@@ -432,6 +475,49 @@ export default function FichaDeCurso({ modo = 'propio', slugPublico = '' }) {
     setError(res.mensaje || 'No pudimos inscribirte. Intenta de nuevo en un momento.');
   }, [ficha, estado, navigate]);
 
+  // «Estudiar con certificado»: crea la cuenta si hace falta, inscribe y
+  // lleva al pago con Mercado Pago. Al volver, cae en «Tu certificado».
+  const estudiarConCertificado = useCallback(async () => {
+    if (!ficha) return;
+    setError('');
+    const id = Number(String(ficha.id).replace('edvanta-', ''));
+    const enAula = ficha.url?.startsWith('/curso-') ? `/aula${ficha.url}` : `/aula/curso/${id}`;
+    const registro = () => navigate(`/cuenta?modo=registro&next=${encodeURIComponent(`${ficha.url}?camino=certificado`)}`);
+    if (estado === 'visitante') { registro(); return; }
+    setCamino('certificado');
+    if (estado === 'fuera') {
+      const r = await inscribirme(id);
+      if (!r.ok) {
+        setCamino(null);
+        if (r.motivo === 'sin_sesion') registro();
+        else setError(r.mensaje || 'No pudimos inscribirte. Intenta de nuevo en un momento.');
+        return;
+      }
+      setEstado('dentro');
+    }
+    const p = await pagarCertificado(id, `${enAula}/certificado`);
+    if (p.ok) { window.location.href = p.initPoint; return; }
+    setCamino(null);
+    if (p.motivo === 'sin_sesion') registro();
+    else if (p.motivo === 'certificado_pagado' || p.motivo === 'certificado_emitido') navigate(`${enAula}/certificado`);
+    else setError(p.mensaje);
+  }, [ficha, estado, navigate]);
+
+  // Volvió de crear la cuenta con «?camino=certificado»: sigue al pago.
+  useEffect(() => {
+    if (!ficha || !estadoListo || caminoAuto.current) return;
+    if (new URLSearchParams(location.search).get('camino') !== 'certificado') return;
+    if (estado === 'visitante') return;
+    caminoAuto.current = true;
+    navigate(`${location.pathname}${location.hash}`, { replace: true });
+    estudiarConCertificado();
+  }, [ficha, estado, estadoListo, location.search, location.pathname, location.hash, navigate, estudiarConCertificado]);
+
+  const estudiarGratis = useCallback(async () => {
+    setCamino('gratis');
+    try { await accion(); } finally { setCamino(null); }
+  }, [accion]);
+
   const descripcion = useMemo(() => cleanHtml(ficha?.descripcionHtml), [ficha?.descripcionHtml]);
 
   if (fallo) {
@@ -466,12 +552,23 @@ export default function FichaDeCurso({ modo = 'propio', slugPublico = '' }) {
   const nombre = nombreDeCurso(ficha.titulo);
   const horas = textoDeHoras(ficha.certificado.horas) || duracion(ficha.duracionMinutos) || ficha.duracionTexto;
   const resumenOpiniones = opiniones?.resumen;
+  const precioVisible = Number(oferta?.precio ?? ficha.certificado.precio) || 0;
+  // «Gratis» solo en los cursos sin precio: los demás se venden (20-nov).
   const textoBoton = propio
-    ? { visitante: 'Crear cuenta gratis', fuera: 'Inscribirme gratis', dentro: 'Continuar aprendiendo' }[estado]
+    ? (precioVisible > 0
+      ? { visitante: 'Crear mi cuenta', fuera: 'Inscribirme', dentro: 'Continuar aprendiendo' }
+      : { visitante: 'Crear cuenta gratis', fuera: 'Inscribirme gratis', dentro: 'Continuar aprendiendo' })[estado]
     : ficha.proveedor.accion;
+  // Dos caminos: solo en los propios con certificado de pago y para quien aún no está dentro.
+  const conCaminos = propio && precioVisible > 0 && estado !== 'dentro';
+  const caminos = conCaminos
+    // «Con certificado» va directo a la compra (cuenta → inscripción → Mercado
+    // Pago); «Probar la primera unidad» lleva a la landing (pedido de Karla, 20-nov).
+    ? { onAbrir: (c) => (c === 'certificado' ? estudiarConCertificado() : irAInscripcion()), trabajando: camino }
+    : null;
   const notaCertificado = {
-    available: Number(ficha.certificado.precio) > 0
-      ? `Acceso gratis al contenido. Certificado: ${formatPrice(ficha.certificado.precio)} COP, lo emites desde tu aula al completar el curso.`
+    available: precioVisible > 0
+      ? `Primera unidad abierta. Curso completo con certificado: ${formatPrice(precioVisible)} COP.`
       : 'Acceso gratis al contenido. El certificado se emite desde tu aula al completar el curso.',
     pending_confirmation: 'Acceso gratis al contenido. Las condiciones del certificado están por confirmar.',
     not_offered: 'Acceso gratis al contenido. Este curso no incluye certificado.',
@@ -500,8 +597,8 @@ export default function FichaDeCurso({ modo = 'propio', slugPublico = '' }) {
     ficha.modalidad || null,
     propio ? 'Acceso desde el celular y el computador' : null,
     ficha.certificado.estado === 'available'
-      ? (Number(ficha.certificado.precio) > 0
-        ? `Certificado de aprobación de Edvanta (${formatPrice(ficha.certificado.precio)} COP)`
+      ? (precioVisible > 0
+        ? `Certificado de aprobación de Edvanta (incluido en el curso completo, ${formatPrice(precioVisible)} COP)`
         : 'Certificado de aprobación de Edvanta')
       : ficha.certificado.estado === 'pending_confirmation'
         ? `Certificado según ${ficha.proveedor.nombre}`
@@ -544,6 +641,7 @@ export default function FichaDeCurso({ modo = 'propio', slugPublico = '' }) {
         trabajando={trabajando}
         error={error}
         tarjetaRef={tarjetaRef}
+        caminos={caminos}
       />
 
       <main>
@@ -666,36 +764,22 @@ export default function FichaDeCurso({ modo = 'propio', slugPublico = '' }) {
           </div>
         </CursoSection>
 
-        <Certificado ficha={ficha} nombre={nombre} accion={accion} boton={propio ? boton() : null} />
+        <Certificado
+          ficha={ficha}
+          nombre={nombre}
+          accion={accion}
+          boton={propio && !conCaminos ? boton() : null}
+          compra={conCaminos ? { oferta: oferta || { precio: precioVisible }, onComprar: estudiarConCertificado, ocupado: camino === 'certificado' } : {}}
+        />
+
+        {/* La guía que lleva el curso a la práctica (Hotmart). Solo si hay una de verdad relacionada. */}
+        <GuiaDelTema curso={ficha} />
 
         <CursoSection id="preguntas-frecuentes">
           <CursoHeading title="Preguntas frecuentes" />
           <div className="mt-6 max-w-4xl">
-            <Faq items={[
-              {
-                q: '¿Dónde se estudia este curso?',
-                a: propio
-                  ? 'Dentro de Edvanta, en tu aula virtual. Te inscribes con tu cuenta y avanzas a tu ritmo.'
-                  : `En ${ficha.proveedor.nombre}. Edvanta lo seleccionó para su catálogo y te lleva hasta allí; la inscripción y las clases ocurren en su plataforma.`,
-              },
-              {
-                q: '¿Da certificado?',
-                a: {
-                  available: `Sí. Al completar todas las clases obligatorias, emites desde tu aula el certificado de aprobación de ${EMISOR.nombre}: con tu nombre, el curso, sus horas y un código para verificarlo en edvanta.co/certificados.`,
-                  pending_confirmation: `No lo tenemos confirmado. Las condiciones las define ${ficha.proveedor.nombre}; consúltalas en su sitio antes de inscribirte.`,
-                  not_offered: 'Este curso no incluye certificado.',
-                }[ficha.certificado.estado],
-              },
-              {
-                q: '¿Qué necesito para empezar?',
-                a: ficha.requisitos || 'No hay requisitos declarados para este curso.',
-              },
-              ...(ficha.guia?.preguntas || []).map(([q, a]) => ({ q, a })),
-              ...(propio ? [{
-                q: '¿Qué recursos incluye?',
-                a: 'Videos seleccionados, documentos oficiales de las entidades que los publican y textos de apoyo escritos para el curso. Cada recurso indica su fuente.',
-              }] : []),
-            ]} />
+            {/* Las mismas preguntas que el HTML del servidor (api/lib/html-de-ficha.js). */}
+            <Faq items={preguntasDeCurso(ficha, EMISOR.nombre)} />
           </div>
           {/* El canal que ya usa el resto del sitio. No se inventa otro. */}
           <Card className="mt-8 max-w-4xl">
@@ -745,6 +829,7 @@ export default function FichaDeCurso({ modo = 'propio', slugPublico = '' }) {
 
       <SiteFooter />
 
+
       {/* En el teléfono: el botón siempre a mano cuando la tarjeta ya no se ve. */}
       {hayBoton && !tarjetaVisible && (
         <div className="ed-barra-movil fixed inset-x-0 bottom-0 z-30 border-t border-edvanta-border bg-white/95 px-4 py-3 shadow-[0_-8px_24px_-12px_rgba(8,46,134,.25)] backdrop-blur lg:hidden">
@@ -752,17 +837,31 @@ export default function FichaDeCurso({ modo = 'propio', slugPublico = '' }) {
             <p className="hidden min-w-0 flex-1 truncate text-sm font-bold text-edvanta-deep min-[420px]:block">
               {nombre}
             </p>
-            <Btn
-              size="sm"
-              variant="primary"
-              className="w-full shrink-0 min-[420px]:w-auto"
-              onClick={accion}
-              loading={trabajando}
-              loadingLabel="Un momento…"
-              iconRight={propio ? ArrowRight : ExternalLink}
-            >
-              {trabajando ? 'Un momento…' : textoBoton}
-            </Btn>
+            {conCaminos ? (
+              <Btn
+                size="sm"
+                variant="primary"
+                className="w-full shrink-0 min-[420px]:w-auto"
+                onClick={estudiarConCertificado}
+                loading={camino === 'certificado'}
+                loadingLabel="Un momento…"
+                iconRight={ArrowRight}
+              >
+                Estudiar con certificado
+              </Btn>
+            ) : (
+              <Btn
+                size="sm"
+                variant="primary"
+                className="w-full shrink-0 min-[420px]:w-auto"
+                onClick={accion}
+                loading={trabajando}
+                loadingLabel="Un momento…"
+                iconRight={propio ? ArrowRight : ExternalLink}
+              >
+                {trabajando ? 'Un momento…' : textoBoton}
+              </Btn>
+            )}
           </div>
         </div>
       )}

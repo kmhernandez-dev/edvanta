@@ -127,8 +127,22 @@ function htmlDeBloque(b) {
   return '';
 }
 
+/** Texto que acompaña las clases abiertas en el vademécum (HTML y React). */
+export const TEXTO_CLASES_VADEMECUM = 'Clases abiertas de los cursos de Edvanta para profesionales de la salud, verificadas por Karla Hernández, química farmacéutica. Se ven sin registro. En el curso completo guardas tu avance, presentas las evaluaciones y obtienes tu certificado verificable.';
+
+/**
+ * Las clases gratuitas que enseñan lo mismo que la página y sus cursos
+ * (api/lib/enlaces-de-salud.js): { clases: [{ titulo, ruta, curso }], cursos }.
+ */
+export function htmlDeClases({ clases = [], cursos = [] } = {}) {
+  if (!clases.length && !cursos.length) return '';
+  const lista = clases.map((c) => `<li><a href="${esc(c.ruta)}">${esc(c.titulo)}</a>${c.curso ? ` · ${esc(c.curso.nombre)}` : ''}</li>`).join('');
+  const completos = cursos.map((c) => `<a href="${esc(c.ruta)}">${esc(c.nombre)}</a>`).join(', ');
+  return `<section id="clases"><h2>Apréndelo en clase</h2><p>${esc(TEXTO_CLASES_VADEMECUM)}</p>${lista ? `<ul>${lista}</ul>` : ''}${completos ? `<p>Cursos completos: ${completos}.</p>` : ''}</section>`;
+}
+
 /** Cuerpo HTML de una página del vademécum (sin el h1, que pone el prerender). */
-export function htmlDePagina(pagina, { hijos = [], enlaces = [] } = {}) {
+export function htmlDePagina(pagina, { hijos = [], enlaces = [], clases = null, casosHtml = '' } = {}) {
   const partes = [];
   if (pagina.datosClave?.length) {
     partes.push(`<table><tbody>${pagina.datosClave.map(([k, v]) => `<tr><th>${conCitas(k)}</th><td>${conCitas(v)}</td></tr>`).join('')}</tbody></table>`);
@@ -140,6 +154,8 @@ export function htmlDePagina(pagina, { hijos = [], enlaces = [] } = {}) {
   if (hijos.length) {
     partes.push(`<section id="monografias"><h2>Monografías del grupo</h2><ul>${hijos.map((h) => `<li><a href="/vademecum/${esc(h.slug)}">${esc(h.nombre)}</a>: ${esc(h.resumenCorto || '')}</li>`).join('')}</ul></section>`);
   }
+  if (clases) partes.push(htmlDeClases(clases));
+  if (casosHtml) partes.push(casosHtml);
   if (enlaces.length) {
     partes.push(`<section><h2>Para seguir leyendo</h2><ul>${enlaces.map(([t, u]) => `<li><a href="${esc(u)}">${esc(t)}</a></li>`).join('')}</ul></section>`);
   }

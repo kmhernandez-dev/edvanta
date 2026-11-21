@@ -11,6 +11,7 @@ import { fromPgPool } from '../lib/aula/db.js';
 import { aprobarPagosDeCertificados } from '../lib/aula/checkout.js';
 import { fromWithName, sendEmail } from '../lib/resend.js';
 import { enviarCorreoEmbudo } from '../lib/aula/correos-embudo.js';
+import { cartaCorreo, enlace, esc, nota, parrafo, recuadro } from '../lib/aula/correo-diseno.js';
 import { getDownload } from './create-preference.js';
 
 export async function mpWebhookRoute(req, res) {
@@ -187,27 +188,29 @@ export async function mpWebhookRoute(req, res) {
 
     if (email && downloadableIds.length > 0) {
       try {
-        const downloadsList = downloadableIds
-          .map((id) => {
-            const d = getDownload(id);
-            return `<li style="margin:8px 0"><a href="${d.url}" style="color:#0d9488;font-weight:600">${d.name}</a></li>`;
-          })
-          .join('');
-
-        const html = `
-          <div style="font-family:Arial,sans-serif;max-width:560px;margin:auto;color:#1f2937">
-            <h2 style="color:#0c1f5e">Gracias por tu compra</h2>
-            <p>Tu pago fue confirmado. Aqui tienes el acceso a tus recursos:</p>
-            <ul style="padding-left:18px">${downloadsList}</ul>
-            <p style="font-size:13px;color:#6b7280">Si algun enlace no abre, responde este correo o escribeme por WhatsApp y te ayudo.</p>
-            <p style="font-size:13px;color:#6b7280">Pago No. ${pid}</p>
-            <hr style="border:none;border-top:1px solid #e5e7eb;margin:20px 0" />
-            <p style="font-size:13px;color:#9ca3af">Karla Hernandez - Biblioteca Profesional KH / Feliz Sin Tiroides</p>
-          </div>`;
+        // Diseño corporativo común (lib/aula/correo-diseno.js, 19-nov-2026).
+        const descargas = downloadableIds.map((id) => getDownload(id)).filter(Boolean);
+        const sitio = String(process.env.SITE_URL || 'https://edvanta.co').replace(/\/+$/, '');
+        const html = cartaCorreo({
+          siteUrl: sitio,
+          asunto: 'Tus descargas están listas',
+          pre: 'Tu pago fue confirmado. Aquí tienes el acceso a tus recursos.',
+          encabezado: ['Pago confirmado', 'Gracias por tu compra'],
+          cuerpo: [
+            parrafo('Tu pago fue confirmado. Aquí tienes el acceso a tus recursos:'),
+            recuadro(descargas.map((d) => enlace(esc(d.name), d.url)).join('')),
+            nota(`Pago n.º ${esc(pid)}. Si algún enlace no abre, responde este correo o escríbenos por WhatsApp.`),
+          ].join(''),
+          campana: 'compra',
+          contenido: 'descargas',
+          opciones: {
+            whatsapp: { titulo: '¿Algún enlace no abre?', texto: 'Escríbenos por WhatsApp con tu número de pago y te ayudamos.', url: `https://wa.me/573006332244?text=${encodeURIComponent(`Hola, pagué el pedido ${pid} y necesito ayuda con mis descargas.`)}` },
+          },
+        });
 
         const sent = await sendEmail({
           to: email,
-          subject: 'Tus descargas estan listas',
+          subject: 'Tus descargas están listas',
           html,
         });
 

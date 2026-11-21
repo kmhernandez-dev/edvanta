@@ -1,0 +1,142 @@
+import { F } from '../../vademecum/fuentes.js';
+import { FC } from '../fuentes.js';
+
+export default {
+  slug: 'diarrea-aguda',
+  titulo: 'Caso clínico de diarrea aguda',
+  enfermedad: 'Diarrea aguda infecciosa',
+  area: 'digestivo',
+  nivel: 'Básico',
+  minutos: 11,
+  actualizado: '2026-11-17',
+  seo: {
+    titulo: 'Caso clínico de diarrea aguda con preguntas',
+    descripcion: 'Caso clínico de diarrea aguda: rehidratación oral, cuándo usar loperamida, cuándo no dar antibióticos, disentería y diarrea persistente. Con respuestas.',
+    palabrasClave: ['caso clínico de diarrea aguda', 'loperamida cuándo usar', 'diarrea antibióticos preguntas', 'rehidratación oral'],
+  },
+  objetivos: [
+    'Priorizar la rehidratación oral.',
+    'Usar la loperamida con sus contraindicaciones.',
+    'Reconocer cuándo se necesita antibiótico o estudio.',
+  ],
+  presentacion: 'Viviana tiene 30 años y desde ayer tiene diarrea acuosa, unas 6 deposiciones al día, con cólicos leves, después de almorzar en un puesto callejero. No tiene fiebre ni sangre en las heces y orina bien. Pide «un antibiótico fuerte» y loperamida. Su hijo de 18 meses también tiene diarrea y ella quiere darle la misma pastilla.',
+  datos: [
+    ['Síntomas', 'Diarrea acuosa, 6 deposiciones al día, cólicos leves'],
+    ['Fiebre', 'No'],
+    ['Sangre en las heces', 'No'],
+    ['Hidratación', 'Orina bien, mucosas húmedas'],
+    ['Duración', '1 día'],
+    ['Otro caso en casa', 'Hijo de 18 meses con diarrea'],
+  ],
+  preguntas: [
+    {
+      tipo: 'opcion',
+      enunciado: '¿Qué es lo más importante en el manejo de Viviana?',
+      opciones: ['Un antibiótico de amplio espectro', 'La rehidratación oral', 'Ayuno total', 'Un antiespasmódico inyectado'],
+      correcta: 1,
+      explicacion: 'La reposición de líquidos y electrolitos es la base del manejo de la diarrea aguda [1].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: '¿Necesita antibiótico?',
+      opciones: [
+        'Sí, siempre en la diarrea',
+        'No: la mayoría de las diarreas acuosas agudas se resuelven solas; el antibiótico se reserva para casos seleccionados',
+        'Sí, por 14 días',
+        'Sí, doble dosis',
+      ],
+      correcta: 1,
+      explicacion: 'La guía del ACG desaconseja el antibiótico empírico en la mayoría de las diarreas acuosas agudas de adultos, que suelen ser virales y autolimitadas [1].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: '¿Puede usar loperamida?',
+      opciones: [
+        'Sí: es útil en adultos con diarrea acuosa sin fiebre ni sangre',
+        'No, nunca en adultos',
+        'Sí, en cualquier caso, incluso con sangre',
+        'Solo inyectada',
+      ],
+      correcta: 0,
+      explicacion: 'La loperamida reduce la frecuencia de las deposiciones en adultos con diarrea acuosa; se evita si hay fiebre alta o sangre [1,2].',
+    },
+    {
+      tipo: 'completar',
+      enunciado: 'La loperamida está contraindicada en niños menores de ___ años.',
+      respuestas: ['2', 'dos'],
+      pista: 'El hijo de Viviana tiene 18 meses.',
+      explicacion: 'La ficha contraindica la loperamida en menores de 2 años; en niños la prioridad es la rehidratación oral [2].',
+    },
+    {
+      tipo: 'relacionar',
+      enunciado: 'Relaciona cada situación con la conducta.',
+      pares: [
+        ['Sangre en las heces o fiebre alta', 'Evitar la loperamida y consultar'],
+        ['Signos de deshidratación grave', 'Atención médica urgente'],
+        ['Diarrea de más de 14 días', 'Diarrea persistente: estudiar la causa'],
+      ],
+      explicacion: 'La disentería, la deshidratación y la diarrea persistente requieren evaluación médica; la loperamida se evita en la diarrea con sangre o fiebre [1,2].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: '¿En qué caso se considera un antibiótico empírico, como la azitromicina?',
+      opciones: [
+        'En toda diarrea acuosa leve',
+        'En la disentería con fiebre o en la diarrea del viajero moderada a grave',
+        'En la diarrea por ansiedad',
+        'Nunca',
+      ],
+      correcta: 1,
+      explicacion: 'La guía reserva el antibiótico para la disentería febril y la diarrea del viajero moderada a grave; la azitromicina es una opción [1,3].',
+    },
+    {
+      tipo: 'completar',
+      enunciado: 'Se habla de diarrea persistente cuando dura más de ___ días.',
+      respuestas: ['14', 'catorce'],
+      pista: 'Dos semanas.',
+      explicacion: 'La diarrea aguda dura menos de 14 días; la persistente, de 14 a 30 días, y requiere estudio [1].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: '¿Qué riesgo tienen las dosis altas de loperamida, por fuera de lo indicado?',
+      opciones: ['Ninguno', 'Arritmias graves y prolongación del QT', 'Hipoglucemia', 'Orina azul'],
+      correcta: 1,
+      explicacion: 'La ficha advierte sobre eventos cardiacos graves, incluida la prolongación del QT, con sobredosis o uso indebido de loperamida [2].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: '¿Qué dice la guía del ACG sobre los probióticos en la diarrea aguda del adulto?',
+      opciones: [
+        'Que son obligatorios',
+        'Que no hay evidencia suficiente para recomendarlos, salvo en la diarrea asociada a antibióticos',
+        'Que reemplazan la rehidratación',
+        'Que curan en un día',
+      ],
+      correcta: 1,
+      explicacion: 'El ACG no recomienda los probióticos en la diarrea aguda del adulto por falta de evidencia, excepto en la diarrea asociada a antibióticos [1].',
+    },
+    {
+      tipo: 'relacionar',
+      enunciado: 'Relaciona cada tipo de diarrea con su causa habitual.',
+      pares: [
+        ['Diarrea acuosa aguda del adulto', 'Virus, como el norovirus'],
+        ['Disentería', 'Bacterias invasoras, como Shigella o Campylobacter'],
+        ['Diarrea tras un antibiótico', 'Clostridioides difficile, entre otras'],
+      ],
+      explicacion: 'La mayoría de las diarreas acuosas son virales; la disentería sugiere bacterias invasoras; tras antibióticos se piensa en C. difficile [1].',
+    },
+  ],
+  claves: [
+    'Rehidratación oral primero [1].',
+    'Sin antibiótico en la mayoría de las diarreas acuosas; solo en disentería febril o viajero moderado a grave [1].',
+    'Loperamida: adultos sin fiebre ni sangre; contraindicada en menores de 2 años; dosis altas, riesgo cardiaco [2].',
+    'Persistente: más de 14 días [1].',
+  ],
+  referencias: [FC.acgDiarrea2016, F.ftLoperamida, F.ftAzitromicina],
+  enlaces: [
+    ['Loperamida', '/vademecum/loperamida', 'Vademécum'],
+    ['Medicamentos para el aparato digestivo', '/vademecum/medicamentos-para-el-aparato-digestivo', 'Vademécum'],
+    ['Azitromicina', '/vademecum/azitromicina', 'Vademécum'],
+    ['Curso de Farmacología Gastrointestinal', '/curso-de-farmacologia-gastrointestinal', 'Curso'],
+  ],
+};

@@ -1,0 +1,133 @@
+import { F } from '../../vademecum/fuentes.js';
+import { FC } from '../fuentes.js';
+
+export default {
+  slug: 'anafilaxia',
+  titulo: 'Caso clínico de anafilaxia',
+  enfermedad: 'Anafilaxia',
+  area: 'renal-y-otros',
+  nivel: 'Intermedio',
+  minutos: 12,
+  actualizado: '2026-11-17',
+  seo: {
+    titulo: 'Caso clínico de anafilaxia y adrenalina',
+    descripcion: 'Caso clínico de anafilaxia por picadura de abeja: adrenalina intramuscular, dosis, posición, segunda dosis, antihistamínicos, corticoides y autoinyector.',
+    palabrasClave: ['caso clínico de anafilaxia', 'adrenalina intramuscular dosis', 'anafilaxia preguntas', 'choque anafiláctico tratamiento'],
+  },
+  objetivos: [
+    'Reconocer la anafilaxia y tratarla de inmediato con adrenalina.',
+    'Dosificar y aplicar la adrenalina correctamente.',
+    'Conocer el papel de los tratamientos complementarios y el plan al alta.',
+  ],
+  presentacion: 'Felipe tiene 27 años y lo pica una abeja mientras trabaja en una finca del Quindío. A los 10 minutos tiene ronchas en todo el cuerpo, hinchazón de labios, dificultad para respirar con sibilancias y mareo. En el puesto de salud su presión es 80/50 mmHg y la frecuencia cardiaca 128 lpm. Pesa 75 kg. Un compañero propone darle «una pastilla para la alergia y esperar».',
+  datos: [
+    ['Desencadenante', 'Picadura de abeja'],
+    ['Piel y mucosas', 'Urticaria generalizada, angioedema de labios'],
+    ['Respiratorio', 'Disnea con sibilancias'],
+    ['Circulatorio', 'PA 80/50 mmHg, FC 128 lpm'],
+    ['Peso', '75 kg'],
+  ],
+  preguntas: [
+    {
+      tipo: 'opcion',
+      enunciado: '¿Cuál es el diagnóstico?',
+      opciones: ['Urticaria simple', 'Anafilaxia', 'Crisis de ansiedad', 'Asma leve'],
+      correcta: 1,
+      explicacion: 'La afectación de la piel con compromiso respiratorio e hipotensión tras la exposición a un alérgeno cumple los criterios de anafilaxia [1,2].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: '¿Cuál es el primer medicamento y por qué vía?',
+      opciones: [
+        'Antihistamínico oral',
+        'Adrenalina intramuscular en la cara anterolateral del muslo',
+        'Corticoide intravenoso',
+        'Adrenalina subcutánea en el brazo',
+      ],
+      correcta: 1,
+      explicacion: 'La adrenalina intramuscular en el muslo es el tratamiento de primera línea; retrasarla se asocia con peores desenlaces [1,2]. La pluma se aplica en la cara anterolateral del muslo [3].',
+    },
+    {
+      tipo: 'completar',
+      enunciado: 'La dosis de adrenalina intramuscular es 0,01 mg/kg, con un máximo de ___ mg en adultos.',
+      respuestas: ['0,5', '0.5'],
+      pista: 'Medio miligramo.',
+      explicacion: 'La guía de la WAO recomienda 0,01 mg/kg de adrenalina 1 mg/mL por vía intramuscular, hasta 0,5 mg en adultos [1].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: '¿En qué posición se coloca a Felipe?',
+      opciones: [
+        'De pie para que respire',
+        'Acostado boca arriba con las piernas elevadas, o sentado si la dificultad respiratoria no le permite acostarse',
+        'Boca abajo',
+        'Caminando',
+      ],
+      correcta: 1,
+      explicacion: 'La posición supina con piernas elevadas ayuda al retorno venoso; incorporarse de golpe puede ser fatal. Si hay mucha disnea, puede quedar sentado [1].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: 'A los 10 minutos sigue hipotenso. ¿Qué haces?',
+      opciones: ['Esperar 1 hora', 'Repetir la adrenalina intramuscular', 'Dar solo el antihistamínico', 'Darle agua'],
+      correcta: 1,
+      explicacion: 'Si no hay respuesta, la adrenalina intramuscular se repite cada 5 a 15 minutos, junto con líquidos intravenosos y oxígeno [1].',
+    },
+    {
+      tipo: 'relacionar',
+      enunciado: 'Relaciona cada medicamento con su papel en la anafilaxia.',
+      pares: [
+        ['Adrenalina intramuscular', 'Primera línea: revierte la hipotensión y el broncoespasmo'],
+        ['Antihistamínico H1', 'Alivia la urticaria y el prurito; no trata el choque'],
+        ['Glucocorticoide', 'Coadyuvante; no reemplaza la adrenalina'],
+        ['Salbutamol inhalado', 'Broncoespasmo que persiste tras la adrenalina'],
+      ],
+      explicacion: 'La WAO insiste en que los antihistamínicos y los glucocorticoides no reemplazan la adrenalina; son coadyuvantes [1,4,5]. Los broncodilatadores se usan para el broncoespasmo persistente [1].',
+    },
+    {
+      tipo: 'completar',
+      enunciado: 'El autoinyector de adrenalina para adultos contiene ___ microgramos.',
+      respuestas: ['300', 'trescientos'],
+      pista: 'Tres veces cien.',
+      explicacion: 'Altellus para adultos libera 300 microgramos (0,3 mg) de adrenalina por vía intramuscular [3].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: 'Si el paciente tomara betabloqueadores y no respondiera a la adrenalina, ¿qué se considera?',
+      opciones: ['Más betabloqueador', 'Glucagón', 'Insulina', 'Furosemida'],
+      correcta: 1,
+      explicacion: 'Los betabloqueadores pueden reducir la respuesta a la adrenalina; la WAO propone glucagón en la anafilaxia refractaria en estos pacientes [1].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: '¿Por qué se le deja en observación aunque mejore?',
+      opciones: ['Por trámite', 'Por el riesgo de una reacción bifásica, con reaparición de los síntomas horas después', 'Para que duerma', 'No hace falta'],
+      correcta: 1,
+      explicacion: 'Las reacciones bifásicas pueden aparecer horas después; las guías recomiendan observar al paciente según la gravedad [1,2].',
+    },
+    {
+      tipo: 'opcion',
+      enunciado: '¿Qué se le entrega al alta?',
+      opciones: [
+        'Nada',
+        'Un plan de acción escrito, la prescripción de autoinyectores de adrenalina, enseñanza de su uso y remisión a alergología',
+        'Solo un antihistamínico',
+        'Un corticoide para siempre',
+      ],
+      correcta: 1,
+      explicacion: 'Al alta se indica un plan de acción, autoinyectores de adrenalina con su entrenamiento y la remisión al alergólogo para evaluar la inmunoterapia con veneno [1,2].',
+    },
+  ],
+  claves: [
+    'Anafilaxia: adrenalina intramuscular en el muslo, sin demora [1,2].',
+    '0,01 mg/kg, máximo 0,5 mg en adultos; repetir cada 5 a 15 minutos si no responde [1].',
+    'Antihistamínicos y corticoides son coadyuvantes; glucagón si toma betabloqueadores [1].',
+    'Observar por reacción bifásica; al alta, autoinyector y plan [1,2,3].',
+  ],
+  referencias: [FC.waoAnafilaxia2020, FC.anafilaxia2020, FC.ftAltellus, F.ftCetirizina, FC.ftMetilprednisolona],
+  enlaces: [
+    ['Cetirizina', '/vademecum/cetirizina', 'Vademécum'],
+    ['Alergia y vías respiratorias', '/vademecum/alergia-y-vias-respiratorias', 'Vademécum'],
+    ['Corticoides sistémicos', '/vademecum/corticoides-sistemicos', 'Vademécum'],
+  ],
+};

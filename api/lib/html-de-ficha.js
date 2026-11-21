@@ -84,6 +84,10 @@ export function preguntasDeCurso(ficha, emisor) {
         : `En ${ficha.proveedor.nombre}. Edvanta lo seleccionó para su catálogo y te lleva hasta allí; la inscripción y las clases ocurren en su plataforma.`,
     },
     ...(certificado ? [{ q: '¿Da certificado?', a: certificado }] : []),
+    ...(propio && Number(ficha.certificado?.precio) > 0 ? [{
+      q: '¿Cuánto cuesta? ¿Puedo probarlo antes?',
+      a: `El curso completo, con el certificado incluido, cuesta ${pesos(ficha.certificado.precio)} en Colombia (pago único con Mercado Pago: tarjetas, PSE, Nequi y más). Al inscribirte puedes probar la primera unidad completa y comprar el curso cuando quieras desde tu aula.`,
+    }] : []),
     { q: '¿Qué necesito para empezar?', a: ficha.requisitos || 'No hay requisitos declarados para este curso.' },
     ...(ficha.guia?.preguntas || []).map(([q, a]) => ({ q, a })),
     ...(propio ? [{
@@ -135,6 +139,12 @@ export function cuerpoDeCurso(ficha, { nombre, relacionados = [], emisor = 'Edva
     `<h1>${esc(nombre)}</h1>`,
     ficha.resumen ? `<p>${esc(ficha.resumen)}</p>` : '',
     seccion('Este curso incluye', lista(datosClave(ficha))),
+    propio && Number(certificado.precio) > 0
+      ? seccion('Dos formas de estudiar este curso', lista([
+        `Con certificado (${pesos(certificado.precio)}, pago único con Mercado Pago): al completar el curso emites desde tu aula el certificado de aprobación de ${emisor}, con código y QR verificables en edvanta.co/certificados.`,
+        'Gratis: todo el contenido del curso, sin certificado. Puedes pasarte al certificado cuando quieras.',
+      ]))
+      : '',
     ficha.queAprenderas?.length ? seccion('Qué aprenderás', lista(ficha.queAprenderas)) : '',
     ficha.guia ? seccion('Para qué te sirve en el trabajo farmacéutico', `<p>${esc(ficha.guia.porQue)}</p>`) : '',
     ficha.guia ? seccion('Cómo lo aplicas', lista(ficha.guia.aplicaciones)) : '',
@@ -144,9 +154,12 @@ export function cuerpoDeCurso(ficha, { nombre, relacionados = [], emisor = 'Edva
     descripcion.length ? seccion('Descripción', descripcion.map((p) => `<p>${esc(p)}</p>`).join('')) : '',
     ficha.publico ? seccion('¿A quién está dirigido?', `<p>${esc(ficha.publico)}</p>`) : '',
     ficha.requisitos ? seccion('Qué necesitas antes', `<p>${esc(ficha.requisitos)}</p>`) : '',
+    // Las clases abiertas (con ruta) se enlazan: la ficha lleva a cada una.
     temario.length
       ? seccion('Temario', `<ol>${temario.map((u) => `<li><h3>${esc(u.title)}</h3>${
-        (u.lessons || []).length ? lista(u.lessons.map((l) => l.title).filter(Boolean)) : ''}</li>`).join('')}</ol>`)
+        (u.lessons || []).length
+          ? `<ul>${u.lessons.filter((l) => l.title).map((l) => `<li>${l.ruta ? `<a href="${esc(l.ruta)}">${esc(l.title)}</a>` : esc(l.title)}</li>`).join('')}</ul>`
+          : ''}</li>`).join('')}</ol>`)
       : '',
     certificado.nota
       ? seccion(certificado.estado === 'available' ? 'Certificado de aprobación' : `Certificado de ${ficha.proveedor.nombre}`,
@@ -200,6 +213,17 @@ export function datosDeCurso(ficha, { nombre, canonical, imagen, horas }) {
     provider: { '@type': 'Organization', name: ficha.proveedor.nombre, ...(propio ? { sameAs: 'https://edvanta.co' } : {}) },
     ...(ficha.nivel ? { educationalLevel: ficha.nivel } : {}),
     ...(ficha.queAprenderas?.length ? { teaches: ficha.queAprenderas.slice(0, 12) } : {}),
+    // Estrellas en Google: solo con valoraciones reales y publicadas de
+    // Edvanta, que la ficha muestra en «Valoraciones de estudiantes».
+    ...(ficha.valoraciones?.total > 0 && ficha.valoraciones.promedio >= 1 ? {
+      aggregateRating: {
+        '@type': 'AggregateRating',
+        ratingValue: ficha.valoraciones.promedio,
+        ratingCount: ficha.valoraciones.total,
+        bestRating: 5,
+        worstRating: 1,
+      },
+    } : {}),
   };
   if (propio) {
     const h = Number(horas);
@@ -207,8 +231,18 @@ export function datosDeCurso(ficha, { nombre, canonical, imagen, horas }) {
     // «parcialmente gratis» y así se declara.
     const precioCertificado = Number(ficha.certificado?.precio) || 0;
     datos.isAccessibleForFree = true;
+    // El precio declarado es el que cobra Mercado Pago en Colombia, el
+    // mismo que muestra la ficha (lib/precio-certificado.js).
     datos.offers = precioCertificado > 0
-      ? { '@type': 'Offer', category: 'Partially Free', url: canonical }
+      ? {
+        '@type': 'Offer',
+        category: 'Partially Free',
+        name: 'Certificado de aprobación de Edvanta',
+        price: precioCertificado,
+        priceCurrency: 'COP',
+        availability: 'https://schema.org/InStock',
+        url: canonical,
+      }
       : { '@type': 'Offer', category: 'Free', price: 0, priceCurrency: 'COP', url: canonical };
     datos.hasCourseInstance = {
       '@type': 'CourseInstance',

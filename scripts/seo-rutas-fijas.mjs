@@ -4,6 +4,9 @@ import { PAQUETES } from '../src/data/edvanta/servicios.js';
 import { enfermedades } from '../src/data/enfermedades.js';
 import { ebooks } from '../src/data/fst.js';
 import { AUTORA_PERFIL } from '../src/data/edvanta/eeat.js';
+import { CASOS, META_CASOS, areaDe, siguienteCaso } from '../src/data/casosClinicos/index.js';
+import { htmlDeCaso, jsonLdDeCaso, robotsDeCaso, rutaDeCaso, tituloDeCaso } from '../src/lib/casosClinicos/motor.js';
+import { htmlDelCatalogo, PREGUNTAS_CASOS, robotsDelCatalogo } from '../src/lib/casosClinicos/catalogo.js';
 import { tieneRevisionClinica } from '../src/lib/seo/indexabilidad.js';
 import {
   contenidoAlianzas, contenidoArea, contenidoAutora, contenidoContacto, contenidoEnfermedad, contenidoEscuela, contenidoEscuelas,
@@ -34,7 +37,13 @@ import { fuentesNoticias } from '../src/data/careerHub.js';
 import { CURSOS_HABILIDADES_BLANDAS } from '../src/data/edvanta/cursosHabilidadesBlandas.js';
 import { GRUPOS_VADEMECUM, MONOGRAFIAS, META_VADEMECUM, grupoDe, monografiasDelGrupo } from '../src/data/vademecum/index.js';
 import { htmlDePagina, jsonLdDePagina } from '../src/lib/vademecum/html.js';
+import { clasesDelVademecum, urlsAbsolutas } from '../api/lib/enlaces-de-salud.js';
+import { casosDeVademecum, htmlDeCasos } from '../src/lib/casosClinicos/enlacesInversos.js';
 import { robotsDePaginaDelVademecum, robotsDelVademecum, tituloDeVademecum } from '../src/lib/vademecum/indexable.js';
+import { COMUNIDADES, META_COMUNIDADES } from '../src/data/comunidadesSalud.js';
+import { EXAMENES, META_EXAMENES, robotsDeExamen } from '../src/data/examenes/index.js';
+import { FICHAS, META_FICHAS, robotsDeFicha } from '../src/data/medicamentos/fichas.js';
+import { BIBLIOTECA_SALUD, CATEGORIAS_SALUD, META_BIBLIOTECA, robotsDeArticuloSalud } from '../src/data/salud/biblioteca.js';
 
 const AREAS_POR_SLUG = new Map(AREAS_CAPACITACION.map((a) => [a.slug, a]));
 
@@ -61,6 +70,78 @@ const add = (ruta, titulo, descripcion, extra = {}) => {
 };
 
 const cursoAutocuidado = ebooks.find((c) => c.id === 'fst-autocuidado');
+
+/** HTML de una comunidad, el mismo contenido que muestra la página. */
+const contenidoComunidad = (c) => {
+  const porSlug = new Map(ARTICULOS.map((a) => [a.slug, a]));
+  const articulos = c.articulos.map((s) => porSlug.get(s)).filter(Boolean)
+    .map((a) => `<li><a href="/articulos/${a.slug}">${a.title}</a></li>`).join('');
+  const curso = c.curso ? `<p>Curso gratis para profesionales: <a href="${c.curso.ruta}">${c.curso.nombre}</a>.</p>` : '';
+  const guia = c.guiaPro ? `<p>Guía profesional: <a href="${c.guiaPro.ruta}">${c.guiaPro.nombre}</a>.</p>` : '';
+  const guiaPaciente = c.guia?.publico === 'pacientes' ? `<p>Guía para pacientes: <a href="${c.guia.ruta}">${c.guia.nombre}</a>.</p>` : '';
+  return `<section><h2>Qué encontrarás</h2><ul>${c.queEncuentras.map((t) => `<li>${t}</li>`).join('')}</ul></section>
+<section><h2>Reglas</h2><ol>${c.reglas.map((t) => `<li>${t}</li>`).join('')}</ol><p>${c.noEs}</p></section>
+${articulos ? `<section><h2>Artículos para empezar</h2><ul>${articulos}</ul></section>` : ''}
+<section><h2>Cómo entrar</h2><p>Escribe por WhatsApp y pide entrar a la comunidad de ${c.nombre}. <a href="${c.whatsapp}">Abrir WhatsApp</a>.</p>${curso}${guia}${guiaPaciente}</section>`;
+};
+
+const contenidoComunidades = () => `<section><h2>Comunidades por enfermedad</h2><ul>${COMUNIDADES.map((c) => `<li><a href="${c.ruta}">${c.titulo}</a>: ${c.resumen}</li>`).join('')}</ul></section>
+<section><h2>Cómo funciona</h2><ol><li>Escribes por WhatsApp y dices qué comunidad te interesa.</li><li>Recibes las reglas y la bienvenida.</li><li>Participas a tu ritmo; no hay ventas dentro del grupo.</li></ol></section>`;
+
+/** HTML de un examen: preguntas, opciones y clave de respuestas visible. */
+const contenidoExamen = (e) => {
+  const preguntas = e.preguntas.map((p, i) => `<li><p><strong>${i + 1}. ${p.enunciado}</strong></p><ol type="a">${p.opciones.map((o, n) => `<li>${o}${n === p.correcta ? ' (correcta)' : ''}</li>`).join('')}</ol><p>${p.explicacion}</p><p><small>Fuente: ${p.fuente}</small></p></li>`).join('');
+  const enlaces = [
+    e.curso ? `<li><a href="${e.curso.ruta}">Curso gratis: ${e.curso.nombre}</a></li>` : '',
+    e.guia ? `<li><a href="${e.guia.ruta}">Guía: ${e.guia.nombre}</a></li>` : '',
+    ...(e.articulos || []).map((s) => `<li><a href="/articulos/${s}">Artículo: ${s}</a></li>`),
+    ...(e.vademecum || []).map((v) => `<li><a href="${v.ruta}">Vademécum: ${v.nombre}</a></li>`),
+    ...EXAMENES.filter((x) => x.nivel === 'Avanzado' && x.slug !== e.slug).slice(0, 4)
+      .map((x) => `<li><a href="${x.ruta}">Examen avanzado: ${x.titulo}</a></li>`),
+  ].filter(Boolean).join('');
+  return `<section><h2>Qué evalúa</h2><ul>${e.temas.map((t) => `<li>${t}</li>`).join('')}</ul></section>
+<section><h2>Preguntas y respuestas explicadas</h2><ol>${preguntas}</ol></section>
+<section><h2>Para seguir estudiando</h2><ul>${enlaces}</ul></section>
+<section><h2>Practicar en grupos</h2><p>La página incluye un modo de quiz grupal para 2 a 4 equipos: reparte turnos, lleva el marcador, permite tiempo por pregunta y muestra la explicación después de cada respuesta. Es una actividad educativa, no una evaluación oficial.</p></section>
+<section><h2>Fuentes</h2><ul>${(e.fuentes || []).map((f) => `<li>${f.texto} <a href="${f.url}">Ver fuente</a></li>`).join('')}</ul></section>`;
+};
+
+const jsonLdExamen = (e) => ({
+  '@type': 'Quiz',
+  name: e.titulo,
+  description: e.seo.descripcion,
+  url: `https://edvanta.co${e.ruta}`,
+  inLanguage: 'es-CO',
+  educationalLevel: e.nivel,
+  about: e.temas,
+  hasPart: e.preguntas.map((p) => ({
+    '@type': 'Question',
+    name: p.enunciado,
+    acceptedAnswer: { '@type': 'Answer', text: p.opciones[p.correcta] },
+  })),
+});
+
+const contenidoExamenes = () => `<section><h2>Exámenes disponibles</h2><ul>${EXAMENES.map((e) => `<li><a href="${e.ruta}">${e.titulo}</a>: ${e.descripcion}</li>`).join('')}</ul></section>
+<section><h2>Cómo funciona</h2><ol><li>Respondes las preguntas sin registro.</li><li>Pulsas corregir y ves tu puntaje.</li><li>Lees la explicación de cada respuesta y sigues con el curso o la guía.</li></ol><p>Práctica educativa: no genera certificado ni reemplaza una evaluación de curso.</p></section>
+<section><h2>Quiz en grupos</h2><p>Cada examen tiene un modo para 2 a 4 equipos: turnos, temporizador opcional, marcador y explicación después de cada respuesta. Sirve para repasar en clase, con compañeros o en un grupo de estudio.</p></section>`;
+
+const contenidoFicha = (f) => `<section><h2>Para qué sirve</h2><p>${f.nombre} pertenece al grupo de ${f.clase.toLowerCase()}. ${f.para}</p></section>
+<section><h2>Cuidados importantes</h2><ul>${f.cuidados.map((t) => `<li>${t}</li>`).join('')}</ul></section>
+<section><h2>Efectos secundarios frecuentes</h2><ul>${f.efectos.map((t) => `<li>${t}</li>`).join('')}</ul><p>No es una lista completa. Consulta el prospecto y avisa a tu equipo de salud.</p></section>
+<section><h2>Cuándo consultar</h2><p>Consulta si tienes una reacción intensa, un síntoma nuevo, fiebre, dificultad para respirar, sangrado o desmayo. No cambies la dosis ni suspendas por tu cuenta.</p></section>
+<section><h2>Fuentes para ampliar</h2><p>Consulta la ficha técnica y el prospecto autorizado en tu país: CIMA, DailyMed y MedlinePlus.</p></section>
+<p>Información educativa. No es consejo médico ni ficha técnica.</p>`;
+
+const contenidoFichas = () => `<section><h2>Fichas disponibles</h2><ul>${FICHAS.map((f) => `<li><a href="/medicamentos/${f.slug}">${f.nombre}</a>: ${f.para}</li>`).join('')}</ul></section>`;
+
+const contenidoBibliotecaArticulo = (a) => `<section><h2>Para qué sirve</h2><p>${a.para}</p></section>
+<section><h2>Precauciones</h2><p>${a.precauciones}</p></section>
+<section><h2>Qué dice la evidencia</h2><p>${a.evidencia}</p></section>
+<section><h2>Cuándo consultar</h2><p>Consulta si tienes una reacción intensa, un síntoma nuevo, fiebre, dificultad para respirar, sangrado o desmayo. No suspendas ni cambies un medicamento por tu cuenta.</p></section>
+<section><h2>Fuentes para ampliar</h2><p>Consulta CIMA, DailyMed, MedlinePlus, NCCIH y la Oficina de Suplementos Dietéticos de los NIH.</p></section>
+<p>Información educativa. No es consejo médico ni ficha técnica.</p>`;
+
+const contenidoBiblioteca = () => `<section><h2>Artículos disponibles</h2><ul>${BIBLIOTECA_SALUD.map((a) => `<li><a href="/salud/${a.slug}">${a.nombre}: para qué sirve</a> — ${a.para}</li>`).join('')}</ul></section>`;
 
 add('/escuelas', 'Escuelas de Edvanta | Formación farmacéutica y habilidades', 'Cinco escuelas: Salud y Farmacia Clínica, Calidad y Producción, Asuntos Regulatorios, Habilidades Blandas, y Marketing y Comunicación.', { tipo: 'CollectionPage', seccion: 'Escuelas', enlaces: ESCUELAS.map((e) => [e.nombre, `/escuelas/${e.slug}`]), contenido: contenidoEscuelas(ESCUELAS) });
 
@@ -153,6 +234,9 @@ const retos = [
   ['full-body-girl', 'Full Body Girl', 'Una semana para mover todo tu cuerpo. Entrenamientos full body para activar todos los grupos musculares y sentir tu cuerpo completo en movimiento.'],
   ['dumbbell-girl', 'Dumbbell Girl', 'Tu semana de fuerza en casa. Fuerza con mancuernas para entrenar en casa con progresión, incluyendo brazos y upper body.'],
   ['soft-girl-reset', 'Soft Girl Reset', 'Baja el ritmo. Sigue moviéndote. Stretching, yoga, movilidad, recuperación y Pilates suave para resetear tu cuerpo sin dejar de moverte.'],
+  // Publicado en la base (migración 022) pero faltaba aquí: sin HTML, nginx
+  // respondía 404 y Search Console lo reportó el 17-nov-2026.
+  ['activa-quema', 'Activa & Quema', '7 días para volver a moverte: cuerpo completo, caminata, Pilates, cardio de bajo impacto, fuerza, baile y recuperación, con una misión cada día.'],
 ];
 
 for (const [slug, title, description] of retos) {
@@ -265,6 +349,92 @@ add('/buscar', 'Buscar en Edvanta | Edvanta', 'Busca artículos, cursos, herrami
 
 add('/comunidad', 'Comunidad de químicos farmacéuticos | Edvanta', 'Un espacio para conectar con otros profesionales farmacéuticos, compartir experiencias y encontrar oportunidades.', { tipo: 'WebPage', seccion: 'Comunidad', robots: 'noindex,follow', enlaces: [['Conecta', '/conecta'], ['Empleo', '/empleo'], ['Recursos', '/recursos']] });
 
+// Comunidades de pacientes y cuidadores, una por enfermedad.
+add('/comunidades', META_COMUNIDADES.titulo, META_COMUNIDADES.descripcion, {
+  tipo: 'CollectionPage',
+  seccion: 'Comunidades',
+  seccionUrl: '/comunidades',
+  h1: META_COMUNIDADES.h1,
+  enlaces: [['Edvanta Contigo', '/contigo'], ['Artículos', '/articulos'], ['Cursos gratis', '/cursos']],
+  contenido: contenidoComunidades(),
+});
+for (const c of COMUNIDADES) {
+  add(c.ruta, `Comunidad de ${c.nombre} | Edvanta`, c.resumen, {
+    tipo: 'WebPage',
+    seccion: 'Comunidades',
+    seccionUrl: '/comunidades',
+    h1: c.titulo,
+    enlaces: [['Todas las comunidades', '/comunidades'], ['Artículos', '/articulos'], ['Cursos gratis', '/cursos']],
+    contenido: contenidoComunidad(c),
+  });
+}
+
+// Exámenes interactivos públicos: preguntas, respuestas y enlaces de estudio.
+add('/examenes', META_EXAMENES.titulo, META_EXAMENES.descripcion, {
+  tipo: 'CollectionPage',
+  seccion: 'Exámenes',
+  seccionUrl: '/examenes',
+  h1: META_EXAMENES.h1,
+  enlaces: [['Cursos gratis', '/cursos'], ['Artículos', '/articulos'], ['Vademécum', '/vademecum']],
+  contenido: contenidoExamenes(),
+});
+for (const e of EXAMENES) {
+  add(e.ruta, e.seo.titulo, e.seo.descripcion, {
+    tipo: 'WebPage',
+    seccion: 'Exámenes',
+    seccionUrl: '/examenes',
+    robots: robotsDeExamen(e.slug),
+    h1: e.titulo,
+    enlaces: [['Todos los exámenes', '/examenes'], ['Cursos gratis', '/cursos'], ['Vademécum', '/vademecum']],
+    contenido: contenidoExamen(e),
+    extraJsonLd: [jsonLdExamen(e)],
+  });
+}
+
+// Fichas rápidas de medicamentos para pacientes. El hub es indexable;
+// cada ficha espera la revisión clínica (REVISION_FICHAS).
+add('/medicamentos', META_FICHAS.titulo, META_FICHAS.descripcion, {
+  tipo: 'CollectionPage',
+  seccion: 'Medicamentos',
+  seccionUrl: '/medicamentos',
+  h1: META_FICHAS.h1,
+  enlaces: [['Vademécum', '/vademecum'], ['Artículos', '/articulos'], ['Cursos gratis', '/cursos']],
+  contenido: contenidoFichas(),
+});
+for (const f of FICHAS) {
+  add(`/medicamentos/${f.slug}`, `${f.nombre}: para qué sirve, cuidados y efectos | Edvanta`, `${f.nombre}: ${f.para} Cuidados, efectos secundarios y cuándo consultar. Información educativa.`, {
+    tipo: 'WebPage',
+    seccion: 'Medicamentos',
+    seccionUrl: '/medicamentos',
+    robots: robotsDeFicha(f.slug),
+    h1: `${f.nombre}: para qué sirve y cuidados`,
+    enlaces: [['Todas las fichas', '/medicamentos'], ['Vademécum', '/vademecum'], ['Artículos', '/articulos']],
+    contenido: contenidoFicha(f),
+  });
+}
+
+// Biblioteca de salud: 200 artículos «para qué sirve». El hub es
+// indexable; cada artículo espera la revisión clínica.
+add('/salud', META_BIBLIOTECA.titulo, META_BIBLIOTECA.descripcion, {
+  tipo: 'CollectionPage',
+  seccion: 'Biblioteca de salud',
+  seccionUrl: '/salud',
+  h1: META_BIBLIOTECA.h1,
+  enlaces: [['Medicamentos', '/medicamentos'], ['Vademécum', '/vademecum'], ['Artículos', '/articulos']],
+  contenido: contenidoBiblioteca(),
+});
+for (const a of BIBLIOTECA_SALUD) {
+  add(`/salud/${a.slug}`, `${a.nombre}: para qué sirve y precauciones | Edvanta`, `${a.nombre}: ${a.para} Precauciones y evidencia disponible. Información educativa.`, {
+    tipo: 'WebPage',
+    seccion: 'Biblioteca de salud',
+    seccionUrl: '/salud',
+    robots: robotsDeArticuloSalud(a.slug),
+    h1: `${a.nombre}: para qué sirve`,
+    enlaces: [['Biblioteca de salud', '/salud'], ['Medicamentos', '/medicamentos'], ['Artículos', '/articulos']],
+    contenido: contenidoBibliotecaArticulo(a),
+  });
+}
+
 add('/nutrifst', 'NutriFST | Feliz Sin Tiroides', 'Conoce NutriFST, el asistente educativo de nutrición tiroidea de Feliz Sin Tiroides.', { tipo: 'WebPage', seccion: 'Feliz Sin Tiroides', robots: 'noindex,follow', enlaces: [['FST App', '/fst-app'], ['Feliz Sin Tiroides', '/feliz-sin-tiroides'], ['Recetas', '/recetas']] });
 
 add('/recurso/levotiroxina', 'Guía de levotiroxina | Feliz Sin Tiroides', 'Recurso gratuito para organizar la toma de levotiroxina y preparar tus consultas.', { tipo: 'WebPage', seccion: 'Feliz Sin Tiroides', robots: 'noindex,follow', enlaces: [['Feliz Sin Tiroides', '/feliz-sin-tiroides'], ['Artículos', '/articulos'], ['FST App', '/fst-app']] });
@@ -325,6 +495,34 @@ add('/equipo-editorial', 'Equipo editorial | Edvanta', 'Quién dirige, escribe y
   enlaces: [['Autora y revisora', '/autores/karla-hernandez'], ['Política editorial', '/politica-editorial'], ['Política de revisión clínica', '/politica-de-revision-clinica']],
 });
 
+// ── Casos clínicos: exámenes de práctica tipo parcial (src/data/casosClinicos) ──
+// Contenido clínico: noindex hasta que la revisión de Karla se anota en revision.js.
+add('/casos-clinicos', META_CASOS.titulo, META_CASOS.descripcion, {
+  tipo: 'CollectionPage',
+  seccion: 'Casos clínicos',
+  h1: META_CASOS.h1,
+  robots: robotsDelCatalogo(),
+  contenido: htmlDelCatalogo(),
+  enlaces: [['Vademécum', '/vademecum'], ['Cursos gratis', '/cursos']],
+  extraJsonLd: [{ '@type': 'FAQPage', mainEntity: PREGUNTAS_CASOS.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) }],
+});
+
+for (const c of CASOS) {
+  const area = areaDe(c);
+  const relacionados = (c.enlaces || []).map(([titulo, ruta, tipo]) => ({ titulo, ruta, tipo }));
+  add(rutaDeCaso(c), tituloDeCaso(c), c.seo.descripcion, {
+    tipo: 'WebPage',
+    seccion: 'Casos clínicos',
+    h1: c.titulo,
+    robots: robotsDeCaso(c),
+    fecha: c.actualizado,
+    mainEntity: jsonLdDeCaso(c, { area }),
+    ...(c.revisor ? { reviewedBy: { '@type': 'Person', name: c.revisor, ...(c.revisorUrl ? { url: c.revisorUrl } : {}) } } : {}),
+    enlaces: [['Casos clínicos', '/casos-clinicos']],
+    contenido: htmlDeCaso(c, { area, relacionados, siguiente: siguienteCaso(c) }),
+  });
+}
+
 add('/fuentes', 'Fuentes y criterios de verificación | Edvanta', 'Qué fuentes usa Edvanta, cómo las verifica y cómo las cita.', {
   tipo: 'WebPage',
   seccion: 'Transparencia',
@@ -350,6 +548,8 @@ add('/vademecum', META_VADEMECUM.titulo, META_VADEMECUM.descripcion, {
 for (const p of [...GRUPOS_VADEMECUM, ...MONOGRAFIAS]) {
   const hijos = p.tipo === 'grupo' ? monografiasDelGrupo(p.slug) : [];
   const grupo = p.tipo === 'medicamento' ? grupoDe(p) : null;
+  // Las clases gratuitas que enseñan lo mismo (api/lib/enlaces-de-salud.js).
+  const clases = clasesDelVademecum(p.slug);
   const { '@context': _contexto, ...entidad } = jsonLdDePagina(p, { hijos });
   add(`/vademecum/${p.slug}`, tituloDeVademecum(p), p.seo.descripcion, {
     tipo: 'MedicalWebPage',
@@ -360,7 +560,8 @@ for (const p of [...GRUPOS_VADEMECUM, ...MONOGRAFIAS]) {
     mainEntity: entidad,
     ...(p.revisor ? { reviewedBy: { '@type': 'Person', name: p.revisor, ...(p.revisorUrl ? { url: p.revisorUrl } : {}) } } : {}),
     enlaces: [['Vademécum', '/vademecum'], ...(grupo ? [[grupo.nombre, `/vademecum/${grupo.slug}`]] : [])],
-    contenido: htmlDePagina(p, { hijos, enlaces: p.enlaces || [] }),
+    relatedLink: urlsAbsolutas([...clases.clases, ...clases.cursos]),
+    contenido: htmlDePagina(p, { hijos, enlaces: p.enlaces || [], clases, casosHtml: htmlDeCasos(casosDeVademecum(p.slug)) }),
   });
 }
 

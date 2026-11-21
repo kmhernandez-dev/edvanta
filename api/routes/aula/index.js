@@ -9,6 +9,7 @@ import { ensureBootstrapAdmins } from '../../lib/aula/accounts.js';
 import { publicarAprobados, republicarAprobadas } from '../../lib/aula/publicaciones.js';
 import { errorHandler, notFound } from '../../lib/aula/http.js';
 import { requireAulaHeader } from '../../lib/aula/security.js';
+import { adminAssistRouter } from './admin-assist.js';
 import { adminAuditRouter } from './admin-audit.js';
 import { adminCoursesRouter } from './admin-courses.js';
 import { adminPeopleRouter } from './admin-people.js';
@@ -23,6 +24,7 @@ import { opinionesRouter } from './opiniones.js';
 import { adminModeracionRouter } from './admin-moderacion.js';
 import { adminSolicitudesRouter, solicitudesRouter } from './solicitudes.js';
 import { attachSession, requireAdmin, requireDocente, requireUser } from './middleware.js';
+import { precioPublicoRouter } from './precio-publico.js';
 
 export function createAulaRouter({
   db,
@@ -55,11 +57,15 @@ export function createAulaRouter({
   router.use('/docente', requireUser, requireDocente, docenteRouter(deps));
   // Leer opiniones y preguntas es público; escribir se comprueba dentro.
   router.use('/opiniones', opinionesRouter(deps));
+  // Precio del certificado para quien mira (país y plazo de la oferta).
+  router.use('/precio-certificado', precioPublicoRouter(deps));
   // Interés, propuestas y contacto: se envían sin cuenta.
   router.use('/solicitudes', solicitudesRouter(deps));
 
   const admin = express.Router();
   admin.use('/summary', adminSummaryRouter(deps));
+  // Edvanta Assist: atención de personas, bandeja de trabajo y ventas.
+  admin.use('/assist', adminAssistRouter(deps));
   admin.use('/audit', adminAuditRouter(deps));
   admin.use('/', adminPeopleRouter(deps));
   admin.use('/', adminCoursesRouter(deps));
@@ -74,7 +80,12 @@ export function createAulaRouter({
 }
 
 /** Tareas de arranque: carpetas de archivos, administradores iniciales y limpieza periódica. */
-export async function startAula({ db, storage, adminEmails = [], adminHashes = [], log = () => {} }) {
+export async function startAula({
+  db, storage, adminEmails = [], adminHashes = [], log = () => {},
+  // Con varios procesos, server.js pasa un candado para que la limpieza
+  // corra en uno solo; sin él (pruebas, desarrollo), corre directo.
+  envolverLimpieza = (limpiar) => limpiar(),
+}) {
   await storage.init();
   const admins = await ensureBootstrapAdmins(db, adminEmails, { hashes: adminHashes });
   log({ msg: 'Aula lista', admins, storage: storage.root });
@@ -92,7 +103,7 @@ export async function startAula({ db, storage, adminEmails = [], adminHashes = [
     log({ level: 'error', msg: 'Falló la publicación de versiones aprobadas', error: err.message });
   }
 
-  const sweep = () => sweepStaleUploads({ db, storage })
+  const sweep = () => envolverLimpieza(() => sweepStaleUploads({ db, storage }))
     .then((n) => { if (n) log({ msg: 'Subidas abandonadas limpiadas', count: n }); })
     .catch((err) => log({ level: 'error', msg: 'Falló la limpieza de subidas', error: err.message }));
   const timer = setInterval(sweep, 60 * 60 * 1000);

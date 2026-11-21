@@ -37,6 +37,13 @@ const ft16 = (producto, nregistro) => ({
   url: `https://cima.aemps.es/cima/dochtml/ft/${nregistro}/FT_${nregistro}.html`,
 });
 
+// Lote de diabetes (17-nov-2026): fichas descargadas de CIMA ese día.
+const CITADO_17 = 'citado 17 nov 2026';
+const ft17 = (producto, nregistro) => ({
+  texto: `Agencia Española de Medicamentos y Productos Sanitarios (AEMPS). Ficha técnica de ${producto} [Internet]. Madrid: AEMPS; [${CITADO_17}]. Disponible en: https://cima.aemps.es/cima/dochtml/ft/${nregistro}/FT_${nregistro}.html`,
+  url: `https://cima.aemps.es/cima/dochtml/ft/${nregistro}/FT_${nregistro}.html`,
+});
+
 export const F = {
   // ── Fichas técnicas (CIMA) y etiquetas de la FDA (DailyMed) ──
   ftWegovy: ft('Wegovy 0,25 mg FlexTouch solución inyectable en pluma precargada', '1211608006'),
@@ -51,6 +58,9 @@ export const F = {
   ftHidroclorotiazida: ft('Hidroclorotiazida Normon 25 mg comprimidos EFG', '90833'),
   ftMetformina: ft('Metformina Cinfa 850 mg comprimidos recubiertos con película EFG', '68167'),
   ftEmpagliflozina: ft('Jardiance 10 mg comprimidos recubiertos con película', '114930014'),
+  ftDapagliflozina: ft17('Forxiga 10 mg comprimidos recubiertos con película', '112795007'),
+  ftGliclazida: ft17('Gliclazida Cinfa 30 mg comprimidos de liberación modificada EFG', '78439'),
+  ftFinerenona: ft17('Kerendia 10 mg comprimidos recubiertos con película', '1211616002'),
   ftSitagliptina: ft('Sitagliptina Cinfamed 100 mg comprimidos recubiertos con película EFG', '86323'),
   ftTrastuzumab: ft('Herceptin 150 mg polvo para concentrado para solución para perfusión', '00145001'),
   ftImatinib: ft('Imatinib Accord 100 mg comprimidos recubiertos con película EFG', '113845016'),
@@ -161,6 +171,74 @@ export const F = {
   empaKidney: pubmed('The EMPA-KIDNEY Collaborative Group, Herrington WG, Staplin N, Wanner C, Green JB, Hauske SJ, et al. Empagliflozin in patients with chronic kidney disease. N Engl J Med. 2023;388(2):117-127. doi:10.1056/NEJMoa2204233', 36331190),
   emperorReduced: pubmed('Packer M, Anker SD, Butler J, Filippatos G, Pocock SJ, Carson P, et al. Cardiovascular and renal outcomes with empagliflozin in heart failure. N Engl J Med. 2020;383(15):1413-1424. doi:10.1056/NEJMoa2022190', 32865377),
   emperorPreserved: pubmed('Anker SD, Butler J, Filippatos G, Ferreira JP, Bocchi E, Böhm M, et al. Empagliflozin in heart failure with a preserved ejection fraction. N Engl J Med. 2021;385(16):1451-1461. doi:10.1056/NEJMoa2107038', 34449189),
+  declareTimi: pubmed('Wiviott SD, Raz I, Bonaca MP, Mosenzon O, Kato ET, Cahn A, et al. Dapagliflozin and cardiovascular outcomes in type 2 diabetes. N Engl J Med. 2019;380(4):347-357. doi:10.1056/NEJMoa1812389', 30415602),
+  dapaHf: pubmed('McMurray JJV, Solomon SD, Inzucchi SE, Køber L, Kosiborod MN, Martinez FA, et al. Dapagliflozin in patients with heart failure and reduced ejection fraction. N Engl J Med. 2019;381(21):1995-2008. doi:10.1056/NEJMoa1911303', 31535829),
+  dapaCkd: pubmed('Heerspink HJL, Stefánsson BV, Correa-Rotter R, Chertow GM, Greene T, Hou FF, et al. Dapagliflozin in patients with chronic kidney disease. N Engl J Med. 2020;383(15):1436-1446. doi:10.1056/NEJMoa2024816', 32970396),
+  deliver: pubmed('Solomon SD, McMurray JJV, Claggett B, de Boer RA, DeMets D, Hernandez AF, et al. Dapagliflozin in heart failure with mildly reduced or preserved ejection fraction. N Engl J Med. 2022;387(12):1089-1098. doi:10.1056/NEJMoa2206286', 36027570),
+  advance: pubmed('The ADVANCE Collaborative Group. Intensive blood glucose control and vascular outcomes in patients with type 2 diabetes. N Engl J Med. 2008;358(24):2560-72. doi:10.1056/NEJMoa0802987', 18539916),
+  fidelio: pubmed('Bakris GL, Agarwal R, Anker SD, Pitt B, Ruilope LM, Rossing P, et al. Effect of finerenone on chronic kidney disease outcomes in type 2 diabetes. N Engl J Med. 2020;383(23):2219-2229. doi:10.1056/NEJMoa2025845', 33264825),
+  figaro: pubmed('Pitt B, Filippatos G, Agarwal R, Anker SD, Bakris GL, Rossing P, et al. Cardiovascular events with finerenone in kidney disease and type 2 diabetes. N Engl J Med. 2021;385(24):2252-2263. doi:10.1056/NEJMoa2110956', 34449181),
+  finearts: pubmed('Solomon SD, McMurray JJV, Vaduganathan M, Claggett B, Jhund PS, Desai AS, et al. Finerenone in heart failure with mildly reduced or preserved ejection fraction. N Engl J Med. 2024;391(16):1475-1485. doi:10.1056/NEJMoa2407107', 39225278),
+  kdigoCkd2024: {
+    texto: 'Kidney Disease: Improving Global Outcomes (KDIGO) CKD Work Group. KDIGO 2024 Clinical Practice Guideline for the Evaluation and Management of Chronic Kidney Disease. Kidney Int. 2024;105(4S):S117-S314. doi:10.1016/j.kint.2023.10.018',
+    url: 'https://kdigo.org/guidelines/ckd-evaluation-and-management/',
+  },
+  escAcs2023: {
+    texto: 'Byrne RA, Rossello X, Coughlan JJ, Barbato E, Berry C, Chieffo A, et al. 2023 ESC Guidelines for the management of acute coronary syndromes. Eur Heart J. 2023;44(38):3720-3826. doi:10.1093/eurheartj/ehad191',
+    url: 'https://www.escardio.org/Guidelines/Clinical-Practice-Guidelines/Acute-Coronary-Syndromes-ACS',
+  },
+  chestVte2021: {
+    texto: 'Stevens SM, Woller SC, Kreuziger LB, Bounameaux H, Doerschug K, Geersing GJ, et al. Antithrombotic Therapy for VTE Disease: Second Update of the CHEST Guideline and Expert Panel Report. Chest. 2021;160(6):e545-e608. doi:10.1016/j.chest.2021.07.055',
+    url: 'https://journal.chestnet.org/article/S0012-3692(21)01574-1/fulltext',
+  },
+  acogGdm: {
+    texto: 'American College of Obstetricians and Gynecologists. Gestational Diabetes Mellitus: ACOG Practice Bulletin, Number 190. Obstet Gynecol. 2018;131(2):e49-e64. (Vigente con actualizaciones de la ADA 2026.)',
+    url: 'https://www.acog.org/clinical/clinical-guidance/practice-bulletin/articles/2018/02/gestational-diabetes-mellitus',
+  },
+  eposSinusitis2020: {
+    texto: 'Fokkens WJ, Lund VJ, Hopkins C, Hellings PW, Kern R, Reitsma S, et al. European Position Paper on Rhinosinusitis and Nasal Polyps 2020. Rhinology. 2020;58(Suppl S29):1-464. doi:10.4193/Rhin20.600',
+    url: 'https://www.rhinologyjournal.com/',
+  },
+  niceBronchiolitis2023: {
+    texto: 'National Institute for Health and Care Excellence. Bronchiolitis in children: diagnosis and management. NICE guideline NG9. Actualizada en 2023.',
+    url: 'https://www.nice.org.uk/guidance/ng9',
+  },
+  sscSepsis2021: {
+    texto: 'Evans L, Rhodes A, Alhazzani W, Antonelli M, Coopersmith CM, French C, et al. Surviving Sepsis Campaign: International Guidelines for Management of Sepsis and Septic Shock 2021. Crit Care Med. 2021;49(11):e1063-e1143. doi:10.1097/CCM.0000000000005337',
+    url: 'https://www.sccm.org/SurvivingSepsisCampaign/Guidelines/Adult-Patients',
+  },
+  acgPancreatitis2024: {
+    texto: 'Tenner S, Vege SS, Sheth SG, Sauer B, Yang YX, Barshop K, et al. American College of Gastroenterology Guidelines: Management of Acute Pancreatitis. Am J Gastroenterol. 2024;119(3):419-437. doi:10.14309/ajg.0000000000002645',
+    url: 'https://gi.org/guideline/acute-pancreatitis/',
+  },
+  eauUrolithiasis2024: {
+    texto: 'European Association of Urology. EAU Guidelines on Urolithiasis. 2024.',
+    url: 'https://uroweb.org/guidelines/urolithiasis',
+  },
+  ahaStroke2019: {
+    texto: 'Powers WJ, Rabinstein AA, Ackerson T, Adeoye OM, Bambakidis NC, Becker K, et al. Guidelines for the Early Management of Patients With Acute Ischemic Stroke: 2019 Update to the 2018 Guidelines. Stroke. 2019;50(12):e344-e418. doi:10.1161/STR.0000000000000211',
+    url: 'https://www.ahajournals.org/doi/10.1161/STR.0000000000000211',
+  },
+  idsaMeningitis2017: {
+    texto: 'Tunkel AR, Hasbun R, Bhimraj A, Byers K, Kaplan SL, Scheld WM, et al. 2017 Infectious Diseases Society of America Clinical Practice Guidelines for Healthcare-Associated Ventriculitis and Meningitis. Clin Infect Dis. 2017;64(6):e34-e65. doi:10.1093/cid/ciw861',
+    url: 'https://academic.oup.com/cid/article/64/6/e34/3050217',
+  },
+  aasldHcv2023: {
+    texto: 'Bhattacharya D, Aronsohn A, Price J, Lo Re V. Hepatitis C Guidance 2023 Update: AASLD-IDSA Recommendations for Testing, Managing, and Treating Hepatitis C Virus Infection. Clin Infect Dis. 2023;ciad319. doi:10.1093/cid/ciad319',
+    url: 'https://www.hcvguidelines.org/',
+  },
+  whoDengue2024: {
+    texto: 'World Health Organization. Dengue: guidelines for diagnosis, treatment, prevention and control. Actualización 2024.',
+    url: 'https://www.who.int/news-room/fact-sheets/detail/dengue-and-severe-dengue',
+  },
+  aasldCirrhosis2023: {
+    texto: 'American Association for the Study of Liver Diseases. AASLD Practice Guidance: Management of Cirrhosis. Hepatology. 2023.',
+    url: 'https://www.aasld.org/practice-guidelines',
+  },
+  aasmOsa2023: {
+    texto: 'American Academy of Sleep Medicine. Clinical Practice Guideline for the Treatment of Obstructive Sleep Apnea and Snoring with Oral Appliance Therapy. 2023 update.',
+    url: 'https://aasm.org/clinical-resources/practice-standards/practice-guidelines/',
+  },
   tecos: pubmed('Green JB, Bethel MA, Armstrong PW, Buse JB, Engel SS, Garg J, et al. Effect of sitagliptin on cardiovascular outcomes in type 2 diabetes. N Engl J Med. 2015;373(3):232-42. doi:10.1056/NEJMoa1501352', 26052984),
 
   // ── Oncología de alto costo: ensayos pivotales ──
@@ -226,9 +304,12 @@ export const F = {
     texto: 'Organización Mundial de la Salud. AWaRe classification of antibiotics for evaluation and monitoring of use, 2023 [Internet]. Ginebra: OMS; 2023 [citado 12 nov 2026]. Disponible en: https://www.who.int/publications/i/item/9789240080379',
     url: 'https://www.who.int/publications/i/item/9789240080379',
   },
+  // 17-nov-2026: el comunicado de la FDA de 2016 ya no existe (404 en todas sus
+  // direcciones); se reemplazó por la etiqueta vigente de levofloxacino, que trae
+  // el recuadro de advertencia de reacciones graves e incapacitantes.
   fdaFluoroquinolonas: {
-    texto: 'Food and Drug Administration. FDA updates warnings for oral and intravenous fluoroquinolone antibiotics [Internet]. Silver Spring (MD): FDA; 2016 [citado 12 nov 2026]. Disponible en: https://www.fda.gov/drugs/drug-safety-and-availability/fda-updates-warnings-oral-and-intravenous-fluoroquinolone-antibiotics',
-    url: 'https://www.fda.gov/drugs/drug-safety-and-availability/fda-updates-warnings-oral-and-intravenous-fluoroquinolone-antibiotics',
+    texto: 'National Library of Medicine (US). DailyMed: Levofloxacin tablet, film coated (etiqueta de la FDA con recuadro de advertencia sobre reacciones adversas graves) [Internet]. Bethesda (MD): NLM; [actualizado 9 nov 2026; citado 17 nov 2026]. Disponible en: https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=814450ae-439e-4a5d-8c60-9b21b6f14be5',
+    url: 'https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=814450ae-439e-4a5d-8c60-9b21b6f14be5',
   },
   pubchemMetronidazol: pubchem('Metronidazole', 4173),
   pubchemCefalexina: pubchem('Cephalexin', 27447),
@@ -308,6 +389,10 @@ export const F = {
   },
   invimaCum16: {
     texto: `Instituto Nacional de Vigilancia de Medicamentos y Alimentos (INVIMA). Código Único de Medicamentos vigentes [conjunto de datos en Internet]. Bogotá: Datos Abiertos Colombia; [${CITADO_16}]. Disponible en: https://www.datos.gov.co/d/i7cb-raxc`,
+    url: 'https://www.datos.gov.co/d/i7cb-raxc',
+  },
+  invimaCum17: {
+    texto: `Instituto Nacional de Vigilancia de Medicamentos y Alimentos (INVIMA). Código Único de Medicamentos vigentes [conjunto de datos en Internet]. Bogotá: Datos Abiertos Colombia; [${CITADO_17}]. Disponible en: https://www.datos.gov.co/d/i7cb-raxc`,
     url: 'https://www.datos.gov.co/d/i7cb-raxc',
   },
   cnt2013: pubmed("Coxib and traditional NSAID Trialists' (CNT) Collaboration; Bhala N, Emberson J, Merhi A, Abramson S, Arber N, Baron JA, et al. Vascular and upper gastrointestinal effects of non-steroidal anti-inflammatory drugs: meta-analyses of individual participant data from randomised trials. Lancet. 2013;382(9894):769-79. doi:10.1016/S0140-6736(13)60900-9", 23726390),

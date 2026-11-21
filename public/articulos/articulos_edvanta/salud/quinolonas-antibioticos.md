@@ -113,4 +113,4 @@ No hay una interacción directa grave descrita, pero el alcohol puede empeorar e
 
 1. AEMPS-CIMA. Ficha técnica de Levofloxacino Cinfa 500 mg comprimidos recubiertos con película EFG. [Ver fuente](https://cima.aemps.es/cima/dochtml/ft/75614/FT_75614.html)
 2. Organización Mundial de la Salud. AWaRe classification of antibiotics for evaluation and monitoring of use, 2023. [Ver fuente](https://www.who.int/publications/i/item/9789240080379)
-3. FDA. FDA updates warnings for oral and intravenous fluoroquinolone antibiotics. [Ver fuente](https://www.fda.gov/drugs/drug-safety-and-availability/fda-updates-warnings-oral-and-intravenous-fluoroquinolone-antibiotics)
+3. FDA (DailyMed). Etiqueta de levofloxacino con el recuadro de advertencia sobre reacciones adversas graves e incapacitantes de las fluoroquinolonas. [Ver fuente](https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=814450ae-439e-4a5d-8c60-9b21b6f14be5)
