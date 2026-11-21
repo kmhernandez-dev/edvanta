@@ -17,6 +17,7 @@ El indicador es el número de consultas con impresiones en Search Console (Rendi
 |---|---|---|
 | 21-nov | Cursos propios sin «gratis» en clases (367 títulos y descripciones), casos clínicos, vademécum, artículos y comunidades (b2ad337) | En vivo y verificado |
 | 21-nov | Ampliación de 8 pilares para pacientes (dengue, gastritis, infección urinaria, migraña, anemia, hígado graso, gripa y resistencia a la insulina): de unas 560 a unas 770 palabras, con preguntas de cola larga, enlace a su comunidad y a su caso clínico | En vivo (3e887ed), aprobado por Karla el 21-nov; verificado en producción (indexables, en sitemap, FAQPage) e IndexNow 8 URLs |
+| 21-nov | GEO: `llms.txt` con 66 casos clínicos, 23 exámenes, 23 comunidades y 8 pilares (generador `scripts/llms-salud.mjs`; volver a correrlo al agregar o revisar contenido) y precios del curso de pago (`scripts/llms-cursos.mjs` regenerado) | En vivo (c686204); 123 enlaces nuevos responden 200 |
 
 ## Artículos delgados que quedan (menos de 600 palabras, 21-nov)
 
@@ -26,6 +27,5 @@ El indicador es el número de consultas con impresiones en Search Console (Rendi
 
 ## Siguientes bloques
 
-1. GEO: `llms.txt` con los casos clínicos, las comunidades y los pilares, con respuestas citables.
-2. Comunidades: título y descripción orientados a «grupo de apoyo de [enfermedad]», preguntas frecuentes y enlaces desde cada artículo del clúster.
-3. Feliz Sin Tiroides y plantas medicinales: ampliar con la misma regla de fuentes.
+1. Comunidades: título y descripción orientados a «grupo de apoyo de [enfermedad]», preguntas frecuentes y enlaces desde cada artículo del clúster.
+2. Feliz Sin Tiroides y plantas medicinales: ampliar con la misma regla de fuentes.
