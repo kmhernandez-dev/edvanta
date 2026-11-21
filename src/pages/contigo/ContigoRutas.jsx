@@ -93,6 +93,21 @@ export default function ContigoRutas() {
           </div>
         </ContigoSection>
 
+        <ContigoSection tone="white">
+          <div className="contigo-card flex flex-col gap-4 p-6 sm:flex-row sm:items-center sm:justify-between">
+            <div>
+              <ContigoEyebrow>Contigo Alto Costo</ContigoEyebrow>
+              <p className="mt-2 font-display text-xl font-extrabold text-edvanta-deep">¿Tu tratamiento es de alto costo?</p>
+              <p className="mt-1 max-w-2xl text-sm leading-6 text-[var(--contigo-muted)]">
+                Artritis reumatoide, cáncer, enfermedad renal crónica, hemofilia, hepatitis C, VIH o una enfermedad huérfana: conoce el programa gratuito de acompañamiento farmacéutico.
+              </p>
+            </div>
+            <Btn to="/contigo/alto-costo" iconRight={ArrowRight} className="shrink-0 !bg-[var(--contigo-primary)] hover:!bg-[var(--contigo-primary-strong)]">
+              Conocer el programa
+            </Btn>
+          </div>
+        </ContigoSection>
+
         <ContigoSection tone="sage">
           <ContigoEyebrow>En preparación</ContigoEyebrow>
           <h2 className="mt-3 max-w-3xl font-display text-3xl font-extrabold tracking-[-0.025em] text-edvanta-deep sm:text-4xl">

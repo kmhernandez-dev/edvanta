@@ -57,6 +57,7 @@ import articleCommentsRoutes from './routes/article-comments.js';
 import fstClicksRoutes from './routes/fst-clicks.js';
 import vida360Routes from './routes/vida360.js';
 import fstAppRoutes from './routes/fst-app.js';
+import { crearRutasAltoCosto } from './routes/contigo-alto-costo.js';
 import { createAulaRouter, startAula } from './routes/aula/index.js';
 import { fromPgPool } from './lib/aula/db.js';
 import { createDiskStorage } from './lib/aula/storage.js';
@@ -318,6 +319,16 @@ app.use('/api/community', communityRoutes);
 
 // Hoja de vida profesional guardada por usuario de Academia
 app.use('/api/cv', cvRoutes);
+
+// Programa Contigo Alto Costo: registro con autorizaciones granulares.
+// Cerrado hasta la revisión legal: se abre con CONTIGO_ALTO_COSTO_ACTIVO=true.
+app.use('/api/contigo/alto-costo', crearRutasAltoCosto({
+  db: pool,
+  activo: process.env.CONTIGO_ALTO_COSTO_ACTIVO === 'true',
+  sitio: (process.env.SITE_URL || 'https://edvanta.co').replace(/\/+$/, ''),
+  adminToken: process.env.ADMIN_TOKEN,
+  enviarCorreo: ({ to, subject, html }) => sendEmail({ to, subject, html, from: fromWithName('Edvanta Contigo') }),
+}));
 
 // Lectura y revisión de hojas de vida con IA (clave solo en el servidor)
 app.use('/api/cv-ia', cvIaRoutes);

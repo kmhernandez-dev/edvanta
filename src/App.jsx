@@ -97,6 +97,8 @@ const ContigoProfesionales = lazy(() => import('./pages/contigo/ContigoProfesion
 const ContigoPerfil = lazy(() => import('./pages/contigo/ContigoPerfil'));
 const ContigoReservar = lazy(() => import('./pages/contigo/ContigoReservar'));
 const ContigoRedProfesional = lazy(() => import('./pages/contigo/ContigoRedProfesional'));
+const ContigoAltoCosto = lazy(() => import('./pages/contigo/ContigoAltoCosto'));
+const ContigoAltoCostoDatos = lazy(() => import('./pages/contigo/ContigoAltoCostoDatos'));
 const MiCuidado = lazy(() => import('./pages/contigo/MiCuidado'));
 const ContigoEnPreparacion = lazy(() => import('./pages/contigo/ContigoEnPreparacion'));
 const Instituciones = lazy(() => import('./pages/edvanta/Instituciones'));
@@ -262,6 +264,8 @@ export default function App() {
             anteriores se conservan como redirección permanente. */}
         <Route path="/contigo" element={<ContigoHome />} />
         <Route path="/contigo/rutas" element={<ContigoRutas />} />
+        <Route path="/contigo/alto-costo" element={<ContigoAltoCosto />} />
+        <Route path="/contigo/alto-costo/mis-datos" element={<ContigoAltoCostoDatos />} />
         <Route path="/contigo/tiroides" element={<ContigoTiroides />} />
         <Route path="/contigo/tiroides/guias" element={<ContigoGuias />} />
         <Route path="/contigo/:ruta/interes" element={<ContigoInteres />} />

@@ -388,6 +388,21 @@ const htmlRutasContigo = pagina({
 escribir('contigo/rutas.html', htmlRutasContigo);
 enSitemap.push({ ruta: '/contigo/rutas', prioridad: '0.8' });
 
+// Contigo Alto Costo: en noindex y fuera del sitemap hasta la revisión
+// legal y clínica del programa (ver docs/pacientes/README.md).
+const { ALTO_COSTO, CONDICIONES_ALTO_COSTO } = await importar('src/data/edvanta/contigoAltoCosto.js');
+const htmlAltoCosto = pagina({
+  titulo: 'Contigo Alto Costo: acompañamiento para pacientes | Edvanta',
+  descripcion: 'Programa gratuito de Edvanta para pacientes y cuidadores con artritis reumatoide, cáncer, enfermedad renal, hemofilia, hepatitis C, VIH o enfermedades huérfanas.',
+  canonical: `${SITIO}/contigo/alto-costo`,
+  imagen: `${SITIO}${ALTO_COSTO.imagen}`,
+  robots: 'noindex,follow',
+  jsonLd: [migas([['Inicio', `${SITIO}/`], ['Edvanta Contigo', `${SITIO}/contigo`], ['Alto costo', `${SITIO}/contigo/alto-costo`]])],
+  cuerpo: `<main><h1>${esc(ALTO_COSTO.titulo)}</h1><p>${esc(ALTO_COSTO.lead)}</p><ul>${ALTO_COSTO.ofrece.map((o) => `<li><strong>${esc(o.titulo)}</strong>: ${esc(o.texto)}</li>`).join('')}</ul><p>Condiciones: ${CONDICIONES_ALTO_COSTO.map((c) => esc(c.nombre)).join(', ')}.</p><ul>${ALTO_COSTO.promesas.map((p) => `<li>${esc(p)}</li>`).join('')}</ul>${avisoContigo}</main>`,
+});
+escribir('contigo/alto-costo.html', htmlAltoCosto);
+escribir('contigo/alto-costo/index.html', htmlAltoCosto);
+
 const htmlTiroidesContigo = pagina({
   titulo: 'Salud tiroidea: hipotiroidismo, Hashimoto y levotiroxina | Edvanta Contigo',
   descripcion: 'Ruta educativa de salud tiroidea: comprende tu condición, organiza tu tratamiento y prepara tus consultas. Educación clara, no reemplaza a tu equipo de salud.',
