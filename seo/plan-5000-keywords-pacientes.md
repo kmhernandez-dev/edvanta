@@ -36,43 +36,58 @@ La otra sesión trabaja en `seo/plan-10000-keywords.md`. Este plan no usa nada s
 
 | Grupo | Keywords | P1 | Páginas | Destino | Oferta principal |
 |---|---:|---:|---:|---|---|
-| 1. Vademécum profesional | 1.673 | 51 | 98 | `/vademecum/{medicamento}` (las 98 monografías) | Curso del grupo; secundaria, guía o capacitación para empresas |
+| 1. Vademécum profesional | 1.673 | 183 | 98 | `/vademecum/{medicamento}` (las 98 monografías) | Curso del grupo; secundaria, guía o capacitación para empresas |
 | 2. Condiciones de alto costo | 1.498 | 232 | 175 | Hub `/contigo/{condición}` y 4 satélites por condición en `/articulos/` | Programa Contigo Alto Costo; en cáncer, también la lista de interés de Tu Ruta Oncológica |
 | 3. Medicamentos de alto costo para pacientes | 1.059 | 159 | 76 | `/articulos/{medicamento}-para-que-sirve` | Programa Contigo Alto Costo y el hub de la condición |
 | 3b. Medicamentos de alto costo para profesionales | 414 | 0 | 73 | `/vademecum/{medicamento}` (monografías nuevas) | Curso de oncología, terapias dirigidas, inmunoterapia, quimioterapia o farmacología clínica |
 | 4. Acceso y derechos en Colombia | 122 | 32 | 15 | Pilares en `/articulos/` (MIPRES, tutela, EPS, PBS, alto costo, biosimilares, huérfanas) | Programa Contigo Alto Costo |
 | 5. Cuidadores | 49 | 11 | 5 | Pilares en `/articulos/` | Programa Contigo Alto Costo |
 | 6. Profesional en alto costo | 185 | 22 | 17 | Farmacia oncológica, biológicos, PSP, terapia de reemplazo enzimático, antirretrovirales | Cursos de oncología y biológicos; guías TRE y fibrosis quística; capacitación en `/empresas/{área}` |
-| **Total** | **5.000** | **507** | **459** | | |
+| **Total** | **5.000** | **639** | **459** | | |
 
-**Prioridades:** 507 P1, 2.033 P2 y 2.460 P3. Para llegar a 5.000 exactas se recortaron 665 P3, empezando por los modificadores más débiles del vademécum.
+**Prioridades:** 639 P1, 2.619 P2 y 1.742 P3. Para llegar a 5.000 exactas se recortaron 665 P3, empezando por los modificadores más débiles del vademécum.
 
-**Monografías del vademécum en `noindex`:** sus keywords bajan un nivel de prioridad hasta que se revisan.
+**Corrección del 21-nov-2026:** la primera versión de este plan daba 69 monografías en `noindex`. Era un error: el registro de la revisión de Karla del 17-nov-2026 estaba en `main` y no en esta rama. Las 98 monografías están aprobadas e indexables.
 
-## Estado de las 459 páginas
+## Estado de las 459 páginas (21-nov-2026)
 
 | Estado | Páginas | Keywords |
 |---|---:|---:|
-| Publicada e indexable: enriquecer | 30 | 552 |
-| Publicada en `noindex`: falta la revisión de Karla | 69 | 1.187 |
+| Publicada e indexable: enriquecer (las 98 monografías y el grupo oncológico) | 99 | 1.739 |
+| Publicada en `noindex`: ficha «para qué sirve» escrita, falta la revisión de Karla | 76 | 1.059 |
 | Guía de venta existente | 2 | 8 |
 | Por crear: hub de condición en Contigo | 35 | 546 |
 | Por crear: artículo satélite | 140 | 952 |
-| Por crear: ficha «para qué sirve» | 76 | 1.059 |
 | Por crear: monografía del vademécum | 73 | 414 |
 | Por crear: artículo pilar | 29 | 245 |
 | Por crear: grupo del vademécum | 5 | 37 |
 
+**Fichas de alto costo publicadas el 21-nov-2026:** 100 fichas «para qué sirve» en `/articulos/{medicamento}-para-que-sirve`, generadas con `scripts/generar-fichas-alto-costo.mjs`.
+
+- 76 son las del grupo 3 de este plan; las otras 24 amplían la lista (pegfilgrastim, vedolizumab, belimumab, eculizumab, inhibidores de cinasas, durvalumab, ipilimumab, daratumumab y otros).
+- Cada dato sale de la ficha técnica de CIMA, con el número de registros sanitarios vigentes en el CUM del INVIMA.
+- Entran en `noindex` hasta la revisión de Karla.
+- El pre-revisor (`scripts/pre-revision-clinica.mjs`) da para todas:
+  - descargo presente;
+  - entre 813 y 1.192 palabras;
+  - similitud máxima de 0,48 entre pares de la misma familia: laronidasa e idursulfasa, lenalidomida y pomalidomida, y los dos antivirales con sofosbuvir.
+
 ## Prioridad recomendada
 
-### 1. Revisión de las 69 monografías en `noindex` (responsable: Karla)
+### 1. Revisión de las 100 fichas de alto costo (responsable: Karla)
 
-- Libera **1.187 keywords** sin escribir una página nueva.
-- Las monografías ya están publicadas y enlazan a los cursos.
-- Es la acción con mejor relación entre esfuerzo y resultado de todo el plan.
-- **Siguiente paso:** las reviso por grupos y le envío a Karla la lista de URLs por grupo, con las fuentes.
+- Libera **1.059 keywords** del plan, y las de las 24 fichas extra, sin escribir una página nueva.
+- Las fichas ya están publicadas en `noindex`.
+- Están enlazadas desde Contigo Alto Costo (`/contigo/alto-costo#medicamentos`), desde el vademécum oncológico y entre sí por familia.
+- **Siguiente paso:** te envío la lista por familias (reumatología, oncología, VIH y hepatitis C, hemofilia, esclerosis múltiple y huérfanas), con la ficha técnica de cada una.
 
-### 2. Ola 1 de pacientes (responsable: Claude; revisión: Karla)
+### 2. Enriquecer las 98 monografías indexables (responsable: Claude)
+
+- Son 1.739 keywords que apuntan a páginas ya indexables.
+- Hay que medir en Search Console qué consultas reciben impresiones sin clic y reforzar la sección que las responde.
+- Cada monografía de oncología ya enlaza a su ficha para pacientes.
+
+### 3. Ola 1 de pacientes (responsable: Claude; revisión: Karla)
 
 Cinco condiciones:
 
@@ -88,21 +103,21 @@ Cada condición lleva:
 
 - su hub;
 - sus satélites;
-- las fichas «para qué sirve» de sus medicamentos de alto costo: trastuzumab, pertuzumab, palbociclib, tamoxifeno, letrozol, bevacizumab, capecitabina, pembrolizumab, osimertinib, enzalutamida, abiraterona, adalimumab, etanercept, tofacitinib y los demás de su condición en el CSV.
+- enlaces a las fichas «para qué sirve» de sus medicamentos, que ya están escritas.
 
 Por qué primero:
 
 - Edvanta ya posiciona con el patrón «para qué sirve» (Semrush, 16-nov-2026: 347 keywords, casi todas de ese tipo).
 - El vademécum ya tiene el grupo de oncología de alto costo indexable.
 
-### 3. Pilares de acceso y derechos
+### 4. Pilares de acceso y derechos
 
 Son tres pilares: MIPRES, tutela para medicamentos y «la EPS no entrega medicamentos».
 
 - Ningún competidor extranjero puede responderlos, porque son del sistema colombiano.
 - Cada hub de condición enlaza a ellos.
 
-### 4. Después, según la medición
+### 5. Después, según la medición
 
 Vienen las olas 2 (VIH y hepatitis C) y 3 (hemofilia y huérfanas), y las 73 monografías profesionales nuevas.
 
@@ -114,7 +129,7 @@ Se mide a los 30, 60 y 90 días en Search Console por URL. Los eventos de clic a
 
 | Señal | Umbral para seguir invirtiendo |
 |---|---|
-| Monografías revisadas | Cada una aparece en 10 o más consultas con impresiones a los 60 días |
+| Fichas de alto costo revisadas | Cada una aparece en 10 o más consultas con impresiones a los 60 días de indexarse |
 | Hubs de la ola 1 | 20 o más consultas con impresiones por hub a los 60 días |
 | Clic de pacientes al programa | 2 % o más de las visitas a hubs y fichas llegan a `/contigo/alto-costo` |
 | Clic de profesionales a cursos | 2 % o más de las visitas a monografías hacen clic en el curso o la guía |
@@ -125,7 +140,7 @@ Si la ola 1 no llega a esos umbrales a los 90 días, no se abren las olas 2 y 3.
 ## Requisitos antes de escribir
 
 1. **Ruta nueva.** Los hubs `/contigo/{condición}` necesitan la ruta `/contigo/:condicion` (hoy solo existe `/contigo/tiroides`) y entrar al prerender.
-2. **Programa sin desplegar.** El programa Contigo Alto Costo está construido en esta rama, sin desplegar y con el registro cerrado. Mientras no se abra:
+2. **Registro cerrado.** El programa Contigo Alto Costo está publicado desde el 21-nov-2026 en `noindex` y con el registro cerrado. Mientras no se abra:
    - en cáncer, el CTA principal debe ser la lista de interés de Tu Ruta Oncológica, que ya existe;
    - en las demás condiciones, debe ser `/contigo`.
 3. **Contenido de salud nuevo en `noindex`** hasta la revisión de Karla, con fuentes:

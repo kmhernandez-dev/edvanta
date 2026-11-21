@@ -300,7 +300,10 @@ const nombreBusqueda = (nombre) => normalizarNombre(nombre.replace(/\s*\(.*\)\s*
 function normalizarNombre(s) { return s.replace(/\//g, ' ').replace(/\s+/g, ' ').trim().toLowerCase(); }
 const ALIAS = { dipirona: ['metamizol'], acetaminofen: ['paracetamol'], butilescopolamina: ['hioscina'], clorfeniramina: ['dexclorfeniramina'] };
 
-for (const m of MONOGRAFIAS) {
+// Monografías que escribió la otra sesión (grupo renal y dos de diabetes): no son de este carril.
+const MONOGRAFIAS_OTRO = new Set(['dapagliflozina', 'gliclazida', 'finerenona']);
+
+for (const m of MONOGRAFIAS.filter((x) => !MONOGRAFIAS_OTRO.has(x.slug) && OFERTA_GRUPO[x.grupo])) {
   const [principal, guiaGrupo, empresa] = OFERTA_GRUPO[m.grupo];
   const oferta = OFERTA_ESPECIFICA[m.slug] || principal;
   const indexable = Boolean(REVISION_VADEMECUM[m.slug]);
@@ -663,7 +666,9 @@ for (const [slug, nombre, via, condicion, clase, banderas] of MEDICAMENTOS_AC) {
       grupo: '3. Medicamentos de alto costo (pacientes)',
       slug: `${slug}-para-que-sirve`,
       url: `${SITIO}/articulos/${slug}-para-que-sirve`,
-      estado: 'Por crear: ficha «para qué sirve» (molde de seo/plantilla-ficha-medicamento.md)',
+      estado: existsSync(`public/articulos/articulos_edvanta/salud/${slug}-para-que-sirve.md`)
+        ? 'Publicada en noindex: falta revisión de Karla'
+        : 'Por crear: ficha «para qué sirve» (molde de seo/plantilla-ficha-medicamento.md)',
       audiencia: AUD.pacienteCuidador,
       intencion: plantilla.includes('EPS') || plantilla.includes('MIPRES') || plantilla.includes('tutela') ? 'Paciente: acceso y derechos' : 'Paciente informativa',
       etapa,
