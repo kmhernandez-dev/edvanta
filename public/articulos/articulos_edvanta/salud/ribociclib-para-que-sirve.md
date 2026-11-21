@@ -1,0 +1,111 @@
+El ribociclib es una terapia dirigida oral: un inhibidor de CDK4 y CDK6. Sirve para tratar el cáncer de mama con receptores hormonales positivos y HER2 negativo, en etapa temprana con alto riesgo o en etapa avanzada, junto con hormonoterapia. Requiere electrocardiogramas y controles del hígado, sobre todo en los primeros meses.
+
+> **En resumen**
+> - Sirve para tratar el cáncer de mama con receptores hormonales positivos y HER2 negativo, en etapa temprana con alto riesgo o en etapa avanzada, junto con hormonoterapia.
+> - Se toma por boca. La dosis y el horario los define tu especialista.
+> - Lo formula y lo vigila un especialista en oncología.
+> - Los más frecuentes son la neutropenia, las infecciones y las náuseas, entre otros.
+> - Puede causar daño al feto y no se recomienda en el embarazo.
+
+## Para qué sirve el ribociclib
+
+Según su ficha técnica, el ribociclib está indicado para [1]:
+
+- Cáncer de mama precoz RH positivo y HER2 negativo con alto riesgo de recaída, con un inhibidor de la aromatasa
+- Cáncer de mama avanzado o metastásico RH positivo y HER2 negativo, con un inhibidor de la aromatasa o con fulvestrant
+
+La ficha técnica citada es la de la agencia española, que se publica completa en español. Las indicaciones aprobadas en Colombia pueden variar: tu especialista confirma si tu caso es una de ellas.
+
+## Cómo actúa
+
+Bloquea las proteínas CDK4 y CDK6 y frena la división de las células tumorales que dependen de las hormonas [1].
+
+## Cómo se toma
+
+Según la ficha técnica [1]:
+
+- Se toma por boca una vez al día; en enfermedad avanzada, en ciclos de 21 días de toma y 7 de descanso
+- Se toma a la misma hora, con o sin comida, y se traga entero
+- Antes y durante el tratamiento se hacen hemogramas, pruebas del hígado y electrocardiogramas [1]
+
+La dosis, la frecuencia y la duración las define tu especialista según tu caso. No suspendas ni cambies el tratamiento por tu cuenta: si algo te preocupa, consulta primero.
+
+## Quién no debe usarlo
+
+No se usa en caso de [1]:
+
+- Alergia al ribociclib, al maní (cacahuate), a la soya o a los componentes del producto
+
+Antes de empezar, cuéntale a tu médico qué otros medicamentos, vitaminas o productos naturales usas, y si tienes otras enfermedades.
+
+## Efectos secundarios
+
+Los más frecuentes son la neutropenia, las infecciones, las náuseas, el dolor de cabeza, el cansancio, la disminución de glóbulos blancos y las alteraciones de las pruebas del hígado [1].
+
+No todas las personas los presentan. Si un efecto te molesta, coméntalo con tu equipo tratante: muchas veces se puede manejar sin suspender el tratamiento.
+
+## Cuándo consultar
+
+Busca atención de inmediato si tienes [1]:
+
+- Fiebre de 38 °C o más, escalofríos o malestar general: con las defensas bajas, una infección puede volverse grave en pocas horas
+- Palpitaciones, mareo o desmayo: puede alterar el ritmo del corazón
+- Piel u ojos amarillos, orina oscura o dolor en el lado derecho del abdomen
+- Erupción extensa, ampollas o llagas
+- Tos o falta de aire nuevas
+
+Si es una emergencia, ve a urgencias o llama a la línea 123.
+
+## Cuidados durante el tratamiento
+
+- Evita la toronja (pomelo) y su jugo [1].
+- Antes de tomar cualquier otro medicamento, suplemento o producto natural, pregunta a tu equipo de oncología o al químico farmacéutico.
+- Asiste a los electrocardiogramas y controles programados [1].
+
+## Embarazo y lactancia
+
+Puede causar daño al feto y no se recomienda en el embarazo. Las mujeres en edad fértil deben usar anticoncepción eficaz durante el tratamiento y unas semanas después. No se debe amamantar durante el tratamiento ni poco después, según indique el médico [1].
+
+## Cómo se guarda
+
+Se guarda en el envase original para protegerlo de la humedad [1].
+
+## Ribociclib en Colombia
+
+El Código Único de Medicamentos (CUM) del INVIMA registra 1 registro sanitario vigente con ribociclib [2].
+
+Es un medicamento de alto costo. Lo formula el especialista y lo entrega o lo aplica la red de tu EPS. Según el caso, se formula dentro del plan de beneficios o por MIPRES, la herramienta del Ministerio de Salud para lo que no se financia con la UPC. Si la entrega se demora, pide por escrito el motivo y la fecha probable, y avísale a tu médico para no interrumpir el tratamiento.
+
+## Acompañamiento de Edvanta Contigo
+
+En [Edvanta Contigo](/contigo) encuentras rutas educativas para pacientes y cuidadores. Estamos preparando [Contigo Alto Costo](/contigo/alto-costo), un programa con químicos farmacéuticos para personas que usan medicamentos de alto costo: en su página ves cómo funcionará y cuándo abre el registro. Si recibes tratamiento contra el cáncer, también puedes dejar tu interés en [Tu Ruta Oncológica](/contigo/ruta-oncologica/interes). Edvanta educa y acompaña; no diagnostica, no formula y no reemplaza a tu equipo tratante.
+
+## También te puede interesar
+
+- [Palbociclib: para qué sirve](/articulos/palbociclib-para-que-sirve)
+- [Abemaciclib: para qué sirve](/articulos/abemaciclib-para-que-sirve)
+- [Dasatinib: para qué sirve](/articulos/dasatinib-para-que-sirve)
+- [Tamoxifeno: para qué sirve](/articulos/tamoxifeno-para-que-sirve)
+
+## Para profesionales
+
+Consulta el grupo de [medicamentos oncológicos de alto costo](/vademecum/medicamentos-oncologicos-de-alto-costo). Para profundizar, Edvanta ofrece el curso de [Terapias Dirigidas en Oncología](/curso-de-terapias-dirigidas-en-oncologia) y la guía [Seguridad del medicamento](/guia/seguridad-del-medicamento).
+
+## Preguntas frecuentes
+
+### ¿Por qué el ribociclib necesita electrocardiogramas?
+
+Porque puede prolongar el intervalo QT, una medida del ritmo del corazón. Los controles permiten detectarlo a tiempo.
+
+### ¿Soy alérgica al maní, puedo tomar ribociclib?
+
+No. La alergia al maní o a la soya es una contraindicación, por los componentes del producto.
+
+### ¿El ribociclib se usa en cáncer de mama temprano?
+
+Sí, en cáncer de mama precoz RH positivo y HER2 negativo con alto riesgo de recaída, junto con un inhibidor de la aromatasa.
+
+## Fuentes
+
+1. Agencia Española de Medicamentos y Productos Sanitarios (AEMPS). Ficha técnica de Kisqali 200 mg comprimidos recubiertos con película, consultada el 21-nov-2026. [Ver fuente](https://cima.aemps.es/cima/dochtml/ft/1171221001/FT_1171221001.html)
+2. INVIMA. Código Único de Medicamentos vigentes (datos.gov.co), consultado el 21-nov-2026. [Ver fuente](https://www.datos.gov.co/d/i7cb-raxc)

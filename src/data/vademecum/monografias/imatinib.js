@@ -248,6 +248,7 @@ export default {
   ],
   referencias: [F.ftImatinib, F.iris, F.gistImatinib, F.invimaCum, F.cipolle2012, F.ramalho2012],
   enlaces: [
+    ['Imatinib: ficha para pacientes y cuidadores', '/articulos/imatinib-para-que-sirve'],
     ['Cursos de ensayos clínicos y buenas prácticas clínicas', '/articulos/cursos-de-ensayos-clinicos-y-buenas-practicas-clinicas'],
     ['Cursos de investigación y desarrollo farmacéutico', '/articulos/cursos-de-investigacion-y-desarrollo-farmaceutico'],
     ['Daraxonrasib para cáncer pancreático metastásico: recomendación del CHMP', '/articulos/chmp-recomienda-daraxonrasib-para-cancer-pancreatico-metastasico'],

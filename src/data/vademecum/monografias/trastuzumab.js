@@ -230,6 +230,7 @@ export default {
   ],
   referencias: [F.ftTrastuzumab, F.slamOn2001, F.hera, F.toga, F.invimaCum, F.cipolle2012, F.ramalho2012],
   enlaces: [
+    ['Trastuzumab: ficha para pacientes y cuidadores', '/articulos/trastuzumab-para-que-sirve'],
     ['Tukysa: el CHMP amplía su uso en cáncer de mama HER2', '/articulos/chmp-recomienda-ampliar-indicacion-de-tukysa'],
     ['Tucatinib con trastuzumab y pertuzumab: aprobación de la FDA', '/articulos/fda-aprueba-tucatinib-con-trastuzumab-y-pertuzumab-como-mantenimiento'],
     ['Cursos de ensayos clínicos y buenas prácticas clínicas', '/articulos/cursos-de-ensayos-clinicos-y-buenas-practicas-clinicas'],

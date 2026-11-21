@@ -139,6 +139,7 @@ export default {
     F.cipolle2012, F.ramalho2012,
   ],
   enlaces: [
+    ['Fichas para pacientes de medicamentos de alto costo', '/contigo/alto-costo#medicamentos'],
     ['Cursos de ensayos clínicos y buenas prácticas clínicas', '/articulos/cursos-de-ensayos-clinicos-y-buenas-practicas-clinicas'],
     ['Tukysa: el CHMP amplía su uso en cáncer de mama HER2', '/articulos/chmp-recomienda-ampliar-indicacion-de-tukysa'],
     ['Talvey: el CHMP amplía su indicación en mieloma múltiple', '/articulos/chmp-recomienda-ampliar-indicacion-de-talvey'],

@@ -12,8 +12,9 @@ const slugs = new Set(articulos.map((a) => a.slug));
 describe('SEO de los artículos', () => {
   it('cada artículo tiene metadatos SEO, imagen existente y texto alternativo', () => {
     // 404 hasta el 11-nov-2026 + el blog «Mejores cursos» (31 al 12-nov-2026) + 9 de presión alta
-    // + 11 del lote de colesterol, digestivo, dolor y gota y 12 de riñón, arritmias, salud mental y piel (17-nov-2026).
-    expect(articulos).toHaveLength(517);
+    // + 11 del lote de colesterol, digestivo, dolor y gota y 12 de riñón, arritmias, salud mental y piel (17-nov-2026)
+    // + 100 fichas de medicamentos de alto costo (articulosAltoCosto.js, 21-nov-2026).
+    expect(articulos).toHaveLength(617);
     expect(Object.keys(SEO_ARTICULOS)).toHaveLength(390);
     for (const a of articulos) {
       const seo = SEO_ARTICULOS[a.slug] || {

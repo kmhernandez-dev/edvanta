@@ -21,7 +21,13 @@ import {
   ALTO_COSTO, CONDICIONES_ALTO_COSTO, NECESIDADES_ALTO_COSTO, FINALIDADES_ALTO_COSTO,
 } from '../../data/edvanta/contigoAltoCosto';
 import { apiUrl } from '../../config/api';
+import { ARTICULOS_ALTO_COSTO } from '../../data/articulosAltoCosto';
 import { updatePageSeo } from '../../utils/seo';
+
+// Fichas «para qué sirve» de medicamentos de alto costo, en orden alfabético.
+const FICHAS = ARTICULOS_ALTO_COSTO
+  .map((a) => ({ slug: a.slug, nombre: a.title.split(':')[0] }))
+  .sort((a, b) => a.nombre.localeCompare(b.nombre, 'es'));
 
 const ICONOS = { BookOpen, Pill, ClipboardList, Users };
 
@@ -320,6 +326,26 @@ export default function ContigoAltoCosto() {
           <div className="mt-8 max-w-3xl rounded-3xl bg-white p-5 shadow-sm sm:p-8">
             <FormularioAltoCosto />
           </div>
+        </ContigoSection>
+
+        <ContigoSection id="medicamentos" tone="white">
+          <ContigoEyebrow>Entiende tu medicamento</ContigoEyebrow>
+          <h2 className="mt-3 font-display text-2xl font-extrabold text-edvanta-deep sm:text-3xl">Fichas de medicamentos de alto costo</h2>
+          <p className="mt-2 max-w-3xl text-[15px] leading-7 text-[var(--contigo-muted)]">
+            Para qué sirve cada medicamento, cómo se aplica o se toma, sus efectos secundarios y cuándo consultar, con la ficha técnica como fuente. Son {FICHAS.length} fichas del equipo editorial de Edvanta; la revisión clínica de cada una está en curso.
+          </p>
+          <ul className="mt-6 flex flex-wrap gap-2">
+            {FICHAS.map((f) => (
+              <li key={f.slug}>
+                <Link to={`/articulos/${f.slug}`} className="inline-block rounded-full border border-[var(--contigo-border)] px-3 py-1.5 text-sm font-semibold text-edvanta-deep hover:border-[var(--contigo-primary)] hover:text-[var(--contigo-primary)]">
+                  {f.nombre}
+                </Link>
+              </li>
+            ))}
+          </ul>
+          <Link to="/articulos/categoria/medicamentos-de-alto-costo" className="mt-6 inline-block font-bold text-[var(--contigo-primary)] hover:underline">
+            Ver todas las fichas
+          </Link>
         </ContigoSection>
 
         <ContigoSection tone="white">

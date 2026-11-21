@@ -228,6 +228,7 @@ export default {
   ],
   referencias: [F.ftPembrolizumab, F.keynote006, F.keynote024, F.keynote189, F.invimaCum, F.cipolle2012, F.ramalho2012],
   enlaces: [
+    ['Pembrolizumab: ficha para pacientes y cuidadores', '/articulos/pembrolizumab-para-que-sirve'],
     ['Anvisa prohíbe lotes falsificados de Keytruda', '/articulos/anvisa-prohibe-lotes-falsificados-de-keytruda'],
     ['Nogapendekin alfa inbakicept en cáncer de vejiga: ampliación de la FDA', '/articulos/fda-amplia-indicacion-de-nogapendekin-alfa-inbakicept-en-cancer-de-vejiga'],
     ['Cursos de ensayos clínicos y buenas prácticas clínicas', '/articulos/cursos-de-ensayos-clinicos-y-buenas-practicas-clinicas'],
