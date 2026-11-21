@@ -53,10 +53,10 @@ export function seccionDeRuta(pathname = '/') {
 export const OFERTAS = {
   profesionales: {
     antetitulo: 'Empieza hoy',
-    titulo: 'Estudia gratis. Paga solo si quieres el certificado.',
-    texto: 'Los cursos de Edvanta se estudian sin costo. El certificado verificable cuesta COP 60.000 por curso, en un solo pago.',
-    puntos: ['Contenido gratis en todos los cursos propios', 'Certificado verificable: COP 60.000', 'Casos reales y quices en el aula'],
-    principal: { to: '/cursos', texto: 'Ver los cursos gratis' },
+    titulo: 'Prueba la primera unidad. Certifícate con el curso completo.',
+    texto: 'En cada curso de Edvanta la primera unidad es abierta. El curso completo, con certificado verificable, cuesta COP 60.000 si lo compras en tus primeros 7 días, en un solo pago.',
+    puntos: ['Primera unidad abierta en cada curso', 'Curso completo con certificado: COP 60.000', 'Casos reales y quices en el aula'],
+    principal: { to: '/cursos', texto: 'Ver los cursos' },
     whatsapp: 'Hola, equipo Edvanta. Quiero que me recomienden un curso para empezar.',
     formulario: 'Te recomendamos por dónde empezar',
   },
@@ -81,8 +81,8 @@ export const OFERTAS = {
   carrera: {
     antetitulo: 'Tu carrera',
     titulo: 'Prepárate para tu próximo empleo farmacéutico.',
-    texto: 'Arma tu hoja de vida, mejora tu perfil y demuestra lo que sabes con cursos gratis y certificado verificable.',
-    puntos: ['Hoja de vida con diseños listos', 'Cursos gratis con certificado verificable', 'Guías de empleo, prácticas y LinkedIn'],
+    texto: 'Arma tu hoja de vida, mejora tu perfil y demuestra lo que sabes con cursos con certificado verificable.',
+    puntos: ['Hoja de vida con diseños listos', 'Cursos con certificado verificable', 'Guías de empleo, prácticas y LinkedIn'],
     principal: { to: '/hoja-de-vida/crear', texto: 'Crear mi hoja de vida' },
     whatsapp: 'Hola, equipo Edvanta. Quiero orientación para mi carrera farmacéutica.',
     formulario: 'Te orientamos por WhatsApp',

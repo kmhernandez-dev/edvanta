@@ -85,7 +85,7 @@ function Resultado({ publico, conf, datos }) {
     principal = <BotonWhatsApp mensaje={msgWa} origen={`unete-${publico}-listo`} tamano="ed-btn--lg ed-btn--block">{publico === 'asesorias' ? 'Agendar por WhatsApp' : 'Avanzar por WhatsApp'}</BotonWhatsApp>;
   } else {
     const destino = area?.escuela ? `/escuelas/${area.escuela}` : '/cursos';
-    principal = <Link to={destino} onClick={() => trackEvent('unete_resultado_click', { publico, destino })} className="ed-btn ed-btn--gradient ed-btn--lg ed-btn--block">{area ? `Ver los cursos de ${area.nombre}` : 'Ver los cursos gratis'} <ArrowRight className="ed-btn__arrow" aria-hidden="true" /></Link>;
+    principal = <Link to={destino} onClick={() => trackEvent('unete_resultado_click', { publico, destino })} className="ed-btn ed-btn--gradient ed-btn--lg ed-btn--block">{area ? `Ver los cursos de ${area.nombre}` : 'Ver los cursos'} <ArrowRight className="ed-btn__arrow" aria-hidden="true" /></Link>;
     if (publico === 'profesionales' && guias.length) extra = <div className="space-y-2.5"><p className="text-[13px] font-semibold text-edvanta-muted">Y la guía para tu área</p>{tarjetaGuia(guias[0])}</div>;
   }
 

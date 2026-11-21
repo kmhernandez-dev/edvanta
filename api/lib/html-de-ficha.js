@@ -85,8 +85,8 @@ export function preguntasDeCurso(ficha, emisor) {
     },
     ...(certificado ? [{ q: '¿Da certificado?', a: certificado }] : []),
     ...(propio && Number(ficha.certificado?.precio) > 0 ? [{
-      q: '¿Puedo estudiarlo gratis? ¿Cuánto cuesta el certificado?',
-      a: `Sí. Hay dos formas de estudiarlo: gratis, con todo el contenido y sin certificado, o con certificado, que en Colombia cuesta ${pesos(ficha.certificado.precio)} (pago único con Mercado Pago: tarjetas, PSE, Nequi y más). Si empiezas gratis, puedes pasarte al certificado cuando quieras desde tu aula.`,
+      q: '¿Cuánto cuesta? ¿Puedo probarlo antes?',
+      a: `El curso completo, con el certificado incluido, cuesta ${pesos(ficha.certificado.precio)} en Colombia (pago único con Mercado Pago: tarjetas, PSE, Nequi y más). Al inscribirte puedes probar la primera unidad completa y comprar el curso cuando quieras desde tu aula.`,
     }] : []),
     { q: '¿Qué necesito para empezar?', a: ficha.requisitos || 'No hay requisitos declarados para este curso.' },
     ...(ficha.guia?.preguntas || []).map(([q, a]) => ({ q, a })),

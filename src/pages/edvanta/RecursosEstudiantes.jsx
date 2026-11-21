@@ -95,13 +95,13 @@ export default function RecursosEstudiantes() {
           image="/img/escuelas/calidad.webp"
           imageAlt="Estudiantes de Química Farmacéutica trabajando en un laboratorio"
           badges={[
-            { icon: GraduationCap, label: `${TOTAL_CURSOS_GRATIS} cursos gratis` },
+            { icon: GraduationCap, label: `${TOTAL_CURSOS_GRATIS} cursos con certificado` },
             { icon: BookOpen, label: `${GUIAS.length} guías de carrera` },
             { icon: Newspaper, label: 'Alertas del INVIMA' },
           ]}
           actions={(
             <>
-              <Btn href="#cursos" size="lg" icon={GraduationCap}>Ver los cursos gratis</Btn>
+              <Btn href="#cursos" size="lg" icon={GraduationCap}>Ver los cursos</Btn>
               <Btn href="#enlazar" variant="secondary" size="lg" icon={Link2}>Enlazar desde mi programa</Btn>
             </>
           )}
@@ -137,7 +137,7 @@ export default function RecursosEstudiantes() {
           <SectionHeading
             eyebrow="Guías de carrera"
             title="Qué estudiar según el área en la que quieres trabajar"
-            desc="Funciones reales del cargo, normas que se piden en Colombia, cursos gratis del área y una ruta para empezar."
+            desc="Funciones reales del cargo, normas que se piden en Colombia, cursos del área y una ruta para empezar."
           />
           <h3 className="mt-10 text-sm font-bold uppercase tracking-wide text-edvanta-muted">Por área</h3>
           <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
