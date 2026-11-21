@@ -120,6 +120,6 @@ export default {
     ['Medicamentos para el aparato digestivo', '/vademecum/medicamentos-para-el-aparato-digestivo', 'Vademécum'],
     ['Farmacocinética clínica: ajuste de dosis', '/articulos/farmacocinetica-clinica-ajuste-de-dosis', 'Artículo'],
     ['Farmacovigilancia: cómo reportar una RAM', '/articulos/farmacovigilancia-reporte-ram-paso-a-paso', 'Artículo'],
-    ['Curso de Farmacología Gastrointestinal', '/curso-de-farmacologia-gastrointestinal', 'Curso gratis'],
+    ['Curso de Farmacología Gastrointestinal', '/curso-de-farmacologia-gastrointestinal', 'Curso'],
   ],
 };

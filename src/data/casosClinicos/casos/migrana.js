@@ -125,6 +125,6 @@ export default {
     ['Migraña: síntomas y tratamiento', '/articulos/migrana-sintomas-y-tratamiento', 'Artículo'],
     ['Amitriptilina', '/vademecum/amitriptilina', 'Vademécum'],
     ['Ibuprofeno', '/vademecum/ibuprofeno', 'Vademécum'],
-    ['Curso de Farmacología del Sistema Nervioso Central', '/curso-de-farmacologia-del-sistema-nervioso-central', 'Curso gratis'],
+    ['Curso de Farmacología del Sistema Nervioso Central', '/curso-de-farmacologia-del-sistema-nervioso-central', 'Curso'],
   ],
 };

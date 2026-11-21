@@ -144,6 +144,6 @@ export default {
   enlaces: [
     ['Salud mental y sistema nervioso', '/vademecum/salud-mental-y-sistema-nervioso', 'Vademécum'],
     ['Fármacos en embarazo y lactancia: seguridad', '/articulos/farmacos-embarazo-lactancia-seguridad', 'Artículo'],
-    ['Curso de Farmacología del Sistema Nervioso Central', '/curso-de-farmacologia-del-sistema-nervioso-central', 'Curso gratis'],
+    ['Curso de Farmacología del Sistema Nervioso Central', '/curso-de-farmacologia-del-sistema-nervioso-central', 'Curso'],
   ],
 };

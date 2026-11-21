@@ -121,7 +121,7 @@ describe.each(CASOS.map((c) => [c.slug, c]))('caso %s', (_slug, c) => {
       expect(titulo.length).toBeGreaterThan(3);
       if (tipo === 'Vademécum') expect(PAGINAS_VADEMECUM.map((p) => `/vademecum/${p.slug}`)).toContain(ruta);
       else if (tipo === 'Artículo') expect(articulos.map((a) => `/articulos/${a.slug}`)).toContain(ruta);
-      else if (tipo === 'Curso gratis') expect(CURSOS_PROPIOS).toContain(ruta);
+      else if (tipo === 'Curso') expect(CURSOS_PROPIOS).toContain(ruta);
       else throw new Error(`Tipo de enlace desconocido: ${tipo}`);
     }
   });

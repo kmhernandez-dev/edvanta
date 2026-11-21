@@ -120,6 +120,6 @@ export default {
     ['Atorvastatina', '/vademecum/atorvastatina', 'Vademécum'],
     ['Medicamentos anticoagulantes', '/vademecum/medicamentos-anticoagulantes', 'Vademécum'],
     ['Fibrilación auricular: síntomas y tratamiento', '/articulos/fibrilacion-auricular-sintomas-y-tratamiento', 'Artículo'],
-    ['Curso de Farmacología de Anticoagulantes y Antiagregantes', '/curso-de-anticoagulantes-y-antiagregantes', 'Curso gratis'],
+    ['Curso de Farmacología de Anticoagulantes y Antiagregantes', '/curso-de-anticoagulantes-y-antiagregantes', 'Curso'],
   ],
 };

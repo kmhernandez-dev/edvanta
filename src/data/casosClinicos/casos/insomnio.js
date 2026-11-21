@@ -134,6 +134,6 @@ export default {
     ['Trazodona', '/vademecum/trazodona', 'Vademécum'],
     ['Salud mental y sistema nervioso', '/vademecum/salud-mental-y-sistema-nervioso', 'Vademécum'],
     ['Insomnio y tiroides', '/articulos/insomnio-y-tiroides', 'Artículo'],
-    ['Curso de Farmacología del Sistema Nervioso Central', '/curso-de-farmacologia-del-sistema-nervioso-central', 'Curso gratis'],
+    ['Curso de Farmacología del Sistema Nervioso Central', '/curso-de-farmacologia-del-sistema-nervioso-central', 'Curso'],
   ],
 };

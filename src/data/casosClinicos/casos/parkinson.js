@@ -134,6 +134,6 @@ export default {
   enlaces: [
     ['Metoclopramida', '/vademecum/metoclopramida', 'Vademécum'],
     ['Domperidona', '/vademecum/domperidona', 'Vademécum'],
-    ['Curso de Farmacología del Sistema Nervioso Central', '/curso-de-farmacologia-del-sistema-nervioso-central', 'Curso gratis'],
+    ['Curso de Farmacología del Sistema Nervioso Central', '/curso-de-farmacologia-del-sistema-nervioso-central', 'Curso'],
   ],
 };

@@ -128,7 +128,7 @@ function htmlDeBloque(b) {
 }
 
 /** Texto que acompaña las clases abiertas en el vademécum (HTML y React). */
-export const TEXTO_CLASES_VADEMECUM = 'Clases abiertas de los cursos de Edvanta para profesionales de la salud, verificadas por Karla Hernández, química farmacéutica. Se ven sin registro; el curso completo es gratis y al terminarlo puedes obtener tu certificado.';
+export const TEXTO_CLASES_VADEMECUM = 'Clases abiertas de los cursos de Edvanta para profesionales de la salud, verificadas por Karla Hernández, química farmacéutica. Se ven sin registro. En el curso completo guardas tu avance, presentas las evaluaciones y obtienes tu certificado verificable.';
 
 /**
  * Las clases gratuitas que enseñan lo mismo que la página y sus cursos
@@ -138,7 +138,7 @@ export function htmlDeClases({ clases = [], cursos = [] } = {}) {
   if (!clases.length && !cursos.length) return '';
   const lista = clases.map((c) => `<li><a href="${esc(c.ruta)}">${esc(c.titulo)}</a>${c.curso ? ` · ${esc(c.curso.nombre)}` : ''}</li>`).join('');
   const completos = cursos.map((c) => `<a href="${esc(c.ruta)}">${esc(c.nombre)}</a>`).join(', ');
-  return `<section id="clases"><h2>Apréndelo en clase, gratis</h2><p>${esc(TEXTO_CLASES_VADEMECUM)}</p>${lista ? `<ul>${lista}</ul>` : ''}${completos ? `<p>Cursos completos: ${completos}.</p>` : ''}</section>`;
+  return `<section id="clases"><h2>Apréndelo en clase</h2><p>${esc(TEXTO_CLASES_VADEMECUM)}</p>${lista ? `<ul>${lista}</ul>` : ''}${completos ? `<p>Cursos completos: ${completos}.</p>` : ''}</section>`;
 }
 
 /** Cuerpo HTML de una página del vademécum (sin el h1, que pone el prerender). */

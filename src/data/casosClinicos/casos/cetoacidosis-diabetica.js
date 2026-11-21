@@ -137,6 +137,6 @@ export default {
   enlaces: [
     ['Medicamentos para la diabetes tipo 2: preguntas frecuentes', '/articulos/medicamentos-diabetes-tipo-2-preguntas-frecuentes', 'Artículo'],
     ['Empagliflozina', '/vademecum/empagliflozina', 'Vademécum'],
-    ['Curso de Farmacoterapia de la Diabetes', '/curso-de-farmacoterapia-de-la-diabetes', 'Curso gratis'],
+    ['Curso de Farmacoterapia de la Diabetes', '/curso-de-farmacoterapia-de-la-diabetes', 'Curso'],
   ],
 };

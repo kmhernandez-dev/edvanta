@@ -4,7 +4,7 @@
  *
  *  Una clase abierta de un curso propio: la experiencia completa
  *  (ExperienciaDeClase), el índice de clases abiertas del curso y la
- *  invitación a inscribirse gratis para seguir el avance, presentar
+ *  invitación a inscribirse para seguir el avance, presentar
  *  evaluaciones y obtener el certificado.
  *
  *  La API escribe esta misma clase en el HTML (api/lib/clase-publica.js)
@@ -172,7 +172,7 @@ export default function ClasePublica() {
     const canonical = `${SITIO}${ruta}`;
     const cursoUrl = `${SITIO}/${d.curso.slug}`;
     const exp = d.clase.experiencia;
-    const titulo = `${d.clase.titulo} | ${d.curso.nombre} gratis`;
+    const titulo = `${d.clase.titulo} | ${d.curso.nombre}`;
     // La API manda el mismo título, descripción y datos estructurados que
     // escribe en el HTML del servidor (api/lib/clase-publica.js). Lo de abajo
     // es solo el respaldo si la respuesta no los trae.
@@ -260,11 +260,11 @@ export default function ClasePublica() {
                   {conCertificado ? (
                     <>
                       <Link to={compraDirecta} className="cp-boton"><Award size={18} aria-hidden="true" /> Estudiar con certificado</Link>
-                      <Link to={`/${d.curso.slug}`} className="cp-boton cp-boton--suave"><GraduationCap size={18} aria-hidden="true" /> Inscribirme gratis</Link>
+                      <Link to={`/${d.curso.slug}`} className="cp-boton cp-boton--suave"><GraduationCap size={18} aria-hidden="true" /> Empezar la primera unidad gratis</Link>
                     </>
                   ) : (
                     <>
-                      <Link to={`/${d.curso.slug}`} className="cp-boton"><GraduationCap size={18} aria-hidden="true" /> Inscríbete gratis al curso</Link>
+                      <Link to={`/${d.curso.slug}`} className="cp-boton"><GraduationCap size={18} aria-hidden="true" /> Inscríbete al curso</Link>
                       <a href="#indice-de-clases" className="cp-boton cp-boton--suave"><ListOrdered size={18} aria-hidden="true" /> Ver todas las clases</a>
                     </>
                   )}
@@ -309,7 +309,7 @@ export default function ClasePublica() {
                 <section className="cp-cta" aria-labelledby="cp-cta-titulo">
                   <Sparkles size={22} aria-hidden="true" />
                   <div>
-                    <h2 id="cp-cta-titulo">{conCertificado ? 'Sigue el curso completo y certifícate' : 'Sigue el curso completo, gratis'}</h2>
+                    <h2 id="cp-cta-titulo">{conCertificado ? 'Sigue el curso completo y certifícate' : 'Sigue el curso completo'}</h2>
                     <p>
                       {d.curso.clases ? `El ${d.curso.nombre} tiene ${d.curso.clases} clases${d.curso.unidades ? ` en ${d.curso.unidades} unidades` : ''}. ` : ''}
                       En el aula guardas tu avance, tomas apuntes, presentas quizzes, actividades y foros, y al terminar emites tu certificado del {d.curso.nombre}.
@@ -318,10 +318,10 @@ export default function ClasePublica() {
                   {conCertificado ? (
                     <div className="cp-acciones">
                       <Link to={compraDirecta} className="cp-boton">Estudiar con certificado</Link>
-                      <Link to={`/${d.curso.slug}`} className="cp-boton cp-boton--suave">Inscribirme gratis</Link>
+                      <Link to={`/${d.curso.slug}`} className="cp-boton cp-boton--suave">Empezar la primera unidad gratis</Link>
                     </div>
                   ) : (
-                    <Link to={`/${d.curso.slug}`} className="cp-boton">Inscribirme gratis</Link>
+                    <Link to={`/${d.curso.slug}`} className="cp-boton">Inscribirme al curso</Link>
                   )}
                 </section>
               </article>

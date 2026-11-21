@@ -142,7 +142,7 @@ export default {
   enlaces: [
     ['Diabetes tipo 2: tratamiento', '/articulos/diabetes-tipo-2-tratamiento', 'Artículo'],
     ['Medicamentos para la diabetes tipo 2', '/vademecum/medicamentos-para-la-diabetes-tipo-2', 'Vademécum'],
-    ['Curso de Farmacoterapia de la Diabetes', '/curso-de-farmacoterapia-de-la-diabetes', 'Curso gratis'],
-    ['Curso de Farmacología Endocrina', '/curso-de-farmacologia-endocrina', 'Curso gratis'],
+    ['Curso de Farmacoterapia de la Diabetes', '/curso-de-farmacoterapia-de-la-diabetes', 'Curso'],
+    ['Curso de Farmacología Endocrina', '/curso-de-farmacologia-endocrina', 'Curso'],
   ],
 };

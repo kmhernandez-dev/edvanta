@@ -119,6 +119,6 @@ export default {
   enlaces: [
     ['Atorvastatina', '/vademecum/atorvastatina', 'Vademécum'],
     ['Metoprolol', '/vademecum/metoprolol', 'Vademécum'],
-    ['Curso de Farmacología Cardiovascular', '/curso-de-farmacologia-cardiovascular', 'Curso gratis'],
+    ['Curso de Farmacología Cardiovascular', '/curso-de-farmacologia-cardiovascular', 'Curso'],
   ],
 };

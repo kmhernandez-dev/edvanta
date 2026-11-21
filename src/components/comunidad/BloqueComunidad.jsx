@@ -106,7 +106,7 @@ export default function BloqueComunidad({ comunidad, articuloSlug = '', origen =
               {comunidad.curso && (
                 <Link to={comunidad.curso.ruta} onClick={abrirCurso} className="inline-flex items-center gap-1.5 font-semibold text-edvanta-blue hover:underline">
                   <BookOpen className="h-4 w-4" aria-hidden="true" />
-                  Curso gratis: {comunidad.curso.nombre}
+                  Curso: {comunidad.curso.nombre}
                 </Link>
               )}
               {comunidad.guiaPro && (

@@ -125,6 +125,6 @@ export default {
     ['Diclofenaco', '/vademecum/diclofenaco', 'Vademécum'],
     ['Medicamentos para el dolor y la inflamación', '/vademecum/medicamentos-para-el-dolor-y-la-inflamacion', 'Vademécum'],
     ['Diclofenaco: para qué sirve', '/articulos/diclofenaco-para-que-sirve', 'Artículo'],
-    ['Curso de Farmacología del Sistema Nervioso Central', '/curso-de-farmacologia-del-sistema-nervioso-central', 'Curso gratis'],
+    ['Curso de Farmacología del Sistema Nervioso Central', '/curso-de-farmacologia-del-sistema-nervioso-central', 'Curso'],
   ],
 };

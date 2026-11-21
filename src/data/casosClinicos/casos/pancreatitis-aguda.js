@@ -120,6 +120,6 @@ export default {
     ['Metronidazol', '/vademecum/metronidazol', 'Vademécum'],
     ['Medicamentos para el aparato digestivo', '/vademecum/medicamentos-para-el-aparato-digestivo', 'Vademécum'],
     ['Dieta para la gastritis', '/articulos/dieta-para-la-gastritis', 'Artículo'],
-    ['Curso de Farmacología Gastrointestinal', '/curso-de-farmacologia-gastrointestinal', 'Curso gratis'],
+    ['Curso de Farmacología Gastrointestinal', '/curso-de-farmacologia-gastrointestinal', 'Curso'],
   ],
 };

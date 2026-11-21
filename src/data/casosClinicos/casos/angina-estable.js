@@ -127,6 +127,6 @@ export default {
   enlaces: [
     ['Atorvastatina', '/vademecum/atorvastatina', 'Vademécum'],
     ['Medicamentos para la dislipidemia', '/vademecum/medicamentos-para-la-dislipidemia', 'Vademécum'],
-    ['Curso de Farmacología Cardiovascular', '/curso-de-farmacologia-cardiovascular', 'Curso gratis'],
+    ['Curso de Farmacología Cardiovascular', '/curso-de-farmacologia-cardiovascular', 'Curso'],
   ],
 };

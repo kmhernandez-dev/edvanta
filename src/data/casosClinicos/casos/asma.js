@@ -138,6 +138,6 @@ export default {
     ['Montelukast', '/vademecum/montelukast', 'Vademécum'],
     ['Asma bronquial: síntomas y tratamiento', '/articulos/asma-bronquial-sintomas-y-tratamiento', 'Artículo'],
     ['Inhaladores para el asma: preguntas frecuentes', '/articulos/inhaladores-para-el-asma-preguntas-frecuentes', 'Artículo'],
-    ['Curso de Farmacoterapia del Asma y la EPOC', '/curso-de-farmacoterapia-del-asma-y-la-epoc', 'Curso gratis'],
+    ['Curso de Farmacoterapia del Asma y la EPOC', '/curso-de-farmacoterapia-del-asma-y-la-epoc', 'Curso'],
   ],
 };

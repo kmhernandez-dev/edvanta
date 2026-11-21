@@ -125,6 +125,6 @@ export default {
     ['Ketorolaco', '/vademecum/ketorolaco', 'Vademécum'],
     ['Medicamentos para el dolor y la inflamación', '/vademecum/medicamentos-para-el-dolor-y-la-inflamacion', 'Vademécum'],
     ['Cálculos renales: síntomas y tratamiento', '/articulos/calculos-renales-sintomas-y-tratamiento', 'Artículo'],
-    ['Curso de Farmacología Renal', '/curso-de-farmacologia-renal', 'Curso gratis'],
+    ['Curso de Farmacología Renal', '/curso-de-farmacologia-renal', 'Curso'],
   ],
 };

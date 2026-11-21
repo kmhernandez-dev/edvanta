@@ -144,6 +144,6 @@ export default {
     ['Presión alta en el embarazo', '/articulos/presion-alta-en-el-embarazo', 'Artículo'],
     ['Fármacos en embarazo y lactancia: seguridad', '/articulos/farmacos-embarazo-lactancia-seguridad', 'Artículo'],
     ['Enalapril', '/vademecum/enalapril', 'Vademécum'],
-    ['Curso de Farmacoterapia de la Hipertensión Arterial', '/curso-de-farmacoterapia-de-la-hipertension-arterial', 'Curso gratis'],
+    ['Curso de Farmacoterapia de la Hipertensión Arterial', '/curso-de-farmacoterapia-de-la-hipertension-arterial', 'Curso'],
   ],
 };

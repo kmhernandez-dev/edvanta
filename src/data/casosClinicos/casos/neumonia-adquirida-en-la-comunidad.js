@@ -139,6 +139,6 @@ export default {
     ['Azitromicina', '/vademecum/azitromicina', 'Vademécum'],
     ['Antibióticos de uso ambulatorio', '/vademecum/antibioticos-de-uso-ambulatorio', 'Vademécum'],
     ['Amoxicilina: para qué sirve', '/articulos/amoxicilina-para-que-sirve', 'Artículo'],
-    ['Curso de Farmacología Respiratoria', '/curso-de-farmacologia-respiratoria', 'Curso gratis'],
+    ['Curso de Farmacología Respiratoria', '/curso-de-farmacologia-respiratoria', 'Curso'],
   ],
 };

@@ -144,6 +144,6 @@ export default {
     ['Sitagliptina', '/vademecum/sitagliptina', 'Vademécum'],
     ['Metformina', '/vademecum/metformina', 'Vademécum'],
     ['Insuficiencia renal: ajuste de fármacos', '/articulos/insuficiencia-renal-ajuste-farmacos', 'Artículo'],
-    ['Curso de Farmacoterapia de la Diabetes', '/curso-de-farmacoterapia-de-la-diabetes', 'Curso gratis'],
+    ['Curso de Farmacoterapia de la Diabetes', '/curso-de-farmacoterapia-de-la-diabetes', 'Curso'],
   ],
 };

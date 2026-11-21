@@ -147,6 +147,6 @@ export default {
     ['Sertralina', '/vademecum/sertralina', 'Vademécum'],
     ['Salud mental y sistema nervioso', '/vademecum/salud-mental-y-sistema-nervioso', 'Vademécum'],
     ['Sertralina: para qué sirve', '/articulos/sertralina-para-que-sirve', 'Artículo'],
-    ['Curso de Farmacología del Sistema Nervioso Central', '/curso-de-farmacologia-del-sistema-nervioso-central', 'Curso gratis'],
+    ['Curso de Farmacología del Sistema Nervioso Central', '/curso-de-farmacologia-del-sistema-nervioso-central', 'Curso'],
   ],
 };

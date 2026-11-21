@@ -139,6 +139,6 @@ export default {
     ['Rosuvastatina', '/vademecum/rosuvastatina', 'Vademécum'],
     ['Ezetimiba', '/vademecum/ezetimiba', 'Vademécum'],
     ['Alimentos para bajar el colesterol', '/articulos/alimentos-para-bajar-el-colesterol', 'Artículo'],
-    ['Curso de Farmacología Cardiovascular', '/curso-de-farmacologia-cardiovascular', 'Curso gratis'],
+    ['Curso de Farmacología Cardiovascular', '/curso-de-farmacologia-cardiovascular', 'Curso'],
   ],
 };

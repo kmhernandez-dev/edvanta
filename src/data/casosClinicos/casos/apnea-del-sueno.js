@@ -119,6 +119,6 @@ export default {
   enlaces: [
     ['Medicamentos para la hipertensión arterial', '/vademecum/medicamentos-para-la-hipertension-arterial', 'Vademécum'],
     ['Insomnio: qué hacer', '/articulos/insomnio-que-hacer', 'Artículo'],
-    ['Curso de Farmacología Respiratoria', '/curso-de-farmacologia-respiratoria', 'Curso gratis'],
+    ['Curso de Farmacología Respiratoria', '/curso-de-farmacologia-respiratoria', 'Curso'],
   ],
 };

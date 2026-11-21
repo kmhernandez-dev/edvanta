@@ -149,6 +149,6 @@ export default {
     ['Warfarina', '/vademecum/warfarina', 'Vademécum'],
     ['Metronidazol', '/vademecum/metronidazol', 'Vademécum'],
     ['Anticoagulación: manejo farmacéutico', '/articulos/anticoagulacion-manejo-farmaceutico', 'Artículo'],
-    ['Curso de Farmacología Cardiovascular', '/curso-de-farmacologia-cardiovascular', 'Curso gratis'],
+    ['Curso de Farmacología Cardiovascular', '/curso-de-farmacologia-cardiovascular', 'Curso'],
   ],
 };

@@ -125,6 +125,6 @@ export default {
     ['Clonazepam', '/vademecum/clonazepam', 'Vademécum'],
     ['Sertralina', '/vademecum/sertralina', 'Vademécum'],
     ['Ansiedad: síntomas físicos', '/articulos/ansiedad-sintomas-fisicos', 'Artículo'],
-    ['Curso de Farmacología del Sistema Nervioso Central', '/curso-de-farmacologia-del-sistema-nervioso-central', 'Curso gratis'],
+    ['Curso de Farmacología del Sistema Nervioso Central', '/curso-de-farmacologia-del-sistema-nervioso-central', 'Curso'],
   ],
 };

@@ -139,6 +139,6 @@ export default {
     ['Warfarina', '/vademecum/warfarina', 'Vademécum'],
     ['Medicamentos anticoagulantes', '/vademecum/medicamentos-anticoagulantes', 'Vademécum'],
     ['Anticoagulación: manejo farmacéutico', '/articulos/anticoagulacion-manejo-farmaceutico', 'Artículo'],
-    ['Curso de Farmacología Cardiovascular', '/curso-de-farmacologia-cardiovascular', 'Curso gratis'],
+    ['Curso de Farmacología Cardiovascular', '/curso-de-farmacologia-cardiovascular', 'Curso'],
   ],
 };

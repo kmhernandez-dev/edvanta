@@ -120,6 +120,6 @@ export default {
     ['Salbutamol', '/vademecum/salbutamol', 'Vademécum'],
     ['Alergia y vías respiratorias', '/vademecum/alergia-y-vias-respiratorias', 'Vademécum'],
     ['Inhaladores para el asma: preguntas frecuentes', '/articulos/inhaladores-para-el-asma-preguntas-frecuentes', 'Artículo'],
-    ['Curso de Farmacología Respiratoria', '/curso-de-farmacologia-respiratoria', 'Curso gratis'],
+    ['Curso de Farmacología Respiratoria', '/curso-de-farmacologia-respiratoria', 'Curso'],
   ],
 };

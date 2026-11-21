@@ -129,6 +129,6 @@ export default {
     ['Loratadina', '/vademecum/loratadina', 'Vademécum'],
     ['Alergia y vías respiratorias', '/vademecum/alergia-y-vias-respiratorias', 'Vademécum'],
     ['Loratadina: para qué sirve', '/articulos/loratadina-para-que-sirve', 'Artículo'],
-    ['Curso de Farmacología Respiratoria', '/curso-de-farmacologia-respiratoria', 'Curso gratis'],
+    ['Curso de Farmacología Respiratoria', '/curso-de-farmacologia-respiratoria', 'Curso'],
   ],
 };

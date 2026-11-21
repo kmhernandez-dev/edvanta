@@ -136,6 +136,6 @@ export default {
   referencias: [FC.omsTuberculosis2017, FC.ftRimstar, FC.ftCemidon],
   enlaces: [
     ['Antibióticos de uso ambulatorio', '/vademecum/antibioticos-de-uso-ambulatorio', 'Vademécum'],
-    ['Curso de Farmacología Respiratoria', '/curso-de-farmacologia-respiratoria', 'Curso gratis'],
+    ['Curso de Farmacología Respiratoria', '/curso-de-farmacologia-respiratoria', 'Curso'],
   ],
 };

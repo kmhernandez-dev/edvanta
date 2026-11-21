@@ -132,6 +132,6 @@ export default {
   enlaces: [
     ['Medicamentos para la tiroides', '/vademecum/medicamentos-para-la-tiroides', 'Vademécum'],
     ['Diferencia entre hipotiroidismo e hipertiroidismo', '/articulos/diferencia-hipotiroidismo-e-hipertiroidismo', 'Artículo'],
-    ['Curso de Farmacología Endocrina', '/curso-de-farmacologia-endocrina', 'Curso gratis'],
+    ['Curso de Farmacología Endocrina', '/curso-de-farmacologia-endocrina', 'Curso'],
   ],
 };

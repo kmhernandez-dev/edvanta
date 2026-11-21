@@ -147,6 +147,6 @@ export default {
     ['Furosemida', '/vademecum/furosemida', 'Vademécum'],
     ['Carvedilol', '/vademecum/carvedilol', 'Vademécum'],
     ['Insuficiencia cardíaca: síntomas, tratamiento y cuidados', '/articulos/insuficiencia-cardiaca-sintomas-y-tratamiento', 'Artículo'],
-    ['Curso de Farmacoterapia de la Insuficiencia Cardíaca', '/curso-de-farmacoterapia-de-la-insuficiencia-cardiaca', 'Curso gratis'],
+    ['Curso de Farmacoterapia de la Insuficiencia Cardíaca', '/curso-de-farmacoterapia-de-la-insuficiencia-cardiaca', 'Curso'],
   ],
 };

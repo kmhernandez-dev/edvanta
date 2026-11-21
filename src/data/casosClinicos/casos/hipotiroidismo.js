@@ -144,6 +144,6 @@ export default {
     ['Medicamentos para la tiroides', '/vademecum/medicamentos-para-la-tiroides', 'Vademécum'],
     ['Cómo tomar la levotiroxina correctamente', '/articulos/como-tomar-levotiroxina-correctamente', 'Artículo'],
     ['Levotiroxina con hierro y calcio', '/articulos/levotiroxina-hierro-calcio', 'Artículo'],
-    ['Curso de Farmacología Endocrina', '/curso-de-farmacologia-endocrina', 'Curso gratis'],
+    ['Curso de Farmacología Endocrina', '/curso-de-farmacologia-endocrina', 'Curso'],
   ],
 };

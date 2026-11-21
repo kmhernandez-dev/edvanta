@@ -129,6 +129,6 @@ export default {
     ['Amoxicilina', '/vademecum/amoxicilina', 'Vademécum'],
     ['Amoxicilina con ácido clavulánico', '/vademecum/amoxicilina-acido-clavulanico', 'Vademécum'],
     ['Ibuprofeno', '/vademecum/ibuprofeno', 'Vademécum'],
-    ['Curso de Farmacología Respiratoria', '/curso-de-farmacologia-respiratoria', 'Curso gratis'],
+    ['Curso de Farmacología Respiratoria', '/curso-de-farmacologia-respiratoria', 'Curso'],
   ],
 };

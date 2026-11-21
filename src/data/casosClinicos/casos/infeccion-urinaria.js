@@ -143,6 +143,6 @@ export default {
     ['Fosfomicina', '/vademecum/fosfomicina', 'Vademécum'],
     ['Infección urinaria: síntomas y tratamiento', '/articulos/infeccion-urinaria-sintomas-tratamiento', 'Artículo'],
     ['Antibióticos de uso ambulatorio', '/vademecum/antibioticos-de-uso-ambulatorio', 'Vademécum'],
-    ['Curso de Farmacología Renal', '/curso-de-farmacologia-renal', 'Curso gratis'],
+    ['Curso de Farmacología Renal', '/curso-de-farmacologia-renal', 'Curso'],
   ],
 };

@@ -378,7 +378,7 @@ export function htmlDeClasesDelArticulo(slug) {
   if (!clases.length) return '';
   const lista = clases.map((c) => `<li><a href="${esc(c.ruta)}">${esc(c.titulo)}</a>${c.curso ? ` · ${esc(c.curso.nombre)}` : ''}</li>`).join('');
   const completos = cursos.map((c) => `<a href="${esc(c.ruta)}">${esc(c.nombre)}</a>`).join(', ');
-  return `<section id="clases-para-profesionales"><h2>${esc(TITULO_CLASES_DEL_ARTICULO)}</h2><p>${esc(TEXTO_CLASES_DEL_ARTICULO)}</p><ul>${lista}</ul>${completos ? `<p>Cursos completos, gratis: ${completos}.</p>` : ''}</section>`;
+  return `<section id="clases-para-profesionales"><h2>${esc(TITULO_CLASES_DEL_ARTICULO)}</h2><p>${esc(TEXTO_CLASES_DEL_ARTICULO)}</p><ul>${lista}</ul>${completos ? `<p>Cursos completos: ${completos}.</p>` : ''}</section>`;
 }
 
 /** Lo que enlaza a una clase (lecturasDeClase), en HTML para su página pública. */

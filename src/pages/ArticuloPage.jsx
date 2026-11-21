@@ -778,7 +778,7 @@ export default function ArticuloPage() {
                 </ul>
                 {clasesPro.cursos.length > 0 && (
                   <p className="mt-4 text-sm leading-6 text-edvanta-ink">
-                    Cursos completos, gratis:{' '}
+                    Cursos completos:{' '}
                     {clasesPro.cursos.map((c, i) => (
                       <span key={c.ruta}>
                         {i > 0 && ', '}

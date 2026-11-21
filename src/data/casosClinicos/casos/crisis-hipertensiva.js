@@ -138,6 +138,6 @@ export default {
     ['Crisis hipertensiva: qué hacer si la presión está muy alta', '/articulos/crisis-hipertensiva-que-hacer', 'Artículo'],
     ['Losartán', '/vademecum/losartan', 'Vademécum'],
     ['Medicamentos para la hipertensión arterial', '/vademecum/medicamentos-para-la-hipertension-arterial', 'Vademécum'],
-    ['Curso de Farmacoterapia de la Hipertensión Arterial', '/curso-de-farmacoterapia-de-la-hipertension-arterial', 'Curso gratis'],
+    ['Curso de Farmacoterapia de la Hipertensión Arterial', '/curso-de-farmacoterapia-de-la-hipertension-arterial', 'Curso'],
   ],
 };

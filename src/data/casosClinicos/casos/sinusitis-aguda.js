@@ -120,6 +120,6 @@ export default {
     ['Amoxicilina', '/vademecum/amoxicilina', 'Vademécum'],
     ['Antibióticos de uso ambulatorio', '/vademecum/antibioticos-de-uso-ambulatorio', 'Vademécum'],
     ['Inhaladores para el asma: preguntas frecuentes', '/articulos/inhaladores-para-el-asma-preguntas-frecuentes', 'Artículo'],
-    ['Curso de Farmacología Respiratoria', '/curso-de-farmacologia-respiratoria', 'Curso gratis'],
+    ['Curso de Farmacología Respiratoria', '/curso-de-farmacologia-respiratoria', 'Curso'],
   ],
 };

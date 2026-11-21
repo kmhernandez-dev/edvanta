@@ -144,6 +144,6 @@ export default {
     ['Pregabalina', '/vademecum/pregabalina', 'Vademécum'],
     ['Gabapentina', '/vademecum/gabapentina', 'Vademécum'],
     ['Tramadol: para qué sirve', '/articulos/tramadol-para-que-sirve', 'Artículo'],
-    ['Curso de Farmacología del Sistema Nervioso Central', '/curso-de-farmacologia-del-sistema-nervioso-central', 'Curso gratis'],
+    ['Curso de Farmacología del Sistema Nervioso Central', '/curso-de-farmacologia-del-sistema-nervioso-central', 'Curso'],
   ],
 };

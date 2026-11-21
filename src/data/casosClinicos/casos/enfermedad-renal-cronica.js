@@ -128,6 +128,6 @@ export default {
     ['Insuficiencia renal: ajuste de fármacos', '/articulos/insuficiencia-renal-ajuste-farmacos', 'Artículo'],
     ['Metformina', '/vademecum/metformina', 'Vademécum'],
     ['Empagliflozina', '/vademecum/empagliflozina', 'Vademécum'],
-    ['Curso de Farmacoterapia de la Diabetes', '/curso-de-farmacoterapia-de-la-diabetes', 'Curso gratis'],
+    ['Curso de Farmacoterapia de la Diabetes', '/curso-de-farmacoterapia-de-la-diabetes', 'Curso'],
   ],
 };

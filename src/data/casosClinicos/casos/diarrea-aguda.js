@@ -137,6 +137,6 @@ export default {
     ['Loperamida', '/vademecum/loperamida', 'Vademécum'],
     ['Medicamentos para el aparato digestivo', '/vademecum/medicamentos-para-el-aparato-digestivo', 'Vademécum'],
     ['Azitromicina', '/vademecum/azitromicina', 'Vademécum'],
-    ['Curso de Farmacología Gastrointestinal', '/curso-de-farmacologia-gastrointestinal', 'Curso gratis'],
+    ['Curso de Farmacología Gastrointestinal', '/curso-de-farmacologia-gastrointestinal', 'Curso'],
   ],
 };

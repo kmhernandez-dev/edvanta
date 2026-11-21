@@ -7,7 +7,7 @@
  *     pistas (valen la mitad) y bono por racha.
  *   · Modo parcial: cronómetro, sin ayudas, nota al entregar.
  *   · Resultado: nota de 0 a 5, nivel, estrellas, repaso explicado,
- *     puntos clave, el curso gratis del tema y el siguiente caso.
+ *     puntos clave, el curso del tema con certificado y el siguiente caso.
  *
  *  El prerender (scripts/seo-rutas-fijas.mjs) escribe el caso completo,
  *  con respuestas y referencias, en el HTML para los buscadores; aquí
@@ -236,7 +236,7 @@ function CertificadoCta({ curso, final = null }) {
         <Link to={curso ? `${curso[1]}?camino=certificado` : destino[1]} className="cc-boton">
           <GraduationCap size={18} aria-hidden="true" /> {curso ? 'Estudiar con certificado' : 'Ver cursos con certificado'}
         </Link>
-        {curso && <Link to={curso[1]} className="cc-enlace-suave">o estudiar gratis</Link>}
+        {curso && <Link to={curso[1]} className="cc-enlace-suave">o empezar por la primera unidad gratis</Link>}
       </div>
     </div>
   );
@@ -255,7 +255,7 @@ export default function CasoClinicoPagina() {
   const caso = casoPorSlug(slug);
   const area = caso ? areaDe(caso) : null;
   const siguiente = caso ? siguienteCaso(caso) : null;
-  const curso = caso?.enlaces?.find((e) => e[2] === 'Curso gratis');
+  const curso = caso?.enlaces?.find((e) => e[2] === 'Curso');
 
   const [fase, setFase] = useState('inicio');
   const [modo, setModo] = useState('estudio');

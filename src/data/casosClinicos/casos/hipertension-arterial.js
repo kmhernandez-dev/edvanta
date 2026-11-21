@@ -147,6 +147,6 @@ export default {
     ['Amlodipino', '/vademecum/amlodipino', 'Vademécum'],
     ['Medicamentos para la hipertensión arterial', '/vademecum/medicamentos-para-la-hipertension-arterial', 'Vademécum'],
     ['Medicamentos para la presión alta', '/articulos/medicamentos-para-la-presion-alta', 'Artículo'],
-    ['Curso de Farmacoterapia de la Hipertensión Arterial', '/curso-de-farmacoterapia-de-la-hipertension-arterial', 'Curso gratis'],
+    ['Curso de Farmacoterapia de la Hipertensión Arterial', '/curso-de-farmacoterapia-de-la-hipertension-arterial', 'Curso'],
   ],
 };

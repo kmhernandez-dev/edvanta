@@ -134,6 +134,6 @@ export default {
     ['EPOC: qué es, síntomas y tratamiento', '/articulos/epoc-que-es-sintomas-y-tratamiento', 'Artículo'],
     ['Salbutamol', '/vademecum/salbutamol', 'Vademécum'],
     ['Azitromicina', '/vademecum/azitromicina', 'Vademécum'],
-    ['Curso de Farmacoterapia del Asma y la EPOC', '/curso-de-farmacoterapia-del-asma-y-la-epoc', 'Curso gratis'],
+    ['Curso de Farmacoterapia del Asma y la EPOC', '/curso-de-farmacoterapia-del-asma-y-la-epoc', 'Curso'],
   ],
 };

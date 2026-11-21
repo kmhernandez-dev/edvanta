@@ -195,7 +195,7 @@ export function tituloDeClase(datos) {
   const sinParentesis = clase.replace(/\s*\([^)]*\)/g, '').trim();
   const curso = String(datos.curso.nombre || '').trim();
   const corto = curso.replace(/^curso\s+(de|del|en)\s+/i, '');
-  const conSufijos = (t) => (curso ? [`${t} | ${curso} gratis`, `${t} | ${curso}`, `${t} | ${corto}`, `${t} | Edvanta`] : [`${t} | Edvanta`]);
+  const conSufijos = (t) => (curso ? [`${t} | ${curso}`, `${t} | ${corto}`, `${t} | Edvanta`] : [`${t} | Edvanta`]);
   for (const t of [...conSufijos(clase), clase, ...conSufijos(sinParentesis), sinParentesis]) {
     if (t.length <= MAX_TITULO) return t;
   }
@@ -214,7 +214,7 @@ function comoInfinitivo(objetivo) {
 
 /**
  * Descripción de 155 caracteres como máximo: el tema de la clase, lo que se
- * aprende (su primer objetivo), que es gratis y quién la verificó. Se
+ * aprende (su primer objetivo), de qué curso es y quién la verificó. Se
  * prueban frases de la más completa a la más corta y se usa la primera que cabe.
  */
 export function descripcionDeClase(datos) {
@@ -225,8 +225,8 @@ export function descripcionDeClase(datos) {
   const aprende = verbo
     ? `${clase}${clase.includes(':') ? '. Aprende a' : ': aprende a'} ${verbo}.`
     : (objetivo ? `${clase}. ${conPunto(objetivo)}` : `${clase}.`);
-  const delCurso = `Clase gratis del ${datos.curso.nombre}, verificada por una química farmacéutica.`;
-  const gratis = 'Clase gratis verificada por una química farmacéutica.';
+  const delCurso = `Clase del ${datos.curso.nombre}, verificada por una química farmacéutica.`;
+  const gratis = 'Clase verificada por una química farmacéutica.';
   const opciones = [
     `${aprende} ${delCurso}`,
     `${aprende} ${gratis}`,
@@ -336,12 +336,12 @@ export function cuerpoDeClase(datos) {
     `<p>${esc(clase.unidad)} · Clase ${datos.numero} de ${datos.total}</p>`,
     `<h1>${esc(clase.titulo)}</h1>`,
     htmlDeRevision(datos.revision),
-    `<p>Clase gratuita del <a href="${esc(cursoRuta)}">${esc(curso.nombre)}</a> de Edvanta. Inscríbete gratis para seguir tu avance, presentar las evaluaciones y obtener tu certificado.</p>`,
+    `<p>Clase del <a href="${esc(cursoRuta)}">${esc(curso.nombre)}</a> de Edvanta. Inscríbete para seguir tu avance, presentar las evaluaciones y obtener tu certificado verificable; la primera unidad del curso es gratis.</p>`,
     (clase.videos || []).length ? `<section id="video"><h2>Video de la clase</h2>${clase.videos.map(htmlDeVideo).join('')}</section>` : '',
     htmlDeExperiencia(clase.experiencia),
     `<nav aria-label="Otras clases">${datos.anterior ? `<a href="${esc(datos.anterior.ruta)}" rel="prev">Clase anterior: ${esc(datos.anterior.titulo)}</a>` : ''} ${datos.siguiente ? `<a href="${esc(datos.siguiente.ruta)}" rel="next">Clase siguiente: ${esc(datos.siguiente.titulo)}</a>` : ''}</nav>`,
     htmlDeLecturasDeClase(lecturasDe(datos)),
-    `<section id="curso-completo"><h2>Sigue el ${esc(curso.nombre)} completo, gratis</h2><p>El curso tiene ${esc(tamano)}${curso.unidades ? ` en ${curso.unidades} unidades` : ''}. En el aula guardas tu avance, presentas quizzes, actividades y foros, y al terminar emites tu certificado verificable.</p><p><a href="${esc(cursoRuta)}">Inscribirme gratis al ${esc(curso.nombre)}</a></p></section>`,
+    `<section id="curso-completo"><h2>Sigue el ${esc(curso.nombre)} completo y certifícate</h2><p>El curso tiene ${esc(tamano)}${curso.unidades ? ` en ${curso.unidades} unidades` : ''}. En el aula guardas tu avance, presentas quizzes, actividades y foros, y al terminar emites tu certificado verificable.</p><p>Con el certificado tienes acompañamiento por WhatsApp y revisión de tus actividades. <a href="${esc(cursoRuta)}">Inscribirme al ${esc(curso.nombre)}</a></p></section>`,
     `<section><h2>Todas las clases abiertas del curso</h2><ol>${datos.indice.map((c) => `<li><a href="${esc(c.ruta)}">${esc(c.titulo)}</a></li>`).join('')}</ol></section>`,
   ].join('');
 }

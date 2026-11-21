@@ -96,7 +96,7 @@ describe('enlaces de salud', () => {
     const html = htmlDeClasesDelArticulo('metformina-para-que-sirve');
     expect(html).toContain('id="clases-para-profesionales"');
     expect(html).toContain(`href="${METFORMINA_DM}"`);
-    expect(html).toContain('Cursos completos, gratis: <a href="/curso-de-farmacoterapia-de-la-diabetes">');
+    expect(html).toContain('Cursos completos: <a href="/curso-de-farmacoterapia-de-la-diabetes">');
     expect(htmlDeClasesDelArticulo('no-existe')).toBe('');
   });
 

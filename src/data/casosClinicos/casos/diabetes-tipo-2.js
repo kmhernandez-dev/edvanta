@@ -143,6 +143,6 @@ export default {
     ['Empagliflozina', '/vademecum/empagliflozina', 'Vademécum'],
     ['Medicamentos para la diabetes tipo 2', '/vademecum/medicamentos-para-la-diabetes-tipo-2', 'Vademécum'],
     ['Diabetes tipo 2: tratamiento', '/articulos/diabetes-tipo-2-tratamiento', 'Artículo'],
-    ['Curso de Farmacoterapia de la Diabetes', '/curso-de-farmacoterapia-de-la-diabetes', 'Curso gratis'],
+    ['Curso de Farmacoterapia de la Diabetes', '/curso-de-farmacoterapia-de-la-diabetes', 'Curso'],
   ],
 };

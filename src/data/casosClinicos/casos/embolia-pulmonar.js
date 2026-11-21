@@ -125,6 +125,6 @@ export default {
     ['Rivaroxabán', '/vademecum/rivaroxaban', 'Vademécum'],
     ['Medicamentos anticoagulantes', '/vademecum/medicamentos-anticoagulantes', 'Vademécum'],
     ['Manejo farmacéutico de la anticoagulación', '/articulos/anticoagulacion-manejo-farmaceutico', 'Artículo'],
-    ['Curso de Farmacología de Anticoagulantes y Antiagregantes', '/curso-de-anticoagulantes-y-antiagregantes', 'Curso gratis'],
+    ['Curso de Farmacología de Anticoagulantes y Antiagregantes', '/curso-de-anticoagulantes-y-antiagregantes', 'Curso'],
   ],
 };

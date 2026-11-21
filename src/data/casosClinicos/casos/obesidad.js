@@ -143,6 +143,6 @@ export default {
     ['Tirzepatida', '/vademecum/tirzepatida', 'Vademécum'],
     ['Medicamentos para la obesidad', '/vademecum/medicamentos-para-la-obesidad', 'Vademécum'],
     ['Ozempic para bajar de peso', '/articulos/ozempic-para-bajar-de-peso', 'Artículo'],
-    ['Curso de Farmacología Endocrina', '/curso-de-farmacologia-endocrina', 'Curso gratis'],
+    ['Curso de Farmacología Endocrina', '/curso-de-farmacologia-endocrina', 'Curso'],
   ],
 };

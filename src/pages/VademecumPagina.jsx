@@ -123,7 +123,7 @@ export default function VademecumPagina() {
                   <li key={s.id}><a href={`#${s.id}`} className={`hover:underline ${s.destacado ? 'font-semibold text-edvanta-tealdark' : 'text-edvanta-ink/80'}`}>{s.titulo}</a></li>
                 ))}
                 {(clases.clases.length > 0 || clases.cursos.length > 0) && (
-                  <li><a href="#clases" className="font-semibold text-edvanta-tealdark hover:underline">Clases gratis</a></li>
+                  <li><a href="#clases" className="font-semibold text-edvanta-tealdark hover:underline">Clases del tema</a></li>
                 )}
                 <li><a href="#referencias" className="text-edvanta-ink/80 hover:underline">Referencias</a></li>
               </ol>
@@ -174,7 +174,7 @@ export default function VademecumPagina() {
 
             {(clases.clases.length > 0 || clases.cursos.length > 0) && (
               <section id="clases" className="scroll-mt-24 rounded-2xl border border-edvanta-border bg-edvanta-mint/30 p-6">
-                <h2 className="mb-2 text-2xl font-semibold tracking-tight text-edvanta-deep">Apréndelo en clase, gratis</h2>
+                <h2 className="mb-2 text-2xl font-semibold tracking-tight text-edvanta-deep">Apréndelo en clase</h2>
                 <p className="mb-4 text-[15px] leading-6 text-edvanta-ink/80">{TEXTO_CLASES_VADEMECUM}</p>
                 {clases.clases.length > 0 && (
                   <ul className="space-y-3">

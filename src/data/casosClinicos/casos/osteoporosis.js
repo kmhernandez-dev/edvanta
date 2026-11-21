@@ -142,6 +142,6 @@ export default {
   enlaces: [
     ['Prednisona', '/vademecum/prednisona', 'Vademécum'],
     ['Corticoides sistémicos', '/vademecum/corticoides-sistemicos', 'Vademécum'],
-    ['Curso de Farmacología Endocrina', '/curso-de-farmacologia-endocrina', 'Curso gratis'],
+    ['Curso de Farmacología Endocrina', '/curso-de-farmacologia-endocrina', 'Curso'],
   ],
 };
