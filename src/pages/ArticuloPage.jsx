@@ -34,7 +34,7 @@ import HerramientaArticulo from '../components/articulos/HerramientaArticulo';
 import BloqueComunidad from '../components/comunidad/BloqueComunidad';
 import AffiliateCourseButton from '../components/AffiliateCourseButton';
 import { articulos, getArticulo } from '../data/articulos';
-import { comunidadDeArticulo } from '../data/comunidadesSalud';
+import { comunidadDeArticulo, herramientaDeArticulo } from '../data/comunidadesSalud';
 import { examenDeArticulo } from '../data/examenes';
 import { trackEvent } from '../utils/analytics';
 import { getFeaturedCourse } from '../data/featuredCourses';
@@ -479,7 +479,7 @@ export default function ArticuloPage() {
 
   const comunidad = useMemo(() => (art ? comunidadDeArticulo(art.slug) : null), [art]);
   const examen = useMemo(() => (art ? examenDeArticulo(art.slug) : null), [art]);
-  const herramienta = comunidad?.herramienta || null;
+  const herramienta = useMemo(() => (art ? herramientaDeArticulo(art.slug) : null), [art]);
   const cuerpo = useMemo(() => limpiarMarkdown(texto), [texto]);
   const [cuerpoAntes, cuerpoDespues] = useMemo(
     () => partirAntesDe(cuerpo, herramienta?.antesDe),

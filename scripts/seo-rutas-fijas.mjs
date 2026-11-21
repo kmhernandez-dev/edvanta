@@ -40,8 +40,8 @@ import { htmlDePagina, jsonLdDePagina } from '../src/lib/vademecum/html.js';
 import { clasesDelVademecum, urlsAbsolutas } from '../api/lib/enlaces-de-salud.js';
 import { casosDeVademecum, htmlDeCasos } from '../src/lib/casosClinicos/enlacesInversos.js';
 import { robotsDePaginaDelVademecum, robotsDelVademecum, tituloDeVademecum } from '../src/lib/vademecum/indexable.js';
-import { COMUNIDADES, META_COMUNIDADES } from '../src/data/comunidadesSalud.js';
-import { descripcionDeComunidad, faqJsonLd, preguntasDeComunidad, tituloSeoDeComunidad } from '../src/lib/comunidades/seo.js';
+import { COMUNIDADES, META_COMUNIDADES, PREGUNTAS_COMUNIDADES } from '../src/data/comunidadesSalud.js';
+import { cortoDeComunidad, descripcionDeComunidad, faqJsonLd, paraDeComunidad, preguntasDeComunidad, tituloSeoDeComunidad } from '../src/lib/comunidades/seo.js';
 import { EXAMENES, META_EXAMENES, robotsDeExamen } from '../src/data/examenes/index.js';
 import { FICHAS, META_FICHAS, robotsDeFicha } from '../src/data/medicamentos/fichas.js';
 import { BIBLIOTECA_SALUD, CATEGORIAS_SALUD, META_BIBLIOTECA, robotsDeArticuloSalud } from '../src/data/salud/biblioteca.js';
@@ -82,21 +82,24 @@ const contenidoComunidad = (c) => {
     .map(([q, a]) => `<h3>${q}</h3><p>${a}</p>`).join('');
   const guia = c.guiaPro ? `<p>Guía profesional: <a href="${c.guiaPro.ruta}">${c.guiaPro.nombre}</a>.</p>` : '';
   const guiaPaciente = c.guia?.publico === 'pacientes' ? `<p>Guía para pacientes: <a href="${c.guia.ruta}">${c.guia.nombre}</a>.</p>` : '';
-  return `<section><h2>Qué encontrarás</h2><ul>${c.queEncuentras.map((t) => `<li>${t}</li>`).join('')}</ul></section>
-<section><h2>Reglas</h2><ol>${c.reglas.map((t) => `<li>${t}</li>`).join('')}</ol><p>${c.noEs}</p></section>
+  return `<section><p><strong>Grupo de apoyo gratis por WhatsApp para ${paraDeComunidad(c)}.</strong></p>${c.intro.map((t) => `<p>${t}</p>`).join('')}</section>
+<section><h2>Qué encontrarás</h2><ul>${c.queEncuentras.map((t) => `<li>${t}</li>`).join('')}</ul></section>
+<section><h2>Reglas del grupo</h2><ol>${c.reglas.map((t) => `<li>${t}</li>`).join('')}</ol><p>${c.noEs}</p></section>
 ${articulos ? `<section><h2>Artículos para empezar</h2><ul>${articulos}</ul></section>` : ''}
-<section><h2>Cómo entrar</h2><p>Escribe por WhatsApp y pide entrar a la comunidad de ${c.nombre}. <a href="${c.whatsapp}">Abrir WhatsApp</a>.</p>${curso}${guia}${guiaPaciente}</section>
+<section><h2>Cómo entrar al grupo de apoyo</h2><p>Escribe por WhatsApp a Karla Hernández, química farmacéutica, y pide entrar al grupo de apoyo de ${cortoDeComunidad(c)}. <a href="${c.whatsapp}">Abrir WhatsApp</a>.</p>${curso}${guia}${guiaPaciente}</section>
 <section><h2>Preguntas sobre el grupo de apoyo</h2>${faq}</section>`;
 };
 
-const contenidoComunidades = () => `<section><h2>Comunidades por enfermedad</h2><ul>${COMUNIDADES.map((c) => `<li><a href="${c.ruta}">${c.titulo}</a>: ${c.resumen}</li>`).join('')}</ul></section>
-<section><h2>Cómo funciona</h2><ol><li>Escribes por WhatsApp y dices qué comunidad te interesa.</li><li>Recibes las reglas y la bienvenida.</li><li>Participas a tu ritmo; no hay ventas dentro del grupo.</li></ol></section>`;
+const contenidoComunidades = () => `<section><p>Grupos de apoyo en línea, gratis y por WhatsApp, organizados por enfermedad, para pacientes y cuidadores. No son consultorios ni servicios de urgencias.</p></section>
+<section><h2>Grupos de apoyo por enfermedad</h2><ul>${COMUNIDADES.map((c) => `<li><a href="${c.ruta}">${c.titulo}</a>: ${c.resumen}</li>`).join('')}</ul></section>
+<section><h2>Cómo funciona</h2><ol><li>Escribes por WhatsApp y dices qué grupo de apoyo te interesa.</li><li>Recibes las reglas y la bienvenida.</li><li>Participas a tu ritmo; no hay ventas dentro del grupo.</li></ol></section>
+<section><h2>Preguntas sobre los grupos de apoyo</h2>${PREGUNTAS_COMUNIDADES.map(([q, a]) => `<h3>${q}</h3><p>${a}</p>`).join('')}</section>`;
 
 /** HTML de un examen: preguntas, opciones y clave de respuestas visible. */
 const contenidoExamen = (e) => {
   const preguntas = e.preguntas.map((p, i) => `<li><p><strong>${i + 1}. ${p.enunciado}</strong></p><ol type="a">${p.opciones.map((o, n) => `<li>${o}${n === p.correcta ? ' (correcta)' : ''}</li>`).join('')}</ol><p>${p.explicacion}</p><p><small>Fuente: ${p.fuente}</small></p></li>`).join('');
   const enlaces = [
-    e.curso ? `<li><a href="${e.curso.ruta}">Curso gratis: ${e.curso.nombre}</a></li>` : '',
+    e.curso ? `<li><a href="${e.curso.ruta}">Curso: ${e.curso.nombre}</a></li>` : '',
     e.guia ? `<li><a href="${e.guia.ruta}">Guía: ${e.guia.nombre}</a></li>` : '',
     ...(e.articulos || []).map((s) => `<li><a href="/articulos/${s}">Artículo: ${s}</a></li>`),
     ...(e.vademecum || []).map((v) => `<li><a href="${v.ruta}">Vademécum: ${v.nombre}</a></li>`),
@@ -353,7 +356,7 @@ add('/buscar', 'Buscar en Edvanta | Edvanta', 'Busca artículos, cursos, herrami
 
 add('/comunidad', 'Comunidad de químicos farmacéuticos | Edvanta', 'Un espacio para conectar con otros profesionales farmacéuticos, compartir experiencias y encontrar oportunidades.', { tipo: 'WebPage', seccion: 'Comunidad', robots: 'noindex,follow', enlaces: [['Conecta', '/conecta'], ['Empleo', '/empleo'], ['Recursos', '/recursos']] });
 
-// Comunidades de pacientes y cuidadores, una por enfermedad.
+// Grupos de apoyo (comunidades) de pacientes y cuidadores, uno por enfermedad.
 add('/comunidades', META_COMUNIDADES.titulo, META_COMUNIDADES.descripcion, {
   tipo: 'CollectionPage',
   seccion: 'Comunidades',
@@ -361,6 +364,7 @@ add('/comunidades', META_COMUNIDADES.titulo, META_COMUNIDADES.descripcion, {
   h1: META_COMUNIDADES.h1,
   enlaces: [['Edvanta Contigo', '/contigo'], ['Artículos', '/articulos'], ['Cursos', '/cursos']],
   contenido: contenidoComunidades(),
+  extraJsonLd: [faqJsonLd(PREGUNTAS_COMUNIDADES)],
 });
 for (const c of COMUNIDADES) {
   const porSlug = new Map(ARTICULOS.map((a) => [a.slug, a]));
@@ -369,7 +373,7 @@ for (const c of COMUNIDADES) {
     seccion: 'Comunidades',
     seccionUrl: '/comunidades',
     h1: c.titulo,
-    enlaces: [['Todas las comunidades', '/comunidades'], ['Artículos', '/articulos'], ['Cursos', '/cursos']],
+    enlaces: [['Todos los grupos de apoyo', '/comunidades'], ['Artículos', '/articulos'], ['Cursos', '/cursos']],
     contenido: contenidoComunidad(c),
     extraJsonLd: [faqJsonLd(preguntasDeComunidad(c, (s) => porSlug.get(s)?.title || null))],
   });
@@ -381,7 +385,7 @@ add('/examenes', META_EXAMENES.titulo, META_EXAMENES.descripcion, {
   seccion: 'Exámenes',
   seccionUrl: '/examenes',
   h1: META_EXAMENES.h1,
-  enlaces: [['Cursos gratis', '/cursos'], ['Artículos', '/articulos'], ['Vademécum', '/vademecum']],
+  enlaces: [['Cursos', '/cursos'], ['Artículos', '/articulos'], ['Vademécum', '/vademecum']],
   contenido: contenidoExamenes(),
 });
 for (const e of EXAMENES) {
@@ -391,7 +395,7 @@ for (const e of EXAMENES) {
     seccionUrl: '/examenes',
     robots: robotsDeExamen(e.slug),
     h1: e.titulo,
-    enlaces: [['Todos los exámenes', '/examenes'], ['Cursos gratis', '/cursos'], ['Vademécum', '/vademecum']],
+    enlaces: [['Todos los exámenes', '/examenes'], ['Cursos', '/cursos'], ['Vademécum', '/vademecum']],
     contenido: contenidoExamen(e),
     extraJsonLd: [jsonLdExamen(e)],
   });
@@ -404,7 +408,7 @@ add('/medicamentos', META_FICHAS.titulo, META_FICHAS.descripcion, {
   seccion: 'Medicamentos',
   seccionUrl: '/medicamentos',
   h1: META_FICHAS.h1,
-  enlaces: [['Vademécum', '/vademecum'], ['Artículos', '/articulos'], ['Cursos gratis', '/cursos']],
+  enlaces: [['Vademécum', '/vademecum'], ['Artículos', '/articulos'], ['Cursos', '/cursos']],
   contenido: contenidoFichas(),
 });
 for (const f of FICHAS) {
@@ -509,7 +513,7 @@ add('/casos-clinicos', META_CASOS.titulo, META_CASOS.descripcion, {
   h1: META_CASOS.h1,
   robots: robotsDelCatalogo(),
   contenido: htmlDelCatalogo(),
-  enlaces: [['Vademécum', '/vademecum'], ['Cursos gratis', '/cursos']],
+  enlaces: [['Vademécum', '/vademecum'], ['Cursos', '/cursos']],
   extraJsonLd: [{ '@type': 'FAQPage', mainEntity: PREGUNTAS_CASOS.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) }],
 });
 

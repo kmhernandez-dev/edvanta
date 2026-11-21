@@ -8,6 +8,7 @@
 
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import { cortoDeComunidad } from '../lib/comunidades/seo';
 import {
   ArrowRight, BookOpen, BookOpenCheck, CheckCircle2, Clock3, GraduationCap, ShieldCheck, Users,
 } from 'lucide-react';
@@ -191,9 +192,9 @@ export default function ExamenDetalle() {
 
               <div className="mt-10 grid gap-4 sm:grid-cols-2">
                 <Link to={examen.curso.ruta} className="rounded-2xl border border-edvanta-border bg-white p-5 transition hover:border-edvanta-teal/40">
-                  <p className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[.12em] text-edvanta-tealdark"><GraduationCap className="h-4 w-4" aria-hidden="true" />Curso gratis</p>
+                  <p className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[.12em] text-edvanta-tealdark"><GraduationCap className="h-4 w-4" aria-hidden="true" />Curso con certificado</p>
                   <p className="mt-2 font-display text-lg font-bold text-edvanta-deep">{examen.curso.nombre}</p>
-                  <p className="mt-1 text-sm leading-6 text-edvanta-muted">Clases abiertas y certificado al terminar. Sin costo.</p>
+                  <p className="mt-1 text-sm leading-6 text-edvanta-muted">Empieza por la primera unidad gratis; el curso completo incluye certificado verificable.</p>
                 </Link>
                 <Link to={examen.guia.ruta} className="rounded-2xl border border-edvanta-border bg-white p-5 transition hover:border-edvanta-teal/40">
                   <p className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[.12em] text-edvanta-tealdark"><BookOpen className="h-4 w-4" aria-hidden="true" />Guía para profesionales</p>
@@ -206,8 +207,8 @@ export default function ExamenDetalle() {
                 <Link to={`/comunidades/${examen.comunidad.slug}`} className="mt-4 flex items-center justify-between gap-4 rounded-2xl border border-edvanta-teal/25 bg-edvanta-mint/35 p-5 transition hover:border-edvanta-teal/50">
                   <div>
                     <p className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[.12em] text-edvanta-tealdark"><Users className="h-4 w-4" aria-hidden="true" />Comunidad</p>
-                    <p className="mt-1 font-display text-lg font-bold text-edvanta-deep">Comunidad de {examen.comunidad.nombre}</p>
-                    <p className="mt-1 text-sm leading-6 text-edvanta-muted">Acompañamiento educativo para pacientes y cuidadores.</p>
+                    <p className="mt-1 font-display text-lg font-bold text-edvanta-deep">Grupo de apoyo de {cortoDeComunidad(examen.comunidad)}</p>
+                    <p className="mt-1 text-sm leading-6 text-edvanta-muted">Grupo gratis por WhatsApp para pacientes y cuidadores. Compártelo con quien lo necesite.</p>
                   </div>
                   <ArrowRight className="h-5 w-5 shrink-0 text-edvanta-blue" aria-hidden="true" />
                 </Link>
@@ -301,8 +302,8 @@ export default function ExamenDetalle() {
               </div>
               <div className="rounded-2xl border border-edvanta-teal/25 bg-edvanta-mint/35 p-5">
                 <p className="text-xs font-bold uppercase tracking-[.12em] text-edvanta-tealdark">Para profesionales</p>
-                <p className="mt-2 font-display text-lg font-bold text-edvanta-deep">Sigue con el curso gratis</p>
-                <p className="mt-1 text-sm leading-6 text-edvanta-muted">Clases abiertas, verificación de aprendizaje y certificado al terminar.</p>
+                <p className="mt-2 font-display text-lg font-bold text-edvanta-deep">Sigue con el curso</p>
+                <p className="mt-1 text-sm leading-6 text-edvanta-muted">Empieza por la primera unidad gratis; el curso completo incluye verificación de aprendizaje y certificado.</p>
                 <Link to={examen.curso.ruta} onClick={() => trackEvent('course_clicked', { origen: 'examen', examen: examen.slug, curso: examen.curso.ruta })} className="mt-3 inline-flex items-center gap-1.5 text-sm font-bold text-edvanta-blue hover:underline">
                   Ver el curso
                   <ArrowRight className="h-4 w-4" aria-hidden="true" />
@@ -320,7 +321,7 @@ export default function ExamenDetalle() {
             </p>
             <div className="mt-6 flex flex-wrap justify-center gap-3">
               <Link to="/examenes" className="inline-flex min-h-11 items-center gap-2 rounded-xl bg-edvanta-blue px-5 text-sm font-bold text-white transition hover:bg-edvanta-bluedark">Ver todos los exámenes</Link>
-              <Link to="/cursos" className="inline-flex min-h-11 items-center gap-2 rounded-xl border border-edvanta-border bg-white px-5 text-sm font-semibold text-edvanta-blue transition hover:bg-edvanta-light">Explorar cursos gratis</Link>
+              <Link to="/cursos" className="inline-flex min-h-11 items-center gap-2 rounded-xl border border-edvanta-border bg-white px-5 text-sm font-semibold text-edvanta-blue transition hover:bg-edvanta-light">Explorar cursos</Link>
             </div>
           </div>
         </section>

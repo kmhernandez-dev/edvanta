@@ -4,7 +4,7 @@
  *
  *  Aparece al terminar de leer. Primero la comunidad del paciente
  *  (WhatsApp de Karla, número +57 300 633 2244), después la ruta del
- *  profesional (curso gratis y guía). No vende dentro del artículo:
+ *  profesional (curso y guía). No vende dentro del artículo:
  *  ofrece el siguiente paso y deja claro qué es y qué no es.
  *
  *  Cada clic se mide con `community_join_clicked`, con la enfermedad,
@@ -15,6 +15,7 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight, BookOpen, MessageCircle, ShieldCheck, Users } from 'lucide-react';
 import { trackEvent } from '../../utils/analytics';
+import { cortoDeComunidad, paraDeComunidad } from '../../lib/comunidades/seo';
 
 export default function BloqueComunidad({ comunidad, articuloSlug = '', origen = 'articulo' }) {
   if (!comunidad) return null;
@@ -52,14 +53,15 @@ export default function BloqueComunidad({ comunidad, articuloSlug = '', origen =
       <div className="p-6 sm:p-7">
         <p className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[.14em] text-edvanta-tealdark">
           <Users className="h-4 w-4" aria-hidden="true" />
-          Comunidad de {comunidad.nombre}
+          Grupo de apoyo gratis
         </p>
         <h2 className="mt-2 font-display text-2xl font-extrabold leading-tight text-edvanta-deep">
-          No tienes que resolverlo a solas
+          Grupo de apoyo de {cortoDeComunidad(comunidad)}
         </h2>
         <p className="mt-2 max-w-2xl text-[15px] leading-7 text-edvanta-ink/80">
-          Un espacio para pacientes y cuidadores de {comunidad.nombre.toLowerCase()}: experiencias, preguntas y
-          educación clara. No reemplaza a tu equipo de salud y no se comparten dosis ni datos clínicos.
+          No tienes que resolverlo a solas. Un espacio por WhatsApp para {paraDeComunidad(comunidad)} y sus
+          cuidadores: experiencias, preguntas y educación clara. No reemplaza a tu equipo de salud y no se
+          comparten dosis ni datos clínicos.
         </p>
 
         <ul className="mt-4 grid gap-2 text-sm leading-6 text-edvanta-ink/80 sm:grid-cols-3">

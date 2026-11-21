@@ -19,6 +19,7 @@ const { CASOS, AREAS } = await imp('src/data/casosClinicos/index.js');
 const { REVISION_CASOS } = await imp('src/data/casosClinicos/revision.js');
 const { EXAMENES, examenRevisado } = await imp('src/data/examenes/index.js');
 const { COMUNIDADES } = await imp('src/data/comunidadesSalud.js');
+const { descripcionDeComunidad } = await imp('src/lib/comunidades/seo.js');
 const { articulosSalud } = await imp('src/data/articulosSalud.js');
 
 const SITIO = 'https://edvanta.co';
@@ -70,7 +71,7 @@ l.push('');
 l.push('Grupos de apoyo por enfermedad para pacientes y cuidadores, con moderación y reglas claras. Se entra por WhatsApp. La comunidad no diagnostica, no ajusta dosis y no reemplaza al equipo de salud: ayuda a llegar mejor preparado a la consulta. Cada comunidad enlaza a artículos revisados y a un curso del aula.');
 l.push('');
 l.push(`- [Todas las comunidades](${SITIO}/comunidades)`);
-for (const c of COMUNIDADES) l.push(`- [Comunidad de ${c.nombre.toLowerCase()}](${SITIO}${c.ruta}): ${limpio(c.resumen)}`);
+for (const c of COMUNIDADES) l.push(`- [${limpio(c.titulo)}](${SITIO}${c.ruta}): ${limpio(descripcionDeComunidad(c))}`);
 l.push('');
 l.push('## Enfermedades frecuentes: guías para pacientes');
 l.push('');

@@ -1,5 +1,5 @@
 /**
- * /comunidades — Una comunidad por enfermedad.
+ * /comunidades — Grupos de apoyo para pacientes, uno por enfermedad.
  *
  * Es el hub que reúne las comunidades de pacientes y cuidadores.
  * Cada tarjeta lleva a su página; la página lleva al WhatsApp de
@@ -12,7 +12,8 @@ import { ArrowRight, HeartPulse, MessageCircle, ShieldCheck, Users } from 'lucid
 import SiteHeader from '../components/edvanta/SiteHeader';
 import SiteFooter from '../components/edvanta/SiteFooter';
 import { Breadcrumb } from '../components/edvanta/ui';
-import { COMUNIDADES, META_COMUNIDADES } from '../data/comunidadesSalud';
+import { COMUNIDADES, META_COMUNIDADES, PREGUNTAS_COMUNIDADES } from '../data/comunidadesSalud';
+import { faqJsonLd } from '../lib/comunidades/seo';
 import { waLink } from '../config/links';
 import { updatePageSeo } from '../utils/seo';
 
@@ -42,10 +43,11 @@ export default function ComunidadesIndex() {
           itemListElement: COMUNIDADES.map((c, i) => ({
             '@type': 'ListItem',
             position: i + 1,
-            name: `Comunidad de ${c.nombre}`,
+            name: c.titulo,
             url: `https://edvanta.co${c.ruta}`,
           })),
         },
+        faqJsonLd(PREGUNTAS_COMUNIDADES),
       ],
     },
   }), []);
@@ -59,14 +61,15 @@ export default function ComunidadesIndex() {
             <Breadcrumb items={[{ label: 'Inicio', to: '/' }, { label: 'Comunidades' }]} />
             <p className="mt-6 inline-flex items-center gap-2 rounded-full border border-edvanta-teal/30 bg-white px-3.5 py-1.5 text-xs font-bold uppercase tracking-[.12em] text-edvanta-tealdark">
               <Users className="h-4 w-4" aria-hidden="true" />
-              Comunidades Edvanta
+              Grupos de apoyo Edvanta
             </p>
             <h1 className="mt-4 max-w-3xl font-display text-[2.1rem] font-extrabold leading-[1.08] tracking-[-0.03em] text-edvanta-deep sm:text-[3rem]">
-              Una comunidad para cada enfermedad
+              {META_COMUNIDADES.h1}
             </h1>
             <p className="mt-4 max-w-2xl text-lg leading-8 text-edvanta-muted">
-              Espacios de acompañamiento para pacientes y cuidadores. Educación clara, experiencias y preguntas,
-              con el WhatsApp de Karla como puerta de entrada. No son consultorios ni servicios de urgencias.
+              Grupos de apoyo en línea, gratis y por WhatsApp, organizados por enfermedad. Experiencias, preguntas y
+              educación clara, con Karla Hernández, química farmacéutica, como puerta de entrada. No son consultorios
+              ni servicios de urgencias.
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
               <a
@@ -104,7 +107,7 @@ export default function ComunidadesIndex() {
                 <p className="mt-2 text-sm leading-6 text-edvanta-muted">{c.resumen}</p>
                 <div className="mt-auto flex flex-wrap items-center gap-3 pt-5">
                   <Link to={c.ruta} className="inline-flex items-center gap-1.5 text-sm font-bold text-edvanta-blue hover:underline">
-                    Ver la comunidad
+                    Ver el grupo de apoyo
                     <ArrowRight className="h-4 w-4" aria-hidden="true" />
                   </Link>
                   <a
@@ -128,8 +131,8 @@ export default function ComunidadesIndex() {
             <div className="mt-6 grid gap-4 sm:grid-cols-3">
               {[
                 ['1. Escribes por WhatsApp', 'Cuéntanos qué comunidad te interesa. Te respondemos con las reglas y el paso siguiente.'],
-                ['2. Entras al espacio', 'La comunidad se organiza por enfermedad. No hay ventas dentro del grupo.'],
-                ['3. Sigues con contenido', 'Artículos revisados, herramientas interactivas y cursos gratuitos cuando quieras profundizar.'],
+                ['2. Entras al grupo', 'Cada grupo de apoyo se organiza por enfermedad. No hay ventas dentro del grupo.'],
+                ['3. Sigues con contenido', 'Artículos revisados, herramientas interactivas y cursos con certificado cuando quieras profundizar.'],
               ].map(([t, d]) => (
                 <div key={t} className="rounded-2xl border border-edvanta-border bg-white p-5">
                   <p className="font-display text-base font-bold text-edvanta-deep">{t}</p>
@@ -140,10 +143,24 @@ export default function ComunidadesIndex() {
           </div>
         </section>
 
+        <section className="mx-auto max-w-4xl px-4 pt-14 sm:px-6 lg:px-8">
+          <h2 className="font-display text-2xl font-extrabold text-edvanta-deep sm:text-3xl">Preguntas sobre los grupos de apoyo</h2>
+          <div className="mt-6 divide-y divide-edvanta-border rounded-2xl border border-edvanta-border bg-white">
+            {PREGUNTAS_COMUNIDADES.map(([q, a]) => (
+              <details key={q} className="group p-4">
+                <summary className="cursor-pointer list-none font-display text-base font-bold text-edvanta-deep marker:hidden">
+                  <h3 className="inline">{q}</h3>
+                </summary>
+                <p className="mt-2 text-sm leading-6 text-edvanta-ink/80">{a}</p>
+              </details>
+            ))}
+          </div>
+        </section>
+
         <section className="mx-auto max-w-4xl px-4 py-14 text-center sm:px-6 lg:px-8">
           <h2 className="font-display text-2xl font-extrabold text-edvanta-deep sm:text-3xl">La información no alcanza; el acompañamiento ayuda</h2>
           <p className="mx-auto mt-3 max-w-2xl leading-7 text-edvanta-muted">
-            Si no sabes cuál elegir, escríbenos y te orientamos. La comunidad es gratuita y no reemplaza tu tratamiento.
+            Si no sabes cuál elegir, escríbenos y te orientamos. Los grupos de apoyo son gratuitos y no reemplazan tu tratamiento.
           </p>
           <a
             href={ORIENTACION}

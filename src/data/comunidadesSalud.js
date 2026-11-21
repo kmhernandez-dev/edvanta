@@ -17,6 +17,13 @@
  *   · La herramienta interactiva ordena información: no da un
  *     diagnóstico ni una dosis.
  *
+ *  Cada comunidad se posiciona como «grupo de apoyo», que es lo que la
+ *  gente busca en Google. `titulo` es el H1; `apoyo` guarda la forma
+ *  corta («grupo de apoyo de migraña»), la frase «para…», el título SEO
+ *  sin la marca y, si hace falta, preguntas propias. `crisis` es la
+ *  respuesta a «¿Qué hago si estoy en crisis?» en las de salud mental
+ *  (la misma ayuda inmediata de `noEs`). Lo arma src/lib/comunidades/seo.js.
+ *
  *  Lo usan:
  *   · src/components/comunidad/BloqueComunidad.jsx (dentro del artículo);
  *   · src/components/articulos/HerramientaArticulo.jsx (interactivo);
@@ -430,7 +437,7 @@ export const COMUNIDADES = [
   {
     slug: 'tiroides',
     nombre: 'Tiroides',
-    titulo: 'Comunidad de tiroides: hipotiroidismo, Hashimoto y vivir sin tiroides',
+    titulo: 'Grupo de apoyo de tiroides: hipotiroidismo, Hashimoto y vivir sin tiroides',
     resumen: 'Comunidad de pacientes tiroideos: levotiroxina, síntomas, Hashimoto, tiroidectomía y acompañamiento educativo. Acceso por WhatsApp.',
     intro: [
       'Reúne a personas con hipotiroidismo, Hashimoto, hipertiroidismo, nódulos o que viven sin tiroides después de una cirugía. La comunidad es el espacio donde las dudas del día a día se conversan sin juicios y sin promesas milagrosas.',
@@ -459,18 +466,88 @@ export const COMUNIDADES = [
       'vivir-sin-tiroides',
       'levotiroxina-para-que-sirve',
     ],
+    // Artículos de Feliz Sin Tiroides que muestran el bloque del grupo de
+    // apoyo (sin la herramienta ni la lista «para empezar»).
+    cluster: [
+      'recien-diagnosticado-con-hipotiroidismo',
+      'guia-para-recien-diagnosticados-con-hipotiroidismo',
+      'diferencia-hipotiroidismo-e-hipertiroidismo',
+      'hipotiroidismo-subclinico',
+      'cambios-de-peso-e-hipotiroidismo',
+      'piel-seca-e-hipotiroidismo',
+      'preguntas-control-hipotiroidismo',
+      'levotiroxina-y-cafe',
+      'levotiroxina-hierro-calcio',
+      'levotiroxina-con-comida',
+      'olvide-tomar-levotiroxina',
+      'viajar-con-levotiroxina',
+      'cambio-de-marca-levotiroxina',
+      'levotiroxina-y-antiacidos',
+      'levotiroxina-trabajo-por-turnos',
+      'como-guardar-levotiroxina',
+      'primera-consulta-despues-de-tiroidectomia',
+      'regreso-a-casa-despues-de-tiroidectomia',
+      'cansancio-despues-de-tiroidectomia',
+      'caida-del-cabello-despues-de-tiroidectomia',
+      'como-acompanar-a-alguien-sin-tiroides',
+      'organizar-controles-despues-de-tiroidectomia',
+      'preguntas-control-cancer-de-tiroides',
+      'como-evaluar-consejos-de-alimentacion-para-hashimoto',
+      'hashimoto-y-gluten',
+      'hashimoto-y-yodo',
+      'selenio-y-hashimoto',
+      'dieta-antiinflamatoria-hashimoto',
+      'leer-etiqueta-suplemento-hashimoto',
+      'alimentacion-e-hipotiroidismo',
+      'menu-semanal-hipotiroidismo',
+      'lista-de-compras-hipotiroidismo',
+      'desayunos-compatibles-levotiroxina',
+      'almuerzos-antiinflamatorios-hipotiroidismo',
+      'cenas-ligeras-hipotiroidismo',
+      'snacks-saludables-tiroides',
+      'sopas-y-cremas-tiroides',
+      'ensaladas-completas-tiroides',
+      'proteinas-saludables-tiroides',
+      'postres-saludables-tiroides',
+      'batch-cooking-tiroides',
+      'infusion-jengibre-curcuma-tiroides',
+      'te-verde-tiroides-beneficios-precauciones',
+      'batido-antiinflamatorio-tiroides',
+      'caldo-de-huesos-tiroides',
+      'semillas-de-lino-tiroides',
+      'aloe-vera-tiroides-digestion',
+      'magnesio-relajacion-muscular-tiroides',
+      'adaptogenos-tiroides-ashwagandha',
+      'aceites-esenciales-tiroides-mitos',
+      'vinagre-de-manzana-tiroides',
+      'diario-emocional-hipotiroidismo',
+      'cambios-de-animo-hipotiroidismo-consulta',
+      'niebla-mental-e-hipotiroidismo',
+      'cansancio-emocional-hipotiroidismo',
+      'diario-de-sueno-hipotiroidismo',
+      'despertares-nocturnos-tiroides',
+      'diario-de-sintomas-o-emocional',
+    ],
     curso: { ruta: '/curso-de-autocuidado-de-la-tiroides', nombre: 'Autocuidado de la tiroides' },
     guia: { ruta: '/guia/levotiroxina-sin-sorpresas', nombre: 'Levotiroxina sin sorpresas', publico: 'pacientes' },
     guiaPro: { ruta: '/guia/seguridad-del-medicamento', nombre: 'Seguridad del medicamento' },
     grupo: FST_COMMUNITY_URL,
     herramienta: HERRAMIENTAS.tiroides,
     mensaje: 'Hola Karla, vengo de la comunidad de tiroides en edvanta.co y quiero entrar al grupo de pacientes. ¿Me compartes las reglas?',
-    keywords: ['comunidad de tiroides', 'grupo de pacientes tiroideos', 'comunidad hipotiroidismo', 'grupo de apoyo Hashimoto'],
+    keywords: ['grupo de apoyo de tiroides', 'grupo de apoyo hipotiroidismo', 'foro de hipotiroidismo', 'grupo de apoyo Hashimoto', 'comunidad de pacientes tiroideos', 'grupo de WhatsApp de tiroides'],
+    apoyo: {
+      corto: 'tiroides',
+      para: 'personas con hipotiroidismo, Hashimoto u otra condición de la tiroides',
+      seo: 'Grupo de apoyo de tiroides e hipotiroidismo',
+      preguntas: [
+        ['¿Es un foro de hipotiroidismo?', 'Funciona como un foro de pacientes, pero por WhatsApp y con reglas: se conversan dudas y experiencias sobre hipotiroidismo, Hashimoto, levotiroxina y la vida sin tiroides, sin ajustar dosis ni interpretar exámenes por chat. Además existe el grupo público de Feliz Sin Tiroides.'],
+      ],
+    },
   },
   {
     slug: 'hipertension-arterial',
     nombre: 'Hipertensión arterial',
-    titulo: 'Comunidad de hipertensión arterial: presión alta y autocuidado',
+    titulo: 'Grupo de apoyo para personas con hipertensión arterial (presión alta)',
     resumen: 'Comunidad para personas con presión alta: medición en casa, adherencia, sal, potasio y acompañamiento. Acceso por WhatsApp con Karla.',
     intro: [
       'La presión alta casi nunca se siente. Por eso la comunidad se centra en medir bien, entender los números y sostener el tratamiento cuando la vida se complica.',
@@ -508,12 +585,17 @@ export const COMUNIDADES = [
     guiaPro: { ruta: '/guia/atencion-farmaceutica-hipertension-arterial', nombre: 'Atención farmacéutica en hipertensión' },
     herramienta: HERRAMIENTAS.hipertension,
     mensaje: 'Hola Karla, vengo de la comunidad de hipertensión en edvanta.co y quiero entrar. ¿Me compartes las reglas?',
-    keywords: ['comunidad de hipertensión', 'grupo de apoyo presión alta', 'comunidad de pacientes hipertensos'],
+    keywords: ['grupo de apoyo hipertensión', 'grupo de apoyo presión alta', 'comunidad de pacientes hipertensos', 'grupo de WhatsApp de hipertensión'],
+    apoyo: {
+      corto: 'hipertensión',
+      para: 'personas con hipertensión arterial (presión alta)',
+      seo: 'Grupo de apoyo para personas con presión alta',
+    },
   },
   {
     slug: 'diabetes-tipo-2',
     nombre: 'Diabetes tipo 2',
-    titulo: 'Comunidad de diabetes tipo 2: medicamentos, glucosa y vida diaria',
+    titulo: 'Grupo de apoyo para personas con diabetes tipo 2 y prediabetes',
     resumen: 'Comunidad de pacientes con diabetes tipo 2: metformina, iSGLT2, GLP-1, hipoglucemias, alimentación y acompañamiento por WhatsApp.',
     intro: [
       'Vivir con diabetes tipo 2 es tomar decisiones todos los días: comer, moverse, medir la glucosa, recordar el medicamento y llegar a los controles. La comunidad existe para que esas decisiones no se tomen a solas.',
@@ -548,12 +630,20 @@ export const COMUNIDADES = [
     guiaPro: { ruta: '/guia/farmacocinetica-clinica-aplicada', nombre: 'Farmacocinética clínica aplicada' },
     herramienta: HERRAMIENTAS.diabetes,
     mensaje: 'Hola Karla, vengo de la comunidad de diabetes tipo 2 en edvanta.co y quiero entrar. ¿Me compartes las reglas?',
-    keywords: ['comunidad de diabetes', 'grupo de apoyo diabetes tipo 2', 'comunidad de pacientes diabéticos'],
+    keywords: ['grupo de apoyo diabetes', 'grupo de apoyo para diabéticos', 'grupo de WhatsApp para diabéticos', 'grupo de apoyo diabetes tipo 2', 'comunidad de pacientes diabéticos'],
+    apoyo: {
+      corto: 'diabetes tipo 2',
+      para: 'personas con diabetes tipo 2 o prediabetes',
+      seo: 'Grupo de apoyo de diabetes tipo 2 por WhatsApp',
+      preguntas: [
+        ['¿Es un grupo de WhatsApp para diabéticos?', 'Sí. Es un grupo de apoyo por WhatsApp para personas con diabetes tipo 2 o prediabetes y sus cuidadores. Se conversan la alimentación, la rutina, los controles y las hipoglucemias, sin cambiar insulinas ni pastillas por chat.'],
+      ],
+    },
   },
   {
     slug: 'colesterol-alto',
     nombre: 'Colesterol alto',
-    titulo: 'Comunidad de colesterol alto y triglicéridos',
+    titulo: 'Grupo de apoyo para personas con colesterol y triglicéridos altos',
     resumen: 'Comunidad para personas con colesterol o triglicéridos altos: estatinas, alimentación, efectos musculares y seguimiento por WhatsApp.',
     intro: [
       'El colesterol alto no se siente, pero se puede medir, entender y tratar. La comunidad reúne a personas que quieren saber qué significa su perfil lipídico y cómo sostener el plan sin miedo.',
@@ -585,12 +675,17 @@ export const COMUNIDADES = [
     guiaPro: { ruta: '/guia/seguridad-del-medicamento', nombre: 'Seguridad del medicamento' },
     herramienta: HERRAMIENTAS.colesterol,
     mensaje: 'Hola Karla, vengo de la comunidad de colesterol alto en edvanta.co y quiero entrar. ¿Me compartes las reglas?',
-    keywords: ['comunidad de colesterol', 'grupo de apoyo colesterol alto', 'comunidad triglicéridos'],
+    keywords: ['grupo de apoyo colesterol alto', 'grupo de apoyo triglicéridos altos', 'comunidad de colesterol', 'grupo de WhatsApp de colesterol'],
+    apoyo: {
+      corto: 'colesterol alto',
+      para: 'personas con colesterol o triglicéridos altos',
+      seo: 'Grupo de apoyo para colesterol y triglicéridos altos',
+    },
   },
   {
     slug: 'insuficiencia-cardiaca',
     nombre: 'Insuficiencia cardíaca',
-    titulo: 'Comunidad de insuficiencia cardíaca',
+    titulo: 'Grupo de apoyo para personas con insuficiencia cardíaca y sus cuidadores',
     resumen: 'Comunidad para personas con insuficiencia cardíaca: peso diario, diuréticos, sal, signos de alarma y acompañamiento por WhatsApp.',
     intro: [
       'La insuficiencia cardíaca se cuida entre consultas. Pesar, mirar los tobillos, tomar los medicamentos y reconocer los cambios a tiempo mejora la vida y evita hospitalizaciones.',
@@ -619,12 +714,17 @@ export const COMUNIDADES = [
     guiaPro: { ruta: '/guia/seguridad-del-medicamento', nombre: 'Seguridad del medicamento' },
     herramienta: HERRAMIENTAS.insuficienciaCardiaca,
     mensaje: 'Hola Karla, vengo de la comunidad de insuficiencia cardíaca en edvanta.co y quiero entrar. ¿Me compartes las reglas?',
-    keywords: ['comunidad insuficiencia cardíaca', 'grupo de apoyo insuficiencia cardíaca', 'comunidad de pacientes cardíacos'],
+    keywords: ['grupo de apoyo insuficiencia cardíaca', 'grupo de apoyo para pacientes cardíacos', 'comunidad de insuficiencia cardíaca', 'grupo de apoyo para cuidadores de pacientes cardíacos'],
+    apoyo: {
+      corto: 'insuficiencia cardíaca',
+      para: 'personas con insuficiencia cardíaca',
+      seo: 'Grupo de apoyo para insuficiencia cardíaca',
+    },
   },
   {
     slug: 'asma',
     nombre: 'Asma',
-    titulo: 'Comunidad de asma: inhaladores, crisis y control',
+    titulo: 'Grupo de apoyo para personas con asma: inhaladores, crisis y control',
     resumen: 'Comunidad de personas con asma: técnica de inhalación, control, crisis, desencadenantes y acompañamiento por WhatsApp.',
     intro: [
       'El asma se controla, no se «aguanta». La mayoría de las crisis se pueden prevenir cuando el inhalador de fondo se usa bien y la técnica se revisa.',
@@ -654,12 +754,17 @@ export const COMUNIDADES = [
     guiaPro: { ruta: '/guia/problemas-farmacoterapeuticos', nombre: 'Problemas farmacoterapéuticos' },
     herramienta: HERRAMIENTAS.asma,
     mensaje: 'Hola Karla, vengo de la comunidad de asma en edvanta.co y quiero entrar. ¿Me compartes las reglas?',
-    keywords: ['comunidad de asma', 'grupo de apoyo asma', 'comunidad de pacientes asmáticos'],
+    keywords: ['grupo de apoyo asma', 'comunidad de asma', 'grupo de WhatsApp de asma', 'comunidad de pacientes asmáticos'],
+    apoyo: {
+      corto: 'asma',
+      para: 'personas con asma',
+      seo: 'Grupo de apoyo para personas con asma',
+    },
   },
   {
     slug: 'epoc',
     nombre: 'EPOC',
-    titulo: 'Comunidad de EPOC: vivir mejor con enfermedad pulmonar',
+    titulo: 'Grupo de apoyo para personas con EPOC: vivir mejor con la enfermedad pulmonar',
     resumen: 'Comunidad para personas con EPOC: inhaladores, exacerbaciones, ejercicio, vacunas y acompañamiento educativo por WhatsApp.',
     intro: [
       'La EPOC cambia la respiración, pero no define a la persona. La comunidad reúne a quienes conviven con ella para compartir rutinas, ejercicios y señales de alarma.',
@@ -686,12 +791,17 @@ export const COMUNIDADES = [
     guiaPro: { ruta: '/guia/problemas-farmacoterapeuticos', nombre: 'Problemas farmacoterapéuticos' },
     herramienta: HERRAMIENTAS.epoc,
     mensaje: 'Hola Karla, vengo de la comunidad de EPOC en edvanta.co y quiero entrar. ¿Me compartes las reglas?',
-    keywords: ['comunidad de EPOC', 'grupo de apoyo EPOC', 'comunidad de pacientes con EPOC'],
+    keywords: ['grupo de apoyo EPOC', 'comunidad de EPOC', 'grupo de apoyo enfermedad pulmonar', 'comunidad de pacientes con EPOC'],
+    apoyo: {
+      corto: 'EPOC',
+      para: 'personas con EPOC',
+      seo: 'Grupo de apoyo para personas con EPOC',
+    },
   },
   {
     slug: 'obesidad',
     nombre: 'Obesidad y metabolismo',
-    titulo: 'Comunidad de obesidad y salud metabólica',
+    titulo: 'Grupo de apoyo para la obesidad y la salud metabólica, sin juicios',
     resumen: 'Comunidad para personas con obesidad: hábitos, medicamentos, mitos, salud metabólica y acompañamiento sin juicios por WhatsApp.',
     intro: [
       'La obesidad no es falta de voluntad. Es una condición con causas biológicas, sociales y emocionales. La comunidad existe para hablar de salud sin básculas como castigo.',
@@ -728,12 +838,17 @@ export const COMUNIDADES = [
     guiaPro: { ruta: '/guia/seguridad-del-medicamento', nombre: 'Seguridad del medicamento' },
     herramienta: HERRAMIENTAS.obesidad,
     mensaje: 'Hola Karla, vengo de la comunidad de obesidad y metabolismo en edvanta.co y quiero entrar. ¿Me compartes las reglas?',
-    keywords: ['comunidad de obesidad', 'grupo de apoyo obesidad', 'comunidad salud metabólica'],
+    keywords: ['grupo de apoyo obesidad', 'grupo de apoyo para bajar de peso', 'comunidad de obesidad', 'grupo de WhatsApp para bajar de peso', 'comunidad de salud metabólica'],
+    apoyo: {
+      corto: 'obesidad',
+      para: 'personas con obesidad o resistencia a la insulina',
+      seo: 'Grupo de apoyo para la obesidad y bajar de peso',
+    },
   },
   {
     slug: 'higado-graso',
     nombre: 'Hígado graso',
-    titulo: 'Comunidad de hígado graso',
+    titulo: 'Grupo de apoyo para personas con hígado graso',
     resumen: 'Comunidad para personas con hígado graso: peso, alimentación, alcohol, exámenes y seguimiento educativo por WhatsApp.',
     intro: [
       'El hígado graso suele descubrirse por una ecografía o por exámenes alterados, no por síntomas. La comunidad ayuda a entender qué sigue y cómo cuidar el hígado sin extremismos.',
@@ -760,12 +875,17 @@ export const COMUNIDADES = [
     guiaPro: { ruta: '/guia/seguridad-del-medicamento', nombre: 'Seguridad del medicamento' },
     herramienta: HERRAMIENTAS.higadoGraso,
     mensaje: 'Hola Karla, vengo de la comunidad de hígado graso en edvanta.co y quiero entrar. ¿Me compartes las reglas?',
-    keywords: ['comunidad hígado graso', 'grupo de apoyo hígado graso', 'comunidad de pacientes con hígado graso'],
+    keywords: ['grupo de apoyo hígado graso', 'comunidad de hígado graso', 'comunidad de pacientes con hígado graso', 'grupo de WhatsApp de hígado graso'],
+    apoyo: {
+      corto: 'hígado graso',
+      para: 'personas con hígado graso',
+      seo: 'Grupo de apoyo para personas con hígado graso',
+    },
   },
   {
     slug: 'gastritis-y-reflujo',
     nombre: 'Gastritis y reflujo',
-    titulo: 'Comunidad de gastritis y reflujo gastroesofágico',
+    titulo: 'Grupo de apoyo para gastritis y reflujo gastroesofágico',
     resumen: 'Comunidad para personas con gastritis o reflujo: síntomas, alimentación, omeprazol, Helicobacter pylori y acompañamiento por WhatsApp.',
     intro: [
       'El ardor, la plenitud y el reflujo afectan la comida, el sueño y el trabajo. La comunidad ayuda a separar mitos de lo que sí tiene evidencia y a llegar mejor a la consulta.',
@@ -794,12 +914,17 @@ export const COMUNIDADES = [
     guiaPro: { ruta: '/guia/problemas-farmacoterapeuticos', nombre: 'Problemas farmacoterapéuticos' },
     herramienta: HERRAMIENTAS.gastritis,
     mensaje: 'Hola Karla, vengo de la comunidad de gastritis y reflujo en edvanta.co y quiero entrar. ¿Me compartes las reglas?',
-    keywords: ['comunidad gastritis', 'grupo de apoyo reflujo', 'comunidad de pacientes con gastritis'],
+    keywords: ['grupo de apoyo gastritis', 'grupo de apoyo reflujo', 'comunidad de pacientes con gastritis', 'grupo de WhatsApp de gastritis'],
+    apoyo: {
+      corto: 'gastritis y reflujo',
+      para: 'personas con gastritis o reflujo',
+      seo: 'Grupo de apoyo para gastritis y reflujo',
+    },
   },
   {
     slug: 'colon-irritable',
     nombre: 'Colon irritable',
-    titulo: 'Comunidad de colon irritable',
+    titulo: 'Grupo de apoyo para personas con colon irritable',
     resumen: 'Comunidad para personas con colon irritable: síntomas, dieta FODMAP, estrés, seguimiento y acompañamiento por WhatsApp.',
     intro: [
       'El colon irritable no daña el intestino, pero puede condicionar la vida diaria. La comunidad ayuda a ordenar síntomas, probar cambios con método y dejar de perseguir dietas contradictorias.',
@@ -827,12 +952,17 @@ export const COMUNIDADES = [
     guiaPro: { ruta: '/guia/problemas-farmacoterapeuticos', nombre: 'Problemas farmacoterapéuticos' },
     herramienta: HERRAMIENTAS.colonIrritable,
     mensaje: 'Hola Karla, vengo de la comunidad de colon irritable en edvanta.co y quiero entrar. ¿Me compartes las reglas?',
-    keywords: ['comunidad colon irritable', 'grupo de apoyo colon irritable', 'comunidad de pacientes con colon irritable'],
+    keywords: ['grupo de apoyo colon irritable', 'grupo de apoyo síndrome de intestino irritable', 'comunidad de colon irritable', 'comunidad de pacientes con colon irritable'],
+    apoyo: {
+      corto: 'colon irritable',
+      para: 'personas con colon irritable (síndrome de intestino irritable)',
+      seo: 'Grupo de apoyo para personas con colon irritable',
+    },
   },
   {
     slug: 'estrenimiento',
     nombre: 'Estreñimiento',
-    titulo: 'Comunidad de estreñimiento',
+    titulo: 'Grupo de apoyo para personas con estreñimiento',
     resumen: 'Comunidad para personas con estreñimiento: fibra, agua, laxantes, causas y acompañamiento educativo por WhatsApp.',
     intro: [
       'El estreñimiento es frecuente y muchas veces se trata con laxantes sin revisar la causa. La comunidad ayuda a ordenar hábitos, entender los tipos de laxantes y consultar a tiempo.',
@@ -860,12 +990,17 @@ export const COMUNIDADES = [
     guiaPro: { ruta: '/guia/problemas-farmacoterapeuticos', nombre: 'Problemas farmacoterapéuticos' },
     herramienta: HERRAMIENTAS.estrenimiento,
     mensaje: 'Hola Karla, vengo de la comunidad de estreñimiento en edvanta.co y quiero entrar. ¿Me compartes las reglas?',
-    keywords: ['comunidad estreñimiento', 'grupo de apoyo estreñimiento', 'comunidad de pacientes con estreñimiento'],
+    keywords: ['grupo de apoyo estreñimiento', 'grupo de apoyo estreñimiento crónico', 'comunidad de estreñimiento', 'comunidad de pacientes con estreñimiento'],
+    apoyo: {
+      corto: 'estreñimiento',
+      para: 'personas con estreñimiento',
+      seo: 'Grupo de apoyo para personas con estreñimiento',
+    },
   },
   {
     slug: 'infeccion-urinaria',
     nombre: 'Infección urinaria',
-    titulo: 'Comunidad de infección urinaria',
+    titulo: 'Grupo de apoyo para infecciones urinarias de repetición',
     resumen: 'Comunidad para personas con infecciones urinarias recurrentes: síntomas, antibióticos, prevención y acompañamiento por WhatsApp.',
     intro: [
       'La infección urinaria es una de las consultas más frecuentes, y también una de las más automedicadas. La comunidad ayuda a reconocer síntomas, evitar antibióticos sobrantes y prevenir recaídas.',
@@ -895,12 +1030,17 @@ export const COMUNIDADES = [
     guiaPro: { ruta: '/guia/stewardship-farmaceutico-proa', nombre: 'Stewardship farmacéutico y PROA' },
     herramienta: HERRAMIENTAS.infeccionUrinaria,
     mensaje: 'Hola Karla, vengo de la comunidad de infección urinaria en edvanta.co y quiero entrar. ¿Me compartes las reglas?',
-    keywords: ['comunidad infección urinaria', 'grupo de apoyo infecciones urinarias', 'comunidad cistitis'],
+    keywords: ['grupo de apoyo infección urinaria', 'grupo de apoyo infecciones urinarias recurrentes', 'grupo de apoyo cistitis', 'comunidad de infección urinaria'],
+    apoyo: {
+      corto: 'infección urinaria',
+      para: 'personas con infecciones urinarias de repetición',
+      seo: 'Grupo de apoyo para infecciones urinarias de repetición',
+    },
   },
   {
     slug: 'artrosis-y-dolor-cronico',
     nombre: 'Artrosis y dolor crónico',
-    titulo: 'Comunidad de artrosis y dolor crónico',
+    titulo: 'Grupo de apoyo para personas con dolor crónico y artrosis',
     resumen: 'Comunidad para personas con artrosis o dolor crónico: movimiento, analgésicos, seguridad y acompañamiento por WhatsApp.',
     intro: [
       'El dolor crónico no se resuelve solo con pastillas. La comunidad reúne a personas con artrosis, dolor lumbar, fibromialgia y otros dolores persistentes para compartir movimiento seguro, descanso y estrategias reales.',
@@ -937,12 +1077,17 @@ export const COMUNIDADES = [
     guiaPro: { ruta: '/guia/seguridad-del-medicamento', nombre: 'Seguridad del medicamento' },
     herramienta: HERRAMIENTAS.artrosis,
     mensaje: 'Hola Karla, vengo de la comunidad de artrosis y dolor crónico en edvanta.co y quiero entrar. ¿Me compartes las reglas?',
-    keywords: ['comunidad artrosis', 'grupo de apoyo dolor crónico', 'comunidad de pacientes con artrosis'],
+    keywords: ['grupo de apoyo dolor crónico', 'grupo de apoyo artrosis', 'comunidad de pacientes con dolor crónico', 'comunidad de artrosis'],
+    apoyo: {
+      corto: 'dolor crónico y artrosis',
+      para: 'personas con dolor crónico o artrosis',
+      seo: 'Grupo de apoyo para dolor crónico y artrosis',
+    },
   },
   {
     slug: 'migrana',
     nombre: 'Migraña',
-    titulo: 'Comunidad de migraña',
+    titulo: 'Grupo de apoyo para personas con migraña',
     resumen: 'Comunidad para personas con migraña: desencadenantes, crisis, triptanes, prevención y acompañamiento por WhatsApp.',
     intro: [
       'La migraña no es «solo un dolor de cabeza». La comunidad ayuda a identificar patrones, ordenar el diario de crisis y entender las opciones de tratamiento sin normalizar el sufrimiento.',
@@ -970,12 +1115,17 @@ export const COMUNIDADES = [
     guiaPro: { ruta: '/guia/seguridad-del-medicamento', nombre: 'Seguridad del medicamento' },
     herramienta: HERRAMIENTAS.migrana,
     mensaje: 'Hola Karla, vengo de la comunidad de migraña en edvanta.co y quiero entrar. ¿Me compartes las reglas?',
-    keywords: ['comunidad migraña', 'grupo de apoyo migraña', 'comunidad de pacientes con migraña'],
+    keywords: ['grupo de apoyo migraña', 'comunidad de migraña', 'grupo de WhatsApp de migraña', 'comunidad de pacientes con migraña'],
+    apoyo: {
+      corto: 'migraña',
+      para: 'personas con migraña o cefalea frecuente',
+      seo: 'Grupo de apoyo para personas con migraña',
+    },
   },
   {
     slug: 'ansiedad-e-insomnio',
     nombre: 'Ansiedad e insomnio',
-    titulo: 'Comunidad de ansiedad e insomnio',
+    titulo: 'Grupo de apoyo para personas con ansiedad e insomnio',
     resumen: 'Comunidad para personas con ansiedad o insomnio: rutinas, terapia, medicamentos, sueño y acompañamiento por WhatsApp.',
     intro: [
       'La ansiedad y el insomnio se alimentan entre sí. La comunidad reúne a personas que quieren entender qué les pasa y probar cambios sostenibles sin sentir que «todo está en su cabeza».',
@@ -1004,12 +1154,18 @@ export const COMUNIDADES = [
     guiaPro: { ruta: '/guia/entrevista-farmaceutica-avanzada', nombre: 'Entrevista farmacéutica avanzada' },
     herramienta: HERRAMIENTAS.ansiedad,
     mensaje: 'Hola Karla, vengo de la comunidad de ansiedad e insomnio en edvanta.co y quiero entrar. ¿Me compartes las reglas?',
-    keywords: ['comunidad ansiedad', 'grupo de apoyo insomnio', 'comunidad de pacientes con ansiedad'],
+    keywords: ['grupo de apoyo para la ansiedad', 'grupo de apoyo para personas con ansiedad', 'grupo de apoyo ansiedad WhatsApp', 'grupo de apoyo insomnio', 'comunidad de ansiedad'],
+    apoyo: {
+      corto: 'ansiedad e insomnio',
+      para: 'personas con ansiedad o insomnio',
+      seo: 'Grupo de apoyo para la ansiedad y el insomnio',
+      crisis: 'Si tienes pensamientos de hacerte daño, busca ayuda de inmediato: en Colombia, la línea 106 o el servicio de urgencias más cercano. El grupo de apoyo no es un servicio de crisis.',
+    },
   },
   {
     slug: 'gota-y-acido-urico',
     nombre: 'Gota y ácido úrico',
-    titulo: 'Comunidad de gota y ácido úrico alto',
+    titulo: 'Grupo de apoyo para gota y ácido úrico alto',
     resumen: 'Comunidad para personas con gota o ácido úrico alto: crisis, alopurinol, colchicina, alimentación y acompañamiento por WhatsApp.',
     intro: [
       'La gota duele, pero se puede controlar. La comunidad ayuda a entender por qué sube el ácido úrico, cómo se trata una crisis y cómo se previene la siguiente.',
@@ -1037,12 +1193,17 @@ export const COMUNIDADES = [
     guiaPro: { ruta: '/guia/seguridad-del-medicamento', nombre: 'Seguridad del medicamento' },
     herramienta: HERRAMIENTAS.gota,
     mensaje: 'Hola Karla, vengo de la comunidad de gota y ácido úrico en edvanta.co y quiero entrar. ¿Me compartes las reglas?',
-    keywords: ['comunidad gota', 'grupo de apoyo ácido úrico', 'comunidad de pacientes con gota'],
+    keywords: ['grupo de apoyo gota', 'grupo de apoyo ácido úrico', 'comunidad de pacientes con gota', 'comunidad de ácido úrico'],
+    apoyo: {
+      corto: 'gota y ácido úrico',
+      para: 'personas con gota o ácido úrico alto',
+      seo: 'Grupo de apoyo para gota y ácido úrico alto',
+    },
   },
   {
     slug: 'enfermedad-renal-cronica',
     nombre: 'Enfermedad renal crónica',
-    titulo: 'Comunidad de enfermedad renal crónica',
+    titulo: 'Grupo de apoyo para personas con enfermedad renal crónica (insuficiencia renal)',
     resumen: 'Comunidad para personas con enfermedad renal crónica: creatinina, albuminuria, dieta, medicamentos y acompañamiento por WhatsApp.',
     intro: [
       'La enfermedad renal crónica se cuida entre consultas: presión, glucosa, sal, medicamentos y controles. La comunidad reúne a personas que quieren entender sus exámenes y sostener el plan sin miedo.',
@@ -1070,12 +1231,17 @@ export const COMUNIDADES = [
     guiaPro: { ruta: '/guia/seguridad-del-medicamento', nombre: 'Seguridad del medicamento' },
     herramienta: HERRAMIENTAS.renal,
     mensaje: 'Hola Karla, vengo de la comunidad de enfermedad renal crónica en edvanta.co y quiero entrar. ¿Me compartes las reglas?',
-    keywords: ['comunidad enfermedad renal', 'grupo de apoyo riñón', 'comunidad de pacientes renales'],
+    keywords: ['grupo de apoyo para personas con insuficiencia renal', 'grupo de apoyo enfermedad renal crónica', 'grupo de apoyo riñón', 'comunidad de pacientes renales'],
+    apoyo: {
+      corto: 'enfermedad renal crónica',
+      para: 'personas con enfermedad renal crónica o insuficiencia renal',
+      seo: 'Grupo de apoyo para personas con insuficiencia renal',
+    },
   },
   {
     slug: 'fibrilacion-auricular',
     nombre: 'Fibrilación auricular',
-    titulo: 'Comunidad de fibrilación auricular y anticoagulación',
+    titulo: 'Grupo de apoyo para fibrilación auricular y personas anticoaguladas',
     resumen: 'Comunidad para personas con fibrilación auricular o anticoaguladas: síntomas, ACV, INR, sangrados y acompañamiento por WhatsApp.',
     intro: [
       'Vivir con fibrilación auricular implica aprender a escuchar el ritmo, entender el riesgo de ACV y convivir con un anticoagulante. La comunidad acompaña ese aprendizaje.',
@@ -1104,12 +1270,17 @@ export const COMUNIDADES = [
     guiaPro: { ruta: '/guia/seguridad-del-medicamento', nombre: 'Seguridad del medicamento' },
     herramienta: HERRAMIENTAS.fibrilacion,
     mensaje: 'Hola Karla, vengo de la comunidad de fibrilación auricular en edvanta.co y quiero entrar. ¿Me compartes las reglas?',
-    keywords: ['comunidad fibrilación auricular', 'grupo de apoyo anticoagulados', 'comunidad de pacientes con arritmia'],
+    keywords: ['grupo de apoyo fibrilación auricular', 'grupo de apoyo anticoagulados', 'comunidad de pacientes con arritmia', 'comunidad de fibrilación auricular'],
+    apoyo: {
+      corto: 'fibrilación auricular',
+      para: 'personas con fibrilación auricular o que toman anticoagulantes',
+      seo: 'Grupo de apoyo para fibrilación auricular',
+    },
   },
   {
     slug: 'salud-mental',
     nombre: 'Salud mental',
-    titulo: 'Comunidad de salud mental: depresión, ansiedad e insomnio',
+    titulo: 'Grupo de apoyo para la depresión y la ansiedad',
     resumen: 'Comunidad para personas con depresión, ansiedad o insomnio: apoyo, terapia, medicamentos y acompañamiento por WhatsApp.',
     intro: [
       'La salud mental no es un lujo ni un tema del que haya que avergonzarse. La comunidad reúne a personas que conviven con depresión, ansiedad o insomnio y quieren sostener su tratamiento sin sentirse solas.',
@@ -1139,12 +1310,18 @@ export const COMUNIDADES = [
     guiaPro: { ruta: '/guia/entrevista-farmaceutica-avanzada', nombre: 'Entrevista farmacéutica avanzada' },
     herramienta: HERRAMIENTAS.saludMental,
     mensaje: 'Hola Karla, vengo de la comunidad de salud mental en edvanta.co y quiero entrar. ¿Me compartes las reglas?',
-    keywords: ['comunidad salud mental', 'grupo de apoyo depresión', 'comunidad ansiedad e insomnio'],
+    keywords: ['grupo de apoyo depresión y ansiedad', 'grupo de apoyo depresión y ansiedad WhatsApp', 'grupo de apoyo emocional gratis', 'grupo de apoyo para personas con depresión', 'grupo de apoyo salud mental'],
+    apoyo: {
+      corto: 'depresión y ansiedad',
+      para: 'personas con depresión, ansiedad o insomnio',
+      seo: 'Grupo de apoyo para depresión y ansiedad por WhatsApp',
+      crisis: 'Si tienes pensamientos de hacerte daño, busca ayuda de inmediato: en Colombia, la línea 106 o el servicio de urgencias más cercano. El grupo de apoyo no es un servicio de crisis.',
+    },
   },
   {
     slug: 'piel-y-dermatologia',
     nombre: 'Piel y dermatología',
-    titulo: 'Comunidad de piel y dermatología',
+    titulo: 'Grupo de apoyo para acné, dermatitis atópica y otros problemas de la piel',
     resumen: 'Comunidad para personas con acné, dermatitis atópica u hongos en la piel: cuidados, tratamientos y acompañamiento por WhatsApp.',
     intro: [
       'La piel se ve y se siente: un brote de acné, una dermatitis que pica o un hongo que no cede afecta el ánimo y la vida diaria. La comunidad reúne a personas que quieren cuidar su piel con información clara.',
@@ -1171,12 +1348,17 @@ export const COMUNIDADES = [
     guiaPro: { ruta: '/guia/seguridad-del-medicamento', nombre: 'Seguridad del medicamento' },
     herramienta: HERRAMIENTAS.piel,
     mensaje: 'Hola Karla, vengo de la comunidad de piel y dermatología en edvanta.co y quiero entrar. ¿Me compartes las reglas?',
-    keywords: ['comunidad dermatología', 'grupo de apoyo acné', 'comunidad dermatitis atópica'],
+    keywords: ['grupo de apoyo acné', 'grupo de apoyo dermatitis atópica', 'comunidad de dermatitis atópica', 'comunidad de dermatología'],
+    apoyo: {
+      corto: 'acné y dermatitis atópica',
+      para: 'personas con acné, dermatitis atópica u hongos en la piel',
+      seo: 'Grupo de apoyo para acné y dermatitis atópica',
+    },
   },
   {
     slug: 'osteoporosis-y-menopausia',
     nombre: 'Osteoporosis y menopausia',
-    titulo: 'Comunidad de osteoporosis y menopausia',
+    titulo: 'Grupo de apoyo para la menopausia y la osteoporosis',
     resumen: 'Comunidad para personas con osteoporosis o en menopausia: hueso, calcio, vitamina D, sofocos y acompañamiento por WhatsApp.',
     intro: [
       'La menopausia y la osteoporosis se cruzan en la vida real: sofocos, sueño, cambios de peso y miedo a las fracturas. La comunidad reúne a personas que quieren cuidar el hueso y el bienestar sin alarmismo.',
@@ -1203,12 +1385,17 @@ export const COMUNIDADES = [
     guiaPro: { ruta: '/guia/seguridad-del-medicamento', nombre: 'Seguridad del medicamento' },
     herramienta: HERRAMIENTAS.hueso,
     mensaje: 'Hola Karla, vengo de la comunidad de osteoporosis y menopausia en edvanta.co y quiero entrar. ¿Me compartes las reglas?',
-    keywords: ['comunidad osteoporosis', 'grupo de apoyo menopausia', 'comunidad de pacientes con osteoporosis'],
+    keywords: ['grupo de apoyo menopausia', 'grupo de apoyo osteoporosis', 'comunidad de menopausia', 'comunidad de pacientes con osteoporosis'],
+    apoyo: {
+      corto: 'menopausia y osteoporosis',
+      para: 'personas en la menopausia o con osteoporosis',
+      seo: 'Grupo de apoyo para la menopausia y la osteoporosis',
+    },
   },
   {
     slug: 'calculos-renales',
     nombre: 'Cálculos renales',
-    titulo: 'Comunidad de cálculos renales',
+    titulo: 'Grupo de apoyo para cálculos renales (piedras en el riñón)',
     resumen: 'Comunidad para personas con cálculos renales: cólico, prevención, dieta, agua y acompañamiento por WhatsApp.',
     intro: [
       'Un cálculo renal puede ser un episodio de dolor intenso y también una señal para cambiar hábitos. La comunidad reúne a personas que quieren prevenir el siguiente y entender su tipo de cálculo.',
@@ -1235,7 +1422,12 @@ export const COMUNIDADES = [
     guiaPro: { ruta: '/guia/seguridad-del-medicamento', nombre: 'Seguridad del medicamento' },
     herramienta: HERRAMIENTAS.calculos,
     mensaje: 'Hola Karla, vengo de la comunidad de cálculos renales en edvanta.co y quiero entrar. ¿Me compartes las reglas?',
-    keywords: ['comunidad cálculos renales', 'grupo de apoyo piedras en el riñón', 'comunidad de pacientes con cálculos'],
+    keywords: ['grupo de apoyo cálculos renales', 'grupo de apoyo piedras en el riñón', 'comunidad de pacientes con cálculos', 'comunidad de cálculos renales'],
+    apoyo: {
+      corto: 'cálculos renales',
+      para: 'personas con cálculos renales (piedras en el riñón)',
+      seo: 'Grupo de apoyo para cálculos renales',
+    },
   },
 ].map((c) => ({ ...c, ruta: `/comunidades/${c.slug}`, whatsapp: whatsappDe(c) }));
 
@@ -1248,18 +1440,27 @@ export const COMUNIDAD_POR_SLUG = new Map(COMUNIDADES.map((c) => [c.slug, c]));
 
 export const comunidadDeSlug = (slug) => COMUNIDAD_POR_SLUG.get(slug) || null;
 
-/** Artículo → comunidad, para el bloque y la herramienta dentro del artículo. */
+/**
+ * Artículo → comunidad, para el bloque del grupo de apoyo dentro del
+ * artículo. Primero los artículos «para empezar» (`articulos`) y después
+ * los del mismo tema (`cluster`), que solo muestran el bloque.
+ */
 const ARTICULO_A_COMUNIDAD = new Map();
-for (const c of COMUNIDADES) {
-  for (const slug of c.articulos) {
-    if (!ARTICULO_A_COMUNIDAD.has(slug)) ARTICULO_A_COMUNIDAD.set(slug, c);
+for (const lista of ['articulos', 'cluster']) {
+  for (const c of COMUNIDADES) {
+    for (const slug of c[lista] || []) {
+      if (!ARTICULO_A_COMUNIDAD.has(slug)) ARTICULO_A_COMUNIDAD.set(slug, c);
+    }
   }
 }
 
 export const comunidadDeArticulo = (slug) => ARTICULO_A_COMUNIDAD.get(slug) || null;
 
-/** La herramienta del artículo, si su comunidad tiene una. */
-export const herramientaDeArticulo = (slug) => comunidadDeArticulo(slug)?.herramienta || null;
+/** La herramienta del artículo: solo en los artículos «para empezar» de su comunidad. */
+export const herramientaDeArticulo = (slug) => {
+  const c = comunidadDeArticulo(slug);
+  return c?.herramienta && c.articulos.includes(slug) ? c.herramienta : null;
+};
 
 /** Direcciones absolutas de las comunidades, para los datos estructurados. */
 export const rutasDeComunidades = COMUNIDADES.map((c) => c.ruta);
@@ -1268,7 +1469,16 @@ export const rutasDeComunidades = COMUNIDADES.map((c) => c.ruta);
 export const comunidadesPorCurso = (rutaDeCurso) => COMUNIDADES.filter((c) => c.curso?.ruta === rutaDeCurso);
 
 export const META_COMUNIDADES = {
-  titulo: 'Comunidades de pacientes por enfermedad | Edvanta',
-  h1: 'Una comunidad para cada enfermedad',
-  descripcion: 'Comunidades de pacientes y cuidadores por enfermedad: tiroides, hipertensión, diabetes, colesterol, dolor, gota y más. Educación y acompañamiento por WhatsApp.',
+  titulo: 'Grupos de apoyo para pacientes por WhatsApp, gratis | Edvanta',
+  h1: 'Grupos de apoyo para pacientes y cuidadores, uno por enfermedad',
+  descripcion: 'Grupos de apoyo gratis por WhatsApp para pacientes y cuidadores: diabetes, hipertensión, tiroides, depresión y ansiedad, migraña, dolor crónico y más.',
 };
+
+/** Preguntas frecuentes del índice de grupos de apoyo (/comunidades). */
+export const PREGUNTAS_COMUNIDADES = [
+  ['¿Qué es un grupo de apoyo para pacientes?', 'Es un espacio donde personas con la misma enfermedad, y sus cuidadores, comparten experiencias, dudas y aprendizajes. En Edvanta cada grupo se organiza por enfermedad, tiene reglas claras y se acompaña con artículos revisados por una química farmacéutica.'],
+  ['¿Los grupos de apoyo son gratis?', 'Sí. Entrar no cuesta nada y dentro de los grupos no se vende nada.'],
+  ['¿Los grupos son en línea o presenciales?', 'En línea, por WhatsApp. Participas desde el celular, a tu ritmo y sin obligación de escribir.'],
+  ['¿Cómo elijo mi grupo de apoyo?', 'Busca tu enfermedad en la lista y entra a su página para ver qué se comparte y cuáles son las reglas. Si no sabes cuál elegir, escribe a Karla por WhatsApp y te orienta.'],
+  ['¿Un grupo de apoyo reemplaza al médico?', 'No. Los grupos no diagnostican, no ajustan dosis y no atienden urgencias. Ayudan a llegar mejor preparado a la consulta con tu equipo de salud.'],
+];

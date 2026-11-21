@@ -15,7 +15,7 @@ import { Breadcrumb } from '../components/edvanta/ui';
 import { comunidadDeSlug } from '../data/comunidadesSalud';
 import { articulos } from '../data/articulos';
 import { updatePageSeo } from '../utils/seo';
-import { descripcionDeComunidad, faqJsonLd, preguntasDeComunidad, tituloSeoDeComunidad } from '../lib/comunidades/seo';
+import { descripcionDeComunidad, faqJsonLd, paraDeComunidad, preguntasDeComunidad, tituloSeoDeComunidad } from '../lib/comunidades/seo';
 import { trackEvent } from '../utils/analytics';
 
 const SITIO = 'https://edvanta.co';
@@ -103,12 +103,13 @@ export default function ComunidadDetalle() {
             ]} />
             <p className="mt-6 inline-flex items-center gap-2 rounded-full border border-edvanta-teal/30 bg-white px-3.5 py-1.5 text-xs font-bold uppercase tracking-[.12em] text-edvanta-tealdark">
               <HeartPulse className="h-4 w-4" aria-hidden="true" />
-              Comunidad de {comunidad.nombre}
+              Grupo de apoyo · {comunidad.nombre}
             </p>
             <h1 className="mt-4 max-w-3xl font-display text-[2.1rem] font-extrabold leading-[1.08] tracking-[-0.03em] text-edvanta-deep sm:text-[2.8rem]">
               {comunidad.titulo}
             </h1>
             <div className="mt-4 max-w-3xl space-y-3 text-lg leading-8 text-edvanta-muted">
+              <p className="font-semibold text-edvanta-deep">Grupo de apoyo gratis por WhatsApp para {paraDeComunidad(comunidad)}.</p>
               {comunidad.intro.map((p) => <p key={p}>{p}</p>)}
             </div>
             <div className="mt-6 flex flex-wrap gap-3">
