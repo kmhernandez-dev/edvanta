@@ -57,7 +57,12 @@ Son las enfermedades de alto costo que sigue la Cuenta de Alto Costo: artritis r
 | 2 | VIH, hepatitis C | Tratamientos con adherencia crítica, donde el acompañamiento farmacéutico agrega valor medible |
 | 3 | Hemofilia, enfermedades huérfanas | Poblaciones pequeñas: alianzas con asociaciones de pacientes antes que SEO masivo |
 
-**Pendiente:** medir el volumen de búsqueda de cada condición en Semrush (base Colombia) antes de fijar el calendario editorial. Hoy no hay datos de volumen para estas condiciones en `seo/semrush/`.
+**Plan de keywords:** `seo/plan-5000-keywords-pacientes.md` y `seo/keywords-5000-edvanta-pacientes.csv` (21-nov-2026).
+
+- Asigna 5.000 búsquedas a 459 páginas: hubs de condición, fichas «para qué sirve» de 76 medicamentos de alto costo, pilares de acceso y derechos, cuidadores y vademécum profesional.
+- No se cruza con el plan de la otra sesión.
+
+**Pendiente:** medir el volumen de búsqueda de las P1 en Semrush (base Colombia) antes de fijar el calendario editorial. El 21-nov no había unidades de API.
 
 ## El programa Contigo Alto Costo
 
