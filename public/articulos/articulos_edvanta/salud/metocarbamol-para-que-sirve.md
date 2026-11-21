@@ -146,7 +146,7 @@ Si estás embarazada, en lactancia, tienes enfermedad renal o hepática, tomas a
 
 ## Para profesionales
 
-Consulta la [monografía de metocarbamol](/vademecum/metocarbamol), con la evidencia en dolor lumbar y la atención farmacéutica, y el grupo de [medicamentos para el dolor y la inflamación](/vademecum/medicamentos-para-el-dolor-y-la-inflamacion). Para profundizar en los fármacos que actúan en el sistema nervioso, revisa el [curso gratis de Farmacología del Sistema Nervioso Central](/curso-de-farmacologia-del-sistema-nervioso-central) de Edvanta.
+Consulta la [monografía de metocarbamol](/vademecum/metocarbamol), con la evidencia en dolor lumbar y la atención farmacéutica, y el grupo de [medicamentos para el dolor y la inflamación](/vademecum/medicamentos-para-el-dolor-y-la-inflamacion). Para profundizar en los fármacos que actúan en el sistema nervioso, revisa el [curso de Farmacología del Sistema Nervioso Central](/curso-de-farmacologia-del-sistema-nervioso-central) de Edvanta.
 
 ## Preguntas frecuentes
 

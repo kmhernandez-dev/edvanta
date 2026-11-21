@@ -148,7 +148,7 @@ Si estás embarazada, en lactancia, tienes enfermedad renal o hepática, tomas a
 
 ## Para profesionales
 
-Consulta la [monografía de tramadol](/vademecum/tramadol), con el papel del CYP2D6, las interacciones y la atención farmacéutica, y el grupo de [medicamentos para el dolor y la inflamación](/vademecum/medicamentos-para-el-dolor-y-la-inflamacion). El [curso gratis de Farmacología del Sistema Nervioso Central](/curso-de-farmacologia-del-sistema-nervioso-central) de Edvanta incluye la clase «Receptores opioides, agonistas y agonistas parciales».
+Consulta la [monografía de tramadol](/vademecum/tramadol), con el papel del CYP2D6, las interacciones y la atención farmacéutica, y el grupo de [medicamentos para el dolor y la inflamación](/vademecum/medicamentos-para-el-dolor-y-la-inflamacion). El [curso de Farmacología del Sistema Nervioso Central](/curso-de-farmacologia-del-sistema-nervioso-central) de Edvanta incluye la clase «Receptores opioides, agonistas y agonistas parciales».
 
 ## Preguntas frecuentes
 

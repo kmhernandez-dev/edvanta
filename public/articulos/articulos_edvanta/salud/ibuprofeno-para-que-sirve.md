@@ -130,7 +130,7 @@ Si estás embarazada, en lactancia, tienes enfermedad renal o hepática, tomas a
 
 ## Para profesionales
 
-Si eres profesional de la salud, consulta la [monografía de ibuprofeno](/vademecum/ibuprofeno) del vademécum de Edvanta, con farmacocinética, interacciones, evidencia y atención farmacéutica, y el grupo de [medicamentos para el dolor y la inflamación](/vademecum/medicamentos-para-el-dolor-y-la-inflamacion). El [curso gratis de Farmacología del Sistema Nervioso Central](/curso-de-farmacologia-del-sistema-nervioso-central) incluye la clase «AINE y paracetamol en el manejo del dolor: visión desde el SNC».
+Si eres profesional de la salud, consulta la [monografía de ibuprofeno](/vademecum/ibuprofeno) del vademécum de Edvanta, con farmacocinética, interacciones, evidencia y atención farmacéutica, y el grupo de [medicamentos para el dolor y la inflamación](/vademecum/medicamentos-para-el-dolor-y-la-inflamacion). El [curso de Farmacología del Sistema Nervioso Central](/curso-de-farmacologia-del-sistema-nervioso-central) incluye la clase «AINE y paracetamol en el manejo del dolor: visión desde el SNC».
 
 ## Preguntas frecuentes
 
