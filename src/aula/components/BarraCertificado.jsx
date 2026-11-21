@@ -46,8 +46,8 @@ export default function BarraCertificado({ courseId, cursoSlug, volverA }) {
   return (
     <div className="aula-barra-cert" role="region" aria-label="Estudia con certificado">
       <p className="aula-barra-cert__texto">
-        <b>Estás estudiando gratis.</b>{' '}
-        <span className="aula-barra-cert__detalle">Certificado, revisión de actividades y acompañamiento por </span>
+        <b>Tu curso aún no incluye el certificado.</b>{' '}
+        <span className="aula-barra-cert__detalle">Curso completo, certificado, revisión de actividades y acompañamiento por </span>
         <b>{pesos(p.precio)}</b>
         {p.conDescuento && p.lista && (
           <>

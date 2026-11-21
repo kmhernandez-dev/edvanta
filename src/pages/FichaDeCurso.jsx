@@ -73,9 +73,9 @@ const imagen = (url) => (url && url.startsWith('/api') ? apiUrl(url) : url);
 /* ── Certificado ──────────────────────────────────────────── */
 
 /**
- * El contenido de los cursos propios es gratis; el certificado tiene un
- * precio único que pone el servidor (aula_courses.certificate_price).
- * Se puede pagar antes o después de terminar: se emite al completar.
+ * Desde el 20-nov-2026 los cursos propios con precio se venden completos:
+ * la primera unidad es abierta y el pago (aula_courses.certificate_price)
+ * da el curso completo con el certificado incluido (acceso-pago.js).
  */
 function CompraCertificado({ ficha, nombre, oferta, onComprar, ocupado }) {
   const { items, addItem, openCart } = useCart();
@@ -85,16 +85,16 @@ function CompraCertificado({ ficha, nombre, oferta, onComprar, ocupado }) {
   const id = `certificado-${cursoId}`;
   const enCarrito = items.some((i) => i.id === id);
   const agregar = () => {
-    if (!enCarrito) addItem({ id, name: `Certificado · ${nombre}`, price: precio, category: 'certificado', image: imagen(ficha.portada) });
+    if (!enCarrito) addItem({ id, name: `Curso completo con certificado · ${nombre}`, price: precio, category: 'certificado', image: imagen(ficha.portada) });
     openCart();
   };
   if (onComprar) {
     return (
       <div className="curso-cert-compra">
-        <p className="curso-cert-label">Precio del certificado</p>
+        <p className="curso-cert-label">Curso completo con certificado</p>
         <PrecioCertificado oferta={oferta || { precio }} compacto />
         <p className="curso-cert-conditions">
-          El contenido es gratis. Con el certificado, al completar el curso lo emites desde tu aula.
+          Todas las clases, evaluaciones, revisión docente y el certificado. La primera unidad la puedes probar antes de pagar.
         </p>
         <Btn variant="primary" className="mt-4 w-full" onClick={onComprar} loading={ocupado} loadingLabel="Un momento…" iconRight={ArrowRight}>
           Estudiar con certificado
@@ -107,7 +107,7 @@ function CompraCertificado({ ficha, nombre, oferta, onComprar, ocupado }) {
       <p className="curso-cert-label">Precio del certificado</p>
       <p className="curso-cert-precio">{formatPrice(precio)} <span>COP · pago único</span></p>
       <p className="curso-cert-conditions">
-        El contenido es gratis. Paga el certificado cuando quieras con Mercado Pago y emítelo desde tu aula al completar el curso.
+        La primera unidad es abierta. Paga el curso completo con Mercado Pago: incluye el certificado, que emites desde tu aula al terminar.
       </p>
       <Btn variant="secondary" className="mt-4 w-full" onClick={agregar} icon={ShoppingCart}>
         {enCarrito ? 'Ver mi carrito' : 'Agregar certificado al carrito'}
@@ -552,20 +552,23 @@ export default function FichaDeCurso({ modo = 'propio', slugPublico = '' }) {
   const nombre = nombreDeCurso(ficha.titulo);
   const horas = textoDeHoras(ficha.certificado.horas) || duracion(ficha.duracionMinutos) || ficha.duracionTexto;
   const resumenOpiniones = opiniones?.resumen;
-  const textoBoton = propio
-    ? { visitante: 'Crear cuenta gratis', fuera: 'Inscribirme gratis', dentro: 'Continuar aprendiendo' }[estado]
-    : ficha.proveedor.accion;
   const precioVisible = Number(oferta?.precio ?? ficha.certificado.precio) || 0;
+  // «Gratis» solo en los cursos sin precio: los demás se venden (20-nov).
+  const textoBoton = propio
+    ? (precioVisible > 0
+      ? { visitante: 'Crear mi cuenta', fuera: 'Inscribirme', dentro: 'Continuar aprendiendo' }
+      : { visitante: 'Crear cuenta gratis', fuera: 'Inscribirme gratis', dentro: 'Continuar aprendiendo' })[estado]
+    : ficha.proveedor.accion;
   // Dos caminos: solo en los propios con certificado de pago y para quien aún no está dentro.
   const conCaminos = propio && precioVisible > 0 && estado !== 'dentro';
   const caminos = conCaminos
     // «Con certificado» va directo a la compra (cuenta → inscripción → Mercado
-    // Pago); «Gratis» lleva a la comparativa de la landing (pedido de Karla, 20-nov).
+    // Pago); «Probar la primera unidad» lleva a la landing (pedido de Karla, 20-nov).
     ? { onAbrir: (c) => (c === 'certificado' ? estudiarConCertificado() : irAInscripcion()), trabajando: camino }
     : null;
   const notaCertificado = {
     available: precioVisible > 0
-      ? `Acceso gratis al contenido. Certificado: ${formatPrice(precioVisible)} COP, lo emites desde tu aula al completar el curso.`
+      ? `Primera unidad abierta. Curso completo con certificado: ${formatPrice(precioVisible)} COP.`
       : 'Acceso gratis al contenido. El certificado se emite desde tu aula al completar el curso.',
     pending_confirmation: 'Acceso gratis al contenido. Las condiciones del certificado están por confirmar.',
     not_offered: 'Acceso gratis al contenido. Este curso no incluye certificado.',
@@ -595,7 +598,7 @@ export default function FichaDeCurso({ modo = 'propio', slugPublico = '' }) {
     propio ? 'Acceso desde el celular y el computador' : null,
     ficha.certificado.estado === 'available'
       ? (precioVisible > 0
-        ? `Certificado de aprobación de Edvanta (${formatPrice(precioVisible)} COP)`
+        ? `Certificado de aprobación de Edvanta (incluido en el curso completo, ${formatPrice(precioVisible)} COP)`
         : 'Certificado de aprobación de Edvanta')
       : ficha.certificado.estado === 'pending_confirmation'
         ? `Certificado según ${ficha.proveedor.nombre}`

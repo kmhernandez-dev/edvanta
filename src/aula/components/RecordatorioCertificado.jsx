@@ -24,7 +24,7 @@ function cerradoEnEstaSesion(courseId) {
 }
 
 export default function RecordatorioCertificado({
-  courseId, volverA, fijo = false, titulo = 'Estás estudiando gratis. Pásate al certificado', curso = '',
+  courseId, volverA, fijo = false, titulo = 'Completa tu curso con el certificado', curso = '',
   claseCompletada = false, avance = null,
 }) {
   const [pago, setPago] = useState(null);

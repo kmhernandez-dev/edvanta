@@ -75,7 +75,7 @@ const PORTADA_DE_GUIA = {
 const portadaGuia = (siteUrl, slug, url) => (PORTADA_DE_GUIA[slug] ? portada(`${siteUrl}/img/guias/correo/${PORTADA_DE_GUIA[slug]}.jpg`, url) : '');
 
 // Precio con descuento en Colombia, dentro de los 7 días desde la inscripción (lib/precio-certificado.js).
-const CERT_TEXTO = (precio) => (precio ? `el certificado verificable cuesta ${pesos(precio)} en Colombia si lo tomas en tus primeros 7 días, en un solo pago` : 'el certificado verificable lo pides desde el aula');
+const CERT_TEXTO = (precio) => (precio ? `el curso completo con certificado verificable cuesta ${pesos(precio)} en Colombia si lo compras en tus primeros 7 días, en un solo pago` : 'el certificado verificable lo pides desde el aula');
 const fechaLarga = (iso) => new Date(iso).toLocaleDateString('es-CO', { day: 'numeric', month: 'long', timeZone: 'America/Bogota' });
 const pdOferta = (siteUrl, contenido) => (promoActiva()
   ? posdata(`Este mes, todas las guías tienen ${PROMOCION.porcentaje}&nbsp;% de descuento con el cupón ${destacado(PROMOCION.codigo)}, hasta el ${PROMOCION.fechaTexto}. <a href="${esc(conUtm(`${siteUrl}/ofertas`, 'ciclo', contenido))}" style="color:#1F4FB0;">Ver la colección</a>.`)
@@ -100,18 +100,18 @@ export const PLANTILLAS = {
     const destino = r.escuela ? `${siteUrl}/escuelas/${r.escuela}` : `${siteUrl}/cursos`;
     const u = (x) => conUtm(x, 'ciclo', 'registro-profesional');
     return {
-      asunto: `${primerNombre(nombre)}, aquí está tu enlace gratis`,
-      pre: `Tus cursos${area ? ` de ${area}` : ''}: gratis, a tu ritmo y con certificado verificable si lo deseas.`,
-      encabezado: ['Tu enlace gratis', area ? `Cursos de ${esc(area)}` : 'Cursos para tu práctica farmacéutica'],
+      asunto: `${primerNombre(nombre)}, aquí están tus cursos`,
+      pre: `Tus cursos${area ? ` de ${area}` : ''}: a tu ritmo, con certificado verificable y la primera unidad abierta.`,
+      encabezado: ['Tus cursos', area ? `Cursos de ${esc(area)}` : 'Cursos para tu práctica farmacéutica'],
       cuerpo: [
         saludo(primerNombre(nombre)),
-        parrafo('Gracias por unirte a Edvanta. Preparamos para ti un punto de partida claro: cursos que estudias gratis en el aula, a tu ritmo, con casos reales y quices que te indican qué repasar.'),
+        parrafo('Gracias por unirte a Edvanta. Preparamos para ti un punto de partida claro: cursos que estudias en el aula, a tu ritmo, con casos reales y quices que te indican qué repasar. La primera unidad de cada curso es abierta.'),
         boton('Entrar a mis cursos', u(destino)),
         divisor(),
         lista([
-          `${destacado('Sin costo.')} Todo el contenido de los cursos propios es gratis.`,
+          `${destacado('Prueba primero.')} La primera unidad de cada curso es abierta.`,
           `${destacado('Con práctica.')} Casos reales, quices y foros en cada unidad.`,
-          `${destacado('Con certificado, si lo deseas.')} Verificable en línea; ${pesos(60000)} en Colombia si lo tomas en tus primeros 7 días.`,
+          `${destacado('Curso completo con certificado.')} Verificable en línea; ${pesos(60000)} en Colombia si lo compras en tus primeros 7 días.`,
         ]),
         r.guia ? recuadro([etiqueta('Para tu trabajo diario'), subtitulo(esc(r.guiaTitulo)), parrafo('Técnicas aplicables e instrucciones listas para copiar, con lo que debes verificar en cada caso.', 'margin:0;'), enlace('Conocer la guía', u(`${siteUrl}/guia/${r.guia}`))].join('')) : '',
         pdOferta(siteUrl, 'registro-profesional'),
@@ -140,7 +140,7 @@ export const PLANTILLAS = {
         nota(promoActiva() ? `Pago seguro en Hotmart, con su garantía de reembolso. El cupón vence el ${PROMOCION.fechaTexto} a las 11:59 p. m. (hora de Colombia).` : 'Pago seguro en Hotmart, con su garantía de reembolso.'),
       ].join(''),
       opciones: {
-        certificado: { texto: `Mientras tanto, estudia un curso gratis del aula; ${CERT_TEXTO(60000)}.`, accion: 'Ver los cursos', url: `${siteUrl}/cursos` },
+        certificado: { texto: `Mientras tanto, prueba la primera unidad de un curso del aula; ${CERT_TEXTO(60000)}.`, accion: 'Ver los cursos', url: `${siteUrl}/cursos` },
         whatsapp: { titulo: '¿Dudas antes de comprar?', url: wa(`Hola, soy ${primerNombre(nombre)}. ¿Qué guía me recomiendan?`) },
       },
     };
@@ -166,7 +166,7 @@ export const PLANTILLAS = {
     ].join(''),
     despedida: 'Con cariño,',
     opciones: {
-      certificado: { titulo: 'Aprende con certificado', texto: 'Cursos gratis en el aula, con certificado verificable si lo deseas, para cuidadores y profesionales.', accion: 'Ver los cursos', url: `${siteUrl}/cursos` },
+      certificado: { titulo: 'Aprende con certificado', texto: 'Cursos en el aula, con certificado verificable y la primera unidad abierta, para cuidadores y profesionales.', accion: 'Ver los cursos', url: `${siteUrl}/cursos` },
       whatsapp: { titulo: '¿Tienes una pregunta?', texto: 'Escríbenos por WhatsApp: te orientamos sobre los recursos para pacientes.', url: wa(`Hola, soy ${primerNombre(nombre)}. Quiero orientación sobre los recursos para pacientes.`) },
     },
   }),
@@ -214,7 +214,7 @@ export const PLANTILLAS = {
     encabezado: ['Inscripción confirmada', esc(curso)],
     cuerpo: [
       saludo(primerNombre(nombre)),
-      parrafo(`Tu lugar en ${destacado(esc(curso))} está confirmado. El curso es gratis y lo estudias a tu ritmo, desde el celular o el computador.`),
+      parrafo(`Tu lugar en ${destacado(esc(curso))} está confirmado. Lo estudias a tu ritmo, desde el celular o el computador; la primera unidad es abierta.`),
       boton('Comenzar la primera lección', conUtm(cursoUrl, 'ciclo', 'inscripcion-curso')),
       nota('Consejo: reserva 20 minutos hoy para la primera lección.'),
     ].join(''),
@@ -310,7 +310,7 @@ export const PLANTILLAS = {
       ].join(''),
       despedida: 'Con orgullo,',
       opciones: {
-        certificado: { titulo: 'Suma otro certificado', texto: 'Sigue con otro curso gratis de tu área y agrega un certificado más a tu perfil profesional.', accion: 'Ver más cursos', url: `${siteUrl}/cursos` },
+        certificado: { titulo: 'Suma otro certificado', texto: 'Sigue con otro curso de tu área y agrega un certificado más a tu perfil profesional.', accion: 'Ver más cursos', url: `${siteUrl}/cursos` },
         whatsapp: { url: wa(`Hola, soy ${primerNombre(nombre)}. Pagué el certificado de ${curso} y tengo una pregunta.`) },
       },
     };
@@ -389,12 +389,12 @@ export const PLANTILLAS = {
     const cursos = r.escuela ? `${siteUrl}/escuelas/${r.escuela}` : `${siteUrl}/cursos`;
     return {
       asunto: `${primerNombre(nombre)}, lo nuevo en Edvanta para ti`,
-      pre: 'Un curso gratis y una guía seleccionada para tu área.',
+      pre: 'Un curso y una guía seleccionada para tu área.',
       encabezado: ['Novedades del mes', area ? `Lo nuevo en ${esc(area)}` : 'Lo nuevo para tu práctica'],
       cuerpo: [
         saludo(primerNombre(nombre)),
         parrafo('Esta es nuestra selección del mes para ti: un curso para estudiar sin costo y una guía práctica para tu día a día.'),
-        recuadro([etiqueta('Curso gratis'), parrafo(`Estudia en el aula, a tu ritmo; ${CERT_TEXTO(60000)}.`, 'margin:0;'), enlace('Ver los cursos', u(cursos))].join('')),
+        recuadro([etiqueta('Curso recomendado'), parrafo(`Estudia en el aula, a tu ritmo; ${CERT_TEXTO(60000)}.`, 'margin:0;'), enlace('Ver los cursos', u(cursos))].join('')),
         r.guia ? portadaGuia(siteUrl, r.guia, u(`${siteUrl}/guia/${r.guia}`)) : '',
         r.guia ? recuadro([etiqueta('Guía seleccionada'), subtitulo(esc(r.guiaTitulo)), enlace('Conocer la guía', u(`${siteUrl}/guia/${r.guia}`))].join('')) : '',
         beneficio(siteUrl, 'ciclo', 'novedades'),

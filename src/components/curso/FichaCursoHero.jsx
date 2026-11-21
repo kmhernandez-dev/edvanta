@@ -82,7 +82,7 @@ export default function FichaCursoHero({
                 {propio && (
                   <li>
                     <CheckCircle2 className="h-4 w-4" aria-hidden="true" />
-                    Acceso gratis al contenido
+                    {Number(ficha.certificado?.precio) > 0 ? 'Primera unidad abierta' : 'Acceso gratis al contenido'}
                   </li>
                 )}
                 {horas && (

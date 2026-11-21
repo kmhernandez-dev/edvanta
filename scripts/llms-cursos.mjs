@@ -47,8 +47,8 @@ for (const url of Object.keys(PALABRA_CLAVE_DE_PROPIOS)) {
   const f = j.data;
   const horas = Number(f.certificado?.horas) || (f.duracionMinutos ? Math.round(f.duracionMinutos / 60) : null);
   const datos = [f.clases && `${f.clases} clases`, horas && `${horas} horas`, f.nivel && `nivel ${f.nivel.toLowerCase()}`].filter(Boolean).join(', ');
-  const cert = Number(f.certificado?.precio) > 0 ? 'gratis; certificado opcional' : 'gratis, con certificado sin costo';
-  const linea = `- [${f.titulo}](${sitio}${f.url}): ${frase(f.resumen || f.objetivo)}${datos ? ` ${datos[0].toUpperCase()}${datos.slice(1)}.` : ''} Contenido ${cert}.`;
+  const cert = Number(f.certificado?.precio) > 0 ? 'Primera unidad abierta; curso completo con certificado incluido' : 'Contenido gratis, con certificado sin costo';
+  const linea = `- [${f.titulo}](${sitio}${f.url}): ${frase(f.resumen || f.objetivo)}${datos ? ` ${datos[0].toUpperCase()}${datos.slice(1)}.` : ''} ${cert}.`;
   const area = areaDe(f);
   if (!grupos.has(area)) grupos.set(area, []);
   grupos.get(area).push(linea);
@@ -61,8 +61,8 @@ const seccion = [
   '',
   `${total} cursos propios en línea, en español, para químicos farmacéuticos, regentes, profesionales de la salud y de la industria (y uno para pacientes). Cada curso tiene clases cortas, quices, un caso y un proyecto; se estudia a tu ritmo en el aula de Edvanta.`,
   '',
-  '- Hay dos formas de estudiar cada curso: gratis (todo el contenido y quices automáticos) o con certificado (además, revisión docente de actividades, acompañamiento por WhatsApp y certificado verificable).',
-  '- Precio del certificado: lista COP 199.000; quien lo toma al inscribirse o en sus primeros 7 días paga COP 60.000 en Colombia o COP 65.000 desde otros países (pago único con Mercado Pago).',
+  '- Al inscribirse, la persona prueba la primera unidad completa. El curso completo incluye todas las clases, quices, actividades con revisión docente, foros, acompañamiento por WhatsApp y certificado verificable.',
+  '- Precio del curso completo con certificado: lista COP 199.000; quien lo compra al inscribirse o en sus primeros 7 días paga COP 60.000 en Colombia o COP 65.000 desde otros países (pago único con Mercado Pago).',
   `- Inscripción de cada curso: ${sitio}/<curso>/inscripcion. Catálogo completo: ${sitio}/cursos.`,
   '',
   ...ORDEN.filter((a) => grupos.has(a)).flatMap((a) => [`### ${a}`, '', ...grupos.get(a), '']),

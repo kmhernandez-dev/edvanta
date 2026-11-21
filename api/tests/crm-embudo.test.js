@@ -18,10 +18,10 @@ describe('algoritmo de clasificación', () => {
     expect(c.siguienteAccion).toMatch(/WhatsApp/);
   });
 
-  it('un registro a cursos sin WhatsApp es frío y se le envía el curso gratis', () => {
+  it('un registro a cursos sin WhatsApp es frío y se le envía el curso para probarlo', () => {
     const c = clasificarSolicitud({ tipo: 'interes', referencia: 'unete-cursos', areas: ['Calidad y BPM'] });
     expect(c).toMatchObject({ interes: 'curso', puntaje: 20, temperatura: 'frio', segmento: 'Profesional · Calidad y BPM · Cursos' });
-    expect(c.siguienteAccion).toMatch(/curso gratis/);
+    expect(c.siguienteAccion).toMatch(/primera unidad/);
   });
 
   it('quien vuelve a escribir sube de temperatura', () => {
@@ -106,10 +106,10 @@ describe('registro desde una página /unete', () => {
     });
   });
 
-  it('le envía su enlace gratis una sola vez', async () => {
+  it('le envía su enlace a los cursos una sola vez', async () => {
     const paraElla = t.mails.filter((m) => m.to === 'laura@prueba.co');
     expect(paraElla).toHaveLength(1);
-    expect(paraElla[0].subject).toMatch(/enlace gratis/);
+    expect(paraElla[0].subject).toMatch(/aquí están tus cursos/);
     await t.client().post('/solicitudes', registro);
     expect(t.mails.filter((m) => m.to === 'laura@prueba.co')).toHaveLength(1);
   });

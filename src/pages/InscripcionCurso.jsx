@@ -94,7 +94,7 @@ export default function InscripcionCurso() {
     if (!ficha) return;
     updatePageSeo({
       title: `Inscríbete en el ${nombre} | Edvanta`,
-      description: `Elige cómo estudiar el ${nombre}: con certificado verificable, revisión docente y acompañamiento, o gratis.`,
+      description: `Inscríbete en el ${nombre}: curso completo con certificado verificable, revisión docente y acompañamiento. Prueba la primera unidad.`,
       canonical: `https://edvanta.co${ficha.url}`,
       robots: 'noindex,follow',
     });
@@ -170,7 +170,7 @@ export default function InscripcionCurso() {
       loadingLabel="Un momento…"
       disabled={Boolean(ins.trabajando)}
     >
-      {ins.estado === 'dentro' ? 'Seguir gratis' : 'Estudiar gratis'}
+      {ins.estado === 'dentro' ? 'Seguir sin certificado' : 'Probar la primera unidad'}
     </Btn>
   );
 
@@ -187,10 +187,10 @@ export default function InscripcionCurso() {
                 <Link to="/cursos">Cursos</Link> <span aria-hidden="true">›</span> <Link to={ficha.url}>{nombre}</Link> <span aria-hidden="true">›</span> <span>Inscripción</span>
               </nav>
               <p className="ins-ante">Inscripción</p>
-              <h1 className="ins-titulo">Elige cómo estudiar el {nombre.replace(/^Curso de /i, 'curso de ')}</h1>
+              <h1 className="ins-titulo">Inscríbete en el {nombre.replace(/^Curso de /i, 'curso de ')}</h1>
               <p className="ins-lead">
-                El contenido es el mismo. La diferencia es lo que te llevas al terminar: un certificado que cualquier
-                empleador verifica, la revisión de un docente y acompañamiento cuando lo necesites.
+                Con el curso completo estudias todas las clases y te llevas un certificado que cualquier empleador
+                verifica, la revisión de un docente y acompañamiento cuando lo necesites. Antes de pagar, prueba la primera unidad.
               </p>
               <ul className="ins-datos">
                 {datos.map((d) => <li key={d}><Chulo />{d}</li>)}
@@ -206,7 +206,7 @@ export default function InscripcionCurso() {
           <div className="ins-contenedor">
             <p className="ins-plazo">
               <b>Tu precio con descuento: {formatPrice(precio)}</b> hasta el {fecha(oferta.venceEl)}
-              <span> · Después, el certificado cuesta {formatPrice(oferta.lista)}.</span>
+              <span> · Después, el curso completo cuesta {formatPrice(oferta.lista)}.</span>
             </p>
           </div>
         )}
@@ -215,7 +215,7 @@ export default function InscripcionCurso() {
         <section className="ins-contenedor ins-planes" aria-label="Elige tu plan">
           <article className="ins-plan ins-plan--certificado">
             <p className="ins-plan__etiqueta">Recomendado</p>
-            <h2 className="ins-plan__nombre">Con certificado</h2>
+            <h2 className="ins-plan__nombre">Curso completo con certificado</h2>
             <p className="ins-plan__precio">{formatPrice(precio)} <span>COP · pago único</span></p>
             {conDescuento && (
               <p className="ins-plan__lista">
@@ -236,9 +236,9 @@ export default function InscripcionCurso() {
 
           <article className="ins-plan">
             <p className="ins-plan__etiqueta ins-plan__etiqueta--suave">Para conocer el curso</p>
-            <h2 className="ins-plan__nombre">Gratis</h2>
+            <h2 className="ins-plan__nombre">Primera unidad</h2>
             <p className="ins-plan__precio">$ 0 <span>COP</span></p>
-            <p className="ins-plan__nota">Sin certificado. Puedes pasarte cuando quieras.</p>
+            <p className="ins-plan__nota">Sin certificado. Compras el curso completo cuando quieras, desde tu aula.</p>
             <ul className="ins-plan__lista-beneficios">
               {COMPARATIVA_CAMINOS.map((f) => (
                 <li key={f.id} className={f.gratis ? '' : 'is-no'}><Chulo si={f.gratis} /><span><b>{f.titulo}</b></span></li>
@@ -253,7 +253,7 @@ export default function InscripcionCurso() {
         <section className="ins-seccion ins-seccion--suave">
           <div className="ins-contenedor">
             <p className="ins-ante">Por qué vale la pena</p>
-            <h2 className="ins-h2">Lo que cambia cuando estudias con certificado</h2>
+            <h2 className="ins-h2">Lo que te llevas con el curso completo</h2>
             <div className="ins-razones">
               {RAZONES.map((r) => (
                 <div key={r.titulo} className="ins-razon">
@@ -288,11 +288,11 @@ export default function InscripcionCurso() {
         {/* 4 · Comparativa, preguntas y cierre */}
         <section className="ins-seccion ins-seccion--suave">
           <div className="ins-contenedor">
-            <h2 className="ins-h2">Compara los dos caminos</h2>
+            <h2 className="ins-h2">Qué incluye cada opción</h2>
             <div className="ins-tabla-marco">
               <table className="ins-tabla">
                 <thead>
-                  <tr><th scope="col">Qué incluye</th><th scope="col">Con certificado</th><th scope="col">Gratis</th></tr>
+                  <tr><th scope="col">Qué incluye</th><th scope="col">Curso completo</th><th scope="col">Primera unidad</th></tr>
                 </thead>
                 <tbody>
                   {COMPARATIVA_CAMINOS.map((f) => (
@@ -317,7 +317,7 @@ export default function InscripcionCurso() {
           <div className="ins-contenedor ins-faq">
             <h2 className="ins-h2">Preguntas frecuentes</h2>
             <Faq items={[
-              { q: '¿Puedo empezar gratis y pasarme después?', a: `Sí, cuando quieras, desde tu aula. El precio con descuento rige 7 días desde tu inscripción${conDescuento ? `; después, el certificado cuesta ${formatPrice(oferta.lista)}` : ''}.` },
+              { q: '¿Puedo probar el curso antes de pagar?', a: `Sí. Al inscribirte ves la primera unidad completa y, en las demás clases, el video y el inicio. Compras el curso completo cuando quieras, desde tu aula. El precio con descuento rige 7 días desde tu inscripción${conDescuento ? `; después, el curso completo cuesta ${formatPrice(oferta.lista)}` : ''}.` },
               { q: '¿Cuándo recibo el certificado?', a: 'Al completar todas las clases obligatorias del curso. Lo emites tú mismo desde el aula y lo descargas en PDF.' },
               { q: '¿Cómo funciona el acompañamiento?', a: 'Escribes por WhatsApp con tus dudas del curso y Karla o un docente te responde en 48 horas hábiles.' },
               { q: '¿Cómo pago?', a: 'Con Mercado Pago: tarjeta débito o crédito, PSE, Nequi o Efecty. Es un pago único, sin suscripción.' },
@@ -340,7 +340,7 @@ export default function InscripcionCurso() {
             <div className="ins-cierre__botones">
               {botonCertificado()}
               <button type="button" className="ins-cierre__gratis" onClick={ins.gratis} disabled={Boolean(ins.trabajando)}>
-                Prefiero estudiar gratis
+                Prefiero probar la primera unidad
               </button>
             </div>
           </div>
@@ -353,7 +353,7 @@ export default function InscripcionCurso() {
       <div className="ins-barra ed-barra-movil lg:hidden">
         <div>
           <p className="ins-barra__precio">{formatPrice(precio)}{conDescuento && <s>{formatPrice(oferta.lista)}</s>}</p>
-          <p className="ins-barra__nota">Con certificado</p>
+          <p className="ins-barra__nota">Curso completo con certificado</p>
         </div>
         <Btn variant="gradient" size="sm" onClick={ins.conCertificado} loading={ins.trabajando === 'certificado'} loadingLabel="Un momento…">
           Estudiar con certificado

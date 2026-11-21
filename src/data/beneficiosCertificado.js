@@ -38,7 +38,7 @@ export const BENEFICIOS_CERTIFICADO = [
   {
     id: 'revision',
     titulo: 'Revisión de tus actividades',
-    texto: 'Un docente revisa tus entregas y te da retroalimentación. Sin certificado, solo quices automáticos.',
+    texto: 'Un docente revisa tus entregas y te da retroalimentación.',
     confirmado: true,
   },
 ];
@@ -46,13 +46,15 @@ export const BENEFICIOS_CERTIFICADO = [
 export const beneficiosVigentes = () => BENEFICIOS_CERTIFICADO.filter((b) => b.confirmado);
 
 /**
- * La comparativa que ve la persona al elegir cómo estudiar. Lo de
- * «gratis» es lo que el aula permite de verdad: contenido y quices; la
- * revisión docente de actividades es del camino con certificado.
+ * La comparativa que ve la persona al elegir. Desde el 20-nov-2026 los
+ * cursos propios con precio se venden completos (api/lib/aula/acceso-pago.js):
+ * sin pagar, la persona inscrita ve la primera unidad completa y, en las
+ * demás clases, el video y el inicio. La columna `gratis` es esa prueba.
  */
 export const COMPARATIVA_CAMINOS = [
-  { id: 'contenido', titulo: 'Todas las clases del curso', detalle: 'A tu ritmo, en el celular o el computador', certificado: true, gratis: true },
-  { id: 'quices', titulo: 'Quices automáticos', detalle: 'Te dicen qué repasar antes de seguir', certificado: true, gratis: true },
+  { id: 'primera', titulo: 'Primera unidad completa', detalle: 'Para conocer el curso antes de pagar', certificado: true, gratis: true },
+  { id: 'contenido', titulo: 'Todas las clases del curso', detalle: 'A tu ritmo, en el celular o el computador', certificado: true, gratis: false },
+  { id: 'quices', titulo: 'Quices, actividades y foros', detalle: 'En todas las unidades del curso', certificado: true, gratis: false },
   { id: 'revision', titulo: 'Revisión de tus actividades', detalle: 'Un docente revisa tus entregas y te da retroalimentación', certificado: true, gratis: false },
   { id: 'acompanamiento', titulo: 'Acompañamiento personalizado', detalle: 'Por WhatsApp con Karla o un docente, en 48 horas hábiles', certificado: true, gratis: false },
   { id: 'certificado', titulo: 'Certificado de aprobación de Edvanta', detalle: 'Con tu nombre, el curso y sus horas', certificado: true, gratis: false },

@@ -87,10 +87,11 @@ function certificado({ propio, curso }) {
         ? 'Completa todas las clases obligatorias del curso, paga el certificado y pídelo desde tu aula.'
         : 'Completa todas las clases obligatorias del curso y pídelo desde tu aula.',
       horas: horasDe(curso.duration_minutes),
-      // Precio en pesos colombianos; 0 = sin costo. El contenido es gratis.
+      // Precio en pesos colombianos; 0 = sin costo. Con precio, el pago da
+      // el curso completo con el certificado incluido (acceso-pago.js).
       precio,
       nota: precio > 0
-        ? 'El contenido del curso es gratis. El certificado tiene un costo único: lo pagas cuando quieras y lo emites al completar el curso, con tu nombre, sus horas y un código para verificarlo.'
+        ? 'La primera unidad es abierta. El curso completo tiene un pago único que incluye el certificado: lo emites al completar el curso, con tu nombre, sus horas y un código para verificarlo.'
         : 'Al completar el curso, Edvanta te expide tu certificado de aprobación: con tu nombre, el curso, sus horas y un código para verificarlo.',
     };
   }

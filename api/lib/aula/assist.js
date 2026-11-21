@@ -401,9 +401,9 @@ export function siguientesAcciones(persona, { now = new Date() } = {}) {
   if (!persona.cuenta && persona.solicitudes.length) {
     acciones.push({
       clave: 'invitar', prioridad: 'media', tipo: 'invitar',
-      titulo: 'Invitarle a un curso gratis',
+      titulo: 'Invitarle a un curso',
       detalle: 'Dejó sus datos, pero aún no tiene cuenta en el aula.',
-      whatsapp: wa(`${saludo} Tenemos cursos gratis para tu área, con certificado opcional. ¿Te recomiendo uno?`),
+      whatsapp: wa(`${saludo} Tenemos cursos para tu área, con certificado verificable, y puedes probar la primera unidad. ¿Te recomiendo uno?`),
     });
   }
 

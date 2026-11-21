@@ -1,11 +1,11 @@
 export const courseLearningContent = {
   'gestion-de-calidad': {
-    h1: 'Curso gratis de gestión de calidad: aprende procesos, indicadores y mejora continua',
-    seoTitle: 'Curso gratis de Gestión de Calidad | Guía, temario y recursos Edvanta',
+    h1: 'Curso de gestión de calidad: aprende procesos, indicadores y mejora continua',
+    seoTitle: 'Curso de Gestión de Calidad | Guía, temario y recursos Edvanta',
     seoDescription:
       'Aprende gestión de calidad desde cero: sistemas de gestión, procesos, indicadores, riesgos, auditorías, mejora continua y recursos oficiales recomendados por Edvanta.',
     keywords: [
-      'curso gratis de gestión de calidad',
+      'curso de gestión de calidad',
       'sistema de gestión de calidad',
       'ISO 9001',
       'mejora continua',
@@ -111,12 +111,12 @@ export const courseLearningContent = {
   },
 
   'power-bi': {
-    h1: 'Curso gratis de Power BI: aprende dashboards, análisis de datos e indicadores',
-    seoTitle: 'Curso gratis de Power BI | Dashboards, datos y recursos Edvanta',
+    h1: 'Curso de Power BI: aprende dashboards, análisis de datos e indicadores',
+    seoTitle: 'Curso de Power BI | Dashboards, datos y recursos Edvanta',
     seoDescription:
       'Aprende Power BI desde cero: Power Query, modelo de datos, visualizaciones, dashboards, indicadores y recursos de Microsoft Learn recomendados por Edvanta.',
     keywords: [
-      'curso gratis de Power BI',
+      'curso de Power BI',
       'aprender Power BI',
       'dashboards',
       'análisis de datos',
@@ -202,11 +202,11 @@ export const courseLearningContent = {
   },
 
   auditoria: {
-    h1: 'Curso gratis de auditoría: aprende evidencias, hallazgos e informes',
-    seoTitle: 'Curso gratis de Auditoría | Evidencias, hallazgos y recursos Edvanta',
+    h1: 'Curso de auditoría: aprende evidencias, hallazgos e informes',
+    seoTitle: 'Curso de Auditoría | Evidencias, hallazgos y recursos Edvanta',
     seoDescription:
       'Aprende auditoría interna y de procesos: planificación, evidencias, entrevistas, hallazgos, informes, seguimiento y recursos ISO recomendados por Edvanta.',
-    keywords: ['curso gratis de auditoría', 'auditoría interna', 'hallazgos de auditoría', 'ISO 19011', 'evidencias', 'informe de auditoría'],
+    keywords: ['curso de auditoría', 'auditoría interna', 'hallazgos de auditoría', 'ISO 19011', 'evidencias', 'informe de auditoría'],
     intro: [
       'La auditoría es una habilidad profesional para evaluar si un proceso cumple requisitos y si existen evidencias confiables. Un buen auditor no busca culpables: busca hechos, criterios, riesgos y oportunidades de mejora.',
       'En esta página Edvanta organiza el curso como una ruta práctica para aprender a planificar, preguntar, observar, tomar notas, redactar hallazgos y hacer seguimiento.',
@@ -287,11 +287,11 @@ export const courseLearningContent = {
   },
 
   'gestion-ambiental': {
-    h1: 'Curso gratis de gestión ambiental: aprende sostenibilidad, residuos e impactos',
-    seoTitle: 'Curso gratis de Gestión Ambiental | Sostenibilidad y recursos Edvanta',
+    h1: 'Curso de gestión ambiental: aprende sostenibilidad, residuos e impactos',
+    seoTitle: 'Curso de Gestión Ambiental | Sostenibilidad y recursos Edvanta',
     seoDescription:
       'Aprende gestión ambiental: aspectos e impactos, residuos, indicadores, cumplimiento, sostenibilidad, ISO 14001 y recursos complementarios recomendados por Edvanta.',
-    keywords: ['curso gratis de gestión ambiental', 'sostenibilidad', 'ISO 14001', 'residuos', 'impactos ambientales', 'HSEQ'],
+    keywords: ['curso de gestión ambiental', 'sostenibilidad', 'ISO 14001', 'residuos', 'impactos ambientales', 'HSEQ'],
     intro: [
       'La gestión ambiental ayuda a las organizaciones a comprender y reducir sus impactos sobre el entorno. Incluye residuos, consumo de recursos, emisiones, cumplimiento legal, cultura ambiental e indicadores.',
       'Este curso es una entrada práctica para quienes desean fortalecer un perfil HSEQ, trabajar en sostenibilidad o aplicar buenas prácticas ambientales en empresas, instituciones o emprendimientos.',
@@ -372,11 +372,11 @@ export const courseLearningContent = {
   },
 
   'seguridad-y-salud-en-el-trabajo': {
-    h1: 'Curso gratis de seguridad y salud en el trabajo: prevención, riesgos y cultura SST',
-    seoTitle: 'Curso gratis de Seguridad y Salud en el Trabajo | SST Edvanta',
+    h1: 'Curso de seguridad y salud en el trabajo: prevención, riesgos y cultura SST',
+    seoTitle: 'Curso de Seguridad y Salud en el Trabajo | SST Edvanta',
     seoDescription:
       'Aprende SST desde cero: peligros, riesgos, controles, inspecciones, incidentes, cultura preventiva, ISO 45001 y recursos oficiales recomendados por Edvanta.',
-    keywords: ['curso gratis de seguridad y salud en el trabajo', 'SST', 'riesgos laborales', 'ISO 45001', 'prevención', 'HSEQ'],
+    keywords: ['curso de seguridad y salud en el trabajo', 'SST', 'riesgos laborales', 'ISO 45001', 'prevención', 'HSEQ'],
     intro: [
       'La seguridad y salud en el trabajo busca prevenir lesiones, enfermedades laborales e incidentes mediante identificación de peligros, evaluación de riesgos, controles, capacitación y cultura preventiva.',
       'Este curso puede ayudarte a entender el lenguaje básico de SST y a participar mejor en inspecciones, reportes, campañas, análisis de riesgos y acciones de mejora.',
@@ -458,11 +458,11 @@ export const courseLearningContent = {
   },
 
   'gestion-de-proyectos': {
-    h1: 'Curso gratis de gestión de proyectos: aprende a planificar, ejecutar y entregar resultados',
-    seoTitle: 'Curso gratis de Gestión de Proyectos | Planificación y recursos Edvanta',
+    h1: 'Curso de gestión de proyectos: aprende a planificar, ejecutar y entregar resultados',
+    seoTitle: 'Curso de Gestión de Proyectos | Planificación y recursos Edvanta',
     seoDescription:
       'Aprende gestión de proyectos: alcance, cronograma, recursos, riesgos, comunicación, seguimiento, cierre y lecturas complementarias recomendadas por Edvanta.',
-    keywords: ['curso gratis de gestión de proyectos', 'project management', 'cronograma', 'riesgos de proyecto', 'PMBOK', 'gestor de proyectos'],
+    keywords: ['curso de gestión de proyectos', 'project management', 'cronograma', 'riesgos de proyecto', 'PMBOK', 'gestor de proyectos'],
     intro: [
       'La gestión de proyectos convierte ideas en resultados organizados. Ayuda a definir qué se quiere lograr, qué se necesita, quién participa, cuánto tiempo tomará, qué riesgos existen y cómo se medirá el avance.',
       'Este curso es útil para estudiantes, profesionales, líderes de equipo, emprendedores y personas que necesitan coordinar entregables sin perder control.',
@@ -544,11 +544,11 @@ export const courseLearningContent = {
   },
 
   lean: {
-    h1: 'Curso gratis de Lean: aprende a eliminar desperdicios y mejorar procesos',
-    seoTitle: 'Curso gratis de Lean | Mejora de procesos y recursos Edvanta',
+    h1: 'Curso de Lean: aprende a eliminar desperdicios y mejorar procesos',
+    seoTitle: 'Curso de Lean | Mejora de procesos y recursos Edvanta',
     seoDescription:
       'Aprende Lean desde cero: valor, desperdicios, flujo, 5S, Kaizen, mapa de flujo de valor, mejora continua y recursos recomendados por Edvanta.',
-    keywords: ['curso gratis de Lean', 'mejora de procesos', 'desperdicios Lean', 'Kaizen', '5S', 'flujo de valor'],
+    keywords: ['curso de Lean', 'mejora de procesos', 'desperdicios Lean', 'Kaizen', '5S', 'flujo de valor'],
     intro: [
       'Lean es una forma de mejorar procesos enfocándose en el valor para el cliente y eliminando actividades que consumen tiempo, recursos o esfuerzo sin aportar resultado útil.',
       'Este curso es ideal para personas que trabajan con operaciones, servicios, calidad, proyectos, productividad, emprendimiento o atención al cliente.',
@@ -628,8 +628,8 @@ export const courseLearningContent = {
   },
 
   'lean-six-sigma': {
-    h1: 'Curso gratis de Lean Six Sigma: mejora procesos con datos y metodología DMAIC',
-    seoTitle: 'Curso gratis de Lean Six Sigma | DMAIC y recursos Edvanta',
+    h1: 'Curso de Lean Six Sigma: mejora procesos con datos y metodología DMAIC',
+    seoTitle: 'Curso de Lean Six Sigma | DMAIC y recursos Edvanta',
     seoDescription:
       'Aprende Lean Six Sigma: desperdicios, variabilidad, indicadores, DMAIC, causa raíz, control de procesos y recursos complementarios recomendados por Edvanta.',
     keywords: ['curso gratis Lean Six Sigma', 'DMAIC', 'Six Sigma', 'variabilidad', 'mejora de procesos', 'causa raíz'],
