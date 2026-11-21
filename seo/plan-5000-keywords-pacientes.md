@@ -49,12 +49,12 @@ La otra sesión trabaja en `seo/plan-10000-keywords.md`. Este plan no usa nada s
 
 **Corrección del 21-nov-2026:** la primera versión de este plan daba 69 monografías en `noindex`. Era un error: el registro de la revisión de Karla del 17-nov-2026 estaba en `main` y no en esta rama. Las 98 monografías están aprobadas e indexables.
 
-## Estado de las 459 páginas (21-nov-2026)
+## Estado de las 459 páginas (21-nov-2026, después de la aprobación)
 
 | Estado | Páginas | Keywords |
 |---|---:|---:|
 | Publicada e indexable: enriquecer (las 98 monografías y el grupo oncológico) | 99 | 1.739 |
-| Publicada en `noindex`: ficha «para qué sirve» escrita, falta la revisión de Karla | 76 | 1.059 |
+| Publicada e indexable: ficha «para qué sirve» revisada por Karla el 21-nov | 76 | 1.059 |
 | Guía de venta existente | 2 | 8 |
 | Por crear: hub de condición en Contigo | 35 | 546 |
 | Por crear: artículo satélite | 140 | 952 |
@@ -66,7 +66,7 @@ La otra sesión trabaja en `seo/plan-10000-keywords.md`. Este plan no usa nada s
 
 - 76 son las del grupo 3 de este plan; las otras 24 amplían la lista (pegfilgrastim, vedolizumab, belimumab, eculizumab, inhibidores de cinasas, durvalumab, ipilimumab, daratumumab y otros).
 - Cada dato sale de la ficha técnica de CIMA, con el número de registros sanitarios vigentes en el CUM del INVIMA.
-- Entran en `noindex` hasta la revisión de Karla.
+- Karla las aprobó por escrito el 21-nov-2026 y quedaron indexables, con ella como revisora.
 - El pre-revisor (`scripts/pre-revision-clinica.mjs`) da para todas:
   - descargo presente;
   - entre 813 y 1.192 palabras;
@@ -74,12 +74,13 @@ La otra sesión trabaja en `seo/plan-10000-keywords.md`. Este plan no usa nada s
 
 ## Prioridad recomendada
 
-### 1. Revisión de las 100 fichas de alto costo (responsable: Karla)
+### 1. Revisión de las 100 fichas de alto costo (responsable: Karla) — hecha el 21-nov-2026
 
 - Libera **1.059 keywords** del plan, y las de las 24 fichas extra, sin escribir una página nueva.
 - Las fichas ya están publicadas en `noindex`.
 - Están enlazadas desde Contigo Alto Costo (`/contigo/alto-costo#medicamentos`), desde el vademécum oncológico y entre sí por familia.
-- **Siguiente paso:** te envío la lista por familias (reumatología, oncología, VIH y hepatitis C, hemofilia, esclerosis múltiple y huérfanas), con la ficha técnica de cada una.
+- **Hecho:** Karla aprobó las 100 fichas el 21-nov-2026. La lista con su ficha técnica está en `docs/pacientes/revision-fichas-alto-costo.md`.
+- **Siguiente paso:** pedir su rastreo en Search Console y medir a 30 y 60 días.
 
 ### 2. Enriquecer las 98 monografías indexables (responsable: Claude)
 

@@ -37,7 +37,7 @@ Análisis de páginas públicas el 21-nov-2026, respetando su `robots.txt`, que 
 | Programa Contigo Alto Costo | `/contigo/alto-costo` | Publicado el 21-nov-2026; registro cerrado y en `noindex` |
 | Gestión de datos del titular | `/contigo/alto-costo/mis-datos?t=` | Construida |
 | Artículos para pacientes | `/articulos/{tema}` y `/articulos/{medicamento}-para-que-sirve` | Los de «para qué sirve» son los que más posicionan |
-| Fichas de medicamentos de alto costo | `/articulos/{medicamento}-para-que-sirve`, categoría «Medicamentos de alto costo» | 100 fichas del 21-nov-2026 en `noindex` hasta la revisión de Karla. Datos en `scripts/data/fichas-alto-costo/`, generador `scripts/generar-fichas-alto-costo.mjs` |
+| Fichas de medicamentos de alto costo | `/articulos/{medicamento}-para-que-sirve`, categoría «Medicamentos de alto costo» | 100 fichas del 21-nov-2026, aprobadas por Karla el mismo día e indexables (revisión en `src/data/revisionClinica.js`). Datos en `scripts/data/fichas-alto-costo/`, generador `scripts/generar-fichas-alto-costo.mjs` |
 | Vademécum profesional | `/vademecum/{grupo o medicamento}` | 14 grupos, incluido el de oncología de alto costo (trastuzumab, imatinib, pembrolizumab) |
 | Herramientas privadas | `/fst-app` (tiroides) | Publicadas |
 

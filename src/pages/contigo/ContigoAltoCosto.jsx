@@ -332,7 +332,7 @@ export default function ContigoAltoCosto() {
           <ContigoEyebrow>Entiende tu medicamento</ContigoEyebrow>
           <h2 className="mt-3 font-display text-2xl font-extrabold text-edvanta-deep sm:text-3xl">Fichas de medicamentos de alto costo</h2>
           <p className="mt-2 max-w-3xl text-[15px] leading-7 text-[var(--contigo-muted)]">
-            Para qué sirve cada medicamento, cómo se aplica o se toma, sus efectos secundarios y cuándo consultar, con la ficha técnica como fuente. Son {FICHAS.length} fichas del equipo editorial de Edvanta; la revisión clínica de cada una está en curso.
+            Para qué sirve cada medicamento, cómo se aplica o se toma, sus efectos secundarios y cuándo consultar, con la ficha técnica como fuente. Son {FICHAS.length} fichas del equipo editorial de Edvanta, revisadas por Karla Hernández, química farmacéutica.
           </p>
           <ul className="mt-6 flex flex-wrap gap-2">
             {FICHAS.map((f) => (

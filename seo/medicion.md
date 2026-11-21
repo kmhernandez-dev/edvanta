@@ -172,3 +172,16 @@ Se anota una fila nueva en las tablas de arriba. El indicador principal es **pá
   - Formato visual nuevo: mapas conceptuales, triángulos, ciclos, barras animadas, semáforo, autoevaluación y tarjetas de curso y guía en cada monografía.
   - Fuentes: fichas técnicas completas de CIMA descargadas directamente, CUM del INVIMA por ATC y el índice ATC de la OMS. Todo en `noindex` hasta la revisión de Karla.
   - Línea base del proyecto en Semrush el mismo día: 347 keywords orgánicas, 816 visitas, 267 backlinks.
+
+## Lote del 21-nov-2026
+
+- **Fichas de medicamentos de alto costo:**
+  - 100 fichas «para qué sirve» en `/articulos/{medicamento}-para-que-sirve`, categoría «Medicamentos de alto costo».
+  - Datos de la ficha técnica de CIMA y del CUM del INVIMA.
+  - Karla las aprobó por escrito el mismo día («apruebo las 100 fichas y despliega todo»): pasan a `index,follow`, entran al sitemap y a `llms.txt`.
+  - Plan de keywords: `seo/keywords-5000-edvanta-pacientes.csv`; 1.059 de sus keywords apuntan a 76 de estas fichas.
+- **Contigo Alto Costo:** `/contigo/alto-costo` publicado con el registro cerrado y en `noindex`; enlaza las 100 fichas.
+- **Cómo medir (30 y 60 días):**
+  - Impresiones y consultas por URL de las fichas en Search Console. Meta: 10 o más consultas por ficha a los 60 días.
+  - Clics desde las fichas a `/contigo/alto-costo` y a los cursos.
+- **Pendiente:** solicitar el rastreo de las fichas en Search Console y avisar a Bing con IndexNow, con la autorización de Karla.

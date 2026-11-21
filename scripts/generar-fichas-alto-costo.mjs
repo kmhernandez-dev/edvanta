@@ -10,6 +10,7 @@
  * Salida:
  *  - public/articulos/articulos_edvanta/salud/{slug}-para-que-sirve.md
  *  - src/data/articulosAltoCosto.js (registro y capa SEO)
+ *  - bloque «alto-costo» de public/llms.txt, solo con las fichas revisadas
  *
  * Reglas: denominación común sin promoción (Decreto 677 de 1995, art. 79);
  * sin dosis personalizadas; «Cuándo consultar», preguntas y fuentes en
@@ -21,6 +22,7 @@
 import { readFileSync, writeFileSync } from 'node:fs';
 import { MONOGRAFIAS } from '../src/data/vademecum/index.js';
 import { FICHAS_ALTO_COSTO } from './data/fichas-alto-costo/index.mjs';
+import { REVISION_CLINICA } from '../src/data/revisionClinica.js';
 
 const FECHA = '2026-11-21';
 const FECHA_TEXTO = '21-nov-2026';
@@ -202,9 +204,30 @@ const cabecera = `/**
  * ARCHIVO GENERADO por scripts/generar-fichas-alto-costo.mjs: no se edita
  * a mano. Los datos viven en scripts/data/fichas-alto-costo/.
  *
- * Son contenido de salud: salen en noindex hasta que Karla las revise y
- * quede la línea en src/data/revisionClinica.js.
+ * Son contenido de salud: se indexan solo cuando tienen su línea de
+ * revisión clínica en src/data/revisionClinica.js.
  */
 `;
 writeFileSync(REGISTRO, `${cabecera}export const ARTICULOS_ALTO_COSTO = ${JSON.stringify(entradas, null, 2)};\n`);
-console.log(`Fichas escritas: ${entradas.length} · registro: ${REGISTRO}`);
+// Bloque de public/llms.txt: solo fichas con revisión clínica registrada.
+const LLMS = 'public/llms.txt';
+const INICIO = '<!-- alto-costo:inicio (scripts/generar-fichas-alto-costo.mjs) -->';
+const FIN = '<!-- alto-costo:fin -->';
+const revisadas = entradas.filter((e) => REVISION_CLINICA[e.slug]);
+const bloque = revisadas.length ? [
+  INICIO,
+  '',
+  '## Medicamentos de alto costo: fichas para pacientes',
+  '',
+  'Para qué sirve cada medicamento, cómo se aplica o se toma, efectos secundarios, embarazo y cuándo consultar. Fuente: ficha técnica de CIMA (AEMPS) y CUM del INVIMA; revisión clínica de Karla Hernández, química farmacéutica.',
+  '',
+  ...revisadas.map((e) => `- [${e.title}](https://edvanta.co/articulos/${e.slug}): ${e.description}`),
+  '',
+  FIN,
+].join('\n') : '';
+let llms = readFileSync(LLMS, 'utf8');
+if (llms.includes(INICIO)) llms = llms.replace(new RegExp(`${INICIO.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}[\\s\\S]*?${FIN}\\n?`), bloque ? `${bloque}\n` : '');
+else if (bloque) llms = llms.replace('\n## Transparencia', `\n${bloque}\n\n## Transparencia`);
+writeFileSync(LLMS, llms);
+
+console.log(`Fichas escritas: ${entradas.length} · registro: ${REGISTRO} · en llms.txt: ${revisadas.length}`);

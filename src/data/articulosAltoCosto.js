@@ -3,8 +3,8 @@
  * ARCHIVO GENERADO por scripts/generar-fichas-alto-costo.mjs: no se edita
  * a mano. Los datos viven en scripts/data/fichas-alto-costo/.
  *
- * Son contenido de salud: salen en noindex hasta que Karla las revise y
- * quede la línea en src/data/revisionClinica.js.
+ * Son contenido de salud: se indexan solo cuando tienen su línea de
+ * revisión clínica en src/data/revisionClinica.js.
  */
 export const ARTICULOS_ALTO_COSTO = [
   {
