@@ -53,6 +53,18 @@ Revisa también los antigripales y analgésicos combinados: algunos contienen an
 - Usar repelente, ropa de manga larga y toldillos.
 - Instalar mallas en puertas y ventanas.
 
+## Cómo se transmite el dengue
+
+El dengue lo transmite la picadura de mosquitos infectados. En las Américas, el principal transmisor es el mosquito *Aedes aegypti*, que se cría en agua limpia estancada dentro y alrededor de las casas. Por eso la prevención empieza en el hogar. La transmisión de una embarazada a su bebé es posible, pero poco frecuente.
+
+## Cómo se diagnostica
+
+El médico sospecha el dengue por los síntomas y la zona donde vive o viajó la persona, y puede confirmarlo con pruebas de laboratorio o pruebas rápidas en el lugar de atención. Ninguna prueba reemplaza la vigilancia de los signos de alarma.
+
+## Para estudiantes y profesionales de la salud
+
+Si estudias o trabajas en salud, pon a prueba lo que sabes con el [caso clínico de dengue](/casos-clinicos/dengue): un examen interactivo tipo parcial con explicaciones y nota de 0 a 5.
+
 ## Preguntas frecuentes
 
 ### ¿Cuánto dura el dengue?
@@ -66,6 +78,14 @@ Sí. Existen cuatro tipos del virus y una segunda infección por un tipo diferen
 ### ¿El agua de papaya o de otras hojas sube las plaquetas?
 
 No hay evidencia suficiente para recomendarlas como tratamiento. Lo que salva vidas es la hidratación y reconocer los signos de alarma a tiempo.
+
+### ¿Existe vacuna contra el dengue?
+
+Sí, pero con indicaciones precisas. La OMS describe una vacuna para personas que ya tuvieron dengue al menos una vez y viven en zonas donde la enfermedad es frecuente, y otra recomendada para niños y adolescentes de 6 a 16 años en zonas de alta transmisión. La decisión la toma el médico según la edad y los antecedentes.
+
+### ¿Por qué me siento tan cansado después del dengue?
+
+Es frecuente. Después de la curación, la persona puede sentirse cansada durante varias semanas. Descansa, hidrátate bien y retoma la actividad de forma progresiva.
 
 ## Fuentes
 

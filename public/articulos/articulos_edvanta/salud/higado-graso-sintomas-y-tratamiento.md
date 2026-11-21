@@ -57,6 +57,18 @@ Lo ideal es evitarlo.
 
 Se tratan las condiciones asociadas (diabetes, colesterol, presión). En algunos países existen medicamentos aprobados para casos con inflamación y fibrosis; su uso lo decide un especialista. Evita suplementos «para limpiar el hígado»: no tienen respaldo y algunos productos herbales pueden dañarlo.
 
+## ¿Puede avanzar a cirrosis?
+
+En algunas personas, la grasa del hígado se acompaña de inflamación y daño de las células hepáticas. Con el tiempo puede aparecer fibrosis, es decir, cicatrización del hígado, y en los casos avanzados cirrosis o cáncer de hígado. Por eso conviene tratarlo aunque no duela.
+
+## Únete a la comunidad
+
+En la [comunidad de hígado graso](/comunidades/higado-graso) de Edvanta, pacientes y cuidadores comparten dudas, guías y experiencias, con moderación y reglas claras. La comunidad no diagnostica ni reemplaza al equipo de salud: te ayuda a llegar mejor preparado a la consulta.
+
+## Para estudiantes y profesionales de la salud
+
+Si estudias o trabajas en salud, pon a prueba lo que sabes con el [caso clínico de síndrome metabólico](/casos-clinicos/sindrome-metabolico): un examen interactivo tipo parcial con explicaciones y nota de 0 a 5.
+
 ## Preguntas frecuentes
 
 ### ¿El hígado graso se puede revertir?
@@ -70,6 +82,14 @@ Las frutas enteras en porciones moderadas son adecuadas. Evita los jugos, que co
 ### ¿El hígado graso duele?
 
 Normalmente no. El dolor intenso en el abdomen debe valorarse porque puede tener otra causa, como la vesícula.
+
+### ¿Cuál es el primer paso del tratamiento?
+
+Para la esteatosis hepática asociada a disfunción metabólica, el primer paso suele ser bajar de peso, con alimentación saludable y actividad física.
+
+### ¿El hígado graso por alcohol es lo mismo?
+
+No. La enfermedad hepática asociada al alcohol se produce por el consumo excesivo de alcohol y antes se llamaba hígado graso alcohólico. En ambas, reducir o suspender el alcohol protege el hígado.
 
 ## Fuentes
 
