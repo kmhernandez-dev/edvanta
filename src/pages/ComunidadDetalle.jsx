@@ -15,6 +15,7 @@ import { Breadcrumb } from '../components/edvanta/ui';
 import { comunidadDeSlug } from '../data/comunidadesSalud';
 import { articulos } from '../data/articulos';
 import { updatePageSeo } from '../utils/seo';
+import { descripcionDeComunidad, faqJsonLd, preguntasDeComunidad, tituloSeoDeComunidad } from '../lib/comunidades/seo';
 import { trackEvent } from '../utils/analytics';
 
 const SITIO = 'https://edvanta.co';
@@ -22,13 +23,16 @@ const SITIO = 'https://edvanta.co';
 export default function ComunidadDetalle() {
   const { slug } = useParams();
   const comunidad = comunidadDeSlug(slug);
+  const preguntas = comunidad
+    ? preguntasDeComunidad(comunidad, (s) => articulos.find((a) => a.slug === s)?.title || null)
+    : [];
 
   useEffect(() => {
     if (!comunidad) return undefined;
     const canonical = `${SITIO}${comunidad.ruta}`;
     return updatePageSeo({
-      title: `Comunidad de ${comunidad.nombre} | Edvanta`,
-      description: comunidad.resumen,
+      title: tituloSeoDeComunidad(comunidad),
+      description: descripcionDeComunidad(comunidad),
       canonical,
       type: 'website',
       keywords: comunidad.keywords,
@@ -39,7 +43,7 @@ export default function ComunidadDetalle() {
           {
             '@type': 'WebPage',
             name: comunidad.titulo,
-            description: comunidad.resumen,
+            description: descripcionDeComunidad(comunidad),
             url: canonical,
             inLanguage: 'es-CO',
             isPartOf: { '@type': 'WebSite', name: 'Edvanta', url: SITIO },
@@ -53,10 +57,11 @@ export default function ComunidadDetalle() {
               { '@type': 'ListItem', position: 3, name: comunidad.nombre, item: canonical },
             ],
           },
+          faqJsonLd(preguntas),
         ],
       },
     });
-  }, [comunidad]);
+  }, [comunidad]); // eslint-disable-line react-hooks/exhaustive-deps
 
   if (!comunidad) {
     return (
@@ -192,6 +197,18 @@ export default function ComunidadDetalle() {
                   </div>
                 </>
               )}
+
+              <h2 className="mt-10 font-display text-2xl font-extrabold text-edvanta-deep">Preguntas sobre el grupo de apoyo</h2>
+              <div className="mt-4 divide-y divide-edvanta-border rounded-2xl border border-edvanta-border bg-white">
+                {preguntas.map(([q, a]) => (
+                  <details key={q} className="group p-4">
+                    <summary className="cursor-pointer list-none font-display text-base font-bold text-edvanta-deep marker:hidden">
+                      <h3 className="inline">{q}</h3>
+                    </summary>
+                    <p className="mt-2 text-sm leading-6 text-edvanta-ink/80">{a}</p>
+                  </details>
+                ))}
+              </div>
             </div>
 
             <aside className="space-y-5">
@@ -234,10 +251,10 @@ export default function ComunidadDetalle() {
                 <div className="rounded-2xl border border-edvanta-border bg-white p-5">
                   <p className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[.12em] text-edvanta-muted">
                     <BookOpen className="h-4 w-4" aria-hidden="true" />
-                    Para profesionales
+                    {/autocuidado/.test(comunidad.curso.ruta) ? 'Curso para pacientes' : 'Para profesionales'}
                   </p>
-                  <p className="mt-2 font-display text-lg font-bold text-edvanta-deep">Curso gratis: {comunidad.curso.nombre}</p>
-                  <p className="mt-1 text-sm leading-6 text-edvanta-muted">Clases abiertas y certificado al terminar. Sin costo.</p>
+                  <p className="mt-2 font-display text-lg font-bold text-edvanta-deep">Curso: {comunidad.curso.nombre}</p>
+                  <p className="mt-1 text-sm leading-6 text-edvanta-muted">{/autocuidado/.test(comunidad.curso.ruta) ? 'Gratis, con certificado al terminar.' : 'Empieza por la primera unidad gratis; el curso completo incluye certificado verificable.'}</p>
                   <Link to={comunidad.curso.ruta} className="mt-3 inline-flex items-center gap-1.5 text-sm font-bold text-edvanta-blue hover:underline">
                     Ver el curso
                     <ArrowRight className="h-4 w-4" aria-hidden="true" />

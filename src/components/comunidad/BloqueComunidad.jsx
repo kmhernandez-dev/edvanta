@@ -83,7 +83,7 @@ export default function BloqueComunidad({ comunidad, articuloSlug = '', origen =
             to={comunidad.ruta}
             className="inline-flex min-h-11 items-center justify-center gap-2 rounded-xl border border-edvanta-border bg-white px-5 text-sm font-semibold text-edvanta-blue transition hover:bg-edvanta-light"
           >
-            Conocer la comunidad
+            Ver el grupo de apoyo
             <ArrowRight className="h-4 w-4" aria-hidden="true" />
           </Link>
           {comunidad.grupo && (

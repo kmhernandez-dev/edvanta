@@ -41,6 +41,7 @@ import { clasesDelVademecum, urlsAbsolutas } from '../api/lib/enlaces-de-salud.j
 import { casosDeVademecum, htmlDeCasos } from '../src/lib/casosClinicos/enlacesInversos.js';
 import { robotsDePaginaDelVademecum, robotsDelVademecum, tituloDeVademecum } from '../src/lib/vademecum/indexable.js';
 import { COMUNIDADES, META_COMUNIDADES } from '../src/data/comunidadesSalud.js';
+import { descripcionDeComunidad, faqJsonLd, preguntasDeComunidad, tituloSeoDeComunidad } from '../src/lib/comunidades/seo.js';
 import { EXAMENES, META_EXAMENES, robotsDeExamen } from '../src/data/examenes/index.js';
 import { FICHAS, META_FICHAS, robotsDeFicha } from '../src/data/medicamentos/fichas.js';
 import { BIBLIOTECA_SALUD, CATEGORIAS_SALUD, META_BIBLIOTECA, robotsDeArticuloSalud } from '../src/data/salud/biblioteca.js';
@@ -76,13 +77,16 @@ const contenidoComunidad = (c) => {
   const porSlug = new Map(ARTICULOS.map((a) => [a.slug, a]));
   const articulos = c.articulos.map((s) => porSlug.get(s)).filter(Boolean)
     .map((a) => `<li><a href="/articulos/${a.slug}">${a.title}</a></li>`).join('');
-  const curso = c.curso ? `<p>Curso gratis para profesionales: <a href="${c.curso.ruta}">${c.curso.nombre}</a>.</p>` : '';
+  const curso = c.curso ? `<p>${/autocuidado/.test(c.curso.ruta) ? 'Curso para pacientes' : 'Curso para profesionales'}: <a href="${c.curso.ruta}">${c.curso.nombre}</a>.</p>` : '';
+  const faq = preguntasDeComunidad(c, (s) => porSlug.get(s)?.title || null)
+    .map(([q, a]) => `<h3>${q}</h3><p>${a}</p>`).join('');
   const guia = c.guiaPro ? `<p>Guía profesional: <a href="${c.guiaPro.ruta}">${c.guiaPro.nombre}</a>.</p>` : '';
   const guiaPaciente = c.guia?.publico === 'pacientes' ? `<p>Guía para pacientes: <a href="${c.guia.ruta}">${c.guia.nombre}</a>.</p>` : '';
   return `<section><h2>Qué encontrarás</h2><ul>${c.queEncuentras.map((t) => `<li>${t}</li>`).join('')}</ul></section>
 <section><h2>Reglas</h2><ol>${c.reglas.map((t) => `<li>${t}</li>`).join('')}</ol><p>${c.noEs}</p></section>
 ${articulos ? `<section><h2>Artículos para empezar</h2><ul>${articulos}</ul></section>` : ''}
-<section><h2>Cómo entrar</h2><p>Escribe por WhatsApp y pide entrar a la comunidad de ${c.nombre}. <a href="${c.whatsapp}">Abrir WhatsApp</a>.</p>${curso}${guia}${guiaPaciente}</section>`;
+<section><h2>Cómo entrar</h2><p>Escribe por WhatsApp y pide entrar a la comunidad de ${c.nombre}. <a href="${c.whatsapp}">Abrir WhatsApp</a>.</p>${curso}${guia}${guiaPaciente}</section>
+<section><h2>Preguntas sobre el grupo de apoyo</h2>${faq}</section>`;
 };
 
 const contenidoComunidades = () => `<section><h2>Comunidades por enfermedad</h2><ul>${COMUNIDADES.map((c) => `<li><a href="${c.ruta}">${c.titulo}</a>: ${c.resumen}</li>`).join('')}</ul></section>
@@ -355,17 +359,19 @@ add('/comunidades', META_COMUNIDADES.titulo, META_COMUNIDADES.descripcion, {
   seccion: 'Comunidades',
   seccionUrl: '/comunidades',
   h1: META_COMUNIDADES.h1,
-  enlaces: [['Edvanta Contigo', '/contigo'], ['Artículos', '/articulos'], ['Cursos gratis', '/cursos']],
+  enlaces: [['Edvanta Contigo', '/contigo'], ['Artículos', '/articulos'], ['Cursos', '/cursos']],
   contenido: contenidoComunidades(),
 });
 for (const c of COMUNIDADES) {
-  add(c.ruta, `Comunidad de ${c.nombre} | Edvanta`, c.resumen, {
+  const porSlug = new Map(ARTICULOS.map((a) => [a.slug, a]));
+  add(c.ruta, tituloSeoDeComunidad(c), descripcionDeComunidad(c), {
     tipo: 'WebPage',
     seccion: 'Comunidades',
     seccionUrl: '/comunidades',
     h1: c.titulo,
-    enlaces: [['Todas las comunidades', '/comunidades'], ['Artículos', '/articulos'], ['Cursos gratis', '/cursos']],
+    enlaces: [['Todas las comunidades', '/comunidades'], ['Artículos', '/articulos'], ['Cursos', '/cursos']],
     contenido: contenidoComunidad(c),
+    extraJsonLd: [faqJsonLd(preguntasDeComunidad(c, (s) => porSlug.get(s)?.title || null))],
   });
 }
 
