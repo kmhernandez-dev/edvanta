@@ -22,7 +22,7 @@ import {
 } from '../../src/data/edvanta/contigoAltoCosto.js';
 
 const dir = path.dirname(fileURLToPath(import.meta.url));
-const MIGRACION = readFileSync(path.join(dir, '..', 'migrations', '156_contigo_alto_costo.sql'), 'utf8');
+const MIGRACION = readFileSync(path.join(dir, '..', 'migrations', '192_contigo_alto_costo.sql'), 'utf8');
 
 const persona = (extra = {}) => ({
   nombre: 'Ana Pérez',

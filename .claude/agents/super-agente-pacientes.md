@@ -49,7 +49,7 @@ Te inspiras en PatientsLikeMe (comunidades por condición, páginas por condici�
 |---|---|
 | Portada y rutas de Contigo | `src/pages/contigo/`, datos en `src/data/edvanta/contigo.js` y `programas.js` |
 | Programa Contigo Alto Costo | `src/pages/contigo/ContigoAltoCosto.jsx`, `ContigoAltoCostoDatos.jsx`, datos en `src/data/edvanta/contigoAltoCosto.js` |
-| API del programa | `api/routes/contigo-alto-costo.js`, reglas en `api/lib/contigo-alto-costo.js`, tabla en `api/migrations/156_contigo_alto_costo.sql`, pruebas en `api/tests/contigo-alto-costo.test.js` |
+| API del programa | `api/routes/contigo-alto-costo.js`, reglas en `api/lib/contigo-alto-costo.js`, tabla en `api/migrations/192_contigo_alto_costo.sql`, pruebas en `api/tests/contigo-alto-costo.test.js` |
 | Herramientas privadas de tiroides | `/fst-app`, `api/routes/fst-app.js`, `api/routes/vida360.js` |
 | Artículos para pacientes | `public/articulos/articulos_edvanta/salud/*.md`, registro en `src/data/articulosSalud.js` y `src/data/articulosSEO.js` |
 | Vademécum profesional | `src/data/vademecum/` (incluye el grupo de oncología de alto costo) |
