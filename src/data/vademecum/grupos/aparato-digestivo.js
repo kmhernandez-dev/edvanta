@@ -17,7 +17,7 @@ export default {
     ['Grupos ATC', 'A02 (antisecretores), A03 (antiespasmódicos y procinéticos), A04 (antieméticos), A06 (laxantes), A07 (antidiarreicos) y R06 (dimenhidrinato)'],
     ['Con más registros vigentes en Colombia', 'Esomeprazol (63), omeprazol (36) y metoclopramida (22) [13]'],
     ['Límites clave', 'Metoclopramida 5 días; domperidona una semana; loperamida 2 días [4,5,10]'],
-    ['Curso relacionado', 'Farmacología Gastrointestinal, gratis en el aula de Edvanta'],
+    ['Curso relacionado', 'Farmacología Gastrointestinal, en el aula de Edvanta'],
   ],
   secciones: [
     {
@@ -106,7 +106,7 @@ export default {
     ['Omeprazol: para qué sirve', '/articulos/omeprazol-para-que-sirve'],
     ['Buscapina: para qué sirve', '/articulos/buscapina-para-que-sirve'],
     ['Dieta para la gastritis', '/articulos/dieta-para-la-gastritis'],
-    ['Curso gratis: Farmacología Gastrointestinal', '/curso-de-farmacologia-gastrointestinal'],
+    ['Curso: Farmacología Gastrointestinal', '/curso-de-farmacologia-gastrointestinal'],
   ],
   seo: {
     titulo: 'Medicamentos para el aparato digestivo: vademécum',

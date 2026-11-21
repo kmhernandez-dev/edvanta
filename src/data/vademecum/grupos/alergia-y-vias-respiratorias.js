@@ -17,7 +17,7 @@ export default {
     ['Grupos ATC', 'R06 (antihistamínicos), N05BB (hidroxizina), R03 (asma) y R05 (mucolíticos)'],
     ['Con más registros vigentes en Colombia', 'Desloratadina (57), cetirizina (53), montelukast y acetilcisteína (41 cada uno) [9]'],
     ['Señal de alarma', 'Salbutamol a demanda más de 2 veces por semana: reevaluar el asma [7]'],
-    ['Curso relacionado', 'Farmacología Respiratoria, gratis en el aula de Edvanta'],
+    ['Curso relacionado', 'Farmacología Respiratoria, en el aula de Edvanta'],
   ],
   secciones: [
     {
@@ -106,7 +106,7 @@ export default {
   enlaces: [
     ['Loratadina: para qué sirve', '/articulos/loratadina-para-que-sirve'],
     ['Corticoides sistémicos', '/vademecum/corticoides-sistemicos'],
-    ['Curso gratis: Farmacología Respiratoria', '/curso-de-farmacologia-respiratoria'],
+    ['Curso: Farmacología Respiratoria', '/curso-de-farmacologia-respiratoria'],
   ],
   seo: {
     titulo: 'Antihistamínicos y medicamentos respiratorios',

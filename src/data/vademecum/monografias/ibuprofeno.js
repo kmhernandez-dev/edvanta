@@ -215,7 +215,7 @@ export default {
     ['Ibuprofeno: para qué sirve', '/articulos/ibuprofeno-para-que-sirve'],
     ['Naproxeno: farmacología', '/vademecum/naproxeno'],
     ['Medicamentos para el dolor y la inflamación', '/vademecum/medicamentos-para-el-dolor-y-la-inflamacion'],
-    ['Curso gratis: Farmacología del Sistema Nervioso Central', '/curso-de-farmacologia-del-sistema-nervioso-central'],
+    ['Curso: Farmacología del Sistema Nervioso Central', '/curso-de-farmacologia-del-sistema-nervioso-central'],
   ],
   seo: {
     titulo: 'Ibuprofeno: farmacología y atención farmacéutica',

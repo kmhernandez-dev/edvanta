@@ -17,7 +17,7 @@ export default {
     ['Grupo ATC', 'H03AA, hormonas tiroideas'],
     ['Registros vigentes en Colombia', '50 con el código H03AA01 [2]'],
     ['Toma', 'En ayunas, media hora antes del desayuno [1]'],
-    ['Curso relacionado', 'Autocuidado de la tiroides, gratis en el aula de Edvanta'],
+    ['Curso relacionado', 'Autocuidado de la tiroides, en el aula de Edvanta'],
   ],
   secciones: [
     {
@@ -79,7 +79,7 @@ export default {
   referencias: [F.ftLevotiroxina, F.invimaCum16, F.cipolle2012, F.ramalho2012],
   enlaces: [
     ['Guía gratuita: levotiroxina', '/recurso/levotiroxina'],
-    ['Curso gratis: Autocuidado de la tiroides', '/curso-de-autocuidado-de-la-tiroides'],
+    ['Curso: Autocuidado de la tiroides', '/curso-de-autocuidado-de-la-tiroides'],
     ['Corticoides sistémicos', '/vademecum/corticoides-sistemicos'],
   ],
   seo: {

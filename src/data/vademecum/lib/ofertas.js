@@ -5,7 +5,7 @@
  * una guía relacionados con su grupo.
  */
 const curso = (slug, titulo, texto, icono = 'GraduationCap') => ({
-  etiqueta: 'Curso gratis de Edvanta', titulo, texto, url: `/${slug}`, boton: 'Ver el curso', icono,
+  etiqueta: 'Curso de Edvanta con certificado', titulo, texto, url: `/${slug}`, boton: 'Ver el curso', icono,
 });
 const guia = (slug, titulo, texto, icono = 'BookOpen') => ({
   etiqueta: 'Guía para profesionales', titulo, texto, url: `/guia/${slug}`, boton: 'Ver la guía', icono,

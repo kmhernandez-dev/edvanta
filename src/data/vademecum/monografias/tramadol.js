@@ -218,7 +218,7 @@ export default {
     ['Tramadol: para qué sirve', '/articulos/tramadol-para-que-sirve'],
     ['Sertralina: para qué sirve', '/articulos/sertralina-para-que-sirve'],
     ['Medicamentos para el dolor y la inflamación', '/vademecum/medicamentos-para-el-dolor-y-la-inflamacion'],
-    ['Curso gratis: Farmacología del Sistema Nervioso Central', '/curso-de-farmacologia-del-sistema-nervioso-central'],
+    ['Curso: Farmacología del Sistema Nervioso Central', '/curso-de-farmacologia-del-sistema-nervioso-central'],
   ],
   seo: {
     titulo: 'Tramadol: farmacología y atención farmacéutica',

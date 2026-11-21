@@ -231,7 +231,7 @@ export default {
     ['Meloxicam: para qué sirve', '/articulos/meloxicam-para-que-sirve'],
     ['Diclofenaco: para qué sirve', '/articulos/diclofenaco-para-que-sirve'],
     ['Medicamentos para el dolor y la inflamación', '/vademecum/medicamentos-para-el-dolor-y-la-inflamacion'],
-    ['Curso gratis: Farmacología del Sistema Nervioso Central', '/curso-de-farmacologia-del-sistema-nervioso-central'],
+    ['Curso: Farmacología del Sistema Nervioso Central', '/curso-de-farmacologia-del-sistema-nervioso-central'],
   ],
   seo: {
     titulo: 'Meloxicam: farmacología y atención farmacéutica',

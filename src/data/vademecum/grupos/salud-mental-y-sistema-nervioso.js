@@ -17,7 +17,7 @@ export default {
     ['Grupos ATC', 'N06A (antidepresivos), N05A (antipsicóticos), N03 (antiepilépticos) y N02BF (gabapentinoides)'],
     ['Con más registros vigentes en Colombia', 'Pregabalina (46), sertralina (33) y quetiapina (28) [9]'],
     ['Riesgo común', 'Sedación sumada con alcohol, opioides y otros depresores [3-8]'],
-    ['Curso relacionado', 'Psicofarmacología, gratis en el aula de Edvanta'],
+    ['Curso relacionado', 'Psicofarmacología, en el aula de Edvanta'],
   ],
   secciones: [
     {
@@ -108,7 +108,7 @@ export default {
   enlaces: [
     ['Sertralina: para qué sirve', '/articulos/sertralina-para-que-sirve'],
     ['Tramadol: farmacología', '/vademecum/tramadol'],
-    ['Curso gratis: Psicofarmacología', '/curso-de-psicofarmacologia'],
+    ['Curso: Psicofarmacología', '/curso-de-psicofarmacologia'],
   ],
   seo: {
     titulo: 'Psicofármacos: vademécum para farmacéuticos',

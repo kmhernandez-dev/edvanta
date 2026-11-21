@@ -228,7 +228,7 @@ export default {
     ['Etoricoxib: para qué sirve', '/articulos/etoricoxib-para-que-sirve'],
     ['Celecoxib: farmacología', '/vademecum/celecoxib'],
     ['Medicamentos para el dolor y la inflamación', '/vademecum/medicamentos-para-el-dolor-y-la-inflamacion'],
-    ['Curso gratis: Farmacología del Sistema Nervioso Central', '/curso-de-farmacologia-del-sistema-nervioso-central'],
+    ['Curso: Farmacología del Sistema Nervioso Central', '/curso-de-farmacologia-del-sistema-nervioso-central'],
   ],
   seo: {
     titulo: 'Etoricoxib: farmacología y atención farmacéutica',

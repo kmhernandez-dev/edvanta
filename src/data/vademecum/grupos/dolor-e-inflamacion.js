@@ -139,7 +139,7 @@ export default {
     ['Naproxeno: para qué sirve', '/articulos/naproxeno-para-que-sirve'],
     ['Acetaminofén: para qué sirve', '/articulos/acetaminofen-para-que-sirve'],
     ['Cursos de farmacología gratis', '/articulos/cursos-de-farmacologia-gratis'],
-    ['Curso gratis: Farmacología del Sistema Nervioso Central', '/curso-de-farmacologia-del-sistema-nervioso-central'],
+    ['Curso: Farmacología del Sistema Nervioso Central', '/curso-de-farmacologia-del-sistema-nervioso-central'],
   ],
   seo: {
     titulo: 'Medicamentos para el dolor y la inflamación: vademécum',

@@ -224,7 +224,7 @@ export default {
     ['Dipirona: para qué sirve', '/articulos/dipirona-para-que-sirve'],
     ['Acetaminofén: para qué sirve', '/articulos/acetaminofen-para-que-sirve'],
     ['Medicamentos para el dolor y la inflamación', '/vademecum/medicamentos-para-el-dolor-y-la-inflamacion'],
-    ['Curso gratis: Farmacología del Sistema Nervioso Central', '/curso-de-farmacologia-del-sistema-nervioso-central'],
+    ['Curso: Farmacología del Sistema Nervioso Central', '/curso-de-farmacologia-del-sistema-nervioso-central'],
   ],
   seo: {
     titulo: 'Dipirona (metamizol): farmacología y seguridad',

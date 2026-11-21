@@ -210,7 +210,7 @@ export default {
     ['Metocarbamol: para qué sirve', '/articulos/metocarbamol-para-que-sirve'],
     ['Diclofenaco: para qué sirve', '/articulos/diclofenaco-para-que-sirve'],
     ['Medicamentos para el dolor y la inflamación', '/vademecum/medicamentos-para-el-dolor-y-la-inflamacion'],
-    ['Curso gratis: Farmacología del Sistema Nervioso Central', '/curso-de-farmacologia-del-sistema-nervioso-central'],
+    ['Curso: Farmacología del Sistema Nervioso Central', '/curso-de-farmacologia-del-sistema-nervioso-central'],
   ],
   seo: {
     titulo: 'Metocarbamol: farmacología y atención farmacéutica',

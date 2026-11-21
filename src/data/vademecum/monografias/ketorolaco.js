@@ -207,7 +207,7 @@ export default {
     ['Ketorolaco: para qué sirve', '/articulos/ketorolaco-para-que-sirve'],
     ['Ibuprofeno: para qué sirve', '/articulos/ibuprofeno-para-que-sirve'],
     ['Medicamentos para el dolor y la inflamación', '/vademecum/medicamentos-para-el-dolor-y-la-inflamacion'],
-    ['Curso gratis: Farmacología del Sistema Nervioso Central', '/curso-de-farmacologia-del-sistema-nervioso-central'],
+    ['Curso: Farmacología del Sistema Nervioso Central', '/curso-de-farmacologia-del-sistema-nervioso-central'],
   ],
   seo: {
     titulo: 'Ketorolaco: farmacología y atención farmacéutica',

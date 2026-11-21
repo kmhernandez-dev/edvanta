@@ -223,7 +223,7 @@ export default {
     ['Diclofenaco: para qué sirve', '/articulos/diclofenaco-para-que-sirve'],
     ['Etoricoxib: farmacología', '/vademecum/etoricoxib'],
     ['Medicamentos para el dolor y la inflamación', '/vademecum/medicamentos-para-el-dolor-y-la-inflamacion'],
-    ['Curso gratis: Farmacología del Sistema Nervioso Central', '/curso-de-farmacologia-del-sistema-nervioso-central'],
+    ['Curso: Farmacología del Sistema Nervioso Central', '/curso-de-farmacologia-del-sistema-nervioso-central'],
   ],
   seo: {
     titulo: 'Diclofenaco: farmacología y atención farmacéutica',

@@ -204,7 +204,7 @@ export default {
     ['Acetaminofén: para qué sirve', '/articulos/acetaminofen-para-que-sirve'],
     ['Dipirona (metamizol): farmacología', '/vademecum/dipirona'],
     ['Medicamentos para el dolor y la inflamación', '/vademecum/medicamentos-para-el-dolor-y-la-inflamacion'],
-    ['Curso gratis: Farmacología del Sistema Nervioso Central', '/curso-de-farmacologia-del-sistema-nervioso-central'],
+    ['Curso: Farmacología del Sistema Nervioso Central', '/curso-de-farmacologia-del-sistema-nervioso-central'],
   ],
   seo: {
     titulo: 'Acetaminofén (paracetamol): farmacología',

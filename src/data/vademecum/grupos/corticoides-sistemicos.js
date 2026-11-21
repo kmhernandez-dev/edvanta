@@ -18,7 +18,7 @@ export default {
     ['Equivalencias de ficha técnica', '5 mg de prednisona = 20 mg de hidrocortisona = 0,75 mg de betametasona [1,4]'],
     ['El más potente', 'Dexametasona: 30 veces la hidrocortisona [3]'],
     ['Registros vigentes en Colombia', 'Dexametasona 27, betametasona 16, prednisolona 12 e hidrocortisona 10 [6]'],
-    ['Curso relacionado', 'Farmacología Endocrina, gratis en el aula de Edvanta'],
+    ['Curso relacionado', 'Farmacología Endocrina, en el aula de Edvanta'],
   ],
   secciones: [
     {
@@ -103,7 +103,7 @@ export default {
   enlaces: [
     ['Prednisona: farmacología', '/vademecum/prednisona'],
     ['Dexametasona: farmacología', '/vademecum/dexametasona'],
-    ['Curso gratis: Farmacología Endocrina', '/curso-de-farmacologia-endocrina'],
+    ['Curso: Farmacología Endocrina', '/curso-de-farmacologia-endocrina'],
   ],
   seo: {
     titulo: 'Corticoides sistémicos: equivalencias y vademécum',
