@@ -115,8 +115,9 @@ export default function GlobalSearch({ className = '' }) {
         aria-label="Buscar en Edvanta"
       >
         <Search className="h-4 w-4" aria-hidden="true" />
-        <span className="hidden lg:inline">Buscar…</span>
-        <kbd className="ml-1 hidden rounded border border-edvanta-border bg-edvanta-bg px-1.5 py-0.5 text-xs font-semibold text-edvanta-subtle lg:inline">/</kbd>
+        {/* Entre 1280 y 1535 px el menú principal ocupa la barra: solo la lupa, para no desbordar. */}
+        <span className="hidden lg:inline xl:hidden 2xl:inline">Buscar…</span>
+        <kbd className="ml-1 hidden rounded border border-edvanta-border bg-edvanta-bg px-1.5 py-0.5 text-xs font-semibold text-edvanta-subtle lg:inline xl:hidden 2xl:inline">/</kbd>
       </button>
 
       {!open ? null : (
