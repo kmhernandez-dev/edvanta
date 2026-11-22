@@ -1,9 +1,10 @@
 /**
  * /comunidades/:slug — Página de una comunidad de enfermedad.
  *
- * Presenta el espacio, sus reglas, los artículos para empezar y la ruta
- * del profesional. La acción principal es el WhatsApp de Karla
- * (+57 300 633 2244) con un mensaje propio de la enfermedad.
+ * Presenta el grupo de apoyo, sus reglas, los artículos para empezar y la
+ * ruta del profesional. La acción principal es la inscripción con encuesta
+ * (#inscripcion), que lleva al espacio del grupo y al WhatsApp de Karla
+ * (+57 300 633 2244); el WhatsApp directo queda como segunda opción.
  */
 
 import { useEffect } from 'react';
@@ -12,7 +13,9 @@ import { ArrowRight, BookOpen, Check, HeartPulse, MessageCircle, ShieldCheck, Us
 import SiteHeader from '../components/edvanta/SiteHeader';
 import SiteFooter from '../components/edvanta/SiteFooter';
 import { Breadcrumb } from '../components/edvanta/ui';
+import InscripcionComunidad from '../components/comunidad/InscripcionComunidad';
 import { comunidadDeSlug } from '../data/comunidadesSalud';
+import { DIFICULTADES } from '../data/encuestaComunidades';
 import { articulos } from '../data/articulos';
 import { updatePageSeo } from '../utils/seo';
 import { descripcionDeComunidad, faqJsonLd, paraDeComunidad, preguntasDeComunidad, tituloSeoDeComunidad } from '../lib/comunidades/seo';
@@ -114,14 +117,22 @@ export default function ComunidadDetalle() {
             </div>
             <div className="mt-6 flex flex-wrap gap-3">
               <a
+                href="#inscripcion"
+                onClick={() => trackEvent('community_signup_started', { enfermedad: comunidad.slug, origen: 'comunidad_hero' })}
+                className="ed-btn ed-btn--primary"
+              >
+                Inscribirme gratis
+                <ArrowRight aria-hidden="true" />
+              </a>
+              <a
                 href={comunidad.whatsapp}
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={entrar}
-                className="inline-flex min-h-11 items-center gap-2 rounded-xl bg-[#25D366] px-5 text-sm font-bold text-white transition hover:bg-[#1fb959]"
+                className="ed-btn ed-btn--whatsapp"
               >
-                <MessageCircle className="h-4 w-4" aria-hidden="true" />
-                Entrar por WhatsApp
+                <MessageCircle aria-hidden="true" />
+                Escribir por WhatsApp
               </a>
               {comunidad.grupo && (
                 <a
@@ -149,6 +160,8 @@ export default function ComunidadDetalle() {
           </div>
         </section>
 
+        <InscripcionComunidad comunidad={comunidad} relacionados={relacionados} />
+
         <section className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
           <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_320px]">
             <div>
@@ -162,6 +175,17 @@ export default function ComunidadDetalle() {
                 ))}
               </ul>
 
+              {(DIFICULTADES[comunidad.slug] || []).length > 0 && (
+                <>
+                  <h2 className="mt-10 font-display text-2xl font-extrabold text-edvanta-deep">Temas que se conversan en el grupo</h2>
+                  <ul className="mt-4 flex flex-wrap gap-2">
+                    {DIFICULTADES[comunidad.slug].map(([id, t]) => (
+                      <li key={id} className="rounded-full border border-edvanta-border bg-white px-3.5 py-1.5 text-sm font-semibold text-edvanta-deep">{t}</li>
+                    ))}
+                  </ul>
+                </>
+              )}
+
               <h2 className="mt-10 font-display text-2xl font-extrabold text-edvanta-deep">Para quién es</h2>
               <ul className="mt-4 flex flex-wrap gap-2">
                 {comunidad.paraQuien.map((t) => (
@@ -169,7 +193,7 @@ export default function ComunidadDetalle() {
                 ))}
               </ul>
 
-              <h2 className="mt-10 font-display text-2xl font-extrabold text-edvanta-deep">Reglas de la comunidad</h2>
+              <h2 id="reglas" className="mt-10 scroll-mt-24 font-display text-2xl font-extrabold text-edvanta-deep">Reglas del grupo</h2>
               <ol className="mt-4 space-y-3">
                 {comunidad.reglas.map((t, i) => (
                   <li key={t} className="flex gap-3 text-sm leading-6 text-edvanta-ink/80">
@@ -232,19 +256,22 @@ export default function ComunidadDetalle() {
                   Cómo entrar
                 </p>
                 <ol className="mt-3 space-y-3 text-sm leading-6 text-edvanta-ink/80">
-                  <li><span className="font-bold text-edvanta-deep">1.</span> Escribe por WhatsApp y di qué comunidad te interesa.</li>
-                  <li><span className="font-bold text-edvanta-deep">2.</span> Recibe las reglas y la bienvenida.</li>
+                  <li><span className="font-bold text-edvanta-deep">1.</span> Inscríbete y responde la encuesta: toma un minuto.</li>
+                  <li><span className="font-bold text-edvanta-deep">2.</span> Escribe por WhatsApp para recibir el acceso y las reglas.</li>
                   <li><span className="font-bold text-edvanta-deep">3.</span> Participa cuando quieras; no hay obligación de escribir.</li>
                 </ol>
+                <a href="#inscripcion" className="ed-btn ed-btn--primary ed-btn--block mt-4">
+                  Inscribirme gratis
+                </a>
                 <a
                   href={comunidad.whatsapp}
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={entrar}
-                  className="mt-4 inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-xl bg-[#25D366] px-5 text-sm font-bold text-white transition hover:bg-[#1fb959]"
+                  className="mt-3 inline-flex w-full items-center justify-center gap-1.5 text-sm font-semibold text-edvanta-tealdark hover:underline"
                 >
                   <MessageCircle className="h-4 w-4" aria-hidden="true" />
-                  Escribir a Karla
+                  O escribe a Karla por WhatsApp
                 </a>
               </div>
 

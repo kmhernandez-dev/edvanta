@@ -71,7 +71,7 @@ export default function DosCaminos({ onAbrir, trabajando = null, error = '' }) {
         loadingLabel="Un momento…"
         disabled={Boolean(trabajando)}
       >
-        Probar la primera unidad
+        Empezar la primera unidad gratis
       </Btn>
       {error && <p role="alert" className="curso-card-error">{error}</p>}
     </div>

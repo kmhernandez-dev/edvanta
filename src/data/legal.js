@@ -22,7 +22,7 @@ export const legalDocs = {
   },
   'tratamiento-de-datos': {
     title: 'Política de tratamiento de datos personales',
-    updated: 'Última actualización: agosto de 2026',
+    updated: 'Última actualización: noviembre de 2026',
     sections: [
       { h: '1. Responsable', p: `Karla Hernández, operadora de Feliz Sin Tiroides y Edvanta, es responsable del tratamiento de los datos recopilados en esta plataforma. Contacto: ${EMAIL}.` },
       { h: '2. Datos tratados', p: 'Podemos recopilar nombre, correo, país, WhatsApp opcional, interés educativo, fuente de campaña y registros necesarios para entregar recursos o gestionar una compra. No solicitamos historia clínica, identificación ni resultados de laboratorio en los formularios de captación.' },
@@ -31,6 +31,7 @@ export const legalDocs = {
       { h: '5. Encargados y transferencias', p: 'Podemos utilizar proveedores de correo, automatización, alojamiento y pagos que actúan como encargados bajo sus propias medidas de seguridad. No vendemos bases de datos.' },
       { h: '6. Derechos', p: `Puedes solicitar acceso, actualización, corrección, revocación o eliminación escribiendo a ${EMAIL} desde el correo registrado. Atenderemos la solicitud de acuerdo con la normativa aplicable.` },
       { h: '7. Seguridad y conservación', p: 'Aplicamos medidas razonables de acceso restringido y minimización. Conservamos los datos durante la relación educativa o comercial y el tiempo necesario para obligaciones legales, salvo solicitud procedente de eliminación.' },
+      { h: '8. Grupos de apoyo y datos sensibles', p: 'Al inscribirte en un grupo de apoyo de edvanta.co/comunidades tratamos tu nombre, correo, WhatsApp opcional, país, el grupo que elegiste, quién eres (paciente, cuidador o profesional) y lo que quieres encontrar, para darte el acceso al grupo por WhatsApp y preparar sus temas. Las preguntas de salud de la encuesta (hace cuánto el diagnóstico, qué te cuesta más y tu pregunta) son datos sensibles según la Ley 1581 de 2012: son opcionales, no estás obligado a responderlas y solo se guardan si marcas la autorización expresa para datos sensibles. Esas respuestas solo las ve el equipo de Edvanta, no se comparten con terceros, no se envían por correo y no se usan para publicidad. Puedes pedir en cualquier momento que se corrijan o se borren escribiendo a ' + EMAIL + '.' },
     ],
   },
   terminos: {

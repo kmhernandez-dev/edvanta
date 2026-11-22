@@ -25,6 +25,7 @@ import { faqDeExperiencia, textoDeExperiencia } from '../../api/lib/experiencia.
 import { REVISION_DE_CLASES, fechaLarga } from '../../api/lib/revision-de-clases.js';
 import { TITULOS_DE_LECTURAS } from '../../api/lib/enlaces-de-salud.js';
 import '../styles/clase-publica.css';
+import { PRECIO_CURSO_TEXTO, medirCta, rutaPrimeraUnidad } from '../components/curso/BotonesDeCompra';
 
 /**
  * Lo que enlaza a esta clase (api/lib/enlaces-de-salud.js): la monografía
@@ -259,8 +260,8 @@ export default function ClasePublica() {
                 <div className="cp-acciones">
                   {conCertificado ? (
                     <>
-                      <Link to={compraDirecta} className="cp-boton"><Award size={18} aria-hidden="true" /> Estudiar con certificado</Link>
-                      <Link to={`/${d.curso.slug}`} className="cp-boton cp-boton--suave"><GraduationCap size={18} aria-hidden="true" /> Empezar la primera unidad gratis</Link>
+                      <Link to={compraDirecta} onClick={() => medirCta('certificado', 'clase_encabezado', d.curso.slug, { clase: ruta })} className="cp-boton"><Award size={18} aria-hidden="true" /> Estudiar con certificado</Link>
+                      <Link to={rutaPrimeraUnidad(d.curso.slug)} onClick={() => medirCta('primera_unidad', 'clase_encabezado', d.curso.slug, { clase: ruta })} className="cp-boton cp-boton--suave"><GraduationCap size={18} aria-hidden="true" /> Empezar la primera unidad gratis</Link>
                     </>
                   ) : (
                     <>
@@ -281,7 +282,7 @@ export default function ClasePublica() {
                 <div className="cp-certificado">
                   <Award size={22} aria-hidden="true" />
                   <p><strong>Certifica lo que aprendes.</strong> Con el certificado, un docente revisa tus actividades, tienes acompañamiento por WhatsApp y al terminar emites tu certificado verificable.</p>
-                  <Link to={conCertificado ? compraDirecta : `/${d.curso.slug}`} className="cp-enlace">{conCertificado ? 'Estudiar con certificado' : 'Ir al curso'} <ArrowRight size={14} aria-hidden="true" /></Link>
+                  <Link to={conCertificado ? compraDirecta : `/${d.curso.slug}`} onClick={() => conCertificado && medirCta('certificado', 'clase_lateral', d.curso.slug, { clase: ruta })} className="cp-enlace">{conCertificado ? 'Estudiar con certificado' : 'Ir al curso'} <ArrowRight size={14} aria-hidden="true" /></Link>
                 </div>
               </aside>
 
@@ -342,9 +343,12 @@ export default function ClasePublica() {
                     </p>
                   </div>
                   {conCertificado ? (
-                    <div className="cp-acciones">
-                      <Link to={compraDirecta} className="cp-boton">Estudiar con certificado</Link>
-                      <Link to={`/${d.curso.slug}`} className="cp-boton cp-boton--suave">Empezar la primera unidad gratis</Link>
+                    <div>
+                      <div className="cp-acciones">
+                        <Link to={compraDirecta} onClick={() => medirCta('certificado', 'clase_final', d.curso.slug, { clase: ruta })} className="cp-boton">Estudiar con certificado</Link>
+                        <Link to={rutaPrimeraUnidad(d.curso.slug)} onClick={() => medirCta('primera_unidad', 'clase_final', d.curso.slug, { clase: ruta })} className="cp-boton cp-boton--suave">Empezar la primera unidad gratis</Link>
+                      </div>
+                      <p className="cp-precio">{PRECIO_CURSO_TEXTO}</p>
                     </div>
                   ) : (
                     <Link to={`/${d.curso.slug}`} className="cp-boton">Inscribirme al curso</Link>

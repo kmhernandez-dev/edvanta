@@ -31,6 +31,7 @@ import {
 import { guardarIntento, leerProgreso } from '../lib/casosClinicos/progreso.js';
 import { updatePageSeo } from '../utils/seo';
 import '../styles/casos-clinicos.css';
+import BotonesDeCompra from '../components/curso/BotonesDeCompra';
 
 const LETRAS = ['A', 'B', 'C', 'D', 'E'];
 const COLORES_PAR = ['#7c5cd6', '#1f9bd1', '#f08a24', '#16a37a', '#e14b5a', '#c7a008'];
@@ -229,15 +230,17 @@ function CertificadoCta({ curso, final = null }) {
           <li><Check size={16} aria-hidden="true" /> Acompañamiento personalizado por WhatsApp (respuesta en 48 horas hábiles)</li>
           <li><Check size={16} aria-hidden="true" /> Revisión de tus actividades por una química farmacéutica o un docente</li>
           <li><Check size={16} aria-hidden="true" /> Certificado con código de verificación para tu hoja de vida</li>
-          <li><Check size={16} aria-hidden="true" /> Desde COP 60.000 si lo eliges al inscribirte o en tus primeros 7 días</li>
         </ul>
       </div>
-      <div className="cc-cta__botones">
-        <Link to={curso ? `${curso[1]}?camino=certificado` : destino[1]} className="cc-boton">
-          <GraduationCap size={18} aria-hidden="true" /> {curso ? 'Estudiar con certificado' : 'Ver cursos con certificado'}
-        </Link>
-        {curso && <Link to={curso[1]} className="cc-enlace-suave">o empezar por la primera unidad gratis</Link>}
-      </div>
+      {curso ? (
+        <BotonesDeCompra cursoUrl={curso[1]} origen="caso_clinico" className="cc-cta__botones" />
+      ) : (
+        <div className="cc-cta__botones">
+          <Link to={destino[1]} className="cc-boton">
+            <GraduationCap size={18} aria-hidden="true" /> Ver cursos con certificado
+          </Link>
+        </div>
+      )}
     </div>
   );
 }

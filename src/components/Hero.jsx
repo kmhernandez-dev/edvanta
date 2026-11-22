@@ -7,8 +7,9 @@ import { trackEvent } from '../utils/analytics';
  * elegida por la dirección de Edvanta el 13-nov-2026 (reemplaza el arco del aula
  * y deja sin efecto el hallazgo H9 de la auditoría de diseño; ver H21 en REGISTRO.md).
  *
- * - La promesa es real: el contenido de los cursos propios es gratuito y el
- *   certificado verificable es opcional (ver data/edvanta/recursosEstudiantes.js).
+ * - Desde el 20-nov-2026 los cursos propios se venden completos (primera unidad
+ *   gratis). El titular dibujado «Estudia gratis…» espera la pieza nueva que
+ *   apruebe Karla; el texto real de abajo ya dice la condición verdadera.
  * - La pieza original trae dibujado un menú; se recortó, porque el encabezado
  *   real del sitio va encima y sus botones no cambian.
  * - El titular y el botón vienen dentro de la imagen. Para buscadores y lectores
@@ -28,10 +29,10 @@ const ALTO = 829;
 const BOTON = { left: '39.6%', top: '47.4%', width: '20.6%', height: '10.2%' };
 
 const RASGOS = [
-  { label: 'Contenido gratuito', desc: 'En los cursos propios de Edvanta' },
+  { label: 'Primera unidad gratis', desc: 'En cada curso propio de Edvanta' },
   { label: 'Quiz en cada unidad', desc: 'Con retroalimentación por respuesta' },
   { label: 'Casos y foros', desc: 'Un proyecto que crece con el curso' },
-  { label: 'Certificado verificable', desc: 'Opcional, con código y verificación en línea' },
+  { label: 'Certificado verificable', desc: 'Incluido en el curso completo, con código y verificación en línea' },
 ];
 
 const alExplorar = (origen) => () => trackEvent('hero_cta_clicked', { cta: 'cursos', origen });
@@ -66,7 +67,7 @@ export default function Hero() {
       {/* En el celular: el subtítulo legible y un botón de verdad. */}
       <div className="px-4 pt-5 sm:hidden">
         <p className="text-[15px] leading-relaxed text-edvanta-muted">
-          Formación online para químicos farmacéuticos. El contenido es gratuito; el certificado verificable es opcional.
+          Formación online para químicos farmacéuticos. Empieza la primera unidad gratis; el curso completo incluye certificado verificable.
         </p>
         <Link
           to="/cursos"

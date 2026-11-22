@@ -105,9 +105,9 @@ export const BLOG_MEJORES_CURSOS = [
   }),
   post({
     slug: 'cursos-de-diabetes-para-profesionales-de-la-salud',
-    title: 'Cursos de diabetes para profesionales de la salud: gratis, online y con certificado',
+    title: 'Cursos de diabetes para profesionales de la salud: online y con certificado',
     seoTitle: 'Cursos de diabetes para profesionales de la salud',
-    description: 'Cursos de diabetes gratis y con certificado: farmacoterapia con casos clínicos, endocrinología y nutrición, según tu rol en el equipo de salud.',
+    description: 'Cursos de diabetes online con certificado: farmacoterapia con casos clínicos, endocrinología y nutrición, según tu rol en el equipo de salud.',
     readingTime: '7 min',
     image: '/img/escuelas/salud.webp',
     imageAlt: 'Profesional de la salud revisando el tratamiento de un paciente',

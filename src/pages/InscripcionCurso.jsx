@@ -17,6 +17,7 @@
  */
 import { useEffect, useMemo, useState } from 'react';
 import { Link, Navigate, useLocation, useNavigate, useParams } from 'react-router-dom';
+import { medirCta } from '../components/curso/BotonesDeCompra';
 import { ArrowRight, Check, Minus } from 'lucide-react';
 import SiteHeader from '../components/edvanta/SiteHeader';
 import SiteFooter from '../components/edvanta/SiteFooter';
@@ -107,7 +108,7 @@ export default function InscripcionCurso() {
   const [hecho, setHecho] = useState(false);
   useEffect(() => {
     if (!ficha || !ins.listo || hecho || !camino) return;
-    if (ins.estado === 'visitante' && camino !== 'certificado') return;
+    if (camino !== 'certificado' && camino !== 'gratis') return;
     setHecho(true);
     if (ins.estado !== 'visitante') navigate(`/${slug}/inscripcion`, { replace: true });
     if (camino === 'certificado') ins.conCertificado();
@@ -123,12 +124,13 @@ export default function InscripcionCurso() {
   // Camino directo a la compra: sin mostrar la landing mientras se crea la
   // cuenta o se abre Mercado Pago.
   const preparandoPago = !ins.error && (camino === 'certificado' || ins.trabajando === 'certificado');
-  if (!ficha || preparandoPago) {
+  const abriendoUnidad = !ins.error && (camino === 'gratis' || ins.trabajando === 'gratis');
+  if (!ficha || preparandoPago || abriendoUnidad) {
     return (
       <div className="min-h-screen bg-white">
         <SiteHeader />
         <p className="py-24 text-center text-sm font-semibold text-edvanta-muted" role="status">
-          {preparandoPago ? 'Preparando tu pago seguro con Mercado Pago…' : 'Cargando…'}
+          {preparandoPago ? 'Preparando tu pago seguro con Mercado Pago…' : abriendoUnidad ? 'Abriendo tu primera unidad…' : 'Cargando…'}
         </p>
       </div>
     );
@@ -150,7 +152,7 @@ export default function InscripcionCurso() {
       size="lg"
       block
       className={extra}
-      onClick={ins.conCertificado}
+      onClick={() => { medirCta('certificado', 'inscripcion', ficha.url); ins.conCertificado(); }}
       loading={ins.trabajando === 'certificado'}
       loadingLabel="Un momento…"
       disabled={Boolean(ins.trabajando)}
@@ -165,12 +167,12 @@ export default function InscripcionCurso() {
       size="lg"
       block
       className={extra}
-      onClick={ins.gratis}
+      onClick={() => { medirCta('primera_unidad', 'inscripcion', ficha.url); ins.gratis(); }}
       loading={ins.trabajando === 'gratis'}
       loadingLabel="Un momento…"
       disabled={Boolean(ins.trabajando)}
     >
-      {ins.estado === 'dentro' ? 'Seguir sin certificado' : 'Probar la primera unidad'}
+      {ins.estado === 'dentro' ? 'Seguir sin certificado' : 'Empezar la primera unidad gratis'}
     </Btn>
   );
 
@@ -339,8 +341,8 @@ export default function InscripcionCurso() {
             </div>
             <div className="ins-cierre__botones">
               {botonCertificado()}
-              <button type="button" className="ins-cierre__gratis" onClick={ins.gratis} disabled={Boolean(ins.trabajando)}>
-                Prefiero probar la primera unidad
+              <button type="button" className="ins-cierre__gratis" onClick={() => { medirCta('primera_unidad', 'inscripcion_cierre', ficha.url); ins.gratis(); }} disabled={Boolean(ins.trabajando)}>
+                Prefiero empezar la primera unidad gratis
               </button>
             </div>
           </div>
@@ -355,7 +357,7 @@ export default function InscripcionCurso() {
           <p className="ins-barra__precio">{formatPrice(precio)}{conDescuento && <s>{formatPrice(oferta.lista)}</s>}</p>
           <p className="ins-barra__nota">Curso completo con certificado</p>
         </div>
-        <Btn variant="gradient" size="sm" onClick={ins.conCertificado} loading={ins.trabajando === 'certificado'} loadingLabel="Un momento…">
+        <Btn variant="gradient" size="sm" onClick={() => { medirCta('certificado', 'inscripcion_barra_movil', ficha.url); ins.conCertificado(); }} loading={ins.trabajando === 'certificado'} loadingLabel="Un momento…">
           Estudiar con certificado
         </Btn>
       </div>

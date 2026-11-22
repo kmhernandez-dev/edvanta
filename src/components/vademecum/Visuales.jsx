@@ -18,6 +18,7 @@
  */
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
+import BotonesDeCompra from '../curso/BotonesDeCompra';
 import {
   ArrowRight, Baby, Ban, Bandage, Bed, Bone, Brain, CheckCircle2, CircleHelp, Coffee, Dna, Ear,
   Heart, HeartPulse, Hourglass, Info, Moon, PersonStanding, Shield, ShieldAlert, Siren, Skull,
@@ -290,9 +291,22 @@ export function Quiz({ quiz }) {
   );
 }
 
-/** Llamado a la acción: curso, guía o kit de Edvanta. */
+/** Llamado a la acción: curso, guía o kit de Edvanta. Los cursos propios llevan los botones de compra. */
 export function Cta({ cta }) {
   const externo = /^https?:/.test(cta.url);
+  if (cta.compra) {
+    return (
+      <div className="vd-cta vd-cta--compra">
+        <span className="vd-cta__icono"><Icono nombre={cta.icono || 'GraduationCap'} className="h-6 w-6" /></span>
+        <span className="vd-cta__cuerpo">
+          <span className="vd-cta__etiqueta">{cta.etiqueta}</span>
+          <Link to={cta.url} className="vd-cta__titulo">{cta.titulo}</Link>
+          <span className="vd-cta__texto">{cta.texto}</span>
+        </span>
+        <BotonesDeCompra cursoUrl={cta.url} origen="vademecum" compacto className="vd-cta__compra" />
+      </div>
+    );
+  }
   const contenido = (
     <>
       <span className="vd-cta__icono"><Icono nombre={cta.icono || 'GraduationCap'} className="h-6 w-6" /></span>

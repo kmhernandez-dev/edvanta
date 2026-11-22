@@ -1,10 +1,10 @@
-# Cursos de diabetes para profesionales de la salud: gratis, online y con certificado
+# Cursos de diabetes para profesionales de la salud: online y con certificado
 
 La diabetes es una de las enfermedades crónicas que más tiempo ocupa en la consulta, en la farmacia y en el hospital. Los tratamientos han cambiado mucho en pocos años: los agonistas del GLP-1, los inhibidores de SGLT2 y las insulinas nuevas obligan a actualizarse con frecuencia. Esta guía reúne cursos de diabetes para químicos farmacéuticos, regentes, personal de enfermería y otros profesionales de la salud, con su enfoque y lo que cuesta cada uno.
 
 > **En resumen**
 >
-> - Para farmacoterapia con casos clínicos: Farmacoterapia de la Diabetes de Edvanta, gratuito, con 40 clases en 6 unidades.
+> - Para farmacoterapia con casos clínicos: Farmacoterapia de la Diabetes de Edvanta, con 40 clases en 6 unidades y la primera unidad gratis.
 > - Para un repaso general: los cursos de Diabetes y Endocrinología de Edutin Academy.
 > - Para el contexto: Farmacología Endocrina de Edvanta y, si te interesa la alimentación, los cursos de nutrición.
 
@@ -39,8 +39,8 @@ Este resumen no reemplaza las guías de práctica clínica vigentes ni el criter
 
 | Curso | Plataforma | Enfoque | Costo |
 |---|---|---|---|
-| [Farmacoterapia de la Diabetes](/curso-de-farmacoterapia-de-la-diabetes) | Edvanta | Casos clínicos, selección de tratamiento y seguimiento farmacoterapéutico | Gratis; certificado opcional de COP 60.000 |
-| [Farmacología Endocrina](/curso-de-farmacologia-endocrina) | Edvanta | Farmacología de los medicamentos del sistema endocrino | Gratis; certificado opcional de COP 60.000 |
+| [Farmacoterapia de la Diabetes](/curso-de-farmacoterapia-de-la-diabetes) | Edvanta | Casos clínicos, selección de tratamiento y seguimiento farmacoterapéutico | Primera unidad gratis; curso completo con certificado: COP 60.000 en los primeros 7 días (lista: COP 199.000) |
+| [Farmacología Endocrina](/curso-de-farmacologia-endocrina) | Edvanta | Farmacología de los medicamentos del sistema endocrino | Primera unidad gratis; curso completo con certificado: COP 60.000 en los primeros 7 días (lista: COP 199.000) |
 | [Diabetes](/curso-de-diabetes) | Edutin Academy | Repaso general de la enfermedad | Gratis; certificado de pago |
 | [Endocrinología](/curso-de-endocrinologia) | Edutin Academy | Bases de las enfermedades endocrinas | Gratis; certificado de pago |
 | [Nutrición](/curso-de-nutricion) | Edutin Academy | Bases de alimentación, útiles para la educación al paciente | Gratis; certificado de pago |
@@ -89,7 +89,7 @@ El [vademécum de diabetes tipo 2](/vademecum/medicamentos-para-la-diabetes-tipo
 
 ### ¿Hay cursos de diabetes gratis para profesionales de la salud?
 
-Sí. Farmacoterapia de la Diabetes de Edvanta es gratuito, con certificado verificable opcional de COP 60.000. Edutin Academy tiene un curso de Diabetes que se toma sin costo, con certificado de pago.
+Edutin Academy tiene un curso de Diabetes que se toma sin costo, con certificado de pago. En Farmacoterapia de la Diabetes de Edvanta la primera unidad es gratis; el curso completo, con certificado verificable, cuesta COP 60.000 en Colombia si lo compras en los primeros 7 días desde tu inscripción (precio de lista: COP 199.000).
 
 ### ¿Qué curso de diabetes sirve para un químico farmacéutico?
 
@@ -97,7 +97,7 @@ El de Farmacoterapia de la Diabetes de Edvanta, porque trabaja con casos clínic
 
 ### ¿Los cursos de diabetes dan certificado?
 
-Sí. En Edvanta el certificado es verificable con código y opcional; en Edutin el certificado es de pago.
+Sí. En Edvanta el certificado viene con el curso completo y es verificable con código; en Edutin el certificado es de pago.
 
 ### ¿Un curso de diabetes me habilita para formular?
 

@@ -6,20 +6,36 @@
  * Karla (+57 300 633 2244) con un mensaje propio de la enfermedad.
  */
 
-import { useEffect } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, HeartPulse, MessageCircle, ShieldCheck, Users } from 'lucide-react';
+import { ArrowRight, HeartPulse, MessageCircle, Search, ShieldCheck, Users } from 'lucide-react';
 import SiteHeader from '../components/edvanta/SiteHeader';
 import SiteFooter from '../components/edvanta/SiteFooter';
 import { Breadcrumb } from '../components/edvanta/ui';
 import { COMUNIDADES, META_COMUNIDADES, PREGUNTAS_COMUNIDADES } from '../data/comunidadesSalud';
 import { faqJsonLd } from '../lib/comunidades/seo';
+import { trackEvent } from '../utils/analytics';
 import { waLink } from '../config/links';
 import { updatePageSeo } from '../utils/seo';
 
 const ORIENTACION = waLink('Hola Karla, vengo de las comunidades de pacientes de edvanta.co. No sé qué comunidad elegir y quiero orientación.');
 
+/** Sin tildes ni mayúsculas, para buscar «diabetes», «presion alta» o «tiroides». */
+const plano = (t) => String(t || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+const TEXTO_DE = new Map(COMUNIDADES.map((c) => [c.slug, plano([c.nombre, c.titulo, c.resumen, c.apoyo?.corto, ...(c.keywords || []), ...(c.paraQuien || [])].join(' '))]));
+
 export default function ComunidadesIndex() {
+  const [q, setQ] = useState('');
+  const visibles = useMemo(() => {
+    const palabras = plano(q).split(/\s+/).filter((w) => w.length >= 2);
+    if (!palabras.length) return COMUNIDADES;
+    return COMUNIDADES.filter((c) => palabras.every((w) => TEXTO_DE.get(c.slug).includes(w)));
+  }, [q]);
+  useEffect(() => {
+    if (q.trim().length < 3) return undefined;
+    const t = setTimeout(() => trackEvent('community_search', { q: plano(q).slice(0, 40), resultados: visibles.length }), 900);
+    return () => clearTimeout(t);
+  }, [q, visibles.length]);
   useEffect(() => updatePageSeo({
     title: META_COMUNIDADES.titulo,
     description: META_COMUNIDADES.descripcion,
@@ -94,8 +110,37 @@ export default function ComunidadesIndex() {
         </section>
 
         <section className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
+          <div className="mb-8 rounded-[20px] border border-edvanta-teal/25 bg-gradient-to-br from-edvanta-mint/60 via-white to-white p-5 shadow-[0_24px_60px_-44px_rgba(3,29,92,.55)] sm:p-6">
+            <label htmlFor="buscar-grupo" className="font-display text-lg font-bold text-edvanta-deep">Encuentra tu grupo de apoyo</label>
+            <p className="mt-1 text-sm text-edvanta-muted">Escribe la enfermedad que tienes o que cuidas: diabetes, presión alta, tiroides, ansiedad…</p>
+            <div className="relative mt-3">
+              <Search className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-edvanta-muted" aria-hidden="true" />
+              <input
+                id="buscar-grupo"
+                type="search"
+                value={q}
+                onChange={(e) => setQ(e.target.value)}
+                placeholder="Ej.: hipotiroidismo"
+                autoComplete="off"
+                className="block min-h-12 w-full rounded-xl border border-edvanta-border bg-white pl-12 pr-4 text-base text-edvanta-deep outline-none transition focus:border-edvanta-teal focus:ring-4 focus:ring-edvanta-teal/15"
+              />
+            </div>
+            <p className="mt-2 text-xs font-semibold text-edvanta-tealdark" aria-live="polite">
+              {q.trim() ? `${visibles.length} ${visibles.length === 1 ? 'grupo' : 'grupos'} para «${q.trim()}»` : `${COMUNIDADES.length} grupos de apoyo, gratis y por WhatsApp`}
+            </p>
+          </div>
+          {visibles.length === 0 && (
+            <div className="rounded-2xl border border-edvanta-border bg-white p-6 text-center">
+              <p className="font-display text-lg font-bold text-edvanta-deep">Aún no hay un grupo con ese nombre</p>
+              <p className="mx-auto mt-1 max-w-xl text-sm text-edvanta-muted">Escríbenos por WhatsApp: te orientamos y anotamos la enfermedad para abrir nuevos grupos.</p>
+              <a href={ORIENTACION} target="_blank" rel="noopener noreferrer" className="ed-btn ed-btn--whatsapp mt-4">
+                <MessageCircle aria-hidden="true" />
+                Pedir orientación por WhatsApp
+              </a>
+            </div>
+          )}
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {COMUNIDADES.map((c) => (
+            {visibles.map((c) => (
               <article key={c.slug} className="flex h-full flex-col rounded-2xl border border-edvanta-border bg-white p-5 shadow-[0_1px_2px_rgba(23,34,59,.04)] transition hover:-translate-y-0.5 hover:border-edvanta-teal/40 hover:shadow-[0_12px_36px_rgba(23,34,59,.10)]">
                 <p className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[.12em] text-edvanta-tealdark">
                   <HeartPulse className="h-4 w-4" aria-hidden="true" />
@@ -106,8 +151,11 @@ export default function ComunidadesIndex() {
                 </h2>
                 <p className="mt-2 text-sm leading-6 text-edvanta-muted">{c.resumen}</p>
                 <div className="mt-auto flex flex-wrap items-center gap-3 pt-5">
+                  <Link to={`${c.ruta}#inscripcion`} className="ed-btn ed-btn--primary ed-btn--sm">
+                    Inscribirme gratis
+                  </Link>
                   <Link to={c.ruta} className="inline-flex items-center gap-1.5 text-sm font-bold text-edvanta-blue hover:underline">
-                    Ver el grupo de apoyo
+                    Ver el grupo
                     <ArrowRight className="h-4 w-4" aria-hidden="true" />
                   </Link>
                   <a
