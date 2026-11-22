@@ -18,6 +18,8 @@ El indicador es el número de consultas con impresiones en Search Console (Rendi
 | 21-nov | Cursos propios sin «gratis» en clases (367 títulos y descripciones), casos clínicos, vademécum, artículos y comunidades (b2ad337) | En vivo y verificado |
 | 21-nov | Ampliación de 8 pilares para pacientes (dengue, gastritis, infección urinaria, migraña, anemia, hígado graso, gripa y resistencia a la insulina): de unas 560 a unas 770 palabras, con preguntas de cola larga, enlace a su comunidad y a su caso clínico | En vivo (3e887ed), aprobado por Karla el 21-nov; verificado en producción (indexables, en sitemap, FAQPage) e IndexNow 8 URLs |
 | 21-nov | GEO: `llms.txt` con 66 casos clínicos, 23 exámenes, 23 comunidades y 8 pilares (generador `scripts/llms-salud.mjs`; volver a correrlo al agregar o revisar contenido) y precios del curso de pago (`scripts/llms-cursos.mjs` regenerado) | En vivo (c686204); 123 enlaces nuevos responden 200 |
+| 21/22-nov | Comunidades como «grupo de apoyo de [enfermedad]»: título, descripción, preguntas frecuentes (FAQPage) y 12 artículos más enlazados (f8fc2e5); la otra sesión lo afinó con el autocompletado de Google y 58 artículos FST (131d9aa) | En vivo; IndexNow enviado por la otra sesión |
+| 22-nov | Clases abiertas: sección «Lo que sigue en el curso» por clase (clases de la misma unidad, unidades que siguen) y 4 preguntas del curso con certificado en el HTML y en el mismo FAQPage de la clase; sin precios fijos (221eb47) | En vivo; verificado en navegador; IndexNow 1.583 URLs de clases |
 
 ## Artículos delgados que quedan (menos de 600 palabras, 21-nov)
 
@@ -27,5 +29,5 @@ El indicador es el número de consultas con impresiones en Search Console (Rendi
 
 ## Siguientes bloques
 
-1. Comunidades: título y descripción orientados a «grupo de apoyo de [enfermedad]», preguntas frecuentes y enlaces desde cada artículo del clúster.
-2. Feliz Sin Tiroides y plantas medicinales: ampliar con la misma regla de fuentes.
+1. Fichas de los cursos: palabras clave, preguntas frecuentes y GEO (`llms.txt` de cursos) orientados a la compra del curso con certificado.
+2. Artículos cortos: Feliz Sin Tiroides, plantas medicinales, regulatorios y dietas (lo clínico para pacientes, con aprobación de Karla).
