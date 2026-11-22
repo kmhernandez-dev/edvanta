@@ -2,8 +2,12 @@
    Sistema de diseño 2.0 (--ds-*); la raíz lleva .edvanta-theme para los tokens. */
 .botones-compra { display: grid; gap: 10px; background: transparent; }
 .botones-compra__fila { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 18px; }
-.botones-compra .ed-btn { text-decoration: none; }
-.botones-compra__secundario {
+/* Las páginas de contenido pintan sus enlaces (.cc a, .prose a…): aquí manda el botón. */
+.botones-compra a.ed-btn { text-decoration: none; }
+.botones-compra a.ed-btn.ed-btn--gradient,
+.botones-compra a.ed-btn.ed-btn--gradient:visited,
+.botones-compra a.ed-btn.ed-btn--gradient:hover { color: #fff; }
+.botones-compra a.botones-compra__secundario {
   color: var(--ds-navy);
   font-family: var(--ds-font-body);
   font-size: var(--ds-fs-sm);
@@ -11,7 +15,7 @@
   text-decoration: underline;
   text-underline-offset: 3px;
 }
-.botones-compra__secundario:hover { color: var(--ds-teal-strong); }
+.botones-compra a.botones-compra__secundario:hover { color: var(--ds-teal-strong); }
 .botones-compra__precio {
   margin: 0;
   max-width: 60ch;
