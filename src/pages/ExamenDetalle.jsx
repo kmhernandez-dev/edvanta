@@ -303,7 +303,7 @@ export default function ExamenDetalle() {
               <div className="rounded-2xl border border-edvanta-teal/25 bg-edvanta-mint/35 p-5">
                 <p className="text-xs font-bold uppercase tracking-[.12em] text-edvanta-tealdark">Para profesionales</p>
                 <p className="mt-2 font-display text-lg font-bold text-edvanta-deep">Sigue con el curso</p>
-                <p className="mt-1 text-sm leading-6 text-edvanta-muted">{examen.curso.nombre}: el curso completo incluye verificación de aprendizaje y certificado.</p>
+                <p className="mt-1 text-sm leading-6 text-edvanta-muted">Sigue con el {examen.curso.nombre}.</p>
                 <BotonesDeCompra cursoUrl={examen.curso.ruta} origen="examen_lateral" extra={{ examen: examen.slug }} compacto className="mt-3" />
               </div>
             </aside>

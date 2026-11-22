@@ -12,6 +12,7 @@ import { TEXTO_CASOS, TITULO_CASOS, casosDeVademecum } from '../lib/casosClinico
 import { tieneRevisionClinica } from '../lib/seo/indexabilidad';
 import { tituloDeVademecum } from '../lib/vademecum/indexable.js';
 import { updatePageSeo } from '../utils/seo';
+import BotonesDeCompra from '../components/curso/BotonesDeCompra';
 
 /** Ícono de cada sección de la monografía. */
 const ICONO_SECCION = {
@@ -186,18 +187,14 @@ export default function VademecumPagina() {
                     ))}
                   </ul>
                 )}
-                {clases.cursos.length > 0 && (
-                  <p className="mt-5 text-[15px] leading-6 text-edvanta-ink">
-                    Cursos completos:{' '}
-                    {clases.cursos.map((c, i) => (
-                      <span key={c.ruta}>
-                        {i > 0 && ', '}
-                        <Link to={c.ruta} className="font-semibold text-edvanta-tealdark hover:underline">{c.nombre}</Link>
-                      </span>
-                    ))}
-                    .
-                  </p>
-                )}
+                {clases.cursos.map((c, i) => (
+                  <div key={c.ruta} className="mt-5 border-t border-edvanta-border pt-4">
+                    <p className="text-[15px] leading-6 text-edvanta-ink">
+                      Curso completo: <Link to={c.ruta} className="font-semibold text-edvanta-tealdark hover:underline">{c.nombre}</Link>
+                    </p>
+                    <BotonesDeCompra cursoUrl={c.ruta} origen="vademecum" extra={{ ficha: slug }} compacto conPrecio={i === clases.cursos.length - 1} className="mt-3" />
+                  </div>
+                ))}
               </section>
             )}
 
