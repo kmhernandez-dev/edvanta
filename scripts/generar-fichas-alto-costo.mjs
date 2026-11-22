@@ -23,6 +23,11 @@ import { readFileSync, writeFileSync } from 'node:fs';
 import { MONOGRAFIAS } from '../src/data/vademecum/index.js';
 import { FICHAS_ALTO_COSTO } from './data/fichas-alto-costo/index.mjs';
 import { REVISION_CLINICA } from '../src/data/revisionClinica.js';
+import { GUIAS_CONDICIONES } from './data/guias-condiciones/index.mjs';
+
+// Guías de condición que mencionan cada medicamento (enlace de vuelta).
+const GUIAS_DE = {};
+for (const g of GUIAS_CONDICIONES) for (const [, slugs] of g.medicamentos || []) for (const s of slugs) (GUIAS_DE[s] ||= []).push(g);
 
 const FECHA = '2026-11-21';
 const FECHA_TEXTO = '21-nov-2026';
@@ -150,6 +155,8 @@ function markdown(f) {
   const onco = area.onco ? ' Si recibes tratamiento contra el cáncer, también puedes dejar tu interés en [Tu Ruta Oncológica](/contigo/ruta-oncologica/interes).' : '';
   md.push(`## Acompañamiento de Edvanta Contigo\n\nEn [Edvanta Contigo](/contigo) encuentras rutas educativas para pacientes y cuidadores. Estamos preparando [Contigo Alto Costo](/contigo/alto-costo), un programa con químicos farmacéuticos para personas que usan medicamentos de alto costo: en su página ves cómo funcionará y cuándo abre el registro.${onco} Edvanta educa y acompaña; no diagnostica, no formula y no reemplaza a tu equipo tratante.`);
 
+  const guias = GUIAS_DE[f.slug] || [];
+  if (guias.length) md.push(`## Guía de la enfermedad\n\n${guias.map((g) => `- [${g.nombre}: síntomas, tratamiento y medicamentos](/articulos/${g.slug}-sintomas-tratamiento-y-medicamentos)`).join('\n')}\n\nEntiende la enfermedad completa: síntomas, opciones de tratamiento, cómo acceder en Colombia y qué preguntar en tu próxima cita.`);
   const rel = relacionados(f);
   if (rel.length) md.push(`## También te puede interesar\n\n${rel.map((o) => `- [${o.nombre}: para qué sirve](/articulos/${o.slug}-para-que-sirve)`).join('\n')}`);
 

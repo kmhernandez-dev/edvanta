@@ -22,6 +22,7 @@ import {
 } from '../../data/edvanta/contigoAltoCosto';
 import { apiUrl } from '../../config/api';
 import { ARTICULOS_ALTO_COSTO } from '../../data/articulosAltoCosto';
+import { ARTICULOS_CONDICIONES } from '../../data/articulosCondiciones';
 import { updatePageSeo } from '../../utils/seo';
 
 // Fichas «para qué sirve» de medicamentos de alto costo, en orden alfabético.
@@ -330,7 +331,21 @@ export default function ContigoAltoCosto() {
 
         <ContigoSection id="medicamentos" tone="white">
           <ContigoEyebrow>Entiende tu medicamento</ContigoEyebrow>
-          <h2 className="mt-3 font-display text-2xl font-extrabold text-edvanta-deep sm:text-3xl">Fichas de medicamentos de alto costo</h2>
+          <h2 className="mt-3 font-display text-2xl font-extrabold text-edvanta-deep sm:text-3xl">Guías por enfermedad</h2>
+          <p className="mt-2 max-w-3xl text-[15px] leading-7 text-[var(--contigo-muted)]">
+            Síntomas, tratamiento, medicamentos y cómo acceder al tratamiento en Colombia, con una lista para tu próxima cita.
+          </p>
+          <ul className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {ARTICULOS_CONDICIONES.map((g) => (
+              <li key={g.slug}>
+                <Link to={`/articulos/${g.slug}`} className="block h-full rounded-2xl border border-[var(--contigo-border)] p-4 hover:border-[var(--contigo-primary)]">
+                  <span className="block font-display font-extrabold text-edvanta-deep">{g.title.split(':')[0]}</span>
+                  <span className="mt-1 block text-sm text-[var(--contigo-muted)]">Síntomas, tratamiento y medicamentos</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+          <h2 className="mt-12 font-display text-2xl font-extrabold text-edvanta-deep sm:text-3xl">Fichas de medicamentos de alto costo</h2>
           <p className="mt-2 max-w-3xl text-[15px] leading-7 text-[var(--contigo-muted)]">
             Para qué sirve cada medicamento, cómo se aplica o se toma, sus efectos secundarios y cuándo consultar, con la ficha técnica como fuente. Son {FICHAS.length} fichas del equipo editorial de Edvanta, revisadas por Karla Hernández, química farmacéutica.
           </p>

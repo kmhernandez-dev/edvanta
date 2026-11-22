@@ -85,6 +85,12 @@ Es un medicamento de alto costo. Lo formula el especialista y lo entrega o lo ap
 
 En [Edvanta Contigo](/contigo) encuentras rutas educativas para pacientes y cuidadores. Estamos preparando [Contigo Alto Costo](/contigo/alto-costo), un programa con químicos farmacéuticos para personas que usan medicamentos de alto costo: en su página ves cómo funcionará y cuándo abre el registro. Edvanta educa y acompaña; no diagnostica, no formula y no reemplaza a tu equipo tratante.
 
+## Guía de la enfermedad
+
+- [Esclerosis múltiple: síntomas, tratamiento y medicamentos](/articulos/esclerosis-multiple-sintomas-tratamiento-y-medicamentos)
+
+Entiende la enfermedad completa: síntomas, opciones de tratamiento, cómo acceder en Colombia y qué preguntar en tu próxima cita.
+
 ## También te puede interesar
 
 - [Fumarato de dimetilo: para qué sirve](/articulos/dimetilfumarato-para-que-sirve)

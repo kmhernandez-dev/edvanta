@@ -10,6 +10,7 @@
  */
 import { articulosSalud } from './articulosSalud.js';
 import { ARTICULOS_ALTO_COSTO } from './articulosAltoCosto.js';
+import { ARTICULOS_CONDICIONES } from './articulosCondiciones.js';
 import { SEO_ARTICULOS } from './articulosSEO.js';
 import { NOTICIAS_FARMACEUTICAS } from './noticiasFarmaceuticas.js';
 import { BLOG_EDVANTA } from './blogEdvanta.js';
@@ -1489,6 +1490,7 @@ const ARTICULOS_BASE = [
   ...BLOG_EDVANTA,
   ...NOTICIAS_FARMACEUTICAS,
   ...articulosSalud,
+  ...ARTICULOS_CONDICIONES,
   ...ARTICULOS_ALTO_COSTO,
   ...legacyArticulos,
   ...edvantaArticulos,

@@ -74,6 +74,12 @@ Es un medicamento de alto costo. Lo formula el especialista y lo entrega o lo ap
 
 En [Edvanta Contigo](/contigo) encuentras rutas educativas para pacientes y cuidadores. Estamos preparando [Contigo Alto Costo](/contigo/alto-costo), un programa con químicos farmacéuticos para personas que usan medicamentos de alto costo: en su página ves cómo funcionará y cuándo abre el registro. Edvanta educa y acompaña; no diagnostica, no formula y no reemplaza a tu equipo tratante.
 
+## Guía de la enfermedad
+
+- [VIH: síntomas, tratamiento y medicamentos](/articulos/vih-sintomas-tratamiento-y-medicamentos)
+
+Entiende la enfermedad completa: síntomas, opciones de tratamiento, cómo acceder en Colombia y qué preguntar en tu próxima cita.
+
 ## También te puede interesar
 
 - [Tenofovir disoproxilo: para qué sirve](/articulos/tenofovir-para-que-sirve)
