@@ -99,7 +99,7 @@ Entiende la enfermedad completa: síntomas, opciones de tratamiento, cómo acced
 
 ## Para profesionales
 
-Consulta el grupo de [medicamentos oncológicos de alto costo](/vademecum/medicamentos-oncologicos-de-alto-costo). Para profundizar, Edvanta ofrece el curso de [Inmunoterapia Oncológica](/curso-de-inmunoterapia-oncologica) y la guía [Seguridad del medicamento](/guia/seguridad-del-medicamento).
+Consulta la [monografía de nivolumab](/vademecum/nivolumab) del vademécum de Edvanta, con farmacocinética, evidencia y atención farmacéutica, y el grupo de [medicamentos oncológicos de alto costo](/vademecum/medicamentos-oncologicos-de-alto-costo). Para profundizar, Edvanta ofrece el curso de [Inmunoterapia Oncológica](/curso-de-inmunoterapia-oncologica) y la guía [Seguridad del medicamento](/guia/seguridad-del-medicamento).
 
 ## Preguntas frecuentes
 

@@ -94,7 +94,7 @@ Entiende la enfermedad completa: síntomas, opciones de tratamiento, cómo acced
 
 ## Para profesionales
 
-Consulta el grupo de [medicamentos oncológicos de alto costo](/vademecum/medicamentos-oncologicos-de-alto-costo). Para profundizar, Edvanta ofrece el curso de [Quimioterapia Antineoplásica](/curso-de-quimioterapia-antineoplasica) y la guía [Seguridad del medicamento](/guia/seguridad-del-medicamento).
+Consulta la [monografía de hidroxicarbamida (hidroxiurea)](/vademecum/hidroxicarbamida) del vademécum de Edvanta, con farmacocinética, evidencia y atención farmacéutica, y el grupo de [medicamentos oncológicos de alto costo](/vademecum/medicamentos-oncologicos-de-alto-costo). Para profundizar, Edvanta ofrece el curso de [Quimioterapia Antineoplásica](/curso-de-quimioterapia-antineoplasica) y la guía [Seguridad del medicamento](/guia/seguridad-del-medicamento).
 
 ## Preguntas frecuentes
 

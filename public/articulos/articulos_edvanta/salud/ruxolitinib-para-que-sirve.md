@@ -87,7 +87,7 @@ En [Edvanta Contigo](/contigo) encuentras rutas educativas para pacientes y cuid
 
 ## Para profesionales
 
-Consulta el grupo de [medicamentos oncológicos de alto costo](/vademecum/medicamentos-oncologicos-de-alto-costo). Para profundizar, Edvanta ofrece el curso de [Terapias Dirigidas en Oncología](/curso-de-terapias-dirigidas-en-oncologia) y la guía [Seguridad del medicamento](/guia/seguridad-del-medicamento).
+Consulta la [monografía de ruxolitinib](/vademecum/ruxolitinib) del vademécum de Edvanta, con farmacocinética, evidencia y atención farmacéutica, y el grupo de [medicamentos oncológicos de alto costo](/vademecum/medicamentos-oncologicos-de-alto-costo). Para profundizar, Edvanta ofrece el curso de [Terapias Dirigidas en Oncología](/curso-de-terapias-dirigidas-en-oncologia) y la guía [Seguridad del medicamento](/guia/seguridad-del-medicamento).
 
 ## Preguntas frecuentes
 

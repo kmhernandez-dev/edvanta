@@ -98,7 +98,7 @@ Entiende la enfermedad completa: síntomas, opciones de tratamiento, cómo acced
 
 ## Para profesionales
 
-Consulta el [vademécum de Edvanta](/vademecum). Para profundizar, Edvanta ofrece el curso de [Farmacología Clínica](/curso-de-farmacologia-clinica) y la guía [Pharmacotherapy Workup](/guia/pharmacotherapy-workup-cipolle-strand-morley).
+Consulta la [monografía de rituximab](/vademecum/rituximab) del vademécum de Edvanta, con farmacocinética, evidencia y atención farmacéutica, y el [vademécum de Edvanta](/vademecum). Para profundizar, Edvanta ofrece el curso de [Farmacología Clínica](/curso-de-farmacologia-clinica) y la guía [Pharmacotherapy Workup](/guia/pharmacotherapy-workup-cipolle-strand-morley).
 
 ## Preguntas frecuentes
 

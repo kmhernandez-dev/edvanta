@@ -24,6 +24,7 @@ import { execSync } from 'node:child_process';
 import { existsSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
 import { MONOGRAFIAS } from '../src/data/vademecum/index.js';
 import { REVISION_CLINICA, REVISION_VADEMECUM } from '../src/data/revisionClinica.js';
+import { FICHAS_ALTO_COSTO } from './data/fichas-alto-costo/index.mjs';
 
 const SITIO = 'https://edvanta.co';
 const SALIDA = 'seo/keywords-5000-edvanta-pacientes.csv';
@@ -240,7 +241,7 @@ function fila({ keyword, grupo, slug, url, estado, audiencia, intencion, etapa, 
   };
 }
 
-/* ---------- Clúster 1: vademécum profesional (98 monografías) ---------- */
+/* ---------- Clúster 1: vademécum profesional (98 monografías + 51 oncológicas de alto costo) ---------- */
 
 const OFERTA_GRUPO = {
   'medicamentos-para-la-obesidad': [OF.endocrina, OF.gProblemas, B2B.clinica],
@@ -303,9 +304,14 @@ const ALIAS = { dipirona: ['metamizol'], acetaminofen: ['paracetamol'], butilesc
 // Monografías que escribió la otra sesión (grupo renal y dos de diabetes): no son de este carril.
 const MONOGRAFIAS_OTRO = new Set(['dapagliflozina', 'gliclazida', 'finerenona']);
 
+// Monografías oncológicas de alto costo (src/data/vademecum/altoCosto): el curso
+// depende del tipo de terapia de su ficha para pacientes.
+const AREA_DE_FICHA = Object.fromEntries(FICHAS_ALTO_COSTO.map((f) => [f.slug, f.area]));
+const OFERTA_POR_AREA = { inmuno: OF.inmuno, quimio: OF.quimio, soporte: OF.quimio, hormonal: OF.onco, dirigida: OF.dirigida };
+
 for (const m of MONOGRAFIAS.filter((x) => !MONOGRAFIAS_OTRO.has(x.slug) && OFERTA_GRUPO[x.grupo])) {
   const [principal, guiaGrupo, empresa] = OFERTA_GRUPO[m.grupo];
-  const oferta = OFERTA_ESPECIFICA[m.slug] || principal;
+  const oferta = OFERTA_ESPECIFICA[m.slug] || OFERTA_POR_AREA[AREA_DE_FICHA[m.slug]] || principal;
   const indexable = Boolean(REVISION_VADEMECUM[m.slug]);
   const estado = indexable ? 'Publicada e indexable: enriquecer' : 'Publicada en noindex: falta revisión de Karla';
   const nombres = [nombreBusqueda(m.nombre), ...(ALIAS[m.slug] || [])];
@@ -927,7 +933,9 @@ if (total < META) {
 // Se conservan todas las P1 y P2; las P3 se recortan empezando por los
 // modificadores de menor valor del vademécum (los últimos de MOD_VADEMECUM).
 // Las P3 de pacientes y de alto costo profesional no se recortan antes.
-const valorDeRecorte = (f) => f.recorte || 0;
+// Dentro del vademécum, las monografías indexables van antes que las que
+// esperan la revisión de Karla: sus keywords pueden posicionar ya.
+const valorDeRecorte = (f) => (f.recorte || 0) + (f.recorte && !f.estado_pagina.startsWith('Publicada e indexable') ? 100 : 0);
 const ordenRecorte = [...filas].sort((a, b) => PESO[a.prioridad] - PESO[b.prioridad] || valorDeRecorte(a) - valorDeRecorte(b) || a.orden - b.orden);
 const conservadas = new Set(ordenRecorte.slice(0, META).map((f) => f.orden));
 const recortadas = total - META;

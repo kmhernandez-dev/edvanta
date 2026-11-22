@@ -185,3 +185,14 @@ Se anota una fila nueva en las tablas de arriba. El indicador principal es **pá
   - Impresiones y consultas por URL de las fichas en Search Console. Meta: 10 o más consultas por ficha a los 60 días.
   - Clics desde las fichas a `/contigo/alto-costo` y a los cursos.
 - **Pendiente:** solicitar el rastreo de las fichas en Search Console y avisar a Bing con IndexNow, con la autorización de Karla.
+
+## Lote del 22-nov-2026
+
+- **Monografías oncológicas de alto costo:**
+  - 51 monografías profesionales en `/vademecum/{medicamento}`, en el grupo «Medicamentos oncológicos de alto costo»: 4 de inmunoterapia, 5 de hormonoterapia, 25 de terapias dirigidas, 15 de quimioterapia y 2 de soporte.
+  - Cada una une la ficha para pacientes aprobada el 21-nov, datos de la ficha técnica de CIMA y el CUM del INVIMA, con atención farmacéutica (modelo de Minnesota), autoevaluación y llamados al curso oncológico que corresponde (primera unidad gratis) y a la ficha para pacientes.
+  - En `noindex,follow` hasta la revisión de Karla: lista en `docs/pacientes/revision-monografias-alto-costo.md`.
+  - Las 51 fichas para pacientes enlazan ya su monografía.
+- **Plan de keywords:** las monografías pasan del clúster 3b al clúster 1; en el recorte de P3, las monografías indexables van antes que las pendientes de revisión.
+- **Cómo medir (tras la aprobación):** impresiones por URL de `/vademecum/` en Search Console y clics desde las monografías a los cursos de Farmacología Oncológica, Terapias Dirigidas, Inmunoterapia y Quimioterapia.
+

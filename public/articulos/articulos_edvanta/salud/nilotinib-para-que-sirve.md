@@ -96,7 +96,7 @@ Entiende la enfermedad completa: síntomas, opciones de tratamiento, cómo acced
 
 ## Para profesionales
 
-Consulta el grupo de [medicamentos oncológicos de alto costo](/vademecum/medicamentos-oncologicos-de-alto-costo). Para profundizar, Edvanta ofrece el curso de [Terapias Dirigidas en Oncología](/curso-de-terapias-dirigidas-en-oncologia) y la guía [Seguridad del medicamento](/guia/seguridad-del-medicamento).
+Consulta la [monografía de nilotinib](/vademecum/nilotinib) del vademécum de Edvanta, con farmacocinética, evidencia y atención farmacéutica, y el grupo de [medicamentos oncológicos de alto costo](/vademecum/medicamentos-oncologicos-de-alto-costo). Para profundizar, Edvanta ofrece el curso de [Terapias Dirigidas en Oncología](/curso-de-terapias-dirigidas-en-oncologia) y la guía [Seguridad del medicamento](/guia/seguridad-del-medicamento).
 
 ## Preguntas frecuentes
 

@@ -96,7 +96,7 @@ Entiende la enfermedad completa: síntomas, opciones de tratamiento, cómo acced
 
 ## Para profesionales
 
-Consulta el grupo de [medicamentos oncológicos de alto costo](/vademecum/medicamentos-oncologicos-de-alto-costo). Para profundizar, Edvanta ofrece el curso de [Farmacología Oncológica](/curso-de-farmacologia-oncologica) y la guía [Seguridad del medicamento](/guia/seguridad-del-medicamento).
+Consulta la [monografía de letrozol](/vademecum/letrozol) del vademécum de Edvanta, con farmacocinética, evidencia y atención farmacéutica, y el grupo de [medicamentos oncológicos de alto costo](/vademecum/medicamentos-oncologicos-de-alto-costo). Para profundizar, Edvanta ofrece el curso de [Farmacología Oncológica](/curso-de-farmacologia-oncologica) y la guía [Seguridad del medicamento](/guia/seguridad-del-medicamento).
 
 ## Preguntas frecuentes
 
