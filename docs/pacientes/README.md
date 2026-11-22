@@ -38,6 +38,8 @@ Análisis de páginas públicas el 21-nov-2026, respetando su `robots.txt`, que 
 | Gestión de datos del titular | `/contigo/alto-costo/mis-datos?t=` | Construida |
 | Artículos para pacientes | `/articulos/{tema}` y `/articulos/{medicamento}-para-que-sirve` | Los de «para qué sirve» son los que más posicionan |
 | Fichas de medicamentos de alto costo | `/articulos/{medicamento}-para-que-sirve`, categoría «Medicamentos de alto costo» | 100 fichas del 21-nov-2026, aprobadas por Karla el mismo día e indexables (revisión en `src/data/revisionClinica.js`). Datos en `scripts/data/fichas-alto-costo/`, generador `scripts/generar-fichas-alto-costo.mjs` |
+| Guías de enfermedades de alto costo | `/articulos/{enfermedad}-sintomas-tratamiento-y-medicamentos`, categoría «Enfermedades de alto costo» | 13 guías del 21-nov-2026, aprobadas por Karla el 22-nov-2026 e indexables. Datos en `scripts/data/guias-condiciones/`, generador `scripts/generar-guias-condiciones.mjs` |
+| Monografías oncológicas (profesionales) | `/vademecum/{medicamento}` | 51 monografías del 22-nov-2026, aprobadas por Karla el mismo día e indexables. Registros en `src/data/vademecum/altoCosto/`; revisión en `docs/pacientes/revision-monografias-alto-costo.md` |
 | Vademécum profesional | `/vademecum/{grupo o medicamento}` | 14 grupos, incluido el de oncología de alto costo (trastuzumab, imatinib, pembrolizumab) |
 | Herramientas privadas | `/fst-app` (tiroides) | Publicadas |
 

@@ -42,7 +42,7 @@ Monografías para profesionales de la salud, revisadas por una química farmacé
 - [Medicamentos para la obesidad](https://edvanta.co/vademecum/medicamentos-para-la-obesidad): semaglutida, tirzepatida, liraglutida, orlistat, naltrexona/bupropión, setmelanotida.
 - [Medicamentos para la hipertensión arterial](https://edvanta.co/vademecum/medicamentos-para-la-hipertension-arterial): losartán, enalapril, amlodipino, hidroclorotiazida, valsartán, carvedilol, metoprolol, espironolactona y furosemida.
 - [Medicamentos para la diabetes tipo 2](https://edvanta.co/vademecum/medicamentos-para-la-diabetes-tipo-2): metformina, empagliflozina, sitagliptina.
-- [Medicamentos oncológicos de alto costo](https://edvanta.co/vademecum/medicamentos-oncologicos-de-alto-costo): trastuzumab, imatinib, pembrolizumab.
+- [Medicamentos oncológicos de alto costo](https://edvanta.co/vademecum/medicamentos-oncologicos-de-alto-costo): 54 monografías con atención farmacéutica. Inmunoterapia (pembrolizumab, nivolumab, atezolizumab, durvalumab, ipilimumab), hormonoterapia (tamoxifeno, letrozol, anastrozol, enzalutamida, abiraterona), terapias dirigidas (trastuzumab, trastuzumab deruxtecán, pertuzumab, bevacizumab, cetuximab, rituximab, daratumumab, bortezomib, carfilzomib, imatinib, nilotinib, dasatinib, osimertinib, palbociclib, ribociclib, abemaciclib, lenalidomida, pomalidomida, ibrutinib, venetoclax, olaparib, ruxolitinib, everolimus, sunitinib, sorafenib, lenvatinib, cabozantinib), quimioterapia (capecitabina, docetaxel, paclitaxel, carboplatino, cisplatino, doxorrubicina, ciclofosfamida, oxaliplatino, azacitidina, gemcitabina, irinotecán, fluorouracilo, pemetrexed, temozolomida, hidroxicarbamida) y soporte (filgrastim, pegfilgrastim).
 - [Medicamentos para la dislipidemia](https://edvanta.co/vademecum/medicamentos-para-la-dislipidemia): atorvastatina, rosuvastatina, ezetimiba.
 - [Medicamentos anticoagulantes](https://edvanta.co/vademecum/medicamentos-anticoagulantes): warfarina, apixabán, rivaroxabán.
 - [Antibióticos de uso ambulatorio y hospitalario](https://edvanta.co/vademecum/antibioticos-de-uso-ambulatorio): amoxicilina con ácido clavulánico, cefalexina, clindamicina, ciprofloxacino, metronidazol, trimetoprim/sulfametoxazol, nitrofurantoína, secnidazol, dicloxacilina, claritromicina, ceftriaxona, penicilina benzatínica, levofloxacino, doxiciclina, fosfomicina, amoxicilina y azitromicina.
@@ -315,6 +315,28 @@ Artículos con síntomas, signos de alarma, tratamiento y preguntas frecuentes, 
 - [Resistencia a la insulina: síntomas, causas y cómo revertirla](https://edvanta.co/articulos/resistencia-a-la-insulina-sintomas): Qué es la resistencia a la insulina, señales como la acantosis y la grasa abdominal, cómo se relaciona con la prediabetes y qué hábitos la mejoran.
 
 <!-- salud:fin -->
+
+<!-- condiciones:inicio (scripts/generar-guias-condiciones.mjs) -->
+
+## Enfermedades de alto costo: guías para pacientes
+
+Síntomas, señales de alarma, diagnóstico, tratamiento, medicamentos y cómo acceder al tratamiento en Colombia (EPS, MIPRES, derecho de petición, tutela), con una lista para la próxima cita. Fuente: MedlinePlus en español y fichas técnicas; revisión clínica de Karla Hernández, química farmacéutica.
+
+- [Cáncer de mama: síntomas, tratamiento y medicamentos](https://edvanta.co/articulos/cancer-de-mama-sintomas-tratamiento-y-medicamentos): Cáncer de mama: síntomas, diagnóstico, tratamientos y medicamentos (hormonoterapia, anti-HER2, quimioterapia) y cómo acceder al tratamiento en Colombia.
+- [Cáncer colorrectal: síntomas, tratamiento y medicamentos](https://edvanta.co/articulos/cancer-colorrectal-sintomas-tratamiento-y-medicamentos): Cáncer de colon y recto: síntomas, factores de riesgo, colonoscopia, tratamientos, medicamentos y acceso al tratamiento en Colombia.
+- [Cáncer de pulmón: síntomas, tratamiento y medicamentos](https://edvanta.co/articulos/cancer-de-pulmon-sintomas-tratamiento-y-medicamentos): Cáncer de pulmón: síntomas, causas, diagnóstico, tratamientos, inmunoterapia y terapias dirigidas, y acceso al tratamiento en Colombia.
+- [Cáncer de próstata: síntomas, tratamiento y medicamentos](https://edvanta.co/articulos/cancer-de-prostata-sintomas-tratamiento-y-medicamentos): Cáncer de próstata: síntomas, PSA, biopsia y puntaje de Gleason, tratamientos (cirugía, radioterapia, hormonoterapia) y medicamentos en Colombia.
+- [Leucemia mieloide crónica: síntomas, tratamiento y medicamentos](https://edvanta.co/articulos/leucemia-mieloide-cronica-sintomas-tratamiento-y-medicamentos): Leucemia mieloide crónica (LMC): qué es, cromosoma Filadelfia, síntomas, fases, tratamiento con inhibidores de tirosina cinasa y acceso en Colombia.
+- [Mieloma múltiple: síntomas, tratamiento y medicamentos](https://edvanta.co/articulos/mieloma-multiple-sintomas-tratamiento-y-medicamentos): Mieloma múltiple: qué es, síntomas como anemia y dolor de huesos, exámenes, tratamiento, medicamentos y acceso al tratamiento en Colombia.
+- [Linfoma no Hodgkin: síntomas, tratamiento y medicamentos](https://edvanta.co/articulos/linfoma-no-hodgkin-sintomas-tratamiento-y-medicamentos): Linfoma no Hodgkin: síntomas como ganglios inflamados y sudores nocturnos, diagnóstico por biopsia, tratamientos y medicamentos en Colombia.
+- [Linfoma de Hodgkin: síntomas, tratamiento y medicamentos](https://edvanta.co/articulos/linfoma-de-hodgkin-sintomas-tratamiento-y-medicamentos): Linfoma de Hodgkin: síntomas, diagnóstico, tratamiento con quimioterapia y radioterapia, inmunoterapia y controles después del tratamiento.
+- [Artritis reumatoide: síntomas, tratamiento y medicamentos](https://edvanta.co/articulos/artritis-reumatoide-sintomas-tratamiento-y-medicamentos): Artritis reumatoide: síntomas, diagnóstico, tratamiento con FARME y biológicos, medicamentos, vivir con la enfermedad y acceso en Colombia.
+- [VIH: síntomas, tratamiento y medicamentos](https://edvanta.co/articulos/vih-sintomas-tratamiento-y-medicamentos): VIH: qué es, diferencia con el sida, tratamiento antirretroviral, medicamentos, carga viral, vivir con VIH y acceso al tratamiento en Colombia.
+- [Hepatitis C: síntomas, tratamiento y medicamentos](https://edvanta.co/articulos/hepatitis-c-sintomas-tratamiento-y-medicamentos): Hepatitis C: cómo se transmite, síntomas, pruebas, tratamiento con antivirales de acción directa, respuesta viral sostenida y acceso en Colombia.
+- [Esclerosis múltiple: síntomas, tratamiento y medicamentos](https://edvanta.co/articulos/esclerosis-multiple-sintomas-tratamiento-y-medicamentos): Esclerosis múltiple: síntomas, brotes, diagnóstico, tratamientos modificadores de la enfermedad, medicamentos y vivir con EM en Colombia.
+- [Hemofilia: síntomas, tratamiento y medicamentos](https://edvanta.co/articulos/hemofilia-sintomas-tratamiento-y-medicamentos): Hemofilia A y B: qué es, síntomas, sangrado en articulaciones, tratamiento con factores de coagulación y emicizumab, y acceso en Colombia.
+
+<!-- condiciones:fin -->
 
 <!-- alto-costo:inicio (scripts/generar-fichas-alto-costo.mjs) -->
 

@@ -18,10 +18,11 @@
  *
  * Uso: node scripts/generar-guias-condiciones.mjs
  */
-import { writeFileSync } from 'node:fs';
+import { readFileSync, writeFileSync } from 'node:fs';
 import { GUIAS_CONDICIONES } from './data/guias-condiciones/index.mjs';
 import { ARTICULOS_ALTO_COSTO } from '../src/data/articulosAltoCosto.js';
 import { comunidadDeSlug } from '../src/data/comunidadesSalud.js';
+import { REVISION_CLINICA } from '../src/data/revisionClinica.js';
 
 const FECHA = '2026-11-22';
 const FECHA_TEXTO = '22-nov-2026';
@@ -152,4 +153,27 @@ writeFileSync(REGISTRO, `/**
  */
 export const ARTICULOS_CONDICIONES = ${JSON.stringify(entradas, null, 2)};
 `);
-console.log(`Guías escritas: ${entradas.length} · registro: ${REGISTRO}`);
+// Bloque de public/llms.txt: solo guías con revisión clínica registrada.
+const LLMS = 'public/llms.txt';
+const INICIO = '<!-- condiciones:inicio (scripts/generar-guias-condiciones.mjs) -->';
+const FIN = '<!-- condiciones:fin -->';
+const revisadas = entradas.filter((e) => REVISION_CLINICA[e.slug]);
+const bloque = revisadas.length ? [
+  INICIO,
+  '',
+  '## Enfermedades de alto costo: guías para pacientes',
+  '',
+  'Síntomas, señales de alarma, diagnóstico, tratamiento, medicamentos y cómo acceder al tratamiento en Colombia (EPS, MIPRES, derecho de petición, tutela), con una lista para la próxima cita. Fuente: MedlinePlus en español y fichas técnicas; revisión clínica de Karla Hernández, química farmacéutica.',
+  '',
+  ...revisadas.map((e) => `- [${e.title}](https://edvanta.co/articulos/${e.slug}): ${e.description}`),
+  '',
+  FIN,
+].join('\n') : '';
+const escapar = (t) => t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+let llms = readFileSync(LLMS, 'utf8');
+if (llms.includes(INICIO)) llms = llms.replace(new RegExp(`${escapar(INICIO)}[\\s\\S]*?${escapar(FIN)}\\n?`), bloque ? `${bloque}\n` : '');
+else if (bloque && llms.includes('<!-- alto-costo:inicio')) llms = llms.replace('<!-- alto-costo:inicio', `${bloque}\n\n<!-- alto-costo:inicio`);
+else if (bloque) llms = llms.replace('\n## Transparencia', `\n${bloque}\n\n## Transparencia`);
+writeFileSync(LLMS, llms);
+
+console.log(`Guías escritas: ${entradas.length} · registro: ${REGISTRO} · en llms.txt: ${revisadas.length}`);

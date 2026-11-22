@@ -540,6 +540,29 @@ const REVISADOS_POR_KARLA_2026_11_21 = [
   'venetoclax-para-que-sirve',
 ];
 
+/**
+ * 22 de noviembre de 2026: Karla Hernández revisó las 13 guías de condición
+ * de alto costo (src/data/articulosCondiciones.js) y las 51 monografías
+ * oncológicas del vademécum (src/data/vademecum/altoCosto). Al pedirle su
+ * aprobación escrita de ambos lotes respondió: «revisadas». Las escribió el
+ * equipo editorial de Edvanta; Karla queda como revisora, no como autora.
+ */
+const KARLA_REVISORA_2026_11_22 = { ...KARLA_REVISORA_2026_11_21, reviewedAt: '2026-11-22' };
+
+const GUIAS_REVISADAS_POR_KARLA_2026_11_22 = [
+  'cancer-de-mama-sintomas-tratamiento-y-medicamentos',
+  'cancer-colorrectal-sintomas-tratamiento-y-medicamentos',
+  'cancer-de-pulmon-sintomas-tratamiento-y-medicamentos',
+  'cancer-de-prostata-sintomas-tratamiento-y-medicamentos',
+  'leucemia-mieloide-cronica-sintomas-tratamiento-y-medicamentos',
+  'mieloma-multiple-sintomas-tratamiento-y-medicamentos',
+  'linfoma-no-hodgkin-sintomas-tratamiento-y-medicamentos',
+  'linfoma-de-hodgkin-sintomas-tratamiento-y-medicamentos',
+  'artritis-reumatoide-sintomas-tratamiento-y-medicamentos', 'vih-sintomas-tratamiento-y-medicamentos',
+  'hepatitis-c-sintomas-tratamiento-y-medicamentos',
+  'esclerosis-multiple-sintomas-tratamiento-y-medicamentos', 'hemofilia-sintomas-tratamiento-y-medicamentos',
+];
+
 export const REVISION_CLINICA = Object.fromEntries([
   ...REVISADOS_POR_KARLA_2026_11_09.map((slug) => [slug, KARLA_2026_11_09]),
   ...REVISADOS_POR_KARLA_2026_11_12.map((slug) => [slug, KARLA_2026_11_12]),
@@ -549,6 +572,7 @@ export const REVISION_CLINICA = Object.fromEntries([
   ...REVISADOS_POR_KARLA_2026_11_18.map((slug) => [slug, KARLA_2026_11_18]),
   ...REVISADOS_POR_KARLA_2026_11_20.map((slug) => [slug, KARLA_2026_11_20]),
   ...REVISADOS_POR_KARLA_2026_11_21.map((slug) => [slug, KARLA_REVISORA_2026_11_21]),
+  ...GUIAS_REVISADAS_POR_KARLA_2026_11_22.map((slug) => [slug, KARLA_REVISORA_2026_11_22]),
 ]);
 
 /**
@@ -612,4 +636,14 @@ export const REVISION_VADEMECUM = Object.fromEntries([
   // 18-nov-2026: grupo renal, finerenona y las monografías de diabetes.
   'medicamentos-para-la-enfermedad-renal-cronica',
   'finerenona', 'dapagliflozina', 'gliclazida',
-].map((slug) => [slug, KARLA_2026_11_18])));
+].map((slug) => [slug, KARLA_2026_11_18])).concat([
+  // 22-nov-2026: 51 monografías oncológicas de alto costo («revisadas»), escritas por el equipo editorial.
+  'nivolumab', 'atezolizumab', 'durvalumab', 'ipilimumab', 'tamoxifeno', 'letrozol', 'anastrozol',
+  'enzalutamida', 'abiraterona', 'trastuzumab-deruxtecan', 'pertuzumab', 'bevacizumab', 'cetuximab',
+  'rituximab', 'daratumumab', 'carfilzomib', 'bortezomib', 'nilotinib', 'dasatinib', 'osimertinib',
+  'palbociclib', 'ribociclib', 'abemaciclib', 'lenalidomida', 'pomalidomida', 'ibrutinib', 'venetoclax',
+  'olaparib', 'ruxolitinib', 'everolimus', 'sunitinib', 'sorafenib', 'lenvatinib', 'cabozantinib',
+  'capecitabina', 'docetaxel', 'paclitaxel', 'carboplatino', 'cisplatino', 'doxorrubicina', 'ciclofosfamida',
+  'oxaliplatino', 'azacitidina', 'gemcitabina', 'irinotecan', 'fluorouracilo', 'pemetrexed', 'temozolomida',
+  'hidroxicarbamida', 'filgrastim', 'pegfilgrastim',
+].map((slug) => [slug, KARLA_REVISORA_2026_11_22])));
