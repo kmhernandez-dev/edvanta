@@ -47,7 +47,7 @@ import { updatePageSeo } from '../utils/seo';
 // Los mismos títulos, descripción y datos estructurados que escribe la API
 // en el HTML (api/routes/paginas-publicas.js): un solo origen.
 import { descripcionDeCurso, tituloDeCurso } from '../../api/lib/meta-seo.js';
-import { datosDeCurso, preguntasDeCurso } from '../../api/lib/html-de-ficha.js';
+import { datosDeCurso, faqDeCurso, preguntasDeCurso } from '../../api/lib/html-de-ficha.js';
 import { EDVANTA_WHATSAPP_URL } from '../config/links';
 import FichaCursoHero from '../components/curso/FichaCursoHero';
 import ContenidoCurso from '../components/curso/ContenidoCurso';
@@ -443,6 +443,7 @@ export default function FichaDeCurso({ modo = 'propio', slugPublico = '' }) {
             { '@type': 'ListItem', position: 3, name: nombre, item: url },
           ],
         },
+        faqDeCurso(ficha, EMISOR.nombre, url),
       ],
     });
   }, [ficha]);

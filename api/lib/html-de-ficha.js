@@ -20,6 +20,7 @@
  */
 
 import { descripcionDeCurso, resumenUtil } from './meta-seo.js';
+import { palabraClaveDe } from './seo-cursos-propios.js';
 
 const esc = (t) => String(t ?? '')
   .replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;');
@@ -83,6 +84,7 @@ export function preguntasDeCurso(ficha, emisor) {
         ? 'Dentro de Edvanta, en tu aula virtual. Te inscribes con tu cuenta y avanzas a tu ritmo.'
         : `En ${ficha.proveedor.nombre}. Edvanta lo seleccionó para su catálogo y te lleva hasta allí; la inscripción y las clases ocurren en su plataforma.`,
     },
+    ...(propio ? preguntasDeBusqueda(ficha) : []),
     ...(certificado ? [{ q: '¿Da certificado?', a: certificado }] : []),
     ...(propio && Number(ficha.certificado?.precio) > 0 ? [{
       q: '¿Cuánto cuesta? ¿Puedo probarlo antes?',
@@ -95,6 +97,53 @@ export function preguntasDeCurso(ficha, emisor) {
       a: 'Videos seleccionados, documentos oficiales de las entidades que los publican y textos de apoyo escritos para el curso. Cada recurso indica su fuente.',
     }] : []),
   ];
+}
+
+/**
+ * Preguntas con la búsqueda principal del curso (seo-cursos-propios.js):
+ * «¿El curso de X es online?», «¿Cuánto dura…?», «¿Qué aprendo…?» y la
+ * validez del certificado. Solo con datos de la ficha; sin precios.
+ */
+function preguntasDeBusqueda(ficha) {
+  const clave = palabraClaveDe(ficha);
+  const el = clave ? `el ${clave.charAt(0).toLowerCase()}${clave.slice(1)}` : 'este curso';
+  const horas = textoDeHoras(ficha.certificado?.horas);
+  const tamano = ficha.unidades && ficha.clases
+    ? `${ficha.unidades} unidades y ${ficha.clases} clases`
+    : ficha.clases ? `${ficha.clases} clases` : null;
+  const p = [{
+    q: `¿${el.charAt(0).toUpperCase()}${el.slice(1)} es online?`,
+    a: 'Sí. Es un curso virtual: estudias en el aula de Edvanta a tu ritmo, sin horarios fijos, y retomas donde lo dejaste.',
+  }];
+  if (horas || tamano) {
+    p.push({
+      q: `¿Cuánto dura ${el}?`,
+      a: `${tamano ? `Tiene ${tamano}` : 'Tiene'}${horas ? `${tamano ? ', con' : ''} una duración de ${horas}` : ''}. Como avanzas a tu ritmo, tú decides cuántas clases haces por semana.`,
+    });
+  }
+  if (ficha.queAprenderas?.length) {
+    const xs = ficha.queAprenderas.slice(0, 3).map((t) => String(t).replace(/\.$/, '').trim());
+    p.push({ q: `¿Qué aprendo en ${el}?`, a: `Entre otras cosas: ${xs.join('; ')}.` });
+  }
+  if (ficha.certificado?.estado === 'available') {
+    p.push({
+      q: '¿El certificado tiene validez?',
+      a: 'Es un certificado de aprobación de Edvanta S.A.S., verificable con su código en edvanta.co/certificados. Los cursos de Edvanta son educación informal (Decreto 1075 de 2015): certifican lo que estudiaste, pero no otorgan títulos profesionales.',
+    });
+  }
+  return p;
+}
+
+/** Las preguntas visibles de la ficha como FAQPage. */
+export function faqDeCurso(ficha, emisor, canonical) {
+  const preguntas = preguntasDeCurso(ficha, emisor);
+  if (!preguntas.length) return null;
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    '@id': `${canonical}#preguntas`,
+    mainEntity: preguntas.map((x) => ({ '@type': 'Question', name: x.q, acceptedAnswer: { '@type': 'Answer', text: x.a } })),
+  };
 }
 
 /** Lo que incluye el curso, en el mismo orden que la ficha. */
@@ -114,7 +163,7 @@ function datosClave(ficha) {
     ficha.modalidad ? `Modalidad virtual: ${ficha.modalidad.toLowerCase()}` : 'Modalidad virtual',
     ficha.categoria ? `Área: ${ficha.categoria}` : null,
     propio
-      ? (precio > 0 ? `Acceso gratis al contenido. Certificado de aprobación de Edvanta: ${pesos(precio)}.` : 'Acceso gratis al contenido.')
+      ? (precio > 0 ? `Primera unidad abierta. Curso completo con certificado: ${pesos(precio)}.` : 'Acceso gratis al contenido.')
       : null,
   ].filter(Boolean);
 }
