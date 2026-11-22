@@ -20,7 +20,7 @@ import QuizGrupal from '../components/examenes/QuizGrupal';
 import { EXAMENES, examenPorSlug, examenRevisado, robotsDeExamen } from '../data/examenes';
 import { getArticulo } from '../data/articulos';
 import { updatePageSeo } from '../utils/seo';
-import { trackEvent } from '../utils/analytics';
+import BotonesDeCompra from '../components/curso/BotonesDeCompra';
 
 const SITIO = 'https://edvanta.co';
 
@@ -191,11 +191,11 @@ export default function ExamenDetalle() {
               </details>
 
               <div className="mt-10 grid gap-4 sm:grid-cols-2">
-                <Link to={examen.curso.ruta} className="rounded-2xl border border-edvanta-border bg-white p-5 transition hover:border-edvanta-teal/40">
+                <div className="rounded-2xl border border-edvanta-border bg-white p-5">
                   <p className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[.12em] text-edvanta-tealdark"><GraduationCap className="h-4 w-4" aria-hidden="true" />Curso con certificado</p>
-                  <p className="mt-2 font-display text-lg font-bold text-edvanta-deep">{examen.curso.nombre}</p>
-                  <p className="mt-1 text-sm leading-6 text-edvanta-muted">Empieza por la primera unidad gratis; el curso completo incluye certificado verificable.</p>
-                </Link>
+                  <p className="mt-2 font-display text-lg font-bold text-edvanta-deep"><Link to={examen.curso.ruta} className="hover:underline">{examen.curso.nombre}</Link></p>
+                  <BotonesDeCompra cursoUrl={examen.curso.ruta} origen="examen_resultado" extra={{ examen: examen.slug }} compacto className="mt-4" />
+                </div>
                 <Link to={examen.guia.ruta} className="rounded-2xl border border-edvanta-border bg-white p-5 transition hover:border-edvanta-teal/40">
                   <p className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[.12em] text-edvanta-tealdark"><BookOpen className="h-4 w-4" aria-hidden="true" />Guía para profesionales</p>
                   <p className="mt-2 font-display text-lg font-bold text-edvanta-deep">{examen.guia.nombre}</p>
@@ -303,11 +303,8 @@ export default function ExamenDetalle() {
               <div className="rounded-2xl border border-edvanta-teal/25 bg-edvanta-mint/35 p-5">
                 <p className="text-xs font-bold uppercase tracking-[.12em] text-edvanta-tealdark">Para profesionales</p>
                 <p className="mt-2 font-display text-lg font-bold text-edvanta-deep">Sigue con el curso</p>
-                <p className="mt-1 text-sm leading-6 text-edvanta-muted">Empieza por la primera unidad gratis; el curso completo incluye verificación de aprendizaje y certificado.</p>
-                <Link to={examen.curso.ruta} onClick={() => trackEvent('course_clicked', { origen: 'examen', examen: examen.slug, curso: examen.curso.ruta })} className="mt-3 inline-flex items-center gap-1.5 text-sm font-bold text-edvanta-blue hover:underline">
-                  Ver el curso
-                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
-                </Link>
+                <p className="mt-1 text-sm leading-6 text-edvanta-muted">{examen.curso.nombre}: el curso completo incluye verificación de aprendizaje y certificado.</p>
+                <BotonesDeCompra cursoUrl={examen.curso.ruta} origen="examen_lateral" extra={{ examen: examen.slug }} compacto className="mt-3" />
               </div>
             </aside>
           </div>

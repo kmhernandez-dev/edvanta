@@ -19,6 +19,7 @@
 
 import { Children, isValidElement, useEffect, useMemo, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import BotonesDeCompra from '../components/curso/BotonesDeCompra';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import {
@@ -776,18 +777,14 @@ export default function ArticuloPage() {
                     </li>
                   ))}
                 </ul>
-                {clasesPro.cursos.length > 0 && (
-                  <p className="mt-4 text-sm leading-6 text-edvanta-ink">
-                    Cursos completos:{' '}
-                    {clasesPro.cursos.map((c, i) => (
-                      <span key={c.ruta}>
-                        {i > 0 && ', '}
-                        <Link to={c.ruta} className="font-semibold text-edvanta-blue underline">{c.nombre}</Link>
-                      </span>
-                    ))}
-                    .
-                  </p>
-                )}
+                {clasesPro.cursos.map((c, i) => (
+                  <div key={c.ruta} className="mt-5 border-t border-edvanta-border pt-4">
+                    <p className="text-sm leading-6 text-edvanta-ink">
+                      Curso completo: <Link to={c.ruta} className="font-semibold text-edvanta-blue underline">{c.nombre}</Link>
+                    </p>
+                    <BotonesDeCompra cursoUrl={c.ruta} origen="articulo" extra={{ articulo: art.slug }} compacto conPrecio={i === clasesPro.cursos.length - 1} className="mt-3" />
+                  </div>
+                ))}
               </section>
             )}
 

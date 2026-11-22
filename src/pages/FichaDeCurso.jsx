@@ -36,6 +36,7 @@ import { formatPrice } from '../utils/format';
 import { nombreDeCurso } from '../lib/slug';
 import { miAula, inscribirme, pagarCertificado, precioDelCertificado } from '../lib/misCursos';
 import { PrecioCertificado } from '../components/curso/DosCaminos';
+import { medirCta, rutaPrimeraUnidad } from '../components/curso/BotonesDeCompra';
 import { EMISOR, textoDeHoras } from '../lib/certificado/formato';
 import {
   borrarComentario, comentarEnCurso, comentariosDeCurso, editarComentario,
@@ -330,7 +331,6 @@ export default function FichaDeCurso({ modo = 'propio', slugPublico = '' }) {
   const [oferta, setOferta] = useState(null);
   const [camino, setCamino] = useState(null); // certificado | gratis mientras trabaja
   // Los dos botones llevan a la landing de inscripción del curso.
-  const irAInscripcion = useCallback(() => { if (ficha?.url) navigate(`${ficha.url}/inscripcion`); }, [ficha, navigate]);
   const caminoAuto = useRef(false);
   const [trabajando, setTrabajando] = useState(false);
   const [error, setError] = useState('');
@@ -564,8 +564,15 @@ export default function FichaDeCurso({ modo = 'propio', slugPublico = '' }) {
   const conCaminos = propio && precioVisible > 0 && estado !== 'dentro';
   const caminos = conCaminos
     // «Con certificado» va directo a la compra (cuenta → inscripción → Mercado
-    // Pago); «Probar la primera unidad» lleva a la landing (pedido de Karla, 20-nov).
-    ? { onAbrir: (c) => (c === 'certificado' ? estudiarConCertificado() : irAInscripcion()), trabajando: camino }
+    // Pago); «Empezar la primera unidad gratis» entra directo al aula (22-nov).
+    ? {
+      onAbrir: (c) => {
+        medirCta(c === 'certificado' ? 'certificado' : 'primera_unidad', 'ficha', ficha.url);
+        if (c === 'certificado') estudiarConCertificado();
+        else navigate(rutaPrimeraUnidad(ficha.url));
+      },
+      trabajando: camino,
+    }
     : null;
   const notaCertificado = {
     available: precioVisible > 0
@@ -770,7 +777,7 @@ export default function FichaDeCurso({ modo = 'propio', slugPublico = '' }) {
           nombre={nombre}
           accion={accion}
           boton={propio && !conCaminos ? boton() : null}
-          compra={conCaminos ? { oferta: oferta || { precio: precioVisible }, onComprar: estudiarConCertificado, ocupado: camino === 'certificado' } : {}}
+          compra={conCaminos ? { oferta: oferta || { precio: precioVisible }, onComprar: () => { medirCta('certificado', 'ficha_precio', ficha.url); estudiarConCertificado(); }, ocupado: camino === 'certificado' } : {}}
         />
 
         {/* La guía que lleva el curso a la práctica (Hotmart). Solo si hay una de verdad relacionada. */}
@@ -843,7 +850,7 @@ export default function FichaDeCurso({ modo = 'propio', slugPublico = '' }) {
                 size="sm"
                 variant="primary"
                 className="w-full shrink-0 min-[420px]:w-auto"
-                onClick={estudiarConCertificado}
+                onClick={() => { medirCta('certificado', 'ficha_barra_movil', ficha.url); estudiarConCertificado(); }}
                 loading={camino === 'certificado'}
                 loadingLabel="Un momento…"
                 iconRight={ArrowRight}

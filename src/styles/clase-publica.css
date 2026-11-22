@@ -239,3 +239,4 @@
 .cp-sigue details { border-top: 1px solid var(--cp-borde); padding: 10px 0; }
 .cp-sigue summary { cursor: pointer; color: var(--cp-texto); font-weight: 700; }
 .cp-sigue details p { margin-top: 6px; }
+.cp-precio { margin: 10px 0 0; max-width: 60ch; color: var(--cp-muted, #5b6478); font-size: .8rem; line-height: 1.55; }
