@@ -306,6 +306,32 @@ export default function ClasePublica() {
 
                 <Lecturas lecturas={d.lecturas} />
 
+                {d.sigue && (
+                  <section className="cp-sigue" aria-labelledby="cp-sigue-titulo">
+                    <h2 id="cp-sigue-titulo">Lo que sigue en el {d.curso.nombre}</h2>
+                    <p>{d.sigue.intro}</p>
+                    {d.sigue.enUnidad.length > 0 && (
+                      <>
+                        <h3>Más clases de esta unidad</h3>
+                        <ul>{d.sigue.enUnidad.slice(0, 6).map((c) => <li key={c.ruta}><Link to={c.ruta}>{c.titulo}</Link></li>)}</ul>
+                      </>
+                    )}
+                    {d.sigue.despues.length > 0 && (
+                      <>
+                        <h3>Unidades que siguen</h3>
+                        <ul>{d.sigue.despues.map((u) => <li key={u.ruta}><Link to={u.ruta}>{u.nombre}</Link> ({u.clases} {u.clases === 1 ? 'clase abierta' : 'clases abiertas'})</li>)}</ul>
+                      </>
+                    )}
+                    <h3>Preguntas sobre el curso</h3>
+                    {d.sigue.preguntas.map(([q, a]) => (
+                      <details key={q}>
+                        <summary>{q}</summary>
+                        <p>{a}</p>
+                      </details>
+                    ))}
+                  </section>
+                )}
+
                 <section className="cp-cta" aria-labelledby="cp-cta-titulo">
                   <Sparkles size={22} aria-hidden="true" />
                   <div>

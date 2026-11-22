@@ -307,7 +307,82 @@ export function datosDeClase(datos, { canonical, cursoUrl, inicio }) {
       { '@type': 'ListItem', position: 4, name: datos.clase.titulo, item: canonical },
     ],
   };
-  return [pagina, recurso, migas, faqDeExperiencia(exp, canonical)].filter(Boolean);
+  return [pagina, recurso, migas, faqDeClase(exp, canonical, queSigueDeClase(datos))].filter(Boolean);
+}
+
+// ── Lo que sigue en el curso ────────────────────────────────
+
+/**
+ * Texto propio de cada clase que la sitúa dentro del curso completo: las
+ * otras clases de su unidad, las unidades que siguen y preguntas sobre el
+ * curso con certificado. Sale del índice del curso, así que cada página
+ * dice algo distinto y enlaza a sus vecinas. No da precios: viven en la
+ * ficha del curso.
+ */
+const enLista = (xs) => (xs.length <= 1 ? xs.join('') : `${xs.slice(0, -1).join(', ')} y ${xs.at(-1)}`);
+
+export function queSigueDeClase(datos) {
+  const { curso, clase } = datos;
+  const conCertificado = Number(curso.precioCertificado) > 0;
+  const unidades = [];
+  for (const c of datos.indice || []) {
+    const u = unidades.at(-1);
+    if (u && u.nombre === c.unidad) u.clases.push(c);
+    else unidades.push({ nombre: c.unidad, clases: [c] });
+  }
+  const k = unidades.findIndex((u) => u.nombre === clase.unidad);
+  const actual = rutaDeClase(curso.slug, clase.slug);
+  const enUnidad = k >= 0 ? unidades[k].clases.filter((c) => c.ruta !== actual) : [];
+  const despues = k >= 0 ? unidades.slice(k + 1) : [];
+  const intro = `«${clase.titulo}» es la clase ${datos.numero} de ${datos.total} clases abiertas del ${curso.nombre}${k >= 0 && unidades.length > 1 ? ` y pertenece a «${clase.unidad}», la unidad ${k + 1} de ${unidades.length}` : ''}.`;
+  const preguntas = [
+    [
+      `¿Esta clase tiene certificado?`,
+      conCertificado
+        ? `La clase es parte del ${curso.nombre}. El certificado se obtiene al completar el curso completo con certificado: todas las clases, quices, actividades con revisión docente y foros. Es verificable en edvanta.co/certificados con su código y QR.`
+        : `La clase es parte del ${curso.nombre}. Al completar el curso en el aula emites un certificado verificable en edvanta.co/certificados con su código y QR.`,
+    ],
+    [
+      `¿Puedo empezar el ${curso.nombre} gratis?`,
+      conCertificado
+        ? `Sí. Al inscribirte pruebas la primera unidad completa sin pagar. El curso completo con certificado suma acompañamiento por WhatsApp, revisión docente de tus actividades y certificado verificable.`
+        : `Sí. El curso es gratis y el certificado no tiene costo.`,
+    ],
+  ];
+  if (enUnidad.length || despues.length) {
+    const partes = [];
+    if (enUnidad.length) partes.push(`En la misma unidad ${enUnidad.length === 1 ? 'está' : 'están'} ${enLista(enUnidad.slice(0, 4).map((c) => `«${c.titulo}»`))}.`);
+    if (despues.length) partes.push(`Después el curso sigue con ${enLista(despues.slice(0, 3).map((u) => `«${u.nombre}»`))}.`);
+    preguntas.push([`¿Qué sigue después de esta clase?`, partes.join(' ')]);
+  }
+  preguntas.push([
+    `¿El certificado es un título profesional?`,
+    'No. Los cursos de Edvanta son educación informal según el Decreto 1075 de 2015: certifican lo que estudiaste, pero no otorgan títulos profesionales ni certificados de aptitud ocupacional.',
+  ]);
+  return { intro, enUnidad, despues: despues.map((u) => ({ nombre: u.nombre, clases: u.clases.length, ruta: u.clases[0].ruta })), preguntas, conCertificado };
+}
+
+/** Une las preguntas de repaso de la clase y las del curso en un solo FAQPage. */
+function faqDeClase(exp, canonical, sigue) {
+  const base = faqDeExperiencia(exp, canonical) || {
+    '@context': 'https://schema.org', '@type': 'FAQPage', '@id': `${canonical}#preguntas`, mainEntity: [],
+  };
+  return {
+    ...base,
+    mainEntity: [
+      ...base.mainEntity,
+      ...sigue.preguntas.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })),
+    ],
+  };
+}
+
+/** HTML de «Lo que sigue en el curso». */
+export function htmlDeQueSigue(sigue, curso) {
+  const li = (c) => `<li><a href="${esc(c.ruta)}">${esc(c.titulo)}</a></li>`;
+  return `<section id="que-sigue"><h2>Lo que sigue en el ${esc(curso.nombre)}</h2><p>${esc(sigue.intro)}</p>`
+    + (sigue.enUnidad.length ? `<h3>Más clases de esta unidad</h3><ul>${sigue.enUnidad.slice(0, 6).map(li).join('')}</ul>` : '')
+    + (sigue.despues.length ? `<h3>Unidades que siguen</h3><ul>${sigue.despues.map((u) => `<li><a href="${esc(u.ruta)}">${esc(u.nombre)}</a> (${u.clases} ${u.clases === 1 ? 'clase abierta' : 'clases abiertas'})</li>`).join('')}</ul>` : '')
+    + `<h3>Preguntas sobre el curso</h3>${sigue.preguntas.map(([q, a]) => `<h4>${esc(q)}</h4><p>${esc(a)}</p>`).join('')}</section>`;
 }
 
 // ── HTML del servidor ───────────────────────────────────────
@@ -341,6 +416,7 @@ export function cuerpoDeClase(datos) {
     htmlDeExperiencia(clase.experiencia),
     `<nav aria-label="Otras clases">${datos.anterior ? `<a href="${esc(datos.anterior.ruta)}" rel="prev">Clase anterior: ${esc(datos.anterior.titulo)}</a>` : ''} ${datos.siguiente ? `<a href="${esc(datos.siguiente.ruta)}" rel="next">Clase siguiente: ${esc(datos.siguiente.titulo)}</a>` : ''}</nav>`,
     htmlDeLecturasDeClase(lecturasDe(datos)),
+    htmlDeQueSigue(queSigueDeClase(datos), curso),
     `<section id="curso-completo"><h2>Sigue el ${esc(curso.nombre)} completo y certifícate</h2><p>El curso tiene ${esc(tamano)}${curso.unidades ? ` en ${curso.unidades} unidades` : ''}. En el aula guardas tu avance, presentas quizzes, actividades y foros, y al terminar emites tu certificado verificable.</p><p>Con el certificado tienes acompañamiento por WhatsApp y revisión de tus actividades. <a href="${esc(cursoRuta)}">Inscribirme al ${esc(curso.nombre)}</a></p></section>`,
     `<section><h2>Todas las clases abiertas del curso</h2><ol>${datos.indice.map((c) => `<li><a href="${esc(c.ruta)}">${esc(c.titulo)}</a></li>`).join('')}</ol></section>`,
   ].join('');
@@ -361,6 +437,7 @@ export function resumenDeClase(datos, urls = null) {
     siguiente: datos.siguiente,
     indice: datos.indice,
     lecturas: lecturasDe(datos),
+    sigue: queSigueDeClase(datos),
     caracteres: caracteresDeExperiencia(datos.clase.experiencia),
     seo: urls ? {
       titulo: tituloDeClase(datos),

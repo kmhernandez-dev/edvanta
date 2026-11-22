@@ -228,3 +228,14 @@
 .cp-error h1 { color: var(--cp-azul-hondo); font-family: 'Manrope', 'Inter', sans-serif; font-size: 1.75rem; font-weight: 800; }
 
 @media (prefers-reduced-motion: reduce) { .cp-cargando__punto { animation: none; } }
+
+/* Lo que sigue en el curso: otras clases de la unidad, unidades y preguntas del curso. */
+.cp-sigue { margin-top: 32px; padding: 24px; border: 1px solid var(--cp-borde); border-radius: 18px; background: #fff; }
+.cp-sigue h2 { margin: 0 0 8px; color: var(--cp-azul-hondo); font-size: 1.35rem; font-weight: 800; }
+.cp-sigue h3 { margin: 20px 0 8px; color: var(--cp-azul-hondo); font-size: 1rem; font-weight: 800; }
+.cp-sigue p { margin: 0; color: var(--cp-muted); line-height: 1.65; }
+.cp-sigue ul { margin: 0; padding-left: 1.2em; line-height: 1.8; }
+.cp-sigue a { color: var(--cp-azul); font-weight: 600; }
+.cp-sigue details { border-top: 1px solid var(--cp-borde); padding: 10px 0; }
+.cp-sigue summary { cursor: pointer; color: var(--cp-texto); font-weight: 700; }
+.cp-sigue details p { margin-top: 6px; }
