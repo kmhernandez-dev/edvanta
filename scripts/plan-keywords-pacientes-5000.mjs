@@ -489,10 +489,16 @@ for (const [slug, nombre, tipo] of CONDICIONES) {
   const mods = [...MOD_CONDICION, ...(MOD_TIPO[tipo] || [])];
   const esAlias = ['hemofilia A', 'hemofilia B', 'cáncer de colon'].includes(nombre);
   const pediatrica = PEDIATRICAS.has(slug);
+  // Si ya existe la guía de la condición, todas sus búsquedas van a ella:
+  // los satélites se fusionan en la guía hasta medir el volumen.
+  const guia = `${slug}-sintomas-tratamiento-y-medicamentos`;
+  const hayGuia = existsSync(`public/articulos/articulos_edvanta/salud/${guia}.md`);
   for (const [plantilla, pagina, prioridad, etapa] of mods) {
     if (esAlias && prioridad === 'P3') continue;
     if (pediatrica && SOLO_ADULTOS.some((t) => plantilla.includes(t))) continue;
-    const p = PAGINA_CONDICION[pagina](slug);
+    const p = hayGuia
+      ? { slug: guia, url: `${SITIO}/articulos/${guia}`, estado: REVISION_CLINICA[guia] ? 'Publicada e indexable: guía revisada por Karla' : 'Publicada en noindex: guía de condición, falta revisión de Karla' }
+      : PAGINA_CONDICION[pagina](slug);
     const audiencia = pagina === 'cuidadores' ? AUD.cuidador : AUD.pacienteCuidador;
     const secundaria = tipoGeneral === 'cancer' ? RUTA_ONCO : CONTIGO;
     agregar(fila({
