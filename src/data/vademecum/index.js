@@ -20,6 +20,7 @@
  */
 import { REVISION_VADEMECUM } from '../revisionClinica.js';
 import { conComunidad } from './lib/comunidades.js';
+import { MONOGRAFIAS_ALTO_COSTO } from './altoCosto/index.js';
 import obesidad from './grupos/obesidad.js';
 import hipertension from './grupos/hipertension.js';
 import diabetes from './grupos/diabetes-tipo-2.js';
@@ -160,6 +161,7 @@ export const MONOGRAFIAS = [
   fluconazol, clotrimazol, nistatina, ketoconazol, aciclovir, albendazol, ivermectina,
   valsartan, carvedilol, metoprolol, espironolactona, furosemida,
   amoxicilina, azitromicina, alopurinol, colchicina, levotiroxina,
+  ...MONOGRAFIAS_ALTO_COSTO,
 ].map(conRevision).map(conComunidad);
 
 export const PAGINAS_VADEMECUM = [...GRUPOS_VADEMECUM, ...MONOGRAFIAS];

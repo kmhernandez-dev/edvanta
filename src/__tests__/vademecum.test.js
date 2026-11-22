@@ -53,6 +53,13 @@ describe('vademécum', () => {
         'fluconazol', 'clotrimazol', 'nistatina', 'ketoconazol', 'aciclovir', 'albendazol', 'ivermectina',
         'valsartan', 'carvedilol', 'metoprolol', 'espironolactona', 'furosemida',
         'amoxicilina', 'azitromicina', 'alopurinol', 'colchicina', 'levotiroxina', 'finerenona',
+        // Oncología de alto costo (src/data/vademecum/altoCosto)
+        'nivolumab', 'atezolizumab', 'durvalumab', 'ipilimumab', 'tamoxifeno', 'letrozol', 'anastrozol', 'enzalutamida', 'abiraterona',
+        'trastuzumab-deruxtecan', 'pertuzumab', 'bevacizumab', 'cetuximab', 'rituximab', 'daratumumab', 'carfilzomib', 'bortezomib', 'nilotinib',
+        'dasatinib', 'osimertinib', 'palbociclib', 'ribociclib', 'abemaciclib', 'lenalidomida', 'pomalidomida', 'ibrutinib', 'venetoclax',
+        'olaparib', 'ruxolitinib', 'everolimus', 'sunitinib', 'sorafenib', 'lenvatinib', 'cabozantinib', 'capecitabina', 'docetaxel',
+        'paclitaxel', 'carboplatino', 'cisplatino', 'doxorrubicina', 'ciclofosfamida', 'oxaliplatino', 'azacitidina', 'gemcitabina', 'irinotecan',
+        'fluorouracilo', 'pemetrexed', 'temozolomida', 'hidroxicarbamida', 'filgrastim', 'pegfilgrastim',
       ].sort(),
     );
     const slugs = PAGINAS_VADEMECUM.map((p) => p.slug);
