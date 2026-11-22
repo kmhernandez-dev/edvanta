@@ -2,7 +2,7 @@
  * Navegación del aula. Cada módulo agrega aquí sus secciones cuando su
  * funcionalidad está completa: no se enlaza nada que no funcione.
  */
-import { BookOpen, Building2, GraduationCap, History, Inbox, LayoutDashboard, LifeBuoy, MessageSquare, Target, Users, UsersRound } from 'lucide-react';
+import { HeartHandshake, BookOpen, Building2, GraduationCap, History, Inbox, LayoutDashboard, LifeBuoy, MessageSquare, Target, Users, UsersRound } from 'lucide-react';
 
 export const DOCENTE_NAV = [
   { to: '/aula/docente', label: 'Mis cursos', icon: BookOpen, end: true },
@@ -40,6 +40,7 @@ export const ADMIN_NAV = [
     title: 'Control',
     items: [
       { to: '/aula/admin/solicitudes', label: 'Solicitudes', icon: Inbox },
+      { to: '/aula/admin/comunidades', label: 'Grupos de apoyo', icon: HeartHandshake },
       { to: '/aula/admin/comentarios', label: 'Comentarios', icon: MessageSquare },
       { to: '/aula/admin/auditoria', label: 'Bitácora', icon: History },
     ],

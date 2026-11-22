@@ -37,6 +37,7 @@
  */
 
 import { PROMOCION, promoActiva } from './promocion.js';
+import { GRUPOS } from './comunidades.js';
 import {
   beneficio, boton, cartaCorreo, cita, conUtm, destacado, divisor, enlace, esc, etiqueta, lista, nota,
   parrafo, portada, posdata, recuadro, saludo, subtitulo,
@@ -170,6 +171,38 @@ export const PLANTILLAS = {
       whatsapp: { titulo: '¿Tienes una pregunta?', texto: 'Escríbenos por WhatsApp: te orientamos sobre los recursos para pacientes.', url: wa(`Hola, soy ${primerNombre(nombre)}. Quiero orientación sobre los recursos para pacientes.`) },
     },
   }),
+
+  // Bienvenida al grupo de apoyo, después de la inscripción con encuesta
+  // (/comunidades/:slug#inscripcion). Sin datos de salud: solo el grupo.
+  'bienvenida-comunidad': ({ nombre, comunidad, siteUrl }) => {
+    const grupo = GRUPOS[comunidad] || 'tu enfermedad';
+    const pagina = conUtm(`${siteUrl}/comunidades/${GRUPOS[comunidad] ? comunidad : ''}`, 'ciclo', 'bienvenida-comunidad');
+    const entrar = wa(`Hola Karla, soy ${primerNombre(nombre)}. Me inscribí en el grupo de apoyo de ${grupo} en edvanta.co y quiero entrar. ¿Me compartes las reglas?`);
+    return {
+      asunto: `${primerNombre(nombre)}, tu inscripción al grupo de apoyo de ${grupo} está lista`,
+      pre: 'Último paso: entra al grupo por WhatsApp. Es gratis y dentro del grupo no se vende nada.',
+      encabezado: ['Grupo de apoyo', `Grupo de apoyo de ${esc(grupo)}`],
+      cuerpo: [
+        saludo(primerNombre(nombre)),
+        parrafo('Gracias por inscribirte. Con tus respuestas preparamos los temas, los artículos y las charlas del grupo. Falta un paso: escribir por WhatsApp para entrar.'),
+        boton('Entrar al grupo por WhatsApp', entrar, { variante: 'whatsapp' }),
+        divisor(),
+        subtitulo('Las reglas, en corto'),
+        lista([
+          `${destacado('Sin dosis por chat.')} No se ajustan ni se cambian tratamientos en el grupo.`,
+          `${destacado('Con privacidad.')} No se comparten datos ni exámenes de otras personas.`,
+          `${destacado('Sin reemplazar la consulta.')} Ante signos de alarma, a urgencias.`,
+        ]),
+        enlace('Ver la página del grupo: reglas y artículos para empezar', pagina),
+        nota('Este contenido es educativo: no reemplaza la valoración, el diagnóstico ni el tratamiento de tu equipo de salud.'),
+      ].join(''),
+      despedida: 'Con cariño,',
+      opciones: {
+        certificado: { titulo: 'Aprende a fondo', texto: 'Guías prácticas y cursos con certificado para pacientes, cuidadores y profesionales.', accion: 'Ver los cursos', url: `${siteUrl}/cursos` },
+        whatsapp: { titulo: '¿Tienes una pregunta?', texto: 'Escríbenos por WhatsApp y te orientamos.', url: entrar },
+      },
+    };
+  },
 
   'registro-institucion': ({ nombre, institucion, siteUrl }) => ({
     asunto: `${primerNombre(nombre)}, recibimos tu solicitud`,

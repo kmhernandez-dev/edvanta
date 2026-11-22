@@ -41,6 +41,7 @@ import { clasesDelVademecum, urlsAbsolutas } from '../api/lib/enlaces-de-salud.j
 import { casosDeVademecum, htmlDeCasos } from '../src/lib/casosClinicos/enlacesInversos.js';
 import { robotsDePaginaDelVademecum, robotsDelVademecum, tituloDeVademecum } from '../src/lib/vademecum/indexable.js';
 import { COMUNIDADES, META_COMUNIDADES, PREGUNTAS_COMUNIDADES } from '../src/data/comunidadesSalud.js';
+import { DIFICULTADES } from '../src/data/encuestaComunidades.js';
 import { cortoDeComunidad, descripcionDeComunidad, faqJsonLd, paraDeComunidad, preguntasDeComunidad, tituloSeoDeComunidad } from '../src/lib/comunidades/seo.js';
 import { EXAMENES, META_EXAMENES, robotsDeExamen } from '../src/data/examenes/index.js';
 import { FICHAS, META_FICHAS, robotsDeFicha } from '../src/data/medicamentos/fichas.js';
@@ -84,9 +85,10 @@ const contenidoComunidad = (c) => {
   const guiaPaciente = c.guia?.publico === 'pacientes' ? `<p>Guía para pacientes: <a href="${c.guia.ruta}">${c.guia.nombre}</a>.</p>` : '';
   return `<section><p><strong>Grupo de apoyo gratis por WhatsApp para ${paraDeComunidad(c)}.</strong></p>${c.intro.map((t) => `<p>${t}</p>`).join('')}</section>
 <section><h2>Qué encontrarás</h2><ul>${c.queEncuentras.map((t) => `<li>${t}</li>`).join('')}</ul></section>
+${(DIFICULTADES[c.slug] || []).length ? `<section><h2>Temas que se conversan en el grupo</h2><ul>${DIFICULTADES[c.slug].map(([, t]) => `<li>${t}</li>`).join('')}</ul></section>` : ''}
 <section><h2>Reglas del grupo</h2><ol>${c.reglas.map((t) => `<li>${t}</li>`).join('')}</ol><p>${c.noEs}</p></section>
 ${articulos ? `<section><h2>Artículos para empezar</h2><ul>${articulos}</ul></section>` : ''}
-<section><h2>Cómo entrar al grupo de apoyo</h2><p>Escribe por WhatsApp a Karla Hernández, química farmacéutica, y pide entrar al grupo de apoyo de ${cortoDeComunidad(c)}. <a href="${c.whatsapp}">Abrir WhatsApp</a>.</p>${curso}${guia}${guiaPaciente}</section>
+<section><h2>Cómo entrar al grupo de apoyo</h2><p>Inscríbete gratis en esta página y responde la encuesta de un minuto; después escribe por WhatsApp a Karla Hernández, química farmacéutica, para recibir el acceso al grupo de apoyo de ${cortoDeComunidad(c)}. <a href="${c.whatsapp}">Abrir WhatsApp</a>.</p>${curso}${guia}${guiaPaciente}</section>
 <section><h2>Preguntas sobre el grupo de apoyo</h2>${faq}</section>`;
 };
 

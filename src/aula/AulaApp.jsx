@@ -12,6 +12,7 @@ import Cuenta from './pages/Cuenta';
 import MiAula from './pages/MiAula';
 import Moderacion from './pages/admin/Moderacion';
 import Solicitudes from './pages/admin/Solicitudes';
+import Comunidades from './pages/admin/Comunidades';
 import Bitacora from './pages/admin/Bitacora';
 import Empresas, { EmpresaDetalle } from './pages/admin/Empresas';
 import Grupos, { GrupoDetalle } from './pages/admin/Grupos';
@@ -86,6 +87,7 @@ const TITLES = [
   [/^\/aula\/admin\/assist/, 'Edvanta Assist'],
   [/^\/aula\/admin\/auditoria/, 'Bitácora'],
   [/^\/aula\/admin\/solicitudes/, 'Solicitudes'],
+  [/^\/aula\/admin\/comunidades/, 'Grupos de apoyo'],
   [/^\/aula\/admin\/cursos\/\d+\/vista-previa/, 'Vista previa'],
   [/^\/aula\/admin\/cursos\/\d+\/clases/, 'Editar clase'],
   [/^\/aula\/admin\/cursos\/\d+/, 'Editar curso'],
@@ -203,6 +205,7 @@ export default function AulaApp() {
             </Route>
             <Route path="comentarios" element={<Moderacion />} />
             <Route path="solicitudes" element={<Solicitudes />} />
+            <Route path="comunidades" element={<Comunidades />} />
             <Route path="auditoria" element={<Bitacora />} />
             <Route path="*" element={<NotFoundInAula />} />
           </Route>

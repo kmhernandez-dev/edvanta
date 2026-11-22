@@ -23,6 +23,7 @@ import { filesRouter, sweepStaleUploads, uploadsRouter } from './files.js';
 import { opinionesRouter } from './opiniones.js';
 import { adminModeracionRouter } from './admin-moderacion.js';
 import { adminSolicitudesRouter, solicitudesRouter } from './solicitudes.js';
+import { adminComunidadesRouter, comunidadesRouter } from './comunidades.js';
 import { attachSession, requireAdmin, requireDocente, requireUser } from './middleware.js';
 import { precioPublicoRouter } from './precio-publico.js';
 
@@ -61,6 +62,8 @@ export function createAulaRouter({
   router.use('/precio-certificado', precioPublicoRouter(deps));
   // Interés, propuestas y contacto: se envían sin cuenta.
   router.use('/solicitudes', solicitudesRouter(deps));
+  // Inscripción con encuesta a los grupos de apoyo: sin cuenta.
+  router.use('/comunidades', comunidadesRouter(deps));
 
   const admin = express.Router();
   admin.use('/summary', adminSummaryRouter(deps));
@@ -72,6 +75,7 @@ export function createAulaRouter({
   admin.use('/', adminModeracionRouter(deps));
   admin.use('/', adminCertificadosRouter(deps));
   admin.use('/', adminSolicitudesRouter(deps));
+  admin.use('/', adminComunidadesRouter(deps));
   router.use('/admin', requireAdmin, admin);
 
   router.use((_req, _res, next) => next(notFound('Esta ruta del aula no existe.')));
