@@ -14,11 +14,16 @@
  *   · El precio real, con su condición (Ley 1480: la publicidad obliga).
  *     Debe coincidir con api/lib/precio-certificado.js.
  *   · Cada clic se mide: trackEvent('curso_cta_click', { camino, origen, curso }).
+ *   · Solo se vende lo que se vende: antes de mostrar la compra se lee la
+ *     ficha (/api/ficha/…) y debe ser un curso propio con precio. Un curso
+ *     curado (Edutin, Coursera…) o sin precio muestra «Ver el curso».
  * ============================================================
  */
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import { trackEvent } from '../../utils/analytics';
+import { apiUrl } from '../../config/api';
 import '../../styles/botones-compra.css';
 
 /** El precio real del curso completo con certificado (precio-certificado.js). */
@@ -28,10 +33,40 @@ const base = (cursoUrl) => `/${String(cursoUrl || '').replace(/^\/+/, '').replac
 export const rutaDeCompra = (cursoUrl) => `${base(cursoUrl)}/inscripcion?camino=certificado`;
 export const rutaPrimeraUnidad = (cursoUrl) => `${base(cursoUrl)}/inscripcion?camino=gratis`;
 
+/** ¿El curso se vende en Edvanta? Una consulta por curso y por visita. */
+const seVende = new Map();
+export function cursoEnVenta(cursoUrl) {
+  const slug = base(cursoUrl).slice(1);
+  if (!seVende.has(slug)) {
+    seVende.set(slug, fetch(apiUrl(`/api/ficha/${encodeURIComponent(slug)}`))
+      .then((r) => (r.ok ? r.json() : null))
+      .then((j) => Boolean(j?.ok && j.data?.capacidades?.inscribirse && Number(j.data?.certificado?.precio) > 0))
+      .catch(() => false));
+  }
+  return seVende.get(slug);
+}
+
 export const medirCta = (camino, origen, curso, extra = {}) => trackEvent('curso_cta_click', { camino, origen, curso: base(curso), ...extra });
 
 export default function BotonesDeCompra({ cursoUrl, origen, extra = {}, conPrecio = true, compacto = false, className = '' }) {
+  const [enVenta, setEnVenta] = useState(null);
+  useEffect(() => {
+    if (!cursoUrl) return undefined;
+    let vivo = true;
+    cursoEnVenta(cursoUrl).then((v) => { if (vivo) setEnVenta(v); });
+    return () => { vivo = false; };
+  }, [cursoUrl]);
   if (!cursoUrl) return null;
+  // Mientras se confirma, o si no se vende en Edvanta: solo el enlace al curso.
+  if (!enVenta) {
+    return (
+      <div className={`edvanta-theme botones-compra ${compacto ? 'botones-compra--compacto' : ''} ${className}`.trim()}>
+        <Link to={base(cursoUrl)} className="botones-compra__secundario" onClick={() => medirCta('ver_curso', origen, cursoUrl, extra)}>
+          Ver el curso
+        </Link>
+      </div>
+    );
+  }
   return (
     <div className={`edvanta-theme botones-compra ${compacto ? 'botones-compra--compacto' : ''} ${className}`.trim()}>
       <div className="botones-compra__fila">
