@@ -37,7 +37,7 @@
  */
 
 import { PROMOCION, promoActiva } from './promocion.js';
-import { GRUPOS } from './comunidades.js';
+import { GRUPOS, GRUPOS_WHATSAPP } from './comunidades.js';
 import {
   beneficio, boton, cartaCorreo, cita, conUtm, destacado, divisor, enlace, esc, etiqueta, lista, nota,
   parrafo, portada, posdata, recuadro, saludo, subtitulo,
@@ -178,14 +178,20 @@ export const PLANTILLAS = {
     const grupo = GRUPOS[comunidad] || 'tu enfermedad';
     const pagina = conUtm(`${siteUrl}/comunidades/${GRUPOS[comunidad] ? comunidad : ''}`, 'ciclo', 'bienvenida-comunidad');
     const entrar = wa(`Hola Karla, soy ${primerNombre(nombre)}. Me inscribí en el grupo de apoyo de ${grupo} en edvanta.co y quiero entrar. ¿Me compartes las reglas?`);
+    // Si el grupo ya tiene enlace de invitación, la persona entra directo;
+    // si no, le escribe a Karla para recibir las reglas y el acceso.
+    const invitacion = Object.hasOwn(GRUPOS_WHATSAPP, comunidad) ? GRUPOS_WHATSAPP[comunidad] : null;
     return {
       asunto: `${primerNombre(nombre)}, tu inscripción al grupo de apoyo de ${grupo} está lista`,
       pre: 'Último paso: entra al grupo por WhatsApp. Es gratis y dentro del grupo no se vende nada.',
       encabezado: ['Grupo de apoyo', `Grupo de apoyo de ${esc(grupo)}`],
       cuerpo: [
         saludo(primerNombre(nombre)),
-        parrafo('Gracias por inscribirte. Con tus respuestas preparamos los temas, los artículos y las charlas del grupo. Falta un paso: escribir por WhatsApp para entrar.'),
-        boton('Entrar al grupo por WhatsApp', entrar, { variante: 'whatsapp' }),
+        parrafo(invitacion
+          ? 'Gracias por inscribirte. Con tus respuestas preparamos los temas, los artículos y las charlas del grupo. Falta un paso: entrar al grupo de WhatsApp con el botón.'
+          : 'Gracias por inscribirte. Con tus respuestas preparamos los temas, los artículos y las charlas del grupo. Falta un paso: escribir por WhatsApp para entrar.'),
+        boton('Entrar al grupo de WhatsApp', invitacion || entrar, { variante: 'whatsapp' }),
+        invitacion ? enlace('¿No abre el enlace? Escríbele a Karla por WhatsApp', entrar) : '',
         divisor(),
         subtitulo('Las reglas, en corto'),
         lista([

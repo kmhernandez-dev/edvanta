@@ -48,6 +48,18 @@ export const GRUPOS = {
   'calculos-renales': 'cálculos renales',
 };
 
+/**
+ * slug → enlace de invitación del grupo de WhatsApp, solo para los grupos
+ * que ya tienen uno. Copia de `grupoWhatsapp` en src/data/comunidadesSalud.js.
+ * El enlace se entrega después de inscribirse: en el espacio del grupo y en
+ * el correo de bienvenida. Los grupos sin enlace siguen entrando por el
+ * WhatsApp de Karla.
+ */
+export const GRUPOS_WHATSAPP = {
+  tiroides: 'https://chat.whatsapp.com/EBk67w0Xy88FFWpZVmmdJf',
+  'diabetes-tipo-2': 'https://chat.whatsapp.com/FSdupEkOaqf1IpViuxbTf0',
+};
+
 export const ROLES = ['paciente', 'cuidador', 'en-estudio', 'profesional', 'otro'];
 export const TIEMPOS = ['menos-1', '1-5', 'mas-5', 'sin'];
 export const INTERESES = ['experiencias', 'medicamentos', 'alimentacion', 'consultas', 'emocional', 'guias', 'cursos', 'en-vivo'];

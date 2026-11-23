@@ -83,18 +83,37 @@ function EspacioGrupo({ comunidad, nombre, intereses = [], relacionados = [], on
           {primer ? `${primer}, este es tu espacio en el grupo de apoyo de ${corto}` : `Tu espacio en el grupo de apoyo de ${corto}`}
         </h2>
         <p className="mt-2 max-w-2xl text-[15px] leading-7 text-edvanta-ink/80">
-          Falta un paso: escribir por WhatsApp para entrar al grupo. Con tus respuestas preparamos los temas, los artículos y las charlas.
+          {comunidad.grupoWhatsapp
+            ? 'Falta un paso: entrar al grupo de WhatsApp. Con tus respuestas preparamos los temas, los artículos y las charlas. También te enviamos el enlace a tu correo.'
+            : 'Falta un paso: escribir por WhatsApp para entrar al grupo. Con tus respuestas preparamos los temas, los artículos y las charlas.'}
         </p>
-        <a
-          href={entrar}
-          target="_blank"
-          rel="noopener noreferrer"
-          onClick={() => trackEvent('community_join_clicked', { enfermedad: comunidad.slug, origen: 'espacio', destino: 'whatsapp' })}
-          className="ed-btn ed-btn--whatsapp ed-btn--lg mt-5"
-        >
-          <MessageCircle aria-hidden="true" />
-          Entrar al grupo por WhatsApp
-        </a>
+        <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-3">
+          <a
+            href={comunidad.grupoWhatsapp || entrar}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => trackEvent('community_join_clicked', {
+              enfermedad: comunidad.slug,
+              origen: 'espacio',
+              destino: comunidad.grupoWhatsapp ? 'grupo' : 'whatsapp',
+            })}
+            className="ed-btn ed-btn--whatsapp ed-btn--lg"
+          >
+            <MessageCircle aria-hidden="true" />
+            Entrar al grupo de WhatsApp
+          </a>
+          {comunidad.grupoWhatsapp && (
+            <a
+              href={entrar}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => trackEvent('community_join_clicked', { enfermedad: comunidad.slug, origen: 'espacio', destino: 'whatsapp' })}
+              className="text-sm font-semibold text-edvanta-blue underline-offset-4 hover:underline"
+            >
+              ¿No abre? Escríbele a Karla
+            </a>
+          )}
+        </div>
       </div>
 
       <div className="grid gap-4 border-t border-edvanta-border p-6 sm:grid-cols-2 sm:p-8">
