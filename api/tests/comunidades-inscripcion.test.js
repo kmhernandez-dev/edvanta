@@ -62,6 +62,8 @@ describe('inscripción a los grupos de apoyo', () => {
     const bienvenida = t.mails.find((m) => m.to === 'ana@prueba.co');
     expect(bienvenida.subject).toBe('Ana, tu inscripción al grupo de apoyo de diabetes tipo 2 está lista');
     expect(bienvenida.html).toContain('wa.me/573006332244');
+    // Diabetes tipo 2 ya tiene grupo: el correo trae su enlace de invitación.
+    expect(bienvenida.html).toContain('chat.whatsapp.com/FSdupEkOaqf1IpViuxbTf0');
     expect(bienvenida.html).not.toMatch(/metformina/);
   });
 

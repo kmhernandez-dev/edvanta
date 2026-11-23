@@ -13,6 +13,12 @@ describe('encuesta de los grupos de apoyo', () => {
     for (const c of COMUNIDADES) expect(api.GRUPOS[c.slug], c.slug).toBe(c.apoyo.corto);
   });
 
+  it('el servidor conoce los mismos enlaces de grupo de WhatsApp', () => {
+    const enlaces = Object.fromEntries(COMUNIDADES.filter((c) => c.grupoWhatsapp).map((c) => [c.slug, c.grupoWhatsapp]));
+    expect(api.GRUPOS_WHATSAPP).toEqual(enlaces);
+    for (const url of Object.values(enlaces)) expect(url).toMatch(/^https:\/\/chat\.whatsapp\.com\/[A-Za-z0-9]+$/);
+  });
+
   it('el servidor valida las mismas opciones que muestra el formulario', () => {
     expect(api.ROLES).toEqual(ids(ROLES_COMUNIDAD));
     expect(api.TIEMPOS).toEqual(ids(TIEMPOS));

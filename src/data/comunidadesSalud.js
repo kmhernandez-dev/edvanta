@@ -6,6 +6,10 @@
  *  condición concreta. La puerta es el WhatsApp de Karla
  *  (+57 300 633 2244): la persona escribe, recibe las reglas y entra.
  *  Solo Feliz Sin Tiroides tiene además un grupo público de WhatsApp.
+ *  `grupoWhatsapp` es el enlace de invitación del grupo de esa
+ *  comunidad, cuando ya existe. No se muestra en la página: se entrega
+ *  después de inscribirse (espacio del grupo y correo de bienvenida).
+ *  Copia en api/lib/aula/comunidades.js (GRUPOS_WHATSAPP).
  *
  *  Reglas editoriales:
  *   · La comunidad no diagnostica, no prescribe y no sustituye al
@@ -532,6 +536,7 @@ export const COMUNIDADES = [
     guia: { ruta: '/guia/levotiroxina-sin-sorpresas', nombre: 'Levotiroxina sin sorpresas', publico: 'pacientes' },
     guiaPro: { ruta: '/guia/seguridad-del-medicamento', nombre: 'Seguridad del medicamento' },
     grupo: FST_COMMUNITY_URL,
+    grupoWhatsapp: 'https://chat.whatsapp.com/EBk67w0Xy88FFWpZVmmdJf',
     herramienta: HERRAMIENTAS.tiroides,
     mensaje: 'Hola Karla, vengo de la comunidad de tiroides en edvanta.co y quiero entrar al grupo de pacientes. ¿Me compartes las reglas?',
     keywords: ['grupo de apoyo de tiroides', 'grupo de apoyo hipotiroidismo', 'foro de hipotiroidismo', 'grupo de apoyo Hashimoto', 'comunidad de pacientes tiroideos', 'grupo de WhatsApp de tiroides'],
@@ -628,6 +633,7 @@ export const COMUNIDADES = [
     curso: { ruta: '/curso-de-farmacoterapia-de-la-diabetes', nombre: 'Farmacoterapia de la Diabetes' },
     guia: { ruta: '/guia/farmacocinetica-clinica-aplicada', nombre: 'Farmacocinética clínica aplicada', publico: 'profesionales' },
     guiaPro: { ruta: '/guia/farmacocinetica-clinica-aplicada', nombre: 'Farmacocinética clínica aplicada' },
+    grupoWhatsapp: 'https://chat.whatsapp.com/FSdupEkOaqf1IpViuxbTf0',
     herramienta: HERRAMIENTAS.diabetes,
     mensaje: 'Hola Karla, vengo de la comunidad de diabetes tipo 2 en edvanta.co y quiero entrar. ¿Me compartes las reglas?',
     keywords: ['grupo de apoyo diabetes', 'grupo de apoyo para diabéticos', 'grupo de WhatsApp para diabéticos', 'grupo de apoyo diabetes tipo 2', 'comunidad de pacientes diabéticos'],
