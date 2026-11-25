@@ -138,7 +138,17 @@ for (const f of filas) {
 // el de clases solo lo lee la API. Se guardan las más cortas primero, que
 // suelen ser las búsquedas cabeza; el CSV tiene todas.
 const corto = (xs, n) => [...new Set(xs)].sort((a, b) => a.length - b.length || a.localeCompare(b)).slice(0, n);
-const compra = Object.fromEntries(Object.entries(modulo).map(([fi, m]) => [fi, corto(m.compra, 15)]).filter(([, xs]) => xs.length));
+// Para la ficha, primero las búsquedas «puras»: solo el tema y palabras de
+// compra (curso, virtual, certificado, gratis…), sin ciudades ni siglas sueltas.
+const DE_COMPRA = new Set(['curso', 'cursos', 'diplomado', 'certificado', 'certificacion', 'capacitacion', 'virtual', 'online', 'linea', 'gratis', 'gratuito', 'taller', 'clases', 'formacion', 'colombia', 'bogota', 'medellin', 'cali', 'barranquilla', 'pdf', 'basico', 'avanzado']);
+const pureza = (fi, k) => {
+  const tema = new Set(crudas[fi].temas.flatMap(fichas).map(raizDe));
+  return fichas(norm(k)).map(raizDe).filter((t) => !tema.has(t) && !DE_COMPRA.has(t)).length;
+};
+const compra = Object.fromEntries(Object.entries(modulo).map(([fi, m]) => {
+  const xs = [...new Set(m.compra)].sort((a, b) => pureza(fi, a) - pureza(fi, b) || a.length - b.length || a.localeCompare(b));
+  return [fi, { busquedas: xs.slice(0, 15), gratis: xs.some((k) => /gratis|gratuito/.test(k)) }];
+}).filter(([, v]) => v.busquedas.length));
 const clases = {};
 for (const m of Object.values(modulo)) for (const [ruta, xs] of Object.entries(m.clases)) clases[ruta] = corto(xs, 8);
 const cabecera = (que) => `/**
@@ -150,7 +160,9 @@ const cabecera = (que) => `/**
 `;
 fs.writeFileSync(path.join(raiz, 'api/lib/keywords-cursos.js'), `${cabecera('la ficha de cada curso propio (intención de compra)')}export const KEYWORDS_DE_COMPRA = ${JSON.stringify(compra, null, 1)};
 
-export const busquedasDeCompra = (ficha) => KEYWORDS_DE_COMPRA[ficha] || [];
+export const busquedasDeCompra = (ficha) => KEYWORDS_DE_COMPRA[ficha]?.busquedas || [];
+/** Si la gente busca el curso «gratis» (en cualquiera de sus búsquedas de compra). */
+export const buscanGratis = (ficha) => Boolean(KEYWORDS_DE_COMPRA[ficha]?.gratis);
 `);
 fs.writeFileSync(path.join(raiz, 'api/lib/keywords-clases.js'), `${cabecera('cada clase abierta')}export const KEYWORDS_DE_CLASES = ${JSON.stringify(clases)};
 

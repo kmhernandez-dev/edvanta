@@ -21,7 +21,7 @@
 
 import { descripcionDeCurso, resumenUtil } from './meta-seo.js';
 import { palabraClaveDe } from './seo-cursos-propios.js';
-import { busquedasDeCompra } from './keywords-cursos.js';
+import { busquedasDeCompra, buscanGratis } from './keywords-cursos.js';
 
 const esc = (t) => String(t ?? '')
   .replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;');
@@ -124,7 +124,7 @@ function preguntasDeBusqueda(ficha) {
   }
   // «Curso de X gratis» es de las búsquedas de compra más frecuentes: se
   // responde con lo que es cierto hoy (primera unidad gratis si el curso cobra).
-  if (busquedasDeCompra(ficha.url).some((k) => /gratis|gratuito/.test(k))) {
+  if (buscanGratis(ficha.url)) {
     const cobra = Number(ficha.certificado?.precio) > 0;
     p.push({
       q: `¿Hay ${el.replace(/^el /, 'un ')} gratis?`,
