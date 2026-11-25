@@ -30,6 +30,7 @@ import { videosDeClase } from './videos-youtube.js';
 import { REVISION_DE_CLASES, fechaLarga, personaRevisora } from './revision-de-clases.js';
 import { htmlDeLecturasDeClase, lecturasDeClase, urlsAbsolutas } from './enlaces-de-salud.js';
 import { busquedasDeClase } from './keywords-clases.js';
+import { sanitizeRichText } from './aula/richtext.js';
 
 const esc = (t) => String(t ?? '')
   .replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;');
@@ -42,6 +43,42 @@ export const rutaDeClase = (slugCurso, slugClase) => `/${slugCurso}/clase/${slug
  */
 export const lecturasDe = (datos) => datos.lecturas
   || lecturasDeClase(rutaDeClase(datos.curso.slug, datos.clase.slug));
+
+/** Destacados que solo tienen sentido dentro del aula. */
+const SOLO_EN_EL_AULA = new Set(['Actividad', 'Siguiente paso']);
+const ENCABEZADOS_DE_TEXTO = new Set(['La clase en texto', 'Referencias']);
+
+/**
+ * La parte en texto de la clase, con el formato de Farmacoterapia
+ * (194_formato_unico_de_clases.sql): «En esta clase», «La clase en
+ * texto», ejemplo aplicado, puntos clave y referencias. Los enlaces de
+ * «Para profundizar» y las actividades quedan en el aula.
+ */
+export function apoyoDeClase(blocks = []) {
+  const partes = [];
+  for (const b of blocks || []) {
+    const d = b.data || {};
+    if (b.type === 'destacado' && d.html && !SOLO_EN_EL_AULA.has(d.title)) {
+      partes.push({ tipo: 'destacado', titulo: String(d.title || '').trim(), html: sanitizeRichText(d.html) });
+    } else if (b.type === 'encabezado' && ENCABEZADOS_DE_TEXTO.has(d.text)) {
+      partes.push({ tipo: 'encabezado', titulo: d.text });
+    } else if (b.type === 'texto' && d.html) {
+      partes.push({ tipo: 'texto', html: sanitizeRichText(d.html) });
+    }
+  }
+  // Un encabezado sin su texto debajo no se muestra.
+  return partes.filter((p, i) => p.tipo !== 'encabezado' || partes[i + 1]?.tipo === 'texto');
+}
+
+/** La parte en texto, en HTML del servidor. */
+export function htmlDeApoyo(apoyo = []) {
+  if (!apoyo.length) return '';
+  return `<section id="clase-en-texto">${apoyo.map((p) => {
+    if (p.tipo === 'encabezado') return `<h2>${esc(p.titulo)}</h2>`;
+    if (p.tipo === 'destacado') return `<section>${p.titulo ? `<h2>${esc(p.titulo)}</h2>` : ''}${p.html}</section>`;
+    return p.html;
+  }).join('')}</section>`;
+}
 
 const experienciaDe = (leccion) => (leccion.blocks || []).find((b) => b.type === 'experiencia')?.data || null;
 
@@ -69,6 +106,7 @@ export async function clasesPublicas(db, courseId, snapshot) {
         salida.push({
           id: l.id, titulo: l.title, slug, unidad: m.title, unidadNumero: mi + 1, experiencia: exp,
           videos: videosDeClase(l.blocks),
+          apoyo: apoyoDeClase(l.blocks),
         });
       }
     });
@@ -418,6 +456,7 @@ export function cuerpoDeClase(datos) {
     `<p>Clase del <a href="${esc(cursoRuta)}">${esc(curso.nombre)}</a> de Edvanta. Inscríbete para seguir tu avance, presentar las evaluaciones y obtener tu certificado verificable; la primera unidad del curso es gratis.</p>`,
     (clase.videos || []).length ? `<section id="video"><h2>Video de la clase</h2>${clase.videos.map(htmlDeVideo).join('')}</section>` : '',
     htmlDeExperiencia(clase.experiencia),
+    htmlDeApoyo(clase.apoyo),
     `<nav aria-label="Otras clases">${datos.anterior ? `<a href="${esc(datos.anterior.ruta)}" rel="prev">Clase anterior: ${esc(datos.anterior.titulo)}</a>` : ''} ${datos.siguiente ? `<a href="${esc(datos.siguiente.ruta)}" rel="next">Clase siguiente: ${esc(datos.siguiente.titulo)}</a>` : ''}</nav>`,
     htmlDeLecturasDeClase(lecturasDe(datos)),
     htmlDeQueSigue(queSigueDeClase(datos), curso),
@@ -433,6 +472,7 @@ export function resumenDeClase(datos, urls = null) {
     clase: {
       id: datos.clase.id, titulo: datos.clase.titulo, slug: datos.clase.slug, unidad: datos.clase.unidad,
       unidadNumero: datos.clase.unidadNumero, experiencia: datos.clase.experiencia, videos: datos.clase.videos || [],
+      apoyo: datos.clase.apoyo || [],
     },
     numero: datos.numero,
     total: datos.total,

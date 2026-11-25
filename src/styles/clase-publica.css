@@ -197,6 +197,20 @@
 .cp-paso__titulo { color: var(--cp-azul-hondo); font-family: 'Manrope', 'Inter', sans-serif; font-weight: 800; line-height: 1.35; }
 
 /* Para profundizar: vademécum y lecturas que enlazan a esta clase (enlaces-de-salud.js) */
+/* La clase en texto: el mismo formato en todos los cursos. */
+.cp-texto { display: grid; gap: 16px; margin-top: 24px; padding: 22px; border: 1px solid var(--cp-borde); border-radius: 20px; background: #fff; }
+.cp-texto h2 { margin: 0 0 8px; color: var(--cp-azul-hondo); font-family: 'Manrope', 'Inter', sans-serif; font-size: 1.2rem; font-weight: 800; }
+.cp-texto__titulo { padding-top: 6px; }
+.cp-texto__destacado { padding: 16px 18px; border-left: 4px solid var(--cp-turquesa); border-radius: 12px; background: #f6fafb; }
+.cp-texto__html { color: #1f2a44; font-size: 1rem; line-height: 1.7; overflow-wrap: anywhere; }
+.cp-texto__html p { margin: 0 0 12px; }
+.cp-texto__html p:last-child { margin-bottom: 0; }
+.cp-texto__html ul, .cp-texto__html ol { margin: 0 0 12px; padding-left: 22px; }
+.cp-texto__html li { margin-bottom: 6px; }
+.cp-texto__html a { color: var(--cp-azul); font-weight: 600; }
+.cp-texto__html table { width: 100%; border-collapse: collapse; font-size: 0.94rem; }
+.cp-texto__html th, .cp-texto__html td { padding: 8px 10px; border: 1px solid var(--cp-borde); text-align: left; vertical-align: top; }
+
 .cp-lecturas { margin-top: 24px; padding: 22px; border: 1px solid var(--cp-borde); border-radius: 20px; background: #fff; }
 .cp-lecturas h2 { margin: 0 0 14px; color: var(--cp-azul-hondo); font-family: 'Manrope', 'Inter', sans-serif; font-size: 1.25rem; font-weight: 800; }
 .cp-lecturas__grupos { display: grid; gap: 18px; }

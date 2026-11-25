@@ -31,6 +31,31 @@ import { PRECIO_CURSO_TEXTO, medirCta, rutaPrimeraUnidad } from '../components/c
  * Lo que enlaza a esta clase (api/lib/enlaces-de-salud.js): la monografía
  * del vademécum y la lectura para explicarle al paciente.
  */
+/**
+ * La parte en texto de la clase: «En esta clase», «La clase en texto»,
+ * ejemplo aplicado, puntos clave y referencias (el mismo formato en todos
+ * los cursos). El HTML llega saneado desde la API (apoyoDeClase).
+ */
+function ClaseEnTexto({ apoyo }) {
+  if (!apoyo?.length) return null;
+  return (
+    <section className="cp-texto" id="clase-en-texto" aria-label="La clase en texto">
+      {apoyo.map((p, i) => {
+        if (p.tipo === 'encabezado') return <h2 key={i} className="cp-texto__titulo">{p.titulo}</h2>;
+        if (p.tipo === 'destacado') {
+          return (
+            <div key={i} className="cp-texto__destacado">
+              {p.titulo && <h2>{p.titulo}</h2>}
+              <div className="cp-texto__html" dangerouslySetInnerHTML={{ __html: p.html }} />
+            </div>
+          );
+        }
+        return <div key={i} className="cp-texto__html" dangerouslySetInnerHTML={{ __html: p.html }} />;
+      })}
+    </section>
+  );
+}
+
 function Lecturas({ lecturas }) {
   const vademecum = lecturas?.vademecum || [];
   const articulos = lecturas?.articulos || [];
@@ -289,6 +314,7 @@ export default function ClasePublica() {
               <article className="cp-clase">
                 {(d.clase.videos || []).map((v) => <VideoDeClase key={v.videoId} video={v} />)}
                 <ExperienciaDeClase key={d.clase.id} data={d.clase.experiencia} idBase={`clase-${d.clase.id}`} />
+                <ClaseEnTexto apoyo={d.clase.apoyo} />
 
                 <nav className="cp-pasos" aria-label="Otras clases">
                   {d.anterior ? (
