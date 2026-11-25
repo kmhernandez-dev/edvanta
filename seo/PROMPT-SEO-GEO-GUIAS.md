@@ -33,6 +33,7 @@ Búsqueda informativa → artículo (/articulos/…) → guía recomendada (/gui
 | `src/data/preciosGuias.js` | Precio verificado en Hotmart (lo escribe `scripts/precios-guias-hotmart.mjs`; nunca a mano) |
 | `scripts/llms-guias.mjs` | Bloque de guías en `llms.txt` y `seo/guias-hotmart-mapa.csv` |
 | `seo/guias-hotmart-seo.md` | Plan, estado y artículos por escribir |
+| `seo/keywords-3000-guias-pacientes.csv` | 3.000 keywords de pacientes: comunidad con grupo de WhatsApp, página y guía de cada una |
 | `seo/trends/` | Datos de Google Trends |
 
 ## Reglas no negociables
@@ -62,7 +63,7 @@ Búsqueda informativa → artículo (/articulos/…) → guía recomendada (/gui
 
 ### 3. Escribir los artículos que alimentan cada guía
 
-Toma la lista de `seo/guias-hotmart-seo.md` («Qué falta»), en su orden de prioridad. Cada artículo:
+Toma la lista de `seo/guias-hotmart-seo.md` («Qué falta») y después las páginas P1 de `seo/keywords-3000-guias-pacientes.csv`, en su orden de prioridad. Cada página reúne todas las keywords de su `pagina_slug`. Cada artículo:
 
 - responde una sola búsqueda, con la frase tal como se busca en el título y en la primera frase;
 - abre con una respuesta directa de dos o tres frases (la que citaría un asistente de IA);

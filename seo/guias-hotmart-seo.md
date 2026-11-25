@@ -73,6 +73,10 @@ Tres guías no tienen ningún artículo que las recomiende y once tienen uno o d
 
 Fibrosis quística, gestión integral de la farmacoterapia, plan de cuidados, problemas farmacoterapéuticos, terapia de reemplazo enzimático, recién diagnosticados, caída del cabello, autocuidado, Método LinkedIn. Dos artículos más por guía, siguiendo sus `consultas` en `seoGuias.js`.
 
+## 3.000 keywords para pacientes y comunidades
+
+El plan de keywords por comunidad (Feliz Sin Tiroides, grupo de tiroides y grupo de diabetes tipo 2), con la guía que vende cada página, está en `seo/keywords-3000-guias-pacientes.md` y su CSV.
+
 ## Medición (cada mes)
 
 1. **Search Console**, filtro de página `/guia/`: impresiones, clics, CTR y posición de cada guía, y las consultas reales. Si una consulta real no coincide con `consulta` en `seoGuias.js`, se cambia el título.
