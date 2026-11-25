@@ -1,4 +1,4 @@
-# Cursos gratis de estudios preclínicos: farmacología de seguridad, toxicología y el paso a los ensayos en humanos
+# Cursos de estudios preclínicos: farmacología de seguridad, toxicología y el paso a los ensayos en humanos
 
 Antes de que una persona reciba por primera vez un medicamento en investigación, hay que tener evidencia razonable de que es seguro intentarlo y de cuál es una dosis inicial prudente. Esa evidencia viene de los estudios preclínicos o no clínicos: experimentos en sistemas celulares, en modelos computacionales y, cuando es necesario, en animales. Es una etapa regulada por guías internacionales y donde trabajan farmacólogos, toxicólogos, químicos farmacéuticos y especialistas en calidad.
 
@@ -55,7 +55,7 @@ El principio de las 3R busca **reemplazar** los animales cuando hay alternativas
 
 > **Contenido editorial:** algunos enlaces son de afiliado. Edvanta no dicta esos cursos; confirma condiciones y certificado en cada plataforma.
 
-En Edvanta, el curso gratuito de [Buenas Prácticas de Laboratorio — BPL](/curso-de-buenas-practicas-de-laboratorio-bpl) enseña la lógica de trazabilidad e integridad de datos que comparten todos los laboratorios regulados, y [Buenas Prácticas de Documentación Farmacéutica](/curso-de-buenas-practicas-de-documentacion-farmaceutica) la forma de registrar. Para la farmacología, [Farmacología Cardiovascular](/curso-de-farmacologia-cardiovascular) ayuda a entender la farmacología de seguridad. Todos tienen certificado opcional de COP 60.000.
+En Edvanta, el curso de [Buenas Prácticas de Laboratorio — BPL](/curso-de-buenas-practicas-de-laboratorio-bpl) (primera unidad gratis) enseña la lógica de trazabilidad e integridad de datos que comparten todos los laboratorios regulados, y [Buenas Prácticas de Documentación Farmacéutica](/curso-de-buenas-practicas-de-documentacion-farmaceutica) la forma de registrar. Para la farmacología, [Farmacología Cardiovascular](/curso-de-farmacologia-cardiovascular) ayuda a entender la farmacología de seguridad. Todos tienen certificado en el curso completo (COP 60.000 en los primeros 7 días (lista: COP 199.000)).
 
 Para la etapa siguiente, revisa la guía de [cursos gratis de desarrollo de medicamentos](/articulos/cursos-gratis-desarrollo-de-medicamentos).
 
@@ -86,7 +86,7 @@ Las BPL de la OCDE aplican a los estudios de seguridad no clínicos. La Resoluci
 
 ### ¿Qué curso sirve para entender esta etapa?
 
-Drug Discovery and Development, en Coursera, junto con el curso gratuito de BPL de Edvanta.
+Drug Discovery and Development, en Coursera, junto con el curso de BPL de Edvanta (primera unidad gratis).
 
 ## Fuentes
 

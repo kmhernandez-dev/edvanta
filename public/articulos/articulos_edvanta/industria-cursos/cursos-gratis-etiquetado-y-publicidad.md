@@ -1,4 +1,4 @@
-# Cursos gratis de etiquetado y publicidad de medicamentos: etiquetas, insertos y la Resolución 1896 de 2023
+# Cursos de etiquetado y publicidad de medicamentos: etiquetas, insertos y la Resolución 1896 de 2023
 
 La etiqueta, el inserto y la publicidad son las tres formas en que un medicamento le habla a quien lo usa o lo prescribe. Si la etiqueta es confusa, alguien puede tomar la dosis equivocada; si el inserto está desactualizado, se pierde una advertencia de seguridad; si la publicidad exagera, se induce un uso inadecuado. Por eso las tres están reguladas, y el profesional de asuntos regulatorios es quien cuida que lo que se imprime y se comunica coincida con lo aprobado.
 
@@ -51,7 +51,7 @@ Para entender cómo se aplica al marketing digital, revisa la guía de [cursos d
 
 ## Cursos de etiquetado y publicidad
 
-En Edvanta, el curso gratuito de [Etiquetado e Insertos de Medicamentos](/curso-de-etiquetado-e-insertos-de-medicamentos) es el punto de partida, con certificado opcional de COP 60.000. Lo complementan [Modificaciones al Registro Sanitario de Medicamentos](/curso-de-modificaciones-al-registro-sanitario-de-medicamentos), para los cambios de información, y [Registro Sanitario de Productos Fitoterapéuticos](/curso-de-registro-sanitario-de-productos-fitoterapeuticos), porque la Resolución 1896 de 2023 también los cubre.
+En Edvanta, el curso de [Etiquetado e Insertos de Medicamentos](/curso-de-etiquetado-e-insertos-de-medicamentos) (primera unidad gratis) es el punto de partida: la primera unidad es gratis y el curso completo con certificado cuesta COP 60.000 en los primeros 7 días (lista: COP 199.000). Lo complementan [Modificaciones al Registro Sanitario de Medicamentos](/curso-de-modificaciones-al-registro-sanitario-de-medicamentos), para los cambios de información, y [Registro Sanitario de Productos Fitoterapéuticos](/curso-de-registro-sanitario-de-productos-fitoterapeuticos), porque la Resolución 1896 de 2023 también los cubre.
 
 | Curso | Plataforma | Enlace |
 |---|---|---|
@@ -89,7 +89,7 @@ La información no publicitaria busca informar o educar sin promover la venta; l
 
 ### ¿Qué curso sirve para aprender etiquetado de medicamentos?
 
-En Edvanta, Etiquetado e Insertos de Medicamentos, gratuito y con certificado opcional.
+En Edvanta, Etiquetado e Insertos de Medicamentos, con la primera unidad gratis y certificado en el curso completo.
 
 ## Fuentes
 

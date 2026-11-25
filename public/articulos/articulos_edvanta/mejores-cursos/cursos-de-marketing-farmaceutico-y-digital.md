@@ -1,13 +1,13 @@
 # Cursos de marketing farmacéutico y digital para el sector salud (2026)
 
-El marketing en salud no se parece al de cualquier otro producto. Un medicamento no se vende como una camiseta: quién puede recibir la publicidad, qué se puede decir y cómo se presenta la evidencia está regulado. Por eso un buen profesional de marketing farmacéutico necesita dos cosas a la vez: herramientas de marketing digital y criterio sanitario. Esta guía reúne cursos de Coursera y Edutin Academy para lo primero, cursos gratuitos de Edvanta para la comunicación, y una explicación de la norma colombiana para lo segundo.
+El marketing en salud no se parece al de cualquier otro producto. Un medicamento no se vende como una camiseta: quién puede recibir la publicidad, qué se puede decir y cómo se presenta la evidencia está regulado. Por eso un buen profesional de marketing farmacéutico necesita dos cosas a la vez: herramientas de marketing digital y criterio sanitario. Esta guía reúne cursos de Coursera y Edutin Academy para lo primero, cursos de Edvanta (primera unidad gratis) para la comunicación, y una explicación de la norma colombiana para lo segundo.
 
 > **En resumen**
 >
 > - Para una base completa: el Certificado Profesional de Google Digital Marketing & E-commerce, en Coursera.
 > - Para empezar en español sin costo: Marketing digital y Marketing digital II en Edutin Academy.
 > - Para vender a instituciones: Ventas B2B, en Edutin.
-> - Para comunicar mejor: los cursos gratuitos de comunicación de Edvanta.
+> - Para comunicar mejor: los cursos de comunicación de Edvanta, con la primera unidad gratis.
 > - En Colombia, la Resolución 1896 de 2023 regula la publicidad y la promoción de medicamentos.
 
 ## Los cursos de marketing recomendados
@@ -31,7 +31,7 @@ En Colombia, la **Resolución 1896 de 2023** del Ministerio de Salud regula la i
 - **Medicamentos con fórmula médica:** su publicidad solo puede dirigirse a los profesionales autorizados para prescribir, con acceso restringido.
 - **Control:** el INVIMA vigila con un enfoque basado en el riesgo, y la publicidad que incumple puede ser sancionada.
 
-Antes de lanzar una campaña de un medicamento, un suplemento o un producto fitoterapéutico, revisa la norma completa y, si hay duda, consulta con el área regulatoria. El curso gratuito de [Etiquetado e Insertos de Medicamentos](/curso-de-etiquetado-e-insertos-de-medicamentos) de Edvanta ayuda a entender qué información ya está aprobada en el registro sanitario.
+Antes de lanzar una campaña de un medicamento, un suplemento o un producto fitoterapéutico, revisa la norma completa y, si hay duda, consulta con el área regulatoria. El curso de [Etiquetado e Insertos de Medicamentos](/curso-de-etiquetado-e-insertos-de-medicamentos) de Edvanta (primera unidad gratis) ayuda a entender qué información ya está aprobada en el registro sanitario.
 
 ## Qué se aprende en un curso de marketing digital
 
@@ -49,7 +49,7 @@ En salud, a cada punto se le suma una pregunta: ¿esto es verdadero, está respa
 
 ## Comunicar ciencia sin perder a la audiencia
 
-El marketing farmacéutico es, en gran parte, comunicación científica: explicar un mecanismo, un estudio o un beneficio a un médico, a un químico farmacéutico o a un paciente, en el lenguaje de cada uno. Estos cursos gratuitos de Edvanta trabajan esas habilidades:
+El marketing farmacéutico es, en gran parte, comunicación científica: explicar un mecanismo, un estudio o un beneficio a un médico, a un químico farmacéutico o a un paciente, en el lenguaje de cada uno. Estos cursos de Edvanta (primera unidad gratis) trabajan esas habilidades:
 
 - [Presentaciones Efectivas y Storytelling](/curso-de-presentaciones-efectivas-y-storytelling)
 - [Comunicación Asertiva](/curso-de-comunicacion-asertiva)
@@ -57,7 +57,7 @@ El marketing farmacéutico es, en gran parte, comunicación científica: explica
 - [Curso para Hablar frente a la Cámara](/curso-para-hablar-frente-a-la-camara)
 - [Servicio al Cliente](/curso-de-servicio-al-cliente)
 
-El contenido se estudia gratis; el certificado verificable es opcional y cuesta COP 60.000 por curso. La [Escuela de Marketing y Comunicación Farmacéutica](/escuelas/marketing-y-comunicacion-farmaceutica) de Edvanta reúne estos temas y los programas que tenemos en desarrollo.
+La primera unidad de cada curso es gratis; el curso completo con certificado verificable cuesta COP 60.000 en los primeros 7 días (lista: COP 199.000). La [Escuela de Marketing y Comunicación Farmacéutica](/escuelas/marketing-y-comunicacion-farmaceutica) de Edvanta reúne estos temas y los programas que tenemos en desarrollo.
 
 ## Roles de marketing en el sector farmacéutico
 

@@ -1,4 +1,4 @@
-# Cursos gratis de evidencia del mundo real: datos de la práctica clínica, farmacoepidemiología y decisiones regulatorias
+# Cursos de evidencia del mundo real: datos de la práctica clínica, farmacoepidemiología y decisiones regulatorias
 
 Los ensayos clínicos responden si un medicamento funciona en condiciones controladas, con pacientes seleccionados. Pero en la vida real los pacientes son mayores, tienen otras enfermedades, toman más medicamentos y no siempre siguen el tratamiento. Los datos del mundo real (historias clínicas electrónicas, bases de dispensación y de reclamaciones, registros de pacientes) permiten ver qué pasa en esa práctica. Cuando esos datos se analizan con métodos rigurosos, producen evidencia del mundo real, cada vez más usada por la industria, los sistemas de salud y las autoridades.
 
@@ -55,7 +55,7 @@ En la práctica, los médicos eligen tratamientos según la gravedad, la edad o 
 
 > **Contenido editorial:** algunos enlaces son de afiliado. Edvanta no dicta esos cursos; confirma condiciones y certificado en cada plataforma.
 
-Para manejar los datos, revisa las guías de [cursos gratis de Python para farmacia](/articulos/cursos-gratis-python-para-farmacia) y de [detección de señales en farmacovigilancia](/articulos/cursos-gratis-deteccion-de-senales). Para el contexto clínico, los cursos gratuitos de Edvanta de [Farmacoterapia de la Diabetes](/curso-de-farmacoterapia-de-la-diabetes) y [Farmacoterapia de la Hipertensión Arterial](/curso-de-farmacoterapia-de-la-hipertension-arterial) ayudan a entender los tratamientos que se analizan, con certificado opcional de COP 60.000.
+Para manejar los datos, revisa las guías de [cursos gratis de Python para farmacia](/articulos/cursos-gratis-python-para-farmacia) y de [detección de señales en farmacovigilancia](/articulos/cursos-gratis-deteccion-de-senales). Para el contexto clínico, los cursos de Edvanta (primera unidad gratis) de [Farmacoterapia de la Diabetes](/curso-de-farmacoterapia-de-la-diabetes) y [Farmacoterapia de la Hipertensión Arterial](/curso-de-farmacoterapia-de-la-hipertension-arterial) ayudan a entender los tratamientos que se analizan: la primera unidad es gratis y el curso completo con certificado cuesta COP 60.000 en los primeros 7 días (lista: COP 199.000).
 
 ## Errores frecuentes
 

@@ -1,4 +1,4 @@
-# Cursos gratis de auditoría farmacéutica: cómo formarte como auditor
+# Cursos de auditoría farmacéutica: cómo formarte como auditor
 
 Auditar no es buscar culpables. Es reunir evidencia objetiva para saber si un sistema funciona como se dice que funciona. En la industria farmacéutica se audita todo: la planta propia, los proveedores de materias primas, los laboratorios contratados y los distribuidores. Por eso la auditoría es una de las competencias más transversales del área de calidad y una de las que más rápido te hace visible dentro de una empresa.
 
@@ -6,7 +6,7 @@ Auditar no es buscar culpables. Es reunir evidencia objetiva para saber si un si
 >
 > - Existen auditorías de primera parte (internas), de segunda parte (a proveedores) y de tercera parte (certificación o autoridad sanitaria).
 > - La norma de referencia para auditar sistemas de gestión es ISO 19011.
-> - En Edvanta estudias gratis Auditoría de Calidad Farmacéutica, con casos para practicar hallazgos y redacción de informes.
+> - En Edvanta empiezas gratis, con la primera unidad abierta, Auditoría de Calidad Farmacéutica, con casos para practicar hallazgos y redacción de informes.
 
 ## Tipos de auditoría en el sector farmacéutico
 
@@ -40,8 +40,8 @@ Por ejemplo: «El procedimiento de limpieza exige registrar la verificación vis
 
 | Curso | Dónde | Costo |
 |---|---|---|
-| [Auditoría de Calidad Farmacéutica](/curso-de-auditoria-de-calidad-farmaceutica) | Aula Edvanta | Gratis; certificado opcional de COP 60.000 |
-| [Aseguramiento de la Calidad Farmacéutica](/curso-de-aseguramiento-de-la-calidad-farmaceutica) | Aula Edvanta | Gratis; certificado opcional de COP 60.000 |
+| [Auditoría de Calidad Farmacéutica](/curso-de-auditoria-de-calidad-farmaceutica) | Aula Edvanta | Primera unidad gratis; curso completo con certificado: COP 60.000 en los primeros 7 días (lista: COP 199.000) |
+| [Aseguramiento de la Calidad Farmacéutica](/curso-de-aseguramiento-de-la-calidad-farmaceutica) | Aula Edvanta | Primera unidad gratis; curso completo con certificado: COP 60.000 en los primeros 7 días (lista: COP 199.000) |
 | [Auditoría](/curso-de-auditoria) | Curso curado | Lo define la plataforma |
 | [ISO 9001:2015 — Interpretación, Implementación y Auditoría](/curso-de-iso-9001-2015-interpretacion-implementacion-y-auditoria) | Curso curado | Lo define la plataforma |
 
@@ -76,7 +76,7 @@ La técnica se aprende rápido; lo difícil es lo humano. Un buen auditor:
 - **Mantiene la calma** cuando el auditado se pone a la defensiva.
 - **Separa hechos de interpretaciones** al escribir el informe.
 
-Las habilidades de comunicación cuentan tanto como la norma. Los cursos gratis de [comunicación asertiva](/curso-de-comunicacion-asertiva) y de [negociación y persuasión](/curso-de-negociacion-y-persuasion) de Edvanta te ayudan con entrevistas difíciles y reuniones de cierre.
+Las habilidades de comunicación cuentan tanto como la norma. Los cursos de [comunicación asertiva](/curso-de-comunicacion-asertiva) y de [negociación y persuasión](/curso-de-negociacion-y-persuasion) de Edvanta, con la primera unidad gratis, te ayudan con entrevistas difíciles y reuniones de cierre.
 
 ## Cómo prepararte para la primera auditoría como auditor
 
@@ -89,7 +89,7 @@ Las habilidades de comunicación cuentan tanto como la norma. Los cursos gratis 
 
 ### ¿Hay cursos de auditoría farmacéutica gratis?
 
-Sí. En Edvanta, Auditoría de Calidad Farmacéutica se estudia gratis y en línea, con certificado verificable opcional por COP 60.000.
+Sí. En Edvanta, Auditoría de Calidad Farmacéutica se estudia en línea: la primera unidad es gratis y el curso completo con certificado verificable cuesta COP 60.000 en los primeros 7 días (lista: COP 199.000).
 
 ### ¿Qué norma se usa para auditar sistemas de gestión?
 

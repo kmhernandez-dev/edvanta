@@ -56,7 +56,7 @@ Lee la norma completa antes de tu primera campaña. La guía de [cursos de marke
 5. **Campañas de temporada:** protección solar en vacaciones, prevención respiratoria en temporada de lluvias.
 6. **Detrás de cámara:** la cadena de frío de tus refrigeradores, explicada.
 
-Para grabar con más seguridad, el curso gratuito [para Hablar frente a la Cámara](/curso-para-hablar-frente-a-la-camara) de Edvanta es un buen complemento. Y para escribir textos que convenzan sin exagerar, [Presentaciones Efectivas y Storytelling](/curso-de-presentaciones-efectivas-y-storytelling). Ambos se estudian gratis, con certificado opcional por COP 60.000.
+Para grabar con más seguridad, el curso [para Hablar frente a la Cámara](/curso-para-hablar-frente-a-la-camara) de Edvanta (primera unidad gratis) es un buen complemento. Y para escribir textos que convenzan sin exagerar, [Presentaciones Efectivas y Storytelling](/curso-de-presentaciones-efectivas-y-storytelling). Ambos se estudian gratis, con certificado opcional por COP 60.000.
 
 ## Cómo empezar con Facebook Ads con poco presupuesto
 

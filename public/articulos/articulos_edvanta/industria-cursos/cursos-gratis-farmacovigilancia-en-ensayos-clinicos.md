@@ -1,4 +1,4 @@
-# Cursos gratis de farmacovigilancia en ensayos clínicos: eventos adversos serios, SUSAR y DSUR
+# Cursos de farmacovigilancia en ensayos clínicos: eventos adversos serios, SUSAR y DSUR
 
 En un ensayo clínico, el medicamento todavía no está aprobado y su perfil de seguridad se está construyendo. Por eso la vigilancia de los eventos adversos es más estricta que después de la comercialización: cada evento se registra, los serios se reportan de inmediato y los inesperados que pueden estar relacionados con el producto se comunican a las autoridades en plazos cortos. Esta guía explica los conceptos clave de la farmacovigilancia en investigación clínica y los cursos que sirven para formarte en ella.
 
@@ -64,7 +64,7 @@ En muchos ensayos, un comité independiente de monitoreo de datos y seguridad re
 
 > **Contenido editorial:** algunos enlaces son de afiliado. Edvanta no dicta esos cursos; confirma condiciones y certificado en cada plataforma.
 
-Para el marco general de la investigación clínica, revisa la guía de [cursos de ensayos clínicos y buenas prácticas clínicas](/articulos/cursos-de-ensayos-clinicos-y-buenas-practicas-clinicas), que explica la ICH E6(R3) y la Resolución 2378 de 2008. Si te interesa coordinar estudios, la guía de [cursos de gestión de proyectos](/articulos/cursos-de-gestion-de-proyectos-con-certificado) incluye la especialización Clinical Project Management. Y para la redacción de los registros, el curso gratuito de [Buenas Prácticas de Documentación Farmacéutica](/curso-de-buenas-practicas-de-documentacion-farmaceutica) de Edvanta, con certificado opcional de COP 60.000.
+Para el marco general de la investigación clínica, revisa la guía de [cursos de ensayos clínicos y buenas prácticas clínicas](/articulos/cursos-de-ensayos-clinicos-y-buenas-practicas-clinicas), que explica la ICH E6(R3) y la Resolución 2378 de 2008. Si te interesa coordinar estudios, la guía de [cursos de gestión de proyectos](/articulos/cursos-de-gestion-de-proyectos-con-certificado) incluye la especialización Clinical Project Management. Y para la redacción de los registros, el curso gratuito de [Buenas Prácticas de Documentación Farmacéutica](/curso-de-buenas-practicas-de-documentacion-farmaceutica) de Edvanta: la primera unidad es gratis y el curso completo con certificado cuesta COP 60.000 en los primeros 7 días (lista: COP 199.000).
 
 ## Errores frecuentes en la seguridad de un ensayo
 

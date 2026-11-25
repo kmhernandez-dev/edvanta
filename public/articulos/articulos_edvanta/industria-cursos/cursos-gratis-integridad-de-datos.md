@@ -1,4 +1,4 @@
-# Cursos gratis de integridad de datos farmacéutica: ALCOA+ y sistemas computarizados
+# Cursos de integridad de datos farmacéutica: ALCOA+ y sistemas computarizados
 
 Durante años, los problemas de integridad de datos han estado entre los hallazgos más repetidos en las inspecciones a la industria farmacéutica. La razón es sencilla: si los datos no son confiables, nada de lo que dicen sobre un medicamento lo es. Integridad de datos significa que la información está completa, es coherente y es exacta durante todo su ciclo de vida, desde que se genera hasta que se destruye de forma autorizada.
 
@@ -52,10 +52,10 @@ La integridad de datos no es solo un tema de software. Los formatos en papel deb
 
 | Curso | Dónde | Costo |
 |---|---|---|
-| [Buenas Prácticas de Documentación Farmacéutica](/curso-de-buenas-practicas-de-documentacion-farmaceutica) | Aula Edvanta | Gratis; certificado opcional de COP 60.000 |
-| [Buenas Prácticas de Laboratorio — BPL](/curso-de-buenas-practicas-de-laboratorio-bpl) | Aula Edvanta | Gratis; certificado opcional de COP 60.000 |
+| [Buenas Prácticas de Documentación Farmacéutica](/curso-de-buenas-practicas-de-documentacion-farmaceutica) | Aula Edvanta | Primera unidad gratis; curso completo con certificado: COP 60.000 en los primeros 7 días (lista: COP 199.000) |
+| [Buenas Prácticas de Laboratorio — BPL](/curso-de-buenas-practicas-de-laboratorio-bpl) | Aula Edvanta | Primera unidad gratis; curso completo con certificado: COP 60.000 en los primeros 7 días (lista: COP 199.000) |
 | [Document Control and Good Documentation Practices in GMP](/curso-de-document-control-and-good-documentation-practices-in-gmp) | Curso curado | Lo define la plataforma |
-| [Validaciones y Calificaciones](/curso-de-validaciones-y-calificaciones) | Aula Edvanta | Gratis; certificado opcional de COP 60.000 |
+| [Validaciones y Calificaciones](/curso-de-validaciones-y-calificaciones) | Aula Edvanta | Primera unidad gratis; curso completo con certificado: COP 60.000 en los primeros 7 días (lista: COP 199.000) |
 
 ## Validación de sistemas computarizados en otras plataformas
 
@@ -94,7 +94,7 @@ Es el registro automático y seguro que guarda quién creó, modificó o borró 
 
 ### ¿Hay cursos gratis de integridad de datos?
 
-En Edvanta puedes empezar gratis con Buenas Prácticas de Documentación Farmacéutica y Buenas Prácticas de Laboratorio, con certificado verificable opcional por COP 60.000 cada uno.
+En Edvanta puedes empezar gratis con Buenas Prácticas de Documentación Farmacéutica y Buenas Prácticas de Laboratorio, con la primera unidad gratis y certificado verificable en el curso completo (COP 60.000 en los primeros 7 días (lista: COP 199.000)) cada uno.
 
 ### ¿Qué es GAMP 5?
 

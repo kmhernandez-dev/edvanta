@@ -1,4 +1,4 @@
-# Cursos de investigación y desarrollo farmacéutico: gratis, online y con certificado
+# Cursos de investigación y desarrollo farmacéutico: online y con certificado
 
 Investigación y desarrollo (I+D) es el área donde un principio activo se convierte en un medicamento que se puede fabricar, almacenar y usar con seguridad. Va desde elegir los excipientes de una tableta hasta diseñar el estudio de estabilidad o el protocolo de un ensayo clínico. Es exigente, creativa y muy técnica, y en Colombia se concentra sobre todo en desarrollo de formulaciones, genéricos e investigación clínica.
 
@@ -6,7 +6,7 @@ Aquí encontrarás qué aprender, qué cursos de I+D farmacéutico existen y una
 
 > **En resumen**
 >
-> - En Edvanta estudias gratis Estudios de Estabilidad, Bioequivalencia, Validación de Métodos Analíticos y Control de Calidad de Medicamentos. El certificado verificable es opcional: COP 60.000.
+> - En Edvanta empiezas gratis, con la primera unidad abierta, Estudios de Estabilidad, Bioequivalencia, Validación de Métodos Analíticos y Control de Calidad de Medicamentos. El certificado verificable es opcional: COP 60.000.
 > - Las bases del desarrollo moderno son el diseño basado en la calidad (QbD, guía ICH Q8) y la gestión del conocimiento del producto.
 > - La investigación clínica en Colombia se rige por las Buenas Prácticas Clínicas de la Resolución 2378 de 2008.
 
@@ -28,7 +28,7 @@ Aquí encontrarás qué aprender, qué cursos de I+D farmacéutico existen y una
 - **Buenas Prácticas Clínicas.** En Colombia, la Resolución 2378 de 2008 las adoptó para las instituciones que investigan con medicamentos en seres humanos; la guía internacional es ICH E6, cuya revisión R3 se publicó en 2025.
 - **Estudios preclínicos.** Las guías ICH de seguridad (serie S) orientan los estudios que se hacen antes de llegar a personas.
 
-## Cursos de I+D farmacéutico gratis en Edvanta
+## Cursos de I+D farmacéutico en Edvanta: primera unidad gratis
 
 Se estudian **gratis**, en línea y a tu ritmo, con casos, quices y foros. El certificado verificable cuesta COP 60.000 por curso, si lo necesitas.
 
@@ -106,7 +106,7 @@ La Resolución 2378 de 2008 adoptó las Buenas Prácticas Clínicas para las ins
 
 ### ¿Hay cursos de I+D farmacéutico gratis?
 
-Sí. En Edvanta estudias gratis cursos de estabilidad, bioequivalencia, validación de métodos y control de calidad, con certificado verificable opcional por COP 60.000.
+Sí. En Edvanta empiezas gratis cursos de estabilidad, bioequivalencia, validación de métodos y control de calidad: la primera unidad es abierta y el curso completo con certificado cuesta COP 60.000 en los primeros 7 días (lista: COP 199.000).
 
 ### ¿Cuál es la diferencia entre preformulación y formulación?
 

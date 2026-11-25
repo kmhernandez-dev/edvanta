@@ -1,4 +1,4 @@
-# Cursos gratis de dispositivos médicos: clasificación por riesgo, registro sanitario y tecnovigilancia en Colombia
+# Cursos de dispositivos médicos: clasificación por riesgo, registro sanitario y tecnovigilancia en Colombia
 
 Jeringas, guantes, glucómetros, prótesis, marcapasos, equipos de rayos X y pruebas de laboratorio son dispositivos médicos. Su regulación es distinta a la de los medicamentos: no se evalúan por su acción farmacológica, sino por su riesgo, su desempeño y su seguridad en el uso. Es un sector con muchas oportunidades para químicos farmacéuticos, ingenieros biomédicos y profesionales de la salud, en asuntos regulatorios, calidad y tecnovigilancia.
 
@@ -62,7 +62,7 @@ La resolución clasifica los eventos y los incidentes según su gravedad, y cada
 
 > **Contenido editorial:** algunos enlaces son de afiliado. Edvanta no dicta esos cursos; confirma condiciones y certificado en cada plataforma.
 
-Para el lado colombiano de los trámites y de la calidad, estos cursos gratuitos de Edvanta sirven también en dispositivos médicos, con certificado opcional de COP 60.000:
+Para el lado colombiano de los trámites y de la calidad, estos cursos de Edvanta (primera unidad gratis) sirven también en dispositivos médicos, con la primera unidad gratis y certificado en el curso completo (COP 60.000 en los primeros 7 días (lista: COP 199.000)):
 
 - [Asuntos Regulatorios Sanitarios ante el INVIMA](/curso-de-asuntos-regulatorios-sanitarios-ante-invima)
 - [Gestión Documental de Trámites ante el INVIMA](/curso-de-gestion-documental-de-tramites-ante-el-invima)
@@ -104,7 +104,7 @@ La ISO 13485 para el sistema de gestión de calidad y la ISO 14971 para la gesti
 
 ### ¿Qué curso sirve para empezar en dispositivos médicos?
 
-Certification in Drug Regulatory Affairs & Medical Devices, en Udemy, complementado con los cursos regulatorios gratuitos de Edvanta.
+Certification in Drug Regulatory Affairs & Medical Devices, en Udemy, complementado con los cursos regulatorios de Edvanta (primera unidad gratis).
 
 ## Fuentes
 

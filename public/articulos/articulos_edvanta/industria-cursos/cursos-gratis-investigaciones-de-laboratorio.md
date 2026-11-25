@@ -1,4 +1,4 @@
-# Cursos gratis de investigaciones de laboratorio: resultados OOS y OOT
+# Cursos de investigaciones de laboratorio: resultados OOS y OOT
 
 Un resultado fuera de especificación (OOS, por sus siglas en inglés) es uno de los momentos más delicados en un laboratorio de control de calidad. Puede significar que el lote está mal o que el análisis se hizo mal, y la investigación es la única manera de saberlo. Hacerla bien protege al paciente; hacerla mal, repitiendo el análisis hasta que cumpla, es una de las faltas más graves que puede encontrar un inspector.
 
@@ -6,7 +6,7 @@ Un resultado fuera de especificación (OOS, por sus siglas en inglés) es uno de
 >
 > - La Resolución 3619 de 2013 (BPL) exige que el laboratorio tenga una política para manejar los resultados fuera de especificación.
 > - La referencia más citada es la guía de la FDA sobre investigación de resultados OOS, que divide el proceso en una fase de laboratorio y una fase completa.
-> - En Edvanta estudias gratis Control de Calidad de Medicamentos, cuya última unidad trata los resultados fuera de especificación y la liberación analítica.
+> - En Edvanta empiezas gratis, con la primera unidad abierta, Control de Calidad de Medicamentos, cuya última unidad trata los resultados fuera de especificación y la liberación analítica.
 
 ## OOS, OOT y resultados atípicos
 
@@ -43,9 +43,9 @@ Aquí participan producción, aseguramiento de la calidad y otras áreas. Se rev
 
 | Curso | Dónde | Costo |
 |---|---|---|
-| [Control de Calidad de Medicamentos](/curso-de-control-de-calidad-de-medicamentos) | Aula Edvanta | Gratis; certificado opcional de COP 60.000 |
-| [Gestión de Desviaciones y CAPA](/curso-de-gestion-de-desviaciones-y-capa) | Aula Edvanta | Gratis; certificado opcional de COP 60.000 |
-| [Buenas Prácticas de Laboratorio — BPL](/curso-de-buenas-practicas-de-laboratorio-bpl) | Aula Edvanta | Gratis; certificado opcional de COP 60.000 |
+| [Control de Calidad de Medicamentos](/curso-de-control-de-calidad-de-medicamentos) | Aula Edvanta | Primera unidad gratis; curso completo con certificado: COP 60.000 en los primeros 7 días (lista: COP 199.000) |
+| [Gestión de Desviaciones y CAPA](/curso-de-gestion-de-desviaciones-y-capa) | Aula Edvanta | Primera unidad gratis; curso completo con certificado: COP 60.000 en los primeros 7 días (lista: COP 199.000) |
+| [Buenas Prácticas de Laboratorio — BPL](/curso-de-buenas-practicas-de-laboratorio-bpl) | Aula Edvanta | Primera unidad gratis; curso completo con certificado: COP 60.000 en los primeros 7 días (lista: COP 199.000) |
 
 ## Curso complementario en otra plataforma
 
@@ -92,7 +92,7 @@ Solo si la investigación de laboratorio encuentra un error asignable y document
 
 ### ¿Hay cursos gratis sobre investigaciones de laboratorio?
 
-En Edvanta, Control de Calidad de Medicamentos incluye una unidad sobre resultados fuera de especificación y liberación analítica. Es gratis, con certificado verificable opcional por COP 60.000.
+En Edvanta, Control de Calidad de Medicamentos incluye una unidad sobre resultados fuera de especificación y liberación analítica. Es gratis, con la primera unidad gratis y certificado verificable en el curso completo (COP 60.000 en los primeros 7 días (lista: COP 199.000)).
 
 ### ¿Qué norma exige investigar los OOS en Colombia?
 

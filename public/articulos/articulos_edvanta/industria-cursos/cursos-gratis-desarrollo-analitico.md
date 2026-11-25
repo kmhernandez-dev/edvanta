@@ -1,4 +1,4 @@
-# Cursos gratis de desarrollo analítico: perfil analítico objetivo, ICH Q14, ICH Q2(R2) y ciclo de vida del método
+# Cursos de desarrollo analítico: perfil analítico objetivo, ICH Q14, ICH Q2(R2) y ciclo de vida del método
 
 Antes de validar un método analítico hay que desarrollarlo, y un método mal desarrollado da problemas durante años: resultados fuera de especificación que no se explican, transferencias que fallan y validaciones que hay que repetir. El desarrollo analítico es el trabajo de diseñar métodos que midan bien lo que deben medir, de forma robusta y durante todo el ciclo de vida del producto. Es una especialidad muy demandada en la industria y en los laboratorios por contrato.
 
@@ -49,7 +49,7 @@ El capítulo general de la USP sobre el ciclo de vida de los procedimientos anal
 
 ## Cursos de desarrollo analítico
 
-En Edvanta, estos cursos gratuitos son la base, con certificado opcional de COP 60.000:
+En Edvanta, estos cursos gratuitos son la base, con la primera unidad gratis y certificado en el curso completo (COP 60.000 en los primeros 7 días (lista: COP 199.000)):
 
 | Curso | Para qué sirve |
 |---|---|
@@ -98,7 +98,7 @@ Un método capaz de separar y medir el principio activo en presencia de sus prod
 
 ### ¿Qué curso sirve para aprender desarrollo analítico?
 
-El curso gratuito de Validación de Métodos Analíticos de Edvanta, complementado con Pharmaceutical Quality Control en Udemy.
+El curso de Validación de Métodos Analíticos de Edvanta (primera unidad gratis), complementado con Pharmaceutical Quality Control en Udemy.
 
 ## Fuentes
 

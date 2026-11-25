@@ -1,4 +1,4 @@
-# Cursos gratis de validación de procesos farmacéuticos: las tres etapas del ciclo de vida
+# Cursos de validación de procesos farmacéuticos: las tres etapas del ciclo de vida
 
 Validar un proceso es demostrar que, cada vez que se fabrica un lote, el resultado será un medicamento que cumple sus especificaciones. No basta con que un lote salga bien: hay que probar que el proceso es capaz y que se mantiene bajo control mientras el producto esté en el mercado. Es una de las tareas más técnicas de una planta farmacéutica y une a producción, calidad, desarrollo y el laboratorio.
 
@@ -6,7 +6,7 @@ Validar un proceso es demostrar que, cada vez que se fabrica un lote, el resulta
 >
 > - El enfoque moderno ve la validación como un ciclo de vida de tres etapas: diseño del proceso, calificación del proceso y verificación continua.
 > - En Colombia, la Resolución 2190 de 2020 modificó la Resolución 1160 de 2016 en temas que incluyen la validación de procesos de medicamentos no estériles.
-> - En Edvanta estudias gratis Validaciones y Calificaciones, un curso de nivel avanzado que cubre calificación, procesos, limpieza y métodos analíticos.
+> - En Edvanta empiezas gratis, con la primera unidad abierta, Validaciones y Calificaciones, un curso de nivel avanzado que cubre calificación, procesos, limpieza y métodos analíticos.
 
 ## Las tres etapas, según la FDA
 
@@ -44,9 +44,9 @@ El informe final concluye si el proceso está validado y qué se vigilará en la
 
 | Curso | Dónde | Costo |
 |---|---|---|
-| [Validaciones y Calificaciones](/curso-de-validaciones-y-calificaciones) | Aula Edvanta | Gratis; certificado opcional de COP 60.000 |
-| [BPM en la Industria Farmacéutica](/curso-de-bpm-en-la-industria-farmaceutica) | Aula Edvanta | Gratis; certificado opcional de COP 60.000 |
-| [Gestión de Riesgos en la Calidad Farmacéutica](/curso-de-gestion-de-riesgos-en-la-calidad-farmaceutica) | Aula Edvanta | Gratis; certificado opcional de COP 60.000 |
+| [Validaciones y Calificaciones](/curso-de-validaciones-y-calificaciones) | Aula Edvanta | Primera unidad gratis; curso completo con certificado: COP 60.000 en los primeros 7 días (lista: COP 199.000) |
+| [BPM en la Industria Farmacéutica](/curso-de-bpm-en-la-industria-farmaceutica) | Aula Edvanta | Primera unidad gratis; curso completo con certificado: COP 60.000 en los primeros 7 días (lista: COP 199.000) |
+| [Gestión de Riesgos en la Calidad Farmacéutica](/curso-de-gestion-de-riesgos-en-la-calidad-farmaceutica) | Aula Edvanta | Primera unidad gratis; curso completo con certificado: COP 60.000 en los primeros 7 días (lista: COP 199.000) |
 
 Si buscas formación para todo tu equipo, Edvanta ofrece [capacitación institucional en validaciones y calificaciones](/empresas/validaciones-y-calificaciones).
 
@@ -100,7 +100,7 @@ Es un lote de calificación del desempeño del proceso: se fabrica a escala come
 
 ### ¿Hay un curso de validación de procesos gratis?
 
-Sí. En Edvanta, Validaciones y Calificaciones se estudia gratis, con certificado verificable opcional por COP 60.000.
+Sí. En Edvanta, Validaciones y Calificaciones se estudia en línea: la primera unidad es gratis y el curso completo con certificado verificable cuesta COP 60.000 en los primeros 7 días (lista: COP 199.000).
 
 ### ¿La validación retrospectiva es aceptada?
 

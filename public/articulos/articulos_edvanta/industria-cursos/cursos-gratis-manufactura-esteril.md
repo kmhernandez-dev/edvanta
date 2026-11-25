@@ -1,4 +1,4 @@
-# Cursos gratis de manufactura estéril: áreas limpias, llenado aséptico y la estrategia de control de la contaminación
+# Cursos de manufactura estéril: áreas limpias, llenado aséptico y la estrategia de control de la contaminación
 
 Un inyectable, un colirio o una solución para infusión no pueden tener microorganismos: un solo lote contaminado puede causar infecciones graves en muchos pacientes. Por eso la manufactura estéril es el área más exigente de la producción farmacéutica, con áreas limpias clasificadas, personal entrenado para trabajar sin contaminar y validaciones que simulan el proceso completo. Es también un área que busca profesionales con formación específica.
 
@@ -45,7 +45,7 @@ Las personas liberan partículas y microorganismos todo el tiempo. Por eso el pe
 
 ## Cursos de manufactura estéril
 
-En Edvanta, estos cursos gratuitos te dan la base, con certificado opcional de COP 60.000:
+En Edvanta, estos cursos gratuitos te dan la base, con la primera unidad gratis y certificado en el curso completo (COP 60.000 en los primeros 7 días (lista: COP 199.000)):
 
 | Curso | Para qué sirve |
 |---|---|
@@ -92,7 +92,7 @@ La Resolución 1160 de 2016, que adopta el manual de buenas prácticas de manufa
 
 ### ¿Qué curso sirve para empezar en manufactura estéril?
 
-Sterile Drug Product Manufacturing in Pharma Industry, en Udemy, junto con los cursos gratuitos de BPM y Central de Mezclas de Edvanta.
+Sterile Drug Product Manufacturing in Pharma Industry, en Udemy, junto con los cursos de BPM y Central de Mezclas de Edvanta (primera unidad gratis).
 
 ## Fuentes
 

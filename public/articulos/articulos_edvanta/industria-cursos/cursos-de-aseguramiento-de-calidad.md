@@ -1,4 +1,4 @@
-# Cursos de aseguramiento de calidad para químicos farmacéuticos: gratis, online y con certificado
+# Cursos de aseguramiento de calidad para químicos farmacéuticos: online y con certificado
 
 Aseguramiento de calidad (QA) es el área que responde una pregunta incómoda en cualquier laboratorio: **¿cómo sabemos que cada lote que sale es igual de seguro que el que aprobó el INVIMA?** No basta con analizar el producto al final. QA diseña el sistema que evita los errores: procedimientos, capacitación, auditorías, manejo de desviaciones y decisiones basadas en riesgo.
 
@@ -6,7 +6,7 @@ Esta guía te muestra qué aprender, qué cursos de aseguramiento de calidad exi
 
 > **En resumen**
 >
-> - En Edvanta puedes estudiar gratis el Curso de Aseguramiento de la Calidad Farmacéutica; el certificado verificable es opcional y cuesta COP 60.000.
+> - En Edvanta empiezas gratis el Curso de Aseguramiento de la Calidad Farmacéutica con la primera unidad abierta; el curso completo con certificado verificable cuesta COP 60.000 en los primeros 7 días (lista: COP 199.000).
 > - Las bases que más piden las empresas son BPM (Resolución 1160 de 2016), gestión de riesgos, CAPA, auditorías y buenas prácticas de documentación.
 > - Al final encontrarás una ruta de 90 días para pasar de la teoría a resultados que puedas mostrar en una entrevista.
 
@@ -48,9 +48,9 @@ Si revisas vacantes de analista o coordinador de aseguramiento de calidad, se re
 
 Las tres primeras se aprenden con práctica guiada, no solo con teoría. Por eso conviene elegir cursos que incluyan casos y ejercicios.
 
-## Cursos de aseguramiento de calidad gratis en Edvanta
+## Cursos de aseguramiento de calidad en Edvanta: primera unidad gratis
 
-Edvanta tiene una línea completa de calidad farmacéutica que **estudias gratis** en el aula, a tu ritmo, con casos, quices y foros. Si quieres demostrarlo, el certificado verificable cuesta COP 60.000 por curso, en un solo pago.
+Edvanta tiene una línea completa de calidad farmacéutica que **empiezas gratis** (la primera unidad de cada curso) en el aula, a tu ritmo, con casos, quices y foros. Si quieres demostrarlo, el curso completo con certificado verificable cuesta COP 60.000 en los primeros 7 días (lista: COP 199.000).
 
 | Curso gratis | Qué resuelve |
 |---|---|
@@ -123,7 +123,7 @@ La formación en aseguramiento de calidad abre puertas en laboratorios fabricant
 
 ### ¿Dónde estudiar un curso de aseguramiento de calidad gratis en Colombia?
 
-En Edvanta puedes estudiar gratis el Curso de Aseguramiento de la Calidad Farmacéutica y otros seis cursos de la línea de calidad, en línea y a tu ritmo. Si necesitas certificado, cuesta COP 60.000 por curso.
+En Edvanta empiezas gratis el Curso de Aseguramiento de la Calidad Farmacéutica y otros seis cursos de la línea de calidad, en línea y a tu ritmo, con la primera unidad abierta; el curso completo con certificado cuesta COP 60.000 en los primeros 7 días (lista: COP 199.000).
 
 ### ¿El curso de aseguramiento de calidad online sirve para la certificación BPM?
 

@@ -1,4 +1,4 @@
-# Cursos gratis de planes de gestión de riesgo (PGR) de medicamentos: qué son y cómo se elaboran en Colombia
+# Cursos de planes de gestión de riesgo (PGR) de medicamentos: qué son y cómo se elaboran en Colombia
 
 Ningún medicamento está libre de riesgos. Lo que sí se puede hacer es conocerlos, vigilarlos y reducirlos. El plan de gestión de riesgo (PGR) es el documento que organiza ese trabajo para un medicamento concreto: qué riesgos tiene, qué falta saber, cómo se va a vigilar y qué medidas se toman para minimizarlos. En Colombia es una obligación para los titulares de registro sanitario de ciertos medicamentos, y es un tema cada vez más pedido en las vacantes de farmacovigilancia y asuntos regulatorios.
 
@@ -57,7 +57,7 @@ El PGR no es un documento estático. Se actualiza cuando cambia el perfil de ben
 
 > **Contenido editorial:** algunos enlaces son de afiliado. Edvanta no dicta esos cursos; confirma condiciones y certificado en cada plataforma.
 
-Un PGR se presenta ante la autoridad y se integra al expediente del medicamento. Los cursos gratuitos de Edvanta de [Registro Sanitario de Medicamentos Biológicos](/curso-de-registro-sanitario-de-medicamentos-biologicos), [Modificaciones al Registro Sanitario de Medicamentos](/curso-de-modificaciones-al-registro-sanitario-de-medicamentos) y [Gestión de Riesgos en la Calidad Farmacéutica](/curso-de-gestion-de-riesgos-en-la-calidad-farmaceutica) complementan esta formación, con certificado opcional de COP 60.000.
+Un PGR se presenta ante la autoridad y se integra al expediente del medicamento. Los cursos de Edvanta (primera unidad gratis) de [Registro Sanitario de Medicamentos Biológicos](/curso-de-registro-sanitario-de-medicamentos-biologicos), [Modificaciones al Registro Sanitario de Medicamentos](/curso-de-modificaciones-al-registro-sanitario-de-medicamentos) y [Gestión de Riesgos en la Calidad Farmacéutica](/curso-de-gestion-de-riesgos-en-la-calidad-farmaceutica) complementan esta formación: la primera unidad es gratis y el curso completo con certificado cuesta COP 60.000 en los primeros 7 días (lista: COP 199.000).
 
 ## Un ejemplo de medida adicional
 

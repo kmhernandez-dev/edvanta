@@ -4,7 +4,7 @@
 
 > **En resumen**
 >
-> - Edvanta: 61 cursos de formación farmacéutica con contenido gratuito y certificado verificable opcional de COP 60.000.
+> - Edvanta: 61 cursos de formación farmacéutica con la primera unidad gratis; el curso completo con certificado verificable cuesta COP 60.000 en los primeros 7 días (lista: COP 199.000).
 > - Edutin Academy: cursos gratuitos de calidad, datos, SST e idiomas, con certificado de pago.
 > - Coursera: cursos internacionales, la mayoría en inglés, con modelos de acceso que varían por curso.
 > - El curso virtual de 50 horas del SG-SST es gratuito por ley y lo ofrecen las ARL.
@@ -13,7 +13,7 @@
 
 | Modelo | Qué es gratis | Qué se paga |
 |---|---|---|
-| Contenido gratis, certificado opcional | Todas las clases y evaluaciones | Solo el certificado, si lo quieres |
+| Primera unidad gratis, curso completo de pago | La primera unidad de cada curso | El curso completo con su certificado |
 | Vista previa | Parte del material | El curso completo y el certificado |
 | Gratis por norma | Todo, incluido el certificado | Nada |
 
@@ -21,7 +21,7 @@ Pocas cosas entran en la tercera fila. El ejemplo más conocido en Colombia es e
 
 ## Los cursos de Edvanta: formación farmacéutica con casos de Colombia
 
-Edvanta imparte 61 cursos para profesionales. El contenido completo (clases, casos, quices y actividades) es gratuito; el certificado verificable con código es opcional y cuesta COP 60.000 por curso. Los más pedidos:
+Edvanta imparte 61 cursos para profesionales. La primera unidad de cada curso es gratis; el curso completo (clases, casos, quices, actividades y certificado verificable con código) cuesta COP 60.000 en los primeros 7 días (lista: COP 199.000). Los más pedidos:
 
 **Calidad y BPM**
 - [Buenas Prácticas de Manufactura — BPM](/curso-de-buenas-practicas-de-manufactura-bpm)
@@ -102,7 +102,7 @@ El [creador de hoja de vida de Edvanta](/hoja-de-vida) organiza estas secciones 
 
 ### ¿Hay cursos para químicos farmacéuticos realmente gratis con certificado incluido?
 
-El curso virtual de 50 horas del SG-SST es gratuito por norma, incluido su certificado. En la mayoría de las plataformas, incluida Edvanta, el contenido es gratis y el certificado es opcional y de pago.
+El curso virtual de 50 horas del SG-SST es gratuito por norma, incluido su certificado. En muchas plataformas el contenido es gratis y el certificado es de pago. En Edvanta, la primera unidad es gratis y el curso completo con certificado es de pago.
 
 ### ¿Cuánto cuesta el certificado de Edvanta?
 
@@ -116,7 +116,7 @@ Son cursos de educación continua con certificado verificable. Sirven como evide
 
 Empieza por BPM: es la base de cualquier cargo en planta o en calidad. Luego suma BPL si te interesa el laboratorio, o registro sanitario si te interesa asuntos regulatorios.
 
-### ¿Dónde veo todos los cursos gratis de Edvanta?
+### ¿Dónde veo todos los cursos de Edvanta?
 
 En la página de [recursos para estudiantes de Química Farmacéutica](/recursos-para-estudiantes-de-quimica-farmaceutica) y en el [catálogo de cursos](/cursos).
 

@@ -1,4 +1,4 @@
-# Cursos gratis de regulación EMA: procedimiento centralizado, CHMP, EPAR y GMP europeas
+# Cursos de regulación EMA: procedimiento centralizado, CHMP, EPAR y GMP europeas
 
 La Agencia Europea de Medicamentos (EMA) evalúa los medicamentos que se autorizan para toda la Unión Europea, y sus guías y decisiones son una referencia técnica en todo el mundo. En América Latina su influencia es directa: varias agencias de la región usan sus evaluaciones como referencia para decidir más rápido, como hizo la Anvisa de Brasil en 2026 con algunas aprobaciones. Esta guía explica cómo funciona la regulación europea de medicamentos y qué cursos te ayudan a dominarla.
 
@@ -55,7 +55,7 @@ Las buenas prácticas de manufactura de la Unión Europea están reunidas en el 
 
 > **Contenido editorial:** algunos enlaces son de afiliado. Edvanta no dicta esos cursos; confirma condiciones y certificado en cada plataforma.
 
-Para la parte local, los cursos gratuitos de Edvanta de [Asuntos Regulatorios Sanitarios ante el INVIMA](/curso-de-asuntos-regulatorios-sanitarios-ante-invima), [Regulación de Medicamentos Biosimilares](/curso-de-regulacion-de-medicamentos-biosimilares) y [Registro Sanitario de Medicamentos Biológicos](/curso-de-registro-sanitario-de-medicamentos-biologicos) ofrecen el contexto colombiano, con certificado opcional de COP 60.000.
+Para la parte local, los cursos de Edvanta (primera unidad gratis) de [Asuntos Regulatorios Sanitarios ante el INVIMA](/curso-de-asuntos-regulatorios-sanitarios-ante-invima), [Regulación de Medicamentos Biosimilares](/curso-de-regulacion-de-medicamentos-biosimilares) y [Registro Sanitario de Medicamentos Biológicos](/curso-de-registro-sanitario-de-medicamentos-biologicos) ofrecen el contexto colombiano: la primera unidad es gratis y el curso completo con certificado cuesta COP 60.000 en los primeros 7 días (lista: COP 199.000).
 
 ## Cómo seguir las decisiones de la EMA
 

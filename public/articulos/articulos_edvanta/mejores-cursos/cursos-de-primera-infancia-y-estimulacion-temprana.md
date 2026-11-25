@@ -62,13 +62,13 @@ El artículo de Edvanta sobre [fármacos pediátricos y dosificación segura](/a
 
 ## Habilidades para quienes trabajan con familias
 
-Docentes y agentes educativos hablan todos los días con madres, padres y cuidadores, a veces sobre temas delicados. Estos cursos gratuitos de Edvanta ayudan en esa parte:
+Docentes y agentes educativos hablan todos los días con madres, padres y cuidadores, a veces sobre temas delicados. Estos cursos de Edvanta (primera unidad gratis) ayudan en esa parte:
 
 - [Comunicación Asertiva](/curso-de-comunicacion-asertiva)
 - [Inteligencia Emocional](/curso-de-inteligencia-emocional)
 - [Servicio al Cliente](/curso-de-servicio-al-cliente): atención respetuosa y clara a las familias.
 
-El contenido se estudia gratis; el certificado verificable es opcional y cuesta COP 60.000 por curso.
+La primera unidad de cada curso es gratis; el curso completo con certificado verificable cuesta COP 60.000 en los primeros 7 días (lista: COP 199.000).
 
 ## Cómo elegir un curso de primera infancia
 

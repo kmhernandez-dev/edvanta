@@ -32,7 +32,7 @@ En algunos cursos individuales puedes ver parte o todo el material sin pagar; la
 | [Pharmacy: Syringes, Compounding Medications and Communication](/curso-de-pharmacy-syringes-compounding-medications-and-communication) | Básico | Inglés | Preparaciones, manejo de jeringas y comunicación con el paciente |
 | [Pharmacotherapy: Understanding Biotechnology Products](/curso-de-pharmacotherapy-understanding-biotechnology-products) | Intermedio | Inglés | Biológicos y biotecnológicos, cada vez más presentes en el hospital |
 
-Si trabajas o quieres trabajar en farmacia hospitalaria, combina estos cursos con los gratuitos de Edvanta de [Farmacología Cardiovascular](/curso-de-farmacologia-cardiovascular) y [Farmacoterapia de la Hipertensión Arterial](/curso-de-farmacoterapia-de-la-hipertension-arterial), que trabajan con casos de pacientes colombianos. Para el día a día está la guía [Farmacocinética clínica aplicada](/guia/farmacocinetica-clinica-aplicada) de AtenFarmaClinic.
+Si trabajas o quieres trabajar en farmacia hospitalaria, combina estos cursos con los de Edvanta (primera unidad gratis) de [Farmacología Cardiovascular](/curso-de-farmacologia-cardiovascular) y [Farmacoterapia de la Hipertensión Arterial](/curso-de-farmacoterapia-de-la-hipertension-arterial), que trabajan con casos de pacientes colombianos. Para el día a día está la guía [Farmacocinética clínica aplicada](/guia/farmacocinetica-clinica-aplicada) de AtenFarmaClinic.
 
 ## Uso prudente de antibióticos
 
@@ -81,7 +81,7 @@ La guía [para qué sirve Power BI en salud y farmacia](/articulos/power-bi-para
 
 ## Una ruta de 6 meses con Coursera y Edvanta
 
-1. **Meses 1 y 2:** Pharmacokinetics y, en paralelo, un curso gratuito de Edvanta de tu área, por ejemplo [Farmacología Cardiovascular](/curso-de-farmacologia-cardiovascular).
+1. **Meses 1 y 2:** Pharmacokinetics y, en paralelo, un curso de Edvanta (primera unidad gratis) de tu área, por ejemplo [Farmacología Cardiovascular](/curso-de-farmacologia-cardiovascular).
 2. **Mes 3:** Antibióticos: uso prudente, en español.
 3. **Meses 4 y 5:** Drug Safety and Pharmacovigilance o Clinical Pharmacokinetics, según apuntes a industria u hospital.
 4. **Mes 6:** un certificado de datos para mostrar en tu hoja de vida.

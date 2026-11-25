@@ -1,4 +1,4 @@
-# Cursos gratis de expediente CTD y eCTD: los cinco módulos del dossier de un medicamento
+# Cursos de expediente CTD y eCTD: los cinco módulos del dossier de un medicamento
 
 Detrás de cada medicamento autorizado hay un expediente de miles de páginas: cómo se fabrica, cómo se controla, qué estudios se hicieron en animales y en humanos, y qué dice la información para el paciente. Para que ese expediente sea comparable entre países, la ICH acordó un formato común: el CTD (*Common Technical Document*). Saber armarlo, revisarlo y mantenerlo actualizado es una de las competencias más valoradas en asuntos regulatorios.
 
@@ -39,7 +39,7 @@ El eCTD es el formato electrónico del CTD, con una estructura de carpetas, arch
 
 En Colombia, el registro sanitario de los medicamentos de síntesis química se rige por el Decreto 677 de 1995, que contempla las evaluaciones farmacéutica, farmacológica y legal, y los medicamentos biológicos tienen requisitos propios. Aunque la estructura que pide el INVIMA no es idéntica al CTD, la lógica de calidad, seguridad y eficacia es la misma, y muchas empresas organizan su información en formato CTD para usarla en varios países. Revisa siempre los requisitos vigentes del INVIMA para cada trámite.
 
-Estos cursos gratuitos de Edvanta enseñan el lado colombiano, con certificado opcional de COP 60.000:
+Estos cursos de Edvanta (primera unidad gratis) enseñan el lado colombiano, con la primera unidad gratis y certificado en el curso completo (COP 60.000 en los primeros 7 días (lista: COP 199.000)):
 
 - [Elaboración de Dossiers Farmacéuticos](/curso-de-elaboracion-de-dossiers-farmaceuticos)
 - [Registro Sanitario de Medicamentos ante el INVIMA](/curso-de-registro-sanitario-de-medicamentos-ante-el-invima)
@@ -94,7 +94,7 @@ Los requisitos del INVIMA tienen su propia estructura, aunque la lógica es simi
 
 ### ¿Qué curso sirve para aprender a armar un dossier?
 
-En Edvanta, Elaboración de Dossiers Farmacéuticos, gratuito. En Udemy, CTD, NeeS & eCTD Compilation and Submission of Dossiers.
+En Edvanta, Elaboración de Dossiers Farmacéuticos, con la primera unidad gratis. En Udemy, CTD, NeeS & eCTD Compilation and Submission of Dossiers.
 
 ## Fuentes
 

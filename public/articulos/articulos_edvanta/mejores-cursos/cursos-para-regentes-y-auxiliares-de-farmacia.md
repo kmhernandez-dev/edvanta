@@ -1,11 +1,11 @@
-# Cursos para regentes y auxiliares de farmacia: gratis, en vivo y con certificado
+# Cursos para regentes y auxiliares de farmacia: en vivo, online y con certificado
 
 Regentes y auxiliares de farmacia son quienes más tiempo pasan con el paciente y con el medicamento: reciben, almacenan, dispensan, orientan y responden preguntas todo el día. Por eso la formación continua no es un adorno: un error de dispensación o una mala orientación puede tener consecuencias serias. Esta guía reúne los cursos más útiles para el trabajo en droguerías, farmacias y servicios farmacéuticos, con enlaces directos para inscribirte.
 
 > **En resumen**
 >
 > - El curso en vivo de Edvanta, Operación segura del servicio farmacéutico, está diseñado para auxiliares y regentes: 8 encuentros de dos horas en cuatro semanas.
-> - Gratis en Edvanta: BPE y preparaciones magistrales, servicio al cliente, farmacología y farmacoterapia.
+> - En Edvanta, con la primera unidad gratis: BPE y preparaciones magistrales, servicio al cliente, farmacología y farmacoterapia.
 > - Para reforzar dosis y prescripciones: los cursos de farmacia de Coursera, en inglés.
 
 ## El curso en vivo para auxiliares y regentes
@@ -16,7 +16,7 @@ Regentes y auxiliares de farmacia son quienes más tiempo pasan con el paciente 
 - **Incluye:** materiales de apoyo, casos simulados, actividades diferenciadas para auxiliares y para regentes, evaluación y seguimiento de asistencia.
 - **Objetivo:** repasar con casos cada paso del medicamento dentro del servicio, de la recepción a la dispensación, y reconocer cuándo y a quién escalar un incidente.
 
-## Cursos gratis de Edvanta para el servicio farmacéutico
+## Cursos de Edvanta para el servicio farmacéutico (primera unidad gratis)
 
 | Curso | Para qué te sirve |
 |---|---|
@@ -27,7 +27,7 @@ Regentes y auxiliares de farmacia son quienes más tiempo pasan con el paciente 
 | [Farmacoterapia de la Hipertensión Arterial](/curso-de-farmacoterapia-de-la-hipertension-arterial) | Acompañar a pacientes crónicos |
 | [Farmacoterapia de la Diabetes](/curso-de-farmacoterapia-de-la-diabetes) | Insulinas, hipoglucemia y adherencia |
 
-El contenido se estudia gratis. El certificado verificable es opcional y cuesta COP 60.000 por curso.
+El contenido se estudia gratis. La primera unidad es gratis y el curso completo con certificado verificable cuesta COP 60.000 en los primeros 7 días (lista: COP 199.000).
 
 ## Cursos complementarios en otras plataformas
 
@@ -74,11 +74,11 @@ Llevarlos en Excel, y luego en un tablero, convierte la experiencia del día a d
 
 ### ¿Hay cursos gratis para auxiliares de farmacia con certificado?
 
-Sí. En Edvanta el contenido de cursos como Servicio al Cliente, Farmacología Cardiovascular o BPE es gratis, y el certificado verificable es opcional, por COP 60.000.
+Sí. En Edvanta el contenido de cursos como Servicio al Cliente, Farmacología Cardiovascular o BPE tiene la primera unidad gratis, y el curso completo con certificado verificable cuesta COP 60.000 en los primeros 7 días (lista: COP 199.000).
 
 ### ¿Qué curso le sirve a un regente de farmacia?
 
-El curso en vivo Operación segura del servicio farmacéutico, diseñado para auxiliares y regentes, y los cursos gratuitos de farmacología y farmacoterapia de Edvanta.
+El curso en vivo Operación segura del servicio farmacéutico, diseñado para auxiliares y regentes, y los cursos de farmacología y farmacoterapia de Edvanta, con la primera unidad gratis.
 
 ### ¿Los cursos de Coursera para farmacia están en español?
 

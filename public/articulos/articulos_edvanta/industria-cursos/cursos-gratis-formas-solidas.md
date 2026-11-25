@@ -1,4 +1,4 @@
-# Cursos gratis de formas farmacéuticas sólidas: tabletas, cápsulas, granulación y controles en proceso
+# Cursos de formas farmacéuticas sólidas: tabletas, cápsulas, granulación y controles en proceso
 
 Las tabletas y las cápsulas son la forma farmacéutica más usada en el mundo: son estables, fáciles de dosificar y de transportar, y los pacientes las prefieren. Detrás de cada tableta hay, sin embargo, una cadena de operaciones donde pequeños cambios (la humedad de un granulado, el tiempo de mezcla, la fuerza de compresión) pueden cambiar cómo se disuelve el medicamento en el cuerpo. Entender esa cadena es la base del trabajo en producción, desarrollo y calidad de sólidos.
 
@@ -53,7 +53,7 @@ Cada uno se investiga como una desviación, buscando la causa raíz y no solo el
 
 ## Cursos de formas sólidas
 
-En Edvanta estudias gratis la base de calidad y producción, con certificado opcional de COP 60.000:
+En Edvanta empiezas gratis, con la primera unidad abierta, la base de calidad y producción, con la primera unidad gratis y certificado en el curso completo (COP 60.000 en los primeros 7 días (lista: COP 199.000)):
 
 - [Buenas Prácticas de Manufactura (BPM)](/curso-de-buenas-practicas-de-manufactura-bpm)
 - [BPM en la Industria Farmacéutica](/curso-de-bpm-en-la-industria-farmaceutica)
@@ -100,7 +100,7 @@ Las buenas prácticas de manufactura de la Resolución 1160 de 2016, con sus mod
 
 ### ¿Qué curso sirve para aprender fabricación de tabletas?
 
-GMP: Pharmaceutical Tablet Manufacturing, en Udemy, junto con el curso gratuito de BPM de Edvanta.
+GMP: Pharmaceutical Tablet Manufacturing, en Udemy, junto con el curso de BPM de Edvanta (primera unidad gratis).
 
 ## Fuentes
 

@@ -162,10 +162,10 @@ const articulo = ({ areaId, tema, slug, filtros = [], tipo = 'tema' }) => {
   const esArea = tipo === 'area';
   const title = esArea
     ? `Cursos de ${area.nombre} para químicos farmacéuticos`
-    : `Cursos gratis de ${tema}: guía para químicos farmacéuticos`;
+    : `Cursos de ${tema}: guía para químicos farmacéuticos`;
   const seoTitle = esArea
     ? `Cursos de ${area.nombre} para QF`
-    : `Cursos gratis de ${tema} para QF`;
+    : `Cursos de ${tema} para QF`;
   const description = `Guía de cursos de ${esArea ? area.nombre : tema} para químicos farmacéuticos: qué aprender, cómo elegir y qué salidas laborales existen.`;
   return {
     slug,
@@ -226,46 +226,46 @@ for (const a of todos) {
  * promedio 0,45 (máximo 0,84, con tejas de 5 palabras). Indexadas así
  * parecen contenido repetido a escala, como las noticias del paquete del
  * 31-oct. Cada guía reescrita trae funciones reales del cargo, normas
- * verificadas en el normograma del INVIMA, los cursos propios gratis de
+ * verificadas en el normograma del INVIMA, los cursos propios (primera unidad gratis) de
  * Edvanta del área, una ruta de 90 días y preguntas propias, y lleva
  * `contenidoPropio: true`. Las demás quedan en noindex,follow
  * (src/lib/seo/indexabilidad.js) hasta que se reescriban.
  */
 const REESCRITOS = {
   'cursos-de-aseguramiento-de-calidad': {
-    title: 'Cursos de aseguramiento de calidad para químicos farmacéuticos: gratis, online y con certificado',
-    seoTitle: 'Cursos de aseguramiento de calidad gratis y online',
-    description: 'Qué hace QA, qué normas dominar (BPM, ICH Q9 y Q10) y cursos de aseguramiento de calidad gratis con certificado opcional, más una ruta de 90 días.',
+    title: 'Cursos de aseguramiento de calidad para químicos farmacéuticos: online y con certificado',
+    seoTitle: 'Cursos de aseguramiento de calidad online y con certificado',
+    description: 'Qué hace QA, qué normas dominar (BPM, ICH Q9 y Q10) y cursos de aseguramiento de calidad con la primera unidad gratis, más una ruta de 90 días.',
   },
   'cursos-de-control-de-calidad-farmaceutico': {
-    title: 'Cursos de control de calidad farmacéutico: gratis, online y con certificado',
-    seoTitle: 'Cursos de control de calidad farmacéutico gratis',
-    description: 'HPLC, disolución, validación de métodos y OOS: cursos de control de calidad farmacéutico gratis, los cálculos de entrevista y una ruta de 90 días.',
+    title: 'Cursos de control de calidad farmacéutico: online y con certificado',
+    seoTitle: 'Cursos de control de calidad farmacéutico',
+    description: 'HPLC, disolución, validación de métodos y OOS: cursos de control de calidad farmacéutico, los cálculos de entrevista y una ruta de 90 días.',
   },
   'cursos-de-validaciones-y-calificaciones': {
-    title: 'Cursos de validaciones y calificaciones farmacéuticas: gratis, online y con certificado',
+    title: 'Cursos de validaciones y calificaciones farmacéuticas: online y con certificado',
     seoTitle: 'Cursos de validaciones y calificaciones farmacéuticas',
-    description: 'DQ, IQ, OQ y PQ, validación de procesos, de limpieza y CSV con GAMP 5: cursos de validaciones gratis, cómo elegir y una ruta de 90 días.',
+    description: 'DQ, IQ, OQ y PQ, validación de procesos, de limpieza y CSV con GAMP 5: cursos de validaciones, cómo elegir y una ruta de 90 días.',
   },
   'cursos-de-asuntos-regulatorios': {
-    title: 'Cursos de asuntos regulatorios farmacéuticos: gratis, online y con certificado',
-    seoTitle: 'Cursos de asuntos regulatorios farmacéuticos gratis',
-    description: 'Registro sanitario, dossiers, requerimientos del INVIMA y etiquetado: más de diez cursos de asuntos regulatorios gratis y una ruta de 90 días.',
+    title: 'Cursos de asuntos regulatorios farmacéuticos: online y con certificado',
+    seoTitle: 'Cursos de asuntos regulatorios farmacéuticos',
+    description: 'Registro sanitario, dossiers, requerimientos del INVIMA y etiquetado: más de diez cursos de asuntos regulatorios y una ruta de 90 días.',
   },
   'cursos-de-farmacovigilancia': {
-    title: 'Cursos de farmacovigilancia: gratis, online y con certificado',
-    seoTitle: 'Cursos de farmacovigilancia gratis y online',
-    description: 'Qué hace un profesional de farmacovigilancia, causalidad, ICSR y señales, cómo reportar en Colombia y los cursos para formarte, gratis y online.',
+    title: 'Cursos de farmacovigilancia: online y con certificado',
+    seoTitle: 'Cursos de farmacovigilancia online y con certificado',
+    description: 'Qué hace un profesional de farmacovigilancia, causalidad, ICSR y señales, cómo reportar en Colombia y los cursos para formarte, online y con certificado.',
   },
   'cursos-de-produccion-farmaceutica': {
-    title: 'Cursos de producción farmacéutica: gratis, online y con certificado',
-    seoTitle: 'Cursos de producción farmacéutica y BPM gratis',
-    description: 'BPM, manufactura de sólidos y estériles, controles en proceso y mejora continua: cursos de producción farmacéutica gratis y una ruta de 90 días.',
+    title: 'Cursos de producción farmacéutica: online y con certificado',
+    seoTitle: 'Cursos de producción farmacéutica y BPM',
+    description: 'BPM, manufactura de sólidos y estériles, controles en proceso y mejora continua: cursos de producción farmacéutica y una ruta de 90 días.',
   },
   'cursos-de-investigacion-y-desarrollo-farmaceutico': {
-    title: 'Cursos de investigación y desarrollo farmacéutico: gratis, online y con certificado',
+    title: 'Cursos de investigación y desarrollo farmacéutico: online y con certificado',
     seoTitle: 'Cursos de investigación y desarrollo farmacéutico',
-    description: 'Preformulación, QbD, estabilidad, bioequivalencia e investigación clínica: cursos de I+D farmacéutico gratis y una ruta de 90 días.',
+    description: 'Preformulación, QbD, estabilidad, bioequivalencia e investigación clínica: cursos de I+D farmacéutico y una ruta de 90 días.',
   },
   'cursos-de-datos-e-inteligencia-artificial': {
     title: 'Cursos de datos e inteligencia artificial para químicos farmacéuticos',
@@ -274,44 +274,44 @@ const REESCRITOS = {
   },
   // Lote 2 (11-nov-2026): los ocho temas de calidad.
   'cursos-gratis-iso-9001': {
-    title: 'Cursos gratis de ISO 9001: guía para químicos farmacéuticos',
-    seoTitle: 'Cursos de ISO 9001 gratis, online y con certificado',
-    description: 'Qué pide ISO 9001, cómo convive con las BPM, qué curso elegir (interpretación o auditor interno) y cursos de gestión de calidad gratis.',
+    title: 'Cursos de ISO 9001: guía para químicos farmacéuticos',
+    seoTitle: 'Cursos de ISO 9001 online y con certificado',
+    description: 'Qué pide ISO 9001, cómo convive con las BPM, qué curso elegir (interpretación o auditor interno) y cursos de gestión de calidad.',
     readingTime: '6 min',
   },
   'cursos-gratis-bpm-gmp': {
-    title: 'Cursos gratis de BPM y GMP: guía para químicos farmacéuticos',
-    seoTitle: 'Cursos de BPM y GMP gratis con certificado',
-    description: 'Qué cubren las BPM, la Resolución 1160 de 2016, los errores que más se repiten en planta y cursos de BPM, BPL y BPE gratis con certificado.',
+    title: 'Cursos de BPM y GMP: guía para químicos farmacéuticos',
+    seoTitle: 'Cursos de BPM y GMP con certificado',
+    description: 'Qué cubren las BPM, la Resolución 1160 de 2016, los errores que más se repiten en planta y cursos de BPM, BPL y BPE con certificado.',
     readingTime: '6 min',
   },
   'cursos-gratis-gdp-documentacion': {
-    title: 'Cursos gratis de buenas prácticas de documentación (GDP)',
-    seoTitle: 'Curso de buenas prácticas de documentación gratis',
-    description: 'ALCOA+, reglas para registrar y corregir, errores que ve un auditor y cómo escribir POE claros: cursos de documentación farmacéutica gratis.',
+    title: 'Cursos de buenas prácticas de documentación (GDP)',
+    seoTitle: 'Curso de buenas prácticas de documentación',
+    description: 'ALCOA+, reglas para registrar y corregir, errores que ve un auditor y cómo escribir POE claros: cursos de documentación farmacéutica.',
     readingTime: '6 min',
   },
   'cursos-gratis-capa-desviaciones': {
-    title: 'Cursos gratis de CAPA y desviaciones: guía para químicos farmacéuticos',
-    seoTitle: 'Cursos de CAPA y desviaciones gratis y online',
-    description: 'Cómo investigar una desviación, herramientas de causa raíz, CAPA medibles e indicadores del sistema: cursos de CAPA y desviaciones gratis.',
+    title: 'Cursos de CAPA y desviaciones: guía para químicos farmacéuticos',
+    seoTitle: 'Cursos de CAPA y desviaciones online y con certificado',
+    description: 'Cómo investigar una desviación, herramientas de causa raíz, CAPA medibles e indicadores del sistema: cursos de CAPA y desviaciones.',
     readingTime: '6 min',
   },
   'cursos-gratis-gestion-de-riesgos': {
-    title: 'Cursos gratis de gestión de riesgos en calidad farmacéutica',
-    seoTitle: 'Cursos de gestión de riesgos ICH Q9 gratis',
+    title: 'Cursos de gestión de riesgos en calidad farmacéutica',
+    seoTitle: 'Cursos de gestión de riesgos ICH Q9',
     description: 'ICH Q9(R1) explicada, FMEA con un ejemplo de planta, herramientas y errores comunes: cursos de gestión de riesgos en calidad farmacéutica.',
     readingTime: '6 min',
   },
   'cursos-gratis-auditoria-farmaceutica': {
-    title: 'Cursos gratis de auditoría farmacéutica: cómo formarte como auditor',
-    seoTitle: 'Cursos de auditoría farmacéutica gratis y online',
-    description: 'Tipos de auditoría, ISO 19011, cómo redactar hallazgos y auditar proveedores: cursos de auditoría farmacéutica gratis con certificado.',
+    title: 'Cursos de auditoría farmacéutica: cómo formarte como auditor',
+    seoTitle: 'Cursos de auditoría farmacéutica online y con certificado',
+    description: 'Tipos de auditoría, ISO 19011, cómo redactar hallazgos y auditar proveedores: cursos de auditoría farmacéutica con certificado.',
     readingTime: '6 min',
   },
   'cursos-gratis-integridad-de-datos': {
-    title: 'Cursos gratis de integridad de datos farmacéutica: ALCOA+ y sistemas',
-    seoTitle: 'Cursos de integridad de datos y ALCOA+ gratis',
+    title: 'Cursos de integridad de datos farmacéutica: ALCOA+ y sistemas',
+    seoTitle: 'Cursos de integridad de datos y ALCOA+',
     description: 'ALCOA+ con ejemplos, 21 CFR Part 11, Anexo 11 y GAMP 5, y una revisión rápida para tu laboratorio: cursos de integridad de datos.',
     readingTime: '6 min',
   },
@@ -323,99 +323,99 @@ const REESCRITOS = {
   },
   // Lote 3 (11-nov-2026): control de calidad y validaciones.
   'cursos-gratis-hplc': {
-    title: 'Cursos gratis de HPLC para químicos farmacéuticos: de la teoría al laboratorio',
-    seoTitle: 'Cursos de HPLC gratis para químicos farmacéuticos',
-    description: 'Cómo funciona un HPLC, cálculos de valoración, aptitud del sistema y solución de problemas: cursos de HPLC gratis para control de calidad.',
+    title: 'Cursos de HPLC para químicos farmacéuticos: de la teoría al laboratorio',
+    seoTitle: 'Cursos de HPLC para químicos farmacéuticos',
+    description: 'Cómo funciona un HPLC, cálculos de valoración, aptitud del sistema y solución de problemas: cursos de HPLC para control de calidad.',
     readingTime: '6 min',
   },
   'cursos-gratis-validacion-metodos-analiticos': {
-    title: 'Cursos gratis de validación de métodos analíticos: ICH Q2(R2) y Q14',
-    seoTitle: 'Curso de validación de métodos analíticos gratis',
-    description: 'ICH Q2(R2) e ICH Q14 explicadas: parámetros, estadística, protocolo y métodos indicadores de estabilidad. Cursos de validación analítica gratis.',
+    title: 'Cursos de validación de métodos analíticos: ICH Q2(R2) y Q14',
+    seoTitle: 'Curso de validación de métodos analíticos',
+    description: 'ICH Q2(R2) e ICH Q14 explicadas: parámetros, estadística, protocolo y métodos indicadores de estabilidad. Cursos de validación analítica.',
     readingTime: '6 min',
   },
   'cursos-gratis-estudios-de-estabilidad': {
-    title: 'Cursos gratis de estudios de estabilidad de medicamentos: guía para Colombia',
-    seoTitle: 'Curso de estudios de estabilidad de medicamentos gratis',
-    description: 'Zona IVb, Resolución 3157 de 2018, tipos de estudio, protocolo y vida útil: cursos de estudios de estabilidad de medicamentos gratis.',
+    title: 'Cursos de estudios de estabilidad de medicamentos: guía para Colombia',
+    seoTitle: 'Curso de estudios de estabilidad de medicamentos',
+    description: 'Zona IVb, Resolución 3157 de 2018, tipos de estudio, protocolo y vida útil: cursos de estudios de estabilidad de medicamentos.',
     readingTime: '6 min',
   },
   'cursos-gratis-microbiologia-farmaceutica': {
-    title: 'Cursos gratis de microbiología farmacéutica: control microbiológico y áreas limpias',
-    seoTitle: 'Cursos de microbiología farmacéutica gratis',
-    description: 'Pruebas microbiológicas farmacopeicas, endotoxinas, áreas limpias y monitoreo ambiental: cursos de microbiología farmacéutica gratis.',
+    title: 'Cursos de microbiología farmacéutica: control microbiológico y áreas limpias',
+    seoTitle: 'Cursos de microbiología farmacéutica',
+    description: 'Pruebas microbiológicas farmacopeicas, endotoxinas, áreas limpias y monitoreo ambiental: cursos de microbiología farmacéutica.',
     readingTime: '6 min',
   },
   'cursos-gratis-investigaciones-de-laboratorio': {
-    title: 'Cursos gratis de investigaciones de laboratorio: resultados OOS y OOT',
+    title: 'Cursos de investigaciones de laboratorio: resultados OOS y OOT',
     seoTitle: 'Cursos de investigaciones OOS y OOT de laboratorio',
-    description: 'Cómo investigar resultados OOS y OOT: fase de laboratorio, fase completa, errores prohibidos e informe. Cursos de control de calidad gratis.',
+    description: 'Cómo investigar resultados OOS y OOT: fase de laboratorio, fase completa, errores prohibidos e informe. Cursos de control de calidad.',
     readingTime: '6 min',
   },
   'cursos-gratis-analisis-farmaceutico': {
-    title: 'Cursos gratis de análisis farmacéutico: técnicas, farmacopeas y carrera',
-    seoTitle: 'Cursos de análisis farmacéutico gratis y online',
-    description: 'Identidad, contenido, pureza y disolución: técnicas analíticas, farmacopeas y salidas laborales. Cursos de análisis farmacéutico gratis.',
+    title: 'Cursos de análisis farmacéutico: técnicas, farmacopeas y carrera',
+    seoTitle: 'Cursos de análisis farmacéutico online y con certificado',
+    description: 'Identidad, contenido, pureza y disolución: técnicas analíticas, farmacopeas y salidas laborales. Cursos de análisis farmacéutico.',
     readingTime: '6 min',
   },
   'cursos-gratis-validacion-de-procesos': {
-    title: 'Cursos gratis de validación de procesos farmacéuticos: las tres etapas',
-    seoTitle: 'Cursos de validación de procesos farmacéuticos gratis',
-    description: 'Las tres etapas del ciclo de vida, lotes PPQ, protocolo y verificación continua: cursos de validación de procesos farmacéuticos gratis.',
+    title: 'Cursos de validación de procesos farmacéuticos: las tres etapas',
+    seoTitle: 'Cursos de validación de procesos farmacéuticos',
+    description: 'Las tres etapas del ciclo de vida, lotes PPQ, protocolo y verificación continua: cursos de validación de procesos farmacéuticos.',
     readingTime: '6 min',
   },
   'cursos-gratis-validacion-de-limpieza': {
-    title: 'Cursos gratis de validación de limpieza: límites, muestreo y peor caso',
-    seoTitle: 'Curso de validación de limpieza farmacéutica gratis',
-    description: 'Límites basados en la salud (PDE), peor caso, hisopado y enjuague, y errores frecuentes: cursos de validación de limpieza gratis.',
+    title: 'Cursos de validación de limpieza: límites, muestreo y peor caso',
+    seoTitle: 'Curso de validación de limpieza farmacéutica',
+    description: 'Límites basados en la salud (PDE), peor caso, hisopado y enjuague, y errores frecuentes: cursos de validación de limpieza.',
     readingTime: '6 min',
   },
   'cursos-gratis-csv-gamp5': {
-    title: 'Cursos gratis de CSV y GAMP 5: validación de sistemas computarizados',
+    title: 'Cursos de CSV y GAMP 5: validación de sistemas computarizados',
     seoTitle: 'Cursos de CSV y GAMP 5: validación de sistemas',
     description: 'Categorías de software, ciclo de vida, Part 11 y Anexo 11, y pensamiento crítico de GAMP 5: cursos de validación de sistemas computarizados.',
     readingTime: '6 min',
   },
   'cursos-gratis-calificacion-hvac': {
-    title: 'Cursos gratis de calificación de HVAC y áreas limpias',
+    title: 'Cursos de calificación de HVAC y áreas limpias',
     seoTitle: 'Cursos de calificación de HVAC y áreas limpias',
     description: 'Cómo funciona el HVAC farmacéutico, ISO 14644-1, grados A a D, pruebas de calificación y monitoreo: cursos de HVAC y áreas limpias.',
     readingTime: '6 min',
   },
   'cursos-gratis-validacion-de-equipos': {
-    title: 'Cursos gratis de calificación y validación de equipos: DQ, IQ, OQ y PQ',
+    title: 'Cursos de calificación y validación de equipos: DQ, IQ, OQ y PQ',
     seoTitle: 'Validación de equipos: cursos de DQ, IQ, OQ y PQ',
-    description: 'DQ, IQ, OQ y PQ, FAT y SAT, calificación de instrumentos analíticos y un ejemplo práctico: cursos de calificación de equipos gratis.',
+    description: 'DQ, IQ, OQ y PQ, FAT y SAT, calificación de instrumentos analíticos y un ejemplo práctico: cursos de calificación de equipos.',
     readingTime: '6 min',
   },
   // Lote 4a (12-nov-2026): farmacovigilancia. Normas verificadas en el normograma
   // del INVIMA: Resolución 2024015321 de 2024 y Resolución 213 de 2022.
   'cursos-gratis-seguridad-de-medicamentos': {
-    title: 'Cursos gratis de seguridad de medicamentos: errores de medicación, medicamentos de alto riesgo y uso seguro',
-    seoTitle: 'Seguridad de medicamentos: cursos gratis y errores',
-    description: 'Errores de medicación, medicamentos de alto riesgo y de nombre parecido, cómo analizar un error y cursos gratis de seguridad de medicamentos.',
+    title: 'Cursos de seguridad de medicamentos: errores de medicación, medicamentos de alto riesgo y uso seguro',
+    seoTitle: 'Seguridad de medicamentos: cursos y errores',
+    description: 'Errores de medicación, medicamentos de alto riesgo y de nombre parecido, cómo analizar un error y cursos de seguridad de medicamentos.',
     readingTime: '7 min',
   },
   'cursos-gratis-reporte-de-eventos-adversos': {
-    title: 'Cursos gratis de reporte de eventos adversos: casos individuales (ICSR), gravedad, causalidad y plazos en Colombia',
+    title: 'Cursos de reporte de eventos adversos: casos individuales (ICSR), gravedad, causalidad y plazos en Colombia',
     seoTitle: 'Reporte de eventos adversos: ICSR, plazos y cursos',
     description: 'Los cuatro datos mínimos de un caso, gravedad y causalidad, los plazos de 15 y 90 días de la Resolución 2024015321 y cursos de ICSR.',
     readingTime: '7 min',
   },
   'cursos-gratis-deteccion-de-senales': {
-    title: 'Cursos gratis de detección de señales en farmacovigilancia: de los casos a la decisión regulatoria',
+    title: 'Cursos de detección de señales en farmacovigilancia: de los casos a la decisión regulatoria',
     seoTitle: 'Detección de señales en farmacovigilancia: cursos',
     description: 'Qué es una señal, las etapas de su gestión, PRR, ROR e IC, lo que exige la norma colombiana y cursos de detección de señales.',
     readingTime: '7 min',
   },
   'cursos-gratis-plan-de-gestion-de-riesgos': {
-    title: 'Cursos gratis de planes de gestión de riesgo (PGR) de medicamentos: qué son y cómo se elaboran en Colombia',
+    title: 'Cursos de planes de gestión de riesgo (PGR) de medicamentos: qué son y cómo se elaboran en Colombia',
     seoTitle: 'Plan de gestión de riesgo (PGR): guía y cursos',
     description: 'La Resolución 213 de 2022, las partes de un PGR, las medidas de minimización de riesgos y cursos para aprender a elaborarlo.',
     readingTime: '7 min',
   },
   'cursos-gratis-farmacovigilancia-en-ensayos-clinicos': {
-    title: 'Cursos gratis de farmacovigilancia en ensayos clínicos: eventos adversos serios, SUSAR y DSUR',
+    title: 'Cursos de farmacovigilancia en ensayos clínicos: eventos adversos serios, SUSAR y DSUR',
     seoTitle: 'Farmacovigilancia en ensayos clínicos: SUSAR y DSUR',
     description: 'Eventos adversos serios, SUSAR y sus plazos según ICH E2A, el DSUR, quién hace qué en un ensayo y cursos de seguridad clínica.',
     readingTime: '7 min',
@@ -423,115 +423,115 @@ const REESCRITOS = {
   // Lote 4b (12-nov-2026): asuntos regulatorios. Normas verificadas: Decreto 4725
   // de 2005, Resolución 4816 de 2008, Resolución 1896 de 2023 y Decreto 677 de 1995.
   'cursos-gratis-regulacion-fda': {
-    title: 'Cursos gratis de regulación FDA: IND, NDA, ANDA, BLA y buenas prácticas de manufactura de Estados Unidos',
-    seoTitle: 'Regulación FDA: IND, NDA, ANDA y cursos gratis',
+    title: 'Cursos de regulación FDA: IND, NDA, ANDA, BLA y buenas prácticas de manufactura de Estados Unidos',
+    seoTitle: 'Regulación FDA: IND, NDA, ANDA y cursos',
     description: 'Las vías de autorización de la FDA, sus programas acelerados, el 21 CFR 210 y 211, el formulario 483 y cursos de regulación FDA.',
     readingTime: '7 min',
   },
   'cursos-gratis-regulacion-ema': {
-    title: 'Cursos gratis de regulación EMA: procedimiento centralizado, CHMP, EPAR y GMP europeas',
+    title: 'Cursos de regulación EMA: procedimiento centralizado, CHMP, EPAR y GMP europeas',
     seoTitle: 'Regulación EMA: procedimiento centralizado y cursos',
     description: 'Cómo autoriza medicamentos la Unión Europea, qué hacen el CHMP y el PRAC, el EPAR, las GMP de EudraLex y cursos de regulación EMA.',
     readingTime: '7 min',
   },
   'cursos-gratis-expediente-ctd': {
-    title: 'Cursos gratis de expediente CTD y eCTD: los cinco módulos del dossier de un medicamento',
+    title: 'Cursos de expediente CTD y eCTD: los cinco módulos del dossier de un medicamento',
     seoTitle: 'Expediente CTD y eCTD: los 5 módulos y cursos',
     description: 'Los cinco módulos del CTD, el módulo 3 de calidad por dentro, el eCTD, cómo se aplica en Colombia y cursos para armar un dossier.',
     readingTime: '7 min',
   },
   'cursos-gratis-dispositivos-medicos': {
-    title: 'Cursos gratis de dispositivos médicos: clasificación por riesgo, registro sanitario y tecnovigilancia en Colombia',
+    title: 'Cursos de dispositivos médicos: clasificación por riesgo, registro sanitario y tecnovigilancia en Colombia',
     seoTitle: 'Dispositivos médicos en Colombia: clases y cursos',
     description: 'El Decreto 4725 de 2005, las clases I, IIa, IIb y III, el registro sanitario, la tecnovigilancia y cursos de dispositivos médicos.',
     readingTime: '7 min',
   },
   'cursos-gratis-etiquetado-y-publicidad': {
-    title: 'Cursos gratis de etiquetado y publicidad de medicamentos: etiquetas, insertos y la Resolución 1896 de 2023',
+    title: 'Cursos de etiquetado y publicidad de medicamentos: etiquetas, insertos y la Resolución 1896 de 2023',
     seoTitle: 'Etiquetado y publicidad de medicamentos: cursos',
-    description: 'Etiquetas, insertos y publicidad de medicamentos, lo que exige la Resolución 1896 de 2023, cómo revisar una pieza y cursos gratis.',
+    description: 'Etiquetas, insertos y publicidad de medicamentos, lo que exige la Resolución 1896 de 2023, cómo revisar una pieza y cursos para formarte.',
     readingTime: '7 min',
   },
   // Lote 4c (12-nov-2026): producción y desarrollo. Normas verificadas: Resolución
   // 1160 de 2016, Decreto 335 de 2022, Reglamento Delegado (UE) 2016/161 y OMS TRS 1044.
   'cursos-gratis-manufactura-esteril': {
-    title: 'Cursos gratis de manufactura estéril: áreas limpias, llenado aséptico y la estrategia de control de la contaminación',
-    seoTitle: 'Manufactura estéril: áreas limpias y cursos gratis',
+    title: 'Cursos de manufactura estéril: áreas limpias, llenado aséptico y la estrategia de control de la contaminación',
+    seoTitle: 'Manufactura estéril: áreas limpias y cursos',
     description: 'Esterilización terminal y procesamiento aséptico, grados de áreas limpias, el Anexo 1, la Resolución 1160 de 2016 y cursos de estériles.',
     readingTime: '7 min',
   },
   'cursos-gratis-formas-solidas': {
-    title: 'Cursos gratis de formas farmacéuticas sólidas: tabletas, cápsulas, granulación y controles en proceso',
+    title: 'Cursos de formas farmacéuticas sólidas: tabletas, cápsulas, granulación y controles en proceso',
     seoTitle: 'Formas sólidas: tabletas, granulación y cursos',
     description: 'Compresión directa y granulación, operaciones unitarias, controles en proceso, problemas de compresión y cursos de formas sólidas.',
     readingTime: '7 min',
   },
   'cursos-gratis-empaque-y-serializacion': {
-    title: 'Cursos gratis de empaque y serialización de medicamentos: acondicionamiento, despeje de línea y trazabilidad',
+    title: 'Cursos de empaque y serialización de medicamentos: acondicionamiento, despeje de línea y trazabilidad',
     seoTitle: 'Empaque y serialización de medicamentos: cursos',
-    description: 'Empaque primario y secundario, despeje de línea, conciliación de impresos, serialización en Europa y Estados Unidos y cursos gratis.',
+    description: 'Empaque primario y secundario, despeje de línea, conciliación de impresos, serialización en Europa y Estados Unidos y cursos para formarte.',
     readingTime: '7 min',
   },
   'cursos-gratis-transferencia-de-tecnologia': {
-    title: 'Cursos gratis de transferencia de tecnología farmacéutica: cómo llevar un producto o un método de un sitio a otro',
+    title: 'Cursos de transferencia de tecnología farmacéutica: cómo llevar un producto o un método de un sitio a otro',
     seoTitle: 'Transferencia de tecnología farmacéutica: cursos',
-    description: 'Las fases de una transferencia, el paquete de conocimiento, la transferencia de métodos, la guía de la OMS e ICH Q10, y cursos gratis.',
+    description: 'Las fases de una transferencia, el paquete de conocimiento, la transferencia de métodos, la guía de la OMS e ICH Q10, y cursos para formarte.',
     readingTime: '7 min',
   },
   'cursos-gratis-desarrollo-de-medicamentos': {
-    title: 'Cursos gratis de desarrollo de medicamentos: del descubrimiento a la autorización y la vigilancia',
-    seoTitle: 'Desarrollo de medicamentos: etapas y cursos gratis',
+    title: 'Cursos de desarrollo de medicamentos: del descubrimiento a la autorización y la vigilancia',
+    seoTitle: 'Desarrollo de medicamentos: etapas y cursos',
     description: 'Las etapas del desarrollo de un medicamento, el desarrollo farmacéutico, las guías ICH que lo ordenan y cursos para entender el proceso.',
     readingTime: '7 min',
   },
   // Lote 5 (12-nov-2026): I+D y datos. Fuentes verificadas: ICH (M3, S, Q8, Q14, Q2),
   // FDA (integridad de datos, IA, RWE), EUR-Lex 2024/1689 y Res. INVIMA 2024015321.
   'cursos-gratis-descubrimiento-de-farmacos': {
-    title: 'Cursos gratis de descubrimiento de fármacos: blancos terapéuticos, cribado, optimización de líderes y herramientas computacionales',
-    seoTitle: 'Descubrimiento de fármacos: etapas y cursos gratis',
-    description: 'Del blanco terapéutico al candidato, la regla de los cinco de Lipinski, ADME temprano, herramientas computacionales y cursos gratis.',
+    title: 'Cursos de descubrimiento de fármacos: blancos terapéuticos, cribado, optimización de líderes y herramientas computacionales',
+    seoTitle: 'Descubrimiento de fármacos: etapas y cursos',
+    description: 'Del blanco terapéutico al candidato, la regla de los cinco de Lipinski, ADME temprano, herramientas computacionales y cursos para formarte.',
     readingTime: '7 min',
   },
   'cursos-gratis-formulacion-farmaceutica': {
-    title: 'Cursos gratis de formulación farmacéutica: preformulación, excipientes, clasificación biofarmacéutica y calidad por diseño',
+    title: 'Cursos de formulación farmacéutica: preformulación, excipientes, clasificación biofarmacéutica y calidad por diseño',
     seoTitle: 'Formulación farmacéutica: preformulación y cursos',
-    description: 'Preformulación, el Sistema de Clasificación Biofarmacéutica, estrategias para activos poco solubles, calidad por diseño y cursos gratis.',
+    description: 'Preformulación, el Sistema de Clasificación Biofarmacéutica, estrategias para activos poco solubles, calidad por diseño y cursos para formarte.',
     readingTime: '7 min',
   },
   'cursos-gratis-estudios-preclinicos': {
-    title: 'Cursos gratis de estudios preclínicos: farmacología de seguridad, toxicología y el paso a los ensayos en humanos',
+    title: 'Cursos de estudios preclínicos: farmacología de seguridad, toxicología y el paso a los ensayos en humanos',
     seoTitle: 'Estudios preclínicos: toxicología, ICH M3 y cursos',
-    description: 'Qué responden los estudios preclínicos, las guías ICH M3 y S, la primera dosis en humanos, las BPL y las 3R, y cursos gratis.',
+    description: 'Qué responden los estudios preclínicos, las guías ICH M3 y S, la primera dosis en humanos, las BPL y las 3R, y cursos para formarte.',
     readingTime: '7 min',
   },
   'cursos-gratis-desarrollo-analitico': {
-    title: 'Cursos gratis de desarrollo analítico: perfil analítico objetivo, ICH Q14, ICH Q2(R2) y ciclo de vida del método',
+    title: 'Cursos de desarrollo analítico: perfil analítico objetivo, ICH Q14, ICH Q2(R2) y ciclo de vida del método',
     seoTitle: 'Desarrollo analítico: ICH Q14, Q2(R2) y cursos',
     description: 'El perfil analítico objetivo, los enfoques de la ICH Q14, la robustez, la validación según Q2(R2) y el ciclo de vida del método.',
     readingTime: '7 min',
   },
   'cursos-gratis-power-bi-farmacia': {
-    title: 'Cursos gratis de Power BI para la industria farmacéutica: indicadores de calidad, producción y farmacovigilancia',
+    title: 'Cursos de Power BI para la industria farmacéutica: indicadores de calidad, producción y farmacovigilancia',
     seoTitle: 'Power BI en la industria farmacéutica: cursos',
-    description: 'Tableros de calidad, producción y farmacovigilancia, integridad de datos ALCOA+, lo que hay que aprender de Power BI y cursos gratis.',
+    description: 'Tableros de calidad, producción y farmacovigilancia, integridad de datos ALCOA+, lo que hay que aprender de Power BI y cursos para formarte.',
     readingTime: '7 min',
   },
   'cursos-gratis-python-para-farmacia': {
-    title: 'Cursos gratis de Python para farmacia: análisis de datos, automatización y quimioinformática',
+    title: 'Cursos de Python para farmacia: análisis de datos, automatización y quimioinformática',
     seoTitle: 'Python para farmacia: usos, librerías y cursos',
-    description: 'Para qué usa Python un profesional de farmacia, por dónde empezar, un ejemplo de estabilidad, buenas prácticas y cursos gratis.',
+    description: 'Para qué usa Python un profesional de farmacia, por dónde empezar, un ejemplo de estabilidad, buenas prácticas y cursos para formarte.',
     readingTime: '7 min',
   },
   'cursos-gratis-ia-industria-farmaceutica': {
-    title: 'Cursos gratis de inteligencia artificial en la industria farmacéutica: usos reales, regulación y riesgos',
+    title: 'Cursos de inteligencia artificial en la industria farmacéutica: usos reales, regulación y riesgos',
     seoTitle: 'IA en la industria farmacéutica: usos y cursos',
     description: 'Dónde se usa la IA en la industria, qué dicen la FDA y la EMA, cómo evaluar la credibilidad de un modelo y cursos para formarte.',
     readingTime: '7 min',
   },
   'cursos-gratis-evidencia-del-mundo-real': {
-    title: 'Cursos gratis de evidencia del mundo real: datos de la práctica clínica, farmacoepidemiología y decisiones regulatorias',
+    title: 'Cursos de evidencia del mundo real: datos de la práctica clínica, farmacoepidemiología y decisiones regulatorias',
     seoTitle: 'Evidencia del mundo real: fuentes, sesgos y cursos',
-    description: 'Fuentes de datos del mundo real, para qué se usan, cómo controlar el sesgo de confusión, qué hacen la FDA y la EMA y cursos gratis.',
+    description: 'Fuentes de datos del mundo real, para qué se usan, cómo controlar el sesgo de confusión, qué hacen la FDA y la EMA y cursos para formarte.',
     readingTime: '7 min',
   },
 };

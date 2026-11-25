@@ -1,4 +1,4 @@
-# Cursos gratis de microbiología farmacéutica: control microbiológico y áreas limpias
+# Cursos de microbiología farmacéutica: control microbiológico y áreas limpias
 
 La microbiología farmacéutica protege al paciente de un riesgo que no se ve: microorganismos y endotoxinas en los medicamentos. En un laboratorio de control de calidad, el área de microbiología analiza materias primas, agua y productos terminados; en una planta de estériles, además, vigila el ambiente de las áreas limpias y participa en la validación de la esterilización. Es una especialidad con pocos profesionales bien formados y mucha demanda.
 
@@ -6,7 +6,7 @@ La microbiología farmacéutica protege al paciente de un riesgo que no se ve: m
 >
 > - Las pruebas clave son el recuento microbiano, la ausencia de microorganismos específicos, la esterilidad y las endotoxinas bacterianas.
 > - En Colombia, la Resolución 3619 de 2013 de BPL cubre los laboratorios que hacen control fisicoquímico y microbiológico de medicamentos.
-> - En Edvanta estudias gratis Control de Calidad de Medicamentos, con una unidad de control microbiológico, y Buenas Prácticas de Laboratorio.
+> - En Edvanta empiezas gratis, con la primera unidad abierta, Control de Calidad de Medicamentos, con una unidad de control microbiológico, y Buenas Prácticas de Laboratorio.
 
 ## Qué hace el laboratorio de microbiología
 
@@ -39,9 +39,9 @@ El Anexo 1 también pide una estrategia de control de la contaminación que inte
 
 | Curso | Dónde | Costo |
 |---|---|---|
-| [Control de Calidad de Medicamentos](/curso-de-control-de-calidad-de-medicamentos) | Aula Edvanta | Gratis; certificado opcional de COP 60.000 |
-| [Buenas Prácticas de Laboratorio — BPL](/curso-de-buenas-practicas-de-laboratorio-bpl) | Aula Edvanta | Gratis; certificado opcional de COP 60.000 |
-| [Central de Mezclas](/curso-de-central-de-mezclas) | Aula Edvanta | Gratis; certificado opcional de COP 60.000 |
+| [Control de Calidad de Medicamentos](/curso-de-control-de-calidad-de-medicamentos) | Aula Edvanta | Primera unidad gratis; curso completo con certificado: COP 60.000 en los primeros 7 días (lista: COP 199.000) |
+| [Buenas Prácticas de Laboratorio — BPL](/curso-de-buenas-practicas-de-laboratorio-bpl) | Aula Edvanta | Primera unidad gratis; curso completo con certificado: COP 60.000 en los primeros 7 días (lista: COP 199.000) |
+| [Central de Mezclas](/curso-de-central-de-mezclas) | Aula Edvanta | Primera unidad gratis; curso completo con certificado: COP 60.000 en los primeros 7 días (lista: COP 199.000) |
 
 El curso de BPL incluye una unidad de bioseguridad y manejo de residuos peligrosos, temas que en microbiología son obligatorios.
 
@@ -78,7 +78,7 @@ La guía de [investigaciones de laboratorio](/articulos/cursos-gratis-investigac
 
 ### ¿Dónde estudiar microbiología farmacéutica gratis?
 
-En Edvanta, Control de Calidad de Medicamentos incluye una unidad de control microbiológico y estabilidad, y Buenas Prácticas de Laboratorio cubre la bioseguridad. Ambos son gratis, con certificado verificable opcional por COP 60.000.
+En Edvanta, Control de Calidad de Medicamentos incluye una unidad de control microbiológico y estabilidad, y Buenas Prácticas de Laboratorio cubre la bioseguridad. Ambos son gratis, con la primera unidad gratis y certificado verificable en el curso completo (COP 60.000 en los primeros 7 días (lista: COP 199.000)).
 
 ### ¿Qué pruebas microbiológicas se hacen a un medicamento no estéril?
 

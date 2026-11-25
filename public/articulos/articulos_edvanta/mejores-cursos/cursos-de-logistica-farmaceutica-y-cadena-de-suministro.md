@@ -61,7 +61,7 @@ Para practicar, una hoja de cálculo es suficiente. La guía de [cursos de Excel
 
 ## Logística y calidad van juntas
 
-En la industria farmacéutica, el almacenamiento y la distribución hacen parte del sistema de calidad. Estos cursos gratuitos de Edvanta complementan la formación en logística:
+En la industria farmacéutica, el almacenamiento y la distribución hacen parte del sistema de calidad. Estos cursos de Edvanta (primera unidad gratis) complementan la formación en logística:
 
 - [Buenas Prácticas de Manufactura (BPM)](/curso-de-buenas-practicas-de-manufactura-bpm)
 - [Gestión de Desviaciones y CAPA](/curso-de-gestion-de-desviaciones-y-capa): qué hacer cuando un registro de temperatura sale del rango.
@@ -69,7 +69,7 @@ En la industria farmacéutica, el almacenamiento y la distribución hacen parte 
 - [Medicamentos Vitales No Disponibles](/curso-de-medicamentos-vitales-no-disponibles): cuando un medicamento escaso debe importarse.
 - [Registro Sanitario de Vacunas](/curso-de-registro-sanitario-de-vacunas)
 
-El contenido se estudia gratis; el certificado verificable es opcional y cuesta COP 60.000 por curso.
+La primera unidad de cada curso es gratis; el curso completo con certificado verificable cuesta COP 60.000 en los primeros 7 días (lista: COP 199.000).
 
 ## Cargos en logística farmacéutica
 

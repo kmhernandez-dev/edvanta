@@ -6,7 +6,7 @@ Quien trabaja en un servicio de urgencias, en una unidad de cuidado o en un hosp
 >
 > - Para repasar la teoría de reanimación avanzada: Soporte vital avanzado ACLS I y II, en Edutin Academy, en español.
 > - Para urgencias de la mujer: Urgencias obstétricas y Urgencias ginecológicas, también en Edutin.
-> - Para los medicamentos de urgencia: los cursos gratuitos de Farmacología Cardiovascular y de Anticoagulantes y Antiagregantes de Edvanta.
+> - Para los medicamentos de urgencia: los cursos de Farmacología Cardiovascular y de Anticoagulantes y Antiagregantes de Edvanta, con la primera unidad gratis.
 > - Un curso online no reemplaza la certificación ACLS oficial, que incluye una evaluación práctica presencial.
 
 ## Los cursos recomendados
@@ -54,7 +54,7 @@ En urgencias, el químico farmacéutico y el regente participan en el carro de p
 - **Diluciones estandarizadas:** reducen errores cuando hay que preparar rápido.
 - **Doble verificación** en las preparaciones de mayor riesgo.
 
-Estos cursos gratuitos de Edvanta cubren la farmacología que más se usa en urgencias:
+Estos cursos de Edvanta (primera unidad gratis) cubren la farmacología que más se usa en urgencias:
 
 - [Farmacología Cardiovascular](/curso-de-farmacologia-cardiovascular): antiarrítmicos, vasopresores y antihipertensivos.
 - [Anticoagulantes y Antiagregantes](/curso-de-anticoagulantes-y-antiagregantes): sangrados, reversión e interacciones.
@@ -62,7 +62,7 @@ Estos cursos gratuitos de Edvanta cubren la farmacología que más se usa en urg
 - [Farmacología del Sistema Nervioso Central](/curso-de-farmacologia-del-sistema-nervioso-central): sedación, convulsiones e intoxicaciones.
 - [Central de Mezclas](/curso-de-central-de-mezclas): preparación segura de medicamentos estériles.
 
-El contenido se estudia gratis; el certificado verificable es opcional y cuesta COP 60.000 por curso.
+La primera unidad de cada curso es gratis; el curso completo con certificado verificable cuesta COP 60.000 en los primeros 7 días (lista: COP 199.000).
 
 ## Urgencias obstétricas: por qué merecen su propio curso
 

@@ -1,4 +1,4 @@
-# Cursos gratis de empaque y serialización de medicamentos: acondicionamiento, despeje de línea y trazabilidad
+# Cursos de empaque y serialización de medicamentos: acondicionamiento, despeje de línea y trazabilidad
 
 El empaque protege el medicamento de la luz, la humedad y los golpes, y además le dice al paciente qué es, cuánto contiene y hasta cuándo sirve. La serialización va un paso más allá: le da a cada caja un código único que permite seguirla en la cadena de distribución y detectar falsificaciones. Son dos temas que conectan producción, calidad, regulatorio y logística, y en los que se originan muchos de los retiros de producto del mercado.
 
@@ -53,7 +53,7 @@ En otros países, incluida Colombia, conviene revisar los requisitos vigentes de
 
 ## Cursos de empaque y serialización
 
-En Edvanta, estos cursos gratuitos cubren la base de calidad y de información del producto, con certificado opcional de COP 60.000:
+En Edvanta, estos cursos gratuitos cubren la base de calidad y de información del producto, con la primera unidad gratis y certificado en el curso completo (COP 60.000 en los primeros 7 días (lista: COP 199.000)):
 
 - [Etiquetado e Insertos de Medicamentos](/curso-de-etiquetado-e-insertos-de-medicamentos)
 - [Buenas Prácticas de Manufactura (BPM)](/curso-de-buenas-practicas-de-manufactura-bpm)
@@ -97,7 +97,7 @@ Desde el 9 de febrero de 2019, para la mayoría de los medicamentos con fórmula
 
 ### ¿Qué curso sirve para aprender acondicionamiento?
 
-Los cursos gratuitos de BPM y de Etiquetado e Insertos de Edvanta, complementados con Pharmaceutical Dosage Forms & Basics of Pharma Industry en Udemy.
+Los cursos de BPM y de Etiquetado e Insertos de Edvanta (primera unidad gratis), complementados con Pharmaceutical Dosage Forms & Basics of Pharma Industry en Udemy.
 
 ## Fuentes
 

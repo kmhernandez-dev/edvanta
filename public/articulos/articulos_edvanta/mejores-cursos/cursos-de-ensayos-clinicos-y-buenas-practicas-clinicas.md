@@ -37,7 +37,7 @@ El curso de Udemy de la E6(R2) sirve para las bases; complétalo leyendo la E6(R
 - **Resolución 2378 de 2008:** adoptó las buenas prácticas clínicas para las instituciones que conducen investigación con medicamentos en seres humanos.
 - **El INVIMA** autoriza los protocolos de investigación con medicamentos y certifica a las instituciones en buenas prácticas clínicas.
 
-Para la parte regulatoria, el curso gratuito de Edvanta de [Bioequivalencia y Requisitos Regulatorios en Colombia](/curso-de-bioequivalencia-y-requisitos-regulatorios-en-colombia) cubre los estudios que se presentan al INVIMA.
+Para la parte regulatoria, el curso de Edvanta (primera unidad gratis) de [Bioequivalencia y Requisitos Regulatorios en Colombia](/curso-de-bioequivalencia-y-requisitos-regulatorios-en-colombia) cubre los estudios que se presentan al INVIMA.
 
 ## Cargos y por dónde empezar
 
@@ -81,7 +81,7 @@ La Resolución 2378 de 2008, junto con la Resolución 8430 de 1993 para la inves
 
 ### ¿Hay cursos de buenas prácticas clínicas en español?
 
-Los cursos de esta selección están en inglés. Para el marco colombiano, el curso gratuito de Bioequivalencia y Requisitos Regulatorios en Colombia de Edvanta está en español.
+Los cursos de esta selección están en inglés. Para el marco colombiano, el curso de Bioequivalencia y Requisitos Regulatorios en Colombia de Edvanta está en español y tiene la primera unidad gratis.
 
 ### ¿Un químico farmacéutico puede trabajar en investigación clínica?
 

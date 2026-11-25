@@ -52,13 +52,13 @@ El artículo de Edvanta sobre [fármacos pediátricos y dosificación segura](/a
 
 Los padres suelen ir primero a la farmacia. El auxiliar o regente que conoce las señales de alarma puede orientar a tiempo: dificultad para respirar, decaimiento marcado, convulsión, deshidratación o fiebre en un bebé de pocos meses son motivos para consultar de inmediato, no para recomendar un producto.
 
-Para formarte en el uso de medicamentos, los cursos gratuitos de Edvanta complementan esta ruta:
+Para formarte en el uso de medicamentos, los cursos de Edvanta (primera unidad gratis) complementan esta ruta:
 
 - [Farmacología Respiratoria](/curso-de-farmacologia-respiratoria): broncodilatadores, corticoides inhalados y la técnica de los inhaladores, que en niños se usan con inhalocámara.
 - [Farmacoterapia del Asma y la EPOC](/curso-de-farmacoterapia-del-asma-y-la-epoc): casos clínicos de control del asma.
 - [Farmacología Gastrointestinal](/curso-de-farmacologia-gastrointestinal): diarrea, vómito y rehidratación.
 
-El contenido se estudia gratis; el certificado verificable es opcional y cuesta COP 60.000 por curso. Si eres auxiliar o regente, revisa también la guía de [cursos para regentes y auxiliares de farmacia](/articulos/cursos-para-regentes-y-auxiliares-de-farmacia).
+La primera unidad de cada curso es gratis; el curso completo con certificado verificable cuesta COP 60.000 en los primeros 7 días (lista: COP 199.000). Si eres auxiliar o regente, revisa también la guía de [cursos para regentes y auxiliares de farmacia](/articulos/cursos-para-regentes-y-auxiliares-de-farmacia).
 
 ## Cómo estudiar primeros auxilios para recordarlo en una emergencia
 

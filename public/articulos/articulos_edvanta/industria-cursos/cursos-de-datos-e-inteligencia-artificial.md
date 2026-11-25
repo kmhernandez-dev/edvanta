@@ -1,4 +1,4 @@
-# Cursos de datos e inteligencia artificial para químicos farmacéuticos: gratis, online y con certificado
+# Cursos de datos e inteligencia artificial para químicos farmacéuticos: online y con certificado
 
 Un químico farmacéutico que sabe Excel avanzado, Power BI o un poco de Python resuelve en una tarde lo que a otros les toma una semana: tendencias de lotes, indicadores del servicio, revisión anual de producto, consumo de medicamentos o seguimiento de desviaciones. Y con la inteligencia artificial generativa, el que sabe pedir, verificar y documentar se vuelve todavía más valioso.
 

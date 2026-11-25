@@ -1,4 +1,4 @@
-# Cursos gratis de detección de señales en farmacovigilancia: de los casos a la decisión regulatoria
+# Cursos de detección de señales en farmacovigilancia: de los casos a la decisión regulatoria
 
 Un caso aislado de un evento adverso rara vez cambia algo. Pero cuando varios casos parecidos empiezan a acumularse, o cuando un evento aparece con un medicamento más de lo esperado, puede haber una señal: un indicio de un riesgo nuevo o de un cambio en un riesgo conocido. La gestión de señales es la parte analítica de la farmacovigilancia, la que conecta los reportes individuales con decisiones como actualizar una ficha técnica, emitir una alerta o, en casos extremos, retirar un producto.
 
@@ -67,7 +67,7 @@ La **Resolución INVIMA 2024015321 de 2024**, vigente desde el 1 de marzo de 202
 
 > **Contenido editorial:** algunos enlaces son de afiliado. Edvanta no dicta esos cursos; confirma condiciones y certificado en cada plataforma.
 
-La estadística ayuda mucho en esta área. Si necesitas reforzarla, revisa la guía de [cursos de Excel para profesionales de la salud](/articulos/cursos-de-excel-para-profesionales-de-la-salud), que incluye un curso de bioestadística. Para la parte clínica, los cursos gratuitos de [Farmacología Cardiovascular](/curso-de-farmacologia-cardiovascular) y [Psicofarmacología](/curso-de-psicofarmacologia) de Edvanta sirven para evaluar plausibilidad, con certificado opcional de COP 60.000.
+La estadística ayuda mucho en esta área. Si necesitas reforzarla, revisa la guía de [cursos de Excel para profesionales de la salud](/articulos/cursos-de-excel-para-profesionales-de-la-salud), que incluye un curso de bioestadística. Para la parte clínica, los cursos gratuitos de [Farmacología Cardiovascular](/curso-de-farmacologia-cardiovascular) y [Psicofarmacología](/curso-de-psicofarmacologia) de Edvanta sirven para evaluar plausibilidad: la primera unidad es gratis y el curso completo con certificado cuesta COP 60.000 en los primeros 7 días (lista: COP 199.000).
 
 ## Un ejemplo simplificado
 

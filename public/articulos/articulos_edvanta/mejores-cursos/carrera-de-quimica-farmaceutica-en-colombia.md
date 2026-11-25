@@ -58,7 +58,7 @@ La Regencia de Farmacia es un programa tecnológico, más corto, centrado en la 
 
 ## En qué se trabaja: las áreas de la carrera
 
-Cada área tiene su guía en Edvanta, con funciones reales, normas que se piden y cursos gratuitos para empezar:
+Cada área tiene su guía en Edvanta, con funciones reales, normas que se piden y cursos para empezar con la primera unidad gratis:
 
 | Área | Guía |
 |---|---|
@@ -81,7 +81,7 @@ A eso se suma la farmacia hospitalaria y clínica, el servicio farmacéutico de 
 4. **Mejora tu inglés:** la industria multinacional y la documentación técnica lo exigen.
 5. **Arma tu hoja de vida y tu LinkedIn** antes de graduarte, con ayuda de las herramientas de [hoja de vida](/hoja-de-vida) y [LinkedIn farmacéutico](/linkedin-farmaceutico).
 
-Todos los cursos gratuitos de Edvanta para estudiantes están reunidos en [recursos para estudiantes de Química Farmacéutica](/recursos-para-estudiantes-de-quimica-farmaceutica).
+Todos los cursos de Edvanta (primera unidad gratis) para estudiantes están reunidos en [recursos para estudiantes de Química Farmacéutica](/recursos-para-estudiantes-de-quimica-farmaceutica).
 
 ## Preguntas frecuentes
 

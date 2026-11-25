@@ -1,4 +1,4 @@
-# Cursos gratis de Lean Six Sigma para químicos farmacéuticos
+# Cursos de Lean Six Sigma para químicos farmacéuticos
 
 Lean Six Sigma une dos ideas: **Lean** elimina lo que no agrega valor y **Six Sigma** reduce la variación para que el proceso dé siempre el mismo resultado. En una planta farmacéutica eso se traduce en menos tiempos muertos entre lotes, menos rechazos, liberaciones más rápidas y laboratorios menos congestionados. Para un químico farmacéutico, sumar Lean Six Sigma a la formación en BPM abre la puerta a cargos de excelencia operacional y mejora continua.
 
