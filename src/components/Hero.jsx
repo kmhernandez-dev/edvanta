@@ -3,13 +3,15 @@ import { ArrowRight } from 'lucide-react';
 import { trackEvent } from '../utils/analytics';
 
 /*
- * Héroe del inicio: la pieza «Estudia gratis y certifica tus conocimientos»,
- * elegida por la dirección de Edvanta el 13-nov-2026 (reemplaza el arco del aula
- * y deja sin efecto el hallazgo H9 de la auditoría de diseño; ver H21 en REGISTRO.md).
+ * Héroe del inicio: la pieza elegida por la dirección de Edvanta el 13-nov-2026
+ * (reemplaza el arco del aula y deja sin efecto el hallazgo H9 de la auditoría de
+ * diseño; ver H21 en REGISTRO.md).
  *
  * - Desde el 20-nov-2026 los cursos propios se venden completos (primera unidad
- *   gratis). El titular dibujado «Estudia gratis…» espera la pieza nueva que
- *   apruebe Karla; el texto real de abajo ya dice la condición verdadera.
+ *   gratis). Karla aprobó el 22-nov el titular «Estudia online y certifica tus
+ *   conocimientos»: en la pieza solo se cambió «gratis» por «online», con la
+ *   misma fuente (Manrope ExtraBold, 85 px) y el mismo turquesa. Archivo nuevo
+ *   para no servir la versión vieja desde la caché.
  * - La pieza original trae dibujado un menú; se recortó, porque el encabezado
  *   real del sitio va encima y sus botones no cambian.
  * - El titular y el botón vienen dentro de la imagen. Para buscadores y lectores
@@ -19,8 +21,8 @@ import { trackEvent } from '../utils/analytics';
  *   texto y un botón de verdad.
  */
 
-const IMAGEN = '/img/hero/estudia-gratis-certifica.webp';
-const IMAGEN_900 = '/img/hero/estudia-gratis-certifica-900.webp';
+const IMAGEN = '/img/hero/estudia-online-certifica.webp';
+const IMAGEN_900 = '/img/hero/estudia-online-certifica-900.webp';
 const ANCHO = 1672;
 const ALTO = 829;
 
@@ -40,7 +42,7 @@ const alExplorar = (origen) => () => trackEvent('hero_cta_clicked', { cta: 'curs
 export default function Hero() {
   return (
     <section id="inicio" className="hero-portada relative overflow-hidden bg-white pb-10 md:pb-14">
-      <h1 className="sr-only">Estudia gratis y certifica tus conocimientos. Formación online para químicos farmacéuticos.</h1>
+      <h1 className="sr-only">Estudia online y certifica tus conocimientos. Formación online para químicos farmacéuticos.</h1>
 
       <div className="relative mx-auto max-w-[1672px] overflow-hidden min-[1700px]:rounded-b-[32px]">
         <img

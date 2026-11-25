@@ -4,7 +4,7 @@
  *
  *  Un catálogo: quien llega ve primero lo que se ofrece.
  *
- *   1. El héroe «Estudia gratis y certifica tus conocimientos» (o el
+ *   1. El héroe «Estudia online y certifica tus conocimientos» (o el
  *      inicio del estudiante si ya entró).
  *   2. Lo más nuevo y lo más actual.
  *   3. Una fila por área: farmacia clínica, farmacología, calidad,
