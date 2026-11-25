@@ -14,6 +14,7 @@ import { Btn } from '../edvanta/ui';
 import { PortadaGenerada } from '../edvanta/catalogo';
 import { MARCAS } from '../../data/guiasVenta';
 import { guiasParaCurso } from '../../data/guiaParaCurso';
+import { PRECIOS_GUIAS } from '../../data/preciosGuias';
 import { PROMOCION, conCupon, promoActiva } from '../../data/promocion';
 import { conOrigen } from '../../lib/hotmart';
 import { trackEvent } from '../../utils/analytics';
@@ -21,8 +22,12 @@ import { trackEvent } from '../../utils/analytics';
 const TONO = { edvanta: 0, atenfarma: 1, fst: 2 };
 const pesos = (n) => `COP ${Number(n).toLocaleString('es-CO')}`;
 
-export default function GuiaRecomendada({ curso, origen = 'ficha-curso', compacta = false, className = '' }) {
-  const [guia] = guiasParaCurso(curso, 1);
+/**
+ * Con `curso`, la guía sale de las reglas por área (guiaParaCurso.js).
+ * Un artículo del blog pasa la suya en `guia` (guiaParaArticulo.js).
+ */
+export default function GuiaRecomendada({ curso, guia: elegida = null, origen = 'ficha-curso', compacta = false, className = '', etiqueta = 'Llévalo a la práctica' }) {
+  const guia = elegida ? { ...elegida, precio: PRECIOS_GUIAS[elegida.slug] || null } : guiasParaCurso(curso, 1)[0];
   if (!guia) return null;
   const marca = MARCAS[guia.marca];
   const conPrecio = guia.marca !== 'fst' && guia.precio?.valor > 0;
@@ -34,7 +39,7 @@ export default function GuiaRecomendada({ curso, origen = 'ficha-curso', compact
 
   return (
     <aside
-      aria-label="Guía recomendada para este curso"
+      aria-label={elegida ? 'Guía recomendada para este tema' : 'Guía recomendada para este curso'}
       className={`ds-card overflow-hidden ${compacta ? 'p-4' : 'p-5 sm:p-6'} ${className}`}
     >
       <div className={`flex gap-4 ${compacta ? 'items-center' : 'flex-col sm:flex-row sm:items-center sm:gap-6'}`}>
@@ -46,7 +51,7 @@ export default function GuiaRecomendada({ curso, origen = 'ficha-curso', compact
           )}
         </div>
         <div className="min-w-0 flex-1">
-          <p className="text-xs font-bold uppercase tracking-[0.12em] text-edvanta-tealdark">Llévalo a la práctica · {guia.antetitulo}</p>
+          <p className="text-xs font-bold uppercase tracking-[0.12em] text-edvanta-tealdark">{etiqueta} · {guia.antetitulo}</p>
           <h3 className={`mt-1 font-display font-bold text-edvanta-deep ${compacta ? 'text-base' : 'text-lg sm:text-xl'}`}>{guia.titulo}</h3>
           {!compacta && <p className="mt-1.5 text-sm leading-6 text-edvanta-muted">{guia.bajada}</p>}
           <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2">

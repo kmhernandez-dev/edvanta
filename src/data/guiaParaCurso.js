@@ -11,8 +11,8 @@
  *  que una oferta que no viene al caso). Solo guías con enlace de pago.
  * ============================================================
  */
-import { guiaPorSlug } from './guiasVenta';
-import { PRECIOS_GUIAS } from './preciosGuias';
+import { guiaPorSlug } from './guiasVenta.js';
+import { PRECIOS_GUIAS } from './preciosGuias.js';
 
 const sinTildes = (s) => String(s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
 

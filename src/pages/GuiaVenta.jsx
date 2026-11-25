@@ -26,7 +26,8 @@ import { BotonWhatsApp, enlaceWhatsApp, irAWhatsApp, prepararVentana } from '../
 import { CuentaRegresiva, CuponCopiable, InsigniaDescuento } from '../components/edvanta/promo';
 import { PROMOCION, conCupon, promoActiva } from '../data/promocion';
 import { useRevelar } from '../hooks/useRevelar';
-import { GUIAS_VENTA, MARCAS, datosDeGuia, guiaPorSlug, guiasRelacionadas } from '../data/guiasVenta';
+import { GUIAS_VENTA, MARCAS, datosDeGuia, esCurso, faqDeGuia, guiaPorSlug, guiasRelacionadas, metaDeGuia, preguntasDeGuia } from '../data/guiasVenta';
+import { seoDeGuia } from '../data/seoGuias';
 import { PRECIOS_GUIAS } from '../data/preciosGuias';
 import { enviarSolicitud } from '../lib/solicitudes';
 import { trackEvent } from '../utils/analytics';
@@ -156,6 +157,50 @@ function FormularioDuda({ guia }) {
   );
 }
 
+/**
+ * La respuesta corta («¿qué es esta guía?») y los artículos del blog que
+ * tratan lo mismo. Los artículos se cargan aparte para no traer todo el
+ * índice del blog con la página de venta; el HTML prerenderizado ya los enlaza.
+ */
+function LecturasDeGuia({ guia }) {
+  const [lecturas, setLecturas] = useState([]);
+  useEffect(() => {
+    let vivo = true;
+    setLecturas([]);
+    import('../data/articulosDeGuia').then((m) => { if (vivo) setLecturas(m.articulosDeGuia(guia.slug, 6)); }).catch(() => {});
+    return () => { vivo = false; };
+  }, [guia.slug]);
+  const seo = seoDeGuia(guia.slug);
+  if (!seo && !lecturas.length) return null;
+  return (
+    <section className="border-t border-edvanta-border bg-white">
+      <div className="mx-auto max-w-3xl px-4 py-14 sm:px-6 lg:px-8">
+        {seo && (
+          <>
+            <h2 className="font-display text-2xl font-bold text-edvanta-deep sm:text-3xl">{esCurso(guia) ? 'El curso' : 'La guía'}, en pocas palabras</h2>
+            <p className="mt-3 text-base leading-7 text-edvanta-muted">{seo.respuesta}</p>
+          </>
+        )}
+        {lecturas.length > 0 && (
+          <>
+            <h3 className={`font-display text-lg font-bold text-edvanta-deep ${seo ? 'mt-8' : ''}`}>Empieza gratis: artículos sobre este tema</h3>
+            <ul className="mt-3 divide-y divide-edvanta-border rounded-[var(--ds-r-lg)] border border-edvanta-border">
+              {lecturas.map((a) => (
+                <li key={a.slug}>
+                  <Link to={`/articulos/${a.slug}`} onClick={() => trackEvent('guia_articulo_click', { guia: guia.slug, articulo: a.slug })} className="flex items-center justify-between gap-3 px-4 py-3 text-[15px] font-semibold text-edvanta-deep hover:text-edvanta-blue">
+                    {a.title}
+                    <ArrowRight className="h-4 w-4 shrink-0 text-edvanta-muted" aria-hidden="true" />
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </>
+        )}
+      </div>
+    </section>
+  );
+}
+
 export default function GuiaVenta() {
   const { slug } = useParams();
   const guia = guiaPorSlug(slug);
@@ -163,19 +208,19 @@ export default function GuiaVenta() {
 
   useEffect(() => {
     if (!guia) return;
-    const marca = MARCAS[guia.marca];
+    const meta = metaDeGuia(guia);
     const url = `${SITIO}/guia/${guia.slug}`;
     updatePageSeo({
-      title: `${guia.titulo} | ${marca.nombre}`,
-      description: guia.bajada.slice(0, 158),
+      title: meta.titulo,
+      description: meta.descripcion,
       canonical: url,
       image: guia.portada ? `${SITIO}${guia.portada}` : `${SITIO}/img/og-edvanta.png`,
       imageAlt: `Portada de ${guia.titulo}`,
       type: 'product',
-      keywords: guia.keywords,
+      keywords: meta.keywords,
       jsonLdId: 'guia',
       // Lo mismo que el HTML prerenderizado, con el precio verificado de Hotmart.
-      jsonLd: datosDeGuia(guia, { canonical: url, sitio: SITIO }),
+      jsonLd: [datosDeGuia(guia, { canonical: url, sitio: SITIO }), faqDeGuia(guia)],
     });
     trackEvent('guia_vista', { slug: guia.slug, marca: guia.marca });
   }, [guia]);
@@ -397,17 +442,15 @@ export default function GuiaVenta() {
           </div>
         </section>
 
+        {/* En pocas palabras, y los artículos gratis del mismo tema (grupo temático). */}
+        <LecturasDeGuia guia={guia} />
+
         {/* 7 · Preguntas */}
         <section className="border-t border-edvanta-border bg-edvanta-bg">
           <div className="mx-auto max-w-3xl px-4 py-14 sm:px-6 lg:px-8">
             <h2 className="font-display text-2xl font-bold text-edvanta-deep sm:text-3xl">Preguntas frecuentes</h2>
             <div className="mt-6 divide-y divide-edvanta-border rounded-[var(--ds-r-lg)] border border-edvanta-border bg-white">
-              {[
-                ['¿Cómo recibo la guía?', 'Pagas en Hotmart y recibes el acceso en el correo con el que compraste. También queda en tu cuenta de Hotmart.'],
-                ['¿Qué medios de pago puedo usar?', 'Hotmart te muestra los medios disponibles en tu país antes de pagar.'],
-                ['¿Y si no es lo que esperaba?', 'La compra está protegida por la garantía de Hotmart: puedes pedir el reembolso dentro del plazo que indica la página de pago.'],
-                ...guia.preguntas,
-              ].map(([q, a]) => (
+              {preguntasDeGuia(guia).map(([q, a]) => (
                 <details key={q} className="group px-5 py-4">
                   <summary className="flex cursor-pointer list-none items-center justify-between gap-3 font-semibold text-edvanta-deep">
                     {q}

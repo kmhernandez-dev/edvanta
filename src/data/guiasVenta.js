@@ -22,6 +22,8 @@
 import { ebooks as EBOOKS_FST } from './fst.js';
 import { productosAtenFarma } from './atenfarma.js';
 import { PRECIOS_GUIAS } from './preciosGuias.js';
+import { seoDeGuia } from './seoGuias.js';
+import { recortarDescripcion, tituloQueCabe } from '../../api/lib/meta-seo.js';
 
 export const MARCAS = {
   edvanta: {
@@ -597,9 +599,57 @@ export const rutaDeGuia = (productoId) => (POR_PRODUCTO[productoId] ? `/guia/${P
  * Datos para Google de una guía, con su oferta si Hotmart tiene precio
  * verificado. Los usan la página (/guia/:slug) y su HTML prerenderizado.
  */
+/** «Químicos farmacéuticos» → «químicos farmacéuticos»; «QF de droguería» se deja igual. */
+export const enFrase = (t) => (/^[A-ZÁÉÍÓÚÑ][a-záéíóúñ]/.test(t) ? t.charAt(0).toLowerCase() + t.slice(1) : t);
+
+/** Los cursos de AtenFarmaClinic y el de autocuidado son cursos, no libros. */
+export const esCurso = (guia) => /^Curso/.test(guia.formato) || /^Curso/.test(guia.antetitulo || '');
+
+/**
+ * Título y descripción para Google: el título de búsqueda de seoGuias.js
+ * (60 caracteres, con la marca si cabe) y la respuesta corta (155).
+ * Los usan la página y su HTML prerenderizado, para que digan lo mismo.
+ */
+export function metaDeGuia(guia) {
+  const seo = seoDeGuia(guia.slug);
+  const marca = MARCAS[guia.marca].nombre;
+  const base = seo?.tituloSeo || guia.titulo;
+  return {
+    titulo: tituloQueCabe([`${base} | ${marca}`, base]),
+    descripcion: seo?.descripcion || recortarDescripcion(guia.bajada),
+    keywords: [...new Set([seo?.consulta, ...(seo?.consultas || []), ...(guia.keywords || [])].filter(Boolean))],
+  };
+}
+
+/**
+ * Las preguntas de la página, en el orden en que se hacen: qué es, para
+ * quién, cómo se compra y las propias de la guía. Van visibles y en el
+ * FAQPage; la primera es la que un asistente de IA puede citar tal cual.
+ */
+export function preguntasDeGuia(guia) {
+  const seo = seoDeGuia(guia.slug);
+  const [el, nombre] = esCurso(guia) ? ['el', 'curso'] : ['la', 'guía'];
+  return [
+    ...(seo ? [[`¿Qué es «${guia.titulo}»?`, seo.respuesta]] : []),
+    [`¿Para quién es ${esCurso(guia) ? 'este curso' : 'esta guía'}?`, `Para ${guia.paraQuien.map(enFrase).join('; ')}.`],
+    [`¿Cómo recibo ${el} ${nombre}?`, 'Pagas en Hotmart y recibes el acceso en el correo con el que compraste. También queda en tu cuenta de Hotmart.'],
+    ['¿Qué medios de pago puedo usar?', 'Hotmart te muestra los medios disponibles en tu país antes de pagar.'],
+    ['¿Y si no es lo que esperaba?', 'La compra está protegida por la garantía de Hotmart: puedes pedir el reembolso dentro del plazo que indica la página de pago.'],
+    ...(guia.preguntas || []),
+  ];
+}
+
+/** FAQPage con las mismas preguntas que se ven en la página. */
+export const faqDeGuia = (guia) => ({
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: preguntasDeGuia(guia).map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })),
+});
+
 export function datosDeGuia(guia, { canonical, sitio = 'https://edvanta.co' }) {
   const marca = MARCAS[guia.marca];
-  const curso = guia.formato.startsWith('Curso');
+  const curso = esCurso(guia);
+  const seo = seoDeGuia(guia.slug);
   const precio = PRECIOS_GUIAS[guia.slug];
   const oferta = precio?.valor > 0 && precio.verificadoEl ? {
     '@type': 'Offer',
@@ -614,7 +664,8 @@ export function datosDeGuia(guia, { canonical, sitio = 'https://edvanta.co' }) {
     // Un ebook con precio es también un producto: así Google puede mostrar su precio.
     '@type': curso ? 'Course' : (oferta ? ['Book', 'Product'] : 'Book'),
     name: guia.titulo,
-    description: guia.bajada,
+    description: seo?.respuesta || guia.bajada,
+    ...(seo ? { keywords: [seo.consulta, ...seo.consultas].join(', ') } : {}),
     inLanguage: 'es',
     url: canonical,
     ...(guia.portada ? { image: `${sitio}${guia.portada}` } : {}),

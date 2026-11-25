@@ -33,6 +33,8 @@ import StudyTools from '../components/articulos/HerramientasDeEstudio';
 import ArticleComments from '../components/articulos/ComentariosDeArticulo';
 import HerramientaArticulo from '../components/articulos/HerramientaArticulo';
 import BloqueComunidad from '../components/comunidad/BloqueComunidad';
+import GuiaRecomendada from '../components/curso/GuiaRecomendada';
+import { guiaParaArticulo } from '../data/guiaParaArticulo';
 import AffiliateCourseButton from '../components/AffiliateCourseButton';
 import { articulos, getArticulo } from '../data/articulos';
 import { comunidadDeArticulo, herramientaDeArticulo } from '../data/comunidadesSalud';
@@ -699,6 +701,9 @@ export default function ArticuloPage() {
                 </p>
               </div>
             )}
+
+            {/* La guía de Hotmart que resuelve lo mismo que este artículo (guiaParaArticulo.js). */}
+            <GuiaRecomendada guia={guiaParaArticulo(art)} origen="articulo" etiqueta="Guía recomendada" className="mt-10" />
 
             {comunidad && (
               <BloqueComunidad comunidad={comunidad} articuloSlug={art.slug} origen="articulo" />

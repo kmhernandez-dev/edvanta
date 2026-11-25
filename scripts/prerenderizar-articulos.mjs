@@ -47,6 +47,8 @@ const { casosDeArticulo, htmlDeCasos } = await importar('src/lib/casosClinicos/e
 const { comunidadDeArticulo } = await importar('src/data/comunidadesSalud.js');
 const { cortoDeComunidad, paraDeComunidad } = await importar('src/lib/comunidades/seo.js');
 const { examenDeArticulo } = await importar('src/data/examenes/index.js');
+const { guiaParaArticulo } = await importar('src/data/guiaParaArticulo.js');
+const { seoDeGuia } = await importar('src/data/seoGuias.js');
 
 const plantilla = readFileSync(path.join(dist, 'index.html'), 'utf8');
 const SALUD = ['fst', 'contigo', 'atenfarma'];
@@ -120,6 +122,7 @@ for (const art of articulos) {
   const relacionados = articulos.filter((a) => a.slug !== art.slug && a.category === art.category).slice(0, 4);
   const comunidad = comunidadDeArticulo(art.slug);
   const examen = examenDeArticulo(art.slug);
+  const guiaArt = guiaParaArticulo(art);
   // Sin fecha de consulta: la pone quien cita.
   const citas = citasDeArticulo(art);
   // Las clases gratuitas que enseñan lo mismo (api/lib/enlaces-de-salud.js).
@@ -170,6 +173,7 @@ for (const art of articulos) {
     <p><a href="${esAutoraKarla(art) ? '/autores/karla-hernandez' : '/equipo-editorial'}">${esc(autor)}</a>${art.revisor ? ` · Revisado por ${art.revisorUrl ? `<a href="${esc(art.revisorUrl)}" rel="noopener">${esc(art.revisor)}</a>` : esc(art.revisor)}${tieneRevisionClinica(art) ? ` el ${esc(fecha(art.reviewedAt || art.reviewed_at || art.fechaRevision))}` : ' · fecha de revisión pendiente'}` : ''} · Actualizado el ${esc(fecha(art.updated || art.date))}</p>
     <div class="ed-prose">${markdownAHtml(limpiarMarkdown(md))}</div>
     ${comunidad ? `<section><h2>Grupo de apoyo de ${esc(cortoDeComunidad(comunidad))}</h2><p>Grupo de apoyo gratis por WhatsApp para ${esc(paraDeComunidad(comunidad))} y sus cuidadores.</p><p>${esc(comunidad.intro[0])}</p><ul>${comunidad.queEncuentras.map((t) => `<li>${esc(t)}</li>`).join('')}</ul><p><a href="${esc(comunidad.ruta)}">Grupo de apoyo de ${esc(cortoDeComunidad(comunidad))}</a> · <a href="${esc(comunidad.whatsapp)}">Entrar por WhatsApp</a>${comunidad.curso ? ` · <a href="${esc(comunidad.curso.ruta)}">Curso: ${esc(comunidad.curso.nombre)}</a>` : ''}${comunidad.guiaPro ? ` · <a href="${esc(comunidad.guiaPro.ruta)}">Guía: ${esc(comunidad.guiaPro.nombre)}</a>` : ''}${comunidad.guia?.publico === 'pacientes' ? ` · <a href="${esc(comunidad.guia.ruta)}">Guía para pacientes: ${esc(comunidad.guia.nombre)}</a>` : ''}</p><p>Contenido educativo. No diagnostica ni prescribe.</p></section>` : ''}
+    ${guiaArt ? `<section><h2>Guía recomendada: ${esc(guiaArt.titulo)}</h2><p>${esc(seoDeGuia(guiaArt.slug)?.respuesta || guiaArt.bajada)}</p><p><a href="/guia/${esc(guiaArt.slug)}">Ver qué incluye «${esc(guiaArt.titulo)}»</a></p></section>` : ''}
     ${examen ? `<section><h2>Practica lo que acabas de leer</h2><p><a href="${esc(examen.ruta)}">${esc(examen.titulo)}</a>: ${esc(examen.descripcion)}</p><p>${examen.preguntas.length} preguntas con corrección y explicación. Sin registro.</p></section>` : ''}
   </article>
   ${htmlDeCasos(casosDeArticulo(art.slug))}
