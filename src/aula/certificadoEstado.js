@@ -4,6 +4,7 @@
  * piden a la vez: una sola consulta por curso, guardada un minuto.
  */
 import { get, post } from './api';
+import { pedirAceptacion } from '../lib/aceptacionCompra';
 
 const cache = new Map(); // courseId → { promesa, hasta }
 const UN_MINUTO = 60 * 1000;
@@ -22,7 +23,13 @@ export const estudiaGratis = (d) => Boolean(d && !d.certificado && d.pago?.reque
 
 /** Abre Mercado Pago con el certificado del curso. */
 export async function pagarCertificado(courseId, volverA) {
-  const res = await post('/me/checkout', { items: [{ id: `certificado-${courseId}` }], volverA });
+  // Aceptación expresa de los términos y del acceso inmediato (Ley 1480, art. 47).
+  if (!(await pedirAceptacion())) {
+    const cancelado = new Error('');
+    cancelado.cancelado = true;
+    throw cancelado;
+  }
+  const res = await post('/me/checkout', { items: [{ id: `certificado-${courseId}` }], volverA, aceptaTerminos: true });
   if (!res?.initPoint) throw new Error('No se pudo abrir Mercado Pago. Intenta de nuevo.');
   window.location.href = res.initPoint;
 }

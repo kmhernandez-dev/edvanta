@@ -12,9 +12,16 @@ import {
   createForumPost, replyForumPost,
 } from '../../lib/aula/pedagogia.js';
 import { exigirRevisionIncluida, revisionIncluida } from '../../lib/aula/checkout.js';
+import { exigirAccesoAlRecurso } from '../../lib/aula/acceso-pago.js';
 
 const courseIdOf = (req) => idField(req.params.courseId, 'courseId', 'El curso');
 const idOf = (req, name) => idField(req.params[name], name, 'El identificador');
+
+// Cursos de pago (acceso-pago.js): los quizzes y foros de las unidades de
+// pago piden el curso completo; los de la primera unidad, no.
+const exigirQuiz = (req) => exigirAccesoAlRecurso(req.aula.db, req.aula.user.id, courseIdOf(req), 'quiz', idOf(req, 'assessmentId'));
+const exigirForo = (req) => exigirAccesoAlRecurso(req.aula.db, req.aula.user.id, courseIdOf(req), 'foro', idOf(req, 'forumId'));
+
 
 export function pedagogiaRouter() {
   const router = express.Router();
@@ -29,12 +36,14 @@ export function pedagogiaRouter() {
   }));
 
   router.get('/courses/:courseId/assessments/:assessmentId', route(async (req, res) => {
+    await exigirQuiz(req);
     res.json(await assessmentDetail(
       req.aula.db, req.aula.user, courseIdOf(req), idOf(req, 'assessmentId'), { now: req.aula.now },
     ));
   }));
 
   router.post('/courses/:courseId/assessments/:assessmentId/attempts', route(async (req, res) => {
+    await exigirQuiz(req);
     const result = await startAttempt(
       req.aula.db, req.aula.user, courseIdOf(req), idOf(req, 'assessmentId'), { now: req.aula.now },
     );
@@ -49,6 +58,7 @@ export function pedagogiaRouter() {
   }));
 
   router.put('/courses/:courseId/assessments/:assessmentId/attempt', route(async (req, res) => {
+    await exigirQuiz(req);
     res.json(await saveAttempt(
       req.aula.db, req.aula.user, courseIdOf(req), idOf(req, 'assessmentId'), req.body?.answers,
       { now: req.aula.now },
@@ -56,6 +66,7 @@ export function pedagogiaRouter() {
   }));
 
   router.post('/courses/:courseId/assessments/:assessmentId/attempt/submit', route(async (req, res) => {
+    await exigirQuiz(req);
     const result = await submitAttempt(
       req.aula.db, req.aula.user, courseIdOf(req), idOf(req, 'assessmentId'), req.body?.answers,
       { now: req.aula.now },
@@ -103,12 +114,14 @@ export function pedagogiaRouter() {
   }));
 
   router.post('/courses/:courseId/forums/:forumId/posts', route(async (req, res) => {
+    await exigirForo(req);
     res.status(201).json(await createForumPost(
       req.aula.db, req.aula.user, courseIdOf(req), idOf(req, 'forumId'), req.body, { now: req.aula.now },
     ));
   }));
 
   router.post('/courses/:courseId/forums/:forumId/posts/:postId/replies', route(async (req, res) => {
+    await exigirForo(req);
     res.status(201).json(await replyForumPost(
       req.aula.db, req.aula.user, courseIdOf(req), idOf(req, 'forumId'), idOf(req, 'postId'),
       req.body, { now: req.aula.now },

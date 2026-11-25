@@ -13,6 +13,7 @@ import { Alert, ErrorState, LoadingBlock } from '../../ui/States';
 import { useToast } from '../../ui/Toast';
 import { useCourseData } from './CursoParticipante';
 import { CursoPage } from './CursoPage';
+import RecordatorioCertificado from '../../components/RecordatorioCertificado';
 
 function Rubric({ rubric }) {
   if (!rubric?.criteria?.length) return null;
@@ -134,7 +135,9 @@ export default function ForoCurso() {
     >
       {detail.loading && !detail.data && <LoadingBlock rows={5} label="Cargando el foro" />}
       {detail.error && !detail.data && <ErrorState error={detail.error} onRetry={detail.reload} />}
-      {error && <Alert tone="danger" className="mb-4">{error.message}</Alert>}
+      {error && (error.code === 'curso_de_pago'
+        ? <RecordatorioCertificado fijo courseId={courseId} volverA={rutas.certificado} titulo="Participar en este foro es parte del curso completo" />
+        : <Alert tone="danger" className="mb-4">{error.message}</Alert>)}
       {detail.data && (
         <div className="flex flex-col gap-5">
           <section className="rounded-[var(--aula-radius-lg)] border border-[var(--aula-border)] bg-white p-5">

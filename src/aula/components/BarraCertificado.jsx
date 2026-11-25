@@ -18,7 +18,7 @@ import { estadoDelCertificado, estudiaGratis, pagarCertificado } from '../certif
 const pesos = (n) => `$${Number(n).toLocaleString('es-CO')}`;
 const fecha = (iso) => new Date(iso).toLocaleDateString('es-CO', { day: 'numeric', month: 'long', timeZone: 'America/Bogota' });
 
-export default function BarraCertificado({ courseId, cursoSlug, volverA }) {
+export default function BarraCertificado({ courseId, cursoSlug, volverA, muestra = false }) {
   const [d, setD] = useState(null);
   const [pagando, setPagando] = useState(false);
   const [error, setError] = useState('');
@@ -38,7 +38,7 @@ export default function BarraCertificado({ courseId, cursoSlug, volverA }) {
     try {
       await pagarCertificado(courseId, volverA);
     } catch (e) {
-      setError(e.message);
+      if (!e?.cancelado) setError(e.message);
       setPagando(false);
     }
   };
@@ -46,8 +46,17 @@ export default function BarraCertificado({ courseId, cursoSlug, volverA }) {
   return (
     <div className="aula-barra-cert" role="region" aria-label="Estudia con certificado">
       <p className="aula-barra-cert__texto">
-        <b>Tu curso aún no incluye el certificado.</b>{' '}
-        <span className="aula-barra-cert__detalle">Curso completo, certificado, revisión de actividades y acompañamiento por </span>
+        {muestra ? (
+          <>
+            <b>Estás en la muestra gratis: la primera unidad completa.</b>{' '}
+            <span className="aula-barra-cert__detalle">Todas las clases, evaluaciones, foros y tu certificado por </span>
+          </>
+        ) : (
+          <>
+            <b>Tu curso aún no incluye el certificado.</b>{' '}
+            <span className="aula-barra-cert__detalle">Curso completo, certificado, revisión de actividades y acompañamiento por </span>
+          </>
+        )}
         <b>{pesos(p.precio)}</b>
         {p.conDescuento && p.lista && (
           <>

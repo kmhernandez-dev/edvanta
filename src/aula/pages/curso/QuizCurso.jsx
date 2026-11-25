@@ -12,6 +12,7 @@ import { Alert, ErrorState, LoadingBlock } from '../../ui/States';
 import { useToast } from '../../ui/Toast';
 import { useCourseData } from './CursoParticipante';
 import { CursoPage } from './CursoPage';
+import RecordatorioCertificado from '../../components/RecordatorioCertificado';
 
 const STATUS_LABEL = {
   en_curso: 'En curso', calificado: 'Calificado', pendiente: 'Pendiente', aprobado: 'Aprobado', finalizado: 'Finalizado',
@@ -200,8 +201,12 @@ export default function QuizCurso() {
       actions={<Button variant="secondary" to={rutas.base}>Volver al curso</Button>}
     >
       {detail.loading && !detail.data && <LoadingBlock rows={5} label="Cargando el quiz" />}
-      {detail.error && !detail.data && <ErrorState error={detail.error} onRetry={detail.reload} />}
-      {error && <Alert tone="danger" className="mb-4">{error.message}</Alert>}
+      {detail.error && !detail.data && (detail.error.code === 'curso_de_pago'
+        ? <RecordatorioCertificado fijo courseId={courseId} volverA={rutas.certificado} curso={data?.snapshot?.course?.title || ''} titulo="Esta evaluación es parte del curso completo" />
+        : <ErrorState error={detail.error} onRetry={detail.reload} />)}
+      {error && (error.code === 'curso_de_pago'
+        ? <RecordatorioCertificado fijo courseId={courseId} volverA={rutas.certificado} curso={data?.snapshot?.course?.title || ''} titulo="Esta evaluación es parte del curso completo" />
+        : <Alert tone="danger" className="mb-4">{error.message}</Alert>)}
 
       {detail.data && (
         <div className="flex flex-col gap-5">

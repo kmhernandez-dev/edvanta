@@ -236,6 +236,14 @@
 }
 
 /* ── Aula: tarjeta bajo la clase ────────────────────────────── */
+/* En una clase de pago, qué se ve gratis y qué trae el curso completo. */
+.aula-cert-nota {
+  margin: 16px 0 0;
+  font-size: var(--ds-fs-sm, 14px);
+  line-height: 1.6;
+  color: var(--aula-muted, #5B6478);
+}
+
 .aula-cert-tarjeta {
   position: relative;
   margin-top: 16px;

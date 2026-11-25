@@ -120,7 +120,7 @@ describe('precio por país en la API y en el checkout', () => {
     const c = t.client();
     await c.login(u.email, u.password);
     await c.post(`/me/catalog/${cursoId}/enroll`, {});
-    const pago = await c.post('/me/checkout', { items: [{ id: `certificado-${cursoId}`, price: 1 }] }, MX);
+    const pago = await c.post('/me/checkout', { aceptaTerminos: true, items: [{ id: `certificado-${cursoId}`, price: 1 }] }, MX);
     expect(pago.status).toBe(201);
     expect(preferencias.at(-1).items[0]).toMatchObject({ unit_price: 65000, currency_id: 'COP' });
     const cert = await c.get(`/me/courses/${cursoId}/certificate`, MX);
@@ -133,7 +133,7 @@ describe('precio por país en la API y en el checkout', () => {
     await c.login(u.email, u.password);
     await c.post(`/me/catalog/${cursoId}/enroll`, {});
     await t.db.query("UPDATE aula_enrollments SET assigned_at = NOW() - INTERVAL '30 days' WHERE user_id = $1", [u.id]);
-    await c.post('/me/checkout', { items: [{ id: `certificado-${cursoId}` }] }, CO);
+    await c.post('/me/checkout', { aceptaTerminos: true, items: [{ id: `certificado-${cursoId}` }] }, CO);
     expect(preferencias.at(-1).items[0].unit_price).toBe(199000);
   });
 

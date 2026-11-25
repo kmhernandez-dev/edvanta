@@ -15,6 +15,7 @@
  */
 
 import { apiUrl } from '../config/api';
+import { pedirAceptacion } from './aceptacionCompra';
 
 /**
  * ¿Hay rastro de una sesión de Edvanta en este navegador?
@@ -150,10 +151,12 @@ export async function precioDelCertificado(courseId) {
  * de pago. `volverA` es la página del sitio a la que vuelve al pagar.
  */
 export async function pagarCertificado(courseId, volverA) {
+  // Aceptación expresa de los términos y del acceso inmediato (Ley 1480, art. 47).
+  if (!(await pedirAceptacion())) return { ok: false, motivo: 'cancelado' };
   const res = await conSesion('/me/checkout', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ items: [{ id: `certificado-${Number(courseId)}` }], volverA }),
+    body: JSON.stringify({ items: [{ id: `certificado-${Number(courseId)}` }], volverA, aceptaTerminos: true }),
   });
   if (!res) return { ok: false, motivo: 'sin_sesion' };
   let datos = null;

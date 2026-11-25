@@ -13,6 +13,7 @@ import { recomputeEnrollment } from './progress.js';
 import { pedagogyProgress } from './pedagogia-core.js';
 import { conCreditoDeVideo } from '../videos-youtube.js';
 import { REVISION_DE_CLASES } from '../revision-de-clases.js';
+import { accesoAlCurso, exigirCursoCompleto, snapshotSegunAcceso, unidadGratis } from './acceso-pago.js';
 
 const MAX_TIME_REPORT_S = 60;
 const MAX_VIDEO_SECONDS = 24 * 60 * 60;
@@ -249,11 +250,23 @@ export async function courseForParticipant(db, user, courseId, { now = new Date(
     ...m,
     resources: byModule.get(m.id) || [],
   }));
+  // Cursos de pago (acceso-pago.js): a quien ve la muestra no le llega el
+  // contenido de las unidades de pago; los videos y el inicio, sí.
+  const acceso = await accesoAlCurso(db, user.id, courseId);
+  if (!acceso.completo) {
+    snapshot.modules = snapshotSegunAcceso(snapshot, acceso).modules.map((m, i) => (unidadGratis(i, acceso) ? m : {
+      ...m,
+      resources: (m.resources || []).map((r) => ({ ...r, requierePago: true })),
+    }));
+    const dePago = new Set(snapshot.modules.filter((m) => m.requierePago).map((m) => m.id));
+    for (const r of resources) if (dePago.has(r.moduleId)) r.requierePago = true;
+  }
   snapshot.resources = resources;
   return {
     snapshot,
     courseId: Number(courseId),
     courseSlug: curso?.slug || null,
+    acceso,
     certificate: cert ? { code: cert.code, status: cert.status, issuedAt: cert.issued_at } : null,
     version: { id: ctx.version.id, number: ctx.version.version_number },
     companyName: live.company_name,
@@ -411,7 +424,10 @@ export async function reportVideo(db, user, courseId, lessonId, input, { now = n
     };
     const watched = lessonVideoPct(lesson, store);
     const threshold = ctx.snapshot.rules.videoCompletionPct;
-    const completesNow = lesson.completionRule === 'video' && row.status !== 'completado' && watched >= threshold;
+    // En una unidad de pago el video se ve igual (YouTube no permite
+    // bloquearlo), pero el avance cuenta solo con el curso completo.
+    const conAvance = unidadGratis(lesson.moduleIndex) || (await accesoAlCurso(tx, user.id, courseId)).completo;
+    const completesNow = conAvance && lesson.completionRule === 'video' && row.status !== 'completado' && watched >= threshold;
 
     // last_activity_at no cambia aquí: es la referencia para acotar el tiempo activo.
     await tx.query(
@@ -436,6 +452,7 @@ export async function completeLesson(db, user, courseId, lessonId, { now = new D
     const ctx = await loadContext(tx, user, courseId, { now });
     const lesson = findLesson(ctx.snapshot, lessonId);
     assertUnlocked(lessonStates(ctx.snapshot, ctx.progress), lesson);
+    if (!unidadGratis(lesson.moduleIndex)) exigirCursoCompleto(await accesoAlCurso(tx, user.id, courseId));
     if (lesson.completionRule === 'video') {
       throw badRequest(`Esta clase se completa sola al ver el ${ctx.snapshot.rules.videoCompletionPct} % del video.`);
     }
