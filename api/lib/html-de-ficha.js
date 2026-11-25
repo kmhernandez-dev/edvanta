@@ -21,6 +21,7 @@
 
 import { descripcionDeCurso, resumenUtil } from './meta-seo.js';
 import { palabraClaveDe } from './seo-cursos-propios.js';
+import { busquedasDeCompra } from './keywords-cursos.js';
 
 const esc = (t) => String(t ?? '')
   .replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;');
@@ -119,6 +120,17 @@ function preguntasDeBusqueda(ficha) {
     p.push({
       q: `¿Cuánto dura ${el}?`,
       a: `${tamano ? `Tiene ${tamano}` : 'Tiene'}${horas ? `${tamano ? ', con' : ''} una duración de ${horas}` : ''}. Como avanzas a tu ritmo, tú decides cuántas clases haces por semana.`,
+    });
+  }
+  // «Curso de X gratis» es de las búsquedas de compra más frecuentes: se
+  // responde con lo que es cierto hoy (primera unidad gratis si el curso cobra).
+  if (busquedasDeCompra(ficha.url).some((k) => /gratis|gratuito/.test(k))) {
+    const cobra = Number(ficha.certificado?.precio) > 0;
+    p.push({
+      q: `¿Hay ${el.replace(/^el /, 'un ')} gratis?`,
+      a: cobra
+        ? 'Puedes empezar gratis: al inscribirte estudias la primera unidad completa sin pagar. El curso completo, con certificado, acompañamiento por WhatsApp y revisión de actividades, es de pago.'
+        : 'Sí. El curso es gratis y el certificado no tiene costo.',
     });
   }
   if (ficha.queAprenderas?.length) {
@@ -262,6 +274,9 @@ export function datosDeCurso(ficha, { nombre, canonical, imagen, horas }) {
     provider: { '@type': 'Organization', name: ficha.proveedor.nombre, ...(propio ? { sameAs: 'https://edvanta.co' } : {}) },
     ...(ficha.nivel ? { educationalLevel: ficha.nivel } : {}),
     ...(ficha.queAprenderas?.length ? { teaches: ficha.queAprenderas.slice(0, 12) } : {}),
+    ...(propio && (palabraClaveDe(ficha) || busquedasDeCompra(ficha.url).length)
+      ? { keywords: [...new Set([palabraClaveDe(ficha), ...busquedasDeCompra(ficha.url)].filter(Boolean).map((k) => k.toLowerCase()))].slice(0, 12).join(', ') }
+      : {}),
     // Estrellas en Google: solo con valoraciones reales y publicadas de
     // Edvanta, que la ficha muestra en «Valoraciones de estudiantes».
     ...(ficha.valoraciones?.total > 0 && ficha.valoraciones.promedio >= 1 ? {
