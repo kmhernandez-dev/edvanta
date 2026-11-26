@@ -14,8 +14,9 @@ describe('SEO de los artículos', () => {
     // 404 hasta el 11-nov-2026 + el blog «Mejores cursos» (31 al 12-nov-2026) + 9 de presión alta
     // + 11 del lote de colesterol, digestivo, dolor y gota y 12 de riñón, arritmias, salud mental y piel (17-nov-2026)
     // + 100 fichas de medicamentos de alto costo (articulosAltoCosto.js, 21-nov-2026)
-    // + 13 guías de condición (articulosCondiciones.js, 22-nov-2026).
-    expect(articulos).toHaveLength(630);
+    // + 13 guías de condición (articulosCondiciones.js, 22-nov-2026)
+    // + 10 de comunidad, webinars e instituciones (articulosComunidadWebinars.js, 25-nov-2026).
+    expect(articulos).toHaveLength(640);
     expect(Object.keys(SEO_ARTICULOS)).toHaveLength(390);
     for (const a of articulos) {
       const seo = SEO_ARTICULOS[a.slug] || {

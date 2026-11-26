@@ -89,6 +89,14 @@ Windows note: use `npm.cmd` if PowerShell blocks `npm.ps1`.
 | `src/components/fstApp/*` | FST App shell, sections and tools |
 | `src/pages/FstAppPortal.jsx` | FST App portal (routes under `/fst-app/*`) |
 | `src/data/edvanta/contigo.js` | Edvanta Contigo content: six routes, needs, tools, plans, FAQ, professional network state |
+| `src/data/edvanta/comunidadWebinars.js` | Community clusters, 26 practical guides and 12 webinars with honest "date to be confirmed" state |
+| `src/pages/ComunidadPage.jsx` | `/comunidad` hub: WhatsApp community, topics, webinars and funnel CTAs |
+| `src/pages/ComunidadTemas.jsx`, `ComunidadCluster.jsx`, `ComunidadTema.jsx` | `/comunidad/temas` index, area hubs and topic pages |
+| `src/pages/WebinarsIndex.jsx`, `WebinarDetalle.jsx` | `/webinars` cycle and session pages with registration CTAs |
+| `src/data/articulosComunidadWebinars.js` + `public/articulos/articulos_edvanta/comunidad-farmaceutica/*` | 10 campaign articles (community, webinars, careers, institutions) |
+| `scripts/generar-30000-keywords-comunidad-webinars.mjs` | Builds the 30,000-keyword CSV, deduped against `seo/*.csv` and mapped to real URLs |
+| `seo/keywords-30000-comunidad-webinars.csv` | 30,000 keywords with audience, intent, funnel stage, CTA and destination URL |
+| `seo/plan-30000-comunidad-webinars.md` | Campaign plan, funnel map and operating rules |
 | `src/pages/contigo/*` | Contigo public pages, Mi cuidado, interest, plans, network and placeholders |
 | `src/components/contigo/ContigoPieces.jsx` | Contigo cards, status chips and illustrative Mi cuidado visual |
 | `src/styles/contigo.css` | Contigo visual tokens and route-card image crops |
@@ -149,6 +157,9 @@ Frontend:
 - `/academia/retos` (Retos FST catalog)
 - `/academia/retos/:slug` (challenge detail)
 - `/academia/retos/:slug/dia/:dayNumber` (day page with video + check-in)
+- `/comunidad` (community hub for pharmaceutical chemists)
+- `/comunidad/temas`, `/comunidad/temas/:cluster`, `/comunidad/temas/:cluster/:tema` (26 practical guides)
+- `/webinars`, `/webinars/:slug` (12 sessions; dates to be confirmed, no invented prices)
 - `/atenfarmaclinic`
 - `/privacidad`
 - `/terminos`

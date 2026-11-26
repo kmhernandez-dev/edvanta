@@ -46,6 +46,14 @@ import { cortoDeComunidad, descripcionDeComunidad, faqJsonLd, paraDeComunidad, p
 import { EXAMENES, META_EXAMENES, robotsDeExamen } from '../src/data/examenes/index.js';
 import { FICHAS, META_FICHAS, robotsDeFicha } from '../src/data/medicamentos/fichas.js';
 import { BIBLIOTECA_SALUD, CATEGORIAS_SALUD, META_BIBLIOTECA, robotsDeArticuloSalud } from '../src/data/salud/biblioteca.js';
+import { CLUSTERS, TEMAS, WEBINARS, rutaCluster, rutaTema, rutaWebinar } from '../src/data/edvanta/comunidadWebinars.js';
+import {
+  contenidoCluster as contenidoClusterEdvanta, contenidoComunidad as contenidoComunidadQF,
+  contenidoTema as contenidoTemaEdvanta, contenidoTemas as contenidoTemasEdvanta,
+  contenidoWebinar as contenidoWebinarEdvanta, contenidoWebinars as contenidoWebinarsEdvanta,
+  jsonLdTema, jsonLdWebinar, preguntasDeComunidad as preguntasComunidadQF,
+  preguntasDeWebinars as preguntasWebinarsEdvanta,
+} from './lib/contenido-comunidad-webinars.mjs';
 
 const AREAS_POR_SLUG = new Map(AREAS_CAPACITACION.map((a) => [a.slug, a]));
 
@@ -574,6 +582,83 @@ for (const p of [...GRUPOS_VADEMECUM, ...MONOGRAFIAS]) {
     enlaces: [['Vademécum', '/vademecum'], ...(grupo ? [[grupo.nombre, `/vademecum/${grupo.slug}`]] : [])],
     relatedLink: urlsAbsolutas([...clases.clases, ...clases.cursos]),
     contenido: htmlDePagina(p, { hijos, enlaces: p.enlaces || [], clases, casosHtml: htmlDeCasos(casosDeVademecum(p.slug)) }),
+  });
+}
+
+/* ---- Comunidad farmacéutica y webinars (campaña 30k) ---- */
+
+add('/comunidad', 'Comunidad de químicos farmacéuticos | Edvanta', 'Comunidad gratuita de químicos farmacéuticos: temas de farmacia clínica, calidad, regulatorio y carrera, webinars y recursos para aplicar lo que sabes.', {
+  tipo: 'CollectionPage',
+  seccion: 'Comunidad',
+  h1: 'La comunidad de químicos farmacéuticos para crecer con criterio',
+  contenido: contenidoComunidadQF(),
+  enlaces: [['Temas de la comunidad', '/comunidad/temas'], ['Webinars', '/webinars'], ['Cursos', '/cursos'], ['Instituciones', '/instituciones'], ['Edvanta Contigo', '/contigo']],
+  extraJsonLd: [{
+    '@type': 'FAQPage',
+    mainEntity: preguntasComunidadQF().map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })),
+  }],
+});
+
+add('/comunidad/temas', 'Temas de la comunidad farmacéutica | Edvanta', 'Guías de farmacia clínica, calidad, regulatorio, carrera y comunicación para químicos farmacéuticos, instituciones y pacientes. Método, errores y preguntas frecuentes.', {
+  tipo: 'CollectionPage',
+  seccion: 'Comunidad',
+  seccionUrl: '/comunidad',
+  h1: 'Temas de la comunidad farmacéutica',
+  contenido: contenidoTemasEdvanta(),
+  enlaces: [['Comunidad', '/comunidad'], ['Webinars', '/webinars'], ['Cursos', '/cursos']],
+});
+
+for (const cluster of CLUSTERS) {
+  add(rutaCluster(cluster), `${cluster.nombre} | Comunidad Edvanta`, cluster.descripcion.slice(0, 158), {
+    tipo: 'CollectionPage',
+    seccion: 'Comunidad',
+    seccionUrl: '/comunidad',
+    h1: cluster.nombre,
+    contenido: contenidoClusterEdvanta(cluster),
+    enlaces: [['Comunidad', '/comunidad'], ['Todos los temas', '/comunidad/temas'], ['Webinars', '/webinars']],
+    prioridad: '0.7',
+  });
+}
+
+for (const tema of TEMAS) {
+  add(rutaTema(tema), tema.seoTitle, tema.descripcion, {
+    tipo: 'WebPage',
+    seccion: 'Comunidad',
+    seccionUrl: '/comunidad',
+    h1: tema.titulo,
+    mainEntity: jsonLdTema(tema),
+    contenido: contenidoTemaEdvanta(tema),
+    enlaces: [['Comunidad', '/comunidad'], ['Todos los temas', '/comunidad/temas'], ['Webinars', '/webinars'], ['Cursos', '/cursos']],
+    extraJsonLd: [{
+      '@type': 'FAQPage',
+      mainEntity: tema.faq.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })),
+    }],
+    prioridad: '0.7',
+  });
+}
+
+add('/webinars', 'Webinars para químicos farmacéuticos | Edvanta', 'Ciclo de webinars de Edvanta: farmacia clínica, calidad, regulatorio, carrera e instituciones. Fechas por confirmar e inscripción previa.', {
+  tipo: 'CollectionPage',
+  seccion: 'Webinars',
+  h1: 'Webinars para químicos farmacéuticos y equipos de salud',
+  contenido: contenidoWebinarsEdvanta(),
+  enlaces: [['Comunidad', '/comunidad'], ['Temas de la comunidad', '/comunidad/temas'], ['Cursos', '/cursos'], ['Instituciones', '/instituciones']],
+  extraJsonLd: [{
+    '@type': 'FAQPage',
+    mainEntity: preguntasWebinarsEdvanta().map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })),
+  }],
+});
+
+for (const webinar of WEBINARS) {
+  add(rutaWebinar(webinar), webinar.seoTitle, webinar.descripcion, {
+    tipo: 'WebPage',
+    seccion: 'Webinars',
+    seccionUrl: '/webinars',
+    h1: webinar.titulo,
+    mainEntity: jsonLdWebinar(webinar),
+    contenido: contenidoWebinarEdvanta(webinar),
+    enlaces: [['Todos los webinars', '/webinars'], ['Comunidad', '/comunidad'], ['Cursos', '/cursos'], ['Instituciones', '/instituciones']],
+    prioridad: '0.7',
   });
 }
 

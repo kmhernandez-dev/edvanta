@@ -24,7 +24,7 @@
 
 import {
   BookOpen, BookOpenCheck, Briefcase, Compass, FileCheck2, FileText, GraduationCap,
-  HeartPulse, Library, Megaphone, MessagesSquare, Newspaper, Route, ShieldCheck, Sparkles,
+  HeartPulse, Library, Megaphone, MessagesSquare, MonitorPlay, Newspaper, Route, ShieldCheck, Sparkles,
 } from 'lucide-react';
 import { ESCUELAS } from '../data/edvanta/escuelas';
 
@@ -53,6 +53,8 @@ export const RECURSOS_GROUPS = [
       { label: 'Fichas de medicamentos', desc: 'Para qué sirve cada medicamento, en lenguaje claro', to: '/medicamentos', icon: BookOpenCheck },
       { label: 'Biblioteca de salud', desc: 'Plantas, vitaminas, suplementos y cuidados', to: '/salud', icon: BookOpenCheck },
       { label: 'Artículos', desc: 'Lecturas del sector farmacéutico', to: '/articulos', icon: Newspaper },
+      { label: 'Comunidad y webinars', desc: 'Temas, sesiones en vivo y colegas', to: '/comunidad', icon: MessagesSquare },
+      { label: 'Webinars en vivo', desc: 'Ciclo de sesiones con inscripción', to: '/webinars', icon: MonitorPlay },
       { label: 'Biblioteca de referencias', desc: 'Normativa, lecturas y fuentes', to: '/recursos', icon: Library },
       { label: 'Rutas y competencias', desc: 'Qué aprender, en qué orden', to: '/rutas', icon: Route },
     ],
@@ -106,6 +108,7 @@ export const NAV_PACIENTES = [
 
 export const NAV_INSTITUCIONES = [
   { label: 'Capacitación', to: '/instituciones#catalogo' },
+  { label: 'Webinars', to: '/webinars' },
   { label: 'Marketing', to: '/empresas/marketing' },
   { label: 'Paquetes', to: '/instituciones#paquetes' },
   { label: 'Talento', to: '/empresas/recluta-talento-farmaceutico' },
@@ -136,6 +139,9 @@ export const FOOTER_COLUMNS = [
       { label: 'Curso en vivo para auxiliares y regentes', to: '/curso-de-operacion-segura-del-servicio-farmaceutico' },
       { label: 'Guías y kits', to: '/guias' },
       { label: 'Artículos', to: '/articulos' },
+      { label: 'Comunidad de químicos farmacéuticos', to: '/comunidad' },
+      { label: 'Webinars y sesiones en vivo', to: '/webinars' },
+      { label: 'Temas de la comunidad', to: '/comunidad/temas' },
       { label: 'Vademécum', to: '/vademecum' },
       { label: 'Casos clínicos para practicar', to: '/casos-clinicos' },
       { label: 'Biblioteca de referencias', to: '/recursos' },

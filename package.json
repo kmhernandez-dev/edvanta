@@ -11,6 +11,7 @@
     "test": "vitest run && vitest run --config vitest.api.config.js",
     "test:watch": "vitest",
     "test:api": "vitest run --config vitest.api.config.js",
+    "seo:keywords30k": "node scripts/generar-30000-keywords-comunidad-webinars.mjs",
     "predev": "node scripts/preparar-pdfjs.cjs",
     "prebuild": "node scripts/preparar-pdfjs.cjs",
     "postbuild": "node scripts/prerenderizar-articulos.mjs && node scripts/prerenderizar-paginas.mjs && node scripts/generar-sitemaps.mjs && node scripts/generar-feed.mjs"
