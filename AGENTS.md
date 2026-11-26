@@ -70,6 +70,12 @@ npm install
 node --check server.js
 ```
 
+SEO de cursos (500 blogs + 30.000 keywords):
+
+```bash
+npm.cmd run seo:cursos
+```
+
 Windows note: use `npm.cmd` if PowerShell blocks `npm.ps1`.
 
 ## Key Files
@@ -94,6 +100,12 @@ Windows note: use `npm.cmd` if PowerShell blocks `npm.ps1`.
 | `src/pages/ComunidadTemas.jsx`, `ComunidadCluster.jsx`, `ComunidadTema.jsx` | `/comunidad/temas` index, area hubs and topic pages |
 | `src/pages/WebinarsIndex.jsx`, `WebinarDetalle.jsx` | `/webinars` cycle and session pages with registration CTAs |
 | `src/data/articulosComunidadWebinars.js` + `public/articulos/articulos_edvanta/comunidad-farmaceutica/*` | 10 campaign articles (community, webinars, careers, institutions) |
+| `src/data/blogCursos500.js` | 500 course-recommendation articles (8 editorial angles per Aula course, 500 total) |
+| `public/articulos/articulos_edvanta/cursos-recomendados/*` | 500 markdown articles (minimum 3,000 characters) linked to each course |
+| `scripts/generar-blogs-cursos.mjs` | Builds the 500 articles from the real Aula syllabus and writes `blogCursos500.js` |
+| `scripts/generar-30000-keywords-cursos.mjs` | Builds 30,000 course keywords, class queries and GEO questions mapped to real URLs |
+| `seo/keywords-30000-cursos.csv` | 30,000 keywords for the 63 Aula courses and 500 blogs |
+| `seo/plan-30000-keywords-cursos.md` | Campaign plan, funnel, editorial rules and measurement |
 | `scripts/generar-30000-keywords-comunidad-webinars.mjs` | Builds the 30,000-keyword CSV, deduped against `seo/*.csv` and mapped to real URLs |
 | `seo/keywords-30000-comunidad-webinars.csv` | 30,000 keywords with audience, intent, funnel stage, CTA and destination URL |
 | `seo/plan-30000-comunidad-webinars.md` | Campaign plan, funnel map and operating rules |
@@ -208,6 +220,16 @@ Backend:
 - No professional profiles are invented. `CONTIGO_PROFESIONALES` stays empty until verified professionals exist.
 - Public pages are prerendered in `scripts/prerenderizar-paginas.mjs`; plans, interest, profiles, Mi cuidado and professional/operation placeholders are `noindex`.
 - Route-card photos are cropped with CSS so the text baked into the source images is not shown; titles remain real HTML text.
+
+## Blogs de cursos y keywords
+
+- 500 artículos en `public/articulos/articulos_edvanta/cursos-recomendados/`, registrados en `src/data/blogCursos500.js` y publicados en `/articulos/<slug>`.
+- 8 ángulos por curso del Aula (59 cursos con 8; 4 con 7 para totalizar 500): guía de estudio, para qué sirve, temario, plan de 30 días, errores, aplicación, preguntas frecuentes y curso o autoaprendizaje.
+- Todo el contenido se deriva del inventario real (`docs/auditoria-aula/inventario.json`): unidades, clases, nivel, público y conteos. No se inventan precios, fechas, cupos ni Referencias.
+- Cada artículo enlaza su ficha `/curso-de-…` y artículos hermanos. La primera unidad gratis y el certificado se mencionan solo como los declara la ficha.
+- `seo/keywords-30000-cursos.csv` contiene 30.000 keywords únicas mapeadas a 500 blogs y 63 fichas; `seo/plan-30000-keywords-cursos.md` explica el embudo y el uso.
+- Control reproducible: `src/__tests__/seo-500-blogs-cursos.test.jsx` (500 artículos, mínimo 3.000 caracteres, enlaces reales, similitud, CSV y URLs).
+- Los artículos son borradores editoriales generados: revisar antes de una campaña pagada. La similitud media es baja, pero la decisión final de indexar es editorial.
 
 ## Payment Flow
 

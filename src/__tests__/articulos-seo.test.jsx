@@ -16,7 +16,8 @@ describe('SEO de los artículos', () => {
     // + 100 fichas de medicamentos de alto costo (articulosAltoCosto.js, 21-nov-2026)
     // + 13 guías de condición (articulosCondiciones.js, 22-nov-2026)
     // + 10 de comunidad, webinars e instituciones (articulosComunidadWebinars.js, 25-nov-2026).
-    expect(articulos).toHaveLength(640);
+    // + 500 de cursos recomendados (blogCursos500.js, 26-nov-2026).
+    expect(articulos).toHaveLength(1140);
     expect(Object.keys(SEO_ARTICULOS)).toHaveLength(390);
     for (const a of articulos) {
       const seo = SEO_ARTICULOS[a.slug] || {
