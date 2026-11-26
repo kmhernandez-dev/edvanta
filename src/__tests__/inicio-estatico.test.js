@@ -49,4 +49,17 @@ describe('inicio con contenido y enlaces para los buscadores', () => {
     const repetidos = locations.filter((l, i) => locations.indexOf(l) !== i);
     expect(repetidos).toEqual([]);
   });
+
+  it('la API recibe la plantilla limpia en /index.html (sin el 301 al inicio)', () => {
+    const conf = readFileSync(join(RAIZ, 'nginx.conf'), 'utf8');
+    const server = readFileSync(join(RAIZ, 'api', 'server.js'), 'utf8');
+    const paginas = readFileSync(join(RAIZ, 'api', 'routes', 'paginas-publicas.js'), 'utf8');
+    // La API pide /index.html con este User-Agent…
+    expect(server).toMatch(/plantillaDelSitio\(\{ url: process\.env\.SPA_SHELL_URL \|\| `\$\{SITIO_PUBLICO\}\/index\.html` \}\)/);
+    expect(paginas).toMatch(/'User-Agent': 'edvanta-api\/paginas'/);
+    // …y nginx la exime del 301 (si no, la sigue hasta «/», que es inicio.html).
+    expect(conf).toMatch(/map \$http_user_agent \$plantilla_para_api \{[^}]*"edvanta-api\/paginas" 1;/);
+    const bloque = conf.match(/location = \/index\.html \{([\s\S]*?)\n  \}/)[1];
+    expect(bloque).toMatch(/if \(\$plantilla_para_api\) \{ set \$index_directo 0; \}/);
+    expect(bloque).toMatch(/if \(\$index_directo\) \{ return 301 https:\/\/\$host\/; \}/);  });
 });
