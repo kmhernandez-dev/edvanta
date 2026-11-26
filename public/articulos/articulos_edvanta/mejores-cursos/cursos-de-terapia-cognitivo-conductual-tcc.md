@@ -5,8 +5,8 @@ La ansiedad y la depresión están entre los motivos de consulta más frecuentes
 > **En resumen**
 >
 > - Dos cursos en español: TCC para la ansiedad y TCC para la depresión, en Edutin Academy.
-> - Para quien trabaja con medicamentos: complementa con Psicofarmacología, curso gratuito de Edvanta.
-> - Para tu propio bienestar: Inteligencia Emocional, también gratuito en Edvanta.
+> - Para quien trabaja con medicamentos: complementa con Psicofarmacología, curso de Edvanta (primera unidad gratis).
+> - Para tu propio bienestar: Inteligencia Emocional, de Edvanta, con la primera unidad gratis.
 > - Un curso corto no habilita para hacer psicoterapia: eso le corresponde al psicólogo con formación clínica.
 
 ## Los cursos recomendados
@@ -18,14 +18,14 @@ La ansiedad y la depresión están entre los motivos de consulta más frecuentes
 
 En Edutin el curso se toma sin costo y el certificado es de pago. Revisa el temario y el precio vigente en la plataforma.
 
-Cursos gratuitos de Edvanta que complementan esta ruta:
+Cursos de Edvanta (primera unidad gratis) que complementan esta ruta:
 
 - [Psicofarmacología](/curso-de-psicofarmacologia): antidepresivos, ansiolíticos, antipsicóticos y estabilizadores del ánimo.
 - [Farmacología del Sistema Nervioso Central](/curso-de-farmacologia-del-sistema-nervioso-central): las bases para entender cómo actúan.
 - [Inteligencia Emocional](/curso-de-inteligencia-emocional): reconocer y manejar las propias emociones.
 - [Comunicación Asertiva](/curso-de-comunicacion-asertiva): hablar con pacientes en momentos difíciles.
 
-El contenido de Edvanta se estudia gratis; el certificado verificable es opcional y cuesta COP 60.000 por curso.
+En Edvanta, la primera unidad de cada curso es gratis; el curso completo con certificado verificable cuesta COP 60.000 en los primeros 7 días (lista: COP 199.000).
 
 ## Qué es la terapia cognitivo-conductual
 
@@ -99,7 +99,7 @@ Es uno de los enfoques psicológicos con más respaldo para ambas. La elección 
 
 ### ¿Qué curso sirve a un químico farmacéutico en salud mental?
 
-Psicofarmacología, gratuito en Edvanta, complementado con un curso de TCC para entender el tratamiento psicológico.
+Psicofarmacología, de Edvanta (primera unidad gratis), complementado con un curso de TCC para entender el tratamiento psicológico.
 
 ### ¿Qué hago si alguien habla de hacerse daño?
 

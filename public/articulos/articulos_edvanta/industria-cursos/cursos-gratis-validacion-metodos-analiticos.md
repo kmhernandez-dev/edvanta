@@ -1,11 +1,11 @@
-# Cursos gratis de validación de métodos analíticos: ICH Q2(R2) y Q14 explicadas
+# Cursos de validación de métodos analíticos: ICH Q2(R2) y Q14 explicadas
 
 Validar un método analítico es demostrar, con datos, que sirve para lo que se va a usar. Si un método de valoración no es exacto, el laboratorio puede liberar un lote subpotente sin saberlo. Por eso la validación es un requisito de las buenas prácticas de laboratorio y del registro sanitario, y es una de las competencias que más diferencian a un analista con experiencia de uno que apenas empieza.
 
 > **En resumen**
 >
 > - Desde 2023, la referencia internacional son ICH Q2(R2), sobre la validación, e ICH Q14, sobre el desarrollo de procedimientos analíticos, con un enfoque de ciclo de vida.
-> - En Edvanta estudias gratis Validación de Métodos Analíticos: 33 clases en cinco unidades, con diseño experimental, estadística y casos.
+> - En Edvanta empiezas gratis, con la primera unidad abierta, Validación de Métodos Analíticos: 33 clases en cinco unidades, con diseño experimental, estadística y casos.
 > - No todo método se valida completo: los métodos farmacopeicos se verifican y los transferidos se comparan.
 
 ## Validar, verificar o transferir
@@ -49,10 +49,10 @@ El curso de Edvanta dedica una unidad completa al diseño experimental y la esta
 
 | Curso | Dónde | Costo |
 |---|---|---|
-| [Validación de Métodos Analíticos](/curso-de-validacion-de-metodos-analiticos) | Aula Edvanta | Gratis; certificado opcional de COP 60.000 |
-| [Control de Calidad de Medicamentos](/curso-de-control-de-calidad-de-medicamentos) | Aula Edvanta | Gratis; certificado opcional de COP 60.000 |
-| [Estudios de Estabilidad de Medicamentos](/curso-de-estudios-de-estabilidad-de-medicamentos) | Aula Edvanta | Gratis; certificado opcional de COP 60.000 |
-| [Validaciones y Calificaciones](/curso-de-validaciones-y-calificaciones) | Aula Edvanta | Gratis; certificado opcional de COP 60.000 |
+| [Validación de Métodos Analíticos](/curso-de-validacion-de-metodos-analiticos) | Aula Edvanta | Primera unidad gratis; curso completo con certificado: COP 60.000 en los primeros 7 días (lista: COP 199.000) |
+| [Control de Calidad de Medicamentos](/curso-de-control-de-calidad-de-medicamentos) | Aula Edvanta | Primera unidad gratis; curso completo con certificado: COP 60.000 en los primeros 7 días (lista: COP 199.000) |
+| [Estudios de Estabilidad de Medicamentos](/curso-de-estudios-de-estabilidad-de-medicamentos) | Aula Edvanta | Primera unidad gratis; curso completo con certificado: COP 60.000 en los primeros 7 días (lista: COP 199.000) |
+| [Validaciones y Calificaciones](/curso-de-validaciones-y-calificaciones) | Aula Edvanta | Primera unidad gratis; curso completo con certificado: COP 60.000 en los primeros 7 días (lista: COP 199.000) |
 
 ## Cursos complementarios en otras plataformas
 
@@ -82,7 +82,7 @@ Un método indicador de estabilidad separa el principio activo de sus productos 
 
 ### ¿Hay cursos de validación de métodos analíticos gratis?
 
-Sí. En Edvanta, Validación de Métodos Analíticos se estudia gratis y en línea, con certificado verificable opcional por COP 60.000.
+Sí. En Edvanta, Validación de Métodos Analíticos se estudia en línea: la primera unidad es gratis y el curso completo con certificado verificable cuesta COP 60.000 en los primeros 7 días (lista: COP 199.000).
 
 ### ¿Qué guía rige la validación de métodos analíticos?
 

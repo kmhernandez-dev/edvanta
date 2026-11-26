@@ -1,12 +1,12 @@
-# Cursos de asuntos regulatorios farmacéuticos: gratis, online y con certificado
+# Cursos de asuntos regulatorios farmacéuticos: online y con certificado
 
 Ningún medicamento llega a una farmacia en Colombia sin un registro sanitario del INVIMA, y detrás de cada registro hay un profesional de asuntos regulatorios. Es el área que traduce la ciencia del producto al idioma de la autoridad sanitaria: arma el expediente, responde requerimientos, mantiene el registro vigente y vigila que cada cambio quede autorizado.
 
-En esta guía verás qué hace un profesional regulatorio, qué normas debes conocer, qué cursos de asuntos regulatorios existen (gratis en Edvanta y complementarios en otras plataformas) y cómo construir una ruta hacia el cargo.
+En esta guía verás qué hace un profesional regulatorio, qué normas debes conocer, qué cursos de asuntos regulatorios existen (en Edvanta, con la primera unidad gratis, y complementarios en otras plataformas) y cómo construir una ruta hacia el cargo.
 
 > **En resumen**
 >
-> - Edvanta tiene una de las líneas regulatorias más completas en español: registro sanitario, dossiers, requerimientos, etiquetado, modificaciones, renovaciones, bioequivalencia y productos especiales. Todos se estudian gratis; el certificado verificable cuesta COP 60.000.
+> - Edvanta tiene una de las líneas regulatorias más completas en español: registro sanitario, dossiers, requerimientos, etiquetado, modificaciones, renovaciones, bioequivalencia y productos especiales. Todos tienen la primera unidad gratis; el curso completo con certificado verificable cuesta COP 60.000 en los primeros 7 días (lista: COP 199.000).
 > - La base normativa en Colombia es el Decreto 677 de 1995, con sus modificaciones; se consulta siempre en el normograma del INVIMA.
 > - Para trabajar con mercados internacionales, aprende el formato CTD y los marcos de la FDA y la EMA.
 
@@ -31,9 +31,9 @@ Es un trabajo de **precisión y estrategia**: un error en un documento puede ret
 
 Las normas cambian. Antes de aplicar cualquier requisito, confirma el texto vigente en el normograma del INVIMA.
 
-## Cursos de asuntos regulatorios gratis en Edvanta
+## Cursos de asuntos regulatorios en Edvanta: primera unidad gratis
 
-Todos se estudian **gratis**, en línea y a tu ritmo, con casos, quices y foros. El certificado verificable cuesta COP 60.000 por curso, si lo quieres.
+Todos se empiezan **gratis** (la primera unidad de cada curso), en línea y a tu ritmo, con casos, quices y foros. El certificado verificable cuesta COP 60.000 por curso, si lo quieres.
 
 | Curso gratis | Para qué te sirve |
 |---|---|
@@ -93,7 +93,7 @@ Para trabajar con mercados internacionales o practicar el formato CTD en inglés
 
 ### ¿Dónde estudiar un curso de asuntos regulatorios gratis en Colombia?
 
-En Edvanta tienes más de diez cursos regulatorios gratis, desde el panorama general hasta productos especiales, en línea y a tu ritmo. El certificado verificable es opcional y cuesta COP 60.000 por curso.
+En Edvanta tienes más de diez cursos regulatorios con la primera unidad gratis, desde el panorama general hasta productos especiales, en línea y a tu ritmo. La primera unidad es gratis y el curso completo con certificado verificable cuesta COP 60.000 en los primeros 7 días (lista: COP 199.000).
 
 ### ¿Qué estudiar para trabajar en asuntos regulatorios?
 

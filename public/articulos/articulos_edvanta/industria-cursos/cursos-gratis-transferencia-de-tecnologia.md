@@ -1,4 +1,4 @@
-# Cursos gratis de transferencia de tecnología farmacéutica: cómo llevar un producto o un método de un sitio a otro
+# Cursos de transferencia de tecnología farmacéutica: cómo llevar un producto o un método de un sitio a otro
 
 Un medicamento se desarrolla en un laboratorio, se escala en una planta piloto y se fabrica en una planta comercial, que a veces está en otro país. Cada vez que el proceso o un método analítico pasa de un lugar a otro hay que demostrar que el sitio que lo recibe obtiene los mismos resultados. Ese trabajo se llama transferencia de tecnología, y es uno de los proyectos más complejos de la industria: combina desarrollo, producción, calidad, regulatorio y gestión de proyectos.
 
@@ -49,7 +49,7 @@ La guía **ICH Q10** sobre el sistema de calidad farmacéutica describe el ciclo
 
 ## Cursos de transferencia de tecnología
 
-En Edvanta, estos cursos gratuitos cubren las piezas que más se usan en una transferencia, con certificado opcional de COP 60.000:
+En Edvanta, estos cursos gratuitos cubren las piezas que más se usan en una transferencia, con la primera unidad gratis y certificado en el curso completo (COP 60.000 en los primeros 7 días (lista: COP 199.000)):
 
 - [Validaciones y Calificaciones](/curso-de-validaciones-y-calificaciones)
 - [Validación de Métodos Analíticos](/curso-de-validacion-de-metodos-analiticos)

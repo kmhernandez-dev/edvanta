@@ -29,6 +29,7 @@ import { caracteresDeExperiencia, faqDeExperiencia, htmlDeExperiencia, textoDeEx
 import { videosDeClase } from './videos-youtube.js';
 import { REVISION_DE_CLASES, fechaLarga, personaRevisora } from './revision-de-clases.js';
 import { htmlDeLecturasDeClase, lecturasDeClase, urlsAbsolutas } from './enlaces-de-salud.js';
+import { busquedasDeClase } from './keywords-clases.js';
 
 const esc = (t) => String(t ?? '')
   .replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;');
@@ -290,7 +291,10 @@ export function datosDeClase(datos, { canonical, cursoUrl, inicio }) {
     isAccessibleForFree: true,
     timeRequired: exp.duracion ? `PT${exp.duracion}M` : undefined,
     teaches: exp.objetivos?.map(sinMarcas),
-    keywords: exp.keywords?.length ? exp.keywords.join(', ') : undefined,
+    keywords: (() => {
+      const ks = [...new Set([...(exp.keywords || []), ...busquedasDeClase(rutaDeClase(datos.curso.slug, datos.clase.slug))])];
+      return ks.length ? ks.slice(0, 15).join(', ') : undefined;
+    })(),
     position: datos.numero,
     isPartOf: { '@type': 'Course', '@id': `${cursoUrl}#curso`, name: datos.curso.nombre, url: cursoUrl },
     provider: { '@type': 'Organization', name: 'Edvanta', url: inicio },

@@ -1,4 +1,4 @@
-# Cursos gratis de validación de limpieza: límites, muestreo y peor caso
+# Cursos de validación de limpieza: límites, muestreo y peor caso
 
 En una planta que fabrica varios productos en los mismos equipos, cada lote puede dejar restos para el siguiente. La validación de limpieza demuestra que el procedimiento de limpieza retira los residuos del producto anterior, de los agentes de limpieza y de los microorganismos hasta niveles seguros. Es una de las áreas donde más ha cambiado el criterio regulatorio en la última década, y por eso los cursos actualizados valen la pena.
 
@@ -6,7 +6,7 @@ En una planta que fabrica varios productos en los mismos equipos, cada lote pued
 >
 > - Los límites modernos se basan en la toxicología: los límites de exposición basados en la salud, conocidos como HBEL o PDE.
 > - El muestreo combina hisopado de superficies y enjuague, con estudios de recuperación que demuestran que el método encuentra el residuo.
-> - En Edvanta estudias gratis Validaciones y Calificaciones, que incluye la validación de limpieza.
+> - En Edvanta empiezas gratis, con la primera unidad abierta, Validaciones y Calificaciones, que incluye la validación de limpieza.
 
 ## De los criterios clásicos a los límites basados en la salud
 
@@ -45,9 +45,9 @@ Los análisis pueden ser específicos, como HPLC para el principio activo, o no 
 
 | Curso | Dónde | Costo |
 |---|---|---|
-| [Validaciones y Calificaciones](/curso-de-validaciones-y-calificaciones) | Aula Edvanta | Gratis; certificado opcional de COP 60.000 |
-| [Validación de Métodos Analíticos](/curso-de-validacion-de-metodos-analiticos) | Aula Edvanta | Gratis; certificado opcional de COP 60.000 |
-| [BPM en la Industria Farmacéutica](/curso-de-bpm-en-la-industria-farmaceutica) | Aula Edvanta | Gratis; certificado opcional de COP 60.000 |
+| [Validaciones y Calificaciones](/curso-de-validaciones-y-calificaciones) | Aula Edvanta | Primera unidad gratis; curso completo con certificado: COP 60.000 en los primeros 7 días (lista: COP 199.000) |
+| [Validación de Métodos Analíticos](/curso-de-validacion-de-metodos-analiticos) | Aula Edvanta | Primera unidad gratis; curso completo con certificado: COP 60.000 en los primeros 7 días (lista: COP 199.000) |
+| [BPM en la Industria Farmacéutica](/curso-de-bpm-en-la-industria-farmaceutica) | Aula Edvanta | Primera unidad gratis; curso completo con certificado: COP 60.000 en los primeros 7 días (lista: COP 199.000) |
 
 Para formar a un equipo completo, existe la [capacitación institucional en validaciones](/empresas/validaciones-y-calificaciones).
 
@@ -89,7 +89,7 @@ El hisopado toma la muestra directamente de una superficie definida. El enjuague
 
 ### ¿Hay un curso gratis de validación de limpieza?
 
-En Edvanta, Validaciones y Calificaciones incluye la validación de limpieza y se estudia gratis, con certificado verificable opcional por COP 60.000.
+En Edvanta, Validaciones y Calificaciones incluye la validación de limpieza y se estudia en línea: la primera unidad es gratis y el curso completo con certificado verificable cuesta COP 60.000 en los primeros 7 días (lista: COP 199.000).
 
 ### ¿Cada cuánto se revalida la limpieza?
 

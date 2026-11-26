@@ -5,7 +5,7 @@ Edutin Academy es una plataforma de cursos en línea en español con un modelo s
 > **En resumen**
 >
 > - Edutin sirve para sumar competencias transversales: calidad, auditoría, seguridad y salud en el trabajo, datos, Excel e inglés.
-> - Para temas propios del químico farmacéutico, como registro sanitario o BPM, los cursos gratuitos de Edvanta están hechos con normativa colombiana.
+> - Para temas propios del químico farmacéutico, como registro sanitario o BPM, los cursos de Edvanta (primera unidad gratis) están hechos con normativa colombiana.
 > - Elige pocos cursos y termínalos: dos certificados terminados valen más que diez inscripciones.
 
 ## Cómo funciona Edutin Academy
@@ -28,7 +28,7 @@ Un buen uso de Edutin es cubrir las habilidades que la universidad no siempre en
 | [Gestión del riesgo](/curso-de-gestion-del-riesgo) | — | Quien evalúa riesgos en procesos o proyectos |
 | [Gestión de proyectos](/curso-de-gestion-de-proyectos) | 6 semanas | Quien coordina proyectos, cambios o implementaciones |
 
-Edutin también tiene continuaciones como [Gestión de calidad II](/curso-de-gestion-de-calidad-ii) y [Auditoría II](/curso-de-auditoria-ii). Si trabajas en la industria farmacéutica, completa con los cursos gratuitos de Edvanta de [Gestión de Calidad Farmacéutica](/curso-de-gestion-de-calidad-farmaceutica) y [Auditoría de Calidad Farmacéutica](/curso-de-auditoria-de-calidad-farmaceutica), que aplican esos principios a las BPM.
+Edutin también tiene continuaciones como [Gestión de calidad II](/curso-de-gestion-de-calidad-ii) y [Auditoría II](/curso-de-auditoria-ii). Si trabajas en la industria farmacéutica, completa con los cursos de Edvanta (primera unidad gratis) de [Gestión de Calidad Farmacéutica](/curso-de-gestion-de-calidad-farmaceutica) y [Auditoría de Calidad Farmacéutica](/curso-de-auditoria-de-calidad-farmaceutica), que aplican esos principios a las BPM.
 
 ## Seguridad y salud en el trabajo y medio ambiente
 
@@ -89,7 +89,7 @@ Sirve como evidencia de formación complementaria en tu hoja de vida. No es un t
 
 ### ¿Qué cursos de Edutin le sirven a un químico farmacéutico?
 
-Los de gestión de calidad, auditoría, Lean Six Sigma, Excel, Power BI, seguridad y salud en el trabajo e inglés. Para normativa farmacéutica colombiana, los cursos gratuitos de Edvanta son más específicos.
+Los de gestión de calidad, auditoría, Lean Six Sigma, Excel, Power BI, seguridad y salud en el trabajo e inglés. Para normativa farmacéutica colombiana, los cursos de Edvanta (primera unidad gratis) son más específicos.
 
 ### ¿Cuánto tiempo toma un curso de Edutin?
 

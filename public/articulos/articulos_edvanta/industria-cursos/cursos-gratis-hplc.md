@@ -1,11 +1,11 @@
-# Cursos gratis de HPLC para químicos farmacéuticos: de la teoría al laboratorio
+# Cursos de HPLC para químicos farmacéuticos: de la teoría al laboratorio
 
 La cromatografía líquida de alta eficiencia (HPLC) es la técnica que más se usa en un laboratorio de control de calidad farmacéutico. Con ella se valora el principio activo, se cuantifican las impurezas y los productos de degradación, y se siguen los estudios de estabilidad. Por eso, en casi todas las vacantes de analista aparece la misma frase: «experiencia en HPLC». La buena noticia es que buena parte de lo que se necesita para manejar un cromatógrafo se puede aprender antes de tocarlo.
 
 > **En resumen**
 >
 > - Un curso de HPLC útil combina teoría (cómo separa la columna), cálculo (cómo se pasa del área del pico al porcentaje) y criterio (cuándo un cromatograma no es confiable).
-> - En Edvanta estudias gratis Control de Calidad de Medicamentos, con una unidad de técnicas instrumentales, y Validación de Métodos Analíticos.
+> - En Edvanta empiezas gratis, con la primera unidad abierta, Control de Calidad de Medicamentos, con una unidad de técnicas instrumentales, y Validación de Métodos Analíticos.
 > - La práctica con datos reales y la revisión de la aptitud del sistema son lo que más pesa en una entrevista.
 
 ## Cómo funciona un HPLC, en cinco piezas
@@ -41,9 +41,9 @@ Los criterios los fija el método o la monografía. El capítulo general de crom
 
 | Curso | Dónde | Costo |
 |---|---|---|
-| [Control de Calidad de Medicamentos](/curso-de-control-de-calidad-de-medicamentos) | Aula Edvanta | Gratis; certificado opcional de COP 60.000 |
-| [Validación de Métodos Analíticos](/curso-de-validacion-de-metodos-analiticos) | Aula Edvanta | Gratis; certificado opcional de COP 60.000 |
-| [Buenas Prácticas de Laboratorio — BPL](/curso-de-buenas-practicas-de-laboratorio-bpl) | Aula Edvanta | Gratis; certificado opcional de COP 60.000 |
+| [Control de Calidad de Medicamentos](/curso-de-control-de-calidad-de-medicamentos) | Aula Edvanta | Primera unidad gratis; curso completo con certificado: COP 60.000 en los primeros 7 días (lista: COP 199.000) |
+| [Validación de Métodos Analíticos](/curso-de-validacion-de-metodos-analiticos) | Aula Edvanta | Primera unidad gratis; curso completo con certificado: COP 60.000 en los primeros 7 días (lista: COP 199.000) |
+| [Buenas Prácticas de Laboratorio — BPL](/curso-de-buenas-practicas-de-laboratorio-bpl) | Aula Edvanta | Primera unidad gratis; curso completo con certificado: COP 60.000 en los primeros 7 días (lista: COP 199.000) |
 
 El curso de Control de Calidad de Medicamentos tiene 35 clases en cinco unidades, desde el marco normativo del laboratorio hasta los resultados fuera de especificación y la liberación analítica.
 
@@ -84,7 +84,7 @@ La guía [Claude para químicos farmacéuticos en control de calidad](/guia/clau
 
 ### ¿Dónde aprender HPLC gratis?
 
-En Edvanta estudias gratis Control de Calidad de Medicamentos y Validación de Métodos Analíticos, que cubren las técnicas instrumentales y la validación. El certificado verificable es opcional, por COP 60.000 cada uno.
+En Edvanta empiezas gratis, con la primera unidad abierta, Control de Calidad de Medicamentos y Validación de Métodos Analíticos, que cubren las técnicas instrumentales y la validación. El certificado verificable es opcional, por COP 60.000 cada uno.
 
 ### ¿Se puede aprender HPLC sin tener un equipo?
 

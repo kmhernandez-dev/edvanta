@@ -63,13 +63,13 @@ Y si quieres que una herramienta de inteligencia artificial te ayude a escribir 
 
 ## Excel en la gestión de calidad
 
-En el área de calidad, Excel suele ser la primera herramienta para llevar registros antes de que exista un software especializado. Si trabajas o quieres trabajar en calidad, estos cursos gratuitos de Edvanta te dan el contexto de lo que vas a registrar:
+En el área de calidad, Excel suele ser la primera herramienta para llevar registros antes de que exista un software especializado. Si trabajas o quieres trabajar en calidad, estos cursos de Edvanta (primera unidad gratis) te dan el contexto de lo que vas a registrar:
 
 - [Gestión de Desviaciones y CAPA](/curso-de-gestion-de-desviaciones-y-capa)
 - [Buenas Prácticas de Documentación Farmacéutica](/curso-de-buenas-practicas-de-documentacion-farmaceutica)
 - [Gestión de Riesgos en la Calidad Farmacéutica](/curso-de-gestion-de-riesgos-en-la-calidad-farmaceutica)
 
-El contenido se estudia gratis; el certificado verificable es opcional y cuesta COP 60.000 por curso. Una advertencia: cuando una hoja de cálculo se usa para decisiones de calidad en la industria farmacéutica, puede requerir controles y validación. La validación es la base de ese tema, y el curso gratuito de [Validaciones y Calificaciones](/curso-de-validaciones-y-calificaciones) la explica.
+La primera unidad de cada curso es gratis; el curso completo con certificado verificable cuesta COP 60.000 en los primeros 7 días (lista: COP 199.000). Una advertencia: cuando una hoja de cálculo se usa para decisiones de calidad en la industria farmacéutica, puede requerir controles y validación. La validación es la base de ese tema, y el curso gratuito de [Validaciones y Calificaciones](/curso-de-validaciones-y-calificaciones) la explica.
 
 ## Errores frecuentes en las hojas de Excel de salud
 

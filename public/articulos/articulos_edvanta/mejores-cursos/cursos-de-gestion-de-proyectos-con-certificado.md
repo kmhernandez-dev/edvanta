@@ -45,7 +45,7 @@ Si nunca has estudiado el tema, lee primero [qué es la gestión de proyectos y 
 | Abrir o ampliar un servicio farmacéutico | Cruza infraestructura, habilitación, talento humano y compras |
 | Conducir un ensayo clínico | Tiene reclutamiento, centros, comités de ética y monitoría |
 
-En estos proyectos, el riesgo regulatorio y de calidad pesa tanto como el cronograma. Por eso conviene combinar un curso de gestión de proyectos con cursos técnicos. Estos cursos gratuitos de Edvanta encajan bien:
+En estos proyectos, el riesgo regulatorio y de calidad pesa tanto como el cronograma. Por eso conviene combinar un curso de gestión de proyectos con cursos técnicos. Estos cursos de Edvanta (primera unidad gratis) encajan bien:
 
 - [Gestión de Riesgos en la Calidad Farmacéutica](/curso-de-gestion-de-riesgos-en-la-calidad-farmaceutica)
 - [Validaciones y Calificaciones](/curso-de-validaciones-y-calificaciones)
@@ -53,7 +53,7 @@ En estos proyectos, el riesgo regulatorio y de calidad pesa tanto como el cronog
 - [Liderazgo y Trabajo en Equipo](/curso-de-liderazgo-y-trabajo-en-equipo)
 - [Negociación y Persuasión](/curso-de-negociacion-y-persuasion)
 
-El contenido se estudia gratis; el certificado verificable es opcional y cuesta COP 60.000 por curso.
+La primera unidad de cada curso es gratis; el curso completo con certificado verificable cuesta COP 60.000 en los primeros 7 días (lista: COP 199.000).
 
 ## ¿Y la certificación PMP?
 

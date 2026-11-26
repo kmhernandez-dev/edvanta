@@ -6,7 +6,7 @@ Por eso un buen curso de hipertensión no es un repaso de fisiología: es una ac
 
 > **En resumen**
 >
-> - Para farmacoterapia de la hipertensión con casos: Farmacoterapia de la Hipertensión Arterial de Edvanta, gratuito y con certificado opcional.
+> - Para farmacoterapia de la hipertensión con casos: Farmacoterapia de la Hipertensión Arterial de Edvanta, con la primera unidad gratis y certificado en el curso completo.
 > - Para entender los mecanismos de los antihipertensivos y de los demás medicamentos del corazón: Farmacología Cardiovascular de Edvanta.
 > - Para complementar: los cursos de Electrocardiograma y de Farmacología cardiovascular de Edutin Academy, y Farmacoterapia de la Insuficiencia Cardíaca de Edvanta.
 
@@ -31,9 +31,9 @@ Antes de inscribirte, revisa si el programa incluye estos temas. Son los que má
 ## Cursos recomendados
 | Curso | Plataforma | Enfoque | Costo |
 |---|---|---|---|
-| [Farmacoterapia de la Hipertensión Arterial](/curso-de-farmacoterapia-de-la-hipertension-arterial) | Edvanta | Diagnóstico y metas, cada grupo de antihipertensivos, HTA resistente, poblaciones especiales, adherencia y farmacovigilancia; cada unidad cierra con un caso | Gratis; certificado opcional de COP 60.000 |
-| [Farmacología Cardiovascular](/curso-de-farmacologia-cardiovascular) | Edvanta | Antihipertensivos, insuficiencia cardiaca, cardiopatía isquémica y antiarrítmicos, con el riesgo cardiovascular en Colombia | Gratis; certificado opcional de COP 60.000 |
-| [Farmacoterapia de la Insuficiencia Cardíaca](/curso-de-farmacoterapia-de-la-insuficiencia-cardiaca) | Edvanta | El paso siguiente para quien atiende pacientes con hipertensión de larga evolución | Gratis; certificado opcional de COP 60.000 |
+| [Farmacoterapia de la Hipertensión Arterial](/curso-de-farmacoterapia-de-la-hipertension-arterial) | Edvanta | Diagnóstico y metas, cada grupo de antihipertensivos, HTA resistente, poblaciones especiales, adherencia y farmacovigilancia; cada unidad cierra con un caso | Primera unidad gratis; curso completo con certificado: COP 60.000 en los primeros 7 días (lista: COP 199.000) |
+| [Farmacología Cardiovascular](/curso-de-farmacologia-cardiovascular) | Edvanta | Antihipertensivos, insuficiencia cardiaca, cardiopatía isquémica y antiarrítmicos, con el riesgo cardiovascular en Colombia | Primera unidad gratis; curso completo con certificado: COP 60.000 en los primeros 7 días (lista: COP 199.000) |
+| [Farmacoterapia de la Insuficiencia Cardíaca](/curso-de-farmacoterapia-de-la-insuficiencia-cardiaca) | Edvanta | El paso siguiente para quien atiende pacientes con hipertensión de larga evolución | Primera unidad gratis; curso completo con certificado: COP 60.000 en los primeros 7 días (lista: COP 199.000) |
 | [Farmacología cardiovascular](/curso-de-farmacologia-cardiovascular-en-edutin) | Edutin Academy | Repaso general de los medicamentos cardiovasculares | Sin costo; el certificado es de pago |
 | [Electrocardiograma](/curso-de-electrocardiograma) | Edutin Academy | Lectura básica del electrocardiograma, útil para reconocer la hipertrofia y las arritmias | Sin costo; el certificado es de pago |
 | [Nutrición](/curso-de-nutricion) | Edutin Academy | Bases de alimentación para orientar sobre sal, potasio y patrón DASH | Sin costo; el certificado es de pago |

@@ -25,6 +25,7 @@ import { HeroCientifico } from '../../components/edvanta/heroes';
 import { EDVANTA_EMAIL } from '../../config/links';
 import { updatePageSeo } from '../../utils/seo';
 import { INDUSTRIA_CURSOS_50 } from '../../data/industriaCursos50';
+import { MATERIAS_QF } from '../../data/materiasQF';
 import {
   CURSOS_POR_AREA, HERRAMIENTAS_CARRERA, HTML_PARA_ENLAZAR, PREGUNTAS_RECURSOS, RECURSOS_ESTUDIANTES,
   TEXTO_PARA_ENLAZAR, TOTAL_CURSOS_GRATIS, URL_RECURSOS_ESTUDIANTES,
@@ -133,6 +134,26 @@ export default function RecursosEstudiantes() {
           </div>
         </Section>
 
+        <Section tone="white" id="materias">
+          <SectionHeading
+            eyebrow="Materias"
+            title="50 materias de Química Farmacéutica, con guía de estudio y recursos"
+            desc="Temas clave, preguntas frecuentes, exámenes y cursos para cada materia. El programa oficial lo define tu universidad."
+          />
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {MATERIAS_QF.map((m) => (
+              <article key={m.slug} className="ds-card bg-white p-5">
+                <p className="text-xs font-bold uppercase tracking-[.12em] text-edvanta-teal">{m.area}</p>
+                <h3 className="mt-1 font-display text-lg font-bold text-edvanta-deep">{m.nombre}</h3>
+                <p className="mt-2 text-sm leading-6 text-edvanta-muted">{m.descripcion}</p>
+                <div className="mt-4 flex flex-wrap gap-3 text-sm font-bold">
+                  <Link to={m.rutaQueEs} className="text-edvanta-blue hover:underline">Guía de estudio</Link>
+                  <Link to={m.rutaRecursos} className="text-edvanta-teal hover:underline">Recursos</Link>
+                </div>
+              </article>
+            ))}
+          </div>
+        </Section>
         <Section tone="lavender" bordered id="guias">
           <SectionHeading
             eyebrow="Guías de carrera"

@@ -1,14 +1,14 @@
-# Cursos de farmacología gratis y online para profesionales de la salud (2026)
+# Cursos de farmacología online para profesionales de la salud: opciones gratis y con certificado (2026)
 
 La farmacología es la base de todo lo que hace un profesional que trabaja con medicamentos: entender cómo actúan, por qué fallan, qué efectos adversos esperar y con qué interactúan. Por eso es también una de las materias que más conviene repasar después de graduarse. Esta guía reúne cursos de farmacología gratis, ordenados por sistema y por objetivo, con enlaces directos a los de Edutin Academy y Coursera.
 
 > **En resumen**
 >
-> - Edvanta tiene 12 cursos gratuitos de farmacología por sistemas y 4 de farmacoterapia, con certificado verificable opcional.
+> - Edvanta tiene 12 cursos de farmacología por sistemas y 4 de farmacoterapia: la primera unidad de cada uno es gratis y el curso completo con certificado verificable cuesta COP 60.000 en los primeros 7 días (lista: COP 199.000).
 > - Edutin Academy suma Farmacología clínica y Farmacología cardiovascular, que se toman sin costo.
 > - Para farmacocinética y biotecnológicos: los cursos de Coursera, en inglés.
 
-## Cursos gratuitos de Edvanta por sistema
+## Cursos de Edvanta (primera unidad gratis) por sistema
 
 | Sistema o tema | Curso gratuito |
 |---|---|
@@ -22,11 +22,11 @@ La farmacología es la base de todo lo que hace un profesional que trabaja con m
 | Respiratorio | [Farmacología Respiratoria](/curso-de-farmacologia-respiratoria) |
 | Oncología | [Farmacología Oncológica](/curso-de-farmacologia-oncologica), [Quimioterapia Antineoplásica](/curso-de-quimioterapia-antineoplasica), [Terapias Dirigidas](/curso-de-terapias-dirigidas-en-oncologia) e [Inmunoterapia Oncológica](/curso-de-inmunoterapia-oncologica) |
 
-El contenido completo se estudia gratis: clases, casos, quices y actividades. El certificado verificable es opcional y cuesta COP 60.000 por curso.
+El contenido completo se estudia gratis: clases, casos, quices y actividades. La primera unidad es gratis y el curso completo con certificado verificable cuesta COP 60.000 en los primeros 7 días (lista: COP 199.000).
 
 ## De la farmacología a la farmacoterapia
 
-Cuando ya dominas un sistema, el paso siguiente es aplicarlo a pacientes reales. Los cursos gratuitos de farmacoterapia de Edvanta trabajan con casos clínicos:
+Cuando ya dominas un sistema, el paso siguiente es aplicarlo a pacientes reales. Los cursos de farmacoterapia de Edvanta, con la primera unidad gratis, trabajan con casos clínicos:
 
 - [Farmacoterapia de la Hipertensión Arterial](/curso-de-farmacoterapia-de-la-hipertension-arterial)
 - [Farmacoterapia de la Diabetes](/curso-de-farmacoterapia-de-la-diabetes)
@@ -79,7 +79,7 @@ En Edvanta, con 12 cursos gratuitos de farmacología por sistemas y 4 de farmaco
 
 ### ¿Los cursos de farmacología de Edvanta dan certificado?
 
-Sí. El contenido es gratis y el certificado verificable es opcional, por COP 60.000 por curso.
+Sí. La primera unidad de cada curso es gratis; el curso completo con certificado verificable cuesta COP 60.000 en los primeros 7 días (lista: COP 199.000).
 
 ### ¿Qué diferencia hay entre farmacología y farmacoterapia?
 

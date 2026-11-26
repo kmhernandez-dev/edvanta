@@ -15,6 +15,7 @@ import {
 } from 'lucide-react';
 import GuiaRecomendada from '../../../components/curso/GuiaRecomendada';
 import { get, post } from '../../api';
+import { pedirAceptacion } from '../../../lib/aceptacionCompra';
 import { useAsync } from '../../hooks';
 import { Button } from '../../ui/Button';
 import { Alert, ErrorState, LoadingBlock } from '../../ui/States';
@@ -97,7 +98,9 @@ function PagoDelCertificado({ pago, courseId }) {
     setPagando(true);
     setError(null);
     try {
-      const res = await post('/me/checkout', { items: [{ id: `certificado-${courseId}` }], volverA: pathname });
+      // Aceptación expresa de los términos y del acceso inmediato (Ley 1480, art. 47).
+      if (!(await pedirAceptacion())) { setPagando(false); return; }
+      const res = await post('/me/checkout', { items: [{ id: `certificado-${courseId}` }], volverA: pathname, aceptaTerminos: true });
       if (res.initPoint) window.location.href = res.initPoint;
       else throw new Error('No se pudo abrir Mercado Pago. Intenta de nuevo.');
     } catch (err) {

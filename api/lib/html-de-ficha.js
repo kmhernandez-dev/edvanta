@@ -21,6 +21,7 @@
 
 import { descripcionDeCurso, resumenUtil } from './meta-seo.js';
 import { palabraClaveDe } from './seo-cursos-propios.js';
+import { busquedasDeCompra, buscanGratis } from './keywords-cursos.js';
 
 const esc = (t) => String(t ?? '')
   .replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;');
@@ -121,6 +122,17 @@ function preguntasDeBusqueda(ficha) {
       a: `${tamano ? `Tiene ${tamano}` : 'Tiene'}${horas ? `${tamano ? ', con' : ''} una duración de ${horas}` : ''}. Como avanzas a tu ritmo, tú decides cuántas clases haces por semana.`,
     });
   }
+  // «Curso de X gratis» es de las búsquedas de compra más frecuentes: se
+  // responde con lo que es cierto hoy (primera unidad gratis si el curso cobra).
+  if (buscanGratis(ficha.url)) {
+    const cobra = Number(ficha.certificado?.precio) > 0;
+    p.push({
+      q: `¿Hay ${el.replace(/^el /, 'un ')} gratis?`,
+      a: cobra
+        ? 'Puedes empezar gratis: al inscribirte estudias la primera unidad completa sin pagar. El curso completo, con certificado, acompañamiento por WhatsApp y revisión de actividades, es de pago.'
+        : 'Sí. El curso es gratis y el certificado no tiene costo.',
+    });
+  }
   if (ficha.queAprenderas?.length) {
     const xs = ficha.queAprenderas.slice(0, 3).map((t) => String(t).replace(/\.$/, '').trim());
     p.push({ q: `¿Qué aprendo en ${el}?`, a: `Entre otras cosas: ${xs.join('; ')}.` });
@@ -177,8 +189,9 @@ const seccion = (titulo, html) => (html ? `<section><h2>${esc(titulo)}</h2>${htm
  *  nombre       el título visible («Curso de …»)
  *  relacionados [{ slug, titulo }] de la misma área
  *  emisor       quién expide el certificado (EMISOR.nombre)
+ *  articulos    [{ slug, titulo }] de estudio del curso (articulos-de-cursos.js)
  */
-export function cuerpoDeCurso(ficha, { nombre, relacionados = [], emisor = 'Edvanta' } = {}) {
+export function cuerpoDeCurso(ficha, { nombre, relacionados = [], emisor = 'Edvanta', articulos = [] } = {}) {
   const propio = ficha.dondeSeEstudia === 'edvanta';
   const temario = (ficha.temario || []).filter((u) => u && u.title);
   const descripcion = propio ? parrafosDeHtml(ficha.descripcionHtml) : [];
@@ -215,6 +228,9 @@ export function cuerpoDeCurso(ficha, { nombre, relacionados = [], emisor = 'Edva
         `<p>${esc(certificado.nota)}</p>${certificado.condiciones ? `<p>${esc(certificado.condiciones)}</p>` : ''}`)
       : '',
     seccion('Preguntas frecuentes', preguntasDeCurso(ficha, emisor).map((p) => `<h3>${esc(p.q)}</h3><p>${esc(p.a)}</p>`).join('')),
+    articulos.length
+      ? seccion('Artículos para estudiar este curso', `<ul>${articulos.map((a) => `<li><a href="/articulos/${esc(a.slug)}">${esc(a.titulo)}</a></li>`).join('')}</ul>`)
+      : '',
     relacionados.length
       ? seccion('Cursos relacionados', `<ul>${relacionados.map((r) => `<li><a href="/${esc(r.slug)}">${esc(r.titulo)}</a></li>`).join('')}</ul>`)
       : '',
@@ -262,6 +278,9 @@ export function datosDeCurso(ficha, { nombre, canonical, imagen, horas }) {
     provider: { '@type': 'Organization', name: ficha.proveedor.nombre, ...(propio ? { sameAs: 'https://edvanta.co' } : {}) },
     ...(ficha.nivel ? { educationalLevel: ficha.nivel } : {}),
     ...(ficha.queAprenderas?.length ? { teaches: ficha.queAprenderas.slice(0, 12) } : {}),
+    ...(propio && (palabraClaveDe(ficha) || busquedasDeCompra(ficha.url).length)
+      ? { keywords: [...new Set([palabraClaveDe(ficha), ...busquedasDeCompra(ficha.url)].filter(Boolean).map((k) => k.toLowerCase()))].slice(0, 12).join(', ') }
+      : {}),
     // Estrellas en Google: solo con valoraciones reales y publicadas de
     // Edvanta, que la ficha muestra en «Valoraciones de estudiantes».
     ...(ficha.valoraciones?.total > 0 && ficha.valoraciones.promedio >= 1 ? {

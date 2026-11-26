@@ -1,4 +1,4 @@
-# Cursos gratis de formulación farmacéutica: preformulación, excipientes, clasificación biofarmacéutica y calidad por diseño
+# Cursos de formulación farmacéutica: preformulación, excipientes, clasificación biofarmacéutica y calidad por diseño
 
 La formulación convierte un principio activo en un medicamento que se puede tomar, que llega a donde tiene que llegar y que se mantiene estable hasta su fecha de vencimiento. La misma molécula puede fracasar o tener éxito según cómo se formule: una tableta que no se disuelve no sirve, aunque el principio activo sea excelente. Por eso la formulación es una de las áreas más técnicas y creativas del trabajo del químico farmacéutico, en la industria y en la elaboración magistral.
 
@@ -52,7 +52,7 @@ La guía **ICH Q8** propone empezar por el **perfil objetivo de calidad del prod
 
 ## Cursos de formulación farmacéutica
 
-En Edvanta, estos cursos gratuitos cubren piezas clave de la formulación, con certificado opcional de COP 60.000:
+En Edvanta, estos cursos gratuitos cubren piezas clave de la formulación, con la primera unidad gratis y certificado en el curso completo (COP 60.000 en los primeros 7 días (lista: COP 199.000)):
 
 - [BPE y Preparaciones Magistrales](/curso-de-bpe-y-preparaciones-magistrales): formulación en el servicio farmacéutico.
 - [Estudios de Estabilidad de Medicamentos](/curso-de-estudios-de-estabilidad-de-medicamentos)
@@ -100,7 +100,7 @@ Con estrategias como la micronización, la formación de sales, las dispersiones
 
 ### ¿Qué curso sirve para aprender formulación?
 
-Introduction to Pharmaceutics and Biopharmaceutics, en Udemy, junto con los cursos gratuitos de estabilidad y preparaciones magistrales de Edvanta.
+Introduction to Pharmaceutics and Biopharmaceutics, en Udemy, junto con los cursos de estabilidad y preparaciones magistrales de Edvanta (primera unidad gratis).
 
 ## Fuentes
 

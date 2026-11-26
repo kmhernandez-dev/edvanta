@@ -45,8 +45,11 @@ export function meRouter(deps = {}) {
     const siteUrl = process.env.SITE_URL || deps.siteUrl || 'https://edvanta.co';
     const apiUrl = process.env.API_URL || siteUrl;
     const crearPreferencia = deps.crearPreferencia || crearPreferenciaMercadoPago(process.env.MP_ACCESS_TOKEN);
+    // Comprar un curso exige la aceptación expresa de los términos y del
+    // inicio inmediato del acceso (checkout.js, Ley 1480 arts. 47 y 50).
     const pago = await iniciarPago(req.aula.db, req.aula.user, req.body?.items, {
       crearPreferencia, siteUrl, apiUrl, volverA: req.body?.volverA, pais: paisDeSolicitud(req),
+      aceptaTerminos: req.body?.aceptaTerminos === true, ip: req.ip || null,
     });
     res.status(201).json(pago);
   }));

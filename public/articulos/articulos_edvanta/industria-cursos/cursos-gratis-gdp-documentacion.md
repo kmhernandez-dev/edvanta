@@ -1,11 +1,11 @@
-# Cursos gratis de buenas prácticas de documentación (GDP): guía para químicos farmacéuticos
+# Cursos de buenas prácticas de documentación (GDP): guía para químicos farmacéuticos
 
 En la industria farmacéutica hay una frase que todos repiten: **lo que no está documentado, no pasó**. Las buenas prácticas de documentación (en inglés, *Good Documentation Practices*, GDP) son las reglas para que cada registro sea confiable: quién hizo qué, cuándo, con qué resultado y cómo se corrigió un error sin borrar la evidencia. Es una competencia que se evalúa en cada auditoría y en cada inspección.
 
 > **En resumen**
 >
 > - El principio que resume las GDP es ALCOA+: atribuible, legible, contemporáneo, original y exacto, más completo, consistente, perdurable y disponible.
-> - En Edvanta estudias gratis Buenas Prácticas de Documentación Farmacéutica; el certificado verificable es opcional.
+> - En Edvanta empiezas gratis, con la primera unidad abierta, Buenas Prácticas de Documentación Farmacéutica; el certificado verificable es opcional.
 > - Un error de documentación nunca se tacha hasta hacerlo ilegible ni se corrige con corrector: se corrige dejando rastro.
 
 ## Qué documentos maneja una empresa farmacéutica
@@ -30,7 +30,7 @@ Cada uno tiene un ciclo de vida: se redacta, se revisa, se aprueba, se distribuy
 
 Parecen detalles, pero son la base de la integridad de datos que revisan hoy las autoridades sanitarias.
 
-## Cursos de documentación gratis en Edvanta
+## Cursos de documentación en Edvanta: primera unidad gratis
 
 | Curso gratis | Para qué te sirve |
 |---|---|
@@ -93,7 +93,7 @@ Con una línea sobre el dato erróneo que lo deje legible, el dato correcto, la 
 
 ### ¿Hay cursos gratis de buenas prácticas de documentación?
 
-Sí. En Edvanta, Buenas Prácticas de Documentación Farmacéutica se estudia gratis, con certificado verificable opcional por COP 60.000.
+Sí. En Edvanta, Buenas Prácticas de Documentación Farmacéutica se estudia en línea: la primera unidad es gratis y el curso completo con certificado verificable cuesta COP 60.000 en los primeros 7 días (lista: COP 199.000).
 
 ### ¿Las GDP aplican también a sistemas electrónicos?
 

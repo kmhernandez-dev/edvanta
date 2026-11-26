@@ -1,4 +1,4 @@
-# Cursos gratis de Python para farmacia: análisis de datos, automatización y quimioinformática
+# Cursos de Python para farmacia: análisis de datos, automatización y quimioinformática
 
 Python es el lenguaje de programación más usado para analizar datos y automatizar tareas, y cada vez aparece más en las vacantes de la industria farmacéutica, la investigación clínica y la farmacoepidemiología. No hace falta ser ingeniero de software para aprovecharlo: con lo básico, un químico farmacéutico puede limpiar bases de datos, hacer estadística, generar gráficos e informes automáticos, y, si le interesa la investigación, trabajar con estructuras químicas.
 
@@ -32,7 +32,7 @@ El quinto paso es el que más enseña. Un buen primer proyecto: tomar los regist
 
 ## Un ejemplo de estabilidad
 
-En un estudio de estabilidad, el contenido del principio activo se mide a distintos tiempos. Con Python se puede ajustar una regresión, calcular el intervalo de confianza y estimar cuándo cruzaría el límite de especificación. La guía ICH Q1E describe la evaluación estadística de los datos de estabilidad, y el curso gratuito de [Estudios de Estabilidad de Medicamentos](/curso-de-estudios-de-estabilidad-de-medicamentos) de Edvanta explica el contexto regulatorio, con certificado opcional de COP 60.000.
+En un estudio de estabilidad, el contenido del principio activo se mide a distintos tiempos. Con Python se puede ajustar una regresión, calcular el intervalo de confianza y estimar cuándo cruzaría el límite de especificación. La guía ICH Q1E describe la evaluación estadística de los datos de estabilidad, y el curso gratuito de [Estudios de Estabilidad de Medicamentos](/curso-de-estudios-de-estabilidad-de-medicamentos) de Edvanta explica el contexto regulatorio: la primera unidad es gratis y el curso completo con certificado cuesta COP 60.000 en los primeros 7 días (lista: COP 199.000).
 
 ## Cursos de Python
 

@@ -389,6 +389,21 @@
   line-height: 1.35;
 }
 
+/* Unidad de pago (acceso-pago.js): se ve el video y el inicio de cada clase. */
+.aula-player-module__pago {
+  display: inline-block;
+  margin-left: 6px;
+  padding: 1px 8px;
+  border-radius: 999px;
+  background: var(--ds-navy-soft, #E8EEFB);
+  color: var(--ds-navy, #082E86);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  vertical-align: 1px;
+  white-space: nowrap;
+}
+
 .aula-player-module__count {
   flex-shrink: 0;
   color: var(--aula-muted);

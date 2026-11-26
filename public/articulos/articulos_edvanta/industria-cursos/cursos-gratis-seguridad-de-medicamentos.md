@@ -1,4 +1,4 @@
-# Cursos gratis de seguridad de medicamentos: errores de medicación, medicamentos de alto riesgo y uso seguro
+# Cursos de seguridad de medicamentos: errores de medicación, medicamentos de alto riesgo y uso seguro
 
 La mayoría de los daños por medicamentos no vienen de una reacción imprevisible, sino de algo que se pudo evitar: una dosis mal calculada, dos nombres parecidos que se confundieron, una interacción que nadie revisó o una indicación que el paciente no entendió. La seguridad de medicamentos es el conjunto de prácticas que previenen esos errores en todo el circuito: prescripción, transcripción, dispensación, preparación, administración y seguimiento. Es un campo donde el químico farmacéutico tiene un papel central, en el hospital, en la droguería y en la industria.
 
@@ -6,7 +6,7 @@ La mayoría de los daños por medicamentos no vienen de una reacción imprevisib
 >
 > - La seguridad de medicamentos se ocupa de prevenir errores de medicación y daños evitables; la farmacovigilancia, de detectar y evaluar los riesgos de los medicamentos.
 > - Los medicamentos de alto riesgo y los de nombre o aspecto parecido concentran buena parte de los errores graves.
-> - En Edvanta estudias gratis la farmacología que más se asocia a errores, como anticoagulantes, insulinas y psicofármacos, con certificado opcional.
+> - En Edvanta empiezas gratis, con la primera unidad abierta, la farmacología que más se asocia a errores, como anticoagulantes, insulinas y psicofármacos, con certificado opcional.
 
 ## Error de medicación, reacción adversa y evento adverso
 
@@ -50,15 +50,15 @@ En Colombia, la vigilancia de los medicamentos se organiza en el Programa Nacion
 
 ## Cursos de seguridad de medicamentos en Edvanta
 
-Los errores más graves se concentran en ciertos grupos de medicamentos. Estos cursos gratuitos de Edvanta los cubren:
+Los errores más graves se concentran en ciertos grupos de medicamentos. Estos cursos de Edvanta (primera unidad gratis) los cubren:
 
 | Curso | Por qué sirve para la seguridad | Costo |
 |---|---|---|
-| [Anticoagulantes y Antiagregantes](/curso-de-anticoagulantes-y-antiagregantes) | Sangrados, interacciones y reversión | Gratis; certificado opcional de COP 60.000 |
-| [Farmacoterapia de la Diabetes](/curso-de-farmacoterapia-de-la-diabetes) | Uso seguro de la insulina y la hipoglucemia | Gratis; certificado opcional de COP 60.000 |
-| [Psicofarmacología](/curso-de-psicofarmacologia) | Sedantes, antipsicóticos y riesgo de caídas | Gratis; certificado opcional de COP 60.000 |
-| [Central de Mezclas](/curso-de-central-de-mezclas) | Preparación segura de medicamentos estériles | Gratis; certificado opcional de COP 60.000 |
-| [Quimioterapia Antineoplásica](/curso-de-quimioterapia-antineoplasica) | Uno de los grupos de mayor riesgo | Gratis; certificado opcional de COP 60.000 |
+| [Anticoagulantes y Antiagregantes](/curso-de-anticoagulantes-y-antiagregantes) | Sangrados, interacciones y reversión | Primera unidad gratis; curso completo con certificado: COP 60.000 en los primeros 7 días (lista: COP 199.000) |
+| [Farmacoterapia de la Diabetes](/curso-de-farmacoterapia-de-la-diabetes) | Uso seguro de la insulina y la hipoglucemia | Primera unidad gratis; curso completo con certificado: COP 60.000 en los primeros 7 días (lista: COP 199.000) |
+| [Psicofarmacología](/curso-de-psicofarmacologia) | Sedantes, antipsicóticos y riesgo de caídas | Primera unidad gratis; curso completo con certificado: COP 60.000 en los primeros 7 días (lista: COP 199.000) |
+| [Central de Mezclas](/curso-de-central-de-mezclas) | Preparación segura de medicamentos estériles | Primera unidad gratis; curso completo con certificado: COP 60.000 en los primeros 7 días (lista: COP 199.000) |
+| [Quimioterapia Antineoplásica](/curso-de-quimioterapia-antineoplasica) | Uno de los grupos de mayor riesgo | Primera unidad gratis; curso completo con certificado: COP 60.000 en los primeros 7 días (lista: COP 199.000) |
 
 ## Cursos en otras plataformas
 

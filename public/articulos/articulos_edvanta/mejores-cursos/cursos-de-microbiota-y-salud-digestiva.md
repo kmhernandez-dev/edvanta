@@ -8,7 +8,7 @@ Esta guía ordena los cursos de microbiota, nutrición y digestivo que están en
 >
 > - Para empezar: Microbiota, de Edutin Academy, en español, con acceso sin costo y certificado de pago.
 > - Para completar la base nutricional: Nutrición y Nutrición avanzada, de Edutin.
-> - Para el mostrador y la clínica: Farmacología Gastrointestinal y Registro Sanitario de Suplementos Dietarios, de Edvanta, gratuitos.
+> - Para el mostrador y la clínica: Farmacología Gastrointestinal y Registro Sanitario de Suplementos Dietarios, de Edvanta, con la primera unidad gratis.
 > - Un curso corto no permite diagnosticar ni tratar enfermedades digestivas; para eso está el equipo de salud.
 
 ## Los cursos recomendados

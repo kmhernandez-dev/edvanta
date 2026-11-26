@@ -6,7 +6,7 @@ Muchas personas buscan un curso de nutrición por dos razones distintas. Unas qu
 >
 > - Para empezar: el curso Nutrición de Edutin Academy, en español, que se toma sin costo y tiene certificado de pago.
 > - Para profundizar: Nutrición avanzada y Nutrición infantil, también en Edutin.
-> - Para quien trabaja con medicamentos: suma los cursos gratuitos de farmacoterapia de Edvanta, donde la alimentación es parte del tratamiento.
+> - Para quien trabaja con medicamentos: suma los cursos de farmacoterapia de Edvanta (primera unidad gratis), donde la alimentación es parte del tratamiento.
 > - Un curso corto no te convierte en nutricionista dietista: el plan de alimentación de un paciente es responsabilidad de ese profesional.
 
 ## Los cursos de nutrición recomendados
@@ -41,14 +41,14 @@ En el mostrador, las preguntas sobre alimentación llegan todos los días: «¿m
 - **Toronja (pomelo):** interactúa con algunos medicamentos, como ciertas estatinas, porque aumenta su concentración en sangre.
 - **Metformina:** las molestias digestivas suelen disminuir si se toma con las comidas, según la indicación médica.
 
-Para esa parte, los cursos gratuitos de Edvanta complementan bien un curso de nutrición:
+Para esa parte, los cursos de Edvanta (primera unidad gratis) complementan bien un curso de nutrición:
 
 - [Farmacoterapia de la Diabetes](/curso-de-farmacoterapia-de-la-diabetes): tratamiento, metas y educación del paciente.
 - [Farmacoterapia de la Hipertensión Arterial](/curso-de-farmacoterapia-de-la-hipertension-arterial): el papel del sodio y del estilo de vida.
 - [Farmacología Endocrina](/curso-de-farmacologia-endocrina): tiroides, diabetes y otras hormonas.
 - [Registro Sanitario de Suplementos Dietarios](/curso-de-registro-sanitario-de-suplementos-dietarios): qué es legalmente un suplemento en Colombia y qué puede decir su etiqueta.
 
-El contenido completo de estos cursos se estudia gratis. El certificado verificable es opcional y cuesta COP 60.000 por curso.
+El contenido completo de estos cursos se estudia gratis. La primera unidad es gratis y el curso completo con certificado verificable cuesta COP 60.000 en los primeros 7 días (lista: COP 199.000).
 
 ## Nutrición para tu propia salud
 

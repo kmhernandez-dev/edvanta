@@ -1,4 +1,4 @@
-# Cursos gratis de calificación y validación de equipos: DQ, IQ, OQ y PQ
+# Cursos de calificación y validación de equipos: DQ, IQ, OQ y PQ
 
 Antes de fabricar o analizar un medicamento con un equipo, hay que demostrar que ese equipo es el adecuado, que está bien instalado, que funciona dentro de sus rangos y que rinde de forma consistente en el proceso real. Ese ejercicio se llama calificación, y es el primer paso de cualquier validación: un proceso no se puede validar en equipos sin calificar. Es una tarea en la que trabajan juntos calidad, ingeniería, mantenimiento y el usuario del equipo.
 
@@ -6,7 +6,7 @@ Antes de fabricar o analizar un medicamento con un equipo, hay que demostrar que
 >
 > - La calificación tiene cuatro etapas: de diseño (DQ), de instalación (IQ), de operación (OQ) y de desempeño (PQ).
 > - Calibrar y calificar no son lo mismo: la calibración ajusta y compara un instrumento de medición; la calificación demuestra que el equipo completo es apto para su uso.
-> - En Edvanta estudias gratis Validaciones y Calificaciones y Buenas Prácticas de Laboratorio, que incluye una unidad de equipos y metrología.
+> - En Edvanta empiezas gratis, con la primera unidad abierta, Validaciones y Calificaciones y Buenas Prácticas de Laboratorio, que incluye una unidad de equipos y metrología.
 
 ## Las cuatro etapas de la calificación
 
@@ -40,9 +40,9 @@ La Resolución 3619 de 2013 de BPL exige la calibración, la verificación del d
 
 | Curso | Dónde | Costo |
 |---|---|---|
-| [Validaciones y Calificaciones](/curso-de-validaciones-y-calificaciones) | Aula Edvanta | Gratis; certificado opcional de COP 60.000 |
-| [Buenas Prácticas de Laboratorio — BPL](/curso-de-buenas-practicas-de-laboratorio-bpl) | Aula Edvanta | Gratis; certificado opcional de COP 60.000 |
-| [Buenas Prácticas de Manufactura — BPM](/curso-de-buenas-practicas-de-manufactura-bpm) | Aula Edvanta | Gratis; certificado opcional de COP 60.000 |
+| [Validaciones y Calificaciones](/curso-de-validaciones-y-calificaciones) | Aula Edvanta | Primera unidad gratis; curso completo con certificado: COP 60.000 en los primeros 7 días (lista: COP 199.000) |
+| [Buenas Prácticas de Laboratorio — BPL](/curso-de-buenas-practicas-de-laboratorio-bpl) | Aula Edvanta | Primera unidad gratis; curso completo con certificado: COP 60.000 en los primeros 7 días (lista: COP 199.000) |
+| [Buenas Prácticas de Manufactura — BPM](/curso-de-buenas-practicas-de-manufactura-bpm) | Aula Edvanta | Primera unidad gratis; curso completo con certificado: COP 60.000 en los primeros 7 días (lista: COP 199.000) |
 
 Para formar a un equipo de planta o de laboratorio, Edvanta ofrece [capacitación institucional en validaciones y calificaciones](/empresas/validaciones-y-calificaciones).
 
@@ -90,7 +90,7 @@ Es la especificación de requisitos de usuario: el documento que describe lo que
 
 ### ¿Hay cursos gratis de calificación de equipos?
 
-Sí. En Edvanta, Validaciones y Calificaciones se estudia gratis, con certificado verificable opcional por COP 60.000.
+Sí. En Edvanta, Validaciones y Calificaciones se estudia en línea: la primera unidad es gratis y el curso completo con certificado verificable cuesta COP 60.000 en los primeros 7 días (lista: COP 199.000).
 
 ### ¿Cada cuánto se recalifica un equipo?
 

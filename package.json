@@ -11,6 +11,13 @@
     "test": "vitest run && vitest run --config vitest.api.config.js",
     "test:watch": "vitest",
     "test:api": "vitest run --config vitest.api.config.js",
+    "seo:keywords30k": "node scripts/generar-30000-keywords-comunidad-webinars.mjs",
+    "seo:blogs-cursos": "node scripts/generar-blogs-cursos.mjs",
+    "seo:keywords-cursos": "node scripts/generar-30000-keywords-cursos.mjs",
+    "seo:cursos": "node scripts/generar-blogs-cursos.mjs && node scripts/generar-30000-keywords-cursos.mjs",
+    "seo:vademecum1000": "node scripts/generar-1000-articulos-vademecum.mjs",
+    "seo:estudiantes1000": "node scripts/generar-1000-articulos-estudiantes.mjs",
+    "translate:br": "node scripts/traducir-edvanta-brasil.mjs",
     "predev": "node scripts/preparar-pdfjs.cjs",
     "prebuild": "node scripts/preparar-pdfjs.cjs",
     "postbuild": "node scripts/prerenderizar-articulos.mjs && node scripts/prerenderizar-paginas.mjs && node scripts/generar-sitemaps.mjs && node scripts/generar-feed.mjs"
@@ -43,6 +50,7 @@
   "devDependencies": {
     "@electric-sql/pglite": "^0.5.8",
     "@electric-sql/pglite-socket": "^0.2.11",
+    "@huggingface/transformers": "^4.3.2",
     "@tailwindcss/typography": "^0.5.20",
     "@testing-library/jest-dom": "^7.0.0",
     "@testing-library/react": "^16.3.2",

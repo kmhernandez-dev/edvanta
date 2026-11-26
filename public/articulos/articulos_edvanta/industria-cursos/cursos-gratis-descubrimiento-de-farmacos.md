@@ -1,4 +1,4 @@
-# Cursos gratis de descubrimiento de fármacos: blancos terapéuticos, cribado, optimización de líderes y herramientas computacionales
+# Cursos de descubrimiento de fármacos: blancos terapéuticos, cribado, optimización de líderes y herramientas computacionales
 
 Todo medicamento empieza con una pregunta: ¿qué proteína, gen o vía biológica, si la modificamos, cambia el curso de una enfermedad? El descubrimiento de fármacos es la etapa que va desde esa pregunta hasta una molécula candidata lista para los estudios preclínicos formales. Combina biología, química medicinal, farmacología y, cada vez más, herramientas computacionales e inteligencia artificial. Es un área con mucho atractivo para químicos farmacéuticos con vocación de investigación.
 
@@ -54,7 +54,7 @@ Si te interesa esta línea, la guía de [cursos gratis de Python para farmacia](
 
 > **Contenido editorial:** algunos enlaces son de afiliado. Edvanta no dicta esos cursos; confirma condiciones y certificado en cada plataforma.
 
-La farmacología es la base para entender por qué un blanco es relevante. Los cursos gratuitos de Edvanta de [Farmacología Oncológica](/curso-de-farmacologia-oncologica), [Terapias Dirigidas en Oncología](/curso-de-terapias-dirigidas-en-oncologia) y [Farmacología del Sistema Nervioso Central](/curso-de-farmacologia-del-sistema-nervioso-central) muestran cómo los mecanismos se convierten en tratamientos, con certificado opcional de COP 60.000.
+La farmacología es la base para entender por qué un blanco es relevante. Los cursos de Edvanta (primera unidad gratis) de [Farmacología Oncológica](/curso-de-farmacologia-oncologica), [Terapias Dirigidas en Oncología](/curso-de-terapias-dirigidas-en-oncologia) y [Farmacología del Sistema Nervioso Central](/curso-de-farmacologia-del-sistema-nervioso-central) muestran cómo los mecanismos se convierten en tratamientos: la primera unidad es gratis y el curso completo con certificado cuesta COP 60.000 en los primeros 7 días (lista: COP 199.000).
 
 ## Un ejemplo del camino
 

@@ -99,7 +99,10 @@ function Outline({ snapshot, currentId, lessonHref, lessonState, onNavigate, res
           <details key={m.id} open={enCurso} className="aula-player-module">
             <summary>
               <span className="aula-player-module__num">{String(mi + 1).padStart(2, '0')}</span>
-              <span className="aula-player-module__title">Unidad {mi + 1}. {tituloDeUnidad(m.title)}</span>
+              <span className="aula-player-module__title">
+                Unidad {mi + 1}. {tituloDeUnidad(m.title)}
+                {m.requierePago && <span className="aula-player-module__pago">Curso completo</span>}
+              </span>
               <span className="aula-player-module__count">{hechas}/{m.lessons.length}</span>
               <ChevronDown className="aula-player-module__chevron h-4 w-4" aria-hidden="true" />
             </summary>

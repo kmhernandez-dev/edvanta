@@ -7,7 +7,7 @@ En salud, muchas personas llegan a dirigir un equipo porque eran buenas en lo t�
 > - Para contratar y desarrollar a tu equipo: Gestión del talento humano y Técnicas de reclutamiento, en Edutin Academy.
 > - Para pensar a mediano plazo: Planeación estratégica I y II, en Edutin.
 > - Para conducir cambios sin perder al equipo: Gestión del cambio organizacional y Comunicación interna.
-> - Para liderar personas: los cursos gratuitos de Liderazgo y Trabajo en Equipo e Inteligencia Emocional de Edvanta.
+> - Para liderar personas: los cursos de Liderazgo y Trabajo en Equipo e Inteligencia Emocional de Edvanta, con la primera unidad gratis.
 
 ## Los cursos recomendados
 
@@ -23,9 +23,9 @@ En salud, muchas personas llegan a dirigir un equipo porque eran buenas en lo t�
 
 En Edutin el curso se toma sin costo y el certificado es de pago. Revisa el temario y el precio vigente en la plataforma.
 
-## Los cursos gratuitos de Edvanta para liderar personas
+## Los cursos de Edvanta (primera unidad gratis) para liderar personas
 
-Las herramientas de gestión funcionan solo si el líder sabe relacionarse con su equipo. Estos cursos gratuitos de Edvanta trabajan esa parte:
+Las herramientas de gestión funcionan solo si el líder sabe relacionarse con su equipo. Estos cursos de Edvanta (primera unidad gratis) trabajan esa parte:
 
 - [Liderazgo y Trabajo en Equipo](/curso-de-liderazgo-y-trabajo-en-equipo)
 - [Inteligencia Emocional](/curso-de-inteligencia-emocional)
@@ -33,7 +33,7 @@ Las herramientas de gestión funcionan solo si el líder sabe relacionarse con s
 - [Negociación y Persuasión](/curso-de-negociacion-y-persuasion)
 - [Oratoria](/curso-de-oratoria)
 
-El contenido se estudia gratis; el certificado verificable es opcional y cuesta COP 60.000 por curso.
+La primera unidad de cada curso es gratis; el curso completo con certificado verificable cuesta COP 60.000 en los primeros 7 días (lista: COP 199.000).
 
 ## Lo que cambia cuando pasas de lo técnico a dirigir
 
@@ -57,7 +57,7 @@ Algunas tareas de gestión de personas son particularmente sensibles en salud:
 - **Cultura de reporte:** un equipo que teme reportar un error lo esconde, y el error se repite.
 - **Retención:** perder a una persona entrenada cuesta tiempo, dinero y continuidad.
 
-El curso gratuito de [Buenas Prácticas de Documentación Farmacéutica](/curso-de-buenas-practicas-de-documentacion-farmaceutica) de Edvanta ayuda con la parte de registros de entrenamiento.
+El curso de [Buenas Prácticas de Documentación Farmacéutica](/curso-de-buenas-practicas-de-documentacion-farmaceutica) de Edvanta (primera unidad gratis) ayuda con la parte de registros de entrenamiento.
 
 ## Planeación estratégica para un servicio de salud
 
@@ -115,4 +115,4 @@ Es el conjunto de prácticas para implementar cambios en una organización con m
 
 ### ¿Los cursos de liderazgo de Edvanta tienen certificado?
 
-Sí. El contenido es gratis y el certificado verificable es opcional, por COP 60.000 por curso.
+Sí. La primera unidad de cada curso es gratis; el curso completo con certificado verificable cuesta COP 60.000 en los primeros 7 días (lista: COP 199.000).

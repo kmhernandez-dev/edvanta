@@ -91,7 +91,9 @@ export async function resolverCarrito(db, user, rawItems, ctx = {}) {
       if (pago.estado === 'pagado') throw new AulaError(409, 'certificado_pagado', `Ya pagaste el certificado de «${curso.title}». Quítalo del carrito.`);
       items.push({
         id,
-        title: `Certificado · ${curso.title}`.slice(0, 250),
+        // Desde el 20-nov-2026 este pago abre el curso completo y su
+        // certificado (acceso-pago.js).
+        title: `Curso completo con certificado · ${curso.title}`.slice(0, 250),
         quantity: 1,
         unit_price: pago.precio,
         currency_id: 'COP',
@@ -112,14 +114,32 @@ export async function resolverCarrito(db, user, rawItems, ctx = {}) {
 const rutaSegura = (r) => (typeof r === 'string' && /^\/(?![/\\])[\w\-/.%~]*$/.test(r) ? r : '/');
 
 /**
+ * Versión de los términos que acepta quien compra un curso. Cambia la
+ * fecha cuando cambien los términos o la política de retracto
+ * (src/data/legal.js).
+ */
+export const VERSION_TERMINOS = '2026-11-24';
+
+/** Lo que acepta, de forma expresa, quien compra un curso (Ley 1480, arts. 47 y 50). */
+export const TEXTO_ACEPTACION = 'Acepto los términos y condiciones y pido que el acceso al curso empiece de inmediato. Entiendo que, por eso, no aplica el derecho de retracto (Ley 1480 de 2011, art. 47, num. 1).';
+
+/**
  * Crea la preferencia de pago y deja los certificados como pendientes.
  * `crearPreferencia` es null cuando Mercado Pago no está configurado.
+ *
+ * Comprar un curso exige `aceptaTerminos`: la aceptación expresa de los
+ * términos y del inicio inmediato del acceso (sin ella aplicaría el
+ * retracto de 5 días hábiles). Queda en la nota del pago y en la
+ * bitácora, que no admite cambios: así es verificable.
  */
-export async function iniciarPago(db, user, rawItems, { crearPreferencia, siteUrl, apiUrl, volverA, pais = null } = {}) {
+export async function iniciarPago(db, user, rawItems, { crearPreferencia, siteUrl, apiUrl, volverA, pais = null, aceptaTerminos = false, ip = null } = {}) {
   if (!crearPreferencia) {
     throw new AulaError(503, 'pagos_inactivos', 'El pago en línea aún no está activo. Escríbenos por WhatsApp y te ayudamos a completar la compra.');
   }
   const { items, certificados, productos } = await resolverCarrito(db, user, rawItems, { pais });
+  if (certificados.length && aceptaTerminos !== true) {
+    throw badRequest('Para comprar el curso, acepta los términos y que el acceso empiece de inmediato.', { field: 'aceptaTerminos' });
+  }
   const externalReference = randomUUID();
   const volver = rutaSegura(volverA);
   const url = (estado) => `${siteUrl}${volver}${volver.includes('?') ? '&' : '?'}pago=${estado}`;
@@ -139,13 +159,21 @@ export async function iniciarPago(db, user, rawItems, { crearPreferencia, siteUr
   });
   const total = items.reduce((s, i) => s + i.unit_price * i.quantity, 0);
 
+  const aceptacion = `Términos ${VERSION_TERMINOS} aceptados el ${new Date().toISOString()}: ${TEXTO_ACEPTACION}`;
   await db.tx(async (tx) => {
     for (const c of certificados) {
-      await tx.query(
-        `INSERT INTO aula_certificate_payments (user_id, course_id, status, source, amount, external_reference)
-         VALUES ($1, $2, 'pendiente', 'mercadopago', $3, $4)`,
-        [user.id, c.courseId, c.precio, externalReference],
+      const fila = await one(
+        tx,
+        `INSERT INTO aula_certificate_payments (user_id, course_id, status, source, amount, external_reference, note)
+         VALUES ($1, $2, 'pendiente', 'mercadopago', $3, $4, $5)
+         RETURNING id`,
+        [user.id, c.courseId, c.precio, externalReference, aceptacion.slice(0, 500)],
       );
+      await audit(tx, {
+        actor: user, action: 'pago.aceptacion', entityType: 'certificado', entityId: fila?.id ?? null, courseId: c.courseId,
+        summary: `Compra del curso (${pesos(c.precio)}): ${TEXTO_ACEPTACION}`.slice(0, 500),
+        after: { version: VERSION_TERMINOS, referencia: externalReference }, ip,
+      });
     }
   });
   // La orden es el mismo registro que usa la tienda; si falla, el pago

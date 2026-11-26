@@ -1,12 +1,12 @@
-# Cursos de control de calidad farmacéutico: gratis, online y con certificado
+# Cursos de control de calidad farmacéutico: online y con certificado
 
 En control de calidad nadie te pregunta si conoces la teoría del HPLC; te entregan un cromatograma y te preguntan **si el lote cumple**. Por eso los mejores cursos de control de calidad farmacéutico no se quedan en conceptos: te ponen a calcular, a interpretar resultados y a decidir qué hacer cuando un dato no cuadra.
 
-Aquí encontrarás qué aprender para trabajar en un laboratorio de análisis, qué cursos existen (gratis en Edvanta y complementarios en otras plataformas) y una ruta práctica para llegar a tu primera entrevista con algo concreto que mostrar.
+Aquí encontrarás qué aprender para trabajar en un laboratorio de análisis, qué cursos existen (en Edvanta, con la primera unidad gratis, y complementarios en otras plataformas) y una ruta práctica para llegar a tu primera entrevista con algo concreto que mostrar.
 
 > **En resumen**
 >
-> - En Edvanta estudias gratis Control de Calidad de Medicamentos, Validación de Métodos Analíticos, Buenas Prácticas de Laboratorio y Estudios de Estabilidad. El certificado verificable es opcional: COP 60.000.
+> - En Edvanta empiezas gratis, con la primera unidad abierta, Control de Calidad de Medicamentos, Validación de Métodos Analíticos, Buenas Prácticas de Laboratorio y Estudios de Estabilidad. El certificado verificable es opcional: COP 60.000.
 > - Lo que más se evalúa en entrevistas: cálculos farmacopeicos, cromatografía, validación de métodos, estabilidad e investigaciones fuera de especificación.
 > - La integridad de datos ya no es un tema de sistemas: es responsabilidad de cada analista.
 
@@ -31,9 +31,9 @@ Un buen analista no solo ejecuta: **revisa sus propios datos con escepticismo**.
 - **Farmacopeas:** las monografías y capítulos generales (por ejemplo, de la Farmacopea de los Estados Unidos) son la referencia de ensayos y límites.
 - **Integridad de datos (ALCOA+):** los resultados deben ser atribuibles, legibles, contemporáneos, originales y exactos, con trazabilidad completa en los sistemas cromatográficos.
 
-## Cursos de control de calidad farmacéutico gratis en Edvanta
+## Cursos de control de calidad farmacéutico en Edvanta: primera unidad gratis
 
-Estos cursos se estudian **gratis** en el aula de Edvanta, en línea y a tu ritmo, con casos, quices y foros. El certificado verificable cuesta COP 60.000 por curso, si lo quieres.
+Estos cursos se empiezan **gratis** (la primera unidad de cada curso) en el aula de Edvanta, en línea y a tu ritmo, con casos, quices y foros. El certificado verificable cuesta COP 60.000 por curso, si lo quieres.
 
 | Curso gratis | Para qué te sirve |
 |---|---|
@@ -97,7 +97,7 @@ Hazlos primero a mano o en una hoja de cálculo. Si después usas inteligencia a
 
 ### ¿Hay cursos de control de calidad farmacéutico gratis con certificado?
 
-Sí. En Edvanta los cursos de control de calidad se estudian gratis y el certificado verificable es opcional, por COP 60.000 por curso. En otras plataformas, el acceso gratuito y el certificado dependen de cada una.
+Sí. En Edvanta la primera unidad de los cursos de control de calidad es gratis y el curso completo con certificado verificable cuesta COP 60.000 en los primeros 7 días (lista: COP 199.000). En otras plataformas, el acceso gratuito y el certificado dependen de cada una.
 
 ### ¿Qué debo aprender primero: HPLC o validación de métodos?
 

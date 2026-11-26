@@ -1,4 +1,4 @@
-# Cursos gratis de CSV y GAMP 5: validación de sistemas computarizados
+# Cursos de CSV y GAMP 5: validación de sistemas computarizados
 
 Hoy casi todo en una empresa farmacéutica pasa por un software: el cromatógrafo, el sistema de gestión del laboratorio, el ERP que controla inventarios, el sistema de gestión documental o la balanza conectada a la red. La validación de sistemas computarizados (CSV, por sus siglas en inglés) demuestra que esos sistemas hacen lo que deben, de forma confiable, y que protegen la integridad de los datos. Es un campo donde se cruzan la calidad y la tecnología, con buena demanda y pocos perfiles que entiendan ambos mundos.
 
@@ -6,7 +6,7 @@ Hoy casi todo en una empresa farmacéutica pasa por un software: el cromatógraf
 >
 > - GAMP 5, de la ISPE, es la guía de referencia; su segunda edición se publicó en 2022 y refuerza el pensamiento crítico y el enfoque basado en riesgos.
 > - El esfuerzo de validación se ajusta según la categoría del software y el impacto del sistema en el paciente, el producto y los datos.
-> - En Edvanta estudias gratis Validaciones y Calificaciones y Buenas Prácticas de Documentación Farmacéutica como base para el CSV.
+> - En Edvanta empiezas gratis, con la primera unidad abierta, Validaciones y Calificaciones y Buenas Prácticas de Documentación Farmacéutica como base para el CSV.
 
 ## Qué sistemas se validan
 
@@ -52,9 +52,9 @@ En Colombia, las BPM y las BPL exigen que los sistemas que generan o conservan r
 
 | Curso | Dónde | Costo |
 |---|---|---|
-| [Validaciones y Calificaciones](/curso-de-validaciones-y-calificaciones) | Aula Edvanta | Gratis; certificado opcional de COP 60.000 |
-| [Buenas Prácticas de Documentación Farmacéutica](/curso-de-buenas-practicas-de-documentacion-farmaceutica) | Aula Edvanta | Gratis; certificado opcional de COP 60.000 |
-| [Gestión de Riesgos en la Calidad Farmacéutica](/curso-de-gestion-de-riesgos-en-la-calidad-farmaceutica) | Aula Edvanta | Gratis; certificado opcional de COP 60.000 |
+| [Validaciones y Calificaciones](/curso-de-validaciones-y-calificaciones) | Aula Edvanta | Primera unidad gratis; curso completo con certificado: COP 60.000 en los primeros 7 días (lista: COP 199.000) |
+| [Buenas Prácticas de Documentación Farmacéutica](/curso-de-buenas-practicas-de-documentacion-farmaceutica) | Aula Edvanta | Primera unidad gratis; curso completo con certificado: COP 60.000 en los primeros 7 días (lista: COP 199.000) |
+| [Gestión de Riesgos en la Calidad Farmacéutica](/curso-de-gestion-de-riesgos-en-la-calidad-farmaceutica) | Aula Edvanta | Primera unidad gratis; curso completo con certificado: COP 60.000 en los primeros 7 días (lista: COP 199.000) |
 
 ## Cursos de CSV en otras plataformas
 
@@ -94,7 +94,7 @@ Las categorías 1 (infraestructura), 3 (software no configurado), 4 (software co
 
 ### ¿Hay cursos de CSV gratis?
 
-En Edvanta puedes empezar gratis con Validaciones y Calificaciones y Buenas Prácticas de Documentación Farmacéutica, con certificado verificable opcional por COP 60.000 cada uno.
+En Edvanta puedes empezar gratis con Validaciones y Calificaciones y Buenas Prácticas de Documentación Farmacéutica, con la primera unidad gratis y certificado verificable en el curso completo (COP 60.000 en los primeros 7 días (lista: COP 199.000)) cada uno.
 
 ### ¿Un químico farmacéutico puede trabajar en CSV?
 

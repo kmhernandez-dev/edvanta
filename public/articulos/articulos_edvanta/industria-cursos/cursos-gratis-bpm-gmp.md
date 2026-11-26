@@ -1,11 +1,11 @@
-# Cursos gratis de BPM y GMP: guía para químicos farmacéuticos
+# Cursos de BPM y GMP: guía para químicos farmacéuticos
 
 BPM (Buenas Prácticas de Manufactura) y GMP (*Good Manufacturing Practices*) son lo mismo dicho en dos idiomas: el conjunto de requisitos que garantiza que un medicamento se fabrique siempre con la misma calidad. Es probablemente la formación más pedida en la industria farmacéutica, desde el operario de una línea hasta el director técnico. Si vas a trabajar en una planta, un curso de BPM no es opcional: es la puerta de entrada.
 
 > **En resumen**
 >
 > - En Colombia, los manuales de BPM para medicamentos los establece la Resolución 1160 de 2016, con un manual general y otro para estériles.
-> - En Edvanta estudias gratis el Curso de Buenas Prácticas de Manufactura, además de BPL y BPE, con certificado verificable opcional.
+> - En Edvanta empiezas gratis, con la primera unidad abierta, el Curso de Buenas Prácticas de Manufactura, además de BPL y BPE, con certificado verificable opcional.
 > - Las BPM no se aprenden memorizando: se aprenden entendiendo el riesgo que evita cada requisito.
 
 ## Qué cubren las BPM
@@ -25,7 +25,7 @@ La Resolución 1160 de 2016 del Ministerio de Salud y Protección Social adoptó
 
 Las BPM tienen familia: las **Buenas Prácticas de Laboratorio (BPL)** para los laboratorios de análisis y las **Buenas Prácticas de Elaboración (BPE)** para las preparaciones magistrales y las centrales de mezclas de los servicios farmacéuticos.
 
-## Cursos de BPM gratis en Edvanta
+## Cursos de BPM en Edvanta: primera unidad gratis
 
 | Curso gratis | Para qué te sirve |
 |---|---|
@@ -71,7 +71,7 @@ Las BPM son la base; lo que te diferencia en una entrevista es lo que construyes
 
 - **Control de calidad:** sigue con [Control de Calidad de Medicamentos](/curso-de-control-de-calidad-de-medicamentos) y con la [validación de métodos analíticos](/curso-de-validacion-de-metodos-analiticos).
 - **Aseguramiento de la calidad:** suma [documentación farmacéutica](/curso-de-buenas-practicas-de-documentacion-farmaceutica) y [desviaciones y CAPA](/curso-de-gestion-de-desviaciones-y-capa).
-- **Producción:** profundiza en [BPM en la industria farmacéutica](/curso-de-bpm-en-la-industria-farmaceutica), un curso gratis de Edvanta con criterio de inspección y preparación de visitas del INVIMA, y en [validaciones y calificaciones](/curso-de-validaciones-y-calificaciones), también gratis.
+- **Producción:** profundiza en [BPM en la industria farmacéutica](/curso-de-bpm-en-la-industria-farmaceutica), un curso de Edvanta con la primera unidad gratis con criterio de inspección y preparación de visitas del INVIMA, y en [validaciones y calificaciones](/curso-de-validaciones-y-calificaciones), también gratis.
 
 Con dos o tres de estos cursos y un ejemplo concreto de tu experiencia, tu perfil deja de ser «conozco las BPM» y pasa a ser «sé aplicarlas».
 
@@ -79,7 +79,7 @@ Con dos o tres de estos cursos y un ejemplo concreto de tu experiencia, tu perfi
 
 ### ¿Dónde hacer un curso de BPM gratis con certificado?
 
-En Edvanta, el Curso de Buenas Prácticas de Manufactura se estudia gratis y el certificado verificable es opcional, por COP 60.000. Otras plataformas tienen sus propias condiciones.
+En Edvanta, el Curso de Buenas Prácticas de Manufactura se estudia en línea: la primera unidad es gratis y el curso completo con certificado verificable cuesta COP 60.000 en los primeros 7 días (lista: COP 199.000). Otras plataformas tienen sus propias condiciones.
 
 ### ¿BPM y GMP son lo mismo?
 

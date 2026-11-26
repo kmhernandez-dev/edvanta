@@ -1,4 +1,4 @@
-# Cursos gratis de estudios de estabilidad de medicamentos: guía para Colombia
+# Cursos de estudios de estabilidad de medicamentos: guía para Colombia
 
 La fecha de vencimiento de un medicamento no se inventa: sale de un estudio de estabilidad. Ese estudio demuestra cuánto tiempo conserva el producto su calidad bajo las condiciones de almacenamiento declaradas. En Colombia, además, la estabilidad es una pieza central del registro sanitario ante el INVIMA, de sus renovaciones y de muchos cambios posteriores. Es un tema donde se cruzan el laboratorio y los asuntos regulatorios, y por eso abre puertas en ambas áreas.
 
@@ -6,7 +6,7 @@ La fecha de vencimiento de un medicamento no se inventa: sale de un estudio de e
 >
 > - Colombia está en la zona climática IVb de la OMS: las condiciones de largo plazo son 30 °C ± 2 °C y 75 % ± 5 % de humedad relativa.
 > - La Resolución 3157 de 2018 es la guía de estabilidad para medicamentos de síntesis química, y la Resolución 3690 de 2016, la de medicamentos biológicos.
-> - En Edvanta estudias gratis Estudios de Estabilidad de Medicamentos: 33 clases sobre normativa, protocolo, estadística y requerimientos del INVIMA.
+> - En Edvanta empiezas gratis, con la primera unidad abierta, Estudios de Estabilidad de Medicamentos: 33 clases sobre normativa, protocolo, estadística y requerimientos del INVIMA.
 
 ## Por qué Colombia es zona IVb
 
@@ -48,10 +48,10 @@ La vida útil se asigna analizando la tendencia de los resultados en el tiempo. 
 
 | Curso | Dónde | Costo |
 |---|---|---|
-| [Estudios de Estabilidad de Medicamentos](/curso-de-estudios-de-estabilidad-de-medicamentos) | Aula Edvanta | Gratis; certificado opcional de COP 60.000 |
-| [Validación de Métodos Analíticos](/curso-de-validacion-de-metodos-analiticos) | Aula Edvanta | Gratis; certificado opcional de COP 60.000 |
-| [Registro Sanitario de Medicamentos ante el INVIMA](/curso-de-registro-sanitario-de-medicamentos-ante-el-invima) | Aula Edvanta | Gratis; certificado opcional de COP 60.000 |
-| [Renovación de Registros Sanitarios de Medicamentos](/curso-de-renovacion-de-registros-sanitarios-de-medicamentos) | Aula Edvanta | Gratis; certificado opcional de COP 60.000 |
+| [Estudios de Estabilidad de Medicamentos](/curso-de-estudios-de-estabilidad-de-medicamentos) | Aula Edvanta | Primera unidad gratis; curso completo con certificado: COP 60.000 en los primeros 7 días (lista: COP 199.000) |
+| [Validación de Métodos Analíticos](/curso-de-validacion-de-metodos-analiticos) | Aula Edvanta | Primera unidad gratis; curso completo con certificado: COP 60.000 en los primeros 7 días (lista: COP 199.000) |
+| [Registro Sanitario de Medicamentos ante el INVIMA](/curso-de-registro-sanitario-de-medicamentos-ante-el-invima) | Aula Edvanta | Primera unidad gratis; curso completo con certificado: COP 60.000 en los primeros 7 días (lista: COP 199.000) |
+| [Renovación de Registros Sanitarios de Medicamentos](/curso-de-renovacion-de-registros-sanitarios-de-medicamentos) | Aula Edvanta | Primera unidad gratis; curso completo con certificado: COP 60.000 en los primeros 7 días (lista: COP 199.000) |
 
 ## Curso complementario en otra plataforma
 
@@ -81,7 +81,7 @@ La zona IVb de la OMS. Según la Resolución 3157 de 2018, las condiciones de la
 
 ### ¿Hay un curso de estudios de estabilidad gratis?
 
-Sí. En Edvanta, Estudios de Estabilidad de Medicamentos se estudia gratis y en línea, con certificado verificable opcional por COP 60.000.
+Sí. En Edvanta, Estudios de Estabilidad de Medicamentos se estudia en línea: la primera unidad es gratis y el curso completo con certificado verificable cuesta COP 60.000 en los primeros 7 días (lista: COP 199.000).
 
 ### ¿Qué diferencia hay entre estabilidad acelerada y natural?
 

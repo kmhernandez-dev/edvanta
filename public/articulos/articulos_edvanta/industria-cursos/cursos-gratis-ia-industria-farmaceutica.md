@@ -1,4 +1,4 @@
-# Cursos gratis de inteligencia artificial en la industria farmacéutica: usos reales, regulación y riesgos
+# Cursos de inteligencia artificial en la industria farmacéutica: usos reales, regulación y riesgos
 
 La inteligencia artificial ya está en todas las etapas de la vida de un medicamento: ayuda a descubrir moléculas, a diseñar ensayos clínicos, a detectar defectos en una línea de producción, a revisar documentos y a encontrar señales de farmacovigilancia. Las autoridades sanitarias también se están organizando para evaluar cómo se usa. Esta guía resume los usos más extendidos en la industria, lo que dicen las agencias y los cursos que sirven para formarte con criterio.
 
@@ -56,7 +56,7 @@ Para aprender a usar estos asistentes, revisa la guía de [cursos de inteligenci
 
 > **Contenido editorial:** algunos enlaces son de afiliado. Edvanta no dicta esos cursos; confirma condiciones y certificado en cada plataforma.
 
-Para el lado de la calidad, los cursos gratuitos de Edvanta de [Gestión de Riesgos en la Calidad Farmacéutica](/curso-de-gestion-de-riesgos-en-la-calidad-farmaceutica) y [Validaciones y Calificaciones](/curso-de-validaciones-y-calificaciones) dan la base para evaluar y validar sistemas, con certificado opcional de COP 60.000. Y si quieres programar tus propios análisis, revisa la guía de [cursos gratis de Python para farmacia](/articulos/cursos-gratis-python-para-farmacia).
+Para el lado de la calidad, los cursos de Edvanta (primera unidad gratis) de [Gestión de Riesgos en la Calidad Farmacéutica](/curso-de-gestion-de-riesgos-en-la-calidad-farmaceutica) y [Validaciones y Calificaciones](/curso-de-validaciones-y-calificaciones) dan la base para evaluar y validar sistemas: la primera unidad es gratis y el curso completo con certificado cuesta COP 60.000 en los primeros 7 días (lista: COP 199.000). Y si quieres programar tus propios análisis, revisa la guía de [cursos gratis de Python para farmacia](/articulos/cursos-gratis-python-para-farmacia).
 
 ## Errores frecuentes
 

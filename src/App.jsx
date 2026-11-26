@@ -79,6 +79,11 @@ const HojaDeVidaCrear = lazy(() => import('./pages/HojaDeVidaCrear'));
 const CorreosRRHH = lazy(() => import('./pages/empleo/CorreosRRHH'));
 const BuscarPage = lazy(() => import('./pages/BuscarPage'));
 const ComunidadPage = lazy(() => import('./pages/ComunidadPage'));
+const ComunidadTemas = lazy(() => import('./pages/ComunidadTemas'));
+const ComunidadCluster = lazy(() => import('./pages/ComunidadCluster'));
+const ComunidadTema = lazy(() => import('./pages/ComunidadTema'));
+const WebinarsIndex = lazy(() => import('./pages/WebinarsIndex'));
+const WebinarDetalle = lazy(() => import('./pages/WebinarDetalle'));
 const ComunidadesIndex = lazy(() => import('./pages/ComunidadesIndex'));
 const ComunidadDetalle = lazy(() => import('./pages/ComunidadDetalle'));
 const ExamenesIndex = lazy(() => import('./pages/ExamenesIndex'));
@@ -313,8 +318,13 @@ export default function App() {
         {/* Buscador global del ecosistema Edvanta */}
         <Route path="/buscar" element={<BuscarPage />} />
 
-        {/* Landing de la comunidad QF */}
+        {/* Comunidad QF: hub, rutas de contenido y webinars */}
         <Route path="/comunidad" element={<ComunidadPage />} />
+        <Route path="/comunidad/temas" element={<ComunidadTemas />} />
+        <Route path="/comunidad/temas/:cluster" element={<ComunidadCluster />} />
+        <Route path="/comunidad/temas/:cluster/:tema" element={<ComunidadTema />} />
+        <Route path="/webinars" element={<WebinarsIndex />} />
+        <Route path="/webinars/:slug" element={<WebinarDetalle />} />
 
         {/* Una comunidad por enfermedad (pacientes y cuidadores) */}
         <Route path="/comunidades" element={<ComunidadesIndex />} />

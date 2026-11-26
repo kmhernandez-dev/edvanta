@@ -54,7 +54,7 @@ Claude Code puede escribir ese código y explicarlo. Pero la responsabilidad sig
 - **No pongas datos de pacientes** en herramientas que tu institución no haya autorizado. En Colombia, los datos de salud son datos sensibles según la Ley 1581 de 2012.
 - **Trabaja con datos de prueba** o anonimizados mientras desarrollas.
 - **Revisa cada cambio** antes de aceptarlo, sobre todo los que borran archivos o tocan sistemas en producción.
-- **Valida antes de usar en decisiones reguladas:** en la industria farmacéutica, un sistema computarizado que soporta decisiones de calidad puede requerir validación. El curso gratuito de [Validaciones y Calificaciones](/curso-de-validaciones-y-calificaciones) de Edvanta da la base.
+- **Valida antes de usar en decisiones reguladas:** en la industria farmacéutica, un sistema computarizado que soporta decisiones de calidad puede requerir validación. El curso de [Validaciones y Calificaciones](/curso-de-validaciones-y-calificaciones) de Edvanta (primera unidad gratis) da la base.
 - **Guarda tu trabajo en un repositorio** con historial de cambios.
 
 ## Claude Code, Claude y la API: cuál es cuál

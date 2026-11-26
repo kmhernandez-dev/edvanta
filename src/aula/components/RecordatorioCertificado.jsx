@@ -72,7 +72,7 @@ export default function RecordatorioCertificado({
     try {
       await pagarCertificado(courseId, volverA);
     } catch (err) {
-      setError(err);
+      if (!err?.cancelado) setError(err);
       setPagando(false);
     }
   };

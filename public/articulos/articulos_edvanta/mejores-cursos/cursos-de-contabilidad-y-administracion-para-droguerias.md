@@ -9,7 +9,7 @@ Esta guía reúne los cursos de contabilidad, administración, inventarios y pla
 > - Para entender los números: Contabilidad financiera, de Edutin Academy, en español.
 > - Para ordenar la operación: Asistente administrativo y Planeación estratégica, también de Edutin.
 > - Para el inventario y la compra: IA para control de inventarios y almacén, y Excel.
-> - Para el criterio farmacéutico: los cursos gratis de Edvanta sobre servicio farmacéutico y calidad.
+> - Para el criterio farmacéutico: los cursos de Edvanta sobre servicio farmacéutico y calidad, con la primera unidad gratis.
 
 ## Los cursos recomendados
 
@@ -50,7 +50,7 @@ El curso de IA para control de inventarios y almacén muestra cómo las herramie
 
 Una droguería no es un negocio cualquiera. En Colombia, el servicio farmacéutico se rige por la Resolución 1403 de 2007 y por las normas de medicamentos, y el establecimiento debe cumplir condiciones de almacenamiento, dispensación y vigilancia. Un administrador que solo mira la contabilidad puede tomar decisiones que comprometen la calidad del medicamento y la habilitación del servicio.
 
-Por eso conviene combinar la formación administrativa con la farmacéutica. Los cursos gratuitos de Edvanta sobre operación segura del servicio farmacéutico, calidad y BPM dan el contexto que un curso de contabilidad no cubre.
+Por eso conviene combinar la formación administrativa con la farmacéutica. Los cursos de Edvanta (primera unidad gratis) sobre operación segura del servicio farmacéutico, calidad y BPM dan el contexto que un curso de contabilidad no cubre.
 
 ## En qué orden estudiar
 

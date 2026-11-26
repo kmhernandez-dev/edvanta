@@ -70,6 +70,24 @@ npm install
 node --check server.js
 ```
 
+SEO de cursos (500 blogs + 30.000 keywords):
+
+```bash
+npm.cmd run seo:cursos
+```
+
+SEO de vademécum, cursos y comunidades (1.000 artículos):
+
+```bash
+npm.cmd run seo:vademecum1000
+```
+
+SEO para estudiantes y materias de Química Farmacéutica (1.000 artículos):
+
+```bash
+npm.cmd run seo:estudiantes1000
+```
+
 Windows note: use `npm.cmd` if PowerShell blocks `npm.ps1`.
 
 ## Key Files
@@ -89,6 +107,31 @@ Windows note: use `npm.cmd` if PowerShell blocks `npm.ps1`.
 | `src/components/fstApp/*` | FST App shell, sections and tools |
 | `src/pages/FstAppPortal.jsx` | FST App portal (routes under `/fst-app/*`) |
 | `src/data/edvanta/contigo.js` | Edvanta Contigo content: six routes, needs, tools, plans, FAQ, professional network state |
+| `src/data/edvanta/comunidadWebinars.js` | Community clusters, 26 practical guides and 12 webinars with honest "date to be confirmed" state |
+| `src/pages/ComunidadPage.jsx` | `/comunidad` hub: WhatsApp community, topics, webinars and funnel CTAs |
+| `src/pages/ComunidadTemas.jsx`, `ComunidadCluster.jsx`, `ComunidadTema.jsx` | `/comunidad/temas` index, area hubs and topic pages |
+| `src/pages/WebinarsIndex.jsx`, `WebinarDetalle.jsx` | `/webinars` cycle and session pages with registration CTAs |
+| `src/data/articulosComunidadWebinars.js` + `public/articulos/articulos_edvanta/comunidad-farmaceutica/*` | 10 campaign articles (community, webinars, careers, institutions) |
+| `src/data/blogCursos500.js` | 500 course-recommendation articles (8 editorial angles per Aula course, 500 total) |
+| `public/articulos/articulos_edvanta/cursos-recomendados/*` | 500 markdown articles (minimum 3,000 characters) linked to each course |
+| `scripts/generar-blogs-cursos.mjs` | Builds the 500 articles from the real Aula syllabus and writes `blogCursos500.js` |
+| `scripts/generar-30000-keywords-cursos.mjs` | Builds 30,000 course keywords, class queries and GEO questions mapped to real URLs |
+| `seo/keywords-30000-cursos.csv` | 30,000 keywords for the 63 Aula courses and 500 blogs |
+| `seo/plan-30000-keywords-cursos.md` | Campaign plan, funnel, editorial rules and measurement |
+| `src/data/vademecumArticulos1000.js` | 1,000 articles: 500 vademécum, 378 course + vademécum, 115 patient communities, 7 hubs |
+| `public/articulos/articulos_edvanta/vademecum/*` | 500 vademécum study articles based on the reviewed monographs |
+| `public/articulos/articulos_edvanta/cursos-comunidades/*` | 500 course/community articles and hubs |
+| `scripts/generar-1000-articulos-vademecum.mjs` | Builds the 1,000 articles from reviewed monographs, Aula courses and communities |
+| `scripts/lib/vademecum-1000-datos.mjs` + `vademecum-1000-angulos.mjs` | Course/monograph/community data, angles and content builders |
+| `src/__tests__/vademecum-1000-articulos.test.jsx` | 1,000 articles, coverage, links, no dose units, similarity |
+| `src/data/estudiantesArticulos1000.js` + `materiasQF.js` | 1,000 student articles: 500 course-exam guides and 500 subject guides (50 subjects) |
+| `public/articulos/articulos_edvanta/estudiantes-cursos/*` | 500 course guides for exams, glossary, 7-day plan, portfolio and evidence |
+| `public/articulos/articulos_edvanta/materias-qf/*` | 500 subject guides with FAQs, resources, exams and career paths |
+| `scripts/generar-1000-articulos-estudiantes.mjs` + `scripts/lib/estudiantes-1000-*.mjs` | Student/subject generator and content builders |
+| `src/__tests__/estudiantes-1000-articulos.test.jsx` | 1,000 articles, 50 subjects, course/subject coverage, links, no dose units, similarity |
+| `scripts/generar-30000-keywords-comunidad-webinars.mjs` | Builds the 30,000-keyword CSV, deduped against `seo/*.csv` and mapped to real URLs |
+| `seo/keywords-30000-comunidad-webinars.csv` | 30,000 keywords with audience, intent, funnel stage, CTA and destination URL |
+| `seo/plan-30000-comunidad-webinars.md` | Campaign plan, funnel map and operating rules |
 | `src/pages/contigo/*` | Contigo public pages, Mi cuidado, interest, plans, network and placeholders |
 | `src/components/contigo/ContigoPieces.jsx` | Contigo cards, status chips and illustrative Mi cuidado visual |
 | `src/styles/contigo.css` | Contigo visual tokens and route-card image crops |
@@ -149,6 +192,9 @@ Frontend:
 - `/academia/retos` (Retos FST catalog)
 - `/academia/retos/:slug` (challenge detail)
 - `/academia/retos/:slug/dia/:dayNumber` (day page with video + check-in)
+- `/comunidad` (community hub for pharmaceutical chemists)
+- `/comunidad/temas`, `/comunidad/temas/:cluster`, `/comunidad/temas/:cluster/:tema` (26 practical guides)
+- `/webinars`, `/webinars/:slug` (12 sessions; dates to be confirmed, no invented prices)
 - `/atenfarmaclinic`
 - `/privacidad`
 - `/terminos`
@@ -197,6 +243,34 @@ Backend:
 - No professional profiles are invented. `CONTIGO_PROFESIONALES` stays empty until verified professionals exist.
 - Public pages are prerendered in `scripts/prerenderizar-paginas.mjs`; plans, interest, profiles, Mi cuidado and professional/operation placeholders are `noindex`.
 - Route-card photos are cropped with CSS so the text baked into the source images is not shown; titles remain real HTML text.
+
+## Blogs de cursos y keywords
+
+- 500 artículos en `public/articulos/articulos_edvanta/cursos-recomendados/`, registrados en `src/data/blogCursos500.js` y publicados en `/articulos/<slug>`.
+- 8 ángulos por curso del Aula (59 cursos con 8; 4 con 7 para totalizar 500): guía de estudio, para qué sirve, temario, plan de 30 días, errores, aplicación, preguntas frecuentes y curso o autoaprendizaje.
+- Todo el contenido se deriva del inventario real (`docs/auditoria-aula/inventario.json`): unidades, clases, nivel, público y conteos. No se inventan precios, fechas, cupos ni Referencias.
+- Cada artículo enlaza su ficha `/curso-de-…` y artículos hermanos. La primera unidad gratis y el certificado se mencionan solo como los declara la ficha.
+- `seo/keywords-30000-cursos.csv` contiene 30.000 keywords únicas mapeadas a 500 blogs y 63 fichas; `seo/plan-30000-keywords-cursos.md` explica el embudo y el uso.
+- Control reproducible: `src/__tests__/seo-500-blogs-cursos.test.jsx` (500 artículos, mínimo 3.000 caracteres, enlaces reales, similitud, CSV y URLs).
+- Los artículos son borradores editoriales generados: revisar antes de una campaña pagada. La similitud media es baja, pero la decisión final de indexar es editorial.
+
+## Vademécum, cursos y comunidades (1.000 artículos)
+
+- 1.000 artículos en `public/articulos/articulos_edvanta/vademecum/` y `cursos-comunidades/`, registrados en `src/data/vademecumArticulos1000.js`.
+- Distribución: 500 de vademécum (3 ángulos por cada una de las 152 monografías revisadas + 44 artículos para comunidades), 378 de cursos integrados con vademécum y comunidad, 115 de comunidades de pacientes (5 por cada una de las 23) y 7 hubs.
+- Los artículos de vademécum usan las secciones reales de las monografías revisadas. Las cifras de dosis se omiten a propósito y el texto enlaza a `/vademecum/<slug>`; no son una prescripción.
+- Los artículos de cursos y comunidades usan las clases reales del Aula, las monografías, los artículos revisados y las reglas de cada comunidad. No se inventan miembros, testimonios, precios ni recomendaciones clínicas.
+- Control reproducible: `src/__tests__/vademecum-1000-articulos.test.jsx` (1.000, cobertura, enlaces, mínimo 3.000 caracteres, sin unidades de dosis y similitud).
+- Son borradores editoriales generados: revisar antes de una campaña pagada. La fuente clínica es la monografía revisada, no el artículo.
+
+## Estudiantes y materias de Química Farmacéutica (1.000 artículos)
+
+- 1.000 artículos en `public/articulos/articulos_edvanta/estudiantes-cursos/` y `materias-qf/`, registrados en `src/data/estudiantesArticulos1000.js`.
+- Distribución: 500 artículos de cursos (63 cursos del Aula × 8 ángulos; 59 con 8 y 4 con 7 para totalizar 500) y 500 de materias (50 materias × 10 ángulos: qué es, temario, cómo estudiar, FAQ, glosario, errores, examen, recursos, salidas y plan de 30 días).
+- `src/data/materiasQF.js` alimenta la sección de materias de `/recursos-para-estudiantes-de-quimica-farmaceutica` y el HTML prerenderizado. El programa oficial de cada universidad sigue siendo la referencia; estos artículos son apoyo de estudio.
+- `api/data/articulos-de-cursos.json` incluye los 500 artículos de cursos para que cada ficha `/curso-de-…` los enlace de vuelta. Regenerar con `node scripts/generar-articulos-de-cursos.mjs`.
+- Control reproducible: `src/__tests__/estudiantes-1000-articulos.test.jsx` (1.000, 50 materias, cobertura, enlaces, mínimo 3.000 caracteres, sin unidades de dosis y similitud).
+- Son borradores editoriales generados: revisar antes de una campaña pagada.
 
 ## Payment Flow
 

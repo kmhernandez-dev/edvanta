@@ -19,6 +19,10 @@ import { INDUSTRIA_CURSOS_50 } from './industriaCursos50.js';
 import { REVISION_CLINICA } from './revisionClinica.js';
 import { NOTICIAS_REESCRITAS } from './noticiasReescritas.js';
 import { BLOG_MEJORES_CURSOS } from './blogMejoresCursos.js';
+import { ARTICULOS_COMUNIDAD_WEBINARS } from './articulosComunidadWebinars.js';
+import { BLOG_CURSOS_500 } from './blogCursos500.js';
+import { VADEMECUM_ARTICULOS_1000 } from './vademecumArticulos1000.js';
+import { ESTUDIANTES_ARTICULOS_1000 } from './estudiantesArticulos1000.js';
 
 const BASE = '/articulos/articulos_edvanta';
 
@@ -1495,6 +1499,10 @@ const ARTICULOS_BASE = [
   ...legacyArticulos,
   ...edvantaArticulos,
   ...INDUSTRIA_CURSOS_50,
+  ...ARTICULOS_COMUNIDAD_WEBINARS,
+  ...BLOG_CURSOS_500,
+  ...VADEMECUM_ARTICULOS_1000,
+  ...ESTUDIANTES_ARTICULOS_1000,
 ];
 const FST50_SLUGS = new Set(ARTICULOS_FST50.map((a) => a.slug));
 

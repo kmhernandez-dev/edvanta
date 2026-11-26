@@ -21,6 +21,7 @@ import { useCart } from '../context/CartContext';
 import { formatPrice } from '../utils/format';
 import { waLink } from '../config/links';
 import { apiUrl } from '../config/api';
+import { pedirAceptacion } from '../lib/aceptacionCompra';
 import { precioDelCertificado } from '../lib/misCursos';
 
 const ID_CERTIFICADO = /^certificado-(\d+)$/;
@@ -110,6 +111,8 @@ export default function CartDrawer() {
     setPaying(true);
     setPayError('');
     setPideCuenta(false);
+    // Un curso en el carrito pide la aceptación expresa de los términos (Ley 1480, art. 47).
+    if (tieneCertificados && !(await pedirAceptacion())) { setPaying(false); return; }
     try {
       const res = tieneCertificados
         ? await fetch(apiUrl('/api/aula/me/checkout'), {
@@ -117,7 +120,7 @@ export default function CartDrawer() {
           credentials: 'include',
           // El aula solo acepta cambios que traen esta cabecera (protección CSRF).
           headers: { 'content-type': 'application/json', 'X-Aula-Request': '1' },
-          body: JSON.stringify({ items: items.map((i) => ({ id: i.id, qty: i.qty })), volverA: '/aula' }),
+          body: JSON.stringify({ items: items.map((i) => ({ id: i.id, qty: i.qty })), volverA: '/aula', aceptaTerminos: true }),
         })
         : await fetch(apiUrl('/api/create-preference'), {
           method: 'POST',

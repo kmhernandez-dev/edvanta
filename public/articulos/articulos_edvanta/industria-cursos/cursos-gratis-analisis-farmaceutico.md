@@ -1,4 +1,4 @@
-# Cursos gratis de análisis farmacéutico: técnicas, farmacopeas y carrera
+# Cursos de análisis farmacéutico: técnicas, farmacopeas y carrera
 
 El análisis farmacéutico es la disciplina que responde una pregunta sencilla: ¿este medicamento es lo que dice ser, en la cantidad que dice tener y con la calidad que debe tener? Para responderla se combinan técnicas clásicas, como la volumetría, con técnicas instrumentales, como la espectroscopía y la cromatografía. Es la base del trabajo en control de calidad, en desarrollo analítico y en laboratorios externos de análisis.
 
@@ -6,7 +6,7 @@ El análisis farmacéutico es la disciplina que responde una pregunta sencilla: 
 >
 > - Un análisis farmacéutico completo verifica identidad, contenido, pureza y desempeño de la forma farmacéutica.
 > - Las monografías de las farmacopeas, como la USP y la Farmacopea Europea, dicen qué pruebas hacer y con qué criterios.
-> - En Edvanta estudias gratis Control de Calidad de Medicamentos, con unidades de especificaciones, farmacopeas y técnicas instrumentales.
+> - En Edvanta empiezas gratis, con la primera unidad abierta, Control de Calidad de Medicamentos, con unidades de especificaciones, farmacopeas y técnicas instrumentales.
 
 ## Las cuatro preguntas de todo análisis
 
@@ -47,10 +47,10 @@ El resultado de un análisis no termina en el cuaderno del analista. Pasa por un
 
 | Curso | Dónde | Costo |
 |---|---|---|
-| [Control de Calidad de Medicamentos](/curso-de-control-de-calidad-de-medicamentos) | Aula Edvanta | Gratis; certificado opcional de COP 60.000 |
-| [Validación de Métodos Analíticos](/curso-de-validacion-de-metodos-analiticos) | Aula Edvanta | Gratis; certificado opcional de COP 60.000 |
-| [Buenas Prácticas de Laboratorio — BPL](/curso-de-buenas-practicas-de-laboratorio-bpl) | Aula Edvanta | Gratis; certificado opcional de COP 60.000 |
-| [Bioequivalencia y Requisitos Regulatorios en Colombia](/curso-de-bioequivalencia-y-requisitos-regulatorios-en-colombia) | Aula Edvanta | Gratis; certificado opcional de COP 60.000 |
+| [Control de Calidad de Medicamentos](/curso-de-control-de-calidad-de-medicamentos) | Aula Edvanta | Primera unidad gratis; curso completo con certificado: COP 60.000 en los primeros 7 días (lista: COP 199.000) |
+| [Validación de Métodos Analíticos](/curso-de-validacion-de-metodos-analiticos) | Aula Edvanta | Primera unidad gratis; curso completo con certificado: COP 60.000 en los primeros 7 días (lista: COP 199.000) |
+| [Buenas Prácticas de Laboratorio — BPL](/curso-de-buenas-practicas-de-laboratorio-bpl) | Aula Edvanta | Primera unidad gratis; curso completo con certificado: COP 60.000 en los primeros 7 días (lista: COP 199.000) |
+| [Bioequivalencia y Requisitos Regulatorios en Colombia](/curso-de-bioequivalencia-y-requisitos-regulatorios-en-colombia) | Aula Edvanta | Primera unidad gratis; curso completo con certificado: COP 60.000 en los primeros 7 días (lista: COP 199.000) |
 
 El curso de BPL dedica una unidad a instalaciones, equipos y metrología, y otra a reactivos, estándares, muestras e integridad de datos.
 
@@ -87,7 +87,7 @@ Es el conjunto de métodos para comprobar la identidad, el contenido, la pureza 
 
 ### ¿Hay cursos de análisis farmacéutico gratis?
 
-Sí. En Edvanta, Control de Calidad de Medicamentos y Validación de Métodos Analíticos se estudian gratis, con certificado verificable opcional por COP 60.000 cada uno.
+Sí. En Edvanta, Control de Calidad de Medicamentos y Validación de Métodos Analíticos se estudian en línea: la primera unidad de cada uno es gratis y el curso completo con certificado verificable cuesta COP 60.000 en los primeros 7 días (lista: COP 199.000).
 
 ### ¿Qué farmacopea se usa en Colombia?
 

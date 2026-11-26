@@ -1,10 +1,10 @@
-# Cursos gratis de CAPA y desviaciones: guía para químicos farmacéuticos
+# Cursos de CAPA y desviaciones: guía para químicos farmacéuticos
 
 Una desviación es cualquier cosa que se aparta de lo aprobado: una temperatura fuera de rango, un paso omitido, un equipo que se detuvo a mitad de un lote. CAPA (acciones correctivas y preventivas) es lo que se hace para que no vuelva a pasar. Juntas forman el sistema que más dice de la madurez de una empresa farmacéutica: una organización que investiga bien sus desviaciones aprende; una que las cierra con «error humano» repite los mismos problemas.
 
 > **En resumen**
 >
-> - En Edvanta estudias gratis Gestión de Desviaciones y CAPA, con casos para practicar la investigación de principio a fin.
+> - En Edvanta empiezas gratis, con la primera unidad abierta, Gestión de Desviaciones y CAPA, con casos para practicar la investigación de principio a fin.
 > - La calidad de una CAPA se mide por su eficacia: si el problema no se repite, funcionó.
 > - «Error humano» casi nunca es la causa raíz; es el síntoma de algo en el sistema.
 
@@ -95,7 +95,7 @@ Porque casi siempre hay algo en el sistema que facilitó el error: un procedimie
 
 ### ¿Dónde estudiar un curso de CAPA gratis?
 
-En Edvanta, Gestión de Desviaciones y CAPA se estudia gratis y en línea, con certificado verificable opcional por COP 60.000.
+En Edvanta, Gestión de Desviaciones y CAPA se estudia en línea: la primera unidad es gratis y el curso completo con certificado verificable cuesta COP 60.000 en los primeros 7 días (lista: COP 199.000).
 
 ### ¿Cómo se verifica la eficacia de una CAPA?
 

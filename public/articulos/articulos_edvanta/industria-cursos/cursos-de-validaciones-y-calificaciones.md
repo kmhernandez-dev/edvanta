@@ -1,12 +1,12 @@
-# Cursos de validaciones y calificaciones farmacéuticas: gratis, online y con certificado
+# Cursos de validaciones y calificaciones farmacéuticas: online y con certificado
 
 Validar es **demostrar con evidencia documentada** que un proceso, un equipo, un método o un sistema hace lo que debe hacer, de forma consistente. Calificar es la parte de esa demostración que se aplica a equipos, instalaciones y servicios. Suena burocrático, pero es una de las áreas mejor valoradas de la industria farmacéutica: pocas personas la dominan y todos los laboratorios la necesitan.
 
-Esta guía reúne lo que debes aprender, los cursos de validaciones y calificaciones disponibles (gratis en Edvanta y especializados en otras plataformas) y una ruta para llegar a un cargo de validaciones con bases sólidas.
+Esta guía reúne lo que debes aprender, los cursos de validaciones y calificaciones disponibles (en Edvanta, con la primera unidad gratis, y especializados en otras plataformas) y una ruta para llegar a un cargo de validaciones con bases sólidas.
 
 > **En resumen**
 >
-> - En Edvanta estudias gratis Validaciones y Calificaciones en la Industria Farmacéutica y Validación de Métodos Analíticos. El certificado verificable es opcional: COP 60.000.
+> - En Edvanta empiezas gratis, con la primera unidad abierta, Validaciones y Calificaciones en la Industria Farmacéutica y Validación de Métodos Analíticos. El certificado verificable es opcional: COP 60.000.
 > - El enfoque actual es el **ciclo de vida**: diseño, calificación y verificación continua, no un documento que se archiva y se olvida.
 > - Los temas más pedidos: calificación DQ, IQ, OQ y PQ; validación de procesos; validación de limpieza; sistemas computarizados (GAMP 5).
 
@@ -35,7 +35,7 @@ La forma moderna de validar procesos se entiende en tres etapas, tal como la des
 
 En Colombia, la Resolución 1160 de 2016 establece los manuales de Buenas Prácticas de Manufactura; la Resolución 2190 de 2020 modificó, entre otros puntos, lo relativo a la validación de procesos de medicamentos no estériles. En Europa, el Anexo 15 de las GMP de la Unión Europea trata la calificación y la validación, y el Anexo 11 los sistemas computarizados.
 
-## Cursos de validaciones gratis en Edvanta
+## Cursos de validaciones en Edvanta: primera unidad gratis
 
 Estudias **gratis**, en línea y a tu ritmo, con casos, quices y foros. El certificado verificable cuesta COP 60.000 por curso, si lo necesitas.
 
@@ -98,7 +98,7 @@ Si vienes de sistemas o de ingeniería, CSV es una puerta de entrada natural a l
 
 ### ¿Dónde estudiar un curso de validaciones y calificaciones gratis?
 
-En Edvanta, el curso Validaciones y Calificaciones en la Industria Farmacéutica se estudia gratis, en línea y a tu ritmo. El certificado verificable es opcional y cuesta COP 60.000.
+En Edvanta, el curso Validaciones y Calificaciones en la Industria Farmacéutica se estudia en línea y a tu ritmo: la primera unidad es gratis y el curso completo con certificado verificable cuesta COP 60.000 en los primeros 7 días (lista: COP 199.000).
 
 ### ¿Qué significan DQ, IQ, OQ y PQ?
 

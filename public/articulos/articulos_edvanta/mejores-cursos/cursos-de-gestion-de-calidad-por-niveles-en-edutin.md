@@ -46,7 +46,7 @@ Un curso de gestión de calidad de una plataforma general no puede entrar en los
 - **Validaciones:** cómo se demuestra que un proceso, un método o un sistema cumple su propósito.
 - **Gestión de riesgos de calidad:** cómo se prioriza con criterios como ICH Q9.
 
-Para eso están los cursos gratuitos de Edvanta, que aplican los conceptos al contexto regulatorio colombiano. La combinación es potente: Edutin da el marco general; Edvanta lo aterriza en la farmacia y en la industria.
+Para eso están los cursos de Edvanta (primera unidad gratis), que aplican los conceptos al contexto regulatorio colombiano. La combinación es potente: Edutin da el marco general; Edvanta lo aterriza en la farmacia y en la industria.
 
 ## Cómo elegir según tu rol
 

@@ -1,4 +1,4 @@
-# Cursos gratis de desarrollo de medicamentos: del descubrimiento a la autorización y la vigilancia
+# Cursos de desarrollo de medicamentos: del descubrimiento a la autorización y la vigilancia
 
 Que un medicamento llegue a la farmacia toma, en general, más de una década, y la mayoría de las moléculas que empiezan el camino no llegan al final. En ese recorrido trabajan químicos, biólogos, farmacéuticos, médicos, estadísticos, especialistas regulatorios y de calidad. Entender el proceso completo ayuda a cualquier profesional del sector a ubicar su trabajo, a leer las noticias de aprobaciones con criterio y a decidir hacia dónde quiere orientar su carrera.
 
@@ -53,7 +53,7 @@ Una molécula puede quedarse en el camino porque no es eficaz en humanos, porque
 
 > **Contenido editorial:** algunos enlaces son de afiliado. Edvanta no dicta esos cursos; confirma condiciones y certificado en cada plataforma.
 
-En Edvanta, estos cursos gratuitos cubren piezas del desarrollo que se aplican en Colombia, con certificado opcional de COP 60.000:
+En Edvanta, estos cursos gratuitos cubren piezas del desarrollo que se aplican en Colombia, con la primera unidad gratis y certificado en el curso completo (COP 60.000 en los primeros 7 días (lista: COP 199.000)):
 
 - [Estudios de Estabilidad de Medicamentos](/curso-de-estudios-de-estabilidad-de-medicamentos)
 - [Validación de Métodos Analíticos](/curso-de-validacion-de-metodos-analiticos)
@@ -95,7 +95,7 @@ La fase 2 explora la eficacia y la dosis en grupos más pequeños; la fase 3 con
 
 ### ¿Qué curso sirve para entender el desarrollo completo?
 
-Drug Development and Regulation, en Coursera, da la visión general; los cursos gratuitos de Edvanta cubren estabilidad, métodos y bioequivalencia.
+Drug Development and Regulation, en Coursera, da la visión general; los cursos de Edvanta (primera unidad gratis) cubren estabilidad, métodos y bioequivalencia.
 
 ## Fuentes
 

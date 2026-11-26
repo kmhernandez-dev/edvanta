@@ -39,7 +39,7 @@ En Edutin el curso se toma sin costo y el certificado es de pago.
 
 Un laboratorio farmacéutico combina riesgos que no se ven en una oficina: solventes inflamables, polvos de principios activos potentes, agentes biológicos en microbiología, cargas en bodega y trabajo en áreas limpias. Por eso conviene sumar formación específica:
 
-- **Bioseguridad y residuos peligrosos:** el curso gratuito de Edvanta de [Buenas Prácticas de Laboratorio — BPL](/curso-de-buenas-practicas-de-laboratorio-bpl) tiene una unidad de bioseguridad, residuos peligrosos y certificación BPL ante el INVIMA.
+- **Bioseguridad y residuos peligrosos:** el curso de Edvanta (primera unidad gratis) de [Buenas Prácticas de Laboratorio — BPL](/curso-de-buenas-practicas-de-laboratorio-bpl) tiene una unidad de bioseguridad, residuos peligrosos y certificación BPL ante el INVIMA.
 - **Áreas limpias y estériles:** el curso de [Central de Mezclas](/curso-de-central-de-mezclas) trata el trabajo en preparaciones estériles.
 - **Riesgo químico y calidad:** la guía de [validación de limpieza](/articulos/cursos-gratis-validacion-de-limpieza) explica cómo se controlan los residuos de principios activos potentes entre productos.
 

@@ -1,11 +1,11 @@
-# Cursos gratis de gestión de riesgos en calidad farmacéutica: guía práctica
+# Cursos de gestión de riesgos en calidad farmacéutica: guía práctica
 
 Gestionar riesgos no es llenar una matriz para la auditoría. Es decidir, con método, dónde poner la atención y los recursos para proteger al paciente. En la industria farmacéutica esa forma de pensar tiene nombre propio: **gestión de riesgos para la calidad**, y su referencia internacional es la guía ICH Q9. Quien la domina participa en decisiones de cambios, validaciones, proveedores y desviaciones, que son las conversaciones donde se construye una carrera en calidad.
 
 > **En resumen**
 >
 > - La referencia es ICH Q9(R1), revisada en 2023 para reducir la subjetividad y pedir una formalidad proporcional al riesgo.
-> - En Edvanta estudias gratis Gestión de Riesgos en la Calidad Farmacéutica, con ejercicios de análisis de modo de falla.
+> - En Edvanta empiezas gratis, con la primera unidad abierta, Gestión de Riesgos en la Calidad Farmacéutica, con ejercicios de análisis de modo de falla.
 > - El objetivo final siempre es el mismo: la protección del paciente.
 
 ## Las cuatro etapas del proceso
@@ -48,9 +48,9 @@ Imagina el paso de pesaje de materias primas. Un modo de falla es pesar la canti
 
 | Curso | Dónde | Costo |
 |---|---|---|
-| [Gestión de Riesgos en la Calidad Farmacéutica](/curso-de-gestion-de-riesgos-en-la-calidad-farmaceutica) | Aula Edvanta | Gratis; certificado opcional de COP 60.000 |
-| [Gestión de Desviaciones y CAPA](/curso-de-gestion-de-desviaciones-y-capa) | Aula Edvanta | Gratis; certificado opcional de COP 60.000 |
-| [Validaciones y Calificaciones](/curso-de-validaciones-y-calificaciones) | Aula Edvanta | Gratis; certificado opcional de COP 60.000 |
+| [Gestión de Riesgos en la Calidad Farmacéutica](/curso-de-gestion-de-riesgos-en-la-calidad-farmaceutica) | Aula Edvanta | Primera unidad gratis; curso completo con certificado: COP 60.000 en los primeros 7 días (lista: COP 199.000) |
+| [Gestión de Desviaciones y CAPA](/curso-de-gestion-de-desviaciones-y-capa) | Aula Edvanta | Primera unidad gratis; curso completo con certificado: COP 60.000 en los primeros 7 días (lista: COP 199.000) |
+| [Validaciones y Calificaciones](/curso-de-validaciones-y-calificaciones) | Aula Edvanta | Primera unidad gratis; curso completo con certificado: COP 60.000 en los primeros 7 días (lista: COP 199.000) |
 | [Gestión del riesgo](/curso-de-gestion-del-riesgo) | Curso curado | Lo define la plataforma |
 
 ## Dónde aparece el riesgo en tu trabajo diario
@@ -79,7 +79,7 @@ Es la guía internacional de gestión de riesgos para la calidad en la industria
 
 ### ¿Hay un curso gratis de gestión de riesgos farmacéuticos?
 
-Sí. En Edvanta, Gestión de Riesgos en la Calidad Farmacéutica se estudia gratis, con certificado verificable opcional por COP 60.000.
+Sí. En Edvanta, Gestión de Riesgos en la Calidad Farmacéutica se estudia en línea: la primera unidad es gratis y el curso completo con certificado verificable cuesta COP 60.000 en los primeros 7 días (lista: COP 199.000).
 
 ### ¿Qué es FMEA y para qué sirve?
 

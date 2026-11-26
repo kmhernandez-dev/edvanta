@@ -1,12 +1,12 @@
-# Cursos de producción farmacéutica: gratis, online y con certificado
+# Cursos de producción farmacéutica: online y con certificado
 
 Producción es donde la calidad deja de ser un documento y se convierte en un producto. Una tableta que no se disuelve, un vial con una partícula o un lote con la etiqueta equivocada empiezan, casi siempre, con algo que pasó en la planta. Por eso quien trabaja en producción farmacéutica necesita dominar dos cosas a la vez: **la técnica de fabricación y las Buenas Prácticas de Manufactura**.
 
-Esta guía reúne qué aprender para trabajar en producción, qué cursos existen (gratis en Edvanta y especializados en otras plataformas) y cómo trazar una ruta hacia supervisión o jefatura.
+Esta guía reúne qué aprender para trabajar en producción, qué cursos existen (en Edvanta, con la primera unidad gratis, y especializados en otras plataformas) y cómo trazar una ruta hacia supervisión o jefatura.
 
 > **En resumen**
 >
-> - En Edvanta estudias gratis BPM, Validaciones y Calificaciones, Central de Mezclas y Buenas Prácticas de Elaboración. El certificado verificable es opcional: COP 60.000.
+> - En Edvanta empiezas gratis, con la primera unidad abierta, BPM, Validaciones y Calificaciones, Central de Mezclas y Buenas Prácticas de Elaboración. El certificado verificable es opcional: COP 60.000.
 > - En Colombia, la Resolución 1160 de 2016 establece los manuales de BPM, incluido uno específico para medicamentos estériles.
 > - Las competencias más valoradas: operación de procesos, control en proceso, documentación de lote, limpieza y despeje de línea.
 
@@ -28,7 +28,7 @@ Esta guía reúne qué aprender para trabajar en producción, qué cursos existe
 - **Serialización y trazabilidad.** Identificar cada unidad para combatir la falsificación y facilitar los retiros de producto.
 - **Mejora continua.** Herramientas como Lean y Six Sigma reducen pérdidas sin comprometer el cumplimiento.
 
-## Cursos de producción farmacéutica gratis en Edvanta
+## Cursos de producción farmacéutica en Edvanta: primera unidad gratis
 
 Se estudian **gratis**, en línea y a tu ritmo, con casos, quices y foros. El certificado verificable cuesta COP 60.000 por curso, si lo necesitas.
 
@@ -92,7 +92,7 @@ Empieza por las BPM generales y, después, profundiza en la línea donde trabaja
 
 ### ¿Dónde estudiar un curso de BPM gratis?
 
-En Edvanta, el Curso de Buenas Prácticas de Manufactura se estudia gratis, en línea y a tu ritmo. El certificado verificable es opcional y cuesta COP 60.000.
+En Edvanta, el Curso de Buenas Prácticas de Manufactura se estudia en línea y a tu ritmo: la primera unidad es gratis y el curso completo con certificado verificable cuesta COP 60.000 en los primeros 7 días (lista: COP 199.000).
 
 ### ¿Qué estudiar para trabajar en producción farmacéutica?
 

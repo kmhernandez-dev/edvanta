@@ -7,6 +7,7 @@
  *   POST /persona/enlace-acceso        { correo }            invitación o restablecer
  *   POST /persona/recordatorio-pago    { correo, courseId }  correo «pago-pendiente»
  *   POST /persona/oferta-certificado   { correo, courseId }  correo «curso-completado»
+ *   POST /persona/pago-enlace          { correo, courseId }  pago por el enlace de WhatsApp: abre el curso
  *   GET  /bandeja                      listas de trabajo del día
  *   GET  /ventas?dias=30               embudo, ingresos, metas de hoy y recuperación
  *   POST /servicios                    { correo, servicio, valor, moneda?, nota? }
@@ -35,6 +36,8 @@ import { precioDelCertificado } from '../../lib/precio-certificado.js';
 import {
   SERVICIOS_SUGERIDOS, anularVentaServicio, guardarMetas, metasDiarias, registrarVentaServicio,
 } from '../../lib/ventas.js';
+import { concederPagoDeCertificado } from '../../lib/aula/checkout.js';
+import { ENLACE_PAGO_WHATSAPP } from '../../lib/aula/enlace-pago.js';
 import { actorOf } from './middleware.js';
 
 const SLUG = `(SELECT ps.slug FROM public_slugs ps WHERE ps.entity = 'aula' AND ps.entity_id = c.id AND ps.is_current LIMIT 1)`;
@@ -141,6 +144,20 @@ export function adminAssistRouter({ mailer, siteUrl, adminEmailHashes = [] }) {
       summary: `Recordatorio de pago de «${f.title}» a ${correo}${enviado ? '' : ' (el correo no salió)'}`, ip,
     });
     res.json({ enviado });
+  }));
+
+  // Venta por WhatsApp (enlace-pago.js): quien administra vio el pago del
+  // enlace en Mercado Pago y lo registra; eso abre el curso completo y su
+  // certificado. Queda en la bitácora con la nota del medio de pago.
+  router.post('/persona/pago-enlace', route(async (req, res) => {
+    const { db, now } = req.aula;
+    const correo = emailField(req.body?.correo, 'correo');
+    const courseId = idField(req.body?.courseId, 'courseId', 'El curso');
+    const pago = await concederPagoDeCertificado(db, actorOf(req), {
+      courseId, email: correo,
+      nota: `Pagó por el enlace de Mercado Pago ${ENLACE_PAGO_WHATSAPP.url} (venta por WhatsApp); registrado en Assist.`,
+    }, { now });
+    res.json({ ok: true, pago });
   }));
 
   router.post('/persona/oferta-certificado', route(async (req, res) => {

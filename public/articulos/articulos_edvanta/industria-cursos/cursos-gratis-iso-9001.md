@@ -1,11 +1,11 @@
-# Cursos gratis de ISO 9001: guía para químicos farmacéuticos
+# Cursos de ISO 9001: guía para químicos farmacéuticos
 
 ISO 9001 es el estándar de sistemas de gestión de calidad más usado del mundo. En el sector farmacéutico no reemplaza a las Buenas Prácticas de Manufactura, pero aparece en muchos lugares donde las BPM no llegan: distribuidoras, operadores logísticos, droguerías de cadena, laboratorios de servicios y empresas de dispositivos. Si trabajas en cualquiera de ellos, entender ISO 9001 te da un lenguaje común con clientes, auditores y la dirección.
 
 > **En resumen**
 >
 > - La versión vigente es ISO 9001:2015, con una enmienda de 2024 que pide considerar el cambio climático en el contexto de la organización.
-> - En Edvanta puedes aprender gratis la gestión de calidad aplicada al sector farmacéutico y complementar con cursos específicos de ISO 9001.
+> - En Edvanta empiezas gratis, con la primera unidad abierta, la gestión de calidad aplicada al sector farmacéutico y complementar con cursos específicos de ISO 9001.
 > - ISO 9001 certifica a la organización, no a la persona: tu certificado de curso demuestra formación, no certificación de la empresa.
 
 ## Qué pide ISO 9001, en lenguaje sencillo
@@ -27,8 +27,8 @@ Una pregunta frecuente es si una planta farmacéutica necesita ISO 9001. Las BPM
 
 | Curso | Dónde | Costo |
 |---|---|---|
-| [Gestión de Calidad Farmacéutica](/curso-de-gestion-de-calidad-farmaceutica) | Aula Edvanta | Gratis; certificado opcional de COP 60.000 |
-| [Auditoría de Calidad Farmacéutica](/curso-de-auditoria-de-calidad-farmaceutica) | Aula Edvanta | Gratis; certificado opcional de COP 60.000 |
+| [Gestión de Calidad Farmacéutica](/curso-de-gestion-de-calidad-farmaceutica) | Aula Edvanta | Primera unidad gratis; curso completo con certificado: COP 60.000 en los primeros 7 días (lista: COP 199.000) |
+| [Auditoría de Calidad Farmacéutica](/curso-de-auditoria-de-calidad-farmaceutica) | Aula Edvanta | Primera unidad gratis; curso completo con certificado: COP 60.000 en los primeros 7 días (lista: COP 199.000) |
 | [Gestión de calidad](/curso-de-gestion-de-calidad) | Edutin Academy (curado) | Lo define la plataforma |
 | [Auditoría](/curso-de-auditoria) | Edutin Academy (curado) | Lo define la plataforma |
 
@@ -76,7 +76,7 @@ Dominar estas palabras te permite leer un informe de auditoría o participar en 
 
 ### ¿Hay cursos de ISO 9001 gratis con certificado?
 
-En Edvanta, el curso de Gestión de Calidad Farmacéutica se estudia gratis y su certificado verificable es opcional, por COP 60.000. Los cursos específicos de ISO 9001 de otras plataformas tienen sus propias condiciones de acceso y certificado.
+En Edvanta, el curso de Gestión de Calidad Farmacéutica tiene la primera unidad gratis; el curso completo con certificado verificable cuesta COP 60.000 en los primeros 7 días (lista: COP 199.000). Los cursos específicos de ISO 9001 de otras plataformas tienen sus propias condiciones de acceso y certificado.
 
 ### ¿El curso de ISO 9001 me certifica como auditor?
 

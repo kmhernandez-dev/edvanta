@@ -1,4 +1,4 @@
-# Cursos gratis de Power BI para la industria farmacéutica: indicadores de calidad, producción y farmacovigilancia
+# Cursos de Power BI para la industria farmacéutica: indicadores de calidad, producción y farmacovigilancia
 
 En una planta o un laboratorio farmacéutico se generan datos todo el tiempo: resultados de análisis, desviaciones, acciones correctivas, calibraciones, rendimientos de lotes, reclamos y eventos adversos. El problema rara vez es la falta de datos, sino verlos a tiempo y de forma que ayuden a decidir. Power BI permite convertir esos datos en tableros que se actualizan solos. Esta guía se centra en su uso en la industria y en las áreas de calidad; si buscas una introducción general, lee [Power BI: para qué sirve en salud y farmacia](/articulos/power-bi-para-que-sirve-en-salud-y-farmacia).
 
@@ -34,7 +34,7 @@ Los principios **ALCOA+** piden que los datos sean atribuibles, legibles, contem
 - **Controlar quién puede ver y modificar** los informes.
 - **Validar los cálculos** contra los registros originales antes de usar el tablero para decisiones.
 
-Cuando un informe se usa para decisiones de calidad en un entorno regulado, puede requerir validación como sistema computarizado. El curso gratuito de [Validaciones y Calificaciones](/curso-de-validaciones-y-calificaciones) de Edvanta da la base.
+Cuando un informe se usa para decisiones de calidad en un entorno regulado, puede requerir validación como sistema computarizado. El curso de [Validaciones y Calificaciones](/curso-de-validaciones-y-calificaciones) de Edvanta (primera unidad gratis) da la base.
 
 ## Lo que hay que aprender de Power BI
 
@@ -55,7 +55,7 @@ Cuando un informe se usa para decisiones de calidad en un entorno regulado, pued
 
 > **Contenido editorial:** algunos enlaces son de afiliado. Edvanta no dicta esos cursos; confirma condiciones y certificado en cada plataforma.
 
-Para entender lo que vas a medir, los cursos gratuitos de Edvanta de [Gestión de Desviaciones y CAPA](/curso-de-gestion-de-desviaciones-y-capa), [Gestión de Calidad Farmacéutica](/curso-de-gestion-de-calidad-farmaceutica) y [Auditoría de Calidad Farmacéutica](/curso-de-auditoria-de-calidad-farmaceutica) explican los procesos detrás de cada indicador, con certificado opcional de COP 60.000. Y si todavía trabajas con hojas de cálculo, empieza por la guía de [cursos de Excel para profesionales de la salud](/articulos/cursos-de-excel-para-profesionales-de-la-salud).
+Para entender lo que vas a medir, los cursos de Edvanta (primera unidad gratis) de [Gestión de Desviaciones y CAPA](/curso-de-gestion-de-desviaciones-y-capa), [Gestión de Calidad Farmacéutica](/curso-de-gestion-de-calidad-farmaceutica) y [Auditoría de Calidad Farmacéutica](/curso-de-auditoria-de-calidad-farmaceutica) explican los procesos detrás de cada indicador: la primera unidad es gratis y el curso completo con certificado cuesta COP 60.000 en los primeros 7 días (lista: COP 199.000). Y si todavía trabajas con hojas de cálculo, empieza por la guía de [cursos de Excel para profesionales de la salud](/articulos/cursos-de-excel-para-profesionales-de-la-salud).
 
 ## Un ejemplo: tablero de desviaciones
 

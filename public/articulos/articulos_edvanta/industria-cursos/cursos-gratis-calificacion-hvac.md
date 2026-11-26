@@ -1,4 +1,4 @@
-# Cursos gratis de calificación de HVAC y áreas limpias para la industria farmacéutica
+# Cursos de calificación de HVAC y áreas limpias para la industria farmacéutica
 
 El sistema de calefacción, ventilación y aire acondicionado (HVAC) es el que mantiene el aire de una planta farmacéutica limpio, a la temperatura y humedad correctas y con las presiones que evitan que los contaminantes pasen de un área a otra. Si el HVAC falla, falla la protección del producto. Por eso se diseña, se califica y se monitorea con el mismo rigor que un equipo de producción, y entenderlo es una ventaja para cualquier profesional de calidad, validaciones o ingeniería.
 
@@ -6,7 +6,7 @@ El sistema de calefacción, ventilación y aire acondicionado (HVAC) es el que m
 >
 > - El HVAC controla partículas, presiones diferenciales, temperatura, humedad y flujos de aire entre áreas.
 > - La clasificación de salas limpias se hace con la norma ISO 14644-1, y en estériles con los grados A, B, C y D del Anexo 1 de las GMP de la Unión Europea.
-> - En Edvanta estudias gratis Validaciones y Calificaciones, que te da la base de calificación aplicable al HVAC.
+> - En Edvanta empiezas gratis, con la primera unidad abierta, Validaciones y Calificaciones, que te da la base de calificación aplicable al HVAC.
 
 ## Qué hace el HVAC en una planta farmacéutica
 
@@ -43,9 +43,9 @@ Estas pruebas siguen la lógica general de calificación de diseño, instalació
 
 | Curso | Dónde | Costo |
 |---|---|---|
-| [Validaciones y Calificaciones](/curso-de-validaciones-y-calificaciones) | Aula Edvanta | Gratis; certificado opcional de COP 60.000 |
-| [BPM en la Industria Farmacéutica](/curso-de-bpm-en-la-industria-farmaceutica) | Aula Edvanta | Gratis; certificado opcional de COP 60.000 |
-| [Central de Mezclas](/curso-de-central-de-mezclas) | Aula Edvanta | Gratis; certificado opcional de COP 60.000 |
+| [Validaciones y Calificaciones](/curso-de-validaciones-y-calificaciones) | Aula Edvanta | Primera unidad gratis; curso completo con certificado: COP 60.000 en los primeros 7 días (lista: COP 199.000) |
+| [BPM en la Industria Farmacéutica](/curso-de-bpm-en-la-industria-farmaceutica) | Aula Edvanta | Primera unidad gratis; curso completo con certificado: COP 60.000 en los primeros 7 días (lista: COP 199.000) |
+| [Central de Mezclas](/curso-de-central-de-mezclas) | Aula Edvanta | Primera unidad gratis; curso completo con certificado: COP 60.000 en los primeros 7 días (lista: COP 199.000) |
 
 El curso de Central de Mezclas es útil si trabajas con preparaciones estériles en un servicio farmacéutico, donde las áreas limpias y las cabinas también se califican.
 
@@ -97,7 +97,7 @@ Es la prueba que confirma que el filtro instalado y su sello no tienen fugas. Se
 
 ### ¿Hay cursos gratis de calificación de HVAC?
 
-En Edvanta, Validaciones y Calificaciones te da la base de calificación y se estudia gratis, con certificado verificable opcional por COP 60.000. Para el diseño de HVAC existen cursos especializados en otras plataformas.
+En Edvanta, Validaciones y Calificaciones te da la base de calificación y se estudia en línea: la primera unidad es gratis y el curso completo con certificado verificable cuesta COP 60.000 en los primeros 7 días (lista: COP 199.000). Para el diseño de HVAC existen cursos especializados en otras plataformas.
 
 ### ¿Por qué importan las presiones diferenciales?
 

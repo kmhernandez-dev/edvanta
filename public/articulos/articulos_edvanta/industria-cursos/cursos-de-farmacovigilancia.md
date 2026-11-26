@@ -1,4 +1,4 @@
-# Cursos de farmacovigilancia: gratis, online y con certificado
+# Cursos de farmacovigilancia: online y con certificado
 
 Un medicamento se aprueba con la información de los ensayos clínicos, que incluyen a unos miles de personas durante un tiempo limitado. Lo que pasa cuando lo usan millones, durante años y junto con otros medicamentos, solo se descubre **vigilando**. Esa es la farmacovigilancia: detectar, evaluar, entender y prevenir los efectos adversos y cualquier otro problema relacionado con los medicamentos.
 
@@ -8,7 +8,7 @@ Esta guía te muestra qué hace un profesional de farmacovigilancia en Colombia,
 >
 > - En Colombia, el INVIMA coordina el Programa Nacional de Farmacovigilancia; los reportes se hacen por los canales que la entidad define, como VigiFlow.
 > - Las competencias clave: evaluar causalidad, documentar casos individuales (ICSR), detectar señales y comunicar riesgos.
-> - En Edvanta puedes practicar el reporte y el análisis de casos con guías y con cursos gratis de farmacología; al final encontrarás una ruta de 90 días.
+> - En Edvanta puedes practicar el reporte y el análisis de casos con guías y con cursos de farmacología que empiezas gratis; al final encontrarás una ruta de 90 días.
 
 ## Qué hace un profesional de farmacovigilancia
 
@@ -33,7 +33,7 @@ Lo que distingue a un buen profesional de farmacovigilancia es el **criterio cl�
 
 ## Cursos para formarte en farmacovigilancia en Edvanta
 
-La farmacovigilancia se apoya en una farmacología sólida: reconocer un efecto adverso exige saber cómo actúa el medicamento. Estos cursos de Edvanta se estudian **gratis**, con casos, quices y foros; el certificado verificable cuesta COP 60.000 por curso.
+La farmacovigilancia se apoya en una farmacología sólida: reconocer un efecto adverso exige saber cómo actúa el medicamento. Estos cursos de Edvanta se empiezan **gratis** (la primera unidad de cada curso), con casos, quices y foros; el certificado verificable cuesta COP 60.000 por curso.
 
 | Curso gratis | Por qué te sirve en farmacovigilancia |
 |---|---|
@@ -88,7 +88,7 @@ Para una formación específica en farmacovigilancia, sobre todo en la industria
 
 ### ¿Hay cursos de farmacovigilancia gratis?
 
-Sí. Algunas plataformas ofrecen cursos de farmacovigilancia con acceso gratuito y certificado opcional; en Edvanta puedes estudiar gratis los cursos de farmacología que sostienen el trabajo en farmacovigilancia, con certificado verificable opcional por COP 60.000.
+Sí. Algunas plataformas ofrecen cursos de farmacovigilancia con acceso gratuito y certificado opcional; en Edvanta puedes empezar gratis, con la primera unidad abierta, los cursos de farmacología que sostienen el trabajo en farmacovigilancia, con la primera unidad gratis y certificado verificable en el curso completo (COP 60.000 en los primeros 7 días (lista: COP 199.000)).
 
 ### ¿Cómo se reporta una reacción adversa en Colombia?
 

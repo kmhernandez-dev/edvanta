@@ -1,4 +1,4 @@
-# Cursos gratis de regulación FDA: IND, NDA, ANDA, BLA y buenas prácticas de manufactura de Estados Unidos
+# Cursos de regulación FDA: IND, NDA, ANDA, BLA y buenas prácticas de manufactura de Estados Unidos
 
 La FDA (Food and Drug Administration) es la autoridad sanitaria de Estados Unidos y una de las referencias regulatorias más influyentes del mundo. Aunque trabajes en Colombia, entender cómo funciona sirve por varias razones: muchas empresas exportan o tienen casa matriz allí, las alertas de la FDA se replican en otros países, sus guías técnicas se usan como referencia y sus decisiones influyen en las de otras agencias. Esta guía explica los conceptos básicos de la regulación de medicamentos de la FDA y los cursos que te sirven para aprenderla.
 
@@ -66,7 +66,7 @@ Cuando la FDA inspecciona una planta y encuentra incumplimientos, entrega un for
 
 ## Cómo se conecta con Colombia
 
-El régimen colombiano es distinto, pero los conceptos se parecen: registro sanitario, evaluación farmacéutica y farmacológica, bioequivalencia y buenas prácticas de manufactura. Estos cursos gratuitos de Edvanta te dan la base local, con certificado opcional de COP 60.000:
+El régimen colombiano es distinto, pero los conceptos se parecen: registro sanitario, evaluación farmacéutica y farmacológica, bioequivalencia y buenas prácticas de manufactura. Estos cursos de Edvanta (primera unidad gratis) te dan la base local, con la primera unidad gratis y certificado en el curso completo (COP 60.000 en los primeros 7 días (lista: COP 199.000)):
 
 - [Asuntos Regulatorios Farmacéuticos en Colombia](/curso-de-asuntos-regulatorios-farmaceuticos-en-colombia)
 - [Registro Sanitario de Medicamentos ante el INVIMA](/curso-de-registro-sanitario-de-medicamentos-ante-el-invima)

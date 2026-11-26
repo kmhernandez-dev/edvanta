@@ -6,6 +6,7 @@ dist
 .env
 .env.*
 *.md
+!public/articulos/**/*.md
 set-env.ps1
 .dockerignore
 Dockerfile.web.dockerignore

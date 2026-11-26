@@ -1,4 +1,4 @@
-# Cursos gratis de reporte de eventos adversos: casos individuales (ICSR), gravedad, causalidad y plazos en Colombia
+# Cursos de reporte de eventos adversos: casos individuales (ICSR), gravedad, causalidad y plazos en Colombia
 
 El reporte de un evento adverso es la materia prima de toda la farmacovigilancia: sin casos bien documentados no hay señales, ni análisis, ni decisiones regulatorias. Por eso, en la industria, el procesamiento de casos individuales es la puerta de entrada más común para quien quiere trabajar en farmacovigilancia. Esta guía explica cómo se arma un buen reporte, qué plazos exige la norma colombiana vigente y qué cursos sirven para aprenderlo.
 
@@ -6,7 +6,7 @@ El reporte de un evento adverso es la materia prima de toda la farmacovigilancia
 >
 > - Un caso es válido cuando tiene cuatro datos mínimos: un notificador identificable, un paciente identificable, un medicamento sospechoso y un evento adverso.
 > - En Colombia, la Resolución INVIMA 2024015321 de 2024 fija 15 días calendario para reportar los eventos graves y 90 días para los no graves.
-> - Para practicar, sirven los cursos de procesamiento de casos (ICSR) de Udemy y la base de farmacología gratuita de Edvanta.
+> - Para practicar, sirven los cursos de procesamiento de casos (ICSR) de Udemy y la base de farmacología de Edvanta, que empiezas gratis con la primera unidad.
 
 ## Qué es un ICSR
 
@@ -82,7 +82,7 @@ Ambos consideran la secuencia temporal, la mejoría al retirar el medicamento, l
 
 > **Contenido editorial:** algunos enlaces son de afiliado. Edvanta no dicta esos cursos; confirma condiciones y certificado en cada plataforma.
 
-Para evaluar bien un caso hay que conocer la farmacología del medicamento. Los cursos gratuitos de Edvanta de [Farmacología Cardiovascular](/curso-de-farmacologia-cardiovascular), [Farmacología del Sistema Nervioso Central](/curso-de-farmacologia-del-sistema-nervioso-central) y [Farmacología Oncológica](/curso-de-farmacologia-oncologica) dan esa base, con certificado opcional de COP 60.000. Y para la redacción y el registro, [Buenas Prácticas de Documentación Farmacéutica](/curso-de-buenas-practicas-de-documentacion-farmaceutica).
+Para evaluar bien un caso hay que conocer la farmacología del medicamento. Los cursos de Edvanta (primera unidad gratis) de [Farmacología Cardiovascular](/curso-de-farmacologia-cardiovascular), [Farmacología del Sistema Nervioso Central](/curso-de-farmacologia-del-sistema-nervioso-central) y [Farmacología Oncológica](/curso-de-farmacologia-oncologica) dan esa base: la primera unidad es gratis y el curso completo con certificado cuesta COP 60.000 en los primeros 7 días (lista: COP 199.000). Y para la redacción y el registro, [Buenas Prácticas de Documentación Farmacéutica](/curso-de-buenas-practicas-de-documentacion-farmaceutica).
 
 ## Si eres profesional de la salud o paciente
 

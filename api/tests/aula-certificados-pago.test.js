@@ -83,6 +83,7 @@ describe('certificados con costo', () => {
 
     // El navegador intenta poner su propio precio y una ruta de regreso externa.
     const pago = await c.post('/me/checkout', {
+      aceptaTerminos: true,
       items: [{ id: `certificado-${curso.id}`, price: 1, qty: 5 }],
       volverA: '//otro-sitio.com/robo',
     });
@@ -103,15 +104,15 @@ describe('certificados con costo', () => {
     expect(emitido.status).toBe(201);
     // Ya emitido: no se vuelve a cobrar ni a vender.
     expect((await c.get(`/me/courses/${curso.id}/certificate`)).data.pago.requerido).toBe(false);
-    const otraCompra = await c.post('/me/checkout', { items: [{ id: `certificado-${curso.id}` }] });
+    const otraCompra = await c.post('/me/checkout', { aceptaTerminos: true, items: [{ id: `certificado-${curso.id}` }] });
     expect(otraCompra.status).toBe(409);
   });
 
   it('un segundo pago del mismo certificado queda anulado y el webhook usa los datos del pago si no hay pendientes', async () => {
     const { u, c } = await participante('pedro@correo.co');
     await c.post(`/me/catalog/${curso.id}/enroll`, {});
-    const p1 = await c.post('/me/checkout', { items: [{ id: `certificado-${curso.id}` }] });
-    const p2 = await c.post('/me/checkout', { items: [{ id: `certificado-${curso.id}` }] });
+    const p1 = await c.post('/me/checkout', { aceptaTerminos: true, items: [{ id: `certificado-${curso.id}` }] });
+    const p2 = await c.post('/me/checkout', { aceptaTerminos: true, items: [{ id: `certificado-${curso.id}` }] });
     expect((await aprobarPagosDeCertificados(t.db, { externalReference: p1.data.externalReference, paymentId: 2001 }))).toHaveLength(1);
     expect((await aprobarPagosDeCertificados(t.db, { externalReference: p2.data.externalReference, paymentId: 2002 }))).toHaveLength(0);
     const { rows } = await t.db.query(
@@ -154,9 +155,9 @@ describe('certificados con costo', () => {
 
   it('rechaza productos inexistentes, exige sesión y responde 503 si el pago en línea no está activo', async () => {
     const { u, c } = await participante('raul@correo.co');
-    expect((await c.post('/me/checkout', { items: [{ id: 'certificado-999999' }] })).status).toBe(400);
-    expect((await c.post('/me/checkout', { items: [] })).status).toBe(400);
-    expect((await t.client().post('/me/checkout', { items: [{ id: `certificado-${curso.id}` }] })).status).toBe(401);
+    expect((await c.post('/me/checkout', { aceptaTerminos: true, items: [{ id: 'certificado-999999' }] })).status).toBe(400);
+    expect((await c.post('/me/checkout', { aceptaTerminos: true, items: [] })).status).toBe(400);
+    expect((await t.client().post('/me/checkout', { aceptaTerminos: true, items: [{ id: `certificado-${curso.id}` }] })).status).toBe(401);
     await expect(iniciarPago(t.db, u, [{ id: `certificado-${curso.id}` }], { crearPreferencia: null }))
       .rejects.toMatchObject({ status: 503, code: 'pagos_inactivos' });
   });

@@ -210,6 +210,11 @@ const OPERACIONES = {
   'enlace-acceso': { ruta: '/admin/assist/persona/enlace-acceso', etiqueta: 'Enviar enlace de acceso', icono: KeyRound, ok: 'Enlace de acceso enviado.' },
   'recordatorio-pago': { ruta: '/admin/assist/persona/recordatorio-pago', etiqueta: 'Enviar recordatorio de pago', icono: Send, ok: 'Recordatorio de pago enviado.' },
   'oferta-certificado': { ruta: '/admin/assist/persona/oferta-certificado', etiqueta: 'Enviar oferta del certificado', icono: Send, ok: 'Oferta del certificado enviada.' },
+  // Venta por WhatsApp con el enlace de Mercado Pago: solo cuando el pago ya se ve en Mercado Pago.
+  'pago-enlace': {
+    ruta: '/admin/assist/persona/pago-enlace', etiqueta: 'Registrar pago y abrir el curso', icono: KeyRound, ok: 'Pago registrado: el curso quedó abierto.',
+    confirmar: '¿Ya viste este pago en Mercado Pago? Se registrará y se abrirá el curso completo, con su certificado, para esta persona.',
+  },
 };
 
 export function AssistPersona() {
@@ -224,6 +229,7 @@ export function AssistPersona() {
 
   const operar = async (accion) => {
     const op = OPERACIONES[accion.operacion];
+    if (op.confirmar && !window.confirm(op.confirmar)) return;
     setEnviando(accion.clave);
     try {
       const r = await post(op.ruta, { correo, ...(accion.courseId ? { courseId: accion.courseId } : {}) });

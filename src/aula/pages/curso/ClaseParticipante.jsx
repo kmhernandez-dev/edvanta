@@ -229,7 +229,7 @@ export default function ClaseParticipante() {
             )}
           </>
         )}
-        banner={<BarraCertificado courseId={courseId} cursoSlug={data.courseSlug} volverA={rutas.certificado} />}
+        banner={<BarraCertificado courseId={courseId} cursoSlug={data.courseSlug} volverA={rutas.certificado} muestra={Boolean(data.acceso && !data.acceso.completo)} />}
         footerActions={(
           <>
             <Button
@@ -243,7 +243,19 @@ export default function ClaseParticipante() {
             <Button size="sm" to={rutas.certificado} icon={Award}>Certificado</Button>
           </>
         )}
-        renderCompletion={(current) => (
+        renderCompletion={(current) => (current.requierePago ? (
+          // Curso de pago (acceso-pago.js): de esta clase solo llegan el video y el inicio.
+          <>
+            <p className="aula-cert-nota">Puedes ver el video y el inicio de cada clase. El resto de la clase, las evaluaciones, los foros y tu certificado vienen con el curso completo.</p>
+            <RecordatorioCertificado
+              fijo
+              courseId={courseId}
+              volverA={rutas.certificado}
+              curso={data.snapshot.course.title}
+              titulo="Esta clase es parte del curso completo"
+            />
+          </>
+        ) : (
           <>
             <CompletionPanel
               lesson={current}
@@ -266,7 +278,7 @@ export default function ClaseParticipante() {
               avance={data.enrollment.progressPct}
             />
           </>
-        )}
+        ))}
       />
       <p className="sr-only" aria-live="polite">{announce}</p>
     </>

@@ -28,6 +28,7 @@
  */
 import { many, one } from './db.js';
 import { precioDelCertificado } from '../precio-certificado.js';
+import { ENLACE_PAGO_WHATSAPP } from './enlace-pago.js';
 import { ventasDeHoy } from '../ventas.js';
 
 const HORA = 60 * 60 * 1000;
@@ -340,6 +341,20 @@ export function siguientesAcciones(persona, { now = new Date() } = {}) {
         detalle: `Terminó ${hace(c.terminado, now)} y no tiene certificado.${c.certificado.precioHoy ? ` Hoy le corresponde ${pesos(c.certificado.precioHoy)} (Colombia)${c.certificado.descuentoVence ? `, con descuento hasta el ${new Date(c.certificado.descuentoVence).toLocaleDateString('es-CO', { day: 'numeric', month: 'long', timeZone: 'America/Bogota' })}` : ''}.` : ''}`,
         courseId: c.courseId, operacion: 'oferta-certificado',
         whatsapp: wa(`${saludo} ¡Felicitaciones por terminar ${c.titulo}! Tu certificado verificable está listo para emitir. ¿Te cuento cómo obtenerlo?`),
+      });
+    }
+    // Venta por WhatsApp con el enlace de Mercado Pago (enlace-pago.js): para
+    // quien no ha comprado un curso con precio. Al ver el pago en Mercado
+    // Pago, «Registrar pago y abrir el curso» lo habilita.
+    if (c.certificado.conCosto && !c.certificado.pagado && c.certificado.estado !== 'emitido') {
+      const enlace = ENLACE_PAGO_WHATSAPP;
+      const otroPrecio = c.certificado.precioHoy && c.certificado.precioHoy !== enlace.precio;
+      acciones.push({
+        clave: `enlace-${c.courseId}`, prioridad: 'media', tipo: 'vender-por-enlace',
+        titulo: `Vender por WhatsApp: ${c.titulo}`,
+        detalle: `Envíale el enlace de Mercado Pago (${pesos(enlace.precio)}).${otroPrecio ? ` En el sitio hoy le corresponde ${pesos(c.certificado.precioHoy)} (Colombia).` : ''} Cuando veas el pago en Mercado Pago, usa «Registrar pago y abrir el curso».`,
+        courseId: c.courseId, operacion: 'pago-enlace',
+        whatsapp: wa(`${saludo} Para estudiar ${c.titulo} completo, con todas las clases, las evaluaciones, los foros y tu certificado verificable, puedes pagar aquí: ${enlace.url} (${pesos(enlace.precio)}). Al pagar aceptas los términos (https://edvanta.co/terminos) y que el acceso empiece de inmediato. Cuando pagues, envíame el comprobante por este chat y te abro el curso.`),
       });
     }
     if (c.certificado.pagado && c.terminado && c.certificado.estado !== 'emitido') {
