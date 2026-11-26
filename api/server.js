@@ -68,6 +68,7 @@ import { parseAdminEmails, parseAdminHashes } from './lib/aula/accounts.js';
 import { sendEmail, fromWithName } from './lib/resend.js';
 import { correrEmbudoProgramado } from './lib/aula/embudo-programado.js';
 import { crearWebhookHotmart } from './routes/hotmart-webhook.js';
+import { detectarModoMercadoPago, modoMercadoPago } from './lib/mercadopago-modo.js';
 
 const PORT = parseInt(process.env.PORT || '3000', 10);
 const NODE_ENV = process.env.NODE_ENV || 'development';
@@ -171,6 +172,9 @@ app.get('/api/health', (_req, res) => {
     },
     database: process.env.DATABASE_URL ? 'configured' : 'missing',
     mercado_pago: process.env.MP_ACCESS_TOKEN ? 'configured' : 'missing',
+    // «prueba» explica el «una de las partes es de prueba» del checkout: hay
+    // que poner en Coolify el Access Token de producción (APP_USR-…) de la cuenta real.
+    mercado_pago_modo: modoMercadoPago(),
     resend: process.env.RESEND_API_KEY ? 'configured' : 'missing',
     // Ventas de guías: sin el hottok, Hotmart no puede avisar las compras.
     hotmart_webhook: process.env.HOTMART_HOTTOK ? 'configured' : 'missing',
@@ -452,6 +456,9 @@ async function start() {
     site_url: process.env.SITE_URL || '(not set)',
     api_url: process.env.API_URL || '(not set)',
   }));
+  detectarModoMercadoPago().then((modo) => {
+    console.log(JSON.stringify({ level: modo === 'produccion' ? 'info' : 'warn', msg: 'Mercado Pago', modo }));
+  });
 
   if (process.env.DATABASE_URL) {
     try {
