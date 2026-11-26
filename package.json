@@ -16,6 +16,7 @@
     "seo:keywords-cursos": "node scripts/generar-30000-keywords-cursos.mjs",
     "seo:cursos": "node scripts/generar-blogs-cursos.mjs && node scripts/generar-30000-keywords-cursos.mjs",
     "seo:vademecum1000": "node scripts/generar-1000-articulos-vademecum.mjs",
+    "seo:estudiantes1000": "node scripts/generar-1000-articulos-estudiantes.mjs",
     "translate:br": "node scripts/traducir-edvanta-brasil.mjs",
     "predev": "node scripts/preparar-pdfjs.cjs",
     "prebuild": "node scripts/preparar-pdfjs.cjs",

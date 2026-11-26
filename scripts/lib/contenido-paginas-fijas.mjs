@@ -258,7 +258,7 @@ export function contenidoAlianzas(alianzas, { email, whatsapp } = {}) {
  * enlazar y las preguntas (src/data/edvanta/recursosEstudiantes.js).
  *  guias  [{ nombre, url, area }] de industriaCursos50 con contenido propio
  */
-export function contenidoRecursosEstudiantes(r, { cursosPorArea = [], herramientas = [], guias = [], preguntas: faq = [], textoEnlace = '', htmlEnlace = '', url = '' } = {}) {
+export function contenidoRecursosEstudiantes(r, { cursosPorArea = [], herramientas = [], guias = [], materias = [], preguntas: faq = [], textoEnlace = '', htmlEnlace = '', url = '' } = {}) {
   const total = cursosPorArea.reduce((n, a) => n + a.cursos.length, 0);
   return [
     parrafo(r.lead),
@@ -266,6 +266,7 @@ export function contenidoRecursosEstudiantes(r, { cursosPorArea = [], herramient
       parrafo(r.certificado),
       cursosPorArea.map((a) => `<h3>${esc(a.area)}</h3>${parrafo(a.para)}${enlaces(a.cursos.map(([to, nombre]) => ({ url: to, nombre })))}`).join(''),
     ].join('')),
+    materias.length ? seccion('Materias de Química Farmacéutica: guías de estudio y recursos', `<ul>${materias.map((m) => `<li><a href="${esc(m.rutaQueEs)}">${esc(m.nombre)}</a> · <a href="${esc(m.rutaRecursos)}">recursos</a></li>`).join('')}</ul>`) : '',
     seccion('Guías de carrera: qué estudiar según el área en la que quieres trabajar', [
       `<h3>Por área</h3>${enlaces(guias.filter((g) => g.area))}`,
       `<h3>Por tema</h3>${enlaces(guias.filter((g) => !g.area))}`,

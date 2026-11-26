@@ -18,7 +18,8 @@ describe('SEO de los artículos', () => {
     // + 10 de comunidad, webinars e instituciones (articulosComunidadWebinars.js, 25-nov-2026).
     // + 500 de cursos recomendados (blogCursos500.js, 26-nov-2026).
     // + 1000 de vademécum, cursos y comunidades (vademecumArticulos1000.js, 26-nov-2026).
-    expect(articulos).toHaveLength(2140);
+    // + 1000 de estudiantes y materias (estudiantesArticulos1000.js, 26-nov-2026).
+    expect(articulos).toHaveLength(3140);
     expect(Object.keys(SEO_ARTICULOS)).toHaveLength(390);
     for (const a of articulos) {
       const seo = SEO_ARTICULOS[a.slug] || {

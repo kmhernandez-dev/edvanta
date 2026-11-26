@@ -22,6 +22,7 @@
 export const ANGULOS_VADEMECUM = ['farmacologia', 'seguridad', 'atencion-farmaceutica', 'para-comunidades'];
 export const ANGULOS_COMUNIDAD = ['como-participar', 'como-acompanar', 'preguntas-frecuentes', 'recursos-vademecum-curso', 'taller-educativo'];
 export const ANGULOS_CURSO = ['con-vademecum', 'con-comunidad', 'evidencia-aprendizaje', 'preguntas-vademecum-comunidad', 'ruta-30-dias-comunidad', 'taller-educativo'];
+export const ANGULOS_CURSO_ESTUDIANTE = ['preparar-parcial', 'preguntas-examen', 'glosario', 'ruta-7-dias', 'practicas-empleo', 'errores-estudiante', 'mapa-conceptual', 'curso-vs-materia'];
 
 const resumen = (a) => ({ slug: a.slug, titulo: a.title });
 
@@ -49,8 +50,9 @@ export function articulosDeCurso(ruta, lista) {
   // tendría 160+), pero se enlazan desde su monografía, no desde aquí.
   const blogs = (lista || []).filter((a) => a.curso?.url === ruta && !a.fuente).map(resumen);
   const integrados = porSlugs(ANGULOS_CURSO.map((a) => `curso-${base}-${a}`), lista);
+  const estudiantes = porSlugs(ANGULOS_CURSO_ESTUDIANTE.map((a) => `estudiante-${base}-${a}`), lista);
   const vistos = new Set();
-  return [...blogs, ...integrados].filter((a) => (vistos.has(a.slug) ? false : vistos.add(a.slug)));
+  return [...blogs, ...integrados, ...estudiantes].filter((a) => (vistos.has(a.slug) ? false : vistos.add(a.slug)));
 }
 
 /** Todas las rutas de curso que tienen artículos, con su lista. */

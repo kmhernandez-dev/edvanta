@@ -18,6 +18,7 @@ import {
   TEXTO_PARA_ENLAZAR, URL_RECURSOS_ESTUDIANTES,
 } from '../src/data/edvanta/recursosEstudiantes.js';
 import { INDUSTRIA_CURSOS_50 } from '../src/data/industriaCursos50.js';
+import { MATERIAS_QF } from '../src/data/materiasQF.js';
 import { articulos as ARTICULOS } from '../src/data/articulos.js';
 import { REVISION_CLINICA } from '../src/data/revisionClinica.js';
 import { GUIAS_VENTA, rutaDeGuia } from '../src/data/guiasVenta.js';
@@ -218,6 +219,7 @@ add(RUTA_RECURSOS_ESTUDIANTES, RECURSOS_ESTUDIANTES.seoTitle, RECURSOS_ESTUDIANT
   contenido: contenidoRecursosEstudiantes(RECURSOS_ESTUDIANTES, {
     cursosPorArea: CURSOS_POR_AREA,
     herramientas: HERRAMIENTAS_CARRERA,
+    materias: MATERIAS_QF,
     guias: INDUSTRIA_CURSOS_50.filter((a) => a.contenidoPropio)
       .map((a) => ({ nombre: a.tema, url: `/articulos/${a.slug}`, area: a.esArea })),
     preguntas: PREGUNTAS_RECURSOS,

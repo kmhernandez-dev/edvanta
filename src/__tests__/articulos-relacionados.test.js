@@ -4,6 +4,8 @@ import { join } from 'node:path';
 import { articulos } from '../data/articulos.js';
 import { BLOG_CURSOS_500 } from '../data/blogCursos500.js';
 import { VADEMECUM_ARTICULOS_1000 } from '../data/vademecumArticulos1000.js';
+import { ESTUDIANTES_ARTICULOS_1000 } from '../data/estudiantesArticulos1000.js';
+import { MATERIAS_QF } from '../data/materiasQF.js';
 import { ARTICULOS_COMUNIDAD_WEBINARS } from '../data/articulosComunidadWebinars.js';
 import { MONOGRAFIAS } from '../data/vademecum/index.js';
 import { COMUNIDADES } from '../data/comunidadesSalud.js';
@@ -28,9 +30,10 @@ describe('la tanda de artículos tiene enlaces de vuelta', () => {
       ...MONOGRAFIAS.flatMap((m) => articulosDeMonografia(m.slug, articulos)).map((a) => a.slug),
       ...COMUNIDADES.flatMap((c) => articulosDeComunidad(c.slug, articulos)).map((a) => a.slug),
       ...HUBS_DE_LA_TANDA.map((a) => a.slug),
+      ...MATERIAS_QF.flatMap((m) => m.articulos.map((a) => a.slug)),
       ...ARTICULOS_COMUNIDAD_WEBINARS.map((a) => a.slug),
     ]);
-    const tanda = [...BLOG_CURSOS_500, ...VADEMECUM_ARTICULOS_1000, ...ARTICULOS_COMUNIDAD_WEBINARS];
+    const tanda = [...BLOG_CURSOS_500, ...VADEMECUM_ARTICULOS_1000, ...ESTUDIANTES_ARTICULOS_1000, ...ARTICULOS_COMUNIDAD_WEBINARS];
     const huerfanos = tanda.filter((a) => !enlazados.has(a.slug)).map((a) => a.slug);
     expect(huerfanos).toEqual([]);
   });
@@ -38,7 +41,7 @@ describe('la tanda de artículos tiene enlaces de vuelta', () => {
   it('cada curso enlaza unos pocos artículos (sin los de vademécum, que van en su monografía)', () => {
     const tamanos = Object.values(porCurso).map((l) => l.length);
     expect(Object.keys(porCurso).length).toBeGreaterThanOrEqual(60);
-    expect(Math.max(...tamanos)).toBeLessThanOrEqual(20);
+    expect(Math.max(...tamanos)).toBeLessThanOrEqual(24);
     expect(articulosDeCurso('/curso-para-hablar-frente-a-la-camara', articulos).length).toBeGreaterThan(8);
   });
 
