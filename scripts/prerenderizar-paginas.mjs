@@ -46,6 +46,9 @@ const { COMUNIDADES } = await importar('src/data/comunidadesSalud.js');
 const {
   articulosParaPacientes, cuerpoDelInicio, cursosPropios, extraDeContigo,
 } = await importar('scripts/lib/enlaces-del-inicio.mjs');
+const {
+  cargarGrafoProfesional, contenidoCarreras, contenidoCompetencias, contenidoRutas,
+} = await importar('scripts/lib/contenido-grafo-profesional.mjs');
 const articulosPacientes = articulosParaPacientes(articulos, 30);
 
 const plantilla = readFileSync(path.join(dist, 'index.html'), 'utf8');
@@ -590,6 +593,18 @@ if (retosApi) {
   }
   console.log(`Retos FST: ${retosApi.challenges.length} retos, ${Object.keys(retosApi.detalle).length} con sus días`);
 }
+
+// Hubs del grafo profesional: la lista de sus páginas (scripts/lib/contenido-grafo-profesional.mjs).
+const grafoProfesional = await cargarGrafoProfesional(SITIO);
+const contenidoDeHub = {
+  '/carreras': contenidoCarreras(grafoProfesional.carreras),
+  '/rutas': contenidoRutas(grafoProfesional.rutas),
+  '/competencias': contenidoCompetencias(grafoProfesional.competencias),
+};
+for (const r of RUTAS_FIJAS) {
+  if (contenidoDeHub[r.ruta]) r.contenido = `${contenidoDeHub[r.ruta]}${r.contenido || ''}`;
+}
+console.log(`Grafo profesional: ${grafoProfesional.carreras.length} carreras, ${grafoProfesional.rutas.length} rutas y ${grafoProfesional.competencias.length} competencias en sus hubs`);
 
 for (const r of RUTAS_FIJAS) {
   const canonical = `${SITIO}${r.ruta}`;
