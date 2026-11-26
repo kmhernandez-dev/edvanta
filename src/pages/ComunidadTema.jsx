@@ -86,10 +86,10 @@ export default function ComunidadTema() {
               <div>
                 <div className="flex flex-wrap items-center gap-2">
                   <EtiquetaPublico publico={tema.publico} />
-                  <span className="inline-flex items-center gap-1 rounded-full border border-edvanta-border bg-white px-2.5 py-1 text-[11px] font-bold uppercase tracking-[.08em] text-edvanta-muted">
+                  <span className="inline-flex items-center gap-1 rounded-full border border-edvanta-border bg-white px-2.5 py-1 text-xs font-bold uppercase tracking-[.08em] text-edvanta-muted">
                     <BarChart3 className="h-3.5 w-3.5" aria-hidden="true" /> {tema.nivel}
                   </span>
-                  <span className="inline-flex items-center gap-1 rounded-full border border-edvanta-border bg-white px-2.5 py-1 text-[11px] font-bold uppercase tracking-[.08em] text-edvanta-muted">
+                  <span className="inline-flex items-center gap-1 rounded-full border border-edvanta-border bg-white px-2.5 py-1 text-xs font-bold uppercase tracking-[.08em] text-edvanta-muted">
                     <Clock className="h-3.5 w-3.5" aria-hidden="true" /> {tema.minutos} min
                   </span>
                 </div>

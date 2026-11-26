@@ -100,7 +100,7 @@ export default function WebinarDetalle() {
             <div className="mt-6 grid gap-10 lg:grid-cols-[minmax(0,1fr)_360px] lg:items-start">
               <div>
                 <div className="flex flex-wrap items-center gap-2">
-                  <span className="inline-flex items-center gap-1.5 rounded-full bg-edvanta-soft px-2.5 py-1 text-[11px] font-bold uppercase tracking-[.08em] text-edvanta-blue">
+                  <span className="inline-flex items-center gap-1.5 rounded-full bg-edvanta-soft px-2.5 py-1 text-xs font-bold uppercase tracking-[.08em] text-edvanta-blue">
                     <Video className="h-3.5 w-3.5" aria-hidden="true" /> Webinar
                   </span>
                   <EtiquetaPublico publico={webinar.publico} />

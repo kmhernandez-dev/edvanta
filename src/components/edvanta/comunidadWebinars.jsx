@@ -23,7 +23,7 @@ export const tonoDeCluster = (cluster) => TONOS[Math.max(0, cluster?.slug?.lengt
 export function EtiquetaPublico({ publico, className = '' }) {
   const p = PUBLICOS[publico] || PUBLICOS.profesional;
   return (
-    <span className={`inline-flex items-center gap-1.5 rounded-full border border-edvanta-border bg-white px-2.5 py-1 text-[11px] font-bold uppercase tracking-[.08em] text-edvanta-muted ${className}`}>
+    <span className={`inline-flex items-center gap-1.5 rounded-full border border-edvanta-border bg-white px-2.5 py-1 text-xs font-bold uppercase tracking-[.08em] text-edvanta-muted ${className}`}>
       {p.corto}
     </span>
   );
@@ -81,7 +81,7 @@ export function WebinarCard({ webinar }) {
   return (
     <article className="flex h-full flex-col rounded-2xl border border-edvanta-border bg-white p-5 shadow-[0_1px_2px_rgba(23,34,59,.04)] transition duration-200 hover:-translate-y-0.5 hover:border-edvanta-blue/30 hover:shadow-[0_14px_40px_rgba(23,34,59,.10)]">
       <div className="flex flex-wrap items-center gap-2">
-        <span className="inline-flex items-center gap-1.5 rounded-full bg-edvanta-soft px-2.5 py-1 text-[11px] font-bold uppercase tracking-[.08em] text-edvanta-blue">
+        <span className="inline-flex items-center gap-1.5 rounded-full bg-edvanta-soft px-2.5 py-1 text-xs font-bold uppercase tracking-[.08em] text-edvanta-blue">
           <Video className="h-3.5 w-3.5" aria-hidden="true" />
           Webinar
         </span>

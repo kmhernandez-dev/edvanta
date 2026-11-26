@@ -42,6 +42,12 @@ const {
 const { categoriaIndexable } = await importar('src/lib/seo/indexabilidad.js');
 const { metaDeCategoria } = await importar('src/lib/seo/titulos.js');
 
+const { COMUNIDADES } = await importar('src/data/comunidadesSalud.js');
+const {
+  articulosParaPacientes, cuerpoDelInicio, cursosPropios, extraDeContigo,
+} = await importar('scripts/lib/enlaces-del-inicio.mjs');
+const articulosPacientes = articulosParaPacientes(articulos, 30);
+
 const plantilla = readFileSync(path.join(dist, 'index.html'), 'utf8');
 
 const esc = (t) => String(t ?? '')
@@ -354,7 +360,7 @@ const htmlContigoHome = pagina({
     },
     migas([['Inicio', `${SITIO}/`], ['Edvanta Contigo', `${SITIO}/contigo`]]),
   ],
-  cuerpo: `<main><h1>${esc(CONTIGO.titulo)}</h1><p>${esc(CONTIGO.lead)}</p><ul>${CONTIGO_RUTAS.map((r) => `<li><a href="${esc(r.to)}">${esc(r.nombre)}</a> — ${esc(r.texto)}</li>`).join('')}</ul><p><a href="/contigo/tiroides">Salud tiroidea</a> · <a href="/mi-cuidado">Mi cuidado</a> · <a href="/contigo/planes">Planes</a></p>${avisoContigo}</main>`,
+  cuerpo: `<main><h1>${esc(CONTIGO.titulo)}</h1><p>${esc(CONTIGO.lead)}</p><ul>${CONTIGO_RUTAS.map((r) => `<li><a href="${esc(r.to)}">${esc(r.nombre)}</a> — ${esc(r.texto)}</li>`).join('')}</ul><p><a href="/contigo/tiroides">Salud tiroidea</a> · <a href="/mi-cuidado">Mi cuidado</a> · <a href="/contigo/planes">Planes</a></p>${extraDeContigo({ comunidades: COMUNIDADES, articulosPacientes })}${avisoContigo}</main>`,
 });
 escribir('contigo.html', htmlContigoHome);
 escribir('contigo/index.html', htmlContigoHome);
@@ -663,3 +669,17 @@ if (existsSync(rutaSitemap)) {
 }
 
 console.log(`Páginas fijas prerenderizadas: ${enSitemap.length} (herramientas, categorías, cursos en vivo, marketing y Contigo)`);
+
+// ── Inicio con contenido y enlaces para los buscadores ─────────────
+// dist/index.html es la plantilla de la app y el respaldo de rutas
+// internas: no se toca. El inicio estático va en dist/inicio.html y nginx
+// lo sirve solo para «/» (location = /). Ver scripts/lib/enlaces-del-inicio.mjs.
+let cursosDelInicio = [];
+try {
+  cursosDelInicio = await cursosPropios(SITIO);
+} catch (e) {
+  console.warn(`Inicio: no se pudo leer la API de cursos (${e.message}); va sin la lista de cursos.`);
+}
+const cuerpoInicio = cuerpoDelInicio({ cursos: cursosDelInicio, comunidades: COMUNIDADES, articulosPacientes });
+writeFileSync(path.join(dist, 'inicio.html'), plantilla.replace('<div id="root"></div>', `<div id="root">${cuerpoInicio}</div>`));
+console.log(`Inicio estático: ${cursosDelInicio.length} cursos, ${COMUNIDADES.length} grupos de apoyo y ${articulosPacientes.length} artículos enlazados`);
