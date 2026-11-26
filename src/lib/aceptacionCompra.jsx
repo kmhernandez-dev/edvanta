@@ -39,7 +39,9 @@ function DialogoAceptacion({ onResponder }) {
   }, [onResponder]);
 
   return (
-    <div className="fixed inset-0 z-[1000] flex items-end justify-center bg-[rgba(3,29,92,.55)] p-4 sm:items-center" onClick={(e) => { if (e.target === e.currentTarget) onResponder(false); }}>
+    // Tocar fuera no cancela: en el celular un toque accidental en el fondo
+    // cerraba el diálogo y la persona se quedaba sin llegar al pago.
+    <div className="fixed inset-0 z-[1000] flex items-end justify-center overflow-y-auto bg-[rgba(3,29,92,.55)] p-4 sm:items-center">
       <div role="dialog" aria-modal="true" aria-labelledby="aceptacion-titulo" className="w-full max-w-lg rounded-[20px] bg-white p-6 shadow-[0_30px_70px_-30px_rgba(3,29,92,.8)] sm:p-7">
         <p className="text-xs font-bold uppercase tracking-[.14em] text-edvanta-tealdark">Curso completo con certificado</p>
         <h2 id="aceptacion-titulo" className="mt-2 font-display text-xl font-extrabold leading-tight text-edvanta-deep">Antes de ir al pago</h2>
@@ -47,7 +49,7 @@ function DialogoAceptacion({ onResponder }) {
           Con la compra se abren todas las clases, las evaluaciones, los foros y tu certificado verificable. El acceso empieza apenas se apruebe el pago.
         </p>
         <label className={`mt-5 flex cursor-pointer gap-3 rounded-[14px] border bg-edvanta-bg/60 p-4 text-sm leading-6 text-edvanta-deep ${aviso && !acepto ? 'border-[#B42318]' : 'border-edvanta-border'}`}>
-          <input ref={casilla} type="checkbox" checked={acepto} onChange={(e) => { setAcepto(e.target.checked); setAviso(false); }} aria-describedby={aviso && !acepto ? 'aceptacion-aviso' : undefined} className="mt-1 h-4 w-4 shrink-0 accent-[#082E86]" />
+          <input ref={casilla} type="checkbox" checked={acepto} onChange={(e) => { setAcepto(e.target.checked); setAviso(false); }} aria-describedby={aviso && !acepto ? 'aceptacion-aviso' : undefined} className="mt-0.5 h-5 w-5 shrink-0 accent-[#082E86]" />
           <span>
             {TEXTO_ACEPTACION}{' '}
             <a href="/terminos" target="_blank" rel="noopener noreferrer" className="font-semibold text-edvanta-blue underline">Leer los términos</a>
@@ -56,9 +58,10 @@ function DialogoAceptacion({ onResponder }) {
         {aviso && !acepto && (
           <p id="aceptacion-aviso" role="alert" className="mt-2 text-sm font-semibold text-[#B42318]">Marca la casilla para continuar al pago.</p>
         )}
-        <div className="mt-5 flex flex-wrap items-center justify-end gap-3">
-          <button type="button" onClick={() => onResponder(false)} className="ed-btn ed-btn--ghost">Cancelar</button>
-          <button type="button" aria-disabled={!acepto} onClick={seguir} className="ed-btn ed-btn--gradient">Ir al pago</button>
+        {/* En el celular, «Ir al pago» ocupa el ancho y queda arriba, al alcance del pulgar. */}
+        <div className="mt-5 flex flex-col-reverse gap-2 sm:flex-row sm:items-center sm:justify-end sm:gap-3">
+          <button type="button" onClick={() => onResponder(false)} className="ed-btn ed-btn--ghost w-full sm:w-auto">Cancelar</button>
+          <button type="button" aria-disabled={!acepto} onClick={seguir} className="ed-btn ed-btn--gradient w-full sm:w-auto">Ir al pago</button>
         </div>
       </div>
     </div>

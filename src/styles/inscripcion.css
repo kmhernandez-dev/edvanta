@@ -93,7 +93,8 @@
 .ins-plazo b { color: var(--ds-navy); }
 
 /* Planes */
-.ins-planes { display: grid; gap: 18px; padding-block: 36px 56px; }
+/* minmax(0, 1fr): sin esto la tarjeta crece hasta su contenido más ancho y, a 360 px, la página se salía de la pantalla. */
+.ins-planes { display: grid; grid-template-columns: minmax(0, 1fr); gap: 18px; padding-block: 36px 56px; }
 @media (min-width: 860px) { .ins-planes { grid-template-columns: 1.08fr 1fr; align-items: start; } }
 
 .ins-plan {
@@ -104,7 +105,9 @@
   background: var(--ds-white);
   padding: 28px;
   box-shadow: var(--ds-sh-sm);
+  min-width: 0;
 }
+@media (max-width: 420px) { .ins-plan { padding: 22px 18px; } .ins-plan__precio { font-size: 2.2rem; } }
 
 .ins-plan--certificado {
   border: 2px solid transparent;
@@ -184,7 +187,7 @@
 .ins-faq { max-width: 860px; }
 .ins-faq > div { margin-top: 20px; }
 .ins-ayuda { margin: 20px 0 0; color: var(--ds-text-2); font-size: var(--ds-fs-sm); }
-.ins-ayuda a { color: var(--ds-teal-strong); font-weight: 600; text-decoration: underline; }
+.ins-ayuda a { display: inline-block; padding-block: 12px; color: var(--ds-teal-strong); font-weight: 600; text-decoration: underline; }
 
 /* Cierre */
 .ins-cierre { background: var(--ds-grad-navy); padding-block: 56px; color: #fff; }
@@ -193,7 +196,8 @@
 .ins-cierre h2 { margin: 0; font-family: var(--ds-font-display); font-size: var(--ds-fs-h2); font-weight: 700; letter-spacing: -0.02em; line-height: 1.15; }
 .ins-cierre p { margin: 10px 0 0; color: #DDE6FA; font-size: var(--ds-fs-md); }
 .ins-cierre__botones { display: grid; gap: 12px; }
-.ins-cierre__gratis { color: #DDE6FA; font-size: var(--ds-fs-sm); text-decoration: underline; text-underline-offset: 3px; }
+/* Zona de toque de 44 px: en el celular un enlace de una línea se falla con el dedo. */
+.ins-cierre__gratis { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding-inline: 8px; color: #DDE6FA; font-size: var(--ds-fs-sm); text-decoration: underline; text-underline-offset: 3px; }
 .ins-cierre__gratis:hover { color: #fff; }
 
 /* Barra en el teléfono */

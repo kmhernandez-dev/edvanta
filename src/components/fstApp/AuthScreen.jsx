@@ -10,7 +10,7 @@
  * ============================================================
  */
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { Link, useLocation, useSearchParams } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import { supabaseConfigured } from '../../lib/supabase';
@@ -97,6 +97,13 @@ export default function AuthScreen({ onSuccess }) {
       .catch(() => { if (!cancelled) setGoogleEnabled(true); });
     return () => { cancelled = true; };
   }, []);
+
+  // En el celular el aviso sale arriba de la tarjeta y el botón abajo: se
+  // trae a la vista para que no parezca que el botón no hizo nada.
+  const avisoRef = useRef(null);
+  useEffect(() => {
+    if (formError || authError || successMessage) avisoRef.current?.scrollIntoView?.({ block: 'center', behavior: 'smooth' });
+  }, [formError, authError, successMessage]);
 
   const switchMode = next => {
     setMode(next);
@@ -213,8 +220,9 @@ export default function AuthScreen({ onSuccess }) {
             {mode === 'reset' && 'Te enviaremos un enlace para restablecer tu contraseña.'}
           </p>
 
+          <div ref={avisoRef} className="scroll-mt-24" />
           {(formError || authError) && (
-            <div className="mt-4 rounded-xl border border-rose-200 bg-rose-50 p-3 text-xs leading-5 text-rose-700" role="alert">
+            <div className="mt-4 rounded-xl border border-rose-200 bg-rose-50 p-3 text-sm leading-5 text-rose-700" role="alert">
               {formError || friendlyError(authError)}
               {showResend && mode === 'login' && (
                 <button
@@ -229,7 +237,7 @@ export default function AuthScreen({ onSuccess }) {
             </div>
           )}
           {successMessage && (
-            <div className="mt-4 rounded-xl border border-emerald-200 bg-emerald-50 p-3 text-xs leading-5 text-emerald-800" role="status">
+            <div className="mt-4 rounded-xl border border-emerald-200 bg-emerald-50 p-3 text-sm leading-5 text-emerald-800" role="status">
               {successMessage}
             </div>
           )}

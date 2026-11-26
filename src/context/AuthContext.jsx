@@ -153,6 +153,13 @@ export function AuthProvider({ children }) {
       setAuthError(error.message);
       return { error: error.message };
     }
+    // Con la confirmación por correo activa, Supabase no devuelve error si
+    // el correo ya tiene cuenta: responde un usuario sin identidades y no
+    // envía nada. Sin este aviso la persona se queda esperando un correo
+    // que nunca llega.
+    if (data.user && Array.isArray(data.user.identities) && data.user.identities.length === 0) {
+      return { error: 'User already registered', yaExiste: true };
+    }
     if (data.user) {
       const consents = [
         { user_id: data.user.id, consent_type: 'terms', version: CONSENT_VERSION, accepted: true, accepted_at: new Date().toISOString() },
@@ -223,13 +230,13 @@ export function AuthProvider({ children }) {
     return { ok: true };
   }, []);
 
-  const resendConfirmationEmail = useCallback(async email => {
+  const resendConfirmationEmail = useCallback(async (email, redirectPath = '/mi-espacio') => {
     setAuthError('');
     const client = requireSupabase();
     const { error } = await client.auth.resend({
       type: 'signup',
       email,
-      options: { emailRedirectTo: `${window.location.origin}/mi-espacio` },
+      options: { emailRedirectTo: authRedirect(redirectPath) },
     });
     if (error) {
       setAuthError(error.message);

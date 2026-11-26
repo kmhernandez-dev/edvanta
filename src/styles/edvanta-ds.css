@@ -130,6 +130,11 @@
     box-shadow var(--ds-dur-2) var(--ds-ease),
     transform var(--ds-dur-2) var(--ds-ease);
 }
+/* Celulares angostos: un texto largo («Resolver mis dudas por WhatsApp») pasa a
+   dos líneas en vez de salirse de la pantalla y quedar cortado. */
+@media (max-width: 420px) {
+  .ed-btn { max-width: 100%; white-space: normal; padding-block: 0.55rem; --btn-px: 1.1rem; }
+}
 .ed-btn svg { flex-shrink: 0; width: 1.1em; height: 1.1em; transition: transform var(--ds-dur-2) var(--ds-ease); }
 .ed-btn:hover:not(:disabled):not([aria-disabled='true']) { transform: translateY(-1px); }
 .ed-btn:active:not(:disabled) { transform: translateY(0) scale(0.98); transition-duration: var(--ds-dur-1); }
@@ -645,7 +650,7 @@ body:has(.ed-barra-movil) .ed-wa-flotante { bottom: 5.5rem; }
 .ed-reloj--oscuro .ed-reloj__l { color: #E8EEFB; }
 
 .ed-cupon {
-  position: relative; display: flex; align-items: center; justify-content: space-between; gap: 14px;
+  position: relative; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 14px; min-width: 0;
   padding: 14px 16px 14px 20px; border-radius: 14px; background: #FFF; border: 2px dashed var(--ds-promo-vivo);
   box-shadow: 0 16px 34px -24px rgba(217, 58, 34, 0.7);
 }

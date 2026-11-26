@@ -148,6 +148,13 @@
     scroll-behavior: smooth;
   }
 
+  /* Ninguna página se ensancha más que la pantalla del celular: un enlace
+     largo o una tabla ancha movían la barra fija de compra fuera de la vista.
+     «clip» no rompe los elementos pegajosos, a diferencia de «hidden». */
+  @supports (overflow: clip) {
+    html, body { overflow-x: clip; }
+  }
+
   body {
     @apply font-sans text-gray-800 bg-white antialiased;
   }
@@ -219,7 +226,10 @@
      el mismo texto se lee igual dentro y fuera del aula. */
   .ed-prose {
     @apply text-base leading-7 text-edvanta-muted;
+    overflow-wrap: break-word;
   }
+  /* Las direcciones largas de las referencias se parten en vez de ensanchar la página. */
+  .ed-prose a { overflow-wrap: anywhere; }
   .ed-prose h2 { @apply mt-8 mb-2 font-display text-xl font-extrabold text-edvanta-deep; }
   .ed-prose h3 { @apply mt-6 mb-2 font-display text-lg font-bold text-edvanta-deep; }
   .ed-prose h4 { @apply mt-5 mb-1.5 text-base font-bold text-edvanta-deep; }
@@ -545,3 +555,13 @@
   .ed-backdrop::before, .ed-backdrop::after { animation: none; }
   .ed-reveal { opacity: 1; transform: none; transition: none; }
 }
+
+/* ── Celular: nada tapa el botón de compra ─────────────────────
+   El aviso de cookies (z 70) quedaba encima de la barra fija de compra
+   (.ed-barra-movil, z 30) en guías e inscripción: quien entraba por
+   primera vez no podía tocar «Comprar». Si la página tiene esa barra, el
+   aviso sube y se queda encima de ella. */
+@media (max-width: 1023px) {
+  body:has(.ed-barra-movil) .ed-cookies { bottom: calc(100px + env(safe-area-inset-bottom, 0px)); }
+}
+.ed-barra-movil { padding-bottom: max(12px, env(safe-area-inset-bottom, 0px)); }

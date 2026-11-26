@@ -268,7 +268,7 @@ export default function ComunidadDetalle() {
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={entrar}
-                  className="mt-3 inline-flex w-full items-center justify-center gap-1.5 text-sm font-semibold text-edvanta-tealdark hover:underline"
+                  className="mt-1 inline-flex min-h-11 w-full items-center justify-center gap-1.5 text-sm font-semibold text-edvanta-tealdark hover:underline"
                 >
                   <MessageCircle className="h-4 w-4" aria-hidden="true" />
                   O escribe a Karla por WhatsApp
