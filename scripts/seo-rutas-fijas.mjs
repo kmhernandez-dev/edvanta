@@ -40,6 +40,11 @@ import { htmlDePagina, jsonLdDePagina } from '../src/lib/vademecum/html.js';
 import { clasesDelVademecum, urlsAbsolutas } from '../api/lib/enlaces-de-salud.js';
 import { casosDeVademecum, htmlDeCasos } from '../src/lib/casosClinicos/enlacesInversos.js';
 import { robotsDePaginaDelVademecum, robotsDelVademecum, tituloDeVademecum } from '../src/lib/vademecum/indexable.js';
+import {
+  articulosDeComunidad, articulosDeMonografia, htmlDeArticulos, HUBS_DE_LA_TANDA, TEXTO_GUIAS_COMUNIDAD,
+  TITULO_ARTICULOS_COMUNIDAD_QF, TITULO_GUIAS_COMUNIDAD, TITULO_HUBS, tituloArticulosMonografia,
+} from '../src/lib/articulosRelacionados.js';
+import { ARTICULOS_COMUNIDAD_WEBINARS } from '../src/data/articulosComunidadWebinars.js';
 import { COMUNIDADES, META_COMUNIDADES, PREGUNTAS_COMUNIDADES } from '../src/data/comunidadesSalud.js';
 import { DIFICULTADES } from '../src/data/encuestaComunidades.js';
 import { cortoDeComunidad, descripcionDeComunidad, faqJsonLd, paraDeComunidad, preguntasDeComunidad, tituloSeoDeComunidad } from '../src/lib/comunidades/seo.js';
@@ -96,6 +101,7 @@ const contenidoComunidad = (c) => {
 ${(DIFICULTADES[c.slug] || []).length ? `<section><h2>Temas que se conversan en el grupo</h2><ul>${DIFICULTADES[c.slug].map(([, t]) => `<li>${t}</li>`).join('')}</ul></section>` : ''}
 <section><h2>Reglas del grupo</h2><ol>${c.reglas.map((t) => `<li>${t}</li>`).join('')}</ol><p>${c.noEs}</p></section>
 ${articulos ? `<section><h2>Artículos para empezar</h2><ul>${articulos}</ul></section>` : ''}
+${htmlDeArticulos(TITULO_GUIAS_COMUNIDAD, articulosDeComunidad(c.slug, ARTICULOS), TEXTO_GUIAS_COMUNIDAD)}
 <section><h2>Cómo entrar al grupo de apoyo</h2><p>Inscríbete gratis en esta página y responde la encuesta de un minuto; después escribe por WhatsApp a Karla Hernández, química farmacéutica, para recibir el acceso al grupo de apoyo de ${cortoDeComunidad(c)}. <a href="${c.whatsapp}">Abrir WhatsApp</a>.</p>${curso}${guia}${guiaPaciente}</section>
 <section><h2>Preguntas sobre el grupo de apoyo</h2>${faq}</section>`;
 };
@@ -103,7 +109,8 @@ ${articulos ? `<section><h2>Artículos para empezar</h2><ul>${articulos}</ul></s
 const contenidoComunidades = () => `<section><p>Grupos de apoyo en línea, gratis y por WhatsApp, organizados por enfermedad, para pacientes y cuidadores. No son consultorios ni servicios de urgencias.</p></section>
 <section><h2>Grupos de apoyo por enfermedad</h2><ul>${COMUNIDADES.map((c) => `<li><a href="${c.ruta}">${c.titulo}</a>: ${c.resumen}</li>`).join('')}</ul></section>
 <section><h2>Cómo funciona</h2><ol><li>Escribes por WhatsApp y dices qué grupo de apoyo te interesa.</li><li>Recibes las reglas y la bienvenida.</li><li>Participas a tu ritmo; no hay ventas dentro del grupo.</li></ol></section>
-<section><h2>Preguntas sobre los grupos de apoyo</h2>${PREGUNTAS_COMUNIDADES.map(([q, a]) => `<h3>${q}</h3><p>${a}</p>`).join('')}</section>`;
+<section><h2>Preguntas sobre los grupos de apoyo</h2>${PREGUNTAS_COMUNIDADES.map(([q, a]) => `<h3>${q}</h3><p>${a}</p>`).join('')}</section>
+${htmlDeArticulos(TITULO_HUBS, HUBS_DE_LA_TANDA)}`;
 
 /** HTML de un examen: preguntas, opciones y clave de respuestas visible. */
 const contenidoExamen = (e) => {
@@ -581,7 +588,8 @@ for (const p of [...GRUPOS_VADEMECUM, ...MONOGRAFIAS]) {
     ...(p.revisor ? { reviewedBy: { '@type': 'Person', name: p.revisor, ...(p.revisorUrl ? { url: p.revisorUrl } : {}) } } : {}),
     enlaces: [['Vademécum', '/vademecum'], ...(grupo ? [[grupo.nombre, `/vademecum/${grupo.slug}`]] : [])],
     relatedLink: urlsAbsolutas([...clases.clases, ...clases.cursos]),
-    contenido: htmlDePagina(p, { hijos, enlaces: p.enlaces || [], clases, casosHtml: htmlDeCasos(casosDeVademecum(p.slug)) }),
+    // + los artículos de estudio de la monografía (src/lib/articulosRelacionados.js).
+    contenido: `${htmlDePagina(p, { hijos, enlaces: p.enlaces || [], clases, casosHtml: htmlDeCasos(casosDeVademecum(p.slug)) })}${htmlDeArticulos(tituloArticulosMonografia(p.nombre), articulosDeMonografia(p.slug, ARTICULOS))}`,
   });
 }
 
@@ -591,7 +599,7 @@ add('/comunidad', 'Comunidad de químicos farmacéuticos | Edvanta', 'Comunidad 
   tipo: 'CollectionPage',
   seccion: 'Comunidad',
   h1: 'La comunidad de químicos farmacéuticos para crecer con criterio',
-  contenido: contenidoComunidadQF(),
+  contenido: `${contenidoComunidadQF()}${htmlDeArticulos(TITULO_ARTICULOS_COMUNIDAD_QF, ARTICULOS_COMUNIDAD_WEBINARS.map((a) => ({ slug: a.slug, titulo: a.title })))}`,
   enlaces: [['Temas de la comunidad', '/comunidad/temas'], ['Webinars', '/webinars'], ['Cursos', '/cursos'], ['Instituciones', '/instituciones'], ['Edvanta Contigo', '/contigo']],
   extraJsonLd: [{
     '@type': 'FAQPage',

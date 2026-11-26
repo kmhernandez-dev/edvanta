@@ -189,8 +189,9 @@ const seccion = (titulo, html) => (html ? `<section><h2>${esc(titulo)}</h2>${htm
  *  nombre       el título visible («Curso de …»)
  *  relacionados [{ slug, titulo }] de la misma área
  *  emisor       quién expide el certificado (EMISOR.nombre)
+ *  articulos    [{ slug, titulo }] de estudio del curso (articulos-de-cursos.js)
  */
-export function cuerpoDeCurso(ficha, { nombre, relacionados = [], emisor = 'Edvanta' } = {}) {
+export function cuerpoDeCurso(ficha, { nombre, relacionados = [], emisor = 'Edvanta', articulos = [] } = {}) {
   const propio = ficha.dondeSeEstudia === 'edvanta';
   const temario = (ficha.temario || []).filter((u) => u && u.title);
   const descripcion = propio ? parrafosDeHtml(ficha.descripcionHtml) : [];
@@ -227,6 +228,9 @@ export function cuerpoDeCurso(ficha, { nombre, relacionados = [], emisor = 'Edva
         `<p>${esc(certificado.nota)}</p>${certificado.condiciones ? `<p>${esc(certificado.condiciones)}</p>` : ''}`)
       : '',
     seccion('Preguntas frecuentes', preguntasDeCurso(ficha, emisor).map((p) => `<h3>${esc(p.q)}</h3><p>${esc(p.a)}</p>`).join('')),
+    articulos.length
+      ? seccion('Artículos para estudiar este curso', `<ul>${articulos.map((a) => `<li><a href="/articulos/${esc(a.slug)}">${esc(a.titulo)}</a></li>`).join('')}</ul>`)
+      : '',
     relacionados.length
       ? seccion('Cursos relacionados', `<ul>${relacionados.map((r) => `<li><a href="/${esc(r.slug)}">${esc(r.titulo)}</a></li>`).join('')}</ul>`)
       : '',

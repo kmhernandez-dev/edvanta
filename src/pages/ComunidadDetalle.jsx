@@ -17,6 +17,7 @@ import InscripcionComunidad from '../components/comunidad/InscripcionComunidad';
 import { comunidadDeSlug } from '../data/comunidadesSalud';
 import { DIFICULTADES } from '../data/encuestaComunidades';
 import { articulos } from '../data/articulos';
+import { articulosDeComunidad, TEXTO_GUIAS_COMUNIDAD, TITULO_GUIAS_COMUNIDAD } from '../lib/articulosRelacionados';
 import { updatePageSeo } from '../utils/seo';
 import { descripcionDeComunidad, faqJsonLd, paraDeComunidad, preguntasDeComunidad, tituloSeoDeComunidad } from '../lib/comunidades/seo';
 import { trackEvent } from '../utils/analytics';
@@ -86,6 +87,8 @@ export default function ComunidadDetalle() {
     .map((s) => articulos.find((a) => a.slug === s))
     .filter(Boolean)
     .slice(0, 6);
+  // Las guías del grupo (cómo participar, acompañar, preguntas, taller…).
+  const guiasDelGrupo = articulosDeComunidad(comunidad.slug, articulos);
 
   const entrar = () => trackEvent('community_join_clicked', {
     enfermedad: comunidad.slug,
@@ -220,6 +223,20 @@ export default function ComunidadDetalle() {
                       </Link>
                     ))}
                   </div>
+                </>
+              )}
+
+              {guiasDelGrupo.length > 0 && (
+                <>
+                  <h2 className="mt-10 font-display text-2xl font-extrabold text-edvanta-deep">{TITULO_GUIAS_COMUNIDAD}</h2>
+                  <p className="mt-2 text-sm leading-6 text-edvanta-muted">{TEXTO_GUIAS_COMUNIDAD}</p>
+                  <ul className="mt-4 grid gap-2 sm:grid-cols-2">
+                    {guiasDelGrupo.map((a) => (
+                      <li key={a.slug}>
+                        <Link to={`/articulos/${a.slug}`} className="block rounded-xl border border-edvanta-border bg-white px-4 py-3 text-sm font-semibold leading-6 text-edvanta-deep transition hover:border-edvanta-teal/40 hover:text-edvanta-blue">{a.titulo}</Link>
+                      </li>
+                    ))}
+                  </ul>
                 </>
               )}
 

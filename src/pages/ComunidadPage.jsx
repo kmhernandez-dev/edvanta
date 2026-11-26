@@ -10,6 +10,8 @@ import {
 } from '../data/edvanta/comunidadWebinars';
 import { ClusterCard, WebinarCard, CierreDePublico } from '../components/edvanta/comunidadWebinars';
 import { updatePageSeo } from '../utils/seo';
+import { ARTICULOS_COMUNIDAD_WEBINARS } from '../data/articulosComunidadWebinars';
+import { TITULO_ARTICULOS_COMUNIDAD_QF } from '../lib/articulosRelacionados';
 import { trackEvent } from '../utils/analytics';
 
 const SITIO = 'https://edvanta.co';
@@ -214,6 +216,17 @@ export default function ComunidadPage() {
           <div className="mt-8 max-w-3xl">
             <Faq items={PREGUNTAS.map(([q, a]) => ({ q, a }))} />
           </div>
+        </Section>
+
+        <Section>
+          <SectionHeading eyebrow="Para leer" title={TITULO_ARTICULOS_COMUNIDAD_QF} />
+          <ul className="mt-8 grid max-w-4xl gap-2 sm:grid-cols-2">
+            {ARTICULOS_COMUNIDAD_WEBINARS.map((a) => (
+              <li key={a.slug}>
+                <Link to={`/articulos/${a.slug}`} className="block rounded-xl border border-edvanta-border bg-white px-4 py-3 text-sm font-semibold leading-6 text-edvanta-deep transition hover:border-edvanta-teal/40 hover:text-edvanta-blue">{a.title}</Link>
+              </li>
+            ))}
+          </ul>
         </Section>
 
         <CierreDePublico publico="profesional" origen="comunidad_cierre" />

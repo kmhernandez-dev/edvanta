@@ -40,6 +40,7 @@ import {
 import { REVISION_DE_CLASES } from '../lib/revision-de-clases.js';
 import { EMISOR, verificarCertificado } from '../lib/aula/certificados.js';
 import { cuerpoDeCurso, datosDeCurso, faqDeCurso } from '../lib/html-de-ficha.js';
+import { articulosDelCurso } from '../lib/articulos-de-cursos.js';
 import { cuerpoDeCatalogo, cursosDelCatalogo, listaDeCursos } from '../lib/html-de-catalogo.js';
 import { cuerpoDePerfil, extrasDePerfil } from '../lib/html-de-perfil.js';
 import { faqDeTextoDePerfil, textoDePerfil } from '../lib/textos-de-perfiles.js';
@@ -256,7 +257,7 @@ export function crearRutasPublicas({ db, sitio = '', obtenerPlantilla = async ()
           faqDeCurso(ficha, EMISOR.nombre, canonical),
         ],
         // La ficha completa ya escrita: la reemplaza la aplicación al cargar.
-        cuerpo: cuerpoDeCurso(ficha, { nombre, relacionados, emisor: EMISOR.nombre }),
+        cuerpo: cuerpoDeCurso(ficha, { nombre, relacionados, emisor: EMISOR.nombre, articulos: articulosDelCurso(`/${slug}`) }),
       });
       return aplicacion(res, 200, html);
     } catch (e) {

@@ -14,6 +14,7 @@ import SiteFooter from '../components/edvanta/SiteFooter';
 import { Breadcrumb } from '../components/edvanta/ui';
 import { COMUNIDADES, META_COMUNIDADES, PREGUNTAS_COMUNIDADES } from '../data/comunidadesSalud';
 import { faqJsonLd } from '../lib/comunidades/seo';
+import { HUBS_DE_LA_TANDA, TITULO_HUBS } from '../lib/articulosRelacionados';
 import { trackEvent } from '../utils/analytics';
 import { waLink } from '../config/links';
 import { updatePageSeo } from '../utils/seo';
@@ -203,6 +204,17 @@ export default function ComunidadesIndex() {
               </details>
             ))}
           </div>
+        </section>
+
+        <section className="mx-auto max-w-4xl px-4 pt-14 sm:px-6 lg:px-8">
+          <h2 className="font-display text-2xl font-extrabold text-edvanta-deep sm:text-3xl">{TITULO_HUBS}</h2>
+          <ul className="mt-6 grid gap-2 sm:grid-cols-2">
+            {HUBS_DE_LA_TANDA.map((a) => (
+              <li key={a.slug}>
+                <Link to={`/articulos/${a.slug}`} className="block rounded-xl border border-edvanta-border bg-white px-4 py-3 text-sm font-semibold leading-6 text-edvanta-deep transition hover:border-edvanta-teal/40 hover:text-edvanta-blue">{a.titulo}</Link>
+              </li>
+            ))}
+          </ul>
         </section>
 
         <section className="mx-auto max-w-4xl px-4 py-14 text-center sm:px-6 lg:px-8">
