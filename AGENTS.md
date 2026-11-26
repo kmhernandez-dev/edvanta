@@ -76,6 +76,12 @@ SEO de cursos (500 blogs + 30.000 keywords):
 npm.cmd run seo:cursos
 ```
 
+SEO de vademécum, cursos y comunidades (1.000 artículos):
+
+```bash
+npm.cmd run seo:vademecum1000
+```
+
 Windows note: use `npm.cmd` if PowerShell blocks `npm.ps1`.
 
 ## Key Files
@@ -106,6 +112,12 @@ Windows note: use `npm.cmd` if PowerShell blocks `npm.ps1`.
 | `scripts/generar-30000-keywords-cursos.mjs` | Builds 30,000 course keywords, class queries and GEO questions mapped to real URLs |
 | `seo/keywords-30000-cursos.csv` | 30,000 keywords for the 63 Aula courses and 500 blogs |
 | `seo/plan-30000-keywords-cursos.md` | Campaign plan, funnel, editorial rules and measurement |
+| `src/data/vademecumArticulos1000.js` | 1,000 articles: 500 vademécum, 378 course + vademécum, 115 patient communities, 7 hubs |
+| `public/articulos/articulos_edvanta/vademecum/*` | 500 vademécum study articles based on the reviewed monographs |
+| `public/articulos/articulos_edvanta/cursos-comunidades/*` | 500 course/community articles and hubs |
+| `scripts/generar-1000-articulos-vademecum.mjs` | Builds the 1,000 articles from reviewed monographs, Aula courses and communities |
+| `scripts/lib/vademecum-1000-datos.mjs` + `vademecum-1000-angulos.mjs` | Course/monograph/community data, angles and content builders |
+| `src/__tests__/vademecum-1000-articulos.test.jsx` | 1,000 articles, coverage, links, no dose units, similarity |
 | `scripts/generar-30000-keywords-comunidad-webinars.mjs` | Builds the 30,000-keyword CSV, deduped against `seo/*.csv` and mapped to real URLs |
 | `seo/keywords-30000-comunidad-webinars.csv` | 30,000 keywords with audience, intent, funnel stage, CTA and destination URL |
 | `seo/plan-30000-comunidad-webinars.md` | Campaign plan, funnel map and operating rules |
@@ -230,6 +242,15 @@ Backend:
 - `seo/keywords-30000-cursos.csv` contiene 30.000 keywords únicas mapeadas a 500 blogs y 63 fichas; `seo/plan-30000-keywords-cursos.md` explica el embudo y el uso.
 - Control reproducible: `src/__tests__/seo-500-blogs-cursos.test.jsx` (500 artículos, mínimo 3.000 caracteres, enlaces reales, similitud, CSV y URLs).
 - Los artículos son borradores editoriales generados: revisar antes de una campaña pagada. La similitud media es baja, pero la decisión final de indexar es editorial.
+
+## Vademécum, cursos y comunidades (1.000 artículos)
+
+- 1.000 artículos en `public/articulos/articulos_edvanta/vademecum/` y `cursos-comunidades/`, registrados en `src/data/vademecumArticulos1000.js`.
+- Distribución: 500 de vademécum (3 ángulos por cada una de las 152 monografías revisadas + 44 artículos para comunidades), 378 de cursos integrados con vademécum y comunidad, 115 de comunidades de pacientes (5 por cada una de las 23) y 7 hubs.
+- Los artículos de vademécum usan las secciones reales de las monografías revisadas. Las cifras de dosis se omiten a propósito y el texto enlaza a `/vademecum/<slug>`; no son una prescripción.
+- Los artículos de cursos y comunidades usan las clases reales del Aula, las monografías, los artículos revisados y las reglas de cada comunidad. No se inventan miembros, testimonios, precios ni recomendaciones clínicas.
+- Control reproducible: `src/__tests__/vademecum-1000-articulos.test.jsx` (1.000, cobertura, enlaces, mínimo 3.000 caracteres, sin unidades de dosis y similitud).
+- Son borradores editoriales generados: revisar antes de una campaña pagada. La fuente clínica es la monografía revisada, no el artículo.
 
 ## Payment Flow
 
