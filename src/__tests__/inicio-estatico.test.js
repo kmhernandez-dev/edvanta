@@ -43,5 +43,10 @@ describe('inicio con contenido y enlaces para los buscadores', () => {
     // Llaves balanceadas: un error aquí tumba todo el sitio.
     const sinComentarios = conf.split('\n').map((l) => l.replace(/#.*$/, '')).join('\n');
     expect((sinComentarios.match(/\{/g) || []).length).toBe((sinComentarios.match(/\}/g) || []).length);
+    // Un location repetido hace fallar `nginx -t` en el Dockerfile y Coolify
+    // deja la versión anterior sin avisar (26-nov-2026: «location = /» doble).
+    const locations = [...sinComentarios.matchAll(/^\s*location\s+([^{]+?)\s*\{/gm)].map((m) => m[1].replace(/\s+/g, ' '));
+    const repetidos = locations.filter((l, i) => locations.indexOf(l) !== i);
+    expect(repetidos).toEqual([]);
   });
 });
