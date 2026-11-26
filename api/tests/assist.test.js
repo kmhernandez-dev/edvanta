@@ -147,6 +147,36 @@ describe('Edvanta Assist', () => {
     expect(tercera.status).toBe(409);
   });
 
+  it('vende por WhatsApp con el enlace de Mercado Pago y, al registrar el pago, abre el curso', async () => {
+    const r = await a.get('/admin/assist/persona?correo=caro.quieta@correo.co');
+    const accion = r.data.acciones.find((x) => x.tipo === 'vender-por-enlace');
+    expect(accion).toMatchObject({ prioridad: 'media', operacion: 'pago-enlace', courseId: curso.id });
+    expect(accion.detalle).toMatch(/COP 60\.000/);
+    // Sin WhatsApp registrado no hay mensaje que abrir (ver la prueba de utilidades).
+    expect(accion.whatsapp).toBeNull();
+
+    // Solo administración registra el pago.
+    expect((await personas.caro.c.post('/admin/assist/persona/pago-enlace', { correo: 'caro.quieta@correo.co', courseId: curso.id })).status).toBe(403);
+    const pago = await a.post('/admin/assist/persona/pago-enlace', { correo: 'caro.quieta@correo.co', courseId: curso.id });
+    expect(pago.status).toBe(200);
+    const { rows: [fila] } = await t.db.query(
+      `SELECT p.status, p.note FROM aula_certificate_payments p JOIN aula_users u ON u.id = p.user_id
+        WHERE u.email = 'caro.quieta@correo.co' AND p.course_id = $1`, [curso.id],
+    );
+    expect(fila.status).toBe('aprobado');
+    expect(fila.note).toContain('mpago.li');
+    // Ya pagó: la acción de venta desaparece de su ficha.
+    const despues = await a.get('/admin/assist/persona?correo=caro.quieta@correo.co');
+    expect(despues.data.acciones.find((x) => x.tipo === 'vender-por-enlace')).toBeUndefined();
+
+    // Deja a Caro como estaba: las pruebas siguientes la usan sin pago.
+    await t.db.query(
+      `DELETE FROM aula_certificate_payments
+        WHERE course_id = $1 AND user_id = (SELECT id FROM aula_users WHERE email = 'caro.quieta@correo.co')`,
+      [curso.id],
+    );
+  });
+
   it('no ofrece el certificado a quien no ha terminado', async () => {
     const r = await a.post('/admin/assist/persona/oferta-certificado', { correo: 'caro.quieta@correo.co', courseId: curso.id });
     expect(r.status).toBe(400);
@@ -234,5 +264,24 @@ describe('Assist: utilidades', () => {
     }, { now: AHORA });
     expect(acciones.map((x) => x.prioridad)).toEqual(['alta', 'media']);
     for (const x of acciones) expect(decodeURIComponent(x.whatsapp)).not.toMatch(/\b(bienvenido|bienvenida|interesado|interesada|querido|querida)\b/i);
+  });
+
+  it('el mensaje de venta por WhatsApp lleva el enlace de pago y la aceptación de términos', () => {
+    const acciones = siguientesAcciones({
+      nombre: 'Alex Rivera', whatsapp: '573001234567',
+      cuenta: { estado: 'active', creada: '2026-12-01T00:00:00Z', ultimaEntrada: '2026-12-09T00:00:00Z' },
+      cursos: [{
+        courseId: 9, titulo: 'Farmacovigilancia práctica', estado: 'en_progreso', avance: 20,
+        ultimoAcceso: '2026-12-09T00:00:00Z', inscrito: '2026-12-01T00:00:00Z', terminado: null, retirado: false,
+        certificado: { conCosto: true, pagado: false, estado: 'sin_pagar', precioHoy: 199000 },
+      }],
+      pagos: [], solicitudes: [],
+    }, { now: AHORA });
+    const venta = acciones.find((x) => x.tipo === 'vender-por-enlace');
+    expect(venta.detalle).toMatch(/En el sitio hoy le corresponde COP 199\.000/);
+    const mensaje = decodeURIComponent(venta.whatsapp);
+    expect(mensaje).toContain('https://mpago.li/2T6UAUr');
+    expect(mensaje).toContain('aceptas los términos');
+    expect(mensaje).not.toMatch(/\b(bienvenido|bienvenida|interesado|interesada)\b/i);
   });
 });
