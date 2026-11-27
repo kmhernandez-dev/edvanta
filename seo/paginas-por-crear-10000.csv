@@ -1,0 +1,241 @@
+url,tipo,keywords_asignadas,plan
+/articulos/amoxicilina-acido-clavulanico-para-que-sirve,Artículo,48,vademecum-antimicrobianos-2000-keywords.csv
+/articulos/cefuroxima-para-que-sirve,Artículo,35,vademecum-antimicrobianos-2000-keywords.csv
+/articulos/ampicilina-para-que-sirve,Artículo,31,vademecum-antimicrobianos-2000-keywords.csv
+/articulos/cefadroxilo-para-que-sirve,Artículo,28,vademecum-antimicrobianos-2000-keywords.csv
+/articulos/cefixima-para-que-sirve,Artículo,28,vademecum-antimicrobianos-2000-keywords.csv
+/articulos/cefepime-para-que-sirve,Artículo,28,vademecum-antimicrobianos-2000-keywords.csv
+/articulos/meropenem-para-que-sirve,Artículo,28,vademecum-antimicrobianos-2000-keywords.csv
+/articulos/cefazolina-para-que-sirve,Artículo,26,vademecum-antimicrobianos-2000-keywords.csv
+/articulos/piperacilina-tazobactam-para-que-sirve,Artículo,25,vademecum-antimicrobianos-2000-keywords.csv
+/articulos/antibiotico-para-la-garganta,Artículo,24,vademecum-antimicrobianos-2000-keywords.csv
+/articulos/antibiotico-para-dolor-de-muela,Artículo,21,vademecum-antimicrobianos-2000-keywords.csv
+/articulos/ceftazidima-avibactam-para-que-sirve,Artículo,21,vademecum-antimicrobianos-2000-keywords.csv
+/articulos/ertapenem-para-que-sirve,Artículo,21,vademecum-antimicrobianos-2000-keywords.csv
+/articulos/antibiotico-para-infeccion-de-la-piel,Artículo,20,vademecum-antimicrobianos-2000-keywords.csv
+/articulos/como-tomar-antibioticos-correctamente,Artículo,20,vademecum-antimicrobianos-2000-keywords.csv
+/vademecum/medicamentos-para-enfermedades-huerfanas,Monografía del vademécum,19,keywords-5000-edvanta-pacientes.csv
+/articulos/ampicilina-sulbactam-para-que-sirve,Artículo,19,vademecum-antimicrobianos-2000-keywords.csv
+/articulos/oxacilina-para-que-sirve,Artículo,19,vademecum-antimicrobianos-2000-keywords.csv
+/articulos/penicilina-g-cristalina-para-que-sirve,Artículo,19,vademecum-antimicrobianos-2000-keywords.csv
+/articulos/ceftazidima-para-que-sirve,Artículo,19,vademecum-antimicrobianos-2000-keywords.csv
+/articulos/cefotaxima-para-que-sirve,Artículo,19,vademecum-antimicrobianos-2000-keywords.csv
+/articulos/imipenem-para-que-sirve,Artículo,19,vademecum-antimicrobianos-2000-keywords.csv
+/articulos/farmacia-oncologica,Artículo,18,keywords-5000-edvanta-pacientes.csv
+/articulos/resistencia-antimicrobiana-mecanismos,Artículo,18,vademecum-antimicrobianos-2000-keywords.csv
+/articulos/antibioticoterapia-empirica-guia,Artículo,18,vademecum-antimicrobianos-2000-keywords.csv
+/articulos/seguridad-de-antibioticos-farmacovigilancia,Artículo,18,vademecum-antimicrobianos-2000-keywords.csv
+/articulos/gentamicina-para-que-sirve,Artículo,18,vademecum-antimicrobianos-2000-keywords.csv
+/articulos/amikacina-para-que-sirve,Artículo,17,vademecum-antimicrobianos-2000-keywords.csv
+/articulos/efectos-secundarios-de-los-antibioticos,Artículo,17,vademecum-antimicrobianos-2000-keywords.csv
+/articulos/tinidazol-para-que-sirve,Artículo,16,vademecum-antimicrobianos-2000-keywords.csv
+/articulos/antibiotico-para-la-otitis,Artículo,16,vademecum-antimicrobianos-2000-keywords.csv
+/articulos/antibiotico-para-vaginosis-bacteriana,Artículo,16,vademecum-antimicrobianos-2000-keywords.csv
+/contigo/cancer-de-cuello-uterino,Página Contigo (paciente),15,keywords-5000-edvanta-pacientes.csv
+/contigo/cancer-gastrico,Página Contigo (paciente),15,keywords-5000-edvanta-pacientes.csv
+/contigo/cancer-de-ovario,Página Contigo (paciente),15,keywords-5000-edvanta-pacientes.csv
+/contigo/cancer-de-pancreas,Página Contigo (paciente),15,keywords-5000-edvanta-pacientes.csv
+/contigo/cancer-de-higado,Página Contigo (paciente),15,keywords-5000-edvanta-pacientes.csv
+/contigo/cancer-de-rinon,Página Contigo (paciente),15,keywords-5000-edvanta-pacientes.csv
+/contigo/cancer-de-vejiga,Página Contigo (paciente),15,keywords-5000-edvanta-pacientes.csv
+/contigo/cancer-de-endometrio,Página Contigo (paciente),15,keywords-5000-edvanta-pacientes.csv
+/contigo/cancer-de-testiculo,Página Contigo (paciente),15,keywords-5000-edvanta-pacientes.csv
+/contigo/melanoma,Página Contigo (paciente),15,keywords-5000-edvanta-pacientes.csv
+/contigo/leucemia,Página Contigo (paciente),15,keywords-5000-edvanta-pacientes.csv
+/contigo/leucemia-linfoblastica-aguda,Página Contigo (paciente),15,keywords-5000-edvanta-pacientes.csv
+/contigo/linfoma,Página Contigo (paciente),15,keywords-5000-edvanta-pacientes.csv
+/contigo/cancer-infantil,Página Contigo (paciente),15,keywords-5000-edvanta-pacientes.csv
+/articulos/antibioticos-para-infecciones-de-transmision-sexual,Artículo,15,vademecum-antimicrobianos-2000-keywords.csv
+/contigo/fibrosis-quistica,Página Contigo (paciente),14,keywords-5000-edvanta-pacientes.csv
+/contigo/atrofia-muscular-espinal,Página Contigo (paciente),14,keywords-5000-edvanta-pacientes.csv
+/contigo/distrofia-muscular-de-duchenne,Página Contigo (paciente),14,keywords-5000-edvanta-pacientes.csv
+/articulos/tutela-para-medicamentos-guia-paso-a-paso,Artículo,14,keywords-5000-edvanta-pacientes.csv
+/articulos/guia-para-cuidadores-de-pacientes-cronicos,Artículo,14,keywords-5000-edvanta-pacientes.csv
+/articulos/cuidar-a-un-paciente-con-cancer-en-casa,Artículo,14,keywords-5000-edvanta-pacientes.csv
+/articulos/moxifloxacino-para-que-sirve,Artículo,14,vademecum-antimicrobianos-2000-keywords.csv
+/articulos/alergia-a-la-penicilina,Artículo,14,vademecum-antimicrobianos-2000-keywords.csv
+/contigo/enfermedad-de-von-willebrand,Página Contigo (paciente),13,keywords-5000-edvanta-pacientes.csv
+/contigo/enfermedad-de-gaucher,Página Contigo (paciente),13,keywords-5000-edvanta-pacientes.csv
+/contigo/enfermedad-de-fabry,Página Contigo (paciente),13,keywords-5000-edvanta-pacientes.csv
+/contigo/enfermedad-de-pompe,Página Contigo (paciente),13,keywords-5000-edvanta-pacientes.csv
+/contigo/mucopolisacaridosis,Página Contigo (paciente),13,keywords-5000-edvanta-pacientes.csv
+/articulos/dilucion-y-administracion-de-antibioticos,Artículo,13,vademecum-antimicrobianos-2000-keywords.csv
+/articulos/vancomicina-para-que-sirve,Artículo,13,vademecum-antimicrobianos-2000-keywords.csv
+/articulos/antibiotico-para-la-tos,Artículo,13,vademecum-antimicrobianos-2000-keywords.csv
+/articulos/tratamiento-helicobacter-pylori-antibioticos,Artículo,13,vademecum-antimicrobianos-2000-keywords.csv
+/articulos/mipres-que-es-y-como-funciona,Artículo,12,keywords-5000-edvanta-pacientes.csv
+/articulos/capacitacion-institucional-antimicrobianos,Artículo,12,vademecum-antimicrobianos-2000-keywords.csv
+/articulos/recursos-estudiantes-antibioticos,Artículo,12,vademecum-antimicrobianos-2000-keywords.csv
+/articulos/eps-no-entrega-medicamentos-que-hacer,Artículo,11,keywords-5000-edvanta-pacientes.csv
+/articulos/enfermedades-de-alto-costo-en-colombia,Artículo,11,keywords-5000-edvanta-pacientes.csv
+/articulos/problemas-farmacoterapeuticos-con-antibioticos-casos,Artículo,11,vademecum-antimicrobianos-2000-keywords.csv
+/articulos/organizar-los-medicamentos-de-un-paciente-en-casa,Artículo,10,keywords-5000-edvanta-pacientes.csv
+/articulos/farmacovigilancia-de-biologicos-y-biosimilares,Artículo,10,keywords-5000-edvanta-pacientes.csv
+/articulos/antibiotico-para-amebas-y-giardia,Artículo,10,vademecum-antimicrobianos-2000-keywords.csv
+/articulos/antibioticos-interacciones-frecuentes,Artículo,10,vademecum-antimicrobianos-2000-keywords.csv
+/articulos/comprar-antibioticos-sin-formula-colombia,Artículo,10,vademecum-antimicrobianos-2000-keywords.csv
+/articulos/resistencia-a-los-antibioticos-para-pacientes,Artículo,10,vademecum-antimicrobianos-2000-keywords.csv
+/articulos/gestion-de-medicamentos-de-alto-costo,Artículo,9,keywords-5000-edvanta-pacientes.csv
+/articulos/antibioticos-en-ninos,Artículo,9,vademecum-antimicrobianos-2000-keywords.csv
+/articulos/cancer-gastrico-tratamiento-y-medicamentos,Artículo,8,keywords-5000-edvanta-pacientes.csv
+/articulos/vivir-con-cancer-gastrico,Artículo,8,keywords-5000-edvanta-pacientes.csv
+/articulos/cancer-de-cuello-uterino-tratamiento-y-medicamentos,Artículo,8,keywords-5000-edvanta-pacientes.csv
+/articulos/vivir-con-cancer-de-cuello-uterino,Artículo,8,keywords-5000-edvanta-pacientes.csv
+/articulos/cancer-de-ovario-tratamiento-y-medicamentos,Artículo,8,keywords-5000-edvanta-pacientes.csv
+/articulos/vivir-con-cancer-de-ovario,Artículo,8,keywords-5000-edvanta-pacientes.csv
+/articulos/cancer-de-pancreas-tratamiento-y-medicamentos,Artículo,8,keywords-5000-edvanta-pacientes.csv
+/articulos/vivir-con-cancer-de-pancreas,Artículo,8,keywords-5000-edvanta-pacientes.csv
+/articulos/cancer-de-higado-tratamiento-y-medicamentos,Artículo,8,keywords-5000-edvanta-pacientes.csv
+/articulos/vivir-con-cancer-de-higado,Artículo,8,keywords-5000-edvanta-pacientes.csv
+/articulos/cancer-de-rinon-tratamiento-y-medicamentos,Artículo,8,keywords-5000-edvanta-pacientes.csv
+/articulos/vivir-con-cancer-de-rinon,Artículo,8,keywords-5000-edvanta-pacientes.csv
+/articulos/cancer-de-vejiga-tratamiento-y-medicamentos,Artículo,8,keywords-5000-edvanta-pacientes.csv
+/articulos/vivir-con-cancer-de-vejiga,Artículo,8,keywords-5000-edvanta-pacientes.csv
+/articulos/cancer-de-endometrio-tratamiento-y-medicamentos,Artículo,8,keywords-5000-edvanta-pacientes.csv
+/articulos/vivir-con-cancer-de-endometrio,Artículo,8,keywords-5000-edvanta-pacientes.csv
+/articulos/cancer-de-testiculo-tratamiento-y-medicamentos,Artículo,8,keywords-5000-edvanta-pacientes.csv
+/articulos/vivir-con-cancer-de-testiculo,Artículo,8,keywords-5000-edvanta-pacientes.csv
+/articulos/vivir-con-melanoma,Artículo,8,keywords-5000-edvanta-pacientes.csv
+/articulos/melanoma-tratamiento-y-medicamentos,Artículo,8,keywords-5000-edvanta-pacientes.csv
+/articulos/leucemia-tratamiento-y-medicamentos,Artículo,8,keywords-5000-edvanta-pacientes.csv
+/articulos/vivir-con-leucemia,Artículo,8,keywords-5000-edvanta-pacientes.csv
+/articulos/vivir-con-leucemia-linfoblastica-aguda,Artículo,8,keywords-5000-edvanta-pacientes.csv
+/articulos/leucemia-linfoblastica-aguda-tratamiento-y-medicamentos,Artículo,8,keywords-5000-edvanta-pacientes.csv
+/articulos/vivir-con-linfoma,Artículo,8,keywords-5000-edvanta-pacientes.csv
+/articulos/linfoma-tratamiento-y-medicamentos,Artículo,8,keywords-5000-edvanta-pacientes.csv
+/articulos/cancer-infantil-tratamiento-y-medicamentos,Artículo,8,keywords-5000-edvanta-pacientes.csv
+/articulos/vivir-con-enfermedad-de-von-willebrand,Artículo,8,keywords-5000-edvanta-pacientes.csv
+/articulos/fibrosis-quistica-derechos-del-paciente-en-colombia,Artículo,8,keywords-5000-edvanta-pacientes.csv
+/articulos/enfermedad-de-gaucher-derechos-del-paciente-en-colombia,Artículo,8,keywords-5000-edvanta-pacientes.csv
+/articulos/enfermedad-de-fabry-derechos-del-paciente-en-colombia,Artículo,8,keywords-5000-edvanta-pacientes.csv
+/articulos/enfermedad-de-pompe-derechos-del-paciente-en-colombia,Artículo,8,keywords-5000-edvanta-pacientes.csv
+/articulos/mucopolisacaridosis-derechos-del-paciente-en-colombia,Artículo,8,keywords-5000-edvanta-pacientes.csv
+/articulos/derecho-de-peticion-y-queja-supersalud-medicamentos,Artículo,8,keywords-5000-edvanta-pacientes.csv
+/articulos/pbs-plan-de-beneficios-en-salud-medicamentos,Artículo,8,keywords-5000-edvanta-pacientes.csv
+/articulos/medicamentos-biologicos-y-biosimilares-para-pacientes,Artículo,8,keywords-5000-edvanta-pacientes.csv
+/articulos/enfermedades-huerfanas-en-colombia,Artículo,8,keywords-5000-edvanta-pacientes.csv
+/articulos/leyes-para-pacientes-con-cancer-en-colombia,Artículo,8,keywords-5000-edvanta-pacientes.csv
+/articulos/programas-de-apoyo-a-pacientes-en-colombia,Artículo,8,keywords-5000-edvanta-pacientes.csv
+/articulos/antineoplasicos-orales-adherencia,Artículo,8,keywords-5000-edvanta-pacientes.csv
+/articulos/antibiotico-para-la-sinusitis,Artículo,8,vademecum-antimicrobianos-2000-keywords.csv
+/articulos/antibiotico-para-la-diarrea,Artículo,8,vademecum-antimicrobianos-2000-keywords.csv
+/articulos/cancer-de-cuello-uterino-derechos-del-paciente-en-colombia,Artículo,7,keywords-5000-edvanta-pacientes.csv
+/articulos/cancer-gastrico-derechos-del-paciente-en-colombia,Artículo,7,keywords-5000-edvanta-pacientes.csv
+/articulos/cancer-de-ovario-derechos-del-paciente-en-colombia,Artículo,7,keywords-5000-edvanta-pacientes.csv
+/articulos/cancer-de-pancreas-derechos-del-paciente-en-colombia,Artículo,7,keywords-5000-edvanta-pacientes.csv
+/articulos/cancer-de-higado-derechos-del-paciente-en-colombia,Artículo,7,keywords-5000-edvanta-pacientes.csv
+/articulos/cancer-de-rinon-derechos-del-paciente-en-colombia,Artículo,7,keywords-5000-edvanta-pacientes.csv
+/articulos/cancer-de-vejiga-derechos-del-paciente-en-colombia,Artículo,7,keywords-5000-edvanta-pacientes.csv
+/articulos/cancer-de-testiculo-derechos-del-paciente-en-colombia,Artículo,7,keywords-5000-edvanta-pacientes.csv
+/articulos/cancer-de-endometrio-derechos-del-paciente-en-colombia,Artículo,7,keywords-5000-edvanta-pacientes.csv
+/articulos/melanoma-derechos-del-paciente-en-colombia,Artículo,7,keywords-5000-edvanta-pacientes.csv
+/articulos/leucemia-derechos-del-paciente-en-colombia,Artículo,7,keywords-5000-edvanta-pacientes.csv
+/articulos/leucemia-linfoblastica-aguda-derechos-del-paciente-en-colombia,Artículo,7,keywords-5000-edvanta-pacientes.csv
+/articulos/linfoma-derechos-del-paciente-en-colombia,Artículo,7,keywords-5000-edvanta-pacientes.csv
+/articulos/vivir-con-cancer-infantil,Artículo,7,keywords-5000-edvanta-pacientes.csv
+/articulos/enfermedad-de-von-willebrand-derechos-del-paciente-en-colombia,Artículo,7,keywords-5000-edvanta-pacientes.csv
+/articulos/vivir-con-fibrosis-quistica,Artículo,7,keywords-5000-edvanta-pacientes.csv
+/articulos/atrofia-muscular-espinal-derechos-del-paciente-en-colombia,Artículo,7,keywords-5000-edvanta-pacientes.csv
+/articulos/distrofia-muscular-de-duchenne-derechos-del-paciente-en-colombia,Artículo,7,keywords-5000-edvanta-pacientes.csv
+/articulos/vivir-con-enfermedad-de-gaucher,Artículo,7,keywords-5000-edvanta-pacientes.csv
+/articulos/vivir-con-enfermedad-de-fabry,Artículo,7,keywords-5000-edvanta-pacientes.csv
+/articulos/vivir-con-enfermedad-de-pompe,Artículo,7,keywords-5000-edvanta-pacientes.csv
+/articulos/vivir-con-mucopolisacaridosis,Artículo,7,keywords-5000-edvanta-pacientes.csv
+/vademecum/infliximab,Monografía del vademécum,7,keywords-5000-edvanta-pacientes.csv
+/vademecum/abatacept,Monografía del vademécum,7,keywords-5000-edvanta-pacientes.csv
+/vademecum/tocilizumab,Monografía del vademécum,7,keywords-5000-edvanta-pacientes.csv
+/vademecum/ocrelizumab,Monografía del vademécum,7,keywords-5000-edvanta-pacientes.csv
+/vademecum/natalizumab,Monografía del vademécum,7,keywords-5000-edvanta-pacientes.csv
+/vademecum/agalsidasa,Monografía del vademécum,7,keywords-5000-edvanta-pacientes.csv
+/vademecum/imiglucerasa,Monografía del vademécum,7,keywords-5000-edvanta-pacientes.csv
+/vademecum/alglucosidasa-alfa,Monografía del vademécum,7,keywords-5000-edvanta-pacientes.csv
+/vademecum/laronidasa,Monografía del vademécum,7,keywords-5000-edvanta-pacientes.csv
+/vademecum/idursulfasa,Monografía del vademécum,7,keywords-5000-edvanta-pacientes.csv
+/articulos/copagos-y-cuotas-moderadoras-en-alto-costo,Artículo,7,keywords-5000-edvanta-pacientes.csv
+/articulos/cuidados-paliativos-en-casa,Artículo,7,keywords-5000-edvanta-pacientes.csv
+/articulos/programas-de-soporte-a-pacientes-psp,Artículo,7,keywords-5000-edvanta-pacientes.csv
+/articulos/antibioticos-en-el-embarazo,Artículo,7,vademecum-antimicrobianos-2000-keywords.csv
+/articulos/enfermedad-de-von-willebrand-tratamiento-y-medicamentos,Artículo,6,keywords-5000-edvanta-pacientes.csv
+/articulos/cancer-infantil-derechos-del-paciente-en-colombia,Artículo,6,keywords-5000-edvanta-pacientes.csv
+/articulos/vivir-con-atrofia-muscular-espinal,Artículo,6,keywords-5000-edvanta-pacientes.csv
+/articulos/vivir-con-distrofia-muscular-de-duchenne,Artículo,6,keywords-5000-edvanta-pacientes.csv
+/vademecum/adalimumab,Monografía del vademécum,6,keywords-5000-edvanta-pacientes.csv
+/vademecum/etanercept,Monografía del vademécum,6,keywords-5000-edvanta-pacientes.csv
+/vademecum/certolizumab,Monografía del vademécum,6,keywords-5000-edvanta-pacientes.csv
+/vademecum/golimumab,Monografía del vademécum,6,keywords-5000-edvanta-pacientes.csv
+/vademecum/factor-viii,Monografía del vademécum,6,keywords-5000-edvanta-pacientes.csv
+/vademecum/factor-ix,Monografía del vademécum,6,keywords-5000-edvanta-pacientes.csv
+/vademecum/emicizumab,Monografía del vademécum,6,keywords-5000-edvanta-pacientes.csv
+/vademecum/ofatumumab,Monografía del vademécum,6,keywords-5000-edvanta-pacientes.csv
+/vademecum/interferon-beta,Monografía del vademécum,6,keywords-5000-edvanta-pacientes.csv
+/articulos/inmunoterapia-oncologica-para-farmaceuticos,Artículo,6,keywords-5000-edvanta-pacientes.csv
+/articulos/antirretrovirales-para-farmaceuticos,Artículo,6,keywords-5000-edvanta-pacientes.csv
+/vademecum/medicamentos-biologicos-en-enfermedades-autoinmunes,Monografía del vademécum,6,keywords-5000-edvanta-pacientes.csv
+/vademecum/factores-de-coagulacion-y-hemofilia,Monografía del vademécum,6,keywords-5000-edvanta-pacientes.csv
+/articulos/antibioticos-y-alcohol,Artículo,6,vademecum-antimicrobianos-2000-keywords.csv
+/articulos/tifoidea-y-leptospirosis-tratamiento,Artículo,6,vademecum-antimicrobianos-2000-keywords.csv
+/articulos/cuidar-a-alguien-con-enfermedad-de-von-willebrand,Artículo,5,keywords-5000-edvanta-pacientes.csv
+/articulos/cuidar-a-alguien-con-fibrosis-quistica,Artículo,5,keywords-5000-edvanta-pacientes.csv
+/articulos/cuidar-a-alguien-con-atrofia-muscular-espinal,Artículo,5,keywords-5000-edvanta-pacientes.csv
+/articulos/cuidar-a-alguien-con-distrofia-muscular-de-duchenne,Artículo,5,keywords-5000-edvanta-pacientes.csv
+/articulos/cuidar-a-alguien-con-enfermedad-de-gaucher,Artículo,5,keywords-5000-edvanta-pacientes.csv
+/articulos/cuidar-a-alguien-con-enfermedad-de-fabry,Artículo,5,keywords-5000-edvanta-pacientes.csv
+/articulos/cuidar-a-alguien-con-enfermedad-de-pompe,Artículo,5,keywords-5000-edvanta-pacientes.csv
+/articulos/cuidar-a-alguien-con-mucopolisacaridosis,Artículo,5,keywords-5000-edvanta-pacientes.csv
+/vademecum/tofacitinib,Monografía del vademécum,5,keywords-5000-edvanta-pacientes.csv
+/vademecum/baricitinib,Monografía del vademécum,5,keywords-5000-edvanta-pacientes.csv
+/vademecum/upadacitinib,Monografía del vademécum,5,keywords-5000-edvanta-pacientes.csv
+/vademecum/leflunomida,Monografía del vademécum,5,keywords-5000-edvanta-pacientes.csv
+/vademecum/bictegravir-emtricitabina-tenofovir,Monografía del vademécum,5,keywords-5000-edvanta-pacientes.csv
+/vademecum/dolutegravir,Monografía del vademécum,5,keywords-5000-edvanta-pacientes.csv
+/vademecum/efavirenz,Monografía del vademécum,5,keywords-5000-edvanta-pacientes.csv
+/vademecum/lamivudina,Monografía del vademécum,5,keywords-5000-edvanta-pacientes.csv
+/vademecum/abacavir,Monografía del vademécum,5,keywords-5000-edvanta-pacientes.csv
+/vademecum/darunavir,Monografía del vademécum,5,keywords-5000-edvanta-pacientes.csv
+/vademecum/cabotegravir-rilpivirina,Monografía del vademécum,5,keywords-5000-edvanta-pacientes.csv
+/vademecum/raltegravir,Monografía del vademécum,5,keywords-5000-edvanta-pacientes.csv
+/vademecum/tenofovir,Monografía del vademécum,5,keywords-5000-edvanta-pacientes.csv
+/vademecum/glecaprevir-pibrentasvir,Monografía del vademécum,5,keywords-5000-edvanta-pacientes.csv
+/vademecum/sofosbuvir-velpatasvir,Monografía del vademécum,5,keywords-5000-edvanta-pacientes.csv
+/vademecum/ledipasvir-sofosbuvir,Monografía del vademécum,5,keywords-5000-edvanta-pacientes.csv
+/vademecum/fingolimod,Monografía del vademécum,5,keywords-5000-edvanta-pacientes.csv
+/vademecum/teriflunomida,Monografía del vademécum,5,keywords-5000-edvanta-pacientes.csv
+/vademecum/dimetilfumarato,Monografía del vademécum,5,keywords-5000-edvanta-pacientes.csv
+/vademecum/cladribina,Monografía del vademécum,5,keywords-5000-edvanta-pacientes.csv
+/vademecum/risdiplam,Monografía del vademécum,5,keywords-5000-edvanta-pacientes.csv
+/vademecum/nusinersen,Monografía del vademécum,5,keywords-5000-edvanta-pacientes.csv
+/vademecum/elexacaftor-tezacaftor-ivacaftor,Monografía del vademécum,5,keywords-5000-edvanta-pacientes.csv
+/articulos/cambio-de-eps-durante-un-tratamiento,Artículo,5,keywords-5000-edvanta-pacientes.csv
+/articulos/trabajo-e-incapacidad-con-enfermedad-cronica,Artículo,5,keywords-5000-edvanta-pacientes.csv
+/articulos/gestor-farmaceutico-y-dispensacion-de-alto-costo,Artículo,5,keywords-5000-edvanta-pacientes.csv
+/articulos/central-de-mezclas-oncologicas,Artículo,5,keywords-5000-edvanta-pacientes.csv
+/articulos/cadena-de-frio-de-medicamentos-biologicos,Artículo,5,keywords-5000-edvanta-pacientes.csv
+/articulos/antibiotico-para-la-neumonia,Artículo,5,vademecum-antimicrobianos-2000-keywords.csv
+/articulos/antibioticos-para-el-acne,Artículo,5,vademecum-antimicrobianos-2000-keywords.csv
+/articulos/antibiotico-para-la-conjuntivitis,Artículo,5,vademecum-antimicrobianos-2000-keywords.csv
+/articulos/antibioticos-y-anticonceptivos,Artículo,5,vademecum-antimicrobianos-2000-keywords.csv
+/articulos/cuidar-a-alguien-con-cancer-de-cuello-uterino,Artículo,4,keywords-5000-edvanta-pacientes.csv
+/articulos/cuidar-a-alguien-con-cancer-gastrico,Artículo,4,keywords-5000-edvanta-pacientes.csv
+/articulos/cuidar-a-alguien-con-cancer-de-ovario,Artículo,4,keywords-5000-edvanta-pacientes.csv
+/articulos/cuidar-a-alguien-con-cancer-de-pancreas,Artículo,4,keywords-5000-edvanta-pacientes.csv
+/articulos/cuidar-a-alguien-con-cancer-de-higado,Artículo,4,keywords-5000-edvanta-pacientes.csv
+/articulos/cuidar-a-alguien-con-cancer-de-rinon,Artículo,4,keywords-5000-edvanta-pacientes.csv
+/articulos/cuidar-a-alguien-con-cancer-de-vejiga,Artículo,4,keywords-5000-edvanta-pacientes.csv
+/articulos/cuidar-a-alguien-con-cancer-de-endometrio,Artículo,4,keywords-5000-edvanta-pacientes.csv
+/articulos/cuidar-a-alguien-con-cancer-de-testiculo,Artículo,4,keywords-5000-edvanta-pacientes.csv
+/articulos/cuidar-a-alguien-con-melanoma,Artículo,4,keywords-5000-edvanta-pacientes.csv
+/articulos/cuidar-a-alguien-con-leucemia,Artículo,4,keywords-5000-edvanta-pacientes.csv
+/articulos/cuidar-a-alguien-con-leucemia-linfoblastica-aguda,Artículo,4,keywords-5000-edvanta-pacientes.csv
+/articulos/cuidar-a-alguien-con-linfoma,Artículo,4,keywords-5000-edvanta-pacientes.csv
+/articulos/cuidar-a-alguien-con-cancer-infantil,Artículo,4,keywords-5000-edvanta-pacientes.csv
+/articulos/enfermedad-de-gaucher-tratamiento-y-medicamentos,Artículo,4,keywords-5000-edvanta-pacientes.csv
+/articulos/enfermedad-de-fabry-tratamiento-y-medicamentos,Artículo,4,keywords-5000-edvanta-pacientes.csv
+/articulos/enfermedad-de-pompe-tratamiento-y-medicamentos,Artículo,4,keywords-5000-edvanta-pacientes.csv
+/articulos/mucopolisacaridosis-tratamiento-y-medicamentos,Artículo,4,keywords-5000-edvanta-pacientes.csv
+/articulos/medicamentos-vitales-no-disponibles-para-pacientes,Artículo,4,keywords-5000-edvanta-pacientes.csv
+/articulos/cuidar-a-un-nino-con-cancer,Artículo,4,keywords-5000-edvanta-pacientes.csv
+/articulos/fibrosis-quistica-tratamiento-y-medicamentos,Artículo,3,keywords-5000-edvanta-pacientes.csv
+/articulos/atrofia-muscular-espinal-tratamiento-y-medicamentos,Artículo,3,keywords-5000-edvanta-pacientes.csv
+/articulos/distrofia-muscular-de-duchenne-tratamiento-y-medicamentos,Artículo,3,keywords-5000-edvanta-pacientes.csv
+/vademecum/antivirales-para-la-hepatitis-c,Monografía del vademécum,3,keywords-5000-edvanta-pacientes.csv
+/vademecum/antirretrovirales,Monografía del vademécum,2,keywords-5000-edvanta-pacientes.csv

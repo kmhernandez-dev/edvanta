@@ -162,6 +162,32 @@ Doce exámenes de **120 preguntas** construidos a partir de los bloques del mate
 
 Cada examen tiene dos formas de práctica en la misma página: **individual** y **quiz en grupos**. El modo grupal permite 2 a 4 equipos, nombres propios, turnos rotativos, temporizador de 20/30/45 segundos, marcador en vivo, explicación después de cada respuesta y ranking final con opción de compartir por WhatsApp. No requiere registro y no guarda datos personales.
 
+## Estado de indexación del plan (27-nov-2026)
+
+Se cruzaron las URL de destino de todos los mapas de keywords (`seo/*.csv`) con los sitemaps en vivo y con producción:
+
+| | URLs | Keywords asignadas |
+|---|---|---|
+| Planeadas en los CSV | 2.065 | 87.917 |
+| Publicadas, indexables y en el sitemap | 1.825 | 85.611 |
+| **Por crear** (dan 404) | **240** | **2.306** |
+
+- **Lo publicado ya se envió:**
+  - sitemaps leídos por Google el 27-nov: 5.858 URL, 3.168 de ellas artículos;
+  - IndexNow para Bing;
+  - solicitudes diarias en Search Console, unas 10 por día.
+- **Enlazado interno (commit 3692818):** en el HTML estático, 2.590 páginas tenían un solo enlace entrante. Era la causa de las 1.594 «Descubierta: actualmente sin indexar». Con estos cambios quedaron 59:
+  - «Sigue leyendo» con vecinos en anillo;
+  - fichas de `/medicamentos` y de `/salud` enlazadas entre sí;
+  - miga de pan con la categoría;
+  - `/herramientas` con sus herramientas.
+- **Por crear:** las 240 están en `seo/paginas-por-crear-10000.csv`:
+  - 171 artículos: 54 de antimicrobianos («[antibiótico] para qué sirve»), cáncer, enfermedades huérfanas y derechos del paciente;
+  - 47 monografías del vademécum;
+  - 22 páginas de Contigo.
+
+  Son contenido clínico: se escriben por lotes y se indexan solo con la revisión de Karla.
+
 ## Riesgos y reglas que no se rompen
 
 - No se inventan URLs de grupos de WhatsApp que no existen. Donde no hay grupo, el botón abre el WhatsApp de Karla con un mensaje de bienvenida y ella incorpora a la persona.
