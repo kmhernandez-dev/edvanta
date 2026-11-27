@@ -30,7 +30,11 @@ export function enFrase(nombre) {
 
 /* ── Artículos ───────────────────────────────────────────── */
 
-export const tituloDeArticulo = (art = {}) => tituloConMarca(art.seoTitle || art.title);
+// Un seoTitle cortado con «...» (193 de las tandas generadas, 27-nov-2026)
+// perdía el ángulo y repetía el mismo título en 2-4 artículos del curso:
+// se usa el título completo, que es único aunque pase de 60 caracteres.
+const recortado = (t) => /(\.\.\.|…)\s*$/.test(String(t || ''));
+export const tituloDeArticulo = (art = {}) => tituloConMarca(recortado(art.seoTitle) ? art.title : (art.seoTitle || art.title));
 export const descripcionDeArticulo = (art = {}) => limpiarDescripcion(art.seoDescription || art.description);
 
 /** Página de una categoría de artículos. */

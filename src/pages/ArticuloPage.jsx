@@ -35,7 +35,7 @@ import HerramientaArticulo from '../components/articulos/HerramientaArticulo';
 import BloqueComunidad from '../components/comunidad/BloqueComunidad';
 import AffiliateCourseButton from '../components/AffiliateCourseButton';
 import { articulos, getArticulo } from '../data/articulos';
-import { crearVecinos } from '../lib/articulosRelacionados';
+import { crearSeries, crearVecinos } from '../lib/articulosRelacionados';
 import { comunidadDeArticulo, herramientaDeArticulo } from '../data/comunidadesSalud';
 import { examenDeArticulo } from '../data/examenes';
 import { trackEvent } from '../utils/analytics';
@@ -67,6 +67,8 @@ const SALUD = ['fst', 'contigo', 'atenfarma'];
 // «Sigue leyendo»: vecinos en anillo dentro de la categoría (mismo cálculo
 // que el HTML estático de scripts/prerenderizar-articulos.mjs).
 const vecinosDeArticulo = crearVecinos(articulos);
+// La serie del artículo y su página pilar (mismo cálculo que el HTML estático).
+const serieDeArticulo = crearSeries(articulos);
 
 const fechaLarga = (iso) => {
   try {
@@ -507,6 +509,7 @@ export default function ArticuloPage() {
     const otros = mismos.length >= 3 ? [] : articulos.filter((a) => a.slug !== art.slug && a.category !== art.category && a.marca === art.marca);
     return [...mismos, ...otros].slice(0, 3);
   }, [art]);
+  const serie = useMemo(() => (art ? serieDeArticulo(art) : null), [art]);
 
   useEffect(() => {
     if (!art) return;
@@ -832,6 +835,33 @@ export default function ArticuloPage() {
           </aside>
         </div>
       </div>
+
+      {serie && (
+        <section id="serie" className="border-t border-edvanta-border bg-white">
+          <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
+            <p className="inline-flex items-center gap-2.5 text-xs font-bold uppercase tracking-[.14em] text-edvanta-blue">
+              <span className="h-[3px] w-6 rounded-full" style={{ background: 'var(--ed-gradient-brand)' }} aria-hidden="true" />
+              Serie
+            </p>
+            <h2 className="mt-2 font-display text-2xl font-extrabold text-edvanta-deep sm:text-3xl">{serie.titulo}</h2>
+            <Link to={serie.pilar.ruta} className="mt-3 inline-flex items-center gap-1.5 text-sm font-bold text-edvanta-blue hover:underline">
+              {serie.pilar.nombre}
+              <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            </Link>
+            <ol className="mt-6 grid gap-2 sm:grid-cols-2">
+              {serie.articulos.map((a, i) => (
+                <li key={a.slug}>
+                  {a.slug === serie.actual ? (
+                    <span className="flex gap-3 rounded-xl border border-edvanta-teal/40 bg-edvanta-mint/30 px-4 py-3 text-sm font-semibold leading-6 text-edvanta-deep" aria-current="page"><span className="text-edvanta-muted">{i + 1}.</span> {a.titulo}</span>
+                  ) : (
+                    <Link to={`/articulos/${a.slug}`} className="flex gap-3 rounded-xl border border-edvanta-border bg-white px-4 py-3 text-sm font-semibold leading-6 text-edvanta-deep transition hover:border-edvanta-teal/40 hover:text-edvanta-blue"><span className="text-edvanta-muted">{i + 1}.</span> {a.titulo}</Link>
+                  )}
+                </li>
+              ))}
+            </ol>
+          </div>
+        </section>
+      )}
 
       {relacionados.length > 0 && (
         <section className="border-t border-edvanta-border bg-edvanta-bg">

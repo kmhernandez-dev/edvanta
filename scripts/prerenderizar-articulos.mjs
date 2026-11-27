@@ -36,7 +36,9 @@ const importar = (rel) => import(pathToFileURL(path.join(raiz, rel)).href);
 
 const { articulos } = await importar('src/data/articulos.js');
 // «Sigue leyendo» en anillo dentro de la categoría (no los mismos 4 para todos).
-const { crearVecinos } = await importar('src/lib/articulosRelacionados.js');
+const { crearSeries, crearVecinos, htmlDeSerie } = await importar('src/lib/articulosRelacionados.js');
+// Cada artículo generado con su serie y su página pilar (curso, monografía, grupo, materia).
+const serieDeArticulo = crearSeries(articulos);
 // La miga de pan enlaza la categoría: sus 28 páginas solo las enlazaba /articulos.
 const { rutaDeCategoria } = await importar('src/lib/slug.js');
 const vecinosDeArticulo = crearVecinos(articulos);
@@ -130,6 +132,7 @@ for (const art of articulos) {
   // Las clases gratuitas que enseñan lo mismo (api/lib/enlaces-de-salud.js).
   const clasesPro = clasesDelArticulo(art.slug);
   const relatedLink = urlsAbsolutas([...clasesPro.clases, ...clasesPro.cursos]);
+  const serie = serieDeArticulo(art);
 
   const grafo = [
     {
@@ -148,6 +151,7 @@ for (const art of articulos) {
       publisher: { '@type': 'Organization', name: 'Edvanta', url: SITIO, logo: { '@type': 'ImageObject', url: `${SITIO}/img/logo-edvanta.png` } },
       mainEntityOfPage: { '@type': 'WebPage', '@id': canonical },
       ...(relatedLink.length ? { relatedLink } : {}),
+      ...(serie ? { isPartOf: { '@type': 'CreativeWorkSeries', name: serie.titulo, url: `${SITIO}${serie.pilar.ruta}` } } : {}),
     },
     {
       '@type': 'BreadcrumbList',
@@ -175,6 +179,7 @@ for (const art of articulos) {
     <p><a href="${esAutoraKarla(art) ? '/autores/karla-hernandez' : '/equipo-editorial'}">${esc(autor)}</a>${art.revisor ? ` · Revisado por ${art.revisorUrl ? `<a href="${esc(art.revisorUrl)}" rel="noopener">${esc(art.revisor)}</a>` : esc(art.revisor)}${tieneRevisionClinica(art) ? ` el ${esc(fecha(art.reviewedAt || art.reviewed_at || art.fechaRevision))}` : ' · fecha de revisión pendiente'}` : ''} · Actualizado el ${esc(fecha(art.updated || art.date))}</p>
     <div class="ed-prose">${markdownAHtml(limpiarMarkdown(md))}</div>
     ${comunidad ? `<section><h2>Grupo de apoyo de ${esc(cortoDeComunidad(comunidad))}</h2><p>Grupo de apoyo gratis por WhatsApp para ${esc(paraDeComunidad(comunidad))} y sus cuidadores.</p><p>${esc(comunidad.intro[0])}</p><ul>${comunidad.queEncuentras.map((t) => `<li>${esc(t)}</li>`).join('')}</ul><p><a href="${esc(comunidad.ruta)}">Grupo de apoyo de ${esc(cortoDeComunidad(comunidad))}</a> · <a href="${esc(comunidad.whatsapp)}">Entrar por WhatsApp</a>${comunidad.curso ? ` · <a href="${esc(comunidad.curso.ruta)}">Curso: ${esc(comunidad.curso.nombre)}</a>` : ''}${comunidad.guiaPro ? ` · <a href="${esc(comunidad.guiaPro.ruta)}">Guía: ${esc(comunidad.guiaPro.nombre)}</a>` : ''}${comunidad.guia?.publico === 'pacientes' ? ` · <a href="${esc(comunidad.guia.ruta)}">Guía para pacientes: ${esc(comunidad.guia.nombre)}</a>` : ''}</p><p>Contenido educativo. No diagnostica ni prescribe.</p></section>` : ''}
+    ${htmlDeSerie(serie)}
     ${examen ? `<section><h2>Practica lo que acabas de leer</h2><p><a href="${esc(examen.ruta)}">${esc(examen.titulo)}</a>: ${esc(examen.descripcion)}</p><p>${examen.preguntas.length} preguntas con corrección y explicación. Sin registro.</p></section>` : ''}
   </article>
   ${htmlDeCasos(casosDeArticulo(art.slug))}

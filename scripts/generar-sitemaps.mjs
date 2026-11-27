@@ -1,6 +1,6 @@
 import { existsSync, readFileSync, readdirSync, statSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 
 const raiz = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const dist = path.join(raiz, 'dist');
@@ -68,13 +68,39 @@ for (const { absoluto, relativo } of archivos) {
   if (!porUrl.has(loc)) porUrl.set(loc, { loc, lastmod });
 }
 
-const grupos = { paginas: [], articulos: [], herramientas: [] };
+// Sitemaps por colección (27-nov-2026): Search Console muestra cuánto se
+// indexa de cada una. Los nombres que Google ya conoce se conservan
+// (sitemap-articulos.xml = artículos editoriales; sitemap-paginas.xml = el resto).
+const importar = (rel) => import(pathToFileURL(path.join(raiz, rel)).href);
+const [{ BLOG_CURSOS_500 }, { VADEMECUM_ARTICULOS_1000 }, { ESTUDIANTES_ARTICULOS_1000 }, { ARTICULOS_COMUNIDAD_WEBINARS }] = await Promise.all([
+  importar('src/data/blogCursos500.js'), importar('src/data/vademecumArticulos1000.js'),
+  importar('src/data/estudiantesArticulos1000.js'), importar('src/data/articulosComunidadWebinars.js'),
+]);
+const coleccionDe = new Map();
+for (const a of BLOG_CURSOS_500) coleccionDe.set(a.slug, 'articulos-cursos');
+for (const a of VADEMECUM_ARTICULOS_1000) {
+  coleccionDe.set(a.slug, a.fuente === 'vademecum' ? 'articulos-vademecum' : a.fuente === 'curso' ? 'articulos-cursos' : 'articulos-comunidades');
+}
+for (const a of ESTUDIANTES_ARTICULOS_1000) coleccionDe.set(a.slug, 'articulos-estudiantes');
+for (const a of ARTICULOS_COMUNIDAD_WEBINARS) coleccionDe.set(a.slug, 'articulos-comunidades');
+const SALUD = ['/vademecum', '/medicamentos', '/salud', '/casos-clinicos', '/examenes', '/enfermedades', '/comunidades', '/contigo', '/levotiroxina', '/nutricion-tiroidea'];
+const bajo = (ruta, base) => ruta === base || ruta.startsWith(`${base}/`);
+
+const grupos = {
+  paginas: [], salud: [], brasil: [], herramientas: [],
+  articulos: [], 'articulos-cursos': [], 'articulos-vademecum': [], 'articulos-comunidades': [], 'articulos-estudiantes': [],
+};
 
 for (const item of porUrl.values()) {
-  if (item.loc === `${SITIO}/articulos` || item.loc.startsWith(`${SITIO}/articulos/`)) {
-    grupos.articulos.push(item);
-  } else if (item.loc === `${SITIO}/herramientas` || item.loc.startsWith(`${SITIO}/herramientas/`)) {
+  const ruta = item.loc.slice(SITIO.length) || '/';
+  if (bajo(ruta, '/articulos')) {
+    grupos[coleccionDe.get(ruta.slice('/articulos/'.length)) || 'articulos'].push(item);
+  } else if (bajo(ruta, '/herramientas')) {
     grupos.herramientas.push(item);
+  } else if (bajo(ruta, '/br')) {
+    grupos.brasil.push(item);
+  } else if (SALUD.some((b) => bajo(ruta, b))) {
+    grupos.salud.push(item);
   } else {
     grupos.paginas.push(item);
   }
@@ -95,11 +121,7 @@ const urlset = (lista) => {
 
 const maxFecha = (lista) => lista.map((u) => u.lastmod).filter(Boolean).sort().at(-1) || null;
 
-const segmentos = [
-  ['sitemap-paginas.xml', grupos.paginas],
-  ['sitemap-articulos.xml', grupos.articulos],
-  ['sitemap-herramientas.xml', grupos.herramientas],
-];
+const segmentos = Object.entries(grupos).map(([nombre, lista]) => [`sitemap-${nombre}.xml`, lista]);
 
 for (const [archivo, lista] of segmentos) {
   writeFileSync(path.join(dist, archivo), urlset(lista));
@@ -123,4 +145,4 @@ const indice = [
 writeFileSync(path.join(dist, 'sitemap.xml'), indice);
 writeFileSync(path.join(dist, 'sitemap-index.xml'), indice);
 
-console.log(`Sitemaps: ${porUrl.size} URLs únicas · páginas ${grupos.paginas.length} · artículos ${grupos.articulos.length} · herramientas ${grupos.herramientas.length}`);
+console.log(`Sitemaps: ${porUrl.size} URLs únicas · ${segmentos.map(([archivo, lista]) => `${archivo.replace(/^sitemap-|\.xml$/g, '')} ${lista.length}`).join(' · ')}`);

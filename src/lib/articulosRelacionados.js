@@ -132,6 +132,63 @@ const esc = (t) => String(t ?? '')
   .replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;');
 
 /**
+ * Series: cada artículo generado pertenece a una colección con su página
+ * pilar (27-nov-2026, «indexa todo de manera organizada»):
+ *   curso      → los artículos del curso (blogs, integrados y de
+ *                estudiantes) y la ficha /curso-de-…
+ *   monografía → vademecum-<slug>-<ángulo> y /vademecum/<slug>
+ *   grupo      → comunidad-<slug>-<ángulo> y /comunidades/<slug>
+ *   materia    → los 10 de la materia y /recursos-para-estudiantes-…
+ * Google ve colecciones temáticas con su pilar, no miles de páginas sueltas.
+ *
+ * crearSeries(lista) prepara los grupos una vez; devuelve
+ * (articulo) => { titulo, pilar: { nombre, ruta }, articulos, actual } o null.
+ */
+export function crearSeries(lista = []) {
+  const reVademecum = new RegExp(`^vademecum-(.+)-(${ANGULOS_VADEMECUM.join('|')})$`);
+  const reComunidad = new RegExp(`^comunidad-(.+)-(${ANGULOS_COMUNIDAD.join('|')})$`);
+  const grupos = new Map();
+  const claveDe = new Map();
+  const agregar = (clave, a, datos) => {
+    if (!grupos.has(clave)) grupos.set(clave, { ...datos, articulos: [] });
+    grupos.get(clave).articulos.push(a);
+    claveDe.set(a.slug, clave);
+  };
+  for (const a of lista) {
+    if (!a?.slug || claveDe.has(a.slug)) continue;
+    const v = a.fuente === 'vademecum' && reVademecum.exec(a.slug);
+    if (v) {
+      agregar(`v:${v[1]}`, a, { titulo: 'Serie de estudio de este medicamento', pilar: { nombre: 'Monografía completa en el vademécum', ruta: `/vademecum/${v[1]}` } });
+      continue;
+    }
+    const c = a.fuente === 'comunidad' && reComunidad.exec(a.slug);
+    if (c) {
+      agregar(`c:${c[1]}`, a, { titulo: 'Guías del grupo de apoyo', pilar: { nombre: 'Página del grupo de apoyo', ruta: `/comunidades/${c[1]}` } });
+      continue;
+    }
+    if (a.materia?.slug) {
+      agregar(`m:${a.materia.slug}`, a, { titulo: `Serie de ${a.materia.nombre}`, pilar: { nombre: 'Recursos para estudiantes de Química Farmacéutica', ruta: '/recursos-para-estudiantes-de-quimica-farmaceutica' } });
+      continue;
+    }
+    const url = a.curso?.url;
+    if (url && /^\/curso-(?:de|para)-/.test(url) && !a.fuente?.match(/^(vademecum|comunidad)$/)) {
+      agregar(`k:${url}`, a, { titulo: `Serie del ${a.curso.titulo}`, pilar: { nombre: a.curso.titulo, ruta: url } });
+    }
+  }
+  return (art) => {
+    const g = grupos.get(claveDe.get(art?.slug));
+    if (!g || g.articulos.length < 2) return null;
+    return { titulo: g.titulo, pilar: g.pilar, articulos: g.articulos.map(resumen), actual: art.slug };
+  };
+}
+
+/** La serie en HTML estático; el artículo actual va sin enlace. */
+export function htmlDeSerie(serie) {
+  if (!serie) return '';
+  return `<section id="serie"><h2>${esc(serie.titulo)}</h2><p><a href="${esc(serie.pilar.ruta)}">${esc(serie.pilar.nombre)}</a></p><ol>${serie.articulos.map((a) => (a.slug === serie.actual ? `<li><strong>${esc(a.titulo)}</strong></li>` : `<li><a href="/articulos/${esc(a.slug)}">${esc(a.titulo)}</a></li>`)).join('')}</ol></section>`;
+}
+
+/**
  * Vecinos de las fichas de /medicamentos (en el orden de los datos, que
  * agrupa por área) y de la biblioteca de /salud (por categoría). Antes
  * cada una solo recibía el enlace de su hub.
