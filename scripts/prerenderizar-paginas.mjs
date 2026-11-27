@@ -56,7 +56,13 @@ const plantilla = readFileSync(path.join(dist, 'index.html'), 'utf8');
 const esc = (t) => String(t ?? '')
   .replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;');
 
-function pagina({ titulo, descripcion, canonical, imagen = `${SITIO}/img/og-edvanta.png`, jsonLd = [], cuerpo = '', robots = null }) {
+/**
+ * idioma   otro idioma que el de la plantilla (es-CO): cambia <html lang>
+ *          y og:locale. Lo usan las páginas de Edvanta Brasil (pt-BR).
+ * alternos { hreflang: ruta } de las versiones en otros idiomas; la propia
+ *          página se agrega sola con su idioma.
+ */
+function pagina({ titulo, descripcion, canonical, imagen = `${SITIO}/img/og-edvanta.png`, jsonLd = [], cuerpo = '', robots = null, idioma = null, alternos = null }) {
   const t = esc(titulo);
   const d = esc(descripcion);
   let html = plantilla
@@ -72,6 +78,16 @@ function pagina({ titulo, descripcion, canonical, imagen = `${SITIO}/img/og-edva
     .replace(/(<meta name="twitter:image" content=")[^"]*(")/, `$1${imagen}$2`);
   if (robots) {
     html = html.replace(/<meta name="robots"[^>]*>/, `<meta name="robots" content="${esc(robots)}" />`);
+  }
+  if (idioma) {
+    html = html
+      .replace(/<html lang="[^"]*"/, `<html lang="${esc(idioma)}"`)
+      .replace(/(<meta property="og:locale" content=")[^"]*(")/, `$1${esc(idioma.replace('-', '_'))}$2`);
+  }
+  if (alternos) {
+    const enlaces = Object.entries({ ...(idioma ? { [idioma]: canonical } : {}), ...alternos })
+      .map(([lang, href]) => `    <link rel="alternate" hreflang="${esc(lang)}" href="${esc(href.startsWith('http') ? href : `${SITIO}${href}`)}" />`);
+    html = html.replace('</head>', `${enlaces.join('\n')}\n  </head>`);
   }
   const scripts = jsonLd.map((j) => `    <script type="application/ld+json" data-prerender>${JSON.stringify(j).replaceAll('</', '<\\/')}</script>`).join('\n');
   if (scripts) html = html.replace('</head>', `${scripts}\n  </head>`);
@@ -611,7 +627,9 @@ for (const r of RUTAS_FIJAS) {
   const h1 = r.h1 || String(r.titulo).split(' | ')[0];
   const seccion = r.seccion || 'Edvanta';
   const enlaces = (r.enlaces || []).map(([nombre, to]) => `<li><a href="${esc(to)}">${esc(nombre)}</a></li>`).join('');
-  const cuerpo = `<main><nav aria-label="Ruta de navegación"><a href="/">Inicio</a> › ${esc(seccion)}</nav><h1>${esc(h1)}</h1><p>${esc(r.descripcion)}</p>${r.contenido || ''}${enlaces ? `<ul>${enlaces}</ul>` : ''}<p><a href="/">Volver al inicio</a></p></main>`;
+  // Las páginas en otro idioma (Edvanta Brasil) traen su propio inicio y textos.
+  const [inicio, inicioUrl] = r.inicio || ['Inicio', '/'];
+  const cuerpo = `<main><nav aria-label="Ruta de navegación"><a href="${esc(inicioUrl)}">${esc(inicio)}</a> › ${esc(seccion)}</nav><h1>${esc(h1)}</h1><p>${esc(r.descripcion)}</p>${r.contenido || ''}${enlaces ? `<ul>${enlaces}</ul>` : ''}<p><a href="${esc(inicioUrl)}">${esc(r.volver || 'Volver al inicio')}</a></p></main>`;
   const grafo = [
     {
       '@context': 'https://schema.org',
@@ -619,14 +637,14 @@ for (const r of RUTAS_FIJAS) {
       name: h1,
       description: r.descripcion,
       url: canonical,
-      inLanguage: 'es-CO',
+      inLanguage: r.idioma || 'es-CO',
       isPartOf: { '@type': 'WebSite', name: 'Edvanta', url: SITIO },
       publisher: { '@type': 'Organization', name: 'Edvanta', url: SITIO },
       ...(r.mainEntity ? { mainEntity: r.mainEntity } : {}),
       ...(r.reviewedBy ? { reviewedBy: r.reviewedBy } : {}),
       ...(r.relatedLink?.length ? { relatedLink: r.relatedLink } : {}),
     },
-    migas([['Inicio', `${SITIO}/`], [seccion, `${SITIO}${r.seccionUrl || '/'}`], [h1, canonical]]),
+    migas([[inicio, `${SITIO}${inicioUrl}`], [seccion, `${SITIO}${r.seccionUrl || '/'}`], [h1, canonical]]),
   ];
   // Cada bloque va en su propio <script>: sin @context, Google lo ignora
   // (pasó con el FAQPage de recursos para estudiantes y la Person del perfil).
@@ -638,6 +656,8 @@ for (const r of RUTAS_FIJAS) {
     jsonLd: grafo,
     robots: r.robots || null,
     cuerpo,
+    idioma: r.idioma || null,
+    alternos: r.alternos || null,
   });
   escribir(`${r.ruta.slice(1)}.html`, html);
   escribir(`${r.ruta.slice(1)}/index.html`, html);

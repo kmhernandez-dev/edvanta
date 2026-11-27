@@ -46,6 +46,7 @@ import {
   TITULO_ARTICULOS_COMUNIDAD_QF, TITULO_GUIAS_COMUNIDAD, TITULO_HUBS, tituloArticulosMonografia,
 } from '../src/lib/articulosRelacionados.js';
 import { ARTICULOS_COMUNIDAD_WEBINARS } from '../src/data/articulosComunidadWebinars.js';
+import { rutasBrasil } from './lib/contenido-brasil.mjs';
 import { COMUNIDADES, META_COMUNIDADES, PREGUNTAS_COMUNIDADES } from '../src/data/comunidadesSalud.js';
 import { DIFICULTADES } from '../src/data/encuestaComunidades.js';
 import { cortoDeComunidad, descripcionDeComunidad, faqJsonLd, paraDeComunidad, preguntasDeComunidad, tituloSeoDeComunidad } from '../src/lib/comunidades/seo.js';
@@ -671,5 +672,8 @@ for (const webinar of WEBINARS) {
     prioridad: '0.7',
   });
 }
+
+/* ---- Edvanta Brasil (/br), en portugués: scripts/lib/contenido-brasil.mjs ---- */
+for (const r of rutasBrasil()) add(r.ruta, r.titulo, r.descripcion, r);
 
 export const RUTAS_FIJAS = rutas;

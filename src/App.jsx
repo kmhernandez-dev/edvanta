@@ -127,6 +127,10 @@ const Alianzas = lazy(() => import('./pages/edvanta/Alianzas'));
 const RecursosEstudiantes = lazy(() => import('./pages/edvanta/RecursosEstudiantes'));
 const AutorPage = lazy(() => import('./pages/edvanta/AutorPage'));
 const PaginaEditorial = lazy(() => import('./pages/edvanta/PaginaEditorial'));
+const EdvantaBrasil = lazy(() => import('./pages/brasil/EdvantaBrasil'));
+const BrasilCatalogo = lazy(() => import('./pages/brasil/BrasilPaginas').then((module) => ({ default: module.BrasilCatalogo })));
+const BrasilArtigo = lazy(() => import('./pages/brasil/BrasilPaginas').then((module) => ({ default: module.BrasilArtigo })));
+const BrasilProduto = lazy(() => import('./pages/brasil/BrasilPaginas').then((module) => ({ default: module.BrasilProduto })));
 
 function RouteFallback() {
   return (
@@ -157,7 +161,7 @@ function RedirigeA({ to }) {
  */
 function StoreGlobals() {
   const { pathname } = useLocation();
-  if (pathname === '/aula' || pathname.startsWith('/aula/')) return null;
+  if (pathname === '/aula' || pathname.startsWith('/aula/') || pathname === '/br' || pathname.startsWith('/br/')) return null;
   return (
     <>
       <CartDrawer />
@@ -429,6 +433,15 @@ export default function App() {
         <Route path="/articulos" element={<ArticulosIndex />} />
         <Route path="/articulos/categoria/:categoria" element={<ArticulosIndex />} />
         <Route path="/articulos/:slug" element={<ArticuloPage />} />
+
+        {/* Edvanta Brasil: edición regional en portugués de Brasil. */}
+        <Route path="/br" element={<EdvantaBrasil />} />
+        <Route path="/br/artigos" element={<BrasilCatalogo tipo="artigos" />} />
+        <Route path="/br/artigos/:slug" element={<BrasilArtigo />} />
+        <Route path="/br/cursos" element={<BrasilCatalogo tipo="cursos" />} />
+        <Route path="/br/cursos/:slug" element={<BrasilProduto tipo="cursos" />} />
+        <Route path="/br/guias" element={<BrasilCatalogo tipo="guias" />} />
+        <Route path="/br/guias/:slug" element={<BrasilProduto tipo="guias" />} />
 
         {/* Cursos y rutas profesionales Edvanta */}
         {/* Una sola ficha pública por curso propio: se ve antes de entrar. */}

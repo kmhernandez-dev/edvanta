@@ -21,7 +21,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { ArrowRight, ChevronDown, Menu, MonitorPlay, Search, ShoppingCart, UserRound, X } from 'lucide-react';
+import { ArrowRight, ChevronDown, Globe2, Menu, MonitorPlay, Search, ShoppingCart, UserRound, X } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 import { useCart } from '../../context/CartContext';
 import { trackEvent } from '../../utils/analytics';
@@ -229,6 +229,14 @@ export default function SiteHeader() {
               <MonitorPlay className="h-4 w-4" aria-hidden="true" />
               <span className="hidden sm:inline">Aula virtual</span>
               <span className="sr-only sm:hidden">Aula virtual</span>
+            </Link>
+            <Link
+              to="/br"
+              onClick={() => trackEvent('nav_click', { item: 'brasil' })}
+              className="hidden items-center gap-1.5 text-[13.5px] font-semibold text-[#176B3A] transition-colors hover:text-edvanta-teal sm:inline-flex"
+            >
+              <Globe2 className="h-4 w-4" aria-hidden="true" />
+              Brasil
             </Link>
           </nav>
         </div>
