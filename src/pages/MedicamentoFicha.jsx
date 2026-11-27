@@ -11,7 +11,11 @@ import { AlertTriangle, ArrowRight, BookOpen, ShieldCheck } from 'lucide-react';
 import SiteHeader from '../components/edvanta/SiteHeader';
 import SiteFooter from '../components/edvanta/SiteFooter';
 import { Breadcrumb } from '../components/edvanta/ui';
-import { fichaPorSlug, robotsDeFicha } from '../data/medicamentos/fichas.js';
+import { FICHAS, fichaPorSlug, robotsDeFicha } from '../data/medicamentos/fichas.js';
+import { crearVecinosDeFichas, TITULO_OTRAS_FICHAS } from '../lib/articulosRelacionados';
+
+// Las fichas vecinas (mismo cálculo que el HTML estático de seo-rutas-fijas.mjs).
+const vecinosDeFicha = crearVecinosDeFichas(FICHAS);
 import { paginaDelVademecum } from '../data/vademecum';
 import { updatePageSeo } from '../utils/seo';
 
@@ -20,6 +24,7 @@ const SITIO = 'https://edvanta.co';
 export default function MedicamentoFicha() {
   const { slug } = useParams();
   const ficha = fichaPorSlug(slug);
+  const vecinas = ficha ? vecinosDeFicha(ficha, 6) : [];
   const monografia = ficha ? paginaDelVademecum(ficha.slug) : null;
 
   useEffect(() => {
@@ -161,6 +166,17 @@ export default function MedicamentoFicha() {
               <li><a href="https://medlineplus.gov/spanish/druginformation.html" target="_blank" rel="noopener noreferrer" className="hover:underline">MedlinePlus</a></li>
             </ul>
           </section>
+
+          {vecinas.length > 0 && (
+            <section className="mt-8">
+              <h2 className="font-display text-xl font-extrabold text-edvanta-deep">{TITULO_OTRAS_FICHAS}</h2>
+              <ul className="mt-3 grid gap-2 sm:grid-cols-2">
+                {vecinas.map((v) => (
+                  <li key={v.slug}><Link to={`/medicamentos/${v.slug}`} className="block rounded-xl border border-edvanta-border bg-white px-4 py-3 text-sm font-semibold text-edvanta-deep transition hover:border-edvanta-teal/40 hover:text-edvanta-blue">{v.nombre}: para qué sirve</Link></li>
+                ))}
+              </ul>
+            </section>
+          )}
 
           <p className="mt-8 text-xs leading-5 text-edvanta-muted">
             Información educativa. No es consejo médico ni una ficha técnica. La prescripción, la dosis y el

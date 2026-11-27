@@ -26,6 +26,46 @@ export const ANGULOS_CURSO_ESTUDIANTE = ['preparar-parcial', 'preguntas-examen',
 
 const resumen = (a) => ({ slug: a.slug, titulo: a.title });
 
+/**
+ * «Sigue leyendo»: los vecinos de cada artículo en su categoría, en anillo
+ * (siguiente, anterior, el que sigue, el que antecede…).
+ *
+ * Antes todos los artículos de una categoría enlazaban a los mismos 4
+ * primeros: en el HTML estático, 2.265 artículos tenían un solo enlace
+ * entrante (27-nov-2026) y Google los dejaba en «Descubierta: actualmente
+ * sin indexar». En anillo, cada artículo recibe tantos enlaces como
+ * muestra (si su categoría tiene con quién), sin cambiar de tema.
+ *
+ * crearVecinos(lista, clave) prepara los índices una vez; devuelve
+ * (articulo, n) => hasta n de la misma categoría. `clave` agrupa (por
+ * defecto `category`; las fichas de /medicamentos usan `clase` y la
+ * biblioteca de /salud `categoria`).
+ */
+export function crearVecinos(lista = [], clave = (a) => a?.category) {
+  const porCategoria = new Map();
+  for (const a of lista) {
+    const k = clave(a) || '';
+    if (!porCategoria.has(k)) porCategoria.set(k, []);
+    porCategoria.get(k).push(a);
+  }
+  const posicion = new Map();
+  for (const l of porCategoria.values()) l.forEach((a, i) => { if (!posicion.has(a.slug)) posicion.set(a.slug, i); });
+  return (art, n = 4) => {
+    const l = porCategoria.get(clave(art) || '') || [];
+    const i = posicion.get(art?.slug);
+    if (i === undefined || l.length < 2) return [];
+    const cuantos = Math.min(n, l.length - 1);
+    const out = [];
+    for (let d = 1; out.length < cuantos && d < l.length; d++) {
+      for (const j of [(i + d) % l.length, ((i - d) % l.length + l.length) % l.length]) {
+        const v = l[j];
+        if (out.length < cuantos && v.slug !== art.slug && !out.includes(v)) out.push(v);
+      }
+    }
+    return out;
+  };
+}
+
 /** Busca los slugs en el orden dado; los que no existen se omiten. */
 function porSlugs(slugs, lista) {
   const porSlug = new Map((lista || []).map((a) => [a.slug, a]));
@@ -90,6 +130,22 @@ export const tituloArticulosMonografia = (nombre) => `Artículos para estudiar $
 
 const esc = (t) => String(t ?? '')
   .replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;');
+
+/**
+ * Vecinos de las fichas de /medicamentos (en el orden de los datos, que
+ * agrupa por área) y de la biblioteca de /salud (por categoría). Antes
+ * cada una solo recibía el enlace de su hub.
+ */
+export const TITULO_OTRAS_FICHAS = 'Otras fichas de medicamentos';
+export const TITULO_MAS_SALUD = 'Más de la biblioteca de salud';
+export const crearVecinosDeFichas = (fichas) => crearVecinos(fichas, () => 'fichas');
+export const crearVecinosDeSalud = (articulos) => crearVecinos(articulos, (a) => a?.categoria);
+
+/** Una sección HTML con enlaces [[texto, ruta]]; vacía si no hay. */
+export function htmlDeEnlaces(titulo, pares) {
+  if (!pares?.length) return '';
+  return `<section><h2>${esc(titulo)}</h2><ul>${pares.map(([t, u]) => `<li><a href="${esc(u)}">${esc(t)}</a></li>`).join('')}</ul></section>`;
+}
 
 /** La sección HTML (prerender y API) con la lista; vacía si no hay. */
 export function htmlDeArticulos(titulo, articulos, intro = '') {

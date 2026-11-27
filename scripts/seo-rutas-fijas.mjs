@@ -1,4 +1,5 @@
 import { ESCUELAS } from '../src/data/edvanta/escuelas.js';
+import { HERRAMIENTAS } from '../src/data/edvanta/herramientas.js';
 import { AREAS_CAPACITACION } from '../src/data/edvanta/capacitacion.js';
 import { PAQUETES } from '../src/data/edvanta/servicios.js';
 import { enfermedades } from '../src/data/enfermedades.js';
@@ -42,8 +43,9 @@ import { clasesDelVademecum, urlsAbsolutas } from '../api/lib/enlaces-de-salud.j
 import { casosDeVademecum, htmlDeCasos } from '../src/lib/casosClinicos/enlacesInversos.js';
 import { robotsDePaginaDelVademecum, robotsDelVademecum, tituloDeVademecum } from '../src/lib/vademecum/indexable.js';
 import {
-  articulosDeComunidad, articulosDeMonografia, htmlDeArticulos, HUBS_DE_LA_TANDA, TEXTO_GUIAS_COMUNIDAD,
-  TITULO_ARTICULOS_COMUNIDAD_QF, TITULO_GUIAS_COMUNIDAD, TITULO_HUBS, tituloArticulosMonografia,
+  articulosDeComunidad, articulosDeMonografia, crearVecinosDeFichas, crearVecinosDeSalud, htmlDeArticulos, htmlDeEnlaces,
+  HUBS_DE_LA_TANDA, TEXTO_GUIAS_COMUNIDAD, TITULO_ARTICULOS_COMUNIDAD_QF, TITULO_GUIAS_COMUNIDAD, TITULO_HUBS,
+  TITULO_MAS_SALUD, TITULO_OTRAS_FICHAS, tituloArticulosMonografia,
 } from '../src/lib/articulosRelacionados.js';
 import { ARTICULOS_COMUNIDAD_WEBINARS } from '../src/data/articulosComunidadWebinars.js';
 import { rutasBrasil } from './lib/contenido-brasil.mjs';
@@ -295,7 +297,9 @@ add('/empleo/plantillas-de-correo-para-recursos-humanos', 'Plantillas de correo 
 
 add('/orientacion-vocacional', 'Orientación vocacional para químicos farmacéuticos | Edvanta', 'Sistema guiado de 3 pasos para descubrir el mejor encaje profesional farmacéutico: laboratorio, procesos, regulación, pacientes o datos.', { tipo: 'WebPage', seccion: 'Carreras', enlaces: [['Carreras', '/carreras'], ['Rutas', '/rutas'], ['Competencias', '/competencias']] });
 
-add('/herramientas', 'Herramientas profesionales farmacéuticas | Edvanta', 'Guías, plantillas y herramientas clasificadas por tema: carrera, empleo, marca personal, emprendimiento y talento. Cada una con su propia página.', { tipo: 'CollectionPage', seccion: 'Recursos', enlaces: [['Hoja de vida', '/hoja-de-vida'], ['Correos a recursos humanos', '/empleo/plantillas-de-correo-para-recursos-humanos'], ['Recursos', '/recursos']] });
+// El hub enlaza cada herramienta (antes solo 3 enlaces: las 9 páginas
+// /herramientas/* no tenían ningún enlace en el HTML estático).
+add('/herramientas', 'Herramientas profesionales farmacéuticas | Edvanta', 'Guías, plantillas y herramientas clasificadas por tema: carrera, empleo, marca personal, emprendimiento y talento. Cada una con su propia página.', { tipo: 'CollectionPage', seccion: 'Recursos', contenido: htmlDeEnlaces('Todas las herramientas', HERRAMIENTAS.map((h) => [h.nav || h.seo?.title || h.slug, `/herramientas/${h.slug}`])), enlaces: [['Hoja de vida', '/hoja-de-vida'], ['Correos a recursos humanos', '/empleo/plantillas-de-correo-para-recursos-humanos'], ['Recursos', '/recursos']] });
 
 add('/linkedin-farmaceutico', 'Mejora tu LinkedIn farmacéutico | Edvanta', 'Guía práctica con imágenes, banco de prompts de IA y guía para generar ingresos con LinkedIn y tu marca personal.', { tipo: 'WebPage', seccion: 'Empleo', enlaces: [['Empleo', '/empleo'], ['Hoja de vida', '/hoja-de-vida'], ['Herramientas', '/herramientas']] });
 
@@ -356,7 +360,8 @@ for (const enfermedad of enfermedades) {
     seccion: 'Feliz Sin Tiroides',
     robots: tieneRevisionClinica(enfermedad) ? 'index,follow' : 'noindex,follow',
     enlaces: [['Feliz Sin Tiroides', '/feliz-sin-tiroides'], ['Contigo', '/contigo/tiroides'], ['Artículos', '/articulos']],
-    contenido: contenidoEnfermedad(enfermedad, extrasDeEnfermedad(enfermedad)),
+    // + las demás páginas del tema (5 de 9 no tenían ningún enlace en el HTML estático).
+    contenido: `${contenidoEnfermedad(enfermedad, extrasDeEnfermedad(enfermedad))}${htmlDeEnlaces('Más sobre la tiroides', enfermedades.filter((e) => e.slug !== enfermedad.slug).map((e) => [e.name, `/enfermedades/${e.slug}`]))}`,
   });
 }
 
@@ -431,6 +436,8 @@ add('/medicamentos', META_FICHAS.titulo, META_FICHAS.descripcion, {
   enlaces: [['Vademécum', '/vademecum'], ['Artículos', '/articulos'], ['Cursos', '/cursos']],
   contenido: contenidoFichas(),
 });
+// Cada ficha enlaza a sus vecinas (antes solo la enlazaba el hub).
+const vecinosDeFicha = crearVecinosDeFichas(FICHAS);
 for (const f of FICHAS) {
   add(`/medicamentos/${f.slug}`, `${f.nombre}: para qué sirve, cuidados y efectos | Edvanta`, `${f.nombre}: ${f.para} Cuidados, efectos secundarios y cuándo consultar. Información educativa.`, {
     tipo: 'WebPage',
@@ -439,7 +446,7 @@ for (const f of FICHAS) {
     robots: robotsDeFicha(f.slug),
     h1: `${f.nombre}: para qué sirve y cuidados`,
     enlaces: [['Todas las fichas', '/medicamentos'], ['Vademécum', '/vademecum'], ['Artículos', '/articulos']],
-    contenido: contenidoFicha(f),
+    contenido: `${contenidoFicha(f)}${htmlDeEnlaces(TITULO_OTRAS_FICHAS, vecinosDeFicha(f, 6).map((v) => [`${v.nombre}: para qué sirve`, `/medicamentos/${v.slug}`]))}`,
   });
 }
 
@@ -453,6 +460,8 @@ add('/salud', META_BIBLIOTECA.titulo, META_BIBLIOTECA.descripcion, {
   enlaces: [['Medicamentos', '/medicamentos'], ['Vademécum', '/vademecum'], ['Artículos', '/articulos']],
   contenido: contenidoBiblioteca(),
 });
+// Cada artículo enlaza a sus vecinos de la misma categoría.
+const vecinosDeSalud = crearVecinosDeSalud(BIBLIOTECA_SALUD);
 for (const a of BIBLIOTECA_SALUD) {
   add(`/salud/${a.slug}`, `${a.nombre}: para qué sirve y precauciones | Edvanta`, `${a.nombre}: ${a.para} Precauciones y evidencia disponible. Información educativa.`, {
     tipo: 'WebPage',
@@ -461,7 +470,7 @@ for (const a of BIBLIOTECA_SALUD) {
     robots: robotsDeArticuloSalud(a.slug),
     h1: `${a.nombre}: para qué sirve`,
     enlaces: [['Biblioteca de salud', '/salud'], ['Medicamentos', '/medicamentos'], ['Artículos', '/articulos']],
-    contenido: contenidoBibliotecaArticulo(a),
+    contenido: `${contenidoBibliotecaArticulo(a)}${htmlDeEnlaces(TITULO_MAS_SALUD, vecinosDeSalud(a, 6).map((v) => [`${v.nombre}: para qué sirve`, `/salud/${v.slug}`]))}`,
   });
 }
 

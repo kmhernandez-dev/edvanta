@@ -11,7 +11,11 @@ import { AlertTriangle, ArrowRight, BookOpen, ShieldCheck } from 'lucide-react';
 import SiteHeader from '../components/edvanta/SiteHeader';
 import SiteFooter from '../components/edvanta/SiteFooter';
 import { Breadcrumb } from '../components/edvanta/ui';
-import { articuloDeSalud, CATEGORIAS_SALUD, robotsDeArticuloSalud } from '../data/salud/biblioteca.js';
+import { articuloDeSalud, BIBLIOTECA_SALUD, CATEGORIAS_SALUD, robotsDeArticuloSalud } from '../data/salud/biblioteca.js';
+import { crearVecinosDeSalud, TITULO_MAS_SALUD } from '../lib/articulosRelacionados';
+
+// Los vecinos de la misma categoría (mismo cálculo que el HTML estático).
+const vecinosDeSalud = crearVecinosDeSalud(BIBLIOTECA_SALUD);
 import { updatePageSeo } from '../utils/seo';
 
 const SITIO = 'https://edvanta.co';
@@ -43,6 +47,7 @@ const FUENTES = {
 export default function BibliotecaSaludArticulo() {
   const { slug } = useParams();
   const articulo = articuloDeSalud(slug);
+  const vecinos = articulo ? vecinosDeSalud(articulo, 6) : [];
 
   useEffect(() => {
     if (!articulo) return undefined;
@@ -171,6 +176,17 @@ export default function BibliotecaSaludArticulo() {
               <p><strong className="text-edvanta-deep">¿Dónde consulto la ficha técnica?</strong> En CIMA, DailyMed o la autoridad sanitaria de tu país.</p>
             </div>
           </details>
+
+          {vecinos.length > 0 && (
+            <section className="mt-8">
+              <h2 className="font-display text-xl font-extrabold text-edvanta-deep">{TITULO_MAS_SALUD}</h2>
+              <ul className="mt-3 grid gap-2 sm:grid-cols-2">
+                {vecinos.map((v) => (
+                  <li key={v.slug}><Link to={`/salud/${v.slug}`} className="block rounded-xl border border-edvanta-border bg-white px-4 py-3 text-sm font-semibold text-edvanta-deep transition hover:border-edvanta-teal/40 hover:text-edvanta-blue">{v.nombre}: para qué sirve</Link></li>
+                ))}
+              </ul>
+            </section>
+          )}
 
           <div className="mt-8 flex flex-wrap gap-3">
             <Link to="/salud" className="inline-flex min-h-11 items-center gap-2 rounded-xl border border-edvanta-border bg-white px-5 text-sm font-semibold text-edvanta-blue hover:bg-edvanta-light">

@@ -35,6 +35,11 @@ const SITIO = 'https://edvanta.co';
 const importar = (rel) => import(pathToFileURL(path.join(raiz, rel)).href);
 
 const { articulos } = await importar('src/data/articulos.js');
+// «Sigue leyendo» en anillo dentro de la categoría (no los mismos 4 para todos).
+const { crearVecinos } = await importar('src/lib/articulosRelacionados.js');
+// La miga de pan enlaza la categoría: sus 28 páginas solo las enlazaba /articulos.
+const { rutaDeCategoria } = await importar('src/lib/slug.js');
+const vecinosDeArticulo = crearVecinos(articulos);
 const {
   limpiarMarkdown, preguntasFrecuentes, relDeEnlaceExterno, slugify, textoPlano,
 } = await importar('src/lib/articulos/markdown.js');
@@ -117,7 +122,7 @@ for (const art of articulos) {
   const imagenJsonLd = { '@type': 'ImageObject', url: image, caption: art.imageAlt || art.title };
   const autor = art.autor || (art.marca === 'fst' ? 'Karla Hernández' : 'Equipo editorial de Edvanta');
   const faq = preguntasFrecuentes(md);
-  const relacionados = articulos.filter((a) => a.slug !== art.slug && a.category === art.category).slice(0, 4);
+  const relacionados = vecinosDeArticulo(art, 4);
   const comunidad = comunidadDeArticulo(art.slug);
   const examen = examenDeArticulo(art.slug);
   // Sin fecha de consulta: la pone quien cita.
@@ -162,7 +167,7 @@ for (const art of articulos) {
 
   const cuerpo = `
 <main class="mx-auto max-w-3xl px-4 py-10">
-  <nav aria-label="Ruta de navegación"><a href="/">Inicio</a> › <a href="/articulos">Artículos</a> › ${esc(art.category)}</nav>
+  <nav aria-label="Ruta de navegación"><a href="/">Inicio</a> › <a href="/articulos">Artículos</a> › <a href="${rutaDeCategoria(art.category)}">${esc(art.category)}</a></nav>
   <article>
     <p>${esc(art.category)}</p>
     <h1>${esc(art.title)}</h1>

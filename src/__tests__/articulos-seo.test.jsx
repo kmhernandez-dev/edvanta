@@ -50,7 +50,8 @@ describe('SEO de los artículos', () => {
       }
     }
     expect(rotos).toEqual([]);
-  });
+    // Lee los ~3.200 .md: con la suite completa en paralelo pasa de los 20 s.
+  }, 60000);
 
   it('sustituye el JSON-LD prerenderizado al montar React para no duplicarlo', () => {
     const viejo = document.createElement('script');

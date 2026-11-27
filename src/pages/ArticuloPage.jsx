@@ -35,6 +35,7 @@ import HerramientaArticulo from '../components/articulos/HerramientaArticulo';
 import BloqueComunidad from '../components/comunidad/BloqueComunidad';
 import AffiliateCourseButton from '../components/AffiliateCourseButton';
 import { articulos, getArticulo } from '../data/articulos';
+import { crearVecinos } from '../lib/articulosRelacionados';
 import { comunidadDeArticulo, herramientaDeArticulo } from '../data/comunidadesSalud';
 import { examenDeArticulo } from '../data/examenes';
 import { trackEvent } from '../utils/analytics';
@@ -62,6 +63,10 @@ const MARCA = {
 };
 
 const SALUD = ['fst', 'contigo', 'atenfarma'];
+
+// «Sigue leyendo»: vecinos en anillo dentro de la categoría (mismo cálculo
+// que el HTML estático de scripts/prerenderizar-articulos.mjs).
+const vecinosDeArticulo = crearVecinos(articulos);
 
 const fechaLarga = (iso) => {
   try {
@@ -497,8 +502,9 @@ export default function ArticuloPage() {
 
   const relacionados = useMemo(() => {
     if (!art) return [];
-    const mismos = articulos.filter((a) => a.slug !== art.slug && a.category === art.category);
-    const otros = articulos.filter((a) => a.slug !== art.slug && a.category !== art.category && a.marca === art.marca);
+    // Vecinos en anillo dentro de la categoría (src/lib/articulosRelacionados.js).
+    const mismos = vecinosDeArticulo(art, 3);
+    const otros = mismos.length >= 3 ? [] : articulos.filter((a) => a.slug !== art.slug && a.category !== art.category && a.marca === art.marca);
     return [...mismos, ...otros].slice(0, 3);
   }, [art]);
 
