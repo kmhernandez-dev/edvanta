@@ -10,6 +10,7 @@ import {
   rutaDeArticulo, rutaHub, slugDeArticulo,
 } from './lib/vademecum-1000-datos.mjs';
 import { construirCuerpo } from './lib/vademecum-1000-angulos.mjs';
+import { escribirTanda } from './lib/articulos-compactos.mjs';
 
 const raiz = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const publico = path.join(raiz, 'public');
@@ -350,7 +351,15 @@ for (const spec of specs) {
 }
 
 articulos.sort((a, b) => a.slug.localeCompare(b.slug));
-writeFileSync(salidaDatos, `export const VADEMECUM_ARTICULOS_1000 = ${JSON.stringify(articulos, null, 2)};\n`, 'utf8');
+// Compacto para el navegador; las keywords van aparte (scripts/lib/articulos-compactos.mjs).
+escribirTanda({
+  raiz,
+  archivo: path.relative(raiz, salidaDatos),
+  nombre: 'VADEMECUM_ARTICULOS_1000',
+  generador: 'scripts/generar-1000-articulos-vademecum.mjs',
+  lista: articulos,
+  archivoKeywords: 'seo/keywords-articulos-vademecum-1000.json',
+});
 
 function tejas(texto) {
   const palabras = normalizar(texto).split(/\s+/).filter(Boolean);

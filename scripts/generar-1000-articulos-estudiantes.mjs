@@ -8,6 +8,7 @@ import {
   FECHA, MATERIAS, mdPathCursoEstudiante, mdPathMateria, normalizar, perfilesCursos,
 } from './lib/estudiantes-1000-datos.mjs';
 import { construirCuerpo } from './lib/estudiantes-1000-angulos.mjs';
+import { escribirTanda } from './lib/articulos-compactos.mjs';
 
 const raiz = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const publico = path.join(raiz, 'public');
@@ -177,7 +178,15 @@ for (const spec of specs) {
 }
 
 articulos.sort((a, b) => a.slug.localeCompare(b.slug));
-writeFileSync(salidaArticulos, `export const ESTUDIANTES_ARTICULOS_1000 = ${JSON.stringify(articulos, null, 2)};\n`, 'utf8');
+// Compacto para el navegador; las keywords van aparte (scripts/lib/articulos-compactos.mjs).
+escribirTanda({
+  raiz,
+  archivo: path.relative(raiz, salidaArticulos),
+  nombre: 'ESTUDIANTES_ARTICULOS_1000',
+  generador: 'scripts/generar-1000-articulos-estudiantes.mjs',
+  lista: articulos,
+  archivoKeywords: 'seo/keywords-articulos-estudiantes-1000.json',
+});
 
 const materias = MATERIAS.map((m) => {
   const propios = articulos.filter((a) => a.materia?.slug === m.slug);

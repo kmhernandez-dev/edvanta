@@ -8,6 +8,7 @@ import {
   normalizar, rutaDeArticulo, slugDeArticulo,
 } from './lib/cursos-blogs-datos.mjs';
 import { construirCuerpo } from './lib/cursos-blogs-angulos.mjs';
+import { escribirTanda } from './lib/articulos-compactos.mjs';
 
 const raiz = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const publico = path.join(raiz, 'public');
@@ -138,11 +139,15 @@ for (const { curso, angulo } of especificaciones) {
 }
 
 articulos.sort((a, b) => a.slug.localeCompare(b.slug));
-writeFileSync(
-  salidaDatos,
-  `export const BLOG_CURSOS_500 = ${JSON.stringify(articulos, null, 2)};\n`,
-  'utf8',
-);
+// Compacto para el navegador; las keywords van aparte (scripts/lib/articulos-compactos.mjs).
+escribirTanda({
+  raiz,
+  archivo: path.relative(raiz, salidaDatos),
+  nombre: 'BLOG_CURSOS_500',
+  generador: 'scripts/generar-blogs-cursos.mjs',
+  lista: articulos,
+  archivoKeywords: 'seo/keywords-blogs-cursos-500.json',
+});
 
 function tejas(texto) {
   const palabras = normalizar(texto).split(/\s+/).filter(Boolean);
